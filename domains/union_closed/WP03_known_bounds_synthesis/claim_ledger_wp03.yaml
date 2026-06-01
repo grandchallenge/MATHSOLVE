@@ -1,0 +1,58 @@
+claims:
+  - claim_id: UC-WP03-C001
+    claim_text: Gilmer proved a dimension-free 0.01 lower bound for the maximum element frequency proportion.
+    claim_class: LITERATURE_DERIVED
+    support_type: SOURCE_CITATION
+    status: AUDITED
+    promotion_condition: Reprove or formalize the cited theorem before treating it as internally certified.
+    source_or_artifact:
+      - https://arxiv.org/abs/2211.09055
+  - claim_id: UC-WP03-C002
+    claim_text: Sawin proved the lower bound (3 - sqrt(5)) / 2 and sketched a strictly stronger route.
+    claim_class: LITERATURE_DERIVED
+    support_type: SOURCE_CITATION
+    status: AUDITED
+    promotion_condition: Keep the proved threshold distinct from the sketched extension unless separately certified.
+    source_or_artifact:
+      - https://arxiv.org/abs/2211.11504
+  - claim_id: UC-WP03-C003
+    claim_text: Yu gave an optimization formulation and a numerical evaluation around 0.38234.
+    claim_class: LITERATURE_DERIVED
+    support_type: SOURCE_CITATION
+    status: AUDITED
+    promotion_condition: Replay and certify the optimization before treating the numerical value as internally certified.
+    source_or_artifact:
+      - https://arxiv.org/abs/2212.00658
+  - claim_id: UC-WP03-C004
+    claim_text: Liu's conditionally IID coupling gives an approximate 0.38271 improvement under numerically verified hypotheses.
+    claim_class: LITERATURE_DERIVED
+    support_type: SOURCE_CITATION
+    status: AUDITED
+    promotion_condition: Preserve the numerical hypotheses unless replaced by certified analysis.
+    source_or_artifact:
+      - https://arxiv.org/abs/2306.08824
+  - claim_id: UC-WP03-C005
+    claim_text: Bouchard obtained necessary conditions for a minimum-size counterexample in the lattice formulation.
+    claim_class: LITERATURE_DERIVED
+    support_type: SOURCE_CITATION
+    status: AUDITED
+    promotion_condition: Reconstruct the exact conditions before selecting a lattice restricted target.
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+  - claim_id: UC-WP03-C006
+    claim_text: Hachimori and Kashiwabara report a Lean 4 verified average-rarity theorem for ideal families.
+    claim_class: LITERATURE_DERIVED
+    support_type: SOURCE_CITATION
+    status: AUDITED
+    promotion_condition: Audit the external Lean artifact before importing or duplicating the formalization.
+    source_or_artifact:
+      - https://arxiv.org/abs/2504.13454
+      - https://github.com/kashiwabarakenji/frankl_lean
+  - claim_id: UC-WP03-C007
+    claim_text: Hachimori and Kashiwabara report Lean 4 verified average-rarity results for functional-preorder order ideals.
+    claim_class: LITERATURE_DERIVED
+    support_type: SOURCE_CITATION
+    status: AUDITED
+    promotion_condition: Audit the external Lean artifact before selecting this extension corridor.
+    source_or_artifact:
+      - https://arxiv.org/abs/2511.19833
