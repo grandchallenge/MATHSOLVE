@@ -1,0 +1,21 @@
+grobner_tactic_invocation:
+  invocation_id: GB-TACTIC-TEMPLATE
+  schema_version: 0.1.0
+  parent_problem: null
+  local_obligation: null
+  algebraic_task: polynomial_identity
+  coefficient_domain: QQ
+  variables:
+    universe: finite
+    names: []
+  side_conditions: []
+  status: candidate
+  witness_source:
+    repository: grandchallenge/MATHFORGE
+    path: null
+  handoff:
+    target_repository: grandchallenge/MATHCERT
+    target_certificate_kind: polynomial_identity
+    target_schema: schemas/algebraic_certificate.schema.json
+    expected_trust_boundary: lean_kernel_checked
+  notes: "MATHSOLVE routes the tactic; MATHCERT certifies the proof step."
