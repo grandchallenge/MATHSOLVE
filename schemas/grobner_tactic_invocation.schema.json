@@ -1,0 +1,19 @@
+{
+  "title": "MATHSOLVE Groebner Tactic Invocation",
+  "type": "object",
+  "required": ["invocation_id", "schema_version", "parent_problem", "algebraic_task", "status", "handoff"],
+  "properties": {
+    "invocation_id": {"type": "string"},
+    "schema_version": {"const": "0.1.0"},
+    "parent_problem": {"type": "string"},
+    "local_obligation": {"type": "string"},
+    "algebraic_task": {"type": "string"},
+    "coefficient_domain": {"type": "string"},
+    "variables": {"type": "object"},
+    "side_conditions": {"type": "array"},
+    "status": {"enum": ["candidate", "witness_requested", "witness_available", "sent_to_mathcert", "certified_by_mathcert", "rejected"]},
+    "witness_source": {"type": "object"},
+    "handoff": {"type": "object"},
+    "notes": {"type": "string"}
+  }
+}
