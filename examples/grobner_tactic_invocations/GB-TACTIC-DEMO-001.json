@@ -1,0 +1,25 @@
+{
+  "invocation_id": "GB-TACTIC-DEMO-001",
+  "schema_version": "0.1.0",
+  "parent_problem": "ALG-GB-DEMO-C001",
+  "local_obligation": "Show (x + y)^2 = x^2 + 2xy + y^2 over QQ[x,y].",
+  "algebraic_task": "polynomial_identity",
+  "coefficient_domain": "QQ",
+  "variables": {
+    "universe": "finite",
+    "names": ["x", "y"]
+  },
+  "side_conditions": [],
+  "status": "sent_to_mathcert",
+  "witness_source": {
+    "repository": "grandchallenge/MATHFORGE",
+    "path": "examples/algebraic_witnesses/GB-WITNESS-DEMO-001.json"
+  },
+  "handoff": {
+    "target_repository": "grandchallenge/MATHCERT",
+    "target_certificate_kind": "polynomial_identity",
+    "target_schema": "schemas/algebraic_certificate.schema.json",
+    "expected_trust_boundary": "lean_kernel_checked"
+  },
+  "notes": "Toy fixture showing orchestration only. MATHCERT owns the trusted theorem."
+}
