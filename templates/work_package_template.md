@@ -7,6 +7,9 @@
 - Primary type:
 - Claim status:
 - Certification target:
+- Knowledge graph refs:
+- Classification mapping refs:
+- Discovery record refs:
 
 ## 1. Lay executive companion
 

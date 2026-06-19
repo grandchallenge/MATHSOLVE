@@ -8,5 +8,4 @@ Initial sequence:
 - WP02: Lean handoff and first checked lemmas.
 - WP03: refreshed primary-source audit and known-bounds synthesis.
 - WP04: exact finite replay and checked singleton/two-element special cases.
-- WP05: selected lattice-minimal-counterexample corridor.
-- WP05: restricted theorem target selection.
+- WP05: lattice-minimal-counterexample theorem spine and exact restricted target.

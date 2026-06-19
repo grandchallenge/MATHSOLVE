@@ -1,0 +1,520 @@
+claims:
+  - claim_id: UC-WP05-L001
+    short_name: minimum lattice counterexample has at least two atoms
+    claim_text: A minimum-cardinality finite-lattice counterexample to the lattice form of Frankl's conjecture has at least two atoms.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+    assumptions:
+      - Minimum cardinality ranges over finite-lattice counterexamples in the same Lean universe.
+      - Join-irreducibility is represented by mathlib's SupIrred predicate.
+    promotion_condition: Already checked locally; preserve the minimum-counterexample definition and proof under CI.
+    knowledge_graph_refs:
+      - UC-CLAIM-WP05-L001
+      - UC-ARTIFACT-LATTICE-MINIMUM-LEAN
+
+  - claim_id: UC-WP05-L002
+    short_name: delete a sup-irreducible element
+    claim_text: Removing a sup-irreducible element from a finite bounded lattice admits a lattice structure on the induced ordered subtype.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeDeletion.lean
+    assumptions:
+      - The replacement meet is the supremum of all elements strictly below the deleted element.
+    promotion_condition: Already checked locally; preserve the deletion construction under CI.
+    knowledge_graph_refs:
+      - UC-WP05
+
+  - claim_id: UC-WP05-L003
+    short_name: delete an inf-irreducible element
+    claim_text: Removing an inf-irreducible element from a finite bounded lattice admits a lattice structure on the induced ordered subtype.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeDeletion.lean
+    assumptions:
+      - The replacement join is the infimum of all elements strictly above the deleted element.
+    promotion_condition: Already checked locally; preserve the dual deletion construction under CI.
+    knowledge_graph_refs:
+      - UC-WP05
+
+  - claim_id: UC-WP05-L004
+    short_name: irreducibles are not ordered in a minimum counterexample
+    claim_text: In a minimum-cardinality finite-lattice counterexample, no inf-irreducible element lies strictly below a sup-irreducible element.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+    assumptions:
+      - Minimum cardinality ranges over finite-lattice counterexamples in the same Lean universe.
+      - Meet- and join-irreducibility are represented by mathlib's InfIrred and SupIrred predicates.
+    promotion_condition: Already checked locally; preserve the deletion argument and upper-cone cardinality comparison under CI.
+    knowledge_graph_refs:
+      - UC-WP05
+      - UC-ARTIFACT-LATTICE-MINIMUM-LEAN
+
+  - claim_id: UC-WP05-L005
+    short_name: top is join-reducible in a minimum counterexample
+    claim_text: In a minimum-cardinality finite-lattice counterexample, the top element is the join of two elements strictly below it.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+    assumptions:
+      - Minimum cardinality ranges over finite-lattice counterexamples in the same Lean universe.
+      - Join-reducibility is represented explicitly by two proper elements whose join is top.
+    promotion_condition: Already checked locally; preserve the coatom existence and irreducible-separation argument under CI.
+    knowledge_graph_refs:
+      - UC-CLAIM-WP05-COROLLARY-2-4
+      - UC-ARTIFACT-LATTICE-MINIMUM-LEAN
+
+  - claim_id: UC-WP05-L006
+    short_name: exact upper-cone size of a doubly irreducible element
+    claim_text: In a minimum-cardinality finite-lattice counterexample, every element that is both sup-irreducible and inf-irreducible satisfies twice its upper-cone cardinality equals the lattice cardinality plus one.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+    assumptions:
+      - Minimum cardinality ranges over finite-lattice counterexamples in the same Lean universe.
+      - Doubly irreducible means both mathlib SupIrred and InfIrred.
+      - The exact equation is stated without division as 2 * upperConeCard x = Fintype.card L + 1.
+    promotion_condition: Already checked locally; preserve the one-point upper-cone loss bound and deleted-counterexample argument under CI.
+    knowledge_graph_refs:
+      - UC-CLAIM-WP05-LEMMA-2-5
+      - UC-ARTIFACT-LATTICE-MINIMUM-LEAN
+
+  - claim_id: UC-WP05-L007
+    short_name: at most one doubly irreducible element
+    claim_text: A minimum-cardinality finite-lattice counterexample contains at most one element that is both sup-irreducible and inf-irreducible.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+    assumptions:
+      - Minimum cardinality ranges over finite-lattice counterexamples in the same Lean universe.
+      - Doubly irreducible means both mathlib SupIrred and InfIrred.
+    promotion_condition: Already checked locally; preserve irreducibility under incomparable deletion, the two-point cone bounds, and the sequential deletion argument under CI.
+    knowledge_graph_refs:
+      - UC-CLAIM-WP05-THEOREM-2-6
+      - UC-ARTIFACT-LATTICE-MINIMUM-LEAN
+
+  - claim_id: UC-WP05-L008
+    short_name: finite homogeneous deletion leaves a lattice
+    claim_text: Deleting a finite set consisting entirely of sup-irreducible elements, or entirely of inf-irreducible elements, from a finite bounded lattice leaves a lattice on the induced ordered subtype.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeDeletion.lean
+    assumptions:
+      - The deleted collection is represented by a Finset because the ambient lattice is finite.
+      - "The collection is homogeneous: every deleted element satisfies SupIrred, or every deleted element satisfies InfIrred."
+      - Mixed deletion of sup- and inf-irreducibles is not claimed.
+    promotion_condition: Already checked locally; preserve both direct surviving-bound constructions under CI.
+    knowledge_graph_refs:
+      - UC-CLAIM-WP05-THEOREM-1-4
+      - UC-ARTIFACT-LATTICE-DELETION-LEAN
+
+  - claim_id: UC-WP05-L009
+    short_name: meet-irreducible sets have a join-irreducible strict majority
+    claim_text: For every nonempty finite set M of inf-irreducible elements in a minimum-cardinality finite-lattice counterexample, some sup-irreducible j lies below strictly more than half of M.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeDeletion.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+    assumptions:
+      - Minimum cardinality ranges over finite-lattice counterexamples in the same Lean universe.
+      - The deleted collection is represented by a nonempty Finset whose members satisfy mathlib's InfIrred predicate.
+      - The strict-majority conclusion is stated without division as M.card < 2 * upperConeInterCard j M.
+    promotion_condition: Already checked locally; preserve the least-survivor closure, sup-irreducible origin theorem, exact upper-cone partition, and minimum-counterexample contradiction under CI.
+    knowledge_graph_refs:
+      - UC-CLAIM-WP05-THEOREM-2-9
+      - UC-ARTIFACT-LATTICE-MINIMUM-LEAN
+      - UC-ARTIFACT-LATTICE-DELETION-LEAN
+
+  - claim_id: UC-WP05-L010
+    short_name: a join-irreducible is below most meet-irreducibles
+    claim_text: In a minimum-cardinality finite-lattice counterexample, some sup-irreducible element lies below strictly more than half of all inf-irreducible elements.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+    assumptions:
+      - Minimum cardinality ranges over finite-lattice counterexamples in the same Lean universe.
+      - All inf-irreducible elements are collected in the finite set infIrredFinset.
+      - The strict-majority conclusion is stated without division.
+    promotion_condition: Already checked locally; preserve the finite all-inf-irreducible specialization of Theorem 2.9 under CI.
+    knowledge_graph_refs:
+      - UC-CLAIM-WP05-COROLLARY-2-10
+      - UC-ARTIFACT-LATTICE-MINIMUM-LEAN
+
+  - claim_id: UC-WP05-L011
+    short_name: two meet-irreducibles have a common join-irreducible lower bound
+    claim_text: Any two inf-irreducible elements in a minimum-cardinality finite-lattice counterexample have a common sup-irreducible lower bound.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+    assumptions:
+      - Minimum cardinality ranges over finite-lattice counterexamples in the same Lean universe.
+      - Meet- and join-irreducibility are represented by mathlib's InfIrred and SupIrred predicates.
+      - The two input inf-irreducibles need not be distinct.
+    promotion_condition: Already checked locally; preserve the two-element Finset specialization and strict-majority cardinality argument under CI.
+    knowledge_graph_refs:
+      - UC-CLAIM-WP05-COROLLARY-2-11
+      - UC-ARTIFACT-LATTICE-MINIMUM-LEAN
+
+  - claim_id: UC-WP05-L012
+    short_name: every meet-irreducible has an exact-cone join-irreducible below it
+    claim_text: Every inf-irreducible element in a minimum-cardinality finite-lattice counterexample lies above a sup-irreducible element whose upper-cone cardinality satisfies twice the cone size equals the lattice cardinality plus one.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeDeletion.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+    assumptions:
+      - Minimum cardinality ranges over finite-lattice counterexamples in the same Lean universe.
+      - Meet- and join-irreducibility are represented by mathlib's InfIrred and SupIrred predicates.
+      - The exact equation is stated without division as 2 * upperConeCard j = Fintype.card L + 1.
+    promotion_condition: Already checked locally; preserve singleton deletion, the sup-irreducible origin theorem, exact zero-or-one cone loss, and the smaller-counterexample contradiction under CI.
+    knowledge_graph_refs:
+      - UC-CLAIM-WP05-THEOREM-2-12
+      - UC-ARTIFACT-LATTICE-MINIMUM-LEAN
+      - UC-ARTIFACT-LATTICE-DELETION-LEAN
+
+  - claim_id: UC-WP05-L013
+    short_name: incomparables of a non-endpoint do not form a chain
+    claim_text: For every element other than bottom and top in a minimum-cardinality finite-lattice counterexample, the set of elements incomparable with it is not a chain.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeInterval.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+    assumptions:
+      - Minimum cardinality ranges over finite-lattice counterexamples in the same Lean universe.
+      - Incomparability means that neither ambient lattice inequality holds.
+      - The upper interval is represented by Set.Ici and inherits its lattice structure from mathlib.
+      - The theorem assumes the selected element is distinct from bottom and top.
+    promotion_condition: Already checked locally; preserve the closure-origin theorem, incomparable-chain cover analysis, exact cone partitions, and smaller-upper-interval contradiction under CI.
+    knowledge_graph_refs:
+      - UC-CLAIM-WP05-THEOREM-2-13
+      - UC-ARTIFACT-LATTICE-INTERVAL-LEAN
+      - UC-ARTIFACT-LATTICE-MINIMUM-LEAN
+
+  - claim_id: UC-WP05-L014
+    short_name: every non-endpoint has three incomparable elements
+    claim_text: Every element other than bottom and top in a minimum-cardinality finite-lattice counterexample is incomparable with at least three lattice elements.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeInterval.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+    assumptions:
+      - Minimum cardinality ranges over finite-lattice counterexamples in the same Lean universe.
+      - Incomparability is represented by incomparableFinset using the ambient lattice order.
+      - The lower bound is stated without existential unpacking as 3 <= (incomparableFinset x).card.
+    promotion_condition: Already checked locally; preserve Theorem 2.13, the two-element finite-cardinality split, and the uniqueness of doubly irreducible elements under CI.
+    knowledge_graph_refs:
+      - UC-CLAIM-WP05-COROLLARY-2-14
+      - UC-ARTIFACT-LATTICE-INTERVAL-LEAN
+      - UC-ARTIFACT-LATTICE-MINIMUM-LEAN
+
+  - claim_id: UC-WP05-C015
+    short_name: theorem 2.15 sublattice criteria assessment
+    claim_text: >-
+      Bouchard's Theorem 2.15 asserts that a lattice subposet of a minimum-cardinality finite-lattice counterexample satisfying either a small-cardinality condition or a dual-atom cardinality-gap condition must have a non-endpoint element that covers or is covered by an element outside the subposet. Locally the full source theorem is certified as a hybrid package result: branch (i) combines the exact finite-lattice replay UC-WP05-C016 with the Lean transfer theorem UC-WP05-L016, and branch (ii) is the Lean theorem UC-WP05-L015.
+    claim_class: PROVED_IN_PACKAGE
+    support_type: LEAN_PROOF
+    status: CERTIFIED
+    certainty: HYBRID_CERTIFIED_LEAN_PLUS_EXACT_REPLAY
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/THEOREM_2_15_ASSESSMENT.md
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeSubposet.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+      - MATHCERT/certificates/exact/finite_lattices_4_to_7.json
+      - MATHCERT/ci/replay_certificates.py
+    assumptions:
+      - The source subposet order is the induced ambient order, while its lattice operations are internal to the subposet.
+      - The small-cardinality branch depends on finite-lattice enumeration for sizes 4 through 7, independently replayed as UC-WP05-C016, plus the Lean no-boundary transfer theorem UC-WP05-L016.
+      - The dual-atom branch is formalized for embedded finite lattice subposets as UC-WP05-L015.
+      - This is not a single Lean theorem for the disjunctive source statement; it is a package-level hybrid certificate.
+    promotion_condition: Already hybrid-certified locally; relabel as a single Lean theorem only if the size 4 through 7 finite-lattice enumeration is internalized in Lean.
+
+  - claim_id: UC-WP05-C016
+    short_name: finite lattices of size 4..7 have two doubly irreducibles
+    claim_text: An independent exact replay enumerates every finite lattice with 4, 5, 6, or 7 elements, up to relabeling by canonicalization, and verifies that each has at least two elements with exactly one lower cover and exactly one upper cover.
+    claim_class: COMPUTED_EXACTLY
+    support_type: EXACT_RATIONAL_COMPUTATION
+    status: CERTIFIED
+    certainty: LEVEL_2_EXHAUSTIVE_REPLAY
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHCERT/certificates/exact/finite_lattices_4_to_7.json
+      - MATHCERT/schemas/finite_lattice_small_certificate.schema.json
+      - MATHCERT/ci/replay_certificates.py
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/THEOREM_2_15_ASSESSMENT.md
+    assumptions:
+      - The replay enumerates strict partial orders whose numeric labels are a linear extension; every finite poset has at least one such labeling.
+      - The replay checks the lattice property by unique joins and meets for every pair.
+      - Unlabeled counts are recovered by canonicalizing the reflexive order under all relabelings; the replay obtains counts 2, 5, 15, and 53 for sizes 4, 5, 6, and 7.
+      - Doubly irreducible means exactly one lower cover and exactly one upper cover, matching the source convention for non-endpoint elements.
+    promotion_condition: Already replayed locally and in CI; use this only as the finite branch (i) enumeration certificate, not as a Lean-kernel theorem.
+
+  - claim_id: UC-WP05-L016
+    short_name: theorem 2.15 small-lattice branch transfer
+    claim_text: In a minimum-cardinality finite-lattice counterexample, an embedded finite lattice subposet containing two distinct internally doubly irreducible elements must have a non-endpoint element that covers or is covered by an ambient element outside the embedded carrier.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeSubposet.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+    assumptions:
+      - "The finite subposet is represented by an order embedding e : K ->o L, with carrier Finset.univ.image e."
+      - The theorem assumes the two internal witnesses are distinct and both SupIrred and InfIrred in the internal lattice K.
+      - Under no boundary touch, internal sup- and inf-irreducibility transfer to the ambient lattice, contradicting the checked uniqueness of doubly irreducible elements in a minimum counterexample.
+      - The theorem does not enumerate lattices of size 4 through 7; that finite existence fact is supplied by UC-WP05-C016.
+    promotion_condition: Already checked locally; preserve the dual no-boundary irreducibility-transfer lemmas and the minimum-counterexample uniqueness theorem under CI.
+
+  - claim_id: UC-WP05-L015
+    short_name: theorem 2.15 dual-atom branch
+    claim_text: In a minimum-cardinality finite-lattice counterexample, any embedded finite lattice subposet K whose cardinality satisfies 2 < |K| and |K| + 2 < |L|, and whose top lies above an ambient coatom, has a non-endpoint element that covers or is covered by an ambient element outside the embedded carrier.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeSubposet.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+    assumptions:
+      - "The finite subposet is represented by an order embedding e : K ->o L, with carrier Finset.univ.image e."
+      - The cardinality hypothesis is stated in subtraction-free Lean form as Fintype.card K + 2 < Fintype.card L.
+      - The theorem certifies only branch (ii) of Bouchard's Theorem 2.15; the small-cardinality enumeration dependency is separately replay-certified as UC-WP05-C016.
+    promotion_condition: Already checked locally; preserve the embedded-subposet boundary predicate, irreducibility transfer, one- and two-point cone-loss lemmas, and minimum-counterexample contradiction under CI.
+
+  - claim_id: UC-WP05-L017
+    short_name: conditional theorem 2.7 via RivalBound
+    claim_text: If a minimum-cardinality finite-lattice counterexample L satisfies the local RivalBound predicate, then every sup-irreducible element j has upperConeCard j strictly greater than latticeLength L.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - https://www.cambridge.org/core/services/aop-cambridge-core/content/view/CA7B5CFBC33759F8F94D64B9AC7133BB/S0008439500070454a.pdf/div-class-title-lattices-with-doubly-irreducible-elements-div.pdf
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeLength.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/THEOREM_2_7_2_8_ASSESSMENT.md
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+    assumptions:
+      - RivalBound is an explicit hypothesis in this reusable wrapper; UC-WP05-L019 supplies it for minimum counterexamples.
+      - latticeLength is defined as the maximum finite chain cardinality minus one.
+      - The proof uses UC-WP05-L007 to bound the locally defined doubly irreducible finset by one element.
+      - This certifies the conditional arithmetic wrapper; the unconditional promoted theorem is UC-WP05-L017A.
+    promotion_condition: Already checked locally; preserve as the reusable conditional wrapper and preserve UC-WP05-L019/UC-WP05-L017A under CI.
+
+  - claim_id: UC-WP05-L018
+    short_name: conditional corollary 2.8 via upper-cone chains
+    claim_text: If a minimum-cardinality finite-lattice counterexample L satisfies the local RivalBound predicate, then every element x that is both sup-irreducible and inf-irreducible lies strictly below a non-top element y that is neither sup-irreducible nor inf-irreducible.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - https://www.cambridge.org/core/services/aop-cambridge-core/content/view/CA7B5CFBC33759F8F94D64B9AC7133BB/S0008439500070454a.pdf/div-class-title-lattices-with-doubly-irreducible-elements-div.pdf
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeLength.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/THEOREM_2_7_2_8_ASSESSMENT.md
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+    assumptions:
+      - RivalBound is an explicit hypothesis in this reusable wrapper; UC-WP05-L019 supplies it for minimum counterexamples.
+      - The local statement uses the non-top form of the source conclusion, avoiding the endpoint-convention trivialization that would otherwise make top a doubly reducible element in mathlib.
+      - The upper-cone infrastructure proves that if every non-top element above x is inf-irreducible, then the principal upper cone above x is a chain.
+      - The chain is extended by bottom because sup-irreducibility gives x != bottom, yielding upperConeCard x <= latticeLength L and contradicting UC-WP05-L017.
+      - This certifies the conditional wrapper; the unconditional promoted theorem is UC-WP05-L018A.
+    promotion_condition: Already checked locally; preserve as the reusable conditional wrapper and preserve UC-WP05-L019/UC-WP05-L018A under CI.
+
+  - claim_id: UC-WP05-L019
+    short_name: Rival length inequality and endpoint transfer
+    claim_text: For every finite bounded lattice, Rival's source-style endpoint-inclusive doubly irreducible finset satisfies 2 * (latticeLength L + 1) <= |L| + |Irr_source(L)|; in a minimum-cardinality finite-lattice counterexample, endpoint transfer identifies this source-style finset with the local mathlib-style doubly irreducible finset and therefore proves RivalBound L.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://www.cambridge.org/core/services/aop-cambridge-core/content/view/CA7B5CFBC33759F8F94D64B9AC7133BB/S0008439500070454a.pdf/div-class-title-lattices-with-doubly-irreducible-elements-div.pdf
+      - MATHCERT/MathCert/Domains/UnionClosed/RivalLength.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeLength.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/RIVAL_LENGTH_INEQUALITY_ASSESSMENT.md
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+    assumptions:
+      - The source-style irreducibility predicates are endpoint-inclusive, matching Rival's "not reducible" convention.
+      - The chain-counting proof uses finite join and meet decompositions into mathlib irreducibles to obtain source-style separators.
+      - Endpoint transfer to the local mathlib-style doubly irreducible finset is only claimed for minimum counterexamples, using bottom meet-reducibility and top join-reducibility.
+      - The public minimum-counterexample-facing predicate remains RivalBound from LatticeLength.lean.
+    promotion_condition: Already checked locally; preserve RivalLength.lean in the MathCert import spine and under CI.
+
+  - claim_id: UC-WP05-L017A
+    short_name: theorem 2.7 via local Rival theorem
+    claim_text: In a minimum-cardinality finite-lattice counterexample, every sup-irreducible element j has upperConeCard j strictly greater than latticeLength L, with no explicit RivalBound hypothesis.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - https://www.cambridge.org/core/services/aop-cambridge-core/content/view/CA7B5CFBC33759F8F94D64B9AC7133BB/S0008439500070454a.pdf/div-class-title-lattices-with-doubly-irreducible-elements-div.pdf
+      - MATHCERT/MathCert/Domains/UnionClosed/RivalLength.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeLength.lean
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/THEOREM_2_7_2_8_ASSESSMENT.md
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+    assumptions:
+      - This theorem is the promoted wrapper of UC-WP05-L017 after applying UC-WP05-L019.
+      - The local lattice length convention is the maximum finite chain cardinality minus one.
+      - The theorem is stated for mathlib-style SupIrred, matching the existing minimum-counterexample predicate.
+    promotion_condition: Already checked locally; preserve UC-WP05-L019 and the conditional wrapper UC-WP05-L017 under CI.
+
+  - claim_id: UC-WP05-L018A
+    short_name: corollary 2.8 via local Rival theorem
+    claim_text: In a minimum-cardinality finite-lattice counterexample, every mathlib-style doubly irreducible element x lies strictly below a non-top element y that is neither sup-irreducible nor inf-irreducible, with no explicit RivalBound hypothesis.
+    claim_class: FORMALIZED
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: CERTIFIED
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - https://www.cambridge.org/core/services/aop-cambridge-core/content/view/CA7B5CFBC33759F8F94D64B9AC7133BB/S0008439500070454a.pdf/div-class-title-lattices-with-doubly-irreducible-elements-div.pdf
+      - MATHCERT/MathCert/Domains/UnionClosed/RivalLength.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeLength.lean
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/THEOREM_2_7_2_8_ASSESSMENT.md
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+    assumptions:
+      - This theorem is the promoted wrapper of UC-WP05-L018 after applying UC-WP05-L019.
+      - The conclusion keeps the checked non-top boundary to avoid endpoint-convention trivialization.
+      - The theorem is stated for mathlib-style SupIrred and InfIrred, matching the existing minimum-counterexample predicate.
+    promotion_condition: Already checked locally; preserve UC-WP05-L019 and the conditional wrapper UC-WP05-L018 under CI.
+
+  - claim_id: UC-WP05-C017
+    short_name: Rival finite lattice length inequality
+    claim_text: >-
+      Earlier source audit of Rival's Theorem 1: any finite-length lattice L
+      satisfies |L| >= 2 * (ell(L) + 1) - |Irr(L)|, where ell(L) is one less
+      than the maximum chain size and Irr(L) is the set of source-style doubly
+      irreducible elements. Superseded by the local Lean proof UC-WP05-L019.
+    claim_class: SUPERSEDED
+    support_type: SOURCE_CITATION
+    status: SUPERSEDED
+    certainty: SUPERSEDED_BY_UC-WP05-L019
+    source_or_artifact:
+      - https://www.cambridge.org/core/services/aop-cambridge-core/content/view/CA7B5CFBC33759F8F94D64B9AC7133BB/S0008439500070454a.pdf/div-class-title-lattices-with-doubly-irreducible-elements-div.pdf
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/THEOREM_2_7_2_8_ASSESSMENT.md
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/RIVAL_LENGTH_INEQUALITY_ASSESSMENT.md
+    assumptions:
+      - Rival's irreducibility convention treats bottom as join-irreducible and top as meet-irreducible, so endpoint convention transfer must be checked before use.
+      - The theorem is now locally formalized in Lean as UC-WP05-L019.
+      - In the Bouchard minimum counterexample, the endpoint convention does not change the doubly irreducible set because bottom is meet-reducible and top is join-reducible.
+      - This audit claim is retained only for source provenance.
+    promotion_condition: Superseded by UC-WP05-L019; preserve the checked Lean theorem and source citation.
+
+  - claim_id: UC-WP05-C019
+    short_name: Rival local formalization feasibility
+    claim_text: Earlier feasibility assessment that Rival's finite lattice length inequality can be formalized locally for finite bounded lattices after introducing source-style endpoint-inclusive irreducibility and endpoint transfer. Superseded by the checked Lean proof UC-WP05-L019.
+    claim_class: SUPERSEDED
+    support_type: HEURISTIC_ARGUMENT
+    status: SUPERSEDED
+    certainty: SUPERSEDED_BY_UC-WP05-L019
+    source_or_artifact:
+      - https://www.cambridge.org/core/services/aop-cambridge-core/content/view/CA7B5CFBC33759F8F94D64B9AC7133BB/S0008439500070454a.pdf/div-class-title-lattices-with-doubly-irreducible-elements-div.pdf
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeLength.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/LatticeMinimum.lean
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/RIVAL_LENGTH_INEQUALITY_ASSESSMENT.md
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/README.md
+    assumptions:
+      - The assessment is restricted to finite bounded lattices, which is sufficient for the Bouchard minimum-counterexample branch.
+      - The current RivalBound predicate is not valid for arbitrary finite bounded lattices with mathlib-style doubly irreducible elements; the two-element chain is the basic counterexample.
+      - The recommended Lean route has been implemented as UC-WP05-L019.
+    promotion_condition: Superseded by UC-WP05-L019; preserve the assessment as historical rationale.
+
+  - claim_id: UC-WP05-C018
+    short_name: theorem 2.7 and corollary 2.8 dependency assessment
+    claim_text: Earlier dependency assessment for Bouchard's Theorem 2.7 and Corollary 2.8. The conditional wrappers UC-WP05-L017 and UC-WP05-L018 have now been promoted via UC-WP05-L019 to the unconditional checked wrappers UC-WP05-L017A and UC-WP05-L018A.
+    claim_class: SUPERSEDED
+    support_type: SOURCE_CITATION
+    status: SUPERSEDED
+    certainty: SUPERSEDED_BY_UC-WP05-L017A_UC-WP05-L018A
+    source_or_artifact:
+      - https://arxiv.org/abs/2503.00277
+      - https://www.cambridge.org/core/services/aop-cambridge-core/content/view/CA7B5CFBC33759F8F94D64B9AC7133BB/S0008439500070454a.pdf/div-class-title-lattices-with-doubly-irreducible-elements-div.pdf
+      - MATHSOLVE/domains/union_closed/WP05_lattice_minimal_counterexample/THEOREM_2_7_2_8_ASSESSMENT.md
+    assumptions:
+      - The local finite lattice length API and conditional RivalBound wrapper are checked as UC-WP05-L017.
+      - UC-WP05-L019 now supplies RivalBound for minimum counterexamples.
+      - The non-top Corollary 2.8 wrapper and its upper-cone chain infrastructure are checked as UC-WP05-L018.
+      - The unconditional promoted wrappers are UC-WP05-L017A and UC-WP05-L018A.
+    promotion_condition: Superseded by UC-WP05-L017A and UC-WP05-L018A; preserve the source audit trail.
