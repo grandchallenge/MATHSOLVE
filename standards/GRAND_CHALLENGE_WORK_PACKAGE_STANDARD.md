@@ -31,6 +31,10 @@ This section gives definitions, notation, hypotheses, and the exact target state
 
 This section records known results, special cases, partial bounds, solved variants, false-proof risk, and the present status of the problem. Each literature-derived claim must have a source.
 
+The Work Package metadata must also record its stable knowledge graph references
+and versioned classification mapping references. Discovery-provider output is
+evidence, not a programme assertion, until reviewed.
+
 ### 4. Claim ledger
 
 Every nontrivial claim in the package must be recorded in a ledger. The ledger must classify each claim as one of:

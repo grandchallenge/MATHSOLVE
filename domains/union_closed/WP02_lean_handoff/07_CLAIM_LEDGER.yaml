@@ -10,6 +10,8 @@ claims:
       - MATHCERT/MathCert/Domains/UnionClosed/Frequency.lean
     assumptions: []
     promotion_condition: Already checked locally; preserve under CI.
+    knowledge_graph_refs:
+      - UC-WP02
 
   - claim_id: UC-WP02-L002
     short_name: singleton case
@@ -22,6 +24,8 @@ claims:
       - MATHCERT/MathCert/Domains/UnionClosed/SingletonCase.lean
     assumptions: []
     promotion_condition: Already checked locally; preserve under CI.
+    knowledge_graph_refs:
+      - UC-WP02
 
   - claim_id: UC-WP02-L003
     short_name: top union membership
@@ -34,6 +38,8 @@ claims:
       - MATHCERT/MathCert/Domains/UnionClosed/Frequency.lean
     assumptions: []
     promotion_condition: Already checked locally; preserve under CI.
+    knowledge_graph_refs:
+      - UC-WP02
 
   - claim_id: UC-WP02-L004
     short_name: powerset sharpness
@@ -46,6 +52,8 @@ claims:
       - MATHCERT/MathCert/Domains/UnionClosed/Frequency.lean
     assumptions: []
     promotion_condition: Already checked locally; preserve under CI.
+    knowledge_graph_refs:
+      - UC-WP02
 
   - claim_id: UC-WP02-L005
     short_name: nontriviality witness equivalence
@@ -58,6 +66,8 @@ claims:
       - MATHCERT/MathCert/Domains/UnionClosed/Frequency.lean
     assumptions: []
     promotion_condition: Already checked locally; preserve under CI.
+    knowledge_graph_refs:
+      - UC-WP02
 
   - claim_id: UC-WP02-L006
     short_name: singleton abundance
@@ -70,3 +80,5 @@ claims:
       - MATHCERT/MathCert/Domains/UnionClosed/SingletonCase.lean
     assumptions: []
     promotion_condition: Already checked locally; preserve under CI.
+    knowledge_graph_refs:
+      - UC-WP02

@@ -24,11 +24,11 @@ claims:
     source_or_artifact:
       - https://arxiv.org/abs/2212.00658
   - claim_id: UC-WP03-C004
-    claim_text: Liu's conditionally IID coupling gives an approximate 0.38271 improvement under numerically verified hypotheses.
+    claim_text: Liu proved an analytic strict improvement over the preceding constant using conditionally IID coupling; the approximate 0.382709 value additionally depends on numerically tested structural hypotheses.
     claim_class: LITERATURE_DERIVED
     support_type: SOURCE_CITATION
     status: AUDITED
-    promotion_condition: Preserve the numerical hypotheses unless replaced by certified analysis.
+    promotion_condition: Reprove the analytic theorem locally and certify the nine-dimensional optimization before promoting either component beyond its source boundary.
     source_or_artifact:
       - https://arxiv.org/abs/2306.08824
   - claim_id: UC-WP03-C005
@@ -56,3 +56,12 @@ claims:
     promotion_condition: Audit the external Lean artifact before selecting this extension corridor.
     source_or_artifact:
       - https://arxiv.org/abs/2511.19833
+  - claim_id: UC-WP03-C008
+    claim_text: Ho proved and reports a Lean 4 formalization of a generalized Boppana entropy inequality for real k greater than 1, yielding an analogue for approximate k-union-closed systems.
+    claim_class: LITERATURE_DERIVED
+    support_type: SOURCE_CITATION
+    status: AUDITED
+    promotion_condition: Replay the external Lean artifact before treating the formalization as locally certified; do not present the result as an improvement for ordinary Frankl families.
+    source_or_artifact:
+      - https://arxiv.org/abs/2601.19327
+      - https://github.com/boonsuan/entropy-inequality

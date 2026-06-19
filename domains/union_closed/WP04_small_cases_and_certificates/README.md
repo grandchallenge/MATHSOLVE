@@ -25,5 +25,6 @@ the full conjecture.
 
 ## 4. Next analytic target
 
-Audit the 2025 Lean-verified ideal-family work and choose the first original
-restricted corridor only after that reuse assessment.
+Completed in WP03/WP05: the external ideal-family Lean work is a reuse branch,
+and `UC-WP05-L001`, the at-least-two-atoms condition for a minimum-size lattice
+counterexample, is now Lean-checked with its deletion infrastructure.

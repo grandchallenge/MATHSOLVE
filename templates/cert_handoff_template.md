@@ -6,6 +6,12 @@
 
 ## Source Work Package
 
+## Knowledge Graph References
+
+## Classification Mapping References
+
+## Discovery Record References
+
 ## Formal Statement Or Certificate
 
 ## Assumptions And Dependencies
