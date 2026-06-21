@@ -2,8 +2,12 @@
 
 ## Immediate Next Step
 
-Select the next source-roadmap target that can consume the checked WP06 bridge
-without weakening its hypotheses.
+Selected: assess the restricted class of union-closed families that are
+explicitly represented as complements of local ideal families.
+
+Assessment:
+
+- `COMPLEMENT_CLASS_NEXT_TARGET_ASSESSMENT.md`
 
 ## Input
 
@@ -26,6 +30,10 @@ A short assessment file naming one of:
 3. a negative assessment explaining why WP06 should remain a standalone
    restricted theorem for now.
 
+The selected output is type **(2)**. The functional-preorder branch remains
+deferred because preorder order ideals are not automatically subset-downward
+closed in the sense required by `IsIdealFamilyOn`.
+
 ## Completion Test
 
 The next target is ready only when its assessment includes:
@@ -35,6 +43,19 @@ The next target is ready only when its assessment includes:
 - claim boundary;
 - Lean or exact-certificate route;
 - first formal lemma.
+
+The assessment satisfies this test by naming:
+
+- exact theorem statement:
+  `complementOfLocalIdealFamily_frankl`;
+- dependency on `UC-WP06-L008`:
+  direct wrapper around `localIdealFamily_complement_frankl`;
+- claim boundary:
+  restricted complement class only;
+- Lean route:
+  one-step wrapper in MATHCERT;
+- first formal lemma:
+  unpack an existential complement representation and rewrite by equality.
 
 ## Do Not Do Next
 
