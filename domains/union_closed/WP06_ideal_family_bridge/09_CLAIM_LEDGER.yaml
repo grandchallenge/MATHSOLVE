@@ -166,3 +166,35 @@ claims:
     knowledge_graph_refs:
       - UC-WP05
       - UC-METHOD-AVERAGING
+
+  - claim_id: UC-WP06-P009
+    short_name: complement-class next target assessment
+    claim_text: >-
+      MATHSOLVE selects the next safe WP06 consumer as the restricted class of
+      families explicitly represented as complements of local ideal families.
+      The next formal target is the wrapper
+      complementOfLocalIdealFamily_frankl, a direct unpacking of canonical
+      MATHCERT claim UC-WP06-L008. The functional-preorder branch remains
+      deferred because preorder order ideals are not automatically
+      subset-downward closed in the sense required by IsIdealFamilyOn.
+    claim_class: PROVED_IN_PACKAGE
+    support_type: HUMAN_PROOF
+    status: AUDITED
+    certainty: PRESENTATION_ASSESSMENT
+    source_or_artifact:
+      - MATHSOLVE/domains/union_closed/WP06_ideal_family_bridge/COMPLEMENT_CLASS_NEXT_TARGET_ASSESSMENT.md
+      - MATHSOLVE/domains/union_closed/WP06_ideal_family_bridge/12_NEXT_EXECUTABLE_STEP.md
+      - MATHSOLVE/domains/union_closed/WP03_known_bounds_synthesis/README.md
+      - MATHSOLVE/domains/union_closed/WP03_known_bounds_synthesis/claim_ledger_wp03.yaml
+      - MATHCERT/MathCert/Domains/UnionClosed/IdealFamilyDuality.lean
+      - MATHCERT/claim_ledger_ideal_family_bridge.yaml
+      - https://arxiv.org/abs/2504.13454
+      - https://arxiv.org/abs/2511.19833
+    assumptions:
+      - This is a MATHSOLVE assessment and wrapper target, not a new canonical MATHCERT theorem.
+      - The canonical checked dependency remains UC-WP06-L008.
+      - The functional-preorder branch needs a separate semantic bridge or a separate local theorem before activation.
+    promotion_condition: Formalize the wrapper theorem in MATHCERT as a direct application of localIdealFamily_complement_frankl, while preserving UC-WP06-L008 as the canonical certified theorem.
+    knowledge_graph_refs:
+      - UC-WP05
+      - UC-METHOD-AVERAGING
