@@ -9,3 +9,5 @@ Initial sequence:
 - WP03: refreshed primary-source audit and known-bounds synthesis.
 - WP04: exact finite replay and checked singleton/two-element special cases.
 - WP05: lattice-minimal-counterexample theorem spine and exact restricted target.
+- WP06: ideal-family bridge, local NDS proof, complement duality, and
+  Chaidez-style pedagogical presentation artifacts.
