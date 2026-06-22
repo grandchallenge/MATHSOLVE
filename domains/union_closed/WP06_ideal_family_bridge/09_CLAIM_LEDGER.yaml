@@ -1,3 +1,48 @@
+foundation_doctrine_version: 1
+foundational_profile:
+  carrier_type: finite
+  carrier_description: Finite local ideal families over a fixed finite ground set, together with their complement finite union-closed families.
+  ambient_structure:
+    - order_structure
+    - algebraic_structure
+    - computable_presentation
+  admissible_operations:
+    - equality_test
+    - membership_test
+    - order_comparison
+    - finite_search
+  regularity:
+    - finite
+    - decidable
+    - computable
+  axiom_profile:
+    base: finite
+    choice_usage: finite_choice
+    excluded_middle: used
+  witness_policy:
+    existence_claim: extractable
+    expected_artifact: proof_term
+  pathology_risk:
+    level: low
+    triggers: []
+    notes: The WP06 bridge is confined to finite set families and Lean-checked finite combinatorics; no analytic or foundations-sensitive regularity is used.
+foundation_routing:
+  selected_route: R0
+  route_reason: The active WP06 target is finite, decidable, and represented by Lean finite set-family predicates with a MATHCERT proof-term boundary.
+  foundational_profile_used: true
+  regularization_attempted: false
+  choice_audit:
+    status: weak_choice
+    notes: Finite choice/classical finite reasoning is allowed; no full-choice or maximality principle is promoted.
+  constructive_content:
+    status: extractable
+    notes: The trusted artifact is a Lean proof term for a finite restricted class, not a standalone witness extractor.
+  certificate_boundary:
+    target: Lean
+    checker_inputs:
+      - MATHCERT/MathCert/Domains/UnionClosed/IdealFamilyDuality.lean
+      - MATHCERT/MathCert/Domains/UnionClosed/IdealFamilyNDSEndgame.lean
+      - MATHCERT/claim_ledger_ideal_family_bridge.yaml
 claims:
   - claim_id: UC-WP06-P001
     short_name: ideal-family conditional average bridge

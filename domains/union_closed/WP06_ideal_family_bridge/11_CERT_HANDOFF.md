@@ -22,6 +22,13 @@ Primary ledger:
 
 - `MATHCERT/claim_ledger_ideal_family_bridge.yaml`
 
+## Foundation Metadata
+
+The active route is finite-computable (`R0`). The MATHSOLVE profile and route
+boundary are recorded in `09_CLAIM_LEDGER.yaml`; the MATHCERT
+`foundation_certificate` records for the checked WP06 claims are recorded in
+`MATHCERT/claim_ledger_ideal_family_bridge.yaml`.
+
 Primary closeout docs:
 
 - `MATHCERT/docs/ideal_family_bridge_phase_closeout.md`

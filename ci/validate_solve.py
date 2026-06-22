@@ -59,6 +59,62 @@ def validate_ledger(
         for graph_ref in claim.get("knowledge_graph_refs", []):
             if graph_ref not in allowed_graph_refs:
                 errors.append(f"{path}: {claim_id}: unresolved knowledge_graph_ref {graph_ref}")
+    errors.extend(validate_foundation_doctrine(data, path))
+    return errors
+
+
+def validate_foundation_doctrine(data: Any, path: Path) -> list[str]:
+    if not isinstance(data, dict) or "foundation_doctrine_version" not in data:
+        return []
+
+    errors: list[str] = []
+    if data.get("foundation_doctrine_version") != 1:
+        errors.append(f"{path}: foundation_doctrine_version must be 1")
+
+    profile = data.get("foundational_profile")
+    if not isinstance(profile, dict):
+        errors.append(f"{path}: foundational_profile must be present for foundation-aware ledgers")
+    else:
+        for field in (
+            "carrier_type",
+            "carrier_description",
+            "ambient_structure",
+            "admissible_operations",
+            "regularity",
+            "axiom_profile",
+            "witness_policy",
+            "pathology_risk",
+        ):
+            if field not in profile:
+                errors.append(f"{path}: foundational_profile missing {field}")
+        axiom_profile = profile.get("axiom_profile")
+        if isinstance(axiom_profile, dict) and axiom_profile.get("choice_usage") == "unknown":
+            errors.append(f"{path}: foundational_profile.axiom_profile.choice_usage must not be unknown")
+        pathology_risk = profile.get("pathology_risk")
+        if isinstance(pathology_risk, dict) and pathology_risk.get("level") == "unknown":
+            errors.append(f"{path}: foundational_profile.pathology_risk.level must not be unknown")
+
+    routing = data.get("foundation_routing")
+    if not isinstance(routing, dict):
+        errors.append(f"{path}: foundation_routing must be present for foundation-aware ledgers")
+        return errors
+
+    if routing.get("selected_route") not in {"R0", "R1", "R2", "R3", "R4", "R5"}:
+        errors.append(f"{path}: foundation_routing.selected_route is invalid")
+    if routing.get("foundational_profile_used") is not True:
+        errors.append(f"{path}: foundation_routing.foundational_profile_used must be true")
+    if not str(routing.get("route_reason", "")).strip():
+        errors.append(f"{path}: foundation_routing.route_reason must not be empty")
+
+    boundary = routing.get("certificate_boundary")
+    if not isinstance(boundary, dict):
+        errors.append(f"{path}: foundation_routing.certificate_boundary must be present")
+    else:
+        if boundary.get("target") not in {"Lean", "Coq", "SAT", "SMT", "PB", "CAS", "interval", "human_audit", "none", "unknown"}:
+            errors.append(f"{path}: foundation_routing.certificate_boundary.target is invalid")
+        checker_inputs = boundary.get("checker_inputs")
+        if not isinstance(checker_inputs, list) or not checker_inputs:
+            errors.append(f"{path}: foundation_routing.certificate_boundary.checker_inputs must be a nonempty list")
     return errors
 
 
