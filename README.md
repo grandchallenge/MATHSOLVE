@@ -35,3 +35,17 @@ MATHCERT   -> check, certify, and preserve the proof boundary
 MATHSOLVE may choose a Gröbner-style tactic when a local proof obligation can be phrased as polynomial identity checking, normal-form computation, ideal membership, ideal equality, elimination, radical membership, or finite-truncation algebra.
 
 See `docs/grobner_tactic_orchestration.md`.
+
+## TROPIC-GROEBNER orchestration
+
+MATHSOLVE also includes a TROPIC-GROEBNER route for sparse, valuation-aware, or toric polynomial obligations where the weight choice should be treated as a tactical decision before exact certification.
+
+```text
+support / valuation audit
+  -> candidate weights
+  -> weighted initial ideals
+  -> retained or rejected route records
+  -> MATHCERT tropical-initial-ideal certificate
+```
+
+See `docs/tropic_groebner_orchestration.md` and `work_packages/TROPIC_GROEBNER_001.md`.
