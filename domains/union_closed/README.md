@@ -11,3 +11,4 @@ Initial sequence:
 - WP05: lattice-minimal-counterexample theorem spine and exact restricted target.
 - WP06: ideal-family bridge, local NDS proof, complement duality, and
   Chaidez-style pedagogical presentation artifacts.
+- WP07: functional-preorder bridge assessment and semantic-boundary audit.
