@@ -1,0 +1,118 @@
+foundation_doctrine_version: 1
+foundational_profile:
+  carrier_type: finite
+  carrier_description: Finite functional-preorder order-ideal families over a fixed finite ground set, assessed as a possible later bridge to local MATHCERT family predicates.
+  ambient_structure:
+    - order_structure
+    - computable_presentation
+    - finite_set_family
+  admissible_operations:
+    - equality_test
+    - membership_test
+    - order_comparison
+    - finite_search
+  regularity:
+    - finite
+    - decidable
+    - computable
+  axiom_profile:
+    base: finite
+    choice_usage: finite_choice
+    excluded_middle: used
+  witness_policy:
+    existence_claim: extractable
+    expected_artifact: source_audit_or_proof_term
+  pathology_risk:
+    level: low
+    triggers: []
+    notes: WP07 is confined to finite preorders and finite set families; the active deliverable is source/semantic assessment, not an analytic or foundations-sensitive theorem.
+foundation_routing:
+  selected_route: R0
+  route_reason: The branch is finite, decidable, and computably presented, but currently has only a human/source assessment boundary inside MATHSOLVE.
+  foundational_profile_used: true
+  regularization_attempted: false
+  choice_audit:
+    status: weak_choice
+    notes: Finite choice/classical finite reasoning is acceptable for later Lean work; no maximality or full-choice principle is promoted here.
+  constructive_content:
+    status: pending
+    notes: The selected next target is expected to be a finite checked example or local predicate, but no local proof term is included in this assessment package.
+  certificate_boundary:
+    target: human_audit
+    checker_inputs:
+      - MATHSOLVE/domains/union_closed/WP07_functional_preorder_bridge/02_FUNCTIONAL_PREORDER_BRIDGE_ASSESSMENT.md
+      - MATHSOLVE/domains/union_closed/WP07_functional_preorder_bridge/03_PROOF_DEBT_REGISTER.md
+      - MATHSOLVE/domains/union_closed/WP03_known_bounds_synthesis/claim_ledger_wp03.yaml
+claims:
+  - claim_id: UC-WP07-P001
+    short_name: functional-preorder source branch assessed
+    claim_text: >-
+      MATHSOLVE identifies the functional-preorder order-ideal theorem reported
+      in arXiv:2511.19833 as a plausible later extension branch and records the
+      observed public Lean repository kashiwabarakenji/avg-rare as provenance
+      input, not as a trusted dependency.
+    claim_class: LITERATURE_DERIVED
+    support_type: SOURCE_CITATION
+    status: AUDITED
+    certainty: SOURCE_MAPPED
+    source_or_artifact:
+      - MATHSOLVE/domains/union_closed/WP07_functional_preorder_bridge/01_RESULT_STATUS.md
+      - MATHSOLVE/domains/union_closed/WP07_functional_preorder_bridge/02_FUNCTIONAL_PREORDER_BRIDGE_ASSESSMENT.md
+      - MATHSOLVE/domains/union_closed/WP03_known_bounds_synthesis/claim_ledger_wp03.yaml
+      - https://arxiv.org/abs/2511.19833
+      - https://github.com/kashiwabarakenji/avg-rare
+    assumptions:
+      - The external repository has not yet been independently built or ported in WP07.
+      - The observed repository commit is a source snapshot, not a certification boundary.
+    promotion_condition: Complete an external build audit at a pinned commit, record exact theorem names and toolchain metadata, and keep the result as provenance unless a local proof or port is checked.
+    knowledge_graph_refs:
+      - UC-WP05
+      - UC-METHOD-AVERAGING
+
+  - claim_id: UC-WP07-P002
+    short_name: functional-preorder not direct WP06 consumer
+    claim_text: >-
+      Functional-preorder order ideals are not generally subset-downward closed
+      below every proper member, so they do not automatically satisfy
+      IsIdealFamilyOn and cannot be presented as a direct application of the
+      checked WP06 ideal-family complement theorem.
+    claim_class: PROVED_IN_PACKAGE
+    support_type: HUMAN_PROOF
+    status: AUDITED
+    certainty: SEMANTIC_BOUNDARY
+    source_or_artifact:
+      - MATHSOLVE/domains/union_closed/WP07_functional_preorder_bridge/02_FUNCTIONAL_PREORDER_BRIDGE_ASSESSMENT.md
+      - MATHSOLVE/domains/union_closed/WP06_ideal_family_bridge/COMPLEMENT_CLASS_NEXT_TARGET_ASSESSMENT.md
+      - MATHCERT/MathCert/Domains/UnionClosed/IdealFamilyDuality.lean
+      - MATHCERT/claim_ledger_ideal_family_bridge.yaml
+    assumptions:
+      - The obstruction is semantic and does not dispute the external functional-preorder theorem.
+      - Some special functional-preorder families may satisfy IsIdealFamilyOn; the claim is only that this is not automatic in general.
+    promotion_condition: Formalize the finite-chain obstruction or a precise semantic bridge before using UC-WP06-L008 as a consumer for any functional-preorder subclass.
+    knowledge_graph_refs:
+      - UC-WP05
+      - UC-METHOD-AVERAGING
+
+  - claim_id: UC-WP07-P003
+    short_name: WP07 next bridge obligation selected
+    claim_text: >-
+      The next WP07 executable target is to audit the external avg-rare proof
+      surface and then formalize either the finite-chain obstruction or a local
+      functional-preorder order-ideal predicate with explicit bridge
+      obligations.
+    claim_class: NEEDS_AUDIT
+    support_type: HUMAN_PROOF
+    status: UNDER_REVIEW
+    certainty: NEXT_TARGET_SELECTED
+    source_or_artifact:
+      - MATHSOLVE/domains/union_closed/WP07_functional_preorder_bridge/03_PROOF_DEBT_REGISTER.md
+      - MATHSOLVE/domains/union_closed/WP07_functional_preorder_bridge/05_NEXT_EXECUTABLE_STEP.md
+      - https://github.com/kashiwabarakenji/avg-rare
+    assumptions:
+      - WP07 remains assessment-only until a checked local theorem or audited port exists.
+      - No MATHCERT public representation change is planned for this step.
+    promotion_condition: Promote only after the external audit is recorded and the selected first local theorem compiles under MATHCERT gates.
+    knowledge_graph_refs:
+      - UC-WP05
+      - UC-METHOD-AVERAGING
+

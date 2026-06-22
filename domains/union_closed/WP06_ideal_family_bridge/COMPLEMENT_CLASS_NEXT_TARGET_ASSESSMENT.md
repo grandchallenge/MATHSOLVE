@@ -82,13 +82,14 @@ WP03 records `UC-WP03-C007`, the Hachimori-Kashiwabara functional-preorder
 order-ideal branch, as a plausible later extension. It should not be activated
 as a direct application of WP06.
 
-The reason is semantic. `IsIdealFamilyOn F U` requires subset-downward closure:
-if `B ∈ F`, `B ≠ U`, and `A ⊆ B`, then `A ∈ F`. An order ideal of a preorder is
-downward closed in the preorder relation, not necessarily under arbitrary
-subset inclusion. For example, in a two-element chain `a ≤ b`, `{a, b}` is an
-order ideal, but the subset `{b}` is not an order ideal. Therefore the family
-of preorder order ideals does not automatically satisfy the local ideal-family
-hypotheses used by `UC-WP06-L008`.
+The reason is semantic. `IsIdealFamilyOn F U` requires subset-downward closure
+below every proper member: if `B ∈ F`, `B ≠ U`, and `A ⊆ B`, then `A ∈ F`. An
+order ideal of a preorder is downward closed in the preorder relation, not
+necessarily under arbitrary subset inclusion. For example, in the three-element
+functional chain `a <= b <= c`, `{a, b}` is a proper order ideal, but the subset
+`{b}` is not an order ideal. Therefore the family of preorder order ideals does
+not automatically satisfy the local ideal-family hypotheses used by
+`UC-WP06-L008`.
 
 Functional preorders remain a later branch only after one of these is supplied:
 
