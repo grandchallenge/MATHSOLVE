@@ -22,9 +22,9 @@ MATH-PROGRAMME is the front door and policy source for this pillar.
 - [Claim-boundary doctrine](https://grandchallenge.github.io/MATH-PROGRAMME/CLAIM_BOUNDARY_DOCTRINE/)
 - [Resource Budget Policy](https://grandchallenge.github.io/MATH-PROGRAMME/RESOURCE_BUDGET_POLICY/)
 
-## Gröbner tactic orchestration
+## Groebner tactic orchestration
 
-MATHSOLVE now includes a Gröbner tactic orchestration doctrine for polynomial subproblems. The lane connects MATHFORGE discovery artifacts to MATHCERT certification artifacts:
+MATHSOLVE now includes a Groebner tactic orchestration doctrine for polynomial subproblems. The lane connects MATHFORGE discovery artifacts to MATHCERT certification artifacts:
 
 ```text
 MATHFORGE  -> generate candidate algebraic witnesses
@@ -32,7 +32,7 @@ MATHSOLVE  -> decide when to invoke them tactically
 MATHCERT   -> check, certify, and preserve the proof boundary
 ```
 
-MATHSOLVE may choose a Gröbner-style tactic when a local proof obligation can be phrased as polynomial identity checking, normal-form computation, ideal membership, ideal equality, elimination, radical membership, or finite-truncation algebra.
+MATHSOLVE may choose a Groebner-style tactic when a local proof obligation can be phrased as polynomial identity checking, normal-form computation, ideal membership, ideal equality, elimination, radical membership, or finite-truncation algebra.
 
 See `docs/grobner_tactic_orchestration.md`.
 

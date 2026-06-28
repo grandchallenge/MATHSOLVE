@@ -1,4 +1,4 @@
-# Gröbner Tactic Orchestration
+# Groebner Tactic Orchestration
 
 ## Purpose
 
@@ -23,7 +23,7 @@ Read this tactic lane through the programme front door and the shared doctrine p
 
 ## When to invoke the lane
 
-A proof step is a candidate for the Gröbner orchestration lane when it can be rewritten as one of the following tasks:
+A proof step is a candidate for the Groebner orchestration lane when it can be rewritten as one of the following tasks:
 
 - polynomial identity checking;
 - normal-form or remainder verification;
