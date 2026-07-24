@@ -160,7 +160,7 @@ entries:
       - explicit approximation route in a fully source-matched proof
 
   - theorem_id: CR-006
-    title: Weak-strong difference inequality
+    title: Weak-strong integrated difference inequality
     role: derived_lemma
     source_ids:
       - NS-CI-SRC-OZANSKI-POOLEY
@@ -170,11 +170,20 @@ entries:
     hypotheses:
       - u belongs to L4_t L6_x
       - w = v - u
+      - weak energy inequality for v
+      - strong energy equality for u
+      - admissible time regularization and cross testing
     conclusion: >-
+      The rigorous weak-strong argument gives the integrated inequality
+      (1/2) norm_L2(w(t))^2 + nu integral_0^t norm_L2(gradient w)^2
+      <= integral_0^t |integral (w dot gradient) w dot u|. Holder,
+      Gagliardo-Nirenberg, Young, and Gronwall imply w=0 for equal initial data.
+    differential_form: >-
+      In distributional or justified strong form,
       d/dt norm_L2(w)^2 + nu norm_L2(gradient w)^2 is at most
-      C nu^(-3) norm_L6(u)^4 norm_L2(w)^2; hence w is zero for equal initial data.
+      C nu^(-3) norm_L6(u)^4 norm_L2(w)^2.
     proof_route:
-      - difference equation
+      - combine weak energy inequality, strong energy equality, and cross-tested formulations
       - incompressible integration by parts
       - Holder norm_L6(u) norm_L3(w) norm_L2(gradient w)
       - Gagliardo-Nirenberg
@@ -184,6 +193,7 @@ entries:
       - CR-008
       - CR-009
     prohibited_overstatement:
+      - Do not present the formal smooth-pair equality as an unconditional weak-solution identity.
       - Requires a matched strong solution and integrable Gronwall coefficient.
     unresolved_debt: []
 
@@ -245,14 +255,14 @@ entries:
       - CR-001
       - CR-007
       - CR-008
-      - standard parabolic bootstrap in the audited strong class
+      - classical parabolic bootstrap and pressure recovery in the adopted strong-solution interface
     conclusion: The whole-space positive Clay statement A follows.
     proof_route:
       - global weak existence
       - universal critical hypothesis
       - conditional strongness and uniqueness
       - exclusion of finite maximal time
-      - smooth bootstrap and energy inheritance
+      - smooth bootstrap, pressure recovery, and energy inheritance
     status: CHECKED_ONE_WAY_BRIDGE
     downstream:
       - Fefferman_statement_A
@@ -261,6 +271,7 @@ entries:
       - Do not replace full data by compact support.
     unresolved_debt:
       - CR-010 reverse correspondence
+      - exact source location for final smooth-bootstrap and pressure-recovery interface
 
   - theorem_id: CR-010
     title: Reverse correspondence from Fefferman statement A
