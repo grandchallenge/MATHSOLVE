@@ -266,7 +266,9 @@ If `I_t(u)<\infty`, then
 
 ## CR-006 — Weak–strong difference inequality
 
-Let `u` be a strong solution and `v` a Leray–Hopf solution with the same initial datum. Set `w=v-u`. Formally, then rigorously by the standard weak–strong argument,
+Let `u` be a strong solution and `v` a Leray–Hopf solution with the same initial datum. Set `w=v-u`.
+
+For two smooth solutions one formally obtains
 
 ```math
 \frac12\frac d{dt}\|w\|_2^2
@@ -274,7 +276,16 @@ Let `u` be a strong solution and `v` a Leray–Hopf solution with the same initi
 =-\int (w\cdot\nabla)u\cdot w\,dx.
 ```
 
-Using incompressibility,
+For a Leray–Hopf `v`, this pointwise equality is not the rigorous starting point. The weak–strong proof combines the weak energy inequality for `v`, the strong energy equality for `u`, admissible time regularization, and cross-testing to obtain
+
+```math
+\frac12\|w(t)\|_2^2
++\nu\int_0^t\|\nabla w(s)\|_2^2ds
+\le
+\int_0^t\left|\int (w\cdot\nabla)w\cdot u\,dx\right|ds.
+```
+
+Using incompressibility at the justified level,
 
 ```math
 \int (w\cdot\nabla)u\cdot w
@@ -295,7 +306,7 @@ Gagliardo–Nirenberg gives
 \le C\|w\|_2^{1/2}\|\nabla w\|_2^{1/2},
 ```
 
-so Young yields
+so Young yields, in integrated or distributional form,
 
 ```math
 \frac d{dt}\|w\|_2^2
@@ -313,6 +324,10 @@ If `u\in L_t^4L_x^6` and `w(0)=0`, Grönwall gives `w=0`.
 
 This is the bridge from one strong solution to every Leray–Hopf solution with the same datum on the interval.
 
+### Prohibited overstatement
+
+The formal smooth-pair equality is not an unconditional differential identity for a Leray–Hopf solution.
+
 ---
 
 ## CR-007 — Maximal-time continuation criterion
@@ -323,7 +338,7 @@ Let `u` be the maximal `H^1` strong solution on `[0,T_*)` supplied by the local 
 \int_0^{T_*}\|u(t)\|_6^4dt<\infty.
 ```
 
-Then `CR-005` gives a uniform `H^1` bound on `[0,T_*)`. Choose times `t_n\uparrow T_*`. The local existence theorem, applied at `t_n`, has a lifespan bounded below in terms of the uniform `H^1` bound and `\nu`. For sufficiently large `n`, this extends the strong solution beyond `T_*`, contradicting maximality.
+Then `CR-005` gives a uniform gradient bound on `[0,T_*)`; the energy bound supplies the remaining `L^2` component of a uniform `H^1` bound. Choose times `t_n\uparrow T_*`. The local existence theorem, applied at `t_n`, has a lifespan bounded below in terms of the uniform `H^1` bound and `\nu`. For sufficiently large `n`, this extends the strong solution beyond `T_*`, contradicting maximality.
 
 Therefore
 
@@ -382,7 +397,7 @@ for every finite `T`.
 2. The universal assumption gives that solution `L_t^4L_x^6` control on every finite interval.
 3. `CR-008` upgrades it to the strong class and gives weak–strong uniqueness.
 4. `CR-007` excludes finite maximal strong-solution time.
-5. Standard parabolic bootstrapping from smooth rapidly decreasing data yields the smooth velocity and pressure class required by the official positive branch, with the energy bound inherited from `CR-001`.
+5. Classical parabolic bootstrapping and pressure recovery within the adopted strong-solution interface, applied to smooth rapidly decreasing data, yield the smooth velocity and pressure class required by the official positive branch; the energy bound is inherited from `CR-001`.
 
 ### Promoted conclusion
 
@@ -395,6 +410,10 @@ Universal full-data critical integrability is **sufficient for** Fefferman's who
 ### Prohibited wording
 
 Do not call this bidirectional equivalence until `CR-010` is discharged.
+
+### Nonblocking provenance debt
+
+Record an exact source location for the final smooth-bootstrap and pressure-recovery interface.
 
 ---
 
@@ -469,6 +488,8 @@ NS-CI-R-COMPACT ─> data-class extension [missing]
 | Serrin original theorem-body extraction | pending | no | no |
 | Ladyzhenskaya mathematical translation | pending | no | no |
 | Modern operational LPS theorem | audited | no | no |
+| Exact local-lifespan theorem number | pending provenance detail | no | no |
+| Smooth-bootstrap and pressure-recovery source location | pending provenance detail | no | no |
 | Reverse Clay correspondence | pending | no | no |
 | Universal critical estimate | open | not a WP02 deliverable | yes |
 | Compact-support extension | absent | no | blocks full-data promotion of restricted result |
@@ -476,12 +497,15 @@ NS-CI-R-COMPACT ─> data-class extension [missing]
 
 ## Acceptance record
 
-WP02 is internally complete when:
+WP02 is internally complete because:
 
 - every theorem entry is mirrored in the machine-readable ledger;
-- the `H^1` and difference estimates are independently checked;
+- the `H^1` and weak–strong estimates have been independently checked;
+- the formal smooth-pair identity is separated from the rigorous integrated weak–strong inequality;
 - source IDs resolve to the MATHFORGE source ledger;
 - no historical source is represented as more fully audited than it is;
 - `CR-009` remains one-way;
 - `CR-010` and the compact-support extension remain explicit debt;
 - no statement implies that the universal estimate has been proved.
+
+The independent review record is `NS_CI_WP02_ADVERSARIAL_SEMANTIC_REVIEW.md`.
