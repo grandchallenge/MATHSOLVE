@@ -1,0 +1,313 @@
+schema_version: 1.0.0
+campaign_id: NS-CI-001
+work_package_id: NS-CI-WP02
+claim_boundary: >-
+  This ledger source-normalizes classical conditional regularity. It does not
+  prove universal critical integrability, global regularity, or novelty.
+
+sources:
+  ledger_ref: grandchallenge/MATHFORGE:reports/discovery/ns_ci_001/source_ledger.yaml
+  required_source_ids:
+    - NS-CI-SRC-CLAY-FEFFERMAN
+    - NS-CI-SRC-LERAY-1934
+    - NS-CI-SRC-OZANSKI-POOLEY
+    - NS-CI-SRC-PRODI-1959
+    - NS-CI-SRC-SERRIN-1962
+    - NS-CI-SRC-LADYZHENSKAYA-1967
+    - NS-CI-SRC-OPERATIONAL-LPS-2024
+
+entries:
+  - theorem_id: CR-000
+    title: Domain, data, forcing, and mixed-norm convention
+    role: definition
+    source_ids:
+      - NS-CI-SRC-CLAY-FEFFERMAN
+    domain: R3
+    forcing: zero
+    initial_data: smooth divergence-free rapidly decreasing with every derivative
+    solution_class: Leray-Hopf weak and H1 strong interfaces
+    hypotheses:
+      - viscosity nu > 0
+      - time exponent q is written before space exponent p
+    conclusion: The critical pair is time exponent 4 and space exponent 6.
+    proof_route: exact arithmetic 2/4 + 3/6 = 1
+    status: CHECKED
+    downstream:
+      - CR-001
+      - CR-004
+      - CR-009
+    prohibited_overstatement:
+      - Do not reverse the pair to L6_t L4_x.
+      - Do not replace the full rapid-decay class by compact support.
+    unresolved_debt: []
+
+  - theorem_id: CR-001
+    title: Whole-space Leray-Hopf existence and energy inequality
+    role: imported_theorem
+    source_ids:
+      - NS-CI-SRC-OZANSKI-POOLEY
+      - NS-CI-SRC-LERAY-1934
+    domain: R3
+    forcing: zero
+    initial_data: divergence-free L2
+    solution_class: Leray-Hopf weak solution
+    hypotheses:
+      - viscosity nu > 0
+    conclusion: >-
+      A global weak solution exists in L-infinity_t L2_x intersect L2_t Hdot1_x
+      and satisfies the energy inequality in the operational source convention.
+    proof_route: imported operational theorem
+    status: OPERATIONAL_SOURCE_AUDITED
+    downstream:
+      - CR-003
+      - CR-009
+    prohibited_overstatement:
+      - Do not claim exact historical theorem concordance is complete.
+    unresolved_debt:
+      - Leray original theorem locations and representative conventions
+
+  - theorem_id: CR-002
+    title: Three-dimensional homogeneous Sobolev bridge
+    role: standard_lemma
+    source_ids: []
+    domain: R3
+    hypotheses:
+      - v belongs to the selected homogeneous H1 class
+    conclusion: norm_L6(v) <= C_S norm_L2(gradient v)
+    proof_route: standard continuum proof
+    status: CHECKED
+    downstream:
+      - CR-003
+    prohibited_overstatement: []
+    unresolved_debt:
+      - theorem-prover formalization
+
+  - theorem_id: CR-003
+    title: Energy consequence L2_t L6_x
+    role: derived_consequence
+    source_ids:
+      - NS-CI-SRC-OZANSKI-POOLEY
+    domain: R3
+    hypotheses:
+      - CR-001
+      - CR-002
+    conclusion: >-
+      Integral from 0 to T of norm_L6(u)^2 is bounded by
+      C_S^2 norm_L2(u0)^2 divided by 2 nu.
+    proof_route: integrate Sobolev inequality and apply energy inequality
+    status: CHECKED_CONDITIONAL_ON_IMPORTED_ENERGY_INTERFACE
+    downstream:
+      - open_target_baseline
+    prohibited_overstatement:
+      - Does not imply L4_t L6_x.
+    unresolved_debt: []
+
+  - theorem_id: CR-004
+    title: Operational Ladyzhenskaya-Prodi-Serrin theorem at time 4 space 6
+    role: imported_theorem
+    source_ids:
+      - NS-CI-SRC-PRODI-1959
+      - NS-CI-SRC-SERRIN-1962
+      - NS-CI-SRC-LADYZHENSKAYA-1967
+      - NS-CI-SRC-OPERATIONAL-LPS-2024
+    domain: R3
+    initial_data: L2 generally and H1 for strongness from time zero
+    solution_class: two Leray-Hopf weak solutions with the same datum
+    hypotheses:
+      - one solution belongs to L4(0,T;L6(R3))
+    conclusion:
+      - uniqueness on the interval
+      - strong solution on [0,T] for H1 initial data
+      - strong solution on [t_star,T] for every positive t_star for L2 initial data
+    proof_route: imported operational theorem with historical provenance ledger
+    status: OPERATIONAL_STATEMENT_AUDITED
+    downstream:
+      - CR-008
+      - CR-009
+    prohibited_overstatement:
+      - The theorem consumes the critical hypothesis; it does not prove it.
+      - Historical theorem-body extraction is not complete for Serrin or Ladyzhenskaya.
+    unresolved_debt:
+      - Serrin exact original theorem extraction
+      - Ladyzhenskaya mathematical translation
+
+  - theorem_id: CR-005
+    title: H1 differential inequality with critical Gronwall coefficient
+    role: derived_lemma
+    source_ids:
+      - NS-CI-SRC-OZANSKI-POOLEY
+    domain: R3
+    solution_class: smooth or sufficiently strong solution, or justified regularized approximation
+    hypotheses:
+      - incompressibility
+      - whole-space decay sufficient for integrations by parts
+      - admissibility of testing by minus Delta u
+    conclusion: >-
+      d/dt norm_L2(gradient u)^2 + nu norm_L2(Delta u)^2 is at most
+      C nu^(-3) norm_L6(u)^4 norm_L2(gradient u)^2.
+    proof_route:
+      - pair equation with minus Delta u
+      - Holder with exponents 6, 3, 2
+      - Gagliardo-Nirenberg norm_L3(gradient u) <= C norm_L2(gradient u)^(1/2) norm_L2(Delta u)^(1/2)
+      - Young with exponents 4/3 and 4
+    status: CHECKED_RECONSTRUCTION
+    downstream:
+      - CR-007
+      - CR-008
+    prohibited_overstatement:
+      - Not an unconditional Leray-Hopf estimate.
+    unresolved_debt:
+      - explicit approximation route in a fully source-matched proof
+
+  - theorem_id: CR-006
+    title: Weak-strong integrated difference inequality
+    role: derived_lemma
+    source_ids:
+      - NS-CI-SRC-OZANSKI-POOLEY
+      - NS-CI-SRC-OPERATIONAL-LPS-2024
+    domain: R3
+    solution_class: one strong solution u and one Leray-Hopf solution v with same datum
+    hypotheses:
+      - u belongs to L4_t L6_x
+      - w = v - u
+      - weak energy inequality for v
+      - strong energy equality for u
+      - admissible time regularization and cross testing
+    conclusion: >-
+      The rigorous weak-strong argument gives the integrated inequality
+      (1/2) norm_L2(w(t))^2 + nu integral_0^t norm_L2(gradient w)^2
+      <= integral_0^t |integral (w dot gradient) w dot u|. Holder,
+      Gagliardo-Nirenberg, Young, and Gronwall imply w=0 for equal initial data.
+    differential_form: >-
+      In distributional or justified strong form,
+      d/dt norm_L2(w)^2 + nu norm_L2(gradient w)^2 is at most
+      C nu^(-3) norm_L6(u)^4 norm_L2(w)^2.
+    proof_route:
+      - combine weak energy inequality, strong energy equality, and cross-tested formulations
+      - incompressible integration by parts
+      - Holder norm_L6(u) norm_L3(w) norm_L2(gradient w)
+      - Gagliardo-Nirenberg
+      - Young and Gronwall
+    status: CHECKED_RECONSTRUCTION
+    downstream:
+      - CR-008
+      - CR-009
+    prohibited_overstatement:
+      - Do not present the formal smooth-pair equality as an unconditional weak-solution identity.
+      - Requires a matched strong solution and integrable Gronwall coefficient.
+    unresolved_debt: []
+
+  - theorem_id: CR-007
+    title: Critical-integral maximal-time continuation criterion
+    role: bridge
+    source_ids:
+      - NS-CI-SRC-OZANSKI-POOLEY
+    domain: R3
+    solution_class: maximal H1 strong solution on [0,T_star)
+    hypotheses:
+      - CR-005
+      - local H1 existence lifespan depends only on a uniform H1 bound and viscosity
+    conclusion: >-
+      If T_star is finite, the integral from 0 to T_star of norm_L6(u)^4 diverges.
+    proof_route: uniform H1 bound plus restart at times approaching T_star
+    status: CHECKED_OPERATIONAL_BRIDGE
+    downstream:
+      - CR-009
+    prohibited_overstatement:
+      - Does not provide the critical integral bound.
+    unresolved_debt:
+      - exact theorem-number normalization for lifespan dependence
+
+  - theorem_id: CR-008
+    title: Conditional regularity and uniqueness for campaign data
+    role: consequence
+    source_ids:
+      - NS-CI-SRC-OPERATIONAL-LPS-2024
+      - NS-CI-SRC-OZANSKI-POOLEY
+    domain: R3
+    initial_data: smooth divergence-free rapidly decreasing, hence H1
+    solution_class: Leray-Hopf weak solution
+    hypotheses:
+      - u belongs to L4(0,T;L6(R3))
+      - CR-004
+      - CR-006
+    conclusion: u is strong on [0,T] and every Leray-Hopf solution with the datum agrees with it.
+    proof_route: operational LPS theorem plus weak-strong uniqueness
+    status: AUDITED_CONDITIONAL_CONSEQUENCE
+    downstream:
+      - CR-009
+    prohibited_overstatement:
+      - Conditional statement only.
+    unresolved_debt: []
+
+  - theorem_id: CR-009
+    title: Universal full-data critical integrability implies Fefferman statement A
+    role: one_way_bridge
+    source_ids:
+      - NS-CI-SRC-CLAY-FEFFERMAN
+      - NS-CI-SRC-OZANSKI-POOLEY
+      - NS-CI-SRC-OPERATIONAL-LPS-2024
+    domain: R3
+    initial_data: full Fefferman rapidly decreasing class
+    solution_class: every associated Leray-Hopf solution
+    hypotheses:
+      - universal finite L4_t L6_x integral on every finite interval
+      - CR-001
+      - CR-007
+      - CR-008
+      - classical parabolic bootstrap and pressure recovery in the adopted strong-solution interface
+    conclusion: The whole-space positive Clay statement A follows.
+    proof_route:
+      - global weak existence
+      - universal critical hypothesis
+      - conditional strongness and uniqueness
+      - exclusion of finite maximal time
+      - smooth bootstrap, pressure recovery, and energy inheritance
+    status: CHECKED_ONE_WAY_BRIDGE
+    downstream:
+      - Fefferman_statement_A
+    prohibited_overstatement:
+      - Do not call this bidirectional equivalence.
+      - Do not replace full data by compact support.
+    unresolved_debt:
+      - CR-010 reverse correspondence
+      - exact source location for final smooth-bootstrap and pressure-recovery interface
+
+  - theorem_id: CR-010
+    title: Reverse correspondence from Fefferman statement A
+    role: pending_bridge
+    source_ids:
+      - NS-CI-SRC-CLAY-FEFFERMAN
+    domain: R3
+    hypotheses:
+      - exact globally smooth solution class in statement A
+    conclusion: >-
+      Desired but unpromoted: finite L4_t L6_x norm on every finite interval and
+      identification of every Leray-Hopf solution with the smooth solution.
+    proof_route: pending source-normalized derivation
+    status: PENDING
+    downstream:
+      - bidirectional_equivalence
+    prohibited_overstatement:
+      - Equivalence is not currently promoted.
+    unresolved_debt:
+      - finite-interval whole-space mixed-norm derivation in exact official class
+      - weak-strong identification for every Leray-Hopf solution
+
+  - theorem_id: CR-011
+    title: Compact-support restricted lane
+    role: restricted_definition
+    source_ids:
+      - NS-CI-SRC-CLAY-FEFFERMAN
+    domain: R3
+    initial_data: C_c_infinity divergence-free
+    hypotheses: []
+    conclusion: A theorem in this lane is restricted unless a data-class extension theorem is supplied.
+    proof_route: strict inclusion of compactly supported smooth data in the rapid-decay class
+    status: CHECKED_RESTRICTION
+    downstream:
+      - NS-CI-R-COMPACT
+    prohibited_overstatement:
+      - Do not promote to the full whole-space positive branch.
+    unresolved_debt:
+      - uniform approximation and solution-stability extension theorem
