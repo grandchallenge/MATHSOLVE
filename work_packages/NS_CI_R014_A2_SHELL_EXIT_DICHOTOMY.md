@@ -235,7 +235,7 @@ or equivalently
 
 Sum over disjoint intervals and use the Leray energy inequality.
 
-A Vitali selection from an overlapping family produces the same weighted estimate up to a fixed covering multiplicity. No stronger exponent follows from this argument.
+For an overlapping family, the proposition controls every pairwise disjoint subfamily. Turning that fact into control of the complete family requires an additional scale-aware covering or tree-packing theorem. No weighted Vitali estimate for the full family is asserted here.
 
 ## Exact insufficiency of the packing exponent
 
@@ -320,7 +320,8 @@ Thus `Lambda in L2`, the energy-charge packing law, and attainment of only short
 |---|---|---|
 | buffered first-exit inequality | proved | transport removal and fixed-shell regularity suffice |
 | local dissipation charge | proved under bounded neighbour ratio | exit forces `mathcal E_q>=epsilon_K` |
-| disjoint/Vitali packing | proved | global energy controls `sum lambda_q^-1` |
+| disjoint packing | proved | global energy controls `sum lambda_q^-1` for disjoint exit intervals |
+| full overlapping-family packing | open | requires a scale-aware covering or tree theorem |
 | use the packing law to bound attained levels | terminated | dyadic weight `lambda_q^-1` is summable |
 | use the packing law to close `f in L1` | terminated | scalar box fixture preserves `Lambda in L2` but permits divergent `lambda^(5/2)` cost |
 | remove the neighbour-ratio hypothesis by energy | open | energy does not control the threshold cluster uniformly |
@@ -341,4 +342,4 @@ No numerical lane is authorized by this result. A future WP03 task would require
 
 ## Claim boundary
 
-This package proves a buffered first-exit dichotomy and its optimal energy-charge packing consequence. It also proves that this consequence is insufficient for A2. It does not prove same-threshold persistence, a non-summable packing law, the low-mode criterion, or the selected A2 implication.
+This package proves a buffered first-exit dichotomy and its disjoint energy-charge packing consequence. It also proves that this consequence is insufficient for A2. It does not prove same-threshold persistence, a non-summable packing law, a weighted covering theorem for overlapping exit boxes, the low-mode criterion, or the selected A2 implication.
