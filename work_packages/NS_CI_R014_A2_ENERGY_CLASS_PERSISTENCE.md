@@ -8,7 +8,7 @@
 - Result: `PROVED_RELAXED_THRESHOLD_SUBPARABOLIC_MODULUS`
 - Sufficiency for A2: no
 
-This work package asks what persistence of a dissipation-threshold shell follows from the Leray–Hopf energy class alone. The answer is precise but insufficient: energy-class temporal control gives a scale-covariant `lambda_q^{-6}` interval for a **relaxed threshold**, not the `lambda_q^{-2}` same-threshold persistence needed by the merged layer-cake reduction.
+This work package asks what persistence of a dissipation-threshold shell follows from the Leray–Hopf energy class alone. The answer is precise but insufficient: standard energy-class temporal control gives a scale-covariant `lambda_q^{-6}` interval for a **relaxed threshold**, not the `lambda_q^{-2}` same-threshold persistence needed by the merged layer-cake reduction.
 
 ## Setting
 
@@ -17,7 +17,7 @@ Let `u` be a Leray–Hopf solution on `R^3` with viscosity `nu>0`. Write
 ```math
 U=\|u_0\|_2,
 \qquad
-u\int_0^T\|\nabla u(t)\|_2^2dt\lesssim U^2.
+ν\int_0^T\|\nabla u(t)\|_2^2dt\lesssim U^2.
 ```
 
 Let `u_q=Delta_q u` and `lambda_q=2^q`. At a Lebesgue time `s`, suppose
@@ -26,7 +26,7 @@ Let `u_q=Delta_q u` and `lambda_q=2^q`. At a Lebesgue time `s`, suppose
 \|u_q(s)\|_\infty\ge c_0\nu\lambda_q.
 ```
 
-For `t>s`, the projected equation is represented by
+For `s<t\le T`, the projected equation is represented by
 
 ```math
 u_q(t)
@@ -135,7 +135,7 @@ Fix `eta` with `0<eta<1`. There is a constant `c_eta>0` such that if
 then for every
 
 ```math
-0\le t-s\le\delta_q,
+0\le t-s\le\min\{\delta_q,T-s\},
 ```
 
 where
