@@ -19,3 +19,7 @@ jobs:
         run: |
           python ci/validate_solve.py
           python ci/test_validate_solve.py
+      - name: Validate NS-CI WP02 conditional-regularity ledger
+        run: |
+          python ci/validate_ns_ci_wp02.py
+          python -m unittest ci/test_validate_ns_ci_wp02.py -v
