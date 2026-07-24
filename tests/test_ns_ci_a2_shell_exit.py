@@ -61,7 +61,7 @@ class NSCIA2ShellExitTests(unittest.TestCase):
             self.assertLess(math.sqrt(energy) + energy, 1.0)
             self.assertLess(energy, threshold_energy)
 
-    def test_vitali_energy_packing_does_not_bound_level_count(self) -> None:
+    def test_disjoint_energy_packing_does_not_bound_level_count(self) -> None:
         # The sum of one admissible charge at each dyadic level stays finite,
         # while the number of attained levels grows without bound.
         for level_count in (10, 100, 1000):
