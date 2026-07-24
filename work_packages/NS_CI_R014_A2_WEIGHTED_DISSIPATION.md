@@ -5,13 +5,19 @@
 - Campaign: `NS-CI-001`
 - Parent: `MATHSOLVE#24`
 - Tracker: `MATHSOLVE#58`
-- State: `INITIALIZED_PRIMARY_LANE`
+- State: `L4_0_THROUGH_L4_2_PROVED_L4_3_ACTIVE`
 - A2 status: unproved
 - Numerical lane: closed
 
+The source reconstruction, scaling audit, and active-shell envelope are complete in:
+
+- `NS_CI_R014_A2_L4_SOURCE_SCALING_ENVELOPE.md`.
+
+This document is the controlling roadmap for the remaining weighted-dissipation lane.
+
 ## 1. Question
 
-Can the assumed critical wavenumber control
+Can
 
 ```math
 \Lambda\in L^2(0,T)
@@ -22,53 +28,67 @@ be combined with the Leray shell-dissipation budget to prove
 ```math
 f(t)
 =
-\|\omega_{\le Q(t)}(t)\|_{B^0_{\infty,\infty}}
+\sup_{-1\le p\le Q(t)}
+\lambda_p\|u_p(t)\|_\infty
 \in L^1(0,T)?
 ```
 
-The lane succeeds only through a scale-critical inequality with constants uniform in the moving cutoff.
+The lane succeeds only through a scale-critical estimate with constants uniform in the moving cutoff.
 
-## 2. Why this lane is distinct from L3
+## 2. Source-normalized definitions
 
-L3 charged isolated threshold excursions. Every proved charge had physical size `nu^2 lambda_q^-1`, which is summable over dyadic levels.
-
-L4 does not count excursions. It asks whether the **distribution of dissipation across active frequencies** supplies a weighted time-frequency estimate that is invisible to per-excursion bookkeeping.
-
-The central object is not a dwell time but a positive or signed kernel coupling shell index `p` to active cutoff `Q(t)`.
-
-## 3. Imported objects
-
-The exact source definitions must be reconstructed before theorem work. The following schematic notation is fixed only for the proof ledger:
+For `lambda_q=2^q`,
 
 ```math
-\lambda_q=2^q,
-\qquad
-\Lambda(t)=\lambda_{Q(t)},
-\qquad
-u_q=\Delta_qu,
-\qquad
-\omega_q=\nabla\times u_q.
-```
-
-Define the shell dissipation density
-
-```math
-D_q(t)
+Q(t)
 =
-\nu\|\nabla u_q(t)\|_2^2.
+\min\left\{
+q\ge0:
+\lambda_p^{-1}\|u_p(t)\|_\infty<c_0\nu
+\text{ for every }p>q
+\right\},
 ```
 
-The Leray energy inequality gives
+and
 
 ```math
-\sum_q\int_0^TD_q(t)dt
-\lesssim
-\|u_0\|_2^2.
+\Lambda(t)=\lambda_{Q(t)}.
 ```
 
-No pointwise-in-time bound on `sum_q D_q(t)` is imported.
+On the active set
 
-## 4. Scaling table
+```math
+U=\{t:\Lambda(t)>1\},
+```
+
+minimality gives
+
+```math
+\|u_{Q(t)}(t)\|_\infty
+\ge
+c_0\nu\Lambda(t).
+```
+
+The strict-high-mode threshold controls only `p>Q`. It gives no upper bound for `p=Q` or lower shells.
+
+The restored source envelope is
+
+```math
+c_0\nu\Lambda(t)^2
+\le
+f(t)
+\le
+C\|u_0\|_2\Lambda(t)^{5/2},
+\qquad t\in U.
+```
+
+On `U^c`, `Q=0` and
+
+```math
+f(t)\lesssim\|u_0\|_2.
+```
+
+## 3. Scaling and dimensional normalization
 
 Under
 
@@ -76,274 +96,215 @@ Under
 u_\rho(x,t)=\rho u(\rho x,\rho^2t),
 ```
 
-with viscosity fixed, the relevant scaling weights are:
+with viscosity fixed,
 
 | Quantity | Scaling factor |
 |---|---:|
 | `dt` | `rho^-2` |
-| `lambda_q`, `Lambda` | `rho` |
-| `u` | `rho` |
-| `omega` | `rho^2` |
+| `Lambda`, `lambda_p` | `rho` |
 | `f` | `rho^2` |
-| `||u_q||_2` | `rho^-1/2` |
-| `||grad u_q||_2` | `rho^1/2` |
-| `D_q=nu||grad u_q||_2^2` | `rho` |
-| `lambda_q D_q` | `rho^2` |
-| `Lambda^2 dt` | invariant |
-| `f dt` | invariant |
-| `lambda_q D_q dt` | invariant |
+| `nu Lambda^2` | `rho^2` |
+| `D_p=nu||grad u_p||_2^2` | `rho` |
+| `lambda_p D_p` | `rho^2` |
+| `nu^-2 lambda_p D_p` | `rho^2` |
 
-Therefore a pointwise positive weighted-dissipation candidate naturally has the schematic form
+Physical dimensions distinguish homogeneity from a valid pointwise comparison:
+
+```math
+[f]=[\nu\Lambda^2]
+=[\nu^{-2}\lambda_pD_p]
+=T^{-1}.
+```
+
+Therefore the dimensionally normalized positive kernel term is
+
+```math
+\nu^{-2}\sum_{p\le Q}K_{p,Q}\lambda_pD_p,
+```
+
+not the unnormalized schematic sum used during initialization.
+
+## 4. Proved weighted pointwise envelope
+
+For annular shells `p>=0`, define
+
+```math
+D_p(t)=\nu\|\nabla u_p(t)\|_2^2.
+```
+
+Set
+
+```math
+S_Q(t)
+=
+\sum_{p=0}^{Q(t)}
+2^{-2(Q(t)-p)}\lambda_pD_p(t).
+```
+
+The completed L4-2 lemma proves
 
 ```math
 f(t)
-\lesssim
-C\Lambda(t)^2
+\le
+C\|u_0\|_2
 +
-\sum_{p\le Q(t)}K_{p,Q(t)}\lambda_pD_p(t),
+C\nu^{-1/2}\Lambda(t)S_Q(t)^{1/2}.
 ```
 
-where `K` is dimensionless.
-
-Scaling compatibility is necessary, not sufficient. The energy inequality controls `D_p dt`, not `lambda_p D_p dt`; the kernel must recover that extra frequency without acquiring a cutoff-dependent constant.
-
-## 5. Baseline low-mode envelope
-
-For a standard dyadic Besov realization,
+Equivalently, for every `epsilon>0`,
 
 ```math
 f(t)
-\simeq
-\sup_{p\le Q(t)}\|\omega_p(t)\|_\infty
+\le
+C\|u_0\|_2
++
+\epsilon\nu\Lambda(t)^2
++
+C\epsilon^{-1}\nu^{-2}S_Q(t).
+```
+
+The proof uses
+
+```math
+\lambda_p\|u_p\|_\infty
 \lesssim
-\sup_{p\le Q(t)}
-\lambda_p^{5/2}\|u_p(t)\|_2.
+\lambda_p^{5/2}\|u_p\|_2,
 ```
-
-The exponent comes from one derivative and `L2 -> Linfinity` Bernstein in three dimensions.
-
-Squaring gives
 
 ```math
-f(t)^2
-\lesssim
-\sup_{p\le Q(t)}
-\lambda_p^5\|u_p(t)\|_2^2.
+D_p\simeq\nu\lambda_p^2\|u_p\|_2^2,
 ```
 
-Direct comparison with dissipation uses
+and the exact identity
 
 ```math
-D_p(t)
-\simeq
-\nu\lambda_p^2\|u_p(t)\|_2^2,
-```
-
-so the naive shell ratio is
-
-```math
-\frac{\lambda_p^5\|u_p\|_2^2}{D_p}
-\simeq
-\nu^{-1}\lambda_p^3.
-```
-
-This calculation is pedagogically important: a pointwise estimate obtained only by squaring Bernstein is far from the critical linear form `lambda_p D_p`. Any successful argument must use the moving active cutoff, threshold information, cancellation, or time-frequency averaging—not another pointwise Bernstein step.
-
-## 6. Proof-obligation DAG
-
-```text
-L4-0 exact source definitions
-    |
-    v
-L4-1 scaling and dimensions
-    |
-    v
-L4-2 explicit shell formula for f
-    |
-    +--------------------------+
-    |                          |
-    v                          v
-L4-3 positive kernel       L4-4 signed/commutator kernel
-    |                          |
-    +-------------+------------+
-                  |
-                  v
-          L4-5 uniform Schur or Carleson bound
-                  |
-                  v
-          time-integrated L1 estimate for f
-                  |
-                  v
-          WP02 regularity bridge and A2
-```
-
-Every edge is an independent proof obligation. Failure of one positive kernel does not validate a signed kernel.
-
-## 7. Candidate kernel ledger
-
-For each candidate write
-
-```math
-\mathcal W(t)
+\lambda_p^3
 =
-\sum_{p\le Q(t)}K_{p,Q(t)}\lambda_pD_p(t).
+\Lambda^2
+2^{-2(Q-p)}\lambda_p.
 ```
 
-The audit must record:
+## 5. Kernel ledger
 
-| Field | Required entry |
-|---|---|
-| support | exact region in `(p,Q)` |
-| sign | positive, signed, or commutator |
-| scaling | invariant check |
-| row sum | `sup_Q sum_p |K_pQ|` |
-| column sum | time-integrated occupancy for fixed `p` |
-| endpoint | logarithmic or power divergence |
-| threshold use | strict high modes, threshold cluster, or none |
-| imported norm | every non-Leray quantity |
-| conclusion | proved, conditional, or rejected |
-
-The first model family is
+The first proved kernel is
 
 ```math
-K_{p,Q}=\kappa_{Q-p},
-\qquad p\le Q,
+K_{p,Q}=2^{-2(Q-p)},
+\qquad 0\le p\le Q.
 ```
 
-with geometric, polynomial, and endpoint sequences `kappa_j`. Row summability alone does not close the estimate because of the extra factor `lambda_p` against the energy budget. The column calculation must exploit the set on which `Q(t)>=p` or a stronger active-shell relation.
-
-## 8. Time-frequency reformulation
-
-For a positive kernel, Tonelli gives
+It has uniform row sum
 
 ```math
-\int_0^T\mathcal W(t)dt
+\sup_Q\sum_{p=0}^QK_{p,Q}
+\le
+\sum_{j=0}^{\infty}4^{-j}
 =
-\sum_p\lambda_p
+\frac43.
+```
+
+For a fixed near-cluster width `J`, the far row tail satisfies
+
+```math
+\sup_Q
+\sum_{p\le Q-J-1}K_{p,Q}
+\le
+\frac{4^{-(J+1)}}{1-1/4}.
+```
+
+Thus replacing the shell supremum by a weighted sum incurs a uniform, geometrically decaying row kernel.
+
+## 6. Exact remaining obstruction
+
+Tonelli gives
+
+```math
+\int_0^TS_Q(t)dt
+=
+\sum_{p\ge0}\lambda_p
 \int_0^T
 1_{\{Q(t)\ge p\}}
-K_{p,Q(t)}D_p(t)dt.
+2^{-2(Q(t)-p)}D_p(t)dt.
 ```
 
-The assumption `Lambda in L2_t` controls only
+The Leray budget controls
 
 ```math
-\int_0^T\Lambda(t)^2dt
-\simeq
-\sum_k2^{2k}|\{Q=k\}|.
+\sum_p\int_0^TD_p(t)dt,
 ```
 
-It does not by itself control the correlation between `D_p(t)` and the active set `{Q(t)>=p}`. This correlation is the exact weighted-dissipation interface.
-
-A successful estimate must prove one of:
-
-1. a uniform weighted column bound against `D_p dt`;
-2. a Carleson measure estimate on active time-frequency boxes;
-3. a signed cancellation that survives time integration;
-4. a decomposition in which the extra `lambda_p` is replaced by `Lambda` and paired critically with an independently controlled factor;
-5. a shell-envelope estimate stronger than the raw energy budget.
-
-## 9. Mandatory baseline failures
-
-Before proposing a new mechanism, the work package must reproduce and reject:
-
-### Failure A — unrelated `L1` product
+not the extra factor `lambda_p`. The assumption
 
 ```math
-\Lambda^2\in L^1_t,
-\qquad
-\sum_pD_p\in L^1_t
+\int_0^T\Lambda(t)^2dt<\infty
 ```
 
-does not imply
+controls active-level occupancy but does not independently control its correlation with `D_p(t)`.
 
-```math
-\Lambda^2\sum_pD_p\in L^1_t.
+Uniform row summability is therefore insufficient. The remaining problem is a weighted **column** or **Carleson** estimate.
+
+## 7. Active proof-obligation DAG
+
+```text
+L4-0 exact source definitions                    PROVED
+L4-1 dimensions and dyadic scaling               PROVED
+L4-2 active-shell envelope and row kernel         PROVED
+    |
+    v
+L4-3a compute weighted column occupancy           ACTIVE
+L4-3b test Lambda-L2 plus energy sufficiency       ACTIVE
+L4-3c construct endpoint counterfixture            ACTIVE
+    |
+    +----------------------------+
+    |                            |
+    v                            v
+L4-4 positive kernel         L4-4 signed kernel
+    |                            |
+    +-------------+--------------+
+                  |
+                  v
+L4-5 uniform Schur/Carleson estimate
+                  |
+                  v
+             f in L1 and A2
 ```
 
-### Failure B — cutoff-dependent row constant
+## 8. L4-3 acceptance test
 
-A kernel satisfying
+The next stage must decide whether
 
 ```math
-\sum_{p\le Q}K_{p,Q}\sim Q
+\int_0^T
+\sum_{p=0}^{Q(t)}
+2^{-2(Q(t)-p)}\lambda_pD_p(t)dt
 ```
 
-is not uniform, even though every finite truncation is bounded.
-
-### Failure C — threshold-shell misuse
-
-The strict high-mode threshold applies only above `Q`. It cannot bound the shell `Q` or lower shells appearing in `f`.
-
-### Failure D — pointwise dissipation substitution
-
-The global integral of `sum_pD_p` cannot be used as a pointwise upper bound for an active shell.
-
-### Failure E — hidden half-power
-
-Any estimate equivalent to
+is bounded by a finite function of
 
 ```math
-f\lesssim\Lambda^{5/2}
-```
-
-has not solved the critical `Lambda^2` problem.
-
-## 10. Pedagogical lemma template
-
-Every proposed lemma must use this format.
-
-### Lemma identifier
-
-`NS-CI-A2-L4-Lemma-N`
-
-### Statement
-
-State all domains, times, active-set restrictions, constants, and dependence on the Littlewood–Paley partition.
-
-### Scaling check
-
-List the scaling factor of every term.
-
-### Proof
-
-Number each inequality and name the theorem used: Bernstein, Cauchy–Schwarz, Schur, Tonelli, energy inequality, threshold definition, or cancellation identity.
-
-### Time-integrability ledger
-
-For each factor state its known space and whether the product closes by Hölder.
-
-### Adversarial fixture
-
-Give the simplest scalar or dyadic profile testing the claimed exponent and cutoff uniformity.
-
-### Disposition
-
-One of `PROVED`, `CONDITIONAL`, `REJECTED_CIRCULAR`, `REJECTED_SCALING`, or `REJECTED_COUNTERFIXTURE`.
-
-## 11. Acceptance criterion
-
-L4 closes only if it proves
-
-```math
-\int_0^Tf(t)dt
-\le
-C\left(
 \int_0^T\Lambda(t)^2dt,
+\qquad
 \|u_0\|_2,
+\qquad
 \nu,
-T
-\right)
+\qquad
+T.
 ```
 
-with finite dependence on the displayed data and constants uniform in all frequency truncations.
+A positive result must prove the active-set/dissipation correlation. A negative result must provide a time-frequency profile satisfying all source-normalized energy, threshold, and `Lambda in L2` constraints while making the weighted integral diverge.
 
-A result depending on an additional weighted shell norm must state that norm as a new restricted hypothesis and undergo a separate prior-art and scaling audit.
+## 9. Pedagogical lemma contract
 
-## 12. First executable task
+Every L4-3 or later lemma must contain:
 
-Reconstruct the exact source-normalized formula for `f` and the whole-space dissipation-wavenumber definition, then produce the first weighted kernel table. No candidate inequality is promoted before this source pass.
+1. exact domains, active-set restrictions, and constant dependence;
+2. physical dimensions and Navier–Stokes scaling;
+3. numbered proof steps with named inequalities;
+4. complete row and column calculations;
+5. a time-integrability ledger;
+6. an adversarial profile testing endpoint uniformity;
+7. one disposition: `PROVED`, `CONDITIONAL`, `REJECTED_CIRCULAR`, `REJECTED_SCALING`, or `REJECTED_COUNTERFIXTURE`.
 
 ## Claim boundary
 
-This document initializes the primary pivot lane. It contains scaling deductions and proof obligations, not a weighted-dissipation theorem.
+L4-0 through L4-2 are complete. The weighted pointwise envelope is proved, but its time-integrated kernel is not controlled. This document does not prove `f in L1`, regularity, the critical integral, or A2.
