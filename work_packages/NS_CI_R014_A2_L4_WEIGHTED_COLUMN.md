@@ -5,14 +5,14 @@
 - Campaign: `NS-CI-001`
 - Parent: `MATHSOLVE#24`
 - Tracker: `MATHSOLVE#58`
-- Predecessor: `NS_CI_R014_A2_L4_SOURCE_ENVELOPE.md`
+- Predecessor: `NS_CI_R014_A2_L4_SOURCE_SCALING_ENVELOPE.md`
 - Result: `PROVED_EXACT_COLUMN_FORMULA_POSITIVE_KERNEL_ROUTE_REJECTED`
 - Sufficiency for A2: no
 - Numerical lane: closed
 
 ## 1. Obligation
 
-The preceding work package proved, on the active set and up to the fixed base-shell remainder,
+L4-2 proved
 
 ```math
 f(t)
@@ -59,22 +59,18 @@ force
 \int_0^TS_Q(t)dt<\infty.
 ```
 
-This package derives the complete column formula, proves that ordinary positive Schur control fails at the diagonal, and constructs a dyadic packet fixture satisfying the source-level threshold, energy, dissipation, and `Lambda in L2` constraints while both `int S_Q` and `int f` diverge.
+This package derives the exact column formula and proves that the implication fails for source-compatible dyadic estimate profiles. The result terminates positive weighted kernels with a nondegenerate cutoff-shell diagonal. It does not rule out a PDE-specific signed or dynamic correlation.
 
-The conclusion is limited but decisive: **the positive weighted-column estimate does not follow from the selected hypothesis, the Leray budgets, and the static dissipation-wavenumber definition alone.** A PDE-specific signed or dynamic correlation remains logically possible and belongs to L4-4.
-
-## 2. Time partition and exact column formula
+## 2. Exact column formula
 
 Let
 
 ```math
-E_q
-=
-\{t\in U:Q(t)=q\},
+E_q=\{t\in U:Q(t)=q\},
 \qquad q\ge0.
 ```
 
-The sets `E_q` are pairwise disjoint and partition the active set up to null sets. Since every term in `S_Q` is nonnegative, Tonelli gives the exact identity
+The sets `E_q` are pairwise disjoint and partition the active set up to null sets. Since the summands are nonnegative, Tonelli gives
 
 ```math
 \int_U S_Q(t)dt
@@ -85,26 +81,13 @@ The sets `E_q` are pairwise disjoint and partition the active set up to null set
 \int_{E_q}D_p(t)dt.
 ```
 
-Reindexing by `j=q-p`,
+With
 
 ```math
-\int_U S_Q(t)dt
-=
-\sum_{p\ge0}\lambda_p
-\sum_{j\ge0}2^{-2j}
-\int_{E_{p+j}}D_p(t)dt.
+\mu_{p,q}=\int_{E_q}D_p(t)dt,
 ```
 
-Define the dissipation matrix
-
-```math
-\mu_{p,q}
-=
-\int_{E_q}D_p(t)dt,
-\qquad 0\le p\le q.
-```
-
-Then
+this becomes
 
 ```math
 \int_U S_Qdt
@@ -113,7 +96,17 @@ Then
 2^{-2(q-p)}\lambda_p\mu_{p,q}.
 ```
 
-This is the line-addressable L4-3 column problem.
+Equivalently, after writing `q=p+j`,
+
+```math
+\int_U S_Qdt
+=
+\sum_{p\ge0}\lambda_p
+\sum_{j\ge0}2^{-2j}
+\int_{E_{p+j}}D_p(t)dt.
+```
+
+This is the complete weighted-column problem.
 
 ## 3. Available budgets
 
@@ -125,9 +118,9 @@ U_0=\|u_0\|_2,
 L_\Lambda^2=\int_0^T\Lambda(t)^2dt.
 ```
 
-The imported information is:
+The selected hypothesis and Leray class provide:
 
-### 3.1 Wavenumber occupancy
+### 3.1 Active-level occupancy
 
 ```math
 \sum_{q\ge0}\lambda_q^2|E_q|
@@ -138,16 +131,16 @@ L_\Lambda^2.
 ### 3.2 Total shell dissipation
 
 ```math
-\sum_{p\ge0}\sum_{q\ge0}\mu_{p,q}
+\sum_{p,q}\mu_{p,q}
 =
-\sum_{p\ge0}\int_U D_p(t)dt
+\sum_p\int_U D_p(t)dt
 \lesssim
 U_0^2.
 ```
 
 ### 3.3 Pointwise shell-energy cap
 
-For annular shells,
+Annular equivalence and `||u(t)||_2<=U_0` give
 
 ```math
 D_p(t)
@@ -174,7 +167,7 @@ On `E_q`, minimality of `Q=q` gives
 \ge c_0\nu.
 ```
 
-By Bernstein,
+Bernstein then yields
 
 ```math
 D_q(t)
@@ -182,68 +175,57 @@ D_q(t)
 c_0^2\nu^3\lambda_q.
 ```
 
-This is a lower bound. It does not prevent much larger dissipation on the active shell.
+This is a lower bound. It does not prevent much larger active-shell dissipation.
 
-## 4. Row and column calculations
+## 4. Schur ledger
 
-The dimensionless kernel is
+The dimensionless kernel
 
 ```math
-K_{p,q}=2^{-2(q-p)}1_{\{p\le q\}}.
+K_{p,q}=2^{-2(q-p)}1_{\{p\le q\}}
 ```
 
-Its rows and columns are geometrically summable:
+has geometric rows and columns:
 
 ```math
 \sup_q\sum_{p=0}^{q}K_{p,q}
-\le
-\sum_{j\ge0}2^{-2j}
-=
-\frac43,
+\le\frac43,
 ```
-
-and
 
 ```math
 \sup_p\sum_{q\ge p}K_{p,q}
-=
-\frac43.
+=\frac43.
 ```
 
-These bounds do not act on the actual weighted matrix, which contains `lambda_p`:
+The actual matrix is
 
 ```math
-A_{p,q}
-=
-\lambda_pK_{p,q}.
+A_{p,q}=\lambda_pK_{p,q}.
 ```
 
-For fixed `p`,
+Its column sum is
 
 ```math
 \sum_{q\ge p}A_{p,q}
 =
-\frac43\lambda_p.
+\frac43\lambda_p,
 ```
 
-The column constant grows with frequency. Ordinary positive Schur control against the unweighted measure `D_p(t)dt` therefore fails before any PDE estimate is used.
-
-For fixed `q`,
+and its row sum satisfies
 
 ```math
 \sum_{p=0}^{q}A_{p,q}
 =
-\lambda_q
-\sum_{j=0}^{q}2^{-3j}
+\lambda_q\sum_{j=0}^{q}2^{-3j}
 \le
 \frac87\lambda_q.
 ```
 
-The row cost is likewise proportional to the active frequency. The geometric gap controls distance below the cutoff, but it does not suppress the diagonal `p=q`.
+Thus ordinary positive Schur control against the unweighted measure `D_p(t)dt` fails by one frequency factor. The geometric gap suppresses shells far below the cutoff but does not suppress the diagonal `p=q`.
 
-## 5. Best estimate from the pointwise energy cap
+## 5. Best pointwise consequence of the energy cap
 
-Using the pointwise shell-energy cap,
+Using `D_p(t) lesssim nu lambda_p^2 U_0^2`,
 
 ```math
 S_Q(t)
@@ -272,40 +254,37 @@ S_Q(t)
 \nu U_0^2\Lambda(t)^3.
 ```
 
-Substitution into the square-root envelope gives
+Substitution into the L4-2 envelope recovers
 
 ```math
 f(t)
 \lesssim
-U_0
-+
-U_0\Lambda(t)^{5/2},
+U_0+U_0\Lambda(t)^{5/2}.
 ```
 
-which is the already-audited source upper envelope. The weighted dissipation rewrite has not improved the source exponent under pointwise energy control alone.
-
-This estimate closes under `Lambda in L3_t`, or directly under the known `Lambda in L5/2_t` source criterion after reverting to the sharper source envelope, but not under `Lambda in L2_t`.
+This is the source upper envelope. No critical-exponent gain has occurred.
 
 ## 6. Diagonal obstruction theorem
 
 ### Theorem `NS-CI-A2-L4-Lemma-2`
 
-Let `K_{p,q}>=0` be a positive lower-triangular kernel and define
+Let `K_{p,q}>=0` be lower triangular and define
 
 ```math
 \mathcal W_K(t)
 =
-\sum_{p=0}^{Q(t)}K_{p,Q(t)}\lambda_pD_p(t).
+\sum_{p=0}^{Q(t)}
+K_{p,Q(t)}\lambda_pD_p(t).
 ```
 
-Assume the diagonal is nondegenerate:
+Assume
 
 ```math
 \inf_{q\ge q_0}K_{q,q}
 \ge\kappa>0.
 ```
 
-There is no bound of the form
+There is no bound
 
 ```math
 \int_0^T\mathcal W_K(t)dt
@@ -318,47 +297,47 @@ T
 \right)
 ```
 
-valid for all dyadic profiles satisfying:
+valid for every dyadic profile satisfying the threshold definition, the pointwise kinetic-energy bound, the Leray-form total dissipation budget, and `Lambda in L2_t`.
 
-1. the dissipation-wavenumber threshold definition;
-2. the pointwise energy bound `||u(t)||_2<=U_0`;
-3. the Leray-form total shell-dissipation budget;
-4. `Lambda in L2_t`.
-
-The statement concerns estimate profiles, not Navier–Stokes solutions.
+The theorem concerns estimate profiles, not Navier–Stokes solutions.
 
 ### Proof
 
-Choose a nonzero divergence-free Schwartz field `phi` with Fourier support in a fixed annulus and normalize
+Choose a nonzero divergence-free Schwartz field `phi` supported in a fixed Fourier annulus and normalize
 
 ```math
 \|\phi\|_2=1.
 ```
 
-For `lambda_q=2^q`, define the rescaled packet
+For `lambda_q=2^q`, set
 
 ```math
-\phi_q(x)
-=
-\lambda_q^{3/2}\phi(\lambda_qx).
+\phi_q(x)=\lambda_q^{3/2}\phi(\lambda_qx).
 ```
 
 Then
 
 ```math
 \|\phi_q\|_2=1,
-\qquad
+```
+
+```math
 \|\phi_q\|_\infty
 =\lambda_q^{3/2}\|\phi\|_\infty,
-\qquad
+```
+
+and
+
+```math
 \|\nabla\phi_q\|_2^2
 =\lambda_q^2\|\nabla\phi\|_2^2.
 ```
 
-Choose pairwise disjoint intervals `I_q` of lengths
+Choose pairwise disjoint intervals `I_q` with
 
 ```math
-\tau_q
+|I_q|
+=\tau_q
 =
 \frac{\lambda_q^{-5/2}}{q+1},
 \qquad q\ge q_0.
@@ -370,7 +349,7 @@ On `I_q`, set
 u_q(t,x)=U_0\phi_q(x),
 ```
 
-with all other annular shells zero. Outside the union of the intervals set the profile to zero.
+with every other annular shell zero. Outside the boxes set the profile to zero.
 
 For sufficiently large `q_0`,
 
@@ -380,15 +359,9 @@ For sufficiently large `q_0`,
 \ge c_0\nu.
 ```
 
-Since every shell above `q` is zero, the dissipation wavenumber is exactly `Q(t)=q` on `I_q`.
+Every shell above `q` is zero, so `Q(t)=q` on `I_q`.
 
-The pointwise kinetic energy is
-
-```math
-\|u(t)\|_2^2=U_0^2.
-```
-
-The active-shell dissipation is
+The pointwise energy is `U_0^2`, and
 
 ```math
 D_q(t)
@@ -396,82 +369,52 @@ D_q(t)
 \nu U_0^2\|\nabla\phi\|_2^2\lambda_q^2.
 ```
 
-The critical-wavenumber cost is finite:
+The critical-wavenumber cost converges:
 
 ```math
 \int\Lambda^2dt
 =
-\sum_{q\ge q_0}\lambda_q^2\tau_q
+\sum_q\lambda_q^2\tau_q
 =
-\sum_{q\ge q_0}
-\frac{\lambda_q^{-1/2}}{q+1}
+\sum_q\frac{\lambda_q^{-1/2}}{q+1}
 <\infty.
 ```
 
-The total shell dissipation is also finite:
+The total shell dissipation also converges:
 
 ```math
 \sum_p\int D_pdt
 =
 \nu U_0^2\|\nabla\phi\|_2^2
-\sum_{q\ge q_0}
-\frac{\lambda_q^{-1/2}}{q+1}
+\sum_q\frac{\lambda_q^{-1/2}}{q+1}
 <\infty.
 ```
 
-But the diagonal contribution to the weighted kernel satisfies
+But the diagonal contribution gives
 
 ```math
 \int\mathcal W_Kdt
 \ge
-\kappa\sum_{q\ge q_0}
-\lambda_qD_q\tau_q
+\kappa\sum_q\lambda_qD_q\tau_q
 ```
 
-and hence
+and therefore
 
 ```math
 \int\mathcal W_Kdt
 \gtrsim
 \kappa\nu U_0^2
-\sum_{q\ge q_0}
-\frac{\lambda_q^{1/2}}{q+1}
+\sum_q\frac{\lambda_q^{1/2}}{q+1}
 =\infty.
 ```
 
 This proves the theorem.
 
-### Scaling check
-
-Each packet box has:
-
-```math
-\Lambda^2\tau_q
-\asymp
-\lambda_q^{-1/2}(q+1)^{-1},
-```
-
-```math
-D_q\tau_q
-\asymp
-\nu U_0^2\lambda_q^{-1/2}(q+1)^{-1},
-```
-
-and
-
-```math
-\lambda_qD_q\tau_q
-\asymp
-\nu U_0^2\lambda_q^{1/2}(q+1)^{-1}.
-```
-
-The first two series converge; the third diverges.
-
 ### Disposition
 
 `PROVED_COUNTERFIXTURE`.
 
-## 7. The fixture also saturates the low-mode obstruction
+## 7. Saturation of the low-mode obstruction
 
 On `I_q`,
 
@@ -483,27 +426,20 @@ f(t)
 U_0\|\phi\|_\infty\lambda_q^{5/2}.
 ```
 
-Therefore
+Hence
 
 ```math
 \int_0^Tf(t)dt
 =
 U_0\|\phi\|_\infty
-\sum_{q\ge q_0}
-\lambda_q^{5/2}\tau_q
-```
-
-and
-
-```math
-\int_0^Tf(t)dt
+\sum_q\lambda_q^{5/2}\tau_q
 =
 U_0\|\phi\|_\infty
-\sum_{q\ge q_0}\frac1{q+1}
+\sum_q\frac1{q+1}
 =\infty.
 ```
 
-Thus the same profile has:
+The fixture therefore has
 
 ```math
 \Lambda\in L^2_t,
@@ -513,17 +449,11 @@ Thus the same profile has:
 \sup_t\|u(t)\|_2\le U_0,
 ```
 
-but
+while `f notin L1_t`. This does not disprove A2 because the profile is not a Navier–Stokes solution. It proves that the static threshold and Leray budgets do not imply the desired positive column estimate.
 
-```math
-f\notin L^1_t.
-```
+## 8. Compatibility with prior estimate constraints
 
-This does not disprove A2, because the profile is not a Navier–Stokes solution. It proves that no theorem based only on the static threshold definition, energy size, total dissipation, and positive shell bookkeeping can establish the bridge.
-
-## 8. Compatibility with previous estimate constraints
-
-The fixture is static inside each box and has arbitrarily high dissipation charge relative to the previously proved rapid-exit minimum. Indeed,
+The box charge is
 
 ```math
 \mathcal E_q(I_q)
@@ -535,19 +465,19 @@ The fixture is static inside each box and has arbitrarily high dissipation charg
 \frac{\lambda_q^{1/2}}{q+1}.
 ```
 
-For large `q`, this exceeds every fixed buffered-exit lower bound. Transition boxes may therefore be appended with the required local charge at total additional physical cost
+For large `q` this exceeds every fixed buffered-exit lower bound. Transition boxes can be appended at the previously proved physical cost
 
 ```math
-\sum_qO(\nu^2\lambda_q^{-1})<\infty.
+O(\nu^2\lambda_q^{-1})
 ```
 
-The fixture also respects the threshold shell-energy floor because its shell energy is `U_0^2`, much larger than `nu^2 lambda_q^-1` at high frequency.
+per level, whose total is summable. The shell energy `U_0^2` also exceeds the threshold floor `nu^2 lambda_q^-1` at high frequency.
 
-No claim is made that the packet switching, transition mechanism, or prescribed dissipation matrix solves the Navier–Stokes equation.
+No claim is made that the switching or prescribed dissipation matrix solves Navier–Stokes.
 
-## 9. Why diagonal decay does not rescue the proved envelope
+## 9. Why diagonal decay cannot rescue the current envelope
 
-Suppose one tries to replace the geometric kernel by a positive kernel with `K_{q,q}->0`. On a single cutoff-shell packet, a square-root estimate of the form
+Suppose a positive kernel has `K_{q,q}->0`. On a single cutoff-shell packet, an estimate
 
 ```math
 f(t)
@@ -556,39 +486,36 @@ C\nu^{-1/2}\Lambda(t)
 \mathcal W_K(t)^{1/2}
 ```
 
-would reduce to
-
-```math
-\lambda_q\|u_q\|_\infty
-\le
-C\nu^{-1/2}\lambda_q
-\left(K_{q,q}\lambda_qD_q\right)^{1/2}.
-```
-
-For Bernstein-saturating packets,
-
-```math
-\left(\lambda_q\|u_q\|_\infty\right)^2
-\asymp
-\nu^{-1}\lambda_q^3D_q.
-```
-
-Consequently the pointwise domination requires
+requires
 
 ```math
 K_{q,q}\gtrsim1.
 ```
 
-The two requirements are incompatible:
+Indeed, Bernstein-saturating packets satisfy
 
-- time-integrated positive column control pushes the diagonal weight toward decay;
-- pointwise control of the cutoff-shell contribution requires a nondegenerate diagonal.
+```math
+f_q^2
+\asymp
+\nu^{-1}\lambda_q^3D_q,
+```
 
-This is the exact positive-kernel obstruction.
+while the squared right side is
+
+```math
+C^2\nu^{-1}\lambda_q^2
+K_{q,q}\lambda_qD_q.
+```
+
+The frequency powers already agree, leaving a uniform lower bound on `K_{q,q}`. Thus:
+
+- pointwise cutoff-shell domination requires a nondegenerate diagonal;
+- positive time-integrated column control pushes the diagonal toward decay;
+- these requirements are incompatible under the available budgets.
 
 ## 10. Carleson interpretation
 
-The desired positive estimate can be written as the finiteness of
+The desired quantity is
 
 ```math
 \mathfrak C_D
@@ -597,7 +524,7 @@ The desired positive estimate can be written as the finiteness of
 2^{-2(q-p)}\lambda_p\mu_{p,q}.
 ```
 
-The known scalar budgets control only
+Known information controls
 
 ```math
 \sum_{p,q}\mu_{p,q}
@@ -606,45 +533,43 @@ The known scalar budgets control only
 and
 
 ```math
-\sum_q\lambda_q^2|E_q|.
+\sum_q\lambda_q^2|E_q|,
 ```
 
-They impose no upper bound on the diagonal correlation
+but not the diagonal correlation
 
 ```math
-\mu_{q,q}
-=
-\int_{E_q}D_q(t)dt.
+\mu_{q,q}=\int_{E_q}D_q(t)dt.
 ```
 
-The packet fixture concentrates both the active-set indicator and the maximum admissible shell dissipation on the diagonal. A valid Carleson theorem must therefore use a property of the Navier–Stokes evolution not present in the scalar budgets, such as a signed flux identity, a dynamic depletion mechanism, or a nontrivial correlation inequality.
+The fixture concentrates active occupancy and the maximum permitted shell energy on that diagonal. A valid Carleson theorem must therefore use a property of the Navier–Stokes evolution absent from the scalar budgets: signed cancellation, dynamic depletion, or a genuine decorrelation inequality.
 
-Calling `mathfrak C_D<infinity` a hypothesis is mathematically valid but merely restates the missing bridge. It is not an A2 proof.
+Assuming `mathfrak C_D<infinity` is valid but merely restates the missing bridge.
 
-## 11. Proof-obligation DAG disposition
+## 11. Proof-obligation DAG
 
 ```text
 L4-3.1 exact Tonelli column formula
     PROVED
         |
         v
-L4-3.2 dimensionless Schur rows/columns
+L4-3.2 dimensionless Schur rows and columns
     PROVED
         |
         v
-L4-3.3 weighted diagonal audit
-    PROVED: coefficient grows like lambda_p
+L4-3.3 weighted diagonal calculation
+    PROVED: column cost grows like lambda_p
         |
         v
-L4-3.4 static budget implication
+L4-3.4 implication from Lambda-L2 and Leray budgets
     REJECTED_COUNTERFIXTURE
         |
         +------------------------------+
         |                              |
         v                              v
-positive kernel with            PDE-specific signed or
-nondegenerate diagonal          dynamic correlation
-    TERMINATED                      OPEN: L4-4
+positive nondegenerate kernel     PDE-specific signed or
+    TERMINATED                    dynamic correlation
+                                  OPEN: L4-4
 ```
 
 ## 12. Route disposition
@@ -655,15 +580,15 @@ nondegenerate diagonal          dynamic correlation
 | dimensionless geometric column bound | proved | column sum is `4/3` |
 | weighted Schur bound against `D_p dt` | rejected | weighted column constant is `(4/3)lambda_p` |
 | pointwise energy cap | insufficient | recovers only `S_Q lesssim nu U_0^2 Lambda^3` |
-| combine `Lambda L2` and total dissipation | rejected | diagonal packet fixture makes `int S_Q` diverge |
-| positive kernel with `K_qq>=kappa` | terminated | general diagonal obstruction theorem |
-| positive kernel with decaying diagonal | incompatible with current pointwise envelope | cutoff-shell packets require `K_qq gtrsim 1` |
-| weighted Carleson estimate as a new hypothesis | conditional/tautological | it is the missing bridge itself |
-| signed or equation-dynamic correlation | open | not tested by this positive-kernel counterfixture |
+| combine `Lambda L2` and total dissipation | rejected | packet fixture makes `int S_Q` diverge |
+| positive kernel with `K_qq>=kappa` | terminated | diagonal obstruction theorem |
+| positive kernel with decaying diagonal | incompatible with current envelope | cutoff-shell packets require `K_qq gtrsim 1` |
+| weighted Carleson estimate as hypothesis | conditional/tautological | it is the missing bridge itself |
+| signed or equation-dynamic correlation | open | not tested by this positive counterfixture |
 
 ## 13. Strongest surviving statement
 
-The strongest unconditional statement remains the pointwise envelope
+The strongest unconditional result remains
 
 ```math
 f(t)
@@ -673,25 +598,19 @@ C_{LP}U_0
 C_{LP}\nu^{-1/2}\Lambda(t)S_Q(t)^{1/2}.
 ```
 
-It becomes useful under the explicit additional hypothesis
-
-```math
-S_Q\in L^1(0,T).
-```
-
-But `S_Q in L1` is not implied by `Lambda in L2` and Leray energy. The positive weighted-dissipation lane is therefore exhausted at L4-3.
+It closes under the explicit additional hypothesis `S_Q in L1_t`, but that hypothesis is not implied by `Lambda in L2_t` and Leray energy.
 
 ## 14. Next obligation
 
 Proceed to L4-4 only through a genuinely equation-specific mechanism:
 
-1. derive a signed shell or cumulative-flux expression whose time integral telescopes without taking absolute values;
-2. identify a commutator or depletion term that cancels the diagonal cutoff-shell contribution;
-3. prove a dynamic decorrelation estimate between `D_q` and `{Q=q}`;
+1. a signed shell or cumulative-flux expression whose time integral telescopes without absolute values;
+2. a commutator or depletion identity canceling the diagonal cutoff-shell contribution;
+3. a dynamic decorrelation estimate between `D_q` and `{Q=q}`;
 4. or terminate L4 and promote the independent direct critical-integral lane L5.
 
-No further positive Schur variant is admissible unless it defeats the diagonal theorem explicitly.
+No further positive Schur variant is admissible unless it explicitly defeats the diagonal theorem.
 
 ## Claim boundary
 
-This package proves the failure of a class of positive weighted-column arguments under the source-level static and energy constraints. It does not construct a Navier–Stokes counterexample, disprove A2, or rule out signed, nonlinear, or equation-specific weighted dissipation estimates.
+This package proves failure of a class of positive weighted-column arguments under the source-level static and Leray constraints. It does not construct a Navier–Stokes counterexample, disprove A2, or rule out signed, nonlinear, or equation-specific weighted estimates.
