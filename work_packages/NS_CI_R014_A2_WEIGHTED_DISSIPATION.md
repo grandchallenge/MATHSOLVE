@@ -5,15 +5,16 @@
 - Campaign: `NS-CI-001`
 - Parent: `MATHSOLVE#24`
 - Tracker: `MATHSOLVE#58`
-- State: `L4_0_THROUGH_L4_2_PROVED_L4_3_ACTIVE`
+- State: `L4_0_THROUGH_L4_3_COMPLETE_POSITIVE_KERNEL_TERMINATED`
 - A2 status: unproved
 - Numerical lane: closed
 
-The source reconstruction, scaling audit, and active-shell envelope are complete in:
+Completed artifacts:
 
-- `NS_CI_R014_A2_L4_SOURCE_SCALING_ENVELOPE.md`.
+- `NS_CI_R014_A2_L4_SOURCE_SCALING_ENVELOPE.md` — source normalization, scaling, and active-shell envelope;
+- `NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md` — exact column formula, Schur audit, and positive-kernel counterfixture.
 
-This document is the controlling roadmap for the remaining weighted-dissipation lane.
+This document is the controlling roadmap for the surviving weighted-dissipation lane.
 
 ## 1. Question
 
@@ -116,14 +117,6 @@ Physical dimensions distinguish homogeneity from a valid pointwise comparison:
 =T^{-1}.
 ```
 
-Therefore the dimensionally normalized positive kernel term is
-
-```math
-\nu^{-2}\sum_{p\le Q}K_{p,Q}\lambda_pD_p,
-```
-
-not the unnormalized schematic sum used during initialization.
-
 ## 4. Proved weighted pointwise envelope
 
 For annular shells `p>=0`, define
@@ -141,7 +134,7 @@ S_Q(t)
 2^{-2(Q(t)-p)}\lambda_pD_p(t).
 ```
 
-The completed L4-2 lemma proves
+L4-2 proves
 
 ```math
 f(t)
@@ -163,148 +156,254 @@ C\|u_0\|_2
 C\epsilon^{-1}\nu^{-2}S_Q(t).
 ```
 
-The proof uses
+The dimensionless geometric kernel
 
 ```math
-\lambda_p\|u_p\|_\infty
-\lesssim
-\lambda_p^{5/2}\|u_p\|_2,
+K_{p,Q}=2^{-2(Q-p)}1_{\{p\le Q\}}
 ```
+
+has uniformly bounded row and column sums. The actual weighted matrix contains `lambda_p`, and that factor is the critical obstruction.
+
+## 5. L4-3 exact column formula
+
+Let
 
 ```math
-D_p\simeq\nu\lambda_p^2\|u_p\|_2^2,
+E_q=\{t\in U:Q(t)=q\}
 ```
 
-and the exact identity
+and
 
 ```math
-\lambda_p^3
-=
-\Lambda^2
-2^{-2(Q-p)}\lambda_p.
+\mu_{p,q}=\int_{E_q}D_p(t)dt.
 ```
-
-## 5. Kernel ledger
-
-The first proved kernel is
-
-```math
-K_{p,Q}=2^{-2(Q-p)},
-\qquad 0\le p\le Q.
-```
-
-It has uniform row sum
-
-```math
-\sup_Q\sum_{p=0}^QK_{p,Q}
-\le
-\sum_{j=0}^{\infty}4^{-j}
-=
-\frac43.
-```
-
-For a fixed near-cluster width `J`, the far row tail satisfies
-
-```math
-\sup_Q
-\sum_{p\le Q-J-1}K_{p,Q}
-\le
-\frac{4^{-(J+1)}}{1-1/4}.
-```
-
-Thus replacing the shell supremum by a weighted sum incurs a uniform, geometrically decaying row kernel.
-
-## 6. Exact remaining obstruction
 
 Tonelli gives
 
 ```math
-\int_0^TS_Q(t)dt
+\int_US_Q(t)dt
+=
+\sum_{0\le p\le q}
+2^{-2(q-p)}\lambda_p\mu_{p,q}.
+```
+
+Equivalently,
+
+```math
+\int_US_Qdt
 =
 \sum_{p\ge0}\lambda_p
-\int_0^T
-1_{\{Q(t)\ge p\}}
-2^{-2(Q(t)-p)}D_p(t)dt.
+\sum_{j\ge0}2^{-2j}
+\int_{E_{p+j}}D_p(t)dt.
 ```
 
-The Leray budget controls
+The known budgets are
 
 ```math
-\sum_p\int_0^TD_p(t)dt,
+\sum_q\lambda_q^2|E_q|
+\le
+\int_0^T\Lambda(t)^2dt,
 ```
-
-not the extra factor `lambda_p`. The assumption
 
 ```math
-\int_0^T\Lambda(t)^2dt<\infty
+\sum_{p,q}\mu_{p,q}
+\lesssim
+\|u_0\|_2^2,
 ```
 
-controls active-level occupancy but does not independently control its correlation with `D_p(t)`.
+and
 
-Uniform row summability is therefore insufficient. The remaining problem is a weighted **column** or **Carleson** estimate.
+```math
+D_p(t)
+\lesssim
+\nu\lambda_p^2\|u_0\|_2^2.
+```
 
-## 7. Active proof-obligation DAG
+None controls the diagonal correlation `mu_{q,q}` with the additional factor `lambda_q`.
+
+## 6. Schur audit
+
+For the dimensionless kernel,
+
+```math
+\sup_q\sum_{p\le q}K_{p,q}
+=
+\sup_p\sum_{q\ge p}K_{p,q}
+=
+\frac43.
+```
+
+For the weighted matrix
+
+```math
+A_{p,q}=\lambda_pK_{p,q},
+```
+
+one has
+
+```math
+\sum_{q\ge p}A_{p,q}
+=
+\frac43\lambda_p,
+```
+
+and
+
+```math
+\sum_{p\le q}A_{p,q}
+\le
+\frac87\lambda_q.
+```
+
+Thus ordinary positive Schur control against `D_p(t)dt` is not uniform in frequency.
+
+Using only the pointwise energy cap yields
+
+```math
+S_Q(t)
+\lesssim
+\nu\|u_0\|_2^2\Lambda(t)^3,
+```
+
+and hence recovers only
+
+```math
+f(t)
+\lesssim
+\|u_0\|_2
++
+\|u_0\|_2\Lambda(t)^{5/2}.
+```
+
+No exponent gain has occurred.
+
+## 7. L4-3 counterfixture and theorem
+
+The completed L4-3 artifact proves:
+
+> For every positive lower-triangular kernel with a nondegenerate diagonal `inf_q K_qq>0`, no bound of `int W_K` by `||Lambda||_L2`, the pointwise kinetic-energy bound, the total shell-dissipation budget, viscosity, and time can hold for all source-compatible dyadic profiles.
+
+The fixture uses disjoint intervals
+
+```math
+|I_q|
+=
+\frac{\lambda_q^{-5/2}}{q+1}
+```
+
+and one `L2`-normalized Bernstein-saturating annular packet at shell `q` on `I_q`. It satisfies
+
+```math
+\int\Lambda^2dt
+\asymp
+\sum_q\frac{\lambda_q^{-1/2}}{q+1}
+<\infty,
+```
+
+and
+
+```math
+\sum_p\int D_pdt
+\asymp
+\sum_q\frac{\lambda_q^{-1/2}}{q+1}
+<\infty,
+```
+
+but
+
+```math
+\int S_Qdt
+\gtrsim
+\sum_q\frac{\lambda_q^{1/2}}{q+1}
+=\infty.
+```
+
+The same fixture saturates the source upper envelope and has
+
+```math
+\int f(t)dt
+\asymp
+\sum_q\frac1{q+1}
+=\infty.
+```
+
+It is an estimate counterfixture, not a Navier–Stokes solution.
+
+## 8. Diagonal incompatibility
+
+A positive kernel with decaying diagonal could evade the preceding divergence, but it cannot dominate the cutoff-shell contribution in the proved square-root envelope.
+
+For a cutoff-shell Bernstein-saturating packet,
+
+```math
+f_q^2
+\asymp
+\nu^{-1}\lambda_q^3D_q.
+```
+
+A bound
+
+```math
+f
+\le
+C\nu^{-1/2}\Lambda
+\left(
+\sum_{p\le Q}K_{p,Q}\lambda_pD_p
+\right)^{1/2}
+```
+
+requires
+
+```math
+K_{q,q}\gtrsim1.
+```
+
+Therefore:
+
+- pointwise cutoff-shell domination requires a nondegenerate diagonal;
+- positive time-integrated column control requires suppressing that diagonal;
+- the two requirements are incompatible under the static budgets.
+
+## 9. Proof-obligation DAG
 
 ```text
 L4-0 exact source definitions                    PROVED
 L4-1 dimensions and dyadic scaling               PROVED
 L4-2 active-shell envelope and row kernel         PROVED
+L4-3a exact weighted column formula               PROVED
+L4-3b Schur and diagonal calculation              PROVED
+L4-3c Lambda-L2 plus energy sufficiency            REJECTED_COUNTERFIXTURE
+L4-3d positive kernel with nondegenerate diagonal TERMINATED
     |
-    v
-L4-3a compute weighted column occupancy           ACTIVE
-L4-3b test Lambda-L2 plus energy sufficiency       ACTIVE
-L4-3c construct endpoint counterfixture            ACTIVE
-    |
-    +----------------------------+
-    |                            |
-    v                            v
-L4-4 positive kernel         L4-4 signed kernel
-    |                            |
-    +-------------+--------------+
-                  |
-                  v
-L4-5 uniform Schur/Carleson estimate
-                  |
-                  v
-             f in L1 and A2
+    +-------------------------------+
+    |                               |
+    v                               v
+L4-4 signed/commutator kernel    L5 direct critical integral
+OPEN                            INDEPENDENT
 ```
 
-## 8. L4-3 acceptance test
+## 10. Route disposition
 
-The next stage must decide whether
+| Route | Disposition |
+|---|---|
+| dimensionless geometric row/column sums | `PROVED` |
+| weighted Schur estimate against Leray dissipation | `REJECTED_COUNTERFIXTURE` |
+| pointwise energy cap | `INSUFFICIENT_SOURCE_EXPONENT_RECOVERED` |
+| any positive kernel with `K_qq>=kappa` | `TERMINATED_DIAGONAL_OBSTRUCTION` |
+| positive kernel with decaying diagonal | `INCOMPATIBLE_WITH_CUTOFF_SHELL_DOMINATION` |
+| signed or commutator correlation | `OPEN_L4_4` |
+| direct critical-integral route | `OPEN_L5` |
 
-```math
-\int_0^T
-\sum_{p=0}^{Q(t)}
-2^{-2(Q(t)-p)}\lambda_pD_p(t)dt
-```
+## 11. Next obligation
 
-is bounded by a finite function of
+L4 may proceed only through an equation-specific signed or dynamic mechanism that explicitly defeats the diagonal theorem. Admissible targets are:
 
-```math
-\int_0^T\Lambda(t)^2dt,
-\qquad
-\|u_0\|_2,
-\qquad
-\nu,
-\qquad
-T.
-```
+1. a signed shell or cumulative-flux expression whose time integral genuinely telescopes;
+2. a commutator or depletion identity canceling the active diagonal contribution;
+3. a PDE-derived decorrelation estimate between `D_q` and `{Q=q}`.
 
-A positive result must prove the active-set/dissipation correlation. A negative result must provide a time-frequency profile satisfying all source-normalized energy, threshold, and `Lambda in L2` constraints while making the weighted integral diverge.
-
-## 9. Pedagogical lemma contract
-
-Every L4-3 or later lemma must contain:
-
-1. exact domains, active-set restrictions, and constant dependence;
-2. physical dimensions and Navier–Stokes scaling;
-3. numbered proof steps with named inequalities;
-4. complete row and column calculations;
-5. a time-integrability ledger;
-6. an adversarial profile testing endpoint uniformity;
-7. one disposition: `PROVED`, `CONDITIONAL`, `REJECTED_CIRCULAR`, `REJECTED_SCALING`, or `REJECTED_COUNTERFIXTURE`.
+No further positive Schur variant is admissible without an explicit proof that its cutoff-shell diagonal is both pointwise sufficient and time-integrable.
 
 ## Claim boundary
 
-L4-0 through L4-2 are complete. The weighted pointwise envelope is proved, but its time-integrated kernel is not controlled. This document does not prove `f in L1`, regularity, the critical integral, or A2.
+L4-0 through L4-3 are complete. The positive weighted-dissipation route is terminated under the source-level static and Leray budgets. This document does not prove `f in L1`, regularity, the critical integral, or A2, and it does not rule out signed, nonlinear, or equation-specific weighted estimates.
