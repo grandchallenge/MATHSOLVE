@@ -6,20 +6,20 @@
 - MATHSOLVE issue: `#18`
 - Campaign: `NS-CI-001`
 - Owning pillar: MATHSOLVE
-- State: initialized; imported theorem chain not yet audited
+- State: quantitative reconstruction complete; parent governance gate pending
 
 ## Result-status box
 
 | Field | Value |
 |---|---|
-| Result status | `OPEN / WORK PACKAGE INITIALIZED` |
-| Strongest supported local result | Energy plus Sobolev yields `u∈L²_tL⁶_x`; the target `L⁴_tL⁶_x` norm is scaling-critical |
-| Not claimed | Universal critical integrability, global regularity, a new regularity criterion, or a novel reduction |
-| First executable step | Reconstruct the `(4,6)` conditional regularity proof and continuation bridge with exact hypotheses |
+| Result status | `OPEN TARGET / CLASSICAL CONTINUATION CHAIN RECONSTRUCTED` |
+| Strongest supported result | Finite `L4_tL6_x` control closes the H1 continuation and weak–strong uniqueness estimates; universal control for Fefferman's full data class is sufficient for Clay statement (A) |
+| Not claimed | Universal critical integrability, global regularity, a new criterion, bidirectional equivalence, or full-data coverage from compact support alone |
+| First executable step | Parent Amanuensis and Referee integration; do not generate mechanisms yet |
 
-## Problem
+## Corrected problem
 
-For smooth compactly supported divergence-free initial data on `ℝ³`, determine whether every Leray–Hopf solution satisfies
+Let `u0` be any smooth divergence-free field on `R3` satisfying Fefferman's rapid-decay condition. Determine whether every Leray–Hopf solution satisfies
 
 ```math
 I_T(u):=∫₀ᵀ ‖u(t)‖_{L⁶(ℝ³)}⁴dt<∞
@@ -27,141 +27,185 @@ I_T(u):=∫₀ᵀ ‖u(t)‖_{L⁶(ℝ³)}⁴dt<∞
 
 for every finite `T>0`.
 
+The former compact-support formulation is retained only as the restricted lane `NS-CI-R-COMPACT`.
+
 ## Tactical posture
 
-MATHSOLVE must not treat the classical conditional criterion as though the criterion were already known to hold. The immediate task is to expose the proof mechanism consuming `I_T(u)`, identify the precise estimate that remains unavailable, and select restricted targets only after source reconciliation.
+MATHSOLVE must not treat the conditional criterion as though its hypothesis were universal. The quantitative reconstruction identifies the exact nonlinear estimate a future mechanism would have to improve or bypass. It does not authorize mechanism generation before the parent WP00 governance gate.
 
-## Theorem spine
-
-```text
-MS-NS-CI-D000  Fixed equation, domain, data, and solution classes
-MS-NS-CI-L001  Leray-Hopf energy inequality                 [import]
-MS-NS-CI-L002  Sobolev H1 -> L6                            [local]
-MS-NS-CI-C003  u in L2_t L6_x                              [derived]
-MS-NS-CI-O004  energy space does not imply L4_t L6_x       [obstruction]
-MS-NS-CI-L005  mixed-norm scaling                          [local]
-MS-NS-CI-C006  I_T is critical                             [derived]
-MS-NS-CI-L007  LPS regularity at (q,p)=(4,6)               [import]
-MS-NS-CI-L008  weak-strong uniqueness                      [import]
-MS-NS-CI-L009  local strong existence / maximal-time gate  [import]
-MS-NS-CI-B010  critical-integral continuation bridge       [to prove]
-MS-NS-CI-T011  universal critical-integrability target     [open]
-MS-NS-CI-R012  first restricted theorem target             [unselected]
-```
-
-## WP00 tasks
-
-### S0 — theorem normalization
-
-Consume the reviewed MATHFORGE source ledger. For each imported theorem, record:
-
-- exact domain and forcing convention;
-- data and solution class;
-- mixed-norm order and endpoint convention;
-- regularity or uniqueness conclusion;
-- approximation/density assumptions;
-- theorem location and notation translation.
-
-### S1 — quantitative `(4,6)` proof reconstruction
-
-Reconstruct the conditional estimate at enough resolution to answer:
-
-1. Which equation is tested: the equation for `u`, a derivative, the Stokes operator, or a difference of solutions?
-2. Which nonlinear trilinear term is bounded?
-3. Which Hölder and Sobolev exponents produce `‖u‖₆⁴`?
-4. Which strong norm obeys the resulting differential inequality?
-5. What Grönwall coefficient is integrated?
-6. Which pressure and boundary terms vanish or require estimates?
-7. How is the weak solution upgraded or identified with a strong solution?
-
-The output must be an executable proof plan, not the phrase “by the Serrin criterion.”
-
-### S2 — continuation correspondence
-
-Write the implication chain with every hypothesis:
+## Audited theorem spine
 
 ```text
-universal I_T finiteness
-  -> conditional regularity on each finite interval
-  -> weak-strong agreement
-  -> no finite maximal strong-solution time
-  -> global smoothness in the selected R3 formulation.
+MS-NS-CI-D000  Fixed equation, R3, full rapid-decay data, solution classes  [audited]
+MS-NS-CI-L001  Leray-Hopf energy and global weak existence                  [operational import]
+MS-NS-CI-L002  Sobolev H1 -> L6                                             [checked]
+MS-NS-CI-C003  u in L2_t L6_x                                               [checked]
+MS-NS-CI-O004  energy space does not imply L4_t L6_x                        [checked obstruction]
+MS-NS-CI-L005  mixed-norm scaling                                           [checked]
+MS-NS-CI-C006  I_T is critical                                              [checked]
+MS-NS-CI-L007  operational LPS theorem at (4,6)                             [audited]
+MS-NS-CI-L008  weak-strong uniqueness                                       [operational import]
+MS-NS-CI-L009  local H1 strong existence / maximal-time gate                [operational import]
+MS-NS-CI-B010  critical-integral continuation bridge                        [reconstructed]
+MS-NS-CI-B011  full-data universal I_T implies Clay statement (A)           [checked one-way]
+MS-NS-CI-B012  reverse strong-class correspondence                          [pending]
+MS-NS-CI-T013  universal critical-integrability target                      [open]
+MS-NS-CI-R014  first selected restricted theorem target                     [unselected]
+MS-NS-CI-R-COMPACT compact-support restricted lane                          [defined]
 ```
 
-Audit the reverse direction before retaining the word `equivalent`.
+## S0 — theorem normalization
 
-### S3 — negative route ledger
+The MATHFORGE ledger now separates:
+
+- Fefferman's official rapidly decreasing whole-space data;
+- compactly supported data as a strict restricted subclass;
+- Prodi's original generalized-solution theorem;
+- the modern R3 Leray–Hopf operational formulation;
+- historical Serrin and Ladyzhenskaya records with their remaining extraction states;
+- local strong, global weak, and weak–strong interfaces from a modern reconstruction of Leray.
+
+The operational theorem chain is usable without falsely declaring the historical extraction complete.
+
+## S1 — quantitative `(4,6)` reconstruction
+
+Delivered in `work_packages/NS_CI_WP00_LPS_RECONSTRUCTION.md`.
+
+Testing the strong equation against `-Delta u` gives
+
+```math
+\frac12\frac d{dt}\|\nabla u\|_2^2+\nu\|\Delta u\|_2^2
+=\int (u\cdot\nabla)u\cdot\Delta u.
+```
+
+The nonlinear term satisfies
+
+```math
+\left|\int (u\cdot\nabla)u\cdot\Delta u\right|
+\le C\|u\|_6\|\nabla u\|_2^{1/2}\|\Delta u\|_2^{3/2}
+\le \frac\nu2\|\Delta u\|_2^2
+ +C\nu^{-3}\|u\|_6^4\|\nabla u\|_2^2.
+```
+
+Thus
+
+```math
+\|\nabla u(t)\|_2^2
+\le \|\nabla u_0\|_2^2
+\exp\!\left(C\nu^{-3}\int_0^t\|u(s)\|_6^4ds\right).
+```
+
+The exact missing coefficient is `||u||6^4`.
+
+For the difference `w=v-u`, the same exponent appears:
+
+```math
+\frac d{dt}\|w\|_2^2
+\le C\nu^{-3}\|u\|_6^4\|w\|_2^2.
+```
+
+This closes weak–strong uniqueness under the standard rigorous interface.
+
+## S2 — continuation and Clay correspondence
+
+For the maximal H1 strong solution on `[0,T*)`, finite critical integral bounds the H1 norm and permits restart. Therefore
+
+```math
+T_*<∞
+\implies
+∫₀^{T_*}‖u(t)‖₆⁴dt=∞.
+```
+
+For Fefferman's full data class:
+
+```text
+global Leray weak existence
+ + universal finite I_T
+ + operational LPS regularity and uniqueness
+ + local H1 continuation and bootstrapping
+ -> global smooth solution with bounded energy
+ -> Clay statement (A).
+```
+
+This is an audited one-way implication. Bidirectional equivalence is not promoted until the reverse strong-class and every-Leray–Hopf bridge is source-normalized.
+
+## S3 — negative route ledger
 
 Terminate or restrict any route relying only on:
 
-- the energy-space membership;
+- energy-space membership;
 - finite-time `L^p` inclusion in the wrong direction;
-- a uniform `H¹` bound not already proved;
-- a Galerkin cutoff with constants depending badly on cutoff;
-- an estimate that becomes weaker at smaller scales;
-- a hypothesis that already implies regularity by a known theorem.
+- an unproved uniform H1 bound;
+- a Galerkin cutoff with scale-deteriorating constants;
+- a supercritical estimate;
+- a hypothesis already equivalent to known regularity;
+- silent transfer from compact support to the full rapid-decay class;
+- numerical boundedness as continuum proof.
 
-Each terminated route must include the smallest exact failure and the nearest viable restricted problem.
+Each terminated route must record the smallest exact failure and nearest viable restricted problem.
 
-### S4 — restricted-target matrix
+## S4 — restricted-target matrix
 
-Score candidates from 0–4 on:
+Status: not opened for scoring.
 
-- leverage toward `MS-NS-CI-T011`;
-- source novelty risk;
+After parent WP00 promotion, candidates may be scored on:
+
+- leverage toward `MS-NS-CI-T013`;
+- prior-art and novelty risk;
 - non-circularity;
 - scaling compatibility;
 - analytic tractability;
-- experimental falsifiability;
+- falsifiability;
 - formalization/certification route;
-- dependence on unavailable infrastructure.
+- infrastructure and compute cost.
 
-No target advances unless Axiomatist, Cartographer, Verifier, Adversary, Formalist, and Referee obligations are recorded.
+No target advances without the full Council record.
 
-## Candidate mechanism classes to audit, not endorse
+## Candidate mechanism classes to audit later, not endorse now
 
 1. Smallness in a critical space.
 2. Frequency-envelope or shell-localized criteria.
 3. Geometric depletion of vortex stretching.
 4. One-component or directional criteria.
-5. Quantitative continuation bounds from near-critical norms.
-6. Conditional transfer from local energy concentration controls.
-7. Symmetry classes stable under perturbation.
+5. Quantitative continuation from near-critical norms.
+6. Local-energy concentration controls.
+7. Perturbatively stable symmetry classes.
 
-Each class must be checked against prior art before any novelty claim.
+Each class requires prior-art audit before novelty language.
 
 ## Proof debt
 
-| Debt | Type | Blocking | Discharge condition |
+| Debt | Type | Blocking here | State |
 |---|---|---:|---|
-| Exact LPS theorem at `(4,6)` | external source | yes | source-normalized theorem statement |
-| Weak–strong uniqueness | imported bridge | yes | matching theorem and hypotheses |
-| Local maximal-time theory | external source | yes | matching theorem and strong norm |
-| Clay correspondence | semantic bridge | yes | written implication map |
-| Critical nonlinear estimate | analytic reconstruction | yes | line-by-line derivation |
-| Restricted target | route selection | no | reviewed scorecard |
+| Operational LPS theorem at `(4,6)` | external source | no | audited |
+| Weak–strong uniqueness | imported bridge | no | operationally audited and estimate reconstructed |
+| Local maximal-time theory | external source | no | operationally audited and restart route reconstructed |
+| Full-data Clay forward implication | semantic bridge | no | checked |
+| Reverse equivalence | semantic bridge | no | pending; not claimed |
+| Historical Serrin/Ladyzhenskaya extraction | provenance | no | pending |
+| Restricted target | route selection | yes before WP04 | unopened |
+| Parent Amanuensis/Referee gate | governance | yes | pending |
 
 ## MATHCERT handoff
 
-The first certification target is mixed-norm scaling, not PDE regularity. Imported PDE theorems must remain provenance-bearing assumptions in any formal implication theorem.
+The first certification target remains mixed-norm scaling. Imported PDE theorems stay provenance-bearing assumptions in any formal implication theorem.
 
-## First executable step
+## Current executable step
 
-Produce `work_packages/NS_CI_WP00_LPS_RECONSTRUCTION.md` with:
+Do not produce a mechanism proposal. Support the parent PR by:
 
-- exact imported theorem statement;
-- derivation of the nonlinear estimate generating `‖u‖₆⁴`;
-- differential inequality and Grönwall step;
-- weak-to-strong upgrade route;
-- assumptions and domain ledger;
-- explicit statement of what this proof does not provide.
+- verifying cross-document data-class consistency;
+- verifying the one-way implication language;
+- responding to any Referee concern about the H1 restart or every-Leray–Hopf quantifier;
+- preserving the quantitative reconstruction as the canonical analytic interface.
 
 ## Completion gate
 
-WP00 is ready for programme review only when:
+This MATHSOLVE WP00 slice is ready for parent review when:
 
-- every imported theorem is source-matched;
-- the critical estimate is reconstructed rather than cited by name;
-- the continuation bridge has no implicit arrow;
-- the proof-debt register is current;
-- no result claim exceeds the parent MATH-PROGRAMME ledger.
+- the parent artifacts use the full Fefferman data class;
+- compact support is only a restricted lane;
+- the quantitative estimate is linked in the claim ledger;
+- the Referee approves the forward implication and non-equivalence boundary;
+- CI passes;
+- no result claim exceeds the parent ledger.
