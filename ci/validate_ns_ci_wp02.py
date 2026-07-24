@@ -83,9 +83,23 @@ def validate(payload: dict[str, Any]) -> None:
 
     cr006 = by_id["CR-006"]
     conclusion_006 = str(cr006.get("conclusion", ""))
+    differential_006 = str(cr006.get("differential_form", ""))
+    if "integrated inequality" not in conclusion_006:
+        raise ValidationError("CR-006 must expose the rigorous integrated weak-strong inequality")
+    for hypothesis in (
+        "weak energy inequality for v",
+        "strong energy equality for u",
+        "admissible time regularization and cross testing",
+    ):
+        if hypothesis not in cr006.get("hypotheses", []):
+            raise ValidationError(f"CR-006 is missing rigorous-route hypothesis {hypothesis!r}")
     for token in ("nu^(-3)", "norm_L6(u)^4", "norm_L2(w)^2"):
-        if token not in conclusion_006:
-            raise ValidationError(f"CR-006 conclusion is missing {token}")
+        if token not in differential_006:
+            raise ValidationError(f"CR-006 differential form is missing {token}")
+    prohibited_006 = " ".join(cr006.get("prohibited_overstatement", [])).lower()
+    for phrase in ("formal smooth-pair equality", "unconditional weak-solution identity"):
+        if phrase not in prohibited_006:
+            raise ValidationError(f"CR-006 must prohibit {phrase!r}")
 
     cr009 = by_id["CR-009"]
     if cr009.get("role") != "one_way_bridge" or cr009.get("status") != "CHECKED_ONE_WAY_BRIDGE":
