@@ -8,7 +8,7 @@
     {"id": "A2-P02", "statement": "Prove or reject low-frequency enstrophy product closure.", "status": "terminated"},
     {"id": "A2-P03", "statement": "Prove or reject direct interpolation closure.", "status": "terminated"},
     {"id": "A2-P04", "statement": "Establish a PDE-specific packing, cancellation, depletion, or direct critical-integral estimate.", "status": "open"},
-    {"id": "A2-P05", "statement": "Conclude A2 under the exact Leray-Hopff and source hypotheses.", "status": "open"}
+    {"id": "A2-P05", "statement": "Conclude A2 under the exact Leray-Hopf and source hypotheses.", "status": "open"}
   ],
   "edges": [["A2-P00","A2-P01"],["A2-P00","A2-P02"],["A2-P00","A2-P03"],["A2-P01","A2-P04"],["A2-P02","A2-P04"],["A2-P03","A2-P04"],["A2-P04","A2-P05"]]
 }
