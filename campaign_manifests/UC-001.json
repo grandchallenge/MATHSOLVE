@@ -1,1 +1,101 @@
-{"schema_version":"1.0.0","manifest_id":"MS-MANIFEST-UC-001","campaign_id":"UC-001","coverage_mode":"native","programme":{"repository":"grandchallenge/MATH-PROGRAMME","issue":"https://github.com/grandchallenge/MATH-PROGRAMME/pull/51","commit_sha":"21f58f305e331689930f1682656dfa50d4b3b75f"},"forge_inputs":[{"repository":"grandchallenge/MATHFORGE","commit_sha":"2cb624cc61cd95ec0c8cfb8429d93128972289a5","path":"provider_manifests/UC-001.json","digest_algorithm":"git_blob_sha1","digest":"6d803633c2697f100d7d5b616ea1d6f16bff34bf","role":"source"}],"solve":{"repository":"grandchallenge/MATHSOLVE","provider_issue":"https://github.com/grandchallenge/MATHSOLVE/issues/1","provider_commit":"0a859ee8cad2cefa095b75d513853416a869cb07","migration_debt":[]},"work_packages":[{"work_package_id":"MS-UC-WP04","primary_type":"EXACT_COMPUTATIONAL_SCREEN","status":"complete","source_repository":"grandchallenge/MATHSOLVE","source_commit":"0a859ee8cad2cefa095b75d513853416a869cb07","artifacts":[{"repository":"grandchallenge/MATHSOLVE","commit_sha":"0a859ee8cad2cefa095b75d513853416a869cb07","path":"domains/union_closed/WP04_small_cases_and_certificates","digest_algorithm":"git_commit_sha1","digest":"0a859ee8cad2cefa095b75d513853416a869cb07","role":"solve_artifact"}],"ledgers":{"claim":{"repository":"grandchallenge/MATHSOLVE","commit_sha":"0a859ee8cad2cefa095b75d513853416a869cb07","path":"domains/union_closed/WP04_small_cases_and_certificates","digest_algorithm":"git_commit_sha1","digest":"0a859ee8cad2cefa095b75d513853416a869cb07","role":"claim_ledger"},"proof_obligation":{"repository":"grandchallenge/MATHSOLVE","commit_sha":"0a859ee8cad2cefa095b75d513853416a869cb07","path":"domains/union_closed/WP04_small_cases_and_certificates","digest_algorithm":"git_commit_sha1","digest":"0a859ee8cad2cefa095b75d513853416a869cb07","role":"proof_obligation_dag"},"failed_route":{"repository":"grandchallenge/MATHSOLVE","commit_sha":"0a859ee8cad2cefa095b75d513853416a869cb07","path":"domains/union_closed/WP04_small_cases_and_certificates","digest_algorithm":"git_commit_sha1","digest":"0a859ee8cad2cefa095b75d513853416a869cb07","role":"failed_route_ledger"},"resource":{"repository":"grandchallenge/MATHSOLVE","commit_sha":"0a859ee8cad2cefa095b75d513853416a869cb07","path":"domains/union_closed/WP04_small_cases_and_certificates","digest_algorithm":"git_commit_sha1","digest":"0a859ee8cad2cefa095b75d513853416a869cb07","role":"resource_ledger"},"certification":null},"children":[]}],"certification":{"repository":"grandchallenge/MATHCERT","handoff_state":"partial","handoff_packets":[]},"promotion":{"eligible":false,"blockers":["Frankl's conjecture remains open; only bounded and restricted claims may be handed off.","Native campaign coverage before WP04 remains distributed across legacy artifacts."]},"disposal":{"status":"active","supersedes":[],"reopening_conditions":["Reopen the manifest when provider lineage, claim status, or certification state changes."]}}
+{
+  "schema_version": "1.1.0",
+  "manifest_id": "MS-MANIFEST-UC-001",
+  "campaign_id": "UC-001",
+  "coverage_mode": "native",
+  "programme": {
+    "repository": "grandchallenge/MATH-PROGRAMME",
+    "issue": "https://github.com/grandchallenge/MATH-PROGRAMME/pull/51",
+    "commit_sha": "21f58f305e331689930f1682656dfa50d4b3b75f"
+  },
+  "forge_inputs": [
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "2cb624cc61cd95ec0c8cfb8429d93128972289a5",
+      "path": "provider_manifests/UC-001.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "6d803633c2697f100d7d5b616ea1d6f16bff34bf",
+      "role": "source"
+    }
+  ],
+  "solve": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "provider_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/1",
+    "provider_commit": "ec7c60bfa51850d7fb11bd5a3a24ca834352366e",
+    "migration_debt": []
+  },
+  "work_packages": [
+    {
+      "work_package_id": "MS-UC-WP04",
+      "primary_type": "EXACT_COMPUTATIONAL_SCREEN",
+      "status": "complete",
+      "source_repository": "grandchallenge/MATHSOLVE",
+      "source_commit": "0a859ee8cad2cefa095b75d513853416a869cb07",
+      "artifacts": [
+        {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "0a859ee8cad2cefa095b75d513853416a869cb07",
+          "path": "domains/union_closed/WP04_small_cases_and_certificates/README.md",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "e4f4882666653fa1f0996aa7923e6290137fe2ee",
+          "role": "solve_artifact"
+        }
+      ],
+      "ledgers": {
+        "claim": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "2a0124051d67b4db63a75f5cc592a02b7553a2c2",
+          "path": "campaign_ledgers/UC-001/claim_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "05c5b58f603a923fd6e66b44411ffd7c53559d55",
+          "role": "claim_ledger"
+        },
+        "proof_obligation": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "7d8ebdddc74b231b2405465259d0b799e6d8f3a0",
+          "path": "campaign_ledgers/UC-001/proof_obligation_dag.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "5cc706c23636dadd83ab859246c412918c605f15",
+          "role": "proof_obligation_dag"
+        },
+        "failed_route": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "ee5de57203ee5bd676a7b8af6a4c7b774d0ffe2f",
+          "path": "campaign_ledgers/UC-001/failed_route_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "bf427da00c7b2a9f3d3f14fba3792be586ed1a9b",
+          "role": "failed_route_ledger"
+        },
+        "resource": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "196db9654b9bb41ac10f27634c125360a734cc31",
+          "path": "campaign_ledgers/UC-001/resource_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "4394b029c60ec97d3c58bb85872b7cfa9afc6abd",
+          "role": "resource_ledger"
+        },
+        "certification": null
+      },
+      "children": []
+    }
+  ],
+  "certification": {
+    "repository": "grandchallenge/MATHCERT",
+    "handoff_state": "partial",
+    "handoff_packets": []
+  },
+  "promotion": {
+    "eligible": false,
+    "blockers": [
+      "Frankl's conjecture remains open; only bounded and restricted claims may be handed off.",
+      "Native campaign coverage before WP04 remains distributed across legacy artifacts."
+    ]
+  },
+  "disposal": {
+    "status": "active",
+    "supersedes": [],
+    "reopening_conditions": [
+      "Reopen the manifest when provider lineage, claim status, or certification state changes."
+    ]
+  }
+}
