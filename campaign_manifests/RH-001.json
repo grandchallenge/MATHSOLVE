@@ -1,1 +1,28 @@
-{"schema_version":"1.0.0","manifest_id":"MS-MANIFEST-RH-001","campaign_id":"RH-001","coverage_mode":"retrospective","programme":{"repository":"grandchallenge/MATH-PROGRAMME","issue":"https://github.com/grandchallenge/MATH-PROGRAMME/pull/89","commit_sha":"83810a645a08d41055ac40eaa56ce5eb69985361"},"forge_inputs":[{"repository":"grandchallenge/MATHFORGE","commit_sha":"2cb624cc61cd95ec0c8cfb8429d93128972289a5","path":"provider_manifests/RH-001.json","digest_algorithm":"git_blob_sha1","digest":"adcbee2583e5da2b59babefbafec943c113ba4ed","role":"source"}],"solve":{"repository":"grandchallenge/MATHSOLVE","provider_issue":"https://github.com/grandchallenge/MATHSOLVE/issues/68","provider_commit":"6ba789194524b8589623688ca46b82e58c5ba3c8","migration_debt":["Move all future theorem-spine, route-selection, failure-ledger, and target-development work into MATHSOLVE.","Replace retrospective Programme bundle references with native digest-bearing Solve artifacts as each stage advances."]},"work_packages":[{"work_package_id":"RH-WP00-WP02-RETROSPECTIVE","primary_type":"GOVERNANCE_HANDOFF","status":"active","source_repository":"grandchallenge/MATH-PROGRAMME","source_commit":"83810a645a08d41055ac40eaa56ce5eb69985361","artifacts":[{"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"83810a645a08d41055ac40eaa56ce5eb69985361","path":"campaigns/riemann_hypothesis","digest_algorithm":"git_commit_sha1","digest":"83810a645a08d41055ac40eaa56ce5eb69985361","role":"programme_bundle"}],"ledgers":{"claim":{"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"83810a645a08d41055ac40eaa56ce5eb69985361","path":"campaigns/riemann_hypothesis/WP02_THEOREM_LEDGER/02_THEOREM_LEDGER.json","digest_algorithm":"git_commit_sha1","digest":"83810a645a08d41055ac40eaa56ce5eb69985361","role":"claim_ledger"},"proof_obligation":{"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"83810a645a08d41055ac40eaa56ce5eb69985361","path":"campaigns/riemann_hypothesis/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json","digest_algorithm":"git_commit_sha1","digest":"83810a645a08d41055ac40eaa56ce5eb69985361","role":"proof_obligation_dag"},"failed_route":null,"resource":null,"certification":null},"children":[]}],"certification":{"repository":"grandchallenge/MATHCERT","handoff_state":"pending","handoff_packets":[]},"promotion":{"eligible":false,"blockers":["Historical WP00-WP02 work is embedded in MATH-PROGRAMME and requires migration.","RH remains open and no terminal claim is ready for MATHCERT."]},"disposal":{"status":"active","supersedes":[],"reopening_conditions":["Reopen the manifest when provider lineage, claim status, or certification state changes."]}}
+{
+  "schema_version": "1.1.0",
+  "manifest_id": "MS-MANIFEST-RH-001",
+  "campaign_id": "RH-001",
+  "coverage_mode": "retrospective",
+  "programme": {"repository": "grandchallenge/MATH-PROGRAMME", "issue": "https://github.com/grandchallenge/MATH-PROGRAMME/pull/89", "commit_sha": "83810a645a08d41055ac40eaa56ce5eb69985361"},
+  "forge_inputs": [{"repository": "grandchallenge/MATHFORGE", "commit_sha": "2cb624cc61cd95ec0c8cfb8429d93128972289a5", "path": "provider_manifests/RH-001.json", "digest_algorithm": "git_blob_sha1", "digest": "adcbee2583e5da2b59babefbafec943c113ba4ed", "role": "source"}],
+  "solve": {"repository": "grandchallenge/MATHSOLVE", "provider_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/68", "provider_commit": "ec7c60bfa51850d7fb11bd5a3a24ca834352366e", "migration_debt": ["Move all future theorem-spine, route-selection, failure-ledger, and target-development work into MATHSOLVE.", "Replace retrospective Programme references with native Solve artifacts as each stage advances."]},
+  "work_packages": [{
+    "work_package_id": "RH-WP00-WP02-RETROSPECTIVE",
+    "primary_type": "GOVERNANCE_HANDOFF",
+    "status": "active",
+    "source_repository": "grandchallenge/MATH-PROGRAMME",
+    "source_commit": "83810a645a08d41055ac40eaa56ce5eb69985361",
+    "artifacts": [{"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "83810a645a08d41055ac40eaa56ce5eb69985361", "path": "RH-WP01-WP02-post-WP00-integration.md", "digest_algorithm": "git_blob_sha1", "digest": "6feff9cd9673ede79d167a6fa02b91a6c1766234", "role": "programme_bundle"}],
+    "ledgers": {
+      "claim": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "83810a645a08d41055ac40eaa56ce5eb69985361", "path": "campaigns/riemann_hypothesis/WP02_THEOREM_LEDGER/02_THEOREM_LEDGER.json", "digest_algorithm": "git_blob_sha1", "digest": "d3770a7f0f6160767bba50550de22468adbce48a", "role": "claim_ledger"},
+      "proof_obligation": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "83810a645a08d41055ac40eaa56ce5eb69985361", "path": "campaigns/riemann_hypothesis/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json", "digest_algorithm": "git_blob_sha1", "digest": "8d4da317844004122ffbc71564343f6450878108", "role": "proof_obligation_dag"},
+      "failed_route": null,
+      "resource": null,
+      "certification": null
+    },
+    "children": []
+  }],
+  "certification": {"repository": "grandchallenge/MATHCERT", "handoff_state": "pending", "handoff_packets": []},
+  "promotion": {"eligible": false, "blockers": ["Historical WP00-WP02 work is embedded in MATH-PROGRAMME and requires migration.", "RH remains open and no terminal claim is ready for MATHCERT."]},
+  "disposal": {"status": "active", "supersedes": [], "reopening_conditions": ["Reopen the manifest when provider lineage, claim status, or certification state changes."]}
+}
