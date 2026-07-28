@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "handoff_id": "MC-<CAMPAIGN>-<WORK-PACKAGE>",
+  "campaign_id": "<CAMPAIGN-ID>",
+  "solve_work_package_id": "<SOLVE-WP-ID>",
+  "source_commit": "0000000000000000000000000000000000000000",
+  "target_claims": [
+    {
+      "claim_id": "<CLAIM-ID>",
+      "statement": "Exact theorem or certificate statement.",
+      "claim_type": "theorem | exact_computation | interval_claim | formal_interface",
+      "support_type": "proof | replayable_certificate | proof_debt"
+    }
+  ],
+  "claim_ledger": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "0000000000000000000000000000000000000000",
+    "path": "<PATH>",
+    "digest_algorithm": "sha256",
+    "digest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "role": "claim_ledger"
+  },
+  "proof_obligations": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "0000000000000000000000000000000000000000",
+    "path": "<PATH>",
+    "digest_algorithm": "sha256",
+    "digest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "role": "proof_obligation_dag"
+  },
+  "checker_contract": {
+    "target": "Lean",
+    "inputs": ["Exact source and certificate artifact identities"],
+    "acceptance": "The declared checker accepts every target claim under the exact stated hypotheses.",
+    "rejection": "Any parse, replay, type, proof, identity, scope, or provenance failure rejects the handoff."
+  },
+  "status": "pending",
+  "reopening_conditions": ["Source, claim, hypothesis, checker, or certificate identity changes."]
+}
