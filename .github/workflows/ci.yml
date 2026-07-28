@@ -19,6 +19,13 @@ jobs:
         run: |
           python ci/validate_solve.py
           python ci/test_validate_solve.py
+      - name: Validate recursive campaign manifests and Cert boundaries
+        run: |
+          python ci/validate_campaign_manifests.py
+          python -m unittest ci/test_campaign_manifests.py -v
+          python -m json.tool schemas/campaign_manifest.schema.json >/dev/null
+          python -m json.tool schemas/mathcert_handoff.schema.json >/dev/null
+          python -m json.tool templates/mathcert_handoff.json >/dev/null
       - name: Validate NS-CI WP02 conditional-regularity ledger
         run: |
           python ci/validate_ns_ci_wp02.py

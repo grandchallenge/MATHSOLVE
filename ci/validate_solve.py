@@ -24,14 +24,31 @@ def schema_path() -> Path:
 
 
 def graph_refs() -> set[str]:
-    graph_path = WORKSPACE / "MATH-PROGRAMME" / "knowledge_graph" / "union_closed.json"
-    if graph_path.exists():
-        graph = json.loads(graph_path.read_text(encoding="utf-8"))
-        return {node["node_id"] for node in graph["nodes"]}
-    contract = json.loads(
-        (ROOT / "contracts" / "classification_discovery_refs.json").read_text(encoding="utf-8")
-    )
-    return set(contract["knowledge_graph_refs"])
+    """Return programme references for all registered Solve campaigns.
+
+    A sibling MATH-PROGRAMME checkout may provide richer live graph nodes. The
+    checked-in registry is the deterministic CI fallback and is no longer
+    Union-Closed-specific.
+    """
+    refs: set[str] = set()
+    registry_path = ROOT / "contracts" / "programme_reference_registry.json"
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    for campaign in registry.get("campaigns", {}).values():
+        if not isinstance(campaign, dict):
+            continue
+        refs.update(str(item) for item in campaign.get("knowledge_graph_refs", []))
+        refs.update(str(item) for item in campaign.get("classification_mapping_refs", []))
+
+    graph_root = WORKSPACE / "MATH-PROGRAMME" / "knowledge_graph"
+    if graph_root.exists():
+        for graph_path in sorted(graph_root.glob("*.json")):
+            graph = json.loads(graph_path.read_text(encoding="utf-8"))
+            refs.update(
+                str(node["node_id"])
+                for node in graph.get("nodes", [])
+                if isinstance(node, dict) and node.get("node_id")
+            )
+    return refs
 
 
 def validate_ledger(
@@ -129,7 +146,7 @@ def main() -> int:
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1
-    print(f"validated {len(paths)} MATHSOLVE claim ledger(s)")
+    print(f"validated {len(paths)} MATHSOLVE claim ledger(s) across programme campaigns")
     return 0
 
 
