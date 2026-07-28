@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "NS-CI-R014-A2-FAILED-ROUTES",
+  "campaign_id": "NS-CI-001",
+  "routes": [
+    {"route_id": "A2-FR-001", "route": "Source envelope alone", "disposition": "TERMINATED", "obstruction": "Lambda in L2 does not control the 5/2 envelope."},
+    {"route_id": "A2-FR-002", "route": "Product of separate L1 budgets", "disposition": "TERMINATED", "obstruction": "Separate integrability does not control Lambda squared times dissipation."},
+    {"route_id": "A2-FR-003", "route": "Direct low-mode interpolation", "disposition": "TERMINATED", "obstruction": "The estimate requires Lambda in L3."},
+    {"route_id": "A2-FR-004", "route": "Excursion-persistence lane L3", "disposition": "TERMINATED", "obstruction": "The proved exit charge remains on a summable inverse-frequency scale."},
+    {"route_id": "A2-FR-005", "route": "Positive weighted-column lane L4", "disposition": "TERMINATED", "obstruction": "The active diagonal survives and no selected-transfer cancellation theorem closes it."}
+  ],
+  "reopening_condition": "A new equation-specific cancellation, depletion, decorrelation, packing, or direct L5 estimate must discharge the named obstruction."
+}
