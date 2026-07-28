@@ -2,13 +2,17 @@
 
 ## Review status
 
-`CORRECTIVE_REVIEW_IMPLEMENTED_CI_PENDING`
+`CORRECTIVE_REVIEW_VALIDATED`
 
 Reviewed object: merged `grandchallenge/MATHSOLVE#71` at merge commit `ec7c60bfa51850d7fb11bd5a3a24ca834352366e`.
 
+Corrective head: `5b84627b31df04a9177c12bfb988e3bf6213ddcf`.
+
+Validation: Solve checks run `30406924372` completed successfully.
+
 ## Council review
 
-**Status:** reviewed with required corrections applied.
+**Status:** reviewed with required corrections applied and validated.
 
 The recursive manifest is the correct governing abstraction. Native and retrospective coverage remain distinct. The original implementation was not yet sufficient because it permitted repository commits to stand in for artifact hashes and did not distinguish a complete Cert disposition from positive certification.
 
@@ -24,7 +28,7 @@ The reviewed contract now:
 
 ## Adversary review
 
-**Status:** reviewed; blocking mutations added.
+**Status:** reviewed; blocking mutations added and green.
 
 The review rejects:
 
@@ -70,15 +74,13 @@ Continuity actions:
 
 ## Referee review
 
-**Status:** conditional approval pending exact-head CI and Programme re-pin.
+**Status:** technically approved; Programme promotion remains conditional.
 
-The corrected MATHSOLVE contract is suitable for promotion after:
+The exact corrective head passed repository checks, including schema, manifest, template, identity, and adversarial validation. Final cross-repository promotion still requires:
 
-1. schema, manifest, template, and adversarial tests pass on the exact review head;
-2. all native ledger identities validate against repository bytes;
-3. MATH-PROGRAMME pins the final corrective MATHSOLVE commit and manifest blob identities;
-4. the Programme waiver and claim-promotion semantics are repaired;
-5. INTELLECT's reviewed promotion semantics remain concordant.
+1. MATH-PROGRAMME PR `#119` to pin this exact provider head and the eight reviewed manifest blob identities;
+2. Programme waiver and claim-promotion semantics to pass the complete policy workflow;
+3. INTELLECT PR `#5` to remain concordant on positive Cert promotion.
 
 ## Claim boundary
 
