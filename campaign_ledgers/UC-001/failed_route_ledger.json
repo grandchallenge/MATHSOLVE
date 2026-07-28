@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "MS-UC-WP04-FAILED-ROUTES",
+  "campaign_id": "UC-001",
+  "routes": [
+    {
+      "route_id": "UC-FR-001",
+      "route": "Promote exact replay through n <= 4 to the universal conjecture.",
+      "disposition": "REJECT",
+      "obstruction": "The universal quantifier is not discharged beyond the finite checked range."
+    },
+    {
+      "route_id": "UC-FR-002",
+      "route": "Promote singleton or two-element-member theorems to arbitrary families.",
+      "disposition": "REJECT",
+      "obstruction": "The restricted membership hypotheses are not available for every union-closed family."
+    }
+  ]
+}
