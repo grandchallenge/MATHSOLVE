@@ -4,46 +4,49 @@
 
 MATHSOLVE is the Grand Challenge campaign pillar. It is the disciplined middle between discovery and certification. It turns candidate problems into Work Packages, theorem spines, reductions, exact screens, failed attempts, restricted targets, pedagogical companions, and MATHCERT handoffs.
 
-MATHSOLVE is where understanding is earned.
-
-## Motto
-
 > MATHSOLVE does not certify success. MATHSOLVE organizes the struggle.
 
-## Why this pillar exists
+## Constitutional routing invariant
 
-MATHFORGE can identify promising mathematical ore. MATHCERT can check claims. Neither alone captures the craft of mathematical development. The Chaidez programme demonstrated that real progress often consists of carefully stated partial results, normal forms, reductions, negative corridors, exact computations, compact residual domains, and plain-language exposition. That craft is MATHSOLVE.
+Every Grand Intellect mathematical struggle, including every MATH-PROGRAMME campaign, is governed through MATHSOLVE or covered by an explicit reviewed exemption. GitHub is the present authoritative lineage record. AETHER is the future semantic projection. Every resulting mathematical claim is handed to MATHCERT.
+
+No mathematical campaign may be promoted by implication, omission, or repository accident.
+
+MATHSOLVE owns the campaign record even when historical work must be registered retrospectively. Retrospective registration preserves lineage and migration debt. It does not imply native historical execution.
 
 ## Responsibilities
 
 MATHSOLVE owns:
 
-1. **Work Package production** with lay and technical components.
-2. **Theorem spine construction**: definitions, propositions, lemmas, corollaries, examples, counterexamples.
-3. **Status audit synthesis**: what is known, what is open, what is solved under special hypotheses, what has changed recently.
-4. **Reduction strategy**: identify normal forms, equivalences, restricted regimes, and finite/infinite decompositions.
-5. **Failure accounting**: record approaches that fail and the obstruction they reveal.
-6. **Exact computational campaigns**: rational screens, exhaustive enumeration, certificate ledgers, reproducibility notes.
-7. **Pedagogical companion writing**: explain the object, obstruction, reduction, achieved result, and next target.
-8. **MATHCERT handoff preparation**: theorem statements, formal definitions, missing library notes, certificate schemas.
-9. **Programme reference preservation**: carry stable knowledge graph,
-   classification mapping, and discovery record references through every Work
-   Package and certification handoff.
+1. Work Package production with lay and technical components.
+2. Theorem-spine construction.
+3. Status and source-audit synthesis.
+4. Reduction strategy and restricted-regime selection.
+5. Method routing under declared budgets.
+6. Proof-obligation decomposition: semantics, encoding, adequacy, termination, confluence, provenance, and certification.
+7. Failure accounting and route termination.
+8. Exact computational campaigns.
+9. Witness minimization.
+10. Pedagogical companion writing.
+11. MATHCERT handoff preparation.
+12. Programme, Forge, Solve, and Cert lineage preservation.
 
 ## Non-responsibilities
 
 MATHSOLVE does not:
 
-- declare uncertified computations certified;
-- treat synthesis as proof;
-- hide assumptions;
-- erase dead ends;
-- publish a theorem claim without a claim ledger;
-- require that every Work Package prove a theorem.
+- certify its own claims;
+- treat synthesis, numerical evidence, or raw CAS output as proof;
+- infer mathematical failure from resource exhaustion;
+- erase failed routes or hidden assumptions;
+- infer confluence from one successful reduction path;
+- promote finite or exceptional-parameter evidence to a universal theorem;
+- replace MATH-PROGRAMME policy authority;
+- replace MATHCERT claim authority.
 
 ## Work Package types
 
-A MATHSOLVE Work Package may be one of:
+A Work Package declares one primary type:
 
 ```text
 STATUS_SPINE
@@ -52,97 +55,153 @@ NORMAL_FORM_REDUCTION
 RESTRICTED_THEOREM
 NEGATIVE_RESULT
 EXACT_COMPUTATIONAL_SCREEN
+ALGEBRAIC_GEOMETRY_CAMPAIGN
 INTERVAL_CERTIFICATION_CAMPAIGN
 FORMALIZATION_HANDOFF
 COUNTEREXAMPLE_SEARCH
 PEDAGOGICAL_COMPANION
+GOVERNANCE_HANDOFF
 ```
 
-A Work Package may combine types, but it must identify its primary type.
+## Required Work Package contents
 
-## Required Work Package sections
+Every serious Work Package includes:
 
-Every serious Work Package must include:
+1. lay executive companion;
+2. formal problem statement;
+3. known terrain and source audit;
+4. claim ledger;
+5. theorem/proposition/lemma spine;
+6. proofs, computations, or failed-attempt analysis;
+7. boundary between proof, evidence, and conjecture;
+8. next executable target;
+9. MATHCERT handoff;
+10. reproducibility and external-audit appendix;
+11. exact upstream repository commits and artifact identities;
+12. reopening and disposal conditions.
 
-1. **Lay executive companion**.
-2. **Formal problem statement**.
-3. **Known terrain and source audit**.
-4. **Claim ledger**.
-5. **Theorem/proposition/lemma spine**.
-6. **Proofs, computations, or failed attempt analysis**.
-7. **Boundary between proof, evidence, and conjecture**.
-8. **Next analytic target**.
-9. **MATHCERT handoff**.
-10. **Appendix for reproducibility and external audit**.
+A computational campaign additionally includes:
+
+1. representation and solution-correspondence audit;
+2. computation contract and intended equivalence relation;
+3. termination and adequacy statement;
+4. structural forecast;
+5. method comparison and selection rationale;
+6. resource ledger;
+7. failed-route ledger;
+8. provenance from generated objects to source generators;
+9. minimized witness;
+10. independent replay status.
+
+A canonical-normal-form or Groebner-basis claim requires a complete critical-pair disposition ledger.
+
+## Recursive campaign manifest
+
+Every active campaign is represented by `campaign_manifests/<CAMPAIGN-ID>.json` under `schemas/campaign_manifest.schema.json`.
+
+The manifest recursively records Work Packages and their children. It binds:
+
+- MATH-PROGRAMME parent issue and commit;
+- MATHFORGE inputs with exact commit and content identity;
+- native or retrospective MATHSOLVE coverage;
+- source repository and commit for every Work Package;
+- claim, proof-obligation, failed-route, resource, and certification ledgers;
+- MATHCERT handoff state;
+- promotion blockers;
+- supersession, disposal, and reopening conditions.
+
+A manifest may be structurally complete while promotion remains blocked. Unknown lineage is represented as debt, not guessed.
 
 ## Work Package lifecycle
 
 ```text
 Candidate problem
-  -> WP00 intake card
-  -> WP01 status spine
-  -> WP02 definitions and formalization handoff
+  -> WP00 intake and semantic lock
+  -> WP01 status or false-proof spine
+  -> WP02 definitions, theorem interfaces, and formalization handoff
   -> WP03 restricted theorem or exact screen
-  -> WP04 obstruction/counterexample/interval campaign
-  -> WP05 synthesis or certified result preparation
+  -> WP04 obstruction, counterexample, or target-selection campaign
+  -> WP05 synthesis and certification preparation
 ```
 
-Not every domain follows this sequence exactly, but deviations must be justified.
+Deviations must be explicit in the recursive manifest.
 
-## Success conditions
-
-A MATHSOLVE package succeeds when it makes the next state of the problem clearer than the previous state. This includes:
-
-- a new theorem;
-- a verified small case;
-- a useful normal form;
-- a negative result eliminating a route;
-- a careful synthesis of scattered literature;
-- a formalization-ready definition layer;
-- a reproducible computation;
-- an honest failure that exposes the true obstruction.
-
-## Failure conditions
-
-A MATHSOLVE package fails if it:
-
-- reads like motivational prose without mathematical obligations;
-- labels evidence as proof;
-- lacks a claim ledger;
-- lacks a next target;
-- hides uncertainty;
-- does not teach the reader the problem’s structure;
-- cannot be handed to MATHCERT in any meaningful form.
-
-## Repository structure
+For algebraic geometry:
 
 ```text
-MATHSOLVE/
-  README.md
-  SPEC.md
-  standards/
-    GRAND_CHALLENGE_WORK_PACKAGE_STANDARD.md
-    GRAND_CHALLENGE_PEDAGOGY_STANDARD.md
-  domains/
-    union_closed/
-      WP01_status_spine/
-      WP02_lean_handoff/
-      WP03_known_bounds_synthesis/
-      WP04_small_cases_and_certificates/
-    erdos_straus/
-    hadamard/
-    alon_tarsi/
-    osp_recoupling/
-  templates/
-    work_package_template.md
-    claim_ledger_template.yaml
-    cert_handoff_template.md
+AG-00 semantic and encoding audit
+  -> AG-01 reduction contract and structural forecast
+  -> AG-02 method comparison
+  -> AG-03 bounded exact run with provenance
+  -> AG-04 witness minimization
+  -> AG-05 independent replay
+  -> AG-06 MATHCERT handoff
 ```
 
-## MATHSMELT as internal stage
+## Proof-obligation decomposition
 
-MATHSMELT is the internal refinement phase inside MATHSOLVE. It converts raw MATHFORGE leads into precise definitions, tractable subproblems, normal forms, theorem candidates, computational screens, and MATHCERT-ready claims. It is not the public pillar because MATHSOLVE is clearer and more serious.
+Every exact campaign separates, as applicable:
 
-## First obligation
+- semantic obligation;
+- encoding obligation;
+- reduction obligation;
+- termination obligation;
+- local-confluence obligation;
+- construction/provenance obligation;
+- certificate obligation.
 
-The first MATHSOLVE domain, Union-Closed Sets, must not begin by promising a proof of Frankl’s conjecture. It begins by constructing a high-quality status spine, then a Lean handoff layer, then restricted finite and definitional lemmas.
+Use the weakest sufficient certificate. One membership identity does not require certification of an entire basis. A canonical-normal-form claim does.
+
+## Method routing
+
+Route by obligation:
+
+- identity or ideal membership: exact reduction and coefficient witness;
+- field/domain implication: radical membership where appropriate;
+- structured elimination: resultants before a full elimination basis;
+- finite systems: favourable order, quotient algebra, multiplication matrices, or FGLM;
+- real solutions: exact isolation and lifting;
+- singularity: local standard bases and quotient dimensions;
+- dependencies: syzygies and relation matrices;
+- dimension/degree: Hilbert data or generic slicing;
+- sparse Laurent systems: Newton polytopes, mixed volume, and sparse resultants;
+- expensive target orders: basis conversion where justified;
+- parametric claims: explicit branch conditions and specialized certificates.
+
+A nontrivial method choice is compared against at least one alternative.
+
+## Certificate selection and handoff
+
+Use the weakest sufficient certificate:
+
+```text
+membership           f = sum(ai*gi)
+radical membership   f^N = sum(ai*gi)
+basis validity       critical-pair ledger
+canonical forms      basis validity + termination + adequacy
+source preservation  forward and reverse transformation matrices
+parametric theorem   branch conditions + specialized witnesses
+```
+
+Every claim-bearing package emits a packet conforming to `schemas/mathcert_handoff.schema.json`. The packet states target claims, exact source commit, ledgers, checker inputs, acceptance, rejection, status, and reopening conditions.
+
+MATHCERT alone records certification, qualification, rejection, or proof debt.
+
+## Success and failure
+
+A package succeeds when it makes the next state clearer through a theorem, verified small case, useful normal form, route-eliminating negative result, literature synthesis, formalization-ready layer, reproducible computation, minimized witness, missing-hypothesis branch, or honest obstruction.
+
+A package fails governance when it lacks theorem-grade obligations, claim and lineage ledgers, failed-route or resource disclosure where applicable, a next target, pedagogical structure, or a meaningful MATHCERT handoff.
+
+## Authority and migration
+
+GitHub commits, issues, pull requests, reviews, CI records, and content identities are authoritative now. AETHER projection must begin in shadow mode and must not be represented as authoritative before conformance is established.
+
+Historical Programme-embedded Solve work is registered retrospectively, marked with migration debt, and moved into MATHSOLVE for future stages. It is not duplicated as competing mathematical authority.
+
+## Binding maxim
+
+> No Grand Intellect mathematics without a Solve route.  
+> No Solve route without lineage.  
+> No mathematical claim without a Cert handoff.  
+> No promotion by implication, omission, or repository accident.
