@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.2.0",
+  "handoff_id": "MC-HANDOFF-BSD-001",
+  "campaign_id": "BSD-001",
+  "solve_work_package_id": "BSD-WP00-WP04-RETROSPECTIVE",
+  "source_commit": "68bbe0ae63c454b0dc63bedd0bc9f5501f8d5c03",
+  "cert_contract": {"repository": "grandchallenge/MATHCERT", "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3", "route_id": "MC-ROUTE-BSD-001"},
+  "target_claims": [{"claim_id": "BSD-R2-A1", "statement": "The selected 2-primary valuation identity holds under its exact future curve, local, and normalization hypotheses.", "claim_type": "SELECTED_RESEARCH_TARGET_UNPROVED", "support_type": "SPECIALIST_AUDIT_PENDING"}],
+  "claim_ledger": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "3c199b6a62f9aae61ba645c58506589ed48676dd", "path": "campaigns/birch_swinnerton_dyer/WP04_RESTRICTED_TARGET_SCORECARD/05_CLAIM_AND_GATE.json", "digest_algorithm": "git_blob_sha1", "digest": "63d859c2bcda9eb5b10e3092fa8a509bec9e9f74", "role": "claim_ledger"},
+  "proof_obligations": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "3c199b6a62f9aae61ba645c58506589ed48676dd", "path": "campaigns/birch_swinnerton_dyer/WP04_RESTRICTED_TARGET_SCORECARD/04_PROOF_OBLIGATION_DAG.json", "digest_algorithm": "git_blob_sha1", "digest": "19e8fbd1a4bc3eec4d2173b57eb12204a69c5770", "role": "proof_obligation_dag"},
+  "checker_contract": {"target": "human_audit", "inputs": ["Retrospective claim gate and proof-obligation DAG."], "acceptance": "Admit only after native Solve migration, exact theorem statement, sources, and checker inputs exist.", "rejection": "Reject the selected target as proved, novel, curve-verified, or sufficient for universal BSD."},
+  "requested_modalities": ["LEAN_FORMALIZATION", "EXACT_RATIONAL_CERTIFICATE", "SPECIALIST_AUDIT_PENDING"],
+  "claim_boundary": "This pending packet registers BSD-R2-A1 only; it certifies neither that target nor the Birch and Swinnerton-Dyer conjecture.",
+  "status": "pending",
+  "blockers": ["Historical Solve-owned work remains programme-embedded.", "BSD-R2-A1 is unproved and lacks native source and checker artifacts."],
+  "reopening_conditions": ["Reopen after native migration and construction of an exact claim-and-checker packet."]
+}
