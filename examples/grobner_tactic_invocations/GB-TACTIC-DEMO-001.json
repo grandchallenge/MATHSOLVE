@@ -1,25 +1,57 @@
 {
   "invocation_id": "GB-TACTIC-DEMO-001",
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "parent_problem": "ALG-GB-DEMO-C001",
   "local_obligation": "Show (x + y)^2 = x^2 + 2xy + y^2 over QQ[x,y].",
+  "local_scope_justification": "This is one bounded polynomial identity in two variables, not a global encoding of an open problem.",
+  "global_open_problem_encoding": false,
   "algebraic_task": "polynomial_identity",
   "coefficient_domain": "QQ",
   "variables": {
     "universe": "finite",
-    "names": ["x", "y"]
+    "names": ["x", "y"],
+    "variable_count": 2
   },
   "side_conditions": [],
-  "status": "sent_to_mathcert",
+  "resource_budget": {
+    "max_variables": 2,
+    "max_total_degree": 2,
+    "timeout_seconds": 5,
+    "max_basis_polynomials": 4,
+    "max_intermediate_terms": 128
+  },
+  "fallback_route": {
+    "route_id": "DIRECT-LEAN-NORMALIZATION",
+    "trigger_conditions": [
+      "The external witness is missing or malformed.",
+      "Any declared resource budget is exceeded."
+    ],
+    "rationale": "Normalize this small identity directly in the target proof assistant."
+  },
+  "expected_witness": {
+    "kind": "zero_normal_form",
+    "source_preference": "MATHFORGE",
+    "certification_obligation": "MATHCERT must independently replay or kernel-check the zero normal form."
+  },
+  "status": "ready_for_mathcert",
   "witness_source": {
     "repository": "grandchallenge/MATHFORGE",
-    "path": "examples/algebraic_witnesses/GB-WITNESS-DEMO-001.json"
+    "commit_sha": "2cb624cc61cd95ec0c8cfb8429d93128972289a5",
+    "path": "examples/algebraic_witnesses/GB-WITNESS-DEMO-001.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "690a071d67db22d9c1611623e273151cfa138b13"
   },
   "handoff": {
     "target_repository": "grandchallenge/MATHCERT",
     "target_certificate_kind": "polynomial_identity",
     "target_schema": "schemas/algebraic_certificate.schema.json",
-    "expected_trust_boundary": "lean_kernel_checked"
+    "expected_trust_boundary": "lean_kernel_checked",
+    "intake_acknowledgement": null,
+    "mathcert_output": null
   },
-  "notes": "Toy fixture showing orchestration only. MATHCERT owns the trusted theorem."
+  "failure_record": {
+    "status": "none",
+    "entries": []
+  },
+  "notes": "Toy fixture showing bounded orchestration only. Ready means packet-ready; it is not a MATHCERT adjudication."
 }
