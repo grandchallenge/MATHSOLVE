@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "NS-CI-R014-A2-RESOURCES",
+  "campaign_id": "NS-CI-001",
+  "computation_class": "EXACT_SYMBOLIC_AND_ADVERSARIAL_ESTIMATE_REPLAY",
+  "resources": [
+    {"resource_id": "NS-R001", "purpose": "Replay exponent, scaling, shell-sum, and packet fixtures.", "boundary": "Fixtures test estimates and are not Navier-Stokes solutions."},
+    {"resource_id": "NS-R002", "purpose": "Audit source-normalized inequalities and route-termination ledgers.", "boundary": "Source and symbolic replay cannot certify the open A2 implication."},
+    {"resource_id": "NS-R003", "purpose": "Maintain L5 as the independent direct critical-integral lane.", "boundary": "L5 may not import L4 conclusions as proved estimates."}
+  ],
+  "stop_rule": "Terminate a route when its exact interface admits a counterfixture or requires an unproved stronger integrability budget."
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "HC-WP00-CLAIMS",
+  "campaign_id": "HC-001",
+  "work_package_id": "HC-WP00",
+  "claims": [
+    {"claim_id": "HC-C001", "statement": "The classical Hodge conjecture is rational cycle-class surjectivity for smooth projective complex varieties.", "status": "SOURCE_NORMALIZED"},
+    {"claim_id": "HC-C002", "statement": "Cycle-class surjectivity is equivalent to rational generation by irreducible codimension-p subvariety classes.", "status": "PROVED_IN_PACKAGE"},
+    {"claim_id": "HC-C003", "statement": "The cases p=0,1,n-1,n imply the full conjecture in complex dimension at most three.", "status": "PROVED_IN_PACKAGE"},
+    {"claim_id": "HC-TARGET", "statement": "The rational Hodge conjecture holds for all smooth projective complex varieties.", "status": "OPEN_PROBLEM"}
+  ],
+  "claim_boundary": "No new algebraicity theorem or unrestricted fourfold codimension-two result is claimed."
+}

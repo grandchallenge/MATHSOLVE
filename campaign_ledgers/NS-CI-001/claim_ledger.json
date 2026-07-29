@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "NS-CI-R014-A2-CLAIMS",
+  "campaign_id": "NS-CI-001",
+  "work_package_id": "NS-CI-R014-A2",
+  "claims": [
+    {"claim_id": "NS-A2", "statement": "Lambda in L2 implies the critical L4_t L6_x integral is finite.", "status": "SELECTED_RESEARCH_TARGET_UNPROVED"},
+    {"claim_id": "NS-A2-O1", "statement": "The source envelope with exponent 5/2 does not close A2 from Lambda in L2.", "status": "PROVED_ESTIMATE_OBSTRUCTION"},
+    {"claim_id": "NS-A2-O2", "statement": "Separate L1 control of Lambda squared and dissipation does not control their product.", "status": "PROVED_ESTIMATE_OBSTRUCTION"},
+    {"claim_id": "NS-A2-O3", "statement": "The direct low-mode coefficient interpolation requires Lambda in L3.", "status": "PROVED_ESTIMATE_OBSTRUCTION"}
+  ],
+  "claim_boundary": "No listed obstruction is a Navier-Stokes counterexample and A2 remains unproved."
+}

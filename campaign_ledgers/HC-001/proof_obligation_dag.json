@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "dag_id": "HC-WP00-DAG",
+  "campaign_id": "HC-001",
+  "nodes": [
+    {"id": "HC-P00", "statement": "Fix smooth projective, rational cohomology, and cycle-class semantics.", "status": "complete"},
+    {"id": "HC-P01", "statement": "Prove equivalence with rational generation by subvariety classes.", "status": "complete"},
+    {"id": "HC-P02", "statement": "Reconstruct p=0,1,n-1,n without inverse-Lefschetz circularity.", "status": "complete"},
+    {"id": "HC-P03", "statement": "Select a restricted class beyond dimension three and construct cycles for every allowed Hodge class.", "status": "open"},
+    {"id": "HC-P04", "statement": "Prove universal rational cycle-class surjectivity.", "status": "open"}
+  ],
+  "edges": [["HC-P00","HC-P01"],["HC-P00","HC-P02"],["HC-P01","HC-P03"],["HC-P02","HC-P03"],["HC-P03","HC-P04"]],
+  "forbidden_shortcuts": [
+    "Assume algebraicity of inverse Lefschetz correspondences without naming it.",
+    "Replace rational projective Hodge by the false integral or unrestricted compact-Kahler analogue.",
+    "Treat Hodge-locus algebraicity as construction of a cycle on every fibre."
+  ]
+}

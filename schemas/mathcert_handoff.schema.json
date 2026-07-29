@@ -4,9 +4,13 @@
   "title": "MATHSOLVE to MATHCERT handoff packet",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "handoff_id", "campaign_id", "solve_work_package_id", "source_commit", "target_claims", "claim_ledger", "proof_obligations", "checker_contract", "status", "reopening_conditions"],
+  "required": [
+    "schema_version", "handoff_id", "campaign_id", "solve_work_package_id",
+    "source_commit", "target_claims", "claim_ledger", "proof_obligations",
+    "checker_contract", "status", "reopening_conditions"
+  ],
   "properties": {
-    "schema_version": {"const": "1.0.0"},
+    "schema_version": {"const": "1.1.0"},
     "handoff_id": {"type": "string", "minLength": 1},
     "campaign_id": {"type": "string", "pattern": "^[A-Z][A-Z0-9-]+$"},
     "solve_work_package_id": {"type": "string", "minLength": 1},
@@ -24,8 +28,8 @@
         }
       }
     },
-    "claim_ledger": {"$ref": "campaign_manifest.schema.json#/$defs/artifact_ref"},
-    "proof_obligations": {"$ref": "campaign_manifest.schema.json#/$defs/artifact_ref"},
+    "claim_ledger": {"$ref": "#/$defs/artifact_ref"},
+    "proof_obligations": {"$ref": "#/$defs/artifact_ref"},
     "checker_contract": {
       "type": "object", "additionalProperties": false,
       "required": ["target", "inputs", "acceptance", "rejection"],
@@ -38,5 +42,29 @@
     },
     "status": {"enum": ["pending", "ready", "submitted", "certified", "qualified", "rejected", "proof_debt"]},
     "reopening_conditions": {"type": "array", "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "artifact_ref": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository", "commit_sha", "path", "digest_algorithm", "digest", "role"],
+      "properties": {
+        "repository": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"},
+        "commit_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "path": {"type": "string", "minLength": 1, "not": {"const": "."}},
+        "digest_algorithm": {"enum": ["git_blob_sha1", "git_tree_sha1", "sha256"]},
+        "digest": {"type": "string", "pattern": "^[0-9a-f]{40}$|^[0-9a-f]{64}$"},
+        "role": {"enum": ["claim_ledger", "proof_obligation_dag"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"digest_algorithm": {"enum": ["git_blob_sha1", "git_tree_sha1"]}}, "required": ["digest_algorithm"]},
+          "then": {"properties": {"digest": {"pattern": "^[0-9a-f]{40}$"}}}
+        },
+        {
+          "if": {"properties": {"digest_algorithm": {"const": "sha256"}}, "required": ["digest_algorithm"]},
+          "then": {"properties": {"digest": {"pattern": "^[0-9a-f]{64}$"}}}
+        }
+      ]
+    }
   }
 }

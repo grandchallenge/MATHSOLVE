@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "MS-UC-WP04-RESOURCES",
+  "campaign_id": "UC-001",
+  "computation_class": "EXACT_FINITE_REPLAY_AND_FORMAL_RESTRICTED_PROOF",
+  "resources": [
+    {
+      "resource_id": "UC-R001",
+      "purpose": "Exact finite-family enumeration through universe size four.",
+      "budget": "Bounded by n <= 4; no extrapolation beyond the enumerated domain.",
+      "replay_boundary": "A failed or incomplete replay invalidates the finite claim only."
+    },
+    {
+      "resource_id": "UC-R002",
+      "purpose": "Lean replay of singleton-containing and two-element-member restricted theorems.",
+      "budget": "Pinned MATHCERT toolchain and source identities.",
+      "replay_boundary": "Formal success does not remove the restricted hypotheses."
+    }
+  ]
+}
