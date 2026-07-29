@@ -5,16 +5,28 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: solve-checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   ledgers:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          python-version: "3.x"
-      - name: Install validation dependencies
-        run: python -m pip install jsonschema pyyaml
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+          cache: pip
+          cache-dependency-path: requirements-ci.txt
+      - name: Install locked validation dependencies
+        run: python -m pip install -r requirements-ci.txt
       - name: Validate claim ledgers and programme references
         run: |
           python ci/validate_solve.py
