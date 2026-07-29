@@ -36,10 +36,10 @@
   "status": "ready_for_mathcert",
   "witness_source": {
     "repository": "grandchallenge/MATHFORGE",
-    "commit_sha": "2cb624cc61cd95ec0c8cfb8429d93128972289a5",
+    "commit_sha": "5d6461b6812dd9a99d73ddf98904c33465bffca0",
     "path": "examples/algebraic_witnesses/GB-WITNESS-DEMO-001.json",
     "digest_algorithm": "git_blob_sha1",
-    "digest": "690a071d67db22d9c1611623e273151cfa138b13"
+    "digest": "a1e3a0eb61702430516f5961bbc4e44332f677ce"
   },
   "handoff": {
     "target_repository": "grandchallenge/MATHCERT",
