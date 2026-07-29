@@ -5,7 +5,7 @@
     {
       "invocation_id": "GB-TACTIC-DEMO-001",
       "path": "examples/grobner_tactic_invocations/GB-TACTIC-DEMO-001.json",
-      "git_blob_sha1": "6ee288545489efdf5530a87eff9a05de572ed216",
+      "git_blob_sha1": "a8d25610faaa1dafb2822777b00a583fe4122ff0",
       "schema_path": "schemas/grobner_tactic_invocation.schema.json",
       "status": "ready_for_mathcert"
     }
