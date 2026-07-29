@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.2.0",
+  "handoff_id": "MC-HANDOFF-RH-001",
+  "campaign_id": "RH-001",
+  "solve_work_package_id": "RH-WP00-WP02-RETROSPECTIVE",
+  "source_commit": "68bbe0ae63c454b0dc63bedd0bc9f5501f8d5c03",
+  "cert_contract": {"repository": "grandchallenge/MATHCERT", "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3", "route_id": "MC-ROUTE-RH-001"},
+  "target_claims": [{"claim_id": "RH-T-000", "statement": "Every nontrivial zero rho of the classical Riemann zeta function satisfies Re(rho)=1/2.", "claim_type": "OPEN_TERMINAL_TARGET", "support_type": "SPECIALIST_AUDIT_PENDING"}],
+  "claim_ledger": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "83810a645a08d41055ac40eaa56ce5eb69985361", "path": "campaigns/riemann_hypothesis/WP02_THEOREM_LEDGER/02_THEOREM_LEDGER.json", "digest_algorithm": "git_blob_sha1", "digest": "d3770a7f0f6160767bba50550de22468adbce48a", "role": "claim_ledger"},
+  "proof_obligations": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "83810a645a08d41055ac40eaa56ce5eb69985361", "path": "campaigns/riemann_hypothesis/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json", "digest_algorithm": "git_blob_sha1", "digest": "8d4da317844004122ffbc71564343f6450878108", "role": "proof_obligation_dag"},
+  "checker_contract": {"target": "human_audit", "inputs": ["Retrospective theorem ledger, exact zeta normalization, and dependency-debt gate."], "acceptance": "Admit a later claim only with exact quantifiers, normalization, complete proof or finite certificate scope, and independent replay.", "rejection": "Reject finite-height checks, equivalent-criterion samples, density statements, or statistical evidence as RH."},
+  "requested_modalities": ["LEAN_FORMALIZATION", "EXACT_RATIONAL_CERTIFICATE", "SEMANTIC_REPLAY", "SPECIALIST_AUDIT_PENDING"],
+  "claim_boundary": "This pending packet registers RH-T-000 and its burden; it proves no new zero range and does not prove the Riemann Hypothesis.",
+  "status": "pending",
+  "blockers": ["Historical Solve-owned work remains programme-embedded.", "No terminal claim is ready for certification."],
+  "reopening_conditions": ["Reopen after native migration and production of a precise proof or finite certificate packet."]
+}
