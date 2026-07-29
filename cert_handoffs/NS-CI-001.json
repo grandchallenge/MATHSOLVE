@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.2.0",
+  "handoff_id": "MC-HANDOFF-NS-CI-001",
+  "campaign_id": "NS-CI-001",
+  "solve_work_package_id": "NS-CI-R014-A2",
+  "source_commit": "68bbe0ae63c454b0dc63bedd0bc9f5501f8d5c03",
+  "cert_contract": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
+    "path": "governance/certification_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3",
+    "route_id": "MC-ROUTE-NS-CI-001"
+  },
+  "target_claims": [
+    {
+      "claim_id": "NS-CI-WP00-C003",
+      "statement": "The L4_t L6_x mixed norm is invariant under the three-dimensional Navier-Stokes scaling with the transformed time interval stated exactly.",
+      "claim_type": "CHECKABLE_REDUCTION",
+      "support_type": "LEAN_FORMALIZATION_TARGET"
+    },
+    {
+      "claim_id": "NS-A2",
+      "statement": "Lambda in L2_t implies finiteness of the critical L4_t L6_x integral.",
+      "claim_type": "SELECTED_RESEARCH_TARGET_UNPROVED",
+      "support_type": "SPECIALIST_AUDIT_PENDING"
+    }
+  ],
+  "claim_ledger": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "7589a85b42c8f808d6fe42b4080e96c666e0ce05",
+    "path": "campaign_ledgers/NS-CI-001/claim_ledger.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "1de67508a1a5d8d03f7e61b8f4c9e1b462c56fbc",
+    "role": "claim_ledger"
+  },
+  "proof_obligations": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "656537d91efe5896ce9479312c6b5089646c52a1",
+    "path": "campaign_ledgers/NS-CI-001/proof_obligation_dag.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "782ba678b6bb0ddb7ce53101c93024eacd24d9e4",
+    "role": "proof_obligation_dag"
+  },
+  "checker_contract": {
+    "target": "Lean",
+    "inputs": [
+      "Exact exponent and interval-rescaling statement for NS-CI-WP00-C003.",
+      "Imported-theorem provenance boundary and failed-route ledger for NS-A2."
+    ],
+    "acceptance": "Kernel-check the scaling slice with adversarial exponent fixtures and classify NS-A2 only under the evidence actually supplied.",
+    "rejection": "Reject hidden analytic assumptions, toy substitutes, interval drift, or any statement that the unproved A2 bridge or global regularity has been certified."
+  },
+  "requested_modalities": [
+    "LEAN_FORMALIZATION",
+    "SEMANTIC_REPLAY",
+    "SPECIALIST_AUDIT_PENDING"
+  ],
+  "claim_boundary": "Scaling and logical-interface checks do not prove A2, universal critical integrability, or global Navier-Stokes regularity.",
+  "status": "ready",
+  "blockers": [
+    "NS-A2 remains unproved and must receive a non-positive disposition unless new proof evidence is supplied."
+  ],
+  "reopening_conditions": [
+    "Reopen when the scaling formalization, imported-theorem boundary, A2 evidence, or MATHCERT disposition changes."
+  ]
+}
