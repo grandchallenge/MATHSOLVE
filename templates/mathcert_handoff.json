@@ -1,17 +1,23 @@
 {
-  "schema_version": "1.1.0",
-  "handoff_id": "MC-TEMPLATE-001",
+  "schema_version": "1.2.0",
+  "handoff_id": "MC-HANDOFF-TEMPLATE-001",
   "campaign_id": "TEMPLATE-001",
   "solve_work_package_id": "TEMPLATE-WP00",
-  "source_commit": "ec7c60bfa51850d7fb11bd5a3a24ca834352366e",
-  "target_claims": [
-    {
-      "claim_id": "TEMPLATE-C001",
-      "statement": "Replace this example statement with the exact theorem or certificate claim.",
-      "claim_type": "formal_interface",
-      "support_type": "proof_debt"
-    }
-  ],
+  "source_commit": "68bbe0ae63c454b0dc63bedd0bc9f5501f8d5c03",
+  "cert_contract": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
+    "path": "governance/certification_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3",
+    "route_id": "MC-ROUTE-TEMPLATE-001"
+  },
+  "target_claims": [{
+    "claim_id": "TEMPLATE-C001",
+    "statement": "Replace this example statement with the exact theorem or certificate claim.",
+    "claim_type": "FORMAL_INTERFACE",
+    "support_type": "PROOF_DEBT"
+  }],
   "claim_ledger": {
     "repository": "grandchallenge/MATHSOLVE",
     "commit_sha": "16edb1df66d1e1835754ec1e7a1faa93231675b9",
@@ -34,8 +40,9 @@
     "acceptance": "The selected checker accepts every target claim under the exact stated hypotheses.",
     "rejection": "Any parse, replay, type, proof, identity, scope, or provenance failure rejects the handoff."
   },
+  "requested_modalities": ["SPECIALIST_AUDIT_PENDING"],
+  "claim_boundary": "This template is an example only and certifies no mathematical claim.",
   "status": "pending",
-  "reopening_conditions": [
-    "Source, claim, hypothesis, checker, or certificate identity changes."
-  ]
+  "blockers": ["Replace every template field with a campaign-specific, content-addressed record."],
+  "reopening_conditions": ["Source, claim, hypothesis, checker, or certificate identity changes."]
 }

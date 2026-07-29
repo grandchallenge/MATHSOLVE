@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.2.0",
+  "handoff_id": "MC-HANDOFF-OZ-001",
+  "campaign_id": "OZ-001",
+  "solve_work_package_id": "OZ-WP00-RETROSPECTIVE",
+  "source_commit": "68bbe0ae63c454b0dc63bedd0bc9f5501f8d5c03",
+  "cert_contract": {"repository": "grandchallenge/MATHCERT", "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3", "route_id": "MC-ROUTE-OZ-001"},
+  "target_claims": [
+    {"claim_id": "OZ-WP00-INTAKE-BOUNDARY", "statement": "The current Odd-zeta package establishes intake and source-lock requirements only and certifies no formula, congruence, novelty claim, or irrationality conclusion.", "claim_type": "INTAKE_BOUNDARY", "support_type": "SEMANTIC_REPLAY"},
+    {"claim_id": "OZ-INTAKE-U006", "statement": "All irrationality bridges required by a selected conclusion remain open until source-audited proofs or accepted imports discharge them.", "claim_type": "PROOF_DEBT", "support_type": "SPECIALIST_AUDIT_PENDING"}
+  ],
+  "claim_ledger": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "8e4f89fc90f2bec685a329c415400a65e7f455b4", "path": "campaigns/odd_zeta/OZ_WP00_SOURCE_NORMALIZATION_EQUIVALENCE/01_INTAKE_SOURCE_LOCK.yaml", "digest_algorithm": "git_blob_sha1", "digest": "3a55994b08a625c024af5b9f14a1f5f97f5f14c3", "role": "claim_ledger"},
+  "proof_obligations": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "8e4f89fc90f2bec685a329c415400a65e7f455b4", "path": "campaigns/odd_zeta/OZ_WP00_SOURCE_NORMALIZATION_EQUIVALENCE/03_IRRATIONALITY_BRIDGE_REGISTER.yaml", "digest_algorithm": "git_blob_sha1", "digest": "418e00c163a6fa080c03d5e88197088b223016e5", "role": "proof_obligation_dag"},
+  "checker_contract": {"target": "human_audit", "inputs": ["Intake source-lock manifest and irrationality-bridge register."], "acceptance": "Accept only the explicit incomplete-intake and proof-debt status under the exact source identities supplied.", "rejection": "Reject source-free formulas, finite verification, Lean declarations without semantic correspondence, or recurrence identities as irrationality conclusions."},
+  "requested_modalities": ["SEMANTIC_REPLAY", "LEAN_FORMALIZATION", "EXACT_RATIONAL_CERTIFICATE", "SPECIALIST_AUDIT_PENDING"],
+  "claim_boundary": "This pending packet records intake incompleteness and open bridges only; it certifies no Odd-zeta mathematical result.",
+  "status": "pending",
+  "blockers": ["The authoritative manuscript, Lean, certificate, computation, and literature bundles are not source-locked.", "All required irrationality bridges remain open."],
+  "reopening_conditions": ["Reopen after authoritative source acquisition and creation of source-bound claim, proof, and checker artifacts."]
+}

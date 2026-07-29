@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "manifest_id": "MS-MANIFEST-HC-001",
   "campaign_id": "HC-001",
   "coverage_mode": "native",
@@ -18,11 +18,16 @@
       "proof_obligation": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "e067c1b0f9eeb8a08b12a9fd9f6281e792a19e2b", "path": "campaign_ledgers/HC-001/proof_obligation_dag.json", "digest_algorithm": "git_blob_sha1", "digest": "99394c33bf91fe433713fffb1f48c01e08237f6b", "role": "proof_obligation_dag"},
       "failed_route": null,
       "resource": null,
-      "certification": null
+      "certification": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "cd20bfca67eebd9f02d0308e176ae62ae4712872", "path": "cert_handoffs/HC-001.json", "digest_algorithm": "git_blob_sha1", "digest": "0c154af2e577e4367f9f5d0aeac5e15f9420172c", "role": "certificate_handoff"}
     },
     "children": []
   }],
-  "certification": {"repository": "grandchallenge/MATHCERT", "handoff_state": "partial", "handoff_packets": []},
+  "certification": {
+    "repository": "grandchallenge/MATHCERT",
+    "contract": {"repository": "grandchallenge/MATHCERT", "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3"},
+    "handoff_state": "ready",
+    "handoff_packets": [{"handoff_id": "MC-HANDOFF-HC-001", "status": "ready", "target_claim_ids": ["HC-C001", "HC-C002", "HC-C003"], "artifact": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "cd20bfca67eebd9f02d0308e176ae62ae4712872", "path": "cert_handoffs/HC-001.json", "digest_algorithm": "git_blob_sha1", "digest": "0c154af2e577e4367f9f5d0aeac5e15f9420172c", "role": "certificate_handoff"}}]
+  },
   "promotion": {"eligible": false, "blockers": ["The full Hodge conjecture remains open.", "The first restricted theorem target is not selected."]},
   "disposal": {"status": "active", "supersedes": [], "reopening_conditions": ["Reopen the manifest when provider lineage, claim status, or certification state changes."]}
 }

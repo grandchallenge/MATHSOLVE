@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "manifest_id": "MS-MANIFEST-YM-001",
   "campaign_id": "YM-001",
   "coverage_mode": "retrospective",
@@ -18,11 +18,16 @@
       "proof_obligation": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "b55062d2d7de18ac6d0e5c1c943d530c53aae211", "path": "campaigns/yang_mills/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json", "digest_algorithm": "git_blob_sha1", "digest": "c32cd52810401769cd5bd9ab189ee713d86f01b4", "role": "proof_obligation_dag"},
       "failed_route": null,
       "resource": null,
-      "certification": null
+      "certification": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "cb2049ccf2bd69a0423cb9033b7bec5554718465", "path": "cert_handoffs/YM-001.json", "digest_algorithm": "git_blob_sha1", "digest": "54b7ad8156532e3dceba439356848dfa65a4d1ac", "role": "certificate_handoff"}
     },
     "children": []
   }],
-  "certification": {"repository": "grandchallenge/MATHCERT", "handoff_state": "pending", "handoff_packets": []},
+  "certification": {
+    "repository": "grandchallenge/MATHCERT",
+    "contract": {"repository": "grandchallenge/MATHCERT", "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3"},
+    "handoff_state": "pending",
+    "handoff_packets": [{"handoff_id": "MC-HANDOFF-YM-001", "status": "pending", "target_claim_ids": ["YM-WP02-C001", "YM-WP02-C007"], "artifact": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "cb2049ccf2bd69a0423cb9033b7bec5554718465", "path": "cert_handoffs/YM-001.json", "digest_algorithm": "git_blob_sha1", "digest": "54b7ad8156532e3dceba439356848dfa65a4d1ac", "role": "certificate_handoff"}}]
+  },
   "promotion": {"eligible": false, "blockers": ["Historical WP00-WP02 work is embedded in MATH-PROGRAMME and requires migration.", "Existence, reconstruction, regulator survival, and mass-gap obligations remain open."]},
   "disposal": {"status": "active", "supersedes": [], "reopening_conditions": ["Reopen the manifest when provider lineage, claim status, or certification state changes."]}
 }
