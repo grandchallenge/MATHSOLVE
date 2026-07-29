@@ -24,14 +24,13 @@ class CampaignManifestTests(unittest.TestCase):
         self.addCleanup(handle.cleanup)
         target = Path(handle.name)
         for path in self.source.glob("*.json"):
-            (target / path.name).write_text(
-                path.read_text(encoding="utf-8"), encoding="utf-8"
-            )
+            (target / path.name).write_text(path.read_text(encoding="utf-8"), encoding="utf-8")
         return handle, target
 
-    def test_current_registry_and_handoff_template_pass(self) -> None:
+    def test_current_registry_template_and_packets_pass(self) -> None:
         self.assertEqual(module.campaign_manifest_errors(), [])
         self.assertEqual(module.mathcert_handoff_errors(), [])
+        self.assertEqual(module.handoff_packet_errors(), [])
 
     def test_missing_active_campaign_fails(self) -> None:
         _, target = self.copied_registry()
@@ -46,9 +45,7 @@ class CampaignManifestTests(unittest.TestCase):
         data["solve"]["migration_debt"] = []
         path.write_text(json.dumps(data), encoding="utf-8")
         errors = module.campaign_manifest_errors(target)
-        self.assertTrue(
-            any("retrospective coverage requires migration debt" in error for error in errors)
-        )
+        self.assertTrue(any("retrospective coverage requires migration debt" in error for error in errors))
 
     def test_artifact_identity_drift_fails(self) -> None:
         _, target = self.copied_registry()
@@ -67,9 +64,7 @@ class CampaignManifestTests(unittest.TestCase):
         artifact["digest"] = artifact["commit_sha"]
         path.write_text(json.dumps(data), encoding="utf-8")
         errors = module.campaign_manifest_errors(target)
-        self.assertTrue(
-            any("commit cannot substitute for artifact digest" in error for error in errors)
-        )
+        self.assertTrue(any("commit cannot substitute" in error for error in errors))
 
     def test_distinct_ledger_roles_cannot_share_one_path(self) -> None:
         _, target = self.copied_registry()
@@ -92,38 +87,54 @@ class CampaignManifestTests(unittest.TestCase):
         errors = module.campaign_manifest_errors(target)
         self.assertTrue(any("requires resource ledger" in error for error in errors))
 
-    def test_partial_handoff_cannot_pass_judgment(self) -> None:
-        self.assertTrue(module.provider_gate_errors("HC-001", "JUDGMENT"))
+    def test_ready_handoff_cannot_pass_judgment(self) -> None:
+        errors = module.provider_gate_errors("HC-001", "JUDGMENT")
+        self.assertTrue(any("not an adjudicated" in error for error in errors))
+
+    def test_ready_handoff_cannot_pass_integration(self) -> None:
+        errors = module.provider_gate_errors("UC-001", "INTEGRATION")
+        self.assertTrue(any("not an adjudicated" in error for error in errors))
 
     def test_promotion_requires_positive_certification(self) -> None:
         _, target = self.copied_registry()
         path = target / "HC-001.json"
         data = json.loads(path.read_text(encoding="utf-8"))
         data["promotion"] = {"eligible": True, "blockers": []}
-        data["certification"] = {
-            "repository": "grandchallenge/MATHCERT",
-            "handoff_state": "rejected",
-            "handoff_packets": [
-                {
-                    "handoff_id": "MC-HC-REJECTED",
-                    "status": "rejected",
-                    "target_claim_ids": ["HC-TARGET"],
-                    "artifact": {
-                        "repository": "grandchallenge/MATHCERT",
-                        "commit_sha": "a" * 40,
-                        "path": "handoffs/MC-HC-REJECTED.json",
-                        "digest_algorithm": "git_blob_sha1",
-                        "digest": "b" * 40,
-                        "role": "certificate_handoff"
-                    }
-                }
-            ]
-        }
+        data["certification"]["handoff_state"] = "rejected"
+        data["certification"]["handoff_packets"][0]["status"] = "rejected"
         path.write_text(json.dumps(data), encoding="utf-8")
         errors = module.campaign_manifest_errors(target)
-        self.assertTrue(
-            any("requires certified or qualified MATHCERT state" in error for error in errors)
-        )
+        self.assertTrue(any("requires certified or qualified" in error for error in errors))
+
+    def test_packet_status_mismatch_fails(self) -> None:
+        _, target = self.copied_registry()
+        path = target / "UC-001.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["certification"]["handoff_state"] = "submitted"
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.campaign_manifest_errors(target)
+        self.assertTrue(any("aggregate handoff state" in error for error in errors))
+
+    def test_cert_contract_drift_fails(self) -> None:
+        _, target = self.copied_registry()
+        path = target / "NS-CI-001.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["certification"]["contract"]["digest"] = "0" * 40
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.campaign_manifest_errors(target)
+        self.assertTrue(any("contract identity" in error or "const" in error for error in errors))
+
+    def test_pending_packet_requires_blocker(self) -> None:
+        handle = tempfile.TemporaryDirectory()
+        self.addCleanup(handle.cleanup)
+        target = Path(handle.name)
+        for path in (ROOT / "cert_handoffs").glob("*.json"):
+            data = json.loads(path.read_text(encoding="utf-8"))
+            if data["campaign_id"] == "BSD-001":
+                data["blockers"] = []
+            (target / path.name).write_text(json.dumps(data), encoding="utf-8")
+        errors = module.handoff_packet_errors(target)
+        self.assertTrue(any("pending packet must identify blockers" in error or "non-empty" in error for error in errors))
 
 
 if __name__ == "__main__":
