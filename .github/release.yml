@@ -1,0 +1,8 @@
+changelog:
+  categories:
+    - title: Work-package handoffs
+      labels: ["pillar:solve"]
+    - title: Maintenance
+      labels: ["dependencies", "maintenance"]
+    - title: Other changes
+      labels: ["*"]
