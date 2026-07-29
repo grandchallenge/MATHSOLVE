@@ -27,10 +27,14 @@ jobs:
           cache-dependency-path: requirements-ci.txt
       - name: Install locked validation dependencies
         run: python -m pip install -r requirements-ci.txt
-      - name: Validate claim ledgers and programme references
+      - name: Validate claim ledgers, programme references, and bounded tactic routing
         run: |
           python ci/validate_solve.py
           python ci/test_validate_solve.py
+          python -m unittest ci/test_grobner_tactic_contract.py -v
+          python -m json.tool schemas/grobner_tactic_invocation.schema.json >/dev/null
+          python -m json.tool schemas/grobner_tactic_registry.schema.json >/dev/null
+          python -m json.tool governance/grobner_tactic_registry.json >/dev/null
       - name: Validate recursive campaign manifests and Cert boundaries
         run: |
           python ci/validate_campaign_manifests.py
