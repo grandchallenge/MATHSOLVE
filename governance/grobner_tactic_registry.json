@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "MS-GROEBNER-TACTIC-REGISTRY",
+  "invocations": [
+    {
+      "invocation_id": "GB-TACTIC-DEMO-001",
+      "path": "examples/grobner_tactic_invocations/GB-TACTIC-DEMO-001.json",
+      "git_blob_sha1": "a8d25610faaa1dafb2822777b00a583fe4122ff0",
+      "schema_path": "schemas/grobner_tactic_invocation.schema.json",
+      "status": "ready_for_mathcert"
+    }
+  ]
+}
