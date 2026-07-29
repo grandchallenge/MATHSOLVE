@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.2.0",
+  "handoff_id": "MC-HANDOFF-YM-001",
+  "campaign_id": "YM-001",
+  "solve_work_package_id": "YM-WP00-WP02-RETROSPECTIVE",
+  "source_commit": "68bbe0ae63c454b0dc63bedd0bc9f5501f8d5c03",
+  "cert_contract": {"repository": "grandchallenge/MATHCERT", "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3", "route_id": "MC-ROUTE-YM-001"},
+  "target_claims": [
+    {"claim_id": "YM-WP02-C001", "statement": "The accepted four-dimensional Yang-Mills existence and physical mass-gap problem remains open.", "claim_type": "OPEN_PROBLEM_STATUS", "support_type": "SOURCE_CITATION"},
+    {"claim_id": "YM-WP02-C007", "statement": "The WP02 dependency gate keeps mechanism generation, numerical experimentation, restricted-target selection, and novelty claims closed.", "claim_type": "CHECKED_GOVERNANCE_CLAIM", "support_type": "EXACT_REPLAY"}
+  ],
+  "claim_ledger": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "b55062d2d7de18ac6d0e5c1c943d530c53aae211", "path": "campaigns/yang_mills/WP02_THEOREM_LEDGER/10_CLAIM_LEDGER.yaml", "digest_algorithm": "git_blob_sha1", "digest": "3346061c3644d3c342b82adec473dc6c72d75827", "role": "claim_ledger"},
+  "proof_obligations": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "b55062d2d7de18ac6d0e5c1c943d530c53aae211", "path": "campaigns/yang_mills/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json", "digest_algorithm": "git_blob_sha1", "digest": "c32cd52810401769cd5bd9ab189ee713d86f01b4", "role": "proof_obligation_dag"},
+  "checker_contract": {"target": "human_audit", "inputs": ["Source-normalized claim ledger and dependency gate."], "acceptance": "Accept only the open-status and gate-closure claims under their exact documentary and replay scope.", "rejection": "Reject fixed-regulator, lower-dimensional, perturbative, or unverified manuscript evidence as a four-dimensional construction or physical mass gap."},
+  "requested_modalities": ["SEMANTIC_REPLAY", "INTERVAL_ARITHMETIC_CERTIFICATE", "LEAN_FORMALIZATION", "SPECIALIST_AUDIT_PENDING"],
+  "claim_boundary": "This pending packet may support status and gate checks only; it constructs no four-dimensional theory and proves no physical mass gap.",
+  "status": "pending",
+  "blockers": ["Historical Solve-owned work remains programme-embedded.", "Existence, reconstruction, regulator-survival, and mass-gap obligations remain open."],
+  "reopening_conditions": ["Reopen after native migration or when a regulated or continuum claim has exact artifacts and a replay contract."]
+}
