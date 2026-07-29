@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.2.0",
+  "handoff_id": "MC-HANDOFF-HC-001",
+  "campaign_id": "HC-001",
+  "solve_work_package_id": "HC-WP00",
+  "source_commit": "68bbe0ae63c454b0dc63bedd0bc9f5501f8d5c03",
+  "cert_contract": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
+    "path": "governance/certification_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3",
+    "route_id": "MC-ROUTE-HC-001"
+  },
+  "target_claims": [
+    {
+      "claim_id": "HC-C001",
+      "statement": "The classical Hodge conjecture is rational cycle-class surjectivity for smooth projective complex varieties.",
+      "claim_type": "SOURCE_NORMALIZED_STATEMENT",
+      "support_type": "SEMANTIC_REPLAY"
+    },
+    {
+      "claim_id": "HC-C002",
+      "statement": "Cycle-class surjectivity is equivalent to rational generation by irreducible codimension-p subvariety classes.",
+      "claim_type": "PROVED_IN_PACKAGE",
+      "support_type": "HUMAN_PROOF_AND_SEMANTIC_REPLAY"
+    },
+    {
+      "claim_id": "HC-C003",
+      "statement": "The cases p=0,1,n-1,n imply the full conjecture in complex dimension at most three.",
+      "claim_type": "PROVED_IN_PACKAGE",
+      "support_type": "HUMAN_PROOF_AND_SEMANTIC_REPLAY"
+    }
+  ],
+  "claim_ledger": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "16edb1df66d1e1835754ec1e7a1faa93231675b9",
+    "path": "campaign_ledgers/HC-001/claim_ledger.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "ed0216ea6dd1859effe926b8c501d8dc156e897a",
+    "role": "claim_ledger"
+  },
+  "proof_obligations": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "e067c1b0f9eeb8a08b12a9fd9f6281e792a19e2b",
+    "path": "campaign_ledgers/HC-001/proof_obligation_dag.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "99394c33bf91fe433713fffb1f48c01e08237f6b",
+    "role": "proof_obligation_dag"
+  },
+  "checker_contract": {
+    "target": "human_audit",
+    "inputs": [
+      "Exact Hodge claim records and proof-obligation DAG.",
+      "Semantic mutation fixtures for coefficient, geometry, quantifier, and implication drift."
+    ],
+    "acceptance": "Accept only exact statement identity and the scoped package proofs with every imported theorem visible.",
+    "rejection": "Reject substitution of integral, compact-Kahler, arbitrary complex (p,p), effective-cycle, or universal claims."
+  },
+  "requested_modalities": [
+    "SEMANTIC_REPLAY",
+    "LEAN_FORMALIZATION",
+    "SPECIALIST_AUDIT_PENDING"
+  ],
+  "claim_boundary": "Statement consistency and low-dimensional package arguments do not prove the full Hodge conjecture or select a new restricted target.",
+  "status": "ready",
+  "blockers": [],
+  "reopening_conditions": [
+    "Reopen when the normalized statement, package proof, imported-theorem boundary, or MATHCERT disposition changes."
+  ]
+}
