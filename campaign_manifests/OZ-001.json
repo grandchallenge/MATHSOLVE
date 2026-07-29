@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "manifest_id": "MS-MANIFEST-OZ-001",
   "campaign_id": "OZ-001",
   "coverage_mode": "retrospective",
@@ -18,11 +18,16 @@
       "proof_obligation": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "8e4f89fc90f2bec685a329c415400a65e7f455b4", "path": "campaigns/odd_zeta/OZ_WP00_SOURCE_NORMALIZATION_EQUIVALENCE/03_IRRATIONALITY_BRIDGE_REGISTER.yaml", "digest_algorithm": "git_blob_sha1", "digest": "418e00c163a6fa080c03d5e88197088b223016e5", "role": "proof_obligation_dag"},
       "failed_route": null,
       "resource": null,
-      "certification": null
+      "certification": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "b10308fef02a56a0591675c58e3f316f82658ac7", "path": "cert_handoffs/OZ-001.json", "digest_algorithm": "git_blob_sha1", "digest": "b244c30b1b3aa4590a8b9ff9d63c5b66dab87663", "role": "certificate_handoff"}
     },
     "children": []
   }],
-  "certification": {"repository": "grandchallenge/MATHCERT", "handoff_state": "pending", "handoff_packets": []},
+  "certification": {
+    "repository": "grandchallenge/MATHCERT",
+    "contract": {"repository": "grandchallenge/MATHCERT", "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3"},
+    "handoff_state": "pending",
+    "handoff_packets": [{"handoff_id": "MC-HANDOFF-OZ-001", "status": "pending", "target_claim_ids": ["OZ-WP00-INTAKE-BOUNDARY", "OZ-INTAKE-U006"], "artifact": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "b10308fef02a56a0591675c58e3f316f82658ac7", "path": "cert_handoffs/OZ-001.json", "digest_algorithm": "git_blob_sha1", "digest": "b244c30b1b3aa4590a8b9ff9d63c5b66dab87663", "role": "certificate_handoff"}}]
+  },
   "promotion": {"eligible": false, "blockers": ["Authoritative manuscript, Lean, certificate, computation, and literature bundles are not source-locked.", "All irrationality bridges remain open."]},
   "disposal": {"status": "active", "supersedes": [], "reopening_conditions": ["Reopen the manifest when provider lineage, claim status, or certification state changes."]}
 }
