@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "package_id": "MS-FC-WP01",
+  "governance_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/81",
+  "trigger": {
+    "mathforge_commit": "0faee396ffa56c568ee0ae6a348bdb43ca80ac4d",
+    "programme_commit": "aafd5d5d18989d4ac246de8f6dd2455f02614307",
+    "source_id": "FC-GDM-002"
+  },
+  "pilot_lane": {
+    "issue": "https://github.com/grandchallenge/MATHSOLVE/issues/80",
+    "source_id": "FC-GDM-001",
+    "campaigns": ["RH-001", "NS-CI-001"],
+    "disposition": "unchanged",
+    "boundary": "The RH and NS canonical-target package is neither superseded nor broadened by FC-GDM-002."
+  },
+  "routes": [
+    {
+      "campaign_id": "UC-001",
+      "route_class": "statement-correspondence",
+      "disposition": "formulation-concordance-only",
+      "solve_obligations": [
+        "Bind the upstream UnionClosed.union_closed statement to the Programme finite-family conventions.",
+        "Preserve nonempty-carrier, empty-family, singleton-empty, counting, and coefficient conventions.",
+        "Require a separate Lean-kernel equivalence package before assigning formal equivalence."
+      ],
+      "prohibited_effects": ["proof of Frankl's conjecture", "MATHCERT status change"]
+    },
+    {
+      "campaign_id": "PNP-001",
+      "route_class": "definition-audit",
+      "disposition": "blocked-pending-definition-concordance",
+      "solve_obligations": [
+        "Audit imported P and NP definitions.",
+        "Audit deterministic and nondeterministic machine models.",
+        "Audit finite encodings, malformed-input behavior, total halting, bit-length accounting, uniformity, and polynomial bounds.",
+        "Preserve the separation orientation P != NP without claiming semantic equivalence."
+      ],
+      "prohibited_effects": ["P != NP proof", "syntactic class-name equivalence", "MATHCERT status change"]
+    },
+    {
+      "campaign_id": "OZ-001",
+      "route_class": "theorem-lattice",
+      "disposition": "eight-scopes-preserved",
+      "scopes": [
+        "zeta3",
+        "zeta5",
+        "zeta7",
+        "zeta9",
+        "zeta11",
+        "universal-odd-irrationality",
+        "odd-value-infinitude",
+        "finite-zudilin-disjunction"
+      ],
+      "solve_obligations": [
+        "Preserve each quantifier scope as a separate record.",
+        "Do not infer an individual irrationality statement from a finite disjunction or infinitude result.",
+        "Do not infer a new irrationality conclusion for the active Apéry-structure campaign."
+      ],
+      "prohibited_effects": ["scope collapse", "new irrationality conclusion", "MATHCERT status change"]
+    },
+    {
+      "campaign_id": "BSD-001",
+      "route_class": "explicit-non-route",
+      "disposition": "adjacency-only",
+      "reason": "The admitted source concerns elliptic-curve rank infrastructure and does not state BSD analytic-rank equality or the leading-term formula.",
+      "prohibited_effects": ["BSD proof route", "rank-conjecture substitution", "MATHCERT status change"]
+    },
+    {
+      "campaign_id": "HC-001",
+      "route_class": "explicit-non-route",
+      "disposition": "bounded-negative-source-screen",
+      "reason": "The pinned extractor inventory found no admitted Hodge candidate; this is a bounded source result, not mathematical absence.",
+      "prohibited_effects": ["absence theorem", "Hodge proof route", "MATHCERT status change"]
+    },
+    {
+      "campaign_id": "YM-001",
+      "route_class": "explicit-non-route",
+      "disposition": "lexical-false-positive",
+      "reason": "Every admitted hit is caused by the token Mills and concerns number theory or combinatorics, not quantum Yang-Mills theory or a mass gap.",
+      "prohibited_effects": ["Yang-Mills proof route", "Mills-name semantic match", "MATHCERT status change"]
+    }
+  ],
+  "oz_reconciliation": {
+    "coverage_mode": "retrospective",
+    "completed_programme_stages": [
+      {"stage":"OZ-WP00","merge_commit":"a2eb1c685e85961515e7c748bf732b4469f63204","disposition":"QUALIFIED_COMPLETE_NO_PROMOTION"},
+      {"stage":"OZ-WP01","merge_commit":"9620485c00488c8307cb0b7224640871f533c57c","disposition":"FALSE_PROOF_ATLAS_MERGED"},
+      {"stage":"OZ-WP02","merge_commit":"5be02b5e1fd08d3bff7656f67e314a423a902086","disposition":"THEOREM_LEDGER_MERGED"},
+      {"stage":"OZ-RT-APERY-BROW-001","merge_commit":"e5c61b29f2d9cec711bba0068dda63ac099b6df0","disposition":"REFEREE_ACCEPTED_AND_FORMALLY_REPLAYED_WITH_BOUNDARIES"},
+      {"stage":"OZ-RT-LB-INSTANCE-001","merge_commit":"945381eec1aee5d6c84ff72f3cfa4c7199d57bd6","disposition":"FRANEL_H1_H5_COMPLETE"}
+    ],
+    "next_active_obligation": "OZ-RT-BZ-T3-001",
+    "continuing_gates": [
+      "T3 remains open.",
+      "Sharp-12 remains gated by its blocker packets.",
+      "No novelty or priority claim is imported.",
+      "No new irrationality conclusion is authorized."
+    ]
+  },
+  "certification_effect": {
+    "disposition": "unchanged",
+    "states": {
+      "UC-001": "ready",
+      "NS-CI-001": "ready",
+      "HC-001": "ready",
+      "BSD-001": "pending",
+      "PNP-001": "pending",
+      "RH-001": "pending",
+      "YM-001": "pending",
+      "OZ-001": "pending"
+    }
+  },
+  "claim_boundary": "MS-FC-WP01 records provenance, formulation obligations, route eligibility, and explicit non-routes. It proves no open theorem and changes no MATHCERT disposition."
+}
