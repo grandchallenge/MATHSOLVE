@@ -65,10 +65,10 @@
         "resource": null,
         "certification": {
           "repository": "grandchallenge/MATHSOLVE",
-          "commit_sha": "febc2c908fe88b8ce46d3ab30c8dd7225015e2ad",
+          "commit_sha": "752b85cd11c8ed72eb7ab62436899bf91870d328",
           "path": "cert_handoffs/RH-001.json",
           "digest_algorithm": "git_blob_sha1",
-          "digest": "b177064c76a69746d3dd7f63d44f6e0398d0a8ec",
+          "digest": "7304f185bd817bb67b77540513dc01d05f6fcd3a",
           "role": "certificate_handoff"
         }
       },
@@ -135,10 +135,10 @@
         "resource": null,
         "certification": {
           "repository": "grandchallenge/MATHSOLVE",
-          "commit_sha": "febc2c908fe88b8ce46d3ab30c8dd7225015e2ad",
+          "commit_sha": "752b85cd11c8ed72eb7ab62436899bf91870d328",
           "path": "cert_handoffs/RH-001.json",
           "digest_algorithm": "git_blob_sha1",
-          "digest": "b177064c76a69746d3dd7f63d44f6e0398d0a8ec",
+          "digest": "7304f185bd817bb67b77540513dc01d05f6fcd3a",
           "role": "certificate_handoff"
         }
       },
@@ -154,18 +154,18 @@
       "digest_algorithm": "git_blob_sha1",
       "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3"
     },
-    "handoff_state": "ready",
+    "handoff_state": "pending",
     "handoff_packets": [
       {
         "handoff_id": "MC-HANDOFF-RH-001",
-        "status": "ready",
+        "status": "pending",
         "target_claim_ids": ["RH-T-000"],
         "artifact": {
           "repository": "grandchallenge/MATHSOLVE",
-          "commit_sha": "febc2c908fe88b8ce46d3ab30c8dd7225015e2ad",
+          "commit_sha": "752b85cd11c8ed72eb7ab62436899bf91870d328",
           "path": "cert_handoffs/RH-001.json",
           "digest_algorithm": "git_blob_sha1",
-          "digest": "b177064c76a69746d3dd7f63d44f6e0398d0a8ec",
+          "digest": "7304f185bd817bb67b77540513dc01d05f6fcd3a",
           "role": "certificate_handoff"
         }
       }
@@ -175,7 +175,7 @@
     "eligible": false,
     "blockers": [
       "RH-T-000 remains open and unproved.",
-      "The ready packet is limited to statement-interface and concordance replay.",
+      "MATHCERT has not independently replayed and accepted the target package.",
       "Historical theorem-spine records remain Programme-embedded."
     ]
   },
