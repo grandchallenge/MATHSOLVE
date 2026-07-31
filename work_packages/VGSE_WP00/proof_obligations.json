@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "campaign_id": "VGSE-001",
   "work_package_id": "VGSE-WP00",
   "obligations": [
@@ -37,37 +37,58 @@
     },
     {
       "obligation_id": "VGSE-D04",
-      "category": "SEMANTIC_CORRESPONDENCE",
+      "category": "GRAPH_AND_WEIGHT_CORRESPONDENCE",
       "blocked_node": "VGSE-S4B",
-      "status": "open",
-      "current_evidence": "The algebraic witnesses and five source-vector patterns now share the same extracted boundary, but no witness-to-pattern map is established.",
-      "discharge_condition": "Recover an explicit graph, Kasteleyn data, positive weights, and discrete-holomorphic extensions; reconstruct all five Kenyon-Smirnov primitives and match them bijectively to the source-vector patterns."
+      "status": "partially_discharged",
+      "current_evidence": "The Figure 16 incidence graph has been reconstructed. Thirty-one almost-perfect matchings give exactly the nineteen nonzero Plucker coordinates of C. A positive numerical weight representative reproduces them up to one scale with maximum relative residual below 1e-12, and the Kasteleyn sign residual is zero.",
+      "discharge_condition": "Independently reproduce the positive-weight solve and replace or enclose the numerical weights with exact or interval-certified values."
     },
     {
       "obligation_id": "VGSE-D05",
-      "category": "MISSING_LEMMA",
-      "blocked_node": "VGSE-S5",
-      "status": "gated",
-      "current_evidence": "None.",
-      "discharge_condition": "Exhibit and verify a continuous collision-free rigid-panel deployment path with mountain-valley, layer-order, and branch-selection data."
+      "category": "SEMANTIC_CORRESPONDENCE",
+      "blocked_node": "VGSE-S4C",
+      "status": "partially_discharged",
+      "current_evidence": "Each of the five algebraic witnesses has been extended through the reconstructed graph and integrated into a distinct numerical Kenyon-Smirnov primitive. Every generated pattern has eight convex faces, the prescribed boundary, machine-scale closure and Kawasaki residuals, and positive boundary-angle margins.",
+      "discharge_condition": "Certify the discrete-holomorphic solves and generated geometry, and admit a permutation-and-equivalence matcher between the five generated patterns and the five rounded source-vector drawings."
     },
     {
       "obligation_id": "VGSE-D06",
       "category": "MISSING_LEMMA",
+      "blocked_node": "VGSE-S5",
+      "status": "gated",
+      "current_evidence": "No mountain-valley assignment, layer order, continuous rigid-folding path, actuation branch, or collision certificate is present.",
+      "discharge_condition": "Exhibit and verify a continuous collision-free rigid-panel deployment path with mountain-valley, layer-order, and branch-selection data."
+    },
+    {
+      "obligation_id": "VGSE-D07",
+      "category": "MISSING_LEMMA",
       "blocked_node": "VGSE-S6",
       "status": "gated",
-      "current_evidence": "None.",
+      "current_evidence": "No finite-thickness or manufacturing evidence is present.",
       "discharge_condition": "Produce a finite-thickness conversion, prototype, tolerance record, mechanical benchmark, manufacturing record, and application economics."
     }
   ],
-  "next_authorized_obligation": {
-    "node": "VGSE-S4B",
-    "operation": "Reconstruct the Kenyon-Smirnov primitive for each algebraic witness and establish or refute a bijection with the five source-vector patterns.",
-    "required_inputs": [
-      "explicit planar bipartite graph and boundary labels",
-      "Kasteleyn signs and positive edge weights realizing C",
-      "boundary restriction and discrete-holomorphic extension conventions"
+  "wp00_disposition": {
+    "status": "CANDIDATE_COMPLETE_PENDING_REVIEW_AND_CERTIFICATION",
+    "completed_scope": [
+      "source and claim semantics lock",
+      "exact beta(C)=5 arrangement replay",
+      "five Figure 16 boundary algebraic witnesses",
+      "five source-vector pattern replication",
+      "positive weighted graph boundary-measurement replay",
+      "five independent numerical Kenyon-Smirnov t-embedding reconstructions"
     ],
+    "not_promoted": [
+      "rigid deployment",
+      "finite thickness",
+      "manufacturing",
+      "commercial claims"
+    ]
+  },
+  "next_authorized_obligation": {
+    "node": "VGSE-WP00-CERT-001",
+    "operation": "Independently certify the root count, positive weighted boundary measurement, discrete-holomorphic extensions, primitive closure, and five generated planar t-embeddings; then admit the generated-to-source equivalence matching record.",
+    "mechanical_lane_status": "gated_until_WP00_review_and_certification",
     "commercial_claim_authorized": false
   }
 }
