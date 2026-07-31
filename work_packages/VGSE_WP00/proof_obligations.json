@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "campaign_id": "VGSE-001",
   "work_package_id": "VGSE-WP00",
   "obligations": [
@@ -8,8 +8,8 @@
       "category": "EXTERNAL_SOURCE",
       "blocked_node": "VGSE-S0",
       "status": "open",
-      "current_evidence": "Author-hosted PDF dated 2026-06-03 is pinned by SHA-256.",
-      "discharge_condition": "Independent source, revision, theorem-number, and bibliography audit."
+      "current_evidence": "The author-hosted PDF dated 2026-06-03 is pinned by SHA-256, and Figure 16 vector paths are recorded with page and drawing indices.",
+      "discharge_condition": "Independent source, revision, theorem-number, figure, and bibliography audit."
     },
     {
       "obligation_id": "VGSE-D01",
@@ -24,27 +24,35 @@
       "category": "COMPUTATIONAL_REPLAY",
       "blocked_node": "VGSE-S3",
       "status": "open",
-      "current_evidence": "Deterministic floating-point replay returns five retained roots and rejects the alpha_6=0 factor.",
-      "discharge_condition": "MATHCERT certifies the saturated quotient dimension or isolates exactly five roots away from every arrangement divisor."
+      "current_evidence": "The Figure 16 boundary replay returns five floating-point witnesses after excluding five divisor-supported resultant factors.",
+      "discharge_condition": "MATHCERT certifies the boundary labeling and genericity, derives the saturated elimination independently, and certifies exactly five isolated roots away from every arrangement divisor."
     },
     {
       "obligation_id": "VGSE-D03",
-      "category": "SEMANTIC_CORRESPONDENCE",
-      "blocked_node": "VGSE-S4",
-      "status": "open",
-      "current_evidence": "Pair-level sign, winding, and orthogonality data are present.",
-      "discharge_condition": "Pin an explicit reduced planar bipartite graph and positive weights realizing C, reconstruct all internal coordinates, and verify the t-embedding conditions."
+      "category": "SOURCE_GEOMETRY",
+      "blocked_node": "VGSE-S4A",
+      "status": "partially_discharged",
+      "current_evidence": "Five source-vector face decompositions with a common boundary are extracted. TE1, TE2, TE4, TE5, bipartite incidence, face partition, simple boundary, and deterministic SVG rendering are checked at PDF precision.",
+      "discharge_condition": "Independent extractor replay against the pinned PDF and review of the 0.04-radian illustration-precision tolerance."
     },
     {
       "obligation_id": "VGSE-D04",
+      "category": "SEMANTIC_CORRESPONDENCE",
+      "blocked_node": "VGSE-S4B",
+      "status": "open",
+      "current_evidence": "The algebraic witnesses and five source-vector patterns now share the same extracted boundary, but no witness-to-pattern map is established.",
+      "discharge_condition": "Recover an explicit graph, Kasteleyn data, positive weights, and discrete-holomorphic extensions; reconstruct all five Kenyon-Smirnov primitives and match them bijectively to the source-vector patterns."
+    },
+    {
+      "obligation_id": "VGSE-D05",
       "category": "MISSING_LEMMA",
       "blocked_node": "VGSE-S5",
       "status": "gated",
       "current_evidence": "None.",
-      "discharge_condition": "Exhibit and verify a continuous collision-free rigid-panel deployment path with branch-selection data."
+      "discharge_condition": "Exhibit and verify a continuous collision-free rigid-panel deployment path with mountain-valley, layer-order, and branch-selection data."
     },
     {
-      "obligation_id": "VGSE-D05",
+      "obligation_id": "VGSE-D06",
       "category": "MISSING_LEMMA",
       "blocked_node": "VGSE-S6",
       "status": "gated",
@@ -53,8 +61,13 @@
     }
   ],
   "next_authorized_obligation": {
-    "node": "VGSE-S4",
-    "operation": "Reconstruct and render the five internal planar t-embeddings.",
+    "node": "VGSE-S4B",
+    "operation": "Reconstruct the Kenyon-Smirnov primitive for each algebraic witness and establish or refute a bijection with the five source-vector patterns.",
+    "required_inputs": [
+      "explicit planar bipartite graph and boundary labels",
+      "Kasteleyn signs and positive edge weights realizing C",
+      "boundary restriction and discrete-holomorphic extension conventions"
+    ],
     "commercial_claim_authorized": false
   }
 }
