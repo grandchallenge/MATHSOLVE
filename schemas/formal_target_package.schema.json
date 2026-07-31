@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grandchallenge.ai/schemas/formal_target_package.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "package_id", "issue", "source_lane", "source_provider", "upstream", "target_toolchain", "target_source_commit", "targets", "axiom_report", "unproved_obligations", "replay", "claim_boundary"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "package_id": {"const": "MS-FC-WP00"},
+    "issue": {"const": "https://github.com/grandchallenge/MATHSOLVE/issues/80"},
+    "source_lane": {"const": "FC-GDM-001"},
+    "source_provider": {"type": "object"},
+    "upstream": {"type": "object"},
+    "target_toolchain": {"type": "object"},
+    "target_source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "targets": {"type": "object", "required": ["RH-001", "NS-CI-001"]},
+    "axiom_report": {"type": "object"},
+    "unproved_obligations": {"type": "array", "minItems": 5, "items": {"type": "string", "minLength": 1}},
+    "replay": {"type": "array", "minItems": 4, "items": {"type": "string", "minLength": 1}},
+    "claim_boundary": {"type": "string", "minLength": 40}
+  }
+}
