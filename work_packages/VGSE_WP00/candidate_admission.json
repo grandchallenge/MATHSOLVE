@@ -1,22 +1,22 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "record_id": "MS-VGSE-CANDIDATE-ADMISSION-001",
   "campaign_id": "VGSE-001",
   "lifecycle_state": "candidate",
   "active_portfolio_member": false,
   "programme_authority": {
     "repository": "grandchallenge/MATH-PROGRAMME",
-    "merge_commit": "b78b73e73a62cdb3d54f08ba1af104ceac9c90b8",
+    "merge_commit": "d56edc23152f3ccde4c7db272b7af37f6cf698b9",
     "candidate_registry": {
       "path": "governance/campaign_admission_registry.json",
       "digest_algorithm": "git_blob_sha1",
-      "digest": "9b1a307fde8bfe814210088d544ec8b03f2b413e",
+      "digest": "a6bffaa197aa3921e3eb9d4f8a02b5dc2bbded24",
       "registry_id": "MP-CAMPAIGN-ADMISSION-001"
     },
     "runtime_contract": {
       "path": "governance/umbrella_runtime_contract_v4.json",
       "digest_algorithm": "git_blob_sha1",
-      "digest": "d1503fba284aee29fb517a554ee3440da691fd16",
+      "digest": "02cdfabb04f5d273fcb7531c515a73baab2bc52d",
       "contract_id": "MP-UMBRELLA-RUNTIME-004"
     },
     "state_authority": "protected_branch_repository_records",
@@ -25,7 +25,10 @@
   },
   "programme_mirrors": {
     "candidate_tracker_issue": 170,
-    "governance_issue": 172
+    "current_governance_issue": 175,
+    "governance_history": [
+      172
+    ]
   },
   "source_provenance": {
     "state": "unverified_candidate",
@@ -46,9 +49,17 @@
     "issue": 84,
     "pull_request": 85,
     "protected_base_commit_at_registration": "916f3434abcce29098ba7508a3b457a461461193",
-    "state": "draft_candidate_implementation",
+    "reviewed_head": "0d66a75412543e534b81c21a51a6ad88c035b55b",
+    "merge_commit": "709c7d3f388b8df75c87a247f80424e560c31e72",
+    "merged_at": "2026-07-31T15:04:53Z",
+    "workflow_runs": {
+      "solve_checks": 30641057206,
+      "gcl_conformance": 30641058060,
+      "candidate_replay": 30641057393
+    },
+    "state": "merged_candidate_work_package",
     "required_record_path": "work_packages/VGSE_WP00/candidate_admission.json",
-    "may_merge_candidate_work_package": true,
+    "may_merge_candidate_work_package": false,
     "may_create_campaign_manifest": false,
     "may_create_cert_handoff": false,
     "may_create_adjudication": false,
@@ -76,7 +87,7 @@
   "admission_gates": {
     "forge_provider_manifest_admitted": false,
     "source_revision_concordance_complete": false,
-    "solve_candidate_package_reviewed": false,
+    "solve_candidate_package_reviewed": true,
     "cert_route_registered": false,
     "programme_active_registry_updated": false,
     "programme_routing_registry_updated": false,
