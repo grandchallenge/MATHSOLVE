@@ -1,0 +1,129 @@
+{
+  "algebraic_fixture": "VGSE-B3-FIGURE16-BOUNDARY-001",
+  "boundary_measurement": {
+    "almost_perfect_matching_count": 31,
+    "common_scale": 0.03219543143791925,
+    "matching_multiplicities": {
+      "124": 1,
+      "125": 2,
+      "126": 1,
+      "134": 1,
+      "135": 2,
+      "136": 1,
+      "145": 1,
+      "146": 1,
+      "156": 1,
+      "234": 1,
+      "235": 2,
+      "236": 1,
+      "245": 2,
+      "246": 3,
+      "256": 4,
+      "345": 1,
+      "346": 2,
+      "356": 3,
+      "456": 1
+    },
+    "maximum_absolute_minor_residual": 7.105427357601002e-15,
+    "maximum_relative_minor_residual": 6.661338147750939e-16,
+    "nonzero_minor_count": 19,
+    "normalization_reference": [1, 2, 4],
+    "normalized_minors": {
+      "124": 2.0,
+      "125": 1.0,
+      "126": 3.0,
+      "134": 2.0000000000000004,
+      "135": 1.0000000000000004,
+      "136": 3.000000000000001,
+      "145": 7.000000000000002,
+      "146": 25.0,
+      "156": 2.0,
+      "234": 2.0,
+      "235": 0.9999999999999998,
+      "236": 2.9999999999999996,
+      "245": 12.999999999999996,
+      "246": 48.99999999999999,
+      "256": 5.0,
+      "345": 6.0,
+      "346": 24.000000000000004,
+      "356": 3.0000000000000013,
+      "456": 9.000000000000005
+    }
+  },
+  "claim_boundary": {
+    "collision_free_deployment_established": false,
+    "commercial_claim_authorized": false,
+    "continuous_rigid_foldability_established": false,
+    "exact_root_isolation_certified": false,
+    "exact_symbolic_weight_recovery_certified": false,
+    "finite_thickness_structure_established": false,
+    "five_algebraic_witnesses_extended": true,
+    "five_distinct_planar_t_embeddings_reconstructed_numerically": true,
+    "five_kenyon_smirnov_primitives_integrated": true,
+    "manufacturable_product_established": false
+  },
+  "generated_pattern_count": 5,
+  "graph_weight_fixture": "VGSE-B3-REDUCED-GRAPH-WEIGHTS-001",
+  "kasteleyn_sign_residual": 0.0,
+  "minimum_pairwise_internal_coordinate_distance": 21.439643306067115,
+  "patterns": [
+    {
+      "algebraic_witness": {"a1": 1, "a2": {"im": -1.6748119186728054, "re": -1.2865172314280133}, "a3": {"im": 10.442044857253586, "re": 3.4647574407327153}},
+      "interior_dual_vertices": {
+        "I:F01+F02+F04+F07": {"im": 4.283733675135611, "re": 22.96267900798151},
+        "I:F03+F04+F05+F06": {"im": -36.94880163975844, "re": 66.18913941739086},
+        "I:F03+F04+F07+F08": {"im": 18.906277464345145, "re": 34.02992207649019}
+      },
+      "metrics": {"area_partition_residual": 1.546140993013978e-11, "f_extension_residual": 2.574238292230133e-14, "face_count": 8.0, "maximum_kawasaki_residual": 1.0658141036401503e-14, "minimum_boundary_angle_margin": 0.11115298076454604, "minimum_edge_length": 1.3371413394563356, "prescribed_boundary_residual": 3.6273913727630175e-13, "primitive_closure_residual": 3.1296161105196403e-13, "tilde_extension_residual": 1.7900668810021992e-13},
+      "pattern_id": "FIG16-B3-01",
+      "status": "NUMERICALLY_RECONSTRUCTED_T_EMBEDDING_NEEDS_AUDIT"
+    },
+    {
+      "algebraic_witness": {"a1": 1, "a2": {"im": -2.0835800878945148, "re": -0.5656959922988707}, "a3": {"im": -0.22429793357712166, "re": -1.1017928975366498}},
+      "interior_dual_vertices": {
+        "I:F01+F02+F04+F07": {"im": -3.5310389461443474, "re": 18.31078529498421},
+        "I:F03+F04+F05+F06": {"im": 3.0815931313165112, "re": 34.085291554735875},
+        "I:F03+F04+F07+F08": {"im": 6.553364366007882, "re": 30.282785903027815}
+      },
+      "metrics": {"area_partition_residual": 4.547473508864641e-13, "f_extension_residual": 8.621012025415645e-15, "face_count": 8.0, "maximum_kawasaki_residual": 1.3322676295501878e-15, "minimum_boundary_angle_margin": 0.08316964029440534, "minimum_edge_length": 5.149004247162958, "prescribed_boundary_residual": 5.621825620452365e-13, "primitive_closure_residual": 6.269709279665613e-13, "tilde_extension_residual": 6.889346364584415e-13},
+      "pattern_id": "FIG16-B3-02",
+      "status": "NUMERICALLY_RECONSTRUCTED_T_EMBEDDING_NEEDS_AUDIT"
+    },
+    {
+      "algebraic_witness": {"a1": 1, "a2": {"im": -0.367278724452119, "re": 0.06344572500005029}, "a3": {"im": 3.0720101670052036, "re": 1.778464822720152}},
+      "interior_dual_vertices": {
+        "I:F01+F02+F04+F07": {"im": -33.16830558142005, "re": 12.014960111087595},
+        "I:F03+F04+F05+F06": {"im": -36.85486990006083, "re": 66.08420609954003},
+        "I:F03+F04+F07+F08": {"im": 16.348986955990682, "re": 34.852160260682815}
+      },
+      "metrics": {"area_partition_residual": 9.094947017729282e-13, "f_extension_residual": 8.283517728378436e-15, "face_count": 8.0, "maximum_kawasaki_residual": 1.7763568394002505e-15, "minimum_boundary_angle_margin": 0.16497692492727312, "minimum_edge_length": 3.6620681537081876, "prescribed_boundary_residual": 5.269442806276364e-13, "primitive_closure_residual": 3.5555547137837504e-13, "tilde_extension_residual": 5.364840740532635e-13},
+      "pattern_id": "FIG16-B3-03",
+      "status": "NUMERICALLY_RECONSTRUCTED_T_EMBEDDING_NEEDS_AUDIT"
+    },
+    {
+      "algebraic_witness": {"a1": 1, "a2": {"im": -0.6787036890166783, "re": 0.07604838983316327}, "a3": {"im": 0.09703915155074234, "re": -0.5923961114206033}},
+      "interior_dual_vertices": {
+        "I:F01+F02+F04+F07": {"im": -26.134733141678506, "re": 17.037323756012743},
+        "I:F03+F04+F05+F06": {"im": -8.16305630806103, "re": 39.47202058497077},
+        "I:F03+F04+F07+F08": {"im": -5.664927275233172, "re": 35.94311368589796}
+      },
+      "metrics": {"area_partition_residual": 1.1368683772161603e-11, "f_extension_residual": 8.541679783159457e-15, "face_count": 8.0, "maximum_kawasaki_residual": 7.549516567451064e-15, "minimum_boundary_angle_margin": 0.10247358869411546, "minimum_edge_length": 4.323636498016584, "prescribed_boundary_residual": 9.360165483887634e-13, "primitive_closure_residual": 9.935171901653666e-13, "tilde_extension_residual": 1.1965058297415365e-12},
+      "pattern_id": "FIG16-B3-04",
+      "status": "NUMERICALLY_RECONSTRUCTED_T_EMBEDDING_NEEDS_AUDIT"
+    },
+    {
+      "algebraic_witness": {"a1": 1, "a2": {"im": -0.31726091012822605, "re": 0.7300845315799025}, "a3": {"im": 0.07242740971774574, "re": -0.28701914808338186}},
+      "interior_dual_vertices": {
+        "I:F01+F02+F04+F07": {"im": -22.131177689408553, "re": 4.402445335428821},
+        "I:F03+F04+F05+F06": {"im": -29.176684995435572, "re": 43.724750823363294},
+        "I:F03+F04+F07+F08": {"im": -25.97721678049732, "re": 41.90602211981974}
+      },
+      "metrics": {"area_partition_residual": 2.1827872842550278e-11, "f_extension_residual": 5.131286443791744e-15, "face_count": 8.0, "maximum_kawasaki_residual": 2.6645352591003757e-15, "minimum_boundary_angle_margin": 0.09048667670330825, "minimum_edge_length": 3.680267783123043, "prescribed_boundary_residual": 1.6317505274439795e-12, "primitive_closure_residual": 1.68445092059666e-12, "tilde_extension_residual": 2.2402777301941192e-12},
+      "pattern_id": "FIG16-B3-05",
+      "status": "NUMERICALLY_RECONSTRUCTED_T_EMBEDDING_NEEDS_AUDIT"
+    }
+  ],
+  "reconstruction_id": "VGSE-B3-KENYON-SMIRNOV-001",
+  "schema_version": "1.0.0",
+  "source_fixture": "VGSE-FIG16-SOURCE-VECTOR-001"
+}
