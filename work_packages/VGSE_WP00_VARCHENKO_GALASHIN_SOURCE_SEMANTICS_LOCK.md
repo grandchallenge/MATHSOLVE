@@ -4,12 +4,15 @@
 
 - Candidate: `VGSE-001`.
 - Lifecycle: `candidate`; not an active Programme or MATHSOLVE campaign.
-- Programme candidate authority: MATH-PROGRAMME merge `b78b73e73a62cdb3d54f08ba1af104ceac9c90b8`.
-- Candidate registry: `governance/campaign_admission_registry.json`, blob `9b1a307fde8bfe814210088d544ec8b03f2b413e`.
-- Runtime contract: `governance/umbrella_runtime_contract_v4.json`, blob `d1503fba284aee29fb517a554ee3440da691fd16`.
-- Programme mirrors: #170 and governance issue #172.
+- Protected candidate work package: merged.
+- Reviewed Solve head: `0d66a75412543e534b81c21a51a6ad88c035b55b`.
+- Solve merge commit: `709c7d3f388b8df75c87a247f80424e560c31e72`.
+- Programme candidate authority: MATH-PROGRAMME merge `d56edc23152f3ccde4c7db272b7af37f6cf698b9`.
+- Candidate registry: `governance/campaign_admission_registry.json`, blob `a6bffaa197aa3921e3eb9d4f8a02b5dc2bbded24`.
+- Runtime contract: `governance/umbrella_runtime_contract_v4.json`, blob `02cdfabb04f5d273fcb7531c515a73baab2bc52d`.
+- Programme mirrors: candidate tracker #170, current governance #175, completed governance #172.
 - Forge mirror: #32, provider manifest pending.
-- Solve mirrors: issue #84 and draft PR #85.
+- Solve work-package mirror: issue #84; implementation PR #85 is merged.
 - Cert mirror: #41, state `pre_route_candidate`; no route exists.
 
 The machine-readable local authority is `work_packages/VGSE_WP00/candidate_admission.json`. GitHub issues and this document are navigation and explanation mirrors. They cannot admit the campaign, verify the source, create a Cert route, or promote a claim.
@@ -27,13 +30,15 @@ The working source is a candidate copy of Pavel Galashin, *Amplituhedra and Orig
 
 The checksum is a candidate reproducibility lock. It is not provider verification. The legacy generated-report field `source.author_pdf_sha256` carries this candidate checksum only and must not be interpreted as a verified source identity. The extractor rejects a different input so that the candidate replay remains reproducible while Forge review is pending.
 
+The merged package uses a candidate extraction of the Figure 16 vector boundary. It does not use the earlier provisional regular-hexagon fixture.
+
 ## Bounded result-status box
 
 | Layer | Current status |
 |---|---|
 | Five-line arrangement and `beta(C)=5` | `COMPUTED_EXACTLY` for the recorded rational fixture |
 | Five divisor-excluding critical-point witnesses | Numerical replay; `NEEDS_AUDIT` |
-| Five source-vector geometries | Deterministic extraction and PDF-precision checks; `NEEDS_AUDIT` |
+| Five source-vector geometries | Deterministic candidate extraction and PDF-precision checks; `NEEDS_AUDIT` |
 | Positive weighted graph reproducing `C` | Numerical replay; `NEEDS_AUDIT` |
 | Five generated planar t-embeddings | Numerical reconstruction; `NEEDS_AUDIT` |
 | Genericity, exact root count, weights, and geometric inequalities | Open certification debt |
@@ -42,7 +47,7 @@ The checksum is a candidate reproducibility lock. It is not provider verificatio
 | Finite-thickness manufacture | Not assessed |
 | Novelty, priority, patentability, or commercial value | Not authorized |
 
-MATHCERT #41 is a pre-route candidate mirror. It is not a certification intake, adjudication, or certificate output. `VGSE-WP00-CERT-001` may be proposed only after protected Programme admission and a content-addressed Solve handoff.
+MATHCERT #41 is a pre-route candidate mirror. It is not a certification intake, adjudication, or certificate output. A certification route may be proposed only after protected Programme admission and a content-addressed Solve handoff.
 
 ## Formal fixture
 
@@ -91,23 +96,13 @@ For the rounded candidate Figure 16 boundary, elimination produces factor degree
 1, 1, 1, 3, 3, 5.
 ```
 
-The non-quintic factors are rejected as arrangement-divisor contamination:
-
-| Factor | Deleted support |
-|---|---|
-| `x^3` | `alpha_3=0` |
-| `(x+1)^3` | `alpha_2=0` |
-| `2x-3`, `y=0` | `alpha_5=alpha_6=0` |
-| `7x-6`, `y=0` | `alpha_4=alpha_5=0` |
-| `25x-24`, `y=-9/25` | `alpha_4=alpha_6=0` |
-
-The retained quintic yields five floating-point witnesses. The replay checks scaled residuals, divisor separation, numerical orthogonality, positive adjacent minors, and winding values. It does not certify genericity, quotient dimension, root isolation, or separation.
+The non-quintic factors are rejected as arrangement-divisor contamination. The retained quintic yields five floating-point witnesses. The replay checks scaled residuals, divisor separation, numerical orthogonality, positive adjacent minors, and winding values. It does not certify genericity, quotient dimension, root isolation, or separation.
 
 ## Source-vector and independent geometry lanes
 
 The source-vector lane extracts five eight-face drawings from the candidate PDF and checks common boundary, incidence, convexity, area partition, boundary angles, and approximate Kawasaki sums. This is candidate-source fidelity evidence, not a formal t-embedding certificate.
 
-The independent lane reconstructs a reduced bipartite topology, records positive numerical weights, enumerates 31 almost-perfect matchings, and numerically reproduces the support and nineteen nonzero Plücker coordinates of `C` up to one projective scale. It then extends the five algebraic witnesses through numerical discrete-holomorphic solves and Kenyon–Smirnov primitives to five distinct planar coordinate sets.
+The independent lane reconstructs a reduced bipartite topology, records positive numerical weights, enumerates 31 almost-perfect matchings, and numerically reproduces the support and nineteen nonzero Plücker coordinates of `C` up to one projective scale. It extends the five algebraic witnesses through numerical discrete-holomorphic solves and Kenyon–Smirnov primitives to five distinct planar coordinate sets.
 
 The generated patterns satisfy machine-scale closure and boundary residuals and positive numerical geometric margins in the recorded fixture. Exact or interval-certified weights, solves, convexity, Kawasaki equalities, and generated-to-source equivalence remain open.
 
@@ -124,9 +119,9 @@ The generated patterns satisfy machine-scale closure and boundary residuals and 
 
 No earlier level implies a later level.
 
-## Fail-closed candidate merge boundary
+## Fail-closed post-merge boundary
 
-This draft may merge bounded candidate code, data, ledgers, rendered artifacts, and tests because the Programme candidate registry permits a candidate work-package merge. It may not create:
+The bounded candidate code, data, ledgers, rendered artifacts, and tests are merged. That merge may not create:
 
 - `campaign_manifests/VGSE-001.json`;
 - `cert_handoffs/VGSE-001.json`;
@@ -135,9 +130,9 @@ This draft may merge bounded candidate code, data, ledgers, rendered artifacts, 
 - a promotion record;
 - provider-verified source status.
 
-The candidate-admission tests must reject any such inflation.
+The candidate-admission tests reject any such inflation.
 
-## Proof debt
+## Remaining proof debt
 
 - `VGSE-D00`: Forge source identity, revision, theorem, figure, and bibliography audit.
 - `VGSE-D01`: Varchenko–Orlik–Terao hypothesis and implication audit.
@@ -148,27 +143,6 @@ The candidate-admission tests must reject any such inflation.
 - `VGSE-D06`: generated-to-source equivalence record.
 - `VGSE-D07`: continuous rigid-folding and collision analysis.
 - `VGSE-D08`: finite-thickness prototype, process, durability, performance, and economics.
-
-## Reproduction
-
-```bash
-python work_packages/VGSE_WP00/artifacts/code/test_candidate_admission.py
-python work_packages/VGSE_WP00/artifacts/code/replicate_b3.py --check --output /tmp/vgse_b3.json
-python work_packages/VGSE_WP00/artifacts/code/test_replicate_b3.py
-python work_packages/VGSE_WP00/artifacts/code/validate_figure16.py \
-  work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json \
-  --report /tmp/vgse_figure16_validation.json \
-  --svg-dir /tmp/vgse_figure16_source_svg
-python work_packages/VGSE_WP00/artifacts/code/test_figure16.py
-python work_packages/VGSE_WP00/artifacts/code/reconstruct_b3.py \
-  work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json \
-  work_packages/VGSE_WP00/artifacts/data/expected_replay.json \
-  work_packages/VGSE_WP00/artifacts/data/graph_weight_fixture.json \
-  --check \
-  --output /tmp/vgse_reconstructed.json \
-  --svg-dir /tmp/vgse_reconstructed_svg
-python work_packages/VGSE_WP00/artifacts/code/test_reconstruct_b3.py
-```
 
 ## Claim boundary
 
