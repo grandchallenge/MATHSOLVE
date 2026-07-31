@@ -1,0 +1,44 @@
+name: VGSE WP00 replay
+
+on:
+  pull_request:
+    paths:
+      - "work_packages/VGSE_WP00/**"
+      - "work_packages/VGSE_WP00_VARCHENKO_GALASHIN_SOURCE_SEMANTICS_LOCK.md"
+      - ".github/workflows/vgse-wp00.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "work_packages/VGSE_WP00/**"
+      - "work_packages/VGSE_WP00_VARCHENKO_GALASHIN_SOURCE_SEMANTICS_LOCK.md"
+      - ".github/workflows/vgse-wp00.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  exact-replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Assert exact subject checkout
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+      - name: Replay saturated five-branch fixture
+        run: |
+          python work_packages/VGSE_WP00/artifacts/code/replicate_b3.py \
+            --check \
+            --output /tmp/vgse_b3.json
+          python work_packages/VGSE_WP00/artifacts/code/test_replicate_b3.py
+          python -m json.tool work_packages/VGSE_WP00/artifacts/data/expected_replay.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/claim_ledger.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/proof_obligations.json >/dev/null
