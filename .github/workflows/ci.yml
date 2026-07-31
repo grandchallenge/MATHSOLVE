@@ -39,6 +39,10 @@ jobs:
         run: |
           python ci/validate_campaign_manifests.py
           python -m unittest ci/test_campaign_manifests.py -v
+          python ci/validate_formal_conjectures_expansion.py
+          python -m unittest ci/test_formal_conjectures_expansion.py -v
+          python -m json.tool contracts/formal_conjectures_expanded_evidence.json >/dev/null
+          python -m json.tool formal_sources/formal_conjectures/MS-FC-WP01.json >/dev/null
           python -m json.tool schemas/campaign_manifest.schema.json >/dev/null
           python -m json.tool schemas/mathcert_handoff.schema.json >/dev/null
           python -m json.tool templates/mathcert_handoff.json >/dev/null
