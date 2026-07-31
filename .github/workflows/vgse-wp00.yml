@@ -35,6 +35,7 @@ jobs:
           python-version: "3.12.13"
       - name: Validate Programme candidate-admission boundary
         run: |
+          python work_packages/VGSE_WP00/artifacts/code/validate_candidate_admission.py
           python work_packages/VGSE_WP00/artifacts/code/test_candidate_admission.py
           python -m json.tool work_packages/VGSE_WP00/candidate_admission.json >/dev/null
       - name: Replay Figure 16 algebraic, source-vector, and reconstructed fixtures
