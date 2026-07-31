@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "VGSE-001",
+  "work_package_id": "VGSE-WP00",
+  "claims": [
+    {
+      "claim_id": "VGSE-C00",
+      "statement": "The projectivized Example B.1 arrangement has exactly five bounded regions.",
+      "status": "COMPUTED_EXACTLY",
+      "support_route": "EXACT_FINITE_VERIFICATION",
+      "evidence": [
+        "work_packages/VGSE_WP00/artifacts/code/replicate_b3.py",
+        "work_packages/VGSE_WP00/artifacts/data/expected_replay.json"
+      ],
+      "certification_state": "unsubmitted"
+    },
+    {
+      "claim_id": "VGSE-C01",
+      "statement": "For the pinned regular-hexagon boundary fixture, the saturated numerical replay retains exactly five divisor-excluding critical points.",
+      "status": "COMPUTED_EXACTLY_AT_COUNT_LEVEL_WITH_NUMERICAL_WITNESSES",
+      "support_route": "REGRESSION_AUDIT",
+      "evidence": [
+        "work_packages/VGSE_WP00/artifacts/code/replicate_b3.py",
+        "work_packages/VGSE_WP00/artifacts/data/expected_replay.json"
+      ],
+      "limitations": [
+        "The five roots are floating-point witnesses.",
+        "Independent interval isolation or quotient-algebra certification is pending."
+      ],
+      "certification_state": "unsubmitted"
+    },
+    {
+      "claim_id": "VGSE-C02",
+      "statement": "Each retained pair passes the encoded numerical divisor, residual, orthogonality, adjacent-minor, and winding checks.",
+      "status": "REGRESSION_AUDIT",
+      "support_route": "REGRESSION_AUDIT",
+      "evidence": [
+        "work_packages/VGSE_WP00/artifacts/code/test_replicate_b3.py",
+        "work_packages/VGSE_WP00/artifacts/data/expected_replay.json"
+      ],
+      "certification_state": "unsubmitted"
+    },
+    {
+      "claim_id": "VGSE-C03",
+      "statement": "The five internal planar t-embeddings in Figure 16 have been reconstructed and rendered.",
+      "status": "NEEDS_AUDIT",
+      "support_route": "NONE",
+      "blocker": "No explicit graph-weight realization or internal face reconstruction is included.",
+      "certification_state": "blocked"
+    },
+    {
+      "claim_id": "VGSE-C04",
+      "statement": "A retained algebraic or planar solution is continuously rigidly deployable, collision-free, finite-thickness, or manufacturable.",
+      "status": "REFUTED_AS_AN_INFERENCE",
+      "support_route": "NONE",
+      "certification_state": "not_eligible"
+    },
+    {
+      "claim_id": "VGSE-C05",
+      "statement": "The WP00 replay authorizes a novelty, patentability, priority, product-performance, or commercial-value claim.",
+      "status": "REFUTED_AS_AN_INFERENCE",
+      "support_route": "NONE",
+      "certification_state": "prohibited"
+    }
+  ],
+  "claim_boundary": {
+    "algebraic_enumeration": "supported_at_fixture_level",
+    "real_internal_t_embedding": "not_reconstructed",
+    "rigid_deployment": "not_assessed",
+    "finite_thickness_manufacturing": "not_assessed",
+    "commercial_promotion": "not_authorized"
+  }
+}
