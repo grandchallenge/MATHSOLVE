@@ -33,7 +33,7 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.12.13"
-      - name: Replay Figure 16 algebraic and vector fixtures
+      - name: Replay Figure 16 algebraic, source-vector, and reconstructed fixtures
         run: |
           python work_packages/VGSE_WP00/artifacts/code/replicate_b3.py \
             --check \
@@ -42,11 +42,22 @@ jobs:
           python work_packages/VGSE_WP00/artifacts/code/validate_figure16.py \
             work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json \
             --report /tmp/vgse_figure16_validation.json \
-            --svg-dir /tmp/vgse_figure16_svg
+            --svg-dir /tmp/vgse_figure16_source_svg
           python work_packages/VGSE_WP00/artifacts/code/test_figure16.py
-          test "$(find /tmp/vgse_figure16_svg -name '*.svg' | wc -l)" -eq 5
+          python work_packages/VGSE_WP00/artifacts/code/reconstruct_b3.py \
+            work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json \
+            work_packages/VGSE_WP00/artifacts/data/expected_replay.json \
+            work_packages/VGSE_WP00/artifacts/data/graph_weight_fixture.json \
+            --check \
+            --output /tmp/vgse_reconstructed.json \
+            --svg-dir /tmp/vgse_reconstructed_svg
+          python work_packages/VGSE_WP00/artifacts/code/test_reconstruct_b3.py
+          test "$(find /tmp/vgse_figure16_source_svg -name '*.svg' | wc -l)" -eq 5
+          test "$(find /tmp/vgse_reconstructed_svg -name '*.svg' | wc -l)" -eq 5
           python -m json.tool work_packages/VGSE_WP00/artifacts/data/expected_replay.json >/dev/null
           python -m json.tool work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json >/dev/null
           python -m json.tool work_packages/VGSE_WP00/artifacts/data/figure16_validation.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/artifacts/data/graph_weight_fixture.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/artifacts/data/reconstruction_summary.json >/dev/null
           python -m json.tool work_packages/VGSE_WP00/claim_ledger.json >/dev/null
           python -m json.tool work_packages/VGSE_WP00/proof_obligations.json >/dev/null
