@@ -1,0 +1,104 @@
+{
+  "fixture_id": "VGSE-FIG16-SOURCE-VECTOR-001",
+  "patterns": [
+    {
+      "boundary": [[0.0, 0.0], [34.129578, 20.2397], [68.854401, 0.99218], [69.251343, -38.693344], [34.923126, -39.288589], [0.595245, -39.685532]],
+      "faces": [
+        {"color": "white", "face_id": "F01", "source_drawing_index": 6, "vertices": [[26.192261, 2.976288], [34.923126, -39.288589], [0.595245, -39.685532]]},
+        {"color": "black", "face_id": "F02", "source_drawing_index": 8, "vertices": [[0.0, 0.0], [26.192261, 2.976288], [0.595245, -39.685532]]},
+        {"color": "white", "face_id": "F03", "source_drawing_index": 9, "vertices": [[68.854401, 0.99218], [43.25705, -33.732651], [36.113647, 14.485123]]},
+        {"color": "black", "face_id": "F04", "source_drawing_index": 11, "vertices": [[26.192261, 2.976288], [36.113647, 14.485123], [43.25705, -33.732651], [34.923126, -39.288589]]},
+        {"color": "white", "face_id": "F05", "source_drawing_index": 12, "vertices": [[34.923126, -39.288589], [43.25705, -33.732651], [69.251343, -38.693344]]},
+        {"color": "black", "face_id": "F06", "source_drawing_index": 13, "vertices": [[69.251343, -38.693344], [43.25705, -33.732651], [68.854401, 0.99218]]},
+        {"color": "white", "face_id": "F07", "source_drawing_index": 14, "vertices": [[26.192261, 2.976288], [0.0, 0.0], [34.129578, 20.2397], [36.113647, 14.485123]]},
+        {"color": "black", "face_id": "F08", "source_drawing_index": 15, "vertices": [[68.854401, 0.99218], [36.113647, 14.485123], [34.129578, 20.2397]]}
+      ],
+      "pattern_id": "FIG16-01",
+      "source_component_order": 1,
+      "source_origin_pdf_points": [279.92926, 95.718155]
+    },
+    {
+      "boundary": [[0.0, 0.0], [34.129547, 20.2397], [68.854401, 0.99218], [69.251343, -38.693344], [34.923126, -39.288589], [0.595245, -39.685532]],
+      "faces": [
+        {"color": "white", "face_id": "F01", "source_drawing_index": 28, "vertices": [[21.231567, 2.182709], [34.923126, -39.288589], [0.595245, -39.685532]]},
+        {"color": "black", "face_id": "F02", "source_drawing_index": 30, "vertices": [[0.0, 0.0], [21.231567, 2.182709], [0.595245, -39.685532]]},
+        {"color": "white", "face_id": "F03", "source_drawing_index": 31, "vertices": [[68.854401, 0.99218], [60.123535, -2.777977], [29.76413, 12.50103]]},
+        {"color": "black", "face_id": "F04", "source_drawing_index": 33, "vertices": [[21.231567, 2.182709], [29.76413, 12.50103], [60.123535, -2.777977], [34.923126, -39.288589]]},
+        {"color": "white", "face_id": "F05", "source_drawing_index": 34, "vertices": [[34.923126, -39.288589], [60.123535, -2.777977], [69.251343, -38.693344]]},
+        {"color": "black", "face_id": "F06", "source_drawing_index": 35, "vertices": [[69.251343, -38.693344], [60.123535, -2.777977], [68.854401, 0.99218]]},
+        {"color": "white", "face_id": "F07", "source_drawing_index": 36, "vertices": [[21.231567, 2.182709], [0.0, 0.0], [34.129547, 20.2397], [29.76413, 12.50103]]},
+        {"color": "black", "face_id": "F08", "source_drawing_index": 37, "vertices": [[68.854401, 0.99218], [29.76413, 12.50103], [34.129547, 20.2397]]}
+      ],
+      "pattern_id": "FIG16-02",
+      "source_component_order": 2,
+      "source_origin_pdf_points": [357.618073, 95.718155]
+    },
+    {
+      "boundary": [[0.0, 0.0], [34.129547, 20.2397], [68.854401, 0.99218], [69.251343, -38.693344], [34.923126, -39.288589], [0.595245, -39.685532]],
+      "faces": [
+        {"color": "white", "face_id": "F01", "source_drawing_index": 50, "vertices": [[13.889862, -32.145195], [34.923126, -39.288589], [0.595245, -39.685532]]},
+        {"color": "black", "face_id": "F02", "source_drawing_index": 52, "vertices": [[0.0, 0.0], [13.889862, -32.145195], [0.595245, -39.685532]]},
+        {"color": "white", "face_id": "F03", "source_drawing_index": 53, "vertices": [[68.854401, 0.99218], [62.306244, -5.357643], [28.176666, -1.389145]]},
+        {"color": "black", "face_id": "F04", "source_drawing_index": 55, "vertices": [[13.889862, -32.145195], [28.176666, -1.389145], [62.306244, -5.357643], [34.923126, -39.288589]]},
+        {"color": "white", "face_id": "F05", "source_drawing_index": 56, "vertices": [[34.923126, -39.288589], [62.306244, -5.357643], [69.251343, -38.693344]]},
+        {"color": "black", "face_id": "F06", "source_drawing_index": 57, "vertices": [[69.251343, -38.693344], [62.306244, -5.357643], [68.854401, 0.99218]]},
+        {"color": "white", "face_id": "F07", "source_drawing_index": 58, "vertices": [[13.889862, -32.145195], [0.0, 0.0], [34.129547, 20.2397], [28.176666, -1.389145]]},
+        {"color": "black", "face_id": "F08", "source_drawing_index": 59, "vertices": [[68.854401, 0.99218], [28.176666, -1.389145], [34.129547, 20.2397]]}
+      ],
+      "pattern_id": "FIG16-03",
+      "source_component_order": 3,
+      "source_origin_pdf_points": [435.306854, 95.718155]
+    },
+    {
+      "boundary": [[0.0, 0.0], [34.129547, 20.2397], [68.854401, 0.992172], [69.251343, -38.693344], [34.923126, -39.288589], [0.595245, -39.685532]],
+      "faces": [
+        {"color": "white", "face_id": "F01", "source_drawing_index": 72, "vertices": [[8.929169, -31.946884], [34.923126, -39.288589], [0.595245, -39.685532]]},
+        {"color": "black", "face_id": "F02", "source_drawing_index": 74, "vertices": [[0.0, 0.0], [8.929169, -31.946884], [0.595245, -39.685532]]},
+        {"color": "white", "face_id": "F03", "source_drawing_index": 75, "vertices": [[68.854401, 0.992172], [42.46347, -35.518417], [44.64621, 6.349823]]},
+        {"color": "black", "face_id": "F04", "source_drawing_index": 77, "vertices": [[8.929169, -31.946884], [44.64621, 6.349823], [42.46347, -35.518417], [34.923126, -39.288589]]},
+        {"color": "white", "face_id": "F05", "source_drawing_index": 78, "vertices": [[34.923126, -39.288589], [42.46347, -35.518417], [69.251343, -38.693344]]},
+        {"color": "black", "face_id": "F06", "source_drawing_index": 79, "vertices": [[69.251343, -38.693344], [42.46347, -35.518417], [68.854401, 0.992172]]},
+        {"color": "white", "face_id": "F07", "source_drawing_index": 80, "vertices": [[8.929169, -31.946884], [0.0, 0.0], [34.129547, 20.2397], [44.64621, 6.349823]]},
+        {"color": "black", "face_id": "F08", "source_drawing_index": 81, "vertices": [[68.854401, 0.992172], [44.64621, 6.349823], [34.129547, 20.2397]]}
+      ],
+      "pattern_id": "FIG16-04",
+      "source_component_order": 4,
+      "source_origin_pdf_points": [318.773651, 158.223251]
+    },
+    {
+      "boundary": [[0.0, 0.0], [34.129547, 20.2397], [68.854401, 0.992172], [69.251343, -38.693344], [34.923126, -39.288589], [0.595245, -39.685532]],
+      "faces": [
+        {"color": "white", "face_id": "F01", "source_drawing_index": 94, "vertices": [[4.563721, -20.041092], [34.923126, -39.288589], [0.595245, -39.685532]]},
+        {"color": "black", "face_id": "F02", "source_drawing_index": 96, "vertices": [[0.0, 0.0], [4.563721, -20.041092], [0.595245, -39.685532]]},
+        {"color": "white", "face_id": "F03", "source_drawing_index": 97, "vertices": [[68.854401, 0.992172], [36.312256, -36.312302], [28.970245, -23.612946]]},
+        {"color": "black", "face_id": "F04", "source_drawing_index": 99, "vertices": [[4.563721, -20.041092], [28.970245, -23.612946], [36.312256, -36.312302], [34.923126, -39.288589]]},
+        {"color": "white", "face_id": "F05", "source_drawing_index": 100, "vertices": [[34.923126, -39.288589], [36.312256, -36.312302], [69.251343, -38.693344]]},
+        {"color": "black", "face_id": "F06", "source_drawing_index": 101, "vertices": [[69.251343, -38.693344], [36.312256, -36.312302], [68.854401, 0.992172]]},
+        {"color": "white", "face_id": "F07", "source_drawing_index": 102, "vertices": [[4.563721, -20.041092], [0.0, 0.0], [34.129547, 20.2397], [28.970245, -23.612946]]},
+        {"color": "black", "face_id": "F08", "source_drawing_index": 103, "vertices": [[68.854401, 0.992172], [28.970245, -23.612946], [34.129547, 20.2397]]}
+      ],
+      "pattern_id": "FIG16-05",
+      "source_component_order": 5,
+      "source_origin_pdf_points": [396.462433, 158.223251]
+    }
+  ],
+  "schema_version": "1.0.0",
+  "semantics": {
+    "commercial_claim_authorized": false,
+    "evidence_class": "SOURCE_VECTOR_GEOMETRY_REPLICATION",
+    "not_a_manufacturability_result": true,
+    "not_a_rigid_foldability_result": true,
+    "not_an_independent_algebraic_to_geometry_reconstruction": true
+  },
+  "source": {
+    "author": "Pavel Galashin",
+    "extraction_method": "PyMuPDF page.get_drawings vector-path extraction",
+    "extractor_version": "PyMuPDF 1.26.7 / MuPDF 1.26.12",
+    "figure": 16,
+    "pdf_date": "2026-06-03",
+    "pdf_page_index_zero_based": 74,
+    "pdf_sha256": "e513789426ae6247438920bfc80cfba6bd9c32dc6799a4f7873d806a865f95de",
+    "printed_page": 75,
+    "title": "Amplituhedra and Origami, I: Tree Level"
+  }
+}
