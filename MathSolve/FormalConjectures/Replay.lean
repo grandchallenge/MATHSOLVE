@@ -1,0 +1,10 @@
+import MathSolve.FormalConjectures.RiemannHypothesis
+import MathSolve.FormalConjectures.NSCriticalIntegrability
+
+#check MathSolve.FormalConjectures.RH.ProgrammeRiemannHypothesis
+#check MathSolve.FormalConjectures.RH.programmeRiemannHypothesis_eq_mathlib
+#check MathSolve.FormalConjectures.NS.UniversalCriticalIntegrability
+#check MathSolve.FormalConjectures.NS.CriticalIntegrabilityImpliesClay
+
+#print axioms MathSolve.FormalConjectures.RH.programmeRiemannHypothesis_eq_mathlib
+#print axioms MathSolve.FormalConjectures.NS.universalCriticalIntegrability_iff
