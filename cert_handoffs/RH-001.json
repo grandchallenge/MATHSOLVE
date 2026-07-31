@@ -52,10 +52,11 @@
     "SEMANTIC_REPLAY",
     "SPECIALIST_AUDIT_PENDING"
   ],
-  "claim_boundary": "This ready packet supplies a canonical statement interface and a definitional concordance theorem. It does not prove the Riemann Hypothesis.",
-  "status": "ready",
+  "claim_boundary": "This pending packet supplies a canonical statement interface and a definitional concordance theorem. It does not prove the Riemann Hypothesis or predetermine MATHCERT intake.",
+  "status": "pending",
   "blockers": [
-    "RH-T-000 remains mathematically unproved; ready means eligible for MATHCERT interface replay only."
+    "MATHCERT has not independently replayed and accepted the target package.",
+    "RH-T-000 remains mathematically unproved."
   ],
   "reopening_conditions": [
     "Reopen if the target declaration, mathlib identity, zero taxonomy, source concordance, or MATHCERT disposition changes."
