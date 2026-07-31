@@ -3,31 +3,71 @@
   "manifest_id": "MS-MANIFEST-OZ-001",
   "campaign_id": "OZ-001",
   "coverage_mode": "retrospective",
-  "programme": {"repository": "grandchallenge/MATH-PROGRAMME", "issue": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/113", "commit_sha": "8e4f89fc90f2bec685a329c415400a65e7f455b4"},
-  "forge_inputs": [{"repository": "grandchallenge/MATHFORGE", "commit_sha": "2cb624cc61cd95ec0c8cfb8429d93128972289a5", "path": "provider_manifests/OZ-001.json", "digest_algorithm": "git_blob_sha1", "digest": "361da6642ff3ac7953b530ee0eb21659dc94fb65", "role": "source"}],
-  "solve": {"repository": "grandchallenge/MATHSOLVE", "provider_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/70", "provider_commit": "ec7c60bfa51850d7fb11bd5a3a24ca834352366e", "migration_debt": ["Move all future theorem-spine, route-selection, failure-ledger, and target-development work into MATHSOLVE.", "Replace retrospective Programme references with native Solve artifacts as each stage advances."]},
+  "programme": {"repository":"grandchallenge/MATH-PROGRAMME","issue":"https://github.com/grandchallenge/MATH-PROGRAMME/issues/113","commit_sha":"aafd5d5d18989d4ac246de8f6dd2455f02614307"},
+  "forge_inputs": [
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"2cb624cc61cd95ec0c8cfb8429d93128972289a5","path":"provider_manifests/OZ-001.json","digest_algorithm":"git_blob_sha1","digest":"361da6642ff3ac7953b530ee0eb21659dc94fb65","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"governance/external_formal_sources.json","digest_algorithm":"git_blob_sha1","digest":"4680bee8e6b641956a5db2b453c94aab7cabb37b","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/source_locks/FC-GDM-002.json","digest_algorithm":"git_blob_sha1","digest":"9acd4a94538592a235bb302c1f31e5da11662643","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/snapshots/FC-GDM-002-ACTIVE-CAMPAIGN-EXPANSION.replay.json","digest_algorithm":"git_blob_sha1","digest":"1ad4250df912bf2c7cfcc7342fb0ad75e8d667e7","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/update_ledgers/FC-GDM-001-TO-FC-GDM-002.json","digest_algorithm":"git_blob_sha1","digest":"ff2590e2a91b7d5ea5ea5a42c23c67c9745608a0","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/REPLAY_MANIFEST.json","digest_algorithm":"git_blob_sha1","digest":"d91c8ae08262791d248c9ba87837c4624c0b4cda","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/FC-GDM-002-INVENTORY-SCREEN.json","digest_algorithm":"git_blob_sha1","digest":"8dbe8d6769e842be72eb8be1e22cc605278c7561","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/FC-GDM-002-TAG-RESOLUTION.json","digest_algorithm":"git_blob_sha1","digest":"7dd39a995a789da583f8f2f0b15da2c30207f0f1","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ZETA3.json","digest_algorithm":"git_blob_sha1","digest":"a7ca853bd5638814078228b40e78283ae0e29b76","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ZETA5.json","digest_algorithm":"git_blob_sha1","digest":"b4f5ef332025669c7202b83ea3a3cb13f2c8009e","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ZETA7.json","digest_algorithm":"git_blob_sha1","digest":"34e28294097b1519b18c40a770e3cd3d8e81a15c","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ZETA9.json","digest_algorithm":"git_blob_sha1","digest":"a6ba362e0160d92f7b609bcc12eea09b66810606","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ZETA11.json","digest_algorithm":"git_blob_sha1","digest":"5cdda19da72b5411b67bf378b9c83df2da28dfb5","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ODD-UNIVERSAL.json","digest_algorithm":"git_blob_sha1","digest":"06931337e40f3f7644b99470aca7939a5cd89a4f","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ODD-INFINITUDE.json","digest_algorithm":"git_blob_sha1","digest":"2e1dd5320a6c19bd4b1515c2f7abdf9843050f48","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ZUDILIN-5-11.json","digest_algorithm":"git_blob_sha1","digest":"a17def6ccd96d4cdea6602336f2a09c5f66d188c","role":"source"}
+  ],
+  "solve": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "provider_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/70",
+    "provider_commit": "ec7c60bfa51850d7fb11bd5a3a24ca834352366e",
+    "migration_debt": [
+      "Move future theorem-spine, route-selection, failure-ledger, and target-development work into MATHSOLVE.",
+      "Replace retrospective Programme references with native Solve artifacts as each stage advances.",
+      "Route the next active obligation OZ-RT-BZ-T3-001 through a native MATHSOLVE package before further theorem development."
+    ]
+  },
   "work_packages": [{
-    "work_package_id": "OZ-WP00-RETROSPECTIVE",
+    "work_package_id": "OZ-WP00-LB-INSTANCE-RETROSPECTIVE",
     "primary_type": "GOVERNANCE_HANDOFF",
-    "status": "blocked",
+    "status": "active",
     "source_repository": "grandchallenge/MATH-PROGRAMME",
-    "source_commit": "8e4f89fc90f2bec685a329c415400a65e7f455b4",
-    "artifacts": [{"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "8e4f89fc90f2bec685a329c415400a65e7f455b4", "path": "campaigns/odd_zeta/OZ_WP00_SOURCE_NORMALIZATION_EQUIVALENCE/01_INTAKE_SOURCE_LOCK.yaml", "digest_algorithm": "git_blob_sha1", "digest": "3a55994b08a625c024af5b9f14a1f5f97f5f14c3", "role": "programme_bundle"}],
+    "source_commit": "aafd5d5d18989d4ac246de8f6dd2455f02614307",
+    "artifacts": [
+      {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"aafd5d5d18989d4ac246de8f6dd2455f02614307","path":"campaigns/odd_zeta/OZ_WP00_SOURCE_NORMALIZATION_EQUIVALENCE/09_QUALIFIED_CLOSURE_OZ_NEXT_006.md","digest_algorithm":"git_blob_sha1","digest":"7e92628b04bdffd8538921f66b322d25e0ac703c","role":"programme_bundle"},
+      {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"aafd5d5d18989d4ac246de8f6dd2455f02614307","path":"campaigns/odd_zeta/OZ_WP01_FALSE_PROOF_ATLAS/ATLAS.yaml","digest_algorithm":"git_blob_sha1","digest":"690dcfbda3ff4719711e50d3af2d7746883a3d76","role":"programme_bundle"},
+      {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"aafd5d5d18989d4ac246de8f6dd2455f02614307","path":"campaigns/odd_zeta/OZ_WP02_THEOREM_OBLIGATION_LEDGER/THEOREM_LEDGER.yaml","digest_algorithm":"git_blob_sha1","digest":"4e578ec8714d38b526dd691bd487fc82a0748312","role":"programme_bundle"},
+      {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"aafd5d5d18989d4ac246de8f6dd2455f02614307","path":"campaigns/odd_zeta/OZ_RT_APERY_BROW_001/README.md","digest_algorithm":"git_blob_sha1","digest":"598db23b78f2a3db787ef9cdcdfd77af4386e597","role":"programme_bundle"},
+      {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"aafd5d5d18989d4ac246de8f6dd2455f02614307","path":"campaigns/odd_zeta/OZ_RT_LB_INSTANCE_001/README.md","digest_algorithm":"git_blob_sha1","digest":"92af2435b39686bab15ce1dfe0b8779aa7062afe","role":"programme_bundle"}
+    ],
     "ledgers": {
-      "claim": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "8e4f89fc90f2bec685a329c415400a65e7f455b4", "path": "campaigns/odd_zeta/OZ_WP00_SOURCE_NORMALIZATION_EQUIVALENCE/01_INTAKE_SOURCE_LOCK.yaml", "digest_algorithm": "git_blob_sha1", "digest": "3a55994b08a625c024af5b9f14a1f5f97f5f14c3", "role": "claim_ledger"},
-      "proof_obligation": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "8e4f89fc90f2bec685a329c415400a65e7f455b4", "path": "campaigns/odd_zeta/OZ_WP00_SOURCE_NORMALIZATION_EQUIVALENCE/03_IRRATIONALITY_BRIDGE_REGISTER.yaml", "digest_algorithm": "git_blob_sha1", "digest": "418e00c163a6fa080c03d5e88197088b223016e5", "role": "proof_obligation_dag"},
+      "claim": {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"aafd5d5d18989d4ac246de8f6dd2455f02614307","path":"campaigns/odd_zeta/OZ_WP02_THEOREM_OBLIGATION_LEDGER/THEOREM_LEDGER.yaml","digest_algorithm":"git_blob_sha1","digest":"4e578ec8714d38b526dd691bd487fc82a0748312","role":"claim_ledger"},
+      "proof_obligation": {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"aafd5d5d18989d4ac246de8f6dd2455f02614307","path":"campaigns/odd_zeta/OZ_WP02_THEOREM_OBLIGATION_LEDGER/PROOF_OBLIGATIONS.yaml","digest_algorithm":"git_blob_sha1","digest":"5ff39193cfc5eb6baac7ab1b4dd3ed56c6445ffa","role":"proof_obligation_dag"},
       "failed_route": null,
       "resource": null,
-      "certification": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "b10308fef02a56a0591675c58e3f316f82658ac7", "path": "cert_handoffs/OZ-001.json", "digest_algorithm": "git_blob_sha1", "digest": "b244c30b1b3aa4590a8b9ff9d63c5b66dab87663", "role": "certificate_handoff"}
+      "certification": {"repository":"grandchallenge/MATHSOLVE","commit_sha":"b10308fef02a56a0591675c58e3f316f82658ac7","path":"cert_handoffs/OZ-001.json","digest_algorithm":"git_blob_sha1","digest":"b244c30b1b3aa4590a8b9ff9d63c5b66dab87663","role":"certificate_handoff"}
     },
     "children": []
   }],
   "certification": {
     "repository": "grandchallenge/MATHCERT",
-    "contract": {"repository": "grandchallenge/MATHCERT", "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3"},
+    "contract": {"repository":"grandchallenge/MATHCERT","commit_sha":"3854dd1b4f6e162a7e74c3da1993f022ee691e5e","path":"governance/certification_routes.json","digest_algorithm":"git_blob_sha1","digest":"065f0531e4d763b389b207d4922d5a85b4335ee3"},
     "handoff_state": "pending",
-    "handoff_packets": [{"handoff_id": "MC-HANDOFF-OZ-001", "status": "pending", "target_claim_ids": ["OZ-WP00-INTAKE-BOUNDARY", "OZ-INTAKE-U006"], "artifact": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "b10308fef02a56a0591675c58e3f316f82658ac7", "path": "cert_handoffs/OZ-001.json", "digest_algorithm": "git_blob_sha1", "digest": "b244c30b1b3aa4590a8b9ff9d63c5b66dab87663", "role": "certificate_handoff"}}]
+    "handoff_packets": [{"handoff_id":"MC-HANDOFF-OZ-001","status":"pending","target_claim_ids":["OZ-WP00-INTAKE-BOUNDARY","OZ-INTAKE-U006"],"artifact":{"repository":"grandchallenge/MATHSOLVE","commit_sha":"b10308fef02a56a0591675c58e3f316f82658ac7","path":"cert_handoffs/OZ-001.json","digest_algorithm":"git_blob_sha1","digest":"b244c30b1b3aa4590a8b9ff9d63c5b66dab87663","role":"certificate_handoff"}}]
   },
-  "promotion": {"eligible": false, "blockers": ["Authoritative manuscript, Lean, certificate, computation, and literature bundles are not source-locked.", "All irrationality bridges remain open."]},
-  "disposal": {"status": "active", "supersedes": [], "reopening_conditions": ["Reopen the manifest when provider lineage, claim status, or certification state changes."]}
+  "promotion": {
+    "eligible": false,
+    "blockers": [
+      "T3 remains open; finite evidence does not establish the symbolic theorem.",
+      "Sharp-12 remains gated by T1-top, DEPTH, and its blocker packets.",
+      "No novelty, priority, or new irrationality conclusion is authorized.",
+      "The current T3 lane has not yet been migrated into a native MATHSOLVE package."
+    ]
+  },
+  "disposal": {"status":"active","supersedes":[],"reopening_conditions":["Reopen the manifest when provider lineage, claim status, or certification state changes."]}
 }

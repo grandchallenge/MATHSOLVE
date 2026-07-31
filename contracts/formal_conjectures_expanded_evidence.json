@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MS-FC-GOV-001",
+  "programme_admission": {
+    "repository": "grandchallenge/MATH-PROGRAMME",
+    "commit_sha": "aafd5d5d18989d4ac246de8f6dd2455f02614307",
+    "path": "governance/mathforge_provider_imports.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "3b796157324eeb925051efee78795a2ad1bcb2b5"
+  },
+  "provider": {
+    "repository": "grandchallenge/MATHFORGE",
+    "commit_sha": "0faee396ffa56c568ee0ae6a348bdb43ca80ac4d",
+    "source_id": "FC-GDM-002",
+    "upstream_repository": "google-deepmind/formal-conjectures",
+    "upstream_commit": "85f863718beeec7b58a3a1926ee92e3472bc2020",
+    "replay": {
+      "workflow_run_id": 30544600547,
+      "artifact_id": 8761186970,
+      "archive_sha256": "1c74747519c17f873f323198a92104538667092f3274a667a09e1a6b219a7bcb",
+      "snapshot_sha256": "e7534f913160cc9cef4eb80a735c44b7b1a8ea4273f0f5236d82cc7b9dab042b",
+      "snapshot_canonical_sha256": "2b6bda841d15b022ec8c66bc332177d1283ca791f5d5f6e82323c304d1e6fdf6",
+      "snapshot_byte_length": 52589,
+      "statement_count": 43,
+      "inventory_sha256": "2693de3b83c0990b0e7c62ab5032698c6dde6de0942441ba7d6cdb035625e687",
+      "inventory_byte_length": 1255363,
+      "problem_count": 3232
+    }
+  },
+  "common_artifacts": [
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"governance/external_formal_sources.json","digest_algorithm":"git_blob_sha1","digest":"4680bee8e6b641956a5db2b453c94aab7cabb37b","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/source_locks/FC-GDM-002.json","digest_algorithm":"git_blob_sha1","digest":"9acd4a94538592a235bb302c1f31e5da11662643","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/snapshots/FC-GDM-002-ACTIVE-CAMPAIGN-EXPANSION.replay.json","digest_algorithm":"git_blob_sha1","digest":"1ad4250df912bf2c7cfcc7342fb0ad75e8d667e7","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/update_ledgers/FC-GDM-001-TO-FC-GDM-002.json","digest_algorithm":"git_blob_sha1","digest":"ff2590e2a91b7d5ea5ea5a42c23c67c9745608a0","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/REPLAY_MANIFEST.json","digest_algorithm":"git_blob_sha1","digest":"d91c8ae08262791d248c9ba87837c4624c0b4cda","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/FC-GDM-002-INVENTORY-SCREEN.json","digest_algorithm":"git_blob_sha1","digest":"8dbe8d6769e842be72eb8be1e22cc605278c7561","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/FC-GDM-002-TAG-RESOLUTION.json","digest_algorithm":"git_blob_sha1","digest":"7dd39a995a789da583f8f2f0b15da2c30207f0f1","role":"source"}
+  ],
+  "campaigns": {
+    "UC-001": {
+      "coverage_mode": "native",
+      "disposition": "direct-formulation-concordance",
+      "artifacts": [
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/UC-001.json","digest_algorithm":"git_blob_sha1","digest":"8bba56b13978b36471e1cbafe358b82b571c2b95","role":"source"}
+      ],
+      "blocking_obligations": ["No Lean-kernel equivalence between the upstream statement and the Programme lock is claimed."]
+    },
+    "PNP-001": {
+      "coverage_mode": "retrospective",
+      "disposition": "direct-candidate-definition-audit-blocked",
+      "artifacts": [
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/PNP-001.json","digest_algorithm":"git_blob_sha1","digest":"c88ac8ee7493a551670ca2a37385a9157b43c658","role":"source"}
+      ],
+      "blocking_obligations": ["Audit the imported P and NP definitions, machine model, encodings, totality, malformed-input behavior, input-size accounting, and polynomial bounds before any equivalence claim."]
+    },
+    "OZ-001": {
+      "coverage_mode": "retrospective",
+      "disposition": "separate-theorem-lattice",
+      "artifacts": [
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ZETA3.json","digest_algorithm":"git_blob_sha1","digest":"a7ca853bd5638814078228b40e78283ae0e29b76","role":"source"},
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ZETA5.json","digest_algorithm":"git_blob_sha1","digest":"b4f5ef332025669c7202b83ea3a3cb13f2c8009e","role":"source"},
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ZETA7.json","digest_algorithm":"git_blob_sha1","digest":"34e28294097b1519b18c40a770e3cd3d8e81a15c","role":"source"},
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ZETA9.json","digest_algorithm":"git_blob_sha1","digest":"a6ba362e0160d92f7b609bcc12eea09b66810606","role":"source"},
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ZETA11.json","digest_algorithm":"git_blob_sha1","digest":"5cdda19da72b5411b67bf378b9c83df2da28dfb5","role":"source"},
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ODD-UNIVERSAL.json","digest_algorithm":"git_blob_sha1","digest":"06931337e40f3f7644b99470aca7939a5cd89a4f","role":"source"},
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ODD-INFINITUDE.json","digest_algorithm":"git_blob_sha1","digest":"2e1dd5320a6c19bd4b1515c2f7abdf9843050f48","role":"source"},
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/OZ-001-ZUDILIN-5-11.json","digest_algorithm":"git_blob_sha1","digest":"a17def6ccd96d4cdea6602336f2a09c5f66d188c","role":"source"}
+      ],
+      "required_scopes": ["zeta3","zeta5","zeta7","zeta9","zeta11","universal-odd-irrationality","odd-value-infinitude","finite-zudilin-disjunction"],
+      "blocking_obligations": ["No individual, universal, infinitude, or finite-disjunction statement may discharge another scope.", "No new irrationality conclusion follows from source admission."]
+    },
+    "BSD-001": {
+      "coverage_mode": "retrospective",
+      "disposition": "adjacency-only",
+      "artifacts": [
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/coverage/BSD-001.json","digest_algorithm":"git_blob_sha1","digest":"82166625115162817551c9a6c6ce377e9e049c7e","role":"source"}
+      ],
+      "blocking_obligations": ["Elliptic-curve rank infrastructure is not the BSD analytic-rank or leading-term conjecture."]
+    },
+    "HC-001": {
+      "coverage_mode": "native",
+      "disposition": "bounded-negative-source-screen",
+      "artifacts": [
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/coverage/HC-001.json","digest_algorithm":"git_blob_sha1","digest":"dc9dcdd8313c86298d9b4a15a712f0b9c7928a62","role":"source"}
+      ],
+      "blocking_obligations": ["A zero-hit bounded inventory screen is not proof of mathematical absence."]
+    },
+    "YM-001": {
+      "coverage_mode": "retrospective",
+      "disposition": "lexical-false-positive",
+      "artifacts": [
+        {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/coverage/YM-001.json","digest_algorithm":"git_blob_sha1","digest":"84c25fe523e854cc0e64862fd3eb0bd866a2eac7","role":"source"}
+      ],
+      "blocking_obligations": ["Mills-number and Prikry-Mills records are not Yang-Mills evidence."]
+    }
+  },
+  "certification_states": {
+    "UC-001": "ready",
+    "NS-CI-001": "ready",
+    "HC-001": "ready",
+    "BSD-001": "pending",
+    "PNP-001": "pending",
+    "RH-001": "pending",
+    "YM-001": "pending",
+    "OZ-001": "pending"
+  },
+  "claim_boundary": "This contract governs source identity, statement correspondence, route eligibility, and explicit non-routes. It changes no theorem status, novelty claim, Programme promotion, or MATHCERT disposition."
+}
