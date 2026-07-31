@@ -16,16 +16,24 @@ class GalashinB3ReplicationTests(unittest.TestCase):
         self.assertEqual(beta, 5)
         self.assertEqual(intersections, 9)
 
-    def test_saturated_solver_returns_five_valid_pairs(self) -> None:
+    def test_source_boundary_solver_returns_five_valid_pairs(self) -> None:
         report = MODULE.build_report()
         MODULE.validate_report(report)
-        self.assertEqual(report["algebraic_solution_count"], 5)
+        self.assertEqual(report["algebraic_witness_count"], 5)
+        self.assertEqual(report["replication_id"], "VGSE-B3-FIGURE16-BOUNDARY-001")
+
+    def test_all_unsaturated_extra_factors_are_divisor_supported(self) -> None:
+        report = MODULE.build_report()
+        excluded = report["elimination"]["excluded_divisor_factors"]
+        self.assertEqual(set(excluded), {"x^3", "(x+1)^3", "2x-3", "7x-6", "25x-24"})
+        self.assertTrue(all(item["arrangement_forms"] for item in excluded.values()))
 
     def test_claim_boundary_fails_closed(self) -> None:
-        report = MODULE.build_report()
-        boundary = report["claim_boundary"]
-        self.assertTrue(boundary["algebraic_branch_count_replicated"])
-        self.assertFalse(boundary["real_t_embedding_geometry_rendered"])
+        boundary = MODULE.build_report()["claim_boundary"]
+        self.assertTrue(boundary["exact_arrangement_count_replicated"])
+        self.assertTrue(boundary["source_boundary_algebraic_witness_replay_complete"])
+        self.assertTrue(boundary["source_vector_five_pattern_geometry_replicated_in_separate_artifact"])
+        self.assertFalse(boundary["algebraic_witness_to_pattern_correspondence_reconstructed"])
         self.assertFalse(boundary["continuous_rigid_foldability_established"])
         self.assertFalse(boundary["finite_thickness_structure_established"])
         self.assertFalse(boundary["manufacturable_product_established"])
@@ -36,7 +44,8 @@ class GalashinB3ReplicationTests(unittest.TestCase):
         expected = json.loads(expected_path.read_text(encoding="utf-8"))
         fresh = MODULE.build_report()
         self.assertEqual(expected["arrangement"], fresh["arrangement"])
-        self.assertEqual(expected["algebraic_solution_count"], fresh["algebraic_solution_count"])
+        self.assertEqual(expected["elimination"], fresh["elimination"])
+        self.assertEqual(expected["algebraic_witness_count"], fresh["algebraic_witness_count"])
         expected_points = [
             (item["projective_chart"]["a2"], item["projective_chart"]["a3"])
             for item in expected["solutions"]
