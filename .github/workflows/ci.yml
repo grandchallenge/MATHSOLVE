@@ -50,3 +50,27 @@ jobs:
         run: |
           python ci/validate_ns_ci_wp02.py
           python -m unittest ci/test_validate_ns_ci_wp02.py -v
+
+  formal-targets:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Assert exact subject checkout
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+      - uses: grandchallenge/lean-action@aa909e45950f6e5dd89e05dfed6b78e190ed99b8
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+      - name: Replay canonical RH and NS-CI targets
+        run: |
+          lake env lean MathSolve/FormalConjectures/Replay.lean
+          python ci/validate_formal_conjectures_targets.py
+          PYTHONPATH=ci python -m unittest ci/test_formal_conjectures_targets.py -v
+          python -m json.tool formal_sources/formal_conjectures/MS-FC-WP00.json >/dev/null
+          python -m json.tool schemas/formal_target_package.schema.json >/dev/null
