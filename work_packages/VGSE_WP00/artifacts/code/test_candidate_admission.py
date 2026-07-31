@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import copy
 import json
-import pathlib
 import unittest
 
 from validate_candidate_admission import RECORD_PATH, validation_errors
@@ -30,6 +29,26 @@ class CandidateAdmissionTests(unittest.TestCase):
         record["source_provenance"]["state"] = "provider_verified"
         self.assertTrue(any("source provenance inflated" in error for error in self.errors(record)))
 
+    def test_reviewed_head_drift_is_rejected(self) -> None:
+        record = copy.deepcopy(self.record)
+        record["solve_candidate"]["reviewed_head"] = "0" * 40
+        self.assertTrue(any("reviewed head" in error for error in self.errors(record)))
+
+    def test_merge_commit_drift_is_rejected(self) -> None:
+        record = copy.deepcopy(self.record)
+        record["solve_candidate"]["merge_commit"] = "0" * 40
+        self.assertTrue(any("merge identity" in error for error in self.errors(record)))
+
+    def test_candidate_cannot_revert_to_draft(self) -> None:
+        record = copy.deepcopy(self.record)
+        record["solve_candidate"]["state"] = "draft_candidate_implementation"
+        self.assertTrue(any("merged candidate work package" in error for error in self.errors(record)))
+
+    def test_completed_merge_cannot_remain_future_authority(self) -> None:
+        record = copy.deepcopy(self.record)
+        record["solve_candidate"]["may_merge_candidate_work_package"] = True
+        self.assertTrue(any("future authority" in error for error in self.errors(record)))
+
     def test_candidate_cannot_create_campaign_manifest(self) -> None:
         record = copy.deepcopy(self.record)
         record["solve_candidate"]["may_create_campaign_manifest"] = True
@@ -49,6 +68,11 @@ class CandidateAdmissionTests(unittest.TestCase):
         record = copy.deepcopy(self.record)
         record["certification_candidate"]["may_adjudicate"] = True
         self.assertTrue(any("may not adjudicate" in error for error in self.errors(record)))
+
+    def test_reviewed_candidate_gate_cannot_be_rolled_back(self) -> None:
+        record = copy.deepcopy(self.record)
+        record["admission_gates"]["solve_candidate_package_reviewed"] = False
+        self.assertTrue(any("reviewed candidate package gate" in error for error in self.errors(record)))
 
     def test_admission_gate_cannot_close_without_evidence(self) -> None:
         record = copy.deepcopy(self.record)
