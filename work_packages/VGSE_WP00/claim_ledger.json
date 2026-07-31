@@ -16,8 +16,8 @@
     },
     {
       "claim_id": "VGSE-C01",
-      "statement": "For the pinned regular-hexagon boundary fixture, the saturated numerical replay retains exactly five divisor-excluding critical points.",
-      "status": "COMPUTED_EXACTLY_AT_COUNT_LEVEL_WITH_NUMERICAL_WITNESSES",
+      "statement": "For the pinned regular-hexagon boundary fixture, the saturated numerical replay retains five divisor-excluding critical-point witnesses.",
+      "status": "NEEDS_AUDIT",
       "support_route": "REGRESSION_AUDIT",
       "evidence": [
         "work_packages/VGSE_WP00/artifacts/code/replicate_b3.py",
@@ -25,18 +25,22 @@
       ],
       "limitations": [
         "The five roots are floating-point witnesses.",
+        "The selected fixture's genericity has not been independently certified.",
         "Independent interval isolation or quotient-algebra certification is pending."
       ],
       "certification_state": "unsubmitted"
     },
     {
       "claim_id": "VGSE-C02",
-      "statement": "Each retained pair passes the encoded numerical divisor, residual, orthogonality, adjacent-minor, and winding checks.",
-      "status": "REGRESSION_AUDIT",
+      "statement": "Each retained witness passes the encoded numerical divisor, residual, orthogonality, adjacent-minor, and winding checks.",
+      "status": "NEEDS_AUDIT",
       "support_route": "REGRESSION_AUDIT",
       "evidence": [
         "work_packages/VGSE_WP00/artifacts/code/test_replicate_b3.py",
         "work_packages/VGSE_WP00/artifacts/data/expected_replay.json"
+      ],
+      "limitations": [
+        "The checks use floating-point arithmetic and are not interval certified."
       ],
       "certification_state": "unsubmitted"
     },
@@ -51,20 +55,22 @@
     {
       "claim_id": "VGSE-C04",
       "statement": "A retained algebraic or planar solution is continuously rigidly deployable, collision-free, finite-thickness, or manufacturable.",
-      "status": "REFUTED_AS_AN_INFERENCE",
+      "status": "REFUTED",
       "support_route": "NONE",
+      "interpretation": "Refuted only as an inference from the current evidence; no downstream physical conclusion follows from WP00.",
       "certification_state": "not_eligible"
     },
     {
       "claim_id": "VGSE-C05",
       "statement": "The WP00 replay authorizes a novelty, patentability, priority, product-performance, or commercial-value claim.",
-      "status": "REFUTED_AS_AN_INFERENCE",
+      "status": "REFUTED",
       "support_route": "NONE",
+      "interpretation": "Refuted as an inference from the current evidence and prohibited by the campaign claim boundary.",
       "certification_state": "prohibited"
     }
   ],
   "claim_boundary": {
-    "algebraic_enumeration": "supported_at_fixture_level",
+    "algebraic_enumeration": "exact_arrangement_count_plus_uncertified_numerical_witness_replay",
     "real_internal_t_embedding": "not_reconstructed",
     "rigid_deployment": "not_assessed",
     "finite_thickness_manufacturing": "not_assessed",
