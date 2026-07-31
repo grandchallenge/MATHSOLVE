@@ -27,10 +27,21 @@ class CampaignManifestTests(unittest.TestCase):
             (target / path.name).write_text(path.read_text(encoding="utf-8"), encoding="utf-8")
         return handle, target
 
+    def copied_current_cert_registry(self) -> tuple[tempfile.TemporaryDirectory, Path]:
+        handle = tempfile.TemporaryDirectory()
+        self.addCleanup(handle.cleanup)
+        target = Path(handle.name) / "mathcert_current_routes.json"
+        target.write_text(
+            module.CURRENT_CERT_REGISTRY_PATH.read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+        return handle, target
+
     def test_current_registry_template_and_packets_pass(self) -> None:
         self.assertEqual(module.campaign_manifest_errors(), [])
         self.assertEqual(module.mathcert_handoff_errors(), [])
         self.assertEqual(module.handoff_packet_errors(), [])
+        self.assertEqual(module.current_cert_route_errors(), [])
 
     def test_missing_active_campaign_fails(self) -> None:
         _, target = self.copied_registry()
@@ -87,15 +98,25 @@ class CampaignManifestTests(unittest.TestCase):
         errors = module.campaign_manifest_errors(target)
         self.assertTrue(any("requires resource ledger" in error for error in errors))
 
-    def test_ready_handoff_cannot_pass_judgment(self) -> None:
+    def test_ready_route_cannot_pass_judgment(self) -> None:
         errors = module.provider_gate_errors("HC-001", "JUDGMENT")
         self.assertTrue(any("not an adjudicated" in error for error in errors))
 
-    def test_ready_handoff_cannot_pass_integration(self) -> None:
+    def test_ready_route_cannot_pass_integration(self) -> None:
         errors = module.provider_gate_errors("UC-001", "INTEGRATION")
         self.assertTrue(any("not an adjudicated" in error for error in errors))
 
-    def test_promotion_requires_positive_certification(self) -> None:
+    def test_qualified_ns_route_passes_judgment_despite_ready_handoff(self) -> None:
+        self.assertEqual(module.provider_gate_errors("NS-CI-001", "JUDGMENT"), [])
+
+    def test_qualified_rh_route_passes_integration_despite_pending_handoff(self) -> None:
+        self.assertEqual(module.provider_gate_errors("RH-001", "INTEGRATION"), [])
+
+    def test_qualification_does_not_imply_claim_promotion(self) -> None:
+        errors = module.provider_gate_errors("RH-001", "CLAIM_PROMOTION")
+        self.assertTrue(any("not promotion eligible" in error for error in errors))
+
+    def test_promotion_requires_positive_historical_certification(self) -> None:
         _, target = self.copied_registry()
         path = target / "HC-001.json"
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -115,7 +136,7 @@ class CampaignManifestTests(unittest.TestCase):
         errors = module.campaign_manifest_errors(target)
         self.assertTrue(any("aggregate handoff state" in error for error in errors))
 
-    def test_cert_contract_drift_fails(self) -> None:
+    def test_historical_cert_contract_drift_fails(self) -> None:
         _, target = self.copied_registry()
         path = target / "NS-CI-001.json"
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -123,6 +144,42 @@ class CampaignManifestTests(unittest.TestCase):
         path.write_text(json.dumps(data), encoding="utf-8")
         errors = module.campaign_manifest_errors(target)
         self.assertTrue(any("contract identity" in error or "const" in error for error in errors))
+
+    def test_current_cert_contract_drift_fails(self) -> None:
+        _, path = self.copied_current_cert_registry()
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["authority"]["digest"] = "0" * 40
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.current_cert_route_errors(registry_path=path)
+        self.assertTrue(any("const" in error or "authority" in error for error in errors))
+
+    def test_qualified_route_requires_exact_output(self) -> None:
+        _, path = self.copied_current_cert_registry()
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["campaigns"]["RH-001"]["cert_output"] = None
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.current_cert_route_errors(registry_path=path)
+        self.assertTrue(any("Cert output" in error or "not valid" in error for error in errors))
+
+    def test_route_state_cannot_be_replaced_by_handoff_state(self) -> None:
+        _, path = self.copied_current_cert_registry()
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["campaigns"]["NS-CI-001"]["route_state"] = "ready"
+        data["campaigns"]["NS-CI-001"]["cert_output"] = None
+        data["campaigns"]["NS-CI-001"]["qualification_scope"] = None
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.current_cert_route_errors(registry_path=path)
+        self.assertTrue(any("route_state drift" in error for error in errors))
+
+    def test_stale_rh_no_replay_assertion_fails(self) -> None:
+        _, path = self.copied_current_cert_registry()
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["campaigns"]["RH-001"]["current_promotion_blockers"].append(
+            "MATHCERT has not independently replayed the target."
+        )
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.current_cert_route_errors(registry_path=path)
+        self.assertTrue(any("superseded no-replay" in error for error in errors))
 
     def test_pending_packet_requires_blocker(self) -> None:
         handle = tempfile.TemporaryDirectory()
