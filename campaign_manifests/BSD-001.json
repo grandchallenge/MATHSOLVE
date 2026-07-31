@@ -3,31 +3,41 @@
   "manifest_id": "MS-MANIFEST-BSD-001",
   "campaign_id": "BSD-001",
   "coverage_mode": "retrospective",
-  "programme": {"repository": "grandchallenge/MATH-PROGRAMME", "issue": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/66", "commit_sha": "3c199b6a62f9aae61ba645c58506589ed48676dd"},
-  "forge_inputs": [{"repository": "grandchallenge/MATHFORGE", "commit_sha": "2cb624cc61cd95ec0c8cfb8429d93128972289a5", "path": "provider_manifests/BSD-001.json", "digest_algorithm": "git_blob_sha1", "digest": "c95e1f0ef8d2e662ca9bb3bb49317fa8aa7b2185", "role": "source"}],
-  "solve": {"repository": "grandchallenge/MATHSOLVE", "provider_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/66", "provider_commit": "ec7c60bfa51850d7fb11bd5a3a24ca834352366e", "migration_debt": ["Move all future theorem-spine, route-selection, failure-ledger, and target-development work into MATHSOLVE.", "Replace retrospective Programme references with native Solve artifacts as each stage advances."]},
+  "programme": {"repository":"grandchallenge/MATH-PROGRAMME","issue":"https://github.com/grandchallenge/MATH-PROGRAMME/issues/66","commit_sha":"aafd5d5d18989d4ac246de8f6dd2455f02614307"},
+  "forge_inputs": [
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"2cb624cc61cd95ec0c8cfb8429d93128972289a5","path":"provider_manifests/BSD-001.json","digest_algorithm":"git_blob_sha1","digest":"c95e1f0ef8d2e662ca9bb3bb49317fa8aa7b2185","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"governance/external_formal_sources.json","digest_algorithm":"git_blob_sha1","digest":"4680bee8e6b641956a5db2b453c94aab7cabb37b","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/source_locks/FC-GDM-002.json","digest_algorithm":"git_blob_sha1","digest":"9acd4a94538592a235bb302c1f31e5da11662643","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/snapshots/FC-GDM-002-ACTIVE-CAMPAIGN-EXPANSION.replay.json","digest_algorithm":"git_blob_sha1","digest":"1ad4250df912bf2c7cfcc7342fb0ad75e8d667e7","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/update_ledgers/FC-GDM-001-TO-FC-GDM-002.json","digest_algorithm":"git_blob_sha1","digest":"ff2590e2a91b7d5ea5ea5a42c23c67c9745608a0","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/REPLAY_MANIFEST.json","digest_algorithm":"git_blob_sha1","digest":"d91c8ae08262791d248c9ba87837c4624c0b4cda","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/FC-GDM-002-INVENTORY-SCREEN.json","digest_algorithm":"git_blob_sha1","digest":"8dbe8d6769e842be72eb8be1e22cc605278c7561","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/FC-GDM-002-TAG-RESOLUTION.json","digest_algorithm":"git_blob_sha1","digest":"7dd39a995a789da583f8f2f0b15da2c30207f0f1","role":"source"},
+    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/coverage/BSD-001.json","digest_algorithm":"git_blob_sha1","digest":"82166625115162817551c9a6c6ce377e9e049c7e","role":"source"}
+  ],
+  "solve": {"repository":"grandchallenge/MATHSOLVE","provider_issue":"https://github.com/grandchallenge/MATHSOLVE/issues/66","provider_commit":"ec7c60bfa51850d7fb11bd5a3a24ca834352366e","migration_debt":["Move all future theorem-spine, route-selection, failure-ledger, and target-development work into MATHSOLVE.","Replace retrospective Programme references with native Solve artifacts as each stage advances.","Preserve FC-GDM-002 elliptic-curve rank material as adjacency only; it does not open a BSD proof route."]},
   "work_packages": [{
     "work_package_id": "BSD-WP00-WP04-RETROSPECTIVE",
     "primary_type": "GOVERNANCE_HANDOFF",
     "status": "active",
     "source_repository": "grandchallenge/MATH-PROGRAMME",
     "source_commit": "3c199b6a62f9aae61ba645c58506589ed48676dd",
-    "artifacts": [{"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "3c199b6a62f9aae61ba645c58506589ed48676dd", "path": "campaigns/birch_swinnerton_dyer/WP04_RESTRICTED_TARGET_SCORECARD/00_README.md", "digest_algorithm": "git_blob_sha1", "digest": "76fc8b6e6aa21be1d861f3b462c2e0f55fa99a60", "role": "programme_bundle"}],
+    "artifacts": [{"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"3c199b6a62f9aae61ba645c58506589ed48676dd","path":"campaigns/birch_swinnerton_dyer/WP04_RESTRICTED_TARGET_SCORECARD/00_README.md","digest_algorithm":"git_blob_sha1","digest":"76fc8b6e6aa21be1d861f3b462c2e0f55fa99a60","role":"programme_bundle"}],
     "ledgers": {
-      "claim": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "3c199b6a62f9aae61ba645c58506589ed48676dd", "path": "campaigns/birch_swinnerton_dyer/WP04_RESTRICTED_TARGET_SCORECARD/05_CLAIM_AND_GATE.json", "digest_algorithm": "git_blob_sha1", "digest": "63d859c2bcda9eb5b10e3092fa8a509bec9e9f74", "role": "claim_ledger"},
-      "proof_obligation": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "3c199b6a62f9aae61ba645c58506589ed48676dd", "path": "campaigns/birch_swinnerton_dyer/WP04_RESTRICTED_TARGET_SCORECARD/04_PROOF_OBLIGATION_DAG.json", "digest_algorithm": "git_blob_sha1", "digest": "19e8fbd1a4bc3eec4d2173b57eb12204a69c5770", "role": "proof_obligation_dag"},
+      "claim": {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"3c199b6a62f9aae61ba645c58506589ed48676dd","path":"campaigns/birch_swinnerton_dyer/WP04_RESTRICTED_TARGET_SCORECARD/05_CLAIM_AND_GATE.json","digest_algorithm":"git_blob_sha1","digest":"63d859c2bcda9eb5b10e3092fa8a509bec9e9f74","role":"claim_ledger"},
+      "proof_obligation": {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"3c199b6a62f9aae61ba645c58506589ed48676dd","path":"campaigns/birch_swinnerton_dyer/WP04_RESTRICTED_TARGET_SCORECARD/04_PROOF_OBLIGATION_DAG.json","digest_algorithm":"git_blob_sha1","digest":"19e8fbd1a4bc3eec4d2173b57eb12204a69c5770","role":"proof_obligation_dag"},
       "failed_route": null,
       "resource": null,
-      "certification": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "7ccb0ed96b535cec1842e2c49b8acd469ad7059a", "path": "cert_handoffs/BSD-001.json", "digest_algorithm": "git_blob_sha1", "digest": "20f8dbf016ab179cbf910d0510ad26b2bd9a24cb", "role": "certificate_handoff"}
+      "certification": {"repository":"grandchallenge/MATHSOLVE","commit_sha":"7ccb0ed96b535cec1842e2c49b8acd469ad7059a","path":"cert_handoffs/BSD-001.json","digest_algorithm":"git_blob_sha1","digest":"20f8dbf016ab179cbf910d0510ad26b2bd9a24cb","role":"certificate_handoff"}
     },
     "children": []
   }],
   "certification": {
     "repository": "grandchallenge/MATHCERT",
-    "contract": {"repository": "grandchallenge/MATHCERT", "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3"},
+    "contract": {"repository":"grandchallenge/MATHCERT","commit_sha":"3854dd1b4f6e162a7e74c3da1993f022ee691e5e","path":"governance/certification_routes.json","digest_algorithm":"git_blob_sha1","digest":"065f0531e4d763b389b207d4922d5a85b4335ee3"},
     "handoff_state": "pending",
-    "handoff_packets": [{"handoff_id": "MC-HANDOFF-BSD-001", "status": "pending", "target_claim_ids": ["BSD-R2-A1"], "artifact": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "7ccb0ed96b535cec1842e2c49b8acd469ad7059a", "path": "cert_handoffs/BSD-001.json", "digest_algorithm": "git_blob_sha1", "digest": "20f8dbf016ab179cbf910d0510ad26b2bd9a24cb", "role": "certificate_handoff"}}]
+    "handoff_packets": [{"handoff_id":"MC-HANDOFF-BSD-001","status":"pending","target_claim_ids":["BSD-R2-A1"],"artifact":{"repository":"grandchallenge/MATHSOLVE","commit_sha":"7ccb0ed96b535cec1842e2c49b8acd469ad7059a","path":"cert_handoffs/BSD-001.json","digest_algorithm":"git_blob_sha1","digest":"20f8dbf016ab179cbf910d0510ad26b2bd9a24cb","role":"certificate_handoff"}}]
   },
-  "promotion": {"eligible": false, "blockers": ["Historical Solve-owned work is embedded in MATH-PROGRAMME and requires migration.", "BSD-R2-A1 is selected but unproved and lacks a complete MATHCERT packet."]},
-  "disposal": {"status": "active", "supersedes": [], "reopening_conditions": ["Reopen the manifest when provider lineage, claim status, or certification state changes."]}
+  "promotion": {"eligible":false,"blockers":["Historical Solve-owned work is embedded in MATH-PROGRAMME and requires migration.","BSD-R2-A1 is selected but unproved and lacks a complete MATHCERT packet.","FC-GDM-002 provides adjacency only and has no BSD theorem effect."]},
+  "disposal": {"status":"active","supersedes":[],"reopening_conditions":["Reopen the manifest when provider lineage, claim status, or certification state changes."]}
 }
