@@ -22,9 +22,7 @@
     "repository": "grandchallenge/MATHSOLVE",
     "provider_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/80",
     "provider_commit": "3a884a579fdebc082f472bccf1117ff1c5dcb6b8",
-    "migration_debt": [
-      "The imported Leray-Hopf and mixed-norm predicates require later analytic formalization or an accepted theory-interface disposition."
-    ]
+    "migration_debt": []
   },
   "work_packages": [
     {
@@ -76,14 +74,7 @@
           "digest": "5077ddae34e3f6cf012c5511faa359bb68ddead3",
           "role": "resource_ledger"
         },
-        "certification": {
-          "repository": "grandchallenge/MATHSOLVE",
-          "commit_sha": "1b40ecfc3f07dddbbd98a9225cda000f9585af23",
-          "path": "cert_handoffs/NS-CI-001.json",
-          "digest_algorithm": "git_blob_sha1",
-          "digest": "40cad99646829fe40edf9c616074514407e49dee",
-          "role": "certificate_handoff"
-        }
+        "certification": null
       },
       "children": []
     },
