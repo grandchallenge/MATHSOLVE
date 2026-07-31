@@ -9,7 +9,7 @@
 - Primary type: `SOURCE_NORMALIZATION_AND_EXACT_REPLAY`
 - Global theorem-spine node: `VGSE-S0-SOURCE-AND-SEMANTICS-LOCK`
 - Incoming dependencies: Grand Challenge Work Package Standard; Claim Boundary Doctrine; Galashin Appendix B
-- Claim status: `COMPUTED_EXACTLY` for the arrangement count; `REGRESSION_AUDIT` for the numerical critical-point replay
+- Claim status: `COMPUTED_EXACTLY` for the arrangement count; `NEEDS_AUDIT` for the numerical critical-point witnesses
 - Certification target: independent MATHCERT replay of the exact arrangement certificate and saturated polynomial fixture
 - Foundational profile: present
 
@@ -19,8 +19,8 @@
 |---|---|
 | Result status | WP00 candidate with executable `(3,6)` replay |
 | Conditional on | Correct transcription of the pinned source and the selected regular-hexagon boundary fixture |
-| Strongest supported claim | The Example B.1 arrangement has `beta(C)=5`; the supplied saturated replay finds five divisor-excluding critical points with the required numerical orthogonality, adjacent-minor signs, and winding values |
-| Not claimed | Internal face reconstruction, rendered t-embeddings, continuous rigid foldability, collision freedom, finite-thickness realization, manufacturability, product performance, novelty, priority, patentability, or commercial value |
+| Strongest supported claim | The Example B.1 arrangement has `beta(C)=5`; the supplied saturated replay produces five divisor-excluding numerical witnesses that pass the encoded residual, orthogonality, adjacent-minor, and winding checks |
+| Not claimed | Certified genericity or exact isolation of the five witnesses; internal face reconstruction; rendered t-embeddings; continuous rigid foldability; collision freedom; finite-thickness realization; manufacturability; product performance; novelty; priority; patentability; or commercial value |
 | Support-route class | `EXACT_FINITE_VERIFICATION` plus `REGRESSION_AUDIT` |
 | Certification state | `UNSUBMITTED_TO_MATHCERT` |
 | First executable step | Reconstruct and render the five internal t-embeddings for an explicit weighted planar bipartite graph realizing the pinned matrix `C` |
@@ -68,10 +68,11 @@ The word “solution” has several non-equivalent meanings. A root of the polyn
 
 ### The restricted target
 
-Lock the source and reproduce only the first two levels:
+Lock the source and reproduce only the first bounded layers:
 
 1. the exact bounded-region count;
-2. five divisor-excluding critical points for a pinned regular-hexagon boundary, together with numerical sign, winding, and orthogonality checks.
+2. five divisor-excluding numerical critical-point witnesses for a pinned regular-hexagon boundary;
+3. numerical sign, winding, residual, denominator, and orthogonality checks for those witnesses.
 
 ### What this package achieved
 
@@ -81,11 +82,11 @@ The replay computes nine distinct finite intersections of the five affine lines 
 beta(C) = 1 - 5 + 9 = 5.
 ```
 
-It removes the denominator-supported resultant factor `25*x - 24`, solves the remaining degree-five polynomial, and retains five roots. Each retained root passes the encoded residual, divisor-exclusion, orthogonality, adjacent-minor, and winding tests.
+It removes the denominator-supported resultant factor `25*x - 24`, solves the remaining degree-five polynomial numerically, and retains five witnesses. Each retained witness passes the encoded residual, divisor-exclusion, orthogonality, adjacent-minor, and winding tests.
 
 ### What this package did not achieve
 
-It does not reconstruct the internal dual-graph geometry shown in Galashin Figure 16. It does not prove a rigid-folding path, handle panel collisions or thickness, fabricate a prototype, or support a commercial claim.
+It does not certify the selected boundary fixture's genericity or isolate the roots with interval or exact algebra. It does not reconstruct the internal dual-graph geometry shown in Galashin Figure 16. It does not prove a rigid-folding path, handle panel collisions or thickness, fabricate a prototype, or support a commercial claim.
 
 ## 4. Formal problem statement
 
@@ -133,9 +134,9 @@ y=0,
 
 ### Exact target statement
 
-For the line arrangement above, verify `beta(C)=5`. For the unit-circumradius regular hexagonal kami boundary, solve the master-function critical equations in the chart `a_1=1`, saturate by `alpha_1...alpha_6`, and recover exactly five retained roots.
+For the line arrangement above, verify `beta(C)=5`. For the unit-circumradius regular hexagonal kami boundary, transcribe the master-function critical equations in the chart `a_1=1`, remove all arrangement-divisor factors, and produce five numerical witnesses for the remaining degree-five fixture.
 
-For every retained root, form `zeta_i=alpha_i(a)` and `tilde_zeta_i=z_i/zeta_i`, orient the real plane `lambda` positively, and check numerically:
+For every retained witness, form `zeta_i=alpha_i(a)` and `tilde_zeta_i=z_i/zeta_i`, orient the real plane `lambda` positively, and check numerically:
 
 ```text
 lambda perpendicular to tilde_lambda,
@@ -145,7 +146,7 @@ wind(lambda)=2*pi,
 wind(tilde_lambda)=4*pi.
 ```
 
-These checks establish sign-compatible pair data for the selected fixture. They do not render the internal t-embedding.
+These checks establish only numerically sign-compatible pair data for the selected fixture. They do not certify exact roots or render the internal t-embedding.
 
 ## 5. Object and obstruction
 
@@ -178,11 +179,11 @@ This point lies on the deleted arrangement divisor. Counting it would produce si
 | Claim ID | Statement | Status | Evidence | Certification state |
 |---|---|---|---|---|
 | `VGSE-C00` | The pinned Example B.1 arrangement has five bounded regions | `COMPUTED_EXACTLY` | Exact rational intersection enumeration | Unsubmitted |
-| `VGSE-C01` | The selected saturated regular-hexagon fixture has five retained critical points | `REGRESSION_AUDIT` | Deterministic standard-library root replay and residual checks | Unsubmitted |
-| `VGSE-C02` | Each retained pair passes encoded sign, winding, and orthogonality checks | `REGRESSION_AUDIT` | Machine-readable output and tests | Unsubmitted |
+| `VGSE-C01` | The selected saturated regular-hexagon replay produces five divisor-excluding numerical witnesses | `NEEDS_AUDIT` | Deterministic standard-library root replay and residual checks | Unsubmitted |
+| `VGSE-C02` | Each retained witness passes encoded sign, winding, denominator, residual, and orthogonality checks | `NEEDS_AUDIT` | Floating-point machine-readable output and tests | Unsubmitted |
 | `VGSE-C03` | The five internal t-embeddings of Figure 16 have been reconstructed | `NEEDS_AUDIT` | No internal graph reconstruction in this package | Blocked |
-| `VGSE-C04` | Any retained design is rigidly deployable or manufacturable | `REFUTED_AS_AN_INFERENCE` | No physical lift has been performed | Not eligible |
-| `VGSE-C05` | A commercial claim follows from the replay | `REFUTED_AS_AN_INFERENCE` | Claim boundary | Prohibited |
+| `VGSE-C04` | Any retained design is rigidly deployable or manufacturable | `REFUTED` | Refuted only as an inference from current evidence; no physical lift has been performed | Not eligible |
+| `VGSE-C05` | A commercial claim follows from the replay | `REFUTED` | Refuted as an inference and prohibited by the claim boundary | Prohibited |
 
 ### What is proved or exact?
 
@@ -190,15 +191,15 @@ The arrangement count `beta(C)=5` is an exact finite computation over rational l
 
 ### What is checked?
 
-Five retained critical points and their numerical residual, sign, winding, divisor-exclusion, and orthogonality conditions.
+Five numerical critical-point witnesses and their encoded residual, sign, winding, divisor-exclusion, and orthogonality conditions.
 
 ### What remains open?
 
-Internal t-embedding reconstruction, independent algebraic certification of the saturated ideal, rigid deployment, collision analysis, finite thickness, mechanics, manufacturing, and commercial qualification.
+Fixture genericity, certified isolation or exact quotient dimension, internal t-embedding reconstruction, rigid deployment, collision analysis, finite thickness, mechanics, manufacturing, and commercial qualification.
 
 ### What requires external verification?
 
-Primary-source concordance across revisions; the Varchenko–Orlik–Terao theorem chain; the exact graph and weight realization used for Figure 16; an independent solver replay.
+Primary-source concordance across revisions; the Varchenko–Orlik–Terao theorem chain; the exact graph and weight realization used for Figure 16; an independent certified solver replay.
 
 ## 8. Theorem-spine slice and dependency DAG
 
@@ -207,7 +208,7 @@ Primary-source concordance across revisions; the Varchenko–Orlik–Terao theor
 | `VGSE-S0` | Source lock | Pin the exact Appendix B revision and semantics | Candidate complete | None | Independent source review |
 | `VGSE-S1` | Literature bridge | Prescribed-boundary solutions are counted by `beta(C)` | Literature-derived | `VGSE-S0` | Primary theorem audit |
 | `VGSE-S2` | Exact fixture | Example B.1 has `beta(C)=5` | Complete | `VGSE-S0` | Exact replay passes |
-| `VGSE-S3` | Algebraic replay | Recover five retained critical points | Complete as numerical replay | `VGSE-S1`, `VGSE-S2` | Independent exact or certified root count |
+| `VGSE-S3` | Algebraic replay | Produce five retained numerical critical-point witnesses | Numerical replay complete; exact certification open | `VGSE-S1`, `VGSE-S2` | Certified genericity and exact or interval root count |
 | `VGSE-S4` | Geometric reconstruction | Render five internal t-embeddings | Open | `VGSE-S3` | Coordinates, faces, and injectivity checks |
 | `VGSE-S5` | Mechanical lift | Establish continuous collision-free rigid deployment | Gated | `VGSE-S4` | Certified path and collision checks |
 | `VGSE-S6` | Product lift | Establish finite-thickness manufacturability and performance | Gated | `VGSE-S5` | Prototype and benchmark evidence |
@@ -230,7 +231,7 @@ Every finite intersection has multiplicity two, so `beta=1-5+9=5`.
 
 Pedagogical class: `REGRESSION_AUDIT`.
 
-The script uses a fixed regular hexagon, derives the two chart equations, and solves the saturated degree-five resultant using deterministic Durand–Kerner iteration. For each `x` root it solves the quadratic chart equation for `y` and selects the branch satisfying both critical equations. It rejects any root with a small arrangement denominator.
+The script uses a fixed regular hexagon, encodes the two chart equations, and solves the divisor-filtered degree-five polynomial using deterministic Durand–Kerner iteration. For each `x` root it solves the quadratic chart equation for `y` and selects the branch minimizing both critical-equation residuals. It rejects any witness with a small arrangement denominator.
 
 Replay:
 
@@ -245,7 +246,7 @@ The expected machine-readable record is `work_packages/VGSE_WP00/artifacts/data/
 
 ### Numerical limitation
 
-The degree-five roots are floating-point witnesses. The exact root count presently depends on the exact arrangement theorem plus the saturated degree of the encoded resultant, not on interval root isolation. MATHCERT should either isolate the roots or certify the quotient algebra dimension and divisor exclusion.
+The degree-five roots are floating-point witnesses. The exact root count for the selected fixture is not yet certified by interval isolation or quotient-algebra computation. MATHCERT should certify fixture genericity and either isolate all roots or certify the saturated quotient dimension and divisor exclusion.
 
 ## 10. Failure and negative-result analysis
 
@@ -255,7 +256,7 @@ Treat every resultant root as a valid branch.
 
 ### Why it was plausible
 
-Elimination returns a degree-six factorization before saturation.
+Elimination returns a degree-six factorization before divisor filtering.
 
 ### Smallest exact obstruction
 
@@ -275,7 +276,7 @@ Saturate by the product of all arrangement forms, or explicitly filter and separ
 |---|---|---|---|---|---|
 | `VGSE-D00` | `EXTERNAL_SOURCE` | `VGSE-S0` | Author PDF pinned by hash | Independent revision and bibliography audit | Axiomatist / Cartographer |
 | `VGSE-D01` | `UNPROVED_BRIDGE` | `VGSE-S1` | Galashin proof cites Varchenko–Orlik–Terao | Reconstruct theorem hypotheses and projective reduction | Formalist |
-| `VGSE-D02` | `COMPUTATIONAL_REPLAY` | `VGSE-S3` | Floating-point replay | Certified root isolation or exact quotient-dimension certificate | MATHCERT |
+| `VGSE-D02` | `COMPUTATIONAL_REPLAY` | `VGSE-S3` | Floating-point replay | Certified genericity plus root isolation or exact quotient-dimension certificate | MATHCERT |
 | `VGSE-D03` | `SEMANTIC_CORRESPONDENCE` | `VGSE-S4` | Pair-level data only | Pin explicit graph, weights, Kasteleyn/discrete-holomorphic reconstruction, and render all five interiors | Verifier |
 | `VGSE-D04` | `MISSING_LEMMA` | `VGSE-S5` | None | Continuous rigid-folding and collision-free path proof | Mechanical lane |
 | `VGSE-D05` | `MISSING_LEMMA` | `VGSE-S6` | None | Finite-thickness conversion and manufacturing evidence | Engineering lane |
@@ -290,16 +291,17 @@ Saturate by the product of all arrangement forms, or explicitly filter and separ
 
 ### Machine-checked or replayed claims
 
-- Five numerical critical points for the regular-hexagon fixture.
-- Residual, denominator, orthogonality, adjacent-minor, and winding checks.
+- Five numerical critical-point witnesses for the regular-hexagon fixture.
+- Floating-point residual, denominator, orthogonality, adjacent-minor, and winding checks.
 
 ### Exact certificate candidates
 
 - canonical list of rational line equations and rational intersections;
 - characteristic polynomial or intersection-poset certificate;
-- saturated resultant and quotient-ring dimension;
+- exact derivation of the divisor-filtered resultant and saturated quotient-ring dimension;
 - isolating rectangles for five complex roots;
-- interval residual and nonzero-denominator bounds.
+- interval residual and nonzero-denominator bounds;
+- genericity certificate for the selected boundary fixture.
 
 ### Formalization blockers
 
@@ -307,7 +309,7 @@ No current formal library is selected for complex root isolation, affine arrange
 
 ### First item for MATHCERT
 
-Certify that the saturated chart ideal for the pinned regular-hexagon fixture has exactly five isolated solutions away from `alpha_1...alpha_6=0`.
+Certify that the selected regular-hexagon fixture is generic for the invoked count and that its saturated chart ideal has exactly five isolated solutions away from `alpha_1...alpha_6=0`.
 
 ## 13. First executable step
 
