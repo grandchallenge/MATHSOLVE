@@ -33,6 +33,10 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.12.13"
+      - name: Validate Programme candidate-admission boundary
+        run: |
+          python work_packages/VGSE_WP00/artifacts/code/test_candidate_admission.py
+          python -m json.tool work_packages/VGSE_WP00/candidate_admission.json >/dev/null
       - name: Replay Figure 16 algebraic, source-vector, and reconstructed fixtures
         run: |
           python work_packages/VGSE_WP00/artifacts/code/replicate_b3.py \
