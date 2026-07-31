@@ -37,7 +37,7 @@
     "mathlib_repository": "leanprover-community/mathlib4",
     "mathlib_commit": "5e932f97dd25535344f80f9dd8da3aab83df0fe6"
   },
-  "target_source_commit": "a4f31e34fe7f6f39aa95a2d24ab8653d08d5bc70",
+  "target_source_commit": "8d3d1019cb9a58afd50bd148c1d57350a7d56af2",
   "targets": {
     "RH-001": {
       "lean_module": "MathSolve.FormalConjectures.RiemannHypothesis",
