@@ -17,19 +17,21 @@ class GalashinB3ReplicationTests(unittest.TestCase):
         self.assertEqual(intersections, 9)
 
     def test_source_boundary_solver_returns_five_valid_pairs(self) -> None:
-        report = MODULE.build_report()
-        MODULE.validate_report(report)
+        report = MODULE.report()
+        MODULE.validate(report)
         self.assertEqual(report["algebraic_witness_count"], 5)
         self.assertEqual(report["replication_id"], "VGSE-B3-FIGURE16-BOUNDARY-001")
+        self.assertEqual(report["source"]["provenance_state"], "unverified_candidate")
+        self.assertIsNone(report["source"]["provider_manifest"])
 
     def test_all_unsaturated_extra_factors_are_divisor_supported(self) -> None:
-        report = MODULE.build_report()
+        report = MODULE.report()
         excluded = report["elimination"]["excluded_divisor_factors"]
         self.assertEqual(set(excluded), {"x^3", "(x+1)^3", "2x-3", "7x-6", "25x-24"})
         self.assertTrue(all(item["arrangement_forms"] for item in excluded.values()))
 
     def test_claim_boundary_fails_closed(self) -> None:
-        boundary = MODULE.build_report()["claim_boundary"]
+        boundary = MODULE.report()["claim_boundary"]
         self.assertTrue(boundary["exact_arrangement_count_replicated"])
         self.assertTrue(boundary["source_boundary_algebraic_witness_replay_complete"])
         self.assertTrue(boundary["source_vector_five_pattern_geometry_replicated_in_separate_artifact"])
@@ -42,10 +44,14 @@ class GalashinB3ReplicationTests(unittest.TestCase):
     def test_expected_fixture_matches_fresh_replay(self) -> None:
         expected_path = pathlib.Path(__file__).parents[1] / "data" / "expected_replay.json"
         expected = json.loads(expected_path.read_text(encoding="utf-8"))
-        fresh = MODULE.build_report()
+        fresh = MODULE.report()
         self.assertEqual(expected["arrangement"], fresh["arrangement"])
         self.assertEqual(expected["elimination"], fresh["elimination"])
         self.assertEqual(expected["algebraic_witness_count"], fresh["algebraic_witness_count"])
+        self.assertEqual(
+            expected["source"]["author_pdf_sha256"],
+            fresh["source"]["candidate_pdf_sha256"],
+        )
         expected_points = [
             (item["projective_chart"]["a2"], item["projective_chart"]["a3"])
             for item in expected["solutions"]
