@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.2.0",
+  "campaign_id": "VGSE-001",
+  "work_package_id": "VGSE-WP00",
+  "obligations": [
+    {
+      "obligation_id": "VGSE-D00",
+      "category": "EXTERNAL_SOURCE",
+      "blocked_node": "VGSE-S0",
+      "status": "open",
+      "current_evidence": "The author-hosted PDF dated 2026-06-03 is pinned by SHA-256, and Figure 16 vector paths are recorded with page and drawing indices.",
+      "discharge_condition": "Independent source, revision, theorem-number, figure, and bibliography audit."
+    },
+    {
+      "obligation_id": "VGSE-D01",
+      "category": "UNPROVED_BRIDGE",
+      "blocked_node": "VGSE-S1",
+      "status": "open",
+      "current_evidence": "Galashin Proposition B.2 invokes the Varchenko-Orlik-Terao critical-point count.",
+      "discharge_condition": "Audit genericity, essentiality, projective normalization, Euler-characteristic, and bounded-region hypotheses against the primary sources."
+    },
+    {
+      "obligation_id": "VGSE-D02",
+      "category": "COMPUTATIONAL_REPLAY",
+      "blocked_node": "VGSE-S3",
+      "status": "open",
+      "current_evidence": "The Figure 16 boundary replay returns five floating-point witnesses after excluding five divisor-supported resultant factors.",
+      "discharge_condition": "MATHCERT certifies the boundary labeling and genericity, derives the saturated elimination independently, and certifies exactly five isolated roots away from every arrangement divisor."
+    },
+    {
+      "obligation_id": "VGSE-D03",
+      "category": "SOURCE_GEOMETRY",
+      "blocked_node": "VGSE-S4A",
+      "status": "partially_discharged",
+      "current_evidence": "Five source-vector face decompositions with a common boundary are extracted. TE1, TE2, TE4, TE5, bipartite incidence, face partition, simple boundary, and deterministic SVG rendering are checked at PDF precision.",
+      "discharge_condition": "Independent extractor replay against the pinned PDF and review of the 0.04-radian illustration-precision tolerance."
+    },
+    {
+      "obligation_id": "VGSE-D04",
+      "category": "GRAPH_AND_WEIGHT_CORRESPONDENCE",
+      "blocked_node": "VGSE-S4B",
+      "status": "partially_discharged",
+      "current_evidence": "The Figure 16 incidence graph has been reconstructed. Thirty-one almost-perfect matchings give exactly the nineteen nonzero Plucker coordinates of C. A positive numerical weight representative reproduces them up to one scale with maximum relative residual below 1e-12, and the Kasteleyn sign residual is zero.",
+      "discharge_condition": "Independently reproduce the positive-weight solve and replace or enclose the numerical weights with exact or interval-certified values."
+    },
+    {
+      "obligation_id": "VGSE-D05",
+      "category": "SEMANTIC_CORRESPONDENCE",
+      "blocked_node": "VGSE-S4C",
+      "status": "partially_discharged",
+      "current_evidence": "Each of the five algebraic witnesses has been extended through the reconstructed graph and integrated into a distinct numerical Kenyon-Smirnov primitive. Every generated pattern has eight convex faces, the prescribed boundary, machine-scale closure and Kawasaki residuals, and positive boundary-angle margins.",
+      "discharge_condition": "Certify the discrete-holomorphic solves and generated geometry, and admit a permutation-and-equivalence matcher between the five generated patterns and the five rounded source-vector drawings."
+    },
+    {
+      "obligation_id": "VGSE-D06",
+      "category": "MISSING_LEMMA",
+      "blocked_node": "VGSE-S5",
+      "status": "gated",
+      "current_evidence": "No mountain-valley assignment, layer order, continuous rigid-folding path, actuation branch, or collision certificate is present.",
+      "discharge_condition": "Exhibit and verify a continuous collision-free rigid-panel deployment path with mountain-valley, layer-order, and branch-selection data."
+    },
+    {
+      "obligation_id": "VGSE-D07",
+      "category": "MISSING_LEMMA",
+      "blocked_node": "VGSE-S6",
+      "status": "gated",
+      "current_evidence": "No finite-thickness or manufacturing evidence is present.",
+      "discharge_condition": "Produce a finite-thickness conversion, prototype, tolerance record, mechanical benchmark, manufacturing record, and application economics."
+    }
+  ],
+  "wp00_disposition": {
+    "status": "CANDIDATE_COMPLETE_PENDING_REVIEW_AND_CERTIFICATION",
+    "completed_scope": [
+      "source and claim semantics lock",
+      "exact beta(C)=5 arrangement replay",
+      "five Figure 16 boundary algebraic witnesses",
+      "five source-vector pattern replication",
+      "positive weighted graph boundary-measurement replay",
+      "five independent numerical Kenyon-Smirnov t-embedding reconstructions"
+    ],
+    "not_promoted": [
+      "rigid deployment",
+      "finite thickness",
+      "manufacturing",
+      "commercial claims"
+    ]
+  },
+  "next_authorized_obligation": {
+    "node": "VGSE-WP00-CERT-001",
+    "operation": "Independently certify the root count, positive weighted boundary measurement, discrete-holomorphic extensions, primitive closure, and five generated planar t-embeddings; then admit the generated-to-source equivalence matching record.",
+    "mechanical_lane_status": "gated_until_WP00_review_and_certification",
+    "commercial_claim_authorized": false
+  }
+}

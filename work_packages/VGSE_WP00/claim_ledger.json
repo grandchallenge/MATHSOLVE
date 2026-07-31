@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.2.0",
+  "campaign_id": "VGSE-001",
+  "work_package_id": "VGSE-WP00",
+  "claims": [
+    {
+      "claim_id": "VGSE-C00",
+      "statement": "The projectivized Example B.1 arrangement has exactly five bounded regions.",
+      "status": "COMPUTED_EXACTLY",
+      "support_route": "EXACT_FINITE_VERIFICATION",
+      "evidence": [
+        "work_packages/VGSE_WP00/artifacts/code/replicate_b3.py",
+        "work_packages/VGSE_WP00/artifacts/data/expected_replay.json"
+      ],
+      "certification_state": "unsubmitted"
+    },
+    {
+      "claim_id": "VGSE-C01",
+      "statement": "For the Figure 16 source-vector boundary under the pinned counterclockwise labeling, the divisor-filtered numerical replay produces five critical-point witnesses.",
+      "status": "NEEDS_AUDIT",
+      "support_route": "REGRESSION_AUDIT",
+      "evidence": [
+        "work_packages/VGSE_WP00/artifacts/code/replicate_b3.py",
+        "work_packages/VGSE_WP00/artifacts/data/expected_replay.json"
+      ],
+      "limitations": [
+        "The boundary coordinates are rounded from PDF vector paths to one micro-point.",
+        "The five roots are floating-point witnesses.",
+        "The boundary labeling is canonicalized by an explicit anchor and orientation but is not sourced from printed boundary labels.",
+        "Genericity, interval isolation, and exact quotient dimension remain uncertified."
+      ],
+      "certification_state": "submitted_to_mathcert_issue_41"
+    },
+    {
+      "claim_id": "VGSE-C02",
+      "statement": "Each retained Figure 16 boundary witness passes the encoded numerical divisor, residual, orthogonality, adjacent-minor, and winding checks.",
+      "status": "NEEDS_AUDIT",
+      "support_route": "REGRESSION_AUDIT",
+      "evidence": [
+        "work_packages/VGSE_WP00/artifacts/code/test_replicate_b3.py",
+        "work_packages/VGSE_WP00/artifacts/data/expected_replay.json"
+      ],
+      "limitations": [
+        "The checks use floating-point arithmetic and are not interval certified."
+      ],
+      "certification_state": "submitted_to_mathcert_issue_41"
+    },
+    {
+      "claim_id": "VGSE-C03",
+      "statement": "The five planar patterns embedded as vector paths in Figure 16 have been extracted into deterministic face-coordinate records and rendered from those records.",
+      "status": "NEEDS_AUDIT",
+      "support_route": "SOURCE_VECTOR_GEOMETRY_REPLICATION",
+      "evidence": [
+        "work_packages/VGSE_WP00/artifacts/code/extract_figure16.py",
+        "work_packages/VGSE_WP00/artifacts/code/validate_figure16.py",
+        "work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json",
+        "work_packages/VGSE_WP00/artifacts/data/figure16_validation.json"
+      ],
+      "limitations": [
+        "This is a replication of source vector geometry, not an independent reconstruction from the master-function witnesses.",
+        "Kawasaki conditions are checked only to PDF illustration precision."
+      ],
+      "certification_state": "unsubmitted"
+    },
+    {
+      "claim_id": "VGSE-C04",
+      "statement": "The reduced bipartite topology inferred from Figure 16 admits the pinned positive weight representative, whose almost-perfect-matching boundary measurement reproduces the support and all nineteen nonzero Plucker coordinates of C up to one common scale.",
+      "status": "NEEDS_AUDIT",
+      "support_route": "REGRESSION_AUDIT",
+      "evidence": [
+        "work_packages/VGSE_WP00/artifacts/code/b3_graph.py",
+        "work_packages/VGSE_WP00/artifacts/data/graph_weight_fixture.json",
+        "work_packages/VGSE_WP00/artifacts/data/reconstruction_summary.json"
+      ],
+      "limitations": [
+        "The positive weights are numerical rather than exact symbolic values.",
+        "The weight-recovery optimization is not yet independently reproduced in the governed package.",
+        "The replay enumerates thirty-one almost-perfect matchings and obtains a maximum relative minor residual below 1e-12."
+      ],
+      "certification_state": "unsubmitted"
+    },
+    {
+      "claim_id": "VGSE-C05",
+      "statement": "Extending the five algebraic witnesses through the reconstructed weighted graph and integrating their Kenyon-Smirnov primitives yields five distinct numerical planar t-embeddings with the prescribed boundary.",
+      "status": "NEEDS_AUDIT",
+      "support_route": "COMPUTATIONAL_REPLAY",
+      "evidence": [
+        "work_packages/VGSE_WP00/artifacts/code/b3_holomorphic.py",
+        "work_packages/VGSE_WP00/artifacts/code/b3_geometry.py",
+        "work_packages/VGSE_WP00/artifacts/code/reconstruct_b3.py",
+        "work_packages/VGSE_WP00/artifacts/code/test_reconstruct_b3.py",
+        "work_packages/VGSE_WP00/artifacts/data/reconstruction_summary.json"
+      ],
+      "limitations": [
+        "The roots and graph weights are floating-point inputs.",
+        "The discrete-holomorphic systems use numerical normal equations.",
+        "The result is an independent numerical reconstruction of five t-embeddings, not an exact formal proof."
+      ],
+      "certification_state": "unsubmitted"
+    },
+    {
+      "claim_id": "VGSE-C06",
+      "statement": "The five independently generated numerical t-embeddings have been matched bijectively to the five source-vector drawings modulo a declared geometric equivalence group.",
+      "status": "NEEDS_AUDIT",
+      "support_route": "NONE",
+      "blocker": "A permutation-and-equivalence matcher between generated coordinates and the rounded source drawings has not been admitted.",
+      "certification_state": "blocked"
+    },
+    {
+      "claim_id": "VGSE-C07",
+      "statement": "A retained algebraic or planar solution is continuously rigidly deployable, collision-free, finite-thickness, or manufacturable.",
+      "status": "REFUTED",
+      "support_route": "NONE",
+      "interpretation": "Refuted only as an inference from the current evidence; no downstream physical conclusion follows from WP00.",
+      "certification_state": "not_eligible"
+    },
+    {
+      "claim_id": "VGSE-C08",
+      "statement": "The WP00 replay authorizes a novelty, patentability, priority, product-performance, or commercial-value claim.",
+      "status": "REFUTED",
+      "support_route": "NONE",
+      "interpretation": "Refuted as an inference from the current evidence and prohibited by the campaign claim boundary.",
+      "certification_state": "prohibited"
+    }
+  ],
+  "claim_boundary": {
+    "algebraic_enumeration": "exact_arrangement_count_plus_uncertified_Figure16_boundary_witness_replay",
+    "source_vector_planar_patterns": "five_patterns_replicated_and_checked_at_pdf_precision",
+    "weighted_graph_boundary_measurement": "numerically_replays_C_needs_audit",
+    "independent_planar_t_embeddings": "five_reconstructed_numerically_needs_audit",
+    "generated_to_source_pattern_bijection": "not_admitted",
+    "rigid_deployment": "not_assessed",
+    "finite_thickness_manufacturing": "not_assessed",
+    "commercial_promotion": "not_authorized"
+  }
+}

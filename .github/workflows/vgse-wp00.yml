@@ -1,0 +1,68 @@
+name: VGSE WP00 replay
+
+on:
+  pull_request:
+    paths:
+      - "work_packages/VGSE_WP00/**"
+      - "work_packages/VGSE_WP00_VARCHENKO_GALASHIN_SOURCE_SEMANTICS_LOCK.md"
+      - ".github/workflows/vgse-wp00.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "work_packages/VGSE_WP00/**"
+      - "work_packages/VGSE_WP00_VARCHENKO_GALASHIN_SOURCE_SEMANTICS_LOCK.md"
+      - ".github/workflows/vgse-wp00.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  exact-replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Assert exact subject checkout
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+      - name: Validate Programme candidate-admission boundary
+        run: |
+          python work_packages/VGSE_WP00/artifacts/code/validate_candidate_admission.py
+          python work_packages/VGSE_WP00/artifacts/code/test_candidate_admission.py
+          python -m json.tool work_packages/VGSE_WP00/candidate_admission.json >/dev/null
+      - name: Replay Figure 16 algebraic, source-vector, and reconstructed fixtures
+        run: |
+          python work_packages/VGSE_WP00/artifacts/code/replicate_b3.py \
+            --check \
+            --output /tmp/vgse_b3.json
+          python work_packages/VGSE_WP00/artifacts/code/test_replicate_b3.py
+          python work_packages/VGSE_WP00/artifacts/code/validate_figure16.py \
+            work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json \
+            --report /tmp/vgse_figure16_validation.json \
+            --svg-dir /tmp/vgse_figure16_source_svg
+          python work_packages/VGSE_WP00/artifacts/code/test_figure16.py
+          python work_packages/VGSE_WP00/artifacts/code/reconstruct_b3.py \
+            work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json \
+            work_packages/VGSE_WP00/artifacts/data/expected_replay.json \
+            work_packages/VGSE_WP00/artifacts/data/graph_weight_fixture.json \
+            --check \
+            --output /tmp/vgse_reconstructed.json \
+            --svg-dir /tmp/vgse_reconstructed_svg
+          python work_packages/VGSE_WP00/artifacts/code/test_reconstruct_b3.py
+          test "$(find /tmp/vgse_figure16_source_svg -name '*.svg' | wc -l)" -eq 5
+          test "$(find /tmp/vgse_reconstructed_svg -name '*.svg' | wc -l)" -eq 5
+          python -m json.tool work_packages/VGSE_WP00/artifacts/data/expected_replay.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/artifacts/data/figure16_validation.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/artifacts/data/graph_weight_fixture.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/artifacts/data/reconstruction_summary.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/claim_ledger.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/proof_obligations.json >/dev/null
