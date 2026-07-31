@@ -2,16 +2,62 @@
   "schema_version": "1.2.0",
   "handoff_id": "MC-HANDOFF-RH-001",
   "campaign_id": "RH-001",
-  "solve_work_package_id": "RH-WP00-WP02-RETROSPECTIVE",
-  "source_commit": "68bbe0ae63c454b0dc63bedd0bc9f5501f8d5c03",
-  "cert_contract": {"repository": "grandchallenge/MATHCERT", "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3", "route_id": "MC-ROUTE-RH-001"},
-  "target_claims": [{"claim_id": "RH-T-000", "statement": "Every nontrivial zero rho of the classical Riemann zeta function satisfies Re(rho)=1/2.", "claim_type": "OPEN_TERMINAL_TARGET", "support_type": "SPECIALIST_AUDIT_PENDING"}],
-  "claim_ledger": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "83810a645a08d41055ac40eaa56ce5eb69985361", "path": "campaigns/riemann_hypothesis/WP02_THEOREM_LEDGER/02_THEOREM_LEDGER.json", "digest_algorithm": "git_blob_sha1", "digest": "d3770a7f0f6160767bba50550de22468adbce48a", "role": "claim_ledger"},
-  "proof_obligations": {"repository": "grandchallenge/MATH-PROGRAMME", "commit_sha": "83810a645a08d41055ac40eaa56ce5eb69985361", "path": "campaigns/riemann_hypothesis/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json", "digest_algorithm": "git_blob_sha1", "digest": "8d4da317844004122ffbc71564343f6450878108", "role": "proof_obligation_dag"},
-  "checker_contract": {"target": "human_audit", "inputs": ["Retrospective theorem ledger, exact zeta normalization, and dependency-debt gate."], "acceptance": "Admit a later claim only with exact quantifiers, normalization, complete proof or finite certificate scope, and independent replay.", "rejection": "Reject finite-height checks, equivalent-criterion samples, density statements, or statistical evidence as RH."},
-  "requested_modalities": ["LEAN_FORMALIZATION", "EXACT_RATIONAL_CERTIFICATE", "SEMANTIC_REPLAY", "SPECIALIST_AUDIT_PENDING"],
-  "claim_boundary": "This pending packet registers RH-T-000 and its burden; it proves no new zero range and does not prove the Riemann Hypothesis.",
-  "status": "pending",
-  "blockers": ["Historical Solve-owned work remains programme-embedded.", "No terminal claim is ready for certification."],
-  "reopening_conditions": ["Reopen after native migration and production of a precise proof or finite certificate packet."]
+  "solve_work_package_id": "MS-FC-WP00-RH-001",
+  "source_commit": "3a884a579fdebc082f472bccf1117ff1c5dcb6b8",
+  "cert_contract": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
+    "path": "governance/certification_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3",
+    "route_id": "MC-ROUTE-RH-001"
+  },
+  "target_claims": [
+    {
+      "claim_id": "RH-T-000",
+      "statement": "Every nontrivial zero rho of the classical meromorphically continued Riemann zeta function satisfies Re(rho)=1/2, with trivial zeros and the pole at one excluded.",
+      "claim_type": "OPEN_TERMINAL_TARGET",
+      "support_type": "LEAN_FORMALIZATION_TARGET"
+    }
+  ],
+  "claim_ledger": {
+    "repository": "grandchallenge/MATH-PROGRAMME",
+    "commit_sha": "83810a645a08d41055ac40eaa56ce5eb69985361",
+    "path": "campaigns/riemann_hypothesis/WP02_THEOREM_LEDGER/02_THEOREM_LEDGER.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "d3770a7f0f6160767bba50550de22468adbce48a",
+    "role": "claim_ledger"
+  },
+  "proof_obligations": {
+    "repository": "grandchallenge/MATH-PROGRAMME",
+    "commit_sha": "83810a645a08d41055ac40eaa56ce5eb69985361",
+    "path": "campaigns/riemann_hypothesis/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "8d4da317844004122ffbc71564343f6450878108",
+    "role": "proof_obligation_dag"
+  },
+  "checker_contract": {
+    "target": "Lean",
+    "inputs": [
+      "MathSolve/FormalConjectures/RiemannHypothesis.lean at 8d3d1019cb9a58afd50bd148c1d57350a7d56af2, blob da4a0b9b30be28c11bc9c25323aeb53b5f065aca.",
+      "MathSolve/FormalConjectures/Replay.lean at 3a884a579fdebc082f472bccf1117ff1c5dcb6b8, blob 38e2c950d55b70b8047c5c9227340e4e4001837c.",
+      "MS-FC-WP00 target record at 3a884a579fdebc082f472bccf1117ff1c5dcb6b8, blob 0d50ff7122ead2a6ee931cdc35a3c06fb85c9a52.",
+      "Lean 4.29.1 with mathlib commit 5e932f97dd25535344f80f9dd8da3aab83df0fe6."
+    ],
+    "acceptance": "Elaborate the exact target, kernel-check programmeRiemannHypothesis_eq_mathlib, verify the explicit zero taxonomy and pole exclusion, and report the axiom and placeholder inventory.",
+    "rejection": "Reject elaboration alone as a proof of RH, reject ERH or GRH substitutions, and reject finite-height, density, statistical, or equivalent-criterion evidence as RH."
+  },
+  "requested_modalities": [
+    "LEAN_FORMALIZATION",
+    "SEMANTIC_REPLAY",
+    "SPECIALIST_AUDIT_PENDING"
+  ],
+  "claim_boundary": "This ready packet supplies a canonical statement interface and a definitional concordance theorem. It does not prove the Riemann Hypothesis.",
+  "status": "ready",
+  "blockers": [
+    "RH-T-000 remains mathematically unproved; ready means eligible for MATHCERT interface replay only."
+  ],
+  "reopening_conditions": [
+    "Reopen if the target declaration, mathlib identity, zero taxonomy, source concordance, or MATHCERT disposition changes."
+  ]
 }
