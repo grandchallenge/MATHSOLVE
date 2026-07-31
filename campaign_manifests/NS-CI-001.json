@@ -3,31 +3,206 @@
   "manifest_id": "MS-MANIFEST-NS-CI-001",
   "campaign_id": "NS-CI-001",
   "coverage_mode": "native",
-  "programme": {"repository": "grandchallenge/MATH-PROGRAMME", "issue": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/55", "commit_sha": "cdf790a6aa4835e1a7a8dcc9acdeb4cc28ec6851"},
-  "forge_inputs": [{"repository": "grandchallenge/MATHFORGE", "commit_sha": "2cb624cc61cd95ec0c8cfb8429d93128972289a5", "path": "provider_manifests/NS-CI-001.json", "digest_algorithm": "git_blob_sha1", "digest": "ed5220c31e38ba3458dc8a94a462c89c285fc22e", "role": "source"}],
-  "solve": {"repository": "grandchallenge/MATHSOLVE", "provider_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/24", "provider_commit": "ec7c60bfa51850d7fb11bd5a3a24ca834352366e", "migration_debt": []},
-  "work_packages": [{
-    "work_package_id": "NS-CI-R014-A2",
-    "primary_type": "RESTRICTED_THEOREM",
-    "status": "active",
-    "source_repository": "grandchallenge/MATHSOLVE",
-    "source_commit": "9185a24c6cfb1e67d11a64141797690c5c719b22",
-    "artifacts": [{"repository": "grandchallenge/MATHSOLVE", "commit_sha": "9185a24c6cfb1e67d11a64141797690c5c719b22", "path": "work_packages/NS_CI_R014_A2_DISSIPATION_WAVENUMBER.md", "digest_algorithm": "git_blob_sha1", "digest": "15fc74a5de99fb1c069251e660aa86144bd4dfa5", "role": "solve_artifact"}],
-    "ledgers": {
-      "claim": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "7589a85b42c8f808d6fe42b4080e96c666e0ce05", "path": "campaign_ledgers/NS-CI-001/claim_ledger.json", "digest_algorithm": "git_blob_sha1", "digest": "1de67508a1a5d8d03f7e61b8f4c9e1b462c56fbc", "role": "claim_ledger"},
-      "proof_obligation": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "656537d91efe5896ce9479312c6b5089646c52a1", "path": "campaign_ledgers/NS-CI-001/proof_obligation_dag.json", "digest_algorithm": "git_blob_sha1", "digest": "782ba678b6bb0ddb7ce53101c93024eacd24d9e4", "role": "proof_obligation_dag"},
-      "failed_route": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "6a489b60588ddec2ce66c63d9bcf5e8a57b5e480", "path": "campaign_ledgers/NS-CI-001/failed_route_ledger.json", "digest_algorithm": "git_blob_sha1", "digest": "6153f8059514396f2644e9a8d24c59db8a3affb2", "role": "failed_route_ledger"},
-      "resource": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "806f7fc429b0c7416f227317e173ae582aac40b6", "path": "campaign_ledgers/NS-CI-001/resource_ledger.json", "digest_algorithm": "git_blob_sha1", "digest": "5077ddae34e3f6cf012c5511faa359bb68ddead3", "role": "resource_ledger"},
-      "certification": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "ec8aa98fe6146cd0349be8ead38a26add6e0bdac", "path": "cert_handoffs/NS-CI-001.json", "digest_algorithm": "git_blob_sha1", "digest": "58b10636bd614e91e6c35900b9f5fb68e7f88afb", "role": "certificate_handoff"}
+  "programme": {
+    "repository": "grandchallenge/MATH-PROGRAMME",
+    "issue": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/55",
+    "commit_sha": "cdf790a6aa4835e1a7a8dcc9acdeb4cc28ec6851"
+  },
+  "forge_inputs": [
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "2cb624cc61cd95ec0c8cfb8429d93128972289a5",
+      "path": "provider_manifests/NS-CI-001.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "ed5220c31e38ba3458dc8a94a462c89c285fc22e",
+      "role": "source"
+    }
+  ],
+  "solve": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "provider_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/80",
+    "provider_commit": "3a884a579fdebc082f472bccf1117ff1c5dcb6b8",
+    "migration_debt": []
+  },
+  "work_packages": [
+    {
+      "work_package_id": "NS-CI-R014-A2",
+      "primary_type": "RESTRICTED_THEOREM",
+      "status": "active",
+      "source_repository": "grandchallenge/MATHSOLVE",
+      "source_commit": "9185a24c6cfb1e67d11a64141797690c5c719b22",
+      "artifacts": [
+        {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "9185a24c6cfb1e67d11a64141797690c5c719b22",
+          "path": "work_packages/NS_CI_R014_A2_DISSIPATION_WAVENUMBER.md",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "15fc74a5de99fb1c069251e660aa86144bd4dfa5",
+          "role": "solve_artifact"
+        }
+      ],
+      "ledgers": {
+        "claim": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "7589a85b42c8f808d6fe42b4080e96c666e0ce05",
+          "path": "campaign_ledgers/NS-CI-001/claim_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "1de67508a1a5d8d03f7e61b8f4c9e1b462c56fbc",
+          "role": "claim_ledger"
+        },
+        "proof_obligation": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "656537d91efe5896ce9479312c6b5089646c52a1",
+          "path": "campaign_ledgers/NS-CI-001/proof_obligation_dag.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "782ba678b6bb0ddb7ce53101c93024eacd24d9e4",
+          "role": "proof_obligation_dag"
+        },
+        "failed_route": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "6a489b60588ddec2ce66c63d9bcf5e8a57b5e480",
+          "path": "campaign_ledgers/NS-CI-001/failed_route_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "6153f8059514396f2644e9a8d24c59db8a3affb2",
+          "role": "failed_route_ledger"
+        },
+        "resource": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "806f7fc429b0c7416f227317e173ae582aac40b6",
+          "path": "campaign_ledgers/NS-CI-001/resource_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "5077ddae34e3f6cf012c5511faa359bb68ddead3",
+          "role": "resource_ledger"
+        },
+        "certification": null
+      },
+      "children": []
     },
-    "children": []
-  }],
+    {
+      "work_package_id": "MS-FC-WP00-NS-CI-001",
+      "primary_type": "FORMALIZATION_HANDOFF",
+      "status": "complete",
+      "source_repository": "grandchallenge/MATHSOLVE",
+      "source_commit": "3a884a579fdebc082f472bccf1117ff1c5dcb6b8",
+      "artifacts": [
+        {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "3a884a579fdebc082f472bccf1117ff1c5dcb6b8",
+          "path": "MathSolve/FormalConjectures/NSCriticalIntegrability.lean",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "5fd1b53b01a85f70591412d742ba324cf8abea59",
+          "role": "solve_artifact"
+        },
+        {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "3a884a579fdebc082f472bccf1117ff1c5dcb6b8",
+          "path": "MathSolve/FormalConjectures/Replay.lean",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "38e2c950d55b70b8047c5c9227340e4e4001837c",
+          "role": "solve_artifact"
+        },
+        {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "3a884a579fdebc082f472bccf1117ff1c5dcb6b8",
+          "path": "formal_sources/formal_conjectures/MS-FC-WP00.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "0d50ff7122ead2a6ee931cdc35a3c06fb85c9a52",
+          "role": "review"
+        },
+        {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "3a884a579fdebc082f472bccf1117ff1c5dcb6b8",
+          "path": "work_packages/MS_FC_WP00_CANONICAL_RH_NS_TARGETS.md",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "ec03cb6f364d54a6a8ea7e0728bab9394bfe4709",
+          "role": "review"
+        }
+      ],
+      "ledgers": {
+        "claim": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "7589a85b42c8f808d6fe42b4080e96c666e0ce05",
+          "path": "campaign_ledgers/NS-CI-001/claim_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "1de67508a1a5d8d03f7e61b8f4c9e1b462c56fbc",
+          "role": "claim_ledger"
+        },
+        "proof_obligation": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "656537d91efe5896ce9479312c6b5089646c52a1",
+          "path": "campaign_ledgers/NS-CI-001/proof_obligation_dag.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "782ba678b6bb0ddb7ce53101c93024eacd24d9e4",
+          "role": "proof_obligation_dag"
+        },
+        "failed_route": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "6a489b60588ddec2ce66c63d9bcf5e8a57b5e480",
+          "path": "campaign_ledgers/NS-CI-001/failed_route_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "6153f8059514396f2644e9a8d24c59db8a3affb2",
+          "role": "failed_route_ledger"
+        },
+        "resource": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "806f7fc429b0c7416f227317e173ae582aac40b6",
+          "path": "campaign_ledgers/NS-CI-001/resource_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "5077ddae34e3f6cf012c5511faa359bb68ddead3",
+          "role": "resource_ledger"
+        },
+        "certification": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "1b40ecfc3f07dddbbd98a9225cda000f9585af23",
+          "path": "cert_handoffs/NS-CI-001.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "40cad99646829fe40edf9c616074514407e49dee",
+          "role": "certificate_handoff"
+        }
+      },
+      "children": []
+    }
+  ],
   "certification": {
     "repository": "grandchallenge/MATHCERT",
-    "contract": {"repository": "grandchallenge/MATHCERT", "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3"},
+    "contract": {
+      "repository": "grandchallenge/MATHCERT",
+      "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
+      "path": "governance/certification_routes.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3"
+    },
     "handoff_state": "ready",
-    "handoff_packets": [{"handoff_id": "MC-HANDOFF-NS-CI-001", "status": "ready", "target_claim_ids": ["NS-CI-WP00-C003", "NS-A2"], "artifact": {"repository": "grandchallenge/MATHSOLVE", "commit_sha": "ec8aa98fe6146cd0349be8ead38a26add6e0bdac", "path": "cert_handoffs/NS-CI-001.json", "digest_algorithm": "git_blob_sha1", "digest": "58b10636bd614e91e6c35900b9f5fb68e7f88afb", "role": "certificate_handoff"}}]
+    "handoff_packets": [
+      {
+        "handoff_id": "MC-HANDOFF-NS-CI-001",
+        "status": "ready",
+        "target_claim_ids": ["NS-CI-T-000", "NS-CI-WP00-C003", "NS-A2"],
+        "artifact": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "1b40ecfc3f07dddbbd98a9225cda000f9585af23",
+          "path": "cert_handoffs/NS-CI-001.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "40cad99646829fe40edf9c616074514407e49dee",
+          "role": "certificate_handoff"
+        }
+      }
+    ]
   },
-  "promotion": {"eligible": false, "blockers": ["The selected A2 bridge remains unproved.", "L4 terminated; the independent L5 direct critical-integral lane remains open."]},
-  "disposal": {"status": "active", "supersedes": [], "reopening_conditions": ["Reopen the manifest when provider lineage, claim status, or certification state changes."]}
+  "promotion": {
+    "eligible": false,
+    "blockers": [
+      "NS-CI-T-000 and NS-A2 remain unproved.",
+      "The one-way continuation bridge remains unproved.",
+      "The imported analytic predicates remain explicit axioms.",
+      "L4 terminated; the independent L5 direct critical-integral lane remains open."
+    ]
+  },
+  "disposal": {
+    "status": "active",
+    "supersedes": [],
+    "reopening_conditions": [
+      "Reopen when provider lineage, target identity, imported axiom boundary, proof status, or certification disposition changes."
+    ]
+  }
 }

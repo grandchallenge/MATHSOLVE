@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "package_id": "MS-FC-WP00",
+  "issue": "https://github.com/grandchallenge/MATHSOLVE/issues/80",
+  "source_lane": "FC-GDM-001",
+  "source_provider": {
+    "repository": "grandchallenge/MATHFORGE",
+    "merge_commit": "b1cad1a9ed9256b863bb0a8658f06ea715db1230",
+    "source_lock": {
+      "path": "formal_sources/formal_conjectures/source_lock.json",
+      "git_blob_sha1": "0ef71adea9bcdfb63da78118f7fee053ccaa73ce"
+    },
+    "snapshot": {
+      "path": "formal_sources/formal_conjectures/snapshots/FC-GDM-001-RH-NS-PILOT.json",
+      "git_blob_sha1": "c171b542a60956e59f4cac14fb9413bcdd7ede66",
+      "canonical_sha256": "15d86f94845fe42e57522d9cd316482f47403ee438b9d4ea7c072e29da787002"
+    },
+    "rh_concordance": {
+      "path": "formal_sources/formal_conjectures/concordance/RH-001.json",
+      "git_blob_sha1": "7332c99795f810ca1d50dda8151c267855d851e7"
+    },
+    "ns_concordance": {
+      "path": "formal_sources/formal_conjectures/concordance/NS-CI-001.json",
+      "git_blob_sha1": "1ebe5de5194f48217dff3db02f389154af351592"
+    }
+  },
+  "upstream": {
+    "repository": "google-deepmind/formal-conjectures",
+    "commit": "85f863718beeec7b58a3a1926ee92e3472bc2020",
+    "source_toolchain": "leanprover/lean4:v4.27.0",
+    "source_mathlib_revision": "v4.27.0",
+    "rh_source_blob": "c8d38bef385eb15661c3daf7449625b66b019b2a",
+    "ns_source_blob": "6fd45b55c78e49ec79f45f4e226a9b9f71f57a81"
+  },
+  "target_toolchain": {
+    "lean_toolchain": "leanprover/lean4:v4.29.1",
+    "mathlib_repository": "leanprover-community/mathlib4",
+    "mathlib_commit": "5e932f97dd25535344f80f9dd8da3aab83df0fe6"
+  },
+  "target_source_commit": "8d3d1019cb9a58afd50bd148c1d57350a7d56af2",
+  "targets": {
+    "RH-001": {
+      "lean_module": "MathSolve.FormalConjectures.RiemannHypothesis",
+      "declaration": "MathSolve.FormalConjectures.RH.ProgrammeRiemannHypothesis",
+      "correspondence_theorem": "MathSolve.FormalConjectures.RH.programmeRiemannHypothesis_eq_mathlib",
+      "relation": "definitional-equality-to-mathlib-RiemannHypothesis",
+      "unproved": true
+    },
+    "NS-CI-001": {
+      "lean_module": "MathSolve.FormalConjectures.NSCriticalIntegrability",
+      "declaration": "MathSolve.FormalConjectures.NS.UniversalCriticalIntegrability",
+      "bridge_obligation": "MathSolve.FormalConjectures.NS.CriticalIntegrabilityImpliesClay",
+      "relation_to_upstream_clay_a": "programme-target-implies-upstream-only; unproved",
+      "unproved": true
+    }
+  },
+  "axiom_report": {
+    "sorry_count": 0,
+    "admit_count": 0,
+    "imported_axioms": [
+      "MathSolve.FormalConjectures.NS.IsUnforcedLerayHopfSolution",
+      "MathSolve.FormalConjectures.NS.MixedNormFiniteOnZeroT",
+      "MathSolve.FormalConjectures.NS.PositiveClayWholeSpaceAlternative"
+    ]
+  },
+  "unproved_obligations": [
+    "RH-001 remains the open Riemann Hypothesis.",
+    "NS-CI-001 universal critical integrability remains open.",
+    "The one-way NS-CI-to-Clay-A continuation bridge remains unproved.",
+    "No reverse Clay-A-to-critical-integrability implication is claimed.",
+    "The imported Leray-Hopf and mixed-norm predicates require later analytic formalization or an accepted theory interface."
+  ],
+  "replay": [
+    "lake build",
+    "lake env lean MathSolve/FormalConjectures/Replay.lean",
+    "python ci/validate_formal_conjectures_targets.py",
+    "PYTHONPATH=ci python -m unittest ci/test_formal_conjectures_targets.py -v"
+  ],
+  "claim_boundary": "This package defines and elaborates target interfaces. It proves neither open target, proves no NS continuation theorem, and performs no MATHCERT adjudication."
+}

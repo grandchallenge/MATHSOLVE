@@ -2,8 +2,8 @@
   "schema_version": "1.2.0",
   "handoff_id": "MC-HANDOFF-NS-CI-001",
   "campaign_id": "NS-CI-001",
-  "solve_work_package_id": "NS-CI-R014-A2",
-  "source_commit": "68bbe0ae63c454b0dc63bedd0bc9f5501f8d5c03",
+  "solve_work_package_id": "MS-FC-WP00-NS-CI-001",
+  "source_commit": "3a884a579fdebc082f472bccf1117ff1c5dcb6b8",
   "cert_contract": {
     "repository": "grandchallenge/MATHCERT",
     "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
@@ -13,6 +13,12 @@
     "route_id": "MC-ROUTE-NS-CI-001"
   },
   "target_claims": [
+    {
+      "claim_id": "NS-CI-T-000",
+      "statement": "For positive viscosity, rapidly decreasing divergence-free initial data, every unforced Leray-Hopf solution on R3 has finite L4_t L6_x mixed norm on every finite positive time interval.",
+      "claim_type": "OPEN_TERMINAL_TARGET",
+      "support_type": "LEAN_FORMALIZATION_TARGET"
+    },
     {
       "claim_id": "NS-CI-WP00-C003",
       "statement": "The L4_t L6_x mixed norm is invariant under the three-dimensional Navier-Stokes scaling with the transformed time interval stated exactly.",
@@ -45,23 +51,27 @@
   "checker_contract": {
     "target": "Lean",
     "inputs": [
-      "Exact exponent and interval-rescaling statement for NS-CI-WP00-C003.",
-      "Imported-theorem provenance boundary and failed-route ledger for NS-A2."
+      "MathSolve/FormalConjectures/NSCriticalIntegrability.lean at 3a884a579fdebc082f472bccf1117ff1c5dcb6b8, blob 5fd1b53b01a85f70591412d742ba324cf8abea59.",
+      "MathSolve/FormalConjectures/Replay.lean at 3a884a579fdebc082f472bccf1117ff1c5dcb6b8, blob 38e2c950d55b70b8047c5c9227340e4e4001837c.",
+      "MS-FC-WP00 target record at 3a884a579fdebc082f472bccf1117ff1c5dcb6b8, blob 0d50ff7122ead2a6ee931cdc35a3c06fb85c9a52.",
+      "Explicit imported axioms for Leray-Hopf solutions, mixed-norm finiteness, and the positive Clay whole-space alternative."
     ],
-    "acceptance": "Kernel-check the scaling slice with adversarial exponent fixtures and classify NS-A2 only under the evidence actually supplied.",
-    "rejection": "Reject hidden analytic assumptions, toy substitutes, interval drift, or any statement that the unproved A2 bridge or global regularity has been certified."
+    "acceptance": "Elaborate the exact quantifier order and time-first exponent pair, report the three imported analytic axioms, and preserve CriticalIntegrabilityImpliesClay as an unproved one-way proposition.",
+    "rejection": "Reject hidden analytic assumptions, toy substitutes, interval or exponent drift, a reverse Clay implication, or any claim that NS-CI-T-000, NS-A2, or global regularity is proved."
   },
   "requested_modalities": [
     "LEAN_FORMALIZATION",
     "SEMANTIC_REPLAY",
     "SPECIALIST_AUDIT_PENDING"
   ],
-  "claim_boundary": "Scaling and logical-interface checks do not prove A2, universal critical integrability, or global Navier-Stokes regularity.",
+  "claim_boundary": "This ready packet supplies a canonical target interface with explicit imported axioms. It does not prove universal critical integrability, NS-A2, the continuation bridge, or global Navier-Stokes regularity.",
   "status": "ready",
   "blockers": [
-    "NS-A2 remains unproved and must receive a non-positive disposition unless new proof evidence is supplied."
+    "NS-CI-T-000 and NS-A2 remain unproved.",
+    "The one-way critical-integrability-to-Clay bridge remains an unproved proposition.",
+    "The imported analytic predicates require later formalization or an accepted theory-interface disposition."
   ],
   "reopening_conditions": [
-    "Reopen when the scaling formalization, imported-theorem boundary, A2 evidence, or MATHCERT disposition changes."
+    "Reopen when the target quantifiers, exponent order, imported axiom boundary, continuation bridge, A2 evidence, or MATHCERT disposition changes."
   ]
 }
