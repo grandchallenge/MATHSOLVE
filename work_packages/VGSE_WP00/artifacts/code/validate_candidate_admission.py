@@ -12,10 +12,27 @@ RECORD_PATH = WP_ROOT / "candidate_admission.json"
 SOURCE_LOCK_PATH = WP_ROOT.parent / "VGSE_WP00_VARCHENKO_GALASHIN_SOURCE_SEMANTICS_LOCK.md"
 EXPECTED_REPLAY_PATH = WP_ROOT / "artifacts" / "data" / "expected_replay.json"
 
-PROGRAMME_COMMIT = "b78b73e73a62cdb3d54f08ba1af104ceac9c90b8"
-CANDIDATE_REGISTRY_DIGEST = "9b1a307fde8bfe814210088d544ec8b03f2b413e"
-RUNTIME_DIGEST = "d1503fba284aee29fb517a554ee3440da691fd16"
+PROGRAMME_COMMIT = "d56edc23152f3ccde4c7db272b7af37f6cf698b9"
+CANDIDATE_REGISTRY_DIGEST = "a6bffaa197aa3921e3eb9d4f8a02b5dc2bbded24"
+RUNTIME_DIGEST = "02cdfabb04f5d273fcb7531c515a73baab2bc52d"
 SOURCE_DIGEST = "e513789426ae6247438920bfc80cfba6bd9c32dc6799a4f7873d806a865f95de"
+SOLVE_REVIEWED_HEAD = "0d66a75412543e534b81c21a51a6ad88c035b55b"
+SOLVE_MERGE_COMMIT = "709c7d3f388b8df75c87a247f80424e560c31e72"
+WORKFLOW_RUNS = {
+    "solve_checks": 30641057206,
+    "gcl_conformance": 30641058060,
+    "candidate_replay": 30641057393,
+}
+GATE_NAMES = {
+    "forge_provider_manifest_admitted",
+    "source_revision_concordance_complete",
+    "solve_candidate_package_reviewed",
+    "cert_route_registered",
+    "programme_active_registry_updated",
+    "programme_routing_registry_updated",
+    "runtime_contract_updated_for_active_admission",
+    "intellect_repin_complete_if_required",
+}
 
 
 def load_json(path: pathlib.Path) -> Any:
@@ -57,6 +74,14 @@ def validation_errors(
     if authority.get("candidate_work_can_self_admit") is not False:
         errors.append("candidate work may not self-admit")
 
+    mirrors = record.get("programme_mirrors", {})
+    if mirrors != {
+        "candidate_tracker_issue": 170,
+        "current_governance_issue": 175,
+        "governance_history": [172],
+    }:
+        errors.append("Programme candidate governance history drift")
+
     source = record.get("source_provenance", {})
     if source.get("state") != "unverified_candidate":
         errors.append("source provenance inflated beyond unverified candidate")
@@ -73,10 +98,18 @@ def validation_errors(
     solve = record.get("solve_candidate", {})
     if solve.get("issue") != 84 or solve.get("pull_request") != 85:
         errors.append("Solve candidate mirror identity drift")
-    if solve.get("state") != "draft_candidate_implementation":
-        errors.append("Solve work must remain draft candidate implementation")
-    if solve.get("may_merge_candidate_work_package") is not True:
-        errors.append("candidate work-package merge authority missing")
+    if solve.get("reviewed_head") != SOLVE_REVIEWED_HEAD:
+        errors.append("Solve reviewed head identity drift")
+    if solve.get("merge_commit") != SOLVE_MERGE_COMMIT:
+        errors.append("Solve merge identity drift")
+    if solve.get("merged_at") != "2026-07-31T15:04:53Z":
+        errors.append("Solve merge timestamp drift")
+    if solve.get("workflow_runs") != WORKFLOW_RUNS:
+        errors.append("Solve candidate workflow evidence drift")
+    if solve.get("state") != "merged_candidate_work_package":
+        errors.append("Solve work must remain merged candidate work package")
+    if solve.get("may_merge_candidate_work_package") is not False:
+        errors.append("completed candidate merge may not remain future authority")
     for field in (
         "may_create_campaign_manifest",
         "may_create_cert_handoff",
@@ -95,8 +128,13 @@ def validation_errors(
         errors.append("pre-route candidate may not adjudicate")
 
     gates = record.get("admission_gates", {})
-    if not gates or any(value is not False for value in gates.values()):
-        errors.append("admission gate inflated before evidence")
+    if set(gates) != GATE_NAMES:
+        errors.append("candidate admission gate set drift")
+    if gates.get("solve_candidate_package_reviewed") is not True:
+        errors.append("reviewed candidate package gate must remain true")
+    for field in GATE_NAMES - {"solve_candidate_package_reviewed"}:
+        if gates.get(field) is not False:
+            errors.append(f"admission gate inflated before evidence: {field}")
 
     boundary = record.get("claim_boundary", {})
     if boundary.get("candidate_registered_not_admitted") is not True:
@@ -111,7 +149,7 @@ def validation_errors(
     required_source_phrases = (
         "Current state: `unverified_candidate`",
         "The checksum is a candidate reproducibility lock. It is not provider verification.",
-        "The legacy generated-report field `source.author_pdf_sha256`",
+        "Protected candidate work package: merged",
         "no route exists",
     )
     for phrase in required_source_phrases:
@@ -134,7 +172,7 @@ def main() -> int:
         print("\n".join(errors), file=sys.stderr)
         return 1
     print(
-        "validated VGSE candidate identity, unverified provenance, pre-route Cert state, "
+        "validated merged VGSE candidate work, unverified provenance, pre-route Cert state, "
         "and prohibition of active manifests, handoffs, adjudications, and promotion"
     )
     return 0
