@@ -11,7 +11,7 @@ Riemann Hypothesis. The target is definitionally equal to mathlib's
 namespace MathSolve.FormalConjectures.RH
 
 /-- The Programme carrier for the meromorphically continued zeta function. -/
-abbrev ProgrammeZeta : ℂ → ℂ := riemannZeta
+noncomputable abbrev ProgrammeZeta : ℂ → ℂ := riemannZeta
 
 /-- A trivial zero has the form `-2 (n + 1)`. -/
 def IsTrivialZero (s : ℂ) : Prop :=
