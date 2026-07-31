@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "VGSE-001",
+  "work_package_id": "VGSE-WP00",
+  "obligations": [
+    {
+      "obligation_id": "VGSE-D00",
+      "category": "EXTERNAL_SOURCE",
+      "blocked_node": "VGSE-S0",
+      "status": "open",
+      "current_evidence": "Author-hosted PDF dated 2026-06-03 is pinned by SHA-256.",
+      "discharge_condition": "Independent source, revision, theorem-number, and bibliography audit."
+    },
+    {
+      "obligation_id": "VGSE-D01",
+      "category": "UNPROVED_BRIDGE",
+      "blocked_node": "VGSE-S1",
+      "status": "open",
+      "current_evidence": "Galashin Proposition B.2 invokes the Varchenko-Orlik-Terao critical-point count.",
+      "discharge_condition": "Audit genericity, essentiality, projective normalization, Euler-characteristic, and bounded-region hypotheses against the primary sources."
+    },
+    {
+      "obligation_id": "VGSE-D02",
+      "category": "COMPUTATIONAL_REPLAY",
+      "blocked_node": "VGSE-S3",
+      "status": "open",
+      "current_evidence": "Deterministic floating-point replay returns five retained roots and rejects the alpha_6=0 factor.",
+      "discharge_condition": "MATHCERT certifies the saturated quotient dimension or isolates exactly five roots away from every arrangement divisor."
+    },
+    {
+      "obligation_id": "VGSE-D03",
+      "category": "SEMANTIC_CORRESPONDENCE",
+      "blocked_node": "VGSE-S4",
+      "status": "open",
+      "current_evidence": "Pair-level sign, winding, and orthogonality data are present.",
+      "discharge_condition": "Pin an explicit reduced planar bipartite graph and positive weights realizing C, reconstruct all internal coordinates, and verify the t-embedding conditions."
+    },
+    {
+      "obligation_id": "VGSE-D04",
+      "category": "MISSING_LEMMA",
+      "blocked_node": "VGSE-S5",
+      "status": "gated",
+      "current_evidence": "None.",
+      "discharge_condition": "Exhibit and verify a continuous collision-free rigid-panel deployment path with branch-selection data."
+    },
+    {
+      "obligation_id": "VGSE-D05",
+      "category": "MISSING_LEMMA",
+      "blocked_node": "VGSE-S6",
+      "status": "gated",
+      "current_evidence": "None.",
+      "discharge_condition": "Produce a finite-thickness conversion, prototype, tolerance record, mechanical benchmark, manufacturing record, and application economics."
+    }
+  ],
+  "next_authorized_obligation": {
+    "node": "VGSE-S4",
+    "operation": "Reconstruct and render the five internal planar t-embeddings.",
+    "commercial_claim_authorized": false
+  }
+}
