@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_id": "VGSE-B3-REDUCED-GRAPH-WEIGHTS-001",
+  "derivation": {
+    "topology": "Reconstructed from Figure 16 source-vector face incidence.",
+    "weights": "Positive numerical solution of the boundary-measurement equations for the pinned matrix C; gauge is fixed by the recorded representative.",
+    "certification_state": "NEEDS_AUDIT"
+  },
+  "internal_edges": {
+    "F01|F04": {"weight": 1.4916998904227476, "kasteleyn_sign": 1},
+    "F01|F02": {"weight": 0.18619669964950275, "kasteleyn_sign": 1},
+    "F07|F02": {"weight": 3.5779121999807253, "kasteleyn_sign": 1},
+    "F03|F06": {"weight": 1.9909873275917098, "kasteleyn_sign": -1},
+    "F03|F04": {"weight": 15.751156885887323, "kasteleyn_sign": 1},
+    "F03|F08": {"weight": 0.38809274714917463, "kasteleyn_sign": 1},
+    "F07|F04": {"weight": 24.56927653098732, "kasteleyn_sign": -1},
+    "F05|F04": {"weight": 1.2911623284740565, "kasteleyn_sign": 1},
+    "F05|F06": {"weight": 0.03108691184042704, "kasteleyn_sign": 1},
+    "F07|F08": {"weight": 0.07264348715557702, "kasteleyn_sign": 1}
+  },
+  "boundary_edges": {
+    "B1": {"owner": "F07", "weight": 4.047464615306035, "kasteleyn_sign": 1},
+    "B2": {"owner": "F02", "weight": 0.8839885063974042, "kasteleyn_sign": 1},
+    "B3": {"owner": "F01", "weight": 0.21063248933894685, "kasteleyn_sign": 1},
+    "B4": {"owner": "F05", "weight": 1.5192998780186262, "kasteleyn_sign": 1},
+    "B5": {"owner": "F06", "weight": 0.25576675390253273, "kasteleyn_sign": 1},
+    "B6": {"owner": "F08", "weight": 0.013959477198695934, "kasteleyn_sign": 1}
+  },
+  "claim_boundary": {
+    "exact_symbolic_weight_recovery": false,
+    "positive_weight_representative_replayed": true,
+    "boundary_measurement_matches_C_numerically": true,
+    "commercial_claim_authorized": false
+  }
+}
