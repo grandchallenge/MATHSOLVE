@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "result_family_mathcert_handoff",
+  "handoff_id": "MC-OTP-HANDOFF-J2-TWO-DEGENERATE",
+  "candidate_id": "OPENAI-TEN-PROOFS-001",
+  "result_family": "OTP-J2-TWO-DEGENERATE",
+  "producer_status": "ready_after_protected_merge",
+  "authority": {
+    "programme_sync_merge": "fb8e215d56714f595f328cb22b2b3f5e9410cc7b",
+    "solve_sync_merge": "2bbd56688244d9803d08c0111719aed05c14a6ed",
+    "cert_pre_route_merge": "993286f982c2fccc144475cdbf9a35d0c7f5f24c",
+    "cert_pre_route_record": {
+      "repository": "grandchallenge/MATHCERT",
+      "commit_sha": "993286f982c2fccc144475cdbf9a35d0c7f5f24c",
+      "path": "governance/pre_route_candidates/OPENAI_TEN_PROOFS_WP00_SYNC.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "e365b6b447e827a7f6d2e1ea7d6a264429bb85ab"
+    },
+    "forge_replay_merge": "72452f4579749448169cacf9f2ab22a4df2bb182",
+    "forge_semantic_merge": "cb0a203c36a9ef33270d62ab369df7bc27d3b242",
+    "forge_semantic_reviewed_head": "06b54c94812b2c188660e19875b6c2071b9c4fd4",
+    "forge_semantic_review": {
+      "review_id": 4835452029,
+      "reviewer": "jimsteeg",
+      "state": "APPROVED",
+      "submitted_at": "2026-08-01T18:52:26Z"
+    },
+    "official_subject": {
+      "repository": "openai/ten-proofs",
+      "commit": "e62211d28e3a9131950c89caa6542cfe5eff3bca",
+      "tree": "2f8e7ac5ae7f157b6b1de636c2c343b1c7a7e365",
+      "archive_sha256": "3022e62ffbed8f5f74d232034a703dc645e6b301879dff1e87df72979914294f"
+    },
+    "semantic_record": {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "cb0a203c36a9ef33270d62ab369df7bc27d3b242",
+      "path": "sources/OPENAI-TEN-PROOFS-001/semantic_audits/OTP-J2-TWO-DEGENERATE.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "7bd168c46921f64364b20021b6315d68f0fde7d0"
+    }
+  },
+  "replay_gate": {
+    "state": "clear",
+    "family_clear": true,
+    "aggregate_import_required": false
+  },
+  "semantic_gate": {
+    "state": "clear",
+    "source_concordance": "clear",
+    "nonvacuity": "clear",
+    "activated_by_protected_merge": "cb0a203c36a9ef33270d62ab369df7bc27d3b242"
+  },
+  "target_scope": {
+    "source_theorem": "Chapter 10, Theorem 1.2, parsed P236-P237 L19792-L19822",
+    "normalized_statement": "There exist a fixed finite connected bipartite 2-degenerate graph H and positive real constants c and epsilon such that ex(n,H) is at least c*n^(3/2+epsilon) for all sufficiently large n, refuting the conjectured O(n^(3/2)) bound and the r=2 case of the general degeneracy conjecture.",
+    "lean_theorems": [
+      "TwoDegenerateGraphs.twoDegenerateExtremalCounterexample",
+      "TwoDegenerateGraphs.not_erdos_146"
+    ],
+    "nonvacuity_witnesses": [
+      "TwoDegenerateGraphs.twoDegenerateExtremalCounterexample"
+    ],
+    "scope_exclusions": [
+      "The additional coloring-side degree property is a stronger witness property and is not attributed to source Theorem 1.2.",
+      "The packet does not independently certify the explicit probabilistic or combinatorial construction underlying the existential theorem."
+    ]
+  },
+  "requested_adjudication": {
+    "mode": "independent_result_family_review",
+    "route_id": "MC-ROUTE-OTP-J2-TWO-DEGENERATE",
+    "current_route_state": "not_registered",
+    "cert_output": null,
+    "may_adjudicate_on_branch": false
+  },
+  "activation": {
+    "condition": "exact-head CI, non-author APPROVED review, and protected MATHSOLVE merge",
+    "head_change_requires_reapproval": true,
+    "effect": "packet_may_be_offered_to_mathcert_for_independent_intake"
+  },
+  "route_controls": {
+    "result_family_only": true,
+    "may_create_aggregate_handoff": false,
+    "may_imply_mathcert_acceptance": false,
+    "may_imply_adjudication": false,
+    "may_claim_mathematical_proof": false,
+    "may_promote_claim": false
+  },
+  "claim_boundary": "This packet submits only the exact two-degenerate-graphs result family for possible independent MATHCERT intake after protected Solve activation. It does not independently certify the construction proof, attribute the stronger coloring conjunct to the source theorem, register or imply a Cert route or output, authorize adjudication on the branch, create an aggregate ten-proofs handoff, or promote mathematical truth, novelty, priority, publication, patentability, product, or commercial claims."
+}
