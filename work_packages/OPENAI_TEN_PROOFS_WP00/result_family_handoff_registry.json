@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "MS-OTP-FAMILY-HANDOFFS-001",
+  "candidate_id": "OPENAI-TEN-PROOFS-001",
+  "tracker": "https://github.com/grandchallenge/MATHSOLVE/issues/93",
+  "authority": {
+    "forge_semantic_merge": "cb0a203c36a9ef33270d62ab369df7bc27d3b242",
+    "programme_sync_merge": "fb8e215d56714f595f328cb22b2b3f5e9410cc7b",
+    "solve_sync_merge": "2bbd56688244d9803d08c0111719aed05c14a6ed",
+    "cert_pre_route_merge": "993286f982c2fccc144475cdbf9a35d0c7f5f24c"
+  },
+  "state": "three_result_family_packets_pending_solve_activation",
+  "semantic_gate": {
+    "clear_count": 3,
+    "result_family_count": 12,
+    "clear_families": [
+      "OTP-F-EHRHART",
+      "OTP-J1-COMPACTNESS",
+      "OTP-J2-TWO-DEGENERATE"
+    ]
+  },
+  "packets": [
+    {
+      "result_family": "OTP-F-EHRHART",
+      "handoff_id": "MC-OTP-HANDOFF-F-EHRHART",
+      "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-F-EHRHART.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "4653985d4980113514266c3c421804437bacb019",
+      "semantic_record_digest": "a3dc4de4c38a80b7aec1fae6506b08e14d2e58bb"
+    },
+    {
+      "result_family": "OTP-J1-COMPACTNESS",
+      "handoff_id": "MC-OTP-HANDOFF-J1-COMPACTNESS",
+      "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-J1-COMPACTNESS.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "2d9c6e555a03b71eb33c476321e7f2d311ed168f",
+      "semantic_record_digest": "659396358d0d999c00011645f72602f30ccf6b0e"
+    },
+    {
+      "result_family": "OTP-J2-TWO-DEGENERATE",
+      "handoff_id": "MC-OTP-HANDOFF-J2-TWO-DEGENERATE",
+      "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-J2-TWO-DEGENERATE.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "0d226492bf13e13bc1a437be01104db3d4c96f79",
+      "semantic_record_digest": "7bd168c46921f64364b20021b6315d68f0fde7d0"
+    }
+  ],
+  "blocked_repair_lanes": [
+    "OTP-C-PERMANENT",
+    "OTP-H-GAPCVP"
+  ],
+  "aggregate_integration": {
+    "all_lean_state": "failed_separate_obligation",
+    "failure": "All.lean namespace collision on replicate_to_periodic_packing",
+    "reopens_family_replay": false,
+    "reopens_semantic_gates": false
+  },
+  "cert_state": {
+    "registered_route_count": 0,
+    "accepted_handoff_count": 0,
+    "adjudication_count": 0,
+    "cert_output_count": 0
+  },
+  "route_controls": {
+    "aggregate_handoff": null,
+    "aggregate_route_prohibited": true,
+    "result_family_packets_independent": true,
+    "may_offer_packets_before_solve_activation": false,
+    "may_imply_cert_acceptance": false,
+    "may_imply_adjudication": false,
+    "may_promote_claim": false
+  },
+  "activation": {
+    "condition": "exact-head CI, non-author APPROVED review, and protected MATHSOLVE merge",
+    "head_change_requires_reapproval": true,
+    "effect": "each_packet_may_be_offered_independently_to_mathcert"
+  },
+  "claim_boundary": "This registry indexes three independent result-family producer packets after protected Forge semantic activation. It is not an aggregate ten-proofs handoff, does not register or imply a MATHCERT route, acceptance, adjudication, output, proof, or promotion, and does not alter the blocked Permanent or GapCVP repair lanes or the separate All.lean integration obligation."
+}
