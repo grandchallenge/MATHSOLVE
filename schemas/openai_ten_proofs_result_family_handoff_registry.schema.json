@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grandchallenge.ai/schemas/mathsolve/openai_ten_proofs_result_family_handoff_registry.schema.json",
+  "title": "OpenAI ten-proofs independent result-family handoff registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "registry_id",
+    "candidate_id",
+    "tracker",
+    "authority",
+    "state",
+    "semantic_gate",
+    "packets",
+    "blocked_repair_lanes",
+    "aggregate_integration",
+    "cert_state",
+    "route_controls",
+    "activation",
+    "claim_boundary"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "registry_id": {"const": "MS-OTP-FAMILY-HANDOFFS-001"},
+    "candidate_id": {"const": "OPENAI-TEN-PROOFS-001"},
+    "tracker": {"const": "https://github.com/grandchallenge/MATHSOLVE/issues/93"},
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["forge_semantic_merge", "programme_sync_merge", "solve_sync_merge", "cert_pre_route_merge"],
+      "properties": {
+        "forge_semantic_merge": {"const": "cb0a203c36a9ef33270d62ab369df7bc27d3b242"},
+        "programme_sync_merge": {"const": "fb8e215d56714f595f328cb22b2b3f5e9410cc7b"},
+        "solve_sync_merge": {"const": "2bbd56688244d9803d08c0111719aed05c14a6ed"},
+        "cert_pre_route_merge": {"const": "993286f982c2fccc144475cdbf9a35d0c7f5f24c"}
+      }
+    },
+    "state": {"const": "three_result_family_packets_pending_solve_activation"},
+    "semantic_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["clear_count", "result_family_count", "clear_families"],
+      "properties": {
+        "clear_count": {"const": 3},
+        "result_family_count": {"const": 12},
+        "clear_families": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "OTP-F-EHRHART"},
+            {"const": "OTP-J1-COMPACTNESS"},
+            {"const": "OTP-J2-TWO-DEGENERATE"}
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        }
+      }
+    },
+    "packets": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        {"$ref": "#/$defs/packetRef"},
+        {"$ref": "#/$defs/packetRef"},
+        {"$ref": "#/$defs/packetRef"}
+      ],
+      "items": false
+    },
+    "blocked_repair_lanes": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "OTP-C-PERMANENT"},
+        {"const": "OTP-H-GAPCVP"}
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "aggregate_integration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["all_lean_state", "failure", "reopens_family_replay", "reopens_semantic_gates"],
+      "properties": {
+        "all_lean_state": {"const": "failed_separate_obligation"},
+        "failure": {"const": "All.lean namespace collision on replicate_to_periodic_packing"},
+        "reopens_family_replay": {"const": false},
+        "reopens_semantic_gates": {"const": false}
+      }
+    },
+    "cert_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["registered_route_count", "accepted_handoff_count", "adjudication_count", "cert_output_count"],
+      "properties": {
+        "registered_route_count": {"const": 0},
+        "accepted_handoff_count": {"const": 0},
+        "adjudication_count": {"const": 0},
+        "cert_output_count": {"const": 0}
+      }
+    },
+    "route_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "aggregate_handoff",
+        "aggregate_route_prohibited",
+        "result_family_packets_independent",
+        "may_offer_packets_before_solve_activation",
+        "may_imply_cert_acceptance",
+        "may_imply_adjudication",
+        "may_promote_claim"
+      ],
+      "properties": {
+        "aggregate_handoff": {"type": "null"},
+        "aggregate_route_prohibited": {"const": true},
+        "result_family_packets_independent": {"const": true},
+        "may_offer_packets_before_solve_activation": {"const": false},
+        "may_imply_cert_acceptance": {"const": false},
+        "may_imply_adjudication": {"const": false},
+        "may_promote_claim": {"const": false}
+      }
+    },
+    "activation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["condition", "head_change_requires_reapproval", "effect"],
+      "properties": {
+        "condition": {"const": "exact-head CI, non-author APPROVED review, and protected MATHSOLVE merge"},
+        "head_change_requires_reapproval": {"const": true},
+        "effect": {"const": "each_packet_may_be_offered_independently_to_mathcert"}
+      }
+    },
+    "claim_boundary": {"type": "string", "minLength": 180}
+  },
+  "$defs": {
+    "packetRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result_family", "handoff_id", "path", "digest_algorithm", "digest", "semantic_record_digest"],
+      "properties": {
+        "result_family": {
+          "enum": ["OTP-F-EHRHART", "OTP-J1-COMPACTNESS", "OTP-J2-TWO-DEGENERATE"]
+        },
+        "handoff_id": {"type": "string", "pattern": "^MC-OTP-HANDOFF-[A-Z0-9-]+$"},
+        "path": {"type": "string", "pattern": "^work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/.+\\.json$"},
+        "digest_algorithm": {"const": "git_blob_sha1"},
+        "digest": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "semantic_record_digest": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      }
+    }
+  }
+}
