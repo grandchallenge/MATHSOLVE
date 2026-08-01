@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENAI-TEN-PROOFS-WP00-PRE-ROUTE",
+  "candidate_id": "OPENAI-TEN-PROOFS-001",
+  "work_package_id": "OPENAI-TEN-PROOFS-WP00",
+  "state": "blocked_pre_route_candidate",
+  "source_subject": {
+    "repository": "openai/ten-proofs",
+    "commit": "6fefffdbab0dfa726fcfde6cefae23aa7a1888f3",
+    "tree": "79e6a50b1e391bdddb18b42be3e886c1d9784ed3"
+  },
+  "upstream_proposals": {
+    "mathforge": {
+      "pull_request": "https://github.com/grandchallenge/MATHFORGE/pull/36",
+      "head_commit": "f4283c59571a43be23d07700b4cfddafc2bcda8d",
+      "state": "draft_provider_proposal"
+    },
+    "programme": {
+      "pull_request": "https://github.com/grandchallenge/MATH-PROGRAMME/pull/199",
+      "head_commit": "66c18086216e509ca7cdae26d59f8f57f500c5c1",
+      "state": "draft_governance_proposal"
+    }
+  },
+  "target_count": 12,
+  "intended_concordance": "advertised result -> source theorem and revision -> Lean declaration -> Comparator target",
+  "semantic_review_priorities": [
+    "NP-hardness and promise-problem encodings",
+    "non-soficity and finite-presentation boundary",
+    "tracial group-factor isomorphism and Connes-rigidity boundary",
+    "asymptotic rate and sharpness normalizations",
+    "counterexample predicate nonvacuity and quantifier order"
+  ],
+  "preconditions": [
+    "MATHFORGE provider manifest is protected-branch authority.",
+    "Programme candidate-governance record is protected-branch authority.",
+    "The undeclared ConnesRigidity2 default target has a recorded disposition.",
+    "The missing ComparatorChallenges.C_PermanentSuperquadraticStandalone root has a recorded disposition.",
+    "Every declared valid library builds in a trusted Lean 4.32.0 runner.",
+    "All twelve Comparator configurations replay successfully.",
+    "Theorem-level axiom reports are captured.",
+    "Source papers and theorem revisions are independently acquired and locked."
+  ],
+  "route_controls": {
+    "may_start_statement_concordance": false,
+    "may_emit_mathcert_handoff": false,
+    "may_claim_kernel_correctness": false,
+    "may_claim_statement_equivalence": false,
+    "may_promote_mathematical_result": false
+  },
+  "tracker": "https://github.com/grandchallenge/MATHSOLVE/issues/90",
+  "cert_pre_route": "https://github.com/grandchallenge/MATHCERT/issues/43",
+  "claim_boundary": "This Solve record preserves prerequisites for future theorem-level concordance. It is not a campaign manifest, is not a MATHCERT handoff, and does not establish or promote any mathematical or external claim."
+}
