@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grandchallenge.ai/schemas/mathsolve/openai_ten_proofs_umbrella_sync.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_id", "candidate_id", "programme_tracker", "semantic_tracker", "state", "authority", "source_subject", "replay_gate", "aggregate_integration", "semantic_gate", "route_controls", "handoff_rule", "supersedes_state_of", "claim_boundary"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_id": {"const": "MS-OTP-UMBRELLA-SYNC-001"},
+    "candidate_id": {"const": "OPENAI-TEN-PROOFS-001"},
+    "programme_tracker": {"const": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/200"},
+    "semantic_tracker": {"const": "https://github.com/grandchallenge/MATHFORGE/issues/50"},
+    "state": {"const": "semantic_audit_authorized_no_handoffs"},
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["forge_evidence_merge", "programme_intake_merge", "review_remedy_merge", "theorem_matrix_blob", "provider_manifest_blob", "historical_source_lock_blob", "review_attestation_blob"],
+      "properties": {
+        "forge_evidence_merge": {"const": "72452f4579749448169cacf9f2ab22a4df2bb182"},
+        "programme_intake_merge": {"const": "496762bf9c8df828110022f8a843ab50a0aecd55"},
+        "review_remedy_merge": {"const": "bffb7d63476d79e86665ec5a74d554794e24357e"},
+        "theorem_matrix_blob": {"const": "2d8b24c32c804c4f5ca0f5f5ad1185199d35664b"},
+        "provider_manifest_blob": {"const": "2bf815006770e8484efcbe242380678fb7be8ca8"},
+        "historical_source_lock_blob": {"const": "1b4981178553ad300a5abead6d3c9f6bac78d0da"},
+        "review_attestation_blob": {"const": "30f98012208cc26c64f3c05cf65b7be9dba52cd6"}
+      }
+    },
+    "source_subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["current_official", "historical_disconnected"],
+      "properties": {
+        "current_official": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "commit", "tree", "archive_sha256"],
+          "properties": {
+            "repository": {"const": "openai/ten-proofs"},
+            "commit": {"const": "e62211d28e3a9131950c89caa6542cfe5eff3bca"},
+            "tree": {"const": "2f8e7ac5ae7f157b6b1de636c2c343b1c7a7e365"},
+            "archive_sha256": {"const": "3022e62ffbed8f5f74d232034a703dc645e6b301879dff1e87df72979914294f"}
+          }
+        },
+        "historical_disconnected": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["commit", "tree", "role"],
+          "properties": {
+            "commit": {"const": "6fefffdbab0dfa726fcfde6cefae23aa7a1888f3"},
+            "tree": {"const": "79e6a50b1e391bdddb18b42be3e886c1d9784ed3"},
+            "role": {"const": "historical_intake_evidence"}
+          }
+        }
+      }
+    },
+    "replay_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "result_family_clear_count", "result_family_count", "corrected_target_job_count", "comparator_pass_count", "lean_kernel_accept_count", "required_nanoda_accept_count", "theorem_axiom_report_count"],
+      "properties": {
+        "state": {"const": "clear"},
+        "result_family_clear_count": {"const": 12},
+        "result_family_count": {"const": 12},
+        "corrected_target_job_count": {"const": 8710},
+        "comparator_pass_count": {"const": 12},
+        "lean_kernel_accept_count": {"const": 12},
+        "required_nanoda_accept_count": {"const": 9},
+        "theorem_axiom_report_count": {"const": 41}
+      }
+    },
+    "aggregate_integration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "failure", "reopens_replay_gate"],
+      "properties": {
+        "state": {"const": "failed_separate_obligation"},
+        "failure": {"const": "All.lean namespace collision on replicate_to_periodic_packing"},
+        "reopens_replay_gate": {"const": false}
+      }
+    },
+    "semantic_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "clear_count", "result_family_count", "first_tranche", "blocked_repair_lanes"],
+      "properties": {
+        "state": {"const": "open_for_audit"},
+        "clear_count": {"const": 0},
+        "result_family_count": {"const": 12},
+        "first_tranche": {"const": ["OTP-F-EHRHART", "OTP-J1-COMPACTNESS", "OTP-J2-TWO-DEGENERATE"]},
+        "blocked_repair_lanes": {"const": ["OTP-C-PERMANENT", "OTP-H-GAPCVP"]}
+      }
+    },
+    "route_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["may_start_statement_concordance", "may_emit_result_family_mathcert_handoff", "may_emit_aggregate_mathcert_handoff", "may_claim_kernel_correctness_for_corrected_target_set", "may_claim_statement_equivalence", "may_promote_mathematical_result", "handoff_count"],
+      "properties": {
+        "may_start_statement_concordance": {"const": true},
+        "may_emit_result_family_mathcert_handoff": {"const": false},
+        "may_emit_aggregate_mathcert_handoff": {"const": false},
+        "may_claim_kernel_correctness_for_corrected_target_set": {"const": true},
+        "may_claim_statement_equivalence": {"const": false},
+        "may_promote_mathematical_result": {"const": false},
+        "handoff_count": {"const": 0}
+      }
+    },
+    "handoff_rule": {"type": "string", "minLength": 120},
+    "supersedes_state_of": {"const": "work_packages/OPENAI_TEN_PROOFS_WP00/pre_route_candidate.json"},
+    "claim_boundary": {"type": "string", "minLength": 150}
+  }
+}
