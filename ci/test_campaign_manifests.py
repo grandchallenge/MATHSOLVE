@@ -67,16 +67,29 @@ class CampaignManifestTests(unittest.TestCase):
         errors = module.campaign_manifest_errors(target)
         self.assertTrue(any("identity drift" in error for error in errors))
 
-    def test_uc_readme_identity_cannot_regress(self) -> None:
+    def test_uc_historical_blob_substitution_fails(self) -> None:
         _, target = self.copied_registry()
         path = target / "UC-001.json"
         data = json.loads(path.read_text(encoding="utf-8"))
         data["work_packages"][0]["artifacts"][0]["digest"] = (
-            "e4f4882666653fa1f0996aa7923e6290137fe2ee"
+            "607e49467df51f73b8dfe49cf2bf9bdec4f4e1f9"
         )
         path.write_text(json.dumps(data), encoding="utf-8")
         errors = module.campaign_manifest_errors(target)
         self.assertTrue(any("identity drift" in error for error in errors))
+
+    def test_uc_obsolete_source_commit_pairing_fails(self) -> None:
+        _, target = self.copied_registry()
+        path = target / "UC-001.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        stale_commit = "0a859ee8cad2cefa095b75d513853416a869cb07"
+        data["work_packages"][0]["source_commit"] = stale_commit
+        data["work_packages"][0]["artifacts"][0]["commit_sha"] = stale_commit
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.current_cert_route_errors(manifest_dir=target)
+        self.assertTrue(
+            any("provider source_commit drift" in error or "exact provider artifact identity drift" in error for error in errors)
+        )
 
     def test_repository_commit_cannot_substitute_for_artifact_digest(self) -> None:
         _, target = self.copied_registry()
