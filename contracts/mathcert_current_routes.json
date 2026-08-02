@@ -24,7 +24,7 @@
       "manifest": {
         "path": "campaign_manifests/UC-001.json",
         "digest_algorithm": "git_blob_sha1",
-        "digest": "d54fe0011d41c13166a0951008180f80f2f25e67"
+        "digest": "4faf3e9e19e6c1a48461a8ad70cfb9c110daa101"
       },
       "handoff": {
         "path": "cert_handoffs/UC-001.json",
