@@ -36,7 +36,7 @@
       "commit_sha": "0a859ee8cad2cefa095b75d513853416a869cb07",
       "path": "domains/union_closed/WP04_small_cases_and_certificates/README.md",
       "digest_algorithm": "git_blob_sha1",
-      "digest": "e4f4882666653fa1f0996aa7923e6290137fe2ee",
+      "digest": "607e49467df51f73b8dfe49cf2bf9bdec4f4e1f9",
       "role": "solve_artifact"
     }],
     "ledgers": {
