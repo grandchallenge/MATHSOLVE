@@ -65,6 +65,20 @@ EXPECTED_QUALIFICATION_SCOPES = {
     "NS-CI-001": "qualified_interface_only",
     "RH-001": "qualified_interface_only",
 }
+EXPECTED_PROVIDER_ARTIFACTS = {
+    "UC-001": {
+        "work_package_id": "MS-UC-WP04",
+        "source_commit": "443daf537dc7e4ee34ab43aeb01508d9177816ab",
+        "artifact": {
+            "repository": "grandchallenge/MATHSOLVE",
+            "commit_sha": "443daf537dc7e4ee34ab43aeb01508d9177816ab",
+            "path": "domains/union_closed/WP04_small_cases_and_certificates/README.md",
+            "digest_algorithm": "git_blob_sha1",
+            "digest": "e4f4882666653fa1f0996aa7923e6290137fe2ee",
+            "role": "solve_artifact",
+        },
+    },
+}
 
 
 def load_json(path: Path) -> Any:
@@ -157,6 +171,35 @@ def current_cert_route_errors(
                 errors.append(
                     f"{label}: overlay handoff_state does not match immutable manifest handoff state"
                 )
+
+            expected_provider = EXPECTED_PROVIDER_ARTIFACTS.get(campaign_id)
+            if expected_provider is not None:
+                work_package_id = expected_provider["work_package_id"]
+                work_package = next(
+                    (
+                        item
+                        for item in manifest.get("work_packages", [])
+                        if isinstance(item, dict) and item.get("work_package_id") == work_package_id
+                    ),
+                    None,
+                )
+                if work_package is None:
+                    errors.append(f"{label}: expected provider work package {work_package_id} is missing")
+                else:
+                    if work_package.get("source_commit") != expected_provider["source_commit"]:
+                        errors.append(f"{label}: provider source_commit drift")
+                    expected_artifact = expected_provider["artifact"]
+                    provider_artifact = next(
+                        (
+                            item
+                            for item in work_package.get("artifacts", [])
+                            if isinstance(item, dict)
+                            and item.get("path") == expected_artifact["path"]
+                        ),
+                        None,
+                    )
+                    if provider_artifact != expected_artifact:
+                        errors.append(f"{label}: exact provider artifact identity drift")
 
         handoff_path = ROOT / str(handoff_ref.get("path", ""))
         if handoff_path.is_file():
@@ -258,7 +301,7 @@ def main() -> int:
         )
         return 1
     print(
-        "validated immutable Solve handoff states, current Cert adjudications, exact outputs, and promotion boundaries"
+        "validated immutable Solve handoff states, exact provider identities, current Cert adjudications, exact outputs, and promotion boundaries"
     )
     return 0
 
