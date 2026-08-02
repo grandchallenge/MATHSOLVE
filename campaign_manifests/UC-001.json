@@ -30,13 +30,13 @@
     "primary_type": "EXACT_COMPUTATIONAL_SCREEN",
     "status": "complete",
     "source_repository": "grandchallenge/MATHSOLVE",
-    "source_commit": "0a859ee8cad2cefa095b75d513853416a869cb07",
+    "source_commit": "443daf537dc7e4ee34ab43aeb01508d9177816ab",
     "artifacts": [{
       "repository": "grandchallenge/MATHSOLVE",
-      "commit_sha": "0a859ee8cad2cefa095b75d513853416a869cb07",
+      "commit_sha": "443daf537dc7e4ee34ab43aeb01508d9177816ab",
       "path": "domains/union_closed/WP04_small_cases_and_certificates/README.md",
       "digest_algorithm": "git_blob_sha1",
-      "digest": "607e49467df51f73b8dfe49cf2bf9bdec4f4e1f9",
+      "digest": "e4f4882666653fa1f0996aa7923e6290137fe2ee",
       "role": "solve_artifact"
     }],
     "ledgers": {
