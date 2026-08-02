@@ -124,6 +124,7 @@ def local_artifact_errors(artifact: dict[str, Any], label: str) -> list[str]:
 def current_cert_route_errors(
     registry_path: Path = REGISTRY_PATH,
     schema_path: Path = SCHEMA_PATH,
+    manifest_dir: Path = MANIFEST_DIR,
 ) -> list[str]:
     registry = load_json(registry_path)
     schema = load_json(schema_path)
@@ -161,7 +162,7 @@ def current_cert_route_errors(
         if isinstance(handoff_ref, dict):
             errors.extend(local_artifact_errors(handoff_ref, f"{label}.handoff"))
 
-        manifest_path = ROOT / str(manifest_ref.get("path", ""))
+        manifest_path = manifest_dir / f"{campaign_id}.json"
         if manifest_path.is_file():
             manifest = load_json(manifest_path)
             if manifest.get("campaign_id") != campaign_id:
@@ -268,7 +269,10 @@ def provider_gate_errors(
 ) -> list[str]:
     if stage not in GATED_STAGES:
         return []
-    errors = current_cert_route_errors(registry_path=registry_path)
+    errors = current_cert_route_errors(
+        registry_path=registry_path,
+        manifest_dir=manifest_dir,
+    )
     if errors:
         return [f"{campaign_id} {stage}: current Cert route registry is invalid"]
 
