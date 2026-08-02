@@ -28,7 +28,7 @@ GATED_STAGES = {
     "CLAIM_PROMOTION",
 }
 EXPECTED_ROUTE_STATES = {
-    "UC-001": "ready",
+    "UC-001": "qualified",
     "NS-CI-001": "qualified",
     "HC-001": "ready",
     "BSD-001": "pending",
@@ -36,6 +36,34 @@ EXPECTED_ROUTE_STATES = {
     "RH-001": "qualified",
     "YM-001": "pending",
     "OZ-001": "pending",
+}
+EXPECTED_CERT_OUTPUTS = {
+    "UC-001": {
+        "repository": "grandchallenge/MATHCERT",
+        "commit_sha": "214c4f4d7962883bb10172db84d5162dde2e5c4e",
+        "path": "certificates/union_closed/MC-UC-WP04-QUAL-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "265c185d6b2b2970dc675729efa3fc4860f29204",
+    },
+    "NS-CI-001": {
+        "repository": "grandchallenge/MATHCERT",
+        "commit_sha": "b1aa08001eb8537be8e204c3866aefd5f898252e",
+        "path": "certificates/formal_sources/MC-FC-WP00-NS-CI-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "6047ad774957974a6c2aa86bae72b51841e774a4",
+    },
+    "RH-001": {
+        "repository": "grandchallenge/MATHCERT",
+        "commit_sha": "b1aa08001eb8537be8e204c3866aefd5f898252e",
+        "path": "certificates/formal_sources/MC-FC-WP00-RH-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "3668bbf792d994a6d8919101417f2f3cad342cdc",
+    },
+}
+EXPECTED_QUALIFICATION_SCOPES = {
+    "UC-001": "qualified_restricted_claims_only",
+    "NS-CI-001": "qualified_interface_only",
+    "RH-001": "qualified_interface_only",
 }
 
 
@@ -155,6 +183,15 @@ def current_cert_route_errors(
                 errors.append(f"{label}: non-adjudicated intake cannot carry a Cert output")
             if qualification_scope is not None:
                 errors.append(f"{label}: non-adjudicated intake cannot carry qualification scope")
+
+        expected_output = EXPECTED_CERT_OUTPUTS.get(campaign_id)
+        if expected_output is not None and cert_output != expected_output:
+            errors.append(f"{label}: exact Cert output identity drift")
+        expected_scope = EXPECTED_QUALIFICATION_SCOPES.get(campaign_id)
+        if expected_scope is not None and qualification_scope != expected_scope:
+            errors.append(
+                f"{label}: qualification scope drift; expected {expected_scope}, found {qualification_scope}"
+            )
 
         if record.get("mathematical_target_proved") is not False:
             errors.append(f"{label}: current interface or intake state cannot imply target proof")
