@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Repair the stale `MS-UC-WP04` README artifact identity and reconcile the current MATHCERT adjudication without rewriting the immutable producer handoff.
+Repair the stale `MS-UC-WP04` README artifact pairing and reconcile the current MATHCERT adjudication without rewriting the immutable producer handoff.
 
 ## Protected upstream authority
 
@@ -14,15 +14,20 @@ Repair the stale `MS-UC-WP04` README artifact identity and reconcile the current
 
 ## Provider-integrity repair
 
-The protected pre-repair UC manifest recorded the WP04 README blob as:
+The protected pre-repair UC manifest paired:
 
-`e4f4882666653fa1f0996aa7923e6290137fe2ee`
+- source and artifact commit `0a859ee8cad2cefa095b75d513853416a869cb07`;
+- recorded README blob `e4f4882666653fa1f0996aa7923e6290137fe2ee`.
 
-The exact blob at cited commit `0a859ee8cad2cefa095b75d513853416a869cb07` is:
+GitHub reports the README at that historical commit as:
 
 `607e49467df51f73b8dfe49cf2bf9bdec4f4e1f9`
 
-The repaired manifest binds the exact cited-commit blob. It does not change the README, theorem statements, finite certificate, or claim status.
+The live protected README at MATHSOLVE revision `443daf537dc7e4ee34ab43aeb01508d9177816ab` has blob:
+
+`e4f4882666653fa1f0996aa7923e6290137fe2ee`
+
+The repaired manifest therefore preserves the live README content and repins both the work-package `source_commit` and artifact `commit_sha` to `443daf537dc7e4ee34ab43aeb01508d9177816ab`. It does not rewrite the README, theorem statements, finite certificate, or claim status.
 
 ## Producer/adjudicator reconciliation
 
