@@ -22,10 +22,10 @@
       "required": ["repository", "commit_sha", "path", "digest_algorithm", "digest"],
       "properties": {
         "repository": {"const": "grandchallenge/MATHCERT"},
-        "commit_sha": {"const": "0258e4f0bca0d90fac05b62aeef108f16dccffdd"},
+        "commit_sha": {"const": "64e042ddb1147338ad7868a2847715fe7c1c079d"},
         "path": {"const": "governance/certification_routes.json"},
         "digest_algorithm": {"const": "git_blob_sha1"},
-        "digest": {"const": "5b3e8d48b9f6c5b03ed3dc439bf9e43876e017b1"}
+        "digest": {"const": "cf876f43ae824f965a3aedf411671c110c380028"}
       }
     },
     "state_semantics": {
