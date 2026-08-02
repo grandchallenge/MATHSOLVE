@@ -28,7 +28,7 @@ GATED_STAGES = {
     "CLAIM_PROMOTION",
 }
 EXPECTED_ROUTE_STATES = {
-    "UC-001": "ready",
+    "UC-001": "qualified",
     "NS-CI-001": "qualified",
     "HC-001": "ready",
     "BSD-001": "pending",
@@ -36,6 +36,48 @@ EXPECTED_ROUTE_STATES = {
     "RH-001": "qualified",
     "YM-001": "pending",
     "OZ-001": "pending",
+}
+EXPECTED_CERT_OUTPUTS = {
+    "UC-001": {
+        "repository": "grandchallenge/MATHCERT",
+        "commit_sha": "214c4f4d7962883bb10172db84d5162dde2e5c4e",
+        "path": "certificates/union_closed/MC-UC-WP04-QUAL-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "265c185d6b2b2970dc675729efa3fc4860f29204",
+    },
+    "NS-CI-001": {
+        "repository": "grandchallenge/MATHCERT",
+        "commit_sha": "b1aa08001eb8537be8e204c3866aefd5f898252e",
+        "path": "certificates/formal_sources/MC-FC-WP00-NS-CI-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "6047ad774957974a6c2aa86bae72b51841e774a4",
+    },
+    "RH-001": {
+        "repository": "grandchallenge/MATHCERT",
+        "commit_sha": "b1aa08001eb8537be8e204c3866aefd5f898252e",
+        "path": "certificates/formal_sources/MC-FC-WP00-RH-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "3668bbf792d994a6d8919101417f2f3cad342cdc",
+    },
+}
+EXPECTED_QUALIFICATION_SCOPES = {
+    "UC-001": "qualified_restricted_claims_only",
+    "NS-CI-001": "qualified_interface_only",
+    "RH-001": "qualified_interface_only",
+}
+EXPECTED_PROVIDER_ARTIFACTS = {
+    "UC-001": {
+        "work_package_id": "MS-UC-WP04",
+        "source_commit": "443daf537dc7e4ee34ab43aeb01508d9177816ab",
+        "artifact": {
+            "repository": "grandchallenge/MATHSOLVE",
+            "commit_sha": "443daf537dc7e4ee34ab43aeb01508d9177816ab",
+            "path": "domains/union_closed/WP04_small_cases_and_certificates/README.md",
+            "digest_algorithm": "git_blob_sha1",
+            "digest": "e4f4882666653fa1f0996aa7923e6290137fe2ee",
+            "role": "solve_artifact",
+        },
+    },
 }
 
 
@@ -82,6 +124,7 @@ def local_artifact_errors(artifact: dict[str, Any], label: str) -> list[str]:
 def current_cert_route_errors(
     registry_path: Path = REGISTRY_PATH,
     schema_path: Path = SCHEMA_PATH,
+    manifest_dir: Path = MANIFEST_DIR,
 ) -> list[str]:
     registry = load_json(registry_path)
     schema = load_json(schema_path)
@@ -119,7 +162,7 @@ def current_cert_route_errors(
         if isinstance(handoff_ref, dict):
             errors.extend(local_artifact_errors(handoff_ref, f"{label}.handoff"))
 
-        manifest_path = ROOT / str(manifest_ref.get("path", ""))
+        manifest_path = manifest_dir / f"{campaign_id}.json"
         if manifest_path.is_file():
             manifest = load_json(manifest_path)
             if manifest.get("campaign_id") != campaign_id:
@@ -129,6 +172,35 @@ def current_cert_route_errors(
                 errors.append(
                     f"{label}: overlay handoff_state does not match immutable manifest handoff state"
                 )
+
+            expected_provider = EXPECTED_PROVIDER_ARTIFACTS.get(campaign_id)
+            if expected_provider is not None:
+                work_package_id = expected_provider["work_package_id"]
+                work_package = next(
+                    (
+                        item
+                        for item in manifest.get("work_packages", [])
+                        if isinstance(item, dict) and item.get("work_package_id") == work_package_id
+                    ),
+                    None,
+                )
+                if work_package is None:
+                    errors.append(f"{label}: expected provider work package {work_package_id} is missing")
+                else:
+                    if work_package.get("source_commit") != expected_provider["source_commit"]:
+                        errors.append(f"{label}: provider source_commit drift")
+                    expected_artifact = expected_provider["artifact"]
+                    provider_artifact = next(
+                        (
+                            item
+                            for item in work_package.get("artifacts", [])
+                            if isinstance(item, dict)
+                            and item.get("path") == expected_artifact["path"]
+                        ),
+                        None,
+                    )
+                    if provider_artifact != expected_artifact:
+                        errors.append(f"{label}: exact provider artifact identity drift")
 
         handoff_path = ROOT / str(handoff_ref.get("path", ""))
         if handoff_path.is_file():
@@ -155,6 +227,15 @@ def current_cert_route_errors(
                 errors.append(f"{label}: non-adjudicated intake cannot carry a Cert output")
             if qualification_scope is not None:
                 errors.append(f"{label}: non-adjudicated intake cannot carry qualification scope")
+
+        expected_output = EXPECTED_CERT_OUTPUTS.get(campaign_id)
+        if expected_output is not None and cert_output != expected_output:
+            errors.append(f"{label}: exact Cert output identity drift")
+        expected_scope = EXPECTED_QUALIFICATION_SCOPES.get(campaign_id)
+        if expected_scope is not None and qualification_scope != expected_scope:
+            errors.append(
+                f"{label}: qualification scope drift; expected {expected_scope}, found {qualification_scope}"
+            )
 
         if record.get("mathematical_target_proved") is not False:
             errors.append(f"{label}: current interface or intake state cannot imply target proof")
@@ -188,7 +269,10 @@ def provider_gate_errors(
 ) -> list[str]:
     if stage not in GATED_STAGES:
         return []
-    errors = current_cert_route_errors(registry_path=registry_path)
+    errors = current_cert_route_errors(
+        registry_path=registry_path,
+        manifest_dir=manifest_dir,
+    )
     if errors:
         return [f"{campaign_id} {stage}: current Cert route registry is invalid"]
 
@@ -221,7 +305,7 @@ def main() -> int:
         )
         return 1
     print(
-        "validated immutable Solve handoff states, current Cert adjudications, exact outputs, and promotion boundaries"
+        "validated immutable Solve handoff states, exact provider identities, current Cert adjudications, exact outputs, and promotion boundaries"
     )
     return 0
 

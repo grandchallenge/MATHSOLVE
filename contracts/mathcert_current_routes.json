@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0.0",
   "registry_id": "MS-MATHCERT-CURRENT-001",
-  "verified_at": "2026-07-31",
+  "verified_at": "2026-08-02",
   "authority": {
     "repository": "grandchallenge/MATHCERT",
-    "commit_sha": "0258e4f0bca0d90fac05b62aeef108f16dccffdd",
+    "commit_sha": "64e042ddb1147338ad7868a2847715fe7c1c079d",
     "path": "governance/certification_routes.json",
     "digest_algorithm": "git_blob_sha1",
-    "digest": "5b3e8d48b9f6c5b03ed3dc439bf9e43876e017b1"
+    "digest": "cf876f43ae824f965a3aedf411671c110c380028"
   },
   "state_semantics": {
     "producer_handoff_status_is_immutable": true,
@@ -24,7 +24,7 @@
       "manifest": {
         "path": "campaign_manifests/UC-001.json",
         "digest_algorithm": "git_blob_sha1",
-        "digest": "55629c3004b8bffc35fc0fa6f5fbc711ff48aa3c"
+        "digest": "4faf3e9e19e6c1a48461a8ad70cfb9c110daa101"
       },
       "handoff": {
         "path": "cert_handoffs/UC-001.json",
@@ -32,13 +32,21 @@
         "digest": "8369bc21e45be6af71d2a0cdb0c5ab3cb5313bfb"
       },
       "handoff_state": "ready",
-      "route_state": "ready",
-      "cert_output": null,
-      "qualification_scope": null,
+      "route_state": "qualified",
+      "cert_output": {
+        "repository": "grandchallenge/MATHCERT",
+        "commit_sha": "214c4f4d7962883bb10172db84d5162dde2e5c4e",
+        "path": "certificates/union_closed/MC-UC-WP04-QUAL-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "265c185d6b2b2970dc675729efa3fc4860f29204"
+      },
+      "qualification_scope": "qualified_restricted_claims_only",
       "mathematical_target_proved": false,
       "current_promotion_blockers": [
-        "Frankl's conjecture remains open.",
-        "The ready packet has no MATHCERT adjudication."
+        "UC-FRANKL remains an open mathematical problem.",
+        "Proof obligation UC-P04 remains open.",
+        "The finite qualification stops at universe size n <= 4.",
+        "The campaign manifest remains ineligible for claim promotion."
       ]
     },
     "NS-CI-001": {

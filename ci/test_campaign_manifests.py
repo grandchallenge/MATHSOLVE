@@ -67,6 +67,30 @@ class CampaignManifestTests(unittest.TestCase):
         errors = module.campaign_manifest_errors(target)
         self.assertTrue(any("identity drift" in error for error in errors))
 
+    def test_uc_historical_blob_substitution_fails(self) -> None:
+        _, target = self.copied_registry()
+        path = target / "UC-001.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["work_packages"][0]["artifacts"][0]["digest"] = (
+            "607e49467df51f73b8dfe49cf2bf9bdec4f4e1f9"
+        )
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.campaign_manifest_errors(target)
+        self.assertTrue(any("identity drift" in error for error in errors))
+
+    def test_uc_obsolete_source_commit_pairing_fails(self) -> None:
+        _, target = self.copied_registry()
+        path = target / "UC-001.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        stale_commit = "0a859ee8cad2cefa095b75d513853416a869cb07"
+        data["work_packages"][0]["source_commit"] = stale_commit
+        data["work_packages"][0]["artifacts"][0]["commit_sha"] = stale_commit
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.current_cert_route_errors(manifest_dir=target)
+        self.assertTrue(
+            any("provider source_commit drift" in error or "exact provider artifact identity drift" in error for error in errors)
+        )
+
     def test_repository_commit_cannot_substitute_for_artifact_digest(self) -> None:
         _, target = self.copied_registry()
         path = target / "BSD-001.json"
@@ -102,9 +126,8 @@ class CampaignManifestTests(unittest.TestCase):
         errors = module.provider_gate_errors("HC-001", "JUDGMENT")
         self.assertTrue(any("not an adjudicated" in error for error in errors))
 
-    def test_ready_route_cannot_pass_integration(self) -> None:
-        errors = module.provider_gate_errors("UC-001", "INTEGRATION")
-        self.assertTrue(any("not an adjudicated" in error for error in errors))
+    def test_qualified_uc_route_passes_integration_despite_ready_handoff(self) -> None:
+        self.assertEqual(module.provider_gate_errors("UC-001", "INTEGRATION"), [])
 
     def test_qualified_ns_route_passes_judgment_despite_ready_handoff(self) -> None:
         self.assertEqual(module.provider_gate_errors("NS-CI-001", "JUDGMENT"), [])
@@ -114,6 +137,10 @@ class CampaignManifestTests(unittest.TestCase):
 
     def test_qualification_does_not_imply_claim_promotion(self) -> None:
         errors = module.provider_gate_errors("RH-001", "CLAIM_PROMOTION")
+        self.assertTrue(any("not promotion eligible" in error for error in errors))
+
+    def test_uc_qualification_does_not_imply_claim_promotion(self) -> None:
+        errors = module.provider_gate_errors("UC-001", "CLAIM_PROMOTION")
         self.assertTrue(any("not promotion eligible" in error for error in errors))
 
     def test_promotion_requires_positive_historical_certification(self) -> None:
@@ -161,6 +188,22 @@ class CampaignManifestTests(unittest.TestCase):
         errors = module.current_cert_route_errors(registry_path=path)
         self.assertTrue(any("Cert output" in error or "not valid" in error for error in errors))
 
+    def test_uc_qualified_route_requires_exact_output(self) -> None:
+        _, path = self.copied_current_cert_registry()
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["campaigns"]["UC-001"]["cert_output"]["digest"] = "0" * 40
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.current_cert_route_errors(registry_path=path)
+        self.assertTrue(any("exact Cert output identity drift" in error for error in errors))
+
+    def test_uc_qualification_scope_cannot_drift(self) -> None:
+        _, path = self.copied_current_cert_registry()
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["campaigns"]["UC-001"]["qualification_scope"] = "qualified_interface_only"
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.current_cert_route_errors(registry_path=path)
+        self.assertTrue(any("qualification scope drift" in error for error in errors))
+
     def test_route_state_cannot_be_replaced_by_handoff_state(self) -> None:
         _, path = self.copied_current_cert_registry()
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -170,6 +213,24 @@ class CampaignManifestTests(unittest.TestCase):
         path.write_text(json.dumps(data), encoding="utf-8")
         errors = module.current_cert_route_errors(registry_path=path)
         self.assertTrue(any("route_state drift" in error for error in errors))
+
+    def test_uc_route_state_cannot_regress_to_ready_handoff(self) -> None:
+        _, path = self.copied_current_cert_registry()
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["campaigns"]["UC-001"]["route_state"] = "ready"
+        data["campaigns"]["UC-001"]["cert_output"] = None
+        data["campaigns"]["UC-001"]["qualification_scope"] = None
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.current_cert_route_errors(registry_path=path)
+        self.assertTrue(any("route_state drift" in error for error in errors))
+
+    def test_uc_qualification_cannot_inflate_to_target_proof(self) -> None:
+        _, path = self.copied_current_cert_registry()
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["campaigns"]["UC-001"]["mathematical_target_proved"] = True
+        path.write_text(json.dumps(data), encoding="utf-8")
+        errors = module.current_cert_route_errors(registry_path=path)
+        self.assertTrue(any("target proof" in error or "False was expected" in error for error in errors))
 
     def test_stale_rh_no_replay_assertion_fails(self) -> None:
         _, path = self.copied_current_cert_registry()
