@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "solve_downstream_certification_observation",
+  "observation_id": "MS-OTP-CERT-STATE-OBS-SOLVE-001",
+  "tracker_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/96",
+  "candidate_id": "OPENAI-TEN-PROOFS-001",
+  "supersession": {
+    "supersedes_downstream_cert_state_only": true,
+    "historical_umbrella_sync": {
+      "path": "work_packages/OPENAI_TEN_PROOFS_WP00/umbrella_sync.json",
+      "git_blob_sha1": "deef1ee179042226128c7fdb2906abacbcaea60c",
+      "mutation_prohibited": true
+    },
+    "historical_handoff_registry": {
+      "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoff_registry.json",
+      "git_blob_sha1": "82b4cc14a3c7700ab51ee25f06e6ba03c72e499c",
+      "mutation_prohibited": true
+    }
+  },
+  "solve_authority": {
+    "owns_producer_packets": true,
+    "owns_handoff_provenance": true,
+    "owns_cert_route": false,
+    "owns_adjudication": false,
+    "owns_cert_output": false,
+    "producer_packets": [
+      {
+        "result_family": "OTP-F-EHRHART",
+        "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-F-EHRHART.json",
+        "git_blob_sha1": "4653985d4980113514266c3c421804437bacb019"
+      },
+      {
+        "result_family": "OTP-J1-COMPACTNESS",
+        "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-J1-COMPACTNESS.json",
+        "git_blob_sha1": "2d9c6e555a03b71eb33c476321e7f2d311ed168f"
+      },
+      {
+        "result_family": "OTP-J2-TWO-DEGENERATE",
+        "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-J2-TWO-DEGENERATE.json",
+        "git_blob_sha1": "0d226492bf13e13bc1a437be01104db3d4c96f79"
+      }
+    ]
+  },
+  "mathcert_authority": {
+    "repository": "grandchallenge/MATHCERT",
+    "execution_merge": "1d5b1e6514787005ed75e363df7ea953dcd9391a",
+    "documentary_closure_merge": "150344d25b50895203c59f4193a8e97bb1cbbf81",
+    "closure_exact_reviewed_head": "207df8462f427e0c41604614ebe1a291ad89273f",
+    "closure_review_id": 4840018727,
+    "closure_human_steward_disposition_comment": 5160923732,
+    "route_registry_blob": "0487c3ebf702229741f16a544d68af25cf994e41",
+    "certificate_id": "MC-OTP-F-EHRHART-QUAL-001",
+    "certificate_blob": "27a855c949b67e71372c7f0d6601d80125d33968",
+    "attestation_manifest_blob": "d8b36ffdb3b5e732b385c9bac5576aa96dd1fcbe",
+    "successor_closure_blob": "c50a397a84873b358a54db2e602058da103b75e8"
+  },
+  "observed_family_state": [
+    {
+      "result_family": "OTP-F-EHRHART",
+      "producer_packet_unchanged": true,
+      "route_state": "qualified",
+      "adjudication_count": 1,
+      "restricted_cert_output_count": 1,
+      "disposition": "qualified_encoded_targets_only",
+      "mathematical_target_proved": false
+    },
+    {
+      "result_family": "OTP-J1-COMPACTNESS",
+      "producer_packet_unchanged": true,
+      "route_state": "submitted",
+      "adjudication_count": 0,
+      "restricted_cert_output_count": 0,
+      "disposition": null,
+      "mathematical_target_proved": false
+    },
+    {
+      "result_family": "OTP-J2-TWO-DEGENERATE",
+      "producer_packet_unchanged": true,
+      "route_state": "submitted",
+      "adjudication_count": 0,
+      "restricted_cert_output_count": 0,
+      "disposition": null,
+      "mathematical_target_proved": false
+    }
+  ],
+  "aggregate_handoff": null,
+  "aggregate_output_count": 0,
+  "mathematical_targets_marked_proved": 0,
+  "preserved_limitations": {
+    "blocked_repair_lanes": ["OTP-C-PERMANENT", "OTP-H-GAPCVP"],
+    "all_lean_state": "failed_namespace_collision",
+    "unexamined_result_family_count": 9,
+    "aggregate_ten_proofs_authority": false
+  },
+  "effect": "downstream_observation_only_no_solve_adjudication_authority",
+  "claim_boundary": "This Solve successor records an externally governed MATHCERT state while preserving Solve ownership of producer packets and handoff provenance. It does not modify the three producer packets or their registry, create or own a Cert route, adjudication, disposition, certificate, proof, or aggregate authority, mark any mathematical target proved, qualify Compactness or Two-degenerate, repair Permanent, GapCVP, or All.lean, or authorize novelty, priority, publication, patentability, product, or commercial claims."
+}

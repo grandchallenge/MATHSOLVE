@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grandchallenge.ai/schemas/openai_ten_proofs_downstream_certification_observation.schema.json",
+  "title": "OpenAI Ten Proofs Solve downstream certification observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "observation_id", "tracker_issue", "candidate_id", "supersession", "solve_authority", "mathcert_authority", "observed_family_state", "aggregate_handoff", "aggregate_output_count", "mathematical_targets_marked_proved", "preserved_limitations", "effect", "claim_boundary"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_type": {"const": "solve_downstream_certification_observation"},
+    "observation_id": {"const": "MS-OTP-CERT-STATE-OBS-SOLVE-001"},
+    "tracker_issue": {"const": "https://github.com/grandchallenge/MATHSOLVE/issues/96"},
+    "candidate_id": {"const": "OPENAI-TEN-PROOFS-001"},
+    "supersession": {"type": "object", "additionalProperties": false, "required": ["supersedes_downstream_cert_state_only", "historical_umbrella_sync", "historical_handoff_registry"], "properties": {
+      "supersedes_downstream_cert_state_only": {"const": true},
+      "historical_umbrella_sync": {"type": "object"},
+      "historical_handoff_registry": {"type": "object"}
+    }},
+    "solve_authority": {"type": "object", "additionalProperties": false, "required": ["owns_producer_packets", "owns_handoff_provenance", "owns_cert_route", "owns_adjudication", "owns_cert_output", "producer_packets"], "properties": {
+      "owns_producer_packets": {"const": true},
+      "owns_handoff_provenance": {"const": true},
+      "owns_cert_route": {"const": false},
+      "owns_adjudication": {"const": false},
+      "owns_cert_output": {"const": false},
+      "producer_packets": {"type": "array", "minItems": 3, "maxItems": 3}
+    }},
+    "mathcert_authority": {"type": "object"},
+    "observed_family_state": {"type": "array", "minItems": 3, "maxItems": 3},
+    "aggregate_handoff": {"const": null},
+    "aggregate_output_count": {"const": 0},
+    "mathematical_targets_marked_proved": {"const": 0},
+    "preserved_limitations": {"type": "object"},
+    "effect": {"const": "downstream_observation_only_no_solve_adjudication_authority"},
+    "claim_boundary": {"type": "string", "minLength": 400}
+  }
+}
