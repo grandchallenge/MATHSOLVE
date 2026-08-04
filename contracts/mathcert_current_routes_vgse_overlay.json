@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "overlay_id": "MS-MATHCERT-CURRENT-VGSE-001",
+  "recorded_at": "2026-08-04",
+  "base_registry": {
+    "path": "contracts/mathcert_current_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "a4002db2e8de67fe479a851c95a3906ed69587f9"
+  },
+  "current_authority": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "64e042ddb1147338ad7868a2847715fe7c1c079d",
+    "path": "governance/certification_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "cf876f43ae824f965a3aedf411671c110c380028"
+  },
+  "campaign": {
+    "campaign_id": "VGSE-001",
+    "route_id": "MC-ROUTE-VGSE-001",
+    "route_registry_entry_present": false,
+    "manifest": {
+      "path": "campaign_manifests/VGSE-001.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "3bb6b18052f5754e9ae9aa4f813d9b43dcd4e3b4"
+    },
+    "handoff": {
+      "path": "cert_handoffs/VGSE-001.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "42cfa84978fd63c75f074b388afd8b1fcbd56091"
+    },
+    "handoff_state": "pending",
+    "route_state": "pending",
+    "cert_output": null,
+    "qualification_scope": null,
+    "mathematical_target_proved": false,
+    "may_adjudicate": false,
+    "may_issue_certificate_output": false,
+    "current_promotion_blockers": [
+      "MC-ROUTE-VGSE-001 is absent from the protected MATHCERT route registry.",
+      "The exact or interval algebraic and planar-geometry certificates are not admitted.",
+      "The generated-to-source equivalence record remains open.",
+      "Mechanical, manufacturing, product, novelty, priority, patentability, and commercial lanes remain outside scope."
+    ]
+  }
+}
