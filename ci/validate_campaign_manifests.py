@@ -30,9 +30,11 @@ from validate_campaign_manifests_reviewed import main as reviewed_main  # noqa: 
 from validate_current_cert_routes import (  # noqa: E402
     REGISTRY_PATH as CURRENT_CERT_REGISTRY_PATH,
     SCHEMA_PATH as CURRENT_CERT_SCHEMA_PATH,
-    current_cert_route_errors,
-    current_route_state,
-    provider_gate_errors,
+)
+from validate_vgse_activation import (  # noqa: E402
+    merged_current_cert_route_errors as current_cert_route_errors,
+    merged_current_route_state as current_route_state,
+    merged_provider_gate_errors as provider_gate_errors,
 )
 from validate_formal_conjectures_expansion import validate as formal_conjectures_errors  # noqa: E402
 
@@ -54,7 +56,7 @@ def main() -> int:
             print(f"ERROR: {error}")
         return 1
 
-    print("Expanded Formal Conjectures evidence and current Cert-route invariants passed.")
+    print("Expanded Formal Conjectures evidence, merged current Cert routes, and VGSE activation invariants passed.")
     return 0
 
 
