@@ -6,10 +6,10 @@
   "source_commit": "709c7d3f388b8df75c87a247f80424e560c31e72",
   "cert_contract": {
     "repository": "grandchallenge/MATHCERT",
-    "commit_sha": "64e042ddb1147338ad7868a2847715fe7c1c079d",
+    "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
     "path": "governance/certification_routes.json",
     "digest_algorithm": "git_blob_sha1",
-    "digest": "cf876f43ae824f965a3aedf411671c110c380028",
+    "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3",
     "route_id": "MC-ROUTE-VGSE-001"
   },
   "target_claims": [
