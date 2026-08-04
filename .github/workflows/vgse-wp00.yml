@@ -5,6 +5,14 @@ on:
     paths:
       - "work_packages/VGSE_WP00/**"
       - "work_packages/VGSE_WP00_VARCHENKO_GALASHIN_SOURCE_SEMANTICS_LOCK.md"
+      - "campaign_manifests/VGSE-001.json"
+      - "cert_handoffs/VGSE-001.json"
+      - "contracts/mathcert_current_routes_vgse_overlay.json"
+      - "contracts/programme_reference_registry.json"
+      - "schemas/mathcert_current_routes_vgse_overlay.schema.json"
+      - "ci/validate_vgse_activation.py"
+      - "ci/test_vgse_activation.py"
+      - "ci/validate_campaign_manifests.py"
       - ".github/workflows/vgse-wp00.yml"
   push:
     branches:
@@ -12,6 +20,14 @@ on:
     paths:
       - "work_packages/VGSE_WP00/**"
       - "work_packages/VGSE_WP00_VARCHENKO_GALASHIN_SOURCE_SEMANTICS_LOCK.md"
+      - "campaign_manifests/VGSE-001.json"
+      - "cert_handoffs/VGSE-001.json"
+      - "contracts/mathcert_current_routes_vgse_overlay.json"
+      - "contracts/programme_reference_registry.json"
+      - "schemas/mathcert_current_routes_vgse_overlay.schema.json"
+      - "ci/validate_vgse_activation.py"
+      - "ci/test_vgse_activation.py"
+      - "ci/validate_campaign_manifests.py"
       - ".github/workflows/vgse-wp00.yml"
 
 permissions:
@@ -33,11 +49,19 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.12.13"
-      - name: Validate Programme candidate-admission boundary
+      - name: Install validation dependencies
+        run: python -m pip install 'jsonschema>=4.23,<5'
+      - name: Validate bounded activation and pending-route boundary
         run: |
           python work_packages/VGSE_WP00/artifacts/code/validate_candidate_admission.py
           python work_packages/VGSE_WP00/artifacts/code/test_candidate_admission.py
+          PYTHONPATH=ci python ci/validate_vgse_activation.py
+          PYTHONPATH=ci python -m unittest ci/test_vgse_activation.py -v
           python -m json.tool work_packages/VGSE_WP00/candidate_admission.json >/dev/null
+          python -m json.tool campaign_manifests/VGSE-001.json >/dev/null
+          python -m json.tool cert_handoffs/VGSE-001.json >/dev/null
+          python -m json.tool contracts/mathcert_current_routes_vgse_overlay.json >/dev/null
+          python -m json.tool schemas/mathcert_current_routes_vgse_overlay.schema.json >/dev/null
       - name: Replay Figure 16 algebraic, source-vector, and reconstructed fixtures
         run: |
           python work_packages/VGSE_WP00/artifacts/code/replicate_b3.py \
@@ -66,3 +90,5 @@ jobs:
           python -m json.tool work_packages/VGSE_WP00/artifacts/data/reconstruction_summary.json >/dev/null
           python -m json.tool work_packages/VGSE_WP00/claim_ledger.json >/dev/null
           python -m json.tool work_packages/VGSE_WP00/proof_obligations.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/resource_ledger.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/failed_route_ledger.json >/dev/null
