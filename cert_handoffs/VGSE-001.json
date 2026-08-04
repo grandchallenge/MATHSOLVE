@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.2.0",
+  "handoff_id": "MC-HANDOFF-VGSE-001",
+  "campaign_id": "VGSE-001",
+  "solve_work_package_id": "VGSE-WP00",
+  "source_commit": "709c7d3f388b8df75c87a247f80424e560c31e72",
+  "cert_contract": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "64e042ddb1147338ad7868a2847715fe7c1c079d",
+    "path": "governance/certification_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "cf876f43ae824f965a3aedf411671c110c380028",
+    "route_id": "MC-ROUTE-VGSE-001"
+  },
+  "target_claims": [
+    {
+      "claim_id": "VGSE-C00",
+      "statement": "For the recorded rational five-line arrangement, beta(C)=5.",
+      "claim_type": "EXACT_FINITE_FIXTURE_CLAIM",
+      "support_type": "EXACT_RATIONAL_CERTIFICATE"
+    },
+    {
+      "claim_id": "VGSE-C01",
+      "statement": "After saturation by the arrangement divisor, the recorded Figure 16 chart has exactly five isolated solutions away from every alpha_i=0.",
+      "claim_type": "ALGEBRAIC_ROOT_COUNT_CLAIM",
+      "support_type": "COMPUTER_ALGEBRA_CERTIFICATE_WITH_REPLAY"
+    },
+    {
+      "claim_id": "VGSE-C04",
+      "statement": "A positive weighted representative of the reconstructed graph reproduces the recorded Plucker data up to one common scale.",
+      "claim_type": "BOUNDARY_MEASUREMENT_CLAIM",
+      "support_type": "INTERVAL_ARITHMETIC_CERTIFICATE"
+    },
+    {
+      "claim_id": "VGSE-C05",
+      "statement": "The five retained algebraic witnesses extend to five planar t-embeddings satisfying the recorded boundary and geometric constraints.",
+      "claim_type": "PLANAR_GEOMETRY_CLAIM",
+      "support_type": "INTERVAL_ARITHMETIC_CERTIFICATE"
+    },
+    {
+      "claim_id": "VGSE-C06",
+      "statement": "The five generated planar patterns match the five source-vector drawings modulo the declared equivalence group.",
+      "claim_type": "GENERATED_TO_SOURCE_EQUIVALENCE_CLAIM",
+      "support_type": "SEMANTIC_REPLAY"
+    }
+  ],
+  "claim_ledger": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "709c7d3f388b8df75c87a247f80424e560c31e72",
+    "path": "work_packages/VGSE_WP00/claim_ledger.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "a5d9edb3697bfbb5fe26b8dacbda4b2a2debb69f",
+    "role": "claim_ledger"
+  },
+  "proof_obligations": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "709c7d3f388b8df75c87a247f80424e560c31e72",
+    "path": "work_packages/VGSE_WP00/proof_obligations.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "f00db211d6e65ff1cd8e9c24f448992101bfd6ca",
+    "role": "proof_obligation_dag"
+  },
+  "checker_contract": {
+    "target": "other",
+    "inputs": [
+      "Pinned Forge source and revision-concordance records.",
+      "Exact arrangement fixture and deterministic replay code.",
+      "Independent exact or interval algebraic certificates.",
+      "Independent positive-weight, boundary-measurement, discrete-holomorphic, and planar-geometry certificates.",
+      "A generated-to-source equivalence record with the declared equivalence group."
+    ],
+    "acceptance": "Accept only target-specific claims whose exact or interval certificates replay independently and preserve the stated source, divisor-exclusion, boundary, and equivalence conditions.",
+    "rejection": "Reject floating-point residuals as certificates, source/reconstruction conflation, missing genericity or divisor exclusion, geometric equivalence drift, and every mechanical, manufacturing, novelty, priority, patentability, product, or commercial inference."
+  },
+  "requested_modalities": [
+    "EXACT_RATIONAL_CERTIFICATE",
+    "INTERVAL_ARITHMETIC_CERTIFICATE",
+    "COMPUTER_ALGEBRA_CERTIFICATE_WITH_REPLAY",
+    "SEMANTIC_REPLAY",
+    "SPECIALIST_AUDIT_PENDING"
+  ],
+  "claim_boundary": "The handoff requests bounded algebraic and planar-geometry certification only. It does not certify rigid foldability, collision freedom, finite thickness, manufacturability, product performance, novelty, priority, patentability, or commercial value.",
+  "status": "pending",
+  "blockers": [
+    "MC-ROUTE-VGSE-001 is not yet present in the protected MATHCERT route registry.",
+    "Exact or interval certificates for the requested algebraic and planar-geometry claims have not been admitted.",
+    "The generated-to-source equivalence record remains open."
+  ],
+  "reopening_conditions": [
+    "Reopen or repin when the MATHCERT route registry, target claims, checker modalities, source identities, or certification disposition changes."
+  ]
+}
