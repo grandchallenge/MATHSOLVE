@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "VGSE-WP00-RESOURCE-001",
+  "campaign_id": "VGSE-001",
+  "work_package_id": "VGSE-WP00",
+  "recorded_at": "2026-08-04",
+  "execution_evidence": {
+    "reviewed_head": "0d66a75412543e534b81c21a51a6ad88c035b55b",
+    "candidate_merge": "709c7d3f388b8df75c87a247f80424e560c31e72",
+    "metadata_reconciliation_merge": "5507354524302cc7f4fc7e6c178b40dfe9bf08fb",
+    "workflow_runs": {
+      "solve_checks": 30641057206,
+      "gcl_conformance": 30641058060,
+      "candidate_replay": 30641057393
+    }
+  },
+  "resource_classes": [
+    {
+      "resource": "exact_finite_arrangement_replay",
+      "status": "complete",
+      "artifacts": [
+        "work_packages/VGSE_WP00/artifacts/code/replicate_b3.py",
+        "work_packages/VGSE_WP00/artifacts/data/expected_replay.json"
+      ]
+    },
+    {
+      "resource": "numerical_algebraic_and_planar_reconstruction",
+      "status": "complete_candidate_evidence",
+      "artifacts": [
+        "work_packages/VGSE_WP00/artifacts/code/reconstruct_b3.py",
+        "work_packages/VGSE_WP00/artifacts/data/graph_weight_fixture.json",
+        "work_packages/VGSE_WP00/artifacts/data/reconstruction_summary.json"
+      ],
+      "limitations": [
+        "Floating-point roots, weights, and linear solves are not certificates.",
+        "No interval-isolation or exact quotient-ring certificate is retained."
+      ]
+    },
+    {
+      "resource": "future_certification",
+      "status": "not_executed",
+      "required": [
+        "exact or interval algebraic certification",
+        "independent positive-weight and boundary-measurement certification",
+        "certified discrete-holomorphic solves and planar geometry",
+        "generated-to-source equivalence audit"
+      ]
+    }
+  ],
+  "claim_boundary": {
+    "mathematical_target_proved": false,
+    "mechanical_lane_executed": false,
+    "manufacturing_lane_executed": false,
+    "commercial_claim_authorized": false
+  }
+}

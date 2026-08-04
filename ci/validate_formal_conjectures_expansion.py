@@ -126,8 +126,9 @@ def validate(root: Path = ROOT) -> list[str]:
         campaign_id = str(manifest.get("campaign_id", ""))
         manifests[campaign_id] = manifest
 
-    if set(manifests) != AFFECTED | PILOT:
-        errors.append("manifest replay must cover exactly the eight governed campaigns")
+    formal_campaigns = AFFECTED | PILOT
+    if not formal_campaigns.issubset(set(manifests)):
+        errors.append("manifest replay must retain all eight Formal Conjectures campaigns")
 
     for campaign_id, expected_state in expected_states.items():
         manifest = manifests.get(campaign_id)
