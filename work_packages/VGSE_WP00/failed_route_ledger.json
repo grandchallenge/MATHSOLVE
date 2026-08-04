@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "VGSE-WP00-FAILED-ROUTES-001",
+  "campaign_id": "VGSE-001",
+  "work_package_id": "VGSE-WP00",
+  "recorded_at": "2026-08-04",
+  "routes": [
+    {
+      "route_id": "VGSE-FR-001",
+      "route": "provisional_regular_hexagon_fixture",
+      "disposition": "terminated",
+      "reason": "Superseded by the Figure 16 source-vector boundary extraction.",
+      "reopening_condition": "Only a separately justified comparative fixture operation may reopen this route."
+    },
+    {
+      "route_id": "VGSE-FR-002",
+      "route": "floating_point_witnesses_as_certificates",
+      "disposition": "rejected",
+      "reason": "Machine-scale residuals do not establish exact root count, divisor exclusion, or separation.",
+      "reopening_condition": "Replace with exact quotient-ring evidence or interval-isolated roots."
+    },
+    {
+      "route_id": "VGSE-FR-003",
+      "route": "generated_geometry_implies_rigid_deployability",
+      "disposition": "rejected",
+      "reason": "No mountain-valley assignment, layer order, continuous rigid-folding path, or collision certificate exists.",
+      "reopening_condition": "Provide a separately governed mechanical qualification package."
+    },
+    {
+      "route_id": "VGSE-FR-004",
+      "route": "candidate_evidence_implies_manufacturability_or_commercial_value",
+      "disposition": "prohibited",
+      "reason": "No finite-thickness conversion, prototype, tolerance record, manufacturing evidence, product benchmark, novelty, priority, patentability, or commercial evidence exists.",
+      "reopening_condition": "Requires separately authorized mechanical, manufacturing, legal, and commercial programmes."
+    }
+  ],
+  "claim_boundary": {
+    "five_root_theorem_certified": false,
+    "t_embedding_equivalence_certified": false,
+    "rigid_foldability_certified": false,
+    "manufacturability_certified": false,
+    "novelty_priority_patentability_authorized": false,
+    "commercial_value_authorized": false
+  }
+}
