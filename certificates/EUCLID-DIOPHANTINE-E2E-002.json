@@ -10,7 +10,11 @@
     {
       "case_id": "DIO-POS-252-105-84",
       "constructive_solution": {
-        "base_bezout": {"equation_value": 21, "x": -2, "y": 5},
+        "base_bezout": {
+          "equation_value": 21,
+          "x": -2,
+          "y": 5
+        },
         "equation_value": 84,
         "scale_factor": 4,
         "x": -8,
@@ -19,7 +23,11 @@
       "decision_basis": "exact_divisibility_by_protected_gcd",
       "divisibility_obstruction": null,
       "evidence_type": "constructive_solution",
-      "inputs": {"a": 252, "b": 105, "c": 84},
+      "inputs": {
+        "a": 252,
+        "b": 105,
+        "c": 84
+      },
       "normalized_gcd": 21
     },
     {
@@ -34,7 +42,11 @@
         "strict_nonzero_remainder": true
       },
       "evidence_type": "divisibility_obstruction",
-      "inputs": {"a": 252, "b": 105, "c": 20},
+      "inputs": {
+        "a": 252,
+        "b": 105,
+        "c": 20
+      },
       "normalized_gcd": 21
     }
   ],
@@ -72,7 +84,10 @@
       "path": "governance/certification_outputs/EUCLID-GCD-E2E-001.json"
     },
     "normalized_gcd": 21,
-    "positive_bezout": {"x": -2, "y": 5},
+    "positive_bezout": {
+      "x": -2,
+      "y": 5
+    },
     "solve_candidate": {
       "digest": "af54ae9b9a047a36767b2599ebc649fb6fdaaa52",
       "digest_algorithm": "git_blob_sha1",
