@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "EUCLID-DIOPHANTINE-E2E-002",
+  "entries": [
+    {"route_id": "DIO-001", "mutation": "coefficient or target sign drift", "expected": "reject"},
+    {"route_id": "DIO-002", "mutation": "zero-target handling removed", "expected": "reject"},
+    {"route_id": "DIO-003", "mutation": "scale factor changed independently of protected Bezout coefficients", "expected": "reject"},
+    {"route_id": "DIO-004", "mutation": "input or protected identity substitution", "expected": "reject"},
+    {"route_id": "DIO-005", "mutation": "zero, false, or out-of-range obstruction remainder", "expected": "reject"},
+    {"route_id": "DIO-006", "mutation": "competing gcd definition or recomputation", "expected": "reject"},
+    {"route_id": "DIO-007", "mutation": "timeout or failed search represented as unsatisfiability", "expected": "reject"},
+    {"route_id": "DIO-008", "mutation": "Solve self-certification or authority inflation", "expected": "reject"},
+    {"route_id": "DIO-009", "mutation": "unsupported historical verbatim attribution", "expected": "reject"},
+    {"route_id": "DIO-010", "mutation": "claim of completeness for arbitrary Diophantine equations", "expected": "reject"}
+  ],
+  "status": "retained_for_mathcert_adversarial_replay"
+}
