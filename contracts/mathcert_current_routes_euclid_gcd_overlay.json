@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "overlay_id": "MS-MATHCERT-CURRENT-EUCLID-GCD-E2E-001",
+  "recorded_at": "2026-08-05",
+  "base_registry": {
+    "path": "contracts/mathcert_current_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "a4002db2e8de67fe479a851c95a3906ed69587f9"
+  },
+  "predecessor_overlay": {
+    "path": "contracts/mathcert_current_routes_vgse_overlay.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "3ca77c89c3d199d1632feedc0f9ad3bfe1f66d31"
+  },
+  "current_authority": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "64e042ddb1147338ad7868a2847715fe7c1c079d",
+    "path": "governance/certification_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "cf876f43ae824f965a3aedf411671c110c380028"
+  },
+  "campaign": {
+    "campaign_id": "EUCLID-GCD-E2E-001",
+    "route_id": "MC-ROUTE-EUCLID-GCD-E2E-001",
+    "route_registry_entry_present": false,
+    "manifest": {
+      "path": "campaign_manifests/EUCLID-GCD-E2E-001.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "1cdb081595da2f8b21f60a192ec8cc83c20031ac"
+    },
+    "handoff": {
+      "path": "cert_handoffs/EUCLID-GCD-E2E-001.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "01a20512c428ce4384959064ab3343a1cbb0c7d2"
+    },
+    "handoff_state": "ready",
+    "route_state": "pending",
+    "cert_output": null,
+    "qualification_scope": null,
+    "mathematical_target_proved": false,
+    "may_adjudicate": false,
+    "may_issue_certificate_output": false,
+    "current_promotion_blockers": [
+      "MC-ROUTE-EUCLID-GCD-E2E-001 is absent from the protected MATHCERT route registry.",
+      "MATHCERT has not acknowledged intake of the ready producer handoff.",
+      "The independent checker has not accepted the candidate certificate.",
+      "The accepted-certificate soundness theorem and concrete Lean replay remain pending.",
+      "The campaign manifest remains ineligible for claim promotion."
+    ]
+  }
+}
