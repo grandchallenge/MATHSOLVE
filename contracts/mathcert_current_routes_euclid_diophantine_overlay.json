@@ -2,37 +2,15 @@
   "schema_version": "1.0.0",
   "overlay_id": "MS-MATHCERT-CURRENT-EUCLID-DIOPHANTINE-E2E-002",
   "recorded_at": "2026-08-05",
-  "base_registry": {
-    "path": "contracts/mathcert_current_routes.json",
-    "digest_algorithm": "git_blob_sha1",
-    "digest": "a4002db2e8de67fe479a851c95a3906ed69587f9"
-  },
-  "predecessor_overlay": {
-    "path": "contracts/mathcert_current_routes_euclid_gcd_overlay.json",
-    "digest_algorithm": "git_blob_sha1",
-    "digest": "8d4360ecc69617b7c0d5ddbe53df94be107c5a2f"
-  },
-  "current_authority": {
-    "repository": "grandchallenge/MATHCERT",
-    "commit_sha": "78b69e6a3461a83f4893d61c421b1570c08a9ba6",
-    "path": "governance/certification_routes.json",
-    "digest_algorithm": "git_blob_sha1",
-    "digest": "0487c3ebf702229741f16a544d68af25cf994e41"
-  },
+  "base_registry": {"path": "contracts/mathcert_current_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "a4002db2e8de67fe479a851c95a3906ed69587f9"},
+  "predecessor_overlay": {"path": "contracts/mathcert_current_routes_euclid_gcd_overlay.json", "digest_algorithm": "git_blob_sha1", "digest": "8d4360ecc69617b7c0d5ddbe53df94be107c5a2f"},
+  "current_authority": {"repository": "grandchallenge/MATHCERT", "commit_sha": "78b69e6a3461a83f4893d61c421b1570c08a9ba6", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "0487c3ebf702229741f16a544d68af25cf994e41"},
   "campaign": {
     "campaign_id": "EUCLID-DIOPHANTINE-E2E-002",
     "route_id": "MC-ROUTE-EUCLID-DIOPHANTINE-E2E-002",
     "route_registry_entry_present": false,
-    "manifest": {
-      "path": "campaign_manifests/EUCLID-DIOPHANTINE-E2E-002.json",
-      "digest_algorithm": "git_blob_sha1",
-      "digest": "f27814a96c682a6bbd6d2413db61d40b5fb7f7b7"
-    },
-    "handoff": {
-      "path": "cert_handoffs/EUCLID-DIOPHANTINE-E2E-002.json",
-      "digest_algorithm": "git_blob_sha1",
-      "digest": "ee7b4e85d9cafda90d0e77b60f1731516e11841c"
-    },
+    "manifest": {"path": "campaign_manifests/EUCLID-DIOPHANTINE-E2E-002.json", "digest_algorithm": "git_blob_sha1", "digest": "d4c3ced7eb3bbf4c3d865a847f9b701cf677cdf4"},
+    "handoff": {"path": "cert_handoffs/EUCLID-DIOPHANTINE-E2E-002.json", "digest_algorithm": "git_blob_sha1", "digest": "80a4bf5082ac9ed9459a1dbd7dbb77166e84764e"},
     "handoff_state": "ready",
     "route_state": "pending",
     "cert_output": null,
