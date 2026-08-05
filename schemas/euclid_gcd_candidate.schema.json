@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EUCLID-GCD-E2E-001 Solve candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "certificate_id", "campaign_id", "authority_state", "forge_input", "inputs", "result", "euclidean_trace", "bezout_witness", "solver", "claim_boundary"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "certificate_id": {"const": "MS-CANDIDATE-EUCLID-GCD-E2E-001"},
+    "campaign_id": {"const": "EUCLID-GCD-E2E-001"},
+    "authority_state": {"const": "candidate_only"},
+    "forge_input": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository", "commit_sha", "package", "provider_manifest"],
+      "properties": {
+        "repository": {"const": "grandchallenge/MATHFORGE"},
+        "commit_sha": {"const": "3622bac82a39cdb9e82ec463919d9e6927c1ec0e"},
+        "package": {"$ref": "#/$defs/artifact"},
+        "provider_manifest": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "inputs": {
+      "type": "object", "additionalProperties": false,
+      "required": ["a", "b"],
+      "properties": {"a": {"type": "integer", "minimum": 0}, "b": {"type": "integer", "minimum": 0}},
+      "not": {"properties": {"a": {"const": 0}, "b": {"const": 0}}, "required": ["a", "b"]}
+    },
+    "result": {"type": "object", "additionalProperties": false, "required": ["d"], "properties": {"d": {"type": "integer", "minimum": 1}}},
+    "euclidean_trace": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["dividend", "divisor", "quotient", "remainder"],
+        "properties": {
+          "dividend": {"type": "integer", "minimum": 0},
+          "divisor": {"type": "integer", "minimum": 1},
+          "quotient": {"type": "integer", "minimum": 0},
+          "remainder": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "bezout_witness": {"type": "object", "additionalProperties": false, "required": ["x", "y", "equation_value"], "properties": {"x": {"type": "integer"}, "y": {"type": "integer"}, "equation_value": {"type": "integer"}}},
+    "solver": {
+      "type": "object", "additionalProperties": false,
+      "required": ["algorithm", "implementation_path", "command", "arithmetic", "network_used", "randomness_used"],
+      "properties": {
+        "algorithm": {"const": "deterministic_extended_euclid"},
+        "implementation_path": {"const": "solve/euclid_gcd.py"},
+        "command": {"type": "string"},
+        "arithmetic": {"const": "unbounded_python_integers"},
+        "network_used": {"const": false},
+        "randomness_used": {"const": false}
+      }
+    },
+    "claim_boundary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["certificate_accepted", "theorem_certified", "novelty_claimed", "priority_claimed", "historical_verbatim_equivalence_claimed", "statement"],
+      "properties": {
+        "certificate_accepted": {"const": false},
+        "theorem_certified": {"const": false},
+        "novelty_claimed": {"const": false},
+        "priority_claimed": {"const": false},
+        "historical_verbatim_equivalence_claimed": {"const": false},
+        "statement": {"type": "string", "minLength": 50}
+      }
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "digest_algorithm", "digest"],
+      "properties": {
+        "path": {"type": "string"},
+        "digest_algorithm": {"const": "git_blob_sha1"},
+        "digest": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      }
+    }
+  }
+}

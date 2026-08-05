@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "EUCLID-GCD-E2E-001",
+  "work_package_id": "EUCLID-GCD-E2E-001-WP01",
+  "nodes": [
+    {"obligation_id": "EGO-001", "statement": "Verify exact protected Forge package and provider-manifest identities.", "owner": "MATHCERT", "status": "open", "depends_on": []},
+    {"obligation_id": "EGO-002", "statement": "Verify input concordance and exclusion of (0,0).", "owner": "MATHCERT", "status": "open", "depends_on": ["EGO-001"]},
+    {"obligation_id": "EGO-003", "statement": "Verify every Euclidean division equation, trace linkage, remainder bound, strict descent, and terminal zero.", "owner": "MATHCERT", "status": "open", "depends_on": ["EGO-002"]},
+    {"obligation_id": "EGO-004", "statement": "Verify positive normalization and that d is the terminal positive divisor.", "owner": "MATHCERT", "status": "open", "depends_on": ["EGO-003"]},
+    {"obligation_id": "EGO-005", "statement": "Verify integer Bezout equality x*a + y*b = d.", "owner": "MATHCERT", "status": "open", "depends_on": ["EGO-002"]},
+    {"obligation_id": "EGO-006", "statement": "Prove in Lean that every accepted certificate has d = Nat.gcd a b.", "owner": "MATHCERT", "status": "open", "depends_on": ["EGO-003", "EGO-004", "EGO-005"]},
+    {"obligation_id": "EGO-007", "statement": "Replay the concrete theorem Nat.gcd 252 105 = 21 and report declaration-level axioms.", "owner": "MATHCERT", "status": "open", "depends_on": ["EGO-006"]}
+  ],
+  "terminal_condition": "No Solve claim becomes certified until EGO-001 through EGO-007 receive a protected MATHCERT disposition.",
+  "claim_boundary": "This DAG routes proof obligations; it does not discharge them."
+}

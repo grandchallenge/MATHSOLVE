@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.2.0",
+  "handoff_id": "MC-HANDOFF-EUCLID-GCD-E2E-001",
+  "campaign_id": "EUCLID-GCD-E2E-001",
+  "solve_work_package_id": "EUCLID-GCD-E2E-001-WP01",
+  "source_commit": "92c551f4d1e3e5e7353b05cf04b7e868f4b661e9",
+  "cert_contract": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
+    "path": "governance/certification_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3",
+    "route_id": "MC-ROUTE-EUCLID-GCD-E2E-001"
+  },
+  "target_claims": [
+    {
+      "claim_id": "EUCLID-GCD-E2E-001-C001",
+      "statement": "The deterministic Solve producer reports d = 21 for inputs 252 and 105.",
+      "claim_type": "COMPUTED_EXACTLY_CANDIDATE",
+      "support_type": "DETERMINISTIC_INTEGER_REPLAY"
+    },
+    {
+      "claim_id": "EUCLID-GCD-E2E-001-C002",
+      "statement": "The candidate contains the exact three-step Euclidean division trace ending in zero.",
+      "claim_type": "COMPUTED_EXACTLY_CANDIDATE",
+      "support_type": "DETERMINISTIC_INTEGER_REPLAY"
+    },
+    {
+      "claim_id": "EUCLID-GCD-E2E-001-C003",
+      "statement": "The candidate reports x = -2 and y = 5 with x*252 + y*105 = 21.",
+      "claim_type": "COMPUTED_EXACTLY_CANDIDATE",
+      "support_type": "DETERMINISTIC_INTEGER_REPLAY"
+    }
+  ],
+  "claim_ledger": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "92c551f4d1e3e5e7353b05cf04b7e868f4b661e9",
+    "path": "campaign_ledgers/EUCLID-GCD-E2E-001/claim_ledger.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "d83be5315ccf863e9a010996a7f918aa4b58eb4c",
+    "role": "claim_ledger"
+  },
+  "proof_obligations": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "92c551f4d1e3e5e7353b05cf04b7e868f4b661e9",
+    "path": "campaign_ledgers/EUCLID-GCD-E2E-001/proof_obligation_dag.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "d88b9dc0e7fe2c58ca6a718a32bcbdeecbd9c44d",
+    "role": "proof_obligation_dag"
+  },
+  "checker_contract": {
+    "target": "Lean",
+    "inputs": [
+      "Protected Forge merge 3622bac82a39cdb9e82ec463919d9e6927c1ec0e and its exact package and provider-manifest Git blobs.",
+      "Candidate certificate certificates/EUCLID-GCD-E2E-001.json at Solve commit 92c551f4d1e3e5e7353b05cf04b7e868f4b661e9.",
+      "Claim ledger, proof-obligation DAG, malformed-route ledger, and resource ledger bound by Git blob identity."
+    ],
+    "acceptance": "Use an implementation independent from solve/euclid_gcd.py; verify provider identity, input concordance, every trace equation and bound, terminal zero, positive d, divisibility, the Bezout equality, accepted-certificate soundness, and Nat.gcd 252 105 = 21.",
+    "rejection": "Reject changed provider identities, inputs, quotient, remainder, linkage, descent, terminal divisor, coefficients, normalization, authority state, unsupported (0,0), or historical-verbatim attribution."
+  },
+  "requested_modalities": [
+    "EXACT_RATIONAL_CERTIFICATE",
+    "SEMANTIC_REPLAY",
+    "LEAN_FORMALIZATION"
+  ],
+  "claim_boundary": "The Solve package supplies deterministic candidate evidence only. MATHCERT must independently accept or reject the certificate and prove the admitted soundness theorem. No novelty, priority, first-formalization, or historical-verbatim-equivalence claim follows.",
+  "status": "ready",
+  "blockers": [],
+  "reopening_conditions": [
+    "Reopen if the protected Forge input, candidate certificate, claim ledger, proof obligations, checker contract, or MATHCERT disposition changes."
+  ]
+}

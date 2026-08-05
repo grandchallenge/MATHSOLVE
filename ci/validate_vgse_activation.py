@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the bounded VGSE Solve activation and current Cert-route overlay."""
+"""Validate bounded VGSE and Euclid successor overlays over historical Cert routes."""
 from __future__ import annotations
 
 import hashlib
@@ -15,10 +15,13 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE_REGISTRY_PATH = ROOT / "contracts" / "mathcert_current_routes.json"
 OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_vgse_overlay.json"
 OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_vgse_overlay.schema.json"
+EUCLID_OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_euclid_gcd_overlay.json"
+EUCLID_OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_euclid_gcd_overlay.schema.json"
 REFERENCE_REGISTRY_PATH = ROOT / "contracts" / "programme_reference_registry.json"
 MANIFEST_DIR = ROOT / "campaign_manifests"
 HANDOFF_DIR = ROOT / "cert_handoffs"
 VGSE_ID = "VGSE-001"
+EUCLID_ID = "EUCLID-GCD-E2E-001"
 INTAKE_STATES = {"pending", "ready", "submitted"}
 ADJUDICATED_STATES = {"certified", "qualified", "rejected", "proof_debt"}
 POSITIVE_STATES = {"certified", "qualified"}
@@ -73,12 +76,12 @@ def vgse_overlay_errors(
     errors.extend(_ref_errors(base_ref, f"{overlay_path}: base_registry"))
     base = load_json(BASE_REGISTRY_PATH)
     base_ids = set(base.get("campaigns", {}))
-    if VGSE_ID in base_ids:
-        errors.append(f"{overlay_path}: historical base registry may not be rewritten with VGSE")
+    if VGSE_ID in base_ids or EUCLID_ID in base_ids:
+        errors.append(f"{overlay_path}: historical base registry may not be rewritten with successor campaigns")
 
     reference_ids = set(load_json(REFERENCE_REGISTRY_PATH).get("campaigns", {}))
-    if reference_ids != base_ids | {VGSE_ID}:
-        errors.append(f"{overlay_path}: merged campaign coverage does not match Programme references")
+    if reference_ids != base_ids | {VGSE_ID, EUCLID_ID}:
+        errors.append(f"{overlay_path}: successor-overlay campaign coverage does not match Programme references")
 
     campaign = overlay.get("campaign", {})
     manifest_ref = campaign.get("manifest", {})
@@ -124,14 +127,86 @@ def vgse_overlay_errors(
     return errors
 
 
+def euclid_overlay_errors(
+    *,
+    overlay_path: Path = EUCLID_OVERLAY_PATH,
+    schema_path: Path = EUCLID_OVERLAY_SCHEMA_PATH,
+    manifest_dir: Path = MANIFEST_DIR,
+    handoff_dir: Path = HANDOFF_DIR,
+) -> list[str]:
+    overlay = load_json(overlay_path)
+    schema = load_json(schema_path)
+    errors = schema_errors(overlay, schema, str(overlay_path))
+
+    errors.extend(_ref_errors(overlay.get("base_registry", {}), f"{overlay_path}: base_registry"))
+    errors.extend(_ref_errors(overlay.get("predecessor_overlay", {}), f"{overlay_path}: predecessor_overlay"))
+
+    base_ids = set(load_json(BASE_REGISTRY_PATH).get("campaigns", {}))
+    predecessor = load_json(OVERLAY_PATH)
+    if predecessor.get("campaign", {}).get("campaign_id") != VGSE_ID:
+        errors.append(f"{overlay_path}: predecessor overlay is not the protected VGSE successor")
+    if EUCLID_ID in base_ids or VGSE_ID in base_ids:
+        errors.append(f"{overlay_path}: historical base registry contains successor campaign state")
+
+    reference_ids = set(load_json(REFERENCE_REGISTRY_PATH).get("campaigns", {}))
+    if reference_ids != base_ids | {VGSE_ID, EUCLID_ID}:
+        errors.append(f"{overlay_path}: merged successor coverage does not match Programme references")
+
+    campaign = overlay.get("campaign", {})
+    manifest_ref = campaign.get("manifest", {})
+    handoff_ref = campaign.get("handoff", {})
+    manifest_path = manifest_dir / f"{EUCLID_ID}.json"
+    handoff_path = handoff_dir / f"{EUCLID_ID}.json"
+    for ref, path, label in (
+        (manifest_ref, manifest_path, "manifest"),
+        (handoff_ref, handoff_path, "handoff"),
+    ):
+        if not path.is_file():
+            errors.append(f"{overlay_path}: {label} is missing")
+        elif git_blob_sha1(path) != ref.get("digest"):
+            errors.append(f"{overlay_path}: {label} identity drift")
+
+    if manifest_path.is_file():
+        manifest = load_json(manifest_path)
+        if manifest.get("campaign_id") != EUCLID_ID:
+            errors.append(f"{overlay_path}: manifest campaign identity drift")
+        if manifest.get("certification", {}).get("handoff_state") != "ready":
+            errors.append(f"{overlay_path}: immutable producer handoff state must remain ready")
+        if manifest.get("promotion", {}).get("eligible") is not False:
+            errors.append(f"{overlay_path}: unadjudicated Euclid manifest cannot be promotion eligible")
+
+    if handoff_path.is_file():
+        handoff = load_json(handoff_path)
+        if handoff.get("handoff_id") != "MC-HANDOFF-EUCLID-GCD-E2E-001":
+            errors.append(f"{overlay_path}: handoff identity drift")
+        if handoff.get("status") != "ready" or handoff.get("blockers") != []:
+            errors.append(f"{overlay_path}: producer handoff must remain ready with no producer blockers")
+        if handoff.get("cert_contract", {}).get("route_id") != "MC-ROUTE-EUCLID-GCD-E2E-001":
+            errors.append(f"{overlay_path}: proposed route identity drift")
+
+    if campaign.get("route_registry_entry_present") is not False:
+        errors.append(f"{overlay_path}: absent MATHCERT route cannot be represented as registered")
+    if campaign.get("handoff_state") != "ready" or campaign.get("route_state") != "pending":
+        errors.append(f"{overlay_path}: ready producer handoff must not inflate pending MATHCERT route state")
+    for field in ("mathematical_target_proved", "may_adjudicate", "may_issue_certificate_output"):
+        if campaign.get(field) is not False:
+            errors.append(f"{overlay_path}: prohibited authority inflation in {field}")
+    if campaign.get("cert_output") is not None or campaign.get("qualification_scope") is not None:
+        errors.append(f"{overlay_path}: pending route cannot carry output or qualification scope")
+    if not campaign.get("current_promotion_blockers"):
+        errors.append(f"{overlay_path}: pending route requires promotion blockers")
+    return errors
+
+
 def merged_current_cert_route_errors(
     registry_path: Path = BASE_REGISTRY_PATH,
     schema_path: Path = base_routes.SCHEMA_PATH,
     manifest_dir: Path = MANIFEST_DIR,
     overlay_path: Path = OVERLAY_PATH,
+    euclid_overlay_path: Path = EUCLID_OVERLAY_PATH,
 ) -> list[str]:
     original = base_routes.expected_campaigns
-    base_routes.expected_campaigns = lambda: original() - {VGSE_ID}
+    base_routes.expected_campaigns = lambda: original() - {VGSE_ID, EUCLID_ID}
     try:
         errors = base_routes.current_cert_route_errors(
             registry_path=registry_path,
@@ -141,12 +216,15 @@ def merged_current_cert_route_errors(
     finally:
         base_routes.expected_campaigns = original
     errors.extend(vgse_overlay_errors(overlay_path=overlay_path, manifest_dir=manifest_dir))
+    errors.extend(euclid_overlay_errors(overlay_path=euclid_overlay_path, manifest_dir=manifest_dir))
     return errors
 
 
 def merged_current_route_state(campaign_id: str) -> str:
     if campaign_id == VGSE_ID:
         return str(load_json(OVERLAY_PATH)["campaign"]["route_state"])
+    if campaign_id == EUCLID_ID:
+        return str(load_json(EUCLID_OVERLAY_PATH)["campaign"]["route_state"])
     return base_routes.current_route_state(campaign_id)
 
 
@@ -179,4 +257,4 @@ if __name__ == "__main__":
     failures = merged_current_cert_route_errors()
     if failures:
         raise SystemExit("\n".join(failures))
-    print("validated historical Cert routes plus bounded VGSE pending-route overlay")
+    print("validated historical Cert routes plus bounded VGSE and Euclid successor overlays")

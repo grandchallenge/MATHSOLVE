@@ -1,0 +1,46 @@
+{
+  "claims": [
+    {
+      "claim_id": "EUCLID-GCD-E2E-001-C001",
+      "short_name": "candidate gcd result",
+      "claim_text": "The deterministic solver reports d = 21 for inputs a = 252 and b = 105.",
+      "claim_class": "COMPUTED_EXACTLY",
+      "support_type": "EXACT_RATIONAL_COMPUTATION",
+      "status": "CHECKED",
+      "certainty": "exact candidate computation; not independently certified",
+      "source_or_artifact": ["certificates/EUCLID-GCD-E2E-001.json"],
+      "assumptions": ["Inputs are natural numbers and not both zero."],
+      "promotion_condition": "Independent MATHCERT checker acceptance and Lean soundness replay are required.",
+      "related_files": ["solve/euclid_gcd.py", "ci/validate_euclid_gcd_solve.py"],
+      "knowledge_graph_refs": ["EUCLID-GCD-E2E-001", "EUCLID-GCD-E2E-001-CANDIDATE"]
+    },
+    {
+      "claim_id": "EUCLID-GCD-E2E-001-C002",
+      "short_name": "candidate Euclidean trace",
+      "claim_text": "The committed candidate contains the exact divisions 252 = 2*105 + 42, 105 = 2*42 + 21, and 42 = 2*21 + 0.",
+      "claim_class": "COMPUTED_EXACTLY",
+      "support_type": "EXACT_RATIONAL_COMPUTATION",
+      "status": "CHECKED",
+      "certainty": "exact candidate computation; not independently certified",
+      "source_or_artifact": ["certificates/EUCLID-GCD-E2E-001.json"],
+      "assumptions": [],
+      "promotion_condition": "MATHCERT must independently verify every equation, linkage, bound, and terminal condition.",
+      "related_files": ["ci/test_euclid_gcd_solve.py"],
+      "knowledge_graph_refs": ["EUCLID-GCD-E2E-001", "EUCLID-GCD-E2E-001-TRACE"]
+    },
+    {
+      "claim_id": "EUCLID-GCD-E2E-001-C003",
+      "short_name": "candidate Bezout witness",
+      "claim_text": "The committed candidate reports x = -2 and y = 5, with x*252 + y*105 = 21.",
+      "claim_class": "COMPUTED_EXACTLY",
+      "support_type": "EXACT_RATIONAL_COMPUTATION",
+      "status": "CHECKED",
+      "certainty": "exact candidate computation; not independently certified",
+      "source_or_artifact": ["certificates/EUCLID-GCD-E2E-001.json"],
+      "assumptions": [],
+      "promotion_condition": "MATHCERT must independently check the integer equation and connect it to gcd soundness.",
+      "related_files": ["ci/validate_euclid_gcd_solve.py"],
+      "knowledge_graph_refs": ["EUCLID-GCD-E2E-001", "EUCLID-GCD-E2E-001-BEZOUT"]
+    }
+  ]
+}

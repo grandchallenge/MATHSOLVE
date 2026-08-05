@@ -109,6 +109,15 @@
         "VGSE-MAP-ALGEBRAIC-GEOMETRY",
         "VGSE-MAP-DISCRETE-COMPLEX-ANALYSIS"
       ]
+    },
+    "EUCLID-GCD-E2E-001": {
+      "knowledge_graph_refs": [
+        "EUCLID-GCD-E2E-001",
+        "EUCLID-GCD-E2E-001-CANDIDATE",
+        "EUCLID-GCD-E2E-001-TRACE",
+        "EUCLID-GCD-E2E-001-BEZOUT"
+      ],
+      "classification_mapping_refs": []
     }
   }
 }

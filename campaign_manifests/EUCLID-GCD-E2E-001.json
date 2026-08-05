@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.2.0",
+  "manifest_id": "MS-MANIFEST-EUCLID-GCD-E2E-001",
+  "campaign_id": "EUCLID-GCD-E2E-001",
+  "coverage_mode": "native",
+  "programme": {
+    "repository": "grandchallenge/MATH-PROGRAMME",
+    "issue": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/237",
+    "commit_sha": "2f9d8e718814de957b6c999ae0579c5303a7c285"
+  },
+  "forge_inputs": [
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "3622bac82a39cdb9e82ec463919d9e6927c1ec0e",
+      "path": "sources/EUCLID-GCD-E2E-001/forge_package.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "079b68fb5651e0d2eee0a7b2002454d34673d84c",
+      "role": "source"
+    },
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "3622bac82a39cdb9e82ec463919d9e6927c1ec0e",
+      "path": "provider_manifests/EUCLID-GCD-E2E-001.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "a103b2c85dbd67973da43656fed5af567c5b7074",
+      "role": "source"
+    }
+  ],
+  "solve": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "provider_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/101",
+    "provider_commit": "ee13f57f7c1f07457b9c061c3e51e8d02100e1b4",
+    "migration_debt": []
+  },
+  "work_packages": [
+    {
+      "work_package_id": "EUCLID-GCD-E2E-001-WP01",
+      "primary_type": "EXACT_COMPUTATIONAL_SCREEN",
+      "status": "complete",
+      "source_repository": "grandchallenge/MATHSOLVE",
+      "source_commit": "92c551f4d1e3e5e7353b05cf04b7e868f4b661e9",
+      "artifacts": [
+        {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "92c551f4d1e3e5e7353b05cf04b7e868f4b661e9",
+          "path": "certificates/EUCLID-GCD-E2E-001.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "af54ae9b9a047a36767b2599ebc649fb6fdaaa52",
+          "role": "solve_artifact"
+        },
+        {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "92c551f4d1e3e5e7353b05cf04b7e868f4b661e9",
+          "path": "solve/euclid_gcd.py",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "012a90e0cd84e4ad7f0fd3f1c9534a6673dc0f24",
+          "role": "solve_artifact"
+        }
+      ],
+      "ledgers": {
+        "claim": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "92c551f4d1e3e5e7353b05cf04b7e868f4b661e9",
+          "path": "campaign_ledgers/EUCLID-GCD-E2E-001/claim_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "d83be5315ccf863e9a010996a7f918aa4b58eb4c",
+          "role": "claim_ledger"
+        },
+        "proof_obligation": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "92c551f4d1e3e5e7353b05cf04b7e868f4b661e9",
+          "path": "campaign_ledgers/EUCLID-GCD-E2E-001/proof_obligation_dag.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "d88b9dc0e7fe2c58ca6a718a32bcbdeecbd9c44d",
+          "role": "proof_obligation_dag"
+        },
+        "failed_route": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "92c551f4d1e3e5e7353b05cf04b7e868f4b661e9",
+          "path": "campaign_ledgers/EUCLID-GCD-E2E-001/failed_route_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "b0d4c73323e1c13c408d84c810d49e7e86803cce",
+          "role": "failed_route_ledger"
+        },
+        "resource": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "92c551f4d1e3e5e7353b05cf04b7e868f4b661e9",
+          "path": "campaign_ledgers/EUCLID-GCD-E2E-001/resource_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "cc773a48f444571a1f4080f59d9d45687d9a2285",
+          "role": "resource_ledger"
+        },
+        "certification": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "ee13f57f7c1f07457b9c061c3e51e8d02100e1b4",
+          "path": "cert_handoffs/EUCLID-GCD-E2E-001.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "01a20512c428ce4384959064ab3343a1cbb0c7d2",
+          "role": "certificate_handoff"
+        }
+      },
+      "children": []
+    }
+  ],
+  "certification": {
+    "repository": "grandchallenge/MATHCERT",
+    "contract": {
+      "repository": "grandchallenge/MATHCERT",
+      "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
+      "path": "governance/certification_routes.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3"
+    },
+    "handoff_state": "ready",
+    "handoff_packets": [
+      {
+        "handoff_id": "MC-HANDOFF-EUCLID-GCD-E2E-001",
+        "status": "ready",
+        "target_claim_ids": [
+          "EUCLID-GCD-E2E-001-C001",
+          "EUCLID-GCD-E2E-001-C002",
+          "EUCLID-GCD-E2E-001-C003"
+        ],
+        "artifact": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "ee13f57f7c1f07457b9c061c3e51e8d02100e1b4",
+          "path": "cert_handoffs/EUCLID-GCD-E2E-001.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "01a20512c428ce4384959064ab3343a1cbb0c7d2",
+          "role": "certificate_handoff"
+        }
+      }
+    ]
+  },
+  "promotion": {
+    "eligible": false,
+    "blockers": [
+      "MATHCERT #87 has not independently checked the candidate certificate.",
+      "The accepted-certificate soundness theorem and concrete Lean replay remain pending."
+    ]
+  },
+  "disposal": {
+    "status": "active",
+    "supersedes": [],
+    "reopening_conditions": [
+      "Reopen when the Forge input, deterministic candidate, handoff packet, or MATHCERT disposition changes."
+    ]
+  }
+}

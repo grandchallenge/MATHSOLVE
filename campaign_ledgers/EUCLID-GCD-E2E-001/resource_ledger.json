@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "EUCLID-GCD-E2E-001",
+  "contract": {
+    "language": "Python 3.12",
+    "arithmetic": "unbounded integers",
+    "network": "forbidden",
+    "randomness": "forbidden",
+    "maximum_fixture_trace_steps": 3
+  },
+  "observed": {"inputs": [252, 105], "trace_steps": 3, "candidate_d": 21, "candidate_x": -2, "candidate_y": 5},
+  "replay_command": "python solve/euclid_gcd.py --a 252 --b 105 --output /tmp/euclid-gcd.json",
+  "claim_boundary": "Resource and determinism evidence does not certify mathematical correctness."
+}
