@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "EUCLID-DIOPHANTINE-E2E-002",
+  "contract": {
+    "language": "Python 3.12",
+    "arithmetic": "unbounded integers",
+    "coefficient_family": "(abs(a),abs(b)) = (252,105)",
+    "network": "forbidden",
+    "randomness": "forbidden",
+    "timeout_as_unsat": "forbidden"
+  },
+  "observed": {
+    "canonical_cases": 2,
+    "positive_inputs": [252, 105, 84],
+    "positive_solution": [-8, 20],
+    "negative_inputs": [252, 105, 20],
+    "negative_obstruction": [21, 0, 20]
+  },
+  "replay_command": "python solve/euclid_diophantine.py --output /tmp/euclid-diophantine.json",
+  "claim_boundary": "Resource and determinism evidence does not certify solvability, unsolvability, or the universal theorem."
+}
