@@ -1,0 +1,46 @@
+{
+  "claims": [
+    {
+      "claim_id": "EUCLID-DIOPHANTINE-E2E-002-C001",
+      "short_name": "constructive scaled witness",
+      "claim_text": "For 252x + 105y = 84, scaling the protected Bezout coefficients by four yields x = -8 and y = 20.",
+      "claim_class": "COMPUTED_EXACTLY",
+      "support_type": "EXACT_RATIONAL_COMPUTATION",
+      "status": "CHECKED",
+      "certainty": "exact candidate computation; not independently certified",
+      "source_or_artifact": ["certificates/EUCLID-DIOPHANTINE-E2E-002.json"],
+      "assumptions": ["Protected Stage 1 certifies gcd(252,105)=21 and -2*252 + 5*105 = 21."],
+      "promotion_condition": "MATHCERT must independently verify protected identities, scaling, and the integer equation.",
+      "related_files": ["solve/euclid_diophantine.py", "ci/validate_euclid_diophantine_solve.py"],
+      "knowledge_graph_refs": ["EUCLID-DIOPHANTINE-E2E-002", "EUCLID-DIOPHANTINE-E2E-002-CONSTRUCTIVE"]
+    },
+    {
+      "claim_id": "EUCLID-DIOPHANTINE-E2E-002-C002",
+      "short_name": "nonzero remainder obstruction",
+      "claim_text": "For 252x + 105y = 20, the exact division 20 = 0*21 + 20 with 0 < 20 < 21 is the candidate divisibility obstruction.",
+      "claim_class": "COMPUTED_EXACTLY",
+      "support_type": "EXACT_RATIONAL_COMPUTATION",
+      "status": "CHECKED",
+      "certainty": "exact candidate obstruction; no independent unsatisfiability disposition",
+      "source_or_artifact": ["certificates/EUCLID-DIOPHANTINE-E2E-002.json"],
+      "assumptions": ["Every integer combination of 252 and 105 is divisible by the protected gcd 21."],
+      "promotion_condition": "MATHCERT must independently prove the divisibility necessity implication and verify the obstruction.",
+      "related_files": ["solve/euclid_diophantine.py", "ci/test_euclid_diophantine_solve.py"],
+      "knowledge_graph_refs": ["EUCLID-DIOPHANTINE-E2E-002", "EUCLID-DIOPHANTINE-E2E-002-OBSTRUCTION"]
+    },
+    {
+      "claim_id": "EUCLID-DIOPHANTINE-E2E-002-C003",
+      "short_name": "bounded deterministic producer",
+      "claim_text": "The producer deterministically scales the protected Bezout witness when 21 divides c and otherwise emits the exact nonzero remainder of |c| modulo 21.",
+      "claim_class": "COMPUTED_EXACTLY",
+      "support_type": "SEMANTIC_REPLAY",
+      "status": "CHECKED",
+      "certainty": "bounded producer behavior for the protected coefficient family only",
+      "source_or_artifact": ["solve/euclid_diophantine.py", "certificates/EUCLID-DIOPHANTINE-E2E-002.json"],
+      "assumptions": ["(abs(a),abs(b)) = (252,105)."],
+      "promotion_condition": "MATHCERT must independently check both evidence forms and the classical equivalence theorem.",
+      "related_files": ["ci/validate_euclid_diophantine_solve.py", "ci/test_euclid_diophantine_solve.py"],
+      "knowledge_graph_refs": ["EUCLID-DIOPHANTINE-E2E-002", "EUCLID-DIOPHANTINE-E2E-002-PRODUCER"]
+    }
+  ]
+}
