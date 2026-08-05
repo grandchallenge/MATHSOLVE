@@ -2,113 +2,15 @@
   "schema_version": "1.0.0",
   "registry_id": "MATHSOLVE-PROGRAMME-REFERENCES",
   "campaigns": {
-    "UC-001": {
-      "knowledge_graph_refs": [
-        "UC-001",
-        "UC-DOMAIN",
-        "UC-CONJECTURE-FRANKL",
-        "UC-PROBLEM-SET-FAMILY",
-        "UC-PROBLEM-LATTICE",
-        "UC-DEFINITION-UNION-CLOSED-FAMILY",
-        "UC-OBJECT-FINITE-LATTICE",
-        "UC-METHOD-ENTROPY",
-        "UC-METHOD-AVERAGING",
-        "UC-METHOD-EXACT-ENUMERATION",
-        "UC-WP01",
-        "UC-WP02",
-        "UC-WP03",
-        "UC-WP04",
-        "UC-WP05",
-        "UC-CLAIM-WP05-L001",
-        "UC-CLAIM-WP05-COROLLARY-2-4",
-        "UC-CLAIM-WP05-LEMMA-2-5",
-        "UC-CLAIM-WP05-THEOREM-2-6",
-        "UC-CLAIM-WP05-THEOREM-1-4",
-        "UC-CLAIM-WP05-THEOREM-2-9",
-        "UC-CLAIM-WP05-COROLLARY-2-10",
-        "UC-CLAIM-WP05-COROLLARY-2-11",
-        "UC-CLAIM-WP05-THEOREM-2-12",
-        "UC-CLAIM-WP05-THEOREM-2-13",
-        "UC-CLAIM-WP05-COROLLARY-2-14",
-        "UC-ARTIFACT-LEAN-FRANKL-STATEMENT",
-        "UC-ARTIFACT-N4-CERTIFICATE",
-        "UC-ARTIFACT-LATTICE-MINIMUM-LEAN",
-        "UC-ARTIFACT-LATTICE-DELETION-LEAN",
-        "UC-ARTIFACT-LATTICE-INTERVAL-LEAN"
-      ],
-      "classification_mapping_refs": [
-        "UC-MAP-MSC-05D05",
-        "UC-MAP-MSC-06A12",
-        "UC-MAP-ARXIV-MATH-CO"
-      ]
-    },
-    "NS-CI-001": {
-      "knowledge_graph_refs": [
-        "NS-CI-001",
-        "NS-CI-CAMPAIGN"
-      ],
-      "classification_mapping_refs": []
-    },
-    "HC-001": {
-      "knowledge_graph_refs": [
-        "HC-001",
-        "HC-CAMPAIGN"
-      ],
-      "classification_mapping_refs": []
-    },
-    "BSD-001": {
-      "knowledge_graph_refs": [
-        "BSD-001",
-        "BSD-CAMPAIGN"
-      ],
-      "classification_mapping_refs": []
-    },
-    "PNP-001": {
-      "knowledge_graph_refs": [
-        "PNP-001",
-        "PNP-CAMPAIGN"
-      ],
-      "classification_mapping_refs": []
-    },
-    "RH-001": {
-      "knowledge_graph_refs": [
-        "RH-001",
-        "RH-CAMPAIGN"
-      ],
-      "classification_mapping_refs": []
-    },
-    "YM-001": {
-      "knowledge_graph_refs": [
-        "YM-001",
-        "YM-CAMPAIGN"
-      ],
-      "classification_mapping_refs": []
-    },
-    "OZ-001": {
-      "knowledge_graph_refs": [
-        "OZ-001",
-        "OZ-CAMPAIGN"
-      ],
-      "classification_mapping_refs": []
-    },
-    "VGSE-001": {
-      "knowledge_graph_refs": [
-        "VGSE-001",
-        "VGSE-WP00",
-        "VGSE-C00",
-        "VGSE-C01",
-        "VGSE-C04",
-        "VGSE-C05",
-        "VGSE-C06",
-        "VGSE-D02",
-        "VGSE-D04",
-        "VGSE-D05"
-      ],
-      "classification_mapping_refs": [
-        "VGSE-MAP-ARXIV-2410.09574V2",
-        "VGSE-MAP-ALGEBRAIC-GEOMETRY",
-        "VGSE-MAP-DISCRETE-COMPLEX-ANALYSIS"
-      ]
-    }
+    "UC-001": {"knowledge_graph_refs": ["UC-001", "UC-DOMAIN", "UC-CONJECTURE-FRANKL", "UC-PROBLEM-SET-FAMILY", "UC-PROBLEM-LATTICE", "UC-DEFINITION-UNION-CLOSED-FAMILY", "UC-OBJECT-FINITE-LATTICE", "UC-METHOD-ENTROPY", "UC-METHOD-AVERAGING", "UC-METHOD-EXACT-ENUMERATION", "UC-WP01", "UC-WP02", "UC-WP03", "UC-WP04", "UC-WP05", "UC-CLAIM-WP05-L001", "UC-CLAIM-WP05-COROLLARY-2-4", "UC-CLAIM-WP05-LEMMA-2-5", "UC-CLAIM-WP05-THEOREM-2-6", "UC-CLAIM-WP05-THEOREM-1-4", "UC-CLAIM-WP05-THEOREM-2-9", "UC-CLAIM-WP05-COROLLARY-2-10", "UC-CLAIM-WP05-COROLLARY-2-11", "UC-CLAIM-WP05-THEOREM-2-12", "UC-CLAIM-WP05-THEOREM-2-13", "UC-CLAIM-WP05-COROLLARY-2-14", "UC-ARTIFACT-LEAN-FRANKL-STATEMENT", "UC-ARTIFACT-N4-CERTIFICATE", "UC-ARTIFACT-LATTICE-MINIMUM-LEAN", "UC-ARTIFACT-LATTICE-DELETION-LEAN", "UC-ARTIFACT-LATTICE-INTERVAL-LEAN"], "classification_mapping_refs": ["UC-MAP-MSC-05D05", "UC-MAP-MSC-06A12", "UC-MAP-ARXIV-MATH-CO"]},
+    "NS-CI-001": {"knowledge_graph_refs": ["NS-CI-001", "NS-CI-CAMPAIGN"], "classification_mapping_refs": []},
+    "HC-001": {"knowledge_graph_refs": ["HC-001", "HC-CAMPAIGN"], "classification_mapping_refs": []},
+    "BSD-001": {"knowledge_graph_refs": ["BSD-001", "BSD-CAMPAIGN"], "classification_mapping_refs": []},
+    "PNP-001": {"knowledge_graph_refs": ["PNP-001", "PNP-CAMPAIGN"], "classification_mapping_refs": []},
+    "RH-001": {"knowledge_graph_refs": ["RH-001", "RH-CAMPAIGN"], "classification_mapping_refs": []},
+    "YM-001": {"knowledge_graph_refs": ["YM-001", "YM-CAMPAIGN"], "classification_mapping_refs": []},
+    "OZ-001": {"knowledge_graph_refs": ["OZ-001", "OZ-CAMPAIGN"], "classification_mapping_refs": []},
+    "VGSE-001": {"knowledge_graph_refs": ["VGSE-001", "VGSE-WP00", "VGSE-C00", "VGSE-C01", "VGSE-C04", "VGSE-C05", "VGSE-C06", "VGSE-D02", "VGSE-D04", "VGSE-D05"], "classification_mapping_refs": ["VGSE-MAP-ARXIV-2410.09574V2", "VGSE-MAP-ALGEBRAIC-GEOMETRY", "VGSE-MAP-DISCRETE-COMPLEX-ANALYSIS"]},
+    "EUCLID-GCD-E2E-001": {"knowledge_graph_refs": ["EUCLID-GCD-E2E-001", "EUCLID-GCD-E2E-001-CANDIDATE", "EUCLID-GCD-E2E-001-TRACE", "EUCLID-GCD-E2E-001-BEZOUT"], "classification_mapping_refs": []}
   }
 }

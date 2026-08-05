@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "EUCLID-GCD-E2E-001",
+  "entries": [
+    {"route_id": "EGR-001", "mutation": "changed quotient or remainder", "expected": "reject"},
+    {"route_id": "EGR-002", "mutation": "non-decreasing remainder", "expected": "reject"},
+    {"route_id": "EGR-003", "mutation": "truncated trace", "expected": "reject"},
+    {"route_id": "EGR-004", "mutation": "wrong terminal divisor", "expected": "reject"},
+    {"route_id": "EGR-005", "mutation": "changed Bezout coefficient", "expected": "reject"},
+    {"route_id": "EGR-006", "mutation": "input substitution", "expected": "reject"},
+    {"route_id": "EGR-007", "mutation": "unsupported (0,0) widening", "expected": "reject"},
+    {"route_id": "EGR-008", "mutation": "non-positive normalization", "expected": "reject"},
+    {"route_id": "EGR-009", "mutation": "authority inflation", "expected": "reject"},
+    {"route_id": "EGR-010", "mutation": "unsupported historical attribution", "expected": "reject"}
+  ],
+  "status": "retained_for_mathcert_adversarial_replay"
+}

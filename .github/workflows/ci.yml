@@ -35,6 +35,12 @@ jobs:
           python -m json.tool schemas/grobner_tactic_invocation.schema.json >/dev/null
           python -m json.tool schemas/grobner_tactic_registry.schema.json >/dev/null
           python -m json.tool governance/grobner_tactic_registry.json >/dev/null
+      - name: Validate EUCLID-GCD-E2E-001 deterministic candidate
+        run: |
+          python ci/validate_euclid_gcd_solve.py
+          python -m unittest ci/test_euclid_gcd_solve.py -v
+          python solve/euclid_gcd.py --a 252 --b 105 --output /tmp/euclid-gcd.json
+          cmp /tmp/euclid-gcd.json certificates/EUCLID-GCD-E2E-001.json
       - name: Validate recursive campaign manifests and Cert boundaries
         run: |
           python ci/validate_campaign_manifests.py
