@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "registry_id": "MS-MATHCERT-CURRENT-001",
-  "verified_at": "2026-08-05",
+  "verified_at": "2026-08-02",
   "authority": {
     "repository": "grandchallenge/MATHCERT",
     "commit_sha": "64e042ddb1147338ad7868a2847715fe7c1c079d",
@@ -13,107 +13,212 @@
     "producer_handoff_status_is_immutable": true,
     "route_state_is_current_adjudication": true,
     "judgment_gate_uses": "route_state",
-    "promotion_requires": ["positive_route_state", "manifest_promotion_eligible"]
+    "promotion_requires": [
+      "positive_route_state",
+      "manifest_promotion_eligible"
+    ]
   },
   "campaigns": {
     "UC-001": {
       "route_id": "MC-ROUTE-UC-001",
-      "manifest": {"path": "campaign_manifests/UC-001.json", "digest_algorithm": "git_blob_sha1", "digest": "4faf3e9e19e6c1a48461a8ad70cfb9c110daa101"},
-      "handoff": {"path": "cert_handoffs/UC-001.json", "digest_algorithm": "git_blob_sha1", "digest": "8369bc21e45be6af71d2a0cdb0c5ab3cb5313bfb"},
+      "manifest": {
+        "path": "campaign_manifests/UC-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "4faf3e9e19e6c1a48461a8ad70cfb9c110daa101"
+      },
+      "handoff": {
+        "path": "cert_handoffs/UC-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "8369bc21e45be6af71d2a0cdb0c5ab3cb5313bfb"
+      },
       "handoff_state": "ready",
       "route_state": "qualified",
-      "cert_output": {"repository": "grandchallenge/MATHCERT", "commit_sha": "214c4f4d7962883bb10172db84d5162dde2e5c4e", "path": "certificates/union_closed/MC-UC-WP04-QUAL-001.json", "digest_algorithm": "git_blob_sha1", "digest": "265c185d6b2b2970dc675729efa3fc4860f29204"},
+      "cert_output": {
+        "repository": "grandchallenge/MATHCERT",
+        "commit_sha": "214c4f4d7962883bb10172db84d5162dde2e5c4e",
+        "path": "certificates/union_closed/MC-UC-WP04-QUAL-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "265c185d6b2b2970dc675729efa3fc4860f29204"
+      },
       "qualification_scope": "qualified_restricted_claims_only",
       "mathematical_target_proved": false,
-      "current_promotion_blockers": ["UC-FRANKL remains an open mathematical problem.", "Proof obligation UC-P04 remains open.", "The finite qualification stops at universe size n <= 4.", "The campaign manifest remains ineligible for claim promotion."]
+      "current_promotion_blockers": [
+        "UC-FRANKL remains an open mathematical problem.",
+        "Proof obligation UC-P04 remains open.",
+        "The finite qualification stops at universe size n <= 4.",
+        "The campaign manifest remains ineligible for claim promotion."
+      ]
     },
     "NS-CI-001": {
       "route_id": "MC-ROUTE-NS-CI-001",
-      "manifest": {"path": "campaign_manifests/NS-CI-001.json", "digest_algorithm": "git_blob_sha1", "digest": "fcdd10f96b19c218ba700deb452b7da7f6b9b975"},
-      "handoff": {"path": "cert_handoffs/NS-CI-001.json", "digest_algorithm": "git_blob_sha1", "digest": "40cad99646829fe40edf9c616074514407e49dee"},
+      "manifest": {
+        "path": "campaign_manifests/NS-CI-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "fcdd10f96b19c218ba700deb452b7da7f6b9b975"
+      },
+      "handoff": {
+        "path": "cert_handoffs/NS-CI-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "40cad99646829fe40edf9c616074514407e49dee"
+      },
       "handoff_state": "ready",
       "route_state": "qualified",
-      "cert_output": {"repository": "grandchallenge/MATHCERT", "commit_sha": "b1aa08001eb8537be8e204c3866aefd5f898252e", "path": "certificates/formal_sources/MC-FC-WP00-NS-CI-001.json", "digest_algorithm": "git_blob_sha1", "digest": "6047ad774957974a6c2aa86bae72b51841e774a4"},
+      "cert_output": {
+        "repository": "grandchallenge/MATHCERT",
+        "commit_sha": "b1aa08001eb8537be8e204c3866aefd5f898252e",
+        "path": "certificates/formal_sources/MC-FC-WP00-NS-CI-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "6047ad774957974a6c2aa86bae72b51841e774a4"
+      },
       "qualification_scope": "qualified_interface_only",
       "mathematical_target_proved": false,
-      "current_promotion_blockers": ["Universal critical integrability remains unproved.", "NS-A2 and the one-way continuation bridge remain unproved.", "Imported analytic predicates remain explicit axioms."]
+      "current_promotion_blockers": [
+        "Universal critical integrability remains unproved.",
+        "NS-A2 and the one-way continuation bridge remain unproved.",
+        "Imported analytic predicates remain explicit axioms."
+      ]
     },
     "HC-001": {
       "route_id": "MC-ROUTE-HC-001",
-      "manifest": {"path": "campaign_manifests/HC-001.json", "digest_algorithm": "git_blob_sha1", "digest": "48e3a0c22299147fe48cb4288cda813d7cffdcb4"},
-      "handoff": {"path": "cert_handoffs/HC-001.json", "digest_algorithm": "git_blob_sha1", "digest": "0c154af2e577e4367f9f5d0aeac5e15f9420172c"},
+      "manifest": {
+        "path": "campaign_manifests/HC-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "48e3a0c22299147fe48cb4288cda813d7cffdcb4"
+      },
+      "handoff": {
+        "path": "cert_handoffs/HC-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "0c154af2e577e4367f9f5d0aeac5e15f9420172c"
+      },
       "handoff_state": "ready",
       "route_state": "ready",
       "cert_output": null,
       "qualification_scope": null,
       "mathematical_target_proved": false,
-      "current_promotion_blockers": ["The full conjecture remains open.", "No restricted target has been selected.", "The ready packet has no MATHCERT adjudication."]
+      "current_promotion_blockers": [
+        "The full conjecture remains open.",
+        "No restricted target has been selected.",
+        "The ready packet has no MATHCERT adjudication."
+      ]
     },
     "BSD-001": {
       "route_id": "MC-ROUTE-BSD-001",
-      "manifest": {"path": "campaign_manifests/BSD-001.json", "digest_algorithm": "git_blob_sha1", "digest": "3fb3b07400915d90047a06a353537cf2e1593b9e"},
-      "handoff": {"path": "cert_handoffs/BSD-001.json", "digest_algorithm": "git_blob_sha1", "digest": "20f8dbf016ab179cbf910d0510ad26b2bd9a24cb"},
+      "manifest": {
+        "path": "campaign_manifests/BSD-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "3fb3b07400915d90047a06a353537cf2e1593b9e"
+      },
+      "handoff": {
+        "path": "cert_handoffs/BSD-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "20f8dbf016ab179cbf910d0510ad26b2bd9a24cb"
+      },
       "handoff_state": "pending",
       "route_state": "pending",
       "cert_output": null,
       "qualification_scope": null,
       "mathematical_target_proved": false,
-      "current_promotion_blockers": ["Future Solve-owned work may not remain Programme-embedded.", "BSD-R2-A1 is unproved and the packet is pending."]
+      "current_promotion_blockers": [
+        "Future Solve-owned work may not remain Programme-embedded.",
+        "BSD-R2-A1 is unproved and the packet is pending."
+      ]
     },
     "PNP-001": {
       "route_id": "MC-ROUTE-PNP-001",
-      "manifest": {"path": "campaign_manifests/PNP-001.json", "digest_algorithm": "git_blob_sha1", "digest": "6ecdfa0714828518878ccaf2cdc65756a5955186"},
-      "handoff": {"path": "cert_handoffs/PNP-001.json", "digest_algorithm": "git_blob_sha1", "digest": "c9d419c43293d533de8858099d26672f1b8d9dbe"},
+      "manifest": {
+        "path": "campaign_manifests/PNP-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "6ecdfa0714828518878ccaf2cdc65756a5955186"
+      },
+      "handoff": {
+        "path": "cert_handoffs/PNP-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "c9d419c43293d533de8858099d26672f1b8d9dbe"
+      },
       "handoff_state": "pending",
       "route_state": "pending",
       "cert_output": null,
       "qualification_scope": null,
       "mathematical_target_proved": false,
-      "current_promotion_blockers": ["Definition-level P/NP concordance remains open.", "Future Solve-owned work may not remain Programme-embedded.", "No terminal claim packet is ready."]
+      "current_promotion_blockers": [
+        "Definition-level P/NP concordance remains open.",
+        "Future Solve-owned work may not remain Programme-embedded.",
+        "No terminal claim packet is ready."
+      ]
     },
     "RH-001": {
       "route_id": "MC-ROUTE-RH-001",
-      "manifest": {"path": "campaign_manifests/RH-001.json", "digest_algorithm": "git_blob_sha1", "digest": "4ce2c5bcdc7bc1d0d63f7b2244898c8a651d5f64"},
-      "handoff": {"path": "cert_handoffs/RH-001.json", "digest_algorithm": "git_blob_sha1", "digest": "7304f185bd817bb67b77540513dc01d05f6fcd3a"},
+      "manifest": {
+        "path": "campaign_manifests/RH-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "4ce2c5bcdc7bc1d0d63f7b2244898c8a651d5f64"
+      },
+      "handoff": {
+        "path": "cert_handoffs/RH-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "7304f185bd817bb67b77540513dc01d05f6fcd3a"
+      },
       "handoff_state": "pending",
       "route_state": "qualified",
-      "cert_output": {"repository": "grandchallenge/MATHCERT", "commit_sha": "b1aa08001eb8537be8e204c3866aefd5f898252e", "path": "certificates/formal_sources/MC-FC-WP00-RH-001.json", "digest_algorithm": "git_blob_sha1", "digest": "3668bbf792d994a6d8919101417f2f3cad342cdc"},
+      "cert_output": {
+        "repository": "grandchallenge/MATHCERT",
+        "commit_sha": "b1aa08001eb8537be8e204c3866aefd5f898252e",
+        "path": "certificates/formal_sources/MC-FC-WP00-RH-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "3668bbf792d994a6d8919101417f2f3cad342cdc"
+      },
       "qualification_scope": "qualified_interface_only",
       "mathematical_target_proved": false,
-      "current_promotion_blockers": ["RH-T-000 remains mathematically unproved.", "The qualification covers statement identity and kernel-checked concordance only.", "Future proof work must be Solve-owned or explicitly waived."]
+      "current_promotion_blockers": [
+        "RH-T-000 remains mathematically unproved.",
+        "The qualification covers statement identity and kernel-checked concordance only.",
+        "Future proof work must be Solve-owned or explicitly waived."
+      ]
     },
     "YM-001": {
       "route_id": "MC-ROUTE-YM-001",
-      "manifest": {"path": "campaign_manifests/YM-001.json", "digest_algorithm": "git_blob_sha1", "digest": "733d11811d0226fa2b2467965c3655a7d0fad963"},
-      "handoff": {"path": "cert_handoffs/YM-001.json", "digest_algorithm": "git_blob_sha1", "digest": "54b7ad8156532e3dceba439356848dfa65a4d1ac"},
+      "manifest": {
+        "path": "campaign_manifests/YM-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "733d11811d0226fa2b2467965c3655a7d0fad963"
+      },
+      "handoff": {
+        "path": "cert_handoffs/YM-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "54b7ad8156532e3dceba439356848dfa65a4d1ac"
+      },
       "handoff_state": "pending",
       "route_state": "pending",
       "cert_output": null,
       "qualification_scope": null,
       "mathematical_target_proved": false,
-      "current_promotion_blockers": ["Future Solve-owned work may not remain Programme-embedded.", "Existence, reconstruction, regulator-survival, and mass-gap obligations remain open."]
+      "current_promotion_blockers": [
+        "Future Solve-owned work may not remain Programme-embedded.",
+        "Existence, reconstruction, regulator-survival, and mass-gap obligations remain open."
+      ]
     },
     "OZ-001": {
       "route_id": "MC-ROUTE-OZ-001",
-      "manifest": {"path": "campaign_manifests/OZ-001.json", "digest_algorithm": "git_blob_sha1", "digest": "8b3164ab88a35ec9fba69013b44056573e846bfe"},
-      "handoff": {"path": "cert_handoffs/OZ-001.json", "digest_algorithm": "git_blob_sha1", "digest": "b244c30b1b3aa4590a8b9ff9d63c5b66dab87663"},
+      "manifest": {
+        "path": "campaign_manifests/OZ-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "8b3164ab88a35ec9fba69013b44056573e846bfe"
+      },
+      "handoff": {
+        "path": "cert_handoffs/OZ-001.json",
+        "digest_algorithm": "git_blob_sha1",
+        "digest": "b244c30b1b3aa4590a8b9ff9d63c5b66dab87663"
+      },
       "handoff_state": "pending",
       "route_state": "pending",
       "cert_output": null,
       "qualification_scope": null,
       "mathematical_target_proved": false,
-      "current_promotion_blockers": ["The eight source scopes remain noninterchangeable.", "T3 remains open and Sharp-12 remains gated.", "No new irrationality or novelty conclusion is authorized."]
-    },
-    "EUCLID-GCD-E2E-001": {
-      "route_id": "MC-ROUTE-EUCLID-GCD-E2E-001",
-      "manifest": {"path": "campaign_manifests/EUCLID-GCD-E2E-001.json", "digest_algorithm": "git_blob_sha1", "digest": "1cdb081595da2f8b21f60a192ec8cc83c20031ac"},
-      "handoff": {"path": "cert_handoffs/EUCLID-GCD-E2E-001.json", "digest_algorithm": "git_blob_sha1", "digest": "01a20512c428ce4384959064ab3343a1cbb0c7d2"},
-      "handoff_state": "ready",
-      "route_state": "pending",
-      "cert_output": null,
-      "qualification_scope": null,
-      "mathematical_target_proved": false,
-      "current_promotion_blockers": ["MC-ROUTE-EUCLID-GCD-E2E-001 has not yet received protected MATHCERT route registration or intake acknowledgement.", "The independent checker has not accepted the candidate certificate.", "The accepted-certificate soundness theorem and concrete Lean replay remain pending.", "The campaign manifest remains ineligible for claim promotion."]
+      "current_promotion_blockers": [
+        "The eight source scopes remain noninterchangeable.",
+        "T3 remains open and Sharp-12 remains gated.",
+        "No new irrationality or novelty conclusion is authorized."
+      ]
     }
   }
 }
