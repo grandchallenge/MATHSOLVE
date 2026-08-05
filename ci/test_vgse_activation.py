@@ -58,6 +58,23 @@ class VGSEActivationTests(unittest.TestCase):
         errors = module.merged_provider_gate_errors("VGSE-001", "CLAIM_PROMOTION")
         self.assertTrue(any("not promotion eligible" in error for error in errors))
 
+    def test_euclid_ready_handoff_retains_pending_route(self):
+        registry = module.load_json(module.BASE_REGISTRY_PATH)
+        record = registry["campaigns"]["EUCLID-GCD-E2E-001"]
+        self.assertEqual(record["handoff_state"], "ready")
+        self.assertEqual(record["route_state"], "pending")
+        self.assertIsNone(record["cert_output"])
+        self.assertIsNone(record["qualification_scope"])
+        self.assertFalse(record["mathematical_target_proved"])
+
+    def test_euclid_cannot_pass_judgment_before_cert_adjudication(self):
+        errors = module.merged_provider_gate_errors("EUCLID-GCD-E2E-001", "JUDGMENT")
+        self.assertTrue(any("not an adjudicated" in error for error in errors))
+
+    def test_euclid_cannot_promote_candidate_claims(self):
+        errors = module.merged_provider_gate_errors("EUCLID-GCD-E2E-001", "CLAIM_PROMOTION")
+        self.assertTrue(any("not promotion eligible" in error for error in errors))
+
 
 if __name__ == "__main__":
     unittest.main()
