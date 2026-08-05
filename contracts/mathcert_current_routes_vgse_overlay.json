@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
   "overlay_id": "MS-MATHCERT-CURRENT-VGSE-001",
-  "recorded_at": "2026-08-04",
+  "recorded_at": "2026-08-05",
   "base_registry": {
     "path": "contracts/mathcert_current_routes.json",
     "digest_algorithm": "git_blob_sha1",
-    "digest": "a4002db2e8de67fe479a851c95a3906ed69587f9"
+    "digest": "4f8803c9cac621a2de4c83e9db22540076887b88"
   },
   "current_authority": {
     "repository": "grandchallenge/MATHCERT",
