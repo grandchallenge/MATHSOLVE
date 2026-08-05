@@ -1,0 +1,156 @@
+{
+  "$defs": {
+    "case": {
+      "additionalProperties": false,
+      "properties": {
+        "case_id": {"minLength": 1, "type": "string"},
+        "constructive_solution": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/constructive"}]},
+        "decision_basis": {"const": "exact_divisibility_by_protected_gcd"},
+        "divisibility_obstruction": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/obstruction"}]},
+        "evidence_type": {"enum": ["constructive_solution", "divisibility_obstruction"]},
+        "inputs": {
+          "additionalProperties": false,
+          "properties": {"a": {"type": "integer"}, "b": {"type": "integer"}, "c": {"type": "integer"}},
+          "required": ["a", "b", "c"],
+          "type": "object"
+        },
+        "normalized_gcd": {"const": 21}
+      },
+      "required": ["case_id", "inputs", "normalized_gcd", "decision_basis", "evidence_type", "constructive_solution", "divisibility_obstruction"],
+      "type": "object"
+    },
+    "constructive": {
+      "additionalProperties": false,
+      "properties": {
+        "base_bezout": {
+          "additionalProperties": false,
+          "properties": {"equation_value": {"const": 21}, "x": {"type": "integer"}, "y": {"type": "integer"}},
+          "required": ["x", "y", "equation_value"],
+          "type": "object"
+        },
+        "equation_value": {"type": "integer"},
+        "scale_factor": {"type": "integer"},
+        "x": {"type": "integer"},
+        "y": {"type": "integer"}
+      },
+      "required": ["base_bezout", "scale_factor", "x", "y", "equation_value"],
+      "type": "object"
+    },
+    "forge_input": {
+      "additionalProperties": false,
+      "properties": {
+        "commit_sha": {"pattern": "^[0-9a-f]{40}$"},
+        "package": {"$ref": "#/$defs/identity"},
+        "provider_manifest": {"$ref": "#/$defs/identity"},
+        "repository": {"const": "grandchallenge/MATHFORGE"}
+      },
+      "required": ["repository", "commit_sha", "package", "provider_manifest"],
+      "type": "object"
+    },
+    "identity": {
+      "additionalProperties": false,
+      "properties": {
+        "digest": {"pattern": "^[0-9a-f]{40}$"},
+        "digest_algorithm": {"const": "git_blob_sha1"},
+        "path": {"minLength": 1, "type": "string"}
+      },
+      "required": ["path", "digest_algorithm", "digest"],
+      "type": "object"
+    },
+    "obstruction": {
+      "additionalProperties": false,
+      "properties": {
+        "absolute_target": {"minimum": 0, "type": "integer"},
+        "equation_value": {"minimum": 0, "type": "integer"},
+        "quotient": {"minimum": 0, "type": "integer"},
+        "remainder": {"maximum": 20, "minimum": 1, "type": "integer"},
+        "strict_nonzero_remainder": {"const": true}
+      },
+      "required": ["absolute_target", "quotient", "remainder", "equation_value", "strict_nonzero_remainder"],
+      "type": "object"
+    },
+    "protected_stage1": {
+      "additionalProperties": false,
+      "properties": {
+        "cert_merge_commit": {"pattern": "^[0-9a-f]{40}$"},
+        "certification_output": {
+          "additionalProperties": false,
+          "properties": {
+            "digest": {"pattern": "^[0-9a-f]{40}$"},
+            "digest_algorithm": {"const": "git_blob_sha1"},
+            "disposition": {"const": "CERTIFIED_CHECKER_SOUNDNESS_AND_CONCRETE_GCD_INSTANCE"},
+            "path": {"type": "string"}
+          },
+          "required": ["path", "digest_algorithm", "digest", "disposition"],
+          "type": "object"
+        },
+        "normalized_gcd": {"const": 21},
+        "positive_bezout": {
+          "additionalProperties": false,
+          "properties": {"x": {"const": -2}, "y": {"const": 5}},
+          "required": ["x", "y"],
+          "type": "object"
+        },
+        "solve_candidate": {"$ref": "#/$defs/identity"},
+        "solve_merge_commit": {"pattern": "^[0-9a-f]{40}$"}
+      },
+      "required": ["solve_merge_commit", "solve_candidate", "cert_merge_commit", "certification_output", "normalized_gcd", "positive_bezout"],
+      "type": "object"
+    }
+  },
+  "$id": "https://grandchallenge.ai/schemas/euclid_diophantine_candidate.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authority_state": {"const": "candidate_only"},
+    "campaign_id": {"const": "EUCLID-DIOPHANTINE-E2E-002"},
+    "candidate_scope": {
+      "additionalProperties": false,
+      "properties": {
+        "arbitrary_diophantine_completeness_claimed": {"const": false},
+        "coefficient_family": {"const": "(abs(a),abs(b)) = (252,105)"},
+        "target": {"const": "any integer c"}
+      },
+      "required": ["coefficient_family", "target", "arbitrary_diophantine_completeness_claimed"],
+      "type": "object"
+    },
+    "cases": {"items": {"$ref": "#/$defs/case"}, "maxItems": 2, "minItems": 1, "type": "array"},
+    "certificate_id": {"const": "MS-CANDIDATE-EUCLID-DIOPHANTINE-E2E-002"},
+    "claim_boundary": {
+      "additionalProperties": false,
+      "properties": {
+        "arbitrary_diophantine_completeness_claimed": {"const": false},
+        "constructive_witness_accepted": {"const": false},
+        "historical_verbatim_equivalence_claimed": {"const": false},
+        "novelty_claimed": {"const": false},
+        "priority_claimed": {"const": false},
+        "statement": {"minLength": 40, "type": "string"},
+        "theorem_certified": {"const": false},
+        "unsatisfiable_obstruction_accepted": {"const": false}
+      },
+      "required": ["constructive_witness_accepted", "unsatisfiable_obstruction_accepted", "theorem_certified", "arbitrary_diophantine_completeness_claimed", "novelty_claimed", "priority_claimed", "historical_verbatim_equivalence_claimed", "statement"],
+      "type": "object"
+    },
+    "forge_input": {"$ref": "#/$defs/forge_input"},
+    "protected_stage1": {"$ref": "#/$defs/protected_stage1"},
+    "schema_version": {"const": "1.0.0"},
+    "solver": {
+      "additionalProperties": false,
+      "properties": {
+        "algorithm": {"const": "scale_protected_bezout_or_emit_divisibility_remainder"},
+        "arithmetic": {"const": "unbounded_python_integers"},
+        "canonical_command": {"type": "string"},
+        "implementation_path": {"const": "solve/euclid_diophantine.py"},
+        "network_used": {"const": false},
+        "randomness_used": {"const": false},
+        "recomputes_gcd": {"const": false},
+        "timeout_or_failed_search_used_as_unsat": {"const": false}
+      },
+      "required": ["algorithm", "implementation_path", "canonical_command", "arithmetic", "network_used", "randomness_used", "timeout_or_failed_search_used_as_unsat", "recomputes_gcd"],
+      "type": "object"
+    }
+  },
+  "required": ["schema_version", "certificate_id", "campaign_id", "authority_state", "forge_input", "protected_stage1", "candidate_scope", "cases", "solver", "claim_boundary"],
+  "title": "EUCLID-DIOPHANTINE-E2E-002 Solve candidate",
+  "type": "object"
+}

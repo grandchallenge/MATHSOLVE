@@ -41,10 +41,18 @@ jobs:
           python -m unittest ci/test_euclid_gcd_solve.py -v
           python solve/euclid_gcd.py --a 252 --b 105 --output /tmp/euclid-gcd.json
           cmp /tmp/euclid-gcd.json certificates/EUCLID-GCD-E2E-001.json
+      - name: Validate EUCLID-DIOPHANTINE-E2E-002 deterministic candidates
+        run: |
+          python ci/validate_euclid_diophantine_solve.py
+          python -m unittest ci/test_euclid_diophantine_solve.py -v
+          python solve/euclid_diophantine.py --output /tmp/euclid-diophantine.json
+          cmp /tmp/euclid-diophantine.json certificates/EUCLID-DIOPHANTINE-E2E-002.json
       - name: Validate recursive campaign manifests and Cert boundaries
         run: |
           python ci/validate_campaign_manifests.py
           python -m unittest ci/test_campaign_manifests.py -v
+          PYTHONPATH=ci python ci/validate_vgse_activation.py
+          PYTHONPATH=ci python -m unittest ci/test_vgse_activation.py ci/test_euclid_diophantine_activation.py -v
           python ci/validate_formal_conjectures_expansion.py
           python -m unittest ci/test_formal_conjectures_expansion.py -v
           python -m json.tool contracts/formal_conjectures_expanded_evidence.json >/dev/null

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.2.0",
+  "handoff_id": "MC-HANDOFF-EUCLID-DIOPHANTINE-E2E-002",
+  "campaign_id": "EUCLID-DIOPHANTINE-E2E-002",
+  "solve_work_package_id": "EUCLID-DIOPHANTINE-E2E-002-WP01",
+  "source_commit": "45f1ebb1ebd0bf1998819439cdc724011c650631",
+  "cert_contract": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
+    "path": "governance/certification_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3",
+    "route_id": "MC-ROUTE-EUCLID-DIOPHANTINE-E2E-002"
+  },
+  "target_claims": [
+    {"claim_id": "EUCLID-DIOPHANTINE-E2E-002-C001", "statement": "For 252x + 105y = 84, the deterministic producer reports x = -8 and y = 20 by scaling the protected Bezout witness by four.", "claim_type": "COMPUTED_EXACTLY_CANDIDATE", "support_type": "DETERMINISTIC_INTEGER_REPLAY"},
+    {"claim_id": "EUCLID-DIOPHANTINE-E2E-002-C002", "statement": "For 252x + 105y = 20, the producer reports the exact nonzero remainder obstruction 20 = 0*21 + 20 with 0 < 20 < 21.", "claim_type": "COMPUTED_EXACTLY_CANDIDATE", "support_type": "DETERMINISTIC_INTEGER_REPLAY"},
+    {"claim_id": "EUCLID-DIOPHANTINE-E2E-002-C003", "statement": "For the protected coefficient family, the producer deterministically emits either a scaled constructive witness or an exact divisibility obstruction without recomputing gcd.", "claim_type": "BOUNDED_PRODUCER_BEHAVIOR_CANDIDATE", "support_type": "SEMANTIC_REPLAY"}
+  ],
+  "claim_ledger": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "45f1ebb1ebd0bf1998819439cdc724011c650631",
+    "path": "campaign_ledgers/EUCLID-DIOPHANTINE-E2E-002/claim_ledger.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "e8371b64a350902d6fe16b57587a1a9de0090625",
+    "role": "claim_ledger"
+  },
+  "proof_obligations": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "45f1ebb1ebd0bf1998819439cdc724011c650631",
+    "path": "campaign_ledgers/EUCLID-DIOPHANTINE-E2E-002/proof_obligation_dag.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "919dcb58683f96f87e1d0c499e11e92fb3da34bc",
+    "role": "proof_obligation_dag"
+  },
+  "checker_contract": {
+    "target": "Lean",
+    "inputs": [
+      "Protected Forge merge af5398a05f17789a061ab0d23c2b47f0cc952fff and exact package/provider-manifest blobs.",
+      "Protected Stage 1 Solve candidate af54ae9b9a047a36767b2599ebc649fb6fdaaa52 and MATHCERT output 36c62434dbd19719d990e71ddc23729f0614ace7.",
+      "Stage 2 candidate certificates/EUCLID-DIOPHANTINE-E2E-002.json at Solve evidence commit 45f1ebb1ebd0bf1998819439cdc724011c650631, blob 74703b449fa861b72be1eaf89fb1c39a943183ce.",
+      "Claim ledger, proof-obligation DAG, malformed-route ledger, and resource ledger bound by exact Git blob identity."
+    ],
+    "acceptance": "Use an implementation independent from solve/euclid_diophantine.py. Verify all upstream identities; signed input normalization; the protected gcd and Bezout facts; positive scaling and integer equality; negative quotient-remainder equation and 0 < r < d; c = 0 handling; the prohibition on timeout-as-unsat; and the admitted two-variable integer solvability equivalence.",
+    "rejection": "Reject changed upstream identities, substituted inputs, false signs, wrong scale factors, malformed witnesses, zero or out-of-range obstruction remainders, false quotient-remainder equations, recomputed or competing gcd definitions, timeout or failed-search unsatisfiability, self-certification, arbitrary-Diophantine completeness, or historical-verbatim attribution."
+  },
+  "requested_modalities": ["EXACT_RATIONAL_CERTIFICATE", "SEMANTIC_REPLAY", "LEAN_FORMALIZATION"],
+  "claim_boundary": "The Solve package supplies deterministic bounded candidate evidence only. MATHCERT must independently accept or reject both evidence forms and prove the admitted two-variable theorem. No arbitrary-Diophantine completeness, novelty, priority, first-formalization, or historical-verbatim-equivalence claim follows.",
+  "status": "ready",
+  "blockers": [],
+  "reopening_conditions": ["Reopen if a protected Forge or Stage 1 identity, the Stage 2 candidate, claim ledger, proof obligations, checker contract, or MATHCERT disposition changes."]
+}

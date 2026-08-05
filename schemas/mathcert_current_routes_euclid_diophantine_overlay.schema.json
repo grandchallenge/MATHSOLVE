@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grandchallenge.ai/schemas/mathcert_current_routes_euclid_diophantine_overlay.schema.json",
+  "title": "EUCLID-DIOPHANTINE-E2E-002 current MATHCERT route successor overlay",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "overlay_id", "recorded_at", "base_registry", "predecessor_overlay", "current_authority", "campaign"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "overlay_id": {"const": "MS-MATHCERT-CURRENT-EUCLID-DIOPHANTINE-E2E-002"},
+    "recorded_at": {"type": "string", "format": "date"},
+    "base_registry": {"$ref": "#/$defs/local_ref"},
+    "predecessor_overlay": {"$ref": "#/$defs/local_ref"},
+    "current_authority": {"$ref": "#/$defs/authority_ref"},
+    "campaign": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["campaign_id", "route_id", "route_registry_entry_present", "manifest", "handoff", "handoff_state", "route_state", "cert_output", "qualification_scope", "mathematical_target_proved", "may_adjudicate", "may_issue_certificate_output", "current_promotion_blockers"],
+      "properties": {
+        "campaign_id": {"const": "EUCLID-DIOPHANTINE-E2E-002"},
+        "route_id": {"const": "MC-ROUTE-EUCLID-DIOPHANTINE-E2E-002"},
+        "route_registry_entry_present": {"const": false},
+        "manifest": {"$ref": "#/$defs/local_ref"},
+        "handoff": {"$ref": "#/$defs/local_ref"},
+        "handoff_state": {"const": "ready"},
+        "route_state": {"const": "pending"},
+        "cert_output": {"type": "null"},
+        "qualification_scope": {"type": "null"},
+        "mathematical_target_proved": {"const": false},
+        "may_adjudicate": {"const": false},
+        "may_issue_certificate_output": {"const": false},
+        "current_promotion_blockers": {"type": "array", "minItems": 4, "uniqueItems": true, "items": {"type": "string", "minLength": 10}}
+      }
+    }
+  },
+  "$defs": {
+    "local_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "digest_algorithm", "digest"],
+      "properties": {
+        "path": {"type": "string", "minLength": 5},
+        "digest_algorithm": {"const": "git_blob_sha1"},
+        "digest": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      }
+    },
+    "authority_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "commit_sha", "path", "digest_algorithm", "digest"],
+      "properties": {
+        "repository": {"const": "grandchallenge/MATHCERT"},
+        "commit_sha": {"const": "78b69e6a3461a83f4893d61c421b1570c08a9ba6"},
+        "path": {"const": "governance/certification_routes.json"},
+        "digest_algorithm": {"const": "git_blob_sha1"},
+        "digest": {"const": "0487c3ebf702229741f16a544d68af25cf994e41"}
+      }
+    }
+  }
+}

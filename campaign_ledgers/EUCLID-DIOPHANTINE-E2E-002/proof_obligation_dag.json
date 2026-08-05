@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "EUCLID-DIOPHANTINE-E2E-002",
+  "work_package_id": "EUCLID-DIOPHANTINE-E2E-002-WP01",
+  "nodes": [
+    {"obligation_id": "DIO-O-001", "statement": "Verify exact protected Forge package and provider-manifest identities.", "owner": "MATHCERT", "status": "open", "depends_on": []},
+    {"obligation_id": "DIO-O-002", "statement": "Verify the protected Stage 1 Solve candidate and MATHCERT certification-output identities and admitted gcd/Bezout facts.", "owner": "MATHCERT", "status": "open", "depends_on": ["DIO-O-001"]},
+    {"obligation_id": "DIO-O-003", "statement": "Verify the positive scale factor, signed coefficient normalization, and integer equality a*x + b*y = c.", "owner": "MATHCERT", "status": "open", "depends_on": ["DIO-O-002"]},
+    {"obligation_id": "DIO-O-004", "statement": "Verify the negative exact quotient-remainder equation and strict bound 0 < r < d.", "owner": "MATHCERT", "status": "open", "depends_on": ["DIO-O-002"]},
+    {"obligation_id": "DIO-O-005", "statement": "Prove that a nonzero remainder of |c| modulo the normalized gcd excludes every integer solution.", "owner": "MATHCERT", "status": "open", "depends_on": ["DIO-O-004"]},
+    {"obligation_id": "DIO-O-006", "statement": "Formalize the two-variable integer equivalence: a*x + b*y = c is solvable iff gcd(|a|,|b|) divides |c|, for (a,b) != (0,0).", "owner": "MATHCERT", "status": "open", "depends_on": ["DIO-O-002", "DIO-O-003", "DIO-O-005"]},
+    {"obligation_id": "DIO-O-007", "statement": "Replay the positive and negative fixtures in Lean and report declaration-level axioms.", "owner": "MATHCERT", "status": "open", "depends_on": ["DIO-O-006"]}
+  ],
+  "terminal_condition": "No Solve claim becomes certified until DIO-O-001 through DIO-O-007 receive a protected MATHCERT disposition.",
+  "claim_boundary": "This DAG routes proof obligations; it does not discharge them."
+}
