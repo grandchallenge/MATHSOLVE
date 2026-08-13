@@ -20,6 +20,7 @@ MATH-PROGRAMME is the front door and policy source for this pillar.
 - [Cross-pillar lanes](https://grandchallenge.github.io/MATH-PROGRAMME/CROSS_PILLAR_LANES/)
 - [Groebner and EXPSPACE doctrine](https://grandchallenge.github.io/MATH-PROGRAMME/GROEBNER_EXPSPACE_DOCTRINE/)
 - [Claim-boundary doctrine](https://grandchallenge.github.io/MATH-PROGRAMME/CLAIM_BOUNDARY_DOCTRINE/)
+- [Exact adopted taxonomy reference](contracts/programme_taxonomy_adoption.json)
 - [Resource Budget Policy](https://grandchallenge.github.io/MATH-PROGRAMME/RESOURCE_BUDGET_POLICY/)
 
 ## Groebner tactic orchestration
