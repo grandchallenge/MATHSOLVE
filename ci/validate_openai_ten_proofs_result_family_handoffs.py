@@ -61,6 +61,30 @@ EXPECTED_PERMANENT_UNENCODED = [
     "Theorems 1.2/1.3 total-leaves and total-vertices consequences",
     "historical admitted-PDF byte equivalence",
 ]
+EXPECTED_PERMANENT_PROJECTION = {
+    "formula_target_count": 2,
+    "circuit_target_count": 0,
+    "coefficient_field": "complex",
+    "dimension_threshold": 32,
+    "log_base": 2,
+    "division_free": {
+        "source_theorem": "Theorem 1.2",
+        "variable_leaf_constant": 128,
+        "source_gate_constant": 256,
+        "encoded_variable_leaf_bound": True,
+        "encoded_gate_bound": False,
+        "encoded_total_leaves_vertices": False,
+    },
+    "rational": {
+        "source_theorem": "Theorem 1.3",
+        "variable_leaf_constant": 192,
+        "source_gate_constant": 384,
+        "encoded_variable_leaf_bound": True,
+        "encoded_gate_bound": False,
+        "encoded_total_leaves_vertices": False,
+    },
+    "historical_pdf_byte_equivalence": False,
+}
 
 
 def load_json(path: Path) -> Any:
@@ -165,6 +189,8 @@ def validation_errors(
                 "PermanentFormulaLowerBound.permanent_rational_formula_logarithmic_lower_bound",
             ]:
                 errors.append(f"{label}: Permanent target set drift")
+            if scope.get("source_projection") != EXPECTED_PERMANENT_PROJECTION:
+                errors.append(f"{label}: Permanent source projection drift")
             witness = packet.get("authority", {}).get("nonvacuity_witness", {})
             if witness.get("digest") != "e756c8476bac1795f3fb8ca0b7235d3a4a5c59ea":
                 errors.append(f"{label}: Permanent nonvacuity witness drift")
@@ -249,9 +275,9 @@ def main() -> int:
         print(f"result-family handoff validation failed with {len(errors)} error(s)", file=sys.stderr)
         return 1
     print(
-        "validated four independent content-addressed result-family packets, including the bounded Permanent "
-        "variable-leaf packet, zero Cert state, explicit unencoded Permanent successors, GapCVP blocker, "
-        "and aggregate-route prohibition"
+        "validated four independent content-addressed result-family packets, including exact Permanent "
+        "threshold/log/constants/noncoverage projection, zero Cert state, explicit unencoded Permanent "
+        "successors, GapCVP blocker, and aggregate-route prohibition"
     )
     return 0
 
