@@ -54,7 +54,7 @@
       "handoff_id": "MC-OTP-HANDOFF-C-PERMANENT-FORMULA",
       "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-C-PERMANENT.json",
       "digest_algorithm": "git_blob_sha1",
-      "digest": "bec837ff3eca42672db45dadf5db2585803af2f6",
+      "digest": "a993c530880021930a2b468e76235b91122ca854",
       "semantic_record_digest": "3e04bd16bd8a91eaf9b6702de89fcdcc72f61099"
     }
   ],
