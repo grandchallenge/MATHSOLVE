@@ -69,10 +69,46 @@
     },
     "target_scope": {
       "type": "object", "additionalProperties": false,
-      "required": ["source_theorem","normalized_statement","lean_theorems","nonvacuity_witnesses","scope_exclusions"],
+      "required": ["source_theorem","normalized_statement","source_projection","lean_theorems","nonvacuity_witnesses","scope_exclusions"],
       "properties": {
         "source_theorem": {"type": "string", "minLength": 50},
         "normalized_statement": {"type": "string", "minLength": 250},
+        "source_projection": {
+          "type": "object", "additionalProperties": false,
+          "required": ["formula_target_count","circuit_target_count","coefficient_field","dimension_threshold","log_base","division_free","rational","historical_pdf_byte_equivalence"],
+          "properties": {
+            "formula_target_count": {"const": 2},
+            "circuit_target_count": {"const": 0},
+            "coefficient_field": {"const": "complex"},
+            "dimension_threshold": {"const": 32},
+            "log_base": {"const": 2},
+            "division_free": {
+              "type": "object", "additionalProperties": false,
+              "required": ["source_theorem","variable_leaf_constant","source_gate_constant","encoded_variable_leaf_bound","encoded_gate_bound","encoded_total_leaves_vertices"],
+              "properties": {
+                "source_theorem": {"const": "Theorem 1.2"},
+                "variable_leaf_constant": {"const": 128},
+                "source_gate_constant": {"const": 256},
+                "encoded_variable_leaf_bound": {"const": true},
+                "encoded_gate_bound": {"const": false},
+                "encoded_total_leaves_vertices": {"const": false}
+              }
+            },
+            "rational": {
+              "type": "object", "additionalProperties": false,
+              "required": ["source_theorem","variable_leaf_constant","source_gate_constant","encoded_variable_leaf_bound","encoded_gate_bound","encoded_total_leaves_vertices"],
+              "properties": {
+                "source_theorem": {"const": "Theorem 1.3"},
+                "variable_leaf_constant": {"const": 192},
+                "source_gate_constant": {"const": 384},
+                "encoded_variable_leaf_bound": {"const": true},
+                "encoded_gate_bound": {"const": false},
+                "encoded_total_leaves_vertices": {"const": false}
+              }
+            },
+            "historical_pdf_byte_equivalence": {"const": false}
+          }
+        },
         "lean_theorems": {
           "type": "array", "prefixItems": [
             {"const": "PermanentFormulaLowerBound.permanent_divisionFree_formula_logarithmic_lower_bound"},
