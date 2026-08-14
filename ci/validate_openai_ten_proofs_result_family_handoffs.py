@@ -15,6 +15,7 @@ WP_ROOT = ROOT / "work_packages" / "OPENAI_TEN_PROOFS_WP00"
 PACKET_DIR = WP_ROOT / "result_family_handoffs"
 REGISTRY_PATH = WP_ROOT / "result_family_handoff_registry.json"
 PACKET_SCHEMA_PATH = ROOT / "schemas" / "openai_ten_proofs_result_family_handoff.schema.json"
+PERMANENT_SCHEMA_PATH = ROOT / "schemas" / "openai_ten_proofs_permanent_result_family_handoff.schema.json"
 REGISTRY_SCHEMA_PATH = ROOT / "schemas" / "openai_ten_proofs_result_family_handoff_registry.schema.json"
 
 EXPECTED_PACKETS = {
@@ -24,6 +25,7 @@ EXPECTED_PACKETS = {
         "semantic_path": "sources/OPENAI-TEN-PROOFS-001/semantic_audits/OTP-F-EHRHART.json",
         "semantic_digest": "a3dc4de4c38a80b7aec1fae6506b08e14d2e58bb",
         "route_id": "MC-ROUTE-OTP-F-EHRHART",
+        "schema": "legacy",
     },
     "OTP-J1-COMPACTNESS": {
         "handoff_id": "MC-OTP-HANDOFF-J1-COMPACTNESS",
@@ -31,6 +33,7 @@ EXPECTED_PACKETS = {
         "semantic_path": "sources/OPENAI-TEN-PROOFS-001/semantic_audits/OTP-J1-COMPACTNESS.json",
         "semantic_digest": "659396358d0d999c00011645f72602f30ccf6b0e",
         "route_id": "MC-ROUTE-OTP-J1-COMPACTNESS",
+        "schema": "legacy",
     },
     "OTP-J2-TWO-DEGENERATE": {
         "handoff_id": "MC-OTP-HANDOFF-J2-TWO-DEGENERATE",
@@ -38,10 +41,50 @@ EXPECTED_PACKETS = {
         "semantic_path": "sources/OPENAI-TEN-PROOFS-001/semantic_audits/OTP-J2-TWO-DEGENERATE.json",
         "semantic_digest": "7bd168c46921f64364b20021b6315d68f0fde7d0",
         "route_id": "MC-ROUTE-OTP-J2-TWO-DEGENERATE",
+        "schema": "legacy",
+    },
+    "OTP-C-PERMANENT": {
+        "handoff_id": "MC-OTP-HANDOFF-C-PERMANENT-FORMULA",
+        "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-C-PERMANENT.json",
+        "semantic_path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-C-PERMANENT/semantic_audit_record.json",
+        "semantic_digest": "3e04bd16bd8a91eaf9b6702de89fcdcc72f61099",
+        "route_id": "MC-ROUTE-OTP-C-PERMANENT-FORMULA",
+        "schema": "permanent",
     },
 }
 EXPECTED_FAMILIES = tuple(EXPECTED_PACKETS)
-EXPECTED_BLOCKED = ["OTP-C-PERMANENT", "OTP-H-GAPCVP"]
+EXPECTED_BLOCKED = ["OTP-H-GAPCVP"]
+EXPECTED_PERMANENT_UNENCODED = [
+    "source Theorem 1.1 arithmetic-circuit complexity",
+    "Theorem 1.2 internal-gate bound with constant 256",
+    "Theorem 1.3 internal-gate bound with constant 384",
+    "Theorems 1.2/1.3 total-leaves and total-vertices consequences",
+    "historical admitted-PDF byte equivalence",
+]
+EXPECTED_PERMANENT_PROJECTION = {
+    "formula_target_count": 2,
+    "circuit_target_count": 0,
+    "coefficient_field": "complex",
+    "dimension_threshold": 32,
+    "log_base": 2,
+    "division_free": {
+        "source_theorem": "Theorem 1.2",
+        "variable_leaf_constant": 128,
+        "source_gate_constant": 256,
+        "encoded_variable_leaf_bound": True,
+        "encoded_gate_bound": False,
+        "encoded_total_leaves_vertices": False,
+    },
+    "rational": {
+        "source_theorem": "Theorem 1.3",
+        "variable_leaf_constant": 192,
+        "source_gate_constant": 384,
+        "encoded_variable_leaf_bound": True,
+        "encoded_gate_bound": False,
+        "encoded_total_leaves_vertices": False,
+    },
+    "historical_pdf_byte_equivalence": False,
+}
 
 
 def load_json(path: Path) -> Any:
@@ -73,17 +116,12 @@ def validation_errors(
     if registry is None:
         registry = load_json(REGISTRY_PATH)
     if packets is None:
-        packets = {
-            path.stem: load_json(path)
-            for path in sorted(PACKET_DIR.glob("*.json"))
-        }
+        packets = {path.stem: load_json(path) for path in sorted(PACKET_DIR.glob("*.json"))}
     if packet_blobs is None:
-        packet_blobs = {
-            path.stem: git_blob_sha1(path)
-            for path in sorted(PACKET_DIR.glob("*.json"))
-        }
+        packet_blobs = {path.stem: git_blob_sha1(path) for path in sorted(PACKET_DIR.glob("*.json"))}
 
-    packet_schema = load_json(PACKET_SCHEMA_PATH)
+    legacy_schema = load_json(PACKET_SCHEMA_PATH)
+    permanent_schema = load_json(PERMANENT_SCHEMA_PATH)
     registry_schema = load_json(REGISTRY_SCHEMA_PATH)
     errors.extend(schema_errors(registry, registry_schema, str(REGISTRY_PATH)))
 
@@ -101,6 +139,7 @@ def validation_errors(
         if not isinstance(packet, dict):
             continue
         label = f"OTP-FAMILY-HANDOFFS-001: {family}"
+        packet_schema = permanent_schema if expected["schema"] == "permanent" else legacy_schema
         errors.extend(schema_errors(packet, packet_schema, label))
         if packet.get("result_family") != family:
             errors.append(f"{label}: result-family identity drift")
@@ -136,6 +175,25 @@ def validation_errors(
         ):
             if controls.get(field) is not False:
                 errors.append(f"{label}: prohibited route control enabled: {field}")
+        if family == "OTP-C-PERMANENT":
+            for field in (
+                "may_route_circuit_theorem",
+                "may_route_gate_bounds",
+                "may_route_total_size_consequences",
+            ):
+                if controls.get(field) is not False:
+                    errors.append(f"{label}: Permanent scope inflation enabled: {field}")
+            scope = packet.get("target_scope", {})
+            if scope.get("lean_theorems") != [
+                "PermanentFormulaLowerBound.permanent_divisionFree_formula_logarithmic_lower_bound",
+                "PermanentFormulaLowerBound.permanent_rational_formula_logarithmic_lower_bound",
+            ]:
+                errors.append(f"{label}: Permanent target set drift")
+            if scope.get("source_projection") != EXPECTED_PERMANENT_PROJECTION:
+                errors.append(f"{label}: Permanent source projection drift")
+            witness = packet.get("authority", {}).get("nonvacuity_witness", {})
+            if witness.get("digest") != "e756c8476bac1795f3fb8ca0b7235d3a4a5c59ea":
+                errors.append(f"{label}: Permanent nonvacuity witness drift")
         seen_handoffs.append(str(packet.get("handoff_id", "")))
         seen_routes.append(str(requested.get("route_id", "")))
 
@@ -169,13 +227,17 @@ def validation_errors(
 
     semantic = registry.get("semantic_gate", {})
     if semantic.get("clear_count") != len(EXPECTED_FAMILIES):
-        errors.append("OTP-FAMILY-HANDOFFS-001: semantic clear count is not exactly 3")
+        errors.append("OTP-FAMILY-HANDOFFS-001: semantic clear count is not exactly 4")
     if semantic.get("result_family_count") != 12:
         errors.append("OTP-FAMILY-HANDOFFS-001: result-family denominator drift")
     if semantic.get("clear_families") != list(EXPECTED_FAMILIES):
         errors.append("OTP-FAMILY-HANDOFFS-001: clear-family set drift")
+    if semantic.get("permanent_scope") != "two encoded variable-leaf targets only":
+        errors.append("OTP-FAMILY-HANDOFFS-001: Permanent semantic scope drift")
     if registry.get("blocked_repair_lanes") != EXPECTED_BLOCKED:
         errors.append("OTP-FAMILY-HANDOFFS-001: blocked repair lanes drift")
+    if registry.get("permanent_unencoded_successors") != EXPECTED_PERMANENT_UNENCODED:
+        errors.append("OTP-FAMILY-HANDOFFS-001: Permanent unencoded-successor boundary drift")
 
     aggregate = registry.get("aggregate_integration", {})
     if aggregate.get("reopens_family_replay") is not False:
@@ -199,6 +261,7 @@ def validation_errors(
         "may_imply_cert_acceptance",
         "may_imply_adjudication",
         "may_promote_claim",
+        "permanent_packet_may_route_circuit_or_omitted_formula_conclusions",
     ):
         if controls.get(field) is not False:
             errors.append(f"OTP-FAMILY-HANDOFFS-001: prohibited registry control enabled: {field}")
@@ -212,8 +275,9 @@ def main() -> int:
         print(f"result-family handoff validation failed with {len(errors)} error(s)", file=sys.stderr)
         return 1
     print(
-        "validated three independent content-addressed result-family packets, exact semantic authority, "
-        "zero Cert state, blocked repair lanes, and aggregate-route prohibition"
+        "validated four independent content-addressed result-family packets, including exact Permanent "
+        "threshold/log/constants/noncoverage projection, zero Cert state, explicit unencoded Permanent "
+        "successors, GapCVP blocker, and aggregate-route prohibition"
     )
     return 0
 

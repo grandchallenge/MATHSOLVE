@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "result_family_mathcert_handoff",
+  "handoff_id": "MC-OTP-HANDOFF-C-PERMANENT-FORMULA",
+  "candidate_id": "OPENAI-TEN-PROOFS-001",
+  "result_family": "OTP-C-PERMANENT",
+  "producer_status": "ready_after_protected_merge",
+  "authority": {
+    "solve_base_merge": "9a7e6c2e8cea30dcb872161aad76f0abbbe568de",
+    "forge_repair_merge": "40c38eb6a716acb10145ba42f0c9c768490a7e71",
+    "forge_source_reassertion_merge": "8696665805a776b537d7b469a24b88e887152466",
+    "forge_replay_merge": "e6bfb856ec9aa6a43601e2ea6eb4047cb84ce297",
+    "forge_semantic_merge": "60f6e06c957139447bf5943eed731941b22ac608",
+    "forge_semantic_reviewed_head": "1574e49862cf263c1cf2a6292f5f2b042fa989a2",
+    "forge_semantic_review": {
+      "review_node_id": "PRR_kwDOSuU7K88AAAABJkpWlg",
+      "review_rest_id": 4937373334,
+      "reviewer": "jimsteeg",
+      "state": "APPROVED",
+      "submitted_at": "2026-08-14T13:05:54Z"
+    },
+    "human_steward_disposition_comment": 5293741889,
+    "official_subject": {
+      "repository": "openai/ten-proofs",
+      "commit": "e62211d28e3a9131950c89caa6542cfe5eff3bca",
+      "tree": "2f8e7ac5ae7f157b6b1de636c2c343b1c7a7e365",
+      "archive_sha256": "3022e62ffbed8f5f74d232034a703dc645e6b301879dff1e87df72979914294f"
+    },
+    "semantic_record": {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "60f6e06c957139447bf5943eed731941b22ac608",
+      "path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-C-PERMANENT/semantic_audit_record.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "3e04bd16bd8a91eaf9b6702de89fcdcc72f61099"
+    },
+    "nonvacuity_witness": {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "60f6e06c957139447bf5943eed731941b22ac608",
+      "path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-C-PERMANENT/PermanentFormulaNonvacuity.lean",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "e756c8476bac1795f3fb8ca0b7235d3a4a5c59ea"
+    }
+  },
+  "replay_gate": {
+    "state": "clear",
+    "family_clear": true,
+    "aggregate_import_required": false,
+    "exact_run": 31793518288,
+    "exact_job": 94745449727
+  },
+  "semantic_gate": {
+    "state": "clear",
+    "source_concordance": "clear_for_encoded_variable_leaf_targets",
+    "nonvacuity": "clear",
+    "activated_by_protected_merge": "60f6e06c957139447bf5943eed731941b22ac608",
+    "family_disposition": "PERMANENT_FORMULA_VARIABLE_LEAF_BOUNDS__SEMANTIC_AND_NONVACUITY_CLEAR__CIRCUIT_AND_GATE_BOUNDS_NOT_ENCODED"
+  },
+  "target_scope": {
+    "source_theorem": "Chapter 5, Theorems 1.2 and 1.3, restricted to the encoded variable-leaf lower-bound conclusions only.",
+    "normalized_statement": "For every n at least 32, every division-free arithmetic formula over the complex numbers computing the n by n permanent has at least n^4/(128 log_2 n) variable-labelled leaves, and every valid arithmetic formula with division computing the permanent has at least n^4/(192 log_2 n) variable-labelled leaves. This handoff submits only those two variable-leaf projections.",
+    "source_projection": {
+      "formula_target_count": 2,
+      "circuit_target_count": 0,
+      "coefficient_field": "complex",
+      "dimension_threshold": 32,
+      "log_base": 2,
+      "division_free": {
+        "source_theorem": "Theorem 1.2",
+        "variable_leaf_constant": 128,
+        "source_gate_constant": 256,
+        "encoded_variable_leaf_bound": true,
+        "encoded_gate_bound": false,
+        "encoded_total_leaves_vertices": false
+      },
+      "rational": {
+        "source_theorem": "Theorem 1.3",
+        "variable_leaf_constant": 192,
+        "source_gate_constant": 384,
+        "encoded_variable_leaf_bound": true,
+        "encoded_gate_bound": false,
+        "encoded_total_leaves_vertices": false
+      },
+      "historical_pdf_byte_equivalence": false
+    },
+    "lean_theorems": [
+      "PermanentFormulaLowerBound.permanent_divisionFree_formula_logarithmic_lower_bound",
+      "PermanentFormulaLowerBound.permanent_rational_formula_logarithmic_lower_bound"
+    ],
+    "nonvacuity_witnesses": [
+      "PermanentFormulaLowerBound.Nonvacuity.permanent_divisionFree_formula_nonvacuous",
+      "PermanentFormulaLowerBound.Nonvacuity.permanent_rational_formula_nonvacuous"
+    ],
+    "scope_exclusions": [
+      "Source Theorem 1.1 arithmetic-circuit complexity is not encoded or submitted by this packet.",
+      "Theorem 1.2 internal-gate lower bound with denominator constant 256 is not encoded or submitted.",
+      "Theorem 1.3 internal-gate lower bound with denominator constant 384 is not encoded or submitted.",
+      "The source total-leaves and total-vertices consequences are not encoded or submitted.",
+      "Historical admitted-PDF byte equivalence remains unestablished and is not required for this bounded theorem-locus handoff."
+    ]
+  },
+  "requested_adjudication": {
+    "mode": "independent_result_family_review",
+    "route_id": "MC-ROUTE-OTP-C-PERMANENT-FORMULA",
+    "current_route_state": "not_registered",
+    "cert_output": null,
+    "may_adjudicate_on_branch": false
+  },
+  "activation": {
+    "condition": "exact-head CI, non-author APPROVED review, and protected MATHSOLVE merge",
+    "head_change_requires_reapproval": true,
+    "effect": "packet_may_be_offered_to_mathcert_for_independent_intake"
+  },
+  "route_controls": {
+    "result_family_only": true,
+    "may_create_aggregate_handoff": false,
+    "may_imply_mathcert_acceptance": false,
+    "may_imply_adjudication": false,
+    "may_claim_mathematical_proof": false,
+    "may_promote_claim": false,
+    "may_route_circuit_theorem": false,
+    "may_route_gate_bounds": false,
+    "may_route_total_size_consequences": false
+  },
+  "claim_boundary": "This packet submits only the two protected-clear Permanent formula variable-leaf targets for possible independent MATHCERT intake after protected Solve activation. It does not submit source Theorem 1.1 arithmetic-circuit complexity, the separate source gate-count bounds 256 or 384, total-leaves or total-vertices consequences, historical-PDF byte equivalence, adjudication, Cert output, mathematical proof promotion, aggregate Ten Proofs authority, novelty, priority, publication, patentability, product, or commercial claims."
+}
