@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grandchallenge.ai/schemas/mathsolve/openai_ten_proofs_permanent_full_formula_handoff.schema.json",
+  "title": "OpenAI Ten Proofs Permanent full-formula MATHCERT handoff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","record_type","handoff_id","candidate_id","result_family","producer_status","authority","replay_gate","semantic_gate","target_scope","requested_adjudication","activation","route_controls","claim_boundary"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_type": {"const": "result_family_mathcert_handoff"},
+    "handoff_id": {"const": "MC-OTP-HANDOFF-C-PERMANENT-FULL-FORMULA"},
+    "candidate_id": {"const": "OPENAI-TEN-PROOFS-001"},
+    "result_family": {"const": "OTP-C-PERMANENT"},
+    "producer_status": {"const": "ready_after_protected_merge"},
+    "authority": {
+      "type": "object", "additionalProperties": false,
+      "required": ["solve_base_merge","forge_semantic_merge","forge_semantic_reviewed_head","forge_semantic_review","human_steward_control_plan_comment","official_subject","semantic_record","nonvacuity_witness"],
+      "properties": {
+        "solve_base_merge": {"const": "90f8a8544e546a603b34c9b27b2d6a4a68e06de8"},
+        "forge_semantic_merge": {"const": "26309b3aa1ce21e8d74683235de76b491f62f17c"},
+        "forge_semantic_reviewed_head": {"const": "9c603e4d16dcccda805d41bf11ab333307185c31"},
+        "forge_semantic_review": {
+          "type": "object", "additionalProperties": false,
+          "required": ["review_rest_id","reviewer","state"],
+          "properties": {
+            "review_rest_id": {"const": 4941591670},
+            "reviewer": {"const": "jimsteeg"},
+            "state": {"const": "APPROVED"}
+          }
+        },
+        "human_steward_control_plan_comment": {"const": 5307218742},
+        "official_subject": {
+          "type": "object", "additionalProperties": false,
+          "required": ["repository","commit","tree","archive_sha256"],
+          "properties": {
+            "repository": {"const": "openai/ten-proofs"},
+            "commit": {"const": "e62211d28e3a9131950c89caa6542cfe5eff3bca"},
+            "tree": {"const": "2f8e7ac5ae7f157b6b1de636c2c343b1c7a7e365"},
+            "archive_sha256": {"const": "3022e62ffbed8f5f74d232034a703dc645e6b301879dff1e87df72979914294f"}
+          }
+        },
+        "semantic_record": {"$ref": "#/$defs/semanticRecord"},
+        "nonvacuity_witness": {"$ref": "#/$defs/nonvacuityWitness"}
+      }
+    },
+    "replay_gate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["state","family_clear","aggregate_import_required","exact_run","exact_job","lean_default_kernel","nanoda_kernel","comparator"],
+      "properties": {
+        "state": {"const": "clear"}, "family_clear": {"const": true}, "aggregate_import_required": {"const": false},
+        "exact_run": {"const": 31807864648}, "exact_job": {"const": 94791029992},
+        "lean_default_kernel": {"const": "accepted"}, "nanoda_kernel": {"const": "accepted"}, "comparator": {"const": "accepted"}
+      }
+    },
+    "semantic_gate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["state","source_concordance","nonvacuity","activated_by_protected_merge","family_disposition"],
+      "properties": {
+        "state": {"const": "clear"},
+        "source_concordance": {"const": "clear_for_full_formula_source_consequences"},
+        "nonvacuity": {"const": "clear"},
+        "activated_by_protected_merge": {"const": "26309b3aa1ce21e8d74683235de76b491f62f17c"},
+        "family_disposition": {"const": "PERMANENT_FORMULA_FULL_SOURCE_CONSEQUENCES_CLEAR__128_256_192_384_AND_LEAF_VERTEX_BOUNDS_ENCODED__CIRCUIT_SEPARATE"}
+      }
+    },
+    "target_scope": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_theorem","normalized_statement","source_projection","lean_theorems","nonvacuity_witnesses","scope_exclusions"],
+      "properties": {
+        "source_theorem": {"type": "string", "minLength": 80},
+        "normalized_statement": {"type": "string", "minLength": 350},
+        "source_projection": {
+          "type": "object", "additionalProperties": false,
+          "required": ["formula_target_count","circuit_target_count","coefficient_field","dimension_threshold","log_base","division_free","rational","historical_pdf_byte_equivalence"],
+          "properties": {
+            "formula_target_count": {"const": 2}, "circuit_target_count": {"const": 0},
+            "coefficient_field": {"const": "complex"}, "dimension_threshold": {"const": 32}, "log_base": {"const": 2},
+            "division_free": {"$ref": "#/$defs/divisionFreeProjection"},
+            "rational": {"$ref": "#/$defs/rationalProjection"},
+            "historical_pdf_byte_equivalence": {"const": false}
+          }
+        },
+        "lean_theorems": {
+          "type": "array", "prefixItems": [
+            {"const": "PermanentFormulaLowerBound.permanent_divisionFree_formula_lower_bound"},
+            {"const": "PermanentFormulaLowerBound.permanent_rational_formula_lower_bound"}
+          ], "items": false, "minItems": 2, "maxItems": 2
+        },
+        "nonvacuity_witnesses": {
+          "type": "array", "prefixItems": [
+            {"const": "PermanentFormulaLowerBound.Nonvacuity.permanent_divisionFree_formula_nonvacuous"},
+            {"const": "PermanentFormulaLowerBound.Nonvacuity.permanent_rational_formula_nonvacuous"}
+          ], "items": false, "minItems": 2, "maxItems": 2
+        },
+        "scope_exclusions": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "string", "minLength": 80}}
+      }
+    },
+    "requested_adjudication": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode","route_id","current_route_state","cert_output","may_adjudicate_on_branch"],
+      "properties": {
+        "mode": {"const": "independent_result_family_review"},
+        "route_id": {"const": "MC-ROUTE-OTP-C-PERMANENT-FULL-FORMULA"},
+        "current_route_state": {"const": "not_registered"},
+        "cert_output": {"type": "null"},
+        "may_adjudicate_on_branch": {"const": false}
+      }
+    },
+    "activation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["condition","head_change_requires_reapproval","effect"],
+      "properties": {
+        "condition": {"const": "exact-head CI, non-author APPROVED review, and protected MATHSOLVE merge"},
+        "head_change_requires_reapproval": {"const": true},
+        "effect": {"const": "packet_may_be_offered_to_mathcert_for_independent_intake"}
+      }
+    },
+    "route_controls": {
+      "type": "object", "additionalProperties": false,
+      "required": ["result_family_only","may_create_aggregate_handoff","may_imply_mathcert_acceptance","may_imply_adjudication","may_claim_mathematical_proof","may_promote_claim","may_route_circuit_theorem","historical_variable_leaf_packet_mutable"],
+      "properties": {
+        "result_family_only": {"const": true}, "may_create_aggregate_handoff": {"const": false},
+        "may_imply_mathcert_acceptance": {"const": false}, "may_imply_adjudication": {"const": false},
+        "may_claim_mathematical_proof": {"const": false}, "may_promote_claim": {"const": false},
+        "may_route_circuit_theorem": {"const": false}, "historical_variable_leaf_packet_mutable": {"const": false}
+      }
+    },
+    "claim_boundary": {"type": "string", "minLength": 450}
+  },
+  "$defs": {
+    "semanticRecord": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository","commit_sha","path","digest_algorithm","digest"],
+      "properties": {
+        "repository": {"const": "grandchallenge/MATHFORGE"},
+        "commit_sha": {"const": "26309b3aa1ce21e8d74683235de76b491f62f17c"},
+        "path": {"const": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-C-PERMANENT-FULL-FORMULA-CONSEQUENCES/audit_record.json"},
+        "digest_algorithm": {"const": "git_blob_sha1"},
+        "digest": {"const": "520bdaa3bba075e411f7a0a2b8422e9c9d42c818"}
+      }
+    },
+    "nonvacuityWitness": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository","commit_sha","path","digest_algorithm","digest"],
+      "properties": {
+        "repository": {"const": "grandchallenge/MATHFORGE"},
+        "commit_sha": {"const": "26309b3aa1ce21e8d74683235de76b491f62f17c"},
+        "path": {"const": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-C-PERMANENT/PermanentFormulaNonvacuity.lean"},
+        "digest_algorithm": {"const": "git_blob_sha1"},
+        "digest": {"const": "e756c8476bac1795f3fb8ca0b7235d3a4a5c59ea"}
+      }
+    },
+    "divisionFreeProjection": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_theorem","variable_leaf_constant","leaf_count_constant","vertex_count_constant","internal_gate_constant"],
+      "properties": {
+        "source_theorem": {"const": "Theorem 1.2"}, "variable_leaf_constant": {"const": 128},
+        "leaf_count_constant": {"const": 128}, "vertex_count_constant": {"const": 128}, "internal_gate_constant": {"const": 256}
+      }
+    },
+    "rationalProjection": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_theorem","variable_leaf_constant","leaf_count_constant","vertex_count_constant","internal_gate_constant"],
+      "properties": {
+        "source_theorem": {"const": "Theorem 1.3"}, "variable_leaf_constant": {"const": 192},
+        "leaf_count_constant": {"const": 192}, "vertex_count_constant": {"const": 192}, "internal_gate_constant": {"const": 384}
+      }
+    }
+  }
+}
