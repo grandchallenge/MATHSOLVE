@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grandchallenge.ai/schemas/mathsolve/openai_ten_proofs_permanent_circuit_handoff.schema.json",
+  "title": "OpenAI Ten Proofs Permanent circuit MATHCERT handoff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","record_type","handoff_id","candidate_id","result_family","producer_status","authority","replay_gate","semantic_gate","target_scope","requested_adjudication","activation","route_controls","claim_boundary"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_type": {"const": "result_family_mathcert_handoff"},
+    "handoff_id": {"const": "MC-OTP-HANDOFF-C-PERMANENT-CIRCUIT"},
+    "candidate_id": {"const": "OPENAI-TEN-PROOFS-001"},
+    "result_family": {"const": "OTP-C-PERMANENT"},
+    "producer_status": {"const": "ready_after_protected_merge"},
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["solve_base_merge","forge_semantic_merge","forge_semantic_reviewed_head","forge_semantic_review","human_steward_control_plan_comment","official_subject","semantic_record"],
+      "properties": {
+        "solve_base_merge": {"const": "bebc35818c6d3b79ddc7e348c9bffd328279cd24"},
+        "forge_semantic_merge": {"const": "20a4cb716dba2586931e3eaebb079890c66044bd"},
+        "forge_semantic_reviewed_head": {"const": "35f8cc55983971cc4eed36deb882e7664a85b493"},
+        "forge_semantic_review": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["review_node_id","reviewer","state","submitted_at"],
+          "properties": {
+            "review_node_id": {"const": "PRR_kwDOSuU7K88AAAABJo1wjA"},
+            "reviewer": {"const": "jimsteeg"},
+            "state": {"const": "APPROVED"},
+            "submitted_at": {"const": "2026-08-14T22:57:19Z"}
+          }
+        },
+        "human_steward_control_plan_comment": {"const": 5307219521},
+        "official_subject": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository","commit","tree","archive_sha256"],
+          "properties": {
+            "repository": {"const": "openai/ten-proofs"},
+            "commit": {"const": "e62211d28e3a9131950c89caa6542cfe5eff3bca"},
+            "tree": {"const": "2f8e7ac5ae7f157b6b1de636c2c343b1c7a7e365"},
+            "archive_sha256": {"const": "3022e62ffbed8f5f74d232034a703dc645e6b301879dff1e87df72979914294f"}
+          }
+        },
+        "semantic_record": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository","commit_sha","path","digest_algorithm","digest"],
+          "properties": {
+            "repository": {"const": "grandchallenge/MATHFORGE"},
+            "commit_sha": {"const": "20a4cb716dba2586931e3eaebb079890c66044bd"},
+            "path": {"const": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-C-PERMANENT-CIRCUIT/audit_record.json"},
+            "digest_algorithm": {"const": "git_blob_sha1"},
+            "digest": {"const": "d47a50df90174ed03669b11b8469dc1c0788a1ea"}
+          }
+        }
+      }
+    },
+    "replay_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state","family_clear","aggregate_import_required","exact_run","exact_job","lean_version","lean_default_kernel","nanoda_kernel","comparator","permitted_axioms"],
+      "properties": {
+        "state": {"const": "clear"},
+        "family_clear": {"const": true},
+        "aggregate_import_required": {"const": false},
+        "exact_run": {"const": 31809287009},
+        "exact_job": {"const": 94795718599},
+        "lean_version": {"const": "4.32.0"},
+        "lean_default_kernel": {"const": "accepted"},
+        "nanoda_kernel": {"const": "accepted"},
+        "comparator": {"const": "accepted"},
+        "permitted_axioms": {
+          "type": "array",
+          "prefixItems": [{"const": "propext"},{"const": "Classical.choice"},{"const": "Quot.sound"}],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        }
+      }
+    },
+    "semantic_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state","source_concordance","nonvacuity","activated_by_protected_merge","family_disposition"],
+      "properties": {
+        "state": {"const": "clear"},
+        "source_concordance": {"const": "clear_for_full_theorem_1_1_circuit_surface"},
+        "nonvacuity": {"const": "clear"},
+        "activated_by_protected_merge": {"const": "20a4cb716dba2586931e3eaebb079890c66044bd"},
+        "family_disposition": {"const": "PERMANENT_CIRCUIT_THEOREM_1_1__FULL_FINITE_AND_ASYMPTOTIC_SURFACE__SEMANTIC_AND_NONVACUITY_CLEAR"}
+      }
+    },
+    "target_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_theorem","normalized_statement","source_projection","lean_theorems","nonvacuity_witnesses","scope_exclusions"],
+      "properties": {
+        "source_theorem": {"type": "string", "minLength": 80},
+        "normalized_statement": {"type": "string", "minLength": 350},
+        "source_projection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["formula_target_count","circuit_target_count","coefficient_field","model","input_gates","arithmetic_gates","division_allowed","fanout_reuse_allowed","size_counts_arithmetic_gates_only","input_gates_counted","depth_restriction","degree_restriction","fanout_restriction","cancellation_restriction","dimension_threshold","finite_bound_denominator","finite_bound","bigomega_consequence","ratio_divergence_consequence","historical_pdf_byte_equivalence"],
+          "properties": {
+            "formula_target_count": {"const": 0},
+            "circuit_target_count": {"const": 3},
+            "coefficient_field": {"const": "complex"},
+            "model": {"const": "division_free_arithmetic_circuit_dag"},
+            "input_gates": {
+              "type": "array",
+              "prefixItems": [{"const": "matrix_variable"},{"const": "arbitrary_complex_scalar"}],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "arithmetic_gates": {
+              "type": "array",
+              "prefixItems": [{"const": "add"},{"const": "sub"},{"const": "mul"}],
+              "items": false,
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "division_allowed": {"const": false},
+            "fanout_reuse_allowed": {"const": true},
+            "size_counts_arithmetic_gates_only": {"const": true},
+            "input_gates_counted": {"const": false},
+            "depth_restriction": {"const": false},
+            "degree_restriction": {"const": false},
+            "fanout_restriction": {"const": false},
+            "cancellation_restriction": {"const": false},
+            "dimension_threshold": {"const": 65536},
+            "finite_bound_denominator": {"const": 144},
+            "finite_bound": {"const": "n^2 * (log_2(log_2 n) - 3) / 144 <= circuitComplexity(permanent_n)"},
+            "bigomega_consequence": {"const": "circuitComplexity(permanent_n) = Omega(n^2 log_2 log_2 n)"},
+            "ratio_divergence_consequence": {"const": "circuitComplexity(permanent_n) / n^2 tends to +infinity"},
+            "historical_pdf_byte_equivalence": {"const": false}
+          }
+        },
+        "lean_theorems": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "PermanentRollout.permanent_circuit_loglog_lower_bound"},
+            {"const": "PermanentRollout.permanent_circuit_loglog_bigOmega"},
+            {"const": "PermanentRollout.permanent_complexity_ratio_tendsto_atTop"}
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "nonvacuity_witnesses": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "PermanentRollout.exists_arithmeticCircuit_polynomial"},
+            {"const": "PermanentRollout.permanent_representable"},
+            {"const": "PermanentRollout.circuitComplexity_attained"}
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "scope_exclusions": {"type": "array", "minItems": 5, "maxItems": 5, "items": {"type": "string", "minLength": 80}}
+      }
+    },
+    "requested_adjudication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode","route_id","current_route_state","cert_output","may_adjudicate_on_branch"],
+      "properties": {
+        "mode": {"const": "independent_result_family_review"},
+        "route_id": {"const": "MC-ROUTE-OTP-C-PERMANENT-CIRCUIT"},
+        "current_route_state": {"const": "not_registered"},
+        "cert_output": {"type": "null"},
+        "may_adjudicate_on_branch": {"const": false}
+      }
+    },
+    "activation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["condition","head_change_requires_reapproval","effect"],
+      "properties": {
+        "condition": {"const": "exact-head CI, non-author APPROVED review, and protected MATHSOLVE merge"},
+        "head_change_requires_reapproval": {"const": true},
+        "effect": {"const": "packet_may_be_offered_to_mathcert_for_independent_intake"}
+      }
+    },
+    "route_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result_family_only","may_create_aggregate_handoff","may_imply_mathcert_acceptance","may_imply_adjudication","may_claim_mathematical_proof","may_promote_claim","may_route_formula_theorems","historical_variable_leaf_packet_mutable","full_formula_packet_mutable"],
+      "properties": {
+        "result_family_only": {"const": true},
+        "may_create_aggregate_handoff": {"const": false},
+        "may_imply_mathcert_acceptance": {"const": false},
+        "may_imply_adjudication": {"const": false},
+        "may_claim_mathematical_proof": {"const": false},
+        "may_promote_claim": {"const": false},
+        "may_route_formula_theorems": {"const": false},
+        "historical_variable_leaf_packet_mutable": {"const": false},
+        "full_formula_packet_mutable": {"const": false}
+      }
+    },
+    "claim_boundary": {"type": "string", "minLength": 600}
+  }
+}
