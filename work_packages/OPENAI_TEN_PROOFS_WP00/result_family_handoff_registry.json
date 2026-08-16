@@ -1,28 +1,37 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "registry_id": "MS-OTP-FAMILY-HANDOFFS-001",
   "candidate_id": "OPENAI-TEN-PROOFS-001",
   "tracker": "https://github.com/grandchallenge/MATHSOLVE/issues/106",
+  "successor_trackers": [
+    "https://github.com/grandchallenge/MATHSOLVE/issues/108"
+  ],
   "authority": {
     "forge_semantic_merge": "cb0a203c36a9ef33270d62ab369df7bc27d3b242",
     "permanent_semantic_merge": "60f6e06c957139447bf5943eed731941b22ac608",
     "permanent_semantic_record_digest": "3e04bd16bd8a91eaf9b6702de89fcdcc72f61099",
+    "permanent_full_formula_merge": "26309b3aa1ce21e8d74683235de76b491f62f17c",
+    "permanent_full_formula_record_digest": "520bdaa3bba075e411f7a0a2b8422e9c9d42c818",
     "programme_sync_merge": "fb8e215d56714f595f328cb22b2b3f5e9410cc7b",
     "solve_sync_merge": "2bbd56688244d9803d08c0111719aed05c14a6ed",
-    "solve_current_base": "9a7e6c2e8cea30dcb872161aad76f0abbbe568de",
+    "solve_current_base": "90f8a8544e546a603b34c9b27b2d6a4a68e06de8",
     "cert_pre_route_merge": "993286f982c2fccc144475cdbf9a35d0c7f5f24c"
   },
-  "state": "four_result_family_packets_pending_solve_activation",
+  "state": "five_result_family_packets_pending_solve_activation",
   "semantic_gate": {
     "clear_count": 4,
     "result_family_count": 12,
+    "packet_count": 5,
     "clear_families": [
       "OTP-F-EHRHART",
       "OTP-J1-COMPACTNESS",
       "OTP-J2-TWO-DEGENERATE",
       "OTP-C-PERMANENT"
     ],
-    "permanent_scope": "two encoded variable-leaf targets only"
+    "permanent_scopes": [
+      "two encoded variable-leaf targets only",
+      "two full formula-consequence conjunction targets only"
+    ]
   },
   "packets": [
     {
@@ -56,6 +65,14 @@
       "digest_algorithm": "git_blob_sha1",
       "digest": "a993c530880021930a2b468e76235b91122ca854",
       "semantic_record_digest": "3e04bd16bd8a91eaf9b6702de89fcdcc72f61099"
+    },
+    {
+      "result_family": "OTP-C-PERMANENT",
+      "handoff_id": "MC-OTP-HANDOFF-C-PERMANENT-FULL-FORMULA",
+      "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-C-PERMANENT-FULL-FORMULA.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "8755a1067963e5b46555872cb46025fff2625295",
+      "semantic_record_digest": "520bdaa3bba075e411f7a0a2b8422e9c9d42c818"
     }
   ],
   "blocked_repair_lanes": [
@@ -63,9 +80,6 @@
   ],
   "permanent_unencoded_successors": [
     "source Theorem 1.1 arithmetic-circuit complexity",
-    "Theorem 1.2 internal-gate bound with constant 256",
-    "Theorem 1.3 internal-gate bound with constant 384",
-    "Theorems 1.2/1.3 total-leaves and total-vertices consequences",
     "historical admitted-PDF byte equivalence"
   ],
   "aggregate_integration": {
@@ -88,12 +102,14 @@
     "may_imply_cert_acceptance": false,
     "may_imply_adjudication": false,
     "may_promote_claim": false,
-    "permanent_packet_may_route_circuit_or_omitted_formula_conclusions": false
+    "permanent_packet_may_route_circuit_or_omitted_formula_conclusions": false,
+    "full_formula_successor_packet_separate": true,
+    "historical_permanent_packet_mutable": false
   },
   "activation": {
     "condition": "exact-head CI, non-author APPROVED review, and protected MATHSOLVE merge",
     "head_change_requires_reapproval": true,
     "effect": "each_packet_may_be_offered_independently_to_mathcert"
   },
-  "claim_boundary": "This registry indexes four independent result-family producer packets after protected Forge semantic activation. The Permanent packet is restricted to its two encoded variable-leaf formula targets and does not cover source Theorem 1.1 circuit complexity, the 256/384 gate bounds, total-leaves/vertices consequences, or historical-PDF byte equivalence. The registry is not an aggregate ten-proofs handoff, does not register or imply MATHCERT acceptance, adjudication, output, proof, or promotion, and does not alter the separate GapCVP repair lane or All.lean integration obligation."
+  "claim_boundary": "This registry indexes five independent producer packets across four semantically cleared result families. OTP-C-PERMANENT now has two deliberately separate packet surfaces: the historical two-target variable-leaf projection remains byte-for-byte unchanged, while MC-OTP-HANDOFF-C-PERMANENT-FULL-FORMULA separately carries the two protected full formula-consequence conjunction targets with the exact 128/256 and 192/384 leaf, vertex, and internal-gate bounds. Source Theorem 1.1 arithmetic-circuit complexity remains outside both packets at this stage. The registry is not an aggregate Ten Proofs handoff, creates no MATHCERT acceptance, route, adjudication, output, mathematical-proof promotion, or claim promotion, does not alter the GapCVP repair lane or All.lean integration debt, and does not establish historical admitted-PDF byte equivalence."
 }
