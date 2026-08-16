@@ -4,68 +4,65 @@
   "title": "OpenAI ten-proofs independent result-family handoff registry",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version","registry_id","candidate_id","tracker","authority","state","semantic_gate","packets","blocked_repair_lanes","permanent_unencoded_successors","aggregate_integration","cert_state","route_controls","activation","claim_boundary"],
+  "required": ["schema_version","registry_id","candidate_id","tracker","successor_trackers","authority","state","semantic_gate","packets","blocked_repair_lanes","permanent_unencoded_successors","aggregate_integration","cert_state","route_controls","activation","claim_boundary"],
   "properties": {
-    "schema_version": {"const": "1.1.0"},
+    "schema_version": {"const": "1.2.0"},
     "registry_id": {"const": "MS-OTP-FAMILY-HANDOFFS-001"},
     "candidate_id": {"const": "OPENAI-TEN-PROOFS-001"},
     "tracker": {"const": "https://github.com/grandchallenge/MATHSOLVE/issues/106"},
+    "successor_trackers": {
+      "type": "array", "prefixItems": [{"const": "https://github.com/grandchallenge/MATHSOLVE/issues/108"}], "items": false, "minItems": 1, "maxItems": 1
+    },
     "authority": {
       "type": "object", "additionalProperties": false,
-      "required": ["forge_semantic_merge","permanent_semantic_merge","permanent_semantic_record_digest","programme_sync_merge","solve_sync_merge","solve_current_base","cert_pre_route_merge"],
+      "required": ["forge_semantic_merge","permanent_semantic_merge","permanent_semantic_record_digest","permanent_full_formula_merge","permanent_full_formula_record_digest","programme_sync_merge","solve_sync_merge","solve_current_base","cert_pre_route_merge"],
       "properties": {
         "forge_semantic_merge": {"const": "cb0a203c36a9ef33270d62ab369df7bc27d3b242"},
         "permanent_semantic_merge": {"const": "60f6e06c957139447bf5943eed731941b22ac608"},
         "permanent_semantic_record_digest": {"const": "3e04bd16bd8a91eaf9b6702de89fcdcc72f61099"},
+        "permanent_full_formula_merge": {"const": "26309b3aa1ce21e8d74683235de76b491f62f17c"},
+        "permanent_full_formula_record_digest": {"const": "520bdaa3bba075e411f7a0a2b8422e9c9d42c818"},
         "programme_sync_merge": {"const": "fb8e215d56714f595f328cb22b2b3f5e9410cc7b"},
         "solve_sync_merge": {"const": "2bbd56688244d9803d08c0111719aed05c14a6ed"},
-        "solve_current_base": {"const": "9a7e6c2e8cea30dcb872161aad76f0abbbe568de"},
+        "solve_current_base": {"const": "90f8a8544e546a603b34c9b27b2d6a4a68e06de8"},
         "cert_pre_route_merge": {"const": "993286f982c2fccc144475cdbf9a35d0c7f5f24c"}
       }
     },
-    "state": {"const": "four_result_family_packets_pending_solve_activation"},
+    "state": {"const": "five_result_family_packets_pending_solve_activation"},
     "semantic_gate": {
       "type": "object", "additionalProperties": false,
-      "required": ["clear_count","result_family_count","clear_families","permanent_scope"],
+      "required": ["clear_count","result_family_count","packet_count","clear_families","permanent_scopes"],
       "properties": {
         "clear_count": {"const": 4},
         "result_family_count": {"const": 12},
+        "packet_count": {"const": 5},
         "clear_families": {
-          "type": "array",
-          "prefixItems": [
-            {"const": "OTP-F-EHRHART"},
-            {"const": "OTP-J1-COMPACTNESS"},
-            {"const": "OTP-J2-TWO-DEGENERATE"},
-            {"const": "OTP-C-PERMANENT"}
-          ],
-          "items": false, "minItems": 4, "maxItems": 4
+          "type": "array", "prefixItems": [
+            {"const": "OTP-F-EHRHART"}, {"const": "OTP-J1-COMPACTNESS"}, {"const": "OTP-J2-TWO-DEGENERATE"}, {"const": "OTP-C-PERMANENT"}
+          ], "items": false, "minItems": 4, "maxItems": 4
         },
-        "permanent_scope": {"const": "two encoded variable-leaf targets only"}
+        "permanent_scopes": {
+          "type": "array", "prefixItems": [
+            {"const": "two encoded variable-leaf targets only"},
+            {"const": "two full formula-consequence conjunction targets only"}
+          ], "items": false, "minItems": 2, "maxItems": 2
+        }
       }
     },
     "packets": {
-      "type": "array", "minItems": 4, "maxItems": 4,
+      "type": "array", "minItems": 5, "maxItems": 5,
       "prefixItems": [
-        {"$ref": "#/$defs/packetRef"},
-        {"$ref": "#/$defs/packetRef"},
-        {"$ref": "#/$defs/packetRef"},
-        {"$ref": "#/$defs/packetRef"}
-      ],
-      "items": false
+        {"$ref": "#/$defs/packetRef"}, {"$ref": "#/$defs/packetRef"}, {"$ref": "#/$defs/packetRef"}, {"$ref": "#/$defs/packetRef"}, {"$ref": "#/$defs/packetRef"}
+      ], "items": false
     },
     "blocked_repair_lanes": {
       "type": "array", "prefixItems": [{"const": "OTP-H-GAPCVP"}], "items": false, "minItems": 1, "maxItems": 1
     },
     "permanent_unencoded_successors": {
-      "type": "array", "minItems": 5, "maxItems": 5,
-      "prefixItems": [
+      "type": "array", "prefixItems": [
         {"const": "source Theorem 1.1 arithmetic-circuit complexity"},
-        {"const": "Theorem 1.2 internal-gate bound with constant 256"},
-        {"const": "Theorem 1.3 internal-gate bound with constant 384"},
-        {"const": "Theorems 1.2/1.3 total-leaves and total-vertices consequences"},
         {"const": "historical admitted-PDF byte equivalence"}
-      ],
-      "items": false
+      ], "items": false, "minItems": 2, "maxItems": 2
     },
     "aggregate_integration": {
       "type": "object", "additionalProperties": false,
@@ -73,8 +70,7 @@
       "properties": {
         "all_lean_state": {"const": "failed_separate_obligation"},
         "failure": {"const": "All.lean namespace collision on replicate_to_periodic_packing"},
-        "reopens_family_replay": {"const": false},
-        "reopens_semantic_gates": {"const": false}
+        "reopens_family_replay": {"const": false}, "reopens_semantic_gates": {"const": false}
       }
     },
     "cert_state": {
@@ -86,16 +82,13 @@
     },
     "route_controls": {
       "type": "object", "additionalProperties": false,
-      "required": ["aggregate_handoff","aggregate_route_prohibited","result_family_packets_independent","may_offer_packets_before_solve_activation","may_imply_cert_acceptance","may_imply_adjudication","may_promote_claim","permanent_packet_may_route_circuit_or_omitted_formula_conclusions"],
+      "required": ["aggregate_handoff","aggregate_route_prohibited","result_family_packets_independent","may_offer_packets_before_solve_activation","may_imply_cert_acceptance","may_imply_adjudication","may_promote_claim","permanent_packet_may_route_circuit_or_omitted_formula_conclusions","full_formula_successor_packet_separate","historical_permanent_packet_mutable"],
       "properties": {
-        "aggregate_handoff": {"type": "null"},
-        "aggregate_route_prohibited": {"const": true},
-        "result_family_packets_independent": {"const": true},
-        "may_offer_packets_before_solve_activation": {"const": false},
-        "may_imply_cert_acceptance": {"const": false},
-        "may_imply_adjudication": {"const": false},
-        "may_promote_claim": {"const": false},
-        "permanent_packet_may_route_circuit_or_omitted_formula_conclusions": {"const": false}
+        "aggregate_handoff": {"type": "null"}, "aggregate_route_prohibited": {"const": true},
+        "result_family_packets_independent": {"const": true}, "may_offer_packets_before_solve_activation": {"const": false},
+        "may_imply_cert_acceptance": {"const": false}, "may_imply_adjudication": {"const": false}, "may_promote_claim": {"const": false},
+        "permanent_packet_may_route_circuit_or_omitted_formula_conclusions": {"const": false},
+        "full_formula_successor_packet_separate": {"const": true}, "historical_permanent_packet_mutable": {"const": false}
       }
     },
     "activation": {
@@ -107,7 +100,7 @@
         "effect": {"const": "each_packet_may_be_offered_independently_to_mathcert"}
       }
     },
-    "claim_boundary": {"type": "string", "minLength": 400}
+    "claim_boundary": {"type": "string", "minLength": 600}
   },
   "$defs": {
     "packetRef": {
