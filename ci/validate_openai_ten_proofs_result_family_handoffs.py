@@ -17,72 +17,150 @@ REGISTRY_PATH = WP_ROOT / "result_family_handoff_registry.json"
 PACKET_SCHEMA_PATH = ROOT / "schemas" / "openai_ten_proofs_result_family_handoff.schema.json"
 PERMANENT_SCHEMA_PATH = ROOT / "schemas" / "openai_ten_proofs_permanent_result_family_handoff.schema.json"
 FULL_FORMULA_SCHEMA_PATH = ROOT / "schemas" / "openai_ten_proofs_permanent_full_formula_handoff.schema.json"
+CIRCUIT_SCHEMA_PATH = ROOT / "schemas" / "openai_ten_proofs_permanent_circuit_handoff.schema.json"
 REGISTRY_SCHEMA_PATH = ROOT / "schemas" / "openai_ten_proofs_result_family_handoff_registry.schema.json"
 
 EXPECTED_PACKETS = {
     "OTP-F-EHRHART": {
-        "family": "OTP-F-EHRHART", "handoff_id": "MC-OTP-HANDOFF-F-EHRHART",
+        "family": "OTP-F-EHRHART",
+        "handoff_id": "MC-OTP-HANDOFF-F-EHRHART",
         "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-F-EHRHART.json",
         "semantic_path": "sources/OPENAI-TEN-PROOFS-001/semantic_audits/OTP-F-EHRHART.json",
         "semantic_digest": "a3dc4de4c38a80b7aec1fae6506b08e14d2e58bb",
-        "route_id": "MC-ROUTE-OTP-F-EHRHART", "schema": "legacy",
+        "route_id": "MC-ROUTE-OTP-F-EHRHART",
+        "schema": "legacy",
     },
     "OTP-J1-COMPACTNESS": {
-        "family": "OTP-J1-COMPACTNESS", "handoff_id": "MC-OTP-HANDOFF-J1-COMPACTNESS",
+        "family": "OTP-J1-COMPACTNESS",
+        "handoff_id": "MC-OTP-HANDOFF-J1-COMPACTNESS",
         "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-J1-COMPACTNESS.json",
         "semantic_path": "sources/OPENAI-TEN-PROOFS-001/semantic_audits/OTP-J1-COMPACTNESS.json",
         "semantic_digest": "659396358d0d999c00011645f72602f30ccf6b0e",
-        "route_id": "MC-ROUTE-OTP-J1-COMPACTNESS", "schema": "legacy",
+        "route_id": "MC-ROUTE-OTP-J1-COMPACTNESS",
+        "schema": "legacy",
     },
     "OTP-J2-TWO-DEGENERATE": {
-        "family": "OTP-J2-TWO-DEGENERATE", "handoff_id": "MC-OTP-HANDOFF-J2-TWO-DEGENERATE",
+        "family": "OTP-J2-TWO-DEGENERATE",
+        "handoff_id": "MC-OTP-HANDOFF-J2-TWO-DEGENERATE",
         "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-J2-TWO-DEGENERATE.json",
         "semantic_path": "sources/OPENAI-TEN-PROOFS-001/semantic_audits/OTP-J2-TWO-DEGENERATE.json",
         "semantic_digest": "7bd168c46921f64364b20021b6315d68f0fde7d0",
-        "route_id": "MC-ROUTE-OTP-J2-TWO-DEGENERATE", "schema": "legacy",
+        "route_id": "MC-ROUTE-OTP-J2-TWO-DEGENERATE",
+        "schema": "legacy",
     },
     "OTP-C-PERMANENT": {
-        "family": "OTP-C-PERMANENT", "handoff_id": "MC-OTP-HANDOFF-C-PERMANENT-FORMULA",
+        "family": "OTP-C-PERMANENT",
+        "handoff_id": "MC-OTP-HANDOFF-C-PERMANENT-FORMULA",
         "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-C-PERMANENT.json",
         "semantic_path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-C-PERMANENT/semantic_audit_record.json",
         "semantic_digest": "3e04bd16bd8a91eaf9b6702de89fcdcc72f61099",
-        "route_id": "MC-ROUTE-OTP-C-PERMANENT-FORMULA", "schema": "permanent",
+        "route_id": "MC-ROUTE-OTP-C-PERMANENT-FORMULA",
+        "schema": "permanent",
         "protected_blob": "a993c530880021930a2b468e76235b91122ca854",
     },
     "OTP-C-PERMANENT-FULL-FORMULA": {
-        "family": "OTP-C-PERMANENT", "handoff_id": "MC-OTP-HANDOFF-C-PERMANENT-FULL-FORMULA",
+        "family": "OTP-C-PERMANENT",
+        "handoff_id": "MC-OTP-HANDOFF-C-PERMANENT-FULL-FORMULA",
         "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-C-PERMANENT-FULL-FORMULA.json",
         "semantic_path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-C-PERMANENT-FULL-FORMULA-CONSEQUENCES/audit_record.json",
         "semantic_digest": "520bdaa3bba075e411f7a0a2b8422e9c9d42c818",
-        "route_id": "MC-ROUTE-OTP-C-PERMANENT-FULL-FORMULA", "schema": "full_formula",
+        "route_id": "MC-ROUTE-OTP-C-PERMANENT-FULL-FORMULA",
+        "schema": "full_formula",
         "protected_blob": "8755a1067963e5b46555872cb46025fff2625295",
+    },
+    "OTP-C-PERMANENT-CIRCUIT": {
+        "family": "OTP-C-PERMANENT",
+        "handoff_id": "MC-OTP-HANDOFF-C-PERMANENT-CIRCUIT",
+        "path": "work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-C-PERMANENT-CIRCUIT.json",
+        "semantic_path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-C-PERMANENT-CIRCUIT/audit_record.json",
+        "semantic_digest": "d47a50df90174ed03669b11b8469dc1c0788a1ea",
+        "route_id": "MC-ROUTE-OTP-C-PERMANENT-CIRCUIT",
+        "schema": "circuit",
+        "protected_blob": "f8443c47cee03890ca52af3e0cd39f1a54b5fc71",
     },
 }
 EXPECTED_KEYS = tuple(EXPECTED_PACKETS)
 EXPECTED_CLEAR_FAMILIES = ["OTP-F-EHRHART", "OTP-J1-COMPACTNESS", "OTP-J2-TWO-DEGENERATE", "OTP-C-PERMANENT"]
 EXPECTED_BLOCKED = ["OTP-H-GAPCVP"]
-EXPECTED_PERMANENT_UNENCODED = [
-    "source Theorem 1.1 arithmetic-circuit complexity",
-    "historical admitted-PDF byte equivalence",
-]
+EXPECTED_PERMANENT_UNENCODED = ["historical admitted-PDF byte equivalence"]
 EXPECTED_VARIABLE_PROJECTION = {
-    "formula_target_count": 2, "circuit_target_count": 0, "coefficient_field": "complex",
-    "dimension_threshold": 32, "log_base": 2,
-    "division_free": {"source_theorem": "Theorem 1.2", "variable_leaf_constant": 128, "source_gate_constant": 256,
-                      "encoded_variable_leaf_bound": True, "encoded_gate_bound": False, "encoded_total_leaves_vertices": False},
-    "rational": {"source_theorem": "Theorem 1.3", "variable_leaf_constant": 192, "source_gate_constant": 384,
-                 "encoded_variable_leaf_bound": True, "encoded_gate_bound": False, "encoded_total_leaves_vertices": False},
+    "formula_target_count": 2,
+    "circuit_target_count": 0,
+    "coefficient_field": "complex",
+    "dimension_threshold": 32,
+    "log_base": 2,
+    "division_free": {
+        "source_theorem": "Theorem 1.2",
+        "variable_leaf_constant": 128,
+        "source_gate_constant": 256,
+        "encoded_variable_leaf_bound": True,
+        "encoded_gate_bound": False,
+        "encoded_total_leaves_vertices": False,
+    },
+    "rational": {
+        "source_theorem": "Theorem 1.3",
+        "variable_leaf_constant": 192,
+        "source_gate_constant": 384,
+        "encoded_variable_leaf_bound": True,
+        "encoded_gate_bound": False,
+        "encoded_total_leaves_vertices": False,
+    },
     "historical_pdf_byte_equivalence": False,
 }
 EXPECTED_FULL_FORMULA_PROJECTION = {
-    "formula_target_count": 2, "circuit_target_count": 0, "coefficient_field": "complex",
-    "dimension_threshold": 32, "log_base": 2,
-    "division_free": {"source_theorem": "Theorem 1.2", "variable_leaf_constant": 128, "leaf_count_constant": 128,
-                      "vertex_count_constant": 128, "internal_gate_constant": 256},
-    "rational": {"source_theorem": "Theorem 1.3", "variable_leaf_constant": 192, "leaf_count_constant": 192,
-                 "vertex_count_constant": 192, "internal_gate_constant": 384},
+    "formula_target_count": 2,
+    "circuit_target_count": 0,
+    "coefficient_field": "complex",
+    "dimension_threshold": 32,
+    "log_base": 2,
+    "division_free": {
+        "source_theorem": "Theorem 1.2",
+        "variable_leaf_constant": 128,
+        "leaf_count_constant": 128,
+        "vertex_count_constant": 128,
+        "internal_gate_constant": 256,
+    },
+    "rational": {
+        "source_theorem": "Theorem 1.3",
+        "variable_leaf_constant": 192,
+        "leaf_count_constant": 192,
+        "vertex_count_constant": 192,
+        "internal_gate_constant": 384,
+    },
     "historical_pdf_byte_equivalence": False,
 }
+EXPECTED_CIRCUIT_PROJECTION = {
+    "formula_target_count": 0,
+    "circuit_target_count": 3,
+    "coefficient_field": "complex",
+    "model": "division_free_arithmetic_circuit_dag",
+    "input_gates": ["matrix_variable", "arbitrary_complex_scalar"],
+    "arithmetic_gates": ["add", "sub", "mul"],
+    "division_allowed": False,
+    "fanout_reuse_allowed": True,
+    "size_counts_arithmetic_gates_only": True,
+    "input_gates_counted": False,
+    "depth_restriction": False,
+    "degree_restriction": False,
+    "fanout_restriction": False,
+    "cancellation_restriction": False,
+    "dimension_threshold": 65536,
+    "finite_bound_denominator": 144,
+    "finite_bound": "n^2 * (log_2(log_2 n) - 3) / 144 <= circuitComplexity(permanent_n)",
+    "bigomega_consequence": "circuitComplexity(permanent_n) = Omega(n^2 log_2 log_2 n)",
+    "ratio_divergence_consequence": "circuitComplexity(permanent_n) / n^2 tends to +infinity",
+    "historical_pdf_byte_equivalence": False,
+}
+EXPECTED_CIRCUIT_THEOREMS = [
+    "PermanentRollout.permanent_circuit_loglog_lower_bound",
+    "PermanentRollout.permanent_circuit_loglog_bigOmega",
+    "PermanentRollout.permanent_complexity_ratio_tendsto_atTop",
+]
+EXPECTED_CIRCUIT_NONVACUITY = [
+    "PermanentRollout.exists_arithmeticCircuit_polynomial",
+    "PermanentRollout.permanent_representable",
+    "PermanentRollout.circuitComplexity_attained",
+]
 
 
 def load_json(path: Path) -> Any:
@@ -96,13 +174,17 @@ def git_blob_sha1(path: Path) -> str:
 
 def schema_errors(instance: dict[str, Any], schema: dict[str, Any], label: str) -> list[str]:
     validator = Draft202012Validator(schema, format_checker=FormatChecker())
-    return [f"{label}: {error.json_path}: {error.message}"
-            for error in sorted(validator.iter_errors(instance), key=lambda item: list(item.path))]
+    return [
+        f"{label}: {error.json_path}: {error.message}"
+        for error in sorted(validator.iter_errors(instance), key=lambda item: list(item.path))
+    ]
 
 
-def validation_errors(registry: dict[str, Any] | None = None,
-                      packets: dict[str, dict[str, Any]] | None = None,
-                      packet_blobs: dict[str, str] | None = None) -> list[str]:
+def validation_errors(
+    registry: dict[str, Any] | None = None,
+    packets: dict[str, dict[str, Any]] | None = None,
+    packet_blobs: dict[str, str] | None = None,
+) -> list[str]:
     errors: list[str] = []
     registry = load_json(REGISTRY_PATH) if registry is None else registry
     if packets is None:
@@ -114,6 +196,7 @@ def validation_errors(registry: dict[str, Any] | None = None,
         "legacy": load_json(PACKET_SCHEMA_PATH),
         "permanent": load_json(PERMANENT_SCHEMA_PATH),
         "full_formula": load_json(FULL_FORMULA_SCHEMA_PATH),
+        "circuit": load_json(CIRCUIT_SCHEMA_PATH),
     }
     errors.extend(schema_errors(registry, load_json(REGISTRY_SCHEMA_PATH), str(REGISTRY_PATH)))
 
@@ -149,8 +232,13 @@ def validation_errors(registry: dict[str, Any] | None = None,
         if packet.get("replay_gate", {}).get("state") != "clear" or packet.get("semantic_gate", {}).get("state") != "clear":
             errors.append(f"{label}: protected replay/semantic gate is not clear")
         controls = packet.get("route_controls", {})
-        for field in ("may_create_aggregate_handoff", "may_imply_mathcert_acceptance", "may_imply_adjudication",
-                      "may_claim_mathematical_proof", "may_promote_claim"):
+        for field in (
+            "may_create_aggregate_handoff",
+            "may_imply_mathcert_acceptance",
+            "may_imply_adjudication",
+            "may_claim_mathematical_proof",
+            "may_promote_claim",
+        ):
             if controls.get(field) is not False:
                 errors.append(f"{label}: prohibited route control enabled: {field}")
         if controls.get("result_family_only") is not True:
@@ -185,6 +273,25 @@ def validation_errors(registry: dict[str, Any] | None = None,
     if full.get("route_controls", {}).get("may_route_circuit_theorem") is not False:
         errors.append("OTP-FAMILY-HANDOFFS-001: circuit authority inserted into full-formula packet")
 
+    circuit = packets.get("OTP-C-PERMANENT-CIRCUIT", {})
+    if circuit.get("target_scope", {}).get("source_projection") != EXPECTED_CIRCUIT_PROJECTION:
+        errors.append("OTP-FAMILY-HANDOFFS-001: Permanent circuit source projection drift")
+    if circuit.get("target_scope", {}).get("lean_theorems") != EXPECTED_CIRCUIT_THEOREMS:
+        errors.append("OTP-FAMILY-HANDOFFS-001: Permanent circuit target set drift")
+    if circuit.get("target_scope", {}).get("nonvacuity_witnesses") != EXPECTED_CIRCUIT_NONVACUITY:
+        errors.append("OTP-FAMILY-HANDOFFS-001: Permanent circuit nonvacuity authority drift")
+    if circuit.get("authority", {}).get("human_steward_control_plan_comment") != 5307219521:
+        errors.append("OTP-FAMILY-HANDOFFS-001: circuit Human Steward authority drift")
+    if circuit.get("authority", {}).get("forge_semantic_merge") != "20a4cb716dba2586931e3eaebb079890c66044bd":
+        errors.append("OTP-FAMILY-HANDOFFS-001: circuit Forge authority drift")
+    if circuit.get("replay_gate", {}).get("exact_run") != 31809287009 or circuit.get("replay_gate", {}).get("exact_job") != 94795718599:
+        errors.append("OTP-FAMILY-HANDOFFS-001: circuit replay receipt drift")
+    circuit_controls = circuit.get("route_controls", {})
+    if circuit_controls.get("may_route_formula_theorems") is not False:
+        errors.append("OTP-FAMILY-HANDOFFS-001: formula authority inserted into circuit packet")
+    if circuit_controls.get("historical_variable_leaf_packet_mutable") is not False or circuit_controls.get("full_formula_packet_mutable") is not False:
+        errors.append("OTP-FAMILY-HANDOFFS-001: circuit packet gained mutation authority over formula packets")
+
     for duplicate in sorted({x for x in seen_handoffs if seen_handoffs.count(x) > 1}):
         errors.append(f"OTP-FAMILY-HANDOFFS-001: duplicate handoff identity {duplicate}")
     for duplicate in sorted({x for x in seen_routes if seen_routes.count(x) > 1}):
@@ -205,11 +312,30 @@ def validation_errors(registry: dict[str, Any] | None = None,
         if item.get("digest") != packet_blobs.get(key):
             errors.append(f"OTP-FAMILY-HANDOFFS-001: packet Git blob drift for {key}")
 
+    if registry.get("schema_version") != "1.3.0" or registry.get("state") != "six_result_family_packets_pending_solve_activation":
+        errors.append("OTP-FAMILY-HANDOFFS-001: successor registry version/state drift")
+    if registry.get("successor_trackers") != [
+        "https://github.com/grandchallenge/MATHSOLVE/issues/108",
+        "https://github.com/grandchallenge/MATHSOLVE/issues/109",
+    ]:
+        errors.append("OTP-FAMILY-HANDOFFS-001: successor tracker set drift")
+    authority = registry.get("authority", {})
+    if authority.get("permanent_circuit_merge") != "20a4cb716dba2586931e3eaebb079890c66044bd" or authority.get("permanent_circuit_record_digest") != "d47a50df90174ed03669b11b8469dc1c0788a1ea":
+        errors.append("OTP-FAMILY-HANDOFFS-001: circuit registry authority drift")
+    if authority.get("solve_current_base") != "bebc35818c6d3b79ddc7e348c9bffd328279cd24":
+        errors.append("OTP-FAMILY-HANDOFFS-001: circuit producer base drift")
+
     semantic = registry.get("semantic_gate", {})
-    if semantic.get("clear_count") != 4 or semantic.get("result_family_count") != 12 or semantic.get("packet_count") != 5:
+    if semantic.get("clear_count") != 4 or semantic.get("result_family_count") != 12 or semantic.get("packet_count") != 6:
         errors.append("OTP-FAMILY-HANDOFFS-001: family/packet census drift")
     if semantic.get("clear_families") != EXPECTED_CLEAR_FAMILIES:
         errors.append("OTP-FAMILY-HANDOFFS-001: clear-family set drift")
+    if semantic.get("permanent_scopes") != [
+        "two encoded variable-leaf targets only",
+        "two full formula-consequence conjunction targets only",
+        "three source Theorem 1.1 circuit targets only",
+    ]:
+        errors.append("OTP-FAMILY-HANDOFFS-001: Permanent packet-scope separation drift")
     if registry.get("blocked_repair_lanes") != EXPECTED_BLOCKED:
         errors.append("OTP-FAMILY-HANDOFFS-001: blocked repair lanes drift")
     if registry.get("permanent_unencoded_successors") != EXPECTED_PERMANENT_UNENCODED:
@@ -225,12 +351,22 @@ def validation_errors(registry: dict[str, Any] | None = None,
     controls = registry.get("route_controls", {})
     if controls.get("aggregate_handoff") is not None or controls.get("aggregate_route_prohibited") is not True:
         errors.append("OTP-FAMILY-HANDOFFS-001: aggregate handoff/route boundary weakened")
-    for field in ("may_offer_packets_before_solve_activation", "may_imply_cert_acceptance", "may_imply_adjudication", "may_promote_claim",
-                  "permanent_packet_may_route_circuit_or_omitted_formula_conclusions", "historical_permanent_packet_mutable"):
+    for field in (
+        "may_offer_packets_before_solve_activation",
+        "may_imply_cert_acceptance",
+        "may_imply_adjudication",
+        "may_promote_claim",
+        "permanent_packet_may_route_unencoded_conclusions",
+        "historical_permanent_packet_mutable",
+        "full_formula_packet_mutable",
+        "circuit_packet_mutable_by_other_permanent_surfaces",
+    ):
         if controls.get(field) is not False:
             errors.append(f"OTP-FAMILY-HANDOFFS-001: prohibited registry control enabled: {field}")
-    if controls.get("result_family_packets_independent") is not True or controls.get("full_formula_successor_packet_separate") is not True:
-        errors.append("OTP-FAMILY-HANDOFFS-001: packet independence/successor separation removed")
+    if controls.get("result_family_packets_independent") is not True:
+        errors.append("OTP-FAMILY-HANDOFFS-001: result-family packet independence removed")
+    if controls.get("full_formula_successor_packet_separate") is not True or controls.get("circuit_successor_packet_separate") is not True:
+        errors.append("OTP-FAMILY-HANDOFFS-001: Permanent successor-surface separation removed")
     return errors
 
 
@@ -240,7 +376,10 @@ def main() -> int:
         print("\n".join(errors), file=sys.stderr)
         print(f"result-family handoff validation failed with {len(errors)} error(s)", file=sys.stderr)
         return 1
-    print("validated five independent packets across four cleared families; historical Permanent bytes preserved; full-formula 128/256/192/384 successor closed; circuit and Cert authority excluded")
+    print(
+        "validated six independent packets across four cleared families; historical Permanent and full-formula bytes preserved; "
+        "Theorem 1.1 circuit 65536/144 surface closed; Cert and aggregate authority excluded"
+    )
     return 0
 
 

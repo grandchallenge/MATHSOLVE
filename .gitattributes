@@ -1,0 +1,3 @@
+# Content-addressed OpenAI Ten Proofs handoff packets must retain canonical bytes
+# across Linux and Windows checkouts.
+work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/*.json text eol=lf
