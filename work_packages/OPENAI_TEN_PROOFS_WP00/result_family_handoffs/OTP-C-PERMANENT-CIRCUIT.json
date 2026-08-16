@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "result_family_mathcert_handoff",
+  "handoff_id": "MC-OTP-HANDOFF-C-PERMANENT-CIRCUIT",
+  "candidate_id": "OPENAI-TEN-PROOFS-001",
+  "result_family": "OTP-C-PERMANENT",
+  "producer_status": "ready_after_protected_merge",
+  "authority": {
+    "solve_base_merge": "bebc35818c6d3b79ddc7e348c9bffd328279cd24",
+    "forge_semantic_merge": "20a4cb716dba2586931e3eaebb079890c66044bd",
+    "forge_semantic_reviewed_head": "35f8cc55983971cc4eed36deb882e7664a85b493",
+    "forge_semantic_review": {
+      "review_node_id": "PRR_kwDOSuU7K88AAAABJo1wjA",
+      "reviewer": "jimsteeg",
+      "state": "APPROVED",
+      "submitted_at": "2026-08-14T22:57:19Z"
+    },
+    "human_steward_control_plan_comment": 5307219521,
+    "official_subject": {
+      "repository": "openai/ten-proofs",
+      "commit": "e62211d28e3a9131950c89caa6542cfe5eff3bca",
+      "tree": "2f8e7ac5ae7f157b6b1de636c2c343b1c7a7e365",
+      "archive_sha256": "3022e62ffbed8f5f74d232034a703dc645e6b301879dff1e87df72979914294f"
+    },
+    "semantic_record": {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "20a4cb716dba2586931e3eaebb079890c66044bd",
+      "path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-C-PERMANENT-CIRCUIT/audit_record.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "d47a50df90174ed03669b11b8469dc1c0788a1ea"
+    }
+  },
+  "replay_gate": {
+    "state": "clear",
+    "family_clear": true,
+    "aggregate_import_required": false,
+    "exact_run": 31809287009,
+    "exact_job": 94795718599,
+    "lean_version": "4.32.0",
+    "lean_default_kernel": "accepted",
+    "nanoda_kernel": "accepted",
+    "comparator": "accepted",
+    "permitted_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "semantic_gate": {
+    "state": "clear",
+    "source_concordance": "clear_for_full_theorem_1_1_circuit_surface",
+    "nonvacuity": "clear",
+    "activated_by_protected_merge": "20a4cb716dba2586931e3eaebb079890c66044bd",
+    "family_disposition": "PERMANENT_CIRCUIT_THEOREM_1_1__FULL_FINITE_AND_ASYMPTOTIC_SURFACE__SEMANTIC_AND_NONVACUITY_CLEAR"
+  },
+  "target_scope": {
+    "source_theorem": "Chapter 5, Theorem 1.1 arithmetic-circuit lower bound and its two stated asymptotic consequences only; formula Theorems 1.2 and 1.3 remain separately governed.",
+    "normalized_statement": "For division-free arithmetic circuits over the complex numbers computing the n by n permanent, with variable and arbitrary complex-scalar input gates, add/subtract/multiply arithmetic gates, backward references permitting fanout reuse, and size counting arithmetic gates only, the protected source surface gives for n at least 65536 the finite lower bound n^2 * (log_2(log_2 n) - 3) / 144, the asymptotic consequence Omega(n^2 log_2 log_2 n), and divergence to positive infinity of circuit complexity divided by n^2.",
+    "source_projection": {
+      "formula_target_count": 0,
+      "circuit_target_count": 3,
+      "coefficient_field": "complex",
+      "model": "division_free_arithmetic_circuit_dag",
+      "input_gates": ["matrix_variable", "arbitrary_complex_scalar"],
+      "arithmetic_gates": ["add", "sub", "mul"],
+      "division_allowed": false,
+      "fanout_reuse_allowed": true,
+      "size_counts_arithmetic_gates_only": true,
+      "input_gates_counted": false,
+      "depth_restriction": false,
+      "degree_restriction": false,
+      "fanout_restriction": false,
+      "cancellation_restriction": false,
+      "dimension_threshold": 65536,
+      "finite_bound_denominator": 144,
+      "finite_bound": "n^2 * (log_2(log_2 n) - 3) / 144 <= circuitComplexity(permanent_n)",
+      "bigomega_consequence": "circuitComplexity(permanent_n) = Omega(n^2 log_2 log_2 n)",
+      "ratio_divergence_consequence": "circuitComplexity(permanent_n) / n^2 tends to +infinity",
+      "historical_pdf_byte_equivalence": false
+    },
+    "lean_theorems": [
+      "PermanentRollout.permanent_circuit_loglog_lower_bound",
+      "PermanentRollout.permanent_circuit_loglog_bigOmega",
+      "PermanentRollout.permanent_complexity_ratio_tendsto_atTop"
+    ],
+    "nonvacuity_witnesses": [
+      "PermanentRollout.exists_arithmeticCircuit_polynomial",
+      "PermanentRollout.permanent_representable",
+      "PermanentRollout.circuitComplexity_attained"
+    ],
+    "scope_exclusions": [
+      "The historical variable-leaf packet MC-OTP-HANDOFF-C-PERMANENT-FORMULA remains immutable and is not rewritten by this circuit successor packet.",
+      "The protected full-formula packet MC-OTP-HANDOFF-C-PERMANENT-FULL-FORMULA remains immutable and is not rewritten by this circuit successor packet.",
+      "Formula Theorems 1.2 and 1.3 and all formula-size targets remain outside this circuit packet.",
+      "Historical admitted-PDF byte equivalence remains unestablished and is not asserted by this bounded theorem-locus handoff.",
+      "No MATHCERT route, adjudication, Cert output, mathematical-proof promotion, or aggregate OpenAI Ten Proofs authority is created on this branch."
+    ]
+  },
+  "requested_adjudication": {
+    "mode": "independent_result_family_review",
+    "route_id": "MC-ROUTE-OTP-C-PERMANENT-CIRCUIT",
+    "current_route_state": "not_registered",
+    "cert_output": null,
+    "may_adjudicate_on_branch": false
+  },
+  "activation": {
+    "condition": "exact-head CI, non-author APPROVED review, and protected MATHSOLVE merge",
+    "head_change_requires_reapproval": true,
+    "effect": "packet_may_be_offered_to_mathcert_for_independent_intake"
+  },
+  "route_controls": {
+    "result_family_only": true,
+    "may_create_aggregate_handoff": false,
+    "may_imply_mathcert_acceptance": false,
+    "may_imply_adjudication": false,
+    "may_claim_mathematical_proof": false,
+    "may_promote_claim": false,
+    "may_route_formula_theorems": false,
+    "historical_variable_leaf_packet_mutable": false,
+    "full_formula_packet_mutable": false
+  },
+  "claim_boundary": "This packet transfers only the already-protected MATHFORGE semantic/nonvacuity authority for the three-source Theorem 1.1 circuit targets. It preserves the complex division-free arithmetic-circuit DAG model, variable and arbitrary complex-scalar inputs, add/subtract/multiply arithmetic gates, fanout reuse, arithmetic-gate-only size convention, n >= 65536 threshold, denominator 144 finite lower bound, Omega(n^2 log_2 log_2 n) consequence, and circuit-complexity-over-n^2 divergence. It does not alter either protected formula packet, submit formula Theorems 1.2 or 1.3, establish historical PDF byte equivalence, register a MATHCERT route, adjudicate or prove a theorem, issue a Cert output, promote a mathematical claim, or create aggregate OpenAI Ten Proofs authority."
+}
