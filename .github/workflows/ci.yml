@@ -64,6 +64,14 @@ jobs:
         run: |
           python ci/validate_ns_ci_wp02.py
           python -m unittest ci/test_validate_ns_ci_wp02.py -v
+      - name: Validate OpenAI Ten Proofs independent handoffs
+        run: |
+          python ci/validate_openai_ten_proofs_result_family_handoffs.py
+          python -m unittest ci/test_openai_ten_proofs_result_family_handoffs.py -v
+          python -m json.tool schemas/openai_ten_proofs_result_family_handoff_registry.schema.json >/dev/null
+          python -m json.tool schemas/openai_ten_proofs_permanent_full_formula_handoff.schema.json >/dev/null
+          python -m json.tool work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoff_registry.json >/dev/null
+          python -m json.tool work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-C-PERMANENT-FULL-FORMULA.json >/dev/null
 
   formal-targets:
     runs-on: ubuntu-24.04
