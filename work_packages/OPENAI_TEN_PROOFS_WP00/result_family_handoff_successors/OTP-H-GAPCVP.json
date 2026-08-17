@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "result_family_mathcert_handoff_successor",
+  "handoff_id": "MC-OTP-HANDOFF-H-GAPCVP",
+  "candidate_id": "OPENAI-TEN-PROOFS-001",
+  "result_family": "OTP-H-GAPCVP",
+  "tracker_issue": 113,
+  "producer_status": "candidate_until_protected_merge",
+  "protected_solve_base": "7d1f9edf16558ba4c4396126e24fd2c9ae4826f7",
+  "authority": {
+    "forge_formal_source_successor_merge": "48e8bf8e0fd157688ae83a8110d63b1e500ee688",
+    "forge_semantic_merge": "b9dda1a5b958fd1be37a26324a025013a39584c1",
+    "forge_semantic_reviewed_head": "d4de1716857998667f513f63d6ddf362eb88c054",
+    "forge_semantic_review_id": 4948807629,
+    "forge_semantic_reviewer": "jimsteeg",
+    "semantic_record": {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "b9dda1a5b958fd1be37a26324a025013a39584c1",
+      "path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-H-GAPCVP/audit_record.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "673f541fbb552d307cc226c51d2f0fd2916b328d"
+    },
+    "source_pdf": {
+      "revision": "2026-08-06",
+      "sha256": "ebc561ab5c53dbd240e17a8fdb6fffeb648591eca85dbfc7466f563638f8c566",
+      "byte_length": 2487031,
+      "successor_record_blob": "02d1748abed36717afba46451330be165c076737"
+    },
+    "official_subject": {
+      "repository": "openai/ten-proofs",
+      "commit": "94bc0feb6a9ff12c7d31d6de640a725c9d43d2b6",
+      "tree": "174289e4d4958cb0509874e6e53400e098213de7",
+      "formal_successor_record_blob": "6993ce9fac2c65ffae7f2a0c7d728aab828ed532",
+      "config_path": "ComparatorChallenges/H_GapCVP.json",
+      "config_blob": "fdba0e774acc6c2bd6fd450ee155975c0eda1833",
+      "challenge_path": "ComparatorChallenges/H_GapCVP.lean",
+      "challenge_blob": "770e202350a5c94d3f6516428ff01092cb8f8cb4",
+      "solution_path": "GapCVP.lean",
+      "solution_blob": "47f3a395e4d9ec3e2892664860f26ed63421b0c9"
+    },
+    "replay": {
+      "run_id": 31945652355,
+      "job_id": 95161117067,
+      "result": "comparator_lean_kernel_nanoda_accept",
+      "lean_version": "4.32.0",
+      "lean_commit": "8c9756b28d64dab099da31a4c09229a9e6a2ef35",
+      "permitted_axioms": ["propext", "Classical.choice", "Quot.sound"]
+    }
+  },
+  "semantic_gate": {
+    "state": "clear",
+    "disposition": "PROMISE_INTERFACES_CLOSED__SEMANTIC_AND_NONVACUITY_CLEAR_CURRENT_ROOT",
+    "activated_by_protected_merge": "b9dda1a5b958fd1be37a26324a025013a39584c1",
+    "forge_record_solve_handoff_authorized": false,
+    "solve_construction_authority": "Human Steward 2026-08-17 direction recorded in MATHSOLVE issue 113"
+  },
+  "target_scope": {
+    "lean_theorems": [
+      "GapCVP.Comparator.gapCVP400IsNPHard",
+      "GapCVP.Comparator.binaryNearestCodewordIsNPHard",
+      "GapCVP.Comparator.binarySyndromeDecodingIsNPHard",
+      "GapCVP.Comparator.finitePNormGapCVPIsNPHard"
+    ],
+    "promise_interfaces": [
+      "GapCVP.Comparator.gapCVP400Promise",
+      "GapCVP.Comparator.binaryNearestCodewordPromise",
+      "GapCVP.Comparator.binarySyndromeDecodingPromise",
+      "GapCVP.Comparator.finitePGapCVPPromise"
+    ],
+    "classifications": [
+      "source_faithful_restricted_consequence_integer_target",
+      "source_faithful_up_to_generator_orientation",
+      "source_faithful_restricted_consequence_consistent_syndrome",
+      "source_faithful_fixed_rational_p_consequence"
+    ],
+    "gap_factors": ["n^(1/400)", "n^(1/200)", "n^(1/200)", "n^(1/(200p))"],
+    "normalized_statement": "The protected current-root surface carries four deterministic polynomial-time many-one promise-hardness targets: Euclidean GapCVP at gap n^(1/400) on the integer-target output surface of source Theorem 1, binary nearest-codeword and syndrome-decoding at gap n^(1/200), and fixed rational finite-p GapCVP at n^(1/(200p)). Malformed encodings and intermediate-threshold instances are outside both promise sides. The Euclidean and syndrome interfaces are explicit source-faithful restricted consequences, not whole-problem syntactic identity claims.",
+    "mandatory_qualifications": [
+      "400, 200 and 200p are exponent denominators in dimension-dependent gaps, not constant approximation factors.",
+      "The Euclidean formal promise is restricted to integer targets, matching the source Theorem 1 reduction output rather than the source's most general rational-target interface.",
+      "The syndrome NO side is restricted to consistent systems sufficient for the source Corollary 15 reduction.",
+      "Binary generator row/column orientation is treated only as a transpose convention preserving the represented code.",
+      "Malformed/non-encoding and threshold-intermediate bitstrings remain outside the promise.",
+      "Forge replay and semantic admission do not independently certify NP-hardness proof correctness."
+    ]
+  },
+  "nonvacuity": {
+    "state": "clear_all_four_promise_interfaces",
+    "yes_witness_count": 4,
+    "no_witness_count": 4,
+    "all_yes_sides_inhabited": true,
+    "all_no_sides_inhabited": true
+  },
+  "requested_adjudication": {
+    "mode": "independent_result_family_review",
+    "route_id": "MC-ROUTE-OTP-H-GAPCVP",
+    "current_route_state": "not_registered",
+    "cert_output": null,
+    "may_adjudicate_on_branch": false
+  },
+  "activation": {
+    "condition": "exact-head Solve CI, GCL conformance, CodeQL/no-new-alerts, fresh non-author APPROVED review, protected MATHSOLVE merge and protected-main readback",
+    "head_change_requires_reapproval": true,
+    "effect": "packet_may_be_offered_to_mathcert_for_independent_intake"
+  },
+  "route_controls": {
+    "result_family_only": true,
+    "historical_six_packet_registry_mutable": false,
+    "may_create_aggregate_handoff": false,
+    "may_imply_mathcert_acceptance": false,
+    "may_imply_adjudication": false,
+    "may_claim_mathematical_proof": false,
+    "may_promote_claim": false,
+    "whole_source_interface_identity": false
+  },
+  "claim_boundary": "This successor packet transfers only the protected current-root OTP-H-GAPCVP semantic, promise-interface, reduction-model, parameter-transport and nonvacuity evidence for the exact four configured hardness targets into a candidate MATHSOLVE producer handoff. It preserves the integer-target Euclidean restriction, the consistent-syndrome restriction, the binary generator-orientation qualification, the exact dimension-dependent gap exponents, and outside-promise treatment of malformed and intermediate instances. It does not mutate the historical six-packet registry, create aggregate OpenAI Ten Proofs authority, register or imply a MATHCERT route, adjudication or output, independently certify NP-hardness proof correctness, mark any mathematical target proved, or authorize novelty, priority, publication, patentability, product, or commercial claims."
+}
