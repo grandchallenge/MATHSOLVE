@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "result_family_mathcert_handoff_successor",
+  "handoff_id": "MC-OTP-HANDOFF-B2-SPHERICAL-CODES",
+  "candidate_id": "OPENAI-TEN-PROOFS-001",
+  "result_family": "OTP-B2-SPHERICAL-CODES",
+  "tracker_issue": 115,
+  "producer_status": "candidate_until_protected_merge",
+  "protected_solve_base": "7d1f9edf16558ba4c4396126e24fd2c9ae4826f7",
+  "authority": {
+    "forge_formal_source_successor_merge": "48e8bf8e0fd157688ae83a8110d63b1e500ee688",
+    "forge_semantic_merge": "0520d8bae3853798f2edca67c526133e46847a54",
+    "forge_semantic_reviewed_head": "e2e288e2a23a045aa34ddec0e8495448d87facb5",
+    "forge_semantic_review_id": 4949549260,
+    "forge_semantic_reviewer": "jimsteeg",
+    "semantic_record": {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "0520d8bae3853798f2edca67c526133e46847a54",
+      "path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-B2-SPHERICAL-CODES/audit_record.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "394d1211757d3fc2bc61b238e914b37245967635"
+    },
+    "source_pdf": {
+      "revision": "2026-08-06",
+      "sha256": "ebc561ab5c53dbd240e17a8fdb6fffeb648591eca85dbfc7466f563638f8c566",
+      "byte_length": 2487031,
+      "successor_record_blob": "02d1748abed36717afba46451330be165c076737"
+    },
+    "official_subject": {
+      "repository": "openai/ten-proofs",
+      "commit": "94bc0feb6a9ff12c7d31d6de640a725c9d43d2b6",
+      "tree": "174289e4d4958cb0509874e6e53400e098213de7",
+      "formal_successor_record_blob": "6993ce9fac2c65ffae7f2a0c7d728aab828ed532",
+      "config_path": "ComparatorChallenges/B_SphericalCodes.json",
+      "config_blob": "b343dca9c0373f80c6304f30f261b81b371661c3",
+      "challenge_path": "ComparatorChallenges/B_SphericalCodes.lean",
+      "challenge_blob": "5f2bcda432b7091097ae8753cac24c08d0c10f6c",
+      "solution_path": "MetricCodes.lean",
+      "solution_blob": "51628c0db81bd6cb9a79777fa601306c9d64cbc5"
+    },
+    "replay": {
+      "run_id": 31945652355,
+      "job_id": 95161117118,
+      "result": "comparator_lean_kernel_nanoda_accept",
+      "lean_version": "4.32.0",
+      "lean_commit": "8c9756b28d64dab099da31a4c09229a9e6a2ef35",
+      "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+    }
+  },
+  "semantic_gate": {
+    "state": "clear",
+    "disposition": "SUCCESSOR_FOUR_TARGET_SURFACE__SEMANTIC_AND_NONVACUITY_CLEAR_CURRENT_ROOT",
+    "activated_by_protected_merge": "0520d8bae3853798f2edca67c526133e46847a54",
+    "forge_record_solve_handoff_authorized": false,
+    "solve_construction_authority": "Human Steward 2026-08-17 direction recorded in MATHSOLVE issue 115"
+  },
+  "target_scope": {
+    "predecessor_seven_target_surface_authorized": false,
+    "lean_theorems": [
+      "MetricCodes.Johnson.main_binary_theorem",
+      "MetricCodes.Spherical.HigherHierarchy.main_general",
+      "MetricCodes.Spherical.HigherHierarchy.strict_hierarchy",
+      "MetricCodes.Spherical.HigherHierarchy.NumericalMaximum.eventually_kissingNumber_lt_published"
+    ],
+    "classifications": [
+      "source_faithful_exact_projection",
+      "source_faithful_structured_projection",
+      "source_faithful_structured_projection",
+      "formal_strengthening_entailing_source_asymptotic_numerical_statement"
+    ],
+    "normalized_statement": "The protected successor surface contains only four current-root targets: the binary-code main theorem, the general spherical hierarchy theorem, the strict hierarchy improvement, and a numerical kissing-number target. The first three are source-faithful projections or structured projections of Chapter 2. The fourth is deliberately stronger in form than the manuscript: the source gives tau_n <= 2^((0.39661+o(1))n), whereas Lean proves an eventual exact 0.39661 exponent inequality; the handoff preserves this as a formal strengthening that entails the source asymptotic numerical statement rather than source-verbatim text.",
+    "mandatory_qualifications": [
+      "The predecessor seven-target spherical surface transfers no authority to this successor handoff.",
+      "The exact eventual 0.39661 target is not attributed to the manuscript verbatim.",
+      "The source's printed numerical statement is 0.39661+o(1); the exact eventual 0.39661 inequality is a formal strengthening.",
+      "Hierarchy, interlacing and localization domains remain bound to the protected current-root semantic/nonvacuity audit.",
+      "Forge replay and semantic admission do not independently certify proof correctness."
+    ]
+  },
+  "nonvacuity": {
+    "state": "clear_for_successor_four_target_surface",
+    "evidence": [
+      "delta=1/4 binary-domain witness",
+      "s=1/2 spherical-domain witness",
+      "singleton spherical-code witness",
+      "r=0 hierarchy witness with a0=1",
+      "inhabited localization interval"
+    ]
+  },
+  "requested_adjudication": {
+    "mode": "independent_result_family_review",
+    "route_id": "MC-ROUTE-OTP-B2-SPHERICAL-CODES",
+    "current_route_state": "not_registered",
+    "cert_output": null,
+    "may_adjudicate_on_branch": false
+  },
+  "activation": {
+    "condition": "exact-head Solve CI, GCL conformance, CodeQL/no-new-alerts, fresh non-author APPROVED review, protected MATHSOLVE merge and protected-main readback",
+    "head_change_requires_reapproval": true,
+    "effect": "packet_may_be_offered_to_mathcert_for_independent_intake"
+  },
+  "route_controls": {
+    "result_family_only": true,
+    "historical_six_packet_registry_mutable": false,
+    "may_create_aggregate_handoff": false,
+    "may_imply_mathcert_acceptance": false,
+    "may_imply_adjudication": false,
+    "may_claim_mathematical_proof": false,
+    "may_promote_claim": false,
+    "predecessor_target_authority_transfer": false,
+    "exact_039661_source_verbatim": false
+  },
+  "claim_boundary": "This successor packet transfers only the protected current-root OTP-B2-SPHERICAL-CODES semantic/nonvacuity and replay evidence for the exact four successor targets into a candidate MATHSOLVE producer handoff. It transfers no authority from the predecessor seven-target surface and preserves the exact eventual 0.39661 kissing-number target only as a formal strengthening entailing the source's 0.39661+o(1) asymptotic statement, not as manuscript-verbatim text. It does not mutate the historical six-packet registry, create aggregate OpenAI Ten Proofs authority, register or imply a MATHCERT route, adjudication or output, independently certify proof correctness, mark any mathematical target proved, establish whole-chapter or proof-body equivalence, or authorize novelty, priority, publication, patentability, product, or commercial claims."
+}
