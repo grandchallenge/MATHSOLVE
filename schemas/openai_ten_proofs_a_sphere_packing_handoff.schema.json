@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grandchallenge.ai/schemas/mathsolve/openai_ten_proofs_a_sphere_packing_handoff.schema.json",
+  "title": "OTP-A Sphere Packing successor MATHCERT handoff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","record_type","handoff_id","candidate_id","result_family","tracker_issue","producer_status","protected_solve_base","authority","semantic_gate","target_scope","nonvacuity","requested_adjudication","activation","route_controls","claim_boundary"],
+  "properties": {
+    "schema_version":{"const":"1.0.0"},
+    "record_type":{"const":"result_family_mathcert_handoff_successor"},
+    "handoff_id":{"const":"MC-OTP-HANDOFF-A-SPHERE-PACKING"},
+    "candidate_id":{"const":"OPENAI-TEN-PROOFS-001"},
+    "result_family":{"const":"OTP-A-SPHERE-PACKING"},
+    "tracker_issue":{"const":112},
+    "producer_status":{"const":"candidate_until_protected_merge"},
+    "protected_solve_base":{"const":"7d1f9edf16558ba4c4396126e24fd2c9ae4826f7"},
+    "authority":{"type":"object"},
+    "semantic_gate":{"type":"object"},
+    "target_scope":{"type":"object"},
+    "nonvacuity":{"type":"object"},
+    "requested_adjudication":{"type":"object"},
+    "activation":{"type":"object"},
+    "route_controls":{"type":"object"},
+    "claim_boundary":{"type":"string","minLength":600}
+  }
+}
