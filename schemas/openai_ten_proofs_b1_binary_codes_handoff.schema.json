@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grandchallenge.ai/schemas/mathsolve/openai_ten_proofs_b1_binary_codes_handoff.schema.json",
+  "title": "OTP-B1 Binary Codes successor MATHCERT handoff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","record_type","handoff_id","candidate_id","result_family","tracker_issue","producer_status","protected_solve_base","authority","semantic_gate","target_scope","nonvacuity","requested_adjudication","activation","route_controls","claim_boundary"],
+  "properties": {
+    "schema_version": {"const":"1.0.0"},
+    "record_type": {"const":"result_family_mathcert_handoff_successor"},
+    "handoff_id": {"const":"MC-OTP-HANDOFF-B1-BINARY-CODES"},
+    "candidate_id": {"const":"OPENAI-TEN-PROOFS-001"},
+    "result_family": {"const":"OTP-B1-BINARY-CODES"},
+    "tracker_issue": {"const":114},
+    "producer_status": {"const":"candidate_until_protected_merge"},
+    "protected_solve_base": {"const":"7d1f9edf16558ba4c4396126e24fd2c9ae4826f7"},
+    "authority": {"type":"object","additionalProperties":false,"required":["forge_formal_source_successor_merge","forge_semantic_merge","forge_semantic_reviewed_head","forge_semantic_review_id","forge_semantic_reviewer","semantic_record","source_pdf","official_subject","replay"],"properties":{
+      "forge_formal_source_successor_merge":{"const":"48e8bf8e0fd157688ae83a8110d63b1e500ee688"},
+      "forge_semantic_merge":{"const":"24a1fa0f020ee9cc7fbe2e7aea4cd840268ca748"},
+      "forge_semantic_reviewed_head":{"const":"708375b57b158fdf1af2cc59343eb2371fd673f3"},
+      "forge_semantic_review_id":{"const":4949261532},
+      "forge_semantic_reviewer":{"const":"jimsteeg"},
+      "semantic_record":{"type":"object"},
+      "source_pdf":{"type":"object"},
+      "official_subject":{"type":"object"},
+      "replay":{"type":"object"}
+    }},
+    "semantic_gate": {"type":"object"},
+    "target_scope": {"type":"object"},
+    "nonvacuity": {"type":"object"},
+    "requested_adjudication": {"type":"object"},
+    "activation": {"type":"object"},
+    "route_controls": {"type":"object"},
+    "claim_boundary": {"type":"string","minLength":500}
+  }
+}
