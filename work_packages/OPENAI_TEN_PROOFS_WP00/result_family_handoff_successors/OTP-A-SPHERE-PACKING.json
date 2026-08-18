@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "result_family_mathcert_handoff_successor",
+  "handoff_id": "MC-OTP-HANDOFF-A-SPHERE-PACKING",
+  "candidate_id": "OPENAI-TEN-PROOFS-001",
+  "result_family": "OTP-A-SPHERE-PACKING",
+  "tracker_issue": 112,
+  "producer_status": "candidate_until_protected_merge",
+  "protected_solve_base": "7d1f9edf16558ba4c4396126e24fd2c9ae4826f7",
+  "authority": {
+    "forge_formal_source_successor_merge": "48e8bf8e0fd157688ae83a8110d63b1e500ee688",
+    "forge_composite_semantic_merge": "706d0291370bf3f14aa37be0823e33d06f7343b0",
+    "forge_bridge_semantic_merge": "5a0cb9a7b7eef210dd0fce5c527d09b6eef3bc12",
+    "forge_bridge_reviewed_head": "e1208d042da9f1a85da84c74a3f0804737e25f92",
+    "forge_bridge_review_id": 4948688730,
+    "forge_semantic_reviewer": "jimsteeg",
+    "composite_semantic_record": {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "706d0291370bf3f14aa37be0823e33d06f7343b0",
+      "path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-A-SPHERE-PACKING-COMPOSITE/audit_record.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "b2e309ad96e750651fc7149a6bad54c6bf99015b"
+    },
+    "bridge_semantic_record": {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "5a0cb9a7b7eef210dd0fce5c527d09b6eef3bc12",
+      "path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-A-SPHERE-PACKING-BRIDGE/audit_record.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "7858b156fc4490ecc6e3572dcf449d84dcc99f93"
+    },
+    "source_pdf": {
+      "revision": "2026-08-06",
+      "sha256": "ebc561ab5c53dbd240e17a8fdb6fffeb648591eca85dbfc7466f563638f8c566",
+      "byte_length": 2487031,
+      "successor_record_blob": "02d1748abed36717afba46451330be165c076737"
+    },
+    "official_subject": {
+      "repository": "openai/ten-proofs",
+      "commit": "94bc0feb6a9ff12c7d31d6de640a725c9d43d2b6",
+      "tree": "174289e4d4958cb0509874e6e53400e098213de7",
+      "formal_successor_record_blob": "6993ce9fac2c65ffae7f2a0c7d728aab828ed532",
+      "config_path": "ComparatorChallenges/A_SpherePacking.json",
+      "config_blob": "46b2e7b49da43fb17a7efa88652f8ee1adc01cbe",
+      "challenge_path": "ComparatorChallenges/A_SpherePacking.lean",
+      "challenge_blob": "2477846e1883534837340c636fd928b091509783",
+      "solution_path": "SpherePacking.lean",
+      "solution_blob": "e6117934a80142a8249356fdafa797eba030e920"
+    },
+    "replay": {
+      "run_id": 31945652355,
+      "job_id": 95161117046,
+      "result": "comparator_lean_kernel_nanoda_accept",
+      "lean_version": "4.32.0",
+      "lean_commit": "8c9756b28d64dab099da31a4c09229a9e6a2ef35",
+      "permitted_axioms": ["propext", "Classical.choice", "Quot.sound"]
+    }
+  },
+  "semantic_gate": {
+    "state": "clear",
+    "disposition": "SPHERE_PACKING_CURRENT_ROOT__SEMANTIC_AND_NONVACUITY_CLEAR__SOLVE_HANDOFF_NOT_AUTHORIZED",
+    "activated_by_protected_merge": "5a0cb9a7b7eef210dd0fce5c527d09b6eef3bc12",
+    "forge_record_solve_handoff_authorized": false,
+    "solve_construction_authority": "Human Steward 2026-08-17 direction recorded in MATHSOLVE issue 112"
+  },
+  "target_scope": {
+    "lean_theorems": [
+      "PackingBounds.FullMain.exact_limit",
+      "PackingBounds.FullMain.exact_binary_exponent",
+      "PackingBounds.PackingBridge.sphere_packing_sharp_asymptotic_upper",
+      "PackingBounds.sharpFullCohnElkiesManuscriptConclusions"
+    ],
+    "classifications": [
+      "direct_source_theorem_projection_modulo_proved_full_radial_equivalence",
+      "derived_base_two_logarithmic_consequence",
+      "source_faithful_displayed_consequence_with_proved_scale_normalization",
+      "source_faithful_derived_composite_certificate"
+    ],
+    "normalized_statement": "The protected current-root Sphere Packing surface encodes the Cohn-Elkies linear-program root limit, its base-two exponent consequence, the sharp asymptotic packing-density upper bound after a proved scale normalization identifying the formal SpherePackingConstant with the manuscript unit-separated Delta_d domain, and a ten-field composite certificate whose fields are individually classified as source projections, source-proof reformulations, displayed consequences or checked derived normal forms.",
+    "mandatory_qualifications": [
+      "The ten-field composite is not a single verbatim manuscript theorem.",
+      "The 30-decimal base-two exponent enclosure is a formal numerical consequence of the exact alpha_* expression, not manuscript-authored precision.",
+      "The packing bridge relies on proved positive rescaling invariance and unit-separation supremum equivalence; declaration-name similarity is not used as authority.",
+      "The explicit little-o witness is a normal form of the source asymptotic and is not a stronger rate claim.",
+      "No whole-chapter semantic equivalence or independent proof certification is transferred by this packet."
+    ]
+  },
+  "nonvacuity": {
+    "state": "clear_for_current_root_four_target_surface",
+    "evidence": [
+      "CohnElkies.admissible_nonempty",
+      "fullQuotientSet_eq_radial",
+      "SpherePacking singleton unit-separated packing witness",
+      "SpherePacking.upper_packing_density_le_one",
+      "positive-dimensional bridge quantification"
+    ]
+  },
+  "requested_adjudication": {
+    "mode": "independent_result_family_review",
+    "route_id": "MC-ROUTE-OTP-A-SPHERE-PACKING",
+    "current_route_state": "not_registered",
+    "cert_output": null,
+    "may_adjudicate_on_branch": false
+  },
+  "activation": {
+    "condition": "exact-head Solve CI, GCL conformance, CodeQL/no-new-alerts, fresh non-author APPROVED review, protected MATHSOLVE merge and protected-main readback",
+    "head_change_requires_reapproval": true,
+    "effect": "packet_may_be_offered_to_mathcert_for_independent_intake"
+  },
+  "route_controls": {
+    "result_family_only": true,
+    "historical_six_packet_registry_mutable": false,
+    "may_create_aggregate_handoff": false,
+    "may_imply_mathcert_acceptance": false,
+    "may_imply_adjudication": false,
+    "may_claim_mathematical_proof": false,
+    "may_promote_claim": false,
+    "whole_chapter_equivalence": false,
+    "decimal_precision_source_authored": false
+  },
+  "claim_boundary": "This successor packet transfers only the protected current-root OTP-A-SPHERE-PACKING semantic, normalization, nonvacuity and source-root replay evidence for the exact four configured targets into a candidate MATHSOLVE producer handoff. It preserves the mixed source/derived classification of the ten-field composite, the formal-only provenance of the 30-decimal exponent certificate, and the proved scale-normalization boundary for SpherePackingConstant versus source Delta_d. It does not mutate the historical six-packet registry, create aggregate OpenAI Ten Proofs authority, register or imply a MATHCERT route, adjudication or output, independently certify proof correctness, mark any mathematical target proved, establish whole-chapter or proof-body equivalence, or authorize novelty, priority, publication, patentability, product, or commercial claims."
+}
