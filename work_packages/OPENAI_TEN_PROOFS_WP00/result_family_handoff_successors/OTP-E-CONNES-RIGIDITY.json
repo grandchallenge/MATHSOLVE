@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "result_family_mathcert_handoff_successor",
+  "handoff_id": "MC-OTP-HANDOFF-E-CONNES-RIGIDITY",
+  "candidate_id": "OPENAI-TEN-PROOFS-001",
+  "result_family": "OTP-E-CONNES-RIGIDITY",
+  "tracker_issue": 124,
+  "producer_status": "candidate_until_protected_merge",
+  "protected_solve_base": "c19735edf4c16ac9765bb66c7209bbf11bf1312e",
+  "authority": {
+    "forge_formal_source_successor_merge": "48e8bf8e0fd157688ae83a8110d63b1e500ee688",
+    "forge_semantic_merge": "ed8a65410336489ea5646808265c44f5387bebb8",
+    "forge_semantic_reviewed_head": "bfc88a4ca0e63e358a1a33e6bad635f8d5852b3e",
+    "forge_semantic_review_id": 4956768577,
+    "forge_semantic_reviewer": "jimsteeg",
+    "semantic_record": {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "ed8a65410336489ea5646808265c44f5387bebb8",
+      "path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-E-CONNES-RIGIDITY/audit_record.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "ab38a22d029bacc09d7567166b3b5e380f207f99"
+    },
+    "source_pdf": {
+      "revision": "2026-08-06",
+      "sha256": "ebc561ab5c53dbd240e17a8fdb6fffeb648591eca85dbfc7466f563638f8c566",
+      "byte_length": 2487031,
+      "successor_record_blob": "02d1748abed36717afba46451330be165c076737"
+    },
+    "official_subject": {
+      "repository": "openai/ten-proofs",
+      "commit": "94bc0feb6a9ff12c7d31d6de640a725c9d43d2b6",
+      "tree": "174289e4d4958cb0509874e6e53400e098213de7",
+      "formal_successor_record_blob": "6993ce9fac2c65ffae7f2a0c7d728aab828ed532",
+      "config_path": "ComparatorChallenges/E_ConnesRigidity.json",
+      "config_blob": "f5d2964be6b1a154bc12b38a0f99f0960960a2d9",
+      "challenge_path": "ComparatorChallenges/E_ConnesRigidity.lean",
+      "challenge_blob": "9425edabd79319cbe2943888c6ece107bdd81dfb",
+      "solution_path": "ConnesRigidity.lean",
+      "solution_blob": "81cf03e3f7ccdc66815cc00c9969bcfd2341c8d6",
+      "mathlib_finite_generation_commit": "81a5d257c8e410db227a6665ed08f64fea08e997",
+      "mathlib_finite_generation_blob": "b23c7420082cfcfe583ba2ed39a8c9f0c86d73b1"
+    },
+    "replay": {
+      "run_id": 31945652355,
+      "job_id": 95161117059,
+      "result": "comparator_lean_kernel_nanoda_accept",
+      "lean_version": "4.32.0",
+      "lean_commit": "8c9756b28d64dab099da31a4c09229a9e6a2ef35",
+      "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+    }
+  },
+  "semantic_gate": {
+    "state": "clear",
+    "disposition": "SEMANTIC_AND_NONVACUITY_CLEAR_CURRENT_ROOT",
+    "activated_by_protected_merge": "ed8a65410336489ea5646808265c44f5387bebb8",
+    "forge_record_solve_handoff_authorized": false,
+    "solve_construction_authority": "Human Steward 2026-08-25 direction to continue MATHSOLVE handoffs"
+  },
+  "target_scope": {
+    "source_loci": ["Chapter 4 Theorem 1.2", "Chapter 4 Corollary 5.10", "Chapter 4 factor-construction route"],
+    "lean_theorems": [
+      "ConnesRigidity.exists_nonisomorphic_propertyT_icc_groups_with_isomorphic_factors",
+      "ConnesRigidity.exists_infinite_pairwise_nonisomorphic_propertyT_icc_groups_with_isomorphic_factors"
+    ],
+    "classifications": [
+      "source_faithful_two_group_consequence_with_structured_factor_isomorphism",
+      "source_faithful_theorem_1_2_projection_with_derived_pairwise_factor_transitivity"
+    ],
+    "normalized_statement": "The protected current-root surface represents the Chapter 4 ICC property-(T) group-factor phenomenon on the current ConnesRigidity.* declarations. The two-group target is the Corollary 5.10 consequence augmented by finite generation and the solution's explicit spatial/tracial factor-isomorphism structure. The infinite target projects Theorem 1.2 and derives all-pairs Gamma factor isomorphism by symmetry and transitivity through Lambda.",
+    "mandatory_qualifications": [
+      "Only the current ConnesRigidity.* declarations are authoritative; no alias or authority is inferred from predecessor ConnesRigidity2.* names.",
+      "TracialGroupFactorEquiv is a source-construction-faithful spatial/tracial refinement, not verbatim Theorem 1.2 or Corollary 5.10 wording.",
+      "The formal projection-supremum normality predicate is not claimed equivalent to every analytic notion of normality.",
+      "The infinite target's all-pairs Gamma factor isomorphism is a derived transitivity consequence through Lambda, not a separately printed source clause.",
+      "The property-(T) universe scope and finite-generation predicate remain exactly as recorded by the protected Forge audit.",
+      "No whole-chapter semantic equivalence or proof-body comparison is transferred by this packet."
+    ]
+  },
+  "nonvacuity": {
+    "state": "clear_for_exact_two_target_surface_with_universe_scope_recorded",
+    "evidence": [
+      "manuscriptInfinitePropertyTFiber constructs a concrete Lambda and Nat-indexed Gamma family.",
+      "The family carries finite generation, ICC, property (T), common-factor witnesses, and pairwise group nonisomorphism.",
+      "paperFactorUnitaryWitness maps both factor algebra and vacuum and yields the structured tracial factor equivalence.",
+      "The first target uses Gamma 0 and Lambda; the second uses the complete Nat-indexed family.",
+      "The formal property-(T) universe scope is explicitly retained."
+    ]
+  },
+  "requested_adjudication": {
+    "mode": "independent_result_family_review",
+    "route_id": "MC-ROUTE-OTP-E-CONNES-RIGIDITY",
+    "current_route_state": "not_registered",
+    "cert_output": null,
+    "may_adjudicate_on_branch": false
+  },
+  "activation": {
+    "condition": "exact-head Solve CI, GCL conformance, CodeQL/no-new-alerts, fresh non-author APPROVED review, protected MATHSOLVE merge and protected-main readback",
+    "head_change_requires_reapproval": true,
+    "effect": "packet_may_be_offered_to_mathcert_for_independent_intake"
+  },
+  "route_controls": {
+    "result_family_only": true,
+    "historical_six_packet_registry_mutable": false,
+    "may_create_aggregate_handoff": false,
+    "may_imply_mathcert_acceptance": false,
+    "may_imply_adjudication": false,
+    "may_claim_mathematical_proof": false,
+    "may_promote_claim": false,
+    "whole_chapter_equivalence": false
+  },
+  "claim_boundary": "This successor packet transfers only the protected current-root OTP-E-CONNES-RIGIDITY semantic/nonvacuity evidence for the exact two configured current ConnesRigidity.* targets into a candidate MATHSOLVE producer handoff. It infers no declaration identity, alias, or downstream authority from predecessor ConnesRigidity2.* names. It preserves the source ICC and property-(T) scope, finite generation, the left-regular group von Neumann algebra construction, and the common-factor family. The solution's TracialGroupFactorEquiv remains a source-construction-faithful spatial/tracial refinement produced through the manuscript's common measured-action route; it is not represented as verbatim theorem wording or as an audited equivalence with every analytic normality notion. The infinite target's all-pairs Gamma factor isomorphism remains a derived transitivity consequence through Lambda. This packet does not mutate the historical six-packet registry, create an aggregate OpenAI Ten Proofs handoff, register or imply a MATHCERT route, authorize adjudication or output, certify proof correctness, mark any mathematical target proved, establish whole-chapter or proof-body equivalence, or authorize novelty, priority, publication, patentability, product, or commercial claims."
+}
