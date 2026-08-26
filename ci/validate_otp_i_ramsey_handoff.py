@@ -55,7 +55,7 @@ def validation_errors(record=None, schema=None):
         e.append("semantic record identity drift")
     subj = a.get("official_subject", {})
     for k, v in {
-        "commit":"94bc0feb6a9ff12c7d31d6de640a725c9d43d2b6","tree":"174289e4d4958cb0509874e6e53400e098213de7","config_blob":"ce67db0653e18a2deccda3a12fb6cab","challenge_blob":"6a9e42d686720f4b74ddc2001006b0b7a20f11aa","solution_blob":"24b55f531a4d36347cd2277b1b9c7d784d91ae35"}.items():
+        "commit":"94bc0feb6a9ff12c7d31d6de640a725c9d43d2b6","tree":"174289e4d4958cb0509874e6e53400e098213de7","config_blob":"ce67db0653e18a2de68f471c00b9f892b789f806","challenge_blob":"6a9e42d686720f4b74ddc2001006b0b7a20f11aa","solution_blob":"24b55f531a4d36347cd2277b1b9c7d784d91ae35"}.items():
         if subj.get(k) != v:
             e.append(f"formal subject drift: {k}")
     replay = a.get("replay", {})
