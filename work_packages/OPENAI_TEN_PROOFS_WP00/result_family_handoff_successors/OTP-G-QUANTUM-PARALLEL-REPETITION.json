@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "result_family_mathcert_handoff_successor",
+  "handoff_id": "MC-OTP-HANDOFF-G-QUANTUM-PARALLEL-REPETITION",
+  "candidate_id": "OPENAI-TEN-PROOFS-001",
+  "result_family": "OTP-G-QUANTUM-PARALLEL-REPETITION",
+  "tracker_issue": 122,
+  "producer_status": "candidate_until_protected_merge",
+  "protected_solve_base": "c19735edf4c16ac9765bb66c7209bbf11bf1312e",
+  "authority": {
+    "forge_formal_source_successor_merge": "48e8bf8e0fd157688ae83a8110d63b1e500ee688",
+    "forge_semantic_merge": "f0a40146cca7fd39c5724ed5be033ee9092625ac",
+    "forge_semantic_reviewed_head": "6588608420da2651c83793852226cc321e1c85cf",
+    "forge_semantic_review_id": 4956356890,
+    "forge_semantic_reviewer": "jimsteeg",
+    "semantic_record": {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "f0a40146cca7fd39c5724ed5be033ee9092625ac",
+      "path": "sources/OPENAI-TEN-PROOFS-001/semantic/OTP-G-QUANTUM-PARALLEL-REPETITION/audit_record.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "bfcbee0fd6174b8856b17c3d56ee320f27c18ec6"
+    },
+    "source_pdf": {
+      "revision": "2026-08-06",
+      "sha256": "ebc561ab5c53dbd240e17a8fdb6fffeb648591eca85dbfc7466f563638f8c566",
+      "byte_length": 2487031,
+      "successor_record_blob": "02d1748abed36717afba46451330be165c076737"
+    },
+    "official_subject": {
+      "repository": "openai/ten-proofs",
+      "commit": "94bc0feb6a9ff12c7d31d6de640a725c9d43d2b6",
+      "tree": "174289e4d4958cb0509874e6e53400e098213de7",
+      "formal_successor_record_blob": "6993ce9fac2c65ffae7f2a0c7d728aab828ed532",
+      "config_path": "ComparatorChallenges/G_QuantumParallelRepetition.json",
+      "config_blob": "c7dd59e9df9ae5d90b35f76a9d958943d8e94770",
+      "challenge_path": "ComparatorChallenges/G_QuantumParallelRepetition.lean",
+      "challenge_blob": "8257e7726643a8f8c08c7e91584e003ab204c589",
+      "solution_path": "QuantumParallelRepetition.lean",
+      "solution_blob": "887c4378f124a5d81a3f2624b6dc34867ec409c4"
+    },
+    "replay": {
+      "run_id": 31945652355,
+      "job_id": 95161117041,
+      "result": "comparator_lean_kernel_nanoda_accept",
+      "lean_version": "4.32.0",
+      "lean_commit": "8c9756b28d64dab099da31a4c09229a9e6a2ef35",
+      "permitted_axioms": ["propext", "Classical.choice", "Quot.sound"]
+    }
+  },
+  "semantic_gate": {
+    "state": "clear",
+    "disposition": "SEMANTIC_AND_NONVACUITY_CLEAR_CURRENT_ROOT",
+    "activated_by_protected_merge": "f0a40146cca7fd39c5724ed5be033ee9092625ac",
+    "forge_record_solve_handoff_authorized": false,
+    "solve_construction_authority": "Human Steward 2026-08-25 direction to continue MATHSOLVE handoffs"
+  },
+  "target_scope": {
+    "source_loci": ["Chapter 6 Theorem 1.1", "Chapter 6 finite-dimensional entangled-game definitions"],
+    "lean_theorems": [
+      "QuantumParallelRepetition.distributionUniformExponential",
+      "QuantumParallelRepetition.standardQuantumParallelRepetition"
+    ],
+    "classifications": [
+      "source_faithful_exact_coordinate_projection_of_theorem_1_1",
+      "source_faithful_consequence_on_source_domain_with_formal_empty_answer_extension"
+    ],
+    "normalized_statement": "The protected current-root formalization represents finite two-player one-round entangled games with normalized question distribution, independent finite Alice and Bob local dimensions, density matrices and POVMs, and entangled value as a supremum. The quantitative target preserves the source soundness gap, exponent 13, logarithmic answer-alphabet denominator, and n>=1 repetition scope. The qualitative target is source-faithful on the source nonempty-answer domain but additionally covers formal empty-answer edge cases.",
+    "mandatory_qualifications": [
+      "Independent finite Alice and Bob carrier dimensions are preserved; no common-dimension restriction is introduced.",
+      "entangledValue is a supremum, so no optimizer-attainment assumption may be inserted.",
+      "The quantitative target preserves exponent 13 and the exact epsilon + log(|A||B|) denominator.",
+      "standardQuantumParallelRepetition is source-faithful only on the manuscript nonempty-answer domain; its empty-answer extension is formal-only.",
+      "No whole-chapter semantic equivalence or proof-body comparison is transferred by this packet."
+    ]
+  },
+  "nonvacuity": {
+    "state": "clear_on_declared_source_domain_with_empty_answer_extension_separated",
+    "evidence": [
+      "Nonempty answer alphabets are explicit hypotheses of the quantitative target.",
+      "The quantitative target assumes a positive soundness gap and positive repetition count.",
+      "The game question distribution is normalized to total mass one.",
+      "The formal empty-answer cases of the qualitative target are explicitly separated from manuscript scope."
+    ]
+  },
+  "requested_adjudication": {
+    "mode": "independent_result_family_review",
+    "route_id": "MC-ROUTE-OTP-G-QUANTUM-PARALLEL-REPETITION",
+    "current_route_state": "not_registered",
+    "cert_output": null,
+    "may_adjudicate_on_branch": false
+  },
+  "activation": {
+    "condition": "exact-head Solve CI, GCL conformance, CodeQL/no-new-alerts, fresh non-author APPROVED review, protected MATHSOLVE merge and protected-main readback",
+    "head_change_requires_reapproval": true,
+    "effect": "packet_may_be_offered_to_mathcert_for_independent_intake"
+  },
+  "route_controls": {
+    "result_family_only": true,
+    "historical_six_packet_registry_mutable": false,
+    "may_create_aggregate_handoff": false,
+    "may_imply_mathcert_acceptance": false,
+    "may_imply_adjudication": false,
+    "may_claim_mathematical_proof": false,
+    "may_promote_claim": false,
+    "whole_chapter_equivalence": false
+  },
+  "claim_boundary": "This successor packet transfers only the protected current-root OTP-G-QUANTUM-PARALLEL-REPETITION semantic/nonvacuity evidence for the exact two configured targets into a candidate MATHSOLVE producer handoff. It preserves the manuscript's finite two-player one-round game boundary, independent finite local dimensions, density-matrix/POVM coordinate representation, supremum entangled value, positive soundness gap, exponent 13, exact logarithmic answer-alphabet denominator, and positive repetition count. It explicitly treats the qualitative target's empty-answer cases as a formal extension outside the manuscript domain and does not promote that extension to source authority. It does not mutate the historical six-packet registry, create an aggregate OpenAI Ten Proofs handoff, register or imply a MATHCERT route, authorize adjudication or output, certify proof correctness, mark any mathematical target proved, establish whole-chapter or proof-body equivalence, or authorize novelty, priority, publication, patentability, product, or commercial claims."
+}
