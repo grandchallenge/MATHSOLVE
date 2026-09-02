@@ -1,0 +1,14 @@
+name: GHOS hostile unregistered probe
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  inert:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Inert proof payload
+        run: printf 'This workflow is intentionally unregistered for GHOS hostile proof.\n'
