@@ -3,7 +3,7 @@
 ## Target repository and authority
 
 - Target repository: `grandchallenge/MATHSOLVE`.
-- Current native theorem-development issue: `grandchallenge/MATHSOLVE#138`.
+- WP06 owner issue: `grandchallenge/MATHSOLVE#138`.
 - Constitutional authority remains the protected GCL authority chain already bound by the campaign.
 - Mathematical certification remains MATHCERT-only.
 
