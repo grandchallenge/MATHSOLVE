@@ -46,7 +46,7 @@ and
 
 `Delta_{v,n}^- ~= H^1(Gal(K_w/Q_v),E^d(K_w))`,
 
-where in the second line `E^d(K_w)` is viewed through the twisted descent action. These groups are killed by `2`, so the local defect is independent of `n` as a 2-primary exponent bound.
+where in the second line `E^d(K_w)` is viewed through the twisted descent action. For every `n >= 1`, these displayed isomorphisms identify the local defects with the same cohomology groups. Those groups are killed by `2`; hence each local defect is an `F_2`-vector space whose `Z_2`-length is independent of `n`.
 
 Consequently `D_n^+` and `D_n^-` are finite `F_2`-vector spaces.
 
