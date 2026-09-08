@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "BSD-R2-A1-WP05-FAILED-ROUTES",
+  "campaign_id": "BSD-001",
+  "routes": [
+    {"route_id":"BSD-FR-001","route":"Instantiate an odd-prime rank-one theorem at p=2.","disposition":"TERMINATED","obstruction":"The theorem interface excludes p=2 and the proof can discard powers of 2 as odd-prime units."},
+    {"route_id":"BSD-FR-002","route":"Promote Gross-Zagier/Kolyvagin rank-one and finite-Sha consequences to the leading coefficient.","disposition":"TERMINATED","obstruction":"Rank and finiteness do not determine the exact 2-primary leading coefficient."},
+    {"route_id":"BSD-FR-003","route":"Use parity or modulo-squares information.","disposition":"TERMINATED","obstruction":"These invariants do not determine an exact 2-adic valuation."},
+    {"route_id":"BSD-FR-004","route":"Use CM or twist-family p=2 results for the selected universal restricted class.","disposition":"QUARANTINED","obstruction":"Family hypotheses do not match the selected quantifier."},
+    {"route_id":"BSD-FR-005","route":"Use finite curve computations or WP03 formal interfaces as theorem evidence.","disposition":"TERMINATED","obstruction":"Their protected claim boundary is non-universal and non-theorem for BSD-R2-A1."},
+    {"route_id":"BSD-FR-006","route":"Use integral quadratic plus/minus splitting via division by 2.","disposition":"BLOCKED","obstruction":"Division by 2 is not integral over Z_2; exact restriction/corestriction corrections are required."},
+    {"route_id":"BSD-FR-007","route":"Discard period, isogeny, interpolation, or local factors up to powers of 2.","disposition":"TERMINATED","obstruction":"Those powers are the quantity measured by ord_2."},
+    {"route_id":"BSD-FR-008","route":"Substitute a Selmer local condition or height pairing without exact comparison.","disposition":"TERMINATED","obstruction":"The desired arithmetic quotient depends on the exact local condition and normalization."}
+  ],
+  "reopening_condition": "A route may reopen only after an exact theorem discharges its named 2-primary obstruction without narrowing BSD-R2-A1 silently."
+}
