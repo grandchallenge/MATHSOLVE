@@ -3,11 +3,11 @@
 ## Target repository and authority
 
 - Target repository: `grandchallenge/MATHSOLVE`.
-- Current ownership issue: `grandchallenge/MATHSOLVE#150`.
+- Current ownership issue: `grandchallenge/MATHSOLVE#152`.
 - Constitutional authority remains the protected GCL authority chain already bound by the campaign.
 - Mathematical certification remains MATHCERT-only.
 
-## Protected mathematical state before WP10
+## Protected mathematical state before WP11
 
 Historical WP00-WP04 remain Programme-owned. Protected native Solve work contains:
 
@@ -15,75 +15,73 @@ Historical WP00-WP04 remain Programme-owned. Protected native Solve work contain
 - `BSD-R2-A1-WP06-2DESCENT-CONTROL`: exact integral quadratic `2^n` Selmer restriction/corestriction control;
 - `BSD-R2-A1-WP07-2RECIPROCITY-LENGTH`: forced local-at-2 corrections and non-distinguished route audit;
 - `BSD-R2-A1-WP08-2MU-FIREWALL`: exact height-one `(2)` / Iwasawa-mu defect theorem;
-- `BSD-R2-A1-WP09-DISEGNI-APPLICABILITY`: auxiliary-`K` existence and corrected Disegni p-adic Gross-Zagier applicability at `p=2`.
+- `BSD-R2-A1-WP09-DISEGNI-APPLICABILITY`: auxiliary-`K` existence and corrected Disegni p-adic Gross-Zagier applicability at `p=2`;
+- `BSD-R2-A1-WP10-P2-HEEGNER-BARRIER`: bounded odd-prime primitivity route exclusion and direct-length frontier.
 
-Protected Solve baseline for this candidate is `561ad590c45e0a4916c1b2bbb658c0ba2aed9fb8`.
+Protected Solve baseline for WP11 is `0b55f84677ba332f58feb5569bec22b7d269862d`.
 
 `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED`.
 
 ## Protected provider authority
 
-Current protected source identities are:
+Current protected source identities remain:
 
 - MATHFORGE `c44fef1d5d235b2e496bcee9ba0f7fc54212fa0d`;
 - BSD provider manifest blob `0926dd22a3c5fe474cc21347994de99d1812ae8b`;
 - MATH-PROGRAMME provider-import readback `563db2b177c791135d0a26fe76229c04793c742e`.
 
-Qualified native Forge audits now cover:
+WP11 does not add an external theorem premise; its new results are proved in-package from finite-group, local-representation, Kummer, norm, and semistable component-group arguments.
 
-1. corrected Disegni p-adic Gross-Zagier at `p=2`;
-2. Friedberg-Hoffstein prescribed-local auxiliary quadratic nonvanishing;
-3. the bounded p=2 Heegner-primitivity route barrier in `sources/BSD-001/HEEGNER_PRIMITIVITY_P2_BARRIER_SOURCE_AUDIT.md`, blob `1b9f156447ff2bc87dfd08f413f7d22d31f5b66a`.
-
-## Closed deductions
+## Closed deductions through WP10
 
 WP05 removes the rational-torsion `ord_2` term.
 
-WP06 shows quadratic descent loses no unrecorded power of `2`; every discrepancy is an explicit exponent-2 defect group. For the all-split WP09 auxiliary field, local defects at `2` and every `ell|N` vanish, but the global and remaining nonsplit-place defect terms are not declared zero without proof.
+WP06 shows quadratic descent loses no unrecorded power of `2`; every discrepancy is an explicit exponent-2 defect group.
 
-WP07 proves good ordinary at `2` forces `a_2=+/-1`, computes `ord_2(1-alpha^(-1))=ord_2(3-a_2)`, and proves standard residual 2-distinguishedness is impossible.
+WP07 proves good ordinary at `2` forces `a_2=+/-1`, computes the exact unit-root interpolation valuation, and proves standard residual 2-distinguishedness is impossible.
 
-WP08 proves that equality of cyclotomic height-one data away from `(2)` leaves exactly a relative factor `2^delta`; for characteristic elements this is the relative mu exponent.
+WP08 isolates the exact height-one `(2)` / relative-mu defect in the cyclotomic Iwasawa lane.
 
-WP09 proves existence of a suitable all-split auxiliary `K=Q(sqrt(D))`, analytic rank one over `K`, and applicability of corrected Disegni Theorem B at `p=2`. It supplies an exact source-normalized p-adic height / p-adic-L-derivative identity, not the WP00 complex leading-term identity.
+WP09 proves existence of a suitable all-split auxiliary imaginary quadratic field and corrected Disegni p-adic Gross-Zagier applicability at `p=2`.
 
-## WP10 candidate result
+WP10 proves that the standard odd-prime rank-lowering -> Heegner-Kolyvagin primitivity -> sharp Sha/index route cannot be mechanically specialized to `p=2`; it also proves the residual-image dichotomy `C3` or `S3` and advances the preferred frontier to a direct exact 2-primary length theorem over `Q`.
 
-`BSD-R2-A1-WP10-P2-HEEGNER-BARRIER` establishes, subject to ordinary protected Solve review and merge:
+## WP11 candidate result
 
-1. the standard odd-prime chain `rank lowering -> primitive Heegner Kolyvagin system -> sharp Sha/index equality` cannot be mechanically specialized to `p=2` from the admitted source interfaces;
-2. this is a route obstruction, not a general no-go theorem for p=2 Heegner/Kolyvagin methods;
-3. irreducible `E[2]` forces the residual image to be either `C_3` or `GL_2(F_2) ~= S_3`; Chao Li's admitted obstruction concerns only a stronger surjective `S_3` subcase with additional local hypotheses;
-4. an exact Heegner-index theorem over the WP09 auxiliary field `K` would still not isolate the target over `Q`, because WP06 exposes the exact rank-zero twist `E^D` contribution and finite descent defects;
-5. analytically the same cost is visible in `L'(E/K,1)=L'(E,1)L(E^D,1)`, so the rank-zero twist factor cannot be discarded at `2` without an exact theorem.
+`BSD-R2-A1-WP11-C3-ODD-DEGREE-CONTROL` treats only the `C3` residual branch and proves:
 
-## Current frontier
+1. with `L=Q(E[2])`, `Gal(L/Q)=C3`;
+2. every prime dividing `2N` splits completely in `L/Q`, and `L` is totally real;
+3. for every `n>=1`, restriction identifies `Sel_{2^n}(E/Q)` and `Sha(E/Q)[2^n]` exactly with the corresponding `C3`-invariant groups over `L`;
+4. the same holds at `2^infinity` for Sha;
+5. because `3` is a 2-adic unit, `(1+sigma+sigma^2)/3` gives an integral invariant plus norm-zero decomposition of every 2-primary `C3`-module; there is no quadratic-style projector defect;
+6. the minimal discriminant has trivial square class, every multiplicative exponent `n_ell=ord_ell(Delta_min)` is even, and the Tamagawa valuation is explicit: split multiplicative gives `ord_2(c_ell)=ord_2(n_ell)`, nonsplit multiplicative gives `ord_2(c_ell)=1`.
 
-`BSD-R2-A1-2PRIMARY-DIRECT-LENGTH`.
+These are structural results only. WP11 does not prove the selected leading-term identity.
 
-The preferred next theorem is a direct integral result over `Q` determining
+## Current frontier after WP11
 
-`len_Z2 Sha(E/Q)[2^infinity] + sum_{ell|N} ord_2(c_ell)`
+The uniform frontier is now split.
 
-from
+### `BSD-R2-A1-C3-DIRECT-LENGTH`
 
-`ord_2(L'(E,1)/(Omega_E Reg_E))`
+Odd-degree descent ambiguity is closed. The remaining unknown is an exact analytic-to-arithmetic theorem determining the invariant `Sha(E/Q)[2^infinity]` length after the explicit Tamagawa term is removed. A cubic-base-change route must also determine the `C3` norm-zero/new summand exactly.
 
-with every 2-primary correction explicit. A theorem only after inverting `2`, only up to a 2-adic unit, or only up to an unspecified power of `2` is insufficient.
+### `BSD-R2-A1-S3-DIRECT-LENGTH`
 
-A uniform proof must cover both irreducible residual-image branches `C_3` and `S_3`, or provide separate exact results whose union covers them.
+The WP10 p=2 primitivity/rank-lowering barrier remains. No C3 theorem may be silently transferred to this branch.
 
-An auxiliary-`K` alternative remains admissible only if it also computes the exact rank-zero twist contribution, all surviving WP06 defects, and the complete WP00 normalization ledger. The Iwasawa alternative remains separate and still owes both WP08 relative-mu control and WP09 p-adic-to-complex normalization.
+`BSD-R2-A1` is settled only if both branches are covered, separately or uniformly, with every power of `2` explicit.
 
 ## Source boundary
 
-Further exact p=2 primitivity, Heegner-index, rank-zero-twist, complex Gross-Zagier normalization, or direct arithmetic-length theorem premises require Forge admission or an explicit governed waiver unless proved in-package.
+Further exact p=2 primitivity, cubic Artin-twist length, rank-zero-twist, complex Gross-Zagier normalization, or direct arithmetic-length theorem premises require Forge admission or an explicit governed waiver unless proved in-package.
 
 External reconnaissance is diagnostic only. Search failure is not proof of nonexistence.
 
 ## Certification boundary
 
-MATHCERT remains pending. WP10 does not alter the certification packet.
+MATHCERT remains pending. WP11 does not alter the certification packet.
 
 ## Stop conditions
 
