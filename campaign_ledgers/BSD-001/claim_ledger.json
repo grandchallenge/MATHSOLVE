@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "BSD-R2-A1-WP05-CLAIMS",
+  "campaign_id": "BSD-001",
+  "work_package_id": "BSD-R2-A1-WP05-SOURCE-INTERFACE-001",
+  "claims": [
+    {"claim_id":"BSD-R2-A1","statement":"Exact WP00-normalized 2-primary valuation identity for the selected class.","status":"SELECTED_RESEARCH_TARGET_UNPROVED"},
+    {"claim_id":"BSD-A1-R001","statement":"Irreducibility of E[2] implies #E(Q)_tors is odd.","status":"PROVED_IN_PACKAGE"},
+    {"claim_id":"BSD-A1-R002","statement":"The selected target is equivalent to equality with ord_2(#Sha) plus the Tamagawa valuations because the torsion contribution is zero.","status":"PROVED_IN_PACKAGE"},
+    {"claim_id":"BSD-A1-I001","statement":"Analytic rank one gives algebraic rank one and finite Sha through the protected Gross-Zagier/Kolyvagin interface.","status":"LITERATURE_DERIVED"},
+    {"claim_id":"BSD-A1-I002","statement":"The protected rank-one leading-term p-part interface is non-composable at p=2.","status":"LITERATURE_DERIVED"},
+    {"claim_id":"BSD-A1-O001","statement":"An integral 2-primary control/reciprocity bridge remains missing.","status":"OPEN_PROOF_OBLIGATION"}
+  ],
+  "claim_boundary": "BSD-R2-A1 remains unproved. External 2026 literature reconnaissance is not an admitted theorem interface."
+}

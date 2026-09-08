@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "dag_id": "BSD-R2-A1-WP05-DAG",
+  "campaign_id": "BSD-001",
+  "nodes": [
+    {"id":"A1-P00","statement":"Lock selected curve class and quantifier scope.","status":"complete"},
+    {"id":"A1-P01","statement":"Lock WP00 complete-L, period, regulator, Tamagawa, torsion, and ord_2 conventions.","status":"complete"},
+    {"id":"A1-P02","statement":"Import source-backed analytic-rank-one consequences: rank one, finite Sha, and rational normalized derivative.","status":"complete"},
+    {"id":"A1-P03","statement":"Use irreducible E[2] to remove the 2-adic torsion contribution and reduce the target exactly.","status":"complete"},
+    {"id":"A1-P04","statement":"Define and control the exact good-ordinary 2-Selmer local condition and its finite/global comparison.","status":"open"},
+    {"id":"A1-P05A","statement":"Direct-Q route: prove an integral ordinary 2-adic main-conjecture/Euler-system/finite-length equality sufficient for the Sha length.","status":"open_alternative"},
+    {"id":"A1-P05B","statement":"Auxiliary-quadratic route: prove exact 2-primary restriction/corestriction control, retaining all kernel/cokernel corrections.","status":"open_alternative"},
+    {"id":"A1-P06","statement":"Establish an integral explicit reciprocity/Gross-Zagier/height comparison at 2.","status":"open"},
+    {"id":"A1-P07","statement":"Compute all local, Tamagawa, period, isogeny, Euler/interpolation, and auxiliary-field correction valuations at 2.","status":"open"},
+    {"id":"A1-P08","statement":"Identify the resulting 2-adic length with ord_2(#Sha) plus the WP00 Tamagawa terms.","status":"open"},
+    {"id":"A1-P09","statement":"Conclude BSD-R2-A1 and nothing stronger.","status":"open"}
+  ],
+  "edges": [
+    ["A1-P00","A1-P01"],["A1-P01","A1-P02"],["A1-P02","A1-P03"],["A1-P03","A1-P04"],
+    ["A1-P04","A1-P05A"],["A1-P04","A1-P05B"],["A1-P05A","A1-P06"],["A1-P05B","A1-P06"],
+    ["A1-P06","A1-P07"],["A1-P07","A1-P08"],["A1-P08","A1-P09"]
+  ],
+  "route_logic": "A1-P05A and A1-P05B are alternative mechanism lanes; completion of one may bypass the other only if it supplies every downstream integral datum."
+}

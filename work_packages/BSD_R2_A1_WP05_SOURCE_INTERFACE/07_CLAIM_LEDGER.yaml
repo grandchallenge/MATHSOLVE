@@ -1,0 +1,28 @@
+schema_version: "1.0.0"
+ledger_id: BSD-R2-A1-WP05-CLAIMS
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP05-SOURCE-INTERFACE-001
+claims:
+  - claim_id: BSD-R2-A1
+    status: CONJECTURAL
+    statement: Exact WP00-normalized 2-primary valuation identity for the selected semistable ordinary-at-2 analytic-rank-one class.
+  - claim_id: BSD-A1-R001
+    status: PROVED_IN_PACKAGE
+    statement: Irreducibility of E[2] implies E(Q)_tors has odd order.
+  - claim_id: BSD-A1-R002
+    status: PROVED_IN_PACKAGE
+    statement: BSD-R2-A1 is equivalent to ord_2(L'(E,1)/(Omega_E Reg_E)) = ord_2(#Sha(E/Q)) + sum_{l|N} ord_2(c_l).
+  - claim_id: BSD-A1-I001
+    status: LITERATURE_DERIVED
+    statement: Analytic rank one supplies algebraic rank one and finite Sha through the protected Gross-Zagier/Kolyvagin interface.
+  - claim_id: BSD-A1-I002
+    status: LITERATURE_DERIVED
+    statement: The protected Jetchev-Skinner-Wan rank-one leading-term interface is odd-prime only and does not compose at p=2.
+  - claim_id: BSD-A1-O001
+    status: FAILED_ATTEMPT
+    statement: Mechanical odd-prime-to-2 transfer is invalid because integral 2-primary descent/local/normalization factors are not controlled.
+  - claim_id: BSD-A1-REC001
+    status: NEEDS_AUDIT
+    statement: Current 2026 external literature screen found no general theorem subsuming BSD-R2-A1; screened sources remain unadmitted reconnaissance.
+claim_boundary: >-
+  The package proves only the elementary reductions identified above. BSD-R2-A1 remains unproved and no claim is certified.

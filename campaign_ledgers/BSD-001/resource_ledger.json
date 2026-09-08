@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "BSD-R2-A1-WP05-RESOURCES",
+  "campaign_id": "BSD-001",
+  "computation_class": "EXACT_SYMBOLIC_SOURCE_INTERFACE_RECONSTRUCTION",
+  "resources": [
+    {"resource_id":"BSD-RES-PROG","purpose":"Protected BSD WP00-WP04 theorem, normalization, false-route, substrate, and target records at MATH-PROGRAMME cdbc52d85deb055ad4fc508803ba5140aa066f77.","boundary":"Historical authority remains Programme-owned; native Solve work references rather than rewrites it."},
+    {"resource_id":"BSD-RES-FORGE","purpose":"MATHFORGE retrospective provider manifest at protected head 7a9deb652d577b5b9c389b241ce29ddd2e35f41a.","boundary":"New external literature is reconnaissance until admitted through the provider route."},
+    {"resource_id":"BSD-RES-RECON","purpose":"Current 2026 screen of odd-prime, p=2 CM, twist-family, and main-conjecture literature.","boundary":"Used only to test frontier staleness; it creates no admitted theorem interface."},
+    {"resource_id":"BSD-RES-CERT","purpose":"MATHCERT route readback at protected head 40bc3f2f4ea97823ec6313141144b88a8c326a7b.","boundary":"Route is pending; no certification action is authorized by this package."}
+  ],
+  "stop_rule": "Stop a transfer lane when it requires an excluded prime hypothesis, loses an uncontrolled power of 2, substitutes a non-equivalent local condition, or uses the desired BSD identity circularly."
+}
