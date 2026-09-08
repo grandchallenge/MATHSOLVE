@@ -29,12 +29,15 @@
     {
       "campaign_id": "PNP-001",
       "route_class": "definition-audit",
-      "disposition": "blocked-pending-definition-concordance",
+      "disposition": "definition-concordance-audited-bridges-open",
+      "concordance_id": "PNP-DEFINITION-CONCORDANCE-001",
+      "concordance_path": "work_packages/PNP_DEFINITION_CONCORDANCE_001/concordance.json",
       "solve_obligations": [
-        "Audit imported P and NP definitions.",
-        "Audit deterministic and nondeterministic machine models.",
-        "Audit finite encodings, malformed-input behavior, total halting, bit-length accounting, uniformity, and polynomial bounds.",
-        "Preserve the separation orientation P != NP without claiming semantic equivalence."
+        "Prove the Boolean-function to language-set carrier bridge.",
+        "Prove a polynomial-overhead simulation bridge from the imported finite TM2 model to the Programme multitape model.",
+        "Prove the polynomial-bound and NP-verifier presentation equivalences.",
+        "Bind malformed-input handling and reductions separately for any concrete NP-complete endpoint.",
+        "Preserve the separation orientation P != NP without claiming theorem-level equivalence."
       ],
       "prohibited_effects": ["P != NP proof", "syntactic class-name equivalence", "MATHCERT status change"]
     },

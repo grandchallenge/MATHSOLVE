@@ -55,8 +55,11 @@ jobs:
           PYTHONPATH=ci python -m unittest ci/test_vgse_activation.py ci/test_euclid_diophantine_activation.py -v
           python ci/validate_formal_conjectures_expansion.py
           python -m unittest ci/test_formal_conjectures_expansion.py -v
+          python ci/validate_pnp_definition_concordance.py
+          python -m unittest ci/test_pnp_definition_concordance.py -v
           python -m json.tool contracts/formal_conjectures_expanded_evidence.json >/dev/null
           python -m json.tool formal_sources/formal_conjectures/MS-FC-WP01.json >/dev/null
+          python -m json.tool work_packages/PNP_DEFINITION_CONCORDANCE_001/concordance.json >/dev/null
           python -m json.tool schemas/campaign_manifest.schema.json >/dev/null
           python -m json.tool schemas/mathcert_handoff.schema.json >/dev/null
           python -m json.tool templates/mathcert_handoff.json >/dev/null

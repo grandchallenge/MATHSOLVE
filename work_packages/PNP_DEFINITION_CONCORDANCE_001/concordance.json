@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0.0",
+  "concordance_id": "PNP-DEFINITION-CONCORDANCE-001",
+  "campaign_id": "PNP-001",
+  "governance_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/145",
+  "audit_scope": "Definition-level comparison of the pinned Formal Conjectures P != NP statement and its imported Lean definitions against the protected Programme machine, encoding, totality, uniformity, and polynomial-bound lock.",
+  "sources": {
+    "formal_statement": {
+      "repository": "google-deepmind/formal-conjectures",
+      "commit_sha": "85f863718beeec7b58a3a1926ee92e3472bc2020",
+      "path": "FormalConjectures/Millenium/PvsNP.lean",
+      "git_blob_sha1": "255b60b9fc875a38481b1fbaba7f4b9c8928da70"
+    },
+    "formal_dependency_lock": {
+      "repository": "google-deepmind/formal-conjectures",
+      "commit_sha": "85f863718beeec7b58a3a1926ee92e3472bc2020",
+      "path": "lake-manifest.json",
+      "git_blob_sha1": "13a1771e215c0200be3db3d1d6881017a1f5d179",
+      "mathlib_commit_sha": "a3a10db0e9d66acbebf76c5e6a135066525ac900"
+    },
+    "formal_pair_encoding": {
+      "repository": "google-deepmind/formal-conjectures",
+      "commit_sha": "85f863718beeec7b58a3a1926ee92e3472bc2020",
+      "path": "FormalConjecturesForMathlib/Computability/Encoding.lean",
+      "git_blob_sha1": "984fbbae61764f13e26ba57f1afd1c78f630b968"
+    },
+    "mathlib_machine_and_cost": {
+      "repository": "leanprover-community/mathlib4",
+      "commit_sha": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+      "path": "Mathlib/Computability/TMComputable.lean",
+      "git_blob_sha1": "04c41973bab9aa1fda13e2316dbfbb2bbbaaa6ab"
+    },
+    "mathlib_encoding_contract": {
+      "repository": "leanprover-community/mathlib4",
+      "commit_sha": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+      "path": "Mathlib/Computability/Encoding.lean",
+      "git_blob_sha1": "d746f48947b813e938288f9ef00a0ae65e718df6"
+    },
+    "programme_charter": {
+      "repository": "grandchallenge/MATH-PROGRAMME",
+      "commit_sha": "32fc4d3a792c4e7dd2fcdf680768b7fb264979b3",
+      "path": "campaigns/p_vs_np/WP00_SOURCE_DEFINITION_EQUIVALENCE/00_CHARTER.md",
+      "git_blob_sha1": "810867b34aaf4007e78650a69cec63f5003deafd"
+    },
+    "programme_machine_lock": {
+      "repository": "grandchallenge/MATH-PROGRAMME",
+      "commit_sha": "32fc4d3a792c4e7dd2fcdf680768b7fb264979b3",
+      "path": "campaigns/p_vs_np/WP00_SOURCE_DEFINITION_EQUIVALENCE/02_MACHINE_AND_ENCODING_LOCK.md",
+      "git_blob_sha1": "f33ad992159fc2dc7d17e52cf2e376b57c146f79"
+    }
+  },
+  "imported_definition_chain": [
+    "ComplexityTheory.P_ne_NP",
+    "ComplexityTheory.P",
+    "ComplexityTheory.NP",
+    "ComplexityTheory.IsComputableInPolyTime",
+    "Turing.TM2ComputableInPolyTime",
+    "Turing.FinTM2.TM2OutputsInTime",
+    "Computability.FinEncoding"
+  ],
+  "checks": [
+    {
+      "check_id": "PNP-CONC-ORIENTATION-001",
+      "topic": "statement orientation",
+      "disposition": "matched",
+      "finding": "ComplexityTheory.P_ne_NP has the separation orientation and can address only the P != NP side of the Programme terminal alternatives."
+    },
+    {
+      "check_id": "PNP-CONC-PROOF-001",
+      "topic": "proof status",
+      "disposition": "placeholder_not_evidence",
+      "finding": "The imported declaration ends with `by sorry`; it is a conjectural statement candidate and supplies no proof or certification evidence."
+    },
+    {
+      "check_id": "PNP-CONC-CARRIER-001",
+      "topic": "decision-language carrier",
+      "disposition": "matched_with_unproved_bridge",
+      "finding": "The upstream carrier is a total Boolean-valued function on List Bool; the Programme carrier is a language over binary strings. The true-preimage correspondence is standard but no pinned Lean equivalence theorem connects the two class presentations.",
+      "bridge_id": "PNP-BRIDGE-CARRIER-001"
+    },
+    {
+      "check_id": "PNP-CONC-ENCODING-001",
+      "topic": "finite binary input and size",
+      "disposition": "matched",
+      "finding": "finEncodingListBool is the identity encoding on finite Boolean lists, so the upstream input measure is exactly encoded bit-list length."
+    },
+    {
+      "check_id": "PNP-CONC-TOTALITY-001",
+      "topic": "total halting and Boolean output",
+      "disposition": "matched",
+      "finding": "TM2ComputableInPolyTime requires an Option.some encoded output for every input within the polynomial bound; P and the NP verifier are total Boolean functions."
+    },
+    {
+      "check_id": "PNP-CONC-MALFORMED-001",
+      "topic": "malformed inputs",
+      "disposition": "not_applicable_at_class_level",
+      "finding": "Every List Bool is a valid class-level input. The Programme malformed-to-NO convention remains an obligation for any concrete SAT or other encoded endpoint and is not discharged by P_ne_NP.",
+      "bridge_id": "PNP-BRIDGE-ENDPOINT-001"
+    },
+    {
+      "check_id": "PNP-CONC-UNIFORMITY-001",
+      "topic": "uniformity",
+      "disposition": "matched",
+      "finding": "Membership uses one finite FinTM2 description for all inputs; no advice string, per-length circuit family, oracle, or noncomputable parameter is present in the imported definition."
+    },
+    {
+      "check_id": "PNP-CONC-MACHINE-001",
+      "topic": "deterministic machine model",
+      "disposition": "matched_with_unproved_bridge",
+      "finding": "The upstream deterministic finite multi-stack TM2 model is documented as classically equivalent, while the Programme lock uses a deterministic multitape Turing machine. This package found no pinned kernel-checked polynomial-simulation bridge between those presentations.",
+      "bridge_id": "PNP-BRIDGE-MODEL-001"
+    },
+    {
+      "check_id": "PNP-CONC-POLYTIME-001",
+      "topic": "polynomial running-time bound",
+      "disposition": "matched_with_unproved_bridge",
+      "finding": "The upstream bound is evaluation of a Polynomial Nat at encoded input length; the Programme accepts a worst-case c*n^k or n^k+k bound. Their class-level equivalence is expected but not imported as a proved conversion theorem.",
+      "bridge_id": "PNP-BRIDGE-POLYBOUND-001"
+    },
+    {
+      "check_id": "PNP-CONC-NP-001",
+      "topic": "NP verifier and witness bound",
+      "disposition": "matched_with_unproved_bridge",
+      "finding": "The upstream NP definition uses a deterministic polynomial-time Boolean verifier and a Polynomial Nat witness-length bound, with a delimiter-based finite encoding of the input-witness pair. A class-extensional proof against the Programme verifier presentation is still absent.",
+      "bridge_id": "PNP-BRIDGE-NP-001"
+    },
+    {
+      "check_id": "PNP-CONC-REDUCTION-001",
+      "topic": "NP-complete endpoint and reduction convention",
+      "disposition": "absent",
+      "finding": "P_ne_NP is a class inequality and contains no SAT language, parser, polynomial many-one reduction, or endpoint correctness theorem. Those obligations remain mandatory for a concrete terminal route.",
+      "bridge_id": "PNP-BRIDGE-ENDPOINT-001"
+    }
+  ],
+  "open_bridges": [
+    {
+      "bridge_id": "PNP-BRIDGE-CARRIER-001",
+      "obligation": "Prove an extensional equivalence between Boolean-valued decision problems and Programme languages over binary strings, preserving class equality and inequality."
+    },
+    {
+      "bridge_id": "PNP-BRIDGE-MODEL-001",
+      "obligation": "Provide a pinned polynomial-overhead simulation theorem between the upstream finite TM2 model and the Programme deterministic multitape Turing-machine model."
+    },
+    {
+      "bridge_id": "PNP-BRIDGE-POLYBOUND-001",
+      "obligation": "Prove both conversions between Polynomial Nat evaluation bounds and the Programme worst-case asymptotic polynomial bounds, including all input lengths."
+    },
+    {
+      "bridge_id": "PNP-BRIDGE-NP-001",
+      "obligation": "Prove class-extensional equivalence of the upstream deterministic-verifier NP definition, pair encoding, and witness bound with the Programme NP lock."
+    },
+    {
+      "bridge_id": "PNP-BRIDGE-ENDPOINT-001",
+      "obligation": "For any concrete NP-complete endpoint, bind parsing, malformed-to-NO behavior, total correctness, encoded size, and the locked polynomial many-one reductions."
+    }
+  ],
+  "exact_theorem_interface": {
+    "upstream_theorem": "ComplexityTheory.P_ne_NP",
+    "admitted_use": "separation_side_candidate_only",
+    "current_relation": "definition_level_alignment_audited_with_unproved_equivalence_bridges",
+    "required_bridge_ids": [
+      "PNP-BRIDGE-CARRIER-001",
+      "PNP-BRIDGE-MODEL-001",
+      "PNP-BRIDGE-POLYBOUND-001",
+      "PNP-BRIDGE-NP-001"
+    ],
+    "concrete_endpoint_bridge_id": "PNP-BRIDGE-ENDPOINT-001",
+    "mathcert_route_state": "pending"
+  },
+  "next_solve_target": {
+    "target_id": "PNP-BRIDGE-001",
+    "scope": "Lean or equivalently checkable carrier, model, polynomial-bound, and NP-verifier bridge suite; no terminal theorem proof is claimed.",
+    "entry_condition": "Use only the exact pinned source identities in this concordance or open a separately governed refresh."
+  },
+  "disposition": "DEFINITION_CONCORDANCE_AUDITED__KERNEL_EQUIVALENCE_AND_MODEL_BRIDGES_OPEN",
+  "certification_effect": "none",
+  "claim_boundary": "This package completes the bounded definition audit and identifies an exact separation-side theorem interface. It does not prove P != NP, P = NP, equivalence of the imported and Programme classes, a new algorithm, a new lower bound, novelty, or any MATHCERT disposition."
+}
