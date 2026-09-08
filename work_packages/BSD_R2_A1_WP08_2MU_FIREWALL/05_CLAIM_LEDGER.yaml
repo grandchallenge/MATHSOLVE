@@ -1,0 +1,34 @@
+schema_version: "1.0.0"
+ledger_id: BSD-R2-A1-WP08-CLAIMS
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP08-2MU-FIREWALL
+claims:
+  - claim_id: BSD-R2-A1
+    status: CONJECTURAL
+    statement: The selected WP00-normalized 2-primary rank-one BSD valuation identity.
+  - claim_id: BSD-A1-MU001
+    status: PROVED_IN_PACKAGE
+    statement: In Z_2[[T]], equality of all height-one valuations away from (2) leaves exactly a factor 2^delta times a unit, with delta the difference of (2)-valuations.
+  - claim_id: BSD-A1-MU002
+    status: PROVED_IN_PACKAGE
+    statement: A divisibility valid at all height-one primes away from (2) can fail globally only by a power of 2; the minimal repairing exponent is max(0,mu(g)-mu(f)) in the stated orientation.
+  - claim_id: BSD-A1-MU003
+    status: PROVED_IN_PACKAGE
+    statement: Under away-from-(2) equality, the first nonzero augmentation coefficients differ in ord_2 by exactly the relative (2)-height exponent.
+  - claim_id: BSD-A1-MU004
+    status: PROVED_IN_PACKAGE
+    statement: For a torsion cyclotomic Iwasawa module, the exponent of the height-one prime (2) in a characteristic element is its algebraic mu exponent; for an analytic element the analogous exponent is its analytic mu exponent.
+  - claim_id: BSD-A1-MU005
+    status: CONDITIONAL_INTERFACE
+    statement: If analytic and algebraic characteristic ideals agree after inverting 2, integral equality is equivalent to equality of their (2)-height/mu exponents.
+  - claim_id: BSD-A1-MU006
+    status: EXTERNAL_RECONNAISSANCE_UNADMITTED
+    statement: The screened primary Kato p=2 height-one statements do not supply the omitted (2)-component; actual Kato input is one-sided and must not be upgraded to away-from-(2) equality.
+  - claim_id: BSD-A1-MU007
+    status: EXTERNAL_RECONNAISSANCE_UNADMITTED
+    statement: No general theorem forcing mu=0 for the selected good-ordinary-at-2 globally irreducible E[2] class was found in the current literature screen.
+  - claim_id: BSD-A1-MU008
+    status: OPEN_DEEP_THEOREM
+    statement: Integral control or exact bypass of the (2)-height component plus rank-one reciprocity/height normalization remains required.
+claim_boundary: >-
+  WP08 proves the Iwasawa divisor/leading-term firewall only. It does not prove mu=0, a p=2 main conjecture, an explicit reciprocity theorem, BSD-R2-A1, or a certification disposition.

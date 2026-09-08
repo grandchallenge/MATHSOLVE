@@ -3,7 +3,7 @@
 ## Target repository and authority
 
 - Target repository: `grandchallenge/MATHSOLVE`.
-- WP07 ownership issue: `grandchallenge/MATHSOLVE#140`.
+- WP08 ownership issue: `grandchallenge/MATHSOLVE#143`.
 - Constitutional authority remains the protected GCL authority chain already bound by the campaign.
 - Mathematical certification remains MATHCERT-only.
 
@@ -11,40 +11,42 @@
 
 Historical WP00-WP04 remain Programme-owned. Native Solve work contains:
 
-- `BSD-R2-A1-WP05-SOURCE-INTERFACE-001`: exact target reconstruction and localization of the integral-at-2 bridge;
+- `BSD-R2-A1-WP05-SOURCE-INTERFACE-001`: exact target reconstruction and torsion-valuation removal;
 - `BSD-R2-A1-WP06-2DESCENT-CONTROL`: exact integral quadratic `2^n` Selmer restriction/corestriction control;
-- `BSD-R2-A1-WP07-2RECIPROCITY-LENGTH`: forced local-at-2 correction lemmas and the non-distinguished reciprocity route audit.
+- `BSD-R2-A1-WP07-2RECIPROCITY-LENGTH`: forced local-at-2 corrections and non-distinguished route audit;
+- `BSD-R2-A1-WP08-2MU-FIREWALL`: exact height-one `(2)` / Iwasawa-mu defect theorem.
 
 `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED`.
 
-## WP06 material result
+## Closed deductions
 
-Quadratic base change no longer loses hidden powers of `2`: every finite-level discrepancy is carried by explicit exponent-2 local and integral splitting defect groups, yielding exact Selmer and large-`n` Sha length identities.
+WP05 removes the rational-torsion `ord_2` term.
 
-## WP07 material result
+WP06 shows quadratic descent loses no unrecorded power of `2`; every discrepancy is an explicit exponent-2 defect group.
 
-Good ordinary reduction at `2` forces `a_2=+/-1`, hence `#E_tilde(F_2)` is `2` or `4`. For the unit root `alpha` of `X^2-a_2 X+2`,
+WP07 proves good ordinary at `2` forces `a_2=+/-1`, computes `ord_2(1-alpha^(-1))=ord_2(3-a_2)`, and proves standard residual 2-distinguishedness is impossible.
 
-`ord_2(1-alpha^(-1)) = ord_2(3-a_2)`.
+WP08 proves that equality of cyclotomic height-one data away from `(2)` leaves exactly a relative factor `2^delta`; after removing a common augmentation zero this shifts the first nonzero coefficient by exactly `delta`. For characteristic elements, `delta` is the relative mu exponent.
 
-Thus a normalization containing `(1-alpha^(-1))^2` carries an exact local valuation `2` or `4`; the factor is never a 2-adic unit.
+## Current frontier
 
-The standard residual ordinary `p`-distinguished hypothesis also fails automatically at `p=2`, because both residual rank-one characters take values in `F_2^x={1}`.
+`BSD-R2-A1-2MU-RECIPROCITY`.
 
-## Current next target
+Two independent theorem debts remain:
 
-`BSD-R2-A1-2ND-MAIN-RECIPROCITY`.
+1. integral control or exact bypass of the height-one `(2)` / relative-mu component;
+2. rank-one reciprocity/height comparison carrying the WP07 local factor and all WP00 normalizations to the complex derivative.
 
-The next material step is an integral rank-one analytic-to-arithmetic theorem at `2` that works in this forced non-distinguished setting, or an exact Heegner/Kolyvagin alternative. It must carry every local multiplier and WP00 normalization to the final valuation equality.
+No additional descent or normalization repair is presently identified before these deep inputs.
 
 ## Source boundary
 
-MATHFORGE's BSD provider coverage remains retrospective. Current literature used by WP07 is external reconnaissance only. It may reject an inapplicable route but may not silently strengthen the theorem interface.
+MATHFORGE BSD provider coverage remains retrospective. Current Kato, mu-invariant, and Heegner-main-conjecture literature is external reconnaissance only until separately admitted. Search failure is not proof of nonexistence.
 
 ## Certification boundary
 
-The MATHCERT route remains pending. Neither WP06 nor WP07 modifies the certification packet.
+MATHCERT remains pending. WP08 does not alter the certification packet.
 
 ## Stop conditions
 
-Stop for target or hypothesis drift, reliance on an unadmitted theorem as a proof premise, a genuinely new integral p=2 reciprocity/Iwasawa theorem not established in the package, or MATHCERT certification authority. Routine bounded theorem development, exact falsification, review, and protected integration remain delegated.
+Stop for target or hypothesis drift, reliance on an unadmitted theorem as a proof premise, genuinely new integral p=2 mu/main-conjecture or rank-one reciprocity mathematics not established in-package, or MATHCERT certification authority. Routine bounded proof, exact falsification, review, and protected integration remain delegated.
