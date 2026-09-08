@@ -1,0 +1,34 @@
+schema_version: "1.0.0"
+ledger_id: BSD-R2-A1-WP06-CLAIMS
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP06-2DESCENT-CONTROL
+claims:
+  - claim_id: BSD-R2-A1
+    status: CONJECTURAL
+    statement: The selected WP00-normalized 2-primary rank-one BSD valuation identity.
+  - claim_id: BSD-A1-D001
+    status: PROVED_IN_PACKAGE
+    statement: Irreducible E[2] implies E(K)[2^infinity]=0 for every quadratic K/Q.
+  - claim_id: BSD-A1-D002
+    status: PROVED_IN_PACKAGE
+    statement: For every n>=1, restriction identifies base and twist cohomology with the plus and minus eigenspaces over K.
+  - claim_id: BSD-A1-D003
+    status: PROVED_IN_PACKAGE
+    statement: The finite-level Selmer restriction cokernels inject into explicit local exponent-2 descent defects.
+  - claim_id: BSD-A1-D004
+    status: PROVED_IN_PACKAGE
+    statement: The exact I_n/Q_n sequence replaces integral plus/minus projectors and retains every 2-primary splitting defect.
+  - claim_id: BSD-A1-D005
+    status: PROVED_IN_PACKAGE
+    statement: The exact finite-length Selmer identity holds for every n>=1.
+  - claim_id: BSD-A1-D006
+    status: PROVED_IN_PACKAGE
+    statement: Under finiteness of the three 2-primary Sha groups, the exact large-n Sha-length identity follows.
+  - claim_id: BSD-A1-D007
+    status: PROVED_IN_PACKAGE
+    statement: If every prime dividing 2N splits in K, the local descent defects at 2 and at all bad primes vanish exactly.
+  - claim_id: BSD-A1-D-REC001
+    status: NEEDS_AUDIT
+    statement: Kramer 1981 and Morgan-Paterson 2022 provide external concordance with the mod-2 and local-norm shadows of the package theorem; they are not admitted BSD provider inputs in this tranche.
+claim_boundary: >-
+  WP06 proves the quadratic 2-descent/control theorem only. It does not prove BSD-R2-A1, an integral 2-adic main conjecture, or an explicit reciprocity law.
