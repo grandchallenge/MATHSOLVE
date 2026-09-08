@@ -1,0 +1,28 @@
+schema_version: "1.0.0"
+ledger_id: BSD-R2-A1-WP09-CLAIMS
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP09-DISEGNI-APPLICABILITY
+claims:
+  - claim_id: BSD-R2-A1
+    status: CONJECTURAL
+    statement: The selected WP00-normalized 2-primary rank-one BSD valuation identity.
+  - claim_id: BSD-A1-K001
+    status: PROVED_FROM_ADMITTED_INTERFACE
+    statement: A suitable imaginary quadratic K exists with D fundamental, (D,2N)=1, 2 and every ell|N split, L(E^D,1) nonzero, and analytic rank of E/K exactly one.
+  - claim_id: BSD-A1-PGZ001
+    status: PROVED_IN_PACKAGE
+    statement: For a suitable auxiliary K, the corrected Disegni Theorem B hypotheses at p=2 are satisfied by the weight-two modular representation of E with trivial Hecke character.
+  - claim_id: BSD-A1-PGZ002
+    status: IMPORTED_THEOREM_APPLICABLE
+    statement: In that auxiliary lane, the source-normalized p-adic height of the Heegner class equals the cyclotomic p-adic L-derivative times the explicit Disegni interpolation and test-vector factors.
+  - claim_id: BSD-A1-PGZ003
+    status: OPEN_PROOF_OBLIGATION
+    statement: The source-normalized p-adic Gross-Zagier identity has not been converted to the WP00 complex derivative, real Neron period, and Neron-Tate regulator normalization.
+  - claim_id: BSD-A1-IDX001
+    status: OPEN_DEEP_THEOREM
+    statement: An exact integral 2-primary Heegner/Kolyvagin index or equivalent Sha-Tamagawa length theorem remains required for the direct arithmetic lane.
+  - claim_id: BSD-A1-MU008
+    status: OPEN_DEEP_THEOREM
+    statement: The WP08 relative height-one (2)/mu defect remains open for any main-conjecture route not bypassed by a direct arithmetic theorem.
+claim_boundary: >-
+  WP09 proves auxiliary-K existence and corrected Disegni p=2 applicability only. It does not prove nonvanishing of the p-adic height or derivative, identify p-adic and Neron-Tate heights, prove an integral 2-primary index formula or mu equality, prove BSD-R2-A1, or imply certification.
