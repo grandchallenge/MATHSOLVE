@@ -1,0 +1,37 @@
+schema_version: "1.0.0"
+ledger_id: BSD-R2-A1-WP07-CLAIMS
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP07-2RECIPROCITY-LENGTH
+claims:
+  - claim_id: BSD-R2-A1
+    status: CONJECTURAL
+    statement: The selected WP00-normalized 2-primary rank-one BSD valuation identity.
+  - claim_id: BSD-A1-R001
+    status: PROVED_IN_PACKAGE
+    statement: Good ordinary reduction at 2 forces a_2 to equal +1 or -1 and #E_tilde(F_2) to equal 2 or 4.
+  - claim_id: BSD-A1-R002
+    status: PROVED_IN_PACKAGE
+    statement: For the 2-adic unit root alpha of X^2-a_2 X+2, ord_2(1-alpha^(-1)) equals ord_2(3-a_2), namely 1 or 2.
+  - claim_id: BSD-A1-R003
+    status: PROVED_IN_PACKAGE
+    statement: Under a normalization containing (1-alpha^(-1))^2, that local multiplier has exact ord_2 equal to 2 or 4 and is never a unit.
+  - claim_id: BSD-A1-R004
+    status: PROVED_IN_PACKAGE
+    statement: The standard residual ordinary p-distinguished condition is impossible at p=2 for the F_2 coefficient field because both residual rank-one characters are trivial.
+  - claim_id: BSD-A1-R005
+    status: EXTERNAL_RECONNAISSANCE_UNADMITTED
+    statement: Yan-Zhu arXiv:2412.20078 excludes the selected prime by assuming p>2/odd p.
+  - claim_id: BSD-A1-R006
+    status: EXTERNAL_RECONNAISSANCE_UNADMITTED
+    statement: Burungale-Skinner-Tian-Wan arXiv:2409.01350 excludes p=2 through p not dividing 2N.
+  - claim_id: BSD-A1-R007
+    status: EXTERNAL_RECONNAISSANCE_UNADMITTED
+    statement: Kriz-Li arXiv:1606.03172 supplies genuine p=2 BSD results for many quadratic twists but is not a uniform theorem for the selected class.
+  - claim_id: BSD-A1-R008
+    status: EXTERNAL_RECONNAISSANCE_UNADMITTED
+    statement: Hatley-Ray arXiv:2412.07308 treats good ordinary p=2 Iwasawa rank behavior but not the selected exact leading-term identity.
+  - claim_id: BSD-A1-R009
+    status: OPEN_DEEP_THEOREM
+    statement: An integral non-distinguished p=2 rank-one reciprocity/length theorem, or an exact equivalent, is still required.
+claim_boundary: >-
+  WP07 proves local algebraic obstructions and exact correction valuations only. It does not prove an Iwasawa main conjecture, explicit reciprocity law, p-adic Gross-Zagier theorem, BSD-R2-A1, or a certification disposition.
