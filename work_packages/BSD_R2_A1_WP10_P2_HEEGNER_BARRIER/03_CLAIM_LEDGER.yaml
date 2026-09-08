@@ -1,0 +1,25 @@
+schema_version: "1.0.0"
+ledger_id: BSD-R2-A1-WP10-CLAIMS
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP10-P2-HEEGNER-BARRIER
+claims:
+  - claim_id: BSD-R2-A1
+    status: SELECTED_RESEARCH_TARGET_UNPROVED
+    statement: The selected WP00-normalized 2-primary rank-one BSD valuation identity.
+  - claim_id: BSD-A1-HB001
+    status: PROVED_FROM_ADMITTED_SOURCE_INTERFACES
+    statement: The standard odd-prime rank-lowering to Heegner-Kolyvagin primitivity to sharp Sha/index proof technology cannot be mechanically specialized to p=2 from the admitted interfaces.
+  - claim_id: BSD-A1-HB002
+    status: PROVED_IN_PACKAGE
+    statement: An exact 2-primary Heegner-index theorem over the WP09 auxiliary field K is insufficient by itself to isolate the target over Q; the rank-zero twist and explicit WP06 descent defects also require exact control.
+  - claim_id: BSD-A1-HB003
+    status: OPEN_DEEP_THEOREM
+    statement: A genuinely integral p=2 primitivity/index theorem, direct Q-side arithmetic-length theorem, or equivalent exact bridge remains required.
+  - claim_id: BSD-A1-HB004
+    status: OPEN_INDEPENDENT_ROUTE
+    statement: The Iwasawa alternative remains separate and still requires the WP08 relative-mu component plus exact p-adic-to-complex normalization.
+  - claim_id: BSD-A1-HB005
+    status: PROVED_IN_PACKAGE
+    statement: Irreducibility of E[2] forces the global mod-2 image to be either C3 or all of GL_2(F_2) isomorphic to S3; surjectivity is therefore strictly stronger than the selected residual hypothesis.
+claim_boundary: >-
+  WP10 proves a bounded route obstruction, residual-image dichotomy, and exact composition debt only. It does not prove a general p=2 no-go theorem, p=2 primitivity, an exact Sha/index equality, BSD-R2-A1, novelty/priority, or certification.
