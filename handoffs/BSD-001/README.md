@@ -3,7 +3,7 @@
 ## Target repository and authority
 
 - Target repository: `grandchallenge/MATHSOLVE`.
-- Current substantive owner: `grandchallenge/MATHSOLVE#140` while WP07 is open.
+- WP07 ownership issue: `grandchallenge/MATHSOLVE#140`.
 - Constitutional authority remains the protected GCL authority chain already bound by the campaign.
 - Mathematical certification remains MATHCERT-only.
 
