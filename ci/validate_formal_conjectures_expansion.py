@@ -17,7 +17,7 @@ AFFECTED = {"UC-001", "PNP-001", "OZ-001", "BSD-001", "HC-001", "YM-001"}
 PILOT = {"RH-001", "NS-CI-001"}
 EXPECTED_DISPOSITIONS = {
     "UC-001": ("statement-correspondence", "formulation-concordance-only"),
-    "PNP-001": ("definition-audit", "blocked-pending-definition-concordance"),
+    "PNP-001": ("definition-audit", "definition-concordance-audited-bridges-open"),
     "OZ-001": ("theorem-lattice", "eight-scopes-preserved"),
     "BSD-001": ("explicit-non-route", "adjacency-only"),
     "HC-001": ("explicit-non-route", "bounded-negative-source-screen"),

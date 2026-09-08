@@ -37,6 +37,7 @@ from validate_vgse_activation import (  # noqa: E402
     merged_provider_gate_errors as provider_gate_errors,
 )
 from validate_formal_conjectures_expansion import validate as formal_conjectures_errors  # noqa: E402
+from validate_pnp_definition_concordance import validate as pnp_definition_concordance_errors  # noqa: E402
 
 
 def main() -> int:
@@ -56,7 +57,13 @@ def main() -> int:
             print(f"ERROR: {error}")
         return 1
 
-    print("Expanded Formal Conjectures evidence, merged current Cert routes, and VGSE activation invariants passed.")
+    errors = pnp_definition_concordance_errors()
+    if errors:
+        for error in errors:
+            print(f"ERROR: {error}")
+        return 1
+
+    print("Expanded Formal Conjectures evidence, PNP definition concordance, merged current Cert routes, and VGSE activation invariants passed.")
     return 0
 
 
@@ -80,6 +87,7 @@ __all__ = [
     "main",
     "manifest_errors",
     "mathcert_handoff_errors",
+    "pnp_definition_concordance_errors",
     "provider_gate_errors",
     "schema_errors",
     "walk_work_packages",

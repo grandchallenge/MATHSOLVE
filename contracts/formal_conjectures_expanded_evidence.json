@@ -47,11 +47,16 @@
     },
     "PNP-001": {
       "coverage_mode": "retrospective",
-      "disposition": "direct-candidate-definition-audit-blocked",
+      "disposition": "definition-concordance-audited-bridges-open",
+      "solve_concordance": {
+        "concordance_id": "PNP-DEFINITION-CONCORDANCE-001",
+        "path": "work_packages/PNP_DEFINITION_CONCORDANCE_001/concordance.json",
+        "result": "definition_level_alignment_audited_with_unproved_equivalence_bridges"
+      },
       "artifacts": [
         {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/PNP-001.json","digest_algorithm":"git_blob_sha1","digest":"c88ac8ee7493a551670ca2a37385a9157b43c658","role":"source"}
       ],
-      "blocking_obligations": ["Audit the imported P and NP definitions, machine model, encodings, totality, malformed-input behavior, input-size accounting, and polynomial bounds before any equivalence claim."]
+      "blocking_obligations": ["Discharge PNP-BRIDGE-CARRIER-001, PNP-BRIDGE-MODEL-001, PNP-BRIDGE-POLYBOUND-001, and PNP-BRIDGE-NP-001 before any theorem-level equivalence claim.", "Discharge PNP-BRIDGE-ENDPOINT-001 for any concrete NP-complete language route."]
     },
     "OZ-001": {
       "coverage_mode": "retrospective",
