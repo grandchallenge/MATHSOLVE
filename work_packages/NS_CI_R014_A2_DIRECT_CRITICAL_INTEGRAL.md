@@ -9,6 +9,11 @@
 - A2 status: unproved
 - Numerical lane: closed
 
+The executable `L5-0` through `L5-2` restart is recorded in
+`NS_CI_R014_A2_L5_RESTART.md`. That record completes the requested
+normalization and decomposition obligations while leaving the critical
+integrability estimate and A2 theorem open.
+
 ## 1. Question
 
 Can one prove directly that
