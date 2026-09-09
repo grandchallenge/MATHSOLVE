@@ -158,13 +158,13 @@ Protected WP18B gives `v_2(Fitt^0(T_E))=0`. Therefore
 
 This is the desired exact cancellation across a genuine residual-conductor-drop / even-Tamagawa example.
 
-## Individual-control p=2 BSD statement
+## Individual-control `p=2` valuation statement
 
 Protected WP05/WP18A establish analytic and algebraic rank one and finite Sha for these controls. WP18B establishes the actual `2`-primary Sha valuation `0`. WP18C establishes the WP00-normalized analytic predicted `2`-primary valuation `0`.
 
-Consequently the `p=2` leading-term BSD equality holds for each of `53a1` and `203b1`.
+Consequently the exact `2`-adic valuation form of the rank-one leading-term BSD equality holds for each of `53a1` and `203b1`.
 
-This statement is mathematical admission within MATHSOLVE. It is **not** a MATHCERT certification disposition.
+This is the `p=2` component selected by this campaign. It is not a claim that WP18C proves the full rational leading-term BSD identity, and it is **not** a MATHCERT certification disposition.
 
 ## What the A/B comparison establishes
 
@@ -217,5 +217,6 @@ without relying on bounded-conductor individual verification.
 - The known flawed later odd-prime GJPST argument is not used.
 - No floating-point recognition is used by WP18C itself.
 - No uniform p=2 Iwasawa/Fitting theorem is inferred from two examples.
+- No full rational leading-term BSD identity is claimed from the `p=2` valuation result.
 - No MATHCERT certification is asserted.
 - No novelty, priority, patentability, or commercial claim follows.
