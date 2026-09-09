@@ -27,7 +27,7 @@ Material files:
 - `allbsd/bsd.1-1000` — rank-one BSD table used only to corroborate the `r=1` analytic-rank reconnaissance datum;
 - `docs/index.html` — format documentation.
 
-The local arithmetic below is recomputed in-package by `verify_cohort.py` using integer arithmetic. No external local-reduction theorem is imported beyond the already-protected WP13 dictionary.
+The local discriminants and reduction at `2` below are recomputed in-package by `verify_cohort.py` using integer arithmetic. Both conductors are squarefree. For elliptic curves over `Q`, bad conductor exponent one is the multiplicative case, so squarefree conductor gives semistability here. The historical Cremona local tables independently record multiplicative Kodaira types for these controls. The exact `2`-adic Tamagawa/residual-conductor deductions then use the already-protected WP13 dictionary.
 
 ## Selected-hypothesis hard filter
 
@@ -114,7 +114,7 @@ Protected WP13 gives:
 
 This is a valid WP13 **regime B** control.
 
-The older Cremona table also lists the local Kodaira pattern `I_2, I_1` and component factors `2,1` for `203B1`; the protected claim here does not depend on that historical table because WP13 plus the recomputed discriminant depths already determines the required `2`-adic Tamagawa information.
+The historical Cremona local table lists Kodaira types `I_2, I_1` and component factors `2,1` for `203B1`. That is a useful independent consistency check. The protected `2`-adic Tamagawa and residual-conductor conclusions above are instead obtained from the recomputed discriminant depths through WP13.
 
 ## Recovery correction
 
