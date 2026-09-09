@@ -210,19 +210,49 @@ and define
 
 `A'(T):=U(T)A(T)V(T)`.
 
-Then the specialization modules are canonically isomorphic up to the induced invertible bases, and
+Write
+
+`U(T)=U_0+T U_1+...`,
+
+`V(T)=V_0+T V_1+...`.
+
+Then
+
+`A'_0=U_0 A_0 V_0`
+
+and
+
+`A'_1=U_1 A_0 V_0 + U_0 A_1 V_0 + U_0 A_0 V_1`.
+
+The specialization modules are identified by the invertible maps `U_0` and `V_0`, and
+
+`ker(A'_0)=V_0^{-1} ker(A_0)`.
+
+Take `x' in ker(A'_0)` and put `x:=V_0 x' in ker(A_0)`. Then
+
+`U_1 A_0 V_0 x' = U_1 A_0 x = 0`.
+
+The third term
+
+`U_0 A_0 V_1 x'`
+
+lies in
+
+`U_0 im(A_0)=im(A'_0)`,
+
+because `V_0` is invertible. Hence it vanishes in the cokernel. The only surviving contribution to the induced free-cokernel map is therefore
+
+`U_0 A_1 x`,
+
+which is precisely the image of the original Bockstein map under the natural specialization identifications. Thus the Bockstein ideal changes only by units arising from primitive basis choices.
+
+Also
 
 `det A'(T)=det U(T) det V(T) det A(T)`.
 
 Because `det A(0)=0`, the coefficient of `T` in `det A'(T)` is the coefficient of `T` in `det A(T)` multiplied by the unit
 
 `det U(0) det V(0)`.
-
-For the induced Bockstein map, the extra derivative terms are
-
-`U_1 A_0 V_0 + U_0 A_0 V_1`.
-
-On `ker(A_0)`, the `A_0 V_1` contribution lands in `im(A_0)`, and the `U_1 A_0` contribution vanishes after applying `A_0` to the kernel input. Hence, after the natural identifications of kernel and free cokernel, the Bockstein scalar changes only by units from the chosen primitive bases.
 
 Thus both sides of the ideal identity are presentation-invariant under invertible `R[[T]]` basis changes.
 
