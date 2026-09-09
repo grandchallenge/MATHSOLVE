@@ -23,8 +23,11 @@ Read in this order after re-fetching protected live state:
 6. `work_packages/BSD_R2_A1_WP18A_RECON_COHORT/`;
 7. `work_packages/BSD_R2_A1_WP18B_SELMER2/`;
 8. `work_packages/BSD_R2_A1_WP18C_ANALYTIC_DELTA2/`;
-9. protected WP06, WP07, WP09, WP12, WP13 and WP15 when composing the next uniform theorem step;
-10. the current protected MATHFORGE BSD provider manifest and admitted source audits before any new external theorem/computation interface is used.
+9. `work_packages/BSD_R2_A1_WP19_DERIVED_PRIMITIVE_FITTING/`;
+10. `work_packages/BSD_R2_A1_WP20_RANK1_BOCKSTEIN_FACTORIZATION/`;
+11. `handoffs/BSD-001/WP20_FRONTIER.md`;
+12. protected WP06, WP07, WP09, WP12, WP13 and WP15 when composing the next arithmetic theorem step;
+13. the current protected MATHFORGE BSD provider manifest and admitted source audits before any new external theorem/computation interface is used.
 
 ## Protected mathematical chain
 
@@ -66,23 +69,52 @@ Read in this order after re-fetching protected live state:
 
   `Fitt^0_{Z_2}(T_E) = 2^{lim_n s_n(E)} Z_2`.
 
-Thus the selected unresolved equality is exactly
+- WP19 removes the free-rank-one quotient choice. It proves exactly
 
-`delta_2(E) = v_2(Fitt^0_{Z_2}(T_E))`,
+  `Fitt^1_{Z_2}(X_E)=Fitt^0_{Z_2}(T_E)`,
 
-where
+  hence
+
+  `v_2(Fitt^1_{Z_2}(X_E))
+   = len_Z2 Sha(E/Q)[2^infinity]
+   = lim_n s_n(E)`.
+
+  Thus `BSD-R2-A1` is exactly equivalent to
+
+  `delta_2(E)=v_2(Fitt^1_{Z_2}(X_E))`.
+
+- WP20 proves the universal rank-one determinant/Bockstein factorization. For `R` a DVR, `S=R[[T]]`, and a square matrix
+
+  `A(T)=A_0+T A_1+...`
+
+  with `rank A_0=m-1`, set `M=coker A_0`. The induced first-order map
+
+  `beta_A:ker A_0 -> M/Tor(M)`
+
+  has an intrinsic principal Bockstein ideal `B_A`, and WP20 proves
+
+  `(coeff_T det A(T)) = Fitt^1_R(M) B_A`.
+
+  For `R=Z_2`, whenever the coefficient is nonzero,
+
+  `ord_2(coeff_T det A(T))
+   = v_2(Fitt^1_{Z_2}(M)) + v_2(B_A)`.
+
+  Therefore any exact arithmetic determinant datum specializing to `X_E` reduces the selected target to
+
+  `ord_2(coeff_T Theta_E(T))-v_2(B_E)=delta_2(E)`.
+
+The selected analytic defect remains
 
 `delta_2(E) := ord_2(L'(E,1)/(Omega_E Reg_E)) - sum_{ell|N} ord_2(c_ell)`.
 
-## WP17 source result
+## WP17/WP19 source result
 
-MATHFORGE WP17A-WP17C are protected. Their bounded source diagnosis does not assert theorem nonexistence.
+MATHFORGE WP17A-WP17C and the bounded post-WP18 WP19 source screen are protected. Their diagnoses do not assert theorem nonexistence.
 
-The surviving uniform provider debt is
+The protected WP19 source screen shows that the nearest modern strong finite-layer Fitting theorems screened retain odd-prime / `p>=5` and Tamagawa-prime-to-`p` hypotheses, while literal ordinary `p=2` variation assumes the missing base `mu_2=0` input.
 
-`P2_GOOD_ORDINARY_IRREDUCIBLE_S3_EXACT_MU_OR_PRIMITIVE_FITTING_CONTROL`.
-
-Do not reopen broad generic literature reconnaissance unless a new theorem specifically addresses this debt.
+Do not reopen broad generic literature reconnaissance. New source work must target one of the current D1/D2 obligations exactly.
 
 ## WP18A — verified A/B cohort
 
@@ -217,44 +249,62 @@ The following substitutions remain forbidden without an exact comparison theorem
 
 Every finite kernel, cokernel, index, determinant, Tamagawa factor, or local correction must retain its complete `2`-adic length.
 
-## Active frontier after WP18
+## Active frontier after WP20
 
-The diagnostic atlas no longer carries an open evidentiary boundary. The active substantive frontier returns to the uniform theorem problem:
+The former single first-Fitting reciprocity boundary has been resolved into two exact arithmetic obligations.
 
-`BSD-R2-A1-S3-K-INTEGRAL-FITTING-CONTROL`.
+### D1 — primitive rank-one determinant realization
 
-Surviving provider/theorem debt:
+Frontier:
 
-`P2_GOOD_ORDINARY_IRREDUCIBLE_S3_EXACT_MU_OR_PRIMITIVE_FITTING_CONTROL`.
+`BSD-R2-A1-S4-P2-PRIMITIVE-DETERMINANT-REALIZATION`.
 
-The exact remaining mathematical task is to prove uniformly over the protected selected class
+Boundary:
 
-`delta_2(E)=v_2(Fitt^0_{Z_2}(T_E))`
+`MISSING_P2_PRIMITIVE_RANK1_DETERMINANT_REALIZATION`.
 
-without bounded-conductor individual verification.
+Construct a literal-`p=2` arithmetic determinant/Selmer datum whose specialization is exactly the protected primitive module `X_E`, or prove every finite comparison defect exactly. It must retain good ordinary reduction at `2`, the surjective residual `S3` branch, primitive Kummer local conditions, and both WP13 Tamagawa regimes.
+
+### D2 — Bockstein/WP00 normalization
+
+Frontier:
+
+`BSD-R2-A1-S4-P2-BOCKSTEIN-WP00-NORMALIZATION`.
+
+Boundary:
+
+`MISSING_P2_BOCKSTEIN_TO_WP00_NORMALIZATION`.
+
+For the D1 determinant datum, prove exactly
+
+`ord_2(coeff_T Theta_E(T))-v_2(B_E)
+ = ord_2(L'(E,1)/(Omega_E Reg_E))
+   - sum_{ell|N} ord_2(c_ell)`.
+
+Every `2`-power contribution from interpolation, local conditions, Euler/Tamagawa factors, periods, heights/regulators, isogenies, lattice indices, and derivative-parameter normalization must be retained.
+
+Protected WP20 proves that D1 plus D2 imply
+
+`delta_2(E)=v_2(Fitt^1_{Z_2}(X_E))`,
+
+and protected WP19 then implies `BSD-R2-A1`.
+
+These are substantive arithmetic theorem boundaries, not evidence that the required theorems do not exist.
 
 ## Immediate next executable tranche
 
-Do not continue adding individual atlas controls merely for volume. WP18 has already separated the normalization issue from the genuine theorem debt.
+Do not continue adding individual atlas controls and do not conduct another generic literature survey.
 
-The next tranche must target the surviving uniform defect directly. Preferred order:
+The next tranche must act directly on D1 or D2. The first source/construction query should inspect positive-rank determinant/Bockstein or Mazur-Tate/Kato formalism only for clauses that literally survive at `p=2` or are purely algebraic and therefore independent of odd-prime arithmetic hypotheses.
 
-1. use the protected WP09 auxiliary field `K`, WP06 discrepancy accounting, WP07 local-at-2 correction surface, and WP16B primitive Fitting invariant to state the narrowest exact integral control theorem that would close the selected class;
-2. identify the precise missing implication at the height-one prime `(2)` / relative-mu or primitive Fitting level;
-3. screen or derive only theorem interfaces that act on the selected good-ordinary, irreducible/surjective `E[2] ~= S3` branch;
-4. route every genuinely new external theorem premise through MATHFORGE before use;
-5. reject results that are only odd-prime, reducible-residual, supersingular, imprimitive, or valid only after inverting `2` unless an exact comparison theorem removes the discrepancy.
-
-The governing boundary is the theorem debt itself:
-
-`MISSING_UNIFORM_P2_PRIMITIVE_FITTING_CONTROL_ON_GOOD_ORDINARY_S3_BRANCH`.
-
-This is a substantive theorem/source boundary, not evidence that the theorem does not exist.
+Any genuinely new external theorem premise must first be admitted through MATHFORGE.
 
 ## Claim firewall
 
 - `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED` remains unchanged.
 - WP18C proves individual-control equalities only.
+- WP19 and WP20 are exact representation reductions; neither supplies the missing arithmetic reciprocity theorem.
+- WP20's Bockstein ideal is not a regulator until a separate exact theorem proves that identification.
 - GJPST analytic `#Sha_an` is not treated as arithmetic Sha evidence.
 - WP18B remains the independent arithmetic proof for the controls.
 - No floating-point recognition is used as standalone exactness evidence.

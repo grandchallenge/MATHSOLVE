@@ -1,0 +1,52 @@
+schema_version: "1.0.0"
+campaign_id: BSD-001
+work_package: BSD-R2-A1-WP20-RANK1-BOCKSTEIN-FACTORIZATION
+protected_solve_base: 4af233409188ce68a36a00db4716ea0daabb8c98
+claims:
+  - claim_id: BSD-A1-WP20-DET-BETA-001
+    statement: "For a square one-parameter presentation A(T) over a DVR with rank-one specialization M=coker A(0), the first determinant coefficient ideal equals Fitt^1_R(M) times the intrinsic rank-one Bockstein ideal."
+    status: PROVED_IN_PACKAGE_PURE_ALGEBRA
+    certification: NONE
+
+  - claim_id: BSD-A1-WP20-VAL-001
+    statement: "When the first determinant coefficient is nonzero, its DVR valuation is the sum of the first-Fitting valuation and the Bockstein valuation."
+    status: PROVED_IN_PACKAGE_PURE_ALGEBRA
+    dependencies:
+      - BSD-A1-WP20-DET-BETA-001
+    certification: NONE
+
+  - claim_id: BSD-A1-WP20-ARITH-REDUCTION-001
+    statement: "Any exact arithmetic determinant datum specializing to the protected primitive rank-one module X_E reduces BSD-R2-A1 to the normalized identity ord_2(coeff_T Theta_E)-v_2(B_E)=delta_2(E)."
+    status: PROVED_EQUIVALENT_REDUCTION_FROM_PROTECTED_WP19_AND_WP20
+    dependencies:
+      - BSD-A1-WP20-DET-BETA-001
+      - protected_WP19_first_Fitting_target
+    certification: NONE
+
+  - claim_id: BSD-A1-WP20-CLOSE-001
+    statement: "If a literal-p=2 primitive determinant realization D1 and the exact Bockstein/WP00 normalization D2 are proved uniformly, then BSD-R2-A1 follows with no additional mathematical premise."
+    status: PROVED_CONDITIONAL_CLOSURE
+    dependencies:
+      - BSD-A1-WP20-ARITH-REDUCTION-001
+      - protected_WP19_target_equivalence
+    certification: NONE
+
+  - claim_id: BSD-R2-A1
+    statement: "Selected rank-one 2-primary BSD target over the protected selected class."
+    status: SELECTED_RESEARCH_TARGET_UNPROVED
+    certification: PENDING_MATHCERT
+
+boundaries:
+  - "WP20 proves only the universal determinant/Bockstein algebra; it does not construct an arithmetic determinant."
+  - "The Bockstein ideal is not identified with a regulator or local factor without a separate theorem."
+  - "Primitive Kummer local conditions remain fixed by WP16B."
+  - "Both WP13 Tamagawa regimes remain in scope."
+  - "No odd-prime determinant theorem is specialized silently to p=2."
+  - "No MATHCERT certification is asserted."
+
+next_frontier:
+  obligations:
+    - id: BSD-R2-A1-S4-P2-PRIMITIVE-DETERMINANT-REALIZATION
+      boundary: MISSING_P2_PRIMITIVE_RANK1_DETERMINANT_REALIZATION
+    - id: BSD-R2-A1-S4-P2-BOCKSTEIN-WP00-NORMALIZATION
+      boundary: MISSING_P2_BOCKSTEIN_TO_WP00_NORMALIZATION
