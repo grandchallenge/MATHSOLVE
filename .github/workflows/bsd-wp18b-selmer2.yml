@@ -27,7 +27,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          IMAGE='sagemath/sagemath:10.8'
+          IMAGE='sagemath/sagemath@sha256:e2e4747b0e1ea8753a9cb5a399314a8b2c25fcefaf69ba85b22ee075829d09ea'
           docker pull "$IMAGE"
           echo "WP18B_DOCKER_IMAGE=$IMAGE"
           docker image inspect "$IMAGE" --format 'WP18B_DOCKER_ID={{.Id}}'
