@@ -22,8 +22,9 @@ Read in this order after re-fetching protected live state:
 5. `work_packages/BSD_R2_A1_WP16B_INTEGRAL_SELMER_FITTING/`;
 6. `work_packages/BSD_R2_A1_WP18A_RECON_COHORT/`;
 7. `work_packages/BSD_R2_A1_WP18B_SELMER2/`;
-8. protected WP06, WP07, WP09, WP12, WP13 and WP15 when composing the next theorem step;
-9. the current protected MATHFORGE BSD provider manifest and admitted source audits before any new external theorem/computation interface is used.
+8. `work_packages/BSD_R2_A1_WP18C_ANALYTIC_DELTA2/`;
+9. protected WP06, WP07, WP09, WP12, WP13 and WP15 when composing the next uniform theorem step;
+10. the current protected MATHFORGE BSD provider manifest and admitted source audits before any new external theorem/computation interface is used.
 
 ## Protected mathematical chain
 
@@ -109,9 +110,11 @@ WP18A is protected at MATHSOLVE
 
 Protected WP12 supplies residual surjectivity for both controls.
 
-The legacy compact Cremona BSD `rational factor` column is not a Tamagawa product. WP18A records and rejects that earlier exploratory misreading.
-
 ## WP18B — exact `Sel_2` computation and full tower consequence
+
+WP18B is protected at MATHSOLVE
+
+`6a9502b3a9e280b8593484f71cf4f21ff50eac97`.
 
 The computation interface is protected in MATHFORGE at
 
@@ -125,13 +128,11 @@ with GitHub Actions run `34321076589`, job `102367621468`, SageMath `10.8`, and 
 
 `sagemath/sagemath@sha256:e2e4747b0e1ea8753a9cb5a399314a8b2c25fcefaf69ba85b22ee075829d09ea`.
 
-For **both** `53a1` and `203b1`, three interfaces agree:
+For both `53a1` and `203b1`, Sage/PARI, Sage/mwrank, and direct eclib all give
 
-- Sage/PARI `selmer_rank = 1`;
-- Sage/mwrank `selmer_rank = 1`;
-- direct eclib `selmer_rank = 1`.
+`dim_F2 Sel_2(E/Q)=1`,
 
-Hence for each curve
+hence
 
 `#Sel_2(E/Q)=2`.
 
@@ -149,19 +150,57 @@ Consequently, for every `n>=1`,
 
 `s_n(E)=0`,
 
-and protected WP16B gives
-
 `T_E=0`,
+
+and
 
 `Fitt^0_{Z_2}(T_E)=Z_2`.
 
-This is an exact deduction, not numerical stabilization. No 4- or 8-descent is needed once the level-2 result and finite-Sha input are fixed.
+This is an exact deduction, not numerical stabilization.
 
-The specialized selected equality for either atlas control is therefore equivalent to
+## WP18C — exact analytic `delta_2` and A/B atlas closure
 
-`delta_2(E)=0`.
+The exact analytic source interface is protected in MATHFORGE at
 
-WP18B proves the arithmetic side of that specialized equality. It does not prove the analytic side and does not prove `BSD-R2-A1`.
+`6b0bc6444bcf675c1b7774caa1f719efabdd49f6`.
+
+Admitted source audit:
+
+`sources/BSD-001/GJPST_RANK1_ANALYTIC_SHA_WP18C_SOURCE_AUDIT.md`.
+
+The admitted GJPST theorem interface gives, for every rank-one elliptic curve over `Q` of conductor at most `1000`, the exact WP00-normalized identity
+
+`#Sha(E)_an = 1`.
+
+The source audit verifies exact concordance with WP00 for the finite Hasse-Weil `L`-function, whole-real-locus minimal-model period, Neron-Tate regulator, Tamagawa factors, and rational torsion-square denominator. The known Lawson-Wuthrich correction concerns a later odd-prime cohomology/Kolyvagin argument and is outside this admitted interface.
+
+For rank one, the admitted identity is
+
+`1 = L'(E,1) * (#E(Q)_tors)^2 / (Omega_E Reg_E product_{ell|N} c_ell)`.
+
+Both controls have trivial rational torsion. Therefore
+
+`ord_2(L'(E,1)/(Omega_E Reg_E)) = sum_{ell|N} ord_2(c_ell)`.
+
+Hence WP18C proves exactly
+
+`delta_2(53a1)=0`,
+
+with analytic leading-quotient valuation `0`, and
+
+`delta_2(203b1)=0`,
+
+with analytic leading-quotient valuation `1` cancelling the exact Tamagawa valuation `1`.
+
+Combining only with protected WP18B gives the individual-control equalities
+
+`delta_2(53a1)=v_2(Fitt^0_{Z_2}(T_53a1))=0`,
+
+`delta_2(203b1)=v_2(Fitt^0_{Z_2}(T_203b1))=0`.
+
+Thus the minimal WP18 A/B diagnostic atlas is mathematically closed at the exact level. The regime-B even-Tamagawa/residual-conductor-drop correction is present on the analytic side and cancels exactly on `203b1`.
+
+This does not prove the selected-class theorem and does not constitute MATHCERT certification.
 
 ## Exact local-condition contract
 
@@ -178,56 +217,48 @@ The following substitutions remain forbidden without an exact comparison theorem
 
 Every finite kernel, cokernel, index, determinant, Tamagawa factor, or local correction must retain its complete `2`-adic length.
 
-## Current frontiers
+## Active frontier after WP18
 
-### Uniform theorem frontier
+The diagnostic atlas no longer carries an open evidentiary boundary. The active substantive frontier returns to the uniform theorem problem:
 
-`BSD-R2-A1-S3-K-INTEGRAL-FITTING-CONTROL`
+`BSD-R2-A1-S3-K-INTEGRAL-FITTING-CONTROL`.
 
-with provider debt
+Surviving provider/theorem debt:
 
 `P2_GOOD_ORDINARY_IRREDUCIBLE_S3_EXACT_MU_OR_PRIMITIVE_FITTING_CONTROL`.
 
-This remains the substantive route toward the selected-class theorem.
+The exact remaining mathematical task is to prove uniformly over the protected selected class
 
-### Diagnostic atlas frontier
+`delta_2(E)=v_2(Fitt^0_{Z_2}(T_E))`
 
-`BSD-R2-A1-WP18C-ANALYTIC-DELTA2-NORMALIZATION`.
+without bounded-conductor individual verification.
 
-Named evidentiary boundary:
+## Immediate next executable tranche
 
-`MISSING_EXACT_NORMALIZED_DELTA2_ON_VERIFIED_A_B_COHORT`.
+Do not continue adding individual atlas controls merely for volume. WP18 has already separated the normalization issue from the genuine theorem debt.
 
-This boundary is now purely analytic for the two controls because their arithmetic/Fitting side is exactly zero/unit.
+The next tranche must target the surviving uniform defect directly. Preferred order:
 
-## Immediate next executable tranche — WP18C
+1. use the protected WP09 auxiliary field `K`, WP06 discrepancy accounting, WP07 local-at-2 correction surface, and WP16B primitive Fitting invariant to state the narrowest exact integral control theorem that would close the selected class;
+2. identify the precise missing implication at the height-one prime `(2)` / relative-mu or primitive Fitting level;
+3. screen or derive only theorem interfaces that act on the selected good-ordinary, irreducible/surjective `E[2] ~= S3` branch;
+4. route every genuinely new external theorem premise through MATHFORGE before use;
+5. reject results that are only odd-prime, reducible-residual, supersingular, imprimitive, or valid only after inverting `2` unless an exact comparison theorem removes the discrepancy.
 
-For `53a1` and `203b1`, compute or rigorously bound under the fixed WP00 normalization
+The governing boundary is the theorem debt itself:
 
-`ord_2(L'(E,1)/(Omega_E Reg_E))`
+`MISSING_UNIFORM_P2_PRIMITIVE_FITTING_CONTROL_ON_GOOD_ORDINARY_S3_BRANCH`.
 
-strongly enough to determine the exact integer
-
-`delta_2(E)`.
-
-Requirements:
-
-1. preserve the exact WP00 period/derivative/regulator normalization;
-2. source-audit any analytic computation interface before governed use;
-3. retain enough precision or rigorous enclosure to determine the exact `2`-adic valuation rather than recognize a decimal heuristically;
-4. subtract the protected WP13 Tamagawa valuations exactly;
-5. report `epsilon(E)=delta_2(E)-0` only as atlas evidence unless independently proved;
-6. do not use database analytic Sha or the BSD formula to infer the answer.
-
-The expected diagnostic question is whether the analytic side also gives `delta_2(E)=0` in both regimes.
+This is a substantive theorem/source boundary, not evidence that the theorem does not exist.
 
 ## Claim firewall
 
-- `BSD-R2-A1` remains unproved.
-- WP18B is exact for the two controls, not uniform selected-class Fitting control.
-- No analytic Sha value is finite-Selmer evidence.
-- No BSD leading-term identity is assumed.
-- Numerical agreement is not proof or certification.
+- `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED` remains unchanged.
+- WP18C proves individual-control equalities only.
+- GJPST analytic `#Sha_an` is not treated as arithmetic Sha evidence.
+- WP18B remains the independent arithmetic proof for the controls.
+- No floating-point recognition is used as standalone exactness evidence.
+- Two examples do not establish uniform selected-class Fitting control.
 - “Up to a unit” may not hide a power of `2`.
 - Kummer and Greenberg local conditions remain distinct until exactly compared.
 - Source admission is not MATHCERT certification.
@@ -235,7 +266,7 @@ The expected diagnostic question is whether the analytic side also gives `delta_
 
 ## Execution and continuity
 
-Proceed autonomously through bounded proof, computation, falsification, exact-source admission when needed, exact-head non-authoring/read-only Adversary and Referee review, affected CI, protected merge, protected readback, and issue/handoff maintenance.
+Proceed autonomously through bounded proof, falsification, exact-source admission when needed, exact-head non-authoring/read-only Adversary and Referee review, affected CI, protected merge, protected readback, and issue/handoff maintenance.
 
 Recoverable tooling, connector, CI, formatting, logging, source-access, or computational-environment failures are not stopping conditions. Apply the recovery ladder.
 
