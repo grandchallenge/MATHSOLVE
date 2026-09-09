@@ -17,7 +17,7 @@ Protected Solve baseline for WP14 is `b96c5bfa269f1f53a01e8039aae3f8c560ee7d09`.
 
 Current protected provider identity materially used by WP14:
 
-- MATHFORGE `c44fef1d5d235b2e496bcee9ba0f7fc54212fa0d`;
+- MATHFORGE `57b68d02f27a6b4e82292200c8ac577f161ebf29`;
 - admitted source record `sources/BSD-001/HEEGNER_PRIMITIVITY_P2_BARRIER_SOURCE_AUDIT.md`.
 
 ## Closed deductions through WP13
