@@ -43,7 +43,7 @@ claims:
     certification: NONE
 
   - claim_id: BSD-A1-WP18C-P2BSD-001
-    statement: "The p=2 leading-term BSD equality holds individually for 53a1 and 203b1 under the fixed WP00 normalization."
+    statement: "The exact 2-adic valuation form of the rank-one leading-term BSD equality holds individually for 53a1 and 203b1 under the fixed WP00 normalization; no full rational leading-term identity is claimed."
     status: PROVED_IN_PACKAGE_FOR_TWO_CONTROLS
     dependencies:
       - protected_rank_one_and_finite_Sha
@@ -68,6 +68,7 @@ boundaries:
   - analytic Sha is used only to determine the analytic normalized quotient, not as arithmetic Sha evidence
   - the GJPST later odd-prime cohomology error is outside the admitted source interface
   - no floating-point recognition is used as a standalone exactness argument
+  - the p=2 claim is the exact 2-adic valuation component, not the full rational leading-term BSD identity
   - two individual controls do not establish uniform selected-class Fitting control
   - no MATHCERT certification is asserted
 
