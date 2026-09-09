@@ -3,85 +3,82 @@
 ## Target repository and authority
 
 - Target repository: `grandchallenge/MATHSOLVE`.
-- Current ownership issue: `grandchallenge/MATHSOLVE#156`.
+- Current ownership issue: `grandchallenge/MATHSOLVE#158`.
 - Constitutional authority remains the protected GCL authority chain already bound by the campaign.
 - Mathematical certification remains MATHCERT-only.
 
-## Protected mathematical state before WP12
+## Protected mathematical state before WP13
 
-Historical WP00-WP04 remain Programme-owned. Protected native Solve work contains:
+Historical WP00-WP04 remain Programme-owned. Protected native Solve work contains WP05-WP12.
 
-- WP05: exact target reconstruction and torsion-valuation removal;
-- WP06: exact integral quadratic `2^n` Selmer restriction/corestriction control;
-- WP07: forced local-at-2 corrections and non-distinguished route audit;
-- WP08: exact height-one `(2)` / relative-mu firewall;
-- WP09: auxiliary-field existence and corrected Disegni p=2 applicability;
-- WP10: bounded odd-prime Heegner-primitivity route barrier and direct-length frontier;
-- WP11: exact `C3` odd-degree Selmer/Sha control, complete splitting of `2N`, and explicit `C3` Tamagawa consequences.
-
-Protected Solve baseline for WP12 is `5579d6c74cfa1c28b84d3448c08679e0b828a0e9`.
+Protected Solve baseline for WP13 is `a9a16da8b228ee6d472f11752cf6c3bc68fda864`.
 
 `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED`.
 
-## Protected provider authority
-
-Current protected source identities remain:
+Current protected provider identities remain:
 
 - MATHFORGE `c44fef1d5d235b2e496bcee9ba0f7fc54212fa0d`;
 - BSD provider manifest blob `0926dd22a3c5fe474cc21347994de99d1812ae8b`;
 - MATH-PROGRAMME provider-import readback `563db2b177c791135d0a26fe76229c04793c742e`.
 
-WP12 adds no external arithmetic theorem premise. The ramification step uses the finite-etale good-reduction model away from `2`, and the global contradiction is given explicitly by the degree-3 Minkowski bound in-package.
+## Closed deductions through WP12
 
-## Closed deductions through WP11
+- WP05 removes the rational-torsion `ord_2` term.
+- WP06 records every quadratic p=2 descent discrepancy exactly rather than dividing by `2`.
+- WP07 proves the forced good-ordinary local-at-2 interpolation corrections and standard residual non-distinguishedness.
+- WP08 isolates the cyclotomic height-one `(2)` / relative-mu defect.
+- WP09 supplies the all-split auxiliary imaginary quadratic lane and corrected Disegni p-adic Gross-Zagier applicability at `p=2`.
+- WP10 excludes mechanical specialization of the standard odd-prime Heegner-primitivity route.
+- WP11 proves exact odd-degree `C3` Selmer/Sha control conditionally on that residual branch.
+- WP12 eliminates the `C3` branch entirely under the selected local hypotheses. Thus irreducible `E[2]` automatically has image `GL_2(F_2) ~= S3` throughout the selected class.
 
-WP05 removes the rational-torsion `ord_2` term.
+## WP13 candidate result
 
-WP06 records every quadratic p=2 descent discrepancy exactly rather than dividing by `2`.
+`BSD-R2-A1-WP13-TAMAGAWA-INERTIA-DEPTH` makes every bad-prime 2-primary Tamagawa contribution explicit.
 
-WP07 proves good ordinary at `2` forces `a_2=+/-1`, computes the exact interpolation-factor valuation, and shows standard residual 2-distinguishedness is impossible.
+For each odd semistable bad prime `ell|N`, set `n_ell=ord_ell(Delta_min)`. WP13 proves:
 
-WP08 isolates the exact cyclotomic height-one `(2)` / relative-mu defect.
+1. for every `m>=1`, `I_ell` acts trivially on `E[2^m]` iff `2^m|n_ell`;
+2. `E[2]` is unramified at `ell` iff `n_ell` is even;
+3. `N(rho_bar_{E,2}) = product_{ell|N, n_ell odd} ell = product_{ell|N, c_ell odd} ell`;
+4. `N/N(rho_bar_{E,2})` is exactly the product of bad primes with even Tamagawa number;
+5. split multiplicative: `ord_2(c_ell)=v_2(n_ell)`, equal to the full 2-power inertia-triviality depth;
+6. nonsplit multiplicative: `ord_2(c_ell)=min(1,v_2(n_ell))`.
 
-WP09 proves a suitable all-split auxiliary imaginary quadratic field exists and corrected Disegni p-adic Gross-Zagier applies at `p=2` in that lane.
+This local theorem explains exactly why Chao Li's residual-conductor condition remains restrictive after WP12: it is equivalent to requiring every bad-prime Tamagawa number to be odd.
 
-WP10 proves the standard odd-prime rank-lowering -> primitivity -> sharp Sha/index chain cannot be mechanically specialized to `p=2` and gives the irreducible-image dichotomy `C3` or `S3`.
+WP13 does not import an odd-prime Tamagawa-defect theorem at `p=2` and does not prove the selected leading-term identity.
 
-WP11 proves, conditionally on the `C3` branch, that `L=Q(E[2])` is cyclic cubic/totally real, all primes dividing `2N` split completely, and 2-primary Selmer/Sha descend exactly through the odd-degree extension.
+## Current frontier after WP13
 
-## WP12 candidate result
+`BSD-R2-A1-S3-TAMAGAWA-SATURATED-LENGTH`.
 
-`BSD-R2-A1-WP12-C3-ELIMINATION` combines WP11 with good reduction away from `2N`:
+A uniform solution must cover both:
 
-1. under the `C3` assumption, primes dividing `2N` have trivial decomposition groups by WP11;
-2. every finite prime outside `2N` has good reduction with residue characteristic not `2`, so `E[2]` is finite etale over the local integers and inertia acts trivially;
-3. the cyclic cubic `L/Q` would therefore be unramified at every finite prime and have absolute discriminant `1`;
-4. the explicit totally-real cubic Minkowski bound excludes discriminant `1`;
-5. hence the `C3` branch is empty and every selected curve has residual image `GL_2(F_2) ~= S3`.
+- residual conductor unchanged / all bad `c_ell` odd; and
+- residual conductor dropped / one or more even Tamagawa factors, with the exact local valuations from WP13 retained.
 
-This does not prove the direct-length identity.
-
-## Current frontier after WP12
-
-`BSD-R2-A1-S3-DIRECT-LENGTH`.
-
-Residual surjectivity is now automatic in the selected class. The next recovery path is to re-audit the admitted Chao Li mod-2 obstruction: its surjectivity hypothesis is discharged, but every remaining local/Heegner/conductor/Selmer condition must still be checked separately.
-
-The ultimate arithmetic target remains the exact identity determining
+The desired global theorem must determine
 
 `len_Z2 Sha(E/Q)[2^infinity] + sum_{ell|N} ord_2(c_ell)`
 
-from the WP00-normalized complex leading term, with no hidden power of `2`.
+from
+
+`ord_2(L'(E,1)/(Omega_E Reg_E))`
+
+without an unspecified power of `2`.
+
+The preferred next research move is an integral `p=2` saturation/primitivity or exact Selmer-length theorem whose local defect is exactly the WP13 Tamagawa data. Odd-prime Tamagawa-defect results are diagnostic only until a genuine `p=2` theorem is proved or admitted.
 
 ## Source boundary
 
-Further exact p=2 primitivity, direct arithmetic-length, or source-specific level-raising premises require Forge admission or an explicit governed waiver unless proved in-package. Basic in-package algebraic-number-theory and local finite-etale arguments used by WP12 do not promote any external BSD theorem.
+Further exact p=2 primitivity, saturation, or direct arithmetic-length theorem premises require Forge admission or an explicit governed waiver unless proved in-package. WP13 itself is an in-package Tate/Kummer/component-group calculation.
 
-External reconnaissance remains diagnostic only.
+External reconnaissance is diagnostic only; search failure is not proof of nonexistence.
 
 ## Certification boundary
 
-MATHCERT remains pending. WP12 does not alter the certification packet.
+MATHCERT remains pending. WP13 does not alter the certification packet.
 
 ## Stop conditions
 
