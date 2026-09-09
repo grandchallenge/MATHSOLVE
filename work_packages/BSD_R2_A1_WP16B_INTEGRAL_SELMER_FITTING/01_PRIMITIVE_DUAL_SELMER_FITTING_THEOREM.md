@@ -63,25 +63,23 @@ Filtered direct limits are exact in abelian groups. Therefore the finite-level K
 
 `  -> colim_n Sha(E/Q)[2^n] -> 0`.
 
-The right direct limit is by definition
+The right direct limit is
 
 `Sha(E/Q)[2^infinity]`.
 
-For the left direct limit, Mordell-Weil and odd torsion give
+The left direct limit is canonically
 
-`E(Q) ~= Z direct_sum T`,
+`D_E := E(Q) tensor (Q_2/Z_2)`.
 
-with `#T` odd. The transition `x -> 2x` gives
+Indeed, the transition maps are multiplication by `2`, which is the standard direct system realizing tensor product with `Q_2/Z_2`. Protected rank one and odd rational torsion imply that `D_E` is a divisible `2`-primary group of corank one; after choosing a basis of the free quotient of `E(Q)`, one obtains a noncanonical isomorphism
 
-`colim_n Z/2^n Z ~= Q_2/Z_2`,
+`D_E ~= Q_2/Z_2`.
 
-while `T/2^nT=0` for every `n`. Hence
+No such basis is part of the invariant.
 
-`colim_n E(Q)/2^nE(Q) ~= Q_2/Z_2`.
+Thus the canonical direct-limit Kummer sequence is
 
-Thus we obtain the exact sequence
-
-`0 -> Q_2/Z_2`
+`0 -> D_E`
 
 `  -> Sel_{2^infinity}^{Kum}(E/Q)`
 
@@ -101,23 +99,19 @@ Because `Q_2/Z_2` is divisible, it is injective as an abelian group. Therefore a
 
 `  -> X_E`
 
-`  -> (Q_2/Z_2)^vee -> 0`,
+`  -> L_E -> 0`,      `(X)`
 
 where
 
-`X_E := Sel_{2^infinity}^{Kum}(E/Q)^vee`.
+`X_E := Sel_{2^infinity}^{Kum}(E/Q)^vee`
 
-An endomorphism of `Q_2/Z_2` is determined by its compatible actions on the cyclic subgroups of order `2^n`. Hence
+and
 
-`(Q_2/Z_2)^vee ~= lim_n Z/2^nZ ~= Z_2`.
+`L_E := D_E^vee`.
 
-Therefore
+Since `D_E` is divisible of corank one, `L_E` is a free rank-one `Z_2`-module. Equivalently, after a basis choice one may identify `L_E ~= Z_2`, but WP16B does not choose such a basis.
 
-`0 -> Sha(E/Q)[2^infinity]^vee -> X_E -> Z_2 -> 0`.      `(X)`
-
-This proves that `X_E` is a finitely generated `Z_2`-module of rank one.
-
-The map to `Z_2` is the canonical saturated free quotient supplied by the global Kummer sequence. No choice of Mordell-Weil generator is needed to define its kernel.
+Thus `X_E` is a finitely generated `Z_2`-module of rank one, and `(X)` supplies its canonical saturated free quotient as the abstract rank-one module `L_E`.
 
 ## 5. The canonical torsion module
 
@@ -135,17 +129,17 @@ There is a canonical equality of submodules of `X_E`, through the injection in `
 
 The injected module `Sha(E/Q)[2^infinity]^vee` is finite because protected WP05 gives finiteness of `Sha(E/Q)`. Hence it is contained in `T_E`.
 
-Conversely, let `x in T_E`. Its image in the quotient `Z_2` is torsion. Since `Z_2` is torsion-free, that image is zero. Therefore `x` lies in the kernel of `X_E -> Z_2`, which by exactness of `(X)` is `Sha(E/Q)[2^infinity]^vee`.
+Conversely, let `x in T_E`. Its image in the quotient `L_E` is torsion. Since `L_E` is free over `Z_2`, it is torsion-free. Therefore that image is zero. Hence `x` lies in the kernel of `X_E -> L_E`, which by exactness of `(X)` is `Sha(E/Q)[2^infinity]^vee`.
 
 Thus the two submodules are equal. QED.
 
 ### Corollary 5.2
 
-The rank-one free quotient is canonically
+The saturated rank-one free quotient is canonically
 
-`X_E/T_E ~= Z_2`.
+`X_E/T_E ~= L_E`.
 
-The splitting of `(X)` need not be chosen. Any splitting would be noncanonical and is unnecessary for the invariant.
+It is free of rank one over `Z_2`. An identification with literal `Z_2`, or a splitting of `(X)`, requires a basis choice and is unnecessary for the invariant.
 
 ## 6. Exact length realization
 
