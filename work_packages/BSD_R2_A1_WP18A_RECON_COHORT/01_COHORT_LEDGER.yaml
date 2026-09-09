@@ -1,0 +1,78 @@
+schema_version: "1.0"
+campaign: BSD-001
+work_package: BSD-R2-A1-WP18A-RECON-COHORT
+status: DIAGNOSTIC_COHORT_EXACT_LOCAL_BASELINE
+claim_boundary: BSD-R2-A1_REMAINS_UNPROVED
+
+source_provenance:
+  cremona_ecdata:
+    repository: JohnCremona/ecdata
+    commit: 25cec5ecfec8b9f016eb1631ac633194c2bed39f
+    curve_table: docs/curves.1-1000.html
+    analytic_table: allbsd/bsd.1-1000
+    format_documentation: docs/index.html
+  protected_wp13:
+    repository: grandchallenge/MATHSOLVE
+    path: work_packages/BSD_R2_A1_WP13_TAMAGAWA_INERTIA_DEPTH/00_README.md
+    protected_ancestor: a9a16da8b228ee6d472f11752cf6c3bc68fda864
+
+curves:
+  - label: 53a1
+    role: regime_A_control
+    ainvs: [1, -1, 1, 0, 0]
+    conductor: 53
+    conductor_factorization: "53"
+    algebraic_rank_source_value: 1
+    analytic_rank_source_value: 1
+    torsion_order: 1
+    delta_min: -53
+    delta_factorization: "-53"
+    points_over_F2: 4
+    a_2: -1
+    good_ordinary_at_2: true
+    mod2_irreducible: true
+    bad_prime_depths:
+      53: 1
+    tamagawa_v2:
+      53: 0
+    even_tamagawa_support: []
+    residual_conductor: 53
+    wp13_regime: A
+
+  - label: 203b1
+    role: regime_B_control
+    ainvs: [1, 1, 1, 0, -2]
+    conductor: 203
+    conductor_factorization: "7 * 29"
+    algebraic_rank_source_value: 1
+    analytic_rank_source_value: 1
+    torsion_order: 1
+    delta_min: -1421
+    delta_factorization: "-7^2 * 29"
+    points_over_F2: 4
+    a_2: -1
+    good_ordinary_at_2: true
+    mod2_irreducible: true
+    bad_prime_depths:
+      7: 2
+      29: 1
+    tamagawa_v2:
+      7: 1
+      29: 0
+    even_tamagawa_support: [7]
+    residual_conductor: 29
+    wp13_regime: B
+
+not_measured_in_wp18a:
+  - Sel_2n orders
+  - s_n values
+  - stabilization index
+  - Cassels-Tate pairing data
+  - delta_2 analytic normalization
+  - epsilon_n discrepancies
+
+firewall:
+  - No BSD equality is inferred.
+  - No analytic Sha value is used as finite-level Selmer evidence.
+  - Source rank data is cohort qualification/provenance, not MATHCERT certification.
+  - WP18B must compute finite-level Selmer data independently of BSD.
