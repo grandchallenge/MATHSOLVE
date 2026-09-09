@@ -67,9 +67,17 @@ MATHCERT remains pending.
 
   `X_E := Sel_{2^infinity}^{Kum}(E/Q)^vee`.
 
-  The protected theorem package proves
+  Set
 
-  `0 -> Sha(E/Q)[2^infinity]^vee -> X_E -> Z_2 -> 0`,
+  `D_E := E(Q) tensor (Q_2/Z_2)`
+
+  and
+
+  `L_E := D_E^vee`.
+
+  Protected rank one and odd torsion make `L_E` free of rank one over `Z_2`, without choosing a basis. The WP16B theorem package proves canonically
+
+  `0 -> Sha(E/Q)[2^infinity]^vee -> X_E -> L_E -> 0`,
 
   and therefore
 
@@ -93,18 +101,13 @@ The invariant uses the primitive classical Kummer condition at every place and e
 
 `im(E(Q_v)/2^n E(Q_v) -> H^1(Q_v,E[2^n]))`.
 
-This includes:
-
-- the real place;
-- the good-ordinary place `2`;
-- every bad semistable prime `ell | N`;
-- every other finite place.
+This includes the real place, the good-ordinary place `2`, every bad semistable prime `ell | N`, and every other finite place.
 
 The following substitutions are forbidden without an exact comparison theorem:
 
 - Kummer local condition at `2` -> Greenberg/ordinary connected-etale condition;
 - primitive bad-prime Kummer condition -> unramified/strict/relaxed/imprimitive condition;
-- saturated rank-one quotient `X_E/T_E` -> the span of a possibly nonprimitive Heegner or Mordell-Weil generator;
+- saturated rank-one quotient `X_E/T_E ~= L_E` -> the span of a possibly nonprimitive Heegner or Mordell-Weil generator;
 - `Fitt^0(T_E)` -> `Fitt^0(X_E)`.
 
 Any exact finite kernel, cokernel, index, determinant, or local correction produced by such a comparison must retain its complete `2`-adic length.
