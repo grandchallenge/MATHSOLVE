@@ -2,12 +2,11 @@
 """Exact local verifier for the BSD-R2-A1 WP18A reconnaissance cohort.
 
 This script uses only integer arithmetic and the pinned curve records listed in
-00_README.md.  It does not evaluate L-functions, compute Selmer groups, or
+00_README.md. It does not evaluate L-functions, compute Selmer groups, or
 assume BSD.
 """
 
 from dataclasses import dataclass
-from math import isqrt
 
 
 @dataclass(frozen=True)
@@ -62,7 +61,9 @@ def is_squarefree(n: int) -> bool:
 
 def verify(curve: Curve) -> dict[str, object]:
     assert curve.conductor % 2 == 1, f"{curve.label}: conductor must be odd"
-    assert is_squarefree(curve.conductor), f"{curve.label}: selected cohort uses squarefree conductor"
+    # For elliptic curves over Q, squarefree conductor means every bad
+    # conductor exponent is one, hence every bad reduction is multiplicative.
+    assert is_squarefree(curve.conductor), f"{curve.label}: conductor must be squarefree"
     assert curve.algebraic_rank == 1
     assert curve.analytic_rank == 1
     assert curve.torsion_order % 2 == 1
@@ -100,7 +101,7 @@ def verify(curve: Curve) -> dict[str, object]:
     assert residual_conductor == curve.expected_residual_conductor
 
     # Over F_2 a reducible two-dimensional representation has an invariant
-    # one-dimensional line; its unique nonzero vector is fixed.  Thus odd
+    # one-dimensional line; its unique nonzero vector is fixed. Thus odd
     # rational torsion excludes rational 2-torsion and gives irreducible E[2].
     mod2_irreducible = curve.torsion_order % 2 == 1
     assert mod2_irreducible
