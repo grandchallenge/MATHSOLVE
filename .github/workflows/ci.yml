@@ -57,6 +57,8 @@ jobs:
           python -m unittest ci/test_formal_conjectures_expansion.py -v
           python ci/validate_pnp_definition_concordance.py
           python -m unittest ci/test_pnp_definition_concordance.py -v
+          python ci/validate_pnp_bridge_001.py
+          python -m unittest ci/test_pnp_bridge_001.py -v
           python -m json.tool contracts/formal_conjectures_expanded_evidence.json >/dev/null
           python -m json.tool formal_sources/formal_conjectures/MS-FC-WP01.json >/dev/null
           python -m json.tool work_packages/PNP_DEFINITION_CONCORDANCE_001/concordance.json >/dev/null
@@ -127,6 +129,7 @@ jobs:
       - name: Replay canonical RH and NS-CI targets
         run: |
           lake env lean MathSolve/FormalConjectures/Replay.lean
+          lake env lean MathSolve/PNP/CarrierBridge.lean
           python ci/validate_formal_conjectures_targets.py
           PYTHONPATH=ci python -m unittest ci/test_formal_conjectures_targets.py -v
           python -m json.tool formal_sources/formal_conjectures/MS-FC-WP00.json >/dev/null
