@@ -1,0 +1,42 @@
+{
+  "campaign_id": "BSD-001",
+  "work_package": "BSD-R2-A1-WP18B-SELMER2",
+  "protected_wp18a_base": "6d44e401e584498992c78f053992bde1dcba2452",
+  "mathforge_interface_admission": "35837626ec887737f26f0acc5d9de48c5fd4db83",
+  "computation_subject_head": "c4a4fcc7339991becf7210f8978afb64e440ccdd",
+  "workflow_run_id": 34321076589,
+  "job_id": 102367621468,
+  "workflow_conclusion": "success",
+  "runtime": {
+    "sage_version": "10.8",
+    "sage_release_date": "2025-12-18",
+    "docker_image": "sagemath/sagemath@sha256:e2e4747b0e1ea8753a9cb5a399314a8b2c25fcefaf69ba85b22ee075829d09ea",
+    "docker_image_id": "sha256:aeef59a8c17212357aeb83bd7f1cfac43bb1c789ae3fa2d887227c763bdfcac3",
+    "runner_os": "Ubuntu 24.04.5"
+  },
+  "results": [
+    {
+      "label": "53a1",
+      "ainvs": [1, -1, 1, 0, 0],
+      "discriminant": -53,
+      "torsion_order": 1,
+      "selmer_rank_pari": 1,
+      "selmer_rank_mwrank": 1,
+      "selmer_rank_eclib_direct": 1,
+      "selmer_2_order": 2,
+      "s_1": 0
+    },
+    {
+      "label": "203b1",
+      "ainvs": [1, 1, 1, 0, -2],
+      "discriminant": -1421,
+      "torsion_order": 1,
+      "selmer_rank_pari": 1,
+      "selmer_rank_mwrank": 1,
+      "selmer_rank_eclib_direct": 1,
+      "selmer_2_order": 2,
+      "s_1": 0
+    }
+  ],
+  "evidence_boundary": "Exact finite 2-Selmer computation only. The full 2-primary Sha and finite 2^n-Selmer tower conclusions are derived separately from protected WP05/WP16A inputs and elementary finite-group algebra. No analytic Sha or BSD identity is used."
+}
