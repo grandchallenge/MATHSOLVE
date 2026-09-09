@@ -1,0 +1,63 @@
+schema_version: "1.0.0"
+campaign_id: BSD-001
+work_package: BSD-R2-A1-WP19-DERIVED-PRIMITIVE-FITTING
+protected_solve_base: f7f88319550881a615edbea6d3425158d20136e7
+protected_source_provider: 0fe76d81147f34a814754bf09813b699e7bbf2e2
+claims:
+  - claim_id: BSD-A1-WP19-FITT1-001
+    statement: "For the protected primitive rank-one module X_E, Fitt^1_Z2(X_E)=Fitt^0_Z2(Tor_Z2(X_E))."
+    status: PROVED_IN_PACKAGE_FROM_PROTECTED_WP16B
+    certification: NONE
+
+  - claim_id: BSD-A1-WP19-LENGTH-001
+    statement: "v_2(Fitt^1_Z2(X_E)) equals len_Z2 Sha(E/Q)[2^infinity] and the protected WP16A stabilized Selmer integer."
+    status: PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS
+    dependencies:
+      - BSD-A1-WP19-FITT1-001
+      - protected_WP16A
+      - protected_WP16B
+    certification: NONE
+
+  - claim_id: BSD-A1-WP19-TARGET-001
+    statement: "BSD-R2-A1 is equivalent to delta_2(E)=v_2(Fitt^1_Z2(X_E)) uniformly over the protected selected class."
+    status: PROVED_EQUIVALENT_REFORMULATION
+    dependencies:
+      - BSD-A1-WP19-LENGTH-001
+      - protected_WP15_WP16_target_equivalence
+    certification: NONE
+
+  - claim_id: BSD-A1-WP19-CLOSE-001
+    statement: "If the nominated literal-p=2 primitive first-Fitting reciprocity theorem Fitt^1_Z2(X_E)=2^{delta_2(E)} Z_2 is proved uniformly for the protected selected class, then BSD-R2-A1 follows with no additional mathematical premise."
+    status: PROVED_CONDITIONAL_CLOSURE
+    dependencies:
+      - BSD-A1-WP19-FITT1-001
+      - protected_WP16B
+      - protected_WP15_WP16_target_equivalence
+    certification: NONE
+
+  - claim_id: BSD-A1-WP19-ROUTE-001
+    statement: "The direct-over-Q primitive first-Fitting route is nominated as the final theorem-building lane because a native theorem would avoid the additional independent comparison surfaces still present in the cyclotomic-mu and auxiliary-K routes."
+    status: RESEARCH_ROUTE_DISPOSITION
+    dependencies:
+      - protected_WP17B_WP17C_source_diagnosis
+      - protected_WP18_decision_gate
+      - protected_MATHFORGE_WP19_source_screen
+    certification: NONE
+
+  - claim_id: BSD-R2-A1
+    statement: "Selected rank-one 2-primary BSD target over the protected selected class."
+    status: SELECTED_RESEARCH_TARGET_UNPROVED
+    certification: PENDING_MATHCERT
+
+boundaries:
+  - "Fitt^1(X_E) is an intrinsic replacement for Fitt^0(T_E), but its uniform analytic evaluation is not proved."
+  - "No odd-prime strong Fitting theorem is specialized silently to p=2."
+  - "No theorem-nonexistence claim follows from the bounded source screen."
+  - "The direct route must use primitive Kummer local conditions or prove every exact comparison defect."
+  - "Both WP13 Tamagawa regimes remain in scope."
+  - "No MATHCERT certification is asserted."
+
+next_frontier:
+  id: BSD-R2-A1-P2-RANK1-PRIMITIVE-FIRST-FITTING-RECIPROCITY
+  boundary: MISSING_P2_RANK1_PRIMITIVE_FIRST_FITTING_RECIPROCITY_THEOREM
+  source_debt: P2_RANK1_DERIVED_PRIMITIVE_MAZUR_TATE_FITTING_OR_BASE_MU_ZERO_CONTROL
