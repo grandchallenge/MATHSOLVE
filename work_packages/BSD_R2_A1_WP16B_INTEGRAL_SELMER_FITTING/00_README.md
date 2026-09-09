@@ -26,7 +26,9 @@ under the natural coefficient inclusions. Define its Pontryagin dual
 
 The package proves that `X_E` is a finitely generated rank-one `Z_2`-module and that its canonical torsion submodule satisfies
 
-`Tor_{Z_2}(X_E) ~= Sha(E/Q)[2^infinity]^vee`.
+`Tor_{Z_2}(X_E) = Sha(E/Q)[2^infinity]^vee`
+
+inside `X_E`.
 
 Hence
 
@@ -40,7 +42,7 @@ where
 
 `lambda_E := lim_n (ord_2 #Sel_{2^n}(E/Q) - n)`.
 
-This equality is equality of ideals. No generator is specified only up to a unit.
+This is equality of ideals. No generator is specified only up to a unit.
 
 ## Exact local-condition choice
 
@@ -48,12 +50,7 @@ At every level `2^n` and every place `v` of `Q`, the local condition is the imag
 
 `E(Q_v)/2^n E(Q_v) -> H^1(Q_v,E[2^n])`.
 
-This includes:
-
-- the real place;
-- the good-ordinary place `v=2`;
-- every bad semistable prime `ell | N`;
-- every other finite place.
+This includes the real place, the good-ordinary place `2`, every bad semistable prime `ell | N`, and every other finite place.
 
 At `2`, WP16B deliberately uses the finite classical Kummer condition. Protected WP06 forbids identifying this condition with the Greenberg/ordinary condition from the connected-etale `2`-divisible group without an exact comparison theorem.
 
@@ -61,15 +58,23 @@ At bad primes, WP16B uses the full primitive Kummer condition. It does not repla
 
 ## Rank-one free direction
 
-The direct-limit Kummer sequence and protected rank-one/odd-torsion inputs give an exact sequence
+Set
 
-`0 -> Q_2/Z_2 -> Sel_{2^infinity}^{Kum}(E/Q) -> Sha(E/Q)[2^infinity] -> 0`.
+`D_E := E(Q) tensor (Q_2/Z_2)`
 
-After duality,
+and
 
-`0 -> Sha(E/Q)[2^infinity]^vee -> X_E -> Z_2 -> 0`.
+`L_E := D_E^vee`.
 
-The quotient `X_E/Tor(X_E)` is therefore the saturated rank-one free direction. No generator, Heegner point, regulator basis, or nonsaturated sublattice is selected in WP16B.
+The direct-limit Kummer sequence gives canonically
+
+`0 -> D_E -> Sel_{2^infinity}^{Kum}(E/Q) -> Sha(E/Q)[2^infinity] -> 0`.
+
+Protected rank one and odd torsion imply that `D_E` has corank one and `L_E` is free of rank one over `Z_2`. After duality,
+
+`0 -> Sha(E/Q)[2^infinity]^vee -> X_E -> L_E -> 0`.
+
+The quotient `X_E/Tor(X_E)` is therefore the saturated rank-one free direction. No basis of `L_E`, generator, Heegner point, regulator basis, or nonsaturated sublattice is selected in WP16B.
 
 ## Tamagawa and primitive/imprimitive normalization
 
@@ -90,7 +95,7 @@ where `v_2(2^m Z_2)=m`.
 ## What is proved
 
 - exact direct-limit Kummer sequence at `2^infinity`;
-- exact rank-one free quotient of `X_E`;
+- exact abstract rank-one free quotient `L_E` of `X_E`;
 - canonical identification of the torsion submodule with the dual finite `2`-primary Tate-Shafarevich group;
 - exact equality of the torsion length with the WP16A stable integer;
 - exact zeroth Fitting ideal of that torsion module;
@@ -98,16 +103,7 @@ where `v_2(2^m Z_2)=m`.
 
 ## What is not proved
 
-WP16B does not prove:
-
-- `BSD-R2-A1`;
-- equality between Kummer and Greenberg/ordinary local conditions at `2`;
-- a Selmer-complex determinant theorem over the protected WP09 field `K`;
-- an Euler-system or Kolyvagin-system divisibility;
-- a Tamagawa-defect comparison for an imprimitive external theorem;
-- an explicit reciprocity law;
-- numerical stabilization for a curve;
-- novelty, priority, or MATHCERT certification.
+WP16B does not prove `BSD-R2-A1`, equality between Kummer and Greenberg/ordinary local conditions at `2`, a Selmer-complex determinant theorem over the protected WP09 field `K`, an Euler-system or Kolyvagin-system divisibility, a Tamagawa-defect comparison for an imprimitive external theorem, an explicit reciprocity law, numerical stabilization for a curve, novelty, priority, or MATHCERT certification.
 
 ## Successor
 
