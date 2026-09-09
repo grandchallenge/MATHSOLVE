@@ -1,0 +1,76 @@
+schema_version: "1.0.0"
+campaign_id: BSD-001
+work_package: BSD-R2-A1-WP18C-ANALYTIC-DELTA2
+protected_solve_base: 6a9502b3a9e280b8593484f71cf4f21ff50eac97
+protected_source_admission: 6b0bc6444bcf675c1b7774caa1f719efabdd49f6
+claims:
+  - claim_id: BSD-A1-WP18C-SRC-001
+    statement: "For every rank-one elliptic curve over Q of conductor <=1000, the admitted GJPST WP00-compatible analytic BSD order #Sha_an is exactly 1."
+    status: ADMITTED_EXTERNAL_THEOREM_INTERFACE
+    source: sources/BSD-001/GJPST_RANK1_ANALYTIC_SHA_WP18C_SOURCE_AUDIT.md
+    certification: NONE
+
+  - claim_id: BSD-A1-WP18C-A-001
+    statement: "For 53a1, ord_2(L'(E,1)/(Omega_E Reg_E))=0 and delta_2(E)=0."
+    status: PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS_AND_ADMITTED_SOURCE
+    dependencies:
+      - BSD-A1-WP18C-SRC-001
+      - protected_WP18A_rank_conductor_torsion_and_Tamagawa
+    certification: NONE
+
+  - claim_id: BSD-A1-WP18C-B-001
+    statement: "For 203b1, ord_2(L'(E,1)/(Omega_E Reg_E))=1 and delta_2(E)=0."
+    status: PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS_AND_ADMITTED_SOURCE
+    dependencies:
+      - BSD-A1-WP18C-SRC-001
+      - protected_WP18A_rank_conductor_torsion_and_Tamagawa
+    certification: NONE
+
+  - claim_id: BSD-A1-WP18C-A-EQ-001
+    statement: "For 53a1, delta_2(E)=v_2(Fitt^0_Z2(T_E))=0."
+    status: PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS_AND_ADMITTED_SOURCE
+    dependencies:
+      - BSD-A1-WP18C-A-001
+      - protected_WP18B_Fitting_unit
+    certification: NONE
+
+  - claim_id: BSD-A1-WP18C-B-EQ-001
+    statement: "For 203b1, delta_2(E)=v_2(Fitt^0_Z2(T_E))=0."
+    status: PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS_AND_ADMITTED_SOURCE
+    dependencies:
+      - BSD-A1-WP18C-B-001
+      - protected_WP18B_Fitting_unit
+    certification: NONE
+
+  - claim_id: BSD-A1-WP18C-P2BSD-001
+    statement: "The p=2 leading-term BSD equality holds individually for 53a1 and 203b1 under the fixed WP00 normalization."
+    status: PROVED_IN_PACKAGE_FOR_TWO_CONTROLS
+    dependencies:
+      - protected_rank_one_and_finite_Sha
+      - protected_WP18B_actual_2_primary_Sha_valuation_zero
+      - BSD-A1-WP18C-A-001
+      - BSD-A1-WP18C-B-001
+    certification: NONE
+
+  - claim_id: BSD-A1-WP18C-REGIME-CANCEL-001
+    statement: "On the regime-B control 203b1, the exact analytic leading-quotient valuation 1 cancels the exact Tamagawa valuation 1, leaving delta_2=0."
+    status: PROVED_IN_PACKAGE_FOR_CONTROL
+    dependencies:
+      - BSD-A1-WP18C-B-001
+    certification: NONE
+
+  - claim_id: BSD-R2-A1
+    statement: "Selected rank-one 2-primary BSD target over the protected selected class."
+    status: SELECTED_RESEARCH_TARGET_UNPROVED
+    certification: PENDING_MATHCERT
+
+boundaries:
+  - analytic Sha is used only to determine the analytic normalized quotient, not as arithmetic Sha evidence
+  - the GJPST later odd-prime cohomology error is outside the admitted source interface
+  - no floating-point recognition is used as a standalone exactness argument
+  - two individual controls do not establish uniform selected-class Fitting control
+  - no MATHCERT certification is asserted
+
+next_frontier:
+  id: BSD-R2-A1-S3-K-INTEGRAL-FITTING-CONTROL
+  provider_debt: P2_GOOD_ORDINARY_IRREDUCIBLE_S3_EXACT_MU_OR_PRIMITIVE_FITTING_CONTROL
