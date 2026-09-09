@@ -1,0 +1,39 @@
+name: BSD WP18B 2-Selmer compute
+
+on:
+  push:
+    branches:
+      - research/bsd-r2-a1-wp18b-selmer2
+    paths:
+      - work_packages/BSD_R2_A1_WP18B_SELMER2/compute_selmer2.sage
+      - .github/workflows/bsd-wp18b-selmer2.yml
+
+permissions:
+  contents: read
+
+jobs:
+  selmer2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact subject
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Assert exact subject checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Run SageMath 10.8 PARI/eclib 2-Selmer cross-check
+        shell: bash
+        run: |
+          set -euo pipefail
+          IMAGE='sagemath/sagemath:10.8'
+          docker pull "$IMAGE"
+          echo "WP18B_DOCKER_IMAGE=$IMAGE"
+          docker image inspect "$IMAGE" --format 'WP18B_DOCKER_ID={{.Id}}'
+          docker run --rm "$IMAGE" sage --version
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/workspace" \
+            -w /workspace \
+            "$IMAGE" \
+            sage work_packages/BSD_R2_A1_WP18B_SELMER2/compute_selmer2.sage
