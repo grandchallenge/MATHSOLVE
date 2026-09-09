@@ -3,26 +3,27 @@
 ## Target repository and authority
 
 - Target repository: `grandchallenge/MATHSOLVE`.
-- Current ownership issue: `grandchallenge/MATHSOLVE#160`.
+- Current ownership issue: `grandchallenge/MATHSOLVE#162`.
 - Constitutional authority remains the protected GCL authority chain already bound by the campaign.
 - Mathematical certification remains MATHCERT-only.
 
-## Protected mathematical state before WP14
+## Protected mathematical state before WP15
 
-Historical WP00-WP04 remain Programme-owned. Native Solve work WP05-WP13 is protected.
+Historical WP00-WP04 remain Programme-owned. Native Solve work WP05-WP14 is protected.
 
-Protected Solve baseline for WP14 is `b96c5bfa269f1f53a01e8039aae3f8c560ee7d09`.
+Protected Solve baseline for WP15 is `b088e2cc4bd8910f06cf0ecb935da21f556630e3`.
 
 `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED`.
 
-Current protected provider identity materially used by WP14:
+Protected provider identity materially used by WP15:
 
-- MATHFORGE `57b68d02f27a6b4e82292200c8ac577f161ebf29`;
-- admitted source record `sources/BSD-001/HEEGNER_PRIMITIVITY_P2_BARRIER_SOURCE_AUDIT.md`.
+- MATHFORGE `118ae1b5c2fc2630f53000921b742c610c50db16`;
+- `sources/BSD-001/P2_LENGTH_ESCAPE_ROUTE_SOURCE_AUDIT.md`;
+- `sources/BSD-001/CASSELS_TATE_PAIRING_SOURCE_AUDIT.md`.
 
-## Closed deductions through WP13
+## Closed deductions through WP14
 
-- WP05 fixes the exact native target/source interfaces and removes the rational-torsion `ord_2` term.
+- WP05 fixes the exact native target/source interfaces, removes the rational-torsion `ord_2` term, and imports analytic-rank-one algebraic rank/finiteness of Sha.
 - WP06 records every quadratic `p=2` descent discrepancy exactly.
 - WP07 proves the forced good-ordinary local-at-2 corrections and residual non-distinguishedness.
 - WP08 isolates the cyclotomic height-one `(2)` / relative-mu defect.
@@ -31,55 +32,59 @@ Current protected provider identity materially used by WP14:
 - WP11 proves exact odd-degree `C3` Selmer/Sha control conditionally on that branch.
 - WP12 eliminates the `C3` branch; every selected curve has residual image `GL_2(F_2) ~= S3`.
 - WP13 proves the exact local Tamagawa/inertia dictionary and identifies residual-conductor drop with even-Tamagawa support.
+- WP14 closes the exact Chao Li applicability matrix: auxiliary order-two-Frobenius level-raising primes are constructible, while all-bad-Tamagawa-odd, local nontriviality at `2`, and minimal 2-Selmer remain substantive source restrictions.
 
-## WP14 candidate result
+## WP15 candidate result
 
-`BSD-R2-A1-WP14-CHAO-LI-APPLICABILITY` closes the exact applicability matrix for the admitted Chao Li mod-2 rank-lowering obstruction.
+`BSD-R2-A1-WP15-P2-LENGTH-SOURCE-CLOSURE` proves:
 
-It proves:
+1. `E(Q)` has no rational 2-primary torsion;
+2. finite `Sha(E/Q)` carries a nondegenerate alternating Cassels–Tate pairing from the protected Forge interface;
+3. elementary finite-group algebra therefore gives square order of `Sha(E/Q)` and even `2`-primary Sha length;
+4. consequently a rank-one BSD statement modulo rational squares yields at most
 
-1. residual surjectivity and reduction-at-2 compatibility are automatic after WP12 and the selected good-ordinary hypothesis;
-2. the source residual-conductor condition remains exactly the restriction that every bad `c_ell` is odd;
-3. the separate source condition `rho_bar|G_Q2 != 1` is not automatic;
-4. for any WP09 auxiliary `K`, Chebotarev supplies infinitely many primes `q` simultaneously inert in `K` with order-two residual Frobenius and even `a_q`;
-5. in the WP09 lane,
+   `ord_2(L'(E,1)/(Omega_E Reg_E)) = sum_{ell|N} ord_2(c_ell) (mod 2)`;
 
-   `dim_F2 Sel_2(E/K) = 1 + dim_F2 Sha(E/K)[2]`,
+5. parity cannot determine the exact even integer `len_Z2 Sha(E/Q)[2^infinity]`;
+6. the protected four-route source screen supplies neither a uniform unsquared `p=2` length theorem nor a sharp `p=2` bound sufficient to recover that integer.
 
-   hence the source hypothesis `s_2(E/K)=1` is exactly `Sha(E/K)[2]=0`;
-6. the admitted source therefore sharpens the failure of the odd-prime rank-lowering/primitivity mechanism on a restricted locus but does not give a uniform route to `BSD-R2-A1`.
+WP15 does not prove the selected leading-term identity.
 
-WP14 does not prove p=2 primitivity, an exact Sha/index formula, or the selected leading-term identity.
+## Current frontier after WP15
 
-## Current frontier after WP14
+`BSD-R2-A1-S3-UNSQUARED-P2-LENGTH-CONTROL`.
 
-`BSD-R2-A1-S3-INTEGRAL-P2-SATURATION-OR-DIRECT-LENGTH`.
+Define
 
-The exact remaining equality is
+`delta_2(E) := ord_2(L'(E,1)/(Omega_E Reg_E)) - sum_{ell|N} ord_2(c_ell)`.
 
-`ord_2(L'(E,1)/(Omega_E Reg_E))`
+The exact remaining theorem is
 
-`= len_Z2 Sha(E/Q)[2^infinity] + sum_{ell|N} ord_2(c_ell)`.
+`delta_2(E) = len_Z2 Sha(E/Q)[2^infinity]`.
 
-A closing theorem must cover both WP13 residual-conductor regimes, account for every local power of `2`, avoid an unproved local-nontriviality or minimal-Selmer premise, and compose with the WP00 complete-complex-`L` normalization.
+The refined dependency boundary is
 
-## Material dependency and boundary
+`MISSING_UNIFORM_UNSQUARED_P2_LENGTH_CONTROL`.
 
-The protected source stack does not presently contain a uniform integral `p=2` saturation/primitivity or direct arithmetic-length theorem with those properties. Restricted CM, twist-family, modulo-squares, finite-curve, odd-prime, and p-adic-height results do not fill this exact interface.
+A closing theorem must retain every power of `2`, cover both WP13 Tamagawa/residual-conductor regimes, avoid nonuniform local/minimal-Selmer hypotheses, and compose with the WP00 complex leading-term normalization.
 
-Boundary: `MISSING_UNIFORM_INTEGRAL_P2_ARITHMETIC_LENGTH_THEOREM`.
+## Source and evidentiary boundary
 
-Further substantive progress requires either:
+The protected source stack now explicitly screens the most plausible nearby routes:
 
-- a materially new theorem proved in MATHSOLVE; or
-- admission of an authoritative source theorem whose exact hypotheses and normalization cover the full selected class.
+- modulo-rational-squares transport is structurally parity-only for this exact target;
+- the admitted Tamagawa-aware Kolyvagin bound is an odd-prime theorem;
+- the admitted positive BSD(2) twist technology is restricted and does not cover the selected full class;
+- the admitted contemporary non-CM ordinary main-conjecture application assumes `p>2`.
 
-Search failure alone is not evidence of nonexistence.
+This is a bounded source conclusion. Search failure is not evidence that no closing theorem exists elsewhere.
+
+Further substantive progress requires either a materially new uniform unsquared `p=2` theorem proved in MATHSOLVE or admission of an authoritative source theorem with the exact needed hypotheses and normalization.
 
 ## Certification boundary
 
-MATHCERT remains pending. Neither WP13 nor WP14 changes the certification packet.
+MATHCERT remains pending. WP15 does not alter the certification packet.
 
 ## Stop conditions
 
-Stop for target/hypothesis drift, an unadmitted theorem premise, a materially new integral p=2 arithmetic theorem requiring source admission, a required independent review boundary that cannot lawfully be staffed, or MATHCERT certification authority. Routine bounded proof, falsification, exact review, CI, protected merge, and readback remain delegated.
+Stop for target/hypothesis drift, an unadmitted theorem premise, the need to invent a materially new global `p=2` arithmetic theorem not established in-package, or MATHCERT certification authority. Routine bounded proof, falsification, exact review, CI, protected merge, and readback remain delegated.
