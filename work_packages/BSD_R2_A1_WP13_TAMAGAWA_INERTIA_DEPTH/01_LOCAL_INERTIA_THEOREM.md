@@ -54,7 +54,7 @@ Thus the same inertia formula and equivalence hold:
 
 At `m=1`, `E[2]` is unramified at `ell` exactly when `n` is even.
 
-If `n` is odd, the tame inertia image on `E[2]` is the nontrivial unipotent subgroup of `GL_2(F_2)`. Its invariant subspace has dimension one, so the residual Artin-conductor exponent at `ell` is one.
+If `n` is odd, the tame inertia image on `E[2]` is the nontrivial unipotent subgroup of `GL_2(F_2)`. Its invariant subspace has dimension one, and the wild inertia contribution is zero because `ell` is odd. Hence the residual Artin-conductor exponent at `ell` is one.
 
 If `n` is even, the residual conductor exponent is zero.
 
@@ -88,7 +88,7 @@ The exact valuations are:
 `ord_2(c_ell)=v_2(n_ell)
  = max {m>=0 : I_ell acts trivially on E[2^m]}`,
 
-where `m=0` is allowed for odd `n_ell`.
+where `m=0` is the zero-depth convention, so the maximum remains defined when `n_ell` is odd.
 
 ### nonsplit multiplicative
 
@@ -98,13 +98,15 @@ Thus the full inertia depth can exceed the Tamagawa valuation in the nonsplit ca
 
 ## 5. Chao Li residual-conductor condition
 
-WP12 proves residual surjectivity automatically in the selected class. The admitted route audit records that Chao Li's source additionally imposes equality of the residual Serre conductor with `N`.
+The admitted Forge route audit identifies Chao Li, *Level Raising mod 2 and Obstruction to Rank Lowering*, as the exact source for the mod-2 rank-lowering obstruction. In that source, Assumption 4.1(3) requires the Serre conductor `N(rho_bar_{E,2})` to equal the odd part of the elliptic-curve conductor `N`; because the selected BSD class has odd `N`, this specializes exactly to
 
-The theorem above makes that condition exact:
+`N(rho_bar_{E,2})=N`.
+
+Remark 4.2 of the same source records the equivalent odd-component-group formulation. The theorem above reconstructs that equivalence directly in the selected semistable class and makes the local 2-power depth explicit:
 
 `N(rho_bar_{E,2})=N <=> c_ell is odd for every ell|N`.
 
-Hence residual surjectivity does not remove the Tamagawa-odd restriction. Curves carrying any target-relevant even Tamagawa factor lie outside that residual-conductor hypothesis.
+WP12 separately proves residual surjectivity automatically in the selected class. Hence surjectivity does not remove the Tamagawa-odd restriction. Curves carrying any target-relevant even Tamagawa factor lie outside this residual-conductor hypothesis.
 
 ## Firewall
 
