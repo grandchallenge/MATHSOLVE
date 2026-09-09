@@ -5,7 +5,7 @@ on:
     branches:
       - research/bsd-r2-a1-wp18b-selmer2
     paths:
-      - work_packages/BSD_R2_A1_WP18B_SELMER2/compute_selmer2.sage
+      - work_packages/BSD_R2_A1_WP18B_SELMER2/compute_selmer2.py
       - .github/workflows/bsd-wp18b-selmer2.yml
 
 permissions:
@@ -33,7 +33,7 @@ jobs:
           docker image inspect "$IMAGE" --format 'WP18B_DOCKER_ID={{.Id}}'
           docker run --rm "$IMAGE" sage --version
           docker run --rm \
-            -v "$GITHUB_WORKSPACE:/workspace" \
-            -w /workspace \
+            -v "$GITHUB_WORKSPACE:/workspace:ro" \
+            -w /tmp \
             "$IMAGE" \
-            sage work_packages/BSD_R2_A1_WP18B_SELMER2/compute_selmer2.sage
+            sage -python /workspace/work_packages/BSD_R2_A1_WP18B_SELMER2/compute_selmer2.py
