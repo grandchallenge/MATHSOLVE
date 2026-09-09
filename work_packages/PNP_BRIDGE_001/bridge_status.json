@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "package_id": "PNP-BRIDGE-001",
+  "campaign_id": "PNP-001",
+  "governance_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/148",
+  "source_concordance": "PNP-DEFINITION-CONCORDANCE-001",
+  "bridges": [
+    {
+      "bridge_id": "PNP-BRIDGE-CARRIER-001",
+      "status": "kernel_checked",
+      "artifact": "MathSolve/PNP/CarrierBridge.lean",
+      "theorems": [
+        "MathSolve.PNP.languageOf_injective",
+        "MathSolve.PNP.languageClassOf_eq_iff",
+        "MathSolve.PNP.languageClassOf_ne_iff"
+      ],
+      "scope": "True-preimage transport from total Boolean decision functions to binary languages preserves and reflects class equality and inequality."
+    },
+    {
+      "bridge_id": "PNP-BRIDGE-MODEL-001",
+      "status": "blocked_missing_formal_target",
+      "depends_on": [],
+      "missing_target": "A pinned Programme-side Lean definition of the locked deterministic multitape machine, step cost, total decider, and polynomial simulation interface."
+    },
+    {
+      "bridge_id": "PNP-BRIDGE-POLYBOUND-001",
+      "status": "blocked_missing_formal_target",
+      "depends_on": [],
+      "missing_target": "A pinned Programme-side Lean predicate for the locked eventual worst-case polynomial bound, including constants, exponent, threshold, and all finite exceptional input lengths."
+    },
+    {
+      "bridge_id": "PNP-BRIDGE-NP-001",
+      "status": "blocked_by_prerequisites",
+      "depends_on": [
+        "PNP-BRIDGE-MODEL-001",
+        "PNP-BRIDGE-POLYBOUND-001"
+      ],
+      "missing_target": "Programme-side formal verifier, self-delimiting pair encoding, witness bound, and the prerequisite machine and polynomial-bound bridges."
+    },
+    {
+      "bridge_id": "PNP-BRIDGE-ENDPOINT-001",
+      "status": "endpoint_specific_open",
+      "depends_on": [],
+      "missing_target": "A selected concrete endpoint with formal parser, malformed-to-NO behavior, size measure, correctness theorem, and locked polynomial many-one reductions."
+    }
+  ],
+  "closed_bridge_ids": [
+    "PNP-BRIDGE-CARRIER-001"
+  ],
+  "open_bridge_ids": [
+    "PNP-BRIDGE-MODEL-001",
+    "PNP-BRIDGE-POLYBOUND-001",
+    "PNP-BRIDGE-NP-001",
+    "PNP-BRIDGE-ENDPOINT-001"
+  ],
+  "overall_status": "partial_carrier_bridge_kernel_checked__formal_target_interfaces_required",
+  "certification_effect": "none",
+  "promotion_eligible": false,
+  "claim_boundary": "This package proves only the Boolean-decision-function to binary-language carrier transport. It does not prove P equals NP, P differs from NP, either imported-to-Programme class equivalence, a Turing-machine simulation, a polynomial-bound conversion, an endpoint theorem, novelty, or any MATHCERT disposition."
+}
