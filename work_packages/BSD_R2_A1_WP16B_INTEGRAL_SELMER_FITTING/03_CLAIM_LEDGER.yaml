@@ -7,10 +7,10 @@ protected_baselines:
 claims:
   - claim_id: "BSD-A1-IF001"
     status: "PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS"
-    statement: "The primitive classical direct-limit Kummer tower fits into 0 -> Q_2/Z_2 -> Sel_{2^infinity}^{Kum}(E/Q) -> Sha(E/Q)[2^infinity] -> 0."
+    statement: "With D_E := E(Q) tensor (Q_2/Z_2), the primitive classical direct-limit Kummer tower fits canonically into 0 -> D_E -> Sel_{2^infinity}^{Kum}(E/Q) -> Sha(E/Q)[2^infinity] -> 0; D_E has corank one in the selected class."
   - claim_id: "BSD-A1-IF002"
     status: "PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS"
-    statement: "For X_E := Sel_{2^infinity}^{Kum}(E/Q)^vee, the canonical torsion submodule Tor_{Z_2}(X_E) equals Sha(E/Q)[2^infinity]^vee and X_E/Tor(X_E) is free of rank one over Z_2."
+    statement: "For X_E := Sel_{2^infinity}^{Kum}(E/Q)^vee and L_E := D_E^vee, the canonical torsion submodule Tor_{Z_2}(X_E) equals Sha(E/Q)[2^infinity]^vee and X_E/Tor(X_E) is canonically the free rank-one module L_E."
   - claim_id: "BSD-A1-IF003"
     status: "PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS"
     statement: "len_{Z_2} Tor(X_E) = lim_n (ord_2 #Sel_{2^n}(E/Q) - n)."
@@ -37,6 +37,7 @@ next_boundary:
 forbidden_promotions:
   - "Do not infer BSD-R2-A1 from the algebraic Fitting realization."
   - "Do not apply Fitt^0 to the whole positive-rank dual Selmer module as the finite invariant."
+  - "Do not choose a basis of the rank-one free quotient and then treat that basis choice as canonical."
   - "Do not identify Kummer and Greenberg/ordinary local conditions at 2 without an exact comparison theorem."
   - "Do not replace primitive bad-prime Kummer conditions by imprimitive conditions without an exact local defect ledger."
   - "Do not discard even Tamagawa factors or residual-conductor drop."
