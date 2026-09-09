@@ -1,0 +1,35 @@
+schema_version: "1.0.0"
+campaign_id: "BSD-001"
+work_package: "BSD-R2-A1-WP16A-FINITE-SELMER-STABILIZATION"
+protected_baselines:
+  mathsolve: "93b1348d5e4ae77ededd0b5b779780112876c3d8"
+  mathforge: "118ae1b5c2fc2630f53000921b742c610c50db16"
+claims:
+  - claim_id: "BSD-A1-FS001"
+    status: "PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS"
+    statement: "For every n >= 1 in the selected rank-one class, #(E(Q)/2^n E(Q)) = 2^n."
+  - claim_id: "BSD-A1-FS002"
+    status: "PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS"
+    statement: "For every n >= 1, #Sel_{2^n}(E/Q) = 2^n #Sha(E/Q)[2^n], hence s_n(E) = ord_2 #Sha(E/Q)[2^n]."
+  - claim_id: "BSD-A1-FS003"
+    status: "PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS"
+    statement: "The sequence s_n(E) is eventually constant and lim_n s_n(E) = len_Z2 Sha(E/Q)[2^infinity]."
+  - claim_id: "BSD-A1-FS004"
+    status: "PROVED_EQUIVALENT_REFORMULATION"
+    statement: "Within the selected class, delta_2(E) = len_Z2 Sha(E/Q)[2^infinity] is equivalent to delta_2(E) = lim_n s_n(E)."
+  - claim_id: "BSD-R2-A1"
+    status: "SELECTED_RESEARCH_TARGET_UNPROVED"
+    statement: "Exact WP00-normalized 2-primary rank-one BSD valuation identity for the selected class."
+external_theorem_admission:
+  new_premises: false
+  note: "WP16A uses only protected rank-one/finiteness/odd-torsion inputs, Kummer exactness already specified by the protected research plan, and elementary group algebra."
+next_boundary:
+  work_package: "WP16B"
+  statement: "Identify an exact integral Selmer-complex/determinant/Fitting invariant realizing the stable finite-level length, with coefficient ring, local conditions, rank-one free direction, Tamagawa terms, and every 2-power normalization explicit."
+forbidden_promotions:
+  - "Do not infer BSD-R2-A1 from the finite-level reformulation."
+  - "Do not promote numerical stabilization to proof."
+  - "Do not replace exact length by parity or modulo-square information."
+  - "Do not silently specialize odd-prime or p>2 theorems to p=2."
+  - "Do not choose or claim equivalence of Selmer-complex normalizations before WP16B proves it."
+  - "Do not claim novelty, priority, patentability, commercial significance, or MATHCERT certification."
