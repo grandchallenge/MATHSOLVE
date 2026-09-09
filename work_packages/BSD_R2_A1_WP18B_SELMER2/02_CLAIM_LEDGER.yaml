@@ -1,0 +1,76 @@
+schema_version: "1.0.0"
+campaign_id: BSD-001
+work_package: BSD-R2-A1-WP18B-SELMER2
+protected_wp18a_base: 6d44e401e584498992c78f053992bde1dcba2452
+mathforge_interface_admission: 35837626ec887737f26f0acc5d9de48c5fd4db83
+computation_subject_head: c4a4fcc7339991becf7210f8978afb64e440ccdd
+workflow_run_id: 34321076589
+job_id: 102367621468
+claims:
+  - claim_id: BSD-A1-WP18B-COMP-001
+    statement: "For 53a1, the admitted Sage/PARI, Sage/mwrank, and direct eclib interfaces all compute dim_F2 Sel_2(E/Q)=1, hence #Sel_2(E/Q)=2 and s_1(E)=0."
+    status: COMPUTED_BY_SOURCE_AUDITED_INTERFACE
+    scope: 53a1
+    certification: NONE
+
+  - claim_id: BSD-A1-WP18B-COMP-002
+    statement: "For 203b1, the admitted Sage/PARI, Sage/mwrank, and direct eclib interfaces all compute dim_F2 Sel_2(E/Q)=1, hence #Sel_2(E/Q)=2 and s_1(E)=0."
+    status: COMPUTED_BY_SOURCE_AUDITED_INTERFACE
+    scope: 203b1
+    certification: NONE
+
+  - claim_id: BSD-A1-WP18B-THM-001
+    statement: "For each of 53a1 and 203b1, Sha(E/Q)[2]=0."
+    status: PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS_AND_COMPUTATION
+    dependencies:
+      - BSD-A1-WP18B-COMP-001
+      - BSD-A1-WP18B-COMP-002
+      - protected_WP05_rank_one_and_odd_torsion
+      - Kummer_exact_sequence
+    certification: NONE
+
+  - claim_id: BSD-A1-WP18B-THM-002
+    statement: "For each of 53a1 and 203b1, Sha(E/Q)[2^infinity]=0."
+    status: PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS_AND_COMPUTATION
+    dependencies:
+      - BSD-A1-WP18B-THM-001
+      - protected_WP05_finite_Sha
+      - elementary_finite_2_group_argument
+    certification: NONE
+
+  - claim_id: BSD-A1-WP18B-THM-003
+    statement: "For each of 53a1 and 203b1 and every n>=1, #Sel_{2^n}(E/Q)=2^n and s_n(E)=0."
+    status: PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS_AND_COMPUTATION
+    dependencies:
+      - BSD-A1-WP18B-THM-002
+      - protected_WP16A_finite_level_identity
+    certification: NONE
+
+  - claim_id: BSD-A1-WP18B-FITTING-001
+    statement: "For each of 53a1 and 203b1, T_E=0 and Fitt^0_{Z_2}(T_E)=Z_2."
+    status: PROVED_IN_PACKAGE_FROM_PROTECTED_INPUTS_AND_COMPUTATION
+    dependencies:
+      - BSD-A1-WP18B-THM-002
+      - protected_WP16B_integral_realization
+    certification: NONE
+
+  - claim_id: BSD-A1-WP18B-REDUCTION-001
+    statement: "For each of 53a1 and 203b1, the selected BSD-R2-A1 equality specializes to delta_2(E)=0."
+    status: PROVED_EQUIVALENT_REFORMULATION
+    dependencies:
+      - BSD-A1-WP18B-FITTING-001
+      - protected_WP16B_target_equivalence
+    certification: NONE
+
+  - claim_id: BSD-R2-A1
+    statement: "Selected rank-one 2-primary BSD target."
+    status: SELECTED_RESEARCH_TARGET_UNPROVED
+    certification: PENDING_MATHCERT
+
+boundaries:
+  - no analytic Sha value is used as finite-Selmer evidence
+  - no BSD leading-term equality is assumed
+  - no higher 4- or 8-descent computation is claimed
+  - full higher-level tower follows from exact Sel_2 plus finite Sha, not from unperformed computation
+  - results are specific to 53a1 and 203b1 and are not uniform selected-class control
+  - no MATHCERT certification is asserted
