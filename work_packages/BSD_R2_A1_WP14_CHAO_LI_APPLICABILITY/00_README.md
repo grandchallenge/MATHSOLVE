@@ -35,9 +35,9 @@ The exact source identity is the admitted Forge record
 
 `sources/BSD-001/HEEGNER_PRIMITIVITY_P2_BARRIER_SOURCE_AUDIT.md`
 
-at protected MATHFORGE `c44fef1d5d235b2e496bcee9ba0f7fc54212fa0d`, which binds Chao Li, *Level Raising mod 2 and Obstruction to Rank Lowering*.
+at protected MATHFORGE `57b68d02f27a6b4e82292200c8ac577f161ebf29`, which binds Chao Li, *Level Raising mod 2 and Obstruction to Rank Lowering*, including the exact Assumption 4.1, Remark 4.2, Theorem 7.1, and Remark 6.2 interfaces used here.
 
-The source locators used here are Assumption 4.1, Remark 4.2, Theorem 7.1, and the local-condition warning/example in Remark 6.2. WP14 does not enlarge the admitted source theorem beyond those exact roles.
+WP14 does not enlarge the admitted source theorem beyond those exact roles.
 
 ## Claim boundary
 
