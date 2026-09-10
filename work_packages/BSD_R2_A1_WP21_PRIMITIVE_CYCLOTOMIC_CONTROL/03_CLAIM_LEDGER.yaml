@@ -1,0 +1,69 @@
+schema_version: "1.0.0"
+campaign_id: BSD-001
+work_package: BSD-R2-A1-WP21-PRIMITIVE-CYCLOTOMIC-CONTROL
+protected_solve_base: 6bfb41402f216069b3b5ed001320170cc411b6cf
+claims:
+  - claim_id: BSD-A1-WP21-TORSION-001
+    statement: "For the protected surjective E[2] ~= S3 branch and the cyclotomic Z_2-extension Q_infty/Q, E(Q_infty)[2^infinity]=0."
+    status: PROVED_IN_PACKAGE_FROM_PROTECTED_WP12
+    certification: NONE
+
+  - claim_id: BSD-A1-WP21-GLOBAL-001
+    statement: "Restriction H^1(Q,E[2^infinity]) -> H^1(Q_infty,E[2^infinity])^Gamma is an isomorphism; there is no global degree-one cyclotomic control defect on the selected branch."
+    status: PROVED_IN_PACKAGE
+    dependencies:
+      - BSD-A1-WP21-TORSION-001
+    certification: NONE
+
+  - claim_id: BSD-A1-WP21-LOCAL-001
+    statement: "The primitive local Kummer quotient is H^1(F,E)[2^infinity], and the base-to-cyclotomic local restriction kernel at v is H^1(Gamma_v,E(Q_{infty,w}))[2^infinity]."
+    status: PROVED_IN_PACKAGE
+    certification: NONE
+
+  - claim_id: BSD-A1-WP21-CONTROL-001
+    statement: "With C_E := im(loc_Q) intersect ker(res_loc), restriction gives 0 -> Sel_Kum(E/Q) -> Sel_Kum(E/Q_infty)^Gamma -> C_E -> 0."
+    status: PROVED_IN_PACKAGE
+    dependencies:
+      - BSD-A1-WP21-GLOBAL-001
+      - BSD-A1-WP21-LOCAL-001
+    certification: NONE
+
+  - claim_id: BSD-A1-WP21-DUAL-CONTROL-001
+    statement: "For X_infty := Sel_Kum(E/Q_infty)^vee, there is a canonical exact sequence 0 -> C_E^vee -> (X_infty)_Gamma -> X_E -> 0."
+    status: PROVED_IN_PACKAGE
+    dependencies:
+      - BSD-A1-WP21-CONTROL-001
+      - protected_WP16B_X_E_definition
+    certification: NONE
+
+  - claim_id: BSD-A1-WP21-D1-REFINE-001
+    statement: "The former D1 determinant-realization debt decomposes into primitive cyclotomic perfect/determinant realization, exact local control-defect evaluation, and an integral analytic determinant generator at the height-one prime (2)."
+    status: RESEARCH_ROUTE_REDUCTION
+    dependencies:
+      - BSD-A1-WP21-DUAL-CONTROL-001
+      - protected_WP20
+    certification: NONE
+
+  - claim_id: BSD-R2-A1
+    statement: "Selected rank-one 2-primary BSD target over the protected selected class."
+    status: SELECTED_RESEARCH_TARGET_UNPROVED
+    certification: PENDING_MATHCERT
+
+boundaries:
+  - "C_E is not asserted to vanish or to be finite."
+  - "No Kummer/Greenberg equality at 2 is asserted."
+  - "No Lambda-perfectness, Lambda-torsionness, or square presentation for X_infty is asserted."
+  - "No analytic determinant generator or height-one (2) control is asserted."
+  - "D2 Bockstein/WP00 normalization remains open."
+  - "No MATHCERT certification is asserted."
+
+next_frontier:
+  obligations:
+    - id: BSD-R2-A1-S5-D1A
+      boundary: MISSING_P2_PRIMITIVE_CYCLOTOMIC_PERFECT_DETERMINANT_REALIZATION
+    - id: BSD-R2-A1-S5-D1B
+      boundary: MISSING_P2_PRIMITIVE_LOCAL_CONTROL_DEFECT_EVALUATION
+    - id: BSD-R2-A1-S5-D1C
+      boundary: MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+    - id: BSD-R2-A1-S5-D2
+      boundary: MISSING_P2_BOCKSTEIN_TO_WP00_NORMALIZATION
