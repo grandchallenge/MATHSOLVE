@@ -100,17 +100,23 @@ Hence
 `L_S(E,s)/L_{S0}(E,s)
  = product_{ell|N}(1-a_ell ell^(-s))`.
 
-Every factor is nonzero at `s=1`, so the two truncated L-functions have the same order of vanishing there and their leading terms satisfy
+Every factor is nonzero at `s=1`, so the two truncated L-functions have the same order of vanishing there and their leading-term ratio is the rational number
 
 `L_S^*/L_{S0}^*
  = product_{ell|N}(1-a_ell/ell)`.
 
+Define the odd-bad analytic truncation shift by
+
+`lambda_bad^an
+ := v2(L_S^*/L_{S0}^*)`.
+
+This is well-defined because the displayed ratio lies in `Q^x`. No individual `2`-adic valuation is assigned to either unnormalized real leading term.
+
 ### Lemma `BSD-A1-WP34-AN-SHIFT-001`
 
-The odd-bad analytic truncation shift is
+One has
 
-`v2(L_S^*)-v2(L_{S0}^*)
- = tau_bad(E)`.
+`lambda_bad^an = tau_bad(E)`.
 
 ### Proof
 
@@ -120,9 +126,7 @@ For each odd `ell`, the denominator `ell` is a `2`-adic unit. Therefore
  = v2(ell-a_ell)
  = tau_ell`.
 
-Taking the valuation of the product proves the result. QED.
-
-This is a ratio statement. It does not require either leading term separately to be identified with a protected integral determinant generator.
+Taking the valuation of the rational product proves the result. QED.
 
 ## 4. Toric reconciliation
 
@@ -130,13 +134,13 @@ This is a ratio statement. It does not require either leading term separately to
 
 The difference between the odd-bad algebraic finite-comparison shift and the odd-bad analytic S-truncation shift is exactly the protected Tamagawa/control length:
 
-`lambda_bad^alg
- - (v2(L_S^*)-v2(L_{S0}^*))
+`lambda_bad^alg - lambda_bad^an
  = sum_{ell|N} v2(c_ell)`.
 
 Equivalently,
 
-`len_Z2 D_bad^BM - tau_bad(E)
+`len_Z2 D_bad^BM
+ - v2(L_S^*/L_{S0}^*)
  = len_Z2 K_bad^vee`.
 
 ### Proof
@@ -148,7 +152,7 @@ Protected WP33 gives
 
 The preceding analytic lemma gives
 
-`v2(L_S^*)-v2(L_{S0}^*)=tau_bad(E)`.
+`lambda_bad^an=tau_bad(E)`.
 
 Subtract. Protected WP22 identifies the remaining sum with `len_Z2 K_bad^vee`. QED.
 
@@ -156,9 +160,10 @@ Subtract. Protected WP22 identifies the remaining sum with `len_Z2 K_bad^vee`. Q
 
 Define the analytic valuation ideal
 
-`J_bad^an := 2^tau_bad(E) Z_2`.
+`J_bad^an := 2^lambda_bad^an Z_2
+          = 2^tau_bad(E) Z_2`.
 
-This notation records only a principal ideal determined by a valuation. It is not a chosen determinant generator.
+This notation records only a principal ideal determined by the valuation of the rational leading-term ratio. It is not a chosen determinant generator.
 
 ### Corollary `BSD-A1-WP34-FITTING-001`
 
@@ -179,7 +184,7 @@ Protected WP22 gives
 `Fitt^0_Z2(K_bad^vee)
  = 2^(sum v2(c_ell)) Z_2`.
 
-Factor the first power of `2`. QED.
+Factor the first power of `2` and use `lambda_bad^an=tau_bad(E)`. QED.
 
 Thus the toric factor in the Burns–Macias finite point-completion term is exactly the valuation ideal introduced by deleting the same multiplicative Euler factors from the analytic L-series.
 
@@ -222,9 +227,9 @@ The protected analytic defect is
  = v2(L'(E,1)/(Omega_E Reg_E))
    - sum_{ell|N}v2(c_ell)`.
 
-WP34 explains why the extra toric lengths appearing in the Burns–Macias `S`-truncated perfect-complex comparison do not create an additional odd-bad valuation term beyond the protected Tamagawa normalization: the same `tau_bad(E)` is introduced by S-truncation and therefore cancels when the perfect-complex normalization is transported back to the complete Hasse-Weil normalization at the valuation level.
+WP34 explains why the extra toric lengths appearing in the Burns–Macias `S`-truncated perfect-complex comparison do not create an additional odd-bad valuation term beyond the protected Tamagawa normalization: the rational ratio between the two source-compatible truncations has valuation `tau_bad(E)`, exactly matching the toric part of the finite comparison module.
 
-This statement does not prove the remaining global determinant, height-one `(2)`, or Bockstein/regulator identities needed to identify the full left-hand side with `v2(Fitt^1_Z2(X_E))`.
+This statement does not prove the remaining global determinant, height-one `(2)`, or Bockstein/regulator identities needed to identify the full protected normalized analytic quantity with `v2(Fitt^1_Z2(X_E))`.
 
 ## 9. Claim firewall
 
