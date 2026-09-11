@@ -18,7 +18,7 @@ When `Gamma_v` is nontrivial, protected WP21-WP23 identify the ambient primitive
 
 `K_v := H^1(Gamma_v,E(F_{v,infty}))[2^infinity]`.
 
-Protected WP22 proves that for odd `v=ell`, the local extension is either trivial for no selected finite prime or, after the decomposition-group identification, an unramified `Z_2`-extension; protected WP23 treats `v=2`.
+Protected WP22 proves that at every odd prime the nontrivial local completion is, after the decomposition-group identification, an unramified `Z_2`-extension; protected WP23 treats `v=2`.
 
 Protected WP24 fixes a saturated generator
 
@@ -119,27 +119,27 @@ and canonically
 
 ### Proof
 
-If `K_v=0`, Corollary `BSD-A1-WP25-PRO-NORM-DUAL-001` says the inverse limit of the `Q_{v,n}` is zero. The transition maps are surjective. For an inverse system of nonempty finite groups with surjective transition maps, every projection from the inverse limit to a finite stage is surjective: starting from any chosen element at stage `n`, recursively choose lifts at all higher stages. Hence every `Q_{v,n}` is zero. Thus `N_{v,n}=E(F_v)` for every `n`, and the claim holds.
+Put
 
-Now suppose `K_v` is nonzero. The inverse limit
+`Q_v^pro := inverse_limit_n Q_{v,n}`.
 
-`Q_v^pro := inverse_limit_n Q_{v,n}`
+By Corollary `BSD-A1-WP25-PRO-NORM-DUAL-001`, this inverse limit is finite because it is Pontryagin-dual to finite `K_v`.
 
-is finite because it is Pontryagin-dual to finite `K_v`. As above, every projection
-
-`Q_v^pro -> Q_{v,n}`
-
-is surjective. Therefore
-
-`#Q_{v,n} <= #Q_v^pro`
-
-for every `n`.
-
-On the other hand, the natural transition maps
+The transition maps
 
 `Q_{v,n+1} -> Q_{v,n}`
 
-are surjective, so
+are surjective. For a countable inverse system of nonempty groups with surjective transition maps, every projection
+
+`Q_v^pro -> Q_{v,n}`
+
+is surjective: starting from any element at stage `n`, choose a lift at stage `n+1`, then a lift of that element at stage `n+2`, and continue recursively. No finiteness of the finite-stage quotient is assumed in this lifting argument.
+
+Since `Q_v^pro` is finite and maps onto `Q_{v,n}`, every `Q_{v,n}` is therefore finite and
+
+`#Q_{v,n} <= #Q_v^pro`.
+
+The transition maps are surjective, so
 
 `#Q_{v,n+1} >= #Q_{v,n}`.
 
@@ -149,11 +149,11 @@ Thus the nondecreasing sequence of positive integers `#Q_{v,n}` is bounded and e
 
 is an isomorphism.
 
-But this map is the quotient map induced by the inclusion
+This map is the quotient map induced by
 
-`N_{v,n+1} subset N_{v,n}`.
+`N_{v,n+1} subset N_{v,n}`,
 
-Its kernel is
+and its kernel is
 
 `N_{v,n}/N_{v,n+1}`.
 
@@ -161,7 +161,7 @@ Therefore eventual isomorphism forces
 
 `N_{v,n+1}=N_{v,n}`.
 
-Hence the norm images stabilize to their intersection `N_v^infty`. The inverse system is then eventually constant, so
+Hence the norm images stabilize to their intersection `N_v^infty`. The inverse system is eventually constant and
 
 `Q_v^pro ~= E(F_v)/N_v^infty`.
 
