@@ -30,14 +30,19 @@ Protected MATHFORGE WP34 binds the source normalization:
 - `mu_S` is supported outside `S`;
 - the source's Section 6 classical reconciliation theorem is odd-prime only and is not used here.
 
-Comparing two truncation sets differing exactly by the bad primes gives
+Comparing two truncation sets differing exactly by the bad primes gives the rational leading-term ratio
 
-`v2(L_S^*)-v2(L_{S0}^*)=tau_bad(E)`.
+`L_S^*/L_{S0}^*
+ = product_{ell|N}(1-a_ell/ell)`
+
+and hence
+
+`v2(L_S^*/L_{S0}^*)=tau_bad(E)`.
 
 Therefore
 
 `len_Z2 D_bad^BM
- - (v2(L_S^*)-v2(L_{S0}^*))
+ - v2(L_S^*/L_{S0}^*)
  = sum_{ell|N}v2(c_ell)
  = len_Z2 K_bad^vee`.
 
@@ -53,6 +58,8 @@ This closes
 `MISSING_P2_BURNS_MACIAS_TORIC_EULER_FACTOR_RECONCILIATION`
 
 at the exact valuation/Fitting-ideal level.
+
+No individual `2`-adic valuation is assigned to the unnormalized real leading terms `L_S^*` or `L_{S0}^*`; only the source-determined rational ratio is valued.
 
 ## What remains
 
