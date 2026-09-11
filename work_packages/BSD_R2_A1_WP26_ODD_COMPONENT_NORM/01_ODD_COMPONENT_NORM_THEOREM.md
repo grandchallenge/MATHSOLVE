@@ -232,13 +232,9 @@ The finite-layer Tate isomorphism is induced by the component map and the quotie
 
 Let
 
-`Phi_ell := Phi(F_ell)`
+`Phi_ell := Phi(k)`
 
-mean the rational Neron component group at `ell`, with `F_ell:=F_ell_residue=F_ell` understood as the residue field `F_ell`; equivalently, in the notation above,
-
-`Phi_ell := Phi(k)`.
-
-Let
+be the rational Neron component group at `ell`, where `k` is the residue field of `Q_ell`, and let
 
 `Phi_ell,odd`
 
