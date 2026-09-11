@@ -42,14 +42,19 @@ Protected WP33 gives
 `len_Z2 D_bad^BM
  = tau_bad(E) + sum_{ell|N} v2(c_ell)`.
 
-If `S` and `S0` differ exactly by the odd bad primes, with all other local truncations held fixed, the admitted source convention gives
+If `S` and `S0` differ exactly by the odd bad primes, with all other local truncations held fixed, the admitted source convention gives the rational leading-term ratio
 
-`v2(L_S^*) - v2(L_{S0}^*) = tau_bad(E)`.
+`L_S^*/L_{S0}^*
+ = product_{ell|N}(1-a_ell/ell)`
+
+and therefore
+
+`v2(L_S^*/L_{S0}^*) = tau_bad(E)`.
 
 Hence
 
 `len_Z2 D_bad^BM
- - (v2(L_S^*)-v2(L_{S0}^*))
+ - v2(L_S^*/L_{S0}^*)
  = sum_{ell|N} v2(c_ell)`.
 
 Equivalently, if
