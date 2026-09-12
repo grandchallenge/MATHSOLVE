@@ -1,0 +1,21 @@
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP43A-GREENBERG-AUGMENTATION-NATURALITY
+claims:
+  - claim_id: BSD-A1-WP43A-STRICT-AUG-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      In the protected literal-p=2 totally-imaginary K lane, Nekovar's
+      first-order cyclotomic augmentation triangle induces an exact triangle
+      of strict Greenberg Selmer complexes, and the specialization connecting
+      morphism is the WP37 first cyclotomic Bockstein.
+  - claim_id: BSD-A1-WP43A-BOUNDARY-002
+    status: REFINED_BOUNDARY
+    statement: >-
+      The remaining compatibility boundary is
+      MISSING_P2_KUMMER_IWASAWA_LOCAL_CONDITION_COMPLEX_AND_SPECIALIZATION_OVER_K.
+  - claim_id: BSD-A1-WP43A-FIREWALL-003
+    status: CLAIM_FIREWALL
+    statement: >-
+      The package does not construct an integral classical-Kummer Iwasawa
+      Selmer object over K and does not identify D_K with any Bockstein or
+      height defect.
