@@ -10,21 +10,21 @@
 - Mathematical certification: `grandchallenge/MATHCERT` only.
 - Selected target: `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED`.
 
-Do not treat mutable issue text, conversational history, stale campaign summaries, or numerical evidence as mathematical authority.
+Do not treat mutable issue text, conversational history, stale summaries, or numerical evidence as mathematical authority.
 
 ## Canonical read order
 
 After re-fetching protected live state, read:
 
 1. this file;
-2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md` for the durable representation-change strategy;
-3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md` for the original continuity contract and claim firewall;
-4. the latest protected frontier file, currently `handoffs/BSD-001/WP43_FRONTIER.md` after WP43A protection;
+2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md`;
+3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md`;
+4. the latest protected frontier, currently `handoffs/BSD-001/WP44_FRONTIER.md` after WP44A protection;
 5. the work package named by that frontier;
-6. any earlier protected package on which the intended proof step materially depends;
-7. the current protected MATHFORGE BSD provider records before using any external theorem.
+6. any protected predecessor materially used by the next proof step;
+7. current protected MATHFORGE BSD provider records before using external theorems.
 
-Do not restart WP16 or broad WP17 reconnaissance. Later protected work has narrowed the live frontier to exact integral comparison and normalization objects.
+Do not restart WP16 or broad WP17 reconnaissance.
 
 ## Governing invariant
 
@@ -44,7 +44,7 @@ where
 
 `X_E := Sel_{2^infinity}^{Kum}(E/Q)^vee`.
 
-Hence the selected theorem is exactly
+Thus the selected theorem is exactly
 
 `delta_2(E)=v_2(Fitt^1_{Z_2}(X_E))`.
 
@@ -52,18 +52,19 @@ Protected WP20 gives the rank-one determinant/Bockstein factorization; WP35 supp
 
 ## Protected chain relevant to the live frontier
 
-- WP05–WP15: source/target normalization, quadratic descent, good-ordinary `2`-local data, auxiliary field `K`, residual image, Tamagawa dictionary, and parity/square-order firewalls.
+- WP05–WP15: source/target normalization, quadratic descent, good-ordinary local data, auxiliary `K`, residual image, Tamagawa dictionary, and square/parity firewalls.
 - WP16A/WP16B/WP19: exact primitive integral Selmer/Fitting invariant.
 - WP20: universal rank-one Bockstein/determinant factorization.
 - WP21–WP36: primitive cyclotomic control, local kernels, Poitou–Tate incidence, universal norms, unit-root reconciliation, finite comparison terms, square presentation, and finite twisted-reciprocity computation.
-- WP37: literal-`p=2` Nekovar cyclotomic Bockstein-height formalism over totally imaginary `K`; first height exists but nondegeneracy is not proved.
+- WP37: literal-`p=2` Nekovář cyclotomic Bockstein-height formalism over totally imaginary `K`; first height exists but nondegeneracy is not proved.
 - WP38: bounded fixed-`2` nondegeneracy screen; quadratic base change adds no index to the rank-one Mordell–Weil free lattice.
-- WP39: exact literal-`p=2` comparison between Nekovar extended/strict Greenberg compact Selmer cohomology and classical compact Kummer over `K`; finite compact global hit `J_K` isolated.
-- WP40: exact Poitou–Tate annihilator theorem `ann(J_K)=D_K` and complementary-length formula.
-- WP41A: separates the strict cyclotomic Bockstein from the fixed-level strict/Kummer comparison.
-- WP41B: Disegni's source-compatible ordinary normalization gives `e_{2,infinity}^{-1}Q_special=Q^ord` exactly.
-- WP42B: for the selected split prime `2`, canonical Appendix-A.3 vectors and measure give `Q^ord_{2,dt_2^can}=1` exactly; global measure rescaling remains explicit.
-- WP43A: Nekovar §0.16 is source-qualified for the literal-`p=2` lane; strict Greenberg local conditions are functorial for the first-order cyclotomic augmentation triangle, the strict Selmer complexes form an exact triangle, and the specialization connecting morphism is the WP37 Bockstein.
+- WP39: exact literal-`p=2` finite strict-Greenberg/compact-Kummer comparison over `K`; finite global hit `J_K` isolated.
+- WP40: exact Poitou–Tate annihilator theorem `ann(J_K)=D_K` and complementary-length identity.
+- WP41A: separates strict cyclotomic Bockstein deformation from fixed-level strict/Kummer comparison.
+- WP41B: exact Disegni ordinary normalization `e_{2,infinity}^{-1}Q_special=Q^ord`.
+- WP42B: canonical split-prime-`2` local factor `Q^ord_{2,dt_2^can}=1` with explicit measure firewall.
+- WP43A: Nekovář strict-Greenberg first-order cyclotomic augmentation is exact and its specialization connecting morphism is the WP37 Bockstein.
+- WP44A: primitive classical-Kummer cyclotomic control transports integrally to `K`; the local norm-limit Kummer module has exact base-projection cokernel `U_w`. At `w|2`, `U_w` contains the explicit formal universal-norm term in the protected WP28 filtration.
 
 ## Current D1 boundary
 
@@ -79,71 +80,81 @@ Kato gives literal-`p=2` control away from the height-one prime containing `2`; 
 
 `MISSING_P2_K_HEIGHT_NONDEGENERACY`.
 
-WP37 proves existence of the first height, not its nonvanishing. WP38 records that the closest screened derived-height/Stark-system and Eisenstein-Heegner routes do not apply to the protected surjective-`E[2]` branch.
+WP37 proves existence of the first height, not nonvanishing. WP38 records that the closest screened derived-height/Stark-system and Eisenstein-Heegner routes do not apply to the protected surjective-`E[2]` branch.
 
-### D2b — classical-Kummer Iwasawa object and exact specialization over `K`
+### D2b — compact Kummer derived lift and exact specialization over `K`
 
 WP40 proves
 
 `j_K+d_K
  = 2 ord_2(3-a_2)
-   + 2 sum_{ell|N} ord_2(c_ell)`,
+   + 2 sum_{ell|N} ord_2(c_ell)`.
 
-where `j_K=len J_K` and `d_K=len D_K`.
+WP43A closes strict-Greenberg Bockstein naturality. WP44A proves the module-level Kummer cyclotomic object and exact ordinary control over `K`:
 
-Protected WP43A closes the strict-Greenberg augmentation/Bockstein half of the compatibility problem. The exact remaining boundary is
+`0 -> Sel_K^Kum
+   -> (Sel_Kinfty^Kum)^Gamma_K
+   -> C_K^Kum
+   -> 0`
 
-`MISSING_P2_KUMMER_IWASAWA_LOCAL_CONDITION_COMPLEX_AND_SPECIALIZATION_OVER_K`.
+and
 
-A successor must provide an integral cyclotomic classical-Kummer Selmer object over `K`, a strict-to-Kummer comparison morphism, and derived augmentation whose specialized cone is exactly the WP39/WP40 finite strict/Kummer quotient. Comparisons only after inverting `2` or only up to finite error are insufficient.
+`0 -> (C_K^Kum)^vee
+   -> (X_Kinfty^Kum)_Gamma_K
+   -> X_K^Kum
+   -> 0`.
+
+It also constructs
+
+`M_w^Kum=inverse_limit_n E(K_{n,w})^hat_2`
+
+with exact base-projection cokernel `U_w`.
+
+The surviving boundary is
+
+`MISSING_P2_COMPACT_KUMMER_IWASAWA_COMPLEX_LIFT_AND_DERIVED_SPECIALIZATION_OVER_K`.
+
+A successor must lift the norm-limit Kummer condition to a compact local-condition/Selmer complex compatible with the protected strict Greenberg complex, compute derived augmentation including any `Tor_1`/coinvariant kernel, and identify the specialized comparison cone map-by-map with WP39/WP40.
+
+At each `w|2`, do not discard the protected exact term
+
+`0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0`.
+
+The full `U_w` has twice the length of WP39's reduction-sized local ambient term.
 
 ### D2c — ordinary Disegni local factors
 
-Protected WP41 reduces the corrected p-adic Gross–Zagier normalization to `Q^ord`. Protected WP42B further proves
+Protected WP42B gives
 
-`Q^ord_{2,dt_2^can}=1`
+`Q^ord_{2,dt_2^can}=1`.
 
-for Disegni's canonical local vectors and measure at the selected split prime `2`; the canonical p-local toric factor therefore has zero `2`-adic valuation.
-
-This does not make the global ordinary factor a unit. The next exact local boundary is
+The next exact local boundary is
 
 `MISSING_P2_DISEGNI_SPLIT_BAD_PRIME_NEWVECTOR_QORD_FACTORS`.
 
-The unresolved `Q^ord` ledger consists of global/local Haar-measure reconciliation, split semistable bad-prime terms, auxiliary finite places, remaining local L/vector normalizations, and residual global/archimedean normalization.
-
-Disegni §4.2 rewrites split toric periods as Rankin–Selberg zeta integrals; the interpolation machinery does not by itself evaluate the semistable Steinberg/newvector integral. No bad-prime unit or valuation formula is protected yet.
+The unresolved global `Q^ord` ledger still contains Haar-measure reconciliation, split semistable bad-prime terms, auxiliary finite places, remaining local L/vector normalizations, and residual global/archimedean normalization.
 
 ### D2d — classical/WP00 normalization
 
 `MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION`.
 
-Compare the same Heegner line with the classical Gross–Zagier and WP00 Neron–Tate/period conventions. A `2`-adic height is not a real height.
+A `2`-adic height is not the WP00 Néron–Tate regulator.
 
 ### D2e — exact descent back to `Q`
 
 `MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION`.
 
-Use WP06 to descend the final normalized identity while retaining every plus/minus overlap, twist, period, Tamagawa, and local term.
+Retain every plus/minus overlap, twist, period, Tamagawa, and local term.
 
 ## Immediate executable successors
 
-### WP44A — classical-Kummer Iwasawa local condition over `K`
+### WP45A — compact Kummer derived lift
 
-Search narrowly for a literal integral construction that packages the classical Kummer local condition throughout the cyclotomic tower into a Selmer complex over the Iwasawa algebra. Require:
+Construct the compact classical-Kummer local-condition complex over `Lambda_K` from the protected norm-limit Kummer modules. Prove derived augmentation, not merely ordinary coinvariant control. The specialized comparison cone must recover WP39/WP40 map-by-map, with the formal universal-norm term at `2` carried explicitly.
 
-1. literal integral `p=2` validity;
-2. compatibility with corestriction/base change through the tower;
-3. a strict-Greenberg-to-Kummer comparison morphism;
-4. a controlled derived object over the Iwasawa algebra;
-5. derived augmentation equal to the WP39/WP40 finite quotient, not merely isogenous to it.
+### WP45B — split semistable bad-prime toric factors
 
-If no admitted source supplies this exact object, the constructive route is to define the mapping-fibre local condition from finite-level Kummer complexes and prove derived base change directly.
-
-### WP44B — split semistable bad-prime toric factors
-
-For each odd semistable `ell|N`, with `K/Q` split at `ell` and `chi_ell=1`, bind the exact local representation and test vector chosen by the Disegni packet and evaluate the normalized split Rankin–Selberg toric integral. Retain split/nonsplit multiplicative type, Steinberg twist, Haar measure, local L-factor, denominator pairing, and any Tamagawa-sensitive scalar.
-
-The target is an exact local contribution to `ord_2(Q^ord)`, not an interpolation theorem or blanket unit claim.
+For each odd semistable `ell|N`, with `K/Q` split at `ell` and `chi_ell=1`, bind the exact local representation and test vector selected by the Disegni packet and evaluate the normalized split Rankin–Selberg/newvector toric integral. Retain multiplicative type, Steinberg twist, Haar measure, local L-factor, denominator pairing, and Tamagawa-sensitive scalars.
 
 Any new external theorem premise must first be admitted through MATHFORGE.
 
@@ -152,8 +163,12 @@ Any new external theorem premise must first be admitted through MATHFORGE.
 Do not promote:
 
 - `BSD-R2-A1`;
-- strict-Greenberg Bockstein naturality to existence of the missing Kummer Iwasawa object;
-- a rationalized or finite-error Kummer comparison to the exact `2`-primary defect;
+- ordinary Kummer coinvariant control to derived compact-complex specialization;
+- the discrete Kummer dual `X_Kinfty^Kum` to the compact WP39 lattice;
+- equality of local lengths to a canonical isomorphism;
+- the full `U_w` at `w|2` to WP39's reduction-sized local target;
+- the formal universal-norm term to zero;
+- `D_K` to a Bockstein defect before the derived comparison cone is proved;
 - canonical `Q^ord_2=1` to global `Q^ord=1`;
 - interpolation of a local zeta integral to an explicit semistable value;
 - height existence to height nondegeneracy;
@@ -163,7 +178,7 @@ Do not promote:
 
 ## Execution doctrine
 
-Proceed autonomously through bounded proof, falsification, exact source admission when required, exact-head Adversary and Referee review, affected ordinary CI, protected merge, protected readback, and issue #164/handoff maintenance.
+Proceed autonomously through bounded proof, falsification, source admission when required, exact-head non-authoring/read-only Adversary and Referee review, affected ordinary CI, protected merge, protected readback, issue #164 maintenance, and handoff maintenance.
 
 Recoverable connector, CI, formatting, source-access, compiler, or computational failures are recovery events, not stopping conditions.
 
