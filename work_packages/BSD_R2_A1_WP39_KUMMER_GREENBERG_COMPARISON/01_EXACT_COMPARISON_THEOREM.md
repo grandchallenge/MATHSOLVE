@@ -65,7 +65,7 @@ The middle two terms vanish by the protected facts above. Exactness therefore ma
 
 ### Consequence
 
-There is no separate exceptional-zero/degree-zero lattice correction in D2b for the selected good-ordinary `p=2` auxiliary lane. Any remaining difference from the primitive Kummer lattice is the strict-Greenberg-versus-Kummer comparison itself.
+There is no separate exceptional-zero/degree-zero correction in D2b for the selected good-ordinary `p=2` auxiliary lane. Any remaining difference from the primitive Kummer Selmer module is the strict-Greenberg-versus-Kummer comparison itself.
 
 ## 3. Classical compact Kummer comparison
 
@@ -113,7 +113,7 @@ In particular, `J_K` is finite and
 
 `len_Z2 J_K`
 
-is exactly the integral lattice index between the source-compatible Nekovář compact height lattice and the classical compact Kummer Selmer lattice.
+is exactly the length of the finite comparison quotient between the source-compatible Nekovář compact Selmer module and the classical compact Kummer Selmer module. If a later theorem proves both modules are free rank one, this length is the usual lattice-index valuation; WP39 does not require or assert that additional freeness.
 
 ### Proof
 
@@ -177,7 +177,7 @@ The finite integer
 
 `j_K := len_Z2 J_K`
 
-is therefore the complete **local/Selmer-complex** index left in D2b.
+is therefore the complete finite **local/Selmer-complex comparison quotient length** left in D2b.
 
 This statement does not assert that a chosen Heegner point is primitive. A Heegner point may still have a nontrivial index inside the common rank-one Mordell–Weil lattice; that is a separate D2c/D2d normalization datum.
 
@@ -197,7 +197,7 @@ A successor no longer needs to identify or size any ambient local correction fac
 
 or equivalently its length `j_K`.
 
-The natural next representation is Poitou–Tate/global-local incidence: characterize `J_K` as an annihilator or character kernel against the dual rank-one direction, while keeping the Greenberg/Kummer local-condition distinction explicit.
+The natural next representation is Poitou–Tate/global-local incidence: characterize `J_K` as an annihilator or character kernel against the appropriate dual Selmer direction, while keeping the Greenberg/Kummer local-condition distinction explicit.
 
 ## 7. Claim firewall
 
@@ -205,6 +205,7 @@ WP39 does not prove:
 
 - `J_K=R_K`;
 - any specific value of `j_K`;
+- freeness or rank one of both Selmer modules merely from the finite comparison sequence;
 - global localization surjectivity;
 - fixed-`2` height nondegeneracy;
 - Heegner-point primitivity;
