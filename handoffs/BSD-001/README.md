@@ -19,7 +19,7 @@ After re-fetching protected live state, read:
 1. this file;
 2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md` for the durable representation-change strategy;
 3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md` for the original continuity contract and claim firewall;
-4. the latest protected frontier file, currently `handoffs/BSD-001/WP39_FRONTIER.md` after WP39 protection;
+4. the latest protected frontier file, currently `handoffs/BSD-001/WP40_FRONTIER.md` after WP40 protection;
 5. the work package named by that frontier;
 6. any earlier protected package on which the intended proof step materially depends;
 7. the current protected MATHFORGE BSD provider records before using any external theorem.
@@ -84,7 +84,8 @@ Thus the remaining campaign is an exact integral determinant/normalization probl
 - WP22–WP36: exact local/control analysis, including literal-`p=2` good-ordinary control, Poitou–Tate incidence, universal norms, unit-root reconciliation, finite comparison terms, square presentation, and finite twisted-reciprocity computation.
 - WP37: literal-`p=2` Nekovář cyclotomic Bockstein-height formalism over the totally imaginary field `K`; canonical rank-one height ideal; exact DVR leading-term/length formalism conditional on first-height nondegeneracy.
 - WP38: bounded fixed-`2` nondegeneracy/derived-height source screen and exact proof that quadratic base change adds no index to the ambient rank-one Mordell–Weil free lattice.
-- WP39: literal-`p=2` exact comparison between Nekovář extended/strict Greenberg compact Selmer cohomology and the classical compact Kummer Selmer group over `K`; all ambient local correction lengths are explicit and the surviving comparison is the finite global image subgroup `J_K`.
+- WP39: literal-`p=2` exact comparison between Nekovář extended/strict Greenberg compact Selmer cohomology and the classical compact Kummer Selmer group over `K`; all ambient local correction lengths are explicit and the surviving compact comparison is the finite global image subgroup `J_K`.
+- WP40: Poitou–Tate duality identifies the annihilator of `J_K` with an exact dual global-hit subgroup `D_K`, giving a complementary-length identity with no rank-one scalar assumption.
 
 ## Current D1 boundary
 
@@ -108,47 +109,49 @@ A valid successor must provide a literal-`p=2` analytic characteristic/determina
 
 WP37 proves existence of the first cyclotomic height at `p=2`; it does not prove that height is nonzero. Protected MATHFORGE WP38 records that the nearest screened derived-height/Stark-system and Eisenstein-Heegner routes do not apply to the selected fixed-`2`, surjective-`E[2]` branch. This is not a theorem-nonexistence claim.
 
-### D2b — exact global hit in the Greenberg-to-Kummer comparison over `K`
+### D2b — dual global hit over `K`
 
-`MISSING_P2_KUMMER_GREENBERG_GLOBAL_HIT_SUBGROUP_OVER_K`
+`MISSING_P2_DUAL_GLOBAL_HIT_OVER_K`
 
-WP38 proves
+WP39 proves
 
-`E(Q)/tors ~= E(K)/tors`
+`0 -> H~^1_f(K,T_2(E)) -> S_2(E/K) -> J_K -> 0`
 
-and therefore
+and computes the exact ambient local length
 
-`E(Q) tensor Z_2 ~= E(K) tensor Z_2`.
+`len_Z2 R_K
+ = 2 ord_2(3-a_2)
+   + 2 sum_{ell|N} ord_2(c_ell)`.
 
-WP39 further proves
+WP40 defines the dual local quotient
 
-`H~^1_f(K,T_2(E)) ~= S_T^str(K)`
+`R_K^dual := U_str^perp/U_Kum^perp`
 
-and the exact sequence
+and the dual global hit
 
-`0 -> H~^1_f(K,T_2(E))
-   -> S_2(E/K)
-   -> J_K
-   -> 0`,
+`D_K := im((G_A intersect U_str^perp) -> R_K^dual)`.
 
-where `J_K` is the actual image in the finite strict-Greenberg-to-classical-Kummer local comparison module.
+Under the perfect local quotient pairing, WP40 proves
 
-The ambient local module has exact length
+`ann(J_K)=D_K`.
 
-`2 ord_2(3-a_2)
- + 2 sum_{ell|N} ord_2(c_ell)`.
+Hence, with
 
-Thus all ambient local sizes and the global quadratic free-lattice factor are closed. The remaining D2b integer is
+`j_K:=len_Z2 J_K`, `d_K:=len_Z2 D_K`,
 
-`j_K := len_Z2 J_K`.
+one has exactly
 
-Do not replace `J_K` by the whole ambient target without an exact global-incidence theorem.
+`j_K+d_K
+ = 2 ord_2(3-a_2)
+   + 2 sum_{ell|N} ord_2(c_ell)`.
+
+Thus D2b is solved once `D_K` is evaluated. Do not infer `D_K=0`, `J_K=R_K`, or a rank-one character description without proof.
 
 ### D2c — Disegni interpolation/test-vector factors
 
 `MISSING_P2_DISEGNI_INTERPOLATION_FACTOR_VALUATIONS`
 
-Compute exactly the `2`-adic ideal/valuation of Disegni's `e_{2,infinity}^{-1} Q` in the protected all-`2N`-split test-vector packet and reconcile it with WP07/WP30. Do not call any factor a unit without proof.
+The corrected Disegni source contains an exact ordinary-normalization identity: Proposition 4.3.4 absorbs the local `p`-interpolation factor into the ordinary toric pairing. In the selected trivial-weight lane the archimedean interpolation factor is one. A successor must bind the exact source-compatible ordinary test vectors and then decompose the resulting `Q^ord` place by place, retaining every measure, bad-prime, and local `2`-adic factor.
 
 ### D2d — classical/WP00 normalization
 
@@ -164,27 +167,23 @@ Use WP06 to descend the final normalized identity while retaining every global p
 
 ## Immediate executable successor
 
-Proceed with WP40 on D2b, and continue D2c in parallel where exact source normalization is available.
+Two bounded continuations are executable.
 
-The narrow WP40 theorem query is:
+### WP41A — Bockstein/dual-hit comparison
 
-> Use the already-protected literal-`p=2` Poitou–Tate orthogonality to represent `J_K` as an exact annihilator/global-hit subgroup for the nested strict-Greenberg and classical-Kummer Selmer structures over `K`. Retain the full dual Selmer module unless rank-one/torsion-free structure is proved; do not force a scalar character prematurely.
+Starting from protected WP37, determine whether `D_K` is canonically an image, cokernel, radical, or exact finite quotient of the first cyclotomic Bockstein map/height complex. Do not infer this merely because both constructions use Selmer duality.
 
-A useful exact target is an identity of the form
+The useful target is
 
-`ann(J_K) = D_K`
+`d_K = length(explicit Bockstein/height defect)`
 
-inside the Pontryagin-dual finite local quotient, where `D_K` is the image of the corresponding dual global Selmer structure. Equivalently, prove
+with a statement that remains valid even if the first height is degenerate. Such a theorem would merge part of D2a with D2b.
 
-`len_Z2 J_K + len_Z2 D_K = len_Z2 R_K`
+### WP41B — ordinary Disegni normalization
 
-when the local quotient pairing is shown perfect.
+For the protected trivial-weight ordinary test-vector packet, use Disegni Proposition 4.3.4 to prove the exact cancellation of `e_{2,infinity}` against the corresponding toric-pairing normalization, then reduce D2c to the remaining place-by-place valuation of `Q^ord`.
 
-The parallel D2c query remains:
-
-> In the exact corrected Disegni Theorem B normalization already admitted in WP09, what are the `2`-adic ideals/valuations of `e_{2,infinity}` and the test-vector ratio `Q` for the protected all-`2N`-split packet, and which factors coincide with the WP07/WP30 unit-root ideal?
-
-Any new external theorem premise must be admitted through MATHFORGE before use.
+Any new external theorem premise beyond the already-admitted interfaces must first be admitted through MATHFORGE.
 
 ## Claim firewall
 
@@ -194,10 +193,11 @@ Do not promote:
 - numerical stabilization to proof;
 - parity or modulo-square information to exact length;
 - existence of a `p`-adic height to nondegeneracy;
-- equality of Mordell–Weil free lattices to equality of Selmer local conditions;
-- `J_K` to the full ambient local module without proof;
+- `D_K` to zero or `J_K` to the full ambient local module without proof;
 - a rank-one character description before the relevant dual Selmer structure is proved rank one and torsion-free;
+- a formal analogy between Poitou–Tate and Bockstein to an equality of finite modules;
 - a Heegner point to a primitive generator without an index proof;
+- an ordinary-pairing normalization to a unit claim before all local factors are computed;
 - an odd-prime theorem to `p=2`;
 - an equality up to a unit to a preferred determinant generator;
 - a restricted-family theorem to the full selected class;
