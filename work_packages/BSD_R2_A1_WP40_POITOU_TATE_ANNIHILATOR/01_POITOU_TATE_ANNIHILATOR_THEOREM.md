@@ -118,12 +118,10 @@ Equivalently, let
 `Sel_A^{Kum}(K)
  := {c in H^1(K,A) : loc(c) in L_Kum}`.
 
-Then the localization map induces
+The localization map to `L_str/L_Kum` has kernel exactly `Sel_A^{Kum}(K)`. Therefore it induces the exact isomorphism
 
 `D_K
- ~= Sel_A^{str-perp}(K) / Sel_A^{Kum}(K)`
-
-modulo the common kernel of localization; more invariantly, `D_K` is the actual image of this quotient in `R_K^dual`.
+ ~= Sel_A^{str-perp}(K) / Sel_A^{Kum}(K)`.
 
 No rank or torsion-freeness assertion is made about either discrete Selmer group.
 
