@@ -1,323 +1,178 @@
-# BSD-001 native continuation handoff
+# BSD-001 canonical continuation handoff
 
-## Target repository and authority
+## Authority and claim state
 
-- Target repository: `grandchallenge/MATHSOLVE`.
+- Campaign: `BSD-001 — Birch-Swinnerton-Dyer selected rank-one 2-primary campaign`.
+- Mathematical work repository: `grandchallenge/MATHSOLVE`.
 - Current programme owner: `grandchallenge/MATHSOLVE#164`.
-- Constitutional authority remains the protected GCL authority chain already bound by the campaign.
-- Source/provider admission remains MATHFORGE-owned.
-- Mathematical certification remains MATHCERT-only.
-- `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED`.
+- Constitutional authority: protected `grandchallenge/INTELLECT`.
+- External theorem/source admission: `grandchallenge/MATHFORGE` only.
+- Mathematical certification: `grandchallenge/MATHCERT` only.
+- Selected target: `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED`.
 
-Do not treat mutable issue text or conversational history as mathematical authority.
+Do not treat mutable issue text, conversational history, stale campaign summaries, or numerical evidence as mathematical authority.
 
-## Canonical continuation files
+## Canonical read order
 
-Read in this order after re-fetching protected live state:
+After re-fetching protected live state, read:
 
-1. `handoffs/BSD-001/README.md`;
-2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md`;
-3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md`;
-4. `work_packages/BSD_R2_A1_WP16A_FINITE_SELMER_STABILIZATION/`;
-5. `work_packages/BSD_R2_A1_WP16B_INTEGRAL_SELMER_FITTING/`;
-6. `work_packages/BSD_R2_A1_WP18A_RECON_COHORT/`;
-7. `work_packages/BSD_R2_A1_WP18B_SELMER2/`;
-8. `work_packages/BSD_R2_A1_WP18C_ANALYTIC_DELTA2/`;
-9. `work_packages/BSD_R2_A1_WP19_DERIVED_PRIMITIVE_FITTING/`;
-10. `work_packages/BSD_R2_A1_WP20_RANK1_BOCKSTEIN_FACTORIZATION/`;
-11. `handoffs/BSD-001/WP20_FRONTIER.md`;
-12. protected WP06, WP07, WP09, WP12, WP13 and WP15 when composing the next arithmetic theorem step;
-13. the current protected MATHFORGE BSD provider manifest and admitted source audits before any new external theorem/computation interface is used.
+1. this file;
+2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md` for the durable representation-change strategy;
+3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md` for the original continuity contract and claim firewall;
+4. the latest protected frontier file, currently `handoffs/BSD-001/WP38_FRONTIER.md` after WP38 protection;
+5. the work package named by that frontier;
+6. any earlier protected package on which the intended proof step materially depends;
+7. the current protected MATHFORGE BSD provider records before using any external theorem.
 
-## Protected mathematical chain
+The WP16/WP18 plan remains historically controlling for the representation change, but its original frontier labels have been superseded by later protected work. Do not restart WP16 or broad WP17 reconnaissance.
 
-- WP05 fixes the target/source interfaces, supplies rank one and finite Sha, and proves odd rational torsion.
-- WP06 records every quadratic `p=2` descent discrepancy and forbids identifying finite Kummer and Greenberg ordinary local conditions at `2` without proof.
-- WP07 fixes the good-ordinary local-at-2 correction surface.
-- WP08 isolates the cyclotomic height-one `(2)` / relative-mu defect.
-- WP09 supplies the protected auxiliary imaginary quadratic field `K` and the admitted nonvanishing / p-adic Gross-Zagier interfaces.
-- WP10 closes the mechanical odd-prime Heegner-primitivity route.
-- WP11 gives conditional `C3` control; WP12 eliminates `C3`, leaving residual image `GL_2(F_2) ~= S3`.
-- WP13 proves the exact Tamagawa/inertia-depth dictionary and identifies residual-conductor drop with even-Tamagawa support.
-- WP14 closes Chao Li applicability.
-- WP15 proves finite Sha has square order and that parity/modulo-square information does not determine the unsquared length.
-- WP16A proves for every `n>=1`
+## Governing invariant
 
-  `#Sel_{2^n}(E/Q) = 2^n #Sha(E/Q)[2^n]`,
+For the selected rank-one class, define
 
-  `s_n(E) := ord_2 #Sel_{2^n}(E/Q) - n = ord_2 #Sha(E/Q)[2^n]`,
+`delta_2(E)
+ := ord_2(L'(E,1)/(Omega_E Reg_E))
+    - sum_{ell|N} ord_2(c_ell)`.
 
-  and
+Protected WP16A proves
 
-  `lim_n s_n(E) = len_Z2 Sha(E/Q)[2^infinity]`.
+`s_n(E) := ord_2 #Sel_{2^n}(E/Q) - n
+        = ord_2 #Sha(E/Q)[2^n]`
 
-- WP16B fixes the primitive integral invariant. With
+for every `n>=1`, and
 
-  `X_E := Sel_{2^infinity}^{Kum}(E/Q)^vee`,
+`lim_n s_n(E) = len_Z2 Sha(E/Q)[2^infinity]`.
 
-  `L_E := (E(Q) tensor (Q_2/Z_2))^vee`,
+Protected WP16B and WP19 define the exact primitive Kummer module
 
-  `T_E := Tor_{Z_2}(X_E)`,
+`X_E := Sel_{2^infinity}^{Kum}(E/Q)^vee`
 
-  it proves
+and prove
 
-  `T_E = Sha(E/Q)[2^infinity]^vee`,
+`v_2(Fitt^1_{Z_2}(X_E))
+ = len_Z2 Sha(E/Q)[2^infinity]
+ = lim_n s_n(E)`.
 
-  `len_Z2 T_E = lim_n s_n(E)`,
+Hence the selected target is exactly
 
-  and
+`delta_2(E)=v_2(Fitt^1_{Z_2}(X_E))`.
 
-  `Fitt^0_{Z_2}(T_E) = 2^{lim_n s_n(E)} Z_2`.
+Protected WP20 gives the universal rank-one determinant/Bockstein factorization. For an admissible square `Z_2[[T]]` determinant datum specializing to the rank-one module,
 
-- WP19 removes the free-rank-one quotient choice. It proves exactly
+`ord_2(coeff_T Theta_E(T))
+ = v_2(Fitt^1_{Z_2}(X_E)) + v_2(B_E)`
 
-  `Fitt^1_{Z_2}(X_E)=Fitt^0_{Z_2}(T_E)`,
+after every specialization defect has been accounted for exactly.
 
-  hence
+Thus the remaining campaign is an exact integral determinant/normalization problem; finite-level stabilization itself is closed.
 
-  `v_2(Fitt^1_{Z_2}(X_E))
-   = len_Z2 Sha(E/Q)[2^infinity]
-   = lim_n s_n(E)`.
+## Protected chain relevant to the live frontier
 
-  Thus `BSD-R2-A1` is exactly equivalent to
+- WP05: selected source/target interface; rank one; finite Sha over `Q`; odd rational torsion.
+- WP06: exact quadratic `2`-descent discrepancy accounting; no division by `2`; no `2`-power torsion growth over the protected quadratic lane.
+- WP07: good-ordinary local-at-`2` correction and unit-root normalization.
+- WP09: protected imaginary quadratic field `K`; `2N` split; rank-one auxiliary lane; corrected Disegni `p=2` Gross–Zagier applicability.
+- WP12: residual image `GL_2(F_2) ~= S3`.
+- WP13: exact Tamagawa/residual-conductor dictionary.
+- WP15: square-order information does not determine unsquared `2`-primary length.
+- WP16A: finite-level `2^n`-Selmer stabilization.
+- WP16B: primitive integral torsion/Fitting realization.
+- WP18A–WP18C: exact two-control diagnostic atlas; observational examples do not prove the selected class.
+- WP19: `Fitt^1(X_E)` equals the desired torsion Fitting valuation.
+- WP20: universal rank-one Bockstein/determinant factorization.
+- WP21: exact primitive cyclotomic specialization sequence with kernel `C_E^vee`.
+- WP22–WP36: exact local/control analysis, including the literal-`p=2` good-ordinary kernel, Poitou–Tate incidence, universal norms, unit-root reconciliation, finite comparison terms, square presentation, and finite twisted-reciprocity computation.
+- WP37: literal-`p=2` Nekovář cyclotomic Bockstein-height formalism over the totally imaginary field `K`; canonical rank-one height ideal; exact DVR leading-term/length formalism conditional on first-height nondegeneracy.
+- WP38: bounded fixed-`2` nondegeneracy/derived-height source screen plus exact elimination of any quadratic base-change index in the ambient Mordell–Weil free lattice.
 
-  `delta_2(E)=v_2(Fitt^1_{Z_2}(X_E))`.
+## Current D1 boundary
 
-- WP20 proves the universal rank-one determinant/Bockstein factorization. For `R` a DVR, `S=R[[T]]`, and a square matrix
+### D1c — analytic determinant at height-one `(2)`
 
-  `A(T)=A_0+T A_1+...`
+`MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2`
 
-  with `rank A_0=m-1`, set `M=coker A_0`. The induced first-order map
+Protected facts:
 
-  `beta_A:ker A_0 -> M/Tor(M)`
+- Kato gives literal-`p=2` ordinary control away from the height-one prime containing `2`;
+- the screened all-height-one upgrades assume an odd prime;
+- WP35 gives the algebraic projective-dimension-one square presentation but no analytic generator.
 
-  has an intrinsic principal Bockstein ideal `B_A`, and WP20 proves
+A valid successor must provide a literal-`p=2` analytic characteristic/determinant theorem at `(2)`, or an exact substitute determining the same integral valuation. Do not infer this from an equality after inverting `2`.
 
-  `(coeff_T det A(T)) = Fitt^1_R(M) B_A`.
+## Current D2 boundaries
 
-  For `R=Z_2`, whenever the coefficient is nonzero,
+### D2a — fixed-`2` height nondegeneracy
 
-  `ord_2(coeff_T det A(T))
-   = v_2(Fitt^1_{Z_2}(M)) + v_2(B_A)`.
+`MISSING_P2_K_HEIGHT_NONDEGENERACY`
 
-  Therefore any exact arithmetic determinant datum specializing to `X_E` reduces the selected target to
+WP37 proves existence of the first cyclotomic height at `p=2`; it does not prove that height is nonzero. Protected MATHFORGE WP38 records that the nearest screened derived-height/Stark-system and Eisenstein-Heegner routes do not apply to the selected fixed-`2`, surjective-`E[2]` branch. This is not a theorem-nonexistence claim.
 
-  `ord_2(coeff_T Theta_E(T))-v_2(B_E)=delta_2(E)`.
+### D2b — extended/ordinary Selmer lattice versus primitive Kummer
 
-The selected analytic defect remains
+`MISSING_P2_NEKOVAR_EXTENDED_TO_PRIMITIVE_KUMMER_LOCAL_INDEX`
 
-`delta_2(E) := ord_2(L'(E,1)/(Omega_E Reg_E)) - sum_{ell|N} ord_2(c_ell)`.
+WP38 proves
 
-## WP17/WP19 source result
+`E(Q)/tors ~= E(K)/tors`
 
-MATHFORGE WP17A-WP17C and the bounded post-WP18 WP19 source screen are protected. Their diagnoses do not assert theorem nonexistence.
+and therefore
 
-The protected WP19 source screen shows that the nearest modern strong finite-layer Fitting theorems screened retain odd-prime / `p>=5` and Tamagawa-prime-to-`p` hypotheses, while literal ordinary `p=2` variation assumes the missing base `mu_2=0` input.
+`E(Q) tensor Z_2 ~= E(K) tensor Z_2`.
 
-Do not reopen broad generic literature reconnaissance. New source work must target one of the current D1/D2 obligations exactly.
+Thus quadratic base change contributes no hidden global free-lattice index. The remaining D2b discrepancy is entirely in the exact Selmer/local-condition/extended-cohomology comparison. This does not say the Heegner point itself is primitive.
 
-## WP18A — verified A/B cohort
+### D2c — Disegni interpolation/test-vector factors
 
-WP18A is protected at MATHSOLVE
+`MISSING_P2_DISEGNI_INTERPOLATION_FACTOR_VALUATIONS`
 
-`6d44e401e584498992c78f053992bde1dcba2452`.
+Compute exactly the `2`-adic ideal/valuation of Disegni's `e_{2,infinity}^{-1} Q` in the protected all-`2N`-split test-vector packet and reconcile it with WP07/WP30. Do not call any factor a unit without proof.
 
-### Regime A control: `53a1`
+### D2d — classical/WP00 normalization
 
-- minimal model `[1,-1,1,0,0]`;
-- conductor `53`;
-- rank one; trivial rational torsion;
-- `Delta_min=-53`;
-- `a_2=-1`, hence good ordinary at `2`;
-- protected WP13: `ord_2(c_53)=0`, residual conductor `53`.
+`MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION`
 
-### Regime B control: `203b1`
+Compare the same Heegner line with the classical Gross–Zagier and WP00 Néron–Tate/period conventions. A `2`-adic height is not a real height.
 
-- minimal model `[1,1,1,0,-2]`;
-- conductor `203=7*29`;
-- rank one; trivial rational torsion;
-- `Delta_min=-7^2*29`;
-- `a_2=-1`, hence good ordinary at `2`;
-- protected WP13: `ord_2(c_7)=1`, `ord_2(c_29)=0`, even-Tamagawa support `{7}`, residual conductor `29`.
+### D2e — exact descent back to `Q`
 
-Protected WP12 supplies residual surjectivity for both controls.
+`MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION`
 
-## WP18B — exact `Sel_2` computation and full tower consequence
+Use WP06 to descend the final normalized identity while retaining every global plus/minus overlap/quotient, twist, period, Tamagawa, and local term.
 
-WP18B is protected at MATHSOLVE
+## Immediate executable successor
 
-`6a9502b3a9e280b8593484f71cf4f21ff50eac97`.
+Proceed on D2b and D2c even while D2a remains an explicit theorem premise.
 
-The computation interface is protected in MATHFORGE at
+The narrow D2b source/theorem query is:
 
-`35837626ec887737f26f0acc5d9de48c5fd4db83`.
+> For Nekovář's literal-`p=2`, totally-imaginary Greenberg Selmer complex for `T_2(E)` over the protected split field `K`, what is the exact sequence comparing `H~^1_f(K,T_2(E))` with the classical primitive Kummer lattice, and what finite local/extended terms occur at the two places above `2`?
 
-The exact computation ran on MATHSOLVE head
+The parallel D2c query is:
 
-`c4a4fcc7339991becf7210f8978afb64e440ccdd`
+> In the exact corrected Disegni Theorem B normalization already admitted in WP09, what are the `2`-adic ideals/valuations of `e_{2,infinity}` and the test-vector ratio `Q` for the protected all-`2N`-split packet, and which factors coincide with the WP07/WP30 unit-root ideal?
 
-with GitHub Actions run `34321076589`, job `102367621468`, SageMath `10.8`, and digest-pinned image
-
-`sagemath/sagemath@sha256:e2e4747b0e1ea8753a9cb5a399314a8b2c25fcefaf69ba85b22ee075829d09ea`.
-
-For both `53a1` and `203b1`, Sage/PARI, Sage/mwrank, and direct eclib all give
-
-`dim_F2 Sel_2(E/Q)=1`,
-
-hence
-
-`#Sel_2(E/Q)=2`.
-
-Rank one and odd torsion give `#E(Q)/2E(Q)=2`; the level-2 Kummer exact sequence therefore gives
-
-`Sha(E/Q)[2]=0`.
-
-Protected finiteness of Sha then forces
-
-`Sha(E/Q)[2^infinity]=0`.
-
-Consequently, for every `n>=1`,
-
-`#Sel_{2^n}(E/Q)=2^n`,
-
-`s_n(E)=0`,
-
-`T_E=0`,
-
-and
-
-`Fitt^0_{Z_2}(T_E)=Z_2`.
-
-This is an exact deduction, not numerical stabilization.
-
-## WP18C — exact analytic `delta_2` and A/B atlas closure
-
-The exact analytic source interface is protected in MATHFORGE at
-
-`6b0bc6444bcf675c1b7774caa1f719efabdd49f6`.
-
-Admitted source audit:
-
-`sources/BSD-001/GJPST_RANK1_ANALYTIC_SHA_WP18C_SOURCE_AUDIT.md`.
-
-The admitted GJPST theorem interface gives, for every rank-one elliptic curve over `Q` of conductor at most `1000`, the exact WP00-normalized identity
-
-`#Sha(E)_an = 1`.
-
-The source audit verifies exact concordance with WP00 for the finite Hasse-Weil `L`-function, whole-real-locus minimal-model period, Neron-Tate regulator, Tamagawa factors, and rational torsion-square denominator. The known Lawson-Wuthrich correction concerns a later odd-prime cohomology/Kolyvagin argument and is outside this admitted interface.
-
-For rank one, the admitted identity is
-
-`1 = L'(E,1) * (#E(Q)_tors)^2 / (Omega_E Reg_E product_{ell|N} c_ell)`.
-
-Both controls have trivial rational torsion. Therefore
-
-`ord_2(L'(E,1)/(Omega_E Reg_E)) = sum_{ell|N} ord_2(c_ell)`.
-
-Hence WP18C proves exactly
-
-`delta_2(53a1)=0`,
-
-with analytic leading-quotient valuation `0`, and
-
-`delta_2(203b1)=0`,
-
-with analytic leading-quotient valuation `1` cancelling the exact Tamagawa valuation `1`.
-
-Combining only with protected WP18B gives the individual-control equalities
-
-`delta_2(53a1)=v_2(Fitt^0_{Z_2}(T_53a1))=0`,
-
-`delta_2(203b1)=v_2(Fitt^0_{Z_2}(T_203b1))=0`.
-
-Thus the minimal WP18 A/B diagnostic atlas is mathematically closed at the exact level. The regime-B even-Tamagawa/residual-conductor-drop correction is present on the analytic side and cancels exactly on `203b1`.
-
-This does not prove the selected-class theorem and does not constitute MATHCERT certification.
-
-## Exact local-condition contract
-
-The governing invariant remains the primitive classical Kummer condition at every place and finite level:
-
-`im(E(Q_v)/2^n E(Q_v) -> H^1(Q_v,E[2^n]))`.
-
-The following substitutions remain forbidden without an exact comparison theorem:
-
-- Kummer at `2` -> Greenberg/ordinary connected-etale;
-- primitive bad-prime Kummer -> unramified/strict/relaxed/imprimitive;
-- saturated rank-one quotient -> span of a possibly nonprimitive generator;
-- `Fitt^0(T_E)` -> `Fitt^0(X_E)`.
-
-Every finite kernel, cokernel, index, determinant, Tamagawa factor, or local correction must retain its complete `2`-adic length.
-
-## Active frontier after WP20
-
-The former single first-Fitting reciprocity boundary has been resolved into two exact arithmetic obligations.
-
-### D1 — primitive rank-one determinant realization
-
-Frontier:
-
-`BSD-R2-A1-S4-P2-PRIMITIVE-DETERMINANT-REALIZATION`.
-
-Boundary:
-
-`MISSING_P2_PRIMITIVE_RANK1_DETERMINANT_REALIZATION`.
-
-Construct a literal-`p=2` arithmetic determinant/Selmer datum whose specialization is exactly the protected primitive module `X_E`, or prove every finite comparison defect exactly. It must retain good ordinary reduction at `2`, the surjective residual `S3` branch, primitive Kummer local conditions, and both WP13 Tamagawa regimes.
-
-### D2 — Bockstein/WP00 normalization
-
-Frontier:
-
-`BSD-R2-A1-S4-P2-BOCKSTEIN-WP00-NORMALIZATION`.
-
-Boundary:
-
-`MISSING_P2_BOCKSTEIN_TO_WP00_NORMALIZATION`.
-
-For the D1 determinant datum, prove exactly
-
-`ord_2(coeff_T Theta_E(T))-v_2(B_E)
- = ord_2(L'(E,1)/(Omega_E Reg_E))
-   - sum_{ell|N} ord_2(c_ell)`.
-
-Every `2`-power contribution from interpolation, local conditions, Euler/Tamagawa factors, periods, heights/regulators, isogenies, lattice indices, and derivative-parameter normalization must be retained.
-
-Protected WP20 proves that D1 plus D2 imply
-
-`delta_2(E)=v_2(Fitt^1_{Z_2}(X_E))`,
-
-and protected WP19 then implies `BSD-R2-A1`.
-
-These are substantive arithmetic theorem boundaries, not evidence that the required theorems do not exist.
-
-## Immediate next executable tranche
-
-Do not continue adding individual atlas controls and do not conduct another generic literature survey.
-
-The next tranche must act directly on D1 or D2. The first source/construction query should inspect positive-rank determinant/Bockstein or Mazur-Tate/Kato formalism only for clauses that literally survive at `p=2` or are purely algebraic and therefore independent of odd-prime arithmetic hypotheses.
-
-Any genuinely new external theorem premise must first be admitted through MATHFORGE.
+Any new external theorem premise must be admitted through MATHFORGE before use.
 
 ## Claim firewall
 
-- `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED` remains unchanged.
-- WP18C proves individual-control equalities only.
-- WP19 and WP20 are exact representation reductions; neither supplies the missing arithmetic reciprocity theorem.
-- WP20's Bockstein ideal is not a regulator until a separate exact theorem proves that identification.
-- GJPST analytic `#Sha_an` is not treated as arithmetic Sha evidence.
-- WP18B remains the independent arithmetic proof for the controls.
-- No floating-point recognition is used as standalone exactness evidence.
-- Two examples do not establish uniform selected-class Fitting control.
-- “Up to a unit” may not hide a power of `2`.
-- Kummer and Greenberg local conditions remain distinct until exactly compared.
-- Source admission is not MATHCERT certification.
-- No novelty, priority, patentability, or commercial claim follows.
+Do not promote:
 
-## Execution and continuity
+- `BSD-R2-A1`;
+- numerical stabilization to proof;
+- parity or modulo-square information to exact length;
+- existence of a `p`-adic height to nondegeneracy;
+- equality of Mordell–Weil free lattices to equality of Selmer local conditions;
+- a Heegner point to a primitive generator without an index proof;
+- an odd-prime theorem to `p=2`;
+- an equality up to a unit to a preferred determinant generator;
+- a restricted-family theorem to the full selected class;
+- source admission to MATHCERT certification;
+- novelty, priority, patentability, or commercial claims.
 
-Proceed autonomously through bounded proof, falsification, exact-source admission when needed, exact-head non-authoring/read-only Adversary and Referee review, affected CI, protected merge, protected readback, and issue/handoff maintenance.
+## Execution doctrine
 
-Recoverable tooling, connector, CI, formatting, logging, source-access, or computational-environment failures are not stopping conditions. Apply the recovery ladder.
+Proceed autonomously through bounded proof, falsification, exact source admission when required, exact-head non-authoring/read-only Adversary and Referee review, affected ordinary CI, protected merge, protected readback, and #164/handoff maintenance.
 
-Stop only for a genuine theorem/source/authority/authentication/safety/material-state/evidentiary boundary, target or normalization drift, or MATHCERT certification authority. Before stopping, name the exact boundary.
+Recoverable connector, CI, formatting, logging, source-access, compiler, or computational-environment failures are recovery events, not stopping conditions.
+
+Stop only at a genuine theorem/source/authority/authentication/safety/material-state/evidentiary boundary, target/normalization drift, or MATHCERT certification authority. Before stopping, name the exact boundary.

@@ -1,0 +1,56 @@
+campaign_id: BSD-001
+work_package: BSD_R2_A1_WP38_KUMMER_LATTICE_REDUCTION
+claim_state: SELECTED_RESEARCH_TARGET_UNPROVED
+protected_inputs:
+  mathsolve_predecessor: a9b823e526059ffefb62b3d331d85f04c456a97d
+  mathforge_wp38_screen: 5a5bf90af046e91ed13949ad8087c35e6a74d059
+claims:
+  - claim_id: BSD-A1-WP38-SOURCE-001
+    status: BOUNDED_SOURCE_APPLICABILITY_RESULT
+    statement: >-
+      The screened Macias Castillo-Sano derived-height/Stark-system route, Howard
+      derived-height route, and Kriz-Li Eisenstein Heegner route do not provide an
+      applicable literal-p=2 nondegeneracy or integral derived-height bypass for
+      the selected good-ordinary surjective-E[2] branch. This is not a theorem-
+      nonexistence claim.
+  - claim_id: BSD-A1-WP38-TAU-FREE-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      Gal(K/Q) acts trivially on E(K)/E(K)_tors because that rank-one free module
+      contains the nonzero rank-one image of E(Q)/E(Q)_tors.
+  - claim_id: BSD-A1-WP38-H1-TORS-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      H^1(Gal(K/Q),E(K)_tors)=0 because protected WP06 gives no 2-primary torsion
+      over K, so multiplication by 2 is invertible on the finite torsion module.
+  - claim_id: BSD-A1-WP38-MW-LATTICE-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      Restriction induces E(Q)/E(Q)_tors ~= E(K)/E(K)_tors; quadratic base change
+      introduces no free Mordell-Weil lattice index.
+  - claim_id: BSD-A1-WP38-Z2-LATTICE-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      Restriction induces E(Q) tensor Z_2 ~= E(K) tensor Z_2.
+  - claim_id: BSD-A1-WP38-D2B-REDUCTION-001
+    status: PROVED_BOUNDED_REDUCTION
+    statement: >-
+      The surviving D2b discrepancy is concentrated in the comparison between
+      source-compatible Nekovar extended/ordinary Selmer cohomology and the
+      primitive Kummer lattice/local conditions; it is not a quadratic
+      Mordell-Weil free-lattice index.
+open_boundaries:
+  - MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - MISSING_P2_NEKOVAR_EXTENDED_TO_PRIMITIVE_KUMMER_LOCAL_INDEX
+  - MISSING_P2_DISEGNI_INTERPOLATION_FACTOR_VALUATIONS
+  - MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION
+  - MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+firewall:
+  - no BSD-R2-A1 promotion
+  - no theorem-nonexistence claim
+  - no p-adic-height nondegeneracy claim
+  - no Heegner-point primitivity claim
+  - no Greenberg/Kummer local-condition identification
+  - no odd-prime theorem specialized to p=2
+  - no MATHCERT certification
