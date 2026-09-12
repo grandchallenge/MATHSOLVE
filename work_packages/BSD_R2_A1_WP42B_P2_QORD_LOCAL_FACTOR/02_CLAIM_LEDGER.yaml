@@ -1,0 +1,28 @@
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP42B-P2-QORD-LOCAL-FACTOR
+claims:
+  - claim_id: BSD-A1-WP42B-P2-QORD-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      For the protected split p=2, trivial-character, good-ordinary
+      unramified-refinement lane and Disegni's canonical Appendix-A.3
+      local vectors and measure, Q^ord_{2,dt_2^can}=1 exactly and hence
+      its 2-adic valuation is zero.
+  - claim_id: BSD-A1-WP42B-MEASURE-002
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      Rescaling the canonical local measure by c_2 rescales the local
+      ordinary toric factor by c_2; any such scalar must be retained in
+      the global adelic measure ledger.
+  - claim_id: BSD-A1-WP42B-BOUNDARY-003
+    status: REFINED_BOUNDARY
+    statement: >-
+      The remaining Q^ord valuation debt consists of global/local measure
+      reconciliation, split bad-prime terms, auxiliary finite-place terms,
+      remaining local L/vector normalizations, and global/archimedean
+      normalization.
+  - claim_id: BSD-A1-WP42B-FIREWALL-004
+    status: CLAIM_FIREWALL
+    statement: >-
+      The package does not assert global Q^ord=1, ord_2(Q^ord)=0, or that
+      any bad-prime, auxiliary, or global measure factor is a 2-adic unit.

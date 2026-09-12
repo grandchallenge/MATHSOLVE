@@ -19,12 +19,12 @@ After re-fetching protected live state, read:
 1. this file;
 2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md` for the durable representation-change strategy;
 3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md` for the original continuity contract and claim firewall;
-4. the latest protected frontier file, currently `handoffs/BSD-001/WP41_FRONTIER.md` after WP41 protection;
+4. the latest protected frontier file, currently `handoffs/BSD-001/WP42_FRONTIER.md` after WP42B protection;
 5. the work package named by that frontier;
 6. any earlier protected package on which the intended proof step materially depends;
 7. the current protected MATHFORGE BSD provider records before using any external theorem.
 
-Do not restart WP16 or broad WP17 reconnaissance. Their representation changes remain protected background; later work has narrowed the actual frontier substantially.
+Do not restart WP16 or broad WP17 reconnaissance. Later protected work has narrowed the live frontier to exact integral comparison and normalization objects.
 
 ## Governing invariant
 
@@ -48,7 +48,7 @@ Hence the selected theorem is exactly
 
 `delta_2(E)=v_2(Fitt^1_{Z_2}(X_E))`.
 
-Protected WP20 gives the rank-one determinant/Bockstein factorization, and WP35 supplies the primitive cyclotomic square presentation with exact specialization defect. The remaining campaign is therefore an exact integral determinant/height/normalization problem, not a finite-level stabilization problem.
+Protected WP20 gives the rank-one determinant/Bockstein factorization; WP35 supplies the primitive cyclotomic square presentation with exact specialization defect. The remaining campaign is an exact integral determinant/height/normalization problem.
 
 ## Protected chain relevant to the live frontier
 
@@ -57,11 +57,12 @@ Protected WP20 gives the rank-one determinant/Bockstein factorization, and WP35 
 - WP20: universal rank-one Bockstein/determinant factorization.
 - WP21–WP36: primitive cyclotomic control, local kernels, Poitou–Tate incidence, universal norms, unit-root reconciliation, finite comparison terms, square presentation, and finite twisted-reciprocity computation.
 - WP37: literal-`p=2` Nekovar cyclotomic Bockstein-height formalism over totally imaginary `K`; first height exists but nondegeneracy is not proved.
-- WP38: bounded fixed-`2` nondegeneracy source screen; quadratic base change adds no index to the rank-one Mordell–Weil free lattice.
+- WP38: bounded fixed-`2` nondegeneracy screen; quadratic base change adds no index to the rank-one Mordell–Weil free lattice.
 - WP39: exact literal-`p=2` comparison between Nekovar extended/strict Greenberg compact Selmer cohomology and classical compact Kummer over `K`; finite compact global hit `J_K` isolated.
 - WP40: exact Poitou–Tate annihilator theorem `ann(J_K)=D_K` and complementary-length formula.
-- WP41A: protected interfaces do not yet identify `D_K` with a Bockstein/height defect; an Iwasawa-level strict/Kummer compatibility theorem is required.
-- WP41B: in Disegni's source-compatible ordinary normalization, `e_{2,infinity}^{-1}Q_special=Q^ord` exactly; the remaining D2c datum is the place-by-place valuation of `Q^ord`.
+- WP41A: the protected chain does not yet identify `D_K` with a Bockstein/height defect; an Iwasawa-level strict/Kummer compatibility theorem remains necessary.
+- WP41B: Disegni's source-compatible ordinary normalization gives `e_{2,infinity}^{-1}Q_special=Q^ord` exactly.
+- WP42B: for the selected split prime `2`, canonical Appendix-A.3 vectors and measure give `Q^ord_{2,dt_2^can}=1` exactly; global measure rescaling remains explicit.
 
 ## Current D1 boundary
 
@@ -89,21 +90,33 @@ WP40 proves
 
 where `j_K=len J_K` and `d_K=len D_K`.
 
-WP41A proves that the current protected chain does not contain the naturality theorem required to identify `D_K` with a WP37 Bockstein image/radical/subquotient. The exact bridge is
+WP41A proves that the protected chain does not yet contain the comparison theorem required to identify `D_K` with a WP37 Bockstein image/radical/subquotient. The exact bridge remains
 
 `MISSING_P2_IWASAWA_STRICT_KUMMER_BOCKSTEIN_COMPATIBILITY_OVER_K`.
 
-Do not infer `D_K=0`, `J_K=R_K`, or equality with a height defect.
+A narrow Nekovar screen indicates that Greenberg local conditions themselves are functorial for the cyclotomic augmentation/Bockstein construction. The missing half is the integral cyclotomic classical-Kummer comparison object over `K` and a strict-to-Kummer morphism whose derived augmentation recovers WP39/WP40 exactly.
 
 ### D2c — ordinary Disegni local factors
 
-`MISSING_P2_DISEGNI_QORD_LOCAL_FACTOR_VALUATIONS`.
+Protected WP41 reduces the corrected p-adic Gross–Zagier normalization to `Q^ord`. Protected WP42B further proves
 
-Protected MATHFORGE WP41B and downstream WP41B prove, for the selected trivial-weight special ordinary test vectors,
+`Q^ord_{2,dt_2^can}=1`
 
-`e_{2,infinity}^{-1} Q_special = Q^ord`.
+for Disegni's canonical local vectors and measure at the selected split prime `2`. Hence the canonical p-local toric factor has zero `2`-adic valuation.
 
-The interpolation factor no longer needs a separate valuation in this normalization. Disegni Lemma 4.3.3 / (4.3.4) decomposes `Q^ord` into explicit local toric pairings, Haar-volume terms, local L-factors, vector-normalization factors, and the ordinary `p infinity` term. Every one of those factors remains to be evaluated exactly.
+This does not make the global ordinary factor a unit. The next exact local boundary is
+
+`MISSING_P2_DISEGNI_SPLIT_BAD_PRIME_NEWVECTOR_QORD_FACTORS`.
+
+The unresolved `Q^ord` ledger consists of:
+
+1. global/local Haar-measure reconciliation;
+2. split semistable bad-prime factors `ell|N`;
+3. auxiliary finite places in Disegni's `Sigma` and `Sigma'`;
+4. remaining local L-factor and vector-normalization terms;
+5. any residual global/archimedean normalization.
+
+Disegni §4.2 rewrites split toric periods as Rankin–Selberg zeta integrals, and [Dis20b, Proposition 5.2.4] supplies interpolation in families. Neither alone evaluates the semistable Steinberg/newvector integral, so no bad-prime unit or valuation formula is yet admitted.
 
 ### D2d — classical/WP00 normalization
 
@@ -119,21 +132,21 @@ Use WP06 to descend the final normalized identity while retaining every plus/min
 
 ## Immediate executable successors
 
-### WP42A — Iwasawa strict/Kummer Bockstein compatibility
+### WP43A — K-side Iwasawa Kummer comparison
 
-Search narrowly for, or construct from Nekovar's mapping-fibre formalism, a `K`-side cyclotomic comparison triangle
+Source-qualify or construct an integral cyclotomic classical-Kummer Selmer object over `K` and a comparison morphism
 
-`C_str,infty -> C_Kum,infty -> Q_infty -> C_str,infty[1]`
+`C_str,infty -> C_Kum,infty`
 
-whose derived augmentation recovers WP39/WP40 and whose augmentation connecting maps commute with the WP37 Bockstein.
+compatible with Nekovar's cyclotomic augmentation triangle. Require derived augmentation to recover the exact WP39/WP40 finite strict/Kummer quotient.
 
 A theorem only after inverting `2`, only up to finite error, or only for odd `p` is insufficient.
 
-### WP42B — exact valuation ledger for `Q^ord`
+### WP43B — split semistable bad-prime toric factors
 
-Bind the exact ordinary test-vector packet and evaluate Disegni (4.3.4) place by place. Start at the split prime `2`, then the split bad primes `ell|N`, then the remaining auxiliary/unramified places and global measure convention.
+For each odd semistable `ell|N`, with `K/Q` split at `ell` and `chi_ell=1`, bind the exact local representation and test vector chosen by the Disegni packet and evaluate the normalized split Rankin–Selberg toric integral. Retain split/nonsplit multiplicative type, Steinberg twist, Haar measure, local L-factor, denominator pairing, and any Tamagawa-sensitive scalar.
 
-The target is an additive exact ledger for `ord_2(Q^ord)`, not a blanket unit assertion.
+The target is an exact local contribution to `ord_2(Q^ord)`, not an interpolation theorem or blanket unit claim.
 
 Any new external theorem premise must first be admitted through MATHFORGE.
 
@@ -142,14 +155,12 @@ Any new external theorem premise must first be admitted through MATHFORGE.
 Do not promote:
 
 - `BSD-R2-A1`;
-- numerical stabilization, parity, or modulo-square information to exact proof;
+- canonical `Q^ord_2=1` to global `Q^ord=1`;
+- a change of local Haar measure to no change in the global normalization;
+- interpolation of a local zeta integral to an explicit semistable value;
+- Greenberg-side Bockstein functoriality to existence of the missing Kummer Iwasawa comparison object;
 - height existence to height nondegeneracy;
-- formal similarity between Poitou–Tate and Bockstein to equality of finite modules;
-- source-normalization cancellation to `ord_2(Q^ord)=0`;
-- a local `Q^ord` factor to a unit without exact calculation;
-- a Heegner point to a primitive generator without an index proof;
-- an odd-prime theorem to `p=2`;
-- an equality after inverting `2` or up to a unit to an integral determinant claim;
+- an odd-prime or rationalized result to literal integral `p=2`;
 - source admission to MATHCERT certification;
 - novelty, priority, patentability, or commercial claims.
 
