@@ -1,0 +1,20 @@
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP41A-BOCKSTEIN-DUAL-HIT-COMPATIBILITY
+claims:
+  - claim_id: BSD-A1-WP41A-SEPARATION-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      The protected interfaces through WP40 do not supply the Iwasawa-level
+      strict-to-Kummer comparison triangle and Bockstein naturality required
+      to identify D_K with a first-Bockstein image, kernel, cokernel, height
+      radical, or equal-length defect.
+  - claim_id: BSD-A1-WP41A-BOUNDARY-002
+    status: REFINED_BOUNDARY
+    statement: >-
+      The missing bridge is
+      MISSING_P2_IWASAWA_STRICT_KUMMER_BOCKSTEIN_COMPATIBILITY_OVER_K.
+  - claim_id: BSD-A1-WP41A-FIREWALL-003
+    status: CLAIM_FIREWALL
+    statement: >-
+      The package makes no theorem-nonexistence claim and does not assert
+      D_K is unequal to a Bockstein defect in a future enlarged framework.

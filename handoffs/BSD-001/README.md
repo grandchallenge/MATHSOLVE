@@ -19,195 +19,144 @@ After re-fetching protected live state, read:
 1. this file;
 2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md` for the durable representation-change strategy;
 3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md` for the original continuity contract and claim firewall;
-4. the latest protected frontier file, currently `handoffs/BSD-001/WP40_FRONTIER.md` after WP40 protection;
+4. the latest protected frontier file, currently `handoffs/BSD-001/WP41_FRONTIER.md` after WP41 protection;
 5. the work package named by that frontier;
 6. any earlier protected package on which the intended proof step materially depends;
 7. the current protected MATHFORGE BSD provider records before using any external theorem.
 
-The WP16/WP18 plan remains historically controlling for the representation change, but its original frontier labels have been superseded by later protected work. Do not restart WP16 or broad WP17 reconnaissance.
+Do not restart WP16 or broad WP17 reconnaissance. Their representation changes remain protected background; later work has narrowed the actual frontier substantially.
 
 ## Governing invariant
 
-For the selected rank-one class, define
+For the selected rank-one class,
 
 `delta_2(E)
  := ord_2(L'(E,1)/(Omega_E Reg_E))
     - sum_{ell|N} ord_2(c_ell)`.
 
-Protected WP16A proves
-
-`s_n(E) := ord_2 #Sel_{2^n}(E/Q) - n
-        = ord_2 #Sha(E/Q)[2^n]`
-
-for every `n>=1`, and
-
-`lim_n s_n(E) = len_Z2 Sha(E/Q)[2^infinity]`.
-
-Protected WP16B and WP19 define
-
-`X_E := Sel_{2^infinity}^{Kum}(E/Q)^vee`
-
-and prove
+Protected WP16A, WP16B, and WP19 prove
 
 `v_2(Fitt^1_{Z_2}(X_E))
  = len_Z2 Sha(E/Q)[2^infinity]
- = lim_n s_n(E)`.
+ = lim_n (ord_2 #Sel_{2^n}(E/Q)-n)`,
 
-Hence the selected target is exactly
+where
+
+`X_E := Sel_{2^infinity}^{Kum}(E/Q)^vee`.
+
+Hence the selected theorem is exactly
 
 `delta_2(E)=v_2(Fitt^1_{Z_2}(X_E))`.
 
-Protected WP20 gives the universal rank-one determinant/Bockstein factorization. For an admissible square `Z_2[[T]]` determinant datum specializing to the rank-one module,
-
-`ord_2(coeff_T Theta_E(T))
- = v_2(Fitt^1_{Z_2}(X_E)) + v_2(B_E)`
-
-after every specialization defect has been accounted for exactly.
-
-Thus the remaining campaign is an exact integral determinant/normalization problem. Finite-level stabilization itself is closed.
+Protected WP20 gives the rank-one determinant/Bockstein factorization, and WP35 supplies the primitive cyclotomic square presentation with exact specialization defect. The remaining campaign is therefore an exact integral determinant/height/normalization problem, not a finite-level stabilization problem.
 
 ## Protected chain relevant to the live frontier
 
-- WP05: selected source/target interface; rank one; finite Sha over `Q`; odd rational torsion.
-- WP06: exact quadratic `2`-descent discrepancy accounting; no division by `2`; no `2`-power torsion growth over the protected quadratic lane.
-- WP07: good-ordinary local-at-`2` correction and unit-root normalization.
-- WP09: protected imaginary quadratic field `K`; `2N` split; rank-one auxiliary lane; corrected Disegni `p=2` Gross–Zagier applicability.
-- WP12: residual image `GL_2(F_2) ~= S3`.
-- WP13: exact Tamagawa/residual-conductor dictionary.
-- WP15: square-order information does not determine unsquared `2`-primary length.
-- WP16A: finite-level `2^n`-Selmer stabilization.
-- WP16B: primitive integral torsion/Fitting realization.
-- WP18A–WP18C: exact two-control diagnostic atlas; examples do not prove the selected class.
-- WP19: `Fitt^1(X_E)` equals the desired torsion Fitting valuation.
+- WP05–WP15: source/target normalization, quadratic descent, good-ordinary `2`-local data, auxiliary field `K`, residual image, Tamagawa dictionary, and parity/square-order firewalls.
+- WP16A/WP16B/WP19: exact primitive integral Selmer/Fitting invariant.
 - WP20: universal rank-one Bockstein/determinant factorization.
-- WP21: exact primitive cyclotomic specialization sequence with kernel `C_E^vee`.
-- WP22–WP36: exact local/control analysis, including literal-`p=2` good-ordinary control, Poitou–Tate incidence, universal norms, unit-root reconciliation, finite comparison terms, square presentation, and finite twisted-reciprocity computation.
-- WP37: literal-`p=2` Nekovář cyclotomic Bockstein-height formalism over the totally imaginary field `K`; canonical rank-one height ideal; exact DVR leading-term/length formalism conditional on first-height nondegeneracy.
-- WP38: bounded fixed-`2` nondegeneracy/derived-height source screen and exact proof that quadratic base change adds no index to the ambient rank-one Mordell–Weil free lattice.
-- WP39: literal-`p=2` exact comparison between Nekovář extended/strict Greenberg compact Selmer cohomology and the classical compact Kummer Selmer group over `K`; all ambient local correction lengths are explicit and the surviving compact comparison is the finite global image subgroup `J_K`.
-- WP40: Poitou–Tate duality identifies the annihilator of `J_K` with an exact dual global-hit subgroup `D_K`, giving a complementary-length identity with no rank-one scalar assumption.
+- WP21–WP36: primitive cyclotomic control, local kernels, Poitou–Tate incidence, universal norms, unit-root reconciliation, finite comparison terms, square presentation, and finite twisted-reciprocity computation.
+- WP37: literal-`p=2` Nekovar cyclotomic Bockstein-height formalism over totally imaginary `K`; first height exists but nondegeneracy is not proved.
+- WP38: bounded fixed-`2` nondegeneracy source screen; quadratic base change adds no index to the rank-one Mordell–Weil free lattice.
+- WP39: exact literal-`p=2` comparison between Nekovar extended/strict Greenberg compact Selmer cohomology and classical compact Kummer over `K`; finite compact global hit `J_K` isolated.
+- WP40: exact Poitou–Tate annihilator theorem `ann(J_K)=D_K` and complementary-length formula.
+- WP41A: protected interfaces do not yet identify `D_K` with a Bockstein/height defect; an Iwasawa-level strict/Kummer compatibility theorem is required.
+- WP41B: in Disegni's source-compatible ordinary normalization, `e_{2,infinity}^{-1}Q_special=Q^ord` exactly; the remaining D2c datum is the place-by-place valuation of `Q^ord`.
 
 ## Current D1 boundary
 
 ### D1c — analytic determinant at height-one `(2)`
 
-`MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2`
+`MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2`.
 
-Protected facts:
-
-- Kato gives literal-`p=2` ordinary control away from the height-one prime containing `2`;
-- the screened all-height-one upgrades assume an odd prime;
-- WP35 gives the algebraic projective-dimension-one square presentation but no analytic generator.
-
-A valid successor must provide a literal-`p=2` analytic characteristic/determinant theorem at `(2)`, or an exact substitute determining the same integral valuation. Do not infer this from an equality after inverting `2`.
+Kato gives literal-`p=2` control away from the height-one prime containing `2`; screened all-height-one upgrades retain odd-prime restrictions. WP35 is algebraic only. A valid successor must determine the integral analytic determinant at `(2)` or an exact equivalent.
 
 ## Current D2 boundaries
 
 ### D2a — fixed-`2` height nondegeneracy
 
-`MISSING_P2_K_HEIGHT_NONDEGENERACY`
+`MISSING_P2_K_HEIGHT_NONDEGENERACY`.
 
-WP37 proves existence of the first cyclotomic height at `p=2`; it does not prove that height is nonzero. Protected MATHFORGE WP38 records that the nearest screened derived-height/Stark-system and Eisenstein-Heegner routes do not apply to the selected fixed-`2`, surjective-`E[2]` branch. This is not a theorem-nonexistence claim.
+WP37 proves existence of the first height, not its nonvanishing. WP38 records that the closest screened derived-height/Stark-system and Eisenstein-Heegner routes do not apply to the protected surjective-`E[2]` branch.
 
-### D2b — dual global hit over `K`
+### D2b — dual global hit and Bockstein compatibility over `K`
 
-`MISSING_P2_DUAL_GLOBAL_HIT_OVER_K`
-
-WP39 proves
-
-`0 -> H~^1_f(K,T_2(E)) -> S_2(E/K) -> J_K -> 0`
-
-and computes the exact ambient local length
-
-`len_Z2 R_K
- = 2 ord_2(3-a_2)
-   + 2 sum_{ell|N} ord_2(c_ell)`.
-
-WP40 defines the dual local quotient
-
-`R_K^dual := U_str^perp/U_Kum^perp`
-
-and the dual global hit
-
-`D_K := im((G_A intersect U_str^perp) -> R_K^dual)`.
-
-Under the perfect local quotient pairing, WP40 proves
-
-`ann(J_K)=D_K`.
-
-Hence, with
-
-`j_K:=len_Z2 J_K`, `d_K:=len_Z2 D_K`,
-
-one has exactly
+WP40 proves
 
 `j_K+d_K
  = 2 ord_2(3-a_2)
-   + 2 sum_{ell|N} ord_2(c_ell)`.
+   + 2 sum_{ell|N} ord_2(c_ell)`,
 
-Thus D2b is solved once `D_K` is evaluated. Do not infer `D_K=0`, `J_K=R_K`, or a rank-one character description without proof.
+where `j_K=len J_K` and `d_K=len D_K`.
 
-### D2c — Disegni interpolation/test-vector factors
+WP41A proves that the current protected chain does not contain the naturality theorem required to identify `D_K` with a WP37 Bockstein image/radical/subquotient. The exact bridge is
 
-`MISSING_P2_DISEGNI_INTERPOLATION_FACTOR_VALUATIONS`
+`MISSING_P2_IWASAWA_STRICT_KUMMER_BOCKSTEIN_COMPATIBILITY_OVER_K`.
 
-The corrected Disegni source contains an exact ordinary-normalization identity: Proposition 4.3.4 absorbs the local `p`-interpolation factor into the ordinary toric pairing. In the selected trivial-weight lane the archimedean interpolation factor is one. A successor must bind the exact source-compatible ordinary test vectors and then decompose the resulting `Q^ord` place by place, retaining every measure, bad-prime, and local `2`-adic factor.
+Do not infer `D_K=0`, `J_K=R_K`, or equality with a height defect.
+
+### D2c — ordinary Disegni local factors
+
+`MISSING_P2_DISEGNI_QORD_LOCAL_FACTOR_VALUATIONS`.
+
+Protected MATHFORGE WP41B and downstream WP41B prove, for the selected trivial-weight special ordinary test vectors,
+
+`e_{2,infinity}^{-1} Q_special = Q^ord`.
+
+The interpolation factor no longer needs a separate valuation in this normalization. Disegni Lemma 4.3.3 / (4.3.4) decomposes `Q^ord` into explicit local toric pairings, Haar-volume terms, local L-factors, vector-normalization factors, and the ordinary `p infinity` term. Every one of those factors remains to be evaluated exactly.
 
 ### D2d — classical/WP00 normalization
 
-`MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION`
+`MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION`.
 
-Compare the same Heegner line with the classical Gross–Zagier and WP00 Néron–Tate/period conventions. A `2`-adic height is not a real height.
+Compare the same Heegner line with the classical Gross–Zagier and WP00 Neron–Tate/period conventions. A `2`-adic height is not a real height.
 
 ### D2e — exact descent back to `Q`
 
-`MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION`
+`MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION`.
 
-Use WP06 to descend the final normalized identity while retaining every global plus/minus overlap/quotient, twist, period, Tamagawa, and local term.
+Use WP06 to descend the final normalized identity while retaining every plus/minus overlap, twist, period, Tamagawa, and local term.
 
-## Immediate executable successor
+## Immediate executable successors
 
-Two bounded continuations are executable.
+### WP42A — Iwasawa strict/Kummer Bockstein compatibility
 
-### WP41A — Bockstein/dual-hit comparison
+Search narrowly for, or construct from Nekovar's mapping-fibre formalism, a `K`-side cyclotomic comparison triangle
 
-Starting from protected WP37, determine whether `D_K` is canonically an image, cokernel, radical, or exact finite quotient of the first cyclotomic Bockstein map/height complex. Do not infer this merely because both constructions use Selmer duality.
+`C_str,infty -> C_Kum,infty -> Q_infty -> C_str,infty[1]`
 
-The useful target is
+whose derived augmentation recovers WP39/WP40 and whose augmentation connecting maps commute with the WP37 Bockstein.
 
-`d_K = length(explicit Bockstein/height defect)`
+A theorem only after inverting `2`, only up to finite error, or only for odd `p` is insufficient.
 
-with a statement that remains valid even if the first height is degenerate. Such a theorem would merge part of D2a with D2b.
+### WP42B — exact valuation ledger for `Q^ord`
 
-### WP41B — ordinary Disegni normalization
+Bind the exact ordinary test-vector packet and evaluate Disegni (4.3.4) place by place. Start at the split prime `2`, then the split bad primes `ell|N`, then the remaining auxiliary/unramified places and global measure convention.
 
-For the protected trivial-weight ordinary test-vector packet, use Disegni Proposition 4.3.4 to prove the exact cancellation of `e_{2,infinity}` against the corresponding toric-pairing normalization, then reduce D2c to the remaining place-by-place valuation of `Q^ord`.
+The target is an additive exact ledger for `ord_2(Q^ord)`, not a blanket unit assertion.
 
-Any new external theorem premise beyond the already-admitted interfaces must first be admitted through MATHFORGE.
+Any new external theorem premise must first be admitted through MATHFORGE.
 
 ## Claim firewall
 
 Do not promote:
 
 - `BSD-R2-A1`;
-- numerical stabilization to proof;
-- parity or modulo-square information to exact length;
-- existence of a `p`-adic height to nondegeneracy;
-- `D_K` to zero or `J_K` to the full ambient local module without proof;
-- a rank-one character description before the relevant dual Selmer structure is proved rank one and torsion-free;
-- a formal analogy between Poitou–Tate and Bockstein to an equality of finite modules;
+- numerical stabilization, parity, or modulo-square information to exact proof;
+- height existence to height nondegeneracy;
+- formal similarity between Poitou–Tate and Bockstein to equality of finite modules;
+- source-normalization cancellation to `ord_2(Q^ord)=0`;
+- a local `Q^ord` factor to a unit without exact calculation;
 - a Heegner point to a primitive generator without an index proof;
-- an ordinary-pairing normalization to a unit claim before all local factors are computed;
 - an odd-prime theorem to `p=2`;
-- an equality up to a unit to a preferred determinant generator;
-- a restricted-family theorem to the full selected class;
+- an equality after inverting `2` or up to a unit to an integral determinant claim;
 - source admission to MATHCERT certification;
 - novelty, priority, patentability, or commercial claims.
 
 ## Execution doctrine
 
-Proceed autonomously through bounded proof, falsification, exact source admission when required, exact-head non-authoring/read-only Adversary and Referee review, affected ordinary CI, protected merge, protected readback, and #164/handoff maintenance.
+Proceed autonomously through bounded proof, falsification, exact source admission when required, exact-head Adversary and Referee review, affected ordinary CI, protected merge, protected readback, and issue #164/handoff maintenance.
 
-Recoverable connector, CI, formatting, logging, source-access, compiler, or computational-environment failures are recovery events, not stopping conditions.
+Recoverable connector, CI, formatting, source-access, compiler, or computational failures are recovery events, not stopping conditions.
 
 Stop only at a genuine theorem/source/authority/authentication/safety/material-state/evidentiary boundary, target/normalization drift, or MATHCERT certification authority. Before stopping, name the exact boundary.

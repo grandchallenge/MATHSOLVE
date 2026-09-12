@@ -1,0 +1,26 @@
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP41B-DISEGNI-ORDINARY-NORMALIZATION
+claims:
+  - claim_id: BSD-A1-WP41B-CANCEL-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      In the protected trivial-weight p=2 lane and for Disegni's
+      source-compatible special ordinary quadruple,
+      e_{2,infinity}^{-1} Q_special equals Q^ord exactly.
+  - claim_id: BSD-A1-WP41B-NO-SEPARATE-E-002
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      In the source-compatible ordinary Gross-Zagier normalization the
+      interpolation factor contributes no separate valuation term; its
+      normalization is absorbed exactly into Q^ord, without asserting that
+      the transferred contribution is zero.
+  - claim_id: BSD-A1-WP41B-BOUNDARY-003
+    status: REFINED_BOUNDARY
+    statement: >-
+      The surviving D2c boundary is
+      MISSING_P2_DISEGNI_QORD_LOCAL_FACTOR_VALUATIONS.
+  - claim_id: BSD-A1-WP41B-FIREWALL-004
+    status: CLAIM_FIREWALL
+    statement: >-
+      No local factor of Q^ord is declared a 2-adic unit and no value of
+      ord_2(Q^ord), BSD statement, or certification is proved.
