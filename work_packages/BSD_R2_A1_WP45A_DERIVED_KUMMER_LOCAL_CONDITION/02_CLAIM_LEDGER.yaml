@@ -1,0 +1,59 @@
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP45A-DERIVED-KUMMER-LOCAL-CONDITION
+claims:
+  - claim_id: BSD-A1-WP45A-ML-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      For each relevant local cyclotomic tower over K, the compact point
+      modules E(K_{n,w})^hat_2 under norm are Mittag-Leffler.  Hence their
+      derived inverse limit has no R^1 lim term and is represented by the
+      protected norm-limit module M_w^Kum.
+  - claim_id: BSD-A1-WP45A-IW-H1-002
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      Since H^0(K_{n,w},T_2(E))=0 at every finite local layer, local
+      Iwasawa H^1 is the inverse limit of finite-level H^1.  The compatible
+      compact Kummer injections therefore give a canonical inclusion
+      M_w^Kum -> H^1_Iw(K_w,T_2(E)).
+  - claim_id: BSD-A1-WP45A-LOCAL-COMPLEX-003
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      The homotopy fibre of tau_{<=1} RΓ_Iw ->
+      (H^1_Iw/M_w^Kum)[-1] is a canonical Nekovar local-condition complex
+      with H^1=M_w^Kum and no other cohomology.  The analogous base fibre
+      has H^1=E(K_w)^hat_2.
+  - claim_id: BSD-A1-WP45A-GLOBAL-COMPLEX-004
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      The canonical local Kummer conditions assemble by Nekovar's mapping
+      fibre definition into a compact Kummer Iwasawa Selmer complex over K.
+      Its base-level H^1 is the classical compact Kummer Selmer group
+      S_2(E/K) used in WP39.  No perfectness claim is made.
+  - claim_id: BSD-A1-WP45A-DERIVED-DEFECT-005
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      The cone of derived augmentation of the local Kummer condition to the
+      base Kummer condition has H^{-1}=M_w^Kum[gamma_w-1], H^0 equal to the
+      kernel of coinvariants-to-base points, and H^1=U_w, the protected
+      universal-norm quotient.
+  - claim_id: BSD-A1-WP45A-P2-DEFECT-006
+    status: PROVED_FROM_PROTECTED_PREDECESSORS
+    statement: >-
+      At w|2 the H^1 specialization defect is U_w with exact filtration
+      0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0 and length
+      2 ord_2(3-a_2).  The formal term may not be discarded when comparing
+      with WP39's reduction-sized local target.
+  - claim_id: BSD-A1-WP45A-BOUNDARY-007
+    status: REFINED_BOUNDARY
+    statement: >-
+      D2b is narrowed to
+      MISSING_P2_STRICT_TO_KUMMER_IWASAWA_COMPARISON_AND_DERIVED_DEFECT_IDENTIFICATION_OVER_K:
+      construct the strict-to-Kummer Iwasawa morphism, evaluate or retain
+      the two kernel modules, and identify derived specialization map-by-map
+      with WP39/WP40.
+  - claim_id: BSD-A1-WP45A-FIREWALL-008
+    status: CLAIM_FIREWALL
+    statement: >-
+      WP45A does not assert kernel vanishing, perfectness, cancellation of
+      the p=2 formal norm term, identification of D_K with a Bockstein
+      defect, BSD-R2-A1, or certification.
