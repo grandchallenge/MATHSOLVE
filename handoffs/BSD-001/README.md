@@ -19,7 +19,7 @@ After re-fetching protected live state, read:
 1. this file;
 2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md`;
 3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md`;
-4. the latest protected frontier, currently `handoffs/BSD-001/WP44_FRONTIER.md` after WP44A protection;
+4. the latest protected frontier, currently `handoffs/BSD-001/WP45_FRONTIER.md` after WP45A protection;
 5. the work package named by that frontier;
 6. any protected predecessor materially used by the next proof step;
 7. current protected MATHFORGE BSD provider records before using external theorems.
@@ -64,7 +64,8 @@ Protected WP20 gives the rank-one determinant/Bockstein factorization; WP35 supp
 - WP41B: exact Disegni ordinary normalization `e_{2,infinity}^{-1}Q_special=Q^ord`.
 - WP42B: canonical split-prime-`2` local factor `Q^ord_{2,dt_2^can}=1` with explicit measure firewall.
 - WP43A: Nekovář strict-Greenberg first-order cyclotomic augmentation is exact and its specialization connecting morphism is the WP37 Bockstein.
-- WP44A: primitive classical-Kummer cyclotomic control transports integrally to `K`; the local norm-limit Kummer module has exact base-projection cokernel `U_w`. At `w|2`, `U_w` contains the explicit formal universal-norm term in the protected WP28 filtration.
+- WP44A: primitive classical-Kummer cyclotomic control transports integrally to `K`; local norm-limit Kummer modules have exact base-projection cokernel `U_w`.
+- WP45A: the norm-limit point systems are Mittag–Leffler; their Kummer images define canonical simple local-condition complexes inside local Iwasawa cohomology; these assemble into a compact Kummer Iwasawa Selmer complex whose base `H^1` is `S_2(E/K)`. Local derived augmentation has exactly three defect groups `T_w^Kum`, `B_w^Kum`, and `U_w`.
 
 ## Current D1 boundary
 
@@ -72,7 +73,7 @@ Protected WP20 gives the rank-one determinant/Bockstein factorization; WP35 supp
 
 `MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2`.
 
-Kato gives literal-`p=2` control away from the height-one prime containing `2`; screened all-height-one upgrades retain odd-prime restrictions. WP35 is algebraic only. A valid successor must determine the integral analytic determinant at `(2)` or an exact equivalent.
+Kato gives literal-`p=2` control away from the height-one prime containing `2`; screened all-height-one upgrades retain odd-prime restrictions. WP35 is algebraic only.
 
 ## Current D2 boundaries
 
@@ -82,7 +83,7 @@ Kato gives literal-`p=2` control away from the height-one prime containing `2`; 
 
 WP37 proves existence of the first height, not nonvanishing. WP38 records that the closest screened derived-height/Stark-system and Eisenstein-Heegner routes do not apply to the protected surjective-`E[2]` branch.
 
-### D2b — compact Kummer derived lift and exact specialization over `K`
+### D2b — strict-to-Kummer Iwasawa comparison
 
 WP40 proves
 
@@ -90,37 +91,31 @@ WP40 proves
  = 2 ord_2(3-a_2)
    + 2 sum_{ell|N} ord_2(c_ell)`.
 
-WP43A closes strict-Greenberg Bockstein naturality. WP44A proves the module-level Kummer cyclotomic object and exact ordinary control over `K`:
+WP45A constructs the compact Kummer Iwasawa Selmer complex canonically. For each local place define
 
-`0 -> Sel_K^Kum
-   -> (Sel_Kinfty^Kum)^Gamma_K
-   -> C_K^Kum
-   -> 0`
+`T_w^Kum:=M_w^Kum[gamma_w-1]`,
 
-and
+`B_w^Kum:=ker((M_w^Kum)_{Gamma_w}->E(K_w)^hat_2)`.
 
-`0 -> (C_K^Kum)^vee
-   -> (X_Kinfty^Kum)_Gamma_K
-   -> X_K^Kum
-   -> 0`.
+The local derived specialization cone satisfies
 
-It also constructs
+`H^{-1}=T_w^Kum`,
 
-`M_w^Kum=inverse_limit_n E(K_{n,w})^hat_2`
+`H^0=B_w^Kum`,
 
-with exact base-projection cokernel `U_w`.
+`H^1=U_w`.
 
-The surviving boundary is
+At each `w|2`,
 
-`MISSING_P2_COMPACT_KUMMER_IWASAWA_COMPLEX_LIFT_AND_DERIVED_SPECIALIZATION_OVER_K`.
+`0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0`,
 
-A successor must lift the norm-limit Kummer condition to a compact local-condition/Selmer complex compatible with the protected strict Greenberg complex, compute derived augmentation including any `Tor_1`/coinvariant kernel, and identify the specialized comparison cone map-by-map with WP39/WP40.
+and `len U_w=2 ord_2(3-a_2)`, while WP39's local strict/Kummer target has only `ord_2(3-a_2)`.
 
-At each `w|2`, do not discard the protected exact term
+The live boundary is
 
-`0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0`.
+`MISSING_P2_STRICT_TO_KUMMER_IWASAWA_COMPARISON_AND_DERIVED_DEFECT_IDENTIFICATION_OVER_K`.
 
-The full `U_w` has twice the length of WP39's reduction-sized local ambient term.
+A successor must construct the Iwasawa-level strict-to-Kummer morphism, evaluate or retain `T_w^Kum` and `B_w^Kum`, derive the comparison-cone specialization triangle, and identify the finite maps with WP39/WP40 before relating `D_K` to any Bockstein/height defect.
 
 ### D2c — ordinary Disegni local factors
 
@@ -148,13 +143,17 @@ Retain every plus/minus overlap, twist, period, Tamagawa, and local term.
 
 ## Immediate executable successors
 
-### WP45A — compact Kummer derived lift
+### WP46A — strict-to-Kummer Iwasawa comparison
 
-Construct the compact classical-Kummer local-condition complex over `Lambda_K` from the protected norm-limit Kummer modules. Prove derived augmentation, not merely ordinary coinvariant control. The specialized comparison cone must recover WP39/WP40 map-by-map, with the formal universal-norm term at `2` carried explicitly.
+Use the protected finite-level strict/Kummer inclusions to construct a norm-compatible morphism
 
-### WP45B — split semistable bad-prime toric factors
+`C_str,infty -> C_Kum,infty`.
 
-For each odd semistable `ell|N`, with `K/Q` split at `ell` and `chi_ell=1`, bind the exact local representation and test vector selected by the Disegni packet and evaluate the normalized split Rankin–Selberg/newvector toric integral. Retain multiplicative type, Steinberg twist, Haar measure, local L-factor, denominator pairing, and Tamagawa-sensitive scalars.
+Compute derived augmentation of its cone. Keep `T_w^Kum`, `B_w^Kum`, and the place-`2` formal term `F_w^norm` explicit until map-level cancellation or persistence is proved.
+
+### WP46B — split semistable bad-prime toric factors
+
+Bind the exact bad-prime newvector in Disegni's `v`-new packet to an essential Whittaker vector and evaluate both normalized GL2×GL1 zeta integrals, including the precise local Haar-measure scalar and denominator pairing. Do not infer a unit from an interpolation theorem alone.
 
 Any new external theorem premise must first be admitted through MATHFORGE.
 
@@ -163,12 +162,12 @@ Any new external theorem premise must first be admitted through MATHFORGE.
 Do not promote:
 
 - `BSD-R2-A1`;
-- ordinary Kummer coinvariant control to derived compact-complex specialization;
-- the discrete Kummer dual `X_Kinfty^Kum` to the compact WP39 lattice;
-- equality of local lengths to a canonical isomorphism;
-- the full `U_w` at `w|2` to WP39's reduction-sized local target;
+- the compact Kummer Iwasawa complex to perfectness without proof;
+- unknown `T_w^Kum` or `B_w^Kum` to zero;
+- the full `U_w` at `2` to WP39's reduction-sized local target;
+- equal lengths at odd bad primes to a canonical isomorphism;
 - the formal universal-norm term to zero;
-- `D_K` to a Bockstein defect before the derived comparison cone is proved;
+- `D_K` to a Bockstein defect before the strict/Kummer derived comparison is fixed;
 - canonical `Q^ord_2=1` to global `Q^ord=1`;
 - interpolation of a local zeta integral to an explicit semistable value;
 - height existence to height nondegeneracy;
