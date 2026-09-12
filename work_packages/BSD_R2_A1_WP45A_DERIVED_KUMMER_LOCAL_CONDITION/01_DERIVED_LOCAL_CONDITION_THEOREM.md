@@ -1,4 +1,4 @@
-# WP45A theorem — derived norm-limit Kummer point module and exact augmentation defect
+# WP45A theorem — canonical compact Kummer Iwasawa local condition and exact augmentation defect
 
 ## 1. Setup
 
@@ -16,23 +16,15 @@ be the cyclotomic `Z_2`-extension and fix a finite place `w` of `K`. After repla
 
 Put
 
+`T:=T_2(E)`,
+
 `A_n:=E(F_n)^hat_2`.
 
-The transition map
-
-`A_{n+1} -> A_n`
-
-is the completed local norm. Protected WP44A defines
+The transition map on `A_n` is the completed local norm. Protected WP44A defines
 
 `M_w^Kum:=inverse_limit_n A_n`.
 
-The finite-level Kummer connecting maps
-
-`A_n -> H^1(F_n,T_2(E))`
-
-are compatible with norm/corestriction on cohomology. WP45A uses this only as a cohomological normic compatibility statement. It does not assert that these maps have already been lifted canonically to morphisms of local-condition complexes.
-
-## 2. Mittag–Leffler property of the local Kummer point system
+## 2. Mittag–Leffler property of the point system
 
 ### Theorem `BSD-A1-WP45A-ML-001`
 
@@ -53,7 +45,7 @@ Fix a base level `m` and consider the tail extension
 The protected WP25 norm-stabilization argument depends only on the local reduction type and finiteness of the corresponding local cyclotomic control group. Those inputs persist after replacing the original local base by `F_m`.
 
 1. If `w|2`, the curve remains good ordinary over the finite `2`-adic extension `F_m`; the protected literal-`p=2` Tan/Greenberg interfaces apply to the totally ramified cyclotomic tail.
-2. If `w` lies above an odd semistable prime, the tail is unramified and the WP22 component-group argument applies after finite unramified base change.
+2. If `w` lies above an odd semistable prime, the tail is unramified and the protected WP22 component-group argument applies after finite unramified base change.
 3. At odd good places the same connected-special-fibre argument gives zero `2`-primary control defect.
 
 Thus the raw images
@@ -62,13 +54,9 @@ Thus the raw images
 
 stabilize for sufficiently large `n`.
 
-The completed norm image is the closure of the raw norm image: `A_n` is compact, the completed norm image is therefore closed, and raw points are dense in the completion. Hence
+The image of the completed norm map `A_n->A_m` is the closure of the raw norm image: `A_n` is compact, the completed norm image is closed, and the raw points are dense. Hence the completed images also stabilize.
 
-`im(A_n -> A_m)`
-
-also stabilizes for sufficiently large `n`.
-
-This is the Mittag–Leffler condition. For a countable Mittag–Leffler inverse system of abelian groups,
+This is the Mittag–Leffler condition. For a countable Mittag–Leffler inverse system,
 
 `R^1 lim=0`.
 
@@ -76,113 +64,220 @@ QED.
 
 ### Corollary `BSD-A1-WP45A-RLIM-002`
 
-The derived inverse limit of the compact local point modules is concentrated in degree zero:
+`Rlim_n A_n ~= M_w^Kum`
 
-`Rlim_n A_n ~= M_w^Kum`.
+with `M_w^Kum` concentrated in degree zero.
 
-This is a derived statement about the norm-limit point module only. Constructing a cochain-level Kummer local-condition morphism from this object remains a separate obligation.
+## 3. Kummer injection into local Iwasawa cohomology
 
-## 3. Derived augmentation of the norm-limit point module
+For each finite layer `F_n`, local elliptic-curve torsion is finite. Therefore
 
-Choose a topological generator `gamma_w` of `Gamma_w` and put
+`H^0(F_n,T)=T^{G_{F_n}}=0`.
 
-`t_w:=gamma_w-1`.
+Let
 
-The augmentation module `Z_2` has the length-one free resolution
+`C_{w,infty}:=RΓ_Iw(F_0,T):=Rlim_n RΓ(F_n,T)`
 
-`0 -> Lambda_w --t_w--> Lambda_w -> Z_2 -> 0`.
+under corestriction.
 
-Therefore, for every compact `Lambda_w`-module `M`,
+The standard `Rlim` cohomology exact sequence gives
 
-`M derived_tensor_{Lambda_w} Z_2`
+`0 -> R^1 lim_n H^0(F_n,T)
+   -> H^1(C_{w,infty})
+   -> lim_n H^1(F_n,T)
+   -> 0`.
 
-is represented by
+The first term is zero because every `H^0(F_n,T)` is zero. Hence
 
-`[M --t_w--> M]`
+`H^1(C_{w,infty}) ~= lim_n H^1(F_n,T)`.
 
-in cohomological degrees `-1,0`.
+At every finite layer, the inverse-limit Kummer sequence in the exponent gives a canonical injection
 
-Apply this to `M=M_w^Kum`. Define
+`A_n=E(F_n)^hat_2 -> H^1(F_n,T)`.
 
-`T_w^Kum:=M_w^Kum[t_w]`
+These injections commute with norm/corestriction. Taking inverse limits gives a canonical injection
 
-and
+`kappa_{w,infty}:M_w^Kum -> H^1(C_{w,infty})`.
 
-`Q_w^Kum:=(M_w^Kum)_{Gamma_w}`.
+No choice of cocycle representatives is involved in this statement.
 
-Then
+## 4. Canonical simple local condition
 
-`H^{-1}(M_w^Kum derived_tensor Z_2)=T_w^Kum`,
+Protected Nekovář formalism defines a local condition to be a morphism of complexes
 
-`H^0(M_w^Kum derived_tensor Z_2)=Q_w^Kum`.
+`U^+ -> C_{w,infty}`.
 
-Thus `T_w^Kum` is the exact module-theoretic `Tor_1` term. No vanishing is assumed.
+We now construct such a morphism canonically from the submodule
 
-## 4. Comparison with the base point module
+`M_w^Kum subset H^1(C_{w,infty})`.
 
-Protected WP44A supplies the base projection
+Because `H^0(C_{w,infty})=0`, the standard truncation triangle gives a canonical morphism
 
-`pr_0:M_w^Kum -> E(F_0)^hat_2`.
+`tau_{<=1} C_{w,infty} -> H^1(C_{w,infty})[-1]`.
 
-Because the base has trivial `Gamma_w` action, `pr_0` kills `t_wM_w^Kum` and factors through coinvariants:
+Compose it with the quotient map
 
-`bar_pr_0:Q_w^Kum -> E(F_0)^hat_2`.
+`H^1(C_{w,infty})[-1]
+ -> (H^1(C_{w,infty})/M_w^Kum)[-1]`.
 
 Define
 
-`B_w^Kum:=ker(bar_pr_0)`.
-
-Protected WP44A proves
-
-`coker(pr_0)=U_w`,
-
-where `U_w` is the finite universal-norm quotient. Since `pr_0` and `bar_pr_0` have the same image,
-
-`coker(bar_pr_0)=U_w`.
-
-Define the purely module-theoretic derived specialization-defect complex
-
-`Delta_w^pt
- := Cone(
-      (M_w^Kum derived_tensor_{Lambda_w} Z_2)[-1]
-      -> E(F_0)^hat_2[-1]
+`U_{w,infty}^{+,Kum}
+ := Fib(
+      tau_{<=1} C_{w,infty}
+      -> (H^1(C_{w,infty})/M_w^Kum)[-1]
     )`.
 
-The map here is induced solely by the base projection `bar_pr_0`; `Delta_w^pt` is not being called a Selmer local-condition complex.
+The fibre comes with a canonical morphism
 
-### Theorem `BSD-A1-WP45A-DEFECT-003`
+`i_{w,infty}^{+,Kum}:U_{w,infty}^{+,Kum}->C_{w,infty}`.
 
-The only nonzero cohomology groups of `Delta_w^pt` lie in degrees `-1,0,1`, and canonically
+### Theorem `BSD-A1-WP45A-LOCAL-COMPLEX-003`
 
-`H^{-1}(Delta_w^pt)=T_w^Kum`,
+The local-condition complex satisfies
 
-`H^0(Delta_w^pt)=B_w^Kum`,
+`H^0(U_{w,infty}^{+,Kum})=0`,
 
-`H^1(Delta_w^pt)=U_w`.
+`H^1(U_{w,infty}^{+,Kum})=M_w^Kum`,
+
+and all other cohomology groups vanish. Hence
+
+`U_{w,infty}^{+,Kum} ~= M_w^Kum[-1]`
+
+in `D(Lambda_w)`, while retaining a canonical local-condition morphism to Iwasawa cochains.
 
 ### Proof
 
-After shifting by `[-1]`, the source has
+The truncation object `tau_{<=1}C_{w,infty}` has only `H^0=0` and `H^1=H^1(C_{w,infty})` in the relevant range. Taking the fibre of the quotient on `H^1` replaces that group by its kernel `M_w^Kum` and introduces no degree-zero term. The long exact cohomology sequence gives the assertion. QED.
 
-`H^0=T_w^Kum`, `H^1=Q_w^Kum`.
+## 5. Base classical Kummer local condition
 
-The target `E(F_0)^hat_2[-1]` has only
+At the base field `F_0`, the compact Kummer injection is
 
-`H^1=E(F_0)^hat_2`.
+`E(F_0)^hat_2 -> H^1(F_0,T)`.
 
-The long exact cohomology sequence of the cone gives
+As above, `H^0(F_0,T)=0`. Define
 
-`H^{-1}(Delta_w^pt) ~= T_w^Kum`,
+`U_{w,0}^{+,Kum}
+ := Fib(
+      tau_{<=1}RΓ(F_0,T)
+      -> (H^1(F_0,T)/E(F_0)^hat_2)[-1]
+    )`.
 
-`H^0(Delta_w^pt) ~= ker(Q_w^Kum -> E(F_0)^hat_2)=B_w^Kum`,
+Then
 
-`H^1(Delta_w^pt) ~= coker(Q_w^Kum -> E(F_0)^hat_2)=U_w`.
+`H^1(U_{w,0}^{+,Kum})=E(F_0)^hat_2`
 
-All other groups vanish. QED.
+and all other cohomology vanishes, so
 
-## 5. Exact arithmetic content of the known `H^1` term
+`U_{w,0}^{+,Kum} ~= E(F_0)^hat_2[-1]`.
 
-Because every prime dividing `2N` splits in the protected field `K`, protected WP25–WP28 transport place-for-place.
+This is a simple Selmer local condition whose degree-one image is exactly the classical compact Kummer condition used in WP39.
+
+## 6. Global compact Kummer Iwasawa Selmer complex
+
+Let `S` contain the primes above `2N` and all other places already used by the protected campaign. For each local place use the compact Kummer condition just constructed; at places where the relevant decomposition tower is finite, take the evident finite-level version.
+
+Define the Iwasawa Selmer complex by Nekovář's mapping-fibre construction
+
+`C_Kum,infty
+ := Cone(
+      RΓ_Iw(K_S/K,T)
+      direct_sum (sum_w U_{w,infty}^{+,Kum})
+      -> sum_w RΓ_Iw(K_w,T)
+    )[-1]`.
+
+Define `C_Kum,0` similarly over `K` using `U_{w,0}^{+,Kum}`.
+
+### Corollary `BSD-A1-WP45A-GLOBAL-COMPLEX-004`
+
+`C_Kum,infty` is a canonical compact Kummer Iwasawa Selmer complex in the derived category. At base level,
+
+`H^1(C_Kum,0)=S_2(E/K)`
+
+with the classical compact Kummer local conditions of WP39.
+
+### Proof
+
+The first assertion is the definition of a Selmer complex from the canonical local-condition morphisms above. For the second, the degree-one cohomology sequence of the mapping fibre identifies `H^1(C_Kum,0)` with the kernel of
+
+`H^1(K,T)
+ -> sum_w H^1(K_w,T)/E(K_w)^hat_2`,
+
+which is exactly the compact classical Kummer Selmer group. QED.
+
+No perfectness claim is made for `C_Kum,infty`.
+
+## 7. Derived augmentation of the Kummer local source
+
+Choose a topological generator `gamma_w` and put
+
+`t_w:=gamma_w-1`.
+
+The augmentation module `Z_2` has free resolution
+
+`0 -> Lambda_w --t_w--> Lambda_w -> Z_2 -> 0`.
+
+Since
+
+`U_{w,infty}^{+,Kum} ~= M_w^Kum[-1]`,
+
+derived augmentation is represented by
+
+`[M_w^Kum --t_w--> M_w^Kum][-1]`.
+
+Define
+
+`T_w^Kum:=M_w^Kum[t_w]`,
+
+`Q_w^Kum:=(M_w^Kum)_{Gamma_w}`.
+
+Then the augmented local source has
+
+`H^0=T_w^Kum`,
+
+`H^1=Q_w^Kum`.
+
+The protected WP44A base projection
+
+`pr_0:M_w^Kum -> E(F_0)^hat_2`
+
+kills `t_wM_w^Kum` and factors as
+
+`bar_pr_0:Q_w^Kum -> E(F_0)^hat_2`.
+
+Put
+
+`B_w^Kum:=ker(bar_pr_0)`.
+
+Protected WP44A gives
+
+`coker(bar_pr_0)=U_w`.
+
+Naturality of local Galois cohomology specialization and of the Kummer injections gives a morphism of the canonical fibre constructions
+
+`U_{w,infty}^{+,Kum} derived_tensor_{Lambda_w} Z_2
+ -> U_{w,0}^{+,Kum}`.
+
+Define its cone
+
+`Delta_w^Kum`.
+
+### Theorem `BSD-A1-WP45A-DEFECT-005`
+
+The only nonzero cohomology groups of `Delta_w^Kum` are
+
+`H^{-1}(Delta_w^Kum)=T_w^Kum`,
+
+`H^0(Delta_w^Kum)=B_w^Kum`,
+
+`H^1(Delta_w^Kum)=U_w`.
+
+### Proof
+
+Under the canonical quasi-isomorphisms of Sections 4–5, the specialization morphism is induced by `bar_pr_0`. The long exact cohomology sequence of the cone therefore gives exactly the three displayed groups. QED.
+
+## 8. Exact arithmetic content of `H^1(Delta_w^Kum)`
 
 ### At `w|2`
 
@@ -192,82 +287,61 @@ Protected WP28 gives
 
 with both end groups of order `3-a_2`. Hence
 
-`len_Z2 H^1(Delta_w^pt)=2 ord_2(3-a_2)`.
+`len_Z2 H^1(Delta_w^Kum)=2 ord_2(3-a_2)`.
 
-WP39's finite strict/Kummer local target at the same place has length only
+WP39's finite strict/Kummer local target has length only
 
 `ord_2(3-a_2)`.
 
-Therefore a future cochain-level strict/Kummer comparison must account explicitly for the formal universal-norm term. No cancellation is inferred.
+Any strict/Kummer derived comparison must therefore account explicitly for the formal universal-norm term. No cancellation is inferred.
 
 ### At odd bad `w|ell`
 
 Protected WP26 gives
 
-`U_w ~= Phi_ell/Phi_ell,odd`
+`U_w ~= Phi_ell/Phi_ell,odd`,
 
-and
+`len_Z2 H^1(Delta_w^Kum)=ord_2(c_ell)`.
 
-`len_Z2 H^1(Delta_w^pt)=ord_2(c_ell)`.
-
-WP39's local target has the same length. Equality of length is not promoted to a canonical map or isomorphism.
+WP39's local target has the same length, but equality of lengths is not promoted to a canonical isomorphism.
 
 ### At odd good places
 
-Protected WP25/WP22 gives
+`U_w=0` by protected WP22/WP25. The kernel terms `T_w^Kum` and `B_w^Kum` remain separate obligations.
 
-`U_w=0`.
-
-The kernel modules `T_w^Kum` and `B_w^Kum` are not thereby forced to vanish.
-
-## 6. Exact status of the Kummer cochain lift
-
-The classical Kummer connecting map
-
-`E(F_n)^hat_2 -> H^1(F_n,T)`
-
-is canonical on cohomology and norm/corestriction compatible. However, a Selmer complex requires a specified local-condition complex and a morphism into a Galois cochain complex, not merely an injection into `H^1`.
-
-WP45A therefore does not use the notation
-
-`M_w^Kum[-1] -> RΓ_Iw(F_0,T)`
-
-as if such a lift were automatic.
-
-A successor may obtain the needed object by one of two valid routes:
-
-1. source-qualify a compact Kummer local-condition complex whose `H^1` realization is the classical Kummer image and whose transition maps are norm/corestriction; or
-2. construct such a mapping-fibre/cochain object directly and prove independence of choices plus derived base-change compatibility.
-
-Only after that step may the module defect `Delta_w^pt` be promoted into the local piece of a Selmer-complex specialization triangle.
-
-## 7. Refined D2b boundary
+## 9. Refined D2b boundary
 
 WP44A left
 
 `MISSING_P2_COMPACT_KUMMER_IWASAWA_COMPLEX_LIFT_AND_DERIVED_SPECIALIZATION_OVER_K`.
 
-WP45A computes the derived norm-limit point-module specialization exactly and identifies the remaining unknown kernel modules. The live boundary is now
+WP45A now closes:
 
-`MISSING_P2_COMPACT_KUMMER_COCHAIN_REALIZATION_AND_STRICT_DERIVED_COMPARISON_OVER_K`.
+1. the canonical compact Kummer local-condition cochain realization;
+2. the global compact Kummer Iwasawa Selmer-complex construction;
+3. the exact local derived augmentation defect, up to two explicit kernel modules.
+
+The live boundary is
+
+`MISSING_P2_STRICT_TO_KUMMER_IWASAWA_COMPARISON_AND_DERIVED_DEFECT_IDENTIFICATION_OVER_K`.
 
 A successor must:
 
-1. construct or source-qualify the compact Kummer local-condition cochain object;
-2. bind its norm-limit source to `M_w^Kum`;
-3. determine or retain `T_w^Kum` and `B_w^Kum` in derived base change;
-4. construct the strict-Greenberg-to-Kummer Iwasawa comparison;
-5. identify its specialization map-by-map with WP39/WP40 before relating `D_K` to a Bockstein defect.
+1. evaluate or retain `T_w^Kum` and `B_w^Kum`;
+2. construct the Iwasawa-level morphism from the protected strict Greenberg Selmer complex to `C_Kum,infty`;
+3. compare its derived augmentation map-by-map with the finite WP39 strict/Kummer comparison;
+4. determine how the formal term `F_w^norm` at `w|2` enters or cancels in that comparison;
+5. identify the resulting dual finite defect with WP40's `D_K` only after those maps are fixed.
 
-## 8. Claim firewall
+## 10. Claim firewall
 
 WP45A does not prove:
 
-- existence of a canonical cochain-level morphism `M_w^Kum[-1] -> RΓ_Iw(F_0,T)`;
 - `T_w^Kum=0`;
 - `B_w^Kum=0`;
-- perfectness of `M_w^Kum` or of a future Kummer Selmer complex;
-- map-level equality of odd bad local modules merely from equal lengths;
+- perfectness of `C_Kum,infty`;
+- existence of the strict-to-Kummer Iwasawa comparison morphism;
+- map-level equality of odd bad local modules from equal lengths;
 - cancellation of `F_w^norm` at `w|2`;
 - equality of `D_K` with a Bockstein kernel, image, cokernel, or radical;
 - fixed-`2` height nondegeneracy;
