@@ -1,0 +1,52 @@
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP44A-KUMMER-IWASAWA-CONTROL-OVER-K
+claims:
+  - claim_id: BSD-A1-WP44A-KTORSION-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      For K_infty=K Q_infty, E(K_infty)[2^infinity]=0.  The residual
+      image over K is S3 or A3, both transitive on nonzero E[2], so every
+      nonzero 2-torsion point has degree 3 over K and cannot enter the
+      pro-2 cyclotomic tower.
+  - claim_id: BSD-A1-WP44A-KCONTROL-002
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      Primitive classical-Kummer control transports integrally to K at
+      p=2: 0 -> Sel_K^Kum -> (Sel_Kinfty^Kum)^Gamma_K -> C_K^Kum -> 0,
+      with C_K^Kum the globally hit local restriction kernel.
+  - claim_id: BSD-A1-WP44A-DUAL-CONTROL-003
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      Pontryagin duality gives 0 -> (C_K^Kum)^vee ->
+      (X_Kinfty^Kum)_Gamma_K -> X_K^Kum -> 0.  This is exact ordinary
+      module-level augmentation control and is not promoted to derived
+      compact-Selmer-complex specialization.
+  - claim_id: BSD-A1-WP44A-NORM-LIMIT-004
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      The local norm-limit Kummer point module M_w^Kum has base projection
+      cokernel exactly the finite universal-norm quotient U_w.  Under the
+      protected all-2N-split field K these quotients are the protected
+      WP25-WP28 local universal-norm groups place-for-place.
+  - claim_id: BSD-A1-WP44A-P2-FILTRATION-005
+    status: PROVED_FROM_PROTECTED_PREDECESSORS
+    statement: >-
+      At each w|2, the local augmentation cokernel has the exact protected
+      filtration 0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0 with both end
+      terms of order 3-a_2.  Thus its length is twice the WP39 p-local
+      ambient comparison length; the formal term may not be discarded.
+  - claim_id: BSD-A1-WP44A-BOUNDARY-006
+    status: REFINED_BOUNDARY
+    statement: >-
+      D2b is narrowed to
+      MISSING_P2_COMPACT_KUMMER_IWASAWA_COMPLEX_LIFT_AND_DERIVED_SPECIALIZATION_OVER_K:
+      construct the compact Kummer local-condition complex, compute
+      derived augmentation including Tor/kernel terms, and identify the
+      specialized strict-to-Kummer cone map-by-map with WP39/WP40.
+  - claim_id: BSD-A1-WP44A-FIREWALL-007
+    status: CLAIM_FIREWALL
+    statement: >-
+      WP44A does not identify the discrete Kummer dual Iwasawa module with
+      the compact WP39 lattice, does not assert perfectness or Tor
+      vanishing, does not identify equal-length local modules without a
+      map, and does not promote BSD-R2-A1 or certification.
