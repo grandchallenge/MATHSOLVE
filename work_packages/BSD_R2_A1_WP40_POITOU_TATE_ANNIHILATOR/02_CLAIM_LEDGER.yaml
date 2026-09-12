@@ -1,0 +1,46 @@
+campaign_id: BSD-001
+work_package: BSD_R2_A1_WP40_POITOU_TATE_ANNIHILATOR
+claim_state: SELECTED_RESEARCH_TARGET_UNPROVED
+protected_inputs:
+  mathsolve_wp39: 3d9e94d2b0f06d0e93387f959a0e32c6346e0d21
+  mathforge_poitou_tate_source: GREENBERG_POITOU_TATE_GLOBAL_HIT_SOURCE_AUDIT.md
+claims:
+  - claim_id: BSD-A1-WP40-LOCAL-QUOTIENT-DUAL-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      Local Tate duality induces a perfect finite pairing between the compact
+      quotient R_K=U_Kum/U_str and the discrete quotient
+      R_K^dual=U_str^perp/U_Kum^perp.
+  - claim_id: BSD-A1-WP40-ANNIHILATOR-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      Under this quotient pairing, the annihilator of the compact global-hit
+      subgroup J_K is exactly the dual global-hit subgroup D_K obtained from
+      global discrete classes satisfying the annihilator of the strict compact
+      local condition.
+  - claim_id: BSD-A1-WP40-COMPLEMENT-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      If j_K=len_Z2 J_K and d_K=len_Z2 D_K, then
+      j_K+d_K=2 ord_2(3-a_2)+2 sum_{ell|N} ord_2(c_ell).
+  - claim_id: BSD-A1-WP40-D2B-REDUCTION-001
+    status: PROVED_BOUNDED_REDUCTION
+    statement: >-
+      Evaluating the K-side Greenberg/Kummer correction is equivalent to
+      evaluating the finite dual global hit D_K. No rank-one character or
+      height nondegeneracy is assumed.
+open_boundaries:
+  - MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - MISSING_P2_DUAL_GLOBAL_HIT_OVER_K
+  - MISSING_P2_DISEGNI_INTERPOLATION_FACTOR_VALUATIONS
+  - MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION
+  - MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+firewall:
+  - no D_K=0 assumption
+  - no J_K=R_K assumption
+  - no rank-one dual-Selmer scalar without proof
+  - no Bockstein-height identification without proof
+  - no p-adic-height nondegeneracy claim
+  - no BSD-R2-A1 promotion
+  - no MATHCERT certification
