@@ -1,0 +1,44 @@
+campaign_id: BSD-001
+work_package: BSD_R2_A1_WP39_KUMMER_GREENBERG_COMPARISON
+claim_state: SELECTED_RESEARCH_TARGET_UNPROVED
+protected_inputs:
+  mathsolve_wp38: efac1b7eaa9b7d1da42c9d33fbb73516fec93a42
+  mathforge_wp39: 9de5bac5a18193b9453146dd0db9dee2f34ab06a
+claims:
+  - claim_id: BSD-A1-WP39-EXTENDED-STRICT-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      For T=T_2(E) over the protected good-ordinary field K, Nekovar extended
+      compact degree-one Selmer cohomology is canonically the strict Greenberg
+      compact Selmer group; the degree-zero local correction vanishes.
+  - claim_id: BSD-A1-WP39-COMPARISON-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      There is a canonical exact sequence 0 -> H~^1_f(K,T) -> S_2(E/K) -> J_K -> 0,
+      where J_K is the actual global image in the finite Greenberg-to-Kummer
+      local comparison module.
+  - claim_id: BSD-A1-WP39-AMBIENT-LENGTH-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      The ambient finite local comparison module over the all-2N-split quadratic
+      field has exact Z_2-length 2 ord_2(3-a_2) + 2 sum_{ell|N} ord_2(c_ell).
+  - claim_id: BSD-A1-WP39-D2B-REDUCTION-001
+    status: PROVED_BOUNDED_REDUCTION
+    statement: >-
+      The complete remaining D2b correction is j_K=len_Z2 J_K; all ambient local
+      sizes and the global quadratic free-lattice index are already exact.
+open_boundaries:
+  - MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - MISSING_P2_KUMMER_GREENBERG_GLOBAL_HIT_SUBGROUP_OVER_K
+  - MISSING_P2_DISEGNI_INTERPOLATION_FACTOR_VALUATIONS
+  - MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION
+  - MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+firewall:
+  - no J_K=ambient-target assumption
+  - no global localization surjectivity claim
+  - no p-adic-height nondegeneracy claim
+  - no Heegner-point primitivity claim
+  - no odd-prime theorem specialized to p=2
+  - no BSD-R2-A1 promotion
+  - no MATHCERT certification
