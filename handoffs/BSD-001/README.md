@@ -46,9 +46,7 @@ where
 
 Hence the selected theorem is exactly
 
-`delta_2(E)=v_2(Fitt^1_{Z_2}(X_E)`
-
-with the closing parenthesis understood as the Fitting ideal valuation.
+`delta_2(E)=v_2(Fitt^1_{Z_2}(X_E))`.
 
 Protected WP20 gives the rank-one determinant/Bockstein factorization, and WP35 supplies the primitive cyclotomic square presentation with exact specialization defect. The remaining campaign is therefore an exact integral determinant/height/normalization problem, not a finite-level stabilization problem.
 
