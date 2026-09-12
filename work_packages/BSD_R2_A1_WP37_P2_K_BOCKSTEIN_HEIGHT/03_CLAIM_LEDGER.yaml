@@ -1,0 +1,29 @@
+campaign: BSD-001
+work_package: BSD-R2-A1-WP37-P2-K-BOCKSTEIN-HEIGHT
+state: PROVED_BOUNDED_REDUCTION
+claims:
+  - id: BSD-A1-WP37-P2-APPLICABILITY-001
+    status: PROVED_IN_PACKAGE
+    claim: Nekovar cyclotomic Bockstein and Selmer-complex height apply literally at p=2 over the protected totally imaginary field K.
+  - id: BSD-A1-WP37-HEIGHT-IDEAL-001
+    status: PROVED_IN_PACKAGE
+    claim: The rank-one first-height principal ideal is independent of primitive bases and cyclotomic generator, so its 2-adic valuation is canonical for the specified Selmer complex.
+  - id: BSD-A1-WP37-LEADING-LENGTH-001
+    status: PROVED_CONDITIONAL_ON_SOURCE_HYPOTHESES
+    claim: Under Nekovar section 11.7 hypotheses, the Bockstein filtration gives exact Z2 leading-term length information; first-height minimality additionally requires nondegeneracy.
+  - id: BSD-A1-WP37-D2-REDUCTION-001
+    status: PROVED_IN_PACKAGE
+    claim: D2 splits into explicit nondegeneracy, lattice, p-adic interpolation, classical normalization, and exact descent obligations; local quadratic-descent defects at places over 2N vanish by protected WP06 splitting.
+  - id: BSD-A1-WP37-PGZ-COMPOSITION-001
+    status: PROVED_BOUNDED_INTERFACE
+    claim: The p=2 Bockstein-height formalism and the protected p=2 Disegni Gross-Zagier formula are composable in principle, with every interpolation and lattice factor retained.
+open_boundaries:
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY_AND_INTEGRAL_NORMALIZATION_COMPARISON
+  - MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+firewall:
+  BSD-R2-A1: SELECTED_RESEARCH_TARGET_UNPROVED
+  certification: NOT_REQUESTED
+  numerical_stabilization: NOT_PROOF
+  parity_or_squareclass: NOT_EXACT_LENGTH
+  odd_prime_specialization: FORBIDDEN
+  up_to_unit_as_generator: FORBIDDEN
