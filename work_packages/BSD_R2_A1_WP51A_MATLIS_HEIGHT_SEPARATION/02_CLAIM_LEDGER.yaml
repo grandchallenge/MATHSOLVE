@@ -1,0 +1,40 @@
+schema_version: 1
+campaign: BSD-001
+operation: BSD-R2-A1-WP51A-MATLIS-HEIGHT-SEPARATION
+protected_mathsolve_predecessor: e078beae05252c4152787fc812e0823b14c23fac
+protected_mathforge_source: 79302cdc05f3f11c56e048f68e9095d3280872a7
+claims:
+  - id: BSD-A1-WP51A-MATLIS-QUOTIENT-001
+    status: proved
+    statement: >-
+      If N_K is the Matlis annihilator of K_K^sil in the discrete dual strict
+      Selmer group, then 0 -> N_K -> S_str^dual -> D_K -> 0 canonically.
+  - id: BSD-A1-WP51A-TORSION-BLIND-002
+    status: proved
+    statement: >-
+      Every finite subgroup of strict H2 is killed by the Z_2-valued degree-(2,1)
+      lattice duality pairing used in the first Nekovar height.
+  - id: BSD-A1-WP51A-HEIGHT-FACTORIZATION-003
+    status: proved
+    statement: >-
+      The first strict cyclotomic height factors through strict H2 modulo torsion;
+      K_K^sil is invisible to that height pairing.
+  - id: BSD-A1-WP51A-D2-SEPARATION-004
+    status: proved
+    statement: >-
+      The finite WP40 Matlis correction and fixed-2 first-height nondegeneracy are
+      distinct obligations; neither formally implies the other.
+frontier:
+  D1c: MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  D2a: MISSING_P2_K_HEIGHT_NONDEGENERACY
+  D2b: MISSING_P2_FINITE_MATLIS_CORRECTION_EVALUATION_OR_CANCELLATION_IN_DETERMINANT_NORMALIZATION
+  D2c: MISSING_P2_DISEGNI_SPLIT_BAD_PRIME_NEWVECTOR_QORD_FACTORS
+  D2d: MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION
+  D2e: MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+firewall:
+  - BSD-R2-A1 remains SELECTED_RESEARCH_TARGET_UNPROVED
+  - no D_K=0 or K_K^sil=0 claim
+  - no N_K=Sel_A^Kum claim
+  - no fixed-2 height nondegeneracy
+  - no value or cancellation of d_K
+  - no D1c, global-Qord, WP00, final-descent, or certification promotion

@@ -19,7 +19,7 @@ After re-fetching protected live state, read:
 1. this file;
 2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md`;
 3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md`;
-4. the latest protected frontier, currently `handoffs/BSD-001/WP50_FRONTIER.md` after WP50A protection;
+4. the latest protected frontier, currently `handoffs/BSD-001/WP51_FRONTIER.md` after WP51A protection;
 5. the work package named by that frontier;
 6. materially used protected predecessors;
 7. current protected MATHFORGE BSD source records before importing any new theorem.
@@ -46,20 +46,18 @@ The selected theorem is exactly
 
 ## Current protected chain
 
-- WP05–WP20: target/source normalization, exact finite 2-primary Selmer/Fitting invariant, and rank-one determinant/Bockstein formalism.
+- WP05–WP20: target/source normalization, exact finite `2`-primary Selmer/Fitting invariant, and rank-one determinant/Bockstein formalism.
 - WP21–WP36: cyclotomic control, Poitou–Tate incidence, universal norms, square presentation, local-factor reconciliation, and finite twisted reciprocity.
-- WP37–WP43A: literal-`p=2` Nekovar Bockstein/height over the totally imaginary field `K`, fixed-2 nondegeneracy screen, exact finite strict/Kummer comparison, WP40 annihilator `D_K=ann(J_K)`, and strict first-order Bockstein naturality.
-- WP44A–WP47A: compact Kummer Iwasawa complex, reverse Kummer-to-strict comparison, explicit strict `H^2`, and map-level identification `Z_w^str=F_w^norm` at both `w|2`.
+- WP37–WP43A: literal-`p=2` Nekovar Bockstein/height over totally imaginary `K`, fixed-`2` nondegeneracy screen, exact finite strict/Kummer comparison, `D_K=ann(J_K)`, and strict first-order Bockstein naturality.
+- WP44A–WP47A: compact Kummer Iwasawa complex, reverse Kummer-to-strict comparison, explicit strict `H^2`, and map-level `Z_w^str=F_w^norm` at both `w|2`.
 - WP48A: global reverse comparison cone and exact specialization octahedron; `J_K` and `D_K` recovered on the derived comparison surface.
-- WP49A: the comparison tangent boundary equals the localized strict Bockstein; the full control-image formula
-  `D_K^vee ~= U_K^aug/((Zloc tensor t_cyc)+C_K^ctrl)`
-  is exact.
-- WP50A: the full control image is no longer an independent missing datum. Define
-  `K_K^sil := ker(H^2(C_str,0) -> H^2(C_Kum,0) direct_sum Zloc)`.
-  Then
-  `R_K/J_K ~= K_K^sil`
-  and
-  `D_K ~= (K_K^sil)^vee`.
+- WP49A: localized strict Bockstein identified exactly; full-control formula for `D_K^vee` proved.
+- WP50A: define
+  `K_K^sil := ker(H^2(C_str,0) -> H^2(C_Kum,0) direct_sum Zloc)`;
+  then `R_K/J_K ~= K_K^sil` and `D_K ~= (K_K^sil)^vee`.
+- WP51A: under exact literal-`p=2` Matlis/Pontryagin duality,
+  `0 -> (K_K^sil)^perp -> S_str^dual -> D_K -> 0`.
+  The separate `Z_2`-valued degree-(2,1) pairing used by the first height kills all finite strict `H^2`; hence the first height factors through strict `H^2/tors`. The finite `D_K` correction and first-height nondegeneracy are distinct obligations.
 
 ## Live boundaries
 
@@ -73,13 +71,19 @@ The selected theorem is exactly
 
 ### D2b
 
-`MISSING_P2_STRICT_H2_SILENT_KERNEL_TO_BOCKSTEIN_HEIGHT_DUALITY`.
+`MISSING_P2_FINITE_MATLIS_CORRECTION_EVALUATION_OR_CANCELLATION_IN_DETERMINANT_NORMALIZATION`.
 
-The location of `D_K` is now exact. A successor must determine how the finite strict-degree-two submodule
+Write
 
-`K_K^sil subset H^2(C_str,0)`
+`d_K:=len_Z2 D_K=len_Z2 K_K^sil`.
 
-sits under literal-`p=2` Nekovar Selmer duality and the strict cyclotomic Bockstein/height pairing. Do not infer a radical/image/cokernel statement from lengths.
+Protected WP40 gives
+
+`j_K+d_K
+ = 2 ord_2(3-a_2)
+   + 2 sum_{ell|N} ord_2(c_ell)`.
+
+The first height does not evaluate `d_K`. A successor must compute `d_K` exactly or prove an exact determinant comparison where its contribution cancels against another identified finite term. Do not infer cancellation from perfect duality or from the total-length identity alone.
 
 ### D2c
 
@@ -97,26 +101,27 @@ Protected local `Q^ord_2=1` does not imply global `Q^ord=1`.
 
 ## Immediate executable successors
 
-### WP51A — strict-H2 silent kernel under Selmer duality
+### WP52A — determinant placement of the finite Matlis correction
 
-Use the literal-`p=2` Selmer-complex duality already protected through WP37/WP43A to identify the exact dual/orthogonal description of `K_K^sil`, then compare it with the strict Bockstein-height pairing. Preserve integral finite `2`-primary terms and do not assume height nondegeneracy.
+Audit the exact determinant triangles from the strict `K`-side complex to the primitive Kummer determinant target. Track `J_K`, `D_K`, and `R_K` through determinant functor additivity. Determine whether the determinant normalization contains `d_K`, `j_K`, only `j_K+d_K=len R_K`, or an exact dual cancellation. Preserve every power of `2`.
 
-### WP51B — split semistable bad-prime `Q^ord` factors
+### WP52B — split semistable bad-prime `Q^ord` factors
 
 Continue the normalized split Steinberg/newvector toric-factor computation, retaining Haar measure, local `L`-factors, denominator pairing, Tamagawa-sensitive scalars, and all powers of `2`.
 
 ## Provider-index state
 
-MATHFORGE protected main `79f7c88cf4e59886902c2f12d29d7c73afced379` indexes all 31 current BSD source audits through the WP49 applicability screen. WP50A uses no new external theorem premise.
+MATHFORGE protected main `79302cdc05f3f11c56e048f68e9095d3280872a7` indexes all 32 current BSD source audits through the WP51 strict-H2 duality admission.
 
 ## Claim firewall
 
 Do not promote:
 
 - `BSD-R2-A1`;
-- `K_K^sil=0`, `D_K=0`, or `J_K=R_K`;
-- `D_K` to a pure Bockstein image/kernel/cokernel or height radical;
+- `D_K=0`, `K_K^sil=0`, or `J_K=R_K`;
+- the finite Matlis correction to a first-height radical;
 - height existence to fixed-`2` height nondegeneracy;
+- a total finite comparison length to cancellation in the determinant without an exact determinant theorem;
 - local `Q^ord_2=1` to global `Q^ord=1`;
 - an odd-prime result to literal integral `p=2`;
 - source admission to MATHCERT certification;
