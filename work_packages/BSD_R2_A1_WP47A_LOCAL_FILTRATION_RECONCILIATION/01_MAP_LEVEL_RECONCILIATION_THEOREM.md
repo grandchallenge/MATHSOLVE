@@ -62,7 +62,7 @@ Since `H^0(K_w,V_w^-)=0`, its long exact cohomology sequence begins
    --delta_w--> H^1(K_w,T_w^-)
    -> H^1(K_w,V_w^-)`.
 
-The target on the right is a `Q_2`-vector space and hence torsion-free. Therefore the image of `delta_w` is exactly
+The target on the right is a `Q_2`-vector space and hence torsion-free. The image of `delta_w` is finite and therefore equals exactly
 
 `H^1(K_w,T_w^-)_tors=R_w`.
 
@@ -74,7 +74,11 @@ The connecting map is a canonical isomorphism
 
 `delta_w:H^0(K_w,A_w^-) ~= R_w`.
 
-For good ordinary reduction, `A_w^-` is the unramified etale quotient of the `2`-divisible group. Its inertia invariants are the etale `2`-power torsion of the special fibre. Thus
+For good ordinary reduction, `A_w^-` is the unramified etale quotient of the `2`-divisible group. The etale quotient of the special-fibre `2`-divisible group has rational points exactly
+
+`E_tilde(F_2)[2^infinity]`;
+
+the connected ordinary part contributes no nontrivial geometric `2`-power points over the finite residue field. Thus canonically
 
 `H^0(K_w,A_w^-)
  ~= E_tilde(F_2)[2^infinity]`.
@@ -83,7 +87,7 @@ On the selected branch
 
 `#E_tilde(F_2)=3-a_2 in {2,4}`,
 
-so the entire reduction group is `2`-primary. We therefore obtain a canonical isomorphism
+so the whole reduction group is `2`-primary. Compose the preceding canonical identification with `delta_w` to obtain
 
 `rho_w:E_tilde(F_2) ~= R_w`.
 
@@ -129,7 +133,9 @@ commutes. Equivalently,
 
 ### Proof
 
-Work first modulo `2^r`. For a point class `P in E(K_w)/2^rE(K_w)`, choose
+It is enough to verify compatibility modulo every `2^r` and then pass to the inverse limit in `r`.
+
+Let a class in `E(K_w)/2^rE(K_w)` be represented by `P`, and choose
 
 `Q in E(K_wbar)`
 
@@ -137,36 +143,31 @@ with
 
 `2^r Q=P`.
 
-The Kummer cocycle is
+Its finite Kummer cocycle is
 
 `sigma |-> sigma(Q)-Q in E[2^r]`.
 
-Project this cocycle through the ordinary etale quotient
+Project this cocycle through the ordinary etale quotient of the finite flat `2^r`-torsion. Good reduction and functoriality of the connected-etale sequence identify this quotient with the etale `2^r`-torsion of the special fibre. Properness supplies reduction of `Q`, and projection to the etale quotient commutes with reduction. The projected cocycle is therefore the boundary cocycle attached to the reduction class of `P` in the etale ordinary quotient.
 
-`E[2^r] -> A_w^-[2^r]`.
+Equivalently, the finite Kummer boundary is natural for the morphism from the elliptic `2^r`-torsion sequence to the ordinary etale quotient sequence. After passage to the inverse limit over `r`, this naturality identifies
 
-Because `E` has good reduction, properness gives reduction of `Q`; projecting to the etale ordinary quotient commutes with reduction. The projected cocycle is therefore
+`H^1(K_w,T) -> H^1(K_w,T_w^-)`
 
-`sigma |-> sigma(Qbar)-Qbar`,
+on compact Kummer classes with the connecting homomorphism
 
-which is exactly the connecting cocycle of the reduction point
+`H^0(K_w,A_w^-) --delta_w--> H^1(K_w,T_w^-)`
 
-`Pbar in E_tilde(F_2)[2^infinity]`
+applied to literal reduction.
 
-for the coefficient sequence
+Under the canonical identification
 
-`0 -> T_w^-/2^rT_w^-
-   -> V_w^-/2^rT_w^-
-   -> A_w^-[2^r]
-   -> 0`.
+`E_tilde(F_2)=H^0(K_w,A_w^-)`
 
-Consequently the composition of the finite Kummer map with the ordinary quotient equals the finite-level connecting map applied to literal reduction.
-
-Pass to the inverse limit over `r`. The left side becomes the compact Kummer quotient map `q_w`; the right side becomes the connecting isomorphism `rho_w` applied to `red_w(P)`. Hence
+from Section 2, this says precisely
 
 `q_w=rho_w o red_w`.
 
-This is also the compact-`T` form of the formal-group/reduction Kummer diagram underlying protected Greenberg Proposition 2.5. QED.
+This is the compact-`T` formulation of the formal-group/reduction Kummer diagram underlying protected Greenberg Proposition 2.5; no equality is inferred from cardinality. QED.
 
 ## 4. Passage to the universal-norm quotient
 
@@ -174,7 +175,7 @@ Protected WP28 proves that the stabilized universal norm subgroup
 
 `N_w^infinity subset E(K_w)^hat_2`
 
-lies in the kernel of literal reduction. Indeed, at finite local layer degree `2^n`, norm on the unchanged residue group is multiplication by `2^n`; the intersection of these images in the finite `2`-group `E_tilde(F_2)` is zero.
+lies in the kernel of literal reduction. Indeed, at a finite local layer of degree `2^n`, norm on the unchanged residue group is multiplication by `2^n`; the intersection of those images in the finite `2`-group `E_tilde(F_2)` is zero.
 
 Therefore `red_w` factors canonically through
 
@@ -182,11 +183,9 @@ Therefore `red_w` factors canonically through
 
 `redbar_w:U_w -> E_tilde(F_2)`.
 
-By Lemma `KUMMER-REDUCTION-002`, `q_w` has the same kernel on universal norms and factors as
+By Lemma `KUMMER-REDUCTION-002`, `q_w` also kills universal norms and factors as
 
-`qbar_w:U_w -> R_w`
-
-with
+`qbar_w:U_w -> R_w`.
 
 ### Theorem `BSD-A1-WP47A-QUOTIENT-SQUARE-003`
 
@@ -216,17 +215,15 @@ At each `w|2`,
 
 `Z_w^str=F_w^norm`
 
-inside `U_w`, and the diagram
+inside `U_w`, and there is a commutative diagram with exact rows
 
 `0 -> Z_w^str -> U_w -> R_w -> 0`
 
 `     ||            ||     ^ rho_w`
 
-`0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0`
+`0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0`.
 
-commutes with exact rows.
-
-Thus the strict-Iwasawa higher cohomology correction and Tan's formal universal-norm subgroup are the same **mapped subgroup**, not merely abstract cyclic groups of the same length.
+Thus the strict-Iwasawa higher-cohomology correction and Tan's formal universal-norm subgroup are the same **mapped subgroup**, not merely abstract cyclic groups of equal length.
 
 Likewise
 
@@ -241,22 +238,17 @@ Protected WP46A gives
 `Z_w^str
  ~= Lambda_w/(2^{m_2},gamma_w-1)`.
 
-Protected WP28/WP30 gives
-
-`F_w^norm
- ~= Gamma_w/(1-alpha)Gamma_w`
-
-up to the already-protected exact unit-root principal-ideal convention, with
+Protected WP28/WP30 gives the formal universal-norm quotient in Tan's one-dimensional twist coordinate, with principal ideal generated by `1-alpha` (equivalently `1-alpha^(-1)`) and
 
 `ord_2(1-alpha)=m_2`.
 
-Theorem `FILTRATION-004` identifies these two descriptions through their actual embeddings into `U_w`. WP47A does not introduce a new generator or scalar normalization; it identifies the subgroup defined by the maps.
+Theorem `FILTRATION-004` identifies these two descriptions through their actual embeddings into `U_w`. WP47A introduces no new generator or scalar normalization; it identifies the subgroup defined by the maps.
 
-In particular no `2`-power or unit can be hidden between the strict higher-cohomology correction and the formal universal-norm term.
+In particular no `2`-power or hidden unit can occur between the strict higher-cohomology correction and the formal universal-norm term.
 
 ## 7. Both split places above `2`
 
-Protected WP09 makes `2` split in `K`. The two completions are copies of `Q_2` with conjugate copies of the same ordinary representation and cyclotomic tower. The construction above is functorial under this conjugation.
+Protected WP09 makes `2` split in `K`. The two completions are copies of `Q_2` with conjugate copies of the same ordinary representation and cyclotomic tower. The construction above is functorial under conjugation.
 
 ### Corollary `BSD-A1-WP47A-SPLIT-PAIR-005`
 
