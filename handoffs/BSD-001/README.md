@@ -19,9 +19,9 @@ After re-fetching protected live state, read:
 1. this file;
 2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md`;
 3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md`;
-4. the latest protected frontier, currently `handoffs/BSD-001/WP49_FRONTIER.md` after WP49A protection;
+4. the latest protected frontier, currently `handoffs/BSD-001/WP50_FRONTIER.md` after WP50A protection;
 5. the work package named by that frontier;
-6. any protected predecessor materially used by the next step;
+6. materially used protected predecessors;
 7. current protected MATHFORGE BSD source records before importing any new theorem.
 
 Do not restart WP16 or broad WP17 reconnaissance.
@@ -40,25 +40,26 @@ Protected WP16A/WP16B/WP19 give
  = len_Z2 Sha(E/Q)[2^infinity]
  = lim_n (ord_2 #Sel_{2^n}(E/Q)-n)`.
 
-The selected theorem is therefore exactly
+The selected theorem is exactly
 
 `delta_2(E)=v_2(Fitt^1_{Z_2}(X_E))`.
 
 ## Current protected chain
 
-- WP05–WP20: source/target normalization, quadratic descent, local data, auxiliary `K`, residual/Tamagawa control, exact primitive Selmer/Fitting invariant, and rank-one Bockstein/determinant formalism.
-- WP21–WP36: cyclotomic control, Poitou–Tate incidence, universal norms, unit-root reconciliation, finite comparison terms, square presentation, and twisted-reciprocity computation.
-- WP37: literal-`p=2` Nekovar Bockstein/height over totally imaginary `K`; existence, not nondegeneracy.
-- WP38: fixed-`2` nondegeneracy screen and exact Mordell–Weil base-change lattice comparison.
-- WP39/WP40: finite strict/Kummer quotient `R_K`, actual global hit `J_K`, and exact annihilator `D_K=ann(J_K)`.
-- WP41A–WP43A: strict augmentation/Bockstein separated from Kummer comparison; exact Disegni ordinary normalization at split `2`; strict first-order augmentation naturality.
-- WP44A–WP47A: compact Kummer Iwasawa complex, exact derived control, reverse Kummer-to-strict comparison, explicit strict `H^2`, and map-level identification `Z_w^str=F_w^norm` with literal reduction quotient at both `w|2`.
-- WP48A: global reverse comparison cone and specialization octahedron; `J_K` and `D_K` recovered canonically on the derived comparison surface.
-- WP49A: the WP48A tangent comparison boundary is exactly the localized strict cyclotomic Bockstein. If `C_K^ctrl` is the full global Kummer-control image in `U_K^aug`, then
-  `C_K^ctrl intersect (Zloc tensor t_cyc)=im(lambda_K)`,
-  `0 -> im(lambda_K) -> C_K^ctrl -> J_K -> 0`, and
-  `D_K ~= (U_K^aug/((Zloc tensor t_cyc)+C_K^ctrl))^vee`.
-  Therefore `D_K` is not formally a pure Bockstein image/cokernel; the missing datum is the full control image.
+- WP05–WP20: target/source normalization, exact finite 2-primary Selmer/Fitting invariant, and rank-one determinant/Bockstein formalism.
+- WP21–WP36: cyclotomic control, Poitou–Tate incidence, universal norms, square presentation, local-factor reconciliation, and finite twisted reciprocity.
+- WP37–WP43A: literal-`p=2` Nekovar Bockstein/height over the totally imaginary field `K`, fixed-2 nondegeneracy screen, exact finite strict/Kummer comparison, WP40 annihilator `D_K=ann(J_K)`, and strict first-order Bockstein naturality.
+- WP44A–WP47A: compact Kummer Iwasawa complex, reverse Kummer-to-strict comparison, explicit strict `H^2`, and map-level identification `Z_w^str=F_w^norm` at both `w|2`.
+- WP48A: global reverse comparison cone and exact specialization octahedron; `J_K` and `D_K` recovered on the derived comparison surface.
+- WP49A: the comparison tangent boundary equals the localized strict Bockstein; the full control-image formula
+  `D_K^vee ~= U_K^aug/((Zloc tensor t_cyc)+C_K^ctrl)`
+  is exact.
+- WP50A: the full control image is no longer an independent missing datum. Define
+  `K_K^sil := ker(H^2(C_str,0) -> H^2(C_Kum,0) direct_sum Zloc)`.
+  Then
+  `R_K/J_K ~= K_K^sil`
+  and
+  `D_K ~= (K_K^sil)^vee`.
 
 ## Live boundaries
 
@@ -72,15 +73,13 @@ The selected theorem is therefore exactly
 
 ### D2b
 
-`MISSING_P2_GLOBAL_KUMMER_CONTROL_IMAGE_TO_STRICT_BOCKSTEIN_DUALITY`.
+`MISSING_P2_STRICT_H2_SILENT_KERNEL_TO_BOCKSTEIN_HEIGHT_DUALITY`.
 
-The localized strict Bockstein is known exactly. A successor must characterize the entire subgroup
+The location of `D_K` is now exact. A successor must determine how the finite strict-degree-two submodule
 
-`C_K^ctrl subset U_K^aug`
+`K_K^sil subset H^2(C_str,0)`
 
-through a literal-`p=2` global Poitou–Tate/Selmer-complex duality theorem compatible with the strict Bockstein or height pairing. The missing object is not merely `im(lambda_K)`.
-
-Protected MATHFORGE `79f7c88cf4e59886902c2f12d29d7c73afced379` records that Macias Castillo–Sano 2026 is a close structural comparator but assumes `p` odd throughout; it cannot authorize this literal-`p=2` bridge.
+sits under literal-`p=2` Nekovar Selmer duality and the strict cyclotomic Bockstein/height pairing. Do not infer a radical/image/cokernel statement from lengths.
 
 ### D2c
 
@@ -98,25 +97,25 @@ Protected local `Q^ord_2=1` does not imply global `Q^ord=1`.
 
 ## Immediate executable successors
 
-### WP50A — literal-`p=2` control-image duality
+### WP51A — strict-H2 silent kernel under Selmer duality
 
-Search for, or derive directly from already-protected duality diagrams, an exact theorem characterizing `C_K^ctrl` or its quotient through global Poitou–Tate/Selmer-complex duality and the strict Bockstein/height. Preserve all finite `2`-primary terms. If the source route is unavailable, record the exact theorem/source boundary rather than importing an odd-prime comparator.
+Use the literal-`p=2` Selmer-complex duality already protected through WP37/WP43A to identify the exact dual/orthogonal description of `K_K^sil`, then compare it with the strict Bockstein-height pairing. Preserve integral finite `2`-primary terms and do not assume height nondegeneracy.
 
-### WP50B — split semistable bad-prime `Q^ord` factors
+### WP51B — split semistable bad-prime `Q^ord` factors
 
-Bind and compute the normalized split Steinberg/newvector toric factors in Disegni's packet, retaining Haar measure, local `L`-factors, denominator pairing, and Tamagawa-sensitive scalars.
+Continue the normalized split Steinberg/newvector toric-factor computation, retaining Haar measure, local `L`-factors, denominator pairing, Tamagawa-sensitive scalars, and all powers of `2`.
 
 ## Provider-index state
 
-MATHFORGE protected main `79f7c88cf4e59886902c2f12d29d7c73afced379` indexes all 31 current BSD source audits through the WP49 applicability screen. The WP49 screen does not close the literal-`p=2` control-image theorem.
+MATHFORGE protected main `79f7c88cf4e59886902c2f12d29d7c73afced379` indexes all 31 current BSD source audits through the WP49 applicability screen. WP50A uses no new external theorem premise.
 
 ## Claim firewall
 
 Do not promote:
 
 - `BSD-R2-A1`;
-- `D_K` to a pure Bockstein image, kernel, cokernel, or height radical;
-- `D_K=0` or `J_K=R_K`;
+- `K_K^sil=0`, `D_K=0`, or `J_K=R_K`;
+- `D_K` to a pure Bockstein image/kernel/cokernel or height radical;
 - height existence to fixed-`2` height nondegeneracy;
 - local `Q^ord_2=1` to global `Q^ord=1`;
 - an odd-prime result to literal integral `p=2`;
