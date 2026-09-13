@@ -1,51 +1,94 @@
-# BSD-R2-A1 WP46A — strict-to-Kummer Iwasawa Postnikov obstruction
+# BSD-R2-A1 WP46A — canonical strict/Kummer Iwasawa truncation comparison
 
 ## State
 
-`PROVED_BOUNDED_DERIVED_REDUCTION`
+`PROVED_BOUNDED_DERIVED_COMPARISON`
 
 ## Protected predecessors
 
 - MATHSOLVE WP45A: `5f7ea71f2d86457575b2bc2f1e8c281f09ce4b87`.
 - WP39/WP40: exact finite strict-Greenberg/classical-Kummer comparison over `K` and its Poitou–Tate dual defect.
 - WP43A: protected strict Greenberg Iwasawa augmentation/Bockstein naturality.
-- MATHFORGE WP39/WP43A source admissions: Nekovář's literal-`p=2` strict/Kummer finite comparison and strict augmentation formalism.
-
-No new external theorem premise is used.
+- MATHFORGE WP46A source admission: `230e449711166e0ad7cf11081cbeec28c553c0ba`, qualifying Nekovář Chapter-8 one-variable Iwasawa descent literally at `p=2`.
 
 ## Result
 
-Let `S_{w,infty}` be the protected strict Greenberg local-condition complex at a local place `w` of `K`, with morphism
+WP46A replaces the noncanonical forward-lifting approach by the canonical direction supplied by the strict Postnikov truncation.
 
-`S_{w,infty} -> C_{w,infty}:=RΓ_Iw(K_w,T)`.
+For each relevant local place `w`, let
 
-Let `U_{w,infty}^{+,Kum}` be the protected WP45A simple Kummer local condition, quasi-isomorphic to
+`S_w:=U_{w,infty}^{+,str}`
 
-`M_w^Kum[-1]`.
+be the protected strict Greenberg Iwasawa local-condition complex and let
 
-WP46A proves:
+`K_w^Kum:=U_{w,infty}^{+,Kum}`
 
-1. `H^0(S_{w,infty})=0` and the induced strict degree-one local condition
-   `N_w^str:=H^1(S_{w,infty})`
-   injects into the Kummer norm-limit module
-   `M_w^Kum`;
-2. the canonical truncation
-   `tau_{<=1}S_{w,infty} ~= N_w^str[-1]`
-   therefore maps canonically to `U_{w,infty}^{+,Kum}`;
-3. writing
-   `Z_w^str:=H^2(S_{w,infty})`,
-   the strict local complex is determined by its Postnikov class
-   `kappa_w^str in Ext^2_{Lambda_w}(Z_w^str,N_w^str)`;
-4. the canonical `H^1` inclusion `u_w:N_w^str->M_w^Kum` extends to a derived local-condition morphism
-   `S_{w,infty}->U_{w,infty}^{+,Kum}`
-   if and only if
-   `(u_w)_*(kappa_w^str)=0`
-   in
-   `Ext^2_{Lambda_w}(Z_w^str,M_w^Kum)`;
-5. when this obstruction vanishes, the set of lifts inducing `u_w` is a torsor under
-   `Ext^1_{Lambda_w}(Z_w^str,M_w^Kum)`.
+be the protected WP45A Kummer local condition.
 
-At odd non-`2` places the protected unramified strict local complex has no degree-two term, so `Z_w^str=0`; the comparison lift is therefore canonical there. The only possible derived lifting obstruction is concentrated at the good-ordinary places `w|2`.
+The strict and Kummer degree-one Iwasawa local conditions coincide canonically:
+
+`H^1(S_w) ~= M_w^Kum`.
+
+Therefore
+
+`K_w^Kum ~= tau_{<=1}S_w`
+
+as local conditions over the ambient local Iwasawa cochain complex. There is a canonical reverse comparison
+
+`K_w^Kum -> S_w`.
+
+At odd places the map is an isomorphism. At `w|2`, put
+
+`m_2:=ord_2(3-a_2)`.
+
+Using the protected WP46A MATHFORGE descent theorem together with finite-layer local Tate duality, WP46A proves
+
+`Z_w^str:=H^2(S_w)
+ ~= Lambda_w/(2^{m_2},gamma_w-1)
+ ~= Z/2^{m_2}Z`,
+
+with trivial `Gamma_w` action.
+
+Hence the canonical local comparison triangle is
+
+`K_w^Kum
+ -> S_w
+ -> Z_w^str[-2]
+ -> K_w^Kum[1]`.
+
+This route requires no forward Postnikov retraction and no vanishing assumption on the strict Postnikov class.
+
+WP46A also closes the remaining WP45A local kernel at `w|2`:
+
+`B_w^Kum=0`.
+
+Consequently the full Kummer specialization defect satisfies
+
+`0 -> (M_w^Kum)_{Gamma_w}
+   -> H^1(U_{w,0}^{+,Kum})
+   -> U_w
+   -> 0`.
+
+Combining this with strict descent and the protected finite strict/Kummer quotient gives a canonical derived-control filtration
+
+`0 -> Z_w^str
+   -> U_w
+   -> R_w
+   -> 0`,
+
+where
+
+`R_w:=H^1(K_w,T_w^-)_tors`
+
+and
+
+`len Z_w^str=m_2`, `len U_w=2m_2`, `len R_w=m_2`.
+
+Protected WP28 independently gives
+
+`0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0`.
+
+WP46A does not identify these two filtrations merely from equal lengths.
 
 ## Refined boundary
 
@@ -55,28 +98,39 @@ The former boundary
 
 is narrowed to
 
-`MISSING_P2_ORDINARY_STRICT_POSTNIKOV_PUSHFORWARD_AND_LIFT_CHOICE_AT_2`.
+`MISSING_P2_MAP_LEVEL_RECONCILIATION_OF_STRICT_H2_AND_FORMAL_UNIVERSAL_NORM_FILTRATIONS`.
 
-A successor must evaluate the two ordinary local groups
+A successor must compare the two exact filtrations of the same `U_w` map-by-map. Only then may one identify
 
-`Ext^2_{Lambda_w}(Z_w^str,M_w^Kum)`
+`Z_w^str` with `F_w^norm`
+
+or transport the resulting local correction into WP40's global dual defect/Bockstein normalization.
+
+## Optional forward-retraction algebra
+
+If a forward strict-to-Kummer retraction is nevertheless desired, WP46A computes its obstruction groups explicitly. With
+
+`a=2^{m_2}`, `t=gamma_w-1`,
+
+one has
+
+`Ext^2_{Lambda_w}(Z_w^str,M_w^Kum)
+ ~= M_w^Kum/(aM_w^Kum+tM_w^Kum)`
 
 and
 
-`Ext^1_{Lambda_w}(Z_w^str,M_w^Kum)`,
+`Ext^1_{Lambda_w}(Z_w^str,M_w^Kum)
+ ~= ((M_w^Kum)_{Gamma_w})[a]`.
 
-show whether the pushed-forward Postnikov class vanishes, and then compare the resulting global cone with WP39/WP40.
+These groups no longer control the canonical comparison route.
 
 ## Claim firewall
 
 WP46A does not prove:
 
-- vanishing of the ordinary Postnikov obstruction;
-- uniqueness of a strict-to-Kummer comparison lift at `w|2`;
-- perfectness of the Kummer Iwasawa Selmer complex;
-- `B_w^Kum=0`;
-- cancellation of the formal universal-norm term;
-- that `D_K` is a Bockstein defect;
+- `Z_w^str=F_w^norm` map-by-map;
+- `R_w=E_tilde(F_2)` under the exact comparison maps;
+- the global WP40 defect `D_K` is a Bockstein or height defect;
 - fixed-`2` height nondegeneracy;
 - D1c, D2c–D2e;
 - BSD or MATHCERT certification.
