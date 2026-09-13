@@ -1,0 +1,45 @@
+operation: BSD-R2-A1-WP54A-GLOBAL-QORD-RECONCILIATION
+protected_predecessors:
+  mathsolve: c0ef44b5dca27ccb5823d1e6667899c6777db93d
+  mathforge: 52137efd71f1ece6f6a02bbb50c2a3acd21e4b40
+claims:
+  - id: BSD-A1-WP54A-IDELIC-VOLUME-001
+    status: proved_bounded
+    statement: >-
+      With CST quotient measures at every finite place and arbitrary formal
+      archimedean volume V_infinity, the torus quotient has exact volume
+      (h_K/u_K) V_infinity product_ell m_ell.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP54A-ARCH-VOLUME-001
+    status: proved_bounded
+    statement: >-
+      Disegni's adelic volume-one normalization with CST finite measures forces
+      V_infinity=(u_K/h_K)|D_K|^(1/2).
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP54A-GLOBAL-QORD-001
+    status: proved_bounded
+    statement: >-
+      For the protected auxiliary field and source-compatible packet,
+      Q^ord=(u_K/h_K) product_{ell|N}(1+ell^{-1}) exactly, with no unspecified unit.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP54A-GLOBAL-QORD-VAL-001
+    status: proved_bounded
+    statement: >-
+      ord_2(Q^ord)=ord_2(u_K)-ord_2(h_K)+sum_{ell|N} ord_2(ell+1).
+    promotion: bounded_mathematical
+boundaries:
+  - MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION
+  - MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+resolved:
+  - RESOLVED_WP52A_FINITE_COMPARISON_DETERMINANT
+  - RESOLVED_WP53A_SPLIT_BAD_PRIME_NEWVECTOR_FACTOR
+  - RESOLVED_WP54A_GLOBAL_QORD_RECONCILIATION
+firewall:
+  - BSD-R2-A1 remains SELECTED_RESEARCH_TARGET_UNPROVED
+  - no height nondegeneracy promotion
+  - no height-one-(2) analytic determinant promotion
+  - no cancellation with Tamagawa determinant regulator or period ledgers without proof
+  - no WP00 or final descent promotion
+  - no MATHCERT certification promotion
