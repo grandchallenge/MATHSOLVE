@@ -19,27 +19,17 @@ For each relevant place `w` of the protected imaginary quadratic field `K`, put
 
 `A_{w,n}:=E(K_{n,w})^hat_2`,
 
-`M_w^Kum:=inverse_limit_n A_{w,n}`
+`M_w^Kum:=inverse_limit_n A_{w,n}`.
 
-under local norm.
-
-WP45A proves the point system is Mittag–Leffler, hence
-
-`R^1 lim_n A_{w,n}=0`.
-
-Every finite local field has finite `2`-power torsion on `E`, so
-
-`H^0(K_{n,w},T_2(E))=0`.
-
-Consequently local Iwasawa cohomology satisfies
+WP45A proves the point system is Mittag–Leffler, so `R^1 lim A_{w,n}=0`. Since local `T_2(E)`-invariants vanish at every finite layer,
 
 `H^1_Iw(K_w,T_2(E)) ~= inverse_limit_n H^1(K_{n,w},T_2(E))`,
 
-and the norm/corestriction-compatible finite Kummer injections give a canonical injection
+and the finite Kummer injections give
 
-`M_w^Kum -> H^1_Iw(K_w,T_2(E))`.
+`M_w^Kum subset H^1_Iw(K_w,T_2(E))`.
 
-Using Nekovář's protected definition of a local condition, define canonically
+The canonical simple local condition is
 
 `U_{w,infty}^{+,Kum}
  := Fib(
@@ -47,55 +37,55 @@ Using Nekovář's protected definition of a local condition, define canonically
       -> (H^1_Iw(K_w,T)/M_w^Kum)[-1]
     )`.
 
-Then
+It has only `H^1=M_w^Kum`. After completed induction from each decomposition subgroup, these local conditions assemble into a compact Kummer Iwasawa Selmer complex over the global Iwasawa algebra. At base level its `H^1` is exactly the classical compact Kummer Selmer group `S_2(E/K)` used in WP39.
 
-`H^0(U_{w,infty}^{+,Kum})=0`,
+For local augmentation `Lambda_w->Z_2`, ambient Iwasawa cohomology specializes exactly to `RΓ(K_w,T)`. Since both ambient degree-zero cohomology groups vanish, the hyper-Tor edge sequence gives
 
-`H^1(U_{w,infty}^{+,Kum})=M_w^Kum`,
+`H^1_Iw(K_w,T)[gamma_w-1]=0`.
 
-and there is a canonical local-condition morphism
+Therefore
 
-`U_{w,infty}^{+,Kum} -> RΓ_Iw(K_w,T)`.
+`M_w^Kum[gamma_w-1]=0`.
 
-At the base field the same construction with
+Let
 
-`E(K_w)^hat_2 subset H^1(K_w,T)`
+`Q_w^Iw:=H^1_Iw(K_w,T)/M_w^Kum`.
 
-gives the classical compact Kummer local condition. Therefore the global compact Kummer Iwasawa Selmer complex can be assembled canonically by Nekovář's mapping-fibre definition. Its base-level degree-one cohomology is the classical compact Kummer Selmer group used in WP39.
+The sole remaining derived kernel is
 
-For augmentation `Lambda_w=Z_2[[Gamma_w]] -> Z_2`, the local source is quasi-isomorphic to `M_w^Kum[-1]`, so derived specialization is governed by
+`B_w^Kum
+ := ker((M_w^Kum)_{Gamma_w}->E(K_w)^hat_2)
+ ~= Q_w^Iw[gamma_w-1]`.
 
-`[M_w^Kum --(gamma_w-1)--> M_w^Kum][-1]`.
+The local derived specialization cone satisfies exactly
 
-Comparing with the base Kummer local condition gives a canonical local defect complex `Delta_w^Kum` with
+`H^{-1}=0`,
 
-`H^{-1}(Delta_w^Kum)=M_w^Kum[gamma_w-1]`,
+`H^0=B_w^Kum`,
 
-`H^0(Delta_w^Kum)=ker((M_w^Kum)_{Gamma_w}->E(K_w)^hat_2)`,
+`H^1=U_w`,
 
-`H^1(Delta_w^Kum)=U_w`.
+where `U_w` is the protected universal-norm cokernel.
 
-Thus the compact Kummer cochain realization and its local derived specialization defect are explicit. The unknown derived correction consists only of two named kernel modules plus the protected arithmetic cokernel `U_w`.
-
-## Refined boundary
-
-The surviving D2b boundary becomes
-
-`MISSING_P2_STRICT_TO_KUMMER_IWASAWA_COMPARISON_AND_DERIVED_DEFECT_IDENTIFICATION_OVER_K`.
-
-A successor must construct the Iwasawa-level morphism from the protected strict Greenberg Selmer complex to this Kummer Selmer complex, evaluate or retain the two kernel modules, and identify the specialized comparison cone map-by-map with WP39/WP40.
-
-At `w|2`, the protected filtration
+At `w|2`,
 
 `0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0`
 
-must remain visible. No cancellation of `F_w^norm` is authorized before the strict/Kummer derived comparison proves it.
+remains explicit.
+
+## Refined boundary
+
+The surviving D2b boundary is
+
+`MISSING_P2_STRICT_TO_KUMMER_IWASAWA_COMPARISON_AND_DERIVED_DEFECT_IDENTIFICATION_OVER_K`.
+
+A successor must construct the Iwasawa-level strict-to-Kummer morphism, evaluate or retain `B_w^Kum=Q_w^Iw[gamma_w-1]`, and identify the derived comparison cone map-by-map with WP39/WP40. The formal place-`2` norm term may not be cancelled before that comparison proves it.
 
 ## Claim firewall
 
 WP45A does not prove:
 
-- that either derived kernel module vanishes;
+- `B_w^Kum=0`;
 - perfectness of the Kummer Iwasawa Selmer complex;
 - existence of the strict-to-Kummer Iwasawa comparison morphism;
 - cancellation of the extra formal universal-norm term at `2`;
