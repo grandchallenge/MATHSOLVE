@@ -1,0 +1,65 @@
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP46A-STRICT-KUMMER-CANONICAL-COMPARISON
+claims:
+  - claim_id: BSD-A1-WP46A-FINITE-H2-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      At every finite layer above an ordinary place w|2,
+      H^2(K_{n,w},T_w^+) is cyclic of order 2^m_2, where
+      m_2=ord_2(3-a_2). This uses protected local Tate duality, total
+      ramification of the cyclotomic tower, and the protected WP39 ordinary
+      quotient normalization.
+  - claim_id: BSD-A1-WP46A-ORDINARY-H2-002
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      Protected literal-p=2 Chapter-8 Iwasawa descent plus the bounded
+      coinvariant lemma gives
+      Z_w^str=H^2(U_{w,infty}^{+,str}) ~=
+      Lambda_w/(2^m_2,gamma_w-1), with trivial Gamma_w action.
+  - claim_id: BSD-A1-WP46A-IW-H1-EQUALITY-003
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      At every relevant place, the strict and classical-Kummer degree-one
+      local conditions coincide at Iwasawa level:
+      H^1(U_{w,infty}^{+,str}) ~= M_w^Kum canonically inside local
+      Iwasawa H^1.
+  - claim_id: BSD-A1-WP46A-REVERSE-COMPARISON-004
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      The WP45A Kummer local condition is canonically the lower truncation
+      tau_{<=1} of the strict local condition. Hence there is a canonical
+      local-condition triangle Kummer_infty -> strict_infty ->
+      Z_w^str[-2] ->. At odd places Z_w^str=0.
+  - claim_id: BSD-A1-WP46A-BVANISH-005
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      At each w|2, strict Iwasawa descent and the finite strict-to-Kummer
+      injection imply B_w^Kum=0. Thus the WP45A Kummer specialization map
+      on coinvariants is injective.
+  - claim_id: BSD-A1-WP46A-U-FILTRATION-006
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      At each w|2 there is a canonical exact derived-control filtration
+      0 -> Z_w^str -> U_w -> R_w -> 0, where
+      R_w=H^1(K_w,T_w^-)_tors. The three lengths are m_2, 2m_2, m_2.
+  - claim_id: BSD-A1-WP46A-EXT-007
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      If a forward strict-to-Kummer retraction is desired, its intrinsic
+      obstruction and ambiguity groups are explicitly
+      Ext^2 ~= M_w^Kum/(2^m_2 M_w^Kum +(gamma_w-1)M_w^Kum) and
+      Ext^1 ~= ((M_w^Kum)_Gamma_w)[2^m_2]. The canonical reverse comparison
+      does not require these groups to vanish.
+  - claim_id: BSD-A1-WP46A-BOUNDARY-008
+    status: REFINED_BOUNDARY
+    statement: >-
+      D2b is narrowed to
+      MISSING_P2_MAP_LEVEL_RECONCILIATION_OF_STRICT_H2_AND_FORMAL_UNIVERSAL_NORM_FILTRATIONS:
+      compare 0 -> Z_w^str -> U_w -> R_w -> 0 with protected WP28
+      0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0 map-by-map.
+  - claim_id: BSD-A1-WP46A-FIREWALL-009
+    status: CLAIM_FIREWALL
+    statement: >-
+      WP46A does not identify Z_w^str with F_w^norm or R_w with the
+      reduction group merely from equal lengths; it does not identify D_K
+      with a Bockstein/height defect, prove BSD-R2-A1, or certify a claim.
