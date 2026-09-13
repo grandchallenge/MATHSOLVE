@@ -19,7 +19,7 @@ After re-fetching protected live state, read:
 1. this file;
 2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md`;
 3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md`;
-4. the latest protected frontier, currently `handoffs/BSD-001/WP53_FRONTIER.md` after WP53A protection;
+4. the latest protected frontier, `handoffs/BSD-001/WP54_FRONTIER.md` after WP54A protection;
 5. the work package named by that frontier;
 6. materially used protected predecessors;
 7. current protected MATHFORGE BSD source records before importing any new theorem.
@@ -61,7 +61,11 @@ The selected theorem is exactly
   `Q_{ell,dt_ell^CST}=1+ell^(-1)`
   with
   `ord_2 Q_{ell,dt_ell^CST}=ord_2(ell+1)`.
-  For Disegni local measure `dt_ell=s_ell dt_ell^CST`, the exact factor is `s_ell(1+ell^(-1))`; no unit claim is made about `s_ell`. The local newvector part of D2c is resolved.
+- WP54A: choosing CST quotient measures at all finite places and the unique formal archimedean scaling giving Disegni adelic volume one yields
+  `Q^ord=(u_K/h_K) product_{ell|N}(1+ell^(-1))`
+  and
+  `ord_2(Q^ord)=ord_2(u_K)-ord_2(h_K)+sum_{ell|N}ord_2(ell+1)`.
+  Here `h_K=#Cl(K)` and `u_K=[O_K^x:{+1,-1}]`. No unspecified unit remains. D2c is resolved.
 
 ## Live unresolved boundaries
 
@@ -79,9 +83,9 @@ The selected theorem is exactly
 
 ### D2c
 
-`MISSING_P2_DISEGNI_GLOBAL_MEASURE_AND_AUXILIARY_QORD_RECONCILIATION`.
+`RESOLVED_WP54A_GLOBAL_QORD_RECONCILIATION`.
 
-Protected local `Q^ord_2=1` and the exact bad-prime CST factors do not yet determine global `Q^ord`; the remaining measure and auxiliary-vector ledger must be reconciled explicitly.
+The exact global ordinary/test-vector factor is now known in the protected WP54A normalization. No cancellation with Tamagawa, determinant, period, regulator, or WP00 factors is implied.
 
 ### D2d
 
@@ -93,17 +97,23 @@ Protected local `Q^ord_2=1` and the exact bad-prime CST factors do not yet deter
 
 ## Immediate executable successors
 
-### WP54A — global `Q^ord` measure/vector ledger
+### WP55A — classical Gross–Zagier/WP00 normalization
 
-Fix one source-compatible decomposition of Disegni's volume-one adelic torus measure and evaluate the complete remaining product in Lemma 4.3.3 / (4.3.4): local measure rescalings, all surviving nonbad finite places, the away-from-`S p infinity` vector ratio, and the archimedean/global factor. Preserve every power of `2`.
+Transport the exact source-compatible p-adic Gross–Zagier/test-vector normalization, including the WP54A class-number/unit and bad-prime factors, to the protected WP00 complex BSD normalization. Retain every scalar until an exact comparison proves how it combines or cancels.
+
+Any materially new external comparison theorem must first be admitted through MATHFORGE.
 
 ### WP54B — height-one `(2)` analytic determinant screen
 
 Continue only the narrow D1c search. An admissible theorem must work literally at `p=2`, retain the height-one prime containing `2`, and provide an analytic determinant/characteristic generator compatible with the protected primitive rank-one determinant datum. Do not reopen broad odd-prime main-conjecture reconnaissance.
 
+### After D2d — exact WP06 quadratic descent
+
+Replay protected WP06 discrepancy accounting only after the analytic side has been transported into the exact WP00 normalization. No power of `2` may disappear during descent.
+
 ## Provider-index state
 
-MATHFORGE protected main `c1aaf027df8e03fd79783cfc8ed14c9d58632a50` indexes all 33 current BSD source audits through the WP53 split-Steinberg toric-factor admission.
+MATHFORGE protected main `52137efd71f1ece6f6a02bbb50c2a3acd21e4b40` contains the protected WP54 Disegni/Cai–Shu–Tian source audit used by this package. The canonical `provider_manifests/BSD-001.json` still requires its administrative WP54 index reconciliation; that indexing debt does not enlarge the admitted source interface and must be closed before importing another new BSD theorem.
 
 ## Claim firewall
 
@@ -112,8 +122,7 @@ Do not promote:
 - `BSD-R2-A1`;
 - `D_K=0`, `K_K^sil=0`, or `J_K=R_K`;
 - height existence to fixed-`2` height nondegeneracy;
-- the CST-normalized bad-prime product to complete `Q^ord`;
-- any measure scalar `s_ell` or `s_bad` to a `2`-adic unit without proof;
+- the WP54A class-number/unit or bad-prime factors to cancellation with another ledger without proof;
 - coincidence of prime labels to cancellation with WP34 Tamagawa/Euler factors;
 - an odd-prime result to literal integral `p=2`;
 - source admission to MATHCERT certification;
