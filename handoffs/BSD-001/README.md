@@ -19,7 +19,7 @@ After re-fetching protected live state, read:
 1. this file;
 2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md`;
 3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md`;
-4. the latest protected frontier, currently `handoffs/BSD-001/WP46_FRONTIER.md` after WP46A protection;
+4. the latest protected frontier, currently `handoffs/BSD-001/WP47_FRONTIER.md` after WP47A protection;
 5. the work package named by that frontier;
 6. any protected predecessor materially used by the next proof step;
 7. current protected MATHFORGE BSD provider records before using external theorems.
@@ -63,10 +63,11 @@ Protected WP20 gives the rank-one determinant/Bockstein factorization; WP35 supp
 - WP41A: separates strict cyclotomic Bockstein deformation from fixed-level strict/Kummer comparison.
 - WP41B: exact Disegni ordinary normalization `e_{2,infinity}^{-1}Q_special=Q^ord`.
 - WP42B: canonical split-prime-`2` local factor `Q^ord_{2,dt_2^can}=1` with explicit measure firewall.
-- WP43A: Nekovář strict-Greenberg first-order cyclotomic augmentation is exact and its specialization connecting morphism is the WP37 Bockstein.
+- WP43A: strict Greenberg first-order cyclotomic augmentation is exact and its specialization connecting morphism is the WP37 Bockstein.
 - WP44A: primitive classical-Kummer cyclotomic control transports integrally to `K`; local norm-limit Kummer modules have exact base-projection cokernel `U_w`.
-- WP45A: canonical compact Kummer Iwasawa local conditions and global Selmer complex; local Kummer augmentation has no `Tor_1` term and defect `H^0=B_w^Kum`, `H^1=U_w`.
-- WP46A: strict and Kummer degree-one local conditions coincide at Iwasawa level; the Kummer condition is the lower truncation of the strict condition. At `w|2`, `Z_w^str:=H^2(U_{w,infty}^{+,str})` is the cyclic trivial `Lambda_w`-module `Lambda_w/(2^{m_2},gamma_w-1)`, `B_w^Kum=0`, and there is a canonical exact filtration `0 -> Z_w^str -> U_w -> R_w -> 0`.
+- WP45A: canonical compact Kummer Iwasawa local conditions and global Selmer complex; local Kummer augmentation has no `Tor_1` term.
+- WP46A: the Kummer local condition is the lower truncation of the strict condition. At `w|2`, `Z_w^str=H^2(U_{w,infty}^{+,str}) ~= Lambda_w/(2^{m_2},gamma_w-1)`, `B_w^Kum=0`, and `0 -> Z_w^str -> U_w -> R_w -> 0`.
+- WP47A: the WP46A derived-control filtration and WP28 formal/reduction universal-norm filtration are identical map-by-map. The compact strict/Kummer quotient is literal reduction under the canonical isomorphism `rho_w:E_tilde(F_2)~=R_w`; hence `Z_w^str=F_w^norm` as the same subgroup of `U_w`.
 
 ## Current D1 boundary
 
@@ -84,67 +85,33 @@ Kato gives literal-`p=2` control away from the height-one prime containing `2`; 
 
 WP37 proves existence of the first height, not nonvanishing. WP38 records that the closest screened derived-height/Stark-system and Eisenstein-Heegner routes do not apply to the protected surjective-`E[2]` branch.
 
-### D2b — map-level strict/formal reconciliation at ordinary `2`
+### D2b — global strict/Kummer comparison cone and WP40 defect
 
-At each `w|2`, put
+The ordinary local map-level mismatch is closed. At each `w|2`,
 
-`m_2:=ord_2(3-a_2)`.
+`0 -> Z_w^str -> U_w -> R_w -> 0`
 
-WP46A proves
+and
 
-`Z_w^str
- := H^2(U_{w,infty}^{+,str})
- ~= Lambda_w/(2^{m_2},gamma_w-1)
- ~= Z/2^{m_2}Z`,
+`0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0`
 
-and the canonical reverse comparison triangle
-
-`U_{w,infty}^{+,Kum}
- -> U_{w,infty}^{+,str}
- -> Z_w^str[-2]
- ->`.
-
-It also proves
-
-`B_w^Kum=0`
-
-and the exact derived-control filtration
-
-`0 -> Z_w^str
-   -> U_w
-   -> R_w
-   -> 0`,
-
-where
-
-`R_w:=H^1(K_w,T_w^-)_tors`.
-
-Protected WP28 independently gives the literal reduction/formal norm filtration
-
-`0 -> F_w^norm
-   -> U_w
-   -> E_tilde(F_2)
-   -> 0`.
-
-The corresponding lengths agree:
-
-`len Z_w^str=len R_w=m_2`,
-
-`len U_w=2m_2`,
-
-`#F_w^norm=#E_tilde(F_2)=2^{m_2}`.
-
-The live boundary is
-
-`MISSING_P2_MAP_LEVEL_RECONCILIATION_OF_STRICT_H2_AND_FORMAL_UNIVERSAL_NORM_FILTRATIONS`.
-
-A successor must compare the actual maps defining these two exact sequences. Matching cardinalities do not authorize the identifications
+are the same filtration, with
 
 `Z_w^str=F_w^norm`
 
-or
+inside `U_w` and canonical
 
-`R_w=E_tilde(F_2)`.
+`rho_w:E_tilde(F_2) ~= R_w`.
+
+The local quotient map satisfies
+
+`qbar_w=rho_w o redbar_w`.
+
+The live boundary is now
+
+`MISSING_P2_GLOBAL_STRICT_KUMMER_COMPARISON_CONE_TO_WP40_BOCKSTEIN_DEFECT`.
+
+A successor must assemble the local Kummer-to-strict comparison triangles into the global Selmer-complex comparison, compute derived cyclotomic augmentation of the global cone, and identify its finite specialization map-by-map with protected WP39/WP40 `J_K,D_K`. Only then may `D_K` be compared with the protected Bockstein/height triangle.
 
 ### D2c — ordinary Disegni local factors
 
@@ -172,36 +139,31 @@ Retain every plus/minus overlap, twist, period, Tamagawa, and local term.
 
 ## Immediate executable successors
 
-### WP47A — map-level formal/strict reconciliation at `2`
+### WP48A — global strict/Kummer comparison cone
 
-Compare, in one commuting finite/infinite-level diagram:
+Use completed induction and Nekovář's mapping-fibre functoriality to assemble the protected local morphisms
 
-1. the strict Iwasawa descent boundary yielding `Z_w^str -> U_w`;
-2. Tan's formal/reduction universal-norm injection `F_w^norm -> U_w`;
-3. Nekovář/Greenberg's compact strict-to-Kummer quotient map to `R_w`;
-4. literal reduction `U_w -> E_tilde(F_2)`.
+`U_{w,infty}^{+,Kum} -> U_{w,infty}^{+,str}`
 
-The target is a map-level proof or refutation of equality of the two filtrations. The primary Greenberg Proposition 2.5 proof uses the formal-group/reduction diagram, but translation to the compact `T` comparison must preserve the local-duality orientation explicitly.
+into the global comparison. Compute the cone and its derived augmentation. The finite specialized maps must recover WP39's actual image `J_K` and WP40's dual annihilator `D_K`, not just their lengths.
 
-### WP47B — split semistable bad-prime toric factors
+### WP48B — split semistable bad-prime toric factors
 
-Bind the exact bad-prime newvector in Disegni's `v`-new packet to an essential Whittaker vector and evaluate both normalized GL2×GL1 zeta integrals, including the precise local Haar-measure scalar and denominator pairing. Do not infer a unit from an interpolation theorem alone.
+Bind and evaluate the exact normalized split Steinberg/newvector toric factors in Disegni's packet, including Haar measure, local L-factors, denominator pairing, and Tamagawa-sensitive scalars. Do not infer a unit from interpolation alone.
 
 Any new external theorem premise must first be admitted through MATHFORGE.
 
-## Administrative source-index debt
+## Provider-index state
 
-The canonical MATHFORGE `provider_manifests/BSD-001.json` remains stale after WP36 and does not yet index the protected WP37–WP46 source audits. This is an administrative discoverability defect, not a theorem defect. Reconcile the full missing range in one maintenance tranche rather than patching only the latest source.
+MATHFORGE protected main `4306aaeef25ac0923e4442ca1c8c1068ed55b514` reconciles the canonical BSD provider manifest against all 30 protected native BSD source audits through WP46A. No provider-index maintenance debt remains at the current frontier.
 
 ## Claim firewall
 
 Do not promote:
 
 - `BSD-R2-A1`;
-- `Z_w^str=F_w^norm` from matching lengths;
-- `R_w=E_tilde(F_2)` from matching lengths;
-- the canonical reverse comparison to perfectness of either global complex;
-- `D_K` to a Bockstein or height defect before map-level reconciliation;
+- `D_K` to a Bockstein/height defect before the global comparison cone is fixed;
+- `D_K=0` or `J_K=R_K`;
 - height existence to height nondegeneracy;
 - canonical local `Q^ord_2=1` to global `Q^ord=1`;
 - interpolation of a local zeta integral to an explicit semistable value;
