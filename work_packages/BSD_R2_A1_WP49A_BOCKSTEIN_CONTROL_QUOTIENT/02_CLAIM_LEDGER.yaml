@@ -1,0 +1,43 @@
+operation: BSD-R2-A1-WP49A-BOCKSTEIN-CONTROL-QUOTIENT
+state: PROVED_BOUNDED_BOCKSTEIN_CONTROL_SEPARATION
+protected_predecessor: 05a45bd103d33ee828df9f3ff6050a895635a6d7
+provider_state: 79f7c88cf4e59886902c2f12d29d7c73afced379
+claims:
+  - id: BSD-A1-WP49A-CONE-BOCKSTEIN-001
+    status: proved
+    statement: The Bockstein of the WP48A comparison cone canonically identifies its augmentation Tor_1 copy with its specialization copy under the protected tangent convention.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP49A-LOCALIZED-BOCKSTEIN-002
+    status: proved
+    statement: The WP48A comparison boundary lambda_K is exactly the ordinary-local projection of the protected strict cyclotomic Bockstein; no hidden p=2 unit or scalar is introduced.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP49A-INTERSECTION-003
+    status: proved
+    statement: The full global Kummer-control image intersects the local tangent defect exactly in im(lambda_K).
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP49A-CONTROL-JK-004
+    status: proved
+    statement: There is an exact sequence 0 -> im(lambda_K) -> C_K^ctrl -> J_K -> 0.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP49A-DK-QUOTIENT-005
+    status: proved
+    statement: D_K is canonically the Pontryagin dual of U_K^aug modulo the sum of the local tangent defect and the full global Kummer-control image.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP49A-SEPARATION-006
+    status: proved
+    statement: The protected data do not identify D_K with any pure strict-Bockstein subquotient; an additional theorem characterizing the full global Kummer-control image is required.
+    promotion: bounded_mathematical
+boundaries:
+  - MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - MISSING_P2_GLOBAL_KUMMER_CONTROL_IMAGE_TO_STRICT_BOCKSTEIN_DUALITY
+  - MISSING_P2_DISEGNI_SPLIT_BAD_PRIME_NEWVECTOR_QORD_FACTORS
+  - MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION
+  - MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+forbidden_promotions:
+  - BSD-R2-A1
+  - D_K_EQUALS_ZERO
+  - J_K_EQUALS_R_K
+  - D_K_EQUALS_PURE_BOCKSTEIN_SUBQUOTIENT
+  - FIXED_P2_HEIGHT_NONDEGENERACY
+  - MATHCERT_CERTIFICATION
