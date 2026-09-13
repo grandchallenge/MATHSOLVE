@@ -12,15 +12,15 @@ For each local cyclotomic tower,
 
 `M_w^Kum=inverse_limit_n E(K_{n,w})^hat_2`
 
-is the protected norm-limit point module. WP45A proves the point system is Mittag-Leffler and that
+is the norm-limit point module. WP45A proves this inverse system is Mittag-Leffler and that
 
 `H^1_Iw(K_w,T_2(E)) ~= inverse_limit_n H^1(K_{n,w},T_2(E))`.
 
-The finite Kummer injections therefore give
+The finite Kummer injections therefore give a canonical inclusion
 
 `M_w^Kum subset H^1_Iw(K_w,T)`.
 
-The canonical simple local condition is
+Define the simple local condition
 
 `U_{w,infty}^{+,Kum}
  := Fib(
@@ -32,25 +32,46 @@ It has only
 
 `H^1=M_w^Kum`.
 
-These local conditions assemble into a compact Kummer Iwasawa Selmer complex `C_Kum,infty`; its base-level degree-one cohomology is exactly the classical compact Kummer Selmer group `S_2(E/K)` used in WP39.
+After completed induction from each decomposition-group algebra, these local conditions assemble into a compact Kummer Iwasawa Selmer complex `C_Kum,infty`; the base-level degree-one cohomology is exactly the classical compact Kummer Selmer group `S_2(E/K)` used in WP39.
 
 ## Exact local derived specialization defect
 
 Let
 
-`T_w^Kum:=M_w^Kum[gamma_w-1]`,
+`Q_w^Iw:=H^1_Iw(K_w,T)/M_w^Kum`.
 
-`B_w^Kum:=ker((M_w^Kum)_{Gamma_w}->E(K_w)^hat_2)`.
+Ambient local Iwasawa augmentation satisfies
 
-The cone `Delta_w^Kum` of derived augmentation from the Iwasawa Kummer local condition to the base Kummer local condition has exactly
+`RΓ_Iw(K_w,T) derived_tensor_{Lambda_w} Z_2 ~= RΓ(K_w,T)`.
 
-`H^{-1}(Delta_w^Kum)=T_w^Kum`,
+Both sides have zero `H^0`. The hyper-Tor edge sequence therefore gives
+
+`H^1_Iw(K_w,T)[gamma_w-1]=0`.
+
+Since `M_w^Kum` injects into this ambient module,
+
+`M_w^Kum[gamma_w-1]=0`.
+
+Thus the local Kummer source has no `Tor_1` augmentation term.
+
+Define
+
+`B_w^Kum
+ := ker((M_w^Kum)_{Gamma_w}->E(K_w)^hat_2)`.
+
+The exact coinvariant sequence identifies this remaining kernel canonically as
+
+`B_w^Kum ~= Q_w^Iw[gamma_w-1]`.
+
+The local derived specialization cone `Delta_w^Kum` therefore has exactly
+
+`H^{-1}(Delta_w^Kum)=0`,
 
 `H^0(Delta_w^Kum)=B_w^Kum`,
 
-`H^1(Delta_w^Kum)=U_w`.
+`H^1(Delta_w^Kum)=U_w`,
 
-The `H^1` term is already protected arithmetic data.
+where `U_w` is the protected universal-norm quotient.
 
 At each `w|2`,
 
@@ -90,7 +111,7 @@ The live boundary is now
 
 A successor must:
 
-1. evaluate or retain `T_w^Kum` and `B_w^Kum`;
+1. evaluate or retain `B_w^Kum ~= Q_w^Iw[gamma_w-1]`;
 2. construct the Iwasawa-level morphism from the protected strict Greenberg Selmer complex to `C_Kum,infty`;
 3. derive the comparison-cone specialization triangle;
 4. identify its finite-level maps with WP39's local target and global hit `J_K`;
@@ -118,11 +139,11 @@ The next local boundary remains
 
 ### WP46A — strict-to-Kummer Iwasawa comparison
 
-Use the protected finite-level strict/Kummer inclusions to construct a norm-compatible Iwasawa morphism
+Use the protected strict local conditions and the WP45A Kummer local conditions to construct a norm-compatible Iwasawa morphism
 
 `C_str,infty -> C_Kum,infty`.
 
-Then compute the derived augmentation of its cone. The place-`2` formal term `F_w^norm` and the two kernel modules `T_w^Kum`, `B_w^Kum` must be explicit in the resulting triangle.
+Compute derived augmentation of its cone. The remaining kernel `B_w^Kum`, the place-`2` formal term `F_w^norm`, and the finite quotient `U_w` must stay explicit until map-level cancellation or persistence is proved.
 
 ### WP46B — split semistable bad-prime `Q^ord` factors
 
@@ -133,7 +154,7 @@ Bind the exact bad-prime newvector in Disegni's `v`-new packet to an essential W
 Do not promote:
 
 - a canonical Kummer Iwasawa complex to perfectness;
-- unknown `T_w^Kum` or `B_w^Kum` to zero;
+- `B_w^Kum` to zero;
 - the full `U_w` at `2` to WP39's reduction-sized local target;
 - equal lengths at odd bad primes to a canonical isomorphism;
 - the formal universal-norm term to zero;
