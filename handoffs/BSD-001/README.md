@@ -19,7 +19,7 @@ After re-fetching protected live state, read:
 1. this file;
 2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md`;
 3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md`;
-4. the latest protected frontier, currently `handoffs/BSD-001/WP52_FRONTIER.md` after WP52A protection;
+4. the latest protected frontier, currently `handoffs/BSD-001/WP53_FRONTIER.md` after WP53A protection;
 5. the work package named by that frontier;
 6. materially used protected predecessors;
 7. current protected MATHFORGE BSD source records before importing any new theorem.
@@ -52,13 +52,16 @@ The selected theorem is exactly
 - WP44A–WP47A: compact Kummer Iwasawa complex, reverse Kummer-to-strict comparison, explicit strict `H^2`, and map-level `Z_w^str=F_w^norm` at both `w|2`.
 - WP48A: global reverse comparison cone and exact specialization octahedron; `J_K` and `D_K` recovered on the derived comparison surface.
 - WP49A: localized strict Bockstein identified exactly; full-control formula for `D_K^vee` proved.
-- WP50A: `R_K/J_K ~= K_K^sil` and `D_K ~= (K_K^sil)^vee`, where `K_K^sil` is the strict degree-two silent kernel.
-- WP51A: exact literal-`p=2` Matlis/Pontryagin duality gives `0 -> (K_K^sil)^perp -> S_str^dual -> D_K -> 0`; the first `Z_2`-valued height kills finite strict `H^2`, so the finite correction and first-height nondegeneracy are distinct.
-- WP52A: determinant additivity for
-  `C_str,0 -> C_Kum,0 -> V_K[-1]`
-  shows that the complete strict/Kummer determinant correction is `len_Z2 V_K`, not separate values of `j_K` or `d_K`. Exactly
+- WP50A: `R_K/J_K ~= K_K^sil` and `D_K ~= (K_K^sil)^vee`.
+- WP51A: exact literal-`p=2` Matlis/Pontryagin duality separates the finite strict-`H^2` correction from first-height nondegeneracy.
+- WP52A: determinant additivity for `C_str,0 -> C_Kum,0 -> V_K[-1]` gives the exact finite strict/Kummer determinant correction
   `len_Z2 V_K = 4 ord_2(3-a_2) + 2 sum_{ell|N} ord_2(c_ell)`.
   D2b is resolved at determinant-line level.
+- WP53A: for every selected odd bad semistable `ell|N`, the CST-normalized split-torus conductor-one factor is
+  `Q_{ell,dt_ell^CST}=1+ell^(-1)`
+  with
+  `ord_2 Q_{ell,dt_ell^CST}=ord_2(ell+1)`.
+  For Disegni local measure `dt_ell=s_ell dt_ell^CST`, the exact factor is `s_ell(1+ell^(-1))`; no unit claim is made about `s_ell`. The local newvector part of D2c is resolved.
 
 ## Live unresolved boundaries
 
@@ -74,13 +77,11 @@ The selected theorem is exactly
 
 `RESOLVED_WP52A_FINITE_COMPARISON_DETERMINANT`.
 
-The structural groups `J_K`, `D_K`, and `K_K^sil` need not vanish. Their separate lengths are not independent inputs to the protected strict/Kummer determinant normalization.
-
 ### D2c
 
-`MISSING_P2_DISEGNI_SPLIT_BAD_PRIME_NEWVECTOR_QORD_FACTORS`.
+`MISSING_P2_DISEGNI_GLOBAL_MEASURE_AND_AUXILIARY_QORD_RECONCILIATION`.
 
-Protected local `Q^ord_2=1` does not imply global `Q^ord=1`.
+Protected local `Q^ord_2=1` and the exact bad-prime CST factors do not yet determine global `Q^ord`; the remaining measure and auxiliary-vector ledger must be reconciled explicitly.
 
 ### D2d
 
@@ -92,17 +93,17 @@ Protected local `Q^ord_2=1` does not imply global `Q^ord=1`.
 
 ## Immediate executable successors
 
-### WP53A — split semistable bad-prime `Q^ord` factors
+### WP54A — global `Q^ord` measure/vector ledger
 
-Compute the normalized split Steinberg/newvector toric factors at every odd `ell|N`. Retain split/nonsplit multiplicative type, Steinberg twist, Haar measure, local `L`-factors, denominator pairing, newvector scaling, Tamagawa-sensitive scalars, and every power of `2`.
+Fix one source-compatible decomposition of Disegni's volume-one adelic torus measure and evaluate the complete remaining product in Lemma 4.3.3 / (4.3.4): local measure rescalings, all surviving nonbad finite places, the away-from-`S p infinity` vector ratio, and the archimedean/global factor. Preserve every power of `2`.
 
-### WP53B — height-one `(2)` analytic determinant screen
+### WP54B — height-one `(2)` analytic determinant screen
 
 Continue only the narrow D1c search. An admissible theorem must work literally at `p=2`, retain the height-one prime containing `2`, and provide an analytic determinant/characteristic generator compatible with the protected primitive rank-one determinant datum. Do not reopen broad odd-prime main-conjecture reconnaissance.
 
 ## Provider-index state
 
-MATHFORGE protected main `79302cdc05f3f11c56e048f68e9095d3280872a7` indexes all 32 current BSD source audits through the WP51 strict-H2 duality admission. WP52A uses no new external theorem premise.
+MATHFORGE protected main `c1aaf027df8e03fd79783cfc8ed14c9d58632a50` indexes all 33 current BSD source audits through the WP53 split-Steinberg toric-factor admission.
 
 ## Claim firewall
 
@@ -110,10 +111,10 @@ Do not promote:
 
 - `BSD-R2-A1`;
 - `D_K=0`, `K_K^sil=0`, or `J_K=R_K`;
-- the finite Matlis correction to a first-height radical;
 - height existence to fixed-`2` height nondegeneracy;
-- local `Q^ord_2=1` to global `Q^ord=1`;
-- a split bad-prime factor to a unit without exact calculation;
+- the CST-normalized bad-prime product to complete `Q^ord`;
+- any measure scalar `s_ell` or `s_bad` to a `2`-adic unit without proof;
+- coincidence of prime labels to cancellation with WP34 Tamagawa/Euler factors;
 - an odd-prime result to literal integral `p=2`;
 - source admission to MATHCERT certification;
 - novelty, priority, patentability, or commercial claims.
