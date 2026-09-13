@@ -1,0 +1,42 @@
+operation: BSD-R2-A1-WP53A-SPLIT-BAD-QORD
+protected_predecessors:
+  mathsolve: 3aae8375de252a782eaf82e0bb393814e033f857
+  mathforge: c1aaf027df8e03fd79783cfc8ed14c9d58632a50
+claims:
+  - id: BSD-A1-WP53A-LOCAL-QORD-001
+    status: proved_bounded
+    statement: >-
+      For every selected odd bad semistable ell|N, on the source-compatible
+      conductor-one split-torus test-vector line and in CST local Haar measure,
+      Q_{ell}=1+ell^{-1}, so ord_2(Q_ell)=ord_2(ell+1).
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP53A-BAD-PRODUCT-001
+    status: proved_bounded
+    statement: >-
+      The CST-normalized product over odd bad primes equals
+      product_{ell|N,ell odd}(1+ell^{-1}) and has 2-adic valuation
+      sum_{ell|N,ell odd} ord_2(ell+1).
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP53A-MEASURE-TRANSPORT-001
+    status: proved_bounded
+    statement: >-
+      If Disegni's chosen local component is dt_ell=s_ell dt_ell^CST, then
+      Q_{ell,dt_ell}=s_ell(1+ell^{-1}); the measure scalar is retained exactly.
+    promotion: bounded_mathematical
+boundaries:
+  - MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - MISSING_P2_DISEGNI_GLOBAL_MEASURE_AND_AUXILIARY_QORD_RECONCILIATION
+  - MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION
+  - MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+resolved:
+  - RESOLVED_WP52A_FINITE_COMPARISON_DETERMINANT
+  - RESOLVED_WP53A_SPLIT_BAD_PRIME_NEWVECTOR_FACTOR
+firewall:
+  - BSD-R2-A1 remains SELECTED_RESEARCH_TARGET_UNPROVED
+  - no unit claim for s_ell or s_bad
+  - no global Qord promotion
+  - no height nondegeneracy promotion
+  - no D1c promotion
+  - no WP00 or final descent promotion
+  - no MATHCERT certification promotion
