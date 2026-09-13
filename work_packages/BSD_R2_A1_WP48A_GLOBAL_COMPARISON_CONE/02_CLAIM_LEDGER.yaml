@@ -1,0 +1,59 @@
+operation: BSD-R2-A1-WP48A-GLOBAL-COMPARISON-CONE
+state: PROVED_BOUNDED_GLOBAL_DERIVED_COMPARISON
+protected_predecessor: f62436e7d153eab199c7c85a4f7fdc8791d0b959
+provider_state: 4306aaeef25ac0923e4442ca1c8c1068ed55b514
+claims:
+  - id: BSD-A1-WP48A-GLOBAL-CONE-001
+    status: proved
+    statement: >-
+      The canonical reverse Kummer-to-strict Iwasawa comparison globalizes, and its cone is the direct sum over w|2 of completed inductions of Z_w^str[-2]; odd places contribute zero.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP48A-AUG-CONE-002
+    status: proved
+    statement: >-
+      Derived cyclotomic augmentation of the global comparison cone has H^1 equal to the local strict-H2 module in the cyclotomic tangent direction and H^2 equal to its ordinary specialization copy.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP48A-FACTORIZATION-003
+    status: proved
+    statement: >-
+      The natural compact-Kummer derived augmentation factors through the exactly specialized strict Greenberg Selmer complex before the finite strict-to-Kummer enlargement.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP48A-KUMMER-DEFECT-004
+    status: proved
+    statement: >-
+      The global compact-Kummer augmentation cone is concentrated in degree one and equals the direct sum of the protected local universal-norm/component-group defects U_w.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP48A-FINITE-CONE-005
+    status: proved
+    statement: >-
+      The finite strict-to-Kummer comparison cone is concentrated in degree one; its module V_K fits canonically into 0 -> R_K -> V_K -> Z_2,K^loc -> 0.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP48A-OCTAHEDRAL-006
+    status: proved
+    statement: >-
+      The specialization octahedron gives the canonical exact sequence 0 -> Z_2,K^loc tensor t_cyc -> U_K^aug -> V_K -> Z_2,K^loc -> 0, and U_K^aug modulo the mapped local strict-H2/formal-norm subgroup is exactly R_K.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP48A-JK-RECOVERY-007
+    status: proved
+    statement: >-
+      The image of H^1(C_Kum,0)=S_2(E/K) in V_K lands in R_K=ker(V_K -> Z_2,K^loc) and is exactly the protected WP39 global-hit subgroup J_K.
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP48A-DK-DERIVED-008
+    status: proved
+    statement: >-
+      Using protected WP40 local Tate duality, D_K is canonically the annihilator of the global degree-one image J_K inside the R_K subobject of the specialized derived comparison cone.
+    promotion: bounded_mathematical
+boundaries:
+  - MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - MISSING_P2_IDENTIFICATION_OF_WP40_ANNIHILATOR_WITH_STRICT_BOCKSTEIN_SUBQUOTIENT
+  - MISSING_P2_DISEGNI_SPLIT_BAD_PRIME_NEWVECTOR_QORD_FACTORS
+  - MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION
+  - MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+forbidden_promotions:
+  - BSD-R2-A1
+  - D_K_EQUALS_BOCKSTEIN_DEFECT
+  - D_K_EQUALS_ZERO
+  - J_K_EQUALS_R_K
+  - FIXED_P2_HEIGHT_NONDEGENERACY
+  - MATHCERT_CERTIFICATION

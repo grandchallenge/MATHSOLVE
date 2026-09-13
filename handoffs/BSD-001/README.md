@@ -19,7 +19,7 @@ After re-fetching protected live state, read:
 1. this file;
 2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md`;
 3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md`;
-4. the latest protected frontier, currently `handoffs/BSD-001/WP47_FRONTIER.md` after WP47A protection;
+4. the latest protected frontier, currently `handoffs/BSD-001/WP48_FRONTIER.md` after WP48A protection;
 5. the work package named by that frontier;
 6. any protected predecessor materially used by the next proof step;
 7. current protected MATHFORGE BSD provider records before using external theorems.
@@ -56,18 +56,19 @@ Protected WP20 gives the rank-one determinant/Bockstein factorization; WP35 supp
 - WP16A/WP16B/WP19: exact primitive integral Selmer/Fitting invariant.
 - WP20: universal rank-one Bockstein/determinant factorization.
 - WP21–WP36: primitive cyclotomic control, local kernels, Poitou–Tate incidence, universal norms, unit-root reconciliation, finite comparison terms, square presentation, and finite twisted-reciprocity computation.
-- WP37: literal-`p=2` Nekovář cyclotomic Bockstein-height formalism over totally imaginary `K`; first height exists but nondegeneracy is not proved.
-- WP38: bounded fixed-`2` nondegeneracy screen; quadratic base change adds no index to the rank-one Mordell–Weil free lattice.
+- WP37: literal-`p=2` Nekovar cyclotomic Bockstein-height formalism over totally imaginary `K`; first height exists but nondegeneracy is not proved.
+- WP38: bounded fixed-`2` nondegeneracy screen; quadratic base change adds no index to the rank-one Mordell-Weil free lattice.
 - WP39: exact literal-`p=2` finite strict-Greenberg/compact-Kummer comparison over `K`; finite global hit `J_K` isolated.
-- WP40: exact Poitou–Tate annihilator theorem `ann(J_K)=D_K` and complementary-length identity.
+- WP40: exact Poitou-Tate annihilator theorem `ann(J_K)=D_K` and complementary-length identity.
 - WP41A: separates strict cyclotomic Bockstein deformation from fixed-level strict/Kummer comparison.
 - WP41B: exact Disegni ordinary normalization `e_{2,infinity}^{-1}Q_special=Q^ord`.
 - WP42B: canonical split-prime-`2` local factor `Q^ord_{2,dt_2^can}=1` with explicit measure firewall.
 - WP43A: strict Greenberg first-order cyclotomic augmentation is exact and its specialization connecting morphism is the WP37 Bockstein.
 - WP44A: primitive classical-Kummer cyclotomic control transports integrally to `K`; local norm-limit Kummer modules have exact base-projection cokernel `U_w`.
-- WP45A: canonical compact Kummer Iwasawa local conditions and global Selmer complex; local Kummer augmentation has no `Tor_1` term.
-- WP46A: the Kummer local condition is the lower truncation of the strict condition. At `w|2`, `Z_w^str=H^2(U_{w,infty}^{+,str}) ~= Lambda_w/(2^{m_2},gamma_w-1)`, `B_w^Kum=0`, and `0 -> Z_w^str -> U_w -> R_w -> 0`.
-- WP47A: the WP46A derived-control filtration and WP28 formal/reduction universal-norm filtration are identical map-by-map. The compact strict/Kummer quotient is literal reduction under the canonical isomorphism `rho_w:E_tilde(F_2)~=R_w`; hence `Z_w^str=F_w^norm` as the same subgroup of `U_w`.
+- WP45A: canonical compact Kummer Iwasawa local conditions and global Selmer complex; exact local derived augmentation defect.
+- WP46A: the Kummer local condition is the lower truncation of the strict condition. At `w|2`, `Z_w^str ~= Lambda_w/(2^{m_2},gamma_w-1)`, `B_w^Kum=0`, and `0 -> Z_w^str -> U_w -> R_w -> 0`.
+- WP47A: the strict-H2 and formal/reduction universal-norm filtrations are identical map-by-map; `Z_w^str=F_w^norm` inside `U_w` and `R_w` is literal reduction under the canonical ordinary connecting isomorphism.
+- WP48A: the reverse comparison globalizes; its derived augmentation produces the exact specialization octahedron. The finite cone contains `R_K` canonically, the global image in it is exactly `J_K`, and protected WP40 places `D_K=ann(J_K)` on this same derived comparison surface.
 
 ## Current D1 boundary
 
@@ -85,33 +86,49 @@ Kato gives literal-`p=2` control away from the height-one prime containing `2`; 
 
 WP37 proves existence of the first height, not nonvanishing. WP38 records that the closest screened derived-height/Stark-system and Eisenstein-Heegner routes do not apply to the protected surjective-`E[2]` branch.
 
-### D2b — global strict/Kummer comparison cone and WP40 defect
+### D2b — exact Bockstein identification of the WP40 annihilator
 
-The ordinary local map-level mismatch is closed. At each `w|2`,
+The local and global strict/Kummer comparison problems are now closed through the finite WP39/WP40 objects.
 
-`0 -> Z_w^str -> U_w -> R_w -> 0`
+WP48A gives
+
+`Q_infty ~= direct_sum_{w|2} Ind_w(Z_w^str[-2])`
+
+and, after derived augmentation,
+
+`H^1(Q_aug)=Z_2,K^loc tensor t_cyc`,
+
+`H^2(Q_aug)=Z_2,K^loc`.
+
+Its specialization octahedron yields
+
+`0 -> Z_2,K^loc tensor t_cyc
+   -> U_K^aug
+   -> V_K
+   -> Z_2,K^loc
+   -> 0`,
+
+with
+
+`R_K=ker(V_K -> Z_2,K^loc)`
 
 and
 
-`0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0`
+`im(S_2(E/K) -> V_K)=J_K subset R_K`.
 
-are the same filtration, with
+Protected WP40 then gives
 
-`Z_w^str=F_w^norm`
-
-inside `U_w` and canonical
-
-`rho_w:E_tilde(F_2) ~= R_w`.
-
-The local quotient map satisfies
-
-`qbar_w=rho_w o redbar_w`.
+`D_K=ann_{R_K^dual}(J_K)`.
 
 The live boundary is now
 
-`MISSING_P2_GLOBAL_STRICT_KUMMER_COMPARISON_CONE_TO_WP40_BOCKSTEIN_DEFECT`.
+`MISSING_P2_IDENTIFICATION_OF_WP40_ANNIHILATOR_WITH_STRICT_BOCKSTEIN_SUBQUOTIENT`.
 
-A successor must assemble the local Kummer-to-strict comparison triangles into the global Selmer-complex comparison, compute derived cyclotomic augmentation of the global cone, and identify its finite specialization map-by-map with protected WP39/WP40 `J_K,D_K`. Only then may `D_K` be compared with the protected Bockstein/height triangle.
+A successor must compare the protected strict Bockstein
+
+`beta_str:H~^1_f(K,T) -> H~^2_f(K,T) tensor t_cyc`
+
+with the canonical WP48A tangent term and identify exactly which Bockstein subquotient, if any, is Pontryagin-dual to `D_K`. Do not infer the answer from complementary lengths.
 
 ### D2c — ordinary Disegni local factors
 
@@ -129,7 +146,7 @@ The unresolved global `Q^ord` ledger still contains Haar-measure reconciliation,
 
 `MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION`.
 
-A `2`-adic height is not the WP00 Néron–Tate regulator.
+A `2`-adic height is not the WP00 Neron-Tate regulator.
 
 ### D2e — exact descent back to `Q`
 
@@ -139,15 +156,13 @@ Retain every plus/minus overlap, twist, period, Tamagawa, and local term.
 
 ## Immediate executable successors
 
-### WP48A — global strict/Kummer comparison cone
+### WP49A — strict Bockstein / WP40 annihilator comparison
 
-Use completed induction and Nekovář's mapping-fibre functoriality to assemble the protected local morphisms
+Construct the morphism between the protected first-order strict augmentation triangle and the WP48A reverse comparison triangle after derived augmentation. Track the global-to-local map on `H~^2_f(K,T)` and determine the exact finite Bockstein subquotient controlling `Z_2,K^loc tensor t_cyc`. Then compare its annihilator with `D_K` under the protected local Tate pairing.
 
-`U_{w,infty}^{+,Kum} -> U_{w,infty}^{+,str}`
+Do not assume height nondegeneracy.
 
-into the global comparison. Compute the cone and its derived augmentation. The finite specialized maps must recover WP39's actual image `J_K` and WP40's dual annihilator `D_K`, not just their lengths.
-
-### WP48B — split semistable bad-prime toric factors
+### WP49B — split semistable bad-prime toric factors
 
 Bind and evaluate the exact normalized split Steinberg/newvector toric factors in Disegni's packet, including Haar measure, local L-factors, denominator pairing, and Tamagawa-sensitive scalars. Do not infer a unit from interpolation alone.
 
@@ -162,7 +177,7 @@ MATHFORGE protected main `4306aaeef25ac0923e4442ca1c8c1068ed55b514` reconciles t
 Do not promote:
 
 - `BSD-R2-A1`;
-- `D_K` to a Bockstein/height defect before the global comparison cone is fixed;
+- `D_K` to a Bockstein image/kernel/cokernel/radical before WP49A;
 - `D_K=0` or `J_K=R_K`;
 - height existence to height nondegeneracy;
 - canonical local `Q^ord_2=1` to global `Q^ord=1`;
