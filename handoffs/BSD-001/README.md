@@ -65,7 +65,7 @@ Protected WP20 gives the rank-one determinant/Bockstein factorization; WP35 supp
 - WP42B: canonical split-prime-`2` local factor `Q^ord_{2,dt_2^can}=1` with explicit measure firewall.
 - WP43A: Nekovář strict-Greenberg first-order cyclotomic augmentation is exact and its specialization connecting morphism is the WP37 Bockstein.
 - WP44A: primitive classical-Kummer cyclotomic control transports integrally to `K`; local norm-limit Kummer modules have exact base-projection cokernel `U_w`.
-- WP45A: the norm-limit point systems are Mittag–Leffler; their Kummer images define canonical simple local-condition complexes inside local Iwasawa cohomology; these assemble into a compact Kummer Iwasawa Selmer complex whose base `H^1` is `S_2(E/K)`. Local derived augmentation has exactly three defect groups `T_w^Kum`, `B_w^Kum`, and `U_w`.
+- WP45A: the norm-limit point systems are Mittag–Leffler; their Kummer images define canonical simple local-condition complexes inside local Iwasawa cohomology; after completed induction these assemble into a compact Kummer Iwasawa Selmer complex whose base `H^1` is `S_2(E/K)`. Ambient augmentation proves the local Kummer `Tor_1` term vanishes, leaving only `B_w^Kum ~= (H^1_Iw/M_w^Kum)[gamma_w-1]` and the known cokernel `U_w` in the derived local defect.
 
 ## Current D1 boundary
 
@@ -91,15 +91,23 @@ WP40 proves
  = 2 ord_2(3-a_2)
    + 2 sum_{ell|N} ord_2(c_ell)`.
 
-WP45A constructs the compact Kummer Iwasawa Selmer complex canonically. For each local place define
+WP45A constructs the compact Kummer Iwasawa Selmer complex canonically. Put
 
-`T_w^Kum:=M_w^Kum[gamma_w-1]`,
+`Q_w^Iw:=H^1_Iw(K_w,T)/M_w^Kum`,
 
 `B_w^Kum:=ker((M_w^Kum)_{Gamma_w}->E(K_w)^hat_2)`.
 
-The local derived specialization cone satisfies
+Exact ambient augmentation gives
 
-`H^{-1}=T_w^Kum`,
+`M_w^Kum[gamma_w-1]=0`
+
+and
+
+`B_w^Kum ~= Q_w^Iw[gamma_w-1]`.
+
+The local derived specialization cone therefore has
+
+`H^{-1}=0`,
 
 `H^0=B_w^Kum`,
 
@@ -109,13 +117,13 @@ At each `w|2`,
 
 `0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0`,
 
-and `len U_w=2 ord_2(3-a_2)`, while WP39's local strict/Kummer target has only `ord_2(3-a_2)`.
+and `len U_w=2 ord_2(3-a_2)`, while WP39's local strict/Kummer target has length only `ord_2(3-a_2)`.
 
 The live boundary is
 
 `MISSING_P2_STRICT_TO_KUMMER_IWASAWA_COMPARISON_AND_DERIVED_DEFECT_IDENTIFICATION_OVER_K`.
 
-A successor must construct the Iwasawa-level strict-to-Kummer morphism, evaluate or retain `T_w^Kum` and `B_w^Kum`, derive the comparison-cone specialization triangle, and identify the finite maps with WP39/WP40 before relating `D_K` to any Bockstein/height defect.
+A successor must construct the Iwasawa-level strict-to-Kummer morphism, evaluate or retain `B_w^Kum`, derive the comparison-cone specialization triangle, and identify the finite maps with WP39/WP40 before relating `D_K` to any Bockstein/height defect.
 
 ### D2c — ordinary Disegni local factors
 
@@ -145,11 +153,11 @@ Retain every plus/minus overlap, twist, period, Tamagawa, and local term.
 
 ### WP46A — strict-to-Kummer Iwasawa comparison
 
-Use the protected finite-level strict/Kummer inclusions to construct a norm-compatible morphism
+Use the protected strict local conditions and WP45A Kummer local conditions to construct a norm-compatible morphism
 
 `C_str,infty -> C_Kum,infty`.
 
-Compute derived augmentation of its cone. Keep `T_w^Kum`, `B_w^Kum`, and the place-`2` formal term `F_w^norm` explicit until map-level cancellation or persistence is proved.
+Compute derived augmentation of its cone. Keep `B_w^Kum`, the place-`2` formal term `F_w^norm`, and `U_w` explicit until map-level cancellation or persistence is proved.
 
 ### WP46B — split semistable bad-prime toric factors
 
@@ -163,7 +171,7 @@ Do not promote:
 
 - `BSD-R2-A1`;
 - the compact Kummer Iwasawa complex to perfectness without proof;
-- unknown `T_w^Kum` or `B_w^Kum` to zero;
+- `B_w^Kum` to zero;
 - the full `U_w` at `2` to WP39's reduction-sized local target;
 - equal lengths at odd bad primes to a canonical isomorphism;
 - the formal universal-norm term to zero;
