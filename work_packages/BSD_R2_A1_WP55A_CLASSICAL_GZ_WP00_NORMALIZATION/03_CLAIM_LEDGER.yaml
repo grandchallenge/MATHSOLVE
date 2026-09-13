@@ -1,0 +1,38 @@
+schema_version: 1.0.0
+artifact_id: BSD-R2-A1-WP55A-CLAIM-LEDGER
+claims:
+  - id: WP55A-C1
+    statement: "The protected selected-lane Cai-Shu-Tian formula has mu(N,D)=0 and all displayed source scalars remain explicit."
+    status: proved_from_protected_source_and_WP09
+  - id: WP55A-C2
+    statement: "4*pi^2*C_f^2*(phi,phi)=deg(f)*A_E for the protected minimal Neron differential and retained modular pullback scalar C_f."
+    status: proved
+  - id: WP55A-C3
+    statement: "L'(E,1)/(Omega_E*Reg_E)=R_GZ_WP00 with R_GZ_WP00 as recorded in 02_SCALAR_LEDGER.yaml."
+    status: proved
+  - id: WP55A-C4
+    statement: "D2d is reduced to MISSING_EXACT_CLASSICAL_GZ_WP00_RESIDUAL_SCALAR_COMPARISON."
+    status: proved_as_research_boundary_narrowing
+  - id: WP55A-C5
+    statement: "R_GZ_WP00 already has a canonically defined 2-adic valuation."
+    status: prohibited_unproved
+    reason: "An exact algebraicity/rational-line comparison is still required."
+  - id: WP55A-C6
+    statement: "The source K-height equals the WP00 Q-regulator without a field/index factor."
+    status: prohibited_unproved
+  - id: WP55A-C7
+    statement: "C_f=1."
+    status: prohibited_unproved
+  - id: WP55A-C8
+    statement: "WP54A Q^ord cancels the WP55A unit/discriminant/bad-prime scalars."
+    status: prohibited_unproved
+  - id: WP55A-C9
+    statement: "BSD-R2-A1 is proved."
+    status: false
+firewall:
+  selected_target: SELECTED_RESEARCH_TARGET_UNPROVED
+  mathcert: no_certification_claim
+  d1c: open
+  d2a: open
+  d2d: narrowed_open
+  d2e: open

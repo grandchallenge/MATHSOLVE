@@ -1,0 +1,54 @@
+schema_version: 1.0.0
+artifact_id: BSD-R2-A1-WP55A-SCALAR-LEDGER
+status: exact_reduction_with_open_residual_comparison
+protected_inputs:
+  mathsolve: 9712ced89096a3a7cde6a8630de734423497ac2d
+  mathforge: 2207d9a366e84dc7a1f5726e78e3cfe5e4ab1468
+  math_programme: a4eec4259ae6f7e12028cae1384a17ba865926e4
+source_formula:
+  expression: "L'(E/K,1) = 8*pi^2*(phi,phi)*hhat_K(P_K(f))/(u_K^2*sqrt(|D_K|)*deg(f))"
+  hidden_unit: false
+  source_height_field: K
+modular_area_identity:
+  differential: omega_E
+  area: "A_E = (i/2) integral_{E(C)} omega_E wedge overline(omega_E)"
+  pullback: "f^*omega_E = +/- C_f*2*pi*i*phi(z)dz"
+  exact_identity: "4*pi^2*C_f^2*(phi,phi) = deg(f)*A_E"
+  set_C_f_to_one: false
+base_change:
+  exact_identity: "L'(E/K,1)=L'(E,1)*L(E^D,1)"
+  twist_nonzero: true
+wp00_exact_identity:
+  expression: "L'(E,1)/(Omega_E*Reg_E) = R_GZ_WP00"
+  residual_scalar: "R_GZ_WP00 = [2*A_E/(C_f^2*u_K^2*sqrt(|D_K|)*Omega_E*L(E^D,1))] * [hhat_K(P_K(f))/Reg_E]"
+residual_subfactors:
+  source_height_to_regulator:
+    expression: "hhat_K(P_K(f))/Reg_E"
+    exact_status: open
+    obligations:
+      - source K-height versus WP00 Q-height convention
+      - Mordell-Weil lattice index of P_K(f)
+      - exact classical Heegner-point descent if used
+  period_twist_modular:
+    expression: "2*A_E/(C_f^2*u_K^2*sqrt(|D_K|)*Omega_E*L(E^D,1))"
+    exact_status: open
+    obligations:
+      - complex area versus WP00 real period
+      - modular differential scalar C_f
+      - exact rank-zero twist central-value normalization
+      - unit and discriminant factors
+wp54a_scalar:
+  expression: "Q^ord = (u_K/h_K)*product_{ell|N}(1+ell^(-1))"
+  cancellation_with_wp55a: not_asserted
+valuation_guard:
+  rule: "Do not apply ord_2 directly to R_GZ_WP00 until an algebraicity/rational-line theorem supplies a specified exact 2-adic comparison."
+remaining_boundaries:
+  D1c: MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  D2a: MISSING_P2_K_HEIGHT_NONDEGENERACY
+  D2d: MISSING_EXACT_CLASSICAL_GZ_WP00_RESIDUAL_SCALAR_COMPARISON
+  D2e: MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+claim_firewall:
+  bsd_r2_a1: SELECTED_RESEARCH_TARGET_UNPROVED
+  mathcert_certification: false
+  numerical_stabilization_promoted: false
+  up_to_unit_used: false
