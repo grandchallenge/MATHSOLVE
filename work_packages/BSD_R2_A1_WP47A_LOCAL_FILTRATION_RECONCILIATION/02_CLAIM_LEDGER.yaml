@@ -1,0 +1,51 @@
+campaign_id: BSD-001
+work_package_id: BSD-R2-A1-WP47A-LOCAL-FILTRATION-RECONCILIATION
+claims:
+  - claim_id: BSD-A1-WP47A-ORDINARY-TARGET-001
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      At each protected place w|2, the connecting map for
+      0 -> T_w^- -> V_w^- -> A_w^- -> 0 identifies
+      H^0(K_w,A_w^-) canonically with R_w=H^1(K_w,T_w^-)_tors.
+      The ordinary etale quotient identifies H^0(K_w,A_w^-) with the full
+      2-primary reduction group E_tilde(F_2), yielding a canonical
+      isomorphism rho_w:E_tilde(F_2) -> R_w.
+  - claim_id: BSD-A1-WP47A-KUMMER-REDUCTION-002
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      The compact strict/Kummer quotient map q_w on E(K_w)^hat_2 equals
+      rho_w composed with literal reduction. This is proved by naturality
+      of finite Kummer connecting cocycles under the ordinary etale
+      quotient, not by equality of group orders.
+  - claim_id: BSD-A1-WP47A-QUOTIENT-SQUARE-003
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      Both literal reduction and the compact strict/Kummer quotient kill
+      stabilized universal norms. On U_w the induced maps satisfy
+      qbar_w=rho_w o redbar_w.
+  - claim_id: BSD-A1-WP47A-FILTRATION-004
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      The protected WP46A derived-control filtration and protected WP28
+      formal/reduction universal-norm filtration are the same map-level
+      filtration of U_w. In particular Z_w^str=F_w^norm as the same
+      subgroup of U_w and R_w is canonically E_tilde(F_2) through rho_w.
+  - claim_id: BSD-A1-WP47A-SPLIT-PAIR-005
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      The map-level reconciliation is functorial at both split places over
+      2 and introduces no additional quadratic base-change index.
+  - claim_id: BSD-A1-WP47A-BOUNDARY-006
+    status: REFINED_BOUNDARY
+    statement: >-
+      The surviving D2b boundary is
+      MISSING_P2_GLOBAL_STRICT_KUMMER_COMPARISON_CONE_TO_WP40_BOCKSTEIN_DEFECT:
+      assemble the local reverse comparison triangles globally and identify
+      their derived augmentation with the protected WP39/WP40 global pair
+      J_K,D_K before any Bockstein or height interpretation.
+  - claim_id: BSD-A1-WP47A-FIREWALL-007
+    status: CLAIM_FIREWALL
+    statement: >-
+      WP47A does not prove D_K is a Bockstein defect, D_K=0, J_K=R_K,
+      fixed-p=2 height nondegeneracy, D1c, remaining Disegni normalization,
+      WP00 normalization, final quadratic descent, BSD-R2-A1, or certification.
