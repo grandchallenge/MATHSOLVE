@@ -1,0 +1,30 @@
+schema_version: 1
+campaign: BSD-001
+operation: BSD-R2-A1-WP50A-STRICT-H2-SILENT-KERNEL
+protected_predecessor: b62a1467608a7069f16efdce2f0375d0ab566299
+claims:
+  - id: BSD-A1-WP50A-H2-KERNEL-001
+    status: proved
+    statement: V_K/J_K is canonically isomorphic to ker(H2_str -> H2_Kum).
+  - id: BSD-A1-WP50A-H2-Z-COMPAT-002
+    status: proved
+    statement: Under the protected sign convention, v_Z = pi_Z composed with d_fin.
+  - id: BSD-A1-WP50A-SILENT-KERNEL-003
+    status: proved
+    statement: R_K/J_K is canonically the simultaneous kernel of H2_str -> H2_Kum and pi_Z.
+  - id: BSD-A1-WP50A-DK-H2-004
+    status: proved
+    statement: D_K is canonically Pontryagin-dual to the strict-H2 silent kernel.
+frontier:
+  D1c: MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  D2a: MISSING_P2_K_HEIGHT_NONDEGENERACY
+  D2b: MISSING_P2_STRICT_H2_SILENT_KERNEL_TO_BOCKSTEIN_HEIGHT_DUALITY
+  D2c: MISSING_P2_DISEGNI_SPLIT_BAD_PRIME_NEWVECTOR_QORD_FACTORS
+  D2d: MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION
+  D2e: MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+firewall:
+  - BSD-R2-A1 remains SELECTED_RESEARCH_TARGET_UNPROVED
+  - no K_K^sil=0 or D_K=0 claim
+  - no fixed-2 height nondegeneracy
+  - no pure Bockstein formula for D_K
+  - no D1c, global-Qord, WP00, final-descent, or certification promotion
