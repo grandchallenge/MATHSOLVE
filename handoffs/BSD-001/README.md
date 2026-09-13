@@ -19,7 +19,7 @@ After re-fetching protected live state, read:
 1. this file;
 2. `handoffs/BSD-001/RESEARCH_PLAN_WP16_WP18.md`;
 3. `handoffs/BSD-001/TAKEOVER_PROMPT_WP16_WP18.md`;
-4. the latest protected frontier, currently `handoffs/BSD-001/WP45_FRONTIER.md` after WP45A protection;
+4. the latest protected frontier, currently `handoffs/BSD-001/WP46_FRONTIER.md` after WP46A protection;
 5. the work package named by that frontier;
 6. any protected predecessor materially used by the next proof step;
 7. current protected MATHFORGE BSD provider records before using external theorems.
@@ -65,7 +65,8 @@ Protected WP20 gives the rank-one determinant/Bockstein factorization; WP35 supp
 - WP42B: canonical split-prime-`2` local factor `Q^ord_{2,dt_2^can}=1` with explicit measure firewall.
 - WP43A: Nekovář strict-Greenberg first-order cyclotomic augmentation is exact and its specialization connecting morphism is the WP37 Bockstein.
 - WP44A: primitive classical-Kummer cyclotomic control transports integrally to `K`; local norm-limit Kummer modules have exact base-projection cokernel `U_w`.
-- WP45A: the norm-limit point systems are Mittag–Leffler; their Kummer images define canonical simple local-condition complexes inside local Iwasawa cohomology; after completed induction these assemble into a compact Kummer Iwasawa Selmer complex whose base `H^1` is `S_2(E/K)`. Ambient augmentation proves the local Kummer `Tor_1` term vanishes, leaving only `B_w^Kum ~= (H^1_Iw/M_w^Kum)[gamma_w-1]` and the known cokernel `U_w` in the derived local defect.
+- WP45A: canonical compact Kummer Iwasawa local conditions and global Selmer complex; local Kummer augmentation has no `Tor_1` term and defect `H^0=B_w^Kum`, `H^1=U_w`.
+- WP46A: strict and Kummer degree-one local conditions coincide at Iwasawa level; the Kummer condition is the lower truncation of the strict condition. At `w|2`, `Z_w^str:=H^2(U_{w,infty}^{+,str})` is the cyclic trivial `Lambda_w`-module `Lambda_w/(2^{m_2},gamma_w-1)`, `B_w^Kum=0`, and there is a canonical exact filtration `0 -> Z_w^str -> U_w -> R_w -> 0`.
 
 ## Current D1 boundary
 
@@ -83,47 +84,67 @@ Kato gives literal-`p=2` control away from the height-one prime containing `2`; 
 
 WP37 proves existence of the first height, not nonvanishing. WP38 records that the closest screened derived-height/Stark-system and Eisenstein-Heegner routes do not apply to the protected surjective-`E[2]` branch.
 
-### D2b — strict-to-Kummer Iwasawa comparison
+### D2b — map-level strict/formal reconciliation at ordinary `2`
 
-WP40 proves
+At each `w|2`, put
 
-`j_K+d_K
- = 2 ord_2(3-a_2)
-   + 2 sum_{ell|N} ord_2(c_ell)`.
+`m_2:=ord_2(3-a_2)`.
 
-WP45A constructs the compact Kummer Iwasawa Selmer complex canonically. Put
+WP46A proves
 
-`Q_w^Iw:=H^1_Iw(K_w,T)/M_w^Kum`,
+`Z_w^str
+ := H^2(U_{w,infty}^{+,str})
+ ~= Lambda_w/(2^{m_2},gamma_w-1)
+ ~= Z/2^{m_2}Z`,
 
-`B_w^Kum:=ker((M_w^Kum)_{Gamma_w}->E(K_w)^hat_2)`.
+and the canonical reverse comparison triangle
 
-Exact ambient augmentation gives
+`U_{w,infty}^{+,Kum}
+ -> U_{w,infty}^{+,str}
+ -> Z_w^str[-2]
+ ->`.
 
-`M_w^Kum[gamma_w-1]=0`
+It also proves
 
-and
+`B_w^Kum=0`
 
-`B_w^Kum ~= Q_w^Iw[gamma_w-1]`.
+and the exact derived-control filtration
 
-The local derived specialization cone therefore has
+`0 -> Z_w^str
+   -> U_w
+   -> R_w
+   -> 0`,
 
-`H^{-1}=0`,
+where
 
-`H^0=B_w^Kum`,
+`R_w:=H^1(K_w,T_w^-)_tors`.
 
-`H^1=U_w`.
+Protected WP28 independently gives the literal reduction/formal norm filtration
 
-At each `w|2`,
+`0 -> F_w^norm
+   -> U_w
+   -> E_tilde(F_2)
+   -> 0`.
 
-`0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0`,
+The corresponding lengths agree:
 
-and `len U_w=2 ord_2(3-a_2)`, while WP39's local strict/Kummer target has length only `ord_2(3-a_2)`.
+`len Z_w^str=len R_w=m_2`,
+
+`len U_w=2m_2`,
+
+`#F_w^norm=#E_tilde(F_2)=2^{m_2}`.
 
 The live boundary is
 
-`MISSING_P2_STRICT_TO_KUMMER_IWASAWA_COMPARISON_AND_DERIVED_DEFECT_IDENTIFICATION_OVER_K`.
+`MISSING_P2_MAP_LEVEL_RECONCILIATION_OF_STRICT_H2_AND_FORMAL_UNIVERSAL_NORM_FILTRATIONS`.
 
-A successor must construct the Iwasawa-level strict-to-Kummer morphism, evaluate or retain `B_w^Kum`, derive the comparison-cone specialization triangle, and identify the finite maps with WP39/WP40 before relating `D_K` to any Bockstein/height defect.
+A successor must compare the actual maps defining these two exact sequences. Matching cardinalities do not authorize the identifications
+
+`Z_w^str=F_w^norm`
+
+or
+
+`R_w=E_tilde(F_2)`.
 
 ### D2c — ordinary Disegni local factors
 
@@ -151,34 +172,39 @@ Retain every plus/minus overlap, twist, period, Tamagawa, and local term.
 
 ## Immediate executable successors
 
-### WP46A — strict-to-Kummer Iwasawa comparison
+### WP47A — map-level formal/strict reconciliation at `2`
 
-Use the protected strict local conditions and WP45A Kummer local conditions to construct a norm-compatible morphism
+Compare, in one commuting finite/infinite-level diagram:
 
-`C_str,infty -> C_Kum,infty`.
+1. the strict Iwasawa descent boundary yielding `Z_w^str -> U_w`;
+2. Tan's formal/reduction universal-norm injection `F_w^norm -> U_w`;
+3. Nekovář/Greenberg's compact strict-to-Kummer quotient map to `R_w`;
+4. literal reduction `U_w -> E_tilde(F_2)`.
 
-Compute derived augmentation of its cone. Keep `B_w^Kum`, the place-`2` formal term `F_w^norm`, and `U_w` explicit until map-level cancellation or persistence is proved.
+The target is a map-level proof or refutation of equality of the two filtrations. The primary Greenberg Proposition 2.5 proof uses the formal-group/reduction diagram, but translation to the compact `T` comparison must preserve the local-duality orientation explicitly.
 
-### WP46B — split semistable bad-prime toric factors
+### WP47B — split semistable bad-prime toric factors
 
 Bind the exact bad-prime newvector in Disegni's `v`-new packet to an essential Whittaker vector and evaluate both normalized GL2×GL1 zeta integrals, including the precise local Haar-measure scalar and denominator pairing. Do not infer a unit from an interpolation theorem alone.
 
 Any new external theorem premise must first be admitted through MATHFORGE.
+
+## Administrative source-index debt
+
+The canonical MATHFORGE `provider_manifests/BSD-001.json` remains stale after WP36 and does not yet index the protected WP37–WP46 source audits. This is an administrative discoverability defect, not a theorem defect. Reconcile the full missing range in one maintenance tranche rather than patching only the latest source.
 
 ## Claim firewall
 
 Do not promote:
 
 - `BSD-R2-A1`;
-- the compact Kummer Iwasawa complex to perfectness without proof;
-- `B_w^Kum` to zero;
-- the full `U_w` at `2` to WP39's reduction-sized local target;
-- equal lengths at odd bad primes to a canonical isomorphism;
-- the formal universal-norm term to zero;
-- `D_K` to a Bockstein defect before the strict/Kummer derived comparison is fixed;
-- canonical `Q^ord_2=1` to global `Q^ord=1`;
-- interpolation of a local zeta integral to an explicit semistable value;
+- `Z_w^str=F_w^norm` from matching lengths;
+- `R_w=E_tilde(F_2)` from matching lengths;
+- the canonical reverse comparison to perfectness of either global complex;
+- `D_K` to a Bockstein or height defect before map-level reconciliation;
 - height existence to height nondegeneracy;
+- canonical local `Q^ord_2=1` to global `Q^ord=1`;
+- interpolation of a local zeta integral to an explicit semistable value;
 - an odd-prime or rationalized result to literal integral `p=2`;
 - source admission to MATHCERT certification;
 - novelty, priority, patentability, or commercial claims.
