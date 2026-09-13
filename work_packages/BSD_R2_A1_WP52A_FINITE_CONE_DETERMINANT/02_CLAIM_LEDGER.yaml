@@ -1,0 +1,39 @@
+operation: BSD-R2-A1-WP52A-FINITE-CONE-DETERMINANT
+protected_predecessors:
+  mathsolve: 3b34edc3e66c4be86a4319bc71da39bb5fc055f0
+  mathforge: 79302cdc05f3f11c56e048f68e9095d3280872a7
+claims:
+  - id: BSD-A1-WP52A-DET-CONE-001
+    status: proved_bounded
+    statement: >-
+      For the protected exact triangle C_str,0 -> C_Kum,0 -> Q_fin with
+      Q_fin ~= V_K[-1], the strict-to-Kummer relative determinant valuation is
+      -len_Z2(V_K), and the reverse Kummer-to-strict valuation is +len_Z2(V_K).
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP52A-VK-LENGTH-001
+    status: proved_bounded
+    statement: >-
+      len_Z2(V_K) = 4 ord_2(3-a_2) + 2 sum_{ell|N} ord_2(c_ell).
+    promotion: bounded_mathematical
+  - id: BSD-A1-WP52A-D2B-CLOSE-001
+    status: proved_bounded
+    statement: >-
+      The finite strict/Kummer determinant correction depends on the full finite
+      comparison cone V_K and not on separate values of j_K or d_K. Therefore
+      D2b's finite-Matlis-correction evaluation/cancellation debt is resolved at
+      determinant-line level.
+    promotion: bounded_mathematical
+boundaries:
+  - MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - MISSING_P2_DISEGNI_SPLIT_BAD_PRIME_NEWVECTOR_QORD_FACTORS
+  - MISSING_P2_CLASSICAL_GROSS_ZAGIER_WP00_NORMALIZATION
+  - MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+firewall:
+  - BSD-R2-A1 remains SELECTED_RESEARCH_TARGET_UNPROVED
+  - no D_K=0 or J_K=R_K promotion
+  - no height nondegeneracy promotion
+  - no analytic determinant generator promotion
+  - no global Qord promotion
+  - no WP00 or final descent promotion
+  - no MATHCERT certification promotion
