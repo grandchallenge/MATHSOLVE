@@ -5,14 +5,14 @@ claims:
     status: PROVED_IN_PACKAGE
     statement: >-
       For each relevant local cyclotomic tower over K, the compact point
-      modules E(K_{n,w})^hat_2 under norm are Mittag-Leffler.  Hence their
-      derived inverse limit has no R^1 lim term and is represented by the
-      protected norm-limit module M_w^Kum.
+      modules E(K_{n,w})^hat_2 under norm are Mittag-Leffler. Hence their
+      derived inverse limit has no R^1 lim term and is represented by
+      M_w^Kum.
   - claim_id: BSD-A1-WP45A-IW-H1-002
     status: PROVED_IN_PACKAGE
     statement: >-
       Since H^0(K_{n,w},T_2(E))=0 at every finite local layer, local
-      Iwasawa H^1 is the inverse limit of finite-level H^1.  The compatible
+      Iwasawa H^1 is the inverse limit of finite-level H^1. The compatible
       compact Kummer injections therefore give a canonical inclusion
       M_w^Kum -> H^1_Iw(K_w,T_2(E)).
   - claim_id: BSD-A1-WP45A-LOCAL-COMPLEX-003
@@ -20,40 +20,50 @@ claims:
     statement: >-
       The homotopy fibre of tau_{<=1} RΓ_Iw ->
       (H^1_Iw/M_w^Kum)[-1] is a canonical Nekovar local-condition complex
-      with H^1=M_w^Kum and no other cohomology.  The analogous base fibre
+      with H^1=M_w^Kum and no other cohomology. The analogous base fibre
       has H^1=E(K_w)^hat_2.
   - claim_id: BSD-A1-WP45A-GLOBAL-COMPLEX-004
     status: PROVED_IN_PACKAGE
     statement: >-
-      The canonical local Kummer conditions assemble by Nekovar's mapping
-      fibre definition into a compact Kummer Iwasawa Selmer complex over K.
-      Its base-level H^1 is the classical compact Kummer Selmer group
-      S_2(E/K) used in WP39.  No perfectness claim is made.
-  - claim_id: BSD-A1-WP45A-DERIVED-DEFECT-005
+      After completed induction from each decomposition-group algebra, the
+      canonical local Kummer conditions assemble into a compact Kummer
+      Iwasawa Selmer complex over the global Iwasawa algebra. Its base H^1
+      is S_2(E/K). No perfectness claim is made.
+  - claim_id: BSD-A1-WP45A-IW-TORSION-005
     status: PROVED_IN_PACKAGE
     statement: >-
-      The cone of derived augmentation of the local Kummer condition to the
-      base Kummer condition has H^{-1}=M_w^Kum[gamma_w-1], H^0 equal to the
-      kernel of coinvariants-to-base points, and H^1=U_w, the protected
-      universal-norm quotient.
-  - claim_id: BSD-A1-WP45A-P2-DEFECT-006
+      Exact ambient Iwasawa augmentation and H^0=0 imply
+      H^1_Iw(K_w,T)[gamma_w-1]=0. Hence
+      M_w^Kum[gamma_w-1]=0 and
+      Tor_1^{Lambda_w}(M_w^Kum,Z_2)=0.
+  - claim_id: BSD-A1-WP45A-KERNEL-006
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      For Q_w^Iw:=H^1_Iw(K_w,T)/M_w^Kum, the remaining coinvariant-to-base
+      kernel B_w^Kum is canonically Q_w^Iw[gamma_w-1].
+  - claim_id: BSD-A1-WP45A-DERIVED-DEFECT-007
+    status: PROVED_IN_PACKAGE
+    statement: >-
+      The local Kummer derived specialization cone has H^{-1}=0,
+      H^0=B_w^Kum and H^1=U_w, where U_w is the protected universal-norm
+      quotient.
+  - claim_id: BSD-A1-WP45A-P2-DEFECT-008
     status: PROVED_FROM_PROTECTED_PREDECESSORS
     statement: >-
-      At w|2 the H^1 specialization defect is U_w with exact filtration
+      At w|2, U_w has exact filtration
       0 -> F_w^norm -> U_w -> E_tilde(F_2) -> 0 and length
-      2 ord_2(3-a_2).  The formal term may not be discarded when comparing
+      2 ord_2(3-a_2). The formal term may not be discarded when comparing
       with WP39's reduction-sized local target.
-  - claim_id: BSD-A1-WP45A-BOUNDARY-007
+  - claim_id: BSD-A1-WP45A-BOUNDARY-009
     status: REFINED_BOUNDARY
     statement: >-
       D2b is narrowed to
       MISSING_P2_STRICT_TO_KUMMER_IWASAWA_COMPARISON_AND_DERIVED_DEFECT_IDENTIFICATION_OVER_K:
       construct the strict-to-Kummer Iwasawa morphism, evaluate or retain
-      the two kernel modules, and identify derived specialization map-by-map
-      with WP39/WP40.
-  - claim_id: BSD-A1-WP45A-FIREWALL-008
+      B_w^Kum, and identify derived specialization map-by-map with WP39/WP40.
+  - claim_id: BSD-A1-WP45A-FIREWALL-010
     status: CLAIM_FIREWALL
     statement: >-
-      WP45A does not assert kernel vanishing, perfectness, cancellation of
-      the p=2 formal norm term, identification of D_K with a Bockstein
-      defect, BSD-R2-A1, or certification.
+      WP45A does not assert B_w^Kum=0, perfectness, cancellation of the
+      p=2 formal norm term, identification of D_K with a Bockstein defect,
+      BSD-R2-A1, or certification.
