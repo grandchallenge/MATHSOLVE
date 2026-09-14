@@ -1,0 +1,53 @@
+schema_version: 1.0.0
+campaign_id: BSD-001
+work_package: BSD_R2_A1_WP60A_A1_DETERMINANT_MEMBERSHIP
+programme_owner: grandchallenge/MATHSOLVE#164
+execution_tracker: grandchallenge/MATHSOLVE#215
+protected_inputs:
+  mathsolve_wp60a_a0: 20a980fd8fb3e3a4cceabf0e37af838a16c1608e
+  mathforge_wp60a_audit: e44baeeed5d508fd4e5332c883c837951e51c000
+claims:
+  - claim_id: BSD-A1-WP60A-A1-DET-LATTICE-001
+    status: PROVED_COMMUTATIVE_ALGEBRA
+    statement: >-
+      For a two-term perfect complex [P^1 -> P^2] over a DVR with free
+      rank-one H^1 and finite H^2, the inverse determinant lattice maps to
+      Fitt^0(H^2) times the integral H^1 lattice under the canonical rational
+      determinant trivialization.
+  - claim_id: BSD-A1-WP60A-A1-MEMBERSHIP-001
+    status: PROVED_COMMUTATIVE_ALGEBRA
+    statement: >-
+      For z=aP on a primitive H^1 basis, determinant membership is equivalent
+      to v(a) >= length(H^2), equivalently to the one-sided Fitting
+      divisibility encoded by z belonging to Fitt^0(H^2) H^1.
+  - claim_id: BSD-A1-WP60A-A1-PRIMITIVITY-001
+    status: PROVED_COMMUTATIVE_ALGEBRA
+    statement: >-
+      The class z is the image of a basis of the inverse determinant line if
+      and only if v(a)=length(H^2); determinant primitivity is equality, not
+      mere membership.
+  - claim_id: BSD-A1-WP60A-A1-ARITHMETIC-REDUCTION-001
+    status: PROVED_REDUCTION_FROM_PROTECTED_SOURCE_INTERFACE
+    statement: >-
+      At the height-one prime (2), a BKS-style determinant lift of the fixed
+      Kato/analytic class is equivalent to the one-sided Fitting inequality
+      that the protected Kato p=2 interface does not supply at that prime.
+open_boundaries:
+  - MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  - MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+parent_boundaries:
+  - MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  - MISSING_LITERAL_P2_KATO_ZETA_DETERMINANT_LIFT_AND_PRIMITIVITY_AT_HEIGHT_ONE_2
+  - MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED
+execution_disposition:
+  wp60a: SHARPENED_BOUNDARY_NO_INDEPENDENT_FORMAL_LIFT
+  next_lane: WP60B_KRIZ_LI_NORMALIZATION_AND_ANTI_CIRCULARITY
+  d2d: NO_REOPEN
+firewall:
+  - Do not infer the missing p=2 Fitting inequality from determinant formalism alone.
+  - Do not infer determinant primitivity from determinant membership.
+  - Do not infer integral equality after inverting 2.
+  - Do not extend Kato/BKS/BSS odd-prime clauses to p=2.
+  - Do not promote BSD-R2-A1 or MATHCERT state.
+selected_target: SELECTED_RESEARCH_TARGET_UNPROVED
+mathcert_promotion: false
