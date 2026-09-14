@@ -1,0 +1,36 @@
+schema_version: 1.0.0
+campaign: BSD-001
+work_package: BSD-R2-A1-WP57A-AREA-TWIST-RATIONALIZATION
+protected_mathsolve_base: ae694de9c18c6c2ff3e46002bc8ed008f7b4fb01
+protected_mathforge_source: ed91d13e13ec3577493548466b1411fc70b2693d
+claims:
+  - claim_id: BSD-A1-WP57-AREA-001
+    status: PROVED_IN_PACKAGE
+    statement: "A_E = Omega_E |Omega_E^-|/2 exactly for the WP00 minimal Neron differential."
+  - claim_id: BSD-A1-WP57-UNIT-001
+    status: PROVED_IN_PACKAGE
+    statement: "The protected 2-split auxiliary imaginary quadratic field has u_K=1."
+  - claim_id: BSD-A1-WP57-TWIST-PERIOD-001
+    status: ADMITTED_SOURCE_PLUS_PROTECTED_APPLICABILITY
+    statement: "Omega(E^D)=c_infinity(E^D)|Omega_E^-|/sqrt(|D_K|) exactly; Pal's tilde-u is 1 on the selected lane."
+  - claim_id: BSD-A1-WP57-LRATIO-001
+    status: ADMITTED_RATIONALITY_INTERFACE
+    statement: "lambda_D=L(E^D,1)/Omega(E^D) is a nonzero rational number; no arithmetic BSD evaluation is asserted."
+  - claim_id: BSD-A1-WP57-RAT-001
+    status: PROVED_FROM_PROTECTED_INPUTS_AND_ADMITTED_SOURCE
+    statement: "L'(E,1)/(Omega_E Reg_E)=2 m_K(f)^2/(C_f^2 c_infinity(E^D) lambda_D) exactly in Q^x."
+  - claim_id: BSD-A1-WP57-VAL-001
+    status: PROVED_FROM_RATIONAL_IDENTITY
+    statement: "ord_2(L'/(Omega Reg))=1+2ord_2(m_K(f))-2ord_2(C_f)-ord_2(c_infinity(E^D))-ord_2(lambda_D)."
+  - claim_id: BSD-A1-WP57-D2D-001
+    status: REFINED_OPEN_BOUNDARY
+    statement: "D2d is MISSING_P2_HEEGNER_INDEX_MODULAR_DIFFERENTIAL_AND_TWIST_LRATIO_VALUATION_CONTROL."
+firewall:
+  heegner_primitivity_p2: NOT_PROVED
+  C_f_2_unit: NOT_PROVED
+  twist_rank_zero_BSD: NOT_USED
+  D1c: MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  D2a: MISSING_P2_K_HEIGHT_NONDEGENERACY
+  D2e: MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+  BSD-R2-A1: SELECTED_RESEARCH_TARGET_UNPROVED
+  mathcert: NOT_INVOKED
