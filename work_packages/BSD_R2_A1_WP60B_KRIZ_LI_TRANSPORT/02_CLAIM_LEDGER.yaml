@@ -1,0 +1,50 @@
+campaign: BSD-001
+work_package: BSD-R2-A1-WP60B-KRIZ-LI-TRANSPORT
+protected_mathsolve_base: 8b7ba4e5d888f68ffdaeab748d7d94d764f286fa
+protected_mathforge_source: a8f72ed64755777870a300053e11659fb1dfff1b
+tracker: grandchallenge/MATHSOLVE#215
+programme_owner: grandchallenge/MATHSOLVE#164
+selected_target: SELECTED_RESEARCH_TARGET_UNPROVED
+
+claims:
+  - claim_id: BSD-A1-WP60B-DIFF-001
+    status: PROVED_FROM_PROTECTED_INPUTS
+    statement: "For the same protected parametrization f, the Kriz-Li normalized differential satisfies omega_f^KL = +/- C_f^{-1} omega_E; the logarithms differ by the same scalar, and C_f is a 2-adic unit."
+  - claim_id: BSD-A1-WP60B-KAPPA-INTEGRAL-001
+    status: PROVED
+    statement: "For primitive P, kappa_2(E,P)=((3-a_2)/2) log_{omega_E}(P) lies in Z_2."
+  - claim_id: BSD-A1-WP60B-KL-TRANSPORT-001
+    status: PROVED_FROM_PROTECTED_INPUTS
+    statement: "The Kriz-Li normalized logarithmic quantity factors exactly as KL_2(E,K,f)=u_f m_K(f) kappa_2(E,P), with u_f in Z_2^x."
+  - claim_id: BSD-A1-WP60B-F-CLASSIFY-001
+    status: PROVED_FROM_PROTECTED_INPUTS
+    statement: "On the protected selected lane, Kriz-Li Assumption (F) is equivalent to m_K(f) odd together with kappa_2(E,P) a 2-adic unit."
+  - claim_id: BSD-A1-WP60B-K2TORS-001
+    status: PROVED_FROM_PROTECTED_INPUTS
+    statement: "Surjective E[2] implies E(K)[2]=0 for every quadratic K/Q on the selected lane."
+  - claim_id: BSD-A1-WP60B-INDEX-PARITY-001
+    status: PROVED_FROM_PROTECTED_INPUTS
+    statement: "The protected Heegner point P_K(f) is indivisible by 2 in E(K) if and only if m_K(f) is odd."
+  - claim_id: BSD-A1-WP60B-INDEPENDENCE-001
+    status: PROVED_FROM_PROTECTED_INPUTS
+    statement: "Kriz-Li (F) is mixed but supplies no independent K-varying escape: its K-varying content is precisely the unknown Heegner-index parity, together with a fixed local-unit condition."
+
+unresolved:
+  - boundary: MISSING_UNIFORM_KRIZ_LI_FIXED_LOCAL_LOG_UNIT
+    meaning: "No protected theorem proves kappa_2(E,P) is a 2-adic unit uniformly for the selected class."
+  - boundary: MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY
+    meaning: "No protected theorem produces a WP09-compatible K with ord_2(m_K(f))=0 uniformly for the selected class."
+  - boundary: MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+    meaning: "WP60A-A1 remains unresolved."
+  - boundary: MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+    meaning: "WP60A-A1 primitivity remains unresolved."
+  - boundary: MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED
+    meaning: "D2d remains unresolved."
+
+firewall:
+  - "Do not infer kappa_2(E,P) is always a unit."
+  - "Do not infer m_K(f) is odd for any or every WP09 field."
+  - "Do not infer existence of a uniform WP09-compatible Kriz-Li (F) field."
+  - "Do not infer an exact value of ord_2(lambda_D)."
+  - "Do not declare WP59 R1, R3, R4, D2d, or BSD-R2-A1 resolved."
+  - "Do not promote source admission or CI success to MATHCERT certification."
