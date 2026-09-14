@@ -1,0 +1,36 @@
+work_package: BSD_R2_A1_WP60K_BSS_MOD4_HYP32_OBSTRUCTION
+campaign: BSD-001
+operation: grandchallenge/MATHSOLVE#229
+status: PROVED_SELECTED_MOD4_BSS_HYP32III_OBSTRUCTION
+protected_entering_mathsolve: d5159aabcfb03129ca1ef669f506870974988605
+protected_mathforge: 54f1eaea24b35d4ca37e778786345c3622b6fd98
+protected_intellect: fc9ee5537bf07586dffcc621e753204ecd835365
+claims:
+  - id: BSD-A1-WP60K-H1-001
+    statement: "H^1(GL_2(Z/4),(Z/4)^2) has order 2"
+    status: proved_exact_finite_certificate
+  - id: BSD-A1-WP60K-HYP32III-FAIL-002
+    statement: "for selected E, formal literal-p=2 BSS II Hypothesis 3.2(iii) fails for K=Q, R=Z/4, A=E[4]"
+    status: proved_from_protected_full_image_and_inflation
+  - id: BSD-A1-WP60K-DUAL-003
+    statement: "the dual A^*(1) finite cohomology clause also fails by Weil self-duality"
+    status: proved
+route_effects:
+  - BSS_LITERAL_P2_SELECTED_FINITE_HYP32III_FAILS_AT_E4
+  - R5_BSS_STANDARD_FINITE_HYPOTHESIS_ROUTE_BLOCKED_ALREADY_AT_MOD4
+surviving_bss_frontiers:
+  residual_f1: MISSING_P2_BSS_MINIMAL_CORE_THREE_TERM_RELATION_EXCLUSION_OR_REPLACEMENT_CONNECTIVITY
+  replacement_control: MISSING_P2_BSS_HYP32III_WEAKENING_OR_BYPASS_FOR_INTEGRAL_FITTING_CONTROL
+  standard_application: R5_BSS_STANDARD_HYPOTHESIS_ROUTE_BLOCKED_BY_H3_AT_LITERAL_P2
+remaining_parent_boundaries:
+  - MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  - MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+  - MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY
+  - MISSING_EXACT_WP00_TWIST_LRATIO_VALUATION_UNDER_WP09_CONSTRAINTS
+firewall:
+  bsd_r2_a1_proved: false
+  integral_bss_p2_fitting_proved: false
+  all_literal_p2_kolyvagin_methods_impossible: false
+  r5_closed: false
+  mathcert_certified: false
+  novelty_claimed: false
