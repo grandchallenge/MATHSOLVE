@@ -92,11 +92,11 @@ The first term is zero. To see this, use the normal `C3=A3` in `S3`: the order-t
 
 It remains to bound the equivariant Hom space.
 
-For `r>=1`, define
+For `1<=r<=m`, define
 
 `P_m(r):=ker(G_m -> GL_2(Z/2^r))`.
 
-Thus `P_m(1)=P_m`, `P_m(m)=1`, and
+Thus `P_m(1)=P_m`, `P_m(m)=1`, and, for `r<m`,
 
 `P_m(r)/P_m(r+1) ~= M_2(F_2)`
 
@@ -112,12 +112,16 @@ Let `phi:P_m->W_m` be a `G_1`-equivariant homomorphism.
 
 Since `W_m` has exponent two, `phi` kills squares.
 
-For every `r>=2`, squaring satisfies
+If `m=2`, then `P_m(2)=1`, so `phi` already factors through
+
+`P_m/P_m(2) ~= M_2(F_2)`.
+
+Assume now `m>=3`. For every `2<=r<=m-2`, squaring satisfies
 
 `(I+2^r A)^2
  = I+2^(r+1)A mod P_m(r+2)`.
 
-Starting at the top of the congruence filtration and descending, this shows
+Starting at the top of the congruence filtration and descending shows
 
 `phi(P_m(3))=0`.
 
@@ -134,7 +138,7 @@ This quotient is trivial under conjugation. Since `W_m^(G_1)=0`, equivariance fo
 
 `phi(P_m(2))=0`.
 
-Therefore `phi` factors through
+In every case `phi` therefore factors through
 
 `P_m/P_m(2) ~= M_2(F_2)`.
 
