@@ -1,3 +1,0 @@
-WP60J pre-review candidate identity
-
-This file intentionally does not record its own commit SHA. The exact review subject is the pull-request head SHA read from GitHub immediately after this file is committed. Reviews, CI, and merge must bind to that external exact identity.
