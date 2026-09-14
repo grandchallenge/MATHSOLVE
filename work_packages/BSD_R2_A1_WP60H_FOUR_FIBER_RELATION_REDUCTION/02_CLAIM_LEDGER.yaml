@@ -1,0 +1,68 @@
+campaign: BSD-001
+work_package: BSD_R2_A1_WP60H_FOUR_FIBER_RELATION_REDUCTION
+tracker: grandchallenge/MATHSOLVE#215
+programme_owner: grandchallenge/MATHSOLVE#164
+target:
+  id: BSD-R2-A1
+  status: SELECTED_RESEARCH_TARGET_UNPROVED
+protected_inputs:
+  mathsolve_wp60g: 1b75a922e2779178f478124948008afdd7e26a17
+  mathforge_wp60g_affine_interface: 7da6813fcde7eb5f9badd7c86946f58691ed6f0d
+  mathforge_wp60h_minimal_core_interface: 54f1eaea24b35d4ca37e778786345c3622b6fd98
+claims:
+  - id: BSD-A1-WP60H-CONSISTENCY-001
+    status: PROVED
+    statement: >-
+      For the F_2 character map Phi, a point outside all bad affine fibers
+      exists exactly when the complement target vector satisfies every linear
+      relation among the characters.
+  - id: BSD-A1-WP60H-ODD-RELATION-COVER-002
+    status: PROVED
+    statement: >-
+      In the self-dual F_2 setup with injective linear cohomology-to-character
+      map and linear affine constant, the bad fibers cover exactly when the
+      source classes admit an odd-cardinality linear dependence.
+  - id: BSD-A1-WP60H-FOUR-FIBER-003
+    status: PROVED
+    statement: >-
+      For four nonzero classes, the four bad fibers cover exactly when some
+      three of the four source classes sum to zero.
+  - id: BSD-A1-WP60H-MINIMAL-CORE-REDUCTION-004
+    status: PROVED_FROM_PROTECTED_INTERFACES
+    statement: >-
+      In the BSS s=2 minimal-core step, literal-p=2 common-prime failure is
+      reduced to exclusion of an exceptional three-term relation among
+      strategically chosen primal witnesses and the two one-dimensional dual
+      generators, or to replacement connectivity.
+refined_boundaries:
+  f1_parent: MISSING_P2_CORE_VERTEX_SIMULTANEOUS_LOCALIZATION_FOR_BSS_FITTING_CONTROL
+  f1_wp60g: MISSING_P2_TWO_CORE_VERTEX_SIMULTANEOUS_LOCALIZATION_OR_REPLACEMENT_CONNECTIVITY
+  f1_wp60h: MISSING_P2_BSS_MINIMAL_CORE_THREE_TERM_RELATION_EXCLUSION_OR_REPLACEMENT_CONNECTIVITY
+parallel_boundary:
+  f2: MISSING_P2_ELLIPTIC_H2_H3_VERIFICATION_OVER_F2_INFINITY
+parent_r5:
+  lift: MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  primitivity: MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+route_state:
+  R1: MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY
+  R2: MISSING_EXACT_WP00_TWIST_LRATIO_VALUATION_UNDER_WP09_CONSTRAINTS
+  R3: R3_RETIRED_FOR_SELECTED_GOOD_ORDINARY_LANE_BY_WP60B_LOCAL_OBSTRUCTION
+  R4: R4_EQUIVALENT_TO_FIXED_BASE_ANALYTIC_LEADING_TERM_VALUATION
+  D2a: MISSING_P2_K_HEIGHT_NONDEGENERACY
+  D2d: MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED
+  D2e: MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+execution_consequence:
+  - Do not retry generic affine-hyperplane counting for the s=2 step.
+  - Do not infer three-term-relation exclusion from dimensions or finite/transverse terminology alone.
+  - Use Poitou-Tate/global-duality structure, strategic witness selection, or replacement graph connectivity for the next F1 tranche.
+  - F2 may proceed independently in parallel.
+forbidden_promotions:
+  - THREE_TERM_RELATION_ABSENT_IN_ACTUAL_BSS_CONFIGURATION
+  - LITERAL_P2_BSS_S2_COMMON_PRIME_THEOREM
+  - LITERAL_P2_CORE_VERTEX_GRAPH_CONNECTIVITY
+  - LITERAL_P2_BSS_FITTING_CONTROL
+  - BSS_H2_H3_FOR_SELECTED_CLASS
+  - R5_LIFT_RESOLVED
+  - R5_PRIMITIVITY_RESOLVED
+  - BSD_R2_A1_PROVED
+  - MATHCERT_CERTIFIED
