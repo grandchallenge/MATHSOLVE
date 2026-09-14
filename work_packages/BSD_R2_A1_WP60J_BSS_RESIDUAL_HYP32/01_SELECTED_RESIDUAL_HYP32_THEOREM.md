@@ -151,7 +151,7 @@ BSS II Hypotheses 3.2 and 3.3 hold at literal `p=2`.
 
 ### Proof
 
-We verify the clauses of protected BSS Hypothesis 3.2.
+We verify the three clauses of BSS Hypothesis 3.2.
 
 1. **3.2(i), irreducibility.** This is protected WP12.
 
@@ -168,8 +168,6 @@ We verify the clauses of protected BSS Hypothesis 3.2.
    `H^1(K(A)_2/Q,A)=0`.
 
    Weil self-duality gives the identical assertion for `A^*(1)`.
-
-4. **3.2(iv).** This clause is imposed only when `p=3`; it is irrelevant at `p=2`.
 
 BSS Hypothesis 3.3 asks for zero global invariants of the residual primal and dual modules. This follows from irreducibility/nontriviality of `E[2]` and Weil self-duality.
 
