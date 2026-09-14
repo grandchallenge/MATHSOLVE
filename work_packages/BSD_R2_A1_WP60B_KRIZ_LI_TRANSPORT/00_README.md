@@ -1,54 +1,76 @@
-# BSD-R2-A1 WP60B — Kriz–Li literal-`2` normalization transport
+# BSD-R2-A1 WP60B — Kriz–Li literal-`2` transport
 
 ## Purpose
 
-Execute the WP60B independence test from protected `grandchallenge/MATHSOLVE#215`.
-
-The question is not whether Kriz–Li provide a genuine literal-`2` theorem; protected MATHFORGE already confirms that they do. The question is whether their Assumption `(F)` supplies arithmetic information independent of the protected unknown Heegner-index parity.
+Execute the WP60B normalization/independence test from `grandchallenge/MATHSOLVE#215` using the exact source interface protected by MATHFORGE.
 
 ## Entering protected anchors
 
 - MATHSOLVE: `8b7ba4e5d888f68ffdaeab748d7d94d764f286fa`.
 - MATHFORGE: `a8f72ed64755777870a300053e11659fb1dfff1b`.
-- Active execution tracker: `grandchallenge/MATHSOLVE#215`.
+- Tracker: `grandchallenge/MATHSOLVE#215`.
 - Programme owner: `grandchallenge/MATHSOLVE#164`.
 
 ## Result
 
-WP60B proves the exact factorization
+WP60B first proves the exact normalization
 
 `KL_2(E,K,f)=u_f m_K(f) kappa_2(E,P)`,
 
-where
+with
 
-- `u_f in Z_2^x` is the protected modular-differential unit;
-- `m_K(f)` is the protected Heegner index;
-- `kappa_2(E,P)=((3-a_2)/2)log_{omega_E}(P) in Z_2` is a fixed selected-curve local scalar independent of `K`.
+`u_f in Z_2^x`
 
-Therefore
+and
 
-`Assumption (F)
- <=> [m_K(f) odd] AND [kappa_2(E,P) in Z_2^x]`.
+`kappa_2(E,P)=((3-a_2)/2)log_{omega_E}(P)`.
+
+It then uses the selected good-ordinary-at-`2` hypothesis to prove a stronger local theorem:
+
+`kappa_2(E,P) in 2Z_2`
+
+for every selected curve and primitive generator.
+
+Hence
+
+`KL_2(E,K,f) in 2Z_2`
+
+for every WP09-compatible field `K`. Kriz–Li Assumption `(F)` therefore cannot hold anywhere on the selected good-ordinary branch.
 
 Disposition:
 
-`MIXED_BUT_NO_INDEPENDENT_K_VARYING_ESCAPE`.
+`KRIZ_LI_F_LOCALLY_OBSTRUCTED_ON_SELECTED_GOOD_ORDINARY_LANE`.
 
-Thus WP59 reopening form `R3` is not an independent way around `R1`: its varying-field content is exactly the same unknown Heegner-index parity, together with a fixed local prerequisite.
+## Consequence for WP59
 
-## New split
+Reopening form `R3` is retired for the selected branch:
 
-- `KL-LOCAL`: `MISSING_UNIFORM_KRIZ_LI_FIXED_LOCAL_LOG_UNIT`.
-- `KL-INDEX`: `MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY`.
+`R3_RETIRED_FOR_SELECTED_GOOD_ORDINARY_LANE_BY_WP60B_LOCAL_OBSTRUCTION`.
 
-The fixed local factor is suitable for WP60C exact real-data reconnaissance. The index parity remains a genuine theorem boundary.
+This does not resolve `R1`, `R2`, `R4`, `R5`, or D2d. The genuine Heegner-index problem remains
+
+`MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY`.
+
+## Why the extra factor appears
+
+For a minimal good model at `2`, ordinary reduction forces the Weierstrass `A_1` coefficient to be odd. The formal invariant differential then gives
+
+`log_{omega_E}(E_1(Q_2)) subset 4Z_2`.
+
+Since `[3-a_2]P` reduces to the identity,
+
+`kappa_2(E,P)
+ = (1/2)log_{omega_E}([3-a_2]P)
+ in 2Z_2`.
+
+No shallow formal-log isomorphism is assumed.
 
 ## Files
 
-- `01_KRIZ_LI_TRANSPORT_THEOREM.md` — exact normalization, integrality, factorization, and independence classification.
-- `02_CLAIM_LEDGER.yaml` — protected claim boundary.
-- `handoffs/BSD-001/WP60B_FRONTIER.md` — continuation frontier.
+- `01_KRIZ_LI_TRANSPORT_THEOREM.md` — exact transport and ordinary local obstruction.
+- `02_CLAIM_LEDGER.yaml` — claim and boundary ledger.
+- `handoffs/BSD-001/WP60B_FRONTIER.md` — successor frontier.
 
 ## Non-promotion
 
-This work package does not prove either new obligation, does not reopen D2d, does not prove `BSD-R2-A1`, and does not invoke MATHCERT.
+This work package does not determine `m_K(f)` or `lambda_D`, does not resolve D2d, does not prove `BSD-R2-A1`, and does not invoke MATHCERT. The local obstruction is specific to the protected good-ordinary-at-`2` selected lane; it is not a general impossibility claim about Kriz–Li `(F)`.
