@@ -1,0 +1,39 @@
+work_package: BSD_R2_A1_WP60J_BSS_RESIDUAL_HYP32
+campaign: BSD-001
+operation: grandchallenge/MATHSOLVE#227
+status: PROVED_SELECTED_RESIDUAL_BSS_HYP32_HYP33
+protected_entering_mathsolve: d37c2cf409e13432a4aa7cf3fe58ff9e751e46f1
+protected_mathforge: 54f1eaea24b35d4ca37e778786345c3622b6fd98
+protected_intellect: fc9ee5537bf07586dffcc621e753204ecd835365
+claims:
+  - id: BSD-A1-WP60J-FULL-IMAGE-001
+    statement: selected 2-adic image is GL_2(Z_2)
+    status: proved
+  - id: BSD-A1-WP60J-DISJOINT-002
+    statement: Q(E[2]) intersects Q(i) trivially over Q
+    status: proved
+  - id: BSD-A1-WP60J-H1-003
+    statement: H^1(S3,E[2])=0 and E[2]^S3=0
+    status: proved
+  - id: BSD-A1-WP60J-H1-PRODUCT-004
+    statement: H^1(S3 x C2,E[2])=0
+    status: proved
+  - id: BSD-A1-WP60J-BSS-RESIDUAL-005
+    statement: BSS II Hypotheses 3.2 and 3.3 hold for K=Q, R=k=F_2, A=E[2]
+    status: proved
+route_effects:
+  - SELECTED_2ADIC_IMAGE_GL2_Z2
+  - BSS_LITERAL_P2_SELECTED_RESIDUAL_HYP32_HYP33_HOLD
+  - WP60G_WP60H_RESIDUAL_HYP32_CONDITIONALITY_DISCHARGED
+remaining_boundaries:
+  - MISSING_P2_BSS_MINIMAL_CORE_THREE_TERM_RELATION_EXCLUSION_OR_REPLACEMENT_CONNECTIVITY
+  - R5_BSS_STANDARD_HYPOTHESIS_ROUTE_BLOCKED_BY_H3_AT_LITERAL_P2
+  - MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  - MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+firewall:
+  bsd_r2_a1_proved: false
+  integral_bss_p2_fitting_proved: false
+  infinite_h3_vanishing_claimed: false
+  r5_closed: false
+  mathcert_certified: false
+  novelty_claimed: false
