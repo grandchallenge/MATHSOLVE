@@ -9,42 +9,54 @@ selected_target: SELECTED_RESEARCH_TARGET_UNPROVED
 claims:
   - claim_id: BSD-A1-WP60B-DIFF-001
     status: PROVED_FROM_PROTECTED_INPUTS
-    statement: "For the same protected parametrization f, the Kriz-Li normalized differential satisfies omega_f^KL = +/- C_f^{-1} omega_E; the logarithms differ by the same scalar, and C_f is a 2-adic unit."
-  - claim_id: BSD-A1-WP60B-KAPPA-INTEGRAL-001
-    status: PROVED
-    statement: "For primitive P, kappa_2(E,P)=((3-a_2)/2) log_{omega_E}(P) lies in Z_2."
+    statement: "For the fixed parametrization, omega_f^KL = +/- C_f^{-1} omega_E and C_f is a 2-adic unit."
   - claim_id: BSD-A1-WP60B-KL-TRANSPORT-001
     status: PROVED_FROM_PROTECTED_INPUTS
-    statement: "The Kriz-Li normalized logarithmic quantity factors exactly as KL_2(E,K,f)=u_f m_K(f) kappa_2(E,P), with u_f in Z_2^x."
-  - claim_id: BSD-A1-WP60B-F-CLASSIFY-001
+    statement: "KL_2(E,K,f)=u_f m_K(f) kappa_2(E,P), where u_f is a 2-adic unit and kappa_2=((3-a_2)/2)log_{omega_E}(P)."
+  - claim_id: BSD-A1-WP60B-ORDINARY-A1-001
+    status: PROVED
+    statement: "For a minimal good model at 2 on the selected ordinary branch, the Weierstrass coefficient A_1 is odd."
+  - claim_id: BSD-A1-WP60B-ORDINARY-LOG-001
+    status: PROVED
+    statement: "For every Q in E_1(Q_2) on the selected good-ordinary branch, log_{omega_E}(Q) lies in 4Z_2."
+  - claim_id: BSD-A1-WP60B-KAPPA-EVEN-001
+    status: PROVED
+    statement: "For every selected curve and primitive generator P, kappa_2(E,P) lies in 2Z_2 and is never a 2-adic unit."
+  - claim_id: BSD-A1-WP60B-F-OBSTRUCTION-001
     status: PROVED_FROM_PROTECTED_INPUTS
-    statement: "On the protected selected lane, Kriz-Li Assumption (F) is equivalent to m_K(f) odd together with kappa_2(E,P) a 2-adic unit."
+    statement: "Kriz-Li Assumption (F) cannot hold for any selected curve and any WP09-compatible field because the normalized logarithmic quantity always lies in 2Z_2."
   - claim_id: BSD-A1-WP60B-K2TORS-001
     status: PROVED_FROM_PROTECTED_INPUTS
     statement: "Surjective E[2] implies E(K)[2]=0 for every quadratic K/Q on the selected lane."
   - claim_id: BSD-A1-WP60B-INDEX-PARITY-001
     status: PROVED_FROM_PROTECTED_INPUTS
-    statement: "The protected Heegner point P_K(f) is indivisible by 2 in E(K) if and only if m_K(f) is odd."
-  - claim_id: BSD-A1-WP60B-INDEPENDENCE-001
+    statement: "P_K(f) is indivisible by 2 in E(K) if and only if m_K(f) is odd."
+  - claim_id: BSD-A1-WP60B-R3-DISPOSITION-001
     status: PROVED_FROM_PROTECTED_INPUTS
-    statement: "Kriz-Li (F) is mixed but supplies no independent K-varying escape: its K-varying content is precisely the unknown Heegner-index parity, together with a fixed local-unit condition."
+    statement: "WP59 reopening form R3 is retired for the selected good-ordinary lane: the Kriz-Li antecedent is locally obstructed before auxiliary-field variation enters."
+
+resolved_or_retired:
+  - boundary: MISSING_UNIFORM_KRIZ_LI_FIXED_LOCAL_LOG_UNIT
+    disposition: RESOLVED_NEGATIVELY_WP60B
+    meaning: "The fixed local factor is uniformly nonunit: kappa_2(E,P) lies in 2Z_2."
+  - reopening_form: R3
+    disposition: R3_RETIRED_FOR_SELECTED_GOOD_ORDINARY_LANE_BY_WP60B_LOCAL_OBSTRUCTION
 
 unresolved:
-  - boundary: MISSING_UNIFORM_KRIZ_LI_FIXED_LOCAL_LOG_UNIT
-    meaning: "No protected theorem proves kappa_2(E,P) is a 2-adic unit uniformly for the selected class."
   - boundary: MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY
     meaning: "No protected theorem produces a WP09-compatible K with ord_2(m_K(f))=0 uniformly for the selected class."
   - boundary: MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
     meaning: "WP60A-A1 remains unresolved."
   - boundary: MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
     meaning: "WP60A-A1 primitivity remains unresolved."
+  - boundary: MISSING_P2_K_HEIGHT_NONDEGENERACY
+    meaning: "D2a remains unresolved."
   - boundary: MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED
-    meaning: "D2d remains unresolved."
+    meaning: "D2d remains unresolved through R1, R2, R4, or R5 routes."
 
 firewall:
-  - "Do not infer kappa_2(E,P) is always a unit."
+  - "The impossibility statement applies only to Kriz-Li (F) on the protected selected good-ordinary-at-2 lane."
   - "Do not infer m_K(f) is odd for any or every WP09 field."
-  - "Do not infer existence of a uniform WP09-compatible Kriz-Li (F) field."
   - "Do not infer an exact value of ord_2(lambda_D)."
-  - "Do not declare WP59 R1, R3, R4, D2d, or BSD-R2-A1 resolved."
+  - "Do not declare WP59 R1, R2, R4, R5, D2d, or BSD-R2-A1 resolved."
   - "Do not promote source admission or CI success to MATHCERT certification."
