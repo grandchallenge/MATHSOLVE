@@ -1,0 +1,47 @@
+work_package: BSD_R2_A1_WP60F_BSS_P2_PROOF_BOUNDARIES
+campaign: BSD-001
+status: PROVED_FROM_ADMITTED_SOURCE_INTERFACES
+protected_inputs:
+  mathsolve: c2f036fd935238a880780685a927c26ec0de2d4e
+  mathforge: eaaf7b8c660f3f07030608b3af1334ece5598586
+  intellect: fc9ee5537bf07586dffcc621e753204ecd835365
+claims:
+  - id: BSD-A1-WP60F-BSS-P2-BOUNDARY-001
+    status: proved_from_admitted_source_interfaces
+    statement: >-
+      The currently protected Burns-Sakamoto-Sano finite-level R5 architecture
+      cannot yield the selected literal-p=2 Fitting conclusion without both a
+      literal-2 replacement for the core-vertex/simultaneous-localization
+      Fitting-control step and an exact verification or bypass of the elliptic
+      H2/H3 hypotheses.
+  - id: BSD-A1-WP60F-DERIVATIVE-FITTING-DISTINCTION-002
+    status: proved_from_admitted_source_interfaces
+    statement: >-
+      The admitted higher-derivative construction interface is distinct from
+      the later p>3 Kolyvagin-system/Fitting-control interface; existence of a
+      derivative expression does not by itself prove the integral Fitting
+      containment.
+route_classification: BSS_LITERAL_P2_R5_ROUTE_REQUIRES_F1_AND_F2
+open_boundaries:
+  - MISSING_P2_CORE_VERTEX_SIMULTANEOUS_LOCALIZATION_FOR_BSS_FITTING_CONTROL
+  - MISSING_P2_ELLIPTIC_H2_H3_VERIFICATION_OVER_F2_INFINITY
+  - MISSING_LITERAL_P2_FINITE_LEVEL_KATO_DERIVATIVE_FITTING_THEOREM
+  - MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  - MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+  - MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY
+  - MISSING_EXACT_WP00_TWIST_LRATIO_VALUATION_UNDER_WP09_CONSTRAINTS
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED
+  - MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+reopening_forms:
+  - literal_p2_core_vertex_localization_theorem
+  - direct_literal_p2_kolyvagin_fitting_theorem
+  - exact_selected_curve_h2_h3_verification
+  - elliptic_fitting_theorem_bypassing_h2_h3
+  - direct_primitive_finite_kummer_fitting_theorem
+claim_firewall:
+  bsd_r2_a1: unproved
+  mathcert_invoked: false
+  literal_p2_bss_fitting_theorem: not_proved
+  h2_h3_uniform_selected_class: not_proved
+  literature_exhaustiveness: not_claimed
