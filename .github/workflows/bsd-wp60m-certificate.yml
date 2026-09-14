@@ -1,0 +1,34 @@
+name: BSD WP60M certificate
+
+on:
+  pull_request:
+    paths:
+      - 'work_packages/BSD_R2_A1_WP60M_BSS_ALL_LEVEL_SELMER_HYP32III/**'
+      - '.github/workflows/bsd-wp60m-certificate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'work_packages/BSD_R2_A1_WP60M_BSS_ALL_LEVEL_SELMER_HYP32III/**'
+      - '.github/workflows/bsd-wp60m-certificate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-all-level-cohomology:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Assert exact subject checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - name: Replay WP60K mod-4 certificate
+        run: python work_packages/BSD_R2_A1_WP60K_BSS_MOD4_HYP32_OBSTRUCTION/02_GL2Z4_Z4_H1_CERTIFICATE.py
+      - name: Replay WP60M structural certificate
+        run: python work_packages/BSD_R2_A1_WP60M_BSS_ALL_LEVEL_SELMER_HYP32III/02_ALL_LEVEL_COHOMOLOGY_CERTIFICATE.py
