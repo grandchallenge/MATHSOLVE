@@ -1,0 +1,83 @@
+schema_version: 1.0.0
+work_package: BSD_R2_A1_WP60_P2_FRONTIER_RESEARCH_PROGRAM
+campaign: BSD-001
+parent_issue: grandchallenge/MATHSOLVE#164
+tracker_issue: grandchallenge/MATHSOLVE#215
+protected_issuance_anchors:
+  intellect: fc9ee5537bf07586dffcc621e753204ecd835365
+  mathsolve: aae4320432a5510146a5af0bebcfd966e36d7419
+  mathforge: c8af223d0e05f999b4977a0dae5b1b5281eff93e
+selected_target:
+  id: BSD-R2-A1
+  status: SELECTED_RESEARCH_TARGET_UNPROVED
+entering_boundary:
+  id: D2d
+  status: MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED
+  residual: R_2(E,K,f)=2 ord_2(m_K(f))-ord_2(lambda_D)
+claims:
+  - claim_id: BSD-A1-WP60-PROGRAMME-001
+    status: EXECUTION_PROGRAMME_APPROVED
+    statement: >-
+      WP60 may pursue three bounded lanes: a finite-level literal-p=2 analytic
+      determinant generator (WP60A), Kriz-Li mod-2 condition forcing (WP60B),
+      and exact real-data theorem-discovery reconnaissance (WP60C).
+    promotes_math_claim: false
+
+  - claim_id: BSD-A1-WP60A-TARGET-001
+    status: OPEN_RESEARCH_TARGET
+    statement: >-
+      Construct or source an exact literal-p=2 integral analytic generator on
+      the protected primitive determinant/Fitting line at the height-one prime
+      (2), strong enough to satisfy WP59 reopening condition R5 or directly R4.
+    required_for_success:
+      - exact_integrality_at_2
+      - exact_primitive_local_condition_match
+      - no_hidden_2_unit
+      - exact_head_protected_proof
+
+  - claim_id: BSD-A1-WP60B-TARGET-001
+    status: OPEN_RESEARCH_TARGET
+    statement: >-
+      Translate the Kriz-Li literal-p=2 logarithmic hypothesis into the
+      protected normalization and determine whether a WP09-compatible
+      auxiliary field can be forced to satisfy it without assuming the desired
+      Heegner-index parity.
+    required_for_success:
+      - exact_source_normalization
+      - anti_circularity_analysis
+      - all_WP09_constraints_preserved
+      - literal_p2_theorem
+
+  - claim_id: BSD-A1-WP60C-EVIDENCE-001
+    status: AUTHORIZED_NONPROOF_RECONNAISSANCE
+    statement: >-
+      Exact computations on real selected curves and real WP09-compatible
+      fields may be used to falsify candidate criteria and generate theorem
+      conjectures, but do not establish a uniform mathematical claim.
+    evidence_class: theorem_discovery_only
+
+reopening_contract:
+  R1: exact literal-p=2 Heegner-index valuation for the selected class and a WP09-compatible K
+  R2: exact WP00-normalized ord_2(lambda_D) under all WP09 constraints without unavailable rank-zero seed
+  R3: theorem forcing the Kriz-Li mod-2 Heegner-log condition for some WP09-compatible K for every selected curve
+  R4: direct exact theorem determining R_2(E,K,f)
+  R5: literal-p=2 integral height-one-(2) main-conjecture/reciprocity theorem specializing to the protected determinant line
+parallel_boundaries:
+  D1c: MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  D2a: MISSING_P2_K_HEIGHT_NONDEGENERACY
+  D2b: RESOLVED_WP52A_FINITE_COMPARISON_DETERMINANT
+  D2c: RESOLVED_WP54A_GLOBAL_QORD_RECONCILIATION
+  D2e: MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+forbidden_promotions:
+  - BSD-R2-A1 proved
+  - m_K(f) odd without literal-p=2 proof
+  - lambda_D is a 2-adic unit without exact proof
+  - Kriz-Li condition holds uniformly from numerical evidence
+  - fixed-p=2 height nondegeneracy from height existence
+  - odd-prime theorem specialized mechanically to p=2
+  - computational correlation promoted to theorem
+  - MATHCERT certification from MATHSOLVE integration
+completion_states:
+  - REOPENED_D2D_BY_R1_R2_R3_R4_OR_R5
+  - SHARPER_PROTECTED_BARRIER_WITH_NEW_EXECUTABLE_SUCCESSOR
+  - GENUINE_NAMED_THEOREM_SOURCE_AUTHORITY_OR_EVIDENTIARY_BOUNDARY
