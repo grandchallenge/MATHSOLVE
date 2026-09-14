@@ -1,0 +1,30 @@
+schema_version: 1.0.0
+campaign: BSD-001
+work_package: BSD-R2-A1-WP56A-CLASSICAL-HEIGHT-REGULATOR-DESCENT
+protected_mathsolve_base: 456656135cd425410d3b64d46d56d7702171f3b5
+protected_mathforge_source: 6c2f7c8a9a1f646ad48eb1fd13eba845343bf6dd
+claims:
+  - claim_id: BSD-A1-WP56-MW-INDEX-001
+    status: PROVED_FROM_PROTECTED_INPUTS
+    statement: "The CST Heegner point has a unique free-lattice coordinate m_K(f), up to generator sign: P_K(f)=m_K(f)P+T with T torsion; m_K(f) is nonzero."
+  - claim_id: BSD-A1-WP56-REG-001
+    status: PROVED_FROM_WP00_DEFINITION
+    statement: "For a primitive rank-one generator P, Reg_E=hhat_Q(P)."
+  - claim_id: BSD-A1-WP56-HEIGHT-REG-001
+    status: PROVED_FROM_PROTECTED_INPUTS_AND_ADMITTED_SOURCE
+    statement: "hhat_K(P_K(f))/Reg_E = 2 m_K(f)^2 exactly, so its 2-adic valuation is 1+2 ord_2(m_K(f))."
+  - claim_id: BSD-A1-WP56-WP00-RESIDUAL-001
+    status: PROVED_FROM_PROTECTED_INPUTS_AND_ADMITTED_SOURCE
+    statement: "L'(E,1)/(Omega_E Reg_E) = 4 m_K(f)^2 A_E /(C_f^2 u_K^2 sqrt(|D_K|) Omega_E L(E^D,1))."
+  - claim_id: BSD-A1-WP56-PRIMITIVITY-001
+    status: NOT_PROVED
+    statement: "WP56A does not determine m_K(f), its parity, or Heegner primitivity at p=2."
+  - claim_id: BSD-A1-WP56-D2D-001
+    status: REFINED_OPEN_BOUNDARY
+    statement: "D2d is narrowed to MISSING_EXACT_HEEGNER_INDEX_AND_AREA_PERIOD_TWIST_SCALAR_COMPARISON."
+firewall:
+  BSD-R2-A1: SELECTED_RESEARCH_TARGET_UNPROVED
+  D1c: MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  D2a: MISSING_P2_K_HEIGHT_NONDEGENERACY
+  D2e: MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+  mathcert: NOT_INVOKED
