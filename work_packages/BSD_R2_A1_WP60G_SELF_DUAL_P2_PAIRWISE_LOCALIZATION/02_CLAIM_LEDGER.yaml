@@ -1,0 +1,56 @@
+work_package: BSD_R2_A1_WP60G_SELF_DUAL_P2_PAIRWISE_LOCALIZATION
+campaign: BSD-001
+status: PROVED_CONDITIONAL_LITERAL_P2_LOCALIZATION_REFINEMENT
+protected_inputs:
+  mathsolve: 813156baf3fa57989ddce891f355e2648e99c008
+  mathforge_wp60f: eaaf7b8c660f3f07030608b3af1334ece5598586
+  mathforge_wp60g: 7da6813fcde7eb5f9badd7c86946f58691ed6f0d
+  intellect: fc9ee5537bf07586dffcc621e753204ecd835365
+claims:
+  - id: BSD-A1-WP60G-AFFINE-2COVER-001
+    status: proved
+    statement: >-
+      Two nonempty affine fibers of nonzero F_2-valued group characters cover
+      the group if and only if the characters are equal and the fiber
+      constants are distinct.
+  - id: BSD-A1-WP60G-SELFDUAL-PAIRWISE-002
+    status: proved_conditional_on_bss_hypothesis_3_2
+    statement: >-
+      In the residual literal-p=2 BSS setup, if A is G_K-equivariantly
+      self-dual as A ~= A^*(1), then every nonzero primal class and nonzero dual
+      class admit a positive-density set of BSS auxiliary primes at which both
+      localizations are nonzero.
+  - id: BSD-A1-WP60G-WEIL-SELFDUAL-003
+    status: proved
+    statement: >-
+      The Weil pairing gives a canonical G_Q-equivariant isomorphism
+      E[2] ~= E[2]^*(1) for every elliptic curve E/Q.
+route_progress:
+  pairwise_s_equals_t_equals_1_counting_obstruction: resolved_under_bss_hypothesis_3_2_and_self_duality
+  bss_lemma_5_14_pairwise_prime_step: no_longer_blocked_by_s_plus_t_lt_p_count
+  bss_lemma_5_17_pairwise_prime_step: no_longer_blocked_by_s_plus_t_lt_p_count
+  bss_lemma_5_15_s_equals_2: unresolved
+  bss_corollary_5_16_minimal_core_connectivity: unresolved
+refined_boundary: MISSING_P2_TWO_CORE_VERTEX_SIMULTANEOUS_LOCALIZATION_OR_REPLACEMENT_CONNECTIVITY
+open_boundaries:
+  - MISSING_P2_TWO_CORE_VERTEX_SIMULTANEOUS_LOCALIZATION_OR_REPLACEMENT_CONNECTIVITY
+  - MISSING_P2_CORE_VERTEX_SIMULTANEOUS_LOCALIZATION_FOR_BSS_FITTING_CONTROL
+  - MISSING_P2_ELLIPTIC_H2_H3_VERIFICATION_OVER_F2_INFINITY
+  - MISSING_LITERAL_P2_FINITE_LEVEL_KATO_DERIVATIVE_FITTING_THEOREM
+  - MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  - MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+  - MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY
+  - MISSING_EXACT_WP00_TWIST_LRATIO_VALUATION_UNDER_WP09_CONSTRAINTS
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED
+  - MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+claim_firewall:
+  bss_hypothesis_3_2_uniform_selected_class: not_proved
+  bss_h2_h3_uniform_selected_class: not_proved
+  four_constraint_localization: not_proved
+  core_vertex_graph_connected_at_p2: not_proved
+  bss_fitting_theorem_at_p2: not_proved
+  r5_lift: unresolved
+  r5_prim: unresolved
+  bsd_r2_a1: unproved
+  mathcert_invoked: false
