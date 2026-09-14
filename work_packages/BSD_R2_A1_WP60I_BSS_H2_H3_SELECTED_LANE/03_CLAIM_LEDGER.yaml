@@ -1,0 +1,54 @@
+work_package: BSD-R2-A1-WP60I-BSS-H2-H3-SELECTED-LANE
+campaign: BSD-001
+tracker: grandchallenge/MATHSOLVE#215
+operation: grandchallenge/MATHSOLVE#225
+owner: grandchallenge/MATHSOLVE#164
+protected_inputs:
+  intellect: fc9ee5537bf07586dffcc621e753204ecd835365
+  mathsolve: a73525fefc362aa4e1e03f006a46fd1dc3b961e8
+  mathforge: 54f1eaea24b35d4ca37e778786345c3622b6fd98
+claims:
+  - id: BSD-A1-WP60I-ODD-DEPTH-001
+    status: proved_in_candidate
+    statement: Every selected curve has an odd semistable bad prime with odd minimal-discriminant depth.
+    authority: MATHSOLVE
+    certification: none
+  - id: BSD-A1-WP60I-H2-002
+    status: proved_in_candidate
+    statement: The formal literal-p=2 BSS H2 condition holds for K=F=Q on the selected lane.
+    authority: MATHSOLVE
+    certification: none
+  - id: BSD-A1-WP60I-MOD4-003
+    status: proved_in_candidate
+    statement: The restricted mod-4 image is SL_2(Z/4) and the full mod-4 image is GL_2(Z/4).
+    authority: MATHSOLVE
+    certification: none
+  - id: BSD-A1-WP60I-GL2Z4-H1-004
+    status: exact_finite_certificate_in_candidate
+    statement: H^1(GL_2(Z/4),F_2^2) is nonzero.
+    evidence:
+      - work_packages/BSD_R2_A1_WP60I_BSS_H2_H3_SELECTED_LANE/02_GL2Z4_H1_CERTIFICATE.py
+    authority: MATHSOLVE
+    certification: none
+  - id: BSD-A1-WP60I-H3-FAIL-005
+    status: proved_in_candidate
+    statement: The formal literal-p=2 BSS H3 condition fails for K=F=Q on the selected lane.
+    authority: MATHSOLVE
+    certification: none
+disposition:
+  exact: BSS_LITERAL_P2_SELECTED_H2_HOLDS_H3_FAILS
+  route: R5_BSS_STANDARD_HYPOTHESIS_ROUTE_BLOCKED_BY_H3_AT_LITERAL_P2
+residual_frontier:
+  f1: MISSING_P2_BSS_MINIMAL_CORE_THREE_TERM_RELATION_EXCLUSION_OR_REPLACEMENT_CONNECTIVITY
+  f2: DETERMINED_NEGATIVE_H3_FAILS
+  r5_lift: MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  r5_prim: MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+  bsd_r2_a1: SELECTED_RESEARCH_TARGET_UNPROVED
+firewall:
+  - no_F1_closure
+  - no_literal_p2_BSS_Fitting_theorem
+  - no_general_impossibility_claim_for_Kolyvagin_or_Fitting_methods
+  - no_R5_LIFT_or_R5_PRIM_promotion
+  - no_BSD_R2_A1_promotion
+  - no_MATHCERT_certification
+  - no_novelty_or_priority_claim
