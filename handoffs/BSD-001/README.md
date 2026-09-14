@@ -5,13 +5,13 @@
 - Campaign: `BSD-001 — Birch-Swinnerton-Dyer selected rank-one 2-primary campaign`.
 - Mathematical repository: `grandchallenge/MATHSOLVE`.
 - Programme owner: `grandchallenge/MATHSOLVE#164`.
-- Active WP60 execution tracker: `grandchallenge/MATHSOLVE#215`.
-- External source authority: `grandchallenge/MATHFORGE`.
+- Active tracker: `grandchallenge/MATHSOLVE#215`.
+- Source authority: `grandchallenge/MATHFORGE`.
 - Constitutional authority: protected `grandchallenge/INTELLECT`.
 - Certification authority: `grandchallenge/MATHCERT` only.
 - Selected target: `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED`.
 
-Use protected repository state as authority. Do not use mutable issues, conversation history, stale summaries, numerical evidence, or odd-prime theorems as substitute authority.
+Use protected repository state as authority. Do not use mutable issue text, stale summaries, numerical evidence, or odd-prime theorems as substitute authority.
 
 ## Canonical read order
 
@@ -22,18 +22,16 @@ After re-fetching protected live heads, read:
 3. `work_packages/BSD_R2_A1_WP60B_KRIZ_LI_TRANSPORT/00_README.md`;
 4. `work_packages/BSD_R2_A1_WP60B_KRIZ_LI_TRANSPORT/01_KRIZ_LI_TRANSPORT_THEOREM.md`;
 5. `work_packages/BSD_R2_A1_WP60B_KRIZ_LI_TRANSPORT/02_CLAIM_LEDGER.yaml`;
-6. protected WP60A-A1 when the height-one-`(2)` determinant lane is needed;
+6. protected WP60A-A1 for the height-one-`(2)` determinant lane;
 7. `work_packages/BSD_R2_A1_WP60_P2_FRONTIER_RESEARCH_PROGRAM/01_EXECUTION_CONTRACT.md`;
-8. protected MATHFORGE WP60B/WP60A/WP59 source records;
-9. only then deeper protected predecessors required by the active lane.
+8. protected MATHFORGE WP60B/WP60A/WP59 records;
+9. only then deeper predecessors needed by the active lane.
 
 ## Governing invariant
 
-For the selected rank-one class,
-
 `delta_2(E)
  := ord_2(L'(E,1)/(Omega_E Reg_E))
-    - sum_{ell|N} ord_2(c_ell)`.
+    - sum_{ell|N}ord_2(c_ell)`.
 
 Protected WP16A/WP16B/WP19 give
 
@@ -45,12 +43,12 @@ The selected theorem is exactly
 
 `delta_2(E)=v_2(Fitt^1_{Z_2}(X_E))`.
 
-## Protected arithmetic reduction
+## Current arithmetic reduction
 
-Protected WP55A–WP58A give, for the fixed source-compatible parametrization,
+Protected WP55A–WP58A give
 
 `delta_2(E)
- = 1 + 2 ord_2(m_K(f))
+ = 1 + 2ord_2(m_K(f))
    - ord_2(c_infinity(E^D))
    - ord_2(lambda_D)
    - sum_{ell|N}ord_2(c_ell)`,
@@ -59,36 +57,30 @@ where
 
 `lambda_D=L(E^D,1)/Omega(E^D) in Q^x`
 
-and
-
-`ord_2(C_f)=0`.
+and `ord_2(C_f)=0` for the fixed source-compatible parametrization.
 
 Protected WP59 isolates
 
-`R_2(E,K,f)=2ord_2(m_K(f))-ord_2(lambda_D)`
-
-and records the bounded D2d source boundary.
+`R_2(E,K,f)=2ord_2(m_K(f))-ord_2(lambda_D)`.
 
 ## WP60A protected result
 
-WP60A-A0 fixes all finite algebraic determinant/control factors. WP60A-A1 proves that, for a two-term perfect complex over a DVR with rank-one `H^1` and finite `H^2`, the inverse determinant line maps to
+WP60A-A0 fixes the finite algebraic determinant/control factors. WP60A-A1 proves that the inverse determinant line of the relevant rank-one two-term complex maps to
 
-`Fitt^0(H^2) H^1`.
+`Fitt^0(H^2)H^1`.
 
-Thus a literal-`p=2` determinant lift of the fixed Kato class at the height-one prime `(2)` is exactly the missing one-sided Fitting divisibility, while determinant primitivity is equality.
-
-Current WP60A boundaries:
+Thus the remaining determinant lane is exactly:
 
 - `MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2`;
 - `MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
 
-Do not cycle through alternative determinant formalisms without new arithmetic input.
+Do not restart generic determinant-formalism reconnaissance without new arithmetic input.
 
-## WP60B exact Kriz–Li transport
+## WP60B exact source transport
 
-Protected MATHFORGE WP60B admits the exact literal-`2` source condition for the same modular parametrization:
+Protected MATHFORGE WP60B admits Kriz–Li's literal-`2` condition
 
-`((3-a_2)/2) log_{omega_f^KL}(P_KL(f)) != 0 mod 2`,
+`((3-a_2)/2)log_{omega_f^KL}(P_KL(f)) != 0 mod 2`,
 
 with
 
@@ -108,115 +100,98 @@ For the protected primitive generator `P`, define
 
 `kappa_2(E,P):=((3-a_2)/2)log_{omega_E}(P)`.
 
-WP60B proves
+WP60B proves the exact factorization
 
-`kappa_2(E,P) in Z_2`
+`KL_2(E,K,f)=u_f m_K(f)kappa_2(E,P)`,
 
-and the exact factorization
+with `u_f in Z_2^x`.
 
-`KL_2(E,K,f)=u_f m_K(f) kappa_2(E,P)`,
+## WP60B ordinary local obstruction
 
-where `u_f in Z_2^x`.
+The selected class has good ordinary reduction at `2`. For a minimal integral Weierstrass model, WP60B proves the coefficient `A_1` is odd. The formal invariant differential then gives
+
+`log_{omega_E}(E_1(Q_2)) subset 4Z_2`.
+
+Since `[3-a_2]P` reduces to the identity,
+
+`kappa_2(E,P)
+ = (1/2)log_{omega_E}([3-a_2]P)
+ in 2Z_2`.
 
 Therefore
 
-`Kriz-Li (F)
- <=> [m_K(f) odd] AND [kappa_2(E,P) in Z_2^x]`.
+`KL_2(E,K,f) in 2Z_2`
 
-The source Heegner point is indivisible by `2` exactly when `m_K(f)` is odd.
+for every selected curve and every WP09-compatible field.
 
-### WP60B disposition
+### Exact disposition
 
-`MIXED_BUT_NO_INDEPENDENT_K_VARYING_ESCAPE`.
+`KRIZ_LI_F_LOCALLY_OBSTRUCTED_ON_SELECTED_GOOD_ORDINARY_LANE`.
 
-The condition contains no second `K`-varying invariant that bypasses the Heegner-index parity. Its additional content is the fixed selected-curve local scalar `kappa_2(E,P)`.
+Kriz–Li Assumption `(F)` cannot hold on the protected selected branch. This is a theorem about the current good-ordinary local hypotheses, not a general impossibility claim for other reduction types.
 
-## Refined live obligations
+## WP59 reopening contract after WP60B
 
-### KL-LOCAL
+Retire `R3` on the selected branch:
 
-`MISSING_UNIFORM_KRIZ_LI_FIXED_LOCAL_LOG_UNIT`.
+`R3_RETIRED_FOR_SELECTED_GOOD_ORDINARY_LANE_BY_WP60B_LOCAL_OBSTRUCTION`.
 
-Determine whether
+Surviving D2d reopening routes are:
 
-`kappa_2(E,P) in Z_2^x`
+- `R1`: exact literal-`p=2` Heegner-index control;
+- `R2`: exact WP00-normalized twist-L-ratio valuation under all WP09 constraints without an unavailable rank-zero seed;
+- `R4`: a direct exact theorem for `R_2(E,K,f)`;
+- `R5`: literal-`p=2` height-one-`(2)` main-conjecture/reciprocity control specializing to the protected determinant line.
 
-holds uniformly, or classify its failure exactly.
-
-### KL-INDEX
-
-`MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY`.
-
-Produce a WP09-compatible auxiliary field with
-
-`ord_2(m_K(f))=0`
-
-uniformly for the selected class.
-
-### D1c
-
-- `MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2`;
-- `MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
-
-### D2a
-
-`MISSING_P2_K_HEIGHT_NONDEGENERACY`.
-
-### D2d
+D2d remains
 
 `MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED`.
 
-### D2e
+## Genuine Heegner-index boundary
 
-`MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION`.
+Protected WP12 implies `E(K)[2]=0` for quadratic `K`; hence the torsion subgroup has odd order. Combined with
 
-D2e remains downstream.
+`P_K(f)=m_K(f)P+T`,
 
-## Effect on WP59 reopening form R3
+WP60B proves
 
-R3 is not independent of R1. Any theorem forcing Kriz–Li `(F)` for a WP09-compatible field necessarily proves both the fixed `KL-LOCAL` unit condition and the `R1` Heegner-index parity for that field.
+`P_K(f) is indivisible by 2 <=> m_K(f) is odd`.
 
-WP60B therefore does not itself reopen D2d.
+The live parity boundary is therefore
 
-## Immediate executable successor — WP60C
+`MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY`.
 
-Run exact real-data reconnaissance on `KL-LOCAL` before another theorem search.
+## Other live boundaries
 
-Required sequence:
+- `MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2`.
+- `MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
+- `MISSING_P2_K_HEIGHT_NONDEGENERACY`.
+- `MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY`.
+- `MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED`.
+- downstream `MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION`.
 
-1. use only real curves satisfying the protected selected hypotheses;
-2. use the actual primitive Mordell–Weil generator;
-3. reduce the unit test for
-   `kappa_2(E,P)`
-   to exact finite `2`-adic/formal-group arithmetic;
-4. record deterministic machine-readable inputs and outputs;
-5. treat a counterexample as decisive falsification of uniform `KL-LOCAL` unitness;
-6. treat positive samples only as evidence for a sharper theorem target, never as proof.
+## WP60C disposition
 
-Protected WP36 already provides finite exact formal-group infrastructure at `2`; reuse it where possible rather than introducing dummy data or floating-point approximations.
+The original WP60C question whether `kappa_2(E,P)` might be a unit is superseded: WP60B proves it is uniformly even. Do not spend the primary lane sampling an already-proved proposition.
 
-If WP60C falsifies uniform local unitness, record the exact counterexample and terminate that conjecture. If it survives a broad exact sample, identify the minimum finite local invariant controlling the unit condition and pursue a proof of that invariant.
+If computation is used, redirect it toward surviving R1/R2/R4 structure and use only real selected curves and WP09-compatible fields. Computational evidence remains non-promotive.
+
+## Highest-value continuation
+
+After exact-head protection of WP60B, proceed to a surviving theorem route rather than more Kriz–Li forcing. Prefer a route with genuinely new exact information:
+
+1. Heegner-index parity (`R1` component);
+2. twist-L-ratio valuation (`R2`);
+3. a combined residual identity (`R4`);
+4. height-one-`(2)` Fitting divisibility/primitivity (`R5`/D1c);
+5. fixed-`2` height nondegeneracy (D2a) if a new literal-`2` theorem interface appears.
 
 ## Claim firewall
 
-Do not promote:
-
-- `kappa_2(E,P)` to a unit without proof;
-- `m_K(f)` to odd without proof;
-- Kriz–Li `(F)` to a uniform selected-class fact;
-- WP59 R1/R3/R4/R5 or D2d to resolved;
-- `lambda_D` to a `2`-adic unit;
-- determinant membership to determinant primitivity;
-- computational evidence to theorem;
-- source admission or CI success to MATHCERT certification;
-- `BSD-R2-A1`, novelty, priority, patentability, or commercial claims.
+Do not promote `m_K(f)` to odd, `lambda_D` to a unit, any surviving WP59 route to resolved, D2d, `BSD-R2-A1`, or MATHCERT certification. The local impossibility result concerns only Kriz–Li `(F)` under the protected selected good-ordinary-at-`2` hypotheses.
 
 ## Execution doctrine
 
-Proceed autonomously through bounded proof, falsification, exact computation, source admission when required, exact-head Adversary and Referee review, affected ordinary CI, protected merge, protected readback, issue #215/#164 maintenance, and handoff maintenance.
+Proceed autonomously through bounded proof, falsification, exact computation, source admission when required, exact-head Adversary and Referee review, ordinary CI, protected merge/readback, issue maintenance, and canonical handoff maintenance.
 
-Recoverable connector, CI, formatting, source-access, compiler, Sage/PARI, logging, or computational failures are recovery events, not stopping conditions.
-
-Bind every review, run, job, artifact, and merge to the current exact head. Repairs require fresh exact-head replay.
-
-Stop only at a genuine named theorem/source/authority/authentication/safety/material-state/evidentiary boundary, target/normalization drift, or MATHCERT certification authority.
+Recoverable connector, CI, logging, formatting, source-access, compiler, or computational failures are recovery events, not stopping conditions. Bind all evidence to the current exact head. Stop only at a genuine named theorem/source/authority/authentication/safety/material-state/evidentiary boundary, target drift, or MATHCERT authority boundary.
