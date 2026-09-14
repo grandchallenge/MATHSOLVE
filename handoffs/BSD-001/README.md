@@ -73,7 +73,7 @@ WP60A-A0 fixes the finite algebraic determinant/control factors. WP60A-A1 proves
 Thus the remaining determinant lane is exactly:
 
 - `MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2`;
-- `MISSING_P2_DETERMINAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
+- `MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
 
 Do not restart generic determinant-formalism reconnaissance without new arithmetic input.
 
@@ -185,7 +185,7 @@ A theorem computing the fixed base analytic leading-term valuation could still c
 Protected WP60A-A1 leaves:
 
 - `MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2`;
-- `MISSING_P2_DETERMINAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
+- `MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
 
 ## Other live boundaries
 
