@@ -1,0 +1,43 @@
+record_type: BSD_R2_A1_WP60L_CLAIM_LEDGER
+schema_version: 1.0.0
+campaign: BSD-001
+operation: grandchallenge/MATHSOLVE#233
+protected_base: 303c5662a62c9dda62e9c9f0ba1abae8e27f3b16
+status: candidate
+claims:
+  - id: BSD-A1-WP60L-AUX-FIELD-001
+    state: proved_candidate
+    statement: Q(E[4]) intersect Q(mu_8) equals Q(mu_4).
+  - id: BSD-A1-WP60L-AUX-H1-002
+    state: proved_candidate
+    statement: Inflation identifies H^1(GL_2(Z/4),E[4]) with H^1(K(E[4])_4/Q,E[4]); this group has order 2.
+  - id: BSD-A1-WP60L-RAMIFIED-003
+    state: proved_candidate
+    statement: The unique nonzero auxiliary restriction-kernel class has nonzero inertia restriction at the protected odd-depth multiplicative prime.
+  - id: BSD-A1-WP60L-LOCAL-EXCLUSION-004
+    state: proved_candidate
+    statement: The unique defect lies in neither the primal nor dual propagated canonical local condition at that prime.
+  - id: BSD-A1-WP60L-SELMER-RES-005
+    state: proved_candidate
+    statement: Restriction to K(E[4])_4 is injective on every BSS canonical modified primal and dual Selmer group at coefficient level E[4].
+  - id: BSS_LITERAL_P2_SELECTED_MOD4_SELMER_RESTRICTED_COEFFICIENT_REDUCTION_AVAILABLE
+    state: proved_candidate
+    statement: The one-class Chebotarev use in BSS Lemma 3.10 can be replayed for free submodules contained in canonical modified E[4]-Selmer groups, giving the E[4] to E[2] coefficient-reduction injection.
+protected_negative_claims_preserved:
+  - BSS_LITERAL_P2_SELECTED_FINITE_HYP32III_FAILS_AT_E4
+  - R5_BSS_STANDARD_FINITE_HYPOTHESIS_ROUTE_BLOCKED_ALREADY_AT_MOD4
+  - BSS_LITERAL_P2_SELECTED_H2_HOLDS_H3_FAILS
+  - R5_BSS_STANDARD_HYPOTHESIS_ROUTE_BLOCKED_BY_H3_AT_LITERAL_P2
+open_frontiers:
+  - MISSING_P2_BSS_ALL_LEVEL_SELMER_RESTRICTED_INJECTIVITY_AND_P2_CONNECTIVITY_CONTROL
+  - MISSING_P2_BSS_MINIMAL_CORE_THREE_TERM_RELATION_EXCLUSION_OR_REPLACEMENT_CONNECTIVITY
+  - MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  - MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+firewall:
+  all_levels_from_mod4: false
+  simultaneous_primal_dual_mod4_localization: false
+  core_vertex_connectivity: false
+  bss_integral_fitting_control: false
+  r5_closed: false
+  bsd_r2_a1_proved: false
+  mathcert_certified: false
