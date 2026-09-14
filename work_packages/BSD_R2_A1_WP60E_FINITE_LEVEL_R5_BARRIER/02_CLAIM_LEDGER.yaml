@@ -1,0 +1,58 @@
+campaign: BSD-001
+work_package: BSD-R2-A1-WP60E-FINITE-LEVEL-R5-BARRIER
+protected_mathsolve_base: 76dc727be85052933a986cedd83ab056d9890240
+protected_mathforge_source: 8d49d253fd10708f09b8cafa262de276bed88f23
+tracker: grandchallenge/MATHSOLVE#215
+programme_owner: grandchallenge/MATHSOLVE#164
+selected_target: SELECTED_RESEARCH_TARGET_UNPROVED
+
+claims:
+  - claim_id: BSD-A1-WP60E-FINITE-R5-BARRIER-001
+    status: PROVED_FROM_ADMITTED_SOURCE_INTERFACES
+    statement: >-
+      The finite-level Kato-derivative, determinantal-zeta, Mazur-Tate, and refined Fitting interfaces
+      screened and protected in MATHFORGE WP60E all exclude literal p=2 in the relevant proved clauses;
+      none can be specialized to prove the selected R5-LIFT or R5-PRIM obligations.
+    promotion: bounded_source_interface_theorem
+  - claim_id: BSD-A1-WP60E-REOPEN-001
+    status: EXECUTION_RULE
+    statement: >-
+      Reopen the screened finite-level route only on a literal-p=2 extension, a proof removing the
+      cited odd-prime hypotheses while preserving integral Fitting/local-condition data, or a new
+      direct primitive finite Kummer/Fitting theorem at p=2.
+
+boundaries:
+  - id: R5-LIFT
+    status: OPEN
+    value: MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  - id: R5-PRIM
+    status: OPEN
+    value: MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+  - id: R5-FINITE
+    status: OPEN_SUBORDINATE_SOURCE_BOUNDARY
+    value: MISSING_LITERAL_P2_FINITE_LEVEL_KATO_DERIVATIVE_FITTING_THEOREM
+  - id: R1
+    status: OPEN
+    value: MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY
+  - id: R2
+    status: OPEN
+    value: MISSING_EXACT_WP00_TWIST_LRATIO_VALUATION_UNDER_WP09_CONSTRAINTS
+  - id: R3
+    status: RETIRED_SELECTED_LANE
+    value: R3_RETIRED_FOR_SELECTED_GOOD_ORDINARY_LANE_BY_WP60B_LOCAL_OBSTRUCTION
+  - id: R4
+    status: OPEN_REDUCED
+    value: R4_EQUIVALENT_TO_FIXED_BASE_ANALYTIC_LEADING_TERM_VALUATION
+  - id: D2a
+    status: OPEN
+    value: MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - id: D2d
+    status: OPEN
+    value: MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED
+
+firewall:
+  - "Do not specialize an odd-prime finite-level theorem to p=2."
+  - "Do not infer nonexistence of a future literal-p=2 theorem."
+  - "Do not infer a value or vanishing of the height-one-(2) exponent."
+  - "Do not declare R5, D2d, or BSD-R2-A1 resolved."
+  - "Do not invoke MATHCERT from source-interface or CI evidence."
