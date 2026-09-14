@@ -1,0 +1,37 @@
+schema_version: 1.0.0
+campaign: BSD-001
+work_package: BSD-R2-A1-WP58A-MODULAR-DIFFERENTIAL-2UNIT
+protected_mathsolve_base: 200e3eeab4b3fb2b6fcfcde6b3ec2565879ed11e
+protected_mathforge_source: d588543151ddb458d627ac9b9fb37ec57cd90780
+claim_state: SELECTED_RESEARCH_TARGET_UNPROVED
+claims:
+  - claim_id: BSD-A1-WP58-CYCLIC-001
+    status: PROVED_IN_PACKAGE
+    statement: A minimum-degree Q-isogeny from the optimal curve E_0 to the selected E has cyclic kernel.
+  - claim_id: BSD-A1-WP58-ODD-ISOGENY-001
+    status: PROVED_IN_PACKAGE
+    statement: The minimum-degree isogeny E_0 -> E has odd degree because otherwise the dual isogeny gives a G_Q-stable order-two subgroup of the protected irreducible E[2].
+  - claim_id: BSD-A1-WP58-DIFF-001
+    status: PROVED_IN_PACKAGE
+    statement: The Neron-differential pullback scalar a_psi divides the odd isogeny degree with complementary integral dual scalar and is therefore odd.
+  - claim_id: BSD-A1-WP58-CF-2UNIT-001
+    status: PROVED_FROM_PROTECTED_SOURCE_AND_PACKAGE
+    statement: For f=psi o f_0 with f_0 optimal and psi minimum-degree, the CST modular-differential scalar satisfies ord_2(C_f)=0.
+  - claim_id: BSD-A1-WP58-DELTA-REDUCTION-001
+    status: PROVED_FROM_PROTECTED_CHAIN
+    statement: delta_2(E)=1+2 ord_2(m_K(f))-ord_2(c_infinity(E^D))-ord_2(lambda_D)-sum_{ell|N}ord_2(c_ell).
+remaining_boundaries:
+  D1c: MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  D2a: MISSING_P2_K_HEIGHT_NONDEGENERACY
+  D2b: RESOLVED_WP52A_FINITE_COMPARISON_DETERMINANT
+  D2c: RESOLVED_WP54A_GLOBAL_QORD_RECONCILIATION
+  D2d: MISSING_P2_HEEGNER_INDEX_AND_TWIST_LRATIO_VALUATION_CONTROL
+  D2e: MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+firewall:
+  - no assertion that C_f equals 1
+  - no p=2 Heegner primitivity claim
+  - no rank-zero BSD claim for E^D
+  - no fixed-p=2 height nondegeneracy claim
+  - no height-one-(2) analytic determinant claim
+  - no BSD-R2-A1 promotion
+  - no MATHCERT certification
