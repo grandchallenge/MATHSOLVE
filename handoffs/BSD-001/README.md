@@ -18,19 +18,20 @@ Use protected repository state as authority. Do not use mutable issue text, stal
 After re-fetching protected live heads, read:
 
 1. this file;
-2. `handoffs/BSD-001/WP60H_FRONTIER.md`;
-3. `work_packages/BSD_R2_A1_WP60H_FOUR_FIBER_RELATION_REDUCTION/00_README.md`;
-4. `work_packages/BSD_R2_A1_WP60H_FOUR_FIBER_RELATION_REDUCTION/01_ODD_RELATION_COVER_THEOREM.md`;
-5. `work_packages/BSD_R2_A1_WP60H_FOUR_FIBER_RELATION_REDUCTION/02_CLAIM_LEDGER.yaml`;
-6. protected WP60G self-dual pairwise-localization package;
-7. protected WP60F proof-boundary package;
-8. protected WP60E finite-level barrier package;
-9. protected WP60D surviving-route reduction;
-10. protected WP60B Kriz–Li obstruction;
-11. protected WP60A-A1 determinant-membership theorem;
-12. `work_packages/BSD_R2_A1_WP60_P2_FRONTIER_RESEARCH_PROGRAM/01_EXECUTION_CONTRACT.md`;
-13. protected MATHFORGE WP60H/WP60G/WP60F/WP60E/WP60B/WP60A/WP59 records;
-14. only then deeper predecessors needed by the active lane.
+2. `handoffs/BSD-001/WP60I_FRONTIER.md`;
+3. `work_packages/BSD_R2_A1_WP60I_BSS_H2_H3_SELECTED_LANE/00_README.md`;
+4. `work_packages/BSD_R2_A1_WP60I_BSS_H2_H3_SELECTED_LANE/01_SELECTED_P2_H2_H3_THEOREM.md`;
+5. `work_packages/BSD_R2_A1_WP60I_BSS_H2_H3_SELECTED_LANE/03_CLAIM_LEDGER.yaml`;
+6. protected WP60H four-fiber relation package;
+7. protected WP60G self-dual pairwise-localization package;
+8. protected WP60F proof-boundary package;
+9. protected WP60E finite-level barrier package;
+10. protected WP60D surviving-route reduction;
+11. protected WP60B Kriz–Li obstruction;
+12. protected WP60A-A1 determinant-membership theorem;
+13. `work_packages/BSD_R2_A1_WP60_P2_FRONTIER_RESEARCH_PROGRAM/01_EXECUTION_CONTRACT.md`;
+14. protected MATHFORGE WP60H/WP60G/WP60F/WP60E/WP60B/WP60A/WP59 records;
+15. only then deeper predecessors needed by the active lane.
 
 ## Governing invariant
 
@@ -121,14 +122,12 @@ Protected MATHFORGE WP60F at
 
 `eaaf7b8c660f3f07030608b3af1334ece5598586`
 
-isolates two distinct literal-`2` obligations:
+isolated two distinct literal-`2` obligations:
 
 - F1: `MISSING_P2_CORE_VERTEX_SIMULTANEOUS_LOCALIZATION_FOR_BSS_FITTING_CONTROL`;
 - F2: `MISSING_P2_ELLIPTIC_H2_H3_VERIFICATION_OVER_F2_INFINITY`.
 
-`BSS_LITERAL_P2_R5_ROUTE_REQUIRES_F1_AND_F2`.
-
-The higher-derivative construction is distinct from integral Fitting control. Fixing only F1 or only F2 cannot close the full BSS route.
+The higher-derivative construction is distinct from integral Fitting control. WP60I now determines F2 negatively; this does not repair F1 and does not yield the BSS Fitting conclusion.
 
 ## WP60G self-dual pairwise localization
 
@@ -142,11 +141,7 @@ For elliptic curves the Weil pairing supplies
 
 `E[2] ~= E[2]^*(1)`.
 
-This repairs the pairwise counting step used in BSS Lemma 5.14 and the corresponding pairwise step in Lemma 5.17. It does not prove BSS Hypothesis 3.2/H2/H3.
-
-The remaining graph boundary after WP60G was
-
-`MISSING_P2_TWO_CORE_VERTEX_SIMULTANEOUS_LOCALIZATION_OR_REPLACEMENT_CONNECTIVITY`.
+This repairs the pairwise counting step used in BSS Lemma 5.14 and the corresponding pairwise step in Lemma 5.17. It does not prove full graph connectivity.
 
 ## WP60H four-fiber odd-relation reduction
 
@@ -156,29 +151,47 @@ Protected MATHFORGE WP60H at
 
 admits the exact minimal-core transition interface from BSS Lemmas 5.13–5.15 and Corollary 5.16.
 
-WP60H proves the general self-dual `F_2` criterion:
+WP60H proves the general self-dual `F_2` criterion: for nonzero classes `c_i`, the associated BSS bad affine fibers cover the residual Galois group if and only if the `c_i` admit an odd-cardinality linear dependence. For four nonzero classes, coverage occurs if and only if some three of the four classes sum to zero.
 
-For nonzero classes `c_i`, the associated BSS bad affine fibers cover the residual Galois group if and only if the `c_i` admit an odd-cardinality linear dependence.
-
-For four nonzero classes, coverage occurs if and only if some three of the four classes sum to zero.
-
-Thus for the `s=2` minimal-core step, failure of one common auxiliary prime is no longer a generic four-hyperplane problem. It is exactly the possibility of an exceptional three-term global cohomology relation among strategically chosen primal witnesses and the two one-dimensional dual generators.
-
-The protected transition interface gives:
-
-- for minimal core `n_i` and `m_i=n_i/q_i`, `lambda(m_i)=r+1` and `lambda^*(m_i)=1`;
-- Lemma 5.15 needs nonzero localization from each primal space `H^1_{F(n_i)}` and each one-dimensional dual space `H^1_{F^*(m_i)}`;
-- the source needs the localization maps from the primal spaces to be nonzero and does not prescribe a fixed primal witness.
-
-The admitted dimension, inclusion, and finite/transverse statements do not themselves exclude the exceptional three-term relation. Do not infer exclusion from dimensions or local-condition terminology alone.
-
-Record the refined F1 boundary:
+Thus the live F1 frontier is
 
 `MISSING_P2_BSS_MINIMAL_CORE_THREE_TERM_RELATION_EXCLUSION_OR_REPLACEMENT_CONNECTIVITY`.
 
-Parent F1 remains open until sufficient graph/Kolyvagin control is recovered:
+The admitted dimension, inclusion, and finite/transverse statements do not themselves exclude the exceptional three-term relation.
 
-`MISSING_P2_CORE_VERTEX_SIMULTANEOUS_LOCALIZATION_FOR_BSS_FITTING_CONTROL`.
+## WP60I selected-lane BSS H2/H3 determination
+
+WP60I uses protected WP12 residual `S3`, protected WP13 local inertia depth, and the protected MATHFORGE WP60F definitions of `(H2)` and `(H3)`.
+
+It proves first that every selected curve must have an odd bad prime with odd multiplicative inertia depth. Otherwise the residual `S3` division field would be unramified outside `2`; a cubic subfield would then have discriminant at most `8`, contradicting Minkowski's cubic discriminant bound.
+
+At such a prime, the WP13 Tate-inertia formula supplies a primitive unipotent inside
+
+`G_{Q(mu_{2^infinity})}`.
+
+Consequently formal literal-`2` BSS `(H2)` holds for `K=F=Q`.
+
+The same element, residual `S3`, and normality imply
+
+`rho_4(G_{Q(mu_{2^infinity})})=SL_2(Z/4)`
+
+and
+
+`rho_4(G_Q)=GL_2(Z/4)`.
+
+An exact finite certificate proves
+
+`H^1(GL_2(Z/4),F_2^2) != 0`.
+
+Inflation to the full `2`-adic image gives a nonzero BSS `(H3)` group; the Weil pairing gives the same obstruction for the dual residual module. Therefore
+
+`BSS_LITERAL_P2_SELECTED_H2_HOLDS_H3_FAILS`.
+
+Replace the former F2 missing-verification boundary by
+
+`R5_BSS_STANDARD_HYPOTHESIS_ROUTE_BLOCKED_BY_H3_AT_LITERAL_P2`.
+
+This is a negative applicability result for the currently screened BSS standard-hypothesis architecture. It is not a no-go theorem for every possible literal-`2` Kolyvagin/Fitting argument. A theorem that removes, weakens, or bypasses `(H3)` is a legitimate reopening form.
 
 ## Current route map
 
@@ -191,33 +204,23 @@ Parent F1 remains open until sufficient graph/Kolyvagin control is recovered:
 - R5 finite-level screened architecture: `MISSING_LITERAL_P2_FINITE_LEVEL_KATO_DERIVATIVE_FITTING_THEOREM`.
 - R5-BSS-F1 parent: `MISSING_P2_CORE_VERTEX_SIMULTANEOUS_LOCALIZATION_FOR_BSS_FITTING_CONTROL`.
 - R5-BSS-F1 WP60H frontier: `MISSING_P2_BSS_MINIMAL_CORE_THREE_TERM_RELATION_EXCLUSION_OR_REPLACEMENT_CONNECTIVITY`.
-- R5-BSS-F2: `MISSING_P2_ELLIPTIC_H2_H3_VERIFICATION_OVER_F2_INFINITY`.
+- R5-BSS-F2: determined negatively — `R5_BSS_STANDARD_HYPOTHESIS_ROUTE_BLOCKED_BY_H3_AT_LITERAL_P2`.
 - D2a: live — `MISSING_P2_K_HEIGHT_NONDEGENERACY`.
 - D2d: live — `MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED`.
 - D2e: downstream — `MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION`.
 
 `BSD-R2-A1` remains unproved.
 
-## Highest-value continuation after WP60H
+## Highest-value continuation after WP60I
 
-Proceed on two independent fronts without conflating them.
+The standard BSS application route should not be pursued by attempting to re-prove `(H3)` for the selected lane; WP60I gives an explicit obstruction.
 
-### F1
+Proceed on the surviving R5 fronts:
 
-Do not retry generic affine counting or infer relation exclusion from finite/transverse terminology. Use at least one of:
-
-1. Poitou–Tate/global-duality constraints that forbid every exceptional three-term relation;
-2. strategic primal-witness selection proving a relation-free choice always exists;
-3. a proof that an exceptional relation itself creates an alternate core-vertex graph path;
-4. replacement connectivity independent of the one-common-prime construction.
-
-### F2
-
-Audit the exact BSS H2/H3 definitions and prove or refute them at literal `p=2` using the actual restricted `2`-adic/residual images and cohomology. Residual `E[2]` surjectivity is not by itself an admitted substitute.
-
-A promising H2 research direction is to test whether odd multiplicative inertia for the selected semistable curve supplies the required rank-one unipotent element inside the BSS restricted Galois group. This is not yet a theorem and must be source-admitted/proved before use.
-
-Whichever front first produces a theorem should be protected and then replayed through the BSS control chain. Full R5 closure still requires both F1 and F2, or a bypass theorem.
+1. search for a literal-`2` Kolyvagin/Fitting theorem that removes, weakens, or bypasses BSS `(H3)`;
+2. revisit the already-screened characteristic-`2` Nekovar-Selmer/Gorenstein machinery and test whether its exact hypotheses yield the protected determinant/Fitting target without the failed BSS condition;
+3. continue the WP60H F1 relation/connectivity question only when it feeds a replacement control theorem whose hypotheses survive WP60I;
+4. retain the direct height-one routes R5-LIFT and R5-PRIM.
 
 ## Claim firewall
 
@@ -230,11 +233,10 @@ Do not promote:
 - existence of a higher derivative to integral Fitting control;
 - WP60G pairwise localization to four-constraint localization or graph connectivity;
 - WP60H odd-relation reduction to exclusion of the actual three-term relation;
-- residual `E[2]` self-duality or surjectivity to BSS Hypothesis 3.2/H2/H3 without proof;
-- the WP60E/WP60F/WP60G/WP60H bounded results to general no-go or full R5 theorems;
-- R1, R2, R4, R5, D2a, D2d, or D2e to resolved without exact protected proof;
+- WP60I failure of the BSS `(H3)` hypothesis to a general impossibility theorem for literal-`2` Kolyvagin/Fitting methods;
+- the bounded WP60 results to R5, D2d, or `BSD-R2-A1`;
 - source admission, numerical evidence, or CI success to MATHCERT certification;
-- `BSD-R2-A1`, novelty, priority, patentability, or commercial claims.
+- novelty, priority, patentability, or commercial claims.
 
 ## Execution doctrine
 
