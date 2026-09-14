@@ -1,0 +1,36 @@
+name: BSD WP60I certificate
+
+on:
+  pull_request:
+    paths:
+      - "work_packages/BSD_R2_A1_WP60I_BSS_H2_H3_SELECTED_LANE/**"
+      - "handoffs/BSD-001/WP60I_FRONTIER.md"
+      - ".github/workflows/bsd-wp60i-certificate.yml"
+  push:
+    branches: [main]
+    paths:
+      - "work_packages/BSD_R2_A1_WP60I_BSS_H2_H3_SELECTED_LANE/**"
+      - "handoffs/BSD-001/WP60I_FRONTIER.md"
+      - ".github/workflows/bsd-wp60i-certificate.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  exact-finite-certificate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Assert exact subject checkout
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+      - name: Replay GL2(Z/4) H1 certificate
+        run: python work_packages/BSD_R2_A1_WP60I_BSS_H2_H3_SELECTED_LANE/02_GL2Z4_H1_CERTIFICATE.py
