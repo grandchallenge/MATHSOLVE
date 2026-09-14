@@ -1,4 +1,4 @@
-# BSD-001 WP60B frontier — Kriz–Li normalization classified
+# BSD-001 WP60B frontier — Kriz–Li `(F)` locally obstructed
 
 ## Entering protected state
 
@@ -10,77 +10,82 @@
 
 ## WP60B result
 
-For the protected primitive generator `P`, set
+For the protected primitive generator `P`, define
 
-`kappa_2(E,P):=((3-a_2)/2) log_{omega_E}(P)`.
+`kappa_2(E,P):=((3-a_2)/2)log_{omega_E}(P)`.
 
 WP60B proves:
 
-1. `kappa_2(E,P) in Z_2`;
-2. for the fixed WP58A parametrization,
+1. exact source-normalization transport
    `KL_2(E,K,f)=u_f m_K(f) kappa_2(E,P)`
    with `u_f in Z_2^x`;
-3. therefore
-   `Kriz-Li (F)
-    <=> [m_K(f) odd] AND [kappa_2(E,P) in Z_2^x]`;
-4. the source Heegner point is indivisible by `2` exactly when `m_K(f)` is odd.
+2. good ordinary reduction at `2` forces the minimal Weierstrass `A_1` coefficient to be odd;
+3. consequently
+   `log_{omega_E}(E_1(Q_2)) subset 4Z_2`;
+4. therefore
+   `kappa_2(E,P) in 2Z_2`
+   for every selected curve;
+5. hence
+   `KL_2(E,K,f) in 2Z_2`
+   for every WP09-compatible `K`.
+
+Thus Kriz–Li Assumption `(F)` cannot hold on the protected selected good-ordinary-at-`2` lane.
 
 Disposition:
 
-`MIXED_BUT_NO_INDEPENDENT_K_VARYING_ESCAPE`.
+`KRIZ_LI_F_LOCALLY_OBSTRUCTED_ON_SELECTED_GOOD_ORDINARY_LANE`.
 
-Kriz–Li `(F)` does not contain a second field-varying invariant that bypasses the Heegner-index parity. Its extra content is the fixed local scalar `kappa_2(E,P)`.
+## WP59 R3 disposition
 
-## Refined obligations
+Retire reopening form `R3` on this selected branch:
 
-### KL-LOCAL
+`R3_RETIRED_FOR_SELECTED_GOOD_ORDINARY_LANE_BY_WP60B_LOCAL_OBSTRUCTION`.
 
-`MISSING_UNIFORM_KRIZ_LI_FIXED_LOCAL_LOG_UNIT`
+This is a local theorem. It does not claim Kriz–Li `(F)` is impossible for other reduction types.
 
-Determine whether
+D2d remains unresolved through the surviving routes `R1`, `R2`, `R4`, and `R5`.
 
-`kappa_2(E,P) in Z_2^x`
+## Genuine Heegner-index boundary
 
-holds uniformly on the selected class. This is a fixed local problem and can be attacked computationally without varying `K`.
+The source Heegner point is indivisible by `2` exactly when
 
-### KL-INDEX
+`m_K(f)` is odd.
 
-`MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY`
+The unresolved field-varying problem is therefore
 
-Produce, uniformly for the selected class, a WP09-compatible field `K` with
+`MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY`.
 
-`ord_2(m_K(f))=0`.
+No logarithmic field-forcing shortcut remains on the selected ordinary lane.
 
-This is the genuine auxiliary-field problem.
+## WP60C disposition
 
-## Effect on WP59 reopening form R3
+The originally planned computation asking whether `kappa_2(E,P)` might be a unit is superseded by the theorem: it is uniformly even.
 
-R3 is not an independent escape from R1. A theorem forcing `(F)` for a WP09-compatible field would necessarily prove the `R1` parity component plus the fixed `KL-LOCAL` unit condition.
+A real-data replay is optional regression evidence only. Do not spend the primary research lane sampling a proposition already proved.
 
-D2d therefore remains closed to routine replay.
+If WP60C is continued, redirect it toward discriminating surviving routes, for example exact selected-curve/field Heegner-index parity or twist-L-ratio structure, while preserving the no-proof-from-computation firewall.
 
-## Immediate successor
+## Live theorem boundaries
 
-Execute WP60C exact real-data reconnaissance on `KL-LOCAL` first:
-
-1. select real curves satisfying the protected selected hypotheses;
-2. use the protected primitive Mordell–Weil generator;
-3. compute `a_2` and the exact finite precision needed to decide
-   `kappa_2(E,P) mod 2`;
-4. record deterministic machine-readable results;
-5. use counterexamples, if any, to kill a uniform local-unit conjecture immediately;
-6. do not infer a theorem from positive samples.
-
-If exact computation infrastructure cannot evaluate the local logarithm directly, reduce the unit test to finite formal-group arithmetic modulo the minimum power of `2` needed and implement that finite criterion.
-
-## Other live theorem boundaries
-
+- `MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY`.
 - `MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2`.
 - `MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
 - `MISSING_P2_K_HEIGHT_NONDEGENERACY`.
 - `MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED`.
-- `MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION` downstream.
+- downstream `MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION`.
+
+## Highest-value successor
+
+Do not reopen generic Kriz–Li field forcing. Choose between the surviving substantive lanes using protected live evidence:
+
+1. literal-`p=2` Heegner-index parity (`R1` component);
+2. exact twist-L-ratio valuation (`R2`);
+3. combined exact residual theorem (`R4`);
+4. height-one-`(2)` Fitting divisibility/primitivity (`R5`/D1c);
+5. fixed-`2` height nondegeneracy (D2a), if a genuinely new theorem interface appears.
+
+A bounded exact real-data campaign may be used to identify which of R1/R2/R4 has the sharpest structure, but it cannot promote a theorem.
 
 ## Claim firewall
 
-Do not promote `kappa_2` to a unit, `m_K(f)` to odd, R3 to resolved, D2d to reopened, `BSD-R2-A1`, or any MATHCERT claim without exact protected proof.
+Do not promote `m_K(f)` to odd, `lambda_D` to a unit, any surviving WP59 route to resolved, D2d, `BSD-R2-A1`, or MATHCERT certification. The local impossibility statement applies only to Kriz–Li `(F)` under the protected selected good-ordinary-at-`2` hypotheses.
