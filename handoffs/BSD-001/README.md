@@ -18,15 +18,15 @@ Do not use mutable issue text, conversation history, stale summaries, numerical 
 After re-fetching protected live state, read:
 
 1. this file;
-2. the latest protected frontier, `handoffs/BSD-001/WP60_FRONTIER.md` after WP60 programme protection;
-3. `work_packages/BSD_R2_A1_WP60_P2_FRONTIER_RESEARCH_PROGRAM/00_README.md`;
-4. `work_packages/BSD_R2_A1_WP60_P2_FRONTIER_RESEARCH_PROGRAM/01_EXECUTION_CONTRACT.md`;
-5. `work_packages/BSD_R2_A1_WP60_P2_FRONTIER_RESEARCH_PROGRAM/02_CLAIM_LEDGER.yaml`;
-6. `work_packages/BSD_R2_A1_WP60_P2_FRONTIER_RESEARCH_PROGRAM/03_CODEX_TAKEOVER_PROMPT.md` when a self-contained fresh-agent prompt is needed;
-7. protected WP59 theorem/source-screen artifacts;
-8. only then the deeper protected predecessors required by the chosen lane.
+2. the latest protected frontier, `handoffs/BSD-001/WP60A_A0_FRONTIER.md` after A0 protection;
+3. `work_packages/BSD_R2_A1_WP60A_A0_DETERMINANT_DEPENDENCY_MAP/00_README.md`;
+4. `work_packages/BSD_R2_A1_WP60A_A0_DETERMINANT_DEPENDENCY_MAP/01_EXACT_DETERMINANT_DEPENDENCY_MAP.md`;
+5. `work_packages/BSD_R2_A1_WP60A_A0_DETERMINANT_DEPENDENCY_MAP/02_CLAIM_LEDGER.yaml`;
+6. `work_packages/BSD_R2_A1_WP60_P2_FRONTIER_RESEARCH_PROGRAM/01_EXECUTION_CONTRACT.md` for the governing WP60 execution contract;
+7. protected MATHFORGE WP60A source audit at current protected Forge state;
+8. only then the deeper protected predecessors required by the chosen proof step.
 
-Do not restart WP16 or broad WP17 reconnaissance. Do not reopen the standard odd-prime Heegner-primitivity route rejected by protected WP10. Do not repeat an open-ended literature sweep for D2d without a candidate satisfying the WP59 reopening contract.
+Do not restart WP16 or broad WP17 reconnaissance. Do not reopen the standard odd-prime Heegner-primitivity route rejected by protected WP10. Do not repeat an open-ended main-conjecture or determinant-source sweep unless a candidate supplies a materially new literal-`p=2` construction.
 
 ## Governing invariant
 
@@ -46,7 +46,7 @@ The selected theorem is exactly
 
 `delta_2(E)=v_2(Fitt^1_{Z_2}(X_E))`.
 
-## Current protected chain entering WP60
+## Current protected chain entering WP60A-A0
 
 - WP05–WP20: target/source normalization, exact finite `2`-primary Selmer/Fitting invariant, residual-image control, Heegner-route barrier, and rank-one determinant/Bockstein formalism.
 - WP21–WP36: cyclotomic control, Poitou–Tate incidence, universal norms, square presentation, local-factor reconciliation, and finite twisted reciprocity.
@@ -54,138 +54,113 @@ The selected theorem is exactly
 - WP52A: exact finite strict/Kummer determinant correction
   `len_Z2 V_K = 4 ord_2(3-a_2) + 2 sum_{ell|N} ord_2(c_ell)`;
   D2b is resolved at determinant-line level.
-- WP53A: for each selected odd bad semistable `ell|N`,
-  `Q_{ell,dt_ell^CST}=1+ell^(-1)` and
-  `ord_2 Q_{ell,dt_ell^CST}=ord_2(ell+1)`.
-- WP54A: exact global ordinary/test-vector scalar
-  `Q^ord=(u_K/h_K) product_{ell|N}(1+ell^(-1))`;
-  D2c is resolved.
-- WP55A: exact Cai–Shu–Tian/WP00 normalization, eliminating Petersson norm and modular degree while retaining the classical height and real-period/twist scalar.
-- WP56A: exact height/regulator descent. If `P` is primitive in `E(Q)/tors` and
-  `P_K(f)=m_K(f)P+T`, then
-  `hhat_K(P_K(f))/Reg_E=2m_K(f)^2`.
-- WP57A: protected MATHSOLVE `200e3eeab4b3fb2b6fcfcde6b3ec2565879ed11e`. It proves
-  `A_E=Omega_E |Omega_E^-|/2`,
-  exact negative-twist period transport and modular-symbol rationality, and obtains
-  `L'(E,1)/(Omega_E Reg_E)
-   = 2 m_K(f)^2/(C_f^2 c_infinity(E^D) lambda_D)`,
-  where
-  `lambda_D=L(E^D,1)/Omega(E^D) in Q^x`.
-- WP58A: protected MATHSOLVE `55434c50ae05c3bdb66f329ee15d4ece4534d4fd`. With protected MATHFORGE WP58 semistable optimal Manin control and a minimum-degree isogeny from the optimal curve, it proves
+- WP53A/WP54A: exact split bad-prime and global ordinary/test-vector factors; D2c is resolved.
+- WP55A–WP58A: exact classical Gross–Zagier, height/regulator, twist-period, and modular-differential normalization. For the fixed source-compatible parametrization,
   `ord_2(C_f)=0`
-  for the fixed source-compatible parametrization, without asserting `C_f=1`. Hence
+  and
   `delta_2(E)
    = 1 + 2 ord_2(m_K(f))
      - ord_2(c_infinity(E^D))
      - ord_2(lambda_D)
      - sum_{ell|N} ord_2(c_ell)`.
-- MATHFORGE WP59: protected at `c8af223d0e05f999b4977a0dae5b1b5281eff93e`. It records the bounded literal-`p=2` residual source screen and exact reopening criteria. It is not an impossibility or literature-exhaustiveness claim.
-- WP59: protected MATHSOLVE `aae4320432a5510146a5af0bebcfd966e36d7419`. It proves only the bounded source-interface result that the currently protected admitted interfaces do not entail a uniform exact value of
-  `R_2(E,K,f)=2 ord_2(m_K(f))-ord_2(lambda_D)`.
+- WP59: protected MATHSOLVE `aae4320432a5510146a5af0bebcfd966e36d7419`; it isolates
+  `R_2(E,K,f)=2 ord_2(m_K(f))-ord_2(lambda_D)`
+  and records the bounded literal-`p=2` source boundary.
+- WP60: protected MATHSOLVE `24fb349e28e4cbb5e034f4684edcc413975aed04`; it authorizes the three-lane post-WP59 research programme, with WP60A primary.
+- MATHFORGE WP60A audit: protected at `e44baeeed5d508fd4e5332c883c837951e51c000`; it confirms the BKS determinantal-zeta architecture is structurally relevant but does not supply a literal-`p=2` determinant lift or height-one-`(2)` primitivity theorem.
+- WP60A-A0: after protection, records the exact reduction that all finite algebraic determinant/control factors are already fixed, so D1c reduces to determinant lift plus primitivity at `(2)`.
 
-## WP60 approved research programme
+## WP60A-A0 exact reduction
 
-WP60 is an execution programme for producing new mathematics or sharper exact reductions at the literal prime `2`. It has three coordinated lanes.
+Protected WP35 gives a square cyclotomic presentation
 
-### WP60A — primary: finite-level analytic determinant generator
+`0 -> Lambda^r --A(T)--> Lambda^r -> X_infty -> 0`
 
-Attack D1c directly. Construct an exact integral finite-level analytic object and identify it with the protected primitive determinant/Fitting line at height one `(2)`.
+and the exact specialization identity
 
-Primary target: WP59 reopening condition `R5`.
+`(coeff_T det A(T)) Z_2
+ = Fitt^0(C_E^vee) Fitt^1(X_E) B_A`.
 
-Secondary target: a direct exact theorem for `R_2(E,K,f)` satisfying `R4`.
+WP36 and WP39–WP52A fix the finite control and strict/Kummer determinant factors. Therefore the next missing datum is not another local correction.
 
-Start by reconstructing the exact finite determinant dependency chain. Do not start with another generic main-conjecture literature search.
+### A1-LIFT
 
-### WP60B — parallel: Kriz–Li star forcing
+`MISSING_P2_KATO_ZETA_DETERMINANT_LIFT_AT_RESIDUE_CHARACTERISTIC_2`.
 
-Translate the exact literal-`p=2` Kriz–Li logarithmic hypothesis into WP00/WP09/WP38 notation with
+Construct an integral literal-`p=2` determinant lift of the normalized analytic/Kato class, or an exact finite-level replacement with the same primitive specialization.
 
-`P_K(f)=m_K(f)P+T`.
+### A1-PRIMITIVITY
 
-Separate fixed local factors, the unknown Heegner-index contribution, genuinely auxiliary-field-varying information, and normalization factors. Explicitly classify whether the condition is independent, equivalent to the unknown index parity, or mixed.
+`MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
 
-If genuinely independent information remains, seek a theorem forcing the condition for a WP09-compatible field.
+Prove exact basis/primitivity or reverse divisibility at the height-one prime `(2)`. A determinant lift alone is insufficient.
 
-Primary target: `R3`.
+Combined refinement:
 
-Secondary target: `R1`.
+`MISSING_LITERAL_P2_KATO_ZETA_DETERMINANT_LIFT_AND_PRIMITIVITY_AT_HEIGHT_ONE_2`.
 
-### WP60C — supporting: exact real-data reconnaissance
-
-Use only real selected curves and real WP09-compatible fields. Produce deterministic, machine-readable, reproducible computations of the translated mod-`2` Heegner-log condition and correlated protected local/Selmer invariants.
-
-No dummy data. No computational result is a proof of a uniform theorem. Use the lane only to falsify conjectures, expose exact local structure, and formulate proof targets.
-
-## Live unresolved boundaries
-
-### D1c
+The campaign-level parent remains
 
 `MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2`.
 
-This is the primary WP60A target.
+## Immediate executable successor
 
-### D2a
+### WP60A-A1 — direct literal-`p=2` determinant lift
 
-`MISSING_P2_K_HEIGHT_NONDEGENERACY`.
+Attack A1-LIFT first.
 
-Retained as a live parallel theorem boundary. A materially new literal-`p=2` height theorem must trigger a fresh D2d replay.
+1. Reduce determinant membership to the smallest exact finite-level lattice/module statement compatible with the protected primitive Kummer first-Fitting line.
+2. Construct the corresponding analytic/Kato/modular-symbol class integrally over `Z_2`.
+3. Prove determinant membership without invoking an odd-prime Stark/Kolyvagin regulator theorem.
+4. Transport through the already-protected local and specialization maps.
+5. If a lift is obtained, proceed immediately to A1-PRIMITIVITY; do not declare R5 or D1c closed until exact reverse divisibility is proved.
 
-### D2b
+If the determinant-membership condition reduces tautologically to the already missing height-one-`(2)` exponent, record the equivalence rather than relabeling the same unknown.
 
-`RESOLVED_WP52A_FINITE_COMPARISON_DETERMINANT`.
+### WP60B — parallel escape route
 
-### D2c
+If A1-LIFT reaches a genuine theorem boundary with no constructive next step, execute WP60B: normalize the Kriz–Li literal-`2` logarithmic condition under `P_K(f)=m_K(f)P+T` and classify it as independent auxiliary nonvanishing, equivalent to unknown index parity, or mixed.
 
-`RESOLVED_WP54A_GLOBAL_QORD_RECONCILIATION`.
+### WP60C — supporting only
 
-### D2d
+Use exact real-data computation only for falsification and theorem discovery. Numerical patterns do not promote a theorem.
 
-`MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED`.
+## Live unresolved boundaries
 
-The substantive residual is
-
-`R_2(E,K,f)=2 ord_2(m_K(f))-ord_2(lambda_D)`.
-
-### D2e
-
-`MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION`.
+- D1c parent: `MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2`.
+- A1-LIFT: `MISSING_P2_KATO_ZETA_DETERMINANT_LIFT_AT_RESIDUE_CHARACTERISTIC_2`.
+- A1-PRIMITIVITY: `MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
+- D2a: `MISSING_P2_K_HEIGHT_NONDEGENERACY`.
+- D2b: `RESOLVED_WP52A_FINITE_COMPARISON_DETERMINANT`.
+- D2c: `RESOLVED_WP54A_GLOBAL_QORD_RECONCILIATION`.
+- D2d: `MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED`.
+- D2e: `MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION`.
 
 D2e remains downstream. Do not replay WP06 as if D2d were resolved.
 
 ## D2d reopening contract
 
-Reopen D2d immediately on a protected candidate supplying at least one of:
+Reopen D2d only on a protected result satisfying at least one exact WP59 form:
 
-1. `R1`: exact literal-`p=2` Heegner-index valuation for the selected class and a WP09-compatible auxiliary field;
-2. `R2`: exact WP00-normalized `ord_2(lambda_D)` under all WP09 local constraints without an unavailable rank-zero seed;
-3. `R3`: a theorem forcing the Kriz–Li mod-`2` Heegner-log condition for some WP09-compatible auxiliary field for every selected curve;
-4. `R4`: a direct exact theorem for `R_2(E,K,f)`;
-5. `R5`: a literal-`p=2` integral height-one-`(2)` main-conjecture/reciprocity theorem specializing to the protected determinant line.
+1. `R1`: exact literal-`p=2` Heegner-index valuation;
+2. `R2`: exact WP00-normalized twist-L-ratio valuation under all WP09 constraints without an unavailable rank-zero seed;
+3. `R3`: theorem forcing the Kriz–Li mod-`2` Heegner-log condition for a WP09-compatible field for every selected curve;
+4. `R4`: direct exact theorem for `R_2(E,K,f)`;
+5. `R5`: literal-`p=2` integral height-one-`(2)` main-conjecture/reciprocity theorem specializing to the protected determinant line.
 
-Do not reopen merely for nonvanishing, equality after inverting `2`, an unspecified `2`-unit, a special-family theorem whose hypotheses are not implied by BSD-R2-A1, numerical correlation, or a theorem whose standing assumptions impose `p>2`.
-
-## Provider-index state
-
-At WP60 issuance MATHFORGE protected main is `c8af223d0e05f999b4977a0dae5b1b5281eff93e`, current through the WP59 bounded literal-`p=2` residual source screen. Re-fetch before use.
-
-Any materially new external theorem premise for WP60A or WP60B must be admitted through MATHFORGE before use in a MATHSOLVE theorem inference.
+A0 does not itself reopen D2d.
 
 ## Claim firewall
 
 Do not promote:
 
 - `BSD-R2-A1`;
-- `D_K=0`, `K_K^sil=0`, or `J_K=R_K`;
-- height existence to fixed-`2` height nondegeneracy;
-- `C_f=1`; WP58A proves only `ord_2(C_f)=0` for its explicit chosen parametrization;
-- `m_K(f)` to an odd integer without literal-`p=2` proof;
-- `lambda_D` to a `2`-adic unit or to its rank-zero BSD expression without exact admitted authority;
-- the Kriz–Li condition to a uniform fact without proof;
-- WP59's bounded source screen to a mathematical impossibility or literature-exhaustiveness theorem;
-- computational correlation to a theorem;
-- the WP54A class-number/unit or bad-prime factors to cancellation with another ledger without proof;
-- an odd-prime theorem to literal integral `p=2`;
+- a determinant lift to determinant primitivity;
+- an equality after inverting `2` to an integral equality;
+- an unspecified `2`-unit to a generator;
+- BKS/BSS odd-prime or `p>3` results to literal `p=2`;
+- `m_K(f)` to odd or `lambda_D` to a `2`-adic unit without proof;
+- computational evidence to a theorem;
 - source admission or CI success to MATHCERT certification;
 - novelty, priority, patentability, or commercial claims.
 
