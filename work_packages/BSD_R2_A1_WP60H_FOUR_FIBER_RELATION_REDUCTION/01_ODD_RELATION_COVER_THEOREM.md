@@ -2,7 +2,21 @@
 
 ## 1. Protected setup
 
-Protected MATHFORGE WP60G admits the BSS affine-fiber interface. Protected MATHSOLVE WP60G proves the self-dual literal-`2` pairwise case.
+Protected MATHFORGE WP60G at
+
+`grandchallenge/MATHFORGE@7da6813fcde7eb5f9badd7c86946f58691ed6f0d`
+
+admits the BSS affine-fiber interface. Protected MATHSOLVE WP60G at
+
+`grandchallenge/MATHSOLVE@1b75a922e2779178f478124948008afdd7e26a17`
+
+proves the self-dual literal-`2` pairwise case.
+
+Protected MATHFORGE WP60H at
+
+`grandchallenge/MATHFORGE@54f1eaea24b35d4ca37e778786345c3622b6fd98`
+
+admits the exact minimal-core transition interface from BSS Lemmas 5.13–5.15 and Corollary 5.16.
 
 Abstract the residual self-dual situation as follows.
 
@@ -22,7 +36,7 @@ and
 
 `H_i:=chi_i^{-1}(a(c_i))`.
 
-In the protected BSS interface, `V` is the relevant residual global cohomology space after identifying primal and dual coefficients by self-duality, `j` is the protected cohomology-to-character map, and `a(c)` is the cocycle-evaluation class `-c_tilde(tau)` in the one-dimensional quotient. Linearity of `a` follows directly from linearity of cocycle addition, evaluation at `tau`, and passage to the quotient.
+In the protected BSS interface, `V` is the relevant residual global cohomology space after identifying primal and dual coefficients by self-duality, `j` is the protected cohomology-to-character map, and `a(c)` is the cocycle-evaluation class `-c_tilde(tau)` in the one-dimensional quotient. Linearity of `a` follows from linearity of cocycle addition, evaluation at `tau`, and passage to the quotient.
 
 ## 2. Linear consistency lemma
 
@@ -162,7 +176,25 @@ For the `s=2` configuration of two primal and two dual nonzero classes, the comm
 
 Thus the generic four-hyperplane covering problem is replaced by one precise arithmetic question.
 
-## 6. Refined F1 boundary
+## 6. Minimal-core transition consequence
+
+Protected MATHFORGE WP60H gives the actual `s=2` source configuration used in Corollary 5.16.
+
+For two minimal core vertices `n_1,n_2`, choose `q_i|n_i` and put `m_i=n_i/q_i`. Then:
+
+- `m_i` is noncore;
+- `lambda(m_i)=r+1`;
+- `lambda^*(m_i)=1`;
+- Lemma 5.15 needs one prime at which the localization maps from each primal space `H^1_{F(n_i)}` and each one-dimensional dual space `H^1_{F^*(m_i)}` are nonzero;
+- the source requires nonzero localization of the *spaces*, not a predetermined primal witness class.
+
+Accordingly the WP60H relation criterion must be applied to strategically chosen nonzero primal witnesses together with the two nonzero dual generators.
+
+The admitted dimension, inclusion, and finite/transverse transition statements do **not themselves assert** that every such choice avoids a three-term relation. No such exclusion is present in the protected source interface. Therefore a downstream proof must supply additional global structure, or replace the one-common-prime construction.
+
+This is an implication-boundary statement, not a counterexample to the actual BSS arithmetic configuration.
+
+## 7. Refined F1 boundary
 
 Record
 
@@ -176,25 +208,28 @@ which itself refines the parent F1 boundary
 
 `MISSING_P2_CORE_VERTEX_SIMULTANEOUS_LOCALIZATION_FOR_BSS_FITTING_CONTROL`.
 
-WP60H does not yet assert that the three-term relation is absent in the actual BSS minimal-core configuration.
+WP60H does not assert that the three-term relation is present or absent in the actual BSS minimal-core configuration.
 
-## 7. Exact successor obligation
+## 8. Exact successor obligation
 
-The next bounded proof must use the actual modified Selmer structures in BSS Lemma 5.15 / Corollary 5.16.
+The next F1 proof must use structure beyond the admitted dimension/membership data. It must do at least one of:
 
-For the four classes produced by two minimal core vertices, it must do at least one of:
+1. exclude every possible three-term relation by Poitou–Tate/global-duality information for the actual modified Selmer structures;
+2. exploit freedom of primal-witness choice and prove that witnesses can always be selected so that no odd relation occurs;
+3. show that any exceptional three-term relation itself produces an alternate edge/path in the core-vertex graph;
+4. construct another connectivity proof independent of the four-fiber Chebotarev step.
 
-1. exclude every possible three-term relation by comparing their local conditions at the distinguished removed primes;
-2. show that any three-term relation itself produces an alternate edge/path in the core-vertex graph, thereby replacing the common-prime construction; or
-3. construct another connectivity proof independent of the four-fiber Chebotarev step.
+A generic dimension, affine-counting, or finite-versus-transverse slogan is no longer sufficient after this reduction.
 
-A generic dimension or counting argument is no longer relevant after this reduction.
+Because F2 is logically independent of F1, work may proceed in parallel on
 
-## 8. Claim firewall
+`MISSING_P2_ELLIPTIC_H2_H3_VERIFICATION_OVER_F2_INFINITY`.
+
+## 9. Claim firewall
 
 This theorem does not establish:
 
-- exclusion of the three-term relation in the BSS minimal-core configuration;
+- exclusion or existence of the three-term relation in the actual BSS minimal-core configuration;
 - the `s=2` common-prime theorem;
 - core-vertex graph connectivity at `p=2`;
 - full F1 closure;
