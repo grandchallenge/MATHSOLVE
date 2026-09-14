@@ -1,0 +1,56 @@
+campaign: BSD-001
+work_package: BSD-R2-A1-WP60D-SURVIVING-ROUTE-REDUCTION
+protected_mathsolve_base: 8620302bc3b836fc96c0fa157e90d5aa21252108
+protected_mathforge_source: a8f72ed64755777870a300053e11659fb1dfff1b
+tracker: grandchallenge/MATHSOLVE#215
+programme_owner: grandchallenge/MATHSOLVE#164
+selected_target: SELECTED_RESEARCH_TARGET_UNPROVED
+
+claims:
+  - claim_id: BSD-A1-WP60D-CINF-TWIST-001
+    status: PROVED
+    statement: "Quadratic twisting preserves c_infinity: c_infinity(E^d)=c_infinity(E) for every nonzero real d."
+  - claim_id: BSD-A1-WP60D-R2-INVARIANT-001
+    status: PROVED_FROM_PROTECTED_INPUTS
+    statement: "For every WP09-compatible K, R_2(E,K,f)=ord_2(L'(E,1)/(Omega_E Reg_E))-1+ord_2(c_infinity(E)); hence R_2 is independent of K."
+  - claim_id: BSD-A1-WP60D-R2-DELTA-001
+    status: PROVED_FROM_PROTECTED_INPUTS
+    statement: "R_2(E,K,f)=delta_2(E)+sum_{ell|N}ord_2(c_ell)-1+ord_2(c_infinity(E))."
+  - claim_id: BSD-A1-WP60D-R4-CLASSIFY-001
+    status: PROVED_FROM_PROTECTED_INPUTS
+    statement: "WP59 reopening form R4 is equivalent to determining the fixed base analytic leading-term valuation; it is not an auxiliary-field-varying escape route."
+
+route_state:
+  R1:
+    state: live
+    boundary: MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY
+  R2:
+    state: live
+    boundary: MISSING_EXACT_WP00_TWIST_LRATIO_VALUATION_UNDER_WP09_CONSTRAINTS
+  R3:
+    state: retired_on_selected_lane
+    disposition: R3_RETIRED_FOR_SELECTED_GOOD_ORDINARY_LANE_BY_WP60B_LOCAL_OBSTRUCTION
+  R4:
+    state: live_but_reduced
+    disposition: R4_EQUIVALENT_TO_FIXED_BASE_ANALYTIC_LEADING_TERM_VALUATION
+  R5:
+    state: live
+    boundaries:
+      - MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+      - MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+
+unresolved:
+  - MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY
+  - MISSING_EXACT_WP00_TWIST_LRATIO_VALUATION_UNDER_WP09_CONSTRAINTS
+  - MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  - MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED
+  - MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+
+firewall:
+  - "Do not infer a numerical value of R_2 from auxiliary-field invariance."
+  - "Do not infer m_K(f) parity or lambda_D valuation."
+  - "Do not declare R4 closed merely because it has been reduced to a fixed base invariant."
+  - "Do not declare D2d or BSD-R2-A1 resolved."
+  - "Do not promote CI or source admission to MATHCERT certification."
