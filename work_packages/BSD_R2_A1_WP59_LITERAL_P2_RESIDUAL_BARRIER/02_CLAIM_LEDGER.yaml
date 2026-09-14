@@ -1,0 +1,34 @@
+schema_version: 1.0.0
+campaign: BSD-001
+work_package: BSD-R2-A1-WP59-LITERAL-P2-RESIDUAL-BARRIER
+protected_mathsolve_base: 55434c50ae05c3bdb66f329ee15d4ece4534d4fd
+protected_mathforge_source_screen: c8af223d0e05f999b4977a0dae5b1b5281eff93e
+claim_state: SELECTED_RESEARCH_TARGET_UNPROVED
+claims:
+  - claim_id: BSD-A1-WP59-SOURCE-BARRIER-001
+    status: PROVED_FROM_ADMITTED_SOURCE_INTERFACES
+    statement: The currently protected admitted source interfaces do not uniformly determine the post-WP58A residual R_2(E,K,f)=2 ord_2(m_K(f))-ord_2(lambda_D) for the selected class.
+    scope: Bounded implication-graph statement only; not a mathematical impossibility or literature-exhaustiveness theorem.
+current_boundary: MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED
+reopening_contract:
+  - R1_literal_p2_heegner_index
+  - R2_exact_wp00_twist_lratio_valuation
+  - R3_wp09_compatible_kriz_li_mod2_log_theorem
+  - R4_direct_combined_residual_theorem
+  - R5_literal_p2_height_one_2_integral_reciprocity
+remaining_boundaries:
+  D1c: MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  D2a: MISSING_P2_K_HEIGHT_NONDEGENERACY
+  D2b: RESOLVED_WP52A_FINITE_COMPARISON_DETERMINANT
+  D2c: RESOLVED_WP54A_GLOBAL_QORD_RECONCILIATION
+  D2d: MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED
+  D2e: MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+firewall:
+  - no literature-exhaustiveness claim
+  - no mathematical impossibility claim
+  - no guessed value of ord_2(m_K(f)) or ord_2(lambda_D)
+  - no rank-zero BSD substitution for E^D
+  - no fixed-p=2 height nondegeneracy claim
+  - no height-one-(2) analytic determinant claim
+  - no BSD-R2-A1 promotion
+  - no MATHCERT certification
