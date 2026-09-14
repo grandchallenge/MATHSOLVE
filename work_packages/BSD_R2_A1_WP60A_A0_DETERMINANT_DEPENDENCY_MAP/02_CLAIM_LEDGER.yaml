@@ -1,0 +1,57 @@
+schema_version: 1.0.0
+campaign_id: BSD-001
+work_package: BSD_R2_A1_WP60A_A0_DETERMINANT_DEPENDENCY_MAP
+programme_owner: grandchallenge/MATHSOLVE#164
+execution_tracker: grandchallenge/MATHSOLVE#215
+protected_inputs:
+  mathsolve_wp60: 24fb349e28e4cbb5e034f4684edcc413975aed04
+  mathforge_wp60a_source_audit: e44baeeed5d508fd4e5332c883c837951e51c000
+  intellect_issuance: fc9ee5537bf07586dffcc621e753204ecd835365
+claims:
+  - claim_id: BSD-A1-WP60A-A0-REDUCTION-001
+    status: PROVED_REDUCTION_FROM_PROTECTED_DEPENDENCIES
+    statement: >-
+      The protected primitive rank-one first-Fitting target, cyclotomic square
+      presentation, specialization/Bockstein factors, and finite strict/Kummer
+      determinant correction are already exact. Closing D1c through the
+      determinantal-zeta route therefore reduces to an integral literal-p=2
+      determinant lift (or exact finite-level replacement) plus exact
+      height-one-(2) primitivity/reverse divisibility of that analytic element.
+    depends_on:
+      - WP16A
+      - WP16B
+      - WP19
+      - WP35
+      - WP36
+      - WP39-WP52A
+      - WP53A-WP58A
+      - MATHFORGE_WP60A_SOURCE_AUDIT
+  - claim_id: BSD-A1-WP60A-A0-LIFT-BOUNDARY-001
+    status: OPEN_THEOREM_BOUNDARY
+    statement: MISSING_P2_KATO_ZETA_DETERMINANT_LIFT_AT_RESIDUE_CHARACTERISTIC_2
+  - claim_id: BSD-A1-WP60A-A0-PRIMITIVITY-BOUNDARY-001
+    status: OPEN_THEOREM_BOUNDARY
+    statement: MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+  - claim_id: BSD-A1-WP60A-A0-COMBINED-BOUNDARY-001
+    status: OPEN_THEOREM_BOUNDARY
+    statement: MISSING_LITERAL_P2_KATO_ZETA_DETERMINANT_LIFT_AND_PRIMITIVITY_AT_HEIGHT_ONE_2
+parent_boundaries:
+  - MISSING_P2_ANALYTIC_DETERMINANT_GENERATOR_AT_HEIGHT_ONE_2
+  - MISSING_P2_K_HEIGHT_NONDEGENERACY
+  - MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED
+  - MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION
+reopening_effect:
+  wp59_r5: >-
+    Only a protected theorem supplying both the integral analytic determinant
+    lift and exact height-one-(2) primitivity, or a direct finite-level primitive
+    Fitting reciprocity theorem with the same force, can satisfy R5.
+  d2d: NO_REOPEN_AT_A0
+firewall:
+  - Do not treat a determinant lift as a basis/primitivity theorem.
+  - Do not invert 2 or absorb a power of 2 into an unspecified unit.
+  - Do not reuse BKS/BSS odd-prime or p>3 clauses at p=2.
+  - Do not reopen already resolved finite strict/Kummer correction factors.
+  - Do not infer BSD-R2-A1 from this proof reduction.
+  - Do not promote CI, source admission, or this ledger to MATHCERT certification.
+selected_target: SELECTED_RESEARCH_TARGET_UNPROVED
+mathcert_promotion: false
