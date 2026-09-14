@@ -6,7 +6,7 @@
 - Mathematical repository: `grandchallenge/MATHSOLVE`.
 - Programme owner: `grandchallenge/MATHSOLVE#164`.
 - Active tracker: `grandchallenge/MATHSOLVE#215`.
-- Current bounded operation: `grandchallenge/MATHSOLVE#229` (`WP60K`).
+- Current bounded operation: `grandchallenge/MATHSOLVE#233` (`WP60L`).
 - Source authority: `grandchallenge/MATHFORGE`.
 - Constitutional authority: protected `grandchallenge/INTELLECT`.
 - Certification authority: `grandchallenge/MATHCERT` only.
@@ -19,22 +19,23 @@ Use protected repository state as authority. Do not use mutable issue text, stal
 After re-fetching protected live heads, read:
 
 1. this file;
-2. `handoffs/BSD-001/WP60K_FRONTIER.md`;
-3. `work_packages/BSD_R2_A1_WP60K_BSS_MOD4_HYP32_OBSTRUCTION/00_README.md`;
-4. `work_packages/BSD_R2_A1_WP60K_BSS_MOD4_HYP32_OBSTRUCTION/01_SELECTED_MOD4_HYP32_OBSTRUCTION_THEOREM.md`;
-5. `work_packages/BSD_R2_A1_WP60K_BSS_MOD4_HYP32_OBSTRUCTION/03_CLAIM_LEDGER.yaml`;
-6. the protected WP60J residual Hypothesis-3.2/full-image package;
-7. the protected WP60I H2/H3 package;
-8. the protected WP60H four-fiber relation package;
-9. the protected WP60G self-dual pairwise-localization package;
-10. the protected WP60F proof-boundary package;
-11. the protected WP60E finite-level barrier package;
-12. the protected WP60D surviving-route reduction;
-13. the protected WP60B Kriz–Li obstruction;
-14. the protected WP60A determinant-membership package;
-15. `work_packages/BSD_R2_A1_WP60_P2_FRONTIER_RESEARCH_PROGRAM/01_EXECUTION_CONTRACT.md`;
-16. protected MATHFORGE WP60H/WP60G/WP60F/WP60E/WP60B/WP60A/WP59 records;
-17. only then deeper predecessors needed by the active lane.
+2. `handoffs/BSD-001/WP60L_FRONTIER.md`;
+3. `work_packages/BSD_R2_A1_WP60L_BSS_SELMER_RESTRICTED_HYP32III/00_README.md`;
+4. `work_packages/BSD_R2_A1_WP60L_BSS_SELMER_RESTRICTED_HYP32III/01_SELECTED_MOD4_SELMER_RESTRICTED_THEOREM.md`;
+5. `work_packages/BSD_R2_A1_WP60L_BSS_SELMER_RESTRICTED_HYP32III/03_CLAIM_LEDGER.yaml`;
+6. the protected WP60K mod-4 Hypothesis-3.2 obstruction package;
+7. the protected WP60J residual Hypothesis-3.2/full-image package;
+8. the protected WP60I H2/H3 package;
+9. the protected WP60H four-fiber relation package;
+10. the protected WP60G self-dual pairwise-localization package;
+11. the protected WP60F proof-boundary package;
+12. the protected WP60E finite-level barrier package;
+13. the protected WP60D surviving-route reduction;
+14. the protected WP60B Kriz–Li obstruction;
+15. the protected WP60A determinant-membership package;
+16. `work_packages/BSD_R2_A1_WP60_P2_FRONTIER_RESEARCH_PROGRAM/01_EXECUTION_CONTRACT.md`;
+17. protected MATHFORGE WP60H/WP60G/WP60F/WP60E/WP60B/WP60A/WP59 records;
+18. only then deeper predecessors needed by the active lane.
 
 ## Governing invariant
 
@@ -78,11 +79,11 @@ Protected WP60D proves
 
 so `R_2` is auxiliary-field invariant. This does not determine its value.
 
-Protected WP60B proves the selected good-ordinary-at-2 lane forces the normalized Kriz–Li logarithmic factor to be even. Therefore
+Protected WP60B proves the selected good-ordinary-at-2 lane forces the normalized Kriz–Li logarithmic factor to be even. Thus
 
 `R3_RETIRED_FOR_SELECTED_GOOD_ORDINARY_LANE_BY_WP60B_LOCAL_OBSTRUCTION`.
 
-Protected WP60E shows the specifically screened finite-level Burns–Kurihara–Sano / Chan-Ho Kim application theorems exclude literal `p=2` in the relevant proved clauses:
+Protected WP60E shows the screened finite-level Burns–Kurihara–Sano / Chan-Ho Kim application theorems exclude literal `p=2` in the relevant proved clauses:
 
 `MISSING_LITERAL_P2_FINITE_LEVEL_KATO_DERIVATIVE_FITTING_THEOREM`.
 
@@ -90,19 +91,17 @@ Protected WP60E shows the specifically screened finite-level Burns–Kurihara–
 
 ### WP60F — proof-mechanism split
 
-The BSS route splits into a core-vertex/localization obligation and elliptic standard-hypothesis obligations. The higher-derivative construction is distinct from integral Fitting control.
+The BSS route separates a core-vertex/localization obligation from elliptic standard-hypothesis obligations. Higher-derivative construction is distinct from integral Fitting control.
 
 ### WP60G — residual pairwise localization
 
-Using the admitted BSS Lemma 3.9 affine-fiber interface and residual self-duality, WP60G proves the literal-`2` one-primal/one-dual simultaneous-localization step whenever BSS Hypothesis 3.2 holds. The Weil pairing supplies
-
-`E[2] ~= E[2]^*(1)`.
+Using the admitted BSS Lemma 3.9 affine-fiber interface and residual self-duality, WP60G proves the literal-`2` one-primal/one-dual residual simultaneous-localization step whenever BSS Hypothesis 3.2 holds. The Weil pairing supplies `E[2] ~= E[2]^*(1)`.
 
 ### WP60H — four-fiber relation reduction
 
-WP60H proves the exact self-dual `F_2` covering criterion: BSS bad affine fibers cover the residual Galois group if and only if their classes admit an odd-cardinality linear dependence. For four nonzero classes, coverage occurs exactly when some three sum to zero.
+WP60H proves the exact self-dual `F_2` covering criterion: the BSS bad affine fibers cover the residual Galois group if and only if their classes admit an odd-cardinality linear dependence. For four nonzero classes, coverage occurs exactly when some three sum to zero.
 
-The residual connectivity frontier is
+Residual connectivity frontier:
 
 `MISSING_P2_BSS_MINIMAL_CORE_THREE_TERM_RELATION_EXCLUSION_OR_REPLACEMENT_CONNECTIVITY`.
 
@@ -110,7 +109,7 @@ The residual connectivity frontier is
 
 WP60I proves every selected curve has an odd bad prime with odd multiplicative inertia depth and hence a primitive unipotent in the restricted 2-adic image. Formal BSS `(H2)` holds.
 
-It further proves
+It also proves
 
 `rho_4(G_{Q(mu_{2^infinity})})=SL_2(Z/4)`
 
@@ -122,7 +121,7 @@ An exact finite certificate gives
 
 `H^1(GL_2(Z/4),F_2^2) != 0`,
 
-which inflates to a nonzero BSS III infinite `(H3)` group. Thus
+which inflates to a nonzero BSS III infinite `(H3)` group. Record
 
 `BSS_LITERAL_P2_SELECTED_H2_HOLDS_H3_FAILS`
 
@@ -130,21 +129,17 @@ and
 
 `R5_BSS_STANDARD_HYPOTHESIS_ROUTE_BLOCKED_BY_H3_AT_LITERAL_P2`.
 
-This is a negative applicability result for the screened standard BSS application theorem, not a no-go theorem for every literal-`2` Kolyvagin/Fitting method.
-
 ### WP60J — residual finite Hypothesis 3.2 holds
 
 WP60J proves
 
 `im(rho_{E,2-adic})=GL_2(Z_2)`.
 
-For `K=Q`, `R=k=F_2`, `A=E[2]`, it identifies the finite BSS auxiliary Galois group as `S3 x C2` and proves
+For `K=Q`, `R=k=F_2`, `A=E[2]`, the finite BSS auxiliary group is `S3 x C2`, and
 
 `H^1(S3 x C2,E[2])=0`.
 
-Together with irreducibility, the primitive unipotent quotient, and Weil self-duality, this verifies formal BSS II Hypotheses 3.2 and 3.3 for the selected residual module.
-
-Record
+Together with residual irreducibility, the primitive unipotent quotient, and Weil self-duality, this verifies formal BSS II Hypotheses 3.2 and 3.3 for the selected residual module. Record
 
 `SELECTED_2ADIC_IMAGE_GL2_Z2`,
 
@@ -156,23 +151,19 @@ and
 
 ### WP60K — finite Hypothesis 3.2 fails at mod 4
 
-WP60K tests the next finite coefficient level rather than extrapolating the residual result.
-
 Protected WP60J gives
 
 `Gal(Q(E[4])/Q)=GL_2(Z/4)`.
 
-An exact exhaustive certificate proves
+WP60K's exact exhaustive certificate proves
 
 `|H^1(GL_2(Z/4),(Z/4)^2)|=2`.
 
-For `A=E[4]`, the BSS finite auxiliary field `K(A)_4` contains `Q(E[4])`. Its Galois group surjects onto `GL_2(Z/4)` with kernel acting trivially on `A`; inflation therefore injects the displayed nonzero group into
+Inflation into the BSS finite auxiliary field gives
 
-`H^1(K(A)_4/Q,E[4])`.
+`H^1(K(E[4])_4/Q,E[4]) != 0`.
 
-Hence formal BSS II Hypothesis 3.2(iii) fails already at `E[4]`; Weil self-duality gives the same obstruction for the dual module.
-
-Record
+Hence formal BSS II Hypothesis 3.2(iii) fails already at `E[4]`; the dual clause fails by Weil self-duality. Record
 
 `BSS_LITERAL_P2_SELECTED_FINITE_HYP32III_FAILS_AT_E4`
 
@@ -180,11 +171,45 @@ and
 
 `R5_BSS_STANDARD_FINITE_HYPOTHESIS_ROUTE_BLOCKED_ALREADY_AT_MOD4`.
 
-WP60J and WP60K are compatible: the finite residual condition holds at `E[2]` and fails at `E[4]`. WP60I separately records the infinite-tower failure.
+The unchanged level-by-level verification strategy is therefore impossible.
 
-The BSS replacement-control frontier is now
+### WP60L — the mod-4 defect is Selmer-extraneous
 
-`MISSING_P2_BSS_HYP32III_WEAKENING_OR_BYPASS_FOR_INTEGRAL_FITTING_CONTROL`.
+WP60L determines the exact finite auxiliary field more sharply. With `L=Q(E[4])`, full 2-adic image supplies an element congruent to the identity modulo `4` whose determinant is `5 mod 8`; hence
+
+`L intersect Q(mu_8)=Q(mu_4)`
+
+and
+
+`[K(E[4])_4:L]=2`.
+
+Inflation-restriction plus `E[2]^{GL_2(F_2)}=0` shows inflation is an isomorphism, so
+
+`#H^1(K(E[4])_4/Q,E[4])=2`.
+
+The unique nonzero class is the WP60K class. At the protected odd-depth multiplicative prime `ell`, its primitive-inertia value is `(0,2)` and is nonzero in inertia cohomology.
+
+Protected WP13 makes `c_ell` odd. Protected WP39 then gives
+
+`H^1(Q_ell,T_2E)=H^1_ur(Q_ell,T_2E)`.
+
+Thus the BSS canonical local condition propagated to `E[4]` is the local Kummer image. Tate local duality and the Weil pairing make this Kummer image self-annihilating. The unique ramified defect therefore lies in neither the primal nor dual canonical local condition.
+
+Every BSS modified Selmer structure retains the original canonical local condition at this fixed bad prime. Therefore restriction to `K(E[4])_4` is injective on every canonical modified primal and dual Selmer group at coefficient level `E[4]`.
+
+Record
+
+`BSS_LITERAL_P2_SELECTED_MOD4_HYP32III_DEFECT_SELMER_EXTRANEOUS`
+
+and
+
+`BSS_LITERAL_P2_SELECTED_MOD4_SELMER_RESTRICTED_COEFFICIENT_REDUCTION_AVAILABLE`.
+
+This repairs the Hypothesis-3.2(iii) restriction-injectivity contribution to the one-class Chebotarev calls used in the proof of BSS Lemma 3.10 for the `E[4] -> E[2]` coefficient-reduction step. It does not repair the independent `s+t<p` obstruction for simultaneous primal/dual localization and does not extend automatically to higher `2`-power levels.
+
+The refined BSS replacement frontier is
+
+`MISSING_P2_BSS_ALL_LEVEL_SELMER_RESTRICTED_INJECTIVITY_AND_P2_CONNECTIVITY_CONTROL`.
 
 ## Current route map
 
@@ -195,8 +220,8 @@ The BSS replacement-control frontier is now
 - R5-LIFT: live — `MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2`.
 - R5-PRIM: live — `MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
 - R5 finite-level screened application architecture: `MISSING_LITERAL_P2_FINITE_LEVEL_KATO_DERIVATIVE_FITTING_THEOREM`.
-- R5-BSS residual F1: `MISSING_P2_BSS_MINIMAL_CORE_THREE_TERM_RELATION_EXCLUSION_OR_REPLACEMENT_CONNECTIVITY`.
-- R5-BSS replacement control: `MISSING_P2_BSS_HYP32III_WEAKENING_OR_BYPASS_FOR_INTEGRAL_FITTING_CONTROL`.
+- R5-BSS residual connectivity: `MISSING_P2_BSS_MINIMAL_CORE_THREE_TERM_RELATION_EXCLUSION_OR_REPLACEMENT_CONNECTIVITY`.
+- R5-BSS replacement control: `MISSING_P2_BSS_ALL_LEVEL_SELMER_RESTRICTED_INJECTIVITY_AND_P2_CONNECTIVITY_CONTROL`.
 - R5-BSS unchanged standard finite hypothesis route: blocked at mod 4 — `R5_BSS_STANDARD_FINITE_HYPOTHESIS_ROUTE_BLOCKED_ALREADY_AT_MOD4`.
 - R5-BSS standard infinite application: blocked — `R5_BSS_STANDARD_HYPOTHESIS_ROUTE_BLOCKED_BY_H3_AT_LITERAL_P2`.
 - D2a: live — `MISSING_P2_K_HEIGHT_NONDEGENERACY`.
@@ -205,28 +230,27 @@ The BSS replacement-control frontier is now
 
 `BSD-R2-A1` remains unproved.
 
-## Highest-value continuation after WP60K
+## Highest-value continuation after WP60L
 
-Do not try to verify the unchanged BSS finite Hypothesis 3.2 level-by-level: WP60K proves this strategy fails at `E[4]`. Do not try to re-prove the full BSS III `(H3)` condition: WP60I proves it fails.
+Do not try to restore the unchanged full Hypothesis 3.2(iii); WP60K proves it false. Instead test the WP60L mechanism uniformly over `A_m=E[2^m]`:
 
-The highest-value BSS-derived successor is now a **weakened finite control theorem**. Trace every use of Hypothesis 3.2(iii) in the BSS localization/core-vertex/Fitting proof and determine whether the nonzero mod-4 cohomology class is actually relevant to the Selmer classes used by the argument. A successful replacement may use a smaller Selmer-restricted injectivity statement, an explicit quotient by the obstruction direction, or a different integral control argument.
+1. determine `H^1(K(E[2^m])_{2^m}/Q,E[2^m])` for all `m>=2` using protected full `GL_2(Z_2)` image;
+2. test whether all nonzero restriction-kernel classes are detected by the same primitive odd-inertia element and hence excluded from all canonical modified Selmer spaces;
+3. if successful, formulate the all-level Selmer-restricted replacement needed by coefficient reduction and inverse-limit control;
+4. separately resolve or bypass the residual simultaneous-localization/core-vertex connectivity frontier from WP60H.
 
-Only if such a replacement still needs full residual core-vertex connectivity should the WP60H three-term-relation frontier be pursued in parallel.
-
-Retain direct height-one routes R5-LIFT/R5-PRIM and arithmetic routes R1/R2/R4 independently.
+Retain direct height-one R5-LIFT/R5-PRIM and arithmetic routes R1/R2/R4 independently.
 
 ## Claim firewall
 
 Do not promote:
 
-- residual Hypothesis 3.2 at `E[2]` to higher coefficient levels;
-- the mod-4 obstruction to impossibility of all literal-`2` Kolyvagin/Fitting methods;
-- the full 2-adic image theorem to integral Fitting control;
-- WP60G/WP60H residual localization to graph connectivity without the remaining relation step;
+- residual or mod-4 restricted injectivity to full Hypothesis 3.2(iii);
+- WP60L to higher coefficient levels without proof;
+- WP60L to simultaneous one-primal/one-dual localization;
+- WP60G/WP60H localization to connectivity without the remaining relation step;
 - existence of a higher derivative to Fitting equality;
-- an odd-prime theorem to literal `p=2`;
-- `m_K(f)` to odd or `lambda_D` to a 2-adic unit without proof;
-- invariance of `R_2` to a value of `R_2`;
+- any odd-prime theorem to literal `p=2`;
 - any WP60 result to R5, D2d, or `BSD-R2-A1`;
 - source admission, numerical evidence, or CI success to MATHCERT certification;
 - novelty, priority, patentability, or commercial claims.
