@@ -1,0 +1,49 @@
+name: BSD WP60R finite theorem replay
+
+on:
+  pull_request:
+    paths:
+      - 'work_packages/BSD_R2_A1_WP60R_BSS_THEOREM_REPLAY/**'
+      - 'handoffs/BSD-001/WP60R_FRONTIER.md'
+      - 'handoffs/BSD-001/README.md'
+      - '.github/workflows/bsd-wp60r-certificate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'work_packages/BSD_R2_A1_WP60R_BSS_THEOREM_REPLAY/**'
+      - 'handoffs/BSD-001/WP60R_FRONTIER.md'
+      - 'handoffs/BSD-001/README.md'
+      - '.github/workflows/bsd-wp60r-certificate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-replay:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Assert exact subject checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - name: Replay protected WP60J residual cohomology certificate
+        run: python work_packages/BSD_R2_A1_WP60J_BSS_RESIDUAL_HYP32/02_RESIDUAL_COHOMOLOGY_CERTIFICATE.py
+      - name: Replay protected WP60N characteristic-two exchange certificate
+        run: python work_packages/BSD_R2_A1_WP60N_COISOTROPIC_P2_CONNECTIVITY/02_EXCHANGE_RELATION_CERTIFICATE.py
+      - name: Replay WP60R dependency certificate
+        run: python work_packages/BSD_R2_A1_WP60R_BSS_THEOREM_REPLAY/04_DEPENDENCY_REPLAY_CERTIFICATE.py
+      - name: Assert dispositions and firewalls
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'BSS_LITERAL_P2_SELECTED_THEOREM_5_20_REPLAYED' work_packages/BSD_R2_A1_WP60R_BSS_THEOREM_REPLAY/03_CLAIM_LEDGER.yaml
+          grep -q 'BSS_LITERAL_P2_SELECTED_THEOREM_5_2_REPLAYED' work_packages/BSD_R2_A1_WP60R_BSS_THEOREM_REPLAY/03_CLAIM_LEDGER.yaml
+          grep -q 'formal_higher_level_hypothesis_3_2_iii: false' work_packages/BSD_R2_A1_WP60R_BSS_THEOREM_REPLAY/03_CLAIM_LEDGER.yaml
+          grep -q 'bss_theorem_5_25: false' work_packages/BSD_R2_A1_WP60R_BSS_THEOREM_REPLAY/03_CLAIM_LEDGER.yaml
+          grep -q 'bsd_r2_a1: false' work_packages/BSD_R2_A1_WP60R_BSS_THEOREM_REPLAY/03_CLAIM_LEDGER.yaml
