@@ -146,21 +146,38 @@ This is the exact replacement for the multi-class Lemma 3.9 call in the inductio
 
 ## 5. Iterated dual killing
 
+The protected residual core-rank-one bookkeeping used by WP60N is independent of finite-level Hypothesis 4.2. For every balanced BSS auxiliary modification `a`, global duality gives the residual dimension relation
+
+`dim_F2 H^1_{F(a)}(Q,E[2])
+ = 1 + dim_F2 H^1_{F*(a)}(Q,E[2]^*(1))`.
+
+Hence whenever the current residual dual space is nonzero, the current residual primal space contains a nonzero class. This is the primal witness needed by Proposition 5.7 and avoids any circular appeal to the Hypothesis-4.2 conclusion that is being constructed below.
+
 ### Lemma `BSD-A1-WP60R-DUAL-KILL-004`
 
-Let `D` be a finite-dimensional residual dual modified Selmer space. Starting from any selected modification, one can enlarge the auxiliary ideal by finitely many level-`m` BSS primes so that the resulting residual dual modified Selmer group is zero.
+Let `D_0` be a finite-dimensional residual dual modified Selmer space for a selected modification `a_0`. One can enlarge `a_0` by finitely many level-`m` BSS primes so that the resulting residual dual modified Selmer group is zero.
 
-If a fixed nonzero residual primal class `c` must localize nontrivially at every newly chosen prime, the same conclusion holds while imposing `loc_q(c)!=0` at each step.
+In addition, let `0 != c` be any residual primal class belonging to the initial selected modified Selmer group. One can perform the same dual killing while imposing
+
+`loc_q(c) != 0`
+
+at every newly selected prime `q`; the fixed class `c` need not remain in the current primal modified Selmer group after earlier transitions.
 
 ### Proof
 
-If `D=0`, there is nothing to prove. Otherwise choose `0 != d in D`.
+If the current dual space `D_j` is zero, stop. Otherwise choose `0 != d_j in D_j`. By the residual core-rank-one dimension relation, the current primal space `V_j` has dimension at least two and in particular contains a nonzero class `p_j`.
 
-Without a primal constraint, lift `d` to the corresponding `2`-torsion full-coefficient class. Lemma `QUOTIENT-CHAR-001B` makes its BSS quotient character nonzero, so its single affine bad fiber is proper. The BSS Chebotarev construction over `F_m` therefore supplies an exact level-`m` auxiliary prime with nonzero localization of `d`.
+For unconstrained dual killing, apply Theorem `LEVELM-PAIRWISE-002` to the current classes `p_j,d_j`. The resulting prime has both current primal and current dual localization maps nonzero. Proposition 5.7 therefore lowers the residual dual dimension by one.
 
-With a fixed primal constraint `c`, apply Theorem `LEVELM-PAIRWISE-002` to `c,d`.
+Now impose the fixed-class condition. The three lifted classes `c,p_j,d_j` all satisfy the same fixed local condition at `ell`, so Lemmas `COMMON-SPAN-RES-001` and `QUOTIENT-CHAR-001B` apply to their span. If `c` belongs to `V_j`, choose `p_j:=c`; then Theorem `LEVELM-PAIRWISE-002` localizes the fixed class and current dual class simultaneously and Proposition 5.7 applies.
 
-In either case, the BSS global-duality dimension transition used in Proposition 5.7 lowers the residual dual dimension by one after imposing the corresponding auxiliary condition. Iterate. Finite dimensionality forces termination. QED.
+If `c` does not belong to `V_j`, choose any nonzero `p_j in V_j` different from `c+d_j` when that sum is defined after self-dual identification. Such a choice exists because `dim V_j>=2`. The three source classes then have no odd three-term relation: an equality
+
+`c+p_j+d_j=0`
+
+would force `p_j=c+d_j`, contrary to the choice. Degeneracies in which two constraints coincide only reduce the problem to the protected two-fiber case. Therefore the all-level WP60H odd-relation criterion from §3 supplies a prime at which `c`, `p_j`, and `d_j` all localize nontrivially. The current pair `p_j,d_j` again satisfies Proposition 5.7, so the current residual dual dimension drops by one while the fixed class `c` is detected at the new prime.
+
+Repeat with the new current primal and dual modified Selmer spaces. Finite dimensionality forces termination after exactly `dim D_0` dimension drops. QED.
 
 ## 6. Level-m core graph
 
