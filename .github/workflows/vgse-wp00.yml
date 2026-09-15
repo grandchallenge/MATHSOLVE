@@ -73,6 +73,9 @@ jobs:
             --report /tmp/vgse_figure16_validation.json \
             --svg-dir /tmp/vgse_figure16_source_svg
           python work_packages/VGSE_WP00/artifacts/code/test_figure16.py
+          python work_packages/VGSE_WP00/artifacts/code/audit_figure16_pinned_c.py \
+            work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json \
+            --check work_packages/VGSE_WP00/artifacts/data/figure16_pinned_c_measurement_audit.json
           python work_packages/VGSE_WP00/artifacts/code/reconstruct_b3.py \
             work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json \
             work_packages/VGSE_WP00/artifacts/data/expected_replay.json \
@@ -86,6 +89,7 @@ jobs:
           python -m json.tool work_packages/VGSE_WP00/artifacts/data/expected_replay.json >/dev/null
           python -m json.tool work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json >/dev/null
           python -m json.tool work_packages/VGSE_WP00/artifacts/data/figure16_validation.json >/dev/null
+          python -m json.tool work_packages/VGSE_WP00/artifacts/data/figure16_pinned_c_measurement_audit.json >/dev/null
           python -m json.tool work_packages/VGSE_WP00/artifacts/data/graph_weight_fixture.json >/dev/null
           python -m json.tool work_packages/VGSE_WP00/artifacts/data/reconstruction_summary.json >/dev/null
           python -m json.tool work_packages/VGSE_WP00/claim_ledger.json >/dev/null
