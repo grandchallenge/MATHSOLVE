@@ -102,8 +102,18 @@
       "claim_id": "VGSE-C06",
       "statement": "The five independently generated numerical t-embeddings have been matched bijectively to the five source-vector drawings modulo a declared geometric equivalence group.",
       "status": "NEEDS_AUDIT",
-      "support_route": "NONE",
-      "blocker": "A permutation-and-equivalence matcher between generated coordinates and the rounded source drawings has not been admitted.",
+      "support_route": "NEGATIVE_SOURCE_VECTOR_MEASUREMENT_AUDIT",
+      "evidence": [
+        "work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json",
+        "work_packages/VGSE_WP00/artifacts/data/figure16_validation.json",
+        "work_packages/VGSE_WP00/artifacts/code/audit_figure16_pinned_c.py",
+        "work_packages/VGSE_WP00/artifacts/data/figure16_pinned_c_measurement_audit.json"
+      ],
+      "blocker": "The committed reconstructed visible Figure 16 graph with the source-vector Euclidean geometric weights does not have boundary measurement equal to the pinned Example B.1 C. Even after all 6! boundary relabelings and a global color/complement swap, the best projective Plucker distortion is greater than 131; the rounding-certified lower bound remains greater than 100. Exact source graph/weight generation data or a separately governed source-authorized correspondence is required before generated-to-source equivalence can be tested positively.",
+      "limitations": [
+        "This audit rejects the current PDF-vector visible-graph bridge to the pinned C; it does not refute the paper's mathematical claim or identify the undisclosed exact source graph/weight data used to produce Figure 16.",
+        "No broader geometric equivalence relation is inferred from the failed output."
+      ],
       "certification_state": "blocked"
     },
     {
@@ -128,7 +138,7 @@
     "source_vector_planar_patterns": "five_patterns_replicated_and_checked_at_pdf_precision",
     "weighted_graph_boundary_measurement": "numerically_replays_C_needs_audit",
     "independent_planar_t_embeddings": "five_reconstructed_numerically_needs_audit",
-    "generated_to_source_pattern_bijection": "not_admitted",
+    "generated_to_source_pattern_bijection": "blocked_current_pdf_vector_visible_graph_fails_pinned_C_measurement",
     "rigid_deployment": "not_assessed",
     "finite_thickness_manufacturing": "not_assessed",
     "commercial_promotion": "not_authorized"
