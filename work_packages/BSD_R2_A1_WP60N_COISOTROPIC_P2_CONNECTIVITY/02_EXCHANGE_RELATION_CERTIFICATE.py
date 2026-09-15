@@ -40,6 +40,7 @@ def check_dimension(n):
     direct = 0
     exchanged_1 = 0
     exchanged_2 = 0
+    simultaneous_hard = 0
 
     for p1 in vecs:
         for d1 in vecs:
@@ -64,10 +65,14 @@ def check_dimension(n):
                     hard2 = not any(add(p1, p2, d2))
 
                     # After the two forbidden relations are removed, every
-                    # remaining obstruction is exactly one of the two hard
-                    # two-primal/one-dual relations.
+                    # remaining obstruction is one or both of the two hard
+                    # two-primal/one-dual relations. Both can occur exactly
+                    # when the two dual generators coincide; either exchange
+                    # still resolves the aligned configuration.
                     assert bool(triples) == (hard1 or hard2)
-                    assert not (hard1 and hard2)
+                    if hard1 and hard2:
+                        assert d1 == d2
+                        simultaneous_hard += 1
 
                     if not triples:
                         direct += 1
@@ -91,6 +96,7 @@ def check_dimension(n):
         "direct": direct,
         "exchange_first": exchanged_1,
         "exchange_second": exchanged_2,
+        "simultaneous_hard": simultaneous_hard,
     }
 
 
