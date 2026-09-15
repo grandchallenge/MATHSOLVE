@@ -1,0 +1,157 @@
+{
+  "audit_id": "VGSE-FIG16-PINNED-C-MEASUREMENT-AUDIT-001",
+  "campaign_id": "VGSE-001",
+  "claim_boundary": {
+    "commercial_claim_authorized": false,
+    "current_reconstructed_visible_graph_bridge_to_pinned_C_rejected": true,
+    "exact_underlying_source_graph_identified": false,
+    "manufacturing_authorized": false,
+    "mathcert_adjudication_effect": "none",
+    "paper_claim_refuted": false,
+    "rigid_deployment_authorized": false
+  },
+  "conclusion": {
+    "all_five_source_vector_patterns_fail_pinned_C_under_visible_graph": true,
+    "current_pdf_vector_reconstruction_sufficient_for_VGSE_C06": false,
+    "failure_survives_all_boundary_relabelings_and_global_color_complement": true,
+    "required_repair": "Obtain the exact source graph/weight or generation data, or define a separately governed source-authorized correspondence; do not infer an equivalence relation from the failed output.",
+    "visible_reconstructed_geometric_weight_class_measures_pinned_C": false
+  },
+  "fixture_id": "VGSE-FIG16-SOURCE-VECTOR-001",
+  "method": {
+    "boundary_measurement": "direct almost-perfect-matching enumeration",
+    "graph": "committed reconstructed visible eight-face Figure 16 graph",
+    "label_robustness": "exhaust all 6! boundary relabelings and both global color/complement conventions",
+    "projective_metric": "minimum worst multiplicative Pluecker error after free common scale",
+    "rounding_bound": "endpoint rounding propagated through edge lengths, matching products, and Pluecker sums",
+    "source_coordinate_rounding_half_quantum_pdf_point": 5e-07,
+    "weights": "Euclidean geometric dual-edge lengths from each source-vector drawing"
+  },
+  "patterns": [
+    {
+      "almost_perfect_matching_count": 31,
+      "best_boundary_permutation_old_to_new": [
+        2,
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "best_projective_distortion_factor_after_all_boundary_relabelings": 249.18621954881243,
+      "best_uses_global_color_complement": false,
+      "canonical_projective_distortion_factor": 393.99800765051145,
+      "minimum_geometric_edge_length_pdf_point": 6.087009630819552,
+      "nonzero_plucker_count": 19,
+      "pattern_id": "FIG16-01"
+    },
+    {
+      "almost_perfect_matching_count": 31,
+      "best_boundary_permutation_old_to_new": [
+        1,
+        3,
+        2,
+        6,
+        4,
+        5
+      ],
+      "best_projective_distortion_factor_after_all_boundary_relabelings": 255.3740168511228,
+      "best_uses_global_color_complement": false,
+      "canonical_projective_distortion_factor": 298.2590378827999,
+      "minimum_geometric_edge_length_pdf_point": 8.885036800868582,
+      "nonzero_plucker_count": 19,
+      "pattern_id": "FIG16-02"
+    },
+    {
+      "almost_perfect_matching_count": 31,
+      "best_boundary_permutation_old_to_new": [
+        1,
+        3,
+        2,
+        4,
+        5,
+        6
+      ],
+      "best_projective_distortion_factor_after_all_boundary_relabelings": 270.2139763014963,
+      "best_uses_global_color_complement": false,
+      "canonical_projective_distortion_factor": 327.9561094847927,
+      "minimum_geometric_edge_length_pdf_point": 9.121327328189574,
+      "nonzero_plucker_count": 19,
+      "pattern_id": "FIG16-03"
+    },
+    {
+      "almost_perfect_matching_count": 31,
+      "best_boundary_permutation_old_to_new": [
+        2,
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "best_projective_distortion_factor_after_all_boundary_relabelings": 307.49363844255043,
+      "best_uses_global_color_complement": false,
+      "canonical_projective_distortion_factor": 486.1901317453852,
+      "minimum_geometric_edge_length_pdf_point": 8.430360878866336,
+      "nonzero_plucker_count": 19,
+      "pattern_id": "FIG16-04"
+    },
+    {
+      "almost_perfect_matching_count": 31,
+      "best_boundary_permutation_old_to_new": [
+        2,
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "best_projective_distortion_factor_after_all_boundary_relabelings": 131.50098551816274,
+      "best_uses_global_color_complement": false,
+      "canonical_projective_distortion_factor": 207.9213143971057,
+      "minimum_geometric_edge_length_pdf_point": 3.2845039904480218,
+      "nonzero_plucker_count": 19,
+      "pattern_id": "FIG16-05"
+    }
+  ],
+  "rounding_robustness": {
+    "certified_best_relabelled_projective_distortion_factor_lower": 131.50058917470795,
+    "global_minimum_geometric_edge_length_pdf_point": 3.2845039904480218,
+    "maximum_matching_size": 7,
+    "minimum_observed_best_relabelled_projective_distortion_factor": 131.50098551816274,
+    "plucker_rounding_distortion_factor_upper": 1.0000030140051634,
+    "relative_edge_error_upper": 4.305714246309044e-07,
+    "required_lower_threshold": 100.0
+  },
+  "schema_version": "1.0.0",
+  "target": {
+    "matrix_C": [
+      [
+        1,
+        1,
+        0,
+        -6,
+        0,
+        3
+      ],
+      [
+        0,
+        1,
+        1,
+        7,
+        0,
+        -2
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        1,
+        3
+      ]
+    ],
+    "nonzero_plucker_count": 19,
+    "source_locus": "Galashin Example B.1 / Figure 16"
+  }
+}
