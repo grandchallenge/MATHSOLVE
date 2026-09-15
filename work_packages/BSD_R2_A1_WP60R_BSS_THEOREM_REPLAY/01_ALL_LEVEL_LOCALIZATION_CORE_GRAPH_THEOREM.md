@@ -50,17 +50,45 @@ The canonical local condition at `ell` is an `F_2`-linear condition on the `2`-t
 
 This lemma does not assert full Hypothesis 3.2(iii). It applies only to the selected classes satisfying the fixed local condition.
 
+### Lemma `BSD-A1-WP60R-QUOTIENT-CHAR-001B`
+
+On the same span `<C>`, the BSS quotient-character map
+
+`j_m := f_m o Res_m`
+
+is injective. For every nonzero class in `<C>`, `j_m(c)` is a nonzero homomorphism with image in the unique order-two subgroup of
+
+`A_m/(tau-1)A_m ~= R_m`.
+
+### Proof
+
+Let `0 != c in <C>`. By Lemma `COMMON-SPAN-RES-001`, `Res_m(c)` is nonzero. Since `c` is annihilated by `2` and `F_m` contains `Q(A_m)`, its restricted cocycle is a homomorphism with image in
+
+`A_m[2] ~= E[2]`.
+
+The restricted class is invariant under the ambient Galois action, so its image is a nonzero `G_Q`-stable `F_2`-subspace of `A_m[2]`. Protected WP60J gives irreducibility of the selected residual module. Hence the image is all of `A_m[2]`.
+
+Suppose `f_m(Res_m(c))=0`. Then the image of `Res_m(c)` is contained in `(tau-1)A_m`. But Hypothesis 3.2(ii), protected on the selected full-image lane, gives
+
+`A_m/(tau-1)A_m ~= R_m`.
+
+Since `A_m` is free of rank two and the quotient is free of rank one, `(tau-1)A_m` is a free rank-one `R_m`-module. Its `2`-torsion therefore has `F_2`-dimension one, whereas `A_m[2]` has dimension two. Thus `A_m[2]` cannot be contained in `(tau-1)A_m`, a contradiction.
+
+Therefore `j_m(c)` is nonzero for every nonzero `c` in `<C>`, which proves injectivity on the `F_2`-span. Since `2c=0`, also `2j_m(c)=0`; under the rank-one quotient identification its image lies in `R_m[2] ~= F_2`. Nonzero then means surjective onto that order-two subgroup. QED.
+
+This is the additional quotient step used implicitly in the original BSS Lemma 3.9 after restriction injectivity. It is recorded separately here because full Hypothesis 3.2(iii) is unavailable.
+
 ## 3. Level-m affine-fiber localization
 
-Cartesian coefficient reduction identifies every residual modified Selmer class with a class in the `2`-torsion of the corresponding `A_m` modified Selmer group. By Lemma `COMMON-SPAN-RES-001`, the finite span of any classes used below restricts injectively to `F_m`.
+Cartesian coefficient reduction identifies every residual modified Selmer class with a class in the `2`-torsion of the corresponding `A_m` modified Selmer group. Lemmas `COMMON-SPAN-RES-001` and `QUOTIENT-CHAR-001B` show that the finite span of any classes used below survives both restriction to `F_m` and projection to the BSS rank-one quotient.
 
-The BSS cocycle-to-character construction for a class annihilated by `2` has target in the unique order-two subgroup of the rank-one quotient
+Thus every nonzero lifted class gives a nonzero character
 
-`A_m/(tau-1)A_m`.
+`G_{F_m} -> R_m[2] ~= F_2`
 
-Identifying that subgroup with `F_2`, the resulting character and affine constant are exactly of the form treated by protected WP60G and WP60H. Weil self-duality is compatible with restriction, the quotient by `tau-1`, and cocycle evaluation, so primal and dual classes may be placed in one `F_2`-space exactly as in those protected proofs.
+and a well-defined affine constant in the same order-two quotient. The finite-level Weil pairing identifies `A_m` with `A_m^*(1)` compatibly with restriction, `tau`, the quotient by `(tau-1)`, and cocycle evaluation. Hence the naturality argument of protected WP60G applies to these lifted `2`-torsion characters exactly as it does residually.
 
-Chebotarev is now applied over the full field `F_m`. Hence the resulting primes lie in the exact BSS level-`m` auxiliary-prime set rather than merely the residual level-1 set.
+Chebotarev is applied over the full field `F_m`. Therefore the resulting primes lie in the exact BSS level-`m` auxiliary-prime set rather than merely the residual level-1 set.
 
 ### Theorem `BSD-A1-WP60R-LEVELM-PAIRWISE-002`
 
@@ -76,13 +104,17 @@ The primes may be chosen outside any prescribed finite set.
 
 For `m=1`, this is protected WP60G.
 
-For `m>=2`, lift `c,d` by cartesian coefficient reduction to `2`-torsion classes in the corresponding `A_m` modified Selmer groups. Their two-dimensional `F_2` span satisfies the fixed local condition at `ell`, so Lemma `COMMON-SPAN-RES-001` gives the restriction injectivity required in the BSS character construction. The resulting two affine bad fibers cannot cover the relevant Galois group by the protected WP60G two-fiber theorem and its self-dual naturality argument. Chebotarev over `F_m` supplies the claimed level-`m` primes. QED.
+For `m>=2`, lift `c,d` by cartesian coefficient reduction to `2`-torsion classes in the corresponding `A_m` modified Selmer groups. Their `F_2` span satisfies the fixed local condition at `ell`. By Lemma `QUOTIENT-CHAR-001B`, both classes define nonzero `F_2` quotient characters and the combined span is detected injectively by the BSS quotient-character map.
+
+After finite-level Weil self-duality identifies the primal and dual targets, the two affine bad fibers are exactly in the situation of the protected WP60G two-fiber theorem. If the characters differ, their fibers do not cover; if they agree, injectivity of the combined quotient-character map identifies the corresponding classes and naturality identifies their affine constants, so the fibers coincide rather than complement each other. In both cases their union is proper.
+
+The original BSS Chebotarev construction over `F_m` then supplies a positive-density set of exact level-`m` auxiliary primes outside both bad fibers. QED.
 
 Record
 
 `BSS_LITERAL_P2_SELECTED_ALL_LEVEL_PAIRWISE_LOCALIZATION_AVAILABLE`.
 
-The same argument with any finite class collection and protected WP60H gives the all-level odd-relation criterion; WP60R will use only the four-class instances already required by the protected WP60N exchange proof.
+For any finite collection of lifted classes, Lemma `QUOTIENT-CHAR-001B` supplies the injective linear character map and cocycle evaluation supplies the linear affine-constant map required by protected WP60H. Hence its odd-relation cover criterion also replays over `F_m`. WP60R uses only the four-class instances already required by the protected WP60N exchange proof.
 
 ## 4. Iterated injective primal localization
 
@@ -124,11 +156,11 @@ If a fixed nonzero residual primal class `c` must localize nontrivially at every
 
 If `D=0`, there is nothing to prove. Otherwise choose `0 != d in D`.
 
-Without a primal constraint, the one-class literal-`2` localization step supplied by the WP60M replay of BSS Lemma 3.10 provides a new level-`m` auxiliary prime with nonzero localization of `d`.
+Without a primal constraint, lift `d` to the corresponding `2`-torsion full-coefficient class. Lemma `QUOTIENT-CHAR-001B` makes its BSS quotient character nonzero, so its single affine bad fiber is proper. The BSS Chebotarev construction over `F_m` therefore supplies an exact level-`m` auxiliary prime with nonzero localization of `d`.
 
 With a fixed primal constraint `c`, apply Theorem `LEVELM-PAIRWISE-002` to `c,d`.
 
-In either case, the BSS global-duality dimension transition used in Proposition 5.7 lowers the residual dual dimension by one after imposing the corresponding finite/transverse auxiliary condition. Iterate. Finite dimensionality forces termination. QED.
+In either case, the BSS global-duality dimension transition used in Proposition 5.7 lowers the residual dual dimension by one after imposing the corresponding auxiliary condition. Iterate. Finite dimensionality forces termination. QED.
 
 ## 6. Level-m core graph
 
@@ -142,7 +174,7 @@ Protected WP60N proves the characteristic-two core-graph theorem from:
 - the WP60G pairwise localization theorem;
 - the WP60H four-class odd-relation criterion.
 
-For the selected canonical structure, the first five structural inputs are protected by WP60J and MATHFORGE WP60O/WP60P. Sections 2–3 above supply the localization inputs with primes in the exact level-`m` BSS auxiliary-prime set. Therefore the WP60N exchange proof replays at every finite coefficient level.
+For the selected canonical structure, the first five structural inputs are protected by WP60J and MATHFORGE WP60O/WP60P. Sections 2–3 above supply the quotient-character and localization inputs with primes in the exact level-`m` BSS auxiliary-prime set. Therefore the WP60N exchange proof replays at every finite coefficient level.
 
 ### Theorem `BSD-A1-WP60R-ALL-LEVEL-CORE-GRAPH-005`
 
