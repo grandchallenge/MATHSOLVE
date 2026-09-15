@@ -33,10 +33,10 @@ WP60R records:
 ## Exact repair architecture
 
 1. WP60M proves the full global finite-level restriction kernel has one nonzero class and that this class violates a fixed canonical local condition retained by every selected BSS modification.
-2. Hence restriction is injective on any finite `F_2`-span of the actual modified-Selmer `2`-torsion classes used by the proof.
+2. Hence restriction is injective on any finite `F_2`-span of the actual modified-Selmer `2`-torsion classes used by the proof. Residual irreducibility and the rank-one `(tau-1)` quotient then make the BSS quotient-character map injective on the same span.
 3. WP60G pairwise self-dual localization and WP60H odd-relation localization therefore lift from the residual field to every exact level-`m` BSS auxiliary field.
 4. Iterating pairwise localization constructs the injective primal localization family required in Theorem 5.20 while every chosen prime detects one fixed nonzero dual class.
-5. The same mechanism kills dual modified Selmer dimension one step at a time; when Lemma 5.22 requires a fixed primal witness to remain nonzero at every new prime, pairwise localization supplies that constraint.
+5. Dual killing uses the current core-rank-one primal witness together with a current nonzero dual class, so the Proposition 5.7 transition lowers the dual dimension at each step. For the constrained Lemma 5.22 step, if the fixed witness is not the current primal witness, WP60H's three-class odd-relation criterion supplies a prime detecting the fixed witness, the current primal witness, and the current dual class simultaneously; the dual dimension still drops while the fixed witness remains visible.
 6. The WP60N characteristic-two core-connectivity argument replays with exact level-`m` primes.
 7. Protected MATHFORGE WP60R supplies the algebraic core-vertex freeness implication needed for finite-level Hypothesis 4.2.
 8. The remaining global-duality, exterior-bidual, Stark-system, and Fitting-ideal arguments are characteristic-independent and replay unchanged.
