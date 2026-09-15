@@ -1,0 +1,43 @@
+work_package: BSD_R2_A1_WP60N_COISOTROPIC_P2_CONNECTIVITY
+campaign: BSD-001
+operation_issue: grandchallenge/MATHSOLVE#237
+provider_anchor: grandchallenge/MATHFORGE@39cda156c4ce16ec97cc80f415efa3b8a8716cea
+status: candidate
+claims:
+  - id: BSD-A1-WP60N-STRICT-SEPARATION-001
+    status: proved_conditional_on_cartesian_residual_coisotropy_and_core_rank_one
+    statement: >-
+      For two minimal cores, if the dual generator attached to one removed
+      prime lies in the coisotropic primal plane attached to the other, then
+      the two dual generators coincide. Hence the two odd relations containing
+      one primal and both dual generators are impossible.
+  - id: BSD-A1-WP60N-EXCHANGE-002
+    status: proved_conditional_on_protected_WP60G_WP60H_transition_interfaces
+    statement: >-
+      Either surviving hard relation p_1+p_2+d_i=0 can be converted by one
+      pairwise localization/core exchange into a path-connected minimal core
+      whose primal line equals the other primal line; the aligned pair then has
+      no odd three-term relation.
+  - id: BSD-A1-WP60N-MINIMAL-CORE-CONNECTIVITY-003
+    status: proved_conditional_on_cartesian_residual_coisotropy_and_protected_BSS_interfaces
+    statement: >-
+      All minimal residual core vertices are connected at characteristic two.
+  - id: BSD-A1-WP60N-CORE-GRAPH-CONNECTIVITY-004
+    status: proved_conditional_on_cartesian_residual_coisotropy_and_protected_pairwise_arbitrary_core_reduction
+    statement: >-
+      The full residual BSS core graph is connected at characteristic two.
+dispositions:
+  - P2_BSS_COISOTROPIC_CORE_GRAPH_CONNECTED
+remaining_boundaries:
+  - MISSING_SELECTED_P2_RESIDUAL_CANONICAL_COISOTROPY_OR_NONCOISOTROPIC_CONNECTIVITY
+  - MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  - MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+  - BSD-R2-A1_SELECTED_RESEARCH_TARGET_UNPROVED
+claim_firewall:
+  selected_residual_coisotropy: false
+  formal_bss_hypothesis_3_2_iii: false
+  infinite_bss_h3: false
+  bss_integral_fitting_control: false
+  r5: false
+  bsd_r2_a1: false
+  mathcert_certification: false
