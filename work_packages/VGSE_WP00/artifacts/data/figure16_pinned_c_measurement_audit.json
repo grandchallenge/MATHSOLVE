@@ -30,7 +30,14 @@
   "patterns": [
     {
       "almost_perfect_matching_count": 31,
-      "best_boundary_permutation_old_to_new": [2, 1, 3, 4, 5, 6],
+      "best_boundary_permutation_old_to_new": [
+        2,
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
       "best_projective_distortion_factor_after_all_boundary_relabelings": 249.18621954881243,
       "best_uses_global_color_complement": false,
       "canonical_projective_distortion_factor": 393.99800765051145,
@@ -40,7 +47,14 @@
     },
     {
       "almost_perfect_matching_count": 31,
-      "best_boundary_permutation_old_to_new": [1, 3, 2, 6, 4, 5],
+      "best_boundary_permutation_old_to_new": [
+        1,
+        3,
+        2,
+        6,
+        4,
+        5
+      ],
       "best_projective_distortion_factor_after_all_boundary_relabelings": 255.3740168511228,
       "best_uses_global_color_complement": false,
       "canonical_projective_distortion_factor": 298.2590378827999,
@@ -50,7 +64,14 @@
     },
     {
       "almost_perfect_matching_count": 31,
-      "best_boundary_permutation_old_to_new": [1, 3, 2, 4, 5, 6],
+      "best_boundary_permutation_old_to_new": [
+        1,
+        3,
+        2,
+        4,
+        5,
+        6
+      ],
       "best_projective_distortion_factor_after_all_boundary_relabelings": 270.2139763014963,
       "best_uses_global_color_complement": false,
       "canonical_projective_distortion_factor": 327.9561094847927,
@@ -60,7 +81,14 @@
     },
     {
       "almost_perfect_matching_count": 31,
-      "best_boundary_permutation_old_to_new": [2, 1, 3, 4, 5, 6],
+      "best_boundary_permutation_old_to_new": [
+        2,
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
       "best_projective_distortion_factor_after_all_boundary_relabelings": 307.49363844255043,
       "best_uses_global_color_complement": false,
       "canonical_projective_distortion_factor": 486.1901317453852,
@@ -70,7 +98,14 @@
     },
     {
       "almost_perfect_matching_count": 31,
-      "best_boundary_permutation_old_to_new": [2, 1, 3, 4, 5, 6],
+      "best_boundary_permutation_old_to_new": [
+        2,
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
       "best_projective_distortion_factor_after_all_boundary_relabelings": 131.50098551816274,
       "best_uses_global_color_complement": false,
       "canonical_projective_distortion_factor": 207.9213143971057,
@@ -90,7 +125,32 @@
   },
   "schema_version": "1.0.0",
   "target": {
-    "matrix_C": [[1, 1, 0, -6, 0, 3], [0, 1, 1, 7, 0, -2], [0, 0, 0, 2, 1, 3]],
+    "matrix_C": [
+      [
+        1,
+        1,
+        0,
+        -6,
+        0,
+        3
+      ],
+      [
+        0,
+        1,
+        1,
+        7,
+        0,
+        -2
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        1,
+        3
+      ]
+    ],
     "nonzero_plucker_count": 19,
     "source_locus": "Galashin Example B.1 / Figure 16"
   }
