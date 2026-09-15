@@ -66,6 +66,12 @@
       "controller_id": "GITHUB_ACTIONS"
     },
     {
+      "path": ".github/workflows/bsd-wp60r-certificate.yml",
+      "observed_features": ["OPAQUE_EXECUTION"],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
       "path": ".github/workflows/ci.yml",
       "observed_features": ["OPAQUE_EXECUTION"],
       "topology": "PERSISTENT_CONTROLLER_REQUIRED",
