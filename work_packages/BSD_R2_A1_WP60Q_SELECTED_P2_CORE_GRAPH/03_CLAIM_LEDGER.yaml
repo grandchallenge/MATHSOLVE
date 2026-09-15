@@ -1,0 +1,37 @@
+work_package: BSD_R2_A1_WP60Q_SELECTED_P2_CORE_GRAPH
+campaign: BSD-001
+operation_issue: grandchallenge/MATHSOLVE#241
+protected_math_base: grandchallenge/MATHSOLVE@c8e81d262d4da1a36b312f017443777a4c7888db
+provider_anchor: grandchallenge/MATHFORGE@280646bf69cba8fbb77ba47eb97dda0fb495baa6
+status: candidate
+claims:
+  - id: BSD-A1-WP60Q-HYPOTHESIS-BINDING-001
+    status: proved_from_protected_interfaces
+    statement: >-
+      The exact selected Mazur-Rubin/BSS canonical residual structure on E[2]
+      satisfies residual self-duality, residual BSS restriction injectivity,
+      cartesianness, core rank one, and residual coisotropy.
+  - id: BSD-A1-WP60Q-SELECTED-CORE-GRAPH-001
+    status: proved_from_protected_WP60N_and_selected_application_interfaces
+    statement: >-
+      For every selected BSD-R2-A1 curve, the residual BSS core graph attached
+      to the exact canonical structure on E[2] is connected at literal p=2.
+dispositions:
+  - BSS_LITERAL_P2_SELECTED_RESIDUAL_CORE_GRAPH_CONNECTED
+retired_boundaries:
+  - MISSING_SELECTED_P2_RESIDUAL_CANONICAL_COISOTROPY_OR_NONCOISOTROPIC_CONNECTIVITY
+remaining_boundaries:
+  - MISSING_LITERAL_P2_BSS_THEOREM_5_20_5_2_REPLAY_AFTER_REPLACEMENTS
+  - MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  - MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+  - BSD-R2-A1_SELECTED_RESEARCH_TARGET_UNPROVED
+claim_firewall:
+  bss_theorem_5_20: false
+  bss_theorem_5_2: false
+  bss_theorem_5_25: false
+  bss_corollary_6_15: false
+  formal_higher_level_hypothesis_3_2_iii: false
+  infinite_bss_h3: false
+  r5: false
+  bsd_r2_a1: false
+  mathcert_certification: false
