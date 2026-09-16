@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -75,11 +76,14 @@ def validate(root: Path = ROOT) -> list[str]:
             errors.append(f"polynomial-bound contract/theorem drift: {snippet}")
 
     for forbidden in (
-        "sorry", "admit", "Polynomial Int", "Polynomial ℤ", "TM2Runtime",
-        "TM2Computable", "importedPEqProgrammeP", "importedNPEqProgrammeNP",
+        "Polynomial Int", "Polynomial ℤ", "TM2Runtime", "TM2Computable",
+        "importedPEqProgrammeP", "importedNPEqProgrammeNP",
     ):
         if forbidden in poly:
-            errors.append(f"forbidden polynomial-bound inflation/placeholder: {forbidden}")
+            errors.append(f"forbidden polynomial-bound inflation: {forbidden}")
+    placeholder = re.search(r"\b(sorry|admit)\b", poly)
+    if placeholder:
+        errors.append(f"polynomial-bound bridge contains proof placeholder: {placeholder.group(1)}")
 
     poly_status = by_id.get("PNP-BRIDGE-POLYBOUND-001", {})
     if poly_status.get("artifact") != "MathSolve/PNP/PolyBoundBridge.lean":
