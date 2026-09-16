@@ -1,6 +1,7 @@
 from fractions import Fraction
 import unittest
 
+from tests.test_ns_ci_a2_l5_packet_intermit_d1 import NSCIA2L5PacketIntermittencyD1Tests  # noqa: F401
 from tests.test_ns_ci_a2_l5_signed_pressure_residual import SignedPressureResidualTests  # noqa: F401
 
 
