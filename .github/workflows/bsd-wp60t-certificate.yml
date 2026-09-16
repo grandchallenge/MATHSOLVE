@@ -1,0 +1,61 @@
+name: BSD WP60T derivative and Fitting application replay
+
+on:
+  pull_request:
+    paths:
+      - 'work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/**'
+      - 'handoffs/BSD-001/**'
+      - '.gcl/campaigns/BSD-001/**'
+      - '.gcl/operations/BSD-WP60T/**'
+      - '.gcl/admission/BSD-WP60T/**'
+      - 'tools/gcl_campaign_preflight_v2.py'
+      - '.ghos-routing/workflows.json'
+      - '.github/workflows/bsd-wp60t-certificate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/**'
+      - 'handoffs/BSD-001/**'
+      - '.gcl/campaigns/BSD-001/**'
+      - '.gcl/operations/BSD-WP60T/**'
+      - '.gcl/admission/BSD-WP60T/**'
+      - 'tools/gcl_campaign_preflight_v2.py'
+      - '.ghos-routing/workflows.json'
+      - '.github/workflows/bsd-wp60t-certificate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract-and-theorem-replay:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Assert exact subject checkout
+        shell: bash
+        run: test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - name: Run WP60T campaign preflight
+        run: python tools/gcl_campaign_preflight_v2.py BSD-001 BSD-WP60T
+      - name: Replay protected WP60R dependency certificate
+        run: python work_packages/BSD_R2_A1_WP60R_BSS_THEOREM_REPLAY/04_DEPENDENCY_REPLAY_CERTIFICATE.py
+      - name: Replay protected WP60S inverse-limit certificate
+        run: python work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/04_INVERSE_LIMIT_REPLAY_CERTIFICATE.py
+      - name: Replay WP60T derivative certificate
+        run: python work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/04_DERIVATIVE_REPLAY_CERTIFICATE.py
+      - name: Assert candidate claims and firewalls
+        shell: bash
+        run: |
+          ledger=work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/03_CLAIM_LEDGER.yaml
+          grep -q 'BSS_LITERAL_P2_SELECTED_THEOREM_6_12_REPLAYED' "$ledger"
+          grep -q 'BSS_LITERAL_P2_SELECTED_COROLLARY_6_15_REPLAYED' "$ledger"
+          grep -q 'MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2' "$ledger"
+          grep -q 'formal_higher_level_hypothesis_3_2_iii: false' "$ledger"
+          grep -q 'infinite_bss_h3: false' "$ledger"
+          grep -q 'r5_lift: false' "$ledger"
+          grep -q 'r5_prim: false' "$ledger"
+          grep -q 'bsd_r2_a1: false' "$ledger"
+          grep -q 'mathcert_certification: false' "$ledger"
