@@ -33,8 +33,9 @@ Prove, refute, or sharply localize `HC-R021-A8-CM4-C2` in `work_packages/HC_R021
 - `HC-P04`: open; universal Hodge remains unproved.
 - `HC-R021-A8-CM4-C2`: selected and unproved.
 - source-proved construction obligations: coherent secant sheaves, nonzero Fourier-Mukai rank, persistence of the normalized class as Hodge, and nonzero projection to the Weil summand.
-- first Solve lemma `HC-R021-L001`: weak semiregularity injectivity kills the first-order ambient obstruction in Hodge-preserving directions; no all-orders deformation theorem is claimed.
-- current blocker: `HC-R021-P4`, the semiregularity/all-orders algebraicity-transport bridge.
+- `HC-R021-L001`: weak semiregularity injectivity kills the first-order ambient obstruction in Hodge-preserving directions; Solve-level only.
+- `HC-R021-L002`: Perry's 2026 equivariant semiregularity theorem closes the all-orders algebraicity-transport bridge if the exact CM4 object is weakly `G`-semiregular for a suitable finite subgroup of the derived autoequivalence group; Solve-level reduction only.
+- current blocker: `HC-R021-P4-G2/P4-G3`, finite symmetry for the second secant factor and weak equivariant semiregularity of the resulting external-product/Fourier-Mukai object.
 
 The historical Solve handoff and an older Solve current-route projection still record HC as `ready`. Protected MATHCERT is authoritative for adjudication and records `MC-HC-WP00-QUAL-001` as `qualified_semantic_and_conditional_interface_only`. Do not rewrite immutable producer history to erase that chronology.
 
@@ -51,13 +52,16 @@ The historical Solve handoff and an older Solve current-route projection still r
 - `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/false_proof_atlas.json`
 - `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/known_case_construction_ledger.json`
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_CM4_EIGHTFOLD_CODIM2.md`
+- `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_PERRY_EQUIVARIANT_REDUCTION.md`
 - `grandchallenge/MATHCERT:certificates/hodge/MC-HC-WP00-QUAL-001.json`
 - Markman, arXiv:2509.23079v1, especially Proposition 10.2.1, Example 11.2.7, and Lemma 11.2.8.
+- Markman, arXiv:2502.03415v2, especially Examples 8.2.3-8.2.4 and the equivariant semiregularity construction in Section 9.3.
+- Alexander Perry, arXiv:2604.00511, Theorem 1.2 and Theorem 6.3.
 - Pridham, *Forum of Mathematics, Sigma* 12 (2024), e126.
 
 ## Smallest safe next tranche
 
-Attack `HC-R021-P4` on the actual Markman object. Compute or characterize `Ext^2(E_0,E_0)`, the image of the ambient Atiyah/evaluation map, and the Buchweitz-Flenner semiregularity map on that image. Determine whether weak injectivity holds and, if it does, whether the actual obstruction classes for successive small extensions remain in the controlled image. A nonzero kernel vector realized by an obstruction falsifies this deformation route and should trigger target re-planning rather than semantic substitution.
+Attack `HC-R021-P4-G2` on the second secant factor of Markman Example 11.2.7. Determine whether its generic-translate/gluing construction can be replaced by a finite-orbit construction with the same Chern-character ray `beta'` and a genuine linearization. If such a replacement exists, compute the invariant `Ext^2` and semiregularity map and then control the mixed `Ext^1 tensor Ext^1` term for the external product. Do not compute the full obstruction tower unless the equivariant route fails: Perry now supplies the all-orders theorem once weak `G`-semiregularity is established.
 
 ## Material dependencies and boundaries
 
@@ -66,12 +70,14 @@ Attack `HC-R021-P4` on the actual Markman object. Compute or characterize `Ext^2
 - the target is explicitly restricted to the Hodge-generic locus in the selected degree-four CM/Weil deformation component;
 - Hodge persistence of `kappa(E)` is not algebraicity transport;
 - first-order obstruction vanishing is not a relative algebraic cycle;
+- finite equivariance is not weak equivariant semiregularity;
+- factorwise degree-two semiregularity does not by itself control the mixed `Ext^1 tensor Ext^1` term of an external product;
 - no Kunneth projector, inverse Lefschetz correspondence, Hodge-locus theorem, Tate lift, motivated class, or numerical period relation may substitute for an algebraic cycle;
 - no claim from this target is certified until independently adjudicated by MATHCERT.
 
 ## Reserved authority / stop conditions
 
-Stop or re-plan only for a material source correction, evidence that the selected target is already known or vacuous, failure of the source construction under its exact hypotheses, a genuine semiregularity/deformation obstruction requiring a different route, contradiction of the exact target formulation, a reserved INTELLECT transition, authentication/safety failure, or material closure of the theorem.
+Stop or re-plan only for a material source correction, evidence that the selected target is already known or vacuous, failure of the source construction under its exact hypotheses, a genuine equivariant-semiregularity/deformation obstruction requiring a different route, contradiction of the exact target formulation, a reserved INTELLECT transition, authentication/safety failure, or material closure of the theorem.
 
 ## Notes intentionally omitted
 
