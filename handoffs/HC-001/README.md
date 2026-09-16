@@ -23,55 +23,57 @@ Prove, refute, or sharply localize `HC-R021-A8-CM4-C2` in `work_packages/HC_R021
 - `HC-P04`: open; universal Hodge remains unproved.
 - source-proved inputs: coherent secant objects, nonzero Fourier-Mukai rank, Hodge persistence of the normalized class, and nonzero Weil projection.
 - `HC-R021-L001`: restricted first-order semiregularity kills Hodge-preserving ambient obstructions when injective on the ambient-obstruction image.
-- `HC-R021-L002`: Perry's 2026 theorem gives all-orders algebraicity transport along an explicitly bound smooth proper family once weak finite-group equivariant semiregularity is supplied.
-- `HC-R021-L003`: finite translation-orbit sums supply same-ray finite equivariance, but equivariance is not semiregularity.
-- `HC-R021-L004`: ordinary semiregularity of the Example 11.2.7 second-factor gluing is impossible whenever `qN^2 >= 4` by an exact Ext-dimension bound.
-- `HC-R021-L005`: Markman's restricted condition is equivalent to equality of the ambient-obstruction kernel and the Chern-character contraction kernel.
-- `HC-R021-L006`: for the CM4 class `beta'`, the exact HKR contraction rank is `20` and its kernel has dimension `8`.
-- `HC-R021-L007`: objectwise, the restricted semiregularity condition is equivalent to vanishing of eight explicit degree-two Yoneda relations `k_1,...,k_8`; any one nonzero relation refutes that object.
-- `HC-R021-L008`: Example 11.2.7 does not select one canonical `E'`; it specifies an admissible gluing family through choices of curve, translates, line bundle, and fiber identifications. The common Chern character does not determine the object-specific obstruction map.
+- `HC-R021-L002`: Perry's theorem gives familywise all-orders algebraicity transport once weak finite-group equivariant semiregularity is supplied.
+- `HC-R021-L003`: same-ray finite equivariance is available by translation orbit sums; equivariance is not semiregularity.
+- `HC-R021-L004`: ordinary semiregularity is impossible for the Example 11.2.7 gluing whenever `qN^2 >= 4` by an exact Ext-dimension bound.
+- `HC-R021-L005`: Markman's restricted condition is equivalent to equality of the ambient-obstruction kernel and Chern-character contraction kernel.
+- `HC-R021-L006`: for `beta'`, the exact HKR contraction rank is `20` and its kernel has dimension `8`.
+- `HC-R021-L007`: objectwise, rank `20` is equivalent to vanishing of eight explicit degree-two Yoneda relations; any one nonzero relation refutes that object.
+- `HC-R021-L008`: Example 11.2.7 defines an admissible gluing family, not one canonical object; the common Chern character does not determine the object-specific obstruction map.
+- `HC-R021-L009`: on an algebraic gluing family the minimal-rank condition is the closed determinantal locus `D20={rank(ob)<=20}`; compatibility forces rank at least `20`, so `D20` is exactly the rank-20 locus and the common zero locus of the eight `L007` relations.
+- `HC-R021-L010`: after fixing one source-admissible discrete datum, the curve, translations, line bundle, and constituent-wise gluing choices form a nonempty finite-type algebraic stack carrying a universal relatively perfect family after flattening.
 
-The protected MATHCERT WP00 disposition remains `qualified_semantic_and_conditional_interface_only`. No new certification request is justified by the current Solve-level reductions.
+The protected MATHCERT WP00 disposition remains `qualified_semantic_and_conditional_interface_only`. No new certification request is justified.
 
 ## Active Route A frontier
 
-`HC-R021-P4-A0` is now the first open node.
-
-The published source fixes the ray
+The source ambiguity and parameter-space construction are now resolved. The first open direct-route node is
 
 ```text
-beta' = g^*Theta - (q/6)(g^-1)^*(Theta^3)
+HC-R021-P4-A0d: prove D20 != empty.
 ```
 
-but constructs `E'` through existential/generic choices. Before a single numerical `rank(ob_E')` can be computed, do one of the following:
+Equivalently, construct one admissible simple Example 11.2.7 gluing for which all eight `L007` Yoneda relations vanish.
 
-1. **Representative path:** bind a concrete admissible datum
+The direct route is now
 
 ```text
-D_star = (d,N,C', {T_j}, L, {phi_p})
+S_adm nonempty                         [L010]
+  -> D20 closed determinantal          [L009]
+  -> prove D20 nonempty                [A0d OPEN]
+  -> choose E in D20; rank(ob_E)=20    [A1 conditional]
+  -> all-orders obstruction-image
+     stability                         [A2 conditional]
 ```
 
-sufficient to reconstruct the exact gluing sequence
+The desired minimal-rank locus is closed, not generically open. A specialization argument is valid only if the special point remains inside the admissible/simple family and the eight relations can be checked there.
 
-```text
-0 -> E'_star -> (direct_sum_j T_j) direct_sum i_*L -> direct_sum_p k_p -> 0;
-```
+High-value routes to `A0d` are:
 
-then evaluate the eight `L007` Yoneda classes on that exact object.
-
-2. **Uniform path:** prove that all eight `L007` relations vanish on a stated nonempty open subset of the admissible Example 11.2.7 gluing-parameter space.
-
-Once A0 is discharged, `P4-A1` asks whether `rank(ob_E)=20`; compatibility already forces `20 <= rank(ob_E) <= 28`. A positive A1 still leaves `P4-A2`, the all-orders obstruction-image-stability theorem.
+1. construct a symmetric or otherwise tractable admissible gluing point and evaluate the eight relations;
+2. specialize within `S_adm` to a calculable point while preserving simplicity/admissibility;
+3. prove the eight relative Yoneda sections vanish identically on a parameter component;
+4. find a finite symmetry forcing the eight relations, linking Route A with Route G.
 
 ## Parallel Route G frontier
 
-The equivariant route remains available:
+The equivariant route remains independent:
 
 - `P4-G3`: prove weak `G`-semiregularity of a useful same-ray total object, including the mixed `Ext^1 tensor Ext^1` contribution;
 - `P4-G6`: bind the abstract `C_CM4` target quantifier to explicit algebraic family/level-moduli carriers and a global Gauss-Manin section;
 - then apply Perry familywise.
 
-Perry's worked Markman application concerns the earlier abelian-sixfold construction; it does not close the present CM4 genus-four semiregularity problem.
+Perry's worked Markman application concerns the earlier abelian-sixfold construction; it does not close the present CM4 genus-four problem.
 
 ## Authoritative pointers
 
@@ -86,6 +88,8 @@ Perry's worked Markman application concerns the earlier abelian-sixfold construc
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_CONTRACTION_RANK.md`
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_ATIYAH_RANK_REDUCTION.md`
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_ATIYAH_DATUM_BOUNDARY.md`
+- `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_ATIYAH_DETERMINANTAL_LOCUS.md`
+- `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_GLUE_PARAMETER_STACK.md`
 - `grandchallenge/MATHCERT:certificates/hodge/MC-HC-WP00-QUAL-001.json`
 - Markman, arXiv:2509.23079, Question 11.2.2, Example 11.2.7, Lemma 11.2.8.
 - Markman, arXiv:2502.03415, Lemma 8.3.4, Remark 8.3.5, Proposition 8.3.9.
@@ -93,12 +97,7 @@ Perry's worked Markman application concerns the earlier abelian-sixfold construc
 
 ## Smallest safe next tranche
 
-Pursue `P4-A0` before attempting further representative-specific Ext calculations.
-
-1. Search the cited genus-four real-multiplication examples for a sufficiently explicit Jacobian/source datum that can bind `X`, `Theta`, and `g`.
-2. Determine whether Markman's curve-class existence step can be made constructive for one such datum; if yes, bind `d,N,C'` and the remaining generic gluing choices algebraically.
-3. If representative construction remains non-explicit, formulate the admissible gluing parameter space and test whether the eight `L007` Yoneda classes define algebraic sections whose common vanishing can be proved on a nonempty open or closed locus.
-4. Do not infer Yoneda vanishing from the common Chern character.
+Attack `P4-A0d` directly. First test whether any general Hochschild/Atiyah theorem strengthens the known inclusion `ker(ob_E) subset ker(c_ch(E))` for the present gluing family. If no such theorem applies, construct a symmetry-controlled or specialized admissible point of `S_adm` and compute the eight `L007` Yoneda relations there. Do not infer their vanishing from the Chern character.
 
 ## Material dependencies and boundaries
 
@@ -106,7 +105,8 @@ Pursue `P4-A0` before attempting further representative-specific Ext calculation
 - geometric category remains smooth projective complex varieties;
 - the target remains the Hodge-generic CM4 locus only;
 - Chern-character contraction is not the object-specific Atiyah obstruction map;
-- Example 11.2.7's existential gluing choices must not be treated as a content-addressed representative;
+- rank `20` is a closed determinantal condition whose nonemptiness must be proved;
+- the universal gluing is constituent-wise over labeled incidence schemes, not an identification of the full direct-sum fiber with a line;
 - first-order restricted semiregularity is not an all-orders deformation theorem;
 - finite equivariance is not weak equivariant semiregularity;
 - Perry's familywise theorem is not a global period-domain theorem without explicit family coverage;
@@ -117,4 +117,4 @@ Pursue `P4-A0` before attempting further representative-specific Ext calculation
 
 Stop or re-plan only for a material source correction; evidence that the selected target is known or vacuous; a genuine obstruction to both Route A and Route G; contradiction of the exact target formulation; a reserved INTELLECT transition; authentication or safety failure; or material theorem closure.
 
-The current A0 datum gap is an evidentiary frontier to work, not a governance stop.
+`D20` nonemptiness is the current mathematical frontier, not a governance stop.
