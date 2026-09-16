@@ -50,17 +50,19 @@ theorem affineSimulationOverhead_preserves_programmePolynomialBound
   refine ⟨Polynomial.C startup + Polynomial.C inputFactor * Polynomial.X +
     Polynomial.C stepFactor * p, ?_⟩
   intro input
-  calc
-    target input ≤
-        startup + inputFactor * input.length + stepFactor * source input :=
-      hoverhead input
-    _ ≤ startup + inputFactor * input.length + stepFactor * p.eval input.length := by
-      exact Nat.add_le_add_left
-        (Nat.mul_le_mul_left stepFactor (hp input))
-        (startup + inputFactor * input.length)
-    _ = (Polynomial.C startup + Polynomial.C inputFactor * Polynomial.X +
-        Polynomial.C stepFactor * p).eval input.length := by
-      simp
+  have hmul : stepFactor * source input ≤ stepFactor * p.eval input.length :=
+    Nat.mul_le_mul_left stepFactor (hp input)
+  have harith :
+      startup + inputFactor * input.length + stepFactor * source input ≤
+        startup + inputFactor * input.length + stepFactor * p.eval input.length :=
+    Nat.add_le_add_left hmul (startup + inputFactor * input.length)
+  have hpoly :
+      (Polynomial.C startup + Polynomial.C inputFactor * Polynomial.X +
+        Polynomial.C stepFactor * p).eval input.length =
+        startup + inputFactor * input.length + stepFactor * p.eval input.length := by
+    simp
+  rw [hpoly]
+  exact (hoverhead input).trans harith
 
 /-- The zero-startup, no-input-scan special case used by direct step simulations. -/
 theorem fixedStepOverhead_preserves_programmePolynomialBound
