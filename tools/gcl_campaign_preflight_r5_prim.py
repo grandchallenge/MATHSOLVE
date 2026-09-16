@@ -54,6 +54,11 @@ def main():
     for k,v in op['claim_firewall'].items():
         if v is False and f'{k}: false' not in ledger:
             fail('firewall '+k)
+    routing=load(op['validation']['routing_registry'])
+    if op['validation']['workflow'] not in {x.get('path') for x in routing['workflows']}:
+        fail('workflow not routed')
+    if not (ROOT/op['validation']['workflow']).exists():
+        fail('workflow missing')
     frozen=fr['artifacts']; governed=op['governed_artifacts']
     if set(frozen)!=set(governed): fail('freeze set mismatch')
     for rel in governed:
