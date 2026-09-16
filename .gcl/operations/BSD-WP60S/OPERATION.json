@@ -66,7 +66,13 @@
     "handoffs/BSD-001/README.md",
     "handoffs/BSD-001/WP60S_FRONTIER.md",
     ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json",
-    ".gcl/operations/BSD-WP60S/OPERATION.json"
+    ".gcl/operations/BSD-WP60S/OPERATION.json",
+    "tools/gcl_campaign_preflight.py",
+    ".github/workflows/bsd-wp60s-certificate.yml",
+    ".ghos-routing/workflows.json"
+  ],
+  "forbidden_successor_globs": [
+    "work_packages/BSD_R2_A1_WP60[T-Z]*"
   ],
   "admission": {
     "freeze_manifest": ".gcl/admission/BSD-WP60S/FREEZE.json",
