@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "record_type": "GCL_OPERATION_CONTRACT",
   "operation": "BSD-WP60T",
   "campaign": "BSD-001",
@@ -42,6 +42,7 @@
   "completion_receipt": {
     "surface": ".gcl/completions/BSD-WP60T/COMPLETION_RECEIPT.json",
     "validator": "python tools/gcl_completion_receipt_validate_v2.py BSD-WP60T",
+    "phase": "post_merge_completion_replay",
     "required_fields": [
       "candidate_head",
       "merge_sha",
@@ -64,18 +65,20 @@
     "handoffs/BSD-001/WP60T_FRONTIER.md",
     ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json",
     ".gcl/operations/BSD-WP60T/OPERATION.json",
-    ".gcl/completions/BSD-WP60T/COMPLETION_RECEIPT.json",
     "tools/gcl_campaign_preflight_v2.py",
-    "tools/gcl_completion_receipt_validate_v2.py",
     ".github/workflows/bsd-wp60t-certificate.yml",
     ".ghos-routing/workflows.json"
+  ],
+  "completion_replay_artifacts": [
+    ".gcl/completions/BSD-WP60T/COMPLETION_RECEIPT.json",
+    "tools/gcl_completion_receipt_validate_v2.py"
   ],
   "forbidden_successor_globs": ["work_packages/BSD_R2_A1_WP60[U-Z]*"],
   "admission": {
     "freeze_manifest": ".gcl/admission/BSD-WP60T/FREEZE.json",
     "preflight_command": "python tools/gcl_campaign_preflight_v2.py BSD-001 BSD-WP60T",
     "completion_receipt_command": "python tools/gcl_completion_receipt_validate_v2.py BSD-WP60T",
-    "review_invalidation": "A mathematical-candidate head change invalidates its exact-head theorem reviews and candidate checks. A completion-replay candidate change invalidates the exact-head review of the replay integration. Any governed-artifact change requires a regenerated freeze manifest. Unrelated protected-head movement does not invalidate a frozen candidate."
+    "review_invalidation": "A change to any pre-merge governed artifact invalidates the mathematical-candidate freeze, exact-head theorem reviews, and affected candidate checks. Post-merge completion-replay artifacts bind the immutable admitted candidate and protected merge/readback; changing them requires fresh completion-replay validation but does not retroactively alter the frozen mathematical candidate. Unrelated protected-head movement does not invalidate a frozen candidate."
   },
   "validation": {
     "claim_ledger": "work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/03_CLAIM_LEDGER.yaml",
