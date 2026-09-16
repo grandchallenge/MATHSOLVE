@@ -37,7 +37,7 @@ GL2 = [a for a in itertools.product((0, 1), repeat=4) if det(a) == 1]
 assert len(GL2) == 6
 
 I = (1, 0, 0, 1)
-g = (0, 1, 1, 1)  # order-three element
+g = (0, 1, 1, 1)
 assert mat_mul(mat_mul(g, g), g) == I
 A3 = [I, g, mat_mul(g, g)]
 assert len(set(A3)) == 3
@@ -103,7 +103,7 @@ wp60s = (
     / "COMPLETION_RECEIPT.json"
 ).read_text()
 assert "BSS_LITERAL_P2_SELECTED_THEOREM_5_25_REPLAYED" in wp60s
-assert '"disposition": "CLOSED"' in wp60s
+assert '"type": "CLOSED"' in wp60s
 
 assert "Kato height-one-`(2)` Fitting divisibility" in theorem
 assert "does not establish" in readme.lower()
