@@ -11,9 +11,11 @@
     "certification_repository": "grandchallenge/MATHCERT"
   },
   "protected_inputs": {
-    "math_base": "grandchallenge/MATHSOLVE@36202d97e2cd96956c8a4aafa43941f6219776c5",
-    "provider": "grandchallenge/MATHFORGE@7da3f07248b5d8cf3d0bd1e57e9d8b7f5b78d063",
-    "r5_prim_receipt": "grandchallenge/MATHSOLVE@36202d97e2cd96956c8a4aafa43941f6219776c5:.gcl/completions/BSD-R5-PRIM/COMPLETION_RECEIPT.json"
+    "math_base": "grandchallenge/MATHSOLVE@7d72d4f8aec2019a8eefb4db4fe151e4f14b1211",
+    "mathematical_predecessor": "grandchallenge/MATHSOLVE@24081fcc1b212d33dd865cc5512a837b8101faf1",
+    "provider": "grandchallenge/MATHFORGE@cd814844128167d0e4cdb48f69f9d01c6c0be883",
+    "r5_prim_receipt": "grandchallenge/MATHSOLVE@36202d97e2cd96956c8a4aafa43941f6219776c5:.gcl/completions/BSD-R5-PRIM/COMPLETION_RECEIPT.json",
+    "r5_res_receipt": "grandchallenge/MATHSOLVE@24081fcc1b212d33dd865cc5512a837b8101faf1:.gcl/completions/BSD-R5-RES/COMPLETION_RECEIPT.json"
   },
   "selected_target": {
     "id": "BSD-R2-A1",
@@ -24,29 +26,27 @@
     "R5_LIFT_ESTABLISHED",
     "P2_EQUIVARIANT_CYCLOTOMIC_KATO_DETERMINANT_MEMBERSHIP",
     "BSD-R5-PRIM-RESIDUAL-004",
-    "BSD-R5-PRIM-FINITE-DETECT-005"
+    "BSD-R5-PRIM-FINITE-DETECT-005",
+    "BSD-R5-RES-FINITE-DETECT-002"
   ],
-  "current_operation": "BSD-R5-RES",
+  "current_operation": "BSD-R5-RECIP",
   "current_frontier": {
-    "id": "MISSING_P2_RESIDUAL_CYCLOTOMIC_KATO_KOLYVAGIN_NONVANISHING",
+    "id": "MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY",
     "class": "theorem",
-    "status": "candidate_reduced_to_normalized_p2_reciprocity"
+    "status": "candidate_closed_pending_admission"
   },
   "candidate_disposition": {
-    "type": "BLOCKED",
+    "type": "CLOSED",
     "proved_reduction": [
-      "BSD-R5-RES-ENTERING-001",
-      "BSD-R5-RES-FINITE-DETECT-002",
-      "BSD-R5-RES-SOURCE-003",
-      "BSD-R5-RES-LOCAL-FACTOR-004",
-      "BSD-R5-RES-BOUNDARY-005"
+      "BSD-R5-RECIP-LOCAL-DUALEXP-006",
+      "BSD-R5-RECIP-LOCAL-TORSIONCOEFF-007",
+      "BSD-R5-RECIP-SYMBOL-SATURATION-002",
+      "BSD-R5-RECIP-SYMBOL-INTEGRAL-004",
+      "BSD-R5-RECIP-SYMBOL-KKS-005",
+      "BSD-R5-RECIP-NORMALIZED-RECIPROCITY-006"
     ],
-    "blocked_on": "MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY",
-    "reopening_evidence": [
-      "literal-p=2 torsion-coefficient Kato/Kurihara reciprocity theorem with exact local 2-power torsion and period normalization plus a nonzero normalized finite witness",
-      "direct protected nonzero residual inverse-limit Kato-derived Kolyvagin system",
-      "direct protected nonzero finite cyclotomic mod-2 Kato-derived Kolyvagin system through a different source-admitted literal-p=2 comparison route"
-    ]
+    "next_frontier_if_protected": "MISSING_P2_NORMALIZED_FINITE_KURIHARA_NONVANISHING_WITNESS",
+    "preserved_requirement": "a nonzero normalized finite witness or a different protected residual nonvanishing theorem is still required before R5-RES can be reopened"
   },
   "known_false": [
     "formal_higher_level_hypothesis_3_2_iii",
@@ -54,22 +54,16 @@
     "bss_hypothesis_4_7_iii",
     "infinite_bss_h3"
   ],
-  "prohibited_promotions": [
-    "R5_RES_ESTABLISHED",
-    "R5_PRIM_ESTABLISHED",
-    "D2D_ESTABLISHED",
-    "BSD_R2_A1_PROVED",
-    "MATHCERT_CERTIFIED"
-  ],
+  "prohibited_promotions": ["R5_RES_ESTABLISHED", "R5_PRIM_ESTABLISHED", "D2D_ESTABLISHED", "BSD_R2_A1_PROVED", "MATHCERT_CERTIFIED"],
   "cold_start": {
-    "operation_contract": ".gcl/operations/BSD-R5-RES/OPERATION.json",
+    "operation_contract": ".gcl/operations/BSD-R5-RECIP/OPERATION.json",
     "canonical_handoff": "handoffs/BSD-001/README.md",
-    "frontier_record": "handoffs/BSD-001/R5_RES_FRONTIER.md",
-    "claim_ledger": "work_packages/BSD_R5_RES_RESIDUAL_KATO_NONVANISHING/03_CLAIM_LEDGER.yaml",
-    "preflight": "python tools/gcl_campaign_preflight_r5_res.py BSD-001 BSD-R5-RES",
-    "certificate": "python work_packages/BSD_R5_RES_RESIDUAL_KATO_NONVANISHING/04_RESIDUAL_DETECTION_CERTIFICATE.py",
-    "completion_receipt_surface": ".gcl/completions/BSD-R5-RES/COMPLETION_RECEIPT.json",
-    "completion_receipt_validator": "python tools/gcl_completion_receipt_validate_v2.py BSD-R5-RES"
+    "frontier_record": "handoffs/BSD-001/R5_RECIP_FRONTIER.md",
+    "claim_ledger": "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/03_CLAIM_LEDGER.yaml",
+    "preflight": "python tools/gcl_campaign_preflight_r5_recip.py BSD-001 BSD-R5-RECIP",
+    "certificate": "python work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/04_RECIPROCITY_CERTIFICATE.py",
+    "completion_receipt_surface": ".gcl/completions/BSD-R5-RECIP/COMPLETION_RECEIPT.json",
+    "completion_receipt_validator": "python tools/gcl_completion_receipt_validate_v2.py BSD-R5-RECIP"
   },
   "state_resolution": {
     "entry_snapshot_rule": "current_frontier is the exact theorem boundary entering current_operation",
