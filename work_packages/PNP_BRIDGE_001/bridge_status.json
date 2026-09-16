@@ -24,9 +24,16 @@
     },
     {
       "bridge_id": "PNP-BRIDGE-POLYBOUND-001",
-      "status": "blocked_missing_formal_target",
+      "status": "kernel_checked",
       "depends_on": [],
-      "missing_target": "A pinned Programme-side Lean predicate for the locked eventual worst-case polynomial bound, including constants, exponent, threshold, and all finite exceptional input lengths."
+      "artifact": "MathSolve/PNP/PolyBoundBridge.lean",
+      "theorems": [
+        "MathSolve.PNP.polynomial_eval_le_eval_one_mul_pow_natDegree",
+        "MathSolve.PNP.importedPolynomialBound_to_programmePolynomialBound",
+        "MathSolve.PNP.programmePolynomialBound_to_importedPolynomialBound",
+        "MathSolve.PNP.importedPolynomialBound_iff_programmePolynomialBound"
+      ],
+      "scope": "Equivalence of the pinned imported natural-coefficient Polynomial Nat evaluation bound and the Programme eventual c*n^k presentation on the exact List Bool length measure, with all finite exceptional lengths explicitly absorbed. No machine-model or class equivalence is claimed."
     },
     {
       "bridge_id": "PNP-BRIDGE-NP-001",
@@ -35,7 +42,7 @@
         "PNP-BRIDGE-MODEL-001",
         "PNP-BRIDGE-POLYBOUND-001"
       ],
-      "missing_target": "Programme-side formal verifier, self-delimiting pair encoding, witness bound, and the prerequisite machine and polynomial-bound bridges."
+      "missing_target": "Programme-side formal verifier, self-delimiting pair encoding, witness bound, and the prerequisite machine-model bridge."
     },
     {
       "bridge_id": "PNP-BRIDGE-ENDPOINT-001",
@@ -45,16 +52,16 @@
     }
   ],
   "closed_bridge_ids": [
-    "PNP-BRIDGE-CARRIER-001"
+    "PNP-BRIDGE-CARRIER-001",
+    "PNP-BRIDGE-POLYBOUND-001"
   ],
   "open_bridge_ids": [
     "PNP-BRIDGE-MODEL-001",
-    "PNP-BRIDGE-POLYBOUND-001",
     "PNP-BRIDGE-NP-001",
     "PNP-BRIDGE-ENDPOINT-001"
   ],
-  "overall_status": "partial_carrier_bridge_kernel_checked__formal_target_interfaces_required",
+  "overall_status": "partial_carrier_and_polybound_bridges_kernel_checked__machine_target_required",
   "certification_effect": "none",
   "promotion_eligible": false,
-  "claim_boundary": "This package proves only the Boolean-decision-function to binary-language carrier transport. It does not prove P equals NP, P differs from NP, either imported-to-Programme class equivalence, a Turing-machine simulation, a polynomial-bound conversion, an endpoint theorem, novelty, or any MATHCERT disposition."
+  "claim_boundary": "This package proves only the Boolean-decision-function to binary-language carrier transport and the two-way polynomial-bound presentation conversion. It does not prove P equals NP, P differs from NP, either imported-to-Programme class equivalence, a Turing-machine simulation, an NP verifier equivalence, an endpoint theorem, novelty, or any MATHCERT disposition."
 }
