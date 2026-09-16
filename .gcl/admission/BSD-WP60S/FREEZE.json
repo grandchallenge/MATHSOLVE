@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1.0",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "BSD-001",
+  "operation": "BSD-WP60S",
+  "protected_base": "245860ce3d7307a505e48b4165be0850327f996a",
+  "assembled_from_head": "e32ec853a35a6a30e6fc23cb67746328d1254552",
+  "hash_semantics": "Git blob SHA-1 content identities; preflight additionally emits a SHA-256 digest over the exact frozen artifact set",
+  "artifacts": {
+    "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/00_README.md": "e77760d2c90ff827ed89605c6bffaedf2ed0a8bf",
+    "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/01_THEOREM_5_25_REPLAY.md": "2c9f8e9845e567d1d421e9f3200fd46ddc3f8e4e",
+    "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/03_CLAIM_LEDGER.yaml": "52b9a0e17078ad702caf02bce14407564101a8af",
+    "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/04_INVERSE_LIMIT_REPLAY_CERTIFICATE.py": "1aad0ade73570b3cb530c8e68898487fe6837d84",
+    "handoffs/BSD-001/README.md": "b8064305b96dab1890990d3c107f76f512167ede",
+    "handoffs/BSD-001/WP60S_FRONTIER.md": "943f028c10983c1ff1cdfaa27d821fc06c86f28d",
+    ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json": "35c07bf6ecd2ded1a562f39d52120a54cccec89d",
+    ".gcl/operations/BSD-WP60S/OPERATION.json": "ca0dde0170e42e218445323872c795a881ec3ff1",
+    "tools/gcl_campaign_preflight.py": "3f273f14b6d07f2ce18f395bf0f0beda03bb2dc9",
+    ".github/workflows/bsd-wp60s-certificate.yml": "c32991326b0f9922e6d778d2f09228955bc32a0d",
+    ".ghos-routing/workflows.json": "04ae384e4377a3e61ad15c73ca295307d0dc0141"
+  },
+  "invalidation": {
+    "governed_artifact_change": "new freeze required",
+    "candidate_head_change": "all exact-head review and CI evidence must be replayed",
+    "protected_base_drift_before_merge": "material-state check required before merge"
+  },
+  "authority_boundary": "This freeze identifies candidate content only. It does not approve, merge, certify, or promote mathematical claims."
+}

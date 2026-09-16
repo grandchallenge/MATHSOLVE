@@ -1,0 +1,70 @@
+work_package: BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT
+campaign: BSD-001
+operation_issue: grandchallenge/MATHSOLVE#245
+parent_tracker: grandchallenge/MATHSOLVE#215
+programme_owner: grandchallenge/MATHSOLVE#164
+protected_math_base: grandchallenge/MATHSOLVE@245860ce3d7307a505e48b4165be0850327f996a
+provider_anchor: grandchallenge/MATHFORGE@770f95d1f8e7cfdd3facbd9242bf3c21c0e8b074
+status: candidate
+claims:
+  - id: BSD-A1-WP60S-NESTED-AUXILIARY-001
+    status: proved_from_protected_provider
+    statement: >-
+      The exact selected BSS useful-prime sets can be chosen compatibly across
+      finite 2-power coefficient levels, with P_(m+1) contained in P_m, and a
+      core vertex at level m+1 persists after reduction to level m.
+  - id: BSD-A1-WP60S-STARK-LIMIT-002
+    status: proved_from_protected_provider_and_WP60R
+    statement: >-
+      The selected finite Stark-system modules form a surjective inverse system
+      whose inverse limit is free of rank one over Z_2.
+  - id: BSD-A1-WP60S-KS-TRANSITION-003
+    status: proved
+    statement: >-
+      Conjugating the protected Stark reductions by the finite WP60R regulator
+      isomorphisms gives the unique regulator-compatible Kolyvagin reductions,
+      and these reductions are transitive across levels.
+  - id: BSD-A1-WP60S-INTEGRAL-REGULATOR-004
+    status: proved
+    statement: >-
+      The componentwise regulator induces an isomorphism from the integral
+      selected Stark-system module to the integral selected Kolyvagin-system
+      module, and the latter is free of rank one over Z_2.
+  - id: BSD-A1-WP60S-KOLYVAGIN-IDEALS-005
+    status: proved_from_protected_provider_and_WP60R
+    statement: >-
+      The finite Kolyvagin ideals are compatible under coefficient reduction
+      and define integral ideals in Z_2.
+  - id: BSD-A1-WP60S-INTEGRAL-FITTING-006
+    status: proved_from_protected_provider_and_WP60R
+    statement: >-
+      Integral Kolyvagin ideals lie in the corresponding Z_2 Fitting ideals,
+      with equality in every degree for a basis integral Kolyvagin system.
+  - id: BSD-A1-WP60S-BSS-525-007
+    status: proved_candidate
+    statement: >-
+      The three conclusions of BSS II Theorem 5.25 replay on the exact selected
+      canonical literal-p=2 lane after replacing the source use of full
+      Hypothesis 4.7(iii) by protected selected modified-Selmer coefficient
+      reduction and protected cross-level transition interfaces.
+dispositions:
+  - BSS_LITERAL_P2_SELECTED_THEOREM_5_25_REPLAYED
+retired_boundaries:
+  - MISSING_LITERAL_P2_BSS_THEOREM_5_25_INVERSE_LIMIT_REPLAY_AFTER_FINITE_LEVEL_REPLACEMENTS
+remaining_boundaries:
+  - MISSING_LITERAL_P2_BSS_THEOREM_6_12_COROLLARY_6_15_APPLICATION_REPLAY_WITHOUT_INFINITE_H3
+  - MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+  - MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+  - BSD-R2-A1_SELECTED_RESEARCH_TARGET_UNPROVED
+claim_firewall:
+  formal_higher_level_hypothesis_3_2_iii: false
+  full_bss_hypothesis_4_7: false
+  bss_hypothesis_4_7_iii: false
+  infinite_bss_h3: false
+  bss_theorem_6_12: false
+  bss_corollary_6_15: false
+  r5_lift: false
+  r5_prim: false
+  d2d: false
+  bsd_r2_a1: false
+  mathcert_certification: false

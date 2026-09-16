@@ -1,0 +1,123 @@
+{
+  "schema_version": "0.1.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "BSD-WP60S",
+  "campaign": "BSD-001",
+  "issue": "grandchallenge/MATHSOLVE#245",
+  "protected_base": "245860ce3d7307a505e48b4165be0850327f996a",
+  "provider_anchor": "770f95d1f8e7cfdd3facbd9242bf3c21c0e8b074",
+  "constitutional_anchor": "fc9ee5537bf07586dffcc621e753204ecd835365",
+  "objective": {
+    "retire_frontier": "MISSING_LITERAL_P2_BSS_THEOREM_5_25_INVERSE_LIMIT_REPLAY_AFTER_FINITE_LEVEL_REPLACEMENTS",
+    "description": "Replay BSS II Theorem 5.25 on the exact selected canonical literal-p=2 lane using protected finite-level and cross-level replacement interfaces without reinstating false H4.7(iii) or infinite H3."
+  },
+  "acceptable_dispositions": [
+    "CLOSED",
+    "BLOCKED",
+    "FALSIFIED"
+  ],
+  "candidate_disposition": "CLOSED",
+  "scope": {
+    "repositories": [
+      "grandchallenge/MATHSOLVE"
+    ],
+    "may_author_candidate": true,
+    "may_open_pull_request": true,
+    "may_repair_candidate": true,
+    "may_run_or_replay_ci": true,
+    "may_merge_after_declared_gates": true,
+    "may_certify": false,
+    "may_promote_bsd_target": false
+  },
+  "completion_requires": [
+    "mathematical_artifact",
+    "claim_ledger",
+    "campaign_state",
+    "frontier_record",
+    "preflight_pass",
+    "content_freeze",
+    "exact_head_adversary_review",
+    "exact_head_referee_review",
+    "required_ci_green",
+    "protected_merge",
+    "protected_readback",
+    "completion_receipt"
+  ],
+  "completion_receipt": {
+    "surface": "grandchallenge/MATHSOLVE#245",
+    "required_fields": [
+      "candidate_head",
+      "merge_sha",
+      "protected_readback_sha",
+      "adversary_record",
+      "referee_record",
+      "required_checks",
+      "retired_frontier",
+      "established_disposition",
+      "preserved_false",
+      "next_frontier"
+    ]
+  },
+  "governed_artifacts": [
+    "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/00_README.md",
+    "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/01_THEOREM_5_25_REPLAY.md",
+    "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/03_CLAIM_LEDGER.yaml",
+    "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/04_INVERSE_LIMIT_REPLAY_CERTIFICATE.py",
+    "handoffs/BSD-001/README.md",
+    "handoffs/BSD-001/WP60S_FRONTIER.md",
+    ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json",
+    ".gcl/operations/BSD-WP60S/OPERATION.json",
+    "tools/gcl_campaign_preflight.py",
+    ".github/workflows/bsd-wp60s-certificate.yml",
+    ".ghos-routing/workflows.json"
+  ],
+  "forbidden_successor_globs": [
+    "work_packages/BSD_R2_A1_WP60[T-Z]*"
+  ],
+  "admission": {
+    "freeze_manifest": ".gcl/admission/BSD-WP60S/FREEZE.json",
+    "preflight_command": "python tools/gcl_campaign_preflight.py BSD-001 BSD-WP60S",
+    "review_invalidation": "Any changed candidate head invalidates prior exact-head review and check evidence. Any governed-artifact change also requires a new freeze manifest."
+  },
+  "successor_policy": {
+    "new_successor_package_allowed_only_after": [
+      "CLOSED",
+      "BLOCKED",
+      "FALSIFIED"
+    ],
+    "reconnaissance_is_not_frontier_closure": true,
+    "maintenance_is_not_frontier_closure": true
+  },
+  "stop_only_on": [
+    "governance_boundary",
+    "authority_boundary",
+    "authentication_boundary",
+    "safety_boundary",
+    "materially_changed_state",
+    "substantive_evidentiary_boundary",
+    "target_or_normalization_drift"
+  ],
+  "recoverable_events_are_not_stop_conditions": [
+    "connector_failure",
+    "ci_failure",
+    "logging_failure",
+    "formatting_failure",
+    "source_access_failure",
+    "compiler_diagnostic_failure",
+    "environment_failure",
+    "routing_registration_failure"
+  ],
+  "claim_firewall": {
+    "formal_higher_level_hypothesis_3_2_iii": false,
+    "full_bss_hypothesis_4_7": false,
+    "bss_hypothesis_4_7_iii": false,
+    "infinite_bss_h3": false,
+    "bss_theorem_6_12": false,
+    "bss_corollary_6_15": false,
+    "r5_lift": false,
+    "r5_prim": false,
+    "d2d": false,
+    "bsd_r2_a1": false,
+    "mathcert_certification": false
+  }
+}
