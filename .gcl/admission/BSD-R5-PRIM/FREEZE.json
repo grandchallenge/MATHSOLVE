@@ -4,6 +4,7 @@
   "campaign": "BSD-001",
   "operation": "BSD-R5-PRIM",
   "protected_base": "50308cf34782f14fdb0421beea915311cef20bf3",
+  "provider_anchor": "5aef30aa64730ca777329013e1e33c03f34a6e3a",
   "assembled_from_head": "b2fcbf20d34104ea6b1525aedab3830692dc258d",
   "hash_semantics": "Git blob SHA-1 content identities for the exact pre-merge governed artifact set",
   "artifacts": {
