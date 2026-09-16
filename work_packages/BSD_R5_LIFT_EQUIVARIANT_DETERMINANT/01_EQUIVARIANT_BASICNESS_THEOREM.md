@@ -46,7 +46,7 @@ Write `Soc(R_{m,n})` for that line. Reduction modulo `m_{m,n}` gives
 
 `T_{m,n}/m_{m,n}T_{m,n} ~= E[2]`.
 
-Protected WP60M fixes an odd multiplicative prime `ell` and an inertia element `tau in I_ell` whose action on `T` is primitive upper-unipotent. The cyclotomic `Z_2`-extension is unramified at `ell`, so `tau` acts trivially on the `Gamma_n` factor.
+Protected WP60M fixes an odd multiplicative prime `ell` and an inertia element `tau in I_ell` whose action on `T` is primitive upper-unipotent. The cyclotomic `Z_2`-extension and the BSS cyclotomic annihilator field are unramified at `ell`, so `tau` fixes the group-ring factor and lies in the required auxiliary absolute Galois subgroup.
 
 ### Lemma `BSD-R5-EQUIV-TAU-002`
 
@@ -370,10 +370,6 @@ Retire
 Nothing above proves that the determinant preimage is a basis, that the Kato-derived Kolyvagin system is primitive, or that the one-sided valuation inequality is an equality.
 
 The next independent R5 boundary is
-
-`MISSING_P2_DETERMINAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
-
-For compatibility with the protected campaign identifier, record it as
 
 `MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2` (`R5-PRIM`).
 
