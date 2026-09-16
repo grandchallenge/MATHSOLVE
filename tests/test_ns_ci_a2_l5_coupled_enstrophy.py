@@ -1,6 +1,8 @@
 from fractions import Fraction
 import unittest
 
+from tests.test_ns_ci_a2_l5_signed_pressure_residual import SignedPressureResidualTests  # noqa: F401
+
 
 class NSCIA2L5CoupledEnstrophyTests(unittest.TestCase):
     def test_weighted_d3_is_bounded_by_leray_dissipation(self) -> None:
