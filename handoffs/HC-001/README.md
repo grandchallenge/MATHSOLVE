@@ -17,29 +17,42 @@ Prove, refute, or sharply localize `HC-R021-A8-CM4-C2` in `work_packages/HC_R021
 ## Current substantive state
 
 - `HC-WP00`: complete in Solve and qualified by MATHCERT as semantic/conditional interface only; its content-addressed proof DAG remains unchanged.
-- `HC-WP01`: complete for current target selection.
-- `HC-WP02`: current for target selection.
-- `HC-P03`: active through `HC-R021-A8-CM4-C2`.
-- `HC-P04`: open; universal Hodge remains unproved.
+- `HC-WP01/WP02`: complete/current for the selected target.
+- `HC-P03`: active through `HC-R021-A8-CM4-C2`; `HC-P04` and the universal Hodge conjecture remain open.
 - source-proved inputs: coherent secant objects, nonzero Fourier-Mukai rank, Hodge persistence of the normalized class, and nonzero Weil projection.
-- `HC-R021-L001` through `L006`: restricted first-order semiregularity interface, familywise Perry reduction, same-ray finite equivariance, ordinary-semiregularity dimension obstruction, exact kernel criterion, and exact contraction rank `20` with eight-dimensional kernel.
-- `HC-R021-L007`: objectwise rank `20` is equivalent to vanishing of eight explicit degree-two Yoneda relations; any one nonzero relation refutes that object.
-- `HC-R021-L008`: Example 11.2.7 specifies an admissible gluing family, not one canonical object; the common Chern character does not determine the object-specific obstruction map.
-- `HC-R021-L009`: the desired minimal-rank locus `D20={rank(ob)<=20}` is determinantal closed and is exactly the common zero locus of the eight `L007` relations.
-- `HC-R021-L010`: the Example 11.2.7 choices form a nonempty finite-type algebraic gluing stack with a universal relatively perfect family after flattening/base change.
-- `HC-R021-L011`: a naive transitive pure-translation copy of the sixfold strategy is dimensionally pruned; `dim Ext^2(E,E)^G >= 8qN-2`, so dimension forcing reaches rank `20` only for `qN<=2` and full invariant-`Ext^2` semiregularity is impossible for `qN>=4`.
-- `HC-R021-L012`: for every positive integral `q`, the correction-curve effectivity step has a constructive `N=6` tranche: choose `d=q m^3` and `m>>0`; the required class is an explicit positive sum of complete-intersection classes.
-- `HC-R021-L013`: `k_1,...,k_6` are exactly the simultaneous first-order Hodge-preserving directions for `D=g^*Theta` and `H=(g^-1)^*Theta`; `k_7,k_8` are genuinely mixed `H^2(O_X)+H^0(Lambda^2T_X)` directions.
-- `HC-R021-L014`: a sufficiently small PEL/full-level cover of the selected period component carries a universal abelian scheme and Markman's invariant normalized class as a global flat rational Hodge section. `P4-G6` is complete.
-- `HC-R021-L015`: an explicit split perfect complex `P_beta` has `ch(P_beta)=12 beta'`, `ker(ob_P_beta)=span(k_1,...,k_6)`, and obstruction rank `22`; precisely the two mixed classes survive.
-- `HC-R021-L016`: this failure is structural for split line bundles. If a line bundle kills all six ordinary directions, its Chern class is `A U+B V` and the mixed actions are `(qa+A^2)y_1y_2` and `(qb+B^2)y_3y_4`, both nonzero. No nonzero split complex of shifted line bundles lies in the rank-20 kernel class.
-- `HC-R021-L017`: for every finite translation-plus-degree-zero-twist subgroup preserving an Example 11.2.7 coherent second-factor gluing, projection to translations is faithful and `|G|<=N`. Hence `dim Ext^2(E,E)^G>=8qN-2`; weak equivariant semiregularity of that second factor is impossible whenever `qN>=4`, including the explicit `N=6` tranche.
+- `L001-L006`: restricted first-order semiregularity interface, familywise Perry reduction, same-ray finite equivariance, ordinary-semiregularity dimension obstruction, exact kernel criterion, and exact contraction rank `20` with eight-dimensional kernel.
+- `L007`: objectwise rank `20` is equivalent to vanishing of eight explicit degree-two Yoneda relations.
+- `L008-L010`: Example 11.2.7 gives a family rather than a canonical object; the rank-20 locus `D20` is determinantal closed; the admissible gluing choices form a nonempty finite-type stack with a universal relatively perfect family after flattening/base change.
+- `L011`: a naive transitive pure-translation copy of the sixfold strategy is dimensionally pruned; `dim Ext^2(E,E)^G >= 8qN-2`.
+- `L012`: for every positive integral `q`, the correction-curve step has a constructive `N=6` tranche by taking `d=q m^3`, `m>>0`.
+- `L013`: `k_1,...,k_6` are exactly the simultaneous first-order Hodge-preserving directions for `D=g^*Theta` and `H=(g^-1)^*Theta`; `k_7,k_8` are genuinely mixed `H^2(O_X)+H^0(Lambda^2T_X)` directions.
+- `L014`: a sufficiently small PEL/full-level cover of the selected period component carries a universal abelian scheme and Markman's invariant normalized class as a global flat rational Hodge section. `P4-G6` is complete.
+- `L015`: an explicit split perfect complex `P_beta` has `ch(P_beta)=12 beta'`, `ker(ob_P_beta)=span(k_1,...,k_6)`, and obstruction rank `22`; precisely the two mixed classes survive.
+- `L016`: no nonzero split complex of shifted line bundles can satisfy all eight beta-prime kernel relations. A positive perfect-complex route must be genuinely non-formal or use non-line-bundle geometry.
+- `L017`: for any finite translation-plus-degree-zero-twist subgroup preserving an Example 11.2.7 coherent second-factor gluing, projection to translations is faithful and `|G|<=N`; hence the second factor cannot be weakly `G`-semiregular when `qN>=4`, including the explicit `N=6` tranche.
+- `L018`: weak equivariant semiregularity of the final external-product/Orlov object cannot bypass the second-factor rank-20 condition. For finite identity-component autoequivalence actions on an abelian variety, the relevant weak and ordinary `G`-semiregularity tests have the same degree-two Hochschild target; every second-factor contraction-kernel direction produces an invariant total obstruction. Therefore final weak `G`-semiregularity forces all eight second-factor relations and hence rank `20`.
 
 The protected MATHCERT WP00 disposition remains `qualified_semantic_and_conditional_interface_only`. No new certification request is justified.
 
-## Active coherent Route A frontier
+## Active first-order frontier
 
-The coherent route remains blocked by nonemptiness of `D20`:
+Every currently viable route now passes through the same second-factor condition:
+
+```text
+construct E' on the source abelian fourfold
+with ch(E') = M beta', M != 0
+        |
+        +--> kill k1,...,k6                 [ordinary directions]
+        |
+        +--> kill k7,k8                     [mixed gerby/bivector directions]
+        |
+        +--> ker(ob_E') = ker(c_beta')
+             rank(ob_E') = 20
+```
+
+There are two live engineering realizations.
+
+### Coherent Route A
 
 ```text
 explicit N=6 admissible source tranche          [L012]
@@ -58,45 +71,48 @@ explicit N=6 admissible source tranche          [L012]
                                        stability [A2 conditional]
 ```
 
-The six commutative directions are not yet object-level deformations. A positive proof must deform the actual secant constituents, correction curve, line bundle, and gluing morphisms compatibly. The two mixed relations cannot be replaced by ordinary Kodaira-Spencer arguments.
+The six ordinary directions are not yet object-level deformations: a proof must deform the actual secant constituents, correction curve, line bundle, and gluing maps. The two mixed relations require generalized deformation theory.
 
-The numerical possibility `(q,N)=(1,2)` left by `L011` is not source-supported. Markman's effectivity argument provides some positive multiplier, not `N=2`; the constructive tranche `L012` instead has `N=6`.
+### Non-formal perfect-complex lane
 
-## Alternate perfect-complex lane
+Markman Lemma 11.2.8 accepts any `E' in D^b(X)` whose Chern character is a nonzero integer multiple of `beta'`.
 
-Markman's downstream Weil-projection calculation accepts an object of `D^b(X)` whose Chern character is a nonzero integer multiple of `beta'`. This permits an alternate engineering lane not tied to the coherent gluing stack.
-
-`L015` gives an exact control:
+`L015` supplies a rank-22 split control; `L016` proves every split line-bundle realization fails. Therefore the live perfect-complex problem is:
 
 ```text
-P_beta split line-bundle complex
-ch(P_beta)=12 beta'
-ker(ob)=span(k1,...,k6)
-rank(ob)=22
+construct a genuinely non-formal same-ray E'
+with Ext^{<0}(E',E')=0
+and ob_E'(k_i)=0 for i=1,...,8.
 ```
 
-`L016` shows that changing the split line-bundle presentation cannot repair the two mixed classes. Any positive perfect-complex construction must therefore be genuinely non-formal: its differential or extension data, or higher-rank geometry, must supply nullhomotopies for `k_7,k_8` while retaining the six ordinary relations. A later positive object must also satisfy the negative-Ext hypothesis required by the intended all-orders deformation theorem.
+The differential/extension data must provide nullhomotopies for `k_7,k_8` while retaining the six ordinary kernel directions.
 
-## Route G frontier
+## Route G ordering after L018
 
-The global-family edge is closed, but the factorwise equivariant shortcut is now pruned.
+Route G is no longer an independent first-order escape:
 
-- `P4-G1/G2`: finite-equivariant same-ray representatives are available;
-- `P4-G3`: **open** — prove weak `G`-semiregularity for a genuinely eight-dimensional external-product/Orlov representative, including the mixed `Ext^1 tensor Ext^1` contribution;
-- `L017`: for the coherent second factor, every finite identity-component autoequivalence stabilizer has `|G|<=N`, and weak `G`-semiregularity is impossible when `qN>=4`. Thus `G3` cannot be proved by first making the second factor weakly equivariantly semiregular in the explicit `N=6` tranche;
-- `P4-G4`: derived-equivalence symmetry transport interface available;
-- `P4-G5`: Perry application conditional on `G3`;
-- `P4-G6`: **complete by L014** — the level PEL family carries the global flat Hodge section and covers every selected target point.
+```text
+second-factor rank 20 / eight relations          [REQUIRED]
+        |
+        +--> construct useful finite symmetry of total object
+        |
+        +--> G3: weak G-semiregularity of final eightfold     [OPEN]
+        |       including mixed Ext^1 tensor Ext^1
+        |
+        +--> G4/G5 Perry familywise transport                 [CONDITIONAL]
+        |
+        +--> G6 algebraic PEL family + global flat class      [COMPLETE L014]
+```
 
-A viable `G3` proof must exploit the total eightfold object and the mixed external-product obstruction theory, not a factorwise semiregularity argument.
+`L017` rules out proving `G3` by first making the coherent second factor weakly equivariantly semiregular in the source-relevant `qN>=4` range. `L018` is stronger: even a genuinely total weakly equivariant solution must already contain the second-factor rank-20 cancellation.
 
 ## Authoritative pointers
 
 - `grandchallenge/INTELLECT:CONSTITUTION.md`
 - `grandchallenge/INTELLECT:governance/constitutional_authority_schedule.json`
 - `grandchallenge/MATHSOLVE:AGENTS.md`
-- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/proof_obligation_dag.json` — immutable WP00 DAG;
-- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/post_wp00_proof_obligation_dag.json` — active post-WP00 theorem DAG;
+- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/proof_obligation_dag.json` — immutable WP00 DAG
+- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/post_wp00_proof_obligation_dag.json` — active theorem DAG
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_CM4_EIGHTFOLD_CODIM2.md`
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_CONTRACTION_RANK.md`
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_ATIYAH_RANK_REDUCTION.md`
@@ -110,38 +126,43 @@ A viable `G3` proof must exploit the total eightfold object and the mixed extern
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_LINE_BUNDLE_CONTROL.md`
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_SPLIT_LINE_BUNDLE_NO_GO.md`
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_AUTOEQUIV_STABILIZER_BOUND.md`
-- `grandchallenge/MATHCERT:certificates/hodge/MC-HC-WP00-QUAL-001.json`
-- Markman, arXiv:2509.23079, especially Corollary 7.2.5, Sections 9.1-9.2, Proposition 10.2.1, Question 11.2.2, Example 11.2.7, and Lemma 11.2.8.
-- Markman, arXiv:2502.03415, Sections 8.3 and 9.3.
-- Perry, arXiv:2604.00511v2, especially Theorem 1.2, Definition 2.6, Proposition 5.19, and Theorem 6.3.
-- Milne, *Shimura Varieties and Moduli*, for full-level universal abelian families and the PEL interpretation.
+- `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_WEAK_EQUIV_REQUIRES_D20.md`
+- Markman, arXiv:2509.23079, especially Question 11.2.2, Example 11.2.7, Lemma 11.2.8, Proposition 10.2.1
+- Markman, arXiv:2502.03415, Sections 8.3 and 9.3
+- Perry, arXiv:2604.00511v2, especially Lemma 3.3, Proposition 5.19, Theorem 1.2, and Theorem 6.3
 
 ## Smallest safe next tranche
 
-The frontier has narrowed to non-formality and the total eightfold obstruction theory.
+Work only the second-factor rank-20 frontier.
 
-1. `PERFECT-MIXED`: starting from the same-ray `K_0` identity of `L015`, construct a non-split complex whose differential or extension classes make the characteristic actions of `k_7,k_8` nullhomotopic while preserving `k_1,...,k_6`. Do not search over split line-bundle decompositions; `L016` rules them all out.
-2. `A0d-MIXED`: in parallel, compute the two mixed actions on a tractable coherent Example 11.2.7 gluing. One nonzero action refutes that point; simultaneous vanishing completes the mixed half of `D20`.
-3. `G3`: analyze the total external-product/Orlov object directly. `L017` rules out a factorwise second-factor semiregularity proof for the source-relevant range; any useful symmetry must control the mixed `Ext^1 tensor Ext^1` contribution at the eightfold level.
+1. Reconstruct Markman's genus-four building block `F'` from the earlier secant paper and compute the Hochschild action on that object as far as the source permits.
+2. For the Example 11.2.7 gluing triangle
 
-## Material dependencies and boundaries
+```text
+E' -> A direct_sum i_*L -> Q -> E'[1],
+```
+
+compute how the two mixed classes `k_7,k_8` change under the connecting morphism. The target is an explicit criterion on the extension/gluing class for the mixed action to become nullhomotopic.
+3. In parallel, formulate the same problem for a finite locally free resolution of the non-formal perfect-complex lane: seek `h_7,h_8` with `ev(k_i)=[d,h_i]` for `i=7,8`, while preserving the six ordinary relations and `Ext^{<0}=0`.
+4. Do not spend further effort on split line-bundle decompositions or on equivariance before rank `20`; `L016` and `L018` respectively rule those out as shortcuts.
+
+## Material boundaries
 
 - coefficient ring remains `Q`;
 - geometric category remains smooth projective complex varieties;
 - target remains the Hodge-generic CM4 locus only;
 - Chern-character contraction is not the object-specific Atiyah obstruction map;
-- `D20` is closed and its nonemptiness remains unproved;
-- six Hodge-preserving tangent directions are not six sheaf deformations until the actual gluing family is lifted;
-- the two mixed directions require generalized, not purely commutative, deformation theory;
+- `D20` nonemptiness remains unproved;
+- six Hodge-preserving tangent directions are not six sheaf deformations until the actual object is lifted;
+- the two mixed directions require generalized deformation theory;
 - split line-bundle K-theory cancellation cannot supply the mixed nullhomotopies;
-- finite equivariance is not weak equivariant semiregularity;
-- second-factor weak equivariant semiregularity is impossible for the coherent gluing when `qN>=4`, but final-eightfold `G3` remains open;
+- final weak equivariant semiregularity cannot bypass second-factor rank `20`;
 - `G6` closure supplies only an algebraic family and global flat Hodge section, not algebraicity;
 - no inverse Lefschetz, Kunneth projector, Hodge-locus, Tate, motivated, or numerical substitute may replace an algebraic cycle;
 - no claim from this target is certified until independently adjudicated by MATHCERT.
 
 ## Legitimate stop/re-plan boundaries
 
-Stop or re-plan only for a material source correction; evidence that the selected target is known or vacuous; a genuine obstruction to all coherent, non-formal-perfect, and total-equivariant routes; contradiction of the exact target formulation; a reserved INTELLECT transition; authentication or safety failure; or material theorem closure.
+Stop or re-plan only for a material source correction; evidence that the selected target is known or vacuous; a genuine obstruction to both coherent and non-formal-perfect rank-20 constructions; contradiction of the exact target formulation; a reserved INTELLECT transition; authentication or safety failure; or material theorem closure.
 
-`D20` nonemptiness, non-formal mixed cancellation, and genuinely eight-dimensional `G3` are mathematical frontiers, not governance stops.
+The second-factor rank-20/eight-relation problem is the current mathematical frontier, not a governance stop.
