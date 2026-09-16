@@ -1,0 +1,176 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "HC-001",
+  "work_package_id": "HC-WP01",
+  "status": "complete_for_HC-R021_selection",
+  "purpose": "Operational rejection fixtures for candidate Hodge proof routes. A route passes only when every triggered fixture is discharged by an explicit theorem or construction.",
+  "claim_boundary": "Rejecting a route proves neither the Hodge conjecture nor its negation. These fixtures prevent hidden algebraicity, coefficient, domain, and quantifier substitutions.",
+  "fixtures": [
+    {
+      "fixture_id": "HC-FP-001",
+      "name": "coefficient_drift",
+      "tempting_argument": "Replace rational cycle classes by integral cycle classes.",
+      "invalid_step": "Infer integral representability from rational Hodge type.",
+      "silently_inserted_statement": "Naive integral Hodge conjecture.",
+      "reject_scope": "Any route that changes Q to Z without an independent restricted theorem.",
+      "surviving_route": "Keep CH^p(X) tensor Q and rational singular cohomology throughout.",
+      "spine_node": "HC-O009"
+    },
+    {
+      "fixture_id": "HC-FP-002",
+      "name": "pp_type_to_rational",
+      "tempting_argument": "Treat every complex (p,p) class as a rational Hodge class.",
+      "invalid_step": "Drop the intersection with H^(2p)(X,Q).",
+      "silently_inserted_statement": "Complex Hodge type implies rationality.",
+      "reject_scope": "Dimension counts over C used as rational generation.",
+      "surviving_route": "Start with alpha in H^(2p)(X,Q) intersect H^(p,p)(X).",
+      "spine_node": "HC-D001"
+    },
+    {
+      "fixture_id": "HC-FP-003",
+      "name": "divisor_extrapolation",
+      "tempting_argument": "Apply Lefschetz (1,1) in higher codimension.",
+      "invalid_step": "Replace CH^p by Picard data for p greater than 1.",
+      "silently_inserted_statement": "A higher-codimension Lefschetz (1,1) theorem.",
+      "reject_scope": "Any higher-codimension route with no algebraic push-pull bridge.",
+      "surviving_route": "Use divisors only for divisor-polynomial summands; construct exceptional classes separately.",
+      "spine_node": "HC-K006"
+    },
+    {
+      "fixture_id": "HC-FP-004",
+      "name": "inverse_lefschetz_circularity",
+      "tempting_argument": "Use the cohomological inverse Lefschetz operator as an algebraic correspondence.",
+      "invalid_step": "Promote cohomological existence to algebraicity.",
+      "silently_inserted_statement": "Lefschetz standard conjecture for the selected class.",
+      "reject_scope": "Unproved algebraic star or inverse-Lefschetz correspondences.",
+      "surviving_route": "Use only independently algebraic correspondences, such as graphs of actual morphisms or endomorphisms.",
+      "spine_node": "HC-O011"
+    },
+    {
+      "fixture_id": "HC-FP-005",
+      "name": "kunneth_projector_circularity",
+      "tempting_argument": "Decompose the diagonal with algebraic Kunneth projectors.",
+      "invalid_step": "Assume algebraicity of Hodge Kunneth components.",
+      "silently_inserted_statement": "The required standard-conjecture/Hodge consequence on a product.",
+      "reject_scope": "Motive decompositions whose projectors are only cohomological.",
+      "surviving_route": "Use explicit algebraic morphisms and cycles with independently verified classes.",
+      "spine_node": "HC-O011"
+    },
+    {
+      "fixture_id": "HC-FP-006",
+      "name": "hodge_locus_substitution",
+      "tempting_argument": "Use algebraicity of a Hodge locus to conclude the Hodge class is algebraic.",
+      "invalid_step": "Confuse an algebraic parameter locus with a relative algebraic cycle.",
+      "silently_inserted_statement": "A cycle-producing variational theorem.",
+      "reject_scope": "CDK-only arguments for cycle-class surjectivity.",
+      "surviving_route": "Construct a cycle or coherent sheaf whose class deforms under an explicit theorem.",
+      "spine_node": "HC-O012"
+    },
+    {
+      "fixture_id": "HC-FP-007",
+      "name": "deformation_substitution",
+      "tempting_argument": "Transport algebraicity because a flat class stays Hodge.",
+      "invalid_step": "Replace flat cohomological transport by transport of algebraic cycles.",
+      "silently_inserted_statement": "Variational Hodge or an adequate semiregularity/relative-cycle theorem.",
+      "reject_scope": "Generic-to-special or special-to-generic algebraicity with no deformation theorem.",
+      "surviving_route": "Prove semiregularity or another explicit deformation theorem for the constructed algebraic object.",
+      "spine_node": "HC-O013"
+    },
+    {
+      "fixture_id": "HC-FP-008",
+      "name": "numerical_period_substitution",
+      "tempting_argument": "Declare a high-precision period relation exact and algebraic.",
+      "invalid_step": "Promote floating-point recognition to rationality and cycle equality.",
+      "silently_inserted_statement": "Exact relation certification plus exhaustive cycle generation.",
+      "reject_scope": "Numerical period evidence used as theorem-grade algebraicity.",
+      "surviving_route": "Use exact symbolic identities only after an algebraic cycle construction is specified.",
+      "spine_node": "HC-O014"
+    },
+    {
+      "fixture_id": "HC-FP-009",
+      "name": "tate_without_lifting",
+      "tempting_argument": "Prove a Tate statement after reduction and lift it to characteristic zero.",
+      "invalid_step": "Collapse specialization, comparison, field-of-definition, and cycle lifting into one arrow.",
+      "silently_inserted_statement": "A complete good-reduction and lifting theorem.",
+      "reject_scope": "Unqualified Hodge-Tate substitution.",
+      "surviving_route": "Audit every comparison and lifting arrow separately or remain over C.",
+      "spine_node": "HC-O015"
+    },
+    {
+      "fixture_id": "HC-FP-010",
+      "name": "topological_chern_substitution",
+      "tempting_argument": "Use topological K-theory or a formal Chern character decomposition as algebraic generation.",
+      "invalid_step": "Replace algebraic coherent sheaves/cycles by topological bundles.",
+      "silently_inserted_statement": "Algebraization of the relevant K-theory objects.",
+      "reject_scope": "Topological generation with no algebraic representative.",
+      "surviving_route": "Use coherent sheaves or derived coherent objects defined algebraically; their Chern classes are algebraic.",
+      "spine_node": "HC-O016"
+    },
+    {
+      "fixture_id": "HC-FP-011",
+      "name": "abel_jacobi_completeness",
+      "tempting_argument": "Treat Abel-Jacobi control as a complete algebraicity detector.",
+      "invalid_step": "Infer existence of arbitrary cycle preimages from a partial invariant.",
+      "silently_inserted_statement": "Completeness of the intermediate-Jacobian obstruction.",
+      "reject_scope": "General sufficiency claims from Abel-Jacobi vanishing/control.",
+      "surviving_route": "Use Abel-Jacobi only when a class-specific completeness theorem is proved.",
+      "spine_node": "HC-O017"
+    },
+    {
+      "fixture_id": "HC-FP-012",
+      "name": "projective_to_kahler",
+      "tempting_argument": "Replace smooth projective by compact Kahler because Hodge decomposition remains available.",
+      "invalid_step": "Drop algebraic projectivity while retaining an algebraic-cycle conclusion.",
+      "silently_inserted_statement": "False unrestricted compact-Kahler analogue.",
+      "reject_scope": "Kahler-only routes presented as the classical conjecture.",
+      "surviving_route": "Keep the selected target inside smooth projective algebraic varieties.",
+      "spine_node": "HC-O010"
+    },
+    {
+      "fixture_id": "HC-FP-013",
+      "name": "absolute_or_motivated_substitution",
+      "tempting_argument": "Promote absolute or motivated Hodge status to algebraicity.",
+      "invalid_step": "Identify a stability/enlarged-correspondence notion with algebraic cycles.",
+      "silently_inserted_statement": "The missing algebraicity bridge.",
+      "reject_scope": "Terminological substitution for an actual cycle.",
+      "surviving_route": "Use absolute/motivated status only as auxiliary structure; construct algebraic cycles independently.",
+      "spine_node": "HC-O018"
+    },
+    {
+      "fixture_id": "HC-FP-014",
+      "name": "generic_to_every_fiber",
+      "tempting_argument": "Prove a generic or very-general statement and extend it to all fibers.",
+      "invalid_step": "Ignore jumping Hodge ranks and additional special-fiber classes.",
+      "silently_inserted_statement": "A specialization theorem controlling every new Hodge class.",
+      "reject_scope": "Quantifier promotion from generic to every member of a family.",
+      "surviving_route": "State the generic-Hodge-ring locus explicitly, or prove a separate all-fibers theorem.",
+      "spine_node": "HC-O019"
+    },
+    {
+      "fixture_id": "HC-FP-015",
+      "name": "effectivity_strengthening",
+      "tempting_argument": "Demand a single effective irreducible representative.",
+      "invalid_step": "Strengthen rational linear-combination generation to effectivity.",
+      "silently_inserted_statement": "An independent positivity/effectivity theorem.",
+      "reject_scope": "False rejection of a valid rational cycle because subtraction or denominators occur.",
+      "surviving_route": "Permit finite rational combinations of codimension-p algebraic subvarieties.",
+      "spine_node": "HC-B005"
+    }
+  ],
+  "candidate_route_checks": {
+    "HC-R021-A8-SW-Q3": {
+      "coefficient_drift": "pass: Q retained",
+      "geometric_domain": "pass: polarized complex abelian varieties are smooth projective",
+      "rational_input": "pass: target quantifies over rational Hodge classes",
+      "divisor_extrapolation": "pass only for the divisor-generated summand; Weil summand has an independent construction obligation",
+      "projector_circularity": "pass: route uses graphs of algebraic endomorphisms and Fourier-Mukai/coherent-sheaf constructions, not assumed algebraic projectors",
+      "hodge_locus_substitution": "pass: no Hodge-locus theorem is used as a cycle construction",
+      "deformation_substitution": "OPEN: the route requires an explicit semiregularity/deformation theorem; Hodge persistence alone is insufficient",
+      "numerical_period_substitution": "pass: no numerical period inference",
+      "tate_substitution": "pass: no reduction-mod-p bridge",
+      "motivated_absolute_substitution": "pass: no such bridge",
+      "generic_to_every_fiber": "pass only because the target class is explicitly restricted to the generic Hodge-ring locus; no all-fibers claim is made",
+      "effectivity": "pass: CH^4 tensor Q is the cycle domain"
+    }
+  }
+}
