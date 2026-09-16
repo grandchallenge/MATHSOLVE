@@ -57,8 +57,7 @@ u_{>Q}:=\sum_{p>Q}u_p,
 S_{>Q,N}^2:=\sum_{Q<p\le N}|u_p|^2.
 ```
 
-In the first display, the intended symbol is the velocity tail `u_{>Q}`.
-
+The first symbol in this display is the velocity tail and is denoted `u_{>Q}`.
 For every finite terminal index `N`,
 
 ```math
@@ -282,7 +281,7 @@ transport is
 u_{\le q-2}\cdot\nabla V_q.
 ```
 
-The intended leading symbol in that display is the velocity `u_{<=q-2}`. At
+The leading symbol in the preceding display is the velocity `u_{<=q-2}`. At
 `L2` level incompressibility removes the pure transport contribution. At `H1`
 level,
 
