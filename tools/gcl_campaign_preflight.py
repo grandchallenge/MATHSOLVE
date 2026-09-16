@@ -111,6 +111,13 @@ def main() -> int:
         cold_start.get("completion_receipt_surface") == receipt.get("surface"),
         "campaign cold-start completion receipt surface does not match operation contract",
     )
+    require(
+        cold_start.get("completion_receipt_validator") == receipt.get("validator"),
+        "campaign cold-start receipt validator does not match operation contract",
+    )
+    receipt_path = ROOT / receipt["surface"]
+    require(receipt_path.exists(), "machine completion receipt is missing")
+    require(load_json(receipt_path).get("record_type") == "GCL_COMPLETION_RECEIPT", "completion receipt record_type mismatch")
     resolution = state.get("state_resolution", {})
     require("entry_snapshot_rule" in resolution, "campaign state lacks entry-snapshot resolution rule")
     require("completion_overlay_rule" in resolution, "campaign state lacks completion-overlay resolution rule")
@@ -159,8 +166,9 @@ def main() -> int:
         require(observed_blob == expected, f"content freeze mismatch for {rel}: expected {expected}, observed {observed_blob}")
         observed_sha256[rel] = sha256_file(path)
 
-    require(receipt.get("surface") == "grandchallenge/MATHSOLVE#245", "completion receipt surface mismatch")
+    require(receipt.get("surface") == ".gcl/completions/BSD-WP60S/COMPLETION_RECEIPT.json", "completion receipt surface mismatch")
     require("protected_readback_sha" in receipt.get("required_fields", []), "completion receipt must bind protected readback")
+    require("staffing_authority" in receipt.get("required_fields", []), "completion receipt must bind current staffing authority")
 
     freeze_digest = hashlib.sha256(
         json.dumps(observed_sha256, sort_keys=True, separators=(",", ":")).encode("utf-8")
