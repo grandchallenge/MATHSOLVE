@@ -44,7 +44,7 @@ theorem fixedStepSimulation_iterate
       generalize hmid : ((flip bind sourceStep)^[steps]) (some source) = mid at h
       cases mid with
       | none =>
-          simp at h
+          simp [flip] at h
       | some middle =>
           have hstep : sourceStep middle = some source' := by
             simpa using h
