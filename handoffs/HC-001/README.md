@@ -14,14 +14,14 @@ Advance the rational Hodge campaign from the qualified WP00 interface into an ex
 
 ## Primary deliverable
 
-Prove, refute, or sharply localize the selected restricted target `HC-R021-A8-SW-Q3` in `work_packages/HC_R021_SPLIT_WEIL_EIGHTFOLD.md`.
+Prove, refute, or sharply localize `HC-R021-A8-CM4-C2` in `work_packages/HC_R021_CM4_EIGHTFOLD_CODIM2.md`.
 
 ## Material acceptance criteria
 
 - native Solve false-proof fixtures reject hidden coefficient, correspondence, deformation, Tate, motivic, numerical, and quantifier substitutions;
 - the target-selection ledger reflects the current higher-dimensional known-case boundary rather than the July 2026 Forge snapshot;
-- one exact restricted class, codimension, coefficient ring, cycle convention, arbitrary-input quantifier, and construction route are frozen;
-- the construction route either produces an algebraic cycle for every allowed rational Hodge class or terminates at an exact mathematical obstruction;
+- the exact restricted class, dimension, codimension, coefficient ring, cycle convention, arbitrary-input quantifier, and construction route are frozen;
+- the construction route either produces an algebraic codimension-two cycle for every allowed rational Hodge class or terminates at an exact mathematical obstruction;
 - any later certification request is driven by a substantive new claim and does not reopen `MC-HC-WP00-QUAL-001`.
 
 ## Current substantive state
@@ -29,10 +29,12 @@ Prove, refute, or sharply localize the selected restricted target `HC-R021-A8-SW
 - `HC-WP00`: complete in Solve and qualified by MATHCERT as semantic/conditional interface only.
 - `HC-WP01`: complete for current target selection in `campaign_ledgers/HC-001/false_proof_atlas.json`.
 - `HC-WP02`: current for target selection in `campaign_ledgers/HC-001/known_case_construction_ledger.json`.
-- `HC-P03`: active through `HC-R021-A8-SW-Q3`.
+- `HC-P03`: active through `HC-R021-A8-CM4-C2`.
 - `HC-P04`: open; universal Hodge remains unproved.
-- `HC-R021-A8-SW-Q3`: selected and unproved.
-- first substantive lemma `HC-R021-L001`: first-order obstruction vanishing under weak semiregularity injectivity is proved in the Solve package; no all-orders deformation theorem is claimed.
+- `HC-R021-A8-CM4-C2`: selected and unproved.
+- source-proved construction obligations: coherent secant sheaves, nonzero Fourier-Mukai rank, persistence of the normalized class as Hodge, and nonzero projection to the Weil summand.
+- first Solve lemma `HC-R021-L001`: weak semiregularity injectivity kills the first-order ambient obstruction in Hodge-preserving directions; no all-orders deformation theorem is claimed.
+- current blocker: `HC-R021-P4`, the semiregularity/all-orders algebraicity-transport bridge.
 
 The historical Solve handoff and an older Solve current-route projection still record HC as `ready`. Protected MATHCERT is authoritative for adjudication and records `MC-HC-WP00-QUAL-001` as `qualified_semantic_and_conditional_interface_only`. Do not rewrite immutable producer history to erase that chronology.
 
@@ -46,27 +48,29 @@ The historical Solve handoff and an older Solve current-route projection still r
 - `grandchallenge/MATHSOLVE:work_packages/HC_WP00_STATEMENT_LATTICE_AND_DAG.md`
 - `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/false_proof_atlas.json`
 - `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/known_case_construction_ledger.json`
-- `grandchallenge/MATHSOLVE:work_packages/HC_R021_SPLIT_WEIL_EIGHTFOLD.md`
+- `grandchallenge/MATHSOLVE:work_packages/HC_R021_CM4_EIGHTFOLD_CODIM2.md`
+- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/proof_obligation_dag.json`
 - `grandchallenge/MATHCERT:certificates/hodge/MC-HC-WP00-QUAL-001.json`
-- Markman, arXiv:2509.23403v2, Sections 1.1, 4, 10-12.
+- Markman, arXiv:2509.23079v1, especially Proposition 10.2.1, Example 11.2.7, and Lemma 11.2.8.
+- Pridham, *Forum of Mathematics, Sigma* 12 (2024), e126.
 
 ## Smallest safe next tranche
 
-Resolve `R021-P2a` through `R021-P2d` for the explicit `K=Q(sqrt(-3))`, six-theta-translate Section-12 secant object. In particular, determine whether two admissible algebraic secant objects can be chosen so that the Fourier-Mukai object has a legitimate normalized Chern character and a provably nonzero Weil projection. Only then attack the all-orders weak-semiregularity bridge `R021-P4`.
+Attack `HC-R021-P4` on the actual Markman object. Compute or characterize `Ext^2(E_0,E_0)`, the image of the ambient Atiyah/evaluation map, and the Buchweitz-Flenner semiregularity map on that image. Determine whether weak injectivity holds and, if it does, whether the actual obstruction classes for successive small extensions remain in the controlled image. A nonzero kernel vector realized by an obstruction falsifies this deformation route and should trigger target re-planning rather than semantic substitution.
 
 ## Material dependencies and boundaries
 
 - coefficient ring remains `Q`;
 - geometric category remains smooth projective complex varieties;
-- target class is explicitly restricted to the generic Hodge-ring locus in the selected split-Weil eightfold component;
-- the Section-12 derived object must be shown admissible for the deformation theorem actually used;
-- first-order obstruction vanishing is not relative-cycle transport;
+- the target is explicitly restricted to the Hodge-generic locus in the selected degree-four CM/Weil deformation component;
+- Hodge persistence of `kappa(E)` is not algebraicity transport;
+- first-order obstruction vanishing is not a relative algebraic cycle;
 - no Kunneth projector, inverse Lefschetz correspondence, Hodge-locus theorem, Tate lift, motivated class, or numerical period relation may substitute for an algebraic cycle;
 - no claim from this target is certified until independently adjudicated by MATHCERT.
 
 ## Reserved authority / stop conditions
 
-Stop or re-plan only for a material source correction, proof that the selected target is already known, failure of the secant object to meet `R021-P2`, a genuine all-orders deformation obstruction requiring a different route, contradiction of the exact target formulation, a reserved INTELLECT transition, authentication/safety failure, or material closure of the theorem.
+Stop or re-plan only for a material source correction, evidence that the selected target is already known or vacuous, failure of the source construction under its exact hypotheses, a genuine semiregularity/deformation obstruction requiring a different route, contradiction of the exact target formulation, a reserved INTELLECT transition, authentication/safety failure, or material closure of the theorem.
 
 ## Notes intentionally omitted
 
