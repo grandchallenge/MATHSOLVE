@@ -4,7 +4,7 @@
   "campaign": "BSD-001",
   "operation": "BSD-R5-LIFT-EQUIV",
   "protected_base": "270e2c2f9dde7bd817a251c9e3fb250fff36a81b",
-  "assembled_from_head": "5132fc1ca7be7dd6c4acf1c850f4125b4fcd3f2b",
+  "assembled_from_head": "433cd2cb7e7610be7a08768ebb7a299e3be6686d",
   "hash_semantics": "Git blob SHA-1 content identities for the exact pre-merge governed artifact set",
   "artifacts": {
     "work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/00_README.md": "686d494a04f8d774fef25ccecd4b2eda79e0ca71",
@@ -18,7 +18,7 @@
     ".gcl/operations/BSD-R5-LIFT-EQUIV/OPERATION.json": "2b98fb2c60fbd52279068c3298909c564819964b",
     "tools/gcl_campaign_preflight_r5_lift_equiv.py": "776362c898df24e14e5e819310e1693865da78a3",
     ".github/workflows/bsd-r5-lift-equivariant-certificate.yml": "ff7920782b79959ca52cc8fd4b27b242571fbd38",
-    ".ghos-routing/workflows.json": "7c3d344da2e22598cf47e1c9e167dfab26cd54b1"
+    ".ghos-routing/workflows.json": "11fb899df56325ef449c0a6f49cecad20505b2f3"
   },
   "completion_replay_excluded": [
     ".gcl/completions/BSD-R5-LIFT-EQUIV/COMPLETION_RECEIPT.json",
