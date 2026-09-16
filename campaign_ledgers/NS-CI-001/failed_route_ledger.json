@@ -7,7 +7,8 @@
     {"route_id": "A2-FR-002", "route": "Product of separate L1 budgets", "disposition": "TERMINATED", "obstruction": "Separate integrability does not control Lambda squared times dissipation."},
     {"route_id": "A2-FR-003", "route": "Direct low-mode interpolation", "disposition": "TERMINATED", "obstruction": "The estimate requires Lambda in L3."},
     {"route_id": "A2-FR-004", "route": "Excursion-persistence lane L3", "disposition": "TERMINATED", "obstruction": "The proved exit charge remains on a summable inverse-frequency scale."},
-    {"route_id": "A2-FR-005", "route": "Positive weighted-column lane L4", "disposition": "TERMINATED", "obstruction": "The active diagonal survives and no selected-transfer cancellation theorem closes it."}
+    {"route_id": "A2-FR-005", "route": "Positive weighted-column lane L4", "disposition": "TERMINATED", "obstruction": "The active diagonal survives and no selected-transfer cancellation theorem closes it."},
+    {"route_id": "A2-FR-006", "route": "L5 strict-high pre-triangle square-function closure", "disposition": "TERMINATED", "obstruction": "Pre-triangle pair interactions prove an integrable strict-tail L4_x quartic bound, but the exact L6 triple interaction requires the H2 shell density sum lambda_p^2 A_p; Lambda in L2 plus the Leray dissipation budget does not control integral (sum lambda_p^2 A_p)^(2/3), and a strict-high static shell-and-packet profile satisfies the admitted scalar budgets while that endpoint diverges."}
   ],
-  "reopening_condition": "A new equation-specific cancellation, depletion, decorrelation, packing, or direct L5 estimate must discharge the named obstruction."
+  "reopening_condition": "A new equation-specific cancellation, depletion, decorrelation, packing, dynamic H2-tail estimate, or other direct L5 estimate must discharge the named obstruction."
 }
