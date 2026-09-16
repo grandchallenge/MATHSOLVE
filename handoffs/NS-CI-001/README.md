@@ -122,10 +122,10 @@ on closed L4 and does not furnish a reopening theorem.
 
 ### B3 direct L6 transport audit
 
-Current B3 candidate disposition:
+Current B3 bounded-family disposition:
 
 ```text
-DIRECT_L6_TRANSPORT_ROUTE_REDUCED_TO_LOW_DEFORMATION_COMMUTATOR
+DIRECT_L6_STANDARD_COMMUTATOR_ROUTE_REDUCED_TO_LOW_DEFORMATION
 ```
 
 recorded in
@@ -141,9 +141,9 @@ L_q=P_{<=q-2}u.
 
 The unprojected low--high transport cancels exactly against `|V_q|^4V_q`.
 The actual equation contains `P_{>q} mathbb P(L_q dot grad V_q)`, leaving a
-high-pass/Leray projection residual. Shellwise commutator localization supplies
-a kernel moment `lambda_p^-1` and a high-shell derivative `lambda_p`; the scale
-factors cancel and leave
+signed high-pass/Leray projection residual. Under the standard absolute
+shellwise commutator estimate, the projector kernel moment `lambda_p^-1` and a
+high-shell derivative `lambda_p` cancel in scale and leave
 
 ```math
 G_q=||grad L_q||_infinity
@@ -151,6 +151,9 @@ G_q=||grad L_q||_infinity
 
 with no decaying high-frequency gain. Active localization then reintroduces B4;
 fixed-`q` globalization reintroduces the bad-time/residence interface.
+
+This terminates only the standard absolute commutator-estimate family. A signed
+projection/pressure cancellation inside the residual remains live.
 
 ## Residual blockers
 
@@ -161,8 +164,9 @@ fixed-`q` globalization reintroduces the bad-time/residence interface.
 - B3 strict tail: control
   `integral (sum_{p>Q} lambda_p^2 A_p)^(2/3) dt` or avoid it by a new signed or
   nonlinear identity. Moving-tail H1, fixed-tail bad-set splitting,
-  threshold-residence Duhamel, and direct projected-L6 transport are now
-  characterized.
+  threshold-residence Duhamel, and the standard direct-L6 absolute commutator
+  estimate are characterized. The signed projection/pressure residual itself
+  remains open.
 - B4 selector motion: unchanged for the actual moving selector unless a genuine
   limiting/variation theorem is supplied.
 
@@ -190,17 +194,14 @@ integrability are unproved.
 
 B3 is the remaining pointwise endpoint with room for a genuinely new mechanism.
 Do not repeat moving-tail H1 energy, fixed-tail bad-set splitting,
-threshold-residence Duhamel, direct projected-L6 transport, or the L4 weighted
-column.
+threshold-residence Duhamel, the standard direct-L6 absolute commutator
+estimate, or the L4 weighted column.
 
-The next bounded proposition must act on one of:
-
-1. a signed projection/pressure commutator identity that cancels the low
-   deformation coefficient before absolute values;
-2. an equation-specific packet/intermittency depletion theorem controlling
-   `Z_{>Q}` or `Z_{>Q}^{2/3}`;
-3. a new nonlinear quantity coupling the strict-high threshold to `Z_{>Q}`
-   without selector variation or parabolic residence.
+The smallest live proposition is now the signed projection/pressure residual:
+expand the high-pass and Leray pieces before absolute values and test whether a
+structural cancellation removes `G_Q`. If it does not, the remaining distinct
+frontier is an equation-specific packet/intermittency depletion theorem for
+`Z_{>Q}` or `Z_{>Q}^{2/3}`.
 
 If a candidate reduces to `G_Q`, `S_Q`, selector variation, or a residence
 assumption, record that exact reduction rather than reopening its closed lane.
