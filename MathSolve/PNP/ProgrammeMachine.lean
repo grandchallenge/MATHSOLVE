@@ -21,9 +21,10 @@ The concrete standard variant is:
 The input carrier remains exactly `List Bool`. Extending the input tape by blank
 cells does not alter encoded input length, which remains `input.length`.
 
-Runtime uses the same `Turing.EvalsToInTime` step counter used by the pinned
-`FinTM2` interface. This keeps the later simulation theorem about machine steps,
-not about a second ad-hoc evaluator.
+Runtime uses the same `StateTransition.EvalsToInTime` step counter used by the
+current mathlib `FinTM2` interface and inherited from the pinned source interface.
+This keeps the later simulation theorem about machine steps, not about a second
+ad-hoc evaluator.
 
 This file defines the target and generic polynomial-time decider interface. It
 does not by itself claim equivalence to mathlib `FinTM2`; that is the separate
@@ -87,10 +88,10 @@ structure ProgrammeConfig (M : ProgrammeMachine) where
 
 /-- Read the immutable binary input tape; every cell outside the finite input is blank. -/
 def programmeInputRead (input : List Bool) (position : Int) : Option Bool :=
-  if h : 0 ≤ position then input.get? position.toNat else none
+  if 0 ≤ position then input[position.toNat]? else none
 
 /-- Initial Programme configuration for an exact finite binary input. -/
-def ProgrammeMachine.init (M : ProgrammeMachine) (input : List Bool) : ProgrammeConfig M where
+def ProgrammeMachine.init (M : ProgrammeMachine) (_input : List Bool) : ProgrammeConfig M where
   state := M.start
   inputHead := 0
   workHead := fun _ => 0
@@ -115,7 +116,7 @@ def ProgrammeMachine.isTerminal (M : ProgrammeMachine) (state : M.State) : Bool 
 def ProgrammeMachine.step (M : ProgrammeMachine) (input : List Bool) :
     ProgrammeConfig M → Option (ProgrammeConfig M)
   | cfg =>
-      if hterm : cfg.state = M.accept ∨ cfg.state = M.reject then none
+      if cfg.state = M.accept ∨ cfg.state = M.reject then none
       else
         let action := M.transition cfg.state
           (programmeInputRead input cfg.inputHead) cfg.readWork
@@ -130,13 +131,13 @@ def ProgrammeMachine.step (M : ProgrammeMachine) (input : List Bool) :
 /--
 `RunsInTime M input result bound` means that the exact Programme transition
 relation reaches an accepting/rejecting terminal configuration with `result` in
-at most `bound` transition applications. The quantitative witness is mathlib's
-`Turing.EvalsToInTime`, matching the imported TM2 step-accounting interface.
+at most `bound` transition applications. `EvalsToInTime` is proof-carrying data,
+so the existential proposition records its inhabitation explicitly.
 -/
 def ProgrammeMachine.RunsInTime (M : ProgrammeMachine) (input : List Bool)
     (result : Bool) (bound : Nat) : Prop :=
   ∃ cfg : ProgrammeConfig M,
-    Turing.EvalsToInTime (M.step input) (M.init input) (some cfg) bound ∧
+    Nonempty (StateTransition.EvalsToInTime (M.step input) (M.init input) (some cfg) bound) ∧
     M.step input cfg = none ∧
     M.output cfg = some result
 
