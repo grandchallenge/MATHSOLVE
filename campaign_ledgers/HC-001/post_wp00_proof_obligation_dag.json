@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.9.0",
+  "schema_version": "1.10.0",
   "dag_id": "HC-POST-WP00-THEOREM-SPINE-DAG",
   "campaign_id": "HC-001",
   "parent_dag": "campaign_ledgers/HC-001/proof_obligation_dag.json",
@@ -29,6 +29,7 @@
     {"id":"HC-R021-L015","statement":"There is an explicit split perfect complex P_beta with ch(P_beta)=12 beta-prime, ker(ob_P_beta)=span(k1,...,k6), and rank(ob_P_beta)=22; the two mixed classes k7,k8 are nonzero even though Markman's downstream Weil-projection interface applies.","status":"complete_solve_not_certified_control"},
     {"id":"HC-R021-L016","statement":"No nonzero split complex of shifted line bundles can satisfy all eight beta-prime kernel relations: killing k1,...,k6 forces each line-bundle Chern class to A U+B V, after which ev(k7)=(qa+A^2)y12 and ev(k8)=(qb+B^2)y34 are nonzero. A positive perfect-complex route must therefore be genuinely non-formal or non-line-bundle.","status":"complete_solve_not_certified_route_pruning"},
     {"id":"HC-R021-L017","statement":"For any finite translation-plus-degree-zero-twist subgroup preserving an Example 11.2.7 coherent second-factor gluing, projection to translations is faithful and |G|<=N; hence dim Ext^2(E,E)^G>=8qN-2 and the second factor cannot be weakly G-semiregular when qN>=4. The explicit N=6 tranche is included.","status":"complete_solve_not_certified_factorwise_route_pruning"},
+    {"id":"HC-R021-L018","statement":"For finite identity-component autoequivalence actions on an abelian variety, Perry weak G-semiregularity coincides with G-semiregularity on the relevant degree-two obstruction source; for P=E0 boxtimes E-prime, weak G-semiregularity of the total object forces every second-factor contraction-kernel direction to vanish under ob_E-prime, hence forces second-factor rank 20.","status":"complete_solve_not_certified_route_dependency"},
     {"id":"HC-R021-P4-A0a","statement":"Construct a nonempty admissible algebraic gluing parameter stack with universal relatively perfect object.","status":"complete_by_L010"},
     {"id":"HC-R021-P4-A0b","statement":"Pass to flattening/base-change strata where relative Ext^2 is locally free and the relative obstruction morphism is a vector-bundle map.","status":"complete_by_L009_L010"},
     {"id":"HC-R021-P4-A0c","statement":"Define D20; by L006-L009 it is exactly the simultaneous zero locus of the eight L007 Yoneda relations.","status":"complete_by_L009"},
@@ -40,11 +41,11 @@
     {"id":"HC-R021-P4-A2","statement":"After positive A1, prove every successive family obstruction lies in the ambient-obstruction image controlled by restricted semiregularity, yielding all-orders transport without full semiregularity.","status":"open_conditional_on_A1"},
     {"id":"HC-R021-P4-G1","statement":"Choose a finite-equivariant representative of the first genus-four secant Chern-character ray.","status":"complete_equivariance_only"},
     {"id":"HC-R021-P4-G2","statement":"Construct a finite-equivariant representative on the beta-prime ray without changing the nonzero-Weil-projection criterion.","status":"complete_equivariance_only_by_L003"},
-    {"id":"HC-R021-P4-G3","statement":"Prove weak equivariant semiregularity for a genuinely eight-dimensional external-product/Orlov representative, including the mixed Ext^1 tensor Ext^1 contribution. L017 rules out solving this by first making the coherent second factor weakly G-semiregular whenever qN>=4.","status":"open"},
+    {"id":"HC-R021-P4-G3","statement":"After a second-factor rank-20 object is supplied, prove weak equivariant semiregularity for a genuinely eight-dimensional external-product/Orlov representative, including the mixed Ext^1 tensor Ext^1 contribution. L018 shows this is downstream of, not an alternative to, the second-factor rank-20 condition.","status":"open_downstream_of_second_factor_rank20"},
     {"id":"HC-R021-P4-G4","statement":"Transport the finite symmetry through the Orlov/Fourier-Mukai equivalence into A_0 x A_0^vee.","status":"theorem_interface_available"},
     {"id":"HC-R021-P4-G5","statement":"Apply Perry familywise to B_0=-c_1(E_0)/rank(E_0) and w_0=kappa(E_0).","status":"conditional_on_G3"},
     {"id":"HC-R021-P4-G6","statement":"Bind the C_CM4 target to an algebraic level-moduli family carrying Markman's class as a global flat Hodge section.","status":"complete_by_L014"},
-    {"id":"HC-R021-P4","statement":"All-orders algebraicity-transport bridge. Route A requires coherent D20 nonemptiness then A2; the alternate perfect-complex lane requires a non-formal rank-20 same-ray object and an applicable all-orders deformation theorem; Route G requires genuinely total eightfold weak equivariant semiregularity G3, while family coverage G6 is complete.","status":"open"},
+    {"id":"HC-R021-P4","statement":"All-orders algebraicity-transport bridge. Every currently viable route first requires a second-factor rank-20/eight-relation object: coherent D20 or a genuinely non-formal same-ray perfect complex. Route G cannot bypass this by L018; after rank 20 it still requires total weak equivariant semiregularity G3. Family coverage G6 is complete.","status":"open"},
     {"id":"HC-R021-P5","statement":"Produce one nonzero algebraic Weil class on every A in C_CM4.","status":"open"},
     {"id":"HC-R021-P6","statement":"Use algebraic K-endomorphism correspondences to generate every class in HW(A,eta).","status":"open"},
     {"id":"HC-R021-P7","statement":"Combine divisor-product and Weil preimages to construct z in CH^2(A) tensor Q for arbitrary alpha in Hdg^4(A,Q).","status":"open"},
@@ -53,10 +54,10 @@
   "edges": [
     ["HC-P03","HC-R021-P0"],["HC-R021-P0","HC-R021-P1"],["HC-R021-P0","HC-R021-P2a"],["HC-R021-P2a","HC-R021-P2b"],["HC-R021-P2b","HC-R021-P2c"],["HC-R021-P2c","HC-R021-P2d"],
     ["HC-R021-P2d","HC-R021-L001"],["HC-R021-P2d","HC-R021-L002"],["HC-R021-L002","HC-R021-L003"],["HC-R021-P2a","HC-R021-L004"],["HC-R021-L001","HC-R021-L005"],["HC-R021-L005","HC-R021-L006"],["HC-R021-L006","HC-R021-L007"],["HC-R021-L007","HC-R021-L008"],["HC-R021-L008","HC-R021-L009"],["HC-R021-L009","HC-R021-L010"],["HC-R021-L004","HC-R021-L011"],["HC-R021-L003","HC-R021-L011"],
-    ["HC-R021-L010","HC-R021-L012"],["HC-R021-L006","HC-R021-L013"],["HC-R021-P0","HC-R021-L014"],["HC-R021-L006","HC-R021-L015"],["HC-R021-L013","HC-R021-L015"],["HC-R021-L015","HC-R021-L016"],["HC-R021-L011","HC-R021-L017"],
+    ["HC-R021-L010","HC-R021-L012"],["HC-R021-L006","HC-R021-L013"],["HC-R021-P0","HC-R021-L014"],["HC-R021-L006","HC-R021-L015"],["HC-R021-L013","HC-R021-L015"],["HC-R021-L015","HC-R021-L016"],["HC-R021-L011","HC-R021-L017"],["HC-R021-L017","HC-R021-L018"],
     ["HC-R021-L010","HC-R021-P4-A0a"],["HC-R021-P4-A0a","HC-R021-P4-A0b"],["HC-R021-P4-A0b","HC-R021-P4-A0c"],["HC-R021-L013","HC-R021-P4-A0d-COMM"],["HC-R021-P4-A0c","HC-R021-P4-A0d-COMM"],["HC-R021-P4-A0d-COMM","HC-R021-P4-A0d-MIXED"],["HC-R021-P4-A0d-MIXED","HC-R021-P4-A0d"],["HC-R021-P4-A0d","HC-R021-P4-A1"],["HC-R021-P4-A1","HC-R021-P4-A2"],["HC-R021-P4-A2","HC-R021-P4"],
     ["HC-R021-L015","HC-R021-P4-PERFECT-MIXED"],["HC-R021-L016","HC-R021-P4-PERFECT-MIXED"],["HC-R021-P4-PERFECT-MIXED","HC-R021-P4"],
-    ["HC-R021-L003","HC-R021-P4-G1"],["HC-R021-L003","HC-R021-P4-G2"],["HC-R021-L017","HC-R021-P4-G3"],["HC-R021-P4-G1","HC-R021-P4-G3"],["HC-R021-P4-G2","HC-R021-P4-G3"],["HC-R021-P4-G3","HC-R021-P4-G4"],["HC-R021-P4-G4","HC-R021-P4-G5"],["HC-R021-L014","HC-R021-P4-G6"],["HC-R021-P4-G5","HC-R021-P4"],["HC-R021-P4-G6","HC-R021-P4"],
+    ["HC-R021-L003","HC-R021-P4-G1"],["HC-R021-L003","HC-R021-P4-G2"],["HC-R021-L018","HC-R021-P4-G3"],["HC-R021-P4-A0d","HC-R021-P4-G3"],["HC-R021-P4-PERFECT-MIXED","HC-R021-P4-G3"],["HC-R021-P4-G1","HC-R021-P4-G3"],["HC-R021-P4-G2","HC-R021-P4-G3"],["HC-R021-P4-G3","HC-R021-P4-G4"],["HC-R021-P4-G4","HC-R021-P4-G5"],["HC-R021-L014","HC-R021-P4-G6"],["HC-R021-P4-G5","HC-R021-P4"],["HC-R021-P4-G6","HC-R021-P4"],
     ["HC-R021-P4","HC-R021-P5"],["HC-R021-P5","HC-R021-P6"],["HC-R021-P1","HC-R021-P7"],["HC-R021-P6","HC-R021-P7"]
   ],
   "forbidden_shortcuts": [
@@ -74,9 +75,10 @@
     "Treat the six simultaneous D,H Hodge-preserving directions as object-level deformations without constructing a relative gluing family.",
     "Treat a split line-bundle K-theory representative as a D20 object: L015-L016 show the mixed actions survive termwise and every nonzero split line-bundle complex fails the eight-relation criterion.",
     "Attempt to prove G3 by making the coherent second factor weakly G-semiregular for qN>=4: L017 rules this out for every finite translation-plus-twist stabilizer of the gluing.",
+    "Treat total weak G-semiregularity as an independent bypass around second-factor D20/rank20: L018 proves total weak G-semiregularity forces all eight second-factor kernel relations.",
     "Treat closure of G6 as algebraicity: L014 supplies only an algebraic family and global flat Hodge section; G3 or another deformation theorem is still required.",
     "Promote a theorem on the Hodge-generic locus to special fibers carrying additional Hodge classes.",
     "Treat numerical, Tate, absolute-Hodge, or motivated evidence as an algebraic-cycle construction."
   ],
-  "claim_boundary": "HC-R021-A8-CM4-C2 remains unproved. L001-L017 are Solve-level lemmas, controls, or route-pruning results only. Coherent Route A has an explicit N=6 source tranche but D20 nonemptiness remains open. The split same-ray perfect control has obstruction rank 22 and every split line-bundle complex is ruled out; a positive perfect-complex lane must be genuinely non-formal. Route G family coverage G6 is closed, but factorwise second-factor weak equivariant semiregularity is impossible for qN>=4 and genuinely eight-dimensional G3 remains open. A1/A2, P5-P7, HC-P04, and the full Hodge conjecture remain open."
+  "claim_boundary": "HC-R021-A8-CM4-C2 remains unproved. L001-L018 are Solve-level lemmas, controls, or route-pruning/dependency results only. Coherent Route A has an explicit N=6 source tranche but D20 nonemptiness remains open. The split same-ray perfect control has obstruction rank 22 and every split line-bundle complex is ruled out; a positive perfect-complex lane must be genuinely non-formal. L018 proves final weak equivariant semiregularity cannot bypass the second-factor rank-20/eight-relation condition. G6 family coverage is closed, but after rank 20 the genuinely total G3 mixed-Ext problem remains open. A1/A2, P5-P7, HC-P04, and the full Hodge conjecture remain open."
 }
