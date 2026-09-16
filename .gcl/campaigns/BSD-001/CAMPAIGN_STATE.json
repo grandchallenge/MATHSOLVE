@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1.0",
+  "record_type": "GCL_CAMPAIGN_STATE",
+  "campaign": "BSD-001",
+  "title": "Birch-Swinnerton-Dyer selected rank-one 2-primary campaign",
+  "authority": {
+    "constitution": "grandchallenge/INTELLECT@fc9ee5537bf07586dffcc621e753204ecd835365",
+    "programme_repository": "grandchallenge/MATH-PROGRAMME",
+    "work_repository": "grandchallenge/MATHSOLVE",
+    "source_repository": "grandchallenge/MATHFORGE",
+    "certification_repository": "grandchallenge/MATHCERT"
+  },
+  "protected_inputs": {
+    "math_base": "grandchallenge/MATHSOLVE@245860ce3d7307a505e48b4165be0850327f996a",
+    "provider": "grandchallenge/MATHFORGE@770f95d1f8e7cfdd3facbd9242bf3c21c0e8b074"
+  },
+  "selected_target": {
+    "id": "BSD-R2-A1",
+    "status": "SELECTED_RESEARCH_TARGET_UNPROVED",
+    "governing_identity": "delta_2(E)=v_2(Fitt^1_Z2(X_E))"
+  },
+  "current_operation": "BSD-WP60S",
+  "current_frontier": {
+    "id": "MISSING_LITERAL_P2_BSS_THEOREM_5_25_INVERSE_LIMIT_REPLAY_AFTER_FINITE_LEVEL_REPLACEMENTS",
+    "class": "theorem",
+    "status": "candidate_closure_pending_exact_head_admission"
+  },
+  "candidate_disposition": {
+    "type": "CLOSED",
+    "established": [
+      "BSS_LITERAL_P2_SELECTED_THEOREM_5_25_REPLAYED"
+    ],
+    "next_frontier_if_protected": "MISSING_LITERAL_P2_BSS_THEOREM_6_12_COROLLARY_6_15_APPLICATION_REPLAY_WITHOUT_INFINITE_H3"
+  },
+  "known_false": [
+    "formal_higher_level_hypothesis_3_2_iii",
+    "full_bss_hypothesis_4_7",
+    "bss_hypothesis_4_7_iii",
+    "infinite_bss_h3"
+  ],
+  "prohibited_promotions": [
+    "BSS_THEOREM_6_12_LITERAL_P2_ESTABLISHED",
+    "BSS_COROLLARY_6_15_LITERAL_P2_ESTABLISHED",
+    "R5_LIFT_ESTABLISHED",
+    "R5_PRIM_ESTABLISHED",
+    "D2D_ESTABLISHED",
+    "BSD_R2_A1_PROVED",
+    "MATHCERT_CERTIFIED"
+  ],
+  "cold_start": {
+    "operation_contract": ".gcl/operations/BSD-WP60S/OPERATION.json",
+    "canonical_handoff": "handoffs/BSD-001/README.md",
+    "frontier_record": "handoffs/BSD-001/WP60S_FRONTIER.md",
+    "claim_ledger": "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/03_CLAIM_LEDGER.yaml",
+    "preflight": "python tools/gcl_campaign_preflight.py BSD-001 BSD-WP60S"
+  },
+  "execution_standard": {
+    "identifier": "GCL-CEX-01",
+    "status": "BSD-001 bootstrap pilot pending registry admission",
+    "rule": "Repository records, exact protected identities, and exact-head evidence govern. Chat transcripts are context only."
+  }
+}
