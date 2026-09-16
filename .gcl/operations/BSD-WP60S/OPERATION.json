@@ -6,7 +6,8 @@
   "issue": "grandchallenge/MATHSOLVE#245",
   "protected_base": "245860ce3d7307a505e48b4165be0850327f996a",
   "provider_anchor": "770f95d1f8e7cfdd3facbd9242bf3c21c0e8b074",
-  "constitutional_anchor": "fc9ee5537bf07586dffcc621e753204ecd835365",
+  "constitutional_anchor": "2badd8c3197ef4515591bba05ff782ff3cafc930",
+  "completion_enforcement_anchor": "grandchallenge/gcl-standards@f20623dc6f8e8ef8c7c04ba4823f2773e2a0f407",
   "objective": {
     "retire_frontier": "MISSING_LITERAL_P2_BSS_THEOREM_5_25_INVERSE_LIMIT_REPLAY_AFTER_FINITE_LEVEL_REPLACEMENTS",
     "description": "Replay BSS II Theorem 5.25 on the exact selected canonical literal-p=2 lane using protected finite-level and cross-level replacement interfaces without reinstating false H4.7(iii) or infinite H3."
@@ -44,18 +45,18 @@
     "completion_receipt"
   ],
   "completion_receipt": {
-    "surface": "grandchallenge/MATHSOLVE#245",
+    "surface": ".gcl/completions/BSD-WP60S/COMPLETION_RECEIPT.json",
+    "validator": "python tools/gcl_completion_receipt_validate.py",
     "required_fields": [
       "candidate_head",
       "merge_sha",
       "protected_readback_sha",
+      "staffing_authority",
       "adversary_record",
       "referee_record",
       "required_checks",
-      "retired_frontier",
-      "established_disposition",
-      "preserved_false",
-      "next_frontier"
+      "disposition",
+      "preserved_false"
     ]
   },
   "governed_artifacts": [
@@ -67,7 +68,9 @@
     "handoffs/BSD-001/WP60S_FRONTIER.md",
     ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json",
     ".gcl/operations/BSD-WP60S/OPERATION.json",
+    ".gcl/completions/BSD-WP60S/COMPLETION_RECEIPT.json",
     "tools/gcl_campaign_preflight.py",
+    "tools/gcl_completion_receipt_validate.py",
     ".github/workflows/bsd-wp60s-certificate.yml",
     ".ghos-routing/workflows.json"
   ],
@@ -77,7 +80,8 @@
   "admission": {
     "freeze_manifest": ".gcl/admission/BSD-WP60S/FREEZE.json",
     "preflight_command": "python tools/gcl_campaign_preflight.py BSD-001 BSD-WP60S",
-    "review_invalidation": "Any changed candidate head invalidates prior exact-head review and check evidence. Any governed-artifact change also requires a new freeze manifest."
+    "completion_receipt_command": "python tools/gcl_completion_receipt_validate.py",
+    "review_invalidation": "A mathematical-candidate head change invalidates its exact-head theorem reviews and checks. A completion-replay candidate change invalidates the exact-head review of the replay integration. Any governed-artifact change requires a new freeze manifest."
   },
   "successor_policy": {
     "new_successor_package_allowed_only_after": [

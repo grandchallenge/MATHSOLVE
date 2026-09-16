@@ -1,0 +1,110 @@
+{
+  "schema_version": "0.1.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "campaign": "BSD-001",
+  "operation": "BSD-WP60S",
+  "candidate_head": "93a5e27028c2ea189eb9db90a6a13cdf92a060f6",
+  "merge_sha": "b6f4a11425b5b6f75da24b7c13b4b7a97bd82927",
+  "protected_readback_sha": "b6f4a11425b5b6f75da24b7c13b4b7a97bd82927",
+  "enforcement_standard": {
+    "identifier": "GCL-CEX-01",
+    "repository": "grandchallenge/gcl-standards",
+    "commit": "f20623dc6f8e8ef8c7c04ba4823f2773e2a0f407",
+    "status": "protected_candidate_enforcement_repair"
+  },
+  "staffing_authority": {
+    "repository": "grandchallenge/INTELLECT",
+    "directive": "GI-STEWARD-0003",
+    "separation_model": "role_scoped_logical_passes",
+    "protected_anchor": "2badd8c3197ef4515591bba05ff782ff3cafc930"
+  },
+  "adversary_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/246#pullrequestreview-5218044702",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "bsd-wp60s-adversary-93a5e270-r2",
+    "role": "Adversary",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "93a5e27028c2ea189eb9db90a6a13cdf92a060f6",
+    "criteria": [
+      "challenge any silent reinstatement of full BSS H4.7(iii) or infinite H3",
+      "challenge cross-level Stark/Kolyvagin transition coherence and basis reduction",
+      "challenge inverse-limit Fitting passage beyond the protected provider interface",
+      "challenge promotion to BSS 6.12, Corollary 6.15, R5, BSD-R2-A1 or MATHCERT",
+      "verify completion evidence remains bound to the original exact candidate and protected readback"
+    ],
+    "finding": "approved",
+    "evidence": [
+      "01_THEOREM_5_25_REPLAY.md confines the result to the selected canonical literal-2 lane and explicitly preserves H4.7(iii) and infinite H3 as unavailable",
+      "03_CLAIM_LEDGER.yaml preserves all downstream claim firewalls including bss_theorem_6_12=false, bss_corollary_6_15=false, bsd_r2_a1=false and mathcert_certification=false",
+      "protected provider audit at MATHFORGE 770f95d1f8e7cfdd3facbd9242bf3c21c0e8b074 supplies the bounded cross-level and inverse-limit dependency replacements",
+      "candidate and protected-readback WP60S/WP60Q/WP60R/Solve/GCL checks previously recorded on MATHSOLVE#245 are successful at the exact bound heads"
+    ],
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "human_authorized": false,
+      "mathcert_certified": false
+    }
+  },
+  "referee_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/246#pullrequestreview-5218045689",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "bsd-wp60s-referee-93a5e270-r2",
+    "role": "Referee",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "93a5e27028c2ea189eb9db90a6a13cdf92a060f6",
+    "criteria": [
+      "assess whether finite WP60R results plus protected cross-level replacements suffice for the selected Theorem 5.25 conclusions",
+      "assess regulator-conjugated Kolyvagin transitions and inverse-limit coherence independently of the Adversary criteria",
+      "assess consistency among theorem, claim ledger, campaign state and operation contract",
+      "assess whether the next frontier is precisely the BSS 6.12/6.15 application layer without infinite H3",
+      "assess whether protected evidence supports CLOSED for WP60S without implying downstream certification"
+    ],
+    "finding": "approved",
+    "evidence": [
+      "finite rank-one regulator/Fitting conclusions are protected by WP60R at every coefficient level",
+      "the protected provider audit identifies exactly where H4.7(iii) entered the source cross-level construction and supplies the narrower selected replacement interface",
+      "the inverse Kolyvagin system is regulator-conjugated from the surjective Stark system, so compatibility and transitivity follow from the protected Stark reductions",
+      "the campaign state, operation contract and theorem all identify MISSING_LITERAL_P2_BSS_THEOREM_6_12_COROLLARY_6_15_APPLICATION_REPLAY_WITHOUT_INFINITE_H3 as the successor frontier while retaining stronger claims as false/unproved"
+    ],
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "human_authorized": false,
+      "mathcert_certified": false
+    }
+  },
+  "required_checks": [
+    {"phase": "candidate", "name": "BSD WP60S inverse-limit theorem replay", "run": 35039279742, "result": "success", "head": "93a5e27028c2ea189eb9db90a6a13cdf92a060f6"},
+    {"phase": "candidate", "name": "BSD WP60Q selected residual core graph", "run": 35039279777, "result": "success", "head": "93a5e27028c2ea189eb9db90a6a13cdf92a060f6"},
+    {"phase": "candidate", "name": "BSD WP60R finite BSS theorem replay", "run": 35039279807, "result": "success", "head": "93a5e27028c2ea189eb9db90a6a13cdf92a060f6"},
+    {"phase": "candidate", "name": "GCL conformance", "run": 35039280139, "result": "success", "head": "93a5e27028c2ea189eb9db90a6a13cdf92a060f6"},
+    {"phase": "candidate", "name": "Solve checks", "run": 35039279747, "result": "success", "head": "93a5e27028c2ea189eb9db90a6a13cdf92a060f6"},
+    {"phase": "candidate", "name": "routing-enforcement", "check_run": 104614934010, "result": "success", "head": "93a5e27028c2ea189eb9db90a6a13cdf92a060f6"},
+    {"phase": "protected_readback", "name": "BSD WP60S inverse-limit theorem replay", "run": 35039487602, "result": "success", "head": "b6f4a11425b5b6f75da24b7c13b4b7a97bd82927"},
+    {"phase": "protected_readback", "name": "BSD WP60Q selected residual core graph", "run": 35039487690, "result": "success", "head": "b6f4a11425b5b6f75da24b7c13b4b7a97bd82927"},
+    {"phase": "protected_readback", "name": "BSD WP60R finite BSS theorem replay", "run": 35039487721, "result": "success", "head": "b6f4a11425b5b6f75da24b7c13b4b7a97bd82927"},
+    {"phase": "protected_readback", "name": "Solve checks", "run": 35039487649, "result": "success", "head": "b6f4a11425b5b6f75da24b7c13b4b7a97bd82927"},
+    {"phase": "protected_readback", "name": "GCL conformance", "run": 35039488239, "result": "success", "head": "b6f4a11425b5b6f75da24b7c13b4b7a97bd82927"}
+  ],
+  "disposition": {
+    "type": "CLOSED",
+    "frontier": "MISSING_LITERAL_P2_BSS_THEOREM_5_25_INVERSE_LIMIT_REPLAY_AFTER_FINITE_LEVEL_REPLACEMENTS",
+    "established": ["BSS_LITERAL_P2_SELECTED_THEOREM_5_25_REPLAYED"],
+    "next_frontier": "MISSING_LITERAL_P2_BSS_THEOREM_6_12_COROLLARY_6_15_APPLICATION_REPLAY_WITHOUT_INFINITE_H3"
+  },
+  "preserved_false": [
+    "formal_higher_level_hypothesis_3_2_iii",
+    "full_bss_hypothesis_4_7",
+    "bss_hypothesis_4_7_iii",
+    "infinite_bss_h3",
+    "bss_theorem_6_12",
+    "bss_corollary_6_15",
+    "r5_lift",
+    "r5_prim",
+    "d2d",
+    "bsd_r2_a1",
+    "mathcert_certification"
+  ],
+  "notes": "This receipt closes WP60S execution state only. It does not establish BSS Theorem 6.12, Corollary 6.15, R5, BSD-R2-A1, or MATHCERT certification."
+}

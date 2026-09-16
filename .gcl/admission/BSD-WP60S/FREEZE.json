@@ -4,7 +4,7 @@
   "campaign": "BSD-001",
   "operation": "BSD-WP60S",
   "protected_base": "245860ce3d7307a505e48b4165be0850327f996a",
-  "assembled_from_head": "e32ec853a35a6a30e6fc23cb67746328d1254552",
+  "assembled_from_head": "a3552f917b6b3f5b70d561c75a3a704f13a8126f",
   "hash_semantics": "Git blob SHA-1 content identities; preflight additionally emits a SHA-256 digest over the exact frozen artifact set",
   "artifacts": {
     "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/00_README.md": "e77760d2c90ff827ed89605c6bffaedf2ed0a8bf",
@@ -13,16 +13,18 @@
     "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/04_INVERSE_LIMIT_REPLAY_CERTIFICATE.py": "1aad0ade73570b3cb530c8e68898487fe6837d84",
     "handoffs/BSD-001/README.md": "b8064305b96dab1890990d3c107f76f512167ede",
     "handoffs/BSD-001/WP60S_FRONTIER.md": "943f028c10983c1ff1cdfaa27d821fc06c86f28d",
-    ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json": "35c07bf6ecd2ded1a562f39d52120a54cccec89d",
-    ".gcl/operations/BSD-WP60S/OPERATION.json": "ca0dde0170e42e218445323872c795a881ec3ff1",
-    "tools/gcl_campaign_preflight.py": "3f273f14b6d07f2ce18f395bf0f0beda03bb2dc9",
-    ".github/workflows/bsd-wp60s-certificate.yml": "c32991326b0f9922e6d778d2f09228955bc32a0d",
+    ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json": "8db5244e0dba7069727fe2913fc320ca46141eaf",
+    ".gcl/operations/BSD-WP60S/OPERATION.json": "e8c953d418a530ab7d3eb9d4abf301f60fb83411",
+    ".gcl/completions/BSD-WP60S/COMPLETION_RECEIPT.json": "3df177dc70e497ae326a33993ae371bd2b08afe5",
+    "tools/gcl_campaign_preflight.py": "4f5b2b5c8afeaf670e729fdd26041393f4180a89",
+    "tools/gcl_completion_receipt_validate.py": "1f3defa3f16de2d398978d94dc2bf3463abdf48a",
+    ".github/workflows/bsd-wp60s-certificate.yml": "7693c3e2210d61318003a8e0a2a5d33734aa4204",
     ".ghos-routing/workflows.json": "04ae384e4377a3e61ad15c73ca295307d0dc0141"
   },
   "invalidation": {
     "governed_artifact_change": "new freeze required",
-    "candidate_head_change": "all exact-head review and CI evidence must be replayed",
+    "candidate_head_change": "completion-replay exact-head review and CI evidence must be replayed; theorem reviews remain bound to their original immutable mathematical candidate unless theorem content changes",
     "protected_base_drift_before_merge": "material-state check required before merge"
   },
-  "authority_boundary": "This freeze identifies candidate content only. It does not approve, merge, certify, or promote mathematical claims."
+  "authority_boundary": "This freeze identifies the repaired completion-replay artifact set only. It does not certify mathematics or promote downstream BSD claims."
 }

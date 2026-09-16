@@ -4,7 +4,7 @@
   "campaign": "BSD-001",
   "title": "Birch-Swinnerton-Dyer selected rank-one 2-primary campaign",
   "authority": {
-    "constitution": "grandchallenge/INTELLECT@fc9ee5537bf07586dffcc621e753204ecd835365",
+    "constitution": "grandchallenge/INTELLECT@2badd8c3197ef4515591bba05ff782ff3cafc930",
     "programme_repository": "grandchallenge/MATH-PROGRAMME",
     "work_repository": "grandchallenge/MATHSOLVE",
     "source_repository": "grandchallenge/MATHFORGE",
@@ -23,7 +23,7 @@
   "current_frontier": {
     "id": "MISSING_LITERAL_P2_BSS_THEOREM_5_25_INVERSE_LIMIT_REPLAY_AFTER_FINITE_LEVEL_REPLACEMENTS",
     "class": "theorem",
-    "status": "operation_entry_frontier_pending_protected_completion_receipt"
+    "status": "operation_entry_frontier_resolved_by_exact_completion_receipt_when_protected"
   },
   "candidate_disposition": {
     "type": "CLOSED",
@@ -53,16 +53,19 @@
     "frontier_record": "handoffs/BSD-001/WP60S_FRONTIER.md",
     "claim_ledger": "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/03_CLAIM_LEDGER.yaml",
     "preflight": "python tools/gcl_campaign_preflight.py BSD-001 BSD-WP60S",
-    "completion_receipt_surface": "grandchallenge/MATHSOLVE#245"
+    "completion_receipt_surface": ".gcl/completions/BSD-WP60S/COMPLETION_RECEIPT.json",
+    "completion_receipt_validator": "python tools/gcl_completion_receipt_validate.py"
   },
   "state_resolution": {
     "entry_snapshot_rule": "current_frontier is the protected frontier entering current_operation",
-    "completion_overlay_rule": "If completion_receipt_surface contains a completion receipt for this exact operation whose candidate head, protected merge, and protected readback identities are coherent, the receipt disposition and next_frontier supersede the entry frontier for cold-start resolution until the next operation emits a successor CAMPAIGN_STATE.",
-    "stale_receipt_rule": "A receipt for a different operation, candidate head, merge identity, or protected readback does not alter this state."
+    "completion_overlay_rule": "If the machine completion receipt for this exact operation passes its validator and its candidate head, protected merge, protected readback, logical review passes, and check identities are coherent, the receipt disposition and next_frontier supersede the entry frontier until the next material operation emits successor CAMPAIGN_STATE.",
+    "stale_receipt_rule": "A receipt for a different operation, candidate head, merge identity, protected readback, review subject, or staffing authority does not alter this state."
   },
   "execution_standard": {
     "identifier": "GCL-CEX-01",
-    "status": "BSD-001 bootstrap pilot pending registry admission",
-    "rule": "Repository records, exact protected identities, and exact-head evidence govern. Chat transcripts are context only."
+    "repository": "grandchallenge/gcl-standards",
+    "enforcement_anchor": "f20623dc6f8e8ef8c7c04ba4823f2773e2a0f407",
+    "status": "BSD-001 bootstrap pilot with protected receipt enforcement; registry admission pending",
+    "rule": "Repository records, exact protected identities, role-scoped logical review passes, and exact-head evidence govern. Chat transcripts are context only."
   }
 }
