@@ -134,6 +134,7 @@ jobs:
           lake env lean MathSolve/PNP/PolyBoundBridge.lean
           lake env lean MathSolve/PNP/SimulationOverhead.lean
           lake env lean MathSolve/PNP/ProgrammeMachine.lean
+          lake env lean MathSolve/PNP/ModelBridge.lean
           python ci/validate_formal_conjectures_targets.py
           PYTHONPATH=ci python -m unittest ci/test_formal_conjectures_targets.py -v
           python -m json.tool formal_sources/formal_conjectures/MS-FC-WP00.json >/dev/null
