@@ -37,43 +37,20 @@ estimates that act on the remaining blockers.
 
 Selected target: `NS-CI-R014-A2`, unproved.
 
-Protected L5 predecessor: merge
-`e58e92265e895ff560e542bc78ab0ffd853fb1e8`, result
-`L5_CANDIDATE_ROUTE_TERMINATED__CHARACTERIZED_BLOCKER` for the buffered
-pre-triangle strict-tail candidate.
-
-Current candidate result:
+Protected L5-4 predecessor: merge
+`14aad98fbbbcf9f0ed780b9aea5b244f189c3947`, result
 
 ```text
 ZERO_GAP_REDUCTION_PROVED__STATIC_B1_ENDPOINT_SEPARATED__PARABOLIC_B3_ROUTE_REDUCED
 ```
 
-The pre-triangle strict-tail estimates in fact require no fixed gap `K`.
-Because the defining threshold is valid for every `p>Q`, one may use the exact
-two-block decomposition
+The exact pointwise split is
 
 ```math
-u=u_{\le Q}+u_{>Q}.
+u=u_{\le Q}+u_{>Q},
 ```
 
-The strict tail satisfies
-
-```math
-||u_{>Q}||_4^4
-lesssim
-c_0^2 nu^2 sum_{p>Q} A_p,
-```
-
-and
-
-```math
-||u_{>Q}||_6^4
-lesssim
-c_0^(8/3) nu^(8/3)
-(sum_{p>Q} lambda_p^2 A_p)^(2/3).
-```
-
-Together with the protected low estimate this gives
+with
 
 ```math
 ||u||_6^4
@@ -88,52 +65,114 @@ fixed-base remainder,
 where
 
 ```math
-W_{<=Q}=sum_{r<=Q} lambda_r^2 A_r,
+W_{<=Q}=sum_{p<=Q} lambda_p^2 A_p,
 qquad
 Z_{>Q}=sum_{p>Q} lambda_p^2 A_p.
 ```
 
-The standalone B2 near-threshold blocker is therefore removed from this
-pointwise L5 norm representation: `p=Q` stays low and every `p>Q` is strict
-high. This does not remove near-neighbour terms from other dynamic PDE
-identities.
+The standalone B2 near-threshold cluster is removed from this pointwise L5
+representation. B1 and B3 remain the analytic endpoints.
 
-A threshold-compatible static shell fixture has finite `Lambda L2` occupancy,
-finite Leray shell dissipation, and bounded kinetic energy while
+### B1 dynamic audit
 
-```math
-integral W_{<=Q} dt = infinity.
+The first equation-specific B1 successor has result
+
+```text
+B1_DIRECT_DYNAMIC_ROUTE_REDUCED__SELECTOR_FREE_REPAIR_EQUALS_CLOSED_L4_COLUMN
 ```
 
-Thus the exact low endpoint also requires equation-specific correlation; it is
-not recoverable by another scalar occupancy/Holder rearrangement.
+and is recorded in
+`work_packages/NS_CI_R014_A2_L5_B1_COUPLED_ENSTROPHY.md`.
 
-The first parabolic attempt on the high endpoint was audited at `H1` level.
-The low--high transport leaves the unavoidable deformation coefficient
+For fixed low cutoff, the low enstrophy balance has viscous density comparable
+to `W_{<=q}`. Localizing it to the moving active selector produces both a
+selected, non-conservative enstrophy-production term and B4 selector variation.
+
+Coupling the complementary high enstrophy balance cancels selector variation
+exactly. The remaining low-mode coefficient is
 
 ```math
-G_q=||grad u_{<=q-2}||_infinity.
+f(t)=sup_{p<=Q(t)} lambda_p ||u_p(t)||_infinity.
 ```
 
-Localizing a fixed-cutoff tail to the active set recreates the uncontrolled
-selector-boundary ledger; keeping the cutoff fixed loses strict-high absorption
-on `{Q>q}`; a backward Duhamel window requires defining-threshold parabolic
-residence. Hence the first viscosity/maximal-regularity B3 family reduces to a
-new low-mode input plus the already protected B4/L3 interfaces rather than
-closing autonomously.
+Define
+
+```math
+D_3(t)
+=
+sum_{p<=Q}
+(lambda_p/Lambda)^3 A_p.
+```
+
+Then
+
+```math
+f^2 lesssim Lambda^3 D_3,
+```
+
+so Leray gives only `D_3^(1/2) in L2_t`, while `Lambda in L2_t` would require
+`D_3^(1/2) in L4_t` to close this product directly.
+
+More decisively,
+
+```math
+nu Lambda D_3
+=
+sum_{p<=Q}
+(lambda_p/Lambda)^2 lambda_p D_p
+=S_Q,
+qquad D_p=nu A_p.
+```
+
+This is exactly the protected L4 weighted-column quantity, including its
+`p=Q` active diagonal. The selector-free B1 repair therefore does not furnish a
+new L4 reopening theorem and is terminated.
+
+### B3 direct L6 transport audit
+
+The next distinct B3 candidate has result
+
+```text
+DIRECT_L6_TRANSPORT_ROUTE_REDUCED_TO_LOW_DEFORMATION_COMMUTATOR
+```
+
+and is recorded in
+`work_packages/NS_CI_R014_A2_L5_B3_L6_TRANSPORT_AUDIT.md`.
+
+For fixed `q`, with
+
+```math
+V_q=P_{>q}u,
+qquad
+L_q=P_{<=q-2}u,
+```
+
+the unprojected low--high transport cancels exactly against `|V_q|^4 V_q`.
+But the actual equation contains `P_{>q} mathbb P(L_q dot grad V_q)`. The exact
+transport cancellation leaves a high-pass/Leray projection residual. Shellwise
+commutator localization contributes a kernel moment `lambda_p^-1` and a
+high-shell derivative `lambda_p`; these cancel, leaving
+
+```math
+G_q=||grad L_q||_infinity
+```
+
+with no decaying high-frequency gain. Thus direct projected `L6` transport does
+not escape the same low-deformation interface that blocked the first H1
+parabolic route.
 
 Residual blockers:
 
-- B1 low core: control
-  `sum_r lambda_r^2 integral_{Q>=r} A_r dt` by an actual Navier--Stokes
-  correlation/depletion mechanism;
-- B2 near threshold: no standalone blocker in the current pointwise L5
-  decomposition; retained only as a possible dynamic finite-neighbour term;
+- B1 low core: no surviving direct moving-enstrophy route; the selector-localized
+  version hits B4 and the selector-free coupled version is exactly closed L4
+  `S_Q`;
+- B2 near threshold: no standalone blocker in the pointwise L5 decomposition;
 - B3 strict tail: control
   `integral (sum_{p>Q} lambda_p^2 A_p)^(2/3) dt` or find a signed/nonlinear
-  identity avoiding it;
-- B4 selector motion: unchanged whenever a dynamic argument differentiates or
-  localizes the moving cutoff.
+  identity avoiding it. Moving-tail H1, fixed-tail bad-set, residence-Duhamel,
+  and direct projected-L6 transport are now characterized;
+- B4 selector motion: avoidable only when complementary moving balances are
+  coupled; otherwise unchanged.
 
 MATHCERT remains `qualified_interface_only`; A2 and universal critical
 integrability are unproved.
@@ -147,29 +186,33 @@ integrability are unproved.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_RESTART.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_PRETRIANGLE_STRICT_TAIL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_ZERO_GAP_DYNAMIC_AUDIT.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_B1_COUPLED_ENSTROPHY.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_B3_L6_TRANSPORT_AUDIT.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
 - `grandchallenge/MATHSOLVE#24`
 - `grandchallenge/MATHSOLVE#59`
 
 ## Smallest safe next tranche
 
-B1-first. Test one genuine Navier--Stokes correlation/depletion estimate for
+B3 remains the only non-closed pointwise endpoint with room for a genuinely new
+mechanism. Do not repeat moving-tail H1 energy, fixed-tail bad-set splitting,
+threshold-residence Duhamel, direct projected-L6 transport, or the L4 weighted
+column.
 
-```math
-sum_r lambda_r^2
-integral_{Q>=r} A_r(t) dt.
-```
+The smallest admissible next proposition must act on one of:
 
-Do not return to static Holder, occupancy, energy-floor, or packet-counting
-rearrangements; the new low-core fixture separates those. A viable candidate
-must use the equation to decorrelate shell dissipation from the superlevel event
-`Q>=r` without importing `f in L1`, uniform `H1`, an LPS norm, or an L4
-active-diagonal hypothesis.
+1. a signed projection/pressure commutator identity that cancels the low
+   deformation coefficient before absolute values;
+2. an equation-specific packet/intermittency depletion theorem that controls
+   `Z_{>Q}` or `Z_{>Q}^{2/3}` from the selected hypothesis;
+3. a new nonlinear quantity whose evolution couples the strict-high threshold
+   to `Z_{>Q}` without selector variation or parabolic residence.
 
-If the B1 candidate fails, record the first exact PDE term that prevents the
-correlation estimate. Only then reconsider B3 through a mechanism genuinely
-different from moving-tail `H1` energy, fixed-tail bad-set splitting, or
-threshold-residence Duhamel.
+If each bounded candidate reduces to `G_Q`, `S_Q`, selector variation, or a
+residence assumption, record the exact reduction rather than reopening the
+corresponding closed lane.
 
 ## Material dependencies and boundaries
 
@@ -195,5 +238,5 @@ changed protected mathematical predecessor.
 ## Notes intentionally omitted
 
 This handoff intentionally omits constitutional doctrine, generic handoff
-instructions, L3/L4 history beyond their live reopening conditions, CI logs,
-and certification ceremony already controlled by their authoritative records.
+instructions, CI logs, and certification ceremony already controlled by their
+authoritative records.
