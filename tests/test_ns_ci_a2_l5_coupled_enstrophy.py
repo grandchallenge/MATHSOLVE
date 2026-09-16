@@ -6,7 +6,10 @@ class NSCIA2L5CoupledEnstrophyTests(unittest.TestCase):
     def test_weighted_d3_is_bounded_by_leray_dissipation(self) -> None:
         q = 8
         a = [Fraction((p + 1) ** 2, 1) for p in range(q + 1)]
-        d3 = sum(Fraction(2 ** (3 * (p - q)), 1) * a[p] for p in range(q + 1))
+        d3 = sum(
+            Fraction(1, 2 ** (3 * (q - p))) * a[p]
+            for p in range(q + 1)
+        )
         self.assertLessEqual(d3, sum(a))
 
     def test_l4_column_identity_is_exact(self) -> None:
