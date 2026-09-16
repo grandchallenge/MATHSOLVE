@@ -1,0 +1,100 @@
+name: UC WP07 functional-preorder replay
+
+on:
+  pull_request:
+    paths:
+      - 'MathSolve/UnionClosed/FunctionalPreorderBridge.lean'
+      - 'MathSolve.lean'
+      - 'domains/union_closed/WP07_functional_preorder_bridge/**'
+      - 'handoffs/UC-001/**'
+      - '.github/workflows/uc-wp07-functional-preorder.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'MathSolve/UnionClosed/FunctionalPreorderBridge.lean'
+      - 'MathSolve.lean'
+      - 'domains/union_closed/WP07_functional_preorder_bridge/**'
+      - 'handoffs/UC-001/**'
+      - '.github/workflows/uc-wp07-functional-preorder.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  local-lean:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Assert exact subject checkout
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+      - uses: grandchallenge/lean-action@138a564e38a62ce545e8d47d86a97628463aced4
+      - name: Replay WP07 theorem surface
+        run: |
+          lake env lean MathSolve/UnionClosed/FunctionalPreorderBridge.lean
+          if grep -nE '^[[:space:]]*(sorry|admit)([[:space:]]|$)' MathSolve/UnionClosed/FunctionalPreorderBridge.lean; then
+            echo 'proof placeholder found' >&2
+            exit 1
+          fi
+          if grep -nE '^[[:space:]]*axiom[[:space:]]' MathSolve/UnionClosed/FunctionalPreorderBridge.lean; then
+            echo 'explicit axiom found' >&2
+            exit 1
+          fi
+
+  upstream-source-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Assert exact subject checkout
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+      - name: Acquire exact avg-rare source
+        run: |
+          git clone --filter=blob:none https://github.com/kashiwabarakenji/avg-rare.git /tmp/avg-rare
+          cd /tmp/avg-rare
+          git checkout --detach 21451877e9996a295bbc1ec25856d07fa302d48c
+          test "$(git rev-parse HEAD)" = '21451877e9996a295bbc1ec25856d07fa302d48c'
+          test "$(git rev-parse 49c3f1d96ca8518d16e203fd0429ac1216838a4f^{commit})" = '49c3f1d96ca8518d16e203fd0429ac1216838a4f'
+          test "$(git rev-list --count 49c3f1d96ca8518d16e203fd0429ac1216838a4f..HEAD)" = '2'
+          test "$(git rev-parse HEAD:lean-toolchain)" = '14a44240f0b7a83ef66c40a0a0db083992c0673d'
+          test "$(git rev-parse HEAD:lakefile.lean)" = '333187d1d756741fbffb0657cb64a28640f4b63f'
+          test "$(git rev-parse HEAD:lake-manifest.json)" = '12c14a66a9b4641a51e0f1695d2bfb0130ca6615'
+      - name: Install elan
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Independent exact-revision update and build
+        working-directory: /tmp/avg-rare
+        run: |
+          lake update
+          lake build
+      - name: Placeholder and explicit-axiom scan
+        working-directory: /tmp/avg-rare
+        run: |
+          if grep -R -nE --include='*.lean' '^[[:space:]]*(sorry|admit)([[:space:]]|$)' AvgRare; then
+            echo 'active sorry/admit placeholder found' >&2
+            exit 1
+          fi
+          if grep -R -nE --include='*.lean' '^[[:space:]]*axiom[[:space:]]' AvgRare; then
+            echo 'explicit axiom declaration found' >&2
+            exit 1
+          fi
+      - name: Main theorem axiom report
+        working-directory: /tmp/avg-rare
+        run: |
+          cat > /tmp/AvgRareAxiomAudit.lean <<'EOF'
+          import AvgRare.Secondary.MainStatement
+          #check AvgRare.main_nds_nonpos
+          #print axioms AvgRare.main_nds_nonpos
+          EOF
+          lake env lean /tmp/AvgRareAxiomAudit.lean
