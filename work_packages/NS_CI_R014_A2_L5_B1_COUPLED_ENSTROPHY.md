@@ -15,12 +15,13 @@
 This tranche tests the smallest safe B1 successor from L5-4. It uses finite-shell
 Navier--Stokes enstrophy balances rather than another static rearrangement. The
 direct moving-low-enstrophy identity recreates selector variation and a selected
-non-conservative enstrophy-production term. Coupling the complementary finite
-high block cancels selector variation algebraically before any infinite-shell
-limit, but the resulting low-amplitude coefficient reduces exactly to the
-already protected L4 weighted-column quantity `S_Q`, including its active
-diagonal. This B1 candidate family is therefore terminated without reopening
-L4.
+non-conservative enstrophy-production term. On a genuinely finite Galerkin
+system, the complementary finite high block cancels selector variation
+algebraically. Passing that cancellation to the actual unbounded Leray--Hopf
+selector is not claimed. Even granting such a selector-free repair, the
+resulting low-amplitude coefficient reduces exactly to the already protected L4
+weighted-column quantity `S_Q`, including its active diagonal. This B1 candidate
+family is therefore terminated without reopening L4.
 
 ## 1. Imported interface
 
@@ -134,45 +135,62 @@ This exposes two equation-level obligations before any estimate:
 Thus the direct localized B1 identity does not furnish the desired correlation
 estimate.
 
-## 3. Finite-shell complementary coupling cancels selector variation
+## 3. What complementary coupling does and does not cancel
 
-The selector term can be removed algebraically without assuming a global H1
-identity for a Leray--Hopf solution. Fix a terminal shell `N`. For `q<N`, set
+For a Galerkin system with terminal shell `N`, let `Q_N(t)` be its own
+finite-spectrum dissipation selector. Then `Q_N` takes values in a finite shell
+set. For `q<=N`, define
 
 ```math
-\mathcal E_{q<p\le N}
-=\frac12\sum_{q<p\le N}\lambda_p^2\|P_pu\|_2^2.
+\mathcal E^{(N)}_{q<p}
+=\frac12\sum_{q<p\le N}\lambda_p^2\|P_pu^{(N)}\|_2^2.
 ```
 
-Then exactly
+Exactly,
 
 ```math
-\mathcal E_{\le q}+\mathcal E_{q<p\le N}
-=\mathcal E_{\le N},
+\mathcal E^{(N)}_{\le q}+\mathcal E^{(N)}_{q<p}
+=\mathcal E^{(N)}_{\le N},
 ```
 
-and the right side is independent of `q`. Therefore, for every finite set of
-active selectors,
+which is independent of `q`. With
 
 ```math
-\sum_q\int
-(\mathcal E_{\le q}+\mathcal E_{q<p\le N})\,d\chi_q
+\chi^{(N)}_q=1_{\{Q_N=q\}},
+```
+
+the finite selectors partition time, so
+
+```math
+\sum_{q\le N}\int
+(\mathcal E^{(N)}_{\le q}+\mathcal E^{(N)}_{q<p})
+\,d\chi^{(N)}_q
 =
-\int\mathcal E_{\le N}\,d\left(\sum_q\chi_q\right)
+\int\mathcal E^{(N)}_{\le N}
+\,d\left(\sum_{q\le N}\chi^{(N)}_q\right)
 =0.
 ```
 
-This is a finite-dimensional algebraic identity. It does not assert global H1
-regularity, bounded variation of the actual dissipation wavenumber, or passage
-of a full enstrophy equality to an arbitrary Leray--Hopf solution. Its role is
-only to show that the B4 term is not intrinsic to a candidate that keeps both
-complementary finite blocks.
+This is exact finite-dimensional algebra. It shows that selector variation is
+not intrinsic to a candidate that keeps both complementary blocks on the same
+finite system.
 
-After this cancellation, the finite-shell nonlinear enstrophy production still
-contains the three-dimensional stretching/low-deformation contribution. The
-standard dissipation-wavenumber split absorbs strictly high interactions when
-its threshold constant is sufficiently small, but terms carrying a low mode
-leave the coefficient
+It does **not** show that the actual selectors `chi_q=1_{Q=q}` admit the same
+cancellation after `N->infinity`. If one truncates the actual selector at
+`q<=N`, then
+
+```math
+\sum_{q\le N}\chi_q=1_{\{Q\le N\}},
+```
+
+whose distributional derivative is precisely a terminal selector-boundary term.
+Controlling its limit is another B4-type issue. This tranche therefore does not
+claim an active-set variation theorem.
+
+For falsification of the proposed B1 repair, however, we may grant the strongest
+optimistic case: suppose a justified approximation/limit removes selector
+variation. The remaining nonlinear enstrophy production still contains the
+three-dimensional stretching/low-deformation coefficient
 
 ```math
 f(t)
@@ -283,9 +301,9 @@ pointwise, with no inequality and no loss. The `p=Q` term is exactly
 `lambda_Q D_Q`, so integration over the active sets reproduces the protected L4
 active diagonal.
 
-Consequently the selector-free B1 repair is not a new decorrelation theorem. It
-is algebraically the closed L4 weighted-column interface. No L4 reopening
-condition is established here.
+Consequently, even after granting a selector-free coupling step, the B1 repair
+is not a new decorrelation theorem. It is algebraically the closed L4
+weighted-column interface. No L4 reopening condition is established here.
 
 ## 6. Static adversarial check for the half-power gap
 
@@ -343,8 +361,13 @@ The bounded family has the reduction
 MOVING_LOW_ENSTROPHY
     -> selected non-conservative enstrophy production + B4 selector variation;
 
-FINITE_COMPLEMENTARY_COUPLING
-    -> selector cancellation at terminal shell N
+FINITE_GALERKIN_COMPLEMENTARY_COUPLING
+    -> exact selector cancellation for Q_N only;
+
+ACTUAL_SELECTOR LIMIT
+    -> terminal selector boundary unless separately controlled;
+
+EVEN GRANTING SELECTOR-FREE LIMIT
     -> low coefficient f
     -> exact factor nu Lambda D_3 = S_Q
     -> protected L4 active diagonal.
@@ -368,5 +391,5 @@ is audited separately in `NS_CI_R014_A2_L5_B3_L6_TRANSPORT_AUDIT.md`.
 
 A2 remains unproved. This tranche neither proves nor refutes the Navier--Stokes
 target, does not reopen L4, does not establish `f in L1_t`, assumes no global H1
-identity for the Leray--Hopf solution, and creates no MATHCERT certification or
-claim promotion.
+identity or selector convergence for the Leray--Hopf solution, and creates no
+MATHCERT certification or claim promotion.
