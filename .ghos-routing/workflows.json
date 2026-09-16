@@ -9,22 +9,13 @@
       "provider": "github",
       "durable_wake_mechanism": "repository-bound GitHub Actions event queue",
       "state_store": "GitHub Actions workflow run and job records bound to repository and commit SHA",
-      "supported_features": [
-        "AUTONOMOUS_WAKE",
-        "EXTERNAL_REUSABLE_JOB",
-        "EXTERNAL_WAIT",
-        "NON_RECONCILABLE_MUTATION",
-        "OPAQUE_EXECUTION",
-        "SCHEDULED",
-        "SECRET_CREDENTIAL",
-        "UNATTENDED_DISPATCH",
-        "WRITE_CAPABLE"
-      ]
+      "supported_features": ["AUTONOMOUS_WAKE", "EXTERNAL_REUSABLE_JOB", "EXTERNAL_WAIT", "NON_RECONCILABLE_MUTATION", "OPAQUE_EXECUTION", "SCHEDULED", "SECRET_CREDENTIAL", "UNATTENDED_DISPATCH", "WRITE_CAPABLE"]
     }
   ],
   "workflows": [
     {"path":".github/workflows/bsd-r5-lift-equivariant-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/bsd-r5-prim-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
+    {"path":".github/workflows/bsd-r5-recip-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/bsd-r5-res-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/bsd-wp60i-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/bsd-wp60j-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
@@ -49,14 +40,5 @@
     {"path":".github/workflows/otp-i-ramsey-handoff.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/vgse-wp00.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"}
   ],
-  "claim_boundaries": {
-    "constitutional": false,
-    "merge": false,
-    "certification": false,
-    "production": false,
-    "publication": false,
-    "mathematical_claim": false,
-    "claim_promotion": false,
-    "commercial": false
-  }
+  "claim_boundaries": {"constitutional":false,"merge":false,"certification":false,"production":false,"publication":false,"mathematical_claim":false,"claim_promotion":false,"commercial":false}
 }
