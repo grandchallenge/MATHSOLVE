@@ -149,8 +149,8 @@ Perry's theorem packages those steps, including twisted perfect-complex deformat
 Accordingly, the live mathematical question becomes:
 
 ```text
-P4-G: Does Markman's exact CM4 object E_0 admit a finite derived symmetry
-      G for which E_0 is weakly G-semiregular?
+P4-G: Does a same-Chern-character CM4 representative admit a finite derived symmetry
+      G for which the resulting object is weakly G-semiregular?
 ```
 
 ## 5. Source reconnaissance for finite symmetry
@@ -180,7 +180,7 @@ finite equivariance of a representative: available;
 weak equivariant semiregularity: not established.
 ```
 
-### 5.2 Second secant factor
+### 5.2 Second secant factor in the source
 
 The second CM4 class in Markman Example 11.2.7 is
 
@@ -190,63 +190,131 @@ beta' = g^*Theta - (q/6)(g^{-1})^*(Theta^3).
 
 Markman constructs a simple coherent sheaf with Chern character an integer multiple of `beta'` by choosing `N` generic translates of another secant sheaf, intersecting them with a curve `C'`, and gluing along intersection fibers.
 
-The published construction does not supply:
+The published construction does not supply a finite translation subgroup preserving the whole gluing datum or a weak-semiregularity proof. That omission matters for the **source object**, but finite equivariance of a same-ray replacement can be obtained without reconstructing the gluing.
 
-- a finite translation subgroup preserving the whole gluing datum;
-- a linearization of the resulting sheaf under such a subgroup;
-- injectivity of semiregularity on invariant `Ext^2`;
-- weak semiregularity of an equivariant object in an invariant category.
+## 6. Orbit-equivariant replacement
 
-This second factor is therefore currently the sharper symmetry bottleneck.
+### HC-R021-L003 — finite-equivariant same-ray replacement
 
-### 5.3 The sixfold analogy does not silently transfer
+Let `F` be any coherent sheaf or perfect complex on a complex abelian variety `X` and let `H subset X` be a finite subgroup acting by translations. Define
+
+```text
+Ind_H(F) = direct_sum_{h in H} tau_h^* F.
+```
+
+Then:
+
+1. `Ind_H(F)` admits a canonical `H`-linearization by reindexing the summands;
+2. translations act trivially on singular cohomology, so
+
+```text
+ch(Ind_H(F)) = |H| ch(F);
+```
+
+3. if `F` is gluable (`Ext^{<0}(F,F)=0`) and is a coherent sheaf, the orbit sum is again a coherent sheaf and hence gluable;
+4. every homogeneous secant/Chern-character condition depending only on the ray of `ch(F)` is unchanged.
+
+### Proof
+
+For `k in H`,
+
+```text
+tau_k^* Ind_H(F)
+  = direct_sum_{h in H} tau_{k+h}^* F
+  ~= direct_sum_{h in H} tau_h^* F,
+```
+
+where the final isomorphism is the permutation `h -> k+h`. These permutation isomorphisms satisfy the group law, giving an `H`-linearization.
+
+For every translation `tau_h` of an abelian variety, `tau_h^*` is the identity on rational singular cohomology. Therefore
+
+```text
+ch(tau_h^*F)=ch(F)
+```
+
+and additivity of the Chern character gives statement 2. Statements 3 and 4 follow from finite direct sums and homogeneity.
+
+QED.
+
+### Application to the CM4 pair
+
+Apply `HC-R021-L003` independently to both genus-four secant factors. In particular, for the source sheaf `E'` with
+
+```text
+ch(E') = N beta',
+```
+
+and any finite translation subgroup `H_2`, the orbit sum has
+
+```text
+ch(Ind_H2(E')) = |H_2| N beta'.
+```
+
+This remains on the exact `beta'` ray used by Markman's nonzero-Weil-projection criterion. Likewise the first secant factor can be replaced by a finite-equivariant orbit sum without moving its Chern-character ray.
+
+Hence **finite equivariance and linearization are not the remaining obstruction**. The orbit-sum construction closes `P4-G2` at the level needed to preserve the cohomological secant criterion.
+
+## 7. Why orbit equivariance does not solve P4
+
+`HC-R021-L003` must not be promoted into a semiregularity statement.
+
+For an induced orbit object, equivariant self-Ext contains morphisms among the orbit summands. Via induction/forgetful adjunction it is controlled by terms of the form
+
+```text
+Ext^2(F, tau_h^*F),  h in H,
+```
+
+not merely by a small invariant subspace of `Ext^2(F,F)`. A canonical linearization therefore does not imply that the semiregularity map in the invariant category is injective.
+
+Equivalently, the implication
+
+```text
+finite H-linearization
+    -/-> weak H-semiregularity
+```
+
+is forbidden.
+
+This matters especially for an external product. Its degree-two self-Ext has Kunneth contributions of the forms
+
+```text
+Ext^2(F_1,F_1) tensor Ext^0(F_2,F_2),
+Ext^1(F_1,F_1) tensor Ext^1(F_2,F_2),
+Ext^0(F_1,F_1) tensor Ext^2(F_2,F_2).
+```
+
+Even factorwise control of invariant degree-two Ext does not automatically control the mixed `Ext^1 tensor Ext^1` term.
+
+The all-orders question is therefore localized one step further:
+
+```text
+P4-G3: find a genuinely useful finite symmetry/representative for which the
+       total external-product or Fourier-Mukai object is weakly G-semiregular.
+```
+
+## 8. Sixfold analogy and exact non-transfer
 
 In the earlier split-Weil sixfold case, Markman explicitly proves that the relevant finite group action captures the image of the obstruction homomorphism and that semiregularity is injective on the invariant `Ext^2` subspace. Perry then transports that finite group through the derived equivalence and applies his theorem directly.
 
 Those exact facts are not presently proved for the CM4 genus-four pair. Importing them would be a new hidden theorem and is forbidden by `HC-FP-007`.
 
-## 6. Why naive group averaging is insufficient
-
-Given a sheaf `F`, one can force a finite-group equivariant object by replacing it with an orbit sum
+The useful sixfold template is therefore not “add a finite group”; it is:
 
 ```text
-Ind_G(F) = direct_sum_{g in G} g^*F.
+construct a finite symmetry whose invariant Ext^2 is exactly small enough,
+then prove semiregularity is injective on that controlled invariant space.
 ```
 
-Translations act trivially on cohomology, so this only scales the Chern character and can preserve a secant-plane condition. But this construction does not imply weak equivariant semiregularity.
-
-The invariant deformation space of the induced object contains morphisms between distinct orbit summands. Equivariance therefore does not by itself make
-
-```text
-sigma : Ext^2(Ind_G(F),Ind_G(F))^G -> HH_{-2}
-```
-
-injective. The required statement is a deformation-theoretic property, not a representation-theoretic averaging identity.
-
-No promotion is allowed from
-
-```text
-G-equivariant
-```
-
-to
-
-```text
-weakly G-semiregular.
-```
-
-## 7. Refined P4 sub-obligations
+## 9. Refined P4 sub-obligations
 
 The shortest current closure path is now:
 
 ```text
 P4-G0  Perry specialization HC-R021-L002                         [SOLVE-PROVED, NOT CERTIFIED]
    |
-   +--> P4-G1  choose a finite symmetry for a first secant representative
-   |            with the required alpha_0 Chern character          [PARTIAL: equivariant representative exists]
+   +--> P4-G1  finite-equivariant first-factor representative       [SOURCE / L003 AVAILABLE]
    |
-   +--> P4-G2  construct a compatible finite symmetry/linearization
-   |            for a beta' representative                          [OPEN]
+   +--> P4-G2  finite-equivariant beta'-ray representative          [SOLVE-PROVED BY L003]
    |
    +--> P4-G3  prove the outer product is weakly G-semiregular,
    |            or prove weak G-semiregularity directly after Phi   [OPEN]
@@ -258,23 +326,25 @@ P4-G0  Perry specialization HC-R021-L002                         [SOLVE-PROVED, 
    +--> P5     obtain one algebraic nonzero Weil class per fiber     [CONDITIONAL ON G5]
 ```
 
-`P4-G2` and `P4-G3` are the current material frontier.
+`P4-G3` is now the sole live algebraicity-transport obstruction on this route.
 
-## 8. Next mathematical tests
+## 10. Next mathematical tests
 
 Run these in order.
 
-1. **Symmetry reconstruction of Example 11.2.7.** Determine whether the generic-translate/gluing construction can be replaced by an orbit construction under a finite translation subgroup without changing the ray of `beta'` or destroying simplicity/gluability.
-2. **Invariant Ext calculation.** For any such equivariant replacement, compute the `G`-invariant part of `Ext^2` before attempting full Ext calculations.
-3. **Semiregularity restriction.** Compute the degree-two semiregularity map on that invariant subspace. A dimension obstruction already kills the route if the invariant source exceeds the available Hochschild target in the relevant grading.
-4. **Product criterion.** If both secant factors are equivariantly controlled, prove weak `G_1 x G_2`-semiregularity of the external product, including the mixed `Ext^1 tensor Ext^1` summand. Do not assume factorwise degree-two injectivity controls the mixed term.
-5. **Derived transport.** Only after step 4, transport the group through `Phi` as in Perry's sixfold argument and invoke Theorem 1.2.
+1. **Reject induced symmetries that do not shrink the obstruction space.** For the orbit-sum replacements of `L003`, compute the equivariant `Ext^2` through induction/forgetful adjunction. If the identity-sector kernel already contains a kernel of ordinary semiregularity, discard that group immediately.
+2. **Exploit the source cyclic quotient.** For the first factor, use Markman's `G_1`-invariant partial-normalization object from Example 8.2.3 rather than an arbitrary orbit sum and compute `Ext^2` in the quotient/invariant category.
+3. **Search for a non-induced second-factor symmetry.** Rebuild the `beta'` representative from orbit-stable geometric data only if this can genuinely reduce invariant `Ext^2`; mere orbit summation is no longer a useful target.
+4. **Control the product mixed term.** For any candidate `G_1 x G_2`, compute the invariant contribution of `Ext^1 tensor Ext^1`. Do not infer product semiregularity from degree-two factorwise injectivity.
+5. **Derived transport and Perry.** Only after weak equivariant semiregularity is established, transport the group through `Phi` as in Perry's sixfold argument and invoke Theorem 1.2.
 
-## 9. Claim boundary
+## 11. Claim boundary
 
 ```text
 HC-R021-P4_closed = false
 HC-R021-L002 = proved_in_solve_package_not_certified
+HC-R021-L003 = proved_in_solve_package_not_certified
+finite_equivariant_same_ray_representatives = available
 Perry_theorem_applicable_if_weak_G_semiregularity = true
 weak_G_semiregularity_of_CM4_object = open
 HC-R021-P5 = open
@@ -282,4 +352,4 @@ restricted_target_proved = false
 full_hodge_conjecture_proved = false
 ```
 
-This package does not claim that Perry's 2026 theorem proves the CM4 Hodge target. It proves that Perry eliminates the all-orders deformation problem **conditional on one exact equivariant-semiregularity property**, and it localizes the remaining construction debt to finite symmetry and invariant `Ext^2`/semiregularity for the genus-four CM4 secant pair.
+This package does not claim that Perry's 2026 theorem proves the CM4 Hodge target. It proves that Perry eliminates the all-orders deformation problem **conditional on one exact equivariant-semiregularity property**, and that finite equivariance itself is easy to supply without changing the secant rays. The remaining construction debt is precisely weak equivariant semiregularity of a useful genus-four CM4 representative.
