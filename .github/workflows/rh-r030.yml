@@ -1,0 +1,38 @@
+name: RH-R030 exact bridge
+
+on:
+  pull_request:
+    paths:
+      - "work_packages/RH_R030/**"
+      - "handoffs/RH-001/**"
+      - ".github/workflows/rh-r030.yml"
+  push:
+    branches: [main]
+    paths:
+      - "work_packages/RH_R030/**"
+      - "handoffs/RH-001/**"
+      - ".github/workflows/rh-r030.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  exact-first-bridge:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Assert exact subject checkout
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+      - name: Replay RH-R030 first bridge
+        run: |
+          python work_packages/RH_R030/verify_first_bridge.py
+          python -m json.tool work_packages/RH_R030/contract.json >/dev/null
