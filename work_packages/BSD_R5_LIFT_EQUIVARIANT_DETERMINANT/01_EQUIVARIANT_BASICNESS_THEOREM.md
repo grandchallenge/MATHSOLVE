@@ -2,65 +2,55 @@
 
 ## 1. Scope and protected inputs
 
-Let `E/Q` lie in the protected selected `BSD-R2-A1` lane and let
+Let `E/Q` lie in the protected selected `BSD-R2-A1` lane and put
 
 `T := T_2(E)`.
 
-Let `Q_infty/Q` be the cyclotomic `Z_2`-extension, `Q_n` its degree-`2^n` layer, and
+Let `Q_infty/Q` be the cyclotomic `Z_2`-extension, let `Q_n` be its degree-`2^n` layer, and put
 
-`Gamma_n := Gal(Q_n/Q)`.
-
-For `m>=1`, put
+`Gamma_n := Gal(Q_n/Q)`,
 
 `R_{m,n}:=Z/2^m[Gamma_n]`
 
-and let `T_{m,n}` be the usual cyclotomic equivariant deformation of `T/2^mT` over `R_{m,n}`.
+for `m>=1`. Let `T_{m,n}` denote the usual cyclotomic equivariant deformation of `T/2^mT` over `R_{m,n}`.
 
-The proof consumes the protected MATHSOLVE WP60M/R/S/T, WP32, WP35, WP46A and WP60A-A1 interfaces and the protected MATHFORGE BKS/Kataoka-Sano source audits through
+The proof consumes protected MATHSOLVE WP60M/R/S/T, WP32, WP35, WP46A and WP60A-A1, together with the protected Burns-Kurihara-Sano and Kataoka-Sano source audits at
 
 `grandchallenge/MATHFORGE@de2c83c2c440ac357b183b9e1018e9f69c58e1d9`.
 
-The published odd-prime theorems are not specialized by deleting their prime hypotheses. We replay their finite proof architecture and replace the small-prime-sensitive inputs explicitly.
+The published odd-prime theorems are not specialized by deleting their prime hypotheses. Their finite proof architecture is replayed with the small-prime-sensitive inputs replaced below.
 
-## 2. The coefficient rings
+## 2. Coefficient rings and the fixed rank-one quotient
 
 Choose a generator `gamma_n` of `Gamma_n` and write `X=gamma_n-1`. Then
 
-`R_{m,n} ~= Z_2[X]/(2^m,(1+X)^(2^n)-1)`.
+`R_{m,n} ~= Z_2[[X]]/(2^m,(1+X)^(2^n)-1)`.
 
-The maximal ideal is
+Its maximal ideal is
 
 `m_{m,n}=(2,X)`
 
-and the residue field is `F_2`.
+and its residue field is `F_2`.
 
 ### Lemma `BSD-R5-EQUIV-RING-001`
 
-For every `m,n`, `R_{m,n}` is a commutative local zero-dimensional complete-intersection ring, hence Artinian Gorenstein. Its socle is one-dimensional over `F_2`.
+For every `m,n`, `R_{m,n}` is a commutative local zero-dimensional complete-intersection ring and hence Artinian Gorenstein. Its socle is one-dimensional over `F_2`.
 
 ### Proof
 
-`Z_2[[X]]` is regular local of dimension two. The element `2^m` is a non-zero-divisor. Modulo `2^m`, the polynomial `(1+X)^(2^n)-1` is monic of degree `2^n`, hence is a non-zero-divisor in `(Z/2^m)[[X]]`. Thus the displayed quotient is a zero-dimensional complete intersection and therefore Gorenstein.
+`Z_2[[X]]` is regular local of dimension two. The element `2^m` is a non-zero-divisor. Modulo `2^m`, the polynomial `(1+X)^(2^n)-1` is monic and is a non-zero-divisor. The quotient is therefore a zero-dimensional complete intersection and hence Gorenstein.
 
-Because `Gamma_n` is a finite `2`-group and the coefficient ring is local with residue characteristic two, the group ring is local with maximal ideal `(2,X)` and residue field `F_2`. A zero-dimensional local Gorenstein ring has one-dimensional socle. QED.
+Because `Gamma_n` is a finite `2`-group, the group ring over the local coefficient ring is local with maximal ideal `(2,X)` and residue `F_2`. A zero-dimensional local Gorenstein ring has one-dimensional socle. QED.
 
-Write `Soc(R_{m,n})` for this unique residual line.
-
-Reduction modulo `m_{m,n}` gives
+Write `Soc(R_{m,n})` for that line. Reduction modulo `m_{m,n}` gives
 
 `T_{m,n}/m_{m,n}T_{m,n} ~= E[2]`.
 
-Thus the residual representation is exactly the already protected irreducible `E[2]` module.
-
-## 3. The fixed rank-one `tau` quotient
-
-Protected WP60M fixes an odd multiplicative prime `ell` and an inertia element `tau in I_ell` with primitive upper-unipotent image on `T`.
-
-The cyclotomic `Z_2`-extension of `Q` is unramified at every odd prime. Therefore `tau` acts trivially on the `Gamma_n` group-ring factor.
+Protected WP60M fixes an odd multiplicative prime `ell` and an inertia element `tau in I_ell` whose action on `T` is primitive upper-unipotent. The cyclotomic `Z_2`-extension is unramified at `ell`, so `tau` acts trivially on the `Gamma_n` factor.
 
 ### Lemma `BSD-R5-EQUIV-TAU-002`
 
-For all `m,n`,
+For every `m,n`,
 
 `T_{m,n}/(tau-1)T_{m,n}`
 
@@ -68,188 +58,212 @@ is free of rank one over `R_{m,n}`.
 
 ### Proof
 
-On `T/2^mT`, protected WP60M gives a basis in which `tau` is the primitive upper unipotent. Hence
+Protected WP60M gives
 
 `(T/2^mT)/(tau-1)(T/2^mT) ~= Z/2^m`.
 
-Since `tau` fixes the cyclotomic factor, tensoring with `R_{m,n}` gives the asserted quotient. QED.
+Tensoring with the group-ring factor, on which `tau` acts trivially, gives the result. QED.
 
-## 4. Local and residual hypotheses not involving H3.2(iii)
+## 3. Local and residual hypotheses independent of H3.2(iii)
 
 The Weil pairing identifies `T^vee(1)` with `T`.
 
-For every finite extension `F/Q_q`, the group `E(F)[2^infinity]` is finite. Therefore a nonzero invariant vector in the free lattice `T` would generate compatible torsion points of unbounded `2`-power order, impossible. Hence
+For every finite extension `F/Q_q`, the group `E(F)[2^infinity]` is finite. A nonzero vector of the free lattice `T` fixed by `G_F` would yield compatible rational torsion points of unbounded `2`-power order. Hence
 
 `H^0(F,T)=0`.
 
-By local Tate duality,
+Local Tate duality then gives
 
 `H^2(F,T)=0`.
 
-This proves the selected literal-2 analogue of Kataoka-Sano Hypothesis 3.12 at all finite places entering the finite-layer diagram. The residual global invariants required by Hypothesis 3.13 vanish because protected WP12 gives irreducible nontrivial `E[2]`, and the Weil pairing gives the same statement for the residual dual.
+By Shapiro this gives the finite-place local `H^2` vanishing required in the equivariant finite-layer diagram for `T_{m,n}`. It is the selected literal-`2` replacement for the relevant use of Kataoka-Sano Hypothesis 3.12.
 
-Protected WP60T proves the Frobenius-injectivity condition corresponding to Hypothesis 3.16: for every derivative prime and `k>=0`, `Fr_q^(2^k)-1` is injective on `T`.
+Protected WP12 gives irreducible nontrivial `E[2]`, so both residual global invariant groups required by Hypothesis 3.13 vanish after the Weil self-duality identification.
 
-None of these statements asserts formal H3.2(iii).
+Protected WP60T proves the Frobenius-injectivity condition corresponding to Hypothesis 3.16: at every selected derivative prime and every `k>=0`, `Fr_q^(2^k)-1` is injective on `T`.
 
-## 5. Cyclotomic-layer cohomology defect
+None of these statements uses or repairs formal H3.2(iii).
 
-Protected WP60M proves that over the base field the failure of formal H3.2(iii) is exactly one order-two class and that this class is excluded by the fixed canonical local condition at `ell`.
-
-We now show that passage to a finite cyclotomic layer does not create a larger selected defect.
+## 4. The cyclotomic-layer restriction defect
 
 Let
 
-`H_{m,n}:=im(G_{Q_n} -> GL_2(Z/2^m))`.
+`V_m:=(Z/2^m)^2`,
 
-Full selected `2`-adic image gives
+`H_{m,n}:=im(G_{Q_n} -> GL_2(Z/2^m))`,
 
-`SL_2(Z/2^m) subset H_{m,n} subset GL_2(Z/2^m)`.
+`S_m:=SL_2(Z/2^m)`.
 
-Indeed `Q_n` is cut out through the cyclotomic character, which is the determinant of the Tate representation, so restricting to `G_{Q_n}` imposes only a determinant condition. Reduction modulo two is still
+Protected full `2`-adic image and the Weil-pairing identity `det rho = chi_cyc` imply
+
+`S_m subset H_{m,n} subset GL_2(Z/2^m)`.
+
+Indeed the finite real cyclotomic layer is cut out through the determinant character. Reduction modulo two is therefore still
 
 `SL_2(F_2)=GL_2(F_2) ~= S_3`.
 
-Put `V_m=(Z/2^m)^2` and `S_m=SL_2(Z/2^m)`.
-
 ### Lemma `BSD-R5-EQUIV-SL2-H1-003`
 
-For `m>=2`,
+For every `m>=2`,
 
 `H^1(S_m,V_m) ~= Z/2`.
 
-Its nonzero class restricts nontrivially to the primitive upper-unipotent subgroup generated by `tau`.
+Its unique nonzero class restricts nontrivially to the primitive upper-unipotent subgroup generated by `tau`.
 
 ### Proof
 
-Let `W_m=V_m[2]`. The central element `-I` lies in `S_m`. Exactly as in protected WP60M, comparison of a cocycle on `(-I)g` and `g(-I)` shows that every cohomology class can be represented by a cocycle with values in `W_m`, and the inclusion `W_m -> V_m` induces an injection on `H^1` because the residual natural module has no nonzero `S_3`-fixed vector.
+Let `W_m=V_m[2]`. The central element `-I` lies in `S_m`. The same normalization identity used in protected WP60M,
 
-Inflation-restriction for
+`2c(g)=(1-g)c(-I)`,
 
-`P_m=ker(S_m -> S_1)`
+shows that every `V_m`-valued cohomology class has a representative taking values in `W_m`. Because the residual natural `S_3` module has no fixed vector, the inclusion `W_m -> V_m` is also injective on `H^1`. Thus it is enough to bound `H^1(S_m,W_m)`.
 
-reduces the possible new classes to `S_3`-equivariant homomorphisms from the congruence filtration to the natural module. The first congruence quotient is `sl_2(F_2)` under conjugation and
+For
+
+`P_m=ker(S_m -> S_1)`,
+
+inflation-restriction and `H^1(S_3,W_m)=0` inject `H^1(S_m,W_m)` into
+
+`Hom(P_m,W_m)^(S_3)`.
+
+Use the congruence filtration `P_m(r)`. Its first quotient is
+
+`P_m/P_m(2) ~= sl_2(F_2)`
+
+under conjugation. Squaring through the deeper congruence layers, exactly as in the WP60M exponent-two argument, forces every equivariant homomorphism to an exponent-two target to factor through this first quotient. A direct `S_3`-equivariance calculation gives
 
 `dim_F2 Hom_{S_3}(sl_2(F_2),F_2^2)=1`.
 
-The same squaring/congruence-filtration argument used in WP60M kills every deeper contribution to an exponent-two target. Thus the cohomology has dimension at most one over `F_2`.
-
-The protected WP60M cocycle restricts to `S_m` and is nonzero on the primitive upper unipotent `tau`, so the upper bound is attained. QED.
+Hence `H^1(S_m,V_m)` has order at most two. The protected WP60M defect cocycle restricts to `S_m` and remains nonzero on the primitive upper unipotent `tau`; the bound is attained. QED.
 
 ### Lemma `BSD-R5-EQUIV-LAYER-H1-004`
 
-For `m>=2`,
+For every `m>=2`,
 
 `H^1(H_{m,n},V_m) ~= Z/2`,
 
 and its unique nonzero class restricts nontrivially to `tau`.
 
+For `m=1` the corresponding group is zero.
+
 ### Proof
 
-Because `V_m^{S_m}=0`, inflation-restriction for the normal subgroup `S_m` gives an injection
+Since `V_m^{S_m}=0`, inflation-restriction for `S_m normal H_{m,n}` gives an injection
 
-`H^1(H_{m,n},V_m) -> H^1(S_m,V_m)^{H_{m,n}/S_m}`.
+`H^1(H_{m,n},V_m) -> H^1(S_m,V_m)^(H_{m,n}/S_m)`.
 
-The target has order at most two by Lemma `SL2-H1-003`. The protected WP60M defect cocycle on `GL_2(Z/2^m)` restricts to `H_{m,n}` and remains nonzero because its restriction to `tau` is nonzero. Hence the group has order exactly two. QED.
+For `m>=2` the target has order at most two by the preceding lemma. The protected WP60M cocycle on `GL_2(Z/2^m)` restricts to `H_{m,n}` and remains nonzero on `tau`, so the group has order exactly two. At `m=1` the protected residual calculation is `H^1(S_3,F_2^2)=0`. QED.
 
-The same auxiliary cyclotomic `2^m` extension used in WP60M contributes no additional class: its extra central order-two subgroup acts trivially, while the relevant `2`-torsion module has no `H_{m,n}`-invariants. Thus the exact auxiliary-field restriction kernel at the `Q_n` layer is again the single class above.
+Now consider the exact BSS auxiliary field for the induced coefficient module. Its field of definition contains
 
-## 6. Shapiro and selected-Selmer exclusion
+`Q_n E[2^m]`.
 
-As a `G_Q` representation, `T_{m,n}` is the induced coefficient representation from `Q_n`. Shapiro's lemma identifies its global and local cohomology with the corresponding cohomology of `T/2^mT` over `Q_n`, compatibly with restriction and localization.
+The additional cyclotomic factor used in the BSS annihilator construction is already contained after `mu_{2^m}` except for a possible final degree-two step. Consequently the kernel
 
-At the fixed odd multiplicative prime `ell`, `Q_n/Q` is unramified. The inertia element `tau` therefore belongs to every relevant local decomposition group above `ell` and acts exactly as it does over `Q`.
+`N_{m,n}`
 
-The unique nonzero layer defect from Lemma `LAYER-H1-004` restricts nontrivially to `<tau>`. Every selected canonical primal and dual local condition at `ell` is unramified, exactly as in WP60M.
+of the auxiliary Galois group over `Q_n E[2^m]` is either trivial or central of order two, and it acts trivially on `V_m`.
+
+If it is nontrivial then
+
+`H^1(N_{m,n},V_m)=V_m[2]`.
+
+The `H_{m,n}`-fixed part of this module is zero because the residual action is the irreducible nontrivial `S_3` action. Inflation-restriction therefore gives the same `H^1` as Lemma `LAYER-H1-004`; the possible extra cyclotomic step creates no new class.
+
+Thus, at every cyclotomic layer, the exact auxiliary-field restriction kernel is zero for `m=1` and has one nonzero class for `m>=2`.
+
+## 5. Shapiro and selected-Selmer exclusion
+
+As a `G_Q` representation, `T_{m,n}` is the induced coefficient representation from `Q_n`. Shapiro identifies its global and local cohomology with the corresponding cohomology of `T/2^mT` over `Q_n`, compatibly with restriction and localization.
+
+At every place of `Q_n` above the fixed odd multiplicative prime `ell`, inertia is unchanged because `Q_n/Q` is unramified there. The unique nonzero layer defect therefore restricts nontrivially to the same `tau`.
+
+Every selected canonical primal and dual local condition at `ell` is unramified, exactly as in WP60M, and every selected auxiliary modification retains that condition.
 
 ### Theorem `BSD-R5-EQUIV-SELMER-RES-005`
 
-For every `m,n` and every selected canonical BSS/Kataoka-Sano auxiliary modification, restriction to the finite auxiliary field is injective on the actual modified primal and dual Selmer groups for `T_{m,n}`.
+For every `m,n` and every selected canonical BSS/Kataoka-Sano auxiliary modification, restriction to the exact finite auxiliary field is injective on the actual modified primal and dual Selmer groups for `T_{m,n}`.
 
-Formal H3.2(iii) is not asserted.
+Formal H3.2(iii) remains false for `m>=2` and is not asserted.
 
 ### Proof
 
-Under Shapiro, any class in the restriction kernel maps to the unique order-two layer defect. That defect violates the fixed local condition at every place above `ell`, while every selected modification retains that condition. Hence its intersection with every actual modified primal or dual Selmer group is zero. QED.
+The global restriction kernel is either zero or generated by the unique class above. That class violates the required local condition at every place above `ell`; hence it lies in neither selected modified primal nor selected modified dual Selmer group. QED.
 
 Record
 
 `P2_EQUIVARIANT_SELECTED_HYP32III_DEFECT_SELMER_EXTRANEOUS`.
 
-## 7. Socle localization and large products
+## 6. Socle localization, large products and core vertices
 
-Because `R_{m,n}` is zero-dimensional local Gorenstein, every nonzero finite `R_{m,n}`-module has nonzero socle. The socle of a free rank-one quotient is the unique line `Soc(R_{m,n}) ~= F_2`.
+Because `R_{m,n}` is local Artinian Gorenstein, every nonzero finite `R_{m,n}`-module has nonzero socle. For a free rank-one module, its socle is exactly the one-dimensional `F_2` line `Soc(R_{m,n})`.
 
-For a finite collection of socle classes in selected modified Selmer groups, Theorem `SELMER-RES-005` preserves their linear information after restriction. Projection through the rank-one `tau` quotient gives nonzero characters with values in `Soc(R_{m,n})`. Therefore the characteristic-two affine-fiber argument of protected WP60R applies verbatim: its geometry takes place in this one-dimensional `F_2` target, not in the whole coefficient ring.
+Selected canonical local conditions are cartesian under reduction to the residue field. This follows from the same finite Kummer/transverse definitions used in protected WP60R, together with Shapiro for the induced cyclotomic coefficient module. Thus socle classes in the full modified Selmer modules identify with residual `E[2]` classes satisfying the same selected local conditions.
 
-Consequently the protected pairwise-localization, odd-relation, injective-family, dual-killing and core-graph arguments replay with primes in the exact `R_{m,n}` auxiliary-prime set.
+Let `C` be a finite `F_2`-span of nonzero primal/dual socle classes used in a localization step. By Theorem `SELMER-RES-005`, restriction preserves `C`. After restriction, every class is an `F_2`-valued homomorphism into the residual part of `T_{m,n}`. Its nonzero image is an `S_3`-stable subspace of `E[2]`, hence all of `E[2]`. The rank-one `tau` quotient has one-dimensional residual kernel, so projection to its socle cannot kill the whole two-dimensional residual image.
+
+Therefore the quotient-character map is injective on every such finite span. Its target is the same one-dimensional `F_2` affine space used by protected WP60R. The WP60G/WP60H affine-fiber argument, pairwise localization, odd-relation criterion, injective-family construction and iterative dual-killing argument therefore replay over the exact finite auxiliary field for `R_{m,n}`.
+
+Choose enough exact-level primes so that the combined localization is injective on the socle of the relevant finite Selmer module. If the resulting full localization map had a nonzero kernel, that kernel would itself have nonzero socle, contradicting socle injectivity. Thus the localization is injective on the full module.
+
+The residual core-rank-one bookkeeping and WP60N exchange proof use only the residual self-dual `E[2]` structure and the just-established exact-level localization statements. Hence the selected core graph is connected.
+
+Finally, after iterative dual killing, the residual dual modified Selmer group is zero. Cartesian reduction and Nakayama imply that the full finite dual modified Selmer group is zero. The standard Gorenstein global-duality presentation then makes the primal core-vertex module finite free of the required rank.
 
 ### Theorem `BSD-R5-EQUIV-LARGE-006`
 
 For every `m,n`:
 
-1. there are sufficiently many large square-free auxiliary products for `T_{m,n}`;
-2. selected core vertices exist and the selected core graph is connected;
-3. the dual modified Selmer group can be killed by adjoining finitely many exact-level auxiliary primes.
-
-### Proof
-
-Apply the WP60R localization construction to socle classes using the preceding paragraph. If a localization map on a finite `R_{m,n}`-module had nonzero kernel, that kernel would have nonzero socle. Hence injectivity on the socle implies injectivity on the whole module. This is precisely the `large` condition. The residual core-rank-one bookkeeping and exchange proof are unchanged because the residue field and residual representation are the same `F_2` and `E[2]` as in WP60R. QED.
+1. sufficiently many large square-free auxiliary products exist;
+2. selected core vertices exist;
+3. the selected core graph is connected;
+4. at a selected core vertex the dual modified Selmer group vanishes and the primal modified Selmer group is finite free of the expected rank over `R_{m,n}`.
 
 Record
 
 `P2_EQUIVARIANT_SELECTED_LARGE_PRODUCTS_AND_CORE_GRAPH_AVAILABLE`.
 
-## 8. Determinant to Stark systems
+## 7. Real-place-corrected determinant to Stark systems
 
-Kataoka-Sano Proposition 3.23 requires the local `H^2` vanishing from Hypothesis 3.12, residual invariant vanishing from Hypothesis 3.13, and a large auxiliary product. Sections 4 and 7 provide those exact inputs at literal two.
+Kataoka-Sano Proposition 3.23 uses the finite-place local `H^2` vanishing, residual invariant vanishing, Poitou-Tate duality and a large auxiliary product. Sections 3 and 6 provide those inputs at literal two. Hence the source finite-free global presentation is available at every `m,n`.
 
-Thus, at a large product `a`,
+The remaining odd-prime simplification is archimedean. It must not be deleted.
 
-`H^1(O_{Q,S_a},T_{m,n})`
+Let
 
-is finite free over `R_{m,n}` of the expected rank, and the source two-term presentation of the global complex is available.
+`A_n:=Z_2[Gamma_n]`.
 
-The determinant/exterior-bidual algebra used to construct the horizontal determinant-to-Stark map is characteristic-independent. The only specifically odd-prime archimedean simplification must be corrected at `p=2`.
+Protected WP32 constructs the integral real-place comparison cone over `Z_2`. It is perfect and has finite degree-one and degree-two cohomology of the same order, with zero alternating `2`-adic determinant valuation. Inducing from the real places of `Q_n` gives the corresponding equivariant perfect correction over `A_n`.
 
-At a real place, protected WP32 proves
+The differentials in this induced correction are obtained from the base real-complex maps by extension of scalars; no augmentation-variable factor is introduced. Therefore its determinant factor lies in the central copy of `Z_2` inside `A_n`. WP32 says its `2`-adic valuation is zero, so that factor is a unit of `Z_2` and hence a unit of the local ring `A_n`.
 
-`H^1(R,T) ~= H^2(R,T)`
-
-in order and gives equal `Z_2` lengths. Over the totally real layer `Q_n`, the direct sums over real places are permutation-induced `Gamma_n` modules. Hence, when nonzero, both degree-one and degree-two correction modules are isomorphic as `R_{m,n}`-modules to the same residual regular module `F_2[Gamma_n]`. Their alternating Fitting/determinant ideal is therefore the unit ideal.
-
-No canonical unit generator is chosen or needed for lattice membership.
+Derived reduction `A_n -> R_{m,n}` preserves this unit determinant. Thus the real-place correction is retained at every finite group-ring stage but does not change the determinant lattice. No canonical choice of that unit is made.
 
 ### Theorem `BSD-R5-EQUIV-DET-STARK-007`
 
-After retaining the real-place comparison cone, the natural determinant-to-Stark map
+With the real-place comparison included, the finite determinant-to-Stark map
 
 `Pi_{m,n}: det^{-1}_{R_{m,n}} RΓ(O_{Q,S},T_{m,n}) -> SS_1(T_{m,n})`
 
-is an isomorphism of rank-one `R_{m,n}` modules up to the harmless unit identification contributed by the real-place correction. In particular its image lattice is unchanged.
+is an isomorphism of rank-one `R_{m,n}` modules. The archimedean comparison changes a generator, at most, by a unit and therefore does not change the image lattice.
+
+### Proof
+
+The characteristic-independent determinant/exterior-bidual construction is the source horizontal map. Proposition-3.23 freeness is supplied above. The only omitted odd-prime term is the real comparison; the preceding integral induction calculation shows its determinant is a unit before and after reduction. Thus the source determinant argument replays with that correction retained. QED.
 
 Record
 
 `P2_EQUIVARIANT_DETERMINANT_TO_STARK_ISOMORPHISM_AVAILABLE`.
 
-## 9. Stark to Kolyvagin systems
+## 8. Stark to Kolyvagin regulator
 
-The proof of the regulator-isomorphism clause of BSS Theorem 5.2 uses core-vertex freeness, connectedness, finite-singular comparison and the localization mechanism. Protected WP60R replayed every small-prime-sensitive use at literal two.
+The regulator-isomorphism clause of BSS Theorem 5.2 uses the local Gorenstein coefficient structure, free rank-one finite/transverse local modules, restriction/localization control, core-vertex freeness, finite-singular comparison and connectedness of the core graph. Protected WP60R isolated and repaired every characteristic-two-sensitive use of this proof over `Z/2^m`.
 
-For `R_{m,n}`, the same proof uses only:
-
-- local zero-dimensional Gorenstein structure;
-- residue field `F_2`;
-- free rank-one finite/transverse local modules;
-- selected restriction injectivity;
-- large/core vertices and their freeness;
-- connected core graph.
-
-Sections 2, 3, 6, 7 and 8 supply these inputs. The principal-ideal property used by WP60R only for its stronger higher-Fitting equality clause is not used for regulator isomorphism.
+Sections 2, 5 and 6 establish the corresponding inputs over `R_{m,n}`. The characteristic-independent exterior-bidual and finite-singular algebra then replays unchanged. The principal-ideal property used in WP60R only for stronger higher-Fitting equality clauses is not required for the regulator isomorphism.
 
 ### Theorem `BSD-R5-EQUIV-REGULATOR-008`
 
-For every `m,n`, the selected rank-one regulator
+For every `m,n`,
 
 `Reg_{m,n}: SS_1(T_{m,n}) -> KS_1(T_{m,n})`
 
@@ -259,39 +273,39 @@ Record
 
 `P2_EQUIVARIANT_SELECTED_REGULATOR_ISOMORPHISM_AVAILABLE`.
 
-## 10. Euler-system derivative and first component
+## 9. Equivariant Kato derivative
 
-Protected WP60T establishes the literal-two BSS derivative architecture without the false infinite H3. The operative hypotheses are the Euler-system tower, residual `H^0=0`, the selected derivative-prime set, and Frobenius injectivity. Section 4 verifies the corresponding conditions here, and the exact WP60R prime set remains available by Section 7.
+Protected WP60T proves the literal-two rank-one BSS derivative architecture without infinite H3. Its operative inputs are the Euler-system tower, residual invariant vanishing, an admissible positive-density derivative-prime set and Frobenius injectivity.
 
-The derivative construction is functorial under the finite quotient
-
-`Lambda -> R_{m,n}`.
-
-Apply it to the protected integral Kato Euler system.
+The residual module of `T_{m,n}` is still `E[2]`; Sections 3 and 6 give the invariant/localization inputs and protected WP60T gives the Frobenius condition. The derivative construction is natural for the finite coefficient quotients of the cyclotomic Iwasawa deformation. Apply it to the protected integral Kato Euler system.
 
 ### Theorem `BSD-R5-EQUIV-KATO-DERIVATIVE-009`
 
-For every `m,n` there is a selected Kato-derived element
+For every `m,n` there is a selected element
 
 `kappa_{m,n}^{Kato} in KS_1(T_{m,n})`
 
-whose first component is exactly
+with first component
 
 `(kappa_{m,n}^{Kato})_1 = z_{Q_n} mod 2^m`.
 
-These elements are compatible under coefficient reduction in `m` and under the cyclotomic norm/corestriction maps in `n`.
+The family is compatible under coefficient reduction in `m` and the cyclotomic norm/corestriction transition in `n`.
+
+### Proof
+
+The literal-two derivative relations are those protected in WP60T. Finite quotient functoriality gives the `m` transitions. Kato's Euler-system norm relation and functoriality of the derivative construction give the `n` transitions. The first component has no derivative operator and is the original Euler-system class, exactly as in protected WP60T and the admitted Kataoka-Sano finite diagram. QED.
 
 Record
 
 `P2_EQUIVARIANT_KATO_FIRST_COMPONENT_AND_COMPATIBILITY_AVAILABLE`.
 
-## 11. Finite basicness and cyclotomic determinant membership
+## 10. Finite basicness and the cyclotomic inverse limit
 
-Combine Theorems `DET-STARK-007`, `REGULATOR-008`, and `KATO-DERIVATIVE-009`. For every `m,n`, the finite-layer Kato class belongs to the image of
+For every `m,n`, combine Theorems `DET-STARK-007`, `REGULATOR-008` and `KATO-DERIVATIVE-009`. The finite-layer Kato class belongs to the image of
 
 `det^{-1}_{R_{m,n}} RΓ(O_{Q,S},T_{m,n}) -> H^1(O_{Q,S},T_{m,n})`.
 
-The maps used in all three stages are natural under the quotient maps among the `R_{m,n}`. The compatible finite determinant preimages therefore define an element in the inverse determinant line of the cyclotomic complex. Equivalently, the cyclotomic Kato zeta class is basic in the sense of the protected Kataoka-Sano architecture.
+All three maps are natural in the finite quotient maps among the `R_{m,n}`. Since the Kato-derived Kolyvagin elements are compatible, applying the inverse regulator and inverse determinant-to-Stark isomorphisms produces a compatible family of determinant preimages. Passing to the inverse limit gives the cyclotomic determinant preimage.
 
 ### Theorem `BSD-R5-EQUIV-BASICNESS-010`
 
@@ -305,61 +319,65 @@ This retires
 
 `MISSING_P2_EQUIVARIANT_CYCLOTOMIC_DETERMINANT_STARK_KOLYVAGIN_REPLAY`.
 
-## 12. The ordinary local correction and height-one `(2)`
+## 11. The genuine ordinary correction at height one `(2)`
 
-The determinant membership above concerns the source global cohomology complex. The protected primitive Kummer comparison retains the genuine good-ordinary strict/Kummer correction rather than deleting it.
+The preceding determinant statement concerns the source global cohomology complex. The protected primitive Kummer comparison contains a genuine good-ordinary strict/Kummer correction; it must not be canceled by analogy.
 
-Protected WP46A identifies that local higher term at `2` as
+Protected WP46A identifies its higher local Iwasawa term at `2` as
 
-`Z_2^str ~= Lambda/(2^{m_2},gamma-1)`
+`Lambda/(2^{m_2},gamma-1)`
 
-(up to the local/global generator notation), and protected WP35 retains the finite specialization defect in the primitive cyclotomic square-presentation comparison.
+(up to the local/global generator notation). Protected WP35 separately retains the exact finite specialization/control defect in the primitive cyclotomic square-presentation comparison.
 
-Localize at the height-one prime
+Localize
 
-`q=(2) subset Lambda=Z_2[[gamma-1]]`.
+`Lambda=Z_2[[gamma-1]]`
 
-Then `gamma-1` is a unit in `Lambda_q`, so
+at the height-one prime
 
-`(Z_2^str)_q=0`.
+`q=(2)`.
 
-The finite augmentation/control modules are likewise supported at the codimension-two ideal `(2,gamma-1)` and vanish after localization at `q`. The real-place term of Section 8 has unit determinant ideal and therefore does not change the localized rank-one lattice.
+Then `gamma-1` is a unit, so the WP46A higher local term vanishes after localization. More generally every finite specialization/control module occurring in the protected comparison is finite over `Z_2` with continuous cyclotomic action. Some `gamma^{2^a}-1` annihilates it; modulo `2` this element is a power of `gamma-1`, which is a unit in `Lambda_q`. Hence these finite control modules also localize to zero.
 
-Thus no local or archimedean correction alters determinant **membership** at height one `(2)`. This does not identify an exact determinant generator.
+The real-place comparison from Section 7 contributes only a unit determinant factor. Therefore none of these retained corrections changes the rank-one determinant **lattice** after localization at `(2)`.
 
-## 13. R5-LIFT
+This is not an exact generator comparison and does not imply primitivity.
 
-Protected WP60A-A1 proves that over the DVR `Lambda_(2)`, membership of the localized Kato class in the determinant lattice is equivalent to the one-sided Fitting divisibility
+## 12. R5-LIFT
 
-`ord_(2)(a_Kato) >= length_{Lambda_(2)} H^2(C_Iw)`,
+Protected WP60A-A1 proves over the DVR `Lambda_(2)` that membership of the localized Kato class in the determinant lattice is equivalent to the one-sided Fitting divisibility required by R5-LIFT.
 
-in the protected notation.
-
-Apply Theorem `BASICNESS-010` and Section 12.
+Theorem `BASICNESS-010` and Section 11 supply that membership for the protected primitive height-one comparison.
 
 ### Theorem `BSD-R5-LIFT-011`
 
-The selected literal-`p=2` Kato class satisfies the one-sided height-one `(2)` Fitting divisibility required by protected WP60A-A1.
+The selected literal-`p=2` Kato class satisfies the one-sided height-one `(2)` Fitting divisibility of protected WP60A-A1.
 
 Therefore
 
 `R5-LIFT = CLOSED`.
 
+Record
+
+`R5_LIFT_ESTABLISHED`.
+
 Retire
 
 `MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2`.
 
-## 14. Remaining boundary
+## 13. Remaining boundary and claim firewall
 
-Nothing above shows that the determinant preimage is a basis of the determinant line or that the Kato-derived Kolyvagin system is primitive.
+Nothing above proves that the determinant preimage is a basis, that the Kato-derived Kolyvagin system is primitive, or that the one-sided valuation inequality is an equality.
 
-The next independent boundary is
+The next independent R5 boundary is
+
+`MISSING_P2_DETERMINAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
+
+For compatibility with the protected campaign identifier, record it as
 
 `MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2` (`R5-PRIM`).
 
-## 15. Preserved false/unavailable statements and claim firewall
-
-The following remain false or unavailable and are not used as hypotheses:
+The following statements remain false or unavailable and are not used as hypotheses:
 
 - formal higher-level BSS Hypothesis 3.2(iii);
 - full BSS Hypothesis 4.7;
