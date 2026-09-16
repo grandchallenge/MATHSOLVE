@@ -14,7 +14,7 @@ Let `Q_infty/Q` be the cyclotomic `Z_2`-extension, let `Q_n` be its degree-`2^n`
 
 for `m>=1`. Let `T_{m,n}` denote the usual cyclotomic equivariant deformation of `T/2^mT` over `R_{m,n}`.
 
-The proof consumes protected MATHSOLVE WP60M/R/S/T, WP32, WP35, WP46A and WP60A-A1, together with the protected Burns-Kurihara-Sano and Kataoka-Sano source audits at
+The proof consumes protected MATHSOLVE WP60J/M/R/S/T, WP32, WP35, WP46A and WP60A-A1, together with the protected Burns-Kurihara-Sano and Kataoka-Sano source audits at
 
 `grandchallenge/MATHFORGE@de2c83c2c440ac357b183b9e1018e9f69c58e1d9`.
 
@@ -94,7 +94,7 @@ Let
 
 `S_m:=SL_2(Z/2^m)`.
 
-Protected full `2`-adic image and the Weil-pairing identity `det rho = chi_cyc` imply
+Protected WP60J full `2`-adic image and the Weil-pairing identity `det rho = chi_cyc` imply
 
 `S_m subset H_{m,n} subset GL_2(Z/2^m)`.
 
@@ -194,11 +194,17 @@ Record
 
 `P2_EQUIVARIANT_SELECTED_HYP32III_DEFECT_SELMER_EXTRANEOUS`.
 
-## 6. Socle localization, large products and core vertices
+## 6. Coefficient reduction, socle localization, large products and core vertices
+
+The BSS finite local-condition algebra and coefficient-reduction statements are formulated over a general zero-dimensional Gorenstein local coefficient ring. The literal-`2` failure in the selected lane is not that formal algebra; it is the use of the global auxiliary-field restriction hypothesis inside the localization/coefficient-reduction proof.
+
+Protected WP60M isolates that use for BSS Lemma 3.10: the proof invokes localization one nonzero class at a time. At residue characteristic two this is the admissible numerical case
+
+`s+t=1<2`.
+
+Theorem `SELMER-RES-005` supplies the missing restriction injectivity for the actual selected classes over `R_{m,n}`. Therefore the same BSS Lemma-3.10 proof gives selected coefficient reduction over `R_{m,n}` without asserting formal H3.2(iii). In particular, reduction to the residue field detects the socle classes of the selected modified primal and dual Selmer modules exactly as required by the source large/core-vertex argument.
 
 Because `R_{m,n}` is local Artinian Gorenstein, every nonzero finite `R_{m,n}`-module has nonzero socle. For a free rank-one module, its socle is exactly the one-dimensional `F_2` line `Soc(R_{m,n})`.
-
-Selected canonical local conditions are cartesian under reduction to the residue field. This follows from the same finite Kummer/transverse definitions used in protected WP60R, together with Shapiro for the induced cyclotomic coefficient module. Thus socle classes in the full modified Selmer modules identify with residual `E[2]` classes satisfying the same selected local conditions.
 
 Let `C` be a finite `F_2`-span of nonzero primal/dual socle classes used in a localization step. By Theorem `SELMER-RES-005`, restriction preserves `C`. After restriction, every class is an `F_2`-valued homomorphism into the residual part of `T_{m,n}`. Its nonzero image is an `S_3`-stable subspace of `E[2]`, hence all of `E[2]`. The rank-one `tau` quotient has one-dimensional residual kernel, so projection to its socle cannot kill the whole two-dimensional residual image.
 
@@ -208,16 +214,17 @@ Choose enough exact-level primes so that the combined localization is injective 
 
 The residual core-rank-one bookkeeping and WP60N exchange proof use only the residual self-dual `E[2]` structure and the just-established exact-level localization statements. Hence the selected core graph is connected.
 
-Finally, after iterative dual killing, the residual dual modified Selmer group is zero. Cartesian reduction and Nakayama imply that the full finite dual modified Selmer group is zero. The standard Gorenstein global-duality presentation then makes the primal core-vertex module finite free of the required rank.
+After iterative dual killing, coefficient reduction makes the residual dual modified Selmer group zero. Nakayama then gives zero full dual modified Selmer group. The standard Gorenstein global-duality presentation, equivalently the replayed Proposition-3.23 large-product presentation, makes the primal core-vertex module finite free of the required rank.
 
 ### Theorem `BSD-R5-EQUIV-LARGE-006`
 
 For every `m,n`:
 
-1. sufficiently many large square-free auxiliary products exist;
-2. selected core vertices exist;
-3. the selected core graph is connected;
-4. at a selected core vertex the dual modified Selmer group vanishes and the primal modified Selmer group is finite free of the expected rank over `R_{m,n}`.
+1. selected coefficient reduction is available on the modified Selmer modules used by the proof;
+2. sufficiently many large square-free auxiliary products exist;
+3. selected core vertices exist;
+4. the selected core graph is connected;
+5. at a selected core vertex the dual modified Selmer group vanishes and the primal modified Selmer group is finite free of the expected rank over `R_{m,n}`.
 
 Record
 
