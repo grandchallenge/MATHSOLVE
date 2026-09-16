@@ -48,8 +48,9 @@ class NSCIA2L5CoupledEnstrophyTests(unittest.TestCase):
         dissipation_budget = []
         energy = []
         for n in range(1, 10):
+            # lambda = 2^(4n), so lambda^(-9/4) = 2^(-9n) exactly.
             lam = Fraction(2 ** (4 * n), 1)
-            duration = lam ** Fraction(-9, 4)
+            duration = Fraction(1, 2 ** (9 * n))
             a_q = lam**2
             lambda_budget.append(lam**2 * duration)
             dissipation_budget.append(a_q * duration)
@@ -62,22 +63,23 @@ class NSCIA2L5CoupledEnstrophyTests(unittest.TestCase):
     def test_static_fixture_low_coefficient_diverges_geometrically(self) -> None:
         terms = []
         for n in range(1, 8):
-            lam = Fraction(2 ** (4 * n), 1)
-            duration = lam ** Fraction(-9, 4)
-            f_q = lam ** Fraction(5, 2)
+            # lambda^(5/2) = 2^(10n), and duration = 2^(-9n),
+            # so each next contribution is exactly twice the previous one.
+            duration = Fraction(1, 2 ** (9 * n))
+            f_q = Fraction(2 ** (10 * n), 1)
             terms.append(f_q * duration)
         for left, right in zip(terms, terms[1:]):
             self.assertEqual(right / left, Fraction(2, 1))
 
-    def test_selector_cancellation_is_algebraic_for_complements(self) -> None:
-        # At each finite approximation, E_low(q) + E_high(q) is independent
-        # of q, so any selector jump coefficients sum to zero when the low
-        # and high balances are added with the same selector.
-        full = Fraction(19, 7)
+    def test_selector_cancellation_is_algebraic_for_finite_complements(self) -> None:
+        # At every fixed terminal shell N, E_low(q)+E_(q<p<=N) is independent
+        # of q. Thus selector jumps cancel when the complementary finite blocks
+        # are retained; no global H1 identity is asserted here.
+        terminal_energy = Fraction(19, 7)
         lows = [Fraction(k, 7) for k in range(8)]
-        highs = [full - low for low in lows]
-        for low, high in zip(lows, highs):
-            self.assertEqual(low + high, full)
+        finite_highs = [terminal_energy - low for low in lows]
+        for low, high in zip(lows, finite_highs):
+            self.assertEqual(low + high, terminal_energy)
 
     def test_transport_commutator_has_no_frequency_gain_after_derivative(self) -> None:
         # Kernel cancellation contributes lambda_p^-1, while the derivative
