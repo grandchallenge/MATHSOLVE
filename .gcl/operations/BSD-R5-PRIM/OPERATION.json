@@ -12,7 +12,7 @@
   "completion_enforcement_anchor": "grandchallenge/gcl-standards@efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
   "work_class": "substantive_non_reserved",
   "objective": {
-    "frontier": "MISSING_P2_DETERMINAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2",
+    "frontier": "MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2",
     "description": "Prove, falsify, or reduce to the first independent theorem the selected literal-p=2 determinant-generator equality at height one (2), starting from protected R5-LIFT without weakening membership."
   },
   "acceptable_dispositions": ["CLOSED", "BLOCKED", "FALSIFIED"],
