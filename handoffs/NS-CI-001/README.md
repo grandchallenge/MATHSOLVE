@@ -4,30 +4,22 @@
 
 Target work repository: `grandchallenge/MATHSOLVE`.
 
-INTELLECT work-package phase: not applicable; this is delegated MATHSOLVE
-mathematical campaign execution. MATHSOLVE may develop and integrate bounded
-mathematical results but may not certify them. MATHCERT retains certification
-authority.
+This is delegated MATHSOLVE mathematical campaign execution. MATHSOLVE may
+develop and integrate bounded mathematical results but may not certify them.
+MATHCERT retains certification authority.
 
 ## Purpose
 
-Continue the selected restricted target `NS-CI-R014-A2` without weakening the
-hypothesis `Lambda in L2_t` or importing a regularity criterion that already
-implies the desired conclusion.
+Continue restricted target `NS-CI-R014-A2` without weakening `Lambda in L2_t`
+or importing a regularity criterion that already implies the conclusion.
 
-## Primary deliverable
+## Acceptance criteria
 
-Advance the active L5 direct critical-integral route through exact
-square-function, correlation, cancellation, depletion, commutator, or dynamic
-estimates that act on the remaining blockers.
-
-## Material acceptance criteria
-
-- derive the target `integral ||u||_6^4` from the selected hypothesis and valid
-  Leray--Hopf/PDE structure, or rigorously terminate the current bounded
-  candidate at its first exact blocker;
-- preserve the strict-high restriction `p>Q` exactly;
-- keep every shell/time constant uniform in terminal frequency;
+- derive `integral ||u||_6^4` from the selected hypothesis and valid
+  Leray--Hopf/PDE structure, or terminate each bounded candidate at its first
+  exact blocker;
+- preserve strict-high use only for `p>Q`;
+- keep shell/time constants uniform in terminal frequency;
 - do not multiply unrelated `L1_t` quantities, assume selector variation,
   import `f in L1_t`, uniform `H1`, or an LPS norm;
 - do not reopen L3 or L4 without satisfying their protected reopening
@@ -75,104 +67,104 @@ representation. B1 and B3 remain the analytic endpoints.
 
 ### B1 dynamic audit
 
-The first equation-specific B1 successor has result
+Current B1 disposition:
 
 ```text
 B1_DIRECT_DYNAMIC_ROUTE_REDUCED__SELECTOR_FREE_REPAIR_EQUALS_CLOSED_L4_COLUMN
 ```
 
-and is recorded in
+recorded in
 `work_packages/NS_CI_R014_A2_L5_B1_COUPLED_ENSTROPHY.md`.
 
-For fixed low cutoff, the low enstrophy balance has viscous density comparable
-to `W_{<=q}`. Localizing it to the moving active selector produces both a
-selected, non-conservative enstrophy-production term and B4 selector variation.
+For fixed low cutoff, low enstrophy has viscous density comparable to
+`W_{<=q}`. Localizing it to the actual moving selector produces selected
+non-conservative enstrophy production plus B4 selector variation.
 
-Coupling the complementary high enstrophy balance cancels selector variation
-exactly. The remaining low-mode coefficient is
+On a genuinely finite Galerkin system with its own finite-spectrum selector
+`Q_N`, coupling the complementary finite high block cancels selector variation
+algebraically. This does **not** establish the corresponding cancellation for
+the actual unbounded selector: truncating the actual selector at `q<=N` leaves
+`1_{Q<=N}` and its terminal boundary. No B4 reopening theorem is claimed.
 
-```math
-f(t)=sup_{p<=Q(t)} lambda_p ||u_p(t)||_infinity.
-```
-
-Define
-
-```math
-D_3(t)
-=
-sum_{p<=Q}
-(lambda_p/Lambda)^3 A_p.
-```
-
-Then
+Even granting a justified selector-free limiting step, the surviving low
+coefficient
 
 ```math
-f^2 lesssim Lambda^3 D_3,
+f(t)=sup_{p<=Q(t)} lambda_p ||u_p(t)||_infinity
 ```
 
-so Leray gives only `D_3^(1/2) in L2_t`, while `Lambda in L2_t` would require
-`D_3^(1/2) in L4_t` to close this product directly.
+obeys, for
+
+```math
+D_3(t)=sum_{p<=Q}(lambda_p/Lambda)^3 A_p,
+```
+
+```math
+f^2 lesssim Lambda^3 D_3.
+```
+
+Leray gives only `D_3^(1/2) in L2_t`; direct Holder with `Lambda in L2_t`
+would require `D_3^(1/2) in L4_t`.
 
 More decisively,
 
 ```math
 nu Lambda D_3
 =
-sum_{p<=Q}
-(lambda_p/Lambda)^2 lambda_p D_p
+sum_{p<=Q}(lambda_p/Lambda)^2 lambda_p D_p
 =S_Q,
 qquad D_p=nu A_p.
 ```
 
-This is exactly the protected L4 weighted-column quantity, including its
-`p=Q` active diagonal. The selector-free B1 repair therefore does not furnish a
-new L4 reopening theorem and is terminated.
+This is exactly the protected L4 weighted-column quantity, including the
+`p=Q` active diagonal. Thus the optimistic selector-free B1 repair still lands
+on closed L4 and does not furnish a reopening theorem.
 
 ### B3 direct L6 transport audit
 
-The next distinct B3 candidate has result
+Current B3 candidate disposition:
 
 ```text
 DIRECT_L6_TRANSPORT_ROUTE_REDUCED_TO_LOW_DEFORMATION_COMMUTATOR
 ```
 
-and is recorded in
+recorded in
 `work_packages/NS_CI_R014_A2_L5_B3_L6_TRANSPORT_AUDIT.md`.
 
-For fixed `q`, with
+For fixed `q`, set
 
 ```math
 V_q=P_{>q}u,
 qquad
-L_q=P_{<=q-2}u,
+L_q=P_{<=q-2}u.
 ```
 
-the unprojected low--high transport cancels exactly against `|V_q|^4 V_q`.
-But the actual equation contains `P_{>q} mathbb P(L_q dot grad V_q)`. The exact
-transport cancellation leaves a high-pass/Leray projection residual. Shellwise
-commutator localization contributes a kernel moment `lambda_p^-1` and a
-high-shell derivative `lambda_p`; these cancel, leaving
+The unprojected low--high transport cancels exactly against `|V_q|^4V_q`.
+The actual equation contains `P_{>q} mathbb P(L_q dot grad V_q)`, leaving a
+high-pass/Leray projection residual. Shellwise commutator localization supplies
+a kernel moment `lambda_p^-1` and a high-shell derivative `lambda_p`; the scale
+factors cancel and leave
 
 ```math
 G_q=||grad L_q||_infinity
 ```
 
-with no decaying high-frequency gain. Thus direct projected `L6` transport does
-not escape the same low-deformation interface that blocked the first H1
-parabolic route.
+with no decaying high-frequency gain. Active localization then reintroduces B4;
+fixed-`q` globalization reintroduces the bad-time/residence interface.
 
-Residual blockers:
+## Residual blockers
 
-- B1 low core: no surviving direct moving-enstrophy route; the selector-localized
-  version hits B4 and the selector-free coupled version is exactly closed L4
-  `S_Q`;
+- B1 low core: direct moving enstrophy hits B4; even granting selector-free
+  complementary coupling, the remaining factor is exactly closed L4 `S_Q`.
 - B2 near threshold: no standalone blocker in the pointwise L5 decomposition;
+  dynamic finite-neighbour terms may still occur.
 - B3 strict tail: control
-  `integral (sum_{p>Q} lambda_p^2 A_p)^(2/3) dt` or find a signed/nonlinear
-  identity avoiding it. Moving-tail H1, fixed-tail bad-set, residence-Duhamel,
-  and direct projected-L6 transport are now characterized;
-- B4 selector motion: avoidable only when complementary moving balances are
-  coupled; otherwise unchanged.
+  `integral (sum_{p>Q} lambda_p^2 A_p)^(2/3) dt` or avoid it by a new signed or
+  nonlinear identity. Moving-tail H1, fixed-tail bad-set splitting,
+  threshold-residence Duhamel, and direct projected-L6 transport are now
+  characterized.
+- B4 selector motion: unchanged for the actual moving selector unless a genuine
+  limiting/variation theorem is supplied.
 
 MATHCERT remains `qualified_interface_only`; A2 and universal critical
 integrability are unproved.
@@ -196,47 +188,40 @@ integrability are unproved.
 
 ## Smallest safe next tranche
 
-B3 remains the only non-closed pointwise endpoint with room for a genuinely new
-mechanism. Do not repeat moving-tail H1 energy, fixed-tail bad-set splitting,
+B3 is the remaining pointwise endpoint with room for a genuinely new mechanism.
+Do not repeat moving-tail H1 energy, fixed-tail bad-set splitting,
 threshold-residence Duhamel, direct projected-L6 transport, or the L4 weighted
 column.
 
-The smallest admissible next proposition must act on one of:
+The next bounded proposition must act on one of:
 
 1. a signed projection/pressure commutator identity that cancels the low
    deformation coefficient before absolute values;
-2. an equation-specific packet/intermittency depletion theorem that controls
-   `Z_{>Q}` or `Z_{>Q}^{2/3}` from the selected hypothesis;
-3. a new nonlinear quantity whose evolution couples the strict-high threshold
-   to `Z_{>Q}` without selector variation or parabolic residence.
+2. an equation-specific packet/intermittency depletion theorem controlling
+   `Z_{>Q}` or `Z_{>Q}^{2/3}`;
+3. a new nonlinear quantity coupling the strict-high threshold to `Z_{>Q}`
+   without selector variation or parabolic residence.
 
-If each bounded candidate reduces to `G_Q`, `S_Q`, selector variation, or a
-residence assumption, record the exact reduction rather than reopening the
-corresponding closed lane.
+If a candidate reduces to `G_Q`, `S_Q`, selector variation, or a residence
+assumption, record that exact reduction rather than reopening its closed lane.
 
 ## Material dependencies and boundaries
 
 L3 is closed. Reopening requires actual parabolic residence at the defining
 threshold, a non-summable equation-derived scale cost, cross-level coherence,
-an anti-fragmentation budget, or an equivalent protected reopening theorem.
+anti-fragmentation, or an equivalent protected theorem.
 
-L4 is closed. Reopening requires an actual selected-transfer cancellation,
-active-set variation theorem, active-diagonal depletion, commutator closure, or
-dynamic decorrelation result.
+L4 is closed. Reopening requires selected-transfer cancellation, active-set
+variation, active-diagonal depletion, commutator closure, or dynamic
+decorrelation.
 
 The active Cert scope qualifies only the exact target/interface boundary. It is
 not proof of A2 or of any analytic L5 estimate.
 
-## Reserved authority / stop conditions
+## Reserved stop conditions
 
 Stop for proof of A2; a proved material bridge with a precise next residual; a
 rigorous bounded route termination; an exact L5 exhaustion theorem; a material
 change to the selected target or hypothesis; a reserved constitutional or
 certification transition; authentication or safety failure; or a materially
 changed protected mathematical predecessor.
-
-## Notes intentionally omitted
-
-This handoff intentionally omits constitutional doctrine, generic handoff
-instructions, CI logs, and certification ceremony already controlled by their
-authoritative records.
