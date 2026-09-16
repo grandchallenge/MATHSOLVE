@@ -4,33 +4,39 @@
   "campaign": "BSD-001",
   "title": "Birch-Swinnerton-Dyer selected rank-one 2-primary campaign",
   "authority": {
-    "constitution": "grandchallenge/INTELLECT@2badd8c3197ef4515591bba05ff782ff3cafc930",
+    "constitution": "grandchallenge/INTELLECT@f042220f3bed7cb7b5069256e8f6305c850c0628",
     "programme_repository": "grandchallenge/MATH-PROGRAMME",
     "work_repository": "grandchallenge/MATHSOLVE",
     "source_repository": "grandchallenge/MATHFORGE",
     "certification_repository": "grandchallenge/MATHCERT"
   },
   "protected_inputs": {
-    "math_base": "grandchallenge/MATHSOLVE@245860ce3d7307a505e48b4165be0850327f996a",
-    "provider": "grandchallenge/MATHFORGE@770f95d1f8e7cfdd3facbd9242bf3c21c0e8b074"
+    "math_base": "grandchallenge/MATHSOLVE@5fa2caa8f3d4aa54849f62135a5214737fa6db2a",
+    "provider": "grandchallenge/MATHFORGE@095b8eec0e7fe29d7e831661dfe199ec43fa0458"
   },
   "selected_target": {
     "id": "BSD-R2-A1",
     "status": "SELECTED_RESEARCH_TARGET_UNPROVED",
     "governing_identity": "delta_2(E)=v_2(Fitt^1_Z2(X_E))"
   },
-  "current_operation": "BSD-WP60S",
+  "current_operation": "BSD-WP60T",
   "current_frontier": {
-    "id": "MISSING_LITERAL_P2_BSS_THEOREM_5_25_INVERSE_LIMIT_REPLAY_AFTER_FINITE_LEVEL_REPLACEMENTS",
+    "id": "MISSING_LITERAL_P2_BSS_THEOREM_6_12_COROLLARY_6_15_APPLICATION_REPLAY_WITHOUT_INFINITE_H3",
     "class": "theorem",
     "status": "operation_entry_frontier_resolved_by_exact_completion_receipt_when_protected"
   },
   "candidate_disposition": {
     "type": "CLOSED",
     "established": [
-      "BSS_LITERAL_P2_SELECTED_THEOREM_5_25_REPLAYED"
+      "BSS_LITERAL_P2_SELECTED_HYPOTHESIS_6_1_AVAILABLE",
+      "BSS_LITERAL_P2_SELECTED_HYPOTHESIS_6_7_AVAILABLE",
+      "BSS_LITERAL_P2_SELECTED_HYPOTHESIS_6_11_AVAILABLE",
+      "BSS_LITERAL_P2_SELECTED_DERIVATIVE_PRIME_SET_COMPATIBLE_WITH_WP60R",
+      "BSS_LITERAL_P2_SELECTED_THEOREM_6_12_REPLAYED",
+      "BSS_LITERAL_P2_SELECTED_COROLLARY_6_13_DERIVATIVE_AVAILABLE",
+      "BSS_LITERAL_P2_SELECTED_COROLLARY_6_15_REPLAYED"
     ],
-    "next_frontier_if_protected": "MISSING_LITERAL_P2_BSS_THEOREM_6_12_COROLLARY_6_15_APPLICATION_REPLAY_WITHOUT_INFINITE_H3"
+    "next_frontier_if_protected": "MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2"
   },
   "known_false": [
     "formal_higher_level_hypothesis_3_2_iii",
@@ -39,8 +45,6 @@
     "infinite_bss_h3"
   ],
   "prohibited_promotions": [
-    "BSS_THEOREM_6_12_LITERAL_P2_ESTABLISHED",
-    "BSS_COROLLARY_6_15_LITERAL_P2_ESTABLISHED",
     "R5_LIFT_ESTABLISHED",
     "R5_PRIM_ESTABLISHED",
     "D2D_ESTABLISHED",
@@ -48,24 +52,24 @@
     "MATHCERT_CERTIFIED"
   ],
   "cold_start": {
-    "operation_contract": ".gcl/operations/BSD-WP60S/OPERATION.json",
+    "operation_contract": ".gcl/operations/BSD-WP60T/OPERATION.json",
     "canonical_handoff": "handoffs/BSD-001/README.md",
-    "frontier_record": "handoffs/BSD-001/WP60S_FRONTIER.md",
-    "claim_ledger": "work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/03_CLAIM_LEDGER.yaml",
-    "preflight": "python tools/gcl_campaign_preflight.py BSD-001 BSD-WP60S",
-    "completion_receipt_surface": ".gcl/completions/BSD-WP60S/COMPLETION_RECEIPT.json",
-    "completion_receipt_validator": "python tools/gcl_completion_receipt_validate.py"
+    "frontier_record": "handoffs/BSD-001/WP60T_FRONTIER.md",
+    "claim_ledger": "work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/03_CLAIM_LEDGER.yaml",
+    "preflight": "python tools/gcl_campaign_preflight_v2.py BSD-001 BSD-WP60T",
+    "completion_receipt_surface": ".gcl/completions/BSD-WP60T/COMPLETION_RECEIPT.json",
+    "completion_receipt_validator": "python tools/gcl_completion_receipt_validate_v2.py BSD-WP60T"
   },
   "state_resolution": {
     "entry_snapshot_rule": "current_frontier is the protected frontier entering current_operation",
     "completion_overlay_rule": "If the machine completion receipt for this exact operation passes its validator and its candidate head, protected merge, protected readback, logical review passes, and check identities are coherent, the receipt disposition and next_frontier supersede the entry frontier until the next material operation emits successor CAMPAIGN_STATE.",
-    "stale_receipt_rule": "A receipt for a different operation, candidate head, merge identity, protected readback, review subject, or staffing authority does not alter this state."
+    "stale_receipt_rule": "A receipt for a different operation, candidate head, merge identity, protected readback, review subject, staffing authority, or governed artifact set does not alter this state."
   },
   "execution_standard": {
     "identifier": "GCL-CEX-01",
     "repository": "grandchallenge/gcl-standards",
-    "enforcement_anchor": "f20623dc6f8e8ef8c7c04ba4823f2773e2a0f407",
-    "status": "BSD-001 bootstrap pilot with protected receipt enforcement; registry admission pending",
+    "enforcement_anchor": "efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
+    "programme_adoption_anchor": "grandchallenge/MATH-PROGRAMME@af6e1772e2d82b0b198d11c08e1369789ffbba3a",
     "rule": "Repository records, exact protected identities, role-scoped logical review passes, and exact-head evidence govern. Chat transcripts are context only."
   }
 }
