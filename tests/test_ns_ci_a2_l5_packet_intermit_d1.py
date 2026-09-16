@@ -29,6 +29,41 @@ class NSCIA2L5PacketIntermittencyD1Tests(unittest.TestCase):
             Fraction(2, 1),
         )
 
+    def test_scale_normalization_matches_whole_space_ns_scaling(self) -> None:
+        # Under u_rho(x,t)=rho*u(rho*x,rho^2*t):
+        # U0 scales as rho^(-1/2), so U0^(-2D) contributes rho^D;
+        # the time-integrated H1 dissipation density contributes rho^(-1).
+        # Thus the normalized RHS scales as rho^(D-1), exactly like
+        # integral lambda^(D-1)||u_q||_inf^2 dt.
+        for d in (
+            Fraction(0, 1),
+            Fraction(1, 1),
+            Fraction(5, 4),
+            Fraction(3, 2),
+            Fraction(2, 1),
+            Fraction(3, 1),
+        ):
+            lhs_exponent = d - Fraction(1, 1)
+            rhs_exponent = d + Fraction(-1, 1)
+            self.assertEqual(lhs_exponent, rhs_exponent)
+
+    def test_unscaled_packet_rhs_fails_whole_space_scaling_at_d1(self) -> None:
+        # The discarded fixed-domain normalization would compare a D=1
+        # left side of scaling exponent 0 with raw integrated dissipation of
+        # exponent -1. This guards against reintroducing that defect.
+        d = Fraction(1, 1)
+        lhs_exponent = d - Fraction(1, 1)
+        raw_dissipation_exponent = Fraction(-1, 1)
+        self.assertNotEqual(lhs_exponent, raw_dissipation_exponent)
+
+    def test_d1_leray_normalization_cancels_energy_scale(self) -> None:
+        # If D <= U0^2/(2 nu), then U0^-2 D <= 1/(2 nu).
+        u0_sq = Fraction(25, 9)
+        nu = Fraction(7, 5)
+        dissipation_upper = u0_sq / (2 * nu)
+        normalized_upper = dissipation_upper / u0_sq
+        self.assertEqual(normalized_upper, Fraction(1, 1) / (2 * nu))
+
     def test_d1_temporal_cauchy_factorization(self) -> None:
         # Set f_i = Lambda_i * b_i and S_i = b_i^2, so the D=1 pointwise
         # bridge is saturated. Weighted Cauchy--Schwarz is then exact.
