@@ -74,7 +74,11 @@
     "handoffs/BSD-001/R5_PRIM_FRONTIER.md",
     ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json",
     ".gcl/operations/BSD-R5-PRIM/OPERATION.json",
-    "tools/gcl_campaign_preflight_r5_prim.py"
+    "tools/gcl_campaign_preflight_r5_prim.py",
+    ".github/workflows/bsd-r5-lift-equivariant-certificate.yml",
+    ".github/workflows/bsd-wp60t-certificate.yml",
+    ".github/workflows/bsd-r5-prim-reduction.yml",
+    ".ghos-routing/workflows.json"
   ],
   "completion_replay_artifacts": [
     ".gcl/completions/BSD-R5-PRIM/COMPLETION_RECEIPT.json",
@@ -84,7 +88,8 @@
     "freeze_manifest": ".gcl/admission/BSD-R5-PRIM/FREEZE.json",
     "preflight_command": "python tools/gcl_campaign_preflight_r5_prim.py BSD-001 BSD-R5-PRIM",
     "completion_receipt_command": "python tools/gcl_completion_receipt_validate_v2.py BSD-R5-PRIM",
-    "review_invalidation": "A change to any pre-merge governed artifact invalidates the content freeze, exact-head reviews, and affected candidate checks. A candidate-head change invalidates exact-head reviews/checks even when governed bytes are unchanged."
+    "review_invalidation": "A change to any pre-merge governed artifact invalidates the content freeze, exact-head reviews, and affected candidate checks. A candidate-head change invalidates exact-head reviews/checks even when governed bytes are unchanged.",
+    "workflow": "BSD R5-PRIM normalized Kato index reduction"
   },
   "validation": {
     "claim_ledger": "work_packages/BSD_R5_PRIM_KATO_INDEX_REDUCTION/03_CLAIM_LEDGER.yaml",
@@ -104,7 +109,9 @@
       "mathcert_certification: true",
       "literal_p2_kurihara_explicit_reciprocity: true",
       "literal_p2_refined_kurihara: true"
-    ]
+    ],
+    "workflow": ".github/workflows/bsd-r5-prim-reduction.yml",
+    "routing_registry": ".ghos-routing/workflows.json"
   },
   "claim_firewall": {
     "formal_higher_level_hypothesis_3_2_iii": false,
