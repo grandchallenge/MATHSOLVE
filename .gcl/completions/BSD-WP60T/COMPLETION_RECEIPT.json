@@ -1,0 +1,117 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "campaign": "BSD-001",
+  "operation": "BSD-WP60T",
+  "candidate_head": "0bedc54c77d7dd980967608bedd5fe7d3931b6c4",
+  "merge_sha": "8da35757943953710eab62bd68132584e56b19ee",
+  "protected_readback_sha": "8da35757943953710eab62bd68132584e56b19ee",
+  "enforcement_standard": {
+    "identifier": "GCL-CEX-01",
+    "repository": "grandchallenge/gcl-standards",
+    "commit": "efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
+    "programme_adoption_anchor": "grandchallenge/MATH-PROGRAMME@af6e1772e2d82b0b198d11c08e1369789ffbba3a"
+  },
+  "staffing_authority": {
+    "repository": "grandchallenge/INTELLECT",
+    "directive": "GI-STEWARD-0003",
+    "separation_model": "role_scoped_logical_passes",
+    "protected_anchor": "f042220f3bed7cb7b5069256e8f6305c850c0628"
+  },
+  "adversary_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/260#pullrequestreview-5223657722",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "bsd-wp60t-adversary-0bedc54c-r2",
+    "role": "Adversary",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "0bedc54c77d7dd980967608bedd5fe7d3931b6c4",
+    "criteria": [
+      "challenge hidden odd-prime hypotheses in the BSS 6.12 derivative replay",
+      "challenge any use or reinstatement of false higher-level H3.2(iii), H4.7(iii), or infinite H3",
+      "challenge H6.1, H6.7, and H6.11 verification on the exact selected literal-p=2 lane",
+      "challenge derivative-prime compatibility with the protected WP60R auxiliary-prime system",
+      "challenge promotion of finite Corollary 6.15 control to Lambda_(2) height-one divisibility or primitivity",
+      "challenge successor-package proliferation instead of return to the existing R5-LIFT boundary"
+    ],
+    "evidence": [
+      "selected H6.1 is proved uniformly over finite abelian 2-extensions from the protected residual S3/A3 invariant calculation",
+      "selected H6.7 is supplied by the explicit totally real abelian pro-2 tower and cyclotomic Z2-extension",
+      "selected H6.11 follows from good-reduction Frobenius weights for every k",
+      "protected MATHFORGE@095b8eec0e7fe29d7e831661dfe199ec43fa0458 supplies the section-6 source and prime-set dependency interface",
+      "protected WP60R supplies the finite Theorem 5.2 replacement on the exact positive-density auxiliary set",
+      "the claim ledger preserves all R5/BSD/MATHCERT firewalls and names the existing height-one-(2) divisibility as successor"
+    ],
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {"human_authorized": false, "mathcert_certified": false}
+  },
+  "referee_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/260#pullrequestreview-5223659828",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "bsd-wp60t-referee-0bedc54c-r2",
+    "role": "Referee",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "0bedc54c77d7dd980967608bedd5fe7d3931b6c4",
+    "criteria": [
+      "assess whether H6.1, H6.7, and H6.11 exactly discharge the displayed BSS 6.12 hypotheses",
+      "assess compatibility between the section-6 derivative prime set and protected WP60R finite control",
+      "assess the Theorem 6.12 and Corollary 6.13 derivative replay without infinite H3",
+      "assess Corollary 6.15 as a finite composition with protected Theorem 5.2(ii),(iii)",
+      "assess coherence of theorem, source note, ledger, state, frontier, operation, workflow, and freeze",
+      "assess that CLOSED applies only to the BSS application frontier"
+    ],
+    "evidence": [
+      "the H6.1 proof derives H0=0 and Z2-freeness from residual S3 over every finite selected tower field",
+      "the H6.7 tower contains all required Q(q), remains totally real, and has a Z2-extension with no finite prime splitting completely",
+      "H6.11 is independent of core-vertex and infinite-H3 machinery",
+      "the protected provider record resolves the source-level parity and prime-set questions",
+      "WP60R and WP60S remain bounded predecessors and are not promoted to Lambda_(2) control",
+      "campaign state and frontier consistently return to MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2"
+    ],
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {"human_authorized": false, "mathcert_certified": false}
+  },
+  "required_checks": [
+    {"phase":"candidate","name":"BSD WP60Q selected residual core graph","run":35105141501,"result":"success","head":"0bedc54c77d7dd980967608bedd5fe7d3931b6c4"},
+    {"phase":"candidate","name":"BSD WP60S inverse-limit theorem replay","run":35105141400,"result":"success","head":"0bedc54c77d7dd980967608bedd5fe7d3931b6c4"},
+    {"phase":"candidate","name":"BSD WP60T derivative and Fitting application replay","run":35105141450,"result":"success","head":"0bedc54c77d7dd980967608bedd5fe7d3931b6c4"},
+    {"phase":"candidate","name":"BSD WP60R finite theorem replay","run":35105141507,"result":"success","head":"0bedc54c77d7dd980967608bedd5fe7d3931b6c4"},
+    {"phase":"candidate","name":"GCL conformance","run":35105142092,"result":"success","head":"0bedc54c77d7dd980967608bedd5fe7d3931b6c4"},
+    {"phase":"candidate","name":"Solve checks","run":35105141560,"result":"success","head":"0bedc54c77d7dd980967608bedd5fe7d3931b6c4"},
+    {"phase":"protected_readback","name":"GCL conformance","run":35105559641,"result":"success","head":"8da35757943953710eab62bd68132584e56b19ee"},
+    {"phase":"protected_readback","name":"BSD WP60R finite theorem replay","run":35105557092,"result":"success","head":"8da35757943953710eab62bd68132584e56b19ee"},
+    {"phase":"protected_readback","name":"BSD WP60T derivative and Fitting application replay","run":35105556981,"result":"success","head":"8da35757943953710eab62bd68132584e56b19ee"},
+    {"phase":"protected_readback","name":"Solve checks","run":35105557124,"result":"success","head":"8da35757943953710eab62bd68132584e56b19ee"},
+    {"phase":"protected_readback","name":"BSD WP60Q selected residual core graph","run":35105557387,"result":"success","head":"8da35757943953710eab62bd68132584e56b19ee"},
+    {"phase":"protected_readback","name":"BSD WP60S inverse-limit theorem replay","run":35105556945,"result":"success","head":"8da35757943953710eab62bd68132584e56b19ee"}
+  ],
+  "disposition": {
+    "type": "CLOSED",
+    "frontier": "MISSING_LITERAL_P2_BSS_THEOREM_6_12_COROLLARY_6_15_APPLICATION_REPLAY_WITHOUT_INFINITE_H3",
+    "established": [
+      "BSS_LITERAL_P2_SELECTED_HYPOTHESIS_6_1_AVAILABLE",
+      "BSS_LITERAL_P2_SELECTED_HYPOTHESIS_6_7_AVAILABLE",
+      "BSS_LITERAL_P2_SELECTED_HYPOTHESIS_6_11_AVAILABLE",
+      "BSS_LITERAL_P2_SELECTED_DERIVATIVE_PRIME_SET_COMPATIBLE_WITH_WP60R",
+      "BSS_LITERAL_P2_SELECTED_THEOREM_6_12_REPLAYED",
+      "BSS_LITERAL_P2_SELECTED_COROLLARY_6_13_DERIVATIVE_AVAILABLE",
+      "BSS_LITERAL_P2_SELECTED_COROLLARY_6_15_REPLAYED"
+    ],
+    "next_frontier": "MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2"
+  },
+  "preserved_false": [
+    "formal_higher_level_hypothesis_3_2_iii",
+    "full_bss_hypothesis_4_7",
+    "bss_hypothesis_4_7_iii",
+    "infinite_bss_h3",
+    "r5_lift",
+    "r5_prim",
+    "d2d",
+    "bsd_r2_a1",
+    "mathcert_certification"
+  ],
+  "notes": "This receipt closes the selected finite BSS 6.12/6.15 application frontier only. It does not establish the cyclotomic height-one-(2) Kato/Fitting divisibility, determinant primitivity, R5, D2d, BSD-R2-A1, novelty, priority, or MATHCERT certification."
+}
