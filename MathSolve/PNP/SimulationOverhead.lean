@@ -7,7 +7,7 @@ import Mathlib.Tactic
 This file supplies the quantitative transfer lemma needed by
 `PNP-BRIDGE-MODEL-001`.
 
-A concrete machine translator must still prove its execution simulation.  Once
+A concrete machine translator must still prove its execution simulation. Once
 it supplies an affine bound in exact input length and source transition count,
 this file proves that the translated runtime remains polynomial under the
 already-closed `PNP-BRIDGE-POLYBOUND-001` presentation equivalence.
@@ -55,7 +55,8 @@ theorem affineSimulationOverhead_preserves_programmePolynomialBound
         startup + inputFactor * input.length + stepFactor * source input :=
       hoverhead input
     _ ≤ startup + inputFactor * input.length + stepFactor * p.eval input.length := by
-      exact Nat.add_le_add_left (Nat.mul_le_mul_left stepFactor (hp input)) _
+      gcongr
+      exact hp input
     _ = (Polynomial.C startup + Polynomial.C inputFactor * Polynomial.X +
         Polynomial.C stepFactor * p).eval input.length := by
       simp
