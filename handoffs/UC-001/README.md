@@ -36,12 +36,20 @@ the source-shaped NDS theorem interface to local average rarity.
 existing bounded claims. WP06 has a checked restricted local ideal-family
 surface; those declarations are not silently added to `MC-ROUTE-UC-001`.
 
-WP07 uses historical source pin
-`49c3f1d96ca8518d16e203fd0429ac1216838a4f`. The selected current source is
+WP07 preserves historical source pin
+`49c3f1d96ca8518d16e203fd0429ac1216838a4f` and selects
 `kashiwabarakenji/avg-rare@21451877e9996a295bbc1ec25856d07fa302d48c`.
-The two intervening commits are comment-only. D002/D003 and the first D004
-bridge are implemented on the active WP07 branch and require exact CI replay
-before protected integration.
+The two intervening commits are comment-only. MATHFORGE has admitted the exact
+source provenance. Independent MATHSOLVE replay builds all 879 upstream jobs,
+finds no active `sorry`/`admit` or explicit source `axiom`, and reports
+`AvgRare.MainStatement.main_nds_nonpos` as depending on
+`[propext, Classical.choice, Quot.sound]`.
+
+D002 and D003 are checked locally in
+`MathSolve/UnionClosed/FunctionalPreorderBridge.lean`. D004 is stated exactly;
+its NDS-normalization bridge and the implication from the exact source-shaped
+local NDS statement to average rarity are checked. The local NDS theorem itself
+remains open. D005 remains deferred.
 
 ## Authoritative pointers
 
@@ -57,10 +65,9 @@ before protected integration.
 
 ## Smallest safe next tranche
 
-Finish exact-head CI and source-build replay. Then transport or locally reprove
-`main_nds_nonpos` against the checked D003 semantics. After local D004 closes,
-prove the corresponding complement result as D005 and only then compare the
-restricted class against WP05 / `UC-P04`.
+Prove or semantically port `SourceShapedMainNDSStatement` into the exact local
+D003 surface. Prefer the smallest dependency cone of the audited upstream proof
+or a smaller independent local proof. Close D004 before starting D005.
 
 ## Material dependencies and boundaries
 

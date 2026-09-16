@@ -1,62 +1,60 @@
 # WP07 Next Executable Step
 
-Date: 2026-06-22
+Date: 2026-09-16
 
-## Selected Route
+## Current frontier
 
-Proceed with the functional-preorder branch through an audit-first bridge path.
-Do not present the branch as a direct consumer of the WP06
-`localIdealFamily_complement_frankl` theorem.
+D001 source/build audit, D002 semantic obstruction, and D003 local predicate are
+closed in the current integration package. The first D004 semantic bridge is
+also checked. The missing mathematical theorem is now precise:
 
-## Step 1: External Build Audit
-
-Create a MATHSOLVE external-audit note for:
-
-```text
-repository: https://github.com/kashiwabarakenji/avg-rare
-observed branch: main
-observed commit: 49c3f1d96ca8518d16e203fd0429ac1216838a4f
-observed date: 2026-06-22
+```lean
+SourceShapedMainNDSStatement α
 ```
 
-The audit should record:
+which states NDS nonpositivity for every local source-shaped finite functional
+preorder. Once this theorem is proved, `sourceShapedMainNDS_implies_D004`
+discharges the exact local average-rarity target.
 
-- `lean-toolchain`;
-- `lakefile.lean` dependencies;
-- `lake update` and `lake build` result;
-- theorem names for the source main theorem and secondary theorem;
-- whether any `sorry`, `admit`, or new axioms appear in the trusted path.
+## Selected route: smallest proof-bearing D004 transport
 
-## Step 2: First Local Formal Target
+Do not import the external repository as authority and do not copy unrelated
+infrastructure. Use the audited upstream proof only as provenance and extract
+the smallest dependency cone needed to establish the local NDS theorem.
 
-After the external audit, add a tiny local obstruction theorem showing that
-functional-preorder order ideals are not automatically `IsIdealFamilyOn`.
+The next tranche should proceed in this order:
 
-The intended finite example is the three-element functional chain:
+1. Map the exact upstream dependencies of
+   `AvgRare.MainStatement.main_nds_nonpos`, beginning with
+   `Reduction.main_nds_nonpos_of_secondary` and the secondary theorem actually
+   consumed by that proof.
+2. For each required declaration, decide whether the local D003 surface already
+   states the same object, whether a small semantic lemma is sufficient, or
+   whether a proof component must be ported/reproved.
+3. Prefer semantic lemmas for family membership, cardinality, total edge size,
+   degree/frequency, and NDS before porting structural machinery.
+4. Prove `SourceShapedMainNDSStatement` directly, or replace it only with a
+   proposition proved equivalent to it inside the local trusted boundary.
+5. Close D004 locally before beginning D005 complement duality.
 
-```text
-f(a) = b, f(b) = c, f(c) = c
-order ideals: empty, {a}, {a,b}, {a,b,c}
-proper ideal: {a,b}
-bad subset: {b}
-```
+A fresh proof is also admissible if it is materially smaller than the source
+transport. The criterion is proof economy inside the local trusted boundary,
+not textual similarity to the external repository.
 
-The theorem should establish that the induced family of order ideals fails the
-proper-member subset-downward condition required by `IsIdealFamilyOn`.
+## D004 acceptance criteria
 
-## Step 3: Bridge Predicate Design
+- the exact D003 predicate remains unchanged unless a checked semantic defect is found;
+- a local theorem proves `SourceShapedMainNDSStatement` or directly proves `D004AverageRarityStatement`;
+- no `sorry`, `admit`, or new unexplained axiom is introduced;
+- source definitions and local definitions are not conflated by name alone;
+- NDS normalization and family-cardinality semantics remain explicit;
+- the external repository remains provenance, not an imported trust root;
+- `UC-P04` and `UC-FRANKL` remain open.
 
-Only after Step 2, define a local predicate for finite functional-preorder
-order-ideal families over `Family alpha`. It should be separate from
-`IsIdealFamilyOn` and should expose the exact data needed for a later average
-rarity theorem.
+## After D004
 
-## Acceptance Criteria
-
-- MATHSOLVE validation passes.
-- The WP07 ledger remains presentation/source assessment only.
-- No MATHCERT theorem is claimed for WP07 until a local Lean file compiles with
-  no `sorry`, `admit`, or new axioms.
-- The external repository remains provenance until independently audited and,
-  if needed, ported.
-
+Only after local D004 closure, prove D005 complement duality for the exact D003
+class. Then compare the resulting restricted complement-abundance theorem
+against WP05 structural conditions and the universal `UC-P04` obstruction.
+MATHCERT receives a bounded exact handoff only after a new substantive local
+claim exists.
