@@ -4,11 +4,11 @@
   "campaign": "BSD-001",
   "operation": "BSD-R5-LIFT-EQUIV",
   "protected_base": "270e2c2f9dde7bd817a251c9e3fb250fff36a81b",
-  "assembled_from_head": "e9f20ddb4fa84c1873641747a6b645ad61d701fc",
+  "assembled_from_head": "5132fc1ca7be7dd6c4acf1c850f4125b4fcd3f2b",
   "hash_semantics": "Git blob SHA-1 content identities for the exact pre-merge governed artifact set",
   "artifacts": {
     "work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/00_README.md": "686d494a04f8d774fef25ccecd4b2eda79e0ca71",
-    "work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/01_EQUIVARIANT_BASICNESS_THEOREM.md": "7978f5a24f3ee78d3546b5e49b4b85de9f2983ed",
+    "work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/01_EQUIVARIANT_BASICNESS_THEOREM.md": "32c97c1c84a7722d423b8017a4027d84740655f3",
     "work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/02_SOURCE_AND_DEPENDENCY_NOTE.md": "e1566df142ed389275c159999ef81b93d2f0f993",
     "work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/03_CLAIM_LEDGER.yaml": "b70c8fea30ae1cc9c58d5f9ffecee0b4a1a1ed2b",
     "work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/04_EQUIVARIANT_REPLAY_CERTIFICATE.py": "5b902324763ca94baff8ced534dcfb7807007977",
