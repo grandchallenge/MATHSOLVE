@@ -96,6 +96,7 @@
     "theorem": "work_packages/BSD_R5_PRIM_KATO_INDEX_REDUCTION/01_PRIMITIVITY_INDEX_REDUCTION_THEOREM.md",
     "frontier_record": "handoffs/BSD-001/R5_PRIM_FRONTIER.md",
     "required_tokens": [
+      "P2_CYCLOTOMIC_DETERMINANT_KOLYVAGIN_LINE_IDENTIFIED",
       "P2_KATO_KOLYVAGIN_STRUCTURE_FORMULA_REPLAYED",
       "P2_KATO_KOLYVAGIN_RIGIDITY_REPLAYED",
       "R5_PRIM_EQUIVALENT_TO_P2_KATO_KOLYVAGIN_PRIMITIVITY_INDEX_EQUALITY",
@@ -108,7 +109,8 @@
       "bsd_r2_a1: true",
       "mathcert_certification: true",
       "literal_p2_kurihara_explicit_reciprocity: true",
-      "literal_p2_refined_kurihara: true"
+      "literal_p2_refined_kurihara: true",
+      "raw_source_normalization_termwise_identified_at_p2: true"
     ],
     "workflow": ".github/workflows/bsd-r5-prim-reduction.yml",
     "routing_registry": ".ghos-routing/workflows.json"
@@ -123,7 +125,8 @@
     "bsd_r2_a1": false,
     "literal_p2_kurihara_explicit_reciprocity": false,
     "literal_p2_refined_kurihara": false,
-    "mathcert_certification": false
+    "mathcert_certification": false,
+    "raw_source_normalization_termwise_identified_at_p2": false
   },
   "successor_policy": {
     "next_frontier_if_blocked": "MISSING_P2_KATO_KOLYVAGIN_PRIMITIVITY_INDEX_EQUALITY",

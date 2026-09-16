@@ -1,239 +1,262 @@
-# BSD R5-PRIM reduction theorem — exact normalized Kato–Kolyvagin index
+# BSD R5-PRIM reduction theorem — exact cyclotomic height-one Kato–Kolyvagin index
 
-## 1. Scope
+## 1. Scope and coefficient ring
 
 Fix a selected `BSD-R2-A1` curve `E/Q` and put `T=T_2(E)`.
 
-Protected R5-LIFT gives the literal-`2` determinant-membership statement at the height-one prime
-`(2)`. Protected WP60A-A1 gives the exact DVR criterion. If the localized Kato class is
+Let
+
+`Lambda := Z_2[[Gamma]] ~= Z_2[[X]]`
+
+for the cyclotomic `Z_2`-extension, with `X=gamma-1`, and let
+
+`q=(2)`.
+
+Then `Lambda_q` is a discrete valuation ring. Its uniformizer is `2`; `X` is a unit in
+`Lambda_q`. Write `v_q` for the normalized valuation.
+
+Protected R5-LIFT gives the literal-`2` determinant-membership statement at `q`. Protected
+WP60A-A1 gives the exact DVR criterion. If the localized Kato class is
 
 `z = a P`
 
-relative to a primitive basis `P` of rank-one `H^1`, and if
+relative to a primitive basis `P` of the localized rank-one `H^1` line, and if
 
-`h := length(H^2(C_(2)))`
+`h := length_{Lambda_q}(H^2(C_q))`
 
 for the exact localized perfect complex used in WP60A-A1, then
 
-- determinant membership is `v_2(a) >= h`;
-- determinant-generator status is `v_2(a) = h`.
+- determinant membership is `v_q(a) >= h`;
+- determinant-generator status is `v_q(a) = h`.
 
 The first statement is protected as `R5_LIFT_ESTABLISHED`. The second is the entering
 `R5-PRIM` frontier.
 
-All local, real-place, finite-control and strict/Kummer comparison terms remain governed by the
+All real-place, strict/Kummer, finite-control and local comparison terms remain governed by the
 already-protected R5-LIFT normalization. This operation neither cancels nor reintroduces any such
 term by analogy.
 
-## 2. The literal-2 Kolyvagin-system line already exists
+## 2. The cyclotomic Kolyvagin line supplied by R5-LIFT
 
-Protected WP60R and WP60S establish, on the exact selected literal-`2` lane,
+For
 
-`KS_infty ~= Z_2`,
+`R_{m,n}=Z/2^m[Gamma_n]`,
 
-together with integral regulator compatibility and the following Fitting rule. For every
+protected R5-LIFT proves compatible rank-one isomorphisms
 
-`kappa in KS_infty`,
+`Pi_{m,n}: D_{m,n} -> SS_1(T_{m,n})`
 
-the integral Kolyvagin ideals satisfy
+and
 
-`I_i(kappa) subset Fitt^i_Z2(X)`,
+`Reg_{m,n}: SS_1(T_{m,n}) -> KS_1(T_{m,n})`,
 
-and for a basis Kolyvagin system `kappa_*` equality holds for every `i`.
+where `D_{m,n}` is the finite inverse-determinant line. It also constructs compatible elements
 
-Protected WP60T and R5-LIFT identify the selected Kato derivative with a compatible element
+`kappa^{Kato}_{m,n} in KS_1(T_{m,n})`
 
-`kappa^Kato in KS_infty`
+whose first components are the finite Kato classes.
 
-whose first component is the protected Kato class under the exact finite/inverse-limit
-comparison.
+All maps are natural in the coefficient and cyclotomic transition maps. Taking the same inverse
+limit already used in protected R5-LIFT Section 10 therefore gives an isomorphism of the
+compatible cyclotomic lines
 
-These are repository theorems already admitted at literal `p=2`; no odd-prime specialization is
-used here.
+`Phi_Lambda : D_Lambda -> K_Lambda`,
 
-## 3. Determinant coordinate equals normalized Kolyvagin divisibility
+where
 
-Let `D_(2)` denote the inverse determinant lattice at the height-one prime `(2)` in the protected
-R5-LIFT construction.
+`K_Lambda := lim_{m,n} KS_1(T_{m,n})`
 
-The protected finite determinant-to-Stark maps and Stark-to-Kolyvagin regulator maps are
-rank-one isomorphisms, compatible in the finite quotient system. Protected WP60S supplies the
-inverse-limit Kolyvagin line. Therefore the protected R5-LIFT construction gives a rank-one
-`Z_2`-linear isomorphism, unique up to a unit,
+and `D_Lambda` is the cyclotomic inverse-determinant line. Since `D_Lambda` is a determinant line
+over the local ring `Lambda`, it is free of rank one; hence so is `K_Lambda`.
 
-`Phi : D_(2) -> KS_infty`.
+The compatible Kato family determines
 
-Let `delta_Kato in D_(2)` be the determinant preimage of the localized Kato class furnished by
-R5-LIFT. Then
+`kappa^Kato_Lambda in K_Lambda`,
 
-`Phi(delta_Kato) = kappa^Kato`.
+and the protected determinant preimage
 
-Choose a basis `d_*` of `D_(2)` and put `kappa_*:=Phi(d_*)`, a basis of `KS_infty`. There are a
-unique integer `M_Kato >= 0` and a unit `u in Z_2^x` such that
+`delta_Kato in D_Lambda`
 
-`delta_Kato = 2^(M_Kato) u d_*`
+satisfies
 
-and hence
+`Phi_Lambda(delta_Kato)=kappa^Kato_Lambda`.
 
-`kappa^Kato = 2^(M_Kato) u kappa_*`.
+This is only a passage to the compatible cyclotomic inverse limit of the already-protected
+finite isomorphisms. It does not identify `K_Lambda` with the different base-level
+`Z_2`-module from WP60S.
 
-Thus
+Localizing at `q` gives an isomorphism of free rank-one `Lambda_q` modules
 
-`M_Kato = max{m >= 0 : kappa^Kato in 2^m KS_infty}`
+`Phi_q : D_q -> K_q`.
 
-is basis-independent.
+Record
+
+`P2_CYCLOTOMIC_DETERMINANT_KOLYVAGIN_LINE_IDENTIFIED`.
+
+## 3. Exact normalized scalar defect
+
+Choose a basis `d_*` of `D_q`, and put
+
+`kappa_* := Phi_q(d_*)`.
+
+Then `kappa_*` is a basis of `K_q`. Because R5-LIFT proves `delta_Kato in D_q`, there is a
+unique scalar
+
+`b_Kato in Lambda_q`
+
+such that
+
+`delta_Kato = b_Kato d_*`
+
+and therefore
+
+`kappa^Kato_q = b_Kato kappa_*`.
+
+Changing `d_*` multiplies `b_Kato` by a unit. Hence
+
+`M_q(kappa^Kato) := v_q(b_Kato)`
+
+is basis-independent and nonnegative.
 
 ### Lemma `BSD-R5-PRIM-COORD-001`
 
-In the WP60A-A1 height-one normalization,
+In the protected WP60A-A1 height-one normalization,
 
-`M_Kato = v_2(a) - h`.
+`M_q(kappa^Kato) = v_q(a) - h`.
 
 ### Proof
 
 WP60A-A1 computes the image of the inverse determinant lattice under the canonical rational
 determinant trivialization as
 
-`Fitt^0(H^2(C_(2))) H^1`.
+`Fitt^0(H^2(C_q)) H^1`.
 
-Since the coefficient ring is a DVR, a determinant basis `d_*` therefore maps to
+Over the DVR `Lambda_q`, this lattice is
 
-`2^h * unit * P`.
+`2^h * unit * Lambda_q P`.
 
-Multiplying `d_*` by `2^(M_Kato)u` maps to
+Thus a determinant basis `d_*` maps to `2^h * unit * P`. Since
 
-`2^(h+M_Kato) * unit * P`.
+`delta_Kato=b_Kato d_*`
 
-But `delta_Kato` maps to `z=aP`. Hence
+maps to the Kato class `z=aP`, one has
 
-`v_2(a)=h+M_Kato`.
+`v_q(a)=h+v_q(b_Kato)`.
 
 QED.
 
-Consequently protected R5-LIFT is exactly the statement `M_Kato>=0`, while determinant-generator
-status is exactly `M_Kato=0`.
+Consequently R5-LIFT is the integrality statement `M_q(kappa^Kato)>=0`, while determinant
+generator status is exactly `M_q(kappa^Kato)=0`.
 
-This is the normalized Kato–Kolyvagin primitivity index used below. It is the source-side common
-divisibility after the protected determinant/Selmer normalization has been absorbed into
-`D_(2) -> KS_infty`.
+This is the normalized height-one Kato–Kolyvagin primitivity index used in this package. It is a
+`Lambda_q` index, not the unrelated `Z_2` divisibility of an untwisted base-level Kolyvagin
+system.
 
-## 4. Kolyvagin ideals isolate the same scalar defect
+## 4. Literal-2 replay of the source structure formula
 
-### Lemma `BSD-R5-PRIM-SCALE-002`
+The protected Castella–Sano audit records that the source structure formula separates the index
+of the first Kato component into:
 
-For every `i`,
+1. the strict-dual-Selmer/determinant contribution; and
+2. the common divisibility of the cyclotomic Kato-derived Kolyvagin system.
 
-`I_i(kappa^Kato) = 2^(M_Kato) I_i(kappa_*)`.
+On the selected literal-`2` lane, the same separation follows without importing the source's
+`p>3` theorem:
 
-### Proof
+- WP60A-A1 gives the exact determinant-lattice contribution `h`;
+- R5-LIFT gives the compatible cyclotomic determinant-to-Stark-to-Kolyvagin isomorphisms;
+- Lemma `COORD-001` gives the exact equality
 
-Each finite Kolyvagin ideal is generated functorially by the corresponding Kolyvagin-system
-components. Multiplying a system by a scalar multiplies every component, and hence every
-generated ideal, by that scalar. Protected WP60S passes these compatible equalities to the
-inverse limit. Multiplication by the unit `u` does not change an ideal of `Z_2`.
-QED.
+  `v_q(a) = h + M_q(kappa^Kato)`.
 
-Using the protected basis equality,
+This is the required structural separation in the protected normalization. Before transporting
+local/Selmer factors into that normalization, the source writes the target value of its own
+minimal-divisibility index using explicit local terms; this package does not identify those raw
+source coordinates term-by-term at `p=2`.
 
-`I_i(kappa^Kato) = 2^(M_Kato) Fitt^i_Z2(X)`.
-
-Thus the entire failure of the Kato-derived system to attain the basis Fitting equalities is the
-single normalized scalar exponent `M_Kato`.
-
-## 5. Literal-2 replay of the Castella–Sano structure dependency
-
-The protected source audit records that Castella–Sano use a `p>3` Mazur–Rubin structure theorem
-to separate the index of the first Kato component into the strict-dual-Selmer/Fitting
-contribution plus the common divisibility index of the Kato Kolyvagin system.
-
-On the selected literal-`2` lane, this separation is already forced by protected WP60R/WP60S and
-Lemmas `COORD-001` and `SCALE-002`:
-
-- WP60R gives finite-level Kolyvagin-system freeness and, for a basis, exact Fitting equality;
-- WP60S passes rank-one freeness and Kolyvagin/Fitting ideals to `Z_2`;
-- `COORD-001` identifies the determinant-basis defect with `M_Kato`;
-- `SCALE-002` shows that the same exponent is the unique common Kolyvagin-ideal defect.
-
-No `p>3` structure theorem is imported.
-
-Record:
+Record
 
 `P2_KATO_KOLYVAGIN_STRUCTURE_FORMULA_REPLAYED`.
 
-The replay determines the *form* of the primitivity defect. It does not determine the value
-`M_Kato`.
+The replay determines the form of the primitivity defect. It does not prove
+`M_q(kappa^Kato)=0`.
 
-## 6. Literal-2 replay of the rigidity dependency
+## 5. Literal-2 replay of the rigidity dependency
 
 The protected source audit records that Castella–Sano Proposition 2.1.5 preserves the minimal
-divisibility index while replacing auxiliary primes one at a time.
+divisibility index after passing to arbitrarily deep auxiliary-prime sets.
 
-On the selected literal-`2` lane, protected WP60R gives the exact substitute:
+At every finite `R_{m,n}` level, protected R5-LIFT supplies the literal-`2` replacement
+mechanism:
 
 - selected core vertices exist;
 - the selected core graph is connected;
-- along a core edge, the replayed BSS Lemma 5.19 finite-singular transition is an isomorphism;
+- along a core edge, the replayed finite-singular transition is an `R_{m,n}`-module
+  isomorphism;
 - fresh-prime pairwise localization and iterative dual killing produce selected core vertices
-  outside any previously fixed finite auxiliary set.
+  outside any prescribed finite auxiliary set.
 
-Fix `m`. Along a core edge, an `R_m=Z/2^m`-linear isomorphism preserves the largest power of `2`
-dividing a component. Hence the exact component divisibility is constant along connected
-core-graph paths. The fresh-prime construction permits the same value to be realized after
-avoiding any prescribed finite set. Passing through the compatible finite levels by protected
-WP60S preserves the integral index `M_Kato`.
+For a fixed finite quotient, an `R_{m,n}`-linear isomorphism preserves membership in
+`2^r` times a free rank-one component. Hence the largest visible power of `2` dividing the
+Kato-derived component is constant along a connected core-graph path. The fresh-prime
+construction permits the same value to be tested after avoiding any fixed finite set.
 
-Record:
+Compatibility in `m,n` then identifies these finite divisibility tests with the height-one
+valuation `M_q(kappa^Kato)` of the cyclotomic scalar `b_Kato`.
+
+Record
 
 `P2_KATO_KOLYVAGIN_RIGIDITY_REPLAYED`.
 
-This replay removes the source's `p>3` rigidity theorem as an independent structural blocker.
-It still does not evaluate `M_Kato`.
+Thus the source's `p>3` rigidity proposition is not an independent final obstruction on this
+selected lane. Rigidity preserves and exposes the index; it does not evaluate it.
 
-## 7. Exact R5-PRIM equivalence
+## 6. Exact R5-PRIM equivalence
 
-### Theorem `BSD-R5-PRIM-REDUCTION-003`
+### Theorem `BSD-R5-PRIM-REDUCTION-002`
 
 On the selected literal-`2` lane, the following are equivalent:
 
-1. the protected Kato determinant preimage is a basis of `D_(2)`;
-2. `v_2(a)=length(H^2(C_(2)))`;
-3. `M_Kato=0`;
-4. the protected normalized Kato-derived Kolyvagin system is a basis of `KS_infty`;
-5. its Kolyvagin ideals attain the protected basis Fitting equalities without an additional
-   common factor of `2`.
+1. the protected Kato determinant preimage is a basis of `D_q`;
+2. `v_q(a)=length_{Lambda_q}(H^2(C_q))`;
+3. `M_q(kappa^Kato)=0`;
+4. the localized cyclotomic Kato-derived Kolyvagin element `kappa^Kato_q` is a basis of `K_q`;
+5. the scalar `b_Kato` is a unit of `Lambda_q`.
 
 ### Proof
 
-`(1)<->(2)` is WP60A-A1.  
-`(1)<->(3)<->(4)` follows from the rank-one isomorphism `Phi` and `COORD-001`.  
-`(3)<->(5)` follows from `SCALE-002` and the protected basis Fitting equality.
+`(1)<->(2)` is the protected WP60A-A1 DVR criterion.  
+`(1)<->(4)<->(5)` follows from the rank-one isomorphism `Phi_q`.  
+`(2)<->(3)` follows from Lemma `COORD-001`.
+
 QED.
 
-Record:
+Record
 
 `R5_PRIM_EQUIVALENT_TO_P2_KATO_KOLYVAGIN_PRIMITIVITY_INDEX_EQUALITY`.
 
-Thus the remaining R5-PRIM question is no longer an unspecified reverse divisibility. It is the
-single arithmetic equality
+Thus the remaining R5-PRIM question is the single arithmetic equality
 
-`M_Kato = 0`
+`M_q(kappa^Kato)=0`
 
-in the protected normalized determinant/Kolyvagin coordinate.
+in the protected cyclotomic height-one normalization.
 
-## 8. Why the equality is not currently proved
+This is exactly the meaning of “no extra common factor of `2` beyond the already-explicit
+local/Selmer determinant factors” in the protected provider audit.
 
-No protected MATHSOLVE theorem evaluates `M_Kato` for the selected Kato-derived system.
+## 7. Why the equality is not currently proved
 
-The newly protected MATHFORGE audit identifies two possible ways to obtain the corresponding
-source-normalized value:
+No protected MATHSOLVE theorem evaluates `M_q(kappa^Kato)`.
+
+The protected MATHFORGE audit identifies two possible routes:
 
 1. a direct literal-`2` proof of the normalized Kato–Kolyvagin primitivity-index equality; or
-2. a literal-`2` explicit-reciprocity/refined-Kurihara bridge that computes the same index before
-   transport into the protected determinant normalization.
+2. a literal-`2` explicit-reciprocity/refined-Kurihara bridge that computes the corresponding
+   source-normalized index and transports it into the protected determinant normalization.
 
 The source theorems used for the second route are stated with `p>3` and are not admitted as
-literal-`2` interfaces. Bare nonvanishing of the first Kato class is insufficient: a nonzero
-element of a rank-one `Z_2` module may still be divisible by `2`.
+literal-`2` interfaces. Bare nonvanishing of a Kato component is insufficient: a nonzero element
+of a free rank-one module over the DVR `Lambda_q` may still be divisible by `2`.
 
 Therefore the first independent missing arithmetic theorem is
 
@@ -241,7 +264,7 @@ Therefore the first independent missing arithmetic theorem is
 
 This is a substantive evidentiary boundary, not an infrastructure or source-discovery failure.
 
-## 9. Disposition
+## 8. Disposition
 
 Entering frontier:
 
@@ -255,11 +278,11 @@ Exact successor:
 
 `MISSING_P2_KATO_KOLYVAGIN_PRIMITIVITY_INDEX_EQUALITY`.
 
-The reduction is material: the determinant-basis question has been reduced to one scalar
-integral arithmetic equality after the structural and rigidity dependencies have been replayed
+The reduction is material: the determinant-basis question is reduced to one scalar
+height-one arithmetic equality after the structural and rigidity dependencies have been replayed
 at literal `2`.
 
-## 10. Claim firewall
+## 9. Claim firewall
 
 This theorem does not establish:
 
@@ -267,6 +290,7 @@ This theorem does not establish:
 - a literal-`2` Castella–Sano theorem;
 - a literal-`2` Kurihara explicit-reciprocity theorem;
 - a literal-`2` refined Kurihara equality;
+- a term-by-term identification of the raw source normalization at `p=2`;
 - D2d;
 - `BSD-R2-A1`;
 - novelty or priority;

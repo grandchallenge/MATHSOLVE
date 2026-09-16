@@ -1,4 +1,4 @@
-# BSD R5-PRIM — Kato–Kolyvagin primitivity-index reduction
+# BSD R5-PRIM — cyclotomic Kato–Kolyvagin primitivity-index reduction
 
 ## Operation
 
@@ -9,10 +9,10 @@
 - Candidate disposition: `BLOCKED`.
 - Exact successor boundary: `MISSING_P2_KATO_KOLYVAGIN_PRIMITIVITY_INDEX_EQUALITY`.
 
-This package does not attempt to infer determinant primitivity from rank-one freeness or from
-R5-LIFT. It consumes the protected literal-`2` Kolyvagin-system stack and the newly protected
-Castella–Sano source architecture to identify the exact independent arithmetic equality still
-missing after all already-protected structural and rigidity inputs are replayed.
+This package does not infer determinant primitivity from rank-one freeness or from R5-LIFT.
+It uses the protected literal-`2` finite equivariant determinant/Stark/Kolyvagin tower together
+with the newly protected Castella–Sano source architecture to identify the exact independent
+arithmetic equality still missing after the structural and rigidity obligations are replayed.
 
 ## Protected inputs
 
@@ -26,19 +26,28 @@ missing after all already-protected structural and rigidity inputs are replayed.
 
 ## Result
 
-The operation replays the source's two structural dependencies that are already available on the
-selected literal-`2` lane:
+The operation replays two source dependencies from protected literal-`2` interfaces:
 
-1. rank-one Kolyvagin-system structure/Fitting control from protected WP60R/WP60S; and
-2. auxiliary-prime rigidity from the protected localization/core-graph stack.
+1. the structure separation is obtained from WP60A-A1 plus the compatible R5-LIFT
+   determinant-to-Stark-to-Kolyvagin isomorphisms over the finite cyclotomic quotients;
+2. auxiliary-prime rigidity is replayed from the protected localization/core-graph stack.
 
-After those replays, R5-PRIM is equivalent to one exact normalized arithmetic statement:
-the selected Kato-derived Kolyvagin system must have precisely the protected local/Selmer
-divisibility index, with no additional common factor of `2`.
+Writing `Lambda=Z_2[[Gamma]]` and `q=(2)`, the compatible finite isomorphisms give a localized
+rank-one identification between the cyclotomic determinant and Kolyvagin lines. If
+`delta_Kato=b_Kato d_*` relative to a determinant basis, then
 
-No protected input determines that equality. The p>3 Castella–Sano explicit-reciprocity route
-cannot be silently specialized to `p=2`. Hence the correct disposition is `BLOCKED`, not
-`CLOSED` and not `FALSIFIED`.
+`M_q(kappa^Kato):=v_q(b_Kato)=v_q(a)-length_{Lambda_q}(H^2(C_q))`.
+
+Therefore
+
+`R5-PRIM <=> M_q(kappa^Kato)=0`.
+
+No protected input evaluates this final height-one scalar. The proper disposition is `BLOCKED`,
+not `CLOSED` and not `FALSIFIED`.
+
+The package does not identify the cyclotomic `Lambda_q` line with the different base-level
+`Z_2` Kolyvagin-system module, and it does not specialize any `p>3` Castella–Sano theorem to
+literal `p=2`.
 
 No `R5_PRIM_ESTABLISHED`, D2d, `BSD-R2-A1`, novelty, priority, public certification, or
 MATHCERT certification is asserted.

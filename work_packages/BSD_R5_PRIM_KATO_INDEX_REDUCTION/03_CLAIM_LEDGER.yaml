@@ -8,6 +8,7 @@ candidate_disposition: BLOCKED
 
 entering_frontier: MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
 established:
+  - P2_CYCLOTOMIC_DETERMINANT_KOLYVAGIN_LINE_IDENTIFIED
   - P2_KATO_KOLYVAGIN_STRUCTURE_FORMULA_REPLAYED
   - P2_KATO_KOLYVAGIN_RIGIDITY_REPLAYED
   - R5_PRIM_EQUIVALENT_TO_P2_KATO_KOLYVAGIN_PRIMITIVITY_INDEX_EQUALITY
@@ -18,7 +19,8 @@ blocked_on:
 preserved_protected:
   - R5_LIFT_ESTABLISHED
   - P2_EQUIVARIANT_CYCLOTOMIC_KATO_DETERMINANT_MEMBERSHIP
-  - BSS_LITERAL_P2_SELECTED_THEOREM_5_25_REPLAYED
+  - P2_EQUIVARIANT_SELECTED_REGULATOR_ISOMORPHISM_AVAILABLE
+  - P2_EQUIVARIANT_KATO_FIRST_COMPONENT_AND_COMPATIBILITY_AVAILABLE
 
 known_false:
   - formal_higher_level_hypothesis_3_2_iii
@@ -35,6 +37,7 @@ d2d: false
 bsd_r2_a1: false
 literal_p2_kurihara_explicit_reciprocity: false
 literal_p2_refined_kurihara: false
+raw_source_normalization_termwise_identified_at_p2: false
 mathcert_certification: false
 
 prohibited_promotions:
