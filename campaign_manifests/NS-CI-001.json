@@ -60,10 +60,10 @@
         },
         "failed_route": {
           "repository": "grandchallenge/MATHSOLVE",
-          "commit_sha": "a24275fd5c5803fa201f65ce17ed9295d14abfc2",
+          "commit_sha": "6a489b60588ddec2ce66c63d9bcf5e8a57b5e480",
           "path": "campaign_ledgers/NS-CI-001/failed_route_ledger.json",
           "digest_algorithm": "git_blob_sha1",
-          "digest": "493e1aa531e634553390d3e3631d2956e41eb920",
+          "digest": "6153f8059514396f2644e9a8d24c59db8a3affb2",
           "role": "failed_route_ledger"
         },
         "resource": {
@@ -137,10 +137,10 @@
         },
         "failed_route": {
           "repository": "grandchallenge/MATHSOLVE",
-          "commit_sha": "a24275fd5c5803fa201f65ce17ed9295d14abfc2",
+          "commit_sha": "6a489b60588ddec2ce66c63d9bcf5e8a57b5e480",
           "path": "campaign_ledgers/NS-CI-001/failed_route_ledger.json",
           "digest_algorithm": "git_blob_sha1",
-          "digest": "493e1aa531e634553390d3e3631d2956e41eb920",
+          "digest": "6153f8059514396f2644e9a8d24c59db8a3affb2",
           "role": "failed_route_ledger"
         },
         "resource": {
