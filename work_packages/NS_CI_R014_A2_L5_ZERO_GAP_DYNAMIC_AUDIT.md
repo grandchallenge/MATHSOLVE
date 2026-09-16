@@ -11,16 +11,14 @@
 - A2 theorem: open
 - MATHCERT adjudication: absent
 
-This tranche sharpens the direct critical-integral route in three bounded ways.
-The pre-triangle strict-tail proof needs no fixed buffer `K`; the low endpoint
-is separated from the admitted scalar budgets by a threshold-compatible
-fixture; and the first parabolic attack on the high `H^2` endpoint is reduced
-to explicit dynamic inputs. The result does not prove or refute A2 and does not
-reopen L3 or L4.
+This tranche proves that the pre-triangle strict-tail estimate needs no fixed
+buffer `K`, separates the exact low weighted endpoint from the admitted scalar
+budgets, and reduces the first parabolic attack on the high endpoint to explicit
+dynamic inputs. It does not prove or refute A2 and does not reopen L3 or L4.
 
 ## 1. Imported interface
 
-For annular blocks write
+For annular blocks,
 
 ```math
 E_q=\|u_q\|_2^2,
@@ -32,10 +30,10 @@ At almost every time with finite `Q=Q(t)`,
 
 ```math
 \|u_p\|_\infty<c_0\nu\lambda_p
-\qquad\text{for every }p>Q,
+\qquad (p>Q),
 ```
 
-with no corresponding upper bound at `p=Q` or below. The admitted budgets are
+with no such upper bound at `p=Q` or below. The admitted budgets are
 
 ```math
 \sup_t\|u(t)\|_2\le U_0,
@@ -45,12 +43,9 @@ with no corresponding upper bound at `p=Q` or below. The admitted budgets are
 \int_0^T\Lambda(t)^2dt<\infty.
 ```
 
-The inhomogeneous base block remains a fixed-frequency remainder.
+## 2. Zero-gap strict-tail theorem
 
-## 2. L5-4A — zero-gap strict-tail theorem
-
-To avoid confusing the velocity symbol with viscosity, denote the velocity tail
-by
+Set
 
 ```math
 T_Q:=\sum_{p>Q}u_p,
@@ -62,29 +57,25 @@ For every finite terminal index `N`,
 
 ```math
 \|u_{Q<p\le N}\|_4^4
-\lesssim
-c_0^2\nu^2\sum_{Q<p\le N}A_p,
+\lesssim c_0^2\nu^2\sum_{Q<p\le N}A_p,
 ```
 
 and
 
 ```math
 \|u_{Q<p\le N}\|_6^6
-\lesssim
-c_0^4\nu^4\sum_{Q<s\le N}\lambda_s^2A_s.
+\lesssim c_0^4\nu^4\sum_{Q<s\le N}\lambda_s^2A_s.
 ```
 
-The proof is the L5-3 pre-triangle proof with lower index `Q+1`. For
-`Q<p<=r`,
+For `Q<p<=r`,
 
 ```math
 \int|u_p|^2|u_r|^2dx
-\le
-c_0^2\nu^2
+\le c_0^2\nu^2
 \left(\frac{\lambda_p}{\lambda_r}\right)^2A_r,
 ```
 
-and
+and the row kernel satisfies
 
 ```math
 \sum_{Q<p\le r}
@@ -96,13 +87,12 @@ For `Q<p<=r<=s`,
 
 ```math
 \int|u_p|^2|u_r|^2|u_s|^2dx
-\le
-c_0^4\nu^4
+\le c_0^4\nu^4
 \frac{\lambda_p^2\lambda_r^2}{\lambda_s^2}A_s,
 ```
 
-and deleting indices at or below `Q` can only reduce the nonnegative ordered
-triple sum:
+while deleting indices at or below `Q` only decreases the nonnegative ordered
+triple kernel, so
 
 ```math
 \sum_{Q<r\le s}\sum_{Q<p\le r}
@@ -110,7 +100,8 @@ triple sum:
 \le\frac{64}{45}\lambda_s^2.
 ```
 
-Thus, uniformly in terminal frequency,
+The Littlewood--Paley constants and these geometric bounds are uniform in `N`.
+Therefore
 
 ```math
 \int_0^T\|T_Q(t)\|_4^4dt
@@ -121,35 +112,33 @@ and
 
 ```math
 \|T_Q\|_6^4
-\lesssim
-c_0^{8/3}\nu^{8/3}Z_{>Q}^{2/3},
+\lesssim c_0^{8/3}\nu^{8/3}Z_{>Q}^{2/3},
 \qquad
 Z_{>Q}(t):=\sum_{p>Q(t)}\lambda_p^2A_p(t).
 ```
 
 No step requires `p>Q+K`.
 
-## 3. Two-block master inequality
+## 3. Two-block master reduction
 
-Since `T_Q=\sum_{p>Q}u_p`, the exact split is
+The exact split is
 
 ```math
 u=u_{\le Q}+T_Q.
 ```
 
-The protected low estimate is
+The protected low estimate gives
 
 ```math
 \|u_{\le Q}\|_6^4
-\lesssim
-U_0^2W_{\le Q}
-+\text{fixed-base remainder},
+\lesssim U_0^2W_{\le Q}+\text{fixed-base remainder},
 ```
 
-with
+where
 
 ```math
-W_{\le Q}(t):=\sum_{0\le r\le Q(t)}\lambda_r^2A_r(t).
+W_{\le Q}(t):=
+\sum_{0\le r\le Q(t)}\lambda_r^2A_r(t).
 ```
 
 Hence
@@ -164,37 +153,37 @@ U_0^2W_{\le Q}(t)
 }
 ```
 
-The remaining direct L5 obligations are
+Thus direct L5 closure reduces to the two time integrals
 
 ```math
-\int_0^T W_{\le Q}(t)dt<\infty
+\int_0^T W_{\le Q}(t)dt
 ```
 
 and
 
 ```math
-\int_0^T Z_{>Q}(t)^{2/3}dt<\infty,
+\int_0^T Z_{>Q}(t)^{2/3}dt,
 ```
 
-or a new identity coupling or avoiding these endpoints.
+or to a new identity coupling or avoiding them.
 
-## 4. B2 is not standalone in this representation
+## 4. B2 disposition
 
-The zero-gap split preserves the threshold firewall exactly: `p=Q` stays in
-`u_{<=Q}` and receives no strict-high upper bound, while every `p>Q` lies in
-`T_Q` and receives the defining upper bound. Therefore
+The zero-gap split preserves the threshold direction exactly. The shell `p=Q`
+stays in the low term and receives no strict-high upper bound; every `p>Q`
+lies in `T_Q` and does receive that bound. Therefore
 
 ```text
 B2_STANDALONE_BLOCKER_REMOVED_FROM_POINTWISE_L5_DECOMPOSITION.
 ```
 
-This is scoped only to the pointwise norm representation. Dynamic projected
-energy and commutator identities can still create finite-neighbour terms near
-`Q`; no global near-threshold depletion theorem is asserted.
+This is scoped only to this pointwise norm representation. Dynamic projected
+energy or commutator identities may still create finite-neighbour terms near
+`Q`; no global near-threshold depletion theorem is claimed.
 
-## 5. L5-4B — exact low endpoint and static separation
+## 5. Exact B1 endpoint and static separation
 
-Tonelli gives
+Tonelli gives the layer identity
 
 ```math
 \int_0^T W_{\le Q}(t)dt
@@ -203,8 +192,8 @@ Tonelli gives
 \int_{\{t:Q(t)\ge r\}}A_r(t)dt.
 ```
 
-Thus B1 is a correlation problem between shell dissipation and the event
-`Q>=r`.
+Thus B1 is a correlation problem between shell dissipation and the superlevel
+event `Q>=r`.
 
 Take pairwise disjoint intervals `I_n` and set
 
@@ -227,11 +216,11 @@ E_{q_n}\asymp\nu^2\lambda_{q_n}^{-1}.
 ```
 
 A fixed divergence-free annular packet with this `L2` scaling has supremum
-comparable to `\nu\lambda_{q_n}`; its fixed amplitude constant can be chosen so
-that shell `q_n` violates the defining strict-high inequality while every
-higher shell is zero. Thus `Q=q_n` is compatible with the minimum definition.
+comparable to `\nu\lambda_{q_n}`. Its fixed amplitude constant can be chosen so
+that `q_n` fails the defining strict-high inequality while every higher shell is
+zero; hence `Q=q_n` is compatible with the minimum definition.
 
-The admitted scalar budgets are finite:
+The selected scalar budgets remain finite:
 
 ```math
 \sum_n\lambda_{q_n}^2|I_n|
@@ -243,74 +232,66 @@ The admitted scalar budgets are finite:
 \asymp\nu^2\sum_n2^{-12n}<\infty,
 ```
 
-and `E_{q_n}\asymp\nu^2 2^{-6n}` is uniformly bounded. But
+and `E_{q_n}\asymp\nu^2 2^{-6n}` is uniformly bounded. But every interval has
 
 ```math
 \lambda_{q_n}^2A_{q_n}|I_n|
-\asymp\nu^2
+\asymp\nu^2,
 ```
 
-on every interval, so
+so
 
 ```math
 \int_0^T W_{\le Q}(t)dt=\infty.
 ```
 
-This is a static shell/packet fixture, not a Navier--Stokes solution. It shows
-that the exact low endpoint cannot follow from the selected scalar budgets and
-the threshold definition by another Holder, occupancy, or shell-energy
-rearrangement. A B1 advance must use equation-specific dynamics.
+This is a static shell/packet fixture, not a Navier--Stokes solution. It proves
+only that B1 cannot be deduced from the selected scalar budgets and threshold
+definition by another Holder, occupancy, or shell-energy rearrangement.
 
-## 6. L5-4C — first parabolic audit of B3
+## 6. First parabolic audit of B3
 
-For a fixed cutoff `q`, let
+For a fixed cutoff `q`, define
 
 ```math
 V_q=P_{>q}u,
 \qquad
+L_q=P_{\le q-2}u,
+\qquad
 Y_q=\|\nabla V_q\|_2^2,
 \qquad
-Z_q=\|\Delta V_q\|_2^2,
+Z_q=\|\Delta V_q\|_2^2.
 ```
 
-up to fixed Littlewood--Paley equivalence constants. The principal low--high
-transport is
+The principal low--high transport is `L_q\cdot\nabla V_q`. At `L2` level its
+pure transport contribution is removed by incompressibility. At `H1` level,
 
 ```math
-u_{\le q-2}\cdot\nabla V_q.
-```
-
-In that display the intended leading symbol is the velocity `u_{<=q-2}`. At
-`L2` level incompressibility removes the pure transport contribution. At `H1`
-level the exact product rule is
-
-```math
-\nabla(u_{\le q-2}\cdot\nabla V_q)
-=
-(\nabla u_{\le q-2})\nabla V_q
-+u_{\le q-2}\cdot\nabla\nabla V_q.
+\nabla(L_q\cdot\nabla V_q)
+=(\nabla L_q)\nabla V_q
++L_q\cdot\nabla\nabla V_q.
 ```
 
 The final transport term is skew after integration, but the first term leaves
 
 ```math
 \left|\int
-(\nabla u_{\le q-2})\nabla V_q:\nabla V_q\,dx\right|
+(\nabla L_q)\nabla V_q:\nabla V_q\,dx\right|
 \le G_qY_q,
 ```
 
 where
 
 ```math
-G_q(t):=\|\nabla u_{\le q-2}(t)\|_\infty.
+G_q(t):=\|\nabla L_q(t)\|_\infty.
 ```
 
-`G_q` lies below the cutoff and receives no strict-high smallness. Thus even an
-optimistic audit that absorbs every strictly high remainder leaves a low-mode
-deformation input before `\nu Z_q` can be controlled.
+`G_q` lies below the cutoff and receives no strict-high smallness. Therefore an
+optimistic audit that absorbs every strictly high remainder still leaves a
+low-mode deformation input before `\nu Z_q` can be controlled.
 
-If this fixed-`q` estimate is localized to `E_q={t:Q(t)=q}`, integrating the
-`Y_q'` term against `1_{E_q}` creates the selector-boundary ledger
+If the fixed-`q` estimate is localized to `E_q={t:Q(t)=q}`, integration of the
+`Y_q'` term against `1_{E_q}` produces the selector-boundary ledger
 
 ```math
 \int Y_q\,d1_{E_q},
@@ -319,8 +300,8 @@ If this fixed-`q` estimate is localized to `E_q={t:Q(t)=q}`, integrating the
 which requires weighted variation control absent from `Lambda in L2`; this is
 the protected B4 interface.
 
-If instead `q` is held fixed globally, strict-high absorption for every `p>q`
-is guaranteed only on `{Q<=q}`. On the complementary set,
+If instead `q` is kept fixed globally, strict-high absorption for all `p>q` is
+guaranteed only on `{Q<=q}`. On `{Q>q}` the selected hypothesis gives only
 
 ```math
 |\{t:Q(t)>q\}|
@@ -328,16 +309,16 @@ is guaranteed only on `{Q<=q}`. On the complementary set,
 \int_0^T\Lambda(t)^2dt,
 ```
 
-but this occupancy estimate alone gives no control of `Y_q` or `Z_q^{2/3}`.
-Turning it into the required parabolic estimate would be a new
-residence/depletion theorem of the type whose absence closed L3.
+which alone controls neither `Y_q` nor `Z_q^{2/3}`. Turning small occupancy into
+the required estimate would be a new residence/depletion theorem of the type
+whose absence closed L3.
 
-Finally, a backward Duhamel representation around an active time avoids
-explicit selector differentiation only if the defining strict-high condition
-persists on a frequency-scale time window. Defining-threshold parabolic
-residence is itself a protected L3 reopening condition.
+A backward Duhamel representation avoids explicit selector differentiation only
+if the defining strict-high condition persists on a frequency-scale time
+window. Defining-threshold parabolic residence is itself a protected L3
+reopening condition.
 
-Therefore the first B3 parabolic family reduces to
+Hence the first B3 parabolic family has the bounded reduction
 
 ```text
 MOVING_TAIL_H1_ENERGY
@@ -348,8 +329,7 @@ BACKWARD_DUHAMEL
     -> defining-threshold parabolic residence.
 ```
 
-This is a bounded route reduction, not an exhaustion theorem for every
-possible PDE-specific B3 mechanism.
+This does not exhaust every possible PDE-specific B3 mechanism.
 
 ## 7. Updated residual ledger
 
@@ -371,16 +351,16 @@ correlation/depletion estimate for
 ```
 
 Static Holder, occupancy, threshold-energy floors, and packet counting are now
-excluded as sufficient mechanisms. If the bounded B1 candidate fails, record
-its first exact PDE obstruction before returning to a B3 mechanism genuinely
-different from moving-tail `H1` energy, fixed-tail bad-set splitting, or
+excluded as sufficient mechanisms. If that B1 candidate fails, record its first
+exact PDE obstruction before returning to a B3 mechanism genuinely different
+from moving-tail `H1` energy, fixed-tail bad-set splitting, or
 threshold-residence Duhamel.
 
 ## Claim boundary
 
 This package proves the zero-gap strict-tail estimates, the two-block pointwise
-reduction, and the stated static separation of the low weighted endpoint. It
-also identifies the low-deformation/selector/residence interfaces in the first
+reduction, and the static separation of the low weighted endpoint. It also
+identifies the low-deformation/selector/residence interfaces in the first
 parabolic B3 family. It does not prove or refute `NS-CI-R014-A2`, universal
 critical integrability, or global Navier--Stokes regularity; it does not reopen
 L3 or L4; it performs no MATHCERT adjudication; and it creates no novelty,
