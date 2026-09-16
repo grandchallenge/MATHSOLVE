@@ -12,14 +12,15 @@
 - L5: active
 - MATHCERT adjudication: absent
 
-This tranche tests the smallest safe B1 successor from L5-4. It uses the
-Navier--Stokes enstrophy balance rather than another static rearrangement. The
+This tranche tests the smallest safe B1 successor from L5-4. It uses finite-shell
+Navier--Stokes enstrophy balances rather than another static rearrangement. The
 direct moving-low-enstrophy identity recreates selector variation and a selected
-non-conservative enstrophy-production term. Coupling the low and high enstrophy
-balances cancels selector variation exactly, but the resulting low-amplitude
-coefficient reduces algebraically to the already protected L4 weighted-column
-quantity `S_Q`, including its active diagonal. Therefore this B1 dynamic family
-is terminated without reopening L4.
+non-conservative enstrophy-production term. Coupling the complementary finite
+high block cancels selector variation algebraically before any infinite-shell
+limit, but the resulting low-amplitude coefficient reduces exactly to the
+already protected L4 weighted-column quantity `S_Q`, including its active
+diagonal. This B1 candidate family is therefore terminated without reopening
+L4.
 
 ## 1. Imported interface
 
@@ -46,10 +47,8 @@ The selected assumptions provide
 The L5-4 low endpoint is
 
 ```math
-W_{\le Q}(t)=\sum_{p\le Q(t)}\lambda_p^2A_p(t),
+W_{\le Q}(t)=\sum_{p\le Q(t)}\lambda_p^2A_p(t).
 ```
-
-and B1 asks for equation-specific control of `integral W_{<=Q}`.
 
 The protected L4 weighted-column quantity is
 
@@ -62,22 +61,21 @@ S_Q(t)
 D_p(t)=\nu A_p(t).
 ```
 
-L4 proved that its positive-kernel route is not controlled by the selected
-static budgets and that the diagonal
+Its cutoff-shell diagonal is
 
 ```math
-\sum_q\lambda_q\int_{\{Q=q\}}D_q(t)dt
+\sum_q\lambda_q\int_{\{Q=q\}}D_q(t)dt.
 ```
 
-requires a genuinely new selected-transfer cancellation, active-set variation
-theorem, active-diagonal depletion, commutator closure, or dynamic
-decorrelation result.
+The protected L4 reopening conditions remain selected-transfer cancellation,
+active-set variation, active-diagonal depletion, commutator closure, or genuine
+dynamic decorrelation.
 
 ## 2. Direct B1 equation: moving low enstrophy
 
-Use mutually orthogonal dyadic projections for the exact balance and compare
-with the smooth Littlewood--Paley blocks by fixed overlap constants. For a fixed
-cutoff `q`, define
+Use mutually orthogonal dyadic projections for the exact finite-shell ledger;
+smooth Littlewood--Paley blocks differ only by fixed overlap constants. For a
+fixed cutoff `q`, define
 
 ```math
 \mathcal E_{\le q}
@@ -86,11 +84,11 @@ cutoff `q`, define
 
 ```math
 \mathcal H_{\le q}
-=\sum_{p\le q}\lambda_p^4\|P_pu\|_2^2,
+=\sum_{p\le q}\lambda_p^4\|P_pu\|_2^2.
 ```
 
-and let `\mathcal N_{\le q}` denote the corresponding projected nonlinear
-enstrophy production. On smooth Galerkin approximants,
+On smooth Galerkin approximants, with `mathcal N_{<=q}` the projected nonlinear
+enstrophy production,
 
 ```math
 \frac d{dt}\mathcal E_{\le q}
@@ -98,7 +96,7 @@ enstrophy production. On smooth Galerkin approximants,
 =\mathcal N_{\le q}.
 ```
 
-Up to fixed annular-equivalence constants,
+Up to fixed annular constants,
 
 ```math
 \mathcal H_{\le Q}\simeq W_{\le Q}.
@@ -110,8 +108,9 @@ Let
 \chi_q=1_{\{Q=q\}}.
 ```
 
-If the selectors are temporarily taken to have bounded variation, multiplication
-by `chi_q`, integration in time, and summation in `q` give
+If the selectors are temporarily taken to have bounded variation, multiplying
+the finite-shell identity by `chi_q`, integrating, and summing gives the formal
+candidate ledger
 
 ```math
 \nu\int_0^T W_{\le Q}dt
@@ -123,53 +122,57 @@ by `chi_q`, integration in time, and summation in `q` give
 \sum_q[\chi_q\mathcal E_{\le q}]_0^T.
 ```
 
-This exposes two equation-level obligations before any estimate is made:
+This exposes two equation-level obligations before any estimate:
 
-1. `mathcal N_{<=q}` is an H1/enstrophy production term. Unlike the shell
-   L2-energy transfer in L4, its sum over all shells is not zero in 3D; the
-   global remainder is vortex stretching.
-2. The Stieltjes term requires weighted variation of the moving selector. The
-   hypothesis `Lambda in L2_t` controls occupancy but not the number or total
-   variation of active components. This is the protected B4 interface.
+1. `mathcal N_{<=q}` is an H1/enstrophy-production term. Unlike the shell
+   L2-energy transfer, its all-shell sum is not zero in three dimensions; the
+   residual is vortex stretching.
+2. The Stieltjes term requires selector variation. `Lambda in L2_t` controls
+   weighted occupancy but not the number or total variation of active
+   components.
 
-Thus the direct localized B1 energy identity does not by itself furnish the
-required correlation estimate.
+Thus the direct localized B1 identity does not furnish the desired correlation
+estimate.
 
-## 3. Coupled low/high repair cancels B4 exactly
+## 3. Finite-shell complementary coupling cancels selector variation
 
-The selector term is mechanical rather than intrinsic if the complementary high
-enstrophy balance is retained. For every fixed `q`, write
+The selector term can be removed algebraically without assuming a global H1
+identity for a Leray--Hopf solution. Fix a terminal shell `N`. For `q<N`, set
 
 ```math
-\mathcal E
-=\mathcal E_{\le q}+\mathcal E_{>q}.
+\mathcal E_{q<p\le N}
+=\frac12\sum_{q<p\le N}\lambda_p^2\|P_pu\|_2^2.
 ```
 
-Summing the low and high identities with the same selector gives
+Then exactly
+
+```math
+\mathcal E_{\le q}+\mathcal E_{q<p\le N}
+=\mathcal E_{\le N},
+```
+
+and the right side is independent of `q`. Therefore, for every finite set of
+active selectors,
 
 ```math
 \sum_q\int
-(\mathcal E_{\le q}+\mathcal E_{>q})\,d\chi_q
+(\mathcal E_{\le q}+\mathcal E_{q<p\le N})\,d\chi_q
 =
-\int\mathcal E\,d\left(\sum_q\chi_q\right)
-=0
+\int\mathcal E_{\le N}\,d\left(\sum_q\chi_q\right)
+=0.
 ```
 
-for finite approximants, because exactly one active selector is present. Passing
-through finite shell cutoffs therefore shows that a coupled argument can remove
-the selector-variation ledger rather than assuming B4.
+This is a finite-dimensional algebraic identity. It does not assert global H1
+regularity, bounded variation of the actual dissipation wavenumber, or passage
+of a full enstrophy equality to an arbitrary Leray--Hopf solution. Its role is
+only to show that the B4 term is not intrinsic to a candidate that keeps both
+complementary finite blocks.
 
-After this cancellation one is back at the full enstrophy balance
-
-```math
-\frac12\frac d{dt}\|\nabla u\|_2^2
-+\nu\|\Delta u\|_2^2
-=\text{vortex-stretching/nonlinear enstrophy production}.
-```
-
-The dissipation-wavenumber split can absorb strictly high interactions when the
-threshold constant is chosen sufficiently small, but terms carrying a low mode
-leave the standard low deformation/amplitude coefficient
+After this cancellation, the finite-shell nonlinear enstrophy production still
+contains the three-dimensional stretching/low-deformation contribution. The
+standard dissipation-wavenumber split absorbs strictly high interactions when
+its threshold constant is sufficiently small, but terms carrying a low mode
+leave the coefficient
 
 ```math
 f(t)
@@ -177,12 +180,11 @@ f(t)
 \sup_{p\le Q(t)}\lambda_p\|u_p(t)\|_\infty.
 ```
 
-No `f in L1_t` conclusion is imported here. The next section derives directly
-what the selected budgets say about this coefficient.
+No `f in L1_t` conclusion is imported.
 
 ## 4. Exact half-integrability factorization
 
-Define the geometrically weighted low dissipation density
+Define
 
 ```math
 D_3(t)
@@ -199,7 +201,7 @@ Bernstein gives
 \lambda_p^3A_p.
 ```
 
-Therefore
+Hence
 
 ```math
 f(t)^2
@@ -209,7 +211,7 @@ f(t)^2
 \Lambda(t)^3D_3(t),
 ```
 
-hence
+or
 
 ```math
 \boxed{
@@ -219,47 +221,29 @@ f(t)
 }
 ```
 
-Because the geometric weights are at most one,
+Since the geometric weights are at most one,
 
 ```math
 D_3(t)\le\sum_pA_p(t),
 ```
 
-so Leray gives
+so Leray gives `D_3^(1/2) in L2_t`. The selected hypothesis gives
+`Lambda^(3/2) in L^(4/3)_t`. Hölder would need `D_3^(1/2) in L4_t` to make this
+product integrable; that input is absent.
+
+The energy cap yields the consistency endpoint
 
 ```math
-D_3^{1/2}\in L^2_t.
+D_3(t)\lesssim U_0^2\Lambda(t)^2,
+\qquad
+f(t)\lesssim U_0\Lambda(t)^{5/2},
 ```
 
-Under the selected hypothesis,
-
-```math
-\Lambda^{3/2}\in L^{4/3}_t.
-```
-
-Hölder would require `D_3^{1/2} in L4_t` to make the displayed product
-integrable. The admitted budgets give only `L2_t`. This is the exact
-half-integrability gap in this factorization.
-
-The energy cap also yields the familiar pointwise endpoint
-
-```math
-D_3(t)
-\lesssim U_0^2\Lambda(t)^2,
-```
-
-and therefore
-
-```math
-f(t)\lesssim U_0\Lambda(t)^{5/2}.
-```
-
-This is a consistency check, not a route for the selected `Lambda in L2_t`
-hypothesis.
+but this does not close under `Lambda in L2_t`.
 
 ## 5. The missing bridge is exactly the closed L4 column
 
-A Cauchy--Schwarz factorization of the preceding bound gives
+Cauchy--Schwarz gives
 
 ```math
 \int f(t)dt
@@ -268,13 +252,12 @@ A Cauchy--Schwarz factorization of the preceding bound gives
 \left(\int\Lambda D_3dt\right)^{1/2}.
 ```
 
-But, using `Lambda=lambda_Q` and `D_p=nu A_p`,
+Using `Lambda=lambda_Q` and `D_p=nu A_p`,
 
 ```math
 \nu\Lambda D_3
 =
-\nu\sum_{p\le Q}
-\frac{\lambda_p^3}{\Lambda^2}A_p
+\nu\sum_{p\le Q}\frac{\lambda_p^3}{\Lambda^2}A_p
 ```
 
 ```math
@@ -286,45 +269,30 @@ But, using `Lambda=lambda_Q` and `D_p=nu A_p`,
 
 ```math
 =
-\sum_{p\le Q}
-2^{-2(Q-p)}\lambda_pD_p
+\sum_{p\le Q}2^{-2(Q-p)}\lambda_pD_p
 =S_Q.
 ```
 
 Thus
 
 ```math
-\boxed{
-\nu\Lambda D_3=S_Q
-}
+\boxed{\nu\Lambda D_3=S_Q}
 ```
 
-pointwise, with no inequality and no loss.
+pointwise, with no inequality and no loss. The `p=Q` term is exactly
+`lambda_Q D_Q`, so integration over the active sets reproduces the protected L4
+active diagonal.
 
-The cutoff-shell term `p=Q` is
-
-```math
-\lambda_QD_Q,
-```
-
-so after integration over `E_Q={Q=q}` the exact protected L4 active diagonal
-reappears:
-
-```math
-\sum_q\lambda_q\int_{E_q}D_qdt.
-```
-
-Consequently the selector-free coupled B1 repair is not a new decorrelation
-mechanism. It is algebraically identical to the L4 weighted-column interface.
-Reopening it would require one of the protected L4 reopening theorems, none of
-which is supplied by this tranche.
+Consequently the selector-free B1 repair is not a new decorrelation theorem. It
+is algebraically the closed L4 weighted-column interface. No L4 reopening
+condition is established here.
 
 ## 6. Static adversarial check for the half-power gap
 
-This fixture is used only to reject accidental functional-analytic closure after
-the PDE reduction; it is not an NSE solution.
+This fixture rejects accidental functional-analytic closure after the PDE
+reduction; it is not an NSE solution.
 
-On pairwise disjoint time intervals choose dyadic `Lambda=lambda_q=lambda`,
+Choose pairwise disjoint intervals, dyadic `Lambda=lambda_q=lambda`, and
 
 ```math
 |I_q|=\lambda^{-9/4},
@@ -334,59 +302,49 @@ A_q=\lambda^2,
 E_q=1,
 ```
 
-with a threshold-compatible annular packet saturating Bernstein at the active
-shell and all higher shells zero. Then
+with an active annular packet saturating Bernstein and all higher shells zero.
+Then
 
 ```math
 \sum\Lambda^2|I_q|
 =\sum\lambda^{-1/4}<\infty,
 ```
 
-and
-
 ```math
 \sum A_q|I_q|
 =\sum\lambda^{-1/4}<\infty,
 ```
 
-while the active shell can have
-
-```math
-f_q\asymp\lambda^{5/2},
-```
-
-so
+while `f_q asymp lambda^(5/2)` gives
 
 ```math
 \sum f_q|I_q|
 \asymp\sum\lambda^{1/4}=\infty.
 ```
 
-The pointwise energy remains bounded. This shows that once the equation-level
-calculation has reduced to `f`, the selected scalar budgets still cannot supply
-the missing half power.
+The pointwise energy remains bounded. This fixture does not make any assertion
+about an actual Navier--Stokes trajectory.
 
 ## 7. Literature consistency check
 
 Cheskidov and Shvydkoy, *A unified approach to regularity problems for the 3D
 Navier--Stokes and Euler equations: the use of Kolmogorov's dissipation range*,
-Journal of Mathematical Fluid Mechanics 16 (2014), derive the same low-mode
-coefficient and the bounds `Lambda^2 lesssim f lesssim Lambda^(5/2)` and prove
-regularity under the stronger `Lambda in L^(5/2)_t` condition. This tranche does
-not import that theorem as an A2 proof; the source is used only to check that the
-independently derived coefficient and exponent gap are aligned with the
-established dissipation-wavenumber framework.
+Journal of Mathematical Fluid Mechanics 16 (2014), use the same low-mode
+coefficient and obtain the bounds `Lambda^2 lesssim f lesssim Lambda^(5/2)` and
+a regularity criterion under the stronger `Lambda in L^(5/2)_t` condition.
+This is a consistency check only; that stronger hypothesis is not imported into
+A2.
 
 ## 8. B1 disposition and successor
 
-The bounded B1 family tested here has two branches:
+The bounded family has the reduction
 
 ```text
 MOVING_LOW_ENSTROPHY
     -> selected non-conservative enstrophy production + B4 selector variation;
 
-COUPLED_LOW_HIGH_ENSTROPHY
-    -> selector cancellation
+FINITE_COMPLEMENTARY_COUPLING
+    -> selector cancellation at terminal shell N
     -> low coefficient f
     -> exact factor nu Lambda D_3 = S_Q
     -> protected L4 active diagonal.
@@ -398,18 +356,17 @@ Therefore
 B1_DIRECT_DYNAMIC_ROUTE_REDUCED__SELECTOR_FREE_REPAIR_EQUALS_CLOSED_L4_COLUMN.
 ```
 
-This terminates this B1 candidate family. It does not prove that no other
+This terminates this B1 candidate family; it does not prove that no other
 Navier--Stokes correlation theorem for B1 exists.
 
-Per the protected L5-4 handoff, the next safe move is to return to B3 only
-through a mechanism genuinely different from moving-tail H1 energy,
-fixed-tail bad-set splitting, threshold-residence Duhamel, or the L4 weighted
-column. A direct `L6` transport-energy formulation is admissible only if its
-high-pass/Leray commutators avoid the same low deformation coefficient; that is
-the next bounded falsification target.
+Per L5-4, the next safe move is B3 through a mechanism different from
+moving-tail H1 energy, fixed-tail bad-set splitting, threshold-residence
+Duhamel, or the L4 weighted column. The direct projected `L6` transport candidate
+is audited separately in `NS_CI_R014_A2_L5_B3_L6_TRANSPORT_AUDIT.md`.
 
 ## Claim boundary
 
 A2 remains unproved. This tranche neither proves nor refutes the Navier--Stokes
-target, does not reopen L4, does not establish `f in L1_t`, and creates no
-MATHCERT certification or claim promotion.
+target, does not reopen L4, does not establish `f in L1_t`, assumes no global H1
+identity for the Leray--Hopf solution, and creates no MATHCERT certification or
+claim promotion.
