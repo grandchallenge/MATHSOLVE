@@ -56,18 +56,27 @@ where `D_{m,n}` is the finite inverse-determinant line. It also constructs compa
 
 whose first components are the finite Kato classes.
 
-All maps are natural in the coefficient and cyclotomic transition maps. Taking the same inverse
-limit already used in protected R5-LIFT Section 10 therefore gives an isomorphism of the
-compatible cyclotomic lines
+All maps are natural in the coefficient and cyclotomic transition maps. The rings `R_{m,n}`
+form the finite quotient system used to recover `Lambda`. For the protected perfect global
+cohomology complex, determinant formation commutes with these derived base changes, so
+
+`D_{m,n} ~= D_Lambda tensor_Lambda R_{m,n}`
+
+and completeness gives
+
+`D_Lambda ~= lim_{m,n} D_{m,n}`.
+
+Taking the inverse limit of the compatible finite isomorphisms therefore gives an isomorphism
 
 `Phi_Lambda : D_Lambda -> K_Lambda`,
 
 where
 
-`K_Lambda := lim_{m,n} KS_1(T_{m,n})`
+`K_Lambda := lim_{m,n} KS_1(T_{m,n})`.
 
-and `D_Lambda` is the cyclotomic inverse-determinant line. Since `D_Lambda` is a determinant line
-over the local ring `Lambda`, it is free of rank one; hence so is `K_Lambda`.
+This is the same inverse-limit passage already used for the protected Kato determinant preimage
+in R5-LIFT Section 10. Since `D_Lambda` is a determinant line over the local ring `Lambda`, it
+is free of rank one; hence so is `K_Lambda`.
 
 The compatible Kato family determines
 
@@ -85,7 +94,14 @@ This is only a passage to the compatible cyclotomic inverse limit of the already
 finite isomorphisms. It does not identify `K_Lambda` with the different base-level
 `Z_2`-module from WP60S.
 
-Localizing at `q` gives an isomorphism of free rank-one `Lambda_q` modules
+Protected R5-LIFT Section 11 then compares the source global determinant complex with the exact
+primitive/ordinary target complex at `q`. The retained real-place, strict/Kummer and finite-control
+corrections change the localized determinant generator only by a unit, and hence preserve both
+the localized lattice and basis status. We therefore write `D_q` for that exact protected target
+lattice.
+
+Localizing `Phi_Lambda` at `q` and transporting across this unit comparison gives an isomorphism
+of free rank-one `Lambda_q` modules
 
 `Phi_q : D_q -> K_q`.
 
