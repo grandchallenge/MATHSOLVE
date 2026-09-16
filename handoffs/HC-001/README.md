@@ -26,10 +26,10 @@ Prove, refute, or sharply localize `HC-R021-A8-CM4-C2` in `work_packages/HC_R021
 
 ## Current substantive state
 
-- `HC-WP00`: complete in Solve and qualified by MATHCERT as semantic/conditional interface only.
+- `HC-WP00`: complete in Solve and qualified by MATHCERT as semantic/conditional interface only. Its content-addressed proof DAG remains unchanged.
 - `HC-WP01`: complete for current target selection in `campaign_ledgers/HC-001/false_proof_atlas.json`.
 - `HC-WP02`: current for target selection in `campaign_ledgers/HC-001/known_case_construction_ledger.json`.
-- `HC-P03`: active through `HC-R021-A8-CM4-C2`.
+- `HC-P03`: active through `HC-R021-A8-CM4-C2`, represented by `campaign_ledgers/HC-001/post_wp00_proof_obligation_dag.json`.
 - `HC-P04`: open; universal Hodge remains unproved.
 - `HC-R021-A8-CM4-C2`: selected and unproved.
 - source-proved construction obligations: coherent secant sheaves, nonzero Fourier-Mukai rank, persistence of the normalized class as Hodge, and nonzero projection to the Weil summand.
@@ -46,10 +46,11 @@ The historical Solve handoff and an older Solve current-route projection still r
 - `grandchallenge/MATHSOLVE:AGENTS.md`
 - `grandchallenge/MATHSOLVE:work_packages/HC_WP00.md`
 - `grandchallenge/MATHSOLVE:work_packages/HC_WP00_STATEMENT_LATTICE_AND_DAG.md`
+- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/proof_obligation_dag.json` — immutable WP00 DAG bound by the historical manifest/handoff;
+- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/post_wp00_proof_obligation_dag.json` — active HC-P03/R021 research DAG;
 - `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/false_proof_atlas.json`
 - `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/known_case_construction_ledger.json`
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_CM4_EIGHTFOLD_CODIM2.md`
-- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/proof_obligation_dag.json`
 - `grandchallenge/MATHCERT:certificates/hodge/MC-HC-WP00-QUAL-001.json`
 - Markman, arXiv:2509.23079v1, especially Proposition 10.2.1, Example 11.2.7, and Lemma 11.2.8.
 - Pridham, *Forum of Mathematics, Sigma* 12 (2024), e126.
