@@ -32,12 +32,13 @@ Prove, refute, or sharply localize `HC-R021-A8-CM4-C2` in `work_packages/HC_R021
 - `HC-R021-L008`: Example 11.2.7 defines an admissible gluing family, not one canonical object; the common Chern character does not determine the object-specific obstruction map.
 - `HC-R021-L009`: on an algebraic gluing family the minimal-rank condition is the closed determinantal locus `D20={rank(ob)<=20}`; compatibility forces rank at least `20`, so `D20` is exactly the rank-20 locus and the common zero locus of the eight `L007` relations.
 - `HC-R021-L010`: after fixing one source-admissible discrete datum, the curve, translations, line bundle, and constituent-wise gluing choices form a nonempty finite-type algebraic stack carrying a universal relatively perfect family after flattening.
+- `HC-R021-L011`: for the naive model in which the `N` principal-divisor constituents form one transitive finite translation orbit, `|G|=N` and `dim Ext^2(E,E)^G >= 8qN-2`. Invariant dimension can force rank `20` only when `qN<=2`; with integer `q` and nontrivial orbit this leaves only `(q,N)=(1,2)`. Full invariant-`Ext^2` semiregularity is dimensionally impossible for `qN>=4`.
 
 The protected MATHCERT WP00 disposition remains `qualified_semantic_and_conditional_interface_only`. No new certification request is justified.
 
 ## Active Route A frontier
 
-The source ambiguity and parameter-space construction are now resolved. The first open direct-route node is
+The source ambiguity and parameter-space construction are resolved. The first open direct-route node is
 
 ```text
 HC-R021-P4-A0d: prove D20 != empty.
@@ -45,7 +46,7 @@ HC-R021-P4-A0d: prove D20 != empty.
 
 Equivalently, construct one admissible simple Example 11.2.7 gluing for which all eight `L007` Yoneda relations vanish.
 
-The direct route is now
+The direct route is
 
 ```text
 S_adm nonempty                         [L010]
@@ -63,13 +64,15 @@ High-value routes to `A0d` are:
 1. construct a symmetric or otherwise tractable admissible gluing point and evaluate the eight relations;
 2. specialize within `S_adm` to a calculable point while preserving simplicity/admissibility;
 3. prove the eight relative Yoneda sections vanish identically on a parameter component;
-4. find a finite symmetry forcing the eight relations, linking Route A with Route G.
+4. find a non-naive finite autoequivalence symmetry forcing the eight relations, linking Route A with Route G.
+
+The simplest pure transitive-translation strategy is now pruned by `L011`: dimension forcing only remains numerically possible at `(q,N)=(1,2)`, and full invariant-`Ext^2` semiregularity is excluded for `qN>=4`.
 
 ## Parallel Route G frontier
 
 The equivariant route remains independent:
 
-- `P4-G3`: prove weak `G`-semiregularity of a useful same-ray total object, including the mixed `Ext^1 tensor Ext^1` contribution;
+- `P4-G3`: prove weak `G`-semiregularity of a useful same-ray total object, including the mixed `Ext^1 tensor Ext^1` contribution; `L011` shows that a naive transitive pure-translation copy of the sixfold dimension argument is generally insufficient;
 - `P4-G6`: bind the abstract `C_CM4` target quantifier to explicit algebraic family/level-moduli carriers and a global Gauss-Manin section;
 - then apply Perry familywise.
 
@@ -90,14 +93,20 @@ Perry's worked Markman application concerns the earlier abelian-sixfold construc
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_ATIYAH_DATUM_BOUNDARY.md`
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_ATIYAH_DETERMINANTAL_LOCUS.md`
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_GLUE_PARAMETER_STACK.md`
+- `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_EQUIVARIANT_DIMENSION_OBSTRUCTION.md`
 - `grandchallenge/MATHCERT:certificates/hodge/MC-HC-WP00-QUAL-001.json`
 - Markman, arXiv:2509.23079, Question 11.2.2, Example 11.2.7, Lemma 11.2.8.
-- Markman, arXiv:2502.03415, Lemma 8.3.4, Remark 8.3.5, Proposition 8.3.9.
+- Markman, arXiv:2502.03415, Lemma 8.3.4, Remark 8.3.5, Proposition 8.3.9, Section 9.3.
 - Perry, arXiv:2604.00511v2, Theorems 1.2 and 6.3.
 
 ## Smallest safe next tranche
 
-Attack `P4-A0d` directly. First test whether any general Hochschild/Atiyah theorem strengthens the known inclusion `ker(ob_E) subset ker(c_ch(E))` for the present gluing family. If no such theorem applies, construct a symmetry-controlled or specialized admissible point of `S_adm` and compute the eight `L007` Yoneda relations there. Do not infer their vanishing from the Chern character.
+Attack `P4-A0d` directly. General HKR/Atiyah theory supplies only the known inclusion `ker(ob_E) subset ker(c_ch(E))`; it does not make `D20` automatically nonempty. Therefore pursue one of two concrete routes:
+
+1. test the exceptional transitive-symmetry case `(q,N)=(1,2)` only if the source-admissible curve-class construction can actually realize `N=2`; or
+2. construct a different symmetry-controlled/specialized admissible point of `S_adm` and compute the eight `L007` Yoneda relations there.
+
+Do not infer Yoneda vanishing from the common Chern character or from finite equivariance alone.
 
 ## Material dependencies and boundaries
 
@@ -109,6 +118,7 @@ Attack `P4-A0d` directly. First test whether any general Hochschild/Atiyah theor
 - the universal gluing is constituent-wise over labeled incidence schemes, not an identification of the full direct-sum fiber with a line;
 - first-order restricted semiregularity is not an all-orders deformation theorem;
 - finite equivariance is not weak equivariant semiregularity;
+- a transitive pure-translation action does not automatically make invariant `Ext^2` small;
 - Perry's familywise theorem is not a global period-domain theorem without explicit family coverage;
 - no inverse Lefschetz, Kunneth projector, Hodge-locus, Tate, motivated, or numerical substitute may replace an algebraic cycle;
 - no claim from this target is certified until independently adjudicated by MATHCERT.
