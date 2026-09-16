@@ -4,30 +4,22 @@
 
 Target work repository: `grandchallenge/MATHSOLVE`.
 
-INTELLECT work-package phase: not applicable; this is delegated MATHSOLVE
-mathematical campaign execution. MATHSOLVE may develop and integrate bounded
-mathematical results but may not certify them. MATHCERT retains certification
-authority.
+This is delegated MATHSOLVE mathematical campaign execution. MATHSOLVE may
+develop and integrate bounded mathematical results but may not certify them.
+MATHCERT retains certification authority.
 
 ## Purpose
 
-Continue the selected restricted target `NS-CI-R014-A2` without weakening the
-hypothesis `Lambda in L2_t` or importing a regularity criterion that already
-implies the desired conclusion.
+Continue restricted target `NS-CI-R014-A2` without weakening `Lambda in L2_t`
+or importing a regularity criterion that already implies the conclusion.
 
-## Primary deliverable
+## Acceptance criteria
 
-Advance the active L5 direct critical-integral route through exact
-square-function, correlation, cancellation, depletion, commutator, or dynamic
-estimates that act on the remaining blockers.
-
-## Material acceptance criteria
-
-- derive the target `integral ||u||_6^4` from the selected hypothesis and valid
-  Leray--Hopf/PDE structure, or rigorously terminate the current bounded
-  candidate at its first exact blocker;
-- preserve the strict-high restriction `p>Q` exactly;
-- keep every shell/time constant uniform in terminal frequency;
+- derive `integral ||u||_6^4` from the selected hypothesis and valid
+  Leray--Hopf/PDE structure, or terminate each bounded candidate at its first
+  exact blocker;
+- preserve strict-high use only for `p>Q`;
+- keep shell/time constants uniform in terminal frequency;
 - do not multiply unrelated `L1_t` quantities, assume selector variation,
   import `f in L1_t`, uniform `H1`, or an LPS norm;
 - do not reopen L3 or L4 without satisfying their protected reopening
@@ -37,43 +29,20 @@ estimates that act on the remaining blockers.
 
 Selected target: `NS-CI-R014-A2`, unproved.
 
-Protected L5 predecessor: merge
-`e58e92265e895ff560e542bc78ab0ffd853fb1e8`, result
-`L5_CANDIDATE_ROUTE_TERMINATED__CHARACTERIZED_BLOCKER` for the buffered
-pre-triangle strict-tail candidate.
-
-Current candidate result:
+Protected L5-4 predecessor: merge
+`14aad98fbbbcf9f0ed780b9aea5b244f189c3947`, result
 
 ```text
 ZERO_GAP_REDUCTION_PROVED__STATIC_B1_ENDPOINT_SEPARATED__PARABOLIC_B3_ROUTE_REDUCED
 ```
 
-The pre-triangle strict-tail estimates in fact require no fixed gap `K`.
-Because the defining threshold is valid for every `p>Q`, one may use the exact
-two-block decomposition
+The exact pointwise split is
 
 ```math
-u=u_{\le Q}+u_{>Q}.
+u=u_{\le Q}+u_{>Q},
 ```
 
-The strict tail satisfies
-
-```math
-||u_{>Q}||_4^4
-lesssim
-c_0^2 nu^2 sum_{p>Q} A_p,
-```
-
-and
-
-```math
-||u_{>Q}||_6^4
-lesssim
-c_0^(8/3) nu^(8/3)
-(sum_{p>Q} lambda_p^2 A_p)^(2/3).
-```
-
-Together with the protected low estimate this gives
+with
 
 ```math
 ||u||_6^4
@@ -88,52 +57,118 @@ fixed-base remainder,
 where
 
 ```math
-W_{<=Q}=sum_{r<=Q} lambda_r^2 A_r,
+W_{<=Q}=sum_{p<=Q} lambda_p^2 A_p,
 qquad
 Z_{>Q}=sum_{p>Q} lambda_p^2 A_p.
 ```
 
-The standalone B2 near-threshold blocker is therefore removed from this
-pointwise L5 norm representation: `p=Q` stays low and every `p>Q` is strict
-high. This does not remove near-neighbour terms from other dynamic PDE
-identities.
+The standalone B2 near-threshold cluster is removed from this pointwise L5
+representation. B1 and B3 remain the analytic endpoints.
 
-A threshold-compatible static shell fixture has finite `Lambda L2` occupancy,
-finite Leray shell dissipation, and bounded kinetic energy while
+### B1 dynamic audit
 
-```math
-integral W_{<=Q} dt = infinity.
+Current B1 disposition:
+
+```text
+B1_DIRECT_DYNAMIC_ROUTE_REDUCED__SELECTOR_FREE_REPAIR_EQUALS_CLOSED_L4_COLUMN
 ```
 
-Thus the exact low endpoint also requires equation-specific correlation; it is
-not recoverable by another scalar occupancy/Holder rearrangement.
+recorded in
+`work_packages/NS_CI_R014_A2_L5_B1_COUPLED_ENSTROPHY.md`.
 
-The first parabolic attempt on the high endpoint was audited at `H1` level.
-The low--high transport leaves the unavoidable deformation coefficient
+For fixed low cutoff, low enstrophy has viscous density comparable to
+`W_{<=q}`. Localizing it to the actual moving selector produces selected
+non-conservative enstrophy production plus B4 selector variation.
+
+On a genuinely finite Galerkin system with its own finite-spectrum selector
+`Q_N`, coupling the complementary finite high block cancels selector variation
+algebraically. This does **not** establish the corresponding cancellation for
+the actual unbounded selector: truncating the actual selector at `q<=N` leaves
+`1_{Q<=N}` and its terminal boundary. No B4 reopening theorem is claimed.
+
+Even granting a justified selector-free limiting step, the surviving low
+coefficient
 
 ```math
-G_q=||grad u_{<=q-2}||_infinity.
+f(t)=sup_{p<=Q(t)} lambda_p ||u_p(t)||_infinity
 ```
 
-Localizing a fixed-cutoff tail to the active set recreates the uncontrolled
-selector-boundary ledger; keeping the cutoff fixed loses strict-high absorption
-on `{Q>q}`; a backward Duhamel window requires defining-threshold parabolic
-residence. Hence the first viscosity/maximal-regularity B3 family reduces to a
-new low-mode input plus the already protected B4/L3 interfaces rather than
-closing autonomously.
+obeys, for
 
-Residual blockers:
+```math
+D_3(t)=sum_{p<=Q}(lambda_p/Lambda)^3 A_p,
+```
 
-- B1 low core: control
-  `sum_r lambda_r^2 integral_{Q>=r} A_r dt` by an actual Navier--Stokes
-  correlation/depletion mechanism;
-- B2 near threshold: no standalone blocker in the current pointwise L5
-  decomposition; retained only as a possible dynamic finite-neighbour term;
+```math
+f^2 lesssim Lambda^3 D_3.
+```
+
+Leray gives only `D_3^(1/2) in L2_t`; direct Holder with `Lambda in L2_t`
+would require `D_3^(1/2) in L4_t`.
+
+More decisively,
+
+```math
+nu Lambda D_3
+=
+sum_{p<=Q}(lambda_p/Lambda)^2 lambda_p D_p
+=S_Q,
+qquad D_p=nu A_p.
+```
+
+This is exactly the protected L4 weighted-column quantity, including the
+`p=Q` active diagonal. Thus the optimistic selector-free B1 repair still lands
+on closed L4 and does not furnish a reopening theorem.
+
+### B3 direct L6 transport audit
+
+Current B3 bounded-family disposition:
+
+```text
+DIRECT_L6_STANDARD_COMMUTATOR_ROUTE_REDUCED_TO_LOW_DEFORMATION
+```
+
+recorded in
+`work_packages/NS_CI_R014_A2_L5_B3_L6_TRANSPORT_AUDIT.md`.
+
+For fixed `q`, set
+
+```math
+V_q=P_{>q}u,
+qquad
+L_q=P_{<=q-2}u.
+```
+
+The unprojected low--high transport cancels exactly against `|V_q|^4V_q`.
+The actual equation contains `P_{>q} mathbb P(L_q dot grad V_q)`, leaving a
+signed high-pass/Leray projection residual. Under the standard absolute
+shellwise commutator estimate, the projector kernel moment `lambda_p^-1` and a
+high-shell derivative `lambda_p` cancel in scale and leave
+
+```math
+G_q=||grad L_q||_infinity
+```
+
+with no decaying high-frequency gain. Active localization then reintroduces B4;
+fixed-`q` globalization reintroduces the bad-time/residence interface.
+
+This terminates only the standard absolute commutator-estimate family. A signed
+projection/pressure cancellation inside the residual remains live.
+
+## Residual blockers
+
+- B1 low core: direct moving enstrophy hits B4; even granting selector-free
+  complementary coupling, the remaining factor is exactly closed L4 `S_Q`.
+- B2 near threshold: no standalone blocker in the pointwise L5 decomposition;
+  dynamic finite-neighbour terms may still occur.
 - B3 strict tail: control
-  `integral (sum_{p>Q} lambda_p^2 A_p)^(2/3) dt` or find a signed/nonlinear
-  identity avoiding it;
-- B4 selector motion: unchanged whenever a dynamic argument differentiates or
-  localizes the moving cutoff.
+  `integral (sum_{p>Q} lambda_p^2 A_p)^(2/3) dt` or avoid it by a new signed or
+  nonlinear identity. Moving-tail H1, fixed-tail bad-set splitting,
+  threshold-residence Duhamel, and the standard direct-L6 absolute commutator
+  estimate are characterized. The signed projection/pressure residual itself
+  remains open.
+- B4 selector motion: unchanged for the actual moving selector unless a genuine
+  limiting/variation theorem is supplied.
 
 MATHCERT remains `qualified_interface_only`; A2 and universal critical
 integrability are unproved.
@@ -147,53 +182,47 @@ integrability are unproved.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_RESTART.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_PRETRIANGLE_STRICT_TAIL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_ZERO_GAP_DYNAMIC_AUDIT.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_B1_COUPLED_ENSTROPHY.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_B3_L6_TRANSPORT_AUDIT.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
 - `grandchallenge/MATHSOLVE#24`
 - `grandchallenge/MATHSOLVE#59`
 
 ## Smallest safe next tranche
 
-B1-first. Test one genuine Navier--Stokes correlation/depletion estimate for
+B3 is the remaining pointwise endpoint with room for a genuinely new mechanism.
+Do not repeat moving-tail H1 energy, fixed-tail bad-set splitting,
+threshold-residence Duhamel, the standard direct-L6 absolute commutator
+estimate, or the L4 weighted column.
 
-```math
-sum_r lambda_r^2
-integral_{Q>=r} A_r(t) dt.
-```
+The smallest live proposition is now the signed projection/pressure residual:
+expand the high-pass and Leray pieces before absolute values and test whether a
+structural cancellation removes `G_Q`. If it does not, the remaining distinct
+frontier is an equation-specific packet/intermittency depletion theorem for
+`Z_{>Q}` or `Z_{>Q}^{2/3}`.
 
-Do not return to static Holder, occupancy, energy-floor, or packet-counting
-rearrangements; the new low-core fixture separates those. A viable candidate
-must use the equation to decorrelate shell dissipation from the superlevel event
-`Q>=r` without importing `f in L1`, uniform `H1`, an LPS norm, or an L4
-active-diagonal hypothesis.
-
-If the B1 candidate fails, record the first exact PDE term that prevents the
-correlation estimate. Only then reconsider B3 through a mechanism genuinely
-different from moving-tail `H1` energy, fixed-tail bad-set splitting, or
-threshold-residence Duhamel.
+If a candidate reduces to `G_Q`, `S_Q`, selector variation, or a residence
+assumption, record that exact reduction rather than reopening its closed lane.
 
 ## Material dependencies and boundaries
 
 L3 is closed. Reopening requires actual parabolic residence at the defining
 threshold, a non-summable equation-derived scale cost, cross-level coherence,
-an anti-fragmentation budget, or an equivalent protected reopening theorem.
+anti-fragmentation, or an equivalent protected theorem.
 
-L4 is closed. Reopening requires an actual selected-transfer cancellation,
-active-set variation theorem, active-diagonal depletion, commutator closure, or
-dynamic decorrelation result.
+L4 is closed. Reopening requires selected-transfer cancellation, active-set
+variation, active-diagonal depletion, commutator closure, or dynamic
+decorrelation.
 
 The active Cert scope qualifies only the exact target/interface boundary. It is
 not proof of A2 or of any analytic L5 estimate.
 
-## Reserved authority / stop conditions
+## Reserved stop conditions
 
 Stop for proof of A2; a proved material bridge with a precise next residual; a
 rigorous bounded route termination; an exact L5 exhaustion theorem; a material
 change to the selected target or hypothesis; a reserved constitutional or
 certification transition; authentication or safety failure; or a materially
 changed protected mathematical predecessor.
-
-## Notes intentionally omitted
-
-This handoff intentionally omits constitutional doctrine, generic handoff
-instructions, L3/L4 history beyond their live reopening conditions, CI logs,
-and certification ceremony already controlled by their authoritative records.
