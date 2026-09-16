@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "BSD-001",
+  "operation": "BSD-WP60T",
+  "protected_base": "5fa2caa8f3d4aa54849f62135a5214737fa6db2a",
+  "assembled_from_head": "340615b830310345ba95c459482da8266a7aebc1",
+  "hash_semantics": "Git blob SHA-1 content identities for the exact pre-merge governed artifact set",
+  "artifacts": {
+    "work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/00_README.md": "35cb5ae8350493b332348baf91e75d491b946400",
+    "work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/01_BSS_612_615_REPLAY_THEOREM.md": "30d90235555c056840389b6dd9648e72e4256ae3",
+    "work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/02_SOURCE_AND_DEPENDENCY_NOTE.md": "836aa50776d9dc141a37ddfc2dd590a79e4a53fc",
+    "work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/03_CLAIM_LEDGER.yaml": "79239667855dbbc09e5d08c33d50c4c06394a834",
+    "work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/04_DERIVATIVE_REPLAY_CERTIFICATE.py": "5104a2af50b8a8ec27f5db3d74cc1124ca15c733",
+    "handoffs/BSD-001/README.md": "2ca3c8fcf9dbb3d976dda750cd525a88358e30e6",
+    "handoffs/BSD-001/WP60T_FRONTIER.md": "835006ea2ab6b8ad29463c3eee3407bc8851d87a",
+    ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json": "32cb60fdf325375b5eb7b07b1072d512b37674f7",
+    ".gcl/operations/BSD-WP60T/OPERATION.json": "c7b2db6fa77ed8fa36c87dfacc19945bf116a60b",
+    "tools/gcl_campaign_preflight_v2.py": "009fc661be716c67a3bcb7422a80ed34e26bebfd",
+    ".github/workflows/bsd-wp60t-certificate.yml": "17f87ddf5ab7d4bd84221caa1f14b80e08690533",
+    ".ghos-routing/workflows.json": "1d473f16eef9a1acd92b8553e0ccd2a4299edc64"
+  },
+  "completion_replay_excluded": [
+    ".gcl/completions/BSD-WP60T/COMPLETION_RECEIPT.json",
+    "tools/gcl_completion_receipt_validate_v2.py"
+  ],
+  "invalidation": {
+    "governed_artifact_change": "regenerate freeze and replay exact-head theorem reviews/checks",
+    "candidate_head_change_without_governed_byte_change": "replay candidate checks and exact-head review as required by operation contract",
+    "post_merge_completion_replay_change": "revalidate completion receipt against immutable candidate and protected merge/readback; mathematical freeze remains unchanged",
+    "unrelated_protected_head_movement": "does not invalidate immutable dependency anchors"
+  },
+  "authority_boundary": "This freeze identifies the WP60T pre-merge candidate bytes only. It does not certify mathematics, establish R5, prove BSD-R2-A1, or create MATHCERT authority."
+}
