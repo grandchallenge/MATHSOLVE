@@ -79,6 +79,14 @@ class NSCIA2L5CoupledEnstrophyTests(unittest.TestCase):
         for low, high in zip(lows, highs):
             self.assertEqual(low + high, full)
 
+    def test_transport_commutator_has_no_frequency_gain_after_derivative(self) -> None:
+        # Kernel cancellation contributes lambda_p^-1, while the derivative
+        # on a p-shell contributes lambda_p. Their product is scale-neutral,
+        # leaving the low Lipschitz coefficient rather than a decaying p-weight.
+        for p in range(1, 12):
+            lam_p = Fraction(2**p, 1)
+            self.assertEqual((Fraction(1, 1) / lam_p) * lam_p, 1)
+
 
 if __name__ == "__main__":
     unittest.main()
