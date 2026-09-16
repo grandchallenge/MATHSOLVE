@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "RH-001",
+  "restricted_target_id": "RH-R030",
+  "target_variant_id": "RH-R030-WEIL-P5-001",
+  "status": "selected_first_bridge_proved",
+  "selected_at": "2026-09-16",
+  "parent_nodes": ["RH-T-160", "RH-T-100"],
+  "source_prior_art": {
+    "repository": "grandchallenge/MATHFORGE",
+    "commit_sha": "5393699f6f3fbdcc38c729e9871c126936110618",
+    "path": "reports/discovery/rh_001/RH_D009_ROUTE_PRIOR_ART_2026-09-16.md",
+    "gate_result": "RH-D-009_ROUTE_SPECIFIC_AUDIT_COMPLETE_FOR_RH-R030_SELECTION"
+  },
+  "primary_source": {
+    "author": "Xuefeng Zhu",
+    "title": "Weil positivity in compact windows: a finite reduction, certified two-sided bounds, and a Landau-Widom decay law",
+    "identity": "arXiv:2608.24827v2",
+    "revision_date": "2026-09-02",
+    "publication_state": "arXiv_preprint",
+    "imported_results": ["Theorem 1.1 one-stroke reduction", "Theorem 1.2 L=0.8 certified positivity", "Section 6 parity reduction", "Section 7 retraction boundary"]
+  },
+  "window": {
+    "L_numerator": 161,
+    "L_denominator": 200,
+    "L_decimal": "0.805",
+    "autocorrelation_support_radius": "161/100",
+    "selection_reason": "first clean rational window above the prime-5 activation threshold (log 5)/2 and above the current full-window certified frontier L=0.8"
+  },
+  "target_statement": "For every complex f in L^2(R) supported in [-161/200,161/200], the exact Riemann-Weil quadratic form Q in the normalization of arXiv:2608.24827v2 is non-negative. The geometric side must retain the pole term, the full archimedean term, every prime-power term with log n < 161/100, and the exact even/odd parity contract.",
+  "normalization": {
+    "fourier_transform": "F(t) = integral_R f(u) exp(i t u) du",
+    "autocorrelation": "g = f star tilde(f), tilde(f)(x)=conj(f(-x))",
+    "weil_symbol": "Psi_L(t) = Re psi(1/4 + i t/2) - log pi - sum_{log n < 2L} (2 Lambda(n)/sqrt(n)) cos(t log n)",
+    "even_geometric_form": "Q(f) = 2 F(i/2)^2 + (1/(2 pi)) integral_R |F(t)|^2 Psi_L(t) dt for real even f",
+    "complex_contract": "decompose real/imaginary and even/odd sectors exactly as in the primary source; the odd pole term has the source-prescribed sign reversal",
+    "active_prime_powers_at_selected_window": [2, 3, 4, 5]
+  },
+  "first_bridge": {
+    "claim_id": "RH-R030-L001",
+    "state": "proved_exact_arithmetic_plus_imported_classical_pi_bound",
+    "statement": "At L=161/200 the active prime powers are exactly {2,3,4,5}; A_L = sqrt(2) log 2 + (2/sqrt(3)) log 3 + log 2 + (2/sqrt(5)) log 5; and with Tsharp=600 the one-stroke parameter beta* = log(Tsharp/(2 pi)) - 1/Tsharp - A_L satisfies beta* > 97217/600000 > 0. Therefore the hypotheses of the imported one-stroke reduction are met and the even-sector target reduces to the explicit finite leading matrix plus the source-defined tail and coupling bounds.",
+    "checker": "work_packages/RH_R030/verify_first_bridge.py",
+    "imported_fact": "pi < 22/7",
+    "certified_lower_bound_for_beta": "97217/600000"
+  },
+  "proof_obligations": [
+    {"id": "RH-R030-P001", "description": "Lock exact source normalization and prime-comb membership at L=161/200", "state": "closed_by_RH-R030-L001"},
+    {"id": "RH-R030-P002", "description": "Assemble the Tsharp=600 even Legendre leading block with certified quadrature and exact n=5 prime term", "state": "open"},
+    {"id": "RH-R030-P003", "description": "Prove a positive lower bound for the even leading block and close tail deviation and leading-tail coupling", "state": "open"},
+    {"id": "RH-R030-P004", "description": "Repeat the certified reduction in the odd sector with the source-prescribed pole sign", "state": "open"},
+    {"id": "RH-R030-P005", "description": "Compose real/imaginary and parity sectors to obtain the complex fixed-window theorem", "state": "blocked_by_P003_P004"},
+    {"id": "RH-R030-P006", "description": "Independent specialist/certificate replay through MATHCERT if P005 closes", "state": "not_opened"}
+  ],
+  "smallest_target_falsifier": "A rigorously evaluated admissible test function supported in [-161/200,161/200] with Q(f)<0. A negative eigenvalue of an uncertified truncation or float64 matrix does not qualify.",
+  "method_falsifier": "Failure of the certified Tsharp=600 leading-block/tail inequality terminates this one-stroke certificate instance but does not by itself falsify RH-R030.",
+  "false_proof_fixtures": [
+    "omitting the newly active n=5 term",
+    "using a prime-comb bound in the wrong inequality direction",
+    "finite-subspace positivity without a certified tail/coupling bound",
+    "float64 eigenvalue signs near the spectral floor",
+    "even-sector positivity promoted to arbitrary complex tests without the odd-sector contract",
+    "fixed-window positivity promoted to all supports or to RH"
+  ],
+  "non_implications": [
+    "does not prove RH or RH-T-000",
+    "does not prove positivity for any support larger than 161/200",
+    "does not certify a new zero range, zero-free region, density estimate, or critical-line proportion",
+    "does not establish novelty, priority, or publication readiness",
+    "does not validate the retracted L=1.19 certificate",
+    "does not create a Hilbert-Pólya operator"
+  ],
+  "certification_route_if_successful": "Prepare a new bounded MATHCERT handoff for RH-R030-WEIL-P5-001 containing the exact claim, source identity, certified arithmetic/matrix artifacts, imported-theorem boundary, proof-obligation lineage, and explicit statement that RH-T-000 remains open."
+}
