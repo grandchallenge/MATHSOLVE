@@ -7,53 +7,57 @@ Protected repository state is operational authority. Chat transcripts, mutable i
 After re-fetching live protected heads, begin with:
 
 1. `.gcl/campaigns/BSD-001/CAMPAIGN_STATE.json`;
-2. `.gcl/operations/BSD-R5-PRIM/OPERATION.json`;
-3. `handoffs/BSD-001/R5_PRIM_FRONTIER.md`;
-4. `work_packages/BSD_R5_PRIM_DETERMINANTAL_PRIMITIVITY/01_RESIDUAL_PRIMITIVITY_REDUCTION.md`;
-5. `work_packages/BSD_R5_PRIM_DETERMINANTAL_PRIMITIVITY/03_CLAIM_LEDGER.yaml`;
-6. `.gcl/completions/BSD-R5-LIFT-EQUIV/COMPLETION_RECEIPT.json`;
-7. the exact protected provider and predecessor artifacts named there.
+2. `.gcl/operations/BSD-R5-RES/OPERATION.json`;
+3. `handoffs/BSD-001/R5_RES_FRONTIER.md`;
+4. `work_packages/BSD_R5_RES_RESIDUAL_KATO_NONVANISHING/01_FINITE_LAYER_RESIDUAL_DETECTION_THEOREM.md`;
+5. `work_packages/BSD_R5_RES_RESIDUAL_KATO_NONVANISHING/03_CLAIM_LEDGER.yaml`;
+6. `.gcl/completions/BSD-R5-PRIM/COMPLETION_RECEIPT.json`;
+7. the exact protected provider records named by the operation contract.
 
-Before exact-head review, run the operation preflight and residual algebra certificate named by the current operation contract.
+Before exact-head review, run the R5-RES preflight and residual-detection certificate named by the current operation contract.
 
 ## Authority and claim state
 
 - Campaign: `BSD-001 — Birch-Swinnerton-Dyer selected rank-one 2-primary campaign`.
 - Programme owner: `grandchallenge/MATHSOLVE#164`.
 - Parent WP60 tracker: `grandchallenge/MATHSOLVE#215`.
-- Current substantive operation: `grandchallenge/MATHSOLVE#267` (`BSD-R5-PRIM`).
-- Exact protected mathematical base: `grandchallenge/MATHSOLVE@50308cf34782f14fdb0421beea915311cef20bf3`.
-- Exact protected source authority: `grandchallenge/MATHFORGE@5aef30aa64730ca777329013e1e33c03f34a6e3a`.
+- Current substantive operation: `grandchallenge/MATHSOLVE#273` (`BSD-R5-RES`).
+- Exact protected mathematical base: `grandchallenge/MATHSOLVE@36202d97e2cd96956c8a4aafa43941f6219776c5`.
+- Exact protected source authority: `grandchallenge/MATHFORGE@7da3f07248b5d8cf3d0bd1e57e9d8b7f5b78d063`.
 - Constitutional authority: `grandchallenge/INTELLECT@f042220f3bed7cb7b5069256e8f6305c850c0628`.
 - Active staffing directive: `GI-STEWARD-0003`.
 - Selected target remains `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED`.
 - MATHCERT remains the sole mathematical certification authority.
 
-## Protected R5-LIFT predecessor
+## Protected predecessor state
 
-`BSD-R5-LIFT-EQUIV` is protected complete. Its validated receipt is
+`BSD-R5-LIFT-EQUIV` is protected complete and establishes determinant membership.
 
-`.gcl/completions/BSD-R5-LIFT-EQUIV/COMPLETION_RECEIPT.json`.
+`BSD-R5-PRIM` is protected complete as a governed operation with disposition `BLOCKED`. Its validated receipt is
 
-It establishes `R5_LIFT_ESTABLISHED` and cyclotomic Kato determinant membership, but not determinant-generator status.
+`.gcl/completions/BSD-R5-PRIM/COMPLETION_RECEIPT.json`.
 
-## Current R5-PRIM reduction
+R5-PRIM proves the exact residual reduction
 
-Protected WP60A-A1 identifies R5-PRIM with generator equality in `Lambda_(2)`, where `Lambda=Z_2[[T]]`.
+`R5-PRIM <=> bar(kappa_Lambda^Kato) != 0 in KS_Lambda/2`
 
-The current #267 package proves that the residue field is `F_2((T))`, not `F_2`, and proves
+and finite detection: a legitimate nonzero finite cyclotomic mod-2 Kato/Kolyvagin image is sufficient. Finite-layer basis status is not required.
 
-`R5-PRIM`
+## Current R5-RES source-first result
 
-iff
+The protected MATHFORGE R5-RES provider audited Burungale–Castella–Grossi–Skinner, Chan-Ho Kim, Kim–Kim–Sun, and Sakamoto, then protected a Kim-specific refinement.
 
-`bar(kappa_Lambda^Kato) != 0` in `KS_Lambda/2`.
+The strongest composable finite-witness architecture is the refined Kato/Kurihara reciprocity law. In the admitted odd-prime source it has the form
 
-Equivalently, there exists a finite cyclotomic layer `n` for which the selected mod-`2` Kato-derived Kolyvagin system `kappa_{1,n}^Kato` is nonzero.
+`local_torsion_regulator(kappa_n^Kato) = unit * p^t * delta_tilde_n`,
 
-Finite-layer basis status is not required: powers of `T` become units after localization at `(2)`.
+with
 
-The retained real, ordinary, and finite-control comparison terms do not alter this criterion because protected R5-LIFT proves that they are units or vanish after localization at `(2)`.
+`p^t = #E(Q_p)[p^infinity]`,
+
+and an explicit period/Manin normalization.
+
+Protected WP60M/R/S/T already supplies the literal-2 global Kolyvagin-system and derivative machinery. The source does not supply the integral torsion-coefficient reciprocity theorem at `p=2`.
 
 ## Current candidate disposition
 
@@ -61,25 +65,20 @@ The retained real, ordinary, and finite-control comparison terms do not alter th
 
 Exact first independent missing theorem:
 
-`MISSING_P2_RESIDUAL_CYCLOTOMIC_KATO_KOLYVAGIN_NONVANISHING`.
+`MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY`.
 
-No protected artifact currently proves the required residual nonvanishing uniformly on the selected good-ordinary irreducible/surjective `S_3` lane.
+This theorem must construct the literal-2 torsion-coefficient local regulator, compute its integral image, retain the exact local `2^t` and period/Manin factors, and prove compatibility between a selected finite Kato derivative and a normalized Kurihara/modular-symbol quantity.
 
-Protected Kato source work shows that the all-height-one theorem including `(2)` excludes `p=2`. Protected WP17C screens the selected residual branch and finds no admitted uniform `p=2` excess-`mu` theorem. The protected 2026 Castella–Sano source audit identifies the same missing arithmetic content as a normalized Kato-system divisibility-index equality; its theorem proving that equality is stated for `p>3`.
+Only after that bridge is protected can a normalized finite nonzero analytic witness be promoted through R5-PRIM finite detection.
 
 ## Reopening evidence
 
-Any one of the following is sufficient to reopen the residual frontier:
+Either of the following is sufficient to reopen the R5-RES theorem frontier:
 
-1. direct nonvanishing of `bar(kappa_Lambda^Kato)`;
-2. nonzero `kappa_{1,n}^Kato` at some finite cyclotomic layer, proved uniformly on the selected lane;
-3. a literal-`2` normalized Kato-system divisibility-index theorem;
-4. a literal-`2` Kurihara explicit-reciprocity plus refined nonvanishing theorem;
-5. an exact theorem proving zero excess determinant-coordinate height-one `(2)` valuation.
+1. protected literal-2 normalized reciprocity plus a nonzero normalized finite witness; or
+2. another protected literal-2 theorem directly proving the selected residual Kato/Kolyvagin class nonzero.
 
-## Other live route boundaries
-
-The operation does not change independent BSD-001 routes, including R1, R2, R4, D2a, D2d and D2e, except where a later protected campaign state explicitly records such a transition.
+A raw modular-symbol or Kurihara computation without the literal-2 bridge is reconnaissance only.
 
 ## Preserved false/unavailable statements
 
@@ -90,7 +89,7 @@ The operation does not change independent BSD-001 routes, including R1, R2, R4, 
 
 ## Claim firewall
 
-R5-LIFT is protected. Do not promote the current operation to R5-PRIM, D2d, `BSD-R2-A1`, novelty/priority, or MATHCERT certification.
+R5-LIFT is protected. R5-PRIM's reduction is protected, but R5-PRIM itself is not established. Do not promote R5-RES, R5-PRIM, D2d, `BSD-R2-A1`, novelty/priority, or MATHCERT certification.
 
 Green CI and protected merge are evidence/admission events, not MATHCERT certification.
 
