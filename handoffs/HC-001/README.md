@@ -34,8 +34,9 @@ Prove, refute, or sharply localize `HC-R021-A8-CM4-C2` in `work_packages/HC_R021
 - `HC-R021-A8-CM4-C2`: selected and unproved.
 - source-proved construction obligations: coherent secant sheaves, nonzero Fourier-Mukai rank, persistence of the normalized class as Hodge, and nonzero projection to the Weil summand.
 - `HC-R021-L001`: weak semiregularity injectivity kills the first-order ambient obstruction in Hodge-preserving directions; Solve-level only.
-- `HC-R021-L002`: Perry's 2026 equivariant semiregularity theorem closes the all-orders algebraicity-transport bridge if the exact CM4 object is weakly `G`-semiregular for a suitable finite subgroup of the derived autoequivalence group; Solve-level reduction only.
-- current blocker: `HC-R021-P4-G2/P4-G3`, finite symmetry for the second secant factor and weak equivariant semiregularity of the resulting external-product/Fourier-Mukai object.
+- `HC-R021-L002`: Perry's 2026 equivariant semiregularity theorem closes the all-orders algebraicity-transport bridge if a same-Chern-character CM4 representative is weakly `G`-semiregular for a suitable finite subgroup of the derived autoequivalence group; Solve-level reduction only.
+- `HC-R021-L003`: finite translation-orbit sums give canonically linearized same-ray secant representatives, so finite equivariance itself is no longer the blocker; Solve-level only.
+- current blocker: `HC-R021-P4-G3`, weak equivariant semiregularity of a **useful** same-ray external-product/Fourier-Mukai representative. Mere orbit equivariance is insufficient.
 
 The historical Solve handoff and an older Solve current-route projection still record HC as `ready`. Protected MATHCERT is authoritative for adjudication and records `MC-HC-WP00-QUAL-001` as `qualified_semantic_and_conditional_interface_only`. Do not rewrite immutable producer history to erase that chronology.
 
@@ -61,7 +62,7 @@ The historical Solve handoff and an older Solve current-route projection still r
 
 ## Smallest safe next tranche
 
-Attack `HC-R021-P4-G2` on the second secant factor of Markman Example 11.2.7. Determine whether its generic-translate/gluing construction can be replaced by a finite-orbit construction with the same Chern-character ray `beta'` and a genuine linearization. If such a replacement exists, compute the invariant `Ext^2` and semiregularity map and then control the mixed `Ext^1 tensor Ext^1` term for the external product. Do not compute the full obstruction tower unless the equivariant route fails: Perry now supplies the all-orders theorem once weak `G`-semiregularity is established.
+Attack `HC-R021-P4-G3`. First reject induced/orbit symmetries that do not shrink the obstruction space by computing equivariant `Ext^2` through induction/forgetful adjunction. Then use the non-induced cyclic quotient object of Markman Example 8.2.3 as the first-factor model and search for an analogous genuinely symmetric `beta'` representative whose invariant `Ext^2` is smaller. Any candidate product must explicitly control the invariant mixed `Ext^1 tensor Ext^1` contribution before Perry's theorem is invoked.
 
 ## Material dependencies and boundaries
 
@@ -70,14 +71,14 @@ Attack `HC-R021-P4-G2` on the second secant factor of Markman Example 11.2.7. De
 - the target is explicitly restricted to the Hodge-generic locus in the selected degree-four CM/Weil deformation component;
 - Hodge persistence of `kappa(E)` is not algebraicity transport;
 - first-order obstruction vanishing is not a relative algebraic cycle;
-- finite equivariance is not weak equivariant semiregularity;
+- finite equivariance or linearization is not weak equivariant semiregularity;
 - factorwise degree-two semiregularity does not by itself control the mixed `Ext^1 tensor Ext^1` term of an external product;
 - no Kunneth projector, inverse Lefschetz correspondence, Hodge-locus theorem, Tate lift, motivated class, or numerical period relation may substitute for an algebraic cycle;
 - no claim from this target is certified until independently adjudicated by MATHCERT.
 
 ## Reserved authority / stop conditions
 
-Stop or re-plan only for a material source correction, evidence that the selected target is already known or vacuous, failure of the source construction under its exact hypotheses, a genuine equivariant-semiregularity/deformation obstruction requiring a different route, contradiction of the exact target formulation, a reserved INTELLECT transition, authentication/safety failure, or material closure of the theorem.
+Stop or re-plan only for a material source correction, evidence that the selected target is already known or vacuous, failure of the source construction under its exact hypotheses, a genuine equivariant-semiregularity obstruction requiring a different route, contradiction of the exact target formulation, a reserved INTELLECT transition, authentication/safety failure, or material closure of the theorem.
 
 ## Notes intentionally omitted
 
