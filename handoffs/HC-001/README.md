@@ -34,9 +34,10 @@ Prove, refute, or sharply localize `HC-R021-A8-CM4-C2` in `work_packages/HC_R021
 - `HC-R021-A8-CM4-C2`: selected and unproved.
 - source-proved construction obligations: coherent secant sheaves, nonzero Fourier-Mukai rank, persistence of the normalized class as Hodge, and nonzero projection to the Weil summand.
 - `HC-R021-L001`: weak semiregularity injectivity kills the first-order ambient obstruction in Hodge-preserving directions; Solve-level only.
-- `HC-R021-L002`: Perry's 2026 equivariant semiregularity theorem closes the all-orders algebraicity-transport bridge if a same-Chern-character CM4 representative is weakly `G`-semiregular for a suitable finite subgroup of the derived autoequivalence group; Solve-level reduction only.
+- `HC-R021-L002`: Perry's 2026 theorem gives all-orders algebraicity transport **along any explicitly bound smooth proper family** satisfying the Hodge-persistence and weak-equivariant-semiregularity hypotheses; it does not by itself identify the whole abstract period-domain component with one family.
 - `HC-R021-L003`: finite translation-orbit sums give canonically linearized same-ray secant representatives, so finite equivariance itself is no longer the blocker; Solve-level only.
-- current blocker: `HC-R021-P4-G3`, weak equivariant semiregularity of a **useful** same-ray external-product/Fourier-Mukai representative. Mere orbit equivariance is insufficient.
+- active research blocker: `HC-R021-P4-G3`, weak equivariant semiregularity of a useful same-ray external-product/Fourier-Mukai representative. Mere orbit equivariance is insufficient.
+- required global closure interface: `HC-R021-P4-G6`, explicit algebraic family/level-moduli coverage of every point quantified by `C_CM4`, with Markman's flat class represented by the corresponding global Gauss-Manin section.
 
 The historical Solve handoff and an older Solve current-route projection still record HC as `ready`. Protected MATHCERT is authoritative for adjudication and records `MC-HC-WP00-QUAL-001` as `qualified_semantic_and_conditional_interface_only`. Do not rewrite immutable producer history to erase that chronology.
 
@@ -62,7 +63,7 @@ The historical Solve handoff and an older Solve current-route projection still r
 
 ## Smallest safe next tranche
 
-Attack `HC-R021-P4-G3`. First reject induced/orbit symmetries that do not shrink the obstruction space by computing equivariant `Ext^2` through induction/forgetful adjunction. Then use the non-induced cyclic quotient object of Markman Example 8.2.3 as the first-factor model and search for an analogous genuinely symmetric `beta'` representative whose invariant `Ext^2` is smaller. Any candidate product must explicitly control the invariant mixed `Ext^1 tensor Ext^1` contribution before Perry's theorem is invoked.
+Attack `HC-R021-P4-G3`. First reject induced/orbit symmetries that do not shrink the obstruction space by computing equivariant `Ext^2` through induction/forgetful adjunction. Then use the non-induced cyclic quotient object of Markman Example 8.2.3 as the first-factor model and search for an analogous genuinely symmetric `beta'` representative whose invariant `Ext^2` is smaller. Any candidate product must explicitly control the invariant mixed `Ext^1 tensor Ext^1` contribution before Perry's theorem is invoked. In parallel, bind `P4-G6` to the exact algebraic level-moduli/family carrier before any global `C_CM4` conclusion is stated.
 
 ## Material dependencies and boundaries
 
@@ -70,6 +71,7 @@ Attack `HC-R021-P4-G3`. First reject induced/orbit symmetries that do not shrink
 - geometric category remains smooth projective complex varieties;
 - the target is explicitly restricted to the Hodge-generic locus in the selected degree-four CM/Weil deformation component;
 - Hodge persistence of `kappa(E)` is not algebraicity transport;
+- Perry's familywise theorem is not a global period-domain theorem unless an algebraic family/moduli carrier and global flat class are bound;
 - first-order obstruction vanishing is not a relative algebraic cycle;
 - finite equivariance or linearization is not weak equivariant semiregularity;
 - factorwise degree-two semiregularity does not by itself control the mixed `Ext^1 tensor Ext^1` term of an external product;
