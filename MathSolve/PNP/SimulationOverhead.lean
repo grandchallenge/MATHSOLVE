@@ -55,8 +55,9 @@ theorem affineSimulationOverhead_preserves_programmePolynomialBound
         startup + inputFactor * input.length + stepFactor * source input :=
       hoverhead input
     _ ≤ startup + inputFactor * input.length + stepFactor * p.eval input.length := by
-      gcongr
-      exact hp input
+      exact Nat.add_le_add_left
+        (Nat.mul_le_mul_left stepFactor (hp input))
+        (startup + inputFactor * input.length)
     _ = (Polynomial.C startup + Polynomial.C inputFactor * Polynomial.X +
         Polynomial.C stepFactor * p).eval input.length := by
       simp
