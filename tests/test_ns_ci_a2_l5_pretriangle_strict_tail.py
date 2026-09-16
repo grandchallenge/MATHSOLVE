@@ -29,6 +29,31 @@ class NSCIA2L5PretriangleStrictTailTests(unittest.TestCase):
                 Fraction(64, 45) * lambda_s**2,
             )
 
+    def test_zero_gap_pair_and_triple_kernels_remain_uniform(self) -> None:
+        for q in range(0, 6):
+            for r in range(q + 1, q + 12):
+                lambda_r = Fraction(2**r, 1)
+                row = sum(
+                    (Fraction(2**p, 1) / lambda_r) ** 2
+                    for p in range(q + 1, r + 1)
+                )
+                self.assertLessEqual(row, Fraction(4, 3))
+
+            for s in range(q + 1, q + 10):
+                lambda_s = Fraction(2**s, 1)
+                triple = Fraction(0, 1)
+                for r in range(q + 1, s + 1):
+                    lambda_r = Fraction(2**r, 1)
+                    for p in range(q + 1, r + 1):
+                        lambda_p = Fraction(2**p, 1)
+                        triple += (
+                            lambda_p**2 * lambda_r**2 / lambda_s**2
+                        )
+                self.assertLessEqual(
+                    triple,
+                    Fraction(64, 45) * lambda_s**2,
+                )
+
     def test_quartic_and_sextic_scaling_are_exact(self) -> None:
         # Under Navier--Stokes scaling, A scales as rho and lambda as rho.
         a_scaling = Fraction(1, 1)
@@ -68,6 +93,28 @@ class NSCIA2L5PretriangleStrictTailTests(unittest.TestCase):
         for left, right in zip(terms, terms[1:]):
             self.assertGreater(right, 1.9 * left)
 
+    def test_low_weighted_fixture_separates_static_budgets(self) -> None:
+        lambda_occupancy = []
+        dissipation = []
+        energy = []
+        weighted_low = []
+        for n in range(1, 12):
+            lam_q = 2 ** (6 * n)
+            duration = Fraction(1, 2 ** (18 * n))
+            a_q = lam_q  # fixed viscosity/threshold constants suppressed
+            lambda_occupancy.append(Fraction(lam_q**2, 1) * duration)
+            dissipation.append(Fraction(a_q, 1) * duration)
+            energy.append(Fraction(a_q, lam_q**2))
+            weighted_low.append(
+                Fraction(lam_q**2 * a_q, 1) * duration
+            )
+
+        self.assertLess(sum(lambda_occupancy), Fraction(1, 1))
+        self.assertLess(sum(dissipation), Fraction(1, 1))
+        self.assertTrue(all(e <= Fraction(1, 64) for e in energy))
+        self.assertTrue(all(term == 1 for term in weighted_low))
+        self.assertEqual(sum(weighted_low), len(weighted_low))
+
     def test_packet_multiplicity_matches_tail_enstrophy_exponent(self) -> None:
         # One strict-high threshold packet carries A ~ lambda.
         # M ~ lambda^(1/2) separated packets therefore permit A ~ lambda^(3/2)
@@ -83,6 +130,13 @@ class NSCIA2L5PretriangleStrictTailTests(unittest.TestCase):
         q = 17
         k = 2
         strict_tail = range(q + k + 1, q + k + 8)
+        self.assertTrue(all(p > q for p in strict_tail))
+        self.assertNotIn(q, strict_tail)
+
+    def test_zero_gap_strict_tail_starts_at_q_plus_one(self) -> None:
+        q = 17
+        strict_tail = range(q + 1, q + 8)
+        self.assertEqual(strict_tail.start, q + 1)
         self.assertTrue(all(p > q for p in strict_tail))
         self.assertNotIn(q, strict_tail)
 
