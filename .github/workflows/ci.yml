@@ -133,6 +133,7 @@ jobs:
           lake env lean MathSolve/PNP/CarrierBridge.lean
           lake env lean MathSolve/PNP/PolyBoundBridge.lean
           lake env lean MathSolve/PNP/SimulationOverhead.lean
+          lake env lean MathSolve/PNP/StepSimulation.lean
           lake env lean MathSolve/PNP/ProgrammeMachine.lean
           lake env lean MathSolve/PNP/ModelBridge.lean
           python ci/validate_formal_conjectures_targets.py
