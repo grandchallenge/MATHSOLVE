@@ -33,6 +33,7 @@
     {"path":".github/workflows/bsd-wp60r-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/bsd-wp60s-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/bsd-wp60t-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
+    {"path":".github/workflows/bsd-r5-lift-equivariant-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/ci.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/gcl-conformance.yml","observed_features":["AUTONOMOUS_WAKE","EXTERNAL_REUSABLE_JOB","OPAQUE_EXECUTION","SCHEDULED"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/ghos-routing-enforcement-v2.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
