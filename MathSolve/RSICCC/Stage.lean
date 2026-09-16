@@ -103,8 +103,8 @@ def next (A : StageObj.{u}) : Hom A (later A) where
 
 /-- A coherent global section of a stage object. -/
 structure Section (A : StageObj.{u}) where
-  at : (n : Nat) → A.carrier n
-  coherent : ∀ n, A.restrict n (at (n + 1)) = at n
+  component : (n : Nat) → A.carrier n
+  coherent : ∀ n, A.restrict n (component (n + 1)) = component n
 
 /-- Stagewise guarded fixed-point approximation for `f : Later A ⟶ A`. -/
 def gfixAt {A : StageObj.{u}} (f : Hom (later A) A) : (n : Nat) → A.carrier n
@@ -119,20 +119,27 @@ theorem gfixAt_coherent {A : StageObj.{u}} (f : Hom (later A) A) :
   | zero =>
       simpa [gfixAt, later, laterRestrict] using f.natural 0 (gfixAt f 0)
   | succ n ih =>
-      simpa [gfixAt, later, laterRestrict, ih] using
-        f.natural (n + 1) (gfixAt f (n + 1))
+      have h := f.natural (n + 1) (gfixAt f (n + 1))
+      calc
+        A.restrict (n + 1) (gfixAt f (n + 1 + 1))
+            = f.app (n + 1) ((later A).restrict (n + 1) (gfixAt f (n + 1))) := by
+                simpa [gfixAt] using h
+        _ = f.app (n + 1) (A.restrict n (gfixAt f (n + 1))) := rfl
+        _ = f.app (n + 1) (gfixAt f n) := by rw [ih]
+        _ = gfixAt f (n + 1) := rfl
 
 /-- The guarded fixed point as a coherent stagewise section. -/
 def gfixSection {A : StageObj.{u}} (f : Hom (later A) A) : Section A where
-  at := gfixAt f
+  component := gfixAt f
   coherent := gfixAt_coherent f
 
 /-- Stage-zero unfold law. -/
 @[simp] theorem gfix_zero {A : StageObj.{u}} (f : Hom (later A) A) :
-    (gfixSection f).at 0 = f.app 0 PUnit.unit := rfl
+    (gfixSection f).component 0 = f.app 0 PUnit.unit := rfl
 
 /-- Successor-stage guarded unfold law. -/
 @[simp] theorem gfix_succ {A : StageObj.{u}} (f : Hom (later A) A) (n : Nat) :
-    (gfixSection f).at (n + 1) = f.app (n + 1) ((gfixSection f).at n) := rfl
+    (gfixSection f).component (n + 1) =
+      f.app (n + 1) ((gfixSection f).component n) := rfl
 
 end MathSolve.RSICCC
