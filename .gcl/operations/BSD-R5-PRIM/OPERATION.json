@@ -12,7 +12,7 @@
   "completion_enforcement_anchor": "grandchallenge/gcl-standards@efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
   "work_class": "substantive_non_reserved",
   "objective": {
-    "frontier": "MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2",
+    "frontier": "MISSING_P2_DETERMINAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2",
     "description": "Prove, falsify, or reduce to the first independent theorem the selected literal-p=2 determinant-generator equality at height one (2), starting from protected R5-LIFT without weakening membership."
   },
   "acceptable_dispositions": ["CLOSED", "BLOCKED", "FALSIFIED"],
@@ -82,7 +82,7 @@
   "admission": {
     "freeze_manifest": ".gcl/admission/BSD-R5-PRIM/FREEZE.json",
     "preflight_command": "python tools/gcl_campaign_preflight_r5_prim.py BSD-001 BSD-R5-PRIM",
-    "certificate_command": "python work_packages/BSD_R5_PRIM_DETERMINAL_PRIMITIVITY/04_RESIDUAL_ALGEBRA_CERTIFICATE.py",
+    "certificate_command": "python work_packages/BSD_R5_PRIM_DETERMINANTAL_PRIMITIVITY/04_RESIDUAL_ALGEBRA_CERTIFICATE.py",
     "completion_receipt_command": "python tools/gcl_completion_receipt_validate_v2.py BSD-R5-PRIM",
     "review_invalidation": "A change to any pre-merge governed artifact invalidates the mathematical-candidate freeze, exact-head theorem reviews, and affected candidate checks. Post-merge completion artifacts bind the immutable admitted candidate and protected merge/readback."
   },
