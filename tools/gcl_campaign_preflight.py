@@ -105,6 +105,17 @@ def main() -> int:
     }
     require(required_completion.issubset(set(operation["completion_requires"])), "completion gate set is incomplete")
 
+    receipt = operation["completion_receipt"]
+    cold_start = state["cold_start"]
+    require(
+        cold_start.get("completion_receipt_surface") == receipt.get("surface"),
+        "campaign cold-start completion receipt surface does not match operation contract",
+    )
+    resolution = state.get("state_resolution", {})
+    require("entry_snapshot_rule" in resolution, "campaign state lacks entry-snapshot resolution rule")
+    require("completion_overlay_rule" in resolution, "campaign state lacks completion-overlay resolution rule")
+    require("stale_receipt_rule" in resolution, "campaign state lacks stale-receipt resolution rule")
+
     firewall = operation["claim_firewall"]
     for false_fact in state["known_false"]:
         require(false_fact in firewall, f"known-false fact omitted from operation firewall: {false_fact}")
@@ -148,7 +159,6 @@ def main() -> int:
         require(observed_blob == expected, f"content freeze mismatch for {rel}: expected {expected}, observed {observed_blob}")
         observed_sha256[rel] = sha256_file(path)
 
-    receipt = operation["completion_receipt"]
     require(receipt.get("surface") == "grandchallenge/MATHSOLVE#245", "completion receipt surface mismatch")
     require("protected_readback_sha" in receipt.get("required_fields", []), "completion receipt must bind protected readback")
 
@@ -164,6 +174,7 @@ def main() -> int:
                 "operation": operation_id,
                 "frontier": frontier,
                 "candidate_disposition": disposition,
+                "completion_receipt_surface": receipt["surface"],
                 "frozen_artifacts": len(governed),
                 "sha256_freeze_digest": freeze_digest,
                 "authority_created": False,
