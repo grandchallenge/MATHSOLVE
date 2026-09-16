@@ -35,18 +35,35 @@ jobs:
       - name: Assert exact subject checkout
         shell: bash
         run: test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+      - name: Determine operation applicability
+        id: scope
+        shell: bash
+        run: |
+          current_operation="$(python -c 'import json; print(json.load(open(".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json"))["current_operation"])')"
+          if [[ "${current_operation}" == "BSD-WP60T" ]]; then
+            echo "active=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "active=false" >> "${GITHUB_OUTPUT}"
+            echo "BSD-WP60T is completed; current operation is ${current_operation}. Historical certificate is dormant."
+          fi
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        if: steps.scope.outputs.active == 'true'
         with:
           python-version: '3.12'
       - name: Run WP60T campaign preflight
+        if: steps.scope.outputs.active == 'true'
         run: python tools/gcl_campaign_preflight_v2.py BSD-001 BSD-WP60T
       - name: Replay protected WP60R dependency certificate
+        if: steps.scope.outputs.active == 'true'
         run: python work_packages/BSD_R2_A1_WP60R_BSS_THEOREM_REPLAY/04_DEPENDENCY_REPLAY_CERTIFICATE.py
       - name: Replay protected WP60S inverse-limit certificate
+        if: steps.scope.outputs.active == 'true'
         run: python work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/04_INVERSE_LIMIT_REPLAY_CERTIFICATE.py
       - name: Replay WP60T derivative certificate
+        if: steps.scope.outputs.active == 'true'
         run: python work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/04_DERIVATIVE_REPLAY_CERTIFICATE.py
       - name: Assert candidate claims and firewalls
+        if: steps.scope.outputs.active == 'true'
         shell: bash
         run: |
           ledger=work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/03_CLAIM_LEDGER.yaml
