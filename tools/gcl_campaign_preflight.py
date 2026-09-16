@@ -35,6 +35,12 @@ def require(condition: bool, message: str) -> None:
         raise PreflightError(message)
 
 
+def git_blob_sha1(path: Path) -> str:
+    payload = path.read_bytes()
+    framed = f"blob {len(payload)}\0".encode("ascii") + payload
+    return hashlib.sha1(framed).hexdigest()
+
+
 def sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -99,7 +105,6 @@ def main() -> int:
     }
     require(required_completion.issubset(set(operation["completion_requires"])), "completion gate set is incomplete")
 
-    # The operation firewall must preserve every campaign-level known-false fact.
     firewall = operation["claim_firewall"]
     for false_fact in state["known_false"]:
         require(false_fact in firewall, f"known-false fact omitted from operation firewall: {false_fact}")
@@ -127,8 +132,6 @@ def main() -> int:
     registered = {entry.get("path") for entry in routing.get("workflows", [])}
     require(workflow_rel in registered, "WP60S workflow is not registered in GH-OS routing")
 
-    # This pilot forbids package-name proliferation before WP60S receives a
-    # theorem-level disposition.  The rule is explicit in the operation record.
     for pattern in operation.get("forbidden_successor_globs", []):
         matches = sorted(ROOT.glob(pattern))
         require(not matches, "successor package exists before WP60S disposition: " + ", ".join(str(p.relative_to(ROOT)) for p in matches))
@@ -136,16 +139,22 @@ def main() -> int:
     governed = operation["governed_artifacts"]
     frozen = freeze.get("artifacts", {})
     require(set(frozen) == set(governed), "freeze artifact set does not exactly match operation contract")
+    observed_sha256: dict[str, str] = {}
     for rel in governed:
         path = ROOT / rel
         require(path.exists(), f"governed artifact missing: {rel}")
-        observed = sha256_file(path)
         expected = frozen[rel]
-        require(observed == expected, f"content freeze mismatch for {rel}: expected {expected}, observed {observed}")
+        observed_blob = git_blob_sha1(path)
+        require(observed_blob == expected, f"content freeze mismatch for {rel}: expected {expected}, observed {observed_blob}")
+        observed_sha256[rel] = sha256_file(path)
 
     receipt = operation["completion_receipt"]
     require(receipt.get("surface") == "grandchallenge/MATHSOLVE#245", "completion receipt surface mismatch")
     require("protected_readback_sha" in receipt.get("required_fields", []), "completion receipt must bind protected readback")
+
+    freeze_digest = hashlib.sha256(
+        json.dumps(observed_sha256, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
 
     print(
         json.dumps(
@@ -156,6 +165,7 @@ def main() -> int:
                 "frontier": frontier,
                 "candidate_disposition": disposition,
                 "frozen_artifacts": len(governed),
+                "sha256_freeze_digest": freeze_digest,
                 "authority_created": False,
                 "mathematics_certified": False,
             },
