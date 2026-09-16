@@ -131,6 +131,7 @@ jobs:
         run: |
           lake env lean MathSolve/FormalConjectures/Replay.lean
           lake env lean MathSolve/PNP/CarrierBridge.lean
+          lake env lean MathSolve/PNP/PolyBoundBridge.lean
           python ci/validate_formal_conjectures_targets.py
           PYTHONPATH=ci python -m unittest ci/test_formal_conjectures_targets.py -v
           python -m json.tool formal_sources/formal_conjectures/MS-FC-WP00.json >/dev/null
