@@ -4,9 +4,7 @@
 
 Target work repository: `grandchallenge/MATHSOLVE`.
 
-INTELLECT work-package phase: not applicable.
-
-MATHSOLVE owns bounded theorem development and research artifacts. MATHCERT is the sole certification authority. Human Steward authority remains reserved only for the transitions named by the live INTELLECT Constitution and authority schedule.
+MATHSOLVE owns bounded theorem development and research artifacts. MATHCERT is the sole mathematical certification authority. Human Steward authority remains reserved only for transitions named by the live INTELLECT Constitution and authority schedule.
 
 ## Purpose
 
@@ -16,72 +14,107 @@ Advance the rational Hodge campaign from the qualified WP00 interface into an ex
 
 Prove, refute, or sharply localize `HC-R021-A8-CM4-C2` in `work_packages/HC_R021_CM4_EIGHTFOLD_CODIM2.md`.
 
-## Material acceptance criteria
-
-- native Solve false-proof fixtures reject hidden coefficient, correspondence, deformation, Tate, motivic, numerical, and quantifier substitutions;
-- the target-selection ledger reflects the current higher-dimensional known-case boundary rather than the July 2026 Forge snapshot;
-- the exact restricted class, dimension, codimension, coefficient ring, cycle convention, arbitrary-input quantifier, and construction route are frozen;
-- the construction route either produces an algebraic codimension-two cycle for every allowed rational Hodge class or terminates at an exact mathematical obstruction;
-- any later certification request is driven by a substantive new claim and does not reopen `MC-HC-WP00-QUAL-001`.
-
 ## Current substantive state
 
-- `HC-WP00`: complete in Solve and qualified by MATHCERT as semantic/conditional interface only. Its content-addressed proof DAG remains unchanged.
-- `HC-WP01`: complete for current target selection in `campaign_ledgers/HC-001/false_proof_atlas.json`.
-- `HC-WP02`: current for target selection in `campaign_ledgers/HC-001/known_case_construction_ledger.json`.
-- `HC-P03`: active through `HC-R021-A8-CM4-C2`, represented by `campaign_ledgers/HC-001/post_wp00_proof_obligation_dag.json`.
+- `HC-WP00`: complete in Solve and qualified by MATHCERT as semantic/conditional interface only; its content-addressed proof DAG remains unchanged.
+- `HC-WP01`: complete for current target selection.
+- `HC-WP02`: current for target selection.
+- `HC-P03`: active through `HC-R021-A8-CM4-C2`.
 - `HC-P04`: open; universal Hodge remains unproved.
-- `HC-R021-A8-CM4-C2`: selected and unproved.
-- source-proved construction obligations: coherent secant sheaves, nonzero Fourier-Mukai rank, persistence of the normalized class as Hodge, and nonzero projection to the Weil summand.
-- `HC-R021-L001`: weak semiregularity injectivity kills the first-order ambient obstruction in Hodge-preserving directions; Solve-level only.
-- `HC-R021-L002`: Perry's 2026 theorem gives all-orders algebraicity transport **along any explicitly bound smooth proper family** satisfying the Hodge-persistence and weak-equivariant-semiregularity hypotheses; it does not by itself identify the whole abstract period-domain component with one family.
-- `HC-R021-L003`: finite translation-orbit sums give canonically linearized same-ray secant representatives, so finite equivariance itself is no longer the blocker; Solve-level only.
-- active research blocker: `HC-R021-P4-G3`, weak equivariant semiregularity of a useful same-ray external-product/Fourier-Mukai representative. Mere orbit equivariance is insufficient.
-- required global closure interface: `HC-R021-P4-G6`, explicit algebraic family/level-moduli coverage of every point quantified by `C_CM4`, with Markman's flat class represented by the corresponding global Gauss-Manin section.
+- source-proved inputs: coherent secant objects, nonzero Fourier-Mukai rank, Hodge persistence of the normalized class, and nonzero Weil projection.
+- `HC-R021-L001`: restricted first-order semiregularity kills Hodge-preserving ambient obstructions when injective on the ambient-obstruction image.
+- `HC-R021-L002`: Perry's 2026 theorem gives all-orders algebraicity transport along an explicitly bound smooth proper family once weak finite-group equivariant semiregularity is supplied.
+- `HC-R021-L003`: finite translation-orbit sums supply same-ray finite equivariance, but equivariance is not semiregularity.
+- `HC-R021-L004`: ordinary semiregularity of the Example 11.2.7 second-factor gluing is impossible whenever `qN^2 >= 4` by an exact Ext-dimension bound.
+- `HC-R021-L005`: Markman's restricted condition is equivalent to equality of the ambient-obstruction kernel and the Chern-character contraction kernel.
+- `HC-R021-L006`: for the CM4 class `beta'`, the exact HKR contraction rank is `20` and its kernel has dimension `8`.
+- `HC-R021-L007`: objectwise, the restricted semiregularity condition is equivalent to vanishing of eight explicit degree-two Yoneda relations `k_1,...,k_8`; any one nonzero relation refutes that object.
+- `HC-R021-L008`: Example 11.2.7 does not select one canonical `E'`; it specifies an admissible gluing family through choices of curve, translates, line bundle, and fiber identifications. The common Chern character does not determine the object-specific obstruction map.
 
-The historical Solve handoff and an older Solve current-route projection still record HC as `ready`. Protected MATHCERT is authoritative for adjudication and records `MC-HC-WP00-QUAL-001` as `qualified_semantic_and_conditional_interface_only`. Do not rewrite immutable producer history to erase that chronology.
+The protected MATHCERT WP00 disposition remains `qualified_semantic_and_conditional_interface_only`. No new certification request is justified by the current Solve-level reductions.
+
+## Active Route A frontier
+
+`HC-R021-P4-A0` is now the first open node.
+
+The published source fixes the ray
+
+```text
+beta' = g^*Theta - (q/6)(g^-1)^*(Theta^3)
+```
+
+but constructs `E'` through existential/generic choices. Before a single numerical `rank(ob_E')` can be computed, do one of the following:
+
+1. **Representative path:** bind a concrete admissible datum
+
+```text
+D_star = (d,N,C', {T_j}, L, {phi_p})
+```
+
+sufficient to reconstruct the exact gluing sequence
+
+```text
+0 -> E'_star -> (direct_sum_j T_j) direct_sum i_*L -> direct_sum_p k_p -> 0;
+```
+
+then evaluate the eight `L007` Yoneda classes on that exact object.
+
+2. **Uniform path:** prove that all eight `L007` relations vanish on a stated nonempty open subset of the admissible Example 11.2.7 gluing-parameter space.
+
+Once A0 is discharged, `P4-A1` asks whether `rank(ob_E)=20`; compatibility already forces `20 <= rank(ob_E) <= 28`. A positive A1 still leaves `P4-A2`, the all-orders obstruction-image-stability theorem.
+
+## Parallel Route G frontier
+
+The equivariant route remains available:
+
+- `P4-G3`: prove weak `G`-semiregularity of a useful same-ray total object, including the mixed `Ext^1 tensor Ext^1` contribution;
+- `P4-G6`: bind the abstract `C_CM4` target quantifier to explicit algebraic family/level-moduli carriers and a global Gauss-Manin section;
+- then apply Perry familywise.
+
+Perry's worked Markman application concerns the earlier abelian-sixfold construction; it does not close the present CM4 genus-four semiregularity problem.
 
 ## Authoritative pointers
 
 - `grandchallenge/INTELLECT:CONSTITUTION.md`
 - `grandchallenge/INTELLECT:governance/constitutional_authority_schedule.json`
-- `grandchallenge/INTELLECT:governance/handoffs/README.md`
 - `grandchallenge/MATHSOLVE:AGENTS.md`
-- `grandchallenge/MATHSOLVE:work_packages/HC_WP00.md`
-- `grandchallenge/MATHSOLVE:work_packages/HC_WP00_STATEMENT_LATTICE_AND_DAG.md`
-- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/proof_obligation_dag.json` — immutable WP00 DAG bound by the historical manifest/handoff;
-- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/post_wp00_proof_obligation_dag.json` — active HC-P03/R021 research DAG;
-- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/false_proof_atlas.json`
-- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/known_case_construction_ledger.json`
+- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/proof_obligation_dag.json` — immutable WP00 DAG;
+- `grandchallenge/MATHSOLVE:campaign_ledgers/HC-001/post_wp00_proof_obligation_dag.json` — active post-WP00 theorem DAG;
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_CM4_EIGHTFOLD_CODIM2.md`
 - `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_PERRY_EQUIVARIANT_REDUCTION.md`
+- `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_SEMIREGULARITY_DIAGNOSTICS.md`
+- `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_CONTRACTION_RANK.md`
+- `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_ATIYAH_RANK_REDUCTION.md`
+- `grandchallenge/MATHSOLVE:work_packages/HC_R021_P4_ATIYAH_DATUM_BOUNDARY.md`
 - `grandchallenge/MATHCERT:certificates/hodge/MC-HC-WP00-QUAL-001.json`
-- Markman, arXiv:2509.23079v1, especially Proposition 10.2.1, Example 11.2.7, and Lemma 11.2.8.
-- Markman, arXiv:2502.03415v2, especially Examples 8.2.3-8.2.4 and the equivariant semiregularity construction in Section 9.3.
-- Alexander Perry, arXiv:2604.00511, Theorem 1.2 and Theorem 6.3.
-- Pridham, *Forum of Mathematics, Sigma* 12 (2024), e126.
+- Markman, arXiv:2509.23079, Question 11.2.2, Example 11.2.7, Lemma 11.2.8.
+- Markman, arXiv:2502.03415, Lemma 8.3.4, Remark 8.3.5, Proposition 8.3.9.
+- Perry, arXiv:2604.00511v2, Theorems 1.2 and 6.3.
 
 ## Smallest safe next tranche
 
-Attack `HC-R021-P4-G3`. First reject induced/orbit symmetries that do not shrink the obstruction space by computing equivariant `Ext^2` through induction/forgetful adjunction. Then use the non-induced cyclic quotient object of Markman Example 8.2.3 as the first-factor model and search for an analogous genuinely symmetric `beta'` representative whose invariant `Ext^2` is smaller. Any candidate product must explicitly control the invariant mixed `Ext^1 tensor Ext^1` contribution before Perry's theorem is invoked. In parallel, bind `P4-G6` to the exact algebraic level-moduli/family carrier before any global `C_CM4` conclusion is stated.
+Pursue `P4-A0` before attempting further representative-specific Ext calculations.
+
+1. Search the cited genus-four real-multiplication examples for a sufficiently explicit Jacobian/source datum that can bind `X`, `Theta`, and `g`.
+2. Determine whether Markman's curve-class existence step can be made constructive for one such datum; if yes, bind `d,N,C'` and the remaining generic gluing choices algebraically.
+3. If representative construction remains non-explicit, formulate the admissible gluing parameter space and test whether the eight `L007` Yoneda classes define algebraic sections whose common vanishing can be proved on a nonempty open or closed locus.
+4. Do not infer Yoneda vanishing from the common Chern character.
 
 ## Material dependencies and boundaries
 
 - coefficient ring remains `Q`;
 - geometric category remains smooth projective complex varieties;
-- the target is explicitly restricted to the Hodge-generic locus in the selected degree-four CM/Weil deformation component;
-- Hodge persistence of `kappa(E)` is not algebraicity transport;
-- Perry's familywise theorem is not a global period-domain theorem unless an algebraic family/moduli carrier and global flat class are bound;
-- first-order obstruction vanishing is not a relative algebraic cycle;
-- finite equivariance or linearization is not weak equivariant semiregularity;
-- factorwise degree-two semiregularity does not by itself control the mixed `Ext^1 tensor Ext^1` term of an external product;
-- no Kunneth projector, inverse Lefschetz correspondence, Hodge-locus theorem, Tate lift, motivated class, or numerical period relation may substitute for an algebraic cycle;
+- the target remains the Hodge-generic CM4 locus only;
+- Chern-character contraction is not the object-specific Atiyah obstruction map;
+- Example 11.2.7's existential gluing choices must not be treated as a content-addressed representative;
+- first-order restricted semiregularity is not an all-orders deformation theorem;
+- finite equivariance is not weak equivariant semiregularity;
+- Perry's familywise theorem is not a global period-domain theorem without explicit family coverage;
+- no inverse Lefschetz, Kunneth projector, Hodge-locus, Tate, motivated, or numerical substitute may replace an algebraic cycle;
 - no claim from this target is certified until independently adjudicated by MATHCERT.
 
-## Reserved authority / stop conditions
+## Legitimate stop/re-plan boundaries
 
-Stop or re-plan only for a material source correction, evidence that the selected target is already known or vacuous, failure of the source construction under its exact hypotheses, a genuine equivariant-semiregularity obstruction requiring a different route, contradiction of the exact target formulation, a reserved INTELLECT transition, authentication/safety failure, or material closure of the theorem.
+Stop or re-plan only for a material source correction; evidence that the selected target is known or vacuous; a genuine obstruction to both Route A and Route G; contradiction of the exact target formulation; a reserved INTELLECT transition; authentication or safety failure; or material theorem closure.
 
-## Notes intentionally omitted
-
-This handoff intentionally omits constitutional doctrine, the generic handoff contract, the full HC campaign history, the complete Forge source ledger, and repeated WP00 material already controlled elsewhere.
+The current A0 datum gap is an evidentiary frontier to work, not a governance stop.
