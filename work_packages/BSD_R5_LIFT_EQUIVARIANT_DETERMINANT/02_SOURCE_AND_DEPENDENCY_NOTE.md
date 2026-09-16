@@ -35,6 +35,16 @@ The published theorem assumes `p>=5`; this package does not invoke that statemen
 
 ## Protected MATHSOLVE dependencies
 
+### WP60J
+
+Provides the exact selected residual BSS hypotheses and proves the full image
+
+`im(rho_{E,2-adic})=GL_2(Z_2)`
+
+from the protected primitive multiplicative transvection and residual surjectivity. It also proves the residual auxiliary-field `H^1` vanishing and the rank-one `tau` quotient.
+
+The current package uses full image to identify the image over each cyclotomic layer as a determinant-condition subgroup containing `SL_2(Z/2^m)`.
+
 ### WP60M
 
 Provides the exact base-coefficient all-level defect theorem: formal H3.2(iii) is false, its restriction kernel has one nonzero class, and the fixed odd multiplicative local condition excludes that class from every selected modified primal and dual Selmer group.
@@ -55,7 +65,7 @@ Provides the selected literal-2 derivative architecture, including `H^0` and Fro
 
 ### WP32
 
-Provides the real-place literal-2 comparison: degree-one and degree-two correction groups have equal length and unit fractional Fitting ideal. The current package does not promote this to a canonical generator trivialization.
+Provides the integral real-place literal-2 comparison cone. It has equal degree-one and degree-two `Z_2` lengths and a unit determinant/Fitting factor. The current package induces that integral perfect correction to `Z_2[Gamma_n]` before finite coefficient reduction; it does not infer a finite group-ring unit merely from equal cardinalities and does not promote the comparison to a canonical generator trivialization.
 
 ### WP35 and WP46A
 
@@ -72,11 +82,13 @@ This package supplies, rather than imports:
 1. local complete-intersection/Gorenstein structure of `R_{m,n}`;
 2. equivariant survival of the fixed rank-one `tau` quotient;
 3. the cyclotomic-layer `SL_2` cohomology bound and unique defect;
-4. Shapiro-compatible exclusion of that defect from actual selected Selmer classes;
-5. the socle/Nakayama lift of WP60R localization and core-graph machinery;
-6. equivariant regulator replay over `R_{m,n}`;
-7. the literal-2 finite basicness statement and compatible inverse passage;
-8. the exact support argument showing that the genuine good-ordinary correction does not alter the height-one `(2)` lattice.
+4. the exact trivial-or-order-two auxiliary cyclotomic kernel analysis;
+5. Shapiro-compatible exclusion of the unique defect from actual selected Selmer classes;
+6. the socle/Nakayama lift of WP60R localization and core-graph machinery;
+7. the integral-group-ring real-place correction and equivariant determinant-to-Stark replay;
+8. equivariant regulator replay over `R_{m,n}`;
+9. the literal-2 finite basicness statement and compatible inverse passage;
+10. the support argument showing that the genuine good-ordinary correction does not alter the height-one `(2)` lattice.
 
 ## Claim discipline
 
