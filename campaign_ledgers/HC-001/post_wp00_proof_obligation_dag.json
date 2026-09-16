@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "dag_id": "HC-POST-WP00-THEOREM-SPINE-DAG",
   "campaign_id": "HC-001",
   "parent_dag": "campaign_ledgers/HC-001/proof_obligation_dag.json",
@@ -13,14 +13,15 @@
     {"id":"HC-R021-P2c","statement":"Prove the normalized class kappa(E) remains of Hodge type under the relevant Weil-type deformations.","status":"source_proved"},
     {"id":"HC-R021-P2d","statement":"Prove kappa_2(E) has a nonzero projection to HW.","status":"source_proved"},
     {"id":"HC-R021-L001","statement":"If the semiregularity map is injective on the image of the ambient evaluation/Atiyah map, then every first-order Hodge-preserving ambient obstruction in that image vanishes.","status":"complete_solve_not_certified"},
-    {"id":"HC-R021-L002","statement":"Perry reduction: if a same-Chern-character CM4 representative is weakly G-semiregular for a suitable finite subgroup of A_0 x A_0^vee, then Perry Theorem 1.2 supplies the all-orders twisted deformation and algebraicity of kappa, closing P4 and yielding the P5 input.","status":"complete_solve_not_certified"},
+    {"id":"HC-R021-L002","statement":"Familywise Perry reduction: on any bound smooth proper CM/Weil family S carrying the global Hodge-persistent flat class kappa(E_0), weak G-semiregularity plus Ext<0=0 lets Perry Theorem 1.2 make kappa algebraic on every fiber of S.","status":"complete_solve_not_certified_familywise"},
     {"id":"HC-R021-L003","statement":"For any finite translation subgroup H, the orbit sum of a coherent/perfect secant object has a canonical H-linearization and Chern character |H| times the original; therefore finite-equivariant representatives on the same secant ray are available without changing the cohomological criterion.","status":"complete_solve_not_certified"},
     {"id":"HC-R021-P4-G1","statement":"Choose a finite-equivariant representative of the first genus-four secant Chern-character ray; Markman Example 8.2.3 supplies a geometric cyclic-equivariant candidate and L003 supplies an orbit-equivariant replacement in general.","status":"complete_equivariance_only"},
     {"id":"HC-R021-P4-G2","statement":"Construct a finite-equivariant representative on the beta-prime ray of Markman Example 11.2.7 without changing the nonzero-Weil-projection criterion.","status":"complete_equivariance_only_by_L003"},
     {"id":"HC-R021-P4-G3","statement":"Find a useful finite symmetry and prove weak equivariant semiregularity of the external-product object or directly of its Fourier-Mukai image, including control of the mixed Ext^1 tensor Ext^1 contribution. Mere orbit equivariance is insufficient.","status":"open"},
     {"id":"HC-R021-P4-G4","statement":"Transport the finite symmetry through the Orlov/Fourier-Mukai equivalence into A_0 x A_0^vee.","status":"theorem_interface_available"},
-    {"id":"HC-R021-P4-G5","statement":"Apply Perry Theorem 1.2 to B_0=-c_1(E_0)/rank(E_0) and w_0=kappa(E_0).","status":"conditional_on_G3"},
-    {"id":"HC-R021-P4","statement":"All-orders algebraicity-transport bridge; after L002-L003 the sole live obstruction on the equivariant route is weak G-semiregularity of a useful same-ray CM4 representative.","status":"open"},
+    {"id":"HC-R021-P4-G5","statement":"Apply Perry Theorem 1.2 familywise to B_0=-c_1(E_0)/rank(E_0) and w_0=kappa(E_0).","status":"conditional_on_G3_and_bound_family"},
+    {"id":"HC-R021-P4-G6","statement":"Bind the abstract C_CM4 target quantifier to explicit connected smooth proper algebraic family or level-moduli carriers on which Markman's flat class is a global Hodge section; record coverage/overlap needed to reach every target point.","status":"standard_moduli_interface_unbound"},
+    {"id":"HC-R021-P4","statement":"All-orders algebraicity-transport bridge; the active research obstruction is weak G-semiregularity (G3), and global target closure additionally requires explicit family/moduli coverage (G6).","status":"open"},
     {"id":"HC-R021-P5","statement":"Produce one nonzero algebraic Weil class on every A in C_CM4.","status":"open"},
     {"id":"HC-R021-P6","statement":"Use algebraic K-endomorphism correspondences to generate every class in HW(A,eta).","status":"open"},
     {"id":"HC-R021-P7","statement":"Combine divisor-product and Weil preimages to construct z in CH^2(A) tensor Q for arbitrary alpha in Hdg^4(A,Q).","status":"open"},
@@ -32,7 +33,8 @@
     ["HC-R021-P2d","HC-R021-L001"],["HC-R021-P2d","HC-R021-L002"],["HC-R021-L002","HC-R021-L003"],
     ["HC-R021-L003","HC-R021-P4-G1"],["HC-R021-L003","HC-R021-P4-G2"],
     ["HC-R021-P4-G1","HC-R021-P4-G3"],["HC-R021-P4-G2","HC-R021-P4-G3"],
-    ["HC-R021-P4-G3","HC-R021-P4-G4"],["HC-R021-P4-G4","HC-R021-P4-G5"],["HC-R021-P4-G5","HC-R021-P4"],
+    ["HC-R021-P4-G3","HC-R021-P4-G4"],["HC-R021-P4-G4","HC-R021-P4-G5"],
+    ["HC-R021-P0","HC-R021-P4-G6"],["HC-R021-P4-G5","HC-R021-P4"],["HC-R021-P4-G6","HC-R021-P4"],
     ["HC-R021-P4","HC-R021-P5"],["HC-R021-P5","HC-R021-P6"],["HC-R021-P1","HC-R021-P7"],["HC-R021-P6","HC-R021-P7"]
   ],
   "forbidden_shortcuts": [
@@ -41,8 +43,9 @@
     "Treat persistence of kappa(E) as a Hodge class as algebraicity transport without semiregularity or an equivalent deformation theorem.",
     "Treat finite equivariance, linearization, or orbit averaging as weak G-semiregularity without proving semiregularity in the invariant category.",
     "Infer semiregularity of an external product from factorwise degree-two injectivity without controlling the mixed Ext^1 tensor Ext^1 summand.",
+    "Apply a familywise Perry theorem to the entire abstract period-domain component without binding an algebraic family/moduli carrier and a global flat Hodge section.",
     "Promote a theorem on the Hodge-generic locus to special fibers carrying additional Hodge classes.",
     "Treat numerical, Tate, absolute-Hodge, or motivated evidence as an algebraic-cycle construction."
   ],
-  "claim_boundary": "HC-R021-A8-CM4-C2 is selected but unproved. L001-L003 are Solve-level lemmas only. Perry reduces P4 to weak finite-group equivariant semiregularity; finite same-ray equivariance is now available, but weak G-semiregularity remains open. HC-P04 and the full Hodge conjecture remain open."
+  "claim_boundary": "HC-R021-A8-CM4-C2 is selected but unproved. L001-L003 are Solve-level lemmas only. Perry reduces familywise P4 transport to weak finite-group equivariant semiregularity; finite same-ray equivariance is available, but G3 remains open. Global target closure also requires explicit G6 family/moduli coverage. HC-P04 and the full Hodge conjecture remain open."
 }
