@@ -1,0 +1,168 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "campaign": "BSD-001",
+  "operation": "BSD-R5-PRIM",
+  "candidate_head": "09829e4e09d65ca09ad90b90d278f8c1c8bd9820",
+  "merge_sha": "6e94bbcef6a879ff9bb2781e4e82a456caca8b41",
+  "protected_readback_sha": "6e94bbcef6a879ff9bb2781e4e82a456caca8b41",
+  "enforcement_standard": {
+    "identifier": "GCL-CEX-01",
+    "repository": "grandchallenge/gcl-standards",
+    "commit": "efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
+    "programme_adoption_anchor": "grandchallenge/MATH-PROGRAMME@af6e1772e2d82b0b198d11c08e1369789ffbba3a"
+  },
+  "staffing_authority": {
+    "repository": "grandchallenge/INTELLECT",
+    "directive": "GI-STEWARD-0003",
+    "separation_model": "role_scoped_logical_passes",
+    "protected_anchor": "f042220f3bed7cb7b5069256e8f6305c850c0628"
+  },
+  "adversary_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/271#pullrequestreview-5226629912",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "BSD-R5-PRIM-ADV-09829e4e-002",
+    "role": "Adversary",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "09829e4e09d65ca09ad90b90d278f8c1c8bd9820",
+    "criteria": [
+      "challenge the height-one residue-field identification and unit criterion at (2)",
+      "challenge transfer of determinant primitivity through the protected determinant-to-Kolyvagin comparison",
+      "challenge finite cyclotomic detection versus the stronger and unjustified finite-level basis claim",
+      "challenge any use of odd-prime Castella-Sano or Kurihara results as literal-p=2 primitivity evidence",
+      "challenge any promotion from the proved reduction to R5-PRIM, D2d, BSD-R2-A1 or MATHCERT certification"
+    ],
+    "evidence": [
+      "the 12 governed mathematical artifacts are content-frozen on exact candidate head 09829e4e09d65ca09ad90b90d278f8c1c8bd9820",
+      "the reduction identifies A/2A with F_2((T)) and requires residual nonvanishing rather than finite-level basis status",
+      "the source boundary keeps the literal-p=2 residual nonvanishing theorem open",
+      "the claim ledger and campaign state preserve all prohibited promotions",
+      "the repaired freeze binds provider grandchallenge/MATHFORGE@5aef30aa64730ca777329013e1e33c03f34a6e3a without changing governed mathematical bytes"
+    ],
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "human_authorized": false,
+      "mathcert_certified": false
+    }
+  },
+  "referee_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/271#pullrequestreview-5226633239",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "BSD-R5-PRIM-REF-09829e4e-003",
+    "role": "Referee",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "09829e4e09d65ca09ad90b90d278f8c1c8bd9820",
+    "criteria": [
+      "adjudicate the DVR and residue-field reduction at the height-one prime (2)",
+      "adjudicate equivalence of primitivity with nondivisibility by 2 for the protected integral determinant coordinate",
+      "adjudicate inverse-limit and finite-layer residual detection without upgrading to finite-ring basis status",
+      "verify the source/provider boundary and literal-p=2 evidence discipline",
+      "verify coherence of theorem, ledger, campaign state, operation contract, freeze and exact-head CI evidence"
+    ],
+    "evidence": [
+      "exact-head theorem artifacts and deterministic residual-algebra certificate are coherent at 09829e4e09d65ca09ad90b90d278f8c1c8bd9820",
+      "all declared R5-PRIM candidate admission gates succeeded on that exact head",
+      "protected merge 6e94bbcef6a879ff9bb2781e4e82a456caca8b41 has candidate 09829e4e09d65ca09ad90b90d278f8c1c8bd9820 as its reviewed parent",
+      "the dedicated R5-PRIM workflow replayed successfully on protected main",
+      "R5-PRIM, D2d, BSD-R2-A1, novelty, priority and MATHCERT certification remain expressly unestablished"
+    ],
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "human_authorized": false,
+      "mathcert_certified": false
+    }
+  },
+  "required_checks": [
+    {
+      "phase": "candidate",
+      "name": "BSD R5-PRIM residual criterion certificate",
+      "run": 35133719269,
+      "result": "success",
+      "head": "09829e4e09d65ca09ad90b90d278f8c1c8bd9820"
+    },
+    {
+      "phase": "candidate",
+      "name": "ledgers",
+      "check_run": 104920933244,
+      "result": "success",
+      "head": "09829e4e09d65ca09ad90b90d278f8c1c8bd9820"
+    },
+    {
+      "phase": "candidate",
+      "name": "policy / policy",
+      "check_run": 104920733532,
+      "result": "success",
+      "head": "09829e4e09d65ca09ad90b90d278f8c1c8bd9820"
+    },
+    {
+      "phase": "candidate",
+      "name": "security / action-policy",
+      "check_run": 104920733267,
+      "result": "success",
+      "head": "09829e4e09d65ca09ad90b90d278f8c1c8bd9820"
+    },
+    {
+      "phase": "candidate",
+      "name": "routing-enforcement",
+      "check_run": 104920722080,
+      "result": "success",
+      "head": "09829e4e09d65ca09ad90b90d278f8c1c8bd9820"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "BSD R5-PRIM residual criterion certificate",
+      "run": 35134040817,
+      "result": "success",
+      "head": "6e94bbcef6a879ff9bb2781e4e82a456caca8b41"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "GCL conformance",
+      "run": 35134042201,
+      "result": "success",
+      "head": "6e94bbcef6a879ff9bb2781e4e82a456caca8b41"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "BSD WP60R finite theorem replay",
+      "run": 35134040900,
+      "result": "success",
+      "head": "6e94bbcef6a879ff9bb2781e4e82a456caca8b41"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "BSD WP60Q selected residual core graph",
+      "run": 35134040796,
+      "result": "success",
+      "head": "6e94bbcef6a879ff9bb2781e4e82a456caca8b41"
+    }
+  ],
+  "disposition": {
+    "type": "BLOCKED",
+    "frontier": "MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2",
+    "proved_reduction": [
+      "BSD-R5-PRIM-LINE-001",
+      "BSD-R5-PRIM-RESIDUE-002",
+      "BSD-R5-PRIM-COMPARE-003",
+      "BSD-R5-PRIM-RESIDUAL-004",
+      "BSD-R5-PRIM-FINITE-DETECT-005"
+    ],
+    "blocked_on": "MISSING_P2_RESIDUAL_CYCLOTOMIC_KATO_KOLYVAGIN_NONVANISHING",
+    "next_frontier": "MISSING_P2_RESIDUAL_CYCLOTOMIC_KATO_KOLYVAGIN_NONVANISHING"
+  },
+  "preserved_false": [
+    "formal_higher_level_hypothesis_3_2_iii",
+    "full_bss_hypothesis_4_7",
+    "bss_hypothesis_4_7_iii",
+    "infinite_bss_h3",
+    "r5_prim",
+    "d2d",
+    "bsd_r2_a1",
+    "mathcert_certification"
+  ],
+  "notes": "This receipt completes the governed BSD-R5-PRIM operation with disposition BLOCKED. It protects the proved reduction of determinant primitivity at height one (2) to literal-p=2 residual cyclotomic Kato/Kolyvagin nonvanishing, but it does not establish that residual theorem, R5-PRIM, D2d, BSD-R2-A1, novelty, priority, public certification, or MATHCERT certification. Reopening requires new exact evidence for MISSING_P2_RESIDUAL_CYCLOTOMIC_KATO_KOLYVAGIN_NONVANISHING."
+}
