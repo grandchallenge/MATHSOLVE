@@ -2,114 +2,107 @@
 
 ## Cold start
 
-Protected repository state is the operational authority. Chat transcripts, mutable issue prose, and stale summaries are context only.
+Protected repository state is operational authority. Chat transcripts, mutable issue prose, and stale summaries are context only.
 
 After re-fetching live protected heads, begin with:
 
 1. `.gcl/campaigns/BSD-001/CAMPAIGN_STATE.json`;
-2. `.gcl/operations/BSD-WP60T/OPERATION.json`;
-3. `handoffs/BSD-001/WP60T_FRONTIER.md`;
-4. `work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/01_BSS_612_615_REPLAY_THEOREM.md`;
-5. `work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/03_CLAIM_LEDGER.yaml`;
-6. the exact protected provider and predecessor artifacts named by those records.
+2. `.gcl/operations/BSD-R5-LIFT-EQUIV/OPERATION.json`;
+3. `handoffs/BSD-001/R5_LIFT_EQUIVARIANT_FRONTIER.md`;
+4. `work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/01_EQUIVARIANT_BASICNESS_THEOREM.md`;
+5. `work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/03_CLAIM_LEDGER.yaml`;
+6. the exact protected provider and predecessor artifacts named there.
 
-Before review or expensive CI, run:
+Before exact-head review, run
 
-`python tools/gcl_campaign_preflight_v2.py BSD-001 BSD-WP60T`
+`python tools/gcl_campaign_preflight_r5_lift_equiv.py BSD-001 BSD-R5-LIFT-EQUIV`
+
+and
+
+`python work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/04_EQUIVARIANT_REPLAY_CERTIFICATE.py`.
 
 ## Authority and claim state
 
 - Campaign: `BSD-001 — Birch-Swinnerton-Dyer selected rank-one 2-primary campaign`.
 - Programme owner: `grandchallenge/MATHSOLVE#164`.
-- Campaign tracker: `grandchallenge/MATHSOLVE#215`.
-- Current operation: `grandchallenge/MATHSOLVE#250` (`BSD-WP60T`).
-- Protected mathematical base entering WP60T: `grandchallenge/MATHSOLVE@5fa2caa8f3d4aa54849f62135a5214737fa6db2a`.
-- Protected WP60T source interface: `grandchallenge/MATHFORGE@095b8eec0e7fe29d7e831661dfe199ec43fa0458`.
+- Parent WP60 tracker: `grandchallenge/MATHSOLVE#215`.
+- Current substantive operation: `grandchallenge/MATHSOLVE#262` (`BSD-R5-LIFT-EQUIV`).
+- Exact protected mathematical base for this operation: `grandchallenge/MATHSOLVE@270e2c2f9dde7bd817a251c9e3fb250fff36a81b`.
+- Exact protected source authority: `grandchallenge/MATHFORGE@de2c83c2c440ac357b183b9e1018e9f69c58e1d9`.
 - Constitutional authority: `grandchallenge/INTELLECT@f042220f3bed7cb7b5069256e8f6305c850c0628`.
-- GCL-CEX programme adoption anchor: `grandchallenge/MATH-PROGRAMME@af6e1772e2d82b0b198d11c08e1369789ffbba3a`.
-- Certification authority: `grandchallenge/MATHCERT` only.
-- Selected target: `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED`.
+- Active staffing directive: `GI-STEWARD-0003`.
+- Selected target remains `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED`.
+- MATHCERT remains the sole mathematical certification authority.
 
-## Governing invariant
+Protected-main movement after `270e2c2...` that is unrelated to BSD-001 does not change these immutable operation dependency anchors.
 
-The selected theorem remains
+## Protected predecessor chain
 
-`delta_2(E)=v_2(Fitt^1_Z2(X_E))`.
+WP60M proves that formal higher-level BSS Hypothesis 3.2(iii) is false but its unique finite defect is excluded from actual selected modified primal and dual Selmer groups by the fixed odd multiplicative local condition.
 
-Nothing in WP60T promotes that target.
+WP60R supplies selected literal-2 localization, dual killing, connected core graphs, finite core-vertex freeness and the finite regulator/Fitting replay over `Z/2^m`.
 
-## Protected BSS chain entering WP60T
+WP60S supplies the protected inverse-limit Stark/Kolyvagin replay in the coefficient exponent.
 
-Protected WP60G–WP60Q repair the selected literal-`2` residual localization, exchange, coisotropy, cartesianness, and core-graph machinery while preserving failure of formal higher-level Hypothesis 3.2(iii).
+WP60T supplies the literal-2 Euler-system derivative, first-component identity and finite Fitting application while leaving the cyclotomic height-one `(2)` boundary open.
 
-Protected WP60R establishes on every finite selected coefficient level:
+WP32 retains the real-place literal-2 comparison and proves its alternating determinant/Fitting ideal is a unit, without a canonical generator trivialization.
 
-- `BSS_LITERAL_P2_SELECTED_ALL_FINITE_LEVEL_CORE_GRAPHS_CONNECTED`;
-- `BSS_LITERAL_P2_SELECTED_FINITE_LEVEL_HYPOTHESIS_4_2_AVAILABLE`;
-- `BSS_LITERAL_P2_SELECTED_THEOREM_5_20_REPLAYED`;
-- `BSS_LITERAL_P2_SELECTED_THEOREM_5_2_REPLAYED`.
+WP35 supplies the primitive cyclotomic square presentation and exact specialization defect. WP46A identifies the genuine good-ordinary strict higher local term as supported at `(2,gamma-1)`.
 
-Protected WP60S closes the selected literal-`2` inverse-limit replay of BSS II Theorem 5.25. Its authoritative completion receipt is `.gcl/completions/BSD-WP60S/COMPLETION_RECEIPT.json`.
+WP60A-A1 proves that after localization at `Lambda_(2)`, determinant membership is exactly the one-sided Fitting divisibility `R5-LIFT`, while determinant-generator status is the distinct equality `R5-PRIM`.
 
-Formal higher-level Hypothesis 3.2(iii), full Hypothesis 4.7(iii), and infinite H3 remain false or unavailable throughout.
+## Current candidate
 
-## WP60T candidate
+The #262 candidate replays the determinant/Stark/Kolyvagin architecture over every
 
-WP60T addresses exactly
+`R_{m,n}=Z/2^m[Gal(Q_n/Q)]`.
 
-`MISSING_LITERAL_P2_BSS_THEOREM_6_12_COROLLARY_6_15_APPLICATION_REPLAY_WITHOUT_INFINITE_H3`.
+It proves the coefficient-ring structure, fixed rank-one `tau` quotient, cyclotomic-layer unique defect and selected-Selmer exclusion, socle/Nakayama localization lift, equivariant large/core-vertex theorem, determinant-to-Stark isomorphism with real correction retained, regulator isomorphism, Kato first-component compatibility, and inverse-limit determinant membership.
 
-The candidate verifies or binds:
+It also retains the ordinary local correction rather than canceling it. Protected WP46A shows that correction is annihilated by `gamma-1`, so it vanishes at the height-one localization `(2)` where `gamma-1` is a unit.
 
-- selected BSS Hypothesis 6.1;
-- selected BSS Hypothesis 6.7;
-- selected BSS Hypothesis 6.11;
-- derivative-prime compatibility with the positive-density WP60R prime set;
-- selected literal-`2` BSS Theorem 6.12;
-- Corollary 6.13 derivative availability;
-- finite-level Corollary 6.15 by composition with protected WP60R Theorem 5.2.
+Candidate disposition: `CLOSED`, subject to exact-head admission.
 
-The protected MATHFORGE WP60T source audit establishes that BSS §6 is formulated for an arbitrary prime and that the operative proof of Theorem 6.12 uses Hypotheses 6.1, 6.7, and 6.11; the explicit `p>3` in Corollary 6.15 belongs to the Theorem 5.2 Fitting-control layer. It also records the selected §3.1.2/§6.3 prime-set relation and preserves the distinction between Kato Euler-system existence and the unavailable height-one-`(2)` main-conjecture divisibility.
+If protected, the candidate establishes
 
-Candidate disposition: `CLOSED`, subject to exact-head review, CI, protected merge/readback, and completion receipt.
+`R5_LIFT_ESTABLISHED`
 
-## Next frontier if protected
-
-Return directly to
+and retires
 
 `MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2`.
 
-This is the pre-existing R5-LIFT boundary. Protected WP60A-A1 identifies determinant membership at cyclotomic height-one `(2)` with exactly this missing one-sided Fitting divisibility. WP60T's finite-level Corollary 6.15 replay does not discharge it.
+## Next frontier if protected
 
-Do not create a WP60U package merely to restate that boundary.
+`MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
+
+This is `R5-PRIM`. It is not implied by membership and requires determinant/Kato primitivity, equivalently equality of the protected height-one valuation rather than the one-sided inequality.
 
 ## Other live route boundaries
 
-- R1: `MISSING_LITERAL_P2_HEEGNER_INDEX_PARITY`.
-- R2: `MISSING_EXACT_WP00_TWIST_LRATIO_VALUATION_UNDER_WP09_CONSTRAINTS`.
-- R4: `R4_EQUIVALENT_TO_FIXED_BASE_ANALYTIC_LEADING_TERM_VALUATION`.
-- R5-LIFT: `MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2`.
-- R5-PRIM: `MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
-- D2a: `MISSING_P2_K_HEIGHT_NONDEGENERACY`.
-- D2d: `MISSING_LITERAL_P2_COMBINED_HEEGNER_INDEX_TWIST_LRATIO_THEOREM_WITHOUT_EXTRA_MOD2_LOG_OR_RANKZERO_SEED`.
-- D2e: `MISSING_P2_WP06_EXACT_QUADRATIC_DESCENT_OF_NORMALIZATION`.
+The operation does not change independent BSD-001 routes, including R1, R2, R4, D2a, D2d and D2e, except where a later protected campaign state explicitly records such a transition.
 
-`BSD-R2-A1` remains unproved.
+## Preserved false/unavailable statements
+
+- formal higher-level BSS Hypothesis 3.2(iii): false;
+- full BSS Hypothesis 4.7: unavailable;
+- BSS Hypothesis 4.7(iii): unavailable;
+- infinite BSS H3: false/unavailable.
 
 ## Claim firewall
 
-Do not promote WP60T to:
+Do not promote this operation to:
 
-- formal higher-level BSS Hypothesis 3.2(iii), full Hypothesis 4.7, Hypothesis 4.7(iii), or infinite H3;
-- R5-LIFT or R5-PRIM;
-- D2d or `BSD-R2-A1`;
-- MATHCERT certification;
-- novelty, priority, patentability, or commercial claims.
+- R5-PRIM;
+- D2d;
+- `BSD-R2-A1`;
+- novelty or priority;
+- MATHCERT certification.
 
-Green CI or repository merge is not mathematical certification.
+Green CI and protected merge are evidence/admission events, not MATHCERT certification.
 
 ## Execution doctrine
 
-Proceed autonomously through deterministic preflight, content freeze, exact-head non-authoring/read-only Adversary and Referee logical passes, affected CI, protected merge/readback, completion receipt, and issue #250/#215/#164 maintenance.
+Proceed through deterministic preflight, content freeze, exact-head non-authoring/read-only Adversary and Referee logical passes, affected CI, protected merge/readback, completion receipt, and issue/tracker maintenance.
 
-Recoverable connector, CI, logging, formatting, source-access, compiler, environment, routing, or computational failures are recovery events, not stopping conditions. Bind every review, run, job, artifact, and merge to the exact current subject. Repairs require fresh exact-head replay.
+Recoverable connector, CI, logging, formatting, source-access, compiler, environment, routing, or computational failures are recovery events, not stopping conditions. Any material governed-artifact change invalidates the freeze and affected exact-head findings and requires fresh replay.
