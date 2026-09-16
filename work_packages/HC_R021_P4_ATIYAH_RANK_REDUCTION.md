@@ -67,11 +67,11 @@ Its restriction to degree two is the ambient obstruction map:
 ob_E = ev_E | HT^2(X).
 ```
 
-This is the mechanism used by Markman in arXiv:2502.03415, Section 8.3, where the rank-six obstruction map is computed from the degree-one action and the Yoneda algebra.
+This is the mechanism used by Markman in arXiv:2502.03415, Section 8.3, where the obstruction map is computed from the degree-one action and the Yoneda algebra.
 
 Therefore, for `E'`, `HC-R021-P4-A1` is a finite quadratic problem:
 
-> compute the rank of the Yoneda-product map on `Lambda^2 V`, or equivalently determine which degree-two exterior relations among the eight canonical translation/twist first-order classes vanish in `Ext^2(E',E')`.
+> compute the Yoneda-product map on `Lambda^2 V`, or equivalently determine which degree-two exterior relations among the eight translation/twist generators vanish in `Ext^2(E',E')`.
 
 No separate 28-dimensional Atiyah-class matrix is required.
 
@@ -226,7 +226,7 @@ E' -> A direct_sum B -> Q -> E'[1]
 
 is a distinguished triangle.
 
-This is the standard local model of gluing line-bundle fibers over transverse zero-dimensional intersections. It makes the next obstruction computation exact: the Hochschild action is natural on this triangle, so each `ev_E'(k_i)` must be computed together with the induced actions on `A`, `B`, `Q`, and the gluing morphism `rho`.
+This is the standard local model of gluing line-bundle fibers over transverse zero-dimensional intersections. The Hochschild action is natural on this triangle, so each `ev_E'(k_i)` must be computed together with the induced actions on `A`, `B`, `Q`, and the gluing morphism `rho`.
 
 ## 6. Why Chern-character cancellation is insufficient
 
@@ -255,32 +255,7 @@ The latter requires an actual nullhomotopy in the self-Ext algebra compatible wi
 
 This is precisely the remaining content of `P4-A1`.
 
-## 7. Degree-one action and stabilizer
-
-The connected group
-
-```text
-X x X-hat
-```
-
-acts on `D^b(X)` by translations and tensoring by degree-zero line bundles. Its tangent space at the identity is `V`.
-
-For the generic construction in Example 11.2.7, the connected stabilizer of `E'` is trivial:
-
-- the support contains a finite generic collection of translates of an ample theta-type divisor, so a connected translation subgroup cannot preserve the support;
-- after the translation component is zero, a positive-dimensional subgroup of `Pic^0(X)` fixing `E'` would restrict trivially on an ample divisor component, which is excluded by the Lefschetz/Picard restriction for an ample divisor on a fourfold.
-
-Thus the differential of the action gives an injective map
-
-```text
-V -> Ext^1(E',E').
-```
-
-Consequently the eight degree-one translation/twist classes used above are linearly independent. The unknown rank in degree two comes entirely from their quadratic Yoneda relations, not from a hidden first-order stabilizer.
-
-This statement is used only to sharpen the calculation; it does not imply any of the eight quadratic relations.
-
-## 8. Exact next calculations
+## 7. Exact next calculations
 
 The 28-column obstruction computation is reduced to the following eight tests.
 
@@ -321,13 +296,12 @@ Markman's arXiv:2502.03415, Proposition 8.3.9, proves a rank-six obstruction map
 
 Those hypotheses are not established for the fourfold pushout `E'`. That result is a template for the method, not evidence that the eight relations above vanish.
 
-## 9. Current disposition
+## 8. Current disposition
 
 ```text
 HC-R021-L007 = proved_in_solve_package_not_certified
 rank_contraction_beta_prime = 20
 possible_kernel_of_ob_E_prime = span(k_1,...,k_8)
-degree_one_translation_twist_action = injective_for_generic_source_datum
 rank_ob_E_prime = open_in_[20,28]
 P4_A1_positive_criterion = all_eight_Yoneda_relations_vanish
 P4_A1_falsification_criterion = any_one_Yoneda_relation_nonzero
@@ -337,7 +311,7 @@ restricted_target_proved = false
 full_hodge_conjecture_proved = false
 ```
 
-## 10. Sources
+## 9. Sources
 
 - Eyal Markman, *Secant sheaves on abelian n-folds with real multiplication and Weil classes on abelian 2n-folds with complex multiplication*, arXiv:2509.23079; Question 11.2.2, Example 11.2.7, Lemma 11.2.8.
 - Eyal Markman, *Cycles on abelian 2n-folds of Weil type from secant sheaves on abelian n-folds*, arXiv:2502.03415; Lemma 8.3.4, Remark 8.3.5, Proposition 8.3.9, and the degree-one/Yoneda obstruction calculation in Section 8.3.
