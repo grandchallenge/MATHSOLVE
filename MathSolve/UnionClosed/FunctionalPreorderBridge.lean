@@ -187,7 +187,7 @@ theorem chain_singleton_a_mem :
   · simp [Chain3.ground, chainSetup]
   · intro x hx y hy hle
     have hr := chain_leOn_rank_mono hle
-    cases x <;> cases y <;> simp [Chain3.rank] at hx ⊢ <;> omega
+    cases x <;> cases y <;> simp at hx ⊢ <;> norm_num [Chain3.rank] at hr
 
 /-- `{a,b}` is a preorder order ideal of the functional chain. -/
 theorem chainB_mem : chainB ∈ chainSetup.idealFamily := by
@@ -196,7 +196,7 @@ theorem chainB_mem : chainB ∈ chainSetup.idealFamily := by
   · simp [chainB, Chain3.ground, chainSetup]
   · intro x hx y hy hle
     have hr := chain_leOn_rank_mono hle
-    cases x <;> cases y <;> simp [chainB, Chain3.rank] at hx ⊢ <;> omega
+    cases x <;> cases y <;> simp [chainB] at hx ⊢ <;> norm_num [Chain3.rank] at hr
 
 /-- The full ground is a preorder order ideal. -/
 theorem chain_ground_mem : Chain3.ground ∈ chainSetup.idealFamily := by
@@ -306,7 +306,7 @@ def NDSOn (F : Family α) (U : Finset α) : Int :=
     (F.card : Int) * (U.card : Int)
 
 /-- Functional-preorder NDS in the local source-shaped semantics. -/
-def FunctionalPreorderNDS (S : FuncSetup α) : Int :=
+noncomputable def FunctionalPreorderNDS (S : FuncSetup α) : Int :=
   NDSOn S.idealFamily S.ground
 
 /-- NDS nonpositivity is exactly local average rarity; this closes the
@@ -314,6 +314,7 @@ normalization bridge and prevents an integer/Nat inequality drift. -/
 theorem ndsOn_nonpos_iff_averageRareOn (F : Family α) (U : Finset α) :
     NDSOn F U ≤ 0 ↔ IsAverageRareOn F U := by
   unfold NDSOn IsAverageRareOn
+  rw [Nat.mul_comm U.card F.card]
   omega
 
 /-- The exact local D004 target. This is a proposition, not an assumed theorem. -/
