@@ -18,10 +18,14 @@ The concrete standard variant is:
 * one transition application is one Programme cost unit;
 * every work tape is initially blank and every head starts at integer position zero.
 
-The input carrier remains exactly `List Bool`.  Extending the input tape by blank
+The input carrier remains exactly `List Bool`. Extending the input tape by blank
 cells does not alter encoded input length, which remains `input.length`.
 
-This file defines the target and generic polynomial-time decider interface.  It
+Runtime uses the same `Turing.EvalsToInTime` step counter used by the pinned
+`FinTM2` interface. This keeps the later simulation theorem about machine steps,
+not about a second ad-hoc evaluator.
+
+This file defines the target and generic polynomial-time decider interface. It
 does not by itself claim equivalence to mathlib `FinTM2`; that is the separate
 simulation obligation in `PNP-BRIDGE-MODEL-001`.
 -/
@@ -123,23 +127,18 @@ def ProgrammeMachine.step (M : ProgrammeMachine) (input : List Bool) :
             Function.update (cfg.work tape) (cfg.workHead tape) (action.write tape)
         }
 
-/-- A totalized step used only to state finite-step runtime witnesses. -/
-def ProgrammeMachine.stepTotal (M : ProgrammeMachine) (input : List Bool)
-    (cfg : ProgrammeConfig M) : ProgrammeConfig M :=
-  (M.step input cfg).getD cfg
-
-/-- Configuration reached after exactly `steps` totalized Programme transitions. -/
-def ProgrammeMachine.runFor (M : ProgrammeMachine) (input : List Bool) (steps : Nat) :
-    ProgrammeConfig M :=
-  (M.stepTotal input)^[steps] (M.init input)
-
 /--
-`RunsInTime M input result bound` means a terminal configuration with the exact
-Boolean result is reached in at most `bound` Programme transition applications.
+`RunsInTime M input result bound` means that the exact Programme transition
+relation reaches an accepting/rejecting terminal configuration with `result` in
+at most `bound` transition applications. The quantitative witness is mathlib's
+`Turing.EvalsToInTime`, matching the imported TM2 step-accounting interface.
 -/
 def ProgrammeMachine.RunsInTime (M : ProgrammeMachine) (input : List Bool)
     (result : Bool) (bound : Nat) : Prop :=
-  ∃ steps ≤ bound, M.output (M.runFor input steps) = some result
+  ∃ cfg : ProgrammeConfig M,
+    Turing.EvalsToInTime (M.step input) (M.init input) (some cfg) bound ∧
+    M.step input cfg = none ∧
+    M.output cfg = some result
 
 /-- A machine-specific runtime majorant and total-correctness witness for a decision function. -/
 structure ProgrammeDecider (decision : List Bool → Bool) where
