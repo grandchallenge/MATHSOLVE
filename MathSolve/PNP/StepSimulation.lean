@@ -5,9 +5,9 @@ import Mathlib.Tactic
 # Bounded deterministic step simulation
 
 This file proves the generic quantitative composition lemma used by the PNP
-machine-model bridge.  A concrete compiler supplies a state encoding and proves
+machine-model bridge. A concrete compiler supplies a state encoding and proves
 that every one source transition is simulated by at most a fixed number of
-target transitions.  The theorem below composes those local witnesses over a
+target transitions. The theorem below composes those local witnesses over a
 whole `EvalsToInTime` run.
 -/
 
@@ -43,17 +43,18 @@ theorem fixedStepSimulation_iterate
       rw [Function.iterate_succ_apply'] at h
       generalize hmid : ((flip bind sourceStep)^[steps]) (some source) = mid at h
       cases mid with
-      | none => simp [hmid] at h
+      | none =>
+          simp at h
       | some middle =>
           have hstep : sourceStep middle = some source' := by
-            simpa [hmid] using h
-          rcases ih source middle hmid with ⟨prefix⟩
-          rcases simulation hstep with ⟨suffix⟩
+            simpa using h
+          rcases ih source middle hmid with ⟨initialRun⟩
+          rcases simulation hstep with ⟨finalRun⟩
           refine ⟨?_⟩
           simpa [Nat.mul_succ, Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using
             StateTransition.EvalsToInTime.trans targetStep
               (stepFactor * steps) stepFactor (encode source) (encode middle)
-              (some (encode source')) prefix suffix
+              (some (encode source')) initialRun finalRun
 
 /--
 A source run bounded by `sourceBound` translates to a target run bounded by
