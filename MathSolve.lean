@@ -3,5 +3,6 @@ import MathSolve.FormalConjectures.NSCriticalIntegrability
 import MathSolve.PNP.CarrierBridge
 import MathSolve.PNP.PolyBoundBridge
 import MathSolve.PNP.SimulationOverhead
+import MathSolve.PNP.StepSimulation
 import MathSolve.PNP.ProgrammeMachine
 import MathSolve.PNP.ModelBridge
