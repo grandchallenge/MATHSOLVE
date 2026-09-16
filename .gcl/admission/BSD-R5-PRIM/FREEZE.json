@@ -11,8 +11,12 @@
     "work_packages/BSD_R5_PRIM_KATO_INDEX_REDUCTION/03_CLAIM_LEDGER.yaml": "d8494e1fb6140a6dd2ed73561fe2dd190da1ca43",
     "handoffs/BSD-001/R5_PRIM_FRONTIER.md": "a36e43cb52d8a6e1c4ead3f745fc08faf7d4b0a5",
     ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json": "dbac0ee874865edce0b7268973fa28bde073f701",
-    ".gcl/operations/BSD-R5-PRIM/OPERATION.json": "aa799aae7a64abe15ca0d912a89827d91969990a",
-    "tools/gcl_campaign_preflight_r5_prim.py": "149b0161d3459d6e0497911eb6b9fa1b44936adf"
+    ".gcl/operations/BSD-R5-PRIM/OPERATION.json": "321ffb8a4e489e43efdb1d08f35d471d216f213c",
+    "tools/gcl_campaign_preflight_r5_prim.py": "33d4086febc7cf3bf312cc028bebfd47b6c4c935",
+    ".github/workflows/bsd-r5-lift-equivariant-certificate.yml": "e5997371c5a58257d0d2a128d1a24ede5d52ca66",
+    ".github/workflows/bsd-wp60t-certificate.yml": "c699d39d1284af58dcf590b94862560c506c1b03",
+    ".github/workflows/bsd-r5-prim-reduction.yml": "fb68f797067467ddde37cf042cce70a7bf1301e4",
+    ".ghos-routing/workflows.json": "b204c1c692a85c0fe1d4682b89f825a7268dc413"
   },
   "invalidation": {
     "governed_artifact_change": "requires_new_freeze",
