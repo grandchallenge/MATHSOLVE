@@ -132,6 +132,7 @@ jobs:
           lake env lean MathSolve/FormalConjectures/Replay.lean
           lake env lean MathSolve/PNP/CarrierBridge.lean
           lake env lean MathSolve/PNP/PolyBoundBridge.lean
+          lake env lean MathSolve/PNP/SimulationOverhead.lean
           lake env lean MathSolve/PNP/ProgrammeMachine.lean
           python ci/validate_formal_conjectures_targets.py
           PYTHONPATH=ci python -m unittest ci/test_formal_conjectures_targets.py -v
