@@ -94,7 +94,7 @@ jobs:
         run: |
           cat > /tmp/AvgRareAxiomAudit.lean <<'EOF'
           import AvgRare.Secondary.MainStatement
-          #check AvgRare.main_nds_nonpos
-          #print axioms AvgRare.main_nds_nonpos
+          #check AvgRare.MainStatement.main_nds_nonpos
+          #print axioms AvgRare.MainStatement.main_nds_nonpos
           EOF
           lake env lean /tmp/AvgRareAxiomAudit.lean
