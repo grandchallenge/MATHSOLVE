@@ -29,12 +29,17 @@ class NSCIA2L5PacketIntermittencyD1Tests(unittest.TestCase):
             Fraction(2, 1),
         )
 
+    def test_intrinsic_energy_wavenumber_has_correct_ns_scaling(self) -> None:
+        # nu is invariant; U0 scales rho^(-1/2), hence
+        # lambda_E=(nu/U0)^2 scales as rho.
+        nu_exponent = Fraction(0, 1)
+        u0_exponent = Fraction(-1, 2)
+        lambda_e_exponent = 2 * (nu_exponent - u0_exponent)
+        self.assertEqual(lambda_e_exponent, Fraction(1, 1))
+
     def test_scale_normalization_matches_whole_space_ns_scaling(self) -> None:
-        # Under u_rho(x,t)=rho*u(rho*x,rho^2*t):
-        # U0 scales as rho^(-1/2), so U0^(-2D) contributes rho^D;
-        # the time-integrated H1 dissipation density contributes rho^(-1).
-        # Thus the normalized RHS scales as rho^(D-1), exactly like
-        # integral lambda^(D-1)||u_q||_inf^2 dt.
+        # PI_D*: lambda_E^D * integrated dissipation.
+        # lambda_E contributes rho^D; Dint contributes rho^-1.
         for d in (
             Fraction(0, 1),
             Fraction(1, 1),
@@ -47,22 +52,55 @@ class NSCIA2L5PacketIntermittencyD1Tests(unittest.TestCase):
             rhs_exponent = d + Fraction(-1, 1)
             self.assertEqual(lhs_exponent, rhs_exponent)
 
-    def test_unscaled_packet_rhs_fails_whole_space_scaling_at_d1(self) -> None:
-        # The discarded fixed-domain normalization would compare a D=1
-        # left side of scaling exponent 0 with raw integrated dissipation of
-        # exponent -1. This guards against reintroducing that defect.
+    def test_dimensional_normalization_matches_packet_dimensions(self) -> None:
+        # Track physical dimensions as (power of length, power of time).
+        # [integral S_D dt] = L^(3-D) T^-1.
+        # [nu] = L^2 T^-1, [U0] = L^(5/2) T^-1,
+        # so [(nu/U0)^2] = L^-1; [Dint] = L^3 T^-1.
+        for d in (
+            Fraction(0, 1),
+            Fraction(1, 1),
+            Fraction(5, 4),
+            Fraction(3, 2),
+            Fraction(2, 1),
+            Fraction(3, 1),
+        ):
+            lhs_dims = (Fraction(3, 1) - d, Fraction(-1, 1))
+            lambda_e_dims = (Fraction(-1, 1), Fraction(0, 1))
+            dint_dims = (Fraction(3, 1), Fraction(-1, 1))
+            rhs_dims = (
+                d * lambda_e_dims[0] + dint_dims[0],
+                d * lambda_e_dims[1] + dint_dims[1],
+            )
+            self.assertEqual(lhs_dims, rhs_dims)
+
+    def test_rejects_both_prior_normalization_defects(self) -> None:
         d = Fraction(1, 1)
-        lhs_exponent = d - Fraction(1, 1)
-        raw_dissipation_exponent = Fraction(-1, 1)
-        self.assertNotEqual(lhs_exponent, raw_dissipation_exponent)
+
+        # Raw Dint fails Navier--Stokes scaling at D=1.
+        lhs_scaling = d - Fraction(1, 1)
+        raw_dint_scaling = Fraction(-1, 1)
+        self.assertNotEqual(lhs_scaling, raw_dint_scaling)
+
+        # U0^-2D * Dint fixes NS scaling but has the wrong physical units.
+        # At D=1 it has dimensions T/L^2 instead of L^2/T.
+        lhs_dims = (Fraction(2, 1), Fraction(-1, 1))
+        u0_minus_2_dims = (Fraction(-5, 1), Fraction(2, 1))
+        dint_dims = (Fraction(3, 1), Fraction(-1, 1))
+        intermediate_rhs_dims = (
+            u0_minus_2_dims[0] + dint_dims[0],
+            u0_minus_2_dims[1] + dint_dims[1],
+        )
+        self.assertNotEqual(lhs_dims, intermediate_rhs_dims)
 
     def test_d1_leray_normalization_cancels_energy_scale(self) -> None:
-        # If D <= U0^2/(2 nu), then U0^-2 D <= 1/(2 nu).
+        # Dint <= U0^2/(2 nu). PI_1* multiplies Dint by nu^2/U0^2,
+        # leaving nu/2 exactly.
         u0_sq = Fraction(25, 9)
         nu = Fraction(7, 5)
         dissipation_upper = u0_sq / (2 * nu)
-        normalized_upper = dissipation_upper / u0_sq
-        self.assertEqual(normalized_upper, Fraction(1, 1) / (2 * nu))
+        normalized_upper = (nu**2 / u0_sq) * dissipation_upper
+        self.assertEqual(normalized_upper, nu / 2)
 
     def test_d1_temporal_cauchy_factorization(self) -> None:
         # Set f_i = Lambda_i * b_i and S_i = b_i^2, so the D=1 pointwise
@@ -108,8 +146,8 @@ class NSCIA2L5PacketIntermittencyD1Tests(unittest.TestCase):
             self.assertEqual(right / left, Fraction(8, 1))
 
     def test_static_fixture_is_compatible_with_selector_threshold_logic(self) -> None:
-        # Take (c0 * nu)^2 = 1/16.  The active shell has
-        # ||u_Q||_inf^2 = Lambda^3 > (c0 nu)^2 Lambda^2, while all higher
+        # Normalize nu=U0=1 and take c0^2=1/16. The active shell has
+        # ||u_Q||_inf^2 = Lambda^3 > c0^2 nu^2 Lambda^2, while all higher
         # shells are zero and therefore satisfy the strict-high threshold.
         threshold_sq = Fraction(1, 16)
         for n in range(1, 7):
