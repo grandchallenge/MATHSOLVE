@@ -1,18 +1,44 @@
 {
   "schema_version": "1.0.0",
-  "dag_id": "HC-WP00-DAG",
+  "dag_id": "HC-THEOREM-SPINE-DAG",
   "campaign_id": "HC-001",
   "nodes": [
     {"id": "HC-P00", "statement": "Fix smooth projective, rational cohomology, and cycle-class semantics.", "status": "complete"},
     {"id": "HC-P01", "statement": "Prove equivalence with rational generation by subvariety classes.", "status": "complete"},
     {"id": "HC-P02", "statement": "Reconstruct p=0,1,n-1,n without inverse-Lefschetz circularity.", "status": "complete"},
-    {"id": "HC-P03", "statement": "Select a restricted class beyond dimension three and construct cycles for every allowed Hodge class.", "status": "open"},
+    {"id": "HC-P03", "statement": "Restricted theorem lane active: HC-R021-A8-SW-Q3 is selected; construct cycles for every allowed codimension-four rational Hodge class on C_8,3.", "status": "open"},
+    {"id": "HC-R021-P0", "statement": "Fix C_8,3: the generic Hodge-ring locus in the selected Q(sqrt(-3)) split-Weil abelian-eightfold component.", "status": "complete"},
+    {"id": "HC-R021-P1", "statement": "Construct cycles for the divisor-generated summand of every allowed alpha.", "status": "complete"},
+    {"id": "HC-R021-P2", "statement": "Verify the Section-12 secant objects and Fourier-Mukai object satisfy the algebraic, rank, Hodge-persistence, and nonzero-Weil-projection conditions.", "status": "open"},
+    {"id": "HC-R021-L001", "statement": "If sigma_E is injective on Im(ev_E), then every first-order Hodge-preserving direction xi has vanishing obstruction ev_E(xi).", "status": "complete"},
+    {"id": "HC-R021-P4", "statement": "Close the all-orders deformation bridge by Question 11.4 in the required scope or by full semiregularity of the specific object.", "status": "open"},
+    {"id": "HC-R021-P5", "statement": "Transport a nonzero algebraic Weil class through the entire selected component without generic-to-special quantifier drift.", "status": "open"},
+    {"id": "HC-R021-P6", "statement": "Use algebraic K-endomorphism correspondences to generate every Weil class.", "status": "open"},
+    {"id": "HC-R021-P7", "statement": "Combine divisor and Weil preimages to construct z for arbitrary alpha in Hdg^8(A,Q).", "status": "open"},
     {"id": "HC-P04", "statement": "Prove universal rational cycle-class surjectivity.", "status": "open"}
   ],
-  "edges": [["HC-P00","HC-P01"],["HC-P00","HC-P02"],["HC-P01","HC-P03"],["HC-P02","HC-P03"],["HC-P03","HC-P04"]],
+  "edges": [
+    ["HC-P00","HC-P01"],
+    ["HC-P00","HC-P02"],
+    ["HC-P01","HC-P03"],
+    ["HC-P02","HC-P03"],
+    ["HC-P03","HC-R021-P0"],
+    ["HC-R021-P0","HC-R021-P1"],
+    ["HC-R021-P0","HC-R021-P2"],
+    ["HC-R021-P2","HC-R021-L001"],
+    ["HC-R021-L001","HC-R021-P4"],
+    ["HC-R021-P4","HC-R021-P5"],
+    ["HC-R021-P5","HC-R021-P6"],
+    ["HC-R021-P1","HC-R021-P7"],
+    ["HC-R021-P6","HC-R021-P7"],
+    ["HC-R021-P7","HC-P04"]
+  ],
   "forbidden_shortcuts": [
-    "Assume algebraicity of inverse Lefschetz correspondences without naming it.",
+    "Assume algebraicity of inverse Lefschetz correspondences or Kunneth projectors without an independent theorem.",
     "Replace rational projective Hodge by the false integral or unrestricted compact-Kahler analogue.",
-    "Treat Hodge-locus algebraicity as construction of a cycle on every fibre."
-  ]
+    "Treat Hodge-locus algebraicity or first-order Hodge persistence as construction of a relative algebraic cycle.",
+    "Promote a theorem on the generic Hodge-ring locus to every special fiber.",
+    "Treat numerical, Tate, absolute-Hodge, or motivated evidence as an algebraic-cycle construction."
+  ],
+  "claim_boundary": "HC-R021-A8-SW-Q3 is selected but unproved. HC-R021-L001 is a Solve-level first-order lemma only. HC-P04 and the full Hodge conjecture remain open."
 }
