@@ -1,0 +1,47 @@
+campaign: BSD-001
+operation: BSD-R5-PRIM
+issue: grandchallenge/MATHSOLVE#267
+protected_base: fdc95278fe7f4f8b60a8bc750ffe7e978f52c6a7
+provider_anchor: 5aef30aa64730ca777329013e1e33c03f34a6e3a
+constitutional_anchor: f042220f3bed7cb7b5069256e8f6305c850c0628
+candidate_disposition: BLOCKED
+
+entering_frontier: MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+established:
+  - P2_CYCLOTOMIC_DETERMINANT_KOLYVAGIN_LINE_IDENTIFIED
+  - P2_KATO_KOLYVAGIN_STRUCTURE_FORMULA_REPLAYED
+  - P2_KATO_KOLYVAGIN_RIGIDITY_REPLAYED
+  - R5_PRIM_EQUIVALENT_TO_P2_KATO_KOLYVAGIN_PRIMITIVITY_INDEX_EQUALITY
+
+blocked_on:
+  - MISSING_P2_KATO_KOLYVAGIN_PRIMITIVITY_INDEX_EQUALITY
+
+preserved_protected:
+  - R5_LIFT_ESTABLISHED
+  - P2_EQUIVARIANT_CYCLOTOMIC_KATO_DETERMINANT_MEMBERSHIP
+  - P2_EQUIVARIANT_SELECTED_REGULATOR_ISOMORPHISM_AVAILABLE
+  - P2_EQUIVARIANT_KATO_FIRST_COMPONENT_AND_COMPATIBILITY_AVAILABLE
+
+known_false:
+  - formal_higher_level_hypothesis_3_2_iii
+  - full_bss_hypothesis_4_7
+  - bss_hypothesis_4_7_iii
+  - infinite_bss_h3
+
+formal_higher_level_hypothesis_3_2_iii: false
+full_bss_hypothesis_4_7: false
+bss_hypothesis_4_7_iii: false
+infinite_bss_h3: false
+r5_prim: false
+d2d: false
+bsd_r2_a1: false
+literal_p2_kurihara_explicit_reciprocity: false
+literal_p2_refined_kurihara: false
+raw_source_normalization_termwise_identified_at_p2: false
+mathcert_certification: false
+
+prohibited_promotions:
+  - R5_PRIM_ESTABLISHED
+  - D2D_ESTABLISHED
+  - BSD_R2_A1_PROVED
+  - MATHCERT_CERTIFIED

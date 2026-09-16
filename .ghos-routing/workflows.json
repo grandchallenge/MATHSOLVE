@@ -23,29 +23,201 @@
     }
   ],
   "workflows": [
-    {"path":".github/workflows/bsd-r5-lift-equivariant-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/bsd-wp60i-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/bsd-wp60j-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/bsd-wp60k-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/bsd-wp60l-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/bsd-wp60m-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/bsd-wp60n-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/bsd-wp60q-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/bsd-wp60r-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/bsd-wp60s-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/bsd-wp60t-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/ci.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/gcl-conformance.yml","observed_features":["AUTONOMOUS_WAKE","EXTERNAL_REUSABLE_JOB","OPAQUE_EXECUTION","SCHEDULED"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/ghos-routing-enforcement-v2.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/otp-a-sphere-packing-handoff.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/otp-b1-binary-codes-handoff.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/otp-b2-spherical-codes-handoff.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/otp-d-non-sofic-handoff.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/otp-e-connes-rigidity-handoff.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/otp-g-quantum-parallel-repetition-handoff.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/otp-h-gapcvp-handoff.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/otp-i-ramsey-handoff.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
-    {"path":".github/workflows/vgse-wp00.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"}
+    {
+      "path": ".github/workflows/bsd-r5-lift-equivariant-certificate.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/bsd-r5-prim-reduction.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/bsd-wp60i-certificate.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/bsd-wp60j-certificate.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/bsd-wp60k-certificate.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/bsd-wp60l-certificate.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/bsd-wp60m-certificate.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/bsd-wp60n-certificate.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/bsd-wp60q-certificate.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/bsd-wp60r-certificate.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/bsd-wp60s-certificate.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/bsd-wp60t-certificate.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/gcl-conformance.yml",
+      "observed_features": [
+        "AUTONOMOUS_WAKE",
+        "EXTERNAL_REUSABLE_JOB",
+        "OPAQUE_EXECUTION",
+        "SCHEDULED"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/ghos-routing-enforcement-v2.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/otp-a-sphere-packing-handoff.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/otp-b1-binary-codes-handoff.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/otp-b2-spherical-codes-handoff.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/otp-d-non-sofic-handoff.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/otp-e-connes-rigidity-handoff.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/otp-g-quantum-parallel-repetition-handoff.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/otp-h-gapcvp-handoff.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/otp-i-ramsey-handoff.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/vgse-wp00.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    }
   ],
   "claim_boundaries": {
     "constitutional": false,

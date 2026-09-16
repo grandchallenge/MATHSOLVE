@@ -1,0 +1,145 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "BSD-R5-PRIM",
+  "campaign": "BSD-001",
+  "issue": "grandchallenge/MATHSOLVE#267",
+  "protected_base": "fdc95278fe7f4f8b60a8bc750ffe7e978f52c6a7",
+  "provider_anchor": "5aef30aa64730ca777329013e1e33c03f34a6e3a",
+  "constitutional_anchor": "f042220f3bed7cb7b5069256e8f6305c850c0628",
+  "staffing_directive": "GI-STEWARD-0003",
+  "programme_adoption_anchor": "af6e1772e2d82b0b198d11c08e1369789ffbba3a",
+  "completion_enforcement_anchor": "grandchallenge/gcl-standards@efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
+  "work_class": "substantive_non_reserved",
+  "objective": {
+    "retire_frontier": "MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2",
+    "description": "Replay the Castella-Sano Kolyvagin-structure and rigidity dependencies from already-protected literal-p=2 MATHSOLVE interfaces, determine whether R5-PRIM follows, and if it does not refine the frontier to the first independent normalized Kato-Kolyvagin primitivity-index equality."
+  },
+  "acceptable_dispositions": [
+    "CLOSED",
+    "BLOCKED",
+    "FALSIFIED"
+  ],
+  "candidate_disposition": "BLOCKED",
+  "scope": {
+    "repositories": [
+      "grandchallenge/MATHSOLVE"
+    ],
+    "may_author_candidate": true,
+    "may_open_pull_request": true,
+    "may_repair_candidate": true,
+    "may_run_or_replay_ci": true,
+    "may_merge_after_declared_gates": true,
+    "may_certify": false,
+    "may_promote_bsd_target": false,
+    "may_close_r5_prim": false,
+    "may_refine_r5_prim_to_exact_blocker": true
+  },
+  "completion_requires": [
+    "mathematical_artifact",
+    "claim_ledger",
+    "campaign_state",
+    "frontier_record",
+    "deterministic_preflight",
+    "content_freeze",
+    "exact_head_adversary_review",
+    "exact_head_referee_review",
+    "affected_repository_ci_green",
+    "gcl_conformance_green",
+    "protected_merge",
+    "protected_readback",
+    "completion_receipt"
+  ],
+  "completion_receipt": {
+    "surface": ".gcl/completions/BSD-R5-PRIM/COMPLETION_RECEIPT.json",
+    "validator": "python tools/gcl_completion_receipt_validate_v2.py BSD-R5-PRIM",
+    "phase": "post_merge_completion_replay",
+    "required_fields": [
+      "candidate_head",
+      "merge_sha",
+      "protected_readback_sha",
+      "staffing_authority",
+      "adversary_record",
+      "referee_record",
+      "required_checks",
+      "disposition",
+      "preserved_false"
+    ]
+  },
+  "governed_artifacts": [
+    "work_packages/BSD_R5_PRIM_KATO_INDEX_REDUCTION/00_README.md",
+    "work_packages/BSD_R5_PRIM_KATO_INDEX_REDUCTION/01_PRIMITIVITY_INDEX_REDUCTION_THEOREM.md",
+    "work_packages/BSD_R5_PRIM_KATO_INDEX_REDUCTION/02_SOURCE_AND_DEPENDENCY_NOTE.md",
+    "work_packages/BSD_R5_PRIM_KATO_INDEX_REDUCTION/03_CLAIM_LEDGER.yaml",
+    "handoffs/BSD-001/R5_PRIM_FRONTIER.md",
+    ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json",
+    ".gcl/operations/BSD-R5-PRIM/OPERATION.json",
+    "tools/gcl_campaign_preflight_r5_prim.py",
+    ".github/workflows/bsd-r5-lift-equivariant-certificate.yml",
+    ".github/workflows/bsd-wp60t-certificate.yml",
+    ".github/workflows/bsd-r5-prim-reduction.yml",
+    ".ghos-routing/workflows.json"
+  ],
+  "completion_replay_artifacts": [
+    ".gcl/completions/BSD-R5-PRIM/COMPLETION_RECEIPT.json",
+    "tools/gcl_completion_receipt_validate_v2.py"
+  ],
+  "admission": {
+    "freeze_manifest": ".gcl/admission/BSD-R5-PRIM/FREEZE.json",
+    "preflight_command": "python tools/gcl_campaign_preflight_r5_prim.py BSD-001 BSD-R5-PRIM",
+    "completion_receipt_command": "python tools/gcl_completion_receipt_validate_v2.py BSD-R5-PRIM",
+    "review_invalidation": "A change to any pre-merge governed artifact invalidates the content freeze, exact-head reviews, and affected candidate checks. A candidate-head change invalidates exact-head reviews/checks even when governed bytes are unchanged.",
+    "workflow": "BSD R5-PRIM normalized Kato index reduction"
+  },
+  "validation": {
+    "claim_ledger": "work_packages/BSD_R5_PRIM_KATO_INDEX_REDUCTION/03_CLAIM_LEDGER.yaml",
+    "theorem": "work_packages/BSD_R5_PRIM_KATO_INDEX_REDUCTION/01_PRIMITIVITY_INDEX_REDUCTION_THEOREM.md",
+    "frontier_record": "handoffs/BSD-001/R5_PRIM_FRONTIER.md",
+    "required_tokens": [
+      "P2_CYCLOTOMIC_DETERMINANT_KOLYVAGIN_LINE_IDENTIFIED",
+      "P2_KATO_KOLYVAGIN_STRUCTURE_FORMULA_REPLAYED",
+      "P2_KATO_KOLYVAGIN_RIGIDITY_REPLAYED",
+      "R5_PRIM_EQUIVALENT_TO_P2_KATO_KOLYVAGIN_PRIMITIVITY_INDEX_EQUALITY",
+      "MISSING_P2_KATO_KOLYVAGIN_PRIMITIVITY_INDEX_EQUALITY",
+      "BLOCKED"
+    ],
+    "forbidden_tokens": [
+      "r5_prim: true",
+      "d2d: true",
+      "bsd_r2_a1: true",
+      "mathcert_certification: true",
+      "literal_p2_kurihara_explicit_reciprocity: true",
+      "literal_p2_refined_kurihara: true",
+      "raw_source_normalization_termwise_identified_at_p2: true"
+    ],
+    "workflow": ".github/workflows/bsd-r5-prim-reduction.yml",
+    "routing_registry": ".ghos-routing/workflows.json"
+  },
+  "claim_firewall": {
+    "formal_higher_level_hypothesis_3_2_iii": false,
+    "full_bss_hypothesis_4_7": false,
+    "bss_hypothesis_4_7_iii": false,
+    "infinite_bss_h3": false,
+    "r5_prim": false,
+    "d2d": false,
+    "bsd_r2_a1": false,
+    "literal_p2_kurihara_explicit_reciprocity": false,
+    "literal_p2_refined_kurihara": false,
+    "mathcert_certification": false,
+    "raw_source_normalization_termwise_identified_at_p2": false
+  },
+  "successor_policy": {
+    "next_frontier_if_blocked": "MISSING_P2_KATO_KOLYVAGIN_PRIMITIVITY_INDEX_EQUALITY",
+    "do_not_open_broad_source_screen": true,
+    "provider_reentry_only_on_new_external_premise": true
+  },
+  "stop_only_on": [
+    "governance_boundary",
+    "authority_boundary",
+    "authentication_boundary",
+    "safety_boundary",
+    "materially_changed_state",
+    "substantive_evidentiary_boundary",
+    "target_or_normalization_drift"
+  ]
+}
