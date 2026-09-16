@@ -1,2 +1,5 @@
 import MathSolve.FormalConjectures.RiemannHypothesis
 import MathSolve.FormalConjectures.NSCriticalIntegrability
+import MathSolve.PNP.CarrierBridge
+import MathSolve.PNP.PolyBoundBridge
+import MathSolve.PNP.ProgrammeMachine
