@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.1.0",
+  "campaign_id": "HC-001",
+  "work_package_id": "HC-WP02",
+  "audit_date": "2026-09-16",
+  "status": "current_for_HC-R021_selection",
+  "purpose": "Reconstruct the cycle-producing interfaces nearest the post-WP00 frontier. This is a target-selection ledger, not a comprehensive bibliography of every known Hodge case.",
+  "claim_boundary": "A listed theorem is prior art, not a GCL result. An open entry is not evidence of novelty. Selected-class algebraicity is distinguished from full cycle-class surjectivity.",
+  "source_refresh": {
+    "forge_baseline_date": "2026-07-24",
+    "material_change": "The Forge baseline predates current 2025-2026 secant-sheaf results. Abelian fourfolds and split-Weil sixfold Weil classes are now theorem terrain, while Markman's CM-field construction supplies an explicit genus-four coherent-sheaf lane on an abelian eightfold with one named missing semiregularity bridge.",
+    "primary_current_sources": [
+      {
+        "source_id": "MARKMAN-CM-SECANT-2025",
+        "citation": "Eyal Markman, Secant sheaves on abelian n-folds with real multiplication and Weil classes on abelian 2n-folds with complex multiplication, arXiv:2509.23079v1.",
+        "url": "https://arxiv.org/abs/2509.23079",
+        "locators": ["Introduction 1.1", "Proposition 8.0.1", "Proposition 10.2.1", "Example 11.2.7", "Lemma 11.2.8", "Question 11.2.2"]
+      },
+      {
+        "source_id": "MARKMAN-SPLIT-2026",
+        "citation": "Eyal Markman, Secant sheaves and Weil classes on abelian varieties, arXiv:2509.23403v2.",
+        "url": "https://arxiv.org/abs/2509.23403",
+        "locators": ["Theorem 1.2", "Corollary 1.3", "Section 11.5", "Question 11.4", "Section 12"]
+      },
+      {
+        "source_id": "MARKMAN-SIXFOLD-2025",
+        "citation": "Eyal Markman, Cycles on abelian 2n-folds of Weil type from secant sheaves on abelian n-folds, arXiv:2502.03415v2.",
+        "url": "https://arxiv.org/abs/2502.03415",
+        "locators": ["main theorem on split-Weil abelian sixfolds", "fourfold degeneration consequence"]
+      },
+      {
+        "source_id": "MOSTAED-MCMULLEN-2026",
+        "citation": "Amir Mostaed, McMullen's Curve, the Weil Locus, and the Hodge Conjecture for Abelian Sixfolds, arXiv:2603.20268.",
+        "url": "https://arxiv.org/abs/2603.20268",
+        "locators": ["Abstract", "Section 4.3"]
+      }
+    ]
+  },
+  "families": [
+    {
+      "entry_id": "HC-KC-000",
+      "variety_class": "smooth projective complex varieties of dimension at most three",
+      "dimension": "<=3",
+      "codimension": "all",
+      "coefficient_ring": "Q",
+      "classification": "already-settled theorem terrain",
+      "construction_mechanism": "p=0 and p=n use component/point generators; p=1 uses Lefschetz (1,1); p=n-1 uses hard Lefschetz on rational Hodge structures and algebraic hyperplane multiplication.",
+      "arbitrary_input_scope": "all rational Hodge classes",
+      "target_use": "protected completed boundary"
+    },
+    {
+      "entry_id": "HC-KC-001",
+      "variety_class": "smooth cubic fourfolds",
+      "dimension": 4,
+      "codimension": 2,
+      "coefficient_ring": "Q",
+      "classification": "already-settled theorem terrain",
+      "construction_mechanism": "Zucker's theorem is a genuine dimension-four codimension-two known case; the current Forge package records its primary theorem source but does not use it as a new target.",
+      "arbitrary_input_scope": "all rational Hodge classes on smooth cubic fourfolds",
+      "source": "Steven Zucker, The Hodge conjecture for cubic fourfolds, Compositio Mathematica 34 (1977), 199-209.",
+      "target_use": "reject as prior art"
+    },
+    {
+      "entry_id": "HC-KC-002",
+      "variety_class": "abelian fourfolds of Weil type, arbitrary imaginary quadratic field and discriminant",
+      "dimension": 4,
+      "codimension": 2,
+      "coefficient_ring": "Q",
+      "classification": "already-settled theorem terrain",
+      "construction_mechanism": "Markman's split-sixfold secant-sheaf theorem constructs the relevant Weil classes; a degeneration argument supplies the fourfold consequence. Known Hodge-ring structure then reduces the remaining classes to divisor-generated classes and Weil classes.",
+      "arbitrary_input_scope": "all rational Hodge classes in the stated abelian-fourfold terrain",
+      "sources": ["MARKMAN-SIXFOLD-2025", "MARKMAN-SPLIT-2026"],
+      "target_use": "reject as prior art"
+    },
+    {
+      "entry_id": "HC-KC-003",
+      "variety_class": "complex abelian varieties of dimension at most five",
+      "dimension": "<=5",
+      "codimension": "all",
+      "coefficient_ring": "Q",
+      "classification": "already-settled theorem terrain",
+      "construction_mechanism": "Markman's current account records that the fourfold Weil-class result, together with known Hodge-ring structure, yields the Hodge conjecture for abelian varieties of dimension at most five.",
+      "arbitrary_input_scope": "all rational Hodge classes",
+      "source": "MARKMAN-SPLIT-2026 Corollary 1.3 and surrounding discussion",
+      "target_use": "reject as prior art"
+    },
+    {
+      "entry_id": "HC-KC-004",
+      "variety_class": "polarized abelian sixfolds of split Weil type for an imaginary quadratic field",
+      "dimension": 6,
+      "codimension": 3,
+      "coefficient_ring": "Q",
+      "classification": "generation of the Weil subspace is known",
+      "construction_mechanism": "Secant coherent sheaves on a principally polarized abelian threefold are carried by Fourier-Mukai/Orlov transport to a semiregular object with normalized Chern class having a nonzero Weil component. Semiregularity transports algebraicity through the split-Weil component, and the algebraic K-action generates the full one-dimensional-over-K Weil space.",
+      "arbitrary_input_scope": "all Weil classes on the split-Weil sixfold family",
+      "sources": ["MARKMAN-SIXFOLD-2025", "MARKMAN-SPLIT-2026"],
+      "target_use": "reject as prior art; retain the mechanism as template"
+    },
+    {
+      "entry_id": "HC-KC-005",
+      "variety_class": "abelian sixfolds of Weil type outside the split-discriminant locus",
+      "dimension": 6,
+      "codimension": 3,
+      "coefficient_ring": "Q",
+      "classification": "genuinely open boundary for exceptional Weil classes",
+      "construction_mechanism": "Current sources do not supply a general cycle construction. Mostaed isolates missing K-secant/discriminant control rather than an existing deformation-ready algebraic object.",
+      "arbitrary_input_scope": "open even for the distinguished Weil subspace in the unresolved terrain",
+      "source": "MOSTAED-MCMULLEN-2026",
+      "target_use": "defer: smaller dimension but no executable cycle-construction path was found"
+    },
+    {
+      "entry_id": "HC-KC-006",
+      "variety_class": "generic Weil-type deformations of Markman's genus-four real-multiplication construction with [K:Q]=4",
+      "dimension": 8,
+      "codimension": 2,
+      "coefficient_ring": "Q",
+      "classification": "genuinely open boundary with an explicit algebraic construction mechanism",
+      "construction_mechanism": "Take X a genus-four Jacobian with real multiplication by a real quadratic field F and K=F(sqrt(-q)) in the biquadratic case used by Markman. Example 11.2.7 constructs coherent B-secant sheaves. Lemma 11.2.8 proves that the Orlov/Fourier-Mukai object E has nonzero rank, that its normalized class kappa(E) remains Hodge under Weil-type deformation, and that the degree-four component has a nonzero projection to HW. Since HW is one-dimensional over K and K acts by algebraic correspondences, one algebraic nonzero Weil class would generate every Weil class. The source explicitly leaves semiregularity of E unproved; that is the missing algebraicity-transport bridge.",
+      "arbitrary_input_scope": "on the Hodge-generic locus, degree-four rational Hodge classes are divisor products plus HW, so arbitrary-input surjectivity reduces to algebraicity of the transported nonzero Weil component",
+      "source": "MARKMAN-CM-SECANT-2025 Introduction 1.1, Proposition 8.0.1, Proposition 10.2.1, Example 11.2.7, Lemma 11.2.8",
+      "target_use": "selected HC-R021 lane"
+    },
+    {
+      "entry_id": "HC-KC-007",
+      "variety_class": "quadratic-CM split-Weil abelian eightfolds approached through the speculative higher-dimensional secant complex",
+      "dimension": 8,
+      "codimension": 4,
+      "coefficient_ring": "Q",
+      "classification": "open alternate construction lane",
+      "construction_mechanism": "Markman's Section 12 describes a higher-dimensional secant complex and points to the weak-semiregularity question, but the CM-degree-four genus-four lane already supplies coherent secant sheaves plus the rank and nonzero-Weil-projection checks.",
+      "source": "MARKMAN-SPLIT-2026 Section 12 and Question 11.4",
+      "target_use": "defer in favor of HC-KC-006 because more construction obligations are already discharged there"
+    }
+  ],
+  "selection": {
+    "candidate_ids": ["HC-KC-005", "HC-KC-006", "HC-KC-007"],
+    "selected_target_id": "HC-R021-A8-CM4-C2",
+    "reason": "HC-KC-006 is source-defined, nontrivial, outside current theorem terrain, and already supplies coherent secant sheaves, nonzero rank, Hodge persistence, and a nonzero Weil projection. Its remaining obstruction is sharply localized to semiregularity/algebraicity transport. The smaller non-split sixfold boundary currently lacks such an executable construction path.",
+    "non_implication": "Selection does not prove the target, establish novelty or priority, cover special fibers with extra Hodge classes, or imply the universal Hodge conjecture."
+  }
+}
