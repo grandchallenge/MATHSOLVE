@@ -59,13 +59,13 @@ finite-frequency remainder.
 Define
 
 ```math
-u_{>Q}=\sum_{p>Q}u_p,
+u_{>Q}:=\sum_{p>Q}u_p,
 \qquad
-S_{>Q,N}^2=\sum_{Q<p\le N}|u_p|^2.
+S_{>Q,N}^2:=\sum_{Q<p\le N}|u_p|^2.
 ```
 
-Here the first displayed symbol is the velocity tail `u_{>Q}`; no viscosity
-factor is introduced.
+In this notation the first symbol is `u_{>Q}` (the velocity tail), not the
+viscosity `\nu`.
 
 ### Proposition 2.1 — quartic tail
 
@@ -138,8 +138,7 @@ c_0^{8/3}\nu^{8/3}Z_{>Q}^{2/3},
 where
 
 ```math
-Z_{>Q}(t)
-:=
+Z_{>Q}(t):=
 \sum_{p>Q(t)}\lambda_p^2A_p(t).
 ```
 
@@ -196,8 +195,7 @@ U_0^2W_{\le Q}
 where
 
 ```math
-W_{\le Q}(t)
-:=
+W_{\le Q}(t):=
 \sum_{0\le r\le Q(t)}\lambda_r^2A_r(t).
 ```
 
@@ -348,20 +346,20 @@ transport is
 u_{\le q-2}\cdot\nabla V_q.
 ```
 
-Here again the displayed leading symbol denotes the velocity `u_{<=q-2}`.
-At `L2` level incompressibility removes its pure transport contribution. At
-`H1` level,
+In the preceding display the leading symbol is `u_{<=q-2}` (velocity). At
+`L2` level incompressibility removes its pure transport contribution. At `H1`
+level,
 
 ```math
 \nabla(u_{\le q-2}\cdot\nabla V_q)
 =
 (\nabla u_{\le q-2})\nabla V_q
 +
-u_{\le q-2}\cdot\nabla\nabla V_q,
+u_{\le q-2}\cdot\nabla\nabla V_q.
 ```
 
-where the final leading symbol also denotes `u_{<=q-2}`. The second term is
-skew after integration, but the first leaves the genuine deformation term
+In the final term the leading symbol again means `u_{<=q-2}`. The transport
+term is skew after integration, but the first term leaves
 
 ```math
 \left|
