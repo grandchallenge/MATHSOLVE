@@ -49,15 +49,15 @@ The inhomogeneous base block remains a fixed-frequency remainder.
 
 ## 2. L5-4A — zero-gap strict-tail theorem
 
-Define
+To avoid confusing the velocity symbol with viscosity, denote the velocity tail
+by
 
 ```math
-u_{>Q}:=\sum_{p>Q}u_p,
+T_Q:=\sum_{p>Q}u_p,
 \qquad
-S_{>Q,N}^2:=\sum_{Q<p\le N}|u_p|^2.
+S_{Q,N}^2:=\sum_{Q<p\le N}|u_p|^2.
 ```
 
-The first symbol in this display is the velocity tail and is denoted `u_{>Q}`.
 For every finite terminal index `N`,
 
 ```math
@@ -74,8 +74,8 @@ and
 c_0^4\nu^4\sum_{Q<s\le N}\lambda_s^2A_s.
 ```
 
-The proof is exactly the L5-3 pre-triangle proof with lower index `Q+1`.
-For `Q<p<=r`,
+The proof is the L5-3 pre-triangle proof with lower index `Q+1`. For
+`Q<p<=r`,
 
 ```math
 \int|u_p|^2|u_r|^2dx
@@ -101,8 +101,8 @@ c_0^4\nu^4
 \frac{\lambda_p^2\lambda_r^2}{\lambda_s^2}A_s,
 ```
 
-while deleting indices at or below `Q` can only reduce the nonnegative ordered
-triple sum, so
+and deleting indices at or below `Q` can only reduce the nonnegative ordered
+triple sum:
 
 ```math
 \sum_{Q<r\le s}\sum_{Q<p\le r}
@@ -113,14 +113,14 @@ triple sum, so
 Thus, uniformly in terminal frequency,
 
 ```math
-\int_0^T\|u_{>Q}(t)\|_4^4dt
+\int_0^T\|T_Q(t)\|_4^4dt
 \lesssim c_0^2\nu U_0^2,
 ```
 
 and
 
 ```math
-\|u_{>Q}\|_6^4
+\|T_Q\|_6^4
 \lesssim
 c_0^{8/3}\nu^{8/3}Z_{>Q}^{2/3},
 \qquad
@@ -131,10 +131,10 @@ No step requires `p>Q+K`.
 
 ## 3. Two-block master inequality
 
-Use the exact split
+Since `T_Q=\sum_{p>Q}u_p`, the exact split is
 
 ```math
-u=u_{\le Q}+u_{>Q}.
+u=u_{\le Q}+T_Q.
 ```
 
 The protected low estimate is
@@ -143,8 +143,7 @@ The protected low estimate is
 \|u_{\le Q}\|_6^4
 \lesssim
 U_0^2W_{\le Q}
-+
-\text{fixed-base remainder},
++\text{fixed-base remainder},
 ```
 
 with
@@ -183,7 +182,7 @@ or a new identity coupling or avoiding these endpoints.
 
 The zero-gap split preserves the threshold firewall exactly: `p=Q` stays in
 `u_{<=Q}` and receives no strict-high upper bound, while every `p>Q` lies in
-`u_{>Q}` and does receive that bound. Therefore
+`T_Q` and receives the defining upper bound. Therefore
 
 ```text
 B2_STANDALONE_BLOCKER_REMOVED_FROM_POINTWISE_L5_DECOMPOSITION.
@@ -281,9 +280,9 @@ transport is
 u_{\le q-2}\cdot\nabla V_q.
 ```
 
-The leading symbol in the preceding display is the velocity `u_{<=q-2}`. At
+In that display the intended leading symbol is the velocity `u_{<=q-2}`. At
 `L2` level incompressibility removes the pure transport contribution. At `H1`
-level,
+level the exact product rule is
 
 ```math
 \nabla(u_{\le q-2}\cdot\nabla V_q)
@@ -357,7 +356,7 @@ possible PDE-specific B3 mechanism.
 | Blocker | L5-4 state | Exact obligation |
 |---|---|---|
 | B1 low core | sharpened | control `int W_{<=Q}` by an equation-specific correlation/depletion theorem; the fixture excludes further static scalar rearrangement |
-| B2 near threshold | collapsed in pointwise L5 | no standalone cluster in `u=u_{<=Q}+u_{>Q}`; dynamic finite-neighbour terms may still occur |
+| B2 near threshold | collapsed in pointwise L5 | no standalone cluster in `u=u_{<=Q}+T_Q`; dynamic finite-neighbour terms may still occur |
 | B3 strict tail | sharpened and dynamically audited | control `int Z_{>Q}^{2/3}` or avoid it; the first parabolic route imports low deformation and B4/L3 interfaces |
 | B4 selector motion | unchanged | arises when a dynamic proof differentiates or localizes the moving cutoff |
 
