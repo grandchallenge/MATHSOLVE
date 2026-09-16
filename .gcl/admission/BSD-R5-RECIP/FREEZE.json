@@ -5,7 +5,7 @@
   "operation": "BSD-R5-RECIP",
   "protected_base": "7d72d4f8aec2019a8eefb4db4fe151e4f14b1211",
   "provider_anchor": "cd814844128167d0e4cdb48f69f9d01c6c0be883",
-  "assembled_from_head": "8cacba5f1504b73a30eb8a2f3fe41975e124cdcf",
+  "assembled_from_head": "ae0b06b23aca5a0ef80ebadc2070b7cbf6525927",
   "artifacts": {
     "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/00_README.md": "a309123e9d181fe57fa4325ba0354311ed595a59",
     "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/01_LITERAL_P2_LOCAL_LATTICE_THEOREM.md": "15386acde1bf6915941c49b471abccb32078ddb9",
@@ -17,7 +17,7 @@
     ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json": "9c43d7caac1e6e9ab3efd452544eeede46e50af2",
     ".gcl/operations/BSD-R5-RECIP/OPERATION.json": "e0642cd44a21e1e76ff60df892e0f7a565feba09",
     "tools/gcl_campaign_preflight_r5_recip.py": "867ae17c26423d98595842553e0428f38be6ca85",
-    ".github/workflows/bsd-r5-recip-certificate.yml": "daf4a75afd2abd3b82a6949778c813020e133cf1",
+    ".github/workflows/bsd-r5-recip-certificate.yml": "425c5efe4e3cc4480337935b48423bf3250eb3e1",
     ".ghos-routing/workflows.json": "f0dc014861438fa63216e8b6a35a70268afb77d2"
   },
   "freeze_policy": "Unrelated protected-main movement does not invalidate this freeze. Any change to a governed artifact invalidates the freeze, exact-head mathematical reviews, and affected candidate checks; a fresh freeze and exact-head replay are then required."
