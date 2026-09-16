@@ -11,32 +11,37 @@
     "certification_repository": "grandchallenge/MATHCERT"
   },
   "protected_inputs": {
-    "math_base": "grandchallenge/MATHSOLVE@5fa2caa8f3d4aa54849f62135a5214737fa6db2a",
-    "provider": "grandchallenge/MATHFORGE@095b8eec0e7fe29d7e831661dfe199ec43fa0458"
+    "math_base": "grandchallenge/MATHSOLVE@270e2c2f9dde7bd817a251c9e3fb250fff36a81b",
+    "provider": "grandchallenge/MATHFORGE@de2c83c2c440ac357b183b9e1018e9f69c58e1d9"
   },
   "selected_target": {
     "id": "BSD-R2-A1",
     "status": "SELECTED_RESEARCH_TARGET_UNPROVED",
     "governing_identity": "delta_2(E)=v_2(Fitt^1_Z2(X_E))"
   },
-  "current_operation": "BSD-WP60T",
+  "current_operation": "BSD-R5-LIFT-EQUIV",
   "current_frontier": {
-    "id": "MISSING_LITERAL_P2_BSS_THEOREM_6_12_COROLLARY_6_15_APPLICATION_REPLAY_WITHOUT_INFINITE_H3",
+    "id": "MISSING_P2_EQUIVARIANT_CYCLOTOMIC_DETERMINANT_STARK_KOLYVAGIN_REPLAY",
+    "parent": "MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2",
     "class": "theorem",
-    "status": "operation_entry_frontier_resolved_by_exact_completion_receipt_when_protected"
+    "status": "candidate_resolution_requires_exact_completion_receipt"
   },
   "candidate_disposition": {
     "type": "CLOSED",
     "established": [
-      "BSS_LITERAL_P2_SELECTED_HYPOTHESIS_6_1_AVAILABLE",
-      "BSS_LITERAL_P2_SELECTED_HYPOTHESIS_6_7_AVAILABLE",
-      "BSS_LITERAL_P2_SELECTED_HYPOTHESIS_6_11_AVAILABLE",
-      "BSS_LITERAL_P2_SELECTED_DERIVATIVE_PRIME_SET_COMPATIBLE_WITH_WP60R",
-      "BSS_LITERAL_P2_SELECTED_THEOREM_6_12_REPLAYED",
-      "BSS_LITERAL_P2_SELECTED_COROLLARY_6_13_DERIVATIVE_AVAILABLE",
-      "BSS_LITERAL_P2_SELECTED_COROLLARY_6_15_REPLAYED"
+      "P2_EQUIVARIANT_SELECTED_HYP32III_DEFECT_SELMER_EXTRANEOUS",
+      "P2_EQUIVARIANT_SELECTED_LARGE_PRODUCTS_AND_CORE_GRAPH_AVAILABLE",
+      "P2_EQUIVARIANT_DETERMINANT_TO_STARK_ISOMORPHISM_AVAILABLE",
+      "P2_EQUIVARIANT_SELECTED_REGULATOR_ISOMORPHISM_AVAILABLE",
+      "P2_EQUIVARIANT_KATO_FIRST_COMPONENT_AND_COMPATIBILITY_AVAILABLE",
+      "P2_EQUIVARIANT_CYCLOTOMIC_KATO_DETERMINANT_MEMBERSHIP",
+      "R5_LIFT_ESTABLISHED"
     ],
-    "next_frontier_if_protected": "MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2"
+    "retired": [
+      "MISSING_P2_EQUIVARIANT_CYCLOTOMIC_DETERMINANT_STARK_KOLYVAGIN_REPLAY",
+      "MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2"
+    ],
+    "next_frontier_if_protected": "MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2"
   },
   "known_false": [
     "formal_higher_level_hypothesis_3_2_iii",
@@ -45,24 +50,24 @@
     "infinite_bss_h3"
   ],
   "prohibited_promotions": [
-    "R5_LIFT_ESTABLISHED",
     "R5_PRIM_ESTABLISHED",
     "D2D_ESTABLISHED",
     "BSD_R2_A1_PROVED",
     "MATHCERT_CERTIFIED"
   ],
   "cold_start": {
-    "operation_contract": ".gcl/operations/BSD-WP60T/OPERATION.json",
+    "operation_contract": ".gcl/operations/BSD-R5-LIFT-EQUIV/OPERATION.json",
     "canonical_handoff": "handoffs/BSD-001/README.md",
-    "frontier_record": "handoffs/BSD-001/WP60T_FRONTIER.md",
-    "claim_ledger": "work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/03_CLAIM_LEDGER.yaml",
-    "preflight": "python tools/gcl_campaign_preflight_v2.py BSD-001 BSD-WP60T",
-    "completion_receipt_surface": ".gcl/completions/BSD-WP60T/COMPLETION_RECEIPT.json",
-    "completion_receipt_validator": "python tools/gcl_completion_receipt_validate_v2.py BSD-WP60T"
+    "frontier_record": "handoffs/BSD-001/R5_LIFT_EQUIVARIANT_FRONTIER.md",
+    "claim_ledger": "work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/03_CLAIM_LEDGER.yaml",
+    "preflight": "python tools/gcl_campaign_preflight_r5_lift_equiv.py BSD-001 BSD-R5-LIFT-EQUIV",
+    "certificate": "python work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/04_EQUIVARIANT_REPLAY_CERTIFICATE.py",
+    "completion_receipt_surface": ".gcl/completions/BSD-R5-LIFT-EQUIV/COMPLETION_RECEIPT.json",
+    "completion_receipt_validator": "python tools/gcl_completion_receipt_validate_v2.py BSD-R5-LIFT-EQUIV"
   },
   "state_resolution": {
-    "entry_snapshot_rule": "current_frontier is the protected frontier entering current_operation",
-    "completion_overlay_rule": "If the machine completion receipt for this exact operation passes its validator and its candidate head, protected merge, protected readback, logical review passes, and check identities are coherent, the receipt disposition and next_frontier supersede the entry frontier until the next material operation emits successor CAMPAIGN_STATE.",
+    "entry_snapshot_rule": "current_frontier is the exact theorem boundary entering current_operation",
+    "completion_overlay_rule": "If the machine completion receipt for this exact operation passes its validator and its candidate head, protected merge/readback, logical review passes, and check identities are coherent, the receipt disposition and next_frontier supersede the entry frontier until a successor operation emits a new CAMPAIGN_STATE.",
     "stale_receipt_rule": "A receipt for a different operation, candidate head, merge identity, protected readback, review subject, staffing authority, or governed artifact set does not alter this state."
   },
   "execution_standard": {
@@ -70,6 +75,7 @@
     "repository": "grandchallenge/gcl-standards",
     "enforcement_anchor": "efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
     "programme_adoption_anchor": "grandchallenge/MATH-PROGRAMME@af6e1772e2d82b0b198d11c08e1369789ffbba3a",
+    "staffing_directive": "GI-STEWARD-0003",
     "rule": "Repository records, exact protected identities, role-scoped logical review passes, and exact-head evidence govern. Chat transcripts are context only."
   }
 }
