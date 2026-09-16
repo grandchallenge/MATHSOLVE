@@ -7,76 +7,75 @@ Protected repository state is operational authority. Chat transcripts, mutable i
 After re-fetching live protected heads, begin with:
 
 1. `.gcl/campaigns/BSD-001/CAMPAIGN_STATE.json`;
-2. `.gcl/operations/BSD-R5-LIFT-EQUIV/OPERATION.json`;
-3. `handoffs/BSD-001/R5_LIFT_EQUIVARIANT_FRONTIER.md`;
-4. `work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/01_EQUIVARIANT_BASICNESS_THEOREM.md`;
-5. `work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/03_CLAIM_LEDGER.yaml`;
-6. the exact protected provider and predecessor artifacts named there.
+2. `.gcl/operations/BSD-R5-PRIM/OPERATION.json`;
+3. `handoffs/BSD-001/R5_PRIM_FRONTIER.md`;
+4. `work_packages/BSD_R5_PRIM_DETERMINANTAL_PRIMITIVITY/01_RESIDUAL_PRIMITIVITY_REDUCTION.md`;
+5. `work_packages/BSD_R5_PRIM_DETERMINANTAL_PRIMITIVITY/03_CLAIM_LEDGER.yaml`;
+6. `.gcl/completions/BSD-R5-LIFT-EQUIV/COMPLETION_RECEIPT.json`;
+7. the exact protected provider and predecessor artifacts named there.
 
-Before exact-head review, run
-
-`python tools/gcl_campaign_preflight_r5_lift_equiv.py BSD-001 BSD-R5-LIFT-EQUIV`
-
-and
-
-`python work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/04_EQUIVARIANT_REPLAY_CERTIFICATE.py`.
+Before exact-head review, run the operation preflight and residual algebra certificate named by the current operation contract.
 
 ## Authority and claim state
 
 - Campaign: `BSD-001 — Birch-Swinnerton-Dyer selected rank-one 2-primary campaign`.
 - Programme owner: `grandchallenge/MATHSOLVE#164`.
 - Parent WP60 tracker: `grandchallenge/MATHSOLVE#215`.
-- Current substantive operation: `grandchallenge/MATHSOLVE#262` (`BSD-R5-LIFT-EQUIV`).
-- Exact protected mathematical base for this operation: `grandchallenge/MATHSOLVE@270e2c2f9dde7bd817a251c9e3fb250fff36a81b`.
-- Exact protected source authority: `grandchallenge/MATHFORGE@de2c83c2c440ac357b183b9e1018e9f69c58e1d9`.
+- Current substantive operation: `grandchallenge/MATHSOLVE#267` (`BSD-R5-PRIM`).
+- Exact protected mathematical base: `grandchallenge/MATHSOLVE@50308cf34782f14fdb0421beea915311cef20bf3`.
+- Exact protected source authority: `grandchallenge/MATHFORGE@5aef30aa64730ca777329013e1e33c03f34a6e3a`.
 - Constitutional authority: `grandchallenge/INTELLECT@f042220f3bed7cb7b5069256e8f6305c850c0628`.
 - Active staffing directive: `GI-STEWARD-0003`.
 - Selected target remains `BSD-R2-A1 = SELECTED_RESEARCH_TARGET_UNPROVED`.
 - MATHCERT remains the sole mathematical certification authority.
 
-Protected-main movement after `270e2c2...` that is unrelated to BSD-001 does not change these immutable operation dependency anchors.
+## Protected R5-LIFT predecessor
 
-## Protected predecessor chain
+`BSD-R5-LIFT-EQUIV` is protected complete. Its validated receipt is
 
-WP60M proves that formal higher-level BSS Hypothesis 3.2(iii) is false but its unique finite defect is excluded from actual selected modified primal and dual Selmer groups by the fixed odd multiplicative local condition.
+`.gcl/completions/BSD-R5-LIFT-EQUIV/COMPLETION_RECEIPT.json`.
 
-WP60R supplies selected literal-2 localization, dual killing, connected core graphs, finite core-vertex freeness and the finite regulator/Fitting replay over `Z/2^m`.
+It establishes `R5_LIFT_ESTABLISHED` and cyclotomic Kato determinant membership, but not determinant-generator status.
 
-WP60S supplies the protected inverse-limit Stark/Kolyvagin replay in the coefficient exponent.
+## Current R5-PRIM reduction
 
-WP60T supplies the literal-2 Euler-system derivative, first-component identity and finite Fitting application while leaving the cyclotomic height-one `(2)` boundary open.
+Protected WP60A-A1 identifies R5-PRIM with generator equality in `Lambda_(2)`, where `Lambda=Z_2[[T]]`.
 
-WP32 retains the real-place literal-2 comparison and proves its alternating determinant/Fitting ideal is a unit, without a canonical generator trivialization.
+The current #267 package proves that the residue field is `F_2((T))`, not `F_2`, and proves
 
-WP35 supplies the primitive cyclotomic square presentation and exact specialization defect. WP46A identifies the genuine good-ordinary strict higher local term as supported at `(2,gamma-1)`.
+`R5-PRIM`
 
-WP60A-A1 proves that after localization at `Lambda_(2)`, determinant membership is exactly the one-sided Fitting divisibility `R5-LIFT`, while determinant-generator status is the distinct equality `R5-PRIM`.
+iff
 
-## Current candidate
+`bar(kappa_Lambda^Kato) != 0` in `KS_Lambda/2`.
 
-The #262 candidate replays the determinant/Stark/Kolyvagin architecture over every
+Equivalently, there exists a finite cyclotomic layer `n` for which the selected mod-`2` Kato-derived Kolyvagin system `kappa_{1,n}^Kato` is nonzero.
 
-`R_{m,n}=Z/2^m[Gal(Q_n/Q)]`.
+Finite-layer basis status is not required: powers of `T` become units after localization at `(2)`.
 
-It proves the coefficient-ring structure, fixed rank-one `tau` quotient, cyclotomic-layer unique defect and selected-Selmer exclusion, socle/Nakayama localization lift, equivariant large/core-vertex theorem, determinant-to-Stark isomorphism with real correction retained, regulator isomorphism, Kato first-component compatibility, and inverse-limit determinant membership.
+The retained real, ordinary, and finite-control comparison terms do not alter this criterion because protected R5-LIFT proves that they are units or vanish after localization at `(2)`.
 
-It also retains the ordinary local correction rather than canceling it. Protected WP46A shows that correction is annihilated by `gamma-1`, so it vanishes at the height-one localization `(2)` where `gamma-1` is a unit.
+## Current candidate disposition
 
-Candidate disposition: `CLOSED`, subject to exact-head admission.
+`BLOCKED`.
 
-If protected, the candidate establishes
+Exact first independent missing theorem:
 
-`R5_LIFT_ESTABLISHED`
+`MISSING_P2_RESIDUAL_CYCLOTOMIC_KATO_KOLYVAGIN_NONVANISHING`.
 
-and retires
+No protected artifact currently proves the required residual nonvanishing uniformly on the selected good-ordinary irreducible/surjective `S_3` lane.
 
-`MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2`.
+Protected Kato source work shows that the all-height-one theorem including `(2)` excludes `p=2`. Protected WP17C screens the selected residual branch and finds no admitted uniform `p=2` excess-`mu` theorem. The protected 2026 Castella–Sano source audit identifies the same missing arithmetic content as a normalized Kato-system divisibility-index equality; its theorem proving that equality is stated for `p>3`.
 
-## Next frontier if protected
+## Reopening evidence
 
-`MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2`.
+Any one of the following is sufficient to reopen the residual frontier:
 
-This is `R5-PRIM`. It is not implied by membership and requires determinant/Kato primitivity, equivalently equality of the protected height-one valuation rather than the one-sided inequality.
+1. direct nonvanishing of `bar(kappa_Lambda^Kato)`;
+2. nonzero `kappa_{1,n}^Kato` at some finite cyclotomic layer, proved uniformly on the selected lane;
+3. a literal-`2` normalized Kato-system divisibility-index theorem;
+4. a literal-`2` Kurihara explicit-reciprocity plus refined nonvanishing theorem;
+5. an exact theorem proving zero excess determinant-coordinate height-one `(2)` valuation.
 
 ## Other live route boundaries
 
@@ -91,13 +90,7 @@ The operation does not change independent BSD-001 routes, including R1, R2, R4, 
 
 ## Claim firewall
 
-Do not promote this operation to:
-
-- R5-PRIM;
-- D2d;
-- `BSD-R2-A1`;
-- novelty or priority;
-- MATHCERT certification.
+R5-LIFT is protected. Do not promote the current operation to R5-PRIM, D2d, `BSD-R2-A1`, novelty/priority, or MATHCERT certification.
 
 Green CI and protected merge are evidence/admission events, not MATHCERT certification.
 

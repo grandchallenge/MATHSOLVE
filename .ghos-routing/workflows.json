@@ -24,6 +24,7 @@
   ],
   "workflows": [
     {"path":".github/workflows/bsd-r5-lift-equivariant-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
+    {"path":".github/workflows/bsd-r5-prim-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/bsd-wp60i-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/bsd-wp60j-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
     {"path":".github/workflows/bsd-wp60k-certificate.yml","observed_features":["OPAQUE_EXECUTION"],"topology":"PERSISTENT_CONTROLLER_REQUIRED","controller_id":"GITHUB_ACTIONS"},
