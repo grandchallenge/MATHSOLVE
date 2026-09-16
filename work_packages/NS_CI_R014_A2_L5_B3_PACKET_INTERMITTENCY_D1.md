@@ -1,4 +1,4 @@
-# NS-CI-R014-A2-L5-8 — Scale-normalized packet/intermittency D=1 bridge
+# NS-CI-R014-A2-L5-8 — Dimensionally normalized packet/intermittency D=1 bridge
 
 ## Disposition
 
@@ -7,21 +7,21 @@
 - Tracker: `MATHSOLVE#59`
 - Protected source head at tranche start: `64527fcfb07467070c0c3ffd4278e2ddfb663a69`
 - Predecessor: `NS_CI_R014_A2_L5_B3_SIGNED_PRESSURE_FIXTURE.md`
-- Result: `PACKET_D1_SCALE_NORMALIZED_CONDITIONAL_BRIDGE_PROVED__D1_NOT_IMPLIED_BY_STATIC_A2_BUDGETS`
+- Result: `PACKET_D1_DIMENSIONALLY_NORMALIZED_CONDITIONAL_BRIDGE_PROVED__D1_NOT_IMPLIED_BY_STATIC_A2_BUDGETS`
 - A2 theorem: open
 - L5: active
 - MATHCERT adjudication: absent
 
 The predecessor eliminates exact or sign-definite cancellation coming only from
 high-pass/Leray algebra. The remaining B3 frontier must use genuinely dynamic
-information. This tranche isolates a precise scale-normalized packet condition
-which would be sufficient, proves the conditional bridge, and shows that the
-present A2 scalar budgets do not imply that condition by themselves.
+information. This tranche isolates a dimensionally and scale-covariant packet
+condition which would be sufficient, proves the conditional bridge, and shows
+that the present A2 scalar budgets do not imply that condition by themselves.
 
 The packet condition is not imported as an assumption of A2. It is the exact
 additional theorem that a successful packet route would have to supply.
 
-## 1. A2 interface and scaling
+## 1. A2 interface and intrinsic energy wavenumber
 
 Use the existing whole-space dyadic normalization and write
 
@@ -42,23 +42,26 @@ The selected A2 hypothesis and Leray inequality give
 \int_0^T \Lambda(t)^2\,dt<\infty,
 ```
 
-and
+and, up to the fixed Littlewood--Paley equivalence constant,
 
 ```math
 2\nu\int_0^T\sum_q\lambda_q^2\|u_q(t)\|_2^2\,dt
 \lesssim U_0^2.
 ```
 
-The established low-mode regularity route closes once `f in L1_t`; A2 may not
-assume that conclusion.
+Define the intrinsic energy wavenumber
 
-Under Navier--Stokes scaling
+```math
+\boxed{\lambda_E:=\left(\frac{\nu}{U_0}\right)^2.}
+```
+
+It has physical dimension `length^{-1}`. Under Navier--Stokes scaling
 
 ```math
 u_\rho(x,t)=\rho u(\rho x,\rho^2t),
 ```
 
-one has
+viscosity is unchanged, while
 
 ```math
 \Lambda\mapsto\rho\Lambda,
@@ -66,9 +69,11 @@ one has
 f\mapsto\rho^2f,
 \qquad
 U_0\mapsto\rho^{-1/2}U_0,
+\qquad
+\lambda_E\mapsto\rho\lambda_E.
 ```
 
-and the time-integrated dissipation
+The time-integrated dissipation density
 
 ```math
 \mathcal D
@@ -76,30 +81,58 @@ and the time-integrated dissipation
 \int_0^T\sum_q\lambda_q^2\|u_q\|_2^2dt
 ```
 
-scales as `rho^(-1)`. Any whole-space packet condition used here must respect
-this scaling. A fixed-domain normalization without a compensating length or
-energy scale is therefore not admissible for A2.
+scales as `rho^{-1}`.
 
-## 2. Scale-normalized active-range packet condition
+The established low-mode regularity route closes once `f in L1_t`; A2 may not
+assume that conclusion.
 
-For `D in [0,3]`, define `PI_D^*` by
+## 2. Dimensionally normalized active-range packet condition
+
+For `D in [0,3]`, let
+
+```math
+S_D(t):=
+\sum_{q\le Q(t)}
+\lambda_q^{D-1}\|u_q(t)\|_\infty^2.
+```
+
+Define `PI_D^*` by
 
 ```math
 \boxed{
-\int_0^T
-\sum_{q\le Q(t)}
-\lambda_q^{D-1}\|u_q(t)\|_\infty^2\,dt
+\int_0^T S_D(t)\,dt
 \le
-C_D U_0^{-2D}
-\int_0^T
-\sum_{q\le Q(t)}
-\lambda_q^2\|u_q(t)\|_2^2\,dt.
+C_D\lambda_E^D\mathcal D
+=
+C_D\nu^{2D}U_0^{-2D}\mathcal D.
 }
 ```
 
-This normalization is scale-covariant. The left side scales as
-`rho^(D-1)`. The right side does also, since `U_0^(-2D)` scales as `rho^D`
-and `mathcal D` scales as `rho^(-1)`.
+This normalization passes both required audits.
+
+### Navier--Stokes scaling
+
+The left side scales as `rho^{D-1}`. The right side does also, because
+`lambda_E^D` scales as `rho^D` and `mathcal D` scales as `rho^{-1}`.
+
+### Physical dimensions
+
+With `[u]=L/T`, `[nu]=L^2/T`, and `[U_0]=L^(5/2)/T`, one has
+`[lambda_E]=L^{-1}`. Therefore
+
+```math
+[\lambda_E^D\mathcal D]
+=
+L^{-D}\frac{L^3}{T}
+=
+\frac{L^{3-D}}{T}
+=
+\left[\int S_Ddt\right].
+```
+
+The earlier raw-dissipation normalization and the intermediate
+`U_0^{-2D}`-only normalization are both rejected: the former fails scaling,
+and the latter is scale-covariant but fails physical dimensional consistency.
 
 At `D=1`,
 
@@ -108,26 +141,29 @@ At `D=1`,
 \int_0^T
 \sum_{q\le Q(t)}\|u_q(t)\|_\infty^2\,dt
 \le
-C_1 U_0^{-2}\mathcal D.
+C_1\left(\frac{\nu}{U_0}\right)^2\mathcal D.
 }
 ```
 
-By the Leray inequality, this would imply
+By the Leray inequality,
 
 ```math
+\boxed{
 \int_0^T
 \sum_{q\le Q(t)}\|u_q(t)\|_\infty^2\,dt
 \lesssim
-\frac{C_1}{\nu}.
+\frac{C_1\nu}{2}.
+}
 ```
 
 The weighting is the `r=infinity` analogue of the active-range
 Bernstein-saturation pattern used by Cheskidov and Peng, *An optimal upper
 bound on the determining wavenumber for 3D Navier-Stokes Equations*, NoDEA 33
 (2026), Art. 92, DOI `10.1007/s00030-026-01232-0`. Their fixed-domain setting
-and determining wavenumber are not substituted for the present whole-space A2
-problem. The `U_0` normalization above is the whole-space correction needed by
-scaling.
+uses the domain wavenumber to supply the missing inverse-length scale. Their
+domain, determining wavenumber, and theorem are not substituted for the
+present whole-space A2 problem. The intrinsic `lambda_E` above is introduced
+here solely to state a whole-space dimensionally consistent conditional bridge.
 
 ## 3. Conditional bridge for all D >= 1
 
@@ -146,13 +182,7 @@ For every `q<=Q`, `lambda_q<=Lambda`. Therefore
 Taking the supremum and bounding it by the sum gives
 
 ```math
-\boxed{
-f(t)^2
-\le
-\Lambda(t)^{3-D}
-\sum_{q\le Q(t)}
-\lambda_q^{D-1}\|u_q(t)\|_\infty^2.
-}
+\boxed{f(t)^2\le\Lambda(t)^{3-D}S_D(t).}
 ```
 
 Hence
@@ -161,22 +191,27 @@ Hence
 \int_0^T f(t)dt
 \le
 \left(\int_0^T\Lambda^{3-D}dt\right)^{1/2}
-\left(
-\int_0^T
-\sum_{q\le Q}
-\lambda_q^{D-1}\|u_q\|_\infty^2dt
-\right)^{1/2}.
+\left(\int_0^T S_Ddt\right)^{1/2}.
 ```
 
 If `D>=1`, then `3-D<=2`. On a finite interval, `Lambda in L2_t` gives
-`Lambda^(3-D) in L1_t`. Under `PI_D^*` and Leray,
+`Lambda^(3-D) in L1_t`. Under `PI_D^*`,
+
+```math
+\int_0^T f(t)dt
+\le
+C_D^{1/2}\lambda_E^{D/2}\mathcal D^{1/2}
+\left(\int_0^T\Lambda^{3-D}dt\right)^{1/2}<\infty.
+```
+
+Using Leray gives the equivalent bounded form
 
 ```math
 \int_0^T f(t)dt
 \lesssim
 C_D^{1/2}(2\nu)^{-1/2}
-U_0^{1-D}
-\left(\int_0^T\Lambda^{3-D}dt\right)^{1/2}<\infty.
+\nu^D U_0^{1-D}
+\left(\int_0^T\Lambda^{3-D}dt\right)^{1/2}.
 ```
 
 Thus
@@ -216,13 +251,14 @@ Under `PI_1^*` and Leray,
 \boxed{
 \int_0^T f(t)dt
 \lesssim
-C_1^{1/2}(2\nu)^{-1/2}\|\Lambda\|_{L^2_t}.
+\left(\frac{C_1\nu}{2}\right)^{1/2}
+\|\Lambda\|_{L^2_t}.
 }
 ```
 
-This is finite from exactly the selected A2 budget plus the new packet theorem.
-No product of unrelated `L1_t` functions appears; the estimate is a single
-Cauchy--Schwarz pairing of two `L2_t` quantities.
+This is dimensionless, as `integral f dt` must be, and finite from exactly the
+selected A2 budget plus the new packet theorem. No product of unrelated `L1_t`
+functions appears; the estimate is a single Cauchy--Schwarz pairing.
 
 The exponent `D=1` is the endpoint for this mechanism. If `D<1`, then
 `3-D>2`, and `Lambda in L2_t` alone does not give
@@ -234,7 +270,8 @@ The following threshold-compatible scalar fixture separates the current A2
 budgets from the missing packet theorem. It is not asserted to be a
 Navier--Stokes trajectory.
 
-Normalize `U_0=1`. On disjoint time intervals `I_n`, choose
+Normalize `nu=1` and `U_0=1`, so `lambda_E=1`. On disjoint time intervals
+`I_n`, choose
 
 ```math
 \Lambda_n=\lambda_{Q_n}=2^{4n},
@@ -273,8 +310,9 @@ and
 \sum_n2^{-n}<\infty.
 ```
 
-The pointwise energy is uniformly bounded because `E_{Q_n}=1`. Since `U_0=1`,
-the normalized `PI_1^*` right side remains finite. But its left side diverges:
+The pointwise energy is uniformly bounded because `E_{Q_n}=1`. Since
+`nu=U_0=lambda_E=1`, the normalized `PI_1^*` right side remains finite. But its
+left side diverges:
 
 ```math
 \sum_n |I_n|\|u_{Q_n}\|_\infty^2
@@ -293,11 +331,13 @@ J. Math. Fluid Mech. 16 (2014), prove the low-mode criterion `f in L1_t` and
 show that the stronger `Lambda in L^(5/2)_t` condition is sufficient. They also
 obtain regularity under a time-averaged intermittency condition.
 
-Cheskidov and Peng (2026) use an intermittency dimension through averaged
-Bernstein saturation over an active range. The present calculation uses only
-that structural cue; it does not import their domain, determining wavenumber,
-or theorem. The energy factor `U_0^(-2D)` is introduced here specifically to
-make the whole-space packet condition scale-covariant.
+Cheskidov and Peng (2026) define intermittency dimension through averaged
+Bernstein saturation over an active range. In their periodic setting the domain
+wavenumber `lambda_0` supplies an inverse-length normalization. The present
+calculation uses only that structural cue; it does not import their domain,
+determining wavenumber, or theorem. For the whole-space A2 bridge, the intrinsic
+energy wavenumber `lambda_E=(nu/U_0)^2` supplies the dimensionally and
+scale-consistent inverse-length factor.
 
 ## 7. Disposition and successor
 
@@ -311,21 +351,21 @@ A2 + PI_D^* with D >= 1
 
 A2 scalar budgets alone
     -/-> PI_1^*
-    (threshold-compatible static separation fixture at U_0=1).
+    (threshold-compatible static separation fixture at nu=U_0=1).
 ```
 
 Therefore
 
 ```text
-PACKET_D1_SCALE_NORMALIZED_CONDITIONAL_BRIDGE_PROVED__D1_NOT_IMPLIED_BY_STATIC_A2_BUDGETS.
+PACKET_D1_DIMENSIONALLY_NORMALIZED_CONDITIONAL_BRIDGE_PROVED__D1_NOT_IMPLIED_BY_STATIC_A2_BUDGETS.
 ```
 
 The smallest genuinely dynamic successor is one of:
 
 1. prove `PI_1^*` for Leray--Hopf trajectories satisfying `Lambda in L2_t`;
 2. prove any `PI_D^*` with `D>1` under the same hypotheses;
-3. prove a weaker scale-covariant weighted packet estimate that still makes the
-   displayed Cauchy--Schwarz factorization finite;
+3. prove a weaker dimensionally and scale-covariant weighted packet estimate
+   that still makes the displayed Cauchy--Schwarz factorization finite;
 4. produce a different equation-specific decorrelation theorem controlling
    `f` or the strict-tail endpoint without recreating closed L4/B4 interfaces.
 
