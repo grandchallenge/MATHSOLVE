@@ -1,0 +1,187 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "campaign": "BSD-001",
+  "operation": "BSD-R5-LIFT-EQUIV",
+  "candidate_head": "0c7522dab2b80cef9787c1cceb0c7613ce2a40ad",
+  "merge_sha": "6d0f94ad3227490826611473a40b92cadfbad577",
+  "protected_readback_sha": "6d0f94ad3227490826611473a40b92cadfbad577",
+  "enforcement_standard": {
+    "identifier": "GCL-CEX-01",
+    "repository": "grandchallenge/gcl-standards",
+    "commit": "efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
+    "programme_adoption_anchor": "grandchallenge/MATH-PROGRAMME@af6e1772e2d82b0b198d11c08e1369789ffbba3a"
+  },
+  "staffing_authority": {
+    "repository": "grandchallenge/INTELLECT",
+    "directive": "GI-STEWARD-0003",
+    "separation_model": "role_scoped_logical_passes",
+    "protected_anchor": "f042220f3bed7cb7b5069256e8f6305c850c0628"
+  },
+  "adversary_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/264#pullrequestreview-5225677146",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "BSD-R5-LIFT-EQUIV-ADV-0c7522da-003",
+    "role": "Adversary",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "0c7522dab2b80cef9787c1cceb0c7613ce2a40ad",
+    "criteria": [
+      "challenge the cyclotomic group-ring cohomology defect and auxiliary-field intersection argument",
+      "challenge coefficient reduction, localization, large-product and core-graph replay over the non-principal Gorenstein rings R_mn",
+      "challenge the real-place determinant correction and ordinary height-one-(2) local comparison",
+      "challenge inverse-limit and Kato first-component compatibility",
+      "challenge any promotion from determinant membership to primitivity or the BSD target"
+    ],
+    "evidence": [
+      "the final mathematical theorem, source note, claim ledger and certificates are frozen at exact candidate head 0c7522dab2b80cef9787c1cceb0c7613ce2a40ad",
+      "the auxiliary intersection is treated as trivial-or-C2 and contributes no new invariant residual class",
+      "the coefficient-reduction step uses the general-Gorenstein BSS reduction mechanism rather than an unsupported scalar-extension assertion",
+      "the real correction is handled integrally as a determinant unit and the ordinary correction is retained until localization at (2)",
+      "the final routing-only repair left every mathematical artifact byte-identical and passed the governed routing gate"
+    ],
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "human_authorized": false,
+      "mathcert_certified": false
+    }
+  },
+  "referee_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/264#pullrequestreview-5225682098",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "BSD-R5-LIFT-EQUIV-REF-0c7522da-004",
+    "role": "Referee",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "0c7522dab2b80cef9787c1cceb0c7613ce2a40ad",
+    "criteria": [
+      "adjudicate whether the literal-p=2 equivariant determinant-to-Stark-to-Kolyvagin replay is complete on the selected lane",
+      "adjudicate whether the Kato derivative first component and inverse compatibility yield cyclotomic determinant membership",
+      "adjudicate whether the protected local comparison converts membership only to the one-sided R5-LIFT inequality",
+      "verify preservation of false H3-family interfaces and the R5-PRIM firewall",
+      "verify coherence of theorem, ledger, campaign state, operation contract, freeze and CI evidence"
+    ],
+    "evidence": [
+      "exact-head theorem artifacts and deterministic certificates are coherent at 0c7522dab2b80cef9787c1cceb0c7613ce2a40ad",
+      "required candidate branch checks and the dedicated R5-LIFT replay succeeded on the exact candidate",
+      "protected merge 6d0f94ad3227490826611473a40b92cadfbad577 has candidate 0c7522dab2b80cef9787c1cceb0c7613ce2a40ad as its reviewed parent",
+      "the dedicated R5-LIFT workflow and predecessor WP60R/WP60S/WP60Q evidence replayed successfully on protected main",
+      "R5-PRIM, D2d, BSD-R2-A1, novelty, priority and MATHCERT certification remain expressly outside the disposition"
+    ],
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "human_authorized": false,
+      "mathcert_certified": false
+    }
+  },
+  "required_checks": [
+    {
+      "phase": "candidate",
+      "name": "BSD R5-LIFT equivariant determinant certificate",
+      "run": 35124696929,
+      "result": "success",
+      "head": "0c7522dab2b80cef9787c1cceb0c7613ce2a40ad"
+    },
+    {
+      "phase": "candidate",
+      "name": "Solve checks",
+      "run": 35124697149,
+      "result": "success",
+      "head": "0c7522dab2b80cef9787c1cceb0c7613ce2a40ad"
+    },
+    {
+      "phase": "candidate",
+      "name": "routing-enforcement",
+      "check_run": 104890723157,
+      "result": "success",
+      "head": "0c7522dab2b80cef9787c1cceb0c7613ce2a40ad"
+    },
+    {
+      "phase": "candidate",
+      "name": "ledgers",
+      "check_run": 104891167614,
+      "result": "success",
+      "head": "0c7522dab2b80cef9787c1cceb0c7613ce2a40ad"
+    },
+    {
+      "phase": "candidate",
+      "name": "policy / policy",
+      "check_run": 104890742087,
+      "result": "success",
+      "head": "0c7522dab2b80cef9787c1cceb0c7613ce2a40ad"
+    },
+    {
+      "phase": "candidate",
+      "name": "security / action-policy",
+      "check_run": 104890742346,
+      "result": "success",
+      "head": "0c7522dab2b80cef9787c1cceb0c7613ce2a40ad"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "BSD R5-LIFT equivariant determinant certificate",
+      "run": 35127168422,
+      "result": "success",
+      "head": "6d0f94ad3227490826611473a40b92cadfbad577"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "GCL conformance",
+      "run": 35127169801,
+      "result": "success",
+      "head": "6d0f94ad3227490826611473a40b92cadfbad577"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "BSD WP60R finite theorem replay",
+      "run": 35127168439,
+      "result": "success",
+      "head": "6d0f94ad3227490826611473a40b92cadfbad577"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "BSD WP60S inverse-limit theorem replay",
+      "run": 35127168433,
+      "result": "success",
+      "head": "6d0f94ad3227490826611473a40b92cadfbad577"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "BSD WP60Q selected residual core graph",
+      "run": 35127168155,
+      "result": "success",
+      "head": "6d0f94ad3227490826611473a40b92cadfbad577"
+    }
+  ],
+  "disposition": {
+    "type": "CLOSED",
+    "frontier": "MISSING_P2_EQUIVARIANT_CYCLOTOMIC_DETERMINANT_STARK_KOLYVAGIN_REPLAY",
+    "established": [
+      "P2_EQUIVARIANT_SELECTED_HYP32III_DEFECT_SELMER_EXTRANEOUS",
+      "P2_EQUIVARIANT_SELECTED_LARGE_PRODUCTS_AND_CORE_GRAPH_AVAILABLE",
+      "P2_EQUIVARIANT_DETERMINANT_TO_STARK_ISOMORPHISM_AVAILABLE",
+      "P2_EQUIVARIANT_SELECTED_REGULATOR_ISOMORPHISM_AVAILABLE",
+      "P2_EQUIVARIANT_KATO_FIRST_COMPONENT_AND_COMPATIBILITY_AVAILABLE",
+      "P2_EQUIVARIANT_CYCLOTOMIC_KATO_DETERMINANT_MEMBERSHIP",
+      "R5_LIFT_ESTABLISHED"
+    ],
+    "retired": [
+      "MISSING_P2_EQUIVARIANT_CYCLOTOMIC_DETERMINANT_STARK_KOLYVAGIN_REPLAY",
+      "MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2"
+    ],
+    "next_frontier": "MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2"
+  },
+  "preserved_false": [
+    "formal_higher_level_hypothesis_3_2_iii",
+    "full_bss_hypothesis_4_7",
+    "bss_hypothesis_4_7_iii",
+    "infinite_bss_h3",
+    "r5_prim",
+    "d2d",
+    "bsd_r2_a1",
+    "mathcert_certification"
+  ],
+  "notes": "This receipt closes BSD-R5-LIFT-EQUIV and establishes only the selected one-sided height-one-(2) R5-LIFT repository result. It does not establish determinant primitivity/R5-PRIM, D2d, BSD-R2-A1, novelty, priority, public certification, or MATHCERT certification. The independent next mathematical frontier is MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2."
+}
