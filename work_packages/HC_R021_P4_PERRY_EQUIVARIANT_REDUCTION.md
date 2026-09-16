@@ -8,156 +8,147 @@
 
 ## 1. Purpose
 
-Sharpen the all-orders algebraicity-transport obligation `HC-R021-P4` using the 2026 equivariant semiregularity theorem of Alexander Perry.
+Reduce the all-orders algebraicity-transport obligation `HC-R021-P4` to the narrowest theorem-grade conditions exposed by Alexander Perry's 2026 equivariant semiregularity theorem.
 
-The prior formulation allowed three broad closure paths:
+The result of this tranche is a reduction, not a proof of `HC-R021-A8-CM4-C2`.
 
-1. prove ordinary semiregularity of Markman's CM4 object;
-2. prove that the weaker first-order injectivity condition propagates through the full deformation functor;
-3. construct a relative algebraic replacement directly.
-
-Perry's theorem supplies a fourth and substantially narrower path:
-
-> exhibit a finite derived symmetry group for which the Markman object is weakly equivariantly semiregular.
-
-If that condition is proved, the all-orders deformation and algebraicity transport required by `P4` follow from an existing theorem. The current package proves this reduction. It does not prove the missing weak equivariant semiregularity condition.
-
-## 2. External theorem used
+## 2. Perry theorem interface
 
 Source:
 
 - Alexander Perry, *The semiregularity theorem for equivariant noncommutative varieties*, arXiv:2604.00511, Theorem 1.2 and Theorem 6.3: https://arxiv.org/abs/2604.00511
 
-For the abelian-variety specialization, let
+Let
 
 ```text
 f : A -> S
 ```
 
-be a smooth proper family of complex abelian varieties, let `0 in S(C)`, and let
+be a smooth proper family of complex abelian varieties with `0 in S(C)`. Let
 
 ```text
 G subset A_0 x A_0^vee
 ```
 
-be finite, acting on `Dperf(A_0)` through translations and tensoring by degree-zero line bundles. If a perfect complex `E_0` is weakly `G`-semiregular, has
+be finite and act on `Dperf(A_0)` by translations and tensoring by degree-zero line bundles. Perry's Theorem 1.2 applies when a perfect complex `E_0` is weakly `G`-semiregular, has
 
 ```text
-Ext^i(E_0,E_0) = 0  for i < 0,
+Ext^i(E_0,E_0)=0  for i<0,
 ```
 
-and an algebraic rational class `B_0 in H^2(A_0,Q(1))` is such that
+and there is an algebraic rational class `B_0` such that
 
 ```text
 w_0 = exp(B_0) ch(E_0)
 ```
 
-remains Hodge along `S`, then Perry proves:
+extends to a global flat section of the even rational cohomology local system and remains Hodge along `S`.
 
-1. `E_0` deforms as a twisted perfect complex over an etale neighborhood of `0`;
-2. the flat class `w_0` remains algebraic along the family.
+The theorem then gives:
 
-Perry defines `G`-semiregularity by injectivity of the degree-two semiregularity map on `Ext^2(E_0,E_0)^G`, and weak `G`-semiregularity by semiregularity of a corresponding equivariant object in the invariant category. `G`-semiregularity implies weak `G`-semiregularity.
+1. a twisted-perfect deformation of `E_0` over an etale neighborhood of the base point;
+2. algebraicity of the transported class `w_s` for **every** `s in S(C)`.
 
-Perry also applies the theorem directly to Markman's earlier split-Weil sixfold construction, where a finite translation group and equivariant semiregularity had already been established.
+Perry defines `G`-semiregularity by injectivity of the degree-two semiregularity map on `Ext^2(E_0,E_0)^G`. Weak `G`-semiregularity asks for semiregularity of the corresponding equivariant object in the invariant category. `G`-semiregularity implies weak `G`-semiregularity.
 
-## 3. Specialized closure lemma
+The theorem is therefore global **along the chosen family `S`**, but it does not by itself identify an abstract period-domain component with one algebraic family. That family-coverage interface is recorded separately below.
 
-### HC-R021-L002 — Perry closure criterion for the CM4 object
+## 3. HC-R021-L002 — Perry closure criterion along a family
 
 Let
 
 ```text
-A_0 = X x X-hat
-```
-
-and let
-
-```text
+A_0 = X x X-hat,
 E_0 = Phi(F_1 boxtimes F_2^vee)
 ```
 
-be the exact genus-four CM4 object of Markman arXiv:2509.23079, Example 11.2.7 and Lemma 11.2.8, used in `HC-R021-A8-CM4-C2`.
+be the exact genus-four CM4 object of Markman arXiv:2509.23079, Example 11.2.7 and Lemma 11.2.8.
 
-Assume there exists a finite subgroup
+Fix a connected smooth proper algebraic family
+
+```text
+f : A -> S
+```
+
+through `A_0` inside the selected CM/Weil deformation locus such that Markman's flat class `kappa(E_0)` extends along `S` and remains Hodge.
+
+Assume there exists a finite group
 
 ```text
 G subset A_0 x A_0^vee
 ```
 
-such that `E_0` is weakly `G`-semiregular for the induced action on `Dperf(A_0)`.
+for which `E_0` is weakly `G`-semiregular.
 
-Then the all-orders algebraicity-transport obligation `HC-R021-P4` closes on the selected deformation component. Consequently, the nonzero Weil projection of `kappa_2(E_0)` gives the required algebraic nonzero Weil class on every target fiber in the selected Hodge-generic locus.
+Then `HC-R021-P4` closes **along this family `S`**: the transported normalized class is algebraic on every fiber of `S`.
 
 ### Proof
 
-Markman's object has nonzero rank `r`. Set
+Markman's object has nonzero rank `r`. Put
 
 ```text
 B_0 = -c_1(E_0)/r.
 ```
 
-Because `E_0` is algebraic, `c_1(E_0)` is algebraic and therefore `B_0` is an algebraic rational degree-two class. Hence
+Since `E_0` is algebraic, `B_0` is an algebraic rational degree-two class and
 
 ```text
 exp(B_0) ch(E_0) = kappa(E_0).
 ```
 
-Markman proves that the flat deformation of `kappa(E_0)` remains of Hodge type under the relevant CM/Weil deformations. Thus Perry's Hodge-persistence hypothesis is satisfied.
+Markman supplies Hodge persistence of the flat deformation of `kappa(E_0)` under the relevant CM/Weil deformations.
 
-It remains to verify the negative-Ext hypothesis. The source factors are coherent sheaves, up to derived dual on the second factor. For a coherent sheaf `F` on a smooth projective variety,
-
-```text
-Ext^i(F,F)=0  for i<0.
-```
-
-Derived duality preserves self-Ext degree. The external-product Kunneth decomposition therefore gives
-
-```text
-Ext^i(F_1 boxtimes F_2^vee, F_1 boxtimes F_2^vee)=0  for i<0.
-```
-
-Orlov/Fourier-Mukai equivalence preserves Ext groups, so
+The source factors are coherent sheaves, up to derived dual on the second factor. A coherent sheaf has no negative self-Ext. Derived duality preserves self-Ext degree, the external-product Kunneth decomposition preserves vanishing in negative total degree, and Orlov/Fourier-Mukai equivalence preserves Ext groups. Hence
 
 ```text
 Ext^i(E_0,E_0)=0  for i<0.
 ```
 
-Under the additional hypothesis that `E_0` is weakly `G`-semiregular, every hypothesis of Perry's abelian-variety theorem is therefore satisfied. Perry yields a twisted perfect deformation and algebraicity of the flat class `kappa(E_0)` along the family.
+Under weak `G`-semiregularity, Perry Theorem 1.2 therefore applies to `f:A->S` with `w_0=kappa(E_0)` and makes `kappa(E_0)` algebraic on every fiber of `S`.
 
-In degree four, Markman proves that `kappa_2(E_0)` lies in
+Markman also proves that the degree-four component has a nonzero projection to the Weil subspace. Its divisor-product component is algebraic. Subtracting that component gives one nonzero algebraic Weil class on every fiber of `S`.
+
+QED.
+
+### Exact scope
+
+`HC-R021-L002` does **not** by itself say that every point of the abstract set `C_CM4` lies in one algebraic family `S` carrying the required global flat section. To conclude the full target from familywise algebraicity, one must also discharge `HC-R021-P4-G6` below.
+
+## 4. Family-coverage interface — HC-R021-P4-G6
+
+The selected class `C_CM4` was defined through a connected period-domain/deformation component. Perry works over a smooth proper algebraic family.
+
+The required global interface is:
+
+> cover the selected Hodge-generic locus by connected algebraic families of polarized abelian varieties with the prescribed CM/Weil structure, containing or connected by overlaps to the source point, so that Markman's flat Weil class is represented by the corresponding global section of the Gauss-Manin local system.
+
+A standard level-structure/PEL-moduli realization is the expected route, but this package does not silently promote that standard background into a checked campaign theorem. Before `HC-R021-P4` is marked closed globally, the exact moduli/family carrier used for `C_CM4` must be named and its coverage of the target quantifier recorded.
+
+**State:** `STANDARD_MODULI_INTERFACE__REQUIRES_EXPLICIT_BINDING`.
+
+This is not presently the difficult deformation-theoretic obstruction; `P4-G3` remains the active research frontier. It is nevertheless a required closure edge.
+
+## 5. What Perry removes from the open obligation
+
+Once weak equivariant semiregularity and the family interface are established, the following need not be proved ad hoc:
+
+- an Artin obstruction tower for `E_0`;
+- propagation of `HC-R021-L001` by hand to all orders;
+- a separate algebraization theorem for formal liftings;
+- a new perfect-complex semiregularity theorem.
+
+The active deformation-theoretic question is therefore:
 
 ```text
-(divisor-product classes) + HW(A_0,eta)
+P4-G3: does a useful same-Chern-character CM4 representative admit
+       a finite derived symmetry G for which it is weakly G-semiregular?
 ```
 
-with nonzero projection to `HW`. Algebraicity of the transported `kappa_2`, together with algebraicity of the divisor-product summand, gives one nonzero algebraic class in the transported Weil subspace. This is precisely the algebraicity-transport output required by `P4` and the input required by `P5`.
+## 6. Finite symmetry reconnaissance
 
-QED, conditional only on weak `G`-semiregularity.
+### 6.1 First secant factor
 
-## 4. What Perry removes from the open obligation
-
-The following are no longer independent proof debts if weak equivariant semiregularity is established:
-
-- construction of an ad hoc Artin obstruction tower;
-- proof that the first-order `HC-R021-L001` condition propagates by hand;
-- conversion of formal liftings to algebraic objects by an independent argument;
-- extension of ordinary coherent-sheaf semiregularity to the Fourier-Mukai perfect complex by hand.
-
-Perry's theorem packages those steps, including twisted perfect-complex deformation and algebraicity of the Hodge-persistent normalized Chern character.
-
-Accordingly, the live mathematical question becomes:
-
-```text
-P4-G: Does a same-Chern-character CM4 representative admit a finite derived symmetry
-      G for which the resulting object is weakly G-semiregular?
-```
-
-## 5. Source reconnaissance for finite symmetry
-
-### 5.1 First secant factor
-
-Markman's CM4 construction uses a genus-four secant class
+Markman's CM4 construction uses the genus-four secant class
 
 ```text
 alpha_0 = Theta - (q/6) Theta^3,
@@ -165,117 +156,84 @@ alpha_0 = Theta - (q/6) Theta^3,
 
 with `q` a positive integer.
 
-The earlier source
+Markman arXiv:2502.03415, Example 8.2.3, gives in dimension four an alternative object with the same Chern character built from a cyclic translation group of order `q+1`. The partial-normalization data can be chosen invariant and the object descends to the quotient.
 
-- Eyal Markman, *Cycles on abelian 2n-folds of Weil type from secant sheaves on abelian n-folds*, arXiv:2502.03415, Example 8.2.3: https://arxiv.org/abs/2502.03415
+This provides a genuinely geometric finite symmetry, but not by itself weak equivariant semiregularity.
 
-constructs, for dimension four, an alternative secant object with the same Chern character which is built from a cyclic translation group `G_1` of order `q+1`. The partial-normalization data can be chosen `G_1`-invariant and the resulting object descends to the quotient `X/G_1`.
+### 6.2 Second secant factor
 
-This is useful but does **not** by itself prove weak `G_1`-semiregularity. The same source explicitly warns that the more direct ideal-sheaf representative with this Chern character is unlikely to be semiregular and that injectivity on the invariant `Ext^2` can hold for at most finitely many parameters by a dimension-growth argument.
-
-Thus:
-
-```text
-finite equivariance of a representative: available;
-weak equivariant semiregularity: not established.
-```
-
-### 5.2 Second secant factor in the source
-
-The second CM4 class in Markman Example 11.2.7 is
+The second CM4 ray is
 
 ```text
 beta' = g^*Theta - (q/6)(g^{-1})^*(Theta^3).
 ```
 
-Markman constructs a simple coherent sheaf with Chern character an integer multiple of `beta'` by choosing `N` generic translates of another secant sheaf, intersecting them with a curve `C'`, and gluing along intersection fibers.
+Markman Example 11.2.7 constructs a simple coherent sheaf on this ray by generic translates and gluing. The source does not provide a useful finite symmetry or semiregularity proof for that object.
 
-The published construction does not supply a finite translation subgroup preserving the whole gluing datum or a weak-semiregularity proof. That omission matters for the **source object**, but finite equivariance of a same-ray replacement can be obtained without reconstructing the gluing.
+Finite equivariance of a same-ray replacement, however, is easy and is separated from semiregularity by `HC-R021-L003`.
 
-## 6. Orbit-equivariant replacement
+## 7. HC-R021-L003 — finite-equivariant same-ray replacement
 
-### HC-R021-L003 — finite-equivariant same-ray replacement
-
-Let `F` be any coherent sheaf or perfect complex on a complex abelian variety `X` and let `H subset X` be a finite subgroup acting by translations. Define
+Let `F` be a coherent sheaf or perfect complex on an abelian variety `X`, and let `H subset X` be a finite translation subgroup. Define
 
 ```text
-Ind_H(F) = direct_sum_{h in H} tau_h^* F.
+Ind_H(F) = direct_sum_{h in H} tau_h^*F.
 ```
 
 Then:
 
-1. `Ind_H(F)` admits a canonical `H`-linearization by reindexing the summands;
-2. translations act trivially on singular cohomology, so
+1. `Ind_H(F)` has a canonical `H`-linearization by permutation of the summands;
+2. translations act trivially on rational singular cohomology, so
 
 ```text
 ch(Ind_H(F)) = |H| ch(F);
 ```
 
-3. if `F` is gluable (`Ext^{<0}(F,F)=0`) and is a coherent sheaf, the orbit sum is again a coherent sheaf and hence gluable;
-4. every homogeneous secant/Chern-character condition depending only on the ray of `ch(F)` is unchanged.
+3. if `F` is coherent, the orbit sum is coherent and has no negative self-Ext;
+4. any homogeneous secant/Chern-character condition depending only on the ray of `ch(F)` is preserved.
 
 ### Proof
 
-For `k in H`,
+For `k in H`, translation permutes the orbit summands:
 
 ```text
 tau_k^* Ind_H(F)
-  = direct_sum_{h in H} tau_{k+h}^* F
-  ~= direct_sum_{h in H} tau_h^* F,
+  = direct_sum_h tau_(k+h)^*F
+  ~= direct_sum_h tau_h^*F.
 ```
 
-where the final isomorphism is the permutation `h -> k+h`. These permutation isomorphisms satisfy the group law, giving an `H`-linearization.
-
-For every translation `tau_h` of an abelian variety, `tau_h^*` is the identity on rational singular cohomology. Therefore
-
-```text
-ch(tau_h^*F)=ch(F)
-```
-
-and additivity of the Chern character gives statement 2. Statements 3 and 4 follow from finite direct sums and homogeneity.
+The reindexing isomorphisms satisfy the group law. Since every translation is cohomologically trivial on an abelian variety, all translated summands have the same Chern character; additivity gives the formula above. The remaining statements follow from finite direct sums and homogeneity.
 
 QED.
 
-### Application to the CM4 pair
-
-Apply `HC-R021-L003` independently to both genus-four secant factors. In particular, for the source sheaf `E'` with
+Applied to the `beta'` source sheaf `E'`, this gives
 
 ```text
-ch(E') = N beta',
+ch(Ind_H(E')) = |H| N beta',
 ```
 
-and any finite translation subgroup `H_2`, the orbit sum has
+so the Markman nonzero-Weil-projection criterion remains on the same ray.
 
-```text
-ch(Ind_H2(E')) = |H_2| N beta'.
-```
+Thus finite equivariance and linearization are available. They are not the live obstruction.
 
-This remains on the exact `beta'` ray used by Markman's nonzero-Weil-projection criterion. Likewise the first secant factor can be replaced by a finite-equivariant orbit sum without moving its Chern-character ray.
+## 8. Why orbit equivariance is insufficient
 
-Hence **finite equivariance and linearization are not the remaining obstruction**. The orbit-sum construction closes `P4-G2` at the level needed to preserve the cohomological secant criterion.
-
-## 7. Why orbit equivariance does not solve P4
-
-`HC-R021-L003` must not be promoted into a semiregularity statement.
-
-For an induced orbit object, equivariant self-Ext contains morphisms among the orbit summands. Via induction/forgetful adjunction it is controlled by terms of the form
+For an induced orbit object, equivariant self-Ext contains cross-orbit terms. Through induction/forgetful adjunction it is controlled by groups of the form
 
 ```text
 Ext^2(F, tau_h^*F),  h in H,
 ```
 
-not merely by a small invariant subspace of `Ext^2(F,F)`. A canonical linearization therefore does not imply that the semiregularity map in the invariant category is injective.
+rather than only by a small subspace of `Ext^2(F,F)`.
 
-Equivalently, the implication
+Therefore
 
 ```text
 finite H-linearization
-    -/-> weak H-semiregularity
+    -/-> weak H-semiregularity.
 ```
 
-is forbidden.
-
-This matters especially for an external product. Its degree-two self-Ext has Kunneth contributions of the forms
+For an external product, degree-two self-Ext also contains the Kunneth summands
 
 ```text
 Ext^2(F_1,F_1) tensor Ext^0(F_2,F_2),
@@ -283,73 +241,54 @@ Ext^1(F_1,F_1) tensor Ext^1(F_2,F_2),
 Ext^0(F_1,F_1) tensor Ext^2(F_2,F_2).
 ```
 
-Even factorwise control of invariant degree-two Ext does not automatically control the mixed `Ext^1 tensor Ext^1` term.
+Factorwise degree-two injectivity does not control the mixed `Ext^1 tensor Ext^1` contribution.
 
-The all-orders question is therefore localized one step further:
+The sixfold precedent works because Markman proves injectivity on the relevant invariant obstruction space; adding a group is not enough.
 
-```text
-P4-G3: find a genuinely useful finite symmetry/representative for which the
-       total external-product or Fourier-Mukai object is weakly G-semiregular.
-```
-
-## 8. Sixfold analogy and exact non-transfer
-
-In the earlier split-Weil sixfold case, Markman explicitly proves that the relevant finite group action captures the image of the obstruction homomorphism and that semiregularity is injective on the invariant `Ext^2` subspace. Perry then transports that finite group through the derived equivalence and applies his theorem directly.
-
-Those exact facts are not presently proved for the CM4 genus-four pair. Importing them would be a new hidden theorem and is forbidden by `HC-FP-007`.
-
-The useful sixfold template is therefore not “add a finite group”; it is:
+## 9. Refined proof obligations
 
 ```text
-construct a finite symmetry whose invariant Ext^2 is exactly small enough,
-then prove semiregularity is injective on that controlled invariant space.
+P4-G0  Perry specialization / HC-R021-L002                  [SOLVE-PROVED, FAMILYWISE]
+   |
+   +--> P4-G1  finite-equivariant first-factor ray          [AVAILABLE]
+   |
+   +--> P4-G2  finite-equivariant beta'-ray representative  [SOLVE-PROVED BY L003]
+   |
+   +--> P4-G3  weak G-semiregularity of a useful total
+   |            representative, including mixed Ext^1 term   [OPEN]
+   |
+   +--> P4-G4  transport G through Orlov equivalence         [THEOREM INTERFACE AVAILABLE]
+   |
+   +--> P4-G5  apply Perry along each bound family           [CONDITIONAL ON G3]
+   |
+   +--> P4-G6  bind algebraic family/moduli coverage of
+   |            the full C_CM4 target quantifier             [STANDARD INTERFACE; UNBOUND]
+   |
+   +--> P5     algebraic nonzero Weil class on each target   [CONDITIONAL ON G5+G6]
 ```
 
-## 9. Refined P4 sub-obligations
-
-The shortest current closure path is now:
-
-```text
-P4-G0  Perry specialization HC-R021-L002                         [SOLVE-PROVED, NOT CERTIFIED]
-   |
-   +--> P4-G1  finite-equivariant first-factor representative       [SOURCE / L003 AVAILABLE]
-   |
-   +--> P4-G2  finite-equivariant beta'-ray representative          [SOLVE-PROVED BY L003]
-   |
-   +--> P4-G3  prove the outer product is weakly G-semiregular,
-   |            or prove weak G-semiregularity directly after Phi   [OPEN]
-   |
-   +--> P4-G4  transport G through the Orlov equivalence             [THEOREM INTERFACE AVAILABLE]
-   |
-   +--> P4-G5  apply Perry Theorem 1.2 to kappa(E_0)                 [CONDITIONAL ON G3]
-   |
-   +--> P5     obtain one algebraic nonzero Weil class per fiber     [CONDITIONAL ON G5]
-```
-
-`P4-G3` is now the sole live algebraicity-transport obstruction on this route.
+The active research obstruction is `P4-G3`; `P4-G6` is a closure interface that must be made explicit before any global theorem claim.
 
 ## 10. Next mathematical tests
 
-Run these in order.
-
-1. **Reject induced symmetries that do not shrink the obstruction space.** For the orbit-sum replacements of `L003`, compute the equivariant `Ext^2` through induction/forgetful adjunction. If the identity-sector kernel already contains a kernel of ordinary semiregularity, discard that group immediately.
-2. **Exploit the source cyclic quotient.** For the first factor, use Markman's `G_1`-invariant partial-normalization object from Example 8.2.3 rather than an arbitrary orbit sum and compute `Ext^2` in the quotient/invariant category.
-3. **Search for a non-induced second-factor symmetry.** Rebuild the `beta'` representative from orbit-stable geometric data only if this can genuinely reduce invariant `Ext^2`; mere orbit summation is no longer a useful target.
-4. **Control the product mixed term.** For any candidate `G_1 x G_2`, compute the invariant contribution of `Ext^1 tensor Ext^1`. Do not infer product semiregularity from degree-two factorwise injectivity.
-5. **Derived transport and Perry.** Only after weak equivariant semiregularity is established, transport the group through `Phi` as in Perry's sixfold argument and invoke Theorem 1.2.
+1. Reject induced symmetries that do not shrink the invariant obstruction space by computing equivariant `Ext^2` via induction/forgetful adjunction.
+2. Use Markman's non-induced cyclic quotient object from Example 8.2.3 as the first-factor model.
+3. Seek a genuinely symmetric `beta'` representative whose invariant `Ext^2` is smaller than that of the naive orbit sum.
+4. For any candidate product, compute the invariant mixed `Ext^1 tensor Ext^1` contribution explicitly.
+5. Once `P4-G3` closes, bind `P4-G6` to an exact algebraic moduli/family carrier and invoke Perry familywise.
 
 ## 11. Claim boundary
 
 ```text
 HC-R021-P4_closed = false
-HC-R021-L002 = proved_in_solve_package_not_certified
+HC-R021-L002 = proved_in_solve_package_not_certified_familywise
 HC-R021-L003 = proved_in_solve_package_not_certified
 finite_equivariant_same_ray_representatives = available
-Perry_theorem_applicable_if_weak_G_semiregularity = true
-weak_G_semiregularity_of_CM4_object = open
+weak_G_semiregularity_of_useful_CM4_representative = open
+P4_G6_family_coverage = unbound_standard_interface
 HC-R021-P5 = open
 restricted_target_proved = false
 full_hodge_conjecture_proved = false
 ```
 
-This package does not claim that Perry's 2026 theorem proves the CM4 Hodge target. It proves that Perry eliminates the all-orders deformation problem **conditional on one exact equivariant-semiregularity property**, and that finite equivariance itself is easy to supply without changing the secant rays. The remaining construction debt is precisely weak equivariant semiregularity of a useful genus-four CM4 representative.
+Perry's theorem gives algebraicity at every point of a **specified smooth proper family** when its hypotheses hold. This package does not silently identify that family with the whole abstract period-domain component. The remaining substantive research debt is weak equivariant semiregularity; the remaining global-scope bookkeeping debt is explicit family coverage.
