@@ -30,7 +30,7 @@ G subset X
 
 acts by translations, permutes the `N` divisorial constituents transitively, preserves the full curve/line-bundle/gluing datum, and supplies a `G`-linearization of `E`.
 
-Assume also that the divisorial support of a constituent has polarization class `D`, which is principal because `D=g^*Theta` and `g` is an automorphism.
+The divisorial support of a constituent has polarization class `D`, which is principal because `D=g^*Theta` and `g` is an automorphism.
 
 ## 3. Orbit size
 
@@ -178,7 +178,14 @@ The lower bound above makes this possible only if
 qN <= 2.
 ```
 
-Thus, outside the exceptional range `qN<=2`, transitive finite symmetry cannot prove `D20` nonempty merely by shrinking the invariant target dimension.
+In Section 11.2.1 of Markman's CM4 construction, `q` is a positive integer. A nontrivial transitive translation orbit has `N>=2`. Therefore the only nontrivial numerical case left by this dimension-forcing argument is
+
+```text
+q = 1,
+N = 2.
+```
+
+Even in that exceptional case, the inequality is only a necessary dimensional compatibility; it does not prove that the invariant `Ext^2` has dimension at most `20` or that `D20` is nonempty.
 
 ### 6.2 Full invariant semiregularity
 
@@ -196,9 +203,15 @@ dim Ext^2(E,E)^G >= 30,
 
 so the semiregularity map cannot be injective on the full invariant `Ext^2`.
 
-Accordingly, the direct analogue of the earlier sixfold proof via full invariant-`Ext^2` semiregularity is impossible for this transitive-orbit gluing whenever `qN>=4`.
+For a nontrivial transitive orbit with integer `q`, dimensional compatibility with full invariant-`Ext^2` semiregularity is therefore confined to
 
-The boundary case `qN=3` is not decided by dimension alone, and `qN<=2` remains potentially compatible with the dimension-forcing argument.
+```text
+(q,N) = (1,2) or (1,3).
+```
+
+The case `qN=3` is not decided by dimension alone.
+
+Accordingly, the direct analogue of the earlier sixfold proof via full invariant-`Ext^2` semiregularity is impossible for this transitive-orbit gluing whenever `qN>=4`.
 
 ## 7. Scope
 
@@ -219,7 +232,9 @@ HC-R021-L011 = proved_in_solve_package_not_certified
 transitive_translation_orbit_size = N
 invariant_Ext2_lower_bound = 8qN-2
 invariant_dimension_forces_rank20_only_if_qN_le_2
+nontrivial_dimension_forcing_exception = q1_N2_only
 full_invariant_semiregularity_impossible_if_qN_ge_4
+nontrivial_full_invariant_dimension_compatible_cases = q1_N2_or_N3
 D20_nonempty = open
 weak_G_semiregularity_general = open
 HC-R021-P4 = open
@@ -229,6 +244,6 @@ full_hodge_conjecture_proved = false
 
 ## 9. Sources
 
-- Eyal Markman, arXiv:2509.23079, Example 11.2.7.
+- Eyal Markman, arXiv:2509.23079, Section 11.2.1 and Example 11.2.7.
 - Eyal Markman, arXiv:2502.03415, Sections 8.3 and 9.3 for the earlier successful finite-translation strategy.
 - `work_packages/HC_R021_P4_SEMIREGULARITY_DIAGNOSTICS.md` (`HC-R021-L004`).
