@@ -34,7 +34,7 @@ jobs:
   certificate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - name: Exact R5-RECIP operation preflight
         run: python tools/gcl_campaign_preflight_r5_recip.py BSD-001 BSD-R5-RECIP
       - name: Replay protected WP60T derivative certificate
