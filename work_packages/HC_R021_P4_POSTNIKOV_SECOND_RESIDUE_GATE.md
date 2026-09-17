@@ -297,7 +297,7 @@ tau = Tr_F/Q(f^4)
 Therefore the actual automorphism source satisfies
 
 ```text
-boxed: tau >= 47}.                                    (7.2)
+boxed: tau >= 47.                                     (7.2)
 ```
 
 This strengthens all previous numerical inequalities, but it still does not determine the rank of (5.3).
