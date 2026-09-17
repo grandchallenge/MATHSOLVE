@@ -31,7 +31,7 @@ jobs:
           set -euo pipefail
           out="$(gp -q work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/05_KURIHARA_PARI_PROBE.gp 2>&1)"
           printf '%s\n' "$out"
-          if printf '%s\n' "$out" | grep -q '***'; then
+          if printf '%s\n' "$out" | grep -Fq '***'; then
             echo "PARI/GP reported an exception" >&2
             exit 1
           fi
