@@ -1,0 +1,30 @@
+name: BSD R5-WIT PARI probe
+
+on:
+  push:
+    branches:
+      - solve/bsd-r5-wit-normalized-kurihara-witness-r2
+    paths:
+      - 'work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/**'
+      - '.github/workflows/bsd-r5-wit-pari-probe.yml'
+  pull_request:
+    paths:
+      - 'work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/**'
+      - '.github/workflows/bsd-r5-wit-pari-probe.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  pari-probe:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Install PARI/GP
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pari-gp
+          gp --version
+      - name: Exact normalized Kurihara parity probe
+        run: |
+          gp -q work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/05_KURIHARA_PARI_PROBE.gp
