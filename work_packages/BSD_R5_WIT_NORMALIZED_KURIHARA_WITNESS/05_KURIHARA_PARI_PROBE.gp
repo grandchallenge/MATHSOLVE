@@ -41,6 +41,10 @@ run_curve(name, coeffs, N, prime_bound, product_bound)=
   my(E=ellinit(coeffs), z=msfromell(E,1), M=z[1], xp=z[2]);
   my(P=kprimes(E,N,prime_bound), hits=List(), r, n);
   print("CURVE ",name," conductor=",N," rootno=",ellrootno(E));
+  print("XP ",name," ",xp);
+  my(den2=0, denodd=0, vv);
+  for(a=0,N-1, if(gcd(a,N)==1, vv=mseval(M,xp,[oo,a/N]); if(denominator(vv)%2==0,den2++,denodd++)));
+  print("SYMBOL_DENOM_PARITY ",name," even_den=",den2," odd_den=",denodd);
   print("KPRIMES ",name," ",P);
 
   \\ Rank-one controls have root number -1; inspect odd derivative orders.
