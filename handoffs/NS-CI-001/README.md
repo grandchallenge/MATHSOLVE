@@ -103,30 +103,25 @@ PACKET_D1_DIMENSIONALLY_NORMALIZED_CONDITIONAL_BRIDGE_PROVED__D1_NOT_IMPLIED_BY_
 
 See `work_packages/NS_CI_R014_A2_L5_B3_PACKET_INTERMITTENCY_D1.md`.
 
-For `U0=||u0||_2`, define the intrinsic whole-space energy wavenumber
+For `U0=||u0||_2`, define
 
 ```math
-lambda_E=(nu/U0)^2
-```
-
-and
-
-```math
+lambda_E=(nu/U0)^2,
+qquad
 S_D(t)=sum_{q<=Q(t)} lambda_q^(D-1)||u_q(t)||_infinity^2.
 ```
 
-The conditional packet estimate is
+The conditional packet estimate
 
 ```math
 PI_D^*:
 integral S_D
 <=
 C_D lambda_E^D
-integral sum_q lambda_q^2||u_q||_2^2.
+integral sum_q lambda_q^2||u_q||_2^2
 ```
 
-This normalization is Navier--Stokes scale-covariant and physically
-dimensionally consistent. Pointwise,
+is scale-covariant and dimensionally consistent. Pointwise,
 
 ```math
 f^2 <= Lambda^(3-D) S_D,
@@ -134,75 +129,104 @@ qquad
 f=sup_{q<=Q} lambda_q||u_q||_infinity.
 ```
 
-Thus every `D>=1`, together with `PI_D^*`, the selected `Lambda in L2_t`
-hypothesis, and Leray dissipation, gives `f in L1_t` and closes the already
-established low-mode criterion. At `D=1`,
-
-```math
-integral f
-lesssim
-C_1^(1/2) nu^(1/2) ||Lambda||_L2.
-```
-
-A threshold-compatible static fixture separates the current A2 scalar budgets
-from `PI_1^*`. It is not a Navier--Stokes trajectory. Hence the missing packet
-estimate must use genuinely dynamic information.
-
-The exact-merge replay on `b05c3e6e...` completed green for formal targets,
-ledgers, Ubuntu, Windows, and security analysis. Later protected-main movement
-was unrelated and retained `b05c3e6e...` in ancestry.
+At `D=1`, `PI_1^*` plus `Lambda in L2_t` would imply `f in L1_t`. A
+threshold-compatible static fixture separates the present A2 scalar budgets
+from `PI_1^*`, so the missing estimate must use genuinely dynamic information.
 
 ### L5-9 critical H1/2 dynamic audit
 
-`work_packages/NS_CI_R014_A2_L5_B3_PI1_CRITICAL_ENERGY_AUDIT.md` records
+Protected merge `7d72d4f8aec2019a8eefb4db4fe151e4f14b1211` admitted
 
 ```text
 PI1_CRITICAL_H12_ROUTE_REDUCED_TO_SUPERLINEAR_RICCATI__GLOBAL_CRITICAL_TRANSFER_HAS_NO_SIGN.
 ```
 
-Define
+See `work_packages/NS_CI_R014_A2_L5_B3_PI1_CRITICAL_ENERGY_AUDIT.md`.
+
+With
 
 ```math
 X=sum_q lambda_q||u_q||_2^2,
 qquad
-Y=sum_q lambda_q^3||u_q||_2^2.
+Y=sum_q lambda_q^3||u_q||_2^2,
 ```
 
-Bernstein gives
+Bernstein gives `S_1 <= C Y`, but the standard low-mode-controlled critical
+energy candidate uses
 
 ```math
-S_1 <= C Y_{<=Q} <= C Y,
+f <= C Lambda^2 X^(1/2),
 ```
 
-so the critical `H^(1/2) -> H^(3/2)` energy balance is a genuine candidate for
-manufacturing the packet endpoint. However the exact low-mode estimate is
+and therefore reduces to
 
 ```math
-f <= C Lambda^2 X^(1/2).
+X' <= C Lambda^2 X^(3/2).
 ```
 
-The standard low-mode-controlled critical-energy candidate therefore reduces
-to the superlinear comparison
+An exact scalar comparison remains blow-up compatible even with `Lambda^2 in
+L1_t` and the Leray-compatible `X in L2_t`. An exact real divergence-free
+three-mode Fourier triad has zero total `L2` transfer but critical weighted
+transfer `-8`, with a phase reversal giving `+8`. Hence the complete critical
+nonlinear transfer has no universal sign. Active-set-specific depletion or
+selected-transfer coherence remains live.
+
+### L5-10 field-calibration and frequency--scale successor
+
+The durable successor plan is
+
+`work_packages/NS_CI_R014_A2_L5_10_FIELD_CALIBRATION_FREQUENCY_SCALE_HANDOFF.md`.
+
+It records one new elementary but strategically important reduction:
+
+```text
+A global PI_1^* estimate is not required.
+```
+
+For any fixed finite `R`, the known source envelope makes the set
+`{Lambda<=R}` harmless because
 
 ```math
-X' <= C Lambda^2 X^(3/2),
+f <= C U0 Lambda^(5/2)
+   <= C U0 R^(1/2) Lambda^2.
 ```
 
-rather than linear Gronwall. Leray also gives `X in L2_t`, but an explicit
-scalar profile has `a in L1`, `x in L2`, `x'=a x^(3/2)`, and finite-time
-blow-up, so these abstract data do not close the comparison. Its terminal
-coefficient tail has exactly the Riccati threshold scaling; shrinking the
-terminal interval alone does not repair it.
+On `{Lambda>R}`, L5-8 gives
 
-An exact real divergence-free three-mode Fourier triad has zero total `L2`
-nonlinear transfer but `dot H^(1/2)`-weighted pairing `-8`; a phase reversal
-gives `+8`. Thus the complete critical nonlinear transfer has no universal
-sign. This excludes a second generic escape from the straight critical-energy
-candidate.
+```math
+f^2 <= C Lambda^2 S_1,
+qquad
+S_1=sum_{q<=Q}||u_q||_infinity^2.
+```
 
-The scalar fixture is not an NSE trajectory; the triad is an algebraic sign
-fixture. This bounded result does not exclude active-set-specific depletion or
-selected-transfer cancellation.
+Therefore it is sufficient to prove the strictly weaker high-activity tail
+condition
+
+```math
+integral_{ {Lambda>R} } S_1(t) dt < infinity
+```
+
+for some finite `R`. A terminal-local version near each putative singular time
+is also sufficient.
+
+The same work package incorporates three recent field developments as bounded
+research inputs:
+
+1. **September 2026 forced blow-up construction.** The explicit OpenAI
+   construction has core scales `ell_r~(1-t)^(1/2)` and angular/axial speed
+   `~(1-t)^(-1/2-h)`. It is a valuable singularity calibration object, but it
+   is forced while A2 is unforced. It cannot directly falsify A2. The first
+   legitimate task is an exact dyadic lower bound at the core scale, not a
+   similarity-scale inference.
+2. **Cheskidov--Peng 2026 intermittency framework.** Its active-shell
+   Bernstein-saturation weights structurally align with `S_D`; use it to
+   formulate high-`Lambda` depletion, not to import a periodic/forced theorem
+   into the whole-space unforced target.
+3. **Guo--Wang--Xiong arXiv:2609.03877.** Their frequency--scale matching keeps
+   dyadic frequency and physical observation scale separate until a summable
+   two-sided kernel is obtained. This is a genuinely distinct analytic route
+   from the already-closed global commutator estimate, provided the `(q,k)`
+   indices are not collapsed prematurely.
 
 ## Residual blockers
 
@@ -210,10 +234,9 @@ selected-transfer cancellation.
   returns the closed L4 weighted column.
 - B2 near threshold: no standalone blocker in the pointwise L5 decomposition;
   dynamic finite-neighbour terms can still occur.
-- B3 strict tail / packet frontier: `PI_1^*` is sufficient but not proved from
-  A2. Static interpolation is separated. The straight global critical
-  `H^(1/2)` route reduces to a superlinear Riccati comparison, and the complete
-  critical transfer has no universal sign.
+- B3 packet frontier: global `PI_1^*` is sufficient but stronger than needed;
+  the live target is high-`Lambda` packet-tail finiteness. Static interpolation
+  and the straight global critical `H^(1/2)` route are separated.
 - B4 selector motion: unchanged unless a genuine active-set variation or
   selector-free limiting theorem is supplied.
 
@@ -224,28 +247,31 @@ bad-set splitting, threshold-residence Duhamel, the standard direct-L6
 absolute commutator estimate, signed projection/pressure algebra alone, the L4
 weighted column, or the straight global critical-energy comparison.
 
-The smallest live dynamic proposition is now an **active-set-specific packet
-depletion theorem**. Test whether the defining threshold and NSE transfer
-identity force, on high-`Lambda` times, a quantitative improvement over
+Proceed in this order:
+
+1. **Protect the high-`Lambda` tail reduction** with focused regression tests.
+2. **Calibrate the explicit forced singular solution** by proving or rejecting
+   a Littlewood--Paley shell lower bound at `lambda~(1-t)^(-1/2)`. If it
+   succeeds, compute `Lambda`, `f`, `S_1`, `W_{<=Q}`, and `Z_{>Q}` asymptotics.
+   Keep the forced/unforced claim boundary explicit.
+3. **Launch frequency--scale matching** in a backward local-energy cylinder.
+   Retain dyadic frequency `q` and physical scale `k` separately. Seek a
+   summable kernel in `q-k`; bind `k` to `Q` only after obtaining the gain.
+4. Express any successful active-set depletion in the Cheskidov--Peng
+   intermittency language after the PDE estimate is proved, not before.
+
+A useful theorem-grade successor is any estimate implying
 
 ```math
-f <= C Lambda^2 X^(1/2)
+integral_{(T-delta,T) intersect {Lambda>R}} S_1(t) dt < infinity
 ```
 
-or an equivalent selected-shell estimate sufficient to make the L5-8
-Cauchy--Schwarz bridge finite. A valid advance must produce one of:
+for each putative singular time `T`, with finite `R,delta`. This is enough for
+the established `f in L1` continuation route when combined with A2.
 
-1. a coefficient linear in the critical state whose time integral is
-   controlled by A2/Leray budgets;
-2. active-shell depletion/anti-concentration with a summable frequency gain;
-3. selected-transfer cancellation/coherence unavailable to the complete
-   critical pairing;
-4. a different dimensionally and scale-covariant packet estimate that closes
-   `f in L1_t` without recreating L3, L4, or B4.
-
-If a candidate reduces to `G_Q`, `S_Q`, selector variation, a residence
-assumption, or the superlinear `Lambda^2 X^(3/2)` comparison, record that exact
-reduction rather than reopening its closed lane.
+Reject a candidate immediately if it reduces to `G_Q`, `S_Q`, selector
+variation, a new residence assumption, or `Lambda^2 X^(3/2)` without an
+independent reopening theorem.
 
 ## Authoritative pointers
 
@@ -261,6 +287,7 @@ reduction rather than reopening its closed lane.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_B3_SIGNED_PRESSURE_FIXTURE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_B3_PACKET_INTERMITTENCY_D1.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_B3_PI1_CRITICAL_ENERGY_AUDIT.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_10_FIELD_CALIBRATION_FREQUENCY_SCALE_HANDOFF.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
@@ -279,6 +306,10 @@ decorrelation.
 
 The active Cert scope qualifies only the exact target/interface boundary. It is
 not proof of A2 or of any analytic L5 estimate.
+
+The September 2026 explicit singular construction uses a smooth external force;
+it is not a solution in the selected unforced A2 class. It may calibrate the
+observable but may not be used as a direct A2 counterexample.
 
 ## Reserved stop conditions
 
