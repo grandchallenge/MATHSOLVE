@@ -3,6 +3,7 @@ import unittest
 
 from tests.test_ns_ci_a2_l5_field_calibration import NSCIA2L5FieldCalibrationTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_forced_core_shell_calibration import NSCIA2L5ForcedCoreShellCalibrationTests  # noqa: F401
+from tests.test_ns_ci_a2_l5_frequency_scale_transplant import NSCIA2L5FrequencyScaleTransplantTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_packet_intermit_d1 import NSCIA2L5PacketIntermittencyD1Tests  # noqa: F401
 from tests.test_ns_ci_a2_l5_pi1_critical_energy import NSCIA2L5PI1CriticalEnergyTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_signed_pressure_residual import SignedPressureResidualTests  # noqa: F401
