@@ -7,56 +7,21 @@
   "programme_authority": {
     "repository": "grandchallenge/MATH-PROGRAMME",
     "merge_commit": "3e2c4148d4304b2446a84c1e9a414d4a976a0464",
-    "decision": {
-      "path": "governance/vgse_bounded_admission_decision.json",
-      "digest_algorithm": "git_blob_sha1",
-      "digest": "a419d6832757ec2631e67d7f2b5f71d16e51f359",
-      "decision": "ADMIT_BOUNDED_PENDING_CROSS_REPOSITORY_ACTIVATION"
-    },
-    "candidate_registry": {
-      "path": "governance/campaign_admission_registry.json",
-      "digest_algorithm": "git_blob_sha1",
-      "digest": "5cd3f34f8cce130cd64dbea6aa8652d80783280b",
-      "registry_id": "MP-CAMPAIGN-ADMISSION-001"
-    },
-    "runtime_contract": {
-      "path": "governance/umbrella_runtime_contract_v4.json",
-      "digest_algorithm": "git_blob_sha1",
-      "digest": "33cf79f38f1273a834bb43d4cc55bfc79ba2c5e0",
-      "contract_id": "MP-UMBRELLA-RUNTIME-004"
-    },
+    "decision": {"path":"governance/vgse_bounded_admission_decision.json","digest_algorithm":"git_blob_sha1","digest":"a419d6832757ec2631e67d7f2b5f71d16e51f359","decision":"ADMIT_BOUNDED_PENDING_CROSS_REPOSITORY_ACTIVATION"},
+    "candidate_registry": {"path":"governance/campaign_admission_registry.json","digest_algorithm":"git_blob_sha1","digest":"5cd3f34f8cce130cd64dbea6aa8652d80783280b","registry_id":"MP-CAMPAIGN-ADMISSION-001"},
+    "runtime_contract": {"path":"governance/umbrella_runtime_contract_v4.json","digest_algorithm":"git_blob_sha1","digest":"33cf79f38f1273a834bb43d4cc55bfc79ba2c5e0","contract_id":"MP-UMBRELLA-RUNTIME-004"},
     "state_authority": "protected_branch_repository_records",
     "github_issue_role": "mutable_navigational_mirror",
     "candidate_work_can_self_admit": false
   },
-  "programme_mirrors": {
-    "candidate_tracker_issue": 170,
-    "bounded_decision_pull_request": 217,
-    "activation_issue": 98
-  },
+  "programme_mirrors": {"candidate_tracker_issue":170,"bounded_decision_pull_request":217,"activation_issue":98},
   "source_provenance": {
     "state": "provider_verified",
     "forge_repository": "grandchallenge/MATHFORGE",
     "forge_issue": 32,
-    "provider_manifest": {
-      "commit_sha": "593afd971a53ca0285f8b94570997ed7c3d7c170",
-      "path": "provider_manifests/VGSE-001.json",
-      "digest_algorithm": "git_blob_sha1",
-      "digest": "9cb5ac2d92b458f7f63e8a9811448f245a151ddd"
-    },
-    "source_concordance": {
-      "commit_sha": "593afd971a53ca0285f8b94570997ed7c3d7c170",
-      "path": "sources/VGSE-001/source_revision_concordance.json",
-      "digest_algorithm": "git_blob_sha1",
-      "digest": "6685cd1b0ed4d759f7447fce4b217ef8a59f0f93"
-    },
-    "candidate_source": {
-      "author": "Pavel Galashin",
-      "title": "Amplituhedra and Origami, I: Tree Level",
-      "author_pdf_sha256": "e513789426ae6247438920bfc80cfba6bd9c32dc6799a4f7873d806a865f95de",
-      "arxiv_v2_sha256": "f5aefb71dd0d662679e85cd0c7f96d1bbbc029a6b5cd2f1cfaa06286cc718e34",
-      "normalized_text_sha256": "74d58d4465166fc5035e5064a2c1cabc8b0f1e62cdcf82f7b41c6af65492cba4"
-    }
+    "provider_manifest": {"commit_sha":"593afd971a53ca0285f8b94570997ed7c3d7c170","path":"provider_manifests/VGSE-001.json","digest_algorithm":"git_blob_sha1","digest":"9cb5ac2d92b458f7f63e8a9811448f245a151ddd"},
+    "source_concordance": {"commit_sha":"593afd971a53ca0285f8b94570997ed7c3d7c170","path":"sources/VGSE-001/source_revision_concordance.json","digest_algorithm":"git_blob_sha1","digest":"6685cd1b0ed4d759f7447fce4b217ef8a59f0f93"},
+    "candidate_source": {"author":"Pavel Galashin","title":"Amplituhedra and Origami, I: Tree Level","author_pdf_sha256":"e513789426ae6247438920bfc80cfba6bd9c32dc6799a4f7873d806a865f95de","arxiv_v2_sha256":"f5aefb71dd0d662679e85cd0c7f96d1bbbc029a6b5cd2f1cfaa06286cc718e34","normalized_text_sha256":"74d58d4465166fc5035e5064a2c1cabc8b0f1e62cdcf82f7b41c6af65492cba4"}
   },
   "solve_candidate": {
     "repository": "grandchallenge/MATHSOLVE",
@@ -74,67 +39,12 @@
   },
   "activation_artifacts": {
     "state": "prepared_pending_protected_merge",
-    "campaign_manifest": {
-      "path": "campaign_manifests/VGSE-001.json",
-      "digest_algorithm": "git_blob_sha1",
-      "digest": "3bb6b18052f5754e9ae9aa4f813d9b43dcd4e3b4"
-    },
-    "cert_handoff": {
-      "path": "cert_handoffs/VGSE-001.json",
-      "digest_algorithm": "git_blob_sha1",
-      "digest": "42cfa84978fd63c75f074b388afd8b1fcbd56091",
-      "status": "pending"
-    },
-    "current_route_overlay": {
-      "path": "contracts/mathcert_current_routes_vgse_overlay.json",
-      "digest_algorithm": "git_blob_sha1",
-      "digest": "a3e95a3b7dfa56b5c87f24b7d6fd1b68e4954681",
-      "route_registry_entry_present": false
-    }
+    "campaign_manifest": {"path":"campaign_manifests/VGSE-001.json","digest_algorithm":"git_blob_sha1","digest":"3bb6b18052f5754e9ae9aa4f813d9b43dcd4e3b4"},
+    "cert_handoff": {"path":"cert_handoffs/VGSE-001.json","digest_algorithm":"git_blob_sha1","digest":"42cfa84978fd63c75f074b388afd8b1fcbd56091","status":"pending"},
+    "current_route_overlay": {"path":"contracts/mathcert_current_routes_vgse_overlay.json","digest_algorithm":"git_blob_sha1","digest":"0527520c8c08cce71e4863ac5324572d48120d16","route_registry_entry_present":false}
   },
-  "certification_candidate": {
-    "repository": "grandchallenge/MATHCERT",
-    "issue": 41,
-    "state": "handoff_prepared_route_pending",
-    "route_id": "MC-ROUTE-VGSE-001",
-    "route_registry_entry": null,
-    "may_adjudicate": false,
-    "may_issue_certificate_output": false
-  },
-  "bounded_candidate_scope": {
-    "source_and_semantics_lock": true,
-    "exact_arrangement_replay": true,
-    "numerical_algebraic_witness_replay": true,
-    "source_vector_geometry_replication": true,
-    "numerical_weighted_graph_replay": true,
-    "numerical_t_embedding_reconstruction": true,
-    "active_campaign_manifest_created": true,
-    "cert_handoff_created": true,
-    "cert_route_created": false,
-    "adjudication_created": false,
-    "promotion_record_created": false
-  },
-  "admission_gates": {
-    "forge_provider_manifest_admitted": true,
-    "source_revision_concordance_complete": true,
-    "solve_candidate_package_reviewed": true,
-    "cert_route_registered": false,
-    "programme_active_registry_updated": false,
-    "programme_routing_registry_updated": false,
-    "runtime_contract_updated_for_active_admission": false,
-    "intellect_repin_complete_if_required": false
-  },
-  "claim_boundary": {
-    "candidate_registered_not_admitted": true,
-    "source_verified": true,
-    "algebraic_replay_certified": false,
-    "planar_t_embedding_certified": false,
-    "continuous_rigid_foldability_established": false,
-    "collision_free_deployment_established": false,
-    "finite_thickness_structure_established": false,
-    "manufacturable_product_established": false,
-    "novelty_or_priority_authorized": false,
-    "patentability_authorized": false,
-    "commercial_claim_authorized": false
-  }
+  "certification_candidate": {"repository":"grandchallenge/MATHCERT","issue":41,"state":"handoff_prepared_route_pending","route_id":"MC-ROUTE-VGSE-001","route_registry_entry":null,"may_adjudicate":false,"may_issue_certificate_output":false},
+  "bounded_candidate_scope": {"source_and_semantics_lock":true,"exact_arrangement_replay":true,"numerical_algebraic_witness_replay":true,"source_vector_geometry_replication":true,"numerical_weighted_graph_replay":true,"numerical_t_embedding_reconstruction":true,"active_campaign_manifest_created":true,"cert_handoff_created":true,"cert_route_created":false,"adjudication_created":false,"promotion_record_created":false},
+  "admission_gates": {"forge_provider_manifest_admitted":true,"source_revision_concordance_complete":true,"solve_candidate_package_reviewed":true,"cert_route_registered":false,"programme_active_registry_updated":false,"programme_routing_registry_updated":false,"runtime_contract_updated_for_active_admission":false,"intellect_repin_complete_if_required":false},
+  "claim_boundary": {"candidate_registered_not_admitted":true,"source_verified":true,"algebraic_replay_certified":false,"planar_t_embedding_certified":false,"continuous_rigid_foldability_established":false,"collision_free_deployment_established":false,"finite_thickness_structure_established":false,"manufacturable_product_established":false,"novelty_or_priority_authorized":false,"patentability_authorized":false,"commercial_claim_authorized":false}
 }
