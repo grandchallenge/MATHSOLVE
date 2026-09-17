@@ -19,7 +19,7 @@
 1. obtain one volume- and cutoff-uniform positive spectral lower bound in fixed physical units for the regulated theory;
 2. prove that the chosen continuum convergence topology preserves that spectral exclusion.
 
-`YM-D001-R001` isolates the second burden. It asks for the weakest simple operator topology in which a common spectral exclusion can be proved to survive. The package proves that strong-resolvent convergence is sufficient.
+`YM-D001-R001` isolates the second burden. It tests a simple convergence topology strictly weaker than norm-resolvent convergence: strong convergence of the bounded resolvents at the common point `-1`. The package proves that this strong convergence is sufficient and gives an exact counterexample showing that mere weak convergence of the same resolvents is insufficient. It does not claim a globally minimal topology theorem.
 
 ## Restricted-target contract — 18 fields
 
@@ -44,7 +44,7 @@
 
 ## Candidate result
 
-`YM-D001-L001` proves the target. If nonnegative self-adjoint `H_n` converge to nonnegative self-adjoint `H` in the strong-resolvent sense and every `H_n` has no spectrum in `(0,Delta)` for one common `Delta > 0`, then `H` also has no spectrum in `(0,Delta)`.
+`YM-D001-L001` proves the target. If nonnegative self-adjoint `H_n` and `H` satisfy strong convergence of the bounded resolvents `(I+H_n)^(-1) -> (I+H)^(-1)` and every `H_n` has no spectrum in `(0,Delta)` for one common `Delta > 0`, then `H` also has no spectrum in `(0,Delta)`.
 
 The proof uses the bounded transforms
 
@@ -72,7 +72,7 @@ On `L2([0,1])`, let `P_n` multiply by the indicator of the `n`th dyadic checkerb
 
 `H_n = Delta (I-P_n)`.
 
-Every `H_n` has spectrum `{0,Delta}`. The projections converge weakly to `(1/2)I`, so the resolvents converge weakly to a scalar resolvent corresponding to a limit Hamiltonian `h I` with `0 < h < Delta`. Thus weak resolvent convergence can fill the forbidden gap.
+Every `H_n` has spectrum `{0,Delta}`. The projections converge weakly to `(1/2)I`, so the resolvents converge weakly to a scalar resolvent corresponding to a limit Hamiltonian `h I` with `0 < h < Delta`. Thus weak convergence of the bounded resolvents can fill the forbidden gap.
 
 ### FP2 — vacuum persistence is separate
 
@@ -92,7 +92,7 @@ This package closes only the abstract convergence-topology implication inside `Y
 
 1. one common `Delta > 0` independent of cutoff and volume;
 2. a mathematically valid identification of the regulated state spaces with the limiting comparison space (or a stronger generalized convergence framework replacing that identification);
-3. strong-resolvent convergence of the physically rescaled Hamiltonians to the target continuum Hamiltonian;
+3. strong convergence of the physically rescaled resolvents to the target continuum resolvent;
 4. any separately required vacuum-sector convergence.
 
 No claim in this package supplies those Yang–Mills-specific inputs.
