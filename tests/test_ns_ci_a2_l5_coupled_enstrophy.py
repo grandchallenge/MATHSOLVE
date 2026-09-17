@@ -1,6 +1,7 @@
 from fractions import Fraction
 import unittest
 
+from tests.test_ns_ci_a2_l5_field_calibration import NSCIA2L5FieldCalibrationTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_packet_intermit_d1 import NSCIA2L5PacketIntermittencyD1Tests  # noqa: F401
 from tests.test_ns_ci_a2_l5_pi1_critical_energy import NSCIA2L5PI1CriticalEnergyTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_signed_pressure_residual import SignedPressureResidualTests  # noqa: F401
@@ -41,9 +42,6 @@ class NSCIA2L5CoupledEnstrophyTests(unittest.TestCase):
             self.assertEqual(diagonal, lam_q * nu * a_q)
 
     def test_half_integrability_gap_exponents(self) -> None:
-        # f <= Lambda^(3/2) * D3^(1/2).
-        # Lambda in L2 gives Lambda^(3/2) in L^(4/3), so Holder needs
-        # D3^(1/2) in L4. Leray supplies only D3^(1/2) in L2.
         lambda_factor_time_exponent = Fraction(4, 3)
         required_partner = Fraction(1, 1) / (
             Fraction(1, 1) - Fraction(1, 1) / lambda_factor_time_exponent
@@ -55,7 +53,6 @@ class NSCIA2L5CoupledEnstrophyTests(unittest.TestCase):
         dissipation_budget = []
         energy = []
         for n in range(1, 10):
-            # lambda = 2^(4n), so lambda^(-9/4) = 2^(-9n) exactly.
             lam = Fraction(2 ** (4 * n), 1)
             duration = Fraction(1, 2 ** (9 * n))
             a_q = lam**2
@@ -70,8 +67,6 @@ class NSCIA2L5CoupledEnstrophyTests(unittest.TestCase):
     def test_static_fixture_low_coefficient_diverges_geometrically(self) -> None:
         terms = []
         for n in range(1, 8):
-            # lambda^(5/2) = 2^(10n), and duration = 2^(-9n),
-            # so each next contribution is exactly twice the previous one.
             duration = Fraction(1, 2 ** (9 * n))
             f_q = Fraction(2 ** (10 * n), 1)
             terms.append(f_q * duration)
@@ -79,9 +74,6 @@ class NSCIA2L5CoupledEnstrophyTests(unittest.TestCase):
             self.assertEqual(right / left, Fraction(2, 1))
 
     def test_selector_cancellation_is_algebraic_for_finite_complements(self) -> None:
-        # At every fixed terminal shell N, E_low(q)+E_(q<p<=N) is independent
-        # of q. Thus selector jumps cancel when the complementary finite blocks
-        # are retained; no global H1 identity is asserted here.
         terminal_energy = Fraction(19, 7)
         lows = [Fraction(k, 7) for k in range(8)]
         finite_highs = [terminal_energy - low for low in lows]
@@ -89,9 +81,6 @@ class NSCIA2L5CoupledEnstrophyTests(unittest.TestCase):
             self.assertEqual(low + high, terminal_energy)
 
     def test_transport_commutator_has_no_frequency_gain_after_derivative(self) -> None:
-        # Kernel cancellation contributes lambda_p^-1, while the derivative
-        # on a p-shell contributes lambda_p. Their product is scale-neutral,
-        # leaving the low Lipschitz coefficient rather than a decaying p-weight.
         for p in range(1, 12):
             lam_p = Fraction(2**p, 1)
             self.assertEqual((Fraction(1, 1) / lam_p) * lam_p, 1)
