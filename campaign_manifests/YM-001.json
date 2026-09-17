@@ -15,50 +15,29 @@
     {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/FC-GDM-002-TAG-RESOLUTION.json","digest_algorithm":"git_blob_sha1","digest":"7dd39a995a789da583f8f2f0b15da2c30207f0f1","role":"source"},
     {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/coverage/YM-001.json","digest_algorithm":"git_blob_sha1","digest":"84c25fe523e854cc0e64862fd3eb0bd866a2eac7","role":"source"}
   ],
-  "solve": {"repository":"grandchallenge/MATHSOLVE","provider_issue":"https://github.com/grandchallenge/MATHSOLVE/issues/69","provider_commit":"ec7c60bfa51850d7fb11bd5a3a24ca834352366e","migration_debt":["Historical YM-WP00-WP02 governance material remains retrospectively anchored in MATH-PROGRAMME and is replaced by native Solve artifacts only as substantive stages advance.","Preserve the retrospective Programme references as historical evidence while all post-gate theorem development proceeds natively in MATHSOLVE.","Preserve all FC-GDM-002 Mills matches as lexical false positives; they do not open a Yang-Mills route."]},
-  "work_packages": [
-    {
-      "work_package_id": "YM-WP00-WP02-RETROSPECTIVE",
-      "primary_type": "GOVERNANCE_HANDOFF",
-      "status": "active",
-      "source_repository": "grandchallenge/MATH-PROGRAMME",
-      "source_commit": "b55062d2d7de18ac6d0e5c1c943d530c53aae211",
-      "artifacts": [{"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"b55062d2d7de18ac6d0e5c1c943d530c53aae211","path":"campaigns/yang_mills/YM_WP01_WP02_INTEGRATION.md","digest_algorithm":"git_blob_sha1","digest":"dac2eda951b24726dfea2a0c86820bacd02f9b2c","role":"programme_bundle"}],
-      "ledgers": {
-        "claim": {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"b55062d2d7de18ac6d0e5c1c943d530c53aae211","path":"campaigns/yang_mills/WP02_THEOREM_LEDGER/10_CLAIM_LEDGER.yaml","digest_algorithm":"git_blob_sha1","digest":"3346061c3644d3c342b82adec473dc6c72d75827","role":"claim_ledger"},
-        "proof_obligation": {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"b55062d2d7de18ac6d0e5c1c943d530c53aae211","path":"campaigns/yang_mills/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json","digest_algorithm":"git_blob_sha1","digest":"c32cd52810401769cd5bd9ab189ee713d86f01b4","role":"proof_obligation_dag"},
-        "failed_route": null,
-        "resource": null,
-        "certification": {"repository":"grandchallenge/MATHSOLVE","commit_sha":"cb2049ccf2bd69a0423cb9033b7bec5554718465","path":"cert_handoffs/YM-001.json","digest_algorithm":"git_blob_sha1","digest":"54b7ad8156532e3dceba439356848dfa65a4d1ac","role":"certificate_handoff"}
-      },
-      "children": []
+  "solve": {"repository":"grandchallenge/MATHSOLVE","provider_issue":"https://github.com/grandchallenge/MATHSOLVE/issues/69","provider_commit":"ec7c60bfa51850d7fb11bd5a3a24ca834352366e","migration_debt":["Historical YM-WP00-WP02 governance material remains retrospectively anchored in MATH-PROGRAMME and requires a full native campaign-manifest migration before native Solve work packages can be represented recursively in this manifest.","Native post-gate theorem development is already underway in MATHSOLVE: YM-D005-R001 was admitted at protected merge bbadc7953b26afadeb4014e2e4980232df46097b, but the current manifest schema has no mixed retrospective/native coverage mode, so that package remains outside the recursive work_packages array until full migration.","Preserve all FC-GDM-002 Mills matches as lexical false positives; they do not open a Yang-Mills route."]},
+  "work_packages": [{
+    "work_package_id": "YM-WP00-WP02-RETROSPECTIVE",
+    "primary_type": "GOVERNANCE_HANDOFF",
+    "status": "active",
+    "source_repository": "grandchallenge/MATH-PROGRAMME",
+    "source_commit": "b55062d2d7de18ac6d0e5c1c943d530c53aae211",
+    "artifacts": [{"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"b55062d2d7de18ac6d0e5c1c943d530c53aae211","path":"campaigns/yang_mills/YM_WP01_WP02_INTEGRATION.md","digest_algorithm":"git_blob_sha1","digest":"dac2eda951b24726dfea2a0c86820bacd02f9b2c","role":"programme_bundle"}],
+    "ledgers": {
+      "claim": {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"b55062d2d7de18ac6d0e5c1c943d530c53aae211","path":"campaigns/yang_mills/WP02_THEOREM_LEDGER/10_CLAIM_LEDGER.yaml","digest_algorithm":"git_blob_sha1","digest":"3346061c3644d3c342b82adec473dc6c72d75827","role":"claim_ledger"},
+      "proof_obligation": {"repository":"grandchallenge/MATH-PROGRAMME","commit_sha":"b55062d2d7de18ac6d0e5c1c943d530c53aae211","path":"campaigns/yang_mills/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json","digest_algorithm":"git_blob_sha1","digest":"c32cd52810401769cd5bd9ab189ee713d86f01b4","role":"proof_obligation_dag"},
+      "failed_route": null,
+      "resource": null,
+      "certification": {"repository":"grandchallenge/MATHSOLVE","commit_sha":"cb2049ccf2bd69a0423cb9033b7bec5554718465","path":"cert_handoffs/YM-001.json","digest_algorithm":"git_blob_sha1","digest":"54b7ad8156532e3dceba439356848dfa65a4d1ac","role":"certificate_handoff"}
     },
-    {
-      "work_package_id": "YM-D005-CONVERSE-SPECTRAL-BRIDGE",
-      "primary_type": "RESTRICTED_THEOREM",
-      "status": "complete",
-      "source_repository": "grandchallenge/MATHSOLVE",
-      "source_commit": "bbadc7953b26afadeb4014e2e4980232df46097b",
-      "artifacts": [
-        {"repository":"grandchallenge/MATHSOLVE","commit_sha":"bbadc7953b26afadeb4014e2e4980232df46097b","path":"work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/00_README.md","digest_algorithm":"git_blob_sha1","digest":"38e88de875e01d87dd2040b86cc83a614a774856","role":"solve_artifact"},
-        {"repository":"grandchallenge/MATHSOLVE","commit_sha":"bbadc7953b26afadeb4014e2e4980232df46097b","path":"work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/01_CONVERSE_SPECTRAL_THEOREM.md","digest_algorithm":"git_blob_sha1","digest":"017b65ed9fb715ff9196bc8f8963f470a3b24e77","role":"solve_artifact"}
-      ],
-      "ledgers": {
-        "claim": {"repository":"grandchallenge/MATHSOLVE","commit_sha":"bbadc7953b26afadeb4014e2e4980232df46097b","path":"work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/02_CLAIM_LEDGER.yaml","digest_algorithm":"git_blob_sha1","digest":"cb3694049fc535f7c11889a6c12449d5b5bb4fcb","role":"claim_ledger"},
-        "proof_obligation": {"repository":"grandchallenge/MATHSOLVE","commit_sha":"c2dcc49c51a477df7c550d32bfff29d19d7bb6ef","path":"work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/03_PROOF_OBLIGATION_DAG.json","digest_algorithm":"git_blob_sha1","digest":"c00306af9c408e87f6e96b3ef0ebc52e7c6a7bc5","role":"proof_obligation_dag"},
-        "failed_route": null,
-        "resource": null,
-        "certification": null
-      },
-      "children": []
-    }
-  ],
+    "children": []
+  }],
   "certification": {
     "repository": "grandchallenge/MATHCERT",
     "contract": {"repository":"grandchallenge/MATHCERT","commit_sha":"3854dd1b4f6e162a7e74c3da1993f022ee691e5e","path":"governance/certification_routes.json","digest_algorithm":"git_blob_sha1","digest":"065f0531e4d763b389b207d4922d5a85b4335ee3"},
     "handoff_state": "pending",
     "handoff_packets": [{"handoff_id":"MC-HANDOFF-YM-001","status":"pending","target_claim_ids":["YM-WP02-C001","YM-WP02-C007"],"artifact":{"repository":"grandchallenge/MATHSOLVE","commit_sha":"cb2049ccf2bd69a0423cb9033b7bec5554718465","path":"cert_handoffs/YM-001.json","digest_algorithm":"git_blob_sha1","digest":"54b7ad8156532e3dceba439356848dfa65a4d1ac","role":"certificate_handoff"}}]
   },
-  "promotion": {"eligible":false,"blockers":["Historical YM-WP00-WP02 material remains retrospective and is migrated only as substantive native replacements arise.","YM-D001 through YM-D005 remain open campaign debts; YM-D005-R001 closes only the abstract reconstructed-Hilbert-space implication and does not supply reconstruction, observable completeness, or a common physical-unit decay estimate for four-dimensional Yang-Mills.","Existence, four-dimensional continuum construction, reconstruction, regulator survival, observable identification, and the physical mass-gap claim remain open.","FC-GDM-002 contains lexical false positives only and has no Yang-Mills theorem effect."]},
-  "disposal": {"status":"active","supersedes":[],"reopening_conditions":["Reopen the manifest when provider lineage, claim status, native work-package status, or certification state changes."]}
+  "promotion": {"eligible":false,"blockers":["Historical YM-WP00-WP02 material remains retrospective; the recursive manifest cannot become native until that historical coverage is migrated into MATHSOLVE.","YM-D005-R001 is admitted in native Solve at bbadc7953b26afadeb4014e2e4980232df46097b, but YM-D005 remains open because reconstruction, observable completeness, and a common physical-unit decay estimate are not established for four-dimensional Yang-Mills.","YM-D001 through YM-D005 remain open campaign debts, including four-dimensional continuum construction, reconstruction, regulator survival, and observable identification obligations.","FC-GDM-002 contains lexical false positives only and has no Yang-Mills theorem effect."]},
+  "disposal": {"status":"active","supersedes":[],"reopening_conditions":["Reopen the manifest when provider lineage, claim status, full native migration status, or certification state changes."]}
 }
