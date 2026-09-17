@@ -10,28 +10,37 @@ MATHSOLVE owns bounded theorem development and research artifacts. MATHCERT rema
 
 ## Purpose
 
-Advance `YM-001` from the promoted WP01/WP02 theorem interface into its first native Solve theorem tranche without implying construction of four-dimensional Yang–Mills theory or a physical mass gap.
+Continue native Solve theorem development for `YM-001` while preserving the open-problem boundary. The first admitted tranche closed the abstract converse-spectral implication inside `YM-D005`; the next selected tranche isolates the convergence-topology component of regulator survival inside `YM-D001`.
 
-## Primary deliverable
+## Current primary deliverable
 
-Prove or refute the restricted `YM-D005` converse-spectral target `YM-D005-R001` in `work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/01_CONVERSE_SPECTRAL_THEOREM.md`.
+Prove or refute restricted target `YM-D001-R001` in
+
+`work_packages/YM_D001_STRONG_RESOLVENT_GAP_STABILITY/01_STRONG_RESOLVENT_GAP_STABILITY.md`.
+
+The target asks whether one common positive spectral exclusion in fixed physical units survives strong-resolvent convergence of nonnegative self-adjoint Hamiltonians after the necessary regulator state-space identifications have already been made.
 
 ## Material acceptance criteria
 
-- freeze a common positive decay rate `Delta`, one reconstructed nonnegative self-adjoint Hamiltonian `H`, one vacuum vector `Omega`, and a linear class of centered gauge-invariant observable vectors dense in `Omega^perp`;
-- prove that asymptotic diagonal Euclidean/semigroup decay at the common rate on that dense class eliminates the reconstructed spectrum in `[0, Delta)` on `Omega^perp`, or produce an exact counterexample;
-- prove explicit false-proof fixtures showing that one-channel decay and non-uniform per-observable decay do not imply a global gap;
-- identify exactly which Yang–Mills-specific hypotheses remain outside the abstract spectral lemma;
-- preserve `YM-D001` through `YM-D005` as open research debts unless their own discharge conditions are actually met.
+- freeze one common `Delta > 0` in the same physical energy units for all regulated operators;
+- permit regulator-dependent operator domains by formulating convergence through `(I+H_n)^(-1)`;
+- prove that `sigma(H_n) subset {0} union [Delta,infinity)` plus strong resolvent convergence forces `sigma(H) subset {0} union [Delta,infinity)`, or produce a counterexample;
+- test whether a weaker topology suffices and preserve an exact failure fixture when it does not;
+- separate spectral-exclusion survival from persistence/uniqueness of a zero-energy vacuum;
+- preserve the distinction between a uniform physical-unit lower bound and merely positive regulator-dependent gaps;
+- identify exactly which Yang–Mills-specific scaling, state-space comparison, convergence, and uniform-bound obligations remain open;
+- preserve `YM-D001` through `YM-D005` as open research debts unless their full discharge conditions are met.
 
 ## Current substantive state
 
-- `YM-WP01`: promoted as eliminative false-proof infrastructure by protected MATH-PROGRAMME routing.
-- `YM-WP02`: promoted as theorem/dependency interface infrastructure.
-- `YM-D001` through `YM-D005`: open research debts.
-- `YM-D006` through `YM-D009`: source/scope dispositions are recorded and do not supply a route around D001-D005.
-- `YM-D005`: asks for the converse bridge from Euclidean correlation decay on a sufficiently rich observable class to the bottom of the reconstructed physical Hamiltonian spectrum.
-- Native Solve target `YM-D005-R001` isolates the abstract spectral implication after reconstruction. The candidate package proves that implication and two sharp necessity counterexamples; it does not yet instantiate the hypotheses for a four-dimensional Yang–Mills continuum theory.
+- `YM-WP01`: promoted eliminative false-proof infrastructure.
+- `YM-WP02`: promoted theorem/dependency interface infrastructure.
+- `YM-D005-R001` / `YM-D005-L001`: admitted in native Solve at protected merge `bbadc7953b26afadeb4014e2e4980232df46097b`; the theorem proves the abstract dense-observable converse spectral bridge after reconstruction.
+- Post-R001 reconciliation: protected at `adaae95545abcb02db4ab9b2281981fc0f8ce07b`; `YM-D005-R002` is explicitly blocked by `YM-D002`/`YM-D003` before it can be instantiated in the target four-dimensional limiting theory.
+- `YM-D001`: still open; it requires a uniform physical-unit regulated lower bound and a convergence theorem preserving spectral exclusion.
+- `YM-D001-R001`: selected native target for the convergence-topology component only.
+- `YM-D002` through `YM-D004`: remain open construction/reconstruction/observable-identification debts.
+- `YM-D006` through `YM-D009`: source/scope dispositions remain recorded and do not bypass D001-D005.
 
 ## Authoritative pointers
 
@@ -42,29 +51,50 @@ Prove or refute the restricted `YM-D005` converse-spectral target `YM-D005-R001`
 - `grandchallenge/MATH-PROGRAMME:campaigns/yang_mills/YM_CURRENT_ROUTING_GATE.json`
 - `grandchallenge/MATH-PROGRAMME:campaigns/yang_mills/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json`
 - `grandchallenge/MATHSOLVE:campaign_manifests/YM-001.json`
-- `grandchallenge/MATHSOLVE:work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/00_README.md`
-- `grandchallenge/MATHSOLVE:work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/01_CONVERSE_SPECTRAL_THEOREM.md`
-- `grandchallenge/MATHSOLVE:work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/02_CLAIM_LEDGER.yaml`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/03_PROOF_OBLIGATION_DAG.json`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D001_STRONG_RESOLVENT_GAP_STABILITY/00_README.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D001_STRONG_RESOLVENT_GAP_STABILITY/01_STRONG_RESOLVENT_GAP_STABILITY.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D001_STRONG_RESOLVENT_GAP_STABILITY/02_CLAIM_LEDGER.yaml`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D001_STRONG_RESOLVENT_GAP_STABILITY/03_PROOF_OBLIGATION_DAG.json`
 
-## Smallest safe next tranche
+## Selected theorem and falsification boundary
 
-After `YM-D005-L001` is admitted, instantiate its hypotheses in the same reconstructed four-dimensional limiting theory: identify the exact gauge-invariant positive-time observable space used by the reconstruction, prove that the subclass carrying the common `Delta` decay estimate has centered image dense in `Omega^perp`, and bind the Euclidean translated two-point function to `inner(psi, exp(-t H) psi)` for that same class. If the common decay estimate is available only for a proper non-dense channel, record that evidence as insufficient for the general full-spectrum inference rather than promoting a mass gap.
+The candidate theorem uses the bounded transforms
+
+`B_n = (I+H_n)^(-1)`
+
+and the polynomial sign condition associated with the common gap. It proves strong-resolvent preservation without requiring norm-resolvent convergence.
+
+Three exact firewalls accompany it:
+
+1. weak convergence of the resolvents can fill the forbidden interval;
+2. a moving zero-energy state can disappear even while the spectral exclusion survives strong-resolvent convergence;
+3. positive gaps `Delta_n` with `inf Delta_n = 0` provide no positive limiting lower bound.
+
+## Smallest safe successor after R001 admission
+
+Do not spend another tranche proving stronger abstract convergence topologies unless the application requires them. Bind the actual regulated Yang–Mills side of `YM-D001`:
+
+1. specify the physical rescaling of the regulated Hamiltonians;
+2. specify and justify the state-space comparison/identification used for the limit;
+3. determine whether one cutoff- and volume-uniform physical `Delta > 0` is actually available;
+4. prove strong-resolvent convergence to the same limiting Hamiltonian, or record the first exact obstruction preventing those hypotheses.
+
+If the regulated result supplies only cutoff-dependent positive gaps tending to zero, terminate that route as insufficient rather than promoting a continuum mass gap.
 
 ## Material dependencies and boundaries
 
-- `YM-D002` remains responsible for construction of a limiting hierarchy satisfying the complete Osterwalder–Schrader/reconstruction hypotheses.
-- `YM-D003` remains responsible for the four-dimensional ultraviolet, infinite-volume, and large-field continuum construction.
-- `YM-D004` remains responsible for identifying the renormalized local gauge-invariant curvature observables and perturbative normalization.
-- `YM-D001` remains responsible for regulator-survival/spectral-stability obligations.
-- `YM-D005-R001` is a functional-analytic implication inside a reconstructed theory; it cannot create the reconstructed theory to which it is applied.
-- the decay exponent must be one common positive `Delta` for a dense linear class; observable-dependent rates tending to zero are insufficient.
-- decay on one channel, finitely many channels, or another proper non-dense subspace does not by itself support the general inference to the bottom of the full physical spectrum.
+- `YM-D003` remains responsible for constructing and identifying a nontrivial four-dimensional continuum theory along a controlled physical trajectory.
+- `YM-D002` remains responsible for a complete limiting Osterwalder-Schrader/reconstruction hierarchy if the Hamiltonian is obtained by that route.
+- `YM-D004` remains responsible for renormalized local gauge-invariant curvature observables and perturbative normalization.
+- `YM-D005` remains open despite its admitted abstract lemma because its four-dimensional reconstruction/density/common-decay hypotheses are not established.
+- `YM-D001-R001` cannot create a uniform physical gap, a state-space identification, a continuum Hamiltonian, or a vacuum; it only proves stability once the stated hypotheses hold.
 - no result in this tranche is certified until independently adjudicated by MATHCERT.
 
 ## Reserved authority / stop conditions
 
-Stop or re-plan only for a material contradiction in the target formulation, failure of the spectral argument, evidence that the selected target is vacuous or already superseded by protected work, a reserved INTELLECT transition, authentication/safety failure, or material closure requiring certification/claim promotion outside MATHSOLVE authority.
+Stop or re-plan only for a material contradiction in the target formulation, failure of the operator-theoretic argument, evidence that the selected target is vacuous or already superseded by protected work, a reserved INTELLECT transition, authentication/safety failure, or material closure requiring certification/claim promotion outside MATHSOLVE authority.
 
 ## Notes intentionally omitted
 
-This handoff intentionally omits constitutional doctrine, the generic handoff contract, the historical WP00-WP02 package, external-source audit detail already protected in MATHFORGE/MATH-PROGRAMME, and any terminal Yang–Mills solution claim.
+This handoff intentionally omits constitutional doctrine, the generic handoff contract, historical WP00-WP02 material already protected in Programme, external-source audit detail already protected in MATHFORGE/MATH-PROGRAMME, and any terminal Yang–Mills solution claim.
