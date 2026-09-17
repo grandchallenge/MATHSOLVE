@@ -26,5 +26,13 @@ jobs:
           sudo apt-get install -y pari-gp
           gp --version
       - name: Exact normalized Kurihara parity probe
+        shell: bash
         run: |
-          gp -q work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/05_KURIHARA_PARI_PROBE.gp
+          set -euo pipefail
+          out="$(gp -q work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/05_KURIHARA_PARI_PROBE.gp 2>&1)"
+          printf '%s\n' "$out"
+          if printf '%s\n' "$out" | grep -q '***'; then
+            echo "PARI/GP reported an exception" >&2
+            exit 1
+          fi
+          printf '%s\n' "$out" | grep -q 'R5_WIT_PROBE_COMPLETE'
