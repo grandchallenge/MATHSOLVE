@@ -48,7 +48,7 @@ Prove or refute the restricted `YM-D005` converse-spectral target `YM-D005-R001`
 
 ## Smallest safe next tranche
 
-After `YM-D005-L001` is admitted, instantiate its hypotheses in the same reconstructed four-dimensional limiting theory: identify the exact gauge-invariant positive-time observable space used by the reconstruction, prove that the subclass carrying the common `Delta` decay estimate has centered image dense in `Omega^perp`, and bind the Euclidean translated two-point function to `inner(psi, exp(-t H) psi)` for that same class. If the common decay estimate is available only for a proper non-dense channel, record the route as insufficient rather than promoting a mass gap.
+After `YM-D005-L001` is admitted, instantiate its hypotheses in the same reconstructed four-dimensional limiting theory: identify the exact gauge-invariant positive-time observable space used by the reconstruction, prove that the subclass carrying the common `Delta` decay estimate has centered image dense in `Omega^perp`, and bind the Euclidean translated two-point function to `inner(psi, exp(-t H) psi)` for that same class. If the common decay estimate is available only for a proper non-dense channel, record that evidence as insufficient for the general full-spectrum inference rather than promoting a mass gap.
 
 ## Material dependencies and boundaries
 
@@ -58,7 +58,7 @@ After `YM-D005-L001` is admitted, instantiate its hypotheses in the same reconst
 - `YM-D001` remains responsible for regulator-survival/spectral-stability obligations.
 - `YM-D005-R001` is a functional-analytic implication inside a reconstructed theory; it cannot create the reconstructed theory to which it is applied.
 - the decay exponent must be one common positive `Delta` for a dense linear class; observable-dependent rates tending to zero are insufficient.
-- one channel, a finite collection of channels, or any proper non-dense subspace cannot determine the bottom of the full physical spectrum.
+- decay on one channel, finitely many channels, or another proper non-dense subspace does not by itself support the general inference to the bottom of the full physical spectrum.
 - no result in this tranche is certified until independently adjudicated by MATHCERT.
 
 ## Reserved authority / stop conditions
