@@ -45,8 +45,13 @@ noncomputable instance tm2StatementOccurrenceFintype (tm : Turing.FinTM2)
 
 noncomputable instance tm2StatementCodeFintype (tm : Turing.FinTM2) :
     Fintype (TM2StatementCode tm) := by
+  letI : Fintype tm.Λ := tm.ΛFin
+  letI : ∀ label : tm.Λ,
+      Fintype {stmt : Turing.TM2.Stmt tm.Γ tm.Λ tm.σ //
+        stmt ∈ Turing.TM2.stmts₁ (tm.m label)} :=
+    fun label => tm2StatementOccurrenceFintype tm label
   unfold TM2StatementCode
-  infer_instance
+  exact Sigma.instFintype
 
 /-- The root statement of any finite label has a canonical occurrence code. -/
 def TM2StatementCode.root (tm : Turing.FinTM2) (label : tm.Λ) :
@@ -83,6 +88,8 @@ def TM2ProvenanceToken (tm : Turing.FinTM2) :=
 
 noncomputable instance tm2ProvenanceTokenFintype (tm : Turing.FinTM2) :
     Fintype (TM2ProvenanceToken tm) := by
+  letI : Fintype (TM2StatementCode tm) := tm2StatementCodeFintype tm
+  letI : Fintype tm.σ := tm.σFin
   unfold TM2ProvenanceToken
   infer_instance
 
@@ -95,6 +102,7 @@ abbrev TM2ProgrammeSymbol (tm : Turing.FinTM2) := Option (TM2ProvenanceToken tm)
 
 noncomputable instance tm2ProgrammeSymbolFintype (tm : Turing.FinTM2) :
     Fintype (TM2ProgrammeSymbol tm) := by
+  letI : Fintype (TM2ProvenanceToken tm) := tm2ProvenanceTokenFintype tm
   unfold TM2ProgrammeSymbol
   infer_instance
 
