@@ -53,9 +53,9 @@ We first prove that
 
 Assume the contrary. Since
 
-`[0, Delta) = union_{a < Delta, a rational} [0,a]`,
+`[0, Delta) = union_{a in Q, 0 <= a < Delta} [0,a]`,
 
-continuity from below of finite measures implies that there exists some `a < Delta` with
+continuity from below of finite measures implies that there exists some `a` with `0 <= a < Delta` and
 
 `m := mu_psi([0,a]) > 0`.
 
@@ -130,10 +130,12 @@ Suppose a valid reconstruction of one limiting Euclidean theory supplies:
 - reconstructed centered vectors `psi_F in Omega^perp` for `F in A_decay`;
 - the translation/semigroup identity
 
-  `C_F(t) = <psi_F, exp(-tH) psi_F>`;
+  `Corr_F(t) = <psi_F, exp(-tH) psi_F>`;
 
 - density of `{psi_F : F in A_decay}` in `Omega^perp`;
-- one common `Delta > 0` such that every `C_F(t)` is eventually bounded by `C_F exp(-Delta t)`.
+- one common `Delta > 0` such that for every `F in A_decay` there are finite `M_F` and `T_F` with
+
+  `Corr_F(t) <= M_F exp(-Delta t)` for all `t >= T_F`.
 
 Then the reconstructed Hamiltonian has unique vacuum and non-vacuum spectrum bounded below by `Delta`.
 
