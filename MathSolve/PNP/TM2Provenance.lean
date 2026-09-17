@@ -1,4 +1,6 @@
 import Mathlib.Computability.TuringMachine.Computable
+import Mathlib.Data.Fintype.Sigma
+import Mathlib.Data.Fintype.Sum
 
 /-!
 # Finite provenance alphabet for `FinTM2`
