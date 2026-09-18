@@ -139,6 +139,7 @@ jobs:
           lake env lean MathSolve/PNP/TM2Provenance.lean
           lake env lean MathSolve/PNP/TM2StackEncoding.lean
           lake env lean MathSolve/PNP/TM2StackOps.lean
+          lake env lean MathSolve/PNP/TM2StatementCost.lean
           lake env lean MathSolve/PNP/TM2TokenDecode.lean
           lake env lean MathSolve/PNP/TM2ProgrammeControl.lean
           lake env lean MathSolve/PNP/TM2ProgrammeCompiler.lean
