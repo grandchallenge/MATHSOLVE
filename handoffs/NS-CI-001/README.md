@@ -1140,6 +1140,91 @@ power-law exponent to `R^{1/3+o(1)}`. The exact critical
 `tau~R^{1/3}` window remains unresolved because the elementary viscous-to-
 inviscid comparison error becomes order one precisely there.
 
+
+### L5-26 critical shear-chain semiclassical mass survival
+
+`work_packages/NS_CI_R014_A2_L5_26_C2_MIX_CRITICAL_SEMICLASSICAL.md`
+records
+
+```text
+SHEAR_CHAIN_CRITICAL_SEMICLASSICAL_MASS_SURVIVAL_PROVED
+__UNIFORM_POSITIVE_SELECTOR_CHARGE_LOWER_BOUND.
+```
+
+L5-26 resolves the exact cubic-root window left open by L5-24/L5-25.
+
+Set
+
+```math
+h=R^{-1/3},
+\qquad
+epsilon=h^3,
+\qquad
+s=h tau.
+```
+
+After exact removal of the rapid shear phase,
+
+```math
+Phi_h
+=
+e^{-iq_h(s)cosY}A_h,
+\qquad
+q_h=h^{-3}(1-e^{-h^2s}),
+```
+
+the demodulated amplitude converges strongly on fixed critical intervals to
+
+```math
+A_0(s,Y)
+=
+exp(-s^3 sin^2Y/3).
+```
+
+The limit has nondegenerate scaled second and fourth Fourier moments. On the
+fixed interval `1<=s<=2`, Paley--Zygmund and Markov applied to the normalized
+finite-`h` Fourier distribution therefore give fixed positive mass in
+
+```math
+c_-<=|hn|<=c_+.
+```
+
+Since this band contains only `O(h^{-1})` modes, one coefficient satisfies
+
+```math
+|a_n|>=c h^{1/2}.
+```
+
+A nearby LP block at physical frequency `NR^{1/3}` then violates the
+strict-high threshold by a factor growing like `h^{-3/2}`. Thus
+
+```math
+Lambda(t)
+>=
+c N R^{1/3}
+```
+
+throughout the whole critical interval.
+
+Because
+
+```math
+dt=h^2 (nu N^2)^{-1} ds,
+```
+
+the interval carries the uniform positive selector charge
+
+```math
+integral Lambda^2 dt
+>=
+c_*/nu.
+```
+
+This is a calibration theorem only. It shows that the exact phase-locked shear
+mechanism produces a genuine nonvanishing critical scale cost, but it does not
+show that every selected whole-space upper-band overshoot contains such a
+mixing packet.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1154,25 +1239,24 @@ inviscid comparison error becomes order one precisely there.
 
 ## Smallest safe next tranche
 
-L5-24 and L5-25 now pin the shear-calibration threshold front to
-`R^{1/3+o(1)}` in the power-law sense.
+The exact shear calibration now carries a nonvanishing critical selector cost.
+The live problem is no longer whether critical mixing can pay the A2 charge;
+it can.
 
-The first live obligation is **C2-MIX-CRITICAL**:
+The first live obligation is **C2-MIX-BRIDGE**:
 
-> At `tau=cR^{1/3}` with fixed positive `c`, does the exact
-> finite-viscosity shear chain retain positive Fourier mass at
-> `|n|\asymp R^{1/3}`, or does viscous/enhanced dissipation reduce that mass
-> below the campaign threshold?
+> Identify a selector-free local active-band hypothesis, stated directly in
+> terms of the selected whole-space Navier--Stokes velocity/deformation, under
+> which one threshold overshoot forces a critical mixing interval with selector
+> charge at least `c/nu`.
 
-The perturbative comparison used in L5-25 cannot be extrapolated: its
-`epsilon tau^3` error is order one exactly at this scale.
+The bridge must be portable beyond the periodic 2.5D cosine shear. Candidate
+variables are packet-level transverse deformation, a directional strain lower
+bound, nondegenerate advecting phase, or growth of transported Fourier
+variance.
 
-A valid successor must therefore be nonperturbative at critical scaling.
-Candidate routes are a rescaled critical-limit equation, Brownian/Feynman--Kac
-phase analysis, critical hypocoercivity with lower information, or discrete
-semiclassical/WKB analysis of the exact chain.
-
-Do not infer order-one A2 charge from the subcritical lower bound.
+A bridge theorem is still conditional until its hypothesis is derived from the
+selected whole-space equations. Do not reopen L3 merely from the calibration.
 
 ## Authoritative pointers
 
@@ -1205,6 +1289,7 @@ Do not infer order-one A2 charge from the subcritical lower bound.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_23_C2_SHEAR_PHASE_LOCK.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_24_C2_MIX_MOMENT_CEILING.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_25_C2_MIX_SUBCRITICAL_LOWER.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_26_C2_MIX_CRITICAL_SEMICLASSICAL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
