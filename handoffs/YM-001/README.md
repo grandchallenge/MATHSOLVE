@@ -10,26 +10,26 @@ MATHSOLVE owns bounded theorem development and research artifacts. MATHCERT rema
 
 ## Purpose
 
-Continue native Solve theorem development for `YM-001` while preserving the open-problem boundary. Two native theorem tranches are already admitted: the abstract converse-spectral implication inside `YM-D005` and the strong-resolvent spectral-exclusion stability theorem inside `YM-D001`. The current selected tranche audits whether the admitted regulated Yang-Mills evidence can actually instantiate the hypotheses of the D001 stability theorem.
+Continue native Solve theorem development for `YM-001` while preserving the open-problem boundary. The D001 programme has now admitted both the abstract strong-resolvent stability theorem and the R002 current-evidence application audit. The current tranche searches the remaining protected theorem estate for the interscale operator/comparison structure needed to connect fixed-cutoff transfer data to the reconstructed continuum Hamiltonian.
 
 ## Current primary deliverable
 
-Prove or refute restricted target `YM-D001-R002` in
+Prove or refute restricted target `YM-D001-R003` in
 
-`work_packages/YM_D001_REGULATED_APPLICATION_AUDIT/01_EVIDENCE_AUDIT.md`.
+`work_packages/YM_D001_INTERSCALE_GENERATOR_INTERFACE/01_INTERFACE_AUDIT.md`.
 
-The target asks whether the currently admitted inputs `YM-T-010` and `YM-T-030` supply a cutoff-indexed physically normalized Hamiltonian/generator family, state-space comparison, common physical spectral exclusion, and convergence data sufficient to instantiate the admitted `YM-D001-R001` theorem. If not, the package must name the first exact missing interface without inflating that absence into an impossibility theorem.
+The target asks whether the protected interfaces `YM-T-010`, `YM-T-090`, `YM-T-120`, and audited `YM-T-190` supply a typed interscale comparison from regulated physical transfer/generator spaces to the limiting reconstructed Hamiltonian, together with a common physical energy scale.
 
 ## Material acceptance criteria
 
-- bind the exact protected Solve, Programme, and Forge baselines used by the audit;
-- read `YM-T-010` and `YM-T-030` at their protected theorem-ledger scope rather than strengthening their conclusions;
-- determine whether the admitted evidence supplies a cutoff-indexed, physically normalized self-adjoint generator family and explicit cross-regulator state-space comparison;
-- distinguish the `YM-T-030` spatial covariance-decay statement from a full Hamiltonian spectral exclusion suitable for `YM-D001-R001`;
-- determine whether an explicit lattice-spacing/scale-setting trajectory and regulator-to-continuum generator convergence theorem are present;
-- if the R001 application tuple cannot be formed, record the first missing typed interface rather than estimating an untyped continuum gap constant;
-- treat absence of a strong-coupling-to-continuum trajectory theorem as a missing theorem, not as a proof of impossibility;
-- preserve `YM-D001` through `YM-D005` as open research debts unless their full discharge conditions are met.
+- bind the exact protected Solve, Programme, and Forge baselines;
+- screen every plausible admitted bridge interface, not only the R002 fixed-regulator inputs;
+- distinguish Euclidean RG transformations of effective actions from physical-Hilbert-space generator intertwiners;
+- distinguish conditional continuum OS reconstruction from cross-cutoff comparison of regulated Hilbert spaces;
+- determine whether the protected estate supplies an explicit interscale comparison morphism or generalized varying-Hilbert-space convergence structure;
+- determine separately whether it supplies a common physical time/energy scale setting across cutoffs;
+- keep audited noncomposable claimed-solution routes excluded from premise status;
+- preserve `YM-D001` through `YM-D005` and `YM-001` as open unless their complete discharge conditions are met.
 
 ## Current substantive state
 
@@ -38,8 +38,9 @@ The target asks whether the currently admitted inputs `YM-T-010` and `YM-T-030` 
 - `YM-D005-R001` / `YM-D005-L001`: admitted in native Solve at protected merge `bbadc7953b26afadeb4014e2e4980232df46097b`; the theorem proves the abstract dense-observable converse spectral bridge after reconstruction.
 - Post-R001 reconciliation: protected at `adaae95545abcb02db4ab9b2281981fc0f8ce07b`; `YM-D005-R002` is explicitly blocked by `YM-D002`/`YM-D003` before it can be instantiated in the target four-dimensional limiting theory.
 - `YM-D001-R001`: admitted at protected merge `5b137761c217f96e4cf9afaf270b897025b44480`; it proves the abstract strong-resolvent spectral-exclusion stability implication only.
-- `YM-D001-R002`: current selected native target; the candidate audit finds that `YM-T-010` plus `YM-T-030` do not yet provide the cutoff-indexed physical generator family required to apply R001.
-- `YM-D001`: still open; the first currently exposed application obstruction is the missing regulator-to-generator/state-space interface, before a uniform physical spectral lower bound or convergence theorem can be posed on the admitted evidence.
+- `YM-D001-R002`: admitted at protected merge `f5d7ef5506786d2592d99ae6e75160acbe762dfc`; post-admission reconciliation is protected at `c6c2af433dd4e0c60f0eba5f217736ef7c611b2d`.
+- `YM-D001-R003`: current selected native target; the candidate audit finds that the remaining protected bridge interfaces do not supply an interscale generator-comparison morphism or common physical energy scale setting.
+- `YM-D001`: still open; the comparison formalism and physical scale setting must be constructed before a cutoff-uniform physical spectral exclusion or regulator-to-continuum generator convergence theorem can be posed rigorously.
 - `YM-D002` through `YM-D004`: remain open construction/reconstruction/observable-identification debts.
 - `YM-D006` through `YM-D009`: source/scope dispositions remain recorded and do not bypass D001-D005.
 
@@ -61,35 +62,36 @@ The target asks whether the currently admitted inputs `YM-T-010` and `YM-T-030` 
 - `grandchallenge/MATHSOLVE:work_packages/YM_D001_REGULATED_APPLICATION_AUDIT/01_EVIDENCE_AUDIT.md`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D001_REGULATED_APPLICATION_AUDIT/02_CLAIM_LEDGER.yaml`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D001_REGULATED_APPLICATION_AUDIT/03_PROOF_OBLIGATION_DAG.json`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D001_INTERSCALE_GENERATOR_INTERFACE/00_README.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D001_INTERSCALE_GENERATOR_INTERFACE/01_INTERFACE_AUDIT.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D001_INTERSCALE_GENERATOR_INTERFACE/02_CLAIM_LEDGER.yaml`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D001_INTERSCALE_GENERATOR_INTERFACE/03_PROOF_OBLIGATION_DAG.json`
 
-## Admitted theorem and current falsification boundary
+## Admitted results and current interface boundary
 
-The candidate theorem uses the bounded transforms
+R001 proves the abstract strong-resolvent preservation of one common spectral exclusion once regulated generators already live in an identified comparison framework.
 
-`B_n = (I+H_n)^(-1)`
+R002 proves that the protected fixed-regulator inputs do not supply the cutoff-indexed physical generator/state-space package needed to invoke R001.
 
-and the polynomial sign condition associated with the common gap. It proves strong-resolvent preservation without requiring norm-resolvent convergence.
+R003 now searches the remaining plausible bridge interfaces. The candidate finds:
 
-Three exact firewalls accompany it:
+1. `YM-T-010` supplies fixed-regulator transfer matrices;
+2. `YM-T-090` supplies Euclidean multiscale effective actions/coupling renormalization, not physical generator intertwiners;
+3. `YM-T-120` supplies a continuum Hamiltonian only after a complete limiting OS hierarchy is available;
+4. audited `YM-T-190` explicitly leaves continuum survival open.
 
-1. weak convergence of the resolvents can fill the forbidden interval;
-2. a moving zero-energy state can disappear even while the spectral exclusion survives strong-resolvent convergence;
-3. positive gaps `Delta_n` with `inf Delta_n = 0` provide no positive limiting lower bound.
+The first sharper missing object is therefore an explicit interscale comparison morphism or generalized varying-Hilbert-space convergence structure for the regulated physical generators. A common physical time/energy scale setting is a second independent missing input.
 
-The current R002 candidate then audits the available regulated evidence against that theorem. Its first exact finding is that no admitted record supplies the cutoff-indexed physically normalized generator family and cross-regulator comparison maps required to form the R001 application tuple. It separately records that the `YM-T-030` covariance-decay exponent is not presently identified with a full transfer-generator spectral exclusion.
+## Smallest safe successor after R003 admission
 
-## Smallest safe successor after R002 admission
+The next bounded target is `YM-D001-R004`:
 
-The R002 candidate identifies the first missing typed object as a cutoff-indexed, physically normalized self-adjoint generator family with explicit cross-regulator state-space comparison. Do not jump directly to estimating a continuum gap constant before that object exists.
+1. choose the comparison formalism explicitly;
+2. either construct a common-Hilbert/intertwining realization for regulated generators or formulate a varying-Hilbert-space convergence theorem;
+3. bind a physical scale-setting map along the same cutoff trajectory;
+4. prove that the chosen framework is strong enough to state cross-cutoff spectral exclusion and operator convergence without silently identifying inequivalent state spaces.
 
-The next bounded target is `YM-D001-R003`:
-
-1. search the admitted source estate for a theorem that supplies a regulator-to-generator interface with explicit lattice-spacing/scale-setting data;
-2. if found, bind its state spaces and physical normalization exactly and test whether it can feed R001;
-3. if not found, isolate whether the missing construction belongs irreducibly to `YM-D002` (OS reconstruction) or `YM-D003` (four-dimensional continuum construction);
-4. keep `YM-D005` separate: a spatial correlation-decay exponent may not be promoted to the bottom of the full physical Hamiltonian spectrum without the converse/completeness bridge.
-
-The absence of such a theorem in the current evidence is a source-interface obstruction, not a proof that no future construction can exist.
+Do not attempt a cutoff-uniform physical gap estimate before those comparison and scale-setting objects are typed.
 
 ## Material dependencies and boundaries
 
