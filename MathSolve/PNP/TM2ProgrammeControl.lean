@@ -100,7 +100,8 @@ def tm2ControlReject {decision : List Bool → Bool}
 theorem tm2ControlAccept_ne_reject {decision : List Bool → Bool}
     (source : ImportedTM2Witness decision) :
     tm2ControlAccept source ≠ tm2ControlReject source := by
-  simp [tm2ControlAccept, tm2ControlReject]
+  intro h
+  cases h
 
 /-- The first executable source statement has a canonical finite control code. -/
 def tm2ControlInitialRun {decision : List Bool → Bool}
