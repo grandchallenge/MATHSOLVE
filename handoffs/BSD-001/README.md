@@ -5,30 +5,46 @@
 Protected repository state is operational authority. Re-fetch live protected heads before mutation, then read:
 
 1. `.gcl/campaigns/BSD-001/CAMPAIGN_STATE.json`;
-2. `.gcl/operations/BSD-R5-RECIP/OPERATION.json`;
-3. `handoffs/BSD-001/R5_RECIP_FRONTIER.md`;
-4. `work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/01_LITERAL_P2_LOCAL_LATTICE_THEOREM.md`;
-5. `work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/02_LITERAL_P2_SYMBOL_AND_RECIPROCITY_THEOREM.md`;
-6. `work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/03_CLAIM_LEDGER.yaml`.
+2. `.gcl/operations/BSD-R5-WIT/OPERATION.json`;
+3. `handoffs/BSD-001/R5_WIT_FRONTIER.md`;
+4. `work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/07_COHORT_AND_DIRECT_DETECTOR_BOUNDARY.md`;
+5. `work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/09_CLAIM_LEDGER.yaml`;
+6. protected provider `grandchallenge/MATHFORGE@3a097cf5f1ad5e12eeba83a08dccfbf7bc49b5f4`.
 
-Campaign: `BSD-001 — Birch-Swinnerton-Dyer selected rank-one 2-primary campaign`. Programme owner: `grandchallenge/MATHSOLVE#164`; parent tracker: `#215`; current operation: `#278` (`BSD-R5-RECIP`). Exact operation base: `7d72d4f8aec2019a8eefb4db4fe151e4f14b1211`. Mathematical predecessor: protected R5-RES completion `24081fcc1b212d33dd865cc5512a837b8101faf1`. Protected source authority: `grandchallenge/MATHFORGE@cd814844128167d0e4cdb48f69f9d01c6c0be883`.
+Campaign: `BSD-001 — Birch-Swinnerton-Dyer selected rank-one 2-primary campaign`. Programme owner: `grandchallenge/MATHSOLVE#164`; parent tracker: `#215`; current operation: `#282` (`BSD-R5-WIT`). Exact operation base: `8e692aaca7b0932c412a03eb33985ba5994b1d5f`. Protected R5-RECIP completion overlay: `9c9bd9077f8b269277366c7ee81dcdcd7f701217`. Protected source authority: `grandchallenge/MATHFORGE@3a097cf5f1ad5e12eeba83a08dccfbf7bc49b5f4`.
 
-The candidate closes only
+## R5-WIT candidate result
 
-`MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY`.
-
-It proves the selected literal-2 local dual-exponential lattice, the selected 2-saturated modular-element normalization with exact real-period factor, the scaled KKS derivative replay, and the finite normalized reciprocity identity
-
-`xi_n(exp^*(loc^s_2(kappa_n^Kato))) = u_n * Delta_n^(2)`
-
-with `Delta_n^(2)=2^t_2 delta_tilde_n`.
-
-No nonzero `Delta_n^(2)` witness is asserted. If the candidate is protected, the next theorem is
+The operation entered on
 
 `MISSING_P2_NORMALIZED_FINITE_KURIHARA_NONVANISHING_WITNESS`.
 
-If `t_2>=2`, the proved half-integrality bound forces this particular normalized Kurihara witness to vanish modulo 2 for every index; that sublane requires a different residual witness. This is not a global Kato-class vanishing theorem.
+It proves exact local stratification on the selected/diagnostic cohort:
 
-R5-LIFT remains protected. R5-PRIM and R5-RES remain unestablished. Do not promote D2d, `BSD-R2-A1`, novelty/priority, public certification, or MATHCERT certification.
+- `t_2=1`: `53a1`, `61a1`, `83a1`, `203b1`;
+- `t_2=2`: `79a1`, `201b1`;
+- `t_2=3`: `89a1`.
 
-Run the R5-RECIP preflight and certificate named by the operation contract before exact-head review. Governed-artifact changes after freeze invalidate the freeze and affected exact-head evidence.
+Protected R5-RECIP then makes the normalized Kurihara coordinate identically zero modulo two on every certified `t_2>=2` instance. This does not imply global residual Kato/Kolyvagin vanishing.
+
+Exact PARI/GP reconnaissance found no single-prime normalized hit through `ell<=2000` on the two controls and none through `ell<=500` on the deterministic expanded cohort. These finite negative scans are not a nonexistence theorem on the `t_2=1` lane.
+
+Protected WP60T supplies the direct bypass
+
+`kappa_1^Kato{}_1 = c_Q^Kato mod 2`.
+
+Hence `c_Q^Kato mod 2 != 0` would itself be a legitimate finite residual witness under protected R5-PRIM finite detection and would bypass the normalized Kurihara/local-regulator coordinate.
+
+The protected MATHFORGE source audit does not currently supply a literal-`2` theorem or exact computation proving that indivisibility statement on the selected rank-one anomalous ordinary lane.
+
+Candidate disposition:
+
+`BLOCKED`
+
+on
+
+`MISSING_P2_BASE_KATO_CLASS_MOD2_NONVANISHING_ON_SELECTED_RANK_ONE_LANE`.
+
+R5-LIFT and R5-RECIP remain protected. R5-RES and R5-PRIM remain unestablished. Do not promote D2d, `BSD-R2-A1`, novelty/priority, public certification, or MATHCERT certification.
+
+Before review, run the R5-WIT preflight and exact certificates named by the operation contract. Governed-artifact changes after freeze invalidate the freeze and exact-head logical reviews.
