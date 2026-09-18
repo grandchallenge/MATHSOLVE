@@ -1,4 +1,6 @@
 {
+  "schema_id": "GCL-AGENT-CONTINUITY-ADOPTION-001",
+  "schema_version": "1.0.0",
   "adoption_id": "MATHSOLVE-GCL-AGENT-CONTINUITY-001",
   "policy_id": "GCL-AGENT-CONTINUITY-001",
   "version": "1.0.0",
@@ -7,14 +9,28 @@
   "repository": "grandchallenge/MATHSOLVE",
   "binding_surface": "AGENTS.md",
   "required": true,
-  "controls": {
-    "exact_head_preflight": true,
-    "narrow_durable_tranches": true,
-    "checkpoint_before_branch_expansion": true,
-    "post_mutation_readback": true,
-    "timeout_recovery_from_repository": true,
-    "alternate_agent_rebind": true,
-    "named_terminal_boundary": true
+  "specialization": null,
+  "local_validator": "scripts/validate_agent_continuity_adoption.py",
+  "authority_preservation": {
+    "authority_changed": false,
+    "certification_authority_changed": false
   },
-  "certification_authority_changed": false
+  "specialization_data": {
+    "schema_binding": {
+      "authority_commit": "7e6b61ddf77e2d73309657d089a98cae84cc735f",
+      "schema_blob_sha": "b019881a54763a949613c8116260b729742867bd",
+      "local_snapshot": "schemas/agent_continuity_adoption.schema.json",
+      "local_snapshot_authoritative": false,
+      "mutable_remote_fetch_allowed": false
+    },
+    "controls": {
+      "exact_head_preflight": true,
+      "narrow_durable_tranches": true,
+      "checkpoint_before_branch_expansion": true,
+      "post_mutation_readback": true,
+      "timeout_recovery_from_repository": true,
+      "alternate_agent_rebind": true,
+      "named_terminal_boundary": true
+    }
+  }
 }
