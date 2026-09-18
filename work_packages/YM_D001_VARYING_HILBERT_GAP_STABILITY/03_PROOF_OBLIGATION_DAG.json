@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "parent_debt": "YM-D001",
+  "artifact_id": "YM-D001-VARYING-HILBERT-GAP-STABILITY-DAG",
+  "candidate_root": {
+    "work_package": "YM-D001-VARYING-HILBERT-GAP-STABILITY",
+    "claim_id": "YM-D001-R004"
+  },
+  "nodes": [
+    {"id":"YM-D001-R001","status":"PROTECTED_ADMITTED_NOT_CERTIFIED","kind":"COMMON_HILBERT_SPECTRAL_STABILITY"},
+    {"id":"YM-D001-R002","status":"PROTECTED_ADMITTED_NOT_CERTIFIED","kind":"APPLICATION_EVIDENCE_AUDIT"},
+    {"id":"YM-D001-R003","status":"PROTECTED_ADMITTED_NOT_CERTIFIED","kind":"INTERSCALE_INTERFACE_AUDIT"},
+    {"id":"YM-D001-R004","status":"PROVED_IN_CANDIDATE","kind":"VARYING_HILBERT_SPECTRAL_STABILITY"},
+    {
+      "id":"YM-D001-VH1",
+      "status":"HYPOTHESIS",
+      "kind":"ASYMPTOTIC_ISOMETRY",
+      "statement":"J_n^* J_n -> I strongly."
+    },
+    {
+      "id":"YM-D001-VH2",
+      "status":"HYPOTHESIS",
+      "kind":"RESOLVENT_INTERTWINING",
+      "statement":"||(I+H_n)^(-1)J_n psi - J_n(I+H)^(-1)psi|| -> 0 for every psi."
+    },
+    {
+      "id":"YM-D001-FP004",
+      "status":"COUNTEREXAMPLE",
+      "kind":"COMPRESSION_INSUFFICIENT",
+      "statement":"Exact isometric compressed-resolvent convergence can mix vacuum/excited sectors and fill the forbidden interval."
+    },
+    {
+      "id":"YM-D001-FP005",
+      "status":"COUNTEREXAMPLE",
+      "kind":"DEGENERATE_IDENTIFICATION",
+      "statement":"J_n=0 makes intertwining vacuous when asymptotic isometry is absent."
+    },
+    {
+      "id":"YM-D001-R005",
+      "status":"OPEN",
+      "kind":"PHYSICAL_ENERGY_SCALE_SETTING"
+    },
+    {
+      "id":"YM-D001-YM-IDENTIFICATIONS",
+      "status":"OPEN",
+      "kind":"APPLICATION_IDENTIFICATION_MAPS",
+      "statement":"Construct actual Yang-Mills K_a,H_a,J_a data satisfying the R004 hypotheses."
+    },
+    {
+      "id":"YM-D001-UNIFORM-GAP",
+      "status":"BLOCKED_ON_APPLICATION_AND_SCALE",
+      "kind":"CUTOFF_VOLUME_UNIFORM_PHYSICAL_SPECTRAL_EXCLUSION"
+    },
+    {
+      "id":"YM-D001-CLOSE",
+      "status":"BLOCKED",
+      "kind":"PARENT_DEBT_DISCHARGE"
+    }
+  ],
+  "edges": [
+    {"from":"YM-D001-R003","to":"YM-D001-R004","type":"requested_comparison_formalism"},
+    {"from":"YM-D001-VH1","to":"YM-D001-R004","type":"required_hypothesis"},
+    {"from":"YM-D001-VH2","to":"YM-D001-R004","type":"required_hypothesis"},
+    {"from":"YM-D001-R004","to":"YM-D001-CLOSE","type":"available_abstract_varying_space_stability"},
+    {"from":"YM-D001-R005","to":"YM-D001-UNIFORM-GAP","type":"sets_common_physical_units"},
+    {"from":"YM-D001-YM-IDENTIFICATIONS","to":"YM-D001-UNIFORM-GAP","type":"types_actual_regulated_spectral_statement"},
+    {"from":"YM-D001-UNIFORM-GAP","to":"YM-D001-CLOSE","type":"required_input"}
+  ],
+  "false_proof_firewalls": [
+    "Compressed resolvent convergence is weaker than resolvent intertwining and is insufficient.",
+    "Identification maps must not collapse the limiting state space.",
+    "The abstract R004 theorem does not construct Yang-Mills identification maps.",
+    "The same numerical Delta has cross-cutoff meaning only after physical scale setting.",
+    "Vacuum persistence remains separate from forbidden-interval preservation."
+  ],
+  "current_frontier": "R004 supplies a sufficient varying-Hilbert comparison theorem. The next smallest D001 theorem object is physical energy scale setting; actual Yang-Mills identification maps and a uniform gap remain application obligations.",
+  "certification_boundary": "R004 is an un-certified Solve theorem candidate. It does not prove YM-D001 or the terminal Yang-Mills problem."
+}
