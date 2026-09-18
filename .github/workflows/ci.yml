@@ -143,6 +143,7 @@ jobs:
           lake env lean MathSolve/PNP/TM2TokenDecode.lean
           lake env lean MathSolve/PNP/TM2ProgrammeControl.lean
           lake env lean MathSolve/PNP/TM2ProgrammeCompiler.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeInvariant.lean
           lake env lean MathSolve/PNP/ProgrammeMachine.lean
           lake env lean MathSolve/PNP/ModelBridge.lean
           python ci/validate_formal_conjectures_targets.py
