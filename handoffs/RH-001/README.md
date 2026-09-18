@@ -30,6 +30,8 @@ Advance the Solve-native spectral route beyond the qualified RH interface while 
 - RH-R036-QW-PARITY-GAP-REDUCTION-001: proved in work_packages/RH_R036_QW_PARITY_GAP_REDUCTION.md.
 - Exact finite parity/Galerkin substrate audit: grandchallenge/MATHFORGE@76221c214bcb8227557d25741d83927051e62e8b.
 - RH-R037-QW-SECTOR-GALERKIN-001: proved in work_packages/RH_R037_QW_SECTOR_GALERKIN.md.
+- Claimed Krein–Rutman closure audit: grandchallenge/MATHFORGE@a11c6dedede09af6f3c67c5eec337941b73d4d3a.
+- RH-R039-QW-PARITY-GAP-EVIDENCE-001: executed in work_packages/RH_R039_QW_PARITY_GAP_EVIDENCE/.
 
 No operator construction satisfying the Hilbert–Pólya contract, RH implication, novelty, or priority claim is admitted.
 
@@ -57,6 +59,7 @@ whereas Riemann–von Mangoldt requires leading growth \(T\log T/(2\pi)\). Thus 
 6. Connes–Consani–Moscovici's Zeta Spectral Triples construction supplies zero-list-independent, prime-built finite self-adjoint spectral approximants with real spectra and an exact regularized-determinant formula under the source's simple-even hypothesis. The exact missing boundary is convergence. A locally uniform normalized-determinant convergence theorem to \(\Xi\) would already force RH by Rouché/Hurwitz; one limiting self-adjoint operator is sufficient but not logically necessary for that bridge.
 7. Inversion symmetry of the full semilocal Weil form propagates to its canonical self-adjoint operator \(A_\lambda\), which splits into even and odd reducing sectors. The source's first missing theorem, 'simple-even ground state,' is exactly equivalent to two narrower obligations: simplicity of the lowest even eigenvalue and the strict parity gap \(\epsilon_+(\lambda)<\epsilon_-(\lambda)\).
 8. The exact finite parity blocks form sector-wise Galerkin approximants: \(\epsilon_{\pm,N}(\lambda)\downarrow\epsilon_\pm(\lambda)\), hence finite gaps \(g_N\to g\). Finite parity calculations now have a rigorous interpretation, but positivity of finitely many gaps is not a proof of the full gap without a certified tail bound.
+9. R039 implements the protected CCM finite matrices at 50/80 digits with 96/128/160-point high-precision quadrature. For \(\lambda^2=13,14\), all retained gaps through \(N=12\) are positive and stable far beyond their displayed scale, but they collapse rapidly: at \(N=12\), \(g_N\approx1.46\times10^{-26}\) and \(1.84\times10^{-27}\), respectively. This is controlled finite evidence only and supplies no positive tail certificate.
 
 This sharpens the protected operator contract:
 
@@ -93,6 +96,7 @@ and
 - grandchallenge/MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790:reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
 - grandchallenge/MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d:reports/discovery/rh_001/rh_r036_qw_parity_substrate.md
 - grandchallenge/MATHFORGE@76221c214bcb8227557d25741d83927051e62e8b:reports/discovery/rh_001/rh_r037_finite_parity_galerkin.md
+- grandchallenge/MATHFORGE@a11c6dedede09af6f3c67c5eec337941b73d4d3a:reports/discovery/rh_001/rh_r038_krein_rutman_claim_audit.md
 - grandchallenge/MATHSOLVE#257
 - grandchallenge/MATHSOLVE#345
 - grandchallenge/MATHSOLVE#347
@@ -101,6 +105,7 @@ and
 - grandchallenge/MATHSOLVE#363
 - grandchallenge/MATHSOLVE#366
 - grandchallenge/MATHSOLVE#369
+- grandchallenge/MATHSOLVE#376
 - work_packages/RH_R030_SPECTRAL_UNBOUNDED.md
 - work_packages/RH_R031_BK_HALFLINE_LEBESGUE.md
 - work_packages/RH_R032_BK_FINITE_INTERVAL_WEYL.md
@@ -109,17 +114,34 @@ and
 - work_packages/RH_R035_ZETA_SPECTRAL_TRIPLES_LIMIT.md
 - work_packages/RH_R036_QW_PARITY_GAP_REDUCTION.md
 - work_packages/RH_R037_QW_SECTOR_GALERKIN.md
+- work_packages/RH_R039_QW_PARITY_GAP_EVIDENCE/README.md
+- work_packages/RH_R039_QW_PARITY_GAP_EVIDENCE/evidence.json
+- work_packages/RH_R039_QW_PARITY_GAP_EVIDENCE/evidence.csv
+- scripts/rh_r039_qw_parity_gap.py
 - MathSolve/RH/SpectralUnbounded.lean
 
 ## Smallest safe next tranche
 
-Attack the strict parity-gap obligation with controlled finite evidence:
+The finite-evidence tranche is complete. The next mathematical target is a quantitative tail-rate theorem for the parity-sector Galerkin approximation.
+
+RH-R037 gives only
 
 \[
-g(\lambda)=\epsilon_-(\lambda)-\epsilon_+(\lambda)>0.
+g_N(\lambda)\to g(\lambda).
 \]
 
-RH-R037 proves \(g_N(\lambda)\to g(\lambda)\). The next bounded tranche should implement the explicit source finite matrices, split them into parity blocks, and compute certified/high-precision gap sequences over selected \(\lambda\) and \(N\). The objective is not finite positivity; it is to discover a mechanism and obtain either a rigorous positive tail lower bound or a rigorous negative certificate. Even-sector simplicity remains a separate obligation.
+R039 shows that the retained positive finite gaps shrink extremely rapidly with \(N\). Therefore more unbounded finite sampling cannot establish \(g(\lambda)>0\).
+
+The next bounded source/theory audit should seek one of:
+
+1. explicit Galerkin error bounds for \(\epsilon_{\pm,N}(\lambda)-\epsilon_\pm(\lambda)\);
+2. structural comparison inequalities for the even and odd restricted Weil forms;
+3. a certified asymptotic expansion for \(g_N(\lambda)\);
+4. a mechanism proving either a positive limiting gap or convergence to zero.
+
+If no analytic tail estimate is available, the next computational step should use rigorously enclosed higher-N matrices with an explicit error budget, not ordinary floating-point eigensolvers.
+
+Even-sector simplicity remains a separate obligation.
 
 The determinant route remains an exact sufficient terminal bridge: locally uniform convergence of normalized finite determinants, whose zeros are real, to \(\Xi\) forces RH.
 
@@ -127,7 +149,7 @@ The determinant route remains an exact sufficient terminal bridge: locally unifo
 
 RH-R030 imports the classical Riemann–von Mangoldt conclusion that positive zero ordinates are unbounded and the standard bounded-spectrum theorem.
 
-RH-R031 imports standard momentum/Fourier spectral theory. Its source status and exact prior-art boundary are fixed by the protected Forge audit. RH-R032 imports the classical Riemann–von Mangoldt counting interface and elementary finite-interval momentum spectral theory; its exact source boundary is protected at MATHFORGE@c49d7507dd45338f6328141c7d708acb5806e702. RH-R033 imports the Berry–Keating 2011 operator-theoretic and asymptotic results from the protected provider audit at MATHFORGE@d0365dba53e20395bbd2c3b6b17959cde94b6fbe; Solve proves only the governed comparison and design consequence. RH-R034 imports Sierra's Rindler mirror source analysis from the protected audit at MATHFORGE@2e66cdb836ea4228d70462f5eddca73ee91a504a; Solve records the fixed-domain and circularity consequences without certifying the limiting source construction. RH-R035 imports the finite Zeta Spectral Triples theorem and the source's named missing steps from MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790; Solve adds the standard Rouché/Hurwitz determinant-convergence bridge and isolates the minimal sufficient convergence target. RH-R036 imports inversion symmetry, canonical self-adjoint representation, and discreteness from MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d; Solve proves operator commutation and the exact parity-gap reduction. RH-R037 imports exact finite parity matrices and the full form core from MATHFORGE@76221c214bcb8227557d25741d83927051e62e8b; Solve proves parity-sector core density, monotone sector-minimum convergence, and finite-gap convergence. No numerical zero fitting is used.
+RH-R031 imports standard momentum/Fourier spectral theory. Its source status and exact prior-art boundary are fixed by the protected Forge audit. RH-R032 imports the classical Riemann–von Mangoldt counting interface and elementary finite-interval momentum spectral theory; its exact source boundary is protected at MATHFORGE@c49d7507dd45338f6328141c7d708acb5806e702. RH-R033 imports the Berry–Keating 2011 operator-theoretic and asymptotic results from the protected provider audit at MATHFORGE@d0365dba53e20395bbd2c3b6b17959cde94b6fbe; Solve proves only the governed comparison and design consequence. RH-R034 imports Sierra's Rindler mirror source analysis from the protected audit at MATHFORGE@2e66cdb836ea4228d70462f5eddca73ee91a504a; Solve records the fixed-domain and circularity consequences without certifying the limiting source construction. RH-R035 imports the finite Zeta Spectral Triples theorem and the source's named missing steps from MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790; Solve adds the standard Rouché/Hurwitz determinant-convergence bridge and isolates the minimal sufficient convergence target. RH-R036 imports inversion symmetry, canonical self-adjoint representation, and discreteness from MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d; Solve proves operator commutation and the exact parity-gap reduction. RH-R037 imports exact finite parity matrices and the full form core from MATHFORGE@76221c214bcb8227557d25741d83927051e62e8b; Solve proves parity-sector core density, monotone sector-minimum convergence, and finite-gap convergence. R039 uses only those protected CCM formulas for finite high-precision parity-gap evidence; MATHFORGE@a11c6dedede09af6f3c67c5eec337941b73d4d3a separately rejects a claimed Krein–Rutman closure as insufficient to supersede the protected frontier. No numerical zero fitting is used.
 
 MATHCERT interaction is not presently material. A later Cert route is appropriate only for a bounded new mathematical claim with an exact proof/checker surface.
 
