@@ -39,7 +39,7 @@ theorem TM2StacksRepresented.afterPopAction {decision : List Bool → Bool}
           (cfg.work (tm2TapeEquiv source k))
           (cfg.workHead (tm2TapeEquiv source k)) hk using 1 <;>
           simp [ProgrammeConfig.afterAction, tm2PopAction,
-            tm2MoveSelected, tm2WriteSelected, HeadMove.apply]
+            tm2MoveSelected, tm2WriteSelected, HeadMove.apply] <;> rfl
     | cons value values =>
         have hk := hrep k
         rw [hstack] at hk
@@ -143,9 +143,10 @@ theorem TM2StacksRepresented.afterPushActions {decision : List Bool → Bool}
       (cfg.workHead (tm2TapeEquiv source k))
       (stackFamily k) hstmt hk using 1
     · simp [ProgrammeConfig.afterAction, tm2CompletePushAction,
-        tm2WriteSelected, afterAction_tm2PushMoveAction_work]
+        tm2PushMoveAction, tm2PreserveWork, tm2MoveSelected,
+        tm2WriteSelected, HeadMove.apply, Function.update_eq_self]
     · simp [ProgrammeConfig.afterAction, tm2CompletePushAction,
-        afterAction_tm2PushMoveAction_selectedHead, HeadMove.apply]
+        tm2PushMoveAction, tm2MoveSelected, HeadMove.apply]
   · have htape :
         tm2TapeEquiv source j ≠ tm2TapeEquiv source k := by
       intro h
@@ -154,10 +155,11 @@ theorem TM2StacksRepresented.afterPushActions {decision : List Bool → Bool}
     rw [Function.update_of_ne hj]
     convert hjrep using 1
     · simp [ProgrammeConfig.afterAction, tm2CompletePushAction,
+        tm2PushMoveAction, tm2PreserveWork, tm2MoveSelected,
         tm2WriteSelected, ProgrammeConfig.readWork, htape,
-        afterAction_tm2PushMoveAction_work, Function.update_eq_self]
+        HeadMove.apply, Function.update_eq_self]
     · simp [ProgrammeConfig.afterAction, tm2CompletePushAction,
-        afterAction_tm2PushMoveAction_otherHead, hj, HeadMove.apply]
+        tm2PushMoveAction, tm2MoveSelected, htape, HeadMove.apply]
 
 #print axioms TM2StacksRepresented.afterPushActions
 #print axioms TM2StacksRepresented.afterPopAction
