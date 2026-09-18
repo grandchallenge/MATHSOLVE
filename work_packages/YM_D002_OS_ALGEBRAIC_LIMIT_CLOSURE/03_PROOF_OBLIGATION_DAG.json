@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "parent_debt": "YM-D002",
+  "artifact_id": "YM-D002-OS-ALGEBRAIC-LIMIT-CLOSURE-DAG",
+  "candidate_root": {
+    "work_package": "YM-D002-OS-ALGEBRAIC-LIMIT-CLOSURE",
+    "claim_id": "YM-D002-R001"
+  },
+  "nodes": [
+    {
+      "id": "YM-T-010",
+      "status": "PROTECTED_PROGRAMME_INTERFACE",
+      "kind": "FIXED_REGULATOR_REFLECTION_POSITIVITY_INPUT"
+    },
+    {
+      "id": "YM-T-120",
+      "status": "PROTECTED_PROGRAMME_INTERFACE",
+      "kind": "OS_RECONSTRUCTION_REQUIRES_COMPLETE_LIMITING_PROFILE"
+    },
+    {
+      "id": "YM-D002-COMMON-DOMAIN-LIMIT",
+      "status": "HYPOTHESIS_NOT_CONSTRUCTED",
+      "kind": "COMMON_OBSERVABLE_ALGEBRA_AND_POINTWISE_LIMIT"
+    },
+    {
+      "id": "YM-D002-R001",
+      "status": "PROVED_IN_CANDIDATE",
+      "kind": "ALGEBRAIC_OS_LIMIT_CLOSURE"
+    },
+    {
+      "id": "YM-D002-R002",
+      "status": "OPEN",
+      "kind": "SELECTED_4D_LIMIT_HIERARCHY_AND_NONALGEBRAIC_OS_PROFILE"
+    },
+    {
+      "id": "YM-D002-RECONSTRUCT",
+      "status": "BLOCKED_ON_R002",
+      "kind": "INSTANTIATE_YM-T-120"
+    },
+    {
+      "id": "YM-D002-CLOSE",
+      "status": "BLOCKED",
+      "kind": "PARENT_DEBT_DISCHARGE"
+    }
+  ],
+  "edges": [
+    {
+      "from": "YM-T-010",
+      "to": "YM-D002-R001",
+      "type": "motivates_stagewise_reflection_positivity_only"
+    },
+    {
+      "from": "YM-D002-COMMON-DOMAIN-LIMIT",
+      "to": "YM-D002-R001",
+      "type": "required_hypothesis"
+    },
+    {
+      "from": "YM-D002-R001",
+      "to": "YM-D002-R002",
+      "type": "removes_reproof_of_closed_algebraic_core_after_legitimate_limit"
+    },
+    {
+      "from": "YM-D002-R002",
+      "to": "YM-D002-RECONSTRUCT",
+      "type": "must_supply_complete_selected_os_profile"
+    },
+    {
+      "from": "YM-T-120",
+      "to": "YM-D002-RECONSTRUCT",
+      "type": "conditional_reconstruction_interface"
+    },
+    {
+      "from": "YM-D002-RECONSTRUCT",
+      "to": "YM-D002-CLOSE",
+      "type": "required_for_parent_discharge"
+    }
+  ],
+  "cross_debt_dependencies": [
+    {
+      "debt": "YM-D003",
+      "effect": "R002 must use an actually controlled four-dimensional continuum trajectory and limiting hierarchy; R001 assumes but does not construct the limit."
+    },
+    {
+      "debt": "YM-D004",
+      "effect": "The physical gauge-invariant observable hierarchy used in reconstruction must be the same renormalized hierarchy identified on the selected continuum theory."
+    },
+    {
+      "debt": "YM-D001",
+      "effect": "OS reconstruction does not by itself prove regulator-survival of a positive physical spectral exclusion."
+    },
+    {
+      "debt": "YM-D005",
+      "effect": "Reconstruction does not by itself supply observable completeness or the converse correlation-to-gap theorem."
+    }
+  ],
+  "false_proof_firewalls": [
+    "Do not pass fixed-regulator reflection positivity to an unidentified continuum object.",
+    "Do not infer full OS admissibility from the inherited algebraic/closed-cone core.",
+    "Do not commute the regulator limit with the large-distance clustering limit without uniform control.",
+    "Do not compare regulator-dependent observable spaces without explicit identification maps.",
+    "Do not infer terminal Yang-Mills existence or mass gap."
+  ],
+  "current_frontier": "YM-D002-R001 proves conditional closure of the algebraic OS core under a common-domain pointwise limit. YM-D002-R002 remains the first construction-facing successor: one selected four-dimensional limiting hierarchy plus the nonalgebraic analytic/growth and cluster/vacuum profile.",
+  "certification_boundary": "R001 is an uncertified Solve closure theorem. D002 and YM-001 remain open."
+}
