@@ -113,7 +113,7 @@ def tm2RunAction {decision : List Bool → Bool}
   | push k valueFn nextStmt =>
       have hnext : nextStmt ∈ Turing.TM2.stmts₁ code.2.1 := by
         rw [hstmt]
-        simp [Turing.TM2.stmts₁]
+        exact Or.inr Turing.TM2.stmts₁_self
       let nextCode := tm2UnaryChildCode source code nextStmt hnext
       let token : TM2ProvenanceToken source.tm := Sum.inr (code, state)
       exact {
@@ -125,7 +125,7 @@ def tm2RunAction {decision : List Bool → Bool}
   | peek k updateState nextStmt =>
       have hnext : nextStmt ∈ Turing.TM2.stmts₁ code.2.1 := by
         rw [hstmt]
-        simp [Turing.TM2.stmts₁]
+        exact Or.inr Turing.TM2.stmts₁_self
       let nextCode := tm2UnaryChildCode source code nextStmt hnext
       exact tm2StayAction source
         (tm2ControlRun source nextCode
@@ -134,7 +134,7 @@ def tm2RunAction {decision : List Bool → Bool}
   | pop k updateState nextStmt =>
       have hnext : nextStmt ∈ Turing.TM2.stmts₁ code.2.1 := by
         rw [hstmt]
-        simp [Turing.TM2.stmts₁]
+        exact Or.inr Turing.TM2.stmts₁_self
       let nextCode := tm2UnaryChildCode source code nextStmt hnext
       exact {
         nextState := tm2ControlRun source nextCode
@@ -146,7 +146,7 @@ def tm2RunAction {decision : List Bool → Bool}
   | load updateState nextStmt =>
       have hnext : nextStmt ∈ Turing.TM2.stmts₁ code.2.1 := by
         rw [hstmt]
-        simp [Turing.TM2.stmts₁]
+        exact Or.inr Turing.TM2.stmts₁_self
       let nextCode := tm2UnaryChildCode source code nextStmt hnext
       exact tm2StayAction source
         (tm2ControlRun source nextCode (updateState state)) readWork
@@ -154,14 +154,14 @@ def tm2RunAction {decision : List Bool → Bool}
       by_cases hp : predicate state = true
       · have htrue : trueStmt ∈ Turing.TM2.stmts₁ code.2.1 := by
           rw [hstmt]
-          simp [Turing.TM2.stmts₁]
+          exact Or.inr (Or.inl Turing.TM2.stmts₁_self)
         exact tm2StayAction source
           (tm2ControlRun source
             (tm2UnaryChildCode source code trueStmt htrue) state)
           readWork
       · have hfalse : falseStmt ∈ Turing.TM2.stmts₁ code.2.1 := by
           rw [hstmt]
-          simp [Turing.TM2.stmts₁]
+          exact Or.inr (Or.inr Turing.TM2.stmts₁_self)
         exact tm2StayAction source
           (tm2ControlRun source
             (tm2UnaryChildCode source code falseStmt hfalse) state)
