@@ -32,4 +32,4 @@
   "protected_integration_authorized": false,
   "terminal_boundary": null,
   "recovery_instruction": "Re-fetch this branch and governing instructions, reject stale chat state, then continue from the exact live descendant of this receipt. Timeout/connector/context failures are recoverable and are not stop conditions."
-}\n
+}
