@@ -1,0 +1,20 @@
+{
+  "adoption_id": "MATHSOLVE-GCL-AGENT-CONTINUITY-001",
+  "policy_id": "GCL-AGENT-CONTINUITY-001",
+  "version": "1.0.0",
+  "authority_repository": "grandchallenge/INTELLECT",
+  "authority_path": "governance/agent_execution/GCL-AGENT-CONTINUITY-001.md",
+  "repository": "grandchallenge/MATHSOLVE",
+  "binding_surface": "AGENTS.md",
+  "required": true,
+  "controls": {
+    "exact_head_preflight": true,
+    "narrow_durable_tranches": true,
+    "checkpoint_before_branch_expansion": true,
+    "post_mutation_readback": true,
+    "timeout_recovery_from_repository": true,
+    "alternate_agent_rebind": true,
+    "named_terminal_boundary": true
+  },
+  "certification_authority_changed": false
+}\n
