@@ -913,6 +913,71 @@ mechanism.
 This remains a periodic 2.5D calibration theorem.  It does not prove repeated
 episode coherence or a selected whole-space statement.
 
+
+### L5-23 exact viscous shear-chain phase locking
+
+\`work_packages/NS_CI_R014_A2_L5_23_C2_SHEAR_PHASE_LOCK.md\`
+records
+
+\`\`\`text
+EXACT_VISCOUS_SHEAR_CHAIN_QUADRATURE_LOCKING_PROVED
+__PHASE_DECOHERENCE_ABSENT_IN_CALIBRATION.
+\`\`\`
+
+A second exact unforced periodic 2.5D calibration removes generic phase-reset
+cost more strongly.
+
+For the decaying shear
+
+\`\`\`math
+v=(A e^{-nu N^2t}\cos(Nx_2),0),
+\`\`\`
+
+the vertical component obeys passive advection-diffusion.  In turnover
+variables, the complex \`X\)-frequency-one chain satisfies
+
+\`\`\`math
+a_n'
+=
+-\frac{i}{2}e^{-epsilon tau}(a_{n-1}+a_{n+1})
+-
+epsilon(1+n^2)a_n.
+\`\`\`
+
+The phase sector
+
+\`\`\`math
+a_n=(-i)^n b_n,\qquad b_n\in R
+\`\`\`
+
+is exactly invariant, because the \`b_n\` satisfy a real nearest-neighbour
+system.
+
+Hence every adjacent nonzero pair remains exactly in quadrature:
+
+\`\`\`math
+Re(conj(a_n)a_{n+1})=0,
+\qquad
+|Im(conj(a_n)a_{n+1})|
+=
+|a_n||a_{n+1}|.
+\`\`\`
+
+Viscosity damps amplitudes but does not rotate this phase lattice.  Transfer
+direction may reverse when a real amplitude crosses zero, without gradual
+phase decorrelation.
+
+At \`epsilon=0\` the chain is explicit:
+
+\`\`\`math
+a_n(tau)=(-i)^n J_n(tau).
+\`\`\`
+
+Thus the repeated-event residual cannot be charged generically to phase
+decoherence itself.  Any remaining cost must arise from amplitude decay,
+enhanced dissipation, rebuilding amplitudes after zero crossings, memory in
+generated modes, or genuinely three-dimensional interactions.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -927,27 +992,27 @@ episode coherence or a selected whole-space statement.
 
 ## Smallest safe next tranche
 
-Do not use generic subturnover phase decoherence as the repair. L5-22 gives an
-actual unforced NSE calibration with coherently signed target transfer over one
-fixed positive turnover interval.
+Do not pursue generic phase-reset or phase-decorrelation cost. L5-23 gives an
+exact viscous NSE Fourier chain whose adjacent transfer phases remain maximally
+locked for all time.
 
-The first live obligation is now **C2-REPEAT**.
+The first live obligation is now **C2-MIX**.
 
-The question must connect distinct overshoot episodes or scale levels:
+The next question is quantitative amplitude transport versus damping:
 
-> Can a selected whole-space solution realize infinitely many increasing
-> upper-band overshoot episodes, each carrying order-turnover coherent signed
-> transfer, while the A2 selector charge and ordinary dissipation remain
-> summable?
+> In the exact phase-locked shear cascade, how far can threshold-sized
+> amplitude propagate before viscosity dominates, and what selector/A2 charge
+> does that propagation force?
 
-A valid theorem needs a cross-episode cost: phase-reset cost, memory in
-generated modes, anti-fragmentation, genuinely three-dimensional network
-constraints, or another equation-derived quantity not present in the one-
-episode calibrations.
+This is a growing-turnover-window problem.  The inviscid Bessel cascade may be
+used only as a reference.  A valid result must control finite-\`epsilon\`
+amplitudes on the scale where chain transport and the viscous
+\`epsilon n^2\` damping balance.
 
-Do not infer repeated-event coherence from L5-22, and do not replace the full
-NSE by an isolated triad unless invariance and generated-mode control are
-proved.
+A positive calibration result should identify the actual balance scale and its
+selector charge.  A negative result should state the first exact estimate that
+fails.  Do not replace finite-viscosity amplitudes by inviscid Bessel values
+without a uniform remainder theorem.
 
 ## Authoritative pointers
 
@@ -977,6 +1042,7 @@ proved.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_20_C2_DISTANCE_SOBLEV_TAIL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_21_C2_CUMULATIVE_FLUX_OBSTRUCTION.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_22_C2_TRIAD_COHERENCE.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_23_C2_SHEAR_PHASE_LOCK.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
