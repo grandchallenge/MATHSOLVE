@@ -38,11 +38,7 @@ Thus the pair cannot discharge D004 without an additional theorem constructing a
 
 For a selected regulated route, a D004 successor must supply a mathematically controlled map, possibly including operator mixing,
 
-[
-  mathcal O^{mathrm{reg}}_{a}
-  longrightarrow
-  mathcal O^{mathrm{ren}},
-]
+`O_reg(a) -> O_ren`,
 
 with enough convergence and identification structure to produce local gauge-invariant continuum operator-valued distributions and their joint correlations.
 
@@ -124,4 +120,4 @@ Only after such an interface exists can a later tranche test its full short-dist
 
 This theorem establishes only a dependency and noncomposition result.
 
-It does not construct `mathcal O^{ren}`, prove convergence of any regulated Yang-Mills observable, prove the complete OS profile, establish a nontrivial four-dimensional continuum theory, or establish the mass gap.
+It does not construct `O_ren`, prove convergence of any regulated Yang-Mills observable, prove the complete OS profile, establish a nontrivial four-dimensional continuum theory, or establish the mass gap.
