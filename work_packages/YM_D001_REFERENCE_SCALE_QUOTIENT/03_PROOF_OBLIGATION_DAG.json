@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "parent_debt": "YM-D001",
+  "artifact_id": "YM-D001-REFERENCE-SCALE-QUOTIENT-DAG",
+  "candidate_root": {
+    "work_package": "YM-D001-REFERENCE-SCALE-QUOTIENT",
+    "claim_id": "YM-D001-R006"
+  },
+  "nodes": [
+    {"id":"YM-D001-R005","status":"PROTECTED_ADMITTED_NOT_CERTIFIED","kind":"PHYSICAL_SCALE_NORMAL_FORM"},
+    {"id":"YM-D001-R006","status":"PROVED_IN_CANDIDATE","kind":"REFERENCE_SCALE_QUOTIENT"},
+    {
+      "id":"YM-D001-REF-SCALE",
+      "status":"OPEN_APPLICATION_OBJECT",
+      "kind":"NONCIRCULAR_PHYSICAL_REFERENCE_SCALE",
+      "statement":"A finite nonzero reference energy in the same regulated four-dimensional pure-YM family with an independent continuum proof."
+    },
+    {
+      "id":"YM-D001-FP009",
+      "status":"COUNTEREXAMPLE",
+      "kind":"CIRCULAR_SCALE_FIXING"
+    },
+    {
+      "id":"YM-D001-FP010",
+      "status":"COUNTEREXAMPLE",
+      "kind":"VANISHING_REFERENCE_SCALE"
+    },
+    {
+      "id":"YM-D003-REF-SCALE-CONSTRUCTION",
+      "status":"OPEN",
+      "kind":"FOUR_DIMENSIONAL_REFERENCE_SCALE_CONSTRUCTION"
+    },
+    {
+      "id":"YM-D001-YM-IDENTIFICATIONS",
+      "status":"OPEN",
+      "kind":"APPLICATION_IDENTIFICATION_MAPS"
+    },
+    {
+      "id":"YM-D001-RATIO-BOUND",
+      "status":"BLOCKED_ON_REFERENCE_AND_APPLICATION",
+      "kind":"TARGET_TO_REFERENCE_GAP_RATIO"
+    },
+    {
+      "id":"YM-D001-CLOSE",
+      "status":"BLOCKED",
+      "kind":"PARENT_DEBT_DISCHARGE"
+    }
+  ],
+  "edges": [
+    {"from":"YM-D001-R005","to":"YM-D001-R006","type":"eliminates_explicit_clock_via_reference_scale"},
+    {"from":"YM-D001-REF-SCALE","to":"YM-D001-R006","type":"application_hypothesis"},
+    {"from":"YM-D003-REF-SCALE-CONSTRUCTION","to":"YM-D001-REF-SCALE","type":"possible_construction_route"},
+    {"from":"YM-D001-REF-SCALE","to":"YM-D001-RATIO-BOUND","type":"defines_non_circular_scale"},
+    {"from":"YM-D001-YM-IDENTIFICATIONS","to":"YM-D001-RATIO-BOUND","type":"binds_same_regulated_family"},
+    {"from":"YM-D001-RATIO-BOUND","to":"YM-D001-CLOSE","type":"required_physical_gap_input"}
+  ],
+  "cross_debt_dependencies": [
+    {"debt":"YM-D003","effect":"The reference scale must survive the same controlled four-dimensional continuum trajectory."},
+    {"debt":"YM-D002","effect":"The target limiting Hamiltonian remains reconstruction-dependent if the OS route is used."}
+  ],
+  "false_proof_firewalls": [
+    "Do not define the physical scale using the target mass gap itself.",
+    "Do not use a reference observable whose nonzero continuum value is proved only from the desired gap.",
+    "Do not infer physical positivity from a dimensionless target/reference ratio unless the reference scale is itself finite and nonzero.",
+    "Do not import a new external reference-scale theorem outside the governed source route."
+  ],
+  "current_frontier": "The abstract D001 scaling machinery is now reduced to one substantive four-dimensional application object: a finite nonzero non-circular reference scale on the actual pure-YM cutoff trajectory, together with the actual regulated operator identifications and a positive target/reference gap ratio.",
+  "certification_boundary": "R006 is an uncertified Solve theorem candidate. It does not establish D001, D003, or the terminal Yang-Mills problem."
+}

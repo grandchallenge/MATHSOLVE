@@ -10,25 +10,25 @@ MATHSOLVE owns bounded theorem development and research artifacts. MATHCERT rema
 
 ## Purpose
 
-Continue native Solve theorem development for `YM-001` while preserving the open-problem boundary. R004 supplied a sufficient varying-Hilbert comparison theorem but deliberately assumed common physical energy units. The current tranche isolates and proves the exact scale-conversion law while leaving the actual nonperturbative Yang-Mills reference-scale calibration open.
+Continue native Solve theorem development for `YM-001` while preserving the open-problem boundary. R005 proved the exact scale-conversion law but left the actual nonperturbative Yang-Mills reference-scale calibration open. The current tranche proves the reference-scale quotient reduction and exposes the non-circular four-dimensional reference scale as the next substantive application object.
 
 ## Current primary deliverable
 
-Prove or refute restricted target `YM-D001-R005` in
+Prove or refute restricted target `YM-D001-R006` in
 
-`work_packages/YM_D001_PHYSICAL_SCALE_NORMAL_FORM/01_PHYSICAL_SCALE_LAW.md`.
+`work_packages/YM_D001_REFERENCE_SCALE_QUOTIENT/01_REFERENCE_SCALE_QUOTIENT.md`.
 
-The target asks for the exact relation between a dimensionless regulated generator gap, the physical Euclidean time represented by one regulated evolution unit, and the resulting physical energy gap.
+The target asks whether an independently controlled finite nonzero reference energy in the same regulated family can eliminate the explicit clock calibration and reduce the physical target-gap problem to a dimensionless target/reference ratio.
 
 ## Material acceptance criteria
 
-- separate the dimensionless regulated generator from its physical energy normalization;
-- prove the exact spectral scaling law under `H_n=tau_n^{-1}K_n`;
-- state the necessary-and-sufficient liminf criterion for one cutoff-uniform physical spectral exclusion;
-- derive the exact transfer-matrix conversion `-log r_n/tau_n`;
-- preserve an exact fixture showing that positive dimensionless gaps can vanish after physical rescaling;
-- preserve an exact nonidentifiability fixture showing that dimensionless operator data alone do not determine the physical gap;
-- do not infer `tau_a` from bare coupling flow, perturbative asymptotic freedom, or a lattice-spacing symbol without a scale-setting theorem;
+- derive the exact identity `Delta_n=(delta_n/epsilon_n)M_n` for target and reference energies in the same regulated family;
+- prove a positive liminf criterion using an independently controlled positive physical reference scale;
+- preserve the finite-nonzero continuum reference-scale requirement;
+- publish an exact circularity fixture showing why the target mass gap itself cannot be used to set the scale;
+- publish a fixture showing that a positive dimensionless target/reference ratio proves nothing if the reference scale vanishes physically;
+- require the reference-scale proof to be independent of the target gap or an equivalent assumed-positive correlation length;
+- audit the protected YM estate for an admitted reference-scale theorem without importing new external authority;
 - preserve `YM-D001` through `YM-D005` and `YM-001` as open.
 
 ## Current substantive state
@@ -41,8 +41,9 @@ The target asks for the exact relation between a dimensionless regulated generat
 - `YM-D001-R002`: admitted at protected merge `f5d7ef5506786d2592d99ae6e75160acbe762dfc`; post-admission reconciliation is protected at `c6c2af433dd4e0c60f0eba5f217736ef7c611b2d`.
 - `YM-D001-R003`: admitted at protected merge `c441a7f7198df81bd260d003c959ad9940bb1ccf`; post-admission reconciliation is protected at `57ca4fab8fe04b83da3c2c0dbc2a3a76860c8170`.
 - `YM-D001-R004`: admitted at protected merge `eacdde093d7f515f890f055cd46f32a7998fac1d`; post-admission reconciliation is protected at `dfdf6beedb85022a4e031d5049c47ef75b116558`.
-- `YM-D001-R005`: current selected native target; the candidate proves the exact physical scale law `gap_phys = gap_dimensionless/tau` and the exact transfer conversion `-log r/tau`.
-- `YM-D001`: still open; the actual Yang-Mills `tau_a`/reference-scale theorem, regulated identification maps, a cutoff/volume-uniform physical spectral exclusion, and application convergence remain unproved.
+- `YM-D001-R005`: admitted at protected merge `7459be7ffdec1161388b9bfe5f23d19ae9df526e`; post-admission reconciliation is protected at `3bd2a2722df603143f832c0da5b18983213e8ced`.
+- `YM-D001-R006`: current selected native target; the candidate proves the reference-scale quotient theorem and identifies the protected estate's first remaining scaling obstruction as `MISSING_NONCIRCULAR_4D_YM_REFERENCE_SCALE_THEOREM`.
+- `YM-D001`: still open; the actual finite nonzero non-circular Yang-Mills reference scale, regulated identification maps, positive target/reference ratio or physical gap, and application convergence remain unproved.
 - `YM-D002` through `YM-D004`: remain open construction/reconstruction/observable-identification debts.
 - `YM-D006` through `YM-D009`: source/scope dispositions remain recorded and do not bypass D001-D005.
 
@@ -76,6 +77,10 @@ The target asks for the exact relation between a dimensionless regulated generat
 - `grandchallenge/MATHSOLVE:work_packages/YM_D001_PHYSICAL_SCALE_NORMAL_FORM/01_PHYSICAL_SCALE_LAW.md`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D001_PHYSICAL_SCALE_NORMAL_FORM/02_CLAIM_LEDGER.yaml`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D001_PHYSICAL_SCALE_NORMAL_FORM/03_PROOF_OBLIGATION_DAG.json`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D001_REFERENCE_SCALE_QUOTIENT/00_README.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D001_REFERENCE_SCALE_QUOTIENT/01_REFERENCE_SCALE_QUOTIENT.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D001_REFERENCE_SCALE_QUOTIENT/02_CLAIM_LEDGER.yaml`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D001_REFERENCE_SCALE_QUOTIENT/03_PROOF_OBLIGATION_DAG.json`
 
 ## Admitted results and current theorem boundary
 
@@ -85,37 +90,38 @@ R002 shows the admitted fixed-regulator evidence does not supply the application
 
 R003 isolates the missing interscale comparison and scale-setting interfaces.
 
-R004 supplies one sufficient varying-Hilbert spectral-exclusion theorem under asymptotically isometric identification maps and resolvent intertwining.
+R004 supplies a sufficient varying-Hilbert spectral-exclusion theorem.
 
-R005 now supplies the exact scale normal form. If `K_n` is a dimensionless regulated generator and one unit of its Euclidean evolution corresponds to physical time `tau_n>0`, then
+R005 supplies the exact physical scale law `gap_phys=gap_dimensionless/tau` and transfer conversion `-log(r)/tau`.
 
-`H_n^phys=tau_n^{-1}K_n`
+R006 now eliminates the explicit clock variable conditionally on one independent reference energy. If `epsilon_n` is a dimensionless reference energy in the same regulated theory and
 
-and an exact dimensionless gap `delta_n` becomes the exact physical gap
+`M_n=epsilon_n/tau_n`,
 
-`delta_n/tau_n`.
+then
 
-Hence a common positive physical lower bound exists eventually exactly when
+`Delta_n=(delta_n/epsilon_n)M_n`.
 
-`liminf delta_n/tau_n>0`.
+Thus a positive lower bound on the dimensionless target/reference ratio yields a positive physical target gap only when the reference scale itself has an independently proved finite nonzero physical limit.
 
-If `T_n=exp(-K_n)` and the non-vacuum transfer spectrum is bounded above by `r_n<1`, the exact generator lower bound is
+Two decisive firewalls are retained:
 
-`-log(r_n)/tau_n`.
+1. choosing `epsilon_n=delta_n` and defining units from the target gap tautologically produces any desired positive physical gap;
+2. a constant positive target/reference ratio proves nothing if the physical reference scale tends to zero.
 
-Three firewalls remain explicit:
+A protected-estate audit finds no admitted four-dimensional pure-YM reference-scale theorem satisfying the required non-circularity contract.
 
-1. `delta_n>0` at every cutoff can still yield a vanishing physical gap;
-2. the same dimensionless operators can yield vanishing, finite, or divergent physical gaps under different clock calibrations;
-3. `1-r_n` is not the exact generator energy and cannot replace `-log r_n` without an approximation theorem.
+## Smallest safe successor after R006 admission
 
-R005 does not construct the actual Yang-Mills `tau_a`.
+No further abstract unit-conversion lemma is the material frontier.
 
-## Smallest safe successor after R005 admission
+The next object is
 
-The next bounded target is `YM-D001-R006`: identify or construct a nonperturbative reference-scale theorem fixing `tau_a`, or an equivalent physical energy normalization, on the same regulated cutoff trajectory used by R004.
+`MISSING_NONCIRCULAR_4D_YM_REFERENCE_SCALE_THEOREM`.
 
-Do not treat perturbative beta-function flow, a bare coupling convention, or the notation `a` alone as that theorem.
+It must either be constructed on the actual four-dimensional continuum trajectory, coupling the work to `YM-D003`, or admitted through the governed Forge/Programme source route if a qualifying external theorem exists.
+
+Do not use the target mass gap, an equivalent assumed-positive correlation length, perturbative beta-function flow alone, or an unadmitted external scale-setting claim as the reference.
 
 ## Material dependencies and boundaries
 
