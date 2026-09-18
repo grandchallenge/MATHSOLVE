@@ -406,10 +406,24 @@ theorem tm2StepAux_simulates {decision : List Bool → Bool}
       have hstepRaw :=
         tm2ProgrammeMachine_step_run source input cfg code state hstate
       rw [tm2RunAction_halt source code state cfg.readWork hcode] at hstepRaw
-      rw [hcontrol] at hstepRaw
+      have hafter :
+          cfg.afterAction
+              (tm2StayAction source
+                (match tm2OutputBit? source cfg.readWork with
+                 | some true => tm2ControlAccept source
+                 | _ => tm2ControlReject source)
+                cfg.readWork) =
+            cfg.afterAction
+              (tm2StayAction source
+                (tm2HaltControl source stackFamily) cfg.readWork) :=
+        congrArg
+          (fun control =>
+            cfg.afterAction (tm2StayAction source control cfg.readWork))
+          hcontrol
       have hstep :
           (tm2ProgrammeMachine source).step input cfg = some nextCfg := by
-        simpa [nextCfg] using hstepRaw
+        exact hstepRaw.trans (by
+          simpa [nextCfg] using congrArg some hafter)
       have hnextStacks :
           TM2StacksRepresented source stackFamily nextCfg := by
         simpa [nextCfg] using
