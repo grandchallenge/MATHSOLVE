@@ -313,6 +313,78 @@ The exact conclusions are:
 These statements do not exclude PDE-specific time-correlated cancellation or
 dynamic active-band anti-concentration.
 
+
+### L5-14 C2 active-band reduction
+
+`work_packages/NS_CI_R014_A2_L5_14_C2_ACTIVE_BAND_REDUCTION.md` records
+
+```text
+A2_FAR_LOW_PACKET_REGION_CONTROLLED__SINGULARITY_REQUIRES_TOP_THIRD_D1_CONCENTRATION.
+```
+
+For `R_Q=floor(2Q/3)`, ordinary Bernstein and the Leray energy supremum give
+
+```math
+sum_{q<=R_Q} ||u_q||_infinity^2
+lesssim
+U0^2 lambda_{R_Q}^3
+lesssim
+U0^2 Lambda^2.
+```
+
+Thus A2 already controls the lower two-thirds of the active logarithmic
+frequency range. The only possible packet obstruction is
+
+```math
+B(t)={q: floor(2Q(t)/3)<q<=Q(t)}.
+```
+
+It is sufficient to prove, terminal-locally on high-`Lambda` times,
+
+```math
+integral sum_{q in B(t)} ||u_q||_infinity^2 dt < infinity.
+```
+
+Consequently any hypothetical A2 singularity must have this top-band integral
+diverge on every terminal interval and every finite high-`Lambda` cutoff.
+
+With `lambda_E=(nu/U0)^2`, define
+
+```math
+chi_q
+=
+||u_q||_infinity^2
+/
+(lambda_E lambda_q^2 ||u_q||_2^2),
+qquad
+d_q=nu lambda_q^2||u_q||_2^2.
+```
+
+Then exactly
+
+```math
+||u_q||_infinity^2=(lambda_E/nu) chi_q d_q.
+```
+
+The residual is therefore a dissipation-weighted concentration factor on the
+top active band, not ordinary dissipation. At the threshold shell, the selector
+gives the orientation
+
+```math
+V_Q=||u_Q||_2^2/||u_Q||_infinity^2
+<=
+c0^-2 lambda_E^-1 Lambda^-2,
+```
+
+so the missing theorem must prevent substantially stronger concentration in a
+time-averaged/dissipation-weighted sense; it must not simply assert that the
+active shell is concentrated.
+
+The `r=infinity,D=1` Cheskidov--Peng intermittency expression has the same
+Bernstein-saturation structure on the periodic forced problem. It is used only
+as language and mechanism guidance, not imported as a theorem for the selected
+whole-space unforced class.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -327,41 +399,36 @@ dynamic active-band anti-concentration.
 
 ## Smallest safe next tranche
 
-Do not repeat C1, the direct Chemin--Lerner transplant, a fixed or purely
-absolute shifted observation scale, unsigned active-diagonal renormalization,
-or an instantaneous universal signed central-flux cancellation. Those bounded
-families are now characterized.
+Do not repeat C1, C3-DIAG, the direct Chemin--Lerner source hypothesis, a fixed
+or purely absolute shifted observation scale, unsigned L4-column
+renormalization, or a universal instantaneous central-flux sign.
 
-The first live obligation is **C2-DIAG**: prove an equation-derived
-high-`Lambda` active-band depletion/anti-concentration statement, or a
-genuinely time-correlated signed central-flux theorem.
-
-The most concrete anti-concentration target is a dimension-one improvement of
-Bernstein on the high-activity central band. With
-`lambda_E=(nu/U0)^2`, seek a time-integrated estimate comparable to
+The first live obligation is now **C2-DYN**. Derive from NSE evolution a
+terminal high-`Lambda` estimate for the top relative band
 
 ```math
-||u_q||_infinity^2
-<=
-C lambda_E lambda_q^2 ||u_q||_2^2
+B(t)={q: floor(2Q(t)/3)<q<=Q(t)}.
 ```
 
-for `q=Q(t)+O(1)` on high-`Lambda` times, or any weaker statement sufficient
-to make the terminal high-`Lambda` packet tail finite. Do not assume an
-intermittency dimension; derive the depletion from NSE dynamics.
+The preferred quantity is
 
-A second legitimate route is to retain the signed central convection-pressure
-flux over nested backward cylinders and prove cancellation only after time
-integration. The L5-13 fixture rules out a universal instantaneous identity or
-sign but not a dynamical coherence theorem.
+```math
+integral
+sum_{q in B(t)}
+chi_q(t)d_q(t) dt,
+```
 
-A selector/physical-scale coherence theorem could also reopen the shifted-scale
-route, but that is an explicit L3/B4 reopening obligation.
+equivalently the top-band `S_1` mass. Viable advances include a
+dissipation-measure tail bound for `chi`, a time-averaged active-volume lower
+bound, an equation-derived anti-persistence result for highly
+Bernstein-saturated packets, or a genuinely time-correlated signed local-flux
+coherence theorem.
 
-Reject any successor that merely returns `lambda_Q D_Q`, assumes strict-high
-at `Q`, assumes Bernstein non-saturation, differentiates the selector without
-control, or imports a periodic/forced intermittency conclusion into the
-unforced whole-space target.
+A pointwise global `chi<=C` estimate is stronger than needed. Do not assume
+an intermittency dimension. Do not differentiate the moving `2Q/3` cutoff
+without selector-variation control. If the direct shell-energy or Duhamel
+analysis reduces to low strain, residence, `lambda_QD_Q`, or B4, record that
+exact reduction and move to the next genuinely distinct dynamic mechanism.
 
 ## Authoritative pointers
 
@@ -382,6 +449,7 @@ unforced whole-space target.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_11_SOURCE_AND_CAPTURE_AUDIT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_12_FREQUENCY_SCALE_TRANSPLANT_BOUNDARY.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_13_C3_DIAGONAL_AUDIT.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_14_C2_ACTIVE_BAND_REDUCTION.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
