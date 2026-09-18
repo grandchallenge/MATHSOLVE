@@ -1,0 +1,146 @@
+{
+  "campaign": "RH-001",
+  "target": "RH-R039-QW-PARITY-GAP-EVIDENCE-001",
+  "evidence_boundary": "Finite high-precision Galerkin evidence only. No full parity-gap, tail-certificate, simplicity, determinant-convergence, or RH claim.",
+  "source_formula": "CCM QW_lambda = W_{0,2} - W_R - sum_p W_p",
+  "execution": {
+    "python": "3.13.5",
+    "mpmath": "1.3.0",
+    "note": "Independent execution in the analysis runtime; retained runner is deterministic under the pinned mpmath dependency."
+  },
+  "parameters": {
+    "lambda2": [13, 14],
+    "n_values": [2, 4, 6, 8, 10, 12],
+    "dps": [50, 80],
+    "quadrature_degrees": [96, 128, 160],
+    "reference_configuration": {"dps": 80, "quadrature_degree": 160}
+  },
+  "diagnostics": {
+    "13:50:96": {"matrix_symmetry_residual": "8.352389719038111394189176459848380871297e-53", "parity_residual": "0.0"},
+    "13:50:128": {"matrix_symmetry_residual": "1.044048714879763924273647057481047608912e-53", "parity_residual": "0.0"},
+    "13:50:160": {"matrix_symmetry_residual": "1.044048714879763924273647057481047608912e-53", "parity_residual": "0.0"},
+    "13:80:96": {"matrix_symmetry_residual": "3.294436857259538507608929391021880939909e-83", "parity_residual": "0.0"},
+    "13:80:128": {"matrix_symmetry_residual": "3.294436857259538507608929391021880939909e-83", "parity_residual": "0.0"},
+    "13:80:160": {"matrix_symmetry_residual": "3.294436857259538507608929391021880939909e-83", "parity_residual": "0.0"},
+    "14:50:96": {"matrix_symmetry_residual": "0.0", "parity_residual": "0.0"},
+    "14:50:128": {"matrix_symmetry_residual": "0.0", "parity_residual": "0.0"},
+    "14:50:160": {"matrix_symmetry_residual": "0.0", "parity_residual": "0.0"},
+    "14:80:96": {"matrix_symmetry_residual": "0.0", "parity_residual": "0.0"},
+    "14:80:128": {"matrix_symmetry_residual": "0.0", "parity_residual": "0.0"},
+    "14:80:160": {"matrix_symmetry_residual": "0.0", "parity_residual": "0.0"}
+  },
+  "results": {
+    "13": {
+      "2": {
+        "epsilon_plus": "0.000000002973518774101483791696621617086244202891",
+        "epsilon_plus_crosscheck_abs_spread": "4.654899616812233526477587569411861754267e-51",
+        "epsilon_minus": "0.0000007735615525738546436036002102953980101924",
+        "epsilon_minus_crosscheck_abs_spread": "3.856876567242011216531271205577783387173e-50",
+        "gap": "0.0000007705880337997531598119035886783117659895",
+        "gap_crosscheck_abs_spread": "3.311580560192374965168199956322438996314e-50",
+        "finite_gap_sign": "positive"
+      },
+      "4": {
+        "epsilon_plus": "9.67926186050697221684650685189039018682e-15",
+        "epsilon_plus_crosscheck_abs_spread": "1.036670968931676581730803432327449256581e-50",
+        "epsilon_minus": "0.00000000000393912838271655103549576287243152759056",
+        "epsilon_minus_crosscheck_abs_spread": "4.099516298943333768365202422710564015813e-50",
+        "gap": "0.000000000003929449120856044063278916365579637200373",
+        "gap_crosscheck_abs_spread": "3.062845330011657186634398990383114759232e-50",
+        "finite_gap_sign": "positive"
+      },
+      "6": {
+        "epsilon_plus": "4.939740435899427736505221239732070519952e-19",
+        "epsilon_plus_crosscheck_abs_spread": "1.346013390815843931268002072403577766846e-50",
+        "epsilon_minus": "2.45690864816965426688694764012122494515e-16",
+        "epsilon_minus_crosscheck_abs_spread": "4.234023077504271159734915677123907665377e-50",
+        "gap": "2.45196890773375483915044241888149287463e-16",
+        "gap_crosscheck_abs_spread": "2.888009686688427228466913604720329898531e-50",
+        "finite_gap_sign": "positive"
+      },
+      "8": {
+        "epsilon_plus": "7.674392556360189620928788210951309314443e-23",
+        "epsilon_plus_crosscheck_abs_spread": "1.545661232161225717411964440325459854492e-50",
+        "epsilon_minus": "3.914845220205343967934465824124414379415e-20",
+        "epsilon_minus_crosscheck_abs_spread": "4.322577403727254587252247970269070987017e-50",
+        "gap": "3.9071708276489837783135370359134630701e-20",
+        "gap_crosscheck_abs_spread": "2.776916171566028869840283529943611132525e-50",
+        "finite_gap_sign": "positive"
+      },
+      "10": {
+        "epsilon_plus": "2.831237721193078219242959093765767636612e-26",
+        "epsilon_plus_crosscheck_abs_spread": "1.666965354899141963055705547649348097283e-50",
+        "epsilon_minus": "1.644924478262006080523222602208782981825e-23",
+        "epsilon_minus_crosscheck_abs_spread": "4.403645263742903526743988353982597345979e-50",
+        "gap": "1.642093240540813002303979643115017214188e-23",
+        "gap_crosscheck_abs_spread": "2.736679908843761563688282806333249248695e-50",
+        "finite_gap_sign": "positive"
+      },
+      "12": {
+        "epsilon_plus": "2.139707361258782510379362289370288292206e-29",
+        "epsilon_plus_crosscheck_abs_spread": "3.532972343951891203915628976005805436229e-50",
+        "epsilon_minus": "1.458854778797278159050080632604136222065e-26",
+        "epsilon_minus_crosscheck_abs_spread": "6.085512611002241110371746662937081705777e-50",
+        "gap": "1.456715071436019376539701270314765933773e-26",
+        "gap_crosscheck_abs_spread": "2.782863938189385701146625173610485557357e-50",
+        "finite_gap_sign": "positive"
+      }
+    },
+    "14": {
+      "2": {
+        "epsilon_plus": "0.0000000008675651821104225226057722288318619232851",
+        "epsilon_plus_crosscheck_abs_spread": "2.438549187750358681783319748692370629038e-50",
+        "epsilon_minus": "0.0000001282038746920296123589821446234031220619",
+        "epsilon_minus_crosscheck_abs_spread": "4.591083114483982091486049244843486722119e-50",
+        "gap": "0.0000001273363095099191898363763723945712601387",
+        "gap_crosscheck_abs_spread": "2.152533926733623409702729496151116093081e-50",
+        "finite_gap_sign": "positive"
+      },
+      "4": {
+        "epsilon_plus": "5.870179891339530419084634806605450828593e-15",
+        "epsilon_plus_crosscheck_abs_spread": "2.947326695640064380035314988079302426351e-50",
+        "epsilon_minus": "0.000000000001874900489924098381597458662861775246377",
+        "epsilon_minus_crosscheck_abs_spread": "5.153544395935098933208072113038169450244e-50",
+        "gap": "0.000000000001869030310032758851178374028055169795548",
+        "gap_crosscheck_abs_spread": "2.206217700295034553172757124958867023893e-50",
+        "finite_gap_sign": "positive"
+      },
+      "6": {
+        "epsilon_plus": "1.373211346900808433968528877672476692989e-19",
+        "epsilon_plus_crosscheck_abs_spread": "3.277379918183374176004526363745013138525e-50",
+        "epsilon_minus": "6.671891912663356759107051287611935893346e-17",
+        "epsilon_minus_crosscheck_abs_spread": "5.391717344141275441505052700465507213382e-50",
+        "gap": "6.658159799194348674767365998835211126416e-17",
+        "gap_crosscheck_abs_spread": "2.114337425957901265500526336720494074857e-50",
+        "finite_gap_sign": "positive"
+      },
+      "8": {
+        "epsilon_plus": "1.462787814872487952626803425895167775717e-23",
+        "epsilon_plus_crosscheck_abs_spread": "3.472084794598143887957003741479118138664e-50",
+        "epsilon_minus": "6.739739822254531520482112349643170519083e-21",
+        "epsilon_minus_crosscheck_abs_spread": "5.542585385470014587362759955546083327775e-50",
+        "gap": "6.725111944105806640955844315384218841326e-21",
+        "gap_crosscheck_abs_spread": "2.070500590871870699405756214066965189111e-50",
+        "finite_gap_sign": "positive"
+      },
+      "10": {
+        "epsilon_plus": "4.418611942886426134135414492082902373453e-27",
+        "epsilon_plus_crosscheck_abs_spread": "3.564756256137172158465539385873141478295e-50",
+        "epsilon_minus": "3.202894372201004738808979161530907617138e-24",
+        "epsilon_minus_crosscheck_abs_spread": "5.752296350039781137448348444940290344268e-50",
+        "gap": "3.198475760258118312674843747038824714764e-24",
+        "gap_crosscheck_abs_spread": "2.187540093902608978982809059067148865973e-50",
+        "finite_gap_sign": "positive"
+      },
+      "12": {
+        "epsilon_plus": "2.708529424081970915164863522424159525616e-30",
+        "epsilon_plus_crosscheck_abs_spread": "4.57569239464969936216265093151639203107e-50",
+        "epsilon_minus": "1.847536082944097652254210001228199026181e-27",
+        "epsilon_minus_crosscheck_abs_spread": "6.535976031498150591827526048436325495711e-50",
+        "gap": "1.844827553520015681339045137705774866656e-27",
+        "gap_crosscheck_abs_spread": "2.26775281180556245761586265424878566357e-50",
+        "finite_gap_sign": "positive"
+      }
+    }
+  }
+}
