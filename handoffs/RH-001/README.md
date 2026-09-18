@@ -20,12 +20,14 @@ Advance the Solve-native spectral route beyond the qualified RH interface while 
 - RH-R031-BK-HALFLINE-LEBESGUE-001: proved in work_packages/RH_R031_BK_HALFLINE_LEBESGUE.md.
 - Exact fixed finite-interval Berry–Keating audit: grandchallenge/MATHFORGE@c49d7507dd45338f6328141c7d708acb5806e702.
 - RH-R032-BK-FINITE-INTERVAL-WEYL-001: proved in work_packages/RH_R032_BK_FINITE_INTERVAL_WEYL.md.
+- Exact symmetric Berry–Keating T log T audit: grandchallenge/MATHFORGE@d0365dba53e20395bbd2c3b6b17959cde94b6fbe.
+- RH-R033-SYMMETRIC-BK-TLOGT-001: proved in work_packages/RH_R033_SYMMETRIC_BK_TLOGT.md.
 
 No operator construction satisfying the Hilbert–Pólya contract, RH implication, novelty, or priority claim is admitted.
 
 ## Current substantive result
 
-The spectral route now has three exact necessary-condition / no-go results.
+The spectral route now has three exact necessary-condition / no-go results and one positive-control result.
 
 1. No bounded operator can have spectrum containing all positive zeta-zero ordinates. Any exact raw-ordinate Hilbert–Pólya operator must therefore be unbounded.
 2. The canonical half-line Berry–Keating dilation generator
@@ -42,6 +44,7 @@ N_H(T)=\frac{\log(b/a)}{2\pi}T+O(1),
 \]
 
 whereas Riemann–von Mangoldt requires leading growth \(T\log T/(2\pi)\). Thus fixed finite-interval compactification restores discreteness but cannot reproduce the raw zeta-zero ordinate multiset.
+4. Berry and Keating's 2011 symmetric cutoff-free model supplies a fixed self-adjoint discrete operator family whose source-derived smooth count reproduces the first two Riemann counting terms under the source normalization: the \(t\log t\) term and the linear \(-t\) term. The source's later smooth corrections differ, and its periodic dynamics do not supply the prime-labelled orbit family associated with the oscillatory zeta term. This is a positive control for the smooth-counting gate, not an exact zeta realization.
 
 This sharpens the protected operator contract:
 
@@ -73,25 +76,28 @@ and
 - grandchallenge/MATHFORGE@da746ee38823e408321b9e417649f5b837ec5627:reports/discovery/rh_001/rh_d009_r030_prior_art.md
 - grandchallenge/MATHFORGE@a6a2e7d65adef8eaf977d77bbacbd05786d7da47:reports/discovery/rh_001/rh_r031_bk_halfline_prior_art.md
 - grandchallenge/MATHFORGE@c49d7507dd45338f6328141c7d708acb5806e702:reports/discovery/rh_001/rh_r032_bk_finite_interval_prior_art.md
+- grandchallenge/MATHFORGE@d0365dba53e20395bbd2c3b6b17959cde94b6fbe:reports/discovery/rh_001/rh_r033_bk_symmetric_tlogt_prior_art.md
 - grandchallenge/MATHSOLVE#257
 - grandchallenge/MATHSOLVE#345
 - grandchallenge/MATHSOLVE#347
+- grandchallenge/MATHSOLVE#351
 - work_packages/RH_R030_SPECTRAL_UNBOUNDED.md
 - work_packages/RH_R031_BK_HALFLINE_LEBESGUE.md
 - work_packages/RH_R032_BK_FINITE_INTERVAL_WEYL.md
+- work_packages/RH_R033_SYMMETRIC_BK_TLOGT.md
 - MathSolve/RH/SpectralUnbounded.lean
 
 ## Smallest safe next tranche
 
-Select the next spectral class by counting mechanism, not by individual level fit. A viable discrete candidate must produce the extra logarithmic growth in the Riemann–von Mangoldt law while remaining one fixed self-adjoint operator.
+Select the next spectral class by arithmetic fluctuation mechanism, not by individual level fit. RH-R033 shows that one fixed self-adjoint discrete model can already reproduce the leading \(T\log T-T\) smooth count. The remaining spectral-design problem is to produce the prime-labelled / oscillatory arithmetic content without inserting the zeta zeros themselves.
 
-Before Solve selection, MATHFORGE must audit one exact class with: one fixed Hilbert space; one fixed densely defined operator; one fixed self-adjoint domain; raw-ordinate normalization; and a rigorous mechanism capable of \(T\log T\) spectral counting. Noncompact geometry, logarithmically growing effective phase-space volume, or another fixed spectral mechanism may be considered. Energy-dependent geometry or boundary conditions do not satisfy the fixed-operator contract.
+Before Solve selection, MATHFORGE must audit one exact class with: one fixed Hilbert space; one fixed densely defined self-adjoint operator; raw-ordinate normalization; an independently specified prime/arithmetic mechanism; and a proof that the mechanism is not circularly parameterized by the target zeros. Numerical agreement alone is not an admission gate.
 
 ## Material dependencies and boundaries
 
 RH-R030 imports the classical Riemann–von Mangoldt conclusion that positive zero ordinates are unbounded and the standard bounded-spectrum theorem.
 
-RH-R031 imports standard momentum/Fourier spectral theory. Its source status and exact prior-art boundary are fixed by the protected Forge audit. RH-R032 imports the classical Riemann–von Mangoldt counting interface and elementary finite-interval momentum spectral theory; its exact source boundary is protected at MATHFORGE@c49d7507dd45338f6328141c7d708acb5806e702. No numerical zero data are used.
+RH-R031 imports standard momentum/Fourier spectral theory. Its source status and exact prior-art boundary are fixed by the protected Forge audit. RH-R032 imports the classical Riemann–von Mangoldt counting interface and elementary finite-interval momentum spectral theory; its exact source boundary is protected at MATHFORGE@c49d7507dd45338f6328141c7d708acb5806e702. RH-R033 imports the Berry–Keating 2011 operator-theoretic and asymptotic results from the protected provider audit at MATHFORGE@d0365dba53e20395bbd2c3b6b17959cde94b6fbe; Solve proves only the governed comparison and design consequence. No numerical zero fitting is used.
 
 MATHCERT interaction is not presently material. A later Cert route is appropriate only for a bounded new mathematical claim with an exact proof/checker surface.
 
