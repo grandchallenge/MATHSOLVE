@@ -37,7 +37,7 @@ the lowest eigenvalue of \(A_a\):
 Equivalently, with \(\lambda=e^a\),
 
 \[
-1<\lambda\le e^{1/100},
+1<\lambda\le e^{1/50},
 \]
 
 the lowest even-sector eigenvalue is simple and
@@ -505,7 +505,11 @@ For
 use the elementary inequalities
 
 \[
-\log2>\frac23,
+\log2
+=
+2\sum_{k\ge0}\frac{1}{(2k+1)3^{2k+1}}
+>
+\frac{56}{81},
 \qquad
 \sqrt2<\frac32.
 \]
@@ -515,7 +519,9 @@ Then
 \[
 \log2-\frac12-6\sqrt2\,a
 >
-\frac16-\frac9{100}
+\frac{31}{162}-\frac9{50}
+=
+\frac{23}{2025}
 >
 0,
 \]
@@ -525,7 +531,7 @@ and
 \[
 2\log2-1-6\sqrt2\,a
 >
-\frac13-\frac9{100}
+\frac{31}{81}-\frac9{50}
 >
 0.
 \]
@@ -560,26 +566,30 @@ Suzuki's constant satisfies
 2A+1=\log(2\pi)+C_0.
 \]
 
-For \(0<a\le1/100\), use coarse elementary bounds
+For \(0<a\le1/50\), use coarse elementary bounds
 
 \[
-\log100>4,
+\log50>\frac72,
 \qquad
 \log(2\pi)<2,
 \qquad
 C_0<1,
 \qquad
-3\sqrt2/100<\frac{9}{200}.
+3\sqrt2/50<\frac{9}{100}.
 \]
+
+For example, \(\log50>7/2\) follows from
+\(e<3\) and \(\sqrt e<\sqrt3<7/4\), which give
+\(e^{7/2}<27\cdot7/4<50\).
 
 Thus
 
 \[
 \lambda_a
 >
-4-3-\frac9{200}
+\frac72-3-\frac9{100}
 =
-\frac{191}{200}
+\frac{41}{100}
 >
 0.
 \]
@@ -606,7 +616,7 @@ v_a\text{ is even},\\
 Equivalently, one may take the explicit conservative parameter
 
 \[
-\lambda_0=e^{1/100}.
+\lambda_0=e^{1/50}.
 \]
 
 No claim is made that this is the maximal interval.
@@ -641,7 +651,7 @@ The proof depends on the following exact points.
 
 This theorem does not prove:
 
-- simplicity/evenness for \(a>1/100\);
+- simplicity/evenness for \(a>1/50\);
 - monotonic continuation of the parity gap;
 - any statement at \(a=\tfrac12\log13\) or
   \(a=\tfrac12\log14\);
