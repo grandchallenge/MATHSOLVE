@@ -1,5 +1,4 @@
 from fractions import Fraction
-from math import isqrt
 import unittest
 
 
