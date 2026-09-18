@@ -22,13 +22,13 @@ The target asks whether the currently admitted inputs `YM-T-010` and `YM-T-030` 
 
 ## Material acceptance criteria
 
-- freeze one common `Delta > 0` in the same physical energy units for all regulated operators;
-- permit regulator-dependent operator domains by formulating convergence through `(I+H_n)^(-1)`;
-- prove that `sigma(H_n) subset {0} union [Delta,infinity)` plus strong resolvent convergence forces `sigma(H) subset {0} union [Delta,infinity)`, or produce a counterexample;
-- test whether a weaker topology suffices and preserve an exact failure fixture when it does not;
-- separate spectral-exclusion survival from persistence/uniqueness of a zero-energy vacuum;
-- preserve the distinction between a uniform physical-unit lower bound and merely positive regulator-dependent gaps;
-- identify exactly which Yang–Mills-specific scaling, state-space comparison, convergence, and uniform-bound obligations remain open;
+- bind the exact protected Solve, Programme, and Forge baselines used by the audit;
+- read `YM-T-010` and `YM-T-030` at their protected theorem-ledger scope rather than strengthening their conclusions;
+- determine whether the admitted evidence supplies a cutoff-indexed, physically normalized self-adjoint generator family and explicit cross-regulator state-space comparison;
+- distinguish the `YM-T-030` spatial covariance-decay statement from a full Hamiltonian spectral exclusion suitable for `YM-D001-R001`;
+- determine whether an explicit lattice-spacing/scale-setting trajectory and regulator-to-continuum generator convergence theorem are present;
+- if the R001 application tuple cannot be formed, record the first missing typed interface rather than estimating an untyped continuum gap constant;
+- treat absence of a strong-coupling-to-continuum trajectory theorem as a missing theorem, not as a proof of impossibility;
 - preserve `YM-D001` through `YM-D005` as open research debts unless their full discharge conditions are met.
 
 ## Current substantive state
@@ -62,7 +62,7 @@ The target asks whether the currently admitted inputs `YM-T-010` and `YM-T-030` 
 - `grandchallenge/MATHSOLVE:work_packages/YM_D001_REGULATED_APPLICATION_AUDIT/02_CLAIM_LEDGER.yaml`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D001_REGULATED_APPLICATION_AUDIT/03_PROOF_OBLIGATION_DAG.json`
 
-## Selected theorem and falsification boundary
+## Admitted theorem and current falsification boundary
 
 The candidate theorem uses the bounded transforms
 
@@ -75,6 +75,8 @@ Three exact firewalls accompany it:
 1. weak convergence of the resolvents can fill the forbidden interval;
 2. a moving zero-energy state can disappear even while the spectral exclusion survives strong-resolvent convergence;
 3. positive gaps `Delta_n` with `inf Delta_n = 0` provide no positive limiting lower bound.
+
+The current R002 candidate then audits the available regulated evidence against that theorem. Its first exact finding is that no admitted record supplies the cutoff-indexed physically normalized generator family and cross-regulator comparison maps required to form the R001 application tuple. It separately records that the `YM-T-030` covariance-decay exponent is not presently identified with a full transfer-generator spectral exclusion.
 
 ## Smallest safe successor after R002 admission
 
