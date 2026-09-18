@@ -126,7 +126,8 @@
   },
   "successor_policy": {
     "next_frontier": "MISSING_P2_COLMEZ_WANG_SQUARE_ROOT_COVER_CHAPTER15_GLOBALIZATION_COMPATIBILITY",
-    "historical_r5_res_reopen_condition_unchanged": true
+    "historical_r5_res_reopen_condition_unchanged": true,
+    "next_frontier_if_closed": "MISSING_P2_COLMEZ_WANG_SQUARE_ROOT_COVER_CHAPTER15_GLOBALIZATION_COMPATIBILITY"
   },
   "stop_only_on": [
     "governance_boundary",
