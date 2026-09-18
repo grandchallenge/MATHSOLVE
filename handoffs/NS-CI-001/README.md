@@ -536,6 +536,66 @@ It does not exclude parabolic residence obtained from genuinely dynamic
 same-band depletion, phase decoherence, cross-level coherence, or signed
 time-correlated flux information.
 
+
+### L5-17 instantaneous cross-level coherence audit
+
+`work_packages/NS_CI_R014_A2_L5_17_C2_INSTANTANEOUS_CROSS_LEVEL.md`
+records
+
+```text
+SAME_BAND_NSE_RHS_ALLOWS_TURNOVER_RATE_WITH_STRICT_HIGH_INPUT_EMPTY
+__INSTANTANEOUS_CROSS_LEVEL_REPAIR_BLOCKED.
+```
+
+Extend the L5-16 source pair by an active target mode:
+
+```math
+u_sigma
+=
+A(0,1,1)cos(Nx_1)
++
+sigma A(1,0,1)cos(Nx_2)
++
+C e_3 sin(Nx_1+Nx_2),
+```
+
+with `sigma=+/-1`. All initial Fourier support lies at frequencies
+`N,N,sqrt(2)N`; there is no input frequency above the target.
+
+The target projected nonlinear coefficient remains exactly
+
+```math
+-sigma A^2 N e_3.
+```
+
+Hence the exact target NSE coefficient derivative is
+
+```math
+Cdot
+=
+-2 nu N^2 C
++
+sigma A^2 N.
+```
+
+Setting `A=C=R nu N` gives
+
+```math
+Cdot/C
+=
+nu N^2(-2+sigma R).
+```
+
+For large `R`, the target is a genuine threshold overshoot and can have
+either growth or decay at turnover rate while every strict-high input mode is
+zero. Flipping `sigma` changes the nonlinear target derivative sign without
+changing support or modal energies.
+
+Therefore rapid active-shell variation does not instantaneously force
+strict-high activity. Any valid cross-level repair must be time-correlated:
+delayed strict-high charge, repeated-transfer decoherence, cumulative signed
+flux, or another non-summable temporal cost.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -550,36 +610,32 @@ time-correlated flux information.
 
 ## Smallest safe next tranche
 
-Do not repeat C1, C3-DIAG, the direct Chemin--Lerner source hypothesis, the
-L5-14 packet reduction, turnover-time residence, or the bare fixed-shell
-absolute mild estimate.
+Do not repeat the bare absolute mild estimate or seek an instantaneous
+strict-high implication from active-shell variation.
 
-The first live obligation is now **C2-COH**.
+The first live obligation is now **C2-TIME**.
 
-A large upper-fifth overshoot can have pointwise same-band projected forcing of
-the full `lambda A^2` size. Therefore the next useful theorem must use
-information that is genuinely dynamical rather than another instantaneous
-bilinear estimate.
+The precise question is:
 
-The preferred audit is:
+> Can repeated same-band turnover-size forcing remain coherent over a sequence
+> of large overshoot episodes without generating a non-summable
+> time-integrated strict-high, dissipation, or signed-flux cost?
 
-> During an actual large overshoot episode, does rapid variation of the active
-> shell force a signed flux event, neighboring-band activity, or a
-> time-integrated depletion factor that charges the episode more strongly than
-> the turnover-scale cost `R^-1`?
+The first useful calculation should freeze a target shell on a short interval
+and split its Duhamel/nonlinear contribution into:
 
-Valid reopening outputs include:
+- internal active-band interactions;
+- interactions involving strict-high modes;
+- already-controlled far-low interactions.
 
-- a same-band time-integrated depletion factor that is non-summable in the
-  overshoot ratio `R`;
-- parabolic-scale cross-level coherence;
-- a strict-high neighboring-shell cost forced by rapid upper-band variation;
-- a signed/time-correlated flux law that directly controls
-  `integral Omega`.
+The target is a genuinely temporal inequality. A valid advance would show
+that repeated saturation of the internal `lambda A^2` scale forces either a
+delayed strict-high charge, a cumulative signed-flux effect, or a depletion
+factor whose cost is non-summable in the overshoot ratio.
 
-If the calculation reduces to the protected L4 active diagonal, the old L3
-exit charge, selector variation, or the absolute `lambda A^2` forcing bound,
-record that reduction and move to a genuinely distinct mechanism.
+If the calculation reduces only to turnover residence, the L3 inverse-scale
+exit charge, the L4 active diagonal, selector variation, or an unsigned
+absolute forcing bound, record that reduction and keep those lanes closed.
 
 ## Authoritative pointers
 
@@ -603,6 +659,7 @@ record that reduction and move to a genuinely distinct mechanism.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_14_C2_ACTIVE_BAND_REDUCTION.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_15_C2_OVERSHOOT_PERSISTENCE_AUDIT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_16_C2_SAME_BAND_MILD_OBSTRUCTION.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_17_C2_INSTANTANEOUS_CROSS_LEVEL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
