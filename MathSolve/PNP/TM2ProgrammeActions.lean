@@ -86,9 +86,133 @@ theorem tm2RunAction_pop {decision : List Bool → Bool}
   subst stmt
   simp [tm2RunAction, tm2PopAction]
 
+/-- The inline compiler peek branch is exactly the corresponding stay action. -/
+theorem tm2RunAction_peek {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision)
+    (code : TM2StatementCode source.tm) (state : source.tm.σ)
+    (readWork : Fin (tm2WorkTapeCount source) → TM2ProgrammeSymbol source.tm)
+    (k : source.tm.K)
+    (updateState : source.tm.σ → Option (source.tm.Γ k) → source.tm.σ)
+    (nextStmt : Turing.TM2.Stmt source.tm.Γ source.tm.Λ source.tm.σ)
+    (hstmt : code.2.1 = Turing.TM2.Stmt.peek k updateState nextStmt)
+    (hnext : nextStmt ∈ Turing.TM2.stmts₁ code.2.1) :
+    tm2RunAction source code state readWork =
+      tm2StayAction source
+        (tm2ControlRun source
+          (tm2UnaryChildCode source code nextStmt hnext)
+          (updateState state (tm2ReadSourceHead? source k readWork)))
+        readWork := by
+  rcases code with ⟨label, ⟨stmt, hmem⟩⟩
+  dsimp at hstmt hnext ⊢
+  subst stmt
+  simp [tm2RunAction]
+
+/-- The inline compiler load branch is exactly the corresponding stay action. -/
+theorem tm2RunAction_load {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision)
+    (code : TM2StatementCode source.tm) (state : source.tm.σ)
+    (readWork : Fin (tm2WorkTapeCount source) → TM2ProgrammeSymbol source.tm)
+    (updateState : source.tm.σ → source.tm.σ)
+    (nextStmt : Turing.TM2.Stmt source.tm.Γ source.tm.Λ source.tm.σ)
+    (hstmt : code.2.1 = Turing.TM2.Stmt.load updateState nextStmt)
+    (hnext : nextStmt ∈ Turing.TM2.stmts₁ code.2.1) :
+    tm2RunAction source code state readWork =
+      tm2StayAction source
+        (tm2ControlRun source
+          (tm2UnaryChildCode source code nextStmt hnext)
+          (updateState state))
+        readWork := by
+  rcases code with ⟨label, ⟨stmt, hmem⟩⟩
+  dsimp at hstmt hnext ⊢
+  subst stmt
+  simp [tm2RunAction]
+
+/-- The compiler takes the true statement subtree when the branch predicate is true. -/
+theorem tm2RunAction_branch_true {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision)
+    (code : TM2StatementCode source.tm) (state : source.tm.σ)
+    (readWork : Fin (tm2WorkTapeCount source) → TM2ProgrammeSymbol source.tm)
+    (predicate : source.tm.σ → Bool)
+    (trueStmt falseStmt : Turing.TM2.Stmt source.tm.Γ source.tm.Λ source.tm.σ)
+    (hstmt : code.2.1 = Turing.TM2.Stmt.branch predicate trueStmt falseStmt)
+    (htrue : trueStmt ∈ Turing.TM2.stmts₁ code.2.1)
+    (hp : predicate state = true) :
+    tm2RunAction source code state readWork =
+      tm2StayAction source
+        (tm2ControlRun source
+          (tm2UnaryChildCode source code trueStmt htrue) state)
+        readWork := by
+  rcases code with ⟨label, ⟨stmt, hmem⟩⟩
+  dsimp at hstmt htrue ⊢
+  subst stmt
+  simp [tm2RunAction, hp]
+
+/-- The compiler takes the false statement subtree when the branch predicate is false. -/
+theorem tm2RunAction_branch_false {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision)
+    (code : TM2StatementCode source.tm) (state : source.tm.σ)
+    (readWork : Fin (tm2WorkTapeCount source) → TM2ProgrammeSymbol source.tm)
+    (predicate : source.tm.σ → Bool)
+    (trueStmt falseStmt : Turing.TM2.Stmt source.tm.Γ source.tm.Λ source.tm.σ)
+    (hstmt : code.2.1 = Turing.TM2.Stmt.branch predicate trueStmt falseStmt)
+    (hfalse : falseStmt ∈ Turing.TM2.stmts₁ code.2.1)
+    (hp : predicate state = false) :
+    tm2RunAction source code state readWork =
+      tm2StayAction source
+        (tm2ControlRun source
+          (tm2UnaryChildCode source code falseStmt hfalse) state)
+        readWork := by
+  rcases code with ⟨label, ⟨stmt, hmem⟩⟩
+  dsimp at hstmt hfalse ⊢
+  subst stmt
+  have hp' : predicate state ≠ true := by
+    simpa [hp]
+  simp [tm2RunAction, hp']
+
+/-- The inline compiler goto branch jumps to the root code selected by the source state. -/
+theorem tm2RunAction_goto {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision)
+    (code : TM2StatementCode source.tm) (state : source.tm.σ)
+    (readWork : Fin (tm2WorkTapeCount source) → TM2ProgrammeSymbol source.tm)
+    (nextLabel : source.tm.σ → source.tm.Λ)
+    (hstmt : code.2.1 = Turing.TM2.Stmt.goto nextLabel) :
+    tm2RunAction source code state readWork =
+      tm2StayAction source
+        (tm2ControlRun source
+          (TM2StatementCode.root source.tm (nextLabel state)) state)
+        readWork := by
+  rcases code with ⟨label, ⟨stmt, hmem⟩⟩
+  dsimp at hstmt ⊢
+  subst stmt
+  simp [tm2RunAction]
+
+/-- The inline compiler halt branch selects the exact Programme terminal from
+the represented output head. -/
+theorem tm2RunAction_halt {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision)
+    (code : TM2StatementCode source.tm) (state : source.tm.σ)
+    (readWork : Fin (tm2WorkTapeCount source) → TM2ProgrammeSymbol source.tm)
+    (hstmt : code.2.1 = Turing.TM2.Stmt.halt) :
+    tm2RunAction source code state readWork =
+      tm2StayAction source
+        (match tm2OutputBit? source readWork with
+         | some true => tm2ControlAccept source
+         | _ => tm2ControlReject source)
+        readWork := by
+  rcases code with ⟨label, ⟨stmt, hmem⟩⟩
+  dsimp at hstmt ⊢
+  subst stmt
+  simp [tm2RunAction]
+
 #print axioms tm2PushTokenStack?_generated
 #print axioms tm2RunAction_push
 #print axioms tm2RunAction_pop
+#print axioms tm2RunAction_peek
+#print axioms tm2RunAction_load
+#print axioms tm2RunAction_branch_true
+#print axioms tm2RunAction_branch_false
+#print axioms tm2RunAction_goto
+#print axioms tm2RunAction_halt
 
 end
 
