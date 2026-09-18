@@ -14,7 +14,7 @@ Continue native Solve theorem development for `YM-001` while preserving the open
 
 ## Current primary deliverable
 
-Current bounded Solve theorem tranche: **none open after `YM-D004-R001` admission**.
+Current bounded Solve theorem tranche: **`YM-D002-R001 — ALGEBRAIC_OS_LIMIT_CLOSURE`**, candidate on the live work branch.
 
 Within D003, the smallest theorem-grade successor remains:
 
@@ -23,6 +23,8 @@ Within D003, the smallest theorem-grade successor remains:
 Protected MATHFORGE merge `5caba0069ab40a6c813c541c20512a4b9d981eed` records the current theorem-body acquisition state. Primary bibliographic/source-level identities are reverified; preservation registries establish that the relevant CMP archive range is preserved, including volume 122 issue 3, but the preserved issue/article bytes still cannot be retrieved and independently inspected on the current execution interface. Therefore `YM-D003-BAL-R002` is not open for an equation-level proof attempt. Its exact evidentiary blocker remains `MISSING_PRIMARY_BALABAN_THEOREM_BODY_FOR_STABILITY_TO_CONTINUUM_OBSERVABLE_EXISTENCE`.
 
 The current Programme gate authorizes restricted targets across `YM-D001` through `YM-D005`, not D003 alone. After the Balaban source recovery was exhausted on the present interface, `YM-D004-R001` was selected as the smallest independent executable target and admitted at protected merge `1b960101f494743ce4d2aeb6b29e0417d2be3eae`. It proves that protected perturbative interface `YM-T-100` and OS reconstruction interface `YM-T-120` do not construct the required renormalized local gauge-invariant curvature-observable hierarchy: T-100 has the wrong output type, while T-120 assumes the hierarchy as input. The next D004 constructive bridge is `YM-D004-R002`, which remains open and coupled to an actual selected four-dimensional continuum route.
+
+With D003 source-blocked and the next D001/D004/D005 application steps all coupled to an actual four-dimensional continuum construction, the smallest independent executable frontier is D002-R001. It isolates a reusable limit theorem: on one common observable algebra, normalization, exact symmetry/covariance and gauge-invariance equalities, and reflection positivity survive pointwise convergence of Schwinger functionals. The theorem does not construct the limit and does not transfer clustering or the remaining analytic OS profile; those remain in `YM-D002-R002`.
 
 ## Material acceptance criteria
 
@@ -37,7 +39,10 @@ The current Programme gate authorizes restricted targets across `YM-D001` throug
 - preserve `YM-D001` through `YM-D005` and `YM-001` as open;
 - for D004, distinguish perturbative ultraviolet running from nonperturbative local-operator construction;
 - reject any use of OS reconstruction to infer an observable hierarchy that appears among its hypotheses;
-- identify the smallest missing regulated-to-renormalized local-observable theorem without prescribing an unsupported regulator or renormalization scheme.
+- identify the smallest missing regulated-to-renormalized local-observable theorem without prescribing an unsupported regulator or renormalization scheme;
+- for D002, require one common comparison algebra before passing any fixed-regulator OS property to a limit;
+- distinguish closed algebraic OS properties from analytic/growth and cluster/vacuum obligations;
+- reject interchange of regulator and large-distance limits without uniform control.
 
 ## Current substantive state
 
@@ -59,6 +64,8 @@ The current Programme gate authorizes restricted targets across `YM-D001` throug
 - `YM-D003`: remains open, but the broad statement that 4d large-field/UV stability is wholly missing is obsolete. Residual obligations are now route-specific.
 - `YM-D004-R001`: admitted at protected merge `1b960101f494743ce4d2aeb6b29e0417d2be3eae`; it isolates the exact missing renormalized-observable construction interface between protected perturbative UV data and OS reconstruction.
 - `YM-D004-R002`: open successor requiring a selected regulated route to construct and identify the renormalized local gauge-invariant continuum observable hierarchy; it cannot be instantiated independently of an actual four-dimensional continuum construction.
+- `YM-D002-R001`: current candidate restricted target; it proves conditional closure of the algebraic/closed-cone OS core under common-domain pointwise convergence and explicitly excludes construction of the limit, analytic/growth closure, and clustering.
+- `YM-D002-R002`: open construction-facing successor requiring one selected four-dimensional limiting hierarchy plus the remaining nonalgebraic analytic/growth and cluster/vacuum OS profile.
 - `YM-D002` and `YM-D004`: remain open construction/reconstruction/observable-identification debts.
 - `YM-D006` through `YM-D009`: source/scope dispositions remain recorded and do not bypass D001-D005.
 
@@ -80,6 +87,10 @@ The current Programme gate authorizes restricted targets across `YM-D001` throug
 - `grandchallenge/MATHSOLVE:work_packages/YM_D004_OBSERVABLE_INTERFACE_GAP/01_OBSERVABLE_INTERFACE_THEOREM.md`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D004_OBSERVABLE_INTERFACE_GAP/02_CLAIM_LEDGER.yaml`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D004_OBSERVABLE_INTERFACE_GAP/03_PROOF_OBLIGATION_DAG.json`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D002_OS_ALGEBRAIC_LIMIT_CLOSURE/00_README.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D002_OS_ALGEBRAIC_LIMIT_CLOSURE/01_OS_LIMIT_CLOSURE_THEOREM.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D002_OS_ALGEBRAIC_LIMIT_CLOSURE/02_CLAIM_LEDGER.yaml`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D002_OS_ALGEBRAIC_LIMIT_CLOSURE/03_PROOF_OBLIGATION_DAG.json`
 - `grandchallenge/MATH-PROGRAMME:campaigns/yang_mills/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json`
 - `grandchallenge/MATHSOLVE:campaign_manifests/YM-001.json`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/03_PROOF_OBLIGATION_DAG.json`
