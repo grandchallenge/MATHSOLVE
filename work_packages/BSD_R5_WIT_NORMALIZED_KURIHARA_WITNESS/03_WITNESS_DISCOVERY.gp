@@ -1,6 +1,6 @@
 \\ BSD R5-WIT discovery scan.
 \\ Exact rational plus modular symbols via the admitted PARI/GP 2.15.4 interface.
-\\ Discovery only: a nonzero candidate must be reduced to a deterministic certificate.
+\\ Discovery only: any nonzero candidate is replayed by a minimal certificate.
 
 ratmod2(q)={
   my(n=numerator(q), d=denominator(q));
@@ -17,13 +17,14 @@ is_kolyvagin_prime(E,N,l)={
   ((ap-l-1)%2)==0;
 };
 
-delta_prime_mod2(M,xp,l)={
+delta_n_mod2(M,xp,n,ells)={
   my(S=0, q, b);
-  for(a=1,l-1,
-    if(gcd(a,l)==1,
-      b=legbit(a,l);
+  for(a=1,n-1,
+    if(gcd(a,n)==1,
+      b=1;
+      for(i=1,#ells, b *= legbit(a % ells[i],ells[i]));
       if(b,
-        q=mseval(M,xp,[oo,a/l]);
+        q=mseval(M,xp,[oo,a/n]);
         S=(S + ratmod2(2*q)) % 2;
       );
     );
@@ -31,38 +32,67 @@ delta_prime_mod2(M,xp,l)={
   S;
 };
 
-emit_terms(M,xp,l)={
-  print("TERMS ell=",l);
-  for(a=1,l-1,
-    if(gcd(a,l)==1 && legbit(a,l),
-      my(q=mseval(M,xp,[oo,a/l]));
-      if(ratmod2(2*q),
-        print("  a=",a," symbol=",q," scaled=",2*q," parity=1");
+emit_terms(M,xp,n,ells)={
+  print("TERMS n=",n," primes=",ells);
+  for(a=1,n-1,
+    if(gcd(a,n)==1,
+      my(b=1);
+      for(i=1,#ells, b *= legbit(a % ells[i],ells[i]));
+      if(b,
+        my(q=mseval(M,xp,[oo,a/n]));
+        if(ratmod2(2*q),
+          print("  a=",a," symbol=",q," scaled=",2*q," parity=1");
+        );
       );
     );
   );
 };
 
-scan(label,ainvs,N,bound)={
-  my(E=ellinit(ainvs), v=msfromell(E,1), M=v[1], xp=v[2], found=0);
-  print("CURVE ",label," conductor=",N," discr=",ellglobalred(E)[1]);
-  print("PARI plus symbol initialized");
-  forprime(l=3,bound,
-    if(is_kolyvagin_prime(E,N,l),
-      my(ap=ellap(E,l), d=delta_prime_mod2(M,xp,l));
-      print("KOLYVAGIN ell=",l," ap=",ap," Delta_mod2=",d);
-      if(d && !found,
-        found=l;
-        print("FIRST_NONZERO label=",label," n=",l," Delta_mod2=1");
-        emit_terms(M,xp,l);
-      );
-    );
+scan_single(label,E,N,xp,M,plist)={
+  my(found=0);
+  for(i=1,#plist,
+    my(l=plist[i], ap=ellap(E,l), d=delta_n_mod2(M,xp,l,[l]));
+    print("SINGLE label=",label," n=",l," ap=",ap," Delta_mod2=",d);
+    if(d && !found, found=l);
   );
-  if(!found, print("NO_SINGLE_PRIME_WITNESS label=",label," bound=",bound));
   found;
 };
 
-f53=scan("53a1",[1,-1,1,0,0],53,251);
-f203=scan("203b1",[1,1,1,0,-2],203,251);
-print("SUMMARY first53=",f53," first203=",f203);
+scan_pairs(label,E,N,xp,M,plist)={
+  my(found=0, best=0);
+  for(i=1,#plist-1,
+    for(j=i+1,#plist,
+      my(n=plist[i]*plist[j]);
+      if(!best || n<best,
+        my(d=delta_n_mod2(M,xp,n,[plist[i],plist[j]]));
+        print("PAIR label=",label," n=",n," primes=",[plist[i],plist[j]]," Delta_mod2=",d);
+        if(d,
+          found=n; best=n;
+          print("FIRST_PAIR_NONZERO label=",label," n=",n," primes=",[plist[i],plist[j]]," Delta_mod2=1");
+          emit_terms(M,xp,n,[plist[i],plist[j]]);
+        );
+      );
+    );
+  );
+  found;
+};
+
+scan(label,ainvs,N,plist)={
+  my(E=ellinit(ainvs), v=msfromell(E,1), M=v[1], xp=v[2]);
+  print("CURVE ",label," conductor=",N);
+  for(i=1,#plist,
+    if(!is_kolyvagin_prime(E,N,plist[i]), error("non-Kolyvagin prime in bound list: ",plist[i]));
+  );
+  my(s=scan_single(label,E,N,xp,M,plist));
+  my(p=scan_pairs(label,E,N,xp,M,plist));
+  print("SUMMARY label=",label," single=",s," pair=",p);
+  p;
+};
+
+p53=[5,7,11,31,41,43,47,59,61];
+p203=[17,19,23,37,41,59,61];
+
+f53=scan("53a1",[1,-1,1,0,0],53,p53);
+f203=scan("203b1",[1,1,1,0,-2],203,p203);
+print("FINAL first_pair_53=",f53," first_pair_203=",f203);
 quit;
