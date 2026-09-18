@@ -26,7 +26,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pari-gp
           gp --version
-          gp --version | grep -F '2.15.4'
+          gp --version 2>&1 | grep -F '2.15.4'
 
       - name: Exact single-prime witness scan
         shell: bash
