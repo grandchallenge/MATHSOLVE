@@ -1585,6 +1585,97 @@ The remaining coherence problem is therefore directional: extract one common
 transport direction/transverse coordinate and a nondegenerate accumulated
 phase from selected whole-space active-band dynamics.
 
+
+### L5-33 transverse direction-defect corridor
+
+`work_packages/NS_CI_R014_A2_L5_33_C2_DIRECTION_DEFECT.md`
+records
+
+```text
+TRANSVERSE_DIRECTION_DEFECT_AS_RESIDUAL_REQUIRES_H_CUBED
+__LARGER_DEFECT_MUST_BE_PROMOTED_OR_CHARGED.
+```
+
+Model a transport-direction defect in the critical packet equation by the
+transverse derivative leakage
+
+```math
+D_h Phi_h
+=
+h^{-1} theta_h(s) B_h(s,Y) partial_Y Phi_h.
+```
+
+After the L5-32 phase removal,
+
+```math
+widetilde D_h
+=
+h^{-1}theta_hB_h partial_Y A_h
+-
+i h^{-2}theta_h B_h(F_h)_Y A_h.
+```
+
+Define
+
+```math
+Z_h
+=
+hB_h partial_Y A_h
+-
+iB_h(F_h)_Y A_h.
+```
+
+Then exactly
+
+```math
+widetilde D_h
+=
+h^{-2}theta_h Z_h.
+```
+
+If the direction term is assigned to the protected NF4 residual, its L2
+component must satisfy
+
+```math
+||theta_h Z_h||_{L2_{s,Y}}
+=
+O(h^3).
+```
+
+Under uniform nondegenerate limiting coupling
+
+```math
+inf_s ||B_0(F_0)_Y A_0||_2
+>=
+c_dir>0,
+```
+
+L5-32 gives `inf_s||Z_h(s)||_2>=c_dir/2` for small `h`. Hence
+
+```math
+||theta_h||_{L2_s}
+=
+O(h^3).
+```
+
+For a persistent approximately constant direction error,
+
+```math
+|theta_h|
+lesssim
+h^3
+=
+rho^{-1}.
+```
+
+Thus a nondegenerately coupled direction defect larger than the
+`rho^{-1}` corridor cannot be hidden inside the L5-28 residual.  It must be
+promoted into principal critical dynamics, shown to cancel by additional
+structure, or charged independently.
+
+This tranche does not yet prove that larger direction drift pays a selector
+charge.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1599,26 +1690,23 @@ phase from selected whole-space active-band dynamics.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION**.
+The live obligation is now **C2-MIX-DIRECTION-PRINCIPAL**.
 
-L5-32 removes small instantaneous transverse-profile drift as a necessary
-coherence condition.  The critical invariant is the accumulated phase
-gradient.
+L5-33 quantifies the residual corridor: after critical mixing, a
+nondegenerately coupled transverse direction defect can remain in NF4 only at
+`O(h^3)=O(rho^-1)` in critical-time L2, or at the same pointwise scale when
+persistent.
 
-The next question is therefore geometric:
+The next question is what happens above that corridor.
 
-> Can selected whole-space active-band dynamics provide one approximately
-> common transport direction and transverse coordinate over the critical
-> interval, or must order-one direction drift itself create a non-summable
-> selector/dissipation cost?
+Two routes are admissible:
 
-The first bounded audit should distinguish scalar profile drift, already
-handled by accumulated phase, from actual rotation/change of transport
-direction.
+1. incorporate direction motion into a moving-frame/multidimensional principal
+   operator and test whether critical Fourier variance survives;
+2. prove that persistent nonresidual direction drift itself pays a
+   selector/dissipation charge.
 
-A useful positive theorem should be stated in a coordinate-free projected
-symbol or moving-frame form and should reduce to the L5-32 scalar phase bridge
-when the direction is fixed.
+Do not silently classify larger direction motion as residual.
 
 ## Authoritative pointers
 
@@ -1658,6 +1746,7 @@ when the direction is fixed.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_30_C2_SECONDARY_SHEAR_CHARGE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_31_C2_GENERAL_SHEAR_PROFILE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_32_C2_ACCUMULATED_PHASE.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_33_C2_DIRECTION_DEFECT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
