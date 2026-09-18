@@ -44,3 +44,4 @@ jobs:
             exit 1
           fi
           printf '%s\n' "$out2" | grep -q 'R5_WIT_COHORT_DISCOVERY_COMPLETE'
+          python work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/08_COHORT_LOCAL_T2_CERTIFICATE.py
