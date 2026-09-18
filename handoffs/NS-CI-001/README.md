@@ -1225,6 +1225,66 @@ mechanism produces a genuine nonvanishing critical scale cost, but it does not
 show that every selected whole-space upper-band overshoot contains such a
 mixing packet.
 
+
+### L5-27 critical shear-packet normal-form bridge
+
+`work_packages/NS_CI_R014_A2_L5_27_C2_MIX_BRIDGE_NORMAL_FORM.md`
+records
+
+```text
+CRITICAL_SHEAR_PACKET_NORMAL_FORM_BRIDGE_PROVED
+__WHOLE_SPACE_DERIVATION_REMAINS_OPEN.
+```
+
+L5-26's critical charge is structurally stable under a selector-free local
+packet normal form.  After critical normalization, suppose one packet
+component obeys
+
+```math
+partial_s Phi_h
++
+i h^{-1} a_h(s) g(Y) Phi_h
+=
+h^2(partial_Y^2-1)Phi_h
++
+r_h,
+```
+
+with:
+
+- a fixed smooth transverse phase `g` whose gradient is nonzero on initial
+  packet mass;
+- `a_h=1+O(h^2)`;
+- `O(h)` demodulated initial perturbation;
+- `O(h)` demodulated residual in fixed-window `L^2_s H^k`;
+- uniform physical reconstruction of packet coefficients into LP blocks.
+
+Exact phase removal gives the universal critical limit
+
+```math
+A_0(s,Y)
+=
+A_in(Y)
+exp(-s^3 |g'(Y)|^2/3).
+```
+
+Its scaled second moment is uniformly positive on compact positive critical
+intervals.  Strong demodulated convergence therefore yields fixed positive
+finite-`h` mass at `|n|\asymp h^{-1}`, a threshold-violating physical block
+at `NR^{1/3}`, and
+
+```math
+integral Lambda^2 dt
+>=
+c_*/nu.
+```
+
+Thus the critical mixing cost does not depend on the cosine profile, exact
+phase locking, zero residual, or an exact passive-scalar reduction.
+
+The theorem remains conditional: the normal-form hypotheses have not been
+derived from an arbitrary selected whole-space upper-band overshoot.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1239,24 +1299,25 @@ mixing packet.
 
 ## Smallest safe next tranche
 
-The exact shear calibration now carries a nonvanishing critical selector cost.
-The live problem is no longer whether critical mixing can pay the A2 charge;
-it can.
+The live obligation is now **C2-MIX-DERIVE**.
 
-The first live obligation is **C2-MIX-BRIDGE**:
+Audit the five normal-form hypotheses of L5-27 against the selected whole-space
+upper-band Navier--Stokes equation.  Do not assume the bridge contract.
 
-> Identify a selector-free local active-band hypothesis, stated directly in
-> terms of the selected whole-space Navier--Stokes velocity/deformation, under
-> which one threshold overshoot forces a critical mixing interval with selector
-> charge at least `c/nu`.
+Test in this order:
 
-The bridge must be portable beyond the periodic 2.5D cosine shear. Candidate
-variables are packet-level transverse deformation, a directional strain lower
-bound, nondegenerate advecting phase, or growth of transported Fourier
-variance.
+1. **NF4 residual first.** Decompose pressure, localization, neighboring-band,
+   and genuinely 3D interaction errors after critical demodulation. Determine
+   whether A2/Leray structure can give the required `O(h)` critical residual.
+2. If NF4 survives, test whether a nondegenerate transverse deformation
+   direction (NF1) can be extracted without adding a geometric hypothesis.
+3. Then test NF2/NF3 normalization and initialization.
+4. Finally bind a concrete packet decomposition to NF5 reconstruction.
 
-A bridge theorem is still conditional until its hypothesis is derived from the
-selected whole-space equations. Do not reopen L3 merely from the calibration.
+A valid positive result must derive or weaken the hypotheses from selected
+equation structure. A negative result should identify the first exact
+obstruction and narrow the bridge rather than treating the conditional theorem
+as A2 closure.
 
 ## Authoritative pointers
 
@@ -1290,6 +1351,7 @@ selected whole-space equations. Do not reopen L3 merely from the calibration.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_24_C2_MIX_MOMENT_CEILING.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_25_C2_MIX_SUBCRITICAL_LOWER.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_26_C2_MIX_CRITICAL_SEMICLASSICAL.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_27_C2_MIX_BRIDGE_NORMAL_FORM.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
