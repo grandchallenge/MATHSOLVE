@@ -227,6 +227,92 @@ research inputs:
    from the already-closed global commutator estimate, provided the `(q,k)`
    indices are not collapsed prematurely.
 
+
+### L5-11 forced core-shell calibration
+
+`work_packages/NS_CI_R014_A2_L5_11_FORCED_CORE_SHELL_CALIBRATION.md`,
+together with its source/capture audit, closes C1 positively:
+
+```text
+FORCED_CORE_SHELL_LP_LOWER_BOUND_PROVED__CALIBRATION_FORCES_LAMBDA_NOT_L2.
+```
+
+For the explicit September 2026 **forced** singular construction, a shell at
+`lambda_p comparable to (nu(1-t))^-1/2` carries
+`||u_p||_infinity >= c sqrt(nu)(1-t)^(-1/2-h)` at every sufficiently late
+time. Hence that shell violates the strict-high threshold, so
+
+```math
+Lambda(t) >= c(nu(1-t))^{-1/2},
+```
+
+and the construction has divergent terminal `integral Lambda^2`, `integral
+f`, and `integral S_1`. This is theorem-grade calibration in a different
+forcing class; it does not falsify unforced A2.
+
+### L5-12 frequency--scale transplant boundary
+
+`work_packages/NS_CI_R014_A2_L5_12_FREQUENCY_SCALE_TRANSPLANT_BOUNDARY.md`
+confirms the Guo--Wang--Xiong two-index mechanism but rejects its direct source
+hypothesis as an A2 consequence:
+
+```text
+SOURCE_TWO_INDEX_KERNEL_CONFIRMED__DIRECT_CHEMIN_LERNER_IMPORT_BLOCKED_BY_ACTIVE_DIAGONAL.
+```
+
+The off-diagonal kernel has genuine summable gain,
+
+```math
+K_{k-j}
+\sim
+2^{-(k-j)/m} \quad (j\ll k),
+\qquad
+K_{k-j}\sim2^{-(j-k)} \quad (j\gg k),
+```
+
+while the central band has unit size. A2 and Leray leave an exact
+`lambda_j^(1/2)` deficit in the source critical coefficient, and a protected
+packet fixture shows that even finite `integral S_1` does not imply the
+source Chemin--Lerner `ell^1` sequence. C3 was therefore narrowed to
+`C3-DIAG`.
+
+### L5-13 C3 diagonal audit
+
+`work_packages/NS_CI_R014_A2_L5_13_C3_DIAGONAL_AUDIT.md` executes the three
+generic C3-DIAG repairs.
+
+Its bounded disposition is
+
+```text
+C3_DIAGONAL_GENERIC_REPAIRS_TERMINATED
+__STRICT_HIGH_NO_ELL1
+__UNSIGNED_RENORMALIZATION_RETURNS_L4
+__LOCAL_SIGN_NOT_UNIVERSAL.
+```
+
+The exact conclusions are:
+
+1. A fixed observation-scale shift cannot absorb the half derivative. A linear
+   shift `k-j=alpha j+O(1)` must satisfy `alpha>m/2` even to make the
+   Leray-weighted source coefficient summable. Moving one active source that
+   far off the diagonal does not remove the new unit diagonal at frequency
+   `k`.
+2. Strict-high control does not repair that new diagonal. A static annular
+   packet fixture keeps `Q=0`, satisfies strict-high at arbitrarily large
+   frequencies and finite A2/energy/dissipation budgets, yet has a nonsummable
+   source critical coefficient sequence.
+3. Unsigned Bernstein/dissipation control of the active shell gives exactly
+   `||u_Q||_infinity^2 <= C nu^-1 lambda_Q D_Q`, returning the protected L4
+   active diagonal.
+4. An exact finite-band divergence-free Fourier fixture gives nonzero localized
+   total convection-plus-pressure energy flux, with the sign reversed by
+   `u -> -u`. Thus incompressibility, pressure algebra, finite-band support,
+   and positive localization do not supply a universal instantaneous signed
+   cancellation.
+
+These statements do not exclude PDE-specific time-correlated cancellation or
+dynamic active-band anti-concentration.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -241,36 +327,41 @@ research inputs:
 
 ## Smallest safe next tranche
 
-Do not repeat static packet interpolation, moving-tail H1 energy, fixed-tail
-bad-set splitting, threshold-residence Duhamel, the standard direct-L6
-absolute commutator estimate, signed projection/pressure algebra alone, the L4
-weighted column, or the straight global critical-energy comparison.
+Do not repeat C1, the direct Chemin--Lerner transplant, a fixed or purely
+absolute shifted observation scale, unsigned active-diagonal renormalization,
+or an instantaneous universal signed central-flux cancellation. Those bounded
+families are now characterized.
 
-Proceed in this order:
+The first live obligation is **C2-DIAG**: prove an equation-derived
+high-`Lambda` active-band depletion/anti-concentration statement, or a
+genuinely time-correlated signed central-flux theorem.
 
-1. **Protect the high-`Lambda` tail reduction** with focused regression tests.
-2. **Calibrate the explicit forced singular solution** by proving or rejecting
-   a Littlewood--Paley shell lower bound at `lambda~(1-t)^(-1/2)`. If it
-   succeeds, compute `Lambda`, `f`, `S_1`, `W_{<=Q}`, and `Z_{>Q}` asymptotics.
-   Keep the forced/unforced claim boundary explicit.
-3. **Launch frequency--scale matching** in a backward local-energy cylinder.
-   Retain dyadic frequency `q` and physical scale `k` separately. Seek a
-   summable kernel in `q-k`; bind `k` to `Q` only after obtaining the gain.
-4. Express any successful active-set depletion in the Cheskidov--Peng
-   intermittency language after the PDE estimate is proved, not before.
-
-A useful theorem-grade successor is any estimate implying
+The most concrete anti-concentration target is a dimension-one improvement of
+Bernstein on the high-activity central band. With
+`lambda_E=(nu/U0)^2`, seek a time-integrated estimate comparable to
 
 ```math
-integral_{(T-delta,T) intersect {Lambda>R}} S_1(t) dt < infinity
+||u_q||_infinity^2
+<=
+C lambda_E lambda_q^2 ||u_q||_2^2
 ```
 
-for each putative singular time `T`, with finite `R,delta`. This is enough for
-the established `f in L1` continuation route when combined with A2.
+for `q=Q(t)+O(1)` on high-`Lambda` times, or any weaker statement sufficient
+to make the terminal high-`Lambda` packet tail finite. Do not assume an
+intermittency dimension; derive the depletion from NSE dynamics.
 
-Reject a candidate immediately if it reduces to `G_Q`, `S_Q`, selector
-variation, a new residence assumption, or `Lambda^2 X^(3/2)` without an
-independent reopening theorem.
+A second legitimate route is to retain the signed central convection-pressure
+flux over nested backward cylinders and prove cancellation only after time
+integration. The L5-13 fixture rules out a universal instantaneous identity or
+sign but not a dynamical coherence theorem.
+
+A selector/physical-scale coherence theorem could also reopen the shifted-scale
+route, but that is an explicit L3/B4 reopening obligation.
+
+Reject any successor that merely returns `lambda_Q D_Q`, assumes strict-high
+at `Q`, assumes Bernstein non-saturation, differentiates the selector without
+control, or imports a periodic/forced intermittency conclusion into the
+unforced whole-space target.
 
 ## Authoritative pointers
 
@@ -287,6 +378,10 @@ independent reopening theorem.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_B3_PACKET_INTERMITTENCY_D1.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_B3_PI1_CRITICAL_ENERGY_AUDIT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_10_FIELD_CALIBRATION_FREQUENCY_SCALE_HANDOFF.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_11_FORCED_CORE_SHELL_CALIBRATION.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_11_SOURCE_AND_CAPTURE_AUDIT.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_12_FREQUENCY_SCALE_TRANSPLANT_BOUNDARY.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_13_C3_DIAGONAL_AUDIT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
