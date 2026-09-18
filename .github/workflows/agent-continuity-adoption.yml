@@ -1,0 +1,28 @@
+name: Agent continuity adoption
+
+on:
+  pull_request:
+    paths:
+      - "AGENTS.md"
+      - ".gcl/agent-continuity.json"
+      - "scripts/validate_agent_continuity_adoption.py"
+      - ".github/workflows/agent-continuity-adoption.yml"
+  push:
+    branches: [main]
+    paths:
+      - "AGENTS.md"
+      - ".gcl/agent-continuity.json"
+      - "scripts/validate_agent_continuity_adoption.py"
+      - ".github/workflows/agent-continuity-adoption.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate continuity adoption
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/validate_agent_continuity_adoption.py
