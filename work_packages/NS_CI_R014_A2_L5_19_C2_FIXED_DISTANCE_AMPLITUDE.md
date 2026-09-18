@@ -406,7 +406,7 @@ If a shell `p<=q_{init}` met `K_{r_*}`, then
 ```math
 K_{r_*}
 \le
-b_{LP}\lambda_{p_*}
+b_{LP}\lambda_p
 \le
 b_{LP}\lambda_{q_{init}}
 \le
@@ -654,14 +654,17 @@ non-summable cost.
 
 ## 9. Required frequency growth for a charge-only repair
 
-At lattice distance `r`, the same turnover-window scaling would produce a
-certificate of order
+At lattice distance `r`, the same calculation gives a certificate of the
+form
 
 ```math
-\frac{(r+1)^2+1}{R\nu}.
+\frac{\ell_r((r+1)^2+1)}{b_{LP}^2R\nu},
 ```
 
-To obtain an order-`1/nu` charge from this mechanism alone requires
+where `\ell_r` is the dimensionless interval length on which the
+threshold-sized lower bound is available. On any fixed `O(1)`
+turnover-time horizon one has `\ell_r\le T`. Therefore a necessary
+frequency-growth condition for this certificate to reach order `1/nu` is
 
 ```math
 (r+1)^2
@@ -732,7 +735,7 @@ r(R)
 ```
 
 with a fixed dimensionless residence interval, the induced selector charge is
-no longer inverse-`R) summable and the mechanism becomes relevant to an A2
+no longer inverse-`R` summable and the mechanism becomes relevant to an A2
 reopening.
 
 ### Negative calibration direction
