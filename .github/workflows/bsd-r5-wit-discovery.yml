@@ -1,0 +1,44 @@
+name: BSD R5-WIT discovery
+
+on:
+  push:
+    branches:
+      - solve/bsd-r5-wit-normalized-kurihara-witness
+    paths:
+      - 'work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/**'
+      - '.github/workflows/bsd-r5-wit-discovery.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  discovery:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout exact subject
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Build exact PARI GP 2.15.4
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y build-essential libgmp-dev libreadline-dev
+          curl --fail --location --retry 3 \
+            https://pari.math.u-bordeaux.fr/pub/pari/OLD/2.15/pari-2.15.4.tar.gz \
+            -o /tmp/pari-2.15.4.tar.gz
+          sha256sum /tmp/pari-2.15.4.tar.gz
+          tar -C /tmp -xzf /tmp/pari-2.15.4.tar.gz
+          cd /tmp/pari-2.15.4
+          ./Configure --prefix="$HOME/pari-2.15.4"
+          make -j2
+          make install
+          "$HOME/pari-2.15.4/bin/gp" --version
+
+      - name: Exact single-prime witness scan
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$HOME/pari-2.15.4/bin/gp" -f -q \
+            < work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/03_WITNESS_DISCOVERY.gp
