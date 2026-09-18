@@ -10,26 +10,27 @@ MATHSOLVE owns bounded theorem development and research artifacts. MATHCERT rema
 
 ## Purpose
 
-Continue native Solve theorem development for `YM-001` while preserving the open-problem boundary. R006 is now admitted and reconciled. The D001 comparison and scale-normalization reductions have reached their application boundary: further progress requires a finite nonzero non-circular four-dimensional pure-YM reference scale on the same controlled continuum trajectory, which is part of the substantive `YM-D003` continuum-construction debt rather than another abstract D001 conversion lemma.
+Continue native Solve theorem development for `YM-001` while preserving the open-problem boundary. The protected Programme D003 supplement now admits Balaban four-dimensional large-field/ultraviolet-stability input and a qualified MRS fixed-infrared-cutoff construction interface. The current tranche determines exactly how those interfaces compose and narrows the live D003 debt route by route.
 
 ## Current primary deliverable
 
-Current bounded theorem tranche: **none open after R006 admission**.
+Prove or refute restricted target `YM-D003-R001` in
 
-The active mathematical frontier is the `YM-D003` analytic-estimate debt:
+`work_packages/YM_D003_UV_LARGE_FIELD_COMPOSITION/01_ROUTE_COMPOSITION_THEOREM.md`.
 
-> control the four-dimensional ultraviolet limit, infinite-volume limit, and large-field sector along one physical continuum trajectory strongly enough to construct and identify a nontrivial continuum theory.
+The target asks which D003 obligations are materially supplied by protected `YM-T-210` and qualified `YM-T-220`, whether the Balaban and MRS construction routes can be composed, and the smallest exact route-specific residual theorem objects.
 
-For the D001 application specifically, that frontier must supply a finite nonzero non-circular reference scale in the same regulated family. No further abstract unit-conversion lemma is authorized as a substitute for that construction.
+## Material acceptance criteria
 
-## Material acceptance criteria for the next native tranche
-
-- select a genuinely constructive `YM-D003` target, not another D001 normalization identity;
-- attack one of the debt's actual analytic obligations: ultraviolet control, infinite-volume control, or the four-dimensional large-field sector;
-- bind the work to one declared physical continuum trajectory;
-- if a reference observable is used for scale setting, prove its finite nonzero limiting value independently of the desired mass gap or an equivalent assumed-positive correlation length;
-- do not promote Monte Carlo continuum extrapolation, perturbative asymptotic freedom, small-field RG control, or an unreviewed complete-solution claim into a nonperturbative continuum theorem;
-- preserve `YM-D001` through `YM-D005` and `YM-001` as open until their full discharge conditions are met.
+- bind exact protected Solve, Programme, and Forge source heads;
+- preserve the frozen historical WP02 ledger and use the current protected D003 supplement;
+- mark Balaban four-dimensional large-field control and ultraviolet stability as available only within their source route;
+- preserve MRS as a qualified fixed-IR source-stated construction with its proof-completeness, topology, and OS limitations;
+- test cross-route composition explicitly and reject any splice lacking a protected comparison theorem;
+- distinguish ultraviolet stability from actual continuum-observable existence and uniqueness;
+- distinguish fixed-IR UV removal from infrared/infinite-volume removal;
+- produce a route-separated proof-obligation DAG and select the smallest material successor;
+- preserve `YM-D001` through `YM-D005` and `YM-001` as open.
 
 ## Current substantive state
 
@@ -44,7 +45,11 @@ For the D001 application specifically, that frontier must supply a finite nonzer
 - `YM-D001-R005`: admitted at protected merge `7459be7ffdec1161388b9bfe5f23d19ae9df526e`; post-admission reconciliation is protected at `3bd2a2722df603143f832c0da5b18983213e8ced`.
 - `YM-D001-R006`: admitted at protected merge `93f1aeeba12ff487251c0163400d8af356a42173`; post-admission reconciliation is protected at `ed4b0662d9a1818914aaf03f4f82b03657544617`.
 - `YM-D001`: still open; its remaining application obligations depend on the actual four-dimensional continuum construction, including a finite nonzero non-circular reference scale, regulated identification maps, a positive target/reference ratio or physical gap, and application convergence.
-- `YM-D003`: now the smallest material native frontier. Protected current evidence is `YM-T-080` (3d UV stability), `YM-T-090` (4d small-field RG), and `YM-T-100` (perturbative asymptotic freedom); none controls the full 4d large-field/continuum/infinite-volume problem.
+- Programme D003 supplement: protected at `d061a8e9b53a98c95bcb4c412b3107391c96ec00`, sourced from Forge protected merge `a609f40e809ebe74f35dc4ceb069c15e4d21f26e`.
+- `YM-T-210`: protected Balaban route input for four-dimensional large-field control and ultraviolet stability.
+- `YM-T-220`: protected qualified MRS source interface for UV-cutoff removal at fixed infrared cutoff, pure `SU(2)`, trivial topological sector; proof-completeness/IR/OS/topology limitations remain.
+- `YM-D003-R001`: current selected native target; candidate proves that Balaban and MRS are parallel route-specific inputs and may not be spliced without a bridge theorem.
+- `YM-D003`: remains open, but the broad statement that 4d large-field/UV stability is wholly missing is obsolete. Residual obligations are now route-specific.
 - `YM-D002` through `YM-D004`: remain open construction/reconstruction/observable-identification debts.
 - `YM-D006` through `YM-D009`: source/scope dispositions remain recorded and do not bypass D001-D005.
 
@@ -55,6 +60,12 @@ For the D001 application specifically, that frontier must supply a finite nonzer
 - `grandchallenge/INTELLECT:governance/handoffs/README.md`
 - `grandchallenge/MATHSOLVE:AGENTS.md`
 - `grandchallenge/MATH-PROGRAMME:campaigns/yang_mills/YM_CURRENT_ROUTING_GATE.json`
+- `grandchallenge/MATH-PROGRAMME:campaigns/yang_mills/YM_D003_UV_LARGE_FIELD_SUPPLEMENT.json`
+- `grandchallenge/MATHFORGE:sources/YM-001/YM_D003_BALABAN_MRS_SOURCE_AUDIT.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D003_UV_LARGE_FIELD_COMPOSITION/00_README.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D003_UV_LARGE_FIELD_COMPOSITION/01_ROUTE_COMPOSITION_THEOREM.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D003_UV_LARGE_FIELD_COMPOSITION/02_CLAIM_LEDGER.yaml`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D003_UV_LARGE_FIELD_COMPOSITION/03_PROOF_OBLIGATION_DAG.json`
 - `grandchallenge/MATH-PROGRAMME:campaigns/yang_mills/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json`
 - `grandchallenge/MATHSOLVE:campaign_manifests/YM-001.json`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/03_PROOF_OBLIGATION_DAG.json`
@@ -85,25 +96,34 @@ For the D001 application specifically, that frontier must supply a finite nonzer
 
 ## Admitted results and current theorem boundary
 
-R001 through R006 are admitted as bounded Solve results. They provide, respectively, common-Hilbert spectral stability, current-evidence falsification, interscale-interface localization, varying-Hilbert spectral stability, exact physical scale conversion, and the non-circular reference-scale quotient reduction.
+R001 through R006 under `YM-D001` remain admitted bounded results.
 
-The resulting D001 application boundary is exact:
+The protected Programme D003 supplement materially changes the continuum-construction frontier:
 
-`MISSING_NONCIRCULAR_4D_YM_REFERENCE_SCALE_THEOREM`.
+- Balaban `YM-T-210` supplies four-dimensional large-field control and ultraviolet stability in the lattice RG route;
+- MRS `YM-T-220` supplies a qualified source-stated UV-cutoff-free Schwinger construction at fixed infrared cutoff for pure `SU(2)`, trivial topological sector.
 
-External reconnaissance does not currently supply a qualifying theorem. The canonical Sommer-scale paper (R. Sommer, Nucl. Phys. B 411 (1994), DOI `10.1016/0550-3213(94)90473-1`) defines its scale through the static force and determines/extrapolates it using Monte Carlo data. The Wilson-flow reference-scale paper (M. Luescher, JHEP 08 (2010) 071, DOI `10.1007/JHEP08(2010)071`) explicitly combines perturbative and numerical evidence. These are useful physical scale-setting constructions, but they are not constructive theorems establishing the required four-dimensional continuum theory and finite nonzero reference scale. This reconnaissance is not source admission. Recent purported complete-solution manuscripts remain outside premise status unless and until they pass the governed Forge/Programme audit route.
+The current `YM-D003-R001` candidate proves that these are **parallel** construction interfaces. The protected records provide no theorem identifying their regulated fields, effective actions, observables, regulator trajectories, or limiting objects. Therefore neither route may silently borrow theorem content from the other.
 
-The protected `YM-D003` debt is therefore the next mathematical frontier. Its discharge condition is not another normalization lemma: uniform estimates must control the ultraviolet limit, infinite-volume limit, and large-field sector and must construct and identify a nontrivial four-dimensional continuum theory.
+### Candidate route-separated residual
 
-### Exact current boundary
+Balaban route:
 
-`YM-D003 / MISSING_4D_NONPERTURBATIVE_CONTINUUM_AND_LARGE_FIELD_CONTROL`
+- `YM-D003-BAL-R002`: ultraviolet stability to actual continuum gauge-invariant observable existence;
+- `YM-D003-BAL-R003`: uniqueness/full continuum identification;
+- `YM-D003-BAL-R004`: infrared/infinite-volume removal.
 
-with the D001-facing sub-obligation
+MRS route:
 
-`MISSING_NONCIRCULAR_4D_YM_REFERENCE_SCALE_THEOREM`.
+- `YM-D003-MRS-R002`: proof-completeness closure for unrestricted theorem-grade use;
+- `YM-D003-MRS-R003`: infrared/infinite-volume removal;
+- `YM-D003-MRS-R004`: complete OS/topology/physical identification.
 
-No currently protected result or verified external theorem supplies those estimates. Crossing this boundary requires new substantive continuum mathematics, not recovery, CI repair, source bookkeeping, or a change of units.
+Optional cross-route route:
+
+- `YM-D003-XR-R001`: an explicit comparison theorem if one wants to transfer results between Balaban and MRS.
+
+The smallest material successor after R001 admission is `YM-D003-BAL-R002`. Its proof may require theorem-number/equation-exact Balaban source acquisition beyond the current bounded Forge interface. Until that acquisition is complete, generic compactness reasoning may not be substituted for the source theorem.
 
 ## Material dependencies and boundaries
 
