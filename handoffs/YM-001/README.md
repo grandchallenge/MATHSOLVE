@@ -14,13 +14,15 @@ Continue native Solve theorem development for `YM-001` while preserving the open
 
 ## Current primary deliverable
 
-Current bounded Solve theorem tranche: **none open after `YM-D003-R001` admission**.
+Current bounded Solve theorem tranche: **`YM-D004-R001 — RENORMALIZED_OBSERVABLE_INTERFACE_GAP`**, candidate on the live work branch.
 
-The smallest material successor is:
+Within D003, the smallest theorem-grade successor remains:
 
 `YM-D003-BAL-R002 — STABILITY_TO_CONTINUUM_OBSERVABLE_EXISTENCE`.
 
-Protected MATHFORGE merge `5caba0069ab40a6c813c541c20512a4b9d981eed` records the current theorem-body acquisition state. Primary bibliographic/source-level identities are reverified; preservation registries now establish that the relevant CMP archive range is preserved, including volume 122 issue 3, but the preserved issue/article bytes still cannot be retrieved and independently inspected on the current execution interface. Therefore `YM-D003-BAL-R002` is not yet open for an equation-level proof attempt. Its exact evidentiary blocker remains `MISSING_PRIMARY_BALABAN_THEOREM_BODY_FOR_STABILITY_TO_CONTINUUM_OBSERVABLE_EXISTENCE`.
+Protected MATHFORGE merge `5caba0069ab40a6c813c541c20512a4b9d981eed` records the current theorem-body acquisition state. Primary bibliographic/source-level identities are reverified; preservation registries establish that the relevant CMP archive range is preserved, including volume 122 issue 3, but the preserved issue/article bytes still cannot be retrieved and independently inspected on the current execution interface. Therefore `YM-D003-BAL-R002` is not open for an equation-level proof attempt. Its exact evidentiary blocker remains `MISSING_PRIMARY_BALABAN_THEOREM_BODY_FOR_STABILITY_TO_CONTINUUM_OBSERVABLE_EXISTENCE`.
+
+The current Programme gate authorizes restricted targets across `YM-D001` through `YM-D005`, not D003 alone. After the Balaban source recovery was exhausted on the present interface, the smallest independent executable target is D004-R001: determine whether protected perturbative interface `YM-T-100` and OS reconstruction interface `YM-T-120` construct the required renormalized local gauge-invariant curvature-observable hierarchy. The candidate proves that they do not: T-100 has the wrong output type, while T-120 assumes the hierarchy as input. The next constructive bridge is `YM-D004-R002`, which remains open and coupled to an actual selected four-dimensional continuum route.
 
 ## Material acceptance criteria
 
@@ -32,7 +34,10 @@ Protected MATHFORGE merge `5caba0069ab40a6c813c541c20512a4b9d981eed` records the
 - distinguish ultraviolet stability from actual continuum-observable existence and uniqueness;
 - distinguish fixed-IR UV removal from infrared/infinite-volume removal;
 - produce a route-separated proof-obligation DAG and select the smallest material successor;
-- preserve `YM-D001` through `YM-D005` and `YM-001` as open.
+- preserve `YM-D001` through `YM-D005` and `YM-001` as open;
+- for D004, distinguish perturbative ultraviolet running from nonperturbative local-operator construction;
+- reject any use of OS reconstruction to infer an observable hierarchy that appears among its hypotheses;
+- identify the smallest missing regulated-to-renormalized local-observable theorem without prescribing an unsupported regulator or renormalization scheme.
 
 ## Current substantive state
 
@@ -52,7 +57,9 @@ Protected MATHFORGE merge `5caba0069ab40a6c813c541c20512a4b9d981eed` records the
 - `YM-T-220`: protected qualified MRS source interface for UV-cutoff removal at fixed infrared cutoff, pure `SU(2)`, trivial topological sector; proof-completeness/IR/OS/topology limitations remain.
 - `YM-D003-R001`: admitted at protected merge `a17f676e53f9b2ae893d7fc0543422b077e3d7bd`; post-admission reconciliation is protected at `bb62d23f1a564a1eb58da92bf579c5734c8ed6fe`.
 - `YM-D003`: remains open, but the broad statement that 4d large-field/UV stability is wholly missing is obsolete. Residual obligations are now route-specific.
-- `YM-D002` through `YM-D004`: remain open construction/reconstruction/observable-identification debts.
+- `YM-D004-R001`: current candidate restricted target; it isolates the exact missing renormalized-observable construction interface between protected perturbative UV data and OS reconstruction. It is not admitted until protected merge.
+- `YM-D004-R002`: open successor requiring a selected regulated route to construct and identify the renormalized local gauge-invariant continuum observable hierarchy.
+- `YM-D002` and `YM-D004`: remain open construction/reconstruction/observable-identification debts.
 - `YM-D006` through `YM-D009`: source/scope dispositions remain recorded and do not bypass D001-D005.
 
 ## Authoritative pointers
@@ -69,6 +76,10 @@ Protected MATHFORGE merge `5caba0069ab40a6c813c541c20512a4b9d981eed` records the
 - `grandchallenge/MATHSOLVE:work_packages/YM_D003_UV_LARGE_FIELD_COMPOSITION/01_ROUTE_COMPOSITION_THEOREM.md`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D003_UV_LARGE_FIELD_COMPOSITION/02_CLAIM_LEDGER.yaml`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D003_UV_LARGE_FIELD_COMPOSITION/03_PROOF_OBLIGATION_DAG.json`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D004_OBSERVABLE_INTERFACE_GAP/00_README.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D004_OBSERVABLE_INTERFACE_GAP/01_OBSERVABLE_INTERFACE_THEOREM.md`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D004_OBSERVABLE_INTERFACE_GAP/02_CLAIM_LEDGER.yaml`
+- `grandchallenge/MATHSOLVE:work_packages/YM_D004_OBSERVABLE_INTERFACE_GAP/03_PROOF_OBLIGATION_DAG.json`
 - `grandchallenge/MATH-PROGRAMME:campaigns/yang_mills/WP02_THEOREM_LEDGER/04_DEPENDENCY_DEBT_GATE.json`
 - `grandchallenge/MATHSOLVE:campaign_manifests/YM-001.json`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/03_PROOF_OBLIGATION_DAG.json`
@@ -132,7 +143,7 @@ The smallest material successor is `YM-D003-BAL-R002`, but it is presently sourc
 
 - `YM-D003` remains responsible for constructing and identifying a nontrivial four-dimensional continuum theory along a controlled physical trajectory.
 - `YM-D002` remains responsible for a complete limiting Osterwalder-Schrader/reconstruction hierarchy if the Hamiltonian is obtained by that route.
-- `YM-D004` remains responsible for renormalized local gauge-invariant curvature observables and perturbative normalization.
+- `YM-D004` remains responsible for renormalized local gauge-invariant curvature observables and perturbative normalization; R001 only identifies why T-100/T-120 do not construct them, while R002 carries the actual construction burden.
 - `YM-D005` remains open despite its admitted abstract lemma because its four-dimensional reconstruction/density/common-decay hypotheses are not established.
 - `YM-D001-R001` cannot create a uniform physical gap, a state-space identification, a continuum Hamiltonian, or a vacuum; it only proves stability once the stated hypotheses hold.
 - no result in this tranche is certified until independently adjudicated by MATHCERT.
