@@ -28,8 +28,14 @@ jobs:
           gp --version
           gp --version 2>&1 | grep -F '2.15.4'
 
-      - name: Exact single-prime witness scan
+      - name: Exact auxiliary-prime Kurihara scan
         shell: bash
         run: |
           set -euo pipefail
           gp -f -q < work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/03_WITNESS_DISCOVERY.gp
+
+      - name: Exact cyclotomic Mazur-Tate residual scan
+        shell: bash
+        run: |
+          set -euo pipefail
+          gp -f -q < work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/04_CYCLOTOMIC_MAZUR_TATE_DISCOVERY.gp
