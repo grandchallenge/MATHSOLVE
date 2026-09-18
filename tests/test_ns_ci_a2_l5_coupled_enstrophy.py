@@ -18,6 +18,7 @@ from tests.test_ns_ci_a2_l5_c2_mix_bridge_normal_form import NSCIA2L5C2MixBridge
 from tests.test_ns_ci_a2_l5_c2_mix_semiclassical_residual import NSCIA2L5C2MixSemiclassicalResidualTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_polarization_corridor import NSCIA2L5C2PolarizationCorridorTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_secondary_shear_charge import NSCIA2L5C2SecondaryShearChargeTests  # noqa: F401
+from tests.test_ns_ci_a2_l5_c2_general_shear_profile import NSCIA2L5C2GeneralShearProfileTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c3_diagonal_audit import NSCIA2L5C3DiagonalAuditTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_field_calibration import NSCIA2L5FieldCalibrationTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_forced_core_shell_calibration import NSCIA2L5ForcedCoreShellCalibrationTests  # noqa: F401
