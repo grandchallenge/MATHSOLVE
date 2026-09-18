@@ -77,16 +77,53 @@ scan_pairs(label,E,N,xp,M,plist)={
   found;
 };
 
+scan_triples(label,M,xp,plist)={
+  my(found=0, m=min(#plist,5));
+  for(i=1,m-2,
+    for(j=i+1,m-1,
+      for(k=j+1,m,
+        my(ells=[plist[i],plist[j],plist[k]], n=plist[i]*plist[j]*plist[k]);
+        my(d=delta_n_mod2(M,xp,n,ells), oddterms=0);
+        for(a=1,n-1,
+          if(gcd(a,n)==1 && ratmod2(2*mseval(M,xp,[oo,a/n])), oddterms++);
+        );
+        print("TRIPLE label=",label," n=",n," primes=",ells," odd_scaled_symbols=",oddterms," Delta_mod2=",d);
+        if(d && !found,
+          found=n;
+          print("FIRST_TRIPLE_NONZERO label=",label," n=",n," primes=",ells);
+          emit_terms(M,xp,n,ells);
+        );
+      );
+    );
+  );
+  found;
+};
+
+symbol_parity_probe(label,M,xp,l)={
+  my(odd=0);
+  print("SYMBOL_PROBE label=",label," denominator=",l);
+  for(a=1,l-1,
+    if(gcd(a,l)==1,
+      my(q=mseval(M,xp,[oo,a/l]), b=ratmod2(2*q));
+      if(b, odd++; print("  ODD_SCALED a=",a," symbol=",q," scaled=",2*q));
+    );
+  );
+  print("SYMBOL_PROBE_SUMMARY label=",label," denominator=",l," odd_scaled_count=",odd);
+  odd;
+};
+
 scan(label,ainvs,N,plist)={
   my(E=ellinit(ainvs), v=msfromell(E,1), M=v[1], xp=v[2]);
   print("CURVE ",label," conductor=",N);
   for(i=1,#plist,
     if(!is_kolyvagin_prime(E,N,plist[i]), error("non-Kolyvagin prime in bound list: ",plist[i]));
   );
+  my(probe=symbol_parity_probe(label,M,xp,plist[1]));
   my(s=scan_single(label,E,N,xp,M,plist));
   my(p=scan_pairs(label,E,N,xp,M,plist));
-  print("SUMMARY label=",label," single=",s," pair=",p);
-  p;
+  my(t=scan_triples(label,M,xp,plist));
+  print("SUMMARY label=",label," probe=",probe," single=",s," pair=",p," triple=",t);
+  t;
 };
 
 p53=[5,7,11,31,41,43,47,59,61];
@@ -94,5 +131,5 @@ p203=[17,19,23,37,41,59,61];
 
 f53=scan("53a1",[1,-1,1,0,0],53,p53);
 f203=scan("203b1",[1,1,1,0,-2],203,p203);
-print("FINAL first_pair_53=",f53," first_pair_203=",f203);
+print("FINAL first_triple_53=",f53," first_triple_203=",f203);
 quit;
