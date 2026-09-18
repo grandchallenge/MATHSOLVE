@@ -91,7 +91,7 @@ The resulting D001 application boundary is exact:
 
 `MISSING_NONCIRCULAR_4D_YM_REFERENCE_SCALE_THEOREM`.
 
-External reconnaissance does not currently supply a qualifying theorem. Standard pure-YM scale-setting constructions such as the Sommer scale and gradient-flow scales are used through lattice simulation and continuum extrapolation; they do not constitute a constructive theorem establishing the required four-dimensional continuum theory and finite nonzero reference scale. Recent purported complete-solution manuscripts remain outside premise status unless and until they pass the governed Forge/Programme audit route.
+External reconnaissance does not currently supply a qualifying theorem. The canonical Sommer-scale paper (R. Sommer, Nucl. Phys. B 411 (1994), DOI `10.1016/0550-3213(94)90473-1`) defines its scale through the static force and determines/extrapolates it using Monte Carlo data. The Wilson-flow reference-scale paper (M. Luescher, JHEP 08 (2010) 071, DOI `10.1007/JHEP08(2010)071`) explicitly combines perturbative and numerical evidence. These are useful physical scale-setting constructions, but they are not constructive theorems establishing the required four-dimensional continuum theory and finite nonzero reference scale. This reconnaissance is not source admission. Recent purported complete-solution manuscripts remain outside premise status unless and until they pass the governed Forge/Programme audit route.
 
 The protected `YM-D003` debt is therefore the next mathematical frontier. Its discharge condition is not another normalization lemma: uniform estimates must control the ultraviolet limit, infinite-volume limit, and large-field sector and must construct and identify a nontrivial four-dimensional continuum theory.
 
