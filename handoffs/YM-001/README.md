@@ -10,15 +10,17 @@ MATHSOLVE owns bounded theorem development and research artifacts. MATHCERT rema
 
 ## Purpose
 
-Continue native Solve theorem development for `YM-001` while preserving the open-problem boundary. The protected Programme D003 supplement now admits Balaban four-dimensional large-field/ultraviolet-stability input and a qualified MRS fixed-infrared-cutoff construction interface. The current tranche determines exactly how those interfaces compose and narrows the live D003 debt route by route.
+Continue native Solve theorem development for `YM-001` while preserving the open-problem boundary. `YM-D003-R001` is now admitted and reconciled. The protected D003 debt is route-separated: Balaban supplies four-dimensional large-field control and ultraviolet stability; MRS supplies a qualified fixed-IR UV-removal interface; the routes cannot be spliced without a comparison theorem.
 
 ## Current primary deliverable
 
-Prove or refute restricted target `YM-D003-R001` in
+Current bounded Solve theorem tranche: **none open after `YM-D003-R001` admission**.
 
-`work_packages/YM_D003_UV_LARGE_FIELD_COMPOSITION/01_ROUTE_COMPOSITION_THEOREM.md`.
+The smallest material successor is:
 
-The target asks which D003 obligations are materially supplied by protected `YM-T-210` and qualified `YM-T-220`, whether the Balaban and MRS construction routes can be composed, and the smallest exact route-specific residual theorem objects.
+`YM-D003-BAL-R002 — STABILITY_TO_CONTINUUM_OBSERVABLE_EXISTENCE`.
+
+Before a proof attempt that uses Balaban's internal bounds, MATHFORGE must acquire theorem-number/equation-exact source detail sufficient to state the exact compactness, observable, volume, and regulator hypotheses. The present protected `YM-T-210` interface establishes ultraviolet stability and large-field control but does not expose enough internal theorem data to manufacture the continuum-observable existence step.
 
 ## Material acceptance criteria
 
@@ -48,7 +50,7 @@ The target asks which D003 obligations are materially supplied by protected `YM-
 - Programme D003 supplement: protected at `d061a8e9b53a98c95bcb4c412b3107391c96ec00`, sourced from Forge protected merge `a609f40e809ebe74f35dc4ceb069c15e4d21f26e`.
 - `YM-T-210`: protected Balaban route input for four-dimensional large-field control and ultraviolet stability.
 - `YM-T-220`: protected qualified MRS source interface for UV-cutoff removal at fixed infrared cutoff, pure `SU(2)`, trivial topological sector; proof-completeness/IR/OS/topology limitations remain.
-- `YM-D003-R001`: current selected native target; candidate proves that Balaban and MRS are parallel route-specific inputs and may not be spliced without a bridge theorem.
+- `YM-D003-R001`: admitted at protected merge `a17f676e53f9b2ae893d7fc0543422b077e3d7bd`; post-admission reconciliation is protected at `bb62d23f1a564a1eb58da92bf579c5734c8ed6fe`.
 - `YM-D003`: remains open, but the broad statement that 4d large-field/UV stability is wholly missing is obsolete. Residual obligations are now route-specific.
 - `YM-D002` through `YM-D004`: remain open construction/reconstruction/observable-identification debts.
 - `YM-D006` through `YM-D009`: source/scope dispositions remain recorded and do not bypass D001-D005.
@@ -105,7 +107,7 @@ The protected Programme D003 supplement materially changes the continuum-constru
 
 The current `YM-D003-R001` candidate proves that these are **parallel** construction interfaces. The protected records provide no theorem identifying their regulated fields, effective actions, observables, regulator trajectories, or limiting objects. Therefore neither route may silently borrow theorem content from the other.
 
-### Candidate route-separated residual
+### Admitted route-separated residual
 
 Balaban route:
 
@@ -123,7 +125,7 @@ Optional cross-route route:
 
 - `YM-D003-XR-R001`: an explicit comparison theorem if one wants to transfer results between Balaban and MRS.
 
-The smallest material successor after R001 admission is `YM-D003-BAL-R002`. Its proof may require theorem-number/equation-exact Balaban source acquisition beyond the current bounded Forge interface. Until that acquisition is complete, generic compactness reasoning may not be substituted for the source theorem.
+The smallest material successor is `YM-D003-BAL-R002`. Current web/source reconnaissance still exposes only Balaban's bounded theorem-level ultraviolet-stability statement, not theorem-number/equation-exact internal hypotheses sufficient for a proof of continuum-observable existence. A third-party audit repository reports locally cached Balaban PDFs, but that is a locator only and is not admitted source authority. Forge must independently bind suitable primary/source bytes or an equivalently trustworthy theorem-body record before Solve may consume those internal bounds. Until then, generic compactness reasoning may not be substituted for the source theorem.
 
 ## Material dependencies and boundaries
 
