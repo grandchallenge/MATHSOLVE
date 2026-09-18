@@ -1503,6 +1503,88 @@ Finite coherent same-direction channels do not need separate overlapping
 charge ledgers; they collapse to one generalized phase. The remaining
 whole-space issue is extracting a coherent profile over the critical interval.
 
+
+### L5-32 time-dependent transverse-profile bridge
+
+`work_packages/NS_CI_R014_A2_L5_32_C2_ACCUMULATED_PHASE.md`
+records
+
+```text
+TIME_DEPENDENT_TRANSVERSE_PROFILE_BRIDGE_PROVED
+__ACCUMULATED_PHASE_GRADIENT_IS_CRITICAL_INVARIANT.
+```
+
+For the critical normal form
+
+```math
+Phi_s+i h^{-1}G_h(s,Y)Phi
+=
+h^2(D_Y^2-1)Phi+r_h,
+```
+
+define the accumulated transverse phase
+
+```math
+F_h(s,Y)=int_0^s G_h(sigma,Y) dsigma.
+```
+
+Exact phase removal by `exp(-iF_h/h)` cancels the entire fast potential.
+The demodulated equation depends on `F_h`, not directly on the instantaneous
+profile `G_h`.
+
+If
+
+```math
+F_h=F_0+O(h)
+```
+
+in a fixed spatial smooth norm, with the L5-28 `O(h)` semiclassical residual,
+then
+
+```math
+A_h->A_0,
+\qquad
+A_0
+=
+exp(
+-int_0^s |(F_0)_Y(sigma,Y)|^2 dsigma
+)
+```
+
+at `O(h)` in `H_h^2`.
+
+The scaled moments satisfy
+
+```math
+h^2 sum n^2|c_n|^2
+->
+||(F_0)_Y A_0||_2^2,
+```
+
+and
+
+```math
+h^4 sum n^4|c_n|^2
+->
+||(F_0)_Y^2 A_0||_2^2.
+```
+
+Thus any fixed critical interval on which
+`||(F_0)_Y A_0||_2` is uniformly positive has positive critical-band mass and
+the same `c/nu` selector charge.
+
+Small instantaneous profile drift is not required.  For example,
+
+```math
+G_h=G_0+sin(s/h)H
+```
+
+has order-one instantaneous drift but only `O(h)` accumulated-phase error.
+
+The remaining coherence problem is therefore directional: extract one common
+transport direction/transverse coordinate and a nondegenerate accumulated
+phase from selected whole-space active-band dynamics.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1517,28 +1599,26 @@ whole-space issue is extracting a coherent profile over the critical interval.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-COHERENCE**.
+The live obligation is now **C2-MIX-DIRECTION**.
 
-Finite coherent same-direction multichannel structure is no longer an
-obstruction: L5-31 collapses it to one generalized transverse profile.
+L5-32 removes small instantaneous transverse-profile drift as a necessary
+coherence condition.  The critical invariant is the accumulated phase
+gradient.
 
-The next question is:
+The next question is therefore geometric:
 
-> Can selected whole-space active-band dynamics produce, or be decomposed into,
-> a transverse transport profile whose critical-time drift is small enough for
-> the generalized phase-removal theorem?
+> Can selected whole-space active-band dynamics provide one approximately
+> common transport direction and transverse coordinate over the critical
+> interval, or must order-one direction drift itself create a non-summable
+> selector/dissipation cost?
 
-The first audit should write
+The first bounded audit should distinguish scalar profile drift, already
+handled by accumulated phase, from actual rotation/change of transport
+direction.
 
-```math
-G_h(s,Y)=G_0(Y)+E_h(s,Y)
-```
-
-and determine the largest critical norm/size of `E_h` compatible with
-positive scaled Fourier variance and `c/nu` charge.
-
-A pointwise Fourier decomposition is insufficient. The statement must control
-profile drift over the full critical interval.
+A useful positive theorem should be stated in a coordinate-free projected
+symbol or moving-frame form and should reduce to the L5-32 scalar phase bridge
+when the direction is fixed.
 
 ## Authoritative pointers
 
@@ -1577,6 +1657,7 @@ profile drift over the full critical interval.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_29_C2_POLARIZATION_CORRIDOR.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_30_C2_SECONDARY_SHEAR_CHARGE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_31_C2_GENERAL_SHEAR_PROFILE.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_32_C2_ACCUMULATED_PHASE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
