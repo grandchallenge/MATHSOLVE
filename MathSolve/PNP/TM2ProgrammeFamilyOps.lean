@@ -144,7 +144,8 @@ theorem TM2StacksRepresented.afterPushActions {decision : List Bool → Bool}
       (stackFamily k) hstmt hk using 1
     · simp [ProgrammeConfig.afterAction, tm2CompletePushAction,
         tm2PushMoveAction, tm2PreserveWork, tm2MoveSelected,
-        tm2WriteSelected, HeadMove.apply, Function.update_eq_self]
+        tm2WriteSelected, ProgrammeConfig.readWork,
+        HeadMove.apply, Function.update_eq_self]
     · simp [ProgrammeConfig.afterAction, tm2CompletePushAction,
         tm2PushMoveAction, tm2MoveSelected, HeadMove.apply]
   · have htape :
