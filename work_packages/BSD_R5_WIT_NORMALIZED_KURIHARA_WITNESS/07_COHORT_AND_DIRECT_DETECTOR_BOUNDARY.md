@@ -36,7 +36,7 @@ Any integral lift is congruent to `4` or `20` modulo `32`. The corresponding Wei
 
 `20 (mod 32)`
 
-in both cases. A `2`-adic square of valuation two is `4 (mod 32)), so this is not a square. Hence there is no rational point of order four.
+in both cases. A `2`-adic square of valuation two is `4 (mod 32)`, so this is not a square. Hence there is no rational point of order four.
 
 Together with the protected unique formal order-two point,
 
@@ -52,7 +52,7 @@ Model:
 
 `[1,1,1,1,0]`.
 
-The affine two-division polynomial has roots modulo `16`, but no root modulo `32`. Therefore it has no `Z_2)-root and there is no second rational point of order two.
+The affine two-division polynomial has roots modulo `16`, but no root modulo `32`. Therefore it has no `Z_2`-root and there is no second rational point of order two.
 
 The fourth-division factor has the unique root class
 
@@ -84,11 +84,11 @@ The fourth-division factor has the unique root class
 
 `x == 10 (mod 16)`,
 
-and its derivative is odd there. Hensel therefore gives a unique `Z_2)-root. Both possible residues modulo `32` give y-discriminant
+and its derivative is odd there. Hensel therefore gives a unique `Z_2`-root. Both possible residues modulo `32` give y-discriminant
 
 `4 (mod 32)`,
 
-so the discriminant is a `Q_2)-square and an exact-order-four point exists.
+so the discriminant is a `Q_2`-square and an exact-order-four point exists.
 
 The exact-order-eight factor constructed from the standard division-polynomial recurrence has no root modulo `16`. Hence no rational point of order eight exists.
 
@@ -122,7 +122,7 @@ Since
 
 `v_2(G8(4)) > 2 v_2(G8'(4))`,
 
-the generalized Hensel criterion gives a `Q_2)-root of `G8` congruent to `4 mod 16`. Its y-discriminant is odd and congruent to `1 mod 8`, hence is a `Q_2)-square. Therefore an exact-order-eight point exists.
+the generalized Hensel criterion gives a `Q_2`-root of `G8` congruent to `4 mod 16`. Its y-discriminant is odd and congruent to `1 mod 8`, hence is a `Q_2`-square. Therefore an exact-order-eight point exists.
 
 The protected bound `t_2<=3` then forces
 
