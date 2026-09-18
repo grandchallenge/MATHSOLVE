@@ -1441,6 +1441,68 @@ shear structure it can be promoted to a secondary principal mixing channel and
 pay the critical cost itself.  The exact calibration leaves unresolved only
 `R^2 delta=O(1)`, i.e. `delta=O(R^-2)`, as a sufficient-condition boundary.
 
+
+### L5-31 finite coherent transverse shear family
+
+`work_packages/NS_CI_R014_A2_L5_31_C2_GENERAL_SHEAR_PROFILE.md`
+records
+
+```text
+FINITE_COHERENT_SHEAR_FAMILY_COLLAPSES_TO_ONE_PROFILE
+__R_SQUARED_DELTA_CHARGE_PERSISTS.
+```
+
+Any fixed finite family of same-direction transverse Fourier shears is exactly
+one real trigonometric profile `G(Y)` evolving by the one-dimensional heat
+semigroup.
+
+For a horizontal shear amplitude fraction `delta`, define
+
+```math
+rho=R delta.
+```
+
+An exact vertical carrier under this generalized shear obeys passive
+advection-diffusion.
+
+For bounded `rho`, any fixed nonzero Fourier coefficient of `G` generates a
+neighboring carrier coefficient of order `rho` on a fixed parabolic-time
+interval. Thus `R^2 delta->infinity` gives a threshold violation and
+`c_G/nu` selector charge.
+
+For large `rho`, set `h=rho^-1/3` and `s=h tau`. The heat-evolving profile
+freezes critically:
+
+```math
+G_h(s)=G+O(h^2).
+```
+
+Exact time-dependent phase removal yields the limit
+
+```math
+A_0(s,Y)
+=
+exp(-s^3 |G'(Y)|^2/3).
+```
+
+Every nonconstant fixed profile has positive scaled critical Fourier variance,
+so positive mass reaches `|n|\asymp rho^(1/3)` and again pays
+`c_G/nu` selector charge.
+
+Therefore
+
+```math
+R^2 delta->infinity
+\quad=>\quad
+integral Lambda^2 dt >= c_G/nu
+```
+
+for every fixed nonconstant coherent profile.
+
+Finite coherent same-direction channels do not need separate overlapping
+charge ledgers; they collapse to one generalized phase. The remaining
+whole-space issue is extracting a coherent profile over the critical interval.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1455,24 +1517,28 @@ pay the critical cost itself.  The exact calibration leaves unresolved only
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-MULTICHANNEL**.
+The live obligation is now **C2-MIX-COHERENCE**.
 
-L5-30 shows that coherent nonprincipal channels can pay their own critical
-charge instead of being forced into the L5-28 residual.
+Finite coherent same-direction multichannel structure is no longer an
+obstruction: L5-31 collapses it to one generalized transverse profile.
 
-The next whole-space question is:
+The next question is:
 
-> Can one decompose a selected active packet into finitely many coherent
-> transport channels plus a residual, so that every channel with
-> `R^2 delta >> 1` pays a `c/nu` charge and the remainder is below the
-> critical residual scale?
+> Can selected whole-space active-band dynamics produce, or be decomposed into,
+> a transverse transport profile whose critical-time drift is small enough for
+> the generalized phase-removal theorem?
 
-The first audit must separate instantaneous symbol decomposition from temporal
-coherence.  Do not promote an L5-29 channel to a secondary shear merely from
-one-time polarization data.
+The first audit should write
 
-If coherence requires an additional persistence norm, state it explicitly and
-test whether selected NSE/A2 structure can supply it.
+```math
+G_h(s,Y)=G_0(Y)+E_h(s,Y)
+```
+
+and determine the largest critical norm/size of `E_h` compatible with
+positive scaled Fourier variance and `c/nu` charge.
+
+A pointwise Fourier decomposition is insufficient. The statement must control
+profile drift over the full critical interval.
 
 ## Authoritative pointers
 
@@ -1510,6 +1576,7 @@ test whether selected NSE/A2 structure can supply it.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_28_C2_MIX_SEMICLASSICAL_RESIDUAL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_29_C2_POLARIZATION_CORRIDOR.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_30_C2_SECONDARY_SHEAR_CHARGE.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_31_C2_GENERAL_SHEAR_PROFILE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
