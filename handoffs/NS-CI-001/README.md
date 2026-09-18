@@ -1676,6 +1676,99 @@ structure, or charged independently.
 This tranche does not yet prove that larger direction drift pays a selector
 charge.
 
+
+### L5-34 uniform direction motion as principal moving-frame dynamics
+
+`work_packages/NS_CI_R014_A2_L5_34_C2_DIRECTION_MOVING_FRAME.md`
+records
+
+```text
+UNIFORM_DIRECTION_MOTION_REMOVED_BY_EXACT_MOVING_FRAME
+__LAGRANGIAN_ACCUMULATED_PHASE_CONTROLS_CHARGE.
+```
+
+L5-33's `h^3=rho^-1` direction corridor applies only when a transverse
+direction term is assigned to the protected residual.
+
+For principal spatially uniform direction motion,
+
+```math
+partial_s Phi_h
++
+h^-1 theta_h(s) partial_Y Phi_h
++
+i h^-1 G_h(s,Y) Phi_h
+=
+h^2(partial_Y^2-1)Phi_h
++
+r_h,
+```
+
+define
+
+```math
+Gamma_h(s)
+=
+h^-1 int_0^s theta_h(sigma) dsigma.
+```
+
+The translation
+
+```math
+Psi_h(s,Y)
+=
+Phi_h(s,Y+Gamma_h(s))
+```
+
+removes the derivative term exactly, preserves `H_h^2`, and preserves every
+Fourier coefficient magnitude.
+
+The resulting L5-32 phase is the moving-frame accumulated phase
+
+```math
+Fcal_h(s,Y)
+=
+int_0^s
+G_h(sigma,Y+Gamma_h(sigma))
+dsigma.
+```
+
+If `Fcal_h=Fcal_0+O(h)` in the protected smooth norm and the limiting
+accumulated phase gradient is nondegenerate, the L5-32 critical band and
+`c/nu` selector-charge theorem survive with no smallness assumption on the
+rigid direction speed.
+
+Direction magnitude alone does not imply mixing.  For
+`G=cos Y` and constant nonzero `theta`,
+
+```math
+Fcal_h
+=
+(h/theta)
+[
+sin(Y+theta s/h)-sin Y
+]
+=
+O(h),
+```
+
+so the limiting accumulated phase is zero and the protected critical moment
+lower mechanism degenerates.
+
+For nonuniform principal direction motion
+`h^-1 theta_h B_h(s,Y) partial_Y`, the characteristic Jacobian satisfies
+
+```math
+partial_s J_h
+=
+h^-1 theta_h
+(partial_Y B_h)(s,chi_h)
+J_h.
+```
+
+Thus the moving frame is no longer automatically isometric and diffusion
+acquires a variable metric.  This is the next direction-coherence boundary.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1690,23 +1783,37 @@ charge.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-PRINCIPAL**.
+The live obligation is now **C2-MIX-DIRECTION-DEFORM**.
 
-L5-33 quantifies the residual corridor: after critical mixing, a
-nondegenerately coupled transverse direction defect can remain in NF4 only at
-`O(h^3)=O(rho^-1)` in critical-time L2, or at the same pointwise scale when
-persistent.
+Rigid direction motion is no longer an obstruction: L5-34 removes it exactly
+by translation and reduces the charge question to moving-frame accumulated
+phase.
 
-The next question is what happens above that corridor.
+The next question is nonuniform principal direction deformation:
 
-Two routes are admissible:
+> How much characteristic-frame deformation can the critical phase-mixing
+> theorem tolerate before the transformed diffusion metric and
+> semiclassical-moment argument fail?
 
-1. incorporate direction motion into a moving-frame/multidimensional principal
-   operator and test whether critical Fourier variance survives;
-2. prove that persistent nonresidual direction drift itself pays a
-   selector/dissipation charge.
+The first audit must track:
 
-Do not silently classify larger direction motion as residual.
+1. the characteristic Jacobian `J_h`;
+2. transformed diffusion coefficients and their derivatives;
+3. semiclassical commutators with the variable metric;
+4. accumulated phase along characteristics.
+
+A minimal bounded-distortion quantity is
+
+```math
+h^-1
+int
+|theta_h|
+||partial_Y B_h||_infinity
+ds.
+```
+
+Do not apply the L5-33 residual corridor after a direction term has been
+promoted to principal dynamics.
 
 ## Authoritative pointers
 
@@ -1747,6 +1854,7 @@ Do not silently classify larger direction motion as residual.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_31_C2_GENERAL_SHEAR_PROFILE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_32_C2_ACCUMULATED_PHASE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_33_C2_DIRECTION_DEFECT.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_34_C2_DIRECTION_MOVING_FRAME.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
