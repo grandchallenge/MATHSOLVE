@@ -145,7 +145,7 @@ theorem TM2StacksRepresented.afterPushActions {decision : List Bool → Bool}
     · simp [ProgrammeConfig.afterAction, tm2CompletePushAction,
         tm2PushMoveAction, tm2PreserveWork, tm2MoveSelected,
         tm2WriteSelected, ProgrammeConfig.readWork,
-        HeadMove.apply, Function.update_eq_self]
+        HeadMove.apply, Function.update_eq_self] <;> rfl
     · simp [ProgrammeConfig.afterAction, tm2CompletePushAction,
         tm2PushMoveAction, tm2MoveSelected, HeadMove.apply]
   · have htape :
