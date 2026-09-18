@@ -178,6 +178,24 @@ theorem TM2StackRepresented.push_generated {decision : List Bool → Bool}
       source code state k valueFn nextStmt hstmt htokens
   · exact embedTM2TokenStack_push (.inr (code, state)) tokens head
 
+/-- Popping an empty represented source stack leaves an empty represented
+stack after the Programme head moves right. -/
+theorem TM2StackRepresented.pop_empty {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision) (k : source.tm.K)
+    (tape : Int → TM2ProgrammeSymbol source.tm) (head : Int)
+    (hrep : TM2StackRepresented source k tape head []) :
+    TM2StackRepresented source k
+      (Function.update tape head none) (head + 1) [] := by
+  rcases hrep with ⟨tokens, htokens, rfl⟩
+  cases htokens
+  refine ⟨[], .nil, ?_⟩
+  funext position
+  rw [Function.update_apply]
+  by_cases hpos : position = head
+  · subst position
+    simp [embedTM2TokenStack]
+  · simp [embedTM2TokenStack, hpos]
+
 /-- The Programme pop update preserves exact representation of the source tail. -/
 theorem TM2StackRepresented.pop {decision : List Bool → Bool}
     (source : ImportedTM2Witness decision) (k : source.tm.K)
@@ -203,6 +221,7 @@ theorem TM2StackRepresented.pop {decision : List Bool → Bool}
 #print axioms embedTM2TokenStack_push
 #print axioms embedTM2TokenStack_pop
 #print axioms TM2StackRepresented.push_generated
+#print axioms TM2StackRepresented.pop_empty
 #print axioms TM2StackRepresented.pop
 
 end
