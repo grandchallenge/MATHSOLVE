@@ -668,19 +668,19 @@ amplitude statement at every fixed spectral distance.  With
 `A=R nu N`, turnover variables
 
 ```math
-tau=ANt,
-qquad
-epsilon=nu N/A=1/R
+\tau=ANt,
+\qquad
+\varepsilon=\nu N/A=1/R
 ```
 
 reduce the vertical equation to
 
 ```math
-partial_tau theta_epsilon
+\partial_\tau \theta_\varepsilon
 +
-e^{-epsilon tau} V dot grad theta_epsilon
+e^{-\varepsilon\tau} V\cdot\nabla\theta_\varepsilon
 =
-epsilon Delta theta_epsilon.
+\varepsilon\Delta\theta_\varepsilon.
 ```
 
 On every fixed turnover-time interval, `theta_epsilon` converges in `L2`
@@ -696,7 +696,7 @@ initial three-mode support.  Finite LP overlap then forces one generated block
 to satisfy
 
 ```math
-lambda_p^{-1} ||u_p||_infinity >= c_r R nu,
+\lambda_{p_*}^{-1}\|u_{p_*}\|_\infty \ge c_r R\nu,
 ```
 
 and hence to violate the campaign threshold for sufficiently large `R`.
@@ -707,9 +707,9 @@ However, the guaranteed selector charge over that fixed turnover-time
 interval is only
 
 ```math
-integral Lambda^2 dt
->=
-C_{r_*}/(R nu).
+\int \Lambda^2\,dt
+\ge
+C_{r_*}/(R\nu).
 ```
 
 For fixed `r_*` this retains the inverse-overshoot summability defect.
@@ -737,11 +737,16 @@ non-summable selector cost.
 The first live obligation is now **C2-DIST**: quantify threshold-reaching
 spectral distance as a function of the overshoot ratio `R`.
 
-The fixed-distance certificate scales like
+The fixed-distance certificate has the form
 
 ```math
-r^2/R.
+C_r/R,
 ```
+
+with `C_r` containing the available turnover-time interval length and the
+fixed spectral factor. On any fixed `O(1)` turnover-time horizon, an
+order-one charge certificate requires at minimum quadratic frequency growth
+comparable to `R`.
 
 Therefore a charge-only reopening needs threshold-sized leakage to spectral
 distance at least comparable to
