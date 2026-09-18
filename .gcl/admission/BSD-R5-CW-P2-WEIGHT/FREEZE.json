@@ -17,6 +17,6 @@
     ".gcl/operations/BSD-R5-CW-P2-WEIGHT/OPERATION.json": "80e84ab0bb733f7c2adfd66678caffdc5d6ffa31",
     "tools/gcl_campaign_preflight_r5_cw_p2_weight.py": "6539243198d96383f2a597a72e7420a0d94310cb",
     ".github/workflows/bsd-r5-cw-p2-weight-certificate.yml": "0f1f1ae7375f01b29cb51b23e5861e4019c2060b",
-    ".ghos-routing/workflows.json": "1da4dbfbebde34e841f6fa2abc428730daf0a125"
+    ".ghos-routing/workflows.json": "b67631107e45700324e2c2a0a1a8e7fa3f8c21fc"
   }
 }
