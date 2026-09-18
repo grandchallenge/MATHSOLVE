@@ -30,6 +30,24 @@ theorem tm2ControlRun_ne_rewind {decision : List Bool → Bool}
   intro h
   cases h
 
+/-- Push-write control is distinct from startup copy control. -/
+theorem tm2ControlPushWrite_ne_copy {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision)
+    (code : TM2StatementCode source.tm) (state : source.tm.σ)
+    (token : TM2ProvenanceToken source.tm) :
+    tm2ControlPushWrite source code state token ≠ tm2ControlCopy source := by
+  intro h
+  cases h
+
+/-- Push-write control is distinct from startup rewind control. -/
+theorem tm2ControlPushWrite_ne_rewind {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision)
+    (code : TM2StatementCode source.tm) (state : source.tm.σ)
+    (token : TM2ProvenanceToken source.tm) :
+    tm2ControlPushWrite source code state token ≠ tm2ControlRewind source := by
+  intro h
+  cases h
+
 /-- The total compiler transition normalizes to `tm2RunAction` on run control. -/
 theorem tm2ProgrammeTransition_run {decision : List Bool → Bool}
     (source : ImportedTM2Witness decision)
@@ -39,7 +57,8 @@ theorem tm2ProgrammeTransition_run {decision : List Bool → Bool}
     tm2ProgrammeTransition source (tm2ControlRun source code state)
       inputSymbol readWork =
       tm2RunAction source code state readWork := by
-  simp [tm2ProgrammeTransition, tm2ControlRun, tm2ControlCopy, tm2ControlRewind]
+  simp [tm2ProgrammeTransition, tm2ControlRun_ne_copy source code state,
+    tm2ControlRun_ne_rewind source code state]
 
 /-- The action selected by the concrete Programme machine at a represented run
 configuration is exactly the source-statement action. -/
@@ -95,8 +114,10 @@ theorem tm2ProgrammeTransition_pushWrite {decision : List Bool → Bool}
       (tm2ControlPushWrite source nextCode state token)
       inputSymbol readWork =
       tm2CompletePushAction source k nextCode state token readWork := by
-  simp [tm2ProgrammeTransition, tm2ControlPushWrite, tm2ControlCopy,
-    tm2ControlRewind, tm2CompletePushAction, htoken]
+  simp [tm2ProgrammeTransition,
+    tm2ControlPushWrite_ne_copy source nextCode state token,
+    tm2ControlPushWrite_ne_rewind source nextCode state token,
+    tm2CompletePushAction, htoken]
 
 /-- The concrete Programme machine takes the valid second push transition exactly. -/
 theorem tm2ProgrammeMachine_step_pushWrite {decision : List Bool → Bool}
@@ -127,12 +148,13 @@ theorem programme_one_step_in_time
   refine { steps := 1, evals_in_steps := ?_, steps_le_m := le_rfl }
   simpa [Function.iterate_one, flip] using hstep
 
+#print axioms tm2ControlPushWrite_ne_copy
+#print axioms tm2ControlPushWrite_ne_rewind
 #print axioms tm2ProgrammeTransition_run
 #print axioms tm2ProgrammeMachine_actionAt_run
 #print axioms tm2ProgrammeMachine_step_run
 #print axioms tm2ProgrammeTransition_pushWrite
 #print axioms tm2ProgrammeMachine_step_pushWrite
-#print axioms programme_one_step_in_time
 
 end
 
