@@ -652,6 +652,71 @@ charge.
 The temporal-coherence frontier is narrowed from support leakage to
 quantitative amplitude leakage.
 
+
+### L5-19 fixed-distance threshold leakage calibration
+
+`work_packages/NS_CI_R014_A2_L5_19_C2_FIXED_DISTANCE_AMPLITUDE.md`
+records
+
+```text
+FIXED_DISTANCE_THRESHOLD_LEAKAGE_PROVED_IN_2P5D_CALIBRATION
+__FIXED_DISTANCE_CHARGE_CERTIFICATE_REMAINS_R_INVERSE.
+```
+
+L5-18's nonzero temporal jets can be upgraded to a genuine finite-time
+amplitude statement at every fixed spectral distance.  With
+`A=R nu N`, turnover variables
+
+```math
+tau=ANt,
+qquad
+epsilon=nu N/A=1/R
+```
+
+reduce the vertical equation to
+
+```math
+partial_tau theta_epsilon
++
+e^{-epsilon tau} V dot grad theta_epsilon
+=
+epsilon Delta theta_epsilon.
+```
+
+On every fixed turnover-time interval, `theta_epsilon` converges in `L2`
+to the smooth inviscid transport solution at rate `O(1/R)`.  Since the
+transport coefficient at every fixed lattice distance `r` has a nonzero
+first possible derivative, one obtains a fixed interval `I_r` and
+`b_r>0` on which the corresponding finite-`R` coefficient is bounded
+below by `b_r` for all sufficiently large `R`.
+
+Choose one finite `r_*`, depending only on the fixed LP annulus width, so
+that the generated frequency lies beyond every dyadic shell meeting the
+initial three-mode support.  Finite LP overlap then forces one generated block
+to satisfy
+
+```math
+lambda_p^{-1} ||u_p||_infinity >= c_r R nu,
+```
+
+and hence to violate the campaign threshold for sufficiently large `R`.
+Thus threshold-sized temporal leakage is proved in the exact periodic 2.5D
+calibration.
+
+However, the guaranteed selector charge over that fixed turnover-time
+interval is only
+
+```math
+integral Lambda^2 dt
+>=
+C_{r_*}/(R nu).
+```
+
+For fixed `r_*` this retains the inverse-overshoot summability defect.
+A charge-only repair from spectral propagation would require threshold-sized
+distance `r(R) comparable to at least sqrt(R)`, or an equivalent cumulative
+flux/decoherence cost.  No such growing-distance theorem is claimed here.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -666,27 +731,37 @@ quantitative amplitude leakage.
 
 ## Smallest safe next tranche
 
-Do not repeat pointwise strict-high implications or stop at nonzero spectral
-support.
+Do not repeat fixed-distance threshold leakage as though it supplied a
+non-summable selector cost.
 
-The first live obligation is now C2-AMP: quantitative threshold-sized temporal
-leakage.
+The first live obligation is now **C2-DIST**: quantify threshold-reaching
+spectral distance as a function of the overshoot ratio `R`.
 
-Use the L5-18 exact 2.5D calculation as calibration only.  The required new
-ingredient is a finite-time or time-integrated lower bound that converts
-sustained same-band saturation into at least one of:
+The fixed-distance certificate scales like
 
-- a generated Littlewood–Paley shell above the active threshold with amplitude
-  comparable to its strict-high scale;
-- a non-summable generated dissipation or A2 charge;
-- cumulative signed flux that controls the overshoot integral;
-- a phase-decoherence estimate strong enough to prevent repeated turnover-size
-  internal forcing.
+```math
+r^2/R.
+```
 
-A first nonzero Taylor coefficient is insufficient unless the remainder and
-the smooth dyadic projection are controlled uniformly.  If the argument
-returns only turnover residence, the L3 exit charge, the L4 active diagonal,
-selector variation, or unsigned forcing, keep those lanes closed.
+Therefore a charge-only reopening needs threshold-sized leakage to spectral
+distance at least comparable to
+
+```math
+r(R) >= c sqrt(R)
+```
+
+on a turnover-scale interval, or another temporal mechanism with equivalent
+non-summable cost.
+
+Use the exact 2.5D calibration to decide this bounded question.  A positive
+result at `sqrt(R)` scale would materially reopen cross-level charging.  A
+rigorous analytic/Gevrey upper bound `r(R)=o(sqrt(R))` would instead close
+spectral-distance leakage as the missing mechanism in this calibration and
+move the live route to cumulative signed flux, repeated-event coherence, or
+phase decoherence.
+
+Do not infer growing distance from nonzero support, and do not assume selector
+regularity while generated modes appear.
 
 ## Authoritative pointers
 
@@ -711,7 +786,7 @@ selector variation, or unsigned forcing, keep those lanes closed.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_15_C2_OVERSHOOT_PERSISTENCE_AUDIT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_16_C2_SAME_BAND_MILD_OBSTRUCTION.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_17_C2_INSTANTANEOUS_CROSS_LEVEL.md`
-- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_18_C2_TEMPORAL_LEAKAGE.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_18_C2_TEMPORAL_LEAKAGE.md`\n- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_19_C2_FIXED_DISTANCE_AMPLITUDE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
