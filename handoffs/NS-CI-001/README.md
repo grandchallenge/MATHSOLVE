@@ -596,6 +596,62 @@ strict-high activity. Any valid cross-level repair must be time-correlated:
 delayed strict-high charge, repeated-transfer decoherence, cumulative signed
 flux, or another non-summable temporal cost.
 
+
+### L5-18 exact 2.5D temporal leakage calibration
+
+work_packages/NS_CI_R014_A2_L5_18_C2_TEMPORAL_LEAKAGE.md records
+
+EXACT_2P5D_NSE_EMBEDDING_PROVED__FINITE_DISTANCE_TEMPORAL_SPECTRAL_LEAKAGE_PROVED__LEAKAGE_AMPLITUDE_NOT_THRESHOLD_CHARGE.
+
+The sigma=+1 L5-17 snapshot embeds into an exact smooth unforced periodic
+2.5D NSE trajectory.  The horizontal flow
+
+$
+v(t)=A e^{-\nu N^2 t}(\cos(Nx_2),\cos(Nx_1))
+$
+
+has projected horizontal convection zero, while the vertical component obeys
+linear advection-diffusion.
+
+If W_{m,n} denotes its vertical Fourier coefficient on N(m,n,0), then
+
+$
+\dot W_{m,n}
+=
+-\nu N^2(m^2+n^2)W_{m,n}
+-\frac{iNa(t)}2
+[
+m(W_{m,n-1}+W_{m,n+1})
++
+n(W_{m-1,n}+W_{m+1,n})
+].
+$
+
+Starting from the active target W_{1,1}(0)=-iC/2, the mode
+N(r+1,1,0) has no nonzero derivative before order r and satisfies
+
+$
+W_{r+1,1}^{(r)}(0)
+=
+(-i)^{r+1}\frac{C(NA)^r}{2^{r+1}}.
+$
+
+Thus every fixed finite spectral distance has a nonzero first-possible
+temporal jet in an actual NSE calibration.  However, the corresponding leading
+physical Taylor term is
+
+$
+C\frac{(NAt)^r}{2^r r!},
+$
+
+so at the nominal turnover scale its leading coefficient carries the factorial
+penalty 1/(2^r r!).  Nonzero support therefore does not by itself yield a
+strict-high shell lower bound, a threshold violation, or a non-summable A2
+charge.
+
+The temporal-coherence frontier is narrowed from support leakage to
+quantitative amplitude leakage.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -610,32 +666,27 @@ flux, or another non-summable temporal cost.
 
 ## Smallest safe next tranche
 
-Do not repeat the bare absolute mild estimate or seek an instantaneous
-strict-high implication from active-shell variation.
+Do not repeat pointwise strict-high implications or stop at nonzero spectral
+support.
 
-The first live obligation is now **C2-TIME**.
+The first live obligation is now C2-AMP: quantitative threshold-sized temporal
+leakage.
 
-The precise question is:
+Use the L5-18 exact 2.5D calculation as calibration only.  The required new
+ingredient is a finite-time or time-integrated lower bound that converts
+sustained same-band saturation into at least one of:
 
-> Can repeated same-band turnover-size forcing remain coherent over a sequence
-> of large overshoot episodes without generating a non-summable
-> time-integrated strict-high, dissipation, or signed-flux cost?
+- a generated Littlewood–Paley shell above the active threshold with amplitude
+  comparable to its strict-high scale;
+- a non-summable generated dissipation or A2 charge;
+- cumulative signed flux that controls the overshoot integral;
+- a phase-decoherence estimate strong enough to prevent repeated turnover-size
+  internal forcing.
 
-The first useful calculation should freeze a target shell on a short interval
-and split its Duhamel/nonlinear contribution into:
-
-- internal active-band interactions;
-- interactions involving strict-high modes;
-- already-controlled far-low interactions.
-
-The target is a genuinely temporal inequality. A valid advance would show
-that repeated saturation of the internal `lambda A^2` scale forces either a
-delayed strict-high charge, a cumulative signed-flux effect, or a depletion
-factor whose cost is non-summable in the overshoot ratio.
-
-If the calculation reduces only to turnover residence, the L3 inverse-scale
-exit charge, the L4 active diagonal, selector variation, or an unsigned
-absolute forcing bound, record that reduction and keep those lanes closed.
+A first nonzero Taylor coefficient is insufficient unless the remainder and
+the smooth dyadic projection are controlled uniformly.  If the argument
+returns only turnover residence, the L3 exit charge, the L4 active diagonal,
+selector variation, or unsigned forcing, keep those lanes closed.
 
 ## Authoritative pointers
 
@@ -660,6 +711,7 @@ absolute forcing bound, record that reduction and keep those lanes closed.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_15_C2_OVERSHOOT_PERSISTENCE_AUDIT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_16_C2_SAME_BAND_MILD_OBSTRUCTION.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_17_C2_INSTANTANEOUS_CROSS_LEVEL.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_18_C2_TEMPORAL_LEAKAGE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
