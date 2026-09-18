@@ -202,7 +202,7 @@ theorem tm2RunAction_halt {decision : List Bool → Bool}
   rcases code with ⟨label, ⟨stmt, hmem⟩⟩
   dsimp at hstmt ⊢
   subst stmt
-  simp [tm2RunAction]
+  simp [tm2RunAction] <;> rfl
 
 #print axioms tm2PushTokenStack?_generated
 #print axioms tm2RunAction_push
