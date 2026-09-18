@@ -385,6 +385,83 @@ Bernstein-saturation structure on the periodic forced problem. It is used only
 as language and mechanism guidance, not imported as a theorem for the selected
 whole-space unforced class.
 
+
+### L5-15 C2 overshoot/persistence reduction
+
+`work_packages/NS_CI_R014_A2_L5_15_C2_OVERSHOOT_PERSISTENCE_AUDIT.md`
+records
+
+```text
+A2_LOW_COEFFICIENT_BELOW_FOUR_FIFTH_CONTROLLED
+__RESIDUAL_IS_UPPER_FIFTH_THRESHOLD_OVERSHOOT
+__TURNOVER_TIME_PERSISTENCE_INSUFFICIENT.
+```
+
+Let
+
+```math
+f(t)=sup_{p<=Q(t)} lambda_p ||u_p||_infinity
+```
+
+and `R_Q=floor(4Q/5)`. Energy plus Bernstein gives
+
+```math
+sup_{p<=R_Q} lambda_p ||u_p||_infinity
+lesssim U0 Lambda^2,
+```
+
+so A2 already controls the lower four-fifths of the continuation coefficient.
+The same exponent controls the corresponding far-low strain contribution.
+
+For the remaining upper fifth define
+
+```math
+Omega(t)
+=
+sup_{R_Q<p<=Q}
+lambda_p (||u_p||_infinity-c0 nu lambda_p)_+.
+```
+
+Then
+
+```math
+f(t)
+lesssim
+(U0+c0 nu)Lambda(t)^2 + Omega(t).
+```
+
+Hence `Omega in L1_t` is sufficient for continuation; any hypothetical A2
+singularity must have divergent terminal `integral Omega`.
+
+The reduction is sharper than the L5-14 packet target. Pointwise,
+
+```math
+Omega
+<=
+Lambda S_upper^(1/2),
+```
+
+so A2 plus the L5-14 packet estimate would imply the overshoot criterion.
+
+A new exact scaling separator shows that ordinary nonlinear-turnover residence
+still does not close the gap. With overshoot ratio `R`, frequency
+`lambda=R^4`, amplitude `a=R lambda`, Bernstein-saturating energy
+`E=R^2/lambda`, and duration
+
+```math
+Delta t=(lambda a)^(-1)=(R lambda^2)^(-1),
+```
+
+the A2 charge is `R^-1`, the dissipation charge is `R^-3`, but the
+`Omega` charge tends to one. Therefore infinitely many increasing overshoot
+excursions can have finite A2/energy/dissipation scalar budgets while
+`integral Omega` diverges, even if each lasts a full turnover time. This is a
+scaling fixture, not an NSE trajectory.
+
+A successful dynamic persistence route must therefore beat turnover-time
+cost, for example by proving parabolic-scale residence, a non-summable
+overshoot-dependent A2 cost, cross-level coherence, or signed depletion.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -399,36 +476,42 @@ whole-space unforced class.
 
 ## Smallest safe next tranche
 
-Do not repeat C1, C3-DIAG, the direct Chemin--Lerner source hypothesis, a fixed
-or purely absolute shifted observation scale, unsigned L4-column
-renormalization, or a universal instantaneous central-flux sign.
+Do not repeat C1, C3-DIAG, the direct Chemin--Lerner source hypothesis, the
+L5-14 global/top-third packet reduction, or turnover-time residence as though
+it were sufficient.
 
-The first live obligation is now **C2-DYN**. Derive from NSE evolution a
-terminal high-`Lambda` estimate for the top relative band
-
-```math
-B(t)={q: floor(2Q(t)/3)<q<=Q(t)}.
-```
-
-The preferred quantity is
+The first live obligation is now **C2-OVR-DYN**. Fix one large overshoot
+episode at shell `p` and keep the ratio
 
 ```math
-integral
-sum_{q in B(t)}
-chi_q(t)d_q(t) dt,
+R=||u_p||_infinity/(nu lambda_p)
 ```
 
-equivalently the top-band `S_1` mass. Viable advances include a
-dissipation-measure tail bound for `chi`, a time-averaged active-volume lower
-bound, an equation-derived anti-persistence result for highly
-Bernstein-saturated packets, or a genuinely time-correlated signed local-flux
-coherence theorem.
+explicit through the actual NSE shell equation or mild formula.
 
-A pointwise global `chi<=C` estimate is stronger than needed. Do not assume
-an intermittency dimension. Do not differentiate the moving `2Q/3` cutoff
-without selector-variation control. If the direct shell-energy or Duhamel
-analysis reduces to low strain, residence, `lambda_QD_Q`, or B4, record that
-exact reduction and move to the next genuinely distinct dynamic mechanism.
+The decisive question is whether the equation forces a residence/coherence
+cost stronger than
+
+```math
+Delta t ~ (nu R lambda_p^2)^(-1),
+```
+
+whose A2 charge is only `R^-1` and is now known to be summable across large
+overshoots.
+
+A valid reopening theorem is any one of:
+
+- parabolic-scale residence `Delta t >= c lambda_p^-2` at a defining
+  overshoot;
+- another equation-derived scale cost whose A2 charge is non-summable in
+  `R`;
+- cross-level or cross-excursion coherence preventing independent large
+  overshoots;
+- a signed/time-correlated flux law directly controlling `integral Omega`.
+
+If the fixed-shell Duhamel or energy analysis yields only turnover-time
+persistence, low strain, selector variation, or the protected L4 column,
+record that exact reduction and move to a genuinely distinct mechanism.
 
 ## Authoritative pointers
 
@@ -450,6 +533,7 @@ exact reduction and move to the next genuinely distinct dynamic mechanism.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_12_FREQUENCY_SCALE_TRANSPLANT_BOUNDARY.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_13_C3_DIAGONAL_AUDIT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_14_C2_ACTIVE_BAND_REDUCTION.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_15_C2_OVERSHOOT_PERSISTENCE_AUDIT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
