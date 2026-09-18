@@ -12,6 +12,7 @@ from tests.test_ns_ci_a2_l5_c2_flux_ledger import NSCIA2L5C2FluxLedgerTests  # n
 from tests.test_ns_ci_a2_l5_c2_triad_coherence import NSCIA2L5C2TriadCoherenceTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_shear_phase_lock import NSCIA2L5C2ShearPhaseLockTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_mix_moment_ceiling import NSCIA2L5C2MixMomentCeilingTests  # noqa: F401
+from tests.test_ns_ci_a2_l5_c2_mix_subcritical_lower import NSCIA2L5C2MixSubcriticalLowerTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c3_diagonal_audit import NSCIA2L5C3DiagonalAuditTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_field_calibration import NSCIA2L5FieldCalibrationTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_forced_core_shell_calibration import NSCIA2L5ForcedCoreShellCalibrationTests  # noqa: F401
