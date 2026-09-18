@@ -10,26 +10,26 @@ MATHSOLVE owns bounded theorem development and research artifacts. MATHCERT rema
 
 ## Purpose
 
-Continue native Solve theorem development for `YM-001` while preserving the open-problem boundary. R005 proved the exact scale-conversion law but left the actual nonperturbative Yang-Mills reference-scale calibration open. The current tranche proves the reference-scale quotient reduction and exposes the non-circular four-dimensional reference scale as the next substantive application object.
+Continue native Solve theorem development for `YM-001` while preserving the open-problem boundary. R006 is now admitted and reconciled. The D001 comparison and scale-normalization reductions have reached their application boundary: further progress requires a finite nonzero non-circular four-dimensional pure-YM reference scale on the same controlled continuum trajectory, which is part of the substantive `YM-D003` continuum-construction debt rather than another abstract D001 conversion lemma.
 
 ## Current primary deliverable
 
-Prove or refute restricted target `YM-D001-R006` in
+Current bounded theorem tranche: **none open after R006 admission**.
 
-`work_packages/YM_D001_REFERENCE_SCALE_QUOTIENT/01_REFERENCE_SCALE_QUOTIENT.md`.
+The active mathematical frontier is the `YM-D003` analytic-estimate debt:
 
-The target asks whether an independently controlled finite nonzero reference energy in the same regulated family can eliminate the explicit clock calibration and reduce the physical target-gap problem to a dimensionless target/reference ratio.
+> control the four-dimensional ultraviolet limit, infinite-volume limit, and large-field sector along one physical continuum trajectory strongly enough to construct and identify a nontrivial continuum theory.
 
-## Material acceptance criteria
+For the D001 application specifically, that frontier must supply a finite nonzero non-circular reference scale in the same regulated family. No further abstract unit-conversion lemma is authorized as a substitute for that construction.
 
-- derive the exact identity `Delta_n=(delta_n/epsilon_n)M_n` for target and reference energies in the same regulated family;
-- prove a positive liminf criterion using an independently controlled positive physical reference scale;
-- preserve the finite-nonzero continuum reference-scale requirement;
-- publish an exact circularity fixture showing why the target mass gap itself cannot be used to set the scale;
-- publish a fixture showing that a positive dimensionless target/reference ratio proves nothing if the reference scale vanishes physically;
-- require the reference-scale proof to be independent of the target gap or an equivalent assumed-positive correlation length;
-- audit the protected YM estate for an admitted reference-scale theorem without importing new external authority;
-- preserve `YM-D001` through `YM-D005` and `YM-001` as open.
+## Material acceptance criteria for the next native tranche
+
+- select a genuinely constructive `YM-D003` target, not another D001 normalization identity;
+- attack one of the debt's actual analytic obligations: ultraviolet control, infinite-volume control, or the four-dimensional large-field sector;
+- bind the work to one declared physical continuum trajectory;
+- if a reference observable is used for scale setting, prove its finite nonzero limiting value independently of the desired mass gap or an equivalent assumed-positive correlation length;
+- do not promote Monte Carlo continuum extrapolation, perturbative asymptotic freedom, small-field RG control, or an unreviewed complete-solution claim into a nonperturbative continuum theorem;
+- preserve `YM-D001` through `YM-D005` and `YM-001` as open until their full discharge conditions are met.
 
 ## Current substantive state
 
@@ -42,8 +42,9 @@ The target asks whether an independently controlled finite nonzero reference ene
 - `YM-D001-R003`: admitted at protected merge `c441a7f7198df81bd260d003c959ad9940bb1ccf`; post-admission reconciliation is protected at `57ca4fab8fe04b83da3c2c0dbc2a3a76860c8170`.
 - `YM-D001-R004`: admitted at protected merge `eacdde093d7f515f890f055cd46f32a7998fac1d`; post-admission reconciliation is protected at `dfdf6beedb85022a4e031d5049c47ef75b116558`.
 - `YM-D001-R005`: admitted at protected merge `7459be7ffdec1161388b9bfe5f23d19ae9df526e`; post-admission reconciliation is protected at `3bd2a2722df603143f832c0da5b18983213e8ced`.
-- `YM-D001-R006`: current selected native target; the candidate proves the reference-scale quotient theorem and identifies the protected estate's first remaining scaling obstruction as `MISSING_NONCIRCULAR_4D_YM_REFERENCE_SCALE_THEOREM`.
-- `YM-D001`: still open; the actual finite nonzero non-circular Yang-Mills reference scale, regulated identification maps, positive target/reference ratio or physical gap, and application convergence remain unproved.
+- `YM-D001-R006`: admitted at protected merge `93f1aeeba12ff487251c0163400d8af356a42173`; post-admission reconciliation is protected at `ed4b0662d9a1818914aaf03f4f82b03657544617`.
+- `YM-D001`: still open; its remaining application obligations depend on the actual four-dimensional continuum construction, including a finite nonzero non-circular reference scale, regulated identification maps, a positive target/reference ratio or physical gap, and application convergence.
+- `YM-D003`: now the smallest material native frontier. Protected current evidence is `YM-T-080` (3d UV stability), `YM-T-090` (4d small-field RG), and `YM-T-100` (perturbative asymptotic freedom); none controls the full 4d large-field/continuum/infinite-volume problem.
 - `YM-D002` through `YM-D004`: remain open construction/reconstruction/observable-identification debts.
 - `YM-D006` through `YM-D009`: source/scope dispositions remain recorded and do not bypass D001-D005.
 
@@ -84,44 +85,25 @@ The target asks whether an independently controlled finite nonzero reference ene
 
 ## Admitted results and current theorem boundary
 
-R001 proves common-Hilbert strong-resolvent gap stability.
+R001 through R006 are admitted as bounded Solve results. They provide, respectively, common-Hilbert spectral stability, current-evidence falsification, interscale-interface localization, varying-Hilbert spectral stability, exact physical scale conversion, and the non-circular reference-scale quotient reduction.
 
-R002 shows the admitted fixed-regulator evidence does not supply the application family.
-
-R003 isolates the missing interscale comparison and scale-setting interfaces.
-
-R004 supplies a sufficient varying-Hilbert spectral-exclusion theorem.
-
-R005 supplies the exact physical scale law `gap_phys=gap_dimensionless/tau` and transfer conversion `-log(r)/tau`.
-
-R006 now eliminates the explicit clock variable conditionally on one independent reference energy. If `epsilon_n` is a dimensionless reference energy in the same regulated theory and
-
-`M_n=epsilon_n/tau_n`,
-
-then
-
-`Delta_n=(delta_n/epsilon_n)M_n`.
-
-Thus a positive lower bound on the dimensionless target/reference ratio yields a positive physical target gap only when the reference scale itself has an independently proved finite nonzero physical limit.
-
-Two decisive firewalls are retained:
-
-1. choosing `epsilon_n=delta_n` and defining units from the target gap tautologically produces any desired positive physical gap;
-2. a constant positive target/reference ratio proves nothing if the physical reference scale tends to zero.
-
-A protected-estate audit finds no admitted four-dimensional pure-YM reference-scale theorem satisfying the required non-circularity contract.
-
-## Smallest safe successor after R006 admission
-
-No further abstract unit-conversion lemma is the material frontier.
-
-The next object is
+The resulting D001 application boundary is exact:
 
 `MISSING_NONCIRCULAR_4D_YM_REFERENCE_SCALE_THEOREM`.
 
-It must either be constructed on the actual four-dimensional continuum trajectory, coupling the work to `YM-D003`, or admitted through the governed Forge/Programme source route if a qualifying external theorem exists.
+External reconnaissance does not currently supply a qualifying theorem. The canonical Sommer-scale paper (R. Sommer, Nucl. Phys. B 411 (1994), DOI `10.1016/0550-3213(94)90473-1`) defines its scale through the static force and determines/extrapolates it using Monte Carlo data. The Wilson-flow reference-scale paper (M. Luescher, JHEP 08 (2010) 071, DOI `10.1007/JHEP08(2010)071`) explicitly combines perturbative and numerical evidence. These are useful physical scale-setting constructions, but they are not constructive theorems establishing the required four-dimensional continuum theory and finite nonzero reference scale. This reconnaissance is not source admission. Recent purported complete-solution manuscripts remain outside premise status unless and until they pass the governed Forge/Programme audit route.
 
-Do not use the target mass gap, an equivalent assumed-positive correlation length, perturbative beta-function flow alone, or an unadmitted external scale-setting claim as the reference.
+The protected `YM-D003` debt is therefore the next mathematical frontier. Its discharge condition is not another normalization lemma: uniform estimates must control the ultraviolet limit, infinite-volume limit, and large-field sector and must construct and identify a nontrivial four-dimensional continuum theory.
+
+### Exact current boundary
+
+`YM-D003 / MISSING_4D_NONPERTURBATIVE_CONTINUUM_AND_LARGE_FIELD_CONTROL`
+
+with the D001-facing sub-obligation
+
+`MISSING_NONCIRCULAR_4D_YM_REFERENCE_SCALE_THEOREM`.
+
+No currently protected result or verified external theorem supplies those estimates. Crossing this boundary requires new substantive continuum mathematics, not recovery, CI repair, source bookkeeping, or a change of units.
 
 ## Material dependencies and boundaries
 
