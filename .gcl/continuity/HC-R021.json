@@ -6,7 +6,7 @@
   "campaign": "HC-001",
   "target": "HC-R021-A8-CM4-C2",
   "policy_target": "GCL-AGENT-CONTINUITY-001@1.0.0",
-  "policy_integration_status": "pending_protected_integration_at_receipt_creation",
+  "policy_integration_status": "effective_protected_readback_confirmed",
   "last_durable_result": {
     "lemma": "HC-R021-L054",
     "file": "work_packages/HC_R021_P4_FIRST_POSTNIKOV_BOUNDARY_VANISHING.md",
@@ -31,5 +31,11 @@
   "certification": "none; solve-package results are not MATHCERT dispositions",
   "protected_integration_authorized": false,
   "terminal_boundary": null,
-  "recovery_instruction": "Re-fetch this branch and governing instructions, reject stale chat state, then continue from the exact live descendant of this receipt. Timeout/connector/context failures are recoverable and are not stop conditions."
+  "recovery_instruction": "Re-fetch INTELLECT and MATHSOLVE protected main instructions, then re-fetch this branch and continue from its exact live descendant. Reject stale chat state where it conflicts with repository state. Timeout, connector, truncated-output, CI-infrastructure, compiler-diagnostic, and context-loss failures are recoverable and are not substantive stop conditions.",
+  "policy_authority": {
+    "policy_id": "GCL-AGENT-CONTINUITY-001",
+    "version": "1.0.0",
+    "intellect_main_sha": "7662e9b5eeecb065e75173176d535d57a5a42dee",
+    "mathsolve_adoption_main_sha": "ebbb049295c39281cc30a2b8e2a1d01f7fb66005"
+  }
 }
