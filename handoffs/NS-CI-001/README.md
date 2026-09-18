@@ -1769,6 +1769,116 @@ J_h.
 Thus the moving frame is no longer automatically isometric and diffusion
 acquires a variable metric.  This is the next direction-coherence boundary.
 
+
+### L5-35 bounded nonuniform direction-frame deformation
+
+`work_packages/NS_CI_R014_A2_L5_35_C2_DIRECTION_DEFORMED_FRAME.md`
+records
+
+```text
+BOUNDED_NONUNIFORM_FRAME_DEFORMATION_PRESERVES_CRITICAL_MIXING
+__ABSOLUTE_DIRECTION_STRAIN_BUDGET_IS_H_SCALE.
+```
+
+L5-34 removes rigid direction motion exactly.  L5-35 extends the principal
+moving-frame theorem to one-dimensional nonuniform direction fields whose
+characteristic maps remain uniformly smooth and bi-Lipschitz.
+
+For
+
+```math
+partial_s Phi_h
++
+h^-1 theta_h(s) B_h(s,Y) partial_Y Phi_h
++
+i h^-1 G_h(s,Y) Phi_h
+=
+h^2(partial_Y^2-1)Phi_h+r_h,
+```
+
+let `chi_h` be the direction-flow map and `J_h=partial_Z chi_h`.
+Pullback gives the exact diffusion metric
+
+```math
+partial_Y^2
+->
+J_h^-2 partial_Z^2
+-
+J_h^-3 (J_h)_Z partial_Z.
+```
+
+After exact accumulated-phase removal along characteristics, the leading
+critical damping is
+
+```math
+-
+J_h^-2 |(Fcal_h)_Z|^2.
+```
+
+Under uniform smooth bi-Lipschitz frame bounds, `O(h)` convergence of the
+metric and Lagrangian accumulated phase, and the protected `O(h)`
+semiclassical residual, the limiting amplitude is
+
+```math
+A_0
+=
+exp(
+-
+int J_0^-2 |(Fcal_0)_Z|^2 ds
+).
+```
+
+The physical scaled Fourier moments satisfy
+
+```math
+h^2 sum n^2 |c_n|^2
+->
+int J_0^-1 |(Fcal_0)_Z A_0|^2 dZ
+```
+
+and
+
+```math
+h^4 sum n^4 |c_n|^2
+->
+int J_0^-3 |(Fcal_0)_Z|^4 |A_0|^2 dZ.
+```
+
+Metric-weighted second-moment nondegeneracy therefore preserves positive
+physical critical-band mass and the `c/nu` selector charge.
+
+The exact Jacobian equation is
+
+```math
+J_s
+=
+h^-1 theta_h B_Y(s,chi_h) J.
+```
+
+Hence the absolute budget
+
+```math
+h^-1
+int
+|theta_h|
+||B_h||_{W^{4,infinity}}
+ds
+<=
+C
+```
+
+is a sufficient route to bounded finite-order frame geometry.  For persistent
+order-one spatial direction gradients this asks for the sufficient scale
+`|theta_h|=O(h)=O(rho^-1/3)`, much wider than L5-33's residual
+`O(h^3)` corridor.
+
+This scale is not claimed necessary.  Signed or oscillatory characteristic
+strain may cancel.
+
+The exact separator `B(Y)=sin Y`, constant positive `theta`, has
+`J_h(s,0)=exp(theta s/h)`, showing that order-one nonuniform direction strain
+can create exponential critical-time frame distortion.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1783,37 +1893,24 @@ acquires a variable metric.  This is the next direction-coherence boundary.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-DEFORM**.
+The live obligation is now **C2-MIX-DIRECTION-STRAIN**.
 
-Rigid direction motion is no longer an obstruction: L5-34 removes it exactly
-by translation and reduces the charge question to moving-frame accumulated
-phase.
+Controlled nonuniform direction deformation is conditionally compatible with
+the critical charge theorem. The remaining whole-space question is:
 
-The next question is nonuniform principal direction deformation:
+> Can selected active-band Navier--Stokes dynamics force a bounded accumulated
+> characteristic-strain budget, or does failure of that budget itself pay a
+> selector/dissipation cost?
 
-> How much characteristic-frame deformation can the critical phase-mixing
-> theorem tolerate before the transformed diffusion metric and
-> semiclassical-moment argument fail?
+The next audit must distinguish:
 
-The first audit must track:
+1. absolute direction-strain magnitude;
+2. signed or oscillatory accumulated strain along characteristics;
+3. Jacobian condition number and metric derivatives;
+4. deformation-gradient energy.
 
-1. the characteristic Jacobian `J_h`;
-2. transformed diffusion coefficients and their derivatives;
-3. semiclassical commutators with the variable metric;
-4. accumulated phase along characteristics.
-
-A minimal bounded-distortion quantity is
-
-```math
-h^-1
-int
-|theta_h|
-||partial_Y B_h||_infinity
-ds.
-```
-
-Do not apply the L5-33 residual corridor after a direction term has been
-promoted to principal dynamics.
+The L5-35 `O(h)` persistent strain scale is an absolute sufficient condition,
+not a necessary threshold. Do not promote it to an equation-derived law.
 
 ## Authoritative pointers
 
@@ -1855,6 +1952,7 @@ promoted to principal dynamics.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_32_C2_ACCUMULATED_PHASE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_33_C2_DIRECTION_DEFECT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_34_C2_DIRECTION_MOVING_FRAME.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_35_C2_DIRECTION_DEFORMED_FRAME.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
