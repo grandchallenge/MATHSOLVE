@@ -842,6 +842,77 @@ This does not exclude an equation-specific triadic coherence or
 frequency-weighted flux theorem. The fixture is an exact conservative shell
 ledger, not a Navier--Stokes trajectory.
 
+
+### L5-22 turnover-scale signed transfer coherence calibration
+
+\`work_packages/NS_CI_R014_A2_L5_22_C2_TRIAD_COHERENCE.md\`
+records
+
+\`\`\`text
+TURNOVER_SCALE_SIGNED_TRANSFER_COHERENCE_PERSISTS_IN_EXACT_2P5D_NSE
+__SUBTURNOVER_DECOHERENCE_NOT_GENERIC.
+\`\`\`
+
+The exact unforced periodic 2.5D NSE calibration from L5-18/L5-19 also
+separates a generic phase-decoherence repair.
+
+In turnover variables,
+
+\`\`\`math
+partial_tau theta_epsilon
++
+e^{-epsilon tau} V dot grad theta_epsilon
+=
+epsilon Delta theta_epsilon,
+\qquad
+epsilon=1/R.
+\`\`\`
+
+Let \`c_epsilon\` be the target \`sin(X+Y)\` coefficient and
+\`g_epsilon\` its signed nonlinear transport forcing.  Exactly,
+
+\`\`\`math
+c_epsilon'
+=
+g_epsilon-2epsilon c_epsilon,
+\qquad
+c_epsilon(0)=g_epsilon(0)=1.
+\`\`\`
+
+The L5-19 uniform high-Sobolev bounds upgrade the inviscid-limit convergence to
+
+\`\`\`math
+sup_{tau<=T}
+||theta_epsilon-theta_0||_{H^s}
+lesssim
+epsilon.
+\`\`\`
+
+Since the inviscid target amplitude and forcing are both positive at
+\`tau=0\`, continuity gives one fixed \`tau_*>0\` such that for all
+sufficiently large \`R\`,
+
+\`\`\`math
+c_{1/R}(tau)>=1/2,
+\qquad
+g_{1/R}(tau)>=1/2
+\`\`\`
+
+throughout \`0<=tau<=tau_*\`.
+
+Thus the signed nonlinear transfer into the target sine component remains
+order \`A^3N\` for physical time \`tau_*/(AN)\`, giving an order-\`A^2\`
+coherent transfer.  The corresponding viscous target loss is smaller by
+\`O(1/R)\`.
+
+Combined with L5-20, the same calibration can therefore have fixed-turnover
+signed transfer coherence while its fixed-window selector charge tends to
+zero.  Universal subturnover phase decoherence is not the missing C2
+mechanism.
+
+This remains a periodic 2.5D calibration theorem.  It does not prove repeated
+episode coherence or a selected whole-space statement.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -856,28 +927,27 @@ ledger, not a Navier--Stokes trajectory.
 
 ## Smallest safe next tranche
 
-Do not repeat complete-band energy telescoping or unweighted cumulative flux as
-though either supplied the missing overshoot cost. L5-21 grants both and still
-permits divergent \`integral Omega\` at shell-ledger level.
+Do not use generic subturnover phase decoherence as the repair. L5-22 gives an
+actual unforced NSE calibration with coherently signed target transfer over one
+fixed positive turnover interval.
 
-The first live obligation is now **C2-TRIAD**.
+The first live obligation is now **C2-REPEAT**.
 
-Test equation-specific triadic coherence rather than generic shell
-conservation:
+The question must connect distinct overshoot episodes or scale levels:
 
-> Does actual Navier--Stokes triad geometry force a phase-decoherence,
-> neighboring-triad creation, directionality, or frequency-weighted transfer
-> cost that rules out repeated turnover-scale upper-band overshoot episodes?
+> Can a selected whole-space solution realize infinitely many increasing
+> upper-band overshoot episodes, each carrying order-turnover coherent signed
+> transfer, while the A2 selector charge and ordinary dissipation remain
+> summable?
 
-The first bounded audit should retain an exact finite Fourier cluster and
-differentiate the transfer correlation/phase itself. It must distinguish the
-full NSE from a merely conservative shell ledger or a Galerkin triad model.
+A valid theorem needs a cross-episode cost: phase-reset cost, memory in
+generated modes, anti-fragmentation, genuinely three-dimensional network
+constraints, or another equation-derived quantity not present in the one-
+episode calibrations.
 
-A valid positive result must produce a cost unavailable to L5-21 and must not
-reduce to the protected L4 weighted active diagonal. If a finite triadic model
-can sustain coherent recycling, record that only as calibration; do not promote
-it to a full-NSE obstruction unless the cluster is dynamically invariant or the
-generated modes are controlled.
+Do not infer repeated-event coherence from L5-22, and do not replace the full
+NSE by an isolated triad unless invariance and generated-mode control are
+proved.
 
 ## Authoritative pointers
 
@@ -906,6 +976,7 @@ generated modes are controlled.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_19_C2_FIXED_DISTANCE_AMPLITUDE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_20_C2_DISTANCE_SOBLEV_TAIL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_21_C2_CUMULATIVE_FLUX_OBSTRUCTION.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_22_C2_TRIAD_COHERENCE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
