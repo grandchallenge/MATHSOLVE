@@ -5,7 +5,7 @@
 Use:
 
 - the protected R5-RECIP local theorem in MATHSOLVE;
-- the admitted good-ordinary `Q_2) local-torsion classification at `grandchallenge/MATHFORGE@2a112e28026d33062ea314c55e69c157bf9ae863`;
+- the admitted good-ordinary `Q_2` local-torsion classification at `grandchallenge/MATHFORGE@2a112e28026d33062ea314c55e69c157bf9ae863`;
 - the pinned external input record for `79a1` at `grandchallenge/MATHFORGE@aeb6588785e70bb7477cdcf44b018c150674c8e4`.
 
 The admitted model is
@@ -49,7 +49,7 @@ Thus the reduction is good ordinary. Protected R5-RECIP supplies one nonzero for
 
 Direct enumeration gives no root of `F2` modulo `16`.
 
-Any nonformal `Q_2)-rational torsion point under good reduction has integral affine coordinates. Therefore any second rational order-two point would give a `Z_2)-root of `F2`, hence a root modulo `16`. None exists.
+Any nonformal `Q_2`-rational torsion point under good reduction has integral affine coordinates. Therefore any second rational order-two point would give a `Z_2`-root of `F2`, hence a root modulo `16`. None exists.
 
 So the already protected formal order-two point is the unique nonzero element of `E(Q_2)[2]`.
 
@@ -67,7 +67,7 @@ Hensel's lemma therefore gives a unique root `x_4 in Z_2` with `x_4 == 9 (mod 16
 
 `D(x_4) == D(9) == 4 (mod 32)`.
 
-Hence `v_2(D(x_4))=2` and `D(x_4)/4 == 1 (mod 8)`. By the standard square criterion in `Q_2`, `D(x_4)` is a square. Therefore the Weierstrass quadratic in `y` has a `Q_2)-solution above `x_4`.
+Hence `v_2(D(x_4))=2` and `D(x_4)/4 == 1 (mod 8)`. By the standard square criterion in `Q_2`, `D(x_4)` is a square. Therefore the Weierstrass quadratic in `y` has a `Q_2`-solution above `x_4`.
 
 Since `x_4` is a root of the non-2-torsion factor of the fourth division polynomial, this point has exact order four.
 
@@ -87,11 +87,11 @@ with
 
 `G8 = P6base*P3^2 - P5^2`.
 
-Thus a point of exact order eight has integral affine `x)-coordinate satisfying `G8(x)=0`; the `P4` factor accounts for points already killed by four.
+Thus a point of exact order eight has integral affine `x`-coordinate satisfying `G8(x)=0`; the `P4` factor accounts for points already killed by four.
 
 The exact certificate constructs `G8` over `Z[x]` from these recurrences and enumerates all classes modulo `16`. It finds no root.
 
-Because the admitted/protected local formal subgroup has no torsion beyond order two, any order-eight point would be nonformal and therefore integral. Its `x)-coordinate would reduce to a root of `G8` modulo `16`, contradiction.
+Because the admitted/protected local formal subgroup has no torsion beyond order two, any order-eight point would be nonformal and therefore integral. Its `x`-coordinate would reduce to a root of `G8` modulo `16`, contradiction.
 
 Hence `E(Q_2)` contains no point of order eight.
 
