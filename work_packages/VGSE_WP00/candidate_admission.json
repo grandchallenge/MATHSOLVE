@@ -88,7 +88,7 @@
     "current_route_overlay": {
       "path": "contracts/mathcert_current_routes_vgse_overlay.json",
       "digest_algorithm": "git_blob_sha1",
-      "digest": "ad6fbbc979cb1168e26de17eb7536ddc88149494",
+      "digest": "7984094374810cd4ec4fa27c74dde61741f8387e",
       "route_registry_entry_present": false
     }
   },
