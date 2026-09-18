@@ -717,6 +717,70 @@ A charge-only repair from spectral propagation would require threshold-sized
 distance `r(R) comparable to at least sqrt(R)`, or an equivalent cumulative
 flux/decoherence cost.  No such growing-distance theorem is claimed here.
 
+
+### L5-20 Sobolev tail bound on threshold-reaching distance
+
+\`work_packages/NS_CI_R014_A2_L5_20_C2_DISTANCE_SOBLEV_TAIL.md\`
+records
+
+\`\`\`text
+C2_DIST_SQRT_R_THRESHOLD_REACH_EXCLUDED_IN_2P5D_CALIBRATION
+__TURNOVER_SELECTOR_CHARGE_VANISHES.
+\`\`\`
+
+L5-19 asked whether threshold-sized leakage in the exact periodic 2.5D
+calibration could reach distance comparable to \`sqrt(R)\`, which would be
+needed for an order-one charge from propagation distance alone.
+
+The uniform finite-time Sobolev estimate already available in L5-19 answers
+this negatively.  Because the calibration is independent of \`x_3\`, one
+dyadic annulus contains only \`O(L^2)\` normalized lattice modes.  For every
+fixed Sobolev order \`s>=4\`,
+
+\`\`\`math
+||Delta_p theta_{1/R}||_infinity
+lesssim
+L_p^(1-s),
+\`\`\`
+
+where \`L_p=lambda_p/N\`.  Since \`A=R nu N\`,
+
+\`\`\`math
+lambda_p^(-1)||u_p||_infinity
+lesssim
+R nu L_p^(-s).
+\`\`\`
+
+Hence every threshold-violating shell on a fixed turnover-time interval obeys
+
+\`\`\`math
+lambda_p/N
+lesssim
+R^(1/s).
+\`\`\`
+
+Taking \`s=4\` gives only fourth-root reach, strictly below the required
+square-root scale.  The selector itself satisfies
+
+\`\`\`math
+Lambda(t)
+lesssim
+N R^(1/s),
+\`\`\`
+
+so over a fixed turnover-time horizon
+
+\`\`\`math
+integral Lambda^2 dt
+lesssim
+nu^(-1) R^(2/s-1).
+\`\`\`
+
+At \`s=4\` this is \`O(nu^(-1)R^(-1/2))\` and tends to zero.
+
+Thus spectral-distance propagation is closed as the missing charge mechanism
+inside this exact calibration.  This is not a whole-space A2 theorem.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -731,37 +795,36 @@ flux/decoherence cost.  No such growing-distance theorem is claimed here.
 
 ## Smallest safe next tranche
 
-Do not repeat fixed-distance threshold leakage as though it supplied a
-non-summable selector cost.
+Do not continue pushing propagation distance in the exact 2.5D calibration.
+L5-20 excludes the square-root reach needed by the charge-only mechanism.
 
-The first live obligation is now **C2-DIST**: quantify threshold-reaching
-spectral distance as a function of the overshoot ratio `R`.
+The first live obligation is now **C2-FLUX**.
 
-The fixed-distance certificate scales like
+Return to the selected whole-space upper active band and retain the signed
+shell-energy transfer until after time integration.
 
-```math
-r^2/R.
-```
+Preferred first target:
 
-Therefore a charge-only reopening needs threshold-sized leakage to spectral
-distance at least comparable to
+> On a maximal interval over which one upper-band shell remains a threshold
+> overshoot, can summing the complete retained upper band convert repeated
+> turnover-size internal forcing into a telescoping energy change, a flux
+> through the band boundary, or a depletion factor that controls the overshoot
+> integral?
 
-```math
-r(R) >= c sqrt(R)
-```
+The calculation must:
 
-on a turnover-scale interval, or another temporal mechanism with equivalent
-non-summable cost.
+- retain same-band internal transfer with sign until the complete band is
+  summed;
+- separate flux across the upper-band boundary from internal exchange;
+- keep viscous dissipation explicit;
+- use the already-controlled far-low deformation only where its protected
+  estimate actually applies;
+- avoid differentiating the moving selector indicator;
+- avoid replacing the signed band identity by the absolute
+  \`lambda A^2\` bound already closed in L5-16.
 
-Use the exact 2.5D calibration to decide this bounded question.  A positive
-result at `sqrt(R)` scale would materially reopen cross-level charging.  A
-rigorous analytic/Gevrey upper bound `r(R)=o(sqrt(R))` would instead close
-spectral-distance leakage as the missing mechanism in this calibration and
-move the live route to cumulative signed flux, repeated-event coherence, or
-phase decoherence.
-
-Do not infer growing distance from nonzero support, and do not assume selector
-regularity while generated modes appear.
+A valid advance must produce a genuinely cumulative cost, or else identify the
+first exact obstruction and terminate that bounded flux variant.
 
 ## Authoritative pointers
 
@@ -786,7 +849,9 @@ regularity while generated modes appear.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_15_C2_OVERSHOOT_PERSISTENCE_AUDIT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_16_C2_SAME_BAND_MILD_OBSTRUCTION.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_17_C2_INSTANTANEOUS_CROSS_LEVEL.md`
-- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_18_C2_TEMPORAL_LEAKAGE.md`\n- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_19_C2_FIXED_DISTANCE_AMPLITUDE.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_18_C2_TEMPORAL_LEAKAGE.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_19_C2_FIXED_DISTANCE_AMPLITUDE.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_20_C2_DISTANCE_SOBLEV_TAIL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
