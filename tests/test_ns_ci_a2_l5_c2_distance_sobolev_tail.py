@@ -1,4 +1,5 @@
 from fractions import Fraction
+from math import isqrt
 import unittest
 
 
@@ -8,7 +9,7 @@ class NSCIA2L5C2DistanceSobolevTailTests(unittest.TestCase):
         # count contributes one power of L.
         for L in (2, 4, 8, 16):
             count_upper = L**2
-            self.assertEqual(Fraction(count_upper, 1) ** Fraction(1, 2), L)
+            self.assertEqual(isqrt(count_upper), L)
 
     def test_sobolev_tail_exponent_is_one_minus_s(self) -> None:
         # sqrt(count) contributes L; the H^s shell L2 tail contributes L^-s.
@@ -61,7 +62,8 @@ class NSCIA2L5C2DistanceSobolevTailTests(unittest.TestCase):
         for R in (4, 16, 64, 256):
             lower_scale = Fraction(1, R)
             # all selected R are perfect squares
-            root = int(R**0.5)
+            root = isqrt(R)
+            self.assertEqual(root * root, R)
             upper_scale = Fraction(1, root)
             self.assertLessEqual(lower_scale, upper_scale)
 
