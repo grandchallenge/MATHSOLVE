@@ -11,3 +11,4 @@ import MathSolve.PNP.ProgrammeMachine
 import MathSolve.PNP.ModelBridge
 import MathSolve.PNP.TM2StackEncoding
 import MathSolve.PNP.TM2TokenDecode
+import MathSolve.PNP.TM2ProgrammeCompiler
