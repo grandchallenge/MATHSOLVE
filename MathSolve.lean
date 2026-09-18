@@ -21,3 +21,6 @@ import MathSolve.PNP.TM2ProgrammeLocal
 import MathSolve.PNP.TM2ProgrammeRunStep
 import MathSolve.PNP.TM2ProgrammeActions
 import MathSolve.PNP.TM2ProgrammeFamilyOps
+import MathSolve.PNP.TM2StepAuxSimulation
+import MathSolve.PNP.TM2FixedStepSimulation
+import MathSolve.PNP.TM2ProgrammeInitialization
