@@ -20,7 +20,7 @@ The smallest material successor is:
 
 `YM-D003-BAL-R002 — STABILITY_TO_CONTINUUM_OBSERVABLE_EXISTENCE`.
 
-Before a proof attempt that uses Balaban's internal bounds, MATHFORGE must acquire theorem-number/equation-exact source detail sufficient to state the exact compactness, observable, volume, and regulator hypotheses. The present protected `YM-T-210` interface establishes ultraviolet stability and large-field control but does not expose enough internal theorem data to manufacture the continuum-observable existence step.
+Protected MATHFORGE merge `42248fffff5e6d091b5ba209ccd969a6ce6b6700` records the completed theorem-body acquisition attempt. Primary bibliographic/source-level identities are reverified, but no independently accessible CMP119/CMP122 I–II theorem-body bytes or renders were obtained on the current execution plane. Therefore `YM-D003-BAL-R002` is not yet open for an equation-level proof attempt. Its exact evidentiary blocker is `MISSING_PRIMARY_BALABAN_THEOREM_BODY_FOR_STABILITY_TO_CONTINUUM_OBSERVABLE_EXISTENCE`.
 
 ## Material acceptance criteria
 
@@ -64,6 +64,7 @@ Before a proof attempt that uses Balaban's internal bounds, MATHFORGE must acqui
 - `grandchallenge/MATH-PROGRAMME:campaigns/yang_mills/YM_CURRENT_ROUTING_GATE.json`
 - `grandchallenge/MATH-PROGRAMME:campaigns/yang_mills/YM_D003_UV_LARGE_FIELD_SUPPLEMENT.json`
 - `grandchallenge/MATHFORGE:sources/YM-001/YM_D003_BALABAN_MRS_SOURCE_AUDIT.md`
+- `grandchallenge/MATHFORGE:sources/YM-001/YM_D003_BALABAN_THEOREM_BODY_ACQUISITION.md` — protected at `42248fffff5e6d091b5ba209ccd969a6ce6b6700`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D003_UV_LARGE_FIELD_COMPOSITION/00_README.md`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D003_UV_LARGE_FIELD_COMPOSITION/01_ROUTE_COMPOSITION_THEOREM.md`
 - `grandchallenge/MATHSOLVE:work_packages/YM_D003_UV_LARGE_FIELD_COMPOSITION/02_CLAIM_LEDGER.yaml`
@@ -125,7 +126,7 @@ Optional cross-route route:
 
 - `YM-D003-XR-R001`: an explicit comparison theorem if one wants to transfer results between Balaban and MRS.
 
-The smallest material successor is `YM-D003-BAL-R002`. Current web/source reconnaissance still exposes only Balaban's bounded theorem-level ultraviolet-stability statement, not theorem-number/equation-exact internal hypotheses sufficient for a proof of continuum-observable existence. A third-party audit repository reports locally cached Balaban PDFs, but that is a locator only and is not admitted source authority. Forge must independently bind suitable primary/source bytes or an equivalently trustworthy theorem-body record before Solve may consume those internal bounds. Until then, generic compactness reasoning may not be substituted for the source theorem.
+The smallest material successor is `YM-D003-BAL-R002`, but it is presently source-blocked. Forge protected merge `42248fffff5e6d091b5ba209ccd969a6ce6b6700` reverified CMP119/CMP122 I–II identities and source-level scope, localized the exact theorem-body targets, and exhausted the available publisher/Project-Euclid/institutional/mirror acquisition paths on this execution plane. Springer exposes subscription previews; Project Euclid resolves through an anti-bot iframe; no independently checksum-able primary or author-hosted copy was obtained. A third-party extraction repository remains navigation-only and is not theorem authority. Solve may not consume its transcribed equation-level bounds. Reopen BAL-R002 only when primary/equivalently authoritative theorem-body pages can be independently inspected and bound.
 
 ## Material dependencies and boundaries
 
