@@ -53,6 +53,19 @@ class NSCIA2L5C2ShearPhaseLockTests(unittest.TestCase):
             total += 2 * b[n] * b_prime_coupling
         self.assertEqual(total, 0)
 
+    def test_locked_flux_sign_matches_shell_balance(self) -> None:
+        # F_{n+1/2}=-Im(conj(a_n)a_{n+1})=b_n b_{n+1}.
+        # Hence F_{n-1/2}-F_{n+1/2}=b_n(b_{n-1}-b_{n+1}),
+        # exactly the pure-coupling contribution to d|a_n|^2/dtau.
+        b_left = Fraction(5, 3)
+        b_n = Fraction(-7, 4)
+        b_right = Fraction(11, 6)
+        flux_left = b_left * b_n
+        flux_right = b_n * b_right
+        shell_balance = flux_left - flux_right
+        coupling_energy_derivative = b_n * (b_left - b_right)
+        self.assertEqual(shell_balance, coupling_energy_derivative)
+
     def test_viscosity_dissipates_chain_energy(self) -> None:
         eps = Fraction(1, 10)
         b = {
