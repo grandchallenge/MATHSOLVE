@@ -44,7 +44,7 @@ first_hit(name, coeffs, N, B)=
   return(0)
 };
 
-my(H=List(),h);
+H=List(); h=0;
 h=first_hit("37a1",[0,0,1,-1,0],37,500); if(h,listput(H,["37a1",h]));
 h=first_hit("43a1",[0,1,1,0,0],43,500); if(h,listput(H,["43a1",h]));
 h=first_hit("53a1",[1,-1,1,0,0],53,500); if(h,listput(H,["53a1",h]));
