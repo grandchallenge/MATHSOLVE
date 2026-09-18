@@ -140,8 +140,11 @@ theorem TM2CfgRepresented.halted_output {decision : List Bool → Bool}
   | false =>
       have hrejected : targetCfg.state = tm2ControlReject source := by
         exact hstate.trans (by simpa using hcontrol)
+      have hreject_ne_accept :
+          tm2ControlReject source ≠ tm2ControlAccept source :=
+        Ne.symm (tm2ControlAccept_ne_reject source)
       simp [ProgrammeMachine.output, tm2ProgrammeMachine, hrejected,
-        tm2ControlAccept_ne_reject source]
+        hreject_ne_accept]
   | true =>
       have haccepted : targetCfg.state = tm2ControlAccept source := by
         exact hstate.trans (by simpa using hcontrol)
