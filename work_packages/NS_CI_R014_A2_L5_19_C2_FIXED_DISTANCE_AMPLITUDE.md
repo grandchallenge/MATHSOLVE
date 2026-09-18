@@ -431,7 +431,7 @@ support.
 At the fixed generated frequency, the partition identity gives
 
 ```math
-\sum_p\psi_{p_*}(K_{r_*})=1.
+\sum_p\psi_p(K_{r_*})=1.
 ```
 
 At most `J_{LP}` terms are nonzero, so one fixed shell `p_*`, depending
