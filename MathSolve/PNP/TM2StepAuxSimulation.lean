@@ -60,6 +60,7 @@ theorem tm2StepAux_simulates {decision : List Bool → Bool}
             ((tm2ProgrammeMachine source).step input)
             cfg (some targetCfg)
             (tm2ProgrammeStatementCost stmt)) := by
+  classical
   induction stmt with
   | push k valueFn nextStmt ih =>
       intro code state stackFamily cfg hcode hstacks hstate
@@ -405,9 +406,10 @@ theorem tm2StepAux_simulates {decision : List Bool → Bool}
       have hstepRaw :=
         tm2ProgrammeMachine_step_run source input cfg code state hstate
       rw [tm2RunAction_halt source code state cfg.readWork hcode] at hstepRaw
+      rw [hcontrol] at hstepRaw
       have hstep :
           (tm2ProgrammeMachine source).step input cfg = some nextCfg := by
-        simpa [nextCfg, hcontrol] using hstepRaw
+        simpa [nextCfg] using hstepRaw
       have hnextStacks :
           TM2StacksRepresented source stackFamily nextCfg := by
         simpa [nextCfg] using
