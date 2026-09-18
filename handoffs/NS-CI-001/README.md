@@ -1388,6 +1388,59 @@ Thus A2, shell energy, support, and amplitude data cannot force the required
 pointwise alignment.  Any successful depletion route must be time-correlated
 or use genuinely additional geometric information.
 
+
+### L5-30 polarization defect as an exact secondary shear charge
+
+`work_packages/NS_CI_R014_A2_L5_30_C2_SECONDARY_SHEAR_CHARGE.md`
+records
+
+```text
+EXACT_SECONDARY_SHEAR_CHARGE_PROVED
+__R_SQUARED_DELTA_DIVERGENCE_FORCES_C_OVER_NU.
+```
+
+A one-parameter subfamily of the L5-29 polarization fixture is an exact smooth
+unforced periodic 2.5D NSE trajectory.
+
+Let `delta` be the L5-29 polarization defect and
+
+```math
+rho=R delta.
+```
+
+Then `A delta` is exactly the amplitude of a decaying horizontal shear acting
+on a vertical carrier of amplitude `A`.
+
+For bounded effective shear `rho`, a short parabolic-time Duhamel estimate
+produces a neighboring Fourier coefficient of size `c rho A`.  It violates
+the threshold whenever
+
+```math
+R rho=R^2 delta -> infinity,
+```
+
+and persists on a fixed fraction of a parabolic interval, giving selector
+charge `c/nu`.
+
+For large `rho`, protected L5-26 applies with `rho` as the effective shear
+Reynolds number.  Its critical front at `N rho^(1/3)` again gives charge
+`c/nu`.
+
+Therefore
+
+```math
+R^2 delta -> infinity
+\quad=>\quad
+integral Lambda^2 dt >= c/nu
+```
+
+in this exact calibration family.
+
+Thus a channel too large to ignore need not be depleted; if it has coherent
+shear structure it can be promoted to a secondary principal mixing channel and
+pay the critical cost itself.  The exact calibration leaves unresolved only
+`R^2 delta=O(1)`, i.e. `delta=O(R^-2)`, as a sufficient-condition boundary.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1402,23 +1455,24 @@ or use genuinely additional geometric information.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-ALIGN-TIME**.
+The live obligation is now **C2-MIX-MULTICHANNEL**.
 
-Pointwise polarization is separated: L5-29 shows that identical scalar shell
-data permit both exact depletion and full same-band forcing.
+L5-30 shows that coherent nonprincipal channels can pay their own critical
+charge instead of being forced into the L5-28 residual.
 
-The next question must be temporal:
+The next whole-space question is:
 
-> If an actual large upper-band overshoot remains outside the
-> `R^{-2/3}` polarization-null corridor for a critical interval, does that
-> persistent non-null interaction force selector growth, generated-mode
-> energy, or viscous dissipation with a non-summable cost?
+> Can one decompose a selected active packet into finitely many coherent
+> transport channels plus a residual, so that every channel with
+> `R^2 delta >> 1` pays a `c/nu` charge and the remainder is below the
+> critical residual scale?
 
-A first bounded audit should allow the polarization defect to vary in time and
-test a time-integrated square of the exact bilinear symbol.
+The first audit must separate instantaneous symbol decomposition from temporal
+coherence.  Do not promote an L5-29 channel to a secondary shear merely from
+one-time polarization data.
 
-Do not count one instant of full forcing as a charge theorem; L5-17 already
-blocks that shortcut.
+If coherence requires an additional persistence norm, state it explicitly and
+test whether selected NSE/A2 structure can supply it.
 
 ## Authoritative pointers
 
@@ -1455,6 +1509,7 @@ blocks that shortcut.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_27_C2_MIX_BRIDGE_NORMAL_FORM.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_28_C2_MIX_SEMICLASSICAL_RESIDUAL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_29_C2_POLARIZATION_CORRIDOR.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_30_C2_SECONDARY_SHEAR_CHARGE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
