@@ -30,7 +30,7 @@ theorem TM2StacksRepresented.afterPopAction {decision : List Bool → Bool}
   intro j
   by_cases hj : j = k
   · subst j
-    simp only [Function.update_same]
+    simp only [Function.update_apply, if_pos rfl]
     cases hstack : stackFamily k with
     | nil =>
         have hk := hrep k
@@ -54,7 +54,7 @@ theorem TM2StacksRepresented.afterPopAction {decision : List Bool → Bool}
       intro h
       exact hj ((tm2TapeEquiv source).injective h)
     have hjrep := hrep j
-    rw [Function.update_noteq (Ne.symm hj)]
+    simp only [Function.update_apply, hj, if_false]
     convert hjrep using 1 <;>
       simp [ProgrammeConfig.afterAction, tm2PopAction,
         tm2MoveSelected, tm2WriteSelected, ProgrammeConfig.readWork,
@@ -135,7 +135,7 @@ theorem TM2StacksRepresented.afterPushActions {decision : List Bool → Bool}
   intro j
   by_cases hj : j = k
   · subst j
-    simp only [Function.update_same]
+    simp only [Function.update_apply, if_pos rfl]
     have hk := hrep k
     convert TM2StackRepresented.push_generated source code state k valueFn
       nextStmt
@@ -151,7 +151,7 @@ theorem TM2StacksRepresented.afterPushActions {decision : List Bool → Bool}
       intro h
       exact hj ((tm2TapeEquiv source).injective h)
     have hjrep := hrep j
-    rw [Function.update_noteq (Ne.symm hj)]
+    simp only [Function.update_apply, hj, if_false]
     convert hjrep using 1
     · simp [ProgrammeConfig.afterAction, tm2CompletePushAction,
         tm2WriteSelected, ProgrammeConfig.readWork, htape,
