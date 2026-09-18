@@ -69,6 +69,55 @@ theorem tm2ProgrammeMachine_step_run {decision : List Bool → Bool}
   · simpa [tm2ProgrammeMachine, hstate] using
       tm2ControlRun_ne_reject source code state
 
+/-- Proof-facing spelling of the valid second half of a two-transition push. -/
+def tm2CompletePushAction {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision) (k : source.tm.K)
+    (nextCode : TM2StatementCode source.tm) (state : source.tm.σ)
+    (token : TM2ProvenanceToken source.tm)
+    (readWork : Fin (tm2WorkTapeCount source) → TM2ProgrammeSymbol source.tm) :
+    ProgrammeAction (TM2ProgrammeControl source) (TM2ProgrammeSymbol source.tm)
+      (tm2WorkTapeCount source) where
+  nextState := tm2ControlRun source nextCode state
+  inputMove := .stay
+  write := tm2WriteSelected source readWork k (some token)
+  workMove := fun _ => .stay
+
+/-- A valid push-write control normalizes to the proof-facing completion action. -/
+theorem tm2ProgrammeTransition_pushWrite {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision)
+    (k : source.tm.K)
+    (nextCode : TM2StatementCode source.tm) (state : source.tm.σ)
+    (token : TM2ProvenanceToken source.tm)
+    (inputSymbol : Option Bool)
+    (readWork : Fin (tm2WorkTapeCount source) → TM2ProgrammeSymbol source.tm)
+    (htoken : tm2PushTokenStack? source token = some k) :
+    tm2ProgrammeTransition source
+      (tm2ControlPushWrite source nextCode state token)
+      inputSymbol readWork =
+      tm2CompletePushAction source k nextCode state token readWork := by
+  simp [tm2ProgrammeTransition, tm2ControlPushWrite, tm2ControlCopy,
+    tm2ControlRewind, tm2CompletePushAction, htoken]
+
+/-- The concrete Programme machine takes the valid second push transition exactly. -/
+theorem tm2ProgrammeMachine_step_pushWrite {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision) (input : List Bool)
+    (cfg : ProgrammeConfig (tm2ProgrammeMachine source))
+    (k : source.tm.K)
+    (nextCode : TM2StatementCode source.tm) (state : source.tm.σ)
+    (token : TM2ProvenanceToken source.tm)
+    (hstate : cfg.state = tm2ControlPushWrite source nextCode state token)
+    (htoken : tm2PushTokenStack? source token = some k) :
+    (tm2ProgrammeMachine source).step input cfg =
+      some (cfg.afterAction
+        (tm2CompletePushAction source k nextCode state token cfg.readWork)) := by
+  rw [(tm2ProgrammeMachine source).step_eq_some_afterAction input cfg]
+  · simp [ProgrammeMachine.actionAt, tm2ProgrammeMachine, hstate,
+      tm2ProgrammeTransition_pushWrite, htoken]
+  · simpa [tm2ProgrammeMachine, hstate] using
+      tm2ControlPushWrite_ne_accept source nextCode state token
+  · simpa [tm2ProgrammeMachine, hstate] using
+      tm2ControlPushWrite_ne_reject source nextCode state token
+
 /-- Package one exact transition equality as a one-step `EvalsToInTime` witness. -/
 theorem programme_one_step_in_time
     {M : ProgrammeMachine} {input : List Bool}
@@ -81,6 +130,8 @@ theorem programme_one_step_in_time
 #print axioms tm2ProgrammeTransition_run
 #print axioms tm2ProgrammeMachine_actionAt_run
 #print axioms tm2ProgrammeMachine_step_run
+#print axioms tm2ProgrammeTransition_pushWrite
+#print axioms tm2ProgrammeMachine_step_pushWrite
 #print axioms programme_one_step_in_time
 
 end
