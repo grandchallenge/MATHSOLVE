@@ -2,49 +2,41 @@
 
 ## Cold start
 
-Protected repository state is operational authority. Re-fetch live protected heads before mutation, then read:
+Re-fetch live protected heads before mutation, then read:
 
 1. `.gcl/campaigns/BSD-001/CAMPAIGN_STATE.json`;
-2. `.gcl/operations/BSD-R5-WIT/OPERATION.json`;
-3. `handoffs/BSD-001/R5_WIT_FRONTIER.md`;
-4. `work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/07_COHORT_AND_DIRECT_DETECTOR_BOUNDARY.md`;
-5. `work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/09_CLAIM_LEDGER.yaml`;
-6. protected provider `grandchallenge/MATHFORGE@3a097cf5f1ad5e12eeba83a08dccfbf7bc49b5f4`.
+2. `.gcl/operations/BSD-R5-CW-P2-WEIGHT/OPERATION.json`;
+3. `handoffs/BSD-001/R5_CW_P2_WEIGHT_FRONTIER.md`;
+4. `work_packages/BSD_R5_CW_P2_WEIGHT_COVER/01_UNIVERSAL_HALF_WEIGHT_COVER_THEOREM.md`;
+5. `work_packages/BSD_R5_CW_P2_WEIGHT_COVER/02_CLAIM_LEDGER.yaml`;
+6. protected provider `grandchallenge/MATHFORGE@716979bcae4e67a82c52f15c99b20da555fcdfca`.
 
-Campaign: `BSD-001 — Birch-Swinnerton-Dyer selected rank-one 2-primary campaign`. Programme owner: `grandchallenge/MATHSOLVE#164`; parent tracker: `#215`; current operation: `#282` (`BSD-R5-WIT`). Exact operation base: `8e692aaca7b0932c412a03eb33985ba5994b1d5f`. Protected R5-RECIP completion overlay: `9c9bd9077f8b269277366c7ee81dcdcd7f701217`. Protected source authority: `grandchallenge/MATHFORGE@3a097cf5f1ad5e12eeba83a08dccfbf7bc49b5f4`.
+Campaign: `BSD-001`. Programme owner: #164. Parent frontier tracker: #215.
+Current bounded operation: #329 (`BSD-R5-CW-P2-WEIGHT`).
 
-## R5-WIT candidate result
+## Candidate result
 
 The operation entered on
 
-`MISSING_P2_NORMALIZED_FINITE_KURIHARA_NONVANISHING_WITNESS`.
+`MISSING_P2_COLMEZ_WANG_UNIVERSAL_HALF_WEIGHT_CHARACTER`.
 
-It proves exact local stratification on the selected/diagnostic cohort:
+It proves the exact finite-flat ramified cover
 
-- `t_2=1`: `53a1`, `61a1`, `83a1`, `203b1`;
-- `t_2=2`: `79a1`, `201b1`;
-- `t_2=3`: `89a1`.
+`Lambda_half=Z_2[[T]][Y]/(Y^2-(1+T)) ~= Z_2[[S]]`,
 
-Protected R5-RECIP then makes the normalized Kurihara coordinate identically zero modulo two on every certified `t_2>=2` instance. This does not imply global residual Kato/Kolyvagin vanishing.
+with `Y=1+S` and `T=2S+S^2`.  The continuous character
+`kappa_half(5^a)=Y^a` squares to the base-changed universal weight character
+and has the universal property for local square roots.
 
-Exact PARI/GP reconnaissance found no single-prime normalized hit through `ell<=2000` on the two controls and none through `ell<=500` on the deterministic expanded cohort. These finite negative scans are not a nonexistence theorem on the `t_2=1` lane.
+Candidate disposition: `CLOSED`.
 
-Protected WP60T supplies the direct bypass
+The next theorem boundary is
 
-`kappa_1^Kato{}_1 = c_Q^Kato mod 2`.
+`MISSING_P2_COLMEZ_WANG_SQUARE_ROOT_COVER_CHAPTER15_GLOBALIZATION_COMPATIBILITY`.
 
-Hence `c_Q^Kato mod 2 != 0` would itself be a legitimate finite residual witness under protected R5-PRIM finite detection and would bypass the normalized Kurihara/local-regulator coordinate.
+Finite flatness alone does not authorize the Colmez-Wang deformation, density,
+Poitou-Tate, specialization, family-Kato or denominator-removal steps.
 
-The protected MATHFORGE source audit does not currently supply a literal-`2` theorem or exact computation proving that indivisibility statement on the selected rank-one anomalous ordinary lane.
-
-Candidate disposition:
-
-`BLOCKED`
-
-on
-
-`MISSING_P2_BASE_KATO_CLASS_MOD2_NONVANISHING_ON_SELECTED_RANK_ONE_LANE`.
-
-R5-LIFT and R5-RECIP remain protected. R5-RES and R5-PRIM remain unestablished. Do not promote D2d, `BSD-R2-A1`, novelty/priority, public certification, or MATHCERT certification.
-
-Before review, run the R5-WIT preflight and exact certificates named by the operation contract. Governed-artifact changes after freeze invalidate the freeze and exact-head logical reviews.
+Historical R5-RES #273 remains closed. No residual nonvanishing witness has
+been produced. R5-RES, R5-PRIM, D2d, BSD-R2-A1 and MATHCERT certification
+remain unestablished.

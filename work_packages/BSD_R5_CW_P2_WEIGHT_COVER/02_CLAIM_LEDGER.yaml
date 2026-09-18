@@ -1,0 +1,48 @@
+schema_version: 0.1.0
+record_type: GCL_CLAIM_LEDGER
+campaign: BSD-001
+operation: BSD-R5-CW-P2-WEIGHT
+issue: grandchallenge/MATHSOLVE#329
+candidate_disposition: CLOSED
+protected_base: aca548821935600c36a03b70aca76a4a7f31e03b
+provider_anchor: 716979bcae4e67a82c52f15c99b20da555fcdfca
+
+entering_frontier: MISSING_P2_COLMEZ_WANG_UNIVERSAL_HALF_WEIGHT_CHARACTER
+
+proved:
+  - id: BSD-R5-CW-P2-UNIT-SPLIT-001
+    statement: Z_2^* decomposes uniquely as {+1,-1} x (1+4Z_2), and 5 topologically generates Gamma=1+4Z_2.
+  - id: BSD-R5-CW-P2-SQUARE-IMAGE-002
+    statement: Squaring is a topological isomorphism Gamma -> 1+8Z_2 and is not an automorphism of Gamma.
+  - id: BSD-R5-CW-P2-COVER-003
+    statement: Lambda_half=Z_2[[T]][Y]/(Y^2-(1+T)) is finite free rank two, complete local, isomorphic to Z_2[[S]] via Y=1+S and T=2S+S^2, and non-etale at the residual point.
+  - id: BSD-R5-CW-P2-HALF-CHAR-004
+    statement: The character kappa_half(5^a)=Y^a is continuous over Lambda_half and squares to the base-changed universal weight character.
+  - id: BSD-R5-CW-P2-HALF-WEIGHT-005
+    statement: Lambda_half represents local square roots of the universal principal weight character.
+
+open:
+  - id: MISSING_P2_COLMEZ_WANG_SQUARE_ROOT_COVER_CHAPTER15_GLOBALIZATION_COMPATIBILITY
+    statement: Replay the Colmez-Wang Chapter-15 deformation, Poitou-Tate, density, specialization and family-Kato globalization steps after the ramified finite-flat square-root weight base change, or prove an equivalent full-T globalization.
+  - id: MISSING_P2_COLMEZ_WANG_DENOMINATOR_REMOVAL_WITH_NONPROCYCLIC_UNITS
+    statement: Replace the later Theorem-17.10 procyclic-unit denominator-removal step at literal p=2.
+  - id: MISSING_P2_BASE_KATO_CLASS_MOD2_NONVANISHING_ON_SELECTED_RANK_ONE_LANE
+    statement: Prove a legitimate residual Kato witness after the integral comparison bridge is available.
+
+claim_firewall:
+  formal_higher_level_hypothesis_3_2_iii: false
+  full_bss_hypothesis_4_7: false
+  bss_hypothesis_4_7_iii: false
+  infinite_bss_h3: false
+  r5_lift: true
+  r5_prim: false
+  r5_res: false
+  d2d: false
+  bsd_r2_a1: false
+  mathcert_certification: false
+
+prohibited_inferences:
+  - Existence of Lambda_half proves that every Colmez-Wang Chapter-15 construction commutes with the cover.
+  - Finite flatness of the weight cover proves the literal-p=2 family Kato comparison.
+  - The half-character theorem supplies a nonzero residual Kato or Kolyvagin witness.
+  - Closure of this bounded operation satisfies the reopening condition of historical R5-RES issue 273.
