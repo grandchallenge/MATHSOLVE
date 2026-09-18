@@ -1676,6 +1676,69 @@ structure, or charged independently.
 This tranche does not yet prove that larger direction drift pays a selector
 charge.
 
+
+### L5-34 uniform transverse drift as principal moving-frame dynamics
+
+`work_packages/NS_CI_R014_A2_L5_34_C2_UNIFORM_DRIFT_PRINCIPAL.md`
+records
+
+```text
+UNIFORM_TRANSVERSE_DRIFT_EXACTLY_PRINCIPALIZED
+__COMOVING_ACCUMULATED_PHASE_IS_THE_INVARIANT.
+```
+
+For the principal critical equation
+
+```math
+Phi_s
++
+h^{-1}theta_h(s) partial_Y Phi
++
+i h^{-1}G_h(s,Y)Phi
+=
+h^2(partial_Y^2-1)Phi+r_h,
+```
+
+define
+
+```math
+q_h(s)=h^{-1}int_0^s theta_h(sigma) dsigma,
+\qquad
+Psi_h(s,y)=Phi_h(s,y+q_h(s)).
+```
+
+The uniform derivative drift cancels exactly.  Translation preserves Fourier
+magnitudes and all critical norms, and the equation reduces exactly to L5-32
+with the co-moving profile
+
+```math
+Ghat_h(s,y)=G_h(s,y+q_h(s)).
+```
+
+Thus the invariant is the co-moving accumulated phase
+
+```math
+Fhat_h(s,y)
+=
+int_0^s G_h(sigma,y+q_h(sigma)) dsigma.
+```
+
+Two exact calibrations separate the possibilities.
+
+- If the profile co-moves,
+  `G_h(s,Y)=G_0(Y-q_h(s))`, then
+  `Fhat_h=sG_0` and the full protected critical mixing/charge mechanism
+  survives independently of the drift size.
+- If `G_h=cos Y` is lab-fixed and `theta_h=theta_0!=0`, then
+  `Fhat_h=(h/theta_0)[sin(y+theta_0s/h)-sin y]`, so
+  `Fhat_h=O(h)` in every fixed spatial smooth norm.  The scaled second
+  Fourier moment is `O(h^2)`, and mass in every fixed
+  `c_-<=|hn|<=c_+` critical band tends to zero.
+
+Therefore uniform drift magnitude alone is not a selector-charge criterion.
+It is a principal/Galilean translation mode.  The next genuine geometric
+obstruction is spatially nonuniform direction deformation.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1690,23 +1753,28 @@ charge.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-PRINCIPAL**.
+The live obligation is now **C2-MIX-DIRECTION-DEFORMATION**.
 
-L5-33 quantifies the residual corridor: after critical mixing, a
-nondegenerately coupled transverse direction defect can remain in NF4 only at
-`O(h^3)=O(rho^-1)` in critical-time L2, or at the same pointwise scale when
-persistent.
+Uniform transverse drift is gauge-like after principal promotion and cannot be
+counted as an automatic charge.
 
-The next question is what happens above that corridor.
+The next calculation must address spatially nonuniform transport
 
-Two routes are admissible:
+```math
+h^{-1}V(Y)partial_Y Phi,
+```
 
-1. incorporate direction motion into a moving-frame/multidimensional principal
-   operator and test whether critical Fourier variance survives;
-2. prove that persistent nonresidual direction drift itself pays a
-   selector/dissipation charge.
+where a single translation no longer removes the derivative.
 
-Do not silently classify larger direction motion as residual.
+Pull back by the characteristic flow and compute exactly:
+
+1. the deformation gradient;
+2. the transformed diffusion coefficient;
+3. the induced first-order terms;
+4. whether deformation creates critical frequency/dissipation or merely a
+   coordinate change.
+
+Do not infer a charge from drift magnitude alone.
 
 ## Authoritative pointers
 
@@ -1747,6 +1815,7 @@ Do not silently classify larger direction motion as residual.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_31_C2_GENERAL_SHEAR_PROFILE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_32_C2_ACCUMULATED_PHASE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_33_C2_DIRECTION_DEFECT.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_34_C2_UNIFORM_DRIFT_PRINCIPAL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`

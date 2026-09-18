@@ -21,6 +21,7 @@ from tests.test_ns_ci_a2_l5_c2_secondary_shear_charge import NSCIA2L5C2Secondary
 from tests.test_ns_ci_a2_l5_c2_general_shear_profile import NSCIA2L5C2GeneralShearProfileTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_accumulated_phase import NSCIA2L5C2AccumulatedPhaseTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_direction_defect import NSCIA2L5C2DirectionDefectTests  # noqa: F401
+from tests.test_ns_ci_a2_l5_c2_uniform_drift_principal import NSCIA2L5C2UniformDriftPrincipalTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c3_diagonal_audit import NSCIA2L5C3DiagonalAuditTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_field_calibration import NSCIA2L5FieldCalibrationTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_forced_core_shell_calibration import NSCIA2L5ForcedCoreShellCalibrationTests  # noqa: F401
