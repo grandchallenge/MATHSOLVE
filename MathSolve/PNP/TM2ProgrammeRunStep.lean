@@ -60,6 +60,7 @@ theorem tm2ProgrammeTransition_run {decision : List Bool → Bool}
   simp only [tm2ProgrammeTransition]
   rw [dif_neg (tm2ControlRun_ne_copy source code state),
     dif_neg (tm2ControlRun_ne_rewind source code state)]
+  simp only [tm2ControlRun]
 
 /-- The action selected by the concrete Programme machine at a represented run
 configuration is exactly the source-statement action. -/
