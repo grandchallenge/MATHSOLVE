@@ -1,0 +1,35 @@
+{
+  "receipt_id": "HC-R021-P4-CONTINUITY-2026-09-17",
+  "repository": "grandchallenge/MATHSOLVE",
+  "branch": "campaign/hc-r021-d20-nonempty-work",
+  "parent_head": "7304ee5601abac4a193754808d56508bc27cb9cb",
+  "campaign": "HC-001",
+  "target": "HC-R021-A8-CM4-C2",
+  "policy_target": "GCL-AGENT-CONTINUITY-001@1.0.0",
+  "policy_integration_status": "pending_protected_integration_at_receipt_creation",
+  "last_durable_result": {
+    "lemma": "HC-R021-L054",
+    "file": "work_packages/HC_R021_P4_FIRST_POSTNIKOV_BOUNDARY_VANISHING.md",
+    "state": "M_CHANNEL_SURVIVES_FIRST_POSTNIKOV_BOUNDARY__NEXT_K_INVARIANT_OPEN",
+    "result": "delta_0=0; every class in ker(mu_M)=H^0(C,M) survives the first Postnikov boundary"
+  },
+  "next_smallest_obligation": {
+    "name": "POSTNIKOV_K_INVARIANT_RESIDUE_SURVIVAL",
+    "statement": "Determine whether ker(mu_M) intersects ker(psi) nontrivially, where psi:H^0(C,M)->V_next and V_next=coker(Ext^2(B,O(-D))->Ext^2(B,E)).",
+    "decision": "A nonzero intersection preserves the second global residue channel; zero intersection closes this co-supported escape."
+  },
+  "open_claims": [
+    "mu_M rank",
+    "psi rank on ker(mu_M)",
+    "global Ext1 residue rank",
+    "co-supported global extension",
+    "second-factor obstruction rank 20",
+    "all-orders transport",
+    "HC-R021-P4",
+    "restricted HC-R021 target"
+  ],
+  "certification": "none; solve-package results are not MATHCERT dispositions",
+  "protected_integration_authorized": false,
+  "terminal_boundary": null,
+  "recovery_instruction": "Re-fetch this branch and governing instructions, reject stale chat state, then continue from the exact live descendant of this receipt. Timeout/connector/context failures are recoverable and are not stop conditions."
+}\n
