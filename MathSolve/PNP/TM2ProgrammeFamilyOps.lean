@@ -48,7 +48,7 @@ theorem TM2StacksRepresented.afterPopAction {decision : List Bool → Bool}
           (cfg.workHead (tm2TapeEquiv source k))
           value values hk using 1 <;>
           simp [ProgrammeConfig.afterAction, tm2PopAction,
-            tm2MoveSelected, tm2WriteSelected, HeadMove.apply]
+            tm2MoveSelected, tm2WriteSelected, HeadMove.apply] <;> rfl
   · have htape :
         tm2TapeEquiv source j ≠ tm2TapeEquiv source k := by
       intro h
