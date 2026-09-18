@@ -1,0 +1,40 @@
+schema_version: "1.0.0"
+campaign_id: "YM-001"
+work_package: "YM-D001-REGULATED-APPLICATION-AUDIT"
+protected_baselines:
+  math_programme: "1f4ba5fabab01c084aefab201c5a4aa594d257fc"
+  mathsolve: "ebbb049295c39281cc30a2b8e2a1d01f7fb66005"
+  mathforge: "267670385485b88be0556f6993dc171127139ae1"
+admitted_predecessors:
+  YM-D001-R001: "5b137761c217f96e4cf9afaf270b897025b44480"
+claims:
+  - claim_id: "YM-D001-R002"
+    status: "SELECTED_RESTRICTED_TARGET_CURRENT_EVIDENCE_SUFFICIENCY_FALSIFIED_IN_PACKAGE_NOT_CERTIFIED"
+    statement: "The currently admitted YM-T-010 and YM-T-030 conclusions do not instantiate the regulated operator family, physical scaling, state-space comparison, common physical spectral exclusion, and convergence data required to apply YM-D001-R001."
+  - claim_id: "YM-D001-O001"
+    status: "EXACT_SOURCE_INTERFACE_OBSTRUCTION_ESTABLISHED_NOT_CERTIFIED"
+    statement: "The first missing typed object is a cutoff-indexed physically normalized self-adjoint Hamiltonian/generator family with explicit cross-regulator state-space comparison."
+  - claim_id: "YM-D001-O002"
+    status: "EXACT_SEMANTIC_NONCOMPOSITION_ESTABLISHED_NOT_CERTIFIED"
+    statement: "YM-T-030 proves exponential covariance decay in lattice graph distance for cylinder observables; current evidence does not identify that decay exponent with a full transfer-generator spectral exclusion suitable for R001."
+  - claim_id: "YM-D001-O003"
+    status: "MISSING_TRAJECTORY_THEOREM_ESTABLISHED_NOT_IMPOSSIBILITY"
+    statement: "No admitted source theorem supplies a cutoff trajectory and scale setting that both remains within YM-T-030's explicit strong-coupling hypotheses and reaches the protected asymptotically-free continuum target."
+  - claim_id: "YM-D001"
+    status: "OPEN_RESEARCH_DEBT_REDUCED_NOT_DISCHARGED"
+    statement: "D001 still requires an actual continuum-indexed physical generator family, state-space comparison, one cutoff/volume-uniform physical spectral lower bound, and convergence to the same limiting Hamiltonian."
+  - claim_id: "YM-001"
+    status: "OPEN_PROBLEM_NO_TERMINAL_CLAIM"
+    statement: "Four-dimensional Yang-Mills existence and mass gap remain unproved by this package."
+source_scope:
+  imported_new_theorem: false
+  note: "The package audits already admitted YM-T-010/YM-T-030 and checks the primary theorem statement of YM-SRC-010 at its admitted locator. It promotes no external theorem beyond the protected source scope."
+next_boundary:
+  target: "YM-D001-R003"
+  statement: "Locate or construct the missing cutoff-indexed regulator-to-generator interface with physical scale setting and cross-regulator state-space comparison; if unavailable, bind the obstruction to the appropriate D002 reconstruction or D003 continuum-construction dependency."
+forbidden_promotions:
+  - "Do not identify spatial covariance decay with the bottom of the full physical Hamiltonian spectrum without a converse spectral/completeness theorem."
+  - "Do not infer a physical gap by inserting a lattice spacing into the source covariance exponent by dimensional analysis."
+  - "Do not treat an infinite-volume limit at fixed regulator as the ultraviolet continuum limit."
+  - "Do not assert that the strong-coupling region can or cannot reach the continuum target without a proved cutoff trajectory and scale-setting theorem."
+  - "Do not infer continuum existence, confinement, novelty, priority, Clay-problem resolution, or MATHCERT certification."
