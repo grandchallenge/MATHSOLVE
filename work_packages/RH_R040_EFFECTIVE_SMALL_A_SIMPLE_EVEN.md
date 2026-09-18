@@ -25,7 +25,7 @@ localized Weil quadratic form on \(L^2(-a,a)\).
 For every
 
 \[
-0<a\le \frac1{100},
+0<a\le \frac1{50},
 \]
 
 the lowest eigenvalue of \(A_a\):
@@ -499,7 +499,7 @@ The parity gap satisfies
 For
 
 \[
-0<a\le\frac1{100},
+0<a\le\frac1{50},
 \]
 
 use the elementary inequalities
@@ -602,7 +602,7 @@ Combining Sections 7 and 8:
 
 \[
 \boxed{
-0<a\le\frac1{100}
+0<a\le\frac1{50}
 \Longrightarrow
 \begin{cases}
 \lambda_a>0,\\
@@ -627,7 +627,7 @@ The proof depends on the following exact points.
 
 1. The prime sum must be absent.
    This holds because
-   \(2a\le1/50<\log2\).
+   \(2a\le1/25<\log2\).
 
 2. The constant must belong to the closed limiting form domain.
    This follows because the fixed-\(a\) closed forms differ from
