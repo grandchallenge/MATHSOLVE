@@ -1285,6 +1285,59 @@ phase locking, zero residual, or an exact passive-scalar reduction.
 The theorem remains conditional: the normal-form hypotheses have not been
 derived from an arbitrary selected whole-space upper-band overshoot.
 
+
+### L5-28 semiclassical residual weakening and NF4 depletion scale
+
+`work_packages/NS_CI_R014_A2_L5_28_C2_MIX_SEMICLASSICAL_RESIDUAL.md`
+records
+
+```text
+SEMICLASSICAL_BRIDGE_RESIDUAL_WEAKENING_PROVED
+__ABSOLUTE_NF4_DERIVATION_REQUIRES_R_TWO_THIRDS_DEPLETION.
+```
+
+The ordinary demodulated `H^k` residual in L5-27 is stronger than the
+critical moment argument intrinsically needs.  Introduce
+
+```math
+||f||_{H_h^2}^2
+=
+sum_{j=0}^2||(h partial_Y)^j f||_2^2.
+```
+
+Using the covariant operator
+
+```math
+C_h=h partial_Y-i p_h g',
+\qquad
+L_h=C_h^2-h^2,
+```
+
+the L5-27 stability argument closes with `O(h)` initialization and residual
+only in the semiclassical `H_h^2` norm.  The scaled second and fourth Fourier
+moments still converge, so the conditional critical `c_*/nu` selector charge
+is unchanged.
+
+This eliminates rapid demodulation frequency as the material bridge
+obstruction.
+
+Under active-scale normalization the turnover equation has an order-one
+quadratic nonlinearity.  Critical time `s=h tau` makes a generic
+nonprincipal same-band interaction order `h^{-1}`, while NF4-sc requires an
+`O(h)` residual.  Thus the actual required relative depletion is
+
+```math
+h^2=R^{-2/3}.
+```
+
+Protected L5-16 proves that incompressibility, Leray projection, fixed-width
+same-band localization, and amplitude information alone permit the full
+physical forcing scale `A^2N`.  Hence those absolute algebraic ingredients
+cannot supply the required `R^{-2/3}` factor.
+
+The residual derivation problem is therefore now a genuine dynamic/geometric
+depletion problem, not a Sobolev bookkeeping problem.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1299,25 +1352,27 @@ derived from an arbitrary selected whole-space upper-band overshoot.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DERIVE**.
+The live obligation is now **C2-MIX-DEPLETION**.
 
-Audit the five normal-form hypotheses of L5-27 against the selected whole-space
-upper-band Navier--Stokes equation.  Do not assume the bridge contract.
+The target is exact:
 
-Test in this order:
+> Can selected whole-space NSE dynamics force the nonprincipal active-packet
+> interaction to be smaller than the generic same-band quadratic scale by
+> `R^{-2/3}` on the critical interval?
 
-1. **NF4 residual first.** Decompose pressure, localization, neighboring-band,
-   and genuinely 3D interaction errors after critical demodulation. Determine
-   whether A2/Leray structure can give the required `O(h)` critical residual.
-2. If NF4 survives, test whether a nondegenerate transverse deformation
-   direction (NF1) can be extracted without adding a geometric hypothesis.
-3. Then test NF2/NF3 normalization and initialization.
-4. Finally bind a concrete packet decomposition to NF5 reconstruction.
+Do not revisit ordinary demodulated Sobolev growth; L5-28 removes that artifact.
 
-A valid positive result must derive or weaken the hypotheses from selected
-equation structure. A negative result should identify the first exact
-obstruction and narrow the bridge rather than treating the conditional theorem
-as A2 closure.
+The first bounded calculation should retain the protected L5-16 projected
+same-band symbol and test additional geometric structure one item at a time:
+
+1. polarization/alignment depletion;
+2. strain-eigenvector or transverse-deformation structure;
+3. pressure/Leray cancellation after packet projection;
+4. time-correlated signed depletion.
+
+A successful result must produce the actual `R^{-2/3}` factor (or an
+equivalent critical `O(h)` residual). If a proposed geometry still admits
+order-one turnover-normalized residual, record that exact obstruction.
 
 ## Authoritative pointers
 
@@ -1352,6 +1407,7 @@ as A2 closure.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_25_C2_MIX_SUBCRITICAL_LOWER.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_26_C2_MIX_CRITICAL_SEMICLASSICAL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_27_C2_MIX_BRIDGE_NORMAL_FORM.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_28_C2_MIX_SEMICLASSICAL_RESIDUAL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
