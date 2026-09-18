@@ -145,6 +145,7 @@ jobs:
           lake env lean MathSolve/PNP/TM2ProgrammeCompiler.lean
           lake env lean MathSolve/PNP/TM2ProgrammeInvariant.lean
           lake env lean MathSolve/PNP/TM2CfgInvariant.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeLocal.lean
           lake env lean MathSolve/PNP/ProgrammeMachine.lean
           lake env lean MathSolve/PNP/ProgrammeStep.lean
           lake env lean MathSolve/PNP/ModelBridge.lean
