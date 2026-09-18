@@ -32,7 +32,15 @@ jobs:
           out="$(gp -q work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/05_KURIHARA_PARI_PROBE.gp 2>&1)"
           printf '%s\n' "$out"
           if printf '%s\n' "$out" | grep -Fq '***'; then
-            echo "PARI/GP reported an exception" >&2
+            echo "PARI/GP reported an exception in control scan" >&2
             exit 1
           fi
           printf '%s\n' "$out" | grep -q 'R5_WIT_PROBE_COMPLETE'
+
+          out2="$(gp -q work_packages/BSD_R5_WIT_NORMALIZED_KURIHARA_WITNESS/06_COHORT_DISCOVERY.gp 2>&1)"
+          printf '%s\n' "$out2"
+          if printf '%s\n' "$out2" | grep -Fq '***'; then
+            echo "PARI/GP reported an exception in cohort discovery" >&2
+            exit 1
+          fi
+          printf '%s\n' "$out2" | grep -q 'R5_WIT_COHORT_DISCOVERY_COMPLETE'
