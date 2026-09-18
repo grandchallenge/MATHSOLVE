@@ -1,0 +1,144 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "campaign": "BSD-001",
+  "operation": "BSD-R5-WIT",
+  "candidate_head": "edc7e016820d2d22ea602dee80f06d97928e09bc",
+  "merge_sha": "d8d3beef20c2beaf15b51af943e69dab6e1f643a",
+  "protected_readback_sha": "d8d3beef20c2beaf15b51af943e69dab6e1f643a",
+  "provider_anchor": "3a097cf5f1ad5e12eeba83a08dccfbf7bc49b5f4",
+  "enforcement_standard": {
+    "identifier": "GCL-CEX-01",
+    "repository": "grandchallenge/gcl-standards",
+    "commit": "efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
+    "programme_adoption_anchor": "grandchallenge/MATH-PROGRAMME@af6e1772e2d82b0b198d11c08e1369789ffbba3a"
+  },
+  "staffing_authority": {
+    "repository": "grandchallenge/INTELLECT",
+    "directive": "GI-STEWARD-0003",
+    "separation_model": "role_scoped_logical_passes",
+    "protected_anchor": "7662e9b5eeecb065e75173176d535d57a5a42dee"
+  },
+  "adversary_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/319#pullrequestreview-5245355818",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "BSD-R5-WIT-ADV-edc7e016-001",
+    "role": "Adversary",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "edc7e016820d2d22ea602dee80f06d97928e09bc",
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "human_authorized": false,
+      "mathcert_certified": false,
+      "claim_promotion": false
+    }
+  },
+  "referee_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/319#pullrequestreview-5245356041",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "BSD-R5-WIT-REF-edc7e016-002",
+    "role": "Referee",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "edc7e016820d2d22ea602dee80f06d97928e09bc",
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "human_authorized": false,
+      "mathcert_certified": false,
+      "claim_promotion": false
+    }
+  },
+  "required_checks": [
+    {
+      "phase": "candidate",
+      "name": "BSD R5-WIT certificate",
+      "run": 35319829122,
+      "result": "success",
+      "head": "edc7e016820d2d22ea602dee80f06d97928e09bc"
+    },
+    {
+      "phase": "candidate",
+      "name": "ledgers",
+      "check_run": 105519625026,
+      "result": "success",
+      "head": "edc7e016820d2d22ea602dee80f06d97928e09bc"
+    },
+    {
+      "phase": "candidate",
+      "name": "policy / policy",
+      "check_run": 105519627637,
+      "result": "success",
+      "head": "edc7e016820d2d22ea602dee80f06d97928e09bc"
+    },
+    {
+      "phase": "candidate",
+      "name": "security / action-policy",
+      "check_run": 105519627731,
+      "result": "success",
+      "head": "edc7e016820d2d22ea602dee80f06d97928e09bc"
+    },
+    {
+      "phase": "candidate",
+      "name": "routing-enforcement",
+      "check_run": 105519626862,
+      "result": "success",
+      "head": "edc7e016820d2d22ea602dee80f06d97928e09bc"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "BSD R5-WIT certificate",
+      "run": 35320008641,
+      "result": "success",
+      "head": "d8d3beef20c2beaf15b51af943e69dab6e1f643a"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "GCL conformance",
+      "run": 35320009338,
+      "result": "success",
+      "head": "d8d3beef20c2beaf15b51af943e69dab6e1f643a"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "Solve checks",
+      "run": 35320008675,
+      "result": "success",
+      "head": "d8d3beef20c2beaf15b51af943e69dab6e1f643a"
+    }
+  ],
+  "disposition": {
+    "type": "BLOCKED",
+    "frontier": "MISSING_P2_NORMALIZED_FINITE_KURIHARA_NONVANISHING_WITNESS",
+    "proved_reduction": [
+      "BSD-R5-WIT-CONTROL-T2-001",
+      "BSD-R5-WIT-79A1-T2-002",
+      "BSD-R5-WIT-COHORT-T2-003",
+      "BSD-R5-WIT-KURIHARA-STRATIFY-004",
+      "BSD-R5-WIT-BOUNDED-SCAN-005",
+      "BSD-R5-WIT-DIRECT-DETECTOR-006",
+      "BSD-R5-WIT-SOURCE-BOUNDARY-007"
+    ],
+    "blocked_on": "MISSING_P2_BASE_KATO_CLASS_MOD2_NONVANISHING_ON_SELECTED_RANK_ONE_LANE",
+    "next_frontier": "MISSING_P2_BASE_KATO_CLASS_MOD2_NONVANISHING_ON_SELECTED_RANK_ONE_LANE"
+  },
+  "preserved_false": [
+    "formal_higher_level_hypothesis_3_2_iii",
+    "full_bss_hypothesis_4_7",
+    "bss_hypothesis_4_7_iii",
+    "infinite_bss_h3",
+    "r5_prim",
+    "r5_res",
+    "d2d",
+    "bsd_r2_a1",
+    "mathcert_certification"
+  ],
+  "notes": [
+    "BLOCKED applies only to BSD-R5-WIT.",
+    "The normalized Kurihara detector is structurally unavailable on certified t_2>=2 instances and no bounded scan is promoted to a nonexistence theorem on t_2=1 instances.",
+    "The protected direct successor boundary is bottom Kato-class mod-2 nonvanishing.",
+    "R5-RES, R5-PRIM, D2d, BSD-R2-A1 and MATHCERT certification remain unestablished."
+  ]
+}
