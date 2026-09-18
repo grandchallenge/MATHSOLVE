@@ -117,7 +117,7 @@ The protected Programme D003 supplement materially changes the continuum-constru
 - Balaban `YM-T-210` supplies four-dimensional large-field control and ultraviolet stability in the lattice RG route;
 - MRS `YM-T-220` supplies a qualified source-stated UV-cutoff-free Schwinger construction at fixed infrared cutoff for pure `SU(2)`, trivial topological sector.
 
-The current `YM-D003-R001` candidate proves that these are **parallel** construction interfaces. The protected records provide no theorem identifying their regulated fields, effective actions, observables, regulator trajectories, or limiting objects. Therefore neither route may silently borrow theorem content from the other.
+The admitted `YM-D003-R001` theorem proves that these are **parallel** construction interfaces. The protected records provide no theorem identifying their regulated fields, effective actions, observables, regulator trajectories, or limiting objects. Therefore neither route may silently borrow theorem content from the other.
 
 ### Admitted route-separated residual
 
