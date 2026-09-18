@@ -978,6 +978,92 @@ decoherence itself.  Any remaining cost must arise from amplitude decay,
 enhanced dissipation, rebuilding amplitudes after zero crossings, memory in
 generated modes, or genuinely three-dimensional interactions.
 
+
+### L5-24 shear-chain mixing-diffusion moment ceiling
+
+`work_packages/NS_CI_R014_A2_L5_24_C2_MIX_MOMENT_CEILING.md`
+records
+
+```text
+SHEAR_CHAIN_R_ONE_THIRD_MOMENT_CEILING_PROVED
+__SUBCUBIC_TURNOVER_SELECTOR_CHARGE_VANISHES.
+```
+
+The exact L5-23 shear chain admits an all-time finite-viscosity moment barrier.
+After factoring the fixed `X\)-frequency-one mode, its scalar equation is
+
+```math
+partial_tau phi_epsilon
++
+i e^{-epsilon tau} cos(Y) phi_epsilon
+=
+epsilon (partial_Y^2-1) phi_epsilon.
+```
+
+For every fixed integer `s>=0`,
+
+```math
+sup_{tau>=0}
+||partial_Y^s phi_epsilon||_2
+<=
+C_s epsilon^{-s/3}.
+```
+
+The proof uses the exact differentiated energy identity, the commutator with
+`cos Y`, Fourier interpolation
+`X_{s+1}>=X_s^(1+1/s)`, and an inductive barrier. The cubic-root exponent is
+the balance between one derivative of shear production and two derivatives of
+viscous damping.
+
+The one-chain Fourier support intersects a dyadic annulus of normalized radius
+`L=lambda_p/N` in only `O(L)` modes. Consequently
+
+```math
+lambda_p^{-1}||u_p||_infinity
+<=
+C_s nu
+epsilon^{-(1+s/3)}
+L^{-(s+1/2)}.
+```
+
+Every threshold-violating shell therefore satisfies
+
+```math
+lambda_p/N
+<=
+C_s R^{alpha_s},
+\qquad
+alpha_s
+=
+1/3+5/(6s+3).
+```
+
+At `s=5`, `alpha_5=16/33<1/2`. More generally, for every fixed
+`delta>0`,
+
+```math
+Lambda(t)
+<=
+C_delta N R^{1/3+delta}
+```
+
+for all time in this calibration.
+
+On a normalized turnover window `0<=tau<=T_R`,
+
+```math
+integral Lambda^2 dt
+<=
+C_delta nu^{-1}
+T_R R^{-1/3+2delta}.
+```
+
+Thus every subcubic window `T_R<=R^{1/3-eta}` has vanishing selector charge
+for fixed `eta>0` after choosing `delta<eta/2`.
+
+This is an upper-reach theorem only. It does not prove threshold-sized
+amplitude near the cubic-root front.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -992,27 +1078,26 @@ generated modes, or genuinely three-dimensional interactions.
 
 ## Smallest safe next tranche
 
-Do not pursue generic phase-reset or phase-decorrelation cost. L5-23 gives an
-exact viscous NSE Fourier chain whose adjacent transfer phases remain maximally
-locked for all time.
+L5-24 closes the **upper-reach** side of C2-MIX in the exact shear calibration.
+Do not identify the cubic-root moment ceiling with actual threshold-sized
+propagation.
 
-The first live obligation is now **C2-MIX**.
+The first live obligation is now **C2-MIX-LOWER**:
 
-The next question is quantitative amplitude transport versus damping:
+> On a turnover window of order `R^{1/3}`, can one prove a finite-viscosity
+> lower bound for amplitudes at chain index of order `R^{1/3}`, or instead
+> prove that viscous/enhanced dissipation suppresses them before the campaign
+> threshold is reached?
 
-> In the exact phase-locked shear cascade, how far can threshold-sized
-> amplitude propagate before viscosity dominates, and what selector/A2 charge
-> does that propagation force?
+A valid successor must control finite-`epsilon` amplitudes on a growing
+window. The inviscid Bessel chain is reference data only until a uniform
+growing-window remainder theorem is proved.
 
-This is a growing-turnover-window problem.  The inviscid Bessel cascade may be
-used only as a reference.  A valid result must control finite-\`epsilon\`
-amplitudes on the scale where chain transport and the viscous
-\`epsilon n^2\` damping balance.
+Useful bounded routes include Duhamel comparison with explicit remainder,
+Feynman--Kac for the one-dimensional complex potential, a cosine-shear
+hypocoercive estimate, or a weighted-chain front estimate.
 
-A positive calibration result should identify the actual balance scale and its
-selector charge.  A negative result should state the first exact estimate that
-fails.  Do not replace finite-viscosity amplitudes by inviscid Bessel values
-without a uniform remainder theorem.
+Do not reopen phase decoherence: L5-23 already shows exact phase locking.
 
 ## Authoritative pointers
 
@@ -1043,6 +1128,7 @@ without a uniform remainder theorem.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_21_C2_CUMULATIVE_FLUX_OBSTRUCTION.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_22_C2_TRIAD_COHERENCE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_23_C2_SHEAR_PHASE_LOCK.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_24_C2_MIX_MOMENT_CEILING.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
