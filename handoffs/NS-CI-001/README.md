@@ -1879,6 +1879,99 @@ The exact separator `B(Y)=sin Y`, constant positive `theta`, has
 `J_h(s,0)=exp(theta s/h)`, showing that order-one nonuniform direction strain
 can create exponential critical-time frame distortion.
 
+
+### L5-36 separable direction strain and signed flow time
+
+`work_packages/NS_CI_R014_A2_L5_36_C2_DIRECTION_SIGNED_FLOW_TIME.md`
+records
+
+```text
+SEPARABLE_DIRECTION_STRAIN_REDUCES_TO_SIGNED_FLOW_TIME
+__ABSOLUTE_H_SCALE_NOT_NECESSARY.
+```
+
+For separable principal direction fields
+
+```math
+h^-1 theta_h(s) B(Y) partial_Y,
+```
+
+the full characteristic geometry factors through one signed flow clock
+
+```math
+kappa_h(s)
+=
+h^-1 int_0^s theta_h(sigma) dsigma.
+```
+
+If `varphi_kappa` is the autonomous flow of `B`, then exactly
+
+```math
+chi_h(s,Z)
+=
+varphi_{kappa_h(s)}(Z).
+```
+
+Thus bounded signed flow time gives bounded finite-order characteristic
+geometry, and `kappa_h=kappa_0+O(h)` gives the O(h) metric convergence
+required by L5-35.  Smooth Eulerian phase convergence then gives the same O(h)
+Lagrangian accumulated-phase convergence.
+
+This sharply improves the absolute L5-35 sufficient budget.
+
+For
+
+```math
+theta_h(s)=sin(s/h^2),
+```
+
+one has
+
+```math
+kappa_h(s)
+=
+h[1-cos(s/h^2)]
+=
+O(h),
+```
+
+while
+
+```math
+h^-1 int_0^S |theta_h(s)| ds
+asymp
+h^-1
+->
+infinity.
+```
+
+Hence order-one rapidly oscillating direction strain can produce an
+O(h)-near-identity frame and remain compatible with the protected critical
+charge theorem for a fixed nondegenerate scalar phase.
+
+For `B(Y)=sin Y`, the autonomous flow is explicit:
+
+```math
+tan(varphi_kappa(Z)/2)
+=
+e^kappa tan(Z/2),
+```
+
+with fixed-point Jacobians
+
+```math
+partial_Z varphi_kappa(0)=e^kappa,
+\qquad
+partial_Z varphi_kappa(pi)=e^-kappa.
+```
+
+Thus signed flow time directly controls exponential deformation in this
+separator.
+
+The unresolved geometry is genuinely time-dependent
+`B_h=B_h(s,Y)`, where different spatial vector fields need not commute and
+no single scalar signed clock captures the time-ordered flow.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1893,24 +1986,24 @@ can create exponential critical-time frame distortion.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-STRAIN**.
+The live obligation is now **C2-MIX-DIRECTION-PATHORDER**.
 
-Controlled nonuniform direction deformation is conditionally compatible with
-the critical charge theorem. The remaining whole-space question is:
+L5-36 closes the separable signed-strain case.  The next problem is genuinely
+time-dependent spatial direction geometry:
 
-> Can selected active-band Navier--Stokes dynamics force a bounded accumulated
-> characteristic-strain budget, or does failure of that budget itself pay a
-> selector/dissipation cost?
+> For `B_h=B_h(s,Y)`, what path-ordered strain observable replaces the
+> separable signed clock, and which part of it must remain controlled for the
+> L5-35 metric theorem?
 
-The next audit must distinguish:
+The first audit must compare:
 
-1. absolute direction-strain magnitude;
-2. signed or oscillatory accumulated strain along characteristics;
-3. Jacobian condition number and metric derivatives;
-4. deformation-gradient energy.
+1. cancellation in the scalar coefficient `theta_h`;
+2. noncommuting time-dependent vector fields;
+3. the characteristic Jacobian exponent along actual trajectories;
+4. higher characteristic metric derivatives.
 
-The L5-35 `O(h)` persistent strain scale is an absolute sufficient condition,
-not a necessary threshold. Do not promote it to an equation-derived law.
+Any positive invariant must reduce exactly to `kappa_h` when the spatial
+profile is time-independent.
 
 ## Authoritative pointers
 
@@ -1953,6 +2046,7 @@ not a necessary threshold. Do not promote it to an equation-derived law.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_33_C2_DIRECTION_DEFECT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_34_C2_DIRECTION_MOVING_FRAME.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_35_C2_DIRECTION_DEFORMED_FRAME.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_36_C2_DIRECTION_SIGNED_FLOW_TIME.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
