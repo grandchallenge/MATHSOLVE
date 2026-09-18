@@ -193,7 +193,7 @@ give
 C_{s,T},
 ```
 
-uniformly for `0<=varepsilon<=1`.
+uniformly for `0<=\\varepsilon<=1`.
 
 Let
 
