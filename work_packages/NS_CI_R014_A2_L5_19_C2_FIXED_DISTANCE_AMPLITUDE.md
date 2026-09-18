@@ -193,7 +193,7 @@ give
 C_{s,T},
 ```
 
-uniformly for `0<=\\varepsilon<=1`.
+uniformly for `0 <= epsilon <= 1`.
 
 Let
 
@@ -406,7 +406,7 @@ If a shell `p<=q_{init}` met `K_{r_*}`, then
 ```math
 K_{r_*}
 \le
-b_{LP}\lambda_p
+b_{LP}\lambda_{p_*}
 \le
 b_{LP}\lambda_{q_{init}}
 \le
@@ -428,23 +428,23 @@ support.
 
 ## 6. One generated dyadic block becomes threshold violating
 
-At a fixed generated frequency, the partition identity gives
+At the fixed generated frequency, the partition identity gives
 
 ```math
-\sum_p\psi_p(K_{r_*})=1.
+\sum_p\psi_{p_*}(K_{r_*})=1.
 ```
 
-At most `J_{LP}` terms are nonzero, so at least one shell `p=p(\tau)`
-satisfies
+At most `J_{LP}` terms are nonzero, so one fixed shell `p_*`, depending
+only on the partition and the generated frequency, satisfies
 
 ```math
-|\psi_p(K_{r_*})|
+|\psi_{p_*}(K_{r_*})|
 \ge
 \frac1{J_{LP}}.
 ```
 
 For the physical vertical velocity `w=A\theta_{1/R}`, the Fourier
-coefficient of the block `\Delta_p w` at `K_{r_*}` has magnitude at least
+coefficient of the block `\Delta_{p_*} w` at `K_{r_*}` has magnitude at least
 
 ```math
 \frac{A b_{r_*}}{J_{LP}}.
@@ -454,15 +454,15 @@ A Fourier coefficient is bounded above by the `L^\infty` norm of the
 corresponding periodic function. Hence
 
 ```math
-\|u_p(t)\|_\infty
+\|u_{p_*}(t)\|_\infty
 \ge
 \frac{A b_{r_*}}{J_{LP}}.
 ```
 
-Because `p` meets `K_{r_*}`,
+Because `p_*` meets `K_{r_*}`,
 
 ```math
-\lambda_p
+\lambda_{p_*}
 \le
 \frac{K_{r_*}}{a_{LP}}.
 ```
@@ -470,7 +470,7 @@ Because `p` meets `K_{r_*}`,
 Therefore
 
 ```math
-\lambda_p^{-1}\|u_p(t)\|_\infty
+\lambda_{p_*}^{-1}\|u_{p_*}(t)\|_\infty
 \ge
 \frac{
 A a_{LP} b_{r_*}
@@ -493,7 +493,7 @@ gives
 
 ```math
 \boxed{
-\lambda_p^{-1}\|u_p(t)\|_\infty
+\lambda_{p_*}^{-1}\|u_{p_*}(t)\|_\infty
 \ge
 R\nu
 \frac{
@@ -518,11 +518,11 @@ a_{LP}b_{r_*}
 },
 ```
 
-the generated block violates the strict-high threshold:
+the generated block, which is strict-high at the initial time because `p_*>q_{init}>=Q(0)`, becomes threshold violating:
 
 ```math
 \boxed{
-\lambda_p^{-1}\|u_p(t)\|_\infty
+\lambda_{p_*}^{-1}\|u_{p_*}(t)\|_\infty
 \ge
 c_0\nu.
 }
@@ -538,17 +538,17 @@ This proves quantitative threshold leakage in the calibration class.
 
 ## 7. Selector consequence
 
-Because a threshold-violating shell `p` cannot lie strictly above the current
+Because a threshold-violating shell `p_*` cannot lie strictly above the current
 dissipation index,
 
 ```math
-Q(t)\ge p.
+Q(t)\ge p_*.
 ```
 
-Any shell meeting `K_{r_*}` also satisfies
+The fixed shell `p_*` also satisfies
 
 ```math
-\lambda_p
+\lambda_{p_*}
 \ge
 \frac{K_{r_*}}{b_{LP}}.
 ```
