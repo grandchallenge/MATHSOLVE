@@ -52,17 +52,15 @@ theorem tm2ProgrammeStatementCost_pos {K : Type} {Γ : K → Type} {Λ σ : Type
 /-- Finite machine-wide target transition factor: sum the positive structural
 costs of every coded statement occurrence.  The sum is intentionally a coarse
 bound; finiteness and monotonicity matter more than minimizing the constant. -/
-def tm2ProgrammeStepFactor {decision : List Bool → Bool}
-    (source : ImportedTM2Witness decision) : Nat :=
-  ∑ code : TM2StatementCode source.tm,
+def tm2ProgrammeStepFactor (tm : Turing.FinTM2) : Nat :=
+  ∑ code : TM2StatementCode tm,
     tm2ProgrammeStatementCost code.2.1
 
 /-- Every accessible coded statement is bounded by the machine-wide factor. -/
 theorem tm2ProgrammeStatementCost_le_stepFactor
-    {decision : List Bool → Bool}
-    (source : ImportedTM2Witness decision)
-    (code : TM2StatementCode source.tm) :
-    tm2ProgrammeStatementCost code.2.1 ≤ tm2ProgrammeStepFactor source := by
+    (tm : Turing.FinTM2)
+    (code : TM2StatementCode tm) :
+    tm2ProgrammeStatementCost code.2.1 ≤ tm2ProgrammeStepFactor tm := by
   classical
   unfold tm2ProgrammeStepFactor
   exact Finset.single_le_sum (fun _ _ => Nat.zero_le _)
@@ -70,12 +68,11 @@ theorem tm2ProgrammeStatementCost_le_stepFactor
 
 /-- In particular, every label root is bounded by the same fixed factor. -/
 theorem tm2ProgrammeRootCost_le_stepFactor
-    {decision : List Bool → Bool}
-    (source : ImportedTM2Witness decision) (label : source.tm.Λ) :
-    tm2ProgrammeStatementCost (source.tm.m label) ≤ tm2ProgrammeStepFactor source := by
+    (tm : Turing.FinTM2) (label : tm.Λ) :
+    tm2ProgrammeStatementCost (tm.m label) ≤ tm2ProgrammeStepFactor tm := by
   simpa [TM2StatementCode.root] using
-    tm2ProgrammeStatementCost_le_stepFactor source
-      (TM2StatementCode.root source.tm label)
+    tm2ProgrammeStatementCost_le_stepFactor tm
+      (TM2StatementCode.root tm label)
 
 #print axioms tm2ProgrammeStatementCost_pos
 #print axioms tm2ProgrammeStatementCost_le_stepFactor
