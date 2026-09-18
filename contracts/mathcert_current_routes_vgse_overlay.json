@@ -5,7 +5,7 @@
   "base_registry": {
     "path": "contracts/mathcert_current_routes.json",
     "digest_algorithm": "git_blob_sha1",
-    "digest": "c1af2fc7a7c0277464fd9f192a78fd9f8d1dfd74"
+    "digest": "19fb7c957af90d66ee0012eb8bb63930b895a8ea"
   },
   "current_authority": {
     "repository": "grandchallenge/MATHCERT",
