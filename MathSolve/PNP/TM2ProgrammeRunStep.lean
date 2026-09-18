@@ -58,8 +58,8 @@ theorem tm2ProgrammeTransition_run {decision : List Bool → Bool}
       inputSymbol readWork =
       tm2RunAction source code state readWork := by
   simp only [tm2ProgrammeTransition]
-  rw [if_neg (tm2ControlRun_ne_copy source code state),
-    if_neg (tm2ControlRun_ne_rewind source code state)]
+  rw [dif_neg (tm2ControlRun_ne_copy source code state),
+    dif_neg (tm2ControlRun_ne_rewind source code state)]
 
 /-- The action selected by the concrete Programme machine at a represented run
 configuration is exactly the source-statement action. -/
@@ -116,8 +116,8 @@ theorem tm2ProgrammeTransition_pushWrite {decision : List Bool → Bool}
       inputSymbol readWork =
       tm2CompletePushAction source k nextCode state token readWork := by
   simp only [tm2ProgrammeTransition]
-  rw [if_neg (tm2ControlPushWrite_ne_copy source nextCode state token),
-    if_neg (tm2ControlPushWrite_ne_rewind source nextCode state token)]
+  rw [dif_neg (tm2ControlPushWrite_ne_copy source nextCode state token),
+    dif_neg (tm2ControlPushWrite_ne_rewind source nextCode state token)]
   simp [tm2ControlPushWrite, tm2CompletePushAction, htoken]
 
 /-- The concrete Programme machine takes the valid second push transition exactly. -/
