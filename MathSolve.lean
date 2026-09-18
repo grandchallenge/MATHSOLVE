@@ -14,3 +14,4 @@ import MathSolve.PNP.TM2TokenDecode
 import MathSolve.PNP.TM2ProgrammeCompiler
 import MathSolve.PNP.TM2StackOps
 import MathSolve.PNP.TM2StatementCost
+import MathSolve.PNP.TM2ProgrammeInvariant
