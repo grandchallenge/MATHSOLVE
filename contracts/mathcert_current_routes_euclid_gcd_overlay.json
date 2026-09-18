@@ -5,12 +5,12 @@
   "base_registry": {
     "path": "contracts/mathcert_current_routes.json",
     "digest_algorithm": "git_blob_sha1",
-    "digest": "791e56c17a7319303e1b6cdea121f683fe3cedad"
+    "digest": "e47ffe4472f5f58b413ee3e139a35978874125a0"
   },
   "predecessor_overlay": {
     "path": "contracts/mathcert_current_routes_vgse_overlay.json",
     "digest_algorithm": "git_blob_sha1",
-    "digest": "f2dffcc0f70553369b0cb1dc27ddb81093d92eb5"
+    "digest": "a85cf89d964e79daeeb2f8fc1e6a64e3cdfa0dc0"
   },
   "current_authority": {
     "repository": "grandchallenge/MATHCERT",
