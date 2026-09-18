@@ -7,6 +7,7 @@ from tests.test_ns_ci_a2_l5_c2_same_band_mild_obstruction import NSCIA2L5C2SameB
 from tests.test_ns_ci_a2_l5_c2_instantaneous_cross_level import NSCIA2L5C2InstantaneousCrossLevelTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_temporal_leakage import NSCIA2L5C2TemporalLeakageTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_fixed_distance_amplitude import NSCIA2L5C2FixedDistanceAmplitudeTests  # noqa: F401
+from tests.test_ns_ci_a2_l5_c2_distance_sobolev_tail import NSCIA2L5C2DistanceSobolevTailTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c3_diagonal_audit import NSCIA2L5C3DiagonalAuditTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_field_calibration import NSCIA2L5FieldCalibrationTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_forced_core_shell_calibration import NSCIA2L5ForcedCoreShellCalibrationTests  # noqa: F401
