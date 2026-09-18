@@ -119,8 +119,7 @@ theorem tm2HaltControl_singleton {decision : List Bool → Bool}
       stackFamily source.tm.k₁ = [source.outputAlphabet.invFun result]) :
     tm2HaltControl source stackFamily =
       if result then tm2ControlAccept source else tm2ControlReject source := by
-  subst hout
-  simp [tm2HaltControl]
+  cases result <;> simp [tm2HaltControl, hout]
 
 /-- A represented canonical halted Boolean output has the exact Programme output. -/
 theorem TM2CfgRepresented.halted_output {decision : List Bool → Bool}
