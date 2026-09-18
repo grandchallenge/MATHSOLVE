@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "overlay_id": "MS-MATHCERT-CURRENT-EUCLID-DIOPHANTINE-E2E-002",
   "recorded_at": "2026-08-05",
-  "base_registry": {"path": "contracts/mathcert_current_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "19fb7c957af90d66ee0012eb8bb63930b895a8ea"},
-  "predecessor_overlay": {"path": "contracts/mathcert_current_routes_euclid_gcd_overlay.json", "digest_algorithm": "git_blob_sha1", "digest": "4a44059c5c3dae16735aba7218271fb06bb3373a"},
+  "base_registry": {"path": "contracts/mathcert_current_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "0168c27e247e409c4cae6b2ee79b0e9f93c5e002"},
+  "predecessor_overlay": {"path": "contracts/mathcert_current_routes_euclid_gcd_overlay.json", "digest_algorithm": "git_blob_sha1", "digest": "6e00c5d00fd45feec77080611b789f1583b808a2"},
   "current_authority": {"repository": "grandchallenge/MATHCERT", "commit_sha": "78b69e6a3461a83f4893d61c421b1570c08a9ba6", "path": "governance/certification_routes.json", "digest_algorithm": "git_blob_sha1", "digest": "0487c3ebf702229741f16a544d68af25cf994e41"},
   "campaign": {
     "campaign_id": "EUCLID-DIOPHANTINE-E2E-002",
