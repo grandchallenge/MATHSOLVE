@@ -424,7 +424,7 @@ A^2N g_{1/R}(\tau).
 \`\`\`
 
 Up to the fixed Fourier normalization constant, the signed nonlinear energy
-transfer into that target mode is therefore
+transfer into that target sine component is therefore
 
 \`\`\`math
 \Pi_{\rm target}(t)
@@ -505,7 +505,7 @@ is \`O(1/R)\`.
 For large overshoot ratio, viscosity does not destroy the fixed-turnover
 coherent transfer interval.
 
-## 8. The target remains a large threshold overshoot
+## 8. The target remains large relative to the threshold scale
 
 Throughout the same interval,
 
