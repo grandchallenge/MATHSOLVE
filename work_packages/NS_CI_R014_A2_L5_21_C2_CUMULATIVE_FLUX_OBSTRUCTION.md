@@ -191,7 +191,7 @@ F_{p+1/2}(t)
 =
 e_{q_n}'(t)+d_{q_n}(t),
 \qquad
-0\le p<q_n.
+m_n-1\le p<q_n.
 \`\`\`
 
 Set all other edge fluxes to zero.
@@ -199,9 +199,9 @@ Set all other edge fluxes to zero.
 Then the shell balances are exact:
 
 \`\`\`math
-e_0'
+e_{m_n-1}'
 =
--F_{1/2},
+-F_{m_n-1/2},
 \`\`\`
 
 \`\`\`math
@@ -211,7 +211,7 @@ F_{p-1/2}-F_{p+1/2}
 =
 0,
 \qquad
-1\le p<q_n,
+m_n\le p<q_n,
 \`\`\`
 
 and
@@ -228,11 +228,11 @@ Summing the complete band \`1\le p\le q_n\` cancels every internal edge:
 
 \`\`\`math
 \frac d{dt}
-\sum_{p=1}^{q_n}e_p
+\sum_{p=m_n}^{q_n}e_p
 +
-\sum_{p=1}^{q_n}d_p
+\sum_{p=m_n}^{q_n}d_p
 =
-F_{1/2}.
+F_{m_n-1/2}.
 \`\`\`
 
 This is exactly the kind of signed complete-band identity the C2-FLUX route
@@ -252,7 +252,7 @@ Therefore
 
 \`\`\`math
 \boxed{
-\int_{J_n}F_{1/2}(t)\,dt
+\int_{J_n}F_{m_n-1/2}(t)\,dt
 =
 \int_{J_n}d_{q_n}(t)\,dt.
 }
@@ -277,7 +277,7 @@ Hence
 \`\`\`math
 \sum_n
 \left|
-\int_{J_n}F_{1/2}(t)\,dt
+\int_{J_n}F_{m_n-1/2}(t)\,dt
 \right|
 <
 \infty.
@@ -310,7 +310,7 @@ R_n^{-2}.
 Using
 
 \`\`\`math
-|F_{1/2}|
+|F_{m_n-1/2}|
 \le
 |e_{q_n}'|+d_{q_n},
 \`\`\`
@@ -319,7 +319,7 @@ gives
 
 \`\`\`math
 \boxed{
-\int_{J_n}|F_{1/2}(t)|\,dt
+\int_{J_n}|F_{m_n-1/2}(t)|\,dt
 \lesssim
 R_n^{-2}+R_n^{-3}.
 }
@@ -329,7 +329,7 @@ Therefore
 
 \`\`\`math
 \sum_n
-\int_{J_n}|F_{1/2}(t)|\,dt
+\int_{J_n}|F_{m_n-1/2}(t)|\,dt
 <
 \infty.
 \`\`\`
@@ -340,7 +340,7 @@ nearest-neighbour edge in the cascade path. There are \`q_n=4n\` such edges, so
 \`\`\`math
 \sum_n
 q_n
-\int_{J_n}|F_{1/2}(t)|\,dt
+\int_{J_n}|F_{m_n-1/2}(t)|\,dt
 \lesssim
 \sum_n
 n2^{-2n}
@@ -451,7 +451,7 @@ Because the supports are disjoint,
 \`\`\`math
 \sup_t\sum_qe_q(t)
 \le
-e_0(0)+\sup_nE_n
+E_{reservoir}(0)+\sup_nE_n
 <
 \infty.
 \`\`\`
@@ -551,7 +551,7 @@ For the present episode,
 
 \`\`\`math
 \lambda_n
-\int|F_{1/2}|\,dt
+\int|F_{m_n-1/2}|\,dt
 \asymp
 \lambda_nE_n
 =
