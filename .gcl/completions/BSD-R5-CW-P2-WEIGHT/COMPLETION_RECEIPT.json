@@ -1,0 +1,157 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "campaign": "BSD-001",
+  "operation": "BSD-R5-CW-P2-WEIGHT",
+  "candidate_head": "c1990da90cec388b3b3e77627c96cb52671a3968",
+  "merge_sha": "f9695d5656560ba9e912e6d27254b8f31f04c787",
+  "protected_readback_sha": "f9695d5656560ba9e912e6d27254b8f31f04c787",
+  "provider_anchor": "716979bcae4e67a82c52f15c99b20da555fcdfca",
+  "enforcement_standard": {
+    "identifier": "GCL-CEX-01",
+    "repository": "grandchallenge/gcl-standards",
+    "commit": "efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
+    "programme_adoption_anchor": "grandchallenge/MATH-PROGRAMME@af6e1772e2d82b0b198d11c08e1369789ffbba3a"
+  },
+  "staffing_authority": {
+    "repository": "grandchallenge/INTELLECT",
+    "directive": "GI-STEWARD-0003",
+    "separation_model": "role_scoped_logical_passes",
+    "protected_anchor": "7662e9b5eeecb065e75173176d535d57a5a42dee"
+  },
+  "adversary_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/332#pullrequestreview-5246284430",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "BSD-R5-CW-P2-WEIGHT-CONTRACT-ADV-c1990da9-005",
+    "role": "Adversary",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "c1990da90cec388b3b3e77627c96cb52671a3968",
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "human_authorized": false,
+      "mathcert_certified": false,
+      "claim_promotion": false
+    }
+  },
+  "referee_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/332#pullrequestreview-5246284717",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "BSD-R5-CW-P2-WEIGHT-CONTRACT-REF-c1990da9-006",
+    "role": "Referee",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "c1990da90cec388b3b3e77627c96cb52671a3968",
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "human_authorized": false,
+      "mathcert_certified": false,
+      "claim_promotion": false
+    }
+  },
+  "required_checks": [
+    {
+      "phase": "candidate",
+      "name": "BSD R5-CW-P2-WEIGHT certificate",
+      "run": 35329582243,
+      "check_run": 105550563434,
+      "result": "success",
+      "head": "c1990da90cec388b3b3e77627c96cb52671a3968"
+    },
+    {
+      "phase": "candidate",
+      "name": "ledgers",
+      "run": 35329582318,
+      "check_run": 105550564729,
+      "result": "success",
+      "head": "c1990da90cec388b3b3e77627c96cb52671a3968"
+    },
+    {
+      "phase": "candidate",
+      "name": "policy / policy",
+      "run": 35329583110,
+      "check_run": 105550566101,
+      "result": "success",
+      "head": "c1990da90cec388b3b3e77627c96cb52671a3968"
+    },
+    {
+      "phase": "candidate",
+      "name": "security / action-policy",
+      "run": 35329583110,
+      "check_run": 105550566350,
+      "result": "success",
+      "head": "c1990da90cec388b3b3e77627c96cb52671a3968"
+    },
+    {
+      "phase": "candidate",
+      "name": "routing-enforcement",
+      "run": 35329582752,
+      "check_run": 105550567012,
+      "result": "success",
+      "head": "c1990da90cec388b3b3e77627c96cb52671a3968"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "BSD R5-CW-P2-WEIGHT certificate",
+      "run": 35329645811,
+      "check_run": 105550767515,
+      "result": "success",
+      "head": "f9695d5656560ba9e912e6d27254b8f31f04c787"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "ledgers",
+      "run": 35329645776,
+      "check_run": 105550767398,
+      "result": "success",
+      "head": "f9695d5656560ba9e912e6d27254b8f31f04c787"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "policy / policy",
+      "run": 35329646235,
+      "check_run": 105550768977,
+      "result": "success",
+      "head": "f9695d5656560ba9e912e6d27254b8f31f04c787"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "security / action-policy",
+      "run": 35329646235,
+      "check_run": 105550769202,
+      "result": "success",
+      "head": "f9695d5656560ba9e912e6d27254b8f31f04c787"
+    }
+  ],
+  "disposition": {
+    "type": "CLOSED",
+    "frontier": "MISSING_P2_COLMEZ_WANG_UNIVERSAL_HALF_WEIGHT_CHARACTER",
+    "proved_reduction": [
+      "BSD-R5-CW-P2-UNIT-SPLIT-001",
+      "BSD-R5-CW-P2-SQUARE-IMAGE-002",
+      "BSD-R5-CW-P2-COVER-003",
+      "BSD-R5-CW-P2-HALF-CHAR-004",
+      "BSD-R5-CW-P2-HALF-WEIGHT-005"
+    ],
+    "next_frontier": "MISSING_P2_COLMEZ_WANG_SQUARE_ROOT_COVER_CHAPTER15_GLOBALIZATION_COMPATIBILITY"
+  },
+  "preserved_false": [
+    "formal_higher_level_hypothesis_3_2_iii",
+    "full_bss_hypothesis_4_7",
+    "bss_hypothesis_4_7_iii",
+    "infinite_bss_h3",
+    "r5_prim",
+    "r5_res",
+    "d2d",
+    "bsd_r2_a1",
+    "mathcert_certification"
+  ],
+  "notes": [
+    "CLOSED applies only to the universal literal-p=2 half-weight character construction.",
+    "The protected theorem constructs the finite-flat ramified square-root cover and universal half-character; it does not establish Colmez-Wang Chapter-15 globalization compatibility.",
+    "Historical R5-RES issue #273 remains closed because no protected residual Kato/Kolyvagin nonvanishing witness has been produced.",
+    "The next theorem boundary is Chapter-15 globalization compatibility after the square-root cover; the later non-procyclic-unit denominator-removal boundary remains separate."
+  ]
+}
