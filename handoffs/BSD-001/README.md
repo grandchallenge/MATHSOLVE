@@ -5,38 +5,32 @@
 Re-fetch live protected heads before mutation, then read:
 
 1. `.gcl/campaigns/BSD-001/CAMPAIGN_STATE.json`;
-2. `.gcl/operations/BSD-R5-CW-P2-WEIGHT/OPERATION.json`;
-3. `handoffs/BSD-001/R5_CW_P2_WEIGHT_FRONTIER.md`;
-4. `work_packages/BSD_R5_CW_P2_WEIGHT_COVER/01_UNIVERSAL_HALF_WEIGHT_COVER_THEOREM.md`;
-5. `work_packages/BSD_R5_CW_P2_WEIGHT_COVER/02_CLAIM_LEDGER.yaml`;
-6. protected provider `grandchallenge/MATHFORGE@716979bcae4e67a82c52f15c99b20da555fcdfca`.
+2. `.gcl/operations/BSD-R5-CW-P2-CH15/OPERATION.json`;
+3. `handoffs/BSD-001/R5_CW_P2_CH15_FRONTIER.md`;
+4. `work_packages/BSD_R5_CW_P2_CH15_GLOBALIZATION/01_CHAPTER15_COMPATIBILITY_REDUCTION.md`;
+5. `work_packages/BSD_R5_CW_P2_CH15_GLOBALIZATION/02_CLAIM_LEDGER.yaml`;
+6. provider `grandchallenge/MATHFORGE@78c18a47f0e6bdb5886c7ecfa1ba1b4c7ffff992`.
 
-Campaign: `BSD-001`. Programme owner: #164. Parent frontier tracker: #215.
-Current bounded operation: #329 (`BSD-R5-CW-P2-WEIGHT`).
+Current bounded operation: #339 (`BSD-R5-CW-P2-CH15`).
 
-## Candidate result
+The protected half-weight cover has already closed the universal character-halving
+problem.  This operation proves that the remaining formal generic-fibre
+Chapter-15 steps survive that cover: finite-etale generic fibre, faithful-flat
+Poitou-Tate transport, density pullback conditional on density, selected-S3
+cyclotomic residual irreducibility, and literal-2 localization injectivity.
 
-The operation entered on
+Candidate disposition: `BLOCKED`.
 
-`MISSING_P2_COLMEZ_WANG_UNIVERSAL_HALF_WEIGHT_CHARACTER`.
+Exact blocked frontier:
 
-It proves the exact finite-flat ramified cover
+`MISSING_P2_FULL_DEFORMATION_LOCALLY_IRREDUCIBLE_CLASSICAL_DENSITY_ON_SELECTED_S3_LANE`.
 
-`Lambda_half=Z_2[[T]][Y]/(Y^2-(1+T)) ~= Z_2[[S]]`,
+Protected MATHFORGE has audited the current literature and does not admit that
+theorem in the required selected literal-2 scope.
 
-with `Y=1+S` and `T=2S+S^2`.  The continuous character
-`kappa_half(5^a)=Y^a` squares to the base-changed universal weight character
-and has the universal property for local square roots.
+If the density theorem is later supplied, the next independent boundary is
 
-Candidate disposition: `CLOSED`.
+`MISSING_P2_COLMEZ_WANG_DENOMINATOR_REMOVAL_WITH_NONPROCYCLIC_UNITS`.
 
-The next theorem boundary is
-
-`MISSING_P2_COLMEZ_WANG_SQUARE_ROOT_COVER_CHAPTER15_GLOBALIZATION_COMPATIBILITY`.
-
-Finite flatness alone does not authorize the Colmez-Wang deformation, density,
-Poitou-Tate, specialization, family-Kato or denominator-removal steps.
-
-Historical R5-RES #273 remains closed. No residual nonvanishing witness has
-been produced. R5-RES, R5-PRIM, D2d, BSD-R2-A1 and MATHCERT certification
-remain unestablished.
+Historical R5-RES #273 remains closed; no residual Kato/Kolyvagin nonvanishing
+witness has been produced.

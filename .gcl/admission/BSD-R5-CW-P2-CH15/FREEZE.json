@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "BSD-001",
+  "operation": "BSD-R5-CW-P2-CH15",
+  "protected_base": "e7c67802acf31012f923eb820e080d9586b45bd6",
+  "provider_anchor": "78c18a47f0e6bdb5886c7ecfa1ba1b4c7ffff992",
+  "artifacts": {
+    "work_packages/BSD_R5_CW_P2_CH15_GLOBALIZATION/00_README.md": "e8add05f5dafc01f78a24e95e10f2845cf4375a7",
+    "work_packages/BSD_R5_CW_P2_CH15_GLOBALIZATION/01_CHAPTER15_COMPATIBILITY_REDUCTION.md": "43515b3d290bfb082501c583c83e62b5f5e2adc7",
+    "work_packages/BSD_R5_CW_P2_CH15_GLOBALIZATION/02_CLAIM_LEDGER.yaml": "e6e99a867e0a8eab68068b651c1cfca50a3f255d",
+    "work_packages/BSD_R5_CW_P2_CH15_GLOBALIZATION/03_COMPATIBILITY_CERTIFICATE.py": "8452b3c7d4d05b330a90c9e424d2a8296abd1120",
+    "work_packages/BSD_R5_CW_P2_CH15_GLOBALIZATION/04_SOURCE_AND_SUCCESSOR_BOUNDARY.md": "0a9e20ebff63393d9aea8c083152fa8142c388e3",
+    "handoffs/BSD-001/README.md": "9f175b40f133217720e573b02a73a94bd5293ed7",
+    "handoffs/BSD-001/R5_CW_P2_CH15_FRONTIER.md": "5326034c804aa5c76b5cefca4605158d4e3f1959",
+    ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json": "5cff53f690d5591bd83e42037ca5047d28054288",
+    ".gcl/operations/BSD-R5-CW-P2-CH15/OPERATION.json": "ea214c64007ac07645d3430c3b476ae9333608af",
+    "tools/gcl_campaign_preflight_r5_cw_p2_ch15.py": "e66cd34eceacdfc47c5e24c014b26d72bcecacfc",
+    ".github/workflows/bsd-r5-cw-p2-ch15-certificate.yml": "7ab78b2410899486046b1dd03dd64c6ce5cafd87",
+    ".ghos-routing/workflows.json": "974b7271f048fad352a13a7898c040909d04c08b"
+  }
+}
