@@ -132,12 +132,20 @@ theorem TM2CfgRepresented.halted_output {decision : List Bool → Bool}
     (hout :
       sourceCfg.stk source.tm.k₁ = [source.outputAlphabet.invFun result]) :
     (tm2ProgrammeMachine source).output targetCfg = some result := by
-  have hstate := hrep.2
-  rw [hhalt] at hstate
+  have hstate :
+      targetCfg.state = tm2HaltControl source sourceCfg.stk := by
+    simpa [hhalt] using hrep.2
   have hcontrol := tm2HaltControl_singleton source sourceCfg.stk result hout
-  cases result <;>
-    simp [ProgrammeMachine.output, tm2ProgrammeMachine,
-      hstate.trans hcontrol]
+  cases result with
+  | false =>
+      have hrejected : targetCfg.state = tm2ControlReject source := by
+        exact hstate.trans (by simpa using hcontrol)
+      simp [ProgrammeMachine.output, tm2ProgrammeMachine, hrejected,
+        tm2ControlAccept_ne_reject source]
+  | true =>
+      have haccepted : targetCfg.state = tm2ControlAccept source := by
+        exact hstate.trans (by simpa using hcontrol)
+      simp [ProgrammeMachine.output, tm2ProgrammeMachine, haccepted]
 
 #print axioms tm2HaltControl_terminal
 #print axioms TM2CfgRepresented.halted_terminal
