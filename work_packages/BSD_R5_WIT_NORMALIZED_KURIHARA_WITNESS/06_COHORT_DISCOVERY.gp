@@ -45,6 +45,32 @@ first_hit(name, coeffs, N, B)=
 };
 
 my(H=List(),h);
-h=first_hit("37a1",[0,0,1,-1,0],37,500); if(h,listput(H,["37a1",h]));\nh=first_hit("43a1",[0,1,1,0,0],43,500); if(h,listput(H,["43a1",h]));\nh=first_hit("53a1",[1,-1,1,0,0],53,500); if(h,listput(H,["53a1",h]));\nh=first_hit("57a1",[0,-1,1,-2,2],57,500); if(h,listput(H,["57a1",h]));\nh=first_hit("61a1",[1,0,0,-2,1],61,500); if(h,listput(H,["61a1",h]));\nh=first_hit("77a1",[0,0,1,2,0],77,500); if(h,listput(H,["77a1",h]));\nh=first_hit("79a1",[1,1,1,-2,0],79,500); if(h,listput(H,["79a1",h]));\nh=first_hit("83a1",[1,1,1,1,0],83,500); if(h,listput(H,["83a1",h]));\nh=first_hit("89a1",[1,1,1,-1,0],89,500); if(h,listput(H,["89a1",h]));\nh=first_hit("91a1",[0,0,1,1,0],91,500); if(h,listput(H,["91a1",h]));\nh=first_hit("101a1",[0,1,1,-1,-1],101,500); if(h,listput(H,["101a1",h]));\nh=first_hit("123b1",[0,-1,1,1,-1],123,500); if(h,listput(H,["123b1",h]));\nh=first_hit("129a1",[0,-1,1,-19,39],129,500); if(h,listput(H,["129a1",h]));\nh=first_hit("131a1",[0,-1,1,1,0],131,500); if(h,listput(H,["131a1",h]));\nh=first_hit("141a1",[0,1,1,-12,2],141,500); if(h,listput(H,["141a1",h]));\nh=first_hit("141d1",[0,-1,1,-1,0],141,500); if(h,listput(H,["141d1",h]));\nh=first_hit("143a1",[0,-1,1,-1,-2],143,500); if(h,listput(H,["143a1",h]));\nh=first_hit("155c1",[0,-1,1,-1,1],155,500); if(h,listput(H,["155c1",h]));\nh=first_hit("163a1",[0,0,1,-2,1],163,500); if(h,listput(H,["163a1",h]));\nh=first_hit("185a1",[0,1,1,-156,700],185,500); if(h,listput(H,["185a1",h]));\nh=first_hit("185b1",[0,-1,1,-5,6],185,500); if(h,listput(H,["185b1",h]));\nh=first_hit("197a1",[0,0,1,-5,4],197,500); if(h,listput(H,["197a1",h]));\nh=first_hit("201a1",[0,-1,1,2,0],201,500); if(h,listput(H,["201a1",h]));\nh=first_hit("201b1",[1,0,0,-1,2],201,500); if(h,listput(H,["201b1",h]));\nh=first_hit("201c1",[1,1,0,-794,8289],201,500); if(h,listput(H,["201c1",h]));\nh=first_hit("203b1",[1,1,1,0,-2],203,500); if(h,listput(H,["203b1",h]));\nprint("DISCOVERY_HITS ",Vec(H));
+h=first_hit("37a1",[0,0,1,-1,0],37,500); if(h,listput(H,["37a1",h]));
+h=first_hit("43a1",[0,1,1,0,0],43,500); if(h,listput(H,["43a1",h]));
+h=first_hit("53a1",[1,-1,1,0,0],53,500); if(h,listput(H,["53a1",h]));
+h=first_hit("57a1",[0,-1,1,-2,2],57,500); if(h,listput(H,["57a1",h]));
+h=first_hit("61a1",[1,0,0,-2,1],61,500); if(h,listput(H,["61a1",h]));
+h=first_hit("77a1",[0,0,1,2,0],77,500); if(h,listput(H,["77a1",h]));
+h=first_hit("79a1",[1,1,1,-2,0],79,500); if(h,listput(H,["79a1",h]));
+h=first_hit("83a1",[1,1,1,1,0],83,500); if(h,listput(H,["83a1",h]));
+h=first_hit("89a1",[1,1,1,-1,0],89,500); if(h,listput(H,["89a1",h]));
+h=first_hit("91a1",[0,0,1,1,0],91,500); if(h,listput(H,["91a1",h]));
+h=first_hit("101a1",[0,1,1,-1,-1],101,500); if(h,listput(H,["101a1",h]));
+h=first_hit("123b1",[0,-1,1,1,-1],123,500); if(h,listput(H,["123b1",h]));
+h=first_hit("129a1",[0,-1,1,-19,39],129,500); if(h,listput(H,["129a1",h]));
+h=first_hit("131a1",[0,-1,1,1,0],131,500); if(h,listput(H,["131a1",h]));
+h=first_hit("141a1",[0,1,1,-12,2],141,500); if(h,listput(H,["141a1",h]));
+h=first_hit("141d1",[0,-1,1,-1,0],141,500); if(h,listput(H,["141d1",h]));
+h=first_hit("143a1",[0,-1,1,-1,-2],143,500); if(h,listput(H,["143a1",h]));
+h=first_hit("155c1",[0,-1,1,-1,1],155,500); if(h,listput(H,["155c1",h]));
+h=first_hit("163a1",[0,0,1,-2,1],163,500); if(h,listput(H,["163a1",h]));
+h=first_hit("185a1",[0,1,1,-156,700],185,500); if(h,listput(H,["185a1",h]));
+h=first_hit("185b1",[0,-1,1,-5,6],185,500); if(h,listput(H,["185b1",h]));
+h=first_hit("197a1",[0,0,1,-5,4],197,500); if(h,listput(H,["197a1",h]));
+h=first_hit("201a1",[0,-1,1,2,0],201,500); if(h,listput(H,["201a1",h]));
+h=first_hit("201b1",[1,0,0,-1,2],201,500); if(h,listput(H,["201b1",h]));
+h=first_hit("201c1",[1,1,0,-794,8289],201,500); if(h,listput(H,["201c1",h]));
+h=first_hit("203b1",[1,1,1,0,-2],203,500); if(h,listput(H,["203b1",h]));
+print("DISCOVERY_HITS ",Vec(H));
 print("R5_WIT_COHORT_DISCOVERY_COMPLETE");
 quit
