@@ -61,7 +61,10 @@ theorem tm2RunAction_push {decision : List Bool → Bool}
       tm2PushMoveAction source k
         (tm2UnaryChildCode source code nextStmt hnext)
         state (.inr (code, state)) readWork := by
-  simp [tm2RunAction, hstmt, tm2PushMoveAction]
+  rcases code with ⟨label, ⟨stmt, hmem⟩⟩
+  dsimp at hstmt hnext ⊢
+  subst stmt
+  simp [tm2RunAction, tm2PushMoveAction]
 
 /-- The inline compiler pop branch is exactly the named pop action. -/
 theorem tm2RunAction_pop {decision : List Bool → Bool}
@@ -78,7 +81,10 @@ theorem tm2RunAction_pop {decision : List Bool → Bool}
         (tm2UnaryChildCode source code nextStmt hnext)
         (updateState state (tm2ReadSourceHead? source k readWork))
         readWork := by
-  simp [tm2RunAction, hstmt, tm2PopAction]
+  rcases code with ⟨label, ⟨stmt, hmem⟩⟩
+  dsimp at hstmt hnext ⊢
+  subst stmt
+  simp [tm2RunAction, tm2PopAction]
 
 #print axioms tm2PushTokenStack?_generated
 #print axioms tm2RunAction_push
