@@ -42,7 +42,7 @@ theorem tm2Programme_fixedStepSimulation {decision : List Bool → Bool}
             sourceCfg' =
               Turing.TM2.stepAux (source.tm.m label) state stackFamily := by
           simpa [Turing.FinTM2.step, Turing.TM2.step] using
-            Option.some.inj hstep
+            (Option.some.inj hstep).symm
         rcases tm2StepAux_simulates source input (source.tm.m label)
             (TM2StatementCode.root source.tm label)
             state stackFamily targetCfg rfl hstacks hstate with
