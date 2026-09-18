@@ -1,0 +1,60 @@
+name: BSD R5-CW-P2-CH15 certificate
+on:
+  pull_request:
+    paths:
+      - 'work_packages/BSD_R5_CW_P2_CH15_GLOBALIZATION/**'
+      - 'handoffs/BSD-001/**'
+      - '.gcl/campaigns/BSD-001/**'
+      - '.gcl/operations/BSD-R5-CW-P2-CH15/**'
+      - '.gcl/admission/BSD-R5-CW-P2-CH15/**'
+      - '.gcl/completions/BSD-R5-CW-P2-CH15/**'
+      - 'tools/gcl_campaign_preflight_r5_cw_p2_ch15.py'
+      - 'tools/gcl_completion_receipt_validate_v2.py'
+      - '.github/workflows/bsd-r5-cw-p2-ch15-certificate.yml'
+      - '.ghos-routing/workflows.json'
+  push:
+    branches: [main]
+    paths:
+      - 'work_packages/BSD_R5_CW_P2_CH15_GLOBALIZATION/**'
+      - 'handoffs/BSD-001/**'
+      - '.gcl/campaigns/BSD-001/**'
+      - '.gcl/operations/BSD-R5-CW-P2-CH15/**'
+      - '.gcl/admission/BSD-R5-CW-P2-CH15/**'
+      - '.gcl/completions/BSD-R5-CW-P2-CH15/**'
+      - 'tools/gcl_campaign_preflight_r5_cw_p2_ch15.py'
+      - 'tools/gcl_completion_receipt_validate_v2.py'
+      - '.github/workflows/bsd-r5-cw-p2-ch15-certificate.yml'
+      - '.ghos-routing/workflows.json'
+permissions:
+  contents: read
+jobs:
+  certificate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Assert exact subject checkout
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - name: Exact operation preflight
+        run: python tools/gcl_campaign_preflight_r5_cw_p2_ch15.py BSD-001 BSD-R5-CW-P2-CH15
+      - name: Replay compatibility guardrail
+        run: python work_packages/BSD_R5_CW_P2_CH15_GLOBALIZATION/03_COMPATIBILITY_CERTIFICATE.py
+      - name: Assert bounded firewall
+        run: |
+          ledger=work_packages/BSD_R5_CW_P2_CH15_GLOBALIZATION/02_CLAIM_LEDGER.yaml
+          grep -q 'BSD-R5-CW-P2-CH15-REDUCTION-006' "$ledger"
+          grep -q 'MISSING_P2_FULL_DEFORMATION_LOCALLY_IRREDUCIBLE_CLASSICAL_DENSITY_ON_SELECTED_S3_LANE' "$ledger"
+          grep -q 'candidate_disposition: BLOCKED' "$ledger"
+          grep -q 'r5_res: false' "$ledger"
+          grep -q 'r5_prim: false' "$ledger"
+          grep -q 'bsd_r2_a1: false' "$ledger"
+          grep -q 'mathcert_certification: false' "$ledger"
+      - name: Validate completion receipt when present
+        run: |
+          if [ -f .gcl/completions/BSD-R5-CW-P2-CH15/COMPLETION_RECEIPT.json ]; then
+            python tools/gcl_completion_receipt_validate_v2.py BSD-R5-CW-P2-CH15
+          else
+            echo 'completion receipt not present in pre-merge candidate'
+          fi
