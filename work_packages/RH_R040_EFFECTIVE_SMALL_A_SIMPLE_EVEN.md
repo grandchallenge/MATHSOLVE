@@ -265,28 +265,36 @@ Then
 \int_0^1|f(x)|^2dx=\frac12.
 \]
 
-Keep only the two same-sign quadrants of the jump term:
+Split the nonnegative jump term into the two same-sign quadrants
+and the two cross-sign quadrants.  Since \(w\) is even, both contributions
+contain \(|f(x)-f(y)|^2\):
+
+\[
+\frac14\iint_{[-1,1]^2}
+\frac{|w(x)-w(y)|^2}{|x-y|}\,dx\,dy
+=
+\frac12\int_0^1\int_0^1
+|f(x)-f(y)|^2
+\left(
+\frac1{|x-y|}+\frac1{x+y}
+\right)dx\,dy.
+\]
+
+For \(x,y\in(0,1)\),
+
+\[
+\frac1{|x-y|}\ge1,
+\qquad
+\frac1{x+y}\ge\frac12
+\]
+
+off the diagonal.  The potential term in \(\overline{\mathcal L}\) is
+also nonnegative. Therefore
 
 \[
 \overline{\mathcal L}(w)
 \ge
-\frac12
-\int_0^1\int_0^1
-\frac{|f(x)-f(y)|^2}{|x-y|}\,dx\,dy.
-\]
-
-Because \(|x-y|\le1\),
-
-\[
-\frac1{|x-y|}\ge1
-\]
-
-off the diagonal, and therefore
-
-\[
-\overline{\mathcal L}(w)
-\ge
-\frac12
+\frac34
 \int_0^1\int_0^1
 |f(x)-f(y)|^2\,dx\,dy.
 \]
@@ -307,14 +315,14 @@ The mean-zero condition gives
 Hence
 
 \[
-\overline{\mathcal L}(w)\ge\frac12.
+\overline{\mathcal L}(w)\ge\frac34.
 \]
 
 By the max–min characterization of the second even eigenvalue, choosing
 the one-dimensional comparison subspace \(\operatorname{span}\{c\}\),
 
 \[
-\boxed{\mu_{+,2}\ge\frac12.}
+\boxed{\mu_{+,2}\ge\frac34.}
 \]
 
 Consequently,
@@ -322,7 +330,7 @@ Consequently,
 \[
 \mu_{+,2}-\mu_{+,1}
 \ge
-\log2-\frac12,
+\log2-\frac14,
 \]
 
 and
@@ -485,7 +493,7 @@ Therefore the even-sector internal gap satisfies
 \ge
 \log2-\frac12-2\eta(a)
 =
-\log2-\frac12-6\sqrt2\,a.
+\log2-\frac14-6\sqrt2\,a.
 \]
 
 The parity gap satisfies
@@ -517,11 +525,9 @@ use the elementary inequalities
 Then
 
 \[
-\log2-\frac12-6\sqrt2\,a
+\log2-\frac14-6\sqrt2\,a
 >
-\frac{31}{162}-\frac9{50}
-=
-\frac{23}{2025}
+\frac{143}{324}-\frac9{50}
 >
 0,
 \]
