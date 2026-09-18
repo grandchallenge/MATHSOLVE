@@ -720,66 +720,127 @@ flux/decoherence cost.  No such growing-distance theorem is claimed here.
 
 ### L5-20 Sobolev tail bound on threshold-reaching distance
 
-\`work_packages/NS_CI_R014_A2_L5_20_C2_DISTANCE_SOBLEV_TAIL.md\`
+`work_packages/NS_CI_R014_A2_L5_20_C2_DISTANCE_SOBLEV_TAIL.md`
 records
 
-\`\`\`text
+```text
 C2_DIST_SQRT_R_THRESHOLD_REACH_EXCLUDED_IN_2P5D_CALIBRATION
 __TURNOVER_SELECTOR_CHARGE_VANISHES.
-\`\`\`
+```
 
 L5-19 asked whether threshold-sized leakage in the exact periodic 2.5D
-calibration could reach distance comparable to \`sqrt(R)\`, which would be
+calibration could reach distance comparable to `sqrt(R)`, which would be
 needed for an order-one charge from propagation distance alone.
 
 The uniform finite-time Sobolev estimate already available in L5-19 answers
-this negatively.  Because the calibration is independent of \`x_3\`, one
-dyadic annulus contains only \`O(L^2)\` normalized lattice modes.  For every
-fixed Sobolev order \`s>=4\`,
+this negatively.  Because the calibration is independent of `x_3`, one
+dyadic annulus contains only `O(L^2)` normalized lattice modes.  For every
+fixed Sobolev order `s>=4`,
 
-\`\`\`math
+```math
 ||Delta_p theta_{1/R}||_infinity
 lesssim
 L_p^(1-s),
-\`\`\`
+```
 
-where \`L_p=lambda_p/N\`.  Since \`A=R nu N\`,
+where `L_p=lambda_p/N`.  Since `A=R nu N`,
 
-\`\`\`math
+```math
 lambda_p^(-1)||u_p||_infinity
 lesssim
 R nu L_p^(-s).
-\`\`\`
+```
 
 Hence every threshold-violating shell on a fixed turnover-time interval obeys
 
-\`\`\`math
+```math
 lambda_p/N
 lesssim
 R^(1/s).
-\`\`\`
+```
 
-Taking \`s=4\` gives only fourth-root reach, strictly below the required
+Taking `s=4` gives only fourth-root reach, strictly below the required
 square-root scale.  The selector itself satisfies
 
-\`\`\`math
+```math
 Lambda(t)
 lesssim
 N R^(1/s),
-\`\`\`
+```
 
 so over a fixed turnover-time horizon
 
-\`\`\`math
+```math
 integral Lambda^2 dt
 lesssim
 nu^(-1) R^(2/s-1).
-\`\`\`
+```
 
-At \`s=4\` this is \`O(nu^(-1)R^(-1/2))\` and tends to zero.
+At `s=4` this is `O(nu^(-1)R^(-1/2))` and tends to zero.
 
 Thus spectral-distance propagation is closed as the missing charge mechanism
 inside this exact calibration.  This is not a whole-space A2 theorem.
+
+
+### L5-21 cumulative upper-band flux obstruction
+
+\`work_packages/NS_CI_R014_A2_L5_21_C2_CUMULATIVE_FLUX_OBSTRUCTION.md\`
+records
+
+\`\`\`text
+C2_FLUX_GENERIC_BAND_ENERGY_ROUTE_TERMINATED
+__OVERSHOOT_DIVERGES_WITH_SUMMABLE_BOUNDARY_FLUX.
+\`\`\`
+
+The first selector-free cumulative-flux repair is insufficient even after
+granting exact complete-band telescoping.
+
+A conservative nearest-neighbour shell-and-packet ledger uses the protected
+L5-15 episode scaling
+
+\`\`\`math
+R_n=2^n,\qquad
+lambda_n=R_n^4,\qquad
+E_n=R_n^{-2},\qquad
+delta_n=R_n^{-9}.
+\`\`\`
+
+On each disjoint episode, the active-shell energy obeys an exact shell balance
+with a reservoir and one signed boundary flux. Internal band edges telescope
+exactly. The net boundary flux equals the episode dissipation and scales like
+
+\`\`\`math
+R_n^{-3}.
+\`\`\`
+
+Even the absolute unweighted boundary-flux variation is only
+
+\`\`\`math
+O(R_n^{-2}+R_n^{-3}),
+\`\`\`
+
+and remains summable after multiplying by the number \`q_n=4n\` of
+nearest-neighbour edges.
+
+At the same time the A2 occupancy charge is \`O(R_n^{-1})\`, total dissipation
+is summable, total energy is bounded, and the turnover-scale energy-transfer
+rate is respected. But on the plateau,
+
+\`\`\`math
+integral_{I_n} Omega(t) dt
+gtrsim
+1-c_0/R_n,
+\`\`\`
+
+so the overshoot integral diverges.
+
+Thus exact fixed-band energy conservation, signed cumulative boundary flux,
+and even finite absolute unweighted flux variation do not control the L5-15
+overshoot residual from the selected scalar budgets.
+
+This does not exclude an equation-specific triadic coherence or
+frequency-weighted flux theorem. The fixture is an exact conservative shell
+ledger, not a Navier--Stokes trajectory.
 
 ## Residual blockers
 
@@ -795,36 +856,28 @@ inside this exact calibration.  This is not a whole-space A2 theorem.
 
 ## Smallest safe next tranche
 
-Do not continue pushing propagation distance in the exact 2.5D calibration.
-L5-20 excludes the square-root reach needed by the charge-only mechanism.
+Do not repeat complete-band energy telescoping or unweighted cumulative flux as
+though either supplied the missing overshoot cost. L5-21 grants both and still
+permits divergent \`integral Omega\` at shell-ledger level.
 
-The first live obligation is now **C2-FLUX**.
+The first live obligation is now **C2-TRIAD**.
 
-Return to the selected whole-space upper active band and retain the signed
-shell-energy transfer until after time integration.
+Test equation-specific triadic coherence rather than generic shell
+conservation:
 
-Preferred first target:
+> Does actual Navier--Stokes triad geometry force a phase-decoherence,
+> neighboring-triad creation, directionality, or frequency-weighted transfer
+> cost that rules out repeated turnover-scale upper-band overshoot episodes?
 
-> On a maximal interval over which one upper-band shell remains a threshold
-> overshoot, can summing the complete retained upper band convert repeated
-> turnover-size internal forcing into a telescoping energy change, a flux
-> through the band boundary, or a depletion factor that controls the overshoot
-> integral?
+The first bounded audit should retain an exact finite Fourier cluster and
+differentiate the transfer correlation/phase itself. It must distinguish the
+full NSE from a merely conservative shell ledger or a Galerkin triad model.
 
-The calculation must:
-
-- retain same-band internal transfer with sign until the complete band is
-  summed;
-- separate flux across the upper-band boundary from internal exchange;
-- keep viscous dissipation explicit;
-- use the already-controlled far-low deformation only where its protected
-  estimate actually applies;
-- avoid differentiating the moving selector indicator;
-- avoid replacing the signed band identity by the absolute
-  \`lambda A^2\` bound already closed in L5-16.
-
-A valid advance must produce a genuinely cumulative cost, or else identify the
-first exact obstruction and terminate that bounded flux variant.
+A valid positive result must produce a cost unavailable to L5-21 and must not
+reduce to the protected L4 weighted active diagonal. If a finite triadic model
+can sustain coherent recycling, record that only as calibration; do not promote
+it to a full-NSE obstruction unless the cluster is dynamically invariant or the
+generated modes are controlled.
 
 ## Authoritative pointers
 
@@ -852,6 +905,7 @@ first exact obstruction and terminate that bounded flux variant.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_18_C2_TEMPORAL_LEAKAGE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_19_C2_FIXED_DISTANCE_AMPLITUDE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_20_C2_DISTANCE_SOBLEV_TAIL.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_21_C2_CUMULATIVE_FLUX_OBSTRUCTION.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
