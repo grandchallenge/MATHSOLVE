@@ -462,6 +462,80 @@ A successful dynamic persistence route must therefore beat turnover-time
 cost, for example by proving parabolic-scale residence, a non-summable
 overshoot-dependent A2 cost, cross-level coherence, or signed depletion.
 
+
+### L5-16 same-band projected-forcing obstruction
+
+`work_packages/NS_CI_R014_A2_L5_16_C2_SAME_BAND_MILD_OBSTRUCTION.md`
+records
+
+```text
+SAME_BAND_LERAY_FORCING_ATTAINS_LAMBDA_A_SQUARED
+__ABSOLUTE_MILD_ROUTE_STOPS_AT_TURNOVER_SCALE.
+```
+
+The exact divergence-free Fourier-algebra fixture
+
+```math
+u(x)
+=
+A(0,1,1)cos(Nx_1)
++
+A(1,0,1)cos(Nx_2)
+```
+
+has input frequencies of magnitude `N` and target frequency
+`(N,N,0)` of magnitude `sqrt(2)N`. Thus all participating modes lie in one
+fixed-width frequency band.
+
+The `sin(Nx_1+Nx_2)` coefficient of the raw convection term is
+
+```math
+-A^2N(1/2,1/2,1).
+```
+
+Leray projection at the target frequency removes exactly the horizontal
+component and leaves
+
+```math
+-A^2N e_3.
+```
+
+Hence incompressibility, Leray projection, and same-band localization do not
+supply any algebraic gain over the full nonlinear forcing scale
+
+```math
+lambda A^2.
+```
+
+For overshoot ratio
+
+```math
+R=A/(nu lambda),
+```
+
+the nonlinear scale is `R` times the representative viscous scale
+`nu lambda^2 A`. A bare absolute mild estimate therefore controls amplitude
+variation only on
+
+```math
+(lambda A)^(-1)
+=
+(R nu lambda^2)^(-1),
+```
+
+the nonlinear turnover scale. Over one parabolic interval
+`(nu lambda^2)^(-1)`, the absolute nonlinear bound permits an `O(R A)`
+change.
+
+Combined with L5-15, which already proves turnover-time residence insufficient
+against the A2 scalar budgets, this closes the bare fixed-shell
+absolute-forcing persistence route.
+
+The fixture is a Fourier-symbol/algebra obstruction, not an NSE trajectory.
+It does not exclude parabolic residence obtained from genuinely dynamic
+same-band depletion, phase decoherence, cross-level coherence, or signed
+time-correlated flux information.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -477,41 +551,35 @@ overshoot-dependent A2 cost, cross-level coherence, or signed depletion.
 ## Smallest safe next tranche
 
 Do not repeat C1, C3-DIAG, the direct Chemin--Lerner source hypothesis, the
-L5-14 global/top-third packet reduction, or turnover-time residence as though
-it were sufficient.
+L5-14 packet reduction, turnover-time residence, or the bare fixed-shell
+absolute mild estimate.
 
-The first live obligation is now **C2-OVR-DYN**. Fix one large overshoot
-episode at shell `p` and keep the ratio
+The first live obligation is now **C2-COH**.
 
-```math
-R=||u_p||_infinity/(nu lambda_p)
-```
+A large upper-fifth overshoot can have pointwise same-band projected forcing of
+the full `lambda A^2` size. Therefore the next useful theorem must use
+information that is genuinely dynamical rather than another instantaneous
+bilinear estimate.
 
-explicit through the actual NSE shell equation or mild formula.
+The preferred audit is:
 
-The decisive question is whether the equation forces a residence/coherence
-cost stronger than
+> During an actual large overshoot episode, does rapid variation of the active
+> shell force a signed flux event, neighboring-band activity, or a
+> time-integrated depletion factor that charges the episode more strongly than
+> the turnover-scale cost `R^-1`?
 
-```math
-Delta t ~ (nu R lambda_p^2)^(-1),
-```
+Valid reopening outputs include:
 
-whose A2 charge is only `R^-1` and is now known to be summable across large
-overshoots.
+- a same-band time-integrated depletion factor that is non-summable in the
+  overshoot ratio `R`;
+- parabolic-scale cross-level coherence;
+- a strict-high neighboring-shell cost forced by rapid upper-band variation;
+- a signed/time-correlated flux law that directly controls
+  `integral Omega`.
 
-A valid reopening theorem is any one of:
-
-- parabolic-scale residence `Delta t >= c lambda_p^-2` at a defining
-  overshoot;
-- another equation-derived scale cost whose A2 charge is non-summable in
-  `R`;
-- cross-level or cross-excursion coherence preventing independent large
-  overshoots;
-- a signed/time-correlated flux law directly controlling `integral Omega`.
-
-If the fixed-shell Duhamel or energy analysis yields only turnover-time
-persistence, low strain, selector variation, or the protected L4 column,
-record that exact reduction and move to a genuinely distinct mechanism.
+If the calculation reduces to the protected L4 active diagonal, the old L3
+exit charge, selector variation, or the absolute `lambda A^2` forcing bound,
+record that reduction and move to a genuinely distinct mechanism.
 
 ## Authoritative pointers
 
@@ -534,6 +602,7 @@ record that exact reduction and move to a genuinely distinct mechanism.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_13_C3_DIAGONAL_AUDIT.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_14_C2_ACTIVE_BAND_REDUCTION.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_15_C2_OVERSHOOT_PERSISTENCE_AUDIT.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_16_C2_SAME_BAND_MILD_OBSTRUCTION.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
