@@ -15,6 +15,7 @@ from tests.test_ns_ci_a2_l5_c2_mix_moment_ceiling import NSCIA2L5C2MixMomentCeil
 from tests.test_ns_ci_a2_l5_c2_mix_subcritical_lower import NSCIA2L5C2MixSubcriticalLowerTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_mix_critical_semiclassical import NSCIA2L5C2MixCriticalSemiclassicalTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_mix_bridge_normal_form import NSCIA2L5C2MixBridgeNormalFormTests  # noqa: F401
+from tests.test_ns_ci_a2_l5_c2_mix_semiclassical_residual import NSCIA2L5C2MixSemiclassicalResidualTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c3_diagonal_audit import NSCIA2L5C3DiagonalAuditTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_field_calibration import NSCIA2L5FieldCalibrationTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_forced_core_shell_calibration import NSCIA2L5ForcedCoreShellCalibrationTests  # noqa: F401
