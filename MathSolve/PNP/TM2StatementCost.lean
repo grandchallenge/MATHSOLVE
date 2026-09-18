@@ -63,7 +63,11 @@ theorem tm2ProgrammeStatementCost_le_stepFactor
     tm2ProgrammeStatementCost code.2.1 ≤ tm2ProgrammeStepFactor tm := by
   classical
   unfold tm2ProgrammeStepFactor
-  exact Finset.single_le_sum (fun _ _ => Nat.zero_le _)
+  exact Finset.single_le_sum
+    (s := Finset.univ)
+    (f := fun c : TM2StatementCode tm =>
+      tm2ProgrammeStatementCost c.2.1)
+    (fun _ _ => Nat.zero_le _)
     (Finset.mem_univ code)
 
 /-- In particular, every label root is bounded by the same fixed factor. -/
