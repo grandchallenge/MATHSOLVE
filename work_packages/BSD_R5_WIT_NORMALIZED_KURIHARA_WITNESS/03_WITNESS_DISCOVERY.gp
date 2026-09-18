@@ -77,6 +77,20 @@ scan_pairs(label,E,N,xp,M,plist)={
   found;
 };
 
+scan_five(label,M,xp,plist)={
+  if(#plist<5, return(0));
+  my(ells=vector(5,i,plist[i]), n=1);
+  for(i=1,5,n*=ells[i]);
+  my(d=delta_n_mod2(M,xp,n,ells));
+  print("FIVE label=",label," n=",n," primes=",ells," Delta_mod2=",d);
+  if(d,
+    print("FIRST_FIVE_NONZERO label=",label," n=",n," primes=",ells);
+    emit_terms(M,xp,n,ells);
+    return(n);
+  );
+  0;
+};
+
 scan_quads(label,M,xp,plist)={
   my(found=0, m=min(#plist,5));
   for(i=1,m-3,
@@ -144,8 +158,9 @@ scan(label,ainvs,N,plist)={
   my(p=scan_pairs(label,E,N,xp,M,plist));
   my(t=scan_triples(label,M,xp,plist));
   my(q=scan_quads(label,M,xp,plist));
-  print("SUMMARY label=",label," probe=",probe," single=",s," pair=",p," triple=",t," quad=",q);
-  q;
+  my(f=scan_five(label,M,xp,plist));
+  print("SUMMARY label=",label," probe=",probe," single=",s," pair=",p," triple=",t," quad=",q," five=",f);
+  f;
 };
 
 p53=[5,7,11,31,41,43,47,59,61];
@@ -153,5 +168,5 @@ p203=[17,19,23,37,41,59,61];
 
 f53=scan("53a1",[1,-1,1,0,0],53,p53);
 f203=scan("203b1",[1,1,1,0,-2],203,p203);
-print("FINAL first_quad_53=",f53," first_quad_203=",f203);
+print("FINAL first_five_53=",f53," first_five_203=",f203);
 quit;
