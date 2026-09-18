@@ -206,8 +206,10 @@ Require
 
 ```math
 \boxed{
+\left(
 \int_0^{s_1}
-\|\widetilde r_h(s)\|_{H^k}\,ds
+\|\widetilde r_h(s)\|_{H^k}^2\,ds
+\right)^{1/2}
 \le
 C_rh.
 }
@@ -215,7 +217,8 @@ C_rh.
 
 The residual may contain pressure, non-shear velocity components, packet
 localization errors, and neighboring-band interactions. The theorem uses only
-this demodulated bound.
+this demodulated bound. On the fixed critical interval it also implies an
+`O(h)` `L^1_s H^k` bound by Cauchy--Schwarz.
 
 ### NF5 — physical packet reconstruction
 
