@@ -2,27 +2,28 @@
   "receipt_id": "HC-R021-P4-CONTINUITY-2026-09-17",
   "repository": "grandchallenge/MATHSOLVE",
   "branch": "campaign/hc-r021-d20-nonempty-work",
-  "parent_head": "7304ee5601abac4a193754808d56508bc27cb9cb",
+  "parent_head": "3c11572389ad1b0a2ab2c923c460826e8b07fe60",
   "campaign": "HC-001",
   "target": "HC-R021-A8-CM4-C2",
   "policy_target": "GCL-AGENT-CONTINUITY-001@1.0.0",
   "policy_integration_status": "effective_protected_readback_confirmed",
   "last_durable_result": {
-    "lemma": "HC-R021-L054",
-    "file": "work_packages/HC_R021_P4_FIRST_POSTNIKOV_BOUNDARY_VANISHING.md",
-    "state": "M_CHANNEL_SURVIVES_FIRST_POSTNIKOV_BOUNDARY__NEXT_K_INVARIANT_OPEN",
-    "result": "delta_0=0; every class in ker(mu_M)=H^0(C,M) survives the first Postnikov boundary"
+    "lemma": "HC-R021-L055",
+    "file": "work_packages/HC_R021_P4_SECOND_POSTNIKOV_MAP_VANISHING.md",
+    "state": "SECOND_POSTNIKOV_MAP_ZERO__M_CHANNEL_SURVIVAL_REDUCED_EXACTLY_TO_KERNEL_MU_M",
+    "result": "The theta-square map factors E^vee -> O_X -> E; Ext^2(B,O_X)=0; hence Ext^2(B,E^vee)->Ext^2(B,E) and psi both vanish. Postnikov survival is exactly ker(mu_M) != 0."
   },
   "next_smallest_obligation": {
-    "name": "POSTNIKOV_K_INVARIANT_RESIDUE_SURVIVAL",
-    "statement": "Determine whether ker(mu_M) intersects ker(psi) nontrivially, where psi:H^0(C,M)->V_next and V_next=coker(Ext^2(B,O(-D))->Ext^2(B,E)).",
-    "decision": "A nonzero intersection preserves the second global residue channel; zero intersection closes this co-supported escape."
+    "name": "FIXED_SCALE_MU_M_KERNEL",
+    "statement": "Determine whether the exact n=1 Koszul cup-product map mu_M is injective for the admissible D,H,A theta sections, or exhibit a nonzero element of ker(mu_M).",
+    "decision": "Injective closes the co-supported escape; nonzero kernel gives a genuinely derived second global extension channel through both Postnikov stages."
   },
   "open_claims": [
     "mu_M rank",
-    "psi rank on ker(mu_M)",
+    "generic residue independence from ordinary theta-square channel",
+    "opposite extension factorization",
     "global Ext1 residue rank",
-    "co-supported global extension",
+    "co-supported global extension rank 2",
     "second-factor obstruction rank 20",
     "all-orders transport",
     "HC-R021-P4",
