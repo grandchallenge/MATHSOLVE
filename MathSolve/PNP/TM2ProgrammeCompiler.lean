@@ -77,6 +77,17 @@ def tm2OutputBit? {decision : List Bool → Bool}
     Option Bool :=
   (tm2ReadSourceHead? source source.tm.k₁ readWork).map source.outputAlphabet
 
+/-- Recover the source stack selected by a generated push provenance token. -/
+def tm2PushTokenStack? {decision : List Bool → Bool}
+    (source : ImportedTM2Witness decision)
+    (token : TM2ProvenanceToken source.tm) : Option source.tm.K :=
+  match token with
+  | .inl _ => none
+  | .inr generated =>
+      match generated.1.2.1 with
+      | .push k _ _ => some k
+      | _ => none
+
 /-- A neutral action that preserves all work-head cells and positions. -/
 def tm2StayAction {decision : List Bool → Bool}
     (source : ImportedTM2Witness decision)
@@ -207,19 +218,16 @@ def tm2ProgrammeTransition {decision : List Bool → Bool}
         match control with
         | Sum.inr (Sum.inr (Sum.inl (code, state))) =>
             tm2RunAction source code state readWork
-        | Sum.inr (Sum.inr (Sum.inr (Sum.inl (nextCode, state, token)))) => {
-            nextState := tm2ControlRun source nextCode state
-            inputMove := .stay
-            write := fun tape =>
-              if tape = tm2TapeEquiv source
-                  ((tm2TapeEquiv source).symm tape) then
-                if tape = tm2TapeEquiv source
-                    ((tm2TapeEquiv source).symm tape) then
-                  readWork tape
-                else readWork tape
-              else readWork tape
-            workMove := fun _ => .stay
-          }
+        | Sum.inr (Sum.inr (Sum.inr (Sum.inl (nextCode, state, token)))) =>
+            match tm2PushTokenStack? source token with
+            | some k => {
+                nextState := tm2ControlRun source nextCode state
+                inputMove := .stay
+                write := tm2WriteSelected source readWork k (some token)
+                workMove := fun _ => .stay
+              }
+            | none =>
+                tm2StayAction source (tm2ControlReject source) readWork
         | _ => tm2StayAction source control readWork
 
 /--
