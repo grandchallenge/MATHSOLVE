@@ -372,7 +372,7 @@ From the complex chain,
 \`\`\`math
 \frac d{d\tau}|a_n|^2
 =
--e^{-\varepsilon\tau}
+e^{-\varepsilon\tau}
 \operatorname{Im}
 \left[
 \overline{a_n}
@@ -390,6 +390,7 @@ Define the coupling flux
 \`\`\`math
 F_{n+1/2}
 =
+-
 e^{-\varepsilon\tau}
 \operatorname{Im}
 (
@@ -397,7 +398,17 @@ e^{-\varepsilon\tau}
 ).
 \`\`\`
 
-Then the coupling part telescopes between adjacent indices, while
+Then
+
+```math
+\frac d{d\tau}|a_n|^2
+=
+F_{n-1/2}-F_{n+1/2}
+-
+2\varepsilon(1+n^2)|a_n|^2,
+```
+
+so the coupling part telescopes between adjacent indices, while
 
 \`\`\`math
 2\varepsilon(1+n^2)|a_n|^2
