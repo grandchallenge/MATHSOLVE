@@ -71,7 +71,7 @@ run_curve(name, coeffs, N, prime_bound, product_bound)=
   return(Vec(hits));
 };
 
-h53=run_curve("53a1",[1,-1,1,0,0],53,100,25000);
-h203=run_curve("203b1",[1,1,1,0,-2],203,100,25000);
+h53=run_curve("53a1",[1,-1,1,0,0],53,2000,25000);
+h203=run_curve("203b1",[1,1,1,0,-2],203,2000,25000);
 print("R5_WIT_PROBE_COMPLETE 53a1=",h53," 203b1=",h203);
 quit
