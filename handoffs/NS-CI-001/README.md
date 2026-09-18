@@ -1064,6 +1064,82 @@ for fixed `eta>0` after choosing `delta<eta/2`.
 This is an upper-reach theorem only. It does not prove threshold-sized
 amplitude near the cubic-root front.
 
+
+### L5-25 subcritical cubic-root threshold propagation
+
+`work_packages/NS_CI_R014_A2_L5_25_C2_MIX_SUBCRITICAL_LOWER.md`
+records
+
+```text
+SHEAR_CHAIN_SUBCRITICAL_CUBIC_ROOT_THRESHOLD_PROPAGATION_PROVED
+__CRITICAL_WINDOW_REMAINS_OPEN.
+```
+
+L5-24 gives the upper threshold-reach exponent. L5-25 proves the matching
+lower reach below the exact cubic-root scale.
+
+For every fixed
+
+```math
+0<beta<1/3,
+\qquad
+T_R=R^beta,
+```
+
+the exact finite-viscosity shear chain has a fixed positive amount of Fourier
+mass in
+
+```math
+tau/2<=|n|<=2tau
+```
+
+uniformly for every `tau\in[T_R,2T_R]`, once `R` is sufficiently large.
+
+The proof uses:
+
+- exact inviscid moments
+  `sum n^2|J_n|^2=tau^2/2` and
+  `sum n^4|J_n|^2=tau^2/2+3tau^4/8`;
+- Paley--Zygmund plus Markov, giving inviscid band mass at least
+  `15/896`;
+- finite-time derivative bounds
+  `||partial_Y^s phi_epsilon||_2<=C_s(1+tau)^s`;
+- the growing-window comparison
+  `||phi_epsilon-phi_0||_2<=C epsilon(1+tau)^3`,
+  which is `o(1)` uniformly for `tau<=2R^beta` whenever `beta<1/3`.
+
+Since the band contains only `O(tau)` modes, one coefficient has magnitude at
+least `c tau^{-1/2}`. A nearby LP block therefore satisfies
+
+```math
+lambda_p^{-1}||u_p||_infinity
+>=
+c nu R tau^{-3/2},
+```
+
+so it violates the threshold throughout the moving interval. Consequently
+
+```math
+Lambda(t)
+>=
+c N R^beta
+```
+
+there, and
+
+```math
+integral Lambda^2 dt
+>=
+c nu^{-1}R^{3beta-1}.
+```
+
+The charge still tends to zero for every fixed `beta<1/3`.
+
+Together with L5-24, threshold reach in this calibration is pinned in
+power-law exponent to `R^{1/3+o(1)}`. The exact critical
+`tau~R^{1/3}` window remains unresolved because the elementary viscous-to-
+inviscid comparison error becomes order one precisely there.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1078,26 +1154,25 @@ amplitude near the cubic-root front.
 
 ## Smallest safe next tranche
 
-L5-24 closes the **upper-reach** side of C2-MIX in the exact shear calibration.
-Do not identify the cubic-root moment ceiling with actual threshold-sized
-propagation.
+L5-24 and L5-25 now pin the shear-calibration threshold front to
+`R^{1/3+o(1)}` in the power-law sense.
 
-The first live obligation is now **C2-MIX-LOWER**:
+The first live obligation is **C2-MIX-CRITICAL**:
 
-> On a turnover window of order `R^{1/3}`, can one prove a finite-viscosity
-> lower bound for amplitudes at chain index of order `R^{1/3}`, or instead
-> prove that viscous/enhanced dissipation suppresses them before the campaign
-> threshold is reached?
+> At `tau=cR^{1/3}` with fixed positive `c`, does the exact
+> finite-viscosity shear chain retain positive Fourier mass at
+> `|n|\asymp R^{1/3}`, or does viscous/enhanced dissipation reduce that mass
+> below the campaign threshold?
 
-A valid successor must control finite-`epsilon` amplitudes on a growing
-window. The inviscid Bessel chain is reference data only until a uniform
-growing-window remainder theorem is proved.
+The perturbative comparison used in L5-25 cannot be extrapolated: its
+`epsilon tau^3` error is order one exactly at this scale.
 
-Useful bounded routes include Duhamel comparison with explicit remainder,
-Feynman--Kac for the one-dimensional complex potential, a cosine-shear
-hypocoercive estimate, or a weighted-chain front estimate.
+A valid successor must therefore be nonperturbative at critical scaling.
+Candidate routes are a rescaled critical-limit equation, Brownian/Feynman--Kac
+phase analysis, critical hypocoercivity with lower information, or discrete
+semiclassical/WKB analysis of the exact chain.
 
-Do not reopen phase decoherence: L5-23 already shows exact phase locking.
+Do not infer order-one A2 charge from the subcritical lower bound.
 
 ## Authoritative pointers
 
@@ -1129,6 +1204,7 @@ Do not reopen phase decoherence: L5-23 already shows exact phase locking.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_22_C2_TRIAD_COHERENCE.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_23_C2_SHEAR_PHASE_LOCK.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_24_C2_MIX_MOMENT_CEILING.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_25_C2_MIX_SUBCRITICAL_LOWER.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
