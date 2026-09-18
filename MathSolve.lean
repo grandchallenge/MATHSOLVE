@@ -12,3 +12,4 @@ import MathSolve.PNP.ModelBridge
 import MathSolve.PNP.TM2StackEncoding
 import MathSolve.PNP.TM2TokenDecode
 import MathSolve.PNP.TM2ProgrammeCompiler
+import MathSolve.PNP.TM2StackOps
