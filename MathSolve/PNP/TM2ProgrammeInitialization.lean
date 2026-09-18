@@ -55,8 +55,13 @@ theorem tm2ProgrammeReadyConfig_represents_init
             tm2TapeEquiv source source.tm.k₀ := by
         intro h
         exact hk ((tm2TapeEquiv source).injective h)
+      have hblankTape :
+          embedTM2TokenStack ([] : List (TM2ProvenanceToken source.tm)) (0 : Int) =
+            (fun _ => none) := by
+        funext position
+        simp [embedTM2TokenStack]
       simpa [Turing.initList, tm2ProgrammeReadyConfig,
-        tm2ProgrammeReadyWork, hk, htape, embedTM2TokenStack] using
+        tm2ProgrammeReadyWork, hk, htape, hblankTape] using
         emptyTM2StackRepresented source k (0 : Int)
   · rfl
 
