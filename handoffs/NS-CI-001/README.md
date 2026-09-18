@@ -1338,6 +1338,56 @@ cannot supply the required `R^{-2/3}` factor.
 The residual derivation problem is therefore now a genuine dynamic/geometric
 depletion problem, not a Sobolev bookkeeping problem.
 
+
+### L5-29 exact same-band polarization corridor
+
+`work_packages/NS_CI_R014_A2_L5_29_C2_POLARIZATION_CORRIDOR.md`
+records
+
+```text
+SAME_BAND_POLARIZATION_NULL_FACTOR_EXACT
+__R_TWO_THIRDS_ALIGNMENT_NOT_FORCED_POINTWISE.
+```
+
+For orthogonal source frequencies and unit divergence-free polarizations
+
+```math
+a_alpha=(0,cos(alpha),sin(alpha)),
+\qquad
+b_beta=(cos(beta),0,sin(beta)),
+```
+
+the exact Leray-projected sum-frequency interaction is
+
+```math
+P_{k_1+k_2}(u dot grad u)
+=
+-(A^2N/2) sin(alpha+beta) e_3
+```
+
+at the target phase.
+
+The source support, source modal amplitudes, and source shell energies are
+independent of `alpha,beta`, while the projected forcing ranges continuously
+from exact zero to the full order-`A^2N` scale and reverses sign.
+
+Combining with L5-28, if this interaction belongs to the nonprincipal bridge
+residual then NF4 requires
+
+```math
+|sin(alpha+beta)|
+lesssim
+h^2
+=
+R^{-2/3}.
+```
+
+Near the null set this is an `O(R^{-2/3})` polarization corridor.
+
+Thus A2, shell energy, support, and amplitude data cannot force the required
+pointwise alignment.  Any successful depletion route must be time-correlated
+or use genuinely additional geometric information.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1352,27 +1402,23 @@ depletion problem, not a Sobolev bookkeeping problem.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DEPLETION**.
+The live obligation is now **C2-MIX-ALIGN-TIME**.
 
-The target is exact:
+Pointwise polarization is separated: L5-29 shows that identical scalar shell
+data permit both exact depletion and full same-band forcing.
 
-> Can selected whole-space NSE dynamics force the nonprincipal active-packet
-> interaction to be smaller than the generic same-band quadratic scale by
-> `R^{-2/3}` on the critical interval?
+The next question must be temporal:
 
-Do not revisit ordinary demodulated Sobolev growth; L5-28 removes that artifact.
+> If an actual large upper-band overshoot remains outside the
+> `R^{-2/3}` polarization-null corridor for a critical interval, does that
+> persistent non-null interaction force selector growth, generated-mode
+> energy, or viscous dissipation with a non-summable cost?
 
-The first bounded calculation should retain the protected L5-16 projected
-same-band symbol and test additional geometric structure one item at a time:
+A first bounded audit should allow the polarization defect to vary in time and
+test a time-integrated square of the exact bilinear symbol.
 
-1. polarization/alignment depletion;
-2. strain-eigenvector or transverse-deformation structure;
-3. pressure/Leray cancellation after packet projection;
-4. time-correlated signed depletion.
-
-A successful result must produce the actual `R^{-2/3}` factor (or an
-equivalent critical `O(h)` residual). If a proposed geometry still admits
-order-one turnover-normalized residual, record that exact obstruction.
+Do not count one instant of full forcing as a charge theorem; L5-17 already
+blocks that shortcut.
 
 ## Authoritative pointers
 
@@ -1408,6 +1454,7 @@ order-one turnover-normalized residual, record that exact obstruction.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_26_C2_MIX_CRITICAL_SEMICLASSICAL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_27_C2_MIX_BRIDGE_NORMAL_FORM.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_28_C2_MIX_SEMICLASSICAL_RESIDUAL.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_29_C2_POLARIZATION_CORRIDOR.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
