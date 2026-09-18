@@ -180,7 +180,7 @@
       "manifest": {
         "path": "campaign_manifests/YM-001.json",
         "digest_algorithm": "git_blob_sha1",
-        "digest": "f05c10038d12a59f629eb1763db91082a6a0332c"
+        "digest": "d25e370b04f891306d87b38b51e2874394ec1219"
       },
       "handoff": {
         "path": "cert_handoffs/YM-001.json",
