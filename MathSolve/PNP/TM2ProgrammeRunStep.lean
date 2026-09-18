@@ -57,8 +57,9 @@ theorem tm2ProgrammeTransition_run {decision : List Bool → Bool}
     tm2ProgrammeTransition source (tm2ControlRun source code state)
       inputSymbol readWork =
       tm2RunAction source code state readWork := by
-  simp [tm2ProgrammeTransition, tm2ControlRun_ne_copy source code state,
-    tm2ControlRun_ne_rewind source code state]
+  unfold tm2ProgrammeTransition
+  rw [if_neg (tm2ControlRun_ne_copy source code state),
+    if_neg (tm2ControlRun_ne_rewind source code state)]
 
 /-- The action selected by the concrete Programme machine at a represented run
 configuration is exactly the source-statement action. -/
@@ -114,10 +115,10 @@ theorem tm2ProgrammeTransition_pushWrite {decision : List Bool → Bool}
       (tm2ControlPushWrite source nextCode state token)
       inputSymbol readWork =
       tm2CompletePushAction source k nextCode state token readWork := by
-  simp [tm2ProgrammeTransition,
-    tm2ControlPushWrite_ne_copy source nextCode state token,
-    tm2ControlPushWrite_ne_rewind source nextCode state token,
-    tm2CompletePushAction, htoken]
+  unfold tm2ProgrammeTransition
+  rw [if_neg (tm2ControlPushWrite_ne_copy source nextCode state token),
+    if_neg (tm2ControlPushWrite_ne_rewind source nextCode state token)]
+  simp [tm2ControlPushWrite, tm2CompletePushAction, htoken]
 
 /-- The concrete Programme machine takes the valid second push transition exactly. -/
 theorem tm2ProgrammeMachine_step_pushWrite {decision : List Bool → Bool}
@@ -140,7 +141,7 @@ theorem tm2ProgrammeMachine_step_pushWrite {decision : List Bool → Bool}
       tm2ControlPushWrite_ne_reject source nextCode state token
 
 /-- Package one exact transition equality as a one-step `EvalsToInTime` witness. -/
-theorem programme_one_step_in_time
+def programme_one_step_in_time
     {M : ProgrammeMachine} {input : List Bool}
     {cfg cfg' : ProgrammeConfig M}
     (hstep : M.step input cfg = some cfg') :
