@@ -163,8 +163,9 @@ class NSCIA2L5C3DiagonalAuditTests(unittest.TestCase):
             dissipation_terms.append(nu * lam**2 * energy_l2_sq * duration)
 
             # For p=4,m=6: ||u_j||_6 ~ amplitude*lambda^-1/2.
-            spatial_l6 = amplitude_inf * lam ** -Fraction(1, 2)
-            source_terms.append(spatial_l6 * duration ** Fraction(1, 4))
+            sqrt_lam = Fraction(2 ** (j // 2), 1)
+            spatial_l6 = amplitude_inf / sqrt_lam
+            source_terms.append(spatial_l6 / sqrt_lam)
 
         self.assertLess(sum(durations), Fraction(1, 1))
         self.assertLess(sum(dissipation_terms), Fraction(1, 1))
