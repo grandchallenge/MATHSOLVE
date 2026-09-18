@@ -439,9 +439,9 @@ Assume also fixed spatial smoothness
 \sup_h
 \sup_s
 (
-\|J_h\|_{W^{4,\infty}}
+\|J_h\|_{W^{3,\infty}}
 +
-\|J_h^{-1}\|_{W^{4,\infty}}
+\|J_h^{-1}\|_{W^{3,\infty}}
 )
 \le
 C_J.
@@ -988,7 +988,7 @@ J_h
 e^C.
 ```
 
-To obtain the full \(W^{4,\infty}\) frame contract, it is sufficient to use
+To obtain the full \(W^{3,\infty}\) frame contract, it is sufficient to use
 the stronger budget
 
 ```math
