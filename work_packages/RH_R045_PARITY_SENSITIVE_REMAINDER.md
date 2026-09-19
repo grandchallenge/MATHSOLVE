@@ -3,18 +3,18 @@
 Campaign: RH-001
 
 Status:
-PRE_ROUTE_CANDIDATE__DO_NOT_PROMOTE
+ADMISSION_CANDIDATE__DEPENDENCIES_PROTECTED
 
 Solve tracker:
 grandchallenge/MATHSOLVE#383
 
-Guarded dependencies:
-- RH-R040-EFFECTIVE-SMALL-A-SIMPLE-EVEN-001
+Protected dependencies:
+- grandchallenge/MATHSOLVE@56ef305581e573650afb50dcd3d1a25b94e8e9bd:work_packages/RH_R040_EFFECTIVE_SMALL_A_SIMPLE_EVEN.md
 - RH-R036-QW-PARITY-GAP-REDUCTION-001
 
-Provider prerequisite:
-The Suzuki source audit in MATHFORGE PR #271 must be protected before this
-package may be admitted.
+Protected provider audit:
+grandchallenge/MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320
+reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md
 
 No RH / novelty / priority / certification claim.
 
@@ -836,13 +836,11 @@ This theorem does not prove:
 
 Before admission:
 
-1. MATHFORGE PR #271 must be protected;
-2. R040's provider identity must be protected;
-3. this package must be composed onto the current live Solve head;
-4. exact-head Adversary and Referee passes must be recorded;
-5. required Solve/GCL checks must be green;
-6. protected merge and readback must complete.
+1. this package must be composed onto the current live Solve head;
+2. exact-head Adversary and Referee passes must be recorded;
+3. required Solve/GCL checks must be green;
+4. protected merge and readback must complete.
 
 Terminal candidate disposition:
 
-RH-R045_PARITY_SENSITIVE_SIMPLE_EVEN_PROVED_THROUGH_TWO_FIFTEENTHS_ON_WORK_BRANCH__AWAITING_DEPENDENCY_PROTECTION
+RH-R045_PARITY_SENSITIVE_SIMPLE_EVEN_PROVED_THROUGH_TWO_FIFTEENTHS__READY_FOR_EXACT_HEAD_ADMISSION
