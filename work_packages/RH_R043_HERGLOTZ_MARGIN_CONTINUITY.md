@@ -3,15 +3,16 @@
 Campaign: RH-001
 
 Status:
-PRE_ROUTE_CANDIDATE__DO_NOT_PROMOTE
+ADMISSION_CANDIDATE__AWAITING_R042_PROTECTION
 
-Pre-route dependencies:
-- RH-R041-ODD-HERGLOTZ-GAP-CRITERION-001
-- RH-R042-PARITY-BOTTOM-PARAMETER-CONTINUITY-001
+Protected dependencies:
+- grandchallenge/MATHSOLVE@139f35f14ee831aa5aa3ed83b774b762965d58b3:work_packages/RH_R045_PARITY_SENSITIVE_REMAINDER.md
+- grandchallenge/MATHSOLVE@9519ae68c96c33b1a71548a9984fef1be640a106:work_packages/RH_R041_ODD_HERGLOTZ_GAP_CRITERION.md
+- grandchallenge/MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320:reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md
+- grandchallenge/MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648:reports/discovery/rh_001/rh_r041_pole_resolvent_interface.md
 
-Provider prerequisite:
-The Suzuki source audit in MATHFORGE PR #271 and the primary pole interface
-in RH-R041 must be protected before admission.
+Pending dependency:
+- RH-R042-PARITY-BOTTOM-PARAMETER-CONTINUITY-001, PR #393, exact candidate `03fbfa07a147e446091d86b4efd908403f5eb240` pending final Solve check and protected merge.
 
 ## 1. Claim
 
@@ -601,4 +602,4 @@ This theorem does not prove:
 
 ## 12. Terminal candidate disposition
 
-RH-R043_HERGLOTZ_MARGIN_CONTINUITY_PROVED_ON_WORK_BRANCH__AWAITING_DEPENDENCY_PROTECTION
+RH-R043_HERGLOTZ_MARGIN_CONTINUITY_PROVED__AWAITING_R042_PROTECTION
