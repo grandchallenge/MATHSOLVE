@@ -2447,6 +2447,37 @@ Thus Eulerian signed-mean cancellation is not a compression mechanism.
 Any useful cancellation must be Lagrangian, packet-weighted, or correlated
 with the critical observable.
 
+### L5-43 packet-weighted intrinsic compression overlap
+
+`work_packages/NS_CI_R014_A2_L5_43_C2_DIRECTION_PACKET_COMPRESSION_OVERLAP.md` records
+
+`PACKET_WEIGHTED_COMPRESSION_EXIT_LOSES_NO_EXPONENTIAL_FACTOR__CRITICAL_DENSITY_RECONSTRUCTION_REMAINS_OPEN`.
+
+For any fixed nonnegative label density q and first compression set C_K^-,
+
+    integral_{C_K^-} q dZ <= K^(-1) W_{q,K}^-,
+
+where W_{q,K}^- is the q-weighted negative strain accumulated only until the
+first hit log J=-K. Keeping q in label space removes the exp(K) loss from the
+unweighted L5-42 change-of-variables estimate.
+
+The pushed-forward density rho_q=q∘chi^{-1}/J satisfies
+
+    partial_s rho_q + partial_Y(v rho_q)=0,
+
+and
+
+    W_q^- = integral integral rho_q (-partial_Y v)_+ dY ds.
+
+Thus the intrinsic object is the transported packet/compression overlap.
+Persistent compressive strain overlapping packet mass forces positive W_q^-,
+but this alone is not yet selector charge.
+
+The protected q_h interface from L5-40/L5-41 is still abstract: no protected
+identity ties q_h to the L5-35 metric moments, no transport/source law has
+been derived for it, and no NF5-style localized LP reconstruction converts
+compressed q_h-mass into a selector event.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -2461,15 +2492,15 @@ with the critical observable.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-INTRINSIC-COMPRESSION-COST**.
+The live obligation is now **C2-MIX-DIRECTION-CRITICAL-DENSITY-RECONSTRUCTION**.
 
 L5-39 rules out a uniform all-streamline conversion from scalar shell/A2/Leray
 budgets to unweighted direction strain.  The next bounded question is:
 
-> Can selected whole-space active-band dynamics control the packet-weighted
-> negative variation of the actual extracted direction transport
-> `(-partial_Y v)_+`, or does persistent overlap between that compressive
-> variation and the critical packet force a selector/dissipation charge?
+> Construct an equation-derived critical-observable density from the actual
+> selected packet, derive its transport/source law under the direction frame,
+> and prove the reconstruction that converts compressed critical mass into a
+> physical LP threshold or selector/dissipation charge.
 
 Test packet-weighted or almost-everywhere control before seeking a uniform
 frame theorem.  Any candidate derived only from coarse annular-supremum, `Lambda in L2_t`,
