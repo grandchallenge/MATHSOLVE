@@ -27,7 +27,7 @@ The proof yields two nested effective statements.
 For every
 
 \[
-0<a\le \frac1{22},
+0<a\le \frac1{19},
 \]
 
 the lowest eigenvalue of \(A_a\) is simple and has an even eigenfunction.
@@ -47,7 +47,7 @@ On the smaller interval
 
 the same ground eigenvalue is additionally strictly positive.
 
-Thus one may take \(e^{1/22}\) as an explicit conservative simple-even
+Thus one may take \(e^{1/19}\) as an explicit conservative simple-even
 cutoff and \(e^{1/50}\) as an explicit conservative positive-simple-even
 cutoff. Neither is asserted to be sharp.
 
@@ -220,40 +220,81 @@ form by lower semicontinuity.
 
 ## 4. Explicit even ground upper bound
 
-Let
+The normalized constant gives the baseline bound
 
 \[
-c(x)=\frac1{\sqrt2}.
+\mu_{+,1}\le1-\log2.
 \]
 
-The constant belongs to the closed form domain.  Its jump contribution
-vanishes.  Hence
+A sharper fully explicit trial is
 
 \[
-\overline{\mathcal L}(c)
+p(x)=1-\frac{x^2}{2}.
+\]
+
+This even polynomial belongs to the closed limiting form domain.  Direct
+integration gives
+
+\[
+\|p\|^2
 =
--\frac14\int_{-1}^{1}\log(1-x^2)\,dx.
-\]
-
-Using
-
-\[
-\int_{-1}^{1}\log(1-x^2)\,dx
+\int_{-1}^{1}\left(1-\frac{x^2}{2}\right)^2dx
 =
-4\log2-4,
+\frac{43}{30}.
 \]
 
-we obtain
+For the jump term, using symmetry and
+\(p(x)-p(y)=-(x-y)(x+y)/2\),
 
 \[
-\overline{\mathcal L}(c)=1-\log2.
+\frac14
+\iint_{[-1,1]^2}
+\frac{|p(x)-p(y)|^2}{|x-y|}\,dx\,dy
+=
+\frac1{15}.
 \]
 
-By Rayleigh–Ritz,
+For the logarithmic potential term,
 
 \[
-\boxed{\mu_{+,1}\le1-\log2.}
+-\frac12
+\int_{-1}^{1}
+p(x)^2\log(1-x^2)\,dx
+=
+\frac{569}{450}
+-
+\frac{43}{30}\log2.
 \]
+
+Therefore
+
+\[
+\overline{\mathcal L}(p)
+=
+\frac{599}{450}
+-
+\frac{43}{30}\log2,
+\]
+
+and the Rayleigh quotient is
+
+\[
+\frac{\overline{\mathcal L}(p)}{\|p\|^2}
+=
+\frac{599}{645}-\log2.
+\]
+
+Hence
+
+\[
+\boxed{
+\mu_{+,1}
+\le
+\frac{599}{645}-\log2.
+}
+\]
+
+This strictly improves \(1-\log2\).
 
 ## 5. Explicit second-even lower bound
 
@@ -333,7 +374,9 @@ Consequently,
 \[
 \mu_{+,2}-\mu_{+,1}
 \ge
-\log2-\frac14,
+\log2+\frac34-\frac{599}{645}
+=
+\log2-\frac{461}{2580},
 \]
 
 and
@@ -341,10 +384,10 @@ and
 \[
 \mu_{-,1}-\mu_{+,1}
 \ge
-2\log2-1.
+2\log2-\frac{599}{645}.
 \]
 
-These are explicit limiting simplicity and parity margins.
+These are the strengthened explicit limiting simplicity and parity margins.
 
 ## 6. Exact bound on the small-\(a\) remainder
 
@@ -478,61 +521,44 @@ Set
 
 ## 7. Perturbation transfer
 
-Since \(K_a\) is bounded and self-adjoint, the min–max principle gives,
+Since \(K_a\) is bounded and self-adjoint, the min--max principle gives,
 sector by sector,
 
 \[
 |\nu_{\pm,j}(a)-\mu_{\pm,j}|
 \le\eta(a),
+\qquad
+\eta(a)=3\sqrt2\,a.
 \]
-
-where \(\nu_{\pm,j}(a)\) denotes the corresponding eigenvalue of
-\(T_\pm+K_{a,\pm}\).
 
 Therefore the even-sector internal gap satisfies
 
 \[
 \nu_{+,2}(a)-\nu_{+,1}(a)
 \ge
-\log2-\frac12-2\eta(a)
-=
-\log2-\frac14-6\sqrt2\,a.
+\log2-\frac{461}{2580}-6\sqrt2\,a,
 \]
 
-The parity gap satisfies
+and the parity gap satisfies
 
 \[
 \nu_{-,1}(a)-\nu_{+,1}(a)
 \ge
-2\log2-1-6\sqrt2\,a.
+2\log2-\frac{599}{645}-6\sqrt2\,a.
 \]
 
-Use the elementary inequalities
+Use
 
 \[
-\log2
-=
-2\sum_{k\ge0}\frac{1}{(2k+1)3^{2k+1}}
->
-2\left(
-\frac13+\frac1{81}+\frac1{1215}
-\right)
->
-\frac{693}{1000},
+\log2>\frac{693}{1000},
+\qquad
+\sqrt2<\frac{99}{70}.
 \]
-
-and
-
-\[
-\sqrt2<\frac{99}{70},
-\]
-
-the latter following from \(99^2>2\cdot70^2\).
 
 For
 
 \[
-0<a\le\frac1{22},
+0<a\le\frac1{19},
 \]
 
 one has
@@ -540,19 +566,23 @@ one has
 \[
 6\sqrt2\,a
 <
-6\cdot\frac{99}{70}\cdot\frac1{22}
+6\cdot\frac{99}{70}\cdot\frac1{19}
 =
-\frac{297}{770}.
+\frac{297}{665}.
 \]
 
-Therefore the even-sector internal gap obeys
+Hence the even-sector internal gap obeys
 
 \[
-\log2-\frac14-6\sqrt2\,a
+\log2-\frac{461}{2580}-6\sqrt2\,a
 >
-\frac{693}{1000}-\frac14-\frac{297}{770}
+\frac{693}{1000}
+-
+\frac{461}{2580}
+-
+\frac{297}{665}
 =
-\frac{4411}{77000}
+\boxed{\frac{1161551}{17157000}}
 >
 0,
 \]
@@ -560,16 +590,20 @@ Therefore the even-sector internal gap obeys
 and the parity gap obeys
 
 \[
-2\log2-1-6\sqrt2\,a
+2\log2-\frac{599}{645}-6\sqrt2\,a
 >
-\frac{193}{500}-\frac{297}{770}
+\frac{693}{500}
+-
+\frac{599}{645}
+-
+\frac{297}{665}
 =
-\frac{11}{38500}
+\boxed{\frac{91801}{8578500}}
 >
 0.
 \]
 
-Hence throughout \(0<a\le1/22\):
+Hence throughout \(0<a\le1/19\):
 
 - the lowest even eigenvalue is simple;
 - the lowest odd eigenvalue lies strictly above it;
@@ -635,7 +669,7 @@ Section 7 gives the structural theorem
 
 \[
 \boxed{
-0<a\le\frac1{22}
+0<a\le\frac1{19}
 \Longrightarrow
 \begin{cases}
 \lambda_a\text{ is simple},\\
@@ -657,7 +691,7 @@ Section 8 supplies the additional positivity certificate
 
 Therefore:
 
-- \(e^{1/22}\) is an explicit conservative simple-even cutoff;
+- \(e^{1/19}\) is an explicit conservative simple-even cutoff;
 - \(e^{1/50}\) is an explicit conservative positive-simple-even cutoff.
 
 No claim is made that either cutoff is maximal.
@@ -668,7 +702,7 @@ The proof depends on the following exact points.
 
 1. The prime sum must be absent.
    For the larger structural interval,
-   \(2a\le1/11<\log2\), so the no-prime formula still applies.
+   \(2a\le2/19<\log2\), so the no-prime formula still applies.
 
 2. The constant must belong to the closed limiting form domain.
    This follows because the fixed-\(a\) closed forms differ from
@@ -692,7 +726,7 @@ The proof depends on the following exact points.
 
 This theorem does not prove:
 
-- simplicity/evenness for \(a>1/22\);
+- simplicity/evenness for \(a>1/19\);
 - monotonic continuation of the parity gap;
 - any statement at \(a=\tfrac12\log13\) or
   \(a=\tfrac12\log14\);
