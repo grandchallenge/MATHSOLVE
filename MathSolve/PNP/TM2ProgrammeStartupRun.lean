@@ -141,7 +141,13 @@ theorem tm2ProgrammeCopyConfig_after_bit {decision : List Bool → Bool}
     · have hwork :
           (tm2ProgrammeCopyConfig source copied).work tape =
             (fun _ : Int => none) := by
-        simp [tm2ProgrammeCopyConfig, tm2ProgrammeReadyWork, htape]
+        change
+          (if tape = tm2TapeEquiv source source.tm.k₀ then
+            embedTM2TokenStack (copied.map Sum.inl) 0
+          else
+            fun _ : Int => none) =
+          (fun _ : Int => none)
+        exact if_neg htape
       have hhead :
           (tm2ProgrammeCopyConfig source copied).workHead tape = 0 := by
         simp [tm2ProgrammeCopyConfig, htape]
