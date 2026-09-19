@@ -26,3 +26,7 @@ import MathSolve.PNP.TM2FixedStepSimulation
 import MathSolve.PNP.TM2ProgrammeInitialization
 import MathSolve.PNP.TM2ProgrammeStartupStep
 import MathSolve.PNP.TM2ProgrammeStartupRun
+
+import MathSolve.PNP.TM2ProgrammeRewindRun
+import MathSolve.PNP.TM2ForwardCompiler
+import MathSolve.PNP.ProgrammeTM2Types
