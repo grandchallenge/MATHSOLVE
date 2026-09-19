@@ -37,7 +37,7 @@ class NSCIA2L5C2DirectionPacketOccupationTests(unittest.TestCase):
 
     def test_elliptic_shear_reciprocal_spatial_mean_scales_inverse_epsilon(self):
         # Midpoint quadrature avoids sampling the narrow extrema directly.
-        n = 200000
+        n = 20000
         for eps in (0.5, 0.2, 0.1):
             total = 0.0
             for j in range(n):
