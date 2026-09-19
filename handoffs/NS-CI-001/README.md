@@ -2172,6 +2172,46 @@ The unresolved first-order step is an occupation/pathwise bridge from this
 weighted Eulerian quantity to the unweighted L5-37 tangent cocycle. Higher
 weighted curvature/metric jets and the top active fractions remain open.
 
+
+### L5-39 exact direction-occupation calibration
+
+`work_packages/NS_CI_R014_A2_L5_39_C2_DIRECTION_OCCUPATION_CALIBRATION.md`
+records
+
+```text
+UNIFORM_PATHWISE_DIRECTION_STRAIN_NOT_CONTROLLED_BY_SCALAR_A2_LERAY_BUDGETS
+__PACKET_OCCUPATION_OR_NONDEGENERACY_REQUIRED.
+```
+
+The exact periodic unforced NSE family
+
+```math
+u_{k,\varepsilon}(t,x,y,z)
+=
+A_0e^{-\nu k^2t}
+\bigl(0,\varepsilon\cos(kx),\sin(kx)\bigr)
+```
+
+has scalar annular supremum, energy, Leray dissipation, and parabolic
+`Lambda^2` occupancy uniformly bounded as `\varepsilon\downarrow0`.
+The invariant plane `x=0` carries only an `\varepsilon` fraction of the
+annular amplitude while
+
+```math
+|\nabla(u/|u|)|(t,X(t))=\frac{k}{\varepsilon}.
+```
+
+At the same streamline,
+
+```math
+|u|^2|\partial_x(u/|u|)|^2=|\partial_xu|^2,
+```
+
+so the L5-38 weighted estimate is exactly saturated there.  Thus scalar
+A2/Leray budgets alone cannot yield a uniform all-streamline unweighted
+direction-cocycle bound.  The calibration is periodic and is not a whole-space
+A2 counterexample.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -2186,20 +2226,19 @@ weighted curvature/metric jets and the top active fractions remain open.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-OCCUPATION**.
+The live obligation is now **C2-MIX-DIRECTION-PACKET-OCCUPATION**.
 
-L5-38 controls far-low raw Eulerian jets and exposes a denominator-free
-amplitude-weighted first angular-strain estimate. The next bounded question is:
+L5-39 rules out a uniform all-streamline conversion from scalar shell/A2/Leray
+budgets to unweighted direction strain.  The next bounded question is:
 
-> Can selected active-band Navier--Stokes dynamics convert amplitude-weighted
-> Eulerian angular strain into the unweighted pathwise tangent cocycle
-> `Omega_1` on the critical packet, or can an exact calibration refute such a
-> bridge under A2 alone?
+> Does the packet mass entering the protected L5-35 observable obey a
+> quantitative amplitude-occupation or nondegeneracy law strong enough to
+> control the L5-37 tangent cocycle on the labels that actually contribute?
 
-Audit `Omega_1` first. Only after a valid occupation/pathwise bridge is
-established should the higher weighted quotient hierarchy for `U_2,U_3,U_4`
-be promoted. Do not infer pointwise nonvanishing from an active-shell supremum,
-and do not differentiate the moving selector.
+Test packet-weighted or almost-everywhere control before seeking a uniform
+frame theorem.  Any candidate depending only on annular supremum,
+`Lambda in L2_t`, energy, and Leray dissipation must fail the L5-39
+calibration.
 
 ## Authoritative pointers
 
