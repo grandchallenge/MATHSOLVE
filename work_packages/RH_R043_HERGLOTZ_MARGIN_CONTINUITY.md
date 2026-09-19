@@ -3,7 +3,7 @@
 Campaign: RH-001
 
 Status:
-ADMISSION_CANDIDATE__AWAITING_R042_PROTECTION
+ADMISSION_CANDIDATE__DEPENDENCIES_PROTECTED
 
 Protected dependencies:
 - grandchallenge/MATHSOLVE@139f35f14ee831aa5aa3ed83b774b762965d58b3:work_packages/RH_R045_PARITY_SENSITIVE_REMAINDER.md
@@ -11,8 +11,8 @@ Protected dependencies:
 - grandchallenge/MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320:reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md
 - grandchallenge/MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648:reports/discovery/rh_001/rh_r041_pole_resolvent_interface.md
 
-Pending dependency:
-- RH-R042-PARITY-BOTTOM-PARAMETER-CONTINUITY-001, PR #393, exact candidate `03fbfa07a147e446091d86b4efd908403f5eb240` pending final Solve check and protected merge.
+Protected dependency:
+- grandchallenge/MATHSOLVE@1a34479235b47405a3ed185c0b1d21d6ad9be190:work_packages/RH_R042_PARITY_BOTTOM_PARAMETER_CONTINUITY.md
 
 ## 1. Claim
 
@@ -602,4 +602,4 @@ This theorem does not prove:
 
 ## 12. Terminal candidate disposition
 
-RH-R043_HERGLOTZ_MARGIN_CONTINUITY_PROVED__AWAITING_R042_PROTECTION
+RH-R043_HERGLOTZ_MARGIN_CONTINUITY_PROVED__READY_FOR_EXACT_HEAD_ADMISSION
