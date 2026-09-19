@@ -108,12 +108,155 @@ theorem programmeTM2_one_step_in_time
       evals_in_steps := by simpa using h
       steps_le_m := le_rfl }
 
+/-- The complete first normalization pass takes exactly one step per input
+cell plus one blank-detection step. -/
+theorem programmeTM2_initToTemp_run (M : ProgrammeMachine) :
+    ∀ (raw temp : List Bool) (symbol : Option Bool)
+      (right : List (Option Bool)),
+      Nonempty
+        (StateTransition.EvalsToInTime
+          (programmeTM2Machine M).step
+          (programmeTM2InitCfg M .initToTemp symbol raw temp right)
+          (some
+            (programmeTM2InitCfg M .initToRight none []
+              (raw.reverse ++ temp) right))
+          (raw.length + 1)) := by
+  intro raw
+  induction raw with
+  | nil =>
+      intro temp symbol right
+      refine ⟨?_⟩
+      simpa using
+        programmeTM2_one_step_in_time
+          (programmeTM2_step_initToTemp_nil M symbol temp right)
+  | cons bit raw ih =>
+      intro temp symbol right
+      have hstep :=
+        programmeTM2_step_initToTemp_cons M symbol bit raw temp right
+      have hone := programmeTM2_one_step_in_time hstep
+      rcases ih (bit :: temp) (some bit) right with ⟨hrest⟩
+      refine ⟨?_⟩
+      have hrun :=
+        StateTransition.EvalsToInTime.trans
+          (programmeTM2Machine M).step
+          1 (raw.length + 1)
+          (programmeTM2InitCfg M .initToTemp symbol (bit :: raw) temp right)
+          (programmeTM2InitCfg M .initToTemp (some bit) raw (bit :: temp) right)
+          (some
+            (programmeTM2InitCfg M .initToRight none []
+              (raw.reverse ++ bit :: temp) right))
+          hone hrest
+      simpa [List.reverse_cons, List.append_assoc, Nat.add_assoc] using hrun
+
+/-- The complete second normalization pass takes exactly one step per temporary
+cell plus one blank-detection step. -/
+theorem programmeTM2_initToRight_run (M : ProgrammeMachine) :
+    ∀ (temp : List Bool) (right : List (Option Bool)) (symbol : Option Bool),
+      Nonempty
+        (StateTransition.EvalsToInTime
+          (programmeTM2Machine M).step
+          (programmeTM2InitCfg M .initToRight symbol [] temp right)
+          (some
+            (programmeTM2InitCfg M .initFinish none [] []
+              (temp.reverse.map some ++ right)))
+          (temp.length + 1)) := by
+  intro temp
+  induction temp with
+  | nil =>
+      intro right symbol
+      refine ⟨?_⟩
+      simpa using
+        programmeTM2_one_step_in_time
+          (programmeTM2_step_initToRight_nil M symbol right)
+  | cons bit temp ih =>
+      intro right symbol
+      have hstep :=
+        programmeTM2_step_initToRight_cons M symbol bit temp right
+      have hone := programmeTM2_one_step_in_time hstep
+      rcases ih (some bit :: right) (some bit) with ⟨hrest⟩
+      refine ⟨?_⟩
+      have hrun :=
+        StateTransition.EvalsToInTime.trans
+          (programmeTM2Machine M).step
+          1 (temp.length + 1)
+          (programmeTM2InitCfg M .initToRight symbol [] (bit :: temp) right)
+          (programmeTM2InitCfg M .initToRight (some bit) [] temp (some bit :: right))
+          (some
+            (programmeTM2InitCfg M .initFinish none [] []
+              (temp.reverse.map some ++ some bit :: right)))
+          hone hrest
+      simpa [List.reverse_cons, List.map_append, List.append_assoc,
+        Nat.add_assoc] using hrun
+
+/-- Canonical run-mode configuration reached after the two initialization passes. -/
+def programmeTM2ReadyInitCfg (M : ProgrammeMachine) (input : List Bool) :
+    (programmeTM2Machine M).Cfg where
+  l := some (.run)
+  var :=
+    { programmeTM2InitialState M with
+        mode := .run
+        inputSymbol := input.head? }
+  stk := programmeTM2InitStacks M [] [] (input.tail.map some)
+
+/-- Loading the first restored cell yields the canonical run-mode input representation. -/
+theorem programmeTM2_step_initFinish_input (M : ProgrammeMachine) (input : List Bool) :
+    (programmeTM2Machine M).step
+        (programmeTM2InitCfg M .initFinish none [] [] (input.map some)) =
+      some (programmeTM2ReadyInitCfg M input) := by
+  cases input <;> rfl
+
+/-- Reverse-simulator initialization is exactly linear: 2*n + 3 FinTM2 steps. -/
+theorem programmeTM2_initialization_run (M : ProgrammeMachine) (input : List Bool) :
+    Nonempty
+      (StateTransition.EvalsToInTime
+        (programmeTM2Machine M).step
+        (Turing.initList (programmeTM2Machine M) input)
+        (some (programmeTM2ReadyInitCfg M input))
+        (2 * input.length + 3)) := by
+  rcases programmeTM2_initToTemp_run M input [] none [] with ⟨hfirst⟩
+  rcases programmeTM2_initToRight_run M input.reverse [] none with ⟨hsecondRaw⟩
+  have hsecond :
+      StateTransition.EvalsToInTime
+        (programmeTM2Machine M).step
+        (programmeTM2InitCfg M .initToRight none [] input.reverse [])
+        (some
+          (programmeTM2InitCfg M .initFinish none [] [] (input.map some)))
+        (input.length + 1) := by
+    simpa using hsecondRaw
+  have hlast :=
+    programmeTM2_one_step_in_time
+      (programmeTM2_step_initFinish_input M input)
+  have h12 :=
+    StateTransition.EvalsToInTime.trans
+      (programmeTM2Machine M).step
+      (input.length + 1) (input.length + 1)
+      (programmeTM2InitCfg M .initToTemp none input [] [])
+      (programmeTM2InitCfg M .initToRight none [] input.reverse [])
+      (some
+        (programmeTM2InitCfg M .initFinish none [] [] (input.map some)))
+      hfirst hsecond
+  have hall :=
+    StateTransition.EvalsToInTime.trans
+      (programmeTM2Machine M).step
+      (2 * input.length + 2) 1
+      (programmeTM2InitCfg M .initToTemp none input [] [])
+      (programmeTM2InitCfg M .initFinish none [] [] (input.map some))
+      (some (programmeTM2ReadyInitCfg M input))
+      (by simpa [Nat.mul_comm, Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using h12)
+      hlast
+  rw [programmeTM2_initList_eq_cfg M input]
+  simpa [Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using hall
+
 #print axioms programmeTM2_initList_eq_cfg
 #print axioms programmeTM2_step_initToTemp_cons
 #print axioms programmeTM2_step_initToTemp_nil
 #print axioms programmeTM2_step_initToRight_cons
 #print axioms programmeTM2_step_initToRight_nil
 #print axioms programmeTM2_step_initFinish
+#print axioms programmeTM2_initToTemp_run
+#print axioms programmeTM2_initToRight_run
+#print axioms programmeTM2_step_initFinish_input
+#print axioms programmeTM2_initialization_run
 #print axioms programmeTM2_one_step_in_time
 
 end
