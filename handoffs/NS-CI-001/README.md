@@ -2207,9 +2207,8 @@ At the same streamline,
 |u|^2|\partial_x(u/|u|)|^2=|\partial_xu|^2,
 ```
 
-so the L5-38 weighted estimate is exactly saturated there.  Thus scalar
-A2/Leray budgets alone cannot yield a uniform all-streamline unweighted
-direction-cocycle bound.  The calibration is periodic and is not a whole-space
+so the L5-38 weighted estimate is exactly saturated there.  Thus the existing coarse scalar A2/Leray budget envelopes alone cannot yield
+a uniform all-streamline unweighted direction-cocycle bound.  The calibration is periodic and is not a whole-space
 A2 counterexample.
 
 ## Residual blockers
@@ -2236,9 +2235,9 @@ budgets to unweighted direction strain.  The next bounded question is:
 > control the L5-37 tangent cocycle on the labels that actually contribute?
 
 Test packet-weighted or almost-everywhere control before seeking a uniform
-frame theorem.  Any candidate depending only on annular supremum,
-`Lambda in L2_t`, energy, and Leray dissipation must fail the L5-39
-calibration.
+frame theorem.  Any candidate derived only from coarse annular-supremum, `Lambda in L2_t`,
+energy, and Leray-dissipation envelopes must fail the L5-39 calibration;
+augmented polarization-sensitive information is not excluded.
 
 ## Authoritative pointers
 
