@@ -3,7 +3,7 @@
 Campaign: RH-001
 
 Status:
-PRE_ROUTE_CANDIDATE__DO_NOT_PROMOTE
+ADMISSION_CANDIDATE__INDEPENDENT_CHECK_COMPLETE
 
 Solve tracker:
 grandchallenge/MATHSOLVE#398
@@ -920,13 +920,11 @@ This theorem does not prove:
 
 Before admission:
 
-1. this package must be independently checked against the exact R040/R045
-   source formulas;
-2. it must be composed onto the current live Solve head;
-3. exact-head Adversary and Referee passes must be recorded;
-4. required Solve/GCL checks must be green;
-5. protected merge and readback must complete.
+1. it must be composed onto the current live Solve head;
+2. exact-head Adversary and Referee passes must be recorded;
+3. required Solve/GCL checks must be green;
+4. protected merge and readback must complete.
 
 Terminal candidate disposition:
 
-RH-R046_SIMPLE_EVEN_PROVED_THROUGH_ONE_SEVENTH_ON_WORK_BRANCH__AWAITING_EXACT_HEAD_ADMISSION
+RH-R046_SIMPLE_EVEN_PROVED_THROUGH_ONE_SEVENTH__READY_FOR_EXACT_HEAD_ADMISSION
