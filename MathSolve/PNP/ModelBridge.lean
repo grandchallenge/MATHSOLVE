@@ -53,17 +53,57 @@ def TM2ToProgrammeCompiler : Prop :=
       AffineSimulationOverhead (importedTM2Runtime source) target.runtime
 
 /--
-Quantitative Programme to imported-TM2 compiler contract.
+An imported finite-TM2 decider with an exact, input-dependent runtime budget.
 
-The target is a finite-TM2 polynomial-time witness for the same Boolean
-function.  The explicit affine relation records the claimed simulation cost;
-the target's `Polynomial Nat` field is not accepted as a substitute for that
-machine-level overhead proof.
+This is the correct target of a machine-level Programme simulation: the
+translated execution cost may depend on the full input, while polynomialization
+belongs to the later class-transfer step.
+-/
+structure ImportedTM2TimedDecider (decision : List Bool → Bool) extends
+    Turing.TM2ComputableAux Bool Bool where
+  runtime : BinaryRuntimeCost
+  outputsFun :
+    ∀ input : List Bool,
+      Turing.TM2OutputsInTime tm
+        (List.map inputAlphabet.invFun input)
+        (Option.some
+          ((List.map outputAlphabet.invFun)
+            (Computability.encodeBool (decision input))))
+        (runtime input)
+
+/-- A Programme-polynomial timed TM2 decider can be bundled into the pinned
+imported `Polynomial Nat` witness without changing its machine. -/
+noncomputable def ImportedTM2TimedDecider.toImportedPoly
+    {decision : List Bool → Bool}
+    (target : ImportedTM2TimedDecider decision)
+    (hpoly : ProgrammePolynomialBound target.runtime) :
+    ImportedTM2Witness decision := by
+  rcases programmePolynomialBound_to_importedPolynomialBound hpoly with ⟨p, hp⟩
+  refine
+    { tm := target.tm
+      inputAlphabet := target.inputAlphabet
+      outputAlphabet := target.outputAlphabet
+      time := p
+      outputsFun := ?_ }
+  intro input
+  have hrun := target.outputsFun input
+  exact
+    { steps := hrun.steps
+      evals_in_steps := hrun.evals_in_steps
+      steps_le_m := hrun.steps_le_m.trans (hp input) }
+
+/--
+Quantitative Programme-to-TM2 compiler contract.
+
+The compiler emits an exact timed TM2 execution whose runtime is affine in the
+Programme runtime.  It does not assume the source runtime is polynomial.
+Polynomialization is performed only by `programme_to_tm2_class_transfer`, where
+the Programme class hypothesis supplies that premise.
 -/
 def ProgrammeToTM2Compiler : Prop :=
   ∀ {decision : List Bool → Bool} (source : ProgrammeDecider decision),
-    ∃ target : ImportedTM2Witness decision,
-      AffineSimulationOverhead source.runtime (importedTM2Runtime target)
+    ∃ target : ImportedTM2TimedDecider decision,
+      AffineSimulationOverhead source.runtime target.runtime
 
 /-- The forward compiler implies imported-TM2 polynomial time is Programme polynomial time. -/
 theorem tm2_to_programme_class_transfer
@@ -81,9 +121,12 @@ theorem programme_to_tm2_class_transfer
     (compiler : ProgrammeToTM2Compiler) {decision : List Bool → Bool}
     (h : ProgrammeComputableInPolyTime decision) :
     ImportedTM2ComputableInPolyTime decision := by
-  rcases h with ⟨source, _⟩
-  rcases compiler source with ⟨target, _⟩
-  exact ⟨target⟩
+  rcases h with ⟨source, hsource⟩
+  rcases compiler source with ⟨target, hoverhead⟩
+  have htarget : ProgrammePolynomialBound target.runtime :=
+    affineSimulationOverhead_preserves_programmePolynomialBound
+      hsource hoverhead
+  exact ⟨target.toImportedPoly htarget⟩
 
 /-- Both quantitative compilers yield exact class-extensional equivalence. -/
 theorem importedTM2_iff_programmePolyTime
@@ -95,6 +138,7 @@ theorem importedTM2_iff_programmePolyTime
     programme_to_tm2_class_transfer reverse⟩
 
 #print axioms importedTM2Runtime_programmePolynomialBound
+#print axioms ImportedTM2TimedDecider.toImportedPoly
 #print axioms tm2_to_programme_class_transfer
 #print axioms programme_to_tm2_class_transfer
 #print axioms importedTM2_iff_programmePolyTime
