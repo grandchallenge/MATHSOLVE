@@ -130,7 +130,7 @@ theorem tm2ProgrammeCopyConfig_after_bit {decision : List Bool → Bool}
             embedTM2TokenStack ((copied ++ [bit]).map Sum.inl) 0 := by
         simp [tm2ProgrammeCopyConfig, tm2ProgrammeReadyWork]
       rw [hwork, hhead, hwrite, htarget]
-      simpa [List.map_append] using
+      simpa [List.map_append, List.length_map] using
         congrFun
           (embedTM2TokenStack_append_singleton
             (copied.map Sum.inl) (.inl bit))
@@ -156,10 +156,16 @@ theorem tm2ProgrammeCopyConfig_after_bit {decision : List Bool → Bool}
       have htarget :
           (tm2ProgrammeCopyConfig source (copied ++ [bit])).work tape =
             (fun _ : Int => none) := by
-        simp [tm2ProgrammeCopyConfig, tm2ProgrammeReadyWork, htape]
+        change
+          (if tape = tm2TapeEquiv source source.tm.k₀ then
+            embedTM2TokenStack ((copied ++ [bit]).map Sum.inl) 0
+          else
+            fun _ : Int => none) =
+          (fun _ : Int => none)
+        exact if_neg htape
       simp only [ProgrammeConfig.afterAction, tm2CopyBitAction]
       rw [hwork, hhead, hwrite, hread, htarget]
-      exact congrFun (Function.update_eq_self (fun _ : Int => none) 0) position
+      simp [Function.update]
 
 
 /-- The zero-length copy configuration is the native Programme initial
@@ -174,16 +180,18 @@ theorem tm2ProgrammeCopyConfig_nil_eq_init {decision : List Bool → Bool}
   · funext tape
     simp [tm2ProgrammeCopyConfig, ProgrammeMachine.init]
   · funext tape position
-    have hblank :
-        (tm2ProgrammeMachine source).blank =
-          (none : TM2ProgrammeSymbol source.tm) := rfl
-    rw [hblank]
     by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
     · subst tape
       simp [tm2ProgrammeCopyConfig, ProgrammeMachine.init,
-        tm2ProgrammeReadyWork, embedTM2TokenStack]
-    · simp [tm2ProgrammeCopyConfig, ProgrammeMachine.init,
-        tm2ProgrammeReadyWork, htape]
+        tm2ProgrammeReadyWork, embedTM2TokenStack, tm2ProgrammeMachine,
+        tm2ProgrammeBlank]
+    · change
+        (if tape = tm2TapeEquiv source source.tm.k₀ then
+          embedTM2TokenStack ([] : List (TM2ProvenanceToken source.tm)) 0
+        else
+          fun _ : Int => none) position =
+        (none : TM2ProgrammeSymbol source.tm)
+      rw [if_neg htape]
 
 
 /-- Reading at the first position after a copied segment returns the next input bit. -/
