@@ -97,6 +97,17 @@ theorem programmeTM2_step_initFinish (M : ProgrammeMachine)
           stk := programmeTM2InitStacks M [] [] right.tail } := by
   rfl
 
+/-- Any exact one-step transition yields a one-step bounded evaluation witness. -/
+theorem programmeTM2_one_step_in_time
+    {M : ProgrammeMachine} {a b : (programmeTM2Machine M).Cfg}
+    (h : (programmeTM2Machine M).step a = some b) :
+    StateTransition.EvalsToInTime
+      (programmeTM2Machine M).step a (some b) 1 := by
+  exact
+    { steps := 1
+      evals_in_steps := by simpa using h
+      steps_le_m := le_rfl }
+
 /-- The complete first normalization pass takes exactly one step per input
 cell plus one blank-detection step. -/
 theorem programmeTM2_initToTemp_run (M : ProgrammeMachine) :
@@ -235,17 +246,6 @@ theorem programmeTM2_initialization_run (M : ProgrammeMachine) (input : List Boo
       hlast
   rw [programmeTM2_initList_eq_cfg M input]
   simpa [Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using hall
-
-/-- Any exact one-step transition yields a one-step bounded evaluation witness. -/
-theorem programmeTM2_one_step_in_time
-    {M : ProgrammeMachine} {a b : (programmeTM2Machine M).Cfg}
-    (h : (programmeTM2Machine M).step a = some b) :
-    StateTransition.EvalsToInTime
-      (programmeTM2Machine M).step a (some b) 1 := by
-  exact
-    { steps := 1
-      evals_in_steps := by simpa using h
-      steps_le_m := le_rfl }
 
 #print axioms programmeTM2_initList_eq_cfg
 #print axioms programmeTM2_step_initToTemp_cons
