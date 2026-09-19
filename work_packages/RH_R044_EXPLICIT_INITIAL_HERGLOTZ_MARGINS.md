@@ -55,10 +55,10 @@ The bounds are deliberately coarse and fully elementary.
 
 ## 2. Effective full parity-gap lower bound
 
-The strengthened guarded RH-R040 theorem proves, on
+The guarded RH-R045 theorem proves, on
 
 \[
-0<a\le\frac1{16},
+0<a\le\frac18,
 \]
 
 the uniform parity-gap estimate
@@ -69,7 +69,7 @@ g(a)
 =
 \epsilon_-(e^a)-\epsilon_+(e^a)
 >
-\frac{5707773}{351568000}.
+\frac{63963}{2408000}.
 }
 \]
 
@@ -103,7 +103,7 @@ so
 
 \[
 \boxed{
-d(a)>\frac{5707773}{351568000}.
+d(a)>\frac{63963}{2408000}.
 }
 \]
 
@@ -123,16 +123,22 @@ one has exactly
 \|S\|^2=\sinh a-a.
 \]
 
-For \(0<a\le1/16<1\), Taylor's theorem and \(\cosh1<2\) give
+For \(0<a\le1/8<1\), Taylor's theorem and \(\cosh1<2\) give
 
 \[
 \sinh a-a
 <
 \frac{a^3}{3}
 \le
-\frac1{3\cdot16^3}
-=
-\boxed{\frac1{12288}}.
+\frac1{1536}.
+\]
+
+Thus
+
+\[
+\boxed{
+\|S\|^2<\frac1{1536}.
+}
 \]
 
 ## 5. Resolvent scalar upper bound
@@ -167,10 +173,10 @@ Hence
 \[
 m(a)
 <
-\frac{1/12288}{5707773/351568000}
+\frac{1/1536}{63963/2408000}
 =
 \boxed{
-\frac{2746625}{547946208}
+\frac{37625}{1535112}
 }.
 \]
 
@@ -188,7 +194,7 @@ Therefore
 \boxed{
 \Delta_H(a)
 >
-\frac{271226479}{547946208}.
+\frac{729931}{1535112}.
 }
 \]
 
@@ -199,14 +205,14 @@ In particular, \(\Delta_H(a)>0\).
 For every
 
 \[
-0<a\le\frac1{16},
+0<a\le\frac18,
 \]
 
 the guarded chain yields
 
 \[
 \boxed{
-d(a)>\frac{5707773}{351568000}
+d(a)>\frac{63963}{2408000}
 }
 \]
 
@@ -214,12 +220,12 @@ and
 
 \[
 \boxed{
-\Delta_H(a)>\frac{271226479}{547946208}.
+\Delta_H(a)>\frac{729931}{1535112}.
 }
 \]
 
 Thus the two R043 continuation margins begin with explicit uniform
-separation from zero on the full perturbatively proved simple-even interval.
+separation from zero on the full R045 simple-even interval.
 
 ## 8. Relation to the full parity gap
 
@@ -229,24 +235,23 @@ RH-R041 proves, whenever \(d(a)>0\) and \(\Delta_H(a)>0\),
 g(a)\ge2d(a)\Delta_H(a).
 \]
 
-The direct R040 lower bound on \(g\) is stronger than the bound obtained by
-substituting the coarse estimates above, so the R040 value remains the
-preferred full-gap certificate.
+The direct R045 lower bound on \(g\) is stronger than the value obtained by
+substituting the coarse margin estimates, so R045 remains the preferred
+full-gap certificate.
 
 ## 9. What this changes
 
-Continuation may now start at the edge \(a=1/16\) with explicit error
-budgets
+Continuation may now start at the edge \(a=1/8\) with explicit error budgets
 
 \[
-d_0=\frac{5707773}{351568000},
+d_0=\frac{63963}{2408000},
 \qquad
-\Delta_0=\frac{271226479}{547946208}.
+\Delta_0=\frac{729931}{1535112}.
 \]
 
-The next non-perturbative step can therefore ask for a quantitative bound on
-the variation of \(d\) and \(\Delta_H\) beyond \(1/16\), rather than merely
-their qualitative continuity.
+The next nonperturbative step can ask for a quantitative bound on the
+variation of \(d\) and \(\Delta_H\) beyond \(1/8\), rather than merely their
+qualitative continuity.
 
 ## 10. False-proof firewall
 
@@ -255,7 +260,7 @@ Reject:
 1. replacing the strict R040 work-branch theorem by this package before
    R040's provider and exact-head CI gates are protected;
 2. inferring that \(d(a)\) or \(\Delta_H(a)\) stays positive for
-   \(a>1/16\);
+   \(a>1/8\);
 3. using the scalar resolvent outside \(d(a)>0\);
 4. replacing the full operator norm \(\|S\|\) by a finite Galerkin vector
    norm without an exact identification;
@@ -266,7 +271,7 @@ Reject:
 
 This theorem does not prove:
 
-- continuation beyond \(a=1/16\);
+- continuation beyond \(a=1/8\);
 - monotonicity of \(d\) or \(\Delta_H\);
 - positivity at the R039 points;
 - all-\(a\) even-simplicity;
