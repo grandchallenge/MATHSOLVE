@@ -471,7 +471,7 @@ subject to its provider/admission gates,
 \[
 g(a)>0
 \quad
-(0<a\le1/50).
+(0<a\le1/16).
 \]
 
 Once that theorem is protected, continuity implies that
@@ -481,14 +481,14 @@ Once that theorem is protected, continuity implies that
 \]
 
 is open and has a connected component adjacent to \(a=0\) containing
-\((0,1/50]\).
+\((0,1/16]\).
 
 Write that component as
 
 \[
 (0,a_*),
 \qquad
-a_*\in(1/50,\infty].
+a_*\in(1/16,\infty].
 \]
 
 If \(a_*<\infty\), then necessarily
