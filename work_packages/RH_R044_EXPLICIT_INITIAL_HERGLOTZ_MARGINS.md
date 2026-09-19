@@ -48,7 +48,7 @@ This package supplies explicit strictly positive initial values for both
 margins on the guarded effective small-\(a\) interval
 
 \[
-0<a\le\frac1{50}.
+0<a\le\frac1{24}.
 \]
 
 The bounds are deliberately coarse and fully elementary.
@@ -58,7 +58,7 @@ The bounds are deliberately coarse and fully elementary.
 The guarded RH-R040 theorem proves, on
 
 \[
-0<a\le\frac1{50},
+0<a\le\frac1{24},
 \]
 
 the quantitative estimate
@@ -88,14 +88,14 @@ and
 \sqrt2<\frac32.
 \]
 
-Since \(a\le1/50\),
+Since \(a\le1/24\),
 
 \[
 6\sqrt2\,a
 <
-6\cdot\frac32\cdot\frac1{50}
-=
-\frac9{50}.
+9a
+\le
+\frac38.
 \]
 
 Therefore
@@ -108,16 +108,13 @@ g(a)
 -
 1
 -
-\frac9{50}
+\frac38
 \\
 &=
-\frac{31}{81}-\frac9{50}
+\frac{31}{81}-\frac38
 \\
 &=
-\frac{1550-729}{4050}
-\\
-&=
-\boxed{\frac{821}{4050}}.
+\boxed{\frac5{648}}.
 \end{aligned}
 \]
 
@@ -125,7 +122,7 @@ Hence throughout the interval,
 
 \[
 \boxed{
-g(a)>\frac{821}{4050}>0.
+g(a)>\frac5{648}>0.
 }
 \]
 
@@ -179,7 +176,7 @@ Using Section 2,
 
 \[
 \boxed{
-d(a)>\frac{821}{4050}.
+d(a)>\frac5{648}.
 }
 \]
 
@@ -220,7 +217,7 @@ So
 }
 \]
 
-For \(0<a\le1/50<1\), Taylor's theorem gives
+For \(0<a\le1/24<1\), Taylor's theorem gives
 
 \[
 \sinh a-a
@@ -245,7 +242,7 @@ Therefore
 <
 \frac1{3\cdot50^3}
 =
-\boxed{\frac1{375000}}.
+\boxed{\frac1{41472}}.
 \]
 
 ## 5. Resolvent scalar upper bound
@@ -294,7 +291,7 @@ Using Sections 3 and 4,
 \[
 m(a)
 <
-\frac{1/375000}{821/4050}.
+\frac{1/41472}{5/648}.
 \]
 
 Since
@@ -311,7 +308,7 @@ we obtain
 \boxed{
 m(a)
 <
-\frac{27}{2052500}.
+\frac1{320}.
 }
 \]
 
@@ -339,9 +336,7 @@ Hence
 \boxed{
 \Delta_H(a)
 >
-\frac12
--
-\frac{27}{2052500}.
+\frac{159}{320}.
 }
 \]
 
@@ -360,14 +355,14 @@ The lower bound is close to \(1/2\); no sharpness claim is made.
 Combining the results, for every
 
 \[
-0<a\le\frac1{50}
+0<a\le\frac1{24}
 \]
 
 the guarded chain yields
 
 \[
 \boxed{
-d(a)>\frac{821}{4050}
+d(a)>\frac5{648}
 }
 \]
 
@@ -377,7 +372,7 @@ and
 \boxed{
 \Delta_H(a)
 >
-\frac12-\frac{27}{2052500}.
+\frac12-\frac1{320}.
 }
 \]
 
@@ -401,16 +396,16 @@ Applying the present lower bounds gives a secondary certified lower bound
 g(a)
 >
 2
-\left(\frac{821}{4050}\right)
+\left(\frac5{648}\right)
 \left(
-\frac12-\frac{27}{2052500}
+\frac12-\frac1{320}
 \right).
 \]
 
 This secondary value is weaker than the direct RH-R040 bound
 
 \[
-g(a)>\frac{821}{4050},
+g(a)>\frac5{648},
 \]
 
 so it is retained only as a consistency check on the continuation
@@ -433,10 +428,10 @@ d\ge d_0,
 with
 
 \[
-d_0=\frac{821}{4050},
+d_0=\frac5{648},
 \qquad
 \Delta_0=
-\frac12-\frac{27}{2052500}.
+\frac{159}{320}.
 \]
 
 A continuation proof may therefore spend a controlled error budget against
@@ -449,7 +444,7 @@ Reject:
 1. replacing the strict R040 work-branch theorem by this package before
    R040's provider and exact-head CI gates are protected;
 2. inferring that \(d(a)\) or \(\Delta_H(a)\) stays positive for
-   \(a>1/50\);
+   \(a>1/24\);
 3. using the scalar resolvent outside \(d(a)>0\);
 4. replacing the full operator norm \(\|S\|\) by a finite Galerkin vector
    norm without an exact identification;
@@ -460,7 +455,7 @@ Reject:
 
 This theorem does not prove:
 
-- continuation beyond \(a=1/50\);
+- continuation beyond \(a=1/24\);
 - monotonicity of \(d\) or \(\Delta_H\);
 - positivity at the R039 points;
 - all-\(a\) even-simplicity;
