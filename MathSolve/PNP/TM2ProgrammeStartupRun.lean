@@ -96,23 +96,32 @@ theorem tm2ProgrammeCopyConfig_after_bit {decision : List Bool → Bool}
     · subst tape
       simp [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
         tm2CopyBitAction, tm2MoveSelected, HeadMove.apply]
-    · simp [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
-        tm2CopyBitAction, tm2MoveSelected, HeadMove.apply,
-        Function.update_of_ne htape]
+    · simp only [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
+        tm2CopyBitAction, tm2MoveSelected]
+      rw [Function.update_of_ne htape, if_neg htape]
+      rfl
   · funext tape position
     by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
     · subst tape
-      simpa [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
-        tm2CopyBitAction, tm2ProgrammeReadyWork, tm2WriteSelected,
-        ProgrammeConfig.readWork] using
+      change
+        Function.update
+            (embedTM2TokenStack (copied.map Sum.inl) 0)
+            (if tm2TapeEquiv source source.tm.k₀ =
+                tm2TapeEquiv source source.tm.k₀
+             then (copied.length : Int) else 0)
+            (some (.inl bit)) position =
+          embedTM2TokenStack ((copied ++ [bit]).map Sum.inl) 0 position
+      rw [if_pos rfl]
+      simpa [List.map_append] using
         congrFun
           (embedTM2TokenStack_append_singleton
             (copied.map Sum.inl) (.inl bit))
           position
-    · simp [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
+    · simp only [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
         tm2CopyBitAction, tm2ProgrammeReadyWork, tm2WriteSelected,
-        ProgrammeConfig.readWork, htape, Function.update_of_ne htape,
-        Function.update_eq_self]
+        ProgrammeConfig.readWork]
+      rw [if_neg htape, Function.update_of_ne htape]
+      exact congrFun (Function.update_eq_self (fun _ : Int => none) 0) position
 
 /-- The zero-length copy configuration is the native Programme initial
 configuration; the input argument affects reads, not stored configuration data. -/
@@ -128,10 +137,15 @@ theorem tm2ProgrammeCopyConfig_nil_eq_init {decision : List Bool → Bool}
   · funext tape position
     by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
     · subst tape
-      simp [tm2ProgrammeCopyConfig, ProgrammeMachine.init,
-        tm2ProgrammeReadyWork, embedTM2TokenStack, tm2ProgrammeMachine]
-    · simp [tm2ProgrammeCopyConfig, ProgrammeMachine.init,
-        tm2ProgrammeReadyWork, tm2ProgrammeMachine, htape]
+      change embedTM2TokenStack [] 0 position = tm2ProgrammeBlank source.tm
+      rw [congrFun (embedTM2TokenStack_nil_zero (tm := source.tm)) position]
+      rfl
+    · change
+        (if tape = tm2TapeEquiv source source.tm.k₀
+         then embedTM2TokenStack [] 0 else fun _ => none) position =
+          tm2ProgrammeBlank source.tm
+      rw [if_neg htape]
+      rfl
 
 /-- Reading at the first position after a copied segment returns the next input bit. -/
 theorem programmeInputRead_append_head
