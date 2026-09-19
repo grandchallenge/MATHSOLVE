@@ -22,31 +22,34 @@ arXiv:2606.09096v2 (17 August 2026), especially equations (2.2),
 Let \(A_a\) be the canonical self-adjoint operator representing the
 localized Weil quadratic form on \(L^2(-a,a)\).
 
+The proof yields two nested effective statements.
+
 For every
+
+\[
+0<a\le \frac1{24},
+\]
+
+the lowest eigenvalue of \(A_a\) is simple and has an even eigenfunction.
+Equivalently,
+
+\[
+\epsilon_+(e^a)<\epsilon_-(e^a)
+\]
+
+and the lowest even-sector eigenvalue is simple.
+
+On the smaller interval
 
 \[
 0<a\le \frac1{50},
 \]
 
-the lowest eigenvalue of \(A_a\):
+the same ground eigenvalue is additionally strictly positive.
 
-1. is strictly positive;
-2. is simple;
-3. has an even eigenfunction.
-
-Equivalently, with \(\lambda=e^a\),
-
-\[
-1<\lambda\le e^{1/50},
-\]
-
-the lowest even-sector eigenvalue is simple and
-
-\[
-\epsilon_+(\lambda)<\epsilon_-(\lambda).
-\]
-
-This is a conservative effective interval.  It is not asserted to be sharp.
+Thus one may take \(e^{1/24}\) as an explicit conservative simple-even
+cutoff and \(e^{1/50}\) as an explicit conservative positive-simple-even
+cutoff. Neither is asserted to be sharp.
 
 ## 2. Scaled source form before the first prime threshold
 
@@ -504,13 +507,7 @@ The parity gap satisfies
 2\log2-1-6\sqrt2\,a.
 \]
 
-For
-
-\[
-0<a\le\frac1{50},
-\]
-
-use the elementary inequalities
+Use the elementary inequalities
 
 \[
 \log2
@@ -522,27 +519,47 @@ use the elementary inequalities
 \sqrt2<\frac32.
 \]
 
-Then
+For
+
+\[
+0<a\le\frac1{24},
+\]
+
+one has
+
+\[
+6\sqrt2\,a
+<
+9a
+\le
+\frac38.
+\]
+
+Therefore the even-sector internal gap obeys
 
 \[
 \log2-\frac14-6\sqrt2\,a
 >
-\frac{143}{324}-\frac9{50}
+\frac{56}{81}-\frac14-\frac38
+=
+\frac{43}{648}
 >
 0,
 \]
 
-and
+and the parity gap obeys
 
 \[
 2\log2-1-6\sqrt2\,a
 >
-\frac{31}{81}-\frac9{50}
+\frac{112}{81}-1-\frac38
+=
+\frac5{648}
 >
 0.
 \]
 
-Hence:
+Hence throughout \(0<a\le1/24\):
 
 - the lowest even eigenvalue is simple;
 - the lowest odd eigenvalue lies strictly above it;
@@ -604,14 +621,13 @@ So the ground eigenvalue is strictly positive throughout the claimed interval.
 
 ## 9. Effective theorem
 
-Combining Sections 7 and 8:
+Section 7 gives the structural theorem
 
 \[
 \boxed{
-0<a\le\frac1{50}
+0<a\le\frac1{24}
 \Longrightarrow
 \begin{cases}
-\lambda_a>0,\\
 \lambda_a\text{ is simple},\\
 v_a\text{ is even},\\
 \epsilon_+(e^a)<\epsilon_-(e^a).
@@ -619,21 +635,30 @@ v_a\text{ is even},\\
 }
 \]
 
-Equivalently, one may take the explicit conservative parameter
+Section 8 supplies the additional positivity certificate
 
 \[
-\lambda_0=e^{1/50}.
+\boxed{
+0<a\le\frac1{50}
+\Longrightarrow
+\lambda_a>0.
+}
 \]
 
-No claim is made that this is the maximal interval.
+Therefore:
+
+- \(e^{1/24}\) is an explicit conservative simple-even cutoff;
+- \(e^{1/50}\) is an explicit conservative positive-simple-even cutoff.
+
+No claim is made that either cutoff is maximal.
 
 ## 10. Falsification checks
 
 The proof depends on the following exact points.
 
 1. The prime sum must be absent.
-   This holds because
-   \(2a\le1/25<\log2\).
+   For the larger structural interval,
+   \(2a\le1/12<\log2\), so the no-prime formula still applies.
 
 2. The constant must belong to the closed limiting form domain.
    This follows because the fixed-\(a\) closed forms differ from
@@ -657,7 +682,7 @@ The proof depends on the following exact points.
 
 This theorem does not prove:
 
-- simplicity/evenness for \(a>1/50\);
+- simplicity/evenness for \(a>1/24\);
 - monotonic continuation of the parity gap;
 - any statement at \(a=\tfrac12\log13\) or
   \(a=\tfrac12\log14\);
