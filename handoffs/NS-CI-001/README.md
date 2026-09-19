@@ -2478,6 +2478,29 @@ identity ties q_h to the L5-35 metric moments, no transport/source law has
 been derived for it, and no NF5-style localized LP reconstruction converts
 compressed q_h-mass into a selector event.
 
+### L5-44 critical second-moment density balance
+
+`work_packages/NS_CI_R014_A2_L5_44_C2_DIRECTION_CRITICAL_DENSITY_BALANCE.md` records
+
+`CRITICAL_SECOND_MOMENT_DENSITY_HAS_EXACT_COMPRESSION_PRODUCTION__BALANCE_CHANNELS_IDENTIFIED`.
+
+For the limiting L5-35 density
+
+    q2 = J^(-1) |F_Z|^2 |A|^2,
+
+with q4 = J^(-3)|F_Z|^4|A|^2 and alpha=(partial_Y v)∘chi,
+
+    q2_s = alpha_- q2 - alpha_+ q2
+           + 2 F_Z (partial_Y G∘chi)|A|^2 - 2 q4.
+
+Thus compression is an exact positive production term for the actual critical
+second-moment density. Its integrated ledger is balanced only by terminal Q2
+growth, expansion overlap, the signed phase-gradient source, and integrated
+q4 damping.
+
+This resolves the L5-43 abstract-density gap at the limiting L5-35 level, but
+does not yet prove any one balance channel is a selector charge.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -2492,15 +2515,15 @@ compressed q_h-mass into a selector event.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-CRITICAL-DENSITY-RECONSTRUCTION**.
+The live obligation is now **C2-MIX-DIRECTION-COMPRESSION-LEDGER-CHARGE**.
 
 L5-39 rules out a uniform all-streamline conversion from scalar shell/A2/Leray
 budgets to unweighted direction strain.  The next bounded question is:
 
-> Construct an equation-derived critical-observable density from the actual
-> selected packet, derive its transport/source law under the direction frame,
-> and prove the reconstruction that converts compressed critical mass into a
-> physical LP threshold or selector/dissipation charge.
+> Determine whether selected active-band dynamics can control the expansion
+> and signed phase-source balance channels, or convert the q4 damping / terminal
+> q2 growth forced by persistent compression into a physical LP threshold and
+> selector/dissipation charge.
 
 Test packet-weighted or almost-everywhere control before seeking a uniform
 frame theorem.  Any candidate derived only from coarse annular-supremum, `Lambda in L2_t`,
