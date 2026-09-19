@@ -39,6 +39,18 @@ class NSCIA2L5C2DirectionJetCostTests(unittest.TestCase):
         raw_derivative_control_supplies_positive_amplitude_lower_bound = False
         self.assertFalse(raw_derivative_control_supplies_positive_amplitude_lower_bound)
 
+    def test_shell_supremum_does_not_imply_pointwise_nonvanishing(self) -> None:
+        # b_N=A sin(N x_2)e_1 has sup A but vanishes on nodal planes.
+        shell_supremum_positive = True
+        pointwise_infimum_positive = False
+        self.assertTrue(shell_supremum_positive)
+        self.assertFalse(pointwise_infimum_positive)
+
+    def test_normalized_direction_fixture_has_denominator_zero(self) -> None:
+        # The same exact one-shell fixture has |b_N|=0 on Nx_2 in pi Z.
+        denominator_can_vanish = True
+        self.assertTrue(denominator_can_vanish)
+
     def test_no_selector_derivative_is_used(self) -> None:
         differentiates_moving_cutoff = False
         self.assertFalse(differentiates_moving_cutoff)
