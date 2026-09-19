@@ -55,6 +55,8 @@ theorem tm2ProgrammeCopyConfig_after_done {decision : List Bool → Bool}
     · simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
         ProgrammeConfig.afterAction, tm2CopyDoneAction,
         tm2MoveSelected, HeadMove.apply, htape]
+      rw [Function.update_of_ne htape]
+      rfl
   · funext tape position
     simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
       ProgrammeConfig.afterAction, tm2CopyDoneAction, tm2PreserveWork,
@@ -82,6 +84,8 @@ theorem tm2ProgrammeRewindConfig_after_bit {decision : List Bool → Bool}
           tm2MoveSelected, HeadMove.apply]
     · simp [tm2ProgrammeRewindConfig, ProgrammeConfig.afterAction,
         tm2RewindBitAction, tm2MoveSelected, HeadMove.apply, htape]
+      rw [Function.update_of_ne htape]
+      rfl
   · funext tape position
     simp [tm2ProgrammeRewindConfig, ProgrammeConfig.afterAction,
       tm2RewindBitAction, tm2PreserveWork, ProgrammeConfig.readWork,
@@ -122,6 +126,8 @@ theorem tm2ProgrammeRewindConfig_after_done {decision : List Bool → Bool}
     · simp [tm2ProgrammeRewindConfig, tm2ProgrammeReadyConfig,
         ProgrammeConfig.afterAction, tm2RewindDoneAction,
         tm2MoveSelected, HeadMove.apply, htape]
+      rw [Function.update_of_ne htape]
+      rfl
   · funext tape position
     simp [tm2ProgrammeRewindConfig, tm2ProgrammeReadyConfig,
       ProgrammeConfig.afterAction, tm2RewindDoneAction, tm2PreserveWork,
