@@ -237,7 +237,15 @@ theorem programmeTM2_initialization_run (M : ProgrammeMachine) (input : List Boo
         (Turing.initList (programmeTM2Machine M) input)
         (some (programmeTM2ReadyInitCfg M input))
         (2 * input.length + 3)) := by
-  rcases programmeTM2_initToTemp_run M input [] none [] with ⟨hfirst⟩
+  rcases programmeTM2_initToTemp_run M input [] none [] with ⟨hfirstRaw⟩
+  have hfirst :
+      StateTransition.EvalsToInTime
+        (programmeTM2Machine M).step
+        (programmeTM2InitCfg M .initToTemp none input [] [])
+        (some
+          (programmeTM2InitCfg M .initToRight none [] input.reverse []))
+        (input.length + 1) := by
+    simpa using hfirstRaw
   rcases programmeTM2_initToRight_run M input.reverse [] none with ⟨hsecondRaw⟩
   have hsecond :
       StateTransition.EvalsToInTime
