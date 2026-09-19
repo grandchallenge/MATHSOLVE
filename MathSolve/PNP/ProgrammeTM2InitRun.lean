@@ -44,6 +44,48 @@ def programmeTM2InitStacks (M : ProgrammeMachine)
     (raw temp : List Bool) (right : List (Option Bool)) :
     programmeTM2InitStacks M raw temp right .inputRight = right := rfl
 
+@[simp] theorem programmeTM2InitStacks_raw_head_cons (M : ProgrammeMachine)
+    (bit : Bool) (raw temp : List Bool) (right : List (Option Bool)) :
+    (programmeTM2InitStacks M (bit :: raw) temp right .rawInput).head? = some bit := rfl
+
+@[simp] theorem programmeTM2InitStacks_raw_tail_cons (M : ProgrammeMachine)
+    (bit : Bool) (raw temp : List Bool) (right : List (Option Bool)) :
+    (programmeTM2InitStacks M (bit :: raw) temp right .rawInput).tail = raw := rfl
+
+@[simp] theorem programmeTM2InitStacks_raw_head_nil (M : ProgrammeMachine)
+    (temp : List Bool) (right : List (Option Bool)) :
+    (programmeTM2InitStacks M [] temp right .rawInput).head? = none := rfl
+
+@[simp] theorem programmeTM2InitStacks_raw_tail_nil (M : ProgrammeMachine)
+    (temp : List Bool) (right : List (Option Bool)) :
+    (programmeTM2InitStacks M [] temp right .rawInput).tail = [] := rfl
+
+@[simp] theorem programmeTM2InitStacks_temp_head_cons (M : ProgrammeMachine)
+    (raw : List Bool) (bit : Bool) (temp : List Bool)
+    (right : List (Option Bool)) :
+    (programmeTM2InitStacks M raw (bit :: temp) right .inputTemp).head? = some bit := rfl
+
+@[simp] theorem programmeTM2InitStacks_temp_tail_cons (M : ProgrammeMachine)
+    (raw : List Bool) (bit : Bool) (temp : List Bool)
+    (right : List (Option Bool)) :
+    (programmeTM2InitStacks M raw (bit :: temp) right .inputTemp).tail = temp := rfl
+
+@[simp] theorem programmeTM2InitStacks_temp_head_nil (M : ProgrammeMachine)
+    (raw : List Bool) (right : List (Option Bool)) :
+    (programmeTM2InitStacks M raw [] right .inputTemp).head? = none := rfl
+
+@[simp] theorem programmeTM2InitStacks_temp_tail_nil (M : ProgrammeMachine)
+    (raw : List Bool) (right : List (Option Bool)) :
+    (programmeTM2InitStacks M raw [] right .inputTemp).tail = [] := rfl
+
+@[simp] theorem programmeTM2InitStacks_right_head (M : ProgrammeMachine)
+    (raw temp : List Bool) (right : List (Option Bool)) :
+    (programmeTM2InitStacks M raw temp right .inputRight).head? = right.head? := rfl
+
+@[simp] theorem programmeTM2InitStacks_right_tail (M : ProgrammeMachine)
+    (raw temp : List Bool) (right : List (Option Bool)) :
+    (programmeTM2InitStacks M raw temp right .inputRight).tail = right.tail := rfl
+
 /-- Closed-form configuration for the two initialization labels. -/
 def programmeTM2InitCfg (M : ProgrammeMachine)
     (label : ProgrammeTM2Mode M.workTapeCount) (symbol : Option Bool)
@@ -113,10 +155,10 @@ theorem programmeTM2_step_initToTemp_cons (M : ProgrammeMachine)
         (programmeTM2InitCfg M .initToTemp (some bit) raw (bit :: temp) right) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToTemp, Turing.TM2.stepAux,
-    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_raw,
-    programmeTM2InitStacks_temp]
-  rw [List.head?_cons, Option.isSome_some, Bool.cond_true,
-    List.tail_cons, Option.getD_some]
+    programmeTM2InitCfg, programmeTM2InitState,
+    programmeTM2InitStacks_raw_head_cons, programmeTM2InitStacks_raw_tail_cons,
+    programmeTM2InitStacks_temp, Option.isSome_some, Bool.cond_true,
+    Option.getD_some]
   apply congrArg some
   apply programmeTM2Cfg_ext
   · rfl
@@ -132,8 +174,9 @@ theorem programmeTM2_step_initToTemp_nil (M : ProgrammeMachine)
       some (programmeTM2InitCfg M .initToRight none [] temp right) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToTemp, Turing.TM2.stepAux,
-    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_raw]
-  rw [List.head?_nil, Option.isSome_none, Bool.cond_false, List.tail_nil]
+    programmeTM2InitCfg, programmeTM2InitState,
+    programmeTM2InitStacks_raw_head_nil, programmeTM2InitStacks_raw_tail_nil,
+    Option.isSome_none, Bool.cond_false]
   apply congrArg some
   apply programmeTM2Cfg_ext
   · rfl
@@ -151,10 +194,10 @@ theorem programmeTM2_step_initToRight_cons (M : ProgrammeMachine)
         (programmeTM2InitCfg M .initToRight (some bit) [] temp (some bit :: right)) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToRight, Turing.TM2.stepAux,
-    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_temp,
-    programmeTM2InitStacks_right]
-  rw [List.head?_cons, Option.isSome_some, Bool.cond_true,
-    List.tail_cons, Option.getD_some]
+    programmeTM2InitCfg, programmeTM2InitState,
+    programmeTM2InitStacks_temp_head_cons, programmeTM2InitStacks_temp_tail_cons,
+    programmeTM2InitStacks_right, Option.isSome_some, Bool.cond_true,
+    Option.getD_some]
   apply congrArg some
   apply programmeTM2Cfg_ext
   · rfl
@@ -170,8 +213,9 @@ theorem programmeTM2_step_initToRight_nil (M : ProgrammeMachine)
       some (programmeTM2InitCfg M .initFinish none [] [] right) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToRight, Turing.TM2.stepAux,
-    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_temp]
-  rw [List.head?_nil, Option.isSome_none, Bool.cond_false, List.tail_nil]
+    programmeTM2InitCfg, programmeTM2InitState,
+    programmeTM2InitStacks_temp_head_nil, programmeTM2InitStacks_temp_tail_nil,
+    Option.isSome_none, Bool.cond_false]
   apply congrArg some
   apply programmeTM2Cfg_ext
   · rfl
@@ -193,7 +237,8 @@ theorem programmeTM2_step_initFinish (M : ProgrammeMachine)
           stk := programmeTM2InitStacks M [] [] right.tail } := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitFinish, Turing.TM2.stepAux,
-    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_right]
+    programmeTM2InitCfg, programmeTM2InitState,
+    programmeTM2InitStacks_right_head, programmeTM2InitStacks_right_tail]
   apply congrArg some
   apply programmeTM2Cfg_ext
   · rfl
