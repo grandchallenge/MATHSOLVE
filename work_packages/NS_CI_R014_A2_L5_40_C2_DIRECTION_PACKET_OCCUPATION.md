@@ -130,9 +130,9 @@ E(Z)R_\beta(Z).
 
 This is the packet-occupation factorization.
 
-The Jacobian weight is not decorative.  It is the unique natural weight that
-allows the first factor to return to physical coordinates without assuming the
-frame is already uniformly bi-Lipschitz.
+The Jacobian weight is the one used here to return the first factor to
+physical coordinates without assuming the frame is already uniformly
+bi-Lipschitz.
 
 ## 3. Eulerian control of the weighted factor
 
@@ -252,7 +252,7 @@ portion of a critical observable under consideration.
 If a family `q_h` is uniformly integrable in label space and carries a fixed
 positive total critical contribution, then the preceding bad-label measure
 bound allows one to choose `K` so that the high-strain labels carry
-arbitrarily small `q_h)-mass.
+arbitrarily small `q_h`-mass.
 
 Thus a sufficient first-order route to preserve critical mass is:
 
