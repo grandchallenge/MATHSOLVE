@@ -2218,7 +2218,7 @@ records
 
 ```text
 RECIPROCAL_PACKET_OCCUPATION_CONTROLS_TANGENT_COCYCLE_AE
-__COARSE_A2_LERAY_DOES_NOT_CONTROL_OCCUPATION.
+__RECIPROCAL_AMPLITUDE_NOT_CONTROLLED_BY_COARSE_A2_LERAY.
 ```
 
 For a one-dimensional direction characteristic `chi` with
@@ -2284,14 +2284,17 @@ and the labels with `Omega_abs>K` have measure at most the right-hand side
 divided by `K`.  On the complementary labels the tangent Jacobian lies
 between `e^{-K}` and `e^K`.
 
-The protected L5-39 elliptic shear calibrates the missing quantity exactly:
-with `J=1`, `beta=1`, and a parabolic interval,
-the reciprocal occupation diverges like `1/epsilon` even though the coarse
+The protected L5-39 elliptic shear calibrates the reciprocal-amplitude
+component exactly on its invariant physical labels: its spatially averaged
+`1/|b|^2` occupation diverges like `1/epsilon` even though the coarse
 annular-supremum, energy, Leray-dissipation, and `Lambda^2` occupancy
-envelopes remain uniformly controlled.
+envelopes remain uniformly controlled.  This does not identify the physical
+labels with the L5-37 direction characteristic or control the additional
+`|beta|^2/J` factor.
 
 Thus the first-order denominator gap is now an explicit packet-occupation
-functional, not an unspecified nondegeneracy condition.  The result is
+functional with a separately exposed amplitude obstruction, not an unspecified
+nondegeneracy condition.  The result is
 conditional and almost-everywhere; it is not the full smooth L5-35 frame
 contract and does not control `U2,U3,U4`.
 
