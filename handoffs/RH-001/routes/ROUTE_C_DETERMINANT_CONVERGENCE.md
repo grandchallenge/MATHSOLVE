@@ -2,6 +2,9 @@
 
 Status: ACTIVE_PARALLEL_ROUTE
 
+Coordination tracker:
+grandchallenge/MATHSOLVE#414
+
 Route role: attack the terminal sufficient RH bridge directly, without requiring construction of one limiting self-adjoint Hilbert-Polya operator first.
 
 Current protected campaign head at pack creation:
