@@ -241,17 +241,24 @@ amplitude-weighted spatial control to unweighted pathwise control.
 
 ## 5. What the calibration rejects
 
-No estimate of the schematic form
+No estimate obtained only from the **coarse campaign budget envelopes**
 
 ```text
-uniform pathwise direction-strain
-    <=
-F(shell supremum, Lambda L2 occupancy, energy, Leray dissipation)
+annular-supremum bound
++ Lambda L2 occupancy bound
++ kinetic-energy bound
++ Leray-dissipation bound
 ```
 
-can hold for all streamlines with a right-hand side independent of local
-amplitude/nondegeneracy information, even in this exact smooth periodic
-unforced NSE family.
+can yield an epsilon-independent uniform all-streamline direction-strain
+constant for this family.  All of those inequalities admit constants uniform
+in epsilon, while the pathwise strain diverges like 1/epsilon.
+
+This statement is intentionally narrower than a claim about every possible
+scalar diagnostic.  For example, sufficiently precise polarization-sensitive
+ratios of exact scalar observables could themselves encode epsilon.  The
+calibration rejects derivations from the **existing coarse A2/Leray budgets**,
+not such augmented information.
 
 The reason is structural:
 
@@ -263,8 +270,9 @@ streamline amplitude:      proportional to epsilon
 normalized direction jet:  proportional to 1/epsilon.
 ```
 
-This rejects a **uniform all-streamline** scalar-budget bridge.  It does not
-reject a packet-weighted, almost-everywhere, mass-selected, or whole-space
+This rejects a **uniform all-streamline bridge derived only from the existing
+coarse scalar budget envelopes**.  It does not reject a polarization-sensitive
+diagnostic, packet-weighted, almost-everywhere, mass-selected, or whole-space
 bridge using additional PDE structure.
 
 ## 6. Surviving occupation interface
@@ -300,7 +308,8 @@ Reject any successor that:
 - infers a pointwise lower bound on `|b|` from a shell supremum;
 - treats the periodic calibration as a whole-space A2 counterexample;
 - assumes the L5-38 weighted estimate already implies an unweighted cocycle;
-- uses `\Lambda\in L^2_t` as a bound on reciprocal streamline amplitude;
+- uses `\Lambda\in L^2_t` or coarse energy/dissipation envelopes as a bound
+  on reciprocal streamline amplitude;
 - differentiates the moving selector;
 - requires uniform control of all streamlines if only packet-mass control is
   actually needed;
