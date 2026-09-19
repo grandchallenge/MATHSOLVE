@@ -1,0 +1,53 @@
+You are taking over RH-001 Forward Route A in grandchallenge/MATHSOLVE with zero prior context.
+
+Mission: extend the rigorously proved full-operator simple-even interval for the localized Weil operator beyond the current protected endpoint. Do not treat finite numerical evidence as proof.
+
+Mandatory first actions:
+1. Read AGENTS.md.
+2. Re-fetch the current protected main branch. Do not assume the SHA in this prompt is still current.
+3. Read handoffs/RH-001/README.md.
+4. Read handoffs/RH-001/routes/ROUTE_A_LOCAL_ANALYTIC_CONTINUATION.md in full.
+5. Read work_packages/RH_R050_TRIAL_REWEIGHTED_EXTENSION.md and its protected predecessors R048 and R049. Read R045-R047 if you change remainder or coercivity arguments.
+6. Read the protected source audit at grandchallenge/MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320, reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md.
+
+Protected snapshot at route-pack creation: MATHSOLVE main 7387aa8993355ab854630cf0683b4120a813884c. This is a historical bind, not permission to work on a stale base.
+
+Current protected mathematical frontier at pack creation:
+a = log(lambda) <= 171/1000,
+with strict parity gap and simple lowest even eigenvalue for the full localized Weil operator. R050 is the current theorem package.
+
+Your objective is not to retune one scalar coefficient for a negligible endpoint gain. Choose a structural improvement:
+- richer positive even trial space;
+- stronger odd-sector coercivity;
+- sharper parity-sensitive smooth-remainder control;
+- or a clean combination of these.
+
+Prefer a reusable lemma over a one-off decimal improvement.
+
+Proof discipline:
+- Work on the actual infinite-dimensional form/operator.
+- Use exact arithmetic or rigorously proved inequalities.
+- Numerics may be used only for reconnaissance; selected claims must be converted to exact proof.
+- Preserve the no-prime regime formula only while 2a < log 2.
+- If your result reaches the first prime-entry threshold a=(1/2)log2, stop reusing the no-prime formula and create an explicit new regime analysis.
+- Maintain explicit lower bounds for both the parity gap and even internal gap.
+- Keep a false-proof firewall and claim boundary in every theorem package.
+
+Do not claim RH, determinant convergence to Xi, all-a simple-evenness, positivity at the R039 large-a points, novelty, priority, or publication readiness.
+
+A meaningful result is one of:
+1. a protected theorem with endpoint strictly beyond the current protected frontier;
+2. a stronger reusable even/odd coercivity theorem;
+3. a stronger reusable remainder estimate;
+4. a protected obstruction theorem showing why a plausible continuation mechanism cannot improve the frontier.
+
+Execution doctrine:
+- Open a bounded issue and branch from live protected main.
+- Reuse protected predecessors rather than re-deriving them.
+- Run non-authoring Adversary and Referee passes on the exact candidate head.
+- Before merge, compose onto the then-current protected main if it moved.
+- Required Solve/GCL CI must be green on that exact head.
+- Merge, protected-readback, and update the canonical RH handoff.
+- Continue autonomously through recoverable failures. Stop only at a named governance, source, authentication, safety, materially changed-state, or substantive evidentiary boundary.
+
+Do not ask the Human Steward to restate authority already present in the repository.
