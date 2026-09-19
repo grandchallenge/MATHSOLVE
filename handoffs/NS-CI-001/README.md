@@ -2114,6 +2114,64 @@ signed clock records zero.
 Thus the nonseparable frame variable is the Lagrangian deformation-jet
 cocycle, not `int theta_h`.
 
+
+### L5-38 A2/Leray far-low jet-cost hierarchy
+
+`work_packages/NS_CI_R014_A2_L5_38_C2_DIRECTION_JET_COST.md`
+records
+
+```text
+A2_LERAY_CONTROLS_FAR_LOW_EULERIAN_JET_INTEGRALS
+__DIRECTION_NORMALIZATION_AND_TOP_BAND_JET_COST_REMAIN_OPEN.
+```
+
+For each fixed derivative order `m>=1`, define
+
+```math
+R_m(Q)
+=
+\left\lfloor
+\frac{2Q}{2m+1}
+\right\rfloor.
+```
+
+A2, Leray dissipation, and three-dimensional Bernstein give
+
+```math
+\int_0^T
+\sum_{q\le R_m(Q(t))}
+\|\nabla^m u_q(t)\|_\infty
+\,dt
+<
+\infty.
+```
+
+For `m=1,2,3,4`, the relative cutoffs are respectively
+
+```text
+2/3, 2/5, 2/7, 2/9.
+```
+
+The first boundary reproduces the protected L5-14 lower-two-thirds scale.
+These fractions are sharp only for the absolute A2/Leray/Bernstein pairing
+route.
+
+Raw jet control does not by itself control derivatives of an extracted
+normalized direction `e=b/|b|`: an exact divergence-free one-shell field can
+have arbitrarily large shell supremum while vanishing on nodal planes.
+However, on `{b!=0}` the exact projection identity gives
+
+```math
+|b|^2 |\nabla(b/|b|)|^2
+\le
+|\nabla b|^2.
+```
+
+Thus Leray energy already controls amplitude-weighted first angular strain.
+The unresolved first-order step is an occupation/pathwise bridge from this
+weighted Eulerian quantity to the unweighted L5-37 tangent cocycle. Higher
+weighted curvature/metric jets and the top active fractions remain open.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -2128,25 +2186,20 @@ cocycle, not `int theta_h`.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-JET-COST**.
+The live obligation is now **C2-MIX-DIRECTION-OCCUPATION**.
 
-L5-37 replaces the nonseparable frame black box by explicit Lagrangian
-deformation observables.  The remaining equation-level question is:
+L5-38 controls far-low raw Eulerian jets and exposes a denominator-free
+amplitude-weighted first angular-strain estimate. The next bounded question is:
 
-> Can selected active-band Navier--Stokes dynamics force the deformation-jet
-> cocycle to remain bounded on critical intervals, or does failure of one
-> cocycle component itself pay a selector/dissipation cost?
+> Can selected active-band Navier--Stokes dynamics convert amplitude-weighted
+> Eulerian angular strain into the unweighted pathwise tangent cocycle
+> `Omega_1` on the critical packet, or can an exact calibration refute such a
+> bridge under A2 alone?
 
-The next audit must keep separate:
-
-1. tangent strain `Omega_1`;
-2. curvature jet `U_2`;
-3. higher metric jets `U_3,U_4`;
-4. rigid basepoint motion `Xi`;
-5. Lagrangian accumulated scalar phase.
-
-Do not replace the pathwise cocycle by the scalar signed coefficient clock
-outside the separable class.
+Audit `Omega_1` first. Only after a valid occupation/pathwise bridge is
+established should the higher weighted quotient hierarchy for `U_2,U_3,U_4`
+be promoted. Do not infer pointwise nonvanishing from an active-shell supremum,
+and do not differentiate the moving selector.
 
 ## Authoritative pointers
 

@@ -25,6 +25,7 @@ from tests.test_ns_ci_a2_l5_c2_direction_moving_frame import NSCIA2L5C2Direction
 from tests.test_ns_ci_a2_l5_c2_direction_deformed_frame import NSCIA2L5C2DirectionDeformedFrameTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_direction_signed_flow_time import NSCIA2L5C2DirectionSignedFlowTimeTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_direction_pathordered_jet import NSCIA2L5C2DirectionPathorderedJetTests  # noqa: F401
+from tests.test_ns_ci_a2_l5_c2_direction_jet_cost import NSCIA2L5C2DirectionJetCostTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c3_diagonal_audit import NSCIA2L5C3DiagonalAuditTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_field_calibration import NSCIA2L5FieldCalibrationTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_forced_core_shell_calibration import NSCIA2L5ForcedCoreShellCalibrationTests  # noqa: F401
