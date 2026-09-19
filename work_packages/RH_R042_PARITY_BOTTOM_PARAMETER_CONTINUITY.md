@@ -12,6 +12,7 @@ reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md
 Protected theorem substrate:
 - RH-R036-QW-PARITY-GAP-REDUCTION-001
 - RH-R037-QW-SECTOR-GALERKIN-001
+- grandchallenge/MATHSOLVE@139f35f14ee831aa5aa3ed83b774b762965d58b3:work_packages/RH_R045_PARITY_SENSITIVE_REMAINDER.md
 
 Primary analytic source:
 Masatoshi Suzuki, *Weil's quadratic form via the screw function*,
@@ -484,8 +485,7 @@ g(a)=\epsilon_-(e^a)-\epsilon_+(e^a)
 
 ## 10. Continuation corollary conditional on RH-R045 effective admission
 
-The pre-route package RH-R045-PARITY-SENSITIVE-REMAINDER-001 proves,
-subject to its provider/admission gates,
+The protected RH-R045-PARITY-SENSITIVE-REMAINDER-001 proves
 
 \[
 g(a)>0
@@ -521,7 +521,7 @@ Thus a failure of the simple-even parity ordering cannot occur by a jump.
 Combined with the RH-R041 scalar resolvent interface, a finite endpoint
 can be attacked through the exact pole-localization and Herglotz margins.
 
-This corollary is not admitted until RH-R040 and RH-R041 are protected.
+The continuity theorem itself is independent of RH-R041. The endpoint classification through the scalar resolvent interface is used only after RH-R041 is protected.
 
 ## 11. Falsification checks
 
