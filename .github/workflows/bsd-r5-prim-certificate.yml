@@ -42,8 +42,15 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: '3.12'
-      - name: Run R5-PRIM operation preflight
-        run: python tools/gcl_campaign_preflight_r5_prim.py BSD-001 BSD-R5-PRIM
+      - name: Validate current or historical operation state
+        shell: bash
+        run: |
+          current=$(python -c "import json; print(json.load(open('.gcl/campaigns/BSD-001/CAMPAIGN_STATE.json'))['current_operation'])")
+          if [ "$current" = "BSD-R5-PRIM" ]; then
+            python tools/gcl_campaign_preflight_r5_prim.py BSD-001 BSD-R5-PRIM
+          else
+            python tools/gcl_completion_receipt_validate_v2.py BSD-R5-PRIM
+          fi
       - name: Replay protected R5-LIFT equivariant certificate
         run: python work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/04_EQUIVARIANT_REPLAY_CERTIFICATE.py
       - name: Replay protected WP60T derivative certificate

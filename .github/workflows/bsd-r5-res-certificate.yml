@@ -42,8 +42,15 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: '3.12'
-      - name: Run R5-RES operation preflight
-        run: python tools/gcl_campaign_preflight_r5_res.py BSD-001 BSD-R5-RES
+      - name: Validate current or historical operation state
+        shell: bash
+        run: |
+          current=$(python -c "import json; print(json.load(open('.gcl/campaigns/BSD-001/CAMPAIGN_STATE.json'))['current_operation'])")
+          if [ "$current" = "BSD-R5-RES" ]; then
+            python tools/gcl_campaign_preflight_r5_res.py BSD-001 BSD-R5-RES
+          else
+            python tools/gcl_completion_receipt_validate_v2.py BSD-R5-RES
+          fi
       - name: Replay protected R5-PRIM residual algebra certificate
         run: python work_packages/BSD_R5_PRIM_DETERMINANTAL_PRIMITIVITY/04_RESIDUAL_ALGEBRA_CERTIFICATE.py
       - name: Replay protected WP60T derivative certificate
