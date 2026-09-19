@@ -52,9 +52,12 @@ theorem tm2ProgrammeCopyConfig_after_done {decision : List Bool → Bool}
         simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
           tm2ProgrammeRewindHead, ProgrammeConfig.afterAction,
           tm2CopyDoneAction, tm2MoveSelected, HeadMove.apply]
-    · simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
-        ProgrammeConfig.afterAction, tm2CopyDoneAction, tm2MoveSelected,
-        HeadMove.apply, Function.update_of_ne htape, htape]
+    · change
+        HeadMove.apply
+          (Function.update (fun _ => HeadMove.stay)
+            (tm2TapeEquiv source source.tm.k₀) HeadMove.left tape) 0 = 0
+      rw [Function.update_of_ne htape]
+      rfl
   · funext tape position
     simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
       ProgrammeConfig.afterAction, tm2CopyDoneAction, tm2PreserveWork,
@@ -80,9 +83,12 @@ theorem tm2ProgrammeRewindConfig_after_bit {decision : List Bool → Bool}
         simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
           ProgrammeConfig.afterAction, tm2RewindBitAction,
           tm2MoveSelected, HeadMove.apply]
-    · simp [tm2ProgrammeRewindConfig, ProgrammeConfig.afterAction,
-        tm2RewindBitAction, tm2MoveSelected, HeadMove.apply,
-        Function.update_of_ne htape, htape]
+    · change
+        HeadMove.apply
+          (Function.update (fun _ => HeadMove.stay)
+            (tm2TapeEquiv source source.tm.k₀) HeadMove.left tape) 0 = 0
+      rw [Function.update_of_ne htape]
+      rfl
   · funext tape position
     simp [tm2ProgrammeRewindConfig, ProgrammeConfig.afterAction,
       tm2RewindBitAction, tm2PreserveWork, ProgrammeConfig.readWork,
@@ -120,9 +126,12 @@ theorem tm2ProgrammeRewindConfig_after_done {decision : List Bool → Bool}
       simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
         tm2ProgrammeReadyConfig, ProgrammeConfig.afterAction,
         tm2RewindDoneAction, tm2MoveSelected, HeadMove.apply]
-    · simp [tm2ProgrammeRewindConfig, tm2ProgrammeReadyConfig,
-        ProgrammeConfig.afterAction, tm2RewindDoneAction,
-        tm2MoveSelected, HeadMove.apply, Function.update_of_ne htape, htape]
+    · change
+        HeadMove.apply
+          (Function.update (fun _ => HeadMove.stay)
+            (tm2TapeEquiv source source.tm.k₀) HeadMove.right tape) 0 = 0
+      rw [Function.update_of_ne htape]
+      rfl
   · funext tape position
     simp [tm2ProgrammeRewindConfig, tm2ProgrammeReadyConfig,
       ProgrammeConfig.afterAction, tm2RewindDoneAction, tm2PreserveWork,
@@ -260,7 +269,7 @@ theorem tm2Programme_startup_run {decision : List Bool → Bool}
       (tm2ProgrammeCopyConfig source input)
       (some (tm2ProgrammeReadyConfig source input))
       hcopy hrewind
-  simpa [Nat.mul_comm, Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using hrun
+  convert hrun using 1 <;> omega
 
 #print axioms tm2ProgrammeCopyConfig_after_done
 #print axioms tm2ProgrammeRewindConfig_after_bit
