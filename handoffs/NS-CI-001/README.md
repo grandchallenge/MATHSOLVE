@@ -784,13 +784,13 @@ inside this exact calibration.  This is not a whole-space A2 theorem.
 
 ### L5-21 cumulative upper-band flux obstruction
 
-\`work_packages/NS_CI_R014_A2_L5_21_C2_CUMULATIVE_FLUX_OBSTRUCTION.md\`
+`work_packages/NS_CI_R014_A2_L5_21_C2_CUMULATIVE_FLUX_OBSTRUCTION.md`
 records
 
-\`\`\`text
+```text
 C2_FLUX_GENERIC_BAND_ENERGY_ROUTE_TERMINATED
 __OVERSHOOT_DIVERGES_WITH_SUMMABLE_BOUNDARY_FLUX.
-\`\`\`
+```
 
 The first selector-free cumulative-flux repair is insufficient even after
 granting exact complete-band telescoping.
@@ -798,39 +798,39 @@ granting exact complete-band telescoping.
 A conservative nearest-neighbour shell-and-packet ledger uses the protected
 L5-15 episode scaling
 
-\`\`\`math
+```math
 R_n=2^n,\qquad
 lambda_n=R_n^4,\qquad
 E_n=R_n^{-2},\qquad
 delta_n=R_n^{-9}.
-\`\`\`
+```
 
 On each disjoint episode, the active-shell energy obeys an exact shell balance
 with a reservoir and one signed boundary flux. Internal band edges telescope
 exactly. The net boundary flux equals the episode dissipation and scales like
 
-\`\`\`math
+```math
 R_n^{-3}.
-\`\`\`
+```
 
 Even the absolute unweighted boundary-flux variation is only
 
-\`\`\`math
+```math
 O(R_n^{-2}+R_n^{-3}),
-\`\`\`
+```
 
-and remains summable after multiplying by the number \`q_n=4n\` of
+and remains summable after multiplying by the number `q_n=4n` of
 nearest-neighbour edges.
 
-At the same time the A2 occupancy charge is \`O(R_n^{-1})\`, total dissipation
+At the same time the A2 occupancy charge is `O(R_n^{-1})`, total dissipation
 is summable, total energy is bounded, and the turnover-scale energy-transfer
 rate is respected. But on the plateau,
 
-\`\`\`math
+```math
 integral_{I_n} Omega(t) dt
 gtrsim
 1-c_0/R_n,
-\`\`\`
+```
 
 so the overshoot integral diverges.
 
@@ -845,20 +845,20 @@ ledger, not a Navier--Stokes trajectory.
 
 ### L5-22 turnover-scale signed transfer coherence calibration
 
-\`work_packages/NS_CI_R014_A2_L5_22_C2_TRIAD_COHERENCE.md\`
+`work_packages/NS_CI_R014_A2_L5_22_C2_TRIAD_COHERENCE.md`
 records
 
-\`\`\`text
+```text
 TURNOVER_SCALE_SIGNED_TRANSFER_COHERENCE_PERSISTS_IN_EXACT_2P5D_NSE
 __SUBTURNOVER_DECOHERENCE_NOT_GENERIC.
-\`\`\`
+```
 
 The exact unforced periodic 2.5D NSE calibration from L5-18/L5-19 also
 separates a generic phase-decoherence repair.
 
 In turnover variables,
 
-\`\`\`math
+```math
 partial_tau theta_epsilon
 +
 e^{-epsilon tau} V dot grad theta_epsilon
@@ -866,44 +866,44 @@ e^{-epsilon tau} V dot grad theta_epsilon
 epsilon Delta theta_epsilon,
 \qquad
 epsilon=1/R.
-\`\`\`
+```
 
-Let \`c_epsilon\` be the target \`sin(X+Y)\` coefficient and
-\`g_epsilon\` its signed nonlinear transport forcing.  Exactly,
+Let `c_epsilon` be the target `sin(X+Y)` coefficient and
+`g_epsilon` its signed nonlinear transport forcing.  Exactly,
 
-\`\`\`math
+```math
 c_epsilon'
 =
 g_epsilon-2epsilon c_epsilon,
 \qquad
 c_epsilon(0)=g_epsilon(0)=1.
-\`\`\`
+```
 
 The L5-19 uniform high-Sobolev bounds upgrade the inviscid-limit convergence to
 
-\`\`\`math
+```math
 sup_{tau<=T}
 ||theta_epsilon-theta_0||_{H^s}
 lesssim
 epsilon.
-\`\`\`
+```
 
 Since the inviscid target amplitude and forcing are both positive at
-\`tau=0\`, continuity gives one fixed \`tau_*>0\` such that for all
-sufficiently large \`R\`,
+`tau=0`, continuity gives one fixed `tau_*>0` such that for all
+sufficiently large `R`,
 
-\`\`\`math
+```math
 c_{1/R}(tau)>=1/2,
 \qquad
 g_{1/R}(tau)>=1/2
-\`\`\`
+```
 
-throughout \`0<=tau<=tau_*\`.
+throughout `0<=tau<=tau_*`.
 
 Thus the signed nonlinear transfer into the target sine component remains
-order \`A^3N\` for physical time \`tau_*/(AN)\`, giving an order-\`A^2\`
+order `A^3N` for physical time `tau_*/(AN)`, giving an order-`A^2`
 coherent transfer.  The corresponding viscous target loss is smaller by
-\`O(1/R)\`.
+`O(1/R)`.
 
 Combined with L5-20, the same calibration can therefore have fixed-turnover
 signed transfer coherence while its fixed-window selector charge tends to
@@ -916,62 +916,62 @@ episode coherence or a selected whole-space statement.
 
 ### L5-23 exact viscous shear-chain phase locking
 
-\`work_packages/NS_CI_R014_A2_L5_23_C2_SHEAR_PHASE_LOCK.md\`
+`work_packages/NS_CI_R014_A2_L5_23_C2_SHEAR_PHASE_LOCK.md`
 records
 
-\`\`\`text
+```text
 EXACT_VISCOUS_SHEAR_CHAIN_QUADRATURE_LOCKING_PROVED
 __PHASE_DECOHERENCE_ABSENT_IN_CALIBRATION.
-\`\`\`
+```
 
 A second exact unforced periodic 2.5D calibration removes generic phase-reset
 cost more strongly.
 
 For the decaying shear
 
-\`\`\`math
+```math
 v=(A e^{-nu N^2t}\cos(Nx_2),0),
-\`\`\`
+```
 
 the vertical component obeys passive advection-diffusion.  In turnover
-variables, the complex \`X\)-frequency-one chain satisfies
+variables, the complex `X\)-frequency-one chain satisfies
 
-\`\`\`math
+```math
 a_n'
 =
 -\frac{i}{2}e^{-epsilon tau}(a_{n-1}+a_{n+1})
 -
 epsilon(1+n^2)a_n.
-\`\`\`
+```
 
 The phase sector
 
-\`\`\`math
+```math
 a_n=(-i)^n b_n,\qquad b_n\in R
-\`\`\`
+```
 
-is exactly invariant, because the \`b_n\` satisfy a real nearest-neighbour
+is exactly invariant, because the `b_n` satisfy a real nearest-neighbour
 system.
 
 Hence every adjacent nonzero pair remains exactly in quadrature:
 
-\`\`\`math
+```math
 Re(conj(a_n)a_{n+1})=0,
 \qquad
 |Im(conj(a_n)a_{n+1})|
 =
 |a_n||a_{n+1}|.
-\`\`\`
+```
 
 Viscosity damps amplitudes but does not rotate this phase lattice.  Transfer
 direction may reverse when a real amplitude crosses zero, without gradual
 phase decorrelation.
 
-At \`epsilon=0\` the chain is explicit:
+At `epsilon=0` the chain is explicit:
 
-\`\`\`math
+```math
 a_n(tau)=(-i)^n J_n(tau).
-\`\`\`
+```
 
 Thus the repeated-event residual cannot be charged generically to phase
 decoherence itself.  Any remaining cost must arise from amplitude decay,
@@ -2368,6 +2368,85 @@ geometric separator, not a selected whole-space NSE counterexample.
 The principal direction scale has `beta=h^{-1}theta=O(1)`; small beta is not
 available from scaling alone.
 
+### L5-42 intrinsic one-sided direction-compression cost
+
+`work_packages/NS_CI_R014_A2_L5_42_C2_DIRECTION_INTRINSIC_COMPRESSION_COST.md`
+records
+
+```text
+RECIPROCAL_AMPLITUDE_PRODUCT_NOT_INTRINSIC
+__COMPRESSION_EXIT_CONTROLLED_BY_GAUGE_FREE_NEGATIVE_DIRECTION_VARIATION.
+```
+
+The protected factorization
+
+```math
+v(s,Y)=beta(s)B(s,Y)
+```
+
+has an unfixed positive scalar gauge:
+
+```math
+beta -> c(s) beta,
+\qquad
+B -> B/c(s).
+```
+
+This leaves `v`, the characteristic map, `J`, and the tangent cocycle
+unchanged.  The L5-41 sufficient product
+`D_b^(1/2)A_beta^(1/2)` is therefore not intrinsic: a constant rescaling can
+make it arbitrarily large without changing the actual frame geometry.
+
+The invariant first-order quantity is the variation of the actual direction
+transport.  Define
+
+```math
+V_v^- =
+int int (-partial_Y v)_+ dY ds.
+```
+
+Stopping only at the first compression level `log J=-K` gives
+
+```math
+|{Z: inf_s log J(s,Z) <= -K}|
+<=
+e^K K^(-1) V_v^-.
+```
+
+Expansion does not need to be stopped for this reciprocal-Jacobian problem.
+
+A fully gauge-invariant factorized upper bound is
+
+```math
+C_(B,beta)
+=
+int
+[
+  int |b|^2 |B_Y|^2 dY
+]^(1/2)
+[
+  int |beta|^2 / |b|^2 dY
+]^(1/2)
+ds,
+```
+
+with
+
+```math
+V_v <= C_(B,beta).
+```
+
+On the full periodic coordinate,
+`int partial_Y v dY=0` implies only
+
+```math
+V_v^- = V_v/2.
+```
+
+Thus Eulerian signed-mean cancellation is not a compression mechanism.
+Any useful cancellation must be Lagrangian, packet-weighted, or correlated
+with the critical observable.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -2382,14 +2461,15 @@ available from scaling alone.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-COMPRESSION-COST**.
+The live obligation is now **C2-MIX-DIRECTION-INTRINSIC-COMPRESSION-COST**.
 
 L5-39 rules out a uniform all-streamline conversion from scalar shell/A2/Leray
 budgets to unweighted direction strain.  The next bounded question is:
 
-> Can selected whole-space active-band dynamics force small
-> `D_b^(1/2)A_beta^(1/2)` on the critical packet mass, or supply a sign/correlation
-> law that prevents large compression without reciprocal-amplitude smallness?
+> Can selected whole-space active-band dynamics control the packet-weighted
+> negative variation of the actual extracted direction transport
+> `(-partial_Y v)_+`, or does persistent overlap between that compressive
+> variation and the critical packet force a selector/dissipation charge?
 
 Test packet-weighted or almost-everywhere control before seeking a uniform
 frame theorem.  Any candidate derived only from coarse annular-supremum, `Lambda in L2_t`,
