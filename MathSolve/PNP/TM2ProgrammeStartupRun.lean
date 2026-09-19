@@ -98,7 +98,7 @@ theorem tm2ProgrammeCopyConfig_after_bit {decision : List Bool → Bool}
         tm2CopyBitAction, tm2MoveSelected, HeadMove.apply]
     · have hmove :
           tm2MoveSelected source source.tm.k₀ .right tape = .stay := by
-        exact Function.update_of_ne htape
+        simp [tm2MoveSelected, Function.update, htape]
       simp only [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
         tm2CopyBitAction]
       rw [hmove, if_neg htape, if_neg htape]
@@ -130,11 +130,13 @@ theorem tm2ProgrammeCopyConfig_after_bit {decision : List Bool → Bool}
             embedTM2TokenStack ((copied ++ [bit]).map Sum.inl) 0 := by
         simp [tm2ProgrammeCopyConfig, tm2ProgrammeReadyWork]
       rw [hwork, hhead, hwrite, htarget]
-      simpa [List.map_append, List.length_map] using
+      have happ :=
         congrFun
           (embedTM2TokenStack_append_singleton
             (copied.map Sum.inl) (.inl bit))
           position
+      rw [List.length_map] at happ
+      simpa [List.map_append] using happ
     · have hwork :
           (tm2ProgrammeCopyConfig source copied).work tape =
             (fun _ : Int => none) := by
@@ -147,9 +149,7 @@ theorem tm2ProgrammeCopyConfig_after_bit {decision : List Bool → Bool}
               (tm2ProgrammeCopyConfig source copied).readWork
               source.tm.k₀ (some (.inl bit)) tape =
             (tm2ProgrammeCopyConfig source copied).readWork tape := by
-        simpa [tm2WriteSelected] using
-          (Function.update_of_ne htape (some (.inl bit))
-            (tm2ProgrammeCopyConfig source copied).readWork)
+        simp [tm2WriteSelected, Function.update, htape]
       have hread :
           (tm2ProgrammeCopyConfig source copied).readWork tape = none := by
         simp [ProgrammeConfig.readWork, hwork, hhead]
@@ -165,7 +165,10 @@ theorem tm2ProgrammeCopyConfig_after_bit {decision : List Bool → Bool}
         exact if_neg htape
       simp only [ProgrammeConfig.afterAction, tm2CopyBitAction]
       rw [hwork, hhead, hwrite, hread, htarget]
-      simp [Function.update]
+      by_cases hposition : position = 0
+      · subst position
+        simp [Function.update]
+      · simp [Function.update, hposition]
 
 
 /-- The zero-length copy configuration is the native Programme initial
