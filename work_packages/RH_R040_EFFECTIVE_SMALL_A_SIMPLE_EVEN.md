@@ -27,7 +27,7 @@ The proof yields two nested effective statements.
 For every
 
 \[
-0<a\le \frac1{19},
+0<a\le \frac1{16},
 \]
 
 the lowest eigenvalue of \(A_a\) is simple and has an even eigenfunction.
@@ -47,7 +47,7 @@ On the smaller interval
 
 the same ground eigenvalue is additionally strictly positive.
 
-Thus one may take \(e^{1/19}\) as an explicit conservative simple-even
+Thus one may take \(e^{1/16}\) as an explicit conservative simple-even
 cutoff and \(e^{1/50}\) as an explicit conservative positive-simple-even
 cutoff. Neither is asserted to be sharp.
 
@@ -479,64 +479,104 @@ and the mean-value theorem gives
 0\le r_1''(t)\le\frac{\sqrt2}{4}.
 \]
 
-It follows that \(r''(t)<0\) and
+The same differential inequality also gives a lower bound.
+Because \(h\ge1\) and
+
+\[
+\frac{h'(t)}{h(t)}
+\ge
+\frac12-\frac t3,
+\]
+
+one has
+
+\[
+h'(t)
+\ge
+\frac12-\frac t3.
+\]
+
+Integrating from \(0\) to \(t\),
+
+\[
+h(t)-1
+\ge
+\frac t2-\frac{t^2}{6},
+\]
+
+and hence
+
+\[
+r_1''(t)
+=
+\frac{h(t)-1}{2t}
+\ge
+\frac14-\frac t{12}.
+\]
+
+Since the earlier upper bound on \(r_1''\) is \(<2\cosh(t/2)\),
+\(r''(t)<0\).  Therefore, for \(|t|\le2a\le\log2\),
 
 \[
 |r''(t)|
-\le
-2\cosh(t/2)
-\le
-2\cosh((\log2)/2)
 =
-\frac3{\sqrt2}
+2\cosh(t/2)-r_1''(t)
+\le
+2\cosh a-\frac14+\frac a6.
 \]
 
-for \(|t|\le\log2\), with the bound extended to \(t=0\) by continuity.
-
-Thus, whenever \(2a\le\log2\),
+Thus
 
 \[
 |K_a(x,y)|
 \le
-a\frac3{\sqrt2}.
+a\left(
+2\cosh a-\frac14+\frac a6
+\right).
 \]
 
-The Schur bound on \([-1,1]\) gives
+The Schur bound on the interval of length \(2\) gives
 
 \[
 \boxed{
 \|K_a\|
 \le
-2a\frac3{\sqrt2}
-=
-3\sqrt2\,a.
+4a\cosh a-\frac a2+\frac{a^2}{3}.
 }
 \]
 
 Set
 
 \[
-\eta(a)=3\sqrt2\,a.
+\eta(a)
+=
+4a\cosh a-\frac a2+\frac{a^2}{3}.
 \]
 
 ## 7. Perturbation transfer
 
-Since \(K_a\) is bounded and self-adjoint, the min--max principle gives,
-sector by sector,
+Since \(K_a\) is bounded and self-adjoint, the min--max principle gives
 
 \[
 |\nu_{\pm,j}(a)-\mu_{\pm,j}|
-\le\eta(a),
-\qquad
-\eta(a)=3\sqrt2\,a.
+\le
+\eta(a),
 \]
 
-Therefore the even-sector internal gap satisfies
+with
+
+\[
+\eta(a)
+=
+4a\cosh a-\frac a2+\frac{a^2}{3}.
+\]
+
+Thus the even-sector internal gap satisfies
 
 \[
 \nu_{+,2}(a)-\nu_{+,1}(a)
 \ge
-\log2-\frac{461}{2580}-6\sqrt2\,a,
+\log2-\frac{461}{2580}-2\eta(a),
 \]
 
 and the parity gap satisfies
@@ -544,45 +584,71 @@ and the parity gap satisfies
 \[
 \nu_{-,1}(a)-\nu_{+,1}(a)
 \ge
-2\log2-\frac{599}{645}-6\sqrt2\,a.
+2\log2-\frac{599}{645}-2\eta(a).
 \]
 
 Use
 
 \[
-\log2>\frac{693}{1000},
-\qquad
-\sqrt2<\frac{99}{70}.
+\log2>\frac{693}{1000}.
 \]
 
-For
+For \(0<a\le1/16\), the elementary series bound
 
 \[
-0<a\le\frac1{19},
-\]
-
-one has
-
-\[
-6\sqrt2\,a
-<
-6\cdot\frac{99}{70}\cdot\frac1{19}
+\cosh a
 =
-\frac{297}{665}.
+\sum_{n\ge0}\frac{a^{2n}}{(2n)!}
+\le
+\sum_{n\ge0}\left(\frac{a^2}{2}\right)^n
+=
+\frac1{1-a^2/2}
 \]
 
-Hence the even-sector internal gap obeys
+gives
 
 \[
-\log2-\frac{461}{2580}-6\sqrt2\,a
+\cosh a
+\le
+\frac{512}{511}.
+\]
+
+Moreover,
+
+\[
+2\eta(a)
+=
+8a\cosh a-a+\frac{2a^2}{3}
+\]
+
+is strictly increasing for \(a>0\). Hence on \(0<a\le1/16\),
+
+\[
+2\eta(a)
+\le
+8\cdot\frac1{16}\cdot\frac{512}{511}
+-
+\frac1{16}
++
+\frac1{384}
+=
+\frac{86551}{196224}.
+\]
+
+Therefore the even-sector internal gap obeys
+
+\[
+\log2-\frac{461}{2580}-2\eta(a)
 >
 \frac{693}{1000}
 -
 \frac{461}{2580}
 -
-\frac{297}{665}
+\frac{86551}{196224}
 =
-\boxed{\frac{1161551}{17157000}}
+\boxed{
+\frac{25747149}{351568000}
+}
 >
 0,
 \]
@@ -590,26 +656,33 @@ Hence the even-sector internal gap obeys
 and the parity gap obeys
 
 \[
-2\log2-\frac{599}{645}-6\sqrt2\,a
+2\log2-\frac{599}{645}-2\eta(a)
 >
 \frac{693}{500}
 -
 \frac{599}{645}
 -
-\frac{297}{665}
+\frac{86551}{196224}
 =
-\boxed{\frac{91801}{8578500}}
+\boxed{
+\frac{5707773}{351568000}
+}
 >
 0.
 \]
 
-Hence throughout \(0<a\le1/19\):
+Hence throughout
 
-- the lowest even eigenvalue is simple;
-- the lowest odd eigenvalue lies strictly above it;
-- the full ground state is simple and even.
+\[
+0<a\le\frac1{16},
+\]
 
-The common scalar shift \(s(a)\) does not affect either conclusion.
+the lowest even eigenvalue is simple, the odd spectral bottom lies
+strictly above it, and the full ground state is simple and even.
+
+At \(a=1/15\), this same chain of explicit lower and upper bounds no longer
+has positive parity-margin slack.  No failure of the theorem at \(1/15\)
+is inferred; only this perturbative certificate stops closing there.
 
 ## 8. Explicit positivity
 
@@ -669,7 +742,7 @@ Section 7 gives the structural theorem
 
 \[
 \boxed{
-0<a\le\frac1{19}
+0<a\le\frac1{16}
 \Longrightarrow
 \begin{cases}
 \lambda_a\text{ is simple},\\
@@ -691,7 +764,7 @@ Section 8 supplies the additional positivity certificate
 
 Therefore:
 
-- \(e^{1/19}\) is an explicit conservative simple-even cutoff;
+- \(e^{1/16}\) is an explicit conservative simple-even cutoff;
 - \(e^{1/50}\) is an explicit conservative positive-simple-even cutoff.
 
 No claim is made that either cutoff is maximal.
@@ -702,7 +775,7 @@ The proof depends on the following exact points.
 
 1. The prime sum must be absent.
    For the larger structural interval,
-   \(2a\le2/19<\log2\), so the no-prime formula still applies.
+   \(2a\le1/8<\log2\), so the no-prime formula still applies.
 
 2. The constant must belong to the closed limiting form domain.
    This follows because the fixed-\(a\) closed forms differ from
@@ -726,7 +799,7 @@ The proof depends on the following exact points.
 
 This theorem does not prove:
 
-- simplicity/evenness for \(a>1/19\);
+- simplicity/evenness for \(a>1/16\);
 - monotonic continuation of the parity gap;
 - any statement at \(a=\tfrac12\log13\) or
   \(a=\tfrac12\log14\);
