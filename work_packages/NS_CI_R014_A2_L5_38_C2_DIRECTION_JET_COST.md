@@ -453,7 +453,97 @@ bound by itself.
 This is the exact normalization gap between the raw Eulerian jet hierarchy and
 the L5-37 deformation cocycle.
 
-## 8. Remaining C2-MIX-DIRECTION-JET-COST obligation
+## 8. Exact threshold-sup normalization separator
+
+The protected active-threshold condition supplies a shell supremum lower bound
+of the form
+
+```math
+\|u_Q\|_\infty
+\ge
+c_0\nu\Lambda.
+```
+
+That is not a pointwise lower bound along a packet trajectory.
+
+An exact one-shell divergence-free calibration makes the distinction explicit.
+On the three-torus, take
+
+```math
+b_N(x)
+=
+A\sin(Nx_2)e_1.
+```
+
+Then
+
+```math
+\nabla\cdot b_N=0,
+```
+
+its Fourier support is exactly the pair
+
+```math
+\{\pm Ne_2\},
+```
+
+and
+
+```math
+\|b_N\|_\infty=A.
+```
+
+Thus `A` can be chosen above any prescribed threshold lower bound.
+
+Nevertheless,
+
+```math
+b_N(x)=0
+\qquad
+\text{whenever}
+\qquad
+Nx_2\in\pi\mathbb Z.
+```
+
+Therefore no implication of the form
+
+```math
+\|b_N\|_\infty\ge c
+\quad\Longrightarrow\quad
+\inf_x|b_N(x)|\ge c'
+```
+
+can follow from shell supremum information alone.
+
+The normalized field
+
+```math
+\widehat b_N
+=
+\frac{b_N}{|b_N|}
+```
+
+is undefined on the nodal planes and equals a sign-valued direction away from
+them.  Hence its classical derivative is not controlled by the raw shell
+derivative bounds through a uniform denominator estimate.
+
+This fixture is only an algebraic normalization separator.  It is not a
+whole-space A2 trajectory, not an NSE counterexample, and not evidence that an
+actual selected critical packet must cross a node.
+
+Its exact role is to reject the naive repair
+
+```text
+active threshold sup norm
+    -> pointwise nonvanishing active vector
+    -> bounded normalized direction derivatives.
+```
+
+Any viable direction extraction must instead use a chart, packet polarization,
+amplitude-weighted quotient, or an equation-derived nonvanishing statement on
+the actually transported packet mass.
+
+## 9. Remaining C2-MIX-DIRECTION-JET-COST obligation
 
 The successor must now determine whether selected active-band NSE supplies one
 of the following:
@@ -472,7 +562,7 @@ The tangent component `Omega_1` should be audited first because its raw
 far-low boundary coincides exactly with the already protected L5-14
 `2Q/3` split.
 
-## 9. Hard rejection tests
+## 10. Hard rejection tests
 
 Reject any successor that:
 
@@ -487,7 +577,7 @@ Reject any successor that:
 - promotes this partial hierarchy to A2 closure;
 - reopens L3 or L4 without their protected reopening conditions.
 
-## 10. Claim boundary
+## 11. Claim boundary
 
 The pre-admission result is exactly
 
@@ -506,7 +596,10 @@ It proves:
 - the absolute A2/Leray/Bernstein route cannot extend past the displayed
   fractions without new information;
 - raw jet control does not by itself control derivatives of a normalized
-  extracted direction.
+  extracted direction;
+- the active-threshold shell supremum lower bound does not imply pointwise
+  nonvanishing of the active vector, even in an exact divergence-free one-shell
+  calibration.
 
 It does not prove bounded L5-37 cocycle.
 
