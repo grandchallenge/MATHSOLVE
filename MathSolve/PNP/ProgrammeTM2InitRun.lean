@@ -114,14 +114,15 @@ theorem programmeTM2_step_initToTemp_cons (M : ProgrammeMachine)
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToTemp, Turing.TM2.stepAux,
     programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_raw,
-    programmeTM2InitStacks_temp, List.head?_cons, Option.isSome_some,
-    Bool.cond_true, List.tail_cons]
+    programmeTM2InitStacks_temp]
+  rw [List.head?_cons, Option.isSome_some, Bool.cond_true,
+    List.tail_cons, Option.getD_some]
   apply congrArg some
   apply programmeTM2Cfg_ext
   · rfl
   · rfl
   · intro k
-    cases k <;> simp [programmeTM2InitStacks, Function.update]
+    cases k <;> simp [programmeTM2InitStacks, Function.update] <;> rfl
 
 /-- The first blank pop ends the first pass and clears the transient symbol. -/
 theorem programmeTM2_step_initToTemp_nil (M : ProgrammeMachine)
@@ -131,14 +132,14 @@ theorem programmeTM2_step_initToTemp_nil (M : ProgrammeMachine)
       some (programmeTM2InitCfg M .initToRight none [] temp right) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToTemp, Turing.TM2.stepAux,
-    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_raw,
-    List.head?_nil, Option.isSome_none, Bool.cond_false, List.tail_nil]
+    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_raw]
+  rw [List.head?_nil, Option.isSome_none, Bool.cond_false, List.tail_nil]
   apply congrArg some
   apply programmeTM2Cfg_ext
   · rfl
   · rfl
   · intro k
-    cases k <;> simp [programmeTM2InitStacks, Function.update]
+    cases k <;> simp [programmeTM2InitStacks, Function.update] <;> rfl
 
 /-- One nonempty second-pass step restores a Boolean cell to the right-of-head stack. -/
 theorem programmeTM2_step_initToRight_cons (M : ProgrammeMachine)
@@ -151,14 +152,15 @@ theorem programmeTM2_step_initToRight_cons (M : ProgrammeMachine)
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToRight, Turing.TM2.stepAux,
     programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_temp,
-    programmeTM2InitStacks_right, List.head?_cons, Option.isSome_some,
-    Bool.cond_true, List.tail_cons]
+    programmeTM2InitStacks_right]
+  rw [List.head?_cons, Option.isSome_some, Bool.cond_true,
+    List.tail_cons, Option.getD_some]
   apply congrArg some
   apply programmeTM2Cfg_ext
   · rfl
   · rfl
   · intro k
-    cases k <;> simp [programmeTM2InitStacks, Function.update]
+    cases k <;> simp [programmeTM2InitStacks, Function.update] <;> rfl
 
 /-- The second blank pop ends the restoration pass. -/
 theorem programmeTM2_step_initToRight_nil (M : ProgrammeMachine)
@@ -168,14 +170,14 @@ theorem programmeTM2_step_initToRight_nil (M : ProgrammeMachine)
       some (programmeTM2InitCfg M .initFinish none [] [] right) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToRight, Turing.TM2.stepAux,
-    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_temp,
-    List.head?_nil, Option.isSome_none, Bool.cond_false, List.tail_nil]
+    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_temp]
+  rw [List.head?_nil, Option.isSome_none, Bool.cond_false, List.tail_nil]
   apply congrArg some
   apply programmeTM2Cfg_ext
   · rfl
   · rfl
   · intro k
-    cases k <;> simp [programmeTM2InitStacks, Function.update]
+    cases k <;> simp [programmeTM2InitStacks, Function.update] <;> rfl
 
 /-- The final initialization step loads the scanned input cell and enters run mode. -/
 theorem programmeTM2_step_initFinish (M : ProgrammeMachine)
@@ -197,7 +199,7 @@ theorem programmeTM2_step_initFinish (M : ProgrammeMachine)
   · rfl
   · rfl
   · intro k
-    cases k <;> simp [programmeTM2InitStacks, Function.update]
+    cases k <;> simp [programmeTM2InitStacks, Function.update] <;> rfl
 
 /-- Any exact one-step transition yields a one-step bounded evaluation witness. -/
 def programmeTM2_one_step_in_time
