@@ -3,10 +3,11 @@
 Campaign: RH-001
 
 Status:
-PRE_ROUTE_CANDIDATE__DO_NOT_PROMOTE
+ADMISSION_CANDIDATE__PROVIDER_PROTECTED
 
-Provider prerequisite:
-MATHFORGE PR #271 must be protected before this theorem may be admitted.
+Protected provider audit:
+grandchallenge/MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320
+reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md
 
 Protected theorem substrate:
 - RH-R036-QW-PARITY-GAP-REDUCTION-001
@@ -854,11 +855,10 @@ This package is deliberately not yet linked into the canonical RH handoff.
 
 Before admission:
 
-1. MATHFORGE PR #271 must merge and its protected exact SHA must replace
-   the provider placeholder;
-2. the proof must receive exact-head Adversary and Referee passes;
-3. standard Solve/GCL checks must pass on the final live-base composition.
+1. the proof must receive exact-head Adversary and Referee passes;
+2. standard Solve/GCL checks must pass on the final live-base composition;
+3. protected merge and readback must complete.
 
 Terminal candidate disposition:
 
-RH-R040_EFFECTIVE_SMALL_A_SIMPLE_EVEN_PROVED_ON_WORK_BRANCH__AWAITING_PROVIDER_PROTECTION
+RH-R040_EFFECTIVE_SMALL_A_SIMPLE_EVEN_PROVED__READY_FOR_EXACT_HEAD_ADMISSION
