@@ -30,3 +30,5 @@ import MathSolve.PNP.TM2ProgrammeStartupRun
 import MathSolve.PNP.TM2ProgrammeRewindRun
 import MathSolve.PNP.TM2ForwardCompiler
 import MathSolve.PNP.ProgrammeTM2Types
+import MathSolve.PNP.ProgrammeTM2Machine
+import MathSolve.PNP.ProgrammeTM2Representation
