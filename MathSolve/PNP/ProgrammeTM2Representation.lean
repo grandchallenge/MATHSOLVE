@@ -81,7 +81,8 @@ theorem ProgrammeTM2Represents.action_eq
     {source : ProgrammeConfig M} {target : (programmeTM2Machine M).Cfg}
     (h : ProgrammeTM2Represents M input source target) :
     M.transition target.var.control target.var.inputSymbol target.var.workSymbol =
-      M.actionAt input source := by
+      M.transition source.state
+        (programmeInputRead input source.inputHead) source.readWork := by
   rw [h.2.2.1]
   rw [h.input_head]
   apply congrArg (fun readWork =>
