@@ -64,19 +64,19 @@ whereas Riemann–von Mangoldt requires leading growth \(T\log T/(2\pi)\). Thus 
 7. Inversion symmetry of the full semilocal Weil form propagates to its canonical self-adjoint operator \(A_\lambda\), which splits into even and odd reducing sectors. The source's first missing theorem, 'simple-even ground state,' is exactly equivalent to two narrower obligations: simplicity of the lowest even eigenvalue and the strict parity gap \(\epsilon_+(\lambda)<\epsilon_-(\lambda)\).
 8. The exact finite parity blocks form sector-wise Galerkin approximants: \(\epsilon_{\pm,N}(\lambda)\downarrow\epsilon_\pm(\lambda)\), hence finite gaps \(g_N\to g\). Finite parity calculations now have a rigorous interpretation, but positivity of finitely many gaps is not a proof of the full gap without a certified tail bound.
 9. R039 implements the protected CCM finite matrices at 50/80 digits with 96/128/160-point high-precision quadrature. For \(\lambda^2=13,14\), all retained gaps through \(N=12\) are positive and stable far beyond their displayed scale, but they collapse rapidly: at \(N=12\), \(g_N\approx1.46\times10^{-26}\) and \(1.84\times10^{-27}\), respectively. This is controlled finite evidence only and supplies no positive tail certificate.
-10. The full localized Weil operator is now controlled analytically near \(\lambda=1\). RH-R040 gives an explicit simple-even interval \(0<a=\log\lambda\le1/16\) and strict positivity through \(a\le1/50\). RH-R045 sharpens the structural interval to \(0<a\le2/15\). RH-R046 reaches \(a\le1/7\), RH-R047 reaches \(a\le3/20\), and RH-R048 reaches \(a\le1/6\). RH-R049 then retains one more positive logarithmic-potential term and extends the integrated remainder control to prove the full simple-even theorem through
+10. The full localized Weil operator is now controlled analytically near \(\lambda=1\). RH-R040 gives an explicit simple-even interval \(0<a=\log\lambda\le1/16\) and strict positivity through \(a\le1/50\). RH-R045 sharpens the structural interval to \(0<a\le2/15\). RH-R046 reaches \(a\le1/7\), RH-R047 reaches \(a\le3/20\), RH-R048 reaches \(a\le1/6\), and RH-R049 reaches \(a\le17/100\). RH-R050 then retains the \(u^8/4\) logarithmic-potential term and reweights the positive even trial to prove the full simple-even theorem through
 \[
-0<a\le\frac{17}{100}.
+0<a\le\frac{171}{1000}.
 \]
 Uniformly on that interval,
 \[
-\epsilon_-(e^a)-\epsilon_+(e^a)>\frac{6032129}{3654000000},
+\epsilon_-(e^a)-\epsilon_+(e^a)>\frac{775974967}{3355931250000},
 \]
 and
 \[
-\epsilon_{+,2}(e^a)-\epsilon_{+,1}(e^a)>\frac{81828109}{456750000}.
+\epsilon_{+,2}(e^a)-\epsilon_{+,1}(e^a)>\frac{12508575979}{71025000000}.
 \]
-Thus the first CCM simple-even obstruction is fully discharged through \(a=17/100\). The active explicit bottleneck remains the parity-gap budget; the even-sector internal-gap certificate retains substantial slack.
+Thus the first CCM simple-even obstruction is fully discharged through \(a=171/1000\). The remaining explicit parity-gap margin is small, so further one-parameter micro-optimization is no longer the preferred route.
 
 This sharpens the protected operator contract:
 
@@ -142,6 +142,7 @@ and
 - work_packages/RH_R047_INTEGRATED_REMAINDER_EXTENSION.md
 - work_packages/RH_R048_SECTOR_COERCIVITY_EXTENSION.md
 - work_packages/RH_R049_HIGHER_ODD_COERCIVITY.md
+- work_packages/RH_R050_TRIAL_REWEIGHTED_EXTENSION.md
 - work_packages/RH_R039_QW_PARITY_GAP_EVIDENCE/evidence.json
 - work_packages/RH_R039_QW_PARITY_GAP_EVIDENCE/evidence.csv
 - scripts/rh_r039_qw_parity_gap.py
@@ -152,7 +153,7 @@ and
 The finite-evidence question has been overtaken by stronger full-operator theorems near \(\lambda=1\). The current explicit structural boundary is
 
 \[
-a=\log\lambda=\frac{17}{100}.
+a=\log\lambda=\frac{171}{1000}.
 \]
 
 The continuation machinery is now in place:
@@ -163,15 +164,15 @@ The continuation machinery is now in place:
 4. RH-R044 supplies explicit positive continuation margins through \(a=2/15\);
 5. RH-R046 reaches \(a=1/7\);
 6. RH-R047 reaches \(a=3/20\);
-7. RH-R048 reaches \(a=1/6\) by strengthening both limiting sector coercivity estimates;
-8. RH-R049 reaches \(a=17/100\) by retaining the \(u^6/3\) logarithmic-potential term and certifying \(q'\le11/50\) through \(t=17/50\).
+7. RH-R048 reaches \(a=1/6\);
+8. RH-R049 reaches \(a=17/100\);
+9. RH-R050 retains the \(u^8/4\) logarithmic-potential term and reweights the positive even trial to reach \(a=171/1000\).
 
-At the new endpoint the parity-gap lower bound is positive but small, whereas the even internal-gap certificate remains large. The smallest next theorem should therefore continue to attack the parity-gap budget. Preferred routes are:
+The explicit parity-gap margin at the new endpoint is positive but very small. Further retuning of the same one-dimensional trial family is therefore not a preferred research direction. The smallest useful next theorem should make a structural improvement, preferably one of:
 
-- retain still more positive logarithmic-potential terms and sharpen the associated weighted-Cauchy estimate;
-- improve the positive even ground-state trial space;
-- sharpen the smooth-remainder slope on the next interval;
-- or use the protected \(d/\Delta_H\) continuation interfaces if they give a shorter quantitative bridge.
+- a genuinely richer positive even trial space with an analytic upper bound;
+- a stronger odd-sector coercivity inequality not based only on truncating the logarithmic series;
+- a quantitative variation theorem for the protected \(d/\Delta_H\) Herglotz continuation interface.
 
 The R039 finite-Galerkin route remains an independent diagnostic at larger \(a\), but it is not the smallest next theorem.
 
@@ -181,7 +182,7 @@ The determinant route remains an exact sufficient terminal bridge: locally unifo
 
 RH-R030 imports the classical Riemann–von Mangoldt conclusion that positive zero ordinates are unbounded and the standard bounded-spectrum theorem.
 
-RH-R031 imports standard momentum/Fourier spectral theory. Its source status and exact prior-art boundary are fixed by the protected Forge audit. RH-R032 imports the classical Riemann–von Mangoldt counting interface and elementary finite-interval momentum spectral theory; its exact source boundary is protected at MATHFORGE@c49d7507dd45338f6328141c7d708acb5806e702. RH-R033 imports the Berry–Keating 2011 operator-theoretic and asymptotic results from the protected provider audit at MATHFORGE@d0365dba53e20395bbd2c3b6b17959cde94b6fbe; Solve proves only the governed comparison and design consequence. RH-R034 imports Sierra's Rindler mirror source analysis from the protected audit at MATHFORGE@2e66cdb836ea4228d70462f5eddca73ee91a504a; Solve records the fixed-domain and circularity consequences without certifying the limiting source construction. RH-R035 imports the finite Zeta Spectral Triples theorem and the source's named missing steps from MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790; Solve adds the standard Rouché/Hurwitz determinant-convergence bridge and isolates the minimal sufficient convergence target. RH-R036 imports inversion symmetry, canonical self-adjoint representation, and discreteness from MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d; Solve proves operator commutation and the exact parity-gap reduction. RH-R037 imports exact finite parity matrices and the full form core from MATHFORGE@76221c214bcb8227557d25741d83927051e62e8b; Solve proves parity-sector core density, monotone sector-minimum convergence, and finite-gap convergence. R039 uses only those protected CCM formulas for finite high-precision parity-gap evidence; MATHFORGE@a11c6dedede09af6f3c67c5eec337941b73d4d3a separately rejects a claimed Krein–Rutman closure as insufficient to supersede the protected frontier. R040 imports Suzuki's full-operator small-a structure from MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320 and derives an explicit effective regime. R045 sharpens that regime using parity-sensitive control of the same source remainder. R046 strengthens the limiting odd-sector coercivity and extends the no-prime analytic route through a=1/7. R047 refines the integrated smooth-remainder control and extends the same route through a=3/20. R048 strengthens the limiting even and odd coercivity estimates and extends the route through a=1/6. R049 retains the next positive logarithmic-potential term and extends the route through a=17/100. MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648 binds the exact CCM pole split used by R041-R044. No numerical zero fitting is used.
+RH-R031 imports standard momentum/Fourier spectral theory. Its source status and exact prior-art boundary are fixed by the protected Forge audit. RH-R032 imports the classical Riemann–von Mangoldt counting interface and elementary finite-interval momentum spectral theory; its exact source boundary is protected at MATHFORGE@c49d7507dd45338f6328141c7d708acb5806e702. RH-R033 imports the Berry–Keating 2011 operator-theoretic and asymptotic results from the protected provider audit at MATHFORGE@d0365dba53e20395bbd2c3b6b17959cde94b6fbe; Solve proves only the governed comparison and design consequence. RH-R034 imports Sierra's Rindler mirror source analysis from the protected audit at MATHFORGE@2e66cdb836ea4228d70462f5eddca73ee91a504a; Solve records the fixed-domain and circularity consequences without certifying the limiting source construction. RH-R035 imports the finite Zeta Spectral Triples theorem and the source's named missing steps from MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790; Solve adds the standard Rouché/Hurwitz determinant-convergence bridge and isolates the minimal sufficient convergence target. RH-R036 imports inversion symmetry, canonical self-adjoint representation, and discreteness from MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d; Solve proves operator commutation and the exact parity-gap reduction. RH-R037 imports exact finite parity matrices and the full form core from MATHFORGE@76221c214bcb8227557d25741d83927051e62e8b; Solve proves parity-sector core density, monotone sector-minimum convergence, and finite-gap convergence. R039 uses only those protected CCM formulas for finite high-precision parity-gap evidence; MATHFORGE@a11c6dedede09af6f3c67c5eec337941b73d4d3a separately rejects a claimed Krein–Rutman closure as insufficient to supersede the protected frontier. R040 imports Suzuki's full-operator small-a structure from MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320 and derives an explicit effective regime. R045 sharpens that regime using parity-sensitive control of the same source remainder. R046 strengthens the limiting odd-sector coercivity and extends the no-prime analytic route through a=1/7. R047 refines the integrated smooth-remainder control and extends the same route through a=3/20. R048 strengthens the limiting even and odd coercivity estimates and extends the route through a=1/6. R049 retains the next positive logarithmic-potential term and extends the route through a=17/100. R050 combines the next logarithmic term with a reweighted positive even trial and reaches a=171/1000. MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648 binds the exact CCM pole split used by R041-R044. No numerical zero fitting is used.
 
 MATHCERT interaction is not presently material. A later Cert route is appropriate only for a bounded new mathematical claim with an exact proof/checker surface.
 
