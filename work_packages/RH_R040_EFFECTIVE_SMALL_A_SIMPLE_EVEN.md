@@ -706,16 +706,57 @@ Suzuki's constant satisfies
 2A+1=\log(2\pi)+C_0.
 \]
 
-For \(0<a\le1/50\), use coarse elementary bounds
+For \(0<a\le1/50\), first bound the sharpened remainder itself.
+The function
+
+\[
+\eta(a)=4a\cosh a-\frac a2+\frac{a^2}{3}
+\]
+
+is increasing for \(a>0\), since
+
+\[
+\eta'(a)
+=
+4\cosh a+4a\sinh a-\frac12+\frac{2a}{3}
+>
+0.
+\]
+
+Also
+
+\[
+\cosh a
+\le
+\frac{1}{1-a^2/2}
+\le
+\frac{5000}{4999}.
+\]
+
+Therefore
+
+\[
+\eta(a)
+\le
+\eta(1/50)
+\le
+\frac4{50}\frac{5000}{4999}
+-\frac1{100}
++\frac1{7500}
+=
+\frac{1315037}{18746250}
+<
+\frac9{100}.
+\]
+
+Use also the coarse elementary bounds
 
 \[
 \log50>\frac72,
 \qquad
 \log(2\pi)<2,
 \qquad
-C_0<1,
-\qquad
-3\sqrt2/50<\frac{9}{100}.
+C_0<1.
 \]
 
 For example, \(\log50>7/2\) follows from
