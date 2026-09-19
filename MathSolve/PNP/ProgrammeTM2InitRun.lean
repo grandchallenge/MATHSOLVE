@@ -43,7 +43,7 @@ def programmeTM2InitCfg (M : ProgrammeMachine)
 
 /-- Fieldwise extensionality for heterogeneous TM2 configurations. -/
 theorem programmeTM2Cfg_ext
-    {Γ : Type → Type} {Λ σ : Type}
+    {K : Type} {Γ : K → Type} {Λ σ : Type}
     {a b : Turing.TM2.Cfg Γ Λ σ}
     (hl : a.l = b.l) (hv : a.var = b.var)
     (hs : ∀ k, a.stk k = b.stk k) : a = b := by
@@ -104,7 +104,10 @@ theorem programmeTM2_step_initToTemp_cons (M : ProgrammeMachine)
   simp [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToTemp, programmeTM2InitToRight,
     programmeTM2InitFinish, programmeTM2InitCfg, programmeTM2InitState,
-    programmeTM2InitStacks]
+    programmeTM2InitStacks, programmeTM2InitStacks_update_raw,
+    programmeTM2InitStacks_update_temp, programmeTM2InitStacks_update_right,
+    List.head?_cons, List.head?_nil, List.tail_cons, List.tail_nil,
+    Option.isSome_some, Option.isSome_none, Bool.cond_true, Bool.cond_false]
 
 /-- The first blank pop ends the first pass and clears the transient symbol. -/
 theorem programmeTM2_step_initToTemp_nil (M : ProgrammeMachine)
@@ -115,7 +118,10 @@ theorem programmeTM2_step_initToTemp_nil (M : ProgrammeMachine)
   simp [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToTemp, programmeTM2InitToRight,
     programmeTM2InitFinish, programmeTM2InitCfg, programmeTM2InitState,
-    programmeTM2InitStacks]
+    programmeTM2InitStacks, programmeTM2InitStacks_update_raw,
+    programmeTM2InitStacks_update_temp, programmeTM2InitStacks_update_right,
+    List.head?_cons, List.head?_nil, List.tail_cons, List.tail_nil,
+    Option.isSome_some, Option.isSome_none, Bool.cond_true, Bool.cond_false]
 
 /-- One nonempty second-pass step restores a Boolean cell to the right-of-head stack. -/
 theorem programmeTM2_step_initToRight_cons (M : ProgrammeMachine)
@@ -128,7 +134,10 @@ theorem programmeTM2_step_initToRight_cons (M : ProgrammeMachine)
   simp [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToTemp, programmeTM2InitToRight,
     programmeTM2InitFinish, programmeTM2InitCfg, programmeTM2InitState,
-    programmeTM2InitStacks]
+    programmeTM2InitStacks, programmeTM2InitStacks_update_raw,
+    programmeTM2InitStacks_update_temp, programmeTM2InitStacks_update_right,
+    List.head?_cons, List.head?_nil, List.tail_cons, List.tail_nil,
+    Option.isSome_some, Option.isSome_none, Bool.cond_true, Bool.cond_false]
 
 /-- The second blank pop ends the restoration pass. -/
 theorem programmeTM2_step_initToRight_nil (M : ProgrammeMachine)
@@ -139,7 +148,10 @@ theorem programmeTM2_step_initToRight_nil (M : ProgrammeMachine)
   simp [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToTemp, programmeTM2InitToRight,
     programmeTM2InitFinish, programmeTM2InitCfg, programmeTM2InitState,
-    programmeTM2InitStacks]
+    programmeTM2InitStacks, programmeTM2InitStacks_update_raw,
+    programmeTM2InitStacks_update_temp, programmeTM2InitStacks_update_right,
+    List.head?_cons, List.head?_nil, List.tail_cons, List.tail_nil,
+    Option.isSome_some, Option.isSome_none, Bool.cond_true, Bool.cond_false]
 
 /-- The final initialization step loads the scanned input cell and enters run mode. -/
 theorem programmeTM2_step_initFinish (M : ProgrammeMachine)
@@ -156,7 +168,10 @@ theorem programmeTM2_step_initFinish (M : ProgrammeMachine)
   simp [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToTemp, programmeTM2InitToRight,
     programmeTM2InitFinish, programmeTM2InitCfg, programmeTM2InitState,
-    programmeTM2InitStacks]
+    programmeTM2InitStacks, programmeTM2InitStacks_update_raw,
+    programmeTM2InitStacks_update_temp, programmeTM2InitStacks_update_right,
+    List.head?_cons, List.head?_nil, List.tail_cons, List.tail_nil,
+    Option.isSome_some, Option.isSome_none, Bool.cond_true, Bool.cond_false]
 
 /-- Any exact one-step transition yields a one-step bounded evaluation witness. -/
 def programmeTM2_one_step_in_time
