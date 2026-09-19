@@ -10,6 +10,34 @@ INTELLECT work-package phase: not applicable; this is a mathematics-domain campa
 
 Advance the Solve-native spectral route beyond the qualified RH interface while preserving the open RH claim boundary and requiring exact operator-class audits before selection.
 
+## Parallel forward route packs
+
+Three durable zero-context execution packs are maintained under:
+
+- handoffs/RH-001/routes/ROUTE_A_LOCAL_ANALYTIC_CONTINUATION.md
+- handoffs/RH-001/routes/ROUTE_B_HERGLOTZ_CONTINUATION.md
+- handoffs/RH-001/routes/ROUTE_C_DETERMINANT_CONVERGENCE.md
+
+Index and coordination rules:
+
+- handoffs/RH-001/routes/README.md
+
+Copy-ready zero-context prompts:
+
+- handoffs/RH-001/routes/prompts/ROUTE_A_ZERO_CONTEXT.txt
+- handoffs/RH-001/routes/prompts/ROUTE_B_ZERO_CONTEXT.txt
+- handoffs/RH-001/routes/prompts/ROUTE_C_ZERO_CONTEXT.txt
+
+Long-lived coordination trackers:
+
+- grandchallenge/MATHSOLVE#411 — Route A, local analytic simple-even continuation
+- grandchallenge/MATHSOLVE#412 — Route B, Herglotz margin continuation
+- grandchallenge/MATHSOLVE#414 — Route C, determinant convergence to Xi
+
+Independent agents should enter through the relevant route pack, claim one bounded subproblem in the corresponding tracker, re-fetch protected state, and protect reusable intermediate results before another route depends on them.
+
+Routes A and B are parallel mechanisms for the CCM simple-even obstruction. Route C attacks the determinant-convergence terminal bridge directly and may consume quantitative spectral-gap results from A/B, but it must not assume global simple-evenness from the current local theorem.
+
 ## Current protected lineage
 
 - RH-T-000: open and unproved.
