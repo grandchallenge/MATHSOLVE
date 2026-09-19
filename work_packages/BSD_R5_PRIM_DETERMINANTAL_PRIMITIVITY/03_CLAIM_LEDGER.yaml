@@ -1,0 +1,63 @@
+schema_version: "1.0"
+campaign: BSD-001
+operation: BSD-R5-PRIM
+issue: grandchallenge/MATHSOLVE#267
+work_package: BSD_R5_PRIM_DETERMINANTAL_PRIMITIVITY
+candidate_disposition: BLOCKED
+
+anchors:
+  math_base: grandchallenge/MATHSOLVE@50308cf34782f14fdb0421beea915311cef20bf3
+  provider: grandchallenge/MATHFORGE@5aef30aa64730ca777329013e1e33c03f34a6e3a
+  constitution: grandchallenge/INTELLECT@f042220f3bed7cb7b5069256e8f6305c850c0628
+  protected_r5_lift_receipt: .gcl/completions/BSD-R5-LIFT-EQUIV/COMPLETION_RECEIPT.json
+
+protected_entering_claims:
+  - R5_LIFT_ESTABLISHED
+  - P2_EQUIVARIANT_CYCLOTOMIC_KATO_DETERMINANT_MEMBERSHIP
+  - P2_EQUIVARIANT_KATO_FIRST_COMPONENT_AND_COMPATIBILITY_AVAILABLE
+  - P2_EQUIVARIANT_SELECTED_REGULATOR_ISOMORPHISM_AVAILABLE
+  - P2_EQUIVARIANT_DETERMINANT_TO_STARK_ISOMORPHISM_AVAILABLE
+
+claims:
+  - claim_id: BSD-R5-PRIM-LINE-001
+    status: PROVED_IN_PACKAGE
+    statement: The compatible cyclotomic determinant and selected Kolyvagin-system inverse limits are free rank-one Lambda modules and the protected Kato determinant preimage maps to the compatible Kato-derived system.
+  - claim_id: BSD-R5-PRIM-RESIDUE-002
+    status: PROVED_IN_PACKAGE
+    statement: For A=Lambda_(2), the residue field is F2((T)); a Lambda coordinate is an A-unit exactly when its reduction in F2[[T]] is nonzero.
+  - claim_id: BSD-R5-PRIM-COMPARE-003
+    status: PROVED_FROM_PROTECTED_R5_LIFT
+    statement: The retained real, ordinary, and finite-control comparison terms are units or vanish after localization at (2), so they do not alter height-one primitivity.
+  - claim_id: BSD-R5-PRIM-RESIDUAL-004
+    status: PROVED_IN_PACKAGE
+    statement: R5-PRIM is equivalent to nonvanishing of the residual inverse-limit Kato-derived Kolyvagin system in KS_Lambda/2.
+  - claim_id: BSD-R5-PRIM-FINITE-DETECT-005
+    status: PROVED_IN_PACKAGE
+    statement: R5-PRIM is equivalent to existence of some finite cyclotomic layer n with nonzero mod-2 Kato-derived Kolyvagin system; finite-layer basis status is not required.
+  - claim_id: BSD-R5-PRIM-RESIDUAL-NONVANISHING-006
+    status: OPEN_SUBSTANTIVE_THEOREM
+    statement: Some finite cyclotomic mod-2 Kato-derived Kolyvagin system is nonzero uniformly on the selected good-ordinary irreducible S3 lane.
+
+blocked_on:
+  id: MISSING_P2_RESIDUAL_CYCLOTOMIC_KATO_KOLYVAGIN_NONVANISHING
+  class: theorem
+  witness: Existing protected literal-2 Kato derivative and R5-LIFT artifacts prove construction and integrality but no mod-2 inverse-limit nonvanishing; protected source audits locate no admitted uniform good-ordinary irreducible-S3 p=2 theorem supplying it.
+  equivalent_forms:
+    - residual inverse-limit Kato-derived Kolyvagin system is nonzero
+    - protected Kato determinant coordinate is not divisible by 2
+    - excess height-one-(2) determinant valuation is zero
+    - some finite cyclotomic mod-2 Kato-derived Kolyvagin system is nonzero
+
+preserved_false:
+  formal_higher_level_hypothesis_3_2_iii: false
+  full_bss_hypothesis_4_7: false
+  bss_hypothesis_4_7_iii: false
+  infinite_bss_h3: false
+
+claim_firewall:
+  r5_lift: true
+  r5_prim: false
+  d2d: false
+  bsd_r2_a1: false
+  mathcert_certification: false
+  novelty_priority: false

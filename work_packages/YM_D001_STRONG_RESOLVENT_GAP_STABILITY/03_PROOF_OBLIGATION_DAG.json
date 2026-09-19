@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "parent_debt": "YM-D001",
+  "artifact_id": "YM-D001-NATIVE-PROOF-OBLIGATION-DAG",
+  "candidate_root": {
+    "work_package": "YM-D001-STRONG-RESOLVENT-GAP-STABILITY",
+    "claim_id": "YM-D001-L001"
+  },
+  "nodes": [
+    {
+      "id": "YM-D001-R001",
+      "status": "PROVED_IN_CANDIDATE_NOT_ADMITTED_NOT_CERTIFIED",
+      "kind": "RESTRICTED_THEOREM",
+      "statement": "A fixed positive spectral exclusion survives strong-resolvent convergence of nonnegative self-adjoint operators on an identified Hilbert space."
+    },
+    {
+      "id": "YM-D001-R002-SCALING",
+      "status": "OPEN",
+      "kind": "PHYSICAL_SCALING",
+      "statement": "Specify the cutoff/volume-dependent conversion from regulator units to one common physical energy normalization and prove that the regulated lower bound is uniform after this conversion."
+    },
+    {
+      "id": "YM-D001-R002-IDENTIFICATION",
+      "status": "OPEN",
+      "kind": "STATE_SPACE_COMPARISON",
+      "statement": "Construct the comparison maps or common-Hilbert realization needed to state convergence of the regulated Hamiltonians to the target continuum Hamiltonian without silently identifying inequivalent regulator state spaces."
+    },
+    {
+      "id": "YM-D001-R002-CONVERGENCE",
+      "status": "OPEN",
+      "kind": "STRONG_RESOLVENT_CONVERGENCE",
+      "statement": "Prove strong-resolvent convergence of the physically rescaled regulated Hamiltonians to the same limiting four-dimensional Hamiltonian, or establish a stronger generalized convergence framework with its own spectral-stability theorem."
+    },
+    {
+      "id": "YM-D001-R002-VACUUM",
+      "status": "OPEN_IF_REQUIRED_FOR_APPLICATION",
+      "kind": "ZERO_SECTOR_STABILITY",
+      "statement": "Control the zero-energy sector separately if the limiting construction requires persistence or uniqueness of a vacuum vector; strong-resolvent gap stability alone does not supply this."
+    },
+    {
+      "id": "YM-D001-CLOSE",
+      "status": "BLOCKED",
+      "kind": "PARENT_DEBT_DISCHARGE",
+      "statement": "Combine one common physical-unit regulated lower bound, a justified state-space comparison, continuum convergence, the R001 stability theorem, and any required zero-sector control to discharge YM-D001."
+    }
+  ],
+  "edges": [
+    {"from": "YM-D001-R001", "to": "YM-D001-CLOSE", "type": "abstract_spectral_stability"},
+    {"from": "YM-D001-R002-SCALING", "to": "YM-D001-CLOSE", "type": "required_uniform_physical_gap"},
+    {"from": "YM-D001-R002-IDENTIFICATION", "to": "YM-D001-R002-CONVERGENCE", "type": "defines_comparison_framework"},
+    {"from": "YM-D001-R002-CONVERGENCE", "to": "YM-D001-CLOSE", "type": "required_limit_topology"},
+    {"from": "YM-D001-R002-VACUUM", "to": "YM-D001-CLOSE", "type": "required_if_zero_sector_is_part_of_target"}
+  ],
+  "cross_debt_dependencies": [
+    {"debt": "YM-D003", "effect": "The limiting Hamiltonian must belong to an actually constructed nontrivial four-dimensional continuum theory; D001-R001 cannot construct that limit."},
+    {"debt": "YM-D002", "effect": "If the Hamiltonian is obtained through Osterwalder-Schrader reconstruction, the required limiting hierarchy and reconstruction hypotheses remain D002 obligations."}
+  ],
+  "false_proof_firewalls": [
+    "Weak resolvent convergence is not enough to preserve a spectral exclusion.",
+    "Strong-resolvent convergence does not by itself preserve a moving vacuum state.",
+    "A positive gap at every regulator is insufficient without one common positive physical-unit lower bound.",
+    "A uniform bound in raw regulator units cannot be promoted without the physical scaling map."
+  ],
+  "current_frontier": "After R001 admission, the next material D001 tranche is not another abstract topology lemma. It is to bind the actual regulated Yang-Mills physical scaling and state-space comparison, and then prove the uniform lower bound plus strong-resolvent convergence or record the first exact obstruction.",
+  "certification_boundary": "No node in this DAG is a MATHCERT certificate. YM-D001-R001 is a Solve candidate until protected admission; YM-D001 and YM-001 remain open."
+}

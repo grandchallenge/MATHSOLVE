@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "BSD-001",
+  "operation": "BSD-R5-PRIM",
+  "protected_base": "50308cf34782f14fdb0421beea915311cef20bf3",
+  "provider_anchor": "5aef30aa64730ca777329013e1e33c03f34a6e3a",
+  "assembled_from_head": "b2fcbf20d34104ea6b1525aedab3830692dc258d",
+  "hash_semantics": "Git blob SHA-1 content identities for the exact pre-merge governed artifact set",
+  "artifacts": {
+    "work_packages/BSD_R5_PRIM_DETERMINANTAL_PRIMITIVITY/00_README.md": "8ef863aaedf231ab276d95b4baf51f06b96c00a1",
+    "work_packages/BSD_R5_PRIM_DETERMINANTAL_PRIMITIVITY/01_RESIDUAL_PRIMITIVITY_REDUCTION.md": "1506d6c05f40fb7d06bdfde198a5cba420e98278",
+    "work_packages/BSD_R5_PRIM_DETERMINANTAL_PRIMITIVITY/02_SOURCE_AND_BOUNDARY_NOTE.md": "26f92d351f6e985c49dde645c5de4160c7511e6e",
+    "work_packages/BSD_R5_PRIM_DETERMINANTAL_PRIMITIVITY/03_CLAIM_LEDGER.yaml": "f2cc66b1ed6c30f2f3a7bdec1f9e2ca5a2b4d3ac",
+    "work_packages/BSD_R5_PRIM_DETERMINANTAL_PRIMITIVITY/04_RESIDUAL_ALGEBRA_CERTIFICATE.py": "87cd97b6da9942ccecafc87ced2f9c39258a0498",
+    "handoffs/BSD-001/README.md": "524734770915db258e57ca53aff54570955bb810",
+    "handoffs/BSD-001/R5_PRIM_FRONTIER.md": "7776a76e399de878878afce21db00cb49fabf5e4",
+    ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json": "0378cdcf18283cc435b0a5d33df78695f5c88411",
+    ".gcl/operations/BSD-R5-PRIM/OPERATION.json": "ff7965af8750cc17014c2ca421734f395932e5d4",
+    "tools/gcl_campaign_preflight_r5_prim.py": "6a25b240571b6049935ee6d86a1e916a9bd2ef13",
+    ".github/workflows/bsd-r5-prim-certificate.yml": "1f8c65be60d46ef496eb0f66802ad1315918ebc3",
+    ".ghos-routing/workflows.json": "b1954e7bb5dd56e3723ca26c0f23af0934e905de"
+  },
+  "completion_replay_excluded": [
+    ".gcl/completions/BSD-R5-PRIM/COMPLETION_RECEIPT.json",
+    "tools/gcl_completion_receipt_validate_v2.py"
+  ],
+  "invalidation": {
+    "governed_artifact_change": "regenerate freeze and replay exact-head theorem reviews/checks",
+    "candidate_head_change_without_governed_byte_change": "replay candidate checks and exact-head review as required by operation contract",
+    "post_merge_completion_replay_change": "revalidate completion receipt against immutable candidate and protected merge/readback; mathematical freeze remains unchanged",
+    "unrelated_protected_head_movement": "does not invalidate immutable dependency anchors"
+  },
+  "authority_boundary": "This freeze identifies the pre-merge BSD R5-PRIM mathematical candidate bytes only. It does not prove MISSING_P2_RESIDUAL_CYCLOTOMIC_KATO_KOLYVAGIN_NONVANISHING, establish R5-PRIM or BSD-R2-A1, or create MATHCERT authority."
+}

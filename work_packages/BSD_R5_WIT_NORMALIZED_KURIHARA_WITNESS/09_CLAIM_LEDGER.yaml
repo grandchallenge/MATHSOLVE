@@ -1,0 +1,58 @@
+schema_version: 0.1.0
+record_type: GCL_CLAIM_LEDGER
+campaign: BSD-001
+operation: BSD-R5-WIT
+issue: grandchallenge/MATHSOLVE#282
+candidate_disposition: BLOCKED
+protected_base: 8e692aaca7b0932c412a03eb33985ba5994b1d5f
+provider_anchor: 3a097cf5f1ad5e12eeba83a08dccfbf7bc49b5f4
+
+entering_frontier: MISSING_P2_NORMALIZED_FINITE_KURIHARA_NONVANISHING_WITNESS
+
+proved:
+  - id: BSD-R5-WIT-CONTROL-T2-001
+    statement: The protected diagnostic controls 53a1 and 203b1 have E(Q_2)[2^infinity] isomorphic to Z/2Z, hence t_2=1.
+  - id: BSD-R5-WIT-79A1-T2-002
+    statement: The pinned selected instance 79a1 has E(Q_2)[2^infinity] isomorphic to Z/4Z, hence t_2=2.
+  - id: BSD-R5-WIT-COHORT-T2-003
+    statement: Exact local certificates give t_2(61a1)=1, t_2(83a1)=1, t_2(201b1)=2, and t_2(89a1)=3.
+  - id: BSD-R5-WIT-KURIHARA-STRATIFY-004
+    statement: Protected R5-RECIP forces Delta_n^(2)=0 mod 2 at every admitted derivative level whenever t_2>=2; this concerns only the normalized local-regulator/Kurihara coordinate.
+  - id: BSD-R5-WIT-BOUNDED-SCAN-005
+    statement: Exact PARI/GP 2.15.4 replay found no single-prime normalized mod-2 Kurihara witness through ell<=2000 on 53a1 and 203b1, and no single-prime witness through ell<=500 on the expanded effective cohort.
+  - id: BSD-R5-WIT-DIRECT-DETECTOR-006
+    statement: Protected WP60T gives kappa_m(c)_1=c_Q mod 2^m; at m=1, nonvanishing of the bottom Kato class c_Q^Kato mod 2 is therefore a legitimate finite residual detector compatible with protected R5-PRIM finite detection.
+  - id: BSD-R5-WIT-SOURCE-BOUNDARY-007
+    statement: Protected MATHFORGE provider 3a097cf5f1ad5e12eeba83a08dccfbf7bc49b5f4 admits the direct-detector source audit and does not supply a literal-p=2 theorem proving c_Q^Kato mod 2 nonzero on the selected rank-one anomalous ordinary lane.
+
+open:
+  - id: MISSING_P2_BASE_KATO_CLASS_MOD2_NONVANISHING_ON_SELECTED_RANK_ONE_LANE
+    statement: Prove by a source-admitted literal-p=2 theorem or exact legitimate computation that the bottom Kato Euler-system class c_Q^Kato has nonzero reduction modulo 2 on a selected BSD-001 rank-one anomalous ordinary instance.
+  - id: MISSING_P2_NONZERO_FINITE_RESIDUAL_KATO_KOLYVAGIN_WITNESS
+    statement: Exhibit any legitimate finite cyclotomic Kato/Kolyvagin component that is nonzero modulo 2 and is compatible with protected R5-PRIM finite detection.
+  - id: MISSING_P2_RESIDUAL_CYCLOTOMIC_KATO_KOLYVAGIN_NONVANISHING
+    statement: Prove the protected inverse-limit selected Kato-derived Kolyvagin system is nonzero modulo 2.
+
+blocked_on:
+  id: MISSING_P2_BASE_KATO_CLASS_MOD2_NONVANISHING_ON_SELECTED_RANK_ONE_LANE
+  class: substantive_evidentiary_theorem_boundary
+  witness: The Kurihara coordinate is identically unavailable on the certified t_2>=2 sublane and bounded exact searches found no hit on the certified t_2=1 cohort. The protected finite-detection stack reduces the current direct bypass to bottom Kato-class mod-2 nonvanishing, but the protected source audit supplies no literal-p=2 indivisibility theorem or exact computation establishing it.
+
+claim_firewall:
+  formal_higher_level_hypothesis_3_2_iii: false
+  full_bss_hypothesis_4_7: false
+  bss_hypothesis_4_7_iii: false
+  infinite_bss_h3: false
+  r5_lift: true
+  r5_prim: false
+  r5_res: false
+  d2d: false
+  bsd_r2_a1: false
+  mathcert_certification: false
+
+prohibited_inferences:
+  - The bounded negative Kurihara scans prove that no normalized witness exists on a t_2=1 curve.
+  - Delta_n^(2)=0 mod 2 for t_2>=2 implies the residual Kato/Kolyvagin class vanishes.
+  - Characteristic-zero Beilinson-Kato nonvanishing implies mod-2 indivisibility without an integral unit comparison.
+  - An odd-prime Perrin-Riou or refined Kato theorem applies at literal p=2 by specialization.
+  - Operational completion of BSD-R5-WIT with BLOCKED disposition establishes R5_RES_ESTABLISHED or R5_PRIM_ESTABLISHED.

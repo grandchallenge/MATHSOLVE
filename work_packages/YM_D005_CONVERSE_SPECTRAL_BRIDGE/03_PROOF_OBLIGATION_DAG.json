@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "parent_debt": "YM-D005",
+  "artifact_id": "YM-D005-NATIVE-PROOF-OBLIGATION-DAG",
+  "admitted_root": {
+    "work_package": "YM-D005-CONVERSE-SPECTRAL-BRIDGE",
+    "protected_merge": "bbadc7953b26afadeb4014e2e4980232df46097b",
+    "claim_id": "YM-D005-L001"
+  },
+  "nodes": [
+    {
+      "id": "YM-D005-R001",
+      "status": "COMPLETE_IN_SOLVE_NOT_CERTIFIED",
+      "kind": "RESTRICTED_THEOREM",
+      "statement": "A common positive asymptotic semigroup-decay exponent on a linear class dense in Omega-perp is equivalent, after reconstruction, to the corresponding non-vacuum spectral lower bound.",
+      "evidence": [
+        "work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/01_CONVERSE_SPECTRAL_THEOREM.md",
+        "work_packages/YM_D005_CONVERSE_SPECTRAL_BRIDGE/02_CLAIM_LEDGER.yaml"
+      ]
+    },
+    {
+      "id": "YM-D005-R002-RECONSTRUCTION",
+      "status": "BLOCKED_BY_YM-D002",
+      "kind": "RECONSTRUCTION_PRECONDITION",
+      "statement": "Construct one four-dimensional limiting gauge-invariant hierarchy satisfying the complete Osterwalder-Schrader/reconstruction hypotheses and identify its Hilbert space, vacuum, and nonnegative self-adjoint Hamiltonian."
+    },
+    {
+      "id": "YM-D005-R002-DENSITY",
+      "status": "OPEN_AFTER_RECONSTRUCTION",
+      "kind": "OBSERVABLE_COMPLETENESS",
+      "statement": "For the same reconstructed limiting theory, prove that the centered images of the gauge-invariant local observables for which decay is controlled form a linear subspace dense in Omega-perp."
+    },
+    {
+      "id": "YM-D005-R002-COMMON-RATE",
+      "status": "OPEN",
+      "kind": "UNIFORM_PHYSICAL_DECAY",
+      "statement": "For that same dense observable class, prove one common physical-unit exponent Delta > 0 controlling every diagonal translated correlation, rather than vector-dependent exponents whose infimum may vanish."
+    },
+    {
+      "id": "YM-D005-CLOSE",
+      "status": "BLOCKED",
+      "kind": "PARENT_DEBT_DISCHARGE",
+      "statement": "Combine reconstruction, observable completeness, and the common decay estimate with YM-D005-L001 to discharge YM-D005 for the same four-dimensional limiting theory."
+    }
+  ],
+  "edges": [
+    {"from": "YM-D005-R001", "to": "YM-D005-CLOSE", "type": "abstract_spectral_implication"},
+    {"from": "YM-D005-R002-RECONSTRUCTION", "to": "YM-D005-R002-DENSITY", "type": "defines_reconstructed_observable_vectors"},
+    {"from": "YM-D005-R002-RECONSTRUCTION", "to": "YM-D005-CLOSE", "type": "required_same_theory"},
+    {"from": "YM-D005-R002-DENSITY", "to": "YM-D005-CLOSE", "type": "required_full_nonvacuum_coverage"},
+    {"from": "YM-D005-R002-COMMON-RATE", "to": "YM-D005-CLOSE", "type": "required_positive_uniform_rate"}
+  ],
+  "cross_debt_dependencies": [
+    {"debt": "YM-D002", "effect": "Blocks R002 reconstruction until the complete OS profile and reconstruction hypotheses are proved for one limiting hierarchy."},
+    {"debt": "YM-D003", "effect": "The reconstructed hierarchy must arise from a nontrivial four-dimensional continuum theory along a controlled physical trajectory."},
+    {"debt": "YM-D004", "effect": "The gauge-invariant local observable family and its ultraviolet normalization must be identified in the same limiting theory."},
+    {"debt": "YM-D001", "effect": "Any regulated spectral information used to establish the common physical decay scale must survive the regulator limit with spectral stability."}
+  ],
+  "false_proof_firewalls": [
+    "A single fast-decaying correlator does not imply the bottom of the full non-vacuum spectrum.",
+    "A dense class with positive but vector-dependent rates does not imply a positive global gap.",
+    "The abstract spectral theorem does not supply Osterwalder-Schrader reconstruction, continuum existence, observable density, or the common physical decay estimate."
+  ],
+  "current_frontier": "YM-D005-R002 is not presently executable as a Yang-Mills theorem because its reconstructed four-dimensional limiting theory is itself blocked by YM-D002 and YM-D003; future work must close those dependencies or select another authorized D001-D004 restricted target.",
+  "certification_boundary": "No node in this DAG is a MATHCERT certificate. YM-D005-L001 is admitted in Solve only; YM-D005 and YM-001 remain open."
+}

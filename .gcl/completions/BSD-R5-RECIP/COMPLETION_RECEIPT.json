@@ -1,0 +1,117 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "campaign": "BSD-001",
+  "operation": "BSD-R5-RECIP",
+  "candidate_head": "9243943759fc365effdb44f76dc4e03a901910f2",
+  "merge_sha": "31abc7b8f8953499c93eea23b9dafdfa4e11f551",
+  "protected_readback_sha": "31abc7b8f8953499c93eea23b9dafdfa4e11f551",
+  "provider_anchor": "cd814844128167d0e4cdb48f69f9d01c6c0be883",
+  "staffing_authority": {
+    "constitution": "grandchallenge/INTELLECT@f042220f3bed7cb7b5069256e8f6305c850c0628",
+    "directive": "GI-STEWARD-0003",
+    "programme_adoption": "grandchallenge/MATH-PROGRAMME@af6e1772e2d82b0b198d11c08e1369789ffbba3a",
+    "instruction": "Separate non-authoring logical Adversary and Referee passes are authorized for this non-reserved research admission."
+  },
+  "adversary_record": {
+    "role": "Adversary",
+    "mode": "non_authoring_read_only",
+    "reviewed_candidate_head": "9243943759fc365effdb44f76dc4e03a901910f2",
+    "logical_pass_id": "BSD-R5-RECIP-ADV-92439437-003",
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/280#pullrequestreview-5227963314",
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "certification": false,
+      "claim_promotion": false,
+      "human_steward": false
+    }
+  },
+  "referee_record": {
+    "role": "Referee",
+    "mode": "non_authoring_read_only",
+    "reviewed_candidate_head": "9243943759fc365effdb44f76dc4e03a901910f2",
+    "logical_pass_id": "BSD-R5-RECIP-REF-92439437-004",
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/280#pullrequestreview-5227965103",
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "certification": false,
+      "claim_promotion": false,
+      "human_steward": false
+    }
+  },
+  "required_checks": [
+    {
+      "name": "BSD R5-RECIP certificate",
+      "phase": "candidate",
+      "head": "9243943759fc365effdb44f76dc4e03a901910f2",
+      "run": 35146742063,
+      "result": "success"
+    },
+    {
+      "name": "GCL conformance",
+      "phase": "candidate",
+      "head": "9243943759fc365effdb44f76dc4e03a901910f2",
+      "run": 35146742551,
+      "result": "success"
+    },
+    {
+      "name": "routing-enforcement",
+      "phase": "candidate",
+      "head": "9243943759fc365effdb44f76dc4e03a901910f2",
+      "check_run": 104964639877,
+      "result": "success"
+    },
+    {
+      "name": "ledgers",
+      "phase": "candidate",
+      "head": "9243943759fc365effdb44f76dc4e03a901910f2",
+      "check_run": 104964640200,
+      "result": "success"
+    },
+    {
+      "name": "BSD R5-RECIP certificate",
+      "phase": "protected_readback",
+      "head": "31abc7b8f8953499c93eea23b9dafdfa4e11f551",
+      "run": 35147017367,
+      "result": "success"
+    },
+    {
+      "name": "GCL conformance",
+      "phase": "protected_readback",
+      "head": "31abc7b8f8953499c93eea23b9dafdfa4e11f551",
+      "run": 35147018014,
+      "result": "success"
+    }
+  ],
+  "disposition": {
+    "type": "CLOSED",
+    "frontier": "MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY",
+    "next_frontier": "MISSING_P2_NORMALIZED_FINITE_KURIHARA_NONVANISHING_WITNESS",
+    "proved_reduction": [
+      "BSD-R5-RECIP-LOCAL-DUALEXP-006",
+      "BSD-R5-RECIP-LOCAL-TORSIONCOEFF-007",
+      "BSD-R5-RECIP-SYMBOL-SATURATION-002",
+      "BSD-R5-RECIP-SYMBOL-INTEGRAL-004",
+      "BSD-R5-RECIP-SYMBOL-KKS-005",
+      "BSD-R5-RECIP-NORMALIZED-RECIPROCITY-006"
+    ]
+  },
+  "preserved_false": [
+    "formal_higher_level_hypothesis_3_2_iii",
+    "full_bss_hypothesis_4_7",
+    "bss_hypothesis_4_7_iii",
+    "infinite_bss_h3",
+    "r5_prim",
+    "r5_res",
+    "d2d",
+    "bsd_r2_a1",
+    "mathcert_certification"
+  ],
+  "notes": [
+    "CLOSED applies only to the R5-RECIP reciprocity frontier.",
+    "No nonzero normalized finite Kurihara witness is asserted.",
+    "R5-RES remains unestablished and may only be reopened by a protected nonzero residual witness or equivalent theorem."
+  ]
+}

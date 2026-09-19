@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "parent_debt": "YM-D001",
+  "artifact_id": "YM-D001-INTERSCALE-GENERATOR-INTERFACE-DAG",
+  "candidate_root": {
+    "work_package": "YM-D001-INTERSCALE-GENERATOR-INTERFACE",
+    "claim_id": "YM-D001-R003"
+  },
+  "nodes": [
+    {
+      "id": "YM-D001-R001",
+      "status": "PROTECTED_ADMITTED_NOT_CERTIFIED",
+      "kind": "ABSTRACT_SPECTRAL_STABILITY"
+    },
+    {
+      "id": "YM-D001-R002",
+      "status": "PROTECTED_ADMITTED_NOT_CERTIFIED",
+      "kind": "CURRENT_EVIDENCE_APPLICATION_AUDIT"
+    },
+    {
+      "id": "YM-D001-R003",
+      "status": "INTERFACE_NONCOMPOSITION_PROVED_IN_CANDIDATE",
+      "kind": "INTERSCALE_INTERFACE_AUDIT"
+    },
+    {
+      "id": "YM-D001-O004",
+      "status": "ESTABLISHED_IN_CANDIDATE",
+      "kind": "MISSING_INTERSCALE_GENERATOR_COMPARISON",
+      "statement": "No admitted theorem provides maps or a generalized convergence structure linking regulated physical generator spaces across cutoffs to the limiting physical Hamiltonian."
+    },
+    {
+      "id": "YM-D001-O005",
+      "status": "ESTABLISHED_IN_CANDIDATE",
+      "kind": "MISSING_PHYSICAL_ENERGY_SCALE_SETTING",
+      "statement": "No admitted theorem supplies the common physical time/energy normalization required to compare regulated spectral exclusions across cutoffs."
+    },
+    {
+      "id": "YM-D001-R004-COMPARISON",
+      "status": "OPEN",
+      "kind": "COMPARISON_FORMALISM",
+      "statement": "Construct a common-Hilbert/intertwining realization or a varying-Hilbert-space convergence framework for the regulated physical generators."
+    },
+    {
+      "id": "YM-D001-R004-SCALE",
+      "status": "OPEN",
+      "kind": "PHYSICAL_SCALE_SETTING",
+      "statement": "Bind the cutoff trajectory to one physical time/energy normalization."
+    },
+    {
+      "id": "YM-D001-UNIFORM-GAP",
+      "status": "BLOCKED_ON_R004",
+      "kind": "UNIFORM_PHYSICAL_SPECTRAL_EXCLUSION"
+    },
+    {
+      "id": "YM-D001-CONVERGENCE",
+      "status": "BLOCKED_ON_R004",
+      "kind": "REGULATOR_TO_CONTINUUM_GENERATOR_CONVERGENCE"
+    },
+    {
+      "id": "YM-D001-CLOSE",
+      "status": "BLOCKED",
+      "kind": "PARENT_DEBT_DISCHARGE"
+    }
+  ],
+  "edges": [
+    {"from": "YM-D001-R001", "to": "YM-D001-CLOSE", "type": "available_abstract_spectral_stability"},
+    {"from": "YM-D001-R002", "to": "YM-D001-R003", "type": "exposed_missing_generator_family"},
+    {"from": "YM-D001-R003", "to": "YM-D001-R004-COMPARISON", "type": "identifies_missing_comparison_arrow"},
+    {"from": "YM-D001-R003", "to": "YM-D001-R004-SCALE", "type": "identifies_missing_scale_setting"},
+    {"from": "YM-D001-R004-COMPARISON", "to": "YM-D001-UNIFORM-GAP", "type": "types_cross_cutoff_spectral_statement"},
+    {"from": "YM-D001-R004-SCALE", "to": "YM-D001-UNIFORM-GAP", "type": "puts_gap_in_common_physical_units"},
+    {"from": "YM-D001-R004-COMPARISON", "to": "YM-D001-CONVERGENCE", "type": "types_operator_convergence"},
+    {"from": "YM-D001-UNIFORM-GAP", "to": "YM-D001-CLOSE", "type": "required_input"},
+    {"from": "YM-D001-CONVERGENCE", "to": "YM-D001-CLOSE", "type": "required_input"}
+  ],
+  "cross_debt_dependencies": [
+    {"debt": "YM-D002", "effect": "YM-T-120 supplies the target physical Hamiltonian only after complete limiting OS reconstruction hypotheses are proved."},
+    {"debt": "YM-D003", "effect": "YM-T-090 does not by itself close large fields or construct the full four-dimensional continuum trajectory/limit."},
+    {"debt": "YM-D005", "effect": "Correlation-decay information remains distinct from a complete physical spectral-bottom statement."}
+  ],
+  "false_proof_firewalls": [
+    "Euclidean RG maps are not automatically physical generator intertwiners.",
+    "Continuum OS reconstruction does not automatically supply cross-cutoff Hilbert-space maps.",
+    "A lattice spacing parameter does not by itself define common physical energy normalization.",
+    "Per-cutoff transfer operators do not imply generator convergence.",
+    "Audited noncomposable claimed solutions cannot be used as premises."
+  ],
+  "current_frontier": "Choose and prove the comparison formalism and physical scale setting before attempting a cutoff-uniform spectral exclusion or regulator-to-continuum generator convergence theorem.",
+  "certification_boundary": "R003 is a Solve candidate interface audit only. No MATHCERT certification or terminal Yang-Mills claim is created."
+}

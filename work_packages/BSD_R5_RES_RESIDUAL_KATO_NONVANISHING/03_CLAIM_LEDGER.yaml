@@ -1,0 +1,54 @@
+schema_version: 0.1.0
+record_type: GCL_CLAIM_LEDGER
+campaign: BSD-001
+operation: BSD-R5-RES
+issue: grandchallenge/MATHSOLVE#273
+candidate_disposition: BLOCKED
+protected_base: 36202d97e2cd96956c8a4aafa43941f6219776c5
+provider_anchor: 7da3f07248b5d8cf3d0bd1e57e9d8b7f5b78d063
+
+proved:
+  - id: BSD-R5-RES-ENTERING-001
+    statement: Protected R5-PRIM reduces height-one-(2) primitivity to residual nonvanishing of the inverse-limit selected Kato-derived Kolyvagin system.
+  - id: BSD-R5-RES-FINITE-DETECT-002
+    statement: Protected R5-PRIM finite detection permits R5-RES to close from one legitimate nonzero finite cyclotomic mod-2 Kato/Kolyvagin image; finite-layer basis status is not required.
+  - id: BSD-R5-RES-SOURCE-003
+    statement: The protected provider admits a finite Kurihara/modular-symbol witness architecture but no literal-p=2 reciprocity theorem.
+  - id: BSD-R5-RES-LOCAL-FACTOR-004
+    statement: The admitted refined source interface tracks the local factor p^t with p^t equal to the order of E(Q_p)[p-power torsion], so a literal-2 replay must retain the exact 2-power local factor rather than silently divide it away.
+  - id: BSD-R5-RES-BOUNDARY-005
+    statement: The first independent new theorem needed by the admitted finite-witness route is MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY.
+
+open:
+  - id: MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY
+    statement: Construct the literal-p=2 torsion-coefficient local regulator, determine its integral image, retain local 2-power torsion and period/Manin factors, and prove the normalized Kato-derivative to finite Kurihara/modular-symbol reciprocity identity compatible with protected finite detection.
+  - id: MISSING_P2_NORMALIZED_FINITE_KURIHARA_NONVANISHING_WITNESS
+    statement: After the literal-p=2 reciprocity bridge is protected, exhibit or prove a nonzero normalized finite analytic witness on the selected lane.
+  - id: MISSING_P2_RESIDUAL_CYCLOTOMIC_KATO_KOLYVAGIN_NONVANISHING
+    statement: Prove the protected inverse-limit Kato-derived Kolyvagin system is nonzero modulo 2 on the selected lane.
+
+blocked_on:
+  id: MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY
+  class: theorem
+  witness: The protected provider gives the required torsion-coefficient reciprocity identity only for odd-prime settings, with Kim Theorem 3.11 stated for p>=5; no protected literal-p=2 integral comparison is available.
+
+claim_firewall:
+  formal_higher_level_hypothesis_3_2_iii: false
+  full_bss_hypothesis_4_7: false
+  bss_hypothesis_4_7_iii: false
+  infinite_bss_h3: false
+  r5_lift: true
+  r5_prim: false
+  r5_res: false
+  d2d: false
+  bsd_r2_a1: false
+  mathcert_certification: false
+
+prohibited_inferences:
+  - A raw nonzero Kurihara number at p=2 proves the protected Kato derivative is nonzero.
+  - Good ordinary reduction at 2 implies E(Q_2)[2] is nonzero.
+  - The local 2-power torsion factor can be divided out without a separate integrality theorem.
+  - The p>=5 refined reciprocity theorem applies at p=2 by specialization.
+  - Protected WP60R global Kolyvagin-system repairs also prove the missing local explicit-reciprocity identity.
+  - R5-RES being operationally completed with BLOCKED disposition establishes R5_RES_ESTABLISHED.
+  - R5-RES closure or CI can by itself promote R5-PRIM, D2d, BSD-R2-A1 or MATHCERT certification.
