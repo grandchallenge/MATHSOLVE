@@ -48,7 +48,7 @@ This package supplies explicit strictly positive initial values for both
 margins on the guarded effective small-\(a\) interval
 
 \[
-0<a\le\frac1{24}.
+0<a\le\frac2{15}.
 \]
 
 The bounds are deliberately coarse and fully elementary.
@@ -254,8 +254,8 @@ than restarting from qualitative continuity.
 
 Reject:
 
-1. replacing the strict R040 work-branch theorem by this package before
-   R040's provider and exact-head CI gates are protected;
+1. replacing the strict R045 work-branch theorem by this package before
+   R045's dependency and exact-head CI gates are protected;
 2. inferring that \(d(a)\) or \(\Delta_H(a)\) stays positive for
    \(a>2/15\);
 3. using the scalar resolvent outside \(d(a)>0\);
