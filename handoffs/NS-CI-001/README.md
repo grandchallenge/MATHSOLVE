@@ -2368,6 +2368,85 @@ geometric separator, not a selected whole-space NSE counterexample.
 The principal direction scale has `beta=h^{-1}theta=O(1)`; small beta is not
 available from scaling alone.
 
+### L5-42 intrinsic one-sided direction-compression cost
+
+\`work_packages/NS_CI_R014_A2_L5_42_C2_DIRECTION_INTRINSIC_COMPRESSION_COST.md\`
+records
+
+\`\`\`text
+RECIPROCAL_AMPLITUDE_PRODUCT_NOT_INTRINSIC
+__COMPRESSION_EXIT_CONTROLLED_BY_GAUGE_FREE_NEGATIVE_DIRECTION_VARIATION.
+\`\`\`
+
+The protected factorization
+
+\`\`\`math
+v(s,Y)=beta(s)B(s,Y)
+\`\`\`
+
+has an unfixed positive scalar gauge:
+
+\`\`\`math
+beta -> c(s) beta,
+\qquad
+B -> B/c(s).
+\`\`\`
+
+This leaves \`v\`, the characteristic map, \`J\`, and the tangent cocycle
+unchanged.  The L5-41 sufficient product
+\`D_b^(1/2)A_beta^(1/2)\` is therefore not intrinsic: a constant rescaling can
+make it arbitrarily large without changing the actual frame geometry.
+
+The invariant first-order quantity is the variation of the actual direction
+transport.  Define
+
+\`\`\`math
+V_v^- =
+int int (-partial_Y v)_+ dY ds.
+\`\`\`
+
+Stopping only at the first compression level \`log J=-K\` gives
+
+\`\`\`math
+|{Z: inf_s log J(s,Z) <= -K}|
+<=
+e^K K^(-1) V_v^-.
+\`\`\`
+
+Expansion does not need to be stopped for this reciprocal-Jacobian problem.
+
+A fully gauge-invariant factorized upper bound is
+
+\`\`\`math
+C_(B,beta)
+=
+int
+[
+  int |b|^2 |B_Y|^2 dY
+]^(1/2)
+[
+  int |beta|^2 / |b|^2 dY
+]^(1/2)
+ds,
+\`\`\`
+
+with
+
+\`\`\`math
+V_v <= C_(B,beta).
+\`\`\`
+
+On the full periodic coordinate,
+\`int partial_Y v dY=0\` implies only
+
+\`\`\`math
+V_v^- = V_v/2.
+\`\`\`
+
+Thus Eulerian signed-mean cancellation is not a compression mechanism.
+Any useful cancellation must be Lagrangian, packet-weighted, or correlated
+with the critical observable.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -2382,14 +2461,15 @@ available from scaling alone.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-COMPRESSION-COST**.
+The live obligation is now **C2-MIX-DIRECTION-INTRINSIC-COMPRESSION-COST**.
 
 L5-39 rules out a uniform all-streamline conversion from scalar shell/A2/Leray
 budgets to unweighted direction strain.  The next bounded question is:
 
-> Can selected whole-space active-band dynamics force small
-> `D_b^(1/2)A_beta^(1/2)` on the critical packet mass, or supply a sign/correlation
-> law that prevents large compression without reciprocal-amplitude smallness?
+> Can selected whole-space active-band dynamics control the packet-weighted
+> negative variation of the actual extracted direction transport
+> `(-partial_Y v)_+`, or does persistent overlap between that compressive
+> variation and the critical packet force a selector/dissipation charge?
 
 Test packet-weighted or almost-everywhere control before seeking a uniform
 frame theorem.  Any candidate derived only from coarse annular-supremum, `Lambda in L2_t`,
