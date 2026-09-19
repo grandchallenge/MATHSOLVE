@@ -543,26 +543,124 @@ Any viable direction extraction must instead use a chart, packet polarization,
 amplitude-weighted quotient, or an equation-derived nonvanishing statement on
 the actually transported packet mass.
 
-## 9. Remaining C2-MIX-DIRECTION-JET-COST obligation
+## 9. Exact amplitude-weighted angular-strain inequality
+
+The normalization gap is not absolute at first derivative order.
+
+Let
+
+```math
+b:\Omega\to\mathbb R^3
+```
+
+be smooth and define, on the set where `b\ne0`,
+
+```math
+r=|b|,
+\qquad
+e=\frac{b}{|b|}.
+```
+
+For each spatial derivative,
+
+```math
+\partial_j e
+=
+\frac{
+(I-e\otimes e)
+\partial_j b
+}{
+r
+}.
+```
+
+Because `I-e\otimes e` is the orthogonal projection onto the plane
+perpendicular to `e`,
+
+```math
+r^2
+|\partial_j e|^2
+\le
+|\partial_j b|^2.
+```
+
+Summing over spatial directions gives the exact pointwise inequality
+
+```math
+\boxed{
+|b|^2
+|\nabla e|^2
+\le
+|\nabla b|^2.
+}
+```
+
+Hence
+
+```math
+\boxed{
+\int
+|b|^2
+|\nabla e|^2
+\,dx
+\le
+\int
+|\nabla b|^2
+\,dx.
+}
+```
+
+For a linear active-band carrier `b=P_{\rm band}u` built from a bounded
+Littlewood--Paley/Fourier projection, the right-hand side is controlled, up to
+the fixed overlap constant, by the Leray dissipation in that band.
+
+Thus the first angular derivative has a denominator-free **amplitude-weighted**
+energy estimate.
+
+This materially sharpens the normalization boundary:
+
+- unweighted `|\nabla e|` can blow up near carrier zeros;
+- weighted `|b||\nabla e|` is controlled by the raw velocity gradient;
+- therefore the missing bridge is not merely "control the quotient";
+- it is to convert amplitude-weighted Eulerian angular strain into the
+  unweighted Lagrangian strain sampled by the critical packet.
+
+A sufficient bridge could take the form of packet occupation/nondegeneracy:
+
+```math
+\text{critical packet mass avoids spending too much time where }|b|\ll1,
+```
+
+or a reformulation of the L5-35/L5-37 frame theorem in an
+amplitude-weighted metric that does not require global unweighted
+`W^{4,\infty}` direction control.
+
+No such occupation theorem is proved here.
+
+The inequality is stated only on `\{b\ne0\}`; it does not define a global
+classical direction through nodal sets.
+
+## 10. Remaining C2-MIX-DIRECTION-JET-COST obligation
 
 The successor must now determine whether selected active-band NSE supplies one
 of the following:
 
-1. an equation-derived lower bound on the carrier/direction amplitude over the
+1. a packet occupation theorem converting the proved amplitude-weighted
+   angular-strain estimate into pathwise cocycle control;
+2. an equation-derived lower bound on the carrier/direction amplitude over the
    critical packet interval;
-2. a weighted quotient estimate in which small normalizing amplitude itself
-   pays selector/dissipation cost;
-3. top-band derivative depletion strong enough to extend the raw-jet hierarchy
+3. a higher-order weighted quotient hierarchy for the curvature/metric jets;
+4. top-band derivative depletion strong enough to extend the raw-jet hierarchy
    above `2Q/(2m+1)`;
-4. a Lagrangian cancellation theorem that controls the cocycle without absolute
+5. a Lagrangian cancellation theorem that controls the cocycle without absolute
    Eulerian derivative integrability; or
-5. an exact active-band calibration showing one of these routes is impossible.
+6. an exact active-band calibration showing one of these routes is impossible.
 
 The tangent component `Omega_1` should be audited first because its raw
 far-low boundary coincides exactly with the already protected L5-14
 `2Q/3` split.
 
-## 10. Hard rejection tests
+## 11. Hard rejection tests
 
 Reject any successor that:
 
@@ -577,7 +675,7 @@ Reject any successor that:
 - promotes this partial hierarchy to A2 closure;
 - reopens L3 or L4 without their protected reopening conditions.
 
-## 11. Claim boundary
+## 12. Claim boundary
 
 The pre-admission result is exactly
 
@@ -595,11 +693,15 @@ It proves:
   differentiation;
 - the absolute A2/Leray/Bernstein route cannot extend past the displayed
   fractions without new information;
-- raw jet control does not by itself control derivatives of a normalized
-  extracted direction;
+- raw jet control does not by itself control unweighted derivatives of a
+  normalized extracted direction;
 - the active-threshold shell supremum lower bound does not imply pointwise
   nonvanishing of the active vector, even in an exact divergence-free one-shell
-  calibration.
+  calibration;
+- nevertheless, the exact first-order identity
+  `|b|^2|nabla(b/|b|)|^2 <= |nabla b|^2` shows that amplitude-weighted angular
+  strain is already controlled by raw gradient energy; the unresolved step is
+  an occupation/pathwise bridge to the unweighted L5-37 cocycle.
 
 It does not prove bounded L5-37 cocycle.
 
