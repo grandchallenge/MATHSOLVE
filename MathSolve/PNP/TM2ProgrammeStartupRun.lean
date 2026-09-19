@@ -133,7 +133,7 @@ theorem tm2ProgrammeCopyConfig_after_bit {decision : List Bool → Bool}
       rw [hwork, hhead, hwrite, htarget]
       have happ :=
         congrFun
-          (embedTM2TokenStack_append_singleton
+          (embedTM2TokenStack_append_singleton (tm := source.tm)
             (copied.map Sum.inl) (.inl bit))
           position
       rw [List.length_map] at happ
