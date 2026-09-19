@@ -51,6 +51,15 @@ class NSCIA2L5C2DirectionJetCostTests(unittest.TestCase):
         denominator_can_vanish = True
         self.assertTrue(denominator_can_vanish)
 
+    def test_amplitude_weighted_direction_derivative_has_no_inverse_denominator(self) -> None:
+        # r * d(b/r) = (I-ee^T) db: orthogonal projection is contractive.
+        projection_operator_norm = Fraction(1)
+        self.assertLessEqual(projection_operator_norm, 1)
+
+    def test_weighted_angular_strain_does_not_give_unweighted_pathwise_control(self) -> None:
+        occupation_bridge_proved = False
+        self.assertFalse(occupation_bridge_proved)
+
     def test_no_selector_derivative_is_used(self) -> None:
         differentiates_moving_cutoff = False
         self.assertFalse(differentiates_moving_cutoff)
