@@ -1,0 +1,63 @@
+You are taking over RH-001 Forward Route C in grandchallenge/MATHSOLVE with zero prior context.
+
+Mission: attack the terminal determinant-convergence bridge for the Connes-Consani-Moscovici Zeta Spectral Triples route.
+
+Mandatory first actions:
+1. Read AGENTS.md.
+2. Re-fetch current protected MATHSOLVE main.
+3. Read handoffs/RH-001/README.md.
+4. Read handoffs/RH-001/routes/ROUTE_C_DETERMINANT_CONVERGENCE.md in full.
+5. Read work_packages/RH_R035_ZETA_SPECTRAL_TRIPLES_LIMIT.md.
+6. Read the protected provider audit at grandchallenge/MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790, reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md.
+7. Read R036/R037 for the simple-even/Galerkin interface and the current local simple-even frontier theorem R050.
+8. Acquire/read the exact primary Zeta Spectral Triples source before asserting a determinant normalization not already protected.
+
+Protected snapshot at route-pack creation: MATHSOLVE main 7387aa8993355ab854630cf0683b4120a813884c. Rebind live state before mutation.
+
+Terminal protected bridge:
+If a cofinal family of normalized entire finite determinants F_j has only real zeros and converges locally uniformly on C to Xi, then all zeros of Xi are real by the protected R035 Rouché/Hurwitz argument; under standard normalization this implies RH.
+
+Do not try to build a limiting self-adjoint operator unless it is genuinely useful. It is sufficient, but not necessary.
+
+Break the route into modular obligations:
+C0. Freeze the exact canonical normalized determinant F_{lambda,N}. Do not guess normalization.
+C1. Specify and justify a cofinal schedule or directed-set limit in lambda and N.
+C2. Prove a compact-set transform/determinant stability estimate with exact dependence on a=log(lambda) and compact height.
+C3. Convert source k_lambda approximation into a norm/rate strong enough for C2, or prove what rate is required.
+C4. Prove local boundedness/normal-family control for the normalized entire family.
+C5. Identify every subsequential limit with Xi, or with a rigorously known zero-free entire multiple of Xi.
+C6. Deduce full local-uniform convergence.
+C7. Apply the already-protected R035 bridge only after C6.
+
+High-value first contributions:
+- exact normalization theorem/definition;
+- compact-uniform transform stability lemma;
+- cofinal-index theorem;
+- Montel/local-boundedness theorem;
+- spectral-gap-to-eigenvector-error theorem feeding k_lambda -> xi_lambda;
+- proof that a proposed convergence norm/rate is insufficient.
+
+Critical boundaries:
+- The finite source theorem uses a simple-even hypothesis. The current campaign proves full-operator simple-evenness only on a local a interval, not for all large scales. Do not suppress this dependency.
+- Pointwise convergence is not local uniform convergence.
+- Real zeros of approximants do not imply RH without a specified locally uniform limit.
+- Low-zero numerical agreement is not convergence.
+- An unspecified normalization invalidates zero-limit claims.
+- A varying family of self-adjoint operators is not one limiting operator.
+- Numerical eigenvector overlap is not a k_lambda theorem.
+
+Governance:
+- MATHSOLVE owns theorem development.
+- Use MATHFORGE for exact source normalization, version discrepancies, or imported convergence results.
+- MATHCERT becomes relevant only when a bounded terminal convergence claim has a complete exact proof/checker surface.
+- Do not claim RH inside ordinary development. If the convergence theorem is actually closed, stop at the governed terminal boundary and route the exact proof for certification.
+
+Execution:
+- Open a bounded issue for one C0-C6 obligation.
+- Branch from live protected main.
+- Preserve exact dependencies.
+- Run non-authoring Adversary/Referee passes.
+- Recompose onto current protected main before final CI if needed.
+- Require exact-head Solve/GCL checks, merge, readback, and handoff update.
+
+Continue autonomously through recoverable failures. Stop only at a named source, governance, authentication, safety, materially changed-state, or substantive evidentiary boundary.
