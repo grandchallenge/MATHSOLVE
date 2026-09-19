@@ -58,7 +58,7 @@ The bounds are deliberately coarse and fully elementary.
 The guarded RH-R040 theorem proves, on
 
 \[
-0<a\le\frac1{24},
+0<a\le\frac1{22},
 \]
 
 the quantitative estimate
@@ -71,31 +71,22 @@ g(a)
 2\log2-1-6\sqrt2\,a.
 \]
 
-Use
+Use the elementary bounds
 
 \[
-\log2
-=
-2\sum_{k\ge0}
-\frac{1}{(2k+1)3^{2k+1}}
->
-\frac{56}{81}
+\log2>\frac{693}{1000},
+\qquad
+\sqrt2<\frac{99}{70}.
 \]
 
-and
-
-\[
-\sqrt2<\frac32.
-\]
-
-Since \(a\le1/24\),
+Since \(a\le1/22\),
 
 \[
 6\sqrt2\,a
 <
-9a
-\le
-\frac38.
+6\cdot\frac{99}{70}\cdot\frac1{22}
+=
+\frac{297}{770}.
 \]
 
 Therefore
@@ -104,17 +95,12 @@ Therefore
 \begin{aligned}
 g(a)
 &>
-2\cdot\frac{56}{81}
+\frac{193}{500}
 -
-1
--
-\frac38
+\frac{297}{770}
 \\
 &=
-\frac{31}{81}-\frac38
-\\
-&=
-\boxed{\frac5{648}}.
+\boxed{\frac{11}{38500}}.
 \end{aligned}
 \]
 
@@ -122,7 +108,7 @@ Hence throughout the interval,
 
 \[
 \boxed{
-g(a)>\frac5{648}>0.
+g(a)>\frac{11}{38500}>0.
 }
 \]
 
@@ -176,7 +162,7 @@ Using Section 2,
 
 \[
 \boxed{
-d(a)>\frac5{648}.
+d(a)>\frac{11}{38500}.
 }
 \]
 
@@ -217,7 +203,7 @@ So
 }
 \]
 
-For \(0<a\le1/24<1\), Taylor's theorem gives
+For \(0<a\le1/22<1\), Taylor's theorem gives
 
 \[
 \sinh a-a
@@ -240,9 +226,9 @@ Therefore
 \[
 \|S\|^2
 <
-\frac1{3\cdot50^3}
+\frac1{3\cdot22^3}
 =
-\boxed{\frac1{41472}}.
+\boxed{\frac1{31944}}.
 \]
 
 ## 5. Resolvent scalar upper bound
@@ -291,32 +277,14 @@ Using Sections 3 and 4,
 \[
 m(a)
 <
-\frac{1/41472}{5/648}.
+\frac{1/31944}{11/38500}
+=
+\frac{38500}{351384}
+=
+\boxed{\frac{9625}{87846}}.
 \]
 
-Because
-
-\[
-41472=64\cdot648,
-\]
-
-we obtain
-
-\[
-\boxed{
-m(a)
-<
-\frac1{320}.
-}
-\]
-
-Numerically,
-
-\[
-\frac1{320}=0.003125,
-\]
-
-but the exact rational bound is the authoritative statement.
+The exact rational bound is the authoritative statement.
 
 ## 6. Explicit Herglotz margin
 
@@ -334,7 +302,9 @@ Hence
 \boxed{
 \Delta_H(a)
 >
-\frac{159}{320}.
+\frac12-\frac{9625}{87846}
+=
+\frac{17149}{43923}.
 }
 \]
 
@@ -346,21 +316,21 @@ In particular,
 }
 \]
 
-The lower bound is close to \(1/2\); no sharpness claim is made.
+No sharpness claim is made.
 
 ## 7. Initial continuation certificate
 
 Combining the results, for every
 
 \[
-0<a\le\frac1{24}
+0<a\le\frac1{22}
 \]
 
 the guarded chain yields
 
 \[
 \boxed{
-d(a)>\frac5{648}
+d(a)>\frac{11}{38500}
 }
 \]
 
@@ -368,14 +338,13 @@ and
 
 \[
 \boxed{
-\Delta_H(a)
->
-\frac12-\frac1{320}.
+\Delta_H(a)>\frac{17149}{43923}.
 }
 \]
 
-Thus the two R043 continuation margins begin not merely positive but with
-explicit uniform separation from zero.
+Thus the two R043 continuation margins begin with explicit uniform
+separation from zero on the entire perturbatively proved simple-even
+interval.
 
 This gives a concrete initial compact set from which any future derivative,
 comparison, or validated-continuation argument may start.
@@ -394,16 +363,14 @@ Applying the present lower bounds gives a secondary certified lower bound
 g(a)
 >
 2
-\left(\frac5{648}\right)
-\left(
-\frac12-\frac1{320}
-\right).
+\left(\frac{11}{38500}\right)
+\left(\frac{17149}{43923}\right).
 \]
 
 This secondary value is weaker than the direct RH-R040 bound
 
 \[
-g(a)>\frac5{648},
+g(a)>\frac{11}{38500},
 \]
 
 so it is retained only as a consistency check on the continuation
@@ -415,7 +382,7 @@ Before this package, R043 supplied continuity but no quantitative starting
 margin.
 
 After this package, any attempt to continue the small-\(a\) parity theorem
-may work from explicit initial data:
+may work from explicit initial data
 
 \[
 d\ge d_0,
@@ -426,10 +393,9 @@ d\ge d_0,
 with
 
 \[
-d_0=\frac5{648},
+d_0=\frac{11}{38500},
 \qquad
-\Delta_0=
-\frac{159}{320}.
+\Delta_0=\frac{17149}{43923}.
 \]
 
 A continuation proof may therefore spend a controlled error budget against
@@ -442,7 +408,7 @@ Reject:
 1. replacing the strict R040 work-branch theorem by this package before
    R040's provider and exact-head CI gates are protected;
 2. inferring that \(d(a)\) or \(\Delta_H(a)\) stays positive for
-   \(a>1/24\);
+   \(a>1/22\);
 3. using the scalar resolvent outside \(d(a)>0\);
 4. replacing the full operator norm \(\|S\|\) by a finite Galerkin vector
    norm without an exact identification;
@@ -453,7 +419,7 @@ Reject:
 
 This theorem does not prove:
 
-- continuation beyond \(a=1/24\);
+- continuation beyond \(a=1/22\);
 - monotonicity of \(d\) or \(\Delta_H\);
 - positivity at the R039 points;
 - all-\(a\) even-simplicity;
