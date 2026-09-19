@@ -2,16 +2,41 @@ import MathSolve.PNP.TM2ProgrammeStartupStep
 import MathSolve.PNP.TM2ProgrammeInitialization
 
 /-!
-# Closed-form startup configurations for the forward TM2 compiler
+# Closed-form startup copy execution for the forward TM2 compiler
 
 The copy phase writes input provenance tokens from coordinate zero toward the
-right.  The rewind phase returns both the immutable input head and the selected
-work head to zero before entering the imported TM2 root.
+right.  This file proves its exact closed form and exact linear transition count.
+The rewind phase is handled separately.
 -/
 
 namespace MathSolve.PNP
 
 noncomputable section
+
+/-- Fieldwise extensionality for Programme configurations. -/
+theorem programmeConfig_ext {M : ProgrammeMachine}
+    {a b : ProgrammeConfig M}
+    (hstate : a.state = b.state)
+    (hinput : a.inputHead = b.inputHead)
+    (hhead : a.workHead = b.workHead)
+    (hwork : a.work = b.work) :
+    a = b := by
+  cases a with
+  | mk astate ainput ahead awork =>
+      cases b with
+      | mk bstate binput bhead bwork =>
+          cases hstate
+          cases hinput
+          cases hhead
+          cases hwork
+          rfl
+
+/-- The empty provenance embedding at head zero is the everywhere-blank tape. -/
+theorem embedTM2TokenStack_nil_zero {tm : Turing.FinTM2} :
+    embedTM2TokenStack ([] : List (TM2ProvenanceToken tm)) 0 =
+      (fun _ => none) := by
+  funext position
+  simp [embedTM2TokenStack]
 
 /-- Appending one token to the represented finite segment is exactly one write
 at the first blank coordinate to its right. -/
@@ -35,48 +60,62 @@ theorem embedTM2TokenStack_append_singleton {tm : Turing.FinTM2}
       by_cases hlt : position.toNat < tokens.length
       · simp [Function.update, hp, embedTM2TokenStack, hnonneg,
           List.getElem?_append, hlt]
-      · have hgt : tokens.length < position.toNat := by
-          omega
+      · have hgt : tokens.length < position.toNat := by omega
+        have hsub : position.toNat - tokens.length ≠ 0 := by omega
         simp [Function.update, hp, embedTM2TokenStack, hnonneg,
-          List.getElem?_append, hlt, hgt]
+          List.getElem?_append, hlt, hsub]
     · simp [Function.update, hp, embedTM2TokenStack, hnonneg]
 
-/-- Closed form after a finite prefix has been copied, before the first blank
-input cell switches the machine into rewind mode. -/
+/-- Closed form after a finite initial segment has been copied, before the first
+blank input cell switches the machine into rewind mode. -/
 def tm2ProgrammeCopyConfig {decision : List Bool → Bool}
-    (source : ImportedTM2Witness decision) (prefix : List Bool) :
+    (source : ImportedTM2Witness decision) (copied : List Bool) :
     ProgrammeConfig (tm2ProgrammeMachine source) where
   state := tm2ControlCopy source
-  inputHead := (prefix.length : Int)
+  inputHead := (copied.length : Int)
   workHead := fun tape =>
     if tape = tm2TapeEquiv source source.tm.k₀
-    then (prefix.length : Int)
+    then (copied.length : Int)
     else 0
-  work := tm2ProgrammeReadyWork source prefix
+  work := tm2ProgrammeReadyWork source copied
 
-/-- One copy action extends the closed-form copied prefix by exactly one bit. -/
+/-- One copy action extends the closed-form copied segment by exactly one bit. -/
 theorem tm2ProgrammeCopyConfig_after_bit {decision : List Bool → Bool}
     (source : ImportedTM2Witness decision)
-    (prefix : List Bool) (bit : Bool) :
-    (tm2ProgrammeCopyConfig source prefix).afterAction
+    (copied : List Bool) (bit : Bool) :
+    (tm2ProgrammeCopyConfig source copied).afterAction
         (tm2CopyBitAction source bit
-          (tm2ProgrammeCopyConfig source prefix).readWork) =
-      tm2ProgrammeCopyConfig source (prefix ++ [bit]) := by
-  ext tape position <;>
-    simp [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
-      tm2CopyBitAction, tm2ProgrammeReadyWork, tm2MoveSelected,
-      tm2WriteSelected, ProgrammeConfig.readWork, HeadMove.apply,
-      embedTM2TokenStack_append_singleton, Function.update_eq_self]
-  by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
-  · subst tape
-    simp [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
-      tm2CopyBitAction, tm2ProgrammeReadyWork, tm2MoveSelected,
-      tm2WriteSelected, ProgrammeConfig.readWork, HeadMove.apply,
-      embedTM2TokenStack_append_singleton]
+          (tm2ProgrammeCopyConfig source copied).readWork) =
+      tm2ProgrammeCopyConfig source (copied ++ [bit]) := by
+  apply programmeConfig_ext
+  · rfl
   · simp [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
-      tm2CopyBitAction, tm2ProgrammeReadyWork, tm2MoveSelected,
-      tm2WriteSelected, ProgrammeConfig.readWork, HeadMove.apply,
-      htape, Function.update_eq_self]
+      tm2CopyBitAction, HeadMove.apply]
+  · funext tape
+    by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
+    · subst tape
+      simp [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
+        tm2CopyBitAction, tm2MoveSelected, HeadMove.apply]
+    · simp [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
+        tm2CopyBitAction, tm2MoveSelected, HeadMove.apply, htape]
+  · funext tape position
+    by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
+    · subst tape
+      simp [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
+        tm2CopyBitAction, tm2ProgrammeReadyWork, tm2WriteSelected,
+        ProgrammeConfig.readWork, Function.update_eq_self]
+      exact congrFun
+        (embedTM2TokenStack_append_singleton
+          (copied.map Sum.inl) (.inl bit))
+        position
+    · have hneq :
+          tm2TapeEquiv source tape ≠
+            tm2TapeEquiv source source.tm.k₀ := by
+        intro h
+        exact htape ((tm2TapeEquiv source).injective h)
+      simp [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
+        tm2CopyBitAction, tm2ProgrammeReadyWork, tm2WriteSelected,
+        ProgrammeConfig.readWork, htape, hneq, Function.update_eq_self]
 
 /-- The zero-length copy configuration is the native Programme initial
 configuration; the input argument affects reads, not stored configuration data. -/
@@ -84,14 +123,30 @@ theorem tm2ProgrammeCopyConfig_nil_eq_init {decision : List Bool → Bool}
     (source : ImportedTM2Witness decision) (input : List Bool) :
     tm2ProgrammeCopyConfig source [] =
       (tm2ProgrammeMachine source).init input := by
-  ext tape position <;>
-    simp [tm2ProgrammeCopyConfig, ProgrammeMachine.init,
-      tm2ProgrammeReadyWork, embedTM2TokenStack]
+  apply programmeConfig_ext
+  · rfl
+  · rfl
+  · funext tape
+    simp [tm2ProgrammeCopyConfig, ProgrammeMachine.init]
+  · funext tape position
+    by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
+    · subst tape
+      rw [show tm2ProgrammeReadyWork source [] =
+          fun _ _ => none by
+        funext tape' position'
+        by_cases htape' : tape' = tm2TapeEquiv source source.tm.k₀
+        · subst tape'
+          simpa [tm2ProgrammeReadyWork] using
+            congrFun (embedTM2TokenStack_nil_zero (tm := source.tm)) position'
+        · simp [tm2ProgrammeReadyWork, htape']]
+      rfl
+    · simp [tm2ProgrammeCopyConfig, ProgrammeMachine.init,
+        tm2ProgrammeReadyWork, htape]
 
-/-- Reading at the first position after a copied prefix returns the next input bit. -/
+/-- Reading at the first position after a copied segment returns the next input bit. -/
 theorem programmeInputRead_append_head
-    (prefix rest : List Bool) (bit : Bool) :
-    programmeInputRead (prefix ++ bit :: rest) (prefix.length : Int) =
+    (copied rest : List Bool) (bit : Bool) :
+    programmeInputRead (copied ++ bit :: rest) (copied.length : Int) =
       some bit := by
   simp [programmeInputRead, List.getElem?_append]
 
@@ -156,8 +211,11 @@ theorem tm2Programme_copy_run {decision : List Bool → Bool}
         input.length) := by
   rcases tm2Programme_copy_run_aux source input [] input (by simp) with ⟨hcopy⟩
   refine ⟨?_⟩
-  simpa [tm2ProgrammeCopyConfig_nil_eq_init] using hcopy
+  rw [tm2ProgrammeCopyConfig_nil_eq_init source input] at hcopy
+  exact hcopy
 
+#print axioms programmeConfig_ext
+#print axioms embedTM2TokenStack_nil_zero
 #print axioms embedTM2TokenStack_append_singleton
 #print axioms tm2ProgrammeCopyConfig_after_bit
 #print axioms tm2ProgrammeCopyConfig_nil_eq_init
