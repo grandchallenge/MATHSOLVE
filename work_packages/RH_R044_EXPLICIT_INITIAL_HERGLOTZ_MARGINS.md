@@ -3,7 +3,7 @@
 Campaign: RH-001
 
 Status:
-ADMISSION_CANDIDATE__AWAITING_R043_PROTECTION
+ADMISSION_CANDIDATE__DEPENDENCIES_PROTECTED
 
 Solve tracker:
 grandchallenge/MATHSOLVE#382
@@ -15,8 +15,8 @@ Protected dependencies:
 - grandchallenge/MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320:reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md
 - grandchallenge/MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648:reports/discovery/rh_001/rh_r041_pole_resolvent_interface.md
 
-Pending dependency:
-- RH-R043-HERGLOTZ-MARGIN-CONTINUITY-001, PR #396, exact candidate `def460135c0a1c0ce627c950d55269caeecc4870` pending exact-head CI and protected merge.
+Protected dependency:
+- grandchallenge/MATHSOLVE@12e390e455fd9c59d0a6283789073939c69db5de:work_packages/RH_R043_HERGLOTZ_MARGIN_CONTINUITY.md
 
 No RH / novelty / priority / certification claim.
 
@@ -282,11 +282,10 @@ This theorem does not prove:
 
 Before admission:
 
-1. R043 continuity must be protected;
-2. this theorem must then be composed onto the current live Solve head;
-3. exact-head Adversary/Referee reviews and required Solve/GCL CI must pass;
-4. protected merge and readback must complete.
+1. this theorem must be composed onto the current live Solve head;
+2. exact-head Adversary/Referee reviews and required Solve/GCL CI must pass;
+3. protected merge and readback must complete.
 
 Terminal candidate disposition:
 
-RH-R044_EXPLICIT_INITIAL_CONTINUATION_MARGINS_PROVED__AWAITING_R043_PROTECTION
+RH-R044_EXPLICIT_INITIAL_CONTINUATION_MARGINS_PROVED__READY_FOR_EXACT_HEAD_ADMISSION
