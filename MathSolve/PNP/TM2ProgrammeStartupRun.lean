@@ -98,7 +98,8 @@ theorem tm2ProgrammeCopyConfig_after_bit {decision : List Bool → Bool}
         tm2CopyBitAction, tm2MoveSelected, HeadMove.apply]
     · have hmove :
           tm2MoveSelected source source.tm.k₀ .right tape = .stay := by
-        simp [tm2MoveSelected, Function.update, htape]
+        unfold tm2MoveSelected
+        rw [Function.update_of_ne htape]
       simp only [tm2ProgrammeCopyConfig, ProgrammeConfig.afterAction,
         tm2CopyBitAction]
       rw [hmove, if_neg htape, if_neg htape]
@@ -149,7 +150,8 @@ theorem tm2ProgrammeCopyConfig_after_bit {decision : List Bool → Bool}
               (tm2ProgrammeCopyConfig source copied).readWork
               source.tm.k₀ (some (.inl bit)) tape =
             (tm2ProgrammeCopyConfig source copied).readWork tape := by
-        simp [tm2WriteSelected, Function.update, htape]
+        unfold tm2WriteSelected
+        rw [Function.update_of_ne htape]
       have hread :
           (tm2ProgrammeCopyConfig source copied).readWork tape = none := by
         simp [ProgrammeConfig.readWork, hwork, hhead]
