@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "BSD-001",
+  "operation": "BSD-R5-RES",
+  "protected_base": "36202d97e2cd96956c8a4aafa43941f6219776c5",
+  "provider_anchor": "7da3f07248b5d8cf3d0bd1e57e9d8b7f5b78d063",
+  "assembled_from_head": "8aa18ff6c9f9e648fe89ec648025c7a1345a5086",
+  "hash_semantics": "Git blob SHA-1 content identities for the exact pre-merge governed artifact set",
+  "artifacts": {
+    "work_packages/BSD_R5_RES_RESIDUAL_KATO_NONVANISHING/00_README.md": "cceb9efcca876277ad37ce0fff185496f59aae0f",
+    "work_packages/BSD_R5_RES_RESIDUAL_KATO_NONVANISHING/01_FINITE_LAYER_RESIDUAL_DETECTION_THEOREM.md": "bd5a70cd6412270b1bded01148d732e99b555a38",
+    "work_packages/BSD_R5_RES_RESIDUAL_KATO_NONVANISHING/02_SOURCE_AND_BOUNDARY_NOTE.md": "2d5b3b7700ca10f11c2ab4e952b0d4b4ec8b279d",
+    "work_packages/BSD_R5_RES_RESIDUAL_KATO_NONVANISHING/03_CLAIM_LEDGER.yaml": "5e56d6054bbfd7c617b1cb818511d0ef58e70c7e",
+    "work_packages/BSD_R5_RES_RESIDUAL_KATO_NONVANISHING/04_RESIDUAL_DETECTION_CERTIFICATE.py": "cc9d89e7e12a715ff32a520107ff4cd33bc0f150",
+    "handoffs/BSD-001/README.md": "7a9d9550d5cd6fe95345f287e5d5f877102e955b",
+    "handoffs/BSD-001/R5_RES_FRONTIER.md": "a2451cb299d0bcc6696035922a445fbacc0fda17",
+    ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json": "23fba073142f53e0beb10047833436942d740e02",
+    ".gcl/operations/BSD-R5-RES/OPERATION.json": "cefe97dc46583db6dcd60cc2b7d9fc90cb8fe65c",
+    "tools/gcl_campaign_preflight_r5_res.py": "7a9b737b2baf5e92d06b7b6e952d0dd306800226",
+    ".github/workflows/bsd-r5-res-certificate.yml": "ef4dd01a288b096840f5cb449822633b3774d2f2",
+    ".ghos-routing/workflows.json": "9cdb45c17c9c7f50f314231e3125431c581669d0"
+  },
+  "completion_replay_excluded": [
+    ".gcl/completions/BSD-R5-RES/COMPLETION_RECEIPT.json",
+    "tools/gcl_completion_receipt_validate_v2.py"
+  ],
+  "invalidation": {
+    "governed_artifact_change": "regenerate freeze and replay exact-head theorem reviews/checks",
+    "candidate_head_change_without_governed_byte_change": "replay candidate checks and exact-head review as required by operation contract",
+    "post_merge_completion_replay_change": "revalidate completion receipt against immutable candidate and protected merge/readback; mathematical freeze remains unchanged",
+    "unrelated_protected_head_movement": "does not invalidate immutable dependency anchors"
+  },
+  "authority_boundary": "This freeze identifies the pre-merge BSD R5-RES candidate bytes only. It does not prove MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY, establish residual Kato/Kolyvagin nonvanishing, R5-RES, R5-PRIM or BSD-R2-A1, or create MATHCERT authority."
+}

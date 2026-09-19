@@ -1,0 +1,165 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "campaign": "BSD-001",
+  "operation": "BSD-R5-RES",
+  "candidate_head": "8d821d52521fdb9557ade22047ce0b2a71e0f01f",
+  "merge_sha": "64527fcfb07467070c0c3ffd4278e2ddfb663a69",
+  "protected_readback_sha": "64527fcfb07467070c0c3ffd4278e2ddfb663a69",
+  "enforcement_standard": {
+    "identifier": "GCL-CEX-01",
+    "repository": "grandchallenge/gcl-standards",
+    "commit": "efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
+    "programme_adoption_anchor": "grandchallenge/MATH-PROGRAMME@af6e1772e2d82b0b198d11c08e1369789ffbba3a"
+  },
+  "staffing_authority": {
+    "repository": "grandchallenge/INTELLECT",
+    "directive": "GI-STEWARD-0003",
+    "separation_model": "role_scoped_logical_passes",
+    "protected_anchor": "f042220f3bed7cb7b5069256e8f6305c850c0628"
+  },
+  "adversary_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/274#pullrequestreview-5227165913",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "BSD-R5-RES-ADV-8d821d52-001",
+    "role": "Adversary",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "8d821d52521fdb9557ade22047ce0b2a71e0f01f",
+    "criteria": [
+      "challenge any upgrade from finite detection to finite-layer basis status",
+      "challenge any silent specialization of Kim Theorem 3.11 from p>=5 to literal p=2",
+      "challenge any assumed value or silent division of the local 2-power torsion factor",
+      "challenge omission of period or Manin normalization",
+      "challenge any claim that protected global Kolyvagin repairs prove the missing local reciprocity theorem",
+      "challenge promotion from a raw finite Kurihara quantity to residual Kato/Kolyvagin nonvanishing"
+    ],
+    "evidence": [
+      "the frozen candidate retains finite detection without requiring finite-level basis status",
+      "the protected provider is bound at grandchallenge/MATHFORGE@7da3f07248b5d8cf3d0bd1e57e9d8b7f5b78d063",
+      "the local exponent t_2 is retained symbolically and no selected value is asserted",
+      "the theorem and ledger forbid silent division by local or period factors",
+      "the exact first missing theorem is MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY",
+      "R5-RES, R5-PRIM, D2d, BSD-R2-A1 and MATHCERT promotion remain firewalled"
+    ],
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "human_authorized": false,
+      "mathcert_certified": false
+    }
+  },
+  "referee_record": {
+    "record_ref": "https://github.com/grandchallenge/MATHSOLVE/pull/274#pullrequestreview-5227167148",
+    "reviewer_system_id": "openai-gpt-5.6-sol",
+    "logical_pass_id": "BSD-R5-RES-REF-8d821d52-002",
+    "role": "Referee",
+    "mode": "non_authoring_read_only",
+    "reviewed_repository": "grandchallenge/MATHSOLVE",
+    "reviewed_candidate_head": "8d821d52521fdb9557ade22047ce0b2a71e0f01f",
+    "criteria": [
+      "adjudicate coherence of the protected R5-PRIM residual and finite-detection interface",
+      "adjudicate exact provider scope and preservation of Kim Theorem 3.11 p>=5 restriction",
+      "adjudicate whether the first new composability obligation is the literal-p=2 torsion-coefficient integral reciprocity theorem",
+      "verify local 2-power torsion and period/Manin factors remain explicit",
+      "verify theorem, source note, ledger, campaign state, operation contract, freeze and exact-head evidence are coherent"
+    ],
+    "evidence": [
+      "the exact frozen candidate is 8d821d52521fdb9557ade22047ce0b2a71e0f01f",
+      "the source provider is immutable at 7da3f07248b5d8cf3d0bd1e57e9d8b7f5b78d063",
+      "the candidate does not assert a value of t_2 or a nonzero normalized Kurihara witness",
+      "all declared R5-RES candidate admission gates succeeded on the exact candidate head",
+      "protected merge 64527fcfb07467070c0c3ffd4278e2ddfb663a69 has the reviewed candidate as its second parent",
+      "dedicated R5-RES and GCL/Solve protected readback replays succeeded on the merge"
+    ],
+    "finding": "approved",
+    "unresolved_obligations": [],
+    "authority_claims": {
+      "human_authorized": false,
+      "mathcert_certified": false
+    }
+  },
+  "required_checks": [
+    {
+      "phase": "candidate",
+      "name": "BSD R5-RES residual detection certificate",
+      "run": 35138563720,
+      "result": "success",
+      "head": "8d821d52521fdb9557ade22047ce0b2a71e0f01f"
+    },
+    {
+      "phase": "candidate",
+      "name": "ledgers",
+      "check_run": 104937003920,
+      "result": "success",
+      "head": "8d821d52521fdb9557ade22047ce0b2a71e0f01f"
+    },
+    {
+      "phase": "candidate",
+      "name": "policy / policy",
+      "check_run": 104937007749,
+      "result": "success",
+      "head": "8d821d52521fdb9557ade22047ce0b2a71e0f01f"
+    },
+    {
+      "phase": "candidate",
+      "name": "security / action-policy",
+      "check_run": 104937008053,
+      "result": "success",
+      "head": "8d821d52521fdb9557ade22047ce0b2a71e0f01f"
+    },
+    {
+      "phase": "candidate",
+      "name": "routing-enforcement",
+      "check_run": 104937003787,
+      "result": "success",
+      "head": "8d821d52521fdb9557ade22047ce0b2a71e0f01f"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "BSD R5-RES residual detection certificate",
+      "run": 35138674291,
+      "result": "success",
+      "head": "64527fcfb07467070c0c3ffd4278e2ddfb663a69"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "GCL conformance",
+      "run": 35138675064,
+      "result": "success",
+      "head": "64527fcfb07467070c0c3ffd4278e2ddfb663a69"
+    },
+    {
+      "phase": "protected_readback",
+      "name": "Solve checks",
+      "run": 35138674269,
+      "result": "success",
+      "head": "64527fcfb07467070c0c3ffd4278e2ddfb663a69"
+    }
+  ],
+  "disposition": {
+    "type": "BLOCKED",
+    "frontier": "MISSING_P2_RESIDUAL_CYCLOTOMIC_KATO_KOLYVAGIN_NONVANISHING",
+    "proved_reduction": [
+      "BSD-R5-RES-ENTERING-001",
+      "BSD-R5-RES-FINITE-DETECT-002",
+      "BSD-R5-RES-SOURCE-003",
+      "BSD-R5-RES-LOCAL-FACTOR-004",
+      "BSD-R5-RES-BOUNDARY-005"
+    ],
+    "blocked_on": "MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY",
+    "next_frontier": "MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY"
+  },
+  "preserved_false": [
+    "formal_higher_level_hypothesis_3_2_iii",
+    "full_bss_hypothesis_4_7",
+    "bss_hypothesis_4_7_iii",
+    "infinite_bss_h3",
+    "r5_prim",
+    "r5_res",
+    "d2d",
+    "bsd_r2_a1",
+    "mathcert_certification"
+  ],
+  "notes": "This receipt completes the governed BSD-R5-RES operation with disposition BLOCKED. It protects the source-first reduction of the residual cyclotomic Kato/Kolyvagin nonvanishing frontier to the first new literal-p=2 local/integral reciprocity obligation: MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY. It does not establish that reciprocity theorem, a normalized finite nonvanishing witness, R5-RES, R5-PRIM, D2d, BSD-R2-A1, novelty, priority, public certification or MATHCERT certification."
+}

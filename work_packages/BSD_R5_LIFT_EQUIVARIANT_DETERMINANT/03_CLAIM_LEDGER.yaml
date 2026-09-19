@@ -1,0 +1,74 @@
+schema_version: "1.0"
+campaign: BSD-001
+operation: BSD-R5-LIFT-EQUIV
+issue: grandchallenge/MATHSOLVE#262
+work_package: BSD_R5_LIFT_EQUIVARIANT_DETERMINANT
+candidate_disposition: CLOSED
+
+anchors:
+  math_base: grandchallenge/MATHSOLVE@270e2c2f9dde7bd817a251c9e3fb250fff36a81b
+  provider: grandchallenge/MATHFORGE@de2c83c2c440ac357b183b9e1018e9f69c58e1d9
+  constitution: grandchallenge/INTELLECT@f042220f3bed7cb7b5069256e8f6305c850c0628
+
+retired_if_protected:
+  - MISSING_P2_EQUIVARIANT_CYCLOTOMIC_DETERMINANT_STARK_KOLYVAGIN_REPLAY
+  - MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+
+established_if_protected:
+  - P2_EQUIVARIANT_SELECTED_HYP32III_DEFECT_SELMER_EXTRANEOUS
+  - P2_EQUIVARIANT_SELECTED_LARGE_PRODUCTS_AND_CORE_GRAPH_AVAILABLE
+  - P2_EQUIVARIANT_DETERMINANT_TO_STARK_ISOMORPHISM_AVAILABLE
+  - P2_EQUIVARIANT_SELECTED_REGULATOR_ISOMORPHISM_AVAILABLE
+  - P2_EQUIVARIANT_KATO_FIRST_COMPONENT_AND_COMPATIBILITY_AVAILABLE
+  - P2_EQUIVARIANT_CYCLOTOMIC_KATO_DETERMINANT_MEMBERSHIP
+  - R5_LIFT_ESTABLISHED
+
+next_frontier_if_protected: MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+
+claims:
+  - claim_id: BSD-R5-EQUIV-RING-001
+    status: PROVED_IN_PACKAGE
+    statement: R_mn is local zero-dimensional complete-intersection Gorenstein with residue F2 and one-dimensional socle.
+  - claim_id: BSD-R5-EQUIV-TAU-002
+    status: PROVED_IN_PACKAGE
+    statement: The protected fixed odd multiplicative inertia element gives a free rank-one quotient over every R_mn.
+  - claim_id: BSD-R5-EQUIV-SL2-H1-003
+    status: PROVED_IN_PACKAGE
+    statement: For m>=2, H1(SL2(Z/2^m), (Z/2^m)^2) has order two and its nonzero class is detected on the primitive upper unipotent.
+  - claim_id: BSD-R5-EQUIV-LAYER-H1-004
+    status: PROVED_IN_PACKAGE
+    statement: The finite cyclotomic-layer image has the same unique order-two defect.
+  - claim_id: BSD-R5-EQUIV-SELMER-RES-005
+    status: PROVED_IN_PACKAGE
+    statement: The unique equivariant defect is excluded from every actual selected modified primal and dual Selmer group by the fixed local condition at ell.
+  - claim_id: BSD-R5-EQUIV-LARGE-006
+    status: PROVED_IN_PACKAGE
+    statement: Socle detection and Nakayama reduction lift the selected characteristic-two localization, large-product and core-graph mechanism to R_mn.
+  - claim_id: BSD-R5-EQUIV-DET-STARK-007
+    status: PROVED_IN_PACKAGE
+    statement: The real-place-corrected determinant-to-Stark map is an isomorphism of the relevant rank-one lattices; the archimedean correction has unit determinant ideal and no generator normalization is claimed.
+  - claim_id: BSD-R5-EQUIV-REGULATOR-008
+    status: PROVED_IN_PACKAGE
+    statement: The selected rank-one Stark-to-Kolyvagin regulator is an isomorphism over every R_mn.
+  - claim_id: BSD-R5-EQUIV-KATO-DERIVATIVE-009
+    status: PROVED_IN_PACKAGE
+    statement: The equivariant Kato derivative has first component z_Qn mod 2^m and is compatible in m and n.
+  - claim_id: BSD-R5-EQUIV-BASICNESS-010
+    status: PROVED_IN_PACKAGE
+    statement: The selected cyclotomic Kato zeta class belongs to the cyclotomic determinant lattice at literal p=2.
+  - claim_id: BSD-R5-LIFT-011
+    status: PROVED_IN_PACKAGE
+    statement: After the protected local comparisons and localization at (2), WP60A-A1 converts determinant membership into the required one-sided height-one-(2) Fitting divisibility.
+
+preserved_false:
+  formal_higher_level_hypothesis_3_2_iii: false
+  full_bss_hypothesis_4_7: false
+  bss_hypothesis_4_7_iii: false
+  infinite_bss_h3: false
+
+claim_firewall:
+  r5_prim: false
+  d2d: false
+  bsd_r2_a1: false
+  mathcert_certification: false
+  novelty_priority: false

@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "parent_debt": "YM-D001",
+  "artifact_id": "YM-D001-REGULATED-APPLICATION-PROOF-OBLIGATION-DAG",
+  "candidate_root": {
+    "work_package": "YM-D001-REGULATED-APPLICATION-AUDIT",
+    "claim_id": "YM-D001-R002"
+  },
+  "nodes": [
+    {
+      "id": "YM-D001-R001",
+      "status": "PROTECTED_ADMITTED_NOT_CERTIFIED",
+      "kind": "ABSTRACT_SPECTRAL_STABILITY",
+      "statement": "A fixed positive spectral exclusion survives strong convergence of the negative-point resolvents on an identified comparison Hilbert space."
+    },
+    {
+      "id": "YM-D001-R002",
+      "status": "CURRENT_EVIDENCE_SUFFICIENCY_FALSIFIED_IN_CANDIDATE",
+      "kind": "SOURCE_INTERFACE_AUDIT",
+      "statement": "YM-T-010 plus YM-T-030 do not currently instantiate the application hypotheses of R001."
+    },
+    {
+      "id": "YM-D001-O001",
+      "status": "ESTABLISHED_IN_CANDIDATE",
+      "kind": "MISSING_TYPED_OBJECT",
+      "statement": "No admitted evidence supplies a cutoff-indexed physically normalized self-adjoint generator family with cross-regulator state-space comparison."
+    },
+    {
+      "id": "YM-D001-O002",
+      "status": "ESTABLISHED_IN_CANDIDATE",
+      "kind": "SEMANTIC_NONCOMPOSITION",
+      "statement": "The YM-T-030 correlation-decay mass gap is not currently a full Hamiltonian spectral exclusion for the transfer-generator spectrum."
+    },
+    {
+      "id": "YM-D001-O003",
+      "status": "ESTABLISHED_MISSING_THEOREM_NOT_IMPOSSIBILITY",
+      "kind": "COUPLING_TRAJECTORY",
+      "statement": "No admitted theorem supplies a scale-set cutoff trajectory from the YM-T-030 strong-coupling domain to the intended continuum theory."
+    },
+    {
+      "id": "YM-D001-R003-FAMILY",
+      "status": "OPEN",
+      "kind": "REGULATOR_TO_GENERATOR_INTERFACE",
+      "statement": "Construct or locate a cutoff-indexed physical generator family and cross-regulator comparison maps."
+    },
+    {
+      "id": "YM-D001-R003-UNIFORM-GAP",
+      "status": "BLOCKED_ON_R003_FAMILY",
+      "kind": "UNIFORM_PHYSICAL_SPECTRAL_BOUND",
+      "statement": "Prove one cutoff- and volume-uniform positive spectral exclusion in the physical normalization."
+    },
+    {
+      "id": "YM-D001-R003-CONVERGENCE",
+      "status": "BLOCKED_ON_R003_FAMILY",
+      "kind": "STRONG_RESOLVENT_CONVERGENCE",
+      "statement": "Prove convergence of the identified physically rescaled resolvents to the target limiting Hamiltonian."
+    },
+    {
+      "id": "YM-D001-CLOSE",
+      "status": "BLOCKED",
+      "kind": "PARENT_DEBT_DISCHARGE",
+      "statement": "Combine an actual physical generator family, a uniform physical spectral exclusion, valid state-space comparison, R001 spectral stability, continuum convergence, and any required zero-sector control."
+    }
+  ],
+  "edges": [
+    {"from": "YM-D001-R001", "to": "YM-D001-CLOSE", "type": "available_abstract_stability"},
+    {"from": "YM-D001-R002", "to": "YM-D001-R003-FAMILY", "type": "identifies_first_missing_interface"},
+    {"from": "YM-D001-R003-FAMILY", "to": "YM-D001-R003-UNIFORM-GAP", "type": "types_physical_gap_statement"},
+    {"from": "YM-D001-R003-FAMILY", "to": "YM-D001-R003-CONVERGENCE", "type": "types_convergence_statement"},
+    {"from": "YM-D001-R003-UNIFORM-GAP", "to": "YM-D001-CLOSE", "type": "required_uniform_input"},
+    {"from": "YM-D001-R003-CONVERGENCE", "to": "YM-D001-CLOSE", "type": "required_limit_input"}
+  ],
+  "cross_debt_dependencies": [
+    {"debt": "YM-D002", "effect": "If the physical generator is obtained through Osterwalder-Schrader reconstruction, the limiting Schwinger hierarchy and reconstruction hypotheses must be supplied there."},
+    {"debt": "YM-D003", "effect": "The cutoff-indexed family must lie on an actually controlled four-dimensional continuum trajectory; D001 cannot manufacture that continuum construction."},
+    {"debt": "YM-D005", "effect": "Turning source-level correlation decay into the bottom of the full non-vacuum Hamiltonian spectrum requires the separate observable-completeness/converse-spectral interface."}
+  ],
+  "false_proof_firewalls": [
+    "Spatial covariance decay in lattice distance is not automatically a spectral gap of the full transfer generator.",
+    "Unit lattice spacing cannot be converted into a cutoff-uniform physical gap by dimensional analysis alone.",
+    "Infinite volume at fixed regulator is not the ultraviolet continuum limit.",
+    "A fixed-regulator transfer matrix plus a separate fixed-regulator correlation estimate does not define a continuum-indexed generator family.",
+    "Absence of a proved strong-coupling-to-continuum trajectory is not a proof that no such mathematical bridge can ever exist."
+  ],
+  "current_frontier": "After R002, the smallest material D001 target is the missing regulator-to-generator interface. Search for or construct a cutoff-indexed physically normalized generator family with explicit state-space comparison before attempting another uniform-gap or convergence claim.",
+  "certification_boundary": "No node in this DAG is a MATHCERT certificate. R002 is a Solve candidate source-interface falsification; YM-D001 and YM-001 remain open."
+}

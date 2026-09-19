@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "parent_debt": "YM-D004",
+  "artifact_id": "YM-D004-OBSERVABLE-INTERFACE-GAP-DAG",
+  "candidate_root": {
+    "work_package": "YM-D004-OBSERVABLE-INTERFACE-GAP",
+    "claim_id": "YM-D004-R001"
+  },
+  "nodes": [
+    {
+      "id": "YM-T-100",
+      "status": "PROTECTED_PROGRAMME_INTERFACE",
+      "kind": "PERTURBATIVE_ASYMPTOTIC_FREEDOM"
+    },
+    {
+      "id": "YM-T-120",
+      "status": "PROTECTED_PROGRAMME_INTERFACE",
+      "kind": "OS_RECONSTRUCTION_WITH_OBSERVABLE_HIERARCHY_INPUT"
+    },
+    {
+      "id": "YM-D004-R001",
+      "status": "PROVED_IN_CANDIDATE",
+      "kind": "OBSERVABLE_INTERFACE_NONCOMPOSITION"
+    },
+    {
+      "id": "YM-D004-R002",
+      "status": "OPEN",
+      "kind": "REGULATED_TO_RENORMALIZED_LOCAL_OBSERVABLE_CONSTRUCTION"
+    },
+    {
+      "id": "YM-D004-R003",
+      "status": "BLOCKED_ON_R002",
+      "kind": "SHORT_DISTANCE_DISTRIBUTIONAL_CONCORDANCE"
+    },
+    {
+      "id": "YM-D004-CLOSE",
+      "status": "BLOCKED",
+      "kind": "PARENT_DEBT_DISCHARGE"
+    }
+  ],
+  "edges": [
+    {
+      "from": "YM-T-100",
+      "to": "YM-D004-R001",
+      "type": "ultraviolet_input_typing"
+    },
+    {
+      "from": "YM-T-120",
+      "to": "YM-D004-R001",
+      "type": "reconstruction_input_typing"
+    },
+    {
+      "from": "YM-D004-R001",
+      "to": "YM-D004-R002",
+      "type": "exposes_missing_observable_construction"
+    },
+    {
+      "from": "YM-D004-R002",
+      "to": "YM-D004-R003",
+      "type": "requires_operators_before_asymptotic_matching"
+    },
+    {
+      "from": "YM-D004-R003",
+      "to": "YM-D004-CLOSE",
+      "type": "required_for_parent_discharge"
+    }
+  ],
+  "cross_debt_dependencies": [
+    {
+      "debt": "YM-D003",
+      "effect": "R002 must live on an actually selected and constructed four-dimensional continuum route; an abstract operator label cannot substitute for a limiting theory."
+    },
+    {
+      "debt": "YM-D002",
+      "effect": "If the route uses OS reconstruction, the renormalized observable hierarchy must be part of the same hierarchy satisfying the complete selected OS profile."
+    },
+    {
+      "debt": "YM-D001",
+      "effect": "Physical scale normalization remains independent of local-observable existence."
+    },
+    {
+      "debt": "YM-D005",
+      "effect": "Observable construction does not itself prove spectral completeness or the converse correlation-to-gap bridge."
+    }
+  ],
+  "false_proof_firewalls": [
+    "Do not substitute beta-function running for nonperturbative operator construction.",
+    "Do not infer an input observable hierarchy from the OS reconstruction conclusion.",
+    "Do not identify a classical curvature polynomial with a quantum operator without the required renormalization/mixing theorem.",
+    "Do not import a local-observable construction from a different regulator or continuum route without a comparison theorem.",
+    "Do not infer terminal Yang-Mills existence or mass gap."
+  ],
+  "current_frontier": "YM-D004-R002 is the smallest D004 successor, but its concrete realization is coupled to selection/existence of the four-dimensional continuum route. YM-D004-R001 itself is executable now because it is a typed noncomposition theorem over protected interfaces.",
+  "certification_boundary": "R001 is an uncertified Solve dependency theorem. D004 and YM-001 remain open."
+}

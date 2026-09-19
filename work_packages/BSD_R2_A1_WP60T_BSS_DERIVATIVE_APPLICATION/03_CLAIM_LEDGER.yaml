@@ -1,0 +1,58 @@
+work_package: BSD-R2-A1-WP60T-BSS-DERIVATIVE-APPLICATION
+campaign: BSD-001
+tracker: grandchallenge/MATHSOLVE#215
+operation: grandchallenge/MATHSOLVE#250
+owner: grandchallenge/MATHSOLVE#164
+candidate_disposition: CLOSED
+
+protected_inputs:
+  intellect: f042220f3bed7cb7b5069256e8f6305c850c0628
+  programme_gcl_cex_adoption: af6e1772e2d82b0b198d11c08e1369789ffbba3a
+  mathsolve_operation_base: 5fa2caa8f3d4aa54849f62135a5214737fa6db2a
+  wp60r_finite_bss_replay: 245860ce3d7307a505e48b4165be0850327f996a
+  wp60s_authoritative_completion: b0854bb7770296b610b655753bc62b27365b27bb
+  mathforge_wp60t_provider: 095b8eec0e7fe29d7e831661dfe199ec43fa0458
+
+entering_boundary: MISSING_LITERAL_P2_BSS_THEOREM_6_12_COROLLARY_6_15_APPLICATION_REPLAY_WITHOUT_INFINITE_H3
+retired_boundary_candidate: MISSING_LITERAL_P2_BSS_THEOREM_6_12_COROLLARY_6_15_APPLICATION_REPLAY_WITHOUT_INFINITE_H3
+
+establishes_candidate:
+  - BSS_LITERAL_P2_SELECTED_HYPOTHESIS_6_1_AVAILABLE
+  - BSS_LITERAL_P2_SELECTED_HYPOTHESIS_6_7_AVAILABLE
+  - BSS_LITERAL_P2_SELECTED_HYPOTHESIS_6_11_AVAILABLE
+  - BSS_LITERAL_P2_SELECTED_DERIVATIVE_PRIME_SET_COMPATIBLE_WITH_WP60R
+  - BSS_LITERAL_P2_SELECTED_THEOREM_6_12_REPLAYED
+  - BSS_LITERAL_P2_SELECTED_COROLLARY_6_13_DERIVATIVE_AVAILABLE
+  - BSS_LITERAL_P2_SELECTED_COROLLARY_6_15_REPLAYED
+
+preserved_protected_claims:
+  - BSS_LITERAL_P2_SELECTED_THEOREM_5_20_REPLAYED
+  - BSS_LITERAL_P2_SELECTED_THEOREM_5_2_REPLAYED
+  - BSS_LITERAL_P2_SELECTED_THEOREM_5_25_REPLAYED
+
+preserved_false:
+  formal_higher_level_hypothesis_3_2_iii: false
+  full_bss_hypothesis_4_7: false
+  bss_hypothesis_4_7_iii: false
+  infinite_bss_h3: false
+
+not_established:
+  kato_height_one_2_fitting_divisibility: false
+  kato_kolyvagin_primitivity_at_2: false
+  r5_lift: false
+  r5_prim: false
+  d2d: false
+  bsd_r2_a1: false
+  novelty: false
+  priority: false
+  mathcert_certification: false
+
+next_frontier: MISSING_P2_KATO_ZETA_FITTING_DIVISIBILITY_AT_HEIGHT_ONE_2
+subsequent_independent_frontier: MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2
+
+scope_notes:
+  - The Corollary 6.15 replay is finite-level at every R_m=Z/2^m.
+  - The selected derivative-prime set is the exact positive-density WP60R level-m set, used as an admissible subset of the BSS section 6.3 set.
+  - The Kato specialization uses only admitted integral Euler-system existence.
+  - No finite-level containment is identified with the still-missing Lambda_(2) height-one divisibility.
+  - No assertion is made that the Kato-derived Kolyvagin system is a basis or primitive.

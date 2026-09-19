@@ -1,0 +1,75 @@
+name: BSD R5-LIFT equivariant determinant certificate
+
+on:
+  pull_request:
+    paths:
+      - 'work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/**'
+      - 'handoffs/BSD-001/**'
+      - '.gcl/campaigns/BSD-001/**'
+      - '.gcl/operations/BSD-R5-LIFT-EQUIV/**'
+      - '.gcl/admission/BSD-R5-LIFT-EQUIV/**'
+      - '.gcl/completions/BSD-R5-LIFT-EQUIV/**'
+      - 'tools/gcl_campaign_preflight_r5_lift_equiv.py'
+      - 'tools/gcl_completion_receipt_validate_v2.py'
+      - '.ghos-routing/workflows.json'
+      - '.github/workflows/bsd-r5-lift-equivariant-certificate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/**'
+      - 'handoffs/BSD-001/**'
+      - '.gcl/campaigns/BSD-001/**'
+      - '.gcl/operations/BSD-R5-LIFT-EQUIV/**'
+      - '.gcl/admission/BSD-R5-LIFT-EQUIV/**'
+      - '.gcl/completions/BSD-R5-LIFT-EQUIV/**'
+      - 'tools/gcl_campaign_preflight_r5_lift_equiv.py'
+      - 'tools/gcl_completion_receipt_validate_v2.py'
+      - '.ghos-routing/workflows.json'
+      - '.github/workflows/bsd-r5-lift-equivariant-certificate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  equivariant-replay:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Assert exact subject checkout
+        shell: bash
+        run: test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - name: Run R5-LIFT operation preflight
+        run: python tools/gcl_campaign_preflight_r5_lift_equiv.py BSD-001 BSD-R5-LIFT-EQUIV
+      - name: Replay protected WP60M defect certificate
+        run: python work_packages/BSD_R2_A1_WP60M_BSS_ALL_LEVEL_SELMER_HYP32III/02_ALL_LEVEL_COHOMOLOGY_CERTIFICATE.py
+      - name: Replay protected WP60R dependency certificate
+        run: python work_packages/BSD_R2_A1_WP60R_BSS_THEOREM_REPLAY/04_DEPENDENCY_REPLAY_CERTIFICATE.py
+      - name: Replay protected WP60S inverse-limit certificate
+        run: python work_packages/BSD_R2_A1_WP60S_BSS_INVERSE_LIMIT/04_INVERSE_LIMIT_REPLAY_CERTIFICATE.py
+      - name: Replay protected WP60T derivative certificate
+        run: python work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/04_DERIVATIVE_REPLAY_CERTIFICATE.py
+      - name: Replay equivariant finite structural certificate
+        run: python work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/04_EQUIVARIANT_REPLAY_CERTIFICATE.py
+      - name: Assert candidate claims and firewalls
+        shell: bash
+        run: |
+          ledger=work_packages/BSD_R5_LIFT_EQUIVARIANT_DETERMINANT/03_CLAIM_LEDGER.yaml
+          grep -q 'P2_EQUIVARIANT_CYCLOTOMIC_KATO_DETERMINANT_MEMBERSHIP' "$ledger"
+          grep -q 'R5_LIFT_ESTABLISHED' "$ledger"
+          grep -q 'MISSING_P2_DETERMINANTAL_ZETA_PRIMITIVITY_AT_HEIGHT_ONE_2' "$ledger"
+          grep -q 'formal_higher_level_hypothesis_3_2_iii: false' "$ledger"
+          grep -q 'infinite_bss_h3: false' "$ledger"
+          grep -q 'r5_prim: false' "$ledger"
+          grep -q 'bsd_r2_a1: false' "$ledger"
+          grep -q 'mathcert_certification: false' "$ledger"
+      - name: Validate completion receipt when present
+        shell: bash
+        run: |
+          receipt=.gcl/completions/BSD-R5-LIFT-EQUIV/COMPLETION_RECEIPT.json
+          if test -f "$receipt"; then
+            python tools/gcl_completion_receipt_validate_v2.py BSD-R5-LIFT-EQUIV
+          fi

@@ -1,0 +1,42 @@
+work_package: BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY
+campaign: BSD-001
+operation: BSD-R5-RECIP
+operation_issue: grandchallenge/MATHSOLVE#278
+protected_base: 7d72d4f8aec2019a8eefb4db4fe151e4f14b1211
+provider_anchor: cd814844128167d0e4cdb48f69f9d01c6c0be883
+candidate_disposition: CLOSED
+retired_frontier: MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY
+next_frontier: MISSING_P2_NORMALIZED_FINITE_KURIHARA_NONVANISHING_WITNESS
+proved:
+  BSD-R5-RECIP-LOCAL-DEEPLOG-001: true
+  BSD-R5-RECIP-LOCAL-FORMAL-TORS-002: true
+  BSD-R5-RECIP-LOCAL-TEXP-003: true
+  BSD-R5-RECIP-LOCAL-INDEX-004: true
+  BSD-R5-RECIP-LOCAL-LOGLATTICE-005: true
+  BSD-R5-RECIP-LOCAL-DUALEXP-006: true
+  BSD-R5-RECIP-LOCAL-TORSIONCOEFF-007: true
+  BSD-R5-RECIP-SYMBOL-IRRED-001: true
+  BSD-R5-RECIP-SYMBOL-SATURATION-002: true
+  BSD-R5-RECIP-SYMBOL-REALPERIOD-003: true
+  BSD-R5-RECIP-SYMBOL-INTEGRAL-004: true
+  BSD-R5-RECIP-SYMBOL-KKS-005: true
+  BSD-R5-RECIP-NORMALIZED-RECIPROCITY-006: true
+consequences:
+  normalized_quantity: Delta_n^(2)=2^t_2*delta_tilde_n
+  t2_ge_1: true
+  if_t2_ge_2_normalized_kurihara_mod2_witness_vanishes: true
+claim_firewall:
+  formal_higher_level_hypothesis_3_2_iii: false
+  full_bss_hypothesis_4_7: false
+  bss_hypothesis_4_7_iii: false
+  infinite_bss_h3: false
+  r5_lift: true
+  r5_prim: false
+  r5_res: false
+  d2d: false
+  bsd_r2_a1: false
+  mathcert_certification: false
+notes:
+  - CLOSED applies only to the R5-RECIP reciprocity boundary.
+  - No nonzero Delta_n^(2) witness is asserted.
+  - The t2>=2 vanishing statement concerns this local-regulator witness route and does not imply global residual-class vanishing.

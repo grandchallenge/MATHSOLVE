@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "parent_debt": "YM-D003",
+  "artifact_id": "YM-D003-UV-LARGE-FIELD-COMPOSITION-DAG",
+  "candidate_root": {
+    "work_package": "YM-D003-UV-LARGE-FIELD-COMPOSITION",
+    "claim_id": "YM-D003-R001"
+  },
+  "nodes": [
+    {
+      "id": "YM-T-210",
+      "status": "PROTECTED_PROGRAMME_INTERFACE",
+      "kind": "BALABAN_4D_UV_STABILITY_AND_LARGE_FIELD"
+    },
+    {
+      "id": "YM-T-220",
+      "status": "PROTECTED_PROGRAMME_QUALIFIED_INTERFACE",
+      "kind": "MRS_FIXED_IR_UV_REMOVAL"
+    },
+    {
+      "id": "YM-D003-R001",
+      "status": "PROVED_IN_CANDIDATE",
+      "kind": "ROUTE_SEPARATED_COMPOSITION"
+    },
+    {
+      "id": "YM-D003-BAL-R002",
+      "status": "OPEN",
+      "kind": "STABILITY_TO_CONTINUUM_OBSERVABLE_EXISTENCE"
+    },
+    {
+      "id": "YM-D003-BAL-R003",
+      "status": "BLOCKED_ON_BAL_R002",
+      "kind": "CONTINUUM_UNIQUENESS_AND_IDENTIFICATION"
+    },
+    {
+      "id": "YM-D003-BAL-R004",
+      "status": "BLOCKED_ON_BAL_R002",
+      "kind": "IR_AND_INFINITE_VOLUME_REMOVAL"
+    },
+    {
+      "id": "YM-D003-MRS-R002",
+      "status": "OPEN",
+      "kind": "SOURCE_PROOF_COMPLETENESS"
+    },
+    {
+      "id": "YM-D003-MRS-R003",
+      "status": "OPEN",
+      "kind": "IR_AND_INFINITE_VOLUME_REMOVAL"
+    },
+    {
+      "id": "YM-D003-MRS-R004",
+      "status": "OPEN",
+      "kind": "OS_TOPOLOGY_AND_PHYSICAL_IDENTIFICATION"
+    },
+    {
+      "id": "YM-D003-XR-R001",
+      "status": "OPTIONAL_OPEN",
+      "kind": "CROSS_ROUTE_COMPARISON"
+    },
+    {
+      "id": "YM-D003-CLOSE",
+      "status": "BLOCKED",
+      "kind": "PARENT_DEBT_DISCHARGE"
+    }
+  ],
+  "edges": [
+    {
+      "from": "YM-T-210",
+      "to": "YM-D003-R001",
+      "type": "balaban_route_input"
+    },
+    {
+      "from": "YM-T-220",
+      "to": "YM-D003-R001",
+      "type": "mrs_route_input"
+    },
+    {
+      "from": "YM-D003-R001",
+      "to": "YM-D003-BAL-R002",
+      "type": "exposes_smallest_balaban_residual"
+    },
+    {
+      "from": "YM-D003-R001",
+      "to": "YM-D003-MRS-R002",
+      "type": "preserves_mrs_proof_completeness_boundary"
+    },
+    {
+      "from": "YM-D003-BAL-R002",
+      "to": "YM-D003-BAL-R003",
+      "type": "requires_actual_limit_before_uniqueness"
+    },
+    {
+      "from": "YM-D003-BAL-R002",
+      "to": "YM-D003-BAL-R004",
+      "type": "requires_route_level_continuum_objects"
+    },
+    {
+      "from": "YM-D003-MRS-R002",
+      "to": "YM-D003-MRS-R003",
+      "type": "theorem_grade_route_before_ir_removal"
+    },
+    {
+      "from": "YM-D003-BAL-R003",
+      "to": "YM-D003-CLOSE",
+      "type": "required_balaban_route_if_selected"
+    },
+    {
+      "from": "YM-D003-BAL-R004",
+      "to": "YM-D003-CLOSE",
+      "type": "required_balaban_route_if_selected"
+    },
+    {
+      "from": "YM-D003-MRS-R003",
+      "to": "YM-D003-CLOSE",
+      "type": "required_mrs_route_if_selected"
+    },
+    {
+      "from": "YM-D003-MRS-R004",
+      "to": "YM-D003-CLOSE",
+      "type": "required_mrs_route_if_selected"
+    }
+  ],
+  "cross_debt_dependencies": [
+    {
+      "debt": "YM-D002",
+      "effect": "Complete OS profile remains independent even after D003 continuum construction advances."
+    },
+    {
+      "debt": "YM-D001",
+      "effect": "A non-circular physical reference scale and regulated-to-limit spectral comparison remain separate."
+    },
+    {
+      "debt": "YM-D004",
+      "effect": "Renormalized local gauge-invariant observables must be identified in the selected continuum theory."
+    },
+    {
+      "debt": "YM-D005",
+      "effect": "Euclidean decay still requires the converse/completeness bridge to the physical Hamiltonian spectrum."
+    }
+  ],
+  "false_proof_firewalls": [
+    "Do not splice theorem content across Balaban and MRS without a protected comparison theorem.",
+    "Do not equate ultraviolet stability with existence and uniqueness of the continuum hierarchy.",
+    "Do not equate fixed-infrared-cutoff UV removal with infinite-volume construction.",
+    "Do not erase MRS's explicit proof-completeness limitation.",
+    "Do not infer terminal Yang-Mills existence or mass gap."
+  ],
+  "current_frontier": "YM-D003-BAL-R002 is the smallest theorem-grade native successor, but theorem-number/equation-exact Balaban source acquisition may be required before a proof attempt using internal bounds.",
+  "certification_boundary": "R001 is an uncertified Solve composition theorem. D003 and YM-001 remain open."
+}

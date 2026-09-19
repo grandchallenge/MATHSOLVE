@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1.0",
+  "record_type": "GCL_ADMISSION_FREEZE",
+  "campaign": "BSD-001",
+  "operation": "BSD-R5-RECIP",
+  "protected_base": "7d72d4f8aec2019a8eefb4db4fe151e4f14b1211",
+  "provider_anchor": "cd814844128167d0e4cdb48f69f9d01c6c0be883",
+  "assembled_from_head": "ae0b06b23aca5a0ef80ebadc2070b7cbf6525927",
+  "artifacts": {
+    "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/00_README.md": "a309123e9d181fe57fa4325ba0354311ed595a59",
+    "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/01_LITERAL_P2_LOCAL_LATTICE_THEOREM.md": "15386acde1bf6915941c49b471abccb32078ddb9",
+    "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/02_LITERAL_P2_SYMBOL_AND_RECIPROCITY_THEOREM.md": "01f08226bf3002cc20530b2e22f7cba8c7dd542d",
+    "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/03_CLAIM_LEDGER.yaml": "8d8ba7ad374978634af9ab958858ad6fbdcba604",
+    "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/04_RECIPROCITY_CERTIFICATE.py": "f87dddd69db66768b01a2b5f6c8879341aff029e",
+    "handoffs/BSD-001/README.md": "cfe798f035fa94934dcbf57b2ec3a2447a63248b",
+    "handoffs/BSD-001/R5_RECIP_FRONTIER.md": "362231517a2b6894ccf2b2033638399eb5a42f66",
+    ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json": "9c43d7caac1e6e9ab3efd452544eeede46e50af2",
+    ".gcl/operations/BSD-R5-RECIP/OPERATION.json": "e0642cd44a21e1e76ff60df892e0f7a565feba09",
+    "tools/gcl_campaign_preflight_r5_recip.py": "867ae17c26423d98595842553e0428f38be6ca85",
+    ".github/workflows/bsd-r5-recip-certificate.yml": "425c5efe4e3cc4480337935b48423bf3250eb3e1",
+    ".ghos-routing/workflows.json": "f0dc014861438fa63216e8b6a35a70268afb77d2"
+  },
+  "freeze_policy": "Unrelated protected-main movement does not invalidate this freeze. Any change to a governed artifact invalidates the freeze, exact-head mathematical reviews, and affected candidate checks; a fresh freeze and exact-head replay are then required."
+}

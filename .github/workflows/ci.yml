@@ -70,6 +70,8 @@ jobs:
           python ci/validate_ns_ci_wp02.py
           python -m unittest ci/test_validate_ns_ci_wp02.py -v
           python -m unittest tests/test_ns_ci_a2_l5_restart.py -v
+          python -m unittest tests/test_ns_ci_a2_l5_pretriangle_strict_tail.py -v
+          python -m unittest tests/test_ns_ci_a2_l5_coupled_enstrophy.py -v
       - name: Validate OpenAI Ten Proofs independent handoffs
         run: |
           python ci/validate_openai_ten_proofs_result_family_handoffs.py
@@ -130,6 +132,7 @@ jobs:
         run: |
           lake env lean MathSolve/FormalConjectures/Replay.lean
           lake env lean MathSolve/PNP/CarrierBridge.lean
+          lake env lean MathSolve/PNP/PolyBoundBridge.lean
           python ci/validate_formal_conjectures_targets.py
           PYTHONPATH=ci python -m unittest ci/test_formal_conjectures_targets.py -v
           python -m json.tool formal_sources/formal_conjectures/MS-FC-WP00.json >/dev/null

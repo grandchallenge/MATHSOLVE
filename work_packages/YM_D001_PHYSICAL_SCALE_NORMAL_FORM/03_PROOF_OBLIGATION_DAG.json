@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "parent_debt": "YM-D001",
+  "artifact_id": "YM-D001-PHYSICAL-SCALE-NORMAL-FORM-DAG",
+  "candidate_root": {
+    "work_package": "YM-D001-PHYSICAL-SCALE-NORMAL-FORM",
+    "claim_id": "YM-D001-R005"
+  },
+  "nodes": [
+    {"id":"YM-D001-R004","status":"PROTECTED_ADMITTED_NOT_CERTIFIED","kind":"VARYING_HILBERT_SPECTRAL_STABILITY"},
+    {"id":"YM-D001-R005","status":"PROVED_IN_CANDIDATE","kind":"PHYSICAL_SCALE_NORMAL_FORM"},
+    {
+      "id":"YM-D001-SCALE-DATA",
+      "status":"HYPOTHESIS",
+      "kind":"PHYSICAL_CLOCK_CALIBRATION",
+      "statement":"tau_n>0 is the physical Euclidean time represented by one dimensionless regulated evolution unit."
+    },
+    {
+      "id":"YM-D001-FP006",
+      "status":"COUNTEREXAMPLE",
+      "kind":"POINTWISE_POSITIVITY_INSUFFICIENT"
+    },
+    {
+      "id":"YM-D001-FP007",
+      "status":"COUNTEREXAMPLE",
+      "kind":"DIMENSIONLESS_SCALE_NONIDENTIFIABILITY"
+    },
+    {
+      "id":"YM-D001-FP008",
+      "status":"FIREWALL",
+      "kind":"TRANSFER_LOG_CONVERSION"
+    },
+    {
+      "id":"YM-D001-R006",
+      "status":"OPEN",
+      "kind":"YANG_MILLS_REFERENCE_SCALE",
+      "statement":"Construct or locate a nonperturbative scale-setting theorem fixing tau_a or an equivalent physical normalization on the actual cutoff trajectory."
+    },
+    {
+      "id":"YM-D001-YM-IDENTIFICATIONS",
+      "status":"OPEN",
+      "kind":"APPLICATION_IDENTIFICATION_MAPS"
+    },
+    {
+      "id":"YM-D001-UNIFORM-GAP",
+      "status":"BLOCKED_ON_R006_AND_APPLICATION",
+      "kind":"CUTOFF_VOLUME_UNIFORM_PHYSICAL_SPECTRAL_EXCLUSION"
+    },
+    {
+      "id":"YM-D001-CLOSE",
+      "status":"BLOCKED",
+      "kind":"PARENT_DEBT_DISCHARGE"
+    }
+  ],
+  "edges": [
+    {"from":"YM-D001-R004","to":"YM-D001-CLOSE","type":"available_varying_space_stability"},
+    {"from":"YM-D001-SCALE-DATA","to":"YM-D001-R005","type":"types_physical_rescaling"},
+    {"from":"YM-D001-R005","to":"YM-D001-R006","type":"reduces_application_to_missing_calibration"},
+    {"from":"YM-D001-R006","to":"YM-D001-UNIFORM-GAP","type":"puts_actual_regulated_gaps_in_common_physical_units"},
+    {"from":"YM-D001-YM-IDENTIFICATIONS","to":"YM-D001-UNIFORM-GAP","type":"binds_actual_regulated_operator_family"},
+    {"from":"YM-D001-UNIFORM-GAP","to":"YM-D001-CLOSE","type":"required_input"}
+  ],
+  "cross_debt_dependencies": [
+    {"debt":"YM-D003","effect":"The physical scale calibration must be bound to the same controlled four-dimensional continuum trajectory."},
+    {"debt":"YM-D002","effect":"The limiting Hamiltonian to which the physically normalized regulated generators converge remains reconstruction-dependent if the OS route is used."}
+  ],
+  "false_proof_firewalls": [
+    "Positive dimensionless gaps need not produce a positive physical gap.",
+    "Bare coupling flow does not by itself define physical clock units.",
+    "The convention tau_a=a must be proved/bound rather than silently assumed.",
+    "The exact transfer-to-energy map uses -log of the transfer eigenvalue.",
+    "The abstract scale law does not construct the Yang-Mills reference scale."
+  ],
+  "current_frontier": "R005 supplies the exact scale-conversion law. The next smallest target is the missing nonperturbative Yang-Mills reference-scale calibration on the actual cutoff trajectory.",
+  "certification_boundary": "R005 is an uncertified Solve theorem candidate and does not establish YM-D001 or the terminal Yang-Mills result."
+}

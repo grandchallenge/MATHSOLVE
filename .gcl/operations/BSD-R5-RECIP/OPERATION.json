@@ -1,0 +1,114 @@
+{
+  "schema_version": "0.2.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "BSD-R5-RECIP",
+  "campaign": "BSD-001",
+  "issue": "grandchallenge/MATHSOLVE#278",
+  "protected_base": "7d72d4f8aec2019a8eefb4db4fe151e4f14b1211",
+  "provider_anchor": "cd814844128167d0e4cdb48f69f9d01c6c0be883",
+  "constitutional_anchor": "f042220f3bed7cb7b5069256e8f6305c850c0628",
+  "staffing_directive": "GI-STEWARD-0003",
+  "programme_adoption_anchor": "af6e1772e2d82b0b198d11c08e1369789ffbba3a",
+  "completion_enforcement_anchor": "grandchallenge/gcl-standards@efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
+  "work_class": "substantive_non_reserved",
+  "objective": {
+    "frontier": "MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY",
+    "retire_frontier": "MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY",
+    "description": "Prove, falsify, or reduce to the first independent theorem the selected literal-p=2 normalized anomalous-ordinary Kato/Kurihara reciprocity statement."
+  },
+  "acceptable_dispositions": ["CLOSED", "BLOCKED", "FALSIFIED"],
+  "candidate_disposition": "CLOSED",
+  "scope": {
+    "repositories": ["grandchallenge/MATHSOLVE"],
+    "may_author_candidate": true,
+    "may_open_pull_request": true,
+    "may_repair_candidate": true,
+    "may_run_or_replay_ci": true,
+    "may_merge_after_declared_gates": true,
+    "may_certify": false,
+    "may_promote_bsd_target": false,
+    "may_close_r5_recip": true,
+    "may_close_r5_res": false,
+    "may_close_r5_prim": false
+  },
+  "completion_requires": [
+    "mathematical_artifact",
+    "claim_ledger",
+    "campaign_state",
+    "frontier_record",
+    "source_boundary_record",
+    "preflight_pass",
+    "content_freeze",
+    "exact_head_adversary_review",
+    "exact_head_referee_review",
+    "required_ci_green",
+    "protected_merge",
+    "protected_readback",
+    "completion_receipt"
+  ],
+  "completion_receipt": {
+    "surface": ".gcl/completions/BSD-R5-RECIP/COMPLETION_RECEIPT.json",
+    "validator": "python tools/gcl_completion_receipt_validate_v2.py BSD-R5-RECIP",
+    "phase": "post_merge_completion_replay",
+    "required_fields": ["candidate_head", "merge_sha", "protected_readback_sha", "staffing_authority", "adversary_record", "referee_record", "required_checks", "disposition", "preserved_false"]
+  },
+  "governed_artifacts": [
+    "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/00_README.md",
+    "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/01_LITERAL_P2_LOCAL_LATTICE_THEOREM.md",
+    "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/02_LITERAL_P2_SYMBOL_AND_RECIPROCITY_THEOREM.md",
+    "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/03_CLAIM_LEDGER.yaml",
+    "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/04_RECIPROCITY_CERTIFICATE.py",
+    "handoffs/BSD-001/README.md",
+    "handoffs/BSD-001/R5_RECIP_FRONTIER.md",
+    ".gcl/campaigns/BSD-001/CAMPAIGN_STATE.json",
+    ".gcl/operations/BSD-R5-RECIP/OPERATION.json",
+    "tools/gcl_campaign_preflight_r5_recip.py",
+    ".github/workflows/bsd-r5-recip-certificate.yml",
+    ".ghos-routing/workflows.json"
+  ],
+  "completion_replay_artifacts": [
+    ".gcl/completions/BSD-R5-RECIP/COMPLETION_RECEIPT.json",
+    "tools/gcl_completion_receipt_validate_v2.py"
+  ],
+  "admission": {
+    "freeze_manifest": ".gcl/admission/BSD-R5-RECIP/FREEZE.json",
+    "preflight_command": "python tools/gcl_campaign_preflight_r5_recip.py BSD-001 BSD-R5-RECIP",
+    "certificate_command": "python work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/04_RECIPROCITY_CERTIFICATE.py",
+    "completion_receipt_command": "python tools/gcl_completion_receipt_validate_v2.py BSD-R5-RECIP",
+    "review_invalidation": "A change to any pre-merge governed artifact invalidates the mathematical-candidate freeze, exact-head theorem reviews, and affected candidate checks. Post-merge completion artifacts bind the immutable admitted candidate and protected merge/readback."
+  },
+  "validation": {
+    "claim_ledger": "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/03_CLAIM_LEDGER.yaml",
+    "theorem": "work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/02_LITERAL_P2_SYMBOL_AND_RECIPROCITY_THEOREM.md",
+    "frontier_record": "handoffs/BSD-001/R5_RECIP_FRONTIER.md",
+    "workflow": ".github/workflows/bsd-r5-recip-certificate.yml",
+    "routing_registry": ".ghos-routing/workflows.json",
+    "required_tokens": [
+      "MISSING_P2_NORMALIZED_ANOMALOUS_ORDINARY_KATO_KURIHARA_RECIPROCITY",
+      "MISSING_P2_NORMALIZED_FINITE_KURIHARA_NONVANISHING_WITNESS",
+      "BSD-R5-RECIP-LOCAL-DUALEXP-006",
+      "BSD-R5-RECIP-SYMBOL-SATURATION-002",
+      "BSD-R5-RECIP-NORMALIZED-RECIPROCITY-006",
+      "CLOSED"
+    ],
+    "forbidden_tokens": ["r5_res: true", "r5_prim: true", "bsd_r2_a1: true", "mathcert_certification: true"]
+  },
+  "claim_firewall": {
+    "formal_higher_level_hypothesis_3_2_iii": false,
+    "full_bss_hypothesis_4_7": false,
+    "bss_hypothesis_4_7_iii": false,
+    "infinite_bss_h3": false,
+    "r5_lift": true,
+    "r5_prim": false,
+    "r5_res": false,
+    "d2d": false,
+    "bsd_r2_a1": false,
+    "mathcert_certification": false
+  },
+  "successor_policy": {
+    "next_frontier_if_closed": "MISSING_P2_NORMALIZED_FINITE_KURIHARA_NONVANISHING_WITNESS",
+    "continue_on_completion": true,
+    "r5_res_reopens_only_with_nonzero_residual_witness": true
+  },
+  "stop_only_on": ["governance_boundary", "authority_boundary", "authentication_boundary", "safety_boundary", "materially_changed_state", "substantive_evidentiary_boundary", "target_or_normalization_drift"]
+}

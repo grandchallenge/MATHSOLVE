@@ -1,0 +1,55 @@
+schema_version: 0.1.0
+record_type: GCL_CLAIM_LEDGER
+campaign: BSD-001
+operation: BSD-R5-CW-P2-CH15
+issue: grandchallenge/MATHSOLVE#339
+candidate_disposition: BLOCKED
+protected_base: e7c67802acf31012f923eb820e080d9586b45bd6
+provider_anchor: 78c18a47f0e6bdb5886c7ecfa1ba1b4c7ffff992
+
+entering_frontier: MISSING_P2_COLMEZ_WANG_SQUARE_ROOT_COVER_CHAPTER15_GLOBALIZATION_COMPATIBILITY
+
+proved:
+  - id: BSD-R5-CW-P2-CH15-ETALE-001
+    statement: The protected half-weight cover is finite etale on the characteristic-zero generic fibre.
+  - id: BSD-R5-CW-P2-CH15-FLAT-PT-002
+    statement: Full deformation modules, exact Poitou-Tate sequences, finite generation, and torsion annihilators survive the finite-free half-weight base change.
+  - id: BSD-R5-CW-P2-CH15-DENSITY-PULLBACK-003
+    statement: Conditional on a dense locally absolutely irreducible classical locus on the base full-deformation space, its pullback to the finite-etale half-weight cover is dense.
+  - id: BSD-R5-CW-P2-CH15-CYCLOTOMIC-IRR-004
+    statement: The protected selected S3 residual representation remains irreducible over the cyclotomic Z_2-extension.
+  - id: BSD-R5-CW-P2-CH15-LOCALIZATION-005
+    statement: The source-admitted literal-2 localization-injectivity inputs remain injective after the flat half-weight base change.
+  - id: BSD-R5-CW-P2-CH15-REDUCTION-006
+    statement: No additional independent obstruction appears in the generic-fibre Chapter-15 replay before the full-deformation classical-density theorem.
+
+open:
+  - id: MISSING_P2_FULL_DEFORMATION_LOCALLY_IRREDUCIBLE_CLASSICAL_DENSITY_ON_SELECTED_S3_LANE
+    statement: Supply a literal-p=2 global theorem giving Zariski density of classical modular points with locally absolutely irreducible G_Q2 restriction on the selected S3 unrestricted deformation lane.
+  - id: MISSING_P2_COLMEZ_WANG_DENOMINATOR_REMOVAL_WITH_NONPROCYCLIC_UNITS
+    statement: Replay the later integral denominator-removal theorem at literal two.
+  - id: MISSING_P2_BASE_KATO_CLASS_MOD2_NONVANISHING_ON_SELECTED_RANK_ONE_LANE
+    statement: After an integral comparison exists, prove a legitimate selected residual Kato witness.
+
+blocked_on:
+  id: MISSING_P2_FULL_DEFORMATION_LOCALLY_IRREDUCIBLE_CLASSICAL_DENSITY_ON_SELECTED_S3_LANE
+  class: substantive_source_theorem_boundary
+  witness: Protected MATHFORGE provider 78c18a47f0e6bdb5886c7ecfa1ba1b4c7ffff992 audits the current literature and finds p=2 local or ordinary modularity results, but no theorem with the required global full-deformation locally irreducible density on the selected solvable S3 residual lane.
+
+claim_firewall:
+  formal_higher_level_hypothesis_3_2_iii: false
+  full_bss_hypothesis_4_7: false
+  bss_hypothesis_4_7_iii: false
+  infinite_bss_h3: false
+  r5_lift: true
+  r5_prim: false
+  r5_res: false
+  d2d: false
+  bsd_r2_a1: false
+  mathcert_certification: false
+
+prohibited_inferences:
+  - Finite flatness creates the missing global modular-density theorem.
+  - Local crystalline density implies global modular density on the selected deformation space.
+  - Ordinary p=2 modularity supplies locally absolutely irreducible classical points.
+  - Closure of this bounded reduction reopens or establishes historical R5-RES.
