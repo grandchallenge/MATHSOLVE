@@ -3,19 +3,20 @@
 Campaign: RH-001
 
 Status:
-PRE_ROUTE_CANDIDATE__DO_NOT_PROMOTE
+ADMISSION_CANDIDATE__AWAITING_R043_PROTECTION
 
 Solve tracker:
 grandchallenge/MATHSOLVE#382
 
-Guarded dependencies:
-- RH-R040-EFFECTIVE-SMALL-A-SIMPLE-EVEN-001
-- RH-R041-ODD-HERGLOTZ-GAP-CRITERION-001
-- RH-R043-HERGLOTZ-MARGIN-CONTINUITY-001
+Protected dependencies:
+- grandchallenge/MATHSOLVE@139f35f14ee831aa5aa3ed83b774b762965d58b3:work_packages/RH_R045_PARITY_SENSITIVE_REMAINDER.md
+- grandchallenge/MATHSOLVE@9519ae68c96c33b1a71548a9984fef1be640a106:work_packages/RH_R041_ODD_HERGLOTZ_GAP_CRITERION.md
+- grandchallenge/MATHSOLVE@1a34479235b47405a3ed185c0b1d21d6ad9be190:work_packages/RH_R042_PARITY_BOTTOM_PARAMETER_CONTINUITY.md
+- grandchallenge/MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320:reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md
+- grandchallenge/MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648:reports/discovery/rh_001/rh_r041_pole_resolvent_interface.md
 
-Provider prerequisites:
-The Suzuki audit in MATHFORGE PR #271 and the exact pole interface in
-MATHFORGE issue #272 must be protected before this package may be admitted.
+Pending dependency:
+- RH-R043-HERGLOTZ-MARGIN-CONTINUITY-001, PR #396, exact candidate `def460135c0a1c0ce627c950d55269caeecc4870` pending exact-head CI and protected merge.
 
 No RH / novelty / priority / certification claim.
 
@@ -281,15 +282,11 @@ This theorem does not prove:
 
 Before admission:
 
-1. R040 provider audit must be protected;
-2. the effective R040 theorem must be composed and protected;
-3. the R041 provider pole split must be protected;
-4. the R041 Solve trichotomy must be composed and protected;
-5. R043 continuity must be composed and protected if the continuation
-   corollary is retained;
-6. this theorem must then be replayed on the current live Solve head with
-   exact-head Adversary/Referee reviews and required CI.
+1. R043 continuity must be protected;
+2. this theorem must then be composed onto the current live Solve head;
+3. exact-head Adversary/Referee reviews and required Solve/GCL CI must pass;
+4. protected merge and readback must complete.
 
 Terminal candidate disposition:
 
-RH-R044_EXPLICIT_INITIAL_CONTINUATION_MARGINS_PROVED_ON_WORK_BRANCH__AWAITING_DEPENDENCY_PROTECTION
+RH-R044_EXPLICIT_INITIAL_CONTINUATION_MARGINS_PROVED__AWAITING_R043_PROTECTION
