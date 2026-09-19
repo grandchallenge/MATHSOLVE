@@ -113,11 +113,15 @@ theorem programmeTM2_step_initToTemp_cons (M : ProgrammeMachine)
         (programmeTM2InitCfg M .initToTemp (some bit) raw (bit :: temp) right) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToTemp, Turing.TM2.stepAux,
-    programmeTM2InitCfg, programmeTM2InitState, List.head?_cons,
-    Option.isSome_some, Bool.cond_true, List.tail_cons]
-  simp [programmeTM2InitStacks_raw, programmeTM2InitStacks_temp,
-    List.head?_cons, List.tail_cons, Option.isSome_some, Bool.cond_true,
-    programmeTM2InitStacks_update_raw, programmeTM2InitStacks_update_temp]
+    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_raw,
+    programmeTM2InitStacks_temp, List.head?_cons, Option.isSome_some,
+    Bool.cond_true, List.tail_cons]
+  apply congrArg some
+  apply programmeTM2Cfg_ext
+  · rfl
+  · rfl
+  · intro k
+    cases k <;> simp [programmeTM2InitStacks, Function.update]
 
 /-- The first blank pop ends the first pass and clears the transient symbol. -/
 theorem programmeTM2_step_initToTemp_nil (M : ProgrammeMachine)
@@ -127,10 +131,14 @@ theorem programmeTM2_step_initToTemp_nil (M : ProgrammeMachine)
       some (programmeTM2InitCfg M .initToRight none [] temp right) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToTemp, Turing.TM2.stepAux,
-    programmeTM2InitCfg, programmeTM2InitState, List.head?_nil,
-    Option.isSome_none, Bool.cond_false, List.tail_nil]
-  simp [programmeTM2InitStacks_raw, List.head?_nil, List.tail_nil,
-    Option.isSome_none, Bool.cond_false, programmeTM2InitStacks_update_raw]
+    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_raw,
+    List.head?_nil, Option.isSome_none, Bool.cond_false, List.tail_nil]
+  apply congrArg some
+  apply programmeTM2Cfg_ext
+  · rfl
+  · rfl
+  · intro k
+    cases k <;> simp [programmeTM2InitStacks, Function.update]
 
 /-- One nonempty second-pass step restores a Boolean cell to the right-of-head stack. -/
 theorem programmeTM2_step_initToRight_cons (M : ProgrammeMachine)
@@ -142,11 +150,15 @@ theorem programmeTM2_step_initToRight_cons (M : ProgrammeMachine)
         (programmeTM2InitCfg M .initToRight (some bit) [] temp (some bit :: right)) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToRight, Turing.TM2.stepAux,
-    programmeTM2InitCfg, programmeTM2InitState, List.head?_cons,
-    Option.isSome_some, Bool.cond_true, List.tail_cons]
-  simp [programmeTM2InitStacks_temp, programmeTM2InitStacks_right,
-    List.head?_cons, List.tail_cons, Option.isSome_some, Bool.cond_true,
-    programmeTM2InitStacks_update_temp, programmeTM2InitStacks_update_right]
+    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_temp,
+    programmeTM2InitStacks_right, List.head?_cons, Option.isSome_some,
+    Bool.cond_true, List.tail_cons]
+  apply congrArg some
+  apply programmeTM2Cfg_ext
+  · rfl
+  · rfl
+  · intro k
+    cases k <;> simp [programmeTM2InitStacks, Function.update]
 
 /-- The second blank pop ends the restoration pass. -/
 theorem programmeTM2_step_initToRight_nil (M : ProgrammeMachine)
@@ -156,10 +168,14 @@ theorem programmeTM2_step_initToRight_nil (M : ProgrammeMachine)
       some (programmeTM2InitCfg M .initFinish none [] [] right) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitToRight, Turing.TM2.stepAux,
-    programmeTM2InitCfg, programmeTM2InitState, List.head?_nil,
-    Option.isSome_none, Bool.cond_false, List.tail_nil]
-  simp [programmeTM2InitStacks_temp, List.head?_nil, List.tail_nil,
-    Option.isSome_none, Bool.cond_false, programmeTM2InitStacks_update_temp]
+    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_temp,
+    List.head?_nil, Option.isSome_none, Bool.cond_false, List.tail_nil]
+  apply congrArg some
+  apply programmeTM2Cfg_ext
+  · rfl
+  · rfl
+  · intro k
+    cases k <;> simp [programmeTM2InitStacks, Function.update]
 
 /-- The final initialization step loads the scanned input cell and enters run mode. -/
 theorem programmeTM2_step_initFinish (M : ProgrammeMachine)
@@ -175,8 +191,13 @@ theorem programmeTM2_step_initFinish (M : ProgrammeMachine)
           stk := programmeTM2InitStacks M [] [] right.tail } := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, programmeTM2InitFinish, Turing.TM2.stepAux,
-    programmeTM2InitCfg, programmeTM2InitState]
-  simp [programmeTM2InitStacks_right, programmeTM2InitStacks_update_right]
+    programmeTM2InitCfg, programmeTM2InitState, programmeTM2InitStacks_right]
+  apply congrArg some
+  apply programmeTM2Cfg_ext
+  · rfl
+  · rfl
+  · intro k
+    cases k <;> simp [programmeTM2InitStacks, Function.update]
 
 /-- Any exact one-step transition yields a one-step bounded evaluation witness. -/
 def programmeTM2_one_step_in_time
@@ -293,8 +314,7 @@ theorem programmeTM2_step_initFinish_input (M : ProgrammeMachine) (input : List 
       some (programmeTM2ReadyInitCfg M input) := by
   rw [programmeTM2_step_initFinish]
   cases input <;>
-    simp [programmeTM2ReadyInitCfg, programmeTM2InitStacks,
-      programmeTM2InitStacks_right, programmeTM2InitStacks_update_right]
+    rfl
 
 /-- Reverse-simulator initialization is exactly linear: 2*n + 3 FinTM2 steps. -/
 theorem programmeTM2_initialization_run (M : ProgrammeMachine) (input : List Bool) :
