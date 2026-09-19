@@ -5,15 +5,14 @@
 - Campaign: `NS-CI-001`
 - Restricted target: `NS-CI-R014-A2`
 - Tracker: `MATHSOLVE#59`
-- Dependency head:
-  `912de92e8a5420264db95d43bfebb1fb38637c11`
+- Integration base:
+  `1079d51ef278c1eb484008f2c4ed5283545c629a`
 - Protected mathematical predecessor:
-  `0c320165cf8b0a3fc508698f2b1fa8de29e3475c`
-- Dependency status: L5-37 is not yet protected-admitted because exact-head hosted
-  CI is blocked by organization-level standard-runner allocation.
-- Result class: pre-admission analysis
-- Proposed result:
+  `1079d51ef278c1eb484008f2c4ed5283545c629a`
+- Result:
   `A2_LERAY_CONTROLS_FAR_LOW_EULERIAN_JET_INTEGRALS__DIRECTION_NORMALIZATION_AND_TOP_BAND_JET_COST_REMAIN_OPEN`
+- Evidence class: exact A2/Leray/Bernstein reduction, algebraic normalization separator,
+  and amplitude-weighted angular-strain identity; not A2 closure
 - A2 theorem: open
 - L5: active
 - MATHCERT adjudication: absent
@@ -670,14 +669,14 @@ Reject any successor that:
 - differentiates `Q(t)` or the moving cutoff;
 - claims the fractions `2/(2m+1)` are globally sharp rather than sharp for
   this absolute A2/Leray/Bernstein route;
-- uses the L5-37 candidate as protected evidence before its exact-head hosted
-  checks complete;
+- treats the protected L5-37 cocycle identities as if they already supplied
+  equation-derived NSE cocycle control;
 - promotes this partial hierarchy to A2 closure;
 - reopens L3 or L4 without their protected reopening conditions.
 
 ## 12. Claim boundary
 
-The pre-admission result is exactly
+The bounded result is exactly
 
 ```text
 A2_LERAY_CONTROLS_FAR_LOW_EULERIAN_JET_INTEGRALS
@@ -709,5 +708,5 @@ It does not prove that top-band cocycle growth pays selector charge.
 
 It does not prove A2.
 
-It does not alter protected state while L5-37 admission is infrastructure
-blocked.
+It does not promote the remaining occupation/pathwise bridge or higher-jet
+normalization problem to a theorem.
