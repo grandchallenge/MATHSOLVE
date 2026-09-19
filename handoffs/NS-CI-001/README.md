@@ -2298,6 +2298,76 @@ nondegeneracy condition.  The result is
 conditional and almost-everywhere; it is not the full smooth L5-35 frame
 contract and does not control `U2,U3,U4`.
 
+### L5-41 stopped reciprocal-amplitude occupation bootstrap
+
+`work_packages/NS_CI_R014_A2_L5_41_C2_DIRECTION_OCCUPATION_COST.md`
+records
+
+```text
+STOPPED_RECIPROCAL_AMPLITUDE_BOOTSTRAP_PROVED
+__COMPRESSION_EXPONENTIAL_LOSS_BLOCKS_FINITE_BUDGET_CLOSURE.
+```
+
+For the direction flow `chi_s=beta B(s,chi)`, stop each label at the first
+time `|log J|=K`.  Before stopping, `e^{-K}<=J<=e^K`, so the change of
+variables is controlled without assuming a global frame bound.
+
+With
+
+```math
+D_b=int int |partial_Y b|^2 dY ds
+```
+
+and
+
+```math
+A_beta=int int |beta|^2/|b|^2 dY ds,
+```
+
+the stopped Cauchy argument gives
+
+```math
+|{Z: sup_s |log J(s,Z)| >= K}|
+<=
+e^K K^{-1} D_b^(1/2) A_beta^(1/2).
+```
+
+Thus quantitative smallness of `D_b^(1/2)A_beta^(1/2)` is sufficient for
+first-order bounded distortion on most labels. Mere finiteness is not enough:
+the bootstrap factor is exponential in the allowed distortion.
+
+An exact normal-form compression separator makes this loss concrete.  For
+constant-amplitude carrier
+
+```math
+b_A(Y)=A(0,cos Y,sin Y),
+```
+
+chart `B(Y)=sin Y`, and `beta=-kappa/S`, the fixed label `Z=0` has
+
+```math
+J(s,0)=exp(-kappa s/S),
+```
+
+while
+
+```math
+A_amp(0)=kappa^2/(S A^2)
+```
+
+but
+
+```math
+R_beta(0)=kappa(e^kappa-1)/(S A^2).
+```
+
+Hence the full L5-40 occupation can be exponentially larger than its
+reciprocal-amplitude component under compression.  This is a normal-form
+geometric separator, not a selected whole-space NSE counterexample.
+
+The principal direction scale has `beta=h^{-1}theta=O(1)`; small beta is not
+available from scaling alone.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -2312,14 +2382,14 @@ contract and does not control `U2,U3,U4`.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-OCCUPATION-COST**.
+The live obligation is now **C2-MIX-DIRECTION-COMPRESSION-COST**.
 
 L5-39 rules out a uniform all-streamline conversion from scalar shell/A2/Leray
 budgets to unweighted direction strain.  The next bounded question is:
 
-> Can selected whole-space active-band dynamics bound the reciprocal packet-occupation
-> functional identified by L5-40 on the mass contributing to the critical observable,
-> or does failure of that bound force a selector/dissipation charge?
+> Can selected whole-space active-band dynamics force small
+> `D_b^(1/2)A_beta^(1/2)` on the critical packet mass, or supply a sign/correlation
+> law that prevents large compression without reciprocal-amplitude smallness?
 
 Test packet-weighted or almost-everywhere control before seeking a uniform
 frame theorem.  Any candidate derived only from coarse annular-supremum, `Lambda in L2_t`,
