@@ -39,22 +39,26 @@ theorem tm2ProgrammeCopyConfig_after_done {decision : List Bool → Bool}
         (tm2CopyDoneAction source
           (tm2ProgrammeCopyConfig source input).readWork) =
       tm2ProgrammeRewindConfig source input input.length := by
-  ext tape position <;>
+  apply programmeConfig_ext
+  · rfl
+  · cases input <;>
+      simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
+        tm2ProgrammeRewindHead, ProgrammeConfig.afterAction,
+        tm2CopyDoneAction, HeadMove.apply]
+  · funext tape
+    by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
+    · subst tape
+      cases input <;>
+        simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
+          tm2ProgrammeRewindHead, ProgrammeConfig.afterAction,
+          tm2CopyDoneAction, tm2MoveSelected, HeadMove.apply]
+    · simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
+        ProgrammeConfig.afterAction, tm2CopyDoneAction, tm2MoveSelected,
+        HeadMove.apply, Function.update_of_ne htape, htape]
+  · funext tape position
     simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
-      tm2ProgrammeRewindHead, ProgrammeConfig.afterAction,
-      tm2CopyDoneAction, tm2PreserveWork, tm2MoveSelected,
-      ProgrammeConfig.readWork, HeadMove.apply, Function.update_eq_self]
-  by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
-  · subst tape
-    simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
-      tm2ProgrammeRewindHead, ProgrammeConfig.afterAction,
-      tm2CopyDoneAction, tm2PreserveWork, tm2MoveSelected,
-      ProgrammeConfig.readWork, HeadMove.apply, Function.update_eq_self]
-  · simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
-      tm2ProgrammeRewindHead, ProgrammeConfig.afterAction,
-      tm2CopyDoneAction, tm2PreserveWork, tm2MoveSelected,
-      ProgrammeConfig.readWork, HeadMove.apply, htape,
-      Function.update_eq_self]
+      ProgrammeConfig.afterAction, tm2CopyDoneAction, tm2PreserveWork,
+      ProgrammeConfig.readWork, Function.update_eq_self]
 
 /-- One rewind-bit action decrements the closed-form remaining-cell count. -/
 theorem tm2ProgrammeRewindConfig_after_bit {decision : List Bool → Bool}
@@ -64,39 +68,25 @@ theorem tm2ProgrammeRewindConfig_after_bit {decision : List Bool → Bool}
         (tm2RewindBitAction source
           (tm2ProgrammeRewindConfig source input (remaining + 1)).readWork) =
       tm2ProgrammeRewindConfig source input remaining := by
-  cases remaining with
-  | zero =>
-      ext tape position <;>
+  apply programmeConfig_ext
+  · rfl
+  · cases remaining <;>
+      simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
+        ProgrammeConfig.afterAction, tm2RewindBitAction, HeadMove.apply]
+  · funext tape
+    by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
+    · subst tape
+      cases remaining <;>
         simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
           ProgrammeConfig.afterAction, tm2RewindBitAction,
-          tm2PreserveWork, tm2MoveSelected, ProgrammeConfig.readWork,
-          HeadMove.apply, Function.update_eq_self]
-      by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
-      · subst tape
-        simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
-          ProgrammeConfig.afterAction, tm2RewindBitAction,
-          tm2PreserveWork, tm2MoveSelected, ProgrammeConfig.readWork,
-          HeadMove.apply, Function.update_eq_self]
-      · simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
-          ProgrammeConfig.afterAction, tm2RewindBitAction,
-          tm2PreserveWork, tm2MoveSelected, ProgrammeConfig.readWork,
-          HeadMove.apply, htape, Function.update_eq_self]
-  | succ n =>
-      ext tape position <;>
-        simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
-          ProgrammeConfig.afterAction, tm2RewindBitAction,
-          tm2PreserveWork, tm2MoveSelected, ProgrammeConfig.readWork,
-          HeadMove.apply, Function.update_eq_self]
-      by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
-      · subst tape
-        simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
-          ProgrammeConfig.afterAction, tm2RewindBitAction,
-          tm2PreserveWork, tm2MoveSelected, ProgrammeConfig.readWork,
-          HeadMove.apply, Function.update_eq_self]
-      · simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
-          ProgrammeConfig.afterAction, tm2RewindBitAction,
-          tm2PreserveWork, tm2MoveSelected, ProgrammeConfig.readWork,
-          HeadMove.apply, htape, Function.update_eq_self]
+          tm2MoveSelected, HeadMove.apply]
+    · simp [tm2ProgrammeRewindConfig, ProgrammeConfig.afterAction,
+        tm2RewindBitAction, tm2MoveSelected, HeadMove.apply,
+        Function.update_of_ne htape, htape]
+  · funext tape position
+    simp [tm2ProgrammeRewindConfig, ProgrammeConfig.afterAction,
+      tm2RewindBitAction, tm2PreserveWork, ProgrammeConfig.readWork,
+      Function.update_eq_self]
 
 /-- At rewind count `n+1`, the immutable input head scans exact input index
 `n`. -/
@@ -119,22 +109,24 @@ theorem tm2ProgrammeRewindConfig_after_done {decision : List Bool → Bool}
         (tm2RewindDoneAction source
           (tm2ProgrammeRewindConfig source input 0).readWork) =
       tm2ProgrammeReadyConfig source input := by
-  ext tape position <;>
-    simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
-      tm2ProgrammeReadyConfig, ProgrammeConfig.afterAction,
-      tm2RewindDoneAction, tm2PreserveWork, tm2MoveSelected,
-      ProgrammeConfig.readWork, HeadMove.apply, Function.update_eq_self]
-  by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
-  · subst tape
-    simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
-      tm2ProgrammeReadyConfig, ProgrammeConfig.afterAction,
-      tm2RewindDoneAction, tm2PreserveWork, tm2MoveSelected,
-      ProgrammeConfig.readWork, HeadMove.apply, Function.update_eq_self]
+  apply programmeConfig_ext
+  · rfl
   · simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
       tm2ProgrammeReadyConfig, ProgrammeConfig.afterAction,
-      tm2RewindDoneAction, tm2PreserveWork, tm2MoveSelected,
-      ProgrammeConfig.readWork, HeadMove.apply, htape,
-      Function.update_eq_self]
+      tm2RewindDoneAction, HeadMove.apply]
+  · funext tape
+    by_cases htape : tape = tm2TapeEquiv source source.tm.k₀
+    · subst tape
+      simp [tm2ProgrammeRewindConfig, tm2ProgrammeRewindHead,
+        tm2ProgrammeReadyConfig, ProgrammeConfig.afterAction,
+        tm2RewindDoneAction, tm2MoveSelected, HeadMove.apply]
+    · simp [tm2ProgrammeRewindConfig, tm2ProgrammeReadyConfig,
+        ProgrammeConfig.afterAction, tm2RewindDoneAction,
+        tm2MoveSelected, HeadMove.apply, Function.update_of_ne htape, htape]
+  · funext tape position
+    simp [tm2ProgrammeRewindConfig, tm2ProgrammeReadyConfig,
+      ProgrammeConfig.afterAction, tm2RewindDoneAction, tm2PreserveWork,
+      ProgrammeConfig.readWork, Function.update_eq_self]
 
 /-- Starting at rewind count `remaining`, exactly `remaining` transitions
 cross those input cells and reach the blank-left rewind configuration. -/
