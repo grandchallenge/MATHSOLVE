@@ -3,7 +3,7 @@
 Campaign: RH-001
 
 Status:
-PRE_ROUTE_CANDIDATE__DO_NOT_PROMOTE
+ADMISSION_CANDIDATE__PROVIDER_PROTECTED
 
 Solve tracker:
 grandchallenge/MATHSOLVE#381
@@ -12,10 +12,9 @@ Protected theorem substrate:
 - RH-R036-QW-PARITY-GAP-REDUCTION-001
 - RH-R037-QW-SECTOR-GALERKIN-001
 
-Provider prerequisite:
-The exact pole decomposition in MATHFORGE issue #272 / branch
-research/rh-r041-pole-resolvent-interface must be protected before this
-package may be admitted.
+Protected provider interface:
+grandchallenge/MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648
+reports/discovery/rh_001/rh_r041_pole_resolvent_interface.md
 
 No RH / novelty / priority / certification claim.
 
@@ -587,12 +586,11 @@ This theorem does not prove:
 
 This work package remains guarded until:
 
-1. the provider-side exact pole decomposition is protected in MATHFORGE;
-2. this candidate is composed onto the current live Solve head;
-3. exact-head Adversary and Referee passes are recorded;
-4. required Solve/GCL checks are green on that exact head;
-5. protected merge and protected readback complete.
+1. this candidate is composed onto the current live Solve head;
+2. exact-head Adversary and Referee passes are recorded;
+3. required Solve/GCL checks are green on that exact head;
+4. protected merge and protected readback complete.
 
 Terminal candidate disposition:
 
-RH-R041_ODD_HERGLOTZ_TRICHOTOMY_PROVED_ON_WORK_BRANCH__AWAITING_PROVIDER_PROTECTION
+RH-R041_ODD_HERGLOTZ_TRICHOTOMY_PROVED__READY_FOR_EXACT_HEAD_ADMISSION
