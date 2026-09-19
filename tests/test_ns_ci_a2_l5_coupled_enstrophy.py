@@ -29,6 +29,7 @@ from tests.test_ns_ci_a2_l5_c2_direction_jet_cost import NSCIA2L5C2DirectionJetC
 from tests.test_ns_ci_a2_l5_c2_direction_occupation_calibration import NSCIA2L5C2DirectionOccupationCalibrationTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_direction_packet_occupation import NSCIA2L5C2DirectionPacketOccupationTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c2_direction_occupation_cost import NSCIA2L5C2DirectionOccupationCostTests  # noqa: F401
+from tests.test_ns_ci_a2_l5_c2_direction_intrinsic_compression_cost import NSCIA2L5C2IntrinsicDirectionCompressionCostTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_c3_diagonal_audit import NSCIA2L5C3DiagonalAuditTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_field_calibration import NSCIA2L5FieldCalibrationTests  # noqa: F401
 from tests.test_ns_ci_a2_l5_forced_core_shell_calibration import NSCIA2L5ForcedCoreShellCalibrationTests  # noqa: F401
