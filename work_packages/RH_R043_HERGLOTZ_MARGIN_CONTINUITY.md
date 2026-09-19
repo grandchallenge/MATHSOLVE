@@ -463,7 +463,7 @@ The guarded RH-R045 parity-sensitive package proves
 \[
 g(a)>0
 \quad
-(0<a\le1/8)
+(0<a\le2/15)
 \]
 
 once its provider/admission gates are discharged.
