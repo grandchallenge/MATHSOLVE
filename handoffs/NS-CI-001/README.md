@@ -1972,6 +1972,148 @@ The unresolved geometry is genuinely time-dependent
 `B_h=B_h(s,Y)`, where different spatial vector fields need not commute and
 no single scalar signed clock captures the time-ordered flow.
 
+
+### L5-37 nonseparable direction geometry and Lagrangian jet cocycle
+
+`work_packages/NS_CI_R014_A2_L5_37_C2_DIRECTION_PATHORDERED_JET.md`
+records
+
+```text
+NONSEPARABLE_DIRECTION_GEOMETRY_CONTROLLED_BY_LAGRANGIAN_JET_COCYCLE
+__SCALAR_SIGNED_CLOCK_INSUFFICIENT.
+```
+
+For genuinely time-dependent principal direction fields
+
+```math
+v_h(s,Y)
+=
+h^-1 theta_h(s) B_h(s,Y),
+```
+
+the separable scalar clock from L5-36 no longer captures the characteristic
+geometry.
+
+Let `chi_h` be the characteristic flow and define
+
+```math
+J_h=chi_{h,Z},
+\qquad
+Omega_{1,h}(s,Z)
+=
+int_0^s
+(partial_Y v_h)(sigma,chi_h(sigma,Z))
+dsigma.
+```
+
+Then exactly
+
+```math
+J_h=e^{Omega_{1,h}}.
+```
+
+Writing
+
+```math
+U_2=chi_{ZZ}/J,
+\qquad
+U_3=chi_{ZZZ}/J,
+\qquad
+U_4=chi_{ZZZZ}/J,
+```
+
+the normalized pathwise jet cocycle obeys
+
+```math
+U_2'
+=
+a_2 J,
+```
+
+```math
+U_3'
+=
+3 a_2 J U_2
++
+a_3 J^2,
+```
+
+and
+
+```math
+U_4'
+=
+4 a_2 J U_3
++
+3 a_2 J U_2^2
++
+6 a_3 J^2 U_2
++
+a_4 J^3,
+```
+
+where `a_m=(partial_Y^m v_h)(s,chi_h)`.
+
+Together with one lifted basepoint trajectory `Xi_h`, the finite signature
+
+```math
+D_h
+=
+(
+Xi_h,
+Omega_{1,h},
+U_2,
+U_3,
+U_4
+)
+```
+
+reconstructs the frame through fourth spatial order.
+
+Uniform boundedness of this signature gives the smooth bi-Lipschitz frame
+contract used by L5-35.  O(h) convergence of the signature gives O(h)
+frame/metric convergence, and therefore O(h) Lagrangian accumulated-phase
+convergence for a smoothly convergent Eulerian scalar profile.
+
+A smooth two-profile pulse separator proves that the scalar signed coefficient
+clock is insufficient outside the separable class.
+
+Choose one pulse with `B=1` and signed time `+kappa`, followed by a second
+pulse with `B=sin Y` and signed time `-kappa`, changing the spatial profile
+smoothly only in a gap where `theta_h=0`.
+
+Then
+
+```math
+h^-1 int theta_h ds
+=
+0,
+```
+
+but the final flow is exactly
+
+```math
+chi_fin
+=
+varphi_sin^{-kappa}
+circ
+T_kappa.
+```
+
+At the lifted point `Z=-kappa`,
+
+```math
+partial_Z chi_fin
+=
+e^{-kappa}.
+```
+
+The pathwise strain cocycle records `Omega_1=-kappa` exactly, while the scalar
+signed clock records zero.
+
+Thus the nonseparable frame variable is the Lagrangian deformation-jet
+cocycle, not `int theta_h`.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1986,24 +2128,25 @@ no single scalar signed clock captures the time-ordered flow.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-PATHORDER**.
+The live obligation is now **C2-MIX-DIRECTION-JET-COST**.
 
-L5-36 closes the separable signed-strain case.  The next problem is genuinely
-time-dependent spatial direction geometry:
+L5-37 replaces the nonseparable frame black box by explicit Lagrangian
+deformation observables.  The remaining equation-level question is:
 
-> For `B_h=B_h(s,Y)`, what path-ordered strain observable replaces the
-> separable signed clock, and which part of it must remain controlled for the
-> L5-35 metric theorem?
+> Can selected active-band Navier--Stokes dynamics force the deformation-jet
+> cocycle to remain bounded on critical intervals, or does failure of one
+> cocycle component itself pay a selector/dissipation cost?
 
-The first audit must compare:
+The next audit must keep separate:
 
-1. cancellation in the scalar coefficient `theta_h`;
-2. noncommuting time-dependent vector fields;
-3. the characteristic Jacobian exponent along actual trajectories;
-4. higher characteristic metric derivatives.
+1. tangent strain `Omega_1`;
+2. curvature jet `U_2`;
+3. higher metric jets `U_3,U_4`;
+4. rigid basepoint motion `Xi`;
+5. Lagrangian accumulated scalar phase.
 
-Any positive invariant must reduce exactly to `kappa_h` when the spatial
-profile is time-independent.
+Do not replace the pathwise cocycle by the scalar signed coefficient clock
+outside the separable class.
 
 ## Authoritative pointers
 
@@ -2047,6 +2190,7 @@ profile is time-independent.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_34_C2_DIRECTION_MOVING_FRAME.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_35_C2_DIRECTION_DEFORMED_FRAME.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_36_C2_DIRECTION_SIGNED_FLOW_TIME.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_37_C2_DIRECTION_PATHORDERED_JET.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
