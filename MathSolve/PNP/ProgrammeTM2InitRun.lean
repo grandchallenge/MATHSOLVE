@@ -205,6 +205,47 @@ theorem programmeTM2_step_initFinish_input (M : ProgrammeMachine) (input : List 
       some (programmeTM2ReadyInitCfg M input) := by
   cases input <;> rfl
 
+/-- The canonical post-initialization TM2 configuration exactly represents
+the native Programme initial configuration. -/
+theorem programmeTM2ReadyInitCfg_represents (M : ProgrammeMachine)
+    (input : List Bool) :
+    ProgrammeTM2Represents M input (M.init input)
+      (programmeTM2ReadyInitCfg M input) := by
+  refine ⟨rfl, rfl, rfl, ?_, ?_⟩
+  · intro offset
+    cases offset with
+    | ofNat n =>
+        cases n with
+        | zero =>
+            simp [programmeTM2InputTape, programmeTM2ReadyInitCfg,
+              programmeTM2InitStacks, ProgrammeMachine.init,
+              programmeInputRead, Turing.Tape.nth]
+        | succ n =>
+            cases input with
+            | nil =>
+                simp [programmeTM2InputTape, programmeTM2ReadyInitCfg,
+                  programmeTM2InitStacks, ProgrammeMachine.init,
+                  programmeInputRead, Turing.Tape.nth]
+            | cons bit rest =>
+                simp [programmeTM2InputTape, programmeTM2ReadyInitCfg,
+                  programmeTM2InitStacks, ProgrammeMachine.init,
+                  programmeInputRead, Turing.Tape.nth, ListBlank.nth_mk]
+    | negSucc n =>
+        simp [programmeTM2InputTape, programmeTM2ReadyInitCfg,
+          programmeTM2InitStacks, ProgrammeMachine.init,
+          programmeInputRead, Turing.Tape.nth]
+  · intro tape offset
+    cases offset with
+    | ofNat n =>
+        cases n <;>
+          simp [programmeTM2WorkTape, programmeTM2ReadyInitCfg,
+            programmeTM2InitStacks, ProgrammeMachine.init,
+            Turing.Tape.nth, ListBlank.nth_mk]
+    | negSucc n =>
+        simp [programmeTM2WorkTape, programmeTM2ReadyInitCfg,
+          programmeTM2InitStacks, ProgrammeMachine.init,
+          Turing.Tape.nth, ListBlank.nth_mk]
+
 /-- Reverse-simulator initialization is exactly linear: 2*n + 3 FinTM2 steps. -/
 theorem programmeTM2_initialization_run (M : ProgrammeMachine) (input : List Bool) :
     Nonempty
@@ -256,6 +297,7 @@ theorem programmeTM2_initialization_run (M : ProgrammeMachine) (input : List Boo
 #print axioms programmeTM2_initToTemp_run
 #print axioms programmeTM2_initToRight_run
 #print axioms programmeTM2_step_initFinish_input
+#print axioms programmeTM2ReadyInitCfg_represents
 #print axioms programmeTM2_initialization_run
 #print axioms programmeTM2_one_step_in_time
 
