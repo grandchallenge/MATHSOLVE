@@ -2,6 +2,9 @@
 
 Status: ACTIVE_PARALLEL_ROUTE
 
+Coordination tracker:
+grandchallenge/MATHSOLVE#411
+
 Route role: extend the explicit full-operator simple-even interval beyond the current protected endpoint without relying on finite-Galerkin positivity.
 
 Current protected campaign head at pack creation:
