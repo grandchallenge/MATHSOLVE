@@ -47,8 +47,15 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pari-gp
           gp --version
-      - name: Exact R5-WIT operation preflight
-        run: python tools/gcl_campaign_preflight_r5_wit.py BSD-001 BSD-R5-WIT
+      - name: Validate current or historical operation state
+        shell: bash
+        run: |
+          current=$(python -c "import json; print(json.load(open('.gcl/campaigns/BSD-001/CAMPAIGN_STATE.json'))['current_operation'])")
+          if [ "$current" = "BSD-R5-WIT" ]; then
+            python tools/gcl_campaign_preflight_r5_wit.py BSD-001 BSD-R5-WIT
+          else
+            python tools/gcl_completion_receipt_validate_v2.py BSD-R5-WIT
+          fi
       - name: Replay protected R5-RECIP certificate
         run: python work_packages/BSD_R5_RECIP_P2_NORMALIZED_RECIPROCITY/04_RECIPROCITY_CERTIFICATE.py
       - name: Replay control local t2 certificate
