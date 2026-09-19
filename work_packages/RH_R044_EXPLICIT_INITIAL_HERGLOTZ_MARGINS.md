@@ -294,12 +294,10 @@ m(a)
 \frac{1/41472}{5/648}.
 \]
 
-Since
+Because
 
 \[
-\frac{4050}{375000}
-=
-\frac{27}{2500},
+41472=64\cdot648,
 \]
 
 we obtain
@@ -312,13 +310,13 @@ m(a)
 }
 \]
 
-Numerically this is approximately
+Numerically,
 
 \[
-1.315\times10^{-5},
+\frac1{320}=0.003125,
 \]
 
-but the rational bound is the authoritative statement.
+but the exact rational bound is the authoritative statement.
 
 ## 6. Explicit Herglotz margin
 
