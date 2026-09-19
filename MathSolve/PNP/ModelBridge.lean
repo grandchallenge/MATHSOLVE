@@ -78,7 +78,11 @@ noncomputable def ImportedTM2TimedDecider.toImportedPoly
     (target : ImportedTM2TimedDecider decision)
     (hpoly : ProgrammePolynomialBound target.runtime) :
     ImportedTM2Witness decision := by
-  rcases programmePolynomialBound_to_importedPolynomialBound hpoly with ⟨p, hp⟩
+  let hbound : ImportedPolynomialBound target.runtime :=
+    programmePolynomialBound_to_importedPolynomialBound hpoly
+  let p : Polynomial Nat := Classical.choose hbound
+  have hp : ∀ input, target.runtime input ≤ p.eval input.length :=
+    Classical.choose_spec hbound
   refine
     { tm := target.tm
       inputAlphabet := target.inputAlphabet
