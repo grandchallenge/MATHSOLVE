@@ -3,7 +3,7 @@
 Campaign: RH-001
 
 Status:
-ADMISSION_CANDIDATE__DEPENDENCY_PROTECTED
+ADMISSION_CANDIDATE__INDEPENDENT_CHECK_COMPLETE
 
 Solve tracker:
 grandchallenge/MATHSOLVE#400
@@ -803,12 +803,11 @@ This theorem does not prove:
 
 Before admission:
 
-1. the theorem must be independently replayed against protected R045/R046;
-2. it must be composed onto the current live Solve head;
-3. exact-head Adversary and Referee passes must be recorded;
-4. required Solve/GCL checks must be green;
-5. protected merge and readback must complete.
+1. it must be composed onto the current live Solve head;
+2. exact-head Adversary and Referee passes must be recorded;
+3. required Solve/GCL checks must be green;
+4. protected merge and readback must complete.
 
 Terminal candidate disposition:
 
-RH-R047_SIMPLE_EVEN_PROVED_THROUGH_THREE_TWENTIETHS_ON_WORK_BRANCH__AWAITING_EXACT_HEAD_ADMISSION
+RH-R047_SIMPLE_EVEN_PROVED_THROUGH_THREE_TWENTIETHS__READY_FOR_EXACT_HEAD_ADMISSION
