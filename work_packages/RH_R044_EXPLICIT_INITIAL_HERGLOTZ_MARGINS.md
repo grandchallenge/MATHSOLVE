@@ -55,60 +55,21 @@ The bounds are deliberately coarse and fully elementary.
 
 ## 2. Effective full parity-gap lower bound
 
-The guarded RH-R040 theorem proves, on
+The strengthened guarded RH-R040 theorem proves, on
 
 \[
-0<a\le\frac1{22},
+0<a\le\frac1{19},
 \]
 
-the quantitative estimate
-
-\[
-g(a)
-:=
-\epsilon_-(e^a)-\epsilon_+(e^a)
-\ge
-2\log2-1-6\sqrt2\,a.
-\]
-
-Use the elementary bounds
-
-\[
-\log2>\frac{693}{1000},
-\qquad
-\sqrt2<\frac{99}{70}.
-\]
-
-Since \(a\le1/22\),
-
-\[
-6\sqrt2\,a
-<
-6\cdot\frac{99}{70}\cdot\frac1{22}
-=
-\frac{297}{770}.
-\]
-
-Therefore
-
-\[
-\begin{aligned}
-g(a)
-&>
-\frac{193}{500}
--
-\frac{297}{770}
-\\
-&=
-\boxed{\frac{11}{38500}}.
-\end{aligned}
-\]
-
-Hence throughout the interval,
+the uniform parity-gap estimate
 
 \[
 \boxed{
-g(a)>\frac{11}{38500}>0.
+g(a)
+=
+\epsilon_-(e^a)-\epsilon_+(e^a)
+>
+\frac{91801}{8578500}.
 }
 \]
 
@@ -146,7 +107,7 @@ Therefore
 \epsilon_-(e^a).
 \]
 
-Subtracting \(\epsilon_+(e^a)\) gives
+Subtracting \(\epsilon_+(e^a)\),
 
 \[
 d(a)
@@ -155,19 +116,16 @@ d(a)
 -
 \epsilon_+(e^a)
 \ge
-g(a).
+g(a),
 \]
 
-Using Section 2,
+so
 
 \[
 \boxed{
-d(a)>\frac{11}{38500}.
+d(a)>\frac{91801}{8578500}.
 }
 \]
-
-Thus the Herglotz resolvent is not merely defined: it has a uniform
-spectral-separation margin over the whole explicit interval.
 
 ## 4. Exact norm of the odd pole vector
 
@@ -182,53 +140,35 @@ x\in[-a,a].
 Hence
 
 \[
-\begin{aligned}
 \|S\|^2
-&=
+=
 \int_{-a}^{a}\sinh^2(x/2)\,dx
-\\
-&=
-\frac12\int_{-a}^{a}(\cosh x-1)\,dx
-\\
-&=
+=
 \sinh a-a.
-\end{aligned}
 \]
 
-So
-
-\[
-\boxed{
-\|S\|^2=\sinh a-a.
-}
-\]
-
-For \(0<a\le1/22<1\), Taylor's theorem gives
+For \(0<a\le1/19<1\), Taylor's theorem gives
 
 \[
 \sinh a-a
 =
 \frac{a^3}{6}\cosh\xi
-\]
-
-for some \(0<\xi<a\).
-
-Since \(\cosh\xi<\cosh1<2\),
-
-\[
-\sinh a-a
 <
-\frac{a^3}{3}.
+\frac{a^3}{3}
 \]
+
+for some \(0<\xi<a\), because \(\cosh\xi<\cosh1<2\).
 
 Therefore
 
 \[
+\boxed{
 \|S\|^2
 <
-\frac1{3\cdot22^3}
+\frac1{3\cdot19^3}
 =
-\boxed{\frac1{31944}}.
+\frac1{20577}.
+}
 \]
 
 ## 5. Resolvent scalar upper bound
@@ -239,15 +179,15 @@ Let
 \mu(a)=\epsilon_+(e^a).
 \]
 
-On the interval under consideration,
+Since
 
 \[
 B_{a,-}-\mu(a)I
 \ge
-d(a)I.
+d(a)I,
 \]
 
-Functional calculus gives
+functional calculus gives
 
 \[
 0<
@@ -259,78 +199,69 @@ Functional calculus gives
 Therefore
 
 \[
-\begin{aligned}
 m(a)
-&:=
+:=
 \left\langle
 S,
 (B_{a,-}-\mu(a)I)^{-1}S
 \right\rangle
-\\
-&\le
+\le
 \frac{\|S\|^2}{d(a)}.
-\end{aligned}
 \]
 
-Using Sections 3 and 4,
+Using the preceding bounds,
 
 \[
 m(a)
 <
-\frac{1/31944}{11/38500}
+\frac{1/20577}{91801/8578500}
 =
-\frac{38500}{351384}
-=
-\boxed{\frac{9625}{87846}}.
+\boxed{
+\frac{150500}{33140161}
+}.
 \]
-
-The exact rational bound is the authoritative statement.
 
 ## 6. Explicit Herglotz margin
 
 By definition,
 
 \[
-\Delta_H(a)
-=
-\frac12-m(a).
+\Delta_H(a)=\frac12-m(a).
 \]
 
-Hence
+Thus
 
 \[
 \boxed{
 \Delta_H(a)
 >
-\frac12-\frac{9625}{87846}
+\frac12
+-
+\frac{150500}{33140161}
 =
-\frac{17149}{43923}.
+\frac{32839161}{66280322}.
 }
 \]
 
 In particular,
 
 \[
-\boxed{
 \Delta_H(a)>0.
-}
 \]
-
-No sharpness claim is made.
 
 ## 7. Initial continuation certificate
 
-Combining the results, for every
+For every
 
 \[
-0<a\le\frac1{22}
+0<a\le\frac1{19},
 \]
 
 the guarded chain yields
 
 \[
 \boxed{
-d(a)>\frac{11}{38500}
+d(a)>\frac{91801}{8578500}
 }
 \]
 
@@ -338,16 +269,12 @@ and
 
 \[
 \boxed{
-\Delta_H(a)>\frac{17149}{43923}.
+\Delta_H(a)>\frac{32839161}{66280322}.
 }
 \]
 
-Thus the two R043 continuation margins begin with explicit uniform
-separation from zero on the entire perturbatively proved simple-even
-interval.
-
-This gives a concrete initial compact set from which any future derivative,
-comparison, or validated-continuation argument may start.
+Thus the two R043 continuation margins start with explicit uniform
+separation from zero on the full perturbatively proved simple-even interval.
 
 ## 8. Relation to the full parity gap
 
@@ -357,49 +284,32 @@ RH-R041 proves, whenever \(d(a)>0\) and \(\Delta_H(a)>0\),
 g(a)\ge2d(a)\Delta_H(a).
 \]
 
-Applying the present lower bounds gives a secondary certified lower bound
+Substituting the present bounds gives a secondary consistency bound.  The
+direct R040 estimate
 
 \[
-g(a)
->
-2
-\left(\frac{11}{38500}\right)
-\left(\frac{17149}{43923}\right).
+g(a)>\frac{91801}{8578500}
 \]
 
-This secondary value is weaker than the direct RH-R040 bound
-
-\[
-g(a)>\frac{11}{38500},
-\]
-
-so it is retained only as a consistency check on the continuation
-interface.
+remains stronger and is the preferred full-gap certificate.
 
 ## 9. What this changes
 
 Before this package, R043 supplied continuity but no quantitative starting
 margin.
 
-After this package, any attempt to continue the small-\(a\) parity theorem
-may work from explicit initial data
+After this package, continuation may start from
 
 \[
-d\ge d_0,
+d_0=\frac{91801}{8578500},
 \qquad
-\Delta_H\ge\Delta_0,
+\Delta_0=\frac{32839161}{66280322},
 \]
 
-with
+valid uniformly on \(0<a\le1/19\).
 
-\[
-d_0=\frac{11}{38500},
-\qquad
-\Delta_0=\frac{17149}{43923}.
-\]
-
-A continuation proof may therefore spend a controlled error budget against
-these quantities.
+Any derivative, comparison, or validated-continuation argument may therefore
+spend a controlled error budget against these two explicit quantities.
 
 ## 10. False-proof firewall
 
@@ -408,7 +318,7 @@ Reject:
 1. replacing the strict R040 work-branch theorem by this package before
    R040's provider and exact-head CI gates are protected;
 2. inferring that \(d(a)\) or \(\Delta_H(a)\) stays positive for
-   \(a>1/22\);
+   \(a>1/19\);
 3. using the scalar resolvent outside \(d(a)>0\);
 4. replacing the full operator norm \(\|S\|\) by a finite Galerkin vector
    norm without an exact identification;
@@ -419,7 +329,7 @@ Reject:
 
 This theorem does not prove:
 
-- continuation beyond \(a=1/22\);
+- continuation beyond \(a=1/19\);
 - monotonicity of \(d\) or \(\Delta_H\);
 - positivity at the R039 points;
 - all-\(a\) even-simplicity;
