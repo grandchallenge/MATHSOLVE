@@ -458,12 +458,12 @@ full parity-gap lower bound.
 
 ## 8. Interaction with the effective small-a regime
 
-The guarded RH-R040 effective package proves
+The guarded RH-R045 parity-sensitive package proves
 
 \[
 g(a)>0
 \quad
-(0<a\le1/16)
+(0<a\le1/8)
 \]
 
 once its provider/admission gates are discharged.
@@ -506,7 +506,7 @@ either margin on that interval; it only establishes their continuity.
 
 ## 9. First-failure classification
 
-Assume RH-R040 and RH-R042 are protected, and let
+Assume RH-R045 and RH-R042 are protected, and let
 
 \[
 (0,a_*)
