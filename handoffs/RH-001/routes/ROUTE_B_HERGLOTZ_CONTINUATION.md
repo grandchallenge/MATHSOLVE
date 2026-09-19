@@ -2,6 +2,9 @@
 
 Status: ACTIVE_PARALLEL_ROUTE
 
+Coordination tracker:
+grandchallenge/MATHSOLVE#412
+
 Route role: transport the already-proved local simple-even theorem by controlling two scalar/spectral continuation margins rather than extending the small-a perturbation argument incrementally.
 
 Current protected campaign head at pack creation:
