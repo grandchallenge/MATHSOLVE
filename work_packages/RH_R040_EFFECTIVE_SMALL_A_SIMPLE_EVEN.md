@@ -27,7 +27,7 @@ The proof yields two nested effective statements.
 For every
 
 \[
-0<a\le \frac1{24},
+0<a\le \frac1{22},
 \]
 
 the lowest eigenvalue of \(A_a\) is simple and has an even eigenfunction.
@@ -47,7 +47,7 @@ On the smaller interval
 
 the same ground eigenvalue is additionally strictly positive.
 
-Thus one may take \(e^{1/24}\) as an explicit conservative simple-even
+Thus one may take \(e^{1/22}\) as an explicit conservative simple-even
 cutoff and \(e^{1/50}\) as an explicit conservative positive-simple-even
 cutoff. Neither is asserted to be sharp.
 
@@ -514,15 +514,25 @@ Use the elementary inequalities
 =
 2\sum_{k\ge0}\frac{1}{(2k+1)3^{2k+1}}
 >
-\frac{56}{81},
-\qquad
-\sqrt2<\frac32.
+2\left(
+\frac13+\frac1{81}+\frac1{1215}
+\right)
+>
+\frac{693}{1000},
 \]
+
+and
+
+\[
+\sqrt2<\frac{99}{70},
+\]
+
+the latter following from \(99^2>2\cdot70^2\).
 
 For
 
 \[
-0<a\le\frac1{24},
+0<a\le\frac1{22},
 \]
 
 one has
@@ -530,9 +540,9 @@ one has
 \[
 6\sqrt2\,a
 <
-9a
-\le
-\frac38.
+6\cdot\frac{99}{70}\cdot\frac1{22}
+=
+\frac{297}{770}.
 \]
 
 Therefore the even-sector internal gap obeys
@@ -540,9 +550,9 @@ Therefore the even-sector internal gap obeys
 \[
 \log2-\frac14-6\sqrt2\,a
 >
-\frac{56}{81}-\frac14-\frac38
+\frac{693}{1000}-\frac14-\frac{297}{770}
 =
-\frac{43}{648}
+\frac{4411}{77000}
 >
 0,
 \]
@@ -552,14 +562,14 @@ and the parity gap obeys
 \[
 2\log2-1-6\sqrt2\,a
 >
-\frac{112}{81}-1-\frac38
+\frac{193}{500}-\frac{297}{770}
 =
-\frac5{648}
+\frac{11}{38500}
 >
 0.
 \]
 
-Hence throughout \(0<a\le1/24\):
+Hence throughout \(0<a\le1/22\):
 
 - the lowest even eigenvalue is simple;
 - the lowest odd eigenvalue lies strictly above it;
@@ -625,7 +635,7 @@ Section 7 gives the structural theorem
 
 \[
 \boxed{
-0<a\le\frac1{24}
+0<a\le\frac1{22}
 \Longrightarrow
 \begin{cases}
 \lambda_a\text{ is simple},\\
@@ -647,7 +657,7 @@ Section 8 supplies the additional positivity certificate
 
 Therefore:
 
-- \(e^{1/24}\) is an explicit conservative simple-even cutoff;
+- \(e^{1/22}\) is an explicit conservative simple-even cutoff;
 - \(e^{1/50}\) is an explicit conservative positive-simple-even cutoff.
 
 No claim is made that either cutoff is maximal.
@@ -658,7 +668,7 @@ The proof depends on the following exact points.
 
 1. The prime sum must be absent.
    For the larger structural interval,
-   \(2a\le1/12<\log2\), so the no-prime formula still applies.
+   \(2a\le1/11<\log2\), so the no-prime formula still applies.
 
 2. The constant must belong to the closed limiting form domain.
    This follows because the fixed-\(a\) closed forms differ from
@@ -682,7 +692,7 @@ The proof depends on the following exact points.
 
 This theorem does not prove:
 
-- simplicity/evenness for \(a>1/24\);
+- simplicity/evenness for \(a>1/22\);
 - monotonic continuation of the parity gap;
 - any statement at \(a=\tfrac12\log13\) or
   \(a=\tfrac12\log14\);
