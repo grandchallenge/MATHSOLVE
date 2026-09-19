@@ -3,11 +3,11 @@
 Campaign: RH-001
 
 Status:
-PRE_ROUTE_CANDIDATE__DO_NOT_PROMOTE
+ADMISSION_CANDIDATE__PROVIDER_PROTECTED
 
-Provider prerequisite:
-The Suzuki source audit in MATHFORGE PR #271 must be protected before this
-package may be admitted.
+Protected provider audit:
+grandchallenge/MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320
+reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md
 
 Protected theorem substrate:
 - RH-R036-QW-PARITY-GAP-REDUCTION-001
@@ -232,17 +232,36 @@ On every compact \(a\)-interval \(K\Subset(0,\infty)\),
 \le C_K\|w\|^2.
 \]
 
-Moreover, Suzuki's explicit expression shows that
+More precisely, on a compact \(a\)-interval the bounded part is represented
+by a uniformly bounded family of self-adjoint operators \(V_a\) that is
+strongly continuous in \(a\).
+
+For the prime terms, after zero-extension to \(L^2(\mathbb R)\), translation
+is strongly continuous in its shift.  The interval compression is multiplication
+by moving characteristic functions, which is also strongly continuous.  At a
+prime-entry threshold \(2a=\log n\), the overlap interval shrinks to measure
+zero, so the corresponding compressed translation converges strongly to zero.
+No operator-norm continuity of translations is asserted.
+
+The archimedean remainder kernels vary locally in Hilbert--Schmidt norm, and
+the scalar term is norm-continuous.  Therefore, if
 
 \[
-(a,w)\longmapsto \bar q_a^1(w)
+a_n\to a_0,
+\qquad
+w_n\to w_*
+\quad\text{in }L^2(-1,1),
 \]
 
-is continuous for \(a\in K\) and \(w\in L^2(-1,1)\).
+then uniform boundedness plus strong continuity gives
 
-This continuity includes prime-entry thresholds: when
-\(2a=\log n\), the translated overlap interval has zero length at
-entry, so the corresponding form term enters continuously.
+\[
+\langle w_n,V_{a_n}w_n\rangle
+\to
+\langle w_*,V_{a_0}w_*\rangle.
+\]
+
+This is the joint continuity statement actually required below.
 
 ## 7. Upper semicontinuity in a fixed parity sector
 
@@ -545,4 +564,4 @@ This theorem does not prove:
 
 ## 13. Terminal candidate disposition
 
-RH-R042_PARITY_SECTOR_BOTTOM_CONTINUITY_PROVED_ON_WORK_BRANCH__AWAITING_PROVIDER_PROTECTION
+RH-R042_PARITY_SECTOR_BOTTOM_CONTINUITY_PROVED__READY_FOR_EXACT_HEAD_ADMISSION
