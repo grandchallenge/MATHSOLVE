@@ -202,7 +202,7 @@ theorem gfixAt_coherent {A : StageObj.{u}} (f : Hom (later A) A)
   | refl => exact A.restrict_refl _ _
   | @step n h ih =>
       calc
-        A.restrict (h.trans (Nat.le_succ n)) (gfixAt f (n + 1))
+        A.restrict (Nat.le_trans h (Nat.le_succ n)) (gfixAt f (n + 1))
             = A.restrict h
                 (A.restrict (Nat.le_succ n) (gfixAt f (n + 1))) := by
                   simpa using
