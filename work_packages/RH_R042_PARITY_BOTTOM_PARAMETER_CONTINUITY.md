@@ -463,15 +463,15 @@ g(a)=\epsilon_-(e^a)-\epsilon_+(e^a)
 }
 \]
 
-## 10. Continuation corollary conditional on RH-R040 effective admission
+## 10. Continuation corollary conditional on RH-R045 effective admission
 
-The pre-route package RH-R040-EFFECTIVE-SMALL-A-SIMPLE-EVEN-001 proves,
+The pre-route package RH-R045-PARITY-SENSITIVE-REMAINDER-001 proves,
 subject to its provider/admission gates,
 
 \[
 g(a)>0
 \quad
-(0<a\le1/16).
+(0<a\le1/8).
 \]
 
 Once that theorem is protected, continuity implies that
@@ -481,14 +481,14 @@ Once that theorem is protected, continuity implies that
 \]
 
 is open and has a connected component adjacent to \(a=0\) containing
-\((0,1/16]\).
+\((0,1/8]\).
 
 Write that component as
 
 \[
 (0,a_*),
 \qquad
-a_*\in(1/16,\infty].
+a_*\in(1/8,\infty].
 \]
 
 If \(a_*<\infty\), then necessarily
