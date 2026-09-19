@@ -13,6 +13,7 @@ Protected theorem substrate:
 - RH-R036-QW-PARITY-GAP-REDUCTION-001
 - RH-R037-QW-SECTOR-GALERKIN-001
 - grandchallenge/MATHSOLVE@139f35f14ee831aa5aa3ed83b774b762965d58b3:work_packages/RH_R045_PARITY_SENSITIVE_REMAINDER.md
+- grandchallenge/MATHSOLVE@9519ae68c96c33b1a71548a9984fef1be640a106:work_packages/RH_R041_ODD_HERGLOTZ_GAP_CRITERION.md
 
 Primary analytic source:
 Masatoshi Suzuki, *Weil's quadratic form via the screw function*,
@@ -516,12 +517,12 @@ If \(a_*<\infty\), then necessarily
 \boxed{g(a_*)=0.}
 \]
 
-Thus a failure of the simple-even parity ordering cannot occur by a jump.
+Thus a failure of the simple-even parity ordering cannot occur by a jump. Since \(g(2/15)>0\) and the positivity set is open, there exists some \(\delta>0\) such that \(g(a)>0\) for \(2/15<a<2/15+\delta\). Therefore the actual proved simple-even regime extends strictly beyond the explicit R045 certificate boundary, although this theorem does not quantify \(\delta\).
 
 Combined with the RH-R041 scalar resolvent interface, a finite endpoint
 can be attacked through the exact pole-localization and Herglotz margins.
 
-The continuity theorem itself is independent of RH-R041. The endpoint classification through the scalar resolvent interface is used only after RH-R041 is protected.
+The continuity theorem itself is independent of RH-R041. The scalar resolvent interface is now protected at grandchallenge/MATHSOLVE@9519ae68c96c33b1a71548a9984fef1be640a106 and is used only for the endpoint classification.
 
 ## 11. Falsification checks
 
