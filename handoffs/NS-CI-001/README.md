@@ -2211,6 +2211,93 @@ so the L5-38 weighted estimate is exactly saturated there.  Thus the existing co
 a uniform all-streamline unweighted direction-cocycle bound.  The calibration is periodic and is not a whole-space
 A2 counterexample.
 
+### L5-40 reciprocal packet-occupation bridge
+
+`work_packages/NS_CI_R014_A2_L5_40_C2_DIRECTION_PACKET_OCCUPATION.md`
+records
+
+```text
+RECIPROCAL_PACKET_OCCUPATION_CONTROLS_TANGENT_COCYCLE_AE
+__RECIPROCAL_AMPLITUDE_NOT_CONTROLLED_BY_COARSE_A2_LERAY.
+```
+
+For a one-dimensional direction characteristic `chi` with
+`J=partial_Z chi>0`, principal direction coefficient
+`v=beta(s)B(s,Y)`, carrier `b`, and normalized direction `e=b/|b|`,
+define
+
+```math
+Omega_abs(Z)
+=
+int |beta||B_Y(s,chi)| ds,
+```
+
+```math
+E(Z)
+=
+int J |b(s,chi)|^2 |B_Y(s,chi)|^2 ds,
+```
+
+and
+
+```math
+R_beta(Z)
+=
+int |beta|^2/[J |b(s,chi)|^2] ds.
+```
+
+Then exactly
+
+```math
+Omega_abs(Z)^2 <= E(Z) R_beta(Z).
+```
+
+The Jacobian-weighted numerator returns to physical coordinates:
+
+```math
+int E(Z)dZ
+<=
+int int |partial_Y b|^2 dY ds,
+```
+
+using the L5-38 amplitude-weighted angular-strain identity.  Therefore, if
+
+```math
+D_b=int int |partial_Y b|^2 < infinity
+```
+
+and
+
+```math
+Rcal_beta=int R_beta(Z)dZ < infinity,
+```
+
+then
+
+```math
+int Omega_abs(Z)dZ
+<=
+D_b^(1/2) Rcal_beta^(1/2),
+```
+
+and the labels with `Omega_abs>K` have measure at most the right-hand side
+divided by `K`.  On the complementary labels the tangent Jacobian lies
+between `e^{-K}` and `e^K`.
+
+The protected L5-39 elliptic shear calibrates the reciprocal-amplitude
+component exactly on its invariant physical labels: its spatially averaged
+`1/|b|^2` occupation diverges like `1/epsilon` even though the coarse
+annular-supremum, energy, Leray-dissipation, and `Lambda^2` occupancy
+envelopes remain uniformly controlled.  This does not identify the physical
+labels with the L5-37 direction characteristic or control the additional
+`|beta|^2/J` factor.
+
+Thus the first-order denominator gap is now an explicit packet-occupation
+functional with a separately exposed amplitude obstruction, not an unspecified
+nondegeneracy condition.  The result is
+conditional and almost-everywhere; it is not the full smooth L5-35 frame
+contract and does not control `U2,U3,U4`.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -2225,14 +2312,14 @@ A2 counterexample.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DIRECTION-PACKET-OCCUPATION**.
+The live obligation is now **C2-MIX-DIRECTION-OCCUPATION-COST**.
 
 L5-39 rules out a uniform all-streamline conversion from scalar shell/A2/Leray
 budgets to unweighted direction strain.  The next bounded question is:
 
-> Does the packet mass entering the protected L5-35 observable obey a
-> quantitative amplitude-occupation or nondegeneracy law strong enough to
-> control the L5-37 tangent cocycle on the labels that actually contribute?
+> Can selected whole-space active-band dynamics bound the reciprocal packet-occupation
+> functional identified by L5-40 on the mass contributing to the critical observable,
+> or does failure of that bound force a selector/dissipation charge?
 
 Test packet-weighted or almost-everywhere control before seeking a uniform
 frame theorem.  Any candidate derived only from coarse annular-supremum, `Lambda in L2_t`,
