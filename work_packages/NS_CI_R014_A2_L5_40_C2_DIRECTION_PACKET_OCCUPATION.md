@@ -9,7 +9,7 @@
   `6195e86539971dab55e3819b8126a606b901e9a9` (L5-39)
 - Result class: conditional first-order packet-occupation theorem plus exact calibration
 - Result:
-  `RECIPROCAL_PACKET_OCCUPATION_CONTROLS_TANGENT_COCYCLE_AE__COARSE_A2_LERAY_DOES_NOT_CONTROL_OCCUPATION`
+  `RECIPROCAL_PACKET_OCCUPATION_CONTROLS_TANGENT_COCYCLE_AE__RECIPROCAL_AMPLITUDE_NOT_CONTROLLED_BY_COARSE_A2_LERAY`
 - A2 theorem: open
 - L5: active
 - L3/L4: closed
@@ -263,7 +263,7 @@ Thus a sufficient first-order route to preserve critical mass is:
 This tranche proves only the analytic reduction.  It does not derive items 2
 or 3 from selected whole-space NSE.
 
-## 6. Exact L5-39 calibration of the new quantity
+## 6. Exact L5-39 calibration of the reciprocal-amplitude component
 
 Return to the protected periodic shear
 
@@ -274,8 +274,23 @@ A_0e^{-\nu k^2t}
 (0,\varepsilon\cos(kx),\sin(kx)).
 ```
 
-For the invariant `x` labels, take `J=1` and `\beta=1`.
-Then
+Its physical `x` labels are invariant, so the physical-flow Jacobian in
+that label is one.  Using unit sampling weight isolates the reciprocal-amplitude
+component
+
+```math
+\mathcal R_{\rm amp}
+=
+\int_I\int
+\frac{1}{|b_{k,\varepsilon}(t,x)|^2}
+\,dx\,dt.
+```
+
+This is not asserted to be the full L5-37 functional
+`\mathcal R_\beta`: the factor `|\beta|^2/J` there belongs to the
+direction-flow geometry and requires its own equation-level analysis.
+
+For the protected shear,
 
 ```math
 |b|^2
@@ -318,10 +333,14 @@ Thus the exact family from L5-39 has:
 coarse annular supremum:       uniformly controlled
 energy/dissipation envelopes:  uniformly controlled
 Lambda^2 occupancy:            uniformly controlled
-reciprocal packet occupation:  diverges like 1/epsilon.
+reciprocal amplitude occupation: diverges like 1/epsilon.
 ```
 
-This is the missing quantity exposed by the previous calibration.
+Therefore the amplitude denominator appearing inside the full packet
+occupation functional is genuinely new information.  This calibration does
+not rule out a compensating correlation in the direction-flow factor
+`|beta|^2/J`; deriving or refuting such a correlation is part of the next
+occupation-cost tranche.
 
 ## 7. What has and has not been gained
 
