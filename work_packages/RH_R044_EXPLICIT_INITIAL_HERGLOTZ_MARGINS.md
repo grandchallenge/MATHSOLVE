@@ -58,7 +58,7 @@ The bounds are deliberately coarse and fully elementary.
 The strengthened guarded RH-R040 theorem proves, on
 
 \[
-0<a\le\frac1{19},
+0<a\le\frac1{16},
 \]
 
 the uniform parity-gap estimate
@@ -69,23 +69,13 @@ g(a)
 =
 \epsilon_-(e^a)-\epsilon_+(e^a)
 >
-\frac{91801}{8578500}.
+\frac{5707773}{351568000}.
 }
 \]
 
 ## 3. Pole-localization margin
 
-The exact odd pole split is
-
-\[
-A_{a,-}
-=
-B_{a,-}
--
-2|S\rangle\langle S|,
-\]
-
-hence
+The exact odd pole split gives
 
 \[
 B_{a,-}
@@ -94,20 +84,10 @@ A_{a,-}
 +
 2|S\rangle\langle S|
 \ge
-A_{a,-}
+A_{a,-}.
 \]
-
-in form order.
 
 Therefore
-
-\[
-\inf\sigma(B_{a,-})
-\ge
-\epsilon_-(e^a).
-\]
-
-Subtracting \(\epsilon_+(e^a)\),
 
 \[
 d(a)
@@ -123,52 +103,36 @@ so
 
 \[
 \boxed{
-d(a)>\frac{91801}{8578500}.
+d(a)>\frac{5707773}{351568000}.
 }
 \]
 
 ## 4. Exact norm of the odd pole vector
 
-In centered logarithmic coordinates,
+For
 
 \[
 S(x)=\sinh(x/2),
 \qquad
-x\in[-a,a].
+x\in[-a,a],
 \]
 
-Hence
+one has exactly
 
 \[
-\|S\|^2
-=
-\int_{-a}^{a}\sinh^2(x/2)\,dx
-=
-\sinh a-a.
+\|S\|^2=\sinh a-a.
 \]
 
-For \(0<a\le1/19<1\), Taylor's theorem gives
+For \(0<a\le1/16<1\), Taylor's theorem and \(\cosh1<2\) give
 
 \[
 \sinh a-a
-=
-\frac{a^3}{6}\cosh\xi
 <
 \frac{a^3}{3}
-\]
-
-for some \(0<\xi<a\), because \(\cosh\xi<\cosh1<2\).
-
-Therefore
-
-\[
-\boxed{
-\|S\|^2
-<
-\frac1{3\cdot19^3}
+\le
+\frac1{3\cdot16^3}
 =
-\frac1{20577}.
-}
+\boxed{\frac1{12288}}.
 \]
 
 ## 5. Resolvent scalar upper bound
@@ -182,21 +146,10 @@ Let
 Since
 
 \[
-B_{a,-}-\mu(a)I
-\ge
-d(a)I,
+B_{a,-}-\mu(a)I\ge d(a)I,
 \]
 
 functional calculus gives
-
-\[
-0<
-(B_{a,-}-\mu(a)I)^{-1}
-\le
-\frac1{d(a)}I.
-\]
-
-Therefore
 
 \[
 m(a)
@@ -209,15 +162,15 @@ S,
 \frac{\|S\|^2}{d(a)}.
 \]
 
-Using the preceding bounds,
+Hence
 
 \[
 m(a)
 <
-\frac{1/20577}{91801/8578500}
+\frac{1/12288}{5707773/351568000}
 =
 \boxed{
-\frac{150500}{33140161}
+\frac{2746625}{547946208}
 }.
 \]
 
@@ -229,39 +182,31 @@ By definition,
 \Delta_H(a)=\frac12-m(a).
 \]
 
-Thus
+Therefore
 
 \[
 \boxed{
 \Delta_H(a)
 >
-\frac12
--
-\frac{150500}{33140161}
-=
-\frac{32839161}{66280322}.
+\frac{271226479}{547946208}.
 }
 \]
 
-In particular,
-
-\[
-\Delta_H(a)>0.
-\]
+In particular, \(\Delta_H(a)>0\).
 
 ## 7. Initial continuation certificate
 
 For every
 
 \[
-0<a\le\frac1{19},
+0<a\le\frac1{16},
 \]
 
 the guarded chain yields
 
 \[
 \boxed{
-d(a)>\frac{91801}{8578500}
+d(a)>\frac{5707773}{351568000}
 }
 \]
 
@@ -269,11 +214,11 @@ and
 
 \[
 \boxed{
-\Delta_H(a)>\frac{32839161}{66280322}.
+\Delta_H(a)>\frac{271226479}{547946208}.
 }
 \]
 
-Thus the two R043 continuation margins start with explicit uniform
+Thus the two R043 continuation margins begin with explicit uniform
 separation from zero on the full perturbatively proved simple-even interval.
 
 ## 8. Relation to the full parity gap
@@ -284,32 +229,24 @@ RH-R041 proves, whenever \(d(a)>0\) and \(\Delta_H(a)>0\),
 g(a)\ge2d(a)\Delta_H(a).
 \]
 
-Substituting the present bounds gives a secondary consistency bound.  The
-direct R040 estimate
-
-\[
-g(a)>\frac{91801}{8578500}
-\]
-
-remains stronger and is the preferred full-gap certificate.
+The direct R040 lower bound on \(g\) is stronger than the bound obtained by
+substituting the coarse estimates above, so the R040 value remains the
+preferred full-gap certificate.
 
 ## 9. What this changes
 
-Before this package, R043 supplied continuity but no quantitative starting
-margin.
-
-After this package, continuation may start from
+Continuation may now start at the edge \(a=1/16\) with explicit error
+budgets
 
 \[
-d_0=\frac{91801}{8578500},
+d_0=\frac{5707773}{351568000},
 \qquad
-\Delta_0=\frac{32839161}{66280322},
+\Delta_0=\frac{271226479}{547946208}.
 \]
 
-valid uniformly on \(0<a\le1/19\).
-
-Any derivative, comparison, or validated-continuation argument may therefore
-spend a controlled error budget against these two explicit quantities.
+The next non-perturbative step can therefore ask for a quantitative bound on
+the variation of \(d\) and \(\Delta_H\) beyond \(1/16\), rather than merely
+their qualitative continuity.
 
 ## 10. False-proof firewall
 
@@ -318,7 +255,7 @@ Reject:
 1. replacing the strict R040 work-branch theorem by this package before
    R040's provider and exact-head CI gates are protected;
 2. inferring that \(d(a)\) or \(\Delta_H(a)\) stays positive for
-   \(a>1/19\);
+   \(a>1/16\);
 3. using the scalar resolvent outside \(d(a)>0\);
 4. replacing the full operator norm \(\|S\|\) by a finite Galerkin vector
    norm without an exact identification;
@@ -329,7 +266,7 @@ Reject:
 
 This theorem does not prove:
 
-- continuation beyond \(a=1/19\);
+- continuation beyond \(a=1/16\);
 - monotonicity of \(d\) or \(\Delta_H\);
 - positivity at the R039 points;
 - all-\(a\) even-simplicity;
