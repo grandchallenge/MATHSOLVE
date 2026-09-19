@@ -20,33 +20,30 @@ No RH / novelty / priority / certification claim.
 
 ## 1. Purpose
 
-The guarded R040 theorem controls the full smooth remainder by one global
-operator norm.  That pays the dominant even constant mode in both parity
-sectors and stops the perturbative proof at \(a=1/16\).
+R040 controls the full smooth remainder by one global operator norm.  That
+pays the dominant even constant mode in both parity sectors.
 
-The remainder has much more structure.  In the no-prime regime its scaled
-kernel is
+The no-prime scaled remainder has kernel
 
 \[
-K_a(x,y)
-=
-a\,q(a|x-y|),
+K_a(x,y)=a\,q(a|x-y|),
 \qquad
 q(t):=-r''(t).
 \]
 
-The function \(q\) is nearly constant near the origin.  The constant part is
-a positive rank-one operator in the even sector and vanishes identically in
-the odd sector.
+Near the origin, \(q\) is nearly constant.  Its constant part is a
+positive rank-one operator in the even sector and vanishes identically on
+odd functions.
 
-This package proves a uniform Lipschitz bound for \(q\), uses it separately
-in the two parity sectors, and extends the explicit simple-even regime to
+This package proves a scalar Lipschitz estimate for \(q\), treats the two
+parity sectors separately, and uses an optimized positive even trial to
+prove the full simple-even theorem explicitly on
 
 \[
-0<a\le\frac18.
+\boxed{0<a\le\frac{2}{15}.}
 \]
 
-## 2. Protected limiting estimates from R040
+## 2. Limiting estimates
 
 Let \(T\) be the self-adjoint operator associated with the limiting form
 
@@ -54,59 +51,92 @@ Let \(T\) be the self-adjoint operator associated with the limiting form
 \overline{\mathcal L}.
 \]
 
-R040 proves:
+R040 proves the odd lower bound
 
 \[
-\mu_{-,1}\ge\log2,
+\boxed{\mu_{-,1}\ge\log2}
+\]
+
+and the second-even lower bound
+
+\[
+\boxed{\mu_{+,2}\ge\frac34}.
+\]
+
+For the present tranche choose the positive even trial
+
+\[
+p(x)=1-\frac23x^2.
+\]
+
+Direct integration gives
+
+\[
+\|p\|^2=\frac{58}{45},
+\qquad
+\int_{-1}^{1}p(x)\,dx=\frac{14}{9},
 \]
 
 \[
+\frac14\iint
+\frac{|p(x)-p(y)|^2}{|x-y|}\,dx\,dy
+=
+\frac{16}{135},
+\]
+
+and
+
+\[
+-\frac12
+\int_{-1}^{1}
+p(x)^2\log(1-x^2)\,dx
+=
+\frac{734}{675}
+-
+\frac{58}{45}\log2.
+\]
+
+Hence
+
+\[
+\overline{\mathcal L}(p)
+=
+\frac{814}{675}
+-
+\frac{58}{45}\log2,
+\]
+
+so Rayleigh--Ritz gives
+
+\[
+\boxed{
 \mu_{+,1}
 \le
-\frac{599}{645}-\log2,
+\frac{407}{435}-\log2.
+}
 \]
 
-and
+We also need
 
 \[
-\mu_{+,2}\ge\frac34.
-\]
-
-The even upper bound uses the explicit positive even trial
-
-\[
-p(x)=1-\frac{x^2}{2}.
-\]
-
-Its exact auxiliary values are
-
-\[
-\|p\|^2=\frac{43}{30},
-\]
-
-\[
-\int_{-1}^{1}p(x)\,dx=\frac53,
-\]
-
-and
-
-\[
+\boxed{
 \iint_{[-1,1]^2}
 |x-y|p(x)p(y)\,dx\,dy
 =
-\frac{178}{105}.
+\frac{1336}{945}.
+}
 \]
 
-Thus the limiting parity separation is bounded below by
+Thus the limiting parity-gap lower bound is
 
 \[
-2\log2-\frac{599}{645},
+2\log2-\frac{407}{435},
 \]
 
-while the limiting first even internal gap is bounded below by
+and the limiting first-even internal-gap lower bound is
 
 \[
-\log2-\frac{461}{2580}.
+\log2+\frac34-\frac{407}{435}.
 \]
 
 ## 3. Smooth remainder scalar
@@ -133,7 +163,7 @@ r_1''(t)
 h(t):=\frac{t e^{t/2}}{\sinh t}.
 \]
 
-Hence, for \(t>0\),
+Hence
 
 \[
 q(t)
@@ -143,33 +173,29 @@ q(t)
 2\cosh(t/2)-r_1''(t).
 \]
 
-The continuous extension at the origin satisfies
+The continuous extension at zero has
 
 \[
 h(0)=1,
 \qquad
 h'(0)=\frac12,
+\qquad
+r_1''(0)=\frac14,
 \]
 
 so
 
 \[
-r_1''(0)=\frac14
-\]
-
-and therefore
-
-\[
 \boxed{q(0)=\frac74.}
 \]
 
-## 4. A calculus lemma for h
+## 4. Calculus control on h
 
 For \(t>0\), put
 
 \[
 u(t)
-:=
+=
 \frac{h'(t)}{h(t)}
 =
 \frac1t+\frac12-\coth t.
@@ -181,52 +207,50 @@ Then
 h''(t)=h(t)\left(u(t)^2+u'(t)\right).
 \]
 
-The standard partial-fraction expansion
+Use
 
 \[
 \coth t-\frac1t
 =
-2t\sum_{n\ge1}
-\frac1{t^2+\pi^2n^2}
+2t\sum_{n\ge1}\frac1{t^2+\pi^2n^2}.
 \]
 
-gives, on \(0<t\le1/4\),
+For
 
 \[
-0
-<
+0<t\le\frac4{15},
+\]
+
+this gives
+
+\[
+0<
 \coth t-\frac1t
 \le
-\frac t3.
+\frac t3,
 \]
 
-Hence
+and hence
 
 \[
-\frac12-\frac t3
+\frac{37}{90}
 \le
 u(t)
 <
 \frac12.
 \]
 
-In particular,
-
-\[
-\frac5{12}\le u(t)<\frac12.
-\]
-
-Differentiate the partial-fraction expression.  Set
+Set
 
 \[
 D(t)
-:=
-\frac1{t^2}-\operatorname{csch}^2 t
+=
+\frac1{t^2}-\operatorname{csch}^2t
 =
 -u'(t).
 \]
 
-Termwise differentiation gives
+Differentiating the partial-fraction expression termwise gives
 
 \[
 D(t)
@@ -239,13 +263,7 @@ D(t)
 \frac1{(t^2+\pi^2n^2)^2}.
 \]
 
-Since \(t<\pi\), each differentiated summand is positive, so
-
-\[
-D(t)>0.
-\]
-
-Dropping the negative second sum and bounding the first sum gives
+Since \(t<\pi\), each differentiated summand is positive.  Also
 
 \[
 D(t)
@@ -255,15 +273,15 @@ D(t)
 \frac13.
 \]
 
-A lower bound \(D(t)\ge1/4\) follows elementarily.  Since
+For the lower bound \(D(t)\ge1/4\), note that
 
 \[
 \frac{\sinh t}{t}
 \ge
-1+\frac{t^2}{6},
+1+\frac{t^2}{6}.
 \]
 
-it is enough to verify
+It is therefore enough to check
 
 \[
 \left(1+\frac{t^2}{6}\right)^2
@@ -280,7 +298,7 @@ The difference from \(1\) is
 \right),
 \]
 
-which is positive for \(0<t\le1/4\).
+which is positive on \(0<t\le4/15\).
 
 Thus
 
@@ -288,16 +306,13 @@ Thus
 \frac14\le D(t)\le\frac13.
 \]
 
-Consequently,
+Therefore
 
 \[
 u(t)^2+u'(t)
 =
 u(t)^2-D(t)
-\le
-\frac14-\frac14
-=
-0,
+\le0,
 \]
 
 so
@@ -311,36 +326,33 @@ For the lower bound,
 \[
 u(t)^2+u'(t)
 \ge
-\frac{25}{144}-\frac13
+\left(\frac{37}{90}\right)^2-\frac13
 =
--\frac{23}{144}.
+-\frac{1331}{8100}.
 \]
 
 Also
 
 \[
 h(t)
-=
-\frac{t}{\sinh t}e^{t/2}
 \le
 e^{t/2}
 \le
-e^{1/8}
+e^{2/15}
 <
-\frac87,
+\frac{15}{13},
 \]
 
-where the last inequality follows from
-\(e^x<1/(1-x)\) for \(0<x<1\).
+where \(e^x<1/(1-x)\) for \(0<x<1\).
 
-Therefore
+Hence
 
 \[
 h''(t)
-\ge
--\frac87\frac{23}{144}
+>
+-\frac{15}{13}\frac{1331}{8100}
 =
--\frac{23}{126}
+-\frac{1331}{7020}
 >
 -\frac14.
 \]
@@ -351,19 +363,11 @@ We have proved
 \boxed{
 -\frac14<h''(t)\le0
 \qquad
-(0<t\le1/4).
+(0<t\le4/15).
 }
 \]
 
 ## 5. Lipschitz bound for q
-
-Differentiate
-
-\[
-r_1''(t)
-=
-\frac{h(t)-1}{2t}.
-\]
 
 Since
 
@@ -382,16 +386,13 @@ r_1'''(t)
 \int_0^t s h''(s)\,ds.
 \]
 
-By Section 4,
+Section 4 gives
 
 \[
--\frac1{16}
-<
-r_1'''(t)
-\le0.
+-\frac1{16}<r_1'''(t)\le0.
 \]
 
-Thus
+Therefore
 
 \[
 q'(t)
@@ -400,60 +401,49 @@ q'(t)
 \ge0.
 \]
 
-For the upper bound, on \(0\le t\le1/4\),
-
-\[
-\sinh(t/2)\le\sinh(1/8).
-\]
-
-Using
+For \(t\le4/15\), one has \(t/2\le2/15\).  Using
 
 \[
 \cosh x
-=
-\sum_{n\ge0}\frac{x^{2n}}{(2n)!}
 \le
-\sum_{n\ge0}
-\left(\frac{x^2}{2}\right)^n
-=
 \frac1{1-x^2/2},
 \]
 
-we obtain
+we get
 
 \[
-\sinh(1/8)
+\sinh(2/15)
 =
-\int_0^{1/8}\cosh s\,ds
+\int_0^{2/15}\cosh s\,ds
 \le
-\frac18\cosh(1/8)
-\le
-\frac{16}{127}.
+\frac{2/15}{1-2/225}
+=
+\frac{30}{223}.
+\]
+
+Thus
+
+\[
+q'(t)
+<
+\frac{30}{223}+\frac1{16}
+=
+\frac{703}{3568}
+<
+\frac15.
 \]
 
 Hence
 
 \[
-q'(t)
-<
-\frac{16}{127}+\frac1{16}
-=
-\frac{383}{2032}
-<
-\frac15.
-\]
-
-Therefore
-
-\[
 \boxed{
 0\le q'(t)\le\frac15
 \qquad
-(0\le t\le1/4).
+(0\le t\le4/15),
 }
 \]
 
-Together with \(q(0)=7/4\),
+and, using \(q(0)=7/4\),
 
 \[
 \boxed{
@@ -463,22 +453,22 @@ q(t)-\frac74
 \le
 \frac t5
 \qquad
-(0\le t\le1/4).
+(0\le t\le4/15).
 }
 \]
 
-## 6. Odd-sector remainder is O(a^2)
+## 6. Odd-sector remainder
 
 Assume
 
 \[
-0<a\le\frac18.
+0<a\le\frac2{15}.
 \]
 
-Then \(2a\le1/4\).
+Then \(2a\le4/15\).
 
 Identify the odd sector of \(L^2(-1,1)\) with \(L^2(0,1)\).
-For \(x,y\in(0,1)\), the reduced odd kernel is
+For \(x,y\in(0,1)\), the reduced kernel is
 
 \[
 K_{a,-}(x,y)
@@ -502,24 +492,14 @@ The Lipschitz estimate gives
 \[
 |K_{a,-}(x,y)|
 \le
-\frac{a^2}{5}
-\left[
-(x+y)-|x-y|
-\right]
-=
 \frac{2a^2}{5}\min(x,y).
 \]
 
-The Schur row sum satisfies
+The Schur row sum is bounded by
 
 \[
 \frac{2a^2}{5}
 \int_0^1\min(x,y)\,dy
-=
-\frac{2a^2}{5}
-\left(
-x-\frac{x^2}{2}
-\right)
 \le
 \frac{a^2}{5}.
 \]
@@ -534,7 +514,7 @@ Hence
 }
 \]
 
-Therefore the perturbed odd bottom obeys
+Therefore
 
 \[
 \boxed{
@@ -544,7 +524,7 @@ Therefore the perturbed odd bottom obeys
 }
 \]
 
-## 7. Even sector: isolate the positive rank-one part
+## 7. Even-sector remainder decomposition
 
 Write
 
@@ -552,21 +532,18 @@ Write
 q(t)=\frac74+\delta(t),
 \]
 
-where
+with
 
 \[
-0\le\delta(t)\le\frac t5
-\qquad
-(0\le t\le1/4).
+0\le\delta(t)\le\frac t5.
 \]
 
-Then the full remainder operator is
+Then
 
 \[
 K_a
 =
-\frac{7a}{4}
-|1\rangle\langle1|
+\frac{7a}{4}|1\rangle\langle1|
 +
 E_a,
 \]
@@ -579,7 +556,7 @@ a\,\delta(a|x-y|).
 
 The constant rank-one term is positive and acts only in the even sector.
 
-For the residual kernel,
+Moreover,
 
 \[
 |E_a(x,y)|
@@ -596,25 +573,21 @@ Since
 \le2,
 \]
 
-the Schur bound gives
+Schur gives
 
 \[
 \boxed{
-\|E_a\|
-\le
-\frac{2a^2}{5}.
+\|E_a\|\le\frac{2a^2}{5}.
 }
 \]
 
-Therefore, on the even sector,
+Thus on the even sector
 
 \[
-K_{a,+}
-\ge
--\frac{2a^2}{5}I,
+K_{a,+}\ge-\frac{2a^2}{5}I,
 \]
 
-and the second even eigenvalue obeys
+and
 
 \[
 \boxed{
@@ -624,93 +597,91 @@ and the second even eigenvalue obeys
 }
 \]
 
-## 8. Explicit upper bound for the perturbed even ground
+## 8. Perturbed even-ground trial bound
 
-Use again
+For
 
 \[
-p(x)=1-\frac{x^2}{2}>0.
+p(x)=1-\frac23x^2>0,
 \]
 
-Because \(p\) is positive and \(\delta\ge0\),
+positivity of \(p\) and \(\delta\) gives
 
 \[
 \langle p,K_ap\rangle
 \le
 \frac{7a}{4}
-\left(
-\int_{-1}^{1}p
-\right)^2
+\left(\int p\right)^2
 +
 \frac{a^2}{5}
 \iint
 |x-y|p(x)p(y)\,dx\,dy.
 \]
 
-Using the exact values from Section 2 and dividing by
+Divide by
 
 \[
-\|p\|^2=\frac{43}{30},
+\|p\|^2=\frac{58}{45}.
 \]
 
-the rank-one contribution is
-
-\[
-\frac{
-(7a/4)(5/3)^2
-}{
-43/30
-}
-=
-\frac{875}{258}a,
-\]
-
-while the residual contribution is
+The constant rank-one contribution is
 
 \[
 \frac{
-(a^2/5)(178/105)
+(7a/4)(14/9)^2
 }{
-43/30
+58/45
 }
 =
-\frac{356}{1505}a^2.
+\frac{1715}{522}a.
 \]
 
-Thus Rayleigh--Ritz gives
+The residual contribution is
+
+\[
+\frac{
+(a^2/5)(1336/945)
+}{
+58/45
+}
+=
+\frac{668}{3045}a^2.
+\]
+
+Therefore
 
 \[
 \boxed{
 \nu_{+,1}(a)
 \le
-\frac{599}{645}-\log2
+\frac{407}{435}-\log2
 +
-\frac{875}{258}a
+\frac{1715}{522}a
 +
-\frac{356}{1505}a^2.
+\frac{668}{3045}a^2.
 }
 \]
 
-## 9. Strict parity gap through a = 1/8
+## 9. Strict parity gap through a = 2/15
 
-Subtract the even upper bound from the odd lower bound:
+Subtract Section 8 from Section 6:
 
 \[
 \begin{aligned}
 \nu_{-,1}(a)-\nu_{+,1}(a)
 \ge{}&
-2\log2-\frac{599}{645}
+2\log2-\frac{407}{435}
 \\
 &-
-\frac{875}{258}a
+\frac{1715}{522}a
 -
 \left(
-\frac{356}{1505}+\frac15
+\frac{668}{3045}+\frac15
 \right)a^2.
 \end{aligned}
 \]
 
-The right-hand side is decreasing for \(a>0\).
+The right side decreases with \(a>0\).
 
 Use
 
@@ -718,30 +689,16 @@ Use
 \log2>\frac{693}{1000}
 \]
 
-and set \(a=1/8\).  Then
+and set \(a=2/15\).  Exact arithmetic gives
 
 \[
-\begin{aligned}
-\nu_{-,1}(a)-\nu_{+,1}(a)
->{}&
-\frac{693}{500}
--
-\frac{599}{645}
--
-\frac{875}{2064}
-\\
-&-
-\frac1{64}
-\left(
-\frac{356}{1505}+\frac15
-\right)
-\\
-={}&
 \boxed{
-\frac{63963}{2408000}
+\nu_{-,1}(a)-\nu_{+,1}(a)
+>
+\frac{13301}{2740500}
+>
+0.
 }
->0.
-\end{aligned}
 \]
 
 Therefore
@@ -750,11 +707,11 @@ Therefore
 \boxed{
 \epsilon_+(e^a)<\epsilon_-(e^a)
 \qquad
-(0<a\le1/8).
+(0<a\le2/15).
 }
 \]
 
-## 10. Even-sector simplicity through a = 1/8
+## 10. Even-sector simplicity through a = 2/15
 
 Sections 7 and 8 give
 
@@ -762,43 +719,29 @@ Sections 7 and 8 give
 \begin{aligned}
 \nu_{+,2}(a)-\nu_{+,1}(a)
 \ge{}&
-\log2-\frac{461}{2580}
+\log2+\frac34-\frac{407}{435}
 \\
 &-
-\frac{875}{258}a
+\frac{1715}{522}a
 -
 \left(
-\frac{356}{1505}+\frac25
+\frac{668}{3045}+\frac25
 \right)a^2.
 \end{aligned}
 \]
 
-Again the right-hand side is decreasing for \(a>0\).
+Again the right side decreases with \(a>0\).
 
-At \(a=1/8\), using \(\log2>693/1000\),
+At \(a=2/15\), using \(\log2>693/1000\),
 
 \[
-\begin{aligned}
-\nu_{+,2}(a)-\nu_{+,1}(a)
->{}&
-\frac{693}{1000}
--
-\frac{461}{2580}
--
-\frac{875}{2064}
-\\
-&-
-\frac1{64}
-\left(
-\frac{356}{1505}+\frac25
-\right)
-\\
-={}&
 \boxed{
-\frac{96847}{1204000}
+\nu_{+,2}(a)-\nu_{+,1}(a)
+>
+\frac{319531}{5481000}
+>
+0.
 }
->0.
-\end{aligned}
 \]
 
 Thus the lowest even eigenvalue is simple throughout the interval.
@@ -810,32 +753,23 @@ Thus the lowest even eigenvalue is simple throughout the interval.
 For every
 
 \[
-0<a=\log\lambda\le\frac18,
+0<a=\log\lambda\le\frac2{15},
 \]
 
 the full localized Weil operator has:
 
-1. a strict parity gap
-   \[
-   \epsilon_+(\lambda)<\epsilon_-(\lambda);
-   \]
+1. a strict parity gap;
 2. a simple lowest even-sector eigenvalue.
 
-Therefore, by RH-R036,
+Therefore, by RH-R036, the global ground eigenvalue is simple and even.
 
-\[
-\boxed{
-\text{the global ground eigenvalue is simple and even.}
-}
-\]
-
-Moreover the explicit bounds
+Uniformly on the interval,
 
 \[
 \boxed{
 \epsilon_-(\lambda)-\epsilon_+(\lambda)
 >
-\frac{63963}{2408000}
+\frac{13301}{2740500}
 }
 \]
 
@@ -845,68 +779,52 @@ and
 \boxed{
 \epsilon_{+,2}(\lambda)-\epsilon_{+,1}(\lambda)
 >
-\frac{96847}{1204000}
+\frac{319531}{5481000}.
 }
 \]
 
-hold throughout the interval after the common scalar shift is restored.
+The common scalar shift does not alter multiplicity or parity ordering.
 
-The theorem does not assert that the global ground eigenvalue is positive
-on the full \(a\le1/8\) interval.  R040 separately supplies an explicit
-positivity certificate on \(a\le1/50\).
+This theorem does not assert positivity of the full ground eigenvalue on
+all of \(a\le2/15\).  R040 separately supplies an explicit positivity
+certificate on \(a\le1/50\).
 
-## 12. Why this improves R040
+## 12. Method boundary
 
-The global norm estimate used in R040 treats the large constant component of
-\(K_a\) as if it acted equally in both parity sectors.
+The optimized one-parameter quadratic trial family
+\(1-cx^2\), combined with the present \(q'\le1/5\) budget, no longer
+closes the parity-gap estimate at \(a=1/7\).
 
-The exact decomposition here shows:
+This does not imply a spectral failure at \(1/7\).
 
-- the constant component is positive rank one and even;
-- it vanishes identically on odd functions;
-- the odd remainder is only \(O(a^2)\);
-- the even residual away from the positive rank-one part is only \(O(a^2)\).
+Further extension requires a genuinely sharper ingredient, for example:
 
-The resulting parity-sensitive comparison extends the explicit
-simple-even cutoff from \(1/16\) to \(1/8\).
-
-## 13. Method boundary
-
-At \(a=1/7\), the explicit lower bound in Section 9 obtained from this same
-trial and Lipschitz budget is no longer positive.
-
-This does not imply parity-gap failure at \(a=1/7\).
-
-It means that further extension requires at least one of:
-
-- a sharper even trial vector;
+- a higher-dimensional even trial space;
 - a sharper odd limiting lower bound;
-- a sharper scalar kernel slope estimate;
-- a nonperturbative continuation estimate for \(d(a)\) and
-  \(\Delta_H(a)\).
+- a sharper parity-sensitive kernel comparison;
+- quantitative continuation of \(d(a)\) and \(\Delta_H(a)\).
 
-Thus \(1/8\) is the current certificate boundary for this parity-sensitive
-perturbative method, not a spectral counterexample boundary.
+Thus \(2/15\) is the current exact certificate boundary of this
+one-parameter parity-sensitive perturbative method.
 
-## 14. False-proof firewall
+## 13. False-proof firewall
 
 Reject:
 
-1. treating pointwise negativity of the odd reduced kernel as operator
-   negativity; only the Schur norm bound is used;
-2. treating the positive constant even rank-one term as harmless for the
-   first even eigenvalue; its exact trial contribution is retained;
-3. replacing the \(O(a^2)\) residual bounds by numerical observations;
-4. extending the \(q'\le1/5\) lemma beyond \(t=1/4\) without a new proof;
-5. inferring ground-state positivity on the entire \(a\le1/8\) interval;
-6. inferring determinant convergence or RH.
+1. treating pointwise sign of a reduced kernel as an operator sign;
+2. dropping the positive even rank-one contribution from the ground trial;
+3. using \(q'\le1/5\) beyond \(t=4/15\);
+4. replacing the exact rational endpoint margins by floating-point evidence;
+5. inferring ground-state positivity on all of \(a\le2/15\);
+6. interpreting failure of this certificate at \(1/7\) as a counterexample;
+7. inferring determinant convergence or RH.
 
-## 15. Claim boundary
+## 14. Claim boundary
 
 This theorem does not prove:
 
-- simple-even ground state for \(a>1/8\);
-- positivity of the ground eigenvalue for \(1/50<a\le1/8\);
+- simple-even ground state for \(a>2/15\);
+- positivity of the ground eigenvalue for \(1/50<a\le2/15\);
 - monotonicity of the parity gap;
 - positivity at the R039 points;
 - determinant convergence to \(\Xi\);
@@ -914,12 +832,12 @@ This theorem does not prove:
 - novelty or priority;
 - a MATHCERT disposition.
 
-## 16. Admission dependency
+## 15. Admission dependency
 
 Before admission:
 
 1. MATHFORGE PR #271 must be protected;
-2. R040's protected provider identity must replace the guarded dependency;
+2. R040's provider identity must be protected;
 3. this package must be composed onto the current live Solve head;
 4. exact-head Adversary and Referee passes must be recorded;
 5. required Solve/GCL checks must be green;
@@ -927,4 +845,4 @@ Before admission:
 
 Terminal candidate disposition:
 
-RH-R045_PARITY_SENSITIVE_SIMPLE_EVEN_PROVED_THROUGH_A_ONE_EIGHTH_ON_WORK_BRANCH__AWAITING_DEPENDENCY_PROTECTION
+RH-R045_PARITY_SENSITIVE_SIMPLE_EVEN_PROVED_THROUGH_TWO_FIFTEENTHS_ON_WORK_BRANCH__AWAITING_DEPENDENCY_PROTECTION
