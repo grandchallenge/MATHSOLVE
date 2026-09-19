@@ -41,18 +41,58 @@ def programmeTM2InitCfg (M : ProgrammeMachine)
   var := programmeTM2InitState M symbol
   stk := programmeTM2InitStacks M raw temp right
 
+/-- Fieldwise extensionality for heterogeneous TM2 configurations. -/
+theorem programmeTM2Cfg_ext
+    {Γ : Type → Type} {Λ σ : Type}
+    {a b : Turing.TM2.Cfg Γ Λ σ}
+    (hl : a.l = b.l) (hv : a.var = b.var)
+    (hs : ∀ k, a.stk k = b.stk k) : a = b := by
+  cases a with
+  | mk al av astk =>
+      cases b with
+      | mk bl bv bstk =>
+          simp only at hl hv hs
+          cases hl
+          cases hv
+          congr
+          funext k
+          exact hs k
+
+theorem programmeTM2InitStacks_update_raw (M : ProgrammeMachine)
+    (raw raw' temp : List Bool) (right : List (Option Bool)) :
+    Function.update (programmeTM2InitStacks M raw temp right) .rawInput raw' =
+      programmeTM2InitStacks M raw' temp right := by
+  funext k
+  cases k <;> simp [programmeTM2InitStacks, Function.update]
+
+theorem programmeTM2InitStacks_update_temp (M : ProgrammeMachine)
+    (raw temp temp' : List Bool) (right : List (Option Bool)) :
+    Function.update (programmeTM2InitStacks M raw temp right) .inputTemp temp' =
+      programmeTM2InitStacks M raw temp' right := by
+  funext k
+  cases k <;> simp [programmeTM2InitStacks, Function.update]
+
+theorem programmeTM2InitStacks_update_right (M : ProgrammeMachine)
+    (raw temp : List Bool) (right right' : List (Option Bool)) :
+    Function.update (programmeTM2InitStacks M raw temp right) .inputRight right' =
+      programmeTM2InitStacks M raw temp right' := by
+  funext k
+  cases k <;> simp [programmeTM2InitStacks, Function.update]
+
 /-- The native FinTM2 input configuration is the closed-form first-pass state. -/
 theorem programmeTM2_initList_eq_cfg (M : ProgrammeMachine) (input : List Bool) :
     Turing.initList (programmeTM2Machine M) input =
       programmeTM2InitCfg M .initToTemp none input [] [] := by
-  apply Turing.TM2.Cfg.ext
+  apply programmeTM2Cfg_ext
   · rfl
   · rfl
-  · funext k
+  · intro k
     cases k <;>
       simp [Turing.initList, programmeTM2Machine, programmeTM2InitCfg,
-        programmeTM2InitState, programmeTM2InitStacks]
-
+        programmeTM2InitState, programmeTM2InitStacks,
+    programmeTM2InitStacks_update_raw, programmeTM2InitStacks_update_temp,
+    programmeTM2InitStacks_update_right]
+  
 /-- One nonempty first-pass step pops raw input and pushes it onto the temporary stack. -/
 theorem programmeTM2_step_initToTemp_cons (M : ProgrammeMachine)
     (symbol : Option Bool) (bit : Bool) (raw temp : List Bool)
@@ -128,6 +168,13 @@ def programmeTM2_one_step_in_time
     { steps := 1
       evals_in_steps := by simpa using h
       steps_le_m := le_rfl }
+
+/-- Enlarge an existing step bound without changing the witnessed execution. -/
+def programmeTM2_evalsToInTime_mono
+    {σ : Type} {step : σ → Option σ} {a : σ} {b : Option σ}
+    {m n : Nat} (h : StateTransition.EvalsToInTime step a b m)
+    (hmn : m ≤ n) : StateTransition.EvalsToInTime step a b n :=
+  { h.toEvalsTo with steps_le_m := le_trans h.steps_le_m hmn }
 
 /-- The complete first normalization pass takes exactly one step per input
 cell plus one blank-detection step. -/
@@ -227,7 +274,9 @@ theorem programmeTM2_step_initFinish_input (M : ProgrammeMachine) (input : List 
   cases input <;>
     simp [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
       programmeTM2Program, programmeTM2InitFinish, programmeTM2InitCfg,
-      programmeTM2InitState, programmeTM2InitStacks, programmeTM2ReadyInitCfg]
+      programmeTM2InitState, programmeTM2InitStacks, programmeTM2ReadyInitCfg,
+      programmeTM2InitStacks_update_raw, programmeTM2InitStacks_update_temp,
+      programmeTM2InitStacks_update_right]
 
 /-- Reverse-simulator initialization is exactly linear: 2*n + 3 FinTM2 steps. -/
 theorem programmeTM2_initialization_run (M : ProgrammeMachine) (input : List Bool) :
@@ -242,8 +291,7 @@ theorem programmeTM2_initialization_run (M : ProgrammeMachine) (input : List Boo
       StateTransition.EvalsToInTime
         (programmeTM2Machine M).step
         (programmeTM2InitCfg M .initToTemp none input [] [])
-        (some
-          (programmeTM2InitCfg M .initToRight none [] input.reverse []))
+        (some (programmeTM2InitCfg M .initToRight none [] input.reverse []))
         (input.length + 1) := by
     simpa using hfirstRaw
   rcases programmeTM2_initToRight_run M input.reverse [] none with ⟨hsecondRaw⟩
@@ -251,8 +299,7 @@ theorem programmeTM2_initialization_run (M : ProgrammeMachine) (input : List Boo
       StateTransition.EvalsToInTime
         (programmeTM2Machine M).step
         (programmeTM2InitCfg M .initToRight none [] input.reverse [])
-        (some
-          (programmeTM2InitCfg M .initFinish none [] [] (input.map some)))
+        (some (programmeTM2InitCfg M .initFinish none [] [] (input.map some)))
         (input.length + 1) := by
     simpa using hsecondRaw
   have hlast :=
@@ -264,20 +311,18 @@ theorem programmeTM2_initialization_run (M : ProgrammeMachine) (input : List Boo
       (input.length + 1) (input.length + 1)
       (programmeTM2InitCfg M .initToTemp none input [] [])
       (programmeTM2InitCfg M .initToRight none [] input.reverse [])
-      (some
-        (programmeTM2InitCfg M .initFinish none [] [] (input.map some)))
+      (some (programmeTM2InitCfg M .initFinish none [] [] (input.map some)))
       hfirst hsecond
   have hall :=
     StateTransition.EvalsToInTime.trans
       (programmeTM2Machine M).step
-      (2 * input.length + 2) 1
+      (input.length + 1 + (input.length + 1)) 1
       (programmeTM2InitCfg M .initToTemp none input [] [])
       (programmeTM2InitCfg M .initFinish none [] [] (input.map some))
       (some (programmeTM2ReadyInitCfg M input))
-      (by simpa [Nat.mul_comm, Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using h12)
-      hlast
+      h12 hlast
   rw [programmeTM2_initList_eq_cfg M input]
-  simpa [Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using hall
+  exact ⟨programmeTM2_evalsToInTime_mono hall (by omega)⟩
 
 #print axioms programmeTM2_initList_eq_cfg
 #print axioms programmeTM2_step_initToTemp_cons
