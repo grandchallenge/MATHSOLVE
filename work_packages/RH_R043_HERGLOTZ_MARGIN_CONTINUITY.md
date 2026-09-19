@@ -463,7 +463,7 @@ The guarded RH-R040 effective package proves
 \[
 g(a)>0
 \quad
-(0<a\le1/50)
+(0<a\le1/16)
 \]
 
 once its provider/admission gates are discharged.
