@@ -1,6 +1,6 @@
 # NS-CI Independent Contributor Intake Pilot
 
-Status: PILOT_RECONFIGURING__GITHUB_INTAKE_V1
+Status: PILOT_ACTIVE__GITHUB_INTAKE_V1
 
 ## Authority
 
@@ -117,10 +117,15 @@ as raw evidence or the cohort is explicitly closed with missing-return evidence.
 The former arbitrary-transport ICR contract is superseded before first contribution
 receipt.
 
-The three dispatches are temporarily `PENDING_GITHUB_ISSUE_BINDING`.
+The GitHub-native intake interface is active.
 
-After this GitHub-intake implementation is protected, GCL will create one dispatch issue
-per dispatch from the exact protected bootstrap bytes, bind each issue number into the
-dispatch record, and transition each dispatch to `READY_FOR_GITHUB_COMMENT`.
+Protected issue bindings:
 
-No contribution is accepted before that binding transition.
+- `NSCI-C2-A-BLIND-001` -> issue `#424`;
+- `NSCI-C2-A-BLIND-002` -> issue `#425`;
+- `NSCI-C2-B-COOP-001` -> issue `#426`.
+
+Each issue body was verified byte-for-byte against its protected dispatch-bootstrap
+artifact before binding. All three dispatches are `READY_FOR_GITHUB_COMMENT`.
+
+No contribution has yet been received or mathematically adjudicated.
