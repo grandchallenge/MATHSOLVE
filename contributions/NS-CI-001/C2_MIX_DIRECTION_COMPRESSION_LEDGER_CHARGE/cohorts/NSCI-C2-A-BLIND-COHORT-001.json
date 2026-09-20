@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1-pilot",
+  "schema_version": "0.2-pilot",
   "cohort_id": "NSCI-C2-A-BLIND-COHORT-001",
   "mode": "independent_blind",
   "state": "OPEN",
@@ -14,6 +14,8 @@
   ],
   "cross_disclosure_before_closure": false,
   "synthesis_allowed": false,
-  "closure_condition": "Close after both dispatched contributors return durable ICRs, or explicitly close with missing-return evidence. No cross-contribution synthesis before closure.",
-  "late_return_policy": "Preserve with late_for_cohort status; do not retroactively alter a completed blind comparison."
+  "closure_condition": "Close only after both bound GitHub dispatch issues have produced schema-valid RESULT/1 comments that are snapshotted through trusted intake into protected raw evidence, or explicitly close with missing-return evidence. No cross-contribution synthesis before closure.",
+  "late_return_policy": "Preserve the GitHub event; if schema-valid after cohort closure, intake as late_for_cohort evidence without retroactively altering the completed blind comparison.",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "intake_channel": "github_issue_comment"
 }
