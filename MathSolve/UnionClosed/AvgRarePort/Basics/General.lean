@@ -258,10 +258,4 @@ lemma exists_pair_with_same_image_of_card_image_lt
 lemma le_of_eq_add_of_nonpos {a b t : Int}
     (h : a = b + t) (ht : t ≤ 0) : a ≤ b := by
   rw [h]
-  have h1 : b + t ≤ b + 0 := add_le_add_left ht b
-  have h2 := h1
-  have : b + t ≤ b := by
-    have h2' := h2
-    exact (add_le_iff_nonpos_right b).mpr ht
-
-  exact this
+  exact (add_le_iff_nonpos_right b).mpr ht
