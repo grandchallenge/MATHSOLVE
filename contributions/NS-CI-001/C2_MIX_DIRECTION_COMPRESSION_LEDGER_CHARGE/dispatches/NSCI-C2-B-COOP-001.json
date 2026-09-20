@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1-pilot",
+  "dispatch_id": "NSCI-C2-B-COOP-001",
+  "assignment_id": "B",
+  "concurrency_mode": "cooperative_claimed",
+  "blind_cohort_id": null,
+  "source_handoff_pointer": "grandchallenge/MATHSOLVE@490bb2da6b6d315193c86ae934a49241735d027c:handoffs/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE_ZERO_CONTEXT.md",
+  "source_handoff_commit_sha": "490bb2da6b6d315193c86ae934a49241735d027c",
+  "source_handoff_blob_sha": "e49bf0c5b88567ea50a91e655b631cdc4f83daeb",
+  "source_handoff_sha256": "6b975cf1cfa17cf61e8f44350eb9ed41cef88876bae35555234e961ec2adbdb5",
+  "wall_clock_limit_minutes": 22,
+  "contributor_write_authority": "none_required",
+  "canonical_mutation_authorized": false,
+  "result_return": "Return one complete Independent Contribution Record verbatim through the available transport. Repository access is not required.",
+  "blind_rule": "Not applicable. Do not consume undisclosed blind-cohort results.",
+  "bootstrap_prompt": "Attend to grandchallenge/MATHSOLVE@490bb2da6b6d315193c86ae934a49241735d027c:handoffs/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE_ZERO_CONTEXT.md. Dispatch ID: NSCI-C2-B-COOP-001. Assignment: B. Concurrency mode: cooperative_claimed. Use only the supplied handoff plus accurately declared context. Maximum wall-clock: 22 minutes. Return the complete ICR required by the handoff; do not perform GCL adjudication or repository mutation.",
+  "dispatch_status": "READY_FOR_EXTERNAL_CONTRIBUTOR"
+}
