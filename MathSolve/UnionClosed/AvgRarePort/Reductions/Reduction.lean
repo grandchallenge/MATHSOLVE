@@ -1,4 +1,4 @@
-/-!
+/-
 Vendored proof-transport source for UC-001 WP07 D004.
 Origin: kashiwabarakenji/avg-rare@21451877e9996a295bbc1ec25856d07fa302d48c
 Original path: AvgRare/Reductions/Reduction.lean
