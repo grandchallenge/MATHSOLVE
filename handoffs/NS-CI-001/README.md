@@ -2641,12 +2641,16 @@ Result grammar:
 
 `contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/RESULT_COMMENT_V1.md`
 
-Current pilot state: `PILOT_RECONFIGURING__GITHUB_INTAKE_V1`.
+Current pilot state: `PILOT_ACTIVE__GITHUB_INTAKE_V1`.
 
-The three dispatches are `PENDING_GITHUB_ISSUE_BINDING`. Do not launch a contributor
-against the old pointer-only bootstrap. After this migration is protected, one generated
-GitHub issue will be created from each protected dispatch-bootstrap artifact and its issue
-number will be bound back into the corresponding dispatch record before the status becomes
-`READY_FOR_GITHUB_COMMENT`.
+Active dispatch issues:
+
+- `#424`: `NSCI-C2-A-BLIND-001`, Assignment A, `independent_blind`;
+- `#425`: `NSCI-C2-A-BLIND-002`, Assignment A, `independent_blind`;
+- `#426`: `NSCI-C2-B-COOP-001`, Assignment B, `cooperative_claimed`.
+
+Each issue body is an exact copy of its protected bootstrap artifact. Each dispatch is
+`READY_FOR_GITHUB_COMMENT` and accepts only one schema-valid `GCL-CONTRIBUTION-RESULT/1`
+comment through the trusted intake workflow.
 
 The blind Assignment-A cohort remains `OPEN`; synthesis remains prohibited.
