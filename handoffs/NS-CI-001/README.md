@@ -784,13 +784,13 @@ inside this exact calibration.  This is not a whole-space A2 theorem.
 
 ### L5-21 cumulative upper-band flux obstruction
 
-\`work_packages/NS_CI_R014_A2_L5_21_C2_CUMULATIVE_FLUX_OBSTRUCTION.md\`
+`work_packages/NS_CI_R014_A2_L5_21_C2_CUMULATIVE_FLUX_OBSTRUCTION.md`
 records
 
-\`\`\`text
+```text
 C2_FLUX_GENERIC_BAND_ENERGY_ROUTE_TERMINATED
 __OVERSHOOT_DIVERGES_WITH_SUMMABLE_BOUNDARY_FLUX.
-\`\`\`
+```
 
 The first selector-free cumulative-flux repair is insufficient even after
 granting exact complete-band telescoping.
@@ -798,39 +798,39 @@ granting exact complete-band telescoping.
 A conservative nearest-neighbour shell-and-packet ledger uses the protected
 L5-15 episode scaling
 
-\`\`\`math
+```math
 R_n=2^n,\qquad
 lambda_n=R_n^4,\qquad
 E_n=R_n^{-2},\qquad
 delta_n=R_n^{-9}.
-\`\`\`
+```
 
 On each disjoint episode, the active-shell energy obeys an exact shell balance
 with a reservoir and one signed boundary flux. Internal band edges telescope
 exactly. The net boundary flux equals the episode dissipation and scales like
 
-\`\`\`math
+```math
 R_n^{-3}.
-\`\`\`
+```
 
 Even the absolute unweighted boundary-flux variation is only
 
-\`\`\`math
+```math
 O(R_n^{-2}+R_n^{-3}),
-\`\`\`
+```
 
-and remains summable after multiplying by the number \`q_n=4n\` of
+and remains summable after multiplying by the number `q_n=4n` of
 nearest-neighbour edges.
 
-At the same time the A2 occupancy charge is \`O(R_n^{-1})\`, total dissipation
+At the same time the A2 occupancy charge is `O(R_n^{-1})`, total dissipation
 is summable, total energy is bounded, and the turnover-scale energy-transfer
 rate is respected. But on the plateau,
 
-\`\`\`math
+```math
 integral_{I_n} Omega(t) dt
 gtrsim
 1-c_0/R_n,
-\`\`\`
+```
 
 so the overshoot integral diverges.
 
@@ -845,20 +845,20 @@ ledger, not a Navier--Stokes trajectory.
 
 ### L5-22 turnover-scale signed transfer coherence calibration
 
-\`work_packages/NS_CI_R014_A2_L5_22_C2_TRIAD_COHERENCE.md\`
+`work_packages/NS_CI_R014_A2_L5_22_C2_TRIAD_COHERENCE.md`
 records
 
-\`\`\`text
+```text
 TURNOVER_SCALE_SIGNED_TRANSFER_COHERENCE_PERSISTS_IN_EXACT_2P5D_NSE
 __SUBTURNOVER_DECOHERENCE_NOT_GENERIC.
-\`\`\`
+```
 
 The exact unforced periodic 2.5D NSE calibration from L5-18/L5-19 also
 separates a generic phase-decoherence repair.
 
 In turnover variables,
 
-\`\`\`math
+```math
 partial_tau theta_epsilon
 +
 e^{-epsilon tau} V dot grad theta_epsilon
@@ -866,44 +866,44 @@ e^{-epsilon tau} V dot grad theta_epsilon
 epsilon Delta theta_epsilon,
 \qquad
 epsilon=1/R.
-\`\`\`
+```
 
-Let \`c_epsilon\` be the target \`sin(X+Y)\` coefficient and
-\`g_epsilon\` its signed nonlinear transport forcing.  Exactly,
+Let `c_epsilon` be the target `sin(X+Y)` coefficient and
+`g_epsilon` its signed nonlinear transport forcing.  Exactly,
 
-\`\`\`math
+```math
 c_epsilon'
 =
 g_epsilon-2epsilon c_epsilon,
 \qquad
 c_epsilon(0)=g_epsilon(0)=1.
-\`\`\`
+```
 
 The L5-19 uniform high-Sobolev bounds upgrade the inviscid-limit convergence to
 
-\`\`\`math
+```math
 sup_{tau<=T}
 ||theta_epsilon-theta_0||_{H^s}
 lesssim
 epsilon.
-\`\`\`
+```
 
 Since the inviscid target amplitude and forcing are both positive at
-\`tau=0\`, continuity gives one fixed \`tau_*>0\` such that for all
-sufficiently large \`R\`,
+`tau=0`, continuity gives one fixed `tau_*>0` such that for all
+sufficiently large `R`,
 
-\`\`\`math
+```math
 c_{1/R}(tau)>=1/2,
 \qquad
 g_{1/R}(tau)>=1/2
-\`\`\`
+```
 
-throughout \`0<=tau<=tau_*\`.
+throughout `0<=tau<=tau_*`.
 
 Thus the signed nonlinear transfer into the target sine component remains
-order \`A^3N\` for physical time \`tau_*/(AN)\`, giving an order-\`A^2\`
+order `A^3N` for physical time `tau_*/(AN)`, giving an order-`A^2`
 coherent transfer.  The corresponding viscous target loss is smaller by
-\`O(1/R)\`.
+`O(1/R)`.
 
 Combined with L5-20, the same calibration can therefore have fixed-turnover
 signed transfer coherence while its fixed-window selector charge tends to
@@ -916,62 +916,62 @@ episode coherence or a selected whole-space statement.
 
 ### L5-23 exact viscous shear-chain phase locking
 
-\`work_packages/NS_CI_R014_A2_L5_23_C2_SHEAR_PHASE_LOCK.md\`
+`work_packages/NS_CI_R014_A2_L5_23_C2_SHEAR_PHASE_LOCK.md`
 records
 
-\`\`\`text
+```text
 EXACT_VISCOUS_SHEAR_CHAIN_QUADRATURE_LOCKING_PROVED
 __PHASE_DECOHERENCE_ABSENT_IN_CALIBRATION.
-\`\`\`
+```
 
 A second exact unforced periodic 2.5D calibration removes generic phase-reset
 cost more strongly.
 
 For the decaying shear
 
-\`\`\`math
+```math
 v=(A e^{-nu N^2t}\cos(Nx_2),0),
-\`\`\`
+```
 
 the vertical component obeys passive advection-diffusion.  In turnover
-variables, the complex \`X\)-frequency-one chain satisfies
+variables, the complex `X\)-frequency-one chain satisfies
 
-\`\`\`math
+```math
 a_n'
 =
 -\frac{i}{2}e^{-epsilon tau}(a_{n-1}+a_{n+1})
 -
 epsilon(1+n^2)a_n.
-\`\`\`
+```
 
 The phase sector
 
-\`\`\`math
+```math
 a_n=(-i)^n b_n,\qquad b_n\in R
-\`\`\`
+```
 
-is exactly invariant, because the \`b_n\` satisfy a real nearest-neighbour
+is exactly invariant, because the `b_n` satisfy a real nearest-neighbour
 system.
 
 Hence every adjacent nonzero pair remains exactly in quadrature:
 
-\`\`\`math
+```math
 Re(conj(a_n)a_{n+1})=0,
 \qquad
 |Im(conj(a_n)a_{n+1})|
 =
 |a_n||a_{n+1}|.
-\`\`\`
+```
 
 Viscosity damps amplitudes but does not rotate this phase lattice.  Transfer
 direction may reverse when a real amplitude crosses zero, without gradual
 phase decorrelation.
 
-At \`epsilon=0\` the chain is explicit:
+At `epsilon=0` the chain is explicit:
 
-\`\`\`math
+```math
 a_n(tau)=(-i)^n J_n(tau).
-\`\`\`
+```
 
 Thus the repeated-event residual cannot be charged generically to phase
 decoherence itself.  Any remaining cost must arise from amplitude decay,
@@ -1285,6 +1285,1222 @@ phase locking, zero residual, or an exact passive-scalar reduction.
 The theorem remains conditional: the normal-form hypotheses have not been
 derived from an arbitrary selected whole-space upper-band overshoot.
 
+
+### L5-28 semiclassical residual weakening and NF4 depletion scale
+
+`work_packages/NS_CI_R014_A2_L5_28_C2_MIX_SEMICLASSICAL_RESIDUAL.md`
+records
+
+```text
+SEMICLASSICAL_BRIDGE_RESIDUAL_WEAKENING_PROVED
+__ABSOLUTE_NF4_DERIVATION_REQUIRES_R_TWO_THIRDS_DEPLETION.
+```
+
+The ordinary demodulated `H^k` residual in L5-27 is stronger than the
+critical moment argument intrinsically needs.  Introduce
+
+```math
+||f||_{H_h^2}^2
+=
+sum_{j=0}^2||(h partial_Y)^j f||_2^2.
+```
+
+Using the covariant operator
+
+```math
+C_h=h partial_Y-i p_h g',
+\qquad
+L_h=C_h^2-h^2,
+```
+
+the L5-27 stability argument closes with `O(h)` initialization and residual
+only in the semiclassical `H_h^2` norm.  The scaled second and fourth Fourier
+moments still converge, so the conditional critical `c_*/nu` selector charge
+is unchanged.
+
+This eliminates rapid demodulation frequency as the material bridge
+obstruction.
+
+Under active-scale normalization the turnover equation has an order-one
+quadratic nonlinearity.  Critical time `s=h tau` makes a generic
+nonprincipal same-band interaction order `h^{-1}`, while NF4-sc requires an
+`O(h)` residual.  Thus the actual required relative depletion is
+
+```math
+h^2=R^{-2/3}.
+```
+
+Protected L5-16 proves that incompressibility, Leray projection, fixed-width
+same-band localization, and amplitude information alone permit the full
+physical forcing scale `A^2N`.  Hence those absolute algebraic ingredients
+cannot supply the required `R^{-2/3}` factor.
+
+The residual derivation problem is therefore now a genuine dynamic/geometric
+depletion problem, not a Sobolev bookkeeping problem.
+
+
+### L5-29 exact same-band polarization corridor
+
+`work_packages/NS_CI_R014_A2_L5_29_C2_POLARIZATION_CORRIDOR.md`
+records
+
+```text
+SAME_BAND_POLARIZATION_NULL_FACTOR_EXACT
+__R_TWO_THIRDS_ALIGNMENT_NOT_FORCED_POINTWISE.
+```
+
+For orthogonal source frequencies and unit divergence-free polarizations
+
+```math
+a_alpha=(0,cos(alpha),sin(alpha)),
+\qquad
+b_beta=(cos(beta),0,sin(beta)),
+```
+
+the exact Leray-projected sum-frequency interaction is
+
+```math
+P_{k_1+k_2}(u dot grad u)
+=
+-(A^2N/2) sin(alpha+beta) e_3
+```
+
+at the target phase.
+
+The source support, source modal amplitudes, and source shell energies are
+independent of `alpha,beta`, while the projected forcing ranges continuously
+from exact zero to the full order-`A^2N` scale and reverses sign.
+
+Combining with L5-28, if this interaction belongs to the nonprincipal bridge
+residual then NF4 requires
+
+```math
+|sin(alpha+beta)|
+lesssim
+h^2
+=
+R^{-2/3}.
+```
+
+Near the null set this is an `O(R^{-2/3})` polarization corridor.
+
+Thus A2, shell energy, support, and amplitude data cannot force the required
+pointwise alignment.  Any successful depletion route must be time-correlated
+or use genuinely additional geometric information.
+
+
+### L5-30 polarization defect as an exact secondary shear charge
+
+`work_packages/NS_CI_R014_A2_L5_30_C2_SECONDARY_SHEAR_CHARGE.md`
+records
+
+```text
+EXACT_SECONDARY_SHEAR_CHARGE_PROVED
+__R_SQUARED_DELTA_DIVERGENCE_FORCES_C_OVER_NU.
+```
+
+A one-parameter subfamily of the L5-29 polarization fixture is an exact smooth
+unforced periodic 2.5D NSE trajectory.
+
+Let `delta` be the L5-29 polarization defect and
+
+```math
+rho=R delta.
+```
+
+Then `A delta` is exactly the amplitude of a decaying horizontal shear acting
+on a vertical carrier of amplitude `A`.
+
+For bounded effective shear `rho`, a short parabolic-time Duhamel estimate
+produces a neighboring Fourier coefficient of size `c rho A`.  It violates
+the threshold whenever
+
+```math
+R rho=R^2 delta -> infinity,
+```
+
+and persists on a fixed fraction of a parabolic interval, giving selector
+charge `c/nu`.
+
+For large `rho`, protected L5-26 applies with `rho` as the effective shear
+Reynolds number.  Its critical front at `N rho^(1/3)` again gives charge
+`c/nu`.
+
+Therefore
+
+```math
+R^2 delta -> infinity
+\quad=>\quad
+integral Lambda^2 dt >= c/nu
+```
+
+in this exact calibration family.
+
+Thus a channel too large to ignore need not be depleted; if it has coherent
+shear structure it can be promoted to a secondary principal mixing channel and
+pay the critical cost itself.  The exact calibration leaves unresolved only
+`R^2 delta=O(1)`, i.e. `delta=O(R^-2)`, as a sufficient-condition boundary.
+
+
+### L5-31 finite coherent transverse shear family
+
+`work_packages/NS_CI_R014_A2_L5_31_C2_GENERAL_SHEAR_PROFILE.md`
+records
+
+```text
+FINITE_COHERENT_SHEAR_FAMILY_COLLAPSES_TO_ONE_PROFILE
+__R_SQUARED_DELTA_CHARGE_PERSISTS.
+```
+
+Any fixed finite family of same-direction transverse Fourier shears is exactly
+one real trigonometric profile `G(Y)` evolving by the one-dimensional heat
+semigroup.
+
+For a horizontal shear amplitude fraction `delta`, define
+
+```math
+rho=R delta.
+```
+
+An exact vertical carrier under this generalized shear obeys passive
+advection-diffusion.
+
+For bounded `rho`, any fixed nonzero Fourier coefficient of `G` generates a
+neighboring carrier coefficient of order `rho` on a fixed parabolic-time
+interval. Thus `R^2 delta->infinity` gives a threshold violation and
+`c_G/nu` selector charge.
+
+For large `rho`, set `h=rho^-1/3` and `s=h tau`. The heat-evolving profile
+freezes critically:
+
+```math
+G_h(s)=G+O(h^2).
+```
+
+Exact time-dependent phase removal yields the limit
+
+```math
+A_0(s,Y)
+=
+exp(-s^3 |G'(Y)|^2/3).
+```
+
+Every nonconstant fixed profile has positive scaled critical Fourier variance,
+so positive mass reaches `|n|\asymp rho^(1/3)` and again pays
+`c_G/nu` selector charge.
+
+Therefore
+
+```math
+R^2 delta->infinity
+\quad=>\quad
+integral Lambda^2 dt >= c_G/nu
+```
+
+for every fixed nonconstant coherent profile.
+
+Finite coherent same-direction channels do not need separate overlapping
+charge ledgers; they collapse to one generalized phase. The remaining
+whole-space issue is extracting a coherent profile over the critical interval.
+
+
+### L5-32 time-dependent transverse-profile bridge
+
+`work_packages/NS_CI_R014_A2_L5_32_C2_ACCUMULATED_PHASE.md`
+records
+
+```text
+TIME_DEPENDENT_TRANSVERSE_PROFILE_BRIDGE_PROVED
+__ACCUMULATED_PHASE_GRADIENT_IS_CRITICAL_INVARIANT.
+```
+
+For the critical normal form
+
+```math
+Phi_s+i h^{-1}G_h(s,Y)Phi
+=
+h^2(D_Y^2-1)Phi+r_h,
+```
+
+define the accumulated transverse phase
+
+```math
+F_h(s,Y)=int_0^s G_h(sigma,Y) dsigma.
+```
+
+Exact phase removal by `exp(-iF_h/h)` cancels the entire fast potential.
+The demodulated equation depends on `F_h`, not directly on the instantaneous
+profile `G_h`.
+
+If
+
+```math
+F_h=F_0+O(h)
+```
+
+in a fixed spatial smooth norm, with the L5-28 `O(h)` semiclassical residual,
+then
+
+```math
+A_h->A_0,
+\qquad
+A_0
+=
+exp(
+-int_0^s |(F_0)_Y(sigma,Y)|^2 dsigma
+)
+```
+
+at `O(h)` in `H_h^2`.
+
+The scaled moments satisfy
+
+```math
+h^2 sum n^2|c_n|^2
+->
+||(F_0)_Y A_0||_2^2,
+```
+
+and
+
+```math
+h^4 sum n^4|c_n|^2
+->
+||(F_0)_Y^2 A_0||_2^2.
+```
+
+Thus any fixed critical interval on which
+`||(F_0)_Y A_0||_2` is uniformly positive has positive critical-band mass and
+the same `c/nu` selector charge.
+
+Small instantaneous profile drift is not required.  For example,
+
+```math
+G_h=G_0+sin(s/h)H
+```
+
+has order-one instantaneous drift but only `O(h)` accumulated-phase error.
+
+The remaining coherence problem is therefore directional: extract one common
+transport direction/transverse coordinate and a nondegenerate accumulated
+phase from selected whole-space active-band dynamics.
+
+
+### L5-33 transverse direction-defect corridor
+
+`work_packages/NS_CI_R014_A2_L5_33_C2_DIRECTION_DEFECT.md`
+records
+
+```text
+TRANSVERSE_DIRECTION_DEFECT_AS_RESIDUAL_REQUIRES_H_CUBED
+__LARGER_DEFECT_MUST_BE_PROMOTED_OR_CHARGED.
+```
+
+Model a transport-direction defect in the critical packet equation by the
+transverse derivative leakage
+
+```math
+D_h Phi_h
+=
+h^{-1} theta_h(s) B_h(s,Y) partial_Y Phi_h.
+```
+
+After the L5-32 phase removal,
+
+```math
+widetilde D_h
+=
+h^{-1}theta_hB_h partial_Y A_h
+-
+i h^{-2}theta_h B_h(F_h)_Y A_h.
+```
+
+Define
+
+```math
+Z_h
+=
+hB_h partial_Y A_h
+-
+iB_h(F_h)_Y A_h.
+```
+
+Then exactly
+
+```math
+widetilde D_h
+=
+h^{-2}theta_h Z_h.
+```
+
+If the direction term is assigned to the protected NF4 residual, its L2
+component must satisfy
+
+```math
+||theta_h Z_h||_{L2_{s,Y}}
+=
+O(h^3).
+```
+
+Under uniform nondegenerate limiting coupling
+
+```math
+inf_s ||B_0(F_0)_Y A_0||_2
+>=
+c_dir>0,
+```
+
+L5-32 gives `inf_s||Z_h(s)||_2>=c_dir/2` for small `h`. Hence
+
+```math
+||theta_h||_{L2_s}
+=
+O(h^3).
+```
+
+For a persistent approximately constant direction error,
+
+```math
+|theta_h|
+lesssim
+h^3
+=
+rho^{-1}.
+```
+
+Thus a nondegenerately coupled direction defect larger than the
+`rho^{-1}` corridor cannot be hidden inside the L5-28 residual.  It must be
+promoted into principal critical dynamics, shown to cancel by additional
+structure, or charged independently.
+
+This tranche does not yet prove that larger direction drift pays a selector
+charge.
+
+
+### L5-34 uniform direction motion as principal moving-frame dynamics
+
+`work_packages/NS_CI_R014_A2_L5_34_C2_DIRECTION_MOVING_FRAME.md`
+records
+
+```text
+UNIFORM_DIRECTION_MOTION_REMOVED_BY_EXACT_MOVING_FRAME
+__LAGRANGIAN_ACCUMULATED_PHASE_CONTROLS_CHARGE.
+```
+
+L5-33's `h^3=rho^-1` direction corridor applies only when a transverse
+direction term is assigned to the protected residual.
+
+For principal spatially uniform direction motion,
+
+```math
+partial_s Phi_h
++
+h^-1 theta_h(s) partial_Y Phi_h
++
+i h^-1 G_h(s,Y) Phi_h
+=
+h^2(partial_Y^2-1)Phi_h
++
+r_h,
+```
+
+define
+
+```math
+Gamma_h(s)
+=
+h^-1 int_0^s theta_h(sigma) dsigma.
+```
+
+The translation
+
+```math
+Psi_h(s,Y)
+=
+Phi_h(s,Y+Gamma_h(s))
+```
+
+removes the derivative term exactly, preserves `H_h^2`, and preserves every
+Fourier coefficient magnitude.
+
+The resulting L5-32 phase is the moving-frame accumulated phase
+
+```math
+Fcal_h(s,Y)
+=
+int_0^s
+G_h(sigma,Y+Gamma_h(sigma))
+dsigma.
+```
+
+If `Fcal_h=Fcal_0+O(h)` in the protected smooth norm and the limiting
+accumulated phase gradient is nondegenerate, the L5-32 critical band and
+`c/nu` selector-charge theorem survive with no smallness assumption on the
+rigid direction speed.
+
+Direction magnitude alone does not imply mixing.  For
+`G=cos Y` and constant nonzero `theta`,
+
+```math
+Fcal_h
+=
+(h/theta)
+[
+sin(Y+theta s/h)-sin Y
+]
+=
+O(h),
+```
+
+so the limiting accumulated phase is zero and the protected critical moment
+lower mechanism degenerates.
+
+For nonuniform principal direction motion
+`h^-1 theta_h B_h(s,Y) partial_Y`, the characteristic Jacobian satisfies
+
+```math
+partial_s J_h
+=
+h^-1 theta_h
+(partial_Y B_h)(s,chi_h)
+J_h.
+```
+
+Thus the moving frame is no longer automatically isometric and diffusion
+acquires a variable metric.  This is the next direction-coherence boundary.
+
+
+### L5-35 bounded nonuniform direction-frame deformation
+
+`work_packages/NS_CI_R014_A2_L5_35_C2_DIRECTION_DEFORMED_FRAME.md`
+records
+
+```text
+BOUNDED_NONUNIFORM_FRAME_DEFORMATION_PRESERVES_CRITICAL_MIXING
+__ABSOLUTE_DIRECTION_STRAIN_BUDGET_IS_H_SCALE.
+```
+
+L5-34 removes rigid direction motion exactly.  L5-35 extends the principal
+moving-frame theorem to one-dimensional nonuniform direction fields whose
+characteristic maps remain uniformly smooth and bi-Lipschitz.
+
+For
+
+```math
+partial_s Phi_h
++
+h^-1 theta_h(s) B_h(s,Y) partial_Y Phi_h
++
+i h^-1 G_h(s,Y) Phi_h
+=
+h^2(partial_Y^2-1)Phi_h+r_h,
+```
+
+let `chi_h` be the direction-flow map and `J_h=partial_Z chi_h`.
+Pullback gives the exact diffusion metric
+
+```math
+partial_Y^2
+->
+J_h^-2 partial_Z^2
+-
+J_h^-3 (J_h)_Z partial_Z.
+```
+
+After exact accumulated-phase removal along characteristics, the leading
+critical damping is
+
+```math
+-
+J_h^-2 |(Fcal_h)_Z|^2.
+```
+
+Under uniform smooth bi-Lipschitz frame bounds, `O(h)` convergence of the
+metric and Lagrangian accumulated phase, and the protected `O(h)`
+semiclassical residual, the limiting amplitude is
+
+```math
+A_0
+=
+exp(
+-
+int J_0^-2 |(Fcal_0)_Z|^2 ds
+).
+```
+
+The physical scaled Fourier moments satisfy
+
+```math
+h^2 sum n^2 |c_n|^2
+->
+int J_0^-1 |(Fcal_0)_Z A_0|^2 dZ
+```
+
+and
+
+```math
+h^4 sum n^4 |c_n|^2
+->
+int J_0^-3 |(Fcal_0)_Z|^4 |A_0|^2 dZ.
+```
+
+Metric-weighted second-moment nondegeneracy therefore preserves positive
+physical critical-band mass and the `c/nu` selector charge.
+
+The exact Jacobian equation is
+
+```math
+J_s
+=
+h^-1 theta_h B_Y(s,chi_h) J.
+```
+
+Hence the absolute budget
+
+```math
+h^-1
+int
+|theta_h|
+||B_h||_{W^{4,infinity}}
+ds
+<=
+C
+```
+
+is a sufficient route to bounded finite-order frame geometry.  For persistent
+order-one spatial direction gradients this asks for the sufficient scale
+`|theta_h|=O(h)=O(rho^-1/3)`, much wider than L5-33's residual
+`O(h^3)` corridor.
+
+This scale is not claimed necessary.  Signed or oscillatory characteristic
+strain may cancel.
+
+The exact separator `B(Y)=sin Y`, constant positive `theta`, has
+`J_h(s,0)=exp(theta s/h)`, showing that order-one nonuniform direction strain
+can create exponential critical-time frame distortion.
+
+
+### L5-36 separable direction strain and signed flow time
+
+`work_packages/NS_CI_R014_A2_L5_36_C2_DIRECTION_SIGNED_FLOW_TIME.md`
+records
+
+```text
+SEPARABLE_DIRECTION_STRAIN_REDUCES_TO_SIGNED_FLOW_TIME
+__ABSOLUTE_H_SCALE_NOT_NECESSARY.
+```
+
+For separable principal direction fields
+
+```math
+h^-1 theta_h(s) B(Y) partial_Y,
+```
+
+the full characteristic geometry factors through one signed flow clock
+
+```math
+kappa_h(s)
+=
+h^-1 int_0^s theta_h(sigma) dsigma.
+```
+
+If `varphi_kappa` is the autonomous flow of `B`, then exactly
+
+```math
+chi_h(s,Z)
+=
+varphi_{kappa_h(s)}(Z).
+```
+
+Thus bounded signed flow time gives bounded finite-order characteristic
+geometry, and `kappa_h=kappa_0+O(h)` gives the O(h) metric convergence
+required by L5-35.  Smooth Eulerian phase convergence then gives the same O(h)
+Lagrangian accumulated-phase convergence.
+
+This sharply improves the absolute L5-35 sufficient budget.
+
+For
+
+```math
+theta_h(s)=sin(s/h^2),
+```
+
+one has
+
+```math
+kappa_h(s)
+=
+h[1-cos(s/h^2)]
+=
+O(h),
+```
+
+while
+
+```math
+h^-1 int_0^S |theta_h(s)| ds
+asymp
+h^-1
+->
+infinity.
+```
+
+Hence order-one rapidly oscillating direction strain can produce an
+O(h)-near-identity frame and remain compatible with the protected critical
+charge theorem for a fixed nondegenerate scalar phase.
+
+For `B(Y)=sin Y`, the autonomous flow is explicit:
+
+```math
+tan(varphi_kappa(Z)/2)
+=
+e^kappa tan(Z/2),
+```
+
+with fixed-point Jacobians
+
+```math
+partial_Z varphi_kappa(0)=e^kappa,
+\qquad
+partial_Z varphi_kappa(pi)=e^-kappa.
+```
+
+Thus signed flow time directly controls exponential deformation in this
+separator.
+
+The unresolved geometry is genuinely time-dependent
+`B_h=B_h(s,Y)`, where different spatial vector fields need not commute and
+no single scalar signed clock captures the time-ordered flow.
+
+
+### L5-37 nonseparable direction geometry and Lagrangian jet cocycle
+
+`work_packages/NS_CI_R014_A2_L5_37_C2_DIRECTION_PATHORDERED_JET.md`
+records
+
+```text
+NONSEPARABLE_DIRECTION_GEOMETRY_CONTROLLED_BY_LAGRANGIAN_JET_COCYCLE
+__SCALAR_SIGNED_CLOCK_INSUFFICIENT.
+```
+
+For genuinely time-dependent principal direction fields
+
+```math
+v_h(s,Y)
+=
+h^-1 theta_h(s) B_h(s,Y),
+```
+
+the separable scalar clock from L5-36 no longer captures the characteristic
+geometry.
+
+Let `chi_h` be the characteristic flow and define
+
+```math
+J_h=chi_{h,Z},
+\qquad
+Omega_{1,h}(s,Z)
+=
+int_0^s
+(partial_Y v_h)(sigma,chi_h(sigma,Z))
+dsigma.
+```
+
+Then exactly
+
+```math
+J_h=e^{Omega_{1,h}}.
+```
+
+Writing
+
+```math
+U_2=chi_{ZZ}/J,
+\qquad
+U_3=chi_{ZZZ}/J,
+\qquad
+U_4=chi_{ZZZZ}/J,
+```
+
+the normalized pathwise jet cocycle obeys
+
+```math
+U_2'
+=
+a_2 J,
+```
+
+```math
+U_3'
+=
+3 a_2 J U_2
++
+a_3 J^2,
+```
+
+and
+
+```math
+U_4'
+=
+4 a_2 J U_3
++
+3 a_2 J U_2^2
++
+6 a_3 J^2 U_2
++
+a_4 J^3,
+```
+
+where `a_m=(partial_Y^m v_h)(s,chi_h)`.
+
+Together with one lifted basepoint trajectory `Xi_h`, the finite signature
+
+```math
+D_h
+=
+(
+Xi_h,
+Omega_{1,h},
+U_2,
+U_3,
+U_4
+)
+```
+
+reconstructs the frame through fourth spatial order.
+
+Uniform boundedness of this signature gives the smooth bi-Lipschitz frame
+contract used by L5-35.  O(h) convergence of the signature gives O(h)
+frame/metric convergence, and therefore O(h) Lagrangian accumulated-phase
+convergence for a smoothly convergent Eulerian scalar profile.
+
+A smooth two-profile pulse separator proves that the scalar signed coefficient
+clock is insufficient outside the separable class.
+
+Choose one pulse with `B=1` and signed time `+kappa`, followed by a second
+pulse with `B=sin Y` and signed time `-kappa`, changing the spatial profile
+smoothly only in a gap where `theta_h=0`.
+
+Then
+
+```math
+h^-1 int theta_h ds
+=
+0,
+```
+
+but the final flow is exactly
+
+```math
+chi_fin
+=
+varphi_sin^{-kappa}
+circ
+T_kappa.
+```
+
+At the lifted point `Z=-kappa`,
+
+```math
+partial_Z chi_fin
+=
+e^{-kappa}.
+```
+
+The pathwise strain cocycle records `Omega_1=-kappa` exactly, while the scalar
+signed clock records zero.
+
+Thus the nonseparable frame variable is the Lagrangian deformation-jet
+cocycle, not `int theta_h`.
+
+
+### L5-38 A2/Leray far-low jet-cost hierarchy
+
+`work_packages/NS_CI_R014_A2_L5_38_C2_DIRECTION_JET_COST.md`
+records
+
+```text
+A2_LERAY_CONTROLS_FAR_LOW_EULERIAN_JET_INTEGRALS
+__DIRECTION_NORMALIZATION_AND_TOP_BAND_JET_COST_REMAIN_OPEN.
+```
+
+For each fixed derivative order `m>=1`, define
+
+```math
+R_m(Q)
+=
+\left\lfloor
+\frac{2Q}{2m+1}
+\right\rfloor.
+```
+
+A2, Leray dissipation, and three-dimensional Bernstein give
+
+```math
+\int_0^T
+\sum_{q\le R_m(Q(t))}
+\|\nabla^m u_q(t)\|_\infty
+\,dt
+<
+\infty.
+```
+
+For `m=1,2,3,4`, the relative cutoffs are respectively
+
+```text
+2/3, 2/5, 2/7, 2/9.
+```
+
+The first boundary reproduces the protected L5-14 lower-two-thirds scale.
+These fractions are sharp only for the absolute A2/Leray/Bernstein pairing
+route.
+
+Raw jet control does not by itself control derivatives of an extracted
+normalized direction `e=b/|b|`: an exact divergence-free one-shell field can
+have arbitrarily large shell supremum while vanishing on nodal planes.
+However, on `{b!=0}` the exact projection identity gives
+
+```math
+|b|^2 |\nabla(b/|b|)|^2
+\le
+|\nabla b|^2.
+```
+
+Thus Leray energy already controls amplitude-weighted first angular strain.
+The unresolved first-order step is an occupation/pathwise bridge from this
+weighted Eulerian quantity to the unweighted L5-37 tangent cocycle. Higher
+weighted curvature/metric jets and the top active fractions remain open.
+
+
+### L5-39 exact direction-occupation calibration
+
+`work_packages/NS_CI_R014_A2_L5_39_C2_DIRECTION_OCCUPATION_CALIBRATION.md`
+records
+
+```text
+UNIFORM_PATHWISE_DIRECTION_STRAIN_NOT_CONTROLLED_BY_SCALAR_A2_LERAY_BUDGETS
+__PACKET_OCCUPATION_OR_NONDEGENERACY_REQUIRED.
+```
+
+The exact periodic unforced NSE family
+
+```math
+u_{k,\varepsilon}(t,x,y,z)
+=
+A_0e^{-\nu k^2t}
+\bigl(0,\varepsilon\cos(kx),\sin(kx)\bigr)
+```
+
+has scalar annular supremum, energy, Leray dissipation, and parabolic
+`Lambda^2` occupancy uniformly bounded as `\varepsilon\downarrow0`.
+The invariant plane `x=0` carries only an `\varepsilon` fraction of the
+annular amplitude while
+
+```math
+|\nabla(u/|u|)|(t,X(t))=\frac{k}{\varepsilon}.
+```
+
+At the same streamline,
+
+```math
+|u|^2|\partial_x(u/|u|)|^2=|\partial_xu|^2,
+```
+
+so the L5-38 weighted estimate is exactly saturated there.  Thus the existing coarse scalar A2/Leray budget envelopes alone cannot yield
+a uniform all-streamline unweighted direction-cocycle bound.  The calibration is periodic and is not a whole-space
+A2 counterexample.
+
+### L5-40 reciprocal packet-occupation bridge
+
+`work_packages/NS_CI_R014_A2_L5_40_C2_DIRECTION_PACKET_OCCUPATION.md`
+records
+
+```text
+RECIPROCAL_PACKET_OCCUPATION_CONTROLS_TANGENT_COCYCLE_AE
+__RECIPROCAL_AMPLITUDE_NOT_CONTROLLED_BY_COARSE_A2_LERAY.
+```
+
+For a one-dimensional direction characteristic `chi` with
+`J=partial_Z chi>0`, principal direction coefficient
+`v=beta(s)B(s,Y)`, carrier `b`, and normalized direction `e=b/|b|`,
+define
+
+```math
+Omega_abs(Z)
+=
+int |beta||B_Y(s,chi)| ds,
+```
+
+```math
+E(Z)
+=
+int J |b(s,chi)|^2 |B_Y(s,chi)|^2 ds,
+```
+
+and
+
+```math
+R_beta(Z)
+=
+int |beta|^2/[J |b(s,chi)|^2] ds.
+```
+
+Then exactly
+
+```math
+Omega_abs(Z)^2 <= E(Z) R_beta(Z).
+```
+
+The Jacobian-weighted numerator returns to physical coordinates:
+
+```math
+int E(Z)dZ
+<=
+int int |partial_Y b|^2 dY ds,
+```
+
+using the L5-38 amplitude-weighted angular-strain identity.  Therefore, if
+
+```math
+D_b=int int |partial_Y b|^2 < infinity
+```
+
+and
+
+```math
+Rcal_beta=int R_beta(Z)dZ < infinity,
+```
+
+then
+
+```math
+int Omega_abs(Z)dZ
+<=
+D_b^(1/2) Rcal_beta^(1/2),
+```
+
+and the labels with `Omega_abs>K` have measure at most the right-hand side
+divided by `K`.  On the complementary labels the tangent Jacobian lies
+between `e^{-K}` and `e^K`.
+
+The protected L5-39 elliptic shear calibrates the reciprocal-amplitude
+component exactly on its invariant physical labels: its spatially averaged
+`1/|b|^2` occupation diverges like `1/epsilon` even though the coarse
+annular-supremum, energy, Leray-dissipation, and `Lambda^2` occupancy
+envelopes remain uniformly controlled.  This does not identify the physical
+labels with the L5-37 direction characteristic or control the additional
+`|beta|^2/J` factor.
+
+Thus the first-order denominator gap is now an explicit packet-occupation
+functional with a separately exposed amplitude obstruction, not an unspecified
+nondegeneracy condition.  The result is
+conditional and almost-everywhere; it is not the full smooth L5-35 frame
+contract and does not control `U2,U3,U4`.
+
+### L5-41 stopped reciprocal-amplitude occupation bootstrap
+
+`work_packages/NS_CI_R014_A2_L5_41_C2_DIRECTION_OCCUPATION_COST.md`
+records
+
+```text
+STOPPED_RECIPROCAL_AMPLITUDE_BOOTSTRAP_PROVED
+__COMPRESSION_EXPONENTIAL_LOSS_BLOCKS_FINITE_BUDGET_CLOSURE.
+```
+
+For the direction flow `chi_s=beta B(s,chi)`, stop each label at the first
+time `|log J|=K`.  Before stopping, `e^{-K}<=J<=e^K`, so the change of
+variables is controlled without assuming a global frame bound.
+
+With
+
+```math
+D_b=int int |partial_Y b|^2 dY ds
+```
+
+and
+
+```math
+A_beta=int int |beta|^2/|b|^2 dY ds,
+```
+
+the stopped Cauchy argument gives
+
+```math
+|{Z: sup_s |log J(s,Z)| >= K}|
+<=
+e^K K^{-1} D_b^(1/2) A_beta^(1/2).
+```
+
+Thus quantitative smallness of `D_b^(1/2)A_beta^(1/2)` is sufficient for
+first-order bounded distortion on most labels. Mere finiteness is not enough:
+the bootstrap factor is exponential in the allowed distortion.
+
+An exact normal-form compression separator makes this loss concrete.  For
+constant-amplitude carrier
+
+```math
+b_A(Y)=A(0,cos Y,sin Y),
+```
+
+chart `B(Y)=sin Y`, and `beta=-kappa/S`, the fixed label `Z=0` has
+
+```math
+J(s,0)=exp(-kappa s/S),
+```
+
+while
+
+```math
+A_amp(0)=kappa^2/(S A^2)
+```
+
+but
+
+```math
+R_beta(0)=kappa(e^kappa-1)/(S A^2).
+```
+
+Hence the full L5-40 occupation can be exponentially larger than its
+reciprocal-amplitude component under compression.  This is a normal-form
+geometric separator, not a selected whole-space NSE counterexample.
+
+The principal direction scale has `beta=h^{-1}theta=O(1)`; small beta is not
+available from scaling alone.
+
+### L5-42 intrinsic one-sided direction-compression cost
+
+`work_packages/NS_CI_R014_A2_L5_42_C2_DIRECTION_INTRINSIC_COMPRESSION_COST.md`
+records
+
+```text
+RECIPROCAL_AMPLITUDE_PRODUCT_NOT_INTRINSIC
+__COMPRESSION_EXIT_CONTROLLED_BY_GAUGE_FREE_NEGATIVE_DIRECTION_VARIATION.
+```
+
+The protected factorization
+
+```math
+v(s,Y)=beta(s)B(s,Y)
+```
+
+has an unfixed positive scalar gauge:
+
+```math
+beta -> c(s) beta,
+\qquad
+B -> B/c(s).
+```
+
+This leaves `v`, the characteristic map, `J`, and the tangent cocycle
+unchanged.  The L5-41 sufficient product
+`D_b^(1/2)A_beta^(1/2)` is therefore not intrinsic: a constant rescaling can
+make it arbitrarily large without changing the actual frame geometry.
+
+The invariant first-order quantity is the variation of the actual direction
+transport.  Define
+
+```math
+V_v^- =
+int int (-partial_Y v)_+ dY ds.
+```
+
+Stopping only at the first compression level `log J=-K` gives
+
+```math
+|{Z: inf_s log J(s,Z) <= -K}|
+<=
+e^K K^(-1) V_v^-.
+```
+
+Expansion does not need to be stopped for this reciprocal-Jacobian problem.
+
+A fully gauge-invariant factorized upper bound is
+
+```math
+C_(B,beta)
+=
+int
+[
+  int |b|^2 |B_Y|^2 dY
+]^(1/2)
+[
+  int |beta|^2 / |b|^2 dY
+]^(1/2)
+ds,
+```
+
+with
+
+```math
+V_v <= C_(B,beta).
+```
+
+On the full periodic coordinate,
+`int partial_Y v dY=0` implies only
+
+```math
+V_v^- = V_v/2.
+```
+
+Thus Eulerian signed-mean cancellation is not a compression mechanism.
+Any useful cancellation must be Lagrangian, packet-weighted, or correlated
+with the critical observable.
+
+### L5-43 packet-weighted intrinsic compression overlap
+
+`work_packages/NS_CI_R014_A2_L5_43_C2_DIRECTION_PACKET_COMPRESSION_OVERLAP.md` records
+
+`PACKET_WEIGHTED_COMPRESSION_EXIT_LOSES_NO_EXPONENTIAL_FACTOR__CRITICAL_DENSITY_RECONSTRUCTION_REMAINS_OPEN`.
+
+For any fixed nonnegative label density q and first compression set C_K^-,
+
+    integral_{C_K^-} q dZ <= K^(-1) W_{q,K}^-,
+
+where W_{q,K}^- is the q-weighted negative strain accumulated only until the
+first hit log J=-K. Keeping q in label space removes the exp(K) loss from the
+unweighted L5-42 change-of-variables estimate.
+
+The pushed-forward density rho_q=q∘chi^{-1}/J satisfies
+
+    partial_s rho_q + partial_Y(v rho_q)=0,
+
+and
+
+    W_q^- = integral integral rho_q (-partial_Y v)_+ dY ds.
+
+Thus the intrinsic object is the transported packet/compression overlap.
+Persistent compressive strain overlapping packet mass forces positive W_q^-,
+but this alone is not yet selector charge.
+
+The protected q_h interface from L5-40/L5-41 is still abstract: no protected
+identity ties q_h to the L5-35 metric moments, no transport/source law has
+been derived for it, and no NF5-style localized LP reconstruction converts
+compressed q_h-mass into a selector event.
+
+### L5-44 critical second-moment density balance
+
+`work_packages/NS_CI_R014_A2_L5_44_C2_DIRECTION_CRITICAL_DENSITY_BALANCE.md` records
+
+`CRITICAL_SECOND_MOMENT_DENSITY_HAS_EXACT_COMPRESSION_PRODUCTION__BALANCE_CHANNELS_IDENTIFIED`.
+
+For the limiting L5-35 density
+
+    q2 = J^(-1) |F_Z|^2 |A|^2,
+
+with q4 = J^(-3)|F_Z|^4|A|^2 and alpha=(partial_Y v)∘chi,
+
+    q2_s = alpha_- q2 - alpha_+ q2
+           + 2 F_Z (partial_Y G∘chi)|A|^2 - 2 q4.
+
+Thus compression is an exact positive production term for the actual critical
+second-moment density. Its integrated ledger is balanced only by terminal Q2
+growth, expansion overlap, the signed phase-gradient source, and integrated
+q4 damping.
+
+This resolves the L5-43 abstract-density gap at the limiting L5-35 level, but
+does not yet prove any one balance channel is a selector charge.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -1299,25 +2515,20 @@ derived from an arbitrary selected whole-space upper-band overshoot.
 
 ## Smallest safe next tranche
 
-The live obligation is now **C2-MIX-DERIVE**.
+The live obligation is now **C2-MIX-DIRECTION-COMPRESSION-LEDGER-CHARGE**.
 
-Audit the five normal-form hypotheses of L5-27 against the selected whole-space
-upper-band Navier--Stokes equation.  Do not assume the bridge contract.
+L5-39 rules out a uniform all-streamline conversion from scalar shell/A2/Leray
+budgets to unweighted direction strain.  The next bounded question is:
 
-Test in this order:
+> Determine whether selected active-band dynamics can control the expansion
+> and signed phase-source balance channels, or convert the q4 damping / terminal
+> q2 growth forced by persistent compression into a physical LP threshold and
+> selector/dissipation charge.
 
-1. **NF4 residual first.** Decompose pressure, localization, neighboring-band,
-   and genuinely 3D interaction errors after critical demodulation. Determine
-   whether A2/Leray structure can give the required `O(h)` critical residual.
-2. If NF4 survives, test whether a nondegenerate transverse deformation
-   direction (NF1) can be extracted without adding a geometric hypothesis.
-3. Then test NF2/NF3 normalization and initialization.
-4. Finally bind a concrete packet decomposition to NF5 reconstruction.
-
-A valid positive result must derive or weaken the hypotheses from selected
-equation structure. A negative result should identify the first exact
-obstruction and narrow the bridge rather than treating the conditional theorem
-as A2 closure.
+Test packet-weighted or almost-everywhere control before seeking a uniform
+frame theorem.  Any candidate derived only from coarse annular-supremum, `Lambda in L2_t`,
+energy, and Leray-dissipation envelopes must fail the L5-39 calibration;
+augmented polarization-sensitive information is not excluded.
 
 ## Authoritative pointers
 
@@ -1352,6 +2563,16 @@ as A2 closure.
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_25_C2_MIX_SUBCRITICAL_LOWER.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_26_C2_MIX_CRITICAL_SEMICLASSICAL.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_27_C2_MIX_BRIDGE_NORMAL_FORM.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_28_C2_MIX_SEMICLASSICAL_RESIDUAL.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_29_C2_POLARIZATION_CORRIDOR.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_30_C2_SECONDARY_SHEAR_CHARGE.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_31_C2_GENERAL_SHEAR_PROFILE.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_32_C2_ACCUMULATED_PHASE.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_33_C2_DIRECTION_DEFECT.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_34_C2_DIRECTION_MOVING_FRAME.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_35_C2_DIRECTION_DEFORMED_FRAME.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_36_C2_DIRECTION_SIGNED_FLOW_TIME.md`
+- `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L5_37_C2_DIRECTION_PATHORDERED_JET.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_WEIGHTED_COLUMN.md`
 - `grandchallenge/MATHSOLVE:work_packages/NS_CI_R014_A2_L4_SIGNED_DECORRELATION.md`
 - `grandchallenge/MATHSOLVE:campaign_manifests/NS-CI-001.json`
