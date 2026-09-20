@@ -1,60 +1,60 @@
 # WP07 Next Executable Step
 
-Date: 2026-09-16
+Date: 2026-09-20
 
 ## Current frontier
 
-D001 source/build audit, D002 semantic obstruction, and D003 local predicate are
-closed in the current integration package. The first D004 semantic bridge is
-also checked. The missing mathematical theorem is now precise:
+D001-D004 are closed on the local WP07 theorem surface. In particular,
 
 ```lean
-SourceShapedMainNDSStatement α
+sourceShapedMainNDS : SourceShapedMainNDSStatement α
+d004_averageRarity : D004AverageRarityStatement α
 ```
 
-which states NDS nonpositivity for every local source-shaped finite functional
-preorder. Once this theorem is proved, `sourceShapedMainNDS_implies_D004`
-discharges the exact local average-rarity target.
+are checked after explicit semantic transport of the audited source theorem.
 
-## Selected route: smallest proof-bearing D004 transport
+The next mathematical obligation is therefore WP07-D005.
 
-Do not import the external repository as authority and do not copy unrelated
-infrastructure. Use the audited upstream proof only as provenance and extract
-the smallest dependency cone needed to establish the local NDS theorem.
+## Selected route: exact complement duality for the D003 class
 
-The next tranche should proceed in this order:
+Do not reuse WP06's `IsIdealFamilyOn` hypothesis: D002 proved that functional
+preorder order-ideal families need not satisfy it. Reuse only generic finite-set
+complement identities whose hypotheses are actually available.
 
-1. Map the exact upstream dependencies of
-   `AvgRare.MainStatement.main_nds_nonpos`, beginning with
-   `Reduction.main_nds_nonpos_of_secondary` and the secondary theorem actually
-   consumed by that proof.
-2. For each required declaration, decide whether the local D003 surface already
-   states the same object, whether a small semantic lemma is sufficient, or
-   whether a proof component must be ported/reproved.
-3. Prefer semantic lemmas for family membership, cardinality, total edge size,
-   degree/frequency, and NDS before porting structural machinery.
-4. Prove `SourceShapedMainNDSStatement` directly, or replace it only with a
-   proposition proved equivalent to it inside the local trusted boundary.
-5. Close D004 locally before beginning D005 complement duality.
+Proceed in this order:
 
-A fresh proof is also admissible if it is materially smaller than the source
-transport. The criterion is proof economy inside the local trusted boundary,
-not textual similarity to the external repository.
+1. Define the complement family on the explicit D003 carrier:
+   `complementFamilyOn F U := F.image (fun I => U \ I)` or reuse an existing
+   generic definition only after proving exact semantic agreement.
+2. Prove that intersections of two members of a functional-preorder ideal family
+   remain members. This should follow directly from the order-ideal predicate.
+3. Use
+   `U \ (A ∩ B) = (U \ A) ∪ (U \ B)`
+   to prove the complement family is union-closed.
+4. Prove the frequency identity
+   `deg_complement(x) = |F| - deg_F(x)`
+   for `x ∈ U`, with family-cardinality preservation explicit.
+5. Transport `d004_averageRarity` to average abundance of the complement family.
+6. Derive the corresponding restricted half-frequency/Frankl-abundance theorem,
+   checking nontriviality hypotheses explicitly.
+7. Compare only this restricted complement class against WP05 structural
+   conditions and the still-open `UC-P04` representation obligation.
 
-## D004 acceptance criteria
+## D005 acceptance criteria
 
-- the exact D003 predicate remains unchanged unless a checked semantic defect is found;
-- a local theorem proves `SourceShapedMainNDSStatement` or directly proves `D004AverageRarityStatement`;
+- the theorem hypothesis is exactly `IsFunctionalPreorderIdealFamilyOn F U`;
+- complement-family carrier and cardinality semantics are explicit;
+- union closure is proved from functional-preorder order-ideal intersection closure,
+  not from WP06 subset-downward closure;
+- rarity-to-abundance frequency arithmetic is checked in Lean;
 - no `sorry`, `admit`, or new unexplained axiom is introduced;
-- source definitions and local definitions are not conflated by name alone;
-- NDS normalization and family-cardinality semantics remain explicit;
-- the external repository remains provenance, not an imported trust root;
-- `UC-P04` and `UC-FRANKL` remain open.
+- `UC-P04` and `UC-FRANKL` remain open;
+- any later MATHCERT handoff is bounded to the exact restricted theorem.
 
-## After D004
+## Boundary after D005
 
-Only after local D004 closure, prove D005 complement duality for the exact D003
-class. Then compare the resulting restricted complement-abundance theorem
-against WP05 structural conditions and the universal `UC-P04` obstruction.
-MATHCERT receives a bounded exact handoff only after a new substantive local
-claim exists.
+Even a complete D005 theorem establishes only that complements of
+functional-preorder order-ideal families are a Frankl-abundant restricted class.
+It does not show that an arbitrary finite union-closed family has such a
+representation. That missing representation issue remains the universal
+firewall.
