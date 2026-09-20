@@ -1,6 +1,6 @@
 # NS-CI Independent Contributor Intake Pilot
 
-Status: PILOT_ACTIVE__DISPATCH_ISSUED
+Status: PILOT_RECONFIGURING__GITHUB_INTAKE_V1
 
 ## Authority
 
@@ -10,140 +10,117 @@ This is the bounded pilot authorized by Human Steward `fyremael` for
 Controlling protected records:
 
 - Council protected merge: `grandchallenge/INTELLECT@242d3b6a4130c24214a56978d7237dc85883c946`
-- Council disposition:
-  `governance/council_matters/GI-COUNCIL-INDEPENDENT-CONTRIBUTOR-INTAKE-001/disposition.json`
 - Human Steward authorization protected merge:
   `grandchallenge/INTELLECT@cacfe1f749b91a335e1d1734352cecff56bad7c1`
-- Human Steward record:
-  `governance/council_matters/GI-COUNCIL-INDEPENDENT-CONTRIBUTOR-INTAKE-001/human_steward_disposition.json`
 
 The authorization is pilot-only. It does not establish organization-wide policy,
 persistent coordination, mathematical certification, or contributor protected-state authority.
 
-## Purpose
+## Core interface
 
-Test a clean boundary between:
+Version 1 has one contributor interface:
 
-1. sealed independent dispatch;
-2. immutable raw contribution intake;
-3. mechanically checkable intake receipt;
-4. later GCL adjudication;
-5. optional protected incorporation through existing MATHSOLVE/MATHCERT routes.
+```text
+generated GitHub dispatch issue
+        ->
+one GCL-CONTRIBUTION-RESULT/1 issue comment
+        ->
+trusted intake workflow
+        ->
+raw evidence + receipt PR
+        ->
+ordinary protected MATHSOLVE admission
+```
 
-The independent contributor is a contributing entity, not a temporary GCL role-holder.
-The contributor's argument is evidence. Intake does not convert it into accepted mathematics.
+The contributor does not create branches, pull requests, files, commits, issues,
+attachments, notebooks, scripts, images, or supplementary notes.
 
-## Source mathematical handoff
+The contributor does not choose a repository path.
 
-The pilot source is:
+## Bootstrap completeness
 
-`handoffs/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE_ZERO_CONTEXT.md`
+Each dispatch issue body is generated from a protected
+`dispatch_bootstraps/<dispatch-id>.md` artifact.
 
-Dispatch records will bind the exact protected commit and blob identity after this pilot
-setup is protected. The handoff itself contains all mathematical hydration.
+The issue body contains the contributor's entire work-set:
 
-## Pilot concurrency modes
+- exact dispatch identity and concurrency mode;
+- complete mathematical context required for the assignment;
+- the single assigned problem;
+- allowed facts;
+- hard rejection tests;
+- time limit;
+- success criterion;
+- result grammar;
+- authority boundary.
 
-- `independent_blind`: same sealed assignment may be sent to multiple contributors;
-  no contribution from the cohort may be disclosed to another cohort member before closure.
-- `cooperative_claimed`: bounded work is claimed to avoid accidental duplication.
-- `adversarial_replay`: an existing result is intentionally challenged or reproduced;
-  the disclosed evidence surface must be explicit.
+A zero-context contributor is instructed not to inspect repository history, other issues,
+pull requests, branches, campaign documents, external sources, or another contributor result.
 
-## Blind cohort lifecycle
+## Return protocol
 
-A blind cohort has the state machine:
+The only accepted contributor-originated result object is one GitHub issue comment
+conforming to `GCL-CONTRIBUTION-RESULT/1`.
 
-`OPEN -> CLOSED_FOR_BLINDNESS -> SYNTHESIS_ALLOWED`
+The exact grammar is:
 
-No cross-contribution synthesis is allowed before durable closure.
-Late returns remain preserved evidence with `late_for_cohort` status and do not silently
-alter a completed blind comparison.
+`contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/RESULT_COMMENT_V1.md`
 
-## Durable return rule
+Initial pilot restrictions:
 
-Durability is mandatory. Repository access is not.
+- no attachments;
+- no files;
+- no images;
+- no Markdown links;
+- no raw URLs;
+- no HTML links;
+- no supplementary notes;
+- no second mathematical comment.
 
-An external contributor returns one complete Independent Contribution Record (ICR).
-If the contributor has no authorized repository write path, the full ICR is returned
-verbatim through the available transport. The receiving GCL intake process persists the
-original bytes before normalization, summary, adjudication, or synthesis.
+If a comment is mechanically invalid, the contributor may post one complete replacement
+comment. The rejected GitHub event is not rewritten.
 
-If a proposal-only inbox write is separately authorized, the contributor may write only
-to the designated raw inbox path named by its dispatch. It may not edit canonical
-handoffs, work packages, campaign ledgers, protected branches, receipts, or adjudication.
+## Trusted intake
 
-## Raw evidence rule
+The contributor has `issue_comment_only` authority.
 
-Raw contribution bytes and attachments are immutable after intake.
+A GCL-owned workflow validates:
 
-- corrections create new linked contribution records;
-- no return overwrites another return;
-- transport replay of identical bytes is idempotent;
-- derived summaries and normalized metadata cite the raw digest;
-- executable content is data and is not automatically executed.
+- the issue is the exact issue bound to the protected dispatch record;
+- the issue body exactly equals the protected bootstrap bytes;
+- the comment grammar and field order;
+- dispatch and assignment identity;
+- the protected cohort state;
+- absence of links, images, and attachment forms;
+- exact comment identity and authenticated GitHub actor.
 
-## Independence rule
+The workflow never executes contributor content.
 
-The pilot records separately:
+For a valid comment it creates only:
 
-- declared context class;
-- authenticated producer/provenance evidence, when available;
-- later adjudicated independence strength.
+- one immutable raw Markdown snapshot containing the exact comment body;
+- one machine receipt containing GitHub provenance and protected dispatch identity;
+- one ordinary intake pull request.
 
-Different sessions, model names, filenames, or self-declared identities do not by
-themselves prove independence.
+The workflow does not merge, adjudicate mathematics, infer independence, certify a claim,
+or mutate campaign state.
 
-## Mechanical versus review-bound classification
+## Blind cohort
 
-Mechanical:
+`NSCI-C2-A-BLIND-COHORT-001` remains `OPEN`.
 
-- byte identity;
-- exact dispatch binding;
-- schema validity;
-- explicit supersession links;
-- observable repository freshness.
+No cross-contribution synthesis is allowed before both blind results are durably admitted
+as raw evidence or the cohort is explicitly closed with missing-return evidence.
 
-Review-bound:
+## Current migration boundary
 
-- semantic duplication;
-- plagiarism/copying;
-- mathematical conflict meaning;
-- independence strength;
-- mathematical correctness.
+The former arbitrary-transport ICR contract is superseded before first contribution
+receipt.
 
-## Pilot acceptance evidence
+The three dispatches are temporarily `PENDING_GITHUB_ISSUE_BINDING`.
 
-The pilot must collect evidence for:
+After this GitHub-intake implementation is protected, GCL will create one dispatch issue
+per dispatch from the exact protected bootstrap bytes, bind each issue number into the
+dispatch record, and transition each dispatch to `READY_FOR_GITHUB_COMMENT`.
 
-1. exact raw preservation before synthesis;
-2. receipt binding to exact dispatch and raw digest;
-3. zero overwrite;
-4. zero contributor canonical mutation;
-5. blind-cohort non-disclosure before closure;
-6. stale-return preservation without silent live-state rebinding;
-7. safe handling of executable/instruction-bearing payloads;
-8. idempotent transport replay;
-9. identifier collision handling;
-10. truncated and late return handling;
-11. separation of intake from adjudication;
-12. executor feedback on overhead, ambiguity, usefulness, and concurrency defects.
-
-Pilot evidence returns to full Council review before broader institutionalization.
-
-## Current boundary
-
-Exact dispatch records are now issued against protected MATHSOLVE merge
-`490bb2da6b6d315193c86ae934a49241735d027c` and handoff blob
-`e49bf0c5b88567ea50a91e655b631cdc4f83daeb`.
-
-Open blind cohort: `NSCI-C2-A-BLIND-COHORT-001`.
-
-Ready dispatches:
-
-- `NSCI-C2-A-BLIND-001`: Assignment A, `independent_blind`;
-- `NSCI-C2-A-BLIND-002`: Assignment A, `independent_blind`;
-- `NSCI-C2-B-COOP-001`: Assignment B, `cooperative_claimed`.
-
-No contribution has yet been received or adjudicated. Blind-cohort synthesis remains
-forbidden until durable cohort closure.
+No contribution is accepted before that binding transition.
