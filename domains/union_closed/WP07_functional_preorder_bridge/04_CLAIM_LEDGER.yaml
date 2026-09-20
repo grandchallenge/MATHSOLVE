@@ -25,22 +25,24 @@ foundational_profile:
   pathology_risk:
     level: low
     triggers: []
-    notes: WP07 is confined to finite preorders and finite set families. The active mathematical debt is the local average-rarity theorem, not a foundations-sensitive extension.
+    notes: WP07 is confined to finite preorders and finite set families. D004 is locally closed; D005 complement duality is the active restricted mathematical debt.
 foundation_routing:
   selected_route: R0
-  route_reason: The branch is finite, decidable, and computably presented. D002/D003 and the first D004 bridge have a local checked Lean surface.
+  route_reason: The branch is finite, decidable, and computably presented. D002-D004 have checked local Lean surfaces.
   foundational_profile_used: true
   regularization_attempted: false
   choice_audit:
     status: weak_choice
-    notes: The audited upstream main theorem reports only propext, Classical.choice, and Quot.sound. The local bridge introduces no explicit axiom declaration.
+    notes: The audited source theorem reports only propext, Classical.choice, and Quot.sound. The local semantic bridge introduces no explicit axiom declaration.
   constructive_content:
-    status: partial_checked
-    notes: The semantic obstruction, exact local predicate, and NDS-to-average-rarity bridge are checked; the local main NDS proof remains open.
+    status: restricted_theorem_checked
+    notes: The semantic obstruction, exact local predicate, NDS normalization, source-shaped NDS theorem, and D004 average-rarity theorem are checked locally.
   certificate_boundary:
     target: local_lean_theorem_development
     checker_inputs:
       - MATHSOLVE/MathSolve/UnionClosed/FunctionalPreorderBridge.lean
+      - MATHSOLVE/MathSolve/UnionClosed/FunctionalPreorderD004.lean
+      - MATHSOLVE/MathSolve/UnionClosed/AvgRarePort/Secondary/MainStatement.lean
       - MATHSOLVE/domains/union_closed/WP07_functional_preorder_bridge/01_RESULT_STATUS.md
       - MATHSOLVE/domains/union_closed/WP07_functional_preorder_bridge/03_PROOF_DEBT_REGISTER.md
       - MATHFORGE/sources/UC-001/AVG_RARE_WP07_SOURCE_PROVENANCE.md
@@ -64,7 +66,7 @@ claims:
     assumptions:
       - Independent build success and an axiom report establish source facts, not governed local theorem authority.
       - The external repository is not imported as a trusted MATHSOLVE dependency.
-    promotion_condition: A local proof or semantically audited transport is still required before the external theorem content can become a governed local theorem.
+    promotion_condition: Local theorem authority requires a checked local proof or semantic transport.
     knowledge_graph_refs:
       - UC-WP05
       - UC-METHOD-AVERAGING
@@ -107,28 +109,34 @@ claims:
     assumptions:
       - This predicate is separate from IsIdealFamilyOn.
       - Carrier equality and family extensional equality remain explicit.
-    promotion_condition: Use this predicate as the only WP07 local class for D004 unless a checked semantic defect is found.
+    promotion_condition: Use this predicate as the only WP07 local class unless a checked semantic defect is found.
     knowledge_graph_refs:
       - UC-METHOD-AVERAGING
 
   - claim_id: UC-WP07-P004
-    short_name: D004 NDS normalization bridge checked
+    short_name: D004 functional-preorder average rarity checked
     claim_text: >-
-      For the local finite-family vocabulary, NDS nonpositivity is equivalent to
-      average rarity, and a proof of SourceShapedMainNDSStatement implies the
-      exact D004AverageRarityStatement for IsFunctionalPreorderIdealFamilyOn.
+      Every finite family represented by IsFunctionalPreorderIdealFamilyOn is
+      average-rare. The checked proof compiles the audited avg-rare theorem cone
+      inside MATHSOLVE, proves explicit equality of reachability, order-ideal
+      membership, finite family, and NDS across the transport boundary, proves
+      SourceShapedMainNDSStatement, and derives D004AverageRarityStatement.
     claim_class: PROVED_IN_PACKAGE
-    support_type: LEAN_PROOF
+    support_type: LEAN_PROOF_AND_SEMANTIC_TRANSPORT
     status: CHECKED
-    certainty: CONDITIONAL_BRIDGE
+    certainty: LOCAL_THEOREM
     source_or_artifact:
       - MATHSOLVE/MathSolve/UnionClosed/FunctionalPreorderBridge.lean
+      - MATHSOLVE/MathSolve/UnionClosed/FunctionalPreorderD004.lean
+      - MATHSOLVE/MathSolve/UnionClosed/AvgRarePort/
     assumptions:
-      - SourceShapedMainNDSStatement itself remains unproved locally.
-      - This conditional bridge does not import or assume the external theorem.
-    promotion_condition: D004 closes only after SourceShapedMainNDSStatement or an equivalent direct average-rarity theorem is proved locally.
+      - The conclusion is restricted to the exact D003 functional-preorder class.
+      - The vendored proof cone derives from avg-rare@21451877e9996a295bbc1ec25856d07fa302d48c and includes only module-path plus Lean-4.29 compatibility adaptations.
+      - This local theorem is not a MATHCERT certification.
+    promotion_condition: D005 may use this theorem only for the exact D003 class. No universal UC-P04 or UC-FRANKL promotion follows.
     knowledge_graph_refs:
       - UC-METHOD-AVERAGING
+      - UC-WP05
 
   - claim_id: UC-WP07-P005
     short_name: universal Frankl boundary unchanged
