@@ -83,7 +83,6 @@ def validate(root: Path = ROOT) -> list[str]:
         "GCL-CONTRIBUTION-RESULT/1",
         "issue_comment_only",
         "no attachments",
-        "PENDING_GITHUB_ISSUE_BINDING",
     ):
         if needle not in pilot:
             errors.append(f"pilot contract missing GitHub-native clause: {needle}")

@@ -11,8 +11,8 @@
   "bootstrap_path": "contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/dispatch_bootstraps/NSCI-C2-A-BLIND-002.md",
   "bootstrap_sha256": "3ebf63c6fc73c73f9627c815ff0fb2a02007f04513f4253e262b46b5d3bb8dcf",
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-  "github_issue_number": null,
-  "github_issue_url": null,
+  "github_issue_number": 425,
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/425",
   "github_issue_title": "[GCL-CONTRIB] NSCI-C2-A-BLIND-002 — Assignment A",
   "wall_clock_limit_minutes": 22,
   "contributor_write_authority": "issue_comment_only",
@@ -21,6 +21,9 @@
   "external_urls_allowed": false,
   "supplementary_files_allowed": false,
   "result_comment_count_expected": 1,
-  "dispatch_status": "PENDING_GITHUB_ISSUE_BINDING",
-  "supersedes_return_contract": "0.1-pilot arbitrary-transport ICR return"
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "supersedes_return_contract": "0.1-pilot arbitrary-transport ICR return",
+  "github_issue_body_sha256": "3ebf63c6fc73c73f9627c815ff0fb2a02007f04513f4253e262b46b5d3bb8dcf",
+  "github_issue_body_exact_verified_at_binding": true,
+  "binding_source_protected_merge": "683930ab6810e33859f34362a85b13133e515f6d"
 }
