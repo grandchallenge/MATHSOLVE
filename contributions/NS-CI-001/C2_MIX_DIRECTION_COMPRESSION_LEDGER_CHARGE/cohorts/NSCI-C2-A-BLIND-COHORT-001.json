@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1-pilot",
+  "cohort_id": "NSCI-C2-A-BLIND-COHORT-001",
+  "mode": "independent_blind",
+  "state": "OPEN",
+  "assignment_id": "A",
+  "source_handoff_pointer": "grandchallenge/MATHSOLVE@490bb2da6b6d315193c86ae934a49241735d027c:handoffs/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE_ZERO_CONTEXT.md",
+  "source_handoff_commit_sha": "490bb2da6b6d315193c86ae934a49241735d027c",
+  "source_handoff_blob_sha": "e49bf0c5b88567ea50a91e655b631cdc4f83daeb",
+  "source_handoff_sha256": "6b975cf1cfa17cf61e8f44350eb9ed41cef88876bae35555234e961ec2adbdb5",
+  "dispatch_ids": [
+    "NSCI-C2-A-BLIND-001",
+    "NSCI-C2-A-BLIND-002"
+  ],
+  "cross_disclosure_before_closure": false,
+  "synthesis_allowed": false,
+  "closure_condition": "Close after both dispatched contributors return durable ICRs, or explicitly close with missing-return evidence. No cross-contribution synthesis before closure.",
+  "late_return_policy": "Preserve with late_for_cohort status; do not retroactively alter a completed blind comparison."
+}
