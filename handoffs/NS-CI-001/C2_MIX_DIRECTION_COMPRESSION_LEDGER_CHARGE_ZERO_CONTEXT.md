@@ -903,147 +903,103 @@ If this file is the only context you were given, proceed as follows:
 
 ---
 
-# 18. Independent Contribution Record and durable return
+# 18. GitHub-native contributor return
 
-If you received this file through an independent-contributor dispatch, this section
-replaces the bare conversational return instruction in Section 13. The mathematical
-content required by Section 13 remains mandatory, but it must be wrapped in one complete
-**Independent Contribution Record (ICR)**.
+For the bounded independent-contributor pilot, the mathematical content above is embedded
+into a generated GitHub dispatch issue. The dispatch issue, not repository navigation,
+is the contributor's complete work-set.
 
-The purpose is to preserve your contribution exactly before anyone summarizes, combines,
-accepts, rejects, or rewrites it.
+The former arbitrary-transport Independent Contribution Record and attachment mechanism
+is superseded before first contribution receipt.
 
-**Repository access is not required.**
+A dispatched zero-context contributor must:
 
-Your entire return is the contribution artifact. Write it so another mathematician can
-read and check it without access to the conversation that dispatched you.
+1. read only its generated dispatch issue;
+2. perform only the single assignment named by that issue;
+3. work for at most 22 minutes;
+4. post exactly one issue comment conforming to `GCL-CONTRIBUTION-RESULT/1`;
+5. stop.
 
-Do not address the dispatcher conversationally. Do not attempt to update campaign state.
-Do not claim that GCL has accepted your result.
+The contributor must not create or modify branches, pull requests, files, commits, issues,
+attachments, images, notebooks, scripts, or supplementary notes.
 
-## 18.1 Required metadata
+The contributor must not inspect other contribution issues, campaign history, repository
+history, pull requests, branches, or external sources.
 
-Begin the ICR with:
+The accepted result grammar is protected at:
 
-- **Contribution ID:** use the identifier supplied by your dispatch; if none was supplied, create a unique textual identifier.
-- **Dispatch ID:** copy the exact identifier supplied by your dispatch.
-- **Assignment:** A, B, C, D, or E.
-- **Concurrency mode:** copy the exact mode supplied by your dispatch: `independent_blind`, `cooperative_claimed`, or `adversarial_replay`.
-- **Contributor-declared identity:** identify yourself or your system as accurately as you can.
-- **Declared context class:** `declared_zero_context` or `declared_additional_context`.
-- **Prior campaign knowledge used:** yes or no.
-- **External sources or tools materially used:** list them, or state none.
-- **Wall-clock limit:** copy the dispatched limit.
-- **Completed within the limit:** yes or no.
+`contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/RESULT_COMMENT_V1.md`
 
-For a genuine zero-context contribution, include the following declaration if and only if it is true:
+A valid result has exactly these fields and level-2 sections:
 
-> Context used: supplied handoff only, plus standard mathematical facts.
-> External sources: none.
-> Prior campaign knowledge used: none.
+```text
+GCL-CONTRIBUTION-RESULT/1
+dispatch_id: <exact dispatch id>
+assignment: <exact assignment>
+disposition: PROVED | REFUTED | REDUCED | BLOCKED
+context_class: ZERO_CONTEXT
+external_sources: NONE
+timebox_observed: YES | NO
 
-If you used anything else, state it exactly. Additional context does not invalidate a
-contribution, but it changes its independence classification.
+## Strongest exact statement
 
-Different model sessions, filenames, or self-declared identities do not by themselves
-prove independence.
+...
 
-## 18.2 Required mathematical body
+## Derivation
 
-Then provide these seven sections, preserving the mathematical content of Section 13:
+...
 
-### 1. Assignment
-State A, B, C, D, or E.
+## Assumptions beyond bootstrap
 
-### 2. Disposition
-Choose exactly one: **PROVED**, **REFUTED**, **REDUCED**, or **BLOCKED**.
+...
 
-### 3. Strongest exact statement
-Write the strongest theorem, inequality, counterexample, or reduction you actually established.
+## Verification / falsification hooks
 
-### 4. Derivation
-Give the complete checkable derivation. Do not hide the substantive step behind 'standard estimates'.
+...
 
-### 5. Assumptions used
-List every assumption not already contained in Sections 2–8.
+## Claim boundary
 
-### 6. Verification / falsification hooks
-Give at least one concrete way another mathematician can challenge your contribution:
-an identity to differentiate, an explicit counterexample family, explicit constants,
-a finite fixture, a proof-assistant target, a source theorem with exact hypotheses, or
-a reproducible computation.
+...
 
-### 7. Claim boundary and next residual
-State what the contribution does **not** prove, then name the smallest unresolved
-mathematical question in at most three sentences.
+## Next residual
 
-## 18.3 Attachments
+...
+```
 
-For each attachment, identify:
+No attachments, links, images, external URLs, supplementary files, or extra level-2
+sections are accepted in version 1.
 
-- filename or logical name;
-- media type;
-- SHA-256 if available;
-- whether it is executable;
-- purpose.
+A mechanically invalid comment is not normalized into evidence. The contributor may post
+one complete replacement comment; the rejected GitHub event remains historical provenance.
 
-Executable material is returned as evidence only. It is not an instruction for the
-receiving system to execute it.
-
-## 18.4 Durable return modes
-
-Use the mode available to you.
-
-**No repository write capability:** return the complete ICR verbatim through the
-available transport. The receiver is responsible for preserving the original bytes
-before normalization or synthesis.
-
-**Explicit proposal-only inbox capability:** if and only if your dispatch gives an exact
-authorized inbox path, you may write the raw ICR there. Do not edit canonical handoffs,
-work packages, campaign ledgers, receipts, adjudication records, or protected branches.
-
-Do not invent a repository path or request extra permissions merely to satisfy durability.
-
-## 18.5 Blind-contribution rule
-
-If your concurrency mode is `independent_blind`:
-
-1. do not seek or consume another contributor's answer to this assignment;
-2. do not ask for prior cohort results;
-3. if another cohort result is accidentally disclosed, say so in your context declaration;
-4. finish or stop under the dispatched time limit;
-5. return only your own contribution artifact.
-
-Cross-disclosure may change the contribution's independence classification but does not
-erase the mathematical work.
-
-## 18.6 Authority boundary
-
-Your contribution is evidence. It is not:
-
-- GCL adjudication;
-- Council or Human Steward action;
-- Referee acceptance;
-- MATHCERT certification;
-- canonical mathematical admission;
-- novelty or priority determination;
-- publication authorization.
-
-A negative, obstructive, or partial result is a first-class contribution when it is exact.
+The contributor's comment is evidence only. A trusted GCL intake workflow snapshots the
+exact comment bytes and GitHub provenance into a raw-evidence pull request. The workflow
+does not execute contributor content, adjudicate mathematics, infer independence,
+certify a claim, merge its own pull request, or promote campaign state.
 
 ---
 
-# 19. Final bootstrap directive for dispatched contributors
+# 19. Final zero-context bootstrap principle
 
-If this exact file is your only context:
+A zero-context contributor should not have to infer GCL process.
 
-1. read Sections 1–14;
-2. obey the assignment and concurrency mode in your dispatch;
-3. start the dispatched wall-clock limit, which must not exceed 22 minutes;
-4. reason from this file plus only the context you accurately declare;
-5. apply every hard rejection test in Section 14;
-6. produce one complete ICR under Section 18;
-7. return or persist it using Section 18.4;
-8. stop. Do not perform GCL adjudication or canonical integration.
+The generated dispatch issue must contain everything needed to do the work:
 
-The authoritative returned object is the complete ICR, not a later summary of it.
+- exact source and dispatch identity;
+- complete mathematical context;
+- one assignment only;
+- the time limit;
+- allowed facts;
+- hard rejection tests;
+- success criterion;
+- exact return grammar;
+- authority boundary.
+
+Operationally the contributor is expected to do only:
+
+```text
+READ ISSUE -> THINK -> POST ONE RESULT/1 COMMENT -> STOP
+```
+
+Any additional integration complexity belongs to GCL intake automation, not to the
+independent contributor.
