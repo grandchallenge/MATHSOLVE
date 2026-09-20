@@ -39,6 +39,7 @@ theorem programmeTM2_step_run_nonterminal
   simp only [Turing.FinTM2.step, Turing.TM2.step]
   simp [programmeTM2Machine, programmeTM2Program,
     programmeTM2RunStepTarget, hcontrol, haccept, hreject]
+  rfl
 
 #print axioms programmeTM2_step_run_nonterminal
 
