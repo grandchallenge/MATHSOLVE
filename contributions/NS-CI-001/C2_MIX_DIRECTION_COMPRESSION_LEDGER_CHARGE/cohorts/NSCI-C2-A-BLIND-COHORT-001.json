@@ -17,5 +17,10 @@
   "closure_condition": "Close only after both bound GitHub dispatch issues have produced schema-valid RESULT/1 comments that are snapshotted through trusted intake into protected raw evidence, or explicitly close with missing-return evidence. No cross-contribution synthesis before closure.",
   "late_return_policy": "Preserve the GitHub event; if schema-valid after cohort closure, intake as late_for_cohort evidence without retroactively altering the completed blind comparison.",
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-  "intake_channel": "github_issue_comment"
+  "intake_channel": "github_issue_comment",
+  "dispatch_issue_numbers": {
+    "NSCI-C2-A-BLIND-001": 424,
+    "NSCI-C2-A-BLIND-002": 425
+  },
+  "binding_source_protected_merge": "683930ab6810e33859f34362a85b13133e515f6d"
 }
