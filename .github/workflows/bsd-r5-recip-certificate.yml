@@ -35,8 +35,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-      - name: Exact R5-RECIP operation preflight
-        run: python tools/gcl_campaign_preflight_r5_recip.py BSD-001 BSD-R5-RECIP
+      - name: Validate current or historical operation state
+        shell: bash
+        run: |
+          current=$(python -c "import json; print(json.load(open('.gcl/campaigns/BSD-001/CAMPAIGN_STATE.json'))['current_operation'])")
+          if [ "$current" = "BSD-R5-RECIP" ]; then
+            python tools/gcl_campaign_preflight_r5_recip.py BSD-001 BSD-R5-RECIP
+          else
+            python tools/gcl_completion_receipt_validate_v2.py BSD-R5-RECIP
+          fi
       - name: Replay protected WP60T derivative certificate
         run: python work_packages/BSD_R2_A1_WP60T_BSS_DERIVATIVE_APPLICATION/04_DERIVATIVE_REPLAY_CERTIFICATE.py
       - name: Replay protected R5-RES residual-detection certificate

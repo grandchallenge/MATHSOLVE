@@ -42,8 +42,15 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: '3.12'
-      - name: Exact operation preflight
-        run: python tools/gcl_campaign_preflight_r5_cw_p2_weight.py BSD-001 BSD-R5-CW-P2-WEIGHT
+      - name: Validate current or historical operation state
+        shell: bash
+        run: |
+          current=$(python -c "import json; print(json.load(open('.gcl/campaigns/BSD-001/CAMPAIGN_STATE.json'))['current_operation'])")
+          if [ "$current" = "BSD-R5-CW-P2-WEIGHT" ]; then
+            python tools/gcl_campaign_preflight_r5_cw_p2_weight.py BSD-001 BSD-R5-CW-P2-WEIGHT
+          else
+            python tools/gcl_completion_receipt_validate_v2.py BSD-R5-CW-P2-WEIGHT
+          fi
       - name: Replay weight-cover guardrail certificate
         run: python work_packages/BSD_R5_CW_P2_WEIGHT_COVER/03_WEIGHT_COVER_CERTIFICATE.py
       - name: Assert bounded claim firewall
