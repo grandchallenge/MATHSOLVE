@@ -35,6 +35,7 @@ theorem programmeTM2_step_run_nonterminal
   rcases target with ⟨lbl, st, ss⟩
   change lbl = some (.run) at hlabel
   subst lbl
+  change st.control = source.state at hcontrol
   simp only [Turing.FinTM2.step, Turing.TM2.step]
   simp [programmeTM2Machine, programmeTM2Program,
     programmeTM2RunStepTarget, hcontrol, haccept, hreject]
