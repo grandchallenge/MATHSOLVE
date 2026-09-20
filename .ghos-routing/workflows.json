@@ -195,6 +195,16 @@
       "controller_id": "GITHUB_ACTIONS"
     },
     {
+      "path": ".github/workflows/ns-ci-independent-contribution-intake.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL",
+        "WRITE_CAPABLE"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
       "path": ".github/workflows/otp-a-sphere-packing-handoff.yml",
       "observed_features": [
         "OPAQUE_EXECUTION"
@@ -260,7 +270,9 @@
     },
     {
       "path": ".github/workflows/uc-wp07-functional-preorder.yml",
-      "observed_features": ["OPAQUE_EXECUTION"],
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
       "topology": "PERSISTENT_CONTROLLER_REQUIRED",
       "controller_id": "GITHUB_ACTIONS"
     },

@@ -8,17 +8,18 @@ from pathlib import Path
 
 from ci.validate_ns_ci_independent_contribution_pilot import ROOT, validate
 
-RELATIVE = [
-    Path("contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE"),
-    Path("handoffs/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE_ZERO_CONTEXT.md"),
-]
+
+RELATIVE_BASE = Path("contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE")
+HANDOFF = Path("handoffs/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE_ZERO_CONTEXT.md")
+WORKFLOW = Path(".github/workflows/ns-ci-independent-contribution-intake.yml")
+INTAKE = Path("ci/ns_ci_github_contribution_intake.py")
 
 
 class IndependentContributionPilotTest(unittest.TestCase):
     def make_root(self) -> Path:
         temp = Path(tempfile.mkdtemp())
         self.addCleanup(shutil.rmtree, temp, ignore_errors=True)
-        for rel in RELATIVE:
+        for rel in (RELATIVE_BASE, HANDOFF, WORKFLOW, INTAKE):
             src = ROOT / rel
             dst = temp / rel
             dst.parent.mkdir(parents=True, exist_ok=True)
@@ -28,51 +29,46 @@ class IndependentContributionPilotTest(unittest.TestCase):
                 shutil.copy2(src, dst)
         return temp
 
-    def test_protected_pilot_surface_validates(self) -> None:
+    def test_current_surface_validates(self) -> None:
         self.assertEqual(validate(ROOT), [])
 
-    def test_handoff_without_durable_return_fails(self) -> None:
+    def test_superseded_icr_template_is_rejected(self) -> None:
         root = self.make_root()
-        path = root / RELATIVE[1]
-        text = path.read_text(encoding="utf-8").replace("Repository access is not required", "repository optional")
-        path.write_text(text, encoding="utf-8")
-        self.assertTrue(any("durable-return clause" in item for item in validate(root)))
+        path = root / RELATIVE_BASE / "templates" / "INDEPENDENT_CONTRIBUTION_RECORD.md"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("old free-form intake", encoding="utf-8")
+        self.assertTrue(any("superseded free-form" in item for item in validate(root)))
 
-    def test_dispatch_canonical_mutation_fails(self) -> None:
+    def test_dispatch_attachment_permission_is_rejected(self) -> None:
         root = self.make_root()
-        dispatch_dir = root / RELATIVE[0] / "dispatches"
-        dispatch_dir.mkdir(parents=True, exist_ok=True)
-        payload = {
-            "schema_version": "0.1-pilot",
-            "dispatch_id": "TEST-BLIND-001",
-            "assignment_id": "A",
-            "concurrency_mode": "independent_blind",
-            "blind_cohort_id": "TEST-COHORT",
-            "wall_clock_limit_minutes": 22,
-            "source_handoff_commit_sha": "a" * 40,
-            "source_handoff_blob_sha": "b" * 40,
-            "source_handoff_sha256": "c" * 64,
-            "canonical_mutation_authorized": True,
-            "contributor_write_authority": "none_required"
-        }
-        (dispatch_dir / "bad.json").write_text(json.dumps(payload), encoding="utf-8")
-        self.assertTrue(any("canonical mutation" in item for item in validate(root)))
+        path = root / RELATIVE_BASE / "dispatches" / "NSCI-C2-A-BLIND-001.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload["attachments_allowed"] = True
+        path.write_text(json.dumps(payload), encoding="utf-8")
+        self.assertTrue(any("attachments_allowed must be false" in item for item in validate(root)))
 
-    def test_cohort_unknown_dispatch_fails(self) -> None:
+    def test_bootstrap_digest_mismatch_is_rejected(self) -> None:
         root = self.make_root()
-        cohort_dir = root / RELATIVE[0] / "cohorts"
-        cohort_dir.mkdir(parents=True, exist_ok=True)
-        payload = {
-            "schema_version": "0.1-pilot",
-            "cohort_id": "TEST-COHORT",
-            "mode": "independent_blind",
-            "state": "OPEN",
-            "dispatch_ids": ["MISSING-1", "MISSING-2"],
-            "cross_disclosure_before_closure": False
-        }
-        (cohort_dir / "cohort.json").write_text(json.dumps(payload), encoding="utf-8")
+        path = root / RELATIVE_BASE / "dispatch_bootstraps" / "NSCI-C2-A-BLIND-001.md"
+        path.write_text(path.read_text(encoding="utf-8") + "\nmutation\n", encoding="utf-8")
+        self.assertTrue(any("bootstrap digest mismatch" in item for item in validate(root)))
+
+    def test_ready_dispatch_requires_issue_binding(self) -> None:
+        root = self.make_root()
+        path = root / RELATIVE_BASE / "dispatches" / "NSCI-C2-A-BLIND-001.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload["dispatch_status"] = "READY_FOR_GITHUB_COMMENT"
+        payload["github_issue_number"] = None
+        payload["github_issue_url"] = None
+        path.write_text(json.dumps(payload), encoding="utf-8")
         errors = validate(root)
-        self.assertTrue(any("unknown dispatch" in item for item in errors))
+        self.assertTrue(any("ready dispatch lacks issue number" in item for item in errors))
+
+    def test_workflow_auto_merge_surface_is_rejected(self) -> None:
+        root = self.make_root()
+        path = root / WORKFLOW
+        path.write_text(path.read_text(encoding="utf-8") + "\n# gh pr merge\n", encoding="utf-8")
+        self.assertTrue(any("forbidden authority surface" in item for item in validate(root)))
 
 
 if __name__ == "__main__":

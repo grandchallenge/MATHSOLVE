@@ -1,3 +1,43 @@
+GCL-CONTRIBUTION-DISPATCH/1
+
+# NSCI-C2-A-BLIND-001 — Assignment A
+
+## Your entire work-set
+
+This GitHub issue is your complete operational and mathematical context.
+
+You must do exactly four things:
+
+1. Read this issue only.
+2. Work on Assignment A for at most 22 minutes.
+3. Post exactly one GitHub issue comment in the required `GCL-CONTRIBUTION-RESULT/1` format stated at the end of this issue.
+4. Stop.
+
+Do not create branches, pull requests, files, commits, issues, notes, attachments, images, notebooks, scripts, or supplementary documents. Do not edit this issue. Do not inspect other issues or repository material. Do not use external URLs or sources. Do not ask for additional context. If the mathematics cannot be completed, return `BLOCKED` with the exact blocker.
+
+Dispatch ID: `NSCI-C2-A-BLIND-001`
+Assignment: `A`
+Concurrency mode: `independent_blind`
+Context class required: `ZERO_CONTEXT`
+External sources: `NONE`
+Wall-clock limit: `22 minutes`
+
+The source mathematical handoff was frozen at:
+
+`grandchallenge/MATHSOLVE@490bb2da6b6d315193c86ae934a49241735d027c:handoffs/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE_ZERO_CONTEXT.md`
+
+Source handoff blob: `e49bf0c5b88567ea50a91e655b631cdc4f83daeb`
+
+Source handoff SHA-256: `6b975cf1cfa17cf61e8f44350eb9ed41cef88876bae35555234e961ec2adbdb5`
+
+You do not need to open that source. Its relevant mathematical content is reproduced below.
+
+## Blindness contract
+
+You are one member of a blind cohort. Do not inspect other GitHub issues, pull requests, comments, branches, repository history, campaign notes, or any other contributor result. Do not search for this problem elsewhere. If any other contributor result is accidentally disclosed, state that fact in `## Assumptions beyond bootstrap` and stop claiming zero-context independence.
+
+---
+
 # C2-MIX-DIRECTION-COMPRESSION-LEDGER-CHARGE
 ## Zero-context independent-agent handoff
 
@@ -530,7 +570,7 @@ Your job is to advance or terminate **one** of the assignments below exactly.
 
 ---
 
-# 12. Independent time-boxed assignments
+---
 
 ## Hard wall-clock rule
 
@@ -547,6 +587,8 @@ Suggested allocation:
 Stop at 22 minutes even if unfinished. A precise blocker is preferable to an unverified proof sketch.
 
 Do not spend the time searching institutional repositories, reconstructing campaign history, or producing polished prose.
+
+---
 
 ---
 
@@ -603,228 +645,6 @@ A proved quantitative moment lemma plus an exact statement of the missing time-p
 
 ---
 
-## Assignment B — \(D_4\) physical-charge audit
-### Priority: highest
-
-### Target
-
-Determine whether
-
-\[
-D_4=\int_0^S Q_4(s)\,ds
-\]
-
-can itself be converted into a physical selector/dissipation charge under the currently stated packet data, or whether an additional lower-moment or localization hypothesis is necessary.
-
-### Inputs you may use
-
-At each time,
-
-\[
-Q_4(s)
-=
-\lim_{h\to0}
-h^4\sum_n n^4|c_n^{(h)}(s)|^2.
-\]
-
-The physical selector is charged only when there is enough amplitude in a critical scaled annulus to produce a threshold-violating LP block.
-
-Large high moments can in principle arise from very small mass placed very far out in frequency.
-
-### Questions to answer
-
-1. Does a lower bound on \(\int Q_4\,ds\) alone force a lower bound on the measure of times at which a fixed scaled annulus carries positive mass?
-2. If not, construct the cleanest spectral measure counterexample consistent with positive finite zeroth mass.
-3. What additional relation among \(M_0,Q_2,Q_4\) would make \(D_4\) useful?
-4. Can \(D_4\) be interpreted directly as a physically controlled dissipative quantity after restoring the packet scaling, or is it a higher moment with no immediate Leray-budget counterpart?
-5. If direct selector charge fails, identify the weakest plausible “\(D_4\)-plus-something” statement worth proving next.
-
-### Success criterion
-
-Either a correct bridge from \(D_4\) to a physical charge with every assumption stated, or an explicit separator proving that \(D_4\) alone is insufficient, together with the minimal missing ingredient.
-
-Do not call \(D_4\) “dissipation charge” merely because it appears with a negative sign in the amplitude equation.
-
----
-
-## Assignment C — Signed phase-source audit
-
-### Target
-
-Analyze the signed source
-
-\[
-P
-=
-2H\,((\partial_YG)\circ\chi)\,R
-\]
-
-and determine whether it admits a useful exact or one-sided estimate in terms of \(q_2,q_4\), plus one additional physically interpretable source norm.
-
-### Useful exact identity
-
-Since
-
-\[
-H_s
-=
-J(\partial_YG)\circ\chi,
-\]
-
-one has
-
-\[
-P
-=
-J^{-1}(H^2)_sR.
-\]
-
-Also
-
-\[
-q_2=J^{-1}H^2R.
-\]
-
-A basic Cauchy factorization is
-
-\[
-|P|
-=
-2\sqrt{q_2}\,
-\sqrt{J|(\partial_YG)\circ\chi|^2R}.
-\]
-
-Therefore, for \(\varepsilon>0\),
-
-\[
-|P|
-\le
-\varepsilon q_2
-+
-\varepsilon^{-1}
-J|(\partial_YG)\circ\chi|^2R.
-\]
-
-This inequality is allowed as a starting point, but it is not by itself a closure because the second factor is not presently controlled.
-
-### Questions to answer
-
-1. Is there a sharper factorization against \(q_4\) that does not introduce an inverse power of \(H\) or another singular term?
-2. Can integration by parts in \(s\) transform \(P_{\rm tot}\) into endpoint data plus terms already in the compression ledger?
-3. Is the natural new quantity
-   \[
-   S_G
-   :=
-   \int_0^S\int
-   J|(\partial_YG)\circ\chi|^2R\,dZ\,ds
-   \]
-   the correct missing source budget?
-4. Can you construct a simple smooth normal-form fixture where \(|P_{\rm tot}|\) is arbitrarily large while \(Q_2(S)\) and \(D_4\) remain small, showing that a source budget is genuinely necessary?
-
-### Success criterion
-
-A rigorous estimate with a clearly named extra source quantity, or a counterexample separating \(P_{\rm tot}\) from the currently controlled ledger terms.
-
-Do not treat \(P\) as external forcing. It is generated by the same phase field \(G\) that drives \(H\).
-
----
-
-## Assignment D — Expansion-cancellation audit
-
-### Target
-
-Determine whether the expansion channel
-
-\[
-C_2^+
-=
-\int_0^S\int \alpha_+q_2\,dZ\,ds
-\]
-
-can be bounded in terms of compression and moment quantities using only the characteristic identities, or whether frame kinematics permits essentially arbitrary expansion/compression cancellation on \(q_2\)-weighted mass.
-
-### Inputs you may use
-
-\[
-J_s=\alpha J,
-\qquad
-q_2=J^{-1}H^2R.
-\]
-
-The unweighted periodic identity
-
-\[
-\int \partial_Yv\,dY=0
-\]
-
-does **not** imply a useful cancellation after weighting by \(q_2\).
-
-Expansion decreases \(J^{-1}\), which is favorable for the metric weight, but \(H\) and \(R\) are evolving simultaneously.
-
-### Questions to answer
-
-1. Does any exact integration-by-parts identity relate
-   \[
-   \int\alpha q_2
-   \]
-   to endpoint moments and the \(H,R\) dynamics more sharply than the existing ledger?
-2. Can one prove a bound \(C_2^+\lesssim C_2^-+\text{charge terms}\) from the current equations alone?
-3. If not, construct a smooth toy characteristic/phase/amplitude solution of the stated reductions showing large \(C_2^+\) can cancel large \(C_2^-\) while endpoint \(Q_2\) stays small.
-4. What additional monotonicity, correlation, or selected-PDE condition would rule out that separator?
-
-### Success criterion
-
-A new exact inequality, or a rigorous separator demonstrating that the expansion channel cannot be closed kinematically.
-
----
-
-## Assignment E — Finite-channel dichotomy synthesis
-### Priority: secondary
-
-Use only the identities in this document.
-
-Try to prove the strongest abstract statement of the form:
-
-> If \(C_2^-\ge L\), and the two cancellation channels satisfy explicit inequalities \(C_2^+\le\cdots\) and \(|P_{\rm tot}|\le\cdots\), then either a terminal moment reconstruction hypothesis holds or an integrated fourth moment lower bound holds.
-
-The point is not to assume the desired selector charge. The point is to isolate the exact numerical hypotheses on the cancellation channels needed before the already-known moment reconstruction can be invoked.
-
-### Success criterion
-
-A clean lemma with explicit constants and no hidden sign assumptions, or an explanation why no nontrivial dichotomy follows without an additional bound on at least one of \(C_2^+\) or \(P_{\rm tot}\).
-
----
-
-# 13. Required output format for every agent
-
-Return exactly these seven items.
-
-### 1. Assignment
-State A, B, C, D, or E.
-
-### 2. Disposition
-Choose one:
-
-- **PROVED**
-- **REFUTED**
-- **REDUCED**
-- **BLOCKED**
-
-### 3. Strongest exact statement
-Write the strongest theorem, inequality, counterexample, or reduction you actually established.
-
-### 4. Derivation
-Give the complete derivation at the level needed for another mathematician to check it. Do not hide a needed inequality behind “standard estimates” if that inequality is the substantive point.
-
-### 5. Assumptions used
-List every assumption not already contained in Sections 2–8.
-
-### 6. Claim boundary
-State explicitly what your result does **not** prove.
-
-### 7. Next residual
-At most three sentences. Name the smallest unresolved mathematical question that should be attacked next.
-
 ---
 
 # 14. Hard rejection tests
@@ -844,6 +664,8 @@ Reject your own argument if it does any of the following.
 
 ---
 
+---
+
 # 15. What counts as a materially useful contribution
 
 A contribution is material if it does at least one of the following.
@@ -858,6 +680,8 @@ A contribution is material if it does at least one of the following.
 - Produces a finite-channel lemma reducing the whole tranche to one sharply named missing bound.
 
 A vague research suggestion is not material.
+
+---
 
 ---
 
@@ -890,52 +714,16 @@ No other campaign document is required to execute Assignments A-E.
 
 ---
 
-# 17. Bootstrap directive
-
-If this file is the only context you were given, proceed as follows:
-
-1. Read Sections 1–14 once.
-2. Choose exactly one assignment, preferring A or B unless your expertise is clearly better matched to C or D.
-3. Start a 22-minute wall-clock limit.
-4. Work from the equations in this file only.
-5. Return the seven-item output in Section 13.
-6. Prefer a proved obstruction over an optimistic but incomplete bridge.
-
 ---
 
-# 18. GitHub-native contributor return
+# Required GitHub return
 
-For the bounded independent-contributor pilot, the mathematical content above is embedded
-into a generated GitHub dispatch issue. The dispatch issue, not repository navigation,
-is the contributor's complete work-set.
-
-The former arbitrary-transport Independent Contribution Record and attachment mechanism
-is superseded before first contribution receipt.
-
-A dispatched zero-context contributor must:
-
-1. read only its generated dispatch issue;
-2. perform only the single assignment named by that issue;
-3. work for at most 22 minutes;
-4. post exactly one issue comment conforming to `GCL-CONTRIBUTION-RESULT/1`;
-5. stop.
-
-The contributor must not create or modify branches, pull requests, files, commits, issues,
-attachments, images, notebooks, scripts, or supplementary notes.
-
-The contributor must not inspect other contribution issues, campaign history, repository
-history, pull requests, branches, or external sources.
-
-The accepted result grammar is protected at:
-
-`contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/RESULT_COMMENT_V1.md`
-
-A valid result has exactly these fields and level-2 sections:
+Post exactly one issue comment. The comment must contain exactly these top-level sections in this order and no other `##` sections:
 
 ```text
 GCL-CONTRIBUTION-RESULT/1
-dispatch_id: <exact dispatch id>
-assignment: <exact assignment>
+dispatch_id: NSCI-C2-A-BLIND-001
+assignment: A
 disposition: PROVED | REFUTED | REDUCED | BLOCKED
 context_class: ZERO_CONTEXT
 external_sources: NONE
@@ -943,63 +731,29 @@ timebox_observed: YES | NO
 
 ## Strongest exact statement
 
-...
+<result>
 
 ## Derivation
 
-...
+<complete checkable derivation>
 
 ## Assumptions beyond bootstrap
 
-...
+NONE
 
 ## Verification / falsification hooks
 
-...
+<at least one concrete check>
 
 ## Claim boundary
 
-...
+<what this does not prove>
 
 ## Next residual
 
-...
+<at most three sentences>
 ```
 
-No attachments, links, images, external URLs, supplementary files, or extra level-2
-sections are accepted in version 1.
+No attachments. No links. No images. No code files. No second comment containing mathematical additions. If your first comment is mechanically rejected, submit one complete replacement comment; do not edit the rejected comment.
 
-A mechanically invalid comment is not normalized into evidence. The contributor may post
-one complete replacement comment; the rejected GitHub event remains historical provenance.
-
-The contributor's comment is evidence only. A trusted GCL intake workflow snapshots the
-exact comment bytes and GitHub provenance into a raw-evidence pull request. The workflow
-does not execute contributor content, adjudicate mathematics, infer independence,
-certify a claim, merge its own pull request, or promote campaign state.
-
----
-
-# 19. Final zero-context bootstrap principle
-
-A zero-context contributor should not have to infer GCL process.
-
-The generated dispatch issue must contain everything needed to do the work:
-
-- exact source and dispatch identity;
-- complete mathematical context;
-- one assignment only;
-- the time limit;
-- allowed facts;
-- hard rejection tests;
-- success criterion;
-- exact return grammar;
-- authority boundary.
-
-Operationally the contributor is expected to do only:
-
-```text
-READ ISSUE -> THINK -> POST ONE RESULT/1 COMMENT -> STOP
-```
-
-Any additional integration complexity belongs to GCL intake automation, not to the
-independent contributor.
+Your comment is evidence only. It does not constitute GCL adjudication, Referee acceptance, MATHCERT certification, Council action, Human Steward action, canonical admission, novelty determination, or publication authorization.

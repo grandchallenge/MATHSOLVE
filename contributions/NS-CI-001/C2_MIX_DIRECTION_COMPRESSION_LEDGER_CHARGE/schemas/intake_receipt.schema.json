@@ -1,33 +1,43 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://grandchallenge.ai/pilots/ns-ci-independent-contribution-receipt.schema.json",
-  "title": "NS-CI pilot independent contribution intake receipt",
+  "$id": "https://grandchallenge.ai/pilots/ns-ci-github-intake-receipt.schema.json",
+  "title": "NS-CI GitHub contribution intake receipt",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "schema_version",
     "receipt_id",
     "dispatch_id",
-    "contribution_id",
+    "assignment_id",
+    "concurrency_mode",
+    "result_protocol",
+    "github_issue_number",
+    "github_comment_id",
+    "authenticated_github_actor",
+    "comment_created_at",
     "raw_artifact_path",
     "raw_sha256",
-    "attachment_sha256",
-    "concurrency_mode",
-    "declared_context_class",
-    "authenticated_producer",
+    "bootstrap_path",
+    "bootstrap_sha256",
+    "source_handoff_commit_sha",
+    "source_handoff_blob_sha",
+    "source_handoff_sha256",
+    "disposition_declared",
+    "context_class_declared",
+    "external_sources_declared",
+    "timebox_observed_declared",
     "schema_result",
     "freshness",
-    "byte_duplicate_of",
-    "relations",
     "security_state",
-    "blind_cohort_id",
-    "cohort_state_at_receipt",
     "handling_state",
+    "mathematical_correctness_adjudicated",
+    "independence_strength_adjudicated",
+    "canonical_claim_effect",
     "recorded_by"
   ],
   "properties": {
     "schema_version": {
-      "const": "0.1-pilot"
+      "const": "0.2-pilot"
     },
     "receipt_id": {
       "type": "string",
@@ -35,11 +45,50 @@
     },
     "dispatch_id": {
       "type": "string",
-      "minLength": 1
+      "pattern": "^NSCI-C2-[A-E]-(BLIND|COOP|ADV)-[0-9]{3}$"
     },
-    "contribution_id": {
+    "assignment_id": {
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    "concurrency_mode": {
+      "enum": [
+        "independent_blind",
+        "cooperative_claimed",
+        "adversarial_replay"
+      ]
+    },
+    "blind_cohort_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "result_protocol": {
+      "const": "GCL-CONTRIBUTION-RESULT/1"
+    },
+    "github_issue_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "github_comment_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "authenticated_github_actor": {
       "type": "string",
       "minLength": 1
+    },
+    "comment_created_at": {
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "raw_artifact_path": {
       "type": "string",
@@ -49,38 +98,48 @@
       "type": "string",
       "pattern": "^[0-9a-f]{64}$"
     },
-    "attachment_sha256": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[0-9a-f]{64}$"
-      }
+    "bootstrap_path": {
+      "type": "string",
+      "minLength": 1
     },
-    "concurrency_mode": {
+    "bootstrap_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_handoff_commit_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "source_handoff_blob_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "source_handoff_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "disposition_declared": {
       "enum": [
-        "independent_blind",
-        "cooperative_claimed",
-        "adversarial_replay"
+        "PROVED",
+        "REFUTED",
+        "REDUCED",
+        "BLOCKED"
       ]
     },
-    "declared_context_class": {
-      "enum": [
-        "declared_zero_context",
-        "declared_additional_context"
-      ]
+    "context_class_declared": {
+      "const": "ZERO_CONTEXT"
     },
-    "authenticated_producer": {
-      "type": [
-        "string",
-        "null"
+    "external_sources_declared": {
+      "const": "NONE"
+    },
+    "timebox_observed_declared": {
+      "enum": [
+        "YES",
+        "NO"
       ]
     },
     "schema_result": {
-      "enum": [
-        "valid",
-        "invalid",
-        "incomplete"
-      ]
+      "const": "valid"
     },
     "freshness": {
       "enum": [
@@ -90,75 +149,28 @@
         "cannot_determine"
       ]
     },
-    "byte_duplicate_of": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 1
-      }
-    },
-    "relations": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "relation",
-          "target_id"
-        ],
-        "properties": {
-          "relation": {
-            "enum": [
-              "supersedes",
-              "contradicts",
-              "duplicates",
-              "derived_from",
-              "invalidated_for_live_incorporation_by",
-              "incorporated_as"
-            ]
-          },
-          "target_id": {
-            "type": "string",
-            "minLength": 1
-          }
-        }
-      }
-    },
     "security_state": {
-      "enum": [
-        "narrative_only",
-        "quarantined_executable",
-        "quarantined_sensitive",
-        "rejected_secret"
-      ]
-    },
-    "blind_cohort_id": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "cohort_state_at_receipt": {
-      "enum": [
-        "not_applicable",
-        "OPEN",
-        "CLOSED_FOR_BLINDNESS",
-        "SYNTHESIS_ALLOWED"
-      ]
+      "const": "narrative_only_no_links_no_attachments"
     },
     "handling_state": {
       "enum": [
         "received_unadjudicated",
-        "schema_invalid_preserved",
         "late_for_cohort",
-        "quarantined",
         "ready_for_adjudication",
         "adjudicated"
       ]
     },
+    "mathematical_correctness_adjudicated": {
+      "const": false
+    },
+    "independence_strength_adjudicated": {
+      "const": false
+    },
+    "canonical_claim_effect": {
+      "const": false
+    },
     "recorded_by": {
-      "type": "string",
-      "minLength": 1
+      "const": "github-actions:ns-ci-independent-contribution-intake"
     }
   }
 }

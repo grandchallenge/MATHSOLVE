@@ -74,6 +74,8 @@ jobs:
           python -m unittest tests/test_ns_ci_a2_l5_coupled_enstrophy.py -v
           python ci/validate_ns_ci_independent_contribution_pilot.py
           python -m unittest tests/test_ns_ci_independent_contribution_pilot.py -v
+          python -m unittest tests/test_ns_ci_github_contribution_intake.py -v
+          python -m json.tool contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/schemas/intake_receipt.schema.json >/dev/null
       - name: Validate OpenAI Ten Proofs independent handoffs
         run: |
           python ci/validate_openai_ten_proofs_result_family_handoffs.py
