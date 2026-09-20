@@ -347,7 +347,8 @@ private lemma card_coIdeal_eq_sub (S : FuncSetup α) (m : S.Elem) :
   have hsub : S.principalIdeal m.1 m.2 ⊆ S.ground :=
     S.principalIdeal_subset_ground ⟨m.1, m.2⟩
   unfold coIdeal
-  exact Finset.card_sdiff hsub
+  rw [Finset.card_sdiff]
+  rw [Finset.inter_eq_left.mpr hsub]
 
 private lemma card_coIdeal_add_card_principal
   (S : FuncSetup α) (m : S.Elem) :
@@ -574,11 +575,9 @@ theorem antisymm_restrictToIdeal_of_isPoset
   rcases this with ⟨h₁, h₂⟩
   have h_eqS : liftFromIdeal S m hm u = liftFromIdeal S m hm v :=
     hpos this h₂
-  have : u.1 = v.1 :=by
-    simp_all
-    injection h_eqS
-
-  exact Subtype.ext this
+  have hval : u.1 = v.1 := by
+    simpa [liftFromIdeal] using congrArg Subtype.val h_eqS
+  exact Subtype.ext hval
 
 --Called from MainStatement.lean
 lemma antisymm_restrictToCoIdeal_of_isPoset
