@@ -219,11 +219,9 @@ private lemma antisymm_restrictToIdeal_of_isPoset
   rcases this with ⟨h₁, h₂⟩
   have h_eqS : SumProduct.liftFromIdeal S m hm u = SumProduct.liftFromIdeal S m hm v := by
     exact hpos this h₂
-  have : u.1 = v.1 :=by
-    simp_all
-    injection h_eqS
-
-  exact Subtype.ext this
+  have hval : u.1 = v.1 := by
+    simpa [SumProduct.liftFromIdeal] using congrArg Subtype.val h_eqS
+  exact Subtype.ext hval
 
 private lemma antisymm_restrictToCoIdeal_of_isPoset
   (S : FuncSetup α) (hpos : isPoset S) (m : S.Elem)
@@ -243,12 +241,9 @@ private lemma antisymm_restrictToCoIdeal_of_isPoset
     = SumProduct.liftFromCoIdeal S m hpos notuniq v := by
     exact hpos h₁ h₂
 
-  have : u.1 = v.1 := by
-    apply congrArg Subtype.val
-    simp_all
-    injection h_eqS
-    (expose_names; exact Subtype.eq val_eq)
-  exact Subtype.ext this
+  have hval : u.1 = v.1 := by
+    simpa [SumProduct.liftFromCoIdeal] using congrArg Subtype.val h_eqS
+  exact Subtype.ext hval
 
 /-- `posetTraceOfUnique` keeps `isPoset` -/
 
