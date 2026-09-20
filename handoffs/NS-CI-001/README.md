@@ -2610,32 +2610,43 @@ Human Steward authorization for the bounded independent-contributor pilot is pro
 
 `grandchallenge/INTELLECT@cacfe1f749b91a335e1d1734352cecff56bad7c1`
 
-The pilot is local to the active `C2-MIX-DIRECTION-COMPRESSION-LEDGER-CHARGE` frontier.
-It does not alter the A2 mathematical disposition, certify any contribution, or create
-organization-wide intake authority.
+The pilot is local to the active `C2-MIX-DIRECTION-COMPRESSION-LEDGER-CHARGE`
+frontier. It does not alter the A2 mathematical disposition, certify any contribution,
+or create organization-wide intake authority.
+
+The initial arbitrary-transport ICR/attachment interface has been superseded before first
+contribution receipt.
+
+The version-1 interface is GitHub-native:
+
+```text
+generated dispatch issue
+  -> one GCL-CONTRIBUTION-RESULT/1 issue comment
+  -> trusted raw-evidence intake PR
+  -> ordinary protected admission
+```
+
+The zero-context contributor is not asked to navigate GCL. Each generated dispatch issue
+contains its complete mathematical context, exactly one assignment, the 22-minute bound,
+hard rejection tests, exact result grammar, and authority boundary.
+
+Contributors must not create branches, pull requests, files, commits, issues, attachments,
+notebooks, scripts, images, supplementary notes, or external links.
 
 Pilot contract:
 
 `contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/PILOT.md`
 
-Zero-context source handoff:
+Result grammar:
 
-`handoffs/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE_ZERO_CONTEXT.md`
+`contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/RESULT_COMMENT_V1.md`
 
-The source handoff now contains the complete Independent Contribution Record and durable
-return protocol. Repository access is optional for contributors; raw returns must be
-preserved before synthesis or adjudication.
+Current pilot state: `PILOT_RECONFIGURING__GITHUB_INTAKE_V1`.
 
-Current pilot state: `PILOT_ACTIVE__DISPATCH_ISSUED`.
+The three dispatches are `PENDING_GITHUB_ISSUE_BINDING`. Do not launch a contributor
+against the old pointer-only bootstrap. After this migration is protected, one generated
+GitHub issue will be created from each protected dispatch-bootstrap artifact and its issue
+number will be bound back into the corresponding dispatch record before the status becomes
+`READY_FOR_GITHUB_COMMENT`.
 
-Protected source pointer for all current pilot dispatches:
-
-`grandchallenge/MATHSOLVE@490bb2da6b6d315193c86ae934a49241735d027c:handoffs/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE_ZERO_CONTEXT.md`
-
-Open blind cohort: `NSCI-C2-A-BLIND-COHORT-001` with dispatches
-`NSCI-C2-A-BLIND-001` and `NSCI-C2-A-BLIND-002` on Assignment A.
-
-Comparison dispatch: `NSCI-C2-B-COOP-001` on Assignment B.
-
-No contribution is yet received or adjudicated. Blind-cohort synthesis is prohibited
-until durable cohort closure.
+The blind Assignment-A cohort remains `OPEN`; synthesis remains prohibited.
