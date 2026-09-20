@@ -2626,7 +2626,16 @@ The source handoff now contains the complete Independent Contribution Record and
 return protocol. Repository access is optional for contributors; raw returns must be
 preserved before synthesis or adjudication.
 
-Current pilot state: `AUTHORIZED_SETUP__DISPATCH_NOT_YET_ISSUED`.
+Current pilot state: `PILOT_ACTIVE__DISPATCH_ISSUED`.
 
-The next pilot tranche issues exact dispatch and blind-cohort records only after this
-setup is protected, so every dispatch can bind a real protected handoff identity.
+Protected source pointer for all current pilot dispatches:
+
+`grandchallenge/MATHSOLVE@490bb2da6b6d315193c86ae934a49241735d027c:handoffs/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE_ZERO_CONTEXT.md`
+
+Open blind cohort: `NSCI-C2-A-BLIND-COHORT-001` with dispatches
+`NSCI-C2-A-BLIND-001` and `NSCI-C2-A-BLIND-002` on Assignment A.
+
+Comparison dispatch: `NSCI-C2-B-COOP-001` on Assignment B.
+
+No contribution is yet received or adjudicated. Blind-cohort synthesis is prohibited
+until durable cohort closure.

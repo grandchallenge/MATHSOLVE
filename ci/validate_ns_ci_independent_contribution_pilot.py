@@ -63,7 +63,7 @@ def validate(root: Path = ROOT) -> list[str]:
 
     pilot = pilot_path.read_text(encoding="utf-8")
     for needle in (
-        "AUTHORIZED_SETUP__DISPATCH_NOT_YET_ISSUED",
+        "PILOT_ACTIVE__DISPATCH_ISSUED",
         EXPECTED_AUTH_MERGE,
         "independent_blind",
         "CLOSED_FOR_BLINDNESS",
