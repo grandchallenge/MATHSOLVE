@@ -2603,3 +2603,30 @@ rigorous bounded route termination; an exact L5 exhaustion theorem; a material
 change to the selected target or hypothesis; a reserved constitutional or
 certification transition; authentication or safety failure; or a materially
 changed protected mathematical predecessor.
+
+## Independent contributor intake pilot
+
+Human Steward authorization for the bounded independent-contributor pilot is protected at:
+
+`grandchallenge/INTELLECT@cacfe1f749b91a335e1d1734352cecff56bad7c1`
+
+The pilot is local to the active `C2-MIX-DIRECTION-COMPRESSION-LEDGER-CHARGE` frontier.
+It does not alter the A2 mathematical disposition, certify any contribution, or create
+organization-wide intake authority.
+
+Pilot contract:
+
+`contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/PILOT.md`
+
+Zero-context source handoff:
+
+`handoffs/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE_ZERO_CONTEXT.md`
+
+The source handoff now contains the complete Independent Contribution Record and durable
+return protocol. Repository access is optional for contributors; raw returns must be
+preserved before synthesis or adjudication.
+
+Current pilot state: `AUTHORIZED_SETUP__DISPATCH_NOT_YET_ISSUED`.
+
+The next pilot tranche issues exact dispatch and blind-cohort records only after this
+setup is protected, so every dispatch can bind a real protected handoff identity.

@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grandchallenge.ai/pilots/ns-ci-independent-contribution-receipt.schema.json",
+  "title": "NS-CI pilot independent contribution intake receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "dispatch_id",
+    "contribution_id",
+    "raw_artifact_path",
+    "raw_sha256",
+    "attachment_sha256",
+    "concurrency_mode",
+    "declared_context_class",
+    "authenticated_producer",
+    "schema_result",
+    "freshness",
+    "byte_duplicate_of",
+    "relations",
+    "security_state",
+    "blind_cohort_id",
+    "cohort_state_at_receipt",
+    "handling_state",
+    "recorded_by"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-pilot"
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dispatch_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contribution_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "raw_artifact_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "raw_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "attachment_sha256": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "concurrency_mode": {
+      "enum": [
+        "independent_blind",
+        "cooperative_claimed",
+        "adversarial_replay"
+      ]
+    },
+    "declared_context_class": {
+      "enum": [
+        "declared_zero_context",
+        "declared_additional_context"
+      ]
+    },
+    "authenticated_producer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "schema_result": {
+      "enum": [
+        "valid",
+        "invalid",
+        "incomplete"
+      ]
+    },
+    "freshness": {
+      "enum": [
+        "current_for_dispatch",
+        "stale_relative_to_live_state",
+        "dependency_changed",
+        "cannot_determine"
+      ]
+    },
+    "byte_duplicate_of": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relation",
+          "target_id"
+        ],
+        "properties": {
+          "relation": {
+            "enum": [
+              "supersedes",
+              "contradicts",
+              "duplicates",
+              "derived_from",
+              "invalidated_for_live_incorporation_by",
+              "incorporated_as"
+            ]
+          },
+          "target_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "security_state": {
+      "enum": [
+        "narrative_only",
+        "quarantined_executable",
+        "quarantined_sensitive",
+        "rejected_secret"
+      ]
+    },
+    "blind_cohort_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cohort_state_at_receipt": {
+      "enum": [
+        "not_applicable",
+        "OPEN",
+        "CLOSED_FOR_BLINDNESS",
+        "SYNTHESIS_ALLOWED"
+      ]
+    },
+    "handling_state": {
+      "enum": [
+        "received_unadjudicated",
+        "schema_invalid_preserved",
+        "late_for_cohort",
+        "quarantined",
+        "ready_for_adjudication",
+        "adjudicated"
+      ]
+    },
+    "recorded_by": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
