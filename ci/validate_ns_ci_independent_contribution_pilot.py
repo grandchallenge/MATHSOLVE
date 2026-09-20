@@ -68,7 +68,7 @@ def validate(root: Path = ROOT) -> list[str]:
         "independent_blind",
         "CLOSED_FOR_BLINDNESS",
         "Durability is mandatory. Repository access is not.",
-        "Semantic duplication",
+        "semantic duplication",
     ):
         if needle not in pilot:
             errors.append(f"pilot contract missing required clause: {needle}")
