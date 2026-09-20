@@ -47,11 +47,17 @@ theorem programmeTM2ReadyInitCfg_represents (M : ProgrammeMachine)
                 programmeInputRead, Turing.Tape.nth,
                 programmeTM2_emptyOption_getI] <;> rfl
         | succ n =>
-            cases input <;>
-              simp [programmeTM2InputTape, programmeTM2ReadyInitCfg,
-                programmeTM2InitStacks, ProgrammeMachine.init,
-                programmeInputRead, Turing.Tape.nth, Turing.ListBlank.nth_mk,
-                programmeTM2_map_some_getI, programmeTM2_emptyOption_getI] <;> rfl
+            cases input with
+            | nil =>
+                simp [programmeTM2InputTape, programmeTM2ReadyInitCfg,
+                  programmeTM2InitStacks, ProgrammeMachine.init,
+                  programmeInputRead, Turing.Tape.nth, Turing.ListBlank.nth_mk,
+                  programmeTM2_map_some_getI, programmeTM2_emptyOption_getI] <;> rfl
+            | cons bit tail =>
+                simp [programmeTM2InputTape, programmeTM2ReadyInitCfg,
+                  programmeTM2InitStacks, ProgrammeMachine.init,
+                  programmeInputRead, Turing.Tape.nth, Turing.ListBlank.nth_mk,
+                  programmeTM2_map_some_getI, programmeTM2_emptyOption_getI] <;> omega
     | negSucc n =>
         simp [programmeTM2InputTape, programmeTM2ReadyInitCfg,
           programmeTM2InitStacks, ProgrammeMachine.init,
