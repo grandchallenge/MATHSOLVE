@@ -32,9 +32,9 @@ theorem programmeTM2_step_run_nonterminal
     (programmeTM2Machine M).step target =
       some (programmeTM2RunStepTarget M target) := by
   rcases hrep with ⟨hlabel, hmode, hcontrol, _, _⟩
-  rcases target with ⟨label, state, stacks⟩
-  change label = some (.run) at hlabel
-  subst label
+  rcases target with ⟨lbl, st, ss⟩
+  change lbl = some (.run) at hlabel
+  subst lbl
   simp only [Turing.FinTM2.step, Turing.TM2.step]
   simp [programmeTM2Machine, programmeTM2Program,
     programmeTM2RunStepTarget, hcontrol, haccept, hreject]
