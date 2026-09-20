@@ -259,10 +259,7 @@ private lemma inclErase_foldMap
     have := inclErase_foldMap (S := S) (u := u) (hvne := hvne) (z := inclErase S u x)
     simp_all
   apply Subtype.ext
-  simp_all
-  obtain ⟨val_1, property_1⟩ := x
-  simp_all
-  exact congr_arg Subtype.val hback
+  exact congrArg Subtype.val hback
 
 /-- One-step version (`v = S.f u`): From `S.f p = q`
     derive `foldMap p ⟶* foldMap q` (S′'s `eraseOneMap`) -/
