@@ -33,3 +33,6 @@ import MathSolve.PNP.ProgrammeTM2Types
 import MathSolve.PNP.ProgrammeTM2Machine
 import MathSolve.PNP.ProgrammeTM2Representation
 import MathSolve.PNP.ProgrammeTM2InitRun
+import MathSolve.PNP.ProgrammeTM2InitRepresentation
+import MathSolve.PNP.ProgrammeTM2TapeOps
+import MathSolve.PNP.ProgrammeTM2StepSimulation
