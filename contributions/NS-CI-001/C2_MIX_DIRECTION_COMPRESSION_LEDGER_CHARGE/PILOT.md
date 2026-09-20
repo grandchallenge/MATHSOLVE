@@ -1,6 +1,6 @@
 # NS-CI Independent Contributor Intake Pilot
 
-Status: AUTHORIZED_SETUP__DISPATCH_NOT_YET_ISSUED
+Status: PILOT_ACTIVE__DISPATCH_ISSUED
 
 ## Authority
 
@@ -133,6 +133,17 @@ Pilot evidence returns to full Council review before broader institutionalizatio
 
 ## Current boundary
 
-No external contribution has yet been dispatched under this pilot.
-The next protected tranche will issue exact dispatch and cohort records against the
-protected handoff identity created by this setup tranche.
+Exact dispatch records are now issued against protected MATHSOLVE merge
+`490bb2da6b6d315193c86ae934a49241735d027c` and handoff blob
+`e49bf0c5b88567ea50a91e655b631cdc4f83daeb`.
+
+Open blind cohort: `NSCI-C2-A-BLIND-COHORT-001`.
+
+Ready dispatches:
+
+- `NSCI-C2-A-BLIND-001`: Assignment A, `independent_blind`;
+- `NSCI-C2-A-BLIND-002`: Assignment A, `independent_blind`;
+- `NSCI-C2-B-COOP-001`: Assignment B, `cooperative_claimed`.
+
+No contribution has yet been received or adjudicated. Blind-cohort synthesis remains
+forbidden until durable cohort closure.
