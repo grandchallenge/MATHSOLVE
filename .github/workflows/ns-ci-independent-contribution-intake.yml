@@ -1,0 +1,141 @@
+name: NS-CI independent contribution intake
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: ns-ci-contribution-intake-${{ github.event.comment.id }}
+  cancel-in-progress: false
+
+jobs:
+  intake:
+    if: >
+      !github.event.issue.pull_request &&
+      startsWith(github.event.issue.title, '[GCL-CONTRIB] ') &&
+      startsWith(github.event.comment.body, 'GCL-CONTRIBUTION-RESULT/1')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          persist-credentials: true
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Validate exact dispatch and result comment
+        id: validate
+        continue-on-error: true
+        env:
+          OUT_DIR: ${{ runner.temp }}/ns-ci-intake
+        run: |
+          python ci/ns_ci_github_contribution_intake.py             --event "$GITHUB_EVENT_PATH"             --repo-root "$GITHUB_WORKSPACE"             --output "$OUT_DIR"
+
+      - name: Report mechanical rejection
+        if: steps.validate.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          OUT_DIR: ${{ runner.temp }}/ns-ci-intake
+        run: |
+          python - <<'PY' > "$RUNNER_TEMP/rejection.md"
+          from pathlib import Path
+          import os
+          error = (Path(os.environ["OUT_DIR"]) / "ERRORS.txt").read_text(encoding="utf-8").strip()
+          print("INTAKE REJECTED — FORMAT")
+          print()
+          print(error)
+          print()
+          print("Submit one complete replacement GCL-CONTRIBUTION-RESULT/1 comment. Do not edit the rejected comment.")
+          PY
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -F body=@"$RUNNER_TEMP/rejection.md"
+
+      - name: Stop after rejection
+        if: steps.validate.outcome == 'failure'
+        run: exit 0
+
+      - name: Load validated intake metadata
+        if: steps.validate.outcome == 'success'
+        id: meta
+        env:
+          OUT_DIR: ${{ runner.temp }}/ns-ci-intake
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          meta = json.loads((Path(os.environ["OUT_DIR"]) / "META.json").read_text(encoding="utf-8"))
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+              for key in ("dispatch_id","comment_id","issue_number","raw_repo_path","receipt_repo_path","branch","pr_title"):
+                  print(f"{key}={meta[key]}", file=f)
+          PY
+
+      - name: Detect idempotent replay
+        if: steps.validate.outcome == 'success'
+        id: replay
+        env:
+          BRANCH: ${{ steps.meta.outputs.branch }}
+        run: |
+          if git ls-remote --exit-code origin "refs/heads/$BRANCH" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Snapshot raw result and receipt
+        if: steps.validate.outcome == 'success' && steps.replay.outputs.exists == 'false'
+        env:
+          OUT_DIR: ${{ runner.temp }}/ns-ci-intake
+          RAW_PATH: ${{ steps.meta.outputs.raw_repo_path }}
+          RECEIPT_PATH: ${{ steps.meta.outputs.receipt_repo_path }}
+          BRANCH: ${{ steps.meta.outputs.branch }}
+          DISPATCH_ID: ${{ steps.meta.outputs.dispatch_id }}
+          COMMENT_ID: ${{ steps.meta.outputs.comment_id }}
+        run: |
+          git switch -c "$BRANCH"
+          mkdir -p "$(dirname "$RAW_PATH")" "$(dirname "$RECEIPT_PATH")"
+          cp "$OUT_DIR/RAW.md" "$RAW_PATH"
+          cp "$OUT_DIR/RECEIPT.json" "$RECEIPT_PATH"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$RAW_PATH" "$RECEIPT_PATH"
+          git commit -m "NS-CI intake: snapshot $DISPATCH_ID comment $COMMENT_ID"
+          git push origin "$BRANCH"
+
+      - name: Open raw-evidence pull request
+        if: steps.validate.outcome == 'success' && steps.replay.outputs.exists == 'false'
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.meta.outputs.branch }}
+          PR_TITLE: ${{ steps.meta.outputs.pr_title }}
+          DISPATCH_ID: ${{ steps.meta.outputs.dispatch_id }}
+          COMMENT_ID: ${{ steps.meta.outputs.comment_id }}
+        run: |
+          body="Trusted intake snapshot for dispatch $DISPATCH_ID, GitHub comment $COMMENT_ID. This PR preserves raw contributor evidence and a machine receipt only. It does not adjudicate mathematics, infer independence, certify a claim, or alter campaign state."
+          url="$(gh pr create --base main --head "$BRANCH" --title "$PR_TITLE" --body "$body")"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+      - name: Report accepted intake
+        if: steps.validate.outcome == 'success' && steps.replay.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE ACCEPTED — RAW EVIDENCE PR CREATED. Mathematical status remains unadjudicated."
+
+      - name: Report idempotent replay
+        if: steps.validate.outcome == 'success' && steps.replay.outputs.exists == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE ALREADY CAPTURED — no duplicate raw-evidence branch created."
