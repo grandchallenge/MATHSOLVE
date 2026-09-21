@@ -78,6 +78,7 @@ Read:
 - work_packages/RH_R036_QW_PARITY_GAP_REDUCTION.md
 - work_packages/RH_R037_QW_SECTOR_GALERKIN.md
 - work_packages/RH_R050_TRIAL_REWEIGHTED_EXTENSION.md
+- work_packages/RH_R053_COMPACT_TRANSFORM_STABILITY.md
 - MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790:
   reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
 - MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d:
@@ -151,29 +152,27 @@ The chosen indexing must preserve every hypothesis needed for finite self-adjoin
 
 ## 8. C2 — Compact-set transform stability
 
-This is a high-value standalone theorem.
+Status: DISCHARGED by RH-R053-COMPACT-TRANSFORM-STABILITY-001 (work_packages/RH_R053_COMPACT_TRANSFORM_STABILITY.md).
 
-If f and g live on the logarithmic interval [-a,a], then for z in a compact K subset C, a generic Fourier/Laplace transform difference obeys a bound of the form
+For $f, g \in L^2([-a,a])$ and any compact set $K \subset \mathbb{C}$ with $H(K) = \sup_{z\in K} |\operatorname{Im} z|$ and $\sigma_{\max}(K) = \sup_{z\in K} \operatorname{Im} z$:
 
-sup_{z in K}
-|f_hat(z)-g_hat(z)|
-<=
-C(K,a) ||f-g||_X
-
-for a suitable norm X.
-
-But a grows with lambda. Therefore the dependence of C(K,a) matters critically.
-
-An agent should determine the weakest eigenvector norm and rate that imply compact-uniform transform convergence after the exact determinant normalization.
-
-Useful targets include:
-
-- weighted L1 bounds;
-- L2 plus explicit interval-length/exponential factors;
-- Sobolev/Paley-Wiener estimates;
-- bounds exploiting parity or boundary normalization.
-
-This lemma should state exact dependence on compact height and a=log lambda.
+1. Bare transform stability:
+   \[
+   \sup_{z\in K} |\widehat{f}(z) - \widehat{g}(z)| \le \sqrt{\mathcal{H}_a(H(K))} \|f - g\|_{L^2(-a,a)},
+   \]
+   where $\mathcal{H}_a(H) = \frac{\sinh(2Ha)}{H}$ for $H>0$ and $2a$ for $H=0$.
+2. Determinant kernel stability:
+   \[
+   \sup_{z\in K} |\lambda^{-iz}\widehat{f}(z) - \lambda^{-iz}\widehat{g}(z)| \le e^{\sigma_{\max}(K)a} \sqrt{\mathcal{H}_a(H(K))} \|f - g\|_{L^2(-a,a)} \le \sqrt{2a} e^{2H(K)a} \|f - g\|_{L^2(-a,a)}.
+   \]
+3. Parity-refined bound (for even form vectors):
+   \[
+   \sup_{z\in K} |\widehat{f}(z) - \widehat{g}(z)| \le \sqrt{a + \frac{\sinh(2H(K)a)}{2H(K)}} \|f - g\|_{L^2(-a,a)}.
+   \]
+4. Rate dichotomy:
+   - Real axis ($H=0$): $\|f-g\|_{L^2} = o(a^{-1/2})$ is sufficient for uniform convergence.
+   - Horizontal strip ($H=\delta$): $\|f-g\|_{L^2} = o(a^{-1/2} e^{-2\delta a}) = o((\log\lambda)^{-1/2}\lambda^{-2\delta})$ is sufficient.
+   - Full complex plane $\mathbb{C}$: bare $L^2$ bounds diverge exponentially if $\|f-g\|_{L^2} = \Theta(\lambda^{-c})$ for $H > c/2$, formally establishing the necessity of the C4 normal-family/Montel route or super-exponential decay.
 
 ## 9. C3 — Source k_lambda approximation
 
@@ -249,12 +248,12 @@ Do not suppress it.
 A contribution is meaningful if it provides one protected result such as:
 
 1. exact canonical determinant normalization;
-2. a theorem reducing compact-uniform determinant convergence to a quantitative eigenvector norm/rate;
+2. a theorem reducing compact-uniform determinant convergence to a quantitative eigenvector norm/rate [DELIVERED: RH-R053];
 3. a cofinal-index theorem;
 4. a Montel/local-boundedness theorem;
 5. a rigorous k_lambda-to-xi_lambda estimate;
 6. a limit-identification theorem;
-7. a negative theorem showing a proposed norm/rate is insufficient.
+7. a negative theorem showing a proposed norm/rate is insufficient [DELIVERED: RH-R053 rate dichotomy].
 
 This route is expected to advance through such modular results.
 
