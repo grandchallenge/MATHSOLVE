@@ -262,8 +262,8 @@ def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, An
         "issue_number": observed["issue"]["number"],
         "raw_repo_path": raw_rel.as_posix(),
         "receipt_repo_path": receipt_rel.as_posix(),
-        "branch": f"intake/{dispatch_id.lower()}/comment-{comment_id}",
-        "pr_title": f"NS-CI intake: {dispatch_id} comment {comment_id}",
+        "branch": f"intake/{dispatch_id.lower()}",
+        "pr_title": f"NS-CI intake: {dispatch_id}",
     }
     meta_out.write_text(json.dumps(meta, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return meta
