@@ -1,0 +1,32 @@
+schema_version: 1.1.0
+ledger_contract: canonical_claim_ledger
+ledger_id: MS-RM-DIO-004-LEDGER
+claims:
+  - claim_id: MS-RM-DIO-004-C001
+    short_name: bounded_exact_solution_screen
+    claim_text: "For every integer y with -1000000 <= y <= 1000000 and unrestricted integer x, the solutions of x^2 - x = y^5 - y are exactly the twelve ordered pairs recorded in exact_screen.json."
+    claim_class: COMPUTED_EXACTLY
+    mathematical_domain: Diophantine equations
+    support_type: EXACT_RATIONAL_COMPUTATION
+    support_summary: Exact integer discriminant enumeration with no floating-point arithmetic.
+    status: CHECKED
+    certainty: EXACTLY_COMPUTED
+    source_or_artifact: [domains/researchmath/RM-DIO-004/source_binding.json, domains/researchmath/RM-DIO-004/exact_screen.json, ci/validate_rm_dio_004.py]
+    assumptions: [Python integer arithmetic and math.isqrt implement exact integer operations., The certified domain is restricted to the stated inclusive y interval.]
+    promotion_condition: Independent MATHCERT replay may certify this bounded claim at Level 2.
+    related_files: [domains/researchmath/RM-DIO-004/mathcert_handoff.json, work_packages/RM_DIO_004.md]
+    knowledge_graph_refs: []
+  - claim_id: MS-RM-DIO-004-C002
+    short_name: unbounded_completeness_withheld
+    claim_text: "No claim is made that the recorded pairs exhaust all integer solutions when y is unbounded."
+    claim_class: NEEDS_AUDIT
+    mathematical_domain: Diophantine equations
+    support_type: EXTERNAL_SPECIALIST_PENDING
+    support_summary: The source labels the status unknown and the bounded computation cannot establish a global height bound.
+    status: UNDER_REVIEW
+    certainty: UNKNOWN
+    source_or_artifact: [domains/researchmath/RM-DIO-004/mathcert_handoff.json]
+    assumptions: []
+    promotion_condition: Supply and independently review a valid global arithmetic proof reducing every integer solution to a finite certified domain.
+    related_files: [work_packages/RM_DIO_004.md]
+    knowledge_graph_refs: []

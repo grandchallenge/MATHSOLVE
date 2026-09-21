@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0.0",
+  "screen_id": "MS-RM-DIO-004-Y-ABS-1000000",
+  "fixture_id": "RM-DIO-004",
+  "equation": "x^2 - x = y^5 - y",
+  "domain": {"variable": "y", "minimum": -1000000, "maximum": 1000000, "inclusive": true},
+  "method": "For every integer y in the stated interval, compute D = 1 + 4(y^5-y), use exact integer square root, and recover both integral roots x = (1 +/- sqrt(D))/2 when D is a square.",
+  "solutions": [[-4929, 30], [-15, 3], [-5, 2], [0, -1], [0, 0], [0, 1], [1, -1], [1, 0], [1, 1], [6, 2], [16, 3], [4930, 30]],
+  "solution_count": 12,
+  "claim_boundary": "The list is exhaustive only for -1000000 <= y <= 1000000. No bound on x is assumed. This computation does not prove that there are no solutions outside the certified y interval."
+}
