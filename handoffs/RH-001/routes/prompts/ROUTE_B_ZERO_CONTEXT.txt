@@ -7,7 +7,7 @@ Mandatory first actions:
 2. Re-fetch current protected MATHSOLVE main.
 3. Read handoffs/RH-001/README.md.
 4. Read handoffs/RH-001/routes/ROUTE_B_HERGLOTZ_CONTINUATION.md in full.
-5. Read work_packages/RH_R041_ODD_HERGLOTZ_GAP_CRITERION.md, R042_PARITY_BOTTOM_PARAMETER_CONTINUITY.md, R043_HERGLOTZ_MARGIN_CONTINUITY.md, R044_EXPLICIT_INITIAL_HERGLOTZ_MARGINS.md, and the current simple-even frontier theorem R050.
+5. Read work_packages/RH_R041_ODD_HERGLOTZ_GAP_CRITERION.md, R042_PARITY_BOTTOM_PARAMETER_CONTINUITY.md, R043_HERGLOTZ_MARGIN_CONTINUITY.md, R044_EXPLICIT_INITIAL_HERGLOTZ_MARGINS.md, R051_RANK_ONE_COERCIVITY_EXTENSION.md, and R052_REFRESHED_HERGLOTZ_MARGINS.md.
 6. Read the protected provider pole interface at grandchallenge/MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648.
 
 Protected snapshot at pack creation: MATHSOLVE main 7387aa8993355ab854630cf0683b4120a813884c. Rebind live state before mutation.
@@ -27,7 +27,7 @@ Protected RH-R042/R043 give continuity and the first-failure classification:
 a first loss of the parity theorem must occur through d=0 or Delta_H=0.
 
 Current high-value tasks, in order:
-A. Refresh explicit d and Delta_H lower bounds at the current simple-even endpoint, using the latest protected gap theorem.
+A. Refresh explicit d and Delta_H lower bounds at the current simple-even endpoint (completed by R052 through a=178/1000).
 B. Prove explicit local variation/Lipschitz bounds for mu(a) and beta_-(a)=inf sigma(B_{a,-}).
 C. Prove a quantitative resolvent or scalar variation bound for Delta_H.
 D. Integrate those estimates to carry d>0 and Delta_H>0 across an explicit larger interval.
