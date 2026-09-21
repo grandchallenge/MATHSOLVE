@@ -35,6 +35,10 @@ jobs:
           python -m json.tool schemas/grobner_tactic_invocation.schema.json >/dev/null
           python -m json.tool schemas/grobner_tactic_registry.schema.json >/dev/null
           python -m json.tool governance/grobner_tactic_registry.json >/dev/null
+      - name: Validate RM-DIO-004 bounded ResearchMath route
+        run: |
+          python ci/validate_rm_dio_004.py
+          python ci/test_validate_rm_dio_004.py
       - name: Validate EUCLID-GCD-E2E-001 deterministic candidate
         run: |
           python ci/validate_euclid_gcd_solve.py

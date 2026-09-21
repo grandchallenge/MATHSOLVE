@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "handoff_id": "MS-RM-DIO-004-TO-MC",
+  "fixture_id": "RM-DIO-004",
+  "requested_level": 2,
+  "requested_claim": "The exact list in exact_screen.json is complete for every integer y with absolute value at most 1000000, with x unrestricted.",
+  "support_modality": "exact exhaustive integer computation",
+  "replay_command": "python ci/validate_rm_dio_004.py",
+  "required_independent_check": "MATHCERT must independently regenerate the interval and verify every reported pair without trusting the MATHSOLVE solution list.",
+  "excluded_claims": ["The displayed pairs are all integer solutions without a bound on y.", "The ResearchMath status-search narrative is mathematically authoritative.", "The original workshop problem is solved."],
+  "promotion_condition": "An unbounded completeness claim requires a separate global arithmetic proof and independent specialist review."
+}
