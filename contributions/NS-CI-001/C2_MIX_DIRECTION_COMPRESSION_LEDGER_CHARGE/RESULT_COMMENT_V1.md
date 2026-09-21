@@ -46,3 +46,5 @@ The initial pilot rejects:
 A result comment is research evidence only. Intake does not determine mathematical correctness, semantic duplication, plagiarism, or independence strength.
 
 If a comment is mechanically invalid, the original GitHub comment remains the historical event. The contributor may submit one complete replacement comment. The contributor must not edit the rejected comment to create a new evidentiary state.
+
+The first schema-valid result comment admitted for a dispatch is the only mathematical result accepted by version 1. Later schema-valid comments do not replace it.

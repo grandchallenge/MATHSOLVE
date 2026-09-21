@@ -80,6 +80,10 @@ Initial pilot restrictions:
 If a comment is mechanically invalid, the contributor may post one complete replacement
 comment. The rejected GitHub event is not rewritten.
 
+The first schema-valid result locks the dispatch intake. Later schema-valid mathematical
+comments are not admitted as replacement evidence. Intake executions are serialized by
+GitHub issue so two valid comments cannot race for first admission.
+
 ## Trusted intake
 
 The contributor has `issue_comment_only` authority.
@@ -104,6 +108,11 @@ For a valid comment it creates only:
 
 The workflow does not merge, adjudicate mathematics, infer independence, certify a claim,
 or mutate campaign state.
+
+The intake evidence branch is stable per dispatch. If the branch push succeeds but PR
+creation is interrupted, a later controller run recovers the missing PR from the existing
+branch rather than creating new evidence. Existing protected evidence or an open intake PR
+blocks replacement intake.
 
 ## Blind cohort
 
