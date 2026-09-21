@@ -133,7 +133,23 @@ class EventIntakeTests(unittest.TestCase):
         self.assertEqual(receipt["github_comment_id"], 9001)
         self.assertEqual(receipt["handling_state"], "received_unadjudicated")
         self.assertFalse(receipt["mathematical_correctness_adjudicated"])
-        self.assertIn("comment-9001", meta["branch"])
+        self.assertEqual(meta["branch"], "intake/nsci-c2-a-blind-001")
+        self.assertEqual(meta["pr_title"], "NS-CI intake: NSCI-C2-A-BLIND-001")
+        self.assertIn("github-comment-9001.md", meta["raw_repo_path"])
+
+    def test_different_comment_ids_share_dispatch_lock_branch(self) -> None:
+        root, bootstrap = self.make_root()
+        first = self.event(bootstrap)
+        second = self.event(bootstrap)
+        second["comment"]["id"] = 9002
+
+        first_meta = emit_intake(first, root, root / "first")
+        second_meta = emit_intake(second, root, root / "second")
+
+        self.assertEqual(first_meta["branch"], second_meta["branch"])
+        self.assertNotEqual(first_meta["raw_repo_path"], second_meta["raw_repo_path"])
+        self.assertIn("github-comment-9001.md", first_meta["raw_repo_path"])
+        self.assertIn("github-comment-9002.md", second_meta["raw_repo_path"])
 
     def test_wrong_issue_number_is_rejected(self) -> None:
         root, bootstrap = self.make_root()
