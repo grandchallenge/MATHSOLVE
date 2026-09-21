@@ -64,6 +64,29 @@ class IndependentContributionPilotTest(unittest.TestCase):
         errors = validate(root)
         self.assertTrue(any("ready dispatch lacks issue number" in item for item in errors))
 
+    def test_comment_level_concurrency_is_rejected(self) -> None:
+        root = self.make_root()
+        path = root / WORKFLOW
+        text = path.read_text(encoding="utf-8").replace(
+            "group: ns-ci-contribution-intake-${{ github.event.issue.number }}",
+            "group: ns-ci-contribution-intake-${{ github.event.comment.id }}",
+        )
+        path.write_text(text, encoding="utf-8")
+        errors = validate(root)
+        self.assertTrue(any("forbidden authority surface" in item or "missing control" in item for item in errors))
+
+    def test_missing_pr_recovery_control_is_rejected(self) -> None:
+        root = self.make_root()
+        path = root / WORKFLOW
+        path.write_text(
+            path.read_text(encoding="utf-8").replace(
+                "- name: Recover missing intake pull request",
+                "- name: Recover omitted",
+            ),
+            encoding="utf-8",
+        )
+        self.assertTrue(any("missing control" in item for item in validate(root)))
+
     def test_workflow_auto_merge_surface_is_rejected(self) -> None:
         root = self.make_root()
         path = root / WORKFLOW
