@@ -9,15 +9,78 @@
     "commit_sha": "aafd5d5d18989d4ac246de8f6dd2455f02614307"
   },
   "forge_inputs": [
-    {"repository":"grandchallenge/MATHFORGE","commit_sha":"2cb624cc61cd95ec0c8cfb8429d93128972289a5","path":"provider_manifests/UC-001.json","digest_algorithm":"git_blob_sha1","digest":"6d803633c2697f100d7d5b616ea1d6f16bff34bf","role":"source"},
-    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"governance/external_formal_sources.json","digest_algorithm":"git_blob_sha1","digest":"4680bee8e6b641956a5db2b453c94aab7cabb37b","role":"source"},
-    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/source_locks/FC-GDM-002.json","digest_algorithm":"git_blob_sha1","digest":"9acd4a94538592a235bb302c1f31e5da11662643","role":"source"},
-    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/snapshots/FC-GDM-002-ACTIVE-CAMPAIGN-EXPANSION.replay.json","digest_algorithm":"git_blob_sha1","digest":"1ad4250df912bf2c7cfcc7342fb0ad75e8d667e7","role":"source"},
-    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/update_ledgers/FC-GDM-001-TO-FC-GDM-002.json","digest_algorithm":"git_blob_sha1","digest":"ff2590e2a91b7d5ea5ea5a42c23c67c9745608a0","role":"source"},
-    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/REPLAY_MANIFEST.json","digest_algorithm":"git_blob_sha1","digest":"d91c8ae08262791d248c9ba87837c4624c0b4cda","role":"source"},
-    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/FC-GDM-002-INVENTORY-SCREEN.json","digest_algorithm":"git_blob_sha1","digest":"8dbe8d6769e842be72eb8be1e22cc605278c7561","role":"source"},
-    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/replays/FC-GDM-002/FC-GDM-002-TAG-RESOLUTION.json","digest_algorithm":"git_blob_sha1","digest":"7dd39a995a789da583f8f2f0b15da2c30207f0f1","role":"source"},
-    {"repository":"grandchallenge/MATHFORGE","commit_sha":"0faee396ffa56c568ee0ae6a348bdb43ca80ac4d","path":"formal_sources/formal_conjectures/concordance/UC-001.json","digest_algorithm":"git_blob_sha1","digest":"8bba56b13978b36471e1cbafe358b82b571c2b95","role":"source"}
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "2cb624cc61cd95ec0c8cfb8429d93128972289a5",
+      "path": "provider_manifests/UC-001.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "6d803633c2697f100d7d5b616ea1d6f16bff34bf",
+      "role": "source"
+    },
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "0faee396ffa56c568ee0ae6a348bdb43ca80ac4d",
+      "path": "governance/external_formal_sources.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "4680bee8e6b641956a5db2b453c94aab7cabb37b",
+      "role": "source"
+    },
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "0faee396ffa56c568ee0ae6a348bdb43ca80ac4d",
+      "path": "formal_sources/formal_conjectures/source_locks/FC-GDM-002.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "9acd4a94538592a235bb302c1f31e5da11662643",
+      "role": "source"
+    },
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "0faee396ffa56c568ee0ae6a348bdb43ca80ac4d",
+      "path": "formal_sources/formal_conjectures/snapshots/FC-GDM-002-ACTIVE-CAMPAIGN-EXPANSION.replay.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "1ad4250df912bf2c7cfcc7342fb0ad75e8d667e7",
+      "role": "source"
+    },
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "0faee396ffa56c568ee0ae6a348bdb43ca80ac4d",
+      "path": "formal_sources/formal_conjectures/update_ledgers/FC-GDM-001-TO-FC-GDM-002.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "ff2590e2a91b7d5ea5ea5a42c23c67c9745608a0",
+      "role": "source"
+    },
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "0faee396ffa56c568ee0ae6a348bdb43ca80ac4d",
+      "path": "formal_sources/formal_conjectures/replays/FC-GDM-002/REPLAY_MANIFEST.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "d91c8ae08262791d248c9ba87837c4624c0b4cda",
+      "role": "source"
+    },
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "0faee396ffa56c568ee0ae6a348bdb43ca80ac4d",
+      "path": "formal_sources/formal_conjectures/replays/FC-GDM-002/FC-GDM-002-INVENTORY-SCREEN.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "8dbe8d6769e842be72eb8be1e22cc605278c7561",
+      "role": "source"
+    },
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "0faee396ffa56c568ee0ae6a348bdb43ca80ac4d",
+      "path": "formal_sources/formal_conjectures/replays/FC-GDM-002/FC-GDM-002-TAG-RESOLUTION.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "7dd39a995a789da583f8f2f0b15da2c30207f0f1",
+      "role": "source"
+    },
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "0faee396ffa56c568ee0ae6a348bdb43ca80ac4d",
+      "path": "formal_sources/formal_conjectures/concordance/UC-001.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "8bba56b13978b36471e1cbafe358b82b571c2b95",
+      "role": "source"
+    }
   ],
   "solve": {
     "repository": "grandchallenge/MATHSOLVE",
@@ -25,46 +88,164 @@
     "provider_commit": "ec7c60bfa51850d7fb11bd5a3a24ca834352366e",
     "migration_debt": []
   },
-  "work_packages": [{
-    "work_package_id": "MS-UC-WP04",
-    "primary_type": "EXACT_COMPUTATIONAL_SCREEN",
-    "status": "complete",
-    "source_repository": "grandchallenge/MATHSOLVE",
-    "source_commit": "443daf537dc7e4ee34ab43aeb01508d9177816ab",
-    "artifacts": [{
-      "repository": "grandchallenge/MATHSOLVE",
-      "commit_sha": "443daf537dc7e4ee34ab43aeb01508d9177816ab",
-      "path": "domains/union_closed/WP04_small_cases_and_certificates/README.md",
-      "digest_algorithm": "git_blob_sha1",
-      "digest": "e4f4882666653fa1f0996aa7923e6290137fe2ee",
-      "role": "solve_artifact"
-    }],
-    "ledgers": {
-      "claim": {"repository":"grandchallenge/MATHSOLVE","commit_sha":"2a0124051d67b4db63a75f5cc592a02b7553a2c2","path":"campaign_ledgers/UC-001/claim_ledger.json","digest_algorithm":"git_blob_sha1","digest":"05c5b58f603a923fd6e66b44411ffd7c53559d55","role":"claim_ledger"},
-      "proof_obligation": {"repository":"grandchallenge/MATHSOLVE","commit_sha":"7d8ebdddc74b231b2405465259d0b799e6d8f3a0","path":"campaign_ledgers/UC-001/proof_obligation_dag.json","digest_algorithm":"git_blob_sha1","digest":"5cc706c23636dadd83ab859246c412918c605f15","role":"proof_obligation_dag"},
-      "failed_route": {"repository":"grandchallenge/MATHSOLVE","commit_sha":"ee5de57203ee5bd676a7b8af6a4c7b774d0ffe2f","path":"campaign_ledgers/UC-001/failed_route_ledger.json","digest_algorithm":"git_blob_sha1","digest":"bf427da00c7b2a9f3d3f14fba3792be586ed1a9b","role":"failed_route_ledger"},
-      "resource": {"repository":"grandchallenge/MATHSOLVE","commit_sha":"196db9654b9bb41ac10f27634c125360a734cc31","path":"campaign_ledgers/UC-001/resource_ledger.json","digest_algorithm":"git_blob_sha1","digest":"4394b029c60ec97d3c58bb85872b7cfa9afc6abd","role":"resource_ledger"},
-      "certification": {"repository":"grandchallenge/MATHSOLVE","commit_sha":"e00d7db238d956e86e005aef609eafc8a221b4cf","path":"cert_handoffs/UC-001.json","digest_algorithm":"git_blob_sha1","digest":"8369bc21e45be6af71d2a0cdb0c5ab3cb5313bfb","role":"certificate_handoff"}
+  "work_packages": [
+    {
+      "work_package_id": "MS-UC-WP04",
+      "primary_type": "EXACT_COMPUTATIONAL_SCREEN",
+      "status": "complete",
+      "source_repository": "grandchallenge/MATHSOLVE",
+      "source_commit": "443daf537dc7e4ee34ab43aeb01508d9177816ab",
+      "artifacts": [
+        {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "443daf537dc7e4ee34ab43aeb01508d9177816ab",
+          "path": "domains/union_closed/WP04_small_cases_and_certificates/README.md",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "e4f4882666653fa1f0996aa7923e6290137fe2ee",
+          "role": "solve_artifact"
+        }
+      ],
+      "ledgers": {
+        "claim": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "2a0124051d67b4db63a75f5cc592a02b7553a2c2",
+          "path": "campaign_ledgers/UC-001/claim_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "05c5b58f603a923fd6e66b44411ffd7c53559d55",
+          "role": "claim_ledger"
+        },
+        "proof_obligation": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "7d8ebdddc74b231b2405465259d0b799e6d8f3a0",
+          "path": "campaign_ledgers/UC-001/proof_obligation_dag.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "5cc706c23636dadd83ab859246c412918c605f15",
+          "role": "proof_obligation_dag"
+        },
+        "failed_route": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "ee5de57203ee5bd676a7b8af6a4c7b774d0ffe2f",
+          "path": "campaign_ledgers/UC-001/failed_route_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "bf427da00c7b2a9f3d3f14fba3792be586ed1a9b",
+          "role": "failed_route_ledger"
+        },
+        "resource": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "196db9654b9bb41ac10f27634c125360a734cc31",
+          "path": "campaign_ledgers/UC-001/resource_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "4394b029c60ec97d3c58bb85872b7cfa9afc6abd",
+          "role": "resource_ledger"
+        },
+        "certification": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "e00d7db238d956e86e005aef609eafc8a221b4cf",
+          "path": "cert_handoffs/UC-001.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "8369bc21e45be6af71d2a0cdb0c5ab3cb5313bfb",
+          "role": "certificate_handoff"
+        }
+      },
+      "children": []
     },
-    "children": []
-  }],
+    {
+      "work_package_id": "UC-WP07-D005",
+      "primary_type": "RESTRICTED_THEOREM",
+      "status": "complete",
+      "source_repository": "grandchallenge/MATHSOLVE",
+      "source_commit": "dbfbb117ef1e3733268da6590c824a330c69ee64",
+      "artifacts": [
+        {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "dbfbb117ef1e3733268da6590c824a330c69ee64",
+          "path": "MathSolve/UnionClosed/FunctionalPreorderD005.lean",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "5638ddb60e573a7416a844ece74234fcffba52ad",
+          "role": "solve_artifact"
+        },
+        {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "dbfbb117ef1e3733268da6590c824a330c69ee64",
+          "path": "domains/union_closed/WP07_functional_preorder_bridge/01_RESULT_STATUS.md",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "6afd72e1668aed174f51e9a5197920aac060e317",
+          "role": "solve_artifact"
+        }
+      ],
+      "ledgers": {
+        "claim": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "68129858cddbf427c6243b6622ebc5b34545e412",
+          "path": "campaign_ledgers/UC-001/claim_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "75f78c05221490bfc8d35a38de507c7eaa582e0e",
+          "role": "claim_ledger"
+        },
+        "proof_obligation": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "68129858cddbf427c6243b6622ebc5b34545e412",
+          "path": "campaign_ledgers/UC-001/proof_obligation_dag.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "8787017dc050ad0e3ca30c7331a89a5c364597d6",
+          "role": "proof_obligation_dag"
+        },
+        "certification": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "d9c5e6aec59ae9a70e8c353555e5b66737fd6744",
+          "path": "cert_handoffs/UC-001.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "d696e4ed5c750cb8674c7901c49cda64246b20cf",
+          "role": "certificate_handoff"
+        }
+      },
+      "children": []
+    }
+  ],
   "certification": {
     "repository": "grandchallenge/MATHCERT",
-    "contract": {"repository":"grandchallenge/MATHCERT","commit_sha":"3854dd1b4f6e162a7e74c3da1993f022ee691e5e","path":"governance/certification_routes.json","digest_algorithm":"git_blob_sha1","digest":"065f0531e4d763b389b207d4922d5a85b4335ee3"},
+    "contract": {
+      "repository": "grandchallenge/MATHCERT",
+      "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
+      "path": "governance/certification_routes.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3"
+    },
     "handoff_state": "ready",
-    "handoff_packets": [{
-      "handoff_id": "MC-HANDOFF-UC-001",
-      "status": "ready",
-      "target_claim_ids": ["UC-WP02-L002", "UC-WP04-L001", "UC-WP01-C004"],
-      "artifact": {"repository":"grandchallenge/MATHSOLVE","commit_sha":"e00d7db238d956e86e005aef609eafc8a221b4cf","path":"cert_handoffs/UC-001.json","digest_algorithm":"git_blob_sha1","digest":"8369bc21e45be6af71d2a0cdb0c5ab3cb5313bfb","role":"certificate_handoff"}
-    }]
+    "handoff_packets": [
+      {
+        "handoff_id": "MC-HANDOFF-UC-001",
+        "status": "ready",
+        "target_claim_ids": [
+          "UC-WP02-L002",
+          "UC-WP04-L001",
+          "UC-WP01-C004",
+          "UC-WP07-P006"
+        ],
+        "artifact": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "d9c5e6aec59ae9a70e8c353555e5b66737fd6744",
+          "path": "cert_handoffs/UC-001.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "d696e4ed5c750cb8674c7901c49cda64246b20cf",
+          "role": "certificate_handoff"
+        }
+      }
+    ]
   },
   "promotion": {
     "eligible": false,
     "blockers": [
       "Frankl's conjecture remains open; only bounded and restricted claims may be handed off.",
-      "Native campaign coverage before WP04 remains distributed across legacy artifacts."
+      "Native campaign coverage before WP04 remains distributed across legacy artifacts.",
+      "WP07-D005 is a restricted complement-class theorem; no arbitrary-family functional-preorder complement representation is proved."
     ]
   },
-  "disposal": {"status":"active","supersedes":[],"reopening_conditions":["Reopen the manifest when provider lineage, claim status, or certification state changes."]}
+  "disposal": {
+    "status": "active",
+    "supersedes": [],
+    "reopening_conditions": [
+      "Reopen the manifest when provider lineage, claim status, or certification state changes."
+    ]
+  }
 }
