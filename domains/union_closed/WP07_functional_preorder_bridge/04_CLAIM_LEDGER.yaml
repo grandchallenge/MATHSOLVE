@@ -25,10 +25,10 @@ foundational_profile:
   pathology_risk:
     level: low
     triggers: []
-    notes: WP07 is confined to finite preorders and finite set families. D004 is locally closed; D005 complement duality is the active restricted mathematical debt.
+    notes: WP07 is confined to finite preorders and finite set families. D004 and D005 are locally closed; WP07's restricted theorem-development obligations are complete.
 foundation_routing:
   selected_route: R0
-  route_reason: The branch is finite, decidable, and computably presented. D002-D004 have checked local Lean surfaces.
+  route_reason: The branch is finite, decidable, and computably presented. D002-D005 have checked local Lean surfaces.
   foundational_profile_used: true
   regularization_attempted: false
   choice_audit:
@@ -36,12 +36,13 @@ foundation_routing:
     notes: The audited source theorem reports only propext, Classical.choice, and Quot.sound. The local semantic bridge introduces no explicit axiom declaration.
   constructive_content:
     status: restricted_theorem_checked
-    notes: The semantic obstruction, exact local predicate, NDS normalization, source-shaped NDS theorem, and D004 average-rarity theorem are checked locally.
+    notes: The semantic obstruction, exact local predicate, D004 average-rarity theorem, D005 complement union-closure, complement frequency arithmetic, average abundance, and restricted Frankl-abundance theorem are checked locally.
   certificate_boundary:
     target: local_lean_theorem_development
     checker_inputs:
       - MATHSOLVE/MathSolve/UnionClosed/FunctionalPreorderBridge.lean
       - MATHSOLVE/MathSolve/UnionClosed/FunctionalPreorderD004.lean
+      - MATHSOLVE/MathSolve/UnionClosed/FunctionalPreorderD005.lean
       - MATHSOLVE/MathSolve/UnionClosed/AvgRarePort/Secondary/MainStatement.lean
       - MATHSOLVE/domains/union_closed/WP07_functional_preorder_bridge/01_RESULT_STATUS.md
       - MATHSOLVE/domains/union_closed/WP07_functional_preorder_bridge/03_PROOF_DEBT_REGISTER.md
@@ -137,6 +138,30 @@ claims:
     knowledge_graph_refs:
       - UC-METHOD-AVERAGING
       - UC-WP05
+
+  - claim_id: UC-WP07-P006
+    short_name: functional-preorder complement class is Frankl-abundant
+    claim_text: >-
+      For every exact D003 functional-preorder ideal family F on carrier U,
+      the carrier-relative complement family is union-closed, nontrivial, and
+      Frankl-abundant. D004 average rarity also dualizes to checked average
+      abundance of that complement family.
+    claim_class: PROVED_IN_PACKAGE
+    support_type: LEAN_PROOF
+    status: CHECKED
+    certainty: LOCAL_THEOREM
+    source_or_artifact:
+      - MATHSOLVE/MathSolve/UnionClosed/FunctionalPreorderD005.lean
+    assumptions:
+      - The hypothesis is exactly IsFunctionalPreorderIdealFamilyOn F U.
+      - Union closure is proved from intersection closure of preorder order ideals, not from IsIdealFamilyOn.
+      - The result is restricted to families already represented as complements of the D003 class.
+      - This local theorem is not a MATHCERT certification.
+    promotion_condition: No universal promotion follows; an arbitrary union-closed family would still need an independently proved representation in this class.
+    knowledge_graph_refs:
+      - UC-WP05
+      - UC-P04
+      - UC-METHOD-AVERAGING
 
   - claim_id: UC-WP07-P005
     short_name: universal Frankl boundary unchanged

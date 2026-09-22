@@ -1,39 +1,47 @@
 # WP07 Proof Debt Register
 
-Date: 2026-09-20
+Date: 2026-09-21
 
 | Debt ID | Obligation | Status | Evidence / remaining gate |
 |---|---|---|---|
-| WP07-D001 | Reconcile, independently build, and audit the selected `kashiwabarakenji/avg-rare` revision. | Closed | Selected `21451877e9996a295bbc1ec25856d07fa302d48c`; historical pin preserved; two-commit delta is comment-only; Lean 4.23.0 / mathlib v4.23.0; `lake update` and 879-job `lake build` pass; no active `sorry`/`admit`; no explicit source `axiom`; `AvgRare.MainStatement.main_nds_nonpos` axiom report is `[propext, Classical.choice, Quot.sound]`. |
+| WP07-D001 | Reconcile, independently build, and audit the selected `kashiwabarakenji/avg-rare` revision. | Closed | Exact selected revision built and audited; source provenance protected in MATHFORGE. |
 | WP07-D002 | Formalize the finite functional-chain obstruction to direct `IsIdealFamilyOn` reuse. | Closed | `functional_three_chain_not_IsIdealFamilyOn`; exact four-member family checked by `chain_idealFamily_eq_expected`. |
-| WP07-D003 | Define a local functional-preorder order-ideal family predicate over `Family α`. | Closed | `IsFunctionalPreorderIdealFamilyOn`; explicit finite carrier and extensional family equality; source-shaped `FuncSetup`, reachability, and order-ideal semantics. |
-| WP07-D004 | Prove or port average rarity for the local functional-preorder predicate. | Closed locally | `sourceShapedMainNDS` proves `SourceShapedMainNDSStatement`; `d004_averageRarity` proves `D004AverageRarityStatement`. The source proof cone is compiled inside MATHSOLVE and connected to D003 by explicit family/NDS equalities. |
-| WP07-D005 | Connect local functional-preorder average rarity to complement abundance. | Open / next | Define the exact complement family on the D003 carrier, prove union closure and rarity-to-abundance transfer, and keep the conclusion restricted to complements of functional-preorder ideal families. |
+| WP07-D003 | Define a local functional-preorder order-ideal family predicate over `Family α`. | Closed | `IsFunctionalPreorderIdealFamilyOn`; explicit finite carrier and extensional family equality. |
+| WP07-D004 | Prove average rarity for the exact D003 predicate. | Closed locally | `sourceShapedMainNDS` and `d004_averageRarity`; explicit audited semantic transport. |
+| WP07-D005 | Connect D004 average rarity to complement abundance. | Closed locally | `functionalPreorderIdealFamily_inter_closed`, `complementFamilyOn_unionClosed_of_functionalPreorder`, `exists_rare_of_averageRare`, `d005_complement_averageAbundant`, and `d005_complement_frankl`. |
 
-## D004 trust boundary
+## D005 proof boundary
 
-The external declaration `AvgRare.MainStatement.main_nds_nonpos` remains source
-and proof provenance. D004 is locally governed because the required proof cone
-is present and compiled as MATHSOLVE source, while
-`FunctionalPreorderD004.lean` proves the semantic correspondence from the
-protected D003 representation to that compiled theorem surface.
+D005 uses only the exact D003 hypothesis plus D004 average rarity.
 
-The transport did not add an external trusted dependency. Relative to the
-audited source revision, the port changes module import paths and applies only
-Lean-4.29 proof/API compatibility edits. The mathematical theorem statements
-used by D004 are unchanged.
-
-The former conditional chain
+The closure chain is:
 
 ```text
-SourceShapedMainNDSStatement
-  -> D004AverageRarityStatement
+functional-preorder order ideals
+  -> intersection closure
+  -> carrier-relative complements are union-closed
+
+D004 average rarity
+  -> incidence double counting
+  -> one rare carrier element
+  -> exact complement frequency identity
+  -> one abundant supported complement element
+  -> restricted Frankl abundance.
 ```
 
-is now discharged by the checked local theorem `sourceShapedMainNDS`.
+This is not a reuse of `IsIdealFamilyOn`; D002 remains the checked reason that
+such a reuse would be invalid in general.
 
-## Remaining campaign debt
+## Remaining campaign debt outside WP07
 
-D005 is the next restricted mathematical obligation. Its closure does not imply
-`UC-P04` and cannot promote `UC-FRANKL`: a separate representation theorem
-for arbitrary union-closed families would still be required.
+WP07's restricted local obligations are complete. The campaign still has the
+universal representation boundary:
+
+```text
+arbitrary finite union-closed family
+  ?-> complement of an exact D003 functional-preorder ideal family.
+```
+
+No such bridge is proved. Therefore `UC-P04` and `UC-FRANKL` remain open.
+Independent MATHCERT adjudication of the new D005 restricted theorem is also a
+separate governance step, not part of local theorem closure.
