@@ -4,7 +4,7 @@
   "handoff_id": "MC-UC-WP07-D005-HANDOFF-001",
   "campaign_id": "UC-001",
   "work_package_id": "UC-WP07-D005",
-  "tracker_issue": 25,
+  "tracker_issue": 320,
   "producer_status": "ready_for_independent_intake_after_protected_merge",
   "protected_solve_base": {
     "repository": "grandchallenge/MATHSOLVE",
@@ -24,7 +24,8 @@
     "source_proof_cone": "MathSolve/UnionClosed/AvgRarePort/",
     "exact_head_ci_subject": "024331109b052265304738e40a4c10c939636a03",
     "protected_merge_commit": "dbfbb117ef1e3733268da6590c824a330c69ee64",
-    "local_review_pr": 438
+    "local_review_pr": 438,
+    "successor_handoff_predecessor_merge": "01ae60ce5d9a60b728cbfe192839b136958a1fac"
   },
   "requested_adjudication": [
     "LEAN_FORMALIZATION",
@@ -32,7 +33,7 @@
     "SPECIALIST_AUDIT"
   ],
   "activation": {
-    "condition": "protected successor-handoff merge and protected-main readback",
+    "condition": "protected final tracker-repin merge and protected-main readback",
     "head_change_requires_reapproval": true,
     "effect": "packet_may_be_offered_to_mathcert_issue_25_for_independent_intake"
   },
