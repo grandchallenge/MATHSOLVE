@@ -111,13 +111,11 @@ def validate(root: Path = ROOT) -> list[str]:
     for needle in (
         "issue_comment:",
         "contents: write",
-        "pull-requests: write",
         "issues: write",
         "ci/ns_ci_github_contribution_intake.py",
         "group: ns-ci-contribution-intake-${{ github.event.issue.number }}",
-        "Recover missing intake pull request",
-        "INTAKE ALREADY ACCEPTED",
-        "RAW EVIDENCE PR CREATED",
+        "The bounded Release Trust PR controller owns PR creation",
+        "INTAKE CAPTURED",
     ):
         if needle not in workflow:
             errors.append(f"intake workflow missing control: {needle}")
@@ -126,6 +124,9 @@ def validate(root: Path = ROOT) -> list[str]:
         "workflow_run:",
         "auto-merge",
         "gh pr merge",
+        "gh pr create",
+        "pull-requests: write",
+        "Recover missing intake pull request",
         "group: ns-ci-contribution-intake-${{ github.event.comment.id }}",
     ):
         if forbidden in workflow:
