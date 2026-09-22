@@ -35,7 +35,7 @@
   "activation": {
     "condition": "protected final tracker-repin merge and protected-main readback",
     "head_change_requires_reapproval": true,
-    "effect": "packet_may_be_offered_to_mathcert_issue_25_for_independent_intake"
+    "effect": "packet_may_be_offered_to_mathcert_issue_320_for_independent_intake"
   },
   "route_controls": {
     "historical_uc_certification_mutable": false,
