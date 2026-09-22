@@ -138,14 +138,7 @@
           "digest": "4394b029c60ec97d3c58bb85872b7cfa9afc6abd",
           "role": "resource_ledger"
         },
-        "certification": {
-          "repository": "grandchallenge/MATHSOLVE",
-          "commit_sha": "d9c5e6aec59ae9a70e8c353555e5b66737fd6744",
-          "path": "cert_handoffs/UC-001.json",
-          "digest_algorithm": "git_blob_sha1",
-          "digest": "d696e4ed5c750cb8674c7901c49cda64246b20cf",
-          "role": "certificate_handoff"
-        }
+        "certification": null
       },
       "children": []
     },
