@@ -6,7 +6,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
   issues: write
 
 concurrency:
@@ -74,7 +73,7 @@ jobs:
           from pathlib import Path
           meta = json.loads((Path(os.environ["OUT_DIR"]) / "META.json").read_text(encoding="utf-8"))
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
-              for key in ("dispatch_id","comment_id","issue_number","raw_repo_path","receipt_repo_path","branch","pr_title"):
+              for key in ("dispatch_id","comment_id","issue_number","raw_repo_path","receipt_repo_path","branch"):
                   print(f"{key}={meta[key]}", file=f)
           PY
 
@@ -82,8 +81,6 @@ jobs:
         if: steps.validate.outcome == 'success'
         id: state
         env:
-          GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
           BRANCH: ${{ steps.meta.outputs.branch }}
           RAW_PATH: ${{ steps.meta.outputs.raw_repo_path }}
         run: |
@@ -100,78 +97,31 @@ jobs:
             branch_exists=false
           fi
 
-          pr_url="$(gh pr list --head "$BRANCH" --state open --json url --jq '.[0].url // ""')"
-          accepted_count="$(gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments?per_page=100"             --jq '[.[] | select(.user.login == "github-actions[bot]" and (.body | startswith("INTAKE ACCEPTED — RAW EVIDENCE PR CREATED")))] | length')"
-
           echo "main_captured=$main_captured" >> "$GITHUB_OUTPUT"
           echo "branch_exists=$branch_exists" >> "$GITHUB_OUTPUT"
-          echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
-          echo "accepted_count=$accepted_count" >> "$GITHUB_OUTPUT"
-
-      - name: Report previously accepted result
-        if: steps.validate.outcome == 'success' && steps.state.outputs.accepted_count != '0'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-        run: |
-          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE ALREADY ACCEPTED — this dispatch already has an accepted raw-evidence intake. A second mathematical result comment is not admitted."
 
       - name: Report already protected result
-        if: >
-          steps.validate.outcome == 'success' &&
-          steps.state.outputs.accepted_count == '0' &&
-          steps.state.outputs.main_captured == 'true'
+        if: steps.validate.outcome == 'success' && steps.state.outputs.main_captured == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE ALREADY PROTECTED — raw evidence for this dispatch is already present on protected main. No replacement result was admitted."
 
-      - name: Report existing intake pull request
+      - name: Report already captured evidence branch
         if: >
           steps.validate.outcome == 'success' &&
-          steps.state.outputs.accepted_count == '0' &&
           steps.state.outputs.main_captured == 'false' &&
-          steps.state.outputs.branch_exists == 'true' &&
-          steps.state.outputs.pr_url != ''
+          steps.state.outputs.branch_exists == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-          PR_URL: ${{ steps.state.outputs.pr_url }}
         run: |
-          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE ALREADY CAPTURED — the dispatch evidence branch already has an open raw-evidence PR: $PR_URL. No replacement result was admitted."
-
-      - name: Recover missing intake pull request
-        if: >
-          steps.validate.outcome == 'success' &&
-          steps.state.outputs.accepted_count == '0' &&
-          steps.state.outputs.main_captured == 'false' &&
-          steps.state.outputs.branch_exists == 'true' &&
-          steps.state.outputs.pr_url == ''
-        id: recovered_pr
-        env:
-          GH_TOKEN: ${{ github.token }}
-          BRANCH: ${{ steps.meta.outputs.branch }}
-          PR_TITLE: ${{ steps.meta.outputs.pr_title }}
-          DISPATCH_ID: ${{ steps.meta.outputs.dispatch_id }}
-        run: |
-          body="Recovered trusted intake snapshot for dispatch $DISPATCH_ID from its existing evidence branch. This PR preserves raw contributor evidence and a machine receipt only. It does not adjudicate mathematics, infer independence, certify a claim, or alter campaign state."
-          url="$(gh pr create --base main --head "$BRANCH" --title "$PR_TITLE" --body "$body")"
-          echo "url=$url" >> "$GITHUB_OUTPUT"
-
-      - name: Report recovered intake
-        if: steps.recovered_pr.outcome == 'success'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          PR_URL: ${{ steps.recovered_pr.outputs.url }}
-        run: |
-          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE RECOVERED — an existing raw-evidence branch lacked an open PR; recovery opened: $PR_URL. No replacement result was admitted."
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE ALREADY CAPTURED — the dispatch evidence branch already exists. The bounded Release Trust PR controller owns PR creation. No replacement result was admitted."
 
       - name: Snapshot first valid result and receipt
         if: >
           steps.validate.outcome == 'success' &&
-          steps.state.outputs.accepted_count == '0' &&
           steps.state.outputs.main_captured == 'false' &&
           steps.state.outputs.branch_exists == 'false'
         env:
@@ -192,29 +142,13 @@ jobs:
           git commit -m "NS-CI intake: snapshot $DISPATCH_ID comment $COMMENT_ID"
           git push origin "$BRANCH"
 
-      - name: Open first raw-evidence pull request
+      - name: Report captured intake
         if: >
           steps.validate.outcome == 'success' &&
-          steps.state.outputs.accepted_count == '0' &&
           steps.state.outputs.main_captured == 'false' &&
           steps.state.outputs.branch_exists == 'false'
-        id: pr
-        env:
-          GH_TOKEN: ${{ github.token }}
-          BRANCH: ${{ steps.meta.outputs.branch }}
-          PR_TITLE: ${{ steps.meta.outputs.pr_title }}
-          DISPATCH_ID: ${{ steps.meta.outputs.dispatch_id }}
-          COMMENT_ID: ${{ steps.meta.outputs.comment_id }}
-        run: |
-          body="Trusted intake snapshot for dispatch $DISPATCH_ID, GitHub comment $COMMENT_ID. This PR preserves raw contributor evidence and a machine receipt only. It does not adjudicate mathematics, infer independence, certify a claim, or alter campaign state."
-          url="$(gh pr create --base main --head "$BRANCH" --title "$PR_TITLE" --body "$body")"
-          echo "url=$url" >> "$GITHUB_OUTPUT"
-
-      - name: Report accepted intake
-        if: steps.pr.outcome == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-          PR_URL: ${{ steps.pr.outputs.url }}
         run: |
-          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE ACCEPTED — RAW EVIDENCE PR CREATED: $PR_URL. Mathematical status remains unadjudicated."
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE CAPTURED — raw evidence and receipt were committed to the dispatch evidence branch. The bounded Release Trust PR controller will validate that branch and open the ordinary intake PR. Mathematical status remains unadjudicated."
