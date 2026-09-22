@@ -108,18 +108,18 @@
       "ledgers": {
         "claim": {
           "repository": "grandchallenge/MATHSOLVE",
-          "commit_sha": "2a0124051d67b4db63a75f5cc592a02b7553a2c2",
+          "commit_sha": "68129858cddbf427c6243b6622ebc5b34545e412",
           "path": "campaign_ledgers/UC-001/claim_ledger.json",
           "digest_algorithm": "git_blob_sha1",
-          "digest": "05c5b58f603a923fd6e66b44411ffd7c53559d55",
+          "digest": "75f78c05221490bfc8d35a38de507c7eaa582e0e",
           "role": "claim_ledger"
         },
         "proof_obligation": {
           "repository": "grandchallenge/MATHSOLVE",
-          "commit_sha": "7d8ebdddc74b231b2405465259d0b799e6d8f3a0",
+          "commit_sha": "68129858cddbf427c6243b6622ebc5b34545e412",
           "path": "campaign_ledgers/UC-001/proof_obligation_dag.json",
           "digest_algorithm": "git_blob_sha1",
-          "digest": "5cc706c23636dadd83ab859246c412918c605f15",
+          "digest": "8787017dc050ad0e3ca30c7331a89a5c364597d6",
           "role": "proof_obligation_dag"
         },
         "failed_route": {
@@ -140,10 +140,10 @@
         },
         "certification": {
           "repository": "grandchallenge/MATHSOLVE",
-          "commit_sha": "e00d7db238d956e86e005aef609eafc8a221b4cf",
+          "commit_sha": "d9c5e6aec59ae9a70e8c353555e5b66737fd6744",
           "path": "cert_handoffs/UC-001.json",
           "digest_algorithm": "git_blob_sha1",
-          "digest": "8369bc21e45be6af71d2a0cdb0c5ab3cb5313bfb",
+          "digest": "d696e4ed5c750cb8674c7901c49cda64246b20cf",
           "role": "certificate_handoff"
         }
       },
