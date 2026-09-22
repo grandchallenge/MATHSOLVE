@@ -100,19 +100,32 @@ A GCL-owned workflow validates:
 
 The workflow never executes contributor content.
 
-For a valid comment it creates only:
+For a valid comment the MATHSOLVE intake workflow creates only:
 
 - one immutable raw Markdown snapshot containing the exact comment body;
 - one machine receipt containing GitHub provenance and protected dispatch identity;
-- one ordinary intake pull request.
+- one stable per-dispatch evidence branch.
 
-The workflow does not merge, adjudicate mathematics, infer independence, certify a claim,
-or mutate campaign state.
+The MATHSOLVE workflow does not have pull-request creation authority. It does not merge,
+adjudicate mathematics, infer independence, certify a claim, or mutate campaign state.
 
-The intake evidence branch is stable per dispatch. If the branch push succeeds but PR
-creation is interrupted, a later controller run recovers the missing PR from the existing
-branch rather than creating new evidence. Existing protected evidence or an open intake PR
-blocks replacement intake.
+The final evidence-branch to pull-request hop is owned by the bounded Release Trust
+controller protected in MATH-PROGRAMME at
+`e0f809d853705db0817800434da0213b8177999f`.
+
+That controller runs behind the existing `release-trust` environment and mints a
+short-lived GitHub App token restricted to `MATHSOLVE` with only:
+
+- `contents: read`;
+- `pull_requests: write`;
+- `issues: write`.
+
+It validates the protected dispatch, exact raw-plus-receipt branch diff, raw digest,
+bootstrap/handoff bindings, and unadjudicated receipt state before opening a missing
+ordinary intake PR. It cannot write evidence branches, merge or approve PRs, mutate
+campaign state, or adjudicate mathematics.
+
+Existing protected evidence or an existing evidence branch blocks replacement intake.
 
 ## Blind cohort
 
@@ -137,4 +150,9 @@ Protected issue bindings:
 Each issue body was verified byte-for-byte against its protected dispatch-bootstrap
 artifact before binding. All three dispatches are `READY_FOR_GITHUB_COMMENT`.
 
-No contribution has yet been received or mathematically adjudicated.
+The cooperative Assignment-B trial `NSCI-C2-B-COOP-001` has completed intake and
+adjudication. Its raw evidence is protected at
+`8b2bdb2f0be6515b2eedea1d784d2d97f53c694e`; its reduced adjudicated L5-45 result is
+protected at `b9e41f38a438fd3e039cf55fb59d7cd1ae0d1bc8`.
+
+The Assignment-A blind cohort remains open and sealed.
