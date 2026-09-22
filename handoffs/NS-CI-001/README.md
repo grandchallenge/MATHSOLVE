@@ -2501,6 +2501,31 @@ q4 damping.
 This resolves the L5-43 abstract-density gap at the limiting L5-35 level, but
 does not yet prove any one balance channel is a selector charge.
 
+### L5-45 D4 moment separator
+
+`work_packages/NS_CI_R014_A2_L5_45_C2_D4_MOMENT_SEPARATOR.md` records
+
+`D4_ALONE_DOES_NOT_FORCE_FIXED_CRITICAL_BAND_MASS__TIGHTNESS_OR_LOWER_MOMENT_REQUIRED`.
+
+The first protected independent-contributor result for Assignment B was admitted only
+after separate Formalist/Adversary/Referee adjudication. Its two-point high-frequency
+escape construction yields an exact moment-interface separator: positive integrated
+fourth moment D4 can coexist with zero mass in every fixed scaled annulus and arbitrarily
+small Q2.
+
+The stronger contributor claims were not admitted. In particular, the separator is not
+proved realizable by the full L5-35 packet dynamics, and the proposed kurtosis condition
+was not proved necessary or sufficient as stated.
+
+Under the established packet scaling, D4 is also one differential order above the finite
+Leray-Hopf dissipation budget. Thus the direct D4-as-selector-charge route is closed
+negatively from sign and size alone.
+
+The live reconstruction residual is now to prove a correctly quantified positive-measure
+time lemma using D4 plus explicit spectral tightness/lower-moment normalization, and then
+derive those hypotheses from selected packet dynamics. Expansion C2^+ and signed phase
+source P_tot remain separate live escape channels.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
