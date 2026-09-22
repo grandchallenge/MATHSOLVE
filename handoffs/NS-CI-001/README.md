@@ -2647,7 +2647,9 @@ The version-1 interface is GitHub-native:
 ```text
 generated dispatch issue
   -> one GCL-CONTRIBUTION-RESULT/1 issue comment
-  -> trusted raw-evidence intake PR
+  -> MATHSOLVE raw+receipt evidence branch
+  -> bounded MATH-PROGRAMME Release Trust PR controller
+  -> ordinary raw-evidence PR
   -> ordinary protected admission
 ```
 
@@ -2668,14 +2670,20 @@ Result grammar:
 
 Current pilot state: `PILOT_ACTIVE__GITHUB_INTAKE_V1`.
 
-Active dispatch issues:
+Registered dispatch issues:
 
-- `#424`: `NSCI-C2-A-BLIND-001`, Assignment A, `independent_blind`;
-- `#425`: `NSCI-C2-A-BLIND-002`, Assignment A, `independent_blind`;
-- `#426`: `NSCI-C2-B-COOP-001`, Assignment B, `cooperative_claimed`.
+- `#424`: `NSCI-C2-A-BLIND-001`, Assignment A, `independent_blind`, awaiting result;
+- `#425`: `NSCI-C2-A-BLIND-002`, Assignment A, `independent_blind`, awaiting result;
+- `#426`: `NSCI-C2-B-COOP-001`, Assignment B, `cooperative_claimed`, completed and adjudicated.
 
-Each issue body is an exact copy of its protected bootstrap artifact. Each dispatch is
-`READY_FOR_GITHUB_COMMENT` and accepts only one schema-valid `GCL-CONTRIBUTION-RESULT/1`
-comment through the trusted intake workflow.
+Each issue body is an exact copy of its protected bootstrap artifact. A first schema-valid
+result is captured by the MATHSOLVE workflow as raw evidence plus receipt on the stable
+dispatch evidence branch. MATHSOLVE's default Actions token has no pull-request creation
+authority.
+
+The final branch-to-PR hop is owned by the bounded Release Trust controller protected in
+`grandchallenge/MATH-PROGRAMME@e0f809d853705db0817800434da0213b8177999f`.
+Its short-lived App token is restricted to MATHSOLVE with contents-read, PR-write, and
+issues-write only; it validates the evidence branch before opening the ordinary intake PR.
 
 The blind Assignment-A cohort remains `OPEN`; synthesis remains prohibited.
