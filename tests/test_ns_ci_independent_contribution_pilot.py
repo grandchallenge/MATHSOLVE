@@ -75,13 +75,24 @@ class IndependentContributionPilotTest(unittest.TestCase):
         errors = validate(root)
         self.assertTrue(any("forbidden authority surface" in item or "missing control" in item for item in errors))
 
-    def test_missing_pr_recovery_control_is_rejected(self) -> None:
+    def test_local_pr_creation_authority_is_rejected(self) -> None:
+        root = self.make_root()
+        path = root / WORKFLOW
+        path.write_text(
+            path.read_text(encoding="utf-8")
+            + "\n# gh pr create\n# pull-requests: write\n",
+            encoding="utf-8",
+        )
+        errors = validate(root)
+        self.assertTrue(any("forbidden authority surface" in item for item in errors))
+
+    def test_missing_release_trust_handoff_marker_is_rejected(self) -> None:
         root = self.make_root()
         path = root / WORKFLOW
         path.write_text(
             path.read_text(encoding="utf-8").replace(
-                "- name: Recover missing intake pull request",
-                "- name: Recover omitted",
+                "The bounded Release Trust PR controller owns PR creation",
+                "PR ownership unspecified",
             ),
             encoding="utf-8",
         )
