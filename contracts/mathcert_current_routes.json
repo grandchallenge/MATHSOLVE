@@ -24,12 +24,12 @@
       "manifest": {
         "path": "campaign_manifests/UC-001.json",
         "digest_algorithm": "git_blob_sha1",
-        "digest": "3a06b042f480754d7655d38074913ddbf0cd4312"
+        "digest": "4faf3e9e19e6c1a48461a8ad70cfb9c110daa101"
       },
       "handoff": {
         "path": "cert_handoffs/UC-001.json",
         "digest_algorithm": "git_blob_sha1",
-        "digest": "d696e4ed5c750cb8674c7901c49cda64246b20cf"
+        "digest": "8369bc21e45be6af71d2a0cdb0c5ab3cb5313bfb"
       },
       "handoff_state": "ready",
       "route_state": "qualified",
@@ -46,8 +46,7 @@
         "UC-FRANKL remains an open mathematical problem.",
         "Proof obligation UC-P04 remains open.",
         "The finite qualification stops at universe size n <= 4.",
-        "The campaign manifest remains ineligible for claim promotion.",
-        "UC-WP07-P006 is present in the successor handoff but is not covered by the existing MC-UC-WP04-QUAL-001 certification output; independent MATHCERT adjudication is pending."
+        "The campaign manifest remains ineligible for claim promotion."
       ]
     },
     "NS-CI-001": {

@@ -2,8 +2,8 @@
   "schema_version": "1.2.0",
   "handoff_id": "MC-HANDOFF-UC-001",
   "campaign_id": "UC-001",
-  "solve_work_package_id": "UC-WP07-D005",
-  "source_commit": "dbfbb117ef1e3733268da6590c824a330c69ee64",
+  "solve_work_package_id": "MS-UC-WP04",
+  "source_commit": "68bbe0ae63c454b0dc63bedd0bc9f5501f8d5c03",
   "cert_contract": {
     "repository": "grandchallenge/MATHCERT",
     "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
@@ -30,50 +30,41 @@
       "statement": "Exact independent replay finds no nontrivial violation on universes n <= 4.",
       "claim_type": "FINITE_RANGE_CERTIFICATE",
       "support_type": "EXACT_RATIONAL_CERTIFICATE"
-    },
-    {
-      "claim_id": "UC-WP07-P006",
-      "statement": "For every exact D003 functional-preorder order-ideal family F on U, the carrier-relative complement family is union-closed, nontrivial, and Frankl-abundant; D004 average rarity also dualizes to average abundance.",
-      "claim_type": "CHECKED_RESTRICTED_THEOREM",
-      "support_type": "LEAN_FORMALIZATION"
     }
   ],
   "claim_ledger": {
     "repository": "grandchallenge/MATHSOLVE",
-    "commit_sha": "68129858cddbf427c6243b6622ebc5b34545e412",
+    "commit_sha": "2a0124051d67b4db63a75f5cc592a02b7553a2c2",
     "path": "campaign_ledgers/UC-001/claim_ledger.json",
     "digest_algorithm": "git_blob_sha1",
-    "digest": "75f78c05221490bfc8d35a38de507c7eaa582e0e",
+    "digest": "05c5b58f603a923fd6e66b44411ffd7c53559d55",
     "role": "claim_ledger"
   },
   "proof_obligations": {
     "repository": "grandchallenge/MATHSOLVE",
-    "commit_sha": "68129858cddbf427c6243b6622ebc5b34545e412",
+    "commit_sha": "7d8ebdddc74b231b2405465259d0b799e6d8f3a0",
     "path": "campaign_ledgers/UC-001/proof_obligation_dag.json",
     "digest_algorithm": "git_blob_sha1",
-    "digest": "8787017dc050ad0e3ca30c7331a89a5c364597d6",
+    "digest": "5cc706c23636dadd83ab859246c412918c605f15",
     "role": "proof_obligation_dag"
   },
   "checker_contract": {
     "target": "Lean",
     "inputs": [
-      "Previously qualified MATHCERT Lean sources and bounded n <= 4 replay for the existing UC claims.",
-      "Protected MATHSOLVE source commit dbfbb117ef1e3733268da6590c824a330c69ee64, especially MathSolve/UnionClosed/FunctionalPreorderBridge.lean, FunctionalPreorderD004.lean, and FunctionalPreorderD005.lean.",
-      "Exact WP07 D005 proof chain: functional-preorder intersection closure, carrier-relative complement union closure, complement cardinality/frequency identities, double-counted rare-element extraction from D004 average rarity, and restricted Frankl-abundance endgame."
+      "Pinned MATHCERT Lean sources for the restricted theorems.",
+      "Exact bounded certificate and independent replay implementation for n <= 4."
     ],
-    "acceptance": "Independently replay the exact WP07 theorem surface and accept UC-WP07-P006 only if the D003 hypothesis, D004 dependency, complement semantics, frequency arithmetic, and universal nonpromotion boundary are preserved without placeholders or added unexplained axioms.",
-    "rejection": "Reject semantic drift, substitution of WP06 IsIdealFamilyOn for the D003 predicate, failed replay, changed source identity, hidden representation assumptions, or any promotion of UC-WP07-P006 to UC-P04 or UC-FRANKL."
+    "acceptance": "The exact restricted claims build without placeholders and the bounded certificate replays with its finite range unchanged.",
+    "rejection": "Reject semantic drift, missing hypotheses, failed replay, or promotion to the universal Frankl conjecture."
   },
   "requested_modalities": [
     "LEAN_FORMALIZATION",
-    "EXACT_RATIONAL_CERTIFICATE",
-    "SEMANTIC_REPLAY",
-    "SPECIALIST_AUDIT_PENDING"
+    "EXACT_RATIONAL_CERTIFICATE"
   ],
-  "claim_boundary": "The new WP07 claim covers only complements of families already represented by the exact functional-preorder order-ideal predicate. It does not prove that arbitrary finite union-closed families admit this representation, does not close UC-P04, and does not prove Frankl's conjecture.",
+  "claim_boundary": "Restricted Lean theorems and finite replay through n <= 4 do not prove Frankl's conjecture.",
   "status": "ready",
   "blockers": [],
   "reopening_conditions": [
-    "Reopen if the D003, D004, or D005 theorem statements, protected MATHSOLVE source identity, checker identity, complement representation predicate, universal bridge status, finite replay range, or MATHCERT disposition changes."
+    "Reopen if a source identity, theorem statement, finite range, checker, or MATHCERT disposition changes."
   ]
 }

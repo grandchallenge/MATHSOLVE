@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "uc_wp07_mathcert_handoff_successor",
+  "handoff_id": "MC-UC-WP07-D005-HANDOFF-001",
+  "campaign_id": "UC-001",
+  "work_package_id": "UC-WP07-D005",
+  "tracker_issue": 25,
+  "producer_status": "ready_for_independent_intake_after_protected_merge",
+  "protected_solve_base": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "dbfbb117ef1e3733268da6590c824a330c69ee64"
+  },
+  "target_scope": {
+    "claim_id": "UC-WP07-P006",
+    "theorem": "MathSolve.UnionClosed.WP07.d005_complement_frankl",
+    "source_path": "MathSolve/UnionClosed/FunctionalPreorderD005.lean",
+    "source_blob_sha1": "5638ddb60e573a7416a844ece74234fcffba52ad",
+    "statement": "For every exact D003 functional-preorder ideal family F on U, complementFamilyOn F U is union-closed, nontrivial, and Frankl-abundant.",
+    "companion_theorem": "MathSolve.UnionClosed.WP07.d005_complement_averageAbundant"
+  },
+  "dependencies": {
+    "d003_path": "MathSolve/UnionClosed/FunctionalPreorderBridge.lean",
+    "d004_path": "MathSolve/UnionClosed/FunctionalPreorderD004.lean",
+    "source_proof_cone": "MathSolve/UnionClosed/AvgRarePort/",
+    "exact_head_ci_subject": "024331109b052265304738e40a4c10c939636a03",
+    "protected_merge_commit": "dbfbb117ef1e3733268da6590c824a330c69ee64",
+    "local_review_pr": 438
+  },
+  "requested_adjudication": [
+    "LEAN_FORMALIZATION",
+    "SEMANTIC_REPLAY",
+    "SPECIALIST_AUDIT"
+  ],
+  "activation": {
+    "condition": "protected successor-handoff merge and protected-main readback",
+    "head_change_requires_reapproval": true,
+    "effect": "packet_may_be_offered_to_mathcert_issue_25_for_independent_intake"
+  },
+  "route_controls": {
+    "historical_uc_certification_mutable": false,
+    "may_imply_mathcert_acceptance": false,
+    "may_imply_adjudication": false,
+    "may_claim_universal_frankl_proof": false,
+    "may_close_uc_p04": false,
+    "may_promote_claim": false
+  },
+  "claim_boundary": "This successor packet submits only UC-WP07-P006 for independent MATHCERT intake. It preserves the existing UC certification record unchanged. It does not assert that arbitrary finite union-closed families are complements of exact D003 functional-preorder ideal families, does not close UC-P04, and does not close UC-FRANKL."
+}

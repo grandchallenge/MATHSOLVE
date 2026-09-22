@@ -23,12 +23,6 @@
       "status": "CERTIFIED_FINITE_RANGE"
     },
     {
-      "claim_id": "UC-WP07-P006",
-      "statement": "If F is an exact functional-preorder order-ideal family on U, then the carrier-relative complement family is union-closed, nontrivial, and Frankl-abundant; average abundance is also checked.",
-      "support": "MATHSOLVE Lean proof at protected theorem surface MathSolve/UnionClosed/FunctionalPreorderD005.lean",
-      "status": "CHECKED_RESTRICTED_PENDING_MATHCERT"
-    },
-    {
       "claim_id": "UC-FRANKL",
       "statement": "Every finite nontrivial union-closed family is Frankl-abundant.",
       "support": "open target",
@@ -37,7 +31,6 @@
   ],
   "prohibited_promotion": [
     "Restricted Lean theorems do not imply Frankl's conjecture.",
-    "Finite replay through n <= 4 does not support a universal claim.",
-    "UC-WP07-P006 applies only after an exact functional-preorder complement representation is supplied; no arbitrary-family representation theorem is established."
+    "Finite replay through n <= 4 does not support a universal claim."
   ]
 }
