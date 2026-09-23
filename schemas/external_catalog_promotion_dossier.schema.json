@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grandchallenge.ai/schemas/external_catalog_promotion_dossier.schema.json",
+  "title": "Chaidez dossier for reviewed external-catalog promotion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "promotion_id", "promotion_state", "catalog_source", "review", "result_status", "exposition", "trust_quartet", "theorem_spine", "proof_debt", "required_artifacts"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "promotion_id": {"type": "string", "pattern": "^MS-CAT-PROMOTION-[A-Z0-9-]+$"},
+    "promotion_state": {"const": "REVIEWED_PROMOTION"},
+    "catalog_source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["catalog_id", "catalog_release_id", "assurance_tier", "exact_campaign_target", "reviewed_relation_id"],
+      "properties": {
+        "catalog_id": {"type": "string", "minLength": 3},
+        "catalog_release_id": {"type": "string", "minLength": 3},
+        "assurance_tier": {"enum": ["SEMANTICALLY_REVIEWED", "CAMPAIGN_CONCORDANT"]},
+        "exact_campaign_target": {"type": "boolean"},
+        "reviewed_relation_id": {"type": ["string", "null"]}
+      },
+      "allOf": [{"if": {"properties": {"exact_campaign_target": {"const": true}}}, "then": {"properties": {"assurance_tier": {"const": "CAMPAIGN_CONCORDANT"}, "reviewed_relation_id": {"type": "string", "minLength": 3}}}}]
+    },
+    "review": {
+      "type": "object", "additionalProperties": false,
+      "required": ["reviewer", "reviewed_at", "evidence"],
+      "properties": {
+        "reviewer": {"type": "string", "minLength": 1},
+        "reviewed_at": {"type": "string", "format": "date"},
+        "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "result_status": {"$ref": "#/$defs/nonemptyObject"},
+    "exposition": {"$ref": "#/$defs/nonemptyObject"},
+    "trust_quartet": {"$ref": "#/$defs/nonemptyObject"},
+    "theorem_spine": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nonemptyObject"}},
+    "proof_debt": {"type": "array", "items": {"$ref": "#/$defs/nonemptyObject"}},
+    "required_artifacts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["RESULT_STATUS", "LAY_COMPANION", "OBJECT_AND_OBSTRUCTION", "STATUS_AUDIT", "CLAIM_LEDGER", "THEOREM_SPINE", "DEPENDENCY_DAG", "PROOFS_AND_COMPUTATIONS", "FAILURE_AND_NEGATIVE_RESULTS", "PROOF_DEBT_REGISTER", "CERT_HANDOFF", "NEXT_EXECUTABLE_STEP"],
+      "patternProperties": {"^[A-Z_]+$": {"type": "string", "minLength": 1}}
+    }
+  },
+  "$defs": {"nonemptyObject": {"type": "object", "minProperties": 1}}
+}

@@ -39,6 +39,9 @@ jobs:
         run: |
           python ci/validate_external_semantic_catalog_intake.py
           python -m unittest ci/test_external_semantic_catalog_intake.py -v
+          python ci/validate_external_catalog_promotion_dossiers.py
+          python -m unittest ci/test_external_catalog_promotion_dossiers.py -v
+          python -m json.tool schemas/external_catalog_promotion_dossier.schema.json >/dev/null
       - name: Validate RM-DIO-004 bounded ResearchMath route
         run: |
           python ci/validate_rm_dio_004.py
