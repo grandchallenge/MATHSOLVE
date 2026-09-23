@@ -1,0 +1,21 @@
+{
+  "schema_version": "2.0.0",
+  "policy_id": "MS-EXTERNAL-SEMANTIC-CATALOG-INTAKE-001",
+  "programme_authority": {
+    "repository": "grandchallenge/MATH-PROGRAMME",
+    "commit": "4b78daac0b85298957b52e34687423e5442b5e51",
+    "path": "governance/mathforge_external_source_imports.json",
+    "git_blob_sha1": "8544fcd383e68a1ca0acd060e56bb0e7d0fe16a0"
+  },
+  "proposal_gate": {"minimum_assurance_tier": "SEMANTICALLY_REVIEWED", "effect": "PROPOSAL_ELIGIBLE_ONLY", "automatic_work_package_creation": false},
+  "exact_campaign_target_gate": {"required_assurance_tier": "CAMPAIGN_CONCORDANT", "reviewed_typed_relation_required": true},
+  "forbidden_authority": {
+    "catalog_entry_is_mathsolve_result": false,
+    "catalog_may_mutate_claim_ledger": false,
+    "catalog_status_is_programme_status": false,
+    "catalog_proof_annotation_is_local_proof": false,
+    "catalog_may_issue_certificate": false
+  },
+  "certification_handoff": {"separate_scoped_handoff_required": true, "local_claim_required": true, "local_evidence_required": true, "catalog_identifier_may_be_provenance_only": true},
+  "claim_boundary": "A reviewed catalog entry may seed a bounded MATHSOLVE proposal, and a campaign-concordant entry may identify an exact imported target. Neither action creates a Solve result, changes Programme status, mutates a Claim Ledger, treats upstream proof metadata as a local proof, authorizes a certification route, or issues or implies a MATHCERT certificate."
+}

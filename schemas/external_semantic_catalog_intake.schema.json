@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grandchallenge.ai/schemas/external_semantic_catalog_intake.schema.json",
+  "title": "MATHSOLVE external semantic catalog intake policy",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "policy_id", "programme_authority", "proposal_gate", "exact_campaign_target_gate", "forbidden_authority", "certification_handoff", "claim_boundary"],
+  "properties": {
+    "schema_version": {"const": "2.0.0"}, "policy_id": {"const": "MS-EXTERNAL-SEMANTIC-CATALOG-INTAKE-001"},
+    "programme_authority": {
+      "type": "object", "additionalProperties": false, "required": ["repository", "commit", "path", "git_blob_sha1"],
+      "properties": {"repository": {"const": "grandchallenge/MATH-PROGRAMME"}, "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}, "path": {"const": "governance/mathforge_external_source_imports.json"}, "git_blob_sha1": {"type": "string", "pattern": "^[0-9a-f]{40}$"}}
+    },
+    "proposal_gate": {
+      "type": "object", "additionalProperties": false, "required": ["minimum_assurance_tier", "effect", "automatic_work_package_creation"],
+      "properties": {"minimum_assurance_tier": {"const": "SEMANTICALLY_REVIEWED"}, "effect": {"const": "PROPOSAL_ELIGIBLE_ONLY"}, "automatic_work_package_creation": {"const": false}}
+    },
+    "exact_campaign_target_gate": {
+      "type": "object", "additionalProperties": false, "required": ["required_assurance_tier", "reviewed_typed_relation_required"],
+      "properties": {"required_assurance_tier": {"const": "CAMPAIGN_CONCORDANT"}, "reviewed_typed_relation_required": {"const": true}}
+    },
+    "forbidden_authority": {
+      "type": "object", "additionalProperties": false, "required": ["catalog_entry_is_mathsolve_result", "catalog_may_mutate_claim_ledger", "catalog_status_is_programme_status", "catalog_proof_annotation_is_local_proof", "catalog_may_issue_certificate"],
+      "properties": {"catalog_entry_is_mathsolve_result": {"const": false}, "catalog_may_mutate_claim_ledger": {"const": false}, "catalog_status_is_programme_status": {"const": false}, "catalog_proof_annotation_is_local_proof": {"const": false}, "catalog_may_issue_certificate": {"const": false}}
+    },
+    "certification_handoff": {
+      "type": "object", "additionalProperties": false, "required": ["separate_scoped_handoff_required", "local_claim_required", "local_evidence_required", "catalog_identifier_may_be_provenance_only"],
+      "properties": {"separate_scoped_handoff_required": {"const": true}, "local_claim_required": {"const": true}, "local_evidence_required": {"const": true}, "catalog_identifier_may_be_provenance_only": {"const": true}}
+    },
+    "claim_boundary": {"type": "string", "minLength": 180}
+  }
+}
