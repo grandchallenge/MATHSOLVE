@@ -3,12 +3,16 @@
   "$id": "https://grandchallenge.ai/schemas/external_semantic_catalog_intake.schema.json",
   "title": "MATHSOLVE external semantic catalog intake policy",
   "type": "object", "additionalProperties": false,
-  "required": ["schema_version", "policy_id", "programme_authority", "proposal_gate", "exact_campaign_target_gate", "forbidden_authority", "certification_handoff", "claim_boundary"],
+  "required": ["schema_version", "policy_id", "programme_authority", "chaidez_authority", "proposal_gate", "exact_campaign_target_gate", "chaidez_dossier_gate", "forbidden_authority", "certification_handoff", "claim_boundary"],
   "properties": {
     "schema_version": {"const": "2.0.0"}, "policy_id": {"const": "MS-EXTERNAL-SEMANTIC-CATALOG-INTAKE-001"},
     "programme_authority": {
       "type": "object", "additionalProperties": false, "required": ["repository", "commit", "path", "git_blob_sha1"],
       "properties": {"repository": {"const": "grandchallenge/MATH-PROGRAMME"}, "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}, "path": {"const": "governance/mathforge_external_source_imports.json"}, "git_blob_sha1": {"type": "string", "pattern": "^[0-9a-f]{40}$"}}
+    },
+    "chaidez_authority": {
+      "type": "object", "additionalProperties": false, "required": ["repository", "commit", "path", "git_blob_sha1", "schema_version"],
+      "properties": {"repository": {"const": "grandchallenge/MATH-PROGRAMME"}, "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}, "path": {"const": "pedagogy/chaidez_protocol_contract.json"}, "git_blob_sha1": {"type": "string", "pattern": "^[0-9a-f]{40}$"}, "schema_version": {"const": "2.0.0"}}
     },
     "proposal_gate": {
       "type": "object", "additionalProperties": false, "required": ["minimum_assurance_tier", "effect", "automatic_work_package_creation"],
@@ -17,6 +21,10 @@
     "exact_campaign_target_gate": {
       "type": "object", "additionalProperties": false, "required": ["required_assurance_tier", "reviewed_typed_relation_required"],
       "properties": {"required_assurance_tier": {"const": "CAMPAIGN_CONCORDANT"}, "reviewed_typed_relation_required": {"const": true}}
+    },
+    "chaidez_dossier_gate": {
+      "type": "object", "additionalProperties": false, "required": ["catalog_entries_require_dossier", "trigger", "full_dossier_required", "dossier_schema", "promotion_directory", "fail_closed"],
+      "properties": {"catalog_entries_require_dossier": {"const": false}, "trigger": {"const": "REVIEWED_PROMOTION_TO_MATHSOLVE"}, "full_dossier_required": {"const": true}, "dossier_schema": {"const": "schemas/external_catalog_promotion_dossier.schema.json"}, "promotion_directory": {"const": "promotions/external_catalog"}, "fail_closed": {"const": true}}
     },
     "forbidden_authority": {
       "type": "object", "additionalProperties": false, "required": ["catalog_entry_is_mathsolve_result", "catalog_may_mutate_claim_ledger", "catalog_status_is_programme_status", "catalog_proof_annotation_is_local_proof", "catalog_may_issue_certificate"],

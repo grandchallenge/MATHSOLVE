@@ -31,6 +31,16 @@ class ExternalSemanticCatalogIntakeTests(unittest.TestCase):
         changed["certification_handoff"]["separate_scoped_handoff_required"] = False
         self.assertTrue(validation_errors(changed))
 
+    def test_catalog_entry_does_not_receive_dossier_at_ingestion(self):
+        changed = copy.deepcopy(self.policy)
+        changed["chaidez_dossier_gate"]["catalog_entries_require_dossier"] = True
+        self.assertTrue(validation_errors(changed))
+
+    def test_dossier_trigger_cannot_move_before_reviewed_promotion(self):
+        changed = copy.deepcopy(self.policy)
+        changed["chaidez_dossier_gate"]["trigger"] = "CATALOG_INGESTION"
+        self.assertTrue(validation_errors(changed))
+
 
 if __name__ == "__main__":
     unittest.main()
