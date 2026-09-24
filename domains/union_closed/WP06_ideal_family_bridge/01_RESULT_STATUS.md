@@ -6,7 +6,8 @@
 | Conditional on | Finite local family satisfying `IsIdealFamilyOn F U` |
 | Strongest supported claim | Every local ideal family is average-rare; the complement family is union-closed, nontrivial, and Frankl-abundant. |
 | Not claimed | This is not a proof of Frankl's conjecture for arbitrary union-closed families. It does not import the upstream ideal-family repository as a trusted dependency. |
-| Computation class | `CONTINUUM_PROOF` for the finite ideal-family theorem in Lean; exact finite replay remains separate WP04/WP05 infrastructure. |
+| Support route class | `FORMAL_PROOF` for the finite ideal-family theorem in Lean; exact finite replay remains separate WP04/WP05 infrastructure. |
+| Foundational profile | Finite, decidable, computable local set families; finite classical reasoning, no full-choice or analytic regularity claim. R0 route. The full v2 profile is recorded in `chaidez_v2_conformance.json`; the existing Claim Ledger remains unchanged. |
 | Certification state | Formally checked in MATHCERT by Lean, with the full MATHCERT gate passing. |
 | First executable step | Select the next source-roadmap target that consumes the checked ideal-family bridge without broadening its hypotheses. |
 
@@ -45,4 +46,3 @@ union-closed family.
 The upstream ideal-family Lean repository remains provenance only. Its audited
 proof surface had placeholders at the recorded commit. The local MATHCERT proof
 does not depend on importing that repository.
-

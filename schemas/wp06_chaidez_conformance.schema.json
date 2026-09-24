@@ -1,316 +1,38 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Chaidez v2 reviewed external-catalog promotion",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "schema_version",
-    "record_class",
-    "promotion_id",
-    "promotion_state",
-    "creation_trigger",
-    "automatic_promotion",
-    "catalog_source",
-    "review",
+    "protocol_id",
+    "disposition",
+    "global_theorem_spine_id",
+    "local_node_advanced",
     "result_status",
     "exposition",
     "trust_quartet",
-    "global_theorem_spine_id",
-    "local_node_advanced",
-    "strongest_claim_id",
-    "local_claims",
     "theorem_spine",
     "proof_debt",
-    "escalation_gate",
     "required_artifacts",
+    "baseline_claim_ledger",
+    "certification_reference",
     "non_claim_boundary"
   ],
   "properties": {
     "schema_version": {
       "const": "2.0.0"
     },
-    "record_class": {
-      "enum": [
-        "PRODUCTION",
-        "NON_AUTHORITATIVE_CANARY"
-      ]
+    "protocol_id": {
+      "const": "CHAIDEZ-PEDAGOGY-001"
     },
-    "promotion_id": {
-      "type": "string",
-      "pattern": "^MS-CAT-PROMOTION-[A-Z0-9-]+$"
+    "disposition": {
+      "const": "ACTIVE_REFERENCE_PACKAGE_NOT_CATALOG_PROMOTION"
     },
-    "promotion_state": {
-      "const": "REVIEWED_PROMOTION"
+    "global_theorem_spine_id": {
+      "const": "UC-IDEAL-FAMILY-COMPLEMENT-SPINE"
     },
-    "creation_trigger": {
-      "const": "REVIEWED_PROMOTION_TO_MATHSOLVE"
-    },
-    "automatic_promotion": {
-      "const": false
-    },
-    "catalog_source": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "catalog_id",
-        "catalog_release_id",
-        "provider_id",
-        "snapshot_id",
-        "raw_sha256",
-        "normalized_sha256",
-        "assurance_tier",
-        "programme_import",
-        "catalog_shard",
-        "exact_campaign_target",
-        "campaign_id",
-        "reviewed_relation_id"
-      ],
-      "properties": {
-        "catalog_id": {
-          "type": "string",
-          "pattern": "^GCL-CAT-[A-Z0-9-]+$"
-        },
-        "catalog_release_id": {
-          "type": "string",
-          "minLength": 1,
-          "pattern": "\\S"
-        },
-        "provider_id": {
-          "type": "string",
-          "minLength": 1,
-          "pattern": "\\S"
-        },
-        "snapshot_id": {
-          "type": "string",
-          "minLength": 1,
-          "pattern": "\\S"
-        },
-        "raw_sha256": {
-          "type": "string",
-          "pattern": "^[0-9a-f]{64}$"
-        },
-        "normalized_sha256": {
-          "type": "string",
-          "pattern": "^[0-9a-f]{64}$"
-        },
-        "assurance_tier": {
-          "enum": [
-            "SEMANTICALLY_REVIEWED",
-            "CAMPAIGN_CONCORDANT"
-          ]
-        },
-        "programme_import": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "repository",
-            "commit",
-            "artifact"
-          ],
-          "properties": {
-            "repository": {
-              "enum": [
-                "grandchallenge/MATH-PROGRAMME",
-                "grandchallenge/MATHFORGE",
-                "grandchallenge/MATHSOLVE",
-                "grandchallenge/MATHCERT"
-              ]
-            },
-            "commit": {
-              "type": "string",
-              "pattern": "^[0-9a-f]{40}$"
-            },
-            "artifact": {
-              "type": "object",
-              "additionalProperties": false,
-              "required": [
-                "path",
-                "git_blob_sha1",
-                "sha256"
-              ],
-              "properties": {
-                "path": {
-                  "type": "string",
-                  "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
-                  "minLength": 1
-                },
-                "section_anchor": {
-                  "type": "string",
-                  "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
-                },
-                "git_blob_sha1": {
-                  "type": "string",
-                  "pattern": "^[0-9a-f]{40}$"
-                },
-                "sha256": {
-                  "type": "string",
-                  "pattern": "^[0-9a-f]{64}$"
-                }
-              }
-            }
-          }
-        },
-        "catalog_shard": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "repository",
-            "commit",
-            "artifact"
-          ],
-          "properties": {
-            "repository": {
-              "enum": [
-                "grandchallenge/MATH-PROGRAMME",
-                "grandchallenge/MATHFORGE",
-                "grandchallenge/MATHSOLVE",
-                "grandchallenge/MATHCERT"
-              ]
-            },
-            "commit": {
-              "type": "string",
-              "pattern": "^[0-9a-f]{40}$"
-            },
-            "artifact": {
-              "type": "object",
-              "additionalProperties": false,
-              "required": [
-                "path",
-                "git_blob_sha1",
-                "sha256"
-              ],
-              "properties": {
-                "path": {
-                  "type": "string",
-                  "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
-                  "minLength": 1
-                },
-                "section_anchor": {
-                  "type": "string",
-                  "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
-                },
-                "git_blob_sha1": {
-                  "type": "string",
-                  "pattern": "^[0-9a-f]{40}$"
-                },
-                "sha256": {
-                  "type": "string",
-                  "pattern": "^[0-9a-f]{64}$"
-                }
-              }
-            }
-          }
-        },
-        "exact_campaign_target": {
-          "type": "boolean"
-        },
-        "campaign_id": {
-          "type": "string",
-          "minLength": 1,
-          "pattern": "\\S"
-        },
-        "reviewed_relation_id": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "minLength": 1
-        }
-      },
-      "allOf": [
-        {
-          "if": {
-            "properties": {
-              "exact_campaign_target": {
-                "const": true
-              }
-            }
-          },
-          "then": {
-            "properties": {
-              "assurance_tier": {
-                "const": "CAMPAIGN_CONCORDANT"
-              },
-              "reviewed_relation_id": {
-                "type": "string",
-                "minLength": 1,
-                "pattern": "\\S"
-              }
-            }
-          }
-        }
-      ]
-    },
-    "review": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "reviewer",
-        "qualification",
-        "reviewed_at",
-        "evidence",
-        "decision",
-        "semantic_fidelity_confirmed",
-        "machine_consistency_reviewed"
-      ],
-      "properties": {
-        "reviewer": {
-          "type": "string",
-          "minLength": 1,
-          "pattern": "\\S"
-        },
-        "qualification": {
-          "type": "string",
-          "minLength": 1,
-          "pattern": "\\S"
-        },
-        "reviewed_at": {
-          "type": "string",
-          "format": "date"
-        },
-        "evidence": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": [
-              "path",
-              "git_blob_sha1",
-              "sha256"
-            ],
-            "properties": {
-              "path": {
-                "type": "string",
-                "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
-                "minLength": 1
-              },
-              "section_anchor": {
-                "type": "string",
-                "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
-              },
-              "git_blob_sha1": {
-                "type": "string",
-                "pattern": "^[0-9a-f]{40}$"
-              },
-              "sha256": {
-                "type": "string",
-                "pattern": "^[0-9a-f]{64}$"
-              }
-            }
-          }
-        },
-        "decision": {
-          "const": "APPROVE_REVIEWED_PROMOTION"
-        },
-        "semantic_fidelity_confirmed": {
-          "const": true
-        },
-        "machine_consistency_reviewed": {
-          "const": true
-        }
-      }
+    "local_node_advanced": {
+      "const": "WP06-S9"
     },
     "result_status": {
       "type": "object",
@@ -590,7 +312,7 @@
           ]
         },
         "certification_state": {
-          "const": "NOT_CERTIFIED"
+          "const": "MATHCERT_RECORDED"
         },
         "first_executable_step": {
           "type": "object",
@@ -911,219 +633,20 @@
       ],
       "properties": {
         "WHAT_IS_PROVED": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "answer",
-            "claim_ids",
-            "debt_ids"
-          ],
-          "properties": {
-            "answer": {
-              "type": "string",
-              "minLength": 1,
-              "pattern": "\\S"
-            },
-            "claim_ids": {
-              "type": "array",
-              "minItems": 0,
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "minLength": 1,
-                "pattern": "\\S"
-              }
-            },
-            "debt_ids": {
-              "type": "array",
-              "minItems": 0,
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "minLength": 1,
-                "pattern": "\\S"
-              }
-            }
-          }
+          "type": "string",
+          "minLength": 10
         },
         "WHAT_IS_CHECKED": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "answer",
-            "claim_ids",
-            "debt_ids"
-          ],
-          "properties": {
-            "answer": {
-              "type": "string",
-              "minLength": 1,
-              "pattern": "\\S"
-            },
-            "claim_ids": {
-              "type": "array",
-              "minItems": 0,
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "minLength": 1,
-                "pattern": "\\S"
-              }
-            },
-            "debt_ids": {
-              "type": "array",
-              "minItems": 0,
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "minLength": 1,
-                "pattern": "\\S"
-              }
-            }
-          }
+          "type": "string",
+          "minLength": 10
         },
         "WHAT_REMAINS_OPEN": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "answer",
-            "claim_ids",
-            "debt_ids"
-          ],
-          "properties": {
-            "answer": {
-              "type": "string",
-              "minLength": 1,
-              "pattern": "\\S"
-            },
-            "claim_ids": {
-              "type": "array",
-              "minItems": 0,
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "minLength": 1,
-                "pattern": "\\S"
-              }
-            },
-            "debt_ids": {
-              "type": "array",
-              "minItems": 0,
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "minLength": 1,
-                "pattern": "\\S"
-              }
-            }
-          }
+          "type": "string",
+          "minLength": 10
         },
         "WHAT_REQUIRES_EXTERNAL_VERIFICATION": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "answer",
-            "claim_ids",
-            "debt_ids"
-          ],
-          "properties": {
-            "answer": {
-              "type": "string",
-              "minLength": 1,
-              "pattern": "\\S"
-            },
-            "claim_ids": {
-              "type": "array",
-              "minItems": 0,
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "minLength": 1,
-                "pattern": "\\S"
-              }
-            },
-            "debt_ids": {
-              "type": "array",
-              "minItems": 0,
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "minLength": 1,
-                "pattern": "\\S"
-              }
-            }
-          }
-        }
-      }
-    },
-    "global_theorem_spine_id": {
-      "type": "string",
-      "minLength": 1,
-      "pattern": "\\S"
-    },
-    "local_node_advanced": {
-      "type": "string",
-      "minLength": 1,
-      "pattern": "\\S"
-    },
-    "strongest_claim_id": {
-      "type": "string",
-      "minLength": 1,
-      "pattern": "\\S"
-    },
-    "local_claims": {
-      "type": "array",
-      "minItems": 1,
-      "uniqueItems": true,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "claim_id",
-          "statement",
-          "node_id",
-          "status",
-          "proof_debt_ids",
-          "requires_external_verification"
-        ],
-        "properties": {
-          "claim_id": {
-            "type": "string",
-            "minLength": 1,
-            "pattern": "\\S"
-          },
-          "statement": {
-            "type": "string",
-            "minLength": 1,
-            "pattern": "\\S"
-          },
-          "node_id": {
-            "type": "string",
-            "minLength": 1,
-            "pattern": "\\S"
-          },
-          "status": {
-            "enum": [
-              "OPEN",
-              "CONDITIONAL",
-              "CHECKED",
-              "PROVED",
-              "REFUTED"
-            ]
-          },
-          "proof_debt_ids": {
-            "type": "array",
-            "minItems": 0,
-            "uniqueItems": true,
-            "items": {
-              "type": "string",
-              "minLength": 1,
-              "pattern": "\\S"
-            }
-          },
-          "requires_external_verification": {
-            "type": "boolean"
-          }
+          "type": "string",
+          "minLength": 10
         }
       }
     },
@@ -1285,42 +808,6 @@
               "SUPERSEDED"
             ]
           }
-        }
-      }
-    },
-    "escalation_gate": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "theorem_spine_audited",
-        "dependencies_named",
-        "proof_debt_register_current",
-        "trust_quartet_complete",
-        "foundational_profile_present_or_deferred",
-        "first_executable_step_present",
-        "next_package_names_spine_node"
-      ],
-      "properties": {
-        "theorem_spine_audited": {
-          "const": true
-        },
-        "dependencies_named": {
-          "const": true
-        },
-        "proof_debt_register_current": {
-          "const": true
-        },
-        "trust_quartet_complete": {
-          "const": true
-        },
-        "foundational_profile_present_or_deferred": {
-          "const": true
-        },
-        "first_executable_step_present": {
-          "const": true
-        },
-        "next_package_names_spine_node": {
-          "const": true
         }
       }
     },
@@ -1680,31 +1167,31 @@
         }
       }
     },
-    "non_claim_boundary": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "text",
-        "certification_inferred",
-        "catalog_status_is_local_result",
-        "unscoped_campaign_claim"
-      ],
-      "properties": {
-        "text": {
-          "type": "string",
-          "minLength": 1,
-          "pattern": "\\S"
-        },
-        "certification_inferred": {
-          "const": false
-        },
-        "catalog_status_is_local_result": {
-          "const": false
-        },
-        "unscoped_campaign_claim": {
-          "const": false
+    "baseline_claim_ledger": {
+      "const": {
+        "repository": "grandchallenge/MATHSOLVE",
+        "commit": "7e1f27f7ec205d511570cf3b498037a8907a89c6",
+        "artifact": {
+          "path": "domains/union_closed/WP06_ideal_family_bridge/09_CLAIM_LEDGER.yaml",
+          "git_blob_sha1": "b7cde7dd899d70db899c7878034f3bbc6d6b44b5",
+          "sha256": "7ae5fe0539767395a1eecde55620770e8a6e548de668c4f8e3fc8d3afb2783ff"
         }
       }
+    },
+    "certification_reference": {
+      "const": {
+        "repository": "grandchallenge/MATHCERT",
+        "commit": "1c053a7684dd493c41ae3e6d7eecadb907b048fc",
+        "artifact": {
+          "path": "claim_ledger_ideal_family_bridge.yaml",
+          "git_blob_sha1": "cbdee4ecb66007efb75d993e8b0e0b49b0f9043e",
+          "sha256": "28a941f7d4492b4be87fca3b774d39864e69195d70d25d24f65093f152b7e14c"
+        }
+      }
+    },
+    "non_claim_boundary": {
+      "type": "string",
+      "minLength": 50
     }
   }
 }
