@@ -1,0 +1,66 @@
+{
+  "baseline_commit": "7e1f27f7ec205d511570cf3b498037a8907a89c6",
+  "handoff_count": 11,
+  "artifacts": [
+    {
+      "path": "cert_handoffs/BSD-001.json",
+      "git_blob_sha1": "20f8dbf016ab179cbf910d0510ad26b2bd9a24cb",
+      "sha256": "0b2bb422f5d3a5f4f2fa09b40b5d406c01f782caa655d2ba1815c9cf11b58211"
+    },
+    {
+      "path": "cert_handoffs/EUCLID-DIOPHANTINE-E2E-002.json",
+      "git_blob_sha1": "80a4bf5082ac9ed9459a1dbd7dbb77166e84764e",
+      "sha256": "10b63c5a35d168216f869b779e2c6fb7be80db8350f0c3fb8c2a0ddf063254c2"
+    },
+    {
+      "path": "cert_handoffs/EUCLID-GCD-E2E-001.json",
+      "git_blob_sha1": "01a20512c428ce4384959064ab3343a1cbb0c7d2",
+      "sha256": "76cc3359ca469c86393b4515d2e4bb201044448fb0f5eae2683c141e21e8b229"
+    },
+    {
+      "path": "cert_handoffs/HC-001.json",
+      "git_blob_sha1": "0c154af2e577e4367f9f5d0aeac5e15f9420172c",
+      "sha256": "1370074dd97ac105b920285b2ff9bc9ae438f35e5dd5649e280b615f79e8c8a5"
+    },
+    {
+      "path": "cert_handoffs/NS-CI-001.json",
+      "git_blob_sha1": "40cad99646829fe40edf9c616074514407e49dee",
+      "sha256": "862b45640a20a635a8c812f47a03908e8936189eeacf1f2438919464df4fc8ee"
+    },
+    {
+      "path": "cert_handoffs/OZ-001.json",
+      "git_blob_sha1": "b244c30b1b3aa4590a8b9ff9d63c5b66dab87663",
+      "sha256": "8265a34169f80191db5e68a97a24a11e5e7a1ef81304c5bf5d6f723ccd59b12a"
+    },
+    {
+      "path": "cert_handoffs/PNP-001.json",
+      "git_blob_sha1": "c9d419c43293d533de8858099d26672f1b8d9dbe",
+      "sha256": "adcabfd4a1c0efcab5b7d56daa6c1d705ad037972602d5a7cc2169e0a6ef4f50"
+    },
+    {
+      "path": "cert_handoffs/RH-001.json",
+      "git_blob_sha1": "7304f185bd817bb67b77540513dc01d05f6fcd3a",
+      "sha256": "b9ec0fa6510bf2e6c86b7091fae22f46b362135c4730c1a6c47e9d64efc92f72"
+    },
+    {
+      "path": "cert_handoffs/UC-001.json",
+      "git_blob_sha1": "8369bc21e45be6af71d2a0cdb0c5ab3cb5313bfb",
+      "sha256": "4023acf025c93a490efb2b6ddd825b7b08a86f0477dc738e11bbbd0b91db075e"
+    },
+    {
+      "path": "cert_handoffs/VGSE-001.json",
+      "git_blob_sha1": "42cfa84978fd63c75f074b388afd8b1fcbd56091",
+      "sha256": "0202f1a26a379a83a81769767adc98c1f7f10393f50c35b7b8b426cfe12ac24d"
+    },
+    {
+      "path": "cert_handoffs/YM-001.json",
+      "git_blob_sha1": "54b7ad8156532e3dceba439356848dfa65a4d1ac",
+      "sha256": "602028468ebe90748a0b2f628442512becbcf27f88e5c25c350a6b51a226fa6b"
+    },
+    {
+      "path": "schemas/mathcert_handoff.schema.json",
+      "git_blob_sha1": "c03baeed7fd454a72969b658a5429b171c6c3782",
+      "sha256": "4565469e1308c822d914f9cd377a3318bbddc6e30f2ef77f45dff70f636323eb"
+    }
+  ]
+}

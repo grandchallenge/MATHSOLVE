@@ -34,3 +34,18 @@ Do not say:
 
 > The ideal-family corridor covers all union-closed families.
 
+## Chaidez v2 debt controls
+
+The following completes the existing debt records without reopening discharged
+local obligations or treating future campaign debt as a proof of anything.
+
+| debt_id | category | blocked_node | present_evidence | discharge_condition | route / owner | status |
+|---|---|---|---|---|---|---|
+| WP06-PD-001 | EXTERNAL_SOURCE | WP06-UPSTREAM-REUSE | Local replacement NDS proof is checked; the old upstream placeholder audit remains provenance. | Use the checked local proof instead of the historically unverified upstream theorem. | FORMAL_PROOF / MATHSOLVE source audit | SUPERSEDED |
+| WP06-PD-002 | UNPROVED_BRIDGE | WP06-S8 | UC-WP06-L007 records the checked local NDS and average-rarity bridge. | Prove localIdealFamily_port_nds_nonpos; already checked. | FORMAL_PROOF / MATHCERT | DISCHARGED |
+| WP06-PD-003 | SEMANTIC_CORRESPONDENCE | WP06-S1 | Carrier, degree and NDS translation equivalences are checked. | Replay the local-to-ported equivalence theorems. | FORMAL_PROOF / MATHCERT | DISCHARGED |
+| WP06-PD-004 | MISSING_LEMMA | WP06-S7 | Trace, contraction, exact NDS difference and endgame induction are checked. | Replay the complete finite trace/contraction chain. | FORMAL_PROOF / MATHCERT | DISCHARGED |
+| WP06-PD-005 | SEMANTIC_CORRESPONDENCE | WP06-S9 | UC-WP06-L008 records checked complement union-closure and abundance transfer. | Replay the restricted complement-duality theorem. | FORMAL_PROOF / MATHCERT | DISCHARGED |
+| WP06-PD-006 | SEMANTIC_CORRESPONDENCE | WP06-FUTURE-CLASS | No bridge from arbitrary union-closed families is asserted. | Prove a separate class-representation theorem or retain the restricted claim. | FORMAL_PROOF / MATHSOLVE | OPEN |
+| WP06-PD-007 | EXTERNAL_SOURCE | WP06-UPSTREAM-REUSE | The upstream proof surface had placeholders at the recorded audit commit. | Audit a newer placeholder-free exact upstream commit and reproduce its pinned toolchain build. | FORMAL_PROOF / MATHSOLVE source audit | OPEN |
+
