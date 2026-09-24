@@ -34,62 +34,89 @@ The exact restricted claim has been independently adjudicated by MATHCERT:
 - protected merge: `245a2f395c358a8d11941e7085512a2e53751619`
 - adjudication record blob: `00c37d4a379811b52e7f44e6d384adc75e2fc850`
 
-## UC-P04 successor state
+## UC-P04 / WP08 state
 
-The previously open exact-representation subroute is now formally refuted in
-WP08.
+### D001: exact representation route refuted
 
-New theorem surface:
+Protected theorem surface:
 
 ```text
 MathSolve/UnionClosed/FunctionalPreorderP04.lean
 ```
 
-Key result:
+Key endpoint:
 
 ```lean
 p04_no_universal_exact_functionalPreorder_representation
 ```
 
-Every exact D003 complement is closed under both union and literal
-intersection. The explicit family
+Exact D003 complement families are both union- and intersection-closed. The
+explicit union-closed family
 
 ```text
 { ∅, {a,b}, {b,c}, {a,b,c} }
 ```
 
-is union-closed but not intersection-closed, so it cannot have the exact D003
-representation.
+is not intersection-closed, so universal exact D003 representation is false.
+
+### D002: arbitrary finite poset extension
+
+The functional-preorder restriction is not required for the Frankl-facing
+half-frequency conclusion.
+
+New theorem surface:
+
+```text
+MathSolve/UnionClosed/PosetIdealP04.lean
+```
+
+For any nonempty finite carrier in any partial order, a maximal carrier element
+occurs in at most half of all downward order ideals. The proof injects ideals
+containing that maximal element into ideals omitting it by erasure.
+
+Principal endpoints:
+
+```lean
+posetIdealFamily_exists_rare
+posetIdeal_complement_frankl
+```
+
+Thus complements of all finite-poset order ideals satisfy Frankl abundance.
+
+This does not assert an average-rarity theorem for arbitrary posets.
 
 ## Exact logical boundary
 
-The live universal duality is instead:
+The universal complement duality remains:
 
 ```text
 union-closed family on U
   <-> intersection-closed carrier-relative complement on U
 ```
 
-with the carried-family hypothesis needed for exact involution.
+for carried families.
 
-If the original family contains `∅`, its complement is a finite closure
-system. Functional-preorder ideal families are a special subclass of such
-closure systems.
+The live gap is now:
 
-Therefore the next substantive UC-P04 problem is:
+```text
+finite-poset ideal closure systems
+  ?-> arbitrary finite closure systems.
+```
 
-> extend the rare-element argument from functional-preorder closure systems to
-> broader finite closure systems, while preserving ground-element incidence
-> data strongly enough to interact with the WP05 lattice counterexample spine.
+The next route is closure operators / finite implication bases. Poset ideals
+encode unary order implications; arbitrary closure systems can require
+genuinely non-unary premises.
 
-Abstract lattice structure alone is not sufficient: the concrete family
-incidence map is part of the Frankl frequency statement.
+In parallel, any WP05 bridge must preserve both abstract lattice order and the
+ground-element incidence map. Abstract lattice structure alone does not carry
+the Frankl frequency statistic.
 
 ## Claim firewall
 
 ```text
 UC-WP07-P006 = QUALIFIED_PROTECTED
-WP08_EXACT_REPRESENTATION_ROUTE = REFUTED
+WP08-D001 = CLOSED_NEGATIVE
+WP08-D002 = CLOSED_LOCAL
 UC-P04 = OPEN
 UC-FRANKL = OPEN_PROBLEM
 MATHEMATICAL_TARGET_PROVED = false
