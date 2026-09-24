@@ -199,7 +199,16 @@ class PromotionDossierTests(unittest.TestCase):
         d["trust_quartet"]["WHAT_IS_CHECKED"]["claim_ids"] = ["CANARY-CLAIM-001"]
         d["trust_quartet"]["WHAT_REMAINS_OPEN"]["claim_ids"] = []
         repin_bundle(self.root, d)
-        self.assertIn("checked/proved node has unresolved prerequisite debt", self.validate(d))
+        self.assertIn("completed node has unresolved prerequisite debt", self.validate(d))
+
+    def test_refutation_cannot_hide_open_prerequisite_debt(self):
+        d = copy.deepcopy(self.d)
+        d["theorem_spine"][0]["status"] = d["local_claims"][0]["status"] = "REFUTED"
+        d["result_status"]["result_status"] = "NEGATIVE_RESULT"
+        d["trust_quartet"]["WHAT_IS_CHECKED"]["claim_ids"] = ["CANARY-CLAIM-001"]
+        d["trust_quartet"]["WHAT_REMAINS_OPEN"]["claim_ids"] = []
+        repin_bundle(self.root, d)
+        self.assertIn("completed node has unresolved prerequisite debt", self.validate(d))
 
     def test_claim_ledger_and_handoff_disagreement(self):
         for role in ("CLAIM_LEDGER", "THEOREM_SPINE", "PROOF_DEBT_REGISTER", "DEPENDENCY_DAG", "CERT_HANDOFF"):

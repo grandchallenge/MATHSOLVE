@@ -168,12 +168,12 @@ def consistency_errors(d, *, graph_only=False):
         return closure
     closures = {n: visit(n) for n in nodes}
     for node in nodes.values():
-        if node["status"] in ("CHECKED", "PROVED"):
+        if node["status"] in ("CHECKED", "PROVED", "REFUTED"):
             closure = closures[node["node_id"]]
             if any(p["status"] == "OPEN" and p["blocked_node"] in closure for p in debts.values()):
-                errors.append("checked/proved node has unresolved prerequisite debt")
+                errors.append("completed node has unresolved prerequisite debt")
             if any(nodes[n]["status"] in ("OPEN", "CONDITIONAL") for n in closure):
-                errors.append("checked/proved node depends on open/conditional node")
+                errors.append("completed node depends on open/conditional node")
     if graph_only:
         return errors
     for claim in claims.values():
