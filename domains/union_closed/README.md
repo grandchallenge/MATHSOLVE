@@ -12,3 +12,5 @@ Initial sequence:
 - WP06: ideal-family bridge, local NDS proof, complement duality, and
   Chaidez-style pedagogical presentation artifacts.
 - WP07: functional-preorder bridge assessment and semantic-boundary audit.
+- WP08: UC-P04 closure-system bridge, exact-representation obstruction, and
+  incidence-preserving extension programme.

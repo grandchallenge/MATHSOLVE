@@ -1,26 +1,28 @@
 # WP07 Result Status
 
-Date: 2026-09-21
+Date: 2026-09-24
 
 | Field | Status |
 |---|---|
 | Work package | WP07 functional-preorder bridge |
-| Result status | D001-D005 checked locally; WP07 restricted theorem-development lane complete |
+| Result status | D001-D005 checked locally; restricted theorem independently qualified |
 | Source branch | `UC-WP03-C007`, functional-preorder order ideals |
 | Selected source revision | `kashiwabarakenji/avg-rare@21451877e9996a295bbc1ec25856d07fa302d48c` |
 | D003 theorem surface | `MathSolve/UnionClosed/FunctionalPreorderBridge.lean` |
 | D004 theorem surface | `MathSolve/UnionClosed/FunctionalPreorderD004.lean` plus `MathSolve/UnionClosed/AvgRarePort/` |
 | D005 theorem surface | `MathSolve/UnionClosed/FunctionalPreorderD005.lean` |
-| Strongest supported local claim | If `F` is an exact D003 functional-preorder ideal family on `U`, then `complementFamilyOn F U` is union-closed, nontrivial, and Frankl-abundant; its average abundance is also checked |
-| Not claimed | No representation theorem for arbitrary finite union-closed families; no unrestricted Frankl theorem; no MATHCERT certification |
+| Strongest supported restricted claim | If `F` is an exact D003 functional-preorder ideal family on `U`, then `complementFamilyOn F U` is union-closed, nontrivial, and Frankl-abundant; its average abundance is also checked |
+| MATHCERT disposition | `QUALIFIED` for exact restricted claim `UC-WP07-P006` |
+| MATHCERT protected merge | `245a2f395c358a8d11941e7085512a2e53751619` |
+| Not claimed | No unrestricted Frankl theorem; no closure of `UC-P04` |
 | Foundation route | `R0`, finite and computable |
-| Next programme step | Bounded MATHCERT handoff for the exact restricted theorem, plus structural comparison against WP05/UC-P04 without universal promotion |
+| Next programme step | WP08 closure-system extension and incidence-preserving WP05 interface |
 
 ## D005 checked movement
 
 D005 does not route through WP06's subset-downward `IsIdealFamilyOn`. Instead,
-`FunctionalPreorderD005.lean` proves the structural fact actually available for
-preorder ideals:
+`FunctionalPreorderD005.lean` proves the structural fact actually available
+for preorder ideals:
 
 ```lean
 functionalPreorderIdealFamily_inter_closed
@@ -28,20 +30,8 @@ functionalPreorderIdealFamily_inter_closed
 
 so complements inside the fixed carrier are union-closed.
 
-The module then establishes the finite complement arithmetic needed for the
-Frankl-facing statement:
-
-```lean
-complementFamilyOn_card
-freq_complementFamilyOn
-sum_card_eq_sum_freq_on
-exists_rare_of_averageRare
-complementFamilyOn_averageAbundant_of_averageRare
-complementFamilyOn_abundant_of_exists_rare
-```
-
-The rare element is obtained directly from D004 average rarity by double
-counting. No additional external theorem is used.
+The module then establishes the complement arithmetic and incidence counting
+needed for the restricted Frankl-facing theorem.
 
 The two D005 endgames are:
 
@@ -50,28 +40,32 @@ d005_complement_averageAbundant
 d005_complement_frankl
 ```
 
-and the explicit restricted representation wrapper is:
+with representation wrapper:
 
 ```lean
 IsComplementOfFunctionalPreorderIdealFamily
 complementOfFunctionalPreorderIdealFamily_frankl
 ```
 
-This wrapper is intentionally one-way: it applies only after such a
-representation has already been supplied.
+## Successor structural result
+
+WP08 has now proved that the wrapper cannot be universal. Exact D003
+complements are also closed under literal set intersection, whereas an explicit
+three-point union-closed family is not.
+
+Thus the missing universal object is no longer described as an unknown exact
+representation theorem. That exact route is closed negatively.
+
+The live successor object is an arbitrary finite closure system obtained by
+complementing a union-closed family.
 
 ## Claim firewall
 
 ```text
-UC-FRANKL = OPEN_PROBLEM
+UC-WP07-P006 = QUALIFIED_PROTECTED
 UC-P04 = OPEN
-WP07-D004 = CLOSED_LOCAL
-WP07-D005 = CLOSED_LOCAL
-WP07_RESTRICTED_LANE = COMPLETE_LOCAL
+UC-FRANKL = OPEN_PROBLEM
+WP07_RESTRICTED_LANE = COMPLETE
 MATHEMATICAL_TARGET_PROVED = false
 PROMOTION_ELIGIBLE = false
 ```
-
-The missing universal object is now especially clear: nothing in WP07 proves
-that an arbitrary finite union-closed family is the complement of a
-functional-preorder order-ideal family.
