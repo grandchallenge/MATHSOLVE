@@ -8,9 +8,9 @@ MATHSOLVE owns bounded theorem development. MATHFORGE owns external-source
 provenance. MATHCERT alone owns certification. `UC-P04` and `UC-FRANKL`
 remain outside restricted-result promotion by implication.
 
-## Current protected theorem spine
+## Protected WP07 theorem spine
 
-WP07-D002 through D005 now have local Lean surfaces:
+WP07-D002 through D005 have protected Lean surfaces:
 
 - `MathSolve/UnionClosed/FunctionalPreorderBridge.lean`
 - `MathSolve/UnionClosed/FunctionalPreorderD004.lean`
@@ -19,56 +19,77 @@ WP07-D002 through D005 now have local Lean surfaces:
 
 D004 proves average rarity for the exact D003 functional-preorder class.
 
-D005 proves, without using WP06 `IsIdealFamilyOn`, that these order-ideal
-families are intersection-closed and hence that their carrier-relative
-complements are union-closed. Finite double counting plus D004 supplies a rare
-ground element; exact complement-frequency arithmetic turns that element into
-an abundant supported element.
+D005 proves that the carrier-relative complements are union-closed and
+Frankl-abundant without using WP06 `IsIdealFamilyOn`.
 
-The principal D005 theorem is:
+The principal theorem is:
 
 ```lean
 d005_complement_frankl
 ```
 
-with the restricted representation wrapper:
+The exact restricted claim has been independently adjudicated by MATHCERT:
+
+- disposition: `QUALIFIED`
+- protected merge: `245a2f395c358a8d11941e7085512a2e53751619`
+- adjudication record blob: `00c37d4a379811b52e7f44e6d384adc75e2fc850`
+
+## UC-P04 successor state
+
+The previously open exact-representation subroute is now formally refuted in
+WP08.
+
+New theorem surface:
+
+```text
+MathSolve/UnionClosed/FunctionalPreorderP04.lean
+```
+
+Key result:
 
 ```lean
-IsComplementOfFunctionalPreorderIdealFamily
-complementOfFunctionalPreorderIdealFamily_frankl
+p04_no_universal_exact_functionalPreorder_representation
 ```
+
+Every exact D003 complement is closed under both union and literal
+intersection. The explicit family
+
+```text
+{ ∅, {a,b}, {b,c}, {a,b,c} }
+```
+
+is union-closed but not intersection-closed, so it cannot have the exact D003
+representation.
 
 ## Exact logical boundary
 
-The checked direction is:
+The live universal duality is instead:
 
 ```text
-functional-preorder ideal-family representation
-  -> complement is union-closed
-  -> complement is nontrivial
-  -> complement is Frankl-abundant.
+union-closed family on U
+  <-> intersection-closed carrier-relative complement on U
 ```
 
-The reverse/universal representation direction is not proved.
+with the carried-family hypothesis needed for exact involution.
 
-No theorem presently establishes that an arbitrary finite union-closed family is
-the complement of an exact D003 family. This is the live `UC-P04`-side
-boundary.
+If the original family contains `∅`, its complement is a finite closure
+system. Functional-preorder ideal families are a special subclass of such
+closure systems.
 
-## Next governed action
+Therefore the next substantive UC-P04 problem is:
 
-After protected MATHSOLVE integration, provide MATHCERT a bounded exact handoff
-for independent adjudication of D005. Certification must not broaden the
-hypothesis or imply `UC-P04` or `UC-FRANKL`.
+> extend the rare-element argument from functional-preorder closure systems to
+> broader finite closure systems, while preserving ground-element incidence
+> data strongly enough to interact with the WP05 lattice counterexample spine.
 
-In parallel, compare the explicit D005 representation predicate with the WP05
-structural ledger to determine whether it sharpens, subsumes, or remains
-orthogonal to the current universal obstruction.
+Abstract lattice structure alone is not sufficient: the concrete family
+incidence map is part of the Frankl frequency statement.
 
 ## Claim firewall
 
 ```text
-WP07-D005 = CLOSED_LOCAL
+UC-WP07-P006 = QUALIFIED_PROTECTED
+WP08_EXACT_REPRESENTATION_ROUTE = REFUTED
 UC-P04 = OPEN
 UC-FRANKL = OPEN_PROBLEM
 MATHEMATICAL_TARGET_PROVED = false
@@ -77,7 +98,6 @@ PROMOTION_ELIGIBLE = false
 
 ## Stop boundaries
 
-Stop for a material change to the exact D003/D004/D005 theorem statements, a
-failed exact-head replay, a MATHCERT certification decision, a material target
-change, or another reserved constitutional boundary. Do not stop merely because
-the universal representation problem remains open.
+Stop for a failed exact-head replay, a material theorem-statement change, a
+reserved certification/governance action, or a genuine mathematical boundary.
+Do not stop merely because the universal closure-system extension remains open.
