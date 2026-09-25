@@ -23,6 +23,7 @@ finite posets, and it still does not represent arbitrary finite closure systems.
 namespace MathSolve.UnionClosed.WP08
 
 open Finset
+open MathSolve.UnionClosed.WP07
 
 universe u
 
