@@ -87,7 +87,9 @@ theorem complementFamilyOn_involutive
     rcases Finset.mem_image.mp hT with ⟨S, hS, rfl⟩
     have hdouble : U \ (U \ S) = S :=
       sdiff_sdiff_eq_self_of_subset (hsub S hS)
-    simpa [hdouble] using hAeq ▸ hS
+    rw [hdouble] at hAeq
+    rw [← hAeq]
+    exact hS
   · intro hA
     rw [complementFamilyOn]
     refine Finset.mem_image.mpr ⟨U \ A, ?_, ?_⟩
