@@ -272,12 +272,33 @@ theorem binaryImplicationClosure_characterization :
 /-- The one-binary-implication family is a finite closure system. -/
 theorem binaryImplicationClosure_isClosureSystem :
     IsClosureSystemOn binaryImplicationClosure Chain3.ground := by
-  native_decide
+  constructor
+  · intro S hS
+    exact (binaryImplicationClosure_characterization S).mp hS |>.1
+  · constructor
+    · native_decide
+    · intro A hA B hB
+      rw [binaryImplicationClosure_characterization] at hA hB ⊢
+      constructor
+      · exact Finset.inter_subset_left.trans hA.1
+      · intro hPrem
+        have hPremA : p04AB ⊆ A :=
+          hPrem.trans Finset.inter_subset_left
+        have hPremB : p04AB ⊆ B :=
+          hPrem.trans Finset.inter_subset_right
+        exact Finset.mem_inter.mpr ⟨hA.2 hPremA, hB.2 hPremB⟩
 
 /-- It is not union-closed: `{a}` and `{b}` are closed but `{a,b}` is not. -/
 theorem binaryImplicationClosure_not_unionClosed :
     ¬ IsUnionClosed binaryImplicationClosure := by
-  native_decide
+  intro hUnion
+  have hA : d003A ∈ binaryImplicationClosure := by native_decide
+  have hB : d003B ∈ binaryImplicationClosure := by native_decide
+  have hAB := hUnion d003A hA d003B hB
+  have hUnionEq : d003A ∪ d003B = p04AB := by native_decide
+  rw [hUnionEq] at hAB
+  have hNot : p04AB ∉ binaryImplicationClosure := by native_decide
+  exact hNot hAB
 
 /-- Therefore this closure system cannot be represented by any finite unary
 implication basis. -/
