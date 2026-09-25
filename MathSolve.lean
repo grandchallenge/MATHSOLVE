@@ -6,3 +6,6 @@ import MathSolve.RH.SpectralUnbounded
 import MathSolve.UnionClosed.FunctionalPreorderBridge
 import MathSolve.UnionClosed.FunctionalPreorderD004
 import MathSolve.UnionClosed.FunctionalPreorderD005
+import MathSolve.UnionClosed.FunctionalPreorderP04
+import MathSolve.UnionClosed.PosetIdealP04
+import MathSolve.UnionClosed.ClosureImplicationP04

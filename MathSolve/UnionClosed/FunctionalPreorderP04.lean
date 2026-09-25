@@ -87,7 +87,9 @@ theorem complementFamilyOn_involutive
     rcases Finset.mem_image.mp hT with ⟨S, hS, rfl⟩
     have hdouble : U \ (U \ S) = S :=
       sdiff_sdiff_eq_self_of_subset (hsub S hS)
-    simpa [hdouble] using hAeq ▸ hS
+    rw [hdouble] at hAeq
+    rw [← hAeq]
+    exact hS
   · intro hA
     rw [complementFamilyOn]
     refine Finset.mem_image.mpr ⟨U \ A, ?_, ?_⟩
@@ -150,8 +152,8 @@ theorem functionalPreorderIdealFamily_union_closed
   · intro x hx
     simp only [Finset.mem_union] at hx ⊢
     rcases hx with hxA | hxB
-    · exact Or.inl (hA.1 hxA)
-    · exact Or.inr (hB.1 hxB)
+    · exact hA.1 hxA
+    · exact hB.1 hxB
   · intro x hx y hy hle
     simp only [Finset.mem_union] at hx ⊢
     rcases hx with hxA | hxB
@@ -193,17 +195,26 @@ abbrev p04Counterexample : Family Chain3 :=
 /-- The concrete family is union-closed. -/
 theorem p04Counterexample_unionClosed :
     IsUnionClosed p04Counterexample := by
-  native_decide
+  intro A hA B hB
+  simp only [p04Counterexample, Finset.mem_insert, Finset.mem_singleton] at hA hB ⊢
+  rcases hA with rfl | rfl | rfl | rfl <;>
+    rcases hB with rfl | rfl | rfl | rfl <;>
+    native_decide
 
 /-- The concrete family is nontrivial. -/
 theorem p04Counterexample_nontrivial :
     IsNontrivial p04Counterexample := by
-  native_decide
+  refine ⟨Chain3.b, ?_⟩
+  exact (mem_support_iff p04Counterexample Chain3.b).2
+    ⟨p04AB, by native_decide, by native_decide⟩
 
 /-- The concrete family itself satisfies the Frankl half-frequency conclusion. -/
 theorem p04Counterexample_frankl :
     IsFranklAbundant p04Counterexample := by
-  native_decide
+  refine ⟨Chain3.b, ?_, ?_⟩
+  · exact (mem_support_iff p04Counterexample Chain3.b).2
+      ⟨p04AB, by native_decide, by native_decide⟩
+  · native_decide
 
 /-- The concrete family contains both endpoint sets. -/
 theorem p04Counterexample_endpoints :

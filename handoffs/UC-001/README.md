@@ -8,115 +8,116 @@ MATHSOLVE owns bounded theorem development. MATHFORGE owns external-source
 provenance. MATHCERT alone owns certification. `UC-P04` and `UC-FRANKL`
 remain outside restricted-result promotion by implication.
 
-## Protected WP07 theorem spine
+## Protected predecessor spine
 
-WP07-D002 through D005 have protected Lean surfaces:
+WP07-D005 proves the restricted functional-preorder complement theorem and is
+independently MATHCERT-qualified.
 
-- `MathSolve/UnionClosed/FunctionalPreorderBridge.lean`
-- `MathSolve/UnionClosed/FunctionalPreorderD004.lean`
-- `MathSolve/UnionClosed/FunctionalPreorderD005.lean`
-- `MathSolve/UnionClosed/AvgRarePort/`
+WP08 then advances the `UC-P04` structural programme:
 
-D004 proves average rarity for the exact D003 functional-preorder class.
+- D001: exact D003 representation is not universal;
+- D002: arbitrary finite-poset ideal complements satisfy the Frankl-facing
+  half-frequency conclusion;
+- D003: arbitrary finite closure systems admit an exact closure-operator /
+  finite-implication representation, and the first genuinely non-unary
+  obstruction is formalized.
 
-D005 proves that the carrier-relative complements are union-closed and
-Frankl-abundant without using WP06 `IsIdealFamilyOn`.
+## WP08-D003 theorem surface
 
-The principal theorem is:
+```text
+MathSolve/UnionClosed/ClosureImplicationP04.lean
+```
+
+Principal general endpoints:
 
 ```lean
-d005_complement_frankl
+closureOf_idempotent
+closureOf_mem_of_closureSystem
+mem_iff_closureOf_eq
+closureSystem_mem_iff_models_canonicalBasis
+unaryModelFamilyOn_unionClosed
+unaryImplicationRepresentable_unionClosed
 ```
 
-The exact restricted claim has been independently adjudicated by MATHCERT:
-
-- disposition: `QUALIFIED`
-- protected merge: `245a2f395c358a8d11941e7085512a2e53751619`
-- adjudication record blob: `00c37d4a379811b52e7f44e6d384adc75e2fc850`
-
-## UC-P04 / WP08 state
-
-### D001: exact representation route refuted
-
-Protected theorem surface:
-
-```text
-MathSolve/UnionClosed/FunctionalPreorderP04.lean
-```
-
-Key endpoint:
+Principal bounded non-unary endpoints:
 
 ```lean
-p04_no_universal_exact_functionalPreorder_representation
+binaryImplicationClosure_characterization
+binaryImplicationClosure_isClosureSystem
+binaryImplicationClosure_not_unionClosed
+binaryImplicationClosure_not_unaryRepresentable
+binaryImplicationClosure_forcedConclusion_erasure_fails
+binaryImplicationClosure_exists_rare
+binaryImplicationClosure_complement_frankl
 ```
 
-Exact D003 complement families are both union- and intersection-closed. The
-explicit union-closed family
+## Exact structural lesson
+
+The live hierarchy is now:
 
 ```text
-{ ∅, {a,b}, {b,c}, {a,b,c} }
+functional-preorder ideals
+        subset
+finite-poset ideals / unary order implications
+        subset
+finite closure systems / arbitrary finite implications.
 ```
 
-is not intersection-closed, so universal exact D003 representation is false.
-
-### D002: arbitrary finite poset extension
-
-The functional-preorder restriction is not required for the Frankl-facing
-half-frequency conclusion.
-
-New theorem surface:
+The second inclusion is strict. The checked binary rule
 
 ```text
-MathSolve/UnionClosed/PosetIdealP04.lean
+{a,b} -> c
 ```
 
-For any nonempty finite carrier in any partial order, a maximal carrier element
-occurs in at most half of all downward order ideals. The proof injects ideals
-containing that maximal element into ideals omitting it by erasure.
+produces a closure system that is not union-closed, hence cannot be represented
+by unary implications.
 
-Principal endpoints:
+It also shows why the D002 erasure mechanism does not generalize verbatim:
+erasing the forced conclusion `c` from the full closed set leaves the
+nonclosed premise `{a,b}`.
 
-```lean
-posetIdealFamily_exists_rare
-posetIdeal_complement_frankl
-```
+This bounded obstruction does not refute the desired rare-element conclusion;
+the same example still has a rare element and a Frankl-abundant complement.
 
-Thus complements of all finite-poset order ideals satisfy Frankl abundance.
+## Governed replay
 
-This does not assert an average-rarity theorem for arbitrary posets.
-
-## Exact logical boundary
-
-The universal complement duality remains:
+WP08 now has a dedicated exact-head Lean replay:
 
 ```text
-union-closed family on U
-  <-> intersection-closed carrier-relative complement on U
+.github/workflows/uc-wp08-closure-system.yml
 ```
 
-for carried families.
+The D001-D003 modules are also imported by `MathSolve.lean`. Enabling this
+replay exposed and repaired latent D001/D002 compile defects before D003
+integration.
 
-The live gap is now:
+## Next governed mathematical tranche: WP08-D004
 
-```text
-finite-poset ideal closure systems
-  ?-> arbitrary finite closure systems.
-```
+Build an incidence-preserving interface between the closure-system/implication
+surface and the protected WP05 minimum-counterexample lattice spine.
 
-The next route is closure operators / finite implication bases. Poset ideals
-encode unary order implications; arbitrary closure systems can require
-genuinely non-unary premises.
+The bridge object must retain:
 
-In parallel, any WP05 bridge must preserve both abstract lattice order and the
-ground-element incidence map. Abstract lattice structure alone does not carry
-the Frankl frequency statistic.
+1. finite lattice / closure order;
+2. explicit ground carrier;
+3. the incidence relation `x in S`; and
+4. exact frequency counts derived from that incidence relation.
+
+Do not replace a concrete family by an abstractly isomorphic lattice and infer
+frequency statements without an explicit incidence transport theorem.
+
+The first D004 question is: which protected WP05 minimum-counterexample
+conditions constrain the canonical implication basis, especially non-unary
+premises?
 
 ## Claim firewall
 
 ```text
-UC-WP07-P006 = QUALIFIED_PROTECTED
 WP08-D001 = CLOSED_NEGATIVE
 WP08-D002 = CLOSED_LOCAL
+WP08-D003 = CLOSED_LOCAL
+WP08-D004 = OPEN_NEXT
+
 UC-P04 = OPEN
 UC-FRANKL = OPEN_PROBLEM
 MATHEMATICAL_TARGET_PROVED = false
@@ -125,6 +126,7 @@ PROMOTION_ELIGIBLE = false
 
 ## Stop boundaries
 
-Stop for a failed exact-head replay, a material theorem-statement change, a
-reserved certification/governance action, or a genuine mathematical boundary.
-Do not stop merely because the universal closure-system extension remains open.
+Stop for a failed exact-head replay that cannot be repaired within scope, a
+material theorem-statement change, a reserved certification/governance action,
+or a genuine mathematical/evidentiary boundary. Do not stop merely because the
+universal closure-system rare-element theorem remains open.
