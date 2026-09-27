@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "MS-OPENMATH-2026-OM26-H1-CLAIMS",
+  "hill_slot": "OM26-H1",
+  "claims": [
+    {
+      "claim_id": "OM26-H1-SRC-001",
+      "text": "The admitted hill asks for exactly n distinct rational straight lines and maximizes verified bounded triangular faces under exact arithmetic.",
+      "type": "SOURCE_BOUND_SEMANTICS",
+      "state": "ADMITTED_FROM_FORGE_LOCK",
+      "support": [
+        "grandchallenge/MATHFORGE@73f1890387eec56eb6be31f8c00f10b6a5a56383:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/SOURCE_LOCK.json"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-SRC-002",
+      "text": "The displayed baseline at n=18 is the line family 2*i*x - y - i*i = 0 for i=0,...,17 with reported score 16.",
+      "type": "SOURCE_REPORTED_BASELINE",
+      "state": "ADMITTED_AS_SOURCE_REPORT__INDEPENDENT_REPLAY_PENDING",
+      "support": [
+        "grandchallenge/MATHFORGE@73f1890387eec56eb6be31f8c00f10b6a5a56383:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/STATEMENT.md"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-VAL-001",
+      "text": "The independent GCL exact scorer reproduces score 16 for the displayed n=18 baseline.",
+      "type": "VALIDATION",
+      "state": "PENDING",
+      "support": [],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-CON-001",
+      "text": "A specific GCL n=18 arrangement has score S under the locked evaluator semantics.",
+      "type": "CONSTRUCTION",
+      "state": "NO_CANDIDATE_YET",
+      "support": [],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-OPT-001",
+      "text": "A specific score is optimal for n=18.",
+      "type": "OPTIMALITY",
+      "state": "NOT_AUTHORIZED_WITHOUT_SEPARATE_UPPER_BOUND_PROOF",
+      "support": [],
+      "mathematical_effect": true,
+      "certification_effect": false
+    }
+  ],
+  "prohibited_inferences": [
+    "the displayed baseline score 16 is literature-best",
+    "a higher score proves optimality",
+    "a pseudoline arrangement is an admissible straight-line submission",
+    "floating-point geometry establishes the exact score",
+    "AutoLab acceptance establishes novelty or MATHCERT certification",
+    "a campaign-best-observed candidate is globally best known"
+  ]
+}
