@@ -137,7 +137,13 @@
       "job_id": 108644696152,
       "internal_result": "PASS",
       "external_result": "NOT_RUN__AUTOLAB_TOKEN_SECRET_UNAVAILABLE"
+    },
+    {
+      "run_id": 36354367463,
+      "job_id": 108719011813,
+      "internal_result": "PASS",
+      "external_result": "PASS__AUTOLAB_PUBLIC_WORKING_TREE_TRIANGLES_16"
     }
   ],
-  "claim_boundary": "This receipt establishes only that the independent GCL exact scorer returns 16 on the locked baseline and passes the listed bounded tests. It does not establish AutoLab evaluator concordance, competition acceptance, optimality, novelty, or MATHCERT certification."
+  "claim_boundary": "This receipt establishes that the independent GCL exact scorer returns 16 on the locked baseline and passes the listed bounded tests. AutoLab concordance is separately recorded in BASELINE_AUTOLAB_RECEIPT.json. It does not establish competition acceptance, optimality, novelty, or MATHCERT certification."
 }

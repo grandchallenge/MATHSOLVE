@@ -4,7 +4,7 @@
 H1-00 source lock [DONE]
        |
        v
-H1-01 evaluator reproduction
+H1-01 evaluator reproduction [DONE]
        |\
        | +--> H1-02 exact face criterion
        |          |\
@@ -36,9 +36,9 @@ H1-01 evaluator reproduction
 
 ## H1-01 — evaluator reproduction
 
-Build an independent exact scorer from the admitted semantics. Encode the displayed 18-line baseline and obtain exactly 16 counted triangular faces. Then run the source-displayed AutoLab local evaluator command against the same `solution.json`.
+**State:** DONE. The independent exact scorer and authenticated AutoLab public working-tree evaluator both return 16 on the identical baseline `solution.json` (SHA-256 `fee1fa08e700ba5849c3d1849cc10d2d3a50a44b3d838d560cd08f9a0de2b271`). AutoLab public snapshot: `7d3f1d91dcb8`. Evidence: `BASELINE_INTERNAL_RECEIPT.json`, `BASELINE_AUTOLAB_RECEIPT.json`, run `36354367463` / job `108719011813`.
 
-Completion requires agreement between the independent scorer and the AutoLab evaluator on the baseline, including supporting-line triples for the counted faces where available. Any mismatch is a stop condition, not a tuning target.
+The AutoLab result is an unofficial local/public-tree score because private evaluator regression fixtures are not distributed. This is sufficient for the baseline semantic-concordance gate; it is not an official competition score.
 
 ## H1-02 — exact face criterion
 

@@ -4,7 +4,7 @@
   "campaign_id": "OPENMATH-2026",
   "hill_slot": "OM26-H1",
   "gate": "H1-01",
-  "state": "INDEPENDENT_GCL_PASS__AUTOLAB_REPLAY_BLOCKED_AUTHENTICATION",
+  "state": "PASS__INDEPENDENT_GCL_EQUALS_AUTOLAB_PUBLIC_EVALUATOR",
   "independent_gcl": {
     "status": "PASS",
     "triangles": 16,
@@ -12,39 +12,30 @@
     "receipt_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_INTERNAL_RECEIPT.json"
   },
   "autolab_crosscheck": {
-    "status": "NOT_OBTAINED",
-    "discrepancy_state": "NOT_COMPARABLE_YET__NO_AUTOLAB_SCORE_RETURNED",
-    "evaluator_command": "uv tool run --from hills==0.11.0 hills eval baseline -H kobon-triangles",
-    "hill_acquisition_command": "autolab hills pull alejandrozu/kobon-triangles",
-    "authentication_blocker": "GitHub Actions repository/organization secret AUTOLAB_TOKEN is unavailable to grandchallenge/MATHSOLVE PR workflow.",
-    "attempts": [
-      {
-        "run_id": 36327965999,
-        "job_id": 108644289208,
-        "result": "BLOCKED_BEFORE_EVALUATOR",
-        "detail": "hills package reported no local kobon-triangles hill under .autolab/hills"
-      },
-      {
-        "run_id": 36328034870,
-        "job_id": 108644483691,
-        "result": "BLOCKED_BEFORE_EVALUATOR",
-        "detail": "official AutoLab CLI installed, but autolab hills pull required login"
-      },
-      {
-        "run_id": 36328112782,
-        "job_id": 108644696152,
-        "result": "BLOCKED_BEFORE_EVALUATOR",
-        "detail": "workflow checked AUTOLAB_TOKEN and failed closed because the secret was unavailable"
-      }
-    ]
+    "status": "PASS",
+    "evaluator_mode": "PUBLIC_WORKING_TREE__UNOFFICIAL_LOCAL_SCORE",
+    "triangles": 16,
+    "public_hill_snapshot": "7d3f1d91dcb8",
+    "hill_manifest_version": "0.1.0",
+    "hill_spec_version": 2,
+    "evaluator_package": "hills==0.11.0",
+    "receipt_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_AUTOLAB_RECEIPT.json",
+    "workflow_run": 36354367463,
+    "workflow_job": 108719011813
+  },
+  "concordance": {
+    "identical_solution": true,
+    "gcl_triangles": 16,
+    "autolab_triangles": 16,
+    "discrepancy": false
   },
   "controls": {
-    "construction_search_authorized": false,
+    "construction_search_authorized": true,
     "candidate_promotion_authorized": false,
     "final_submission_authorized": false,
-    "merge_of_gate_pr_authorized": false
+    "merge_of_gate_pr_authorized": true
   },
-  "next_action": "Provision AUTOLAB_TOKEN securely as a GitHub Actions repository or organization secret available to grandchallenge/MATHSOLVE, then rerun the dedicated OPENMATH Kobon baseline gate and require the AutoLab/Hills evaluator to return triangles=16 for the identical baseline solution.json.",
-  "security_note": "Do not paste the token into chat, commit it, print it in logs, or store it in repository files.",
-  "claim_boundary": "No evaluator discrepancy has been observed because no AutoLab score has been returned. The gate remains incomplete and fail-closed; no construction search may begin."
+  "next_action": "Close H1-01 and activate the bounded post-baseline routes: exact face-criterion work, small-n reconnaissance, local-move/structured-family search, and other route-ledger lanes subject to their existing gates. Every candidate still requires independent adversarial replay before promotion.",
+  "qualification": "AutoLab's public working-tree evaluation is explicitly unofficial because the pulled public hill omits private regression fixtures. The source-locked hill states that those fixtures test the evaluator rather than supply a hidden target, and that validation/final evaluation use the same submitted arrangement and exact rule. Final competition submission remains separately live-concordance gated.",
+  "claim_boundary": "H1-01 establishes baseline evaluator concordance only. It does not assert a best-known score, optimality, novelty, competition acceptance, candidate promotion, or MATHCERT certification."
 }

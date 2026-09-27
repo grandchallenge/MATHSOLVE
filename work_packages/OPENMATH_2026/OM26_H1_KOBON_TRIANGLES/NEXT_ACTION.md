@@ -1,18 +1,21 @@
 # OM26-H1 next action
 
-The independent exact half of H1-01 has passed:
+H1-01 is complete.
 
-- exact GCL score: **16**;
-- baseline SHA-256: `fee1fa08e700ba5849c3d1849cc10d2d3a50a44b3d838d560cd08f9a0de2b271`;
-- exact support triples: `[i,i+1,i+2]` for `i=0,...,15`;
-- bounded scorer tests: PASS.
+The same baseline `solution.json` was evaluated by two independent paths:
 
-The AutoLab half has **not run**. The official CLI installation and hill-pull path were exercised, but the public hill pull requires authentication and the GitHub Actions secret `AUTOLAB_TOKEN` is unavailable.
+- GCL exact scorer: **16**;
+- authenticated AutoLab public hill evaluator: **16**.
 
-The deterministic next transition is therefore:
+The baseline SHA-256 is `fee1fa08e700ba5849c3d1849cc10d2d3a50a44b3d838d560cd08f9a0de2b271`. AutoLab public snapshot `7d3f1d91dcb8` was evaluated with `hills==0.11.0` in working-tree mode. No discrepancy was found.
 
-> Provision `AUTOLAB_TOKEN` securely as a GitHub Actions repository or organization secret exposed to `grandchallenge/MATHSOLVE`, rerun `.github/workflows/openmath-kobon-baseline-gate.yml`, and require the AutoLab/Hills evaluator to return `triangles = 16` for the identical `baseline/solution.json`.
+The next bounded transition is:
 
-If AutoLab returns any other score, stop and reconcile semantics. If it returns 16, close H1-01 and only then authorize construction search.
+> Activate post-baseline work under the existing route ledger. Prioritize H1-02 exact face-criterion proof/falsification and a small diversified H1-06 construction-search tranche. Preserve exact rational candidates and require H1-07 independent adversarial replay before any candidate enters the campaign-best ladder.
 
-Do not paste the token into chat or commit it. Until the cross-check returns, construction search and candidate promotion remain forbidden.
+The following remain blocked independently of this gate:
+
+- no candidate promotion without H1-07;
+- no CEI dispatch without the standing CEI conformance audit;
+- no final competition submission without H1-11 live concordance;
+- no optimality, novelty or best-known claim without separate evidence and certification.

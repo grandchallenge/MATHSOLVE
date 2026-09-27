@@ -18,10 +18,11 @@
       "claim_id": "OM26-H1-SRC-002",
       "text": "The displayed baseline at n=18 is the line family 2*i*x - y - i*i = 0 for i=0,...,17 with reported score 16.",
       "type": "SOURCE_REPORTED_BASELINE",
-      "state": "ADMITTED_AS_SOURCE_REPORT__INDEPENDENT_GCL_REPLAY_PASS__AUTOLAB_CROSSCHECK_PENDING",
+      "state": "ADMITTED_AS_SOURCE_REPORT__INDEPENDENT_AND_AUTOLAB_BASELINE_REPLAY_PASS",
       "support": [
         "grandchallenge/MATHFORGE@73f1890387eec56eb6be31f8c00f10b6a5a56383:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/STATEMENT.md",
-        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_INTERNAL_RECEIPT.json"
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_INTERNAL_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_AUTOLAB_RECEIPT.json"
       ],
       "mathematical_effect": false,
       "certification_effect": false
@@ -30,11 +31,11 @@
       "claim_id": "OM26-H1-VAL-001",
       "text": "The independent GCL exact scorer reproduces score 16 for the displayed n=18 baseline.",
       "type": "VALIDATION",
-      "state": "INDEPENDENT_REPLAY_PASS__AUTOLAB_CROSSCHECK_BLOCKED_AUTH",
+      "state": "PASS",
       "support": [
         "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_INTERNAL_RECEIPT.json",
         "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_GATE_STATUS.json",
-        "github-actions:grandchallenge/MATHSOLVE/run/36328112782/job/108644696152"
+        "github-actions:grandchallenge/MATHSOLVE/run/36354367463/job/108719011813"
       ],
       "mathematical_effect": false,
       "certification_effect": false
@@ -61,10 +62,11 @@
       "claim_id": "OM26-H1-VAL-002",
       "text": "The AutoLab/Hills evaluator returns score 16 for the identical source-reported n=18 baseline solution.json.",
       "type": "EXTERNAL_EVALUATOR_CROSSCHECK",
-      "state": "BLOCKED_AUTH__NO_RESULT_OBTAINED",
+      "state": "PASS__AUTOLAB_PUBLIC_WORKING_TREE_EVALUATOR",
       "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_AUTOLAB_RECEIPT.json",
         "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_GATE_STATUS.json",
-        "github-actions:grandchallenge/MATHSOLVE/run/36328112782/job/108644696152"
+        "github-actions:grandchallenge/MATHSOLVE/run/36354367463/job/108719011813"
       ],
       "mathematical_effect": false,
       "certification_effect": false
