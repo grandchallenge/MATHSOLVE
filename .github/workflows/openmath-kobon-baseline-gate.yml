@@ -67,11 +67,12 @@ jobs:
           "$HOME/.local/bin/autolab" login --token "$AUTOLAB_TOKEN"
           "$HOME/.local/bin/autolab" whoami
 
-      - name: Pull public Kobon hill
+      - name: Pull and initialize public Kobon hill
         run: |
           "$HOME/.local/bin/autolab" hills pull alejandrozu/kobon-triangles
           find .autolab/hills/kobon-triangles -maxdepth 2 -type f -print | sort
           uv tool run --from hills==0.11.0 hills describe kobon-triangles
+          uv tool run --from hills==0.11.0 hills commit kobon-triangles -m "OPENMATH baseline replay"
 
       - name: AutoLab Hills evaluator cross-check
         working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
