@@ -48,9 +48,25 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check "uv==0.10.0"
 
+      - name: Install official AutoLab CLI
+        run: |
+          curl -fsSL https://app.autolab.ai/install.sh -o /tmp/autolab-install.sh
+          sha256sum /tmp/autolab-install.sh
+          sh /tmp/autolab-install.sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          "$HOME/.local/bin/autolab" --version
+
+      - name: Pull public Kobon hill
+        run: |
+          "$HOME/.local/bin/autolab" hills pull alejandrozu/kobon-triangles
+          find .autolab/hills/kobon-triangles -maxdepth 2 -type f -print | sort
+          uv tool run --from hills==0.11.0 hills describe kobon-triangles
+
       - name: AutoLab Hills evaluator cross-check
         working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
         run: |
           set -o pipefail
           uv tool run --from hills==0.11.0 hills eval baseline -H kobon-triangles \
+            -o /tmp/autolab-kobon-baseline.json \
             | tee /tmp/autolab-kobon-baseline.txt
+          cat /tmp/autolab-kobon-baseline.json
