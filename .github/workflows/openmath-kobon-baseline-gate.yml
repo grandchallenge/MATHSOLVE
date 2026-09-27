@@ -56,6 +56,17 @@ jobs:
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
           "$HOME/.local/bin/autolab" --version
 
+      - name: Authenticate AutoLab
+        env:
+          AUTOLAB_TOKEN: ${{ secrets.AUTOLAB_TOKEN }}
+        run: |
+          if [ -z "$AUTOLAB_TOKEN" ]; then
+            echo "AUTOLAB_AUTH_BLOCKER=repository secret AUTOLAB_TOKEN is unavailable"
+            exit 42
+          fi
+          "$HOME/.local/bin/autolab" login --token "$AUTOLAB_TOKEN"
+          "$HOME/.local/bin/autolab" whoami
+
       - name: Pull public Kobon hill
         run: |
           "$HOME/.local/bin/autolab" hills pull alejandrozu/kobon-triangles
