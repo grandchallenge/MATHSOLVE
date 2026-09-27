@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-BASELINE-GATE-STATUS",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "gate": "H1-01",
+  "state": "INDEPENDENT_GCL_PASS__AUTOLAB_REPLAY_BLOCKED_AUTHENTICATION",
+  "independent_gcl": {
+    "status": "PASS",
+    "triangles": 16,
+    "solution_sha256": "fee1fa08e700ba5849c3d1849cc10d2d3a50a44b3d838d560cd08f9a0de2b271",
+    "receipt_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_INTERNAL_RECEIPT.json"
+  },
+  "autolab_crosscheck": {
+    "status": "NOT_OBTAINED",
+    "discrepancy_state": "NOT_COMPARABLE_YET__NO_AUTOLAB_SCORE_RETURNED",
+    "evaluator_command": "uv tool run --from hills==0.11.0 hills eval baseline -H kobon-triangles",
+    "hill_acquisition_command": "autolab hills pull alejandrozu/kobon-triangles",
+    "authentication_blocker": "GitHub Actions repository/organization secret AUTOLAB_TOKEN is unavailable to grandchallenge/MATHSOLVE PR workflow.",
+    "attempts": [
+      {
+        "run_id": 36327965999,
+        "job_id": 108644289208,
+        "result": "BLOCKED_BEFORE_EVALUATOR",
+        "detail": "hills package reported no local kobon-triangles hill under .autolab/hills"
+      },
+      {
+        "run_id": 36328034870,
+        "job_id": 108644483691,
+        "result": "BLOCKED_BEFORE_EVALUATOR",
+        "detail": "official AutoLab CLI installed, but autolab hills pull required login"
+      },
+      {
+        "run_id": 36328112782,
+        "job_id": 108644696152,
+        "result": "BLOCKED_BEFORE_EVALUATOR",
+        "detail": "workflow checked AUTOLAB_TOKEN and failed closed because the secret was unavailable"
+      }
+    ]
+  },
+  "controls": {
+    "construction_search_authorized": false,
+    "candidate_promotion_authorized": false,
+    "final_submission_authorized": false,
+    "merge_of_gate_pr_authorized": false
+  },
+  "next_action": "Provision AUTOLAB_TOKEN securely as a GitHub Actions repository or organization secret available to grandchallenge/MATHSOLVE, then rerun the dedicated OPENMATH Kobon baseline gate and require the AutoLab/Hills evaluator to return triangles=16 for the identical baseline solution.json.",
+  "security_note": "Do not paste the token into chat, commit it, print it in logs, or store it in repository files.",
+  "claim_boundary": "No evaluator discrepancy has been observed because no AutoLab score has been returned. The gate remains incomplete and fail-closed; no construction search may begin."
+}

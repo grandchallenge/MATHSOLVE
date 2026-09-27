@@ -30,7 +30,7 @@
   "hills": [
     {
       "hill_slot": "OM26-H1",
-      "status": "ACTIVE__SOURCE_LOCK_BOUND",
+      "status": "BASELINE_GATE_PARTIAL__AUTOLAB_AUTH_BLOCKED",
       "exact_hill_id": "alejandrozu/kobon-triangles",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -49,12 +49,12 @@
         "formalization_prerequisites": "ACTIVE_EXACT_REPLAY_SPEC",
         "representation_or_reduction": "READY",
         "restricted_theorem": "READY_AS_STRUCTURAL_LEMMA",
-        "exact_computation": "READY",
+        "exact_computation": "GCL_BASELINE_PASS__AUTOLAB_REPLAY_BLOCKED_AUTH",
         "falsification_counterexample": "READY",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
         "mathcert_handoff": "NOT_YET_CLAIM_BEARING"
       },
-      "next_action": "Reproduce the displayed n=18 baseline score 16 with an independent exact scorer and the AutoLab local evaluator; stop on mismatch."
+      "next_action": "Provision AUTOLAB_TOKEN as a GitHub Actions secret, rerun the dedicated baseline gate, and require AutoLab triangles=16 on the identical baseline before search."
     },
     {
       "hill_slot": "OM26-H2",
@@ -142,5 +142,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "This orchestration ledger releases OM26-H1 Kobon triangles for research and candidate construction under an exact protected Forge binding. OM26-H2 through OM26-H6 remain blocked. No score, optimality, novelty, competition-acceptance, or certification claim is created by lane release."
+  "claim_boundary": "OM26-H1 has an independent exact GCL baseline replay PASS at score 16, but the AutoLab/Hills cross-check has not run because authenticated hill acquisition is blocked by unavailable AUTOLAB_TOKEN. No discrepancy is presently observable; construction search remains unauthorized. OM26-H2 through OM26-H6 remain source-lock pending."
 }

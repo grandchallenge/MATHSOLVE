@@ -1,9 +1,18 @@
 # OM26-H1 next action
 
-The next transition is exact and bounded:
+The independent exact half of H1-01 has passed:
 
-> Implement an independent exact scorer for the locked Kobon-triangles semantics, encode the displayed 18-line baseline `2*i*x - y - i*i = 0` for `i=0,...,17`, and require a score of exactly 16. Then evaluate the same `solution.json` with the source-displayed AutoLab local evaluator. If the two paths disagree, stop and reconcile semantics before any search.
+- exact GCL score: **16**;
+- baseline SHA-256: `fee1fa08e700ba5849c3d1849cc10d2d3a50a44b3d838d560cd08f9a0de2b271`;
+- exact support triples: `[i,i+1,i+2]` for `i=0,...,15`;
+- bounded scorer tests: PASS.
 
-Only after this gate passes should the main `n=18` construction-search routes become active.
+The AutoLab half has **not run**. The official CLI installation and hill-pull path were exercised, but the public hill pull requires authentication and the GitHub Actions secret `AUTOLAB_TOKEN` is unavailable.
 
-Parallel work that is safe before the gate completes: prove/falsify the candidate exact face criterion, prepare small-`n` fixtures, and source literature reconnaissance. CEI dispatch itself remains blocked until the standing conformance audit passes.
+The deterministic next transition is therefore:
+
+> Provision `AUTOLAB_TOKEN` securely as a GitHub Actions repository or organization secret exposed to `grandchallenge/MATHSOLVE`, rerun `.github/workflows/openmath-kobon-baseline-gate.yml`, and require the AutoLab/Hills evaluator to return `triangles = 16` for the identical `baseline/solution.json`.
+
+If AutoLab returns any other score, stop and reconcile semantics. If it returns 16, close H1-01 and only then authorize construction search.
+
+Do not paste the token into chat or commit it. Until the cross-check returns, construction search and candidate promotion remain forbidden.
