@@ -1,0 +1,56 @@
+name: OPENMATH Kobon baseline gate
+
+on:
+  pull_request:
+    paths:
+      - "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/**"
+      - ".github/workflows/openmath-kobon-baseline-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-baseline-crosscheck:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Independent exact scorer tests
+        working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
+        run: |
+          python -m unittest -v test_kobon_scorer.py
+
+      - name: Independent exact baseline receipt
+        working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
+        run: |
+          python kobon_scorer.py baseline/solution.json \
+            --n 18 \
+            --expect 16 \
+            --output /tmp/gcl-kobon-baseline.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result=json.loads(Path("/tmp/gcl-kobon-baseline.json").read_text())
+          assert result["triangles"] == 16
+          assert [f["supporting_lines"] for f in result["faces"]] == [
+              [i, i+1, i+2] for i in range(16)
+          ]
+          print("GCL_EXACT_TRIANGLES=16")
+          print("GCL_SOLUTION_SHA256="+result["solution_sha256"])
+          print("GCL_ARRANGEMENT_VERTICES="+str(result["arrangement_vertices"]))
+          print("GCL_BOUNDED_EDGES="+str(result["bounded_arrangement_edges"]))
+          PY
+
+      - name: Install pinned uv launcher
+        run: |
+          python -m pip install --disable-pip-version-check "uv==0.10.0"
+
+      - name: AutoLab Hills evaluator cross-check
+        working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
+        run: |
+          set -o pipefail
+          uv tool run --from hills==0.11.0 hills eval baseline -H kobon-triangles \
+            | tee /tmp/autolab-kobon-baseline.txt
