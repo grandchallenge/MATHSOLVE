@@ -18,3 +18,14 @@ The Human Steward also clarified that the visible `7 hills` list count is a typo
 For every candidate retain the generator/search route and exact code commit, random seeds if any, all external model/agent/CAS/search contributions and receipts, any continuous-to-rational conversion, final `solution.json` digest, both scorer outputs, and the promotion decision.
 
 Do not erase failed candidate ancestry when a later candidate improves it.
+
+## R-H Bader 93 reconstruction provenance
+
+- protected Forge literature audit: `grandchallenge/MATHFORGE@9e00c45fd665546b813f9234314a63eddbec854d`;
+- LineOrder source commit: `zegalur/line-order@2631b8793eb351be2ad6b8a91b7194eeb67e25bb`;
+- published order table source blob: `551747de426042e1542fa4b8f55c1383a9afe157`;
+- LineOrder solver source blob: `65ca030443bf2ba3c0758112962e1177c332c54c`;
+- GCL rational reconstruction candidate blob: `bb244e4b0422922ae9f85cc4facb2109c33162b3`;
+- candidate SHA-256: `e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5`.
+
+The external contribution is the 93-triangle order type and LineOrder straightening method. GCL generated the rational coefficients from that source material and independently replayed the resulting exact arrangement. Preserve this distinction in any later attribution.
