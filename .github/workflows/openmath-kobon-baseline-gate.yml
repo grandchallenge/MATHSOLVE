@@ -5,6 +5,7 @@ on:
     paths:
       - "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/**"
       - ".github/workflows/openmath-kobon-baseline-gate.yml"
+      - ".ghos-routing/workflows.json"
   workflow_dispatch:
 
 permissions:
@@ -67,23 +68,46 @@ jobs:
           "$HOME/.local/bin/autolab" login --token "$AUTOLAB_TOKEN"
           "$HOME/.local/bin/autolab" whoami
 
-      - name: Pull and inspect public Kobon hill
+      - name: Pull public Kobon hill
         run: |
           "$HOME/.local/bin/autolab" hills pull alejandrozu/kobon-triangles
-          find .autolab/hills/kobon-triangles -maxdepth 2 -type f -print | sort
           uv tool run --from hills==0.11.0 hills describe kobon-triangles
-          echo "===== hills commit --help ====="
-          uv tool run --from hills==0.11.0 hills commit --help
-          echo "===== hills eval --help ====="
-          uv tool run --from hills==0.11.0 hills eval --help
-          echo "===== public eval.py ====="
-          sed -n '1,320p' .autolab/hills/kobon-triangles/eval.py
 
       - name: AutoLab Hills evaluator cross-check
         working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
         run: |
           set -o pipefail
-          uv tool run --from hills==0.11.0 hills eval baseline -H kobon-triangles \
-            -o /tmp/autolab-kobon-baseline.json \
-            | tee /tmp/autolab-kobon-baseline.txt
-          cat /tmp/autolab-kobon-baseline.json
+          uv tool run --from hills==0.11.0 hills eval baseline \
+            -H kobon-triangles \
+            --current \
+            --json \
+            | tee /tmp/autolab-kobon-baseline.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report=json.loads(Path("/tmp/autolab-kobon-baseline.json").read_text())
+
+          def find_triangle_metric(value):
+              if isinstance(value, dict):
+                  if value.get("name") == "triangles" and isinstance(value.get("value"), (int, float)):
+                      return value["value"]
+                  for item in value.values():
+                      found=find_triangle_metric(item)
+                      if found is not None:
+                          return found
+              elif isinstance(value, list):
+                  for item in value:
+                      found=find_triangle_metric(item)
+                      if found is not None:
+                          return found
+              return None
+
+          triangles=find_triangle_metric(report)
+          if triangles is None:
+              raise SystemExit("AutoLab report contains no triangles metric")
+          if triangles != 16:
+              raise SystemExit(f"AUTOLAB DISCREPANCY: expected 16 triangles, got {triangles}")
+          print("AUTOLAB_TRIANGLES=16")
+          print("AUTOLAB_BASELINE_CONCORDANCE=PASS")
+          PY
