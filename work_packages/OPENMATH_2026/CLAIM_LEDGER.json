@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "MS-OPENMATH-2026-CLAIMS",
+  "campaign_id": "OPENMATH-2026",
+  "claims": [
+    {
+      "claim_id": "OM26-GOV-001",
+      "text": "The OpenMath 2026 campaign has a bounded six-slot research orchestration with hill-specific work gated on exact source locks.",
+      "type": "OPERATIONAL",
+      "support": [
+        "grandchallenge/MATH-PROGRAMME#1072",
+        "grandchallenge/MATH-PROGRAMME#1073",
+        "grandchallenge/MATHSOLVE#454"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    }
+  ],
+  "prohibited_inferences": [
+    "a source lock proves the mathematical target",
+    "a Solve artifact is certified because it merged",
+    "competition acceptance implies MATHCERT certification",
+    "formal checker acceptance alone establishes semantic fidelity",
+    "unresolved hill placeholders identify actual mathematical content"
+  ]
+}
