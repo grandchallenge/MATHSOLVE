@@ -1,20 +1,22 @@
 # OPENMATH-2026 next action
 
-OM26-H1 (`alejandrozu/kobon-triangles`) is source-locked and its independent exact baseline replay has passed at score 16.
+OM26-H1 (`alejandrozu/kobon-triangles`) has passed its H1-01 baseline evaluator-concordance gate.
 
-The H1-01 gate is not complete: the official AutoLab CLI requires authentication to pull the public hill bundle, and the GitHub Actions secret `AUTOLAB_TOKEN` is unavailable. Therefore no AutoLab evaluator score has been returned and there is no score discrepancy to compare yet.
+The identical source-reported baseline returns:
 
-The deterministic next H1 transition is:
+- independent GCL exact scorer: **16**;
+- authenticated AutoLab public evaluator: **16**.
 
-> Provision `AUTOLAB_TOKEN` securely as a GitHub Actions repository or organization secret available to `grandchallenge/MATHSOLVE`, rerun the dedicated Kobon baseline workflow, and require `triangles = 16` from the AutoLab/Hills evaluator on the identical baseline `solution.json`.
+AutoLab public snapshot: `7d3f1d91dcb8`. Workflow evidence: run `36354367463`, job `108719011813`. The AutoLab local working-tree score is explicitly unofficial because private regression fixtures are not distributed; this does not affect the source-locked statement that the same submitted arrangement and exact counting rule are used.
 
-Until that returns concordantly:
+The next H1 transition is to activate exact face-criterion work and a bounded diversified construction-search tranche. No candidate may enter the campaign-best ladder without independent adversarial replay.
 
-- no Kobon construction search may begin;
-- no H1 candidate may be promoted;
-- PR #458 remains unmerged;
-- OM26-H2 through OM26-H6 may continue organizer-authoritative source acquisition independently;
-- no CEI dispatch may issue until the standing conformance audit passes.
+Concurrently:
+
+- OM26-H2 through OM26-H6 remain blocked pending exact Forge locks;
+- CEI dispatch remains separately conformance-audit gated;
+- final competition submission remains live-concordance gated;
+- optimality, novelty and best-known claims remain independently evidence/certification gated.
 
 Programme tracker: `grandchallenge/MATH-PROGRAMME#1072`  
 Forge tracker: `grandchallenge/MATHFORGE#282`  
