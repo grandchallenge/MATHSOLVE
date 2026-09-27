@@ -99,6 +99,33 @@
       ],
       "mathematical_effect": false,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-CON-002",
+      "text": "The exact candidate RH_BADER_RECONSTRUCTION_093 has 93 counted triangular faces at n=18 under the locked hill semantics.",
+      "type": "CONSTRUCTION",
+      "state": "SOLVE_VERIFIED__H1_07_PASS__SOURCE_GUIDED_RECONSTRUCTION__MATHCERT_HANDOFF_PREPARED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RH_BADER_RECONSTRUCTION_093/solution.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BADER_93_SOURCE.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BADER_93_ORDER_TABLE.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_07_RH_BADER93_REPLAY_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36359791747/job/108734545943"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-VAL-004",
+      "text": "The exact Bader-order reconstruction passes the published-order verifier, the independent direct-interior oracle at score 93, and the authenticated AutoLab public evaluator at score 93.",
+      "type": "VALIDATION",
+      "state": "PASS",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_07_RH_BADER93_REPLAY_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36359791747/job/108734545943"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [

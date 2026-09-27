@@ -41,13 +41,13 @@
     },
     {
       "claim_id": "OM26-H1-GOV-003",
-      "text": "OM26-H1 completed the first post-baseline tranche: H1-02 Solve proof/falsification passed, R-D and R-G produced independently replayed scores 86 and 58, and 86 is the current campaign-best-observed result pending MATHCERT handoff/adjudication.",
+      "text": "OM26-H1 R-H reconstructed the sourced Johannes Bader 93-triangle order type as exact rational straight lines and passed H1-07 direct-oracle and authenticated AutoLab replay at 93.",
       "type": "OPERATIONAL_VALIDATION",
       "support": [
-        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_02_PROOF_RECEIPT.json",
-        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_06_SEARCH_RECEIPT.json",
-        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_07_REPLAY_RECEIPT.json",
-        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/CANDIDATE_LADDER.json"
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_07_RH_BADER93_REPLAY_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/CANDIDATE_LADDER.json",
+        "grandchallenge/MATHFORGE@9e00c45fd665546b813f9234314a63eddbec854d",
+        "github-actions:grandchallenge/MATHSOLVE/run/36359791747/job/108734545943"
       ],
       "mathematical_effect": false,
       "certification_effect": false

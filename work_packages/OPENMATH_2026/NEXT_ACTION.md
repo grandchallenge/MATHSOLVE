@@ -1,15 +1,16 @@
 # OPENMATH-2026 next action
 
-OM26-H1 has completed H1-02 plus the first bounded H1-06/H1-07 tranche.
+OM26-H1 R-H has reconstructed and exactly replayed a 93-triangle n=18 rational arrangement from the sourced Johannes Bader order type.
 
-Verified internal results:
+Current internal leader: `campaign-best-observed = 93`.
 
-- H1-02 Solve proof/falsification PASS;
-- R-G exact structured result = 58;
-- R-D exact local-mutation result = 86;
-- current OM26-H1 campaign-best-observed = 86;
-- H1-07 direct-oracle and authenticated AutoLab public-evaluator concordance PASS for both route outputs.
+Procedurally, protect the R-H tranche and bind its separate 93-triangle MATHCERT successor handoff to the protected Solve commit.
 
-The next procedural action is to protect the Solve tranche and bind its prepared MATHCERT handoff to the protected commit. The next mathematical search tranche is not yet started.
+Mathematically, split the next work into two independent routes:
+
+1. audit whether the literature simple-arrangement upper bound 94 transfers to the hill's broader allowance of parallelism/concurrence;
+2. search narrowly for an exact 94-triangle construction.
+
+Do not infer the bound from search failure, or optimality from a construction alone.
 
 OM26-H2 through OM26-H6 remain blocked pending exact Forge source locks.

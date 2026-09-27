@@ -1,18 +1,22 @@
 # OM26-H1 next action
 
-H1-02, the first bounded H1-06 search tranche, and its H1-07 replay are complete.
+R-H reconstruction and H1-07 replay are complete.
 
-Current verified internal state:
+Verified Solve state:
 
-- face criterion: Solve proof complete; bounded falsification PASS; MATHCERT pending;
-- structured exact route R-G: 58 triangles, independently replayed;
-- local exact route R-D: 86 triangles, independently replayed;
-- current label: `campaign-best-observed = 86` at n=18.
+- current `campaign-best-observed = 93` at `n=18`;
+- exact candidate SHA-256: `e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5`;
+- 282 sourced crossing-order adjacency constraints PASS;
+- three intended parallel pairs PASS;
+- independent exact direct-interior oracle = 93;
+- authenticated AutoLab public evaluator = 93.
 
-The exact 86-line arrangement is preserved at `candidates/RD_LOCAL_MUTATION_086/solution.json`. Its SHA-256 is `05a5f519433a0787a96a3f6c5a8cef17fc7f8ab093ccf0c9ab45a2d564ad11d5`.
+Next procedural action:
 
-Next procedural transition:
+> Protect this tranche and bind `MATHCERT_HANDOFF_RH_BADER93.md` to the protected Solve commit as a successor Cert intake.
 
-> Protect this tranche, bind `MATHCERT_HANDOFF_H1_02_H1_07.md` to the protected Solve commit, and request independent MATHCERT adjudication of the face criterion and the narrow construction claim “this exact n=18 arrangement scores 86.”
+Next mathematical action:
 
-After that, the next research tranche should start from the verified 86-point leader while retaining route diversity. No best-known, optimality, novelty, or official AutoLab claim is authorized.
+> Audit whether the published simple-arrangement upper bound 94 transfers to the hill's allowed degeneracy semantics, while running a narrowly targeted exact search for a 94-triangle construction. Treat these as separate routes: a bound proof cannot be inferred from failure to find 94, and a 94 construction would not by itself prove optimality until the bound-transfer question is closed.
+
+No global best-known, optimality, novelty, or official competition claim is authorized.

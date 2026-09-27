@@ -5,13 +5,14 @@
   "hill_slot": "OM26-H1",
   "label_policy": "campaign-best-observed only; never best-known without separately sourced evidence",
   "current_campaign_best_observed": {
-    "candidate": "RD_LOCAL_MUTATION_086",
-    "triangles": 86,
+    "candidate": "RH_BADER_RECONSTRUCTION_093",
+    "triangles": 93,
     "n": 18,
-    "solution_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RD_LOCAL_MUTATION_086/solution.json",
-    "solution_git_blob_sha1": "17f8355b484bacf115bafd413de9a0be8f8e3385",
-    "solution_sha256": "05a5f519433a0787a96a3f6c5a8cef17fc7f8ab093ccf0c9ab45a2d564ad11d5",
-    "h1_07_replay": "PASS"
+    "solution_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RH_BADER_RECONSTRUCTION_093/solution.json",
+    "solution_git_blob_sha1": "bb244e4b0422922ae9f85cc4facb2109c33162b3",
+    "solution_sha256": "e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5",
+    "h1_07_replay": "PASS",
+    "provenance": "GCL rational reconstruction of externally sourced Johannes Bader 93-triangle order table"
   },
   "verified_results": [
     {
@@ -27,7 +28,12 @@
     {
       "candidate": "RD_LOCAL_MUTATION_086",
       "triangles": 86,
-      "status": "H1_07_PASS__CAMPAIGN_BEST_OBSERVED"
+      "status": "H1_07_PASS__FORMER_CAMPAIGN_LEADER"
+    },
+    {
+      "candidate": "RH_BADER_RECONSTRUCTION_093",
+      "triangles": 93,
+      "status": "H1_07_PASS__CAMPAIGN_BEST_OBSERVED__SOURCE_GUIDED_RECONSTRUCTION"
     }
   ],
   "claim_boundary": "Internal campaign ordering only. No literature-best, global-optimum, novelty, priority, competition-acceptance, or certification inference is permitted."

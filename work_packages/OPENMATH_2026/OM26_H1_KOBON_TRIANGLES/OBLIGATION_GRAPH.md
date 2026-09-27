@@ -12,11 +12,11 @@ H1-01 evaluator reproduction [DONE]
        |          | +--> H1-04 local-move calculus
        |          | +--> H1-05 realizability / stretchability gate
        |          |
-       |          +------> H1-06 diversified n=18 search [TRANCHE-1 DONE]
+       |          +------> H1-06 diversified n=18 search [TRANCHE-2 DONE]
        |                         |
        +-------------------------+
                                  v
-                         H1-07 independent adversarial replay [TRANCHE-1 DONE]
+                         H1-07 independent adversarial replay [TRANCHE-2 DONE]
                                  |
                                  v
                          H1-08 candidate ladder
@@ -58,11 +58,15 @@ Combinatorial or pseudoline search is permitted only as a proposal generator. Ev
 
 ## H1-06 — diversified n=18 construction search
 
-**Tranche 1:** DONE. R-D exact local mutation (seed 3, 3000 iterations) produced score 86 at iteration 1443. R-G exact two-parameter structured search evaluated 525 cases and produced score 58 at alpha=-3, beta=20. Both exact candidates are preserved. Other route families remain available for later tranches.
+**Tranche 1:** DONE. R-D exact local mutation (seed 3, 3000 iterations) produced score 86 at iteration 1443. R-G exact two-parameter structured search evaluated 525 cases and produced score 58 at alpha=-3, beta=20. Both exact candidates are preserved.
+
+**Tranche 2:** DONE. Protected Forge literature reconnaissance identified the externally reported Johannes Bader 93-triangle order table. R-H reconstructed that order type as an explicit rational straight-line arrangement with small integer coefficients. Exact order constraints, direct-oracle face count, and authenticated AutoLab public-evaluator count all passed at 93. The reconstruction is GCL-generated and is not attributed as Bader's original coordinate realization.
 
 ## H1-07 — independent adversarial replay
 
-**Tranche 1:** DONE. The independent direct-interior oracle and authenticated AutoLab public evaluator both returned 86 for R-D and 58 for R-G. No discrepancy was observed. R-D is therefore eligible for the internal campaign-best-observed ladder; this is not a best-known or certification claim.
+**Tranche 1:** DONE. The independent direct-interior oracle and authenticated AutoLab public evaluator both returned 86 for R-D and 58 for R-G.
+
+**Tranche 2:** DONE. The sourced-order verifier checked 282 exact adjacency constraints with minimum positive integer margin 19,680,000 and the three intended parallel pairs. The independent direct-interior oracle returned 93 and the authenticated AutoLab public evaluator returned 93 for the identical rational reconstruction. No discrepancy was observed. R-H is promoted to `campaign-best-observed = 93`; this is not a best-known, optimality, novelty, official competition, or certification claim.
 
 ## H1-08 — candidate ladder
 
