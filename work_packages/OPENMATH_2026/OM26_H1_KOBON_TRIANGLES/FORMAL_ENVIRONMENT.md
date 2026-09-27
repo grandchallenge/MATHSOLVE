@@ -1,33 +1,61 @@
 # OM26-H1 formal and replay environment
 
-**State:** `SPECIFIED__BASELINE_REPLAY_PENDING`
+**State:** `BASELINE_CONCORDANCE_PASS`
 
 ## Exact internal scorer
 
-Preferred first implementation is deliberately small and auditable:
+The independent scorer is implemented at `kobon_scorer.py` with integer normalization, determinant predicates and `fractions.Fraction` exact intersections. No floating-point predicate is trusted.
 
-- Python 3;
-- integer arithmetic for line normalization and determinant predicates;
-- `fractions.Fraction` or equivalent exact rational representation where division is required;
-- no floating-point predicate in the trusted scoring path.
+The locked baseline `baseline/solution.json` has SHA-256:
 
-Every counted face should be exportable as the zero-based triple of supporting line indices, matching the inspection surface described by the hill.
+`fee1fa08e700ba5849c3d1849cc10d2d3a50a44b3d838d560cd08f9a0de2b271`
 
-## AutoLab reference evaluator
+Independent result:
 
-The captured hill displays:
+- `n = 18`;
+- `triangles = 16`;
+- 153 arrangement vertices;
+- 288 bounded arrangement edges;
+- supporting-line triples exactly `[i,i+1,i+2]` for `i=0,...,15`;
+- six bounded adversarial/unit cases PASS.
+
+Receipt: `BASELINE_INTERNAL_RECEIPT.json`.
+
+## AutoLab evaluator cross-check
+
+Authenticated AutoLab acquisition succeeded using the repository Actions secret without exposing it. The public hill pull identified:
+
+- hill: `alejandrozu/kobon-triangles`;
+- public snapshot: `7d3f1d91dcb8`;
+- manifest: `kobon-triangles 0.1.0`;
+- hill spec: `2`.
+
+The public package omits `private/` regression fixtures. Accordingly, the Hills CLI marks a working-tree local score as unofficial. The source lock already states that those fixtures validate the evaluator and are not hidden target data.
+
+The identical baseline was evaluated with:
 
 ```sh
-autolab hills check kobon-triangles
-uv tool run --from hills==0.11.0 hills eval <submission-directory> -H kobon-triangles
+uv tool run --from hills==0.11.0 hills eval baseline \
+  -H kobon-triangles --current --json
 ```
 
-These are source-bound reference commands, not yet recorded here as successfully executed by GCL. The `hills==0.11.0` token is treated as the displayed package pin, not as a durable hill-version identifier.
+Observed AutoLab/Hills result:
 
-## Two-path replay rule
+```text
+PASSED triangles=16 (max)
+unofficial dirty-tree
+```
 
-A promoted score requires the GCL exact scorer, the AutoLab/local hill evaluator when available, score agreement, and an adversarial check of the GCL scorer logic before it becomes the trusted internal oracle.
+Workflow evidence: run `36354367463`, job `108719011813`.
+
+Receipt: `BASELINE_AUTOLAB_RECEIPT.json`.
+
+## Gate disposition
+
+The independent scorer and authenticated AutoLab public evaluator agree exactly at **16** on the same `solution.json`. H1-01 is PASS and bounded construction search may proceed.
+
+This does not convert the local AutoLab report into an official competition score. Candidate promotion still requires H1-07 independent adversarial replay, and final submission still requires H1-11 live hill concordance.
 
 ## Reproducibility outputs
 
-Retain `solution.json`, normalized line identities, intersection/incidence digest, counted supporting-line triples, exact score, scorer commit, evaluator output, and runtime metadata. Search runtime is diagnostic only.
+Retain the exact `solution.json`, scorer commit, normalized line identities, counted supporting-line triples, AutoLab public snapshot identity, evaluator package version, reports/receipts, and workflow run/job identities.

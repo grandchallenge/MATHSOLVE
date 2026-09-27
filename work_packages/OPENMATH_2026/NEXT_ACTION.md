@@ -1,17 +1,22 @@
 # OPENMATH-2026 next action
 
-OM26-H1 is now source-locked as `alejandrozu/kobon-triangles` at protected MATHFORGE commit `73f1890387eec56eb6be31f8c00f10b6a5a56383`.
+OM26-H1 (`alejandrozu/kobon-triangles`) has passed its H1-01 baseline evaluator-concordance gate.
 
-The deterministic next mathematical transition is:
+The identical source-reported baseline returns:
 
-> Complete `OM26-H1/H1-01`: implement an independent exact scorer, encode the displayed 18-line baseline, require score 16, and cross-check the same `solution.json` with the AutoLab local evaluator. Any mismatch stops the hill before search.
+- independent GCL exact scorer: **16**;
+- authenticated AutoLab public evaluator: **16**.
+
+AutoLab public snapshot: `7d3f1d91dcb8`. Workflow evidence: run `36354367463`, job `108719011813`. The AutoLab local working-tree score is explicitly unofficial because private regression fixtures are not distributed; this does not affect the source-locked statement that the same submitted arrangement and exact counting rule are used.
+
+The next H1 transition is to activate exact face-criterion work and a bounded diversified construction-search tranche. No candidate may enter the campaign-best ladder without independent adversarial replay.
 
 Concurrently:
 
-- the other five hill slots remain blocked pending exact Forge locks;
-- small-`n` fixtures, face-criterion proof/falsification, and sourced literature reconnaissance may proceed for OM26-H1;
-- no CEI dispatch may issue until the standing CEI conformance audit passes;
-- no final competition submission may issue until live hill concordance passes.
+- OM26-H2 through OM26-H6 remain blocked pending exact Forge locks;
+- CEI dispatch remains separately conformance-audit gated;
+- final competition submission remains live-concordance gated;
+- optimality, novelty and best-known claims remain independently evidence/certification gated.
 
 Programme tracker: `grandchallenge/MATH-PROGRAMME#1072`  
 Forge tracker: `grandchallenge/MATHFORGE#282`  

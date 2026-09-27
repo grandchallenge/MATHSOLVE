@@ -30,7 +30,7 @@
   "hills": [
     {
       "hill_slot": "OM26-H1",
-      "status": "ACTIVE__SOURCE_LOCK_BOUND",
+      "status": "ACTIVE__BASELINE_CONCORDANCE_PASS",
       "exact_hill_id": "alejandrozu/kobon-triangles",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -45,16 +45,16 @@
         "final_submission_blocker": "LIVE_HILL_VERSION_CONCORDANCE_REQUIRED"
       },
       "obligations": {
-        "semantic_fidelity": "ACTIVE",
-        "formalization_prerequisites": "ACTIVE_EXACT_REPLAY_SPEC",
+        "semantic_fidelity": "BASELINE_CONCORDANCE_PASS",
+        "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
         "representation_or_reduction": "READY",
         "restricted_theorem": "READY_AS_STRUCTURAL_LEMMA",
-        "exact_computation": "READY",
+        "exact_computation": "BASELINE_CONCORDANCE_PASS__SEARCH_RELEASED",
         "falsification_counterexample": "READY",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
         "mathcert_handoff": "NOT_YET_CLAIM_BEARING"
       },
-      "next_action": "Reproduce the displayed n=18 baseline score 16 with an independent exact scorer and the AutoLab local evaluator; stop on mismatch."
+      "next_action": "Activate H1-02 and a bounded diversified H1-06 search tranche; require H1-07 before candidate promotion."
     },
     {
       "hill_slot": "OM26-H2",
@@ -142,5 +142,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "This orchestration ledger releases OM26-H1 Kobon triangles for research and candidate construction under an exact protected Forge binding. OM26-H2 through OM26-H6 remain blocked. No score, optimality, novelty, competition-acceptance, or certification claim is created by lane release."
+  "claim_boundary": "OM26-H1 baseline semantic/evaluator concordance is established at score 16 on the identical source-reported baseline by the independent exact GCL scorer and authenticated AutoLab public evaluator. Construction search is released, but candidate promotion, best-known/optimality/novelty claims, CEI dispatch, final submission and certification retain their independent gates. OM26-H2 through OM26-H6 remain source-lock pending."
 }

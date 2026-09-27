@@ -25,6 +25,19 @@
       ],
       "mathematical_effect": false,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-GOV-002",
+      "text": "OM26-H1 H1-01 baseline evaluator-concordance gate passed: the independent exact GCL scorer and authenticated AutoLab public evaluator both return 16 on the identical baseline solution.",
+      "type": "OPERATIONAL_VALIDATION",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_GATE_STATUS.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_INTERNAL_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_AUTOLAB_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36354367463/job/108719011813"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [

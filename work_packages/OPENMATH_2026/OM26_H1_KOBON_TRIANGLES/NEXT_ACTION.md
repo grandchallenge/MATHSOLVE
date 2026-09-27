@@ -1,9 +1,21 @@
 # OM26-H1 next action
 
-The next transition is exact and bounded:
+H1-01 is complete.
 
-> Implement an independent exact scorer for the locked Kobon-triangles semantics, encode the displayed 18-line baseline `2*i*x - y - i*i = 0` for `i=0,...,17`, and require a score of exactly 16. Then evaluate the same `solution.json` with the source-displayed AutoLab local evaluator. If the two paths disagree, stop and reconcile semantics before any search.
+The same baseline `solution.json` was evaluated by two independent paths:
 
-Only after this gate passes should the main `n=18` construction-search routes become active.
+- GCL exact scorer: **16**;
+- authenticated AutoLab public hill evaluator: **16**.
 
-Parallel work that is safe before the gate completes: prove/falsify the candidate exact face criterion, prepare small-`n` fixtures, and source literature reconnaissance. CEI dispatch itself remains blocked until the standing conformance audit passes.
+The baseline SHA-256 is `fee1fa08e700ba5849c3d1849cc10d2d3a50a44b3d838d560cd08f9a0de2b271`. AutoLab public snapshot `7d3f1d91dcb8` was evaluated with `hills==0.11.0` in working-tree mode. No discrepancy was found.
+
+The next bounded transition is:
+
+> Activate post-baseline work under the existing route ledger. Prioritize H1-02 exact face-criterion proof/falsification and a small diversified H1-06 construction-search tranche. Preserve exact rational candidates and require H1-07 independent adversarial replay before any candidate enters the campaign-best ladder.
+
+The following remain blocked independently of this gate:
+
+- no candidate promotion without H1-07;
+- no CEI dispatch without the standing CEI conformance audit;
+- no final competition submission without H1-11 live concordance;
+- no optimality, novelty or best-known claim without separate evidence and certification.
