@@ -1,6 +1,6 @@
 # H1-02 — exact triangular-face criterion
 
-**Status:** `SOLVE_PROOF_CANDIDATE__BOUNDED_FALSIFICATION_REQUIRED`
+**Status:** `SOLVE_PROOF_COMPLETE__BOUNDED_FALSIFICATION_PASS__MATHCERT_HANDOFF_PREPARED`
 
 Let A be a finite set of distinct straight lines. An arrangement vertex is a point incident with at least two nonparallel lines. On a line, a bounded segment between consecutive distinct arrangement vertices is an arrangement edge.
 
@@ -29,3 +29,7 @@ Parallel lines are harmless unless chosen as support pairs, concurrence collapse
 For another line M with affine form fM and triangle vertices v1,v2,v3, M meets the open triangle interior iff the exact values fM(v1), fM(v2), fM(v3) contain both a strict positive and a strict negative value. `kobon_direct_oracle.py` implements this direct sign test and shares no arrangement-graph logic with `kobon_scorer.py`.
 
 This is a Solve-level proof object; MATHCERT certification is a separate disposition.
+
+## Tranche disposition
+
+The proof survived the bounded executable falsification campaign in GitHub Actions run `36356017300`, job `108723788668`: 210 exhaustive subsets of an explicit degeneracy pool, 360 seeded random exact arrangements across `n=3..8`, the baseline, and both H1-06 candidates agreed between the arrangement-graph scorer and the independent direct-interior oracle. This is supporting defect evidence, not a substitute for the proof or MATHCERT disposition.

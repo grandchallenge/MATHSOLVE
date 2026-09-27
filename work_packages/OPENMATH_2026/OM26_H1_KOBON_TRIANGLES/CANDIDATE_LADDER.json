@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-CANDIDATE-LADDER",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "label_policy": "campaign-best-observed only; never best-known without separately sourced evidence",
+  "current_campaign_best_observed": {
+    "candidate": "RD_LOCAL_MUTATION_086",
+    "triangles": 86,
+    "n": 18,
+    "solution_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RD_LOCAL_MUTATION_086/solution.json",
+    "solution_git_blob_sha1": "17f8355b484bacf115bafd413de9a0be8f8e3385",
+    "solution_sha256": "05a5f519433a0787a96a3f6c5a8cef17fc7f8ab093ccf0c9ab45a2d564ad11d5",
+    "h1_07_replay": "PASS"
+  },
+  "verified_results": [
+    {
+      "candidate": "baseline",
+      "triangles": 16,
+      "status": "SOURCE_BASELINE__H1_01_PASS"
+    },
+    {
+      "candidate": "RG_STRUCTURED_FAMILY_058",
+      "triangles": 58,
+      "status": "H1_07_PASS__NONLEADER"
+    },
+    {
+      "candidate": "RD_LOCAL_MUTATION_086",
+      "triangles": 86,
+      "status": "H1_07_PASS__CAMPAIGN_BEST_OBSERVED"
+    }
+  ],
+  "claim_boundary": "Internal campaign ordering only. No literature-best, global-optimum, novelty, priority, competition-acceptance, or certification inference is permitted."
+}

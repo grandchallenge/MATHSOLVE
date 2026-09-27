@@ -42,10 +42,15 @@
     },
     {
       "claim_id": "OM26-H1-CON-001",
-      "text": "A specific GCL n=18 arrangement has score S under the locked evaluator semantics.",
+      "text": "The exact candidate RD_LOCAL_MUTATION_086 has 86 counted triangular faces at n=18 under the locked hill semantics.",
       "type": "CONSTRUCTION",
-      "state": "NO_CANDIDATE_YET",
-      "support": [],
+      "state": "SOLVE_VERIFIED__H1_07_PASS__MATHCERT_HANDOFF_PREPARED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RD_LOCAL_MUTATION_086/solution.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_06_SEARCH_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_07_REPLAY_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36356017300/job/108723788668"
+      ],
       "mathematical_effect": true,
       "certification_effect": false
     },
@@ -67,6 +72,30 @@
         "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_AUTOLAB_RECEIPT.json",
         "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_GATE_STATUS.json",
         "github-actions:grandchallenge/MATHSOLVE/run/36354367463/job/108719011813"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-THM-001",
+      "text": "Counted Kobon triangular faces are exactly the nondegenerate 3-cycles of the arrangement graph, equivalently support triples whose three side segments join consecutive arrangement vertices.",
+      "type": "STRUCTURAL_THEOREM",
+      "state": "SOLVE_PROOF_COMPLETE__BOUNDED_FALSIFICATION_PASS__MATHCERT_HANDOFF_PREPARED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/FACE_CRITERION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_02_PROOF_RECEIPT.json"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-VAL-003",
+      "text": "H1-07 independent replay agrees on scores 86 and 58 for the two bounded H1-06 route outputs.",
+      "type": "VALIDATION",
+      "state": "PASS",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_07_REPLAY_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36356017300/job/108723788668"
       ],
       "mathematical_effect": false,
       "certification_effect": false

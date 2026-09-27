@@ -30,7 +30,7 @@
   "hills": [
     {
       "hill_slot": "OM26-H1",
-      "status": "ACTIVE__BASELINE_CONCORDANCE_PASS",
+      "status": "ACTIVE__CAMPAIGN_BEST_OBSERVED_86__H1_07_PASS",
       "exact_hill_id": "alejandrozu/kobon-triangles",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -48,13 +48,13 @@
         "semantic_fidelity": "BASELINE_CONCORDANCE_PASS",
         "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
         "representation_or_reduction": "READY",
-        "restricted_theorem": "READY_AS_STRUCTURAL_LEMMA",
-        "exact_computation": "BASELINE_CONCORDANCE_PASS__SEARCH_RELEASED",
-        "falsification_counterexample": "READY",
+        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING",
+        "exact_computation": "H1_06_TRANCHE_1_COMPLETE__LEADER_86",
+        "falsification_counterexample": "H1_02_PASS",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
-        "mathcert_handoff": "NOT_YET_CLAIM_BEARING"
+        "mathcert_handoff": "PREPARED_PENDING_PROTECTED_SOLVE_BIND"
       },
-      "next_action": "Activate H1-02 and a bounded diversified H1-06 search tranche; require H1-07 before candidate promotion."
+      "next_action": "Protect tranche artifacts, bind the prepared H1-02/H1-07 handoff into MATHCERT, then choose the next search tranche around the verified 86-point campaign leader."
     },
     {
       "hill_slot": "OM26-H2",
@@ -142,5 +142,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "OM26-H1 baseline semantic/evaluator concordance is established at score 16 on the identical source-reported baseline by the independent exact GCL scorer and authenticated AutoLab public evaluator. Construction search is released, but candidate promotion, best-known/optimality/novelty claims, CEI dispatch, final submission and certification retain their independent gates. OM26-H2 through OM26-H6 remain source-lock pending."
+  "claim_boundary": "OM26-H1 now has a Solve-level face-criterion proof, bounded falsification PASS, two independently replayed construction results (58 and 86), and campaign-best-observed 86. These are not best-known, optimality, novelty, competition-acceptance, publication, or MATHCERT-certification claims. OM26-H2 through OM26-H6 remain source-lock pending."
 }

@@ -6,17 +6,17 @@ H1-00 source lock [DONE]
        v
 H1-01 evaluator reproduction [DONE]
        |\
-       | +--> H1-02 exact face criterion
+       | +--> H1-02 exact face criterion [DONE]
        |          |\
        |          | +--> H1-03 small-n census
        |          | +--> H1-04 local-move calculus
        |          | +--> H1-05 realizability / stretchability gate
        |          |
-       |          +------> H1-06 diversified n=18 search
+       |          +------> H1-06 diversified n=18 search [TRANCHE-1 DONE]
        |                         |
        +-------------------------+
                                  v
-                         H1-07 independent adversarial replay
+                         H1-07 independent adversarial replay [TRANCHE-1 DONE]
                                  |
                                  v
                          H1-08 candidate ladder
@@ -42,9 +42,7 @@ The AutoLab result is an unofficial local/public-tree score because private eval
 
 ## H1-02 — exact face criterion
 
-Derive a mathematically explicit criterion for when three supporting lines bound a counted triangular face. Candidate simplifications such as adjacency of pairwise intersection vertices along all three support lines must be proved under the hill's allowed degeneracies or falsified with exact counterexamples before becoming trusted scorer logic.
-
-Output: theorem/lemma statement, exact proof or bounded counterexample ledger, and executable property tests.
+**State:** DONE at Solve level. `FACE_CRITERION.md` proves the arrangement-edge/nondegenerate-3-cycle criterion. `kobon_direct_oracle.py` supplies an independent exact sign-based interior-crossing oracle. The bounded falsification campaign passed 210 exhaustive degeneracy-pool subsets, 360 seeded random exact arrangements across n=3..8, and the locked fixtures. MATHCERT adjudication remains separate.
 
 ## H1-03 — small-n census and motif discovery
 
@@ -60,17 +58,11 @@ Combinatorial or pseudoline search is permitted only as a proposal generator. Ev
 
 ## H1-06 — diversified n=18 construction search
 
-Run distinct search families rather than duplicate whole-problem agents:
-
-- exact local mutation around valid arrangements;
-- continuous parameter search followed by exact rationalization and replay;
-- combinatorial arrangement search followed by the realizability gate;
-- structured parametric families and projective normal forms;
-- literature-guided constructions only after source/provenance intake.
+**Tranche 1:** DONE. R-D exact local mutation (seed 3, 3000 iterations) produced score 86 at iteration 1443. R-G exact two-parameter structured search evaluated 525 cases and produced score 58 at alpha=-3, beta=20. Both exact candidates are preserved. Other route families remain available for later tranches.
 
 ## H1-07 — independent adversarial replay
 
-Use a scorer implementation or logic path independent of the proposal generator. Recheck input validity, line distinctness, candidate intersections, face boundedness, interior crossing/subdivision, and final triangle count.
+**Tranche 1:** DONE. The independent direct-interior oracle and authenticated AutoLab public evaluator both returned 86 for R-D and 58 for R-G. No discrepancy was observed. R-D is therefore eligible for the internal campaign-best-observed ladder; this is not a best-known or certification claim.
 
 ## H1-08 — candidate ladder
 
