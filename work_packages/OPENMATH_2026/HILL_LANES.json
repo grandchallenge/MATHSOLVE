@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-HILL-LANES",
+  "campaign_id": "OPENMATH-2026",
+  "programme_tracker": "grandchallenge/MATH-PROGRAMME#1072",
+  "solve_tracker": "grandchallenge/MATHSOLVE#454",
+  "source_gate": "EXACT_MATHFORGE_HILL_LOCK_REQUIRED",
+  "shared_lanes": [
+    {
+      "id": "OM26-SHARED-FORMAL-ENV",
+      "status": "READY",
+      "purpose": "inventory approved formal environments and common library prerequisites"
+    },
+    {
+      "id": "OM26-SHARED-CHECKER",
+      "status": "READY",
+      "purpose": "audit submission/checker contract without assuming hill content"
+    },
+    {
+      "id": "OM26-SHARED-CEI",
+      "status": "READY",
+      "purpose": "prepare bounded zero-context dispatch grammar and return handling"
+    },
+    {
+      "id": "OM26-SHARED-PROVENANCE",
+      "status": "READY",
+      "purpose": "prepare claim, dependency, authorship and tool disclosure surfaces"
+    }
+  ],
+  "hills": [
+    {
+      "hill_slot": "OM26-H1",
+      "status": "BLOCKED_PENDING_FORGE_SOURCE_LOCK",
+      "exact_hill_id": null,
+      "statement_lock": null,
+      "obligations": {
+        "semantic_fidelity": "BLOCKED",
+        "formalization_prerequisites": "BLOCKED",
+        "representation_or_reduction": "BLOCKED",
+        "restricted_theorem": "BLOCKED",
+        "exact_computation": "BLOCKED",
+        "falsification_counterexample": "BLOCKED",
+        "cei_independent_contribution": "BLOCKED",
+        "mathcert_handoff": "BLOCKED"
+      },
+      "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
+    },
+    {
+      "hill_slot": "OM26-H2",
+      "status": "BLOCKED_PENDING_FORGE_SOURCE_LOCK",
+      "exact_hill_id": null,
+      "statement_lock": null,
+      "obligations": {
+        "semantic_fidelity": "BLOCKED",
+        "formalization_prerequisites": "BLOCKED",
+        "representation_or_reduction": "BLOCKED",
+        "restricted_theorem": "BLOCKED",
+        "exact_computation": "BLOCKED",
+        "falsification_counterexample": "BLOCKED",
+        "cei_independent_contribution": "BLOCKED",
+        "mathcert_handoff": "BLOCKED"
+      },
+      "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
+    },
+    {
+      "hill_slot": "OM26-H3",
+      "status": "BLOCKED_PENDING_FORGE_SOURCE_LOCK",
+      "exact_hill_id": null,
+      "statement_lock": null,
+      "obligations": {
+        "semantic_fidelity": "BLOCKED",
+        "formalization_prerequisites": "BLOCKED",
+        "representation_or_reduction": "BLOCKED",
+        "restricted_theorem": "BLOCKED",
+        "exact_computation": "BLOCKED",
+        "falsification_counterexample": "BLOCKED",
+        "cei_independent_contribution": "BLOCKED",
+        "mathcert_handoff": "BLOCKED"
+      },
+      "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
+    },
+    {
+      "hill_slot": "OM26-H4",
+      "status": "BLOCKED_PENDING_FORGE_SOURCE_LOCK",
+      "exact_hill_id": null,
+      "statement_lock": null,
+      "obligations": {
+        "semantic_fidelity": "BLOCKED",
+        "formalization_prerequisites": "BLOCKED",
+        "representation_or_reduction": "BLOCKED",
+        "restricted_theorem": "BLOCKED",
+        "exact_computation": "BLOCKED",
+        "falsification_counterexample": "BLOCKED",
+        "cei_independent_contribution": "BLOCKED",
+        "mathcert_handoff": "BLOCKED"
+      },
+      "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
+    },
+    {
+      "hill_slot": "OM26-H5",
+      "status": "BLOCKED_PENDING_FORGE_SOURCE_LOCK",
+      "exact_hill_id": null,
+      "statement_lock": null,
+      "obligations": {
+        "semantic_fidelity": "BLOCKED",
+        "formalization_prerequisites": "BLOCKED",
+        "representation_or_reduction": "BLOCKED",
+        "restricted_theorem": "BLOCKED",
+        "exact_computation": "BLOCKED",
+        "falsification_counterexample": "BLOCKED",
+        "cei_independent_contribution": "BLOCKED",
+        "mathcert_handoff": "BLOCKED"
+      },
+      "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
+    },
+    {
+      "hill_slot": "OM26-H6",
+      "status": "BLOCKED_PENDING_FORGE_SOURCE_LOCK",
+      "exact_hill_id": null,
+      "statement_lock": null,
+      "obligations": {
+        "semantic_fidelity": "BLOCKED",
+        "formalization_prerequisites": "BLOCKED",
+        "representation_or_reduction": "BLOCKED",
+        "restricted_theorem": "BLOCKED",
+        "exact_computation": "BLOCKED",
+        "falsification_counterexample": "BLOCKED",
+        "cei_independent_contribution": "BLOCKED",
+        "mathcert_handoff": "BLOCKED"
+      },
+      "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
+    }
+  ],
+  "claim_boundary": "This orchestration ledger creates research slots and shared infrastructure only. It states no hill theorem and creates no certification."
+}
