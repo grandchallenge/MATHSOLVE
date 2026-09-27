@@ -18,9 +18,9 @@ def f_raw(li,lj,lk):
         + ck*(bj*ai-aj*bi)
     )
 
-def proportional(x,y):
-    a,b,c=x; d,e,f=y
-    return a*e==d*b and a*f==d*c and b*f==e*c
+def parallel(x,y):
+    a,b,_c=x; d,e,_f=y
+    return a*e==d*b
 
 def main():
     ap=argparse.ArgumentParser()
@@ -35,7 +35,7 @@ def main():
     for i,row in enumerate(rows):
         missing=set(range(1,n+1))-{i+1}-set(row)
         for j in missing:
-            if not proportional(lines[i],lines[j-1]):
+            if not parallel(lines[i],lines[j-1]):
                 failures.append({"kind":"expected_parallel","line":i+1,"other":j})
         for m in range(len(row)-1):
             j=row[m]-1; k=row[m+1]-1
