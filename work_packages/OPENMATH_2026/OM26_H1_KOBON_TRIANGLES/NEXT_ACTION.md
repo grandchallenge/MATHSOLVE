@@ -1,13 +1,22 @@
 # OM26-H1 next action
 
-The protected Forge literature reconnaissance moved the useful target from blind improvement over 86 to exact reconstruction of the externally reported 93-triangle `n=18` Bader order type.
+R-H reconstruction and H1-07 replay are complete.
 
-R-H now contains an exact rational reconstruction candidate at `candidates/RH_BADER_RECONSTRUCTION_093/solution.json`.
+Verified Solve state:
 
-The deterministic gate is:
+- current `campaign-best-observed = 93` at `n=18`;
+- exact candidate SHA-256: `e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5`;
+- 282 sourced crossing-order adjacency constraints PASS;
+- three intended parallel pairs PASS;
+- independent exact direct-interior oracle = 93;
+- authenticated AutoLab public evaluator = 93.
 
-> Verify the candidate against the exact published order table, the independent direct-interior oracle, and the authenticated AutoLab public evaluator. Promote it only if all three return concordant evidence for 93.
+Next procedural action:
 
-The existing 86 candidate remains the protected campaign leader until this H1-07 gate passes. MATHCERT intake for the 86 construction and H1-02 theorem proceeds independently.
+> Protect this tranche and bind `MATHCERT_HANDOFF_RH_BADER93.md` to the protected Solve commit as a successor Cert intake.
 
-No best-known, optimality, novelty, or official AutoLab claim is authorized.
+Next mathematical action:
+
+> Audit whether the published simple-arrangement upper bound 94 transfers to the hill's allowed degeneracy semantics, while running a narrowly targeted exact search for a 94-triangle construction. Treat these as separate routes: a bound proof cannot be inferred from failure to find 94, and a 94 construction would not by itself prove optimality until the bound-transfer question is closed.
+
+No global best-known, optimality, novelty, or official competition claim is authorized.
