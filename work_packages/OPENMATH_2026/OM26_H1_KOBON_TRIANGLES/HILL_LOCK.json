@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-HILL-LOCK",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "exact_hill_id": "alejandrozu/kobon-triangles",
+  "title": "Kobon triangles",
+  "state": "ACTIVE__SOURCE_LOCK_BOUND",
+  "forge_binding": {
+    "repository": "grandchallenge/MATHFORGE",
+    "protected_commit": "73f1890387eec56eb6be31f8c00f10b6a5a56383",
+    "source_lock": {
+      "path": "reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/SOURCE_LOCK.json",
+      "integrity": {
+        "algorithm": "git_blob_sha1",
+        "value": "7a90cd6eeb54e8e4c5b63c5977e40a1ab5bcaa2c"
+      }
+    },
+    "statement": {
+      "path": "reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/STATEMENT.md",
+      "integrity": {
+        "algorithm": "git_blob_sha1",
+        "value": "47e529bce21e76c575c69a26824e182848dceedc"
+      }
+    },
+    "evaluator_contract": {
+      "path": "reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/EVALUATOR_CONTRACT.md",
+      "integrity": {
+        "algorithm": "git_blob_sha1",
+        "value": "b9f9d8b58fa613c9e788d09f987b50260066bc67"
+      }
+    },
+    "source_map": {
+      "path": "reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/SOURCE_MAP.md",
+      "integrity": {
+        "algorithm": "git_blob_sha1",
+        "value": "cfdc8e40e383ee290f238143c5a7f438af43086a"
+      }
+    },
+    "status_triage": {
+      "path": "reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/STATUS_TRIAGE.md",
+      "integrity": {
+        "algorithm": "git_blob_sha1",
+        "value": "58b2d8ab30b33de1d110d30578011d516ea078d0"
+      }
+    },
+    "problem_card": {
+      "path": "reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/PROBLEM_CARD.md",
+      "integrity": {
+        "algorithm": "git_blob_sha1",
+        "value": "466224d5623c9463b556f8aa76277b94fc56bc85"
+      }
+    }
+  },
+  "admitted_task": {
+    "kind": "DETERMINISTIC_EXACT_GEOMETRIC_CONSTRUCTION_OPTIMIZATION",
+    "target_n": 18,
+    "metric": "triangles",
+    "direction": "maximize",
+    "displayed_baseline_score": 16,
+    "baseline_family": "2*i*x - y - i*i = 0 for i=0,...,17",
+    "representation": "Exactly n rational straight lines encoded by integer triples [a,b,c] for a*x+b*y+c=0."
+  },
+  "release": {
+    "research": true,
+    "candidate_construction": true,
+    "final_submission": false,
+    "final_submission_blocker": "LIVE_HILL_VERSION_CONCORDANCE_REQUIRED"
+  },
+  "campaign_cardinality": {
+    "hill_count": 6,
+    "note": "The Human Steward clarified that the rendered seven-hill sidebar count is a typo; OPENMATH-2026 remains a six-hill sprint."
+  },
+  "claim_boundary": "This Solve lock imports Forge semantics and authorizes research only. It does not assert that 16 is best known, that any future score is globally optimal, that any candidate is novel, that AutoLab accepted it, or that MATHCERT certified it."
+}
