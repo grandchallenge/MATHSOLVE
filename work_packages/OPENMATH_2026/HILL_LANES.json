@@ -30,7 +30,7 @@
   "hills": [
     {
       "hill_slot": "OM26-H1",
-      "status": "ACTIVE__CAMPAIGN_BEST_OBSERVED_86__H1_07_PASS",
+      "status": "ACTIVE__CAMPAIGN_BEST_OBSERVED_93__RH_H1_07_PASS",
       "exact_hill_id": "alejandrozu/kobon-triangles",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -47,14 +47,14 @@
       "obligations": {
         "semantic_fidelity": "BASELINE_CONCORDANCE_PASS",
         "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
-        "representation_or_reduction": "READY",
+        "representation_or_reduction": "RH_BADER93_ORDER_TYPE_REALIZED_AS_RATIONAL_LINES",
         "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING",
-        "exact_computation": "H1_06_TRANCHE_1_COMPLETE__LEADER_86",
+        "exact_computation": "H1_06_TRANCHE_2_COMPLETE__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
-        "mathcert_handoff": "PREPARED_PENDING_PROTECTED_SOLVE_BIND"
+        "mathcert_handoff": "H1_02_AND_86_INTAKE_PENDING_REVIEW__93_SUCCESSOR_PREPARED"
       },
-      "next_action": "Protect tranche artifacts, bind the prepared H1-02/H1-07 handoff into MATHCERT, then choose the next search tranche around the verified 86-point campaign leader."
+      "next_action": "Protect R-H 93 tranche, bind the 93 successor handoff into MATHCERT, then separate the 94-bound transfer audit from the targeted 94 construction search."
     },
     {
       "hill_slot": "OM26-H2",
@@ -142,5 +142,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "OM26-H1 now has a Solve-level face-criterion proof, bounded falsification PASS, two independently replayed construction results (58 and 86), and campaign-best-observed 86. These are not best-known, optimality, novelty, competition-acceptance, publication, or MATHCERT-certification claims. OM26-H2 through OM26-H6 remain source-lock pending."
+  "claim_boundary": "OM26-H1 has Solve-verified exact construction results 58, 86, and source-guided reconstruction 93; campaign-best-observed is 93. The 93 rational coordinates are GCL-generated from an externally sourced Bader order type. These are not global best-known, optimality, novelty, official competition, publication, or MATHCERT-certification claims. OM26-H2 through OM26-H6 remain source-lock pending."
 }
