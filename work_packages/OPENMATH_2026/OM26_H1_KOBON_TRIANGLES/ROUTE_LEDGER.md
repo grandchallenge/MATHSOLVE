@@ -9,7 +9,7 @@
 | R-E continuous-to-rational | optimize real parameters, then rationalize exactly | READY | rational candidate survives exact replay | improvements disappear under rationalization |
 | R-F combinatorial/pseudoline | search incidence/order types as proposal space | READY | straight-line rational realization plus exact replay | non-stretchability or realization cost dominates |
 | R-G structured families | parametric/projective constructions | PASS_TRANCHE_1__58 | family yields exact candidates or provable score law | family ceiling/obstruction characterized |
-| R-H literature-guided | ingest known Kobon constructions/bounds | SOURCE-GATED | exact provenance and transferable construction | unverifiable or incompatible representation |
+| R-H literature-guided | reconstruct sourced Bader 93 order type as rational lines | EXECUTION_CANDIDATE__93__H1_07_PENDING | exact order-table match + direct-oracle 93 + AutoLab 93 | source drift, order mismatch, or evaluator discrepancy |
 | R-I CEI | bounded outside-intelligence subproblems | AUDIT-GATED | CEI conformance PASS + separate adjudication | audit drift or result outside claim boundary |
 
 Routes are complementary. Parallel workers should receive different obligations, not copies of “solve Kobon triangles”.

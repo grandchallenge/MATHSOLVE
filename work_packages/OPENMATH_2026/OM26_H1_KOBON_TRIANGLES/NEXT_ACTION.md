@@ -1,18 +1,13 @@
 # OM26-H1 next action
 
-H1-02, the first bounded H1-06 search tranche, and its H1-07 replay are complete.
+The protected Forge literature reconnaissance moved the useful target from blind improvement over 86 to exact reconstruction of the externally reported 93-triangle `n=18` Bader order type.
 
-Current verified internal state:
+R-H now contains an exact rational reconstruction candidate at `candidates/RH_BADER_RECONSTRUCTION_093/solution.json`.
 
-- face criterion: Solve proof complete; bounded falsification PASS; MATHCERT pending;
-- structured exact route R-G: 58 triangles, independently replayed;
-- local exact route R-D: 86 triangles, independently replayed;
-- current label: `campaign-best-observed = 86` at n=18.
+The deterministic gate is:
 
-The exact 86-line arrangement is preserved at `candidates/RD_LOCAL_MUTATION_086/solution.json`. Its SHA-256 is `05a5f519433a0787a96a3f6c5a8cef17fc7f8ab093ccf0c9ab45a2d564ad11d5`.
+> Verify the candidate against the exact published order table, the independent direct-interior oracle, and the authenticated AutoLab public evaluator. Promote it only if all three return concordant evidence for 93.
 
-Next procedural transition:
+The existing 86 candidate remains the protected campaign leader until this H1-07 gate passes. MATHCERT intake for the 86 construction and H1-02 theorem proceeds independently.
 
-> Protect this tranche, bind `MATHCERT_HANDOFF_H1_02_H1_07.md` to the protected Solve commit, and request independent MATHCERT adjudication of the face criterion and the narrow construction claim “this exact n=18 arrangement scores 86.”
-
-After that, the next research tranche should start from the verified 86-point leader while retaining route diversity. No best-known, optimality, novelty, or official AutoLab claim is authorized.
+No best-known, optimality, novelty, or official AutoLab claim is authorized.
