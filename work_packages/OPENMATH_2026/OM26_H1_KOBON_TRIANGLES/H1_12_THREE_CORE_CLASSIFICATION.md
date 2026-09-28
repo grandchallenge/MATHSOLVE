@@ -166,7 +166,7 @@ Here `U=D1-8` and `h<=I-D2=7`. Thus at least 11 lines are clean, and charging gi
 11 <= 2(D1-8)+D1 = 3D1-16.
 ```
 
-Therefore `D1>=9), so necessarily
+Therefore `D1>=9`, so necessarily
 
 ```
 D1=9, U=1.
@@ -190,7 +190,7 @@ Now `U=D1-3` and `h<=I-D2=6`. At least 12 lines are clean, so charging gives
 12 <= 2(D1-3)+D1 = 3D1-6.
 ```
 
-Thus `D1>=6). Therefore every inequality saturates:
+Thus `D1>=6`. Therefore every inequality saturates:
 
 ```
 r_1=r_2=r_3=3
@@ -212,9 +212,9 @@ The preceding arithmetic used only the aggregate charging inequality. The source
 
 Fix one of the three triple cores, say `A`. Let the two core-triangle sides through `A` be `AB` and `AC`, and let `L_A` be the third arrangement line through `A`.
 
-Because the three `D2` core connectors are elementary shared sides, the core triangle `ABC` is itself a triangular face. The third line `L_A` cannot enter the interior angle of `ABC`: doing so would cross the opposite elementary core side. Thus, in cyclic order around `A`, the two inward core rays are adjacent, and the two rays of `L_A` sit immediately outside them.
+Because the three `D2` core connectors are elementary shared sides, their three elementary segments bound the core triangle `ABC`. No arrangement line can enter its interior without crossing one of those elementary boundary segments, except through a core vertex; at a core vertex, the third incident line would then have to leave through the opposite elementary core side. Hence `ABC` is itself a triangular face. In particular, the third line `L_A` cannot enter the interior angle of `ABC`: doing so would cross the opposite elementary core side. Thus, in cyclic order around `A`, the two inward core rays are adjacent, and the two rays of `L_A` sit immediately outside them.
 
-We already know that exactly one of the six sectors at `A` is nontriangular. The two inward core rays are `D2), so the sectors on both sides of each are triangular. Hence the unique nontriangular sector lies among the three exterior sectors.
+We already know that exactly one of the six sectors at `A` is nontriangular. The two inward core rays are `D2`, so the sectors on both sides of each are triangular. Hence the unique nontriangular sector lies among the three exterior sectors.
 
 If it is either exterior sector adjacent to a spoke ray and an outward core-side ray, the two remaining `D1` rays are consecutive. Premise 6 forbids this. Therefore the unique nontriangular sector must be the middle exterior sector, between the two outward continuations of `AB` and `AC`.
 
