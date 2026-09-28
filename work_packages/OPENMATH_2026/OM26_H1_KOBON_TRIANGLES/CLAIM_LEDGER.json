@@ -150,6 +150,18 @@
       ],
       "mathematical_effect": false,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-NEG-002",
+      "text": "H1-13 tranche 2 rescored 15,192 exact one-line wall candidates, retained six frontier variants per line, evaluated 5,508 coordinated two-line combinations, and found no score above 93.",
+      "type": "NEGATIVE_ROUTE_RESULT",
+      "state": "PASS__BOUNDED_SCOPE_ONLY",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_13_TRANCHE2_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36367755769/job/108757467811"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [
