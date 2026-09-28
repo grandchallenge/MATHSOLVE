@@ -347,6 +347,20 @@
       ],
       "mathematical_effect": true,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-013",
+      "text": "Conditional on the named triple-point local fan premise and clean-line charging equality, the higher-count saturated profile-3333 D2=3 star is excluded. The protected separator geometry places the hub inside the leaf triangle; each leaf is then forced to use its two outward side rays as D1, which forces the opposite hub ray to be a third D1 segment, contradicting the normal-form value d1=2.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_SATURATED_HUB_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_3_SATURATED_EQUALITY_EXCLUSION.md",
+        "ci/validate_openmath_h1_12_3333_saturated_equality.py",
+        "ci/test_openmath_h1_12_3333_saturated_equality.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [
