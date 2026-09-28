@@ -1,11 +1,11 @@
 {
-  "schema_version": "0.2.0",
+  "schema_version": "0.3.0",
   "record_type": "GCL_CONTENT_FREEZE",
   "campaign": "OPENMATH-2026-SOURCE-ACQ",
   "operation": "OM26-H2-H7-SOURCE-ACQ",
   "protected_base": "78dfb7479ca521f468d068beeea34c07dc1d0cd0",
-  "maintenance_base": "9dae2e634e54faf002cfada49af037672113fb9e",
-  "assembled_from_head": "8eb79c98efc5b3c6182ac1b92b7231d82d17bd15",
+  "maintenance_base": "7f266ed97b023ef6a50fef93a6b927ef12b04566",
+  "assembled_from_head": "3164fe44b7383cfecede3789a884eefef9f1c709",
   "provider_anchor": "eb5af08b1bb0ae7742dc46786019fe7b034b04ee",
   "programme_anchor": "6fae2b2df9bc0bb180a63c76fc9752656285da02",
   "authoritative_list_receipt": {
@@ -13,40 +13,51 @@
     "git_blob_sha1": "f6c7c7e36aa0657f8eec51da8ce9461af457ee04",
     "normalized_sha256": "a7f6e48a61aaa3b58614e5c7748716f8158147c337b4986c2e9c2d6b603de6f6"
   },
-  "hash_semantics": "Git blob SHA-1 identities over the exact governed source-acquisition and CEX assignment-pickup set. The assignment unit is an exact organizer hill ID from the authenticated unresolved source pool; H2-H7 slot correspondence remains unresolved.",
+  "external_agent_entrypoint": {
+    "path": "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
+    "url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
+    "machine_registry_url": "https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+    "launch_fields": [
+      "ENTRYPOINT_URL",
+      "DISPATCH_ID",
+      "AGENT_REF"
+    ]
+  },
+  "hash_semantics": "Git blob SHA-1 identities over the exact governed source-acquisition and CEX assignment-pickup set. Zero-context launch now requires absolute locators; internal repository shorthand and relative work-package paths are not sufficient agent instructions.",
   "artifacts": {
-    ".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json": "36b3b399a17b33ac32bafe51575df64b2b315f69",
-    ".gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json": "65e50dc448eb9d1f2f824e2f327939ed68cc794f",
+    ".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json": "2398e3183e4098bb466451da53ef5cdb152b09ed",
+    ".gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json": "2594292f2552b8c2c958dd0912d49fb99540e34c",
     "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json": "aa271b43f648bb714cef3e9d910c3187336dcb78",
     "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md": "ade2aa56f25fd091fb9c04a2dfd514bd040441ae",
     "ci/validate_openmath_cex_h2_h7.py": "041fe4c11aac540c004249cea7c7d073a4e416ed",
     "ci/test_openmath_cex_h2_h7.py": "756a9883b88a17be6a5a921c2c08eb68b39295c5",
     ".github/workflows/openmath-h2-h7-cex-source-acq.yml": "654282f74fd9ba357b3c9cd8dcadf1473a0c8012",
-    ".ghos-routing/workflows.json": "ab743e3fbf526a2bfdef5e9730a635fdebac8640",
+    ".ghos-routing/workflows.json": "f06344b613f1f375a718d69df41fc1750d0233ff",
     "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json": "f6c7c7e36aa0657f8eec51da8ce9461af457ee04",
-    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "c4cbe03a69926a14812a51a6be21b658fb00a11b",
-    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "b4cdb97758aa9934bcc514cd558269e22fe87127",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "494219d3377932c22114df99d5f2362c1f1cd6aa",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "26d30ff47b49d21086f4c9ae204ca5ef71b7116b",
     "handoffs/OPENMATH-2026/jobs/OM26-SRC-CLIQUE-CLUSTER-RAMSEY-MULTIPLICITY.md": "fcf68e9124d45882211852f3bda1ff9049b4a368",
     "handoffs/OPENMATH-2026/jobs/OM26-SRC-MATRIX-MULTIPLICATION-TENSOR-3X3.md": "c1918234cb57381c84c18afa667219d05253f023",
     "handoffs/OPENMATH-2026/jobs/OM26-SRC-GROTHENDIECK-CONSTANT-WITNESSES.md": "b40d6b6b0ca092e52bfe2a4d1f00f4708d727b10",
     "handoffs/OPENMATH-2026/jobs/OM26-SRC-COLLATZ-MODULAR-DESCENT.md": "735441444252a3701dd3a0a0a2ab1a63b61f83a9",
     "handoffs/OPENMATH-2026/jobs/OM26-SRC-BUSY-BEAVER-6-CERTIFICATES.md": "4bee3dc61b7cb23931046fbb46d997847a85124f",
     "handoffs/OPENMATH-2026/jobs/OM26-SRC-ERDOS-3.md": "04b7253b49d91bddba8b98aa8cfb555c421deaa4",
-    "ci/validate_openmath_cex_job_board.py": "456a0911f647a2b7d8f99f3567908051b5d87d03",
-    "ci/test_openmath_cex_job_board.py": "f9e690c19d409609bf289df847234703b388459b",
-    ".github/workflows/openmath-cex-job-board.yml": "f2167abeff686b68a7fbe02e88dda023e5fa57fa"
+    "ci/validate_openmath_cex_job_board.py": "801790bb0fc5bba966f93b659b047912c46a7bf2",
+    "ci/test_openmath_cex_job_board.py": "2645b5b37ccefa76fd6bd7d7cd3f5c6c18198ee7",
+    ".github/workflows/openmath-cex-job-board.yml": "7647ce38aba93e71412a44733a36d577b453bfec",
+    "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md": "8c2bd5d6b5a6a6abece49c7676f91fd099d9a921"
   },
   "maintenance_effect": {
-    "added": "Canonical exact-ID CEX assignment registry, human job board, six complete zero-context source-acquisition work packages, lease semantics, exact source-pool binding, and validation.",
-    "changed": "Source acquisition is allocated by exact organizer hill ID rather than unresolved H2-H7 placeholder slot.",
-    "unchanged": "H2-H7 slot correspondence remains null; hill-specific mathematics remains prohibited; H1 remains outside this operation."
+    "corrected": "External zero-context launch no longer relies on internal shorthand such as 'MATHSOLVE #495' or repository-relative paths.",
+    "added": "One absolute agent entrypoint URL, one absolute machine-registry URL, absolute per-assignment work-package URLs, and regression checks enforcing those locators.",
+    "rebased_over": "Protected MATHSOLVE state that already captured authoritative bodies for all six unresolved organizer hill IDs.",
+    "unchanged": "H2-H7 slot correspondence remains null; hill-specific mathematics remains prohibited until source lock plus protected slot binding."
   },
   "invalidation": {
     "governed_artifact_change": "new freeze required",
     "candidate_head_change": "Any subsequent candidate-head change after this freeze invalidates exact-head logical review and required CI evidence.",
-    "provider_anchor_drift_before_source_mutation": "rebind MATHFORGE and classify materiality before source-acquisition mutation",
-    "assignment_lease_change": "A lease transition is a protected registry mutation and must bind assignment_id, dispatch_id, agent_ref, and protected commit.",
+    "assignment_lease_change": "A lease transition is a protected registry mutation. Executable leases must expose zero-context-resolvable dispatch/return locators.",
     "slot_binding_change": "Any organizer-hill to H2-H7 slot binding is a separate protected mutation; list order is never sufficient."
   },
-  "authority_boundary": "This freeze identifies execution-control and assignment-discovery state only. AVAILABLE_FOR_LEASE is not executable by an external agent. Only a protected LEASED record authorizes a worker. No source lock, mathematical claim, certification, or competition submission is created."
+  "authority_boundary": "This freeze governs assignment discovery and launch clarity. It creates no source lock, mathematical claim, certification, or competition submission."
 }
