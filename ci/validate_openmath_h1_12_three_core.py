@@ -62,6 +62,21 @@ def enumerate_feasible():
     for rs in itertools.combinations_with_replacement(range(3, N + 1), 3):
         I = sum(rs)
         S = sum(r * (r - 2) for r in rs)
+
+        # Coarse necessary prune before any local enumeration.
+        #
+        # U >= 0 gives S <= DELTA + D1 + D2.  For q=3, the universal fan
+        # bound gives D1 <= 2I-9 and the simple core graph gives D2 <= 3.
+        # Hence S <= 2I-3, equivalently
+        #
+        #   sum r_i(r_i-4) <= -3.
+        #
+        # This leaves only the genuinely low-multiplicity residuals and avoids
+        # spending time enumerating local counts that the aggregate defect
+        # identity already rules out.
+        if sum(r * (r - 4) for r in rs) > -3:
+            continue
+
         for edges, degrees in core_graphs():
             D2 = len(edges)
             caps = [d1_cap(r, d2) for r, d2 in zip(rs, degrees)]
