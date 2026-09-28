@@ -162,6 +162,31 @@
       ],
       "mathematical_effect": false,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-NEG-003",
+      "text": "H1-13 tranche 3 ran a 300-second topology/concurrency beam from the exact pairwise-nonparallel 93 normalization, visiting 73,591 nodes and 6,654,852 edges over 589 rounds, and produced no proposal above 93.",
+      "type": "NEGATIVE_ROUTE_RESULT",
+      "state": "PASS__BOUNDED_SCOPE_ONLY",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_13_TRANCHE3_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36369052788/job/108761258002"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-001",
+      "text": "Conditional on the protected Forge restricted theorem for pairwise-nonparallel arrangements with at most two finite multiple points, any n=18 hill arrangement with 95 counted triangular faces must, after H1-12 projective no-parallel normalization, have at least three finite multiple points.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_REDUCTION_COMPLETE__RESTRICTED_SOURCE_THEOREM_NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_MULTIPOINT_RESIDUAL.md",
+        "grandchallenge/MATHFORGE@8bcaf84504f9f21076f86ce252e6bb459e9abc87:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/CONTEMPORARY_BOUND_RECON.md"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [
