@@ -204,7 +204,7 @@ def validate() -> list[str]:
     if not intake:
         errors.append('OPENMATH independent contribution intake workflow routing registration missing')
     else:
-        if intake.get('observed_features') != ['OPAQUE_EXECUTION', 'WRITE_CAPABLE']:
+        if intake.get('observed_features') != ['OPAQUE_EXECUTION', 'SECRET_CREDENTIAL', 'WRITE_CAPABLE']:
             errors.append('OPENMATH intake workflow routing features mismatch')
         if intake.get('topology') != 'PERSISTENT_CONTROLLER_REQUIRED' or intake.get('controller_id') != 'GITHUB_ACTIONS':
             errors.append('OPENMATH intake workflow routing topology mismatch')
