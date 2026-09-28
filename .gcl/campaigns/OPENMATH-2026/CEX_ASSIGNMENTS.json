@@ -17,9 +17,11 @@
     "rule": "These six organizer IDs are authoritative members of the unresolved source pool. Their order does not define H2-H7 slot correspondence."
   },
   "discovery": {
-    "human_board": "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
-    "machine_registry": ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
-    "stable_rule": "A zero-context external worker is given this registry path plus one dispatch_id. It resolves only the assignment bound to that dispatch_id."
+    "entrypoint_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
+    "machine_registry_url": "https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+    "human_board_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
+    "operator_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/495",
+    "stable_rule": "A zero-context worker is launched with ENTRYPOINT_URL, DISPATCH_ID, and AGENT_REF as explicit absolute/bootstrap values. It must not be expected to understand repository shorthand such as 'MATHSOLVE #495'."
   },
   "assignment_states": {
     "AVAILABLE_FOR_LEASE": "Visible to the allocator, but not executable by an external worker.",
@@ -32,7 +34,7 @@
     "external_self_claim_allowed": false,
     "allocator": "GCL dispatch/controller or Human Steward through protected repository mutation",
     "atomic_unit": "one assignment_id to one dispatch_id to one agent_ref",
-    "start_rule": "An agent starts only when protected main shows state LEASED and the lease dispatch_id equals the dispatch_id supplied in its launch bootstrap.",
+    "start_rule": "An agent starts only after following the absolute ENTRYPOINT_URL supplied by its launcher and finding exactly one protected LEASED assignment whose dispatch_id and agent_ref match its launch identity.",
     "no_lease_rule": "If no matching protected lease exists, return NO_ACTIVE_LEASE and stop without substantive work.",
     "duplicate_rule": "A second agent must not execute an assignment already LEASED unless a distinct independently-authorized assignment record exists.",
     "release_rule": "Lease release or reassignment requires another protected registry mutation; issue comments or chat text do not alter the lease."
@@ -54,8 +56,9 @@
     "current_math_jobs": 0
   },
   "return_policy": {
-    "rule": "The lease/dispatch record names the exact GitHub return surface and exact result grammar. Assignment discovery alone never authorizes a return location.",
-    "receipt_effect": "Receipt is evidence received, not mathematical admission or certification."
+    "rule": "When an assignment becomes LEASED, the protected lease/dispatch must expose absolute dispatch and return locators. Repository-relative shorthand is insufficient for a zero-context worker.",
+    "receipt_effect": "Receipt is evidence received, not mathematical admission or certification.",
+    "absolute_locator_required_when_leased": true
   },
   "assignments": [
     {
@@ -70,7 +73,9 @@
         "dispatch_id": null,
         "agent_ref": null,
         "dispatch_issue_number": null,
-        "protected_lease_commit": null
+        "protected_lease_commit": null,
+        "dispatch_url": null,
+        "return_url": null
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-SRC-CLIQUE-CLUSTER-RAMSEY-MULTIPLICITY.md",
       "prerequisites": {
@@ -89,7 +94,8 @@
         "ACQUIRED_AUTHORITATIVE_SOURCE_RECORD",
         "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
       ],
-      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments."
+      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments.",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-CLIQUE-CLUSTER-RAMSEY-MULTIPLICITY.md"
     },
     {
       "assignment_id": "OM26-SRC-MATRIX-MULTIPLICATION-TENSOR-3X3",
@@ -103,7 +109,9 @@
         "dispatch_id": null,
         "agent_ref": null,
         "dispatch_issue_number": null,
-        "protected_lease_commit": null
+        "protected_lease_commit": null,
+        "dispatch_url": null,
+        "return_url": null
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-SRC-MATRIX-MULTIPLICATION-TENSOR-3X3.md",
       "prerequisites": {
@@ -122,7 +130,8 @@
         "ACQUIRED_AUTHORITATIVE_SOURCE_RECORD",
         "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
       ],
-      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments."
+      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments.",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-MATRIX-MULTIPLICATION-TENSOR-3X3.md"
     },
     {
       "assignment_id": "OM26-SRC-GROTHENDIECK-CONSTANT-WITNESSES",
@@ -136,7 +145,9 @@
         "dispatch_id": null,
         "agent_ref": null,
         "dispatch_issue_number": null,
-        "protected_lease_commit": null
+        "protected_lease_commit": null,
+        "dispatch_url": null,
+        "return_url": null
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-SRC-GROTHENDIECK-CONSTANT-WITNESSES.md",
       "prerequisites": {
@@ -155,7 +166,8 @@
         "ACQUIRED_AUTHORITATIVE_SOURCE_RECORD",
         "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
       ],
-      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments."
+      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments.",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-GROTHENDIECK-CONSTANT-WITNESSES.md"
     },
     {
       "assignment_id": "OM26-SRC-COLLATZ-MODULAR-DESCENT",
@@ -169,7 +181,9 @@
         "dispatch_id": null,
         "agent_ref": null,
         "dispatch_issue_number": null,
-        "protected_lease_commit": null
+        "protected_lease_commit": null,
+        "dispatch_url": null,
+        "return_url": null
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-SRC-COLLATZ-MODULAR-DESCENT.md",
       "prerequisites": {
@@ -188,7 +202,8 @@
         "ACQUIRED_AUTHORITATIVE_SOURCE_RECORD",
         "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
       ],
-      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments."
+      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments.",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-COLLATZ-MODULAR-DESCENT.md"
     },
     {
       "assignment_id": "OM26-SRC-BUSY-BEAVER-6-CERTIFICATES",
@@ -202,7 +217,9 @@
         "dispatch_id": null,
         "agent_ref": null,
         "dispatch_issue_number": null,
-        "protected_lease_commit": null
+        "protected_lease_commit": null,
+        "dispatch_url": null,
+        "return_url": null
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-SRC-BUSY-BEAVER-6-CERTIFICATES.md",
       "prerequisites": {
@@ -221,7 +238,8 @@
         "ACQUIRED_AUTHORITATIVE_SOURCE_RECORD",
         "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
       ],
-      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments."
+      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments.",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-BUSY-BEAVER-6-CERTIFICATES.md"
     },
     {
       "assignment_id": "OM26-SRC-ERDOS-3",
@@ -235,7 +253,9 @@
         "dispatch_id": null,
         "agent_ref": null,
         "dispatch_issue_number": null,
-        "protected_lease_commit": null
+        "protected_lease_commit": null,
+        "dispatch_url": null,
+        "return_url": null
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-SRC-ERDOS-3.md",
       "prerequisites": {
@@ -254,7 +274,20 @@
         "ACQUIRED_AUTHORITATIVE_SOURCE_RECORD",
         "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
       ],
-      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments."
+      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments.",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-ERDOS-3.md"
     }
-  ]
+  ],
+  "launch_contract": {
+    "required_fields": [
+      "ENTRYPOINT_URL",
+      "DISPATCH_ID",
+      "AGENT_REF"
+    ],
+    "entrypoint_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
+    "missing_identity_behavior": "INVALID_LAUNCH and stop",
+    "no_matching_lease_behavior": "NO_ACTIVE_LEASE and stop",
+    "multiple_matching_leases_behavior": "AMBIGUOUS_LEASE and stop",
+    "repository_discovery_required": false
+  }
 }
