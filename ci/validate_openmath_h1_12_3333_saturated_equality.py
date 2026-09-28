@@ -38,7 +38,9 @@ def leaf_d1_choices():
     allowed = []
     for chosen in itertools.combinations(range(6), 2):
         chosen = set(chosen)
-        if 0 in chosen or 2 in chosen:
+        # Positions 0 and 2 are inward side rays ruled out by charge equality;
+        # position 1 is the fixed D2 hub spoke and cannot be D1.
+        if any(position in chosen for position in (0, 1, 2)):
             continue
         if any(
             i in chosen and (i + 1) % 6 in chosen
