@@ -1,0 +1,30 @@
+{
+  "commit": null,
+  "committed": false,
+  "exclusive_device": null,
+  "files": [],
+  "hill": "collatz-modular-descent",
+  "metrics": [
+    {
+      "direction": "max",
+      "name": "coverage_ppm"
+    },
+    {
+      "direction": "max",
+      "name": "min_descent_ppm"
+    },
+    {
+      "direction": "min",
+      "name": "rule_count"
+    }
+  ],
+  "params": {},
+  "path": "/home/runner/work/MATHSOLVE/MATHSOLVE/.autolab/hills/collatz-modular-descent",
+  "readme": "Find exact accelerated-Collatz descent rules that cover as much unseen odd residue mass as possible.\n\n## Task\n\nThe parent question is the Collatz conjecture. This hill does not ask for a solution of it. It asks for finite, exact certificates that a whole congruence class of positive odd integers strictly decreases after a prescribed number of accelerated odd Collatz steps.\n\nFor odd `n`, one accelerated step is\n\n```\nC(n) = (3n + 1) / 2^v2(3n + 1).\n```\n\nA certificate rule fixes an odd residue class `n ≡ residue (mod 2^modulus_power)` and gives the exact 2-adic valuations encountered by repeated applications of `C`. The evaluator proves that the valuation pattern is stable for every member of the class and that the resulting affine map is strictly decreasing on that entire class.\n\nYour goal is to cover as many secret target residue classes as possible. A target class is covered when it is a subclass of one of your certified rules. Broad rules matter more because they cover more targets. The evaluator checks only submitted data; it never runs submission code.\n\n## Submission format\n\nSubmit a directory containing exactly one UTF-8 JSON file:\n\n```json\n{\n  \"rules\": [\n    {\"modulus_power\": 4, \"residue\": 9, \"exponents\": [2]},\n    {\"modulus_power\": 4, \"residue\": 13, \"exponents\": [3]}\n  ]\n}\n```\n\nEvery rule has:\n\n- `modulus_power`: an integer `k` from 2 through 32;\n- `residue`: an odd integer `r` with `0 < r < 2^k`;\n- `exponents`: a nonempty list `[e1, ..., es]`, where `ei` is the exact value of `v2(3x+1)` at accelerated step `i`.\n\nAt most 512 rules, 24 accelerated steps per rule, and valuation exponents at most 32 are accepted. Duplicate rules are rejected.\n\nThe evaluator requires `k >= 1 + e1 + ... + es`. This makes the full valuation pattern stable across the residue class. It then proves both\n\n```\n3^s < 2^(e1 + ... + es)\nC^s(n) < n for every positive n in the class.\n```\n\nThe two example rules are valid: for `n ≡ 9 (mod 16)`, `C(n) = (3n+1)/4 < n`; for `n ≡ 13 (mod 16)`, `C(n) = (3n+1)/8 < n`.\n\n## Metrics\n\n| metric | direction | meaning |\n| --- | --- | --- |\n| `coverage_ppm` | max | Fraction of hidden target residue classes covered, scaled by 1,000,000. |\n| `min_descent_ppm` | max | Weakest affine contraction among rules that actually cover a hidden target, scaled by 1,000,000. |\n| `rule_count` | min | Number of submitted rules. |\n\nReports are ranked lexicographically. A `coverage_ppm` of 250000 means 25% of the hidden target classes were covered.\n\n## Held-out split\n\nValidation and final scoring use different private target collections. Both use odd residue classes at powers of two between 8 and 12, but their choices and weights are held out. The final score is the test-split score.\n\n## What counts as progress\n\nThis is a compact, machine-checkable component of a modular descent program. A high score is not a proof of the Collatz conjecture. It is an exact collection of descent lemmas that a researcher can independently inspect, combine, or strengthen.\n",
+  "spec_version": 2,
+  "submission": "a directory; see readme for its required contents",
+  "test_mode": "hills eval <dir> -H collatz-modular-descent --final",
+  "tree_hash": null,
+  "version": "0.1.0",
+  "watchdog_timeout_s": 120
+}
