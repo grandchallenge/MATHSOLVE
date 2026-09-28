@@ -42,5 +42,33 @@
     "SURVIVING_COUNTERCASE",
     "EXACT_BLOCKER"
   ],
-  "claim_boundary": "This operation authorizes bounded external mathematical evidence only. Receipt is not admission, certification, optimality, novelty, or competition acceptance."
+  "claim_boundary": "This operation authorizes bounded external mathematical evidence only. Receipt is not admission, certification, optimality, novelty, or competition acceptance.",
+  "governed_artifacts": [
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+    ".gcl/operations/OM26-H1-H1-12-IA-001/OPERATION.json",
+    ".gcl/admission/OM26-H1-H1-12-IA-001/FREEZE.json",
+    "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-H1-H1-12-IA-001.md",
+    "contributions/OPENMATH-2026/OM26-H1/H1-12/dispatches/OM26-H1-H1-12-IA-001.json",
+    "ci/openmath_cex_github_contribution_intake.py",
+    "tests/test_openmath_cex_github_contribution_intake.py",
+    "ci/validate_openmath_cex_job_board.py",
+    "ci/test_openmath_cex_job_board.py",
+    ".github/workflows/openmath-cex-independent-contribution-intake.yml",
+    ".github/workflows/openmath-cex-job-board.yml",
+    ".ghos-routing/workflows.json"
+  ],
+  "admission": {
+    "freeze_manifest": ".gcl/admission/OM26-H1-H1-12-IA-001/FREEZE.json",
+    "validator": "python ci/validate_openmath_cex_job_board.py",
+    "tests": [
+      "python -m unittest ci.test_openmath_cex_job_board",
+      "python -m unittest tests.test_openmath_cex_github_contribution_intake"
+    ],
+    "exact_head_review_required": true,
+    "required_ci_green": true,
+    "protected_merge": true,
+    "protected_readback": true
+  }
 }
