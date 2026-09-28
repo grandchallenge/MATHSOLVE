@@ -742,7 +742,7 @@
   },
   "wp01_decomposition": {
     "manifest": "work_packages/OPENMATH_2026/H2_H7_WP01_DECOMPOSITION.json",
-    "state": "SIX_AVAILABLE_FOR_LEASE__ZERO_LEASED",
+    "state": "PROTECTED_READBACK_CONFIRMED__SIX_AVAILABLE_FOR_LEASE__ZERO_LEASED",
     "assignment_ids": [
       "OM26-H2-WP01",
       "OM26-H3-WP01",
@@ -750,6 +750,9 @@
       "OM26-H5-WP01",
       "OM26-H6-WP01",
       "OM26-H7-WP01"
-    ]
+    ],
+    "protected_merge": "246a51ab4f15c616da06b2e3832f0ab0e102d30a",
+    "completion_receipt": ".gcl/completions/OM26-H2-H7-WP01-DECOMPOSITION/COMPLETION_RECEIPT.json",
+    "successor_boundary": "EXTERNAL_LEASE_AUTHORITY_BOUNDARY"
   }
 }

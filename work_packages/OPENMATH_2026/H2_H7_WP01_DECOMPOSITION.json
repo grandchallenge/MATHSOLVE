@@ -9,7 +9,7 @@
     "solve_source_capture": "4ab1f45089ff6be6f70772d0441fe88afd930f90",
     "solve_source_acquisition_closure": "da4ed0f3a1e884e2196a329ab3a2c6e1bf838a74"
   },
-  "state": "SIX_WP01_CANDIDATES__AVAILABLE_NOT_LEASED",
+  "state": "PROTECTED_READBACK_CONFIRMED__SIX_AVAILABLE_NOT_LEASED",
   "assignments": [
     {
       "assignment_id": "OM26-H2-WP01",
@@ -105,7 +105,11 @@
   "concurrency": {
     "independent": true,
     "external_self_claim_allowed": false,
-    "executable_only_when_leased": true
+    "executable_only_when_leased": true,
+    "available_for_lease": 6,
+    "leased": 0
   },
-  "claim_boundary": "Work-package instantiation only. AVAILABLE_FOR_LEASE is not execution authority; no new mathematical result, competition submission, novelty, or certification effect."
+  "claim_boundary": "Work-package instantiation only. AVAILABLE_FOR_LEASE is not execution authority; no new mathematical result, competition submission, novelty, or certification effect.",
+  "protected_merge": "246a51ab4f15c616da06b2e3832f0ab0e102d30a",
+  "completion_receipt": ".gcl/completions/OM26-H2-H7-WP01-DECOMPOSITION/COMPLETION_RECEIPT.json"
 }
