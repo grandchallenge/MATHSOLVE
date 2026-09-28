@@ -20,6 +20,7 @@ def validate():
     operation = load(f".gcl/operations/{OPERATION}/OPERATION.json")
     prep = load("work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json")
     hills = load("work_packages/OPENMATH_2026/HILL_LANES.json")
+    routing = load(".ghos-routing/workflows.json")
 
     if campaign.get("campaign") != CEX_CAMPAIGN:
         errors.append("campaign id mismatch")
@@ -78,6 +79,19 @@ def validate():
 
     if "OM26-H1" in [x.get("slot") for x in prep_lanes]:
         errors.append("H1 must not be part of H2-H7 source acquisition")
+
+    workflow_path = ".github/workflows/openmath-h2-h7-cex-source-acq.yml"
+    registered = [x.get("path") for x in routing.get("workflows", [])]
+    if registered.count(workflow_path) != 1:
+        errors.append("dedicated CEX workflow must be registered exactly once in GH-OS routing")
+    else:
+        entry = next(x for x in routing["workflows"] if x.get("path") == workflow_path)
+        if entry.get("observed_features") != ["OPAQUE_EXECUTION"]:
+            errors.append("dedicated CEX workflow routing features must be exactly OPAQUE_EXECUTION")
+        if entry.get("topology") != "PERSISTENT_CONTROLLER_REQUIRED":
+            errors.append("dedicated CEX workflow routing topology mismatch")
+        if entry.get("controller_id") != "GITHUB_ACTIONS":
+            errors.append("dedicated CEX workflow must use GITHUB_ACTIONS controller")
 
     return errors
 
