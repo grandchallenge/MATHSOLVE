@@ -95,7 +95,9 @@
     "assignment_registry": ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
     "human_job_board": "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
     "authoritative_list_receipt": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
-    "agent_pickup_rule": "A zero-context worker resolves exactly one protected LEASED assignment by dispatch_id; without a matching lease it returns NO_ACTIVE_LEASE and stops."
+    "agent_pickup_rule": "Launcher supplies absolute ENTRYPOINT_URL plus DISPATCH_ID and AGENT_REF. Worker resolves exactly one protected LEASED assignment matching both identity values; otherwise it stops.",
+    "external_agent_entrypoint_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
+    "machine_registry_url": "https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
   },
   "state_resolution": {
     "entry_snapshot_rule": "The frontier is the six unresolved source-lock slots OM26-H2 through OM26-H7; H1 is explicitly excluded from this subcampaign.",
