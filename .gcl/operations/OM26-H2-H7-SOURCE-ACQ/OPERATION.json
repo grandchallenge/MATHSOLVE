@@ -1,0 +1,161 @@
+{
+  "schema_version": "0.1.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-H2-H7-SOURCE-ACQ",
+  "campaign": "OPENMATH-2026-SOURCE-ACQ",
+  "parent_campaign": "OPENMATH-2026",
+  "issue": "grandchallenge/MATHFORGE#282",
+  "programme_issue": "grandchallenge/MATH-PROGRAMME#1072",
+  "solve_issue": "grandchallenge/MATHSOLVE#454",
+  "protected_base": "78dfb7479ca521f468d068beeea34c07dc1d0cd0",
+  "provider_anchor": "eb5af08b1bb0ae7742dc46786019fe7b034b04ee",
+  "programme_anchor": "6fae2b2df9bc0bb180a63c76fc9752656285da02",
+  "constitutional_anchor": "cacfe1f749b91a335e1d1734352cecff56bad7c1",
+  "completion_enforcement_anchor": "grandchallenge/gcl-standards@efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
+  "objective": {
+    "retire_frontier": "PENDING_AUTHORITATIVE_SOURCE_LOCKS_OM26_H2_H7",
+    "description": "Acquire organizer-authoritative records for OM26-H2 through OM26-H7 in parallel, bind each successful lane to an exact protected MATHFORGE source-lock packet, and release only successfully locked lanes for subsequent hill-specific Solve work."
+  },
+  "parallel_lanes": [
+    {
+      "slot": "OM26-H2",
+      "lease_id": "OM26-H2-SOURCE-ACQ",
+      "initial_state": "PENDING_AUTHORITATIVE_ACQUISITION",
+      "terminal_success": "PROTECTED_MATHFORGE_SOURCE_LOCK",
+      "terminal_block": "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
+    },
+    {
+      "slot": "OM26-H3",
+      "lease_id": "OM26-H3-SOURCE-ACQ",
+      "initial_state": "PENDING_AUTHORITATIVE_ACQUISITION",
+      "terminal_success": "PROTECTED_MATHFORGE_SOURCE_LOCK",
+      "terminal_block": "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
+    },
+    {
+      "slot": "OM26-H4",
+      "lease_id": "OM26-H4-SOURCE-ACQ",
+      "initial_state": "PENDING_AUTHORITATIVE_ACQUISITION",
+      "terminal_success": "PROTECTED_MATHFORGE_SOURCE_LOCK",
+      "terminal_block": "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
+    },
+    {
+      "slot": "OM26-H5",
+      "lease_id": "OM26-H5-SOURCE-ACQ",
+      "initial_state": "PENDING_AUTHORITATIVE_ACQUISITION",
+      "terminal_success": "PROTECTED_MATHFORGE_SOURCE_LOCK",
+      "terminal_block": "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
+    },
+    {
+      "slot": "OM26-H6",
+      "lease_id": "OM26-H6-SOURCE-ACQ",
+      "initial_state": "PENDING_AUTHORITATIVE_ACQUISITION",
+      "terminal_success": "PROTECTED_MATHFORGE_SOURCE_LOCK",
+      "terminal_block": "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
+    },
+    {
+      "slot": "OM26-H7",
+      "lease_id": "OM26-H7-SOURCE-ACQ",
+      "initial_state": "PENDING_AUTHORITATIVE_ACQUISITION",
+      "terminal_success": "PROTECTED_MATHFORGE_SOURCE_LOCK",
+      "terminal_block": "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
+    }
+  ],
+  "acceptable_dispositions": [
+    "CLOSED",
+    "BLOCKED"
+  ],
+  "candidate_disposition": null,
+  "scope": {
+    "repositories": [
+      "grandchallenge/MATHSOLVE",
+      "grandchallenge/MATHFORGE"
+    ],
+    "may_author_source_candidate": true,
+    "may_author_hill_mathematics": false,
+    "may_open_pull_request": true,
+    "may_repair_candidate": true,
+    "may_run_or_replay_ci": true,
+    "may_merge_after_declared_gates": true,
+    "may_release_solve_lane_only_after_protected_forge_lock": true,
+    "may_certify": false,
+    "may_submit_competition_entry": false
+  },
+  "completion_requires": [
+    "per_slot_authoritative_acquisition_or_precise_blocker",
+    "exact_external_identity_for_each_closed_slot",
+    "exact_statement_capture_for_each_closed_slot",
+    "evaluator_or_checker_capture_when_available",
+    "protected_mathforge_source_lock_for_each_closed_slot",
+    "solve_lane_rebind_for_each_closed_slot",
+    "preflight_pass",
+    "content_freeze",
+    "exact_head_adversary_review",
+    "exact_head_referee_review",
+    "required_ci_green",
+    "protected_merge",
+    "protected_readback",
+    "completion_receipt"
+  ],
+  "governed_artifacts": [
+    ".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json",
+    ".gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json",
+    ".gcl/admission/OM26-H2-H7-SOURCE-ACQ/FREEZE.json",
+    "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json",
+    "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md",
+    "ci/validate_openmath_cex_h2_h7.py",
+    "ci/test_openmath_cex_h2_h7.py",
+    ".github/workflows/openmath-h2-h7-cex-source-acq.yml",
+    ".ghos-routing/workflows.json"
+  ],
+  "provider_outputs": {
+    "repository": "grandchallenge/MATHFORGE",
+    "root": "reports/discovery/openmath_2026/hills/",
+    "ledger": "reports/discovery/openmath_2026/hill_source_locks.json",
+    "required_packet": [
+      "SOURCE_LOCK.json",
+      "STATEMENT.md",
+      "PROBLEM_CARD.md",
+      "SOURCE_MAP.md",
+      "STATUS_TRIAGE.md",
+      "RECONNAISSANCE_LEDGER",
+      "FAILURE_RISKS",
+      "SUGGESTED_WP01",
+      "CERTIFICATION_ROUTE_SKETCH"
+    ]
+  },
+  "admission": {
+    "freeze_manifest": ".gcl/admission/OM26-H2-H7-SOURCE-ACQ/FREEZE.json",
+    "preflight_command": "python ci/validate_openmath_cex_h2_h7.py",
+    "review_invalidation": "Any governed-artifact or candidate-head change invalidates exact-head review and required CI evidence. Any material MATHFORGE source-ledger change requires a provider rebind before acquisition mutation."
+  },
+  "successor_policy": {
+    "hill_specific_solve_package_allowed_only_after": "PROTECTED_MATHFORGE_SOURCE_LOCK_FOR_THAT_SLOT",
+    "source_reconnaissance_alone_is_not_solve_release": true,
+    "maintenance_is_not_frontier_closure": true
+  },
+  "stop_only_on": [
+    "governance_boundary",
+    "authority_boundary",
+    "authentication_boundary",
+    "safety_boundary",
+    "materially_changed_source_state",
+    "substantive_evidentiary_boundary"
+  ],
+  "recoverable_events_are_not_stop_conditions": [
+    "connector_failure",
+    "ci_failure",
+    "logging_failure",
+    "formatting_failure",
+    "source_access_failure",
+    "cli_install_failure",
+    "routing_registration_failure"
+  ],
+  "claim_firewall": {
+    "unresolved_hill_identity_known": false,
+    "unresolved_hill_statement_known": false,
+    "hill_specific_solve_release_without_forge_lock": false,
+    "event_prose_is_source_lock": false,
+    "autolab_score_is_certification": false,
+    "mathcert_certification": false
+  }
+}
