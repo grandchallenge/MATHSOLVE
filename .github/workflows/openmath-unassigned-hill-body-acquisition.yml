@@ -88,17 +88,30 @@ jobs:
                   raise SystemExit(f"credential material detected in {source_id} describe output")
               payload = json.loads(raw)
               canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
-              digest = hashlib.sha256(canonical).hexdigest()
+              describe_digest = hashlib.sha256(canonical).hexdigest()
+
+              content_payload = dict(payload)
+              content_payload.pop("path", None)
+              content_payload.pop("commit", None)
+              content_canonical = json.dumps(
+                  content_payload,
+                  sort_keys=True,
+                  separators=(",", ":"),
+                  ensure_ascii=False,
+              ).encode()
+              content_digest = hashlib.sha256(content_canonical).hexdigest()
+
               manifest.append({
                   "source_id": source_id,
                   "hill": payload.get("hill"),
                   "version": payload.get("version"),
                   "spec_version": payload.get("spec_version"),
                   "tree_hash": payload.get("tree_hash"),
-                  "commit": payload.get("commit"),
-                  "sha256_canonical_json": digest,
+                  "observed_commit": payload.get("commit"),
+                  "sha256_describe_json": describe_digest,
+                  "sha256_content_identity": content_digest,
               })
-              print(f"OPENMATH_BODY_BEGIN {source_id} {digest}")
+              print(f"OPENMATH_BODY_BEGIN {source_id} {describe_digest} {content_digest}")
               print(json.dumps(payload, sort_keys=True, ensure_ascii=False))
               print(f"OPENMATH_BODY_END {source_id}")
 
