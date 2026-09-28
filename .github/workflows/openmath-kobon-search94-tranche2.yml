@@ -66,7 +66,8 @@ jobs:
 
       - name: Pull public Kobon hill
         if: steps.search.outputs.found == 'true'
-        run: "$HOME/.local/bin/autolab" hills pull alejandrozu/kobon-triangles
+        run: |
+          "$HOME/.local/bin/autolab" hills pull alejandrozu/kobon-triangles
 
       - name: AutoLab H1-07 replay
         if: steps.search.outputs.found == 'true'
