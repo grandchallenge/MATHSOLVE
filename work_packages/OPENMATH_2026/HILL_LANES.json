@@ -47,14 +47,14 @@
       "obligations": {
         "semantic_fidelity": "BASELINE_CONCORDANCE_PASS",
         "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
-        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_GE_4_RESIDUAL_SOURCE_CONDITIONAL",
-        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_INTAKE_PROTECTED__H1_12_Q_LE_3_EXCLUDED_SOURCE_CONDITIONAL",
+        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_LE_3_EXCLUDED_SOURCE_CONDITIONAL__Q4_FIVE_PROFILE_RESIDUAL",
+        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_Q4_PROFILES_3333_3334_3335_3344_3444_SOURCE_CONDITIONAL",
         "exact_computation": "H1_13_TRANCHES1_2_3_COMPLETE__NO_94__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
         "mathcert_handoff": "H1_02_AND_86_INTAKE_PROTECTED__93_SUCCESSOR_INTAKE_PROTECTED__CERT_EXECUTION_PENDING"
       },
-      "next_action": "H1-12: derive a q>=4 multi-core incidence/discharging inequality, with special attention to triple and quadruple cores. Do not reopen broad topology search."
+      "next_action": "Resolve dense q=4 profiles first: 3335 and 3444 require D2=6; 3344 requires D2>=5. Keep 3333 and 3334 separate. In parallel retain q>=5 as a distinct residual; do not resume generic search."
     },
     {
       "hill_slot": "OM26-H2",
@@ -159,5 +159,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. H1-13 tranches 1–3 are bounded negatives only. Parallelism is eliminated. Conditional on protected source-scoped clean-line charging, endpoint-capacity, and local fan premises, a 95 witness with q<=3 is excluded; the live residual is q>=4. The q=3 arithmetic classification is independently replayed in Solve CI, but the geometric premises are not independently certified. No hill-global <=94, optimality, or certification inference is permitted. Campaign cardinality is seven; OM26-H2 through OM26-H7 remain source-lock pending."
+  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. Protected Forge source audit gives unrestricted 93..95. Solve has removed parallelism and, conditional on the named source-scoped charging/fan premises, excluded q<=3 from a 95 witness. The q=4 case is now restricted to multiplicity profiles 3333,3334,3335,3344,3444 with minimum D2 values 1,3,6,5,6; q>=5 remains open. No bounded negative search, source-conditional reduction, or intake admission is an upper-bound or certification claim."
 }
