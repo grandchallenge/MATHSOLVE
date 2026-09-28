@@ -1,63 +1,59 @@
 {
-  "schema_version": "0.3.0",
+  "schema_version": "0.4.0",
   "record_type": "GCL_CONTENT_FREEZE",
   "campaign": "OPENMATH-2026-SOURCE-ACQ",
   "operation": "OM26-H2-H7-SOURCE-ACQ",
-  "protected_base": "78dfb7479ca521f468d068beeea34c07dc1d0cd0",
-  "maintenance_base": "4ab1f45089ff6be6f70772d0441fe88afd930f90",
-  "assembled_from_head": "2104ff3dff9dc6343f8af06ca83cded23724ae4f",
-  "provider_anchor": "eb5af08b1bb0ae7742dc46786019fe7b034b04ee",
-  "programme_anchor": "6fae2b2df9bc0bb180a63c76fc9752656285da02",
+  "protected_base": "fd090a1f2d2730fd17a20afbba5555fb52800dd0",
+  "assembled_from_head": "e7813f718bc9909b0e5af3a8e7be1063b1e16d91",
+  "provider_anchor": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+  "provider_evidence": {
+    "source_lock_ledger_blob": "2334bb7e67b5863c2110b6e21b6e47cfd5061d4d",
+    "semantic_pack_blob": "aaf8aa9b65d2218943b5dc9f3840cb16751a1ef0",
+    "semantic_readback_blob": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a"
+  },
   "authoritative_list_receipt": {
     "path": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
     "git_blob_sha1": "f6c7c7e36aa0657f8eec51da8ce9461af457ee04",
     "normalized_sha256": "a7f6e48a61aaa3b58614e5c7748716f8158147c337b4986c2e9c2d6b603de6f6"
   },
-  "external_agent_entrypoint": {
-    "path": "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
-    "url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
-    "machine_registry_url": "https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
-    "launch_fields": [
-      "ENTRYPOINT_URL",
-      "DISPATCH_ID",
-      "AGENT_REF"
-    ]
-  },
-  "hash_semantics": "Git blob SHA-1 identities over the exact governed source-acquisition and CEX assignment-pickup set. Zero-context launch now requires absolute locators; internal repository shorthand and relative work-package paths are not sufficient agent instructions.",
+  "hash_semantics": "Git blob SHA-1 identities over the exact H2-H7 provider-import candidate. The freeze imports protected provider identity and semantics but intentionally leaves new H2-H7 mathematical assignment count at zero pending protected Solve merge/readback.",
   "artifacts": {
-    ".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json": "2398e3183e4098bb466451da53ef5cdb152b09ed",
-    ".gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json": "2594292f2552b8c2c958dd0912d49fb99540e34c",
-    "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json": "aa271b43f648bb714cef3e9d910c3187336dcb78",
+    ".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json": "7648e0f8432a0fceac0dd06d40b95a9026ad1e6b",
+    ".gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json": "4b12fe31c9d53e45497cef9d05c39a0239b003d3",
+    "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json": "26d9e71f5069ddee8e331fc0b1ebcaaf06af491f",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "656e4f8d512cace8dcaea0a3a6dd3a47f825fa41",
+    "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json": "3ccde8579f147d3b1de0907857fadda925e52ebe",
+    ".gcl/completions/OM26-H2-H7-SOURCE-ACQ/COMPLETION_RECEIPT.json": "0f64cb296d35a5b0141d97344a77985a37f75804",
+    "ci/validate_openmath_cex_h2_h7.py": "b05aced4db2760f722ecd9ecc080af4660c0adb2",
+    "ci/test_openmath_cex_h2_h7.py": "104ebffb5da6cd8141b8a13d890d49c218c5379b",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "7adad5beb735a408e62501e8731df62cd61954ae",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "9636598b7be45ebdea639c634beb9896653847fe",
+    "ci/validate_openmath_cex_job_board.py": "fa2151eae0b56f81bd81dda90b43f8f4f486656d",
+    "ci/test_openmath_cex_job_board.py": "2bc019a410169581f833863429f8d1e34c71b85d",
     "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md": "ade2aa56f25fd091fb9c04a2dfd514bd040441ae",
-    "ci/validate_openmath_cex_h2_h7.py": "041fe4c11aac540c004249cea7c7d073a4e416ed",
-    "ci/test_openmath_cex_h2_h7.py": "756a9883b88a17be6a5a921c2c08eb68b39295c5",
     ".github/workflows/openmath-h2-h7-cex-source-acq.yml": "654282f74fd9ba357b3c9cd8dcadf1473a0c8012",
-    ".ghos-routing/workflows.json": "2a745f7d848e2f0ec0c9fcddd7a2cdf004c8101d",
+    ".ghos-routing/workflows.json": "835a2cd121bb1e623cd83be2ef66b4e306aea26a",
     "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json": "f6c7c7e36aa0657f8eec51da8ce9461af457ee04",
-    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "494219d3377932c22114df99d5f2362c1f1cd6aa",
-    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "26d30ff47b49d21086f4c9ae204ca5ef71b7116b",
     "handoffs/OPENMATH-2026/jobs/OM26-SRC-CLIQUE-CLUSTER-RAMSEY-MULTIPLICITY.md": "fcf68e9124d45882211852f3bda1ff9049b4a368",
     "handoffs/OPENMATH-2026/jobs/OM26-SRC-MATRIX-MULTIPLICATION-TENSOR-3X3.md": "c1918234cb57381c84c18afa667219d05253f023",
     "handoffs/OPENMATH-2026/jobs/OM26-SRC-GROTHENDIECK-CONSTANT-WITNESSES.md": "b40d6b6b0ca092e52bfe2a4d1f00f4708d727b10",
     "handoffs/OPENMATH-2026/jobs/OM26-SRC-COLLATZ-MODULAR-DESCENT.md": "735441444252a3701dd3a0a0a2ab1a63b61f83a9",
     "handoffs/OPENMATH-2026/jobs/OM26-SRC-BUSY-BEAVER-6-CERTIFICATES.md": "4bee3dc61b7cb23931046fbb46d997847a85124f",
     "handoffs/OPENMATH-2026/jobs/OM26-SRC-ERDOS-3.md": "04b7253b49d91bddba8b98aa8cfb555c421deaa4",
-    "ci/validate_openmath_cex_job_board.py": "801790bb0fc5bba966f93b659b047912c46a7bf2",
-    "ci/test_openmath_cex_job_board.py": "2645b5b37ccefa76fd6bd7d7cd3f5c6c18198ee7",
-    ".github/workflows/openmath-cex-job-board.yml": "7647ce38aba93e71412a44733a36d577b453bfec",
+    ".github/workflows/openmath-cex-job-board.yml": "a3b87a22c9494658a607aeaa4458e099bc4b6680",
     "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md": "8c2bd5d6b5a6a6abece49c7676f91fd099d9a921"
   },
-  "maintenance_effect": {
-    "corrected": "External zero-context launch no longer relies on internal shorthand such as 'MATHSOLVE #495' or repository-relative paths.",
-    "added": "One absolute agent entrypoint URL, one absolute machine-registry URL, absolute per-assignment work-package URLs, and regression checks enforcing those locators.",
-    "rebased_over": "Protected MATHSOLVE state that already captured authoritative bodies and public hill source files/evaluators for all six unresolved organizer hill IDs.",
-    "unchanged": "H2-H7 slot correspondence remains null; hill-specific mathematics remains prohibited until source lock plus protected slot binding."
+  "transition_effect": {
+    "closed": "The six source-acquisition assignment records are closed and bound to exact H2-H7 source identities.",
+    "imported": "Protected MATHFORGE source locks, slot binding, semantic packs, evaluator contracts, status triage, and provider readback are staged in Solve.",
+    "blocked": "H2-H7 mathematical assignment creation remains blocked until this Solve import is protected and read back.",
+    "unchanged": "The active OM26-H1 mathematical lease remains outside this operation and is preserved."
   },
   "invalidation": {
     "governed_artifact_change": "new freeze required",
-    "candidate_head_change": "Any subsequent candidate-head change after this freeze invalidates exact-head logical review and required CI evidence.",
-    "assignment_lease_change": "A lease transition is a protected registry mutation. Executable leases must expose zero-context-resolvable dispatch/return locators.",
-    "slot_binding_change": "Any organizer-hill to H2-H7 slot binding is a separate protected mutation; list order is never sufficient."
+    "candidate_head_change": "Any governed-artifact change after this freeze invalidates exact-head logical review and CI evidence.",
+    "provider_change": "Any change to the protected MATHFORGE release identities requires a fresh provider rebind.",
+    "mathematical_release_change": "Any H2-H7 solve_release transition requires protected import readback and a separate protected mutation."
   },
-  "authority_boundary": "This freeze governs assignment discovery and launch clarity. It creates no source lock, mathematical claim, certification, or competition submission."
+  "authority_boundary": "This freeze admits provider identity into Solve only. It does not create H2-H7 mathematical work, competition submission authority, novelty, or certification."
 }
