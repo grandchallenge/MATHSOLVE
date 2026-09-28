@@ -130,6 +130,10 @@ jobs:
         run: |
           python ci/validate_openmath_h1_12_q5_profiles.py
           python -m unittest ci/test_openmath_h1_12_q5_profiles.py -v
+      - name: Validate OPENMATH H1-12 q5 saturation reduction
+        run: |
+          python ci/validate_openmath_h1_12_q5_saturation.py
+          python -m unittest ci/test_openmath_h1_12_q5_saturation.py -v
       - name: Validate recursive campaign manifests and Cert boundaries
         run: |
           python ci/validate_campaign_manifests.py
