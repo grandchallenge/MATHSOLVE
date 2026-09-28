@@ -4,7 +4,7 @@
   "campaign_id": "OPENMATH-2026",
   "hill_slot": "OM26-H1",
   "obligation": "H1-12",
-  "state": "Q_GE_5_OR_Q4_3333_5_NORMAL_FORMS__ONE_D2_3_EQUALITY_FORM__SOURCE_CONDITIONAL",
+  "state": "Q_GE_5_OR_Q4_3333_4_SLACK_FORMS_PLUS_TWO_EQUALITY_ORIENTATION_TYPES__SOURCE_CONDITIONAL",
   "proved_reduction": {
     "statement": "Any finite hill arrangement and any finite set of its counted bounded triangular faces can be projectively transformed to an affine arrangement with no parallel line pairs while preserving all selected counted bounded triangular faces.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
@@ -13,14 +13,14 @@
   },
   "remaining_gap": {
     "simple_bound_value": 94,
-    "issue": "Conditional on the named source-scoped premises, q=4 is reduced to five profile-3333 normal forms / 37 labeled states. Both star-shaped D2=3 equality forms are excluded; the D2=3 triangle-plus-isolated equality form remains, together with positive-slack D2<=3 forms. q>=5 remains open.",
-    "target": "Resolve the D2=3 triangle-plus-isolated equality form next, then treat the positive-slack D2<=3 forms; keep q>=5 separate."
+    "issue": "Conditional on the named source-scoped premises, q=4 is reduced to four positive-slack profile-3333 arithmetic forms plus the final K3+isolated equality form, which is now reduced geometrically to two orientation types: cyclic (1,1,1) and doubled-edge (2,1,0). q>=5 remains open.",
+    "target": "Analyze the doubled-edge triangle-isolated equality type first, then the cyclic type; keep the four positive-slack D2<=3 forms and q>=5 separate."
   },
   "current_source_interval": {
     "lower": 93,
     "upper": 95
   },
-  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, q<=3 is excluded and q=4 is reduced to five profile-3333 normal forms / 37 labeled states; only one charge-equality form remains. No hill-global <=94, optimality, or MATHCERT claim.",
+  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, the sole remaining charge-equality arithmetic form has a central D2 triangular face, an exterior isolated core, exactly nine core-containing lines, and only two edge-selection orientation types. No hill-global <=94, optimality, or MATHCERT claim.",
   "source_conditional_reduction": {
     "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
@@ -125,6 +125,15 @@
     "finite_replay": "ci/validate_openmath_h1_12_3333_saturated_equality.py",
     "independent_component": "interior-hub consequence, leaf ray-order classification, and forced-third-D1 contradiction",
     "source_scoped_component": "triple-point local fan premise and clean-line charging equality",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3333_triangle_isolated_normal_form": {
+    "statement": "The D2=3 K3+isolated charge-equality form forces a central counted D2 triangle, an exterior isolated triple core sharing no core line with it, and exactly two edge-selection orientation types: cyclic (1,1,1) or doubled-edge (2,1,0).",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_TRIANGLE_ISOLATED_NORMAL_FORM.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3333_triangle_isolated.py",
+    "independent_component": "elementary-segment exclusion of the between-D2 mechanism, central-face/exterior-core consequences, and two-type quotient",
+    "source_scoped_component": "triple-point local fan premise and clean-line charge equality",
     "mathematical_effect": true,
     "certification_effect": false
   }
