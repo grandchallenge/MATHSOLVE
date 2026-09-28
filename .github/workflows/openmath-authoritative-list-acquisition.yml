@@ -1,0 +1,74 @@
+name: OPENMATH authoritative list acquisition
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/openmath-authoritative-list-acquisition.yml"
+      - ".ghos-routing/workflows.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  acquire-openmath-list:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact subject
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Assert exact subject checkout
+        shell: bash
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+
+      - name: Install official AutoLab CLI
+        run: |
+          set -euo pipefail
+          curl -fsSL https://app.autolab.ai/install.sh -o /tmp/autolab-install.sh
+          sha256sum /tmp/autolab-install.sh
+          sh /tmp/autolab-install.sh
+          "$HOME/.local/bin/autolab" --version
+
+      - name: Acquire organizer-authoritative OpenMath list
+        env:
+          AUTOLAB_TOKEN: ${{ secrets.AUTOLAB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$AUTOLAB_TOKEN" ]; then
+            echo "AUTOLAB_AUTH_BLOCKER=repository secret AUTOLAB_TOKEN is unavailable"
+            exit 42
+          fi
+
+          "$HOME/.local/bin/autolab" login --token "$AUTOLAB_TOKEN" >/dev/null
+          "$HOME/.local/bin/autolab" lists show alejandrozu/openmath > /tmp/openmath-list.raw
+
+          python - <<'PY'
+          import hashlib
+          import os
+          import pathlib
+          import re
+
+          raw = pathlib.Path("/tmp/openmath-list.raw").read_bytes()
+          token = os.environ["AUTOLAB_TOKEN"].encode()
+          if token and token in raw:
+              raise SystemExit("credential material detected in provider output")
+
+          text = raw.decode("utf-8", errors="strict")
+          text = re.sub(r"\x1b\[[0-?]*[ -/]*[@-~]", "", text)
+          normalized = text.replace("\r\n", "\n").replace("\r", "\n")
+          if not normalized.endswith("\n"):
+              normalized += "\n"
+
+          digest = hashlib.sha256(normalized.encode()).hexdigest()
+          print("OPENMATH_LIST_SOURCE=autolab lists show alejandrozu/openmath")
+          print("OPENMATH_LIST_SHA256=" + digest)
+          print("OPENMATH_LIST_BEGIN")
+          print(normalized, end="")
+          print("OPENMATH_LIST_END")
+          PY
