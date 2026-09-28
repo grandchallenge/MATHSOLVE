@@ -86,6 +86,10 @@ jobs:
         run: |
           python ci/validate_openmath_h1_12_3334_d2_5.py
           python -m unittest ci/test_openmath_h1_12_3334_d2_5.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 normal form
+        run: |
+          python ci/validate_openmath_h1_12_3333_normal_form.py
+          python -m unittest ci/test_openmath_h1_12_3333_normal_form.py -v
       - name: Validate recursive campaign manifests and Cert boundaries
         run: |
           python ci/validate_campaign_manifests.py
