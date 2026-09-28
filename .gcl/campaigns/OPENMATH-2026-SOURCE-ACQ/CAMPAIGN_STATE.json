@@ -18,7 +18,8 @@
     "certification_boundary": "grandchallenge/MATHCERT@8a2610215989bec15474f0a088945c0a1b6d8172",
     "programme_campaign_binding": "grandchallenge/MATH-PROGRAMME:governance/openmath_2026_campaign_binding.json",
     "forge_source_lock_ledger": "grandchallenge/MATHFORGE:reports/discovery/openmath_2026/hill_source_locks.json",
-    "solve_hill_lanes": "grandchallenge/MATHSOLVE:work_packages/OPENMATH_2026/HILL_LANES.json"
+    "solve_hill_lanes": "grandchallenge/MATHSOLVE:work_packages/OPENMATH_2026/HILL_LANES.json",
+    "authoritative_list_receipt": "grandchallenge/MATHSOLVE:work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json"
   },
   "selected_target": {
     "id": "OM26-H2-H7",
@@ -27,7 +28,8 @@
   },
   "protected_claims": [
     "OM26-H1 is outside this CEX subcampaign and remains governed by the existing OPENMATH-2026 Solve lane.",
-    "OM26-H2 through OM26-H7 have no admitted exact hill identity or statement until protected MATHFORGE source locks exist."
+    "An authenticated organizer-list receipt establishes the six exact unresolved organizer hill IDs as a source pool.",
+    "OM26-H2 through OM26-H7 retain null exact_hill_id and statement locks; organizer-list position does not establish slot correspondence."
   ],
   "current_operation": "OM26-H2-H7-SOURCE-ACQ",
   "current_frontier": {
@@ -89,7 +91,11 @@
     "preparation_ledger": "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json",
     "hill_lane_ledger": "work_packages/OPENMATH_2026/HILL_LANES.json",
     "preflight": "python ci/validate_openmath_cex_h2_h7.py",
-    "completion_receipt_surface": ".gcl/completions/OM26-H2-H7-SOURCE-ACQ/COMPLETION_RECEIPT.json"
+    "completion_receipt_surface": ".gcl/completions/OM26-H2-H7-SOURCE-ACQ/COMPLETION_RECEIPT.json",
+    "assignment_registry": ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+    "human_job_board": "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
+    "authoritative_list_receipt": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
+    "agent_pickup_rule": "A zero-context worker resolves exactly one protected LEASED assignment by dispatch_id; without a matching lease it returns NO_ACTIVE_LEASE and stops."
   },
   "state_resolution": {
     "entry_snapshot_rule": "The frontier is the six unresolved source-lock slots OM26-H2 through OM26-H7; H1 is explicitly excluded from this subcampaign.",
