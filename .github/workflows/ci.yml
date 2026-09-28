@@ -66,6 +66,10 @@ jobs:
         run: |
           python ci/validate_openmath_h1_12_four_core.py
           python -m unittest ci/test_openmath_h1_12_four_core.py -v
+      - name: Validate OPENMATH H1-12 saturated-core reduction
+        run: |
+          python ci/validate_openmath_h1_12_saturated_core.py
+          python -m unittest ci/test_openmath_h1_12_saturated_core.py -v
       - name: Validate recursive campaign manifests and Cert boundaries
         run: |
           python ci/validate_campaign_manifests.py
