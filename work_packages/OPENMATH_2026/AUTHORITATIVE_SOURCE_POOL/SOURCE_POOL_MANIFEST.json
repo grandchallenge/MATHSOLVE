@@ -8,7 +8,21 @@
     "workflow_job_id": 108902045118,
     "subject_head": "e910c6c94f03496f60ebc8c0bf0a92fcd5fcfcfe",
     "command_pattern": "autolab hills pull <source_id>; hills==0.11.0 describe <hill>",
-    "authenticated": true
+    "authenticated": true,
+    "replays": [
+      {
+        "workflow_run_id": 36414432872,
+        "workflow_job_id": 108902045118,
+        "subject_head": "e910c6c94f03496f60ebc8c0bf0a92fcd5fcfcfe",
+        "role": "INITIAL_BODY_ACQUISITION"
+      },
+      {
+        "workflow_run_id": 36415368771,
+        "workflow_job_id": 108905122472,
+        "subject_head": "597a3aab379af479980447de21f36bf45aa4aebf",
+        "role": "STABLE_CONTENT_HASH_REPLAY"
+      }
+    ]
   },
   "entries": [
     {
@@ -28,11 +42,14 @@
           "name": "density_ppt"
         }
       ],
-      "canonical_describe_sha256": "b5731ecd90fa3936d8d7e241702760e20b7dc9c1dd8752aa520d251f6c85c08d",
       "describe_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/clique-cluster-ramsey-multiplicity/DESCRIBE.json",
       "readme_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/clique-cluster-ramsey-multiplicity/README.md",
       "slot": null,
-      "solve_release": false
+      "solve_release": false,
+      "initial_canonical_describe_sha256": "b5731ecd90fa3936d8d7e241702760e20b7dc9c1dd8752aa520d251f6c85c08d",
+      "latest_canonical_describe_sha256": "b5731ecd90fa3936d8d7e241702760e20b7dc9c1dd8752aa520d251f6c85c08d",
+      "stable_content_sha256": "2cf4844325a850cbef91544d1d65f5ee23ccee2b5fd0dcf691f8659a56699b64",
+      "latest_observed_commit": null
     },
     {
       "source_id": "alejandrozu/matrix-multiplication-tensor-3x3",
@@ -51,11 +68,14 @@
           "name": "support"
         }
       ],
-      "canonical_describe_sha256": "398555b297df219bd496a1767daada12e26dcf0b2210d364ddfb36a0e5bb7d21",
       "describe_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/matrix-multiplication-tensor-3x3/DESCRIBE.json",
       "readme_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/matrix-multiplication-tensor-3x3/README.md",
       "slot": null,
-      "solve_release": false
+      "solve_release": false,
+      "initial_canonical_describe_sha256": "398555b297df219bd496a1767daada12e26dcf0b2210d364ddfb36a0e5bb7d21",
+      "latest_canonical_describe_sha256": "398555b297df219bd496a1767daada12e26dcf0b2210d364ddfb36a0e5bb7d21",
+      "stable_content_sha256": "d36b7db4213a9206e949be873a252057dfa3cf6df4f2d775aab12b544992a99f",
+      "latest_observed_commit": null
     },
     {
       "source_id": "alejandrozu/grothendieck-constant-witnesses",
@@ -78,11 +98,14 @@
           "name": "certificate_bits"
         }
       ],
-      "canonical_describe_sha256": "5e9bca316e5668e6bb740b5b061654efb438954498db030db50b0aace7af1be6",
       "describe_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/grothendieck-constant-witnesses/DESCRIBE.json",
       "readme_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/grothendieck-constant-witnesses/README.md",
       "slot": null,
-      "solve_release": false
+      "solve_release": false,
+      "initial_canonical_describe_sha256": "5e9bca316e5668e6bb740b5b061654efb438954498db030db50b0aace7af1be6",
+      "latest_canonical_describe_sha256": "5e9bca316e5668e6bb740b5b061654efb438954498db030db50b0aace7af1be6",
+      "stable_content_sha256": "84b679f702ab437ed96c4b5c7cf049c2d4e9c0910feed0df77e557ebbc428268",
+      "latest_observed_commit": null
     },
     {
       "source_id": "alejandrozu/collatz-modular-descent",
@@ -105,11 +128,14 @@
           "name": "rule_count"
         }
       ],
-      "canonical_describe_sha256": "164115198864f2ea0319e1dd7826fae2540765dd3bc849ef21537be6975a6bc8",
       "describe_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/collatz-modular-descent/DESCRIBE.json",
       "readme_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/collatz-modular-descent/README.md",
       "slot": null,
-      "solve_release": false
+      "solve_release": false,
+      "initial_canonical_describe_sha256": "164115198864f2ea0319e1dd7826fae2540765dd3bc849ef21537be6975a6bc8",
+      "latest_canonical_describe_sha256": "164115198864f2ea0319e1dd7826fae2540765dd3bc849ef21537be6975a6bc8",
+      "stable_content_sha256": "00b0502067d549bad43929761a33d79281ea8b0c314320f1778b40a345e33a02",
+      "latest_observed_commit": null
     },
     {
       "source_id": "alejandrozu/busy-beaver-6-certificates",
@@ -132,11 +158,14 @@
           "name": "tape_span"
         }
       ],
-      "canonical_describe_sha256": "0f022e24cf8934835c9886fa881517c9016c66fc9537a025484c8dd22c19ba18",
       "describe_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/busy-beaver-6-certificates/DESCRIBE.json",
       "readme_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/busy-beaver-6-certificates/README.md",
       "slot": null,
-      "solve_release": false
+      "solve_release": false,
+      "initial_canonical_describe_sha256": "0f022e24cf8934835c9886fa881517c9016c66fc9537a025484c8dd22c19ba18",
+      "latest_canonical_describe_sha256": "0f022e24cf8934835c9886fa881517c9016c66fc9537a025484c8dd22c19ba18",
+      "stable_content_sha256": "9a84c79d17288a1c379fe8c29ef7c815d32f35f67f021451e40155f079e52e8e",
+      "latest_observed_commit": null
     },
     {
       "source_id": "ottogin/erdos-3",
@@ -151,11 +180,14 @@
           "name": "proved"
         }
       ],
-      "canonical_describe_sha256": "7a66547027327b1289e442abbd44e4ae7e7413ccd561b4bdb4189923e30df082",
       "describe_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/erdos-3/DESCRIBE.json",
       "readme_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/erdos-3/README.md",
       "slot": null,
-      "solve_release": false
+      "solve_release": false,
+      "initial_canonical_describe_sha256": "7a66547027327b1289e442abbd44e4ae7e7413ccd561b4bdb4189923e30df082",
+      "latest_canonical_describe_sha256": "b5c8cbf685953ccaf42ae1b22e9751c5ea21f9475edb78da5c9a3e2d7e86e0b4",
+      "stable_content_sha256": "eb031da311061a3551f33ef727c01907ee99e2715f7b4258402d58d0665a63ee",
+      "latest_observed_commit": "f5760a26a2b297d4c2006fcfae96a4a67e2071db"
     }
   ],
   "slot_mapping": {
@@ -167,5 +199,10 @@
     "OM26-H7": null
   },
   "mapping_boundary": "The six organizer hill bodies are authoritative source-pool members. No H2-H7 slot correspondence is inferred from list order, source name, topic similarity, event prose, or conversational memory.",
-  "claim_boundary": "Acquired source bytes only. No unresolved slot is source-locked or released for hill-specific mathematics; no theorem, novelty, competition-acceptance, or MATHCERT effect."
+  "claim_boundary": "Acquired source bytes only. No unresolved slot is source-locked or released for hill-specific mathematics; no theorem, novelty, competition-acceptance, or MATHCERT effect.",
+  "hash_semantics": {
+    "stable_content_identity": "SHA-256 of canonical hills describe JSON after removing local path and transport commit; retains README, version/spec, tree hash, metrics, params, files, and other semantic fields.",
+    "raw_observation": "SHA-256 of the complete canonical hills describe JSON; may vary if transport commit changes while tree/content remain identical."
+  },
+  "transport_identity_note": "For ottogin/erdos-3, repeated authenticated pulls preserved the same tree/content while the observed transport commit changed. The protected binding therefore uses stable_content_sha256 plus tree_hash, not the transport commit alone."
 }
