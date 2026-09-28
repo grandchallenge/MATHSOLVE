@@ -47,14 +47,14 @@
       "obligations": {
         "semantic_fidelity": "BASELINE_CONCORDANCE_PASS",
         "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
-        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_LE_3_EXCLUDED_SOURCE_CONDITIONAL__Q4_3333_3334_RESIDUAL",
-        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_Q4_DENSE_PROFILES_EXCLUDED_SOURCE_CONDITIONAL",
+        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_LE_3_EXCLUDED_SOURCE_CONDITIONAL__Q4_3333_OR_3334_NINE_ROLE_TYPES",
+        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_3334_NORMAL_FORM_SOURCE_CONDITIONAL",
         "exact_computation": "H1_13_TRANCHES1_2_3_COMPLETE__NO_94__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
         "mathcert_handoff": "H1_02_AND_86_INTAKE_PROTECTED__93_SUCCESSOR_INTAKE_PROTECTED__CERT_EXECUTION_PENDING"
       },
-      "next_action": "Analyze q=4 profile 3334 first, with D2 in {3,4,5} and at most one saturated core. Keep 3333 and q>=5 as separate residuals; do not resume generic construction search."
+      "next_action": "Resolve the 3334 D2=3 star first: two hub role-types (triple or quadruple), D1=11, U=0, unique saturated non-extreme hub under the local fan premise. Keep D2=4, D2=5, 3333, and q>=5 separate."
     },
     {
       "hill_slot": "OM26-H2",
@@ -159,5 +159,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. Protected Forge source audit gives unrestricted 93..95. Solve removes parallelism and, conditional on the named source-scoped fan/charging premises, excludes q<=3 and q=4 profiles 3335,3344,3444 from a 95 witness. The live residual is q=4 profile 3333 or 3334, or q>=5. No source-conditional reduction, bounded negative search, or Cert intake is a hill-global upper-bound or certification claim."
+  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. Conditional on the named source-scoped fan/charging premises, q<=3 and dense q=4 profiles 3335,3344,3444 are excluded from a 95 witness. The q=4 residual is 3333 or 3334; 3334 is now a nine-role-type finite geometric problem. No source-conditional reduction, finite quotient, bounded negative search, or Cert intake is a hill-global upper-bound or certification claim."
 }
