@@ -47,14 +47,14 @@
       "obligations": {
         "semantic_fidelity": "BASELINE_CONCORDANCE_PASS",
         "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
-        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_LE_4_EXCLUDED_SOURCE_CONDITIONAL__Q_GE_5_RESIDUAL",
-        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_Q4_CLOSED_SOURCE_CONDITIONAL",
+        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_LE_4_EXCLUDED_SOURCE_CONDITIONAL__Q5_THREE_PROFILES_OR_Q_GE_6",
+        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_Q5_33333_33334_33344_SOURCE_CONDITIONAL",
         "exact_computation": "H1_13_TRANCHES1_2_3_COMPLETE__NO_94__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
         "mathcert_handoff": "H1_02_AND_86_INTAKE_PROTECTED__93_SUCCESSOR_INTAKE_PROTECTED__CERT_EXECUTION_PENDING"
       },
-      "next_action": "Derive q>=5 aggregate multiplicity and core-incidence constraints, prioritizing triple/quadruple-heavy profiles. Keep construction search targeted and separate."
+      "next_action": "Resolve q=5 profile 33344 first using dense-core graph quotient and saturation/extreme-core geometry; then 33334 and 33333. Keep q>=6 separate."
     },
     {
       "hill_slot": "OM26-H2",
@@ -159,5 +159,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. Conditional on the named source-scoped fan/charging premises, q<=4 is excluded after no-parallel normalization; any score-95 witness must have q>=5 finite multiple points. No source-conditional reduction, finite replay, bounded negative search, or Cert intake is a hill-global upper-bound or certification claim."
+  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. Conditional on the named source-scoped fan/charging premises, q<=4 is excluded and q=5 is reduced to 33333,33334,33344 in restricted D2 ranges; q>=6 remains. No source-conditional reduction, finite replay, bounded negative search, or Cert intake is a hill-global upper-bound or certification claim."
 }

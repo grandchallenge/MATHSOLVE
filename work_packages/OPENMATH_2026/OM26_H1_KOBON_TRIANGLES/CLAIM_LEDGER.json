@@ -430,6 +430,19 @@
       ],
       "mathematical_effect": true,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-019",
+      "text": "Conditional on the named local fan and clean-line charging premises, q=5 score-95 states reduce from seven coarse multiplicity profiles to exactly 33333, 33334, and 33344. Their surviving D2 ranges are 3..10, 5..9, and 6..7 respectively.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_FINITE_GRAPH_RECONSTRUCTION_COMPLETE__SECTOR_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_PROFILE_REDUCTION.md",
+        "ci/validate_openmath_h1_12_q5_profiles.py",
+        "ci/test_openmath_h1_12_q5_profiles.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [
