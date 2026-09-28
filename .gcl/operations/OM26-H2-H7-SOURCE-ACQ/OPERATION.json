@@ -104,7 +104,8 @@
     "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md",
     "ci/validate_openmath_cex_h2_h7.py",
     "ci/test_openmath_cex_h2_h7.py",
-    ".github/workflows/openmath-h2-h7-cex-source-acq.yml"
+    ".github/workflows/openmath-h2-h7-cex-source-acq.yml",
+    ".ghos-routing/workflows.json"
   ],
   "provider_outputs": {
     "repository": "grandchallenge/MATHFORGE",
