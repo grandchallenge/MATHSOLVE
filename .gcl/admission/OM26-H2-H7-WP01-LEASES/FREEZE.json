@@ -1,12 +1,12 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.0.1",
   "record_type": "GCL_CONTENT_FREEZE",
   "campaign": "OPENMATH-2026",
   "operation": "OM26-H2-H7-WP01-LEASES",
   "protected_base": "51a52401bfda66910b58c690684da595b4d6aa2c",
   "source_handoff_commit": "6b96ec9afd4395234e32d8769f6e63ddecdf5c55",
   "lease_introducing_commit": "3c835aaf6173176b64efca5f03ffdc27b20af965",
-  "assembled_from_head": "fe62dfc48bd36588b170f087b23e58789b5903c5",
+  "assembled_from_head": "5b6a9d998ca5a132f7db34de9d8d0117aee17e45",
   "generic_intake": {
     "protected_merge": "51a52401bfda66910b58c690684da595b4d6aa2c",
     "readback_path": ".gcl/completions/OPENMATH-CEX-GENERIC-INTAKE/READBACK.json",
@@ -20,7 +20,7 @@
     "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "1f1526bb7468ba4267d78c49800766e48ea93c00",
     "ci/validate_openmath_cex_job_board.py": "f87e2a56904499a46b2757397cf1e3b1959faff4",
     "ci/test_openmath_cex_job_board.py": "3692a538d3df3c5ba92f631c7bee0abf8a539969",
-    ".github/workflows/openmath-cex-job-board.yml": "a6b052007410924043fc134c6e4c9732b444a8a9",
+    ".github/workflows/openmath-cex-job-board.yml": "b70f3f8d2b7169dcc6e6155f2066e5168ba3bce2",
     ".gcl/completions/OPENMATH-CEX-GENERIC-INTAKE/READBACK.json": "16c31a2241a3c362d040640932eea16ae7580d2a",
     "handoffs/OPENMATH-2026/jobs/OM26-H2-WP01-IA-001.md": "5a8d729db516f5ca3562ee38aad60585d58740ac",
     ".gcl/operations/OM26-H2-WP01-IA-001/OPERATION.json": "a1d6118e2392605b0d1bad9fc689ded93521f069",
@@ -137,5 +137,11 @@
     "issue_body_change": "dispatch issue must continue to equal protected bootstrap bytes",
     "lease_reassignment": "requires separate protected mutation"
   },
-  "claim_boundary": "This freeze authorizes only the six bounded external leases if protected. Returned evidence remains unadjudicated."
+  "claim_boundary": "This freeze authorizes only the six bounded external leases if protected. Returned evidence remains unadjudicated.",
+  "repair": {
+    "defect": "Literal backslash-n sequences corrupted the job-board workflow paths list on the previous candidate head.",
+    "repair_commit": "5b6a9d998ca5a132f7db34de9d8d0117aee17e45",
+    "effect": "Restores valid YAML path entries and exact-head job-board validation triggering.",
+    "bypass": false
+  }
 }
