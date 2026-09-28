@@ -54,5 +54,13 @@
     "authenticated AutoLab public evaluator must reproduce the same score",
     "candidate bytes and provenance must then be committed before campaign-ladder promotion"
   ],
-  "claim_boundary": "External code is proposal generation only. Failed search is not an upper bound. External internal checks are not GCL verification. No candidate is promoted unless independent GCL and AutoLab replay agree."
+  "claim_boundary": "External code is proposal generation only. Failed search is not an upper bound. External internal checks are not GCL verification. No candidate is promoted unless independent GCL and AutoLab replay agree.",
+  "proposal_seed": {
+    "candidate": "RH_BADER_PROJECTIVE_NOPARALLEL_093",
+    "path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RH_BADER_PROJECTIVE_NOPARALLEL_093/solution.json",
+    "construction": "Exact rational projective transform of RH_BADER_RECONSTRUCTION_093 using [a,b,c] -> [10a+c,10b+2c,10c] with primitive normalization.",
+    "expected_triangles": 93,
+    "expected_parallel_pairs": 0,
+    "reason": "The pinned external ProjectiveChamber proposal generator requires pairwise-nonparallel normals."
+  }
 }

@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-12-NOPARALLEL-NORMALIZATION",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "state": "EXACT_CONSTRUCTIVE_PROJECTIVE_NORMALIZATION_CANDIDATE",
+  "source_candidate": "RH_BADER_RECONSTRUCTION_093",
+  "transformed_candidate": "RH_BADER_PROJECTIVE_NOPARALLEL_093",
+  "transformation": {
+    "homogeneous_point_map": "[X,Y,Z] = [[1,0,0],[0,1,0],[1/10,2/10,1]] [X',Y',Z']",
+    "induced_line_map": "[a,b,c] -> [10a+c, 10b+2c, 10c], followed by primitive integer normalization",
+    "determinant_nonzero_requirement": "every pair of transformed affine normals must have nonzero 2x2 determinant"
+  },
+  "expected_exact_checks": {
+    "n": 18,
+    "triangles": 93,
+    "parallel_pairs": 0
+  },
+  "use": "Pairwise-nonparallel seed for topology/concurrency proposal search; independent scorer replay required in workflow.",
+  "claim_boundary": "This concrete normalization is a search/reduction witness only. It does not close H1-12 or certify any upper bound."
+}

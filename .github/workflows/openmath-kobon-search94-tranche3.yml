@@ -33,13 +33,27 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check -r /tmp/kobon-proof/experiments/2026-09-21/construction-search/requirements-search.txt
 
-      - name: Prepare protected 93 source
+      - name: Verify pairwise-nonparallel 93 normalization
+        working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
+        run: |
+          python kobon_direct_oracle.py candidates/RH_BADER_PROJECTIVE_NOPARALLEL_093/solution.json --n 18 --expect 93 --output /tmp/noparallel93.json
+          python - <<'PY'
+          import json
+          from itertools import combinations
+          from pathlib import Path
+          lines=json.loads(Path("candidates/RH_BADER_PROJECTIVE_NOPARALLEL_093/solution.json").read_text())["lines"]
+          bad=[(i,j) for i,j in combinations(range(len(lines)),2) if lines[i][0]*lines[j][1]-lines[j][0]*lines[i][1]==0]
+          if bad: raise SystemExit(f"parallel pairs remain: {bad}")
+          print("H1_12_CONCRETE_NOPARALLEL_93=PASS")
+          PY
+
+      - name: Prepare pairwise-nonparallel 93 proposal seed
         working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          src=json.loads(Path("candidates/RH_BADER_RECONSTRUCTION_093/solution.json").read_text())
+          src=json.loads(Path("candidates/RH_BADER_PROJECTIVE_NOPARALLEL_093/solution.json").read_text())
           out={"lines_frac":[[str(a),str(b),str(-c)] for a,b,c in src["lines"]]}
           path=Path("/tmp/kobon-proof/research/finite-table/gcl-om26-h1-093.json")
           path.write_text(json.dumps(out)+"\n")
