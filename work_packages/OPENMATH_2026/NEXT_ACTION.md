@@ -7,15 +7,17 @@ H1-12 is the priority lane. H1-13 search tranches remain bounded negative route 
 Protected reductions now give:
 - no-parallel normalization;
 - conditional exclusion of q<=3;
-- conditional exclusion of all q=4 multiplicity profiles except 3333;
-- a blocked-target refinement of 3333 from 344 labeled states to 108 states in 12 symmetry normal forms;
-- complete elimination of D2=6 within profile 3333.
+- complete conditional exclusion of every q=4 multiplicity profile except 3333;
+- profile 3333 reduced to 48 labeled states in eight symmetry normal forms;
+- saturated triple hubs force D2=3 and a six-line core-pair skeleton;
+- no D2>=5 profile-3333 form remains;
+- D2=4 is reduced to the non-saturated C4 form.
 
-Six of the 12 normal forms exactly saturate the current clean-line charge capacity.
+Four normal forms exactly saturate the strongest current charge bound.
 
-Next H1 action: resolve those equality forms first, beginning with the D2=5 K4-e saturated-core form. Then address the D2=4 paw/C4 equality forms and the tight D2=3 forms.
+Next H1 action: resolve the equality forms, beginning with the D2=4 C4, then the three tight D2=3 forms (non-saturated star, higher-count saturated star, and triangle-plus-isolated core).
 
-Keep the positive-slack 3333 normal forms separate. Keep q>=5 separate.
+Keep the positive-slack D2<=3 forms separate. Keep q>=5 separate.
 
 Do not resume generic coordinate or topology search. Any construction experiment must target one explicit remaining normal form and use the independent exact scorer before promotion.
 
