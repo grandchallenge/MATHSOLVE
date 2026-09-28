@@ -72,7 +72,8 @@
     "handoffs/OPENMATH-2026/jobs/OM26-H6-WP01.md",
     "handoffs/OPENMATH-2026/jobs/OM26-H7-WP01.md",
     "ci/validate_openmath_cex_job_board.py",
-    "ci/test_openmath_cex_job_board.py"
+    "ci/test_openmath_cex_job_board.py",
+    ".gcl/completions/OM26-H2-H7-WP01-DECOMPOSITION/COMPLETION_RECEIPT.json"
   ],
   "completion_requires": [
     "six_exact_work_packages",
@@ -98,5 +99,13 @@
     "safety_boundary",
     "materially_changed_state",
     "substantive_evidentiary_boundary"
-  ]
+  ],
+  "candidate_disposition": "CLOSED",
+  "completion": {
+    "protected_merge": "246a51ab4f15c616da06b2e3832f0ab0e102d30a",
+    "readback": "PROTECTED_READBACK_CONFIRMED",
+    "completion_receipt": ".gcl/completions/OM26-H2-H7-WP01-DECOMPOSITION/COMPLETION_RECEIPT.json",
+    "terminal_state": "SIX_WP01_AVAILABLE_FOR_LEASE__ZERO_H2_H7_LEASES",
+    "successor_boundary": "EXTERNAL_LEASE_AUTHORITY_BOUNDARY"
+  }
 }
