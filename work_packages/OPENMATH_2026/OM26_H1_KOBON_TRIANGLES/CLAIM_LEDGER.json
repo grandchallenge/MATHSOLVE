@@ -485,6 +485,20 @@
       ],
       "mathematical_effect": true,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-022",
+      "text": "Conditional on the protected q=5 fan/charging state space, the sole K3+two-isolated residual has an exact nested-triangle geometry: the D2 triangle is a counted face, the three third core-lines form an outer triangle, each isolated triple has antipodal D1 rays on one line, h=12, and the six clean-line charges partition exactly as four isolated-core D1 charges plus two U-endpoint charges.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_NORMAL_FORM_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_33333_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_EQUALITY_NORMAL_FORM.md",
+        "ci/validate_openmath_h1_12_q5_equality.py",
+        "ci/test_openmath_h1_12_q5_equality.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [
