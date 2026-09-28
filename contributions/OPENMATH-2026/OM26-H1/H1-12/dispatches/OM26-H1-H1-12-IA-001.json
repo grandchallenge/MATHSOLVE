@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_DISPATCH",
+  "dispatch_id": "OM26-H1-H1-12-IA-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H1",
+  "assignment_id": "OM26-H1-H1-12",
+  "agent_ref": "INDEPENDENT-AGENT-001",
+  "concurrency_mode": "independent_blind",
+  "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H1-H1-12-IA-001.md",
+  "bootstrap_blob_sha1": "b3a1937c9dc74c1f7a026b8dfc712c37765b4984",
+  "source_handoff_commit_sha": "db707190c445f2b99751569bc60412f00bce2102",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "github_issue_number": 498,
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/498",
+  "github_issue_title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H1-H1-12-IA-001 — independent proof adversary",
+  "contributor_write_authority": "issue_comment_only",
+  "canonical_mutation_authorized": false,
+  "attachments_allowed": false,
+  "result_comment_count_expected": 1,
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "operation_contract": ".gcl/operations/OM26-H1-H1-12-IA-001/OPERATION.json",
+  "source_lock": {
+    "repository": "grandchallenge/MATHFORGE",
+    "main_commit": "343945512476bd91ed936749f9c4918f0723bff2",
+    "source_lock_blob": "7a90cd6eeb54e8e4c5b63c5977e40a1ab5bcaa2c"
+  }
+}
