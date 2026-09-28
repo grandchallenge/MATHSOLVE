@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_PUBLIC_SOURCE_MANIFEST",
+  "operation": "OM26-H2-H7-SOURCE-ACQ",
+  "source_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
+  "slot_binding": null,
+  "acquisition": {
+    "workflow_run_id": 36417117122,
+    "workflow_job_id": 108910800683,
+    "subject_head": "73a7a9d91948a516c1a72fbd75739346f6741a55",
+    "authenticated": true,
+    "source": "AutoLab public hill pull"
+  },
+  "public_file_manifest_sha256": "9bfbc06cb77c2cffaebcc600e85b1d0d2468427fadc7dfa2064bbc4fb7193a67",
+  "public_file_count": 14,
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "0df64dd2b35089d662d8e467e33f81b1d50a2849ca412d58c658367920da5881",
+      "size": 25
+    },
+    {
+      "path": "LIFTING.md",
+      "sha256": "2e05aa6b42941954072f67a26cc9a629d7c041602d6381d6b801100280b111e7",
+      "size": 3221
+    },
+    {
+      "path": "README.md",
+      "sha256": "201d781e16ab9ef651f796c238518306c3fefcd16c3de11c213bdbec8c8a7142",
+      "size": 8880
+    },
+    {
+      "path": "SOURCES.md",
+      "sha256": "e7a5e3957c3dbd772d0f7ccd710203a5450adc3dec8d0924a485f0dff06ed481",
+      "size": 3717
+    },
+    {
+      "path": "blobs.lock",
+      "sha256": "6d6f25aa036e49add8c6e961af787a3149777a7fbd60398e76c219c5a1ea8093",
+      "size": 60
+    },
+    {
+      "path": "eval.py",
+      "sha256": "39932af840c4cd822b43be9383fb850b692635787a05562a01ae23363776697f",
+      "size": 8064
+    },
+    {
+      "path": "examples/baseline/solution.json",
+      "sha256": "036ba5a7342e8277e9513d0506853e6c2b1932576073b6dee85c3cb3ea1b2266",
+      "size": 81
+    },
+    {
+      "path": "examples/published_cayley_768/SOURCE.md",
+      "sha256": "3278b63648562787c50555098c8c44fdea2fef4aa687bdaf3884b0352004e81f",
+      "size": 935
+    },
+    {
+      "path": "examples/published_cayley_768/solution.json",
+      "sha256": "4c372995b69be5e30713965670d525f75876a5e0a434f576491522cc0920fc54",
+      "size": 601430
+    },
+    {
+      "path": "hill.yaml",
+      "sha256": "1c30b4a60ea56ddcf27f4bba3d3426c36a23bc3bacee2b05dbee8bde64f8773d",
+      "size": 190
+    },
+    {
+      "path": "private.lock",
+      "sha256": "723259f8946173ea1fffbabc107764f5ba56ca4eb9d2ec5cb8395450b93bafd4",
+      "size": 370
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "42af4132067889c2d218f580a037dd66ff377ff901daa22d27da4c592dbe2b8a",
+      "size": 238
+    },
+    {
+      "path": "tests/test_hill.py",
+      "sha256": "19e127ddf43b925be98aa6a99135cf59bb6ff4981512107439d85de9f70f2828",
+      "size": 4821
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "5c2e77634fcb18d3c5aedb17c098e5e390cb874327da1a360a2af528a440f4a0",
+      "size": 4673
+    }
+  ],
+  "exclusions": [
+    ".git/**",
+    ".vc/**",
+    "private/**",
+    ".pytest_cache/**",
+    "__pycache__/**",
+    "*.pyc"
+  ],
+  "claim_boundary": "Public source/checker capture only. No H2-H7 slot binding, mathematical admission, certification, or competition-submission effect."
+}
