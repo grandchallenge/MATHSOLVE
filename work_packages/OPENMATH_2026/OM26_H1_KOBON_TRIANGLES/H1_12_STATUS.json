@@ -39,10 +39,10 @@
     "certification_effect": false
   },
   "saturated_core_reduction": {
-    "statement": "Conditional on the named local no-long-run fan premise, a convex-hull core cannot be saturated. For four cores with D2>=5 this permits at most one saturated core. The protected q=4 finite replay then excludes profiles 3335, 3344, and 3444, leaving only 3333 and 3334.",
+    "statement": "Conditional on the named local no-long-run fan premise, a convex-hull vertex (extreme core) cannot be saturated. For four noncollinear cores with D2>=5, at least three cores are extreme, so at most one core may be saturated. The protected q=4 finite replay then excludes profiles 3335, 3344, and 3444, leaving only 3333 and 3334.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_SATURATED_CORE_HULL_REDUCTION.md",
     "finite_replay": "ci/validate_openmath_h1_12_saturated_core.py",
-    "independent_component": "convex-hull half-plane argument and finite replay",
+    "independent_component": "extreme-point half-plane argument and finite replay",
     "source_scoped_component": "local no-long-run fan premise",
     "mathematical_effect": true,
     "certification_effect": false
