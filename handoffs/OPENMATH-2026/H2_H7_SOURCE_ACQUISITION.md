@@ -26,27 +26,28 @@ OM26-H1 Kobon triangles is outside this operation and remains unchanged.
 
 A later executor must re-fetch live protected heads before mutation. Drift is classified, not ignored.
 
+## CEX pickup front door
+
+External workers do not choose a slot.
+
+The canonical machine pickup surface is `.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json`. The human discovery surface is `handoffs/OPENMATH-2026/CEX_JOB_BOARD.md`.
+
+A worker is launched with one `dispatch_id`. It resolves the unique assignment whose protected lease names that dispatch ID. It may begin only when that assignment is `LEASED` to the same `dispatch_id` and `agent_ref`.
+
+If no matching protected lease exists, return `NO_ACTIVE_LEASE` and stop. An `AVAILABLE_FOR_LEASE` record is visible to the allocator but is not executable by an external worker.
+
 ## Zero-context bootstrap
 
-You are executing one lease in governed operation `OM26-H2-H7-SOURCE-ACQ`.
+You are executing one protected lease in governed operation `OM26-H2-H7-SOURCE-ACQ`.
 
-Choose exactly one slot from `OM26-H2` through `OM26-H7`. Do not work on H1.
+1. Read `.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json`.
+2. Resolve only the assignment bound to the `dispatch_id` supplied in your launch message.
+3. Verify the protected lease is `LEASED` to that same dispatch and your `agent_ref`.
+4. Load exactly the referenced `work_package`. That package is your complete GCL work-set.
+5. Execute that bounded package and use only the exact return surface and grammar bound by the dispatch.
+6. Stop after one durable return.
 
-1. Read:
-   - `.gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json`
-   - `.gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json`
-   - `work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json`
-   - `work_packages/OPENMATH_2026/HILL_LANES.json`
-   - MATHFORGE `reports/discovery/openmath_2026/hill_source_locks.json`.
-2. Perform non-mutating reconnaissance first. Rebind live protected heads and compare the selected slot with the Forge source-lock ledger.
-3. Acquire organizer-authoritative evidence. The documented list command is:
-   `autolab lists show alejandrozu/openmath`
-   If an authorized runner supplies `AUTOLAB_TOKEN`, use it without printing, logging, or persisting the token.
-4. Do not assign a hill to the slot by list position, memory, event prose, search snippets, or similarity.
-5. Once the exact hill ID is established, acquire the exact hill body or authenticated render/export and evaluator/checker semantics when available.
-6. Produce the MATHFORGE packet required by the operation contract. Preserve unknown fields as null.
-7. Protect and read back the MATHFORGE source lock.
-8. Only after that protected lock may the corresponding MATHSOLVE hill lane be rebound and a hill-specific Solve package be instantiated.
+Do not browse for a different assignment, self-claim an available job, infer a slot from list order, or work on H1.
 
 ## Return contract
 
