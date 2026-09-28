@@ -1,4 +1,4 @@
-# H1-12 three-core classification — the only surviving q=3 template
+# H1-12 three-core classification and exclusion
 
 **State:** `SOLVE_SOURCE_CONDITIONAL_REDUCTION__ARITHMETIC_INDEPENDENTLY_REPLAYED__NOT_CERTIFIED`
 
@@ -34,7 +34,9 @@ The source-scoped geometric premises used here are:
 2. **clean-line charging:** `18-h <= 2U + D1`;
 3. **core incidence:** `h <= I-D2`;
 4. **fan bounds:** if `d2(v)<=1`, then `d1(v)<=2r-4`; always `d1(v)<=2r-3`;
-5. **triple refinement:** at a triple point `d1(v)<=3`, and `d1(v)=3` forces `d2(v)>=3`.
+5. **triple refinement:** at a triple point `d1(v)<=3`, and `d1(v)=3` forces `d2(v)>=3`;
+6. **triple fan adjacency:** two consecutive radial rays with ordinary other endpoints cannot both be counted by `d1`;
+7. **charging-map refinement:** the clean-line argument assigns one charge from every clean line to a transverse bounded segment. An unused segment can receive at most two clean-line charges, one through each ordinary endpoint; a `D1` segment can receive at most one, through its unique ordinary endpoint; a `D2` segment receives none.
 
 With exactly three multiple points, a core-to-core elementary segment is determined by an unordered pair of core points. Hence `D2<=3`, and every local `d2(v)<=2`. Premise 5 therefore sharpens every triple point to `d1(v)<=2`.
 
@@ -204,6 +206,42 @@ The three `D2` segments are the three pairwise core connectors, so the core poin
 
 At each triple point there are six cyclic sectors and exactly `d1+d2=4` shared rays. A six-cycle has four shared boundary rays only when exactly one sector is nontriangular. Hence **five of the six sectors at each core must be triangular**.
 
+## Step 4 — the saturated template cannot realize the clean-line charge map
+
+The preceding arithmetic used only the aggregate charging inequality. The source proof supplies more structure: every clean line chooses one transverse charge target, and the bounds `2U+D1` arise from endpoint capacities.
+
+Fix one of the three triple cores, say `A`. Let the two core-triangle sides through `A` be `AB` and `AC`, and let `L_A` be the third arrangement line through `A`.
+
+Because the three `D2` core connectors are elementary shared sides, the core triangle `ABC` is itself a triangular face. The third line `L_A` cannot enter the interior angle of `ABC`: doing so would cross the opposite elementary core side. Thus, in cyclic order around `A`, the two inward core rays are adjacent, and the two rays of `L_A` sit immediately outside them.
+
+We already know that exactly one of the six sectors at `A` is nontriangular. The two inward core rays are `D2), so the sectors on both sides of each are triangular. Hence the unique nontriangular sector lies among the three exterior sectors.
+
+If it is either exterior sector adjacent to a spoke ray and an outward core-side ray, the two remaining `D1` rays are consecutive. Premise 6 forbids this. Therefore the unique nontriangular sector must be the middle exterior sector, between the two outward continuations of `AB` and `AC`.
+
+Consequently the two `D1` rays at `A` are **exactly the two opposite rays of `L_A`**. The same holds at `B` and `C`.
+
+Now inspect the exterior triangle adjacent to the shared core edge `AB`. On the side opposite the core triangle, its side through `A` must be `L_A`, and its side through `B` must be `L_B`. Therefore the `D1` segment on the relevant ray of `L_A` ends at the ordinary point
+
+```
+L_A ∩ L_B.
+```
+
+It cannot end earlier, because then the exterior triangle adjacent to the elementary segment `AB` would be cut. Its unique transverse line at that ordinary endpoint is `L_B`.
+
+But `L_B` is **not clean**: it contains the multiple point `B`. Thus this `D1` segment cannot receive a charge from any clean line. Repeating the argument for both rays at all three cores shows that **none of the six `D1` segments is chargeable by a clean line**.
+
+The saturated arithmetic template has
+
+```
+18-h = 12 clean lines,
+U = 3,
+D1 = 6.
+```
+
+Every clean line must emit one charge. Since no `D1` target can receive a clean-line charge, only the three unused segments remain, with total capacity at most `2U=6`. Twelve required charges cannot fit into six available slots. Contradiction.
+
+Therefore the three-core case is impossible, conditional on the named charging/fan premises.
+
 ## Result
 
 Conditional on the named source-scoped geometric premises, any `n=18`, `T=95` arrangement with exactly three finite multiple points is forced into one rigid template:
@@ -216,13 +254,10 @@ Conditional on the named source-scoped geometric premises, any `n=18`, `T=95` ar
 - `D1=6`, `D2=3`, `U=3`, `h=6`;
 - the clean-line charging inequality is saturated.
 
-Therefore the H1-12 residual is strictly narrowed to:
+Step 4 excludes that saturated template using the endpoint-level charge map. Therefore, conditional on the named source-scoped geometric premises, **any `n=18`, `T=95` witness must have at least four finite multiple points after no-parallel normalization**.
 
-1. **four or more finite multiple points**, or
-2. **the saturated three-triple core-triangle template above**.
-
-The companion validator `ci/validate_openmath_h1_12_three_core.py` independently enumerates every possible multiplicity triple `3<=r_i<=18`, every simple core-shared graph on three vertices, every local `d1` count allowed by the stated fan bounds, and the clean-line/defect inequalities. It returns exactly the template above. The validator checks the arithmetic implication only; it does not prove the geometric premises.
+The companion validator `ci/validate_openmath_h1_12_three_core.py` independently enumerates every possible multiplicity triple `3<=r_i<=18`, every simple core-shared graph on three vertices, every local `d1` count allowed by the stated fan bounds, and the clean-line/defect inequalities. It returns exactly the saturated template as the unique arithmetic survivor. Step 4 is the subsequent geometric exclusion. The validator checks the arithmetic implication only; it does not prove the geometric charging/fan premises.
 
 ## Claim boundary
 
-This is a Solve-level strict residual reduction, not a hill-global upper bound and not a MATHCERT disposition. The arithmetic classification is independently reconstructed and replayed. The clean-line charging/fan extraction premises remain source-scoped until independently proved or certified inside GCL. No conclusion `T<=94` follows from this artifact alone.
+This is a Solve-level strict residual reduction, not a hill-global upper bound and not a MATHCERT disposition. The arithmetic classification is independently reconstructed and replayed. Conditional on the source-scoped endpoint-level charging map and local fan premises, the entire q=3 case is excluded. Those geometric premises remain source-scoped until independently proved or certified inside GCL. No conclusion `T<=94` follows from this artifact alone because q>=4 remains open.
