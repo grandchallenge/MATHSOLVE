@@ -1,41 +1,28 @@
 import unittest
-from ci.validate_openmath_cex_job_board import (
-    BASE_URL, H1_AGENT_REF, H1_DISPATCH_ID, H1_ISSUE_URL, WP01, load, validate,
-)
+from ci.validate_openmath_cex_job_board import EXPECTED, H1, INTRO, load, validate
 
 class OpenMathCEXJobBoardTest(unittest.TestCase):
     def test_preflight(self): self.assertEqual(validate(), [])
 
-    def test_six_wp01_available_zero_leased(self):
+    def test_six_h2_h7_leases_are_one_to_one(self):
         registry=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
-        jobs=[x for x in registry["assignments"] if x.get("assignment_id") in WP01]
-        self.assertEqual(len(jobs),6)
-        self.assertTrue(all(x["state"]=="AVAILABLE_FOR_LEASE" for x in jobs))
-        self.assertTrue(all(x["lease"]["state"]=="UNCLAIMED" for x in jobs))
-        self.assertTrue(all(x["lease"]["dispatch_id"] is None for x in jobs))
-        self.assertEqual(registry["mathematics_release_policy"]["current_math_jobs"],6)
-        self.assertEqual(registry["mathematics_release_policy"]["h2_h7_leased_math_jobs"],0)
-
-    def test_every_wp01_has_absolute_url(self):
-        registry=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
-        for item in registry["assignments"]:
-            if item.get("assignment_id") in WP01:
-                self.assertEqual(item["work_package_url"],BASE_URL+"/blob/main/"+item["work_package"])
+        jobs={x["assignment_id"]:x for x in registry["assignments"] if x.get("assignment_id") in EXPECTED}
+        self.assertEqual(set(jobs),set(EXPECTED))
+        self.assertEqual({jobs[a]["lease"]["agent_ref"] for a in jobs},{v["agent"] for v in EXPECTED.values()})
+        self.assertEqual({jobs[a]["lease"]["dispatch_issue_number"] for a in jobs},{v["issue"] for v in EXPECTED.values()})
+        self.assertTrue(all(jobs[a]["state"]=="LEASED" and jobs[a]["lease"]["state"]=="LEASED" for a in jobs))
+        self.assertTrue(all(jobs[a]["lease"]["protected_lease_commit"]==INTRO for a in jobs))
 
     def test_h1_lease_preserved(self):
         registry=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
-        job=next(x for x in registry["assignments"] if x.get("assignment_id")=="OM26-H1-H1-12")
-        self.assertEqual(job["lease"]["dispatch_id"],H1_DISPATCH_ID)
-        self.assertEqual(job["lease"]["agent_ref"],H1_AGENT_REF)
-        self.assertEqual(job["lease"]["dispatch_url"],H1_ISSUE_URL)
-        self.assertEqual(job["lease"]["return_url"],H1_ISSUE_URL)
+        job=next(x for x in registry["assignments"] if x.get("assignment_id")==H1["assignment"])
+        self.assertEqual(job["lease"]["dispatch_id"],H1["dispatch"])
+        self.assertEqual(job["lease"]["agent_ref"],H1["agent"])
+        self.assertEqual(job["lease"]["dispatch_issue_number"],H1["issue"])
 
-    def test_available_is_not_executable(self):
-        registry=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
-        for item in registry["assignments"]:
-            if item.get("assignment_id") in WP01:
-                self.assertNotEqual(item["state"],"LEASED")
-                self.assertIsNone(item["lease"]["agent_ref"])
-                self.assertIsNone(item["lease"]["return_url"])
+    def test_lease_counters(self):
+        policy=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")["mathematics_release_policy"]
+        self.assertEqual(policy["h2_h7_available_math_jobs"],0)
+        self.assertEqual(policy["h2_h7_leased_math_jobs"],6)
 
 if __name__=="__main__": unittest.main()

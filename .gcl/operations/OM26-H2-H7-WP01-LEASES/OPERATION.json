@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-H2-H7-WP01-LEASES",
+  "campaign": "OPENMATH-2026",
+  "protected_base": "51a52401bfda66910b58c690684da595b4d6aa2c",
+  "predecessor": {
+    "wp01_completion": "grandchallenge/MATHSOLVE@481672d64786188120fda4694d51d09740e84a66",
+    "generic_intake": "grandchallenge/MATHSOLVE@51a52401bfda66910b58c690684da595b4d6aa2c",
+    "generic_intake_readback": ".gcl/completions/OPENMATH-CEX-GENERIC-INTAKE/READBACK.json"
+  },
+  "objective": "Bind the six protected H2-H7 WP01 assignments to six distinct independent-blind external agents and six exact GitHub return surfaces using the generic protected RESULT/1 intake.",
+  "scope": {
+    "may_lease_external_agent": true,
+    "lease_count": 6,
+    "may_change_mathematical_work_package": false,
+    "may_submit_competition_entry": false,
+    "may_certify": false,
+    "may_mutate_canonical_claims": false
+  },
+  "dispatches": [
+    {
+      "hill": "OM26-H2",
+      "assignment_id": "OM26-H2-WP01",
+      "dispatch_id": "OM26-H2-WP01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-002",
+      "issue_number": 505
+    },
+    {
+      "hill": "OM26-H3",
+      "assignment_id": "OM26-H3-WP01",
+      "dispatch_id": "OM26-H3-WP01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-003",
+      "issue_number": 506
+    },
+    {
+      "hill": "OM26-H4",
+      "assignment_id": "OM26-H4-WP01",
+      "dispatch_id": "OM26-H4-WP01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-004",
+      "issue_number": 507
+    },
+    {
+      "hill": "OM26-H5",
+      "assignment_id": "OM26-H5-WP01",
+      "dispatch_id": "OM26-H5-WP01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-005",
+      "issue_number": 508
+    },
+    {
+      "hill": "OM26-H6",
+      "assignment_id": "OM26-H6-WP01",
+      "dispatch_id": "OM26-H6-WP01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-006",
+      "issue_number": 509
+    },
+    {
+      "hill": "OM26-H7",
+      "assignment_id": "OM26-H7-WP01",
+      "dispatch_id": "OM26-H7-WP01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-007",
+      "issue_number": 510
+    }
+  ],
+  "completion_requires": [
+    "six one-to-one leases",
+    "exact issue/bootstrap binding",
+    "generic intake protected readback",
+    "zero duplicate agent/assignment bindings",
+    "content freeze",
+    "exact-head reviews",
+    "required CI green",
+    "protected merge",
+    "protected readback"
+  ],
+  "claim_boundary": "Lease activation only. External results remain evidence received, not admitted mathematics."
+}

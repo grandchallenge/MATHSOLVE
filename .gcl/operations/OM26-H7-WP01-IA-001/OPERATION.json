@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-H7-WP01-IA-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H7",
+  "obligation": "WP01",
+  "assignment_id": "OM26-H7-WP01",
+  "dispatch_id": "OM26-H7-WP01-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-007",
+  "concurrency_mode": "independent_blind",
+  "objective": "Pinned Lean/formal-statement concordance and bounded subtarget decomposition.",
+  "protected_inputs": {
+    "solve_base": "grandchallenge/MATHSOLVE@51a52401bfda66910b58c690684da595b4d6aa2c",
+    "wp01_instantiation_completion": "grandchallenge/MATHSOLVE@481672d64786188120fda4694d51d09740e84a66",
+    "generic_intake": "grandchallenge/MATHSOLVE@51a52401bfda66910b58c690684da595b4d6aa2c",
+    "generic_intake_readback_blob": "16c31a2241a3c362d040640932eea16ae7580d2a",
+    "source_work_package_blob": "c02b21acf4a7d79bd31b1e708d2133db10506c78",
+    "dispatch_bootstrap_blob": "452c3a0abba18ded400fc8ed4590d983db007767",
+    "forge_source_lock_blob": "2e3551cf7be57f1920382296bbb0d6ebea4379d6"
+  },
+  "scope": {
+    "may_do_mathematical_reasoning": true,
+    "may_use_finite_exact_computation": true,
+    "may_edit_repository": false,
+    "may_open_pull_request": false,
+    "may_submit_competition_entry": false,
+    "may_certify": false,
+    "may_mutate_canonical_claims": false
+  },
+  "return": {
+    "protocol": "GCL-CONTRIBUTION-RESULT/1",
+    "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/510",
+    "contributor_write_authority": "issue_comment_only",
+    "exactly_one_result_comment": true,
+    "first_valid_result_lock": true,
+    "automated_intake_workflow": ".github/workflows/openmath-cex-independent-contribution-intake.yml"
+  },
+  "acceptable_dispositions": [
+    "PINNED_ENV_CONCORDANCE",
+    "FORMAL_SUBTARGET_DECOMPOSITION",
+    "SOURCE_FORMALIZATION_DISCREPANCY",
+    "EXACT_BLOCKER"
+  ],
+  "claim_boundary": "This dispatch authorizes one bounded independent external contribution only. Receipt is not mathematical admission, certification, novelty, or competition acceptance.",
+  "admission": {
+    "aggregate_freeze": ".gcl/admission/OM26-H2-H7-WP01-LEASES/FREEZE.json",
+    "validator": "python ci/validate_openmath_cex_job_board.py",
+    "tests": [
+      "python -m unittest ci.test_openmath_cex_job_board",
+      "python -m unittest tests.test_openmath_cex_github_contribution_intake"
+    ],
+    "exact_head_review_required": true,
+    "required_ci_green": true,
+    "protected_merge": true,
+    "protected_readback": true
+  }
+}
