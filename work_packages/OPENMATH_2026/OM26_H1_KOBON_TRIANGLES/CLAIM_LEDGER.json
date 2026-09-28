@@ -333,6 +333,19 @@
       ],
       "mathematical_effect": true,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-012",
+      "text": "Conditional on the protected clean-line charging map, the profile-3333 non-saturated D2=3 star equality form is excluded: zero blocked hub targets force three consecutive D2 spokes, whose intervening triangular sectors force two additional leaf-pair arrangement lines and at least 11 clean lines against capacity 9.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_3_STAR_EXCLUSION.md",
+        "ci/validate_openmath_h1_12_3333_d2_3_star.py",
+        "ci/test_openmath_h1_12_3333_d2_3_star.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [
