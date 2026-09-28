@@ -239,7 +239,7 @@ def main() -> None:
     survivor = survivors[0]
     expected_k23 = {
         (0,1),(0,2),(0,4),
-        (3,1),(3,2),(3,4),
+        (1,3),(2,3),(3,4),
     }
     if set(survivor["edges"]) != expected_k23:
         raise SystemExit(f"separator survivor is not K2,3: {survivor}")
