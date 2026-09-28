@@ -4,7 +4,7 @@
   "campaign_id": "OPENMATH-2026",
   "hill_slot": "OM26-H1",
   "obligation": "H1-12",
-  "state": "Q_GE_4_OR_RIGID_THREE_TRIPLE_CORE__SOURCE_CONDITIONAL",
+  "state": "Q_GE_4_RESIDUAL__SOURCE_CONDITIONAL",
   "proved_reduction": {
     "statement": "Any finite hill arrangement and any finite set of its counted bounded triangular faces can be projectively transformed to an affine arrangement with no parallel line pairs while preserving all selected counted bounded triangular faces.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
@@ -13,18 +13,19 @@
   },
   "remaining_gap": {
     "simple_bound_value": 94,
-    "issue": "The source-scoped global clean-line/fan extraction is not yet independently proved by GCL, and arrangements with four or more finite multiple points remain open. The unique q=3 residual is a saturated all-triple core triangle.",
-    "target": "Either rule out/replay the saturated q=3 template, extend the incidence budget to q>=4, or construct/replay 95."
+    "issue": "The source-scoped clean-line charging/fan extraction is not yet independently proved by GCL, and arrangements with four or more finite multiple points remain open.",
+    "target": "Extend the concurrence-aware incidence/discharging budget to q>=4, independently prove the required geometric premises, or construct/replay 95."
   },
   "current_source_interval": {
     "lower": 93,
     "upper": 95
   },
-  "claim_boundary": "H1-12 is strictly narrowed, not closed. Parallelism is eliminated. Conditional on named source-scoped geometric premises, q=3 collapses to one saturated three-triple template; otherwise a 95 witness needs q>=4. No hill-global <=94, optimality, or MATHCERT claim.",
+  "claim_boundary": "H1-12 is strictly narrowed, not closed. Parallelism is eliminated. Conditional on the named source-scoped charging/fan premises, q<=3 is excluded from a 95 witness, so the live residual is q>=4. No hill-global <=94, optimality, or MATHCERT claim.",
   "source_conditional_reduction": {
-    "statement": "Conditional on the protected clean-line/fan premises, an n=18,T=95 normalized arrangement with exactly three finite multiple points must be the saturated three-triple core-triangle template: D1=6, D2=3, U=3, h=6, local d1=d2=2, and five triangular sectors at each core.",
+    "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
     "arithmetic_replay": "ci/validate_openmath_h1_12_three_core.py",
+    "arithmetic_effect": "The q=3 arithmetic leaves a unique saturated three-triple template; the proof note then excludes that template using the endpoint-level clean-line charge map and local fan geometry.",
     "geometric_premises_independently_certified": false,
     "mathematical_effect": true,
     "certification_effect": false
