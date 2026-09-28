@@ -51,7 +51,7 @@ def exact_score(lines):
             vals=(
                 sign(det3(lm,li,lj)*wij),
                 sign(det3(lm,lj,lk)*wjk),
-                sign(det3(lm,lk,li)*(-wki)),
+                sign(det3(lm,lk,li)*wki),
             )
             if 1 in vals and -1 in vals:
                 crossed=True
