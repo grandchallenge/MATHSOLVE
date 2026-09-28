@@ -62,7 +62,7 @@ def main() -> None:
 
     residual = [
         x for x in residual_orbits()
-        if x is not row
+        if x != row
     ]
     if len(residual) != 6:
         raise SystemExit(f"unexpected residual form count: {len(residual)}")
