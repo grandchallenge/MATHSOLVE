@@ -8,19 +8,19 @@ Protected reductions now give:
 - no-parallel normalization;
 - conditional exclusion of q<=3;
 - q=4 multiplicity reduction to 3333 or 3334;
-- a nine-role-type normal form for 3334;
-- conditional exclusion of all 3334 D2=3 and D2=4 role-types.
+- complete conditional exclusion of profile 3334 across D2=3,4,5.
 
-The remaining 3334 role-types are exactly:
-- D2=5: T-hub K4-e, missing TQ outer pair;
-- D2=5: T-hub K4-e, missing TT outer pair;
-- D2=5: Q-hub K4-e, missing TT outer pair.
+The live four-core score-95 residual is therefore exactly:
 
-Next H1 action: resolve these D2=5 types. They all have D1=10, U=1, a unique saturated degree-3 hub, and a K4-minus-one-outer-edge D2 graph.
+```
+3333
+```
 
-Then proceed to profile 3333. Keep q>=5 separate.
+Next H1 action: classify and reduce profile 3333 across D2=1,...,6. Preserve exact saturation, core-graph, D1/U, and clean-line-capacity subcases rather than treating the profile as one undifferentiated case.
 
-Do not resume generic coordinate or topology search. Any construction experiment must target one explicit remaining role-type and use the independent exact scorer before promotion.
+Then derive q>=5 aggregate constraints.
+
+Do not resume generic coordinate or topology search. Any construction experiment must target one explicit remaining singular stratum and use the independent exact scorer before promotion.
 
 MATHCERT intake admission remains non-certifying. OM26-H2 through OM26-H7 remain source-lock pending.
 
