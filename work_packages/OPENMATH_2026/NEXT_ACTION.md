@@ -8,22 +8,21 @@ Protected reductions now give:
 - no-parallel normalization;
 - conditional exclusion of q<=3;
 - complete conditional exclusion of every q=4 multiplicity profile except 3333;
-- profile 3333 reduced to 37 labeled states in five symmetry normal forms;
-- no D2>=4 form remains;
-- both D2=3 star-shaped charge-equality forms are excluded.
+- all star-shaped and D2>=4 profile-3333 equality forms excluded;
+- the final K3+isolated equality arithmetic form reduced to two geometric orientation types.
 
-The sole remaining charge-equality form is:
+Both remaining equality types have:
+- a central counted D2 triangle ABC;
+- an exterior isolated triple core D;
+- exactly nine core-containing lines and no additional core-pair line.
 
-```
-D2=3, core graph K3 + isolated core,
-d1=2 at every core,
-D1=8, U=2,
-clean lower bound = charge capacity = 9.
-```
+The two types are:
+1. Type P: edge-selection multiplicities (2,1,0), one central edge selected by both endpoints;
+2. Type C: cyclic edge-selection multiplicities (1,1,1), every central edge selected exactly once.
 
-Next H1 action: resolve this triangle-plus-isolated equality form.
+Next H1 action: analyze Type P first, then Type C.
 
-Keep the positive-slack D2<=3 forms separate. Keep q>=5 separate.
+Keep the four positive-slack D2<=3 profile-3333 forms separate. Keep q>=5 separate.
 
 Do not resume generic coordinate or topology search. Any construction experiment must target one explicit remaining normal form and use the independent exact scorer before promotion.
 
