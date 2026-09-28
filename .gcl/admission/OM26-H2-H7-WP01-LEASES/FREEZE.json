@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.1",
+  "schema_version": "1.0.2",
   "record_type": "GCL_CONTENT_FREEZE",
   "campaign": "OPENMATH-2026",
   "operation": "OM26-H2-H7-WP01-LEASES",
@@ -13,10 +13,10 @@
     "readback_blob": "16c31a2241a3c362d040640932eea16ae7580d2a"
   },
   "artifacts": {
-    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "786c87bbb268a5616493a3d347ad07506a90591a",
-    "work_packages/OPENMATH_2026/HILL_LANES.json": "4260dd6646f5fe9aa3fa9a7aefd8ccd707381209",
-    "work_packages/OPENMATH_2026/H2_H7_WP01_LEASES.json": "dff3d459ecdb1e4c4f6eb3a19667ae85658ff3bb",
-    ".gcl/operations/OM26-H2-H7-WP01-LEASES/OPERATION.json": "4247fe1a92c230cc4b3f9b5f4788c3041e086564",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "4b02e1976c4ac5e23e10015f7da701e9414ebd03",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "03ff527ae75955e150624b04420acc2f3235c43e",
+    "work_packages/OPENMATH_2026/H2_H7_WP01_LEASES.json": "4b1c82a9d8f830ee1052c9a3131a7736b6f34b4d",
+    ".gcl/operations/OM26-H2-H7-WP01-LEASES/OPERATION.json": "7871ba9d0ac58bbc824a1ca62d84d692f0dc62b1",
     "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "1f1526bb7468ba4267d78c49800766e48ea93c00",
     "ci/validate_openmath_cex_job_board.py": "f87e2a56904499a46b2757397cf1e3b1959faff4",
     "ci/test_openmath_cex_job_board.py": "3692a538d3df3c5ba92f631c7bee0abf8a539969",
@@ -39,7 +39,8 @@
     "contributions/OPENMATH-2026/OM26-H6/WP01/dispatches/OM26-H6-WP01-IA-001.json": "386f32bb4f5955afe74064200a500468018b8cc0",
     "handoffs/OPENMATH-2026/jobs/OM26-H7-WP01-IA-001.md": "452c3a0abba18ded400fc8ed4590d983db007767",
     ".gcl/operations/OM26-H7-WP01-IA-001/OPERATION.json": "88f937e46efca3df36f78aa373497a04df9a5733",
-    "contributions/OPENMATH-2026/OM26-H7/WP01/dispatches/OM26-H7-WP01-IA-001.json": "8b048a1e77cebc2c5efd807c0af034533721a819"
+    "contributions/OPENMATH-2026/OM26-H7/WP01/dispatches/OM26-H7-WP01-IA-001.json": "8b048a1e77cebc2c5efd807c0af034533721a819",
+    ".gcl/completions/OM26-H2-H7-WP01-LEASES/COMPLETION_RECEIPT.json": "f593e38a35373a3db08e2e1cfe9cde5af6420335"
   },
   "leases": [
     {
@@ -137,11 +138,16 @@
     "issue_body_change": "dispatch issue must continue to equal protected bootstrap bytes",
     "lease_reassignment": "requires separate protected mutation"
   },
-  "claim_boundary": "This freeze authorizes only the six bounded external leases if protected. Returned evidence remains unadjudicated.",
+  "claim_boundary": "Lease-state readback only; returned contributions require separate review.",
   "repair": {
     "defect": "Literal backslash-n sequences corrupted the job-board workflow paths list on the previous candidate head.",
     "repair_commit": "5b6a9d998ca5a132f7db34de9d8d0117aee17e45",
     "effect": "Restores valid YAML path entries and exact-head job-board validation triggering.",
     "bypass": false
+  },
+  "protected_lease_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
+  "readback_receipt": {
+    "path": ".gcl/completions/OM26-H2-H7-WP01-LEASES/COMPLETION_RECEIPT.json",
+    "git_blob_sha1": "f593e38a35373a3db08e2e1cfe9cde5af6420335"
   }
 }

@@ -73,5 +73,15 @@
     "protected merge",
     "protected readback"
   ],
-  "claim_boundary": "Lease activation only. External results remain evidence received, not admitted mathematics."
+  "claim_boundary": "Lease activation only. External results remain evidence received, not admitted mathematics.",
+  "candidate_disposition": "CLOSED",
+  "completion": {
+    "protected_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
+    "readback": "PROTECTED_READBACK_CONFIRMED",
+    "completion_receipt": ".gcl/completions/OM26-H2-H7-WP01-LEASES/COMPLETION_RECEIPT.json",
+    "terminal_state": "SIX_LEASES_ACTIVE__RESULTS_PENDING"
+  },
+  "governed_artifacts": [
+    ".gcl/completions/OM26-H2-H7-WP01-LEASES/COMPLETION_RECEIPT.json"
+  ]
 }
