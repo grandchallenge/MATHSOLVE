@@ -7,18 +7,19 @@ H1-12 is the priority lane. H1-13 search tranches remain bounded negative route 
 Protected reductions now give:
 - no-parallel normalization;
 - conditional exclusion of q<=4;
-- q=5 reduced to three multiplicity profiles:
-  - 33333 with D2 in 3..10;
-  - 33334 with D2 in 5..9;
-  - 33344 with D2 in 6..7.
+- q=5 reduced by sector/charge replay and saturation geometry to:
+  - 33333 with D2 in 3..7;
+  - 33334 with D2 in {5,6}.
+- q=5 profile 33344 is excluded.
 
 The live score-95 residual is therefore:
-1. q=5 in one of those three profiles; or
-2. q>=6.
+1. q=5 profile 33333 in the stated D2 range;
+2. q=5 profile 33334 with D2=5 or 6; or
+3. q>=6.
 
-Next H1 action: resolve q=5 profile 33344 first. Quotient the surviving dense core graphs by permutations of equal-multiplicity vertices, then apply shared-ray saturation and extreme-core geometry. Treat 33334 and 33333 afterward.
+Next H1 action: resolve 33334 first. Quotient the D2=5,6 core graphs under permutation of the four triple cores while preserving the quadruple core, and locate the exact two-saturated-core role types.
 
-Keep q>=6 separate.
+Then treat 33333. Keep q>=6 separate.
 
 Do not resume generic coordinate or topology search. Any construction experiment must target one explicit surviving singular stratum and use the independent exact scorer before promotion.
 
