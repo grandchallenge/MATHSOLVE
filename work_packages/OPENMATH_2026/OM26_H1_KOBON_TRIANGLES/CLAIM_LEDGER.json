@@ -457,6 +457,20 @@
       ],
       "mathematical_effect": true,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-020",
+      "text": "Conditional on the protected saturated-triple separator lemma and predecessor q=5 fan/charging state space, profile 33334 is excluded. Its 60 retained labeled graphs quotient to five S4 orbits; neighbor independence leaves only K2,3, whose two saturated hubs would both lie inside the same leaf triangle and force a crossing among elementary D2 spokes.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__PROFILE_33334_EXCLUDED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_SATURATION_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_33334_CLOSURE.md",
+        "ci/validate_openmath_h1_12_q5_33334.py",
+        "ci/test_openmath_h1_12_q5_33334.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [

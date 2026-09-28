@@ -47,14 +47,14 @@
       "obligations": {
         "semantic_fidelity": "BASELINE_CONCORDANCE_PASS",
         "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
-        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_LE_4_EXCLUDED_SOURCE_CONDITIONAL__Q5_33333_OR_33334_OR_Q_GE_6",
-        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_Q5_SATURATION_REDUCED_SOURCE_CONDITIONAL",
+        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_LE_4_EXCLUDED_SOURCE_CONDITIONAL__Q5_33333_D2_3_7_OR_Q_GE_6",
+        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_Q5_33334_EXCLUDED_SOURCE_CONDITIONAL",
         "exact_computation": "H1_13_TRANCHES1_2_3_COMPLETE__NO_94__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
         "mathcert_handoff": "H1_02_AND_86_INTAKE_PROTECTED__93_SUCCESSOR_INTAKE_PROTECTED__CERT_EXECUTION_PENDING"
       },
-      "next_action": "Resolve q=5 profile 33334 at D2=5,6 by graph quotient and exact saturated-core role analysis; then treat 33333. Keep q>=6 separate."
+      "next_action": "Resolve q=5 profile 33333 across D2=3..7, preserving exact saturated-core and graph-orbit strata. Keep q>=6 separate."
     },
     {
       "hill_slot": "OM26-H2",
@@ -159,5 +159,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. Conditional on the named source-scoped fan/charging/saturation premises, q<=4 is excluded and q=5 is reduced to 33333 D2=3..7 or 33334 D2=5,6; q>=6 remains. No source-conditional reduction, finite replay, bounded negative search, or Cert intake is a hill-global upper-bound or certification claim."
+  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. Conditional on the named source-scoped fan/charging premises, q<=4 and q=5 profiles 33344/33334 are excluded. The live score-95 residual is q=5 profile 33333 with D2=3..7 or q>=6. No source-conditional reduction, finite replay, bounded negative search, or Cert intake is a hill-global upper-bound or certification claim."
 }
