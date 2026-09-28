@@ -4,7 +4,7 @@
   "campaign_id": "OPENMATH-2026",
   "hill_slot": "OM26-H1",
   "obligation": "H1-12",
-  "state": "Q_GE_5_OR_Q4_3333__SOURCE_CONDITIONAL",
+  "state": "Q_GE_5_OR_Q4_3333_12_NORMAL_FORMS__SOURCE_CONDITIONAL",
   "proved_reduction": {
     "statement": "Any finite hill arrangement and any finite set of its counted bounded triangular faces can be projectively transformed to an affine arrangement with no parallel line pairs while preserving all selected counted bounded triangular faces.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
@@ -13,14 +13,14 @@
   },
   "remaining_gap": {
     "simple_bound_value": 94,
-    "issue": "The source-scoped charging/fan extraction is not yet independently proved by GCL. Conditional on those premises, every q=4 profile except 3333 is excluded; profile 3334 is now fully excluded. All q>=5 cases also remain open.",
-    "target": "Resolve q=4 profile 3333 next, then derive q>=5 aggregate constraints; independently prove required geometric premises where possible, or construct/replay 95."
+    "issue": "The source-scoped charging/fan extraction is not yet independently proved by GCL. Conditional on those premises, q=4 is reduced to profile 3333, whose protected finite state set is now reduced from 344 labeled states to 108 states in 12 symmetry normal forms; q>=5 remains open.",
+    "target": "Resolve the six charge-equality 3333 normal forms first, beginning with D2=5 K4-e, then D2=4 and D2=3 equality forms; retain positive-slack forms separately, then derive q>=5 aggregate constraints."
   },
   "current_source_interval": {
     "lower": 93,
     "upper": 95
   },
-  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, q<=3 is excluded and the q=4 residual is reduced to profile 3333 alone; profile 3334 is fully excluded across D2=3,4,5. No hill-global <=94, optimality, or MATHCERT claim.",
+  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, q<=3 is excluded and q=4 is reduced to 12 profile-3333 normal forms; D2=6 is excluded by the blocked-target refinement. No hill-global <=94, optimality, or MATHCERT claim.",
   "source_conditional_reduction": {
     "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
@@ -80,6 +80,15 @@
     "finite_replay": "ci/validate_openmath_h1_12_3334_d2_5.py",
     "independent_component": "finite cyclic deductions and charge-capacity arithmetic",
     "source_scoped_component": "local no-long-run fan premise and clean-line charging map",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3333_normal_form": {
+    "statement": "Conditional on the named triple-point local fan premise and clean-line charging map, the protected 344 labeled profile-3333 states reduce to 108 states in exactly 12 S4 normal forms; no D2=6 state survives.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_NORMAL_FORM.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3333_normal_form.py",
+    "independent_component": "finite cyclic blocked-target enumeration and S4 quotient",
+    "source_scoped_component": "local no-two-consecutive-D1 premise and clean-line charging map",
     "mathematical_effect": true,
     "certification_effect": false
   }
