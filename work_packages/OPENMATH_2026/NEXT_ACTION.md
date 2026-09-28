@@ -9,18 +9,19 @@ Protected reductions now give:
 - conditional exclusion of q<=3;
 - complete conditional exclusion of every q=4 multiplicity profile except 3333;
 - all star-shaped and D2>=4 profile-3333 equality forms excluded;
-- the final K3+isolated equality arithmetic form reduced to two geometric orientation types.
+- the final K3+isolated equality arithmetic form reduced to Type P and Type C;
+- Type P excluded because two chargeable D1 targets share one unique clean transverse line.
 
-Both remaining equality types have:
-- a central counted D2 triangle ABC;
-- an exterior isolated triple core D;
-- exactly nine core-containing lines and no additional core-pair line.
+The sole remaining charge-equality orientation is Type C:
 
-The two types are:
-1. Type P: edge-selection multiplicities (2,1,0), one central edge selected by both endpoints;
-2. Type C: cyclic edge-selection multiplicities (1,1,1), every central edge selected exactly once.
+```
+central D2 triangle ABC,
+exterior isolated core D,
+edge-selection multiplicities (1,1,1),
+one selected endpoint on each central edge.
+```
 
-Next H1 action: analyze Type P first, then Type C.
+Next H1 action: resolve Type C.
 
 Keep the four positive-slack D2<=3 profile-3333 forms separate. Keep q>=5 separate.
 
