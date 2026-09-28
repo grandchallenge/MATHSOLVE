@@ -30,9 +30,9 @@ The local fan premise retained from the protected source-scoped H1-12 evidence s
 
 The convex-hull argument below is independently reconstructed; only that local fan premise retains source-conditional status.
 
-## Lemma — a hull core cannot be saturated
+## Lemma — an extreme core cannot be saturated
 
-Let `v` be a core point lying on the convex hull of the finite core set.
+Let `v` be an extreme point (a vertex) of the convex hull of the finite core set.
 
 All other core points lie in a closed half-plane bounded by some supporting line through `v`. No two core-directed rays from `v` can be antipodal while `v` is an extreme point: antipodal core points would put `v` between them on their common line.
 
@@ -47,7 +47,7 @@ This contradicts the local fan premise.
 Therefore:
 
 ```
-a convex-hull core cannot be saturated.
+a convex-hull vertex (extreme core) cannot be saturated.
 ```
 
 ## Corollary — at most one saturated core when D2 >= 5
@@ -121,6 +121,6 @@ The companion validator `ci/validate_openmath_h1_12_saturated_core.py` recompute
 
 This is a strict Solve-level residual reduction, not a hill-global upper bound and not a MATHCERT disposition.
 
-The convex-hull argument is independently reconstructed. The conclusion remains source-conditional because it invokes the local no-long-run fan premise. The global clean-line/fan extraction used earlier in H1-12 also remains outside independent GCL certification.
+The extreme-point half-plane argument is independently reconstructed. The conclusion remains source-conditional because it invokes the local no-long-run fan premise. The global clean-line/fan extraction used earlier in H1-12 also remains outside independent GCL certification.
 
 No conclusion `T<=94` follows yet: the four-core profiles `3333` and `3334`, together with the `q>=5` residual, remain open.

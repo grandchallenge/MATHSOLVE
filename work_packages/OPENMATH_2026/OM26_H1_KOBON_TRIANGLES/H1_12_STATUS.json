@@ -4,7 +4,7 @@
   "campaign_id": "OPENMATH-2026",
   "hill_slot": "OM26-H1",
   "obligation": "H1-12",
-  "state": "Q_GE_5_OR_Q4_3333_3334__SOURCE_CONDITIONAL",
+  "state": "Q_GE_5_OR_Q4_3333_OR_3334_NINE_ROLE_TYPES__SOURCE_CONDITIONAL",
   "proved_reduction": {
     "statement": "Any finite hill arrangement and any finite set of its counted bounded triangular faces can be projectively transformed to an affine arrangement with no parallel line pairs while preserving all selected counted bounded triangular faces.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
@@ -13,14 +13,14 @@
   },
   "remaining_gap": {
     "simple_bound_value": 94,
-    "issue": "The source-scoped clean-line charging/fan extraction is not yet independently proved by GCL. Conditional on the named local fan premise, q=4 profiles 3335, 3344, and 3444 are excluded; q=4 profiles 3333 and 3334 and all q>=5 cases remain open.",
-    "target": "Resolve q=4 profile 3334, then 3333, derive q>=5 aggregate constraints, independently prove the required geometric premises, or construct/replay 95."
+    "issue": "The source-scoped charging/fan extraction is not yet independently proved by GCL. Conditional on those premises, q=4 is reduced to 3333 or 3334. The 3334 profile is now a nine-role-type finite geometric problem split across D2=3,4,5; q>=5 also remains open.",
+    "target": "Resolve the 3334 D2=3 star role-types first, then the D2=4 and D2=5 types, followed by 3333 and q>=5; independently prove required geometric premises where possible, or construct/replay 95."
   },
   "current_source_interval": {
     "lower": 93,
     "upper": 95
   },
-  "claim_boundary": "H1-12 is strictly narrowed, not closed. Parallelism is eliminated. Conditional on the named source-scoped premises, q<=3 is excluded and q=4 is reduced to profiles 3333 or 3334; q>=5 remains open. The convex-hull part of the saturated-core reduction is independently reconstructed, but the local no-long-run fan premise remains source-scoped. No hill-global <=94, optimality, or MATHCERT claim.",
+  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, q<=3 is excluded and q=4 is reduced to 3333 or 3334; the 3334 branch is quotiented to nine role-types. The extreme-point and D2-noncrossing observations are independently reconstructed; local fan/charging premises retain their source scope. No hill-global <=94, optimality, or MATHCERT claim.",
   "source_conditional_reduction": {
     "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
@@ -39,11 +39,20 @@
     "certification_effect": false
   },
   "saturated_core_reduction": {
-    "statement": "Conditional on the named local no-long-run fan premise, a convex-hull core cannot be saturated. For four cores with D2>=5 this permits at most one saturated core. The protected q=4 finite replay then excludes profiles 3335, 3344, and 3444, leaving only 3333 and 3334.",
+    "statement": "Conditional on the named local no-long-run fan premise, a convex-hull vertex (extreme core) cannot be saturated. For four noncollinear cores with D2>=5, at least three cores are extreme, so at most one core may be saturated. The protected q=4 finite replay then excludes profiles 3335, 3344, and 3444, leaving only 3333 and 3334.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_SATURATED_CORE_HULL_REDUCTION.md",
     "finite_replay": "ci/validate_openmath_h1_12_saturated_core.py",
-    "independent_component": "convex-hull half-plane argument and finite replay",
+    "independent_component": "extreme-point half-plane argument and finite replay",
     "source_scoped_component": "local no-long-run fan premise",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3334_normal_form": {
+    "statement": "The 67 saturated-core-filtered finite states with multiplicities 3334 collapse, modulo permutation of the three triple cores, to nine graph/role types: two D2=3 stars, one non-saturated D2=4 cycle, three D2=4 star-plus-outer-edge types, and three D2=5 K4-minus-outer-pair types.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_NORMAL_FORM.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3334_normal_form.py",
+    "independent_component": "finite quotient and noncrossing of elementary D2 segments",
+    "source_scoped_component": "saturated hubs are non-extreme via the local no-long-run fan premise",
     "mathematical_effect": true,
     "certification_effect": false
   }
