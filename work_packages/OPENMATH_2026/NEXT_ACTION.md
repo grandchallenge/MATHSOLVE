@@ -8,14 +8,16 @@ Protected reductions now give:
 - no-parallel normalization;
 - conditional exclusion of q<=3;
 - complete conditional exclusion of every q=4 multiplicity profile except 3333;
-- profile 3333 reduced to 48 labeled states in eight symmetry normal forms;
+- profile 3333 reduced to 45 labeled states in seven symmetry normal forms;
 - saturated triple hubs force D2=3 and a six-line core-pair skeleton;
-- no D2>=5 profile-3333 form remains;
-- D2=4 is reduced to the non-saturated C4 form.
+- no D2>=4 profile-3333 form remains.
 
-Four normal forms exactly saturate the strongest current charge bound.
+Three normal forms exactly saturate the strongest current charge bound, all at D2=3:
+- non-saturated star;
+- higher-count saturated star;
+- triangle plus isolated core.
 
-Next H1 action: resolve the equality forms, beginning with the D2=4 C4, then the three tight D2=3 forms (non-saturated star, higher-count saturated star, and triangle-plus-isolated core).
+Next H1 action: resolve those three equality forms, preserving their distinct geometry and charge-equality consequences.
 
 Keep the positive-slack D2<=3 forms separate. Keep q>=5 separate.
 

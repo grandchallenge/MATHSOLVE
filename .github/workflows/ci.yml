@@ -94,6 +94,10 @@ jobs:
         run: |
           python ci/validate_openmath_h1_12_3333_saturated_hub.py
           python -m unittest ci/test_openmath_h1_12_3333_saturated_hub.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 D2=4 C4 exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_c4.py
+          python -m unittest ci/test_openmath_h1_12_3333_c4.py -v
       - name: Validate recursive campaign manifests and Cert boundaries
         run: |
           python ci/validate_campaign_manifests.py
