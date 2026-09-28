@@ -138,6 +138,18 @@
       ],
       "mathematical_effect": false,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-BND-001",
+      "text": "Protected Forge source audit supports the research interval 93 <= K_hill(18) <= 95; the stronger value 94 is proved by the cited simple-arrangement theorem but is not yet imported as a hill-global bound.",
+      "type": "SOURCE_BOUND_STATUS",
+      "state": "FORGE_SOURCE_SCOPE_ADMITTED__MATHCERT_NOT_REQUESTED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BOUND_SOURCE_STATUS.json",
+        "grandchallenge/MATHFORGE@9eb438b658000f299240940d4468d7eb52ed1e11:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/GENERAL_BOUND_AUDIT.md"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [

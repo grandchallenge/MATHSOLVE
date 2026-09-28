@@ -1,15 +1,12 @@
 # OPENMATH-2026 next action
 
-OM26-H1 remains at `campaign-best-observed = 93`.
+OM26-H1 protected state now supports the source-grounded interval 93 <= K_hill(18) <= 95.
 
-H1-13 tranche 1 completed a bounded exact search of 15,246 one-line coordinate-wall candidates without finding 94. This closes only that local route neighborhood.
+- 93 is an exact H1-07-replayed rational construction.
+- 95 is the protected Forge source-matched general upper bound.
+- 94 remains a simple-arrangement theorem/current status target whose transfer to the hill broader degeneracy semantics is open.
+- H1-13 tranche 1 found no score above 93 in 15,246 exact one-line wall candidates.
 
-Next OM26-H1 work:
+Next OM26-H1 work is two independent lanes: H1-12 bound transfer/reconstruction and H1-13 tranche 2 nonlocal search for 94/95.
 
-1. continue H1-12, the hill-valid 94 upper-bound audit;
-2. launch a nonlocal 94 search based on combinatorial/order types or coordinated multi-line moves;
-3. keep the 93 successor MATHCERT intake independent and pending review on PR #342.
-
-Do not infer optimality from the negative search result.
-
-OM26-H2 through OM26-H6 remain blocked pending exact Forge source locks.
+MATHCERT PR #342 remains pending required independent review. OM26-H2 through OM26-H6 remain source-lock pending.
