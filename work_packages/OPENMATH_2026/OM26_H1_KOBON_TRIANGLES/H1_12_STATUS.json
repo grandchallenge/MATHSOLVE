@@ -4,7 +4,7 @@
   "campaign_id": "OPENMATH-2026",
   "hill_slot": "OM26-H1",
   "obligation": "H1-12",
-  "state": "Q_GE_6_OR_Q5_33333_D2_3_7__SOURCE_CONDITIONAL",
+  "state": "Q_GE_6_OR_Q5_33333_K3_PLUS_TWO_ISOLATED_EQUALITY__SOURCE_CONDITIONAL",
   "proved_reduction": {
     "statement": "Any finite hill arrangement and any finite set of its counted bounded triangular faces can be projectively transformed to an affine arrangement with no parallel line pairs while preserving all selected counted bounded triangular faces.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
@@ -13,14 +13,14 @@
   },
   "remaining_gap": {
     "simple_bound_value": 94,
-    "issue": "Conditional on the named source-scoped premises, q<=4 is excluded and q=5 profile 33334 is excluded after a five-orbit saturated-core quotient and the final K2,3 straight-line spoke contradiction. The only q=5 residual is 33333 with D2=3..7. All q>=6 cases remain open.",
-    "target": "Resolve q=5 profile 33333 next, preserving D2=3..7 strata and saturated-core roles; keep q>=6 separate."
+    "issue": "Conditional on the named source-scoped premises, q<=4 is excluded and the q=5 profile 33333 residual is reduced from 595 labeled graphs / 15 S5 orbits to one exact equality graph: K3 plus two isolated triple cores, with D2=3,D1=10,U=1,blocked=6,clean=capacity=6. All q>=6 cases remain open.",
+    "target": "Resolve the q=5 K3+two-isolated equality geometry next; keep q>=6 separate."
   },
   "current_source_interval": {
     "lower": 93,
     "upper": 95
   },
-  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, any score-95 witness has either q=5 profile 33333 with 3<=D2<=7 or q>=6. No hill-global <=94, optimality, or MATHCERT claim.",
+  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, any score-95 witness has either q=5 in the single K3+two-isolated equality geometry or q>=6. No hill-global <=94, optimality, or MATHCERT claim.",
   "source_conditional_reduction": {
     "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
@@ -196,6 +196,15 @@
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_33334_CLOSURE.md",
     "finite_replay": "ci/validate_openmath_h1_12_q5_33334.py",
     "independent_component": "S4 graph quotient, saturated-role extraction, neighbor-independence filter, and K2,3 straight-line crossing argument",
+    "source_scoped_component": "saturated-triple separator lemma and predecessor q=5 fan/charging state space",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q5_33333_reduction": {
+    "statement": "The retained q=5 profile 33333 states quotient to 15 S5 graph orbits. Saturated-triple neighbor independence leaves four role cases; strengthened star counting, separator-incidence exhaustion, and the K2,3 crossing obstruction exclude three, leaving only K3 plus two isolated triple cores at exact charge equality.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_33333_REDUCTION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_q5_33333.py",
+    "independent_component": "S5 quotient, saturated-role filtering, star line count, separator-incidence exhaustion, and K2,3 crossing argument",
     "source_scoped_component": "saturated-triple separator lemma and predecessor q=5 fan/charging state space",
     "mathematical_effect": true,
     "certification_effect": false
