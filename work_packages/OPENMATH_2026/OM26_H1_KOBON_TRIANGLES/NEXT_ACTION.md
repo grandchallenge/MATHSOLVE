@@ -1,22 +1,10 @@
 # OM26-H1 next action
 
-R-H reconstruction and H1-07 replay are complete.
+Current protected campaign leader: 93.
 
-Verified Solve state:
+Two independent routes are now active:
 
-- current `campaign-best-observed = 93` at `n=18`;
-- exact candidate SHA-256: `e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5`;
-- 282 sourced crossing-order adjacency constraints PASS;
-- three intended parallel pairs PASS;
-- independent exact direct-interior oracle = 93;
-- authenticated AutoLab public evaluator = 93.
+1. **H1-12 / R-J:** audit or reconstruct a 94 upper bound valid for the hill's permitted parallelism and multiple concurrence. The simple-arrangement theorem is not imported directly.
+2. **H1-13 / R-K:** run a bounded exact one-line coordinate-wall sweep around the verified 93 arrangement. If a 94 candidate appears, require independent direct-oracle and authenticated AutoLab replay before promotion.
 
-Next procedural action:
-
-> Protect this tranche and bind `MATHCERT_HANDOFF_RH_BADER93.md` to the protected Solve commit as a successor Cert intake.
-
-Next mathematical action:
-
-> Audit whether the published simple-arrangement upper bound 94 transfers to the hill's allowed degeneracy semantics, while running a narrowly targeted exact search for a 94-triangle construction. Treat these as separate routes: a bound proof cannot be inferred from failure to find 94, and a 94 construction would not by itself prove optimality until the bound-transfer question is closed.
-
-No global best-known, optimality, novelty, or official competition claim is authorized.
+Search failure cannot close H1-12. A score-94 construction cannot establish optimality until H1-12 is independently closed.
