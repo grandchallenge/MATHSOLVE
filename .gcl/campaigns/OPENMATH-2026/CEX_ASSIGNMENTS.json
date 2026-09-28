@@ -14,7 +14,12 @@
     "receipt_blob_sha1": "f6c7c7e36aa0657f8eec51da8ce9461af457ee04",
     "normalized_sha256": "a7f6e48a61aaa3b58614e5c7748716f8158147c337b4986c2e9c2d6b603de6f6",
     "observation_time": "2026-09-28T10:05:25Z",
-    "rule": "These six organizer IDs are authoritative members of the unresolved source pool. Their order does not define H2-H7 slot correspondence."
+    "rule": "These six organizer IDs are authoritative members of the unresolved source pool. Their order does not define H2-H7 slot correspondence.",
+    "state": "CLOSED__PROTECTED_SOURCE_AND_SEMANTIC_PACKS_IMPORTED",
+    "forge_release_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+    "slot_binding_blob_sha1": "e5eab24f88bf904c5600d9f1c7181d54a89847d8",
+    "semantic_pack_blob_sha1": "aaf8aa9b65d2218943b5dc9f3840cb16751a1ef0",
+    "semantic_readback_blob_sha1": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a"
   },
   "discovery": {
     "entrypoint_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
@@ -40,22 +45,35 @@
     "release_rule": "Lease release or reassignment requires another protected registry mutation; issue comments or chat text do not alter the lease."
   },
   "slot_binding_policy": {
-    "current_mapping": "UNRESOLVED",
-    "rule": "Source acquisition is assigned by exact organizer hill ID, never by H2-H7 list position. Slot binding is a separate protected act after source lock.",
-    "free_slots": [
-      "OM26-H2",
-      "OM26-H3",
-      "OM26-H4",
-      "OM26-H5",
-      "OM26-H6",
-      "OM26-H7"
-    ]
+    "current_mapping": {
+      "OM26-H2": "alejandrozu/busy-beaver-6-certificates",
+      "OM26-H3": "alejandrozu/clique-cluster-ramsey-multiplicity",
+      "OM26-H4": "alejandrozu/collatz-modular-descent",
+      "OM26-H5": "alejandrozu/grothendieck-constant-witnesses",
+      "OM26-H6": "alejandrozu/matrix-multiplication-tensor-3x3",
+      "OM26-H7": "ottogin/erdos-3"
+    },
+    "rule": "H2-H7 are bound by protected GCL internal deterministic allocation recorded in MATHFORGE SLOT_BINDING.json; organizer ordinal meaning is not asserted.",
+    "free_slots": [],
+    "forge_binding": {
+      "repository": "grandchallenge/MATHFORGE",
+      "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+      "path": "reports/discovery/openmath_2026/SLOT_BINDING.json",
+      "blob_sha1": "e5eab24f88bf904c5600d9f1c7181d54a89847d8"
+    }
   },
   "mathematics_release_policy": {
-    "rule": "No H2-H7 hill-specific mathematical assignment may enter AVAILABLE_FOR_LEASE or LEASED before a protected MATHFORGE source lock and explicit protected slot binding exist for that hill.",
+    "rule": "H2-H7 provider prerequisites are now protected and Solve-released by MATHFORGE. No H2-H7 mathematical assignment becomes executable until the source-acquisition CEX completion receipt is protected and a successor protected registry mutation instantiates that assignment.",
     "current_math_jobs": 0,
+    "h2_h7_provider_release": "IMPORTED__CEX_COMPLETION_RECEIPT_PENDING",
+    "forge_release": {
+      "repository": "grandchallenge/MATHFORGE",
+      "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+      "hill_source_lock_ledger_blob": "2334bb7e67b5863c2110b6e21b6e47cfd5061d4d",
+      "semantic_readback_blob": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a"
+    },
     "h1_released_math_jobs": 1,
-    "h1_rule": "OM26-H1 is independently source-locked and Solve-released; bounded mathematical CEX jobs may be leased under their own protected operation contracts."
+    "h1_rule": "OM26-H1 remains independently governed by its protected lease."
   },
   "return_policy": {
     "rule": "When an assignment becomes LEASED, the protected lease/dispatch must expose absolute dispatch and return locators. Repository-relative shorthand is insufficient for a zero-context worker.",
@@ -67,11 +85,11 @@
       "assignment_id": "OM26-SRC-CLIQUE-CLUSTER-RAMSEY-MULTIPLICITY",
       "class": "SOURCE_ACQUISITION",
       "external_hill_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
-      "slot_binding": null,
-      "state": "AVAILABLE_FOR_LEASE",
+      "slot_binding": "OM26-H3",
+      "state": "CLOSED",
       "priority": "P0",
       "lease": {
-        "state": "UNCLAIMED",
+        "state": "CLOSED",
         "dispatch_id": null,
         "agent_ref": null,
         "dispatch_issue_number": null,
@@ -82,32 +100,47 @@
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-SRC-CLIQUE-CLUSTER-RAMSEY-MULTIPLICITY.md",
       "prerequisites": {
         "authoritative_list_receipt": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
-        "protected_source_lock_required": false,
-        "source_lock": null
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "path": "reports/discovery/openmath_2026/unassigned_sources/clique-cluster-ramsey-multiplicity/SOURCE_LOCK.json",
+          "blob_sha1": "11d2a15fac721495bc0cc9b7f638a364ad55a719"
+        },
+        "semantic_pack": {
+          "repository": "grandchallenge/MATHFORGE",
+          "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "source_map": "reports/discovery/openmath_2026/hills/OM26-H3_CLIQUE_CLUSTER_RAMSEY_MULTIPLICITY/SOURCE_MAP.md",
+          "status_triage": "reports/discovery/openmath_2026/hills/OM26-H3_CLIQUE_CLUSTER_RAMSEY_MULTIPLICITY/STATUS_TRIAGE.md",
+          "evaluator_contract": "reports/discovery/openmath_2026/hills/OM26-H3_CLIQUE_CLUSTER_RAMSEY_MULTIPLICITY/EVALUATOR_CONTRACT.md"
+        },
+        "solve_release": true
       },
       "permissions": {
-        "source_reconnaissance": true,
+        "source_reconnaissance": false,
         "hill_specific_mathematics": false,
         "competition_submission": false,
         "certification": false,
         "canonical_claim_mutation": false
       },
       "completion": [
-        "ACQUIRED_AUTHORITATIVE_SOURCE_RECORD",
-        "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
+        "SOURCE_LOCK_PROTECTED",
+        "SLOT_BINDING_PROTECTED",
+        "SEMANTIC_PACK_PROTECTED",
+        "SOLVE_PROVIDER_RELEASE_PROTECTED"
       ],
-      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments.",
+      "successor_gate": "Source acquisition is complete. Hill-specific mathematical assignments may be instantiated only after the OM26-H2-H7-SOURCE-ACQ completion receipt is protected.",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-CLIQUE-CLUSTER-RAMSEY-MULTIPLICITY.md"
     },
     {
       "assignment_id": "OM26-SRC-MATRIX-MULTIPLICATION-TENSOR-3X3",
       "class": "SOURCE_ACQUISITION",
       "external_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
-      "slot_binding": null,
-      "state": "AVAILABLE_FOR_LEASE",
+      "slot_binding": "OM26-H6",
+      "state": "CLOSED",
       "priority": "P0",
       "lease": {
-        "state": "UNCLAIMED",
+        "state": "CLOSED",
         "dispatch_id": null,
         "agent_ref": null,
         "dispatch_issue_number": null,
@@ -118,32 +151,47 @@
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-SRC-MATRIX-MULTIPLICATION-TENSOR-3X3.md",
       "prerequisites": {
         "authoritative_list_receipt": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
-        "protected_source_lock_required": false,
-        "source_lock": null
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "path": "reports/discovery/openmath_2026/unassigned_sources/matrix-multiplication-tensor-3x3/SOURCE_LOCK.json",
+          "blob_sha1": "a7ec3fc86696698ba729632ae16397e05189221b"
+        },
+        "semantic_pack": {
+          "repository": "grandchallenge/MATHFORGE",
+          "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "source_map": "reports/discovery/openmath_2026/hills/OM26-H6_MATRIX_MULTIPLICATION_TENSOR_3X3/SOURCE_MAP.md",
+          "status_triage": "reports/discovery/openmath_2026/hills/OM26-H6_MATRIX_MULTIPLICATION_TENSOR_3X3/STATUS_TRIAGE.md",
+          "evaluator_contract": "reports/discovery/openmath_2026/hills/OM26-H6_MATRIX_MULTIPLICATION_TENSOR_3X3/EVALUATOR_CONTRACT.md"
+        },
+        "solve_release": true
       },
       "permissions": {
-        "source_reconnaissance": true,
+        "source_reconnaissance": false,
         "hill_specific_mathematics": false,
         "competition_submission": false,
         "certification": false,
         "canonical_claim_mutation": false
       },
       "completion": [
-        "ACQUIRED_AUTHORITATIVE_SOURCE_RECORD",
-        "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
+        "SOURCE_LOCK_PROTECTED",
+        "SLOT_BINDING_PROTECTED",
+        "SEMANTIC_PACK_PROTECTED",
+        "SOLVE_PROVIDER_RELEASE_PROTECTED"
       ],
-      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments.",
+      "successor_gate": "Source acquisition is complete. Hill-specific mathematical assignments may be instantiated only after the OM26-H2-H7-SOURCE-ACQ completion receipt is protected.",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-MATRIX-MULTIPLICATION-TENSOR-3X3.md"
     },
     {
       "assignment_id": "OM26-SRC-GROTHENDIECK-CONSTANT-WITNESSES",
       "class": "SOURCE_ACQUISITION",
       "external_hill_id": "alejandrozu/grothendieck-constant-witnesses",
-      "slot_binding": null,
-      "state": "AVAILABLE_FOR_LEASE",
+      "slot_binding": "OM26-H5",
+      "state": "CLOSED",
       "priority": "P0",
       "lease": {
-        "state": "UNCLAIMED",
+        "state": "CLOSED",
         "dispatch_id": null,
         "agent_ref": null,
         "dispatch_issue_number": null,
@@ -154,32 +202,47 @@
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-SRC-GROTHENDIECK-CONSTANT-WITNESSES.md",
       "prerequisites": {
         "authoritative_list_receipt": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
-        "protected_source_lock_required": false,
-        "source_lock": null
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "path": "reports/discovery/openmath_2026/unassigned_sources/grothendieck-constant-witnesses/SOURCE_LOCK.json",
+          "blob_sha1": "c5c72c4b00fdf1d12eafa6673ed0752a76d66a26"
+        },
+        "semantic_pack": {
+          "repository": "grandchallenge/MATHFORGE",
+          "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "source_map": "reports/discovery/openmath_2026/hills/OM26-H5_GROTHENDIECK_CONSTANT_WITNESSES/SOURCE_MAP.md",
+          "status_triage": "reports/discovery/openmath_2026/hills/OM26-H5_GROTHENDIECK_CONSTANT_WITNESSES/STATUS_TRIAGE.md",
+          "evaluator_contract": "reports/discovery/openmath_2026/hills/OM26-H5_GROTHENDIECK_CONSTANT_WITNESSES/EVALUATOR_CONTRACT.md"
+        },
+        "solve_release": true
       },
       "permissions": {
-        "source_reconnaissance": true,
+        "source_reconnaissance": false,
         "hill_specific_mathematics": false,
         "competition_submission": false,
         "certification": false,
         "canonical_claim_mutation": false
       },
       "completion": [
-        "ACQUIRED_AUTHORITATIVE_SOURCE_RECORD",
-        "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
+        "SOURCE_LOCK_PROTECTED",
+        "SLOT_BINDING_PROTECTED",
+        "SEMANTIC_PACK_PROTECTED",
+        "SOLVE_PROVIDER_RELEASE_PROTECTED"
       ],
-      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments.",
+      "successor_gate": "Source acquisition is complete. Hill-specific mathematical assignments may be instantiated only after the OM26-H2-H7-SOURCE-ACQ completion receipt is protected.",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-GROTHENDIECK-CONSTANT-WITNESSES.md"
     },
     {
       "assignment_id": "OM26-SRC-COLLATZ-MODULAR-DESCENT",
       "class": "SOURCE_ACQUISITION",
       "external_hill_id": "alejandrozu/collatz-modular-descent",
-      "slot_binding": null,
-      "state": "AVAILABLE_FOR_LEASE",
+      "slot_binding": "OM26-H4",
+      "state": "CLOSED",
       "priority": "P0",
       "lease": {
-        "state": "UNCLAIMED",
+        "state": "CLOSED",
         "dispatch_id": null,
         "agent_ref": null,
         "dispatch_issue_number": null,
@@ -190,32 +253,47 @@
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-SRC-COLLATZ-MODULAR-DESCENT.md",
       "prerequisites": {
         "authoritative_list_receipt": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
-        "protected_source_lock_required": false,
-        "source_lock": null
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "path": "reports/discovery/openmath_2026/unassigned_sources/collatz-modular-descent/SOURCE_LOCK.json",
+          "blob_sha1": "4ec9e0cdad3bc572b4577809d0323f9c670a379c"
+        },
+        "semantic_pack": {
+          "repository": "grandchallenge/MATHFORGE",
+          "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "source_map": "reports/discovery/openmath_2026/hills/OM26-H4_COLLATZ_MODULAR_DESCENT/SOURCE_MAP.md",
+          "status_triage": "reports/discovery/openmath_2026/hills/OM26-H4_COLLATZ_MODULAR_DESCENT/STATUS_TRIAGE.md",
+          "evaluator_contract": "reports/discovery/openmath_2026/hills/OM26-H4_COLLATZ_MODULAR_DESCENT/EVALUATOR_CONTRACT.md"
+        },
+        "solve_release": true
       },
       "permissions": {
-        "source_reconnaissance": true,
+        "source_reconnaissance": false,
         "hill_specific_mathematics": false,
         "competition_submission": false,
         "certification": false,
         "canonical_claim_mutation": false
       },
       "completion": [
-        "ACQUIRED_AUTHORITATIVE_SOURCE_RECORD",
-        "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
+        "SOURCE_LOCK_PROTECTED",
+        "SLOT_BINDING_PROTECTED",
+        "SEMANTIC_PACK_PROTECTED",
+        "SOLVE_PROVIDER_RELEASE_PROTECTED"
       ],
-      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments.",
+      "successor_gate": "Source acquisition is complete. Hill-specific mathematical assignments may be instantiated only after the OM26-H2-H7-SOURCE-ACQ completion receipt is protected.",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-COLLATZ-MODULAR-DESCENT.md"
     },
     {
       "assignment_id": "OM26-SRC-BUSY-BEAVER-6-CERTIFICATES",
       "class": "SOURCE_ACQUISITION",
       "external_hill_id": "alejandrozu/busy-beaver-6-certificates",
-      "slot_binding": null,
-      "state": "AVAILABLE_FOR_LEASE",
+      "slot_binding": "OM26-H2",
+      "state": "CLOSED",
       "priority": "P0",
       "lease": {
-        "state": "UNCLAIMED",
+        "state": "CLOSED",
         "dispatch_id": null,
         "agent_ref": null,
         "dispatch_issue_number": null,
@@ -226,32 +304,47 @@
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-SRC-BUSY-BEAVER-6-CERTIFICATES.md",
       "prerequisites": {
         "authoritative_list_receipt": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
-        "protected_source_lock_required": false,
-        "source_lock": null
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "path": "reports/discovery/openmath_2026/unassigned_sources/busy-beaver-6-certificates/SOURCE_LOCK.json",
+          "blob_sha1": "d590cf562f562a81df64d403ff5d9aa01e25626c"
+        },
+        "semantic_pack": {
+          "repository": "grandchallenge/MATHFORGE",
+          "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "source_map": "reports/discovery/openmath_2026/hills/OM26-H2_BUSY_BEAVER_6_CERTIFICATES/SOURCE_MAP.md",
+          "status_triage": "reports/discovery/openmath_2026/hills/OM26-H2_BUSY_BEAVER_6_CERTIFICATES/STATUS_TRIAGE.md",
+          "evaluator_contract": "reports/discovery/openmath_2026/hills/OM26-H2_BUSY_BEAVER_6_CERTIFICATES/EVALUATOR_CONTRACT.md"
+        },
+        "solve_release": true
       },
       "permissions": {
-        "source_reconnaissance": true,
+        "source_reconnaissance": false,
         "hill_specific_mathematics": false,
         "competition_submission": false,
         "certification": false,
         "canonical_claim_mutation": false
       },
       "completion": [
-        "ACQUIRED_AUTHORITATIVE_SOURCE_RECORD",
-        "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
+        "SOURCE_LOCK_PROTECTED",
+        "SLOT_BINDING_PROTECTED",
+        "SEMANTIC_PACK_PROTECTED",
+        "SOLVE_PROVIDER_RELEASE_PROTECTED"
       ],
-      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments.",
+      "successor_gate": "Source acquisition is complete. Hill-specific mathematical assignments may be instantiated only after the OM26-H2-H7-SOURCE-ACQ completion receipt is protected.",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-BUSY-BEAVER-6-CERTIFICATES.md"
     },
     {
       "assignment_id": "OM26-SRC-ERDOS-3",
       "class": "SOURCE_ACQUISITION",
       "external_hill_id": "ottogin/erdos-3",
-      "slot_binding": null,
-      "state": "AVAILABLE_FOR_LEASE",
+      "slot_binding": "OM26-H7",
+      "state": "CLOSED",
       "priority": "P0",
       "lease": {
-        "state": "UNCLAIMED",
+        "state": "CLOSED",
         "dispatch_id": null,
         "agent_ref": null,
         "dispatch_issue_number": null,
@@ -262,21 +355,36 @@
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-SRC-ERDOS-3.md",
       "prerequisites": {
         "authoritative_list_receipt": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
-        "protected_source_lock_required": false,
-        "source_lock": null
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "path": "reports/discovery/openmath_2026/unassigned_sources/erdos-3/SOURCE_LOCK.json",
+          "blob_sha1": "2e3551cf7be57f1920382296bbb0d6ebea4379d6"
+        },
+        "semantic_pack": {
+          "repository": "grandchallenge/MATHFORGE",
+          "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "source_map": "reports/discovery/openmath_2026/hills/OM26-H7_ERDOS_3/SOURCE_MAP.md",
+          "status_triage": "reports/discovery/openmath_2026/hills/OM26-H7_ERDOS_3/STATUS_TRIAGE.md",
+          "evaluator_contract": "reports/discovery/openmath_2026/hills/OM26-H7_ERDOS_3/EVALUATOR_CONTRACT.md"
+        },
+        "solve_release": true
       },
       "permissions": {
-        "source_reconnaissance": true,
+        "source_reconnaissance": false,
         "hill_specific_mathematics": false,
         "competition_submission": false,
         "certification": false,
         "canonical_claim_mutation": false
       },
       "completion": [
-        "ACQUIRED_AUTHORITATIVE_SOURCE_RECORD",
-        "PRECISE_EXTERNAL_ACQUISITION_BLOCKER"
+        "SOURCE_LOCK_PROTECTED",
+        "SLOT_BINDING_PROTECTED",
+        "SEMANTIC_PACK_PROTECTED",
+        "SOLVE_PROVIDER_RELEASE_PROTECTED"
       ],
-      "successor_gate": "After a protected MATHFORGE source lock exists, GCL may explicitly bind this hill to one free OM26-H2..H7 slot and only then instantiate hill-specific mathematical assignments.",
+      "successor_gate": "Source acquisition is complete. Hill-specific mathematical assignments may be instantiated only after the OM26-H2-H7-SOURCE-ACQ completion receipt is protected.",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-ERDOS-3.md"
     },
     {
