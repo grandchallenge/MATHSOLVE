@@ -4,7 +4,7 @@
   "campaign_id": "OPENMATH-2026",
   "hill_slot": "OM26-H1",
   "obligation": "H1-12",
-  "state": "Q_GE_5_OR_Q4_3333_3_FORMS_D2_LE_2__SOURCE_CONDITIONAL",
+  "state": "Q_GE_5_ONLY__SOURCE_CONDITIONAL",
   "proved_reduction": {
     "statement": "Any finite hill arrangement and any finite set of its counted bounded triangular faces can be projectively transformed to an affine arrangement with no parallel line pairs while preserving all selected counted bounded triangular faces.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
@@ -13,14 +13,14 @@
   },
   "remaining_gap": {
     "simple_bound_value": 94,
-    "issue": "Conditional on the named source-scoped premises, the D2=3 P4 positive-slack form is excluded. The four-core residual now consists of three profile-3333 forms with D2<=2: single edge, P3+isolated, and 2K2, totaling 21 labeled states. q>=5 remains open.",
-    "target": "Resolve D2=2 P3+isolated next, then D2=2 2K2 and D2=1 single edge; keep q>=5 separate."
+    "issue": "Conditional on the named source-scoped triple-point local fan premise and clean-line charging map, the entire q=4 score-95 residual is excluded. Any normalized n=18,T=95 witness must have at least five finite multiple points.",
+    "target": "Derive and replay q>=5 aggregate multiplicity/core-incidence constraints, prioritizing triple/quadruple-heavy profiles; independently prove required geometric premises where possible, or construct/replay 95."
   },
   "current_source_interval": {
     "lower": 93,
     "upper": 95
   },
-  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, q=4 is reduced to three profile-3333 forms / 21 labeled states, all with D2<=2. No hill-global <=94, optimality, or MATHCERT claim.",
+  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, q<=4 is excluded after no-parallel normalization; any score-95 witness must have q>=5 finite multiple points. No hill-global <=94, optimality, or MATHCERT claim.",
   "source_conditional_reduction": {
     "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
@@ -161,6 +161,15 @@
     "finite_replay": "ci/validate_openmath_h1_12_3333_p4.py",
     "independent_component": "three-case blocked-target/core-incidence accounting",
     "source_scoped_component": "triple-point local fan premise and clean-line charging map",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q4_low_d2_sector_closure": {
+    "statement": "Requiring D1/D2 shared-ray labels to arise from actual triangular sectors sharpens triple-point blocked minima to 2 for local counts (d1,d2)=(2,1) and (2,2). This excludes the remaining D2=1 single-edge, D2=2 P3+isolated, and D2=2 2K2 forms; the protected P4 exclusion is independently strengthened as a cross-check.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q4_LOW_D2_SECTOR_CLOSURE.md",
+    "finite_replay": "ci/validate_openmath_h1_12_q4_sector_closure.py",
+    "independent_component": "sector-to-shared-ray identity and finite sector enumeration",
+    "source_scoped_component": "triple-point no-consecutive-D1 premise and clean-line charging map",
     "mathematical_effect": true,
     "certification_effect": false
   }
