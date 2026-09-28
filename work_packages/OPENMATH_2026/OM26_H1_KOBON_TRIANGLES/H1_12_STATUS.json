@@ -4,7 +4,7 @@
   "campaign_id": "OPENMATH-2026",
   "hill_slot": "OM26-H1",
   "obligation": "H1-12",
-  "state": "Q_GE_4_RESIDUAL__SOURCE_CONDITIONAL",
+  "state": "Q_GE_5_OR_FIVE_Q4_PROFILES__SOURCE_CONDITIONAL",
   "proved_reduction": {
     "statement": "Any finite hill arrangement and any finite set of its counted bounded triangular faces can be projectively transformed to an affine arrangement with no parallel line pairs while preserving all selected counted bounded triangular faces.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
@@ -13,19 +13,27 @@
   },
   "remaining_gap": {
     "simple_bound_value": 94,
-    "issue": "The source-scoped clean-line charging/fan extraction is not yet independently proved by GCL, and arrangements with four or more finite multiple points remain open.",
-    "target": "Extend the concurrence-aware incidence/discharging budget to q>=4, independently prove the required geometric premises, or construct/replay 95."
+    "issue": "The source-scoped clean-line charging/fan extraction is not yet independently proved by GCL. After excluding q<=3, the q=4 residual is reduced to five low-multiplicity profiles with explicit minimum core-sharing density; q>=5 also remains open.",
+    "target": "Resolve the dense q=4 profiles, extend the incidence/discharging budget to q>=5, independently prove the required geometric premises, or construct/replay 95."
   },
   "current_source_interval": {
     "lower": 93,
     "upper": 95
   },
-  "claim_boundary": "H1-12 is strictly narrowed, not closed. Parallelism is eliminated. Conditional on the named source-scoped charging/fan premises, q<=3 is excluded from a 95 witness, so the live residual is q>=4. No hill-global <=94, optimality, or MATHCERT claim.",
+  "claim_boundary": "H1-12 is strictly narrowed, not closed. Parallelism is eliminated. Conditional on the named source-scoped premises, q<=3 is excluded; q=4 is restricted to five profiles (3333,3334,3335,3344,3444) with minimum D2 values 1,3,6,5,6 respectively. The remaining residual is those q=4 strata or q>=5. No hill-global <=94, optimality, or MATHCERT claim.",
   "source_conditional_reduction": {
     "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
     "arithmetic_replay": "ci/validate_openmath_h1_12_three_core.py",
     "arithmetic_effect": "The q=3 arithmetic leaves a unique saturated three-triple template; the proof note then excludes that template using the endpoint-level clean-line charge map and local fan geometry.",
+    "geometric_premises_independently_certified": false,
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "four_core_reduction": {
+    "statement": "Conditional on the stated defect/fan premises, an n=18,T=95 normalized arrangement with exactly four finite multiple points has multiplicities only 3333, 3334, 3335, 3344, or 3444. Adding the named clean-line/local refinements forces minimum D2 values 1, 3, 6, 5, and 6 respectively.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_FOUR_CORE_PROFILE_REDUCTION.md",
+    "arithmetic_replay": "ci/validate_openmath_h1_12_four_core.py",
     "geometric_premises_independently_certified": false,
     "mathematical_effect": true,
     "certification_effect": false
