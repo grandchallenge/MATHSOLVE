@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "OPENMATH-2026",
+  "operation": "OM26-H1-H1-12-IA-001",
+  "protected_base": "fcb897f12607efd60d94050d1278e60000adacc0",
+  "assembled_from_head": "59e4b915b2896c34931a6edea01e72d82dd54ed6",
+  "lease": {
+    "assignment_id": "OM26-H1-H1-12",
+    "dispatch_id": "OM26-H1-H1-12-IA-001",
+    "agent_ref": "INDEPENDENT-AGENT-001",
+    "introducing_commit": "ded7e8ca4916008d820be85e28ca617b5b81be7e",
+    "dispatch_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/498",
+    "state": "LEASED"
+  },
+  "source_lock": {
+    "repository": "grandchallenge/MATHFORGE",
+    "main_commit": "343945512476bd91ed936749f9c4918f0723bff2",
+    "source_lock_blob_sha1": "7a90cd6eeb54e8e4c5b63c5977e40a1ab5bcaa2c",
+    "statement_blob_sha1": "47e529bce21e76c575c69a26824e182848dceedc",
+    "evaluator_contract_blob_sha1": "b9f9d8b58fa613c9e788d09f987b50260066bc67"
+  },
+  "artifacts": {
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "5a1e93e151eb4094b3e7c0e0cd56f2b84ffa432b",
+    ".gcl/operations/OM26-H1-H1-12-IA-001/OPERATION.json": "d330a2404470ecbd29c6707fa6a600dd89f017db",
+    "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md": "8c2bd5d6b5a6a6abece49c7676f91fd099d9a921",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "8a19f6ce6b317d3667f77e0819f3917ea3031b8b",
+    "handoffs/OPENMATH-2026/jobs/OM26-H1-H1-12-IA-001.md": "b3a1937c9dc74c1f7a026b8dfc712c37765b4984",
+    "contributions/OPENMATH-2026/OM26-H1/H1-12/dispatches/OM26-H1-H1-12-IA-001.json": "bf4a8495bef86a579b060e4af410192681e4c5ab",
+    "ci/openmath_cex_github_contribution_intake.py": "1addd79a890e58c4f85b94370914c69f939a384d",
+    "tests/test_openmath_cex_github_contribution_intake.py": "8b2035da3492e331d6b0a19fb248d7d69b530f05",
+    "ci/validate_openmath_cex_job_board.py": "e3d2c5a7ff0b152decaad92c1e1ffed374bb3da0",
+    "ci/test_openmath_cex_job_board.py": "d42fb54ded6616ce59b44c1ff0bf3f36318f9257",
+    ".github/workflows/openmath-cex-independent-contribution-intake.yml": "545e7c1c9a133a6dd404ca174deb37242334c576",
+    ".github/workflows/openmath-cex-job-board.yml": "a3b87a22c9494658a607aeaa4458e099bc4b6680",
+    ".ghos-routing/workflows.json": "ca5644281040efa5de3c3ae1681de65480beb664"
+  },
+  "return_path": {
+    "protocol": "GCL-CONTRIBUTION-RESULT/1",
+    "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/498",
+    "first_valid_result_lock": true,
+    "automated_capture": true,
+    "automated_intake_pr": true,
+    "adjudication_effect": "NONE_UNTIL_SEPARATE_REVIEW"
+  },
+  "authority_boundary": "This freeze makes one external H1 mathematical assignment executable and gives it a durable return path. It does not admit any future returned claim, certify mathematics, establish novelty or optimality, or authorize competition submission.",
+  "invalidation": {
+    "governed_artifact_change": "new freeze required",
+    "lease_identity_change": "new dispatch and freeze required",
+    "source_lock_change": "rebind source identity before execution",
+    "candidate_head_change": "exact-head reviews and CI must target the final candidate head"
+  }
+}
