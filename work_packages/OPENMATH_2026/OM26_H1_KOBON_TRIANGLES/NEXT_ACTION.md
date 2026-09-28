@@ -1,16 +1,19 @@
 # OM26-H1 next action
 
-Current protected candidate remains `campaign-best-observed = 93`.
+Current protected candidate remains campaign-best-observed = 93.
 
-H1-13 tranche 1 is complete: 15,246 exact one-line coordinate-wall candidates were evaluated around the 93 reconstruction. The best score remained 93; 126 sampled states tied 93 and no score 94 appeared.
+The bound lane is now source-clean:
+- exact construction lower bound: 93;
+- protected Forge source-matched general upper bound: 95;
+- simple-arrangement bound: 94, with hill-semantic transfer still open.
 
-This is a useful negative route result, not an upper-bound argument.
+So the active research interval is 93..95, not a proved 93..94 interval.
 
-The next mathematical work should now split cleanly:
+H1-13 tranche 1 already evaluated 15,246 exact one-line coordinate-wall candidates and found no score above 93. That local neighborhood is closed.
 
-1. **H1-12 / R-J:** continue the 94-bound audit by sourcing or reconstructing a proof whose hypotheses cover the hill's permitted parallelism and multiple concurrence.
-2. **H1-13 / next search tranche:** leave single-coordinate local search and move to a combinatorial/order-type or coordinated multi-line search for 94.
+Next work:
+1. H1-12: attack the 94 transfer/reduction question or locate a source proof matching the hill degeneracies.
+2. H1-13 tranche 2: use nonlocal combinatorial/order-type or coordinated multi-line moves to search for 94 or 95.
+3. Keep the 93 MATHCERT successor intake independent and pending required review on PR #342.
 
-The 93 MATHCERT successor intake remains pending independent review on MATHCERT PR #342.
-
-No global best-known, optimality, novelty, or official competition claim is authorized.
+No inference from search failure to an upper bound is permitted.

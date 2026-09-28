@@ -47,14 +47,14 @@
       "obligations": {
         "semantic_fidelity": "BASELINE_CONCORDANCE_PASS",
         "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
-        "representation_or_reduction": "RH_BADER93_ORDER_TYPE_REALIZED_AS_RATIONAL_LINES",
-        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING",
+        "representation_or_reduction": "RH_BADER93_REALIZED__H1_12_BOUND_REDUCTION_OPEN",
+        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_GENERAL_BOUND95_SOURCE_STATUS",
         "exact_computation": "H1_13_TRANCHE1_COMPLETE__15246_EXACT_CANDIDATES__NO_94__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
         "mathcert_handoff": "H1_02_AND_86_INTAKE_PENDING_REVIEW__93_SUCCESSOR_PREPARED"
       },
-      "next_action": "Continue H1-12 hill-valid upper-bound audit and move H1-13 from one-line wall search to combinatorial/order-type or coordinated multi-line search; preserve 93 as campaign leader."
+      "next_action": "Attack H1-12 94 transfer/reduction and launch H1-13 tranche 2 nonlocal search for 94/95; preserve 93 as campaign leader."
     },
     {
       "hill_slot": "OM26-H2",
@@ -142,5 +142,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. H1-13 tranche 1 exhaustively evaluated its stated 15,246-candidate one-line coordinate-wall neighborhood without finding 94. This negative route result does not prove optimality or a hill-global upper bound. H1-12 remains open. MATHCERT certification remains pending."
+  "claim_boundary": "OM26-H1 campaign-best-observed is 93. Protected Forge source audit gives a source-grounded general upper bound 95; the stronger 94 theorem remains simple-arrangement scoped and is not yet hill-global. H1-13 tranche 1 found no >93 candidate in its explicit 15,246-candidate local neighborhood. No optimality or certification inference is permitted."
 }
