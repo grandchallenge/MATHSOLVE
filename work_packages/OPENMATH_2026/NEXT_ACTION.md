@@ -7,26 +7,21 @@ H1-12 is the priority lane. H1-13 search tranches remain bounded negative route 
 Protected reductions now give:
 - no-parallel normalization;
 - conditional exclusion of q<=4;
-- q=5 profile 33344 excluded;
-- q=5 profile 33334 excluded;
-- q=5 profile 33333 reduced from 595 labeled graph placements / 15 S5 orbits to one equality graph.
+- all q=5 graph types except one excluded;
+- the sole q=5 residual normalized to an exact incidence/charge geometry.
 
-The sole q=5 residual is:
+That geometry has:
+- a central counted D2 triangle ABC;
+- an outer triangle formed by the third lines through A,B,C;
+- A,B,C in the relative interiors of the three outer sides;
+- two isolated triple cores D,E, each with one line carrying two antipodal D1 segments;
+- h=12 exactly and no extra core-pair line;
+- exactly six clean lines;
+- an exact clean-charge partition: four distinct D1 transverse lines at D/E plus two distinct U-endpoint transverse lines.
 
-```
-D2 graph = K3 + two isolated triple cores
-D2 = 3
-D1 = 10
-U = 1
-blocked D1 = 6
-clean lower bound = charge capacity = 6.
-```
-
-Next H1 action: resolve this exact equality geometry. Treat the D2 triangle and the two isolated triple cores as distinct roles; preserve the exact h=12 equality and all clean-line charge slots.
+Next H1 action: resolve this exact incidence-feasibility problem. Do not broaden back to generic coordinate search. Either derive an ordering/incidence contradiction from the nested-triangle + 4+2 charge bijection, or encode exactly this stratum in an independent exact feasibility search and replay any survivor.
 
 Keep q>=6 separate.
-
-Do not resume generic coordinate or topology search. Any construction experiment must target this exact surviving singular stratum and use the independent exact scorer before promotion.
 
 MATHCERT intake admission remains non-certifying. OM26-H2 through OM26-H7 remain source-lock pending.
 
