@@ -1,0 +1,49 @@
+name: OPENMATH CEX job board
+
+on:
+  pull_request:
+    paths:
+      - ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
+      - ".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json"
+      - ".gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json"
+      - ".gcl/admission/OM26-H2-H7-SOURCE-ACQ/FREEZE.json"
+      - "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json"
+      - "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json"
+      - "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md"
+      - "handoffs/OPENMATH-2026/jobs/**"
+      - "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md"
+      - "ci/validate_openmath_cex_job_board.py"
+      - "ci/test_openmath_cex_job_board.py"
+      - ".github/workflows/openmath-cex-job-board.yml"
+      - ".ghos-routing/workflows.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact subject
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Assert exact subject checkout
+        shell: bash
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Validate assignment registry and job board
+        run: python ci/validate_openmath_cex_job_board.py
+
+      - name: Run job-board regression tests
+        run: python -m unittest ci.test_openmath_cex_job_board

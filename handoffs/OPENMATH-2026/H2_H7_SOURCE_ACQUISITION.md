@@ -15,6 +15,29 @@ The task is to acquire the exact organizer-authoritative hill records and protec
 
 OM26-H1 Kobon triangles is outside this operation and remains unchanged.
 
+## Authoritative unresolved source pool
+
+An authenticated AutoLab list receipt now establishes the six exact unresolved organizer hill IDs:
+
+- `alejandrozu/clique-cluster-ramsey-multiplicity`
+- `alejandrozu/matrix-multiplication-tensor-3x3`
+- `alejandrozu/grothendieck-constant-witnesses`
+- `alejandrozu/collatz-modular-descent`
+- `alejandrozu/busy-beaver-6-certificates`
+- `ottogin/erdos-3`
+
+Receipt: `work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json`.
+
+These are authoritative pool identities, not H2-H7 slot assignments. Source acquisition is dispatched by exact organizer hill ID. Slot binding happens only after a protected source lock.
+
+## CEX pickup front door
+
+The canonical machine pickup surface is `.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json`. The human discovery surface is `handoffs/OPENMATH-2026/CEX_JOB_BOARD.md`.
+
+External workers do not choose or self-claim jobs. A worker is launched with one `dispatch_id`, resolves the unique protected lease naming that dispatch, verifies `state = LEASED` and its `agent_ref`, then loads exactly the referenced work package.
+
+If no matching protected lease exists, return `NO_ACTIVE_LEASE` and stop.
+
 ## Exact preparation bind
 
 - MATHSOLVE: `78dfb7479ca521f468d068beeea34c07dc1d0cd0`
@@ -28,25 +51,17 @@ A later executor must re-fetch live protected heads before mutation. Drift is cl
 
 ## Zero-context bootstrap
 
-You are executing one lease in governed operation `OM26-H2-H7-SOURCE-ACQ`.
+You are executing one protected CEX assignment in governed operation `OM26-H2-H7-SOURCE-ACQ`.
 
-Choose exactly one slot from `OM26-H2` through `OM26-H7`. Do not work on H1.
+1. Read `.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json`.
+2. Resolve only the assignment bound to the `dispatch_id` supplied in your launch message.
+3. Verify that assignment is `LEASED` to the same dispatch and your `agent_ref`.
+4. Load exactly the referenced `work_package`. Treat it as the complete GCL problem world.
+5. Execute that bounded package.
+6. Return exactly one result through the surface and grammar named by the protected dispatch.
+7. Stop.
 
-1. Read:
-   - `.gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json`
-   - `.gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json`
-   - `work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json`
-   - `work_packages/OPENMATH_2026/HILL_LANES.json`
-   - MATHFORGE `reports/discovery/openmath_2026/hill_source_locks.json`.
-2. Perform non-mutating reconnaissance first. Rebind live protected heads and compare the selected slot with the Forge source-lock ledger.
-3. Acquire organizer-authoritative evidence. The documented list command is:
-   `autolab lists show alejandrozu/openmath`
-   If an authorized runner supplies `AUTOLAB_TOKEN`, use it without printing, logging, or persisting the token.
-4. Do not assign a hill to the slot by list position, memory, event prose, search snippets, or similarity.
-5. Once the exact hill ID is established, acquire the exact hill body or authenticated render/export and evaluator/checker semantics when available.
-6. Produce the MATHFORGE packet required by the operation contract. Preserve unknown fields as null.
-7. Protect and read back the MATHFORGE source lock.
-8. Only after that protected lock may the corresponding MATHSOLVE hill lane be rebound and a hill-specific Solve package be instantiated.
+Do not browse for a different job, self-claim an available assignment, map organizer-list position to H2-H7, or work on H1.
 
 ## Return contract
 

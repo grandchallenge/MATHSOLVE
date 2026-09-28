@@ -173,5 +173,28 @@
     "promote source acquisition to mathematical certification",
     "print or commit AUTOLAB_TOKEN"
   ],
-  "claim_boundary": "Preparation and execution-control record only. Null fields remain unknown."
+  "claim_boundary": "Preparation and execution-control record only. Null fields remain unknown.",
+  "authoritative_unresolved_source_pool": {
+    "receipt": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
+    "receipt_blob_sha1": "f6c7c7e36aa0657f8eec51da8ce9461af457ee04",
+    "normalized_sha256": "a7f6e48a61aaa3b58614e5c7748716f8158147c337b4986c2e9c2d6b603de6f6",
+    "observation_time": "2026-09-28T10:05:25Z",
+    "hill_ids": [
+      "alejandrozu/clique-cluster-ramsey-multiplicity",
+      "alejandrozu/matrix-multiplication-tensor-3x3",
+      "alejandrozu/grothendieck-constant-witnesses",
+      "alejandrozu/collatz-modular-descent",
+      "alejandrozu/busy-beaver-6-certificates",
+      "ottogin/erdos-3"
+    ],
+    "slot_mapping": {
+      "OM26-H2": null,
+      "OM26-H3": null,
+      "OM26-H4": null,
+      "OM26-H5": null,
+      "OM26-H6": null,
+      "OM26-H7": null
+    },
+    "rule": "Acquire by exact organizer hill ID. Do not infer H2-H7 correspondence from list order, names, event prose, or memory."
+  }
 }
