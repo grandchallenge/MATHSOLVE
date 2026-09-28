@@ -105,7 +105,18 @@
     "ci/validate_openmath_cex_h2_h7.py",
     "ci/test_openmath_cex_h2_h7.py",
     ".github/workflows/openmath-h2-h7-cex-source-acq.yml",
-    ".ghos-routing/workflows.json"
+    ".ghos-routing/workflows.json",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-H2-SOURCE-ACQ.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-H3-SOURCE-ACQ.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-H4-SOURCE-ACQ.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-H5-SOURCE-ACQ.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-H6-SOURCE-ACQ.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-H7-SOURCE-ACQ.md",
+    "ci/validate_openmath_cex_job_board.py",
+    "ci/test_openmath_cex_job_board.py",
+    ".github/workflows/openmath-cex-job-board.yml"
   ],
   "provider_outputs": {
     "repository": "grandchallenge/MATHFORGE",
@@ -157,5 +168,14 @@
     "event_prose_is_source_lock": false,
     "autolab_score_is_certification": false,
     "mathcert_certification": false
+  },
+  "external_assignment_policy": {
+    "registry": ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+    "human_board": "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
+    "external_self_claim_allowed": false,
+    "executable_state": "LEASED",
+    "lease_binding": "assignment_id -> dispatch_id -> agent_ref",
+    "no_lease_behavior": "NO_ACTIVE_LEASE and stop",
+    "mathematical_job_release": "Only after a protected MATHFORGE source lock for that slot."
   }
 }
