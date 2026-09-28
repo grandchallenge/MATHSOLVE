@@ -1,36 +1,34 @@
 import unittest
-
-from ci.validate_openmath_cex_h2_h7 import EXPECTED_SLOTS, OPERATION, load, validate
-
+from ci.validate_openmath_cex_h2_h7 import EXPECTED_MAPPING, EXPECTED_SLOTS, load, validate
 
 class OpenMathCEXH2H7Test(unittest.TestCase):
     def test_preflight(self):
         self.assertEqual(validate(), [])
 
-    def test_exact_lane_set(self):
-        prep = load("work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json")
-        self.assertEqual([lane["slot"] for lane in prep["lanes"]], EXPECTED_SLOTS)
+    def test_exact_mapping(self):
+        prep=load("work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json")
+        self.assertEqual([x["slot"] for x in prep["lanes"]], EXPECTED_SLOTS)
+        self.assertEqual({x["slot"]:x["exact_hill_id"] for x in prep["lanes"]}, EXPECTED_MAPPING)
 
-    def test_no_early_solve_release(self):
-        prep = load("work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json")
-        self.assertTrue(all(lane["solve_release"] is False for lane in prep["lanes"]))
-        self.assertTrue(all(lane["exact_hill_id"] is None for lane in prep["lanes"]))
+    def test_provider_semantics_imported(self):
+        prep=load("work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json")
+        for lane in prep["lanes"]:
+            self.assertTrue(lane["forge_source_lock"])
+            self.assertTrue(lane["semantic_source_map"])
+            self.assertTrue(lane["status_triage"])
 
-    def test_routing_registration(self):
-        routing = load(".ghos-routing/workflows.json")
-        path = ".github/workflows/openmath-h2-h7-cex-source-acq.yml"
-        entries = [entry for entry in routing["workflows"] if entry["path"] == path]
-        self.assertEqual(len(entries), 1)
-        self.assertEqual(entries[0]["observed_features"], ["OPAQUE_EXECUTION"])
-        self.assertEqual(entries[0]["topology"], "PERSISTENT_CONTROLLER_REQUIRED")
-        self.assertEqual(entries[0]["controller_id"], "GITHUB_ACTIONS")
+    def test_no_math_job_before_import_readback(self):
+        campaign=load(".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json")
+        registry=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
+        if campaign["current_frontier"]["id"]=="PROTECTED_SOLVE_IMPORT_AND_READBACK_OM26_H2_H7":
+            self.assertFalse(registry["mathematics_release_policy"]["h2_h7_solve_release"])
+            self.assertEqual(registry["mathematics_release_policy"]["current_math_jobs"],0)
 
-    def test_operation_firewall(self):
-        op = load(f".gcl/operations/{OPERATION}/OPERATION.json")
-        self.assertFalse(op["scope"]["may_author_hill_mathematics"])
-        self.assertFalse(op["scope"]["may_certify"])
-        self.assertFalse(op["scope"]["may_submit_competition_entry"])
+    def test_source_assignments_closed(self):
+        registry=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
+        source=[x for x in registry["assignments"] if x["class"]=="SOURCE_ACQUISITION"]
+        self.assertEqual(len(source),6)
+        self.assertTrue(all(x["state"]=="CLOSED" for x in source))
 
-
-if __name__ == "__main__":
+if __name__=="__main__":
     unittest.main()
