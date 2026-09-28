@@ -217,6 +217,21 @@
       ],
       "mathematical_effect": true,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-004",
+      "text": "Conditional on the named local no-long-run fan premise, the q=4 score-95 profiles 3335, 3344, and 3444 are excluded by the independently reconstructed saturated-core convex-hull reduction and finite replay; the q=4 residual is 3333 or 3334.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_FOUR_CORE_PROFILE_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_SATURATED_CORE_HULL_REDUCTION.md",
+        "ci/validate_openmath_h1_12_saturated_core.py",
+        "ci/test_openmath_h1_12_saturated_core.py",
+        "grandchallenge/MATHFORGE@eb5af08b1bb0ae7742dc46786019fe7b034b04ee:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/CONTEMPORARY_BOUND_RECON.md"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [
