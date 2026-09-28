@@ -15,69 +15,56 @@ jobs:
   bounded-search:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
-    outputs:
-      found94: ${{ steps.search.outputs.found94 }}
     steps:
       - name: Checkout exact candidate
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
-      - name: Exact coordinate-wall sweep
-        id: search
+      - name: Exact coordinate-wall sweep and conditional H1-07 replay
         working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
-        run: |
-          python search_94_coordinate_sweep.py --report /tmp/kobon94-search.json --candidate-dir /tmp/kobon94-candidate | tee /tmp/kobon94-search.log
-          cat /tmp/kobon94-search.json
-          if grep -q 'H1_13_FOUND_94=true' /tmp/kobon94-search.log; then
-            echo "found94=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "found94=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Independent direct oracle replay of 94
-        if: steps.search.outputs.found94 == 'true'
-        working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
-        run: |
-          python kobon_direct_oracle.py /tmp/kobon94-candidate/solution.json --n 18 --expect 94 --output /tmp/kobon94-oracle.json
-
-      - name: Install pinned uv launcher
-        if: steps.search.outputs.found94 == 'true'
-        run: python -m pip install --disable-pip-version-check "uv==0.10.0"
-
-      - name: Install official AutoLab CLI
-        if: steps.search.outputs.found94 == 'true'
-        run: |
-          curl -fsSL https://app.autolab.ai/install.sh -o /tmp/autolab-install.sh
-          sh /tmp/autolab-install.sh
-          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-
-      - name: Authenticate AutoLab
-        if: steps.search.outputs.found94 == 'true'
         env:
           AUTOLAB_TOKEN: ${{ secrets.AUTOLAB_TOKEN }}
         run: |
-          if [ -z "$AUTOLAB_TOKEN" ]; then exit 42; fi
-          "$HOME/.local/bin/autolab" login --token "$AUTOLAB_TOKEN"
+          set -euo pipefail
+          python search_94_coordinate_sweep.py --report /tmp/kobon94-search.json --candidate-dir /tmp/kobon94-candidate | tee /tmp/kobon94-search.log
+          cat /tmp/kobon94-search.json
 
-      - name: Pull public Kobon hill
-        if: steps.search.outputs.found94 == 'true'
-        run: "$HOME/.local/bin/autolab" hills pull alejandrozu/kobon-triangles
+          if ! grep -q 'H1_13_FOUND_94=true' /tmp/kobon94-search.log; then
+            echo "H1_13_DISPOSITION=BOUNDED_SWEEP_NO_94"
+            exit 0
+          fi
 
-      - name: AutoLab replay of 94
-        if: steps.search.outputs.found94 == 'true'
-        run: |
-          set -o pipefail
+          python kobon_direct_oracle.py /tmp/kobon94-candidate/solution.json --n 18 --expect 94 --output /tmp/kobon94-oracle.json
+
+          python -m pip install --disable-pip-version-check "uv==0.10.0"
+          curl -fsSL https://app.autolab.ai/install.sh -o /tmp/autolab-install.sh
+          sh /tmp/autolab-install.sh
+          export PATH="$HOME/.local/bin:$PATH"
+
+          if [ -z "$AUTOLAB_TOKEN" ]; then
+            echo "AUTOLAB_AUTH_BLOCKER=repository secret AUTOLAB_TOKEN is unavailable"
+            exit 42
+          fi
+          autolab login --token "$AUTOLAB_TOKEN"
+          autolab hills pull alejandrozu/kobon-triangles
+
           uv tool run --from hills==0.11.0 hills eval /tmp/kobon94-candidate -H kobon-triangles --current --json | tee /tmp/kobon94-autolab.json
           python - <<'PY'
           import json
           from pathlib import Path
-          r=json.loads(Path("/tmp/kobon94-autolab.json").read_text()); stack=[r]; score=None
+          report=json.loads(Path("/tmp/kobon94-autolab.json").read_text())
+          stack=[report]
+          score=None
           while stack:
-              x=stack.pop()
-              if isinstance(x,dict):
-                  if x.get("name")=="triangles" and isinstance(x.get("value"),(int,float)):
-                      score=x["value"]; break
-                  stack.extend(x.values())
-              elif isinstance(x,list): stack.extend(x)
-          if score!=94: raise SystemExit(f"AutoLab discrepancy: {score} != 94")
+              item=stack.pop()
+              if isinstance(item,dict):
+                  if item.get("name")=="triangles" and isinstance(item.get("value"),(int,float)):
+                      score=item["value"]
+                      break
+                  stack.extend(item.values())
+              elif isinstance(item,list):
+                  stack.extend(item)
+          if score != 94:
+              raise SystemExit(f"AutoLab discrepancy: {score} != 94")
           print("H1_13_AUTOLAB_TRIANGLES=94")
+          print("H1_13_H1_07=PASS")
           PY
