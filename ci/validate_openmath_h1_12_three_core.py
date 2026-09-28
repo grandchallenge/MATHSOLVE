@@ -41,19 +41,20 @@ def d1_cap(r: int, d2: int) -> int:
     return 2 * r - 3
 
 
-def shared_ray_count_possible(r: int, shared: int) -> bool:
-    """Exact cyclic-sector feasibility for the number of shared radial rays."""
-    if not 0 <= shared <= 2 * r:
-        return False
-    # A radial ray is shared iff its two adjacent sectors are triangular.
-    for sectors in itertools.product((0, 1), repeat=2 * r):
-        count = sum(
-            sectors[i] and sectors[(i + 1) % (2 * r)]
-            for i in range(2 * r)
-        )
-        if count == shared:
-            return True
-    return False
+def shared_ray_count_not_forbidden(r: int, shared: int) -> bool:
+    """Necessary cyclic-sector condition used by the classification proof.
+
+    A radial ray is shared iff both adjacent sectors are triangular. If all
+    2r sectors are triangular, all 2r rays are shared. Otherwise any
+    nontriangular sector makes both of its boundary rays nonshared. Therefore
+    exactly 2r-1 shared rays is impossible.
+
+    We deliberately use only this necessary condition in the global
+    enumeration. This makes the search more permissive, so uniqueness of the
+    surviving template does not depend on silently importing a stronger
+    sector-classification theorem.
+    """
+    return 0 <= shared <= 2 * r and shared != 2 * r - 1
 
 
 def enumerate_feasible():
@@ -68,7 +69,7 @@ def enumerate_feasible():
                 *[range(cap + 1) for cap in caps]
             ):
                 if any(
-                    not shared_ray_count_possible(r, d1 + d2)
+                    not shared_ray_count_not_forbidden(r, d1 + d2)
                     for r, d1, d2 in zip(rs, local_d1, degrees)
                 ):
                     continue
