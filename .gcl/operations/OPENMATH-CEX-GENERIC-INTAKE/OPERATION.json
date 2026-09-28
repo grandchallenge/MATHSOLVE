@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OPENMATH-CEX-GENERIC-INTAKE",
+  "campaign": "OPENMATH-2026",
+  "protected_base": "481672d64786188120fda4694d51d09740e84a66",
+  "objective": "Generalize the protected GitHub RESULT/1 intake from the inaugural H1 dispatch to any registered OPENMATH dispatch while preserving exact dispatch/operation/issue/bootstrap validation and first-valid-result locking.",
+  "scope": {
+    "may_modify_intake_parser": true,
+    "may_modify_intake_tests": true,
+    "may_modify_existing_h1_dispatch": false,
+    "may_create_external_lease": false,
+    "may_admit_mathematics": false,
+    "may_certify": false,
+    "may_submit_competition_entry": false
+  },
+  "invariants": [
+    "Dispatch must be registered exactly once on protected repository state.",
+    "Issue title/body must exactly match the protected dispatch/bootstrap.",
+    "assignment_id, agent_ref, concurrency_mode and disposition must match the protected dispatch/operation.",
+    "No URLs, Markdown links, HTML links or attachments are accepted in RESULT/1.",
+    "First valid result remains the only capturable result for a dispatch.",
+    "Existing H1 RESULT/1 remains valid without modification."
+  ],
+  "governed_artifacts": [
+    "ci/openmath_cex_github_contribution_intake.py",
+    "tests/test_openmath_cex_github_contribution_intake.py",
+    ".github/workflows/openmath-cex-independent-contribution-intake.yml",
+    ".gcl/operations/OPENMATH-CEX-GENERIC-INTAKE/OPERATION.json",
+    ".gcl/admission/OPENMATH-CEX-GENERIC-INTAKE/FREEZE.json"
+  ],
+  "completion_requires": [
+    "generic dispatch discovery",
+    "operation-driven disposition validation",
+    "generic contribution evidence path",
+    "H1 regression pass",
+    "H2 synthetic dispatch regression pass",
+    "required CI green",
+    "protected merge",
+    "protected readback"
+  ],
+  "claim_boundary": "Infrastructure generalization only; no mathematical result or lease is created."
+}

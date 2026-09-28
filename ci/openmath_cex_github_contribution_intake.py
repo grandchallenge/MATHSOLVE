@@ -8,12 +8,11 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_REL = Path("contributions/OPENMATH-2026/OM26-H1/H1-12")
-DISPATCH_DIR_REL = BASE_REL / "dispatches"
+CONTRIBUTIONS_ROOT_REL = Path("contributions/OPENMATH-2026")
 
 MARKER = "GCL-CONTRIBUTION-RESULT/1"
 DISPATCH_MARKER = "GCL-CONTRIBUTION-DISPATCH/1"
-DISPATCH_ID_RE = re.compile(r"^OM26-H1-H1-12-IA-[0-9]{3}$")
+TOKEN_RE = re.compile(r"^[A-Z0-9][A-Z0-9._-]{2,127}$")
 URL_RE = re.compile(r"(?:https?://|www\.)", re.IGNORECASE)
 MD_LINK_RE = re.compile(r"!?\[[^\]\n]*\]\([^\)\n]+\)")
 HTML_LINK_RE = re.compile(r"<\s*(?:a|img)\b", re.IGNORECASE)
@@ -27,13 +26,6 @@ SECTIONS = [
     "## Claim boundary",
     "## Next residual",
 ]
-DISPOSITIONS = {
-    "PROVED_REDUCTION",
-    "FALSIFIED_REDUCTION",
-    "NEW_NORMAL_FORM",
-    "SURVIVING_COUNTERCASE",
-    "EXACT_BLOCKER",
-}
 EXTERNAL_SOURCE_CLASSES = {"PROTECTED_PACKET_ONLY", "ADDITIONAL_PUBLIC_SOURCES"}
 
 
@@ -92,12 +84,9 @@ def parse_result_comment(body: str) -> dict[str, Any]:
     if cursor >= len(lines) or lines[cursor] != "":
         raise IntakeError("preamble must be followed by one blank line")
 
-    if not DISPATCH_ID_RE.fullmatch(preamble["dispatch_id"]):
-        raise IntakeError("dispatch_id has invalid form")
-    if preamble["assignment"] != "OM26-H1-H1-12":
-        raise IntakeError("assignment is invalid")
-    if preamble["disposition"] not in DISPOSITIONS:
-        raise IntakeError("disposition is invalid")
+    for key in ("dispatch_id", "agent_ref", "assignment", "disposition"):
+        if not TOKEN_RE.fullmatch(preamble[key]):
+            raise IntakeError(f"{key} has invalid form")
     if preamble["context_class"] != "ZERO_CONTEXT":
         raise IntakeError("context_class must be ZERO_CONTEXT")
     if preamble["external_sources"] not in EXTERNAL_SOURCE_CLASSES:
@@ -126,18 +115,43 @@ def parse_result_comment(body: str) -> dict[str, Any]:
     return {"preamble": preamble, "sections": sections}
 
 
-def load_dispatch(root: Path, dispatch_id: str) -> dict[str, Any]:
-    path = root / DISPATCH_DIR_REL / f"{dispatch_id}.json"
-    if not path.is_file():
+def load_dispatch(root: Path, dispatch_id: str) -> tuple[dict[str, Any], Path]:
+    base = root / CONTRIBUTIONS_ROOT_REL
+    if not base.is_dir():
+        raise IntakeError("OPENMATH contribution root is missing")
+    matches = list(base.glob(f"**/dispatches/{dispatch_id}.json"))
+    if not matches:
         raise IntakeError("dispatch_id is not registered on protected repository state")
+    if len(matches) != 1:
+        raise IntakeError("dispatch_id is ambiguous on protected repository state")
+    path = matches[0]
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
         raise IntakeError(f"dispatch record is invalid JSON: {exc}") from exc
-    return _object(data, "dispatch record")
+    return _object(data, "dispatch record"), path
 
 
-def validate_dispatch_issue(root: Path, issue: dict[str, Any], dispatch: dict[str, Any]) -> None:
+def load_operation(root: Path, dispatch: dict[str, Any]) -> dict[str, Any]:
+    rel = dispatch.get("operation_contract")
+    if not isinstance(rel, str) or not rel:
+        raise IntakeError("dispatch record lacks operation_contract")
+    path = root / rel
+    if not path.is_file():
+        raise IntakeError("protected operation contract is missing")
+    try:
+        operation = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise IntakeError(f"operation contract is invalid JSON: {exc}") from exc
+    return _object(operation, "operation contract")
+
+
+def validate_dispatch_issue(
+    root: Path,
+    issue: dict[str, Any],
+    dispatch: dict[str, Any],
+    operation: dict[str, Any],
+) -> None:
     if dispatch.get("schema_version") != "1.0.0":
         raise IntakeError("dispatch schema is not enabled for this intake")
     if dispatch.get("return_protocol") != MARKER:
@@ -146,6 +160,12 @@ def validate_dispatch_issue(root: Path, issue: dict[str, Any], dispatch: dict[st
         raise IntakeError("dispatch is not ready for GitHub comment intake")
     if dispatch.get("canonical_mutation_authorized") is not False:
         raise IntakeError("dispatch improperly authorizes canonical mutation")
+    if dispatch.get("dispatch_id") != operation.get("dispatch_id"):
+        raise IntakeError("dispatch and operation IDs differ")
+    if dispatch.get("assignment_id") != operation.get("assignment_id"):
+        raise IntakeError("dispatch and operation assignments differ")
+    if dispatch.get("agent_ref") != operation.get("agent_ref"):
+        raise IntakeError("dispatch and operation agent identities differ")
 
     number = issue.get("number")
     if not isinstance(number, int) or number != dispatch.get("github_issue_number"):
@@ -168,7 +188,9 @@ def validate_dispatch_issue(root: Path, issue: dict[str, Any], dispatch: dict[st
         raise IntakeError("GitHub issue body differs from protected bootstrap bytes")
 
 
-def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+def validate_event(
+    event: dict[str, Any], root: Path
+) -> tuple[dict[str, Any], dict[str, Any], Path, dict[str, Any], dict[str, Any]]:
     issue = _object(event.get("issue"), "issue")
     if "pull_request" in issue:
         raise IntakeError("result comments are accepted only on dispatch issues")
@@ -179,8 +201,9 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], d
 
     parsed = parse_result_comment(body)
     dispatch_id = parsed["preamble"]["dispatch_id"]
-    dispatch = load_dispatch(root, dispatch_id)
-    validate_dispatch_issue(root, issue, dispatch)
+    dispatch, dispatch_path = load_dispatch(root, dispatch_id)
+    operation = load_operation(root, dispatch)
+    validate_dispatch_issue(root, issue, dispatch, operation)
 
     if parsed["preamble"]["assignment"] != dispatch.get("assignment_id"):
         raise IntakeError("assignment does not match protected dispatch")
@@ -188,6 +211,12 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], d
         raise IntakeError("agent_ref does not match protected dispatch")
     if dispatch.get("concurrency_mode") != "independent_blind":
         raise IntakeError("protected dispatch concurrency mode mismatch")
+
+    dispositions = operation.get("acceptable_dispositions")
+    if not isinstance(dispositions, list) or not all(isinstance(x, str) and x for x in dispositions):
+        raise IntakeError("operation lacks acceptable_dispositions")
+    if parsed["preamble"]["disposition"] not in dispositions:
+        raise IntakeError("disposition is not allowed by protected operation")
 
     user = _object(comment.get("user"), "comment user")
     login = user.get("login")
@@ -197,18 +226,24 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], d
     if not isinstance(comment_id, int):
         raise IntakeError("GitHub comment id is unavailable")
 
-    return parsed, dispatch, {"issue": issue, "comment": comment, "actor": login, "comment_id": comment_id}
+    observed = {"issue": issue, "comment": comment, "actor": login, "comment_id": comment_id}
+    return parsed, dispatch, dispatch_path, operation, observed
 
 
 def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, Any]:
-    parsed, dispatch, observed = validate_event(event, root)
+    parsed, dispatch, dispatch_path, operation, observed = validate_event(event, root)
     body = observed["comment"]["body"]
     assert isinstance(body, str)
 
+    try:
+        base_rel = dispatch_path.parent.parent.relative_to(root)
+    except ValueError as exc:
+        raise IntakeError("dispatch record is outside repository root") from exc
+
     dispatch_id = parsed["preamble"]["dispatch_id"]
     comment_id = observed["comment_id"]
-    raw_rel = BASE_REL / "raw" / dispatch_id / f"github-comment-{comment_id}.md"
-    receipt_rel = BASE_REL / "receipts" / dispatch_id / f"github-comment-{comment_id}.json"
+    raw_rel = base_rel / "raw" / dispatch_id / f"github-comment-{comment_id}.md"
+    receipt_rel = base_rel / "receipts" / dispatch_id / f"github-comment-{comment_id}.json"
 
     receipt = {
         "schema_version": "1.0.0",
@@ -223,9 +258,11 @@ def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, An
         "authenticated_github_actor": observed["actor"],
         "comment_created_at": observed["comment"].get("created_at"),
         "raw_artifact_path": raw_rel.as_posix(),
+        "dispatch_record_path": dispatch_path.relative_to(root).as_posix(),
         "bootstrap_path": dispatch["bootstrap_path"],
         "bootstrap_blob_sha1": dispatch["bootstrap_blob_sha1"],
         "source_handoff_commit_sha": dispatch["source_handoff_commit_sha"],
+        "operation_contract": dispatch["operation_contract"],
         "disposition_declared": parsed["preamble"]["disposition"],
         "context_class_declared": parsed["preamble"]["context_class"],
         "external_sources_declared": parsed["preamble"]["external_sources"],
