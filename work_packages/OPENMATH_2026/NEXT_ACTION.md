@@ -6,18 +6,21 @@ H1-12 is the priority lane. H1-13 search tranches remain bounded negative route 
 
 Protected reductions now give:
 - no-parallel normalization;
-- conditional exclusion of q<=3;
-- complete conditional exclusion of every q=4 multiplicity profile and normal form.
+- conditional exclusion of q<=4;
+- q=5 reduced to three multiplicity profiles:
+  - 33333 with D2 in 3..10;
+  - 33334 with D2 in 5..9;
+  - 33344 with D2 in 6..7.
 
 The live score-95 residual is therefore:
+1. q=5 in one of those three profiles; or
+2. q>=6.
 
-```
-q >= 5 finite multiple points.
-```
+Next H1 action: resolve q=5 profile 33344 first. Quotient the surviving dense core graphs by permutations of equal-multiplicity vertices, then apply shared-ray saturation and extreme-core geometry. Treat 33334 and 33333 afterward.
 
-Next H1 action: derive exact aggregate constraints for q>=5. Start from the protected defect identity, clean-line charging inequality, universal local fan bounds, and the new sector-consistency refinement. Prioritize triple/quadruple-heavy multiplicity profiles because multiplicity >=5 already carries favorable positive weight in the protected general weighted theorem.
+Keep q>=6 separate.
 
-Keep any construction experiment targeted to an explicit surviving singular stratum and require the independent exact scorer before promotion.
+Do not resume generic coordinate or topology search. Any construction experiment must target one explicit surviving singular stratum and use the independent exact scorer before promotion.
 
 MATHCERT intake admission remains non-certifying. OM26-H2 through OM26-H7 remain source-lock pending.
 
