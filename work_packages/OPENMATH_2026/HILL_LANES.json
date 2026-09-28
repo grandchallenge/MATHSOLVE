@@ -58,7 +58,7 @@
     },
     {
       "hill_slot": "OM26-H2",
-      "status": "WP01_LEASE_CANDIDATE",
+      "status": "WP01_LEASED",
       "exact_hill_id": "alejandrozu/busy-beaver-6-certificates",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -86,10 +86,10 @@
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
         "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
         "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
-        "cei_independent_contribution": "WP01_LEASE_CANDIDATE",
+        "cei_independent_contribution": "LEASED__OM26-H2-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Protect dispatch OM26-H2-WP01-IA-001; after protected readback, launch only INDEPENDENT-AGENT-002.",
+      "next_action": "Launch INDEPENDENT-AGENT-002 with the protected entrypoint, dispatch OM26-H2-WP01-IA-001, and return to issue #505.",
       "title": "Busy Beaver 6 certificates",
       "active_lease": {
         "assignment_id": "OM26-H2-WP01",
@@ -100,7 +100,7 @@
     },
     {
       "hill_slot": "OM26-H3",
-      "status": "WP01_LEASE_CANDIDATE",
+      "status": "WP01_LEASED",
       "exact_hill_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -128,10 +128,10 @@
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
         "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
         "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
-        "cei_independent_contribution": "WP01_LEASE_CANDIDATE",
+        "cei_independent_contribution": "LEASED__OM26-H3-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Protect dispatch OM26-H3-WP01-IA-001; after protected readback, launch only INDEPENDENT-AGENT-003.",
+      "next_action": "Launch INDEPENDENT-AGENT-003 with the protected entrypoint, dispatch OM26-H3-WP01-IA-001, and return to issue #506.",
       "title": "Clique-cluster Ramsey multiplicity",
       "active_lease": {
         "assignment_id": "OM26-H3-WP01",
@@ -142,7 +142,7 @@
     },
     {
       "hill_slot": "OM26-H4",
-      "status": "WP01_LEASE_CANDIDATE",
+      "status": "WP01_LEASED",
       "exact_hill_id": "alejandrozu/collatz-modular-descent",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -170,10 +170,10 @@
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
         "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
         "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
-        "cei_independent_contribution": "WP01_LEASE_CANDIDATE",
+        "cei_independent_contribution": "LEASED__OM26-H4-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Protect dispatch OM26-H4-WP01-IA-001; after protected readback, launch only INDEPENDENT-AGENT-004.",
+      "next_action": "Launch INDEPENDENT-AGENT-004 with the protected entrypoint, dispatch OM26-H4-WP01-IA-001, and return to issue #507.",
       "title": "Collatz modular descent",
       "active_lease": {
         "assignment_id": "OM26-H4-WP01",
@@ -184,7 +184,7 @@
     },
     {
       "hill_slot": "OM26-H5",
-      "status": "WP01_LEASE_CANDIDATE",
+      "status": "WP01_LEASED",
       "exact_hill_id": "alejandrozu/grothendieck-constant-witnesses",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -212,10 +212,10 @@
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
         "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
         "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
-        "cei_independent_contribution": "WP01_LEASE_CANDIDATE",
+        "cei_independent_contribution": "LEASED__OM26-H5-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Protect dispatch OM26-H5-WP01-IA-001; after protected readback, launch only INDEPENDENT-AGENT-005.",
+      "next_action": "Launch INDEPENDENT-AGENT-005 with the protected entrypoint, dispatch OM26-H5-WP01-IA-001, and return to issue #508.",
       "title": "Grothendieck constant witnesses",
       "active_lease": {
         "assignment_id": "OM26-H5-WP01",
@@ -226,7 +226,7 @@
     },
     {
       "hill_slot": "OM26-H6",
-      "status": "WP01_LEASE_CANDIDATE",
+      "status": "WP01_LEASED",
       "exact_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -254,10 +254,10 @@
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
         "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
         "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
-        "cei_independent_contribution": "WP01_LEASE_CANDIDATE",
+        "cei_independent_contribution": "LEASED__OM26-H6-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Protect dispatch OM26-H6-WP01-IA-001; after protected readback, launch only INDEPENDENT-AGENT-006.",
+      "next_action": "Launch INDEPENDENT-AGENT-006 with the protected entrypoint, dispatch OM26-H6-WP01-IA-001, and return to issue #509.",
       "title": "3x3 matrix multiplication tensor",
       "active_lease": {
         "assignment_id": "OM26-H6-WP01",
@@ -268,7 +268,7 @@
     },
     {
       "hill_slot": "OM26-H7",
-      "status": "WP01_LEASE_CANDIDATE",
+      "status": "WP01_LEASED",
       "exact_hill_id": "ottogin/erdos-3",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -296,10 +296,10 @@
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
         "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
         "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
-        "cei_independent_contribution": "WP01_LEASE_CANDIDATE",
+        "cei_independent_contribution": "LEASED__OM26-H7-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Protect dispatch OM26-H7-WP01-IA-001; after protected readback, launch only INDEPENDENT-AGENT-007.",
+      "next_action": "Launch INDEPENDENT-AGENT-007 with the protected entrypoint, dispatch OM26-H7-WP01-IA-001, and return to issue #510.",
       "title": "Erdős Problem 3",
       "active_lease": {
         "assignment_id": "OM26-H7-WP01",
@@ -309,7 +309,7 @@
       }
     }
   ],
-  "claim_boundary": "OM26-H1 remains independently leased. H2-H7 WP01 lease candidates are one-to-one and blind; they are not executable until the lease tranche is protected on main.",
+  "claim_boundary": "OM26-H1 and H2-H7 each have distinct protected-lease candidates. H2-H7 activation requires protection of the exact registry binding to commit 3c835aaf...; returned evidence remains unadjudicated.",
   "provider_import": {
     "receipt": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",
     "forge_protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
@@ -323,6 +323,7 @@
     "manifest": "work_packages/OPENMATH_2026/H2_H7_WP01_DECOMPOSITION.json",
     "operation": ".gcl/operations/OM26-H2-H7-WP01-DECOMPOSITION/OPERATION.json",
     "available": 0,
-    "leased": 6
+    "leased": 6,
+    "lease_introducing_commit": "3c835aaf6173176b64efca5f03ffdc27b20af965"
   }
 }

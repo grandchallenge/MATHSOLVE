@@ -5,7 +5,7 @@
   "operation": "OM26-H2-H7-WP01-LEASES",
   "protected_base": "51a52401bfda66910b58c690684da595b4d6aa2c",
   "source_handoff_commit": "6b96ec9afd4395234e32d8769f6e63ddecdf5c55",
-  "state": "CANDIDATE__PROTECTED_MERGE_PENDING",
+  "state": "LEASED__PROTECTED_READBACK_PENDING",
   "leases": [
     {
       "hill": "OM26-H2",
@@ -83,5 +83,6 @@
     "external_self_claim_allowed": false,
     "allocator": "GCL protected lease mutation"
   },
-  "claim_boundary": "Candidate lease binding only; no external execution authority until protected merge/readback."
+  "claim_boundary": "Candidate lease binding only; no external execution authority until protected merge/readback.",
+  "lease_introducing_commit": "3c835aaf6173176b64efca5f03ffdc27b20af965"
 }
