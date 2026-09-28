@@ -4,7 +4,7 @@
   "campaign_id": "OPENMATH-2026",
   "hill_slot": "OM26-H1",
   "obligation": "H1-12",
-  "state": "Q_GE_5_OR_Q4_3333_OR_3334_D2_5__SOURCE_CONDITIONAL",
+  "state": "Q_GE_5_OR_Q4_3333_ONLY__SOURCE_CONDITIONAL",
   "proved_reduction": {
     "statement": "Any finite hill arrangement and any finite set of its counted bounded triangular faces can be projectively transformed to an affine arrangement with no parallel line pairs while preserving all selected counted bounded triangular faces.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
@@ -13,14 +13,14 @@
   },
   "remaining_gap": {
     "simple_bound_value": 94,
-    "issue": "The source-scoped charging/fan extraction is not yet independently proved by GCL. Conditional on those premises, q=4 is reduced to 3333 or 3334, and profile 3334 now has only its three D2=5 K4-minus-one-edge role-types; q>=5 also remains open.",
-    "target": "Resolve the three 3334 D2=5 K4-minus-one-edge role-types next, followed by 3333 and q>=5; independently prove required geometric premises where possible, or construct/replay 95."
+    "issue": "The source-scoped charging/fan extraction is not yet independently proved by GCL. Conditional on those premises, all profile-3334 four-core states are excluded; the four-core score-95 residual is profile 3333 only, and all q>=5 cases remain open.",
+    "target": "Resolve q=4 profile 3333 next, then derive q>=5 aggregate constraints; independently prove required geometric premises where possible, or construct/replay 95."
   },
   "current_source_interval": {
     "lower": 93,
     "upper": 95
   },
-  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, q<=3 is excluded; q=4 is reduced to 3333 or 3334; and profile 3334 has no D2=3 or D2=4 realization, leaving only three D2=5 role-types. No hill-global <=94, optimality, or MATHCERT claim.",
+  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, q<=3 is excluded and the q=4 score-95 residual is reduced to profile 3333 only; q>=5 remains open. No hill-global <=94, optimality, or MATHCERT claim.",
   "source_conditional_reduction": {
     "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
@@ -70,6 +70,15 @@
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_D2_4_EXCLUSION.md",
     "finite_replay": "ci/validate_openmath_h1_12_3334_d2_4.py",
     "independent_component": "finite local cyclic enumeration, transverse-line use, and strengthened T-hub core-line count",
+    "source_scoped_component": "local no-long-run fan premise and clean-line charging map",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3334_d2_5_exclusion": {
+    "statement": "Conditional on the named local no-long-run fan premise and clean-line charging map, none of the three D2=5 role-types in profile 3334 can realize n=18,T=95. Together with the protected D2=3 and D2=4 exclusions, profile 3334 is excluded.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_D2_5_EXCLUSION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3334_d2_5.py",
+    "independent_component": "finite hub cyclic deductions and transverse-line use",
     "source_scoped_component": "local no-long-run fan premise and clean-line charging map",
     "mathematical_effect": true,
     "certification_effect": false
