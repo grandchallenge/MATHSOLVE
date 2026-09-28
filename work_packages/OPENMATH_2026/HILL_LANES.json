@@ -47,14 +47,14 @@
       "obligations": {
         "semantic_fidelity": "BASELINE_CONCORDANCE_PASS",
         "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
-        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_LE_3_EXCLUDED_SOURCE_CONDITIONAL__Q4_3333_7_NORMAL_FORMS_D2_LE_3",
-        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_3333_C4_EXCLUDED_SOURCE_CONDITIONAL",
+        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_LE_3_EXCLUDED_SOURCE_CONDITIONAL__Q4_3333_6_NORMAL_FORMS_D2_LE_3",
+        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_3333_D2_3_STAR_EXCLUDED_SOURCE_CONDITIONAL",
         "exact_computation": "H1_13_TRANCHES1_2_3_COMPLETE__NO_94__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
         "mathcert_handoff": "H1_02_AND_86_INTAKE_PROTECTED__93_SUCCESSOR_INTAKE_PROTECTED__CERT_EXECUTION_PENDING"
       },
-      "next_action": "Resolve the three charge-equality D2=3 profile-3333 forms: non-saturated star, higher-count saturated star, and triangle-plus-isolated core. Keep positive-slack forms and q>=5 separate."
+      "next_action": "Resolve the two remaining charge-equality D2=3 forms: higher-count saturated star and triangle-plus-isolated core. Keep positive-slack forms and q>=5 separate."
     },
     {
       "hill_slot": "OM26-H2",
@@ -159,5 +159,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. Conditional on the named source-scoped fan/charging premises, q<=3 is excluded and q=4 is reduced to seven profile-3333 normal forms / 45 labeled states, all with D2<=3. q>=5 remains open. No source-conditional reduction, bounded negative search, or Cert intake is a hill-global upper-bound or certification claim."
+  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. Conditional on the named source-scoped charging/fan premises, q<=3 is excluded and q=4 is reduced to six profile-3333 normal forms / 41 labeled states, all with D2<=3. q>=5 remains open. No source-conditional reduction, bounded negative search, or Cert intake is a hill-global upper-bound or certification claim."
 }
