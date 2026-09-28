@@ -12,32 +12,34 @@
     "certification_repository": "grandchallenge/MATHCERT"
   },
   "protected_inputs": {
-    "solve_base": "grandchallenge/MATHSOLVE@78dfb7479ca521f468d068beeea34c07dc1d0cd0",
+    "solve_base": "grandchallenge/MATHSOLVE@fd090a1f2d2730fd17a20afbba5555fb52800dd0",
     "programme": "grandchallenge/MATH-PROGRAMME@6fae2b2df9bc0bb180a63c76fc9752656285da02",
-    "provider": "grandchallenge/MATHFORGE@eb5af08b1bb0ae7742dc46786019fe7b034b04ee",
+    "provider": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
     "certification_boundary": "grandchallenge/MATHCERT@8a2610215989bec15474f0a088945c0a1b6d8172",
     "programme_campaign_binding": "grandchallenge/MATH-PROGRAMME:governance/openmath_2026_campaign_binding.json",
-    "forge_source_lock_ledger": "grandchallenge/MATHFORGE:reports/discovery/openmath_2026/hill_source_locks.json",
+    "forge_source_lock_ledger": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hill_source_locks.json",
     "solve_hill_lanes": "grandchallenge/MATHSOLVE:work_packages/OPENMATH_2026/HILL_LANES.json",
-    "authoritative_list_receipt": "grandchallenge/MATHSOLVE:work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json"
+    "authoritative_list_receipt": "grandchallenge/MATHSOLVE:work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
+    "forge_semantic_pack": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/SEMANTIC_PACKS.json",
+    "forge_semantic_readback": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/SEMANTIC_PACK_READBACK.json"
   },
   "selected_target": {
     "id": "OM26-H2-H7",
-    "status": "SOURCE_ACQUISITION_ONLY",
+    "status": "PROVIDER_RELEASE_IMPORTED__COMPLETION_RECEIPT_PENDING",
     "governing_identity": "six unresolved OpenMath hill slots requiring organizer-authoritative source locks"
   },
   "protected_claims": [
-    "OM26-H1 is outside this CEX subcampaign and remains governed by the existing OPENMATH-2026 Solve lane.",
-    "An authenticated organizer-list receipt establishes the six exact unresolved organizer hill IDs as a source pool.",
-    "OM26-H2 through OM26-H7 retain null exact_hill_id and statement locks; organizer-list position does not establish slot correspondence."
+    "OM26-H1 remains outside this source-acquisition subcampaign.",
+    "All six previously unresolved organizer source IDs are protected, slot-bound to OM26-H2..H7, semantically mapped, and released by MATHFORGE for Solve decomposition/bounded research.",
+    "This import does not itself instantiate H2-H7 mathematical assignments; the CEX completion receipt must protect first."
   ],
   "current_operation": "OM26-H2-H7-SOURCE-ACQ",
   "current_frontier": {
-    "id": "PENDING_AUTHORITATIVE_SOURCE_LOCKS_OM26_H2_H7",
-    "class": "external_source_and_semantic_identity",
-    "status": "ACTIVE_PARALLEL_SOURCE_ACQUISITION"
+    "id": "PROVIDER_RELEASE_IMPORTED__COMPLETION_RECEIPT_PENDING",
+    "class": "cex_completion_and_readback",
+    "status": "ACTIVE_CLOSURE_GATE"
   },
-  "candidate_disposition": null,
+  "candidate_disposition": "CLOSED_PENDING_PROTECTED_COMPLETION_RECEIPT",
   "known_false": [],
   "prohibited_promotions": [
     "INFER_UNRESOLVED_HILL_CONTENT",
@@ -51,38 +53,44 @@
     {
       "slot": "OM26-H2",
       "lease_id": "OM26-H2-SOURCE-ACQ",
-      "state": "PENDING_AUTHORITATIVE_ACQUISITION",
-      "ordinal": 2
+      "state": "SOURCE_COMPLETE__FORGE_RELEASE_IMPORTED",
+      "ordinal": 2,
+      "exact_hill_id": "alejandrozu/busy-beaver-6-certificates"
     },
     {
       "slot": "OM26-H3",
       "lease_id": "OM26-H3-SOURCE-ACQ",
-      "state": "PENDING_AUTHORITATIVE_ACQUISITION",
-      "ordinal": 3
+      "state": "SOURCE_COMPLETE__FORGE_RELEASE_IMPORTED",
+      "ordinal": 3,
+      "exact_hill_id": "alejandrozu/clique-cluster-ramsey-multiplicity"
     },
     {
       "slot": "OM26-H4",
       "lease_id": "OM26-H4-SOURCE-ACQ",
-      "state": "PENDING_AUTHORITATIVE_ACQUISITION",
-      "ordinal": 4
+      "state": "SOURCE_COMPLETE__FORGE_RELEASE_IMPORTED",
+      "ordinal": 4,
+      "exact_hill_id": "alejandrozu/collatz-modular-descent"
     },
     {
       "slot": "OM26-H5",
       "lease_id": "OM26-H5-SOURCE-ACQ",
-      "state": "PENDING_AUTHORITATIVE_ACQUISITION",
-      "ordinal": 5
+      "state": "SOURCE_COMPLETE__FORGE_RELEASE_IMPORTED",
+      "ordinal": 5,
+      "exact_hill_id": "alejandrozu/grothendieck-constant-witnesses"
     },
     {
       "slot": "OM26-H6",
       "lease_id": "OM26-H6-SOURCE-ACQ",
-      "state": "PENDING_AUTHORITATIVE_ACQUISITION",
-      "ordinal": 6
+      "state": "SOURCE_COMPLETE__FORGE_RELEASE_IMPORTED",
+      "ordinal": 6,
+      "exact_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3"
     },
     {
       "slot": "OM26-H7",
       "lease_id": "OM26-H7-SOURCE-ACQ",
-      "state": "PENDING_AUTHORITATIVE_ACQUISITION",
-      "ordinal": 7
+      "state": "SOURCE_COMPLETE__FORGE_RELEASE_IMPORTED",
+      "ordinal": 7,
+      "exact_hill_id": "ottogin/erdos-3"
     }
   ],
   "cold_start": {
@@ -112,5 +120,5 @@
     "staffing_directive": "GI-STEWARD-0003",
     "rule": "Protected repository records and exact identities govern. Chat context, memory, and event prose are non-authoritative."
   },
-  "claim_boundary": "This CEX subcampaign governs acquisition and source-lock preparation only. It does not identify unresolved hill mathematics, authorize hill-specific solving before source lock, certify mathematics, assert novelty, or imply competition acceptance."
+  "claim_boundary": "Source acquisition and semantic preparation are complete at the provider boundary and imported into Solve. No H2-H7 mathematical assignment is executable until a protected CEX completion receipt closes OM26-H2-H7-SOURCE-ACQ."
 }
