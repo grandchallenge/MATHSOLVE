@@ -1,0 +1,34 @@
+{
+  "commit": "535ed6e81c3a016c06ebd509e8caeb8fe46b0ae4",
+  "committed": true,
+  "exclusive_device": null,
+  "files": [
+    ".gitignore",
+    "README.md",
+    "blobs.lock",
+    "eval.py",
+    "examples/baseline/solution.json",
+    "examples/baseline/solution.lean",
+    "hill.yaml",
+    "private.lock",
+    "pyproject.toml",
+    "statement.lean",
+    "tests/test_hill.py"
+  ],
+  "hill": "erdos-3",
+  "metrics": [
+    {
+      "direction": "max",
+      "name": "proved"
+    }
+  ],
+  "params": {},
+  "path": "/home/runner/work/MATHSOLVE/MATHSOLVE/.autolab/hills/erdos-3",
+  "readme": "# Erdős Problem 3\n\n\n## Task\n\nGive a **machine-checked Lean 4 proof** of the theorem `hill` below (toolchain v4.33.1, checked against Mathlib inside the hill's image). The statement is fixed; you write only the proof after the `:=`.\n\nThis is an **open Erdős problem** — a research-level conjecture. Most are unsolved; a climber is not expected to solve it yet, and partial or related results are welcome as the field advances.\n\n## Submission format\n\nA submission is a directory containing:\n\n```\nsolution.lean    the proof (a term, or a `by` tactic block) that completes `theorem hill : … :=`\n```\n\nIt is appended to the fixed statement and to `#print axioms hill`, then checked with Lean. Do not restate the theorem or add imports; the statement's context (`import FormalConjecturesUtil` → Mathlib, definitions, namespace) is already in scope.\n\n## How it is scored\n\nThe proof counts only if it compiles, uses no `sorry`, and depends on no axioms beyond Lean and Mathlib's standard three (`propext`, `Classical.choice`, `Quot.sound`).\n\n| metric | direction | meaning |\n|---|---|---|\n| `proved` | max | 1 when the proof checks, else the attempt fails with the reason |\n\n\n## References\n\n- [erdosproblems.com/3](https://www.erdosproblems.com/3)\n\n\nFormalization from [google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/3.lean).\n",
+  "spec_version": 3,
+  "submission": "a directory; see readme for its required contents",
+  "test_mode": "hills eval <dir> -H erdos-3 --final",
+  "tree_hash": "0149383772ad4a7c7cc45a434de11be51678a524",
+  "version": "0.1.0",
+  "watchdog_timeout_s": 1800
+}
