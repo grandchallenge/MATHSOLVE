@@ -241,6 +241,15 @@
       "controller_id": "GITHUB_ACTIONS"
     },
     {
+      "path": ".github/workflows/openmath-kobon-search94-tranche3.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
       "path": ".github/workflows/openmath-kobon-search94.yml",
       "observed_features": [
         "OPAQUE_EXECUTION",

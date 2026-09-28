@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-13-TRANCHE3-SOURCE",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "route": "R-K",
+  "purpose": "Use a pinned external projective-mutation/concurrent-boundary search only as a proposal generator for a 94/95 candidate; all promoted geometry must be independently replayed by GCL exact oracle and AutoLab.",
+  "external_proposal_generator": {
+    "repository": "alejandrozu/kobon-proof",
+    "commit": "22d1165f6c455fe45e461baef4410f6d5c78a014",
+    "files": [
+      {
+        "path": "experiments/2026-09-21/general-bounds/collapse_beam.py",
+        "git_blob_sha1": "4e70038227c37a94c1f153bf378ed374d4213c60"
+      },
+      {
+        "path": "experiments/2026-09-21/general-bounds/collapse_search.py",
+        "git_blob_sha1": "7ea0bd75b1dc40e6166ef66828ebf04f8c0b33e5"
+      },
+      {
+        "path": "experiments/2026-09-21/construction-search/beam_mutation.py",
+        "git_blob_sha1": "4509c2c08f10ef43d8dedf2134562fac48f517ab"
+      },
+      {
+        "path": "experiments/2026-09-21/construction-search/projective_mutation.py",
+        "git_blob_sha1": "2f9d036638d9b45cace0c4e6f5ef054b8cd0d4f3"
+      },
+      {
+        "path": "research/kobon-extension/exact_geometry.py",
+        "git_blob_sha1": "0269a74b77c9264a2366262053806355da9f9cbd"
+      },
+      {
+        "path": "experiments/2026-09-21/construction-search/requirements-search.txt",
+        "git_blob_sha1": "efcadbd0c55c00be152bddf5829edc939b3f235f"
+      }
+    ]
+  },
+  "protected_start": {
+    "solve_commit": "a0788d4a7f26f7c49f56997fb5d26e3968a6b0bd",
+    "candidate": "RH_BADER_RECONSTRUCTION_093",
+    "score": 93,
+    "sha256": "e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5"
+  },
+  "bounded_search": {
+    "seconds": 300,
+    "width": 16,
+    "depth": 12,
+    "drop": 4,
+    "seed": 2026092801
+  },
+  "promotion_gate": [
+    "external search output must contain an exact rational/integer realization with reported score >=94",
+    "GCL independent direct-interior oracle must reproduce the same score",
+    "authenticated AutoLab public evaluator must reproduce the same score",
+    "candidate bytes and provenance must then be committed before campaign-ladder promotion"
+  ],
+  "claim_boundary": "External code is proposal generation only. Failed search is not an upper bound. External internal checks are not GCL verification. No candidate is promoted unless independent GCL and AutoLab replay agree.",
+  "proposal_seed": {
+    "candidate": "RH_BADER_PROJECTIVE_NOPARALLEL_093",
+    "path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RH_BADER_PROJECTIVE_NOPARALLEL_093/solution.json",
+    "construction": "Exact rational projective transform of RH_BADER_RECONSTRUCTION_093 using [a,b,c] -> [10a+c,10b+2c,10c] with primitive normalization.",
+    "expected_triangles": 93,
+    "expected_parallel_pairs": 0,
+    "reason": "The pinned external ProjectiveChamber proposal generator requires pairwise-nonparallel normals."
+  }
+}

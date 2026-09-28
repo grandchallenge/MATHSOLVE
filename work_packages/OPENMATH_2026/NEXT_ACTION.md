@@ -1,9 +1,16 @@
 # OPENMATH-2026 next action
 
-OM26-H1 remains at campaign-best-observed 93 with source-grounded interval 93 <= K_hill(18) <= 95.
+OM26-H1 remains at campaign-best-observed 93 with source-grounded unrestricted interval 93 <= K_hill(18) <= 95.
 
-H1-13 tranche 2 is complete: 5,508 exact coordinated two-line frontier combinations were evaluated after rebuilding 15,192 one-line wall candidates; no score above 93 was found.
+H1-13 bounded search status:
+- tranche 1 evaluated 15,246 exact one-line coordinate-wall candidates and found no score above 93;
+- tranche 2 evaluated 5,508 coordinated two-line frontier combinations after rebuilding 15,192 one-line wall candidates and found no score above 93;
+- tranche 3 ran the pinned topology/concurrency beam for 300.003 s, 589 rounds, 73,591 nodes, and 6,654,852 edges; best remained 93 and no >=94 proposal was produced.
 
-Next OM26-H1 work is H1-12 concurrence-aware bound reduction plus H1-13 tranche 3 order-type/SAT-guided search. These remain independent lanes.
+These are bounded negative route results, not upper-bound evidence.
 
-MATHCERT PR #342 remains pending required independent review. OM26-H2 through OM26-H6 remain source-lock pending.
+H1-12 is now the priority lane. The protected Solve projective reduction removes parallelism while preserving selected counted faces. Protected Forge source reconnaissance supplies a restricted <=94 theorem for pairwise-nonparallel n=18 arrangements with at most two finite multiple points. Therefore, conditional on that source theorem, any 95 witness must lie in the stratum with at least three finite multiple points after normalization.
+
+Next H1 action: attack the q>=3 multi-core incidence budget directly. Do not spend another tranche on the exhausted local/topology neighborhoods unless a structurally distinct construction generator specifically targets that residual stratum.
+
+MATHCERT review gates remain independent. OM26-H2 through OM26-H6 remain source-lock pending on this H1 branch; campaign cardinality correction to seven is being handled separately so it cannot silently alter this tranche's evidence identity.

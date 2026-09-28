@@ -47,14 +47,14 @@
       "obligations": {
         "semantic_fidelity": "BASELINE_CONCORDANCE_PASS",
         "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
-        "representation_or_reduction": "RH_BADER93_REALIZED__H1_12_BOUND_REDUCTION_OPEN",
-        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_GENERAL_BOUND95_SOURCE_STATUS",
-        "exact_computation": "H1_13_TRANCHE1_COMPLETE__15246_EXACT_CANDIDATES__NO_94__LEADER_93",
+        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_GE_3_RESIDUAL_SOURCE_CONDITIONAL",
+        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_AT_MOST_TWO_MULTIPOINT_94_SOURCE_CONDITIONAL",
+        "exact_computation": "H1_13_TRANCHES1_2_3_COMPLETE__NO_94__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
         "mathcert_handoff": "H1_02_AND_86_INTAKE_PENDING_REVIEW__93_SUCCESSOR_PREPARED"
       },
-      "next_action": "Attack H1-12 94 transfer/reduction and launch H1-13 tranche 2 nonlocal search for 94/95; preserve 93 as campaign leader."
+      "next_action": "Prioritize H1-12 multi-core incidence proof for the q>=3 finite-multiple-point residual. Resume construction search only with a structurally distinct generator targeting q>=3; do not repeat exhausted local/topology neighborhoods."
     },
     {
       "hill_slot": "OM26-H2",
@@ -142,5 +142,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "OM26-H1 campaign-best-observed is 93. Protected Forge source audit gives a source-grounded general upper bound 95; the stronger 94 theorem remains simple-arrangement scoped and is not yet hill-global. H1-13 tranche 1 found no >93 candidate in its explicit 15,246-candidate local neighborhood. No optimality or certification inference is permitted."
+  "claim_boundary": "OM26-H1 campaign-best-observed is 93. Protected Forge source audit gives unrestricted 93..95 and a restricted <=94 result for pairwise-nonparallel arrangements with at most two finite multiple points. Combined with the Solve projective no-parallel reduction, a hypothetical 95 witness is source-conditionally reduced to the q>=3 finite-multiple-point stratum. H1-13 tranches 1, 2, and 3 found no >93 candidate in their explicit bounded search regions; none is an upper-bound certificate. No optimality or certification inference is permitted."
 }
