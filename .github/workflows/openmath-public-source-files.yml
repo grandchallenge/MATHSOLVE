@@ -98,7 +98,14 @@ jobs:
               for path in sorted(p for p in hill.rglob("*") if p.is_file()):
                   rel = path.relative_to(hill).as_posix()
                   parts = set(path.relative_to(hill).parts)
-                  if ".git" in parts or ".vc" in parts or "private" in parts:
+                  if (
+                      ".git" in parts
+                      or ".vc" in parts
+                      or "private" in parts
+                      or ".pytest_cache" in parts
+                      or "__pycache__" in parts
+                      or path.suffix == ".pyc"
+                  ):
                       continue
                   raw = path.read_bytes()
                   if token and token in raw:
