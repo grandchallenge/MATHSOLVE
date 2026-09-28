@@ -1,12 +1,18 @@
 # OPENMATH-2026 CEX job board
 
+> External-agent entrypoint: https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md
+>
+> Machine registry: https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json
+>
+> This board is for human/operator orientation. A zero-context agent is not expected to know what "MATHSOLVE #495" means.
+
 This is the human discovery surface for external CEX work. The machine authority is `.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json` on protected `main`.
 
 ## Pickup rule
 
 External agents do **not** choose or claim work by browsing the repository.
 
-A launched worker receives a `dispatch_id`. It reads the machine registry, finds the unique assignment whose protected lease names that `dispatch_id`, loads exactly that assignment's `work_package`, and executes only that package.
+A launched worker receives an absolute `ENTRYPOINT_URL`, a `DISPATCH_ID`, and an `AGENT_REF`. It follows that URL, resolves the unique protected lease matching both identity values, then opens the assignment's absolute `work_package_url`.
 
 If no matching protected lease exists, the worker returns `NO_ACTIVE_LEASE` and stops.
 
@@ -32,7 +38,7 @@ No H2-H7 mathematical hill-climbing package is executable yet. A source-acquisit
 1. Read the protected machine registry.
 2. Resolve the assignment bound to the `dispatch_id` supplied in your launch message.
 3. Verify that the assignment state is `LEASED`, the lease names the same `dispatch_id`, and the `agent_ref` matches your launch identity.
-4. Read exactly the referenced work package. Treat that document as the complete GCL problem world.
+4. Open exactly the assignment's absolute `work_package_url`. Treat that document as the complete GCL problem world.
 5. Execute the bounded task.
 6. Return exactly one result through the return surface and grammar named by the protected dispatch.
 7. Stop.
