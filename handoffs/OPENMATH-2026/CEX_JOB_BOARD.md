@@ -18,6 +18,14 @@ If no matching protected lease exists, the worker returns `NO_ACTIVE_LEASE` and 
 
 `AVAILABLE_FOR_LEASE` means visible to the allocator, not executable by an external worker. `LEASED` is the only executable state.
 
+## Active mathematical lease
+
+| Assignment | Hill | State | Dispatch | Agent | Work package |
+|---|---|---|---|---|---|
+| `OM26-H1-H1-12` | `OM26-H1 / Kobon triangles` | `LEASED` | `OM26-H1-H1-12-IA-001` | `INDEPENDENT-AGENT-001` | `handoffs/OPENMATH-2026/jobs/OM26-H1-H1-12-IA-001.md` |
+
+This is the inaugural independent mathematical CEX lease. Its return surface is the protected dispatch issue bound in the machine registry.
+
 ## Current assignments
 
 The authenticated organizer-list receipt establishes six exact unresolved hill IDs. These jobs are keyed by those IDs, not by H2-H7 position.
@@ -31,7 +39,7 @@ The authenticated organizer-list receipt establishes six exact unresolved hill I
 | `OM26-SRC-BUSY-BEAVER-6-CERTIFICATES` | `alejandrozu/busy-beaver-6-certificates` | `AVAILABLE_FOR_LEASE` | `handoffs/OPENMATH-2026/jobs/OM26-SRC-BUSY-BEAVER-6-CERTIFICATES.md` |
 | `OM26-SRC-ERDOS-3` | `ottogin/erdos-3` | `AVAILABLE_FOR_LEASE` | `handoffs/OPENMATH-2026/jobs/OM26-SRC-ERDOS-3.md` |
 
-No H2-H7 mathematical hill-climbing package is executable yet. A source-acquisition job must first produce a protected MATHFORGE source lock; GCL must then explicitly bind that hill to a free H2-H7 slot before mathematical jobs are released.
+No H2-H7 mathematical hill-climbing package is executable yet. OM26-H1 is different: it is already source-locked and Solve-released, and the single H1-12 independent proof-adversary lease above is executable. H2-H7 still require protected source-to-slot binding before mathematical jobs are released.
 
 ## Agent cold start
 
