@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1.0",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "OPENMATH-2026",
+  "operation": "OM26-H2-H7-WP01-DECOMPOSITION",
+  "protected_base": "da4ed0f3a1e884e2196a329ab3a2c6e1bf838a74",
+  "assembled_from_head": "f5a091b4a2055dbe19acd617f71c65eb9ace8fcb",
+  "predecessor": {
+    "source_acquisition_completion": "da4ed0f3a1e884e2196a329ab3a2c6e1bf838a74",
+    "solve_import_readback": {
+      "path": "work_packages/OPENMATH_2026/H2_H7_SOLVE_IMPORT_READBACK.json",
+      "git_blob_sha1": "c9b6d7539e0d372d6afdfcfc6ff6d00e160a60f0"
+    },
+    "source_completion_receipt": {
+      "path": ".gcl/completions/OM26-H2-H7-SOURCE-ACQ/COMPLETION_RECEIPT.json",
+      "git_blob_sha1": "1de2dd8559e73e29cb69a967b495e1bc671e08be"
+    }
+  },
+  "artifacts": {
+    ".gcl/operations/OM26-H2-H7-WP01-DECOMPOSITION/OPERATION.json": "ed7ac2d15e976f65979ec1075ef8658d08db6bdd",
+    "work_packages/OPENMATH_2026/H2_H7_WP01_DECOMPOSITION.json": "2c0b904632e8c715347f0e2e34af9df9c6b1efe7",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "57726279ba8bb65b8af0b7c92746d802f9a55730",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "e9a245afa8a6bda46d9c1ef5d69a1167b1320c1d",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "6daddf438d9f38e0d9d8680ed21ec7d6567b06c7",
+    "ci/validate_openmath_cex_job_board.py": "f07b0166fd76574d00390b0d13cf4649ea298a38",
+    "ci/test_openmath_cex_job_board.py": "763ea0cb0cda81edab745b3bf05edf60230cada5",
+    "handoffs/OPENMATH-2026/jobs/OM26-H2-WP01.md": "971d60fe527695b903a6201478e049b63275c6c6",
+    "handoffs/OPENMATH-2026/jobs/OM26-H3-WP01.md": "0f3bb0312b0d0e4a083396e59935ccab78bff705",
+    "handoffs/OPENMATH-2026/jobs/OM26-H4-WP01.md": "b9c8332b89bce14687e693b18ca2d626b4ba94e6",
+    "handoffs/OPENMATH-2026/jobs/OM26-H5-WP01.md": "f852f08b32050ed3428e2613be46be67a682c23c",
+    "handoffs/OPENMATH-2026/jobs/OM26-H6-WP01.md": "7afebec15730f159fa6490a2fb2b63db78ef6010",
+    "handoffs/OPENMATH-2026/jobs/OM26-H7-WP01.md": "c02b21acf4a7d79bd31b1e708d2133db10506c78",
+    "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md": "8c2bd5d6b5a6a6abece49c7676f91fd099d9a921",
+    ".github/workflows/openmath-cex-job-board.yml": "a3b87a22c9494658a607aeaa4458e099bc4b6680",
+    ".ghos-routing/workflows.json": "835a2cd121bb1e623cd83be2ef66b4e306aea26a"
+  },
+  "assignment_state": {
+    "available_for_lease": 6,
+    "leased_h2_h7": 0,
+    "active_h1_lease": 1,
+    "rule": "AVAILABLE_FOR_LEASE is not execution authority. External execution requires a later protected LEASED mutation with exact dispatch_id and agent_ref."
+  },
+  "invalidation": {
+    "governed_artifact_change": "new freeze required",
+    "candidate_head_change": "Any governed-artifact change after this freeze invalidates exact-head review and CI evidence.",
+    "lease_change": "Any H2-H7 lease transition is a separate protected operation and requires exact dispatch/return identity.",
+    "claim_promotion": "Returned results do not mutate canonical claims without separate adjudication."
+  },
+  "authority_boundary": "This freeze instantiates bounded mathematical work packages only. It creates no H2-H7 execution lease, competition submission authority, novelty claim, or certification."
+}
