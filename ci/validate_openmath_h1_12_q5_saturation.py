@@ -27,7 +27,7 @@ except ModuleNotFoundError:
 TARGET_PROFILES = (
     (3, 3, 3, 3, 3),
     (3, 3, 3, 3, 4),
-    (3, 3, 4, 4, 4),
+    (3, 3, 3, 4, 4),
 )
 
 EXPECTED_MIN_SATURATION = {
@@ -37,7 +37,7 @@ EXPECTED_MIN_SATURATION = {
     (3, 3, 3, 3, 4): {
         5: 2, 6: 2, 7: 3, 8: 4, 9: 5,
     },
-    (3, 3, 4, 4, 4): {
+    (3, 3, 3, 4, 4): {
         6: 4, 7: 4,
     },
 }
@@ -51,7 +51,7 @@ EXPECTED_RETAINED = {
         "state_count": 300,
         "D2_values": [5, 6],
     },
-    (3, 3, 4, 4, 4): {
+    (3, 3, 3, 4, 4): {
         "state_count": 0,
         "D2_values": [],
     },
