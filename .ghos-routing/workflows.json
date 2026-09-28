@@ -214,6 +214,15 @@
       "controller_id": "GITHUB_ACTIONS"
     },
     {
+      "path": ".github/workflows/openmath-cex-independent-contribution-intake.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "WRITE_CAPABLE"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
       "path": ".github/workflows/openmath-cex-job-board.yml",
       "observed_features": [
         "OPAQUE_EXECUTION"
