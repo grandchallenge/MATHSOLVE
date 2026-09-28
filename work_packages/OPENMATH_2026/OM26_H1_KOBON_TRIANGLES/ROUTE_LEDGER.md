@@ -12,6 +12,6 @@
 | R-H literature-guided | reconstruct sourced Bader 93 order type as rational lines | PASS__93__CAMPAIGN_BEST_OBSERVED | exact order-table match + direct-oracle 93 + AutoLab 93 | source drift, order mismatch, or evaluator discrepancy |
 | R-I CEI | bounded outside-intelligence subproblems | AUDIT-GATED | CEI conformance PASS + separate adjudication | audit drift or result outside claim boundary |
 | R-J upper-bound audit | transfer or reconstruct a hill-valid 94 upper bound | ACTIVE__PARALLELISM_ELIMINATED__CONCURRENCE_ONLY_GAP | concurrence-aware <=94 proof or hill-matching source | unclosed multiple-concurrence case |
-| R-K 94 search | exact local-wall and coordinated multi-line search from verified 93 | TRANCHE2_COMPLETE__NO_94__BEST93 | H1-07 direct-oracle + AutoLab >=94 | bounded tranche exhausted with no score >93 |
+| R-K 94 search | topology mutation and concurrent-boundary search from verified 93 | TRANCHE3_ACTIVE__PINNED_EXTERNAL_PROPOSAL_GENERATOR | H1-07 direct-oracle + AutoLab >=94 | bounded tranche exhausted with no exact improvement |
 
 Routes are complementary. Parallel workers should receive different obligations, not copies of “solve Kobon triangles”.

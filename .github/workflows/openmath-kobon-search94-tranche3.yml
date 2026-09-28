@@ -1,0 +1,163 @@
+name: OPENMATH Kobon search94 tranche3
+
+on:
+  pull_request:
+    paths:
+      - "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/**"
+      - ".github/workflows/openmath-kobon-search94-tranche3.yml"
+      - ".ghos-routing/workflows.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  topology-concurrency-search:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Acquire pinned proposal generator
+        run: |
+          git clone --quiet https://github.com/alejandrozu/kobon-proof /tmp/kobon-proof
+          git -C /tmp/kobon-proof checkout --quiet 22d1165f6c455fe45e461baef4410f6d5c78a014
+          test "$(git -C /tmp/kobon-proof rev-parse HEAD)" = "22d1165f6c455fe45e461baef4410f6d5c78a014"
+          test "$(git -C /tmp/kobon-proof hash-object experiments/2026-09-21/general-bounds/collapse_beam.py)" = "4e70038227c37a94c1f153bf378ed374d4213c60"
+          test "$(git -C /tmp/kobon-proof hash-object experiments/2026-09-21/general-bounds/collapse_search.py)" = "7ea0bd75b1dc40e6166ef66828ebf04f8c0b33e5"
+          test "$(git -C /tmp/kobon-proof hash-object experiments/2026-09-21/construction-search/beam_mutation.py)" = "4509c2c08f10ef43d8dedf2134562fac48f517ab"
+          test "$(git -C /tmp/kobon-proof hash-object experiments/2026-09-21/construction-search/projective_mutation.py)" = "2f9d036638d9b45cace0c4e6f5ef054b8cd0d4f3"
+
+      - name: Install pinned search dependencies
+        run: |
+          python -m pip install --disable-pip-version-check -r /tmp/kobon-proof/experiments/2026-09-21/construction-search/requirements-search.txt
+
+      - name: Prepare protected 93 source
+        working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          src=json.loads(Path("candidates/RH_BADER_RECONSTRUCTION_093/solution.json").read_text())
+          out={"lines_frac":[[str(a),str(b),str(-c)] for a,b,c in src["lines"]]}
+          path=Path("/tmp/kobon-proof/research/finite-table/gcl-om26-h1-093.json")
+          path.write_text(json.dumps(out)+"\n")
+          PY
+
+      - name: Run bounded topology-concurrency beam
+        id: search
+        working-directory: /tmp/kobon-proof
+        run: |
+          set -o pipefail
+          python experiments/2026-09-21/general-bounds/collapse_beam.py \
+            --source research/finite-table/gcl-om26-h1-093.json \
+            --seconds 300 \
+            --width 16 \
+            --depth 12 \
+            --drop 4 \
+            --seed 2026092801 \
+            | tee /tmp/h1-13-tranche3.log
+          REPORT=research/six-hour-2026-09-21/general-bounds/collapses/beam-018.json
+          test -f "$REPORT"
+          cat "$REPORT"
+          BEST=$(python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("research/six-hour-2026-09-21/general-bounds/collapses/beam-018.json")
+          print(json.loads(p.read_text()).get("best",93))
+          PY
+          )
+          echo "reported_best=$BEST" >> "$GITHUB_OUTPUT"
+          CAND=$(find research/six-hour-2026-09-21/general-bounds/collapses -maxdepth 1 -type f -name 'beam-n018-T*.json' | sort | tail -1)
+          if [ -n "$CAND" ]; then
+            SCORE=$(python - "$CAND" <<'PY'
+          import json,sys
+          print(json.load(open(sys.argv[1]))["triangle_count"])
+          PY
+          )
+            if [ "$SCORE" -ge 94 ]; then
+              echo "found=true" >> "$GITHUB_OUTPUT"
+              echo "score=$SCORE" >> "$GITHUB_OUTPUT"
+              cp "$CAND" /tmp/tranche3-external.json
+              exit 0
+            fi
+          fi
+          echo "found=false" >> "$GITHUB_OUTPUT"
+
+      - name: Convert exact proposal to hill format
+        if: steps.search.outputs.found == 'true'
+        run: |
+          mkdir -p /tmp/tranche3-candidate
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          src=json.loads(Path("/tmp/tranche3-external.json").read_text())
+          lines=[]
+          for row in src["lines_frac"]:
+              a,b,c=(int(x) for x in row)
+              lines.append([a,b,-c])
+          Path("/tmp/tranche3-candidate/solution.json").write_text(json.dumps({"lines":lines})+"\n")
+          print(Path("/tmp/tranche3-candidate/solution.json").read_text())
+          PY
+
+      - name: Independent GCL direct-oracle replay
+        if: steps.search.outputs.found == 'true'
+        working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
+        run: |
+          python kobon_direct_oracle.py /tmp/tranche3-candidate/solution.json --n 18 --output /tmp/tranche3-direct.json
+          python - <<'PY'
+          import json,os
+          r=json.load(open("/tmp/tranche3-direct.json"))
+          expected=int(os.environ["EXPECTED"])
+          if r["triangles"] != expected:
+              raise SystemExit(f"direct-oracle discrepancy: {r['triangles']} != {expected}")
+          print("H1_13_TRANCHE3_DIRECT_PASS="+str(expected))
+          PY
+        env:
+          EXPECTED: ${{ steps.search.outputs.score }}
+
+      - name: Install official AutoLab tooling
+        if: steps.search.outputs.found == 'true'
+        run: |
+          python -m pip install --disable-pip-version-check "uv==0.10.0"
+          curl -fsSL https://app.autolab.ai/install.sh -o /tmp/autolab-install.sh
+          sha256sum /tmp/autolab-install.sh
+          sh /tmp/autolab-install.sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Authenticate and pull hill
+        if: steps.search.outputs.found == 'true'
+        env:
+          AUTOLAB_TOKEN: ${{ secrets.AUTOLAB_TOKEN }}
+        run: |
+          test -n "$AUTOLAB_TOKEN"
+          "$HOME/.local/bin/autolab" login --token "$AUTOLAB_TOKEN"
+          "$HOME/.local/bin/autolab" hills pull alejandrozu/kobon-triangles
+
+      - name: AutoLab H1-07 replay
+        if: steps.search.outputs.found == 'true'
+        run: |
+          uv tool run --from hills==0.11.0 hills eval /tmp/tranche3-candidate -H kobon-triangles --current --json | tee /tmp/tranche3-autolab.json
+          python - <<'PY'
+          import json,os
+          report=json.load(open("/tmp/tranche3-autolab.json"))
+          stack=[report]; score=None
+          while stack:
+              x=stack.pop()
+              if isinstance(x,dict):
+                  if x.get("name")=="triangles" and isinstance(x.get("value"),(int,float)):
+                      score=x["value"]; break
+                  stack.extend(x.values())
+              elif isinstance(x,list): stack.extend(x)
+          expected=int(os.environ["EXPECTED"])
+          if score != expected:
+              raise SystemExit(f"AutoLab discrepancy: {score} != {expected}")
+          print("H1_13_TRANCHE3_AUTOLAB_PASS="+str(expected))
+          PY
+          echo "===== EXACT CANDIDATE ====="
+          cat /tmp/tranche3-candidate/solution.json
+          echo "===== EXTERNAL PROPOSAL RECEIPT ====="
+          cat /tmp/tranche3-external.json
+        env:
+          EXPECTED: ${{ steps.search.outputs.score }}
