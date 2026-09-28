@@ -5,7 +5,7 @@
 ## Inputs
 
 1. The protected H1-12 projective reduction proves that any finite collection of counted bounded triangular faces can be carried to a projectively equivalent affine arrangement with no parallel line pairs while preserving those faces. Projective incidence multiplicities are preserved.
-2. Protected MATHFORGE source reconnaissance at `8bcaf84504f9f21076f86ce252e6bb459e9abc87` records a contemporary restricted result: for even order, a pairwise-nonparallel arrangement with at most two finite multiple points has the n=18 bound `T <= 94`. Forge explicitly does not promote this to a hill-global theorem.
+2. Protected MATHFORGE source reconnaissance at `eb5af08b1bb0ae7742dc46786019fe7b034b04ee` records a contemporary restricted result: for even order, a pairwise-nonparallel arrangement with at most two finite multiple points has the n=18 bound `T <= 94`. Forge explicitly does not promote this to a hill-global theorem.
 
 ## Conditional reduction
 

@@ -183,7 +183,23 @@
       "support": [
         "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
         "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_MULTIPOINT_RESIDUAL.md",
-        "grandchallenge/MATHFORGE@8bcaf84504f9f21076f86ce252e6bb459e9abc87:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/CONTEMPORARY_BOUND_RECON.md"
+        "grandchallenge/MATHFORGE@eb5af08b1bb0ae7742dc46786019fe7b034b04ee:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/CONTEMPORARY_BOUND_RECON.md"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-002",
+      "text": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, any n=18 hill arrangement with 95 counted triangles must, after H1-12 no-parallel normalization, have at least four finite multiple points. The q=3 arithmetic has one saturated three-triple survivor, and the endpoint-level charge map excludes that survivor.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_ARITHMETIC_RECONSTRUCTION_COMPLETE__Q3_GEOMETRIC_EXCLUSION_SOURCE_CONDITIONAL__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_MULTIPOINT_RESIDUAL.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
+        "ci/validate_openmath_h1_12_three_core.py",
+        "ci/test_openmath_h1_12_three_core.py",
+        "grandchallenge/MATHFORGE@eb5af08b1bb0ae7742dc46786019fe7b034b04ee:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/CONTEMPORARY_BOUND_RECON.md"
       ],
       "mathematical_effect": true,
       "certification_effect": false
