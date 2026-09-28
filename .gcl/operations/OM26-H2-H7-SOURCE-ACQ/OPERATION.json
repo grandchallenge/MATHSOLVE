@@ -14,7 +14,7 @@
   "completion_enforcement_anchor": "grandchallenge/gcl-standards@efe06a27aa594c63bd0489929ffd9fff1e2daeb9",
   "objective": {
     "retire_frontier": "PENDING_AUTHORITATIVE_SOURCE_LOCKS_OM26_H2_H7",
-    "description": "Acquire organizer-authoritative records for OM26-H2 through OM26-H7 in parallel, bind each successful lane to an exact protected MATHFORGE source-lock packet, and release only successfully locked lanes for subsequent hill-specific Solve work."
+    "description": "Acquire organizer-authoritative records for the six exact unresolved organizer hill IDs, protect a MATHFORGE source lock for each successful acquisition, then bind source-locked hills to OM26-H2 through OM26-H7 only by an explicit protected act. Release only bound, source-locked hills for subsequent mathematical Solve work."
   },
   "parallel_lanes": [
     {
@@ -105,7 +105,19 @@
     "ci/validate_openmath_cex_h2_h7.py",
     "ci/test_openmath_cex_h2_h7.py",
     ".github/workflows/openmath-h2-h7-cex-source-acq.yml",
-    ".ghos-routing/workflows.json"
+    ".ghos-routing/workflows.json",
+    "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-SRC-CLIQUE-CLUSTER-RAMSEY-MULTIPLICITY.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-SRC-MATRIX-MULTIPLICATION-TENSOR-3X3.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-SRC-GROTHENDIECK-CONSTANT-WITNESSES.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-SRC-COLLATZ-MODULAR-DESCENT.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-SRC-BUSY-BEAVER-6-CERTIFICATES.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-SRC-ERDOS-3.md",
+    "ci/validate_openmath_cex_job_board.py",
+    "ci/test_openmath_cex_job_board.py",
+    ".github/workflows/openmath-cex-job-board.yml"
   ],
   "provider_outputs": {
     "repository": "grandchallenge/MATHFORGE",
@@ -129,7 +141,7 @@
     "review_invalidation": "Any governed-artifact or candidate-head change invalidates exact-head review and required CI evidence. Any material MATHFORGE source-ledger change requires a provider rebind before acquisition mutation."
   },
   "successor_policy": {
-    "hill_specific_solve_package_allowed_only_after": "PROTECTED_MATHFORGE_SOURCE_LOCK_FOR_THAT_SLOT",
+    "hill_specific_solve_package_allowed_only_after": "PROTECTED_MATHFORGE_SOURCE_LOCK_AND_PROTECTED_SLOT_BINDING_FOR_THAT_HILL",
     "source_reconnaissance_alone_is_not_solve_release": true,
     "maintenance_is_not_frontier_closure": true
   },
@@ -157,5 +169,28 @@
     "event_prose_is_source_lock": false,
     "autolab_score_is_certification": false,
     "mathcert_certification": false
+  },
+  "authoritative_source_pool": {
+    "receipt": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
+    "hill_ids": [
+      "alejandrozu/clique-cluster-ramsey-multiplicity",
+      "alejandrozu/matrix-multiplication-tensor-3x3",
+      "alejandrozu/grothendieck-constant-witnesses",
+      "alejandrozu/collatz-modular-descent",
+      "alejandrozu/busy-beaver-6-certificates",
+      "ottogin/erdos-3"
+    ],
+    "slot_correspondence": "UNRESOLVED"
+  },
+  "external_assignment_policy": {
+    "registry": ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+    "human_board": "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
+    "assignment_unit": "exact organizer hill ID from authenticated source pool",
+    "external_self_claim_allowed": false,
+    "executable_state": "LEASED",
+    "lease_binding": "assignment_id -> dispatch_id -> agent_ref",
+    "no_lease_behavior": "NO_ACTIVE_LEASE and stop",
+    "slot_binding": "Separate protected act after source lock; never inferred from organizer list position.",
+    "mathematical_job_release": "Only after protected MATHFORGE source lock plus protected H2-H7 slot binding."
   }
 }
