@@ -58,7 +58,7 @@
     },
     {
       "hill_slot": "OM26-H2",
-      "status": "READY_FOR_DECOMPOSITION",
+      "status": "WP01_AVAILABLE_FOR_LEASE",
       "exact_hill_id": "alejandrozu/busy-beaver-6-certificates",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -82,19 +82,19 @@
       "obligations": {
         "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
         "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED__READY_FOR_BASELINE_CONCORDANCE",
-        "representation_or_reduction": "READY_FOR_DECOMPOSITION",
-        "restricted_theorem": "READY_FOR_WORK_PACKAGE_INSTANTIATION",
-        "exact_computation": "READY_FOR_BASELINE_REPLAY",
-        "falsification_counterexample": "READY_FOR_INDEPENDENT_REPLAY",
-        "cei_independent_contribution": "READY_FOR_BOUNDED_ASSIGNMENT_CREATION",
+        "representation_or_reduction": "WP01_AVAILABLE_FOR_LEASE",
+        "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
+        "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
+        "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
+        "cei_independent_contribution": "WP01_AVAILABLE_FOR_LEASE__NOT_LEASED",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Instantiate baseline/evaluator concordance and a bounded six-state transition-table candidate-search work package.",
+      "next_action": "Protected allocator may lease OM26-H2-WP01; otherwise it remains non-executable.",
       "title": "Busy Beaver 6 certificates"
     },
     {
       "hill_slot": "OM26-H3",
-      "status": "READY_FOR_DECOMPOSITION",
+      "status": "WP01_AVAILABLE_FOR_LEASE",
       "exact_hill_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -118,19 +118,19 @@
       "obligations": {
         "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
         "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED__READY_FOR_BASELINE_CONCORDANCE",
-        "representation_or_reduction": "READY_FOR_DECOMPOSITION",
-        "restricted_theorem": "READY_FOR_WORK_PACKAGE_INSTANTIATION",
-        "exact_computation": "READY_FOR_BASELINE_REPLAY",
-        "falsification_counterexample": "READY_FOR_INDEPENDENT_REPLAY",
-        "cei_independent_contribution": "READY_FOR_BOUNDED_ASSIGNMENT_CREATION",
+        "representation_or_reduction": "WP01_AVAILABLE_FOR_LEASE",
+        "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
+        "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
+        "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
+        "cei_independent_contribution": "WP01_AVAILABLE_FOR_LEASE__NOT_LEASED",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Reproduce the supplied published reference construction under an independent exact density replay, then open a structurally distinct weighted-template search package.",
+      "next_action": "Protected allocator may lease OM26-H3-WP01; otherwise it remains non-executable.",
       "title": "Clique-cluster Ramsey multiplicity"
     },
     {
       "hill_slot": "OM26-H4",
-      "status": "READY_FOR_DECOMPOSITION",
+      "status": "WP01_AVAILABLE_FOR_LEASE",
       "exact_hill_id": "alejandrozu/collatz-modular-descent",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -154,19 +154,19 @@
       "obligations": {
         "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
         "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED__READY_FOR_BASELINE_CONCORDANCE",
-        "representation_or_reduction": "READY_FOR_DECOMPOSITION",
-        "restricted_theorem": "READY_FOR_WORK_PACKAGE_INSTANTIATION",
-        "exact_computation": "READY_FOR_BASELINE_REPLAY",
-        "falsification_counterexample": "READY_FOR_INDEPENDENT_REPLAY",
-        "cei_independent_contribution": "READY_FOR_BOUNDED_ASSIGNMENT_CREATION",
+        "representation_or_reduction": "WP01_AVAILABLE_FOR_LEASE",
+        "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
+        "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
+        "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
+        "cei_independent_contribution": "WP01_AVAILABLE_FOR_LEASE__NOT_LEASED",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Instantiate exact public rule-validity replay and a bounded modular-descent rule-generation package; score-bearing private-target work remains evaluator-mediated.",
+      "next_action": "Protected allocator may lease OM26-H4-WP01; otherwise it remains non-executable.",
       "title": "Collatz modular descent"
     },
     {
       "hill_slot": "OM26-H5",
-      "status": "READY_FOR_DECOMPOSITION",
+      "status": "WP01_AVAILABLE_FOR_LEASE",
       "exact_hill_id": "alejandrozu/grothendieck-constant-witnesses",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -190,19 +190,19 @@
       "obligations": {
         "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
         "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED__READY_FOR_BASELINE_CONCORDANCE",
-        "representation_or_reduction": "READY_FOR_DECOMPOSITION",
-        "restricted_theorem": "READY_FOR_WORK_PACKAGE_INSTANTIATION",
-        "exact_computation": "READY_FOR_BASELINE_REPLAY",
-        "falsification_counterexample": "READY_FOR_INDEPENDENT_REPLAY",
-        "cei_independent_contribution": "READY_FOR_BOUNDED_ASSIGNMENT_CREATION",
+        "representation_or_reduction": "WP01_AVAILABLE_FOR_LEASE",
+        "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
+        "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
+        "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
+        "cei_independent_contribution": "WP01_AVAILABLE_FOR_LEASE__NOT_LEASED",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Reproduce the source example and an independent exact sign/vector objective replay, then open a bounded rational-witness search package.",
+      "next_action": "Protected allocator may lease OM26-H5-WP01; otherwise it remains non-executable.",
       "title": "Grothendieck constant witnesses"
     },
     {
       "hill_slot": "OM26-H6",
-      "status": "READY_FOR_DECOMPOSITION",
+      "status": "WP01_AVAILABLE_FOR_LEASE",
       "exact_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -226,19 +226,19 @@
       "obligations": {
         "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
         "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED__READY_FOR_BASELINE_CONCORDANCE",
-        "representation_or_reduction": "READY_FOR_DECOMPOSITION",
-        "restricted_theorem": "READY_FOR_WORK_PACKAGE_INSTANTIATION",
-        "exact_computation": "READY_FOR_BASELINE_REPLAY",
-        "falsification_counterexample": "READY_FOR_INDEPENDENT_REPLAY",
-        "cei_independent_contribution": "READY_FOR_BOUNDED_ASSIGNMENT_CREATION",
+        "representation_or_reduction": "WP01_AVAILABLE_FOR_LEASE",
+        "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
+        "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
+        "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
+        "cei_independent_contribution": "WP01_AVAILABLE_FOR_LEASE__NOT_LEASED",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Reproduce the supplied Laderman rank-23 baseline with an independent 729-identity replay, then open a bounded exact rank/support transformation package.",
+      "next_action": "Protected allocator may lease OM26-H6-WP01; otherwise it remains non-executable.",
       "title": "3x3 matrix multiplication tensor"
     },
     {
       "hill_slot": "OM26-H7",
-      "status": "READY_FOR_DECOMPOSITION",
+      "status": "WP01_AVAILABLE_FOR_LEASE",
       "exact_hill_id": "ottogin/erdos-3",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -262,18 +262,18 @@
       "obligations": {
         "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
         "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED__READY_FOR_BASELINE_CONCORDANCE",
-        "representation_or_reduction": "READY_FOR_DECOMPOSITION",
-        "restricted_theorem": "READY_FOR_WORK_PACKAGE_INSTANTIATION",
-        "exact_computation": "READY_FOR_BASELINE_REPLAY",
-        "falsification_counterexample": "READY_FOR_INDEPENDENT_REPLAY",
-        "cei_independent_contribution": "READY_FOR_BOUNDED_ASSIGNMENT_CREATION",
+        "representation_or_reduction": "WP01_AVAILABLE_FOR_LEASE",
+        "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
+        "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
+        "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
+        "cei_independent_contribution": "WP01_AVAILABLE_FOR_LEASE__NOT_LEASED",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Reproduce the pinned Lean environment and exact theorem statement, then decompose into bounded related-lemma/formal-proof reconnaissance before any complete-proof claim.",
+      "next_action": "Protected allocator may lease OM26-H7-WP01; otherwise it remains non-executable.",
       "title": "Erdős Problem 3"
     }
   ],
-  "claim_boundary": "OM26-H1 state is unchanged. OM26-H2 through OM26-H7 have exact protected provider identities, protected Solve import/readback, and are released for decomposition and bounded research. No H2-H7 mathematical assignment is executable until separately instantiated and, where external, explicitly leased.",
+  "claim_boundary": "OM26-H1 state is unchanged. OM26-H2 through OM26-H7 each have one bounded WP01 assignment AVAILABLE_FOR_LEASE. None is executable until a separate protected lease names the exact dispatch and agent identity.",
   "provider_import": {
     "receipt": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",
     "forge_protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
@@ -282,5 +282,11 @@
     "provider_release": true,
     "solve_release": true,
     "scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH"
+  },
+  "wp01_decomposition": {
+    "manifest": "work_packages/OPENMATH_2026/H2_H7_WP01_DECOMPOSITION.json",
+    "operation": ".gcl/operations/OM26-H2-H7-WP01-DECOMPOSITION/OPERATION.json",
+    "available": 6,
+    "leased": 0
   }
 }
