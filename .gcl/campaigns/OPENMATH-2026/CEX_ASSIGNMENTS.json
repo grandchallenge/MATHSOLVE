@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "record_type": "GCL_CEX_ASSIGNMENT_REGISTRY",
   "campaign": "OPENMATH-2026",
-  "active_subcampaign": "OPENMATH-2026-SOURCE-ACQ",
+  "active_subcampaign": "OPENMATH-2026",
   "operation": "OM26-H2-H7-SOURCE-ACQ",
   "authority": {
     "repository": "grandchallenge/MATHSOLVE",
@@ -40,7 +40,7 @@
     "release_rule": "Lease release or reassignment requires another protected registry mutation; issue comments or chat text do not alter the lease."
   },
   "slot_binding_policy": {
-    "current_mapping": "PROTECTED_FORGE_MAPPING_IMPORTED__SOLVE_PROTECTION_PENDING",
+    "current_mapping": "PROTECTED_AND_IMPORTED",
     "rule": "Exact mapping imported from protected MATHFORGE slot-binding act. Organizer-list position remains non-authoritative.",
     "free_slots": [],
     "mapping": {
@@ -54,13 +54,14 @@
     "forge_anchor": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8"
   },
   "mathematics_release_policy": {
-    "rule": "H2-H7 have protected provider source/semantic release, but no hill-specific mathematical assignment may enter AVAILABLE_FOR_LEASE or LEASED until the Solve import is protected and read back.",
+    "rule": "H2-H7 are source-locked, semantic-pack-protected, provider-released, imported and read back in Solve. Bounded mathematical assignments may now be instantiated, but none is executable until its own protected assignment/lease state permits execution.",
     "current_math_jobs": 0,
     "h1_released_math_jobs": 1,
     "h1_rule": "OM26-H1 is independently source-locked and Solve-released; bounded mathematical CEX jobs may be leased under their own protected operation contracts.",
     "h2_h7_provider_released_hills": 6,
-    "h2_h7_solve_release": false,
-    "h2_h7_release_blocker": "PROTECTED_SOLVE_IMPORT_MERGE_AND_READBACK_REQUIRED"
+    "h2_h7_solve_release": true,
+    "h2_h7_release_blocker": null,
+    "h2_h7_release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH"
   },
   "return_policy": {
     "rule": "When an assignment becomes LEASED, the protected lease/dispatch must expose absolute dispatch and return locators. Repository-relative shorthand is insufficient for a zero-context worker.",
@@ -114,7 +115,7 @@
         "PROTECTED_SEMANTIC_PACK",
         "PROTECTED_PROVIDER_READBACK"
       ],
-      "successor_gate": "Source acquisition is closed. Hill-specific mathematics remains blocked until protected Solve import/readback.",
+      "successor_gate": "Source acquisition is closed and the mapped hill is released for Solve decomposition. Any mathematical work requires a separate protected MATHEMATICAL_RESEARCH assignment; external execution additionally requires LEASED state.",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-CLIQUE-CLUSTER-RAMSEY-MULTIPLICITY.md"
     },
     {
@@ -163,7 +164,7 @@
         "PROTECTED_SEMANTIC_PACK",
         "PROTECTED_PROVIDER_READBACK"
       ],
-      "successor_gate": "Source acquisition is closed. Hill-specific mathematics remains blocked until protected Solve import/readback.",
+      "successor_gate": "Source acquisition is closed and the mapped hill is released for Solve decomposition. Any mathematical work requires a separate protected MATHEMATICAL_RESEARCH assignment; external execution additionally requires LEASED state.",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-MATRIX-MULTIPLICATION-TENSOR-3X3.md"
     },
     {
@@ -212,7 +213,7 @@
         "PROTECTED_SEMANTIC_PACK",
         "PROTECTED_PROVIDER_READBACK"
       ],
-      "successor_gate": "Source acquisition is closed. Hill-specific mathematics remains blocked until protected Solve import/readback.",
+      "successor_gate": "Source acquisition is closed and the mapped hill is released for Solve decomposition. Any mathematical work requires a separate protected MATHEMATICAL_RESEARCH assignment; external execution additionally requires LEASED state.",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-GROTHENDIECK-CONSTANT-WITNESSES.md"
     },
     {
@@ -261,7 +262,7 @@
         "PROTECTED_SEMANTIC_PACK",
         "PROTECTED_PROVIDER_READBACK"
       ],
-      "successor_gate": "Source acquisition is closed. Hill-specific mathematics remains blocked until protected Solve import/readback.",
+      "successor_gate": "Source acquisition is closed and the mapped hill is released for Solve decomposition. Any mathematical work requires a separate protected MATHEMATICAL_RESEARCH assignment; external execution additionally requires LEASED state.",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-COLLATZ-MODULAR-DESCENT.md"
     },
     {
@@ -310,7 +311,7 @@
         "PROTECTED_SEMANTIC_PACK",
         "PROTECTED_PROVIDER_READBACK"
       ],
-      "successor_gate": "Source acquisition is closed. Hill-specific mathematics remains blocked until protected Solve import/readback.",
+      "successor_gate": "Source acquisition is closed and the mapped hill is released for Solve decomposition. Any mathematical work requires a separate protected MATHEMATICAL_RESEARCH assignment; external execution additionally requires LEASED state.",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-BUSY-BEAVER-6-CERTIFICATES.md"
     },
     {
@@ -359,7 +360,7 @@
         "PROTECTED_SEMANTIC_PACK",
         "PROTECTED_PROVIDER_READBACK"
       ],
-      "successor_gate": "Source acquisition is closed. Hill-specific mathematics remains blocked until protected Solve import/readback.",
+      "successor_gate": "Source acquisition is closed and the mapped hill is released for Solve decomposition. Any mathematical work requires a separate protected MATHEMATICAL_RESEARCH assignment; external execution additionally requires LEASED state.",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-SRC-ERDOS-3.md"
     },
     {
@@ -432,6 +433,8 @@
   "provider_import": {
     "receipt": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",
     "forge_protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
-    "solve_import_state": "PENDING_PROTECTED_MERGE_AND_READBACK"
+    "solve_import_state": "PROTECTED_READBACK_CONFIRMED__DECOMPOSITION_RELEASED",
+    "protected_solve_import_merge": "57505b7c886bbf6b6aa00bc36168c1f097ee75a3",
+    "readback_receipt": "work_packages/OPENMATH_2026/H2_H7_SOLVE_IMPORT_READBACK.json"
   }
 }

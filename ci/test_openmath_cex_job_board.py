@@ -14,6 +14,12 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
         self.assertTrue(all(x["state"]=="CLOSED" for x in source))
         self.assertEqual({x["slot_binding"]:x["external_hill_id"] for x in source},EXPECTED_MAPPING)
 
+    def test_h2_h7_released_but_not_instantiated(self):
+        registry=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
+        policy=registry["mathematics_release_policy"]
+        self.assertTrue(policy["h2_h7_solve_release"])
+        self.assertEqual(policy["current_math_jobs"],0)
+
     def test_zero_context_launch(self):
         registry=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
         self.assertEqual(registry["launch_contract"]["entrypoint_url"],ENTRYPOINT_URL)
@@ -32,9 +38,5 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
         self.assertEqual(job["lease"]["agent_ref"],H1_AGENT_REF)
         self.assertEqual(job["lease"]["dispatch_url"],H1_ISSUE_URL)
         self.assertEqual(job["lease"]["return_url"],H1_ISSUE_URL)
-
-    def test_h2_h7_decomposition_not_instantiated_yet(self):
-        registry=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
-        self.assertEqual(registry["mathematics_release_policy"]["current_math_jobs"],0)
 
 if __name__=="__main__": unittest.main()

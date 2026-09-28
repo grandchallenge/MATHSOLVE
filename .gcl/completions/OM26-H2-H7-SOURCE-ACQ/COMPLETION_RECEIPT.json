@@ -3,13 +3,15 @@
   "record_type": "GCL_COMPLETION_RECEIPT",
   "campaign": "OPENMATH-2026-SOURCE-ACQ",
   "operation": "OM26-H2-H7-SOURCE-ACQ",
-  "state": "CANDIDATE_COMPLETION__PROTECTED_SOLVE_IMPORT_PENDING",
+  "state": "CLOSED__PROTECTED_SOLVE_IMPORT_READBACK_CONFIRMED",
   "exact_inputs": {
     "solve_base": "fd090a1f2d2730fd17a20afbba5555fb52800dd0",
     "forge_release": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
     "forge_source_lock_ledger_blob": "2334bb7e67b5863c2110b6e21b6e47cfd5061d4d",
     "forge_semantic_pack_blob": "aaf8aa9b65d2218943b5dc9f3840cb16751a1ef0",
-    "forge_semantic_readback_blob": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a"
+    "forge_semantic_readback_blob": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a",
+    "protected_solve_import_merge": "57505b7c886bbf6b6aa00bc36168c1f097ee75a3",
+    "solve_import_readback": "work_packages/OPENMATH_2026/H2_H7_SOLVE_IMPORT_READBACK.json"
   },
   "imported_bindings": {
     "OM26-H2": "alejandrozu/busy-beaver-6-certificates",
@@ -19,11 +21,14 @@
     "OM26-H6": "alejandrozu/matrix-multiplication-tensor-3x3",
     "OM26-H7": "ottogin/erdos-3"
   },
-  "candidate_effect": "Exact provider identities are staged in Solve; H2-H7 mathematics remains blocked until protected merge and readback.",
-  "final_completion_requires": [
-    "protected_solve_import_merge",
-    "exact_protected_readback",
-    "final_completion_receipt_rebind"
-  ],
-  "claim_boundary": "Candidate completion evidence only. No H2-H7 mathematical release, competition submission, novelty, or certification effect."
+  "claim_boundary": "Final source-acquisition completion receipt. It admits exact H2-H7 identities and releases bounded Solve decomposition only; no mathematical claim or external-agent lease is created.",
+  "release_effect": {
+    "source_acquisition_closed": true,
+    "h2_h7_solve_release": true,
+    "scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH",
+    "mathematical_jobs_instantiated": 0,
+    "competition_submission": false,
+    "novelty_certification": false,
+    "mathcert_certification": false
+  }
 }
