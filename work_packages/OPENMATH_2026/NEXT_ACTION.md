@@ -8,17 +8,17 @@ Protected reductions now give:
 - no-parallel normalization;
 - conditional exclusion of q<=3;
 - complete conditional exclusion of every q=4 multiplicity profile except 3333;
-- complete conditional exclusion of every profile-3333 charge-equality normal form.
+- complete conditional exclusion of all profile-3333 equality forms;
+- conditional exclusion of the D2=3 P4 positive-slack form.
 
-The q=4 residual now contains four positive-slack forms only:
+The q=4 residual now contains exactly three D2<=2 forms:
 1. D2=1 single edge — 6 labeled states;
 2. D2=2 P3 + isolated core — 12 labeled states;
-3. D2=2 two disjoint edges — 3 labeled states;
-4. D2=3 P4 — 12 labeled states.
+3. D2=2 two disjoint edges — 3 labeled states.
 
-Next H1 action: resolve D2=3 P4 first. Its two degree-2 cores each have local (d1,d2)=(2,2), so the proof can split on whether each realizes one or two blocked D1 targets.
+Next H1 action: resolve D2=2 P3 + isolated core. Split on whether its degree-2 core has one or two blocked D1 targets; preserve equality cases rather than collapsing them.
 
-Then proceed to the D2=2 forms and D2=1 form. Keep q>=5 separate.
+Then proceed to 2K2 and the single-edge form. Keep q>=5 separate.
 
 Do not resume generic coordinate or topology search. Any construction experiment must target one explicit remaining normal form and use the independent exact scorer before promotion.
 
