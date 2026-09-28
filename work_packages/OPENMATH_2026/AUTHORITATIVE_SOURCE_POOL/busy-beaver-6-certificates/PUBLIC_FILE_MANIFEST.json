@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_PUBLIC_SOURCE_MANIFEST",
+  "operation": "OM26-H2-H7-SOURCE-ACQ",
+  "source_id": "alejandrozu/busy-beaver-6-certificates",
+  "slot_binding": null,
+  "acquisition": {
+    "workflow_run_id": 36417117122,
+    "workflow_job_id": 108910800683,
+    "subject_head": "73a7a9d91948a516c1a72fbd75739346f6741a55",
+    "authenticated": true,
+    "source": "AutoLab public hill pull"
+  },
+  "public_file_manifest_sha256": "76e0782742efd542172ff0d0510fa0977c8bc2a2b2fa9ee83ca9f7803bd082a8",
+  "public_file_count": 10,
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "0df64dd2b35089d662d8e467e33f81b1d50a2849ca412d58c658367920da5881",
+      "size": 25
+    },
+    {
+      "path": "README.md",
+      "sha256": "9614c01ce936236d58fef96628a0251a6dc3101b9eff0fc1a3d41a30693e4cf2",
+      "size": 2931
+    },
+    {
+      "path": "blobs.lock",
+      "sha256": "6d6f25aa036e49add8c6e961af787a3149777a7fbd60398e76c219c5a1ea8093",
+      "size": 60
+    },
+    {
+      "path": "eval.py",
+      "sha256": "84ba441b101a61283c0dd5d05960a33cedf8cfe224cc6aae4b308d0a4cc60fc0",
+      "size": 5030
+    },
+    {
+      "path": "examples/baseline/solution.json",
+      "sha256": "d89fc8cb61442e0356a9a470b9579b9dc6753965854cb8b3af1af16a8ffdfca2",
+      "size": 246
+    },
+    {
+      "path": "hill.yaml",
+      "sha256": "9cb234a0958896eb5d1c4655768a6be2aec86c173a8bedabc0c664f624c96b56",
+      "size": 202
+    },
+    {
+      "path": "private.lock",
+      "sha256": "08282b4231b8f7d6aa91d59c7e1abbe2174d23a5ca35339d6c15ee47ac3b60de",
+      "size": 368
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "f3017e2c14384f5920961413cb050159e2ef2bfd7089e4a76731a1a32f2f94cb",
+      "size": 222
+    },
+    {
+      "path": "tests/test_hill.py",
+      "sha256": "17450bf3bfc510fcd97e8e2fccb89c03fed3316cdc588eec57b0d44f930fb3cc",
+      "size": 2341
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "c72b398c346d02de4584551844636e9d33b7c00c2ef1088dcb781486b402d0cc",
+      "size": 4665
+    }
+  ],
+  "exclusions": [
+    ".git/**",
+    ".vc/**",
+    "private/**",
+    ".pytest_cache/**",
+    "__pycache__/**",
+    "*.pyc"
+  ],
+  "claim_boundary": "Public source/checker capture only. No H2-H7 slot binding, mathematical admission, certification, or competition-submission effect."
+}
