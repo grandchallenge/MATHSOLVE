@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-H1-H1-12-IA-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H1",
+  "obligation": "H1-12",
+  "assignment_id": "OM26-H1-H1-12",
+  "dispatch_id": "OM26-H1-H1-12-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-001",
+  "concurrency_mode": "independent_blind",
+  "objective": "Produce one bounded independent proof-adversarial contribution against the live H1-12 multiple-concurrence frontier.",
+  "protected_inputs": {
+    "solve_base": "grandchallenge/MATHSOLVE@fcb897f12607efd60d94050d1278e60000adacc0",
+    "forge_main": "grandchallenge/MATHFORGE@343945512476bd91ed936749f9c4918f0723bff2",
+    "forge_source_lock_blob": "7a90cd6eeb54e8e4c5b63c5977e40a1ab5bcaa2c",
+    "forge_statement_blob": "47e529bce21e76c575c69a26824e182848dceedc",
+    "forge_evaluator_contract_blob": "b9f9d8b58fa613c9e788d09f987b50260066bc67",
+    "h1_12_status_blob": "d81f830ca6ae643a3f98b06ea6094a7ff49fef1e",
+    "work_package_blob": "b3a1937c9dc74c1f7a026b8dfc712c37765b4984"
+  },
+  "scope": {
+    "may_do_mathematical_reasoning": true,
+    "may_use_finite_exact_computation": true,
+    "may_edit_repository": false,
+    "may_open_pull_request": false,
+    "may_submit_competition_entry": false,
+    "may_certify": false
+  },
+  "return": {
+    "protocol": "GCL-CONTRIBUTION-RESULT/1",
+    "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/498",
+    "contributor_write_authority": "issue_comment_only",
+    "exactly_one_result_comment": true,
+    "first_valid_result_lock": true,
+    "automated_intake_workflow": ".github/workflows/openmath-cex-independent-contribution-intake.yml"
+  },
+  "acceptable_dispositions": [
+    "PROVED_REDUCTION",
+    "FALSIFIED_REDUCTION",
+    "NEW_NORMAL_FORM",
+    "SURVIVING_COUNTERCASE",
+    "EXACT_BLOCKER"
+  ],
+  "claim_boundary": "This operation authorizes bounded external mathematical evidence only. Receipt is not admission, certification, optimality, novelty, or competition acceptance."
+}
