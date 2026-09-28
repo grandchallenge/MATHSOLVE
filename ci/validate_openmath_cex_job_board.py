@@ -10,16 +10,23 @@ REGISTRY = '.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json'
 BOARD = 'handoffs/OPENMATH-2026/CEX_JOB_BOARD.md'
 ENTRYPOINT = 'handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md'
 RECEIPT = 'work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json'
-CAMPAIGN = '.gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json'
-OPERATION = '.gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json'
+SOURCE_CAMPAIGN = '.gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json'
+SOURCE_OPERATION = '.gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json'
+H1_OPERATION = '.gcl/operations/OM26-H1-H1-12-IA-001/OPERATION.json'
+H1_DISPATCH = 'contributions/OPENMATH-2026/OM26-H1/H1-12/dispatches/OM26-H1-H1-12-IA-001.json'
 PREP = 'work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json'
 ROUTING = '.ghos-routing/workflows.json'
-WORKFLOW = '.github/workflows/openmath-cex-job-board.yml'
+JOB_BOARD_WORKFLOW = '.github/workflows/openmath-cex-job-board.yml'
+INTAKE_WORKFLOW = '.github/workflows/openmath-cex-independent-contribution-intake.yml'
 
 BASE_URL = 'https://github.com/grandchallenge/MATHSOLVE'
 ENTRYPOINT_URL = BASE_URL + '/blob/main/' + ENTRYPOINT
 REGISTRY_URL = 'https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/' + REGISTRY
 BOARD_URL = BASE_URL + '/blob/main/' + BOARD
+H1_DISPATCH_ID = 'OM26-H1-H1-12-IA-001'
+H1_AGENT_REF = 'INDEPENDENT-AGENT-001'
+H1_ISSUE_URL = BASE_URL + '/issues/498'
+H1_WORK_PACKAGE = 'handoffs/OPENMATH-2026/jobs/OM26-H1-H1-12-IA-001.md'
 
 
 def load(rel: str):
@@ -37,8 +44,10 @@ def validate() -> list[str]:
     errors: list[str] = []
     registry = load(REGISTRY)
     receipt = load(RECEIPT)
-    campaign = load(CAMPAIGN)
-    operation = load(OPERATION)
+    source_campaign = load(SOURCE_CAMPAIGN)
+    source_operation = load(SOURCE_OPERATION)
+    h1_operation = load(H1_OPERATION)
+    h1_dispatch = load(H1_DISPATCH)
     prep = load(PREP)
     routing = load(ROUTING)
 
@@ -46,8 +55,11 @@ def validate() -> list[str]:
         errors.append('assignment registry record_type mismatch')
     if registry.get('campaign') != 'OPENMATH-2026':
         errors.append('assignment registry campaign mismatch')
-    if registry.get('operation') != 'OM26-H2-H7-SOURCE-ACQ':
-        errors.append('assignment registry operation mismatch')
+    if registry.get('scope') != 'OPENMATH_CAMPAIGN_WIDE_CEX_ASSIGNMENTS':
+        errors.append('assignment registry is not campaign-wide')
+    for op in ('OM26-H2-H7-SOURCE-ACQ', 'OM26-H1-H1-12-IA-001'):
+        if op not in registry.get('operations', []):
+            errors.append(f'missing registry operation {op}')
 
     discovery = registry.get('discovery', {})
     expected_discovery = {
@@ -61,8 +73,6 @@ def validate() -> list[str]:
             errors.append(f'discovery {key} mismatch')
         if not absolute_https(discovery.get(key)):
             errors.append(f'discovery {key} is not an absolute HTTPS URL')
-    if 'MATHSOLVE #495' not in discovery.get('stable_rule', ''):
-        errors.append('discovery stable rule must explicitly reject repository shorthand')
 
     launch = registry.get('launch_contract', {})
     if launch.get('required_fields') != ['ENTRYPOINT_URL', 'DISPATCH_ID', 'AGENT_REF']:
@@ -71,163 +81,133 @@ def validate() -> list[str]:
         errors.append('launch contract entrypoint URL mismatch')
     if launch.get('repository_discovery_required') is not False:
         errors.append('zero-context launch must not require repository discovery')
-
     if registry.get('lease_policy', {}).get('external_self_claim_allowed') is not False:
         errors.append('external self-claim must remain disabled')
-    if registry.get('mathematics_release_policy', {}).get('current_math_jobs') != 0:
-        errors.append('H2-H7 mathematical jobs must remain zero before source lock and slot bind')
-    if registry.get('slot_binding_policy', {}).get('current_mapping') != 'UNRESOLVED':
-        errors.append('slot mapping must remain unresolved')
 
     expected_pool = receipt.get('unresolved_source_pool', [])
     if len(expected_pool) != 6:
         errors.append('authoritative unresolved source pool must contain six hills')
-    if 'alejandrozu/kobon-triangles' in expected_pool:
-        errors.append('H1 must not appear in unresolved source pool')
-
-    assignments = registry.get('assignments', [])
-    ids = [item.get('assignment_id') for item in assignments]
-    if len(ids) != len(set(ids)):
-        errors.append('assignment IDs are not unique')
-    observed_pool = [item.get('external_hill_id') for item in assignments]
-    if observed_pool != expected_pool:
-        errors.append(f'assignment hill IDs do not exactly match authoritative source pool: {observed_pool}')
-
-    source_pool = registry.get('source_pool', {})
-    if source_pool.get('receipt') != RECEIPT:
-        errors.append('registry does not bind authoritative list receipt')
-    if source_pool.get('normalized_sha256') != receipt.get('source', {}).get('normalized_sha256'):
-        errors.append('registry source-pool digest mismatch')
-
-    prep_pool = prep.get('authoritative_unresolved_source_pool', {})
-    if prep_pool.get('receipt') != RECEIPT:
-        errors.append('preparation ledger does not bind authoritative list receipt')
-    if prep_pool.get('hill_ids') != expected_pool:
+    source_assignments = [x for x in registry.get('assignments', []) if x.get('class') == 'SOURCE_ACQUISITION']
+    if [x.get('external_hill_id') for x in source_assignments] != expected_pool:
+        errors.append('source-acquisition assignments do not exactly match authoritative unresolved pool')
+    if any(x.get('state') != 'AVAILABLE_FOR_LEASE' for x in source_assignments):
+        errors.append('source-acquisition assignments must remain AVAILABLE_FOR_LEASE')
+    if any(x.get('lease', {}).get('state') != 'UNCLAIMED' for x in source_assignments):
+        errors.append('source-acquisition assignments must remain UNCLAIMED')
+    if registry.get('mathematics_release_policy', {}).get('current_math_jobs') != 0:
+        errors.append('H2-H7 mathematical jobs must remain zero')
+    if registry.get('slot_binding_policy', {}).get('current_mapping') != 'UNRESOLVED':
+        errors.append('H2-H7 slot mapping must remain unresolved')
+    if source_campaign.get('protected_inputs', {}).get('authoritative_list_receipt') != f'grandchallenge/MATHSOLVE:{RECEIPT}':
+        errors.append('source campaign authoritative receipt mismatch')
+    if source_operation.get('scope', {}).get('may_author_hill_mathematics') is not False:
+        errors.append('H2-H7 source operation mathematics firewall changed')
+    if prep.get('authoritative_unresolved_source_pool', {}).get('hill_ids') != expected_pool:
         errors.append('preparation ledger source pool mismatch')
 
-    for item in assignments:
-        aid = item.get('assignment_id')
-        hill = item.get('external_hill_id')
-        if item.get('class') != 'SOURCE_ACQUISITION':
-            errors.append(f'{aid}: class must be SOURCE_ACQUISITION')
-        if item.get('state') != 'AVAILABLE_FOR_LEASE':
-            errors.append(f'{aid}: current state must be AVAILABLE_FOR_LEASE')
-        if item.get('slot_binding') is not None:
-            errors.append(f'{aid}: slot_binding must remain null before protected binding')
-
-        work_package = item.get('work_package')
-        expected_wp_url = BASE_URL + '/blob/main/' + str(work_package)
-        if item.get('work_package_url') != expected_wp_url:
-            errors.append(f'{aid}: work_package_url mismatch')
-        if not absolute_https(item.get('work_package_url')):
-            errors.append(f'{aid}: work_package_url is not absolute HTTPS')
-
-        lease = item.get('lease', {})
-        if lease.get('state') != 'UNCLAIMED':
-            errors.append(f'{aid}: current lease must be UNCLAIMED')
-        for key in (
-            'dispatch_id',
-            'agent_ref',
-            'dispatch_issue_number',
-            'protected_lease_commit',
-            'dispatch_url',
-            'return_url',
-        ):
-            if lease.get(key) is not None:
-                errors.append(f'{aid}: {key} must be null while unclaimed')
-
-        perms = item.get('permissions', {})
-        for key in ('hill_specific_mathematics', 'competition_submission', 'certification', 'canonical_claim_mutation'):
-            if perms.get(key) is not False:
-                errors.append(f'{aid}: permission {key} must remain false')
-        if item.get('prerequisites', {}).get('source_lock') is not None:
-            errors.append(f'{aid}: source lock must remain null before acquisition')
-
-        wp = ROOT / str(work_package or '')
-        if not wp.is_file():
-            errors.append(f'{aid}: work package missing')
-            continue
-        text = wp.read_text(encoding='utf-8')
-        required = [
-            f'**Assignment ID:** `{aid}`',
-            f'**Organizer hill ID:** `{hill}`',
-            '## Execution gate',
-            'NO_ACTIVE_LEASE',
-            'Do not self-claim this assignment.',
-            '## Successor gate',
-        ]
-        for marker in required:
-            if marker not in text:
-                errors.append(f'{aid}: work package missing marker {marker}')
-
-    entrypoint_path = ROOT / ENTRYPOINT
-    if not entrypoint_path.is_file():
-        errors.append('absolute external-agent entrypoint is missing')
+    math_assignments = [x for x in registry.get('assignments', []) if x.get('class') == 'MATHEMATICAL_RESEARCH']
+    if len(math_assignments) != 1:
+        errors.append('expected exactly one inaugural mathematical assignment')
     else:
-        entry = entrypoint_path.read_text(encoding='utf-8')
-        for required in (
-            ENTRYPOINT_URL,
-            REGISTRY_URL,
-            'ENTRYPOINT_URL:',
-            'DISPATCH_ID:',
-            'AGENT_REF:',
-            'NO_ACTIVE_LEASE',
-            'AMBIGUOUS_LEASE',
-            'work_package_url',
-            'You do not need prior knowledge of GCL, MATHSOLVE, repository names, issue numbers, or campaign history.',
+        item = math_assignments[0]
+        lease = item.get('lease', {})
+        if item.get('assignment_id') != 'OM26-H1-H1-12':
+            errors.append('H1 assignment_id mismatch')
+        if item.get('hill') != 'OM26-H1' or item.get('obligation') != 'H1-12':
+            errors.append('H1 assignment target mismatch')
+        if item.get('external_hill_id') != 'alejandrozu/kobon-triangles':
+            errors.append('H1 external hill identity mismatch')
+        if item.get('state') != 'LEASED' or lease.get('state') != 'LEASED':
+            errors.append('inaugural H1 assignment is not LEASED')
+        if lease.get('dispatch_id') != H1_DISPATCH_ID:
+            errors.append('inaugural H1 dispatch_id mismatch')
+        if lease.get('agent_ref') != H1_AGENT_REF:
+            errors.append('inaugural H1 agent_ref mismatch')
+        if lease.get('dispatch_issue_number') != 498:
+            errors.append('inaugural H1 issue number mismatch')
+        if lease.get('dispatch_url') != H1_ISSUE_URL or lease.get('return_url') != H1_ISSUE_URL:
+            errors.append('inaugural H1 dispatch/return URL mismatch')
+        if not isinstance(lease.get('protected_lease_commit'), str) or len(lease.get('protected_lease_commit', '')) != 40:
+            errors.append('inaugural H1 lease lacks introducing commit identity')
+        if item.get('work_package') != H1_WORK_PACKAGE:
+            errors.append('inaugural H1 work-package path mismatch')
+        if item.get('work_package_url') != BASE_URL + '/blob/main/' + H1_WORK_PACKAGE:
+            errors.append('inaugural H1 work-package URL mismatch')
+        if item.get('operation_contract') != H1_OPERATION:
+            errors.append('inaugural H1 operation contract mismatch')
+        if item.get('dispatch_record') != H1_DISPATCH:
+            errors.append('inaugural H1 dispatch record mismatch')
+        if item.get('return_protocol') != 'GCL-CONTRIBUTION-RESULT/1':
+            errors.append('inaugural H1 return protocol mismatch')
+        perms = item.get('permissions', {})
+        if perms.get('hill_specific_mathematics') is not True:
+            errors.append('inaugural H1 mathematical permission missing')
+        for key in ('competition_submission', 'certification', 'canonical_claim_mutation'):
+            if perms.get(key) is not False:
+                errors.append(f'inaugural H1 prohibited permission enabled: {key}')
+        prereq = item.get('prerequisites', {})
+        if prereq.get('protected_source_lock_required') is not True or prereq.get('solve_release') is not True:
+            errors.append('inaugural H1 source/release prerequisites mismatch')
+        sl = prereq.get('source_lock', {})
+        if sl.get('repository') != 'grandchallenge/MATHFORGE' or sl.get('blob_sha1') != '7a90cd6eeb54e8e4c5b63c5977e40a1ab5bcaa2c':
+            errors.append('inaugural H1 source-lock identity mismatch')
+
+    if h1_operation.get('operation') != H1_DISPATCH_ID:
+        errors.append('H1 operation ID mismatch')
+    if h1_operation.get('assignment_id') != 'OM26-H1-H1-12':
+        errors.append('H1 operation assignment mismatch')
+    if h1_operation.get('agent_ref') != H1_AGENT_REF:
+        errors.append('H1 operation agent mismatch')
+    if h1_operation.get('return', {}).get('issue_url') != H1_ISSUE_URL:
+        errors.append('H1 operation return surface mismatch')
+
+    if h1_dispatch.get('dispatch_id') != H1_DISPATCH_ID:
+        errors.append('H1 dispatch record ID mismatch')
+    if h1_dispatch.get('agent_ref') != H1_AGENT_REF:
+        errors.append('H1 dispatch record agent mismatch')
+    if h1_dispatch.get('github_issue_number') != 498 or h1_dispatch.get('github_issue_url') != H1_ISSUE_URL:
+        errors.append('H1 dispatch issue binding mismatch')
+    if h1_dispatch.get('bootstrap_path') != H1_WORK_PACKAGE:
+        errors.append('H1 dispatch bootstrap path mismatch')
+    wp = ROOT / H1_WORK_PACKAGE
+    if not wp.is_file():
+        errors.append('H1 inaugural work package missing')
+    else:
+        text = wp.read_text(encoding='utf-8')
+        for marker in (
+            'GCL-CONTRIBUTION-DISPATCH/1',
+            'dispatch_id: OM26-H1-H1-12-IA-001',
+            'agent_ref: INDEPENDENT-AGENT-001',
+            'GCL-CONTRIBUTION-RESULT/1',
+            '## Strongest exact statement',
+            '## Next residual',
         ):
-            if required not in entry:
-                errors.append(f'external-agent entrypoint missing marker: {required}')
+            if marker not in text:
+                errors.append(f'H1 work package missing marker {marker}')
+
+    entrypoint = (ROOT / ENTRYPOINT).read_text(encoding='utf-8')
+    for marker in (ENTRYPOINT_URL, REGISTRY_URL, 'DISPATCH_ID:', 'AGENT_REF:', 'work_package_url'):
+        if marker not in entrypoint:
+            errors.append(f'external-agent entrypoint missing marker {marker}')
 
     board = (ROOT / BOARD).read_text(encoding='utf-8')
-    if ENTRYPOINT_URL not in board or REGISTRY_URL not in board:
-        errors.append('human board does not expose absolute entrypoint and registry URLs')
-    if 'A zero-context agent is not expected to know what "MATHSOLVE #495" means.' not in board:
-        errors.append('human board does not reject internal shorthand')
-    if 'External agents do **not** choose or claim work by browsing the repository.' not in board:
-        errors.append('human board self-claim prohibition missing')
+    if H1_DISPATCH_ID not in board or H1_AGENT_REF not in board or 'LEASED' not in board:
+        errors.append('human board does not expose inaugural H1 lease')
     if 'No H2-H7 mathematical hill-climbing package is executable yet.' not in board:
-        errors.append('human board source-lock firewall missing')
+        errors.append('human board lost H2-H7 mathematics firewall')
 
-    if campaign.get('protected_inputs', {}).get('authoritative_list_receipt') != f'grandchallenge/MATHSOLVE:{RECEIPT}':
-        errors.append('campaign state does not bind authoritative list receipt')
-    cold = campaign.get('cold_start', {})
-    if cold.get('external_agent_entrypoint_url') != ENTRYPOINT_URL:
-        errors.append('campaign absolute entrypoint mismatch')
-    if cold.get('machine_registry_url') != REGISTRY_URL:
-        errors.append('campaign absolute registry URL mismatch')
-
-    assignment_policy = operation.get('external_assignment_policy', {})
-    if assignment_policy.get('registry') != REGISTRY:
-        errors.append('operation does not bind assignment registry')
-    if assignment_policy.get('entrypoint') != ENTRYPOINT:
-        errors.append('operation does not bind external-agent entrypoint')
-    if assignment_policy.get('entrypoint_url') != ENTRYPOINT_URL:
-        errors.append('operation absolute entrypoint mismatch')
-    if assignment_policy.get('registry_url') != REGISTRY_URL:
-        errors.append('operation absolute registry mismatch')
-    if assignment_policy.get('launch_fields') != ['ENTRYPOINT_URL', 'DISPATCH_ID', 'AGENT_REF']:
-        errors.append('operation launch field mismatch')
-    if assignment_policy.get('repository_shorthand_is_sufficient') is not False:
-        errors.append('operation must reject repository shorthand as sufficient')
-    if assignment_policy.get('external_self_claim_allowed') is not False:
-        errors.append('operation external self-claim boundary mismatch')
-    if ENTRYPOINT not in operation.get('governed_artifacts', []):
-        errors.append('entrypoint missing from governed artifact set')
-    if operation.get('scope', {}).get('may_author_hill_mathematics') is not False:
-        errors.append('operation hill mathematics firewall changed')
-
-    entries = [x for x in routing.get('workflows', []) if x.get('path') == WORKFLOW]
-    if len(entries) != 1:
-        errors.append('job-board workflow must be registered exactly once')
+    by_path = {x.get('path'): x for x in routing.get('workflows', [])}
+    job_board = by_path.get(JOB_BOARD_WORKFLOW)
+    if not job_board or job_board.get('controller_id') != 'GITHUB_ACTIONS':
+        errors.append('job-board workflow routing registration missing')
+    intake = by_path.get(INTAKE_WORKFLOW)
+    if not intake:
+        errors.append('OPENMATH independent contribution intake workflow routing registration missing')
     else:
-        entry = entries[0]
-        if entry.get('observed_features') != ['OPAQUE_EXECUTION']:
-            errors.append('job-board workflow routing features mismatch')
-        if entry.get('topology') != 'PERSISTENT_CONTROLLER_REQUIRED':
-            errors.append('job-board workflow topology mismatch')
-        if entry.get('controller_id') != 'GITHUB_ACTIONS':
-            errors.append('job-board workflow controller mismatch')
+        if intake.get('observed_features') != ['OPAQUE_EXECUTION', 'WRITE_CAPABLE']:
+            errors.append('OPENMATH intake workflow routing features mismatch')
+        if intake.get('topology') != 'PERSISTENT_CONTROLLER_REQUIRED' or intake.get('controller_id') != 'GITHUB_ACTIONS':
+            errors.append('OPENMATH intake workflow routing topology mismatch')
 
     return errors
 
@@ -238,7 +218,7 @@ def main() -> int:
         for error in errors:
             print('FAIL:', error)
         return 1
-    print('PASS: OPENMATH CEX pickup uses explicit absolute locators and remains fail-closed')
+    print('PASS: OPENMATH CEX has one protected inaugural H1 mathematical lease with automated RESULT/1 return')
     return 0
 
 
