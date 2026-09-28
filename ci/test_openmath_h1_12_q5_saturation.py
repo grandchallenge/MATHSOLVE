@@ -21,7 +21,7 @@ class H112Q5SaturationTest(unittest.TestCase):
 
     def test_33344_is_eliminated(self):
         self.assertEqual(
-            retained_summary((3, 3, 4, 4, 4))["state_count"],
+            retained_summary((3, 3, 3, 4, 4))["state_count"],
             0,
         )
 
