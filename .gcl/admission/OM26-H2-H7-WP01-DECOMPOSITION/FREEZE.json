@@ -1,10 +1,10 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "record_type": "GCL_CONTENT_FREEZE",
   "campaign": "OPENMATH-2026",
   "operation": "OM26-H2-H7-WP01-DECOMPOSITION",
-  "protected_base": "da4ed0f3a1e884e2196a329ab3a2c6e1bf838a74",
-  "assembled_from_head": "f5a091b4a2055dbe19acd617f71c65eb9ace8fcb",
+  "protected_base": "246a51ab4f15c616da06b2e3832f0ab0e102d30a",
+  "assembled_from_head": "304b1a94bca5f9c12c13f70cc15dbeae1f2799b9",
   "predecessor": {
     "source_acquisition_completion": "da4ed0f3a1e884e2196a329ab3a2c6e1bf838a74",
     "solve_import_readback": {
@@ -17,9 +17,9 @@
     }
   },
   "artifacts": {
-    ".gcl/operations/OM26-H2-H7-WP01-DECOMPOSITION/OPERATION.json": "ed7ac2d15e976f65979ec1075ef8658d08db6bdd",
-    "work_packages/OPENMATH_2026/H2_H7_WP01_DECOMPOSITION.json": "2c0b904632e8c715347f0e2e34af9df9c6b1efe7",
-    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "57726279ba8bb65b8af0b7c92746d802f9a55730",
+    ".gcl/operations/OM26-H2-H7-WP01-DECOMPOSITION/OPERATION.json": "c0412c97836ddebbd3b4e5595cafce33ac9a4c1f",
+    "work_packages/OPENMATH_2026/H2_H7_WP01_DECOMPOSITION.json": "8b1ab41fb5e01f81a12ab8b7283c2bb5444095b6",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "e07b46648fcfb6c2f4f976c19d7fddbcc5a67d57",
     "work_packages/OPENMATH_2026/HILL_LANES.json": "e9a245afa8a6bda46d9c1ef5d69a1167b1320c1d",
     "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "6daddf438d9f38e0d9d8680ed21ec7d6567b06c7",
     "ci/validate_openmath_cex_job_board.py": "f07b0166fd76574d00390b0d13cf4649ea298a38",
@@ -32,13 +32,16 @@
     "handoffs/OPENMATH-2026/jobs/OM26-H7-WP01.md": "c02b21acf4a7d79bd31b1e708d2133db10506c78",
     "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md": "8c2bd5d6b5a6a6abece49c7676f91fd099d9a921",
     ".github/workflows/openmath-cex-job-board.yml": "a3b87a22c9494658a607aeaa4458e099bc4b6680",
-    ".ghos-routing/workflows.json": "835a2cd121bb1e623cd83be2ef66b4e306aea26a"
+    ".ghos-routing/workflows.json": "835a2cd121bb1e623cd83be2ef66b4e306aea26a",
+    ".gcl/completions/OM26-H2-H7-WP01-DECOMPOSITION/COMPLETION_RECEIPT.json": "2dd5697d92478c053e46cb4346a64463006a857a"
   },
   "assignment_state": {
     "available_for_lease": 6,
     "leased_h2_h7": 0,
     "active_h1_lease": 1,
-    "rule": "AVAILABLE_FOR_LEASE is not execution authority. External execution requires a later protected LEASED mutation with exact dispatch_id and agent_ref."
+    "rule": "AVAILABLE_FOR_LEASE is not execution authority. External execution requires a later protected LEASED mutation with exact dispatch_id and agent_ref.",
+    "executable_h2_h7": 0,
+    "readback": "PROTECTED_READBACK_CONFIRMED"
   },
   "invalidation": {
     "governed_artifact_change": "new freeze required",
@@ -46,5 +49,12 @@
     "lease_change": "Any H2-H7 lease transition is a separate protected operation and requires exact dispatch/return identity.",
     "claim_promotion": "Returned results do not mutate canonical claims without separate adjudication."
   },
-  "authority_boundary": "This freeze instantiates bounded mathematical work packages only. It creates no H2-H7 execution lease, competition submission authority, novelty claim, or certification."
+  "authority_boundary": "WP01 instantiation is complete. The next mutation would be a distinct external lease act, prohibited by the completed operation's may_lease_external_agent=false scope and requiring exact agent/dispatch/return identity.",
+  "protected_wp01_merge": "246a51ab4f15c616da06b2e3832f0ab0e102d30a",
+  "transition_effect": {
+    "protected": "WP01 assignment tranche protected at 246a51ab4f15c616da06b2e3832f0ab0e102d30a.",
+    "readback": "All six work-package blobs and the machine registry were read back by exact Git blob identity.",
+    "available": "Six H2-H7 assignments remain AVAILABLE_FOR_LEASE.",
+    "not_executable": "No H2-H7 assignment is LEASED; dispatch and agent identity fields remain null."
+  }
 }
