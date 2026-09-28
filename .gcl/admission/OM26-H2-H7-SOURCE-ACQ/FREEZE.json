@@ -1,28 +1,45 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "record_type": "GCL_CONTENT_FREEZE",
   "campaign": "OPENMATH-2026-SOURCE-ACQ",
   "operation": "OM26-H2-H7-SOURCE-ACQ",
   "protected_base": "78dfb7479ca521f468d068beeea34c07dc1d0cd0",
-  "assembled_from_head": "031e07ad8cd45e6259b01d7a30e2618909cd5034",
+  "maintenance_base": "597a3c66cf7c42e9dfb7abdf4f22c3e776d5a3f2",
+  "assembled_from_head": "3dae48dec5b2fc11dd79bf3bfc8a23a0e1a3abd0",
   "provider_anchor": "eb5af08b1bb0ae7742dc46786019fe7b034b04ee",
   "programme_anchor": "6fae2b2df9bc0bb180a63c76fc9752656285da02",
-  "hash_semantics": "Git blob SHA-1 content identities over the exact governed preparation set after routing repair; deterministic CEX preflight and GH-OS routing enforcement validate semantic/routing invariants.",
+  "hash_semantics": "Git blob SHA-1 content identities over the exact governed source-acquisition and CEX assignment-discovery set. The maintenance addition changes execution-control/discovery only; it does not source-lock any hill or authorize hill mathematics.",
   "artifacts": {
-    ".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json": "23051beda8a29f41e5ede77f9b9e1b07a262397a",
-    ".gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json": "58f2974c9b40575a21652d1cede234d78cd54c3e",
+    ".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json": "6dddb4d32caea591daffbb04ea4a20de1debeea8",
+    ".gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json": "1cfce1c2ff9c4f4b62e8c1a82289f918665570c3",
     "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json": "bed3552a5e3213927bcf4810e5e304b036cb69cf",
-    "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md": "0f7bd46ae45d045024e43d5af4fd9ac40124378c",
+    "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md": "a400e862d035b15964e787508a57cfd9f7ae240d",
     "ci/validate_openmath_cex_h2_h7.py": "041fe4c11aac540c004249cea7c7d073a4e416ed",
     "ci/test_openmath_cex_h2_h7.py": "756a9883b88a17be6a5a921c2c08eb68b39295c5",
     ".github/workflows/openmath-h2-h7-cex-source-acq.yml": "654282f74fd9ba357b3c9cd8dcadf1473a0c8012",
-    ".ghos-routing/workflows.json": "3ebf925c42311bdca8bb01a9e59826eb28b25ecd"
+    ".ghos-routing/workflows.json": "d1e83b549d10cc1495599562d26088f293880a77",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "8f3a8e56ac52a9da8775d960897e4e627ce941d1",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "89ed0dc3bcf97732cded1f17ca866e4e648ade4e",
+    "handoffs/OPENMATH-2026/jobs/OM26-H2-SOURCE-ACQ.md": "15f8eaee033b9b2e263a3cc8b6ffceb199123bde",
+    "handoffs/OPENMATH-2026/jobs/OM26-H3-SOURCE-ACQ.md": "1232c6a77276bc9efcd4158e0489eac23f5fc97e",
+    "handoffs/OPENMATH-2026/jobs/OM26-H4-SOURCE-ACQ.md": "48bcbf8f7d2271f098b8950b21a1528dc9301c36",
+    "handoffs/OPENMATH-2026/jobs/OM26-H5-SOURCE-ACQ.md": "ceaa11454e1b1e2ba670117600caf635174fa488",
+    "handoffs/OPENMATH-2026/jobs/OM26-H6-SOURCE-ACQ.md": "8b86ef7acc375542704deca3d65597fb2715a0f2",
+    "handoffs/OPENMATH-2026/jobs/OM26-H7-SOURCE-ACQ.md": "450214f00915a3ec004c9091cf96f7df2ca3b905",
+    "ci/validate_openmath_cex_job_board.py": "5e32cbab2d816fb8670780758cf02f08691b8f9d",
+    "ci/test_openmath_cex_job_board.py": "6955f2f432ccea63e3218fe25103ce54ef7589e6",
+    ".github/workflows/openmath-cex-job-board.yml": "9e74dc18f97cda67f15c9f4a134bdbb74fc143e9"
+  },
+  "maintenance_effect": {
+    "added": "Canonical CEX assignment registry, deterministic human job board, six zero-context source-acquisition work packages, lease semantics, and exact-head validation.",
+    "unchanged": "H2-H7 source identities remain unresolved; hill-specific mathematics remains prohibited; H1 remains outside this operation."
   },
   "invalidation": {
     "governed_artifact_change": "new freeze required",
     "candidate_head_change": "Any subsequent candidate-head change after this freeze invalidates exact-head logical review and required CI evidence.",
     "provider_anchor_drift_before_source_mutation": "rebind MATHFORGE and classify materiality before source-acquisition mutation",
-    "protected_base_drift_before_merge": "classify drift; rebind if H2-H7 source-lock assumptions or governed semantics changed"
+    "protected_base_drift_before_merge": "classify drift; rebind if H2-H7 source-lock assumptions or governed semantics changed",
+    "assignment_lease_change": "A lease transition is a protected registry mutation and must identify assignment_id, dispatch_id, agent_ref, and protected commit."
   },
-  "authority_boundary": "This freeze identifies execution-control preparation only. It does not source-lock any unresolved hill, release hill-specific mathematics, certify mathematics, or authorize competition submission."
+  "authority_boundary": "This freeze identifies execution-control and assignment-discovery state only. AVAILABLE_FOR_LEASE is not executable by an external agent. Only a protected LEASED record authorizes a worker to execute its bounded work package. No source lock, mathematical claim, certification, or competition submission is created."
 }
