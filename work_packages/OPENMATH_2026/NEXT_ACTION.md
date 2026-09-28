@@ -13,4 +13,6 @@ H1-12 is now the priority lane. The protected Solve projective reduction removes
 
 Next H1 action: attack the q>=3 multi-core incidence budget directly. Do not spend another tranche on the exhausted local/topology neighborhoods unless a structurally distinct construction generator specifically targets that residual stratum.
 
-MATHCERT review gates remain independent. OM26-H2 through OM26-H6 remain source-lock pending on this H1 branch; campaign cardinality correction to seven is being handled separately so it cannot silently alter this tranche's evidence identity.
+MATHCERT review gates remain independent. OM26-H2 through OM26-H7 remain source-lock pending. The Human Steward correction to seven hills is now protected in MATHFORGE at `eb5af08b1bb0ae7742dc46786019fe7b034b04ee`; H7 remains blocked until its exact organizer-authoritative source lock is acquired.
+
+The protected H1-13 tranche-3 merge was independently re-exercised on the PR merge candidate in GitHub Actions run `36371582481`: the 300-second beam again found best score 93 and produced no candidate at or above 94. This replay confirms route closure but does not strengthen the upper-bound claim.

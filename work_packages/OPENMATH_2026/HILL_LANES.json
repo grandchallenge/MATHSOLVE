@@ -34,7 +34,7 @@
       "exact_hill_id": "alejandrozu/kobon-triangles",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
-        "forge_protected_commit": "73f1890387eec56eb6be31f8c00f10b6a5a56383",
+        "forge_protected_commit": "eb5af08b1bb0ae7742dc46786019fe7b034b04ee",
         "source_lock_path": "reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/SOURCE_LOCK.json",
         "source_lock_blob": "7a90cd6eeb54e8e4c5b63c5977e40a1ab5bcaa2c",
         "statement_path": "reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/STATEMENT.md",
@@ -140,7 +140,24 @@
         "mathcert_handoff": "BLOCKED"
       },
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
+    },
+    {
+      "hill_slot": "OM26-H7",
+      "status": "BLOCKED_PENDING_FORGE_SOURCE_LOCK",
+      "exact_hill_id": null,
+      "statement_lock": null,
+      "obligations": {
+        "semantic_fidelity": "BLOCKED",
+        "formalization_prerequisites": "BLOCKED",
+        "representation_or_reduction": "BLOCKED",
+        "restricted_theorem": "BLOCKED",
+        "exact_computation": "BLOCKED",
+        "falsification_counterexample": "BLOCKED",
+        "cei_independent_contribution": "BLOCKED",
+        "mathcert_handoff": "BLOCKED"
+      },
+      "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "OM26-H1 campaign-best-observed is 93. Protected Forge source audit gives unrestricted 93..95 and a restricted <=94 result for pairwise-nonparallel arrangements with at most two finite multiple points. Combined with the Solve projective no-parallel reduction, a hypothetical 95 witness is source-conditionally reduced to the q>=3 finite-multiple-point stratum. H1-13 tranches 1, 2, and 3 found no >93 candidate in their explicit bounded search regions; none is an upper-bound certificate. No optimality or certification inference is permitted."
+  "claim_boundary": "OM26-H1 campaign-best-observed is 93. Protected Forge source audit gives unrestricted 93..95 and a restricted <=94 result for pairwise-nonparallel arrangements with at most two finite multiple points. Combined with the Solve projective no-parallel reduction, a hypothetical 95 witness is source-conditionally reduced to the q>=3 finite-multiple-point stratum. H1-13 tranches 1, 2, and 3 found no >93 candidate in their explicit bounded search regions; none is an upper-bound certificate. No optimality or certification inference is permitted. Campaign cardinality is seven by Human Steward correction; OM26-H7 is reserved but remains blocked pending exact protected MATHFORGE source lock."
 }

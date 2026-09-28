@@ -3,17 +3,17 @@
 **Solve tracker:** `grandchallenge/MATHSOLVE#454`  
 **Programme tracker:** `grandchallenge/MATH-PROGRAMME#1072`  
 **Programme bootstrap:** `grandchallenge/MATH-PROGRAMME#1073`  
-**Current state:** `OM26-H1_ACTIVE__FIVE_HILLS_PENDING_FORGE_LOCK`
+**Current state:** `OM26-H1_ACTIVE__SIX_HILLS_PENDING_FORGE_LOCK`
 
 ## Purpose
 
-Operate the tactical research layer for the OpenMath 2026 six-hill sprint. MATHSOLVE owns decomposition, route selection, failure accounting, exact screens, restricted targets, CEI handoffs, and certification packets. It does not certify results.
+Operate the tactical research layer for the OpenMath 2026 seven-hill sprint. MATHSOLVE owns decomposition, route selection, failure accounting, exact screens, restricted targets, CEI handoffs, and certification packets. It does not certify results.
 
 ## Release rule
 
 A hill lane is released only when its MATHFORGE source-lock packet identifies the exact external hill statement and provenance.
 
-OM26-H1 (`alejandrozu/kobon-triangles`) is now released under protected MATHFORGE commit `73f1890387eec56eb6be31f8c00f10b6a5a56383`. OM26-H2 through OM26-H6 remain blocked; unresolved hill content must not be guessed.
+OM26-H1 (`alejandrozu/kobon-triangles`) is now released under protected MATHFORGE commit `eb5af08b1bb0ae7742dc46786019fe7b034b04ee`. OM26-H2 through OM26-H7 remain blocked; unresolved hill content must not be guessed.
 
 ## First active hill
 
@@ -26,3 +26,7 @@ Before starting another expensive route, record exact counterexamples, reusable 
 ## Submission boundary
 
 An OpenMath checker result, competition acceptance, CI success, or external contribution does not create a MATHCERT disposition. Every claim-bearing result must state its exact claim, dependencies, source lock, producer provenance, replay path, semantic-fidelity risks, and requested Cert modality.
+
+## Human Steward cardinality correction
+
+The sprint contains seven hills. `OM26-H7` is reserved following the Human Steward correction identifying an additional Erdős problem. Solve does not infer the exact organizer hill ID, statement, evaluator, or version from that description; H7 remains blocked until its exact MATHFORGE source lock is protected.
