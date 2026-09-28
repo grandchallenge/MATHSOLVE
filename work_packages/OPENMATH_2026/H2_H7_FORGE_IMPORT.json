@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "record_id": "MS-OPENMATH-2026-H2-H7-FORGE-IMPORT",
   "campaign_id": "OPENMATH-2026",
-  "state": "CANDIDATE_IMPORT__PROTECTED_SOLVE_MERGE_PENDING",
+  "state": "PROTECTED_IMPORT_READBACK_CONFIRMED",
   "solve_base": "fd090a1f2d2730fd17a20afbba5555fb52800dd0",
   "provider": {
     "repository": "grandchallenge/MATHFORGE",
@@ -166,9 +166,13 @@
   ],
   "release_effect": {
     "provider_release_confirmed": true,
-    "solve_import_candidate": true,
-    "solve_mathematics_release": false,
-    "next_gate": "PROTECTED_SOLVE_MERGE_AND_EXACT_READBACK"
+    "solve_import_protected": true,
+    "solve_import_readback_confirmed": true,
+    "solve_mathematics_release": true,
+    "release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH",
+    "next_gate": "INSTANTIATE_BOUNDED_MATHEMATICAL_WORK_PACKAGES"
   },
-  "claim_boundary": "Imports exact provider identity and semantics only. This candidate branch does not yet release H2-H7 mathematical work, competition submission, novelty, or certification."
+  "claim_boundary": "Exact provider identities and semantics are protected and read back in Solve. H2-H7 are released for decomposition and bounded research only; no competition, novelty, or certification effect follows.",
+  "protected_solve_import_merge": "57505b7c886bbf6b6aa00bc36168c1f097ee75a3",
+  "solve_import_readback": "work_packages/OPENMATH_2026/H2_H7_SOLVE_IMPORT_READBACK.json"
 }

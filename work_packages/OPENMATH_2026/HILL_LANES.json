@@ -58,7 +58,7 @@
     },
     {
       "hill_slot": "OM26-H2",
-      "status": "FORGE_RELEASE_IMPORTED__PROTECTED_SOLVE_MERGE_PENDING",
+      "status": "READY_FOR_DECOMPOSITION",
       "exact_hill_id": "alejandrozu/busy-beaver-6-certificates",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -76,25 +76,25 @@
         "semantic_readback_path": "reports/discovery/openmath_2026/SEMANTIC_PACK_READBACK.json",
         "semantic_readback_blob": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a",
         "exact_statement_source": "grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90:work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/busy-beaver-6-certificates/PUBLIC_SOURCE/README.md",
-        "solve_release_scope": "PENDING_PROTECTED_SOLVE_IMPORT_READBACK",
+        "solve_release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH",
         "final_submission_blocker": "LIVE_HILL_VERSION_CONCORDANCE_AND_COMPETITION_REVIEW_REQUIRED"
       },
       "obligations": {
-        "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED",
-        "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED",
-        "representation_or_reduction": "PENDING_SOLVE_DECOMPOSITION",
-        "restricted_theorem": "UNINSTANTIATED",
-        "exact_computation": "UNINSTANTIATED",
-        "falsification_counterexample": "UNINSTANTIATED",
-        "cei_independent_contribution": "BLOCKED_PENDING_SOLVE_IMPORT_PROTECTION",
+        "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
+        "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED__READY_FOR_BASELINE_CONCORDANCE",
+        "representation_or_reduction": "READY_FOR_DECOMPOSITION",
+        "restricted_theorem": "READY_FOR_WORK_PACKAGE_INSTANTIATION",
+        "exact_computation": "READY_FOR_BASELINE_REPLAY",
+        "falsification_counterexample": "READY_FOR_INDEPENDENT_REPLAY",
+        "cei_independent_contribution": "READY_FOR_BOUNDED_ASSIGNMENT_CREATION",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Protect and read back this Solve import; then instantiate the first bounded hill-specific work packages.",
+      "next_action": "Instantiate baseline/evaluator concordance and a bounded six-state transition-table candidate-search work package.",
       "title": "Busy Beaver 6 certificates"
     },
     {
       "hill_slot": "OM26-H3",
-      "status": "FORGE_RELEASE_IMPORTED__PROTECTED_SOLVE_MERGE_PENDING",
+      "status": "READY_FOR_DECOMPOSITION",
       "exact_hill_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -112,25 +112,25 @@
         "semantic_readback_path": "reports/discovery/openmath_2026/SEMANTIC_PACK_READBACK.json",
         "semantic_readback_blob": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a",
         "exact_statement_source": "grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90:work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/clique-cluster-ramsey-multiplicity/PUBLIC_SOURCE/README.md",
-        "solve_release_scope": "PENDING_PROTECTED_SOLVE_IMPORT_READBACK",
+        "solve_release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH",
         "final_submission_blocker": "LIVE_HILL_VERSION_CONCORDANCE_AND_COMPETITION_REVIEW_REQUIRED"
       },
       "obligations": {
-        "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED",
-        "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED",
-        "representation_or_reduction": "PENDING_SOLVE_DECOMPOSITION",
-        "restricted_theorem": "UNINSTANTIATED",
-        "exact_computation": "UNINSTANTIATED",
-        "falsification_counterexample": "UNINSTANTIATED",
-        "cei_independent_contribution": "BLOCKED_PENDING_SOLVE_IMPORT_PROTECTION",
+        "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
+        "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED__READY_FOR_BASELINE_CONCORDANCE",
+        "representation_or_reduction": "READY_FOR_DECOMPOSITION",
+        "restricted_theorem": "READY_FOR_WORK_PACKAGE_INSTANTIATION",
+        "exact_computation": "READY_FOR_BASELINE_REPLAY",
+        "falsification_counterexample": "READY_FOR_INDEPENDENT_REPLAY",
+        "cei_independent_contribution": "READY_FOR_BOUNDED_ASSIGNMENT_CREATION",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Protect and read back this Solve import; then instantiate the first bounded hill-specific work packages.",
+      "next_action": "Reproduce the supplied published reference construction under an independent exact density replay, then open a structurally distinct weighted-template search package.",
       "title": "Clique-cluster Ramsey multiplicity"
     },
     {
       "hill_slot": "OM26-H4",
-      "status": "FORGE_RELEASE_IMPORTED__PROTECTED_SOLVE_MERGE_PENDING",
+      "status": "READY_FOR_DECOMPOSITION",
       "exact_hill_id": "alejandrozu/collatz-modular-descent",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -148,25 +148,25 @@
         "semantic_readback_path": "reports/discovery/openmath_2026/SEMANTIC_PACK_READBACK.json",
         "semantic_readback_blob": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a",
         "exact_statement_source": "grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90:work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/collatz-modular-descent/PUBLIC_SOURCE/README.md",
-        "solve_release_scope": "PENDING_PROTECTED_SOLVE_IMPORT_READBACK",
+        "solve_release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH",
         "final_submission_blocker": "LIVE_HILL_VERSION_CONCORDANCE_AND_COMPETITION_REVIEW_REQUIRED"
       },
       "obligations": {
-        "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED",
-        "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED",
-        "representation_or_reduction": "PENDING_SOLVE_DECOMPOSITION",
-        "restricted_theorem": "UNINSTANTIATED",
-        "exact_computation": "UNINSTANTIATED",
-        "falsification_counterexample": "UNINSTANTIATED",
-        "cei_independent_contribution": "BLOCKED_PENDING_SOLVE_IMPORT_PROTECTION",
+        "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
+        "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED__READY_FOR_BASELINE_CONCORDANCE",
+        "representation_or_reduction": "READY_FOR_DECOMPOSITION",
+        "restricted_theorem": "READY_FOR_WORK_PACKAGE_INSTANTIATION",
+        "exact_computation": "READY_FOR_BASELINE_REPLAY",
+        "falsification_counterexample": "READY_FOR_INDEPENDENT_REPLAY",
+        "cei_independent_contribution": "READY_FOR_BOUNDED_ASSIGNMENT_CREATION",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Protect and read back this Solve import; then instantiate the first bounded hill-specific work packages.",
+      "next_action": "Instantiate exact public rule-validity replay and a bounded modular-descent rule-generation package; score-bearing private-target work remains evaluator-mediated.",
       "title": "Collatz modular descent"
     },
     {
       "hill_slot": "OM26-H5",
-      "status": "FORGE_RELEASE_IMPORTED__PROTECTED_SOLVE_MERGE_PENDING",
+      "status": "READY_FOR_DECOMPOSITION",
       "exact_hill_id": "alejandrozu/grothendieck-constant-witnesses",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -184,25 +184,25 @@
         "semantic_readback_path": "reports/discovery/openmath_2026/SEMANTIC_PACK_READBACK.json",
         "semantic_readback_blob": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a",
         "exact_statement_source": "grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90:work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/grothendieck-constant-witnesses/PUBLIC_SOURCE/README.md",
-        "solve_release_scope": "PENDING_PROTECTED_SOLVE_IMPORT_READBACK",
+        "solve_release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH",
         "final_submission_blocker": "LIVE_HILL_VERSION_CONCORDANCE_AND_COMPETITION_REVIEW_REQUIRED"
       },
       "obligations": {
-        "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED",
-        "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED",
-        "representation_or_reduction": "PENDING_SOLVE_DECOMPOSITION",
-        "restricted_theorem": "UNINSTANTIATED",
-        "exact_computation": "UNINSTANTIATED",
-        "falsification_counterexample": "UNINSTANTIATED",
-        "cei_independent_contribution": "BLOCKED_PENDING_SOLVE_IMPORT_PROTECTION",
+        "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
+        "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED__READY_FOR_BASELINE_CONCORDANCE",
+        "representation_or_reduction": "READY_FOR_DECOMPOSITION",
+        "restricted_theorem": "READY_FOR_WORK_PACKAGE_INSTANTIATION",
+        "exact_computation": "READY_FOR_BASELINE_REPLAY",
+        "falsification_counterexample": "READY_FOR_INDEPENDENT_REPLAY",
+        "cei_independent_contribution": "READY_FOR_BOUNDED_ASSIGNMENT_CREATION",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Protect and read back this Solve import; then instantiate the first bounded hill-specific work packages.",
+      "next_action": "Reproduce the source example and an independent exact sign/vector objective replay, then open a bounded rational-witness search package.",
       "title": "Grothendieck constant witnesses"
     },
     {
       "hill_slot": "OM26-H6",
-      "status": "FORGE_RELEASE_IMPORTED__PROTECTED_SOLVE_MERGE_PENDING",
+      "status": "READY_FOR_DECOMPOSITION",
       "exact_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -220,25 +220,25 @@
         "semantic_readback_path": "reports/discovery/openmath_2026/SEMANTIC_PACK_READBACK.json",
         "semantic_readback_blob": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a",
         "exact_statement_source": "grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90:work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/matrix-multiplication-tensor-3x3/PUBLIC_SOURCE/README.md",
-        "solve_release_scope": "PENDING_PROTECTED_SOLVE_IMPORT_READBACK",
+        "solve_release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH",
         "final_submission_blocker": "LIVE_HILL_VERSION_CONCORDANCE_AND_COMPETITION_REVIEW_REQUIRED"
       },
       "obligations": {
-        "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED",
-        "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED",
-        "representation_or_reduction": "PENDING_SOLVE_DECOMPOSITION",
-        "restricted_theorem": "UNINSTANTIATED",
-        "exact_computation": "UNINSTANTIATED",
-        "falsification_counterexample": "UNINSTANTIATED",
-        "cei_independent_contribution": "BLOCKED_PENDING_SOLVE_IMPORT_PROTECTION",
+        "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
+        "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED__READY_FOR_BASELINE_CONCORDANCE",
+        "representation_or_reduction": "READY_FOR_DECOMPOSITION",
+        "restricted_theorem": "READY_FOR_WORK_PACKAGE_INSTANTIATION",
+        "exact_computation": "READY_FOR_BASELINE_REPLAY",
+        "falsification_counterexample": "READY_FOR_INDEPENDENT_REPLAY",
+        "cei_independent_contribution": "READY_FOR_BOUNDED_ASSIGNMENT_CREATION",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Protect and read back this Solve import; then instantiate the first bounded hill-specific work packages.",
+      "next_action": "Reproduce the supplied Laderman rank-23 baseline with an independent 729-identity replay, then open a bounded exact rank/support transformation package.",
       "title": "3x3 matrix multiplication tensor"
     },
     {
       "hill_slot": "OM26-H7",
-      "status": "FORGE_RELEASE_IMPORTED__PROTECTED_SOLVE_MERGE_PENDING",
+      "status": "READY_FOR_DECOMPOSITION",
       "exact_hill_id": "ottogin/erdos-3",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -256,29 +256,31 @@
         "semantic_readback_path": "reports/discovery/openmath_2026/SEMANTIC_PACK_READBACK.json",
         "semantic_readback_blob": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a",
         "exact_statement_source": "grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90:work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/erdos-3/PUBLIC_SOURCE/statement.lean",
-        "solve_release_scope": "PENDING_PROTECTED_SOLVE_IMPORT_READBACK",
+        "solve_release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH",
         "final_submission_blocker": "LIVE_HILL_VERSION_CONCORDANCE_AND_COMPETITION_REVIEW_REQUIRED"
       },
       "obligations": {
-        "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED",
-        "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED",
-        "representation_or_reduction": "PENDING_SOLVE_DECOMPOSITION",
-        "restricted_theorem": "UNINSTANTIATED",
-        "exact_computation": "UNINSTANTIATED",
-        "falsification_counterexample": "UNINSTANTIATED",
-        "cei_independent_contribution": "BLOCKED_PENDING_SOLVE_IMPORT_PROTECTION",
+        "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
+        "formalization_prerequisites": "EVALUATOR_CONTRACT_IMPORTED__READY_FOR_BASELINE_CONCORDANCE",
+        "representation_or_reduction": "READY_FOR_DECOMPOSITION",
+        "restricted_theorem": "READY_FOR_WORK_PACKAGE_INSTANTIATION",
+        "exact_computation": "READY_FOR_BASELINE_REPLAY",
+        "falsification_counterexample": "READY_FOR_INDEPENDENT_REPLAY",
+        "cei_independent_contribution": "READY_FOR_BOUNDED_ASSIGNMENT_CREATION",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Protect and read back this Solve import; then instantiate the first bounded hill-specific work packages.",
+      "next_action": "Reproduce the pinned Lean environment and exact theorem statement, then decompose into bounded related-lemma/formal-proof reconnaissance before any complete-proof claim.",
       "title": "Erdős Problem 3"
     }
   ],
-  "claim_boundary": "OM26-H1 state is unchanged. OM26-H2 through OM26-H7 now carry exact provider identities and semantic contracts from protected MATHFORGE release 782b80c8..., but remain unavailable for new mathematical assignments until this Solve import is itself protected and read back.",
+  "claim_boundary": "OM26-H1 state is unchanged. OM26-H2 through OM26-H7 have exact protected provider identities, protected Solve import/readback, and are released for decomposition and bounded research. No H2-H7 mathematical assignment is executable until separately instantiated and, where external, explicitly leased.",
   "provider_import": {
     "receipt": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",
     "forge_protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+    "protected_solve_import_merge": "57505b7c886bbf6b6aa00bc36168c1f097ee75a3",
+    "solve_import_readback": "work_packages/OPENMATH_2026/H2_H7_SOLVE_IMPORT_READBACK.json",
     "provider_release": true,
-    "solve_release": false,
-    "blocker": "PROTECTED_SOLVE_IMPORT_MERGE_AND_READBACK_REQUIRED"
+    "solve_release": true,
+    "scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH"
   }
 }
