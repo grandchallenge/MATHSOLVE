@@ -9,12 +9,17 @@ H1-12 is the priority lane.
 Protected reductions now establish:
 - parallelism can be removed projectively while preserving selected counted faces;
 - conditional on the named source-scoped clean-line/fan premises, a 95 witness cannot have q<=3 finite multiple points;
-- if q=4, the only multiplicity profiles are 3333, 3334, 3335, 3344, and 3444;
-- the exact finite replay forces minimum D2 values 1, 3, 6, 5, and 6 respectively.
+- q=4 first reduces to 3333, 3334, 3335, 3344, 3444;
+- the saturated-core convex-hull reduction removes 3335, 3344, and 3444 conditional on the named local no-long-run fan premise.
 
-Next H1 action: resolve the dense four-core strata first. Analyze the complete-core cases 3335 and 3444, then 3344 at D2=5 or 6. Keep 3333 and 3334 as separate lower-density cases. Treat q>=5 as a distinct residual rather than mixing it into the four-core analysis.
+The live residual is therefore:
+1. q=4 profile 3334, with D2 in {3,4,5} and at most one saturated core;
+2. q=4 profile 3333, with D2 in {1,2,3,4,5,6} and at most one saturated core;
+3. q>=5.
 
-Do not resume generic coordinate-wall or topology-beam search. Any new construction search must deliberately target one of the enumerated singular strata and must use the independent exact scorer before promotion.
+Next H1 action: analyze 3334 first. Derive exact incidence/core-graph consequences separately for D2=3,4,5, and seek either a geometric contradiction, a stricter normal form, or a replayable construction. Keep 3333 and q>=5 separate.
+
+Do not resume generic coordinate-wall or topology-beam search. Any new construction search must deliberately target one of the remaining singular strata and use the independent exact scorer before promotion.
 
 MATHCERT intake admission remains non-certifying. OM26-H2 through OM26-H7 remain source-lock pending; OM26-H7's exact Erdős-problem statement must not be inferred before Forge acquisition.
 
