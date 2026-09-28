@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-12-STATUS",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-12",
+  "state": "PARALLELISM_ELIMINATED__CONCURRENCE_ONLY_GAP",
+  "proved_reduction": {
+    "statement": "Any finite hill arrangement and any finite set of its counted bounded triangular faces can be projectively transformed to an affine arrangement with no parallel line pairs while preserving all selected counted bounded triangular faces.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "remaining_gap": {
+    "simple_bound_value": 94,
+    "simple_bound_source": "Bartholdi-Blanc-Loisel 2007",
+    "issue": "Multiple concurrence is projectively invariant and is outside the stated simple-arrangement hypotheses.",
+    "target": "Prove an n=18 concurrence-aware bound <=94, or construct/replay 95."
+  },
+  "current_source_interval": {
+    "lower": 93,
+    "upper": 95
+  },
+  "claim_boundary": "H1-12 is narrowed, not closed. Parallelism is removed as an upper-bound obstruction; concurrence remains unresolved. No optimality or MATHCERT claim."
+}

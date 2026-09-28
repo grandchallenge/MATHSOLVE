@@ -11,7 +11,7 @@
 | R-G structured families | parametric/projective constructions | PASS_TRANCHE_1__58 | family yields exact candidates or provable score law | family ceiling/obstruction characterized |
 | R-H literature-guided | reconstruct sourced Bader 93 order type as rational lines | PASS__93__CAMPAIGN_BEST_OBSERVED | exact order-table match + direct-oracle 93 + AutoLab 93 | source drift, order mismatch, or evaluator discrepancy |
 | R-I CEI | bounded outside-intelligence subproblems | AUDIT-GATED | CEI conformance PASS + separate adjudication | audit drift or result outside claim boundary |
-| R-J upper-bound audit | transfer or reconstruct a hill-valid 94 upper bound | ACTIVE__GENERAL_SOURCE_BOUND_95__HILL_GLOBAL_94_OPEN | proof with hill-matching hypotheses or nondecreasing reduction | hypothesis mismatch or unclosed degeneracy case |
+| R-J upper-bound audit | transfer or reconstruct a hill-valid 94 upper bound | ACTIVE__PARALLELISM_ELIMINATED__CONCURRENCE_ONLY_GAP | concurrence-aware <=94 proof or hill-matching source | unclosed multiple-concurrence case |
 | R-K 94 local-wall search | exact coordinate-wall sweep from verified 93 | TRANCHE1_COMPLETE__NO_94__BEST93 | H1-07 direct-oracle + AutoLab 94 | bounded sweep exhausted with no score >93 |
 
 Routes are complementary. Parallel workers should receive different obligations, not copies of “solve Kobon triangles”.
