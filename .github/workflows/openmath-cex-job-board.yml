@@ -10,6 +10,7 @@ on:
       - "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json"
       - "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json"
       - "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md"
+      - "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md"
       - "handoffs/OPENMATH-2026/jobs/**"
       - "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md"
       - "ci/validate_openmath_cex_job_board.py"
