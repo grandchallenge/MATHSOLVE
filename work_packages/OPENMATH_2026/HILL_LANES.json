@@ -47,14 +47,14 @@
       "obligations": {
         "semantic_fidelity": "BASELINE_CONCORDANCE_PASS",
         "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
-        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_GE_3_RESIDUAL_SOURCE_CONDITIONAL",
-        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_AT_MOST_TWO_MULTIPOINT_94_SOURCE_CONDITIONAL",
+        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_GE_4_OR_RIGID_Q3_TEMPLATE_SOURCE_CONDITIONAL",
+        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_INTAKE_PROTECTED__H1_12_Q3_CLASSIFIED_SOURCE_CONDITIONAL",
         "exact_computation": "H1_13_TRANCHES1_2_3_COMPLETE__NO_94__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
-        "mathcert_handoff": "H1_02_AND_86_INTAKE_PENDING_REVIEW__93_SUCCESSOR_PREPARED"
+        "mathcert_handoff": "H1_02_AND_86_INTAKE_PROTECTED__93_SUCCESSOR_INTAKE_PROTECTED__CERT_EXECUTION_PENDING"
       },
-      "next_action": "Prioritize H1-12 multi-core incidence proof for the q>=3 finite-multiple-point residual. Resume construction search only with a structurally distinct generator targeting q>=3; do not repeat exhausted local/topology neighborhoods."
+      "next_action": "H1-12: attack the saturated q=3 three-triple core-triangle template directly and, in parallel, derive a q>=4 multi-core incidence inequality. Do not reopen broad topology search."
     },
     {
       "hill_slot": "OM26-H2",
@@ -159,5 +159,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "OM26-H1 campaign-best-observed is 93. Protected Forge source audit gives unrestricted 93..95 and a restricted <=94 result for pairwise-nonparallel arrangements with at most two finite multiple points. Combined with the Solve projective no-parallel reduction, a hypothetical 95 witness is source-conditionally reduced to the q>=3 finite-multiple-point stratum. H1-13 tranches 1, 2, and 3 found no >93 candidate in their explicit bounded search regions; none is an upper-bound certificate. No optimality or certification inference is permitted. Campaign cardinality is seven by Human Steward correction; OM26-H7 is reserved but remains blocked pending exact protected MATHFORGE source lock."
+  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. H1-13 tranches 1–3 are bounded negatives only. Parallelism is eliminated. Conditional on protected source-scoped clean-line/fan premises, a 95 witness with q=3 is forced into one saturated three-triple core-triangle template; otherwise q>=4. The arithmetic classification is independently replayed in Solve CI, but the geometric premises are not independently certified. No hill-global <=94, optimality, or certification inference is permitted. Campaign cardinality is seven; OM26-H2 through OM26-H7 remain source-lock pending."
 }
