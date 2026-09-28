@@ -4,7 +4,7 @@
   "campaign_id": "OPENMATH-2026",
   "hill_slot": "OM26-H1",
   "obligation": "H1-12",
-  "state": "Q_GE_6_OR_Q5_33333_K3_PLUS_TWO_ISOLATED_EQUALITY__SOURCE_CONDITIONAL",
+  "state": "Q_GE_6_OR_Q5_EXACT_NESTED_TRIANGLE_EQUALITY__SOURCE_CONDITIONAL",
   "proved_reduction": {
     "statement": "Any finite hill arrangement and any finite set of its counted bounded triangular faces can be projectively transformed to an affine arrangement with no parallel line pairs while preserving all selected counted bounded triangular faces.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
@@ -13,14 +13,14 @@
   },
   "remaining_gap": {
     "simple_bound_value": 94,
-    "issue": "Conditional on the named source-scoped premises, q<=4 is excluded and the q=5 profile 33333 residual is reduced from 595 labeled graphs / 15 S5 orbits to one exact equality graph: K3 plus two isolated triple cores, with D2=3,D1=10,U=1,blocked=6,clean=capacity=6. All q>=6 cases remain open.",
-    "target": "Resolve the q=5 K3+two-isolated equality geometry next; keep q>=6 separate."
+    "issue": "Conditional on the named source-scoped premises, q<=4 is excluded and the sole q=5 residual is now an exact nested-triangle equality geometry: central D2 triangle, outer third-line triangle, two isolated triple cores with antipodal D1 rays, h=12, and an exact six-clean-line charge partition 4+2. All q>=6 cases remain open.",
+    "target": "Resolve the exact q=5 nested-triangle incidence feasibility or produce/replay a 95 witness in that stratum; keep q>=6 separate."
   },
   "current_source_interval": {
     "lower": 93,
     "upper": 95
   },
-  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, any score-95 witness has either q=5 in the single K3+two-isolated equality geometry or q>=6. No hill-global <=94, optimality, or MATHCERT claim.",
+  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, any score-95 witness has either q=5 in the exact nested-triangle/4+2-charge equality geometry or q>=6. No hill-global <=94, optimality, or MATHCERT claim.",
   "source_conditional_reduction": {
     "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
@@ -206,6 +206,15 @@
     "finite_replay": "ci/validate_openmath_h1_12_q5_33333.py",
     "independent_component": "S5 quotient, saturated-role filtering, star line count, separator-incidence exhaustion, and K2,3 crossing argument",
     "source_scoped_component": "saturated-triple separator lemma and predecessor q=5 fan/charging state space",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q5_equality_normal_form": {
+    "statement": "The sole q=5 K3+two-isolated residual has h=12 exactly; the D2 triangle is a counted central face; the third lines through its vertices form an outer triangle containing A,B,C in the side interiors; each isolated triple has two antipodal D1 rays on one line; and the six clean lines are exactly partitioned into four isolated-core D1 charges plus two U-endpoint charges.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_EQUALITY_NORMAL_FORM.md",
+    "finite_replay": "ci/validate_openmath_h1_12_q5_equality.py",
+    "independent_component": "local sector enumeration, nested-triangle incidence reconstruction, and exact charge-slot accounting",
+    "source_scoped_component": "predecessor fan/charging state space and clean-line equality",
     "mathematical_effect": true,
     "certification_effect": false
   }
