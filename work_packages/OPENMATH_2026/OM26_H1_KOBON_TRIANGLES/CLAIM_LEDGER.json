@@ -333,6 +333,20 @@
       ],
       "mathematical_effect": true,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-012",
+      "text": "Conditional on the protected triple-point local fan/blocked-target analysis and clean-line charging map, the profile-3333 non-saturated D2=3 star equality form is excluded. Charge equality forces its sole hub D1 target to be unblocked, which forces three consecutive D2 spokes and therefore an additional leaf-pair arrangement line, making the core-incidence bound strict.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_4_C4_EXCLUSION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_3_NONSAT_STAR_EXCLUSION.md",
+        "ci/validate_openmath_h1_12_3333_nonsat_star.py",
+        "ci/test_openmath_h1_12_3333_nonsat_star.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [
