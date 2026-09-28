@@ -293,7 +293,7 @@
         "dispatch_id": "OM26-H1-H1-12-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-001",
         "dispatch_issue_number": 498,
-        "protected_lease_commit": null,
+        "protected_lease_commit": "ded7e8ca4916008d820be85e28ca617b5b81be7e",
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/498",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/498"
       },
