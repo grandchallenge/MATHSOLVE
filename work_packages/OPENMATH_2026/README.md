@@ -13,7 +13,7 @@ Operate the tactical research layer for the OpenMath 2026 seven-hill sprint. MAT
 
 A hill lane is released only when its MATHFORGE source-lock packet identifies the exact external hill statement and provenance.
 
-OM26-H1 (`alejandrozu/kobon-triangles`) is now released under protected MATHFORGE commit `bb86a7b5378bf9eb3c5c28367b6b7ff3da52d610`. OM26-H2 through OM26-H7 remain blocked; unresolved hill content must not be guessed.
+OM26-H1 (`alejandrozu/kobon-triangles`) is now released under protected MATHFORGE commit `eb5af08b1bb0ae7742dc46786019fe7b034b04ee`. OM26-H2 through OM26-H7 remain blocked; unresolved hill content must not be guessed.
 
 ## First active hill
 
