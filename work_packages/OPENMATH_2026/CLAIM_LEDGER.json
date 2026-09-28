@@ -51,6 +51,17 @@
       ],
       "mathematical_effect": false,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-GOV-004",
+      "text": "OM26-H1 H1-13 tranche 1 completed a bounded exact 15,246-candidate local-wall search from the verified 93 construction and found no 94 candidate.",
+      "type": "OPERATIONAL_NEGATIVE_RESULT",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_13_TRANCHE1_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36364216267/job/108747292310"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [

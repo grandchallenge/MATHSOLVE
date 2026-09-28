@@ -1,22 +1,16 @@
 # OM26-H1 next action
 
-R-H reconstruction and H1-07 replay are complete.
+Current protected candidate remains `campaign-best-observed = 93`.
 
-Verified Solve state:
+H1-13 tranche 1 is complete: 15,246 exact one-line coordinate-wall candidates were evaluated around the 93 reconstruction. The best score remained 93; 126 sampled states tied 93 and no score 94 appeared.
 
-- current `campaign-best-observed = 93` at `n=18`;
-- exact candidate SHA-256: `e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5`;
-- 282 sourced crossing-order adjacency constraints PASS;
-- three intended parallel pairs PASS;
-- independent exact direct-interior oracle = 93;
-- authenticated AutoLab public evaluator = 93.
+This is a useful negative route result, not an upper-bound argument.
 
-Next procedural action:
+The next mathematical work should now split cleanly:
 
-> Protect this tranche and bind `MATHCERT_HANDOFF_RH_BADER93.md` to the protected Solve commit as a successor Cert intake.
+1. **H1-12 / R-J:** continue the 94-bound audit by sourcing or reconstructing a proof whose hypotheses cover the hill's permitted parallelism and multiple concurrence.
+2. **H1-13 / next search tranche:** leave single-coordinate local search and move to a combinatorial/order-type or coordinated multi-line search for 94.
 
-Next mathematical action:
-
-> Audit whether the published simple-arrangement upper bound 94 transfers to the hill's allowed degeneracy semantics, while running a narrowly targeted exact search for a 94-triangle construction. Treat these as separate routes: a bound proof cannot be inferred from failure to find 94, and a 94 construction would not by itself prove optimality until the bound-transfer question is closed.
+The 93 MATHCERT successor intake remains pending independent review on MATHCERT PR #342.
 
 No global best-known, optimality, novelty, or official competition claim is authorized.

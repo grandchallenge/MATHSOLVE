@@ -49,12 +49,12 @@
         "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
         "representation_or_reduction": "RH_BADER93_ORDER_TYPE_REALIZED_AS_RATIONAL_LINES",
         "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING",
-        "exact_computation": "H1_06_TRANCHE_2_COMPLETE__LEADER_93",
+        "exact_computation": "H1_13_TRANCHE1_COMPLETE__15246_EXACT_CANDIDATES__NO_94__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
         "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
         "mathcert_handoff": "H1_02_AND_86_INTAKE_PENDING_REVIEW__93_SUCCESSOR_PREPARED"
       },
-      "next_action": "Protect R-H 93 tranche, bind the 93 successor handoff into MATHCERT, then separate the 94-bound transfer audit from the targeted 94 construction search."
+      "next_action": "Continue H1-12 hill-valid upper-bound audit and move H1-13 from one-line wall search to combinatorial/order-type or coordinated multi-line search; preserve 93 as campaign leader."
     },
     {
       "hill_slot": "OM26-H2",
@@ -142,5 +142,5 @@
       "next_action": "Import exact MATHFORGE source lock; then instantiate obligation DAG."
     }
   ],
-  "claim_boundary": "OM26-H1 has Solve-verified exact construction results 58, 86, and source-guided reconstruction 93; campaign-best-observed is 93. The 93 rational coordinates are GCL-generated from an externally sourced Bader order type. These are not global best-known, optimality, novelty, official competition, publication, or MATHCERT-certification claims. OM26-H2 through OM26-H6 remain source-lock pending."
+  "claim_boundary": "OM26-H1 campaign-best-observed remains 93. H1-13 tranche 1 exhaustively evaluated its stated 15,246-candidate one-line coordinate-wall neighborhood without finding 94. This negative route result does not prove optimality or a hill-global upper bound. H1-12 remains open. MATHCERT certification remains pending."
 }

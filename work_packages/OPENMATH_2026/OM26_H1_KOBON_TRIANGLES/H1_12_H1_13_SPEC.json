@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-12-H1-13-SPEC",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "source_solve_head": "5e5770c287f6bbf8e66f8cab4487594db6100f53",
+  "start_candidate": "RH_BADER_RECONSTRUCTION_093",
+  "start_sha256": "e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5",
+  "h1_12": {
+    "purpose": "audit transfer of literature 94 upper bound to hill degeneracy semantics",
+    "state": "OPEN__DIRECT_IMPORT_REJECTED"
+  },
+  "h1_13": {
+    "purpose": "bounded exact local-wall search for score 94",
+    "method": "one-line coordinate sweeps over all vertex-crossing and parallel critical walls for a,b,c, sampling walls and open intervals",
+    "proposal_arithmetic": "integer determinant signs",
+    "promotion_gate": "independent direct oracle + authenticated AutoLab public evaluator must both return 94"
+  },
+  "claim_boundary": "H1-12 and H1-13 are independent. Search failure does not prove an upper bound; finding 94 does not prove optimality without H1-12 closure."
+}

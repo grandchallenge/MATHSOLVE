@@ -126,6 +126,18 @@
       ],
       "mathematical_effect": false,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-NEG-001",
+      "text": "A bounded exact one-line coordinate-wall sweep around RH_BADER_RECONSTRUCTION_093 evaluated 15,246 candidates and found no score above 93.",
+      "type": "NEGATIVE_ROUTE_RESULT",
+      "state": "PASS__BOUNDED_SCOPE_ONLY",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_13_TRANCHE1_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36364216267/job/108747292310"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [
