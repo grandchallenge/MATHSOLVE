@@ -74,7 +74,7 @@ def validate():
     if len(h1)!=1: errors.append("H1 lease missing")
     else:
         lease=h1[0].get("lease",{})
-        if h1[0].get("state")!="LEASED" or lease.get("state")!="LEASED": errors.append("H1 not leased")
+        if h1[0].get("state")!="CAPTURED" or lease.get("state")!="CLOSED_AFTER_RETURN": errors.append("H1 lifecycle must be CAPTURED/CLOSED_AFTER_RETURN")\n        if h1[0].get("lifecycle",{}).get("adjudication")!="PENDING": errors.append("H1 recovered result must remain pending adjudication")
         if lease.get("dispatch_id")!=H1["dispatch"] or lease.get("agent_ref")!=H1["agent"] or lease.get("dispatch_issue_number")!=H1["issue"]: errors.append("H1 lease identity mismatch")
 
     seen_agents=set(); seen_issues=set(); seen_dispatches=set()
@@ -84,7 +84,7 @@ def validate():
             errors.append(f"{aid}: expected exactly one assignment"); continue
         item=items[0]; lease=item.get("lease",{})
         if item.get("hill")!=exp["hill"] or item.get("slot_binding")!=exp["hill"]: errors.append(f"{aid}: hill binding mismatch")
-        if item.get("state")!="LEASED" or lease.get("state")!="LEASED": errors.append(f"{aid}: not LEASED")
+        if item.get("state")!="LEASED_NOT_LAUNCHED" or lease.get("state")!="LEASED": errors.append(f"{aid}: not LEASED_NOT_LAUNCHED with protected lease")\n        if item.get("lifecycle",{}).get("launched") is not False: errors.append(f"{aid}: launch evidence must remain absent")
         if lease.get("dispatch_id")!=exp["dispatch"] or lease.get("agent_ref")!=exp["agent"] or lease.get("dispatch_issue_number")!=exp["issue"]: errors.append(f"{aid}: lease identity mismatch")
         if lease.get("protected_lease_commit")!=INTRO: errors.append(f"{aid}: introducing commit mismatch")
         url=BASE_URL+f"/issues/{exp['issue']}"
@@ -107,7 +107,7 @@ def validate():
         if not isinstance(operation.get("acceptable_dispositions"),list) or not operation["acceptable_dispositions"]: errors.append(f"{aid}: no acceptable dispositions")
 
     policy=registry.get("mathematics_release_policy",{})
-    if policy.get("h2_h7_available_math_jobs")!=0 or policy.get("h2_h7_leased_math_jobs")!=6: errors.append("H2-H7 lease counters mismatch")
+    if policy.get("h2_h7_available_math_jobs")!=0 or policy.get("h2_h7_leased_math_jobs")!=6: errors.append("H2-H7 lease counters mismatch")\n    if policy.get("h2_h7_launched_math_jobs")!=0 or policy.get("h2_h7_returned_math_jobs")!=0 or policy.get("h2_h7_captured_math_jobs")!=0: errors.append("H2-H7 lifecycle counters must remain zero beyond lease")
     if registry.get("wp01_leases",{}).get("lease_introducing_commit")!=INTRO: errors.append("aggregate lease introducing commit mismatch")
 
     board=(ROOT/BOARD).read_text(encoding="utf-8")
@@ -124,7 +124,7 @@ def main():
     if errors:
         for e in errors: print("FAIL:",e)
         return 1
-    print("PASS: OPENMATH CEX has six distinct H2-H7 WP01 leases plus the preserved H1 lease")
+    print("PASS: OPENMATH CEX exposes CAPTURED H1 evidence and six H2-H7 LEASED_NOT_LAUNCHED assignments")
     return 0
 
 if __name__=="__main__": raise SystemExit(main())
