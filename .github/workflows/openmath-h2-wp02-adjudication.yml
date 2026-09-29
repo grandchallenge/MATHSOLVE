@@ -1,0 +1,36 @@
+name: OPENMATH H2 WP02 adjudication and WP03 generation
+
+on:
+  pull_request:
+    paths:
+      - "contributions/OPENMATH-2026/OM26-H2/WP02/adjudications/**"
+      - "work_packages/OPENMATH_2026/OM26_H2_BUSY_BEAVER_6/WP02_STATUS.json"
+      - "contributions/OPENMATH-2026/OM26-H2/WP03/**"
+      - "handoffs/OPENMATH-2026/jobs/OM26-H2-WP03-IA-001.md"
+      - "handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md"
+      - ".gcl/operations/OM26-H2-WP02-ADJ-001/**"
+      - ".gcl/operations/OM26-H2-WP03-IA-001/**"
+      - ".gcl/admission/OM26-H2-WP02-ADJ-001/**"
+      - "ci/validate_openmath_h2_wp02_adjudication.py"
+      - ".github/workflows/openmath-h2-wp02-adjudication.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact subject
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Replay H2 WP02 adjudication and successor generation
+        run: python ci/validate_openmath_h2_wp02_adjudication.py
