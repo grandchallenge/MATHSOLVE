@@ -13,6 +13,7 @@ READBACK = "work_packages/OPENMATH_2026/CORE_CLARITY_LIFECYCLE_READBACK.json"
 RAW = "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md"
 RECEIPT = "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json"
 BOOTSTRAP = "handoffs/OPENMATH-2026/jobs/OM26-H1-H1-12-IA-001.md"
+BOARD = "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md"
 DISPATCH = "contributions/OPENMATH-2026/OM26-H1/H1-12/dispatches/OM26-H1-H1-12-IA-001.json"
 
 
@@ -93,6 +94,15 @@ def validate() -> list[str]:
     h1row = issue_map.get(498, {})
     if h1row.get("result_comments") != [{"id": 5881108260, "actor": "fyremael", "created_at": "2026-09-29T00:10:21Z"}]:
         errors.append("H1 lifecycle readback does not identify exact returned result")
+
+    board = (ROOT / BOARD).read_text(encoding="utf-8")
+    if "| `OM26-H1-H1-12` | `OM26-H1` | `CAPTURED` |" not in board:
+        errors.append("human job board does not show H1 CAPTURED")
+    for i in range(2, 8):
+        if f"| `OM26-H{i}-WP01` | `OM26-H{i}` | `LEASED_NOT_LAUNCHED` |" not in board:
+            errors.append(f"human job board does not show OM26-H{i} LEASED_NOT_LAUNCHED")
+    if "No OPENMATH-2026 hill currently has a recorded official competition submission." not in board:
+        errors.append("human job board lacks explicit competition submission state")
 
     hill_map = {x["hill_slot"]: x for x in lanes.get("hills", [])}
     if set(hill_map) != {f"OM26-H{i}" for i in range(1, 8)}:
