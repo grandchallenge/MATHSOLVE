@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CHECKPOINT",
+  "operation": "OM26-SEVEN-HILL-CONSOLIDATION-001",
+  "campaign": "OPENMATH-2026",
+  "repository": "grandchallenge/MATHSOLVE",
+  "branch": "governance/openmath-seven-hill-consolidation-001",
+  "protected_base": "0da480a62e86a623a87f07f6d75ed8ed810ee15a",
+  "phase": "OPERATION_DECLARED__MUTATION_PENDING",
+  "restart_rule": "Resume only this operation from this branch. Do not create a parallel consolidation or infer state from chat.",
+  "completion_target": "Seven uniform current hill lanes H1-H7; H2-H7 aggregate labels historical-only.",
+  "last_completed_step": "branch created",
+  "next_step": "write operation contract, then mutate current control surfaces",
+  "closed": false
+}
