@@ -15,6 +15,9 @@ LANES = "work_packages/OPENMATH_2026/HILL_LANES.json"
 READBACK = "work_packages/OPENMATH_2026/CORE_CLARITY_LIFECYCLE_READBACK.json"
 RAW = "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md"
 RECEIPT = "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json"
+H2_RAW = "contributions/OPENMATH-2026/OM26-H2/WP01/raw/OM26-H2-WP01-IA-001/github-comment-5883655827.md"
+H2_RECEIPT = "contributions/OPENMATH-2026/OM26-H2/WP01/receipts/OM26-H2-WP01-IA-001/github-comment-5883655827.json"
+H2_ADJ = "contributions/OPENMATH-2026/OM26-H2/WP01/adjudications/OM26-H2-WP01-ADJ-001.json"
 BOOTSTRAP = "handoffs/OPENMATH-2026/jobs/OM26-H1-H1-12-IA-001.md"
 BOARD = "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md"
 DISPATCH = "contributions/OPENMATH-2026/OM26-H1/H1-12/dispatches/OM26-H1-H1-12-IA-001.json"
@@ -83,17 +86,27 @@ def validate() -> list[str]:
         errors.append("accepted H1 adjudication state mismatch")
     if h1.get("lease", {}).get("execution_authorized") is not False:
         errors.append("H1 returned lease must not remain executable")
-    h2_through_h7 = [assignments.get(f"OM26-H{i}-WP01", {}) for i in range(2, 8)]
-    if any(x.get("state") != "LEASED_NOT_LAUNCHED" for x in h2_through_h7):
-        errors.append("H2 through H7 assignments must be LEASED_NOT_LAUNCHED")
-    if any(x.get("lifecycle", {}).get("launched") is not False for x in h2_through_h7):
-        errors.append("H2 through H7 launch state must be false")
+    h2 = assignments.get("OM26-H2-WP01", {})
+    if h2.get("state") != "ACCEPTED":
+        errors.append("H2 assignment must be ACCEPTED")
+    if h2.get("lifecycle", {}).get("adjudication") != "ACCEPTED_SCORER_CONCORDANCE_WITH_SEARCH_NARROWING":
+        errors.append("H2 adjudication state mismatch")
+    if h2.get("lease", {}).get("state") != "CLOSED_AFTER_RETURN" or h2.get("lease", {}).get("execution_authorized") is not False:
+        errors.append("H2 returned lease must be closed and non-executable")
+    for rel in (H2_RAW, H2_RECEIPT, H2_ADJ):
+        if not (ROOT / rel).is_file():
+            errors.append(f"H2 protected evidence missing: {rel}")
+    h3_through_h7 = [assignments.get(f"OM26-H{i}-WP01", {}) for i in range(3, 8)]
+    if any(x.get("state") != "LEASED_NOT_LAUNCHED" for x in h3_through_h7):
+        errors.append("H3 through H7 assignments must be LEASED_NOT_LAUNCHED")
+    if any(x.get("lifecycle", {}).get("launched") is not False for x in h3_through_h7):
+        errors.append("H3 through H7 launch state must be false")
     policy = registry.get("mathematics_release_policy", {})
     if policy.get("summary", {}).get("launched_agents") != 0:
         errors.append("seven-hill launched-agent summary must remain zero")
 
     issue_map = {x["issue_number"]: x for x in readback.get("issues", [])}
-    for issue in range(505, 511):
+    for issue in range(506, 511):
         row = issue_map.get(issue)
         if row is None or row.get("comment_count") != 0 or row.get("result_comments") != []:
             errors.append(f"issue #{issue} does not support LEASED_NOT_LAUNCHED")
@@ -107,7 +120,9 @@ def validate() -> list[str]:
         "| `OM26-H1-H1-12` | `OM26-H1` | `ACCEPTED` |",
     )):
         errors.append("human job board does not show current H1 lifecycle")
-    for i in range(2, 8):
+    if "| `OM26-H2-WP01` | `OM26-H2` | `ACCEPTED` |" not in board:
+        errors.append("human job board does not show OM26-H2 ACCEPTED")
+    for i in range(3, 8):
         if f"| `OM26-H{i}-WP01` | `OM26-H{i}` | `LEASED_NOT_LAUNCHED` |" not in board:
             errors.append(f"human job board does not show OM26-H{i} LEASED_NOT_LAUNCHED")
     if "No OPENMATH-2026 hill currently has a recorded official competition submission." not in board:
@@ -129,7 +144,12 @@ def validate() -> list[str]:
         errors.append("H1 lane does not expose a valid Agent 001 lifecycle state")
     if h1lane.get("competition_state", {}).get("official_submission") != "NOT_SUBMITTED":
         errors.append("H1 competition state must be explicit NOT_SUBMITTED")
-    for i in range(2, 8):
+    h2lane = hill_map.get("OM26-H2", {})
+    if h2lane.get("active_lease", {}).get("lifecycle_state") != "ACCEPTED":
+        errors.append("OM26-H2 lane lifecycle mismatch")
+    if h2lane.get("competition_state", {}).get("official_submission") != "NOT_SUBMITTED":
+        errors.append("OM26-H2 competition state must be explicit NOT_SUBMITTED")
+    for i in range(3, 8):
         lane = hill_map.get(f"OM26-H{i}", {})
         if lane.get("active_lease", {}).get("lifecycle_state") != "LEASED_NOT_LAUNCHED":
             errors.append(f"OM26-H{i} lane lifecycle mismatch")

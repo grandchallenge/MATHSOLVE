@@ -7,7 +7,7 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
     def test_preflight(self):
         self.assertEqual(validate(), [])
 
-    def test_h2_through_h7_leases_are_one_to_one_and_not_launched(self):
+    def test_h2_through_h7_bindings_remain_one_to_one(self):
         registry = load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
         jobs = {
             x["assignment_id"]: x
@@ -23,14 +23,16 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
             {jobs[a]["lease"]["dispatch_issue_number"] for a in jobs},
             {v["issue"] for v in EXPECTED.values()},
         )
-        self.assertTrue(
-            all(
-                jobs[a]["state"] == "LEASED_NOT_LAUNCHED"
-                and jobs[a]["lease"]["state"] == "LEASED"
-                for a in jobs
-            )
-        )
-        self.assertTrue(all(jobs[a]["lifecycle"]["launched"] is False for a in jobs))
+        h2 = jobs["OM26-H2-WP01"]
+        self.assertEqual(h2["state"], "ACCEPTED")
+        self.assertEqual(h2["lease"]["state"], "CLOSED_AFTER_RETURN")
+        self.assertFalse(h2["lease"]["execution_authorized"])
+        self.assertTrue(h2["lifecycle"]["launched"])
+        self.assertTrue(h2["lifecycle"]["closed"])
+        for aid in sorted(a for a in jobs if a != "OM26-H2-WP01"):
+            self.assertEqual(jobs[aid]["state"], "LEASED_NOT_LAUNCHED")
+            self.assertEqual(jobs[aid]["lease"]["state"], "LEASED")
+            self.assertFalse(jobs[aid]["lifecycle"]["launched"])
         self.assertTrue(
             all(jobs[a]["lease"]["protected_lease_commit"] == INTRO for a in jobs)
         )
@@ -59,14 +61,15 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
         policy = registry["mathematics_release_policy"]
         self.assertEqual(set(policy["per_hill"]), {f"OM26-H{i}" for i in range(1, 8)})
         self.assertEqual(policy["per_hill"]["OM26-H1"]["agent_state"], "ACCEPTED")
-        for i in range(2, 8):
+        self.assertEqual(policy["per_hill"]["OM26-H2"]["agent_state"], "ACCEPTED")
+        for i in range(3, 8):
             self.assertEqual(
                 policy["per_hill"][f"OM26-H{i}"]["agent_state"],
                 "LEASED_NOT_LAUNCHED",
             )
         self.assertEqual(policy["summary"]["released_hills"], 7)
-        self.assertEqual(policy["summary"]["accepted_agents"], 1)
-        self.assertEqual(policy["summary"]["leased_not_launched_agents"], 6)
+        self.assertEqual(policy["summary"]["accepted_agents"], 2)
+        self.assertEqual(policy["summary"]["leased_not_launched_agents"], 5)
         self.assertTrue(policy["historical_tranche_metrics"]["deprecated_for_current_state"])
 
 

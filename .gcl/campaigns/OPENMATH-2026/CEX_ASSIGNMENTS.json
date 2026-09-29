@@ -514,7 +514,7 @@
       "state": "ACCEPTED",
       "priority": "P0",
       "lease": {
-        "state": "LEASED",
+        "state": "CLOSED_AFTER_RETURN",
         "dispatch_id": "OM26-H2-WP01-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-002",
         "dispatch_issue_number": 505,
