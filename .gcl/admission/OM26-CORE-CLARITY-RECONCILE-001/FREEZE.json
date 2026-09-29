@@ -4,7 +4,7 @@
   "campaign": "OPENMATH-2026",
   "operation": "OM26-CORE-CLARITY-RECONCILE-001",
   "protected_base": "17e90373384ed90a58bcb19d12b315fddaf05867",
-  "assembled_from_head": "46beb9c4e4c50f4775cf7f6bfdb93f73fc672b6d",
+  "assembled_from_head": "6fac11175b6d86528ccfe79f52a0e706a89843cb",
   "standard": {
     "id": "GCL-CC-00",
     "version": "0.1.0",
@@ -19,7 +19,7 @@
     "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "0163e7cdd1ac0c546844a41b9fbb10a24d3748a0",
     "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md": "d6850a071d9b7e14bf6f9987284325caab19e8a0",
     "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json": "fe07c9c4da217995450424e5610c4fd52a2209ad",
-    "ci/validate_openmath_core_clarity_reconcile.py": "7a40d05daf8566e5ce081e5276ce605cc47ae900",
+    "ci/validate_openmath_core_clarity_reconcile.py": "367749522d9fecf43485e4087e19ed8e19d204ca",
     "ci/validate_openmath_cex_job_board.py": "b0ef3964927e6851659d1287fa67c13c671340c3",
     "ci/test_openmath_cex_job_board.py": "4ae89a5e6149903f30ac1ed0284986c8e044ec06",
     ".gcl/operations/OM26-CORE-CLARITY-RECONCILE-001/OPERATION.json": "10362376a6484e0371143712cdb6d973139701bf",
