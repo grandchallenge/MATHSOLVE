@@ -35,29 +35,25 @@ WP02 is the active H2 successor lease. Agent 008 must construct a complete exact
 
 Every active hill lease is independent-blind and one-to-one. No agent may substitute for another `AGENT_REF`, and no issue other than the bound return issue is accepted for that dispatch.
 
-## Current launcher scripts
+## Current launcher links
 
-The canonical launcher-facing scripts are under `handoffs/OPENMATH-2026/launch/`, one file per peer hill. Historical files under `handoffs/OPENMATH-2026/jobs/` remain frozen provenance and SHALL NOT be used as current launch scripts.
+The canonical external launch surface is one immutable public task link per peer hill. Historical files under `handoffs/OPENMATH-2026/jobs/` remain frozen provenance and SHALL NOT be used as current launch tasks.
 
-- H1: `launch/OM26-H1.md` — guard only; no active successor lease.
-- H2: `launch/OM26-H2.md` — current executable WP02 envelope.
-- H3: `launch/OM26-H3.md` — current executable WP01 envelope.
-- H4: `launch/OM26-H4.md` — current executable WP01 envelope.
-- H5: `launch/OM26-H5.md` — current executable WP01 envelope.
-- H6: `launch/OM26-H6.md` — current executable WP01 envelope.
-- H7: `launch/OM26-H7.md` — current executable WP01 envelope.
+- H1: guard only; no active successor lease.
+- H2: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H2.md
+- H3: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H3.md
+- H4: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H4.md
+- H5: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H5.md
+- H6: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H6.md
+- H7: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H7.md
 
 ## Launcher contract
 
-External agents are launched as self-contained intelligence workers. They are not required to authenticate to GitHub.
+Canonical mode is `LINK_IN_RELAY_OUT`.
 
-The launcher MUST supply the exact protected task content needed for execution plus:
+After verifying the protected lease, the launcher gives the zero-context worker only the registered immutable task URL plus a short instruction to read the complete task and follow its return contract. The worker needs public read access only; GitHub authentication and repository discovery are not required.
 
-```text
-DISPATCH_ID: <exact protected dispatch id>
-AGENT_REF: <exact protected agent ref>
-INTENDED_RETURN: <exact protected return URL>
-```
+The linked document is self-contained. The human operator does not locate, copy, or paste the work package. If public task read is unavailable, the launcher hydrates the worker from the exact pinned artifact automatically.
 
 The normal return path is `GCL-RETURN-RELAY/1` back to the launching conversation. Authenticated GCL infrastructure then performs durable GitHub intake under governed credentials.
 
