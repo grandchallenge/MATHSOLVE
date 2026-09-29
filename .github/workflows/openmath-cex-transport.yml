@@ -1,0 +1,32 @@
+name: OPENMATH CEX transport contract
+
+on:
+  pull_request:
+    paths:
+      - '.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json'
+      - 'handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md'
+      - 'handoffs/OPENMATH-2026/CEX_JOB_BOARD.md'
+      - 'handoffs/OPENMATH-2026/CEX_TRANSPORT_CONTRACT.md'
+      - 'ci/validate_openmath_cex_transport.py'
+      - '.github/workflows/openmath-cex-transport.yml'
+  push:
+    branches: [main]
+    paths:
+      - '.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json'
+      - 'handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md'
+      - 'handoffs/OPENMATH-2026/CEX_JOB_BOARD.md'
+      - 'handoffs/OPENMATH-2026/CEX_TRANSPORT_CONTRACT.md'
+      - 'ci/validate_openmath_cex_transport.py'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python ci/validate_openmath_cex_transport.py
