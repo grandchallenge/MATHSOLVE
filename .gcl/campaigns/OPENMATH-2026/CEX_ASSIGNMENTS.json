@@ -22,7 +22,8 @@
     "machine_registry_url": "https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
     "human_board_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
     "operator_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/495",
-    "stable_rule": "A zero-context worker is launched with ENTRYPOINT_URL, DISPATCH_ID, and AGENT_REF as explicit absolute/bootstrap values. It must not be expected to understand repository shorthand such as 'MATHSOLVE #495'."
+    "stable_rule": "A zero-context worker is launched with exact DISPATCH_ID and AGENT_REF plus enough protected task material to hydrate without assuming GitHub access. External capabilities such as GitHub read/write must be verified, not inferred.",
+    "transport_contract_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_TRANSPORT_CONTRACT.md"
   },
   "assignment_states": {
     "AVAILABLE_FOR_LEASE": "Visible to the allocator, but not executable by an external worker.",
@@ -146,7 +147,14 @@
   "return_policy": {
     "rule": "When an assignment becomes LEASED, the protected lease/dispatch must expose absolute dispatch and return locators. Repository-relative shorthand is insufficient for a zero-context worker.",
     "receipt_effect": "Receipt is evidence received, not mathematical admission or certification.",
-    "absolute_locator_required_when_leased": true
+    "absolute_locator_required_when_leased": true,
+    "capability_assumption_forbidden": true,
+    "task_hydration_rule": "Substantive work starts only when the exact work package is available either through verified GitHub read access or a launcher-supplied protected snapshot/content envelope.",
+    "primary_return": "Post the exact required result to the protected absolute return_url when GitHub write is available.",
+    "fallback_return": "When GitHub write is unavailable but launcher relay is available, return GCL-RETURN-RELAY/1 to the launching conversation with the complete required result embedded verbatim for operator relay.",
+    "no_return_path_rule": "If neither direct GitHub write nor launcher relay is available, return LAUNCH_TRANSPORT_BLOCKED and stop without substantive work.",
+    "relay_durability_rule": "A relay result is not durably returned until the exact embedded result has been posted verbatim to the protected return_url.",
+    "transport_contract": "handoffs/OPENMATH-2026/CEX_TRANSPORT_CONTRACT.md"
   },
   "assignments": [
     {
