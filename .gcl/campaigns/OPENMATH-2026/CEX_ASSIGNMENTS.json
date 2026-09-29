@@ -1001,7 +1001,62 @@
     "agent_repository_discovery_required": false,
     "missing_or_ambiguous_envelope_behavior": "INVALID_LAUNCH and stop",
     "default_return": "GCL-RETURN-RELAY/1 to launcher",
-    "durable_intake_owner": "AUTHENTICATED_GCL_INFRASTRUCTURE"
+    "durable_intake_owner": "AUTHENTICATED_GCL_INFRASTRUCTURE",
+    "current_scripts": {
+      "OM26-H1": {
+        "path": "handoffs/OPENMATH-2026/launch/OM26-H1.md",
+        "executable": false,
+        "reason": "NO_ACTIVE_SUCCESSOR_LEASE"
+      },
+      "OM26-H2": {
+        "path": "handoffs/OPENMATH-2026/launch/OM26-H2.md",
+        "executable": true,
+        "assignment_id": "OM26-H2-WP02",
+        "dispatch_id": "OM26-H2-WP02-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-008",
+        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/526"
+      },
+      "OM26-H3": {
+        "path": "handoffs/OPENMATH-2026/launch/OM26-H3.md",
+        "executable": true,
+        "assignment_id": "OM26-H3-WP01",
+        "dispatch_id": "OM26-H3-WP01-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-003",
+        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/506"
+      },
+      "OM26-H4": {
+        "path": "handoffs/OPENMATH-2026/launch/OM26-H4.md",
+        "executable": true,
+        "assignment_id": "OM26-H4-WP01",
+        "dispatch_id": "OM26-H4-WP01-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-004",
+        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/507"
+      },
+      "OM26-H5": {
+        "path": "handoffs/OPENMATH-2026/launch/OM26-H5.md",
+        "executable": true,
+        "assignment_id": "OM26-H5-WP01",
+        "dispatch_id": "OM26-H5-WP01-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-005",
+        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/508"
+      },
+      "OM26-H6": {
+        "path": "handoffs/OPENMATH-2026/launch/OM26-H6.md",
+        "executable": true,
+        "assignment_id": "OM26-H6-WP01",
+        "dispatch_id": "OM26-H6-WP01-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-006",
+        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/509"
+      },
+      "OM26-H7": {
+        "path": "handoffs/OPENMATH-2026/launch/OM26-H7.md",
+        "executable": true,
+        "assignment_id": "OM26-H7-WP01",
+        "dispatch_id": "OM26-H7-WP01-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-007",
+        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/510"
+      }
+    }
   },
   "scope": "OPENMATH_CAMPAIGN_WIDE_CEX_ASSIGNMENTS",
   "operations": [
