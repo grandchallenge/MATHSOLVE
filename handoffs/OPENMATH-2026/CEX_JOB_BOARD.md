@@ -41,7 +41,7 @@ Every active hill lease is independent-blind and one-to-one. No agent may substi
 The canonical external launch surface is one immutable public task link per peer hill. Historical files under `handoffs/OPENMATH-2026/jobs/` remain frozen provenance and SHALL NOT be used as current launch tasks.
 
 - H1: guard only; no active successor lease.
-- H2: https://github.com/grandchallenge/MATHSOLVE/blob/208fa322f52d06eb7f9b6affff0f359217a5118e/handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md
+- H2: https://github.com/grandchallenge/MATHSOLVE/blob/e64c93148ddecbc8e51352c24926898e42b8ea10/handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md
 - H3: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H3.md
 - H4: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H4.md
 - H5: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H5.md

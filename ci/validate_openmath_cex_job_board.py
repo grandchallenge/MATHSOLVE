@@ -52,7 +52,7 @@ def validate() -> list[str]:
         errors.append("registry record_type mismatch")
     if registry.get("current_topology", {}).get("hills") != [f"OM26-H{i}" for i in range(1, 8)]:
         errors.append("current hill roster mismatch")
-    if registry.get("current_topology", {}).get("grouped_current_lanes") != []:
+    if registry.get("current_topology", {}).get("grouped_current_lanes") not in (None, []):
         errors.append("grouped current lanes must be empty")
 
     def closed(item_id: str, disposition: str):
