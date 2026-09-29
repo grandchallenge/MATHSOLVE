@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-H2-WP02-INSTANTIATE",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "objective": "Instantiate OM26-H2-WP02 as the active exact-search successor to accepted WP01 and bind one independent zero-context lease, dispatch, return surface, and bootstrap without changing mathematical claims.",
+  "predecessor": {
+    "assignment_id": "OM26-H2-WP01",
+    "adjudication_id": "OM26-H2-WP01-ADJ-001",
+    "adjudication_merge": "607f5dfd8fe0f6e816a27b4a3bf2a77b1122f7a0",
+    "completion_merge": "8ff61470ead704dec0a4c2d30b1675c841650752"
+  },
+  "new_assignment": "OM26-H2-WP02",
+  "dispatch_id": "OM26-H2-WP02-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-008",
+  "return_issue": 526,
+  "permitted_mutations": [
+    "WP02 work-package and zero-context bootstrap",
+    "WP02 dispatch and operation contracts",
+    "H2 active lease projection while preserving WP01 predecessor",
+    "CEX job board",
+    "campaign validators and regression tests",
+    "bounded admission freeze and completion receipt"
+  ],
+  "prohibited": [
+    "alter WP01 adjudication substance",
+    "launch the external agent before protected readback",
+    "mathematical admission",
+    "candidate promotion",
+    "competition submission",
+    "certification",
+    "mutation of H3-H7 leases"
+  ],
+  "completion_requires": [
+    "WP02 exact assignment and dispatch protected",
+    "bootstrap blob bound to dispatch",
+    "issue #526 exact return locator bound",
+    "WP01 retained ACCEPTED/CLOSED",
+    "WP02 active LEASED_NOT_LAUNCHED",
+    "H3-H7 unchanged",
+    "required CI green",
+    "protected merge",
+    "protected readback",
+    "issue body equals protected bootstrap bytes",
+    "completion receipt"
+  ],
+  "claim_boundary": "Instantiation and lease activation only; no new Busy Beaver mathematical claim."
+}
