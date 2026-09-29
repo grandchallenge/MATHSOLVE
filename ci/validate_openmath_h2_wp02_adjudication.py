@@ -16,6 +16,7 @@ OP = ROOT / ".gcl/operations/OM26-H2-WP03-IA-001/OPERATION.json"
 REGISTRY = ROOT / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
 LANES = ROOT / "work_packages/OPENMATH_2026/HILL_LANES.json"
 BOARD = ROOT / "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md"
+RECEIPT = ROOT / ".gcl/completions/OM26-H2-WP02-ADJ-001/COMPLETION_RECEIPT.json"
 EVAL = ROOT / "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/busy-beaver-6-certificates/PUBLIC_SOURCE/eval.py"
 
 W89911 = {
@@ -58,6 +59,7 @@ def main() -> int:
     registry = load_json(REGISTRY)
     lanes = load_json(LANES)
     board = BOARD.read_text(encoding="utf-8")
+    receipt = load_json(RECEIPT)
     boot = BOOT.read_text(encoding="utf-8")
     launch = LAUNCH.read_text(encoding="utf-8")
     ev = load_eval()
@@ -139,6 +141,17 @@ def main() -> int:
     assert lane["predecessor_lease"]["assignment_id"] == "OM26-H2-WP02"
     assert lane["predecessor_lease"]["lifecycle_state"] == "ACCEPTED"
     assert "| `OM26-H2-WP03` | `OM26-H2` | `LEASED_NOT_LAUNCHED` |" in board
+
+    assert receipt["state"] == "CLOSED__SOLVE_ADJUDICATION_PROTECTED__SUCCESSOR_ACTIVE"
+    assert receipt["adjudication"]["protected_merge"] == "208fa322f52d06eb7f9b6affff0f359217a5118e"
+    assert receipt["post_adjudication_reconciliation"]["protected_merge"] == "4c7bc6884be9091d31b796dcbbfa4d41f2a59867"
+    assert receipt["immutable_launch_finalization"]["protected_merge"] == "2503c92ce31985e55d8f8269bc928f2580db2d59"
+    assert receipt["immutable_launch_finalization"]["task_commit"] == "e64c93148ddecbc8e51352c24926898e42b8ea10"
+    assert receipt["immutable_launch_finalization"]["task_blob_sha1"] == "3e25afafa28b166fee0b7aff70e34fad6d5ce977"
+    assert receipt["successor"]["assignment_id"] == "OM26-H2-WP03"
+    assert receipt["successor"]["lifecycle"] == "LEASED_NOT_LAUNCHED"
+    assert receipt["certification_effect"] is False
+    assert receipt["competition_effect"] is False
 
     print("PASS: H2 WP02 narrowed adjudication replays both witnesses and generates bounded WP03 replay closure")
     return 0
