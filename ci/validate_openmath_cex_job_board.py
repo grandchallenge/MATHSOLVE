@@ -29,6 +29,13 @@ EXPECTED = {
     }
     for i in range(2, 8)
 }
+H2_WP02 = {
+    "assignment": "OM26-H2-WP02",
+    "hill": "OM26-H2",
+    "dispatch": "OM26-H2-WP02-IA-001",
+    "agent": "INDEPENDENT-AGENT-008",
+    "issue": 526,
+}
 
 
 def load(rel: str):
@@ -156,6 +163,41 @@ def validate() -> list[str]:
         if not isinstance(operation.get("acceptable_dispositions"), list) or not operation["acceptable_dispositions"]:
             errors.append(f"{aid}: no acceptable dispositions")
 
+    wp02_items = [x for x in math if x.get("assignment_id") == H2_WP02["assignment"]]
+    if len(wp02_items) != 1:
+        errors.append("OM26-H2-WP02: expected exactly one assignment")
+    else:
+        item = wp02_items[0]
+        lease = item.get("lease", {})
+        url = BASE_URL + f"/issues/{H2_WP02['issue']}"
+        if item.get("hill") != H2_WP02["hill"] or item.get("slot_binding") != H2_WP02["hill"]:
+            errors.append("OM26-H2-WP02: hill binding mismatch")
+        if item.get("state") != "LEASED_NOT_LAUNCHED" or lease.get("state") != "LEASED":
+            errors.append("OM26-H2-WP02: must be LEASED_NOT_LAUNCHED with protected lease")
+        if item.get("lifecycle", {}).get("launched") is not False:
+            errors.append("OM26-H2-WP02: launch evidence must remain absent")
+        if lease.get("dispatch_id") != H2_WP02["dispatch"] or lease.get("agent_ref") != H2_WP02["agent"] or lease.get("dispatch_issue_number") != H2_WP02["issue"]:
+            errors.append("OM26-H2-WP02: lease identity mismatch")
+        if lease.get("dispatch_url") != url or lease.get("return_url") != url:
+            errors.append("OM26-H2-WP02: return URL mismatch")
+        if lease.get("protected_lease_commit") not in {"PENDING_PROTECTED_MERGE", lease.get("protected_lease_merge")}:
+            errors.append("OM26-H2-WP02: protected lease commit state mismatch")
+        expected_wp = f"handoffs/OPENMATH-2026/jobs/{H2_WP02['dispatch']}.md"
+        if item.get("work_package") != expected_wp or item.get("work_package_url") != BASE_URL + "/blob/main/" + expected_wp:
+            errors.append("OM26-H2-WP02: work-package locator mismatch")
+        dispatch = load(item["dispatch_record"])
+        operation = load(item["operation_contract"])
+        if dispatch.get("dispatch_id") != H2_WP02["dispatch"] or dispatch.get("agent_ref") != H2_WP02["agent"] or dispatch.get("assignment_id") != H2_WP02["assignment"]:
+            errors.append("OM26-H2-WP02: dispatch identity mismatch")
+        if dispatch.get("github_issue_number") != H2_WP02["issue"] or dispatch.get("github_issue_url") != url:
+            errors.append("OM26-H2-WP02: dispatch issue mismatch")
+        if dispatch.get("bootstrap_path") != expected_wp or dispatch.get("bootstrap_blob_sha1") != git_blob_sha1(expected_wp):
+            errors.append("OM26-H2-WP02: bootstrap binding mismatch")
+        if operation.get("dispatch_id") != H2_WP02["dispatch"] or operation.get("agent_ref") != H2_WP02["agent"] or operation.get("assignment_id") != H2_WP02["assignment"]:
+            errors.append("OM26-H2-WP02: operation identity mismatch")
+        if set(operation.get("acceptable_dispositions", [])) != {"EXACT_SEARCH_DESIGN_VALIDATED", "EXACT_PRUNING_COUNTEREXAMPLE", "BOUNDED_CANDIDATE_FOUND", "EXACT_BLOCKER"}:
+            errors.append("OM26-H2-WP02: acceptable dispositions mismatch")
+
     topology = registry.get("current_topology", {})
     if topology.get("lane_model") != "SEVEN_FIRST_CLASS_HILLS":
         errors.append("current assignment topology is not seven first-class hills")
@@ -167,8 +209,11 @@ def validate() -> list[str]:
         errors.append("per-hill release policy roster mismatch")
     if per_hill.get("OM26-H1", {}).get("agent_state") != "ACCEPTED":
         errors.append("H1 per-hill agent state mismatch")
-    if per_hill.get("OM26-H2", {}).get("agent_state") != "ACCEPTED":
-        errors.append("H2 per-hill agent state mismatch")
+    if per_hill.get("OM26-H2", {}).get("agent_state") != "LEASED_NOT_LAUNCHED" or per_hill.get("OM26-H2", {}).get("assignment") != "OM26-H2-WP02":
+        errors.append("H2 per-hill active WP02 state mismatch")
+    predecessor = per_hill.get("OM26-H2", {}).get("predecessor", {})
+    if predecessor.get("assignment") != "OM26-H2-WP01" or predecessor.get("agent_state") != "ACCEPTED":
+        errors.append("H2 per-hill predecessor state mismatch")
     for i in range(3, 8):
         if per_hill.get(f"OM26-H{i}", {}).get("agent_state") != "LEASED_NOT_LAUNCHED":
             errors.append(f"OM26-H{i} per-hill agent state mismatch")
@@ -176,7 +221,7 @@ def validate() -> list[str]:
     if summary != {
         "released_hills": 7,
         "accepted_agents": 2,
-        "leased_not_launched_agents": 5,
+        "leased_not_launched_agents": 6,
         "launched_agents": 0,
         "returned_unadjudicated_agents": 0,
     }:
@@ -188,7 +233,7 @@ def validate() -> list[str]:
         errors.append("historical lease introducing commit mismatch")
 
     board = (ROOT / BOARD).read_text(encoding="utf-8")
-    for expected in EXPECTED.values():
+    for expected in [*EXPECTED.values(), H2_WP02]:
         for marker in (expected["dispatch"], expected["agent"], f"#{expected['issue']}"):
             if marker not in board:
                 errors.append(f"board missing {marker}")
