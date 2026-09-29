@@ -38,6 +38,23 @@ def validate() -> list[str]:
     if [x.get("hill_slot") for x in lanes.get("hills", [])] != EXPECTED:
         errors.append("HILL_LANES rows are not exactly H1-H7 in order")
 
+    # Deprecated topology syntax is forbidden on current operational surfaces.
+    # Historical provenance remains immutable and is validated separately below.
+    deprecated = "H2-H7"
+    for hill in lanes.get("hills", []):
+        active_projection = {
+            "hill_slot": hill.get("hill_slot"),
+            "status": hill.get("status"),
+            "obligations": hill.get("obligations"),
+            "next_action": hill.get("next_action"),
+            "active_lease": hill.get("active_lease"),
+            "competition_state": hill.get("competition_state"),
+        }
+        if deprecated in json.dumps(active_projection, sort_keys=True):
+            errors.append(f"{hill.get('hill_slot')}: deprecated H2-H7 syntax leaked into current hill projection")
+    if deprecated in lanes.get("claim_boundary", ""):
+        errors.append("HILL_LANES current claim boundary reintroduces deprecated H2-H7 grouping")
+
     assignment_topology = registry.get("current_topology", {})
     if assignment_topology.get("lane_model") != "SEVEN_FIRST_CLASS_HILLS":
         errors.append("assignment current topology model mismatch")
@@ -68,6 +85,15 @@ def validate() -> list[str]:
             errors.append(f"OM26-H{i} current agent state mismatch")
     if policy.get("historical_tranche_metrics", {}).get("deprecated_for_current_state") is not True:
         errors.append("historical aggregate metrics are not deprecated")
+
+    current_registry_surfaces = {
+        "per_hill": per_hill,
+        "return_policy": registry.get("return_policy", {}),
+        "launch_contract": registry.get("launch_contract", {}),
+        "claim_boundary": registry.get("claim_boundary", ""),
+    }
+    if deprecated in json.dumps(current_registry_surfaces, sort_keys=True):
+        errors.append("deprecated H2-H7 syntax leaked into current registry operational surfaces")
 
     if historical.get("current_topology_authority", {}).get("hills") != EXPECTED:
         errors.append("historical registry points to wrong current topology")
