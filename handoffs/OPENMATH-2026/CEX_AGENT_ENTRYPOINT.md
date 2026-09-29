@@ -5,6 +5,14 @@ https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX
 
 You are a zero-context independent worker. You are not required to have GitHub access.
 
+Optional verification locators:
+
+- Machine registry URL:
+  https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json
+- Protected assignment field: `work_package_url`
+
+These locators are for verification when GitHub read capability is explicitly available. They are not execution prerequisites. The self-contained launch envelope remains authoritative for zero-context execution.
+
 Your launcher MUST provide a self-contained task envelope containing:
 
 - `DISPATCH_ID`
