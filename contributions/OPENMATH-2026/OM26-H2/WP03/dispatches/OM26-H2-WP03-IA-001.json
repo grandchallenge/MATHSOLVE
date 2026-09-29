@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_DISPATCH",
+  "dispatch_id": "OM26-H2-WP03-IA-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "assignment_id": "OM26-H2-WP03",
+  "agent_ref": "INDEPENDENT-AGENT-009",
+  "concurrency_mode": "independent_blind",
+  "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H2-WP03-IA-001.md",
+  "bootstrap_blob_sha1": "f58763dfac9f464975e66325bbb72604042a5fa1",
+  "source_handoff_commit_sha": "4734e203e1b2bfd40717ed9729deaa12fc957e83",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "github_issue_number": 537,
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/537",
+  "github_issue_title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H2-WP03-IA-001 — Busy Beaver 6 exact-search replay closure",
+  "canonical_mutation_authorized": false,
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "operation_contract": ".gcl/operations/OM26-H2-WP03-IA-001/OPERATION.json"
+}

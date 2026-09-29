@@ -272,6 +272,14 @@
       "controller_id": "GITHUB_ACTIONS"
     },
     {
+      "path": ".github/workflows/openmath-h2-wp02-adjudication.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
       "path": ".github/workflows/openmath-h2-wp02-instantiation.yml",
       "observed_features": [
         "OPAQUE_EXECUTION"
