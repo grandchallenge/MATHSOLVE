@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-H2-WP02-IA-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "obligation": "WP02",
+  "assignment_id": "OM26-H2-WP02",
+  "dispatch_id": "OM26-H2-WP02-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-008",
+  "concurrency_mode": "independent_blind",
+  "objective": "Independent exact Busy Beaver 6 search design with proved symmetry reductions and exact pruning.",
+  "protected_inputs": {
+    "predecessor_adjudication_merge": "607f5dfd8fe0f6e816a27b4a3bf2a77b1122f7a0",
+    "predecessor_completion_merge": "8ff61470ead704dec0a4c2d30b1675c841650752",
+    "source_work_package_blob": "93217243d6dfdc54a9cccd0d7cdaa8dcf27cd4e5",
+    "dispatch_bootstrap_blob": "5f2b99afd44549aaaca1387563abf36f0842c222",
+    "forge_source_lock_blob": "d590cf562f562a81df64d403ff5d9aa01e25626c",
+    "protected_eval_blob": "1b956107377f3ac67dc8277164f7db82fbb15744"
+  },
+  "scope": {
+    "may_do_mathematical_reasoning": true,
+    "may_use_finite_exact_computation": true,
+    "may_use_heuristics_for_ordering_only": true,
+    "may_edit_repository": false,
+    "may_open_pull_request": false,
+    "may_submit_competition_entry": false,
+    "may_certify": false,
+    "may_mutate_canonical_claims": false
+  },
+  "return": {
+    "protocol": "GCL-CONTRIBUTION-RESULT/1",
+    "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/526",
+    "contributor_write_authority": "issue_comment_only",
+    "exactly_one_result_comment": true,
+    "first_valid_result_lock": true,
+    "automated_intake_workflow": ".github/workflows/openmath-cex-independent-contribution-intake.yml"
+  },
+  "acceptable_dispositions": [
+    "EXACT_SEARCH_DESIGN_VALIDATED",
+    "EXACT_PRUNING_COUNTEREXAMPLE",
+    "BOUNDED_CANDIDATE_FOUND",
+    "EXACT_BLOCKER"
+  ],
+  "completion_requires": [
+    "complete canonical search definition or exact blocker",
+    "proof for every candidate-removing symmetry/pruning rule",
+    "first-write-zero counterexample survives",
+    "required falsification suite reported",
+    "computational evidence independently replayable",
+    "dual scorer replay for any promoted witness",
+    "one exact RESULT/1 return to issue 526"
+  ],
+  "prohibited": [
+    "treat heuristic pruning as exact",
+    "assume first-write=1 WLOG",
+    "AutoLab or competition submission",
+    "GCL or MATHCERT certification claim",
+    "exact S(6) or world-record claim without separate proof"
+  ],
+  "claim_boundary": "One bounded independent exact-search-design contribution. Receipt is not admission, certification, novelty, or competition acceptance."
+}
