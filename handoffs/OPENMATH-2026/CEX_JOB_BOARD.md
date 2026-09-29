@@ -10,7 +10,9 @@ This page is human/operator orientation only. The protected machine registry is 
 
 External agents do not choose work by browsing. Execution requires one unique protected `LEASED` assignment matching the launch `DISPATCH_ID` and `AGENT_REF`.
 
-## Current independent-agent lifecycle
+## Current seven-hill independent-agent lifecycle
+
+Current authority is per exact hill lane `OM26-H1` through `OM26-H7`. Historical aggregate labels such as `H2-H7` identify closed onboarding tranches only; they are not current campaign partitions.
 
 | Assignment | Hill | State | Dispatch | Agent | Return issue |
 |---|---|---|---|---|---|
@@ -28,7 +30,7 @@ Agents 002-007 have protected one-to-one leases, but their return issues contain
 
 `LEASED` does not imply `LAUNCHED`; `RETURNED` does not imply `CAPTURED`; `CAPTURED` does not imply `ACCEPTED` or `CERTIFIED`.
 
-The H2-H7 leases are independent-blind and one-to-one. No agent may substitute for another `AGENT_REF`, and no issue other than the bound return issue is accepted for that dispatch.
+Every active hill lease is independent-blind and one-to-one. No agent may substitute for another `AGENT_REF`, and no issue other than the bound return issue is accepted for that dispatch.
 
 ## Launcher contract
 
