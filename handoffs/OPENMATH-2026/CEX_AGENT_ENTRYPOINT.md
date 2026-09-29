@@ -1,38 +1,46 @@
 # OPENMATH-2026 external CEX agent entrypoint
 
-Canonical entrypoint URL:
-https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md
+Canonical launch mode: `LINK_IN_RELAY_OUT`.
 
-You are a zero-context independent worker. You are not required to have GitHub access.
+A zero-context independent worker is launched with exactly one immutable public task URL. The linked task artifact is self-contained and already contains the protected assignment identity, bounded work, source snapshots, result grammar, claim boundary, and intended durable return surface.
 
-Optional verification locators:
+The worker does **not** need GitHub authentication, repository write access, a GitHub connector, or permission to discover work.
 
-- Machine registry URL:
-  https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json
-- Protected assignment field: `work_package_url`
+## Canonical launcher action
 
-These locators are for verification when GitHub read capability is explicitly available. They are not execution prerequisites. The self-contained launch envelope remains authoritative for zero-context execution.
+The launcher first verifies the protected lease in the machine registry, then resolves that lease to the registered immutable `task_url`.
 
-Your launcher MUST provide a self-contained task envelope containing:
+The agent-facing kickoff is:
 
-- `DISPATCH_ID`
-- `AGENT_REF`
-- exact assignment identity
-- exact protected work-package content or complete immutable snapshot
-- exact intended durable return URL
-- exact result grammar and claim boundary
+```text
+You are a zero-context independent agent.
 
-If the task envelope is missing or ambiguous, stop and return `INVALID_LAUNCH` with the exact missing field. Do not search for replacement work.
+Read the complete bounded task at this immutable public URL:
 
-## Execute
+<TASK_URL>
 
-Perform only the bounded work in the supplied task envelope.
+Execute only that task and follow its return contract exactly.
 
-Do not require GitHub, browsing, plugins, connectors, or any other external service unless the supplied work package explicitly defines such a capability as part of the mathematical experiment itself.
+You do not need GitHub authentication and you are not authorized to mutate the repository.
+```
 
-## Default return path
+Nothing else from the work package needs to be copied into the launch conversation.
 
-Return exactly one complete result to the launching conversation using:
+## Read boundary
+
+Public read access to the exact task URL is the primary transport. The URL SHALL be commit-pinned, not a moving `/main` task locator.
+
+The worker SHALL NOT:
+- browse the repository for another assignment;
+- infer a lease from issue state or prose;
+- substitute a different task;
+- require authenticated GitHub access.
+
+If the worker cannot read the immutable public task URL, that is a transport condition, not a mathematical blocker. The launcher SHALL fetch that exact pinned artifact and hydrate the agent automatically. The human operator SHALL NOT be required to locate, copy, or reconstruct the task.
+
+## Return path
+
+The linked task defines the exact result grammar. The normal return is one complete payload to the launching conversation:
 
 ```text
 GCL-RETURN-RELAY/1
@@ -41,7 +49,7 @@ AGENT_REF: <exact agent ref>
 INTENDED_RETURN: <exact protected GitHub return URL>
 
 BEGIN_RESULT
-<complete result in the work package's required grammar>
+<complete result in the task's required grammar>
 END_RESULT
 ```
 
@@ -49,11 +57,9 @@ Do not truncate or summarize the inner result.
 
 Authenticated GCL infrastructure, not the external agent, owns durable GitHub intake.
 
-## Optional direct GitHub path
+## Optional direct GitHub return
 
-If authenticated GitHub write capability is explicitly available, you MAY post the required result directly to the protected return issue.
-
-If you do, return a launcher receipt containing the exact issue/comment locator. Direct posting is optional and must never be assumed.
+If authenticated GitHub write capability is independently available to the worker, direct posting to the task's protected return issue is permitted as an optional optimization. It is never required for launch or completion.
 
 ## Boundary
 
