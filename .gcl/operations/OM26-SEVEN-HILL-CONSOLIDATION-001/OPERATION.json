@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-SEVEN-HILL-CONSOLIDATION-001",
+  "campaign": "OPENMATH-2026",
+  "objective": "Consolidate current OPENMATH-2026 Solve control topology to seven uniform first-class hill lanes H1-H7. Preserve all H2-H7 aggregate artifacts as closed historical tranche provenance only.",
+  "protected_base": "0da480a62e86a623a87f07f6d75ed8ed810ee15a",
+  "governing_standard": "GCL-CC-00",
+  "current_topology": [
+    "OM26-H1",
+    "OM26-H2",
+    "OM26-H3",
+    "OM26-H4",
+    "OM26-H5",
+    "OM26-H6",
+    "OM26-H7"
+  ],
+  "historical_group_labels": [
+    "H2-H7",
+    "OM26-H2-H7"
+  ],
+  "permitted_mutations": [
+    "HILL_LANES current-topology metadata",
+    "CEX assignment current-topology metadata and policy wording",
+    "CEX human board current-topology wording",
+    "historical tranche registry",
+    "bounded validation and tests",
+    "operation freeze and completion receipt"
+  ],
+  "prohibited": [
+    "renaming or rewriting historical H2-H7 receipts or operations",
+    "changing any hill mathematical state",
+    "changing any external-agent lifecycle state",
+    "launching agents",
+    "certifying mathematics",
+    "competition submission"
+  ],
+  "completion_requires": [
+    "exact seven-hill current topology protected",
+    "all H2-H7 aggregate artifacts classified historical-only",
+    "current machine and human surfaces contain no H2-H7 operational grouping",
+    "historical artifacts remain byte-preserved",
+    "required CI green",
+    "protected merge",
+    "protected-main readback",
+    "completion receipt",
+    "Programme canonical state reconciled to the consolidation"
+  ],
+  "next_boundary": "MATH-PROGRAMME seven-hill projection reconciliation",
+  "claim_boundary": "Topology/presentation consolidation only; no substantive hill state changes."
+}
