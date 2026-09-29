@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_CORE_CLARITY_LIFECYCLE_READBACK",
+  "campaign": "OPENMATH-2026",
+  "operation": "OM26-CORE-CLARITY-RECONCILE-001",
+  "observed_at": "2026-09-29T00:15:00Z",
+  "repository": "grandchallenge/MATHSOLVE",
+  "issues": [
+    {
+      "issue_number": 498,
+      "title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H1-H1-12-IA-001 — independent proof adversary",
+      "state": "open",
+      "comment_count": 3,
+      "result_comments": [
+        {
+          "id": 5881108260,
+          "actor": "fyremael",
+          "created_at": "2026-09-29T00:10:21Z"
+        }
+      ],
+      "bot_intake_comments": [
+        {
+          "id": 5881111131,
+          "body_first_line": "INTAKE REJECTED — FORMAT"
+        },
+        {
+          "id": 5881111626,
+          "body_first_line": "INTAKE REJECTED — FORMAT"
+        }
+      ]
+    },
+    {
+      "issue_number": 505,
+      "title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H2-WP01-IA-001 — Busy Beaver 6 WP01",
+      "state": "open",
+      "comment_count": 0,
+      "result_comments": [],
+      "bot_intake_comments": []
+    },
+    {
+      "issue_number": 506,
+      "title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H3-WP01-IA-001 — Ramsey multiplicity WP01",
+      "state": "open",
+      "comment_count": 0,
+      "result_comments": [],
+      "bot_intake_comments": []
+    },
+    {
+      "issue_number": 507,
+      "title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H4-WP01-IA-001 — Collatz descent WP01",
+      "state": "open",
+      "comment_count": 0,
+      "result_comments": [],
+      "bot_intake_comments": []
+    },
+    {
+      "issue_number": 508,
+      "title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H5-WP01-IA-001 — Grothendieck witness WP01",
+      "state": "open",
+      "comment_count": 0,
+      "result_comments": [],
+      "bot_intake_comments": []
+    },
+    {
+      "issue_number": 509,
+      "title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H6-WP01-IA-001 — 3x3 tensor WP01",
+      "state": "open",
+      "comment_count": 0,
+      "result_comments": [],
+      "bot_intake_comments": []
+    },
+    {
+      "issue_number": 510,
+      "title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H7-WP01-IA-001 — Erdős 3 WP01",
+      "state": "open",
+      "comment_count": 0,
+      "result_comments": [],
+      "bot_intake_comments": []
+    }
+  ],
+  "derived": {
+    "h1": "RESULT_RETURNED__RECOVERY_REQUIRED_AND_NOW_CAPTURED",
+    "h2_h7": "LEASED_NOT_LAUNCHED",
+    "rule": "Zero result comments on H2-H7 dispatch issues plus no separate protected launch receipt means campaign state records LEASED_NOT_LAUNCHED. This is a durable evidence statement, not an assertion about invisible off-platform activity."
+  },
+  "claim_boundary": "Lifecycle readback only; no mathematical, certification, or competition effect."
+}
