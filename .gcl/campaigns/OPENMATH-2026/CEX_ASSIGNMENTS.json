@@ -76,8 +76,8 @@
       "OM26-H2": {
         "solve_released": true,
         "assignment": "OM26-H2-WP01",
-        "agent_state": "LEASED_NOT_LAUNCHED",
-        "closed": false
+        "agent_state": "ACCEPTED",
+        "closed": true
       },
       "OM26-H3": {
         "solve_released": true,
@@ -112,8 +112,8 @@
     },
     "summary": {
       "released_hills": 7,
-      "accepted_agents": 1,
-      "leased_not_launched_agents": 6,
+      "accepted_agents": 2,
+      "leased_not_launched_agents": 5,
       "launched_agents": 0,
       "returned_unadjudicated_agents": 0
     },
@@ -511,7 +511,7 @@
       "obligation": "WP01",
       "external_hill_id": "alejandrozu/busy-beaver-6-certificates",
       "slot_binding": "OM26-H2",
-      "state": "LEASED_NOT_LAUNCHED",
+      "state": "ACCEPTED",
       "priority": "P0",
       "lease": {
         "state": "LEASED",
@@ -523,7 +523,7 @@
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/505",
         "protected_lease_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
         "readback_verified": true,
-        "execution_authorized": true
+        "execution_authorized": false
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H2-WP01-IA-001.md",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-H2-WP01-IA-001.md",
@@ -555,19 +555,19 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Launch the exact leased agent through the protected bootstrap. No result or adjudication state exists until a durable return is observed.",
+      "successor_gate": "WP01 closed at Solve level by OM26-H2-WP01-ADJ-001. Successor work must use a corrected exact-search design; first-write=1 TNF normalization and heuristic pruning are not admitted as exact.",
       "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H2-WP01.md",
       "dispatch_record": "contributions/OPENMATH-2026/OM26-H2/WP01/dispatches/OM26-H2-WP01-IA-001.json",
       "lifecycle": {
         "prepared": true,
         "leased": true,
-        "launched": false,
-        "launch_receipt": null,
-        "returned": false,
-        "captured": false,
-        "adjudication": "NOT_STARTED",
+        "launched": true,
+        "launch_receipt": "RETURN_ITSELF_PROVES_EXECUTION_OCCURRED__ORIGINAL_LAUNCH_EVENT_NOT_DURABLY_RECORDED",
+        "returned": true,
+        "captured": true,
+        "adjudication": "ACCEPTED_SCORER_CONCORDANCE_WITH_SEARCH_NARROWING",
         "certification": "NOT_ELIGIBLE",
-        "closed": false
+        "closed": true
       }
     },
     {
@@ -1016,5 +1016,6 @@
       "purpose": "Records the bounded onboarding/source-acquisition/decomposition/lease transactions by which hills H2 through H7 entered the campaign.",
       "current_authority": false
     }
-  }
+  },
+  "claim_boundary": "Seven peer current hill lanes OM26-H1 through OM26-H7. H1 and H2 external WP results are ACCEPTED/CLOSED at Solve level within their explicit claim boundaries; H3-H7 remain LEASED_NOT_LAUNCHED. No hill has an official competition submission."
 }
