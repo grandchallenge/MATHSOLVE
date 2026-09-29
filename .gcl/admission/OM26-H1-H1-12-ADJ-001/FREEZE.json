@@ -4,7 +4,7 @@
   "campaign": "OPENMATH-2026",
   "operation": "OM26-H1-H1-12-ADJ-001",
   "protected_base": "aa4253897f008c197bc8929b503614d652c4fb14",
-  "assembled_from_head": "76a8460f8da721c3f151933aa8f26b2181161a1a",
+  "assembled_from_head": "dc3bee4b039e902d36dc17fbe2dc291dbc2e102f",
   "source_result": {
     "raw_path": "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md",
     "raw_git_blob_sha1": "d6850a071d9b7e14bf6f9987284325caab19e8a0",
@@ -18,7 +18,11 @@
     "work_packages/OPENMATH_2026/HILL_LANES.json": "90241fbfc4e3d610b60e08f209b8b370f547311d",
     "ci/validate_openmath_h1_agent001_adjudication.py": "8ebf8d477c354ad28f77c09ce9c7ae8a6ebe6f89",
     ".github/workflows/openmath-h1-agent001-adjudication.yml": "a5786bf45ab7a9e952dba5a599501e88dd5d0e1c",
-    ".ghos-routing/workflows.json": "08d8b1ceda78369d522a2f4c8f80f1a602169ff0"
+    ".ghos-routing/workflows.json": "08d8b1ceda78369d522a2f4c8f80f1a602169ff0",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "33b165a07fb6ec8dc3e1100cb27c637a6e4a1011",
+    "ci/validate_openmath_core_clarity_reconcile.py": "f1869d822be2b0d75ef2b93ffd4ac39161f3655b",
+    "ci/validate_openmath_cex_job_board.py": "abd8d1ed327f3ebecf2a07b3076930377109ca1c",
+    "ci/test_openmath_cex_job_board.py": "b18ea1d7380db3e1efd66406fdb7654b00d130a9"
   },
   "disposition": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
   "frontier_effect": "Q_GE_6__SOURCE_CONDITIONAL",
