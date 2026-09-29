@@ -89,7 +89,7 @@ def validate() -> list[str]:
 
     if 'Nothing else from the work package needs to be copied' not in entry:
         errors.append('entrypoint does not state one-link launch clearly')
-    if 'human operator SHALL NOT be required to locate or paste the work package' not in contract:
+    if 'SHALL NOT require a human operator to locate or paste the work package' not in contract:
         errors.append('transport contract does not prohibit manual human shuttling')
     if 'launcher/controller SHALL fetch that exact pinned task artifact' not in contract:
         errors.append('transport contract lacks automatic launcher hydration fallback')
