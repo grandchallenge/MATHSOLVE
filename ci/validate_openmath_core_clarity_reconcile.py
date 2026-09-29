@@ -2,11 +2,14 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
-from ci.openmath_cex_github_contribution_intake import validate_event
-
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from ci.openmath_cex_github_contribution_intake import validate_event
 REGISTRY = ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
 LANES = "work_packages/OPENMATH_2026/HILL_LANES.json"
 READBACK = "work_packages/OPENMATH_2026/CORE_CLARITY_LIFECYCLE_READBACK.json"
