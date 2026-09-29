@@ -999,7 +999,6 @@
     "entrypoint_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
     "launcher_verification_required": true,
     "agent_repository_discovery_required": false,
-    "missing_or_ambiguous_envelope_behavior": "INVALID_LAUNCH and stop",
     "default_return": "GCL-RETURN-RELAY/1 to launcher",
     "durable_intake_owner": "AUTHENTICATED_GCL_INFRASTRUCTURE",
     "current_scripts": {
@@ -1090,7 +1089,8 @@
     "public_task_url_is_primary": true,
     "fallback_hydration_owner": "AUTHENTICATED_GCL_LAUNCHER",
     "fallback_rule": "If the agent cannot read the immutable public TASK_URL, the launcher fetches that exact pinned artifact and supplies its exact contents. The human operator SHALL NOT be required to locate, copy, or reconstruct the task.",
-    "canonical_agent_prompt": "You are a zero-context independent agent. Read the complete bounded task at TASK_URL, execute only that task, and follow its return contract exactly. You do not need GitHub authentication and you are not authorized to mutate the repository."
+    "canonical_agent_prompt": "You are a zero-context independent agent. Read the complete bounded task at TASK_URL, execute only that task, and follow its return contract exactly. You do not need GitHub authentication and you are not authorized to mutate the repository.",
+    "missing_or_ambiguous_task_behavior": "INVALID_LAUNCH and stop before substantive work"
   },
   "scope": "OPENMATH_CAMPAIGN_WIDE_CEX_ASSIGNMENTS",
   "operations": [
