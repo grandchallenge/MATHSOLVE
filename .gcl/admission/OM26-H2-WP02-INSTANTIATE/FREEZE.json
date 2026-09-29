@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ADMISSION_FREEZE",
+  "operation": "OM26-H2-WP02-INSTANTIATE",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "source_base": "8ff61470ead704dec0a4c2d30b1675c841650752",
+  "dispatch_id": "OM26-H2-WP02-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-008",
+  "return_issue": 526,
+  "bootstrap_blob_sha1": "5f2b99afd44549aaaca1387563abf36f0842c222",
+  "artifacts": {
+    "handoffs/OPENMATH-2026/jobs/OM26-H2-WP02.md": "93217243d6dfdc54a9cccd0d7cdaa8dcf27cd4e5",
+    "handoffs/OPENMATH-2026/jobs/OM26-H2-WP02-IA-001.md": "5f2b99afd44549aaaca1387563abf36f0842c222",
+    ".gcl/operations/OM26-H2-WP02-IA-001/OPERATION.json": "a0cb50b1a78bb72bca172edd8bbd77f705bf0dd4",
+    "contributions/OPENMATH-2026/OM26-H2/WP02/dispatches/OM26-H2-WP02-IA-001.json": "36fd080825831248e4df8eee3edad9d9fb15d194",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "f03d505fd57aa128d5017eb65f95aff726046d70",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "26362ae44241e4c8cbc7ea53d0daf9be3945cd8d",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "a57ce6070109b6dffa20f4ceafd4dc67c8cd86a3",
+    "ci/validate_openmath_h2_wp02_instantiation.py": "be3e368359366c176baeb38a14fb6d8327c200bb",
+    "ci/validate_openmath_cex_job_board.py": "e0875e52b14e2a3a007540cb0e2d6e355e99fb46",
+    "ci/test_openmath_cex_job_board.py": "2b12d01be1be9aa086fdfd53fb102d10dd08b0a1",
+    "ci/validate_openmath_core_clarity_reconcile.py": "6d0f0f2e95bf14527e90c9a6d2c02b952d0a71c5",
+    "ci/validate_openmath_seven_hill_consolidation.py": "65040ed05167bbe7b13fb038a701874697a185f0",
+    "ci/validate_openmath_h1_agent001_adjudication.py": "fdff5b1efec94e9469bea2583c74d49f2c3f6cc8",
+    "ci/validate_openmath_h2_wp01_adjudication.py": "0e9a72fa5a8d4aa26d409dcad997e303ddec808d",
+    ".github/workflows/openmath-h2-wp02-instantiation.yml": "a1548b3ae7449fa6da7668f5cddc6d5c7b7c6136",
+    ".ghos-routing/workflows.json": "f14208ea5e1daa91a47ea6220e004ee87d8403a7",
+    ".gcl/operations/OM26-H2-WP02-INSTANTIATE/OPERATION.json": "92ca3fd5389cfd4e615b139ad6a346d702f62932"
+  },
+  "completion_gate": {
+    "validator": "python ci/validate_openmath_h2_wp02_instantiation.py",
+    "exact_head_review_required": true,
+    "required_ci_green": true,
+    "protected_merge_required": true,
+    "protected_readback_required": true,
+    "issue_body_must_equal_bootstrap": true,
+    "completion_receipt_required": true
+  },
+  "claim_boundary": "WP02 instantiation/lease only; no mathematical admission, candidate promotion, certification, or competition effect."
+}
