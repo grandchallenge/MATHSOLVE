@@ -43,7 +43,11 @@
     "work_packages/OPENMATH_2026/HILL_LANES.json",
     "ci/validate_openmath_h1_agent001_adjudication.py",
     ".github/workflows/openmath-h1-agent001-adjudication.yml",
-    ".ghos-routing/workflows.json"
+    ".ghos-routing/workflows.json",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
+    "ci/validate_openmath_core_clarity_reconcile.py",
+    "ci/validate_openmath_cex_job_board.py",
+    "ci/test_openmath_cex_job_board.py"
   ],
   "freeze_manifest": ".gcl/admission/OM26-H1-H1-12-ADJ-001/FREEZE.json",
   "completion_receipt": ".gcl/completions/OM26-H1-H1-12-ADJ-001/COMPLETION_RECEIPT.json"
