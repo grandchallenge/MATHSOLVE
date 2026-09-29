@@ -37,15 +37,9 @@ Every active hill lease is independent-blind and one-to-one. No agent may substi
 
 ## Launcher contract
 
-A launcher MUST NOT assume that a zero-context worker has GitHub access.
+External agents are launched as self-contained intelligence workers. They are not required to authenticate to GitHub.
 
-Before substantive work, establish:
-
-- exact protected launch identity;
-- self-contained task hydration, either by verified GitHub read access or launcher-supplied exact work-package content;
-- a durable return path, either direct GitHub write or explicit launcher relay.
-
-Supply:
+The launcher MUST supply the exact protected task content needed for execution plus:
 
 ```text
 DISPATCH_ID: <exact protected dispatch id>
@@ -53,9 +47,9 @@ AGENT_REF: <exact protected agent ref>
 INTENDED_RETURN: <exact protected return URL>
 ```
 
-For temporary or otherwise capability-unknown agents, the launcher SHOULD include the exact work-package content or protected snapshot needed to execute without GitHub.
+The normal return path is `GCL-RETURN-RELAY/1` back to the launching conversation. Authenticated GCL infrastructure then performs durable GitHub intake under governed credentials.
 
-If GitHub write is unavailable, the agent returns `GCL-RETURN-RELAY/1` to the launching conversation with the complete required result embedded verbatim. The launcher/operator then relays that exact result to the protected return issue.
+Direct agent-to-GitHub posting is optional when explicitly available, never required.
 
 Transport contract:
 https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_TRANSPORT_CONTRACT.md
