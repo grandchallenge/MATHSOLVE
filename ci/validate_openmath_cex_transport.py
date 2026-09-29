@@ -18,21 +18,26 @@ def validate() -> list[str]:
     board = BOARD.read_text(encoding='utf-8')
 
     policy = registry.get('return_policy', {})
-    if policy.get('capability_assumption_forbidden') is not True:
-        errors.append('registry does not forbid assumed external capabilities')
-    for key in ('task_hydration_rule','primary_return','fallback_return','no_return_path_rule','relay_durability_rule','transport_contract'):
-        if not policy.get(key): errors.append(f'missing return_policy.{key}')
+    if policy.get('agent_github_auth_required') is not False:
+        errors.append('registry still requires agent GitHub authentication')
+    if policy.get('self_contained_launch_required') is not True:
+        errors.append('registry does not require self-contained launch hydration')
+    if policy.get('durable_intake_owner') != 'AUTHENTICATED_GCL_INFRASTRUCTURE':
+        errors.append('durable intake is not owned by authenticated GCL infrastructure')
+    if policy.get('direct_agent_github_return') != 'OPTIONAL_IF_EXPLICITLY_AVAILABLE':
+        errors.append('direct agent GitHub posting is not optional')
+    if policy.get('missing_github_capability_effect') != 'NO_BLOCK':
+        errors.append('missing GitHub capability still blocks execution')
 
-    for marker in ('TASK_HYDRATION = AVAILABLE','GITHUB_WRITE_AVAILABLE','LAUNCHER_RELAY_AVAILABLE','GCL-RETURN-RELAY/1','LAUNCH_TRANSPORT_BLOCKED','BEGIN_RESULT','END_RESULT'):
-        if marker not in contract: errors.append(f'transport contract missing {marker}')
-        if marker not in entry and marker not in ('BEGIN_RESULT','END_RESULT'): errors.append(f'entrypoint missing {marker}')
+    required = ('GCL-RETURN-RELAY/1','BEGIN_RESULT','END_RESULT','Direct posting is optional','not required to have GitHub access')
+    for marker in required:
+        if marker not in contract and marker not in entry:
+            errors.append(f'missing transport invariant: {marker}')
 
-    if 'MUST NOT assume that a zero-context worker has GitHub access' not in board:
-        errors.append('job board launcher contract still permits GitHub capability assumption')
-    if 'launcher-supplied exact work-package content' not in board:
-        errors.append('job board lacks self-contained hydration requirement')
-    if 'GCL-RETURN-RELAY/1' not in board:
-        errors.append('job board lacks relay return path')
+    if 'not required to authenticate to GitHub' not in board:
+        errors.append('job board still implies GitHub-authenticated external agents')
+    if 'Authenticated GCL infrastructure' not in board:
+        errors.append('job board does not assign durable intake to GCL infrastructure')
 
     return errors
 
@@ -41,7 +46,7 @@ def main() -> int:
     if errors:
         for error in errors: print('FAIL:', error)
         return 1
-    print('PASS: OPENMATH CEX transport is capability-explicit and has a durable relay path')
+    print('PASS: OPENMATH CEX separates zero-context execution from authenticated durable intake')
     return 0
 
 if __name__ == '__main__':
