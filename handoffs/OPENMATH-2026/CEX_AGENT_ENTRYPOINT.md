@@ -1,5 +1,8 @@
 # OPENMATH-2026 external CEX agent entrypoint
 
+Canonical entrypoint URL:
+https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md
+
 You do not need prior knowledge of GCL, MATHSOLVE, repository names, issue numbers, or campaign history.
 
 This entrypoint does **not** assume that your execution environment has GitHub access.
