@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "campaign": "OPENMATH-2026",
+  "operation": "OM26-SEVEN-HILL-CONSOLIDATION-001",
+  "state": "CLOSED__SEVEN_FIRST_CLASS_HILLS_END_TO_END",
+  "solve": {
+    "consolidation_pr": 517,
+    "protected_merge": "56e1593d4cb4b4b02a9494791b4f4877e365b49a",
+    "checkpoint_pr": 518,
+    "checkpoint_protected_main": "a2d4b19cbb9fad644d31465124e782fd789c226d",
+    "readback": {
+      "hill_lanes_blob": "ae4f4e5a9fc5be3ce6ec5e0ec1287de37e29fec8",
+      "assignment_registry_blob": "8043a11ed97a9a1bb06b334eca178860ed3b1524",
+      "historical_tranche_registry_blob": "4f35fc50d79d1d276d2e1153dc085f82d4b7c627",
+      "human_board_blob": "b88885043a5268b7a7a92f8fe781ec9068dc41ad"
+    }
+  },
+  "programme": {
+    "consolidation_pr": 1093,
+    "protected_merge": "6ca927551ec4f4a36d3799a58c5e80c718257142",
+    "closure_pr": 1094,
+    "protected_closure_merge": "9c7a2aa9deeef2fd5878747bb66fa71a094b5565",
+    "campaign_state_blob": "3af42917c86baadc4f789d3276862be44ee67581",
+    "completion_receipt_blob": "ab0ee8acaf552b438ab707a43b427f6fbcd99b2b"
+  },
+  "established_state": {
+    "current_lane_model": "SEVEN_FIRST_CLASS_HILLS",
+    "current_hills": [
+      "OM26-H1",
+      "OM26-H2",
+      "OM26-H3",
+      "OM26-H4",
+      "OM26-H5",
+      "OM26-H6",
+      "OM26-H7"
+    ],
+    "grouped_current_lanes": [],
+    "h2_h7_aggregate_status": "HISTORICAL_PROVENANCE_ONLY",
+    "h2_h7_aggregate_current_authority": false,
+    "next_action_selection_rule": "Select exact current hill lanes whose external_agent.lifecycle is LEASED_NOT_LAUNCHED."
+  },
+  "substantive_state_preserved": {
+    "h1_agent001": "ACCEPTED__CLOSED",
+    "h1_frontier": "Q_GE_6__SOURCE_CONDITIONAL",
+    "h2": "LEASED_NOT_LAUNCHED",
+    "h3": "LEASED_NOT_LAUNCHED",
+    "h4": "LEASED_NOT_LAUNCHED",
+    "h5": "LEASED_NOT_LAUNCHED",
+    "h6": "LEASED_NOT_LAUNCHED",
+    "h7": "LEASED_NOT_LAUNCHED",
+    "certification_changes": false,
+    "competition_changes": false
+  },
+  "historical_preservation": {
+    "grouped_source_acquisition_receipt_preserved": true,
+    "grouped_decomposition_receipt_preserved": true,
+    "grouped_lease_receipt_preserved": true,
+    "grouped_artifacts_renamed": false,
+    "grouped_artifacts_rewritten": false
+  },
+  "restart": {
+    "requires_chat_history": false,
+    "canonical_state": "grandchallenge/MATH-PROGRAMME:governance/openmath_2026_campaign_state.json",
+    "rule": "Verify live domain bindings, then execute only the canonical state's next_action."
+  },
+  "completion_test": {
+    "solve_current_topology_seven_hills": true,
+    "programme_current_topology_seven_hills": true,
+    "historical_h2_h7_only": true,
+    "human_views_agree": true,
+    "protected_readback_complete": true,
+    "deterministic_restart": true
+  },
+  "claim_boundary": "Topology consolidation only. No new mathematical, certification, agent-launch, or competition effect."
+}
