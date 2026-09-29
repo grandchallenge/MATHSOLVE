@@ -14,7 +14,7 @@ External agents do not choose work by browsing. Execution requires one unique pr
 
 | Assignment | Hill | State | Dispatch | Agent | Return issue |
 |---|---|---|---|---|---|
-| `OM26-H1-H1-12` | `OM26-H1` | `CAPTURED` | `OM26-H1-H1-12-IA-001` | `INDEPENDENT-AGENT-001` | #498 |
+| `OM26-H1-H1-12` | `OM26-H1` | `ACCEPTED` | `OM26-H1-H1-12-IA-001` | `INDEPENDENT-AGENT-001` | #498 |
 | `OM26-H2-WP01` | `OM26-H2` | `LEASED_NOT_LAUNCHED` | `OM26-H2-WP01-IA-001` | `INDEPENDENT-AGENT-002` | #505 |
 | `OM26-H3-WP01` | `OM26-H3` | `LEASED_NOT_LAUNCHED` | `OM26-H3-WP01-IA-001` | `INDEPENDENT-AGENT-003` | #506 |
 | `OM26-H4-WP01` | `OM26-H4` | `LEASED_NOT_LAUNCHED` | `OM26-H4-WP01-IA-001` | `INDEPENDENT-AGENT-004` | #507 |
@@ -22,7 +22,7 @@ External agents do not choose work by browsing. Execution requires one unique pr
 | `OM26-H6-WP01` | `OM26-H6` | `LEASED_NOT_LAUNCHED` | `OM26-H6-WP01-IA-001` | `INDEPENDENT-AGENT-006` | #509 |
 | `OM26-H7-WP01` | `OM26-H7` | `LEASED_NOT_LAUNCHED` | `OM26-H7-WP01-IA-001` | `INDEPENDENT-AGENT-007` | #510 |
 
-Agent 001 returned one result on #498. The original intake rejected it because of an intake infrastructure defect; the exact result is now durably recovered as `CAPTURED_RECOVERED_UNADJUDICATED`. It has **not** been mathematically accepted.
+Agent 001 returned one result on #498. The original intake rejected it because of an intake infrastructure defect; the exact result was recovered and has now been adjudicated as `ACCEPTED_SOURCE_CONDITIONAL_REDUCTION`. Its q=5 reduction is accepted at Solve level only; it is **not** MATHCERT certification and does not establish hill-global optimality.
 
 Agents 002-007 have protected one-to-one leases, but their return issues contain no launch/result evidence. Their state is therefore `LEASED_NOT_LAUNCHED`, not "working" or "completed".
 
