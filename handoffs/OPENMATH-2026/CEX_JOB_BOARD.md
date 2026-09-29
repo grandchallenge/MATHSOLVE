@@ -37,16 +37,28 @@ Every active hill lease is independent-blind and one-to-one. No agent may substi
 
 ## Launcher contract
 
-For each external worker, supply exactly:
+A launcher MUST NOT assume that a zero-context worker has GitHub access.
+
+Before substantive work, establish:
+
+- exact protected launch identity;
+- self-contained task hydration, either by verified GitHub read access or launcher-supplied exact work-package content;
+- a durable return path, either direct GitHub write or explicit launcher relay.
+
+Supply:
 
 ```text
-ENTRYPOINT_URL: https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md
 DISPATCH_ID: <exact protected dispatch id>
 AGENT_REF: <exact protected agent ref>
+INTENDED_RETURN: <exact protected return URL>
 ```
 
-The agent follows the entrypoint, resolves its unique protected lease, opens the exact `work_package_url`, performs only that task, and returns one `GCL-CONTRIBUTION-RESULT/1` comment to the protected return issue.
+For temporary or otherwise capability-unknown agents, the launcher SHOULD include the exact work-package content or protected snapshot needed to execute without GitHub.
 
+If GitHub write is unavailable, the agent returns `GCL-RETURN-RELAY/1` to the launching conversation with the complete required result embedded verbatim. The launcher/operator then relays that exact result to the protected return issue.
+
+Transport contract:
+https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_TRANSPORT_CONTRACT.md
 ## Claim boundary
 
 A lease authorizes bounded external work. It does not admit returned mathematics, establish novelty, authorize competition submission, or create MATHCERT certification. No OPENMATH-2026 hill currently has a recorded official competition submission.
