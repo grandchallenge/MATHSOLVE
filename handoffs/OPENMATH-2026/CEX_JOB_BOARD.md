@@ -35,6 +35,18 @@ WP02 is the active H2 successor lease. Agent 008 must construct a complete exact
 
 Every active hill lease is independent-blind and one-to-one. No agent may substitute for another `AGENT_REF`, and no issue other than the bound return issue is accepted for that dispatch.
 
+## Current launcher scripts
+
+The canonical launcher-facing scripts are under `handoffs/OPENMATH-2026/launch/`, one file per peer hill. Historical files under `handoffs/OPENMATH-2026/jobs/` remain frozen provenance and SHALL NOT be used as current launch scripts.
+
+- H1: `launch/OM26-H1.md` — guard only; no active successor lease.
+- H2: `launch/OM26-H2.md` — current executable WP02 envelope.
+- H3: `launch/OM26-H3.md` — current executable WP01 envelope.
+- H4: `launch/OM26-H4.md` — current executable WP01 envelope.
+- H5: `launch/OM26-H5.md` — current executable WP01 envelope.
+- H6: `launch/OM26-H6.md` — current executable WP01 envelope.
+- H7: `launch/OM26-H7.md` — current executable WP01 envelope.
+
 ## Launcher contract
 
 External agents are launched as self-contained intelligence workers. They are not required to authenticate to GitHub.
