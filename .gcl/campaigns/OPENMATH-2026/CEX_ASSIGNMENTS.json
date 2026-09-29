@@ -76,14 +76,14 @@
       },
       "OM26-H2": {
         "solve_released": true,
-        "assignment": "OM26-H2-WP02",
+        "assignment": "OM26-H2-WP03",
         "agent_state": "LEASED_NOT_LAUNCHED",
         "closed": false,
         "predecessor": {
-          "assignment": "OM26-H2-WP01",
+          "assignment": "OM26-H2-WP02",
           "agent_state": "ACCEPTED",
           "closed": true,
-          "adjudication": "OM26-H2-WP01-ADJ-001"
+          "adjudication": "OM26-H2-WP02-ADJ-001"
         }
       },
       "OM26-H3": {
@@ -119,7 +119,7 @@
     },
     "summary": {
       "released_hills": 7,
-      "accepted_agents": 2,
+      "accepted_agents": 3,
       "leased_not_launched_agents": 6,
       "launched_agents": 0,
       "returned_unadjudicated_agents": 0
