@@ -7,7 +7,7 @@ The launcher verifies the protected lease and hands the independent zero-context
 | Hill | Current immutable task | Executable now |
 |---|---|---|
 | H1 | https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H1.md | No — previous contribution accepted; no successor lease |
-| H2 | https://github.com/grandchallenge/MATHSOLVE/blob/208fa322f52d06eb7f9b6affff0f359217a5118e/handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md | Yes — WP03 / Agent 009 / issue #537 |
+| H2 | https://github.com/grandchallenge/MATHSOLVE/blob/e64c93148ddecbc8e51352c24926898e42b8ea10/handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md | Yes — WP03 / Agent 009 / issue #537 |
 | H3 | https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H3.md | Yes — WP01 / Agent 003 / issue #506 |
 | H4 | https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H4.md | Yes — WP01 / Agent 004 / issue #507 |
 | H5 | https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H5.md | Yes — WP01 / Agent 005 / issue #508 |
