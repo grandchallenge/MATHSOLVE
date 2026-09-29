@@ -499,6 +499,20 @@
       ],
       "mathematical_effect": true,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-023",
+      "text": "Conditional on the predecessor source-scoped triple-point local fan/no-consecutive-D1 and clean-line charging premises used to derive OM26-H1-RED-022, the sole q=5 score-95 K3+two-isolated equality normal form is unrealizable. Hence any normalized n=18,T=95 witness must have q>=6 finite multiple points.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_EXTERNAL_CONTRIBUTION_ADJUDICATED_ACCEPTED__Q5_CLOSED__NOT_CERTIFIED",
+      "support": [
+        "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md",
+        "contributions/OPENMATH-2026/OM26-H1/H1-12/adjudications/OM26-H1-H1-12-ADJ-001.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_EQUALITY_NORMAL_FORM.md",
+        "ci/validate_openmath_h1_agent001_adjudication.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [
