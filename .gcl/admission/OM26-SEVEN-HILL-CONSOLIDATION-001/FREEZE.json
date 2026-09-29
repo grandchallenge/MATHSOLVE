@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "OPENMATH-2026",
+  "operation": "OM26-SEVEN-HILL-CONSOLIDATION-001",
+  "protected_base": "0da480a62e86a623a87f07f6d75ed8ed810ee15a",
+  "assembled_from_head": "117dd961d1b81155dca28c21f9a9f0bb182073ba",
+  "current_topology": {
+    "lane_model": "SEVEN_FIRST_CLASS_HILLS",
+    "hills": [
+      "OM26-H1",
+      "OM26-H2",
+      "OM26-H3",
+      "OM26-H4",
+      "OM26-H5",
+      "OM26-H6",
+      "OM26-H7"
+    ],
+    "grouped_current_lanes": []
+  },
+  "historical_group_policy": {
+    "labels": [
+      "H2-H7",
+      "OM26-H2-H7"
+    ],
+    "status": "HISTORICAL_PROVENANCE_ONLY",
+    "current_authority": false
+  },
+  "artifacts": {
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "ae4f4e5a9fc5be3ce6ec5e0ec1287de37e29fec8",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "8043a11ed97a9a1bb06b334eca178860ed3b1524",
+    "work_packages/OPENMATH_2026/HISTORICAL_TRANCHE_REGISTRY.json": "4f35fc50d79d1d276d2e1153dc085f82d4b7c627",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "b88885043a5268b7a7a92f8fe781ec9068dc41ad",
+    "ci/validate_openmath_seven_hill_consolidation.py": "a84ef7180f4c62caf077a0a995d789fa63d585c0",
+    "ci/validate_openmath_cex_job_board.py": "e959b06e06ab2112af6868e49f146dba09cd5f66",
+    "ci/test_openmath_cex_job_board.py": "2e3471b5335470dc7585dacfe64a27210b3a94c8",
+    "ci/validate_openmath_core_clarity_reconcile.py": "6bb063710cf6cb4668c868c471928ac998dcbbb2",
+    "ci/validate_openmath_cex_h2_h7.py": "5c976822bbc7bdde7412b78529aacbca6873011d",
+    "ci/test_openmath_cex_h2_h7.py": "b19cfc074198f6a99e27418c3f00902c28c0db63",
+    ".github/workflows/openmath-seven-hill-consolidation.yml": "7faf63aabe169a6956ffcbf74b10cbccb3d87325",
+    ".ghos-routing/workflows.json": "b4e5e1917618c36f039360fb6ebb68f4c0585ca5",
+    ".gcl/operations/OM26-SEVEN-HILL-CONSOLIDATION-001/CHECKPOINT.json": "593fbf79445d0f781841cab2e274587e3e93c851"
+  },
+  "preservation": {
+    "historical_artifacts_rewritten": false,
+    "historical_receipts_renamed": false,
+    "substantive_hill_state_changed": false,
+    "external_agent_state_changed": false,
+    "competition_state_changed": false
+  },
+  "invalidation": {
+    "governed_artifact_change": "new freeze required",
+    "candidate_head_change": "exact-head review and CI must target final head"
+  },
+  "authority_boundary": "Topology consolidation only. No mathematics, agent lifecycle, certification, or competition state changes."
+}
