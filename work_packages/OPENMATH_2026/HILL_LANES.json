@@ -77,7 +77,7 @@
     },
     {
       "hill_slot": "OM26-H2",
-      "status": "WP01_ACCEPTED_SCORER_CONCORDANCE__SEARCH_NORMALIZATION_NARROWED__NOT_CERTIFIED",
+      "status": "WP02_LEASED_NOT_LAUNCHED__WP01_ACCEPTED__EXACT_SEARCH_DESIGN",
       "exact_hill_id": "alejandrozu/busy-beaver-6-certificates",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -101,16 +101,34 @@
       "obligations": {
         "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
         "formalization_prerequisites": "EVALUATOR_CONTRACT_AND_BASELINE_CONCORDANCE_ACCEPTED",
-        "representation_or_reduction": "EXACT_SEARCH_DESIGN_REQUIRED__FIRST_WRITE_1_NOT_WLOG",
+        "representation_or_reduction": "WP02_LEASED__EXACT_SEARCH_DESIGN__FIRST_WRITE_1_NOT_WLOG",
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
-        "exact_computation": "SCORER_CONCORDANCE_ACCEPTED__BUDGETS_RECONSTRUCTED",
-        "falsification_counterexample": "ADVERSARIAL_REPLAY_ACCEPTED_WITH_REGULAR_FILE_SCOPE",
-        "cei_independent_contribution": "ACCEPTED__OM26-H2-WP01-IA-001__SEARCH_CLAIMS_NARROWED",
+        "exact_computation": "WP02_LEASED__EXACT_SEARCH_AND_DUAL_REPLAY",
+        "falsification_counterexample": "WP02_REQUIRES_SYMMETRY_AND_PRUNING_FALSIFICATION_SUITE",
+        "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H2-WP02-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Instantiate OM26-H2-WP02 for complete exact search design using only proved symmetry reductions and exact pruning, then dual-replay any promoted candidate through the independent scorer and protected evaluator.",
+      "next_action": "Launch INDEPENDENT-AGENT-008 with the protected OM26-H2-WP02 bootstrap and return exactly one RESULT/1 comment to issue #526.",
       "title": "Busy Beaver 6 certificates",
       "active_lease": {
+        "assignment_id": "OM26-H2-WP02",
+        "dispatch_id": "OM26-H2-WP02-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-008",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/526",
+        "protected_merge": null,
+        "readback_verified": false,
+        "lifecycle_state": "LEASED_NOT_LAUNCHED",
+        "launch_evidence": null,
+        "return_evidence": null
+      },
+      "competition_state": {
+        "candidate": null,
+        "lifecycle": "NO_PROMOTED_CANDIDATE",
+        "local_verification": "WP01_SCORER_ACCEPTED__SEARCH_PENDING",
+        "official_submission": "NOT_SUBMITTED",
+        "official_acceptance": "NONE"
+      },
+      "predecessor_lease": {
         "assignment_id": "OM26-H2-WP01",
         "dispatch_id": "OM26-H2-WP01-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-002",
@@ -122,13 +140,6 @@
         "return_evidence": "contributions/OPENMATH-2026/OM26-H2/WP01/raw/OM26-H2-WP01-IA-001/github-comment-5883655827.md",
         "adjudication": "ACCEPTED_SCORER_CONCORDANCE_WITH_SEARCH_NARROWING",
         "adjudication_record": "contributions/OPENMATH-2026/OM26-H2/WP01/adjudications/OM26-H2-WP01-ADJ-001.json"
-      },
-      "competition_state": {
-        "candidate": null,
-        "lifecycle": "NO_PROMOTED_CANDIDATE",
-        "local_verification": "WP01_SCORER_ACCEPTED__SEARCH_PENDING",
-        "official_submission": "NOT_SUBMITTED",
-        "official_acceptance": "NONE"
       }
     },
     {
