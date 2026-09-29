@@ -400,7 +400,7 @@
       }
     }
   ],
-  "claim_boundary": "OM26-H1 Agent 001 evidence is accepted at Solve level only as a source-conditional reduction closing q=5; H1-12 remains open on q>=6 and predecessor source-scoped premises remain. OM26-H2 through OM26-H7 remain LEASED_NOT_LAUNCHED. No hill has an official competition submission.",
+  "claim_boundary": "Seven peer current hill lanes OM26-H1 through OM26-H7. Historical H2-H7 aggregate tranche artifacts do not define current authority. H1 Agent 001 is ACCEPTED/CLOSED at Solve level; H2-H7 individual hill lanes remain LEASED_NOT_LAUNCHED. No hill has an official competition submission.",
   "provider_import": {
     "receipt": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",
     "forge_protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
@@ -423,5 +423,28 @@
     "lifecycle_semantics": "LEASED is not LAUNCHED; RETURNED is not CAPTURED; CAPTURED is not ACCEPTED or CERTIFIED.",
     "reconciliation_operation": "OM26-CORE-CLARITY-RECONCILE-001",
     "programme_canonical_state": "grandchallenge/MATH-PROGRAMME:governance/openmath_2026_campaign_state.json"
+  },
+  "current_topology": {
+    "authority": "CURRENT_OPERATIONAL_TOPOLOGY",
+    "lane_model": "SEVEN_FIRST_CLASS_HILLS",
+    "hills": [
+      "OM26-H1",
+      "OM26-H2",
+      "OM26-H3",
+      "OM26-H4",
+      "OM26-H5",
+      "OM26-H6",
+      "OM26-H7"
+    ],
+    "grouped_current_lanes": [],
+    "rule": "OM26-H1 through OM26-H7 are seven peer current hill lanes. Aggregate labels such as H2-H7 identify historical bounded tranches only and SHALL NOT define current campaign topology."
+  },
+  "historical_tranche_policy": {
+    "aggregate_labels": [
+      "H2-H7",
+      "OM26-H2-H7"
+    ],
+    "status": "HISTORICAL_PROVENANCE_ONLY",
+    "rule": "Closed aggregate source-acquisition, decomposition, and lease operations remain immutable provenance. Current work addresses exact hill lanes or explicitly enumerated hill sets."
   }
 }
