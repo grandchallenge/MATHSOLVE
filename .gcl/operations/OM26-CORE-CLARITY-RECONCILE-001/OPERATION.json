@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-CORE-CLARITY-RECONCILE-001",
+  "campaign": "OPENMATH-2026",
+  "objective": "Reconcile OPENMATH external-agent lifecycle and competition-state presentation with protected operational reality, recover the exact inaugural Agent 001 result after the superseded intake defect, and leave Solve state consumable by one Programme-owned canonical campaign record.",
+  "standard": {
+    "id": "GCL-CC-00",
+    "version": "0.1.0",
+    "repository": "grandchallenge/gcl-standards",
+    "protected_commit": "6704b4037161133a1efeedddcb69060a79cb7bc7",
+    "standard_path": "standards/GCL-CC-00.md",
+    "standard_git_blob_sha1": "b166204c6204ec96dcbf48c48c8688cca3a4cce4",
+    "admission_path": "admissions/GCL-CC-00-0.1.0.json",
+    "admission_git_blob_sha1": "8adca06e54833fa3e37ba82ce4c2facd278f4d76"
+  },
+  "protected_base": "17e90373384ed90a58bcb19d12b315fddaf05867",
+  "defects": [
+    "H1 Agent 001 returned substantive RESULT/1 evidence but the then-current intake rejected it because of infrastructure defects; the result was not durably captured.",
+    "H2-H7 protected leases were presented as LEASED without an explicit distinct launch state, obscuring that no durable launch/result evidence exists.",
+    "Competition submission state was not explicit on the per-hill Solve control surface.",
+    "Human job-board presentation conflated lease existence with operational progress."
+  ],
+  "repair_mode": "REPAIR_IN_PLACE_WITH_EXPLICIT_RECOVERY_AND_NO_PARALLEL_AUTHORITY",
+  "scope": {
+    "may_recover_exact_external_result": true,
+    "may_update_agent_lifecycle_state": true,
+    "may_update_human_job_board": true,
+    "may_add_lifecycle_readback": true,
+    "may_add_validation": true,
+    "may_adjudicate_mathematics": false,
+    "may_change_h1_mathematical_frontier": false,
+    "may_launch_external_agents": false,
+    "may_certify": false,
+    "may_submit_competition_entry": false
+  },
+  "lifecycle_targets": {
+    "h1": "CAPTURED_RECOVERED_UNADJUDICATED",
+    "h2_h7": "LEASED_NOT_LAUNCHED",
+    "all_hills_competition_submission": "NOT_SUBMITTED"
+  },
+  "supersession": {
+    "defective_intake_generation": "Superseded by protected generic OPENMATH CEX intake merge 51a52401bfda66910b58c690684da595b4d6aa2c.",
+    "agent001_rejection_comments": [
+      5881111131,
+      5881111626
+    ],
+    "replacement": "Exact comment 5881108260 is preserved with a recovery receipt and replayed through the current generic parser in CI.",
+    "duplicate_intake_mechanism_created": false
+  },
+  "acceptable_dispositions": [
+    "CLOSED",
+    "BLOCKED"
+  ],
+  "completion_requires": [
+    "exact Agent 001 raw result preserved",
+    "current protected generic parser replay passes on recovered bytes",
+    "recovery receipt has no mathematical/certification/competition effect",
+    "H1 lifecycle is CAPTURED with adjudication PENDING",
+    "H2-H7 lifecycle is LEASED_NOT_LAUNCHED",
+    "all seven Solve lanes have explicit official_submission state",
+    "human job board agrees with machine registry",
+    "required CI green",
+    "protected merge",
+    "protected readback",
+    "completion receipt"
+  ],
+  "governed_artifacts": [
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+    "work_packages/OPENMATH_2026/HILL_LANES.json",
+    "work_packages/OPENMATH_2026/CORE_CLARITY_LIFECYCLE_READBACK.json",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
+    "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md",
+    "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json",
+    "ci/validate_openmath_core_clarity_reconcile.py",
+    "ci/validate_openmath_cex_job_board.py",
+    "ci/test_openmath_cex_job_board.py",
+    ".gcl/operations/OM26-CORE-CLARITY-RECONCILE-001/OPERATION.json",
+    ".gcl/admission/OM26-CORE-CLARITY-RECONCILE-001/FREEZE.json",
+    ".gcl/completions/OM26-CORE-CLARITY-RECONCILE-001/COMPLETION_RECEIPT.json",
+    ".github/workflows/openmath-core-clarity-reconcile.yml",
+    ".ghos-routing/workflows.json"
+  ],
+  "claim_boundary": "Control-plane reconciliation only. Recovered Agent 001 evidence remains unadjudicated; protected H1 frontier is unchanged; no external agent is launched; no certification or competition submission is authorized."
+}
