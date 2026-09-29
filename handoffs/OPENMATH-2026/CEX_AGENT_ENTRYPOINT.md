@@ -2,31 +2,67 @@
 
 You do not need prior knowledge of GCL, MATHSOLVE, repository names, issue numbers, or campaign history.
 
-If you were launched as an external CEX worker, your launch message must contain exactly these identity fields:
+This entrypoint does **not** assume that your execution environment has GitHub access.
+
+If you were launched as an external CEX worker, your launch message must contain these exact identity fields:
 
 ```text
-ENTRYPOINT_URL: https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md
 DISPATCH_ID: <exact dispatch id>
 AGENT_REF: <exact agent identity supplied by launcher>
 ```
+
+It SHOULD also contain the exact work-package content or another launcher-supplied self-contained hydration payload sufficient to execute the bounded task without GitHub.
 
 If either `DISPATCH_ID` or `AGENT_REF` is missing, stop and return:
 
 `INVALID_LAUNCH: missing dispatch_id or agent_ref`
 
-## Step 1 — fetch the machine assignment registry
+## Step 0 — capability preflight
 
-Fetch this exact URL:
+Before substantive work, establish both task hydration and a durable return path.
+
+Required states:
+
+- `TASK_HYDRATION = AVAILABLE`
+- and one of:
+  - `GITHUB_WRITE_AVAILABLE`
+  - `LAUNCHER_RELAY_AVAILABLE`
+
+Do not infer either capability.
+
+If task hydration is unavailable, return:
+
+```text
+LAUNCH_TRANSPORT_BLOCKED
+CAPABILITY: TASK_HYDRATION
+DISPATCH_ID: <exact dispatch id>
+AGENT_REF: <exact agent ref>
+```
+
+and stop without substantive work.
+
+If neither GitHub write nor launcher relay is available, return:
+
+```text
+LAUNCH_TRANSPORT_BLOCKED
+CAPABILITY: DURABLE_RETURN
+DISPATCH_ID: <exact dispatch id>
+AGENT_REF: <exact agent ref>
+INTENDED_RETURN: <exact protected return URL if known>
+```
+
+and stop without substantive work.
+
+Full transport contract:
+https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_TRANSPORT_CONTRACT.md
+
+## Step 1 — resolve the protected lease
+
+If GitHub read access is available, fetch:
 
 https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json
 
-That JSON file is the assignment authority.
-
-Do not search GitHub for work. Do not choose an assignment from a list. Do not infer an assignment from an issue number, repository shorthand, chat history, or campaign name.
-
-## Step 2 — resolve your lease
-
-Find the unique assignment whose protected lease satisfies all of the following:
+Find the unique assignment whose protected lease satisfies:
 
 - `state = LEASED`;
 - `lease.dispatch_id` exactly equals your `DISPATCH_ID`;
@@ -34,44 +70,58 @@ Find the unique assignment whose protected lease satisfies all of the following:
 
 There must be exactly one match.
 
-If there is no match, return:
+If your launcher has instead supplied an exact protected lease snapshot in the launch envelope, use that snapshot for identity resolution and record its protected commit/blob identity in your return. Do not search for alternative work.
 
-`NO_ACTIVE_LEASE`
+If no matching protected lease exists, return `NO_ACTIVE_LEASE` and stop.
 
-and stop without substantive work.
+If more than one matching lease exists, return `AMBIGUOUS_LEASE` and stop.
 
-If there is more than one match, return:
+## Step 2 — hydrate exactly one work package
 
-`AMBIGUOUS_LEASE`
+Use the matched assignment's exact work package.
 
-and stop without substantive work.
+If GitHub read access is available, use its protected `work_package_url`.
 
-## Step 3 — open your work package
+If GitHub read is unavailable, use only the exact work-package content supplied by the launcher. Do not substitute search results, remembered content, another hill, or an inferred package.
 
-Use the matched assignment's `work_package_url`.
+Treat that exact package and its explicitly named protected dependencies as the complete bounded task world.
 
-That URL points to your complete bounded work package. You do not need to inspect the rest of the repository.
+## Step 3 — execute only the bounded task
 
-Follow only that work package and the protected dispatch referenced by your lease.
+Follow the work package's definitions, evidence requirements, stop rules, claim boundaries, and return grammar exactly.
 
-## Step 4 — return only where instructed
+Do not self-select another assignment.
 
-A lease must identify an absolute dispatch/return surface when it becomes executable.
+## Step 4 — return exactly once
 
-Return exactly one result through that surface using the grammar specified by the protected dispatch.
+### Primary path
 
-Do not post results elsewhere merely because you can see another GitHub issue or repository.
+If GitHub write is available, post exactly one result to the protected `return_url` using the work package's required grammar.
+
+### Relay path
+
+If GitHub write is unavailable but launcher relay is available, return the complete result to the launching conversation using:
+
+```text
+GCL-RETURN-RELAY/1
+DISPATCH_ID: <exact dispatch id>
+AGENT_REF: <exact agent ref>
+INTENDED_RETURN: <exact protected GitHub return URL>
+TRANSPORT_BLOCKER: GITHUB_WRITE_UNAVAILABLE
+
+BEGIN_RESULT
+<complete result in the work package's required grammar>
+END_RESULT
+```
+
+Do not truncate, summarize, or reformat the inner result for relay.
+
+The launcher/operator is responsible for verbatim durable relay to the protected return issue.
 
 ## Important boundary
 
-`AVAILABLE_FOR_LEASE` does not mean you may take the job. Only `LEASED` means the job is yours.
+`LEASED` does not imply `LAUNCHED`; `RETURNED` does not imply `CAPTURED`; `CAPTURED` does not imply `ACCEPTED` or `CERTIFIED`.
 
-Receipt of your result does not mean GCL accepts the mathematics. Returned work is preserved and adjudicated separately.
+A relay result remains non-durable until it has been posted to the protected return issue.
 
-## Human-readable board
-
-For orientation only, not assignment authority:
-
-https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_JOB_BOARD.md
-
-The machine registry remains authoritative.
+Receipt of a result does not mean GCL accepts the mathematics. Returned work is preserved and adjudicated separately.
