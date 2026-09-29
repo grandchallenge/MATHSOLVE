@@ -4,7 +4,7 @@
   "campaign": "OPENMATH-2026",
   "operation": "OM26-SEVEN-HILL-CONSOLIDATION-001",
   "protected_base": "0da480a62e86a623a87f07f6d75ed8ed810ee15a",
-  "assembled_from_head": "117dd961d1b81155dca28c21f9a9f0bb182073ba",
+  "assembled_from_head": "fa2217953bd59b161f6a30fe34c65585641f6e97",
   "current_topology": {
     "lane_model": "SEVEN_FIRST_CLASS_HILLS",
     "hills": [
@@ -39,7 +39,7 @@
     "ci/test_openmath_cex_h2_h7.py": "b19cfc074198f6a99e27418c3f00902c28c0db63",
     ".github/workflows/openmath-seven-hill-consolidation.yml": "7faf63aabe169a6956ffcbf74b10cbccb3d87325",
     ".ghos-routing/workflows.json": "b4e5e1917618c36f039360fb6ebb68f4c0585ca5",
-    ".gcl/operations/OM26-SEVEN-HILL-CONSOLIDATION-001/CHECKPOINT.json": "593fbf79445d0f781841cab2e274587e3e93c851"
+    ".gcl/operations/OM26-SEVEN-HILL-CONSOLIDATION-001/CHECKPOINT.json": "d10cd61154dcaf420dec5ea5985cc7a7249a2cf0"
   },
   "preservation": {
     "historical_artifacts_rewritten": false,
