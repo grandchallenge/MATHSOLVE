@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "campaign": "OPENMATH-2026",
+  "operation": "OM26-CORE-CLARITY-RECONCILE-001",
+  "state": "CLOSED__SOLVE_CONTROL_PLANE_RECONCILED",
+  "candidate_head": "a4a78983bd1f99cc0a9802a543e44ed7fe6d865a",
+  "protected_merge": "77f6dbd3624bbbfeac36640ca84d90e36969f9ee",
+  "exact_head_reviews": {
+    "adversary_review_id": 5346395412,
+    "referee_review_id": 5346395591,
+    "subject": "a4a78983bd1f99cc0a9802a543e44ed7fe6d865a"
+  },
+  "checks": {
+    "total": 30,
+    "accepted_conclusions": [
+      "success",
+      "neutral",
+      "skipped"
+    ],
+    "all_accepted": true,
+    "reconciliation_gate": "PASS",
+    "generic_intake_replay": "PASS",
+    "routing_enforcement": "PASS",
+    "policy": "PASS",
+    "security": "PASS"
+  },
+  "protected_readback": {
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "2e3d380a512cf26389dcf0a2304a974618755f01",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "b0825febdfa58ceefb3b398fdf53d8e5e6987950",
+    "work_packages/OPENMATH_2026/CORE_CLARITY_LIFECYCLE_READBACK.json": "756e1ecb517c8d5753c6d1a5d26af041324c0208",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "0163e7cdd1ac0c546844a41b9fbb10a24d3748a0",
+    "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md": "d6850a071d9b7e14bf6f9987284325caab19e8a0",
+    "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json": "fe07c9c4da217995450424e5610c4fd52a2209ad",
+    ".gcl/operations/OM26-CORE-CLARITY-RECONCILE-001/OPERATION.json": "10362376a6484e0371143712cdb6d973139701bf",
+    ".gcl/admission/OM26-CORE-CLARITY-RECONCILE-001/FREEZE.json": "b2836288c7d0e125bb0114d549435969f0e17dae"
+  },
+  "established_state": {
+    "h1_agent001": "CAPTURED_RECOVERED_UNADJUDICATED",
+    "h1_mathematical_frontier": "UNCHANGED__Q5_EXACT_EQUALITY_OR_Q_GE_6__SOURCE_CONDITIONAL",
+    "h2_h7_agents": "LEASED_NOT_LAUNCHED",
+    "h2_h7_launched_count": 0,
+    "h2_h7_returned_count": 0,
+    "h2_h7_captured_count": 0,
+    "official_competition_submissions": 0
+  },
+  "supersession": {
+    "original_h1_intake_rejections": "SUPERSEDED_AS_LIFECYCLE_AUTHORITY_BY_EXACT_RECOVERY_RECEIPT",
+    "generic_intake_repair": "REUSED__NO_DUPLICATE_INTAKE_MECHANISM_CREATED",
+    "lease_only_presentation": "SUPERSEDED_BY_EXPLICIT_AGENT_LIFECYCLE"
+  },
+  "next_boundary": {
+    "id": "programme_core_clarity_reconciliation",
+    "description": "MATH-PROGRAMME shall adopt GCL-CC-00 and publish the single authoritative seven-hill campaign state, superseding stale Programme current-state projections before any further discretionary OPENMATH substantive work."
+  },
+  "claim_boundary": "Solve control-plane closure only. Agent 001 mathematics remains unadjudicated; no certification or competition submission effect."
+}
