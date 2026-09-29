@@ -18,6 +18,7 @@ Current authority is per exact hill lane `OM26-H1` through `OM26-H7`. Historical
 |---|---|---|---|---|---|
 | `OM26-H1-H1-12` | `OM26-H1` | `ACCEPTED` | `OM26-H1-H1-12-IA-001` | `INDEPENDENT-AGENT-001` | #498 |
 | `OM26-H2-WP01` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP01-IA-001` | `INDEPENDENT-AGENT-002` | #505 |
+| `OM26-H2-WP02` | `OM26-H2` | `LEASED_NOT_LAUNCHED` | `OM26-H2-WP02-IA-001` | `INDEPENDENT-AGENT-008` | #526 |
 | `OM26-H3-WP01` | `OM26-H3` | `LEASED_NOT_LAUNCHED` | `OM26-H3-WP01-IA-001` | `INDEPENDENT-AGENT-003` | #506 |
 | `OM26-H4-WP01` | `OM26-H4` | `LEASED_NOT_LAUNCHED` | `OM26-H4-WP01-IA-001` | `INDEPENDENT-AGENT-004` | #507 |
 | `OM26-H5-WP01` | `OM26-H5` | `LEASED_NOT_LAUNCHED` | `OM26-H5-WP01-IA-001` | `INDEPENDENT-AGENT-005` | #508 |
@@ -28,7 +29,7 @@ Agent 001 returned one result on #498. The original intake rejected it because o
 
 Agent 002 returned one valid result on #505. Its independent scorer concordance, baseline replay, minimum-step argument, and private-budget reconstruction are accepted at Solve level as `ACCEPTED_SCORER_CONCORDANCE_WITH_SEARCH_NARROWING`. The proposed first-write=`1` TNF normalization is not accepted as WLOG, and heuristic pruning remains noncanonical until exact soundness is proved.
 
-Agents 003-007 retain protected one-to-one leases with no durable launch/result evidence. Their state remains `LEASED_NOT_LAUNCHED`.
+WP02 is the active H2 successor lease. Agent 008 must construct a complete exact-search design with proved symmetry reductions and exact pruning, using issue #526 as the sole return surface. Agents 003-007 retain their protected one-to-one leases with no durable launch/result evidence; all six active leases are `LEASED_NOT_LAUNCHED`.
 
 `LEASED` does not imply `LAUNCHED`; `RETURNED` does not imply `CAPTURED`; `CAPTURED` does not imply `ACCEPTED` or `CERTIFIED`.
 
