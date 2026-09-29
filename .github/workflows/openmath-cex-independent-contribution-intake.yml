@@ -7,7 +7,6 @@ on:
 permissions:
   contents: write
   issues: write
-  pull-requests: write
 
 concurrency:
   group: openmath-cex-contribution-intake-${{ github.event.issue.number }}
@@ -146,26 +145,6 @@ jobs:
           git commit -m "OPENMATH CEX intake: snapshot $DISPATCH_ID comment $COMMENT_ID"
           git push origin "$BRANCH"
 
-      - name: Open ordinary intake PR
-        if: >
-          steps.validate.outcome == 'success' &&
-          steps.state.outputs.main_captured == 'false' &&
-          steps.state.outputs.branch_exists == 'false'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          BRANCH: ${{ steps.meta.outputs.branch }}
-          PR_TITLE: ${{ steps.meta.outputs.pr_title }}
-          DISPATCH_ID: ${{ steps.meta.outputs.dispatch_id }}
-        run: |
-          cat > "$RUNNER_TEMP/pr-body.md" <<EOF
-          First valid external result captured for protected dispatch `$DISPATCH_ID`.
-
-          This PR preserves raw external evidence and the mechanical receipt only.
-          Mathematical correctness, independence strength, claim admission, certification,
-          novelty, and competition acceptance remain unadjudicated.
-          EOF
-          gh pr create --base main --head "$BRANCH" --title "$PR_TITLE" --body-file "$RUNNER_TEMP/pr-body.md"
-
       - name: Report captured intake
         if: >
           steps.validate.outcome == 'success' &&
@@ -176,4 +155,4 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" \
-            -f body="INTAKE CAPTURED — first valid result and receipt were committed to an evidence branch and an ordinary intake PR was opened automatically. Mathematical status remains unadjudicated."
+            -f body="INTAKE CAPTURED — first valid result and receipt were committed to the evidence branch. The bounded Release Trust intake controller owns ordinary PR creation. Mathematical status remains unadjudicated."
