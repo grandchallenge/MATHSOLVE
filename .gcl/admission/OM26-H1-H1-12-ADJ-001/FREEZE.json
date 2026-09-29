@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "OPENMATH-2026",
+  "operation": "OM26-H1-H1-12-ADJ-001",
+  "protected_base": "aa4253897f008c197bc8929b503614d652c4fb14",
+  "assembled_from_head": "76a8460f8da721c3f151933aa8f26b2181161a1a",
+  "source_result": {
+    "raw_path": "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md",
+    "raw_git_blob_sha1": "d6850a071d9b7e14bf6f9987284325caab19e8a0",
+    "recovery_receipt_git_blob_sha1": "fe07c9c4da217995450424e5610c4fd52a2209ad"
+  },
+  "artifacts": {
+    "contributions/OPENMATH-2026/OM26-H1/H1-12/adjudications/OM26-H1-H1-12-ADJ-001.json": "43379c31540d7b0818063f183a464f4a510b12d8",
+    "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_STATUS.json": "068020e90f91f3040415527b920c8116aa5c524c",
+    "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/CLAIM_LEDGER.json": "4a7a52d635b4d9a87ec47eedd48f65be5fe757f7",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "4962c6495facb00d19962d3cc979b96abf49164e",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "90241fbfc4e3d610b60e08f209b8b370f547311d",
+    "ci/validate_openmath_h1_agent001_adjudication.py": "8ebf8d477c354ad28f77c09ce9c7ae8a6ebe6f89",
+    ".github/workflows/openmath-h1-agent001-adjudication.yml": "a5786bf45ab7a9e952dba5a599501e88dd5d0e1c",
+    ".ghos-routing/workflows.json": "08d8b1ceda78369d522a2f4c8f80f1a602169ff0"
+  },
+  "disposition": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
+  "frontier_effect": "Q_GE_6__SOURCE_CONDITIONAL",
+  "authority_boundary": "Solve-level adjudication only; no certification, optimality, competition submission, or discharge of predecessor source-scoped premises.",
+  "invalidation": {
+    "governed_artifact_change": "new freeze required",
+    "candidate_head_change": "exact-head review and CI must target final head"
+  }
+}
