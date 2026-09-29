@@ -3,7 +3,7 @@
   "record_type": "GCL_CEX_ASSIGNMENT_REGISTRY",
   "campaign": "OPENMATH-2026",
   "active_subcampaign": "OPENMATH-2026",
-  "operation": "OM26-H2-H7-WP01-LEASES",
+  "operation": "OM26-CORE-CLARITY-RECONCILE-001",
   "authority": {
     "repository": "grandchallenge/MATHSOLVE",
     "protected_branch": "main",
@@ -28,7 +28,15 @@
     "LEASED": "Executable only by the agent_ref and dispatch_id named in the protected lease.",
     "BLOCKED_SOURCE_LOCK": "Not executable until the exact protected MATHFORGE source lock named by the assignment exists.",
     "CLOSED": "Completed and no longer executable.",
-    "BLOCKED": "Terminated at a precise blocker and no longer executable."
+    "BLOCKED": "Terminated at a precise blocker and no longer executable.",
+    "LEASED_NOT_LAUNCHED": "Protected lease exists, but no durable launch or return evidence exists.",
+    "LAUNCHED": "Durable launch evidence exists and no result has yet returned.",
+    "RETURNED": "A result exists on the protected return surface but is not yet captured.",
+    "CAPTURED": "Returned evidence is durably captured; substantive adjudication is still separate.",
+    "ADJUDICATING": "Captured evidence is undergoing substantive adjudication.",
+    "ACCEPTED": "Substantive adjudication accepted the bounded contribution within its explicit claim boundary.",
+    "REJECTED": "Substantive adjudication rejected the bounded contribution.",
+    "SUPERSEDED": "A later protected contribution or operation supersedes this assignment outcome."
   },
   "lease_policy": {
     "external_self_claim_allowed": false,
@@ -37,7 +45,8 @@
     "start_rule": "An agent starts only after following the absolute ENTRYPOINT_URL supplied by its launcher and finding exactly one protected LEASED assignment whose dispatch_id and agent_ref match its launch identity.",
     "no_lease_rule": "If no matching protected lease exists, return NO_ACTIVE_LEASE and stop without substantive work.",
     "duplicate_rule": "A second agent must not execute an assignment already LEASED unless a distinct independently-authorized assignment record exists.",
-    "release_rule": "Lease release or reassignment requires another protected registry mutation; issue comments or chat text do not alter the lease."
+    "release_rule": "Lease release or reassignment requires another protected registry mutation; issue comments or chat text do not alter the lease.",
+    "lifecycle_rule": "Lease state and agent lifecycle state are distinct. LEASED does not imply LAUNCHED; return does not imply CAPTURED; CAPTURED does not imply ACCEPTED or CERTIFIED."
   },
   "slot_binding_policy": {
     "current_mapping": "PROTECTED_AND_IMPORTED",
@@ -54,7 +63,7 @@
     "forge_anchor": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8"
   },
   "mathematics_release_policy": {
-    "rule": "Six H2-H7 WP01 assignments are protected, read back, and LEASED one-to-one to six independent agent identities and GitHub return issues. Execution authority is the exact protected assignment/dispatch/agent tuple.",
+    "rule": "H2-H7 each have a protected WP01 lease but no durable launch evidence; they are LEASED_NOT_LAUNCHED. H1 Agent 001 returned one result and that exact result is CAPTURED_RECOVERED_UNADJUDICATED.",
     "current_math_jobs": 6,
     "h1_released_math_jobs": 1,
     "h1_rule": "OM26-H1 is independently source-locked and Solve-released; bounded mathematical CEX jobs may be leased under their own protected operation contracts.",
@@ -63,7 +72,10 @@
     "h2_h7_release_blocker": null,
     "h2_h7_release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH",
     "h2_h7_available_math_jobs": 0,
-    "h2_h7_leased_math_jobs": 6
+    "h2_h7_leased_math_jobs": 6,
+    "h2_h7_launched_math_jobs": 0,
+    "h2_h7_returned_math_jobs": 0,
+    "h2_h7_captured_math_jobs": 0
   },
   "return_policy": {
     "rule": "When an assignment becomes LEASED, the protected lease/dispatch must expose absolute dispatch and return locators. Repository-relative shorthand is insufficient for a zero-context worker.",
@@ -372,16 +384,17 @@
       "obligation": "H1-12",
       "external_hill_id": "alejandrozu/kobon-triangles",
       "slot_binding": "OM26-H1",
-      "state": "LEASED",
+      "state": "CAPTURED",
       "priority": "P0",
       "lease": {
-        "state": "LEASED",
+        "state": "CLOSED_AFTER_RETURN",
         "dispatch_id": "OM26-H1-H1-12-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-001",
         "dispatch_issue_number": 498,
         "protected_lease_commit": "ded7e8ca4916008d820be85e28ca617b5b81be7e",
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/498",
-        "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/498"
+        "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/498",
+        "execution_authorized": false
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H1-H1-12-IA-001.md",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-H1-H1-12-IA-001.md",
@@ -412,7 +425,23 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Returned evidence is automatically captured for ordinary GCL adjudication. Receipt alone has no claim-admission or certification effect."
+      "successor_gate": "Adjudicate the recovered Agent 001 result. Until separate adjudication, the protected H1 frontier remains unchanged.",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": "INFERRED_FROM_RETURN__ORIGINAL_LAUNCH_EVENT_NOT_DURABLY_RECORDED",
+        "returned": {
+          "github_comment_id": 5881108260,
+          "at": "2026-09-29T00:10:21Z"
+        },
+        "captured": {
+          "state": "CAPTURED_RECOVERED_UNADJUDICATED",
+          "receipt": "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json"
+        },
+        "adjudication": "PENDING",
+        "certification": "NONE",
+        "closed": false
+      }
     },
     {
       "assignment_id": "OM26-H2-WP01",
@@ -421,7 +450,7 @@
       "obligation": "WP01",
       "external_hill_id": "alejandrozu/busy-beaver-6-certificates",
       "slot_binding": "OM26-H2",
-      "state": "LEASED",
+      "state": "LEASED_NOT_LAUNCHED",
       "priority": "P0",
       "lease": {
         "state": "LEASED",
@@ -432,7 +461,8 @@
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/505",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/505",
         "protected_lease_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true
+        "readback_verified": true,
+        "execution_authorized": true
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H2-WP01-IA-001.md",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-H2-WP01-IA-001.md",
@@ -464,9 +494,20 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Returned evidence is captured by the generic protected RESULT/1 intake and remains unadjudicated until separate review.",
+      "successor_gate": "Launch the exact leased agent through the protected bootstrap. No result or adjudication state exists until a durable return is observed.",
       "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H2-WP01.md",
-      "dispatch_record": "contributions/OPENMATH-2026/OM26-H2/WP01/dispatches/OM26-H2-WP01-IA-001.json"
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H2/WP01/dispatches/OM26-H2-WP01-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": false,
+        "launch_receipt": null,
+        "returned": false,
+        "captured": false,
+        "adjudication": "NOT_STARTED",
+        "certification": "NOT_ELIGIBLE",
+        "closed": false
+      }
     },
     {
       "assignment_id": "OM26-H3-WP01",
@@ -475,7 +516,7 @@
       "obligation": "WP01",
       "external_hill_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
       "slot_binding": "OM26-H3",
-      "state": "LEASED",
+      "state": "LEASED_NOT_LAUNCHED",
       "priority": "P0",
       "lease": {
         "state": "LEASED",
@@ -486,7 +527,8 @@
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/506",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/506",
         "protected_lease_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true
+        "readback_verified": true,
+        "execution_authorized": true
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H3-WP01-IA-001.md",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-H3-WP01-IA-001.md",
@@ -518,9 +560,20 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Returned evidence is captured by the generic protected RESULT/1 intake and remains unadjudicated until separate review.",
+      "successor_gate": "Launch the exact leased agent through the protected bootstrap. No result or adjudication state exists until a durable return is observed.",
       "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H3-WP01.md",
-      "dispatch_record": "contributions/OPENMATH-2026/OM26-H3/WP01/dispatches/OM26-H3-WP01-IA-001.json"
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H3/WP01/dispatches/OM26-H3-WP01-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": false,
+        "launch_receipt": null,
+        "returned": false,
+        "captured": false,
+        "adjudication": "NOT_STARTED",
+        "certification": "NOT_ELIGIBLE",
+        "closed": false
+      }
     },
     {
       "assignment_id": "OM26-H4-WP01",
@@ -529,7 +582,7 @@
       "obligation": "WP01",
       "external_hill_id": "alejandrozu/collatz-modular-descent",
       "slot_binding": "OM26-H4",
-      "state": "LEASED",
+      "state": "LEASED_NOT_LAUNCHED",
       "priority": "P0",
       "lease": {
         "state": "LEASED",
@@ -540,7 +593,8 @@
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/507",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/507",
         "protected_lease_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true
+        "readback_verified": true,
+        "execution_authorized": true
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H4-WP01-IA-001.md",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-H4-WP01-IA-001.md",
@@ -572,9 +626,20 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Returned evidence is captured by the generic protected RESULT/1 intake and remains unadjudicated until separate review.",
+      "successor_gate": "Launch the exact leased agent through the protected bootstrap. No result or adjudication state exists until a durable return is observed.",
       "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H4-WP01.md",
-      "dispatch_record": "contributions/OPENMATH-2026/OM26-H4/WP01/dispatches/OM26-H4-WP01-IA-001.json"
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H4/WP01/dispatches/OM26-H4-WP01-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": false,
+        "launch_receipt": null,
+        "returned": false,
+        "captured": false,
+        "adjudication": "NOT_STARTED",
+        "certification": "NOT_ELIGIBLE",
+        "closed": false
+      }
     },
     {
       "assignment_id": "OM26-H5-WP01",
@@ -583,7 +648,7 @@
       "obligation": "WP01",
       "external_hill_id": "alejandrozu/grothendieck-constant-witnesses",
       "slot_binding": "OM26-H5",
-      "state": "LEASED",
+      "state": "LEASED_NOT_LAUNCHED",
       "priority": "P0",
       "lease": {
         "state": "LEASED",
@@ -594,7 +659,8 @@
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/508",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/508",
         "protected_lease_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true
+        "readback_verified": true,
+        "execution_authorized": true
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H5-WP01-IA-001.md",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-H5-WP01-IA-001.md",
@@ -626,9 +692,20 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Returned evidence is captured by the generic protected RESULT/1 intake and remains unadjudicated until separate review.",
+      "successor_gate": "Launch the exact leased agent through the protected bootstrap. No result or adjudication state exists until a durable return is observed.",
       "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H5-WP01.md",
-      "dispatch_record": "contributions/OPENMATH-2026/OM26-H5/WP01/dispatches/OM26-H5-WP01-IA-001.json"
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H5/WP01/dispatches/OM26-H5-WP01-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": false,
+        "launch_receipt": null,
+        "returned": false,
+        "captured": false,
+        "adjudication": "NOT_STARTED",
+        "certification": "NOT_ELIGIBLE",
+        "closed": false
+      }
     },
     {
       "assignment_id": "OM26-H6-WP01",
@@ -637,7 +714,7 @@
       "obligation": "WP01",
       "external_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
       "slot_binding": "OM26-H6",
-      "state": "LEASED",
+      "state": "LEASED_NOT_LAUNCHED",
       "priority": "P0",
       "lease": {
         "state": "LEASED",
@@ -648,7 +725,8 @@
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/509",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/509",
         "protected_lease_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true
+        "readback_verified": true,
+        "execution_authorized": true
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H6-WP01-IA-001.md",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-H6-WP01-IA-001.md",
@@ -680,9 +758,20 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Returned evidence is captured by the generic protected RESULT/1 intake and remains unadjudicated until separate review.",
+      "successor_gate": "Launch the exact leased agent through the protected bootstrap. No result or adjudication state exists until a durable return is observed.",
       "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H6-WP01.md",
-      "dispatch_record": "contributions/OPENMATH-2026/OM26-H6/WP01/dispatches/OM26-H6-WP01-IA-001.json"
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H6/WP01/dispatches/OM26-H6-WP01-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": false,
+        "launch_receipt": null,
+        "returned": false,
+        "captured": false,
+        "adjudication": "NOT_STARTED",
+        "certification": "NOT_ELIGIBLE",
+        "closed": false
+      }
     },
     {
       "assignment_id": "OM26-H7-WP01",
@@ -691,7 +780,7 @@
       "obligation": "WP01",
       "external_hill_id": "ottogin/erdos-3",
       "slot_binding": "OM26-H7",
-      "state": "LEASED",
+      "state": "LEASED_NOT_LAUNCHED",
       "priority": "P0",
       "lease": {
         "state": "LEASED",
@@ -702,7 +791,8 @@
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/510",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/510",
         "protected_lease_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true
+        "readback_verified": true,
+        "execution_authorized": true
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H7-WP01-IA-001.md",
       "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-H7-WP01-IA-001.md",
@@ -734,9 +824,20 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Returned evidence is captured by the generic protected RESULT/1 intake and remains unadjudicated until separate review.",
+      "successor_gate": "Launch the exact leased agent through the protected bootstrap. No result or adjudication state exists until a durable return is observed.",
       "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H7-WP01.md",
-      "dispatch_record": "contributions/OPENMATH-2026/OM26-H7/WP01/dispatches/OM26-H7-WP01-IA-001.json"
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H7/WP01/dispatches/OM26-H7-WP01-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": false,
+        "launch_receipt": null,
+        "returned": false,
+        "captured": false,
+        "adjudication": "NOT_STARTED",
+        "certification": "NOT_ELIGIBLE",
+        "closed": false
+      }
     }
   ],
   "launch_contract": {
@@ -762,7 +863,8 @@
     "OM26-H4-WP01-IA-001",
     "OM26-H5-WP01-IA-001",
     "OM26-H6-WP01-IA-001",
-    "OM26-H7-WP01-IA-001"
+    "OM26-H7-WP01-IA-001",
+    "OM26-CORE-CLARITY-RECONCILE-001"
   ],
   "provider_import": {
     "receipt": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",
