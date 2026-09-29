@@ -52,8 +52,8 @@ def validate() -> list[str]:
         return errors
 
     lease = wp02.get("lease", {})
-    if wp02.get("state") != "LEASED_NOT_LAUNCHED" or lease.get("state") != "LEASED":
-        errors.append("WP02 is not LEASED_NOT_LAUNCHED with LEASED lease")
+    if wp02.get("state") != "ACCEPTED" or lease.get("state") != "CLOSED_AFTER_RETURN":
+        errors.append("WP02 historical lease is not preserved as ACCEPTED/CLOSED_AFTER_RETURN")
     if lease.get("dispatch_id") != "OM26-H2-WP02-IA-001":
         errors.append("WP02 dispatch mismatch")
     if lease.get("agent_ref") != "INDEPENDENT-AGENT-008":
@@ -62,10 +62,10 @@ def validate() -> list[str]:
         errors.append("WP02 issue mismatch")
     if lease.get("return_url") != "https://github.com/grandchallenge/MATHSOLVE/issues/526":
         errors.append("WP02 return URL mismatch")
-    if wp02.get("lifecycle", {}).get("launched") is not False:
-        errors.append("WP02 must remain unlaunched before protected readback")
-    if wp02.get("lifecycle", {}).get("returned") is not False:
-        errors.append("WP02 unexpectedly has return evidence")
+    if wp02.get("lifecycle", {}).get("launched") is not True or wp02.get("lifecycle", {}).get("returned") is not True:
+        errors.append("WP02 historical execution/return state not preserved")
+    if wp02.get("lifecycle", {}).get("adjudication") != "ACCEPTED_WITNESSES_WITH_EXACT_SEARCH_REPLAY_REJECTED":
+        errors.append("WP02 current adjudication mismatch")
 
     if dispatch.get("bootstrap_blob_sha1") != git_blob_sha1(BOOTSTRAP):
         errors.append("dispatch bootstrap blob mismatch")
@@ -121,14 +121,14 @@ def validate() -> list[str]:
         errors.append("source WP lacks exact pruning boundary")
 
     h2 = next(x for x in lanes["hills"] if x["hill_slot"] == "OM26-H2")
-    if h2.get("active_lease", {}).get("assignment_id") != "OM26-H2-WP02":
-        errors.append("H2 lane does not point to WP02")
+    if h2.get("active_lease", {}).get("assignment_id") != "OM26-H2-WP03":
+        errors.append("H2 lane does not point to WP03")
     if h2.get("active_lease", {}).get("lifecycle_state") != "LEASED_NOT_LAUNCHED":
-        errors.append("H2 active lease lifecycle mismatch")
-    if h2.get("predecessor_lease", {}).get("assignment_id") != "OM26-H2-WP01":
-        errors.append("H2 predecessor lease missing")
+        errors.append("H2 active WP03 lease lifecycle mismatch")
+    if h2.get("predecessor_lease", {}).get("assignment_id") != "OM26-H2-WP02":
+        errors.append("H2 predecessor WP02 lease missing")
     if h2.get("predecessor_lease", {}).get("lifecycle_state") != "ACCEPTED":
-        errors.append("H2 predecessor lease not accepted")
+        errors.append("H2 predecessor WP02 lease not accepted")
     if h2.get("competition_state", {}).get("official_submission") != "NOT_SUBMITTED":
         errors.append("H2 competition boundary changed")
 
@@ -137,14 +137,16 @@ def validate() -> list[str]:
         if hill.get("active_lease", {}).get("lifecycle_state") != "LEASED_NOT_LAUNCHED":
             errors.append(f"OM26-H{i} lifecycle drift")
 
-    if "| `OM26-H2-WP02` | `OM26-H2` | `LEASED_NOT_LAUNCHED` |" not in board:
-        errors.append("job board missing WP02 active lease")
+    if "| `OM26-H2-WP02` | `OM26-H2` | `ACCEPTED` |" not in board:
+        errors.append("job board missing WP02 accepted history")
+    if "| `OM26-H2-WP03` | `OM26-H2` | `LEASED_NOT_LAUNCHED` |" not in board:
+        errors.append("job board missing WP03 active lease")
 
     policy = registry["mathematics_release_policy"]
-    if policy["per_hill"]["OM26-H2"]["assignment"] != "OM26-H2-WP02":
-        errors.append("per-hill policy does not select WP02")
-    if policy["per_hill"]["OM26-H2"]["predecessor"]["assignment"] != "OM26-H2-WP01":
-        errors.append("per-hill policy loses WP01 predecessor")
+    if policy["per_hill"]["OM26-H2"]["assignment"] != "OM26-H2-WP03":
+        errors.append("per-hill policy does not select WP03")
+    if policy["per_hill"]["OM26-H2"]["predecessor"]["assignment"] != "OM26-H2-WP02":
+        errors.append("per-hill policy loses WP02 predecessor")
 
     return errors
 
@@ -155,7 +157,7 @@ def main() -> int:
         for error in errors:
             print("FAIL:", error)
         return 1
-    print("PASS: OM26-H2-WP02 exact-search lease and zero-context bootstrap are internally consistent")
+    print("PASS: historical OM26-H2-WP02 instantiation remains intact after adjudication and WP03 succession")
     return 0
 
 
