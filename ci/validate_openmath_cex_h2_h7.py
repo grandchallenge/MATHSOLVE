@@ -63,14 +63,15 @@ def validate():
             if not isinstance(lock.get(key),str) or len(lock[key]) != 40:
                 errors.append(f"{slot}: missing {key}")
 
-    mapping=registry.get("slot_binding_policy",{}).get("mapping")
-    if mapping != EXPECTED_MAPPING:
-        errors.append("registry mapping mismatch")
+    mapping=registry.get("slot_binding_policy",{}).get("mapping",{})
+    if {slot:mapping.get(slot) for slot in EXPECTED_SLOTS} != EXPECTED_MAPPING:
+        errors.append("historical H2-H7 mapping mismatch")
     source=[x for x in registry.get("assignments",[]) if x.get("class")=="SOURCE_ACQUISITION"]
     if len(source)!=6 or any(x.get("state")!="CLOSED" for x in source):
         errors.append("source-acquisition assignments must be six CLOSED records")
-    if registry.get("mathematics_release_policy",{}).get("current_math_jobs") != 0:
-        errors.append("H2-H7 math jobs must remain zero during import phase")
+    historical_policy=registry.get("mathematics_release_policy",{}).get("historical_tranche_metrics",{}).get("previous",{})
+    if historical_policy.get("current_math_jobs") != 6:
+        errors.append("historical tranche snapshot current_math_jobs mismatch")
 
     workflow=".github/workflows/openmath-h2-h7-cex-source-acq.yml"
     entries=[x for x in routing.get("workflows",[]) if x.get("path")==workflow]
@@ -81,8 +82,8 @@ def validate():
     expected_release=final
     if any(bool(x.get("solve_release")) != expected_release for x in prep_lanes):
         errors.append("preparation solve_release does not match campaign phase")
-    if bool(registry.get("mathematics_release_policy",{}).get("h2_h7_solve_release")) != expected_release:
-        errors.append("registry solve release does not match campaign phase")
+    if bool(historical_policy.get("h2_h7_solve_release")) != expected_release:
+        errors.append("historical registry solve release does not match campaign phase")
 
     return errors
 
@@ -91,7 +92,7 @@ def main():
     if errors:
         for e in errors: print("FAIL:",e)
         raise SystemExit(1)
-    print("PASS: OPENMATH H2-H7 provider import/release state is coherent")
+    print("PASS: historical OPENMATH H2-H7 provider import/release provenance is coherent")
 
 if __name__=="__main__":
     main()

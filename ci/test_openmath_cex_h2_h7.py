@@ -17,12 +17,13 @@ class OpenMathCEXH2H7Test(unittest.TestCase):
             self.assertTrue(lane["semantic_source_map"])
             self.assertTrue(lane["status_triage"])
 
-    def test_no_math_job_before_import_readback(self):
-        campaign=load(".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json")
+    def test_historical_import_snapshot_preserved(self):
         registry=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
-        if campaign["current_frontier"]["id"]=="PROTECTED_SOLVE_IMPORT_AND_READBACK_OM26_H2_H7":
-            self.assertFalse(registry["mathematics_release_policy"]["h2_h7_solve_release"])
-            self.assertEqual(registry["mathematics_release_policy"]["current_math_jobs"],0)
+        historical=registry["mathematics_release_policy"]["historical_tranche_metrics"]
+        self.assertTrue(historical["deprecated_for_current_state"])
+        previous=historical["previous"]
+        self.assertTrue(previous["h2_h7_solve_release"])
+        self.assertEqual(previous["h2_h7_leased_math_jobs"],6)
 
     def test_source_assignments_closed(self):
         registry=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")

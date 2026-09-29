@@ -7,7 +7,7 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
     def test_preflight(self):
         self.assertEqual(validate(), [])
 
-    def test_six_h2_h7_leases_are_one_to_one_and_not_launched(self):
+    def test_h2_through_h7_leases_are_one_to_one_and_not_launched(self):
         registry = load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
         jobs = {
             x["assignment_id"]: x
@@ -50,15 +50,24 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
         self.assertEqual(job["lifecycle"]["adjudication"], "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION")
         self.assertTrue(job["lifecycle"]["closed"])
 
-    def test_lifecycle_counters(self):
-        policy = load(
-            ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
-        )["mathematics_release_policy"]
-        self.assertEqual(policy["h2_h7_available_math_jobs"], 0)
-        self.assertEqual(policy["h2_h7_leased_math_jobs"], 6)
-        self.assertEqual(policy["h2_h7_launched_math_jobs"], 0)
-        self.assertEqual(policy["h2_h7_returned_math_jobs"], 0)
-        self.assertEqual(policy["h2_h7_captured_math_jobs"], 0)
+    def test_seven_hill_release_projection(self):
+        registry = load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
+        self.assertEqual(
+            registry["current_topology"]["hills"],
+            [f"OM26-H{i}" for i in range(1, 8)],
+        )
+        policy = registry["mathematics_release_policy"]
+        self.assertEqual(set(policy["per_hill"]), {f"OM26-H{i}" for i in range(1, 8)})
+        self.assertEqual(policy["per_hill"]["OM26-H1"]["agent_state"], "ACCEPTED")
+        for i in range(2, 8):
+            self.assertEqual(
+                policy["per_hill"][f"OM26-H{i}"]["agent_state"],
+                "LEASED_NOT_LAUNCHED",
+            )
+        self.assertEqual(policy["summary"]["released_hills"], 7)
+        self.assertEqual(policy["summary"]["accepted_agents"], 1)
+        self.assertEqual(policy["summary"]["leased_not_launched_agents"], 6)
+        self.assertTrue(policy["historical_tranche_metrics"]["deprecated_for_current_state"])
 
 
 if __name__ == "__main__":

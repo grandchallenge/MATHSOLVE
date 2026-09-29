@@ -83,13 +83,14 @@ def validate() -> list[str]:
         errors.append("accepted H1 adjudication state mismatch")
     if h1.get("lease", {}).get("execution_authorized") is not False:
         errors.append("H1 returned lease must not remain executable")
-    h2_h7 = [assignments.get(f"OM26-H{i}-WP01", {}) for i in range(2, 8)]
-    if any(x.get("state") != "LEASED_NOT_LAUNCHED" for x in h2_h7):
-        errors.append("H2-H7 assignments must be LEASED_NOT_LAUNCHED")
-    if any(x.get("lifecycle", {}).get("launched") is not False for x in h2_h7):
-        errors.append("H2-H7 launch state must be false")
-    if registry.get("mathematics_release_policy", {}).get("h2_h7_launched_math_jobs") != 0:
-        errors.append("H2-H7 launched counter must be zero")
+    h2_through_h7 = [assignments.get(f"OM26-H{i}-WP01", {}) for i in range(2, 8)]
+    if any(x.get("state") != "LEASED_NOT_LAUNCHED" for x in h2_through_h7):
+        errors.append("H2 through H7 assignments must be LEASED_NOT_LAUNCHED")
+    if any(x.get("lifecycle", {}).get("launched") is not False for x in h2_through_h7):
+        errors.append("H2 through H7 launch state must be false")
+    policy = registry.get("mathematics_release_policy", {})
+    if policy.get("summary", {}).get("launched_agents") != 0:
+        errors.append("seven-hill launched-agent summary must remain zero")
 
     issue_map = {x["issue_number"]: x for x in readback.get("issues", [])}
     for issue in range(505, 511):
@@ -111,6 +112,14 @@ def validate() -> list[str]:
             errors.append(f"human job board does not show OM26-H{i} LEASED_NOT_LAUNCHED")
     if "No OPENMATH-2026 hill currently has a recorded official competition submission." not in board:
         errors.append("human job board lacks explicit competition submission state")
+
+    topology = lanes.get("current_topology", {})
+    if topology.get("lane_model") != "SEVEN_FIRST_CLASS_HILLS":
+        errors.append("hill-lane current topology is not seven first-class hills")
+    if topology.get("hills") != [f"OM26-H{i}" for i in range(1, 8)]:
+        errors.append("hill-lane current topology roster mismatch")
+    if topology.get("grouped_current_lanes") != []:
+        errors.append("grouped current hill lanes must be empty")
 
     hill_map = {x["hill_slot"]: x for x in lanes.get("hills", [])}
     if set(hill_map) != {f"OM26-H{i}" for i in range(1, 8)}:

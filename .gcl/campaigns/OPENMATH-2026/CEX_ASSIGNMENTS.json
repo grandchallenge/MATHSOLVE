@@ -3,7 +3,7 @@
   "record_type": "GCL_CEX_ASSIGNMENT_REGISTRY",
   "campaign": "OPENMATH-2026",
   "active_subcampaign": "OPENMATH-2026",
-  "operation": "OM26-H1-H1-12-ADJ-001",
+  "operation": "OM26-SEVEN-HILL-CONSOLIDATION-001",
   "authority": {
     "repository": "grandchallenge/MATHSOLVE",
     "protected_branch": "main",
@@ -14,7 +14,8 @@
     "receipt_blob_sha1": "f6c7c7e36aa0657f8eec51da8ce9461af457ee04",
     "normalized_sha256": "a7f6e48a61aaa3b58614e5c7748716f8158147c337b4986c2e9c2d6b603de6f6",
     "observation_time": "2026-09-28T10:05:25Z",
-    "rule": "These six organizer IDs are authoritative members of the unresolved source pool. Their order does not define H2-H7 slot correspondence."
+    "rule": "This receipt records the historical six-source onboarding pool only. Current hill identity and assignment authority are per OM26-H1 through OM26-H7.",
+    "provenance_class": "HISTORICAL_TRANCHE_INPUT"
   },
   "discovery": {
     "entrypoint_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
@@ -50,7 +51,7 @@
   },
   "slot_binding_policy": {
     "current_mapping": "PROTECTED_AND_IMPORTED",
-    "rule": "Exact mapping imported from protected MATHFORGE slot-binding act. Organizer-list position remains non-authoritative.",
+    "rule": "Exact current mapping for all seven hill lanes. Historical organizer-list position and historical H2-H7 tranche membership are non-authoritative for current topology.",
     "free_slots": [],
     "mapping": {
       "OM26-H2": "alejandrozu/busy-beaver-6-certificates",
@@ -58,24 +59,83 @@
       "OM26-H4": "alejandrozu/collatz-modular-descent",
       "OM26-H5": "alejandrozu/grothendieck-constant-witnesses",
       "OM26-H6": "alejandrozu/matrix-multiplication-tensor-3x3",
-      "OM26-H7": "ottogin/erdos-3"
+      "OM26-H7": "ottogin/erdos-3",
+      "OM26-H1": "alejandrozu/kobon-triangles"
     },
     "forge_anchor": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8"
   },
   "mathematics_release_policy": {
-    "rule": "H2-H7 each have a protected WP01 lease but no durable launch evidence; they are LEASED_NOT_LAUNCHED. H1 Agent 001 returned one result and that exact result is CAPTURED_RECOVERED_UNADJUDICATED.",
-    "current_math_jobs": 6,
-    "h1_released_math_jobs": 1,
-    "h1_rule": "OM26-H1 is independently source-locked and Solve-released; bounded mathematical CEX jobs may be leased under their own protected operation contracts.",
-    "h2_h7_provider_released_hills": 6,
-    "h2_h7_solve_release": true,
-    "h2_h7_release_blocker": null,
-    "h2_h7_release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH",
-    "h2_h7_available_math_jobs": 0,
-    "h2_h7_leased_math_jobs": 6,
-    "h2_h7_launched_math_jobs": 0,
-    "h2_h7_returned_math_jobs": 0,
-    "h2_h7_captured_math_jobs": 0
+    "rule": "Mathematical release and external-agent lifecycle are tracked per exact hill lane OM26-H1 through OM26-H7.",
+    "per_hill": {
+      "OM26-H1": {
+        "solve_released": true,
+        "assignment": "OM26-H1-H1-12",
+        "agent_state": "ACCEPTED",
+        "closed": true
+      },
+      "OM26-H2": {
+        "solve_released": true,
+        "assignment": "OM26-H2-WP01",
+        "agent_state": "LEASED_NOT_LAUNCHED",
+        "closed": false
+      },
+      "OM26-H3": {
+        "solve_released": true,
+        "assignment": "OM26-H3-WP01",
+        "agent_state": "LEASED_NOT_LAUNCHED",
+        "closed": false
+      },
+      "OM26-H4": {
+        "solve_released": true,
+        "assignment": "OM26-H4-WP01",
+        "agent_state": "LEASED_NOT_LAUNCHED",
+        "closed": false
+      },
+      "OM26-H5": {
+        "solve_released": true,
+        "assignment": "OM26-H5-WP01",
+        "agent_state": "LEASED_NOT_LAUNCHED",
+        "closed": false
+      },
+      "OM26-H6": {
+        "solve_released": true,
+        "assignment": "OM26-H6-WP01",
+        "agent_state": "LEASED_NOT_LAUNCHED",
+        "closed": false
+      },
+      "OM26-H7": {
+        "solve_released": true,
+        "assignment": "OM26-H7-WP01",
+        "agent_state": "LEASED_NOT_LAUNCHED",
+        "closed": false
+      }
+    },
+    "summary": {
+      "released_hills": 7,
+      "accepted_agents": 1,
+      "leased_not_launched_agents": 6,
+      "launched_agents": 0,
+      "returned_unadjudicated_agents": 0
+    },
+    "historical_tranche_metrics": {
+      "source": "OM26-H2-H7",
+      "deprecated_for_current_state": true,
+      "previous": {
+        "rule": "H2-H7 each have a protected WP01 lease but no durable launch evidence; they are LEASED_NOT_LAUNCHED. H1 Agent 001 returned one result and that exact result is CAPTURED_RECOVERED_UNADJUDICATED.",
+        "current_math_jobs": 6,
+        "h1_released_math_jobs": 1,
+        "h1_rule": "OM26-H1 is independently source-locked and Solve-released; bounded mathematical CEX jobs may be leased under their own protected operation contracts.",
+        "h2_h7_provider_released_hills": 6,
+        "h2_h7_solve_release": true,
+        "h2_h7_release_blocker": null,
+        "h2_h7_release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH",
+        "h2_h7_available_math_jobs": 0,
+        "h2_h7_leased_math_jobs": 6,
+        "h2_h7_launched_math_jobs": 0,
+        "h2_h7_returned_math_jobs": 0,
+        "h2_h7_captured_math_jobs": 0
+      }
+    }
   },
   "return_policy": {
     "rule": "When an assignment becomes LEASED, the protected lease/dispatch must expose absolute dispatch and return locators. Repository-relative shorthand is insufficient for a zero-context worker.",
@@ -866,7 +926,8 @@
     "OM26-H6-WP01-IA-001",
     "OM26-H7-WP01-IA-001",
     "OM26-CORE-CLARITY-RECONCILE-001",
-    "OM26-H1-H1-12-ADJ-001"
+    "OM26-H1-H1-12-ADJ-001",
+    "OM26-SEVEN-HILL-CONSOLIDATION-001"
   ],
   "provider_import": {
     "receipt": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",
@@ -934,5 +995,26 @@
     "lease_introducing_commit": "3c835aaf6173176b64efca5f03ffdc27b20af965",
     "protected_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
     "readback_receipt": ".gcl/completions/OM26-H2-H7-WP01-LEASES/COMPLETION_RECEIPT.json"
+  },
+  "current_topology": {
+    "authority": "CURRENT_ASSIGNMENT_TOPOLOGY",
+    "lane_model": "SEVEN_FIRST_CLASS_HILLS",
+    "hills": [
+      "OM26-H1",
+      "OM26-H2",
+      "OM26-H3",
+      "OM26-H4",
+      "OM26-H5",
+      "OM26-H6",
+      "OM26-H7"
+    ],
+    "rule": "Current assignment authority is per exact hill lane. H2-H7 is not a current assignment domain."
+  },
+  "historical_tranches": {
+    "OM26-H2-H7": {
+      "status": "CLOSED__HISTORICAL_PROVENANCE_ONLY",
+      "purpose": "Records the bounded onboarding/source-acquisition/decomposition/lease transactions by which hills H2 through H7 entered the campaign.",
+      "current_authority": false
+    }
   }
 }
