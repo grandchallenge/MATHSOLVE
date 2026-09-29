@@ -238,9 +238,26 @@ def validate() -> list[str]:
             if marker not in board:
                 errors.append(f"board missing {marker}")
     entry = (ROOT / ENTRYPOINT).read_text(encoding="utf-8")
-    for marker in (ENTRYPOINT_URL, REGISTRY_URL, "DISPATCH_ID:", "AGENT_REF:", "work_package_url"):
+    for marker in (
+        "LINK_IN_RELAY_OUT",
+        "<TASK_URL>",
+        "Nothing else from the work package needs to be copied",
+        "GCL-RETURN-RELAY/1",
+        "Authenticated GCL infrastructure",
+    ):
         if marker not in entry:
             errors.append(f"entrypoint missing {marker}")
+
+    launch = registry.get("launch_contract", {})
+    scripts = launch.get("current_scripts", {})
+    if launch.get("mode") != "LINK_IN_RELAY_OUT":
+        errors.append("launch contract is not LINK_IN_RELAY_OUT")
+    for i in range(2, 8):
+        row = scripts.get(f"OM26-H{i}", {})
+        if row.get("executable") is not True:
+            errors.append(f"OM26-H{i}: current task is not executable")
+        if not absolute_https(row.get("task_url")):
+            errors.append(f"OM26-H{i}: immutable task URL missing")
     return errors
 
 

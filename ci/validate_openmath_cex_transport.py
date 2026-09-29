@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -10,6 +12,15 @@ ENTRYPOINT = ROOT / 'handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md'
 CONTRACT = ROOT / 'handoffs/OPENMATH-2026/CEX_TRANSPORT_CONTRACT.md'
 BOARD = ROOT / 'handoffs/OPENMATH-2026/CEX_JOB_BOARD.md'
 LAUNCH_DIR = ROOT / 'handoffs/OPENMATH-2026/launch'
+PINNED_URL = re.compile(
+    r'^https://github\.com/grandchallenge/MATHSOLVE/blob/([0-9a-f]{40})/(.+)$'
+)
+
+
+def git_blob_sha1(data: bytes) -> str:
+    header = f'blob {len(data)}\0'.encode('ascii')
+    return hashlib.sha1(header + data).hexdigest()
+
 
 def validate() -> list[str]:
     errors: list[str] = []
@@ -20,37 +31,70 @@ def validate() -> list[str]:
 
     policy = registry.get('return_policy', {})
     if policy.get('agent_github_auth_required') is not False:
-        errors.append('registry still requires agent GitHub authentication')
-    if policy.get('self_contained_launch_required') is not True:
-        errors.append('registry does not require self-contained launch hydration')
+        errors.append('registry requires agent GitHub authentication')
+    if policy.get('self_contained_launch_required') is not False:
+        errors.append('legacy pasted self-contained launch mode remains required')
+    if policy.get('self_contained_task_artifact_required') is not True:
+        errors.append('linked task artifact is not required to be self-contained')
+    if policy.get('manual_envelope_transfer_required') is not False:
+        errors.append('manual envelope transfer remains part of transport')
+    if policy.get('primary_launch_mode') != 'LINK_IN_RELAY_OUT':
+        errors.append('primary launch mode is not LINK_IN_RELAY_OUT')
+    if policy.get('task_read_auth_required') is not False:
+        errors.append('public task read incorrectly requires authentication')
+    if policy.get('task_fetch_fallback') != 'LAUNCHER_HYDRATES_EXACT_IMMUTABLE_TASK_ARTIFACT':
+        errors.append('launcher-side task hydration fallback is not protected')
     if policy.get('durable_intake_owner') != 'AUTHENTICATED_GCL_INFRASTRUCTURE':
         errors.append('durable intake is not owned by authenticated GCL infrastructure')
     if policy.get('direct_agent_github_return') != 'OPTIONAL_IF_EXPLICITLY_AVAILABLE':
         errors.append('direct agent GitHub posting is not optional')
-    if policy.get('missing_github_capability_effect') != 'NO_BLOCK':
-        errors.append('missing GitHub capability still blocks execution')
 
     lease = registry.get('lease_policy', {})
-    if 'launcher/controller verifies exactly one protected LEASED assignment' not in lease.get('start_rule', ''):
-        errors.append('lease start rule still delegates protected-lease discovery to the external agent')
-    launch = registry.get('launch_contract', {})
-    if launch.get('launcher_verification_required') is not True:
-        errors.append('launch contract does not require launcher-side lease verification')
-    if launch.get('agent_repository_discovery_required') is not False:
-        errors.append('launch contract still requires agent repository discovery')
-    for field in ('ASSIGNMENT_ID','INTENDED_RETURN','PROTECTED_LEASE_IDENTITY','SELF_CONTAINED_WORK_PACKAGE','RESULT_GRAMMAR','CLAIM_BOUNDARY'):
-        if field not in launch.get('required_fields', []):
-            errors.append(f'launch contract missing required field {field}')
+    start_rule = lease.get('start_rule', '')
+    if 'resolves that assignment to its registered immutable task_url' not in start_rule:
+        errors.append('lease start rule does not resolve one immutable task URL')
+    if 'No human is required to reconstruct or paste a task envelope' not in lease.get('no_lease_rule', ''):
+        errors.append('no-lease rule does not exclude human task reconstruction')
 
-    required = ('GCL-RETURN-RELAY/1','BEGIN_RESULT','END_RESULT','Direct posting is optional','not required to have GitHub access')
-    for marker in required:
-        if marker not in contract and marker not in entry:
+    launch = registry.get('launch_contract', {})
+    if launch.get('mode') != 'LINK_IN_RELAY_OUT':
+        errors.append('launch contract mode mismatch')
+    if launch.get('required_fields') != ['TASK_URL', 'TASK_COMMIT', 'TASK_BLOB_SHA1']:
+        errors.append('launch contract required fields are not exact immutable-link identity')
+    if launch.get('launcher_verification_required') is not True:
+        errors.append('launcher-side lease verification is not required')
+    if launch.get('agent_repository_discovery_required') is not False:
+        errors.append('agent repository discovery remains required')
+    if launch.get('agent_github_auth_required') is not False:
+        errors.append('launch contract requires GitHub authentication')
+    if launch.get('manual_copy_paste_required') is not False:
+        errors.append('manual task copy/paste remains required')
+    if launch.get('public_task_url_is_primary') is not True:
+        errors.append('public immutable task URL is not primary')
+    if launch.get('fallback_hydration_owner') != 'AUTHENTICATED_GCL_LAUNCHER':
+        errors.append('fallback hydration is not launcher-owned')
+    if 'human operator SHALL NOT be required' not in launch.get('fallback_rule', ''):
+        errors.append('fallback rule does not protect human from manual transport')
+    if 'SELF_CONTAINED_WORK_PACKAGE' in launch.get('required_fields', []):
+        errors.append('legacy pasted work-package field leaked into launch contract')
+
+    for marker in (
+        'LINK_IN_RELAY_OUT',
+        'immutable public task URL',
+        'GCL-RETURN-RELAY/1',
+        'Authenticated GCL infrastructure',
+    ):
+        if marker not in entry and marker not in contract:
             errors.append(f'missing transport invariant: {marker}')
 
-    if 'not required to authenticate to GitHub' not in board:
-        errors.append('job board still implies GitHub-authenticated external agents')
-    if 'Authenticated GCL infrastructure' not in board:
-        errors.append('job board does not assign durable intake to GCL infrastructure')
+    if 'Nothing else from the work package needs to be copied' not in entry:
+        errors.append('entrypoint does not state one-link launch clearly')
+    if 'SHALL NOT require a human operator to locate or paste the work package' not in contract:
+        errors.append('transport contract does not prohibit manual human shuttling')
+    if 'launcher/controller SHALL fetch that exact pinned task artifact' not in contract:
+        errors.append('transport contract lacks automatic launcher hydration fallback')
+    if 'Canonical mode is `LINK_IN_RELAY_OUT`' not in board:
+        errors.append('job board does not expose canonical link-in mode')
 
     scripts = launch.get('current_scripts', {})
     expected_hills = [f'OM26-H{i}' for i in range(1, 8)]
@@ -59,26 +103,44 @@ def validate() -> list[str]:
 
     h1 = scripts.get('OM26-H1', {})
     if h1.get('executable') is not False or h1.get('reason') != 'NO_ACTIVE_SUCCESSOR_LEASE':
-        errors.append('H1 launch guard does not reflect closed accepted predecessor with no successor lease')
+        errors.append('H1 launch guard does not reflect no active successor lease')
 
     for hill in expected_hills:
         row = scripts.get(hill, {})
-        path = ROOT / row.get('path', '')
+        rel = row.get('path', '')
+        path = ROOT / rel
         if not path.is_file():
-            errors.append(f'{hill}: registered launch script missing')
+            errors.append(f'{hill}: registered launch task missing')
             continue
+
+        task_url = row.get('task_url', '')
+        task_commit = row.get('task_commit', '')
+        task_blob = row.get('task_blob_sha1', '')
+        match = PINNED_URL.match(task_url)
+        if not match:
+            errors.append(f'{hill}: task URL is not immutable commit-pinned GitHub URL')
+        else:
+            url_commit, url_path = match.groups()
+            if url_commit != task_commit:
+                errors.append(f'{hill}: task URL commit differs from task_commit')
+            if url_path != rel:
+                errors.append(f'{hill}: task URL path differs from registered path')
+        if not re.fullmatch(r'[0-9a-f]{40}', task_commit):
+            errors.append(f'{hill}: invalid task_commit')
+        actual_blob = git_blob_sha1(path.read_bytes())
+        if task_blob != actual_blob:
+            errors.append(f'{hill}: registered task blob does not match exact task bytes')
+
         text = path.read_text(encoding='utf-8')
         if 'GCL-ZERO-CONTEXT-LAUNCH/2' not in text:
-            errors.append(f'{hill}: launch script missing GCL-ZERO-CONTEXT-LAUNCH/2')
+            errors.append(f'{hill}: task artifact missing GCL-ZERO-CONTEXT-LAUNCH/2')
         if 'H2-H7' in text:
-            errors.append(f'{hill}: deprecated aggregate topology leaked into launch script')
+            errors.append(f'{hill}: deprecated aggregate topology leaked into launch task')
         if hill == 'OM26-H1':
             if 'NOT_EXECUTABLE_NO_ACTIVE_LEASE' not in text or 'INVALID_LAUNCH' not in text:
-                errors.append('H1 launch guard is not explicit')
+                errors.append('H1 task guard is not explicit')
             continue
         for marker in (
-            'GITHUB_ACCESS_REQUIRED: NO',
-            'SELF_CONTAINED_INDEPENDENT_BLIND',
             'GCL-RETURN-RELAY/1',
             'BEGIN_RESULT',
             'END_RESULT',
@@ -86,34 +148,42 @@ def validate() -> list[str]:
             '## Embedded protected source snapshots',
         ):
             if marker not in text:
-                errors.append(f'{hill}: missing launch invariant {marker}')
-        for field in ('assignment_id','dispatch_id','agent_ref','intended_return'):
+                errors.append(f'{hill}: linked task missing invariant {marker}')
+        for field in ('assignment_id', 'dispatch_id', 'agent_ref', 'intended_return'):
             value = row.get(field)
             if not value or value not in text:
-                errors.append(f'{hill}: registered {field} does not match script content')
+                errors.append(f'{hill}: registered {field} does not match task content')
         if 'Return exactly one GitHub issue comment' in text:
-            errors.append(f'{hill}: legacy direct-GitHub return instruction leaked into current script')
+            errors.append(f'{hill}: legacy direct-GitHub return instruction leaked into current task')
         if 'Execute only under a protected' in text or 'Execute only when' in text:
-            errors.append(f'{hill}: agent-side lease rediscovery leaked into current script')
+            errors.append(f'{hill}: agent-side lease rediscovery leaked into current task')
 
     index = LAUNCH_DIR / 'README.md'
     if not index.is_file():
-        errors.append('current launch-script index missing')
+        errors.append('current launch-link index missing')
     else:
         index_text = index.read_text(encoding='utf-8')
+        if 'LINK_IN_RELAY_OUT' not in index_text:
+            errors.append('launch index does not declare link-in relay-out mode')
+        if 'No human work-package copy/paste is part of the protocol' not in index_text:
+            errors.append('launch index does not exclude manual copy/paste')
         for i in range(1, 8):
-            if f'OM26-H{i}.md' not in index_text:
-                errors.append(f'launch-script index missing H{i}')
+            row = scripts.get(f'OM26-H{i}', {})
+            if row.get('task_url') not in index_text:
+                errors.append(f'launch index missing immutable H{i} task URL')
 
     return errors
+
 
 def main() -> int:
     errors = validate()
     if errors:
-        for error in errors: print('FAIL:', error)
+        for error in errors:
+            print('FAIL:', error)
         return 1
-    print('PASS: OPENMATH CEX separates zero-context execution from authenticated durable intake')
+    print('PASS: OPENMATH CEX uses immutable LINK_IN_RELAY_OUT transport with launcher-owned fallback and durable GCL intake')
     return 0
+
 
 if __name__ == '__main__':
     raise SystemExit(main())
