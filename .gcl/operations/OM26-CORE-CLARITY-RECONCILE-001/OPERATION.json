@@ -77,9 +77,9 @@
     "ci/test_openmath_cex_job_board.py",
     ".gcl/operations/OM26-CORE-CLARITY-RECONCILE-001/OPERATION.json",
     ".gcl/admission/OM26-CORE-CLARITY-RECONCILE-001/FREEZE.json",
-    ".gcl/completions/OM26-CORE-CLARITY-RECONCILE-001/COMPLETION_RECEIPT.json",
     ".github/workflows/openmath-core-clarity-reconcile.yml",
     ".ghos-routing/workflows.json"
   ],
-  "claim_boundary": "Control-plane reconciliation only. Recovered Agent 001 evidence remains unadjudicated; protected H1 frontier is unchanged; no external agent is launched; no certification or competition submission is authorized."
+  "claim_boundary": "Control-plane reconciliation only. Recovered Agent 001 evidence remains unadjudicated; protected H1 frontier is unchanged; no external agent is launched; no certification or competition submission is authorized.",
+  "completion_receipt_surface": ".gcl/completions/OM26-CORE-CLARITY-RECONCILE-001/COMPLETION_RECEIPT.json"
 }
