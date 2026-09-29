@@ -1,0 +1,35 @@
+name: OPENMATH H2 WP02 instantiation
+
+on:
+  pull_request:
+    paths:
+      - "handoffs/OPENMATH-2026/jobs/OM26-H2-WP02*"
+      - "contributions/OPENMATH-2026/OM26-H2/WP02/**"
+      - ".gcl/operations/OM26-H2-WP02-IA-001/**"
+      - ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
+      - "work_packages/OPENMATH_2026/HILL_LANES.json"
+      - "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md"
+      - "ci/validate_openmath_h2_wp02_instantiation.py"
+      - ".github/workflows/openmath-h2-wp02-instantiation.yml"
+      - ".ghos-routing/workflows.json"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact subject
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Validate H2 WP02 instantiation
+        run: python ci/validate_openmath_h2_wp02_instantiation.py
