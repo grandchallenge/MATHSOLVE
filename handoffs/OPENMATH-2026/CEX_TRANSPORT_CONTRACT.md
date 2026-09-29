@@ -1,80 +1,78 @@
 # OPENMATH-2026 CEX transport contract
 
-This contract removes any assumption that a zero-context external agent has GitHub access.
+Zero-context external agents are intelligence providers, not infrastructure principals.
 
-## Rule
+## Normative architecture
 
-External execution has two independent prerequisites:
+1. The launcher supplies a self-contained, protected task envelope.
+2. The agent performs the bounded work without requiring GitHub authentication.
+3. The agent returns exactly one complete structured result to the launching conversation.
+4. Authenticated GCL infrastructure relays that exact result to the protected GitHub return issue.
+5. GitHub remains the canonical durable intake surface; the external agent is not required to authenticate to it.
 
-1. **task hydration** — the agent has the exact protected work-package content needed to execute the bounded task;
-2. **return transport** — the agent has either direct GitHub write access to the protected return issue or an explicitly authorized relay path back to the launcher.
+Direct GitHub posting by the agent is permitted only as an optional optimization when capability is explicitly available. It is never a launch prerequisite.
 
-Neither capability may be inferred from agent identity, chat type, lease state, or prior runs.
+## Required launch envelope
 
-## Capability preflight
+The launch envelope MUST contain:
 
-Before substantive work, the launcher or agent MUST establish:
+- exact `DISPATCH_ID`;
+- exact `AGENT_REF`;
+- exact assignment/work-package identity;
+- exact protected work-package content or a complete immutable snapshot sufficient to execute;
+- exact intended durable GitHub return URL;
+- exact result grammar;
+- exact claim and authority boundaries.
 
-- `TASK_HYDRATION = AVAILABLE`
-- one of:
-  - `PRIMARY_RETURN = GITHUB_WRITE_AVAILABLE`, or
-  - `FALLBACK_RETURN = LAUNCHER_RELAY_AVAILABLE`
+No external read capability may be assumed.
 
-If task hydration is unavailable, substantive work MUST NOT begin.
+## Required agent return
 
-If GitHub write is unavailable but launcher relay is available, the agent MAY execute and MUST return the complete structured result to the launching conversation for verbatim relay.
+The default return path is the launching conversation.
 
-If neither direct return nor relay return is available, substantive work MUST NOT begin.
-
-## Primary return
-
-The primary durable return remains the assignment's protected GitHub `return_url`.
-
-The result grammar remains the exact grammar required by the work package, normally `GCL-CONTRIBUTION-RESULT/1`.
-
-## Relay return
-
-When GitHub write is unavailable, return the complete result to the launching conversation with this envelope:
+Return exactly:
 
 ```text
 GCL-RETURN-RELAY/1
 DISPATCH_ID: <exact dispatch id>
 AGENT_REF: <exact agent ref>
 INTENDED_RETURN: <exact protected GitHub return URL>
-TRANSPORT_BLOCKER: GITHUB_WRITE_UNAVAILABLE
 
 BEGIN_RESULT
 <complete result in the work package's required grammar>
 END_RESULT
 ```
 
-The launcher/operator SHALL relay the `BEGIN_RESULT ... END_RESULT` payload verbatim to the protected return issue and SHALL preserve the relay envelope as provenance in the intake record or issue comment.
+The inner result MUST be complete, replayable, and suitable for verbatim durable intake. Do not summarize it for transport.
 
-The relay does not change the mathematical claim boundary, lease identity, assignment identity, or adjudication status.
+## GCL relay obligation
 
-## Launch failure
+The authenticated launcher/controller SHALL:
 
-If task hydration is unavailable:
+1. verify `DISPATCH_ID`, `AGENT_REF`, assignment, and intended return surface against protected state;
+2. preserve the returned payload byte-for-byte or record any transport-normalization explicitly;
+3. post the complete inner result to the protected GitHub return issue under GCL-controlled authentication;
+4. record relay provenance including source launch identity and a hash of the returned payload;
+5. only then mark the result durably returned.
 
-```text
-LAUNCH_TRANSPORT_BLOCKED
-CAPABILITY: TASK_HYDRATION
-DISPATCH_ID: <exact dispatch id>
-AGENT_REF: <exact agent ref>
-```
+Chat return by itself is not durable campaign intake.
 
-If neither direct nor relay return is available:
+## Optional direct GitHub optimization
 
-```text
-LAUNCH_TRANSPORT_BLOCKED
-CAPABILITY: DURABLE_RETURN
-DISPATCH_ID: <exact dispatch id>
-AGENT_REF: <exact agent ref>
-INTENDED_RETURN: <exact protected return URL>
-```
+If the agent independently has authenticated GitHub write capability, it MAY post the same required result directly to the protected return issue.
 
-Stop without substantive work.
+When that path is used, the agent must still return a short launcher receipt identifying the exact issue/comment locator so GCL can reconcile lifecycle state.
+
+The absence of GitHub access is not an error and must not block execution.
+
+## Failure conditions
+
+Stop before substantive work only if the self-contained task envelope is incomplete, ambiguous, or internally inconsistent.
+
+Do not stop merely because GitHub, plugins, connectors, browsing, or other external services are unavailable.
 
 ## Completion
 
-A relayed contribution is not durably returned until the launcher/operator has posted the exact result payload to the protected GitHub return issue. A local/chat-only result is not campaign completion.
+Agent execution completes when one conforming `GCL-RETURN-RELAY/1` payload is returned to the launcher, or when an explicitly available direct-GitHub path succeeds and a launcher receipt is returned.
+
+Campaign durability completes only after authenticated GCL infrastructure records the result on the protected intake surface.
