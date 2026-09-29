@@ -30,7 +30,7 @@
   "hills": [
     {
       "hill_slot": "OM26-H1",
-      "status": "ACTIVE__CAMPAIGN_BEST_OBSERVED_93__RH_H1_07_PASS",
+      "status": "ACTIVE__CAMPAIGN_BEST_OBSERVED_93__AGENT001_CAPTURED_UNADJUDICATED",
       "exact_hill_id": "alejandrozu/kobon-triangles",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -51,14 +51,32 @@
         "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_Q5_NESTED_TRIANGLE_EQUALITY_SOURCE_CONDITIONAL",
         "exact_computation": "H1_13_TRANCHES1_2_3_COMPLETE__NO_94__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
-        "cei_independent_contribution": "BLOCKED_PENDING_CEI_CONFORMANCE_AUDIT",
+        "cei_independent_contribution": "CAPTURED_RECOVERED__ADJUDICATION_PENDING",
         "mathcert_handoff": "H1_02_AND_86_INTAKE_PROTECTED__93_SUCCESSOR_INTAKE_PROTECTED__CERT_EXECUTION_PENDING"
       },
-      "next_action": "Resolve exact q=5 nested-triangle incidence feasibility with the 4+2 clean-charge bijection; keep q>=6 separate."
+      "next_action": "Adjudicate recovered Agent 001 result on the q=5 equality obstruction before treating q=5 as closed. Until adjudication, the protected H1-12 frontier remains q=5 exact nested-triangle equality or q>=6.",
+      "external_agent": {
+        "assignment_id": "OM26-H1-H1-12",
+        "dispatch_id": "OM26-H1-H1-12-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-001",
+        "lifecycle_state": "CAPTURED",
+        "return_comment_id": 5881108260,
+        "recovery_receipt": "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json",
+        "adjudication": "PENDING"
+      },
+      "competition_state": {
+        "candidate": "RH_BADER_RECONSTRUCTION_093",
+        "score": 93,
+        "lifecycle": "CERT_PENDING",
+        "local_verification": "PASS",
+        "public_evaluator_replay": "PASS__UNOFFICIAL_LOCAL_SCORE",
+        "official_submission": "NOT_SUBMITTED",
+        "official_acceptance": "NONE"
+      }
     },
     {
       "hill_slot": "OM26-H2",
-      "status": "WP01_LEASED__PROTECTED_READBACK_CONFIRMED",
+      "status": "WP01_LEASED_NOT_LAUNCHED__PROTECTED_READBACK_CONFIRMED",
       "exact_hill_id": "alejandrozu/busy-beaver-6-certificates",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -86,7 +104,7 @@
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
         "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
         "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
-        "cei_independent_contribution": "LEASED__OM26-H2-WP01-IA-001",
+        "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H2-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
       "next_action": "Launch INDEPENDENT-AGENT-002 with the protected entrypoint, dispatch OM26-H2-WP01-IA-001, and return to issue #505.",
@@ -97,12 +115,22 @@
         "agent_ref": "INDEPENDENT-AGENT-002",
         "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/505",
         "protected_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true
+        "readback_verified": true,
+        "lifecycle_state": "LEASED_NOT_LAUNCHED",
+        "launch_evidence": null,
+        "return_evidence": null
+      },
+      "competition_state": {
+        "candidate": null,
+        "lifecycle": "NO_CANDIDATE",
+        "local_verification": "NOT_STARTED",
+        "official_submission": "NOT_SUBMITTED",
+        "official_acceptance": "NONE"
       }
     },
     {
       "hill_slot": "OM26-H3",
-      "status": "WP01_LEASED__PROTECTED_READBACK_CONFIRMED",
+      "status": "WP01_LEASED_NOT_LAUNCHED__PROTECTED_READBACK_CONFIRMED",
       "exact_hill_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -130,7 +158,7 @@
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
         "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
         "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
-        "cei_independent_contribution": "LEASED__OM26-H3-WP01-IA-001",
+        "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H3-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
       "next_action": "Launch INDEPENDENT-AGENT-003 with the protected entrypoint, dispatch OM26-H3-WP01-IA-001, and return to issue #506.",
@@ -141,12 +169,22 @@
         "agent_ref": "INDEPENDENT-AGENT-003",
         "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/506",
         "protected_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true
+        "readback_verified": true,
+        "lifecycle_state": "LEASED_NOT_LAUNCHED",
+        "launch_evidence": null,
+        "return_evidence": null
+      },
+      "competition_state": {
+        "candidate": null,
+        "lifecycle": "NO_CANDIDATE",
+        "local_verification": "NOT_STARTED",
+        "official_submission": "NOT_SUBMITTED",
+        "official_acceptance": "NONE"
       }
     },
     {
       "hill_slot": "OM26-H4",
-      "status": "WP01_LEASED__PROTECTED_READBACK_CONFIRMED",
+      "status": "WP01_LEASED_NOT_LAUNCHED__PROTECTED_READBACK_CONFIRMED",
       "exact_hill_id": "alejandrozu/collatz-modular-descent",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -174,7 +212,7 @@
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
         "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
         "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
-        "cei_independent_contribution": "LEASED__OM26-H4-WP01-IA-001",
+        "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H4-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
       "next_action": "Launch INDEPENDENT-AGENT-004 with the protected entrypoint, dispatch OM26-H4-WP01-IA-001, and return to issue #507.",
@@ -185,12 +223,22 @@
         "agent_ref": "INDEPENDENT-AGENT-004",
         "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/507",
         "protected_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true
+        "readback_verified": true,
+        "lifecycle_state": "LEASED_NOT_LAUNCHED",
+        "launch_evidence": null,
+        "return_evidence": null
+      },
+      "competition_state": {
+        "candidate": null,
+        "lifecycle": "NO_CANDIDATE",
+        "local_verification": "NOT_STARTED",
+        "official_submission": "NOT_SUBMITTED",
+        "official_acceptance": "NONE"
       }
     },
     {
       "hill_slot": "OM26-H5",
-      "status": "WP01_LEASED__PROTECTED_READBACK_CONFIRMED",
+      "status": "WP01_LEASED_NOT_LAUNCHED__PROTECTED_READBACK_CONFIRMED",
       "exact_hill_id": "alejandrozu/grothendieck-constant-witnesses",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -218,7 +266,7 @@
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
         "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
         "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
-        "cei_independent_contribution": "LEASED__OM26-H5-WP01-IA-001",
+        "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H5-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
       "next_action": "Launch INDEPENDENT-AGENT-005 with the protected entrypoint, dispatch OM26-H5-WP01-IA-001, and return to issue #508.",
@@ -229,12 +277,22 @@
         "agent_ref": "INDEPENDENT-AGENT-005",
         "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/508",
         "protected_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true
+        "readback_verified": true,
+        "lifecycle_state": "LEASED_NOT_LAUNCHED",
+        "launch_evidence": null,
+        "return_evidence": null
+      },
+      "competition_state": {
+        "candidate": null,
+        "lifecycle": "NO_CANDIDATE",
+        "local_verification": "NOT_STARTED",
+        "official_submission": "NOT_SUBMITTED",
+        "official_acceptance": "NONE"
       }
     },
     {
       "hill_slot": "OM26-H6",
-      "status": "WP01_LEASED__PROTECTED_READBACK_CONFIRMED",
+      "status": "WP01_LEASED_NOT_LAUNCHED__PROTECTED_READBACK_CONFIRMED",
       "exact_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -262,7 +320,7 @@
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
         "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
         "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
-        "cei_independent_contribution": "LEASED__OM26-H6-WP01-IA-001",
+        "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H6-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
       "next_action": "Launch INDEPENDENT-AGENT-006 with the protected entrypoint, dispatch OM26-H6-WP01-IA-001, and return to issue #509.",
@@ -273,12 +331,22 @@
         "agent_ref": "INDEPENDENT-AGENT-006",
         "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/509",
         "protected_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true
+        "readback_verified": true,
+        "lifecycle_state": "LEASED_NOT_LAUNCHED",
+        "launch_evidence": null,
+        "return_evidence": null
+      },
+      "competition_state": {
+        "candidate": null,
+        "lifecycle": "NO_CANDIDATE",
+        "local_verification": "NOT_STARTED",
+        "official_submission": "NOT_SUBMITTED",
+        "official_acceptance": "NONE"
       }
     },
     {
       "hill_slot": "OM26-H7",
-      "status": "WP01_LEASED__PROTECTED_READBACK_CONFIRMED",
+      "status": "WP01_LEASED_NOT_LAUNCHED__PROTECTED_READBACK_CONFIRMED",
       "exact_hill_id": "ottogin/erdos-3",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -306,7 +374,7 @@
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
         "exact_computation": "WP01_AVAILABLE_FOR_LEASE",
         "falsification_counterexample": "WP01_AVAILABLE_FOR_LEASE",
-        "cei_independent_contribution": "LEASED__OM26-H7-WP01-IA-001",
+        "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H7-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
       "next_action": "Launch INDEPENDENT-AGENT-007 with the protected entrypoint, dispatch OM26-H7-WP01-IA-001, and return to issue #510.",
@@ -317,11 +385,21 @@
         "agent_ref": "INDEPENDENT-AGENT-007",
         "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/510",
         "protected_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true
+        "readback_verified": true,
+        "lifecycle_state": "LEASED_NOT_LAUNCHED",
+        "launch_evidence": null,
+        "return_evidence": null
+      },
+      "competition_state": {
+        "candidate": null,
+        "lifecycle": "NO_CANDIDATE",
+        "local_verification": "NOT_STARTED",
+        "official_submission": "NOT_SUBMITTED",
+        "official_acceptance": "NONE"
       }
     }
   ],
-  "claim_boundary": "OM26-H1 remains distinct. OM26-H2 through OM26-H7 each have one active protected/read-back WP01 lease bound to a distinct independent agent and return issue. Returned contributions remain unadjudicated.",
+  "claim_boundary": "OM26-H1 Agent 001 evidence is durably recovered but unadjudicated; the protected H1 mathematical frontier is unchanged pending adjudication. OM26-H2 through OM26-H7 each have one protected WP01 lease and no durable launch or return evidence, so their lifecycle is LEASED_NOT_LAUNCHED. No hill has an official competition submission.",
   "provider_import": {
     "receipt": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",
     "forge_protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
@@ -339,5 +417,10 @@
     "lease_introducing_commit": "3c835aaf6173176b64efca5f03ffdc27b20af965",
     "lease_protected_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
     "lease_readback_receipt": ".gcl/completions/OM26-H2-H7-WP01-LEASES/COMPLETION_RECEIPT.json"
+  },
+  "core_clarity": {
+    "lifecycle_semantics": "LEASED is not LAUNCHED; RETURNED is not CAPTURED; CAPTURED is not ACCEPTED or CERTIFIED.",
+    "reconciliation_operation": "OM26-CORE-CLARITY-RECONCILE-001",
+    "programme_canonical_state": "grandchallenge/MATH-PROGRAMME:governance/openmath_2026_campaign_state.json"
   }
 }
