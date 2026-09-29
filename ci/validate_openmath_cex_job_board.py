@@ -95,10 +95,20 @@ def validate() -> list[str]:
         lease = item.get("lease", {})
         if item.get("hill") != expected["hill"] or item.get("slot_binding") != expected["hill"]:
             errors.append(f"{aid}: hill binding mismatch")
-        if item.get("state") != "LEASED_NOT_LAUNCHED" or lease.get("state") != "LEASED":
-            errors.append(f"{aid}: not LEASED_NOT_LAUNCHED with protected lease")
-        if item.get("lifecycle", {}).get("launched") is not False:
-            errors.append(f"{aid}: launch evidence must remain absent")
+        if aid == "OM26-H2-WP01":
+            if item.get("state") != "ACCEPTED" or lease.get("state") != "CLOSED_AFTER_RETURN":
+                errors.append(f"{aid}: not ACCEPTED with CLOSED_AFTER_RETURN")
+            if item.get("lifecycle", {}).get("launched") is not True:
+                errors.append(f"{aid}: accepted return must record execution")
+            if item.get("lifecycle", {}).get("adjudication") != "ACCEPTED_SCORER_CONCORDANCE_WITH_SEARCH_NARROWING":
+                errors.append(f"{aid}: adjudication mismatch")
+            if lease.get("execution_authorized") is not False:
+                errors.append(f"{aid}: closed returned lease remains executable")
+        else:
+            if item.get("state") != "LEASED_NOT_LAUNCHED" or lease.get("state") != "LEASED":
+                errors.append(f"{aid}: not LEASED_NOT_LAUNCHED with protected lease")
+            if item.get("lifecycle", {}).get("launched") is not False:
+                errors.append(f"{aid}: launch evidence must remain absent")
         if (
             lease.get("dispatch_id") != expected["dispatch"]
             or lease.get("agent_ref") != expected["agent"]
@@ -157,14 +167,16 @@ def validate() -> list[str]:
         errors.append("per-hill release policy roster mismatch")
     if per_hill.get("OM26-H1", {}).get("agent_state") != "ACCEPTED":
         errors.append("H1 per-hill agent state mismatch")
-    for i in range(2, 8):
+    if per_hill.get("OM26-H2", {}).get("agent_state") != "ACCEPTED":
+        errors.append("H2 per-hill agent state mismatch")
+    for i in range(3, 8):
         if per_hill.get(f"OM26-H{i}", {}).get("agent_state") != "LEASED_NOT_LAUNCHED":
             errors.append(f"OM26-H{i} per-hill agent state mismatch")
     summary = policy.get("summary", {})
     if summary != {
         "released_hills": 7,
-        "accepted_agents": 1,
-        "leased_not_launched_agents": 6,
+        "accepted_agents": 2,
+        "leased_not_launched_agents": 5,
         "launched_agents": 0,
         "returned_unadjudicated_agents": 0,
     }:
