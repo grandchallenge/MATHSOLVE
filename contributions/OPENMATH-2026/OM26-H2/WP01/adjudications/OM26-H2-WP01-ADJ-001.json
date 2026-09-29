@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_RESULT_ADJUDICATION",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "obligation": "WP01",
+  "adjudication_id": "OM26-H2-WP01-ADJ-001",
+  "dispatch_id": "OM26-H2-WP01-IA-001",
+  "assignment_id": "OM26-H2-WP01",
+  "agent_ref": "INDEPENDENT-AGENT-002",
+  "source_result": {
+    "raw_path": "contributions/OPENMATH-2026/OM26-H2/WP01/raw/OM26-H2-WP01-IA-001/github-comment-5883655827.md",
+    "raw_git_blob_sha1": "40b8424ba5a0b23448ae6de90566c453c44b0ccc",
+    "receipt_path": "contributions/OPENMATH-2026/OM26-H2/WP01/receipts/OM26-H2-WP01-IA-001/github-comment-5883655827.json",
+    "declared_disposition": "INDEPENDENT_SCORER_CONCORDANCE"
+  },
+  "protected_packet": {
+    "evaluator": {
+      "path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/busy-beaver-6-certificates/PUBLIC_SOURCE/eval.py",
+      "git_blob_sha1": "1b956107377f3ac67dc8277164f7db82fbb15744",
+      "sha256": "84ba441b101a61283c0dd5d05960a33cedf8cfe224cc6aae4b308d0a4cc60fc0"
+    },
+    "readme": {
+      "path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/busy-beaver-6-certificates/PUBLIC_SOURCE/README.md",
+      "git_blob_sha1": "c1813ed2461d79f65013ea7c6df921d7240998bd",
+      "sha256": "9614c01ce936236d58fef96628a0251a6dc3101b9eff0fc1a3d41a30693e4cf2"
+    },
+    "private_lock": {
+      "path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/busy-beaver-6-certificates/PUBLIC_SOURCE/private.lock",
+      "git_blob_sha1": "97ce9076b054353b7ae67ccea1cc671873466a40"
+    }
+  },
+  "disposition": "ACCEPTED_SCORER_CONCORDANCE_WITH_SEARCH_NARROWING",
+  "accepted_claims": [
+    {
+      "claim_id": "OM26-H2-SCORER-001",
+      "statement": "For regular UTF-8 solution.json payloads satisfying the protected JSON surface, the independent simulator reproduces the protected six-state two-symbol blank-tape transition semantics, baseline score (steps=6, ones=6, tape_span=7), reached-state rule, metric order, and budget-bounded halt behavior.",
+      "effect": "WP01_SCORER_CONCORDANCE_ACCEPTED",
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H2-BUDGET-001",
+      "statement": "Within the protected evaluator schema 10<=step_limit<=2,000,000, the locked private file sizes and SHA-256 digests identify validation step_limit=250000 and test step_limit=1000000 by finite exhaustive preimage enumeration over the permitted integer domain and canonical JSON encoding.",
+      "effect": "PRIVATE_BUDGETS_RECONSTRUCTED_FROM_LOCKS",
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H2-MINSTEP-001",
+      "statement": "Any accepted machine must execute at least six transitions before halting because all six non-halting states A-F must each be reached and the halting transition does not add H to the reached set; the protected baseline attains six.",
+      "effect": "BASELINE_STEP_MINIMALITY_FOR_VALID_WITNESSES",
+      "certification_effect": false
+    }
+  ],
+  "narrowed_or_rejected_parts": [
+    {
+      "item": "Exact contract-level parity over the complete submission surface",
+      "disposition": "NARROWED",
+      "reason": "The independent raw-bytes scorer does not implement the protected evaluator's filesystem regular-file/symlink gate. Concordance is accepted only after conditioning on a regular solution.json payload."
+    },
+    {
+      "item": "300 seeded random-table differential suite as independently replayed evidence",
+      "disposition": "NOT_ADMITTED_AS_REPLAYED",
+      "reason": "The return states the result but does not include the generated corpus or a deterministic generator implementation sufficient to reconstruct that exact suite within the adjudication packet."
+    },
+    {
+      "item": "Tree Normal Form claim that transitions.A.0=[1,'R','B'] is without loss of generality",
+      "disposition": "REJECTED_AS_EXACT_NORMALIZATION",
+      "reason": "Writing 1 on the first blank cell is not a symmetry of the fixed blank-0 model. A valid six-step machine may begin A,0 -> [0,'R','B'] and still visit B-F and halt, so first-write=1 excludes valid machines."
+    },
+    {
+      "item": "Blank-ray, local-hash and macro-simulation pruning as exact deciders",
+      "disposition": "ADVISORY_ONLY",
+      "reason": "The stated local-state/hash summaries are not proved collision-free or future-equivalent, and the claimed macro-step complexity bound is unsupported. They may guide heuristics but may not discard candidates in an exact search without proof."
+    },
+    {
+      "item": "Seeded 32-step witness and candidate-generator benchmark",
+      "disposition": "NONCANONICAL_SUPPORT_ONLY",
+      "reason": "Useful as a plausibility check, but WP01 acceptance does not promote it to a campaign candidate or authorize competition submission."
+    }
+  ],
+  "adjudicator_checks": {
+    "evaluator_semantics_replay": "PASS",
+    "baseline_replay": "PASS",
+    "reached_state_and_min_step_argument": "PASS",
+    "private_budget_lock_reconstruction": "PASS",
+    "adversarial_classes": "PASS_WITH_REGULAR_FILE_SCOPE",
+    "exact_search_normalization": "FAIL__FIRST_WRITE_1_NOT_WLOG",
+    "exact_pruning_soundness": "NOT_ESTABLISHED",
+    "overclaim_check": "NARROWED_AND_PASS"
+  },
+  "resulting_frontier": {
+    "previous": "SCORER_CONCORDANCE_REQUIRED_BEFORE_SEARCH",
+    "new": "SCORER_CONCORDANCE_ACCEPTED__EXACT_SEARCH_DESIGN_REQUIRED",
+    "remaining_gap": "Construct a complete exact candidate enumeration/search whose symmetry reductions and pruning rules are proved semantics-preserving under the fixed blank-0 model; then replay promoted candidates with the accepted exact scorer and protected evaluator."
+  },
+  "lifecycle_effect": {
+    "external_result_state": "ACCEPTED",
+    "assignment_closed": true,
+    "adjudication_complete": true,
+    "certification": "NONE",
+    "competition": "NONE"
+  },
+  "claim_boundary": "This adjudication accepts the bounded independent scorer and budget reconstruction at Solve level. It does not accept the proposed TNF normalization as complete, certify Busy Beaver mathematics, establish S(6), promote any candidate, or authorize competition submission."
+}

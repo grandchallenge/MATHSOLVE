@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ADMISSION_FREEZE",
+  "operation": "OM26-H2-WP01-ADJ-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "assembled_from_head": "57ea5f924c2a208c12af22fc699dc63a3f33b485",
+  "source_result": {
+    "issue_number": 505,
+    "comment_id": 5883655827,
+    "raw_git_blob_sha1": "40b8424ba5a0b23448ae6de90566c453c44b0ccc",
+    "receipt_git_blob_sha1": "9044807bfa2c27a5eb2c8a1d867c5c0e02f17307"
+  },
+  "artifacts": {
+    "contributions/OPENMATH-2026/OM26-H2/WP01/adjudications/OM26-H2-WP01-ADJ-001.json": "437ae316c0f9a3e88c310a987eed8d3ba05d7cad",
+    "work_packages/OPENMATH_2026/OM26_H2_BUSY_BEAVER_6/WP01_STATUS.json": "cae7da581a32b5c121459e3b906c908dc19ed6a5",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "326868196092337968fed92f171f6687d326cb25",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "478bd61e25745903add7847678219e4412ed3d90",
+    ".gcl/operations/OM26-H2-WP01-ADJ-001/OPERATION.json": "1374230131644e783b007625a78e191955c98efb",
+    "ci/validate_openmath_h2_wp01_adjudication.py": "6fc961ec3796f760961f54bbd170149c254ac4f6",
+    ".github/workflows/openmath-h2-wp01-adjudication.yml": "859744767e9f0e8967ef215ad303f291a75cfe25",
+    ".ghos-routing/workflows.json": "60dbe202213dec5a1789766de2f1ba05f4dd85ba",
+    "contributions/OPENMATH-2026/OM26-H2/WP01/raw/OM26-H2-WP01-IA-001/github-comment-5883655827.md": "40b8424ba5a0b23448ae6de90566c453c44b0ccc",
+    "contributions/OPENMATH-2026/OM26-H2/WP01/receipts/OM26-H2-WP01-IA-001/github-comment-5883655827.json": "9044807bfa2c27a5eb2c8a1d867c5c0e02f17307"
+  },
+  "completion_gate": {
+    "validator": "python ci/validate_openmath_h2_wp01_adjudication.py",
+    "exact_head_review_required": true,
+    "required_ci_green": true,
+    "protected_merge_required": true,
+    "protected_readback_required": true
+  },
+  "claim_boundary": "Freeze of the bounded H2 WP01 Solve adjudication only; no certification or competition effect."
+}
