@@ -17,7 +17,7 @@
     ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "f03d505fd57aa128d5017eb65f95aff726046d70",
     "work_packages/OPENMATH_2026/HILL_LANES.json": "26362ae44241e4c8cbc7ea53d0daf9be3945cd8d",
     "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "a57ce6070109b6dffa20f4ceafd4dc67c8cd86a3",
-    "ci/validate_openmath_h2_wp02_instantiation.py": "be3e368359366c176baeb38a14fb6d8327c200bb",
+    "ci/validate_openmath_h2_wp02_instantiation.py": "1852cdca2f4b6c531f458cfd9e55dcbbf15e9363",
     "ci/validate_openmath_cex_job_board.py": "e0875e52b14e2a3a007540cb0e2d6e355e99fb46",
     "ci/test_openmath_cex_job_board.py": "2b12d01be1be9aa086fdfd53fb102d10dd08b0a1",
     "ci/validate_openmath_core_clarity_reconcile.py": "6d0f0f2e95bf14527e90c9a6d2c02b952d0a71c5",
