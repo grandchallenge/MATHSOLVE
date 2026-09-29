@@ -10,7 +10,7 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
         self.assertEqual(set(jobs),set(EXPECTED))
         self.assertEqual({jobs[a]["lease"]["agent_ref"] for a in jobs},{v["agent"] for v in EXPECTED.values()})
         self.assertEqual({jobs[a]["lease"]["dispatch_issue_number"] for a in jobs},{v["issue"] for v in EXPECTED.values()})
-        self.assertTrue(all(jobs[a]["state"]=="LEASED" and jobs[a]["lease"]["state"]=="LEASED" for a in jobs))
+        self.assertTrue(all(jobs[a]["state"]=="LEASED_NOT_LAUNCHED" and jobs[a]["lease"]["state"]=="LEASED" for a in jobs))\n        self.assertTrue(all(jobs[a]["lifecycle"]["launched"] is False for a in jobs))
         self.assertTrue(all(jobs[a]["lease"]["protected_lease_commit"]==INTRO for a in jobs))
 
     def test_h1_lease_preserved(self):
@@ -18,11 +18,11 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
         job=next(x for x in registry["assignments"] if x.get("assignment_id")==H1["assignment"])
         self.assertEqual(job["lease"]["dispatch_id"],H1["dispatch"])
         self.assertEqual(job["lease"]["agent_ref"],H1["agent"])
-        self.assertEqual(job["lease"]["dispatch_issue_number"],H1["issue"])
+        self.assertEqual(job["lease"]["dispatch_issue_number"],H1["issue"])\n        self.assertEqual(job["state"],"CAPTURED")\n        self.assertEqual(job["lifecycle"]["adjudication"],"PENDING")
 
     def test_lease_counters(self):
         policy=load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")["mathematics_release_policy"]
         self.assertEqual(policy["h2_h7_available_math_jobs"],0)
-        self.assertEqual(policy["h2_h7_leased_math_jobs"],6)
+        self.assertEqual(policy["h2_h7_leased_math_jobs"],6)\n        self.assertEqual(policy["h2_h7_launched_math_jobs"],0)\n        self.assertEqual(policy["h2_h7_returned_math_jobs"],0)\n        self.assertEqual(policy["h2_h7_captured_math_jobs"],0)
 
 if __name__=="__main__": unittest.main()
