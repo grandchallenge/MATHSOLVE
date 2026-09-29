@@ -44,8 +44,8 @@
     "external_self_claim_allowed": false,
     "allocator": "GCL dispatch/controller or Human Steward through protected repository mutation",
     "atomic_unit": "one assignment_id to one dispatch_id to one agent_ref",
-    "start_rule": "An agent starts only after following the absolute ENTRYPOINT_URL supplied by its launcher and finding exactly one protected LEASED assignment whose dispatch_id and agent_ref match its launch identity.",
-    "no_lease_rule": "If no matching protected lease exists, return NO_ACTIVE_LEASE and stop without substantive work.",
+    "start_rule": "The launcher/controller verifies exactly one protected LEASED assignment whose dispatch_id and agent_ref match the launch identity, then embeds that verified lease identity and exact bounded work package in the self-contained launch envelope. The external agent does not need repository access to rediscover the lease.",
+    "no_lease_rule": "If the launcher/controller cannot verify exactly one matching protected lease, it must not launch substantive work. The agent returns INVALID_LAUNCH if the supplied envelope lacks a verified unambiguous lease identity.",
     "duplicate_rule": "A second agent must not execute an assignment already LEASED unless a distinct independently-authorized assignment record exists.",
     "release_rule": "Lease release or reassignment requires another protected registry mutation; issue comments or chat text do not alter the lease.",
     "lifecycle_rule": "Lease state and agent lifecycle state are distinct. LEASED does not imply LAUNCHED; return does not imply CAPTURED; CAPTURED does not imply ACCEPTED or CERTIFIED."
@@ -987,15 +987,21 @@
   ],
   "launch_contract": {
     "required_fields": [
-      "ENTRYPOINT_URL",
       "DISPATCH_ID",
-      "AGENT_REF"
+      "AGENT_REF",
+      "ASSIGNMENT_ID",
+      "INTENDED_RETURN",
+      "PROTECTED_LEASE_IDENTITY",
+      "SELF_CONTAINED_WORK_PACKAGE",
+      "RESULT_GRAMMAR",
+      "CLAIM_BOUNDARY"
     ],
     "entrypoint_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
-    "missing_identity_behavior": "INVALID_LAUNCH and stop",
-    "no_matching_lease_behavior": "NO_ACTIVE_LEASE and stop",
-    "multiple_matching_leases_behavior": "AMBIGUOUS_LEASE and stop",
-    "repository_discovery_required": false
+    "launcher_verification_required": true,
+    "agent_repository_discovery_required": false,
+    "missing_or_ambiguous_envelope_behavior": "INVALID_LAUNCH and stop",
+    "default_return": "GCL-RETURN-RELAY/1 to launcher",
+    "durable_intake_owner": "AUTHENTICATED_GCL_INFRASTRUCTURE"
   },
   "scope": "OPENMATH_CAMPAIGN_WIDE_CEX_ASSIGNMENTS",
   "operations": [
