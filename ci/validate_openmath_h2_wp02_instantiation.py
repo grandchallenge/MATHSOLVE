@@ -107,7 +107,7 @@ def validate() -> list[str]:
         "## Claim boundary",
         "## Next residual",
         "What counts as exact replayable evidence",
-        "first-write-\`0\`",
+        "first-write-`0`",
     ]
     for marker in required_bootstrap_markers:
         if marker not in bootstrap:
