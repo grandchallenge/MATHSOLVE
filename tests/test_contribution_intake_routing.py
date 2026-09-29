@@ -26,6 +26,12 @@ class ContributionIntakeRoutingTest(unittest.TestCase):
             text,
         )
 
+    def test_openmath_snapshot_does_not_open_pr_with_workflow_token(self):
+        text = OPENMATH_WORKFLOW.read_text(encoding="utf-8")
+        self.assertNotIn("gh pr create", text)
+        self.assertNotIn("pull-requests: write", text)
+        self.assertIn("Release Trust intake controller", text)
+
     def test_routes_are_mutually_exclusive_for_protected_title_prefixes(self):
         nsci_prefix = "[GCL-CONTRIB] NSCI-"
         openmath_prefix = "[GCL-CONTRIB] OPENMATH-2026 "
