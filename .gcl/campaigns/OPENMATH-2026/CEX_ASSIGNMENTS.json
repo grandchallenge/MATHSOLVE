@@ -1086,9 +1086,9 @@
         "dispatch_id": "OM26-H2-WP03-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-009",
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/537",
-        "task_commit": "208fa322f52d06eb7f9b6affff0f359217a5118e",
-        "task_blob_sha1": "d2b2771888036e4900e2ba76e6f551d4f30cd049",
-        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/208fa322f52d06eb7f9b6affff0f359217a5118e/handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md"
+        "task_commit": "e64c93148ddecbc8e51352c24926898e42b8ea10",
+        "task_blob_sha1": "3e25afafa28b166fee0b7aff70e34fad6d5ce977",
+        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/e64c93148ddecbc8e51352c24926898e42b8ea10/handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md"
       },
       "OM26-H3": {
         "path": "handoffs/OPENMATH-2026/launch/OM26-H3.md",
