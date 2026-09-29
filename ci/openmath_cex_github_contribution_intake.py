@@ -146,6 +146,11 @@ def load_operation(root: Path, dispatch: dict[str, Any]) -> dict[str, Any]:
     return _object(operation, "operation contract")
 
 
+def _normalize_single_terminal_lf(value: str) -> str:
+    """Ignore at most one transport-added terminal LF; preserve all other bytes."""
+    return value[:-1] if value.endswith("\n") else value
+
+
 def validate_dispatch_issue(
     root: Path,
     issue: dict[str, Any],
@@ -183,8 +188,10 @@ def validate_dispatch_issue(
     path = root / bootstrap_path
     if not path.is_file():
         raise IntakeError("protected bootstrap file is missing")
-    protected = path.read_text(encoding="utf-8").rstrip("\n")
-    if body != protected:
+    protected = path.read_text(encoding="utf-8")
+    normalized_body = _normalize_single_terminal_lf(body)
+    normalized_protected = _normalize_single_terminal_lf(protected)
+    if normalized_body != normalized_protected:
         raise IntakeError("GitHub issue body differs from protected bootstrap bytes")
 
 
