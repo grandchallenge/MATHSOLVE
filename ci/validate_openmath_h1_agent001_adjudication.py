@@ -106,7 +106,10 @@ def validate():
     if h1["competition_state"]["official_submission"] != "NOT_SUBMITTED":
         raise AssertionError("H1 competition boundary changed")
 
-    for i in range(2, 8):
+    h2 = next(x for x in lanes["hills"] if x["hill_slot"] == "OM26-H2")
+    if h2["active_lease"]["lifecycle_state"] != "ACCEPTED":
+        raise AssertionError("OM26-H2 lifecycle drift")
+    for i in range(3, 8):
         hill = next(x for x in lanes["hills"] if x["hill_slot"] == f"OM26-H{i}")
         if hill["active_lease"]["lifecycle_state"] != "LEASED_NOT_LAUNCHED":
             raise AssertionError(f"OM26-H{i} lifecycle drift")
