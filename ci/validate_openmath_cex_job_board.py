@@ -146,17 +146,34 @@ def validate() -> list[str]:
         if not isinstance(operation.get("acceptable_dispositions"), list) or not operation["acceptable_dispositions"]:
             errors.append(f"{aid}: no acceptable dispositions")
 
+    topology = registry.get("current_topology", {})
+    if topology.get("lane_model") != "SEVEN_FIRST_CLASS_HILLS":
+        errors.append("current assignment topology is not seven first-class hills")
+    if topology.get("hills") != [f"OM26-H{i}" for i in range(1, 8)]:
+        errors.append("current assignment hill roster mismatch")
     policy = registry.get("mathematics_release_policy", {})
-    if policy.get("h2_h7_available_math_jobs") != 0 or policy.get("h2_h7_leased_math_jobs") != 6:
-        errors.append("H2-H7 lease counters mismatch")
-    if (
-        policy.get("h2_h7_launched_math_jobs") != 0
-        or policy.get("h2_h7_returned_math_jobs") != 0
-        or policy.get("h2_h7_captured_math_jobs") != 0
-    ):
-        errors.append("H2-H7 lifecycle counters must remain zero beyond lease")
+    per_hill = policy.get("per_hill", {})
+    if set(per_hill) != {f"OM26-H{i}" for i in range(1, 8)}:
+        errors.append("per-hill release policy roster mismatch")
+    if per_hill.get("OM26-H1", {}).get("agent_state") != "ACCEPTED":
+        errors.append("H1 per-hill agent state mismatch")
+    for i in range(2, 8):
+        if per_hill.get(f"OM26-H{i}", {}).get("agent_state") != "LEASED_NOT_LAUNCHED":
+            errors.append(f"OM26-H{i} per-hill agent state mismatch")
+    summary = policy.get("summary", {})
+    if summary != {
+        "released_hills": 7,
+        "accepted_agents": 1,
+        "leased_not_launched_agents": 6,
+        "launched_agents": 0,
+        "returned_unadjudicated_agents": 0,
+    }:
+        errors.append("seven-hill release summary mismatch")
+    historical = policy.get("historical_tranche_metrics", {})
+    if historical.get("deprecated_for_current_state") is not True:
+        errors.append("historical H2-H7 metrics are not deprecated for current state")
     if registry.get("wp01_leases", {}).get("lease_introducing_commit") != INTRO:
-        errors.append("aggregate lease introducing commit mismatch")
+        errors.append("historical lease introducing commit mismatch")
 
     board = (ROOT / BOARD).read_text(encoding="utf-8")
     for expected in EXPECTED.values():
@@ -176,7 +193,7 @@ def main() -> int:
         for error in errors:
             print("FAIL:", error)
         return 1
-    print("PASS: OPENMATH CEX exposes valid H1 adjudication state and six H2-H7 LEASED_NOT_LAUNCHED assignments")
+    print("PASS: OPENMATH CEX exposes seven first-class hill lanes with exact per-hill lifecycle state")
     return 0
 
 
