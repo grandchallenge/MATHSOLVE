@@ -4,7 +4,7 @@
   "campaign_id": "OPENMATH-2026",
   "hill_slot": "OM26-H1",
   "obligation": "H1-12",
-  "state": "Q_GE_6_OR_Q5_EXACT_NESTED_TRIANGLE_EQUALITY__SOURCE_CONDITIONAL",
+  "state": "Q_GE_6__SOURCE_CONDITIONAL",
   "proved_reduction": {
     "statement": "Any finite hill arrangement and any finite set of its counted bounded triangular faces can be projectively transformed to an affine arrangement with no parallel line pairs while preserving all selected counted bounded triangular faces.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
@@ -13,14 +13,14 @@
   },
   "remaining_gap": {
     "simple_bound_value": 94,
-    "issue": "Conditional on the named source-scoped premises, q<=4 is excluded and the sole q=5 residual is now an exact nested-triangle equality geometry: central D2 triangle, outer third-line triangle, two isolated triple cores with antipodal D1 rays, h=12, and an exact six-clean-line charge partition 4+2. All q>=6 cases remain open.",
-    "target": "Resolve the exact q=5 nested-triangle incidence feasibility or produce/replay a 95 witness in that stratum; keep q>=6 separate."
+    "issue": "Conditional on the named source-scoped premises, all q<=5 score-95 configurations are excluded. All q>=6 cases remain open.",
+    "target": "Attack the q=6 stratum while keeping the predecessor source-scoped local fan and clean-line charging obligations explicit."
   },
   "current_source_interval": {
     "lower": 93,
     "upper": 95
   },
-  "claim_boundary": "H1-12 is strictly narrowed, not closed. Conditional on the named source-scoped premises, any score-95 witness has either q=5 in the exact nested-triangle/4+2-charge equality geometry or q>=6. No hill-global <=94, optimality, or MATHCERT claim.",
+  "claim_boundary": "H1-12 is narrowed to q>=6 only, conditional on the named source-scoped premises. No hill-global <=94, optimality, or MATHCERT claim.",
   "source_conditional_reduction": {
     "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
@@ -217,5 +217,14 @@
     "source_scoped_component": "predecessor fan/charging state space and clean-line equality",
     "mathematical_effect": true,
     "certification_effect": false
+  },
+  "q5_agent001_adjudication": {
+    "statement": "The recovered Agent 001 reduction is accepted at Solve level: conditional on the predecessor source-scoped triple-point local fan/no-consecutive-D1 and clean-line charging premises, the sole q=5 K3+two-isolated equality normal form is unrealizable.",
+    "adjudication": "contributions/OPENMATH-2026/OM26-H1/H1-12/adjudications/OM26-H1-H1-12-ADJ-001.json",
+    "source_result": "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md",
+    "claim_id": "OM26-H1-RED-023",
+    "mathematical_effect": true,
+    "certification_effect": false,
+    "frontier_effect": "Q_GE_6__SOURCE_CONDITIONAL"
   }
 }

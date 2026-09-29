@@ -68,10 +68,12 @@ def validate() -> list[str]:
     else:
         item = h1[0]
         lease = item.get("lease", {})
-        if item.get("state") != "CAPTURED" or lease.get("state") != "CLOSED_AFTER_RETURN":
-            errors.append("H1 lifecycle must be CAPTURED/CLOSED_AFTER_RETURN")
-        if item.get("lifecycle", {}).get("adjudication") != "PENDING":
-            errors.append("H1 recovered result must remain pending adjudication")
+        if item.get("state") not in {"CAPTURED", "ACCEPTED"} or lease.get("state") != "CLOSED_AFTER_RETURN":
+            errors.append("H1 lifecycle must be CAPTURED or ACCEPTED with CLOSED_AFTER_RETURN")
+        if item.get("state") == "CAPTURED" and item.get("lifecycle", {}).get("adjudication") != "PENDING":
+            errors.append("captured H1 result must remain pending adjudication")
+        if item.get("state") == "ACCEPTED" and item.get("lifecycle", {}).get("adjudication") != "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION":
+            errors.append("accepted H1 adjudication state mismatch")
         if lease.get("execution_authorized") is not False:
             errors.append("H1 returned lease must not remain executable")
         if (
@@ -174,7 +176,7 @@ def main() -> int:
         for error in errors:
             print("FAIL:", error)
         return 1
-    print("PASS: OPENMATH CEX exposes CAPTURED H1 evidence and six H2-H7 LEASED_NOT_LAUNCHED assignments")
+    print("PASS: OPENMATH CEX exposes valid H1 adjudication state and six H2-H7 LEASED_NOT_LAUNCHED assignments")
     return 0
 
 

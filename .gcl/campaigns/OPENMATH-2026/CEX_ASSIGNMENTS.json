@@ -3,7 +3,7 @@
   "record_type": "GCL_CEX_ASSIGNMENT_REGISTRY",
   "campaign": "OPENMATH-2026",
   "active_subcampaign": "OPENMATH-2026",
-  "operation": "OM26-CORE-CLARITY-RECONCILE-001",
+  "operation": "OM26-H1-H1-12-ADJ-001",
   "authority": {
     "repository": "grandchallenge/MATHSOLVE",
     "protected_branch": "main",
@@ -384,7 +384,7 @@
       "obligation": "H1-12",
       "external_hill_id": "alejandrozu/kobon-triangles",
       "slot_binding": "OM26-H1",
-      "state": "CAPTURED",
+      "state": "ACCEPTED",
       "priority": "P0",
       "lease": {
         "state": "CLOSED_AFTER_RETURN",
@@ -425,7 +425,7 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Adjudicate the recovered Agent 001 result. Until separate adjudication, the protected H1 frontier remains unchanged.",
+      "successor_gate": "Closed at Solve level by adjudication OM26-H1-H1-12-ADJ-001. Programme canonical state must be reconciled before further discretionary OPENMATH work.",
       "lifecycle": {
         "prepared": true,
         "leased": true,
@@ -438,9 +438,10 @@
           "state": "CAPTURED_RECOVERED_UNADJUDICATED",
           "receipt": "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json"
         },
-        "adjudication": "PENDING",
+        "adjudication": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
         "certification": "NONE",
-        "closed": false
+        "closed": true,
+        "closed_by": "OM26-H1-H1-12-ADJ-001"
       }
     },
     {
@@ -864,7 +865,8 @@
     "OM26-H5-WP01-IA-001",
     "OM26-H6-WP01-IA-001",
     "OM26-H7-WP01-IA-001",
-    "OM26-CORE-CLARITY-RECONCILE-001"
+    "OM26-CORE-CLARITY-RECONCILE-001",
+    "OM26-H1-H1-12-ADJ-001"
   ],
   "provider_import": {
     "receipt": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",

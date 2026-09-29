@@ -75,10 +75,12 @@ def validate() -> list[str]:
 
     assignments = {x.get("assignment_id"): x for x in registry.get("assignments", [])}
     h1 = assignments.get("OM26-H1-H1-12", {})
-    if h1.get("state") != "CAPTURED":
-        errors.append("H1 assignment must be CAPTURED")
-    if h1.get("lifecycle", {}).get("adjudication") != "PENDING":
-        errors.append("H1 adjudication must remain PENDING")
+    if h1.get("state") not in {"CAPTURED", "ACCEPTED"}:
+        errors.append("H1 assignment must be CAPTURED or ACCEPTED")
+    if h1.get("state") == "CAPTURED" and h1.get("lifecycle", {}).get("adjudication") != "PENDING":
+        errors.append("captured H1 adjudication must remain PENDING")
+    if h1.get("state") == "ACCEPTED" and h1.get("lifecycle", {}).get("adjudication") != "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION":
+        errors.append("accepted H1 adjudication state mismatch")
     if h1.get("lease", {}).get("execution_authorized") is not False:
         errors.append("H1 returned lease must not remain executable")
     h2_h7 = [assignments.get(f"OM26-H{i}-WP01", {}) for i in range(2, 8)]
@@ -99,8 +101,11 @@ def validate() -> list[str]:
         errors.append("H1 lifecycle readback does not identify exact returned result")
 
     board = (ROOT / BOARD).read_text(encoding="utf-8")
-    if "| `OM26-H1-H1-12` | `OM26-H1` | `CAPTURED` |" not in board:
-        errors.append("human job board does not show H1 CAPTURED")
+    if not any(marker in board for marker in (
+        "| `OM26-H1-H1-12` | `OM26-H1` | `CAPTURED` |",
+        "| `OM26-H1-H1-12` | `OM26-H1` | `ACCEPTED` |",
+    )):
+        errors.append("human job board does not show current H1 lifecycle")
     for i in range(2, 8):
         if f"| `OM26-H{i}-WP01` | `OM26-H{i}` | `LEASED_NOT_LAUNCHED` |" not in board:
             errors.append(f"human job board does not show OM26-H{i} LEASED_NOT_LAUNCHED")
@@ -111,8 +116,8 @@ def validate() -> list[str]:
     if set(hill_map) != {f"OM26-H{i}" for i in range(1, 8)}:
         errors.append("hill lane cardinality/identity mismatch")
     h1lane = hill_map.get("OM26-H1", {})
-    if h1lane.get("external_agent", {}).get("lifecycle_state") != "CAPTURED":
-        errors.append("H1 lane does not expose CAPTURED Agent 001 state")
+    if h1lane.get("external_agent", {}).get("lifecycle_state") not in {"CAPTURED", "ACCEPTED"}:
+        errors.append("H1 lane does not expose a valid Agent 001 lifecycle state")
     if h1lane.get("competition_state", {}).get("official_submission") != "NOT_SUBMITTED":
         errors.append("H1 competition state must be explicit NOT_SUBMITTED")
     for i in range(2, 8):
@@ -131,7 +136,7 @@ def main() -> int:
         for error in errors:
             print("FAIL:", error)
         return 1
-    print("PASS: OPENMATH Core Clarity reconciliation preserves Agent 001 and explicit lifecycle/submission state")
+    print("PASS: OPENMATH Core Clarity reconciliation permits captured or adjudicated Agent 001 successor state")
     return 0
 
 

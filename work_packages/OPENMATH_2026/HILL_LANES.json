@@ -30,7 +30,7 @@
   "hills": [
     {
       "hill_slot": "OM26-H1",
-      "status": "ACTIVE__CAMPAIGN_BEST_OBSERVED_93__AGENT001_CAPTURED_UNADJUDICATED",
+      "status": "ACTIVE__CAMPAIGN_BEST_OBSERVED_93__AGENT001_ACCEPTED_SOURCE_CONDITIONAL",
       "exact_hill_id": "alejandrozu/kobon-triangles",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -47,22 +47,23 @@
       "obligations": {
         "semantic_fidelity": "BASELINE_CONCORDANCE_PASS",
         "formalization_prerequisites": "EXACT_SCORER_OPERATIONAL",
-        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_LE_4_EXCLUDED_SOURCE_CONDITIONAL__Q5_EXACT_EQUALITY_OR_Q_GE_6",
-        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_Q5_NESTED_TRIANGLE_EQUALITY_SOURCE_CONDITIONAL",
+        "representation_or_reduction": "RH_BADER93_REALIZED__PARALLELISM_ELIMINATED__Q_LE_5_EXCLUDED_SOURCE_CONDITIONAL__Q_GE_6_REMAINS",
+        "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_Q_GE_6_SOURCE_CONDITIONAL",
         "exact_computation": "H1_13_TRANCHES1_2_3_COMPLETE__NO_94__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
-        "cei_independent_contribution": "CAPTURED_RECOVERED__ADJUDICATION_PENDING",
+        "cei_independent_contribution": "AGENT001_ACCEPTED_SOURCE_CONDITIONAL__CLOSED",
         "mathcert_handoff": "H1_02_AND_86_INTAKE_PROTECTED__93_SUCCESSOR_INTAKE_PROTECTED__CERT_EXECUTION_PENDING"
       },
-      "next_action": "Adjudicate recovered Agent 001 result on the q=5 equality obstruction before treating q=5 as closed. Until adjudication, the protected H1-12 frontier remains q=5 exact nested-triangle equality or q>=6.",
+      "next_action": "Programme canonical campaign state must reconcile the accepted Agent 001 q=5 reduction before any subsequent discretionary OPENMATH operation.",
       "external_agent": {
         "assignment_id": "OM26-H1-H1-12",
         "dispatch_id": "OM26-H1-H1-12-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-001",
-        "lifecycle_state": "CAPTURED",
+        "lifecycle_state": "ACCEPTED",
         "return_comment_id": 5881108260,
         "recovery_receipt": "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json",
-        "adjudication": "PENDING"
+        "adjudication": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
+        "adjudication_record": "contributions/OPENMATH-2026/OM26-H1/H1-12/adjudications/OM26-H1-H1-12-ADJ-001.json"
       },
       "competition_state": {
         "candidate": "RH_BADER_RECONSTRUCTION_093",
@@ -399,7 +400,7 @@
       }
     }
   ],
-  "claim_boundary": "OM26-H1 Agent 001 evidence is durably recovered but unadjudicated; the protected H1 mathematical frontier is unchanged pending adjudication. OM26-H2 through OM26-H7 each have one protected WP01 lease and no durable launch or return evidence, so their lifecycle is LEASED_NOT_LAUNCHED. No hill has an official competition submission.",
+  "claim_boundary": "OM26-H1 Agent 001 evidence is accepted at Solve level only as a source-conditional reduction closing q=5; H1-12 remains open on q>=6 and predecessor source-scoped premises remain. OM26-H2 through OM26-H7 remain LEASED_NOT_LAUNCHED. No hill has an official competition submission.",
   "provider_import": {
     "receipt": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",
     "forge_protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",

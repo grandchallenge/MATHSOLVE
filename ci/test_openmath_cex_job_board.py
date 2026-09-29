@@ -35,7 +35,7 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
             all(jobs[a]["lease"]["protected_lease_commit"] == INTRO for a in jobs)
         )
 
-    def test_h1_result_is_captured_but_unadjudicated(self):
+    def test_h1_result_is_adjudicated_and_closed(self):
         registry = load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
         job = next(
             x for x in registry["assignments"]
@@ -44,10 +44,11 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
         self.assertEqual(job["lease"]["dispatch_id"], H1["dispatch"])
         self.assertEqual(job["lease"]["agent_ref"], H1["agent"])
         self.assertEqual(job["lease"]["dispatch_issue_number"], H1["issue"])
-        self.assertEqual(job["state"], "CAPTURED")
+        self.assertEqual(job["state"], "ACCEPTED")
         self.assertEqual(job["lease"]["state"], "CLOSED_AFTER_RETURN")
         self.assertFalse(job["lease"]["execution_authorized"])
-        self.assertEqual(job["lifecycle"]["adjudication"], "PENDING")
+        self.assertEqual(job["lifecycle"]["adjudication"], "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION")
+        self.assertTrue(job["lifecycle"]["closed"])
 
     def test_lifecycle_counters(self):
         policy = load(
