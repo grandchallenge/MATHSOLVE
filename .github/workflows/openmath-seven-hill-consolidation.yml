@@ -1,0 +1,53 @@
+name: OPENMATH seven-hill consolidation
+
+on:
+  pull_request:
+    paths:
+      - "work_packages/OPENMATH_2026/HILL_LANES.json"
+      - ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
+      - "work_packages/OPENMATH_2026/HISTORICAL_TRANCHE_REGISTRY.json"
+      - "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md"
+      - "ci/validate_openmath_seven_hill_consolidation.py"
+      - "ci/validate_openmath_cex_job_board.py"
+      - "ci/test_openmath_cex_job_board.py"
+      - "ci/validate_openmath_core_clarity_reconcile.py"
+      - "ci/validate_openmath_cex_h2_h7.py"
+      - "ci/test_openmath_cex_h2_h7.py"
+      - ".gcl/operations/OM26-SEVEN-HILL-CONSOLIDATION-001/**"
+      - ".gcl/admission/OM26-SEVEN-HILL-CONSOLIDATION-001/**"
+      - ".github/workflows/openmath-seven-hill-consolidation.yml"
+      - ".ghos-routing/workflows.json"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact subject
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Validate seven-hill topology
+        run: python ci/validate_openmath_seven_hill_consolidation.py
+
+      - name: Validate current CEX registry and board
+        run: |
+          python ci/validate_openmath_cex_job_board.py
+          python -m unittest ci.test_openmath_cex_job_board
+
+      - name: Validate Core Clarity successor state
+        run: python ci/validate_openmath_core_clarity_reconcile.py
+
+      - name: Validate historical H2-H7 provenance
+        run: |
+          python ci/validate_openmath_cex_h2_h7.py
+          python -m unittest ci.test_openmath_cex_h2_h7
