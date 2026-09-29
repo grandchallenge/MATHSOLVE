@@ -97,7 +97,10 @@ def validate():
 
     lanes = load(LANES)
     h2 = next(x for x in lanes["hills"] if x["hill_slot"] == "OM26-H2")
-    assert h2["active_lease"]["lifecycle_state"] == "ACCEPTED"
+    assert h2["active_lease"]["assignment_id"] == "OM26-H2-WP02"
+    assert h2["active_lease"]["lifecycle_state"] == "LEASED_NOT_LAUNCHED"
+    assert h2["predecessor_lease"]["assignment_id"] == "OM26-H2-WP01"
+    assert h2["predecessor_lease"]["lifecycle_state"] == "ACCEPTED"
     assert h2["competition_state"]["official_submission"] == "NOT_SUBMITTED"
     assert "FIRST_WRITE_1_NOT_WLOG" in h2["obligations"]["representation_or_reduction"]
 

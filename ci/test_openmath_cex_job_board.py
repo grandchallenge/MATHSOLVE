@@ -1,6 +1,6 @@
 import unittest
 
-from ci.validate_openmath_cex_job_board import EXPECTED, H1, INTRO, load, validate
+from ci.validate_openmath_cex_job_board import EXPECTED, H1, H2_WP02, INTRO, load, validate
 
 
 class OpenMathCEXJobBoardTest(unittest.TestCase):
@@ -37,6 +37,16 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
             all(jobs[a]["lease"]["protected_lease_commit"] == INTRO for a in jobs)
         )
 
+    def test_h2_wp02_is_leased_and_unlaunched(self):
+        registry = load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
+        job = next(x for x in registry["assignments"] if x.get("assignment_id") == H2_WP02["assignment"])
+        self.assertEqual(job["state"], "LEASED_NOT_LAUNCHED")
+        self.assertEqual(job["lease"]["state"], "LEASED")
+        self.assertEqual(job["lease"]["dispatch_id"], H2_WP02["dispatch"])
+        self.assertEqual(job["lease"]["agent_ref"], H2_WP02["agent"])
+        self.assertEqual(job["lease"]["dispatch_issue_number"], H2_WP02["issue"])
+        self.assertFalse(job["lifecycle"]["launched"])
+
     def test_h1_result_is_adjudicated_and_closed(self):
         registry = load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
         job = next(
@@ -61,7 +71,9 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
         policy = registry["mathematics_release_policy"]
         self.assertEqual(set(policy["per_hill"]), {f"OM26-H{i}" for i in range(1, 8)})
         self.assertEqual(policy["per_hill"]["OM26-H1"]["agent_state"], "ACCEPTED")
-        self.assertEqual(policy["per_hill"]["OM26-H2"]["agent_state"], "ACCEPTED")
+        self.assertEqual(policy["per_hill"]["OM26-H2"]["agent_state"], "LEASED_NOT_LAUNCHED")
+        self.assertEqual(policy["per_hill"]["OM26-H2"]["assignment"], "OM26-H2-WP02")
+        self.assertEqual(policy["per_hill"]["OM26-H2"]["predecessor"]["agent_state"], "ACCEPTED")
         for i in range(3, 8):
             self.assertEqual(
                 policy["per_hill"][f"OM26-H{i}"]["agent_state"],
@@ -69,7 +81,7 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
             )
         self.assertEqual(policy["summary"]["released_hills"], 7)
         self.assertEqual(policy["summary"]["accepted_agents"], 2)
-        self.assertEqual(policy["summary"]["leased_not_launched_agents"], 5)
+        self.assertEqual(policy["summary"]["leased_not_launched_agents"], 6)
         self.assertTrue(policy["historical_tranche_metrics"]["deprecated_for_current_state"])
 
 

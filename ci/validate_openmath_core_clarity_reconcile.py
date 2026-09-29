@@ -86,13 +86,20 @@ def validate() -> list[str]:
         errors.append("accepted H1 adjudication state mismatch")
     if h1.get("lease", {}).get("execution_authorized") is not False:
         errors.append("H1 returned lease must not remain executable")
-    h2 = assignments.get("OM26-H2-WP01", {})
-    if h2.get("state") != "ACCEPTED":
-        errors.append("H2 assignment must be ACCEPTED")
-    if h2.get("lifecycle", {}).get("adjudication") != "ACCEPTED_SCORER_CONCORDANCE_WITH_SEARCH_NARROWING":
-        errors.append("H2 adjudication state mismatch")
-    if h2.get("lease", {}).get("state") != "CLOSED_AFTER_RETURN" or h2.get("lease", {}).get("execution_authorized") is not False:
-        errors.append("H2 returned lease must be closed and non-executable")
+    h2_wp01 = assignments.get("OM26-H2-WP01", {})
+    if h2_wp01.get("state") != "ACCEPTED":
+        errors.append("H2 WP01 assignment must be ACCEPTED")
+    if h2_wp01.get("lifecycle", {}).get("adjudication") != "ACCEPTED_SCORER_CONCORDANCE_WITH_SEARCH_NARROWING":
+        errors.append("H2 WP01 adjudication state mismatch")
+    if h2_wp01.get("lease", {}).get("state") != "CLOSED_AFTER_RETURN" or h2_wp01.get("lease", {}).get("execution_authorized") is not False:
+        errors.append("H2 WP01 returned lease must be closed and non-executable")
+    h2_wp02 = assignments.get("OM26-H2-WP02", {})
+    if h2_wp02.get("state") != "LEASED_NOT_LAUNCHED":
+        errors.append("H2 WP02 assignment must be LEASED_NOT_LAUNCHED")
+    if h2_wp02.get("lease", {}).get("dispatch_id") != "OM26-H2-WP02-IA-001" or h2_wp02.get("lease", {}).get("agent_ref") != "INDEPENDENT-AGENT-008":
+        errors.append("H2 WP02 lease identity mismatch")
+    if h2_wp02.get("lifecycle", {}).get("launched") is not False:
+        errors.append("H2 WP02 must remain unlaunched before external return")
     for rel in (H2_RAW, H2_RECEIPT, H2_ADJ):
         if not (ROOT / rel).is_file():
             errors.append(f"H2 protected evidence missing: {rel}")
@@ -121,7 +128,9 @@ def validate() -> list[str]:
     )):
         errors.append("human job board does not show current H1 lifecycle")
     if "| `OM26-H2-WP01` | `OM26-H2` | `ACCEPTED` |" not in board:
-        errors.append("human job board does not show OM26-H2 ACCEPTED")
+        errors.append("human job board does not show OM26-H2 WP01 ACCEPTED")
+    if "| `OM26-H2-WP02` | `OM26-H2` | `LEASED_NOT_LAUNCHED` |" not in board:
+        errors.append("human job board does not show OM26-H2 WP02 LEASED_NOT_LAUNCHED")
     for i in range(3, 8):
         if f"| `OM26-H{i}-WP01` | `OM26-H{i}` | `LEASED_NOT_LAUNCHED` |" not in board:
             errors.append(f"human job board does not show OM26-H{i} LEASED_NOT_LAUNCHED")
@@ -145,8 +154,10 @@ def validate() -> list[str]:
     if h1lane.get("competition_state", {}).get("official_submission") != "NOT_SUBMITTED":
         errors.append("H1 competition state must be explicit NOT_SUBMITTED")
     h2lane = hill_map.get("OM26-H2", {})
-    if h2lane.get("active_lease", {}).get("lifecycle_state") != "ACCEPTED":
-        errors.append("OM26-H2 lane lifecycle mismatch")
+    if h2lane.get("active_lease", {}).get("assignment_id") != "OM26-H2-WP02" or h2lane.get("active_lease", {}).get("lifecycle_state") != "LEASED_NOT_LAUNCHED":
+        errors.append("OM26-H2 active WP02 lane lifecycle mismatch")
+    if h2lane.get("predecessor_lease", {}).get("assignment_id") != "OM26-H2-WP01" or h2lane.get("predecessor_lease", {}).get("lifecycle_state") != "ACCEPTED":
+        errors.append("OM26-H2 predecessor WP01 lane lifecycle mismatch")
     if h2lane.get("competition_state", {}).get("official_submission") != "NOT_SUBMITTED":
         errors.append("OM26-H2 competition state must be explicit NOT_SUBMITTED")
     for i in range(3, 8):
