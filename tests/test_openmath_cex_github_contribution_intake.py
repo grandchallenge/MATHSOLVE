@@ -83,6 +83,73 @@ class OpenMathCEXGitHubContributionIntakeTest(unittest.TestCase):
         with self.assertRaises(IntakeError):
             parse_result_comment(body)
 
+    def test_dispatch_issue_allows_one_terminal_lf_transport_difference(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            base = root / "contributions/OPENMATH-2026/OM26-H2/WP01"
+            dispatch_dir = base / "dispatches"
+            dispatch_dir.mkdir(parents=True)
+            operation_dir = root / ".gcl/operations/OM26-H2-WP01-IA-001"
+            operation_dir.mkdir(parents=True)
+            bootstrap = root / "handoffs/OPENMATH-2026/jobs/OM26-H2-WP01-IA-001.md"
+            bootstrap.parent.mkdir(parents=True)
+
+            issue_body = """GCL-CONTRIBUTION-DISPATCH/1
+dispatch_id: OM26-H2-WP01-IA-001
+agent_ref: INDEPENDENT-AGENT-002
+assignment: OM26-H2-WP01"""
+            bootstrap.write_text(issue_body + "\n", encoding="utf-8")
+
+            dispatch = {
+                "schema_version": "1.0.0",
+                "record_type": "GCL_EXTERNAL_DISPATCH",
+                "dispatch_id": "OM26-H2-WP01-IA-001",
+                "campaign": "OPENMATH-2026",
+                "hill": "OM26-H2",
+                "assignment_id": "OM26-H2-WP01",
+                "agent_ref": "INDEPENDENT-AGENT-002",
+                "concurrency_mode": "independent_blind",
+                "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H2-WP01-IA-001.md",
+                "bootstrap_blob_sha1": "a" * 40,
+                "source_handoff_commit_sha": "b" * 40,
+                "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+                "github_issue_number": 600,
+                "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/600",
+                "github_issue_title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H2-WP01-IA-001 — independent WP01",
+                "canonical_mutation_authorized": False,
+                "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+                "operation_contract": ".gcl/operations/OM26-H2-WP01-IA-001/OPERATION.json",
+            }
+            (dispatch_dir / "OM26-H2-WP01-IA-001.json").write_text(json.dumps(dispatch), encoding="utf-8")
+            operation = {
+                "dispatch_id": "OM26-H2-WP01-IA-001",
+                "assignment_id": "OM26-H2-WP01",
+                "agent_ref": "INDEPENDENT-AGENT-002",
+                "acceptable_dispositions": ["INDEPENDENT_SCORER_CONCORDANCE"],
+            }
+            (operation_dir / "OPERATION.json").write_text(json.dumps(operation), encoding="utf-8")
+
+            event = {
+                "issue": {
+                    "number": 600,
+                    "title": dispatch["github_issue_title"],
+                    "body": issue_body + "\n",
+                },
+                "comment": {
+                    "id": 700,
+                    "body": H2_VALID,
+                    "created_at": "2026-09-29T00:00:00Z",
+                    "user": {"login": "external-agent"},
+                },
+            }
+            meta = emit_intake(event, root, root / "out")
+            self.assertEqual(meta["dispatch_id"], "OM26-H2-WP01-IA-001")
+
+            invalid = json.loads(json.dumps(event))
+            invalid["issue"]["body"] = issue_body + "\n\n"
+            with self.assertRaises(IntakeError):
+                emit_intake(invalid, root, root / "out2")
+
     def test_generic_dispatch_drives_assignment_disposition_and_output_path(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
