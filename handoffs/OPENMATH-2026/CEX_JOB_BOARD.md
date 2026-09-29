@@ -18,7 +18,8 @@ Current authority is per exact hill lane `OM26-H1` through `OM26-H7`. Historical
 |---|---|---|---|---|---|
 | `OM26-H1-H1-12` | `OM26-H1` | `ACCEPTED` | `OM26-H1-H1-12-IA-001` | `INDEPENDENT-AGENT-001` | #498 |
 | `OM26-H2-WP01` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP01-IA-001` | `INDEPENDENT-AGENT-002` | #505 |
-| `OM26-H2-WP02` | `OM26-H2` | `LEASED_NOT_LAUNCHED` | `OM26-H2-WP02-IA-001` | `INDEPENDENT-AGENT-008` | #526 |
+| `OM26-H2-WP02` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP02-IA-001` | `INDEPENDENT-AGENT-008` | #526 |
+| `OM26-H2-WP03` | `OM26-H2` | `LEASED_NOT_LAUNCHED` | `OM26-H2-WP03-IA-001` | `INDEPENDENT-AGENT-009` | #537 |
 | `OM26-H3-WP01` | `OM26-H3` | `LEASED_NOT_LAUNCHED` | `OM26-H3-WP01-IA-001` | `INDEPENDENT-AGENT-003` | #506 |
 | `OM26-H4-WP01` | `OM26-H4` | `LEASED_NOT_LAUNCHED` | `OM26-H4-WP01-IA-001` | `INDEPENDENT-AGENT-004` | #507 |
 | `OM26-H5-WP01` | `OM26-H5` | `LEASED_NOT_LAUNCHED` | `OM26-H5-WP01-IA-001` | `INDEPENDENT-AGENT-005` | #508 |
@@ -29,7 +30,7 @@ Agent 001 returned one result on #498. The original intake rejected it because o
 
 Agent 002 returned one valid result on #505. Its independent scorer concordance, baseline replay, minimum-step argument, and private-budget reconstruction are accepted at Solve level as `ACCEPTED_SCORER_CONCORDANCE_WITH_SEARCH_NARROWING`. The proposed first-write=`1` TNF normalization is not accepted as WLOG, and heuristic pruning remains noncanonical until exact soundness is proved.
 
-WP02 is the active H2 successor lease. Agent 008 must construct a complete exact-search design with proved symmetry reductions and exact pruning, using issue #526 as the sole return surface. Agents 003-007 retain their protected one-to-one leases with no durable launch/result evidence; all six active leases are `LEASED_NOT_LAUNCHED`.
+Agent 008 returned WP02 and its two finite witnesses were independently replayed and accepted at Solve level: `(89911,185,541)` and first-write-zero `(8021,41,122)`. The stronger `EXACT_SEARCH_DESIGN_VALIDATED` claim was not admitted because the returned replay used a circular protected-evaluator wrapper, contained an internal `121` versus `122` tape-span contradiction, and omitted the claimed distinct unpruned comparator. WP03 is now the active H2 replay-closure lease for Agent 009 on issue #537. Agents 003-007 retain their protected one-to-one leases with no durable launch/result evidence; H2 WP03 and each currently executable peer hill are `LEASED_NOT_LAUNCHED`.
 
 `LEASED` does not imply `LAUNCHED`; `RETURNED` does not imply `CAPTURED`; `CAPTURED` does not imply `ACCEPTED` or `CERTIFIED`.
 
@@ -40,7 +41,7 @@ Every active hill lease is independent-blind and one-to-one. No agent may substi
 The canonical external launch surface is one immutable public task link per peer hill. Historical files under `handoffs/OPENMATH-2026/jobs/` remain frozen provenance and SHALL NOT be used as current launch tasks.
 
 - H1: guard only; no active successor lease.
-- H2: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H2.md
+- H2: https://github.com/grandchallenge/MATHSOLVE/blob/208fa322f52d06eb7f9b6affff0f359217a5118e/handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md
 - H3: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H3.md
 - H4: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H4.md
 - H5: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H5.md

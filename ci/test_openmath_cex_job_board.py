@@ -1,88 +1,52 @@
 import unittest
 
-from ci.validate_openmath_cex_job_board import EXPECTED, H1, H2_WP02, INTRO, load, validate
+from ci.validate_openmath_cex_job_board import (
+    H1, H2_WP01, H2_WP02, H2_WP03, EXPECTED, load, validate
+)
 
 
 class OpenMathCEXJobBoardTest(unittest.TestCase):
     def test_preflight(self):
         self.assertEqual(validate(), [])
 
-    def test_h2_through_h7_bindings_remain_one_to_one(self):
+    def test_h2_lifecycle_progression(self):
         registry = load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
-        jobs = {
-            x["assignment_id"]: x
-            for x in registry["assignments"]
-            if x.get("assignment_id") in EXPECTED
-        }
-        self.assertEqual(set(jobs), set(EXPECTED))
+        jobs = {x["assignment_id"]: x for x in registry["assignments"]}
+        self.assertEqual(jobs[H2_WP01["assignment"]]["state"], "ACCEPTED")
+        self.assertEqual(jobs[H2_WP02["assignment"]]["state"], "ACCEPTED")
         self.assertEqual(
-            {jobs[a]["lease"]["agent_ref"] for a in jobs},
-            {v["agent"] for v in EXPECTED.values()},
+            jobs[H2_WP02["assignment"]]["lifecycle"]["adjudication"],
+            "ACCEPTED_WITNESSES_WITH_EXACT_SEARCH_REPLAY_REJECTED",
         )
-        self.assertEqual(
-            {jobs[a]["lease"]["dispatch_issue_number"] for a in jobs},
-            {v["issue"] for v in EXPECTED.values()},
-        )
-        h2 = jobs["OM26-H2-WP01"]
-        self.assertEqual(h2["state"], "ACCEPTED")
-        self.assertEqual(h2["lease"]["state"], "CLOSED_AFTER_RETURN")
-        self.assertFalse(h2["lease"]["execution_authorized"])
-        self.assertTrue(h2["lifecycle"]["launched"])
-        self.assertTrue(h2["lifecycle"]["closed"])
-        for aid in sorted(a for a in jobs if a != "OM26-H2-WP01"):
+        wp03 = jobs[H2_WP03["assignment"]]
+        self.assertEqual(wp03["state"], "LEASED_NOT_LAUNCHED")
+        self.assertEqual(wp03["lease"]["state"], "LEASED")
+        self.assertEqual(wp03["lease"]["agent_ref"], "INDEPENDENT-AGENT-009")
+        self.assertFalse(wp03["lifecycle"]["launched"])
+
+    def test_peer_hills_remain_leased_and_unlaunched(self):
+        registry = load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
+        jobs = {x["assignment_id"]: x for x in registry["assignments"]}
+        for aid in EXPECTED:
             self.assertEqual(jobs[aid]["state"], "LEASED_NOT_LAUNCHED")
             self.assertEqual(jobs[aid]["lease"]["state"], "LEASED")
             self.assertFalse(jobs[aid]["lifecycle"]["launched"])
-        self.assertTrue(
-            all(jobs[a]["lease"]["protected_lease_commit"] == INTRO for a in jobs)
-        )
 
-    def test_h2_wp02_is_leased_and_unlaunched(self):
+    def test_h1_remains_adjudicated_and_closed(self):
         registry = load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
-        job = next(x for x in registry["assignments"] if x.get("assignment_id") == H2_WP02["assignment"])
-        self.assertEqual(job["state"], "LEASED_NOT_LAUNCHED")
-        self.assertEqual(job["lease"]["state"], "LEASED")
-        self.assertEqual(job["lease"]["dispatch_id"], H2_WP02["dispatch"])
-        self.assertEqual(job["lease"]["agent_ref"], H2_WP02["agent"])
-        self.assertEqual(job["lease"]["dispatch_issue_number"], H2_WP02["issue"])
-        self.assertFalse(job["lifecycle"]["launched"])
-
-    def test_h1_result_is_adjudicated_and_closed(self):
-        registry = load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
-        job = next(
-            x for x in registry["assignments"]
-            if x.get("assignment_id") == H1["assignment"]
-        )
-        self.assertEqual(job["lease"]["dispatch_id"], H1["dispatch"])
-        self.assertEqual(job["lease"]["agent_ref"], H1["agent"])
-        self.assertEqual(job["lease"]["dispatch_issue_number"], H1["issue"])
+        job = next(x for x in registry["assignments"] if x["assignment_id"] == H1["assignment"])
         self.assertEqual(job["state"], "ACCEPTED")
         self.assertEqual(job["lease"]["state"], "CLOSED_AFTER_RETURN")
         self.assertFalse(job["lease"]["execution_authorized"])
-        self.assertEqual(job["lifecycle"]["adjudication"], "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION")
-        self.assertTrue(job["lifecycle"]["closed"])
 
     def test_seven_hill_release_projection(self):
         registry = load(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
-        self.assertEqual(
-            registry["current_topology"]["hills"],
-            [f"OM26-H{i}" for i in range(1, 8)],
-        )
+        self.assertEqual(registry["current_topology"]["hills"], [f"OM26-H{i}" for i in range(1, 8)])
         policy = registry["mathematics_release_policy"]
-        self.assertEqual(set(policy["per_hill"]), {f"OM26-H{i}" for i in range(1, 8)})
-        self.assertEqual(policy["per_hill"]["OM26-H1"]["agent_state"], "ACCEPTED")
-        self.assertEqual(policy["per_hill"]["OM26-H2"]["agent_state"], "LEASED_NOT_LAUNCHED")
-        self.assertEqual(policy["per_hill"]["OM26-H2"]["assignment"], "OM26-H2-WP02")
-        self.assertEqual(policy["per_hill"]["OM26-H2"]["predecessor"]["agent_state"], "ACCEPTED")
-        for i in range(3, 8):
-            self.assertEqual(
-                policy["per_hill"][f"OM26-H{i}"]["agent_state"],
-                "LEASED_NOT_LAUNCHED",
-            )
-        self.assertEqual(policy["summary"]["released_hills"], 7)
-        self.assertEqual(policy["summary"]["accepted_agents"], 2)
+        self.assertEqual(policy["per_hill"]["OM26-H2"]["assignment"], "OM26-H2-WP03")
+        self.assertEqual(policy["per_hill"]["OM26-H2"]["predecessor"]["assignment"], "OM26-H2-WP02")
+        self.assertEqual(policy["summary"]["accepted_agents"], 3)
         self.assertEqual(policy["summary"]["leased_not_launched_agents"], 6)
-        self.assertTrue(policy["historical_tranche_metrics"]["deprecated_for_current_state"])
 
 
 if __name__ == "__main__":

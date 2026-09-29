@@ -13,6 +13,9 @@ BOOT = ROOT / "handoffs/OPENMATH-2026/jobs/OM26-H2-WP03-IA-001.md"
 LAUNCH = ROOT / "handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md"
 DISPATCH = ROOT / "contributions/OPENMATH-2026/OM26-H2/WP03/dispatches/OM26-H2-WP03-IA-001.json"
 OP = ROOT / ".gcl/operations/OM26-H2-WP03-IA-001/OPERATION.json"
+REGISTRY = ROOT / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
+LANES = ROOT / "work_packages/OPENMATH_2026/HILL_LANES.json"
+BOARD = ROOT / "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md"
 EVAL = ROOT / "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/busy-beaver-6-certificates/PUBLIC_SOURCE/eval.py"
 
 W89911 = {
@@ -52,6 +55,9 @@ def main() -> int:
     status = load_json(STATUS)
     dispatch = load_json(DISPATCH)
     op = load_json(OP)
+    registry = load_json(REGISTRY)
+    lanes = load_json(LANES)
+    board = BOARD.read_text(encoding="utf-8")
     boot = BOOT.read_text(encoding="utf-8")
     launch = LAUNCH.read_text(encoding="utf-8")
     ev = load_eval()
@@ -114,6 +120,25 @@ def main() -> int:
         "GCL-RETURN-RELAY/1",
     ):
         assert marker in launch
+
+    assignments = {x["assignment_id"]: x for x in registry["assignments"]}
+    wp02 = assignments["OM26-H2-WP02"]
+    wp03 = assignments["OM26-H2-WP03"]
+    assert wp02["state"] == "ACCEPTED"
+    assert wp02["lease"]["state"] == "CLOSED_AFTER_RETURN"
+    assert wp02["lease"]["execution_authorized"] is False
+    assert wp02["lifecycle"]["adjudication"] == "ACCEPTED_WITNESSES_WITH_EXACT_SEARCH_REPLAY_REJECTED"
+    assert wp03["state"] == "LEASED_NOT_LAUNCHED"
+    assert wp03["lease"]["protected_lease_merge"] == "208fa322f52d06eb7f9b6affff0f359217a5118e"
+    assert wp03["lease"]["readback_verified"] is True
+    assert wp03["lease"]["execution_authorized"] is True
+    assert wp03["lifecycle"]["launched"] is False
+    lane = next(x for x in lanes["hills"] if x["hill_slot"] == "OM26-H2")
+    assert lane["active_lease"]["assignment_id"] == "OM26-H2-WP03"
+    assert lane["active_lease"]["lifecycle_state"] == "LEASED_NOT_LAUNCHED"
+    assert lane["predecessor_lease"]["assignment_id"] == "OM26-H2-WP02"
+    assert lane["predecessor_lease"]["lifecycle_state"] == "ACCEPTED"
+    assert "| `OM26-H2-WP03` | `OM26-H2` | `LEASED_NOT_LAUNCHED` |" in board
 
     print("PASS: H2 WP02 narrowed adjudication replays both witnesses and generates bounded WP03 replay closure")
     return 0

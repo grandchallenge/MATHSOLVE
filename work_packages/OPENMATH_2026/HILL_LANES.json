@@ -77,7 +77,7 @@
     },
     {
       "hill_slot": "OM26-H2",
-      "status": "WP02_LEASED_NOT_LAUNCHED__WP01_ACCEPTED__EXACT_SEARCH_DESIGN",
+      "status": "WP03_LEASED_NOT_LAUNCHED__WP02_ACCEPTED__EXACT_SEARCH_REPLAY_CLOSURE",
       "exact_hill_id": "alejandrozu/busy-beaver-6-certificates",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -100,22 +100,22 @@
       },
       "obligations": {
         "semantic_fidelity": "PROTECTED_PROVIDER_SEMANTICS_IMPORTED__SOLVE_READBACK_CONFIRMED",
-        "formalization_prerequisites": "EVALUATOR_CONTRACT_AND_BASELINE_CONCORDANCE_ACCEPTED",
-        "representation_or_reduction": "WP02_LEASED__EXACT_SEARCH_DESIGN__FIRST_WRITE_1_NOT_WLOG",
+        "formalization_prerequisites": "EVALUATOR_CONTRACT_AND_WP01_SCORER_ACCEPTED__WP02_WITNESSES_REPLAYED",
+        "representation_or_reduction": "WP03_LEASED__EXACT_SEARCH_REPLAY_AND_PRUNING_AUDIT",
         "restricted_theorem": "WP01_AVAILABLE_FOR_LEASE",
-        "exact_computation": "WP02_LEASED__EXACT_SEARCH_AND_DUAL_REPLAY",
-        "falsification_counterexample": "WP02_REQUIRES_SYMMETRY_AND_PRUNING_FALSIFICATION_SUITE",
-        "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H2-WP02-IA-001",
+        "exact_computation": "WP03_LEASED__DUAL_REPLAY_AND_UNPRUNED_SMALL_HORIZON_COMPARATOR",
+        "falsification_counterexample": "WP03_REQUIRES_RULE_BY_RULE_ADVERSARIAL_PRUNING_AUDIT",
+        "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H2-WP03-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-008 from the verified OM26-H2-WP02 lease using a self-contained protected task envelope. The agent returns one complete GCL-RETURN-RELAY/1 payload to the launcher; authenticated GCL infrastructure durably relays the embedded RESULT/1 to issue #526.",
+      "next_action": "Launch INDEPENDENT-AGENT-009 from the verified OM26-H2-WP03 lease using the registered immutable LINK_IN_RELAY_OUT task URL. The agent returns one complete GCL-RETURN-RELAY/1 payload; authenticated GCL infrastructure performs durable intake.",
       "title": "Busy Beaver 6 certificates",
       "active_lease": {
-        "assignment_id": "OM26-H2-WP02",
-        "dispatch_id": "OM26-H2-WP02-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-008",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/526",
-        "protected_merge": "113cdc018b84696b9c15413e4cd4a776d20e72ec",
+        "assignment_id": "OM26-H2-WP03",
+        "dispatch_id": "OM26-H2-WP03-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-009",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/537",
+        "protected_merge": "208fa322f52d06eb7f9b6affff0f359217a5118e",
         "readback_verified": true,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
@@ -123,23 +123,36 @@
       },
       "competition_state": {
         "candidate": null,
-        "lifecycle": "NO_PROMOTED_CANDIDATE",
-        "local_verification": "WP01_SCORER_ACCEPTED__SEARCH_PENDING",
+        "lifecycle": "NO_PROMOTED_COMPETITION_CANDIDATE",
+        "local_verification": "WP02_FINITE_WITNESSES_ACCEPTED__EXACT_SEARCH_REPLAY_PENDING_WP03",
         "official_submission": "NOT_SUBMITTED",
         "official_acceptance": "NONE"
       },
       "predecessor_lease": {
-        "assignment_id": "OM26-H2-WP01",
-        "dispatch_id": "OM26-H2-WP01-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-002",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/505",
-        "protected_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
+        "assignment_id": "OM26-H2-WP02",
+        "dispatch_id": "OM26-H2-WP02-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-008",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/526",
+        "protected_merge": "113cdc018b84696b9c15413e4cd4a776d20e72ec",
         "readback_verified": true,
         "lifecycle_state": "ACCEPTED",
-        "launch_evidence": "RETURN_ITSELF_PROVES_EXECUTION_OCCURRED__ORIGINAL_LAUNCH_EVENT_NOT_DURABLY_RECORDED",
-        "return_evidence": "contributions/OPENMATH-2026/OM26-H2/WP01/raw/OM26-H2-WP01-IA-001/github-comment-5883655827.md",
-        "adjudication": "ACCEPTED_SCORER_CONCORDANCE_WITH_SEARCH_NARROWING",
-        "adjudication_record": "contributions/OPENMATH-2026/OM26-H2/WP01/adjudications/OM26-H2-WP01-ADJ-001.json"
+        "launch_evidence": "RETURN_ITSELF_PROVES_EXECUTION_OCCURRED__LINK_IN_RELAY_OUT_LAUNCH_NOT_SEPARATELY_RECORDED",
+        "return_evidence": "contributions/OPENMATH-2026/OM26-H2/WP02/raw/OM26-H2-WP02-IA-001/github-comment-5889734796.md",
+        "adjudication": "ACCEPTED_WITNESSES_WITH_EXACT_SEARCH_REPLAY_REJECTED",
+        "adjudication_record": "contributions/OPENMATH-2026/OM26-H2/WP02/adjudications/OM26-H2-WP02-ADJ-001.json",
+        "accepted_witnesses": [
+          {
+            "steps": 89911,
+            "ones": 185,
+            "tape_span": 541
+          },
+          {
+            "steps": 8021,
+            "ones": 41,
+            "tape_span": 122,
+            "first_write": 0
+          }
+        ]
       }
     },
     {
