@@ -15,6 +15,7 @@ on:
       - ".gcl/operations/OM26-H2-WP02-ADJ-001/**"
       - ".gcl/operations/OM26-H2-WP03-IA-001/**"
       - ".gcl/admission/OM26-H2-WP02-ADJ-001/**"
+      - ".gcl/completions/OM26-H2-WP02-ADJ-001/**"
       - "ci/validate_openmath_h2_wp02_adjudication.py"
       - ".github/workflows/openmath-h2-wp02-adjudication.yml"
 
