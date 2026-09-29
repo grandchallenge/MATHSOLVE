@@ -47,7 +47,8 @@ class OpenMathCEXJobBoardTest(unittest.TestCase):
         self.assertEqual(job["state"], "ACCEPTED")
         self.assertEqual(job["lease"]["state"], "CLOSED_AFTER_RETURN")
         self.assertFalse(job["lease"]["execution_authorized"])
-        self.assertEqual(job["lifecycle"]["adjudication"], "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION")\n        self.assertTrue(job["lifecycle"]["closed"])
+        self.assertEqual(job["lifecycle"]["adjudication"], "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION")
+        self.assertTrue(job["lifecycle"]["closed"])
 
     def test_lifecycle_counters(self):
         policy = load(
