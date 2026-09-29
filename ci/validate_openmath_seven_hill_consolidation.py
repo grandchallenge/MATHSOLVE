@@ -56,8 +56,13 @@ def validate() -> list[str]:
         errors.append("mathematics release policy is not ordered H1-H7")
     if per_hill.get("OM26-H1", {}).get("agent_state") != "ACCEPTED":
         errors.append("H1 current agent state mismatch")
-    if per_hill.get("OM26-H2", {}).get("agent_state") != "ACCEPTED":
+    if per_hill.get("OM26-H2", {}).get("agent_state") != "LEASED_NOT_LAUNCHED":
         errors.append("H2 current agent state mismatch")
+    if per_hill.get("OM26-H2", {}).get("assignment") != "OM26-H2-WP02":
+        errors.append("H2 current assignment mismatch")
+    predecessor = per_hill.get("OM26-H2", {}).get("predecessor", {})
+    if predecessor.get("assignment") != "OM26-H2-WP01" or predecessor.get("agent_state") != "ACCEPTED":
+        errors.append("H2 predecessor state mismatch")
     for i in range(3, 8):
         if per_hill.get(f"OM26-H{i}", {}).get("agent_state") != "LEASED_NOT_LAUNCHED":
             errors.append(f"OM26-H{i} current agent state mismatch")
