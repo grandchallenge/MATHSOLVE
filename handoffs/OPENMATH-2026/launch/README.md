@@ -4,7 +4,7 @@ Canonical mode is `LINK_IN_RELAY_OUT`. No human work-package copy/paste is part 
 
 | Hill | Immutable task | Executable |
 |---|---|---|
-| H1 | https://github.com/grandchallenge/MATHSOLVE/blob/fe2af74372e39dbde29cdd46b0b9c80e8af7ebe6/handoffs/OPENMATH-2026/launch/OM26-H1-WP01.md | Yes — OM26-H1-WP01 / INDEPENDENT-AGENT-101 |
+| H1 | PENDING_CONTENT_COMMIT | Yes — OM26-H1-WP02 / INDEPENDENT-AGENT-102 |
 | H2 | https://github.com/grandchallenge/MATHSOLVE/blob/e64c93148ddecbc8e51352c24926898e42b8ea10/handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md | Yes — OM26-H2-WP03 / INDEPENDENT-AGENT-009 |
 | H3 | https://github.com/grandchallenge/MATHSOLVE/blob/fcb5c5c013fadb94e24029e7638ff978945f8d05/handoffs/OPENMATH-2026/launch/OM26-H3-WP02.md | Yes — OM26-H3-WP02 / INDEPENDENT-AGENT-302 |
 | H4 | https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H4.md | Yes — OM26-H4-WP01 / INDEPENDENT-AGENT-004 |
