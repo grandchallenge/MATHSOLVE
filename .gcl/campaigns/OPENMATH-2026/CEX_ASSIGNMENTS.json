@@ -1080,7 +1080,7 @@
         "dispatch_id": "OM26-H3-WP02-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-302",
         "dispatch_issue_number": 545,
-        "protected_lease_commit": "fcb5c5c013fadb94e24029e7638ff978945f8d05",
+        "protected_lease_commit": "9593c53092d56b658556442b5352072a0af28b9b",
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/545",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/545",
         "readback_verified": false,
@@ -1088,7 +1088,7 @@
         "activation_condition": "PROTECTED_MERGE_OF_LIFECYCLE_CANDIDATE"
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H3-WP02-IA-001.md",
-      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/fcb5c5c013fadb94e24029e7638ff978945f8d05/handoffs/OPENMATH-2026/jobs/OM26-H3-WP02-IA-001.md",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/263e27a1f9b301e4f99259fc3ffc3924317edd81/handoffs/OPENMATH-2026/jobs/OM26-H3-WP02-IA-001.md",
       "operation_contract": ".gcl/operations/OM26-H3-WP02-IA-001/OPERATION.json",
       "prerequisites": {
         "predecessor_assignment": "OM26-H3-WP01",
@@ -1173,9 +1173,9 @@
         "dispatch_id": "OM26-H3-WP02-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-302",
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/545",
-        "task_commit": "fcb5c5c013fadb94e24029e7638ff978945f8d05",
-        "task_blob_sha1": "ce3aca5b5f80a35a17c983461ba672582c57744e",
-        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/fcb5c5c013fadb94e24029e7638ff978945f8d05/handoffs/OPENMATH-2026/launch/OM26-H3-WP02.md"
+        "task_commit": "9593c53092d56b658556442b5352072a0af28b9b",
+        "task_blob_sha1": "3b777aa24bf7f6d0bca4fe2e36f63bbfd02bb20b",
+        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/9593c53092d56b658556442b5352072a0af28b9b/handoffs/OPENMATH-2026/launch/OM26-H3-WP02.md"
       },
       "OM26-H4": {
         "path": "handoffs/OPENMATH-2026/launch/OM26-H4.md",
