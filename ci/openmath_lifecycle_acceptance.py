@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import ast
 import importlib.util
 import json
 import re
@@ -45,24 +46,46 @@ def load_eval():
     return mod
 
 
-def machine_before(raw: str, marker: str) -> dict[tuple[str, int], tuple[int, str, str]]:
-    stop = raw.find(marker)
-    if stop < 0:
-        raise AcceptanceError(f"missing returned-result marker: {marker}")
-    prefix = raw[:stop]
-    starts = [m.start() for m in re.finditer(r'\{"transitions":', prefix)]
-    if not starts:
-        raise AcceptanceError(f"no transition object before {marker}")
-    obj, _ = json.JSONDecoder().raw_decode(prefix[starts[-1]:])
-    rows = obj.get("transitions")
-    if not isinstance(rows, dict):
-        raise AcceptanceError("transition object malformed")
-    out: dict[tuple[str, int], tuple[int, str, str]] = {}
-    for state, row in rows.items():
-        for symbol in ("0", "1"):
-            write, move, nxt = row[symbol]
-            out[(state, int(symbol))] = (int(write), str(move), str(nxt))
-    return out
+def returned_priority_cores(raw: str) -> tuple[dict, ...]:
+    marker = "PRIORITY_SPINE_CORES: tuple[TransitionTable, ...] ="
+    start = raw.find(marker)
+    if start < 0:
+        raise AcceptanceError("returned priority-spine cores are missing")
+    expr_start = raw.find("(", start + len(marker))
+    end_marker = "\n\n\ndef heuristic_priority_key"
+    end = raw.find(end_marker, expr_start)
+    if expr_start < 0 or end < 0:
+        raise AcceptanceError("cannot delimit returned priority-spine cores")
+    expr = raw[expr_start:end].strip()
+    try:
+        value = ast.literal_eval(expr)
+    except (SyntaxError, ValueError) as exc:
+        raise AcceptanceError(f"cannot parse returned priority-spine cores: {exc}") from exc
+    if not isinstance(value, tuple) or len(value) < 3 or not all(isinstance(x, dict) for x in value):
+        raise AcceptanceError("returned priority-spine core shape drift")
+    return value
+
+
+def complete_returned_core(
+    core: dict[tuple[str, int], tuple[int, str, str]],
+    halt_slot: tuple[str, int],
+) -> dict[tuple[str, int], tuple[int, str, str]]:
+    table = dict(core)
+    table[halt_slot] = (1, "R", "H")
+    completed: dict[tuple[str, int], tuple[int, str, str]] = {}
+    for state in ("A", "B", "C", "D", "E", "F"):
+        for symbol in (0, 1):
+            value = table.get((state, symbol), (1, "R", "H"))
+            if not (
+                isinstance(value, tuple)
+                and len(value) == 3
+                and value[0] in (0, 1)
+                and value[1] in ("L", "R")
+                and value[2] in ("A", "B", "C", "D", "E", "F", "H")
+            ):
+                raise AcceptanceError(f"malformed returned transition at {(state, symbol)}")
+            completed[(state, symbol)] = value
+    return completed
 
 
 def run_acceptance() -> dict[str, Any]:
@@ -80,8 +103,9 @@ def run_acceptance() -> dict[str, Any]:
         raise AcceptanceError("fixture agent drift")
 
     ev = load_eval()
-    w89911 = machine_before(raw, "steps=89911")
-    w8021 = machine_before(raw, "steps=8021")
+    cores = returned_priority_cores(raw)
+    w89911 = complete_returned_core(cores[0], ("C", 1))
+    w8021 = complete_returned_core(cores[2], ("F", 0))
     r1 = ev._run(w89911, 250000)
     r2 = ev._run(w8021, 250000)
     if (r1["halted"], r1["steps"], r1["ones"], r1["tape_span"], r1["reached"]) != (
