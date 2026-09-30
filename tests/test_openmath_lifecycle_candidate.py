@@ -37,9 +37,9 @@ class OpenMathLifecycleCandidateStateTest(unittest.TestCase):
                 "assignment_id":"OM26-H3-WP01",
                 "dispatch_id":"OM26-H3-WP01-IA-001",
             }),encoding="utf-8")
-            (root/"RAW.md").write_text("GCL-CONTRIBUTION-RESULT/1\\n",encoding="utf-8")
+            (root/"RAW.md").write_text("GCL-CONTRIBUTION-RESULT/1\n",encoding="utf-8")
             body=plan(root)["issue_body"]
-            self.assertIn("```text\\nGCL-CONTRIBUTION-RESULT/1",body)
+            self.assertIn("```text\nGCL-CONTRIBUTION-RESULT/1",body)
             self.assertNotIn("\\`",body)
 
     def test_launched_return_to_successor_recomputes_counts(self):
