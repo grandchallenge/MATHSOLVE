@@ -8,7 +8,10 @@ import re
 from pathlib import Path
 from typing import Any
 
-from ci.openmath_cex_github_contribution_intake import parse_result_comment
+try:
+    from ci.openmath_cex_github_contribution_intake import parse_result_comment
+except ModuleNotFoundError:
+    from openmath_cex_github_contribution_intake import parse_result_comment
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "contributions/OPENMATH-2026/OM26-H2/WP02/raw/OM26-H2-WP02-IA-001/github-comment-5889734796.md"
