@@ -1,6 +1,10 @@
 name: OPENMATH CEX independent contribution intake
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/openmath-cex-independent-contribution-intake.yml"
   issue_comment:
     types: [created]
 
@@ -14,6 +18,8 @@ concurrency:
 
 jobs:
   intake:
+    outputs:
+      candidate_ready: ${{ steps.validate.outcome == 'success' && (steps.state.outputs.branch_exists == 'true' || steps.lifecycle.outcome == 'success') }}
     if: >
       !github.event.issue.pull_request &&
       startsWith(github.event.issue.title, '[GCL-CONTRIB] OPENMATH-2026 ') &&
@@ -220,3 +226,32 @@ jobs:
         run: |
           gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" \
             -f body="LIFECYCLE CANDIDATE CAPTURED — the validated return has been carried through CAPTURED → REPLAYED → ADJUDICATED → ADVANCED on the protected candidate branch. Release Trust now owns protected merge and Programme projection. No manual evidence relay or controller prompt is required."
+
+  wake-controller:
+    needs: intake
+    if: >-
+      always() &&
+      (github.event_name == 'push' ||
+       (needs.intake.result == 'success' && needs.intake.outputs.candidate_ready == 'true'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    environment: release-trust
+    permissions:
+      contents: read
+    steps:
+      - name: Mint bounded Programme wake token
+        id: programme-wake-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
+        with:
+          app-id: ${{ secrets.GCL_RELEASE_TRUST_APP_ID }}
+          private-key: ${{ secrets.GCL_RELEASE_TRUST_PRIVATE_KEY }}
+          owner: grandchallenge
+          repositories: MATH-PROGRAMME
+          permission-contents: write
+
+      - name: Signal protected lifecycle reconciliation
+        env:
+          GH_TOKEN: ${{ steps.programme-wake-token.outputs.token }}
+        run: |
+          gh api --method POST repos/grandchallenge/MATH-PROGRAMME/dispatches \
+            -f event_type=openmath-return-ready
