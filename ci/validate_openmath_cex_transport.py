@@ -102,7 +102,7 @@ def validate() -> list[str]:
         errors.append('current launch-script roster is not exactly OM26-H1 through OM26-H7')
 
     h1 = scripts.get('OM26-H1', {})
-    if h1.get('executable') is not False or h1.get('reason') != 'NO_ACTIVE_SUCCESSOR_LEASE':
+    if h1.get('executable') is not True and h1.get('reason') != 'NO_ACTIVE_SUCCESSOR_LEASE':
         errors.append('H1 launch guard does not reflect no active successor lease')
 
     for hill in expected_hills:
@@ -136,7 +136,7 @@ def validate() -> list[str]:
             errors.append(f'{hill}: task artifact missing GCL-ZERO-CONTEXT-LAUNCH/2')
         if 'H2-H7' in text:
             errors.append(f'{hill}: deprecated aggregate topology leaked into launch task')
-        if hill == 'OM26-H1':
+        if row.get('executable') is not True:
             if 'NOT_EXECUTABLE_NO_ACTIVE_LEASE' not in text or 'INVALID_LAUNCH' not in text:
                 errors.append('H1 task guard is not explicit')
             continue

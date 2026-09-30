@@ -30,7 +30,7 @@
   "hills": [
     {
       "hill_slot": "OM26-H1",
-      "status": "ACTIVE__CAMPAIGN_BEST_OBSERVED_93__AGENT001_ACCEPTED_SOURCE_CONDITIONAL",
+      "status": "WP01_LEASED_NOT_LAUNCHED__Q6_SOURCE_CONDITIONAL_FRONTIER",
       "exact_hill_id": "alejandrozu/kobon-triangles",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -51,19 +51,20 @@
         "restricted_theorem": "H1_02_SOLVE_PROOF_COMPLETE__CERT_PENDING__H1_12_Q_GE_6_SOURCE_CONDITIONAL",
         "exact_computation": "H1_13_TRANCHES1_2_3_COMPLETE__NO_94__LEADER_93",
         "falsification_counterexample": "H1_02_PASS",
-        "cei_independent_contribution": "AGENT001_ACCEPTED_SOURCE_CONDITIONAL__CLOSED",
+        "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H1-WP01-IA-001",
         "mathcert_handoff": "H1_02_AND_86_INTAKE_PROTECTED__93_SUCCESSOR_INTAKE_PROTECTED__CERT_EXECUTION_PENDING"
       },
-      "next_action": "Programme canonical campaign state must reconcile the accepted Agent 001 q=5 reduction before any subsequent discretionary OPENMATH operation.",
+      "next_action": "Verify the protected current lease and task pin, then launch INDEPENDENT-AGENT-101 from the immutable LINK_IN_RELAY_OUT task. Record a genuine provider launch receipt.",
       "external_agent": {
-        "assignment_id": "OM26-H1-H1-12",
-        "dispatch_id": "OM26-H1-H1-12-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-001",
-        "lifecycle_state": "ACCEPTED",
-        "return_comment_id": 5881108260,
-        "recovery_receipt": "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json",
-        "adjudication": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
-        "adjudication_record": "contributions/OPENMATH-2026/OM26-H1/H1-12/adjudications/OM26-H1-H1-12-ADJ-001.json"
+        "assignment_id": "OM26-H1-WP01",
+        "dispatch_id": "OM26-H1-WP01-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-101",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/553",
+        "protected_merge": "fe2af74372e39dbde29cdd46b0b9c80e8af7ebe6",
+        "readback_verified": false,
+        "lifecycle_state": "LEASED_NOT_LAUNCHED",
+        "launch_evidence": null,
+        "return_evidence": null
       },
       "competition_state": {
         "candidate": "RH_BADER_RECONSTRUCTION_093",
@@ -73,6 +74,27 @@
         "public_evaluator_replay": "PASS__UNOFFICIAL_LOCAL_SCORE",
         "official_submission": "NOT_SUBMITTED",
         "official_acceptance": "NONE"
+      },
+      "predecessor_lease": {
+        "assignment_id": "OM26-H1-H1-12",
+        "dispatch_id": "OM26-H1-H1-12-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-001",
+        "lifecycle_state": "ACCEPTED",
+        "return_comment_id": 5881108260,
+        "recovery_receipt": "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json",
+        "adjudication": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
+        "adjudication_record": "contributions/OPENMATH-2026/OM26-H1/H1-12/adjudications/OM26-H1-H1-12-ADJ-001.json"
+      },
+      "active_lease": {
+        "assignment_id": "OM26-H1-WP01",
+        "dispatch_id": "OM26-H1-WP01-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-101",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/553",
+        "protected_merge": "fe2af74372e39dbde29cdd46b0b9c80e8af7ebe6",
+        "readback_verified": false,
+        "lifecycle_state": "LEASED_NOT_LAUNCHED",
+        "launch_evidence": null,
+        "return_evidence": null
       }
     },
     {
@@ -429,7 +451,7 @@
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
       "next_action": "Launch INDEPENDENT-AGENT-702 from the registered immutable LINK_IN_RELAY_OUT task URL.",
-      "title": "Erd\u0151s Problem 3",
+      "title": "Erdős Problem 3",
       "active_lease": {
         "assignment_id": "OM26-H7-WP02",
         "dispatch_id": "OM26-H7-WP02-IA-001",
