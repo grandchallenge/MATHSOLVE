@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_LEGACY_INTAKE_RECOVERY",
+  "dispatch_id": "OM26-H3-WP01-IA-001",
+  "source_branch": "intake/openmath-om26-h3-wp01-ia-001",
+  "source_commit": "f4d6c6168965cc72c9180122b169530b6bba349c",
+  "raw_path": "contributions/OPENMATH-2026/OM26-H3/WP01/raw/OM26-H3-WP01-IA-001/github-comment-5883811624.md",
+  "raw_git_blob_sha1": "8fde45cba748c444aeba588f5724b6e8c42f4d62",
+  "receipt_path": "contributions/OPENMATH-2026/OM26-H3/WP01/receipts/OM26-H3-WP01-IA-001/github-comment-5883811624.json",
+  "receipt_git_blob_sha1": "9829e2f6a1e965c3e6220ec0863bf7f5b9d1bdb6",
+  "comment_id": 5883811624,
+  "successor_issue_number": 545,
+  "claim_effect": "NONE"
+}
