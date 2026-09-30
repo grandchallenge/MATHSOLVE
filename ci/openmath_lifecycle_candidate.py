@@ -149,6 +149,38 @@ timebox_observed: <YES|NO>
     }
 
 
+def refresh_summary(registry: dict[str, Any]) -> dict[str, int]:
+    policy = registry["mathematics_release_policy"]
+    assignments = {
+        x["assignment_id"]: x
+        for x in registry["assignments"]
+        if isinstance(x, dict) and x.get("assignment_id")
+    }
+    current = []
+    for hill, row in policy["per_hill"].items():
+        assignment_id = row.get("assignment")
+        item = assignments.get(assignment_id)
+        if item is None:
+            raise LifecycleCandidateError(f"{hill}: current assignment missing from registry")
+        current.append(item)
+
+    math_assignments = [
+        x for x in assignments.values()
+        if x.get("class") == "MATHEMATICAL_RESEARCH"
+    ]
+    summary = policy["summary"]
+    summary["accepted_agents"] = sum(1 for x in math_assignments if x.get("state") == "ACCEPTED")
+    summary["leased_not_launched_agents"] = sum(
+        1 for x in current if x.get("state") == "LEASED_NOT_LAUNCHED"
+    )
+    summary["launched_agents"] = sum(1 for x in current if x.get("state") == "LAUNCHED")
+    summary["returned_unadjudicated_agents"] = sum(
+        1 for x in current
+        if x.get("state") in {"RETURNED", "CAPTURED", "ADJUDICATING"}
+    )
+    return summary
+
+
 def board_text(registry: dict[str, Any]) -> str:
     rows=[]
     assignments=[
@@ -404,9 +436,7 @@ Authenticated GCL infrastructure owns durable GitHub intake.
             "closed":True,"adjudication":adjudication["disposition"],
         },
     })
-    summary=registry["mathematics_release_policy"]["summary"]
-    summary["accepted_agents"]=int(summary.get("accepted_agents",0))+1
-    summary["returned_unadjudicated_agents"]=0
+    summary=refresh_summary(registry)
 
     registry["launch_contract"]["current_scripts"][p["hill"]]={
         "path":launch_path,"executable":True,
