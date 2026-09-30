@@ -213,13 +213,13 @@ This page is a human projection of the protected machine registry.
 
 The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUDICATED -> ADVANCED`. Intake alone creates no mathematical claim effect.
 
-## Current launcher links
+## Current task links
 
 """+"\n".join(links)+"""
 
 ## Launcher contract
 
-Canonical mode is `LINK_IN_RELAY_OUT`. The launcher hands the worker one registered immutable task URL. The worker returns one complete `GCL-RETURN-RELAY/1` payload. Authenticated GCL infrastructure owns durable GitHub intake.
+Canonical mode is `LINK_IN_RELAY_OUT`. Voluntary participants use a registered immutable task URL. GCL may optionally launch its own workers. The worker returns one complete `GCL-RETURN-RELAY/1` payload. Authenticated GCL infrastructure owns durable GitHub intake.
 
 ## Claim boundary
 
