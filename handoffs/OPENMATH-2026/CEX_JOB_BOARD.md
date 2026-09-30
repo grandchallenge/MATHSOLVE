@@ -11,7 +11,8 @@ This page is a human projection of the protected machine registry.
 | `OM26-H1-WP02` | `OM26-H1` | `LEASED_NOT_LAUNCHED` | `OM26-H1-WP02-IA-001` | `INDEPENDENT-AGENT-102` | #563 |
 | `OM26-H2-WP01` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP01-IA-001` | `INDEPENDENT-AGENT-002` | #505 |
 | `OM26-H2-WP02` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP02-IA-001` | `INDEPENDENT-AGENT-008` | #526 |
-| `OM26-H2-WP03` | `OM26-H2` | `LEASED_NOT_LAUNCHED` | `OM26-H2-WP03-IA-001` | `INDEPENDENT-AGENT-009` | #537 |
+| `OM26-H2-WP03` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP03-IA-001` | `INDEPENDENT-AGENT-009` | #537 |
+| `OM26-H2-WP04` | `OM26-H2` | `LEASED_NOT_LAUNCHED` | `OM26-H2-WP04-IA-001` | `INDEPENDENT-AGENT-204` | #561 |
 | `OM26-H3-WP01` | `OM26-H3` | `ACCEPTED` | `OM26-H3-WP01-IA-001` | `INDEPENDENT-AGENT-003` | #506 |
 | `OM26-H3-WP02` | `OM26-H3` | `LEASED_NOT_LAUNCHED` | `OM26-H3-WP02-IA-001` | `INDEPENDENT-AGENT-302` | #545 |
 | `OM26-H4-WP01` | `OM26-H4` | `LEASED_NOT_LAUNCHED` | `OM26-H4-WP01-IA-001` | `INDEPENDENT-AGENT-004` | #507 |
@@ -24,10 +25,10 @@ This page is a human projection of the protected machine registry.
 
 The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUDICATED -> ADVANCED`. Intake alone creates no mathematical claim effect.
 
-## Current launcher links
+## Current task links
 
 - H1: https://github.com/grandchallenge/MATHSOLVE/blob/804ef99fdb7f4708540b334e740364acef1dc5ed/handoffs/OPENMATH-2026/launch/OM26-H1-WP02.md
-- H2: https://github.com/grandchallenge/MATHSOLVE/blob/e64c93148ddecbc8e51352c24926898e42b8ea10/handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md
+- H2: https://github.com/grandchallenge/MATHSOLVE/blob/11859afbf40e6774748f352732e39301ec4e0f27/handoffs/OPENMATH-2026/launch/OM26-H2-WP04.md
 - H3: https://github.com/grandchallenge/MATHSOLVE/blob/fcb5c5c013fadb94e24029e7638ff978945f8d05/handoffs/OPENMATH-2026/launch/OM26-H3-WP02.md
 - H4: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H4.md
 - H5: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H5.md
@@ -36,7 +37,7 @@ The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUD
 
 ## Launcher contract
 
-Canonical mode is `LINK_IN_RELAY_OUT`. The launcher hands the worker one registered immutable task URL. The worker returns one complete `GCL-RETURN-RELAY/1` payload. Authenticated GCL infrastructure owns durable GitHub intake.
+Canonical mode is `LINK_IN_RELAY_OUT`. Voluntary participants use a registered immutable task URL. GCL may optionally launch its own workers. The worker returns one complete `GCL-RETURN-RELAY/1` payload. Authenticated GCL infrastructure owns durable GitHub intake.
 
 ## Claim boundary
 
