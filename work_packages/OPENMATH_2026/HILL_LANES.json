@@ -99,7 +99,7 @@
     },
     {
       "hill_slot": "OM26-H2",
-      "status": "WP03_LEASED_NOT_LAUNCHED__WP02_ACCEPTED__EXACT_SEARCH_REPLAY_CLOSURE",
+      "status": "WP04_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
       "exact_hill_id": "alejandrozu/busy-beaver-6-certificates",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -130,15 +130,15 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H2-WP03-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-009 from the verified OM26-H2-WP03 lease using the registered immutable LINK_IN_RELAY_OUT task URL. The agent returns one complete GCL-RETURN-RELAY/1 payload; authenticated GCL infrastructure performs durable intake.",
+      "next_action": "Launch INDEPENDENT-AGENT-204 from the registered immutable LINK_IN_RELAY_OUT task URL.",
       "title": "Busy Beaver 6 certificates",
       "active_lease": {
-        "assignment_id": "OM26-H2-WP03",
-        "dispatch_id": "OM26-H2-WP03-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-009",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/537",
-        "protected_merge": "208fa322f52d06eb7f9b6affff0f359217a5118e",
-        "readback_verified": true,
+        "assignment_id": "OM26-H2-WP04",
+        "dispatch_id": "OM26-H2-WP04-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-204",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/561",
+        "protected_merge": "PROTECTED_LIFECYCLE_CANDIDATE",
+        "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
         "return_evidence": null
@@ -151,30 +151,16 @@
         "official_acceptance": "NONE"
       },
       "predecessor_lease": {
-        "assignment_id": "OM26-H2-WP02",
-        "dispatch_id": "OM26-H2-WP02-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-008",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/526",
-        "protected_merge": "113cdc018b84696b9c15413e4cd4a776d20e72ec",
+        "assignment_id": "OM26-H2-WP03",
+        "dispatch_id": "OM26-H2-WP03-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-009",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/537",
+        "protected_merge": "208fa322f52d06eb7f9b6affff0f359217a5118e",
         "readback_verified": true,
         "lifecycle_state": "ACCEPTED",
-        "launch_evidence": "RETURN_ITSELF_PROVES_EXECUTION_OCCURRED__LINK_IN_RELAY_OUT_LAUNCH_NOT_SEPARATELY_RECORDED",
-        "return_evidence": "contributions/OPENMATH-2026/OM26-H2/WP02/raw/OM26-H2-WP02-IA-001/github-comment-5889734796.md",
-        "adjudication": "ACCEPTED_WITNESSES_WITH_EXACT_SEARCH_REPLAY_REJECTED",
-        "adjudication_record": "contributions/OPENMATH-2026/OM26-H2/WP02/adjudications/OM26-H2-WP02-ADJ-001.json",
-        "accepted_witnesses": [
-          {
-            "steps": 89911,
-            "ones": 185,
-            "tape_span": 541
-          },
-          {
-            "steps": 8021,
-            "ones": 41,
-            "tape_span": 122,
-            "first_write": 0
-          }
-        ]
+        "launch_evidence": null,
+        "return_evidence": "contributions/OPENMATH-2026/OM26-H2/WP03/raw/OM26-H2-WP03-IA-001/github-comment-5921341364.md",
+        "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION"
       }
     },
     {
