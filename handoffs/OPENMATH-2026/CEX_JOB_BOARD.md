@@ -7,7 +7,8 @@ This page is a human projection of the protected machine registry.
 | Assignment | Hill | State | Dispatch | Agent | Return issue |
 |---|---|---|---|---|---|
 | `OM26-H1-H1-12` | `OM26-H1` | `ACCEPTED` | `OM26-H1-H1-12-IA-001` | `INDEPENDENT-AGENT-001` | #498 |
-| `OM26-H1-WP01` | `OM26-H1` | `LEASED_NOT_LAUNCHED` | `OM26-H1-WP01-IA-001` | `INDEPENDENT-AGENT-101` | #553 |
+| `OM26-H1-WP01` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP01-IA-001` | `INDEPENDENT-AGENT-101` | #553 |
+| `OM26-H1-WP02` | `OM26-H1` | `LEASED_NOT_LAUNCHED` | `OM26-H1-WP02-IA-001` | `INDEPENDENT-AGENT-102` | #563 |
 | `OM26-H2-WP01` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP01-IA-001` | `INDEPENDENT-AGENT-002` | #505 |
 | `OM26-H2-WP02` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP02-IA-001` | `INDEPENDENT-AGENT-008` | #526 |
 | `OM26-H2-WP03` | `OM26-H2` | `LEASED_NOT_LAUNCHED` | `OM26-H2-WP03-IA-001` | `INDEPENDENT-AGENT-009` | #537 |
@@ -25,7 +26,7 @@ The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUD
 
 ## Current launcher links
 
-- H1: https://github.com/grandchallenge/MATHSOLVE/blob/fe2af74372e39dbde29cdd46b0b9c80e8af7ebe6/handoffs/OPENMATH-2026/launch/OM26-H1-WP01.md
+- H1: https://github.com/grandchallenge/MATHSOLVE/blob/804ef99fdb7f4708540b334e740364acef1dc5ed/handoffs/OPENMATH-2026/launch/OM26-H1-WP02.md
 - H2: https://github.com/grandchallenge/MATHSOLVE/blob/e64c93148ddecbc8e51352c24926898e42b8ea10/handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md
 - H3: https://github.com/grandchallenge/MATHSOLVE/blob/fcb5c5c013fadb94e24029e7638ff978945f8d05/handoffs/OPENMATH-2026/launch/OM26-H3-WP02.md
 - H4: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H4.md
