@@ -32,6 +32,8 @@ Agent 002 returned one valid result on #505. Its independent scorer concordance,
 
 Agent 008 returned WP02 and its two finite witnesses were independently replayed and accepted at Solve level: `(89911,185,541)` and first-write-zero `(8021,41,122)`. The stronger `EXACT_SEARCH_DESIGN_VALIDATED` claim was not admitted because the returned replay used a circular protected-evaluator wrapper, contained an internal `121` versus `122` tape-span contradiction, and omitted the claimed distinct unpruned comparator. WP03 is now the active H2 replay-closure lease for Agent 009 on issue #537. Agents 003-007 retain their protected one-to-one leases with no durable launch/result evidence; H2 WP03 and each currently executable peer hill are `LEASED_NOT_LAUNCHED`.
 
+The frozen lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUDICATED -> ADVANCED`.
+
 `LEASED` does not imply `LAUNCHED`; `RETURNED` does not imply `CAPTURED`; `CAPTURED` does not imply `ACCEPTED` or `CERTIFIED`.
 
 Every active hill lease is independent-blind and one-to-one. No agent may substitute for another `AGENT_REF`, and no issue other than the bound return issue is accepted for that dispatch.
