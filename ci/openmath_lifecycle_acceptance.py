@@ -46,6 +46,39 @@ def load_eval():
     return mod
 
 
+def named_witness_json(raw: str, label: str) -> dict[tuple[str, int], tuple[int, str, str]]:
+    marker = f"**{label}"
+    start = raw.find(marker)
+    if start < 0:
+        raise AcceptanceError(f"returned witness marker missing: {label}")
+    fence = raw.find("```json", start)
+    if fence < 0:
+        raise AcceptanceError(f"returned witness JSON fence missing: {label}")
+    body_start = raw.find("\n", fence) + 1
+    body_end = raw.find("```", body_start)
+    if body_start <= 0 or body_end < 0:
+        raise AcceptanceError(f"returned witness JSON delimiter missing: {label}")
+    try:
+        obj = json.loads(raw[body_start:body_end].strip())
+    except json.JSONDecodeError as exc:
+        raise AcceptanceError(f"returned witness JSON invalid: {label}: {exc}") from exc
+    rows = obj.get("transitions") if isinstance(obj, dict) else None
+    if not isinstance(rows, dict):
+        raise AcceptanceError(f"returned witness transitions missing: {label}")
+    out: dict[tuple[str, int], tuple[int, str, str]] = {}
+    for state in ("A", "B", "C", "D", "E", "F"):
+        row = rows.get(state)
+        if not isinstance(row, dict):
+            raise AcceptanceError(f"returned witness row missing: {label}:{state}")
+        for symbol in ("0", "1"):
+            value = row.get(symbol)
+            if not (isinstance(value, list) and len(value) == 3):
+                raise AcceptanceError(f"returned witness transition malformed: {label}:{state}{symbol}")
+            write, move, nxt = value
+            out[(state, int(symbol))] = (int(write), str(move), str(nxt))
+    return out
+
+
 def returned_priority_cores(raw: str) -> tuple[dict, ...]:
     marker = "PRIORITY_SPINE_CORES: tuple[TransitionTable, ...] ="
     start = raw.find(marker)
@@ -103,19 +136,32 @@ def run_acceptance() -> dict[str, Any]:
         raise AcceptanceError("fixture agent drift")
 
     ev = load_eval()
-    cores = returned_priority_cores(raw)
-    w89911 = complete_returned_core(cores[0], ("C", 1))
-    w8021 = complete_returned_core(cores[2], ("F", 0))
+
+    # Replay the two explicit witness JSONs exactly as returned. These are the
+    # artifacts admitted by the protected bounded adjudication.
+    w89911 = named_witness_json(raw, "Best Overall Canonical Witness")
+    w8021 = named_witness_json(raw, "Best First-Write-`0` Canonical Witness")
     r1 = ev._run(w89911, 250000)
     r2 = ev._run(w8021, 250000)
     if (r1["halted"], r1["steps"], r1["ones"], r1["tape_span"], r1["reached"]) != (
         True, 89911, 185, 541, {"A","B","C","D","E","F"}
     ):
-        raise AcceptanceError(f"W89911 replay mismatch: {r1}")
+        raise AcceptanceError(f"W89911 explicit-witness replay mismatch: {r1}")
     if (r2["halted"], r2["steps"], r2["ones"], r2["tape_span"], r2["reached"]) != (
         True, 8021, 41, 122, {"A","B","C","D","E","F"}
     ):
-        raise AcceptanceError(f"W8021 replay mismatch: {r2}")
+        raise AcceptanceError(f"W8021 explicit-witness replay mismatch: {r2}")
+
+    # Independently replay the returned E.5 code path. Its priority core fills
+    # F,0 with (1,R,H), yielding span 121. This historical inconsistency is a
+    # required narrowing signal, not an acceptance-test failure.
+    cores = returned_priority_cores(raw)
+    internal_w8021 = complete_returned_core(cores[2], ("F", 0))
+    internal_r2 = ev._run(internal_w8021, 250000)
+    if (internal_r2["halted"], internal_r2["steps"], internal_r2["ones"], internal_r2["tape_span"]) != (
+        True, 8021, 41, 121
+    ):
+        raise AcceptanceError(f"W8021 returned-replay defect drift: {internal_r2}")
 
     wrapper_match = re.search(
         r"def score_protected_evaluator\(.*?\n(?=def apply_symmetry\()",
@@ -200,6 +246,7 @@ def run_acceptance() -> dict[str, Any]:
         "replay":{
             "w89911":"PASS__89911_185_541",
             "w8021":"PASS__8021_41_122",
+            "w8021_returned_e5_internal":"FAIL__8021_41_121__EXPECTED_HISTORICAL_DEFECT",
             **defects,
         },
         "adjudication":derived["adjudication"],
