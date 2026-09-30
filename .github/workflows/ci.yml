@@ -58,6 +58,14 @@ jobs:
           python -m unittest ci/test_euclid_diophantine_solve.py -v
           python solve/euclid_diophantine.py --output /tmp/euclid-diophantine.json
           cmp /tmp/euclid-diophantine.json certificates/EUCLID-DIOPHANTINE-E2E-002.json
+      - name: Require OPENMATH lifecycle integrity before protected admission
+        run: |
+          python ci/validate_openmath_cex_job_board.py
+          python ci/validate_openmath_core_clarity_reconcile.py
+          python ci/validate_openmath_seven_hill_consolidation.py
+          python ci/validate_openmath_cex_transport.py
+          python ci/openmath_lifecycle_acceptance.py
+          python -m unittest tests.test_openmath_lifecycle_candidate tests.test_openmath_lifecycle_acceptance -v
       - name: Validate OPENMATH H1-12 three-core arithmetic
         run: |
           python ci/validate_openmath_h1_12_three_core.py
