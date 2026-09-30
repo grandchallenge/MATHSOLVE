@@ -4,7 +4,10 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from ci.validate_openmath_cex_job_board import validate as validate_job_board
+try:
+    from ci.validate_openmath_cex_job_board import validate as validate_job_board
+except ModuleNotFoundError:
+    from validate_openmath_cex_job_board import validate as validate_job_board
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
