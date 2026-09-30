@@ -122,37 +122,101 @@ jobs:
           gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" \
             -f body="INTAKE ALREADY CAPTURED — the first valid result already has an evidence branch. No replacement result was admitted."
 
-      - name: Snapshot first valid result and receipt
+      - name: Plan unattended lifecycle successor
         if: >
           steps.validate.outcome == 'success' &&
           steps.state.outputs.main_captured == 'false' &&
           steps.state.outputs.branch_exists == 'false'
         env:
           OUT_DIR: ${{ runner.temp }}/openmath-cex-intake
-          RAW_PATH: ${{ steps.meta.outputs.raw_repo_path }}
-          RECEIPT_PATH: ${{ steps.meta.outputs.receipt_repo_path }}
-          BRANCH: ${{ steps.meta.outputs.branch }}
-          DISPATCH_ID: ${{ steps.meta.outputs.dispatch_id }}
-          COMMENT_ID: ${{ steps.meta.outputs.comment_id }}
         run: |
-          git switch -c "$BRANCH"
-          mkdir -p "$(dirname "$RAW_PATH")" "$(dirname "$RECEIPT_PATH")"
-          cp "$OUT_DIR/RAW.md" "$RAW_PATH"
-          cp "$OUT_DIR/RECEIPT.json" "$RECEIPT_PATH"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- "$RAW_PATH" "$RECEIPT_PATH"
-          git commit -m "OPENMATH CEX intake: snapshot $DISPATCH_ID comment $COMMENT_ID"
-          git push origin "$BRANCH"
+          python ci/openmath_lifecycle_candidate.py plan \
+            --intake-dir "$OUT_DIR" \
+            --output "$RUNNER_TEMP/openmath-lifecycle-plan.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          plan = json.loads((Path(os.environ["RUNNER_TEMP"]) / "openmath-lifecycle-plan.json").read_text(encoding="utf-8"))
+          (Path(os.environ["RUNNER_TEMP"]) / "openmath-successor-body.md").write_text(plan["issue_body"], encoding="utf-8")
+          (Path(os.environ["RUNNER_TEMP"]) / "openmath-successor-title.txt").write_text(plan["issue_title"], encoding="utf-8")
+          PY
 
-      - name: Report captured intake
+      - name: Create bounded successor return surface
         if: >
           steps.validate.outcome == 'success' &&
           steps.state.outputs.main_captured == 'false' &&
           steps.state.outputs.branch_exists == 'false'
+        id: successor
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="$(cat "$RUNNER_TEMP/openmath-successor-title.txt")"
+          gh api "repos/$GITHUB_REPOSITORY/issues" \
+            -f title="$title" \
+            -F body=@"$RUNNER_TEMP/openmath-successor-body.md" \
+            > "$RUNNER_TEMP/openmath-successor-issue.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          issue = json.loads((Path(os.environ["RUNNER_TEMP"]) / "openmath-successor-issue.json").read_text(encoding="utf-8"))
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+              print(f"number={issue['number']}", file=f)
+              print(f"url={issue['html_url']}", file=f)
+          PY
+
+      - name: Build returned-to-advanced lifecycle candidate
+        if: >
+          steps.validate.outcome == 'success' &&
+          steps.state.outputs.main_captured == 'false' &&
+          steps.state.outputs.branch_exists == 'false'
+        id: lifecycle
+        env:
+          OUT_DIR: ${{ runner.temp }}/openmath-cex-intake
+          BRANCH: ${{ steps.meta.outputs.branch }}
+          DISPATCH_ID: ${{ steps.meta.outputs.dispatch_id }}
+          SUCCESSOR_ISSUE: ${{ steps.successor.outputs.number }}
+          SUCCESSOR_URL: ${{ steps.successor.outputs.url }}
+        run: |
+          git switch -c "$BRANCH"
+          python ci/openmath_lifecycle_candidate.py apply \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --intake-dir "$OUT_DIR" \
+            --issue-number "$SUCCESSOR_ISSUE" \
+            --issue-url "$SUCCESSOR_URL"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "OPENMATH lifecycle: advance $DISPATCH_ID through adjudication"
+          content_commit="$(git rev-parse HEAD)"
+          python ci/openmath_lifecycle_candidate.py finalize-pin \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --dispatch-id "$DISPATCH_ID" \
+            --content-commit "$content_commit"
+          git add -A
+          git commit -m "OPENMATH lifecycle: pin successor task for $DISPATCH_ID"
+          git push origin "$BRANCH"
+
+      - name: Close orphan successor if lifecycle construction fails
+        if: >
+          failure() &&
+          steps.successor.outputs.number != '' &&
+          steps.state.outputs.branch_exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SUCCESSOR_ISSUE: ${{ steps.successor.outputs.number }}
+        run: |
+          gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/$SUCCESSOR_ISSUE" -f state=closed \
+            -f state_reason=not_planned >/dev/null
+
+      - name: Report lifecycle candidate captured
+        if: >
+          steps.validate.outcome == 'success' &&
+          steps.state.outputs.main_captured == 'false' &&
+          steps.state.outputs.branch_exists == 'false' &&
+          steps.lifecycle.outcome == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" \
-            -f body="INTAKE CAPTURED — first valid result and receipt were committed to the evidence branch. The bounded Release Trust intake controller owns ordinary PR creation. Mathematical status remains unadjudicated."
+            -f body="LIFECYCLE CANDIDATE CAPTURED — the validated return has been carried through CAPTURED → REPLAYED → ADJUDICATED → ADVANCED on the protected candidate branch. Release Trust now owns protected merge and Programme projection. No manual evidence relay or controller prompt is required."
