@@ -1,5 +1,10 @@
 # OPENMATH-2026 CEX transport contract
 
+## Participation scope
+
+Participants arrive voluntarily. GCL may optionally launch its own workers. Required automation publishes self-contained immutable tasks and processes conforming returns through protected intake, bounded replay/adjudication, advancement, and successor publication. Worker launch is not a completion dependency. The launcher rules below apply when that optional launch path is used; voluntary contributions retain the same protected identity checks, RESULT/1 grammar, and first-result lock.
+
+
 Zero-context external agents are intelligence providers, not infrastructure principals.
 
 Canonical transport is:
