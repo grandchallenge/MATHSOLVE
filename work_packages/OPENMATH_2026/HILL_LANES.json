@@ -157,7 +157,7 @@
     },
     {
       "hill_slot": "OM26-H3",
-      "status": "WP01_LEASED_NOT_LAUNCHED__PROTECTED_READBACK_CONFIRMED",
+      "status": "WP02_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
       "exact_hill_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -188,15 +188,15 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H3-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-003 from the verified OM26-H3-WP01 lease using a self-contained protected task envelope. The agent returns one complete GCL-RETURN-RELAY/1 payload to the launcher; authenticated GCL infrastructure durably relays the embedded RESULT/1 to issue #506.",
+      "next_action": "Launch INDEPENDENT-AGENT-302 from the registered immutable LINK_IN_RELAY_OUT task URL.",
       "title": "Clique-cluster Ramsey multiplicity",
       "active_lease": {
-        "assignment_id": "OM26-H3-WP01",
-        "dispatch_id": "OM26-H3-WP01-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-003",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/506",
-        "protected_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
-        "readback_verified": true,
+        "assignment_id": "OM26-H3-WP02",
+        "dispatch_id": "OM26-H3-WP02-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-302",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/545",
+        "protected_merge": "fcb5c5c013fadb94e24029e7638ff978945f8d05",
+        "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
         "return_evidence": null
@@ -207,6 +207,18 @@
         "local_verification": "NOT_STARTED",
         "official_submission": "NOT_SUBMITTED",
         "official_acceptance": "NONE"
+      },
+      "predecessor_lease": {
+        "assignment_id": "OM26-H3-WP01",
+        "dispatch_id": "OM26-H3-WP01-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-003",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/506",
+        "protected_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
+        "readback_verified": true,
+        "lifecycle_state": "ACCEPTED",
+        "launch_evidence": null,
+        "return_evidence": "contributions/OPENMATH-2026/OM26-H3/WP01/raw/OM26-H3-WP01-IA-001/github-comment-5883811624.md",
+        "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION"
       }
     },
     {
@@ -405,7 +417,7 @@
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
       "next_action": "Launch INDEPENDENT-AGENT-007 from the verified OM26-H7-WP01 lease using a self-contained protected task envelope. The agent returns one complete GCL-RETURN-RELAY/1 payload to the launcher; authenticated GCL infrastructure durably relays the embedded RESULT/1 to issue #510.",
-      "title": "Erdős Problem 3",
+      "title": "Erd\u0151s Problem 3",
       "active_lease": {
         "assignment_id": "OM26-H7-WP01",
         "dispatch_id": "OM26-H7-WP01-IA-001",
