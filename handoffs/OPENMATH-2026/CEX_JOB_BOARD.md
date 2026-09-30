@@ -29,7 +29,7 @@ The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUD
 - H4: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H4.md
 - H5: https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H5.md
 - H6: https://github.com/grandchallenge/MATHSOLVE/blob/aa6ed5e8ae980cf03efc506441376a754c552ba8/handoffs/OPENMATH-2026/launch/OM26-H6-WP02.md
-- H7: PENDING_CONTENT_COMMIT
+- H7: https://github.com/grandchallenge/MATHSOLVE/blob/a3d9c71a33e8f98ddedc798130f933a8320ca05d/handoffs/OPENMATH-2026/launch/OM26-H7-WP02.md
 
 ## Launcher contract
 
