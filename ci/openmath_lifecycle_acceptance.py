@@ -21,6 +21,7 @@ RECEIPT = ROOT / ".gcl/completions/OM26-H2-WP02-ADJ-001/COMPLETION_RECEIPT.json"
 EVAL = ROOT / "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/busy-beaver-6-certificates/PUBLIC_SOURCE/eval.py"
 CONTRACT = ROOT / ".gcl/campaigns/OPENMATH-2026/LIFECYCLE_CONTRACT.json"
 
+FULL_LIFECYCLE = ["READY", "LAUNCHED", "RETURNED", "CAPTURED", "REPLAYED", "ADJUDICATED", "ADVANCED"]
 PIPELINE = ["RETURNED", "CAPTURED", "REPLAYED", "ADJUDICATED", "ADVANCED"]
 
 
@@ -68,7 +69,7 @@ def run_acceptance() -> dict[str, Any]:
     contract = load_json(CONTRACT)
     if contract.get("status") != "FROZEN":
         raise AcceptanceError("lifecycle contract is not frozen")
-    if contract.get("lifecycle") != PIPELINE:
+    if contract.get("lifecycle") != FULL_LIFECYCLE:
         raise AcceptanceError("frozen lifecycle drift")
 
     raw = RAW.read_text(encoding="utf-8")
