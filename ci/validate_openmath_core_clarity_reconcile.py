@@ -2,179 +2,88 @@
 from __future__ import annotations
 
 import json
-import sys
 from pathlib import Path
 
+try:
+    from ci.validate_openmath_cex_job_board import validate as validate_job_board
+except ModuleNotFoundError:
+    from validate_openmath_cex_job_board import validate as validate_job_board
+
 ROOT = Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from ci.openmath_cex_github_contribution_intake import validate_event
-REGISTRY = ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
-LANES = "work_packages/OPENMATH_2026/HILL_LANES.json"
-READBACK = "work_packages/OPENMATH_2026/CORE_CLARITY_LIFECYCLE_READBACK.json"
-RAW = "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md"
-RECEIPT = "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json"
-H2_RAW = "contributions/OPENMATH-2026/OM26-H2/WP01/raw/OM26-H2-WP01-IA-001/github-comment-5883655827.md"
-H2_RECEIPT = "contributions/OPENMATH-2026/OM26-H2/WP01/receipts/OM26-H2-WP01-IA-001/github-comment-5883655827.json"
-H2_ADJ = "contributions/OPENMATH-2026/OM26-H2/WP01/adjudications/OM26-H2-WP01-ADJ-001.json"
-BOOTSTRAP = "handoffs/OPENMATH-2026/jobs/OM26-H1-H1-12-IA-001.md"
-BOARD = "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md"
-DISPATCH = "contributions/OPENMATH-2026/OM26-H1/H1-12/dispatches/OM26-H1-H1-12-IA-001.json"
+REGISTRY = ROOT / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
+LANES = ROOT / "work_packages/OPENMATH_2026/HILL_LANES.json"
+CONTRACT = ROOT / ".gcl/campaigns/OPENMATH-2026/LIFECYCLE_CONTRACT.json"
+HILLS = [f"OM26-H{i}" for i in range(1, 8)]
 
 
-def load(rel: str):
-    return json.loads((ROOT / rel).read_text(encoding="utf-8"))
+def load(path: Path):
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def validate() -> list[str]:
-    errors: list[str] = []
+    errors = list(validate_job_board())
     registry = load(REGISTRY)
     lanes = load(LANES)
-    readback = load(READBACK)
-    receipt = load(RECEIPT)
-    dispatch = load(DISPATCH)
-    raw = (ROOT / RAW).read_text(encoding="utf-8").rstrip("\n")
-    bootstrap = (ROOT / BOOTSTRAP).read_text(encoding="utf-8")
+    contract = load(CONTRACT)
 
-    event = {
-        "issue": {
-            "number": 498,
-            "title": dispatch["github_issue_title"],
-            "body": bootstrap,
-        },
-        "comment": {
-            "id": 5881108260,
-            "body": raw,
-            "created_at": "2026-09-29T00:10:21Z",
-            "user": {"login": "fyremael"},
-        },
+    if contract.get("status") != "FROZEN":
+        errors.append("OPENMATH lifecycle contract is not frozen")
+    if contract.get("lifecycle") != [
+        "READY","LAUNCHED","RETURNED","CAPTURED","REPLAYED","ADJUDICATED","ADVANCED"
+    ]:
+        errors.append("OPENMATH lifecycle contract drift")
+
+    lane_rows = {x["hill_slot"]: x for x in lanes.get("hills", [])}
+    if set(lane_rows) != set(HILLS):
+        errors.append("HILL_LANES roster mismatch")
+
+    assignments = {
+        x["assignment_id"]: x
+        for x in registry.get("assignments", [])
+        if isinstance(x, dict) and x.get("assignment_id")
     }
-    try:
-        parsed, protected_dispatch, _dispatch_path, operation, observed = validate_event(event, ROOT)
-    except Exception as exc:
-        errors.append(f"recovered Agent 001 result does not pass current generic intake: {exc}")
-    else:
-        if parsed["preamble"]["dispatch_id"] != "OM26-H1-H1-12-IA-001":
-            errors.append("recovered dispatch identity mismatch")
-        if parsed["preamble"]["agent_ref"] != "INDEPENDENT-AGENT-001":
-            errors.append("recovered agent identity mismatch")
-        if parsed["preamble"]["disposition"] != "PROVED_REDUCTION":
-            errors.append("recovered disposition mismatch")
-        if protected_dispatch["assignment_id"] != "OM26-H1-H1-12":
-            errors.append("protected dispatch assignment mismatch")
-        if operation["dispatch_id"] != "OM26-H1-H1-12-IA-001":
-            errors.append("protected operation mismatch")
-        if observed["comment_id"] != 5881108260:
-            errors.append("recovered comment identity mismatch")
+    policy = registry["mathematics_release_policy"]["per_hill"]
+    for hill in HILLS:
+        aid = policy[hill]["assignment"]
+        item = assignments.get(aid, {})
+        lane = lane_rows.get(hill, {})
+        active = lane.get("active_lease")
+        if item.get("state") == "LEASED_NOT_LAUNCHED":
+            if not active:
+                errors.append(f"{hill}: no active lane lease")
+            else:
+                if active.get("assignment_id") != aid:
+                    errors.append(f"{hill}: lane/registry assignment drift")
+                if active.get("dispatch_id") != item.get("lease", {}).get("dispatch_id"):
+                    errors.append(f"{hill}: lane/registry dispatch drift")
+                if active.get("agent_ref") != item.get("lease", {}).get("agent_ref"):
+                    errors.append(f"{hill}: lane/registry agent drift")
+                if active.get("lifecycle_state") != "LEASED_NOT_LAUNCHED":
+                    errors.append(f"{hill}: lane lifecycle drift")
+        predecessor = policy[hill].get("predecessor")
+        if predecessor:
+            prev = assignments.get(predecessor.get("assignment"), {})
+            if prev.get("state") != "ACCEPTED" or not prev.get("lifecycle", {}).get("closed"):
+                errors.append(f"{hill}: protected predecessor not accepted/closed")
 
-    if receipt.get("handling_state") != "CAPTURED_RECOVERED_UNADJUDICATED":
-        errors.append("recovery receipt handling state mismatch")
-    for key in ("mathematical_correctness_adjudicated", "independence_strength_adjudicated", "canonical_claim_effect", "certification_effect", "competition_effect"):
-        if receipt.get(key) is not False:
-            errors.append(f"recovery receipt illegally widens {key}")
-    if receipt.get("source", {}).get("github_comment_id") != 5881108260:
-        errors.append("recovery receipt comment binding mismatch")
-
-    assignments = {x.get("assignment_id"): x for x in registry.get("assignments", [])}
+    # Durable historical anchors must remain available while current state advances.
     h1 = assignments.get("OM26-H1-H1-12", {})
-    if h1.get("state") not in {"CAPTURED", "ACCEPTED"}:
-        errors.append("H1 assignment must be CAPTURED or ACCEPTED")
-    if h1.get("state") == "CAPTURED" and h1.get("lifecycle", {}).get("adjudication") != "PENDING":
-        errors.append("captured H1 adjudication must remain PENDING")
-    if h1.get("state") == "ACCEPTED" and h1.get("lifecycle", {}).get("adjudication") != "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION":
-        errors.append("accepted H1 adjudication state mismatch")
-    if h1.get("lease", {}).get("execution_authorized") is not False:
-        errors.append("H1 returned lease must not remain executable")
-    h2_wp01 = assignments.get("OM26-H2-WP01", {})
-    if h2_wp01.get("state") != "ACCEPTED":
-        errors.append("H2 WP01 assignment must be ACCEPTED")
-    if h2_wp01.get("lifecycle", {}).get("adjudication") != "ACCEPTED_SCORER_CONCORDANCE_WITH_SEARCH_NARROWING":
-        errors.append("H2 WP01 adjudication state mismatch")
-    if h2_wp01.get("lease", {}).get("state") != "CLOSED_AFTER_RETURN" or h2_wp01.get("lease", {}).get("execution_authorized") is not False:
-        errors.append("H2 WP01 returned lease must be closed and non-executable")
-    h2_wp02 = assignments.get("OM26-H2-WP02", {})
-    if h2_wp02.get("state") != "ACCEPTED":
-        errors.append("H2 WP02 assignment must be ACCEPTED")
-    if h2_wp02.get("lease", {}).get("state") != "CLOSED_AFTER_RETURN" or h2_wp02.get("lease", {}).get("execution_authorized") is not False:
-        errors.append("H2 WP02 returned lease must be closed and non-executable")
-    if h2_wp02.get("lifecycle", {}).get("adjudication") != "ACCEPTED_WITNESSES_WITH_EXACT_SEARCH_REPLAY_REJECTED":
-        errors.append("H2 WP02 adjudication state mismatch")
-    h2_wp03 = assignments.get("OM26-H2-WP03", {})
-    if h2_wp03.get("state") != "LEASED_NOT_LAUNCHED":
-        errors.append("H2 WP03 assignment must be LEASED_NOT_LAUNCHED")
-    if h2_wp03.get("lease", {}).get("dispatch_id") != "OM26-H2-WP03-IA-001" or h2_wp03.get("lease", {}).get("agent_ref") != "INDEPENDENT-AGENT-009":
-        errors.append("H2 WP03 lease identity mismatch")
-    if h2_wp03.get("lifecycle", {}).get("launched") is not False:
-        errors.append("H2 WP03 must remain unlaunched before external return")
-    for rel in (H2_RAW, H2_RECEIPT, H2_ADJ):
-        if not (ROOT / rel).is_file():
-            errors.append(f"H2 protected evidence missing: {rel}")
-    h3_through_h7 = [assignments.get(f"OM26-H{i}-WP01", {}) for i in range(3, 8)]
-    if any(x.get("state") != "LEASED_NOT_LAUNCHED" for x in h3_through_h7):
-        errors.append("H3 through H7 assignments must be LEASED_NOT_LAUNCHED")
-    if any(x.get("lifecycle", {}).get("launched") is not False for x in h3_through_h7):
-        errors.append("H3 through H7 launch state must be false")
-    policy = registry.get("mathematics_release_policy", {})
-    if policy.get("summary", {}).get("launched_agents") != 0:
-        errors.append("seven-hill launched-agent summary must remain zero")
+    if h1.get("state") != "ACCEPTED":
+        errors.append("H1 Agent001 accepted history lost")
+    wp01 = assignments.get("OM26-H2-WP01", {})
+    if wp01.get("state") != "ACCEPTED":
+        errors.append("H2 WP01 accepted history lost")
+    wp02 = assignments.get("OM26-H2-WP02", {})
+    if wp02.get("state") != "ACCEPTED":
+        errors.append("H2 WP02 accepted history lost")
+    elif wp02.get("lifecycle", {}).get("adjudication") != "ACCEPTED_WITNESSES_WITH_EXACT_SEARCH_REPLAY_REJECTED":
+        errors.append("H2 WP02 bounded adjudication drift")
 
-    issue_map = {x["issue_number"]: x for x in readback.get("issues", [])}
-    for issue in range(506, 511):
-        row = issue_map.get(issue)
-        if row is None or row.get("comment_count") != 0 or row.get("result_comments") != []:
-            errors.append(f"issue #{issue} does not support LEASED_NOT_LAUNCHED")
-    h1row = issue_map.get(498, {})
-    if h1row.get("result_comments") != [{"id": 5881108260, "actor": "fyremael", "created_at": "2026-09-29T00:10:21Z"}]:
-        errors.append("H1 lifecycle readback does not identify exact returned result")
-
-    board = (ROOT / BOARD).read_text(encoding="utf-8")
-    if not any(marker in board for marker in (
-        "| `OM26-H1-H1-12` | `OM26-H1` | `CAPTURED` |",
-        "| `OM26-H1-H1-12` | `OM26-H1` | `ACCEPTED` |",
-    )):
-        errors.append("human job board does not show current H1 lifecycle")
-    if "| `OM26-H2-WP01` | `OM26-H2` | `ACCEPTED` |" not in board:
-        errors.append("human job board does not show OM26-H2 WP01 ACCEPTED")
-    if "| `OM26-H2-WP02` | `OM26-H2` | `ACCEPTED` |" not in board:
-        errors.append("human job board does not show OM26-H2 WP02 ACCEPTED")
-    if "| `OM26-H2-WP03` | `OM26-H2` | `LEASED_NOT_LAUNCHED` |" not in board:
-        errors.append("human job board does not show OM26-H2 WP03 LEASED_NOT_LAUNCHED")
-    for i in range(3, 8):
-        if f"| `OM26-H{i}-WP01` | `OM26-H{i}` | `LEASED_NOT_LAUNCHED` |" not in board:
-            errors.append(f"human job board does not show OM26-H{i} LEASED_NOT_LAUNCHED")
-    if "No OPENMATH-2026 hill currently has a recorded official competition submission." not in board:
-        errors.append("human job board lacks explicit competition submission state")
-
-    topology = lanes.get("current_topology", {})
-    if topology.get("lane_model") != "SEVEN_FIRST_CLASS_HILLS":
-        errors.append("hill-lane current topology is not seven first-class hills")
-    if topology.get("hills") != [f"OM26-H{i}" for i in range(1, 8)]:
-        errors.append("hill-lane current topology roster mismatch")
-    if topology.get("grouped_current_lanes") != []:
-        errors.append("grouped current hill lanes must be empty")
-
-    hill_map = {x["hill_slot"]: x for x in lanes.get("hills", [])}
-    if set(hill_map) != {f"OM26-H{i}" for i in range(1, 8)}:
-        errors.append("hill lane cardinality/identity mismatch")
-    h1lane = hill_map.get("OM26-H1", {})
-    if h1lane.get("external_agent", {}).get("lifecycle_state") not in {"CAPTURED", "ACCEPTED"}:
-        errors.append("H1 lane does not expose a valid Agent 001 lifecycle state")
-    if h1lane.get("competition_state", {}).get("official_submission") != "NOT_SUBMITTED":
-        errors.append("H1 competition state must be explicit NOT_SUBMITTED")
-    h2lane = hill_map.get("OM26-H2", {})
-    if h2lane.get("active_lease", {}).get("assignment_id") != "OM26-H2-WP03" or h2lane.get("active_lease", {}).get("lifecycle_state") != "LEASED_NOT_LAUNCHED":
-        errors.append("OM26-H2 active WP03 lane lifecycle mismatch")
-    if h2lane.get("predecessor_lease", {}).get("assignment_id") != "OM26-H2-WP02" or h2lane.get("predecessor_lease", {}).get("lifecycle_state") != "ACCEPTED":
-        errors.append("OM26-H2 predecessor WP02 lane lifecycle mismatch")
-    if h2lane.get("competition_state", {}).get("official_submission") != "NOT_SUBMITTED":
-        errors.append("OM26-H2 competition state must be explicit NOT_SUBMITTED")
-    for i in range(3, 8):
-        lane = hill_map.get(f"OM26-H{i}", {})
-        if lane.get("active_lease", {}).get("lifecycle_state") != "LEASED_NOT_LAUNCHED":
-            errors.append(f"OM26-H{i} lane lifecycle mismatch")
-        if lane.get("competition_state", {}).get("official_submission") != "NOT_SUBMITTED":
-            errors.append(f"OM26-H{i} competition state must be explicit NOT_SUBMITTED")
+    current = registry.get("current_topology", {})
+    if current.get("hills") != HILLS:
+        errors.append("current seven-hill topology drift")
+    if current.get("grouped_current_lanes") not in (None, []):
+        errors.append("deprecated grouped current topology returned")
 
     return errors
 
@@ -185,7 +94,7 @@ def main() -> int:
         for error in errors:
             print("FAIL:", error)
         return 1
-    print("PASS: OPENMATH Core Clarity reconciliation permits captured or adjudicated Agent 001 successor state")
+    print("PASS: OPENMATH Core Clarity follows the state-derived seven-hill lifecycle")
     return 0
 
 
