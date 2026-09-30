@@ -15,8 +15,8 @@ HILLS = [f"OM26-H{i}" for i in range(1, 8)]
 PINNED = re.compile(r"^https://github\.com/grandchallenge/MATHSOLVE/blob/([0-9a-f]{40})/(.+)$")
 
 
-def load(path: Path):
-    return json.loads(path.read_text(encoding="utf-8"))
+def load(path: Path | str):
+    return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
 def git_blob_sha1(path: Path) -> str:
