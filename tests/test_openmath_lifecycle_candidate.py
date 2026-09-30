@@ -1,9 +1,10 @@
 import copy
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
-from ci.openmath_lifecycle_candidate import refresh_summary
+from ci.openmath_lifecycle_candidate import refresh_summary, board_text, index_text, plan
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
@@ -17,6 +18,29 @@ class OpenMathLifecycleCandidateStateTest(unittest.TestCase):
         registry = self.load_registry()
         expected = copy.deepcopy(registry["mathematics_release_policy"]["summary"])
         self.assertEqual(refresh_summary(registry), expected)
+
+    def test_generated_board_and_index_use_literal_markdown(self):
+        registry=self.load_registry()
+        board=board_text(registry)
+        launch_index=index_text(registry)
+        self.assertIn("| `OM26-H2-WP03` | `OM26-H2` |",board)
+        self.assertIn("`LINK_IN_RELAY_OUT`",board)
+        self.assertIn("`LINK_IN_RELAY_OUT`",launch_index)
+        self.assertNotIn("\\`",board)
+        self.assertNotIn("\\`",launch_index)
+
+    def test_zero_context_successor_has_real_fences(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp)
+            (root/"META.json").write_text(json.dumps({"comment_id":123}),encoding="utf-8")
+            (root/"RECEIPT.json").write_text(json.dumps({
+                "assignment_id":"OM26-H3-WP01",
+                "dispatch_id":"OM26-H3-WP01-IA-001",
+            }),encoding="utf-8")
+            (root/"RAW.md").write_text("GCL-CONTRIBUTION-RESULT/1\\n",encoding="utf-8")
+            body=plan(root)["issue_body"]
+            self.assertIn("```text\\nGCL-CONTRIBUTION-RESULT/1",body)
+            self.assertNotIn("\\`",body)
 
     def test_launched_return_to_successor_recomputes_counts(self):
         registry = self.load_registry()
