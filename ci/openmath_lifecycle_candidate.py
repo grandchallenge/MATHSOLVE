@@ -14,7 +14,7 @@ REGISTRY = Path(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
 LANES = Path("work_packages/OPENMATH_2026/HILL_LANES.json")
 BOARD = Path("handoffs/OPENMATH-2026/CEX_JOB_BOARD.md")
 INDEX = Path("handoffs/OPENMATH-2026/launch/README.md")
-ASSIGNMENT_RE = re.compile(r"^OM26-H([2-7])-WP([0-9]{2})$")
+ASSIGNMENT_RE = re.compile(r"^OM26-H([1-7])-WP([0-9]{2})$")
 PIPELINE = ["RETURNED", "CAPTURED", "REPLAYED", "ADJUDICATED", "ADVANCED"]
 
 

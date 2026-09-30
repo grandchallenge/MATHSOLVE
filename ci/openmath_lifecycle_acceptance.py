@@ -136,21 +136,26 @@ def simulate_current_issued_assignment() -> dict[str, Any]:
         for x in current_registry["assignments"]
         if isinstance(x, dict) and x.get("assignment_id")
     }
-    source = current.get("OM26-H3-WP01")
+    source_id = current_registry["mathematics_release_policy"]["per_hill"]["OM26-H3"]["assignment"]
+    source = current.get(source_id)
     if source is None:
         raise AcceptanceError("current H3 issued assignment is missing")
     if source.get("state") != "LEASED_NOT_LAUNCHED":
         raise AcceptanceError(f"H3 acceptance fixture is not issued/ready: {source.get('state')}")
     lease = source.get("lease", {})
-    if lease.get("dispatch_id") != "OM26-H3-WP01-IA-001":
+    source_dispatch = lease.get("dispatch_id")
+    source_agent = lease.get("agent_ref")
+    source_wp = source_id.rsplit("-", 1)[-1]
+    successor_id = f"OM26-H3-WP{int(source_wp[2:]) + 1:02d}"
+    if source_dispatch != f"{source_id}-IA-001":
         raise AcceptanceError("H3 acceptance fixture dispatch drift")
-    if lease.get("agent_ref") != "INDEPENDENT-AGENT-003":
+    if not isinstance(source_agent, str) or not source_agent.startswith("INDEPENDENT-AGENT-"):
         raise AcceptanceError("H3 acceptance fixture agent drift")
 
-    raw = """GCL-CONTRIBUTION-RESULT/1
-dispatch_id: OM26-H3-WP01-IA-001
-agent_ref: INDEPENDENT-AGENT-003
-assignment: OM26-H3-WP01
+    raw = f"""GCL-CONTRIBUTION-RESULT/1
+dispatch_id: {source_dispatch}
+agent_ref: {source_agent}
+assignment: {source_id}
 disposition: EXACT_BLOCKER
 context_class: ZERO_CONTEXT
 external_sources: PROTECTED_PACKET_ONLY
@@ -182,9 +187,9 @@ Independently replay the predecessor claim under the protected successor package
 """
     comment_id = 999001
     issue_number = 999001
-    dispatch = "OM26-H3-WP01-IA-001"
-    raw_rel = f"contributions/OPENMATH-2026/OM26-H3/WP01/raw/{dispatch}/github-comment-{comment_id}.md"
-    receipt_rel = f"contributions/OPENMATH-2026/OM26-H3/WP01/receipts/{dispatch}/github-comment-{comment_id}.json"
+    dispatch = source_dispatch
+    raw_rel = f"contributions/OPENMATH-2026/OM26-H3/{source_wp}/raw/{dispatch}/github-comment-{comment_id}.md"
+    receipt_rel = f"contributions/OPENMATH-2026/OM26-H3/{source_wp}/receipts/{dispatch}/github-comment-{comment_id}.json"
 
     with tempfile.TemporaryDirectory(prefix="openmath-lifecycle-acceptance-") as td:
         root = Path(td) / "repo"
@@ -216,11 +221,11 @@ Independently replay the predecessor claim under the protected successor package
             "schema_version": "1.0.0",
             "receipt_id": f"{dispatch}:github-comment:{comment_id}",
             "dispatch_id": dispatch,
-            "assignment_id": "OM26-H3-WP01",
-            "agent_ref": "INDEPENDENT-AGENT-003",
+            "assignment_id": source_id,
+            "agent_ref": source_agent,
             "concurrency_mode": "independent_blind",
             "result_protocol": "GCL-CONTRIBUTION-RESULT/1",
-            "github_issue_number": 506,
+            "github_issue_number": lease["dispatch_issue_number"],
             "github_comment_id": comment_id,
             "authenticated_github_actor": "acceptance-fixture",
             "raw_artifact_path": raw_rel,
@@ -248,10 +253,10 @@ Independently replay the predecessor claim under the protected successor package
         )
         if manifest.get("pipeline") != PIPELINE:
             raise AcceptanceError("candidate generator pipeline drift")
-        if manifest.get("successor_assignment") != "OM26-H3-WP02":
+        if manifest.get("successor_assignment") != successor_id:
             raise AcceptanceError("candidate generator successor drift")
 
-        lifecycle_dir = root / "contributions/OPENMATH-2026/OM26-H3/WP01/lifecycle/OM26-H3-WP01-IA-001"
+        lifecycle_dir = root / f"contributions/OPENMATH-2026/OM26-H3/{source_wp}/lifecycle/{dispatch}"
         replay = load_json(lifecycle_dir / "REPLAY.json")
         adjudication = load_json(lifecycle_dir / "ADJUDICATION.json")
         projection = load_json(lifecycle_dir / "PROGRAMME_PROJECTION.json")
@@ -265,7 +270,7 @@ Independently replay the predecessor claim under the protected successor package
             raise AcceptanceError("fallback adjudication promoted a claim")
         if projection.get("pipeline_trace") != PIPELINE:
             raise AcceptanceError("Programme projection pipeline drift")
-        if projection.get("successor", {}).get("assignment_id") != "OM26-H3-WP02":
+        if projection.get("successor", {}).get("assignment_id") != successor_id:
             raise AcceptanceError("Programme projection successor drift")
 
         simulated_registry = load_json(root / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
@@ -274,8 +279,8 @@ Independently replay the predecessor claim under the protected successor package
             for x in simulated_registry["assignments"]
             if isinstance(x, dict) and x.get("assignment_id")
         }
-        pred = simulated_items["OM26-H3-WP01"]
-        succ = simulated_items["OM26-H3-WP02"]
+        pred = simulated_items[source_id]
+        succ = simulated_items[successor_id]
         if pred.get("state") != "ACCEPTED" or pred.get("lifecycle", {}).get("closed") is not True:
             raise AcceptanceError("generated predecessor closure drift")
         if succ.get("state") != "LEASED_NOT_LAUNCHED":
@@ -288,7 +293,7 @@ Independently replay the predecessor claim under the protected successor package
 
         fake_content_commit = "a" * 40
         pin = finalize_pin(root, dispatch, fake_content_commit)
-        if pin.get("successor") != "OM26-H3-WP02":
+        if pin.get("successor") != successor_id:
             raise AcceptanceError("successor pin drift")
         if fake_content_commit not in pin.get("task_url", ""):
             raise AcceptanceError("successor task is not immutable-pinned")
@@ -297,14 +302,14 @@ Independently replay the predecessor claim under the protected successor package
             raise AcceptanceError("permanent capture bytes drift in simulation")
 
         return {
-            "source_assignment": "OM26-H3-WP01",
+            "source_assignment": source_id,
             "source_dispatch": dispatch,
             "pipeline": PIPELINE,
             "capture": "PASS__EXACT_BYTES",
             "replay": replay["state"],
             "adjudication": adjudication["disposition"],
             "programme_projection": "PASS",
-            "successor": "OM26-H3-WP02",
+            "successor": successor_id,
             "immutable_task_pin": "PASS",
             "manual_transport_required": False,
             "manual_controller_wake_required": False,

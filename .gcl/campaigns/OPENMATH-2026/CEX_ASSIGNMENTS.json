@@ -70,9 +70,15 @@
     "per_hill": {
       "OM26-H1": {
         "solve_released": true,
-        "assignment": "OM26-H1-H1-12",
-        "agent_state": "ACCEPTED",
-        "closed": true
+        "assignment": "OM26-H1-WP01",
+        "agent_state": "LEASED_NOT_LAUNCHED",
+        "closed": false,
+        "predecessor": {
+          "assignment": "OM26-H1-H1-12",
+          "agent_state": "ACCEPTED",
+          "closed": true,
+          "adjudication": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION"
+        }
       },
       "OM26-H2": {
         "solve_released": true,
@@ -138,7 +144,7 @@
     "summary": {
       "released_hills": 7,
       "accepted_agents": 6,
-      "leased_not_launched_agents": 6,
+      "leased_not_launched_agents": 7,
       "launched_agents": 0,
       "returned_unadjudicated_agents": 0
     },
@@ -1285,6 +1291,74 @@
         "certification": "NOT_ELIGIBLE",
         "closed": false
       }
+    },
+    {
+      "assignment_id": "OM26-H1-WP01",
+      "class": "MATHEMATICAL_RESEARCH",
+      "hill": "OM26-H1",
+      "obligation": "WP01",
+      "external_hill_id": "alejandrozu/kobon-triangles",
+      "slot_binding": "OM26-H1",
+      "state": "LEASED_NOT_LAUNCHED",
+      "priority": "P0",
+      "lease": {
+        "state": "LEASED",
+        "dispatch_id": "OM26-H1-WP01-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-101",
+        "dispatch_issue_number": 553,
+        "protected_lease_commit": "fe2af74372e39dbde29cdd46b0b9c80e8af7ebe6",
+        "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/553",
+        "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/553",
+        "readback_verified": false,
+        "execution_authorized": true,
+        "activation_condition": "PROTECTED_MERGE_OF_ASSIGNMENT_SUPPLY"
+      },
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H1-WP01-IA-001.md",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/fe2af74372e39dbde29cdd46b0b9c80e8af7ebe6/handoffs/OPENMATH-2026/jobs/OM26-H1-WP01-IA-001.md",
+      "operation_contract": ".gcl/operations/OM26-H1-WP01-IA-001/OPERATION.json",
+      "prerequisites": {
+        "predecessor_assignment": "OM26-H1-H1-12",
+        "predecessor_adjudication": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "main_commit": "343945512476bd91ed936749f9c4918f0723bff2",
+          "blob_sha1": "7a90cd6eeb54e8e4c5b63c5977e40a1ab5bcaa2c"
+        },
+        "solve_release": true
+      },
+      "permissions": {
+        "source_reconnaissance": false,
+        "hill_specific_mathematics": true,
+        "finite_exact_computation": true,
+        "competition_submission": false,
+        "certification": false,
+        "canonical_claim_mutation": false
+      },
+      "completion": [
+        "PROVED_REDUCTION",
+        "FALSIFIED_REDUCTION",
+        "NEW_NORMAL_FORM",
+        "SURVIVING_COUNTERCASE",
+        "EXACT_BLOCKER"
+      ],
+      "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+      "successor_gate": "Execute only after protected admission; returned evidence uses the same conservative lifecycle and creates no mathematical claim promotion.",
+      "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H1-WP01-IA-001.md",
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H1/WP01/dispatches/OM26-H1-WP01-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": false,
+        "launch_receipt": null,
+        "returned": false,
+        "captured": false,
+        "replayed": false,
+        "adjudication": "NOT_STARTED",
+        "pipeline_state": "READY",
+        "certification": "NOT_ELIGIBLE",
+        "closed": false
+      }
     }
   ],
   "launch_contract": {
@@ -1300,12 +1374,15 @@
     "durable_intake_owner": "AUTHENTICATED_GCL_INFRASTRUCTURE",
     "current_scripts": {
       "OM26-H1": {
-        "path": "handoffs/OPENMATH-2026/launch/OM26-H1.md",
-        "executable": false,
-        "reason": "NO_ACTIVE_SUCCESSOR_LEASE",
-        "task_commit": "f2c23b010687052ee442a2d7fc1991a2c4d2700b",
-        "task_blob_sha1": "e9dbfc4d52f81903087f8ce5b68d88bf4916bf3f",
-        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/f2c23b010687052ee442a2d7fc1991a2c4d2700b/handoffs/OPENMATH-2026/launch/OM26-H1.md"
+        "path": "handoffs/OPENMATH-2026/launch/OM26-H1-WP01.md",
+        "executable": true,
+        "assignment_id": "OM26-H1-WP01",
+        "dispatch_id": "OM26-H1-WP01-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-101",
+        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/553",
+        "task_commit": "fe2af74372e39dbde29cdd46b0b9c80e8af7ebe6",
+        "task_blob_sha1": "411ca0c9945058acf92e2118a344928cdb53b9f8",
+        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/fe2af74372e39dbde29cdd46b0b9c80e8af7ebe6/handoffs/OPENMATH-2026/launch/OM26-H1-WP01.md"
       },
       "OM26-H2": {
         "path": "handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md",
@@ -1403,7 +1480,8 @@
     "OM26-H7-WP01-IA-001",
     "OM26-CORE-CLARITY-RECONCILE-001",
     "OM26-H1-H1-12-ADJ-001",
-    "OM26-SEVEN-HILL-CONSOLIDATION-001"
+    "OM26-SEVEN-HILL-CONSOLIDATION-001",
+    "OM26-H1-WP01-IA-001"
   ],
   "provider_import": {
     "receipt": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",
@@ -1493,5 +1571,5 @@
       "current_authority": false
     }
   },
-  "claim_boundary": "Seven peer current hill lanes OM26-H1 through OM26-H7. H1, H2 WP01, and H2 WP02 are ACCEPTED/CLOSED at Solve level within explicit claim boundaries; H2 WP03 and H3, H4, H5, H6, H7 WP01 are protected LEASED_NOT_LAUNCHED assignments. No hill has an official competition submission."
+  "claim_boundary": "Seven peer current hill lanes. All seven current assignments are protected-lease candidates or existing protected leases; launch requires exact protected admission and a genuine worker receipt. Accepted predecessor history remains immutable. Structural lifecycle replay creates no mathematical certification or competition authority."
 }

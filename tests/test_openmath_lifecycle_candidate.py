@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from ci.openmath_lifecycle_candidate import refresh_summary, board_text, index_text, plan
+from ci.openmath_lifecycle_candidate import refresh_summary, board_text, index_text, plan, successor_identity
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
@@ -13,6 +13,9 @@ REGISTRY = ROOT / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
 class OpenMathLifecycleCandidateStateTest(unittest.TestCase):
     def load_registry(self):
         return json.loads(REGISTRY.read_text(encoding="utf-8"))
+
+    def test_h1_uses_wp_successor_identity(self):
+        self.assertEqual(successor_identity("OM26-H1-WP01"), ("OM26-H1", "OM26-H1-WP02", "OM26-H1-WP02-IA-001", "INDEPENDENT-AGENT-102"))
 
     def test_current_summary_is_state_derived(self):
         registry = self.load_registry()
@@ -49,16 +52,18 @@ class OpenMathLifecycleCandidateStateTest(unittest.TestCase):
             for x in registry["assignments"]
             if x.get("assignment_id")
         }
-        predecessor = assignments["OM26-H3-WP01"]
+        source_id = registry["mathematics_release_policy"]["per_hill"]["OM26-H3"]["assignment"]
+        baseline = copy.deepcopy(refresh_summary(registry))
+        predecessor = assignments[source_id]
         predecessor["state"] = "LAUNCHED"
 
-        launched = refresh_summary(registry)
+        launched = copy.deepcopy(refresh_summary(registry))
         self.assertEqual(launched["launched_agents"], 1)
-        self.assertEqual(launched["leased_not_launched_agents"], 5)
+        self.assertEqual(launched["leased_not_launched_agents"], baseline["leased_not_launched_agents"] - 1)
 
         predecessor["state"] = "ACCEPTED"
         successor = {
-            "assignment_id": "OM26-H3-WP02",
+            "assignment_id": f"OM26-H3-WP{int(source_id[-2:]) + 1:02d}",
             "class": "MATHEMATICAL_RESEARCH",
             "hill": "OM26-H3",
             "state": "LEASED_NOT_LAUNCHED",
@@ -69,7 +74,7 @@ class OpenMathLifecycleCandidateStateTest(unittest.TestCase):
 
         advanced = refresh_summary(registry)
         self.assertEqual(advanced["launched_agents"], 0)
-        self.assertEqual(advanced["leased_not_launched_agents"], 6)
+        self.assertEqual(advanced["leased_not_launched_agents"], baseline["leased_not_launched_agents"])
         self.assertEqual(advanced["returned_unadjudicated_agents"], 0)
         self.assertEqual(advanced["accepted_agents"], launched["accepted_agents"] + 1)
 
