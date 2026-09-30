@@ -84,9 +84,9 @@ This bounded zero-context successor was generated after protected intake of {rec
 
 ## Protected predecessor result
 
-\`\`\`text
+```text
 {raw.rstrip()}
-\`\`\`
+```
 
 ## Required work
 
@@ -98,7 +98,7 @@ Produce replayable evidence rather than a confidence judgment. A failed replay i
 
 Return exactly one narrative-only RESULT/1 with no links or attachments:
 
-\`\`\`text
+```text
 GCL-CONTRIBUTION-RESULT/1
 dispatch_id: {dispatch}
 agent_ref: {agent}
@@ -131,7 +131,7 @@ timebox_observed: <YES|NO>
 ## Next residual
 
 ...
-\`\`\`
+```
 """
     return {
         "schema_version":"1.0.0",
@@ -191,8 +191,8 @@ def board_text(registry: dict[str, Any]) -> str:
     for x in assignments:
         lease=x.get("lease",{})
         rows.append(
-            f"| \`{x['assignment_id']}\` | \`{x.get('hill')}\` | \`{x.get('state')}\` | "
-            f"\`{lease.get('dispatch_id')}\` | \`{lease.get('agent_ref')}\` | #{lease.get('dispatch_issue_number')} |"
+            f"| `{x['assignment_id']}` | `{x.get('hill')}` | `{x.get('state')}` | "
+            f"`{lease.get('dispatch_id')}` | `{lease.get('agent_ref')}` | #{lease.get('dispatch_issue_number')} |"
         )
     links=[]
     for i in range(1,8):
@@ -211,7 +211,7 @@ This page is a human projection of the protected machine registry.
 |---|---|---|---|---|---|
 """+"\n".join(rows)+"""
 
-The lifecycle is \`READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUDICATED -> ADVANCED\`. Intake alone creates no mathematical claim effect.
+The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUDICATED -> ADVANCED`. Intake alone creates no mathematical claim effect.
 
 ## Current launcher links
 
@@ -219,7 +219,7 @@ The lifecycle is \`READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJU
 
 ## Launcher contract
 
-Canonical mode is \`LINK_IN_RELAY_OUT\`. The launcher hands the worker one registered immutable task URL. The worker returns one complete \`GCL-RETURN-RELAY/1\` payload. Authenticated GCL infrastructure owns durable GitHub intake.
+Canonical mode is `LINK_IN_RELAY_OUT`. The launcher hands the worker one registered immutable task URL. The worker returns one complete `GCL-RETURN-RELAY/1` payload. Authenticated GCL infrastructure owns durable GitHub intake.
 
 ## Claim boundary
 
@@ -231,7 +231,7 @@ def index_text(registry: dict[str, Any]) -> str:
     lines=[
         "# OPENMATH-2026 immutable launch index",
         "",
-        "Canonical mode is \`LINK_IN_RELAY_OUT\`. No human work-package copy/paste is part of the protocol.",
+        "Canonical mode is `LINK_IN_RELAY_OUT`. No human work-package copy/paste is part of the protocol.",
         "",
         "| Hill | Immutable task | Executable |",
         "|---|---|---|",
@@ -365,7 +365,7 @@ The complete protected predecessor result is embedded above.
 
 ## Return to launcher
 
-\`\`\`text
+```text
 GCL-RETURN-RELAY/1
 DISPATCH_ID: {p['successor_dispatch']}
 AGENT_REF: {p['successor_agent']}
@@ -374,7 +374,7 @@ INTENDED_RETURN: {issue_url}
 BEGIN_RESULT
 <complete inner GCL-CONTRIBUTION-RESULT/1 verbatim>
 END_RESULT
-\`\`\`
+```
 
 Authenticated GCL infrastructure owns durable GitHub intake.
 """
