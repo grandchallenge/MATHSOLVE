@@ -5,8 +5,6 @@ on:
     paths:
       - "contributions/OPENMATH-2026/OM26-H2/WP01/adjudications/**"
       - "work_packages/OPENMATH_2026/OM26_H2_BUSY_BEAVER_6/WP01_STATUS.json"
-      - ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
-      - "work_packages/OPENMATH_2026/HILL_LANES.json"
       - ".gcl/operations/OM26-H2-WP01-ADJ-001/**"
       - ".gcl/admission/OM26-H2-WP01-ADJ-001/**"
       - "ci/validate_openmath_h2_wp01_adjudication.py"
