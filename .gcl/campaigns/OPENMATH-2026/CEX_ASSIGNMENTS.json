@@ -44,7 +44,7 @@
     "external_self_claim_allowed": false,
     "allocator": "GCL dispatch/controller or Human Steward through protected repository mutation",
     "atomic_unit": "one assignment_id to one dispatch_id to one agent_ref",
-    "start_rule": "The launcher/controller verifies exactly one protected LEASED assignment whose dispatch_id and agent_ref match the launch identity, resolves that assignment to its registered immutable task_url, and launches the external agent with that URL. The external agent does not rediscover the lease or browse for replacement work.",
+    "start_rule": "Before admitting a voluntary contribution or optionally launching a GCL worker, the controller verifies exactly one protected LEASED assignment whose dispatch_id and agent_ref match the contribution identity, and resolves its registered immutable task_url. Participants use that self-contained task; launching workers is optional.",
     "no_lease_rule": "If the launcher/controller cannot verify exactly one matching protected lease and immutable task_url, it must not launch substantive work. No human is required to reconstruct or paste a task envelope.",
     "duplicate_rule": "A second agent must not execute an assignment already LEASED unless a distinct independently-authorized assignment record exists.",
     "release_rule": "Lease release or reassignment requires another protected registry mutation; issue comments or chat text do not alter the lease.",
@@ -1639,5 +1639,15 @@
       "current_authority": false
     }
   },
-  "claim_boundary": "Seven peer current hill lanes. All seven current assignments are protected-lease candidates or existing protected leases; launch requires exact protected admission and a genuine worker receipt. Accepted predecessor history remains immutable. Structural lifecycle replay creates no mathematical certification or competition authority."
+  "claim_boundary": "Seven peer current hill lanes. All seven current assignments are protected-lease candidates or existing protected leases; launch requires exact protected admission and a genuine worker receipt. Accepted predecessor history remains immutable. Structural lifecycle replay creates no mathematical certification or competition authority.",
+  "participation_policy": {
+    "mode": "VOLUNTARY",
+    "independent_agent_launch_required": false,
+    "gcl_workers": "OPTIONAL",
+    "required_automation": [
+      "task creation and immutable publication",
+      "validated return intake and protected advancement"
+    ],
+    "identity_rule": "Voluntary participation retains the protected dispatch identity, lease verification, duplicate rule, and first-result lock."
+  }
 }
