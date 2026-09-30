@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/openmath-cex-independent-contribution-intake.yml"
+      - "contributions/OPENMATH-2026/**/lifecycle/**/MANIFEST.json"
   issue_comment:
     types: [created]
 
