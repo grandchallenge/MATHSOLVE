@@ -270,7 +270,7 @@ Independently replay the predecessor claim under the protected successor package
             raise AcceptanceError("fallback adjudication promoted a claim")
         if projection.get("pipeline_trace") != PIPELINE:
             raise AcceptanceError("Programme projection pipeline drift")
-        if projection.get("successor", {}).get("assignment_id") != "OM26-H3-WP02":
+        if projection.get("successor", {}).get("assignment_id") != successor_id:
             raise AcceptanceError("Programme projection successor drift")
 
         simulated_registry = load_json(root / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
@@ -280,7 +280,7 @@ Independently replay the predecessor claim under the protected successor package
             if isinstance(x, dict) and x.get("assignment_id")
         }
         pred = simulated_items[source_id]
-        succ = simulated_items["OM26-H3-WP02"]
+        succ = simulated_items[successor_id]
         if pred.get("state") != "ACCEPTED" or pred.get("lifecycle", {}).get("closed") is not True:
             raise AcceptanceError("generated predecessor closure drift")
         if succ.get("state") != "LEASED_NOT_LAUNCHED":
@@ -293,7 +293,7 @@ Independently replay the predecessor claim under the protected successor package
 
         fake_content_commit = "a" * 40
         pin = finalize_pin(root, dispatch, fake_content_commit)
-        if pin.get("successor") != "OM26-H3-WP02":
+        if pin.get("successor") != successor_id:
             raise AcceptanceError("successor pin drift")
         if fake_content_commit not in pin.get("task_url", ""):
             raise AcceptanceError("successor task is not immutable-pinned")
@@ -309,7 +309,7 @@ Independently replay the predecessor claim under the protected successor package
             "replay": replay["state"],
             "adjudication": adjudication["disposition"],
             "programme_projection": "PASS",
-            "successor": "OM26-H3-WP02",
+            "successor": successor_id,
             "immutable_task_pin": "PASS",
             "manual_transport_required": False,
             "manual_controller_wake_required": False,
