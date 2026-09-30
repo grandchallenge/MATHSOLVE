@@ -45,7 +45,11 @@ def validate() -> list[str]:
 
     # Deprecated aggregate syntax may survive only in explicit historical provenance.
     active = {
-        "current_topology": topology,
+        "current_topology": {
+            "lane_model": topology.get("lane_model"),
+            "hills": topology.get("hills"),
+            "grouped_current_lanes": topology.get("grouped_current_lanes"),
+        },
         "release_policy": {hill: policy[hill] for hill in HILLS},
         "hills": [
             {
