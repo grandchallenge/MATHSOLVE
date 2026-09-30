@@ -44,7 +44,7 @@
     "external_self_claim_allowed": false,
     "allocator": "GCL dispatch/controller or Human Steward through protected repository mutation",
     "atomic_unit": "one assignment_id to one dispatch_id to one agent_ref",
-    "start_rule": "Before admitting a voluntary contribution or optionally launching a GCL worker, the controller verifies exactly one protected LEASED assignment whose dispatch_id and agent_ref match the contribution identity, and resolves its registered immutable task_url. Participants use that self-contained task; launching workers is optional.",
+    "start_rule": "Before admitting a voluntary contribution or optionally launching a GCL worker, the controller verifies exactly one protected LEASED assignment whose dispatch_id and agent_ref match the contribution identity, and resolves that assignment to its registered immutable task_url. Participants use that self-contained task; launching workers is optional.",
     "no_lease_rule": "If the launcher/controller cannot verify exactly one matching protected lease and immutable task_url, it must not launch substantive work. No human is required to reconstruct or paste a task envelope.",
     "duplicate_rule": "A second agent must not execute an assignment already LEASED unless a distinct independently-authorized assignment record exists.",
     "release_rule": "Lease release or reassignment requires another protected registry mutation; issue comments or chat text do not alter the lease.",
