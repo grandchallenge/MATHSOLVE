@@ -121,16 +121,15 @@
       },
       "OM26-H5": {
         "solve_released": true,
-        "assignment": "OM26-H5-WP03",
+        "assignment": "OM26-H5-WP04",
         "agent_state": "LEASED_NOT_LAUNCHED",
         "closed": false,
         "predecessor": {
-          "assignment": "OM26-H5-WP01",
+          "assignment": "OM26-H5-WP03",
           "agent_state": "ACCEPTED",
           "closed": true,
           "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION"
-        },
-        "superseded_assignment": "OM26-H5-WP02"
+        }
       },
       "OM26-H6": {
         "solve_released": true,
@@ -160,7 +159,7 @@
     },
     "summary": {
       "released_hills": 7,
-      "accepted_agents": 15,
+      "accepted_agents": 16,
       "leased_not_launched_agents": 9,
       "launched_agents": 0,
       "returned_unadjudicated_agents": 0
@@ -2427,10 +2426,10 @@
       "obligation": "WP03",
       "external_hill_id": "alejandrozu/grothendieck-constant-witnesses",
       "slot_binding": "OM26-H5",
-      "state": "LEASED_NOT_LAUNCHED",
+      "state": "ACCEPTED",
       "priority": "P5",
       "lease": {
-        "state": "LEASED",
+        "state": "CLOSED_AFTER_RETURN",
         "dispatch_id": "OM26-H5-WP03-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-503",
         "dispatch_issue_number": 604,
@@ -2438,7 +2437,7 @@
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/604",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/604",
         "readback_verified": false,
-        "execution_authorized": true,
+        "execution_authorized": false,
         "activation_condition": "PROTECTED_MERGE_OF_EVENT_WINDOW_ACTIVATION"
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H5-WP03-IA-001.md",
@@ -2475,21 +2474,21 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Protected event-window release; no mathematics promoted",
+      "successor_gate": "Closed automatically; OM26-H5-WP04 owns replay closure.",
       "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H5-WP03-IA-001.md",
       "dispatch_record": "contributions/OPENMATH-2026/OM26-H5/WP03/dispatches/OM26-H5-WP03-IA-001.json",
       "lifecycle": {
         "prepared": true,
         "leased": true,
-        "launched": false,
-        "launch_receipt": null,
-        "returned": false,
-        "captured": false,
-        "replayed": false,
-        "adjudication": "NOT_STARTED",
-        "pipeline_state": "READY",
+        "launched": true,
+        "launch_receipt": "RETURN_PROVES_EXECUTION_OCCURRED",
+        "returned": true,
+        "captured": true,
+        "replayed": true,
+        "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+        "pipeline_state": "ADVANCED",
         "certification": "NOT_ELIGIBLE",
-        "closed": false
+        "closed": true
       },
       "lane_role": "PRIMARY",
       "support_slot": null,
@@ -2708,6 +2707,76 @@
         "certification": "NOT_ELIGIBLE",
         "closed": false
       }
+    },
+    {
+      "assignment_id": "OM26-H5-WP04",
+      "lane_role": "PRIMARY",
+      "support_slot": null,
+      "class": "MATHEMATICAL_RESEARCH",
+      "hill": "OM26-H5",
+      "obligation": "WP04",
+      "external_hill_id": "alejandrozu/grothendieck-constant-witnesses",
+      "slot_binding": "OM26-H5",
+      "state": "LEASED_NOT_LAUNCHED",
+      "priority": "P0",
+      "lease": {
+        "state": "LEASED",
+        "dispatch_id": "OM26-H5-WP04-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-504",
+        "dispatch_issue_number": 616,
+        "protected_lease_commit": "PENDING_CONTENT_COMMIT",
+        "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/616",
+        "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/616",
+        "readback_verified": false,
+        "execution_authorized": true,
+        "activation_condition": "PROTECTED_MERGE_OF_LIFECYCLE_CANDIDATE"
+      },
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H5-WP04-IA-001.md",
+      "work_package_url": "PENDING_CONTENT_COMMIT",
+      "operation_contract": ".gcl/operations/OM26-H5-WP04-IA-001/OPERATION.json",
+      "prerequisites": {
+        "predecessor_assignment": "OM26-H5-WP03",
+        "predecessor_adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "main_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "path": "reports/discovery/openmath_2026/unassigned_sources/grothendieck-constant-witnesses/SOURCE_LOCK.json",
+          "blob_sha1": "c5c72c4b00fdf1d12eafa6673ed0752a76d66a26"
+        },
+        "solve_release": true
+      },
+      "permissions": {
+        "source_reconnaissance": false,
+        "hill_specific_mathematics": true,
+        "finite_exact_computation": true,
+        "public_source_replay": true,
+        "competition_submission": false,
+        "certification": false,
+        "canonical_claim_mutation": false
+      },
+      "completion": [
+        "REPLAY_CLOSURE_VALIDATED",
+        "REPLAY_CLOSURE_COUNTEREXAMPLE",
+        "EXACT_BLOCKER"
+      ],
+      "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+      "successor_gate": "Executable only after the lifecycle candidate is protected.",
+      "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H5-WP04-IA-001.md",
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H5/WP04/dispatches/OM26-H5-WP04-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": false,
+        "launch_receipt": null,
+        "returned": false,
+        "captured": false,
+        "replayed": false,
+        "adjudication": "NOT_STARTED",
+        "pipeline_state": "READY",
+        "certification": "NOT_ELIGIBLE",
+        "closed": false
+      }
     }
   ],
   "launch_contract": {
@@ -2770,16 +2839,15 @@
         "lane_role": "PRIMARY"
       },
       "OM26-H5": {
-        "path": "handoffs/OPENMATH-2026/launch/OM26-H5-WP03.md",
+        "path": "handoffs/OPENMATH-2026/launch/OM26-H5-WP04.md",
         "executable": true,
-        "assignment_id": "OM26-H5-WP03",
-        "dispatch_id": "OM26-H5-WP03-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-503",
-        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/604",
-        "task_commit": "4f1b6a1500e18fc53bae135ae6713e7abb126ae4",
-        "task_blob_sha1": "937d55c8dea08ef57ed568d5a9c0f20086d09631",
-        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H5-WP03.md",
-        "lane_role": "PRIMARY"
+        "assignment_id": "OM26-H5-WP04",
+        "dispatch_id": "OM26-H5-WP04-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-504",
+        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/616",
+        "task_commit": "PENDING_CONTENT_COMMIT",
+        "task_blob_sha1": "4afcd05326193d6a5da064f71ca0f1313a2849e4",
+        "task_url": "PENDING_CONTENT_COMMIT"
       },
       "OM26-H6": {
         "path": "handoffs/OPENMATH-2026/launch/OM26-H6-WP04.md",
