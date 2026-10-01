@@ -40,15 +40,15 @@ The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUD
 
 ## Current task links
 
-- H1: https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H1-WP03.md
-- H2: https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H2-WP05.md
-- H3: https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H3-WP04.md
-- H4: https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H4-WP03.md
-- H5: https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H5-WP03.md
-- H6: https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H6-WP04.md
-- H7: https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H7-WP04.md
-- H1-Q6 (support): https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H1-WP30.md
-- H1-ADVERSARY (support): https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H1-WP60.md
+- H1: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H1-WP03.md
+- H2: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H2-WP05.md
+- H3: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H3-WP04.md
+- H4: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H4-WP03.md
+- H5: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H5-WP03.md
+- H6: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H6-WP04.md
+- H7: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H7-WP04.md
+- H1-Q6 (support): https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H1-WP30.md
+- H1-ADVERSARY (support): https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H1-WP60.md
 
 ## Launcher contract
 
