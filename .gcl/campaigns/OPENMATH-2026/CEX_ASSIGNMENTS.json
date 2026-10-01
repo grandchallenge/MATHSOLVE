@@ -22,7 +22,7 @@
     "machine_registry_url": "https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
     "human_board_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
     "operator_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/495",
-    "stable_rule": "Canonical external launch is LINK_IN_RELAY_OUT: the launcher hands the zero-context worker exactly one immutable public task URL. The linked task artifact is self-contained. GitHub authentication, repository discovery, and manual task copy/paste are not required.",
+    "stable_rule": "Participants read one immutable public self-contained task URL. No GCL membership, repository write permission or GCL-specific credential is required. Return posting requires ordinary GitHub authentication in the participant environment; no manual evidence copy/paste is required.",
     "transport_contract_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_TRANSPORT_CONTRACT.md"
   },
   "assignment_states": {
@@ -181,12 +181,12 @@
     }
   },
   "return_policy": {
-    "rule": "Primary transport is LINK_IN_RELAY_OUT: the external agent reads one immutable public task artifact and returns one complete structured result to the launcher; authenticated GCL infrastructure owns durable GitHub intake.",
+    "rule": "Current iteration requires ordinary authenticated GitHub issue-comment capability in the participant environment. Return one complete GCL-RETURN-RELAY/1 envelope to the protected assignment issue; direct posting or an authorized participant connector is permitted. Zero-credential intake is postponed.",
     "receipt_effect": "Receipt is evidence received, not mathematical admission or certification.",
     "absolute_locator_required_when_leased": true,
     "agent_github_auth_required": false,
     "self_contained_launch_required": false,
-    "default_agent_return": "GCL-RETURN-RELAY/1 to launching conversation with complete required result embedded verbatim.",
+    "default_agent_return": "One complete GCL-RETURN-RELAY/1 comment on the exact protected assignment return_url using ordinary participant-environment GitHub authentication.",
     "durable_intake_owner": "AUTHENTICATED_GCL_INFRASTRUCTURE",
     "durable_intake_surface": "protected assignment return_url",
     "direct_agent_github_return": "OPTIONAL_IF_EXPLICITLY_AVAILABLE",
@@ -203,11 +203,24 @@
         "GCL-CONTRIBUTION-RESULT/1",
         "GCL-RETURN-RELAY/1"
       ],
-      "authentication_owner": "DIRECT_PARTICIPANT_OR_AUTHORIZED_RELAY",
+      "authentication_owner": "AUTHENTICATED_PARTICIPANT_ENVIRONMENT",
       "pre_execution_transport_check_required": true,
       "unconnected_private_chat_is_intake": false,
       "no_transport_effect": "RETURN_TRANSPORT_UNAVAILABLE; do not begin substantive work",
       "instructions": "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md"
+    },
+    "current_iteration": {
+      "mode": "ANONYMOUS_PARTICIPATION_GITHUB_AUTHENTICATED_RETURN",
+      "zero_credentialed_intake": "POSTPONED",
+      "participant_environment_github_auth_required": true,
+      "gcl_organization_membership_required": false,
+      "gcl_repository_write_access_required": false,
+      "gcl_specific_credentials_required": false,
+      "real_world_identity_required": false,
+      "github_posting_actor_public": true,
+      "default_submission": "COMPLETE_RELAY_ENVELOPE_COMMENT_ON_EXACT_INTENDED_RETURN",
+      "new_hosted_relay_required": false,
+      "third_party_submission_service_required": false
     }
   },
   "assignments": [
