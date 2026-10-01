@@ -111,11 +111,11 @@
           "return_evidence": null
         },
         "H1-ADVERSARY": {
-          "assignment_id": "OM26-H1-WP60",
-          "dispatch_id": "OM26-H1-WP60-IA-001",
-          "agent_ref": "INDEPENDENT-AGENT-160",
-          "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/599",
-          "protected_merge": "4f1b6a1500e18fc53bae135ae6713e7abb126ae4",
+          "assignment_id": "OM26-H1-WP61",
+          "dispatch_id": "OM26-H1-WP61-IA-001",
+          "agent_ref": "INDEPENDENT-AGENT-161",
+          "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/620",
+          "protected_merge": "PROTECTED_LIFECYCLE_CANDIDATE",
           "readback_verified": false,
           "lifecycle_state": "LEASED_NOT_LAUNCHED",
           "launch_evidence": null,
