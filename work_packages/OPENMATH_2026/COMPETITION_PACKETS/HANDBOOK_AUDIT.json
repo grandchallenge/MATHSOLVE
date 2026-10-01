@@ -4,7 +4,7 @@
   "audit_date": "2026-10-01",
   "source_bind": "50b88f51032a14aeae5c3969e14dd8c5a8728bac",
   "handbook": "https://rsihouse.ai/openmath/handbook.pdf",
-  "conclusion": "ZERO_OF_FIVE_CURRENTLY_COMPLETE_SCORE_BEARING_SUBMISSION_PACKETS",
+  "conclusion": "ZERO_OF_SEVEN_CURRENTLY_COMPLETE_SCORE_BEARING_SUBMISSION_PACKETS",
   "common_blockers": [
     "competition submission/version identifier",
     "problem/family ID",
@@ -93,14 +93,53 @@
         "genuinely new formal contribution statement",
         "complete Section 8 packet"
       ]
+    },
+    "H3": {
+      "disposition": "NO_SCORE_BEARING_TARGET_ADVANCE__SEARCH_INFRASTRUCTURE_ONLY",
+      "current_core": "Exact weighted K4 density oracles, structural identities and search representation; follow-up counterexample repairs an unrestricted parameter-count claim",
+      "event_window_delta": "PASS",
+      "exact_evidence": "STRONG_RETURNED_EVIDENCE__NO_CLAIM_PROMOTION",
+      "target_advance": "NONE_ESTABLISHED__NO_REFERENCE_BEATING_CERTIFICATE",
+      "novelty_status": "UNESTABLISHED",
+      "auxiliary_counterexample": "VALID_NARROWER_RESULT_AGAINST_INTERNAL_SEARCH_REPRESENTATION__NOT_CANONICAL_TARGET_REFUTATION",
+      "required_before_cutoff": [
+        "produce a reference-beating or otherwise canonical-target mathematical advance, or admit a distinct eligible variation",
+        "trusted independent replay",
+        "freeze-date novelty/status review",
+        "modality/family/admission",
+        "complete Section 8 packet",
+        "official submission route/report"
+      ]
+    },
+    "H7": {
+      "disposition": "NOT_SUBMISSION_READY__DIRECT_FORMAL_PARTIAL_SALVAGE_POSSIBLE",
+      "current_core": "Formal decomposition of Erdos Problem 3; bounded lemma ap_subprogression_of_le selected as direct representational bridge",
+      "event_window_delta": "PASS_FOR_DECOMPOSITION",
+      "exact_claim": "NO_PROVED_SCORE_BEARING_SUBCLAIM_YET",
+      "pinned_environment": "NOT_EXECUTED__WORKER_RUNTIME_LACKED_LEAN_AND_CONTAINER_RUNTIME",
+      "trusted_replay": "FAIL_NOT_EXECUTED",
+      "target_correspondence": "DIRECT__D3_FEEDS_EXACT_LENGTH_REFORMULATION_OF_CANONICAL_TARGET",
+      "novelty_status": "UNESTABLISHED",
+      "required_before_cutoff": [
+        "supply a complete no-sorry proof of H7-D3",
+        "compile under exact pinned Lean 4.33.1 image",
+        "retain axiom receipt within allowlist",
+        "compile H7-D4 if feasible",
+        "freeze-date novelty/status review of the formal subclaim",
+        "modality/family/admission",
+        "complete Section 8 packet",
+        "official submission route/report"
+      ]
     }
   },
   "priority": [
     "H4 trusted replay + target correspondence + novelty/status",
+    "H7 prove and pinned-compile H7-D3 (then H7-D4 if feasible) + novelty/status",
     "H1/H6 M2 classification and formalization completion",
     "H2 novelty/status review",
+    "H3 only if a canonical-target advance or admitted variation emerges",
     "H5 hold unless eligible delta established",
     "common entrant/provenance/publication metadata for surviving packets"
   ],
-  "claim_boundary": "Handbook compliance audit only. It does not create competition eligibility, formal acceptance, novelty, organizer submission, score, or MATHCERT certification."
+  "claim_boundary": "Seven-hill handbook compliance audit only. It does not create competition eligibility, formal acceptance, novelty, organizer submission, score, or MATHCERT certification."
 }
