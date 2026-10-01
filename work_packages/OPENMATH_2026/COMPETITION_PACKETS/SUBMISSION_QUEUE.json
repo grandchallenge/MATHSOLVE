@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "OPENMATH-2026-SUBMISSION-QUEUE-001",
+  "state": "THREE_ACTIVE_CANDIDATES__FOUR_HOLD_OR_LOW_PRIORITY",
+  "protected_baseline": "50b88f51032a14aeae5c3969e14dd8c5a8728bac",
+  "cutoff": "2026-10-02T21:00:00-07:00",
+  "active": [
+    {
+      "priority": 1,
+      "hill": "H4",
+      "hill_id": "alejandrozu/collatz-modular-descent",
+      "candidate_type": "M1_FORMALIZED_PARTIAL_OR_FINITE_CLASSIFICATION_PENDING_COMPETITION_CLASSIFICATION",
+      "claim": "23 exact stable accelerated-Collatz residue-class descent certificates; exact deterministic reduction of the full independently reconstructed k<=8, depth<=4 valid catalog.",
+      "internal_state": "TRUSTED_REPLAY_PASS__TARGET_CORRESPONDENCE_PASS",
+      "packet": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/H4_SECTION8_DRAFT.json",
+      "remaining": [
+        "human Section 8 authority fields",
+        "official competition workflow/submission ID",
+        "official evaluator report",
+        "organizer novelty/scope review"
+      ]
+    },
+    {
+      "priority": 2,
+      "hill": "H1",
+      "hill_id": "alejandrozu/kobon-triangles",
+      "candidate_type": "M1_FORMALIZED_PARTIAL__SOURCE_CONDITIONAL_PENDING_COMPETITION_CLASSIFICATION",
+      "claim": "OM26-H1-RED-023: under explicitly named source-scoped fan/charging premises, the sole q=5 normalized n=18,T=95 equality form is unrealizable; any such witness must have q>=6 finite multiple points.",
+      "prior_payload_boundary": "Bader93 is prior work and is not the event claim.",
+      "internal_state": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
+      "packet": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/H1_PARTIAL_SECTION8_DRAFT.json",
+      "remaining": [
+        "novelty/significance review",
+        "human Section 8 authority fields",
+        "official competition workflow/submission ID",
+        "official reviewer/checker record"
+      ]
+    },
+    {
+      "priority": 3,
+      "hill": "H7",
+      "hill_id": "ottogin/erdos-3",
+      "candidate_type": "M2_FORMALIZATION_OR_NARROW_FORMALIZED_PARTIAL_PENDING_COMPETITION_CLASSIFICATION",
+      "claim": "Pinned Lean proofs of AP truncation and equivalence between the protected frequently-atTop AP conclusion and existence of APs of every exact finite length.",
+      "parent_problem_boundary": "Does not prove the reciprocal-divergence implication or solve Erdos Problem 3.",
+      "internal_state": "D3_D4_PINNED_COMPILE_PASS__ALLOWED_AXIOMS_ONLY",
+      "packet": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/H7_SECTION8_DRAFT.json",
+      "remaining": [
+        "formalization novelty/usefulness review",
+        "human Section 8 authority fields",
+        "official competition workflow/submission ID/evaluator report"
+      ]
+    }
+  ],
+  "secondary": [
+    {
+      "hill": "H2",
+      "state": "VALID_FINITE_ARTIFACT__LOW_PRIORITY",
+      "reason": "W89911 exact witness passes replay but does not improve known BB(6) lower bounds; exact-machine originality unresolved.",
+      "action": "Preserve for optional Hill submission only if official workflow allows without displacing stronger claims."
+    }
+  ],
+  "hold": [
+    {
+      "hill": "H3",
+      "state": "HOLD",
+      "reason": "No retained canonical-target advance/reference-beating certificate."
+    },
+    {
+      "hill": "H5",
+      "state": "HOLD",
+      "reason": "No eligible new mathematical/formalization delta established for retained CHSH candidate."
+    },
+    {
+      "hill": "H6",
+      "state": "HOLD",
+      "reason": "Retained Laderman rank-23 support-153 payload equals organizer prior-work baseline; no Hill-progress delta."
+    }
+  ],
+  "external_boundary": "ORGANIZER_COMPETITION_WORKFLOW_AND_FINAL_EVALUATOR_ROUTE_NOT_PUBLICLY_EXPOSED",
+  "human_boundary": [
+    "registered human roster",
+    "entrant class/resource classification",
+    "conflict/credit confirmations",
+    "publication/attribution authority"
+  ],
+  "claim_boundary": "Queue is internal readiness/routing only; it does not constitute competition submission, acceptance, score, novelty determination, or certification."
+}
