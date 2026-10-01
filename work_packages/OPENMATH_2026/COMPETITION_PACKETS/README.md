@@ -2,7 +2,7 @@
 
 Prepared from protected `grandchallenge/MATHSOLVE@50b88f51032a14aeae5c3969e14dd8c5a8728bac`.
 
-Purpose: preserve five existing fixed candidate artifacts and their exact native AutoLab identities so they can be transmitted through the organizer-published competition submission route immediately when that route is obtained.
+Purpose: preserve five existing fixed candidate artifacts and their exact native AutoLab identities while handbook compliance is audited. These are transfer packets, not five submission-ready competition claims. Only packets whose mathematical/formalization and Section 8 gates are closed may be transmitted through the organizer-published competition route.
 
 No packet below is itself an official competition submission. No duplicate Climb or job shall be created merely to use these packets.
 
@@ -14,7 +14,7 @@ Public event/rules page: `https://rsihouse.ai/openmath`.
 
 As checked on 2026-10-01, the public event surface still does not expose the promised competition-specific submission workspace/checker route. The existing native AutoLab registrations are staging identities only: five jobs are registered, zero official scores have been returned, and zero organizer acceptances have been recorded.
 
-External acquisition boundary: obtain the organizer-published competition submission workspace/workflow or fallback route. Do not infer or invent a namespace or endpoint.
+External acquisition boundary: obtain the organizer-published competition submission workspace/workflow or fallback route. Do not infer or invent a namespace or endpoint. Separately, `HANDBOOK_AUDIT.md` records the internal eligibility/formalization gates that must close before a packet is score-bearing.
 
 ## Fixed packets
 
@@ -26,6 +26,6 @@ External acquisition boundary: obtain the organizer-published competition submis
 | H5 | alejandrozu/grothendieck-constant-witnesses | 72703ab868d55a460f8adbfdd137afbbdd044a0aea5f2267516c4805b541901e | c6628b21-cda2-4114-84e6-1d747b4893f8 | db1f326c-a4c0-4ab1-b601-7fa50e8e0c36 |
 | H6 | alejandrozu/matrix-multiplication-tensor-3x3 | 164aec58e19c2bdd45cddc54c52ab66f5f91f5d0562e875709b1c6eb820ac79f | 151bb7d4-656c-46fe-a82f-373a281d0d47 | 7b8b10f5-6aab-46a3-9b27-0638cd147e56 |
 
-Each packet contains the exact payload path, blob identity where available, native Climb/project identity, native job identity, hill version lock, bounded mathematical claim, provenance/attribution, and the fields that must be filled by the competition route: submission ID, immutable final commit, official evaluator report, and organizer acceptance/leaderboard state.
+Each packet contains the exact payload path, blob identity where available, native Climb/project identity, native job identity, hill version lock, bounded mathematical claim, provenance/attribution, and the fields that must be filled by the competition route. Their handbook dispositions differ: H4 is a potential original-partial candidate pending replay and novelty/status; H1/H6 are prior-mathematics artifacts requiring an M2 formalization case; H2 requires novelty/status review; H5 lacks an established eligible contribution. See `HANDBOOK_AUDIT.md` and `HANDBOOK_AUDIT.json`.
 
 H3 is intentionally absent: no improved retained candidate is ready. H7 is intentionally absent: no compiled complete proof is ready.
