@@ -7,6 +7,12 @@ on:
       - ".github/workflows/openmath-kobon-bader93.yml"
       - ".ghos-routing/workflows.json"
   workflow_dispatch:
+    inputs:
+      submit_to_leaderboard:
+        description: Submit the validated 93-triangle reconstruction as jimsteeg
+        type: boolean
+        default: false
+        required: true
 
 permissions:
   contents: read
@@ -74,3 +80,46 @@ jobs:
           print("RH_BADER93_AUTOLAB_TRIANGLES=93")
           print("RH_BADER93_H1_07=PASS")
           PY
+
+      - name: Submit validated reconstruction to the live hill
+        if: github.event_name == 'workflow_dispatch' && inputs.submit_to_leaderboard
+        env:
+          AUTOLAB_TOKEN: ${{ secrets.AUTOLAB_TOKEN }}
+        working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
+        run: |
+          set -euo pipefail
+          "$HOME/.local/bin/autolab" whoami > /tmp/gcl-autolab-identity.txt
+          python - <<'PYID'
+          from pathlib import Path
+          import re
+          identity=Path('/tmp/gcl-autolab-identity.txt').read_text()
+          if not re.search(r'(?m)^nickname:\s+jimsteeg\s*$',identity):
+              raise SystemExit('Submission refused: expected AutoLab account jimsteeg')
+          print('SUBMISSION_ACCOUNT=jimsteeg')
+          PYID
+          uv tool run --from hills==0.11.0 hills eval candidates/RH_BADER_RECONSTRUCTION_093 -H kobon-triangles --current -o /tmp/gcl-h1-report.json --json > /tmp/gcl-h1-eval-output.json
+          python - <<'PYREPORT'
+          import json
+          report=json.load(open('/tmp/gcl-h1-report.json'))
+          stack=[report]; scores=[]
+          while stack:
+              item=stack.pop()
+              if isinstance(item,dict):
+                  if item.get('name')=='triangles': scores.append(item.get('value'))
+                  stack.extend(item.values())
+              elif isinstance(item,list): stack.extend(item)
+          if scores != [93]: raise SystemExit('Submission refused: report is not exactly 93 triangles')
+          print('SUBMISSION_TRIANGLES=93')
+          PYREPORT
+          # This CLI submission performs an external write equivalent to -X POST.
+          "$HOME/.local/bin/autolab" hills submit /tmp/gcl-h1-report.json --hill alejandrozu/kobon-triangles | tee /tmp/gcl-h1-submission.txt
+
+      - name: Preserve evaluation and submission response
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.submit_to_leaderboard
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: gcl-h1-submission-${{ github.run_id }}
+          path: |
+            /tmp/gcl-h1-report.json
+            /tmp/gcl-h1-submission.txt
+          if-no-files-found: warn
