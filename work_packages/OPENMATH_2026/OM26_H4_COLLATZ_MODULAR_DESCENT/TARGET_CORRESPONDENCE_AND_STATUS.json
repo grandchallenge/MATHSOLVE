@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "OM26-H4-TARGET-CORRESPONDENCE-AND-STATUS-001",
+  "hill": "alejandrozu/collatz-modular-descent",
+  "source_bind": "50b88f51032a14aeae5c3969e14dd8c5a8728bac",
+  "candidate_sha256": "b14c4804dae95df88ffa7dcef865205edd295e1f2e8c4daeba75333053a6673a",
+  "trusted_replay": {
+    "run_id": 36877035405,
+    "job_id": 110418981039,
+    "state": "PASS",
+    "bounded_prefixes_checked": 1016,
+    "valid_rules": 309,
+    "selected_rules": 23,
+    "full_catalog_sha256": "951521f5064f0842993e895648b2b8bde2b29dda0d47c9d586ddac498bfa4f55"
+  },
+  "target_correspondence": "PASS_FOR_BOUNDED_EXACT_RESIDUE_CLASS_DESCENT_CERTIFICATES",
+  "status_review": {
+    "prior_mechanism": "ESTABLISHED_PRIOR_MATHEMATICS",
+    "exact_23_rule_catalog_match": "NOT_FOUND_IN_SEARCHED_PUBLIC_SOURCES",
+    "novelty_conclusion": "UNRESOLVED__ORGANIZER_REVIEW_REQUIRED",
+    "conservative_claim": "EVENT_WINDOW_EXACT_FINITE_CERTIFICATE_COLLECTION_AND_BOUNDED_CLASSIFICATION_ONLY",
+    "sources": [
+      "Terras 1976, A stopping time problem on the positive integers",
+      "Everett 1977, Iteration of the number-theoretic function f(2n)=n, f(2n+1)=3n+2",
+      "OEIS A177789",
+      "Winkler arXiv:1412.0519",
+      "Winkler arXiv:1504.00212",
+      "Kayadibi 2026 modular pre-descent work"
+    ]
+  },
+  "remaining": [
+    "official held-out evaluator report",
+    "competition submission ID/workflow",
+    "Section 8 entrant/disclosure packet",
+    "organizer novelty/status decision"
+  ],
+  "claim_boundary": "No global Collatz claim, no hidden-target score claim, and no independent assertion that the finite catalog is novel."
+}
