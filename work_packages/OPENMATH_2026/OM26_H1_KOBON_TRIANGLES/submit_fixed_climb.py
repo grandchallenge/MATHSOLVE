@@ -103,7 +103,7 @@ def main():
                 "hypothesis": "Candidate satisfies the public exact checks; official evaluation remains pending.",
                 "analysis_notes": "Prior-work provenance and claim limits are retained in MATHSOLVE. No novelty or optimality claim.",
                 "code": {"solution.json": solution}, "branch_from": "main",
-                "locked_fields": ["title", "description", "instructions", "hypothesis", "analysis_notes", "code"],
+                "locked_fields": ["title", "description", "code"],
             })
         readback = api("GET", endpoint + "/jobs/" + job["id"])
         if readback.get("code", {}).get("solution.json") != solution:
@@ -122,7 +122,8 @@ def main():
         raise RuntimeError("Refused activation: strict zero-dollar cost cap not confirmed")
     if project.get("compute_rental", {}).get("limits"):
         raise RuntimeError("Refused activation: rented compute is configured")
-    first["activation"] = api("POST", endpoint + "/activate", {"submit_baseline": False})
+    if not project.get("activated"):
+        first["activation"] = api("POST", endpoint + "/activate", {"submit_baseline": False})
     time.sleep(10)  # allow the control loop to publish its actual attention state
     first["execution_status"] = api("GET", endpoint + "/status")
     checkpoint()
