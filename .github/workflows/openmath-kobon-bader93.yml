@@ -137,4 +137,4 @@ jobs:
           docker run --rm \
             -v "$PWD/work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D3.lean:/tmp/H7_D3.lean:ro" \
             ghcr.io/ottogin/lean-mathlib@sha256:964547ad81e109c78545512867bae70b710c55d833078674878faad7de0ebb85 \
-            bash -lc 'cd /opt/formal-conjectures && lean --version && lake env lean /tmp/H7_D3.lean'
+            bash -lc 'set -euo pipefail; cd /opt/formal-conjectures; lean --version; libs=(.lake/build/lib/lean); while IFS= read -r -d "" d; do libs+=("$d"); done < <(find .lake/packages -mindepth 4 -maxdepth 4 -type d -path "*/.lake/build/lib/lean" -print0 | sort -z); export LEAN_PATH="$(IFS=:; echo "${libs[*]}")"; lean /tmp/H7_D3.lean'
