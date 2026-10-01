@@ -42,10 +42,10 @@ Canonical transport is:
 2. The launcher resolves that lease to one registered commit-pinned public `TASK_URL`.
 3. The launcher gives the worker that URL. No manual work-package copy/paste is required.
 4. The worker reads the self-contained task artifact and performs only the bounded work defined there.
-5. The worker returns exactly one complete structured result to the launching conversation.
-6. Authenticated GCL infrastructure relays that exact result to the protected GitHub return issue.
+5. The worker or its authorized participant-environment connector posts one complete return envelope to the exact protected GitHub return issue using ordinary GitHub authentication.
+6. Authenticated GCL infrastructure validates and captures that comment through the existing protected intake workflow.
 
-GitHub remains both the public task publication surface and the canonical durable intake surface. The external worker does not require GitHub authentication.
+GitHub remains both the public task publication surface and the canonical durable intake surface. The worker need not hold a credential itself, but its participant environment must have authenticated GitHub posting capability.
 
 ## Task-link requirements
 
@@ -75,7 +75,7 @@ Read the complete bounded task at this immutable public URL:
 
 Execute only that task and follow its return contract exactly.
 
-You do not need GitHub authentication and you are not authorized to mutate the repository.
+Your environment must have ordinary authenticated GitHub issue-comment capability. No GCL-specific permission is required. Post the complete return envelope to INTENDED_RETURN. You are not authorized to mutate repository contents.
 ```
 
 The launcher may add transport metadata, but it SHALL NOT require a human operator to locate or paste the work package.
@@ -90,7 +90,7 @@ If neither public read nor launcher hydration is available, the launch has an in
 
 ## Required agent return
 
-The default return path is the launching conversation:
+The default return path is one comment on the exact INTENDED_RETURN issue, posted by the participant environment's authenticated GitHub capability:
 
 ```text
 GCL-RETURN-RELAY/1
@@ -105,24 +105,24 @@ END_RESULT
 
 The inner result MUST be complete, replayable, and suitable for verbatim durable intake.
 
-## GCL relay obligation
+## Protected intake obligation
 
-The authenticated launcher/controller SHALL:
+Authenticated GCL infrastructure SHALL:
 
 1. verify `DISPATCH_ID`, `AGENT_REF`, assignment, task commit/blob, and intended return surface against protected state;
 2. preserve the returned payload byte-for-byte or record any transport normalization explicitly;
-3. post the complete inner result to the protected GitHub return issue under GCL-controlled authentication;
-4. record relay provenance including source launch identity and a hash of the returned payload;
+3. capture the complete inner result from the authenticated GitHub comment on the exact protected return issue;
+4. preserve the GitHub posting actor and comment identity, and for a relay envelope preserve its exact contents and both payload hashes;
 5. only then mark the result durably returned.
 
 Chat return by itself is not durable campaign intake.
 
-## Optional direct GitHub optimization
+## Posting capability
 
-If the worker independently has authenticated GitHub write capability, it MAY post the same required result directly to the protected return issue. This is optional and never a launch prerequisite.
+Ordinary authenticated GitHub issue-comment capability in the participant environment is a prerequisite for this iteration. The worker may post directly or use an authorized connector in that environment. No GCL repository write access or dedicated GCL relay endpoint is required.
 
 ## Completion
 
-Agent execution completes when one conforming `GCL-RETURN-RELAY/1` payload is returned to the launcher, or an explicitly available direct-GitHub path succeeds and a launcher receipt is returned.
+The return handoff completes when the exact envelope is durably posted to INTENDED_RETURN and the participant receives the GitHub comment URL. A reply in a private conversation alone does not complete the handoff.
 
 Campaign durability completes only after authenticated GCL infrastructure records the result on the protected intake surface.
