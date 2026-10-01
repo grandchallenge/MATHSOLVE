@@ -25,7 +25,8 @@ class OpenMathLifecycleAcceptanceTest(unittest.TestCase):
             with self.assertRaises(AcceptanceError):
                 validate_successor_progress(broken, "OM26-H2-WP03")
         broken=copy.deepcopy(registry)
-        current=next(x for x in broken["assignments"] if x["assignment_id"]=="OM26-H2-WP04")
+        current_id=broken["mathematics_release_policy"]["per_hill"]["OM26-H2"]["assignment"]
+        current=next(x for x in broken["assignments"] if x["assignment_id"]==current_id)
         current["prerequisites"]["predecessor_assignment"]="OM26-H3-WP02"
         with self.assertRaises(AcceptanceError):
             validate_successor_progress(broken, "OM26-H2-WP03")
