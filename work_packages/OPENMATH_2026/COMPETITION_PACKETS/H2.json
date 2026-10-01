@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "packet_id": "OM26-H2-COMPETITION-PACKET-001",
+  "account": "jimsteeg",
+  "source_repository": "grandchallenge/MATHSOLVE",
+  "source_commit": "50b88f51032a14aeae5c3969e14dd8c5a8728bac",
+  "hill": "H2",
+  "hill_id": "alejandrozu/busy-beaver-6-certificates",
+  "artifact": {
+    "path": "work_packages/OPENMATH_2026/CONTEST_CANDIDATES/H2/solution.json",
+    "git_blob_sha1": "9c786b5cbcf9065b4a824863de04855a48388303",
+    "sha256": "f8eaa4dbcbc3ecb18f8ddd1734cffe0079457ff3e26a51a25e81f3f6e988ead2"
+  },
+  "hill_version": {
+    "tree_hash": "86931c1b2f99d69c7bb19598f36739670768fe95",
+    "commit": "dcd25c7a099fbc2d9ba55c5537bb2e767218ffa4"
+  },
+  "native_climb": {
+    "project_id": "e87c5699-911f-479b-83d2-d34e8d0e71de",
+    "slug": "gcl-2026-h2-fixed-f8eaa4dbcbc3",
+    "job_id": "0469555d-5246-4bbe-ae13-514304defc85",
+    "job_status": "queued"
+  },
+  "claim": {
+    "statement": "Under the protected blank-zero six-state/two-symbol evaluator semantics, this machine halts after exactly 89,911 transitions with 185 ones, tape span 541, and all six non-halting states reached.",
+    "status": "VERIFIED_FINITE_LOWER_BOUND_WITNESS",
+    "busy_beaver_optimality_claim": false
+  },
+  "provenance": {
+    "attribution": "Candidate returned through GCL independent-contribution lane and independently replayed/adjudicated at Solve level.",
+    "gcl_evidence": [
+      "contributions/OPENMATH-2026/OM26-H2/WP02/adjudications/OM26-H2-WP02-ADJ-001.json",
+      ".gcl/completions/OM26-H2-WP02-ADJ-001/COMPLETION_RECEIPT.json"
+    ]
+  },
+  "competition_fields": {
+    "submission_id": null,
+    "competition_workspace": null,
+    "immutable_final_commit": null,
+    "official_evaluator_report": null,
+    "leaderboard_state": null,
+    "organizer_acceptance": null
+  },
+  "claim_boundary": "Finite witness only. No claim of S(6), world-record status, novelty, certification, or official competition acceptance."
+}
