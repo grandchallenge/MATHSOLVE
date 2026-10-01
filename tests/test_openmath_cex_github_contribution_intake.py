@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from ci.openmath_cex_github_contribution_intake import IntakeError, emit_intake, parse_result_comment
+from ci.openmath_cex_github_contribution_intake import IntakeError, emit_intake, parse_result_comment, unwrap_return
 
 
 H1_VALID = """GCL-CONTRIBUTION-RESULT/1
@@ -52,6 +52,20 @@ H2_VALID = H1_VALID.replace(
 
 
 class OpenMathCEXGitHubContributionIntakeTest(unittest.TestCase):
+    def test_relay_preserves_inner_bytes_and_rejects_identity_and_framing_drift(self):
+        envelope = ("GCL-RETURN-RELAY/1\nDISPATCH_ID: OM26-H2-WP01-IA-001\n"
+                    "AGENT_REF: INDEPENDENT-AGENT-002\n"
+                    "INTENDED_RETURN: https://github.com/grandchallenge/MATHSOLVE/issues/600\n"
+                    "\nBEGIN_RESULT\n" + H2_VALID + "\nEND_RESULT\n")
+        inner, provenance = unwrap_return(envelope)
+        self.assertEqual(inner, H2_VALID)
+        self.assertEqual(len(provenance["envelope_sha256"]), 64)
+        for bad in (envelope.replace("AGENT_REF: INDEPENDENT-AGENT-002", "AGENT_REF: OTHER-AGENT"),
+                    envelope + "extra", envelope.replace("END_RESULT", "END"),
+                    envelope.replace("A complete bounded derivation.", "https://example.com")):
+            with self.assertRaises(IntakeError):
+                unwrap_return(bad)
+
     def test_h1_result_still_parses(self):
         parsed = parse_result_comment(H1_VALID)
         self.assertEqual(parsed["preamble"]["dispatch_id"], "OM26-H1-H1-12-IA-001")
@@ -221,6 +235,22 @@ assignment: OM26-H2-WP01"""
             receipt = json.loads((out / "RECEIPT.json").read_text(encoding="utf-8"))
             self.assertEqual(receipt["assignment_id"], "OM26-H2-WP01")
             self.assertEqual(receipt["disposition_declared"], "INDEPENDENT_SCORER_CONCORDANCE")
+
+            relay = json.loads(json.dumps(event))
+            relay["comment"]["body"] = (
+                "GCL-RETURN-RELAY/1\nDISPATCH_ID: OM26-H2-WP01-IA-001\n"
+                "AGENT_REF: INDEPENDENT-AGENT-002\n"
+                "INTENDED_RETURN: https://github.com/grandchallenge/MATHSOLVE/issues/600\n"
+                "\nBEGIN_RESULT\n" + H2_VALID + "\nEND_RESULT\n")
+            emit_intake(relay, root, root / "relay")
+            self.assertEqual((root / "relay/RAW.md").read_text(), H2_VALID)
+            relay_receipt = json.loads((root / "relay/RECEIPT.json").read_text())
+            self.assertEqual(relay_receipt["relay_provenance"]["envelope_utf8"], relay["comment"]["body"])
+            self.assertFalse(relay_receipt["canonical_claim_effect"])
+            relay["comment"]["body"] = relay["comment"]["body"].replace("/issues/600", "/issues/601")
+            with self.assertRaises(IntakeError):
+                emit_intake(relay, root, root / "wrong-destination")
+            self.assertFalse((root / "wrong-destination").exists())
 
             bad = json.loads(json.dumps(event))
             bad["comment"]["body"] = H2_VALID.replace(
