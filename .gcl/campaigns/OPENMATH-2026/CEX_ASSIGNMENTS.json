@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 23436)
-Total output lines: 2090
-
 {
   "schema_version": "1.0.0",
   "record_type": "GCL_CEX_ASSIGNMENT_REGISTRY",
@@ -946,7 +943,142 @@ Total output lines: 2090
         "source_lock": {
           "repository": "grandchallenge/MATHFORGE",
           "main_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
-          "path": "reports/discovery/openmath_2026/unassigned_sources/grothendieck-con…1436 tokens truncated…2b8",
+          "path": "reports/discovery/openmath_2026/unassigned_sources/grothendieck-constant-witnesses/SOURCE_LOCK.json",
+          "blob_sha1": "c5c72c4b00fdf1d12eafa6673ed0752a76d66a26"
+        },
+        "solve_release": true,
+        "source_acquisition_closure": "da4ed0f3a1e884e2196a329ab3a2c6e1bf838a74"
+      },
+      "permissions": {
+        "source_reconnaissance": false,
+        "hill_specific_mathematics": true,
+        "finite_exact_computation": true,
+        "public_source_replay": true,
+        "competition_submission": false,
+        "certification": false,
+        "canonical_claim_mutation": false
+      },
+      "completion": [
+        "EXACT_WITNESS_CONCORDANCE",
+        "SOURCE_EXAMPLE_DISCREPANCY",
+        "BOUNDED_WITNESS_SEARCH_SEED",
+        "EXACT_BLOCKER"
+      ],
+      "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+      "successor_gate": "Closed automatically; OM26-H5-WP02 owns replay closure.",
+      "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H5-WP01.md",
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H5/WP01/dispatches/OM26-H5-WP01-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": true,
+        "launch_receipt": "RETURN_PROVES_EXECUTION_OCCURRED",
+        "returned": true,
+        "captured": true,
+        "replayed": true,
+        "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+        "pipeline_state": "ADVANCED",
+        "certification": "NOT_ELIGIBLE",
+        "closed": true
+      }
+    },
+    {
+      "assignment_id": "OM26-H6-WP01",
+      "class": "MATHEMATICAL_RESEARCH",
+      "hill": "OM26-H6",
+      "obligation": "WP01",
+      "external_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
+      "slot_binding": "OM26-H6",
+      "state": "ACCEPTED",
+      "priority": "P0",
+      "lease": {
+        "state": "CLOSED_AFTER_RETURN",
+        "dispatch_id": "OM26-H6-WP01-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-006",
+        "dispatch_issue_number": 509,
+        "protected_lease_commit": "3c835aaf6173176b64efca5f03ffdc27b20af965",
+        "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/509",
+        "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/509",
+        "protected_lease_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
+        "readback_verified": true,
+        "execution_authorized": false
+      },
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H6-WP01-IA-001.md",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-H6-WP01-IA-001.md",
+      "operation_contract": ".gcl/operations/OM26-H6-WP01-IA-001/OPERATION.json",
+      "prerequisites": {
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "main_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "path": "reports/discovery/openmath_2026/unassigned_sources/matrix-multiplication-tensor-3x3/SOURCE_LOCK.json",
+          "blob_sha1": "a7ec3fc86696698ba729632ae16397e05189221b"
+        },
+        "solve_release": true,
+        "source_acquisition_closure": "da4ed0f3a1e884e2196a329ab3a2c6e1bf838a74"
+      },
+      "permissions": {
+        "source_reconnaissance": false,
+        "hill_specific_mathematics": true,
+        "finite_exact_computation": true,
+        "public_source_replay": true,
+        "competition_submission": false,
+        "certification": false,
+        "canonical_claim_mutation": false
+      },
+      "completion": [
+        "BRENT_ORACLE_CONCORDANCE",
+        "COORDINATE_CONVENTION_DISCREPANCY",
+        "RANK23_SEARCH_SEED",
+        "EXACT_BLOCKER"
+      ],
+      "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+      "successor_gate": "Closed automatically; OM26-H6-WP02 owns replay closure.",
+      "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H6-WP01.md",
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H6/WP01/dispatches/OM26-H6-WP01-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": true,
+        "launch_receipt": "RETURN_PROVES_EXECUTION_OCCURRED",
+        "returned": true,
+        "captured": true,
+        "replayed": true,
+        "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+        "pipeline_state": "ADVANCED",
+        "certification": "NOT_ELIGIBLE",
+        "closed": true
+      }
+    },
+    {
+      "assignment_id": "OM26-H7-WP01",
+      "class": "MATHEMATICAL_RESEARCH",
+      "hill": "OM26-H7",
+      "obligation": "WP01",
+      "external_hill_id": "ottogin/erdos-3",
+      "slot_binding": "OM26-H7",
+      "state": "ACCEPTED",
+      "priority": "P0",
+      "lease": {
+        "state": "CLOSED_AFTER_RETURN",
+        "dispatch_id": "OM26-H7-WP01-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-007",
+        "dispatch_issue_number": 510,
+        "protected_lease_commit": "3c835aaf6173176b64efca5f03ffdc27b20af965",
+        "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/510",
+        "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/510",
+        "protected_lease_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
+        "readback_verified": true,
+        "execution_authorized": false
+      },
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H7-WP01-IA-001.md",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/jobs/OM26-H7-WP01-IA-001.md",
+      "operation_contract": ".gcl/operations/OM26-H7-WP01-IA-001/OPERATION.json",
+      "prerequisites": {
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "main_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
           "path": "reports/discovery/openmath_2026/unassigned_sources/erdos-3/SOURCE_LOCK.json",
           "blob_sha1": "2e3551cf7be57f1920382296bbb0d6ebea4379d6"
         },
