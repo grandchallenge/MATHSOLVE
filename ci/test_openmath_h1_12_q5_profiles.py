@@ -49,5 +49,14 @@ class H1GeometricPremiseAuditTest(unittest.TestCase):
         self.assertEqual(json.loads(json.dumps(replay())), json.loads(receipt.read_text()))
 
 
+class H1PrismObstructionTest(unittest.TestCase):
+    def test_saturated_words_and_all_prism_triangle_certificates(self):
+        import json
+        from pathlib import Path
+        from ci.validate_openmath_h1_prism_obstruction import replay
+        receipt = Path(__file__).resolve().parents[1] / "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_SATURATED_PRISM_OBSTRUCTION_RECEIPT.json"
+        self.assertEqual(replay(), json.loads(receipt.read_text()))
+
+
 if __name__ == "__main__":
     unittest.main()
