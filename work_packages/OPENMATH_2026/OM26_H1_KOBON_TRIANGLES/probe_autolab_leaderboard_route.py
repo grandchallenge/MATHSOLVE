@@ -33,6 +33,24 @@ for path, line, excerpt in hits:
     print(f"--- {path}:{line} ---")
     print(excerpt)
 
+
+print("=== INSTALLED AUTOLAB ROUTE INVENTORY ===")
+route_hits = []
+if tool_root.exists():
+    for p in tool_root.rglob("*.py"):
+        try:
+            src = p.read_text(errors="replace")
+        except Exception:
+            continue
+        if "/api/v1/" not in src:
+            continue
+        for lineno, line in enumerate(src.splitlines(), 1):
+            if "/api/v1/" in line:
+                safe = line.replace(token, "***")
+                route_hits.append((str(p.relative_to(tool_root)), lineno, safe.strip()))
+for path, line, txt in route_hits:
+    print(f"{path}:{line}: {txt}")
+
 def get(path):
     req = urllib.request.Request(BASE + path, headers={
         "Authorization": f"Bearer {token}",
