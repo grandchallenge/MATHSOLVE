@@ -30,7 +30,9 @@ class ContributionIntakeRoutingTest(unittest.TestCase):
         text = OPENMATH_WORKFLOW.read_text(encoding="utf-8")
         self.assertNotIn("gh pr create", text)
         self.assertNotIn("pull-requests: write", text)
-        self.assertIn("Release Trust intake controller", text)
+        self.assertIn("environment: release-trust", text)
+        self.assertIn("steps.programme-wake-token.outputs.token", text)
+        self.assertIn("-f event_type=openmath-return-ready", text)
 
     def test_routes_are_mutually_exclusive_for_protected_title_prefixes(self):
         nsci_prefix = "[GCL-CONTRIB] NSCI-"

@@ -44,6 +44,35 @@ def load_json(path: Path) -> dict[str, Any]:
     return value
 
 
+def validate_successor_progress(registry: dict[str, Any], successor_id: str) -> None:
+    """Keep historical acceptance valid only along a protected, closed chain."""
+    items = {x["assignment_id"]: x for x in registry["assignments"]}
+    successor = items[successor_id]
+    hill = successor["hill"]
+    current_id = registry["mathematics_release_policy"]["per_hill"][hill]["assignment"]
+    current = items[current_id]
+    if (current.get("hill") != hill
+            or current.get("state") != "LEASED_NOT_LAUNCHED"
+            or current.get("lease", {}).get("state") != "LEASED"
+            or current.get("lifecycle", {}).get("pipeline_state", "READY") != "READY"
+            or current.get("lifecycle", {}).get("closed") is not False):
+        raise AcceptanceError("current successor is not durably READY with an open lease")
+    seen = set()
+    while current_id != successor_id:
+        if current_id in seen:
+            raise AcceptanceError("successor ancestry contains a cycle")
+        seen.add(current_id)
+        predecessor_id = current.get("prerequisites", {}).get("predecessor_assignment")
+        predecessor = items.get(predecessor_id)
+        if (predecessor is None or predecessor.get("hill") != hill
+                or predecessor.get("state") != "ACCEPTED"
+                or predecessor.get("lease", {}).get("state") != "CLOSED_AFTER_RETURN"
+                or predecessor.get("lifecycle", {}).get("closed") is not True
+                or predecessor.get("lifecycle", {}).get("pipeline_state") != "ADVANCED"):
+            raise AcceptanceError("historical successor lacks a protected ADVANCED ancestry chain")
+        current_id, current = predecessor_id, predecessor
+
+
 def load_eval():
     spec = importlib.util.spec_from_file_location("om26_lifecycle_h2_eval", EVAL)
     if spec is None or spec.loader is None:
@@ -423,10 +452,7 @@ def run_acceptance() -> dict[str, Any]:
     successor = items["OM26-H2-WP03"]
     if predecessor["state"] != "ACCEPTED" or predecessor["lifecycle"]["closed"] is not True:
         raise AcceptanceError("predecessor is not durably adjudicated/closed")
-    if successor["state"] != "LEASED_NOT_LAUNCHED":
-        raise AcceptanceError("successor was not advanced to READY")
-    if successor["lifecycle"].get("pipeline_state", "READY") not in {"READY","LEASED_NOT_LAUNCHED"}:
-        raise AcceptanceError("successor pipeline state drift")
+    validate_successor_progress(registry, successor["assignment_id"])
 
     structural = simulate_current_issued_assignment()
 

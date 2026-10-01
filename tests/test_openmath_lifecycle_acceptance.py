@@ -1,7 +1,9 @@
+import copy
+import json
 import unittest
 from pathlib import Path
 
-from ci.openmath_lifecycle_acceptance import run_acceptance
+from ci.openmath_lifecycle_acceptance import AcceptanceError, run_acceptance, validate_successor_progress
 
 
 class OpenMathLifecycleAcceptanceTest(unittest.TestCase):
@@ -12,6 +14,21 @@ class OpenMathLifecycleAcceptanceTest(unittest.TestCase):
         self.assertIn("github.event_name == 'push'",workflow)
         self.assertIn('event_type=openmath-return-ready',workflow)
         self.assertNotIn('github.event.client_payload',workflow)
+
+    def test_historical_successor_requires_closed_protected_chain(self):
+        registry=json.loads((Path(__file__).resolve().parents[1]/".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json").read_text())
+        validate_successor_progress(registry, "OM26-H2-WP03")
+        for field, value in (("closed", False), ("pipeline_state", "READY")):
+            broken=copy.deepcopy(registry)
+            predecessor=next(x for x in broken["assignments"] if x["assignment_id"]=="OM26-H2-WP03")
+            predecessor["lifecycle"][field]=value
+            with self.assertRaises(AcceptanceError):
+                validate_successor_progress(broken, "OM26-H2-WP03")
+        broken=copy.deepcopy(registry)
+        current=next(x for x in broken["assignments"] if x["assignment_id"]=="OM26-H2-WP04")
+        current["prerequisites"]["predecessor_assignment"]="OM26-H3-WP02"
+        with self.assertRaises(AcceptanceError):
+            validate_successor_progress(broken, "OM26-H2-WP03")
 
     def test_h2_wp02_returned_to_advanced_unattended(self):
         report = run_acceptance()
