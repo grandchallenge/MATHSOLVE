@@ -191,7 +191,7 @@
     },
     {
       "hill_slot": "OM26-H3",
-      "status": "EVENT_WINDOW_MATHEMATICAL_TASK_READY",
+      "status": "WP05_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
       "exact_hill_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -222,14 +222,14 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H3-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Execute H3-DELTA from the registered immutable task; retain priority order.",
+      "next_action": "Launch INDEPENDENT-AGENT-305 from the registered immutable LINK_IN_RELAY_OUT task URL.",
       "title": "Clique-cluster Ramsey multiplicity",
       "active_lease": {
-        "assignment_id": "OM26-H3-WP04",
-        "dispatch_id": "OM26-H3-WP04-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-304",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/602",
-        "protected_merge": "4f1b6a1500e18fc53bae135ae6713e7abb126ae4",
+        "assignment_id": "OM26-H3-WP05",
+        "dispatch_id": "OM26-H3-WP05-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-305",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/613",
+        "protected_merge": "PROTECTED_LIFECYCLE_CANDIDATE",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
@@ -243,15 +243,15 @@
         "official_acceptance": "NONE"
       },
       "predecessor_lease": {
-        "assignment_id": "OM26-H3-WP02",
-        "dispatch_id": "OM26-H3-WP02-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-302",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/545",
-        "protected_merge": "fcb5c5c013fadb94e24029e7638ff978945f8d05",
+        "assignment_id": "OM26-H3-WP04",
+        "dispatch_id": "OM26-H3-WP04-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-304",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/602",
+        "protected_merge": "4f1b6a1500e18fc53bae135ae6713e7abb126ae4",
         "readback_verified": false,
         "lifecycle_state": "ACCEPTED",
         "launch_evidence": null,
-        "return_evidence": "contributions/OPENMATH-2026/OM26-H3/WP02/raw/OM26-H3-WP02-IA-001/github-comment-5921341565.md",
+        "return_evidence": "contributions/OPENMATH-2026/OM26-H3/WP04/raw/OM26-H3-WP04-IA-001/github-comment-5942509690.md",
         "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION"
       }
     },
