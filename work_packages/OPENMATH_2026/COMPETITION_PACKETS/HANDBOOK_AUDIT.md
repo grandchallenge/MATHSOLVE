@@ -1,7 +1,8 @@
 # OPENMATH-2026 handbook compliance audit — seven hills
 
 **Audit date:** 2026-10-01  
-**Protected MATHSOLVE source bind:** `50b88f51032a14aeae5c3969e14dd8c5a8728bac`  
+**Protected MATHSOLVE baseline bind:** `50b88f51032a14aeae5c3969e14dd8c5a8728bac`  
+**Current protected closure head:** `187ce0debe76cb960724a6078b16660a11531941`  
 **Handbook:** https://rsihouse.ai/openmath/handbook.pdf  
 **Hills audited:** H1, H2, H3, H4, H5, H6, H7
 
@@ -29,7 +30,7 @@ Status vocabulary: **PASS** = evidence sufficient at the audited source bind; **
 | H4 | Event-window 23-rule exact Collatz modular-descent catalog; trusted independent replay reconstructs 309 bounded rules and exactly the retained 23-rule reduction | Bounded exact formalized-partial candidate. Mechanism is prior mathematics; exact finite catalog novelty remains for competition review. | **TECHNICALLY CLOSED INTERNALLY; OFFICIAL ROUTE/HUMAN FIELDS PENDING** |
 | H5 | Retained rational CHSH approximation, ratio 275807/195025; no universal Grothendieck bound claimed | No current open-problem advance established. M2 is not established because the packet does not identify a new reusable formalization family. | **NOT SUBMISSION READY; HOLD UNLESS FORMALIZATION CASE IS ESTABLISHED** |
 | H6 | Exact replay of Laderman rank-23 support-153 decomposition | The organizer Hill itself identifies Laderman rank 23 as the supplied baseline and calls rank 22 or a new lower-support rank-23 decomposition progress. Our retained payload is therefore baseline prior work, not Hill progress. | **HOLD; NO SCORE-BEARING DELTA ESTABLISHED** |
-| H7 | Direct bridge lemma `ap_subprogression_of_le` is now proved and pinned-compiled in Lean 4.33.1 with exactly the allowed axioms; exact-length reformulation H7-D4 is in pinned replay | Genuine new event-window formalization work directly connected to the canonical target. Mathematical novelty/usefulness relative to existing formal libraries remains for status review. | **D3 FORMALLY CLOSED; D4 CLOSURE IN PROGRESS** |
+| H7 | Both `ap_subprogression_of_le` and `ap_frequently_iff_every_length` are proved and pinned-compiled in Lean 4.33.1 with exactly the allowed axioms | Event-window formalization directly connected to the canonical target's conclusion; mathematical novelty is not claimed, and competition classification remains for review. | **D3/D4 FORMALLY CLOSED; HUMAN/EXTERNAL FIELDS PENDING** |
 
 ## Common Section 8 failures
 
@@ -208,23 +209,23 @@ Exact-head run `36878983982`, job `110425613259`, passed. Lean printed exactly:
 
 which is the evaluator's full allowed axiom set. No proof hole remains.
 
-H7-D4, the equivalence between frequently/unbounded AP lengths and existence of every exact finite AP length, has been written on top of D3 and is undergoing the same pinned replay.
+H7-D4, the equivalence between frequently/unbounded AP lengths and existence of every exact finite AP length, has also passed pinned replay. Run `36879690920`, job `110427986166`, compiled D3 and D4 with no proof holes and exactly `[propext, Classical.choice, Quot.sound]`.
 
 ### Handbook disposition
 
 | Gate | Status | Reason |
 |---|---|---|
 | Event-window formalization | PASS | D3 was constructed and proved during the competition window. |
-| Exact pinned formal check | PASS for D3 | Exact Lean/image/axiom gate passed. |
+| Exact pinned formal check | PASS | D3 and D4 both pass the exact Lean/image/axiom gate. |
 | Direct target correspondence | PASS | D3 supports the canonical target's exact-length reformulation. |
 | Parent conjecture solved | NO | The divergent-reciprocal-sum implication remains untouched. |
 | Novelty/formal-library status | UNRESOLVED | No exact existing lemma was found in scoped source search, but that does not establish novelty. |
-| D4 | IN REPLAY | Exact-length equivalence candidate built from D3 and `Filter.frequently_atTop`. |
+| D4 | PASS | Exact-length equivalence is pinned-compiled on top of D3. |
 | §8 / official route | PARTIAL/EXTERNAL | Technical packet and official competition transaction still required. |
 
 ### Correct competition claim
 
-D3 is a narrow reusable formal lemma, not a solution of Erdős Problem 3. It is a plausible M2/formalized-partial artifact if novelty/usefulness review supports it. D4, if pinned-accepted, strengthens its direct correspondence to the canonical formal target.
+D3 and D4 are narrow reusable formalization/reduction results, not a solution of Erdős Problem 3. They are plausible M2 or narrow formalized-partial artifacts if organizer novelty/usefulness review supports that classification.
 
 ## Pre-cutoff action order
 
@@ -234,7 +235,7 @@ Therefore the mathematical work that must close **before** cutoff is:
 
 1. **H4:** internal mathematical/replay gates closed; finish human Section 8 fields and official competition route/report.
 2. **H1:** treat H1-12 as the event-window partial; finish novelty/status and Section 8 packet without conflating it with Bader93.
-3. **H7:** D3 is formally closed; close D4 if pinned replay passes, then perform formal-library novelty/status review and packet it.
+3. **H7:** D3 and D4 are formally closed; only organizer novelty/usefulness classification, human Section 8 authority fields, and the official competition route/report remain.
 4. **H2:** retain only as a low-priority exact finite Hill artifact; it does not improve known BB(6) lower bounds.
 5. **H3:** continue only if a canonical-target advance or separately admitted nontrivial variation emerges.
 6. **H6/H5:** hold unless a genuinely eligible new delta is established.
@@ -249,7 +250,7 @@ This does not mean zero useful work exists. It means the earlier label “five i
 
 - **H4:** internally replay-closed bounded finite-classification candidate; external route/human fields remain.
 - **H1:** Bader93 is prior work, but H1-12 is a distinct accepted event-window source-conditional partial candidate.
-- **H7:** D3 is pinned-Lean proved with allowed axioms; D4 exact-length reformulation is in closure.
+- **H7:** D3 and D4 are pinned-Lean proved with allowed axioms; technical formalization closure is complete.
 - **H2:** exact finite witness but not a known-state BB(6) advance; low priority.
 - **H3:** strong exact search/evaluator infrastructure but no current canonical-target advance.
 - **H6:** retained payload equals the organizer's Laderman baseline; hold.
