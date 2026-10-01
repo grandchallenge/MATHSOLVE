@@ -9,13 +9,10 @@
     "competition submission/version identifier",
     "problem/family ID",
     "primary modality",
-    "registered roster and entrant class",
-    "affiliation/resource classification",
     "authors/contributions",
     "explicit competition baseline commit and event delta",
     "material AI/tool/compute/credit disclosures",
     "outside-help/conflict disclosure",
-    "publication authority",
     "submission ID",
     "immutable competition final commit/report",
     "official final evaluator report"
@@ -36,7 +33,6 @@
       "required_before_cutoff": [
         "freeze-date novelty/status review of H1-12 reduction",
         "competition classification of source-conditional claim",
-        "Section 8 human-authority fields",
         "official submission workflow/report"
       ]
     },
@@ -64,7 +60,6 @@
       "target_correspondence": "PASS_FOR_BOUNDED_HILL_CLAIM",
       "novelty_status": "UNRESOLVED__MECHANISM_PRIOR__NO_EXACT_23_RULE_MATCH_FOUND_IN_SCOPED_SEARCH",
       "required_before_cutoff": [
-        "Section 8 human authority fields",
         "official competition workflow/evaluator report",
         "organizer novelty/scope review"
       ]
@@ -128,7 +123,6 @@
       "novelty_status": "FORMALIZATION_NOVELTY_PLAUSIBLE__MATHEMATICAL_NOVELTY_NOT_CLAIMED__ORGANIZER_REVIEW_REQUIRED",
       "recommended_modality": "M2_OR_NARROW_FORMALIZED_PARTIAL_PENDING_COMPETITION_CLASSIFICATION",
       "required_before_external_submission": [
-        "Section 8 human authority fields",
         "official competition workflow/submission ID/evaluator report",
         "organizer novelty/usefulness classification"
       ]
@@ -144,5 +138,15 @@
     "H5 hold unless eligible delta established"
   ],
   "claim_boundary": "Seven-hill handbook compliance audit only. It does not create competition eligibility, formal acceptance, novelty, organizer submission, score, or MATHCERT certification.",
-  "source_bind_current": "187ce0debe76cb960724a6078b16660a11531941"
+  "source_bind_current": "187ce0debe76cb960724a6078b16660a11531941",
+  "human_authority": {
+    "state": "CLOSED_FOR_H1_H4_H7",
+    "registered_human_roster": [
+      "Jamie Steeg"
+    ],
+    "entrant_class": "Individual",
+    "resource_classification": "SELF_RESOURCED",
+    "conflicts_credits": "none",
+    "authority_receipt": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/HUMAN_AUTHORITY_DECLARATION.json"
+  }
 }
