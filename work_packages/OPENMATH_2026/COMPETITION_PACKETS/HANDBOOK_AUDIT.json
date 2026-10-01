@@ -22,22 +22,26 @@
   ],
   "hills": {
     "H1": {
-      "disposition": "NOT_SUBMISSION_READY__M2_REFRAME_POSSIBLE",
-      "current_core": "Exact rational reconstruction and verification of published Bader 93-triangle prior work",
-      "event_window_delta": "Reconstruction/formal verification performed during event window; prior mathematics remains prior work",
-      "m1_m3a": "INELIGIBLE_AS_CURRENTLY_FRAMED__PRIOR_MATHEMATICS",
-      "m2": "POSSIBLE_BUT_INCOMPLETE",
-      "formal_replay": "PARTIAL_TO_STRONG_GCL_EVIDENCE",
-      "novelty_status": "PRIOR_WORK_EXPLICIT",
+      "disposition": "PARTIAL_RESULT_CANDIDATE__BADER93_PRIOR_WORK_SEPARATED",
+      "fixed_payload": "Bader 93 reconstruction is prior mathematics and is not claimed as an event open-problem advance.",
+      "event_window_partial": {
+        "primary_claim": "OM26-H1-RED-023",
+        "statement": "Conditional on the named source-scoped local-fan/no-consecutive-D1 and clean-line charging premises, the sole q=5 score-95 equality normal form is unrealizable; hence any normalized n=18,T=95 witness satisfying those premises must have q>=6 finite multiple points.",
+        "state": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
+        "novelty_status": "UNRESOLVED",
+        "competition_scope": "P1_OR_P2_FORMALIZED_PARTIAL_PENDING_REVIEW"
+      },
+      "structural_foundation": "H1-02 Solve proof complete with bounded falsification pass.",
+      "bounded_negative_evidence": "H1-13 tranches 1-3 found no 94 in explicit bounded neighborhoods; no upper-bound inference.",
       "required_before_cutoff": [
-        "M2 target/source theorem record",
-        "prior formal-library search",
-        "genuinely new formal contribution statement",
-        "complete Section 8 packet"
+        "freeze-date novelty/status review of H1-12 reduction",
+        "competition classification of source-conditional claim",
+        "Section 8 human-authority fields",
+        "official submission workflow/report"
       ]
     },
     "H2": {
-      "disposition": "NOT_SUBMISSION_READY__NOVELTY_STATUS_GATE_OPEN",
+      "disposition": "VALID_FINITE_HILL_ARTIFACT__LOW_PRIORITY__NO_STATE_OF_ART_ADVANCE",
       "current_core": "Independently replayed W89911 finite six-state witness",
       "event_window_delta": "PASS",
       "exact_claim": "PASS",
@@ -48,21 +52,21 @@
         "modality/family/admission",
         "competition-facing formal environment/trust packet",
         "complete Section 8 packet"
-      ]
+      ],
+      "state_of_art": "DOES_NOT_IMPROVE_KNOWN_BB6_LOWER_BOUNDS",
+      "exact_machine_novelty": "UNRESOLVED"
     },
     "H4": {
-      "disposition": "NOT_SUBMISSION_READY__STRONGEST_M1_PARTIAL_SALVAGE_CANDIDATE",
-      "current_core": "23 exact modular-descent rules from event-window bounded enumeration",
+      "disposition": "TECHNICALLY_READY_FOR_COMPETITION_REVIEW__EXTERNAL_AND_HUMAN_FIELDS_PENDING",
+      "current_core": "23 exact stable accelerated-Collatz residue-class descent certificates; exact bounded k<=8, depth<=4 classification/reduction.",
       "event_window_delta": "PASS",
-      "exact_claim": "PRESENT_IN_RETURNED_EVIDENCE",
-      "trusted_replay": "FAIL__ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
-      "novelty_status": "UNESTABLISHED",
+      "trusted_replay": "PASS__RUN_36877035405_JOB_110418981039_AND_LATER_EXACT_HEAD_REPLAYS",
+      "target_correspondence": "PASS_FOR_BOUNDED_HILL_CLAIM",
+      "novelty_status": "UNRESOLVED__MECHANISM_PRIOR__NO_EXACT_23_RULE_MATCH_FOUND_IN_SCOPED_SEARCH",
       "required_before_cutoff": [
-        "trusted independent replay",
-        "target correspondence",
-        "freeze-date novelty/status review",
-        "modality/family/admission",
-        "complete Section 8 packet"
+        "Section 8 human authority fields",
+        "official competition workflow/evaluator report",
+        "organizer novelty/scope review"
       ]
     },
     "H5": {
@@ -80,18 +84,13 @@
       ]
     },
     "H6": {
-      "disposition": "NOT_SUBMISSION_READY__M2_REFRAME_POSSIBLE",
-      "current_core": "Exact replay of known Laderman rank-23 prior work",
-      "event_window_delta": "PASS_FOR_REPLAY_FORMALIZATION",
-      "m1_m3a": "INELIGIBLE_AS_CURRENTLY_FRAMED__PRIOR_MATHEMATICS",
-      "m2": "POSSIBLE_BUT_INCOMPLETE",
-      "core_replay": "PASS_IN_RETURNED_EVIDENCE__ANCILLARY_CLAIMS_REQUIRE_TRIMMING",
+      "disposition": "HOLD__RETAINED_PAYLOAD_IS_ORGANIZER_BASELINE_PRIOR_WORK",
+      "current_core": "Known Laderman rank-23 support-153 decomposition; exact replay succeeds.",
+      "hill_progress": "NONE__HILL_BASELINE_IS_LADERMAN_RANK23; HILL_IDENTIFIES_RANK22_OR_NEW_RANK23_LOWER_SUPPORT_AS_PROGRESS",
+      "m1_m3a": "INELIGIBLE_AS_CURRENTLY_FRAMED__PRIOR_BASELINE",
+      "m2": "THEORETICALLY_POSSIBLE_BUT_LOW_PRIORITY_AND_NOVELTY_WEAK",
       "required_before_cutoff": [
-        "clean surviving core artifact",
-        "M2 target/source theorem record",
-        "prior formal-library search",
-        "genuinely new formal contribution statement",
-        "complete Section 8 packet"
+        "Only pursue if a genuinely new useful formalization can be isolated and prior-library search supports M2 novelty"
       ]
     },
     "H3": {
@@ -133,13 +132,13 @@
     }
   },
   "priority": [
-    "H4 trusted replay + target correspondence + novelty/status",
-    "H7 prove and pinned-compile H7-D3 (then H7-D4 if feasible) + novelty/status",
-    "H1/H6 M2 classification and formalization completion",
-    "H2 novelty/status review",
-    "H3 only if a canonical-target advance or admitted variation emerges",
-    "H5 hold unless eligible delta established",
-    "common entrant/provenance/publication metadata for surviving packets"
+    "H4 finalize Section 8 technical/human fields and official route",
+    "H1 H1-12 novelty/status + partial-result packet",
+    "H7 finish pinned H7-D4 exact-length reformulation; then formalization novelty/status",
+    "H2 retain as valid low-priority finite artifact only",
+    "H3 only if canonical-target advance emerges",
+    "H6 hold: retained artifact equals prior-work baseline",
+    "H5 hold unless eligible delta established"
   ],
   "claim_boundary": "Seven-hill handbook compliance audit only. It does not create competition eligibility, formal acceptance, novelty, organizer submission, score, or MATHCERT certification."
 }
