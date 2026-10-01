@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0.0",
+  "audit_id": "OPENMATH-2026-HANDBOOK-COMPLIANCE-AUDIT-001",
+  "audit_date": "2026-10-01",
+  "source_bind": "50b88f51032a14aeae5c3969e14dd8c5a8728bac",
+  "handbook": "https://rsihouse.ai/openmath/handbook.pdf",
+  "conclusion": "ZERO_OF_FIVE_CURRENTLY_COMPLETE_SCORE_BEARING_SUBMISSION_PACKETS",
+  "common_blockers": [
+    "competition submission/version identifier",
+    "problem/family ID",
+    "primary modality",
+    "registered roster and entrant class",
+    "affiliation/resource classification",
+    "authors/contributions",
+    "explicit competition baseline commit and event delta",
+    "material AI/tool/compute/credit disclosures",
+    "outside-help/conflict disclosure",
+    "publication authority",
+    "submission ID",
+    "immutable competition final commit/report",
+    "official final evaluator report"
+  ],
+  "hills": {
+    "H1": {
+      "disposition": "NOT_SUBMISSION_READY__M2_REFRAME_POSSIBLE",
+      "current_core": "Exact rational reconstruction and verification of published Bader 93-triangle prior work",
+      "event_window_delta": "Reconstruction/formal verification performed during event window; prior mathematics remains prior work",
+      "m1_m3a": "INELIGIBLE_AS_CURRENTLY_FRAMED__PRIOR_MATHEMATICS",
+      "m2": "POSSIBLE_BUT_INCOMPLETE",
+      "formal_replay": "PARTIAL_TO_STRONG_GCL_EVIDENCE",
+      "novelty_status": "PRIOR_WORK_EXPLICIT",
+      "required_before_cutoff": [
+        "M2 target/source theorem record",
+        "prior formal-library search",
+        "genuinely new formal contribution statement",
+        "complete Section 8 packet"
+      ]
+    },
+    "H2": {
+      "disposition": "NOT_SUBMISSION_READY__NOVELTY_STATUS_GATE_OPEN",
+      "current_core": "Independently replayed W89911 finite six-state witness",
+      "event_window_delta": "PASS",
+      "exact_claim": "PASS",
+      "broad_search_claim": "REJECTED_AND_MUST_REMAIN_EXCLUDED",
+      "novelty_status": "UNESTABLISHED",
+      "required_before_cutoff": [
+        "freeze-date novelty/status review",
+        "modality/family/admission",
+        "competition-facing formal environment/trust packet",
+        "complete Section 8 packet"
+      ]
+    },
+    "H4": {
+      "disposition": "NOT_SUBMISSION_READY__STRONGEST_M1_PARTIAL_SALVAGE_CANDIDATE",
+      "current_core": "23 exact modular-descent rules from event-window bounded enumeration",
+      "event_window_delta": "PASS",
+      "exact_claim": "PRESENT_IN_RETURNED_EVIDENCE",
+      "trusted_replay": "FAIL__ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+      "novelty_status": "UNESTABLISHED",
+      "required_before_cutoff": [
+        "trusted independent replay",
+        "target correspondence",
+        "freeze-date novelty/status review",
+        "modality/family/admission",
+        "complete Section 8 packet"
+      ]
+    },
+    "H5": {
+      "disposition": "NOT_SUBMISSION_READY__HOLD_UNLESS_ELIGIBLE_FORMALIZATION_DELTA_ESTABLISHED",
+      "current_core": "Rational CHSH approximation 275807/195025 with no universal bound claim",
+      "event_window_delta": "PARTIAL__RETAINED_CANDIDATE_PROVENANCE_NOT_CONSOLIDATED",
+      "trusted_replay": "FAIL_FOR_RETAINED_CANDIDATE",
+      "novelty_status": "UNESTABLISHED",
+      "m2": "UNESTABLISHED",
+      "required_before_cutoff": [
+        "candidate derivation/provenance chain",
+        "trusted replay",
+        "eligible novelty or M2 formalization delta",
+        "complete Section 8 packet"
+      ]
+    },
+    "H6": {
+      "disposition": "NOT_SUBMISSION_READY__M2_REFRAME_POSSIBLE",
+      "current_core": "Exact replay of known Laderman rank-23 prior work",
+      "event_window_delta": "PASS_FOR_REPLAY_FORMALIZATION",
+      "m1_m3a": "INELIGIBLE_AS_CURRENTLY_FRAMED__PRIOR_MATHEMATICS",
+      "m2": "POSSIBLE_BUT_INCOMPLETE",
+      "core_replay": "PASS_IN_RETURNED_EVIDENCE__ANCILLARY_CLAIMS_REQUIRE_TRIMMING",
+      "required_before_cutoff": [
+        "clean surviving core artifact",
+        "M2 target/source theorem record",
+        "prior formal-library search",
+        "genuinely new formal contribution statement",
+        "complete Section 8 packet"
+      ]
+    }
+  },
+  "priority": [
+    "H4 trusted replay + target correspondence + novelty/status",
+    "H1/H6 M2 classification and formalization completion",
+    "H2 novelty/status review",
+    "H5 hold unless eligible delta established",
+    "common entrant/provenance/publication metadata for surviving packets"
+  ],
+  "claim_boundary": "Handbook compliance audit only. It does not create competition eligibility, formal acceptance, novelty, organizer submission, score, or MATHCERT certification."
+}
