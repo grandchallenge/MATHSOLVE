@@ -203,11 +203,24 @@
         "GCL-CONTRIBUTION-RESULT/1",
         "GCL-RETURN-RELAY/1"
       ],
-      "authentication_owner": "DIRECT_PARTICIPANT_OR_AUTHORIZED_RELAY",
+      "authentication_owner": "AUTHENTICATED_PARTICIPANT_ENVIRONMENT",
       "pre_execution_transport_check_required": true,
       "unconnected_private_chat_is_intake": false,
       "no_transport_effect": "RETURN_TRANSPORT_UNAVAILABLE; do not begin substantive work",
       "instructions": "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md"
+    },
+    "current_iteration": {
+      "mode": "ANONYMOUS_PARTICIPATION_GITHUB_AUTHENTICATED_RETURN",
+      "zero_credentialed_intake": "POSTPONED",
+      "participant_environment_github_auth_required": true,
+      "gcl_organization_membership_required": false,
+      "gcl_repository_write_access_required": false,
+      "gcl_specific_credentials_required": false,
+      "real_world_identity_required": false,
+      "github_posting_actor_public": true,
+      "default_submission": "COMPLETE_RELAY_ENVELOPE_COMMENT_ON_EXACT_INTENDED_RETURN",
+      "new_hosted_relay_required": false,
+      "third_party_submission_service_required": false
     }
   },
   "assignments": [
