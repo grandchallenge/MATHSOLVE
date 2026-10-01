@@ -31,13 +31,13 @@ The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUD
 
 ## Current task links
 
-- H1: https://github.com/grandchallenge/MATHSOLVE/blob/804ef99fdb7f4708540b334e740364acef1dc5ed/handoffs/OPENMATH-2026/launch/OM26-H1-WP02.md
-- H2: https://github.com/grandchallenge/MATHSOLVE/blob/11859afbf40e6774748f352732e39301ec4e0f27/handoffs/OPENMATH-2026/launch/OM26-H2-WP04.md
-- H3: https://github.com/grandchallenge/MATHSOLVE/blob/d8d80928fa9f8ad004347da5ba3cc7af60d237cc/handoffs/OPENMATH-2026/launch/OM26-H3-WP03.md
-- H4: https://github.com/grandchallenge/MATHSOLVE/blob/46f5a0821442a62684779bf9b3ede5a96cfa633a/handoffs/OPENMATH-2026/launch/OM26-H4-WP02.md
-- H5: https://github.com/grandchallenge/MATHSOLVE/blob/040e41741f734eaacc2f01df983b200fad243a43/handoffs/OPENMATH-2026/launch/OM26-H5-WP02.md
-- H6: https://github.com/grandchallenge/MATHSOLVE/blob/9e1fa1503985e4babfb8a521797b459b6d2c0537/handoffs/OPENMATH-2026/launch/OM26-H6-WP03.md
-- H7: https://github.com/grandchallenge/MATHSOLVE/blob/cde5860a23c7cde9b830e16995f5757e65613166/handoffs/OPENMATH-2026/launch/OM26-H7-WP03.md
+- H1: https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H1-WP02.md
+- H2: https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H2-WP04.md
+- H3: https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H3-WP03.md
+- H4: https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H4-WP02.md
+- H5: https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H5-WP02.md
+- H6: https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H6-WP03.md
+- H7: https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H7-WP03.md
 
 ## Launcher contract
 

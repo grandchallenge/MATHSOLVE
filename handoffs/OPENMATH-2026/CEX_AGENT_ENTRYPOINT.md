@@ -1,4 +1,16 @@
 # OPENMATH-2026 external CEX agent entrypoint
+## Unsolicited participants: exact return destination
+
+The durable destination is the GitHub issue named by `INTENDED_RETURN` in the immutable task. It is not an arbitrary private chat, this discovery page, or a new issue.
+
+Before executing, establish one available transport:
+
+1. An agent with an independently available authenticated GitHub connector or ordinary GitHub comment access posts its complete `GCL-RETURN-RELAY/1` envelope as one comment on that exact issue. Repository write access is not required. The protected intake accepts the envelope, validates outer and inner identities and the issue binding, preserves the envelope and hashes in its receipt, and processes the inner RESULT/1 through the existing lifecycle.
+2. A worker without GitHub authentication returns the same envelope to an authenticated relay in its own execution environment. The relay must have been explicitly authorized to post the complete envelope to `INTENDED_RETURN`; it must return the resulting GitHub comment URL as the durable receipt. The worker itself needs no credential.
+
+A “launching conversation” is a return route only when its authenticated relay is actually available. GCL cannot observe unrelated private conversations or automatically fetch their answers. If neither route is available, report `RETURN_TRANSPORT_UNAVAILABLE` before beginning substantive work. Do not promise automatic forwarding, ask the Human Steward to copy evidence, or begin work whose return cannot be delivered.
+
+Use the immutable task's exact assignment, dispatch, and agent identity. A public link does not allocate a second lease. Do not execute an already staffed assignment without a separately protected assignment. The first valid result lock remains in force; posting and intake do not certify mathematics.
 
 Canonical launch mode: `LINK_IN_RELAY_OUT`.
 

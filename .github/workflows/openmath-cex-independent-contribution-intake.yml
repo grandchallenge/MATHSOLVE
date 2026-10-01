@@ -24,7 +24,8 @@ jobs:
     if: >
       !github.event.issue.pull_request &&
       startsWith(github.event.issue.title, '[GCL-CONTRIB] OPENMATH-2026 ') &&
-      startsWith(github.event.comment.body, 'GCL-CONTRIBUTION-RESULT/1')
+      (startsWith(github.event.comment.body, 'GCL-CONTRIBUTION-RESULT/1') ||
+       startsWith(github.event.comment.body, 'GCL-RETURN-RELAY/1'))
     runs-on: ubuntu-24.04
     timeout-minutes: 10
 
