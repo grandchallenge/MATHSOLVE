@@ -1,19 +1,19 @@
 {
   "schema_version": "1.0.0",
   "record_id": "OM26-H7-SECTION8-DRAFT-001",
-  "state": "TECHNICAL_PACKET_PREPARED__PINNED_PROOFS_MERGED__HUMAN_AUTHORITY_AND_OFFICIAL_ROUTE_PENDING",
+  "state": "TECHNICAL_AND_HUMAN_PACKET_PREPARED__OFFICIAL_ROUTE_AND_ORGANIZER_CLASSIFICATION_PENDING",
   "identity_target": {
     "campaign": "OPENMATH-2026",
     "hill_id": "ottogin/erdos-3",
     "problem_id": "OM26-H7",
     "family_id": "PENDING_COMPETITION_NAMESPACE",
     "primary_modality": "M2_FORMALIZATION_OR_NARROW_FORMALIZED_PARTIAL_PENDING_COMPETITION_CLASSIFICATION",
-    "registered_human_roster": "PENDING_HUMAN_CONFIRMATION",
-    "entrant_class": "PENDING_HUMAN_CONFIRMATION",
-    "affiliations": [
-      "Grand Challenge Labs / Grand Challenge Technologies Ltd."
+    "registered_human_roster": [
+      "Jamie Steeg"
     ],
-    "resource_classification": "PENDING_HUMAN_CONFIRMATION"
+    "entrant_class": "Individual",
+    "affiliations": [],
+    "resource_classification": "SELF_RESOURCED"
   },
   "exact_claims": [
     {
@@ -73,8 +73,8 @@
   "disclosures": {
     "ai_tools_compute": "See repository provenance and SECTION8_SHARED_DRAFT.json.",
     "outside_help": "Independent zero-context agents identified in predecessor records; final proof closure is separately pinned and replayable.",
-    "conflicts": "PENDING_HUMAN_CONFIRMATION",
-    "publication_authority": "PENDING_HUMAN_CONFIRMATION"
+    "conflicts": "none",
+    "publication_authority": "AUTHORIZED__SEE_HUMAN_AUTHORITY_DECLARATION.json"
   },
   "official_submission": {
     "native_climb": null,
@@ -83,10 +83,9 @@
     "route": "PENDING_ORGANIZER_COMPETITION_WORKFLOW"
   },
   "remaining": [
-    "registered human roster/class/resource classification",
-    "publication authority",
     "official competition workflow/submission ID/evaluator report",
     "organizer novelty/usefulness classification"
   ],
-  "claim_boundary": "Formalization/reduction contribution only; no solution of Erdős Problem 3, no mathematical novelty claim, no official competition submission/score/acceptance, and no MATHCERT certification."
+  "claim_boundary": "Formalization/reduction contribution only; no solution of Erdős Problem 3, no mathematical novelty claim, no official competition submission/score/acceptance, and no MATHCERT certification.",
+  "authority_receipt": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/HUMAN_AUTHORITY_DECLARATION.json"
 }

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "OPENMATH-2026-HUMAN-AUTHORITY-DECLARATION-001",
+  "declared_on": "2026-10-01",
+  "registered_human_roster": [
+    "Jamie Steeg"
+  ],
+  "entrant_class": "Individual",
+  "resource_classification": "SELF_RESOURCED",
+  "conflicts_provider_or_organizer_credits": "none",
+  "publication_authority": "I authorize this entrant to represent Jamie Steeg and release H1/H4/H7 competition materials under the competition terms.",
+  "competition_affiliation_asserted": false,
+  "note": "This declaration supersedes prior draft competition-facing GCL/GCT affiliation/Company implications. GCL/GCT references may remain as project provenance but are not asserted as the competition entrant identity.",
+  "authority_boundary": "Declaration applies to H1/H4/H7 competition materials only. It does not authorize external email or unrelated publication."
+}

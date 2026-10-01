@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "record_id": "OM26-H4-SECTION8-DRAFT-001",
-  "state": "TECHNICAL_PACKET_PREPARED__PROTECTED_REPLAY_MERGED__OFFICIAL_EVALUATOR_AND_HUMAN_AUTHORITY_FIELDS_PENDING",
+  "state": "TECHNICAL_AND_HUMAN_PACKET_PREPARED__OFFICIAL_ROUTE_EVALUATOR_AND_ORGANIZER_REVIEW_PENDING",
   "identity_target": {
     "campaign": "OPENMATH-2026",
     "hill_id": "alejandrozu/collatz-modular-descent",
@@ -10,12 +10,12 @@
     "family_id": "PENDING_COMPETITION_NAMESPACE",
     "problem_id": "OM26-H4",
     "primary_modality": "M1_FORMALIZED_PARTIAL__P1_OR_P2_PENDING_MATHEMATICAL_REVIEW",
-    "registered_human_roster": "PENDING_HUMAN_CONFIRMATION",
-    "entrant_class": "PENDING_HUMAN_CONFIRMATION",
-    "affiliations": [
-      "Grand Challenge Labs / Grand Challenge Technologies Ltd."
+    "registered_human_roster": [
+      "Jamie Steeg"
     ],
-    "resource_classification": "PENDING_HUMAN_CONFIRMATION"
+    "entrant_class": "Individual",
+    "affiliations": [],
+    "resource_classification": "SELF_RESOURCED"
   },
   "exact_claim": {
     "text": "Each of the 23 retained rules is an exact stable accelerated-Collatz residue-class descent certificate. The 23-rule payload is exactly the deterministic containment reduction of the independently reconstructed bounded catalog over modulus powers k=2..8 and trajectory depths 1..4.",
@@ -85,16 +85,14 @@
   "disclosures": {
     "tools_ai_compute": "See shared SECTION8_SHARED_DRAFT.json and exact GitHub/agent provenance above.",
     "outside_help": "Independent zero-context agent contribution explicitly identified above.",
-    "conflicts": "PENDING_HUMAN_CONFIRMATION",
-    "publication_authority": "PENDING_HUMAN_CONFIRMATION"
+    "conflicts": "none",
+    "publication_authority": "AUTHORIZED__SEE_HUMAN_AUTHORITY_DECLARATION.json"
   },
   "remaining_before_external_submission": [
     "official competition evaluator report",
     "organizer submission ID/workflow",
-    "registered human roster",
-    "entrant class/resource classification",
-    "publication authority",
     "organizer novelty/scope adjudication"
   ],
-  "claim_boundary": "Draft competition packet only; no official submission, score, acceptance, novelty determination, or MATHCERT certification."
+  "claim_boundary": "Draft competition packet only; no official submission, score, acceptance, novelty determination, or MATHCERT certification.",
+  "authority_receipt": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/HUMAN_AUTHORITY_DECLARATION.json"
 }

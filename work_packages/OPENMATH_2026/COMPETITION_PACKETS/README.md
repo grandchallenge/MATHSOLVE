@@ -29,3 +29,10 @@ External acquisition boundary: obtain the organizer-published competition submis
 Each packet contains the exact payload path, blob identity where available, native Climb/project identity, native job identity, hill version lock, bounded mathematical claim, provenance/attribution, and the fields that must be filled by the competition route. Their handbook dispositions differ. H4 now has trusted replay and target correspondence closed; H1 has a distinct event-window source-conditional partial separate from Bader93 prior work; H2 is a valid finite artifact but not a known BB(6) state-of-art advance; H5 has no established eligible delta; H6 equals the Hill's Laderman prior-work baseline. See `HANDBOOK_AUDIT.md` and `HANDBOOK_AUDIT.json`.
 
 H3 has no retained canonical-target advance. H7 has no native fixed Climb in the original five-registration set, but now has two complete organizer-pinned Lean proofs and its own Section 8 technical packet.
+
+
+## Entrant authority
+
+Competition-facing entrant identity is now bound to **Jamie Steeg**, entrant class **Individual**, resource classification **self-resourced**, with no declared conflicts/provider or organizer credits. No organizational affiliation is asserted for the competition entrant. GCL/GCT references elsewhere in the repository remain project provenance only.
+
+Publication authority for H1/H4/H7 is recorded in `HUMAN_AUTHORITY_DECLARATION.json`.

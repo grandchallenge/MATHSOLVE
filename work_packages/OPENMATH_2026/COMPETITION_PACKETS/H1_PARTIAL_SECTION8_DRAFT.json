@@ -1,18 +1,18 @@
 {
   "schema_version": "1.0.0",
   "record_id": "OM26-H1-PARTIAL-SECTION8-DRAFT-001",
-  "state": "TECHNICAL_PARTIAL_PACKET_PREPARED__NOVELTY_AND_OFFICIAL_ROUTE_PENDING",
+  "state": "TECHNICAL_AND_HUMAN_PARTIAL_PACKET_PREPARED__NOVELTY_CLASSIFICATION_AND_OFFICIAL_ROUTE_PENDING",
   "identity_target": {
     "campaign": "OPENMATH-2026",
     "hill_id": "alejandrozu/kobon-triangles",
     "problem_id": "OM26-H1",
     "primary_modality": "M1_FORMALIZED_PARTIAL__P1_OR_P2_PENDING_MATHEMATICAL_REVIEW",
-    "registered_human_roster": "PENDING_HUMAN_CONFIRMATION",
-    "entrant_class": "PENDING_HUMAN_CONFIRMATION",
-    "affiliations": [
-      "Grand Challenge Labs / Grand Challenge Technologies Ltd."
+    "registered_human_roster": [
+      "Jamie Steeg"
     ],
-    "resource_classification": "PENDING_HUMAN_CONFIRMATION"
+    "entrant_class": "Individual",
+    "affiliations": [],
+    "resource_classification": "SELF_RESOURCED"
   },
   "claim_stack": [
     {
@@ -84,15 +84,15 @@
   "disclosures": {
     "external_contributor_for_H1_12": "INDEPENDENT-AGENT-001 via OM26-H1-H1-12-IA-001; exact return/adjudication preserved in repository.",
     "shared": "See SECTION8_SHARED_DRAFT.json",
-    "publication_authority": "PENDING_HUMAN_CONFIRMATION"
+    "publication_authority": "AUTHORIZED__SEE_HUMAN_AUTHORITY_DECLARATION.json",
+    "conflicts": "none"
   },
   "remaining": [
     "freeze-date novelty/status review of H1-12 exact source-conditional reduction",
     "competition classification of source-conditional theorem as P1/P2 partial",
     "official competition workflow/submission ID",
-    "registered roster/class/resource classification",
-    "publication authority",
     "official checker/reviewer disposition"
   ],
-  "claim_boundary": "Does not claim 93 is optimal, K(18)<=94, nonexistence of a 94/95 arrangement, discharge of H1-12 predecessor premises, or novelty until competition review."
+  "claim_boundary": "Does not claim 93 is optimal, K(18)<=94, nonexistence of a 94/95 arrangement, discharge of H1-12 predecessor premises, or novelty until competition review.",
+  "authority_receipt": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/HUMAN_AUTHORITY_DECLARATION.json"
 }

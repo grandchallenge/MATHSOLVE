@@ -1,21 +1,22 @@
 {
   "schema_version": "1.0.0",
   "record_id": "OPENMATH-2026-SECTION8-SHARED-DRAFT-001",
-  "state": "DRAFT__HUMAN_AUTHORITY_FIELDS_PENDING",
+  "state": "HUMAN_AUTHORITY_CLOSED__EXTERNAL_ROUTE_FIELDS_PENDING",
   "account": {
     "autolab_owner": "jimsteeg",
     "github_repository": "grandchallenge/MATHSOLVE"
   },
   "entrant": {
-    "registered_human_roster": "PENDING_HUMAN_CONFIRMATION",
-    "entrant_class": "PENDING_HUMAN_CONFIRMATION",
-    "affiliations": [
-      "Grand Challenge Labs / Grand Challenge Technologies Ltd."
+    "registered_human_roster": [
+      "Jamie Steeg"
     ],
-    "resource_classification": "PENDING_HUMAN_CONFIRMATION"
+    "entrant_class": "Individual",
+    "affiliations": [],
+    "affiliation_note": "No organizational affiliation asserted for the competition entrant; GCL/GCT references elsewhere are project provenance only.",
+    "resource_classification": "SELF_RESOURCED"
   },
   "contribution_model": {
-    "human_steward": "PENDING_REGISTERED_ROSTER_IDENTITY_CONFIRMATION",
+    "human_steward": "Jamie Steeg",
     "governed_research_pipeline": "GCL Forge -> Solve -> Cert; competition authority remains external",
     "independent_external_agents": "DISCLOSED_PER_HILL_WHERE_USED",
     "ai_tooling": "DISCLOSED_PER_HILL_AND_REPOSITORY_EVIDENCE",
@@ -25,13 +26,14 @@
     "external_assistance": "Independent zero-context agent contributions are preserved with exact dispatch/return/adjudication provenance where used.",
     "compute": "GitHub Actions and local/hosted exact replay infrastructure; no AutoLab rented compute authorized for the five fixed native registrations.",
     "autolab_model_spend": "Existing fixed registrations are constrained at zero model-spend budget; no paid agent-search spend authorized.",
-    "conflicts": "PENDING_HUMAN_CONFIRMATION",
-    "credits": "PENDING_HUMAN_CONFIRMATION"
+    "conflicts": "none",
+    "credits": "none"
   },
   "publication_authority": {
-    "attribution_approval": "PENDING_HUMAN_CONFIRMATION",
-    "company_representation_permission": "PENDING_HUMAN_CONFIRMATION",
-    "public_release_permission": "PENDING_HUMAN_CONFIRMATION"
+    "attribution_approval": "AUTHORIZED_FOR_H1_H4_H7",
+    "company_representation_permission": "NOT_APPLICABLE__INDIVIDUAL_ENTRY",
+    "public_release_permission": "AUTHORIZED_FOR_H1_H4_H7",
+    "exact_declaration": "I authorize this entrant to represent Jamie Steeg and release H1/H4/H7 competition materials under the competition terms."
   },
   "per_submission_required": [
     "submission/version ID",
@@ -51,5 +53,6 @@
     "tool/AI/compute/credit disclosure",
     "outside-help/conflict disclosure"
   ],
-  "claim_boundary": "Draft consolidates known shared metadata without inventing human roster, entrant class, publication authority, or resource classification. Those fields require Human Steward confirmation before external submission."
+  "claim_boundary": "Shared Section 8 human identity/resource/conflict/publication fields are closed for H1/H4/H7. Competition namespace, submission ID, official evaluator/report, and organizer adjudication remain external.",
+  "authority_receipt": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/HUMAN_AUTHORITY_DECLARATION.json"
 }
