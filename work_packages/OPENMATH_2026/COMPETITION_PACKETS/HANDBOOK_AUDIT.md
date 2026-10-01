@@ -34,18 +34,15 @@ Status vocabulary: **PASS** = evidence sufficient at the audited source bind; **
 
 ## Common Section 8 failures
 
-All seven hill lanes currently fail the minimum-packet gate in at least these common fields:
+After Human Steward declaration on 2026-10-01, the human roster/class/resource/conflict/publication-authority fields are closed for H1/H4/H7. The remaining common blockers are:
 
 - competition submission/version identifier;
 - explicit problem/family ID in the competition namespace;
 - explicit primary modality;
-- registered human roster and entrant class;
-- affiliation/resource classification;
 - complete author/contribution statement;
 - explicit baseline commit and event-window delta in competition terms;
 - material AI/tool/compute/credit disclosure in one submission-facing record;
 - outside-help/conflict disclosure;
-- attribution approval and publication authority;
 - competition submission ID;
 - immutable competition final commit/report;
 - official final evaluator report.
@@ -240,7 +237,7 @@ Therefore the mathematical work that must close **before** cutoff is:
 5. **H3:** continue only if a canonical-target advance or separately admitted nontrivial variation emerges.
 6. **H6/H5:** hold unless a genuinely eligible new delta is established.
 
-In parallel, prepare once for all surviving packets: roster/class, affiliation/resource classification, author/contribution statement, tool/compute disclosures, outside-help/conflict statement, explicit baseline/event delta, and publication authority.
+Human authority is now bound as Jamie Steeg / Individual / self-resourced / no conflicts or organizer-provider credits, with publication authority for H1/H4/H7. Remaining preparation is competition namespace/submission identifiers, official evaluator/reviewer records, and organizer novelty/classification decisions.
 
 ## Audit conclusion
 
