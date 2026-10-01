@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.0.0",
+  "audit_id": "OPENMATH-2026-HANDBOOK-COMPLIANCE-AUDIT-001",
+  "audit_date": "2026-10-01",
+  "source_bind": "50b88f51032a14aeae5c3969e14dd8c5a8728bac",
+  "handbook": "https://rsihouse.ai/openmath/handbook.pdf",
+  "conclusion": "ZERO_OF_SEVEN_CURRENTLY_COMPLETE_SCORE_BEARING_SUBMISSION_PACKETS",
+  "common_blockers": [
+    "competition submission/version identifier",
+    "problem/family ID",
+    "primary modality",
+    "registered roster and entrant class",
+    "affiliation/resource classification",
+    "authors/contributions",
+    "explicit competition baseline commit and event delta",
+    "material AI/tool/compute/credit disclosures",
+    "outside-help/conflict disclosure",
+    "publication authority",
+    "submission ID",
+    "immutable competition final commit/report",
+    "official final evaluator report"
+  ],
+  "hills": {
+    "H1": {
+      "disposition": "PARTIAL_RESULT_CANDIDATE__BADER93_PRIOR_WORK_SEPARATED",
+      "fixed_payload": "Bader 93 reconstruction is prior mathematics and is not claimed as an event open-problem advance.",
+      "event_window_partial": {
+        "primary_claim": "OM26-H1-RED-023",
+        "statement": "Conditional on the named source-scoped local-fan/no-consecutive-D1 and clean-line charging premises, the sole q=5 score-95 equality normal form is unrealizable; hence any normalized n=18,T=95 witness satisfying those premises must have q>=6 finite multiple points.",
+        "state": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
+        "novelty_status": "UNRESOLVED",
+        "competition_scope": "P1_OR_P2_FORMALIZED_PARTIAL_PENDING_REVIEW"
+      },
+      "structural_foundation": "H1-02 Solve proof complete with bounded falsification pass.",
+      "bounded_negative_evidence": "H1-13 tranches 1-3 found no 94 in explicit bounded neighborhoods; no upper-bound inference.",
+      "required_before_cutoff": [
+        "freeze-date novelty/status review of H1-12 reduction",
+        "competition classification of source-conditional claim",
+        "Section 8 human-authority fields",
+        "official submission workflow/report"
+      ]
+    },
+    "H2": {
+      "disposition": "VALID_FINITE_HILL_ARTIFACT__LOW_PRIORITY__NO_STATE_OF_ART_ADVANCE",
+      "current_core": "Independently replayed W89911 finite six-state witness",
+      "event_window_delta": "PASS",
+      "exact_claim": "PASS",
+      "broad_search_claim": "REJECTED_AND_MUST_REMAIN_EXCLUDED",
+      "novelty_status": "UNESTABLISHED",
+      "required_before_cutoff": [
+        "freeze-date novelty/status review",
+        "modality/family/admission",
+        "competition-facing formal environment/trust packet",
+        "complete Section 8 packet"
+      ],
+      "state_of_art": "DOES_NOT_IMPROVE_KNOWN_BB6_LOWER_BOUNDS",
+      "exact_machine_novelty": "UNRESOLVED"
+    },
+    "H4": {
+      "disposition": "TECHNICALLY_READY_FOR_COMPETITION_REVIEW__EXTERNAL_AND_HUMAN_FIELDS_PENDING",
+      "current_core": "23 exact stable accelerated-Collatz residue-class descent certificates; exact bounded k<=8, depth<=4 classification/reduction.",
+      "event_window_delta": "PASS",
+      "trusted_replay": "PASS__RUN_36877035405_JOB_110418981039_AND_LATER_EXACT_HEAD_REPLAYS",
+      "target_correspondence": "PASS_FOR_BOUNDED_HILL_CLAIM",
+      "novelty_status": "UNRESOLVED__MECHANISM_PRIOR__NO_EXACT_23_RULE_MATCH_FOUND_IN_SCOPED_SEARCH",
+      "required_before_cutoff": [
+        "Section 8 human authority fields",
+        "official competition workflow/evaluator report",
+        "organizer novelty/scope review"
+      ]
+    },
+    "H5": {
+      "disposition": "NOT_SUBMISSION_READY__HOLD_UNLESS_ELIGIBLE_FORMALIZATION_DELTA_ESTABLISHED",
+      "current_core": "Rational CHSH approximation 275807/195025 with no universal bound claim",
+      "event_window_delta": "PARTIAL__RETAINED_CANDIDATE_PROVENANCE_NOT_CONSOLIDATED",
+      "trusted_replay": "FAIL_FOR_RETAINED_CANDIDATE",
+      "novelty_status": "UNESTABLISHED",
+      "m2": "UNESTABLISHED",
+      "required_before_cutoff": [
+        "candidate derivation/provenance chain",
+        "trusted replay",
+        "eligible novelty or M2 formalization delta",
+        "complete Section 8 packet"
+      ]
+    },
+    "H6": {
+      "disposition": "HOLD__RETAINED_PAYLOAD_IS_ORGANIZER_BASELINE_PRIOR_WORK",
+      "current_core": "Known Laderman rank-23 support-153 decomposition; exact replay succeeds.",
+      "hill_progress": "NONE__HILL_BASELINE_IS_LADERMAN_RANK23; HILL_IDENTIFIES_RANK22_OR_NEW_RANK23_LOWER_SUPPORT_AS_PROGRESS",
+      "m1_m3a": "INELIGIBLE_AS_CURRENTLY_FRAMED__PRIOR_BASELINE",
+      "m2": "THEORETICALLY_POSSIBLE_BUT_LOW_PRIORITY_AND_NOVELTY_WEAK",
+      "required_before_cutoff": [
+        "Only pursue if a genuinely new useful formalization can be isolated and prior-library search supports M2 novelty"
+      ]
+    },
+    "H3": {
+      "disposition": "NO_SCORE_BEARING_TARGET_ADVANCE__SEARCH_INFRASTRUCTURE_ONLY",
+      "current_core": "Exact weighted K4 density oracles, structural identities and search representation; follow-up counterexample repairs an unrestricted parameter-count claim",
+      "event_window_delta": "PASS",
+      "exact_evidence": "STRONG_RETURNED_EVIDENCE__NO_CLAIM_PROMOTION",
+      "target_advance": "NONE_ESTABLISHED__NO_REFERENCE_BEATING_CERTIFICATE",
+      "novelty_status": "UNESTABLISHED",
+      "auxiliary_counterexample": "VALID_NARROWER_RESULT_AGAINST_INTERNAL_SEARCH_REPRESENTATION__NOT_CANONICAL_TARGET_REFUTATION",
+      "required_before_cutoff": [
+        "produce a reference-beating or otherwise canonical-target mathematical advance, or admit a distinct eligible variation",
+        "trusted independent replay",
+        "freeze-date novelty/status review",
+        "modality/family/admission",
+        "complete Section 8 packet",
+        "official submission route/report"
+      ]
+    },
+    "H7": {
+      "disposition": "TECHNICALLY_COMPLETE_FORMALIZATION_CANDIDATE__HUMAN_AND_EXTERNAL_FIELDS_PENDING",
+      "current_core": "Pinned Lean proofs of Erdos3.ap_subprogression_of_le and Erdos3.ap_frequently_iff_every_length",
+      "event_window_delta": "PASS",
+      "exact_claim": "PASS__D3_D4_PINNED_COMPILE",
+      "pinned_environment": "PASS__LEAN_4_33_1__MATHLIB_0df444a360eaa60ab8c11dca51a86af692955474",
+      "trusted_replay": "PASS__RUN_36879690920_JOB_110427986166",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_holes": false,
+      "target_correspondence": "PASS__CONCLUSION_SIDE_EXACT_LENGTH_REFORMULATION",
+      "parent_problem": "UNSOLVED__RECIPROCAL_DIVERGENCE_IMPLICATION_UNTOUCHED",
+      "novelty_status": "FORMALIZATION_NOVELTY_PLAUSIBLE__MATHEMATICAL_NOVELTY_NOT_CLAIMED__ORGANIZER_REVIEW_REQUIRED",
+      "recommended_modality": "M2_OR_NARROW_FORMALIZED_PARTIAL_PENDING_COMPETITION_CLASSIFICATION",
+      "required_before_external_submission": [
+        "Section 8 human authority fields",
+        "official competition workflow/submission ID/evaluator report",
+        "organizer novelty/usefulness classification"
+      ]
+    }
+  },
+  "priority": [
+    "H4 external/human submission fields only; bounded mathematics closed",
+    "H1 source-conditional partial: organizer novelty/significance + external/human fields",
+    "H7 external/human submission fields only; D3/D4 pinned formalization closed",
+    "H2 retain as valid low-priority finite artifact only",
+    "H3 only if canonical-target advance emerges",
+    "H6 hold: retained artifact equals prior-work baseline",
+    "H5 hold unless eligible delta established"
+  ],
+  "claim_boundary": "Seven-hill handbook compliance audit only. It does not create competition eligibility, formal acceptance, novelty, organizer submission, score, or MATHCERT certification.",
+  "source_bind_current": "187ce0debe76cb960724a6078b16660a11531941"
+}
