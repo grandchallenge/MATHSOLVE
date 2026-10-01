@@ -53,6 +53,12 @@ paths = [
     "/api/v1/hills/alejandrozu/kobon-triangles/leaderboard",
     "/api/v1/hills/alejandrozu/kobon-triangles/versions/7d3f1d91dcb8be8d0eef20be763557bd6d876707/leaderboard",
     "/api/v1/hills/alejandrozu/kobon-triangles/submissions",
+    "/api/v1/projects/a-hamdi/hamdi-kobon-18-93",
+    "/api/v1/projects/a-hamdi/hamdi-kobon-18-93/jobs",
+    "/api/v1/projects/ashleychenyj/kobon-triangles-attempt-7",
+    "/api/v1/projects/ashleychenyj/kobon-triangles-attempt-7/jobs",
+    "/api/v1/projects/jimsteeg/gcl-2026-h1-fixed-e606799ad6c1",
+    "/api/v1/projects/jimsteeg/gcl-2026-h1-fixed-e606799ad6c1/jobs",
 ]
 print("=== READ-ONLY API PROBES ===")
 for path in paths:
