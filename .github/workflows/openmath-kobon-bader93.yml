@@ -62,6 +62,91 @@ jobs:
           "$HOME/.local/bin/autolab" hills submit --help
           python probe_autolab_leaderboard_route.py
 
+      - name: Execute existing fixed H1 job on our own ephemeral compute
+        env:
+          AUTOLAB_TOKEN: ${{ secrets.AUTOLAB_TOKEN }}
+          PROJECT: jimsteeg/gcl-2026-h1-fixed-e606799ad6c1
+          JOB_ID: 5c6779f5-5f3d-474c-9cf8-310a0d679efb
+          NODE_NAME: gcl-h1-${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, urllib.request
+          base="https://app.autolab.ai"
+          token=os.environ["AUTOLAB_TOKEN"]
+          project=os.environ["PROJECT"]
+          job_id=os.environ["JOB_ID"]
+          def get(path):
+              req=urllib.request.Request(base+path,headers={"Authorization":f"Bearer {token}","Accept":"application/json"})
+              with urllib.request.urlopen(req,timeout=20) as r:
+                  return json.loads(r.read())
+          p=get("/api/v1/projects/"+project)
+          if float((p.get("termination") or {}).get("max_cost_usd",-1)) != 0.0:
+              raise SystemExit("Refusing: H1 model budget is not exactly $0")
+          if (p.get("compute_rental") or {}).get("limits"):
+              raise SystemExit("Refusing: H1 has nonempty AutoLab rental limits")
+          if p.get("hill",{}).get("tree_hash") != "7d3f1d91dcb8be8d0eef20be763557bd6d876707":
+              raise SystemExit("Refusing: H1 hill version drift")
+          jobs=get("/api/v1/projects/"+project+"/jobs").get("items",[])
+          j=next((x for x in jobs if x.get("id")==job_id),None)
+          if not j:
+              raise SystemExit("Refusing: exact H1 job not found")
+          if j.get("status") not in {"queued","completed"}:
+              raise SystemExit("Refusing: unexpected H1 job state "+str(j.get("status")))
+          print("PRECHECK=PASS budget=$0 rentals=empty exact_hill=yes job_status="+j.get("status",""))
+          PY
+
+          cleanup() {
+            "$HOME/.local/bin/autolab" nodes detach "$NODE_NAME" --project "$PROJECT" || true
+            "$HOME/.local/bin/autolab" serve stop --name "$NODE_NAME" || true
+          }
+          trap cleanup EXIT
+
+          "$HOME/.local/bin/autolab" serve --daemon --name "$NODE_NAME"
+          sleep 3
+          "$HOME/.local/bin/autolab" serve status --all
+          "$HOME/.local/bin/autolab" nodes attach "$NODE_NAME" --project "$PROJECT"
+
+          python - <<'PY'
+          import json, os, time, urllib.request
+          base="https://app.autolab.ai"
+          token=os.environ["AUTOLAB_TOKEN"]; project=os.environ["PROJECT"]; job_id=os.environ["JOB_ID"]
+          def get(path):
+              req=urllib.request.Request(base+path,headers={"Authorization":f"Bearer {token}","Accept":"application/json"})
+              with urllib.request.urlopen(req,timeout=20) as r:
+                  return json.loads(r.read())
+          deadline=time.time()+420
+          last=None
+          while time.time()<deadline:
+              items=get("/api/v1/projects/"+project+"/jobs").get("items",[])
+              j=next(x for x in items if x.get("id")==job_id)
+              state=j.get("status")
+              if state != last:
+                  print("H1_JOB_STATUS="+str(state), flush=True); last=state
+              if state in {"completed","failed","cancelled"}:
+                  out={k:j.get(k) for k in ("id","status","commit_sha","result","eval","error_message","started_at","completed_at")}
+                  print("H1_JOB_FINAL="+json.dumps(out,sort_keys=True), flush=True)
+                  if state!="completed":
+                      raise SystemExit("H1 fixed job did not complete")
+                  break
+              time.sleep(5)
+          else:
+              raise SystemExit("H1 fixed job did not finish within bounded runner window")
+          PY
+
+          python - <<'PY'
+          import json, os, urllib.request
+          base="https://app.autolab.ai"; token=os.environ["AUTOLAB_TOKEN"]
+          req=urllib.request.Request(base+"/api/v1/hills/alejandrozu/kobon-triangles/leaderboard",headers={"Authorization":f"Bearer {token}","Accept":"application/json"})
+          with urllib.request.urlopen(req,timeout=20) as r: board=json.loads(r.read())
+          hits=[]
+          for g in board.get("groups",[]):
+              for e in g.get("entries",[]):
+                  if e.get("owner")=="jimsteeg":
+                      hits.append({"label":g.get("label"),"entry":e})
+          print("JIMSTEEG_LEADERBOARD="+json.dumps(hits,sort_keys=True))
+          PY
+
       - name: Pull public Kobon hill
         run: |
           "$HOME/.local/bin/autolab" hills pull alejandrozu/kobon-triangles
