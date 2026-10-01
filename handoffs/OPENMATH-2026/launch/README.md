@@ -11,5 +11,5 @@ Canonical mode is `LINK_IN_RELAY_OUT`. No human work-package copy/paste is part 
 | H5 | https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H5-WP03.md | Yes — OM26-H5-WP03 / INDEPENDENT-AGENT-503 |
 | H6 | https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H6-WP04.md | Yes — OM26-H6-WP04 / INDEPENDENT-AGENT-604 |
 | H7 | https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H7-WP04.md | Yes — OM26-H7-WP04 / INDEPENDENT-AGENT-704 |
-| H1-Q6 (support) | PENDING_CONTENT_COMMIT | Yes — OM26-H1-WP31 / INDEPENDENT-AGENT-131 |
+| H1-Q6 (support) | https://github.com/grandchallenge/MATHSOLVE/blob/5f12590f2079a0593e8a3204181e4bdf0da40008/handoffs/OPENMATH-2026/launch/OM26-H1-WP31.md | Yes — OM26-H1-WP31 / INDEPENDENT-AGENT-131 |
 | H1-ADVERSARY (support) | https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H1-WP60.md | Yes — OM26-H1-WP60 / INDEPENDENT-AGENT-160 |
