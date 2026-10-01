@@ -106,6 +106,31 @@ def validate() -> list[str]:
             if prev.get("lifecycle", {}).get("closed") is not True:
                 errors.append(f"{hill}: predecessor not closed")
 
+    support_scripts = registry.get("launch_contract", {}).get("support_scripts", {})
+    for slot, script in support_scripts.items():
+        item = assignments.get(script.get("assignment_id"), {})
+        if item.get("lane_role") != "SUPPORT" or item.get("support_slot") != slot:
+            errors.append(f"{slot}: supporting task role/slot mismatch")
+        if item.get("state") == "LEASED_NOT_LAUNCHED":
+            active_leased += 1
+            lease = item.get("lease", {})
+            if lease.get("state") != "LEASED" or lease.get("execution_authorized") is not True:
+                errors.append(f"{slot}: supporting lease not authorized")
+            for key in ("assignment_id", "dispatch_id", "agent_ref"):
+                expected = item.get("assignment_id") if key == "assignment_id" else lease.get(key)
+                if script.get(key) != expected:
+                    errors.append(f"{slot}: supporting script {key} mismatch")
+            path = ROOT / script.get("path", "")
+            if not path.is_file() or script.get("task_blob_sha1") != git_blob_sha1(path):
+                errors.append(f"{slot}: supporting task blob mismatch")
+            match = PINNED.fullmatch(str(script.get("task_url", "")))
+            if not match or match.groups() != (script.get("task_commit"), script.get("path")):
+                errors.append(f"{slot}: supporting task URL identity mismatch")
+            if script.get("intended_return") != lease.get("return_url"):
+                errors.append(f"{slot}: supporting return mismatch")
+        else:
+            errors.append(f"{slot}: unsupported supporting state")
+
     math_assignments = [
         x for x in assignments.values()
         if x.get("class") == "MATHEMATICAL_RESEARCH"
@@ -130,8 +155,7 @@ def validate() -> list[str]:
     index = INDEX.read_text(encoding="utf-8")
     if "LINK_IN_RELAY_OUT" not in index:
         errors.append("launch index missing LINK_IN_RELAY_OUT")
-    for hill in HILLS:
-        row = scripts[hill]
+    for hill, row in {**scripts, **support_scripts}.items():
         if row.get("task_url") and row.get("task_url") not in index:
             errors.append(f"launch index missing {hill} task URL")
 

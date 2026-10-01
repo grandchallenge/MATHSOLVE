@@ -4,10 +4,12 @@ Canonical mode is `LINK_IN_RELAY_OUT`. No human work-package copy/paste is part 
 
 | Hill | Immutable task | Executable |
 |---|---|---|
-| H1 | https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H1-WP02.md | Yes — OM26-H1-WP02 / INDEPENDENT-AGENT-102 |
-| H2 | https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H2-WP04.md | Yes — OM26-H2-WP04 / INDEPENDENT-AGENT-204 |
-| H3 | https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H3-WP03.md | Yes — OM26-H3-WP03 / INDEPENDENT-AGENT-303 |
-| H4 | https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H4-WP02.md | Yes — OM26-H4-WP02 / INDEPENDENT-AGENT-402 |
-| H5 | https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H5-WP02.md | Yes — OM26-H5-WP02 / INDEPENDENT-AGENT-502 |
-| H6 | https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H6-WP03.md | Yes — OM26-H6-WP03 / INDEPENDENT-AGENT-603 |
-| H7 | https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H7-WP03.md | Yes — OM26-H7-WP03 / INDEPENDENT-AGENT-703 |
+| H1 | https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H1-WP03.md | Yes — OM26-H1-WP03 / INDEPENDENT-AGENT-103 |
+| H2 | https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H2-WP05.md | Yes — OM26-H2-WP05 / INDEPENDENT-AGENT-205 |
+| H3 | https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H3-WP04.md | Yes — OM26-H3-WP04 / INDEPENDENT-AGENT-304 |
+| H4 | https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H4-WP03.md | Yes — OM26-H4-WP03 / INDEPENDENT-AGENT-403 |
+| H5 | https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H5-WP03.md | Yes — OM26-H5-WP03 / INDEPENDENT-AGENT-503 |
+| H6 | https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H6-WP04.md | Yes — OM26-H6-WP04 / INDEPENDENT-AGENT-604 |
+| H7 | https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H7-WP04.md | Yes — OM26-H7-WP04 / INDEPENDENT-AGENT-704 |
+| H1-Q6 (support) | https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H1-WP30.md | Yes — OM26-H1-WP30 / INDEPENDENT-AGENT-130 |
+| H1-ADVERSARY (support) | https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H1-WP60.md | Yes — OM26-H1-WP60 / INDEPENDENT-AGENT-160 |

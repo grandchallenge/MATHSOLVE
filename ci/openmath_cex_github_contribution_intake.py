@@ -249,6 +249,27 @@ def validate_event(
     if dispatch.get("concurrency_mode") != "independent_blind":
         raise IntakeError("protected dispatch concurrency mode mismatch")
 
+    if dispatch.get("protected_lease_required"):
+        registry_path = root / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
+        registry = json.loads(registry_path.read_text(encoding="utf-8"))
+        matches = [x for x in registry["assignments"] if x.get("assignment_id") == dispatch["assignment_id"]]
+        if len(matches) != 1:
+            raise IntakeError("dispatch must have exactly one protected assignment")
+        item = matches[0]
+        lease = item.get("lease", {})
+        if item.get("state") not in {"LEASED_NOT_LAUNCHED", "LAUNCHED", "RETURNED", "CAPTURED", "ADJUDICATING"}:
+            # A repeated wake for the same already-captured first comment is idempotent.
+            base = dispatch_path.parent.parent
+            captured = base / "raw" / dispatch_id / f"github-comment-{comment.get('id')}.md"
+            if item.get("state") != "ACCEPTED" or not captured.is_file() or captured.read_text(encoding="utf-8") != inner:
+                raise IntakeError("protected lease is closed or superseded")
+        elif lease.get("state") != "LEASED" or lease.get("execution_authorized") is not True:
+            raise IntakeError("protected lease is not executable")
+        if lease.get("dispatch_id") != dispatch_id or lease.get("agent_ref") != dispatch.get("agent_ref"):
+            raise IntakeError("protected lease identity mismatch")
+        if lease.get("return_url") != dispatch.get("github_issue_url"):
+            raise IntakeError("protected lease return issue mismatch")
+
     dispositions = operation.get("acceptable_dispositions")
     if not isinstance(dispositions, list) or not all(isinstance(x, str) and x for x in dispositions):
         raise IntakeError("operation lacks acceptable_dispositions")

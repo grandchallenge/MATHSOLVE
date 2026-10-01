@@ -164,6 +164,11 @@ def refresh_summary(registry: dict[str, Any]) -> dict[str, int]:
             raise LifecycleCandidateError(f"{hill}: current assignment missing from registry")
         current.append(item)
 
+    current.extend(
+        assignments[row["assignment_id"]]
+        for row in registry.get("launch_contract", {}).get("support_scripts", {}).values()
+    )
+
     math_assignments = [
         x for x in assignments.values()
         if x.get("class") == "MATHEMATICAL_RESEARCH"
@@ -201,6 +206,8 @@ def board_text(registry: dict[str, Any]) -> str:
             f"- H{i}: {row['task_url']}" if row.get("executable")
             else f"- H{i}: guard only; no active successor lease."
         )
+    for slot, row in registry["launch_contract"].get("support_scripts", {}).items():
+        links.append(f"- {slot} (support): {row['task_url']}")
     return """# OPENMATH-2026 CEX job board
 
 This page is a human projection of the protected machine registry.
@@ -244,6 +251,8 @@ def index_text(registry: dict[str, Any]) -> str:
             lines.append(f"| H{i} | {row.get('task_url')} | {detail} |")
         else:
             lines.append(f"| H{i} | {row.get('task_url','')} | No — {row.get('reason','guarded')} |")
+    for slot, row in registry["launch_contract"].get("support_scripts", {}).items():
+        lines.append(f"| {slot} (support) | {row.get('task_url')} | Yes — {row.get('assignment_id')} / {row.get('agent_ref')} |")
     return "\n".join(lines)+"\n"
 
 
@@ -261,6 +270,15 @@ def apply_candidate(root: Path, intake_dir: Path, issue_number: int, issue_url: 
     lease=predecessor.get("lease",{})
     if lease.get("dispatch_id")!=receipt["dispatch_id"] or lease.get("agent_ref")!=receipt["agent_ref"]:
         raise LifecycleCandidateError("returned identity differs from protected lease")
+
+    is_support = predecessor.get("lane_role") == "SUPPORT"
+    support_slot = predecessor.get("support_slot")
+    if is_support:
+        registered = registry["launch_contract"].get("support_scripts", {}).get(support_slot, {})
+    else:
+        registered = registry["launch_contract"]["current_scripts"][p["hill"]]
+    if registered.get("assignment_id") != receipt["assignment_id"]:
+        raise LifecycleCandidateError("returned assignment is not the current primary/support task")
 
     successor_assignment=p["successor_assignment"]
     if successor_assignment in items:
@@ -393,6 +411,8 @@ Authenticated GCL infrastructure owns durable GitHub intake.
 
     successor={
         "assignment_id":successor_assignment,
+        "lane_role": "SUPPORT" if is_support else "PRIMARY",
+        "support_slot": support_slot,
         "class":"MATHEMATICAL_RESEARCH",
         "hill":p["hill"],
         "obligation":wp,
@@ -434,19 +454,23 @@ Authenticated GCL infrastructure owns durable GitHub intake.
         },
     }
     registry["assignments"].append(successor)
-    policy=registry["mathematics_release_policy"]["per_hill"][p["hill"]]
-    policy.clear()
-    policy.update({
-        "solve_released":True,"assignment":successor_assignment,
-        "agent_state":"LEASED_NOT_LAUNCHED","closed":False,
-        "predecessor":{
-            "assignment":receipt["assignment_id"],"agent_state":"ACCEPTED",
-            "closed":True,"adjudication":adjudication["disposition"],
-        },
-    })
+    if not is_support:
+        policy=registry["mathematics_release_policy"]["per_hill"][p["hill"]]
+        policy.clear()
+        policy.update({
+            "solve_released":True,"assignment":successor_assignment,
+            "agent_state":"LEASED_NOT_LAUNCHED","closed":False,
+            "predecessor":{
+                "assignment":receipt["assignment_id"],"agent_state":"ACCEPTED",
+                "closed":True,"adjudication":adjudication["disposition"],
+            },
+        })
     summary=refresh_summary(registry)
 
-    registry["launch_contract"]["current_scripts"][p["hill"]]={
+    script_bucket = (registry["launch_contract"]["support_scripts"] if is_support
+                     else registry["launch_contract"]["current_scripts"])
+    script_key = support_slot if is_support else p["hill"]
+    script_bucket[script_key]={
         "path":launch_path,"executable":True,
         "assignment_id":successor_assignment,"dispatch_id":p["successor_dispatch"],
         "agent_ref":p["successor_agent"],"intended_return":issue_url,
@@ -454,21 +478,33 @@ Authenticated GCL infrastructure owns durable GitHub intake.
         "task_url":"PENDING_CONTENT_COMMIT",
     }
 
-    lane=next(x for x in lanes["hills"] if x["hill_slot"]==p["hill"])
-    old_active=copy.deepcopy(lane.get("active_lease") or {})
-    lane["status"]=f"{wp}_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR"
-    lane["next_action"]=f"Launch {p['successor_agent']} from the registered immutable LINK_IN_RELAY_OUT task URL."
-    lane["predecessor_lease"]={
-        **old_active,"assignment_id":receipt["assignment_id"],"dispatch_id":receipt["dispatch_id"],
-        "agent_ref":receipt["agent_ref"],"lifecycle_state":"ACCEPTED",
-        "return_evidence":meta["raw_repo_path"],"adjudication":adjudication["disposition"],
-    }
-    lane["active_lease"]={
-        "assignment_id":successor_assignment,"dispatch_id":p["successor_dispatch"],
-        "agent_ref":p["successor_agent"],"issue_url":issue_url,
-        "protected_merge":"PROTECTED_LIFECYCLE_CANDIDATE","readback_verified":False,
-        "lifecycle_state":"LEASED_NOT_LAUNCHED","launch_evidence":None,"return_evidence":None,
-    }
+    if not is_support:
+        lane=next(x for x in lanes["hills"] if x["hill_slot"]==p["hill"])
+        old_active=copy.deepcopy(lane.get("active_lease") or {})
+        lane["status"]=f"{wp}_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR"
+        lane["next_action"]=f"Launch {p['successor_agent']} from the registered immutable LINK_IN_RELAY_OUT task URL."
+        lane["predecessor_lease"]={
+            **old_active,"assignment_id":receipt["assignment_id"],"dispatch_id":receipt["dispatch_id"],
+            "agent_ref":receipt["agent_ref"],"lifecycle_state":"ACCEPTED",
+            "return_evidence":meta["raw_repo_path"],"adjudication":adjudication["disposition"],
+        }
+        lane["active_lease"]={
+            "assignment_id":successor_assignment,"dispatch_id":p["successor_dispatch"],
+            "agent_ref":p["successor_agent"],"issue_url":issue_url,
+            "protected_merge":"PROTECTED_LIFECYCLE_CANDIDATE","readback_verified":False,
+            "lifecycle_state":"LEASED_NOT_LAUNCHED","launch_evidence":None,"return_evidence":None,
+        }
+
+    if is_support:
+        lane=next(x for x in lanes["hills"] if x["hill_slot"]==p["hill"])
+        lane.setdefault("supporting_leases", {})[support_slot]={
+            "assignment_id":successor_assignment,"dispatch_id":p["successor_dispatch"],
+            "agent_ref":p["successor_agent"],"issue_url":issue_url,
+            "protected_merge":"PROTECTED_LIFECYCLE_CANDIDATE","readback_verified":False,
+            "lifecycle_state":"LEASED_NOT_LAUNCHED","launch_evidence":None,"return_evidence":None,
+        }
+
+    summary=refresh_summary(registry)
 
     dispatch={
         "schema_version":"1.0.0","record_type":"GCL_EXTERNAL_DISPATCH",
@@ -480,6 +516,7 @@ Authenticated GCL infrastructure owns durable GitHub intake.
         "github_issue_url":issue_url,"github_issue_title":p["issue_title"],
         "canonical_mutation_authorized":False,"dispatch_status":"READY_FOR_GITHUB_COMMENT",
         "operation_contract":operation_path,
+        "protected_lease_required": True,
     }
     operation={
         "schema_version":"1.0.0","record_type":"GCL_OPERATION_CONTRACT",
@@ -496,6 +533,7 @@ Authenticated GCL infrastructure owns durable GitHub intake.
     projection={
         "schema_version":"1.0.0","record_type":"OPENMATH_PROGRAMME_PROJECTION",
         "campaign":"OPENMATH-2026","source_dispatch":receipt["dispatch_id"],"hill":p["hill"],
+        "lane_role": "SUPPORT" if is_support else "PRIMARY", "support_slot": support_slot,
         "predecessor":{
             "assignment_id":receipt["assignment_id"],"agent_ref":receipt["agent_ref"],
             "adjudication":adjudication["disposition"],"accepted_claims":[],
@@ -509,6 +547,18 @@ Authenticated GCL infrastructure owns durable GitHub intake.
         "pipeline_trace":PIPELINE,"claim_effect":"NONE",
     }
     dump(projection_path,projection)
+    review_path = Path("work_packages/OPENMATH_2026/COMPETITION_PACKETS/SECTION8_EVIDENCE_REVIEW_QUEUE.json")
+    queue = load(root/review_path) if (root/review_path).exists() else {"record_type":"SECTION8_EVIDENCE_REVIEW_QUEUE", "items":[]}
+    if not any(x["dispatch_id"] == receipt["dispatch_id"] for x in queue["items"]):
+        queue["items"].append({
+            "dispatch_id":receipt["dispatch_id"], "assignment_id":receipt["assignment_id"],
+            "hill":p["hill"], "raw_path":meta["raw_repo_path"], "receipt_path":meta["receipt_repo_path"],
+            "declared_disposition":receipt.get("disposition_declared"),
+            "comment_created_at":receipt.get("comment_created_at"),
+            "authenticated_actor":receipt.get("authenticated_github_actor"),
+            "state":"PENDING_EXACT_MATHEMATICAL_REPLAY_AND_NOVELTY_REVIEW", "claim_effect":"NONE",
+        })
+    dump(root/review_path,queue)
     dump(root/REGISTRY,registry)
     dump(root/LANES,lanes)
     (root/BOARD).write_text(board_text(registry),encoding="utf-8")
@@ -519,7 +569,7 @@ Authenticated GCL infrastructure owns durable GitHub intake.
         str(replay_path.relative_to(root)),str(adjudication_path.relative_to(root)),
         str(projection_path.relative_to(root)),str(manifest_path.relative_to(root)),
         str(REGISTRY),str(LANES),str(BOARD),str(INDEX),
-        bootstrap_path,launch_path,dispatch_path,operation_path,
+        bootstrap_path,launch_path,dispatch_path,operation_path,str(review_path),
     ]
     manifest={
         "schema_version":"1.0.0","record_type":"OPENMATH_LIFECYCLE_CANDIDATE",
@@ -543,9 +593,18 @@ def finalize_pin(root: Path, dispatch_id: str, content_commit: str) -> dict[str,
         if x.get("lease",{}).get("dispatch_id")==dispatch_id
     )
     hill=predecessor["hill"]
-    current_id=registry["mathematics_release_policy"]["per_hill"][hill]["assignment"]
-    successor=next(x for x in registry["assignments"] if x.get("assignment_id")==current_id)
-    launch=registry["launch_contract"]["current_scripts"][hill]
+    candidates=[x for x in registry["assignments"]
+                if x.get("prerequisites",{}).get("predecessor_assignment")==predecessor["assignment_id"]
+                and x.get("state")=="LEASED_NOT_LAUNCHED"]
+    if len(candidates)!=1:
+        raise LifecycleCandidateError("exact returned dispatch must have one open successor")
+    successor=candidates[0]
+    current_id=successor["assignment_id"]
+    is_support=successor.get("lane_role")=="SUPPORT"
+    launch=(registry["launch_contract"]["support_scripts"][successor["support_slot"]] if is_support
+            else registry["launch_contract"]["current_scripts"][hill])
+    if launch.get("assignment_id")!=current_id:
+        raise LifecycleCandidateError("successor script identity drift")
     launch_path=launch["path"]
     task_url=f"https://github.com/grandchallenge/MATHSOLVE/blob/{content_commit}/{launch_path}"
     launch["task_commit"]=content_commit
@@ -556,7 +615,10 @@ def finalize_pin(root: Path, dispatch_id: str, content_commit: str) -> dict[str,
     dispatch["source_handoff_commit_sha"]=content_commit
     dump(root/successor["dispatch_record"],dispatch)
     lane=next(x for x in lanes["hills"] if x["hill_slot"]==hill)
-    lane["active_lease"]["protected_merge"]=content_commit
+    if is_support:
+        lane["supporting_leases"][successor["support_slot"]]["protected_merge"]=content_commit
+    else:
+        lane["active_lease"]["protected_merge"]=content_commit
     dump(root/REGISTRY,registry)
     dump(root/LANES,lanes)
     (root/BOARD).write_text(board_text(registry),encoding="utf-8")

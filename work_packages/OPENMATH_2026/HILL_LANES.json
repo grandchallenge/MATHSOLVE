@@ -30,7 +30,7 @@
   "hills": [
     {
       "hill_slot": "OM26-H1",
-      "status": "WP02_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
+      "status": "EVENT_WINDOW_MATHEMATICAL_TASK_READY",
       "exact_hill_id": "alejandrozu/kobon-triangles",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -54,7 +54,7 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H1-WP01-IA-001",
         "mathcert_handoff": "H1_02_AND_86_INTAKE_PROTECTED__93_SUCCESSOR_INTAKE_PROTECTED__CERT_EXECUTION_PENDING"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-102 from the registered immutable LINK_IN_RELAY_OUT task URL.",
+      "next_action": "Execute H1-PREMISES from the registered immutable task; retain priority order.",
       "external_agent": {
         "assignment_id": "OM26-H1-WP01",
         "dispatch_id": "OM26-H1-WP01-IA-001",
@@ -88,20 +88,44 @@
         "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION"
       },
       "active_lease": {
-        "assignment_id": "OM26-H1-WP02",
-        "dispatch_id": "OM26-H1-WP02-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-102",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/563",
-        "protected_merge": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
+        "assignment_id": "OM26-H1-WP03",
+        "dispatch_id": "OM26-H1-WP03-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-103",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/597",
+        "protected_merge": "PENDING_CONTENT_COMMIT",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
         "return_evidence": null
+      },
+      "supporting_leases": {
+        "H1-Q6": {
+          "assignment_id": "OM26-H1-WP30",
+          "dispatch_id": "OM26-H1-WP30-IA-001",
+          "agent_ref": "INDEPENDENT-AGENT-130",
+          "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/598",
+          "protected_merge": "PENDING_CONTENT_COMMIT",
+          "readback_verified": false,
+          "lifecycle_state": "LEASED_NOT_LAUNCHED",
+          "launch_evidence": null,
+          "return_evidence": null
+        },
+        "H1-ADVERSARY": {
+          "assignment_id": "OM26-H1-WP60",
+          "dispatch_id": "OM26-H1-WP60-IA-001",
+          "agent_ref": "INDEPENDENT-AGENT-160",
+          "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/599",
+          "protected_merge": "PENDING_CONTENT_COMMIT",
+          "readback_verified": false,
+          "lifecycle_state": "LEASED_NOT_LAUNCHED",
+          "launch_evidence": null,
+          "return_evidence": null
+        }
       }
     },
     {
       "hill_slot": "OM26-H2",
-      "status": "WP04_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
+      "status": "EVENT_WINDOW_MATHEMATICAL_TASK_READY",
       "exact_hill_id": "alejandrozu/busy-beaver-6-certificates",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -132,14 +156,14 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H2-WP03-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-204 from the registered immutable LINK_IN_RELAY_OUT task URL.",
+      "next_action": "Execute H2-GATE from the registered immutable task; retain priority order.",
       "title": "Busy Beaver 6 certificates",
       "active_lease": {
-        "assignment_id": "OM26-H2-WP04",
-        "dispatch_id": "OM26-H2-WP04-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-204",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/561",
-        "protected_merge": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
+        "assignment_id": "OM26-H2-WP05",
+        "dispatch_id": "OM26-H2-WP05-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-205",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/605",
+        "protected_merge": "PENDING_CONTENT_COMMIT",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
@@ -167,7 +191,7 @@
     },
     {
       "hill_slot": "OM26-H3",
-      "status": "WP03_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
+      "status": "EVENT_WINDOW_MATHEMATICAL_TASK_READY",
       "exact_hill_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -198,14 +222,14 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H3-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-303 from the registered immutable LINK_IN_RELAY_OUT task URL.",
+      "next_action": "Execute H3-DELTA from the registered immutable task; retain priority order.",
       "title": "Clique-cluster Ramsey multiplicity",
       "active_lease": {
-        "assignment_id": "OM26-H3-WP03",
-        "dispatch_id": "OM26-H3-WP03-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-303",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/562",
-        "protected_merge": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
+        "assignment_id": "OM26-H3-WP04",
+        "dispatch_id": "OM26-H3-WP04-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-304",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/602",
+        "protected_merge": "PENDING_CONTENT_COMMIT",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
@@ -233,7 +257,7 @@
     },
     {
       "hill_slot": "OM26-H4",
-      "status": "WP02_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
+      "status": "EVENT_WINDOW_MATHEMATICAL_TASK_READY",
       "exact_hill_id": "alejandrozu/collatz-modular-descent",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -264,14 +288,14 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H4-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-402 from the registered immutable LINK_IN_RELAY_OUT task URL.",
+      "next_action": "Execute H4-EXTEND from the registered immutable task; retain priority order.",
       "title": "Collatz modular descent",
       "active_lease": {
-        "assignment_id": "OM26-H4-WP02",
-        "dispatch_id": "OM26-H4-WP02-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-402",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/559",
-        "protected_merge": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
+        "assignment_id": "OM26-H4-WP03",
+        "dispatch_id": "OM26-H4-WP03-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-403",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/601",
+        "protected_merge": "PENDING_CONTENT_COMMIT",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
@@ -299,7 +323,7 @@
     },
     {
       "hill_slot": "OM26-H5",
-      "status": "WP02_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
+      "status": "EVENT_WINDOW_MATHEMATICAL_TASK_READY",
       "exact_hill_id": "alejandrozu/grothendieck-constant-witnesses",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -330,14 +354,14 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H5-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-502 from the registered immutable LINK_IN_RELAY_OUT task URL.",
+      "next_action": "Execute H5-ELIGIBILITY from the registered immutable task; retain priority order.",
       "title": "Grothendieck constant witnesses",
       "active_lease": {
-        "assignment_id": "OM26-H5-WP02",
-        "dispatch_id": "OM26-H5-WP02-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-502",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/560",
-        "protected_merge": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
+        "assignment_id": "OM26-H5-WP03",
+        "dispatch_id": "OM26-H5-WP03-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-503",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/604",
+        "protected_merge": "PENDING_CONTENT_COMMIT",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
@@ -365,7 +389,7 @@
     },
     {
       "hill_slot": "OM26-H6",
-      "status": "WP03_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
+      "status": "EVENT_WINDOW_MATHEMATICAL_TASK_READY",
       "exact_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -396,14 +420,14 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H6-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-603 from the registered immutable LINK_IN_RELAY_OUT task URL.",
+      "next_action": "Execute H6-OFFENSIVE from the registered immutable task; retain priority order.",
       "title": "3x3 matrix multiplication tensor",
       "active_lease": {
-        "assignment_id": "OM26-H6-WP03",
-        "dispatch_id": "OM26-H6-WP03-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-603",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/556",
-        "protected_merge": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
+        "assignment_id": "OM26-H6-WP04",
+        "dispatch_id": "OM26-H6-WP04-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-604",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/603",
+        "protected_merge": "PENDING_CONTENT_COMMIT",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
@@ -431,7 +455,7 @@
     },
     {
       "hill_slot": "OM26-H7",
-      "status": "WP03_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
+      "status": "EVENT_WINDOW_MATHEMATICAL_TASK_READY",
       "exact_hill_id": "ottogin/erdos-3",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -462,14 +486,14 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H7-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-703 from the registered immutable LINK_IN_RELAY_OUT task URL.",
+      "next_action": "Execute H7-DIVERGENCE from the registered immutable task; retain priority order.",
       "title": "Erd\u0151s Problem 3",
       "active_lease": {
-        "assignment_id": "OM26-H7-WP03",
-        "dispatch_id": "OM26-H7-WP03-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-703",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/557",
-        "protected_merge": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
+        "assignment_id": "OM26-H7-WP04",
+        "dispatch_id": "OM26-H7-WP04-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-704",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/600",
+        "protected_merge": "PENDING_CONTENT_COMMIT",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,

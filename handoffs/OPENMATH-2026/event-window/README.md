@@ -1,21 +1,23 @@
-# Event-window mathematical assistance packets
+# Event-window agent tasks
 
-Protected input: `36b7c79bebd42fde17ea9f0f809406fb55e093f9`. Organizer-route work is external. Mathematical priority is H1 → H7 → H4 → H3 → H6 → H5 → H2. New mathematics first; packaging follows verification.
+Priority: H1 → H7 → H4 → H3 → H6 → H5 → H2. Organizer-route blockage is external.
 
-These packets replace replay-only work as the intended next mathematical tranche, but do not mutate or consume old leases. Existing active leases remain authoritative until separately retired/rebound through protected controls. Packet preparation is not launch readiness.
+The following distinct assignments are executable after the protected activation merge. No worker has been launched. Ordinary authenticated GitHub commenting in the participant environment is required; no GCL-specific permission or human forwarding is needed.
 
-| Packet | Target | Scheduling |
+| Packet | Immutable task | Return |
 |---|---|---|
-| [H1-PREMISES](H1-PREMISES.md) | Independently discharge the geometric premises | First tranche |
-| [H1-Q6](H1-Q6.md) | Eliminate or reduce the 333335 D2=7 frontier | First tranche |
-| [H1-ADVERSARY](H1-ADVERSARY.md) | Independent audit of a returned H1 theorem | First tranche |
-| [H7-DIVERGENCE](H7-DIVERGENCE.md) | First formally checked consequences of reciprocal divergence | First tranche |
-| [H4-EXTEND](H4-EXTEND.md) | Extend the exact descent classification | After higher priorities; one bounded tranche |
-| [H3-DELTA](H3-DELTA.md) | Change the canonical bound or eliminate a meaningful class | After higher priorities; one bounded tranche |
-| [H6-OFFENSIVE](H6-OFFENSIVE.md) | Lower rank-23 support or test a rank-22 mechanism | After higher priorities; one bounded tranche |
-| [H5-ELIGIBILITY](H5-ELIGIBILITY.md) | One finite witness/formal-family eligibility test | After higher priorities; one bounded tranche |
-| [H2-GATE](H2-GATE.md) | Preserve W89911 unless a genuine BB(6) delta exists | After higher priorities; one bounded tranche |
+| H1-PREMISES | [Read task](https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H1-WP03.md) | [#597](https://github.com/grandchallenge/MATHSOLVE/issues/597) |
+| H1-Q6 | [Read task](https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H1-WP30.md) | [#598](https://github.com/grandchallenge/MATHSOLVE/issues/598) |
+| H1-ADVERSARY | [Read task](https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H1-WP60.md) | [#599](https://github.com/grandchallenge/MATHSOLVE/issues/599) |
+| H7-DIVERGENCE | [Read task](https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H7-WP04.md) | [#600](https://github.com/grandchallenge/MATHSOLVE/issues/600) |
+| H4-EXTEND | [Read task](https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H4-WP03.md) | [#601](https://github.com/grandchallenge/MATHSOLVE/issues/601) |
+| H3-DELTA | [Read task](https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H3-WP04.md) | [#602](https://github.com/grandchallenge/MATHSOLVE/issues/602) |
+| H6-OFFENSIVE | [Read task](https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H6-WP04.md) | [#603](https://github.com/grandchallenge/MATHSOLVE/issues/603) |
+| H5-ELIGIBILITY | [Read task](https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H5-WP03.md) | [#604](https://github.com/grandchallenge/MATHSOLVE/issues/604) |
+| H2-GATE | [Read task](https://github.com/grandchallenge/MATHSOLVE/blob/PENDING_CONTENT_COMMIT/handoffs/OPENMATH-2026/launch/OM26-H2-WP05.md) | [#605](https://github.com/grandchallenge/MATHSOLVE/issues/605) |
 
-H1 premise and Q6 work may run concurrently because the Q6 lane labels all unclosed premises. The H1 adversary is a distinct non-authoring slot; it cannot be its own proof author. H7 is the parallel formal lane, starting with tail stability then finite residue localization. Those analytic facts are standard mathematics; possible contribution is the pinned formal family, subject to novelty review.
+H1-PREMISES is the primary H1 task; H1-Q6 and H1-ADVERSARY are separately leased supporting tasks. Supporting returns retain their own successor chains and never replace the primary lane. H7 is the parallel formal lane. Lower-priority readiness does not instruct all hills to consume compute.
 
-Activation completion test: every released packet has a distinct protected lease, immutable task URL, exact return issue, transport preflight, matching operation/intake grammar and no collision with a historical first-result lock. No worker is considered launched without a durable receipt. Registry activation remains a separate implementation tranche; this directory is a prepared packet set.
+The original packet manifest is historical preparation evidence. ACTIVATION.json and the protected CEX registry allocate current execution. Existing replay-only leases were retired without inventing returns or changing accepted history.
+
+Intake records every valid return in the Section 8 evidence-review queue. Mathematical claims are updated only after exact replay/formal checking and novelty review.
