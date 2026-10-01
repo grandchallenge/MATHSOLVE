@@ -1,11 +1,12 @@
 """Register fixed contest payloads through AutoLab's documented native API.
 
-No invented reports, results or completed states. New climbs have a zero-dollar
-cost cap and are left in setup; activation is a separate operational decision.
+No invented reports, results or completed states. New climbs have a strict
+zero-dollar cost cap. Activation probes the real remaining execution blocker.
 """
 import hashlib
 import json
 import os
+import time
 from pathlib import Path
 import urllib.error
 import urllib.request
@@ -29,11 +30,22 @@ def api(method, path, data=None):
             return json.load(response)
     except urllib.error.HTTPError as error:
         # Never emit request headers or token values.
-        raise RuntimeError(f"AutoLab {method} {path}: HTTP {error.code}") from None
+        detail = error.read().decode(errors="replace")[:2000]
+        detail = detail.replace(os.environ["AUTOLAB_TOKEN"], "[redacted]")
+        raise RuntimeError(f"AutoLab {method} {path}: HTTP {error.code}: {detail}") from None
 
 
 def checkpoint():
     OUT.write_text(json.dumps(receipts, indent=2) + "\n")
+
+
+def project_slug(value):
+    """The API returns owner/slug; endpoint arguments require only slug."""
+    if "/" in value:
+        owner, value = value.split("/", 1)
+        if owner != "jimsteeg" or "/" in value:
+            raise RuntimeError("Unexpected project owner or malformed slug")
+    return value
 
 
 def main():
@@ -59,7 +71,7 @@ def main():
         if len(matches) > 1:
             raise RuntimeError("Ambiguous existing climb; refused duplicate registration")
         if matches:
-            slug = matches[0]["slug"]
+            slug = project_slug(matches[0]["slug"])
             project = api("GET", f"/api/v1/projects/jimsteeg/{slug}")
         else:
             project = api("POST", "/api/v1/projects/", {
@@ -67,7 +79,7 @@ def main():
                 "description": f"Fixed GCL contest payload {digest}. Evaluate as supplied; no search or code changes. Attribution in grandchallenge/MATHSOLVE.",
                 "stop_policy": "Evaluate only the supplied payload. No generated ideas or rented compute.",
             })
-            slug = project["slug"]
+            slug = project_slug(project["slug"])
         endpoint = f"/api/v1/projects/jimsteeg/{slug}"
         entry = {"hill": hill, "hill_id": hill_id, "solution_sha256": digest,
                  "project_id": project["id"], "slug": slug,
@@ -101,6 +113,20 @@ def main():
                      stage="NATIVE_JOB_REGISTERED__OFFICIAL_EVALUATION_PENDING")
         checkpoint()
         print(json.dumps(entry))
+    # Probe H1 execution without authorizing LLM spend or rented compute.
+    # The platform's strict zero-dollar termination cap must survive readback.
+    first = receipts["entries"][0]
+    endpoint = f"/api/v1/projects/jimsteeg/{first['slug']}"
+    project = api("GET", endpoint)
+    if project.get("termination", {}).get("max_cost_usd") != 0:
+        raise RuntimeError("Refused activation: strict zero-dollar cost cap not confirmed")
+    if project.get("compute_rental", {}).get("limits"):
+        raise RuntimeError("Refused activation: rented compute is configured")
+    first["activation"] = api("POST", endpoint + "/activate", {"submit_baseline": False})
+    time.sleep(10)  # allow the control loop to publish its actual attention state
+    first["execution_status"] = api("GET", endpoint + "/status")
+    checkpoint()
+    print(json.dumps({"H1_execution_probe": first["execution_status"]}))
 
 
 if __name__ == "__main__":
