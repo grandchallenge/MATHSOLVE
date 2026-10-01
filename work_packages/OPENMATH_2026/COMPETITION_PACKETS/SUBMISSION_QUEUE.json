@@ -14,7 +14,6 @@
       "internal_state": "TRUSTED_REPLAY_PASS__TARGET_CORRESPONDENCE_PASS__PROTECTED_MERGE_187ce0d",
       "packet": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/H4_SECTION8_DRAFT.json",
       "remaining": [
-        "human Section 8 authority fields",
         "official competition workflow/submission ID",
         "official evaluator report",
         "organizer novelty/scope review"
@@ -31,7 +30,6 @@
       "packet": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/H1_PARTIAL_SECTION8_DRAFT.json",
       "remaining": [
         "novelty/significance review",
-        "human Section 8 authority fields",
         "official competition workflow/submission ID",
         "official reviewer/checker record"
       ]
@@ -47,7 +45,6 @@
       "packet": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/H7_SECTION8_DRAFT.json",
       "remaining": [
         "formalization novelty/usefulness review",
-        "human Section 8 authority fields",
         "official competition workflow/submission ID/evaluator report"
       ]
     }
@@ -78,12 +75,8 @@
     }
   ],
   "external_boundary": "ORGANIZER_COMPETITION_WORKFLOW_AND_FINAL_EVALUATOR_ROUTE_NOT_PUBLICLY_EXPOSED",
-  "human_boundary": [
-    "registered human roster",
-    "entrant class/resource classification",
-    "conflict/credit confirmations",
-    "publication/attribution authority"
-  ],
+  "human_boundary": [],
   "claim_boundary": "Queue is internal readiness/routing only; it does not constitute competition submission, acceptance, score, novelty determination, or certification.",
-  "protected_head_after_closure": "187ce0debe76cb960724a6078b16660a11531941"
+  "protected_head_after_closure": "187ce0debe76cb960724a6078b16660a11531941",
+  "human_authority_state": "CLOSED__JAMIE_STEEG__INDIVIDUAL__SELF_RESOURCED"
 }
