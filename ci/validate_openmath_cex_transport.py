@@ -22,6 +22,36 @@ def git_blob_sha1(data: bytes) -> str:
     return hashlib.sha1(header + data).hexdigest()
 
 
+def validate_iteration_policy(policy: dict) -> list[str]:
+    errors = []
+    expected = {
+        'mode': 'ANONYMOUS_PARTICIPATION_GITHUB_AUTHENTICATED_RETURN',
+        'zero_credentialed_intake': 'POSTPONED',
+        'participant_environment_github_auth_required': True,
+        'gcl_organization_membership_required': False,
+        'gcl_repository_write_access_required': False,
+        'gcl_specific_credentials_required': False,
+        'real_world_identity_required': False,
+        'github_posting_actor_public': True,
+        'default_submission': 'COMPLETE_RELAY_ENVELOPE_COMMENT_ON_EXACT_INTENDED_RETURN',
+        'new_hosted_relay_required': False,
+        'third_party_submission_service_required': False,
+    }
+    current = policy.get('current_iteration', {})
+    if not isinstance(current, dict):
+        return ['current iteration policy must be an object']
+    for key, value in expected.items():
+        actual = current.get(key)
+        if type(actual) is not type(value) or actual != value:
+            errors.append(f'current iteration policy mismatch: {key}')
+    if policy.get('missing_github_capability_effect') != 'RETURN_TRANSPORT_UNAVAILABLE_BEFORE_SUBSTANTIVE_WORK':
+        errors.append('missing authenticated posting capability must block work')
+    unsolicited = policy.get('unsolicited_return', {})
+    if not isinstance(unsolicited, dict) or unsolicited.get('authentication_owner') != 'AUTHENTICATED_PARTICIPANT_ENVIRONMENT':
+        errors.append('unsolicited return authentication owner mismatch')
+    return errors
+
+
 def validate() -> list[str]:
     errors: list[str] = []
     registry = json.loads(REGISTRY.read_text(encoding='utf-8'))
@@ -30,6 +60,14 @@ def validate() -> list[str]:
     board = BOARD.read_text(encoding='utf-8')
 
     policy = registry.get('return_policy', {})
+    errors.extend(validate_iteration_policy(policy))
+    for label, text in (('entrypoint', entry), ('contract', contract)):
+        if 'You do not need GitHub authentication' in text:
+            errors.append(f'{label}: stale credential-free kickoff')
+        if 'The default return path is the launching conversation' in text:
+            errors.append(f'{label}: stale chat-only default return')
+        if 'Zero-credentialed agent intake is POSTPONED' not in text:
+            errors.append(f'{label}: missing zero-credential deferral')
     if policy.get('agent_github_auth_required') is not False:
         errors.append('registry requires agent GitHub authentication')
     if policy.get('self_contained_launch_required') is not False:
@@ -61,6 +99,10 @@ def validate() -> list[str]:
         errors.append('launch contract mode mismatch')
     if launch.get('required_fields') != ['TASK_URL', 'TASK_COMMIT', 'TASK_BLOB_SHA1']:
         errors.append('launch contract required fields are not exact immutable-link identity')
+    if launch.get('default_return') != 'GCL-RETURN-RELAY/1 comment on exact INTENDED_RETURN':
+        errors.append('launch default must be authenticated issue return')
+    if 'You do not need GitHub authentication' in launch.get('canonical_agent_prompt', ''):
+        errors.append('launch prompt contains stale credential-free instruction')
     if launch.get('launcher_verification_required') is not True:
         errors.append('launcher-side lease verification is not required')
     if launch.get('agent_repository_discovery_required') is not False:

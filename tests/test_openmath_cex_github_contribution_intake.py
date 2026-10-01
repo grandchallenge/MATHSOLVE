@@ -1,9 +1,12 @@
+import copy
 import json
 import tempfile
 import unittest
 from pathlib import Path
 
 from ci.openmath_cex_github_contribution_intake import IntakeError, emit_intake, parse_result_comment, unwrap_return
+
+from ci.validate_openmath_cex_transport import validate_iteration_policy
 
 
 H1_VALID = """GCL-CONTRIBUTION-RESULT/1
@@ -265,6 +268,40 @@ assignment: OM26-H2-WP01"""
             with self.assertRaises(IntakeError):
                 emit_intake(invalid, root, root / "out3")
 
+
+
+class OpenMathParticipationPolicyTest(unittest.TestCase):
+    def test_protected_policy_accepts_current_scope(self):
+        policy = json.loads((Path(__file__).resolve().parents[1] /
+                             ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json").read_text())["return_policy"]
+        self.assertEqual(validate_iteration_policy(policy), [])
+
+    def test_authentication_and_authority_regressions_are_rejected(self):
+        policy = json.loads((Path(__file__).resolve().parents[1] /
+                             ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json").read_text())["return_policy"]
+        mutations = [
+            ("participant_environment_github_auth_required", False),
+            ("participant_environment_github_auth_required", 1),
+            ("zero_credentialed_intake", "ACTIVE"),
+            ("gcl_organization_membership_required", True),
+            ("gcl_repository_write_access_required", True),
+            ("gcl_specific_credentials_required", True),
+            ("real_world_identity_required", True),
+            ("new_hosted_relay_required", True),
+            ("third_party_submission_service_required", True),
+        ]
+        for key, value in mutations:
+            with self.subTest(key=key, value=value):
+                changed = copy.deepcopy(policy)
+                changed["current_iteration"][key] = value
+                self.assertTrue(validate_iteration_policy(changed))
+        for field, value in (("current_iteration", None),
+                             ("unsolicited_return", None),
+                             ("missing_github_capability_effect", "NO_BLOCK")):
+            with self.subTest(field=field):
+                changed = copy.deepcopy(policy)
+                changed[field] = value
+                self.assertTrue(validate_iteration_policy(changed))
 
 if __name__ == "__main__":
     unittest.main()

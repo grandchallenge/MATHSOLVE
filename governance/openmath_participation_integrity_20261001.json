@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "scope": "OPENMATH authenticated pseudonymous participation transport integrity",
+  "review_date": "2026-10-01",
+  "solve_base": "7a98cf73faaceac5b848a2d4e4df8404701318c7",
+  "programme_reviewed": "cdea0749b9c8da59db091e9b431c8c1d6f63a405",
+  "findings": [
+    {
+      "id": "AUTH-DOC-DRIFT",
+      "resolution": "Align kickoff, completion, default-return and registry launch instructions with authenticated participant-environment posting."
+    },
+    {
+      "id": "AUTH-POLICY-NOT-VALIDATED",
+      "resolution": "Validate exact current iteration policy and reject authentication, authority, identity and hosted-service regressions."
+    }
+  ],
+  "verification": {
+    "pinned_tasks": 7,
+    "exact_remote_blob_matches": 7,
+    "local_transport_validator": "PASS",
+    "local_intake_and_policy_tests": 11,
+    "protected_ci": "Required before integration; final results recorded in PR conversation."
+  },
+  "logical_reviews": [
+    {
+      "role": "Adversary",
+      "mode": "non_authoring_read_only",
+      "staffing": "same authoring Codex system, distinct logical pass",
+      "result": "No new permissions, task repins, controller mutations, execution of submitted code, or claim authority introduced."
+    },
+    {
+      "role": "Referee",
+      "mode": "non_authoring_read_only",
+      "staffing": "same authoring Codex system, distinct logical pass",
+      "result": "Policy now agrees with protected return mechanism; exact task blobs preserved; local validation passes; protected CI and post-merge readback required."
+    }
+  ],
+  "retained_boundaries": [
+    "Ordinary GitHub authentication required in participant environment; no GCL membership, repository write access or GCL-specific credential required.",
+    "Pseudonymous participation; GitHub posting actor is public and provenance does not prove independent authorship.",
+    "Envelope identity, exact destination, result grammar, raw evidence and hash receipts, first-result lock, protected PR/controller merge remain authoritative.",
+    "Intake and integration do not certify mathematical claims."
+  ],
+  "zero_credentialed_intake": "POSTPONED"
+}
