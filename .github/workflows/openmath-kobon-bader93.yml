@@ -5,6 +5,8 @@ on:
     paths:
       - "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/**"
       - "work_packages/OPENMATH_2026/CONTEST_CANDIDATES/**"
+      - "work_packages/OPENMATH_2026/OM26_H4_COLLATZ_MODULAR_DESCENT/**"
+      - "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/**"
       - ".github/workflows/openmath-kobon-bader93.yml"
       - ".ghos-routing/workflows.json"
   workflow_dispatch:
@@ -111,3 +113,28 @@ jobs:
             /tmp/gcl-h1-eval-output.json
             /tmp/bader93-autolab.json
           if-no-files-found: warn
+
+
+  h4-trusted-replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Independent exact H4 replay
+        run: python work_packages/OPENMATH_2026/OM26_H4_COLLATZ_MODULAR_DESCENT/trusted_replay_h4.py
+
+  h7-pinned-lean:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact proof candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Pull exact organizer-pinned Lean image
+        run: docker pull ghcr.io/ottogin/lean-mathlib@sha256:964547ad81e109c78545512867bae70b710c55d833078674878faad7de0ebb85
+      - name: Compile H7-D3 with no proof holes
+        run: |
+          docker run --rm \
+            -v "$PWD/work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D3.lean:/tmp/H7_D3.lean:ro" \
+            ghcr.io/ottogin/lean-mathlib@sha256:964547ad81e109c78545512867bae70b710c55d833078674878faad7de0ebb85 \
+            bash -lc 'cd /opt/formal-conjectures && lean --version && lake env lean /tmp/H7_D3.lean'
