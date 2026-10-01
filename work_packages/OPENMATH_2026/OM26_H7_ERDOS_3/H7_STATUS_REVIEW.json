@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "OM26-H7-FORMALIZATION-STATUS-001",
+  "hill": "ottogin/erdos-3",
+  "freeze_date": "2026-10-01",
+  "formal_results": [
+    {
+      "name": "Erdos3.ap_subprogression_of_le",
+      "state": "PINNED_PASS"
+    },
+    {
+      "name": "Erdos3.ap_frequently_iff_every_length",
+      "state": "PINNED_PASS"
+    }
+  ],
+  "pinned_run": {
+    "run_id": 36879690920,
+    "job_id": 110427986166
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "proof_holes": false,
+  "target_correspondence": "PASS__CONCLUSION_SIDE_EXACT_LENGTH_REFORMULATION",
+  "parent_problem": "UNSOLVED__RECIPROCAL_DIVERGENCE_IMPLICATION_UNTOUCHED",
+  "scoped_exact_existing_formalization_match": "NOT_FOUND__NOT_PROOF_OF_NOVELTY",
+  "recommended_modality": "M2_OR_NARROW_FORMALIZED_PARTIAL_PENDING_COMPETITION_CLASSIFICATION",
+  "novelty": "FORMALIZATION_NOVELTY_PLAUSIBLE__MATHEMATICAL_NOVELTY_NOT_CLAIMED",
+  "remaining": [
+    "Section 8 human authority fields",
+    "official competition workflow/evaluator report",
+    "organizer novelty/usefulness review"
+  ],
+  "claim_boundary": "Formalization/reduction only; no Erdos-3 solution or independent competition novelty/score determination."
+}
