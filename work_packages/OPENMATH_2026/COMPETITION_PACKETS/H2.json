@@ -41,5 +41,16 @@
     "leaderboard_state": null,
     "organizer_acceptance": null
   },
-  "claim_boundary": "Finite witness only. No claim of S(6), world-record status, novelty, certification, or official competition acceptance."
+  "claim_boundary": "Finite witness only. No claim of S(6), world-record status, novelty, certification, or official competition acceptance.",
+  "handbook_audit": {
+    "audit_id": "OPENMATH-2026-HANDBOOK-COMPLIANCE-AUDIT-001",
+    "status": "NOT_SUBMISSION_READY",
+    "classification": "FINITE_WITNESS__NOVELTY_STATUS_UNESTABLISHED",
+    "blocking": [
+      "freeze-date novelty/status review",
+      "modality/family/admission",
+      "Section 8 packet",
+      "official submission route/report"
+    ]
+  }
 }
