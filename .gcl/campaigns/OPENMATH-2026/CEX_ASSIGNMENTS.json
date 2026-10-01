@@ -162,7 +162,7 @@
     },
     "summary": {
       "released_hills": 7,
-      "accepted_agents": 13,
+      "accepted_agents": 14,
       "leased_not_launched_agents": 9,
       "launched_agents": 0,
       "returned_unadjudicated_agents": 0
@@ -1981,10 +1981,10 @@
       "obligation": "WP30",
       "external_hill_id": "alejandrozu/kobon-triangles",
       "slot_binding": "OM26-H1",
-      "state": "LEASED_NOT_LAUNCHED",
+      "state": "ACCEPTED",
       "priority": "P0",
       "lease": {
-        "state": "LEASED",
+        "state": "CLOSED_AFTER_RETURN",
         "dispatch_id": "OM26-H1-WP30-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-130",
         "dispatch_issue_number": 598,
@@ -1992,7 +1992,7 @@
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/598",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/598",
         "readback_verified": false,
-        "execution_authorized": true,
+        "execution_authorized": false,
         "activation_condition": "PROTECTED_MERGE_OF_EVENT_WINDOW_ACTIVATION"
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H1-WP30-IA-001.md",
@@ -2028,21 +2028,21 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Protected event-window release; no mathematics promoted",
+      "successor_gate": "Closed automatically; OM26-H1-WP31 owns replay closure.",
       "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H1-WP30-IA-001.md",
       "dispatch_record": "contributions/OPENMATH-2026/OM26-H1/WP30/dispatches/OM26-H1-WP30-IA-001.json",
       "lifecycle": {
         "prepared": true,
         "leased": true,
-        "launched": false,
-        "launch_receipt": null,
-        "returned": false,
-        "captured": false,
-        "replayed": false,
-        "adjudication": "NOT_STARTED",
-        "pipeline_state": "READY",
+        "launched": true,
+        "launch_receipt": "RETURN_PROVES_EXECUTION_OCCURRED",
+        "returned": true,
+        "captured": true,
+        "replayed": true,
+        "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+        "pipeline_state": "ADVANCED",
         "certification": "NOT_ELIGIBLE",
-        "closed": false
+        "closed": true
       },
       "lane_role": "SUPPORT",
       "support_slot": "H1-Q6",
@@ -2571,6 +2571,75 @@
       "lane_role": "PRIMARY",
       "support_slot": null,
       "packet_id": "H2-GATE"
+    },
+    {
+      "assignment_id": "OM26-H1-WP31",
+      "lane_role": "SUPPORT",
+      "support_slot": "H1-Q6",
+      "class": "MATHEMATICAL_RESEARCH",
+      "hill": "OM26-H1",
+      "obligation": "WP31",
+      "external_hill_id": "alejandrozu/kobon-triangles",
+      "slot_binding": "OM26-H1",
+      "state": "LEASED_NOT_LAUNCHED",
+      "priority": "P0",
+      "lease": {
+        "state": "LEASED",
+        "dispatch_id": "OM26-H1-WP31-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-131",
+        "dispatch_issue_number": 608,
+        "protected_lease_commit": "PENDING_CONTENT_COMMIT",
+        "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/608",
+        "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/608",
+        "readback_verified": false,
+        "execution_authorized": true,
+        "activation_condition": "PROTECTED_MERGE_OF_LIFECYCLE_CANDIDATE"
+      },
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H1-WP31-IA-001.md",
+      "work_package_url": "PENDING_CONTENT_COMMIT",
+      "operation_contract": ".gcl/operations/OM26-H1-WP31-IA-001/OPERATION.json",
+      "prerequisites": {
+        "predecessor_assignment": "OM26-H1-WP30",
+        "predecessor_adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "main_commit": "343945512476bd91ed936749f9c4918f0723bff2",
+          "blob_sha1": "7a90cd6eeb54e8e4c5b63c5977e40a1ab5bcaa2c"
+        },
+        "solve_release": true
+      },
+      "permissions": {
+        "source_reconnaissance": false,
+        "hill_specific_mathematics": true,
+        "finite_exact_computation": true,
+        "public_source_replay": true,
+        "competition_submission": false,
+        "certification": false,
+        "canonical_claim_mutation": false
+      },
+      "completion": [
+        "REPLAY_CLOSURE_VALIDATED",
+        "REPLAY_CLOSURE_COUNTEREXAMPLE",
+        "EXACT_BLOCKER"
+      ],
+      "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+      "successor_gate": "Executable only after the lifecycle candidate is protected.",
+      "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H1-WP31-IA-001.md",
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H1/WP31/dispatches/OM26-H1-WP31-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": false,
+        "launch_receipt": null,
+        "returned": false,
+        "captured": false,
+        "replayed": false,
+        "adjudication": "NOT_STARTED",
+        "pipeline_state": "READY",
+        "certification": "NOT_ELIGIBLE",
+        "closed": false
+      }
     }
   ],
   "launch_contract": {
@@ -2686,16 +2755,15 @@
     "missing_or_ambiguous_task_behavior": "INVALID_LAUNCH and stop before substantive work",
     "support_scripts": {
       "H1-Q6": {
-        "path": "handoffs/OPENMATH-2026/launch/OM26-H1-WP30.md",
+        "path": "handoffs/OPENMATH-2026/launch/OM26-H1-WP31.md",
         "executable": true,
-        "assignment_id": "OM26-H1-WP30",
-        "dispatch_id": "OM26-H1-WP30-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-130",
-        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/598",
-        "task_commit": "4f1b6a1500e18fc53bae135ae6713e7abb126ae4",
-        "task_blob_sha1": "a1d7304adbc2c4c90a61e29e1e0fe47adba7dc58",
-        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H1-WP30.md",
-        "lane_role": "SUPPORT"
+        "assignment_id": "OM26-H1-WP31",
+        "dispatch_id": "OM26-H1-WP31-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-131",
+        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/608",
+        "task_commit": "PENDING_CONTENT_COMMIT",
+        "task_blob_sha1": "b470ddd8ae245af47cc374930264fd3be2f40740",
+        "task_url": "PENDING_CONTENT_COMMIT"
       },
       "H1-ADVERSARY": {
         "path": "handoffs/OPENMATH-2026/launch/OM26-H1-WP60.md",

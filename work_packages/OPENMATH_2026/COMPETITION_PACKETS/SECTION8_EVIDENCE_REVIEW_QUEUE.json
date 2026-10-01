@@ -1,0 +1,17 @@
+{
+  "record_type": "SECTION8_EVIDENCE_REVIEW_QUEUE",
+  "items": [
+    {
+      "dispatch_id": "OM26-H1-WP30-IA-001",
+      "assignment_id": "OM26-H1-WP30",
+      "hill": "OM26-H1",
+      "raw_path": "contributions/OPENMATH-2026/OM26-H1/WP30/raw/OM26-H1-WP30-IA-001/github-comment-5942381467.md",
+      "receipt_path": "contributions/OPENMATH-2026/OM26-H1/WP30/receipts/OM26-H1-WP30-IA-001/github-comment-5942381467.json",
+      "declared_disposition": "PROVED_REDUCTION",
+      "comment_created_at": "2026-10-01T23:03:37Z",
+      "authenticated_actor": "fyremael",
+      "state": "PENDING_EXACT_MATHEMATICAL_REPLAY_AND_NOVELTY_REVIEW",
+      "claim_effect": "NONE"
+    }
+  ]
+}
