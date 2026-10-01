@@ -11,7 +11,7 @@
       "hill_id": "alejandrozu/collatz-modular-descent",
       "candidate_type": "M1_FORMALIZED_PARTIAL_OR_FINITE_CLASSIFICATION_PENDING_COMPETITION_CLASSIFICATION",
       "claim": "23 exact stable accelerated-Collatz residue-class descent certificates; exact deterministic reduction of the full independently reconstructed k<=8, depth<=4 valid catalog.",
-      "internal_state": "TRUSTED_REPLAY_PASS__TARGET_CORRESPONDENCE_PASS",
+      "internal_state": "TRUSTED_REPLAY_PASS__TARGET_CORRESPONDENCE_PASS__PROTECTED_MERGE_187ce0d",
       "packet": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/H4_SECTION8_DRAFT.json",
       "remaining": [
         "human Section 8 authority fields",
@@ -43,7 +43,7 @@
       "candidate_type": "M2_FORMALIZATION_OR_NARROW_FORMALIZED_PARTIAL_PENDING_COMPETITION_CLASSIFICATION",
       "claim": "Pinned Lean proofs of AP truncation and equivalence between the protected frequently-atTop AP conclusion and existence of APs of every exact finite length.",
       "parent_problem_boundary": "Does not prove the reciprocal-divergence implication or solve Erdos Problem 3.",
-      "internal_state": "D3_D4_PINNED_COMPILE_PASS__ALLOWED_AXIOMS_ONLY",
+      "internal_state": "D3_D4_PINNED_COMPILE_PASS__ALLOWED_AXIOMS_ONLY__PROTECTED_MERGE_187ce0d",
       "packet": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/H7_SECTION8_DRAFT.json",
       "remaining": [
         "formalization novelty/usefulness review",
@@ -84,5 +84,6 @@
     "conflict/credit confirmations",
     "publication/attribution authority"
   ],
-  "claim_boundary": "Queue is internal readiness/routing only; it does not constitute competition submission, acceptance, score, novelty determination, or certification."
+  "claim_boundary": "Queue is internal readiness/routing only; it does not constitute competition submission, acceptance, score, novelty determination, or certification.",
+  "protected_head_after_closure": "187ce0debe76cb960724a6078b16660a11531941"
 }
