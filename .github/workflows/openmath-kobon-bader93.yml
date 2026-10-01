@@ -54,6 +54,14 @@ jobs:
           "$HOME/.local/bin/autolab" login --token "$AUTOLAB_TOKEN"
           "$HOME/.local/bin/autolab" whoami
 
+      - name: Read-only AutoLab leaderboard route probe
+        env:
+          AUTOLAB_TOKEN: ${{ secrets.AUTOLAB_TOKEN }}
+        working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
+        run: |
+          "$HOME/.local/bin/autolab" hills submit --help
+          python probe_autolab_leaderboard_route.py
+
       - name: Pull public Kobon hill
         run: |
           "$HOME/.local/bin/autolab" hills pull alejandrozu/kobon-triangles
