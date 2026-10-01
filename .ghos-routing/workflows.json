@@ -291,10 +291,14 @@
       "path": ".github/workflows/openmath-kobon-bader93.yml",
       "observed_features": [
         "OPAQUE_EXECUTION",
-        "SECRET_CREDENTIAL"
+        "SECRET_CREDENTIAL",
+        "WRITE_CAPABLE"
       ],
       "topology": "PERSISTENT_CONTROLLER_REQUIRED",
-      "controller_id": "GITHUB_ACTIONS"
+      "controller_id": "GITHUB_ACTIONS",
+      "external_effects": [
+        "Explicit dispatch can submit a validated report to AutoLab under jimsteeg; persistent GITHUB_ACTIONS controller admits external write capability"
+      ]
     },
     {
       "path": ".github/workflows/openmath-kobon-baseline-gate.yml",
