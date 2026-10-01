@@ -29,11 +29,22 @@ def api(method, path, data=None):
             return json.load(response)
     except urllib.error.HTTPError as error:
         # Never emit request headers or token values.
-        raise RuntimeError(f"AutoLab {method} {path}: HTTP {error.code}") from None
+        detail = error.read().decode(errors="replace")[:2000]
+        detail = detail.replace(os.environ["AUTOLAB_TOKEN"], "[redacted]")
+        raise RuntimeError(f"AutoLab {method} {path}: HTTP {error.code}: {detail}") from None
 
 
 def checkpoint():
     OUT.write_text(json.dumps(receipts, indent=2) + "\n")
+
+
+def project_slug(value):
+    """The API returns owner/slug; endpoint arguments require only slug."""
+    if "/" in value:
+        owner, value = value.split("/", 1)
+        if owner != "jimsteeg" or "/" in value:
+            raise RuntimeError("Unexpected project owner or malformed slug")
+    return value
 
 
 def main():
@@ -59,7 +70,7 @@ def main():
         if len(matches) > 1:
             raise RuntimeError("Ambiguous existing climb; refused duplicate registration")
         if matches:
-            slug = matches[0]["slug"]
+            slug = project_slug(matches[0]["slug"])
             project = api("GET", f"/api/v1/projects/jimsteeg/{slug}")
         else:
             project = api("POST", "/api/v1/projects/", {
@@ -67,7 +78,7 @@ def main():
                 "description": f"Fixed GCL contest payload {digest}. Evaluate as supplied; no search or code changes. Attribution in grandchallenge/MATHSOLVE.",
                 "stop_policy": "Evaluate only the supplied payload. No generated ideas or rented compute.",
             })
-            slug = project["slug"]
+            slug = project_slug(project["slug"])
         endpoint = f"/api/v1/projects/jimsteeg/{slug}"
         entry = {"hill": hill, "hill_id": hill_id, "solution_sha256": digest,
                  "project_id": project["id"], "slug": slug,
