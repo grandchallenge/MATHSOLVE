@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from ci.openmath_lifecycle_candidate import refresh_summary, board_text, index_text, plan, successor_identity
+from ci.openmath_lifecycle_candidate import refresh_summary, board_text, index_text, plan, successor_identity, apply_candidate, LifecycleCandidateError
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
@@ -16,6 +16,26 @@ class OpenMathLifecycleCandidateStateTest(unittest.TestCase):
 
     def test_h1_uses_wp_successor_identity(self):
         self.assertEqual(successor_identity("OM26-H1-WP01"), ("OM26-H1", "OM26-H1-WP02", "OM26-H1-WP02-IA-001", "INDEPENDENT-AGENT-102"))
+
+    def test_replacement_return_for_closed_dispatch_cannot_mutate_registry(self):
+        registry=self.load_registry()
+        predecessor=next(x for x in registry["assignments"] if x["assignment_id"]=="OM26-H2-WP03")
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)/"repo"
+            intake=Path(td)/"intake"
+            intake.mkdir()
+            for path in (".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json", "work_packages/OPENMATH_2026/HILL_LANES.json"):
+                target=root/path
+                target.parent.mkdir(parents=True,exist_ok=True)
+                target.write_bytes((ROOT/path).read_bytes())
+            before={p.relative_to(root):p.read_bytes() for p in root.rglob("*") if p.is_file()}
+            (intake/"META.json").write_text(json.dumps({"comment_id":999999}))
+            (intake/"RECEIPT.json").write_text(json.dumps({"assignment_id":predecessor["assignment_id"],"dispatch_id":predecessor["lease"]["dispatch_id"],"agent_ref":predecessor["lease"]["agent_ref"]}))
+            (intake/"RAW.md").write_text("GCL-CONTRIBUTION-RESULT/1\nreplacement evidence\n")
+            with self.assertRaisesRegex(LifecycleCandidateError,"predecessor is not open: ACCEPTED"):
+                apply_candidate(root,intake,999999,"https://github.com/grandchallenge/MATHSOLVE/issues/999999")
+            after={p.relative_to(root):p.read_bytes() for p in root.rglob("*") if p.is_file()}
+            self.assertEqual(before,after)
 
     def test_current_summary_is_state_derived(self):
         registry = self.load_registry()
