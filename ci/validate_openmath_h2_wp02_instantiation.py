@@ -121,14 +121,20 @@ def validate() -> list[str]:
         errors.append("source WP lacks exact pruning boundary")
 
     h2 = next(x for x in lanes["hills"] if x["hill_slot"] == "OM26-H2")
-    if h2.get("active_lease", {}).get("assignment_id") != "OM26-H2-WP03":
-        errors.append("H2 lane does not point to WP03")
+    active_id = h2.get("active_lease", {}).get("assignment_id")
+    expected_predecessor = "OM26-H2-WP03" if active_id == "OM26-H2-WP04" else "OM26-H2-WP02"
+    if active_id == "OM26-H2-WP04":
+        wp03 = assignments.get("OM26-H2-WP03", {})
+        if wp03.get("state") != "ACCEPTED" or not wp03.get("lifecycle", {}).get("closed"):
+            errors.append("WP04 succession requires preserved ACCEPTED/CLOSED WP03")
+    if active_id not in {"OM26-H2-WP03", "OM26-H2-WP04"}:
+        errors.append("H2 lane does not point to an admitted WP03/WP04 successor")
     if h2.get("active_lease", {}).get("lifecycle_state") != "LEASED_NOT_LAUNCHED":
-        errors.append("H2 active WP03 lease lifecycle mismatch")
-    if h2.get("predecessor_lease", {}).get("assignment_id") != "OM26-H2-WP02":
-        errors.append("H2 predecessor WP02 lease missing")
+        errors.append("H2 active successor lease lifecycle mismatch")
+    if h2.get("predecessor_lease", {}).get("assignment_id") != expected_predecessor:
+        errors.append("H2 immediate predecessor lease missing")
     if h2.get("predecessor_lease", {}).get("lifecycle_state") != "ACCEPTED":
-        errors.append("H2 predecessor WP02 lease not accepted")
+        errors.append("H2 immediate predecessor lease not accepted")
     if h2.get("competition_state", {}).get("official_submission") != "NOT_SUBMITTED":
         errors.append("H2 competition boundary changed")
 
@@ -139,14 +145,14 @@ def validate() -> list[str]:
 
     if "| `OM26-H2-WP02` | `OM26-H2` | `ACCEPTED` |" not in board:
         errors.append("job board missing WP02 accepted history")
-    if "| `OM26-H2-WP03` | `OM26-H2` | `LEASED_NOT_LAUNCHED` |" not in board:
-        errors.append("job board missing WP03 active lease")
+    if f"| `{active_id}` | `OM26-H2` | `LEASED_NOT_LAUNCHED` |" not in board:
+        errors.append("job board missing current active lease")
 
     policy = registry["mathematics_release_policy"]
-    if policy["per_hill"]["OM26-H2"]["assignment"] != "OM26-H2-WP03":
-        errors.append("per-hill policy does not select WP03")
-    if policy["per_hill"]["OM26-H2"]["predecessor"]["assignment"] != "OM26-H2-WP02":
-        errors.append("per-hill policy loses WP02 predecessor")
+    if policy["per_hill"]["OM26-H2"]["assignment"] != active_id:
+        errors.append("per-hill policy does not select current successor")
+    if policy["per_hill"]["OM26-H2"]["predecessor"]["assignment"] != expected_predecessor:
+        errors.append("per-hill policy loses immediate predecessor")
 
     return errors
 
@@ -157,7 +163,7 @@ def main() -> int:
         for error in errors:
             print("FAIL:", error)
         return 1
-    print("PASS: historical OM26-H2-WP02 instantiation remains intact after adjudication and WP03 succession")
+    print("PASS: historical OM26-H2-WP02 instantiation remains intact after adjudication and admitted succession")
     return 0
 
 

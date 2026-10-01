@@ -97,7 +97,7 @@ jobs:
               raise SystemExit('Submission refused: expected AutoLab account jimsteeg')
           print('SUBMISSION_ACCOUNT=jimsteeg')
           PYID
-          uv tool run --from hills==0.11.0 hills eval candidates/RH_BADER_RECONSTRUCTION_093 -H kobon-triangles --current -o /tmp/gcl-h1-report.json --json > /tmp/gcl-h1-eval-output.json
+          uv tool run --from hills==0.11.0 hills eval candidates/RH_BADER_RECONSTRUCTION_093 -H kobon-triangles --final -o /tmp/gcl-h1-report.json --json > /tmp/gcl-h1-eval-output.json
           python - <<'PYREPORT'
           import json
           report=json.load(open('/tmp/gcl-h1-report.json'))
@@ -109,6 +109,8 @@ jobs:
                   stack.extend(item.values())
               elif isinstance(item,list): stack.extend(item)
           if scores != [93]: raise SystemExit('Submission refused: report is not exactly 93 triangles')
+          if not report.get('tree_hash') or not report.get('official'):
+              raise SystemExit('Submission refused: evaluator did not produce an official committed-version report')
           print('SUBMISSION_TRIANGLES=93')
           PYREPORT
           # This CLI submission performs an external write equivalent to -X POST.

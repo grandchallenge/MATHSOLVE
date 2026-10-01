@@ -32,3 +32,5 @@ with proof holes. Continue preparing and evaluating these lanes after H1's
 server result; preserve genuine blockers instead of counting prepared files as
 submissions. Existing fan/prism research and GCL Cert review do not gate this
 explicitly authorized leaderboard transaction.
+
+First dispatch `36849889699` verified jimsteeg and score 93 but the server rejected the working-tree report: HTTP 400, no tree_hash. It created no accepted leaderboard entry. Submission now uses committed-version final evaluation and requires both tree_hash and official=true before sending. A stale H2 historical validator exposed by the routing change is repaired to recognize its already-admitted WP04 successor while retaining WP02 history and requiring accepted/closed WP03.
