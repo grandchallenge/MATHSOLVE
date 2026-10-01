@@ -1,11 +1,12 @@
 """Register fixed contest payloads through AutoLab's documented native API.
 
-No invented reports, results or completed states. New climbs have a zero-dollar
-cost cap and are left in setup; activation is a separate operational decision.
+No invented reports, results or completed states. New climbs have a strict
+zero-dollar cost cap. Activation probes the real remaining execution blocker.
 """
 import hashlib
 import json
 import os
+import time
 from pathlib import Path
 import urllib.error
 import urllib.request
@@ -112,6 +113,20 @@ def main():
                      stage="NATIVE_JOB_REGISTERED__OFFICIAL_EVALUATION_PENDING")
         checkpoint()
         print(json.dumps(entry))
+    # Probe H1 execution without authorizing LLM spend or rented compute.
+    # The platform's strict zero-dollar termination cap must survive readback.
+    first = receipts["entries"][0]
+    endpoint = f"/api/v1/projects/jimsteeg/{first['slug']}"
+    project = api("GET", endpoint)
+    if project.get("termination", {}).get("max_cost_usd") != 0:
+        raise RuntimeError("Refused activation: strict zero-dollar cost cap not confirmed")
+    if project.get("compute_rental", {}).get("limits"):
+        raise RuntimeError("Refused activation: rented compute is configured")
+    first["activation"] = api("POST", endpoint + "/activate", {"submit_baseline": False})
+    time.sleep(10)  # allow the control loop to publish its actual attention state
+    first["execution_status"] = api("GET", endpoint + "/status")
+    checkpoint()
+    print(json.dumps({"H1_execution_probe": first["execution_status"]}))
 
 
 if __name__ == "__main__":
