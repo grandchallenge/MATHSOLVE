@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "OPENMATH-2026-OFFICIAL-SUBMISSION-ROUTE-DIAGNOSTIC-001",
+  "observed_at": "2026-10-01",
+  "protected_source_head": "50b88f51032a14aeae5c3969e14dd8c5a8728bac",
+  "account": "jimsteeg",
+  "findings": {
+    "generic_hill_leaderboard": {
+      "hill": "alejandrozu/kobon-triangles",
+      "tree_hash": "7d3f1d91dcb8be8d0eef20be763557bd6d876707",
+      "state": "POPULATED_GENERIC_AUTOLAB_HILL_LEADERBOARD",
+      "evidence": "Authenticated GET /api/v1/hills/alejandrozu/kobon-triangles/leaderboard returned ranked entries, including entries dated before the OpenMath competition opened on 2026-09-27.",
+      "interpretation": "The populated Hill leaderboard is not evidence that the competition-specific submission workflow promised by the OpenMath handbook has been published or used."
+    },
+    "direct_leaderboard_transaction": {
+      "cli": "autolab hills submit REPORT --hill owner/name",
+      "endpoint": "POST /api/v1/hills/{owner}/{name}/submit",
+      "state": "IDENTIFIED",
+      "requirement": "A local hills eval report. Only an official report ranks; unofficial reports may be recorded but do not rank."
+    },
+    "nonowner_public_hill": {
+      "state": "UNOFFICIAL_ONLY",
+      "evidence": "Authenticated autolab hills pull alejandrozu/kobon-triangles reports: 'no private/ data: local scores are unofficial — climb on AutoLab for the official score'.",
+      "local_report": "The exact H1 candidate scores 93 locally, but the public pull has tree_hash=null/commit=null and cannot produce a ranking official report."
+    },
+    "zero_cost_climb_probe": {
+      "github_workflow_run_id": 36871397400,
+      "github_job_id": 110399784803,
+      "project": "jimsteeg/gcl-2026-h1-fixed-e606799ad6c1",
+      "fixed_job_id": "5c6779f5-5f3d-474c-9cf8-310a0d679efb",
+      "precondition": "max_cost_usd=0.0; compute_rental.limits empty; exact hill tree hash matched.",
+      "own_compute_node": "gcl-h1-36871397400",
+      "result": "Node registered and attached successfully; fixed job remained queued for the entire bounded 420-second observation and never began execution; node then detached and stopped.",
+      "interpretation": "Attaching participant-owned compute does not bypass the ordinary Climb agent scheduler at a zero model-spend cap."
+    },
+    "installed_autolab_client_inventory": {
+      "state": "NO_SEPARATE_DIRECT_EVALUATION_ROUTE_FOUND",
+      "routes_found": [
+        "POST /api/v1/hills/{owner}/{name}/submit",
+        "GET /api/v1/hills/{owner}/{name}/versions/{tree_hash}/files",
+        "GET /api/v1/hills/{owner}/{name}/raw/{tree_hash}/{path}",
+        "GET /api/v1/hills/{owner}/{name}/versions/{tree_hash}/bundle",
+        "ordinary Project/Climb, node, compute and list endpoints"
+      ],
+      "interpretation": "The installed supported client exposes leaderboard report submission but no separate entrant-callable server evaluation endpoint."
+    },
+    "organizer_publication": {
+      "state": "COMPETITION_WORKFLOW_NOT_PUBLICLY_LINKED",
+      "evidence": "The live RSI House OpenMath page still says the submission workspace and checker instructions will be linked before submissions open and still renders those resources as placeholders."
+    }
+  },
+  "corrected_boundary": "COMPETITION_SPECIFIC_SUBMISSION_WORKFLOW_OR_FALLBACK_NOT_PUBLISHED_OR_PROVISIONED_TO_THIS ENTRANT",
+  "rejected_boundary": "FINANCIAL_AUTHORIZATION_REQUIRED",
+  "next_action": "Obtain the organizer-published competition submission workflow or the pre-published fallback route. Do not raise AutoLab model budget, rent compute, duplicate Climbs, or infer an undocumented competition endpoint.",
+  "claim_boundary": "This diagnostic distinguishes generic AutoLab Hill leaderboard mechanics from the OpenMath competition submission/adjudication workflow. It does not claim organizer acceptance, competition submission, or that any leaderboard user is a competition entrant."
+}
