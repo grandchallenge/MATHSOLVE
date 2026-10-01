@@ -1886,7 +1886,7 @@
         "agent_ref": "INDEPENDENT-AGENT-102",
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/563",
         "task_commit": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
-        "task_blob_sha1": "50e3af49ea5fd03f88461965b4648dbd4ec1b417",
+        "task_blob_sha1": "d9ae7ac95df300e8b7f2be3a9dfeb7496af8f4b3",
         "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H1-WP02.md"
       },
       "OM26-H2": {
@@ -1897,7 +1897,7 @@
         "agent_ref": "INDEPENDENT-AGENT-204",
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/561",
         "task_commit": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
-        "task_blob_sha1": "02f64fb66ee4b45a7fa573651b02c347b3791dd2",
+        "task_blob_sha1": "3d842975f6b42c99cb49c3856d0e674ac44e0aba",
         "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H2-WP04.md"
       },
       "OM26-H3": {
@@ -1908,7 +1908,7 @@
         "agent_ref": "INDEPENDENT-AGENT-303",
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/562",
         "task_commit": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
-        "task_blob_sha1": "0854b035724ec7ca24ec41d5c48c8cf7384504bf",
+        "task_blob_sha1": "648303ca1f2117d0674f74e111c76a5fe8df7dc1",
         "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H3-WP03.md"
       },
       "OM26-H4": {
@@ -1919,7 +1919,7 @@
         "agent_ref": "INDEPENDENT-AGENT-402",
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/559",
         "task_commit": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
-        "task_blob_sha1": "ec7060931d12fecc9a54acf388b8c7d98f22c05d",
+        "task_blob_sha1": "3a256477b4e20b5b43e04e6f6d51a61488a2f702",
         "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H4-WP02.md"
       },
       "OM26-H5": {
@@ -1930,7 +1930,7 @@
         "agent_ref": "INDEPENDENT-AGENT-502",
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/560",
         "task_commit": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
-        "task_blob_sha1": "db11553cf96c2a071220563a6c9effa1bbbd2089",
+        "task_blob_sha1": "75ff5b9cb64d128d31e1e75f2c0481f9fa57229a",
         "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H5-WP02.md"
       },
       "OM26-H6": {
@@ -1941,7 +1941,7 @@
         "agent_ref": "INDEPENDENT-AGENT-603",
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/556",
         "task_commit": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
-        "task_blob_sha1": "ed675f9533b10f691a0d5253138b2740e388d73a",
+        "task_blob_sha1": "c41b6005a14ad9f872732759c6f2b306cbd3ecfa",
         "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H6-WP03.md"
       },
       "OM26-H7": {
@@ -1952,7 +1952,7 @@
         "agent_ref": "INDEPENDENT-AGENT-703",
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/557",
         "task_commit": "28c970ddd77e3185ad79b3a748b9661db43d79ab",
-        "task_blob_sha1": "78ac1c554f05aa5a9fbbed2d1274e23ff7870f59",
+        "task_blob_sha1": "1cc14aec27c434094ee95d3cbb336eac0d22ea04",
         "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/28c970ddd77e3185ad79b3a748b9661db43d79ab/handoffs/OPENMATH-2026/launch/OM26-H7-WP03.md"
       }
     },
