@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "record_id": "OM26-H4-SECTION8-DRAFT-001",
-  "state": "TECHNICAL_PACKET_PREPARED__OFFICIAL_EVALUATOR_AND_HUMAN_AUTHORITY_FIELDS_PENDING",
+  "state": "TECHNICAL_PACKET_PREPARED__PROTECTED_REPLAY_MERGED__OFFICIAL_EVALUATOR_AND_HUMAN_AUTHORITY_FIELDS_PENDING",
   "identity_target": {
     "campaign": "OPENMATH-2026",
     "hill_id": "alejandrozu/collatz-modular-descent",
@@ -35,7 +35,7 @@
     "native_job_id": "9fbb4512-e7c3-41e7-8e53-06fd887a320d",
     "official_submission_id": null,
     "official_final_report": null,
-    "immutable_final_commit": "PENDING_PROTECTED_MERGE_OF_CLOSURE_TRANCHE"
+    "immutable_final_commit": "187ce0debe76cb960724a6078b16660a11531941"
   },
   "formal_replay": {
     "exact_rule_semantics_source": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/collatz-modular-descent/PUBLIC_SOURCE/eval.py",
@@ -62,7 +62,7 @@
       "raw_return": "contributions/OPENMATH-2026/OM26-H4/WP01/raw/OM26-H4-WP01-IA-001/github-comment-5921309643.md"
     },
     "original_adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
-    "replay_closure": "PR_593_TRUSTED_REPLAY_PASS__PROTECTED_MERGE_PENDING",
+    "replay_closure": "PR_593_MERGED__PROTECTED_HEAD_187ce0debe76cb960724a6078b16660a11531941",
     "status_review": "work_packages/OPENMATH_2026/OM26_H4_COLLATZ_MODULAR_DESCENT/TARGET_CORRESPONDENCE_AND_STATUS.json"
   },
   "literature_status": {
@@ -89,7 +89,6 @@
     "publication_authority": "PENDING_HUMAN_CONFIRMATION"
   },
   "remaining_before_external_submission": [
-    "protected merge/exact-head replay of closure tranche",
     "official competition evaluator report",
     "organizer submission ID/workflow",
     "registered human roster",
