@@ -42,5 +42,17 @@
     "leaderboard_state": null,
     "organizer_acceptance": null
   },
-  "claim_boundary": "Packet is submission-ready evidence only, not an official competition submission, novelty claim, optimality claim, or certification."
+  "claim_boundary": "Packet is submission-ready evidence only, not an official competition submission, novelty claim, optimality claim, or certification.",
+  "handbook_audit": {
+    "audit_id": "OPENMATH-2026-HANDBOOK-COMPLIANCE-AUDIT-001",
+    "status": "NOT_SUBMISSION_READY",
+    "classification": "PRIOR_MATHEMATICS__M2_REFRAME_POSSIBLE",
+    "blocking": [
+      "M2 source theorem/formalization target",
+      "prior formal-library search",
+      "genuinely new formal contribution",
+      "Section 8 packet",
+      "official submission route/report"
+    ]
+  }
 }
