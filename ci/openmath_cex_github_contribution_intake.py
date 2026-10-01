@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -31,6 +32,31 @@ EXTERNAL_SOURCE_CLASSES = {"PROTECTED_PACKET_ONLY", "ADDITIONAL_PUBLIC_SOURCES"}
 
 class IntakeError(ValueError):
     pass
+
+
+def unwrap_return(body: str) -> tuple[str, dict[str, str] | None]:
+    """Extract RESULT/1 without stripping or rewriting its bytes."""
+    if not body.startswith("GCL-RETURN-RELAY/1\n"):
+        return body, None
+    pattern = (r"\AGCL-RETURN-RELAY/1\nDISPATCH_ID: ([A-Z0-9._-]+)\n"
+               r"AGENT_REF: ([A-Z0-9._-]+)\n"
+               r"INTENDED_RETURN: (https://github\.com/grandchallenge/MATHSOLVE/issues/[1-9][0-9]*)\n"
+               r"\nBEGIN_RESULT\n(.*)\nEND_RESULT\n?\Z")
+    match = re.fullmatch(pattern, body, re.DOTALL)
+    if not match:
+        raise IntakeError("relay envelope must match GCL-RETURN-RELAY/1 exactly")
+    dispatch_id, agent_ref, intended_return, inner = match.groups()
+    if "\nBEGIN_RESULT\n" in inner or "\nEND_RESULT" in inner:
+        raise IntakeError("nested or ambiguous relay delimiters")
+    parsed = parse_result_comment(inner)
+    if (parsed["preamble"]["dispatch_id"] != dispatch_id or
+            parsed["preamble"]["agent_ref"] != agent_ref):
+        raise IntakeError("relay identity differs from inner RESULT/1")
+    return inner, {"dispatch_id": dispatch_id, "agent_ref": agent_ref,
+                   "intended_return": intended_return,
+                   "envelope_sha256": hashlib.sha256(body.encode("utf-8")).hexdigest(),
+                   "inner_result_sha256": hashlib.sha256(inner.encode("utf-8")).hexdigest(),
+                   "normalization": "NONE; delimiter framing excluded from inner result"}
 
 
 def _object(value: Any, label: str) -> dict[str, Any]:
@@ -206,11 +232,15 @@ def validate_event(
     if not isinstance(body, str):
         raise IntakeError("comment body is unavailable")
 
-    parsed = parse_result_comment(body)
+    inner, relay = unwrap_return(body)
+    parsed = parse_result_comment(inner)
     dispatch_id = parsed["preamble"]["dispatch_id"]
     dispatch, dispatch_path = load_dispatch(root, dispatch_id)
     operation = load_operation(root, dispatch)
     validate_dispatch_issue(root, issue, dispatch, operation)
+
+    if relay is not None and relay["intended_return"] != dispatch.get("github_issue_url"):
+        raise IntakeError("relay intended return differs from protected dispatch issue")
 
     if parsed["preamble"]["assignment"] != dispatch.get("assignment_id"):
         raise IntakeError("assignment does not match protected dispatch")
@@ -233,13 +263,14 @@ def validate_event(
     if not isinstance(comment_id, int):
         raise IntakeError("GitHub comment id is unavailable")
 
-    observed = {"issue": issue, "comment": comment, "actor": login, "comment_id": comment_id}
+    observed = {"issue": issue, "comment": comment, "actor": login, "comment_id": comment_id,
+                "inner_result": inner, "relay": relay}
     return parsed, dispatch, dispatch_path, operation, observed
 
 
 def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, Any]:
     parsed, dispatch, dispatch_path, operation, observed = validate_event(event, root)
-    body = observed["comment"]["body"]
+    body = observed["inner_result"]
     assert isinstance(body, str)
 
     try:
@@ -283,6 +314,12 @@ def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, An
         "canonical_claim_effect": False,
         "recorded_by": "github-actions:openmath-cex-independent-contribution-intake",
     }
+    if observed["relay"] is not None:
+        receipt["return_transport"] = "GCL-RETURN-RELAY/1"
+        receipt["relay_provenance"] = observed["relay"]
+        receipt["relay_provenance"]["source_comment_url"] = observed["comment"].get("html_url")
+        receipt["relay_provenance"]["authenticated_relay_actor"] = observed["actor"]
+        receipt["relay_provenance"]["envelope_utf8"] = observed["comment"]["body"]
 
     output.mkdir(parents=True, exist_ok=True)
     (output / "RAW.md").write_text(body, encoding="utf-8")
