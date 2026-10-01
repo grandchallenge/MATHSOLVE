@@ -40,5 +40,14 @@ class H1Q6ReplayClosureTest(unittest.TestCase):
         self.assertEqual(json.loads(json.dumps(replay())), json.loads(receipt.read_text()))
 
 
+class H1GeometricPremiseAuditTest(unittest.TestCase):
+    def test_six_core_geometry_and_charge_certificates(self):
+        import json
+        from pathlib import Path
+        from ci.validate_openmath_h1_geometric_premises import replay
+        receipt = Path(__file__).resolve().parents[1] / "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_SIX_CORE_PREMISE_AUDIT_RECEIPT.json"
+        self.assertEqual(json.loads(json.dumps(replay())), json.loads(receipt.read_text()))
+
+
 if __name__ == "__main__":
     unittest.main()
