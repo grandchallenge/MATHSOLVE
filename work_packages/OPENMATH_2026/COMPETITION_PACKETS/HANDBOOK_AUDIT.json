@@ -111,34 +111,38 @@
       ]
     },
     "H7": {
-      "disposition": "NOT_SUBMISSION_READY__DIRECT_FORMAL_PARTIAL_SALVAGE_POSSIBLE",
-      "current_core": "Formal decomposition of Erdos Problem 3; bounded lemma ap_subprogression_of_le selected as direct representational bridge",
-      "event_window_delta": "PASS_FOR_DECOMPOSITION",
-      "exact_claim": "NO_PROVED_SCORE_BEARING_SUBCLAIM_YET",
-      "pinned_environment": "NOT_EXECUTED__WORKER_RUNTIME_LACKED_LEAN_AND_CONTAINER_RUNTIME",
-      "trusted_replay": "FAIL_NOT_EXECUTED",
-      "target_correspondence": "DIRECT__D3_FEEDS_EXACT_LENGTH_REFORMULATION_OF_CANONICAL_TARGET",
-      "novelty_status": "UNESTABLISHED",
-      "required_before_cutoff": [
-        "supply a complete no-sorry proof of H7-D3",
-        "compile under exact pinned Lean 4.33.1 image",
-        "retain axiom receipt within allowlist",
-        "compile H7-D4 if feasible",
-        "freeze-date novelty/status review of the formal subclaim",
-        "modality/family/admission",
-        "complete Section 8 packet",
-        "official submission route/report"
+      "disposition": "TECHNICALLY_COMPLETE_FORMALIZATION_CANDIDATE__HUMAN_AND_EXTERNAL_FIELDS_PENDING",
+      "current_core": "Pinned Lean proofs of Erdos3.ap_subprogression_of_le and Erdos3.ap_frequently_iff_every_length",
+      "event_window_delta": "PASS",
+      "exact_claim": "PASS__D3_D4_PINNED_COMPILE",
+      "pinned_environment": "PASS__LEAN_4_33_1__MATHLIB_0df444a360eaa60ab8c11dca51a86af692955474",
+      "trusted_replay": "PASS__RUN_36879690920_JOB_110427986166",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_holes": false,
+      "target_correspondence": "PASS__CONCLUSION_SIDE_EXACT_LENGTH_REFORMULATION",
+      "parent_problem": "UNSOLVED__RECIPROCAL_DIVERGENCE_IMPLICATION_UNTOUCHED",
+      "novelty_status": "FORMALIZATION_NOVELTY_PLAUSIBLE__MATHEMATICAL_NOVELTY_NOT_CLAIMED__ORGANIZER_REVIEW_REQUIRED",
+      "recommended_modality": "M2_OR_NARROW_FORMALIZED_PARTIAL_PENDING_COMPETITION_CLASSIFICATION",
+      "required_before_external_submission": [
+        "Section 8 human authority fields",
+        "official competition workflow/submission ID/evaluator report",
+        "organizer novelty/usefulness classification"
       ]
     }
   },
   "priority": [
-    "H4 finalize Section 8 technical/human fields and official route",
-    "H1 H1-12 novelty/status + partial-result packet",
-    "H7 finish pinned H7-D4 exact-length reformulation; then formalization novelty/status",
+    "H4 external/human submission fields only; bounded mathematics closed",
+    "H1 source-conditional partial: organizer novelty/significance + external/human fields",
+    "H7 external/human submission fields only; D3/D4 pinned formalization closed",
     "H2 retain as valid low-priority finite artifact only",
     "H3 only if canonical-target advance emerges",
     "H6 hold: retained artifact equals prior-work baseline",
     "H5 hold unless eligible delta established"
   ],
-  "claim_boundary": "Seven-hill handbook compliance audit only. It does not create competition eligibility, formal acceptance, novelty, organizer submission, score, or MATHCERT certification."
+  "claim_boundary": "Seven-hill handbook compliance audit only. It does not create competition eligibility, formal acceptance, novelty, organizer submission, score, or MATHCERT certification.",
+  "source_bind_current": "187ce0debe76cb960724a6078b16660a11531941"
 }
