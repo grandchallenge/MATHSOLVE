@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "packet_id": "OM26-H4-COMPETITION-PACKET-001",
+  "account": "jimsteeg",
+  "source_repository": "grandchallenge/MATHSOLVE",
+  "source_commit": "50b88f51032a14aeae5c3969e14dd8c5a8728bac",
+  "hill": "H4",
+  "hill_id": "alejandrozu/collatz-modular-descent",
+  "artifact": {
+    "path": "work_packages/OPENMATH_2026/CONTEST_CANDIDATES/H4/solution.json",
+    "git_blob_sha1": "4419d8d4689df298e43e98f6f29ac000c48e3115",
+    "sha256": "b14c4804dae95df88ffa7dcef865205edd295e1f2e8c4daeba75333053a6673a"
+  },
+  "hill_version": {
+    "tree_hash": "7414e19511b2b99954a3898beed545401b79a571",
+    "commit": "ad2b555cf91d7d4250bbdb6f94b30fac07e3d512"
+  },
+  "native_climb": {
+    "project_id": "f6ba9e4d-e3f1-412c-a1e9-37ba95675de6",
+    "slug": "gcl-2026-h4-fixed-b14c4804dae9",
+    "job_id": "9fbb4512-e7c3-41e7-8e53-06fd887a320d",
+    "job_status": "queued"
+  },
+  "claim": {
+    "statement": "The payload contains 23 exact accelerated-Collatz descent rules. Each submitted rule has been constructed from an independently checked exact-rule catalogue and proves strict descent for every positive odd integer in its stated residue class.",
+    "status": "EXACT_RULE_CATALOG_RETAINED",
+    "collatz_conjecture_claim": false
+  },
+  "provenance": {
+    "attribution": "Derived from the accepted GCL independent H4 work product; source examples and exact verifier were replayed independently.",
+    "gcl_evidence": [
+      "contributions/OPENMATH-2026/OM26-H4/WP01/raw/OM26-H4-WP01-IA-001/github-comment-5921309643.md"
+    ]
+  },
+  "competition_fields": {
+    "submission_id": null,
+    "competition_workspace": null,
+    "immutable_final_commit": null,
+    "official_evaluator_report": null,
+    "leaderboard_state": null,
+    "organizer_acceptance": null
+  },
+  "claim_boundary": "Exact finite descent-rule collection only. No claim to prove Collatz, infer hidden target coverage, certification, or official competition acceptance."
+}
