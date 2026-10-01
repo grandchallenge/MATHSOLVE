@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_AUTOMATED_BOUNDED_ADJUDICATION",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H1",
+  "assignment_id": "OM26-H1-WP03",
+  "dispatch_id": "OM26-H1-WP03-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-103",
+  "state": "ADJUDICATED",
+  "disposition": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+  "accepted_claims": [],
+  "claim_effect": "NONE",
+  "certification_effect": false,
+  "competition_effect": false,
+  "successor": {
+    "assignment_id": "OM26-H1-WP04",
+    "dispatch_id": "OM26-H1-WP04-IA-001",
+    "agent_ref": "INDEPENDENT-AGENT-104",
+    "issue_number": 607
+  },
+  "claim_boundary": "The returned evidence is preserved, but no mathematical claim is promoted without a trusted replay adapter."
+}
