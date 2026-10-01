@@ -38,3 +38,9 @@ The campaign does not need an optimality proof to make progress. A higher verifi
 ## Core clarity
 
 The object is not a picture and not a pseudoline combinatorics score. It is a concrete list of rational straight lines. Search may use continuous or combinatorial surrogates, but every surviving candidate must return to that exact object.
+
+## Current research direction
+
+The internal priority is [six-core replay closure](H1_Q6_INTERNAL_REPLAY.md). Its exact finite replay reproduces the five surviving profiles and sharpens 333444 from 70 to 60 planar graph candidates. The next obligation is the six-core fan/charging premise audit, then line-realizability and saturated charge constraints. The external WP02 lease remains available; internal replay is not a zero-context contribution under that lease.
+
+The parallel [independent Cert lane](https://github.com/grandchallenge/MATHCERT/issues/345) checks the concrete 93-triangle reconstruction only. It does not discharge the upper-bound route's source-conditional premises.

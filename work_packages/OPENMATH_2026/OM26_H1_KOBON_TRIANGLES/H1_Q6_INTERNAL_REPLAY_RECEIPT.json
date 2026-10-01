@@ -1,0 +1,2093 @@
+{
+  "all_triple_star": {
+    "degree": [
+      3,
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    "mask": 7,
+    "states": [
+      [
+        12,
+        7,
+        0
+      ],
+      [
+        12,
+        8,
+        0
+      ],
+      [
+        12,
+        9,
+        0
+      ],
+      [
+        13,
+        9,
+        1
+      ]
+    ]
+  },
+  "all_triple_without_euler_bound": {
+    "3": 260,
+    "4": 1095,
+    "5": 2412,
+    "6": 4945,
+    "7": 6345,
+    "8": 6435,
+    "9": 4990,
+    "10": 3003,
+    "11": 1365,
+    "12": 455,
+    "13": 105,
+    "14": 15
+  },
+  "claim_boundary": "Exact finite replay of the declared necessary-state relaxation; K3,3 graph candidates excluded by planarity. No geometric realization, unconditional score bound, independent Cert disposition, external-agent lease consumption or competition submission.",
+  "coarse_profiles": [
+    "333333",
+    "333334",
+    "333335",
+    "333336",
+    "333344",
+    "333345",
+    "333346",
+    "333355",
+    "333444",
+    "333445",
+    "334444",
+    "334445",
+    "344444",
+    "444444"
+  ],
+  "counts_with_euler_bound": {
+    "333333": {
+      "3": 260,
+      "4": 1095,
+      "5": 2412,
+      "6": 4945,
+      "7": 6345,
+      "8": 6435,
+      "9": 4990,
+      "10": 3003,
+      "11": 1365,
+      "12": 455
+    },
+    "333334": {
+      "5": 1110,
+      "6": 2175,
+      "7": 5265,
+      "8": 5310,
+      "9": 4750,
+      "10": 2643,
+      "11": 1340,
+      "12": 395
+    },
+    "333335": {
+      "7": 60,
+      "8": 540,
+      "9": 250,
+      "10": 525
+    },
+    "333344": {
+      "6": 327,
+      "7": 765,
+      "8": 2464,
+      "9": 1510,
+      "10": 1077
+    },
+    "333444": {
+      "9": 70
+    }
+  },
+  "independent_zero_context_return": false,
+  "labeled_graphs_visited": 32768,
+  "producer": "CURRENT_CONTEXT_GCL_INTERNAL_EXECUTOR",
+  "profile_333444": {
+    "certificates": [
+      {
+        "class": "K3_3",
+        "mask": 4060,
+        "parts": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 7100,
+        "matching": [
+          [
+            0,
+            5
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 7130,
+        "matching": [
+          [
+            0,
+            4
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            1,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 7548,
+        "matching": [
+          [
+            0,
+            5
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 7638,
+        "matching": [
+          [
+            0,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            1,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 8025,
+        "matching": [
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            5,
+            2
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 8085,
+        "matching": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            5,
+            2
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 10172,
+        "matching": [
+          [
+            0,
+            4
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            1,
+            2,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 10202,
+        "matching": [
+          [
+            0,
+            5
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            1,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 11516,
+        "matching": [
+          [
+            0,
+            4
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            5,
+            2
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            1,
+            2,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 11726,
+        "matching": [
+          [
+            0,
+            3
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            4,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            1,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 11993,
+        "matching": [
+          [
+            0,
+            5
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            4
+          ],
+          [
+            2,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 12173,
+        "matching": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            4
+          ],
+          [
+            2,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "K3_3",
+        "mask": 13242,
+        "parts": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            2,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 13690,
+        "matching": [
+          [
+            0,
+            5
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            1,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 13750,
+        "matching": [
+          [
+            0,
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            1,
+            2,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 14137,
+        "matching": [
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 14227,
+        "matching": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 14586,
+        "matching": [
+          [
+            0,
+            4
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            1,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 14766,
+        "matching": [
+          [
+            0,
+            2
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 15033,
+        "matching": [
+          [
+            0,
+            5
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            4
+          ],
+          [
+            2,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 15243,
+        "matching": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            4
+          ],
+          [
+            2,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "K3_3",
+        "mask": 15481,
+        "parts": [
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 15541,
+        "matching": [
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            2
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            1,
+            2,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 15571,
+        "matching": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            1,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 15661,
+        "matching": [
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 15691,
+        "matching": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            1,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "K3_3",
+        "mask": 15751,
+        "parts": [
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 18300,
+        "matching": [
+          [
+            0,
+            3
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 18390,
+        "matching": [
+          [
+            0,
+            5
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 19196,
+        "matching": [
+          [
+            0,
+            3
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            5,
+            2
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 19406,
+        "matching": [
+          [
+            0,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 20181,
+        "matching": [
+          [
+            0,
+            5
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            2,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 20301,
+        "matching": [
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            2,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 21370,
+        "matching": [
+          [
+            0,
+            2
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 21430,
+        "matching": [
+          [
+            0,
+            5
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "K3_3",
+        "mask": 21878,
+        "parts": [
+          [
+            0,
+            1,
+            4
+          ],
+          [
+            2,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 22325,
+        "matching": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            5,
+            4
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 22355,
+        "matching": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            5,
+            4
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 22774,
+        "matching": [
+          [
+            0,
+            3
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            5,
+            4
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            1,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 22894,
+        "matching": [
+          [
+            0,
+            2
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 23161,
+        "matching": [
+          [
+            0,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            2
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      },
+      {
+        "class": "K3_3",
+        "mask": 23221,
+        "parts": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            1,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 23251,
+        "matching": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            4
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            1,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 23341,
+        "matching": [
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "K3_3",
+        "mask": 23371,
+        "parts": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            1,
+            2,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 23431,
+        "matching": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 23669,
+        "matching": [
+          [
+            0,
+            5
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            2,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 23879,
+        "matching": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            2,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 25338,
+        "matching": [
+          [
+            0,
+            2
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 25518,
+        "matching": [
+          [
+            0,
+            4
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            5
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 25846,
+        "matching": [
+          [
+            0,
+            2
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            5,
+            4
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            1,
+            2,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 25966,
+        "matching": [
+          [
+            0,
+            3
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            1,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 26233,
+        "matching": [
+          [
+            0,
+            1
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 26293,
+        "matching": [
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            5,
+            4
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            1,
+            2,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "K3_3",
+        "mask": 26323,
+        "parts": [
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "K3_3",
+        "mask": 26413,
+        "parts": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            1,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 26443,
+        "matching": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            1,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 26503,
+        "matching": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            5
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "K3_3",
+        "mask": 26862,
+        "parts": [
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 27309,
+        "matching": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            4
+          ],
+          [
+            2,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 27339,
+        "matching": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            4
+          ],
+          [
+            2,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 27757,
+        "matching": [
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            5
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            2,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 27847,
+        "matching": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            3,
+            5
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            2,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 29363,
+        "matching": [
+          [
+            0,
+            5
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 29483,
+        "matching": [
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 29811,
+        "matching": [
+          [
+            0,
+            5
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 29991,
+        "matching": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 30827,
+        "matching": [
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            5
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "class": "TRIANGULAR_PRISM",
+        "mask": 30887,
+        "matching": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            5
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            5
+          ]
+        ]
+      }
+    ],
+    "graph_classes": {
+      "K3_3": 10,
+      "TRIANGULAR_PRISM": 60
+    },
+    "local_totals": {
+      "B": 24,
+      "D1": 24,
+      "U": 3
+    },
+    "planar_graph_candidates_remaining": 60
+  },
+  "record_id": "OM26-H1-Q6-INTERNAL-REPLAY-001",
+  "replay_sha256": "7fc72dc739b29dfb878f1b3d1e0d3ff559d6c12e72b0995576436488d2e3352b",
+  "source_solve_commit": "99757ce4a816a2f845609d74d31fc0f86a7355a2",
+  "source_task": "handoffs/OPENMATH-2026/launch/OM26-H1-WP02.md",
+  "unresolved": [
+    "six-core clean-line charging map validity",
+    "six-core no-long-run local fan validity",
+    "global opposite-ray matching and straight-line realizability",
+    "all other surviving profiles and q>=7"
+  ]
+}

@@ -31,5 +31,14 @@ class H112Q5ProfilesTest(unittest.TestCase):
             self.assertEqual(profile_summary(profile)["state_count"], 0)
 
 
+class H1Q6ReplayClosureTest(unittest.TestCase):
+    def test_full_graph_replay_matches_durable_receipt(self):
+        import json
+        from pathlib import Path
+        from ci.validate_openmath_h1_q6_replay import replay
+        receipt = Path(__file__).resolve().parents[1] / "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_Q6_INTERNAL_REPLAY_RECEIPT.json"
+        self.assertEqual(json.loads(json.dumps(replay())), json.loads(receipt.read_text()))
+
+
 if __name__ == "__main__":
     unittest.main()
