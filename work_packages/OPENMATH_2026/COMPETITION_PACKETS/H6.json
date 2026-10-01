@@ -41,5 +41,18 @@
     "leaderboard_state": null,
     "organizer_acceptance": null
   },
-  "claim_boundary": "Prior-work rank-23 certificate only. No rank-22 claim, rank lower bound, novelty/priority claim, certification, or official competition acceptance."
+  "claim_boundary": "Prior-work rank-23 certificate only. No rank-22 claim, rank lower bound, novelty/priority claim, certification, or official competition acceptance.",
+  "handbook_audit": {
+    "audit_id": "OPENMATH-2026-HANDBOOK-COMPLIANCE-AUDIT-001",
+    "status": "NOT_SUBMISSION_READY",
+    "classification": "PRIOR_MATHEMATICS__M2_REFRAME_POSSIBLE",
+    "blocking": [
+      "clean surviving core artifact",
+      "M2 source theorem/formalization target",
+      "prior formal-library search",
+      "genuinely new formal contribution",
+      "Section 8 packet",
+      "official submission route/report"
+    ]
+  }
 }
