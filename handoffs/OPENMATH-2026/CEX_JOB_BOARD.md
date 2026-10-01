@@ -35,7 +35,8 @@ This page is a human projection of the protected machine registry.
 | `OM26-H7-WP01` | `OM26-H7` | `ACCEPTED` | `OM26-H7-WP01-IA-001` | `INDEPENDENT-AGENT-007` | #510 |
 | `OM26-H7-WP02` | `OM26-H7` | `ACCEPTED` | `OM26-H7-WP02-IA-001` | `INDEPENDENT-AGENT-702` | #551 |
 | `OM26-H7-WP03` | `OM26-H7` | `SUPERSEDED` | `OM26-H7-WP03-IA-001` | `INDEPENDENT-AGENT-703` | #557 |
-| `OM26-H7-WP04` | `OM26-H7` | `LEASED_NOT_LAUNCHED` | `OM26-H7-WP04-IA-001` | `INDEPENDENT-AGENT-704` | #600 |
+| `OM26-H7-WP04` | `OM26-H7` | `ACCEPTED` | `OM26-H7-WP04-IA-001` | `INDEPENDENT-AGENT-704` | #600 |
+| `OM26-H7-WP05` | `OM26-H7` | `LEASED_NOT_LAUNCHED` | `OM26-H7-WP05-IA-001` | `INDEPENDENT-AGENT-705` | #610 |
 
 The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUDICATED -> ADVANCED`. Intake alone creates no mathematical claim effect.
 
@@ -47,7 +48,7 @@ The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUD
 - H4: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H4-WP03.md
 - H5: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H5-WP03.md
 - H6: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H6-WP04.md
-- H7: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H7-WP04.md
+- H7: https://github.com/grandchallenge/MATHSOLVE/blob/340c4c18938077f6c2ecdb21ce5a47922a0b08c5/handoffs/OPENMATH-2026/launch/OM26-H7-WP05.md
 - H1-Q6 (support): https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H1-WP30.md
 - H1-ADVERSARY (support): https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H1-WP60.md
 
