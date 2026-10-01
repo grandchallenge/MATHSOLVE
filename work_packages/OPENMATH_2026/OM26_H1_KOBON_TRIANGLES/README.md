@@ -46,3 +46,5 @@ The internal priority is [six-core replay closure](H1_Q6_INTERNAL_REPLAY.md). It
 The parallel [independent Cert lane](https://github.com/grandchallenge/MATHCERT/issues/345) checks the concrete 93-triangle reconstruction only. It does not discharge the upper-bound route's source-conditional premises.
 
 The [six-core premise proof candidate](H1_SIX_CORE_PREMISE_PROOF.md) supplies actual face-to-fan extraction and the refined clean-line charge argument without a bound on the number of cores. Eight exact six-core fixtures support the interface. Independent geometric review remains pending; the next conditional internal target is saturated charge and global line consistency in the sixty prism candidates.
+
+The [saturated prism obstruction](H1_SATURATED_PRISM_OBSTRUCTION.md) conditionally eliminates all sixty prism candidates in `333444`: saturation isolates D2 rays, while an elementary D2 triangle requires consecutive bounding rays. Four q=6 profiles remain. The next internal target is `333335` at D2=7, using the triangle obstruction and compatible cyclic ray orders. Independent geometric review remains pending.
