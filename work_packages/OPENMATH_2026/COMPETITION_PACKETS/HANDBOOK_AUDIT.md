@@ -1,9 +1,9 @@
-# OPENMATH-2026 handbook compliance audit — five fixed packets
+# OPENMATH-2026 handbook compliance audit — seven hills
 
 **Audit date:** 2026-10-01  
 **Protected MATHSOLVE source bind:** `50b88f51032a14aeae5c3969e14dd8c5a8728bac`  
 **Handbook:** https://rsihouse.ai/openmath/handbook.pdf  
-**Packets audited:** H1, H2, H4, H5, H6
+**Hills audited:** H1, H2, H3, H4, H5, H6, H7
 
 ## Controlling handbook gates
 
@@ -25,13 +25,15 @@ Status vocabulary: **PASS** = evidence sufficient at the audited source bind; **
 |---|---|---|---|
 | H1 | Exact rational reconstruction of published Bader 93-line-order result; independent exact scorer and public evaluator concordance at 93 | Prior mathematics. No M1/M3A open-problem credit as currently framed. M2 is possible only for a genuinely new formalization/reconstruction contribution. | **NOT SUBMISSION READY; M2 REFRAME POSSIBLE** |
 | H2 | W89911 exact finite six-state witness independently replayed at 89,911 steps / 185 ones / span 541 | Potential finite computational partial only if novelty/open-status review establishes a new eligible contribution. Current records do not establish that. | **NOT SUBMISSION READY; NOVELTY/STATUS GATE OPEN** |
+| H3 | Exact weighted-K4 density oracles, structural identities, search representation, and a counterexample repairing an internal parameter-count claim | No canonical-target advance is currently established; no reference-beating certificate is retained. | **NO SCORE-BEARING TARGET ADVANCE; RESEARCH INFRASTRUCTURE ONLY** |
 | H4 | Event-window 23-rule exact Collatz modular-descent catalog with self-contained derivation/verifier | Potential original formalized partial if independently replayed and shown novel relative to the frozen baseline. | **NOT SUBMISSION READY; STRONGEST M1-PARTIAL SALVAGE CANDIDATE** |
 | H5 | Retained rational CHSH approximation, ratio 275807/195025; no universal Grothendieck bound claimed | No current open-problem advance established. M2 is not established because the packet does not identify a new reusable formalization family. | **NOT SUBMISSION READY; HOLD UNLESS FORMALIZATION CASE IS ESTABLISHED** |
 | H6 | Exact replay of Laderman rank-23 decomposition; core 729 Brent identities pass; later replay found defects in ancillary narrative/experiment | Explicit prior mathematics. No M1/M3A credit as currently framed. M2 is possible for a genuinely new exact reusable formalization after trimming unsupported ancillary claims. | **NOT SUBMISSION READY; M2 REFRAME POSSIBLE** |
+| H7 | Formal decomposition of Erdős Problem 3; direct bridge lemma `ap_subprogression_of_le` isolated but not proved or pinned-compiled | No score-bearing subclaim yet. A direct formalized partial may become eligible if the lemma is proved, checked in the exact pinned environment, and passes novelty/status review before cutoff. | **NOT SUBMISSION READY; DIRECT FORMAL-PARTIAL SALVAGE POSSIBLE** |
 
 ## Common Section 8 failures
 
-All five packets currently fail the minimum-packet gate in at least these common fields:
+All seven hill lanes currently fail the minimum-packet gate in at least these common fields:
 
 - competition submission/version identifier;
 - explicit problem/family ID in the competition namespace;
@@ -101,6 +103,32 @@ Do **not** submit H1 as "93 triangles discovered/solved." If pursued, the only d
 ### Correct competition claim
 
 The only admissible H2 claim at this bind is the finite W89911 witness. The rejected exact-search claim must stay excluded. Do not claim open-problem progress until a freeze-date novelty/status review establishes that this witness advances an eligible registered target.
+
+## H3 — Clique-cluster Ramsey multiplicity
+
+### Evidence present
+
+- WP01 built independent exact integer/rational density oracles for the weighted two-color blow-up (K_4) density and established extensive internal concordance and structural identities.
+- The frozen reference comparison was implemented exactly, but no retained candidate beats the reference bound.
+- WP02 found an exact counterexample to the predecessor's unrestricted finite-group parameter-count formula: for (H = \mathbb{Z}_2 \times \mathbb{Z}_2), the stated representation needs five independent parameters, not four. It supplies the corrected inversion-orbit count.
+- Both protected adjudications are `ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION`; accepted mathematical claims remain empty.
+
+### Handbook audit
+
+| Gate | Status | Reason |
+|---|---|---|
+| Identifiable event-window work | PASS | The density-oracle work and parameter-count counterexample were produced during the competition window. |
+| Canonical-target mathematical advance | FAIL | No reference-beating certificate, new Ramsey multiplicity bound, or other accepted advance on the registered target is established. |
+| Auxiliary counterexample | PARTIAL / NARROW | The parameter-count counterexample repairs our own search representation. Under §5, refuting an auxiliary assertion earns only the narrower contribution; it does not refute the registered target. |
+| Independent trusted replay/check | FAIL | Current automated adjudications preserve evidence without claim promotion; full protected evaluator concordance is not replayably established from the returned packet. |
+| Novelty/open-status relative to freeze | FAIL / UNESTABLISHED | No literature/status review establishes an eligible new mathematical contribution. |
+| Potential M3B route | UNESTABLISHED | A separately admitted nontrivial parent-linked variation would need its own canonical record and admission before scoring; none exists. |
+| §8 identity/provenance/publication packet | FAIL | Common fields absent. |
+| §7.2 submission identity/report | FAIL | No submission ID or official final evaluator report. |
+
+### Correct competition claim
+
+Do not submit H3 merely because the evaluator/search infrastructure is strong. At this bind there is no score-bearing advance on the canonical target. Continue H3 only if it can produce a reference-beating certificate, another directly relevant formalized advance, or a separately admitted nontrivial variation before cutoff.
 
 ## H4 — Collatz modular descent
 
@@ -177,6 +205,34 @@ Do not currently present H5 as an open-problem advance. It should remain on hold
 
 Do not submit H6 as a new rank-23 result. If pursued, reframe it as an M2 candidate for the **new exact reusable formalization/replay of Laderman's known decomposition**, remove the false ancillary statement and incomplete rational experiment, document prior formal-library search, and supply the complete §8 packet.
 
+## H7 — Erdős Problem 3
+
+### Evidence present
+
+- The protected canonical statement is already formalized in Lean and evaluated under a pinned Lean 4.33.1 image with a strict proof-term and axiom allowlist.
+- WP01 decomposed the target and isolated the direct bridge lemma:
+  `ap_subprogression_of_le`: an arithmetic progression of length (k) inside (A) contains one of every requested shorter length (m \le k).
+- WP01 did **not** execute the pinned environment, and therefore did not establish parse/elaboration/proof acceptance.
+- WP02 independently confirmed the execution blocker: no Lean or container runtime was available, and no proof of H7-D3 was supplied or executed.
+- Both protected adjudications are `ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION`; there is presently no accepted score-bearing theorem.
+
+### Handbook audit
+
+| Gate | Status | Reason |
+|---|---|---|
+| Identifiable event-window work | PASS for decomposition | The formal decomposition and selected subtarget are timestamped during the event window. |
+| Exact canonical target correspondence | PASS/PARTIAL | H7-D3 directly feeds the exact-length reformulation of the protected Erdős-3 target; the semantic bridge is explicit, but the lemma is still unproved. |
+| Formal artifact | FAIL | The displayed Lean theorem is a skeleton with a proof hole. The handbook forbids proof holes in score-bearing artifacts. |
+| Pinned formal check | FAIL | No execution under the exact pinned Lean 4.33.1 image; no axiom receipt. |
+| Novelty/open-status of subclaim | FAIL / UNESTABLISHED | The competition packet does not yet establish whether H7-D3/H7-D4 are new formal contributions rather than already available library facts. |
+| Potential original-partial credit | PARTIAL | If H7-D3 is proved, pinned-compiled, and judged novel/useful relative to the canonical target, it is structurally the kind of narrow reusable fact or reduction the handbook permits as formalized partial credit. |
+| §8 identity/provenance/publication packet | FAIL | Common fields absent. |
+| §7.2 submission identity/report | FAIL | No submission ID, Climb/final report, or official formal-evaluator result. |
+
+### Correct competition claim
+
+H7 currently has **no submit-able proof**. However, unlike H3, it has a small direct formal target already isolated. Before cutoff, the viable route is to prove H7-D3 with no `sorry`, compile it in the exact pinned image, retain the axiom receipt, and if feasible compile H7-D4 on top. Only then should novelty/status and packet completion be attempted.
+
 ## Pre-cutoff action order
 
 The handbook makes the following distinction critical: metadata can sometimes be cured, but new mathematics, repaired proofs, and late formalization cannot be added after cutoff.
@@ -184,21 +240,25 @@ The handbook makes the following distinction critical: metadata can sometimes be
 Therefore the mathematical work that must close **before** cutoff is:
 
 1. **H4:** trusted independent replay; target correspondence; novelty/status review; formal modality/family classification.
-2. **H1 and H6:** decide whether to pursue M2; if yes, complete the actual new formalization claim, prior-library search, exact source theorem attribution, and self-contained formal/replay artifact.
-3. **H2:** perform freeze-date novelty/status review of the exact W89911 mathematical statement before spending effort on submission packaging.
-4. **H5:** require a demonstrated eligible mathematical/formalization delta before further submission work; otherwise hold.
+2. **H7:** prove and pinned-compile H7-D3; then compile H7-D4 if feasible; perform novelty/status review of the surviving formal subclaim.
+3. **H1 and H6:** decide whether to pursue M2; if yes, complete the actual new formalization claim, prior-library search, exact source theorem attribution, and self-contained formal/replay artifact.
+4. **H2:** perform freeze-date novelty/status review of the exact W89911 mathematical statement before spending effort on submission packaging.
+5. **H3:** continue only if a canonical-target advance or separately admitted nontrivial variation emerges.
+6. **H5:** require a demonstrated eligible mathematical/formalization delta before further submission work; otherwise hold.
 
 In parallel, prepare once for all surviving packets: roster/class, affiliation/resource classification, author/contribution statement, tool/compute disclosures, outside-help/conflict statement, explicit baseline/event delta, and publication authority.
 
 ## Audit conclusion
 
-**Zero of the five fixed packets presently satisfy the handbook's complete score-bearing submission requirements.**
+**Zero of the seven hill lanes presently satisfy the handbook's complete score-bearing submission requirements.**
 
 This does not mean zero useful work exists. It means the earlier label “five immutable packets ready to submit” was too coarse. The correct state is:
 
 - **H4:** plausible original-partial candidate, mathematically incomplete for submission until replay + novelty/status close.
+- **H7:** no proof yet, but a direct bounded formal subtarget exists and is worth a rapid pinned-proof attempt.
 - **H1/H6:** prior-math artifacts that require explicit M2 reclassification and completion as new formalizations.
 - **H2:** exact finite witness with replay, but score eligibility is unresolved until novelty/status is established.
+- **H3:** strong exact search/evaluator infrastructure but no current canonical-target advance.
 - **H5:** valid bounded artifact, but no eligible competition contribution has yet been established.
 
 The organizer submission-route defect remains real, but it is no longer the only blocker. The handbook's mathematical and packet-completeness gates must be satisfied independently.
