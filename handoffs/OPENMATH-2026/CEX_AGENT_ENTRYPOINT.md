@@ -46,7 +46,7 @@ Read the complete bounded task at this immutable public URL:
 
 Execute only that task and follow its return contract exactly.
 
-You do not need GitHub authentication and you are not authorized to mutate the repository.
+Your environment must have ordinary authenticated GitHub issue-comment capability. No GCL-specific permission is required. Post the complete return envelope to INTENDED_RETURN. You are not authorized to mutate repository contents.
 ```
 
 Nothing else from the work package needs to be copied into the launch conversation.
@@ -59,7 +59,7 @@ The worker SHALL NOT:
 - browse the repository for another assignment;
 - infer a lease from issue state or prose;
 - substitute a different task;
-- require authenticated GitHub access.
+- require authentication merely to read the public task; authenticated posting capability is required for the return.
 
 If the worker cannot read the immutable public task URL, that is a transport condition, not a mathematical blocker. The launcher SHALL fetch that exact pinned artifact and hydrate the agent automatically. The human operator SHALL NOT be required to locate, copy, or reconstruct the task.
 
@@ -82,7 +82,7 @@ Do not truncate or summarize the inner result.
 
 Authenticated GCL infrastructure, not the external agent, owns durable GitHub intake.
 
-## Optional direct GitHub return
+## Authenticated GitHub return
 
 Ordinary authenticated public-issue comment capability in the participant environment is required for this iteration. Direct posting is the normal route; an authorized connector can post on behalf of the worker. GCL repository write privileges are not required.
 
