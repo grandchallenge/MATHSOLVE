@@ -190,7 +190,7 @@
     "durable_intake_owner": "AUTHENTICATED_GCL_INFRASTRUCTURE",
     "durable_intake_surface": "protected assignment return_url",
     "direct_agent_github_return": "OPTIONAL_IF_EXPLICITLY_AVAILABLE",
-    "missing_github_capability_effect": "NO_BLOCK",
+    "missing_github_capability_effect": "RETURN_TRANSPORT_UNAVAILABLE_BEFORE_SUBSTANTIVE_WORK",
     "transport_contract": "handoffs/OPENMATH-2026/CEX_TRANSPORT_CONTRACT.md",
     "self_contained_task_artifact_required": true,
     "manual_envelope_transfer_required": false,
@@ -221,7 +221,8 @@
       "default_submission": "COMPLETE_RELAY_ENVELOPE_COMMENT_ON_EXACT_INTENDED_RETURN",
       "new_hosted_relay_required": false,
       "third_party_submission_service_required": false
-    }
+    },
+    "agent_github_auth_scope": "Worker need not hold a credential itself; current_iteration.participant_environment_github_auth_required governs return posting."
   },
   "assignments": [
     {
@@ -1888,7 +1889,7 @@
     "entrypoint_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md",
     "launcher_verification_required": true,
     "agent_repository_discovery_required": false,
-    "default_return": "GCL-RETURN-RELAY/1 to launcher",
+    "default_return": "GCL-RETURN-RELAY/1 comment on exact INTENDED_RETURN",
     "durable_intake_owner": "AUTHENTICATED_GCL_INFRASTRUCTURE",
     "current_scripts": {
       "OM26-H1": {
@@ -1981,7 +1982,7 @@
     "public_task_url_is_primary": true,
     "fallback_hydration_owner": "AUTHENTICATED_GCL_LAUNCHER",
     "fallback_rule": "If the agent cannot read the immutable public TASK_URL, the launcher fetches that exact pinned artifact and supplies its exact contents. The human operator SHALL NOT be required to locate, copy, or reconstruct the task.",
-    "canonical_agent_prompt": "You are a zero-context independent agent. Read the complete bounded task at TASK_URL, execute only that task, and follow its return contract exactly. You do not need GitHub authentication and you are not authorized to mutate the repository.",
+    "canonical_agent_prompt": "You are a zero-context independent agent. Read the complete bounded task at TASK_URL, execute only that task, and follow its return contract exactly. Your environment must have ordinary authenticated GitHub issue-comment capability. No GCL-specific permission is required. Post the complete return envelope to INTENDED_RETURN. You are not authorized to mutate repository contents.",
     "missing_or_ambiguous_task_behavior": "INVALID_LAUNCH and stop before substantive work"
   },
   "scope": "OPENMATH_CAMPAIGN_WIDE_CEX_ASSIGNMENTS",
