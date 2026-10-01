@@ -15,6 +15,6 @@
   "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/559",
   "github_issue_title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H4-WP02-IA-001 \u2014 automatic replay closure",
   "canonical_mutation_authorized": false,
-  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "dispatch_status": "RETIRED_SUPERSEDED",
   "operation_contract": ".gcl/operations/OM26-H4-WP02-IA-001/OPERATION.json"
 }

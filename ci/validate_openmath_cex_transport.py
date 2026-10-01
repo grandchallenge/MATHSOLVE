@@ -147,8 +147,7 @@ def validate() -> list[str]:
     if h1.get('executable') is not True and h1.get('reason') != 'NO_ACTIVE_SUCCESSOR_LEASE':
         errors.append('H1 launch guard does not reflect no active successor lease')
 
-    for hill in expected_hills:
-        row = scripts.get(hill, {})
+    for hill, row in {**scripts, **launch.get("support_scripts", {})}.items():
         rel = row.get('path', '')
         path = ROOT / rel
         if not path.is_file():

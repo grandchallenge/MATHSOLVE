@@ -15,6 +15,11 @@ on:
       - "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md"
       - "ci/validate_openmath_cex_job_board.py"
       - "ci/test_openmath_cex_job_board.py"
+      - "ci/openmath_event_window_activation.py"
+      - "ci/validate_openmath_event_window_activation.py"
+      - "ci/openmath_lifecycle_candidate.py"
+      - "tests/test_openmath_event_window_activation.py"
+      - "handoffs/OPENMATH-2026/event-window/**"
       - ".github/workflows/openmath-cex-job-board.yml"
       - ".gcl/operations/OM26-H1-H1-12-IA-001/**"
       - "contributions/OPENMATH-2026/**/dispatches/**"
@@ -59,3 +64,8 @@ jobs:
 
       - name: Run intake parser regression tests
         run: python -m unittest tests.test_openmath_cex_github_contribution_intake
+
+      - name: Validate event-window registration and return advancement
+        run: |
+          python ci/validate_openmath_event_window_activation.py
+          python -m unittest tests.test_openmath_event_window_activation -v
