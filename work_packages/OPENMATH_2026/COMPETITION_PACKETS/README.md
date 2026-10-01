@@ -1,6 +1,6 @@
 # OPENMATH-2026 competition packets
 
-Prepared from protected `grandchallenge/MATHSOLVE@50b88f51032a14aeae5c3969e14dd8c5a8728bac`.
+Prepared against baseline `grandchallenge/MATHSOLVE@50b88f51032a14aeae5c3969e14dd8c5a8728bac`; H4/H7 formal closure is protected on `main@187ce0debe76cb960724a6078b16660a11531941`.
 
 Purpose: preserve five existing fixed candidate artifacts and their exact native AutoLab identities while handbook compliance is audited. These are transfer packets, not five submission-ready competition claims. Only packets whose mathematical/formalization and Section 8 gates are closed may be transmitted through the organizer-published competition route.
 
@@ -26,6 +26,6 @@ External acquisition boundary: obtain the organizer-published competition submis
 | H5 | alejandrozu/grothendieck-constant-witnesses | 72703ab868d55a460f8adbfdd137afbbdd044a0aea5f2267516c4805b541901e | c6628b21-cda2-4114-84e6-1d747b4893f8 | db1f326c-a4c0-4ab1-b601-7fa50e8e0c36 |
 | H6 | alejandrozu/matrix-multiplication-tensor-3x3 | 164aec58e19c2bdd45cddc54c52ab66f5f91f5d0562e875709b1c6eb820ac79f | 151bb7d4-656c-46fe-a82f-373a281d0d47 | 7b8b10f5-6aab-46a3-9b27-0638cd147e56 |
 
-Each packet contains the exact payload path, blob identity where available, native Climb/project identity, native job identity, hill version lock, bounded mathematical claim, provenance/attribution, and the fields that must be filled by the competition route. Their handbook dispositions differ: H4 is a potential original-partial candidate pending replay and novelty/status; H1/H6 are prior-mathematics artifacts requiring an M2 formalization case; H2 requires novelty/status review; H5 lacks an established eligible contribution. See `HANDBOOK_AUDIT.md` and `HANDBOOK_AUDIT.json`.
+Each packet contains the exact payload path, blob identity where available, native Climb/project identity, native job identity, hill version lock, bounded mathematical claim, provenance/attribution, and the fields that must be filled by the competition route. Their handbook dispositions differ. H4 now has trusted replay and target correspondence closed; H1 has a distinct event-window source-conditional partial separate from Bader93 prior work; H2 is a valid finite artifact but not a known BB(6) state-of-art advance; H5 has no established eligible delta; H6 equals the Hill's Laderman prior-work baseline. See `HANDBOOK_AUDIT.md` and `HANDBOOK_AUDIT.json`.
 
-H3 is intentionally absent: no improved retained candidate is ready. H7 is intentionally absent: no compiled complete proof is ready.
+H3 has no retained canonical-target advance. H7 has no native fixed Climb in the original five-registration set, but now has two complete organizer-pinned Lean proofs and its own Section 8 technical packet.
