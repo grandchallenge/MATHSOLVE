@@ -196,7 +196,19 @@
     "manual_envelope_transfer_required": false,
     "primary_launch_mode": "LINK_IN_RELAY_OUT",
     "task_read_auth_required": false,
-    "task_fetch_fallback": "LAUNCHER_HYDRATES_EXACT_IMMUTABLE_TASK_ARTIFACT"
+    "task_fetch_fallback": "LAUNCHER_HYDRATES_EXACT_IMMUTABLE_TASK_ARTIFACT",
+    "unsolicited_return": {
+      "destination": "EXACT_PROTECTED_ASSIGNMENT_RETURN_URL",
+      "accepted_comment_protocols": [
+        "GCL-CONTRIBUTION-RESULT/1",
+        "GCL-RETURN-RELAY/1"
+      ],
+      "authentication_owner": "DIRECT_PARTICIPANT_OR_AUTHORIZED_RELAY",
+      "pre_execution_transport_check_required": true,
+      "unconnected_private_chat_is_intake": false,
+      "no_transport_effect": "RETURN_TRANSPORT_UNAVAILABLE; do not begin substantive work",
+      "instructions": "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md"
+    }
   },
   "assignments": [
     {
