@@ -40,5 +40,17 @@
     "leaderboard_state": null,
     "organizer_acceptance": null
   },
-  "claim_boundary": "Finite rational witness only. No claim to determine or improve the exact Grothendieck constant universally, no novelty claim, certification, or official competition acceptance."
+  "claim_boundary": "Finite rational witness only. No claim to determine or improve the exact Grothendieck constant universally, no novelty claim, certification, or official competition acceptance.",
+  "handbook_audit": {
+    "audit_id": "OPENMATH-2026-HANDBOOK-COMPLIANCE-AUDIT-001",
+    "status": "NOT_SUBMISSION_READY",
+    "classification": "ELIGIBLE_CONTRIBUTION_NOT_ESTABLISHED",
+    "blocking": [
+      "retained-candidate derivation/provenance",
+      "trusted replay",
+      "eligible novelty or M2 formalization delta",
+      "Section 8 packet",
+      "official submission route/report"
+    ]
+  }
 }
