@@ -44,7 +44,7 @@ lemma reciprocal_divergent_zmod_fiber
   apply hA
   have hAind : Summable (A.indicator recip) := by
     rw [Finset.sum_indicator_mod m (A.indicator recip)]
-    simpa only [Finset.sum_apply] using
+    simpa only [Finset.sum_apply, Fintype.sum_apply] using
       (summable_sum
         (s := Finset.univ)
         (f := fun r n =>
