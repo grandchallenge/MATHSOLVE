@@ -77,11 +77,13 @@ of the sixty predecessor prism masks. The checker
 by SHA-256 and validates the certificates through the existing routed tests.
 The predecessor receipt is preserved unchanged.
 
-The four remaining q=6 profiles are `333333`, `333334`, `333335`, `333344`.
-The next internal target is `333335`: test its sixty D2=7 candidate graphs
-against the elementary triangle lemma and compatible cyclic ray orders,
-then retain surviving incidence certificates or a conditional obstruction.
-This result neither closes q=6 nor addresses q>=7. It does not consume
-WP02's independent-agent lease, promote a certified claim, or change the
-accepted historical frontier. Independent review of the premise proof and
-this triangle argument remains a separate obligation.
+At the time of this obstruction the four remaining q=6 profiles were
+`333333`, `333334`, `333335`, and `333344`. The follow-on
+[333335 obstruction](H1_333335_OBSTRUCTION.md) now conditionally eliminates
+`333335`, leaving `333333`, `333334`, and `333344`. The current next
+internal target is `333344`.
+
+This result itself neither closes q=6 nor addresses q>=7. It does not consume
+an external independent-agent lease, promote a certified claim, or change the
+accepted historical frontier. Trusted mathematical replay or certification of
+the source-scoped premise chain remains separate.

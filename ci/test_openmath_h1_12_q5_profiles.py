@@ -58,5 +58,14 @@ class H1PrismObstructionTest(unittest.TestCase):
         self.assertEqual(replay(), json.loads(receipt.read_text()))
 
 
+class H1333335ObstructionTest(unittest.TestCase):
+    def test_exact_333335_reduction_and_incidence_antecedents(self):
+        import json
+        from pathlib import Path
+        from ci.validate_openmath_h1_333335 import replay
+        receipt = Path(__file__).resolve().parents[1] / "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_333335_OBSTRUCTION_RECEIPT.json"
+        self.assertEqual(json.loads(json.dumps(replay())), json.loads(receipt.read_text()))
+
+
 if __name__ == "__main__":
     unittest.main()
