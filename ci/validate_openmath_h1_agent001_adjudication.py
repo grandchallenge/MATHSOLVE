@@ -99,22 +99,16 @@ def validate():
 
     lanes = load(LANES)
     h1 = next(x for x in lanes["hills"] if x["hill_slot"] == "OM26-H1")
-    if h1["external_agent"]["lifecycle_state"] != "ACCEPTED":
-        raise AssertionError("H1 lane agent lifecycle mismatch")
+    # This validator protects the historical Agent 001 q=5 adjudication,
+    # not the mutable successor-lease pointers. The accepted assignment is
+    # already bound above in CEX_ASSIGNMENTS; later H1/H2/... successors may
+    # legitimately advance without changing the q=5 claim.
     if "Q_LE_5_EXCLUDED_SOURCE_CONDITIONAL" not in h1["obligations"]["representation_or_reduction"]:
         raise AssertionError("H1 lane frontier projection mismatch")
+    if "Q_GE_6_SOURCE_CONDITIONAL" not in h1["obligations"]["restricted_theorem"]:
+        raise AssertionError("H1 lane restricted-theorem projection mismatch")
     if h1["competition_state"]["official_submission"] != "NOT_SUBMITTED":
         raise AssertionError("H1 competition boundary changed")
-
-    h2 = next(x for x in lanes["hills"] if x["hill_slot"] == "OM26-H2")
-    if h2["active_lease"]["assignment_id"] != "OM26-H2-WP03" or h2["active_lease"]["lifecycle_state"] != "LEASED_NOT_LAUNCHED":
-        raise AssertionError("OM26-H2 active WP03 lifecycle drift")
-    if h2.get("predecessor_lease", {}).get("assignment_id") != "OM26-H2-WP02" or h2.get("predecessor_lease", {}).get("lifecycle_state") != "ACCEPTED":
-        raise AssertionError("OM26-H2 predecessor WP02 lifecycle drift")
-    for i in range(3, 8):
-        hill = next(x for x in lanes["hills"] if x["hill_slot"] == f"OM26-H{i}")
-        if hill["active_lease"]["lifecycle_state"] != "LEASED_NOT_LAUNCHED":
-            raise AssertionError(f"OM26-H{i} lifecycle drift")
 
     print("PASS: Agent 001 q=5 reduction adjudicated as source-conditional; frontier is q>=6")
 

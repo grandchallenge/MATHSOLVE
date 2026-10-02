@@ -13,14 +13,14 @@
   },
   "remaining_gap": {
     "simple_bound_value": 94,
-    "issue": "Conditional on the named source-scoped premises, all q<=5 score-95 configurations are excluded. All q>=6 cases remain open.",
-    "target": "Attack the q=6 stratum while keeping the predecessor source-scoped local fan and clean-line charging obligations explicit."
+    "issue": "Conditional on the named source-scoped premises, all q<=5 score-95 configurations and q=6 profiles 333444 and 333335 are excluded. Profiles 333333, 333334, 333344 and all q>=7 cases remain open.",
+    "target": "Attack q=6 profile 333344 next, seeking a separator/incidence lemma reusable against 333334 or 333333, while keeping the source-scoped fan and clean-line charging obligations explicit."
   },
   "current_source_interval": {
     "lower": 93,
     "upper": 95
   },
-  "claim_boundary": "H1-12 is narrowed to q>=6 only, conditional on the named source-scoped premises. No hill-global <=94, optimality, or MATHCERT claim.",
+  "claim_boundary": "H1-12 is narrowed to three q=6 profiles (333333, 333334, 333344) plus q>=7, conditional on the named source-scoped premises. No hill-global <=94, optimality, or MATHCERT claim.",
   "source_conditional_reduction": {
     "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
@@ -226,5 +226,30 @@
     "mathematical_effect": true,
     "certification_effect": false,
     "frontier_effect": "Q_GE_6__SOURCE_CONDITIONAL"
+  },
+  "q6_premise_scope_disposition": {
+    "statement": "The six-core fan and clean-line parity statements remain scoped to pairwise-nonparallel arrangements; projective normalization removes parallel pairs while preserving any selected counted bounded triangular faces before those statements are applied.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_PREMISE_SCOPE_DISPOSITION.md",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q6_333444_closure": {
+    "statement": "Conditional on the six-core fan/charging premises, profile 333444 is unrealizable: ten K3,3 core graphs are nonplanar and all sixty triangular-prism candidates violate the saturated local-ray plus elementary-triangle obstruction.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_SATURATED_PRISM_OBSTRUCTION.md",
+    "finite_replay": "ci/validate_openmath_h1_prism_obstruction.py",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q6_333335_closure": {
+    "statement": "Conditional on the six-core fan/charging premises, profile 333335 is unrealizable. Exact replay reduces 1,375 relaxed graph candidates to thirty K3,3-e labelings at D2=8; unique local charge equality forces saturated triple alternation, which creates an additional non-D2 core-pair line and makes the core-incidence bound strict.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_333335_OBSTRUCTION.md",
+    "finite_replay": "ci/validate_openmath_h1_333335.py",
+    "residual_after_replay": [
+      "333333",
+      "333334",
+      "333344"
+    ],
+    "mathematical_effect": true,
+    "certification_effect": false
   }
 }
