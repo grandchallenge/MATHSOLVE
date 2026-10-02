@@ -38,3 +38,13 @@ The H6-WP05 control succeeded because its worker nevertheless used the authentic
 ## Governance boundary
 
 This incident record does not reconstruct lost mathematical evidence, accept any missing result, or create claim effect. H1-WP31, H3-WP05, and H5-WP04 remain unresolved at the evidence boundary until fresh independently attributable evidence is produced under a valid transport contract.
+
+## Protected replacement leases
+
+The three executed-but-undelivered leases are retired as transport-loss supersessions with no mathematical claim effect:
+
+- `OM26-H3-WP05` / issue #613 → replacement `OM26-H3-WP06` / issue #645.
+- `OM26-H5-WP04` / issue #616 → replacement `OM26-H5-WP05` / issue #646.
+- `OM26-H1-WP31` / issue #608 → replacement `OM26-H1-WP32` / issue #647.
+
+The old issue bodies and immutable task identities are preserved. Their issues are closed to prevent accidental relaunch. The replacement packets replay the last protected predecessor evidence only; they do not reconstruct or inherit any mathematical output from the lost sessions.
