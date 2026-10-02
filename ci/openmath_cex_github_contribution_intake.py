@@ -134,11 +134,31 @@ def parse_result_comment(body: str) -> dict[str, Any]:
             raise IntakeError(f"{heading} is empty")
         sections[heading[3:]] = content
 
-    next_residual = sections["Next residual"]
-    if len(re.findall(r"[.!?](?:\s|$)", next_residual)) > 3:
-        raise IntakeError("Next residual exceeds three sentences")
-
     return {"preamble": preamble, "sections": sections}
+
+
+def validate_task_result_constraints(
+    root: Path,
+    dispatch: dict[str, Any],
+    parsed: dict[str, Any],
+) -> None:
+    bootstrap_path = dispatch.get("bootstrap_path")
+    if not isinstance(bootstrap_path, str) or not bootstrap_path:
+        raise IntakeError("dispatch record lacks bootstrap_path")
+    path = root / bootstrap_path
+    if not path.is_file():
+        raise IntakeError("protected bootstrap file is missing")
+    bootstrap = path.read_text(encoding="utf-8")
+    lower = bootstrap.lower()
+    requires_three_sentence_limit = (
+        "three sentences" in lower
+        and ("next residual" in lower or "remaining frontier" in lower)
+    )
+    if requires_three_sentence_limit:
+        next_residual = parsed["sections"]["Next residual"]
+        if len(re.findall(r"[.!?](?:\s|$)", next_residual)) > 3:
+            raise IntakeError("Next residual exceeds three sentences")
+
 
 
 def load_dispatch(root: Path, dispatch_id: str) -> tuple[dict[str, Any], Path]:
@@ -238,6 +258,7 @@ def validate_event(
     dispatch, dispatch_path = load_dispatch(root, dispatch_id)
     operation = load_operation(root, dispatch)
     validate_dispatch_issue(root, issue, dispatch, operation)
+    validate_task_result_constraints(root, dispatch, parsed)
 
     if relay is not None and relay["intended_return"] != dispatch.get("github_issue_url"):
         raise IntakeError("relay intended return differs from protected dispatch issue")
