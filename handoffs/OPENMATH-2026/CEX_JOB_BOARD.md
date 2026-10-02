@@ -38,7 +38,8 @@ This page is a human projection of the protected machine registry.
 | `OM26-H6-WP02` | `OM26-H6` | `ACCEPTED` | `OM26-H6-WP02-IA-001` | `INDEPENDENT-AGENT-602` | #548 |
 | `OM26-H6-WP03` | `OM26-H6` | `SUPERSEDED` | `OM26-H6-WP03-IA-001` | `INDEPENDENT-AGENT-603` | #556 |
 | `OM26-H6-WP04` | `OM26-H6` | `ACCEPTED` | `OM26-H6-WP04-IA-001` | `INDEPENDENT-AGENT-604` | #603 |
-| `OM26-H6-WP05` | `OM26-H6` | `LEASED_NOT_LAUNCHED` | `OM26-H6-WP05-IA-001` | `INDEPENDENT-AGENT-605` | #618 |
+| `OM26-H6-WP05` | `OM26-H6` | `ACCEPTED` | `OM26-H6-WP05-IA-001` | `INDEPENDENT-AGENT-605` | #618 |
+| `OM26-H6-WP06` | `OM26-H6` | `LEASED_NOT_LAUNCHED` | `OM26-H6-WP06-IA-001` | `INDEPENDENT-AGENT-606` | #633 |
 | `OM26-H7-WP01` | `OM26-H7` | `ACCEPTED` | `OM26-H7-WP01-IA-001` | `INDEPENDENT-AGENT-007` | #510 |
 | `OM26-H7-WP02` | `OM26-H7` | `ACCEPTED` | `OM26-H7-WP02-IA-001` | `INDEPENDENT-AGENT-702` | #551 |
 | `OM26-H7-WP03` | `OM26-H7` | `SUPERSEDED` | `OM26-H7-WP03-IA-001` | `INDEPENDENT-AGENT-703` | #557 |
@@ -54,7 +55,7 @@ The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUD
 - H3: https://github.com/grandchallenge/MATHSOLVE/blob/c88671e9f8c86d1dbc67d147d9e4ca570b5fbc6e/handoffs/OPENMATH-2026/launch/OM26-H3-WP05.md
 - H4: https://github.com/grandchallenge/MATHSOLVE/blob/a5885d05e09647b5b3cda496fe1598ebb3874a15/handoffs/OPENMATH-2026/launch/OM26-H4-WP04.md
 - H5: https://github.com/grandchallenge/MATHSOLVE/blob/c88671e9f8c86d1dbc67d147d9e4ca570b5fbc6e/handoffs/OPENMATH-2026/launch/OM26-H5-WP04.md
-- H6: https://github.com/grandchallenge/MATHSOLVE/blob/c88671e9f8c86d1dbc67d147d9e4ca570b5fbc6e/handoffs/OPENMATH-2026/launch/OM26-H6-WP05.md
+- H6: PENDING_CONTENT_COMMIT
 - H7: https://github.com/grandchallenge/MATHSOLVE/blob/340c4c18938077f6c2ecdb21ce5a47922a0b08c5/handoffs/OPENMATH-2026/launch/OM26-H7-WP05.md
 - H1-Q6 (support): https://github.com/grandchallenge/MATHSOLVE/blob/c88671e9f8c86d1dbc67d147d9e4ca570b5fbc6e/handoffs/OPENMATH-2026/launch/OM26-H1-WP31.md
 - H1-ADVERSARY (support): https://github.com/grandchallenge/MATHSOLVE/blob/e4c73aaca4ac8381127b512f01f9939eb2b998ac/handoffs/OPENMATH-2026/launch/OM26-H1-WP61.md
