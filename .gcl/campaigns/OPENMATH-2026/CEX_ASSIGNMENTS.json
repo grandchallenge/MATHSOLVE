@@ -2972,7 +2972,8 @@
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/615",
         "task_commit": "a5885d05e09647b5b3cda496fe1598ebb3874a15",
         "task_blob_sha1": "433ae4dfb1e18a258b0c4b7c284a0f3551c3de64",
-        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/a5885d05e09647b5b3cda496fe1598ebb3874a15/handoffs/OPENMATH-2026/launch/OM26-H4-WP04.md"
+        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/a5885d05e09647b5b3cda496fe1598ebb3874a15/handoffs/OPENMATH-2026/launch/OM26-H4-WP04.md",
+        "lane_role": "PRIMARY"
       },
       "OM26-H5": {
         "path": "handoffs/OPENMATH-2026/launch/OM26-H5-WP03.md",
