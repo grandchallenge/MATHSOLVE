@@ -6,7 +6,7 @@ namespace Erdos3
 def ReciprocalDivergent (A : Set Nat) : Prop :=
   ¬ Summable (fun a : A => 1 / (a : Real))
 
-private def recip (n : Nat) : Real := 1 / (n : Real)
+private noncomputable def recip (n : Nat) : Real := 1 / (n : Real)
 
 lemma reciprocal_divergent_diff_finite
     {A : Set Nat} (hA : ReciprocalDivergent A) {F : Set Nat} (hF : F.Finite) :
@@ -17,9 +17,13 @@ lemma reciprocal_divergent_diff_finite
     exact summable_subtype_iff_indicator.mp hdiff
   have hcomp : Summable (Fᶜ.indicator (A.indicator recip)) := by
     simpa only [Set.indicator_indicator, Set.compl_inter, Set.diff_eq, Set.inter_comm] using hdiff'
+  have hcomp_sub : Summable (fun x : Fᶜ => A.indicator recip x) :=
+    summable_subtype_iff_indicator.mpr hcomp
   have hAind : Summable (A.indicator recip) :=
-    hF.summable_compl_iff.mp hcomp
-  exact summable_subtype_iff_indicator.mpr hAind
+    hF.summable_compl_iff.mp hcomp_sub
+  have hAsub : Summable (fun a : A => recip a) :=
+    summable_subtype_iff_indicator.mpr hAind
+  simpa [recip] using hAsub
 
 lemma reciprocal_divergent_tail
     {A : Set Nat} (hA : ReciprocalDivergent A) (N : Nat) :
@@ -38,17 +42,20 @@ lemma reciprocal_divergent_zmod_fiber
   by_contra h
   simp only [not_exists, ReciprocalDivergent, not_not] at h
   apply hA
-  rw [summable_subtype_iff_indicator]
-  rw [Finset.sum_indicator_mod m (A.indicator recip)]
-  apply summable_sum
-  intro r hr
-  have hr_sub :
-      Summable (fun a : {n : Nat | n ∈ A ∧ (n : ZMod m) = r} => recip a) :=
-    h r
-  have hr_ind :
-      Summable ({n : Nat | n ∈ A ∧ (n : ZMod m) = r}.indicator recip) :=
-    summable_subtype_iff_indicator.mp hr_sub
-  simpa only [Set.indicator_indicator, Set.inter_comm, Set.mem_setOf_eq] using hr_ind
+  have hAind : Summable (A.indicator recip) := by
+    rw [Finset.sum_indicator_mod m (A.indicator recip)]
+    apply summable_sum
+    intro r hr
+    have hr_sub :
+        Summable (fun a : {n : Nat | n ∈ A ∧ (n : ZMod m) = r} => recip a) := by
+      simpa [recip] using h r
+    have hr_ind :
+        Summable ({n : Nat | n ∈ A ∧ (n : ZMod m) = r}.indicator recip) :=
+      summable_subtype_iff_indicator.mp hr_sub
+    simpa only [Set.indicator_indicator, Set.inter_comm, Set.mem_setOf_eq] using hr_ind
+  have hAsub : Summable (fun a : A => recip a) :=
+    summable_subtype_iff_indicator.mpr hAind
+  simpa [recip] using hAsub
 
 #print axioms reciprocal_divergent_diff_finite
 #print axioms reciprocal_divergent_tail
