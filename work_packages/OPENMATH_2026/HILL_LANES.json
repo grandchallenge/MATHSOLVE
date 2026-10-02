@@ -244,7 +244,7 @@
         "dispatch_id": "OM26-H3-WP07-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-307",
         "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/654",
-        "protected_merge": "PROTECTED_LIFECYCLE_CANDIDATE",
+        "protected_merge": "619ee6f55a3c27bea5d4ec8bca0f5d762571b873",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
