@@ -295,7 +295,7 @@
         "dispatch_id": "OM26-H4-WP04-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-404",
         "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/615",
-        "protected_merge": "a58858ac876e4f1bd8f35b09ac27fc6925215491",
+        "protected_merge": "a5885d05e09647b5b3cda496fe1598ebb3874a15",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
