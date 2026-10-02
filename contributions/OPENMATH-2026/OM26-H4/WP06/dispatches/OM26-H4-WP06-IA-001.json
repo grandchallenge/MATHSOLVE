@@ -9,7 +9,7 @@
   "concurrency_mode": "independent_blind",
   "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H4-WP06-IA-001.md",
   "bootstrap_blob_sha1": "c35cf8321caae38cd4f7a8325113aec3755129d7",
-  "source_handoff_commit_sha": "PENDING_CONTENT_COMMIT",
+  "source_handoff_commit_sha": "445fb3c066f8ade16e33ee4532583d5f81f757d1",
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
   "github_issue_number": 652,
   "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/652",
