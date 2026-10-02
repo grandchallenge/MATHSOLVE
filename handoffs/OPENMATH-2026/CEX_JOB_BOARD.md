@@ -48,7 +48,7 @@ The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUD
 - H1: https://github.com/grandchallenge/MATHSOLVE/blob/fc1eb717ef2b1a6062a1ac64522034f30a4b41af/handoffs/OPENMATH-2026/launch/OM26-H1-WP04.md
 - H2: https://github.com/grandchallenge/MATHSOLVE/blob/1f5eee03a015148b80f05317c9df1bc962830766/handoffs/OPENMATH-2026/launch/OM26-H2-WP06.md
 - H3: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H3-WP04.md
-- H4: https://github.com/grandchallenge/MATHSOLVE/blob/a58858ac876e4f1bd8f35b09ac27fc6925215491/handoffs/OPENMATH-2026/launch/OM26-H4-WP04.md
+- H4: https://github.com/grandchallenge/MATHSOLVE/blob/a5885d05e09647b5b3cda496fe1598ebb3874a15/handoffs/OPENMATH-2026/launch/OM26-H4-WP04.md
 - H5: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H5-WP03.md
 - H6: https://github.com/grandchallenge/MATHSOLVE/blob/4f1b6a1500e18fc53bae135ae6713e7abb126ae4/handoffs/OPENMATH-2026/launch/OM26-H6-WP04.md
 - H7: https://github.com/grandchallenge/MATHSOLVE/blob/340c4c18938077f6c2ecdb21ce5a47922a0b08c5/handoffs/OPENMATH-2026/launch/OM26-H7-WP05.md
