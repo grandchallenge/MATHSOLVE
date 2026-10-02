@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from ci.openmath_lifecycle_candidate import refresh_summary, board_text, index_text, plan, successor_identity, apply_candidate, LifecycleCandidateError
+from ci.openmath_lifecycle_candidate import refresh_summary, board_text, index_text, plan, successor_identity, successor_transport_header, apply_candidate, LifecycleCandidateError
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json"
@@ -51,6 +51,13 @@ class OpenMathLifecycleCandidateStateTest(unittest.TestCase):
         self.assertIn("`LINK_IN_RELAY_OUT`",launch_index)
         self.assertNotIn("\\`",board)
         self.assertNotIn("\\`",launch_index)
+
+
+    def test_generated_successor_requires_authenticated_durable_return(self):
+        header = successor_transport_header()
+        self.assertIn("GITHUB_ACCESS_REQUIRED: PARTICIPANT_ENVIRONMENT_AUTHENTICATED_COMMENT_CAPABILITY", header)
+        self.assertIn("RETURN_COMPLETION_RECEIPT_REQUIRED: GITHUB_ISSUE_COMMENT_URL", header)
+        self.assertNotIn("GITHUB_ACCESS_REQUIRED: NO", header)
 
     def test_zero_context_successor_has_real_fences(self):
         with tempfile.TemporaryDirectory() as temp:
