@@ -102,7 +102,7 @@ class OpenMathCEXGitHubContributionIntakeTest(unittest.TestCase):
 
     def test_sentence_cap_is_task_bound_not_global_parser_schema(self):
         body = H1_VALID.replace(
-            "One exact next step.",
+            "The remaining q>=6 cases remain open.",
             "First residual sentence. Second residual sentence. Third residual sentence. Fourth residual sentence.",
         )
         parsed = parse_result_comment(body)
