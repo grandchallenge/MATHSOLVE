@@ -139,6 +139,8 @@ timebox_observed: <YES|NO>
 
 ...
 ```
+
+Next residual has at most three sentences.
 """
     return {
         "schema_version":"1.0.0",
