@@ -22,7 +22,8 @@ This page is a human projection of the protected machine registry.
 | `OM26-H2-WP03` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP03-IA-001` | `INDEPENDENT-AGENT-009` | #537 |
 | `OM26-H2-WP04` | `OM26-H2` | `SUPERSEDED` | `OM26-H2-WP04-IA-001` | `INDEPENDENT-AGENT-204` | #561 |
 | `OM26-H2-WP05` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP05-IA-001` | `INDEPENDENT-AGENT-205` | #605 |
-| `OM26-H2-WP06` | `OM26-H2` | `LEASED_NOT_LAUNCHED` | `OM26-H2-WP06-IA-001` | `INDEPENDENT-AGENT-206` | #614 |
+| `OM26-H2-WP06` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP06-IA-001` | `INDEPENDENT-AGENT-206` | #614 |
+| `OM26-H2-WP07` | `OM26-H2` | `LEASED_NOT_LAUNCHED` | `OM26-H2-WP07-IA-001` | `INDEPENDENT-AGENT-207` | #630 |
 | `OM26-H3-WP01` | `OM26-H3` | `ACCEPTED` | `OM26-H3-WP01-IA-001` | `INDEPENDENT-AGENT-003` | #506 |
 | `OM26-H3-WP02` | `OM26-H3` | `ACCEPTED` | `OM26-H3-WP02-IA-001` | `INDEPENDENT-AGENT-302` | #545 |
 | `OM26-H3-WP03` | `OM26-H3` | `SUPERSEDED` | `OM26-H3-WP03-IA-001` | `INDEPENDENT-AGENT-303` | #562 |
@@ -53,7 +54,7 @@ The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUD
 ## Current task links
 
 - H1: https://github.com/grandchallenge/MATHSOLVE/blob/bac8fc2fb17087a2f3495a74a2fdbbde27d75e41/handoffs/OPENMATH-2026/launch/OM26-H1-WP05.md
-- H2: https://github.com/grandchallenge/MATHSOLVE/blob/1f5eee03a015148b80f05317c9df1bc962830766/handoffs/OPENMATH-2026/launch/OM26-H2-WP06.md
+- H2: https://github.com/grandchallenge/MATHSOLVE/blob/fb7d73f2e91ef13674853979835fe80725f6cf65/handoffs/OPENMATH-2026/launch/OM26-H2-WP07.md
 - H3: https://github.com/grandchallenge/MATHSOLVE/blob/c88671e9f8c86d1dbc67d147d9e4ca570b5fbc6e/handoffs/OPENMATH-2026/launch/OM26-H3-WP05.md
 - H4: https://github.com/grandchallenge/MATHSOLVE/blob/a5885d05e09647b5b3cda496fe1598ebb3874a15/handoffs/OPENMATH-2026/launch/OM26-H4-WP04.md
 - H5: https://github.com/grandchallenge/MATHSOLVE/blob/c88671e9f8c86d1dbc67d147d9e4ca570b5fbc6e/handoffs/OPENMATH-2026/launch/OM26-H5-WP04.md
