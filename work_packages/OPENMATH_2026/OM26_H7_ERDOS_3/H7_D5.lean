@@ -44,16 +44,19 @@ lemma reciprocal_divergent_zmod_fiber
   apply hA
   have hAind : Summable (A.indicator recip) := by
     rw [Finset.sum_indicator_mod m (A.indicator recip)]
-    convert!
-      summable_sum (s := Finset.univ) fun r _ ↦ by
-        have hr_sub :
-            Summable (fun a : {n : Nat | n ∈ A ∧ (n : ZMod m) = r} => recip a) := by
-          simpa [recip] using h r
-        have hr_ind :
-            Summable ({n : Nat | n ∈ A ∧ (n : ZMod m) = r}.indicator recip) :=
-          summable_subtype_iff_indicator.mp hr_sub
-        simpa only [Set.indicator_indicator, Set.inter_comm, Set.mem_setOf_eq] using hr_ind
-    simp [Set.indicator_apply]
+    simpa only [Finset.sum_apply] using
+      (summable_sum
+        (s := Finset.univ)
+        (f := fun r n =>
+          {x : Nat | (x : ZMod m) = r}.indicator (A.indicator recip) n)
+        (fun r _ => by
+          have hr_sub :
+              Summable (fun a : {n : Nat | n ∈ A ∧ (n : ZMod m) = r} => recip a) := by
+            simpa [recip] using h r
+          have hr_ind :
+              Summable ({n : Nat | n ∈ A ∧ (n : ZMod m) = r}.indicator recip) :=
+            summable_subtype_iff_indicator.mp hr_sub
+          simpa only [Set.indicator_indicator, Set.inter_comm, Set.mem_setOf_eq] using hr_ind))
   have hAsub : Summable (fun a : A => recip a) :=
     summable_subtype_iff_indicator.mpr hAind
   simpa [recip] using hAsub
