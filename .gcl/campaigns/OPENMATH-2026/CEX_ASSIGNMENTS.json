@@ -3208,7 +3208,7 @@
         "dispatch_id": "OM26-H1-WP62-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-162",
         "dispatch_issue_number": 632,
-        "protected_lease_commit": "cebeaae55160465a8ff58ce99c4d09d3fd0bd123",
+        "protected_lease_commit": "dca18b39e7ea67deaa3b8dc2128c8d019ee9c64c",
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/632",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/632",
         "readback_verified": false,
@@ -3216,7 +3216,7 @@
         "activation_condition": "PROTECTED_MERGE_OF_LIFECYCLE_CANDIDATE"
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H1-WP62-IA-001.md",
-      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/cebeaae55160465a8ff58ce99c4d09d3fd0bd123/handoffs/OPENMATH-2026/jobs/OM26-H1-WP62-IA-001.md",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/dca18b39e7ea67deaa3b8dc2128c8d019ee9c64c/handoffs/OPENMATH-2026/jobs/OM26-H1-WP62-IA-001.md",
       "operation_contract": ".gcl/operations/OM26-H1-WP62-IA-001/OPERATION.json",
       "prerequisites": {
         "predecessor_assignment": "OM26-H1-WP61",
@@ -3277,7 +3277,7 @@
         "dispatch_id": "OM26-H6-WP06-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-606",
         "dispatch_issue_number": 633,
-        "protected_lease_commit": "f323d81523a8439391e080cd75d659fc4dbd75e6",
+        "protected_lease_commit": "dca18b39e7ea67deaa3b8dc2128c8d019ee9c64c",
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/633",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/633",
         "readback_verified": false,
@@ -3285,7 +3285,7 @@
         "activation_condition": "PROTECTED_MERGE_OF_LIFECYCLE_CANDIDATE"
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H6-WP06-IA-001.md",
-      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/f323d81523a8439391e080cd75d659fc4dbd75e6/handoffs/OPENMATH-2026/jobs/OM26-H6-WP06-IA-001.md",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/dca18b39e7ea67deaa3b8dc2128c8d019ee9c64c/handoffs/OPENMATH-2026/jobs/OM26-H6-WP06-IA-001.md",
       "operation_contract": ".gcl/operations/OM26-H6-WP06-IA-001/OPERATION.json",
       "prerequisites": {
         "predecessor_assignment": "OM26-H6-WP05",
@@ -3407,9 +3407,9 @@
         "dispatch_id": "OM26-H6-WP06-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-606",
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/633",
-        "task_commit": "f323d81523a8439391e080cd75d659fc4dbd75e6",
-        "task_blob_sha1": "08f9ec811c15cbf508ea7afbdff963ab8fc78f47",
-        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/f323d81523a8439391e080cd75d659fc4dbd75e6/handoffs/OPENMATH-2026/launch/OM26-H6-WP06.md"
+        "task_commit": "dca18b39e7ea67deaa3b8dc2128c8d019ee9c64c",
+        "task_blob_sha1": "ca882d3437e2e14c5e50adc315cff038de3d2166",
+        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/dca18b39e7ea67deaa3b8dc2128c8d019ee9c64c/handoffs/OPENMATH-2026/launch/OM26-H6-WP06.md"
       },
       "OM26-H7": {
         "path": "handoffs/OPENMATH-2026/launch/OM26-H7-WP05.md",
@@ -3456,9 +3456,9 @@
         "dispatch_id": "OM26-H1-WP62-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-162",
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/632",
-        "task_commit": "cebeaae55160465a8ff58ce99c4d09d3fd0bd123",
-        "task_blob_sha1": "fc1b72131bf4de96b1b223efce15334752843999",
-        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/cebeaae55160465a8ff58ce99c4d09d3fd0bd123/handoffs/OPENMATH-2026/launch/OM26-H1-WP62.md"
+        "task_commit": "dca18b39e7ea67deaa3b8dc2128c8d019ee9c64c",
+        "task_blob_sha1": "fbbe6e75f8b2ae49131d47d9df8296287268f639",
+        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/dca18b39e7ea67deaa3b8dc2128c8d019ee9c64c/handoffs/OPENMATH-2026/launch/OM26-H1-WP62.md"
       }
     }
   },
