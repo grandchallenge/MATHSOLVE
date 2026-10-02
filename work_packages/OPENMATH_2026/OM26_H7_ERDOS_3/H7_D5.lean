@@ -1,0 +1,57 @@
+import FormalConjecturesUtil
+import Mathlib.Analysis.SumOverResidueClass
+
+namespace Erdos3
+
+def ReciprocalDivergent (A : Set Nat) : Prop :=
+  ¬ Summable (fun a : A => 1 / (a : Real))
+
+private def recip (n : Nat) : Real := 1 / (n : Real)
+
+lemma reciprocal_divergent_diff_finite
+    {A : Set Nat} (hA : ReciprocalDivergent A) {F : Set Nat} (hF : F.Finite) :
+    ReciprocalDivergent (A \ F) := by
+  intro hdiff
+  apply hA
+  have hdiff' : Summable ((A \ F).indicator recip) := by
+    exact summable_subtype_iff_indicator.mp hdiff
+  have hcomp : Summable (Fᶜ.indicator (A.indicator recip)) := by
+    simpa only [Set.indicator_indicator, Set.compl_inter, Set.diff_eq, Set.inter_comm] using hdiff'
+  have hAind : Summable (A.indicator recip) :=
+    hF.summable_compl_iff.mp hcomp
+  exact summable_subtype_iff_indicator.mpr hAind
+
+lemma reciprocal_divergent_tail
+    {A : Set Nat} (hA : ReciprocalDivergent A) (N : Nat) :
+    ReciprocalDivergent (A ∩ {n : Nat | N ≤ n}) := by
+  have hIio_fin : (Set.Iio N).Finite := Set.finite_Iio N
+  have heq : A ∩ {n : Nat | N ≤ n} = A \ Set.Iio N := by
+    ext x
+    simp only [Set.mem_inter_iff, Set.mem_setOf_eq, Set.mem_diff, Set.mem_Iio, not_lt]
+  rw [heq]
+  exact reciprocal_divergent_diff_finite hA hIio_fin
+
+lemma reciprocal_divergent_zmod_fiber
+    {A : Set Nat} (hA : ReciprocalDivergent A) {m : Nat} (hm : 0 < m) :
+    ∃ r : ZMod m, ReciprocalDivergent {n : Nat | n ∈ A ∧ (n : ZMod m) = r} := by
+  letI : NeZero m := ⟨Nat.ne_of_gt hm⟩
+  by_contra h
+  simp only [not_exists, ReciprocalDivergent, not_not] at h
+  apply hA
+  rw [summable_subtype_iff_indicator]
+  rw [Finset.sum_indicator_mod m (A.indicator recip)]
+  apply summable_sum
+  intro r hr
+  have hr_sub :
+      Summable (fun a : {n : Nat | n ∈ A ∧ (n : ZMod m) = r} => recip a) :=
+    h r
+  have hr_ind :
+      Summable ({n : Nat | n ∈ A ∧ (n : ZMod m) = r}.indicator recip) :=
+    summable_subtype_iff_indicator.mp hr_sub
+  simpa only [Set.indicator_indicator, Set.inter_comm, Set.mem_setOf_eq] using hr_ind
+
+#print axioms reciprocal_divergent_diff_finite
+#print axioms reciprocal_divergent_tail
+#print axioms reciprocal_divergent_zmod_fiber
+
+end Erdos3
