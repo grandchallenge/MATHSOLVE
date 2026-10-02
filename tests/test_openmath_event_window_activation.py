@@ -15,6 +15,9 @@ class EventWindowActivationTests(unittest.TestCase):
    shutil.copytree(ROOT,root,ignore=shutil.ignore_patterns('.git','__pycache__'))
    registry=json.loads((root/'.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json').read_text())
    scripts=list(registry['launch_contract']['current_scripts'].values())+list(registry['launch_contract']['support_scripts'].values())
+   queue_path=root/'work_packages/OPENMATH_2026/COMPETITION_PACKETS/SECTION8_EVIDENCE_REVIEW_QUEUE.json'
+   initial_queue=json.loads(queue_path.read_text())
+   initial_queue_count=len(initial_queue['items'])
    for i,s in enumerate(scripts):
     registry=json.loads((root/'.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json').read_text())
     a=next(x for x in registry['assignments'] if x['assignment_id']==s['assignment_id'])
@@ -66,8 +69,9 @@ Independently replay real evidence after a genuine return.
     with self.assertRaises(IntakeError):emit_intake(replacement,root,Path(td)/f'replacement{i}')
     adj=json.loads((root/manifest['programme_projection_path']).read_text())
     self.assertEqual(adj['claim_effect'],'NONE')
-   queue=json.loads((root/'work_packages/OPENMATH_2026/COMPETITION_PACKETS/SECTION8_EVIDENCE_REVIEW_QUEUE.json').read_text())
-   self.assertEqual(len(queue['items']),9)
+   queue=json.loads(queue_path.read_text())
+   self.assertEqual(len(queue['items']),initial_queue_count+len(scripts))
+   self.assertEqual(len({x['dispatch_id'] for x in queue['items']}),len(queue['items']))
    self.assertTrue(all(x['claim_effect']=='NONE' for x in queue['items']))
 
 if __name__=='__main__':unittest.main()

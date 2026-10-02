@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-H4-WP04-IA-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H4",
+  "assignment_id": "OM26-H4-WP04",
+  "dispatch_id": "OM26-H4-WP04-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-404",
+  "objective": "Independently convert the strongest predecessor claim into deterministic protected replay evidence. If it cannot be established, return the exact counterexample or blocker. Do not promote the predecessor claim merely because its RESULT/1 was structurally valid.",
+  "acceptable_dispositions": [
+    "REPLAY_CLOSURE_VALIDATED",
+    "REPLAY_CLOSURE_COUNTEREXAMPLE",
+    "EXACT_BLOCKER"
+  ],
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "github_issue_number": 615,
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/615",
+  "canonical_mutation_authorized": false
+}
