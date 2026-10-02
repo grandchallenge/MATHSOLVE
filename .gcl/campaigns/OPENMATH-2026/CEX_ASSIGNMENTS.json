@@ -3347,7 +3347,7 @@
         "dispatch_id": "OM26-H1-WP05-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-105",
         "dispatch_issue_number": 641,
-        "protected_lease_commit": "PENDING_CONTENT_COMMIT",
+        "protected_lease_commit": "bac8fc2fb17087a2f3495a74a2fdbbde27d75e41",
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/641",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/641",
         "readback_verified": false,
@@ -3355,7 +3355,7 @@
         "activation_condition": "PROTECTED_MERGE_OF_LIFECYCLE_CANDIDATE"
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H1-WP05-IA-001.md",
-      "work_package_url": "PENDING_CONTENT_COMMIT",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/bac8fc2fb17087a2f3495a74a2fdbbde27d75e41/handoffs/OPENMATH-2026/jobs/OM26-H1-WP05-IA-001.md",
       "operation_contract": ".gcl/operations/OM26-H1-WP05-IA-001/OPERATION.json",
       "prerequisites": {
         "predecessor_assignment": "OM26-H1-WP04",
@@ -3420,9 +3420,9 @@
         "dispatch_id": "OM26-H1-WP05-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-105",
         "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/641",
-        "task_commit": "PENDING_CONTENT_COMMIT",
+        "task_commit": "bac8fc2fb17087a2f3495a74a2fdbbde27d75e41",
         "task_blob_sha1": "80f63df5e8fd440382284ac4175585243a0f2b8d",
-        "task_url": "PENDING_CONTENT_COMMIT"
+        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/bac8fc2fb17087a2f3495a74a2fdbbde27d75e41/handoffs/OPENMATH-2026/launch/OM26-H1-WP05.md"
       },
       "OM26-H2": {
         "path": "handoffs/OPENMATH-2026/launch/OM26-H2-WP06.md",
