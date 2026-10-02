@@ -122,7 +122,9 @@ jobs:
       - name: Checkout exact candidate
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - name: Independent exact H4 replay
-        run: python work_packages/OPENMATH_2026/OM26_H4_COLLATZ_MODULAR_DESCENT/trusted_replay_h4.py
+        run: |
+          python work_packages/OPENMATH_2026/OM26_H4_COLLATZ_MODULAR_DESCENT/trusted_replay_h4.py
+          python work_packages/OPENMATH_2026/OM26_H4_COLLATZ_MODULAR_DESCENT/trusted_replay_h4_extended.py
 
   h7-pinned-lean:
     runs-on: ubuntu-24.04
@@ -137,5 +139,6 @@ jobs:
           docker run --rm \
             -v "$PWD/work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D3.lean:/tmp/H7_D3.lean:ro" \
             -v "$PWD/work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D4.lean:/tmp/H7_D4.lean:ro" \
+            -v "$PWD/work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D5.lean:/tmp/H7_D5.lean:ro" \
             ghcr.io/ottogin/lean-mathlib@sha256:964547ad81e109c78545512867bae70b710c55d833078674878faad7de0ebb85 \
-            bash -lc 'set -euo pipefail; cd /opt/formal-conjectures; lean --version; libs=(.lake/build/lib/lean); for d in .lake/packages/*/.lake/build/lib/lean; do if [ -d "$d" ]; then libs+=("$d"); fi; done; export LEAN_PATH="$(IFS=:; echo "${libs[*]}")"; printf "LEAN_PATH=%s\\n" "$LEAN_PATH"; lean /tmp/H7_D3.lean; lean /tmp/H7_D4.lean'
+            bash -lc 'set -euo pipefail; cd /opt/formal-conjectures; lean --version; libs=(.lake/build/lib/lean); for d in .lake/packages/*/.lake/build/lib/lean; do if [ -d "$d" ]; then libs+=("$d"); fi; done; export LEAN_PATH="$(IFS=:; echo "${libs[*]}")"; printf "LEAN_PATH=%s\\n" "$LEAN_PATH"; lean /tmp/H7_D3.lean; lean /tmp/H7_D4.lean; lean /tmp/H7_D5.lean'
