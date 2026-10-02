@@ -17,7 +17,7 @@ lemma reciprocal_divergent_diff_finite
     exact summable_subtype_iff_indicator.mp hdiff
   have hcomp : Summable (Fᶜ.indicator (A.indicator recip)) := by
     simpa only [Set.indicator_indicator, Set.compl_inter, Set.diff_eq, Set.inter_comm] using hdiff'
-  have hcomp_sub : Summable (fun x : Fᶜ => A.indicator recip x) :=
+  have hcomp_sub : Summable (fun x : {n : Nat // n ∈ Fᶜ} => A.indicator recip x) :=
     summable_subtype_iff_indicator.mpr hcomp
   have hAind : Summable (A.indicator recip) :=
     hF.summable_compl_iff.mp hcomp_sub
@@ -44,15 +44,16 @@ lemma reciprocal_divergent_zmod_fiber
   apply hA
   have hAind : Summable (A.indicator recip) := by
     rw [Finset.sum_indicator_mod m (A.indicator recip)]
-    apply summable_sum
-    intro r hr
-    have hr_sub :
-        Summable (fun a : {n : Nat | n ∈ A ∧ (n : ZMod m) = r} => recip a) := by
-      simpa [recip] using h r
-    have hr_ind :
-        Summable ({n : Nat | n ∈ A ∧ (n : ZMod m) = r}.indicator recip) :=
-      summable_subtype_iff_indicator.mp hr_sub
-    simpa only [Set.indicator_indicator, Set.inter_comm, Set.mem_setOf_eq] using hr_ind
+    convert!
+      summable_sum (s := Finset.univ) fun r _ ↦ by
+        have hr_sub :
+            Summable (fun a : {n : Nat | n ∈ A ∧ (n : ZMod m) = r} => recip a) := by
+          simpa [recip] using h r
+        have hr_ind :
+            Summable ({n : Nat | n ∈ A ∧ (n : ZMod m) = r}.indicator recip) :=
+          summable_subtype_iff_indicator.mp hr_sub
+        simpa only [Set.indicator_indicator, Set.inter_comm, Set.mem_setOf_eq] using hr_ind
+    simp only [Finset.sum_apply]
   have hAsub : Summable (fun a : A => recip a) :=
     summable_subtype_iff_indicator.mpr hAind
   simpa [recip] using hAsub
