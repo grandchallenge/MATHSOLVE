@@ -180,6 +180,18 @@
       "authenticated_actor": "fyremael",
       "state": "PENDING_EXACT_MATHEMATICAL_REPLAY_AND_NOVELTY_REVIEW",
       "claim_effect": "NONE"
+    },
+    {
+      "dispatch_id": "OM26-H4-WP05-IA-001",
+      "assignment_id": "OM26-H4-WP05",
+      "hill": "OM26-H4",
+      "raw_path": "contributions/OPENMATH-2026/OM26-H4/WP05/raw/OM26-H4-WP05-IA-001/github-comment-5962943119.md",
+      "receipt_path": "contributions/OPENMATH-2026/OM26-H4/WP05/receipts/OM26-H4-WP05-IA-001/github-comment-5962943119.json",
+      "declared_disposition": "EXACT_BLOCKER",
+      "comment_created_at": "2026-10-02T23:14:36Z",
+      "authenticated_actor": "fyremael",
+      "state": "PENDING_EXACT_MATHEMATICAL_REPLAY_AND_NOVELTY_REVIEW",
+      "claim_effect": "NONE"
     }
   ]
 }
