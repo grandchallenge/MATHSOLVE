@@ -1,7 +1,7 @@
 # Saturated prism obstruction
 
 Record: `OM26-H1-SATURATED-PRISM-OBSTRUCTION-001`.
-State: **CONDITIONAL_PAPER_PROOF__INDEPENDENT_GEOMETRIC_REVIEW_PENDING**.
+State: **CONDITIONAL_PAPER_PROOF__INDEPENDENT_ADVERSARIAL_REPLAY_PASS__TRUSTED_MATHEMATICAL_ADAPTER_PENDING**.
 
 ## Result and hypotheses
 
@@ -13,8 +13,7 @@ underlying elementary-edge geometry is already impossible.
 This is conditional on the no-long-run and clean-line charging premises in
 [H1_SIX_CORE_PREMISE_PROOF.md](H1_SIX_CORE_PREMISE_PROOF.md), and on the
 necessary-state reduction in [H1_Q6_INTERNAL_REPLAY.md](H1_Q6_INTERNAL_REPLAY.md).
-Independent geometric adjudication remains pending. CI is a finite certificate
-check, not certification of the real-geometric argument.
+Zero-context adversarial replay `OM26-H1-WP60-IA-001` found no counterexample and independently recovered the 60-prism/10-`K3,3` classification. Trusted mathematical replay or certification remains pending. CI is a finite certificate check, not certification of the real-geometric argument.
 
 ## 1. Saturation forces isolated D2 rays
 
