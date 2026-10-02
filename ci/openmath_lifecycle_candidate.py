@@ -18,6 +18,13 @@ ASSIGNMENT_RE = re.compile(r"^OM26-H([1-7])-WP([0-9]{2})$")
 PIPELINE = ["RETURNED", "CAPTURED", "REPLAYED", "ADJUDICATED", "ADVANCED"]
 
 
+def successor_transport_header() -> str:
+    return "\n".join([
+        "GITHUB_ACCESS_REQUIRED: PARTICIPANT_ENVIRONMENT_AUTHENTICATED_COMMENT_CAPABILITY",
+        "RETURN_COMPLETION_RECEIPT_REQUIRED: GITHUB_ISSUE_COMMENT_URL",
+    ])
+
+
 class LifecycleCandidateError(RuntimeError):
     pass
 
@@ -370,7 +377,7 @@ AGENT_REF: {p['successor_agent']}
 PROTECTED_LEASE_IDENTITY: {successor_assignment} :: {p['successor_dispatch']} :: {p['successor_agent']}
 INTENDED_RETURN: {issue_url}
 EXECUTION_MODE: SELF_CONTAINED_INDEPENDENT_BLIND
-GITHUB_ACCESS_REQUIRED: NO
+{successor_transport_header()}
 CANONICAL_MUTATION_AUTHORIZED: NO
 COMPETITION_SUBMISSION_AUTHORIZED: NO
 CERTIFICATION_AUTHORIZED: NO
@@ -385,7 +392,7 @@ The complete protected predecessor result is embedded above.
 
 The durable destination is INTENDED_RETURN above. Before doing substantive work, confirm that your environment can post a GitHub issue comment, either through your independently available authenticated GitHub capability or an explicitly authorized authenticated relay. Repository write access is not required; the worker itself need not hold GitHub credentials.
 
-Deliver the complete GCL-RETURN-RELAY/1 envelope below as one comment on that exact issue. The protected intake validates its outer and inner identity and destination, retains the full envelope and hashes in its receipt, and processes the inner RESULT/1. Your relay must return the GitHub comment URL as the durable receipt.
+Deliver the complete GCL-RETURN-RELAY/1 envelope below as one comment on that exact issue. The protected intake validates its outer and inner identity and destination, retains the full envelope and hashes in its receipt, and processes the inner RESULT/1. Your relay must return the GitHub comment URL as the durable receipt. The assignment is not complete until that URL has been obtained and the posted comment has been read back from INTENDED_RETURN. Do not emit a successful completion response before durable posting and readback succeed.
 
 Returning only to a private conversation is sufficient only when that conversation has the authorized relay. If neither direct posting nor a relay is available, report RETURN_TRANSPORT_UNAVAILABLE before beginning work. GCL cannot observe unrelated private chats. Do not ask the Human Steward to copy evidence. This task link does not grant a second lease or permit replacing a first valid result.
 
