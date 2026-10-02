@@ -32,7 +32,8 @@ This page is a human projection of the protected machine registry.
 | `OM26-H4-WP01` | `OM26-H4` | `ACCEPTED` | `OM26-H4-WP01-IA-001` | `INDEPENDENT-AGENT-004` | #507 |
 | `OM26-H4-WP02` | `OM26-H4` | `SUPERSEDED` | `OM26-H4-WP02-IA-001` | `INDEPENDENT-AGENT-402` | #559 |
 | `OM26-H4-WP03` | `OM26-H4` | `ACCEPTED` | `OM26-H4-WP03-IA-001` | `INDEPENDENT-AGENT-403` | #601 |
-| `OM26-H4-WP04` | `OM26-H4` | `LEASED_NOT_LAUNCHED` | `OM26-H4-WP04-IA-001` | `INDEPENDENT-AGENT-404` | #615 |
+| `OM26-H4-WP04` | `OM26-H4` | `ACCEPTED` | `OM26-H4-WP04-IA-001` | `INDEPENDENT-AGENT-404` | #615 |
+| `OM26-H4-WP05` | `OM26-H4` | `LEASED_NOT_LAUNCHED` | `OM26-H4-WP05-IA-001` | `INDEPENDENT-AGENT-405` | #631 |
 | `OM26-H5-WP01` | `OM26-H5` | `ACCEPTED` | `OM26-H5-WP01-IA-001` | `INDEPENDENT-AGENT-005` | #508 |
 | `OM26-H5-WP02` | `OM26-H5` | `SUPERSEDED` | `OM26-H5-WP02-IA-001` | `INDEPENDENT-AGENT-502` | #560 |
 | `OM26-H5-WP03` | `OM26-H5` | `ACCEPTED` | `OM26-H5-WP03-IA-001` | `INDEPENDENT-AGENT-503` | #604 |
@@ -56,7 +57,7 @@ The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUD
 - H1: https://github.com/grandchallenge/MATHSOLVE/blob/bac8fc2fb17087a2f3495a74a2fdbbde27d75e41/handoffs/OPENMATH-2026/launch/OM26-H1-WP05.md
 - H2: https://github.com/grandchallenge/MATHSOLVE/blob/fb7d73f2e91ef13674853979835fe80725f6cf65/handoffs/OPENMATH-2026/launch/OM26-H2-WP07.md
 - H3: https://github.com/grandchallenge/MATHSOLVE/blob/c88671e9f8c86d1dbc67d147d9e4ca570b5fbc6e/handoffs/OPENMATH-2026/launch/OM26-H3-WP05.md
-- H4: https://github.com/grandchallenge/MATHSOLVE/blob/a5885d05e09647b5b3cda496fe1598ebb3874a15/handoffs/OPENMATH-2026/launch/OM26-H4-WP04.md
+- H4: https://github.com/grandchallenge/MATHSOLVE/blob/45847cfb1d3f084d7f8afde09c51b42cce6e32fc/handoffs/OPENMATH-2026/launch/OM26-H4-WP05.md
 - H5: https://github.com/grandchallenge/MATHSOLVE/blob/c88671e9f8c86d1dbc67d147d9e4ca570b5fbc6e/handoffs/OPENMATH-2026/launch/OM26-H5-WP04.md
 - H6: https://github.com/grandchallenge/MATHSOLVE/blob/dca18b39e7ea67deaa3b8dc2128c8d019ee9c64c/handoffs/OPENMATH-2026/launch/OM26-H6-WP06.md
 - H7: https://github.com/grandchallenge/MATHSOLVE/blob/37ef9dc603e66011ae68e5e5f8df32c9231c231a/handoffs/OPENMATH-2026/launch/OM26-H7-WP05.md
