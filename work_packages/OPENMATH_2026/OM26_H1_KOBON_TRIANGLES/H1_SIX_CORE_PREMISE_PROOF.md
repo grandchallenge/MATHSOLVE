@@ -1,10 +1,10 @@
 # H1 face-to-fan and clean-line extraction
 
 **Record:** `OM26-H1-SIX-CORE-PREMISE-AUDIT-001`  
-**State:** `PAPER_PROOF_CANDIDATE__INDEPENDENT_GEOMETRIC_REVIEW_PENDING`  
+**State:** `PAPER_PROOF_CANDIDATE__INDEPENDENT_ADVERSARIAL_REPLAY_PASS__TRUSTED_MATHEMATICAL_ADAPTER_PENDING`  
 **Scope:** finitely many distinct pairwise nonparallel real affine lines; even n>=4. Faces are bounded, nondegenerate triangular cells. The number q of finite multiple points is unrestricted.
 
-This supplies the geometric extraction omitted from the earlier six-core replay packet. It is internal current-context work, not a zero-context contribution, a kernel-checked global theorem or a MATHCERT disposition. Existing source-conditional claim statuses remain unchanged pending independent geometric review.
+This supplies the geometric extraction omitted from the earlier six-core replay packet. It is internal current-context work, not a zero-context contribution, a kernel-checked global theorem or a MATHCERT disposition. Existing source-conditional claim statuses remain unchanged pending trusted mathematical replay or certification. The zero-context adversarial replay `OM26-H1-WP60-IA-001` found no counterexample within this stated scope; see `H1_PREMISE_SCOPE_DISPOSITION.md`.
 
 ## Proposed exact statement
 
