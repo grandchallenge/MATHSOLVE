@@ -56,7 +56,13 @@ lemma reciprocal_divergent_zmod_fiber
           have hr_ind :
               Summable ({n : Nat | n ∈ A ∧ (n : ZMod m) = r}.indicator recip) :=
             summable_subtype_iff_indicator.mp hr_sub
-          simpa only [Set.indicator_indicator, Set.inter_comm, Set.mem_setOf_eq] using hr_ind))
+          have hset :
+              {n : Nat | n ∈ A ∧ (n : ZMod m) = r} =
+                A ∩ {n : Nat | (n : ZMod m) = r} := by
+            ext n
+            simp
+          rw [hset] at hr_ind
+          simpa only [Set.indicator_indicator, Set.inter_comm] using hr_ind))
   have hAsub : Summable (fun a : A => recip a) :=
     summable_subtype_iff_indicator.mpr hAind
   simpa [recip] using hAsub
