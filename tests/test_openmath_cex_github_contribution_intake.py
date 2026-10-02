@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from ci.openmath_cex_github_contribution_intake import IntakeError, emit_intake, parse_result_comment, unwrap_return
+from ci.openmath_cex_github_contribution_intake import IntakeError, emit_intake, parse_result_comment, unwrap_return, validate_task_result_constraints
 
 from ci.validate_openmath_cex_transport import validate_iteration_policy
 
@@ -99,6 +99,23 @@ class OpenMathCEXGitHubContributionIntakeTest(unittest.TestCase):
         body = H1_VALID.replace("PROVED_REDUCTION", "NOT ALLOWED")
         with self.assertRaises(IntakeError):
             parse_result_comment(body)
+
+    def test_sentence_cap_is_task_bound_not_global_parser_schema(self):
+        body = H1_VALID.replace(
+            "The remaining q>=6 cases remain open.",
+            "First residual sentence. Second residual sentence. Third residual sentence. Fourth residual sentence.",
+        )
+        parsed = parse_result_comment(body)
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            bootstrap = root / "handoffs/OPENMATH-2026/jobs/test.md"
+            bootstrap.parent.mkdir(parents=True)
+            dispatch = {"bootstrap_path": str(bootstrap.relative_to(root))}
+            bootstrap.write_text("No residual sentence cap is declared here.\n", encoding="utf-8")
+            validate_task_result_constraints(root, dispatch, parsed)
+            bootstrap.write_text("Next residual has at most three sentences.\n", encoding="utf-8")
+            with self.assertRaisesRegex(IntakeError, "Next residual exceeds three sentences"):
+                validate_task_result_constraints(root, dispatch, parsed)
 
     def test_dispatch_issue_allows_one_terminal_lf_transport_difference(self):
         with tempfile.TemporaryDirectory() as td:

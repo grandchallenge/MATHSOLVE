@@ -70,6 +70,7 @@ class OpenMathLifecycleCandidateStateTest(unittest.TestCase):
             (root/"RAW.md").write_text("GCL-CONTRIBUTION-RESULT/1\n",encoding="utf-8")
             body=plan(root)["issue_body"]
             self.assertIn("```text\nGCL-CONTRIBUTION-RESULT/1",body)
+            self.assertIn("Next residual has at most three sentences.", body)
             self.assertNotIn("\\`",body)
 
     def test_launched_return_to_successor_recomputes_counts(self):
