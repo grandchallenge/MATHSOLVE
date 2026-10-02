@@ -59,7 +59,7 @@ lemma reciprocal_divergent_zmod_fiber
           simp
         rw [hset] at hr_ind
         simpa only [Set.indicator_indicator, Set.inter_comm] using hr_ind
-    simp only [Finset.sum_apply]
+    simp only [Finset.sum_apply, Set.indicator_indicator, Set.inter_comm]
   have hAsub : Summable (fun a : A => recip a) :=
     summable_subtype_iff_indicator.mpr hAind
   simpa [recip] using hAsub
