@@ -257,7 +257,7 @@
     },
     {
       "hill_slot": "OM26-H4",
-      "status": "WP04_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
+      "status": "WP05_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
       "exact_hill_id": "alejandrozu/collatz-modular-descent",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -288,14 +288,14 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H4-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-404 from the registered immutable LINK_IN_RELAY_OUT task URL.",
+      "next_action": "Launch INDEPENDENT-AGENT-405 from the registered immutable LINK_IN_RELAY_OUT task URL.",
       "title": "Collatz modular descent",
       "active_lease": {
-        "assignment_id": "OM26-H4-WP04",
-        "dispatch_id": "OM26-H4-WP04-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-404",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/615",
-        "protected_merge": "a5885d05e09647b5b3cda496fe1598ebb3874a15",
+        "assignment_id": "OM26-H4-WP05",
+        "dispatch_id": "OM26-H4-WP05-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-405",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/631",
+        "protected_merge": "45847cfb1d3f084d7f8afde09c51b42cce6e32fc",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
@@ -309,15 +309,15 @@
         "official_acceptance": "NONE"
       },
       "predecessor_lease": {
-        "assignment_id": "OM26-H4-WP03",
-        "dispatch_id": "OM26-H4-WP03-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-403",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/601",
-        "protected_merge": "4f1b6a1500e18fc53bae135ae6713e7abb126ae4",
+        "assignment_id": "OM26-H4-WP04",
+        "dispatch_id": "OM26-H4-WP04-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-404",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/615",
+        "protected_merge": "a5885d05e09647b5b3cda496fe1598ebb3874a15",
         "readback_verified": false,
         "lifecycle_state": "ACCEPTED",
         "launch_evidence": null,
-        "return_evidence": "contributions/OPENMATH-2026/OM26-H4/WP03/raw/OM26-H4-WP03-IA-001/github-comment-5942549290.md",
+        "return_evidence": "contributions/OPENMATH-2026/OM26-H4/WP04/raw/OM26-H4-WP04-IA-001/github-comment-5951254588.md",
         "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION"
       }
     },
@@ -487,7 +487,7 @@
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
       "next_action": "Launch INDEPENDENT-AGENT-705 from the registered immutable LINK_IN_RELAY_OUT task URL.",
-      "title": "Erd\u0151s Problem 3",
+      "title": "Erdős Problem 3",
       "active_lease": {
         "assignment_id": "OM26-H7-WP05",
         "dispatch_id": "OM26-H7-WP05-IA-001",

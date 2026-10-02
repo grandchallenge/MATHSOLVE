@@ -106,11 +106,11 @@
       },
       "OM26-H4": {
         "solve_released": true,
-        "assignment": "OM26-H4-WP04",
+        "assignment": "OM26-H4-WP05",
         "agent_state": "LEASED_NOT_LAUNCHED",
         "closed": false,
         "predecessor": {
-          "assignment": "OM26-H4-WP03",
+          "assignment": "OM26-H4-WP04",
           "agent_state": "ACCEPTED",
           "closed": true,
           "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION"
@@ -155,7 +155,7 @@
     },
     "summary": {
       "released_hills": 7,
-      "accepted_agents": 26,
+      "accepted_agents": 27,
       "leased_not_launched_agents": 9,
       "launched_agents": 0,
       "returned_unadjudicated_agents": 0
@@ -2274,10 +2274,10 @@
       "obligation": "WP04",
       "external_hill_id": "alejandrozu/collatz-modular-descent",
       "slot_binding": "OM26-H4",
-      "state": "LEASED_NOT_LAUNCHED",
+      "state": "ACCEPTED",
       "priority": "P0",
       "lease": {
-        "state": "LEASED",
+        "state": "CLOSED_AFTER_RETURN",
         "dispatch_id": "OM26-H4-WP04-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-404",
         "dispatch_issue_number": 615,
@@ -2285,7 +2285,7 @@
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/615",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/615",
         "readback_verified": false,
-        "execution_authorized": true,
+        "execution_authorized": false,
         "activation_condition": "PROTECTED_MERGE_OF_LIFECYCLE_CANDIDATE"
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H4-WP04-IA-001.md",
@@ -2318,21 +2318,21 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Executable only after the lifecycle candidate is protected.",
+      "successor_gate": "Closed automatically; OM26-H4-WP05 owns replay closure.",
       "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H4-WP04-IA-001.md",
       "dispatch_record": "contributions/OPENMATH-2026/OM26-H4/WP04/dispatches/OM26-H4-WP04-IA-001.json",
       "lifecycle": {
         "prepared": true,
         "leased": true,
-        "launched": false,
-        "launch_receipt": null,
-        "returned": false,
-        "captured": false,
-        "replayed": false,
-        "adjudication": "NOT_STARTED",
-        "pipeline_state": "READY",
+        "launched": true,
+        "launch_receipt": "RETURN_PROVES_EXECUTION_OCCURRED",
+        "returned": true,
+        "captured": true,
+        "replayed": true,
+        "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+        "pipeline_state": "ADVANCED",
         "certification": "NOT_ELIGIBLE",
-        "closed": false
+        "closed": true
       }
     },
     {
@@ -3469,6 +3469,76 @@
         "certification": "NOT_ELIGIBLE",
         "closed": false
       }
+    },
+    {
+      "assignment_id": "OM26-H4-WP05",
+      "lane_role": "PRIMARY",
+      "support_slot": null,
+      "class": "MATHEMATICAL_RESEARCH",
+      "hill": "OM26-H4",
+      "obligation": "WP05",
+      "external_hill_id": "alejandrozu/collatz-modular-descent",
+      "slot_binding": "OM26-H4",
+      "state": "LEASED_NOT_LAUNCHED",
+      "priority": "P0",
+      "lease": {
+        "state": "LEASED",
+        "dispatch_id": "OM26-H4-WP05-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-405",
+        "dispatch_issue_number": 631,
+        "protected_lease_commit": "45847cfb1d3f084d7f8afde09c51b42cce6e32fc",
+        "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/631",
+        "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/631",
+        "readback_verified": false,
+        "execution_authorized": true,
+        "activation_condition": "PROTECTED_MERGE_OF_LIFECYCLE_CANDIDATE"
+      },
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H4-WP05-IA-001.md",
+      "work_package_url": "https://github.com/grandchallenge/MATHSOLVE/blob/45847cfb1d3f084d7f8afde09c51b42cce6e32fc/handoffs/OPENMATH-2026/jobs/OM26-H4-WP05-IA-001.md",
+      "operation_contract": ".gcl/operations/OM26-H4-WP05-IA-001/OPERATION.json",
+      "prerequisites": {
+        "predecessor_assignment": "OM26-H4-WP04",
+        "predecessor_adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "main_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "path": "reports/discovery/openmath_2026/unassigned_sources/collatz-modular-descent/SOURCE_LOCK.json",
+          "blob_sha1": "4ec9e0cdad3bc572b4577809d0323f9c670a379c"
+        },
+        "solve_release": true
+      },
+      "permissions": {
+        "source_reconnaissance": false,
+        "hill_specific_mathematics": true,
+        "finite_exact_computation": true,
+        "public_source_replay": true,
+        "competition_submission": false,
+        "certification": false,
+        "canonical_claim_mutation": false
+      },
+      "completion": [
+        "REPLAY_CLOSURE_VALIDATED",
+        "REPLAY_CLOSURE_COUNTEREXAMPLE",
+        "EXACT_BLOCKER"
+      ],
+      "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+      "successor_gate": "Executable only after the lifecycle candidate is protected.",
+      "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H4-WP05-IA-001.md",
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H4/WP05/dispatches/OM26-H4-WP05-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": false,
+        "launch_receipt": null,
+        "returned": false,
+        "captured": false,
+        "replayed": false,
+        "adjudication": "NOT_STARTED",
+        "pipeline_state": "READY",
+        "certification": "NOT_ELIGIBLE",
+        "closed": false
+      }
     }
   ],
   "launch_contract": {
@@ -3517,16 +3587,15 @@
         "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/c88671e9f8c86d1dbc67d147d9e4ca570b5fbc6e/handoffs/OPENMATH-2026/launch/OM26-H3-WP05.md"
       },
       "OM26-H4": {
-        "path": "handoffs/OPENMATH-2026/launch/OM26-H4-WP04.md",
+        "path": "handoffs/OPENMATH-2026/launch/OM26-H4-WP05.md",
         "executable": true,
-        "assignment_id": "OM26-H4-WP04",
-        "dispatch_id": "OM26-H4-WP04-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-404",
-        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/615",
-        "task_commit": "a5885d05e09647b5b3cda496fe1598ebb3874a15",
-        "task_blob_sha1": "433ae4dfb1e18a258b0c4b7c284a0f3551c3de64",
-        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/a5885d05e09647b5b3cda496fe1598ebb3874a15/handoffs/OPENMATH-2026/launch/OM26-H4-WP04.md",
-        "lane_role": "PRIMARY"
+        "assignment_id": "OM26-H4-WP05",
+        "dispatch_id": "OM26-H4-WP05-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-405",
+        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/631",
+        "task_commit": "45847cfb1d3f084d7f8afde09c51b42cce6e32fc",
+        "task_blob_sha1": "24b3345c75537ea9efc3f722bfb1a45a62402894",
+        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/45847cfb1d3f084d7f8afde09c51b42cce6e32fc/handoffs/OPENMATH-2026/launch/OM26-H4-WP05.md"
       },
       "OM26-H5": {
         "path": "handoffs/OPENMATH-2026/launch/OM26-H5-WP04.md",
