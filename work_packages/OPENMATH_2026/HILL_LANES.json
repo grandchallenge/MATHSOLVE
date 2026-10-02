@@ -92,7 +92,7 @@
         "dispatch_id": "OM26-H1-WP06-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-106",
         "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/649",
-        "protected_merge": "PROTECTED_LIFECYCLE_CANDIDATE",
+        "protected_merge": "a665b83f28e6b9701a24f4afd29de725f2c6046a",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,

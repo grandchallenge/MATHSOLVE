@@ -58,7 +58,7 @@ The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUD
 
 ## Current task links
 
-- H1: PENDING_CONTENT_COMMIT
+- H1: https://github.com/grandchallenge/MATHSOLVE/blob/a665b83f28e6b9701a24f4afd29de725f2c6046a/handoffs/OPENMATH-2026/launch/OM26-H1-WP06.md
 - H2: https://github.com/grandchallenge/MATHSOLVE/blob/fb7d73f2e91ef13674853979835fe80725f6cf65/handoffs/OPENMATH-2026/launch/OM26-H2-WP07.md
 - H3: https://github.com/grandchallenge/MATHSOLVE/blob/b147068dd2fa9ed21178e0caec85121f5ecb5ec9/handoffs/OPENMATH-2026/launch/OM26-H3-WP06.md
 - H4: https://github.com/grandchallenge/MATHSOLVE/blob/45847cfb1d3f084d7f8afde09c51b42cce6e32fc/handoffs/OPENMATH-2026/launch/OM26-H4-WP05.md
