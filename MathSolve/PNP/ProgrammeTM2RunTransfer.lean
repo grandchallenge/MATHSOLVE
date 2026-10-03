@@ -126,8 +126,9 @@ theorem programmeTM2_terminalResult_eq
         simp [ProgrammeMachine.output, haccept, hne]
       rw [houtNone] at hout
       contradiction
+    have hreject_ne_accept : M.reject ≠ M.accept := Ne.symm M.accept_ne_reject
     have hout' : some false = some result := by
-      simpa [ProgrammeMachine.output, haccept, hreject] using hout
+      simpa [ProgrammeMachine.output, haccept, hreject, hreject_ne_accept] using hout
     have hresult : result = false := (Option.some.inj hout').symm
     subst result
     simp [haccept]
