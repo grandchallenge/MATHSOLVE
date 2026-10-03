@@ -38,7 +38,11 @@ theorem programmeTM2_step_terminal_accept
   apply congrArg some
   apply programmeTM2Cfg_ext
   · rfl
-  · exact hcontrol.symm
+  · cases var with
+    | mk mode control inputSymbol workSymbol snapshotControl snapshotInputSymbol snapshotWorkSymbol =>
+        simp only at hcontrol ⊢
+        subst control
+        rfl
   · intro k
     cases k <;> rfl
 
@@ -68,7 +72,11 @@ theorem programmeTM2_step_terminal_reject
   apply congrArg some
   apply programmeTM2Cfg_ext
   · rfl
-  · exact hcontrol.symm
+  · cases var with
+    | mk mode control inputSymbol workSymbol snapshotControl snapshotInputSymbol snapshotWorkSymbol =>
+        simp only at hcontrol ⊢
+        subst control
+        rfl
   · intro k
     cases k <;> rfl
 
