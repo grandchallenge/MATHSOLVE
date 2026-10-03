@@ -116,7 +116,7 @@ premises?
 WP08-D001 = CLOSED_NEGATIVE
 WP08-D002 = CLOSED_LOCAL
 WP08-D003 = CLOSED_LOCAL
-WP08-D004 = ACTIVE_PREPARATION
+WP08-D004 = ACTIVE_EXTERNAL_EVIDENCE
 
 UC-P04 = OPEN
 UC-FRANKL = OPEN_PROBLEM
@@ -148,8 +148,9 @@ before integration.
 
 Immutable task commit: `283a82b53c36c999805805df94fde24e0af578ee`.
 
-Current dispatch state is `PENDING_GITHUB_ISSUE_BINDING`. The issues are not
-executable return surfaces until the UC CEI profile and this packet are
-protected, each issue body is verified byte-identical to its bootstrap, and a
-fresh protected activation changes the dispatch state to
-`READY_FOR_GITHUB_COMMENT`.
+Current dispatch state is `READY_FOR_GITHUB_COMMENT`. The UC CEI profile is
+protected at Programme commit `c70bf336ec598bb8654cc465306c6cf3a871341e`,
+the task packet is protected at Solve commit
+`7ce9e3b93c92510d574dd6ff9d31d6716915f8fc`, and issues #721-#725 were verified
+byte-identical to their protected bootstraps before activation. The durable
+activation record is `contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/ACTIVATION_RECEIPT.json`.

@@ -28,9 +28,12 @@
   "canonical_mutation_authorized": false,
   "certification_authorized": false,
   "protected_lease_required": true,
-  "dispatch_status": "PENDING_GITHUB_ISSUE_BINDING",
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
   "first_valid_result_lock": "dispatch_level_protected_raw_existence",
   "external_sources_policy": "PROTECTED_PACKET_ONLY",
   "supplementary_artifacts_allowed": false,
-  "claim_boundary": "Receipt is evidence only. It does not adjudicate mathematics, close UC-P04, prove UC-FRANKL, or authorize certification or claim promotion."
+  "claim_boundary": "Receipt is evidence only. It does not adjudicate mathematics, close UC-P04, prove UC-FRANKL, or authorize certification or claim promotion.",
+  "activation_receipt_path": "contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/ACTIVATION_RECEIPT.json",
+  "activation_bound_solve_commit": "7ce9e3b93c92510d574dd6ff9d31d6716915f8fc",
+  "activation_bound_programme_commit": "c70bf336ec598bb8654cc465306c6cf3a871341e"
 }

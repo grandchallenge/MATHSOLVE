@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_DISPATCH_ACTIVATION_RECEIPT",
+  "receipt_id": "UC-WP08-D004-ACTIVATION-001",
+  "campaign": "UC-001",
+  "work_package": "WP08-D004",
+  "activation_date": "2026-10-03",
+  "protected_task_packet_merge_commit": "7ce9e3b93c92510d574dd6ff9d31d6716915f8fc",
+  "protected_programme_cei_commit": "c70bf336ec598bb8654cc465306c6cf3a871341e",
+  "programme_controller_id": "MP-EXTERNAL-INTAKE-PR-CONTROLLER-001",
+  "programme_controller_profile": "UC-001/WP08-D004",
+  "immutable_task_commit": "283a82b53c36c999805805df94fde24e0af578ee",
+  "issue_bindings": [
+    {
+      "dispatch_id": "UC-WP08-D004-WP01-IA-001",
+      "github_issue_number": 721,
+      "github_issue_title": "[GCL-CONTRIB] UC-001 UC-WP08-D004-WP01-IA-001 — PRINCIPAL-INCIDENCE",
+      "protected_bootstrap_blob_sha1": "f136250573e0748e471287b2155aba26c3924e7e",
+      "protected_bootstrap_sha256": "35015f49cd8c3d494d41957e6d66d4ee81621624b8af954190e4727cceaaec14",
+      "observed_issue_body_sha256": "35015f49cd8c3d494d41957e6d66d4ee81621624b8af954190e4727cceaaec14",
+      "issue_body_byte_equal_to_protected_bootstrap": true
+    },
+    {
+      "dispatch_id": "UC-WP08-D004-WP02-IA-001",
+      "github_issue_number": 722,
+      "github_issue_title": "[GCL-CONTRIB] UC-001 UC-WP08-D004-WP02-IA-001 — JOIN-IRREDUCIBLE-INCIDENCE",
+      "protected_bootstrap_blob_sha1": "3b3f5a8b91419853a55ee1091dd67823fd004461",
+      "protected_bootstrap_sha256": "2e2116224677d4e16c7d9079c578579f60ebf5214e28e9ba29c0b5737025c292",
+      "observed_issue_body_sha256": "2e2116224677d4e16c7d9079c578579f60ebf5214e28e9ba29c0b5737025c292",
+      "issue_body_byte_equal_to_protected_bootstrap": true
+    },
+    {
+      "dispatch_id": "UC-WP08-D004-WP03-IA-001",
+      "github_issue_number": 723,
+      "github_issue_title": "[GCL-CONTRIB] UC-001 UC-WP08-D004-WP03-IA-001 — IMPLICATION-SEMANTICS",
+      "protected_bootstrap_blob_sha1": "fcd698564cac4f8777dc29c650cc78fb367c5849",
+      "protected_bootstrap_sha256": "c1da0c62ad8cf0198769901d4dcb4d436248ffe9507ede6f749a99af69dc7e75",
+      "observed_issue_body_sha256": "c1da0c62ad8cf0198769901d4dcb4d436248ffe9507ede6f749a99af69dc7e75",
+      "issue_body_byte_equal_to_protected_bootstrap": true
+    },
+    {
+      "dispatch_id": "UC-WP08-D004-WP04-IA-001",
+      "github_issue_number": 724,
+      "github_issue_title": "[GCL-CONTRIB] UC-001 UC-WP08-D004-WP04-IA-001 — WP05-FREQUENCY-TRANSLATION",
+      "protected_bootstrap_blob_sha1": "87704c105d03ae743fa4aa4e9b51df5152f81d70",
+      "protected_bootstrap_sha256": "e22f4a987cf4c88f94cf20a0ae89fa4dce00a703a328aee6cd4659f0e1426bd0",
+      "observed_issue_body_sha256": "e22f4a987cf4c88f94cf20a0ae89fa4dce00a703a328aee6cd4659f0e1426bd0",
+      "issue_body_byte_equal_to_protected_bootstrap": true
+    },
+    {
+      "dispatch_id": "UC-WP08-D004-WP05-IA-001",
+      "github_issue_number": 725,
+      "github_issue_title": "[GCL-CONTRIB] UC-001 UC-WP08-D004-WP05-IA-001 — ADVERSARIAL-REPRESENTATION-AUDIT",
+      "protected_bootstrap_blob_sha1": "8b9c7889e62a8bc0c21d495c1dced7b184ccbac8",
+      "protected_bootstrap_sha256": "f05fed77ded8f83db53f2b39a104ee243d6c0c19433bfb6387ca8445341571f4",
+      "observed_issue_body_sha256": "f05fed77ded8f83db53f2b39a104ee243d6c0c19433bfb6387ca8445341571f4",
+      "issue_body_byte_equal_to_protected_bootstrap": true
+    }
+  ],
+  "all_issue_bodies_verified_byte_equal": true,
+  "dispatch_state_after_activation": "READY_FOR_GITHUB_COMMENT",
+  "blind_cohort_state_after_activation": "OPEN_AWAITING_RESULTS",
+  "cross_disclosure_before_cohort_closure": false,
+  "synthesis_allowed_before_cohort_closure": false,
+  "canonical_mutation_authorized": false,
+  "mathematical_adjudication_performed": false,
+  "certification_effect": false,
+  "claim_boundary": "Activation opens the governed evidence return channel only. It does not validate any contributor result, close UC-P04, prove UC-FRANKL, or authorize claim promotion."
+}

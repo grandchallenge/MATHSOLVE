@@ -80,6 +80,49 @@ def main() -> int:
         except Exception as exc:
             errors.append(str(exc))
 
+    registry_path = BASE / "DISPATCH_REGISTRY.json"
+    if not registry_path.is_file():
+        errors.append("missing dispatch registry")
+    else:
+        registry = json.loads(registry_path.read_text())
+        statuses = [
+            json.loads((BASE / "dispatches" / f"{dispatch_id}.json").read_text()).get("dispatch_status")
+            for dispatch_id in EXPECTED
+        ]
+        if all(status == "READY_FOR_GITHUB_COMMENT" for status in statuses):
+            if registry.get("state") != "ACTIVE_EXTERNAL_EVIDENCE":
+                errors.append("active dispatches require ACTIVE_EXTERNAL_EVIDENCE registry state")
+            receipt_path = BASE / "ACTIVATION_RECEIPT.json"
+            if not receipt_path.is_file():
+                errors.append("active dispatches require activation receipt")
+            else:
+                receipt = json.loads(receipt_path.read_text())
+                if receipt.get("protected_task_packet_merge_commit") != "7ce9e3b93c92510d574dd6ff9d31d6716915f8fc":
+                    errors.append("activation receipt Solve packet identity drift")
+                if receipt.get("protected_programme_cei_commit") != "c70bf336ec598bb8654cc465306c6cf3a871341e":
+                    errors.append("activation receipt Programme CEI identity drift")
+                if receipt.get("all_issue_bodies_verified_byte_equal") is not True:
+                    errors.append("activation receipt lacks exact issue-byte verification")
+                bindings = {
+                    item.get("dispatch_id"): item
+                    for item in receipt.get("issue_bindings", [])
+                    if isinstance(item, dict)
+                }
+                for dispatch_id, (issue, _, _, _) in EXPECTED.items():
+                    d = json.loads((BASE / "dispatches" / f"{dispatch_id}.json").read_text())
+                    item = bindings.get(dispatch_id)
+                    if item is None:
+                        errors.append(f"{dispatch_id}: activation binding missing")
+                        continue
+                    if item.get("github_issue_number") != issue:
+                        errors.append(f"{dispatch_id}: activation issue number drift")
+                    if item.get("protected_bootstrap_sha256") != d.get("bootstrap_sha256"):
+                        errors.append(f"{dispatch_id}: activation bootstrap digest drift")
+                    if item.get("observed_issue_body_sha256") != d.get("bootstrap_sha256"):
+                        errors.append(f"{dispatch_id}: observed issue-body digest drift")
+                    if item.get("issue_body_byte_equal_to_protected_bootstrap") is not True:
+                        errors.append(f"{dispatch_id}: issue-byte equality not established")
+
     cohort_path=BASE/"cohorts"/f"{COHORT}.json"
     if not cohort_path.is_file():
         errors.append("missing blind cohort record")
@@ -92,6 +135,8 @@ def main() -> int:
             errors.append("blind cohort cross-disclosure must be false")
         if c.get("synthesis_allowed") is not False:
             errors.append("blind cohort synthesis must remain false before closure")
+        if c.get("state") not in {"PREPARED_PENDING_GITHUB_ISSUE_BINDING", "OPEN_AWAITING_RESULTS"}:
+            errors.append("blind cohort state drift")
 
     if errors:
         for e in errors:

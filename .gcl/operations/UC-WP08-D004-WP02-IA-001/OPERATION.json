@@ -33,5 +33,8 @@
   "canonical_mutation_authorized": false,
   "mathematical_adjudication_authorized": false,
   "certification_authorized": false,
-  "lifecycle_state": "PREPARED_PENDING_GITHUB_ISSUE_BINDING"
+  "lifecycle_state": "READY_FOR_GITHUB_COMMENT",
+  "activation_receipt_path": "contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/ACTIVATION_RECEIPT.json",
+  "activation_bound_solve_commit": "7ce9e3b93c92510d574dd6ff9d31d6716915f8fc",
+  "activation_bound_programme_commit": "c70bf336ec598bb8654cc465306c6cf3a871341e"
 }
