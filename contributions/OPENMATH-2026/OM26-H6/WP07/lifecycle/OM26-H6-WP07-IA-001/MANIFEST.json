@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_LIFECYCLE_CANDIDATE",
+  "campaign": "OPENMATH-2026",
+  "dispatch_id": "OM26-H6-WP07-IA-001",
+  "assignment_id": "OM26-H6-WP07",
+  "hill": "OM26-H6",
+  "comment_id": 5964228162,
+  "pipeline": [
+    "RETURNED",
+    "CAPTURED",
+    "REPLAYED",
+    "ADJUDICATED",
+    "ADVANCED"
+  ],
+  "programme_projection_path": "contributions/OPENMATH-2026/OM26-H6/WP07/lifecycle/OM26-H6-WP07-IA-001/PROGRAMME_PROJECTION.json",
+  "successor_assignment": "OM26-H6-WP08",
+  "successor_dispatch": "OM26-H6-WP08-IA-001",
+  "successor_agent": "INDEPENDENT-AGENT-608",
+  "successor_issue": 680,
+  "changed_paths": [
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+    ".gcl/operations/OM26-H6-WP08-IA-001/OPERATION.json",
+    "contributions/OPENMATH-2026/OM26-H6/WP07/lifecycle/OM26-H6-WP07-IA-001/ADJUDICATION.json",
+    "contributions/OPENMATH-2026/OM26-H6/WP07/lifecycle/OM26-H6-WP07-IA-001/MANIFEST.json",
+    "contributions/OPENMATH-2026/OM26-H6/WP07/lifecycle/OM26-H6-WP07-IA-001/PROGRAMME_PROJECTION.json",
+    "contributions/OPENMATH-2026/OM26-H6/WP07/lifecycle/OM26-H6-WP07-IA-001/REPLAY.json",
+    "contributions/OPENMATH-2026/OM26-H6/WP07/raw/OM26-H6-WP07-IA-001/github-comment-5964228162.md",
+    "contributions/OPENMATH-2026/OM26-H6/WP07/receipts/OM26-H6-WP07-IA-001/github-comment-5964228162.json",
+    "contributions/OPENMATH-2026/OM26-H6/WP08/dispatches/OM26-H6-WP08-IA-001.json",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
+    "handoffs/OPENMATH-2026/jobs/OM26-H6-WP08-IA-001.md",
+    "handoffs/OPENMATH-2026/launch/OM26-H6-WP08.md",
+    "handoffs/OPENMATH-2026/launch/README.md",
+    "work_packages/OPENMATH_2026/COMPETITION_PACKETS/SECTION8_EVIDENCE_REVIEW_QUEUE.json",
+    "work_packages/OPENMATH_2026/HILL_LANES.json"
+  ],
+  "certification_effect": false,
+  "competition_effect": false
+}

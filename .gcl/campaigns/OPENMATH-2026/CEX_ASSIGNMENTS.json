@@ -130,11 +130,11 @@
       },
       "OM26-H6": {
         "solve_released": true,
-        "assignment": "OM26-H6-WP07",
+        "assignment": "OM26-H6-WP08",
         "agent_state": "LEASED_NOT_LAUNCHED",
         "closed": false,
         "predecessor": {
-          "assignment": "OM26-H6-WP06",
+          "assignment": "OM26-H6-WP07",
           "agent_state": "ACCEPTED",
           "closed": true,
           "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION"
@@ -155,7 +155,7 @@
     },
     "summary": {
       "released_hills": 7,
-      "accepted_agents": 37,
+      "accepted_agents": 38,
       "leased_not_launched_agents": 9,
       "launched_agents": 0,
       "returned_unadjudicated_agents": 0
@@ -4263,10 +4263,10 @@
       "obligation": "WP07",
       "external_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
       "slot_binding": "OM26-H6",
-      "state": "LEASED_NOT_LAUNCHED",
+      "state": "ACCEPTED",
       "priority": "P0",
       "lease": {
-        "state": "LEASED",
+        "state": "CLOSED_AFTER_RETURN",
         "dispatch_id": "OM26-H6-WP07-IA-001",
         "agent_ref": "INDEPENDENT-AGENT-607",
         "dispatch_issue_number": 656,
@@ -4274,7 +4274,7 @@
         "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/656",
         "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/656",
         "readback_verified": false,
-        "execution_authorized": true,
+        "execution_authorized": false,
         "activation_condition": "PROTECTED_MERGE_OF_LIFECYCLE_CANDIDATE"
       },
       "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H6-WP07-IA-001.md",
@@ -4307,21 +4307,21 @@
         "EXACT_BLOCKER"
       ],
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-      "successor_gate": "Executable only after the lifecycle candidate is protected.",
+      "successor_gate": "Closed automatically; OM26-H6-WP08 owns replay closure.",
       "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H6-WP07-IA-001.md",
       "dispatch_record": "contributions/OPENMATH-2026/OM26-H6/WP07/dispatches/OM26-H6-WP07-IA-001.json",
       "lifecycle": {
         "prepared": true,
         "leased": true,
-        "launched": false,
-        "launch_receipt": null,
-        "returned": false,
-        "captured": false,
-        "replayed": false,
-        "adjudication": "NOT_STARTED",
-        "pipeline_state": "READY",
+        "launched": true,
+        "launch_receipt": "RETURN_PROVES_EXECUTION_OCCURRED",
+        "returned": true,
+        "captured": true,
+        "replayed": true,
+        "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+        "pipeline_state": "ADVANCED",
         "certification": "NOT_ELIGIBLE",
-        "closed": false
+        "closed": true
       }
     },
     {
@@ -4463,6 +4463,76 @@
         "certification": "NOT_ELIGIBLE",
         "closed": false
       }
+    },
+    {
+      "assignment_id": "OM26-H6-WP08",
+      "lane_role": "PRIMARY",
+      "support_slot": null,
+      "class": "MATHEMATICAL_RESEARCH",
+      "hill": "OM26-H6",
+      "obligation": "WP08",
+      "external_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
+      "slot_binding": "OM26-H6",
+      "state": "LEASED_NOT_LAUNCHED",
+      "priority": "P0",
+      "lease": {
+        "state": "LEASED",
+        "dispatch_id": "OM26-H6-WP08-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-608",
+        "dispatch_issue_number": 680,
+        "protected_lease_commit": "PENDING_CONTENT_COMMIT",
+        "dispatch_url": "https://github.com/grandchallenge/MATHSOLVE/issues/680",
+        "return_url": "https://github.com/grandchallenge/MATHSOLVE/issues/680",
+        "readback_verified": false,
+        "execution_authorized": true,
+        "activation_condition": "PROTECTED_MERGE_OF_LIFECYCLE_CANDIDATE"
+      },
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H6-WP08-IA-001.md",
+      "work_package_url": "PENDING_CONTENT_COMMIT",
+      "operation_contract": ".gcl/operations/OM26-H6-WP08-IA-001/OPERATION.json",
+      "prerequisites": {
+        "predecessor_assignment": "OM26-H6-WP07",
+        "predecessor_adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+        "protected_source_lock_required": true,
+        "source_lock": {
+          "repository": "grandchallenge/MATHFORGE",
+          "main_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+          "path": "reports/discovery/openmath_2026/unassigned_sources/matrix-multiplication-tensor-3x3/SOURCE_LOCK.json",
+          "blob_sha1": "a7ec3fc86696698ba729632ae16397e05189221b"
+        },
+        "solve_release": true
+      },
+      "permissions": {
+        "source_reconnaissance": false,
+        "hill_specific_mathematics": true,
+        "finite_exact_computation": true,
+        "public_source_replay": true,
+        "competition_submission": false,
+        "certification": false,
+        "canonical_claim_mutation": false
+      },
+      "completion": [
+        "REPLAY_CLOSURE_VALIDATED",
+        "REPLAY_CLOSURE_COUNTEREXAMPLE",
+        "EXACT_BLOCKER"
+      ],
+      "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+      "successor_gate": "Executable only after the lifecycle candidate is protected.",
+      "source_work_package": "handoffs/OPENMATH-2026/jobs/OM26-H6-WP08-IA-001.md",
+      "dispatch_record": "contributions/OPENMATH-2026/OM26-H6/WP08/dispatches/OM26-H6-WP08-IA-001.json",
+      "lifecycle": {
+        "prepared": true,
+        "leased": true,
+        "launched": false,
+        "launch_receipt": null,
+        "returned": false,
+        "captured": false,
+        "replayed": false,
+        "adjudication": "NOT_STARTED",
+        "pipeline_state": "READY",
+        "certification": "NOT_ELIGIBLE",
+        "closed": false
+      }
     }
   ],
   "launch_contract": {
@@ -4533,15 +4603,15 @@
         "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/d3d973eb27311f27fecc879c74491b0faebfc462/handoffs/OPENMATH-2026/launch/OM26-H5-WP06.md"
       },
       "OM26-H6": {
-        "path": "handoffs/OPENMATH-2026/launch/OM26-H6-WP07.md",
+        "path": "handoffs/OPENMATH-2026/launch/OM26-H6-WP08.md",
         "executable": true,
-        "assignment_id": "OM26-H6-WP07",
-        "dispatch_id": "OM26-H6-WP07-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-607",
-        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/656",
-        "task_commit": "f032431add540011337df1992ded8dffdf0036ae",
-        "task_blob_sha1": "3b3456a1e810e95ff3ee7a437170a1eb4dec502f",
-        "task_url": "https://github.com/grandchallenge/MATHSOLVE/blob/f032431add540011337df1992ded8dffdf0036ae/handoffs/OPENMATH-2026/launch/OM26-H6-WP07.md"
+        "assignment_id": "OM26-H6-WP08",
+        "dispatch_id": "OM26-H6-WP08-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-608",
+        "intended_return": "https://github.com/grandchallenge/MATHSOLVE/issues/680",
+        "task_commit": "PENDING_CONTENT_COMMIT",
+        "task_blob_sha1": "064a95fab6af8b1be0a7b7281872e61e0091af7b",
+        "task_url": "PENDING_CONTENT_COMMIT"
       },
       "OM26-H7": {
         "path": "handoffs/OPENMATH-2026/launch/OM26-H7-WP06.md",
