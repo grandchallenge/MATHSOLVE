@@ -3,22 +3,22 @@
   "controller_id": "YM-D003-MRS-R002-CONTROLLER",
   "campaign_id": "YM-001",
   "target_id": "YM-D003-MRS-R002",
-  "state": "R2P1_SHARPLY_REDUCED__R2P1_C_NEW_NATIVE_THEOREM_REQUIRED",
+  "state": "R2P1_C_PROOF_PROGRAM_INSTANTIATED__C0_GRAMMAR_FIRST",
   "exact_binds": {
     "grandchallenge/MATH-PROGRAMME": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
     "grandchallenge/MATHFORGE": "9b6413a7ca5972b7d724ea8f1594c01b8f46cf45",
-    "grandchallenge/MATHSOLVE": "20a1f4565bc99c383492894904047af6659fd6ad",
+    "grandchallenge/MATHSOLVE": "1716d39a228e71b2b9f16f902dda32694d62557a",
     "grandchallenge/MATHCERT": "3ffeaf5697a2590c10649fee6baf3b830b4347d9",
     "grandchallenge/INTELLECT": "cacfe1f749b91a335e1d1734352cecff56bad7c1"
   },
-  "current_frontier": "YM-D003-MRS-R002-R2P1-C__MRS_RENORMALIZED_TWO_POINT_SUBGRAPH_THEOREM",
+  "current_frontier": "YM-D003-MRS-R002-R2P1-C0__EXACT_RENORMALIZED_TWO_POINT_GRAMMAR",
   "balaban_state": "EXTERNAL_PRIMARY_SOURCE_BYTE_ACCESS_REQUIRED__AUTOMATED_DISCOVERY_EXHAUSTED__NO_FURTHER_SEARCH_REPLAY",
   "external_wp_state": {
     "WP-A": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5967005635",
     "WP-B": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5966952070",
     "WP-C": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5966936787"
   },
-  "controller_next_action": "Develop a new MRS-specific constructive proof of R2P1-C: define the renormalized local 1PI two-point polymer/subgraph norm and prove a UV-depth-uniform summability/remainder/mass-response bound by simultaneous induction with the running mass counterterm. Existing source material does not supply this theorem and global Schwinger convergence may not be assumed.",
+  "controller_next_action": "Execute R2P1-C0 first: reconstruct an exact finite-cutoff MRS renormalized local 1PI two-point polymer/subgraph grammar from the admitted Section V.E/VII operations and the FMRS1 dependency template, without assuming convergence. Then prove or sharply falsify closure of this class under horizontal/vertical decoupling, Mayer hard-core removal, local A^2/2 projection, and nested two-point subtraction. Only after C0 is stable may a norm be proposed in C1.",
   "legitimate_stop_conditions": [
     "governance_or_authority_change",
     "authentication_or_safety_boundary",
@@ -37,7 +37,7 @@
     "node_selected": true,
     "selected_node": "YM-D003-MRS-R002-MT1"
   },
-  "current_boundary": "MISSING_MRS_SPECIFIC_RENORMALIZED_1PI_TWO_POINT_POLYMER_SUBGRAPH_BOUND__NEW_NATIVE_PROOF_REQUIRED",
+  "current_boundary": "ACTIVE_NATIVE_PROOF__R2P1_C0_EXACT_TWO_POINT_GRAMMAR",
   "native_reduction": {
     "MT1-A": "REDUCED_TO_UNIFORM_MRS_1PI_MASS_RESPONSE_CONTROL",
     "MT1-A1": "MT1_NOT_STRICTLY_UPSTREAM__COUPLED_TO_LOCAL_RENORMALIZED_TWO_POINT_POLYMER_BOUND",
@@ -47,5 +47,19 @@
       "9b6413a7ca5972b7d724ea8f1594c01b8f46cf45"
     ],
     "R2P1": "REDUCED__MISSING_MRS_SPECIFIC_RENORMALIZED_1PI_TWO_POINT_POLYMER_NORM_AND_SUBGRAPH_BOUND"
+  },
+  "r2p1_c_program": {
+    "status": "ACTIVE",
+    "protected_base": "1716d39a228e71b2b9f16f902dda32694d62557a",
+    "theorem": "YM-D003-MRS-R002-R2P1-C",
+    "sequence": [
+      "C0_EXACT_RENORMALIZED_TWO_POINT_GRAMMAR",
+      "C1_CANDIDATE_NORM_AND_ROOTED_POLYMER_MAJORANT",
+      "C2_LINK_TREE_SUMMABILITY_FROM_VII_1_DECAY",
+      "C3_LOCAL_SUBTRACTION_REMAINDER_SCALE_GAIN",
+      "C4_MASS_RESPONSE_AND_SIMULTANEOUS_INDUCTION",
+      "C5_BACKGROUND_GAUGE_AND_SECTION_VI_COMPATIBILITY"
+    ],
+    "anti_circularity": "No global Schwinger/polymer convergence may be assumed to prove C0-C5."
   }
 }
