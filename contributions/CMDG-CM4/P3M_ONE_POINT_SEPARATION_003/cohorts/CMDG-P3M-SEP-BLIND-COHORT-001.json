@@ -4,7 +4,7 @@
   "cohort_id": "CMDG-P3M-SEP-BLIND-COHORT-001",
   "campaign": "CMDG-CM4",
   "work_package": "P3-M-ONE-POINT-SEPARATION-003",
-  "state": "OPEN",
+  "state": "CLOSED_EVIDENCE_COMPLETE",
   "mode": "independent_blind",
   "dispatch_ids": [
     "CMDG-P3M-SEP-WP-A-IA-001",
@@ -15,10 +15,14 @@
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
   "intake_channel": "github_issue_comment",
   "cross_disclosure_before_closure": false,
-  "synthesis_allowed": false,
+  "synthesis_allowed": true,
   "activation_condition": "SATISFIED",
   "synthesis_open_condition": "At least one valid protected constructive return from WP-A or WP-B and one valid protected adversarial return from WP-C exist; cohort closure/reconciliation must explicitly open synthesis.",
-  "claim_boundary": "Cohort activation and closure govern evidence flow only; neither certifies nor promotes a mathematical claim.",
+  "claim_boundary": "Cohort closure permits comparison and synthesis of protected returns only; it does not certify, promote, or admit a mathematical claim.",
   "protected_activation_merge": "66c235952782e7f26922c233932e5437c37d1933",
-  "issue_byte_lock_complete": true
+  "issue_byte_lock_complete": true,
+  "closed_on_evidence_commit": "26e95c754e74af54cee48931cce89100b374f9ef",
+  "closure_receipt_path": "contributions/CMDG-CM4/P3M_ONE_POINT_SEPARATION_003/COHORT_CLOSURE_RECEIPT.json",
+  "closure_reason": "CONSTRUCTIVE_AND_ADVERSARIAL_MINIMUM_DURABLY_PROTECTED__ALL_FOUR_RETURNS_PRESENT",
+  "mathematical_adjudication_performed": false
 }
