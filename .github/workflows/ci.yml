@@ -238,6 +238,7 @@ jobs:
           lake env lean MathSolve/PNP/CarrierBridge.lean
           lake env lean MathSolve/PNP/PolyBoundBridge.lean
           lake env lean MathSolve/PNP/ModelBridge.lean
+          lake env lean MathSolve/PNP/ModelBridgeClosure.lean
           lake env lean MathSolve/PNP/ProgrammeStep.lean
           lake env lean MathSolve/PNP/ProgrammeMachine.lean
           lake env lean MathSolve/PNP/TM2StepAuxSimulation.lean
