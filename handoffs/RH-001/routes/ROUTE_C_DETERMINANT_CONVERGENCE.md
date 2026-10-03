@@ -82,6 +82,7 @@ Read:
 - work_packages/RH_R053_COMPACT_TRANSFORM_STABILITY.md
 - work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md
 - work_packages/RH_R059_PAIRED_ZERO_NORMAL_FAMILY.md
+- work_packages/RH_R062_UNTOUCHED_LATTICE_TAIL.md
 - MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790:
   reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
 - MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d:
@@ -144,9 +145,27 @@ supplies no convergence theorem.
 
 ## 7. C1 — Cofinal schedule
 
+Status: PARTIALLY CONSTRAINED by RH-R062-UNTOUCHED-LATTICE-TAIL-001.
+
 The family has two parameters.
 
 Do not write lambda,N -> infinity without specifying what that means.
+
+If the schedule is intended to use the RH-R059 positive-resolvent-trace
+criterion for C4, RH-R062 proves the necessary scale
+\[
+N(\lambda)=\Omega((\log\lambda)^2).
+\]
+Indeed the untouched scaling complement alone contributes
+\[
+T_{a,N}
+=
+\sum_{j>N}\frac1{(\pi j/a)^2+1/4},
+\qquad a=\log\lambda,
+\]
+and \(T_{a,N}\to\infty\) whenever \(N=o(a^2)\).  This does not prove
+cofinal admissibility or sufficiency of a quadratic schedule; it only rules out
+subquadratic schedules for the R059 mechanism.
 
 Possible outputs:
 
@@ -265,7 +284,27 @@ obligation is to prove a uniform bound on this paired-zero/resolvent-trace
 quantity along an admitted cofinal family, or to replace it with another
 uniform condition strong enough to imply local boundedness.
 
-Do not infer the uniform bound from finiteness for each individual approximant.
+RH-R062 further decomposes the R059 burden.  The untouched complement
+\(E_N^\perp\) contributes
+\[
+T_{a,N}
+=
+\sum_{j>N}\frac1{(\pi j/a)^2+1/4},
+\qquad a=\log\lambda,
+\]
+with exact bracket
+\[
+\frac{2a}{\pi}\arctan\frac{a}{2\pi(N+1)}
+\le T_{a,N}\le
+\frac{2a}{\pi}\arctan\frac{a}{2\pi N}.
+\]
+Hence \(N=o(a^2)\) is impossible for uniform R059 control,
+\(N\sim\kappa a^2\) leaves the positive limit \(1/(\pi^2\kappa)\), and
+\(N\gg a^2\) makes only this complement tail vanish.  The finite
+\(E_N'\) block remains an independent positive contribution.
+
+Do not infer the full uniform bound from finiteness for each individual
+approximant, nor from a quadratic/superquadratic truncation schedule alone.
 
 ## 11. C5 — Identify the limit as Xi
 
@@ -306,8 +345,8 @@ A contribution is meaningful if it provides one protected result such as:
 
 1. exact canonical determinant normalization [DELIVERED: RH-R056];
 2. a theorem reducing compact-uniform determinant convergence to a quantitative eigenvector norm/rate [DELIVERED: RH-R053];
-3. a cofinal-index theorem;
-4. a Montel/local-boundedness theorem [ABSTRACT SUFFICIENT CRITERION: RH-R059; uniform CCM application still open];
+3. a cofinal-index theorem [PARTIALLY CONSTRAINED: RH-R062 rules out N=o((log lambda)^2) for the R059 mechanism];
+4. a Montel/local-boundedness theorem [ABSTRACT SUFFICIENT CRITERION: RH-R059; RH-R062 isolates the untouched-tail schedule obstruction; uniform CCM application still open];
 5. a rigorous k_lambda-to-xi_lambda estimate;
 6. a limit-identification theorem;
 7. a negative theorem showing a proposed norm/rate is insufficient [DELIVERED: RH-R053 rate dichotomy].
