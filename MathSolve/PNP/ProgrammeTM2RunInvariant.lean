@@ -404,9 +404,10 @@ theorem programmeTM2ReadyInitCfg_bounded
   · rfl
   · cases input with
     | nil =>
-        simp [programmeTM2ReadyInitCfg, programmeTM2InitStacks]
+        rfl
     | cons bit tail =>
-        simp [programmeTM2ReadyInitCfg, programmeTM2InitStacks]
+        simpa [programmeTM2ReadyInitCfg, programmeTM2InitStacks] using
+          Nat.le_succ tail.length
   · intro tape; rfl
   · intro tape; rfl
 
@@ -476,8 +477,10 @@ theorem programmeTM2_bounded_step
     rw [programmeTM2RunStepTarget_eq_core]
     change ((programmeTM2RunCore M target).2 .inputRight).length ≤
       input.length + (steps + 1)
-    have h := Nat.add_le_add_right hrep.inputRight_bound 1
-    simpa [Nat.add_assoc] using h
+    have hrun := programmeTM2RunCore_inputRight_length_le M target
+    have hbound := Nat.add_le_add_right hrep.inputRight_bound 1
+    exact hrun.trans (by
+      simpa [Nat.add_assoc] using hbound)
   · intro tape
     dsimp [target']
     rw [programmeTM2RunStepTarget_eq_core]
