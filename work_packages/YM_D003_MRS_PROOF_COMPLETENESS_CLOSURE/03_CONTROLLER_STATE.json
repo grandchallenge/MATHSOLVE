@@ -3,7 +3,7 @@
   "controller_id": "YM-D003-MRS-R002-CONTROLLER",
   "campaign_id": "YM-001",
   "target_id": "YM-D003-MRS-R002",
-  "state": "MT1_SHARPLY_REDUCED__R2P1_ACTIVE__NEW_PROOF_REQUIRED",
+  "state": "R2P1_SHARPLY_REDUCED__R2P1_C_NEW_NATIVE_THEOREM_REQUIRED",
   "exact_binds": {
     "grandchallenge/MATH-PROGRAMME": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
     "grandchallenge/MATHFORGE": "9b6413a7ca5972b7d724ea8f1594c01b8f46cf45",
@@ -11,14 +11,14 @@
     "grandchallenge/MATHCERT": "3ffeaf5697a2590c10649fee6baf3b830b4347d9",
     "grandchallenge/INTELLECT": "cacfe1f749b91a335e1d1734352cecff56bad7c1"
   },
-  "current_frontier": "YM-D003-MRS-R002-R2P1__UNIFORM_RENORMALIZED_1PI_TWO_POINT_POLYMER_BOUND_AND_MASS_RECURSION",
+  "current_frontier": "YM-D003-MRS-R002-R2P1-C__MRS_RENORMALIZED_TWO_POINT_SUBGRAPH_THEOREM",
   "balaban_state": "EXTERNAL_PRIMARY_SOURCE_BYTE_ACCESS_REQUIRED__AUTOMATED_DISCOVERY_EXHAUSTED__NO_FURTHER_SEARCH_REPLAY",
   "external_wp_state": {
     "WP-A": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5967005635",
     "WP-B": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5966952070",
     "WP-C": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5966936787"
   },
-  "controller_next_action": "Prove or sharply falsify R2P1: define the MRS renormalized local 1PI two-point polymer/subgraph sector and relevant A^2/2 projection, then establish the UV-depth-uniform subgraph bound needed for the exact mass recursion. Do not assume global Schwinger convergence or import scalar bounds.",
+  "controller_next_action": "Develop a new MRS-specific constructive proof of R2P1-C: define the renormalized local 1PI two-point polymer/subgraph norm and prove a UV-depth-uniform summability/remainder/mass-response bound by simultaneous induction with the running mass counterterm. Existing source material does not supply this theorem and global Schwinger convergence may not be assumed.",
   "legitimate_stop_conditions": [
     "governance_or_authority_change",
     "authentication_or_safety_boundary",
@@ -37,14 +37,15 @@
     "node_selected": true,
     "selected_node": "YM-D003-MRS-R002-MT1"
   },
-  "current_boundary": "NEW_MRS_SPECIFIC_TWO_POINT_POLYMER_PROOF_REQUIRED",
+  "current_boundary": "MISSING_MRS_SPECIFIC_RENORMALIZED_1PI_TWO_POINT_POLYMER_SUBGRAPH_BOUND__NEW_NATIVE_PROOF_REQUIRED",
   "native_reduction": {
     "MT1-A": "REDUCED_TO_UNIFORM_MRS_1PI_MASS_RESPONSE_CONTROL",
     "MT1-A1": "MT1_NOT_STRICTLY_UPSTREAM__COUPLED_TO_LOCAL_RENORMALIZED_TWO_POINT_POLYMER_BOUND",
-    "active_node": "YM-D003-MRS-R002-R2P1",
+    "active_node": "YM-D003-MRS-R002-R2P1-C",
     "forge_source_authority": [
       "90254084f3d06dcaad1a6a950039396ea85c23f9",
       "9b6413a7ca5972b7d724ea8f1594c01b8f46cf45"
-    ]
+    ],
+    "R2P1": "REDUCED__MISSING_MRS_SPECIFIC_RENORMALIZED_1PI_TWO_POINT_POLYMER_NORM_AND_SUBGRAPH_BOUND"
   }
 }
