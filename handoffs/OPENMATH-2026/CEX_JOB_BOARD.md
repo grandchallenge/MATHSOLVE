@@ -9,19 +9,86 @@ OPENMATH-2026 event-window execution is terminal.
 - Eight unlaunched replay successors are retired. H4-WP06 returned before terminalization and is preserved as SOURCE_BLOCKED.
 - H7 is promoted into the standalone `GCL-ERDOS3` research campaign.
 
+## Historical assignment ledger
+
+| Assignment | Hill | State | Dispatch | Agent | Return issue |
+|---|---|---|---|---|---|
+| `OM26-H1-H1-12` | `OM26-H1` | `ACCEPTED` | `OM26-H1-H1-12-IA-001` | `INDEPENDENT-AGENT-001` | #498 |
+| `OM26-H1-WP01` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP01-IA-001` | `INDEPENDENT-AGENT-101` | #553 |
+| `OM26-H1-WP02` | `OM26-H1` | `SUPERSEDED` | `OM26-H1-WP02-IA-001` | `INDEPENDENT-AGENT-102` | #563 |
+| `OM26-H1-WP03` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP03-IA-001` | `INDEPENDENT-AGENT-103` | #597 |
+| `OM26-H1-WP04` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP04-IA-001` | `INDEPENDENT-AGENT-104` | #607 |
+| `OM26-H1-WP05` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP05-IA-001` | `INDEPENDENT-AGENT-105` | #641 |
+| `OM26-H1-WP06` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP06-IA-001` | `INDEPENDENT-AGENT-106` | #649 |
+| `OM26-H1-WP07` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP07-IA-001` | `INDEPENDENT-AGENT-107` | #679 |
+| `OM26-H1-WP08` | `OM26-H1` | `SUPERSEDED` | `OM26-H1-WP08-IA-001` | `INDEPENDENT-AGENT-108` | #688 |
+| `OM26-H1-WP30` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP30-IA-001` | `INDEPENDENT-AGENT-130` | #598 |
+| `OM26-H1-WP31` | `OM26-H1` | `SUPERSEDED` | `OM26-H1-WP31-IA-001` | `INDEPENDENT-AGENT-131` | #608 |
+| `OM26-H1-WP32` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP32-IA-001` | `INDEPENDENT-AGENT-132` | #647 |
+| `OM26-H1-WP33` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP33-IA-001` | `INDEPENDENT-AGENT-133` | #659 |
+| `OM26-H1-WP34` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP34-IA-001` | `INDEPENDENT-AGENT-134` | #683 |
+| `OM26-H1-WP35` | `OM26-H1` | `SUPERSEDED` | `OM26-H1-WP35-IA-001` | `INDEPENDENT-AGENT-135` | #687 |
+| `OM26-H1-WP60` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP60-IA-001` | `INDEPENDENT-AGENT-160` | #599 |
+| `OM26-H1-WP61` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP61-IA-001` | `INDEPENDENT-AGENT-161` | #620 |
+| `OM26-H1-WP62` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP62-IA-001` | `INDEPENDENT-AGENT-162` | #632 |
+| `OM26-H1-WP63` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP63-IA-001` | `INDEPENDENT-AGENT-163` | #662 |
+| `OM26-H1-WP64` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP64-IA-001` | `INDEPENDENT-AGENT-164` | #682 |
+| `OM26-H1-WP65` | `OM26-H1` | `SUPERSEDED` | `OM26-H1-WP65-IA-001` | `INDEPENDENT-AGENT-165` | #694 |
+| `OM26-H2-WP01` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP01-IA-001` | `INDEPENDENT-AGENT-002` | #505 |
+| `OM26-H2-WP02` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP02-IA-001` | `INDEPENDENT-AGENT-008` | #526 |
+| `OM26-H2-WP03` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP03-IA-001` | `INDEPENDENT-AGENT-009` | #537 |
+| `OM26-H2-WP04` | `OM26-H2` | `SUPERSEDED` | `OM26-H2-WP04-IA-001` | `INDEPENDENT-AGENT-204` | #561 |
+| `OM26-H2-WP05` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP05-IA-001` | `INDEPENDENT-AGENT-205` | #605 |
+| `OM26-H2-WP06` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP06-IA-001` | `INDEPENDENT-AGENT-206` | #614 |
+| `OM26-H2-WP07` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP07-IA-001` | `INDEPENDENT-AGENT-207` | #630 |
+| `OM26-H2-WP08` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP08-IA-001` | `INDEPENDENT-AGENT-208` | #650 |
+| `OM26-H2-WP09` | `OM26-H2` | `ACCEPTED` | `OM26-H2-WP09-IA-001` | `INDEPENDENT-AGENT-209` | #675 |
+| `OM26-H2-WP10` | `OM26-H2` | `SUPERSEDED` | `OM26-H2-WP10-IA-001` | `INDEPENDENT-AGENT-210` | #686 |
+| `OM26-H3-WP01` | `OM26-H3` | `ACCEPTED` | `OM26-H3-WP01-IA-001` | `INDEPENDENT-AGENT-003` | #506 |
+| `OM26-H3-WP02` | `OM26-H3` | `ACCEPTED` | `OM26-H3-WP02-IA-001` | `INDEPENDENT-AGENT-302` | #545 |
+| `OM26-H3-WP03` | `OM26-H3` | `SUPERSEDED` | `OM26-H3-WP03-IA-001` | `INDEPENDENT-AGENT-303` | #562 |
+| `OM26-H3-WP04` | `OM26-H3` | `ACCEPTED` | `OM26-H3-WP04-IA-001` | `INDEPENDENT-AGENT-304` | #602 |
+| `OM26-H3-WP05` | `OM26-H3` | `SUPERSEDED` | `OM26-H3-WP05-IA-001` | `INDEPENDENT-AGENT-305` | #613 |
+| `OM26-H3-WP06` | `OM26-H3` | `ACCEPTED` | `OM26-H3-WP06-IA-001` | `INDEPENDENT-AGENT-306` | #645 |
+| `OM26-H3-WP07` | `OM26-H3` | `ACCEPTED` | `OM26-H3-WP07-IA-001` | `INDEPENDENT-AGENT-307` | #654 |
+| `OM26-H3-WP08` | `OM26-H3` | `ACCEPTED` | `OM26-H3-WP08-IA-001` | `INDEPENDENT-AGENT-308` | #677 |
+| `OM26-H3-WP09` | `OM26-H3` | `SUPERSEDED` | `OM26-H3-WP09-IA-001` | `INDEPENDENT-AGENT-309` | #698 |
+| `OM26-H4-WP01` | `OM26-H4` | `ACCEPTED` | `OM26-H4-WP01-IA-001` | `INDEPENDENT-AGENT-004` | #507 |
+| `OM26-H4-WP02` | `OM26-H4` | `SUPERSEDED` | `OM26-H4-WP02-IA-001` | `INDEPENDENT-AGENT-402` | #559 |
+| `OM26-H4-WP03` | `OM26-H4` | `ACCEPTED` | `OM26-H4-WP03-IA-001` | `INDEPENDENT-AGENT-403` | #601 |
+| `OM26-H4-WP04` | `OM26-H4` | `ACCEPTED` | `OM26-H4-WP04-IA-001` | `INDEPENDENT-AGENT-404` | #615 |
+| `OM26-H4-WP05` | `OM26-H4` | `ACCEPTED` | `OM26-H4-WP05-IA-001` | `INDEPENDENT-AGENT-405` | #631 |
+| `OM26-H4-WP06` | `OM26-H4` | `ACCEPTED` | `OM26-H4-WP06-IA-001` | `INDEPENDENT-AGENT-406` | #652 |
+| `OM26-H5-WP01` | `OM26-H5` | `ACCEPTED` | `OM26-H5-WP01-IA-001` | `INDEPENDENT-AGENT-005` | #508 |
+| `OM26-H5-WP02` | `OM26-H5` | `SUPERSEDED` | `OM26-H5-WP02-IA-001` | `INDEPENDENT-AGENT-502` | #560 |
+| `OM26-H5-WP03` | `OM26-H5` | `ACCEPTED` | `OM26-H5-WP03-IA-001` | `INDEPENDENT-AGENT-503` | #604 |
+| `OM26-H5-WP04` | `OM26-H5` | `SUPERSEDED` | `OM26-H5-WP04-IA-001` | `INDEPENDENT-AGENT-504` | #616 |
+| `OM26-H5-WP05` | `OM26-H5` | `ACCEPTED` | `OM26-H5-WP05-IA-001` | `INDEPENDENT-AGENT-505` | #646 |
+| `OM26-H5-WP06` | `OM26-H5` | `SUPERSEDED` | `OM26-H5-WP06-IA-001` | `INDEPENDENT-AGENT-506` | #653 |
+| `OM26-H6-WP01` | `OM26-H6` | `ACCEPTED` | `OM26-H6-WP01-IA-001` | `INDEPENDENT-AGENT-006` | #509 |
+| `OM26-H6-WP02` | `OM26-H6` | `ACCEPTED` | `OM26-H6-WP02-IA-001` | `INDEPENDENT-AGENT-602` | #548 |
+| `OM26-H6-WP03` | `OM26-H6` | `SUPERSEDED` | `OM26-H6-WP03-IA-001` | `INDEPENDENT-AGENT-603` | #556 |
+| `OM26-H6-WP04` | `OM26-H6` | `ACCEPTED` | `OM26-H6-WP04-IA-001` | `INDEPENDENT-AGENT-604` | #603 |
+| `OM26-H6-WP05` | `OM26-H6` | `ACCEPTED` | `OM26-H6-WP05-IA-001` | `INDEPENDENT-AGENT-605` | #618 |
+| `OM26-H6-WP06` | `OM26-H6` | `ACCEPTED` | `OM26-H6-WP06-IA-001` | `INDEPENDENT-AGENT-606` | #633 |
+| `OM26-H6-WP07` | `OM26-H6` | `SUPERSEDED` | `OM26-H6-WP07-IA-001` | `INDEPENDENT-AGENT-607` | #656 |
+| `OM26-H7-WP01` | `OM26-H7` | `ACCEPTED` | `OM26-H7-WP01-IA-001` | `INDEPENDENT-AGENT-007` | #510 |
+| `OM26-H7-WP02` | `OM26-H7` | `ACCEPTED` | `OM26-H7-WP02-IA-001` | `INDEPENDENT-AGENT-702` | #551 |
+| `OM26-H7-WP03` | `OM26-H7` | `SUPERSEDED` | `OM26-H7-WP03-IA-001` | `INDEPENDENT-AGENT-703` | #557 |
+| `OM26-H7-WP04` | `OM26-H7` | `ACCEPTED` | `OM26-H7-WP04-IA-001` | `INDEPENDENT-AGENT-704` | #600 |
+| `OM26-H7-WP05` | `OM26-H7` | `ACCEPTED` | `OM26-H7-WP05-IA-001` | `INDEPENDENT-AGENT-705` | #610 |
+| `OM26-H7-WP06` | `OM26-H7` | `SUPERSEDED` | `OM26-H7-WP06-IA-001` | `INDEPENDENT-AGENT-706` | #660 |
+
 The historical operational lifecycle remains:
+
 `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUDICATED -> ADVANCED`
 
 It no longer schedules research. A new task requires an explicit protected frontier disposition.
 
-## Surviving frontiers
-- OM26-H1: Remaining q>=6 / premise closure survives as research backlog; no automatic lease.
-- OM26-H2: Expand the machine-search neighbourhood substantially or stop; no further replay of the closed 324-mutant audit.
-- OM26-H3: Move to m>=4 constructions/obstructions; m<=3 replay is closed.
-- OM26-H4: SOURCE_BLOCKED until exact canonical serialization and contraction-margin/tie semantics are protected.
-- OM26-H5: Repair exact small-size classification, then address genuinely non-circulant 5x5–8x8 cases if useful.
-- OM26-H6: Leave the exhausted elementary-transvection neighbourhood; target broader rank-23 transformations or rank-22 obstruction.
-- OM26-H7: PROMOTED_TO_GCL_ERDOS3: formalize D5 and attack the reciprocal-mass to AP bridge.
-
 ## Independent contribution interface
-The controlled interface is retained: immutable bounded task → outside intelligence → `GCL-CONTRIBUTION-RESULT/1` → authenticated GitHub intake → evidence → adjudication. `Next residual` is evidence, not scheduling authority.
+
+Canonical mode is `LINK_IN_RELAY_OUT`. The controlled interface is retained: immutable bounded task → outside intelligence → `GCL-CONTRIBUTION-RESULT/1` → authenticated GitHub intake → evidence → adjudication. `Next residual` is evidence, not scheduling authority.
+
+## Claim boundary
+
+Evidence acceptance does not schedule another replay. Successors require a protected frontier disposition; MATHCERT certification and competition submission remain separate authorities.
