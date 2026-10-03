@@ -300,11 +300,21 @@ with exact bracket
 \]
 Hence \(N=o(a^2)\) is impossible for uniform R059 control,
 \(N\sim\kappa a^2\) leaves the positive limit \(1/(\pi^2\kappa)\), and
-\(N\gg a^2\) makes only this complement tail vanish.  The finite
-\(E_N'\) block remains an independent positive contribution.
+\(N\gg a^2\) makes only this complement tail vanish.
 
-Do not infer the full uniform bound from finiteness for each individual
-approximant, nor from a quadratic/superquadratic truncation schedule alone.
+RH-R065 resolves the finite \(E_N'\) block and the full trace \(Q_{\lambda,N}\).
+Due to strict spectral interlacing \(0 < \mu_1 < \pi/a < \dots < \mu_N < \pi N/a\)
+with the scaling lattice, the finite block satisfies
+\[
+B_{a,N} > \sum_{j=1}^N \frac{1}{(\pi j/a)^2+1/4}.
+\]
+Combined with the untouched complement tail, the exact Mittag-Leffler identity for \(\coth\) gives
+\[
+Q_{\lambda,N} = B_{a,N} + T_{a,N} > a\coth(a/2) - 2 > \log\lambda - 2.
+\]
+Thus \(Q_{\lambda,N} \to \infty\) linearly in \(\log\lambda\) along every cofinal family.
+The R059 positive resolvent trace condition is structurally too strong for CCM,
+and C4 normal-family control must use localized/scale-invariant criteria (reserved for RH-R068).
 
 ## 11. C5 — Identify the limit as Xi
 
@@ -346,10 +356,10 @@ A contribution is meaningful if it provides one protected result such as:
 1. exact canonical determinant normalization [DELIVERED: RH-R056];
 2. a theorem reducing compact-uniform determinant convergence to a quantitative eigenvector norm/rate [DELIVERED: RH-R053];
 3. a cofinal-index theorem [PARTIALLY CONSTRAINED: RH-R062 rules out N=o((log lambda)^2) for the R059 mechanism];
-4. a Montel/local-boundedness theorem [ABSTRACT SUFFICIENT CRITERION: RH-R059; RH-R062 isolates the untouched-tail schedule obstruction; uniform CCM application still open];
+4. a Montel/local-boundedness theorem [ABSTRACT SUFFICIENT CRITERION: RH-R059; RH-R062 isolates untouched-tail obstruction; RH-R065 proves global resolvent trace divergence Q_{lambda,N} > log(lambda) - 2; replacement localized/scale-invariant C4 criterion reserved for RH-R068];
 5. a rigorous k_lambda-to-xi_lambda estimate;
 6. a limit-identification theorem;
-7. a negative theorem showing a proposed norm/rate is insufficient [DELIVERED: RH-R053 rate dichotomy].
+7. a negative theorem showing a proposed norm/rate/criterion is insufficient [DELIVERED: RH-R053 rate dichotomy; RH-R065 resolvent trace obstruction].
 
 This route is expected to advance through such modular results.
 

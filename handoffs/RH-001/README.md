@@ -297,7 +297,9 @@ is a positive lower bound for \(Q_{1/2}(F_{\lambda,N})\) and satisfies
 \le T_{a,N}\le
 \frac{2a}{\pi}\arctan\frac{a}{2\pi N}.
 \]
-Thus subquadratic \(N=o(a^2)\) schedules force divergence, \(N\sim\kappa a^2\) leave the constant \(1/(\pi^2\kappa)\), and \(N\gg a^2\) make this tail vanish. Therefore any R059-based uniformly bounded schedule must have \(N=\Omega((\log\lambda)^2)\). This is necessary, not sufficient: the finite \(E_N'\) trace contribution remains open, now assigned to the next Route C lane R065.
+Thus subquadratic \(N=o(a^2)\) schedules force divergence, \(N\sim\kappa a^2\) leave the constant \(1/(\pi^2\kappa)\), and \(N\gg a^2\) make this tail vanish. Therefore any R059-based uniformly bounded schedule must have \(N=\Omega((\log\lambda)^2)\).
+
+18. RH-R065 proves the finite-block and global resolvent obstruction for the CCM family. The finite-block eigenvalues strictly interlace with the scaling lattice: \(0 < \mu_1 < \pi/a < \mu_2 < 2\pi/a < \dots < \mu_N < \pi N/a\), forcing \(B_{a,N} > \sum_{j=1}^N \frac{1}{(\pi j/a)^2+1/4}\). Combined with the R062 untouched tail \(T_{a,N}\), the exact Mittag-Leffler \(\coth\) identity yields \(Q_{\lambda,N} = B_{a,N} + T_{a,N} > a\coth(a/2) - 2 > \log\lambda - 2\) for all admitted \((\lambda,N)\). Therefore \(Q_{\lambda,N}\) diverges along every cofinal family as \(\lambda \to \infty\). The R059 positive resolvent trace criterion is structurally too strong for CCM; C4 normal-family control must use localized/scale-invariant criteria (reserved for lane RH-R068).
 
 RH-R054 now sets the direct full-operator frontier at \(a=9/50\), while Route B's protected \(d/\Delta_H\) transport reaches \(a=3561/20000\). The next useful theorem should exploit that separation rather than resume scalar micro-tuning, preferably one of:
 
