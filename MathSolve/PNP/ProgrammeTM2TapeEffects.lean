@@ -70,8 +70,11 @@ theorem programmeTM2AfterWork_snapshotAction
     ProgrammeTM2State.snapshotAction M
         (programmeTM2AfterWorkState M tape s stk) =
       ProgrammeTM2State.snapshotAction M s := by
-  unfold programmeTM2AfterWorkState ProgrammeTM2State.snapshotAction
-  split <;> rfl
+  cases hmove :
+      (M.transition s.snapshotControl s.snapshotInputSymbol
+        s.snapshotWorkSymbol).workMove tape <;>
+    simp [programmeTM2AfterWorkState, ProgrammeTM2State.snapshotAction,
+      ProgrammeTM2State.setWorkSymbol, hmove]
 
 /-- Exact input-tape effect of the frozen Programme input-head movement.
 
