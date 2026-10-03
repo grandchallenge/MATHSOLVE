@@ -1,0 +1,15 @@
+# Contest execution status — jimsteeg
+
+User authorization: submit valid entries now, 2026-10-01. Contest account: **jimsteeg**. GitHub repository work remains under fyremael.
+
+**Five fixed native AutoLab jobs are registered and exact code readback passed. Zero official scores and zero organizer acceptances.** The authoritative server evidence is `NATIVE_SUBMISSION_RECEIPT.json`, sourced from successful workflow run `36852787271`, job `110338161715`, artifact `11155429268`, at protected source commit `a0f9dd4d4f268c265502a0284b01be45d38b158e`.
+
+H1 fixed Climb: published Bader reconstruction, 18 lines and 93 triangles (prior work); separate event-window H1-12 partial-result packet now exists. H2: accepted 89,911-step finite witness, low-priority because it does not improve known BB(6) lower bounds. H4: 23 exact descent rules with trusted full bounded replay now closed in PR #593. H5: rational CHSH approximation, ratio 275807/195025; no eligible new competition delta established. H6: Laderman rank-23 prior-work baseline; hold. H3 has exact research infrastructure but no retained canonical-target advance. H7 now has complete pinned Lean proofs for D3 and D4 in PR #593; it is a formalization/reduction candidate, not an Erdős-3 solution.
+
+The strict zero-dollar LLM cap and empty compute-rental limits were read back before H1 activation. AutoLab's actual status is `needs_attention`, message `Budget reached`: per-project LLM spend $0.00 reached the $0.00 cap. Generated ideas are disabled. No paid runner/search or rented compute has been authorized.
+
+**Corrected next action:** do not raise the AutoLab model-spend cap or rent compute merely to transmit fixed contest artifacts. The zero-dollar `Budget reached` message belongs to ordinary AutoLab Climb-agent activation; it is not evidence of an OpenMath entry/submission fee. Preserve the existing native registrations as immutable staging identities. Carry H4, the separate H1-12 partial claim, and H7 formalization through their handbook packets, while obtaining the organizer-published competition submission workflow/fallback route and official evaluator/report mechanism. H2 remains an optional low-priority finite Hill artifact. Never count a queued native job, an unofficial public-Hill report, or a generic leaderboard row as a competition submission. GCL Cert remains a separate authority.
+
+Prior runs `36849889699`, `36850436082`, `36851893085`, and `36852434503` produced no accepted entry: missing committed hill hash, missing private evaluator data, duplicated owner in an API route, and unsupported job-lock fields respectively. Those addressing and schema deficiencies are repaired in protected PRs #587–#589. The first two report-based routes are superseded by native Climb registration.
+
+Official hill leaderboard results remain distinct from formal contest acceptance. The handbook requires artifact/provenance records and organizer review; the public event website currently has no competition-specific workspace link. Do not invent such a namespace. Deadline: 2026-10-02 21:00 America/Vancouver.

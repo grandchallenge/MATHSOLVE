@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "OM26-H1-PARTIAL-SECTION8-DRAFT-001",
+  "state": "TECHNICAL_AND_HUMAN_PARTIAL_PACKET_PREPARED__NOVELTY_CLASSIFICATION_AND_OFFICIAL_ROUTE_PENDING",
+  "identity_target": {
+    "campaign": "OPENMATH-2026",
+    "hill_id": "alejandrozu/kobon-triangles",
+    "problem_id": "OM26-H1",
+    "primary_modality": "M1_FORMALIZED_PARTIAL__P1_OR_P2_PENDING_MATHEMATICAL_REVIEW",
+    "registered_human_roster": [
+      "Jamie Steeg"
+    ],
+    "entrant_class": "Individual",
+    "affiliations": [],
+    "resource_classification": "SELF_RESOURCED"
+  },
+  "claim_stack": [
+    {
+      "claim_id": "H1-02",
+      "role": "STRUCTURAL_FOUNDATION",
+      "statement": "A support triple is a counted Kobon triangular face iff its three pairwise intersections are distinct/noncollinear and its three side segments are arrangement edges between consecutive arrangement vertices; equivalently, counted triangular faces are the nondegenerate 3-cycles of the arrangement graph.",
+      "state": "SOLVE_PROOF_COMPLETE__BOUNDED_FALSIFICATION_PASS",
+      "support": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_02_PROOF_RECEIPT.json",
+      "competition_novelty": "UNRESOLVED__LIKELY_FOUNDATIONAL_NOT_PRIMARY_ADVANCE"
+    },
+    {
+      "claim_id": "OM26-H1-RED-023",
+      "role": "PRIMARY_EVENT_WINDOW_PARTIAL",
+      "statement": "Conditional on the named predecessor source-scoped local-fan/no-consecutive-D1 and clean-line charging premises, the sole q=5 score-95 equality normal form (a D2 triangle of triple cores plus two isolated triple cores) is unrealizable. Hence any normalized n=18,T=95 witness satisfying those premises must have q>=6 finite multiple points.",
+      "state": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
+      "support": "contributions/OPENMATH-2026/OM26-H1/H1-12/adjudications/OM26-H1-H1-12-ADJ-001.json",
+      "competition_novelty": "UNRESOLVED"
+    },
+    {
+      "claim_id": "H1-13",
+      "role": "BOUNDED_NEGATIVE_COMPUTATIONAL_EVIDENCE",
+      "statement": "Three exact/bounded search tranches from the verified 93 construction found no 94 candidate in their explicitly defined neighborhoods.",
+      "state": "THREE_TRANCHES_COMPLETE__NO_94__NEGATIVE_ONLY",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_13_TRANCHE1_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_13_TRANCHE2_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_13_TRANCHE3_RECEIPT.json"
+      ],
+      "competition_novelty": "NOT_A_GLOBAL_RESULT__ROUTE_EVIDENCE_ONLY"
+    }
+  ],
+  "prior_work_separation": {
+    "bader93": "PRIOR_WORK__NOT_CLAIMED_AS_EVENT_OPEN_PROBLEM_ADVANCE",
+    "event_delta": "H1-02 proof/replay infrastructure, H1-12 source-conditional q<=5 reduction work, and H1-13 bounded negative searches are tracked separately from the Bader 93 construction.",
+    "source_dependencies": "H1-12 remains conditional on explicitly named source-scoped fan/charging premises; those premises are not silently promoted."
+  },
+  "formal_replay": {
+    "H1_02": {
+      "independent_oracle": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/kobon_direct_oracle.py",
+      "exhaustive_degenerate_subsets": 210,
+      "seeded_random_arrangements": 360,
+      "run_id": 36356017300,
+      "job_id": 108723788668
+    },
+    "H1_12": {
+      "adjudicator_checks": [
+        "local_sector_word PASS",
+        "ordinary_endpoint_use PASS",
+        "exterior_face_incidence PASS",
+        "affine_line_intersection_contradiction PASS",
+        "coordinate_cross_check PASS",
+        "predecessor_dependency_preserved PASS"
+      ],
+      "certification": "NONE"
+    },
+    "H1_13": {
+      "tranche1_candidates": 15246,
+      "tranche2_pair_candidates": 5508,
+      "tranche3_nodes": 73591,
+      "result": "NO_94_FOUND_WITHIN_EXPLICIT_BOUNDS"
+    }
+  },
+  "official_submission": {
+    "existing_native_h1_climb": "gcl-2026-h1-fixed-e606799ad6c1",
+    "note": "The existing native H1 Climb contains the Bader-93 construction and is not by itself the claim artifact for H1-12/H1-13. Competition workflow must specify how partial-result claims and evidence attach to a Hill/Climb/submission ID.",
+    "submission_id": null,
+    "final_evaluator_report": null
+  },
+  "disclosures": {
+    "external_contributor_for_H1_12": "INDEPENDENT-AGENT-001 via OM26-H1-H1-12-IA-001; exact return/adjudication preserved in repository.",
+    "shared": "See SECTION8_SHARED_DRAFT.json",
+    "publication_authority": "AUTHORIZED__SEE_HUMAN_AUTHORITY_DECLARATION.json",
+    "conflicts": "none"
+  },
+  "remaining": [
+    "freeze-date novelty/status review of H1-12 exact source-conditional reduction",
+    "competition classification of source-conditional theorem as P1/P2 partial",
+    "official competition workflow/submission ID",
+    "official checker/reviewer disposition"
+  ],
+  "claim_boundary": "Does not claim 93 is optimal, K(18)<=94, nonexistence of a 94/95 arrangement, discharge of H1-12 predecessor premises, or novelty until competition review.",
+  "authority_receipt": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/HUMAN_AUTHORITY_DECLARATION.json"
+}

@@ -4,89 +4,129 @@
 
 Target work repository: `grandchallenge/MATHSOLVE`.
 
-INTELLECT work-package phase: `not applicable`.
+MATHSOLVE owns bounded theorem development. MATHFORGE owns external-source
+provenance. MATHCERT alone owns certification. `UC-P04` and `UC-FRANKL`
+remain outside restricted-result promotion by implication.
 
-MATHSOLVE owns bounded theorem development. MATHFORGE owns external source and
-provider provenance. MATHCERT alone owns certification. `UC-FRANKL` and
-`UC-P04` remain outside any restricted-result promotion by implication.
+## Protected predecessor spine
 
-## Purpose
+WP07-D005 proves the restricted functional-preorder complement theorem and is
+independently MATHCERT-qualified.
 
-Advance the functional-preorder order-ideal branch through an exact local
-semantic bridge while keeping preorder-downward closure distinct from WP06's
-subset-downward `IsIdealFamilyOn` predicate.
+WP08 then advances the `UC-P04` structural programme:
 
-## Primary deliverable
+- D001: exact D003 representation is not universal;
+- D002: arbitrary finite-poset ideal complements satisfy the Frankl-facing
+  half-frequency conclusion;
+- D003: arbitrary finite closure systems admit an exact closure-operator /
+  finite-implication representation, and the first genuinely non-unary
+  obstruction is formalized.
 
-A checked local WP07 theorem surface containing the finite semantic obstruction,
-the exact functional-preorder family predicate, and a proof-bearing bridge from
-the source-shaped NDS theorem interface to local average rarity.
+## WP08-D003 theorem surface
 
-## Material acceptance criteria
+```text
+MathSolve/UnionClosed/ClosureImplicationP04.lean
+```
 
-- D001 binds and independently builds the selected `avg-rare` revision.
-- D002 is a checked three-element-chain obstruction with no proof placeholders.
-- D003 represents exactly the finite functional-preorder order-ideal family.
-- D004 is frozen in local UC vocabulary and has at least one substantive checked semantic bridge.
-- No result is promoted beyond its restricted class.
+Principal general endpoints:
 
-## Current substantive state
+```lean
+closureOf_idempotent
+closureOf_mem_of_closureSystem
+mem_iff_closureOf_eq
+closureSystem_mem_iff_models_canonicalBasis
+unaryModelFamilyOn_unionClosed
+unaryImplicationRepresentable_unionClosed
+```
 
-`UC-FRANKL` is open and `UC-P04` is open. WP04 remains qualified only for its
-existing bounded claims. WP06 has a checked restricted local ideal-family
-surface; those declarations are not silently added to `MC-ROUTE-UC-001`.
+Principal bounded non-unary endpoints:
 
-WP07 preserves historical source pin
-`49c3f1d96ca8518d16e203fd0429ac1216838a4f` and selects
-`kashiwabarakenji/avg-rare@21451877e9996a295bbc1ec25856d07fa302d48c`.
-The two intervening commits are comment-only. MATHFORGE has admitted the exact
-source provenance. Independent MATHSOLVE replay builds all 879 upstream jobs,
-finds no active `sorry`/`admit` or explicit source `axiom`, and reports
-`AvgRare.MainStatement.main_nds_nonpos` as depending on
-`[propext, Classical.choice, Quot.sound]`.
+```lean
+binaryImplicationClosure_characterization
+binaryImplicationClosure_isClosureSystem
+binaryImplicationClosure_not_unionClosed
+binaryImplicationClosure_not_unaryRepresentable
+binaryImplicationClosure_forcedConclusion_erasure_fails
+binaryImplicationClosure_exists_rare
+binaryImplicationClosure_complement_frankl
+```
 
-D002 and D003 are checked locally in
-`MathSolve/UnionClosed/FunctionalPreorderBridge.lean`. D004 is stated exactly;
-its NDS-normalization bridge and the implication from the exact source-shaped
-local NDS statement to average rarity are checked. The local NDS theorem itself
-remains open. D005 remains deferred.
+## Exact structural lesson
 
-## Authoritative pointers
+The live hierarchy is now:
 
-- `grandchallenge/INTELLECT:CONSTITUTION.md`
-- `grandchallenge/INTELLECT:governance/constitutional_authority_schedule.json`
-- `grandchallenge/INTELLECT:governance/handoffs/README.md`
-- `grandchallenge/MATHSOLVE:AGENTS.md`
-- `grandchallenge/MATHSOLVE:domains/union_closed/WP07_functional_preorder_bridge/`
-- `grandchallenge/MATHSOLVE:MathSolve/UnionClosed/FunctionalPreorderBridge.lean`
-- `grandchallenge/MATHSOLVE:campaign_ledgers/UC-001/proof_obligation_dag.json`
-- `grandchallenge/MATHCERT:governance/certification_routes.json`
-- `grandchallenge/MATHFORGE:sources/UC-001/AVG_RARE_WP07_SOURCE_PROVENANCE.md`
+```text
+functional-preorder ideals
+        subset
+finite-poset ideals / unary order implications
+        subset
+finite closure systems / arbitrary finite implications.
+```
 
-## Smallest safe next tranche
+The second inclusion is strict. The checked binary rule
 
-Prove or semantically port `SourceShapedMainNDSStatement` into the exact local
-D003 surface. Prefer the smallest dependency cone of the audited upstream proof
-or a smaller independent local proof. Close D004 before starting D005.
+```text
+{a,b} -> c
+```
 
-## Material dependencies and boundaries
+produces a closure system that is not union-closed, hence cannot be represented
+by unary implications.
 
-The external repository remains provenance until its theorem is transported
-into the local trusted boundary. The selected source uses Lean 4.23.0 and
-mathlib v4.23.0; MATHSOLVE uses its own current toolchain, so semantic transport
-must not rely on definitional identity across projects. MATHCERT adjudication
-must remain independent of MATHSOLVE construction.
+It also shows why the D002 erasure mechanism does not generalize verbatim:
+erasing the forced conclusion `c` from the full closed set leaves the
+nonclosed premise `{a,b}`.
 
-## Reserved authority / stop conditions
+This bounded obstruction does not refute the desired rare-element conclusion;
+the same example still has a rare element and a Frankl-abundant complement.
 
-Stop for a material source/theorem change, an exact semantic incompatibility,
-a checked failure of the D003 representation, a material UC target change, a
-MATHCERT certification boundary, or another reserved constitutional boundary.
-Do not stop merely because the source is external, the proof requires several
-transport lemmas, or Frankl's conjecture remains open.
+## Governed replay
 
-## Notes intentionally omitted
+WP08 now has a dedicated exact-head Lean replay:
 
-This handoff intentionally omits generic constitutional doctrine, the generic
-handoff contract, WP01-WP07 history, and procedural evidence preserved in the
-work-package and CI records.
+```text
+.github/workflows/uc-wp08-closure-system.yml
+```
+
+The D001-D003 modules are also imported by `MathSolve.lean`. Enabling this
+replay exposed and repaired latent D001/D002 compile defects before D003
+integration.
+
+## Next governed mathematical tranche: WP08-D004
+
+Build an incidence-preserving interface between the closure-system/implication
+surface and the protected WP05 minimum-counterexample lattice spine.
+
+The bridge object must retain:
+
+1. finite lattice / closure order;
+2. explicit ground carrier;
+3. the incidence relation `x in S`; and
+4. exact frequency counts derived from that incidence relation.
+
+Do not replace a concrete family by an abstractly isomorphic lattice and infer
+frequency statements without an explicit incidence transport theorem.
+
+The first D004 question is: which protected WP05 minimum-counterexample
+conditions constrain the canonical implication basis, especially non-unary
+premises?
+
+## Claim firewall
+
+```text
+WP08-D001 = CLOSED_NEGATIVE
+WP08-D002 = CLOSED_LOCAL
+WP08-D003 = CLOSED_LOCAL
+WP08-D004 = OPEN_NEXT
+
+UC-P04 = OPEN
+UC-FRANKL = OPEN_PROBLEM
+MATHEMATICAL_TARGET_PROVED = false
+PROMOTION_ELIGIBLE = false
+```
+
+## Stop boundaries
+
+Stop for a failed exact-head replay that cannot be repaired within scope, a
+material theorem-statement change, a reserved certification/governance action,
+or a genuine mathematical/evidentiary boundary. Do not stop merely because the
+universal closure-system rare-element theorem remains open.

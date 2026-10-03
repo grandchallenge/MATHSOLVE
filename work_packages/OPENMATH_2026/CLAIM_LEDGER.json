@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "MS-OPENMATH-2026-CLAIMS",
+  "campaign_id": "OPENMATH-2026",
+  "claims": [
+    {
+      "claim_id": "OM26-GOV-001",
+      "text": "The OpenMath 2026 campaign has a bounded six-slot research orchestration with hill-specific work gated on exact source locks.",
+      "type": "OPERATIONAL",
+      "support": [
+        "grandchallenge/MATH-PROGRAMME#1072",
+        "grandchallenge/MATH-PROGRAMME#1073",
+        "grandchallenge/MATHSOLVE#454"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-GOV-001",
+      "text": "OM26-H1 is bound to the protected MATHFORGE Kobon-triangles source lock and is released for research/candidate construction, while final submission remains live-concordance gated.",
+      "type": "OPERATIONAL",
+      "support": [
+        "grandchallenge/MATHFORGE@73f1890387eec56eb6be31f8c00f10b6a5a56383:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/SOURCE_LOCK.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/HILL_LOCK.json"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-GOV-002",
+      "text": "OM26-H1 H1-01 baseline evaluator-concordance gate passed: the independent exact GCL scorer and authenticated AutoLab public evaluator both return 16 on the identical baseline solution.",
+      "type": "OPERATIONAL_VALIDATION",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_GATE_STATUS.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_INTERNAL_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_AUTOLAB_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36354367463/job/108719011813"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-GOV-003",
+      "text": "OM26-H1 R-H reconstructed the sourced Johannes Bader 93-triangle order type as exact rational straight lines and passed H1-07 direct-oracle and authenticated AutoLab replay at 93.",
+      "type": "OPERATIONAL_VALIDATION",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_07_RH_BADER93_REPLAY_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/CANDIDATE_LADDER.json",
+        "grandchallenge/MATHFORGE@9e00c45fd665546b813f9234314a63eddbec854d",
+        "github-actions:grandchallenge/MATHSOLVE/run/36359791747/job/108734545943"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-GOV-004",
+      "text": "OM26-H1 H1-13 tranche 1 completed a bounded exact 15,246-candidate local-wall search from the verified 93 construction and found no 94 candidate.",
+      "type": "OPERATIONAL_NEGATIVE_RESULT",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_13_TRANCHE1_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36364216267/job/108747292310"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    }
+  ],
+  "prohibited_inferences": [
+    "a source lock proves the mathematical target",
+    "a Solve artifact is certified because it merged",
+    "competition acceptance implies MATHCERT certification",
+    "formal checker acceptance alone establishes semantic fidelity",
+    "unresolved hill placeholders identify actual mathematical content",
+    "a campaign-best-observed Kobon score is globally best known"
+  ]
+}

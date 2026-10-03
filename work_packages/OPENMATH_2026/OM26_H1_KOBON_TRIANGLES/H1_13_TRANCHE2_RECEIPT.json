@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-13-TRANCHE2-RECEIPT",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-13",
+  "route": "R-K",
+  "state": "COMPLETE__NO_94_FOUND__NEGATIVE_RESULT_RETAINED",
+  "start_candidate": {
+    "candidate": "RH_BADER_RECONSTRUCTION_093",
+    "score": 93,
+    "sha256": "e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5"
+  },
+  "method": {
+    "description": "Recompute each line's exact one-line critical-wall neighborhood, retain the top six exact variants for each of 18 lines, then score every coordinated pair drawn from distinct-line frontiers.",
+    "proposal_arithmetic": "EXACT_INTEGER_DETERMINANT_SIGNS",
+    "keep_per_line": 6,
+    "one_line_candidates_rescored": 15192,
+    "coordinated_pair_candidates_evaluated": 5508
+  },
+  "result": {
+    "best_score": 93,
+    "found_94_or_better": false,
+    "high_score_histogram": {
+      "90": 168,
+      "91": 464,
+      "92": 2208,
+      "93": 2529
+    }
+  },
+  "workflow": {
+    "run_id": 36367755769,
+    "job_id": 108757467811,
+    "result": "PASS__BOUNDED_COORDINATED_SEARCH_NO_94"
+  },
+  "interpretation": "The top exact one-line wall moves do not combine pairwise to improve the verified 93 arrangement in this bounded frontier. This rules out only this explicit coordinated neighborhood.",
+  "next_search_direction": "Pivot from coordinate-wall recombination to order-type/SAT search or a wider multi-line combinatorial move set; keep H1-12 concurrence-aware upper-bound work independent.",
+  "claim_boundary": "Search failure does not establish a global upper bound, optimality of 93, or nonexistence of a 94/95 arrangement."
+}

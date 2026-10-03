@@ -1,0 +1,70 @@
+name: OPENMATH Kobon 94 audit search
+
+on:
+  pull_request:
+    paths:
+      - "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/**"
+      - ".github/workflows/openmath-kobon-search94.yml"
+      - ".ghos-routing/workflows.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-search:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Exact coordinate-wall sweep and conditional H1-07 replay
+        working-directory: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES
+        env:
+          AUTOLAB_TOKEN: ${{ secrets.AUTOLAB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python search_94_coordinate_sweep.py --report /tmp/kobon94-search.json --candidate-dir /tmp/kobon94-candidate | tee /tmp/kobon94-search.log
+          cat /tmp/kobon94-search.json
+
+          if ! grep -q 'H1_13_FOUND_94=true' /tmp/kobon94-search.log; then
+            echo "H1_13_DISPOSITION=BOUNDED_SWEEP_NO_94"
+            exit 0
+          fi
+
+          python kobon_direct_oracle.py /tmp/kobon94-candidate/solution.json --n 18 --expect 94 --output /tmp/kobon94-oracle.json
+
+          python -m pip install --disable-pip-version-check "uv==0.10.0"
+          curl -fsSL https://app.autolab.ai/install.sh -o /tmp/autolab-install.sh
+          sh /tmp/autolab-install.sh
+          export PATH="$HOME/.local/bin:$PATH"
+
+          if [ -z "$AUTOLAB_TOKEN" ]; then
+            echo "AUTOLAB_AUTH_BLOCKER=repository secret AUTOLAB_TOKEN is unavailable"
+            exit 42
+          fi
+          autolab login --token "$AUTOLAB_TOKEN"
+          autolab hills pull alejandrozu/kobon-triangles
+
+          uv tool run --from hills==0.11.0 hills eval /tmp/kobon94-candidate -H kobon-triangles --current --json | tee /tmp/kobon94-autolab.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report=json.loads(Path("/tmp/kobon94-autolab.json").read_text())
+          stack=[report]
+          score=None
+          while stack:
+              item=stack.pop()
+              if isinstance(item,dict):
+                  if item.get("name")=="triangles" and isinstance(item.get("value"),(int,float)):
+                      score=item["value"]
+                      break
+                  stack.extend(item.values())
+              elif isinstance(item,list):
+                  stack.extend(item)
+          if score != 94:
+              raise SystemExit(f"AutoLab discrepancy: {score} != 94")
+          print("H1_13_AUTOLAB_TRIANGLES=94")
+          print("H1_13_H1_07=PASS")
+          PY

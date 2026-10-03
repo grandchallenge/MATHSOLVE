@@ -1,0 +1,526 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "MS-OPENMATH-2026-OM26-H1-CLAIMS",
+  "hill_slot": "OM26-H1",
+  "claims": [
+    {
+      "claim_id": "OM26-H1-SRC-001",
+      "text": "The admitted hill asks for exactly n distinct rational straight lines and maximizes verified bounded triangular faces under exact arithmetic.",
+      "type": "SOURCE_BOUND_SEMANTICS",
+      "state": "ADMITTED_FROM_FORGE_LOCK",
+      "support": [
+        "grandchallenge/MATHFORGE@73f1890387eec56eb6be31f8c00f10b6a5a56383:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/SOURCE_LOCK.json"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-SRC-002",
+      "text": "The displayed baseline at n=18 is the line family 2*i*x - y - i*i = 0 for i=0,...,17 with reported score 16.",
+      "type": "SOURCE_REPORTED_BASELINE",
+      "state": "ADMITTED_AS_SOURCE_REPORT__INDEPENDENT_AND_AUTOLAB_BASELINE_REPLAY_PASS",
+      "support": [
+        "grandchallenge/MATHFORGE@73f1890387eec56eb6be31f8c00f10b6a5a56383:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/STATEMENT.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_INTERNAL_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_AUTOLAB_RECEIPT.json"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-VAL-001",
+      "text": "The independent GCL exact scorer reproduces score 16 for the displayed n=18 baseline.",
+      "type": "VALIDATION",
+      "state": "PASS",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_INTERNAL_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_GATE_STATUS.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36354367463/job/108719011813"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-CON-001",
+      "text": "The exact candidate RD_LOCAL_MUTATION_086 has 86 counted triangular faces at n=18 under the locked hill semantics.",
+      "type": "CONSTRUCTION",
+      "state": "SOLVE_VERIFIED__H1_07_PASS__MATHCERT_HANDOFF_PREPARED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RD_LOCAL_MUTATION_086/solution.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_06_SEARCH_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_07_REPLAY_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36356017300/job/108723788668"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-OPT-001",
+      "text": "A specific score is optimal for n=18.",
+      "type": "OPTIMALITY",
+      "state": "NOT_AUTHORIZED_WITHOUT_SEPARATE_UPPER_BOUND_PROOF",
+      "support": [],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-VAL-002",
+      "text": "The AutoLab/Hills evaluator returns score 16 for the identical source-reported n=18 baseline solution.json.",
+      "type": "EXTERNAL_EVALUATOR_CROSSCHECK",
+      "state": "PASS__AUTOLAB_PUBLIC_WORKING_TREE_EVALUATOR",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_AUTOLAB_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BASELINE_GATE_STATUS.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36354367463/job/108719011813"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-THM-001",
+      "text": "Counted Kobon triangular faces are exactly the nondegenerate 3-cycles of the arrangement graph, equivalently support triples whose three side segments join consecutive arrangement vertices.",
+      "type": "STRUCTURAL_THEOREM",
+      "state": "SOLVE_PROOF_COMPLETE__BOUNDED_FALSIFICATION_PASS__MATHCERT_HANDOFF_PREPARED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/FACE_CRITERION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_02_PROOF_RECEIPT.json"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-VAL-003",
+      "text": "H1-07 independent replay agrees on scores 86 and 58 for the two bounded H1-06 route outputs.",
+      "type": "VALIDATION",
+      "state": "PASS",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_07_REPLAY_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36356017300/job/108723788668"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-CON-002",
+      "text": "The exact candidate RH_BADER_RECONSTRUCTION_093 has 93 counted triangular faces at n=18 under the locked hill semantics.",
+      "type": "CONSTRUCTION",
+      "state": "SOLVE_VERIFIED__H1_07_PASS__SOURCE_GUIDED_RECONSTRUCTION__MATHCERT_HANDOFF_PREPARED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RH_BADER_RECONSTRUCTION_093/solution.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BADER_93_SOURCE.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BADER_93_ORDER_TABLE.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_07_RH_BADER93_REPLAY_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36359791747/job/108734545943"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-VAL-004",
+      "text": "The exact Bader-order reconstruction passes the published-order verifier, the independent direct-interior oracle at score 93, and the authenticated AutoLab public evaluator at score 93.",
+      "type": "VALIDATION",
+      "state": "PASS",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_07_RH_BADER93_REPLAY_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36359791747/job/108734545943"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-NEG-001",
+      "text": "A bounded exact one-line coordinate-wall sweep around RH_BADER_RECONSTRUCTION_093 evaluated 15,246 candidates and found no score above 93.",
+      "type": "NEGATIVE_ROUTE_RESULT",
+      "state": "PASS__BOUNDED_SCOPE_ONLY",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_13_TRANCHE1_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36364216267/job/108747292310"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-BND-001",
+      "text": "Protected Forge source audit supports the research interval 93 <= K_hill(18) <= 95; the stronger value 94 is proved by the cited simple-arrangement theorem but is not yet imported as a hill-global bound.",
+      "type": "SOURCE_BOUND_STATUS",
+      "state": "FORGE_SOURCE_SCOPE_ADMITTED__MATHCERT_NOT_REQUESTED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BOUND_SOURCE_STATUS.json",
+        "grandchallenge/MATHFORGE@9eb438b658000f299240940d4468d7eb52ed1e11:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/GENERAL_BOUND_AUDIT.md"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-NEG-002",
+      "text": "H1-13 tranche 2 rescored 15,192 exact one-line wall candidates, retained six frontier variants per line, evaluated 5,508 coordinated two-line combinations, and found no score above 93.",
+      "type": "NEGATIVE_ROUTE_RESULT",
+      "state": "PASS__BOUNDED_SCOPE_ONLY",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_13_TRANCHE2_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36367755769/job/108757467811"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-NEG-003",
+      "text": "H1-13 tranche 3 ran a 300-second topology/concurrency beam from the exact pairwise-nonparallel 93 normalization, visiting 73,591 nodes and 6,654,852 edges over 589 rounds, and produced no proposal above 93.",
+      "type": "NEGATIVE_ROUTE_RESULT",
+      "state": "PASS__BOUNDED_SCOPE_ONLY",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_13_TRANCHE3_RECEIPT.json",
+        "github-actions:grandchallenge/MATHSOLVE/run/36369052788/job/108761258002"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-001",
+      "text": "Conditional on the protected Forge restricted theorem for pairwise-nonparallel arrangements with at most two finite multiple points, any n=18 hill arrangement with 95 counted triangular faces must, after H1-12 projective no-parallel normalization, have at least three finite multiple points.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_REDUCTION_COMPLETE__RESTRICTED_SOURCE_THEOREM_NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_MULTIPOINT_RESIDUAL.md",
+        "grandchallenge/MATHFORGE@eb5af08b1bb0ae7742dc46786019fe7b034b04ee:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/CONTEMPORARY_BOUND_RECON.md"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-002",
+      "text": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, any n=18 hill arrangement with 95 counted triangles must, after H1-12 no-parallel normalization, have at least four finite multiple points. The q=3 arithmetic has one saturated three-triple survivor, and the endpoint-level charge map excludes that survivor.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_ARITHMETIC_RECONSTRUCTION_COMPLETE__Q3_GEOMETRIC_EXCLUSION_SOURCE_CONDITIONAL__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_MULTIPOINT_RESIDUAL.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
+        "ci/validate_openmath_h1_12_three_core.py",
+        "ci/test_openmath_h1_12_three_core.py",
+        "grandchallenge/MATHFORGE@eb5af08b1bb0ae7742dc46786019fe7b034b04ee:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/CONTEMPORARY_BOUND_RECON.md"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-003",
+      "text": "Conditional on the named defect/fan premises, any n=18 hill arrangement with 95 counted triangles and exactly four finite multiple points has multiplicity profile 3333, 3334, 3335, 3344, or 3444 after H1-12 no-parallel normalization. Adding the stated clean-line/local fan refinements forces minimum D2 values 1, 3, 6, 5, and 6 respectively.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_ARITHMETIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_PASS__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_FOUR_CORE_PROFILE_REDUCTION.md",
+        "ci/validate_openmath_h1_12_four_core.py",
+        "ci/test_openmath_h1_12_four_core.py",
+        "grandchallenge/MATHFORGE@eb5af08b1bb0ae7742dc46786019fe7b034b04ee:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/CONTEMPORARY_BOUND_RECON.md"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-004",
+      "text": "Conditional on the named local no-long-run fan premise, the q=4 score-95 profiles 3335, 3344, and 3444 are excluded by the independently reconstructed extreme-core saturation reduction and finite replay; the q=4 residual is 3333 or 3334.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_FOUR_CORE_PROFILE_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_SATURATED_CORE_HULL_REDUCTION.md",
+        "ci/validate_openmath_h1_12_saturated_core.py",
+        "ci/test_openmath_h1_12_saturated_core.py",
+        "grandchallenge/MATHFORGE@eb5af08b1bb0ae7742dc46786019fe7b034b04ee:reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/CONTEMPORARY_BOUND_RECON.md"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-005",
+      "text": "The protected source-conditional 3334 finite residual contains 67 labeled states which collapse, modulo permutation of the three triple cores, to nine graph/role normal forms across D2=3,4,5. The finite quotient and D2 segment noncrossing are independently reconstructed; saturated-hub non-extremality retains the named local fan premise.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_NORMAL_FORM_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_NORMAL_FORM.md",
+        "ci/validate_openmath_h1_12_3334_normal_form.py",
+        "ci/test_openmath_h1_12_3334_normal_form.py",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_SATURATED_CORE_HULL_REDUCTION.md"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-006",
+      "text": "Conditional on the named local no-long-run fan premise and clean-line charging map, both profile-3334 D2=3 star role-types are excluded. The quadruple-hub case lacks enough chargeable D1 targets; the triple-hub alternating ray pattern additionally forces the three leaf-pair arrangement lines, strengthening the clean-line lower bound.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_NORMAL_FORM.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_D2_3_STAR_EXCLUSION.md",
+        "ci/validate_openmath_h1_12_3334_d2_3.py",
+        "ci/test_openmath_h1_12_3334_d2_3.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-007",
+      "text": "Conditional on the named local no-long-run fan premise and clean-line charging map, all profile-3334 D2=4 role-types are excluded: the non-saturated cycle loses at least one D1 charge target at every core, while each saturated star-plus-edge type exceeds its remaining charge capacity after the hub and required leaf constraints are applied.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_NORMAL_FORM.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_D2_3_STAR_EXCLUSION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_D2_4_EXCLUSION.md",
+        "ci/validate_openmath_h1_12_3334_d2_4.py",
+        "ci/test_openmath_h1_12_3334_d2_4.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-008",
+      "text": "Conditional on the named local no-long-run fan premise and clean-line charging map, all profile-3334 D2=5 role-types are excluded by saturated-hub charge capacity. Combined with the protected D2=3 and D2=4 reductions, profile 3334 is fully excluded from an n=18,T=95 witness.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__PROFILE_3334_EXCLUDED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_NORMAL_FORM.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_D2_3_STAR_EXCLUSION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_D2_4_EXCLUSION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_D2_5_EXCLUSION.md",
+        "ci/validate_openmath_h1_12_3334_d2_5.py",
+        "ci/test_openmath_h1_12_3334_d2_5.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-009",
+      "text": "Conditional on the named triple-point local fan premise and clean-line charging map, the protected q=4 profile-3333 residual reduces from 344 labeled states to 108 states in exactly 12 symmetry normal forms; the D2=6 stratum is eliminated by independently reconstructed blocked-target accounting.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_NORMAL_FORM_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_NORMAL_FORM.md",
+        "ci/validate_openmath_h1_12_3333_normal_form.py",
+        "ci/test_openmath_h1_12_3333_normal_form.py",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_D2_3_STAR_EXCLUSION.md"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-010",
+      "text": "Conditional on the named triple-point local fan premise and clean-line charging map, a saturated triple hub in profile 3333 forces D2=3 and six distinct core-pair arrangement lines. The protected 12 normal forms thereby reduce to eight forms / 48 labeled states; no D2>=5 state remains.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_NORMAL_FORM.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_SATURATED_HUB_REDUCTION.md",
+        "ci/validate_openmath_h1_12_3333_saturated_hub.py",
+        "ci/test_openmath_h1_12_3333_saturated_hub.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-011",
+      "text": "Conditional on the named triple-point local fan premise and clean-line charging map, the sole profile-3333 D2=4 C4 normal form is excluded: exact local charge equality has two cyclic types, and each forces an additional core-pair arrangement line, making the core-incidence bound strict and exceeding charge capacity.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_SATURATED_HUB_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_4_C4_EXCLUSION.md",
+        "ci/validate_openmath_h1_12_3333_c4.py",
+        "ci/test_openmath_h1_12_3333_c4.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-012",
+      "text": "Conditional on the protected triple-point local fan/blocked-target analysis and clean-line charging map, the profile-3333 non-saturated D2=3 star equality form is excluded. Charge equality forces its sole hub D1 target to be unblocked, which forces three consecutive D2 spokes and therefore an additional leaf-pair arrangement line, making the core-incidence bound strict.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_4_C4_EXCLUSION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_3_NONSAT_STAR_EXCLUSION.md",
+        "ci/validate_openmath_h1_12_3333_nonsat_star.py",
+        "ci/test_openmath_h1_12_3333_nonsat_star.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-013",
+      "text": "Conditional on the named triple-point local fan premise and clean-line charging equality, the higher-count saturated profile-3333 D2=3 star is excluded. The protected separator geometry places the hub inside the leaf triangle; each leaf is then forced to use its two outward side rays as D1, which forces the opposite hub ray to be a third D1 segment, contradicting the normal-form value d1=2.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_SATURATED_HUB_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_3_SATURATED_EQUALITY_EXCLUSION.md",
+        "ci/validate_openmath_h1_12_3333_saturated_equality.py",
+        "ci/test_openmath_h1_12_3333_saturated_equality.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-014",
+      "text": "Conditional on the named triple-point local fan premise and clean-line charge equality, the profile-3333 D2=3 K3+isolated equality form has a central counted D2 triangular face, an exterior isolated triple core with no additional core-pair line, and exactly two geometric edge-selection orientation types: cyclic (1,1,1) or doubled-edge (2,1,0).",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_NORMAL_FORM_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_4_C4_EXCLUSION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_TRIANGLE_ISOLATED_NORMAL_FORM.md",
+        "ci/validate_openmath_h1_12_3333_triangle_isolated.py",
+        "ci/test_openmath_h1_12_3333_triangle_isolated.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-015",
+      "text": "Conditional on the protected clean-line charging equality, triangle-isolated Type P is excluded: its doubled selected edge forces two distinct chargeable D1 segments to have the same unique clean transverse line, so the nominal five D1 charge slots realize at most four distinct clean-line charges.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_TRIANGLE_ISOLATED_NORMAL_FORM.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_TRIANGLE_TYPE_P_EXCLUSION.md",
+        "ci/validate_openmath_h1_12_3333_triangle_type_p.py",
+        "ci/test_openmath_h1_12_3333_triangle_type_p.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-016",
+      "text": "Conditional on the predecessor local fan and clean-line equality reduction, triangle-isolated Type C is excluded: at any selected central vertex, the required adjacent triangular faces force a third distinct arrangement line through a point already incident to two arrangement lines, creating an additional finite multiple point and contradicting q=4. Together with Type P, the K3+isolated equality form is closed.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__EQUALITY_SURFACE_CLOSED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_TRIANGLE_ISOLATED_NORMAL_FORM.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_TRIANGLE_TYPE_P_EXCLUSION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_TRIANGLE_TYPE_C_EXCLUSION.md",
+        "ci/validate_openmath_h1_12_3333_triangle_type_c.py",
+        "ci/test_openmath_h1_12_3333_triangle_type_c.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-017",
+      "text": "Conditional on the named triple-point local fan premise and clean-line charging map, the profile-3333 D2=3 P4 form is excluded. Each internal core has one or two blocked D1 targets; one blocked forces an additional neighbor-pair core line, while two blocked lowers capacity, and every resulting case exceeds the available charge budget.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_3_P4_EXCLUSION.md",
+        "ci/validate_openmath_h1_12_3333_p4.py",
+        "ci/test_openmath_h1_12_3333_p4.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-018",
+      "text": "Conditional on the named triple-point local fan premise and clean-line charging map, sector-consistent shared-ray labeling forces blocked minimum 2 at triple cores with (d1,d2)=(2,1) or (2,2). This excludes every remaining q=4 profile-3333 form, so any normalized n=18,T=95 witness must have at least five finite multiple points.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__Q4_CLOSED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q4_LOW_D2_SECTOR_CLOSURE.md",
+        "ci/validate_openmath_h1_12_q4_sector_closure.py",
+        "ci/test_openmath_h1_12_q4_sector_closure.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-019",
+      "text": "Conditional on the named local fan and clean-line charging premises, q=5 score-95 states reduce from seven coarse multiplicity profiles to exactly 33333, 33334, and 33344. Their surviving D2 ranges are 3..10, 5..9, and 6..7 respectively.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_FINITE_GRAPH_RECONSTRUCTION_COMPLETE__SECTOR_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_PROFILE_REDUCTION.md",
+        "ci/validate_openmath_h1_12_q5_profiles.py",
+        "ci/test_openmath_h1_12_q5_profiles.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-020",
+      "text": "Conditional on the protected saturated-core non-extremality lemma and predecessor fan/charging premises, the q=5 profile 33344 is excluded; 33334 is reduced to D2=5,6 and 33333 to D2=3..7. Five-core noncollinearity is invoked only where D2>=5.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_SATURATION_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_PROFILE_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_SATURATION_REDUCTION.md",
+        "ci/validate_openmath_h1_12_q5_saturation.py",
+        "ci/test_openmath_h1_12_q5_saturation.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-020",
+      "text": "Conditional on the protected saturated-triple separator lemma and predecessor q=5 fan/charging state space, profile 33334 is excluded. Its 60 retained labeled graphs quotient to five S4 orbits; neighbor independence leaves only K2,3, whose two saturated hubs would both lie inside the same leaf triangle and force a crossing among elementary D2 spokes.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__PROFILE_33334_EXCLUDED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_SATURATION_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_33334_CLOSURE.md",
+        "ci/validate_openmath_h1_12_q5_33334.py",
+        "ci/test_openmath_h1_12_q5_33334.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-021",
+      "text": "Conditional on the protected saturated-triple separator lemma and predecessor q=5 fan/charging state space, profile 33333 reduces from 595 labeled graph placements / 15 S5 orbits to one equality graph: K3 plus two isolated triple cores. Eleven orbits fail saturated-neighbor independence; star-plus-isolated, star-plus-two-attachments, and K2,3 are excluded by strengthened line-count or straight-line geometry.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_GEOMETRIC_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__ONE_Q5_EQUALITY_GRAPH__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_SATURATION_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_33333_REDUCTION.md",
+        "ci/validate_openmath_h1_12_q5_33333.py",
+        "ci/test_openmath_h1_12_q5_33333.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-022",
+      "text": "Conditional on the protected q=5 fan/charging state space, the sole K3+two-isolated residual has an exact nested-triangle geometry: the D2 triangle is a counted face, the three third core-lines form an outer triangle, each isolated triple has antipodal D1 rays on one line, h=12, and the six clean-line charges partition exactly as four isolated-core D1 charges plus two U-endpoint charges.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_NORMAL_FORM_RECONSTRUCTION_COMPLETE__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_33333_REDUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_EQUALITY_NORMAL_FORM.md",
+        "ci/validate_openmath_h1_12_q5_equality.py",
+        "ci/test_openmath_h1_12_q5_equality.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-023",
+      "text": "Conditional on the predecessor source-scoped triple-point local fan/no-consecutive-D1 and clean-line charging premises used to derive OM26-H1-RED-022, the sole q=5 score-95 K3+two-isolated equality normal form is unrealizable. Hence any normalized n=18,T=95 witness must have q>=6 finite multiple points.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_EXTERNAL_CONTRIBUTION_ADJUDICATED_ACCEPTED__Q5_CLOSED__NOT_CERTIFIED",
+      "support": [
+        "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md",
+        "contributions/OPENMATH-2026/OM26-H1/H1-12/adjudications/OM26-H1-H1-12-ADJ-001.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_EQUALITY_NORMAL_FORM.md",
+        "ci/validate_openmath_h1_agent001_adjudication.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    }
+  ],
+  "prohibited_inferences": [
+    "the displayed baseline score 16 is literature-best",
+    "a higher score proves optimality",
+    "a pseudoline arrangement is an admissible straight-line submission",
+    "floating-point geometry establishes the exact score",
+    "AutoLab acceptance establishes novelty or MATHCERT certification",
+    "a campaign-best-observed candidate is globally best known"
+  ]
+}

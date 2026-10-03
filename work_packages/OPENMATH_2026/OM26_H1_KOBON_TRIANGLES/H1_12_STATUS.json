@@ -1,0 +1,255 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-12-STATUS",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-12",
+  "state": "Q_GE_6__SOURCE_CONDITIONAL",
+  "proved_reduction": {
+    "statement": "Any finite hill arrangement and any finite set of its counted bounded triangular faces can be projectively transformed to an affine arrangement with no parallel line pairs while preserving all selected counted bounded triangular faces.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_PARALLEL_REDUCTION.md",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "remaining_gap": {
+    "simple_bound_value": 94,
+    "issue": "Conditional on the named source-scoped premises, all q<=5 score-95 configurations and q=6 profiles 333444 and 333335 are excluded. Profiles 333333, 333334, 333344 and all q>=7 cases remain open.",
+    "target": "Attack q=6 profile 333344 next, seeking a separator/incidence lemma reusable against 333334 or 333333, while keeping the source-scoped fan and clean-line charging obligations explicit."
+  },
+  "current_source_interval": {
+    "lower": 93,
+    "upper": 95
+  },
+  "claim_boundary": "H1-12 is narrowed to three q=6 profiles (333333, 333334, 333344) plus q>=7, conditional on the named source-scoped premises. No hill-global <=94, optimality, or MATHCERT claim.",
+  "source_conditional_reduction": {
+    "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
+    "arithmetic_replay": "ci/validate_openmath_h1_12_three_core.py",
+    "arithmetic_effect": "The q=3 arithmetic leaves a unique saturated three-triple template; the proof note then excludes that template using the endpoint-level clean-line charge map and local fan geometry.",
+    "geometric_premises_independently_certified": false,
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "four_core_reduction": {
+    "statement": "Conditional on the stated defect/fan premises, an n=18,T=95 normalized arrangement with exactly four finite multiple points has multiplicities only 3333, 3334, 3335, 3344, or 3444. Adding the named clean-line/local refinements forces minimum D2 values 1, 3, 6, 5, and 6 respectively.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_FOUR_CORE_PROFILE_REDUCTION.md",
+    "arithmetic_replay": "ci/validate_openmath_h1_12_four_core.py",
+    "geometric_premises_independently_certified": false,
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "saturated_core_reduction": {
+    "statement": "Conditional on the named local no-long-run fan premise, a convex-hull vertex (extreme core) cannot be saturated. For four noncollinear cores with D2>=5, at least three cores are extreme, so at most one core may be saturated. The protected q=4 finite replay then excludes profiles 3335, 3344, and 3444, leaving only 3333 and 3334.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_SATURATED_CORE_HULL_REDUCTION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_saturated_core.py",
+    "independent_component": "extreme-point half-plane argument and finite replay",
+    "source_scoped_component": "local no-long-run fan premise",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3334_normal_form": {
+    "statement": "The 67 saturated-core-filtered finite states with multiplicities 3334 collapse, modulo permutation of the three triple cores, to nine graph/role types: two D2=3 stars, one non-saturated D2=4 cycle, three D2=4 star-plus-outer-edge types, and three D2=5 K4-minus-outer-pair types.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_NORMAL_FORM.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3334_normal_form.py",
+    "independent_component": "finite quotient and noncrossing of elementary D2 segments",
+    "source_scoped_component": "saturated hubs are non-extreme via the local no-long-run fan premise",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3334_d2_3_exclusion": {
+    "statement": "Conditional on the named local no-long-run fan premise and clean-line charging map, neither D2=3 star role-type in profile 3334 can realize n=18,T=95.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_D2_3_STAR_EXCLUSION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3334_d2_3.py",
+    "independent_component": "ordinary-endpoint transverse-line lemma and strengthened triple-hub core-line count",
+    "source_scoped_component": "local no-long-run fan premise and clean-line charging map",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3334_d2_4_exclusion": {
+    "statement": "Conditional on the named local no-long-run fan premise and clean-line charging map, none of the four D2=4 role-types in profile 3334 can realize n=18,T=95.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_D2_4_EXCLUSION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3334_d2_4.py",
+    "independent_component": "finite local cyclic enumeration, transverse-line use, and strengthened T-hub core-line count",
+    "source_scoped_component": "local no-long-run fan premise and clean-line charging map",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3334_d2_5_exclusion": {
+    "statement": "Conditional on the named local no-long-run fan premise and clean-line charging map, none of the D2=5 K4-minus-one-edge role-types in profile 3334 can realize n=18,T=95. Therefore profile 3334 is fully excluded.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3334_D2_5_EXCLUSION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3334_d2_5.py",
+    "independent_component": "finite cyclic deductions and charge-capacity arithmetic",
+    "source_scoped_component": "local no-long-run fan premise and clean-line charging map",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3333_normal_form": {
+    "statement": "Conditional on the named triple-point local fan premise and clean-line charging map, the protected 344 labeled profile-3333 states reduce to 108 states in exactly 12 S4 normal forms; no D2=6 state survives.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_NORMAL_FORM.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3333_normal_form.py",
+    "independent_component": "finite cyclic blocked-target enumeration and S4 quotient",
+    "source_scoped_component": "local no-two-consecutive-D1 premise and clean-line charging map",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3333_saturated_hub_reduction": {
+    "statement": "A saturated triple hub forces ordinary separators on all three leaf-pair lines, hence D2=3 exactly and six distinct core-pair arrangement lines. Applied to the protected 3333 normal forms, this leaves 48 labeled states in eight normal forms and no D2>=5 state.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_SATURATED_HUB_REDUCTION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3333_saturated_hub.py",
+    "independent_component": "separator lemma, six-line core skeleton, and finite filtering",
+    "source_scoped_component": "triple-point local no-two-consecutive-D1 premise; clean-line map for lower-form exclusion",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3333_c4_exclusion": {
+    "statement": "In the sole D2=4 C4 normal form, exact charge equality forces one blocked D1 target at each core. Every admissible local equality pattern forces an arrangement line between that core's two C4 neighbors, making the core-incidence bound strict and raising the clean-line lower bound above capacity.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_4_C4_EXCLUSION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3333_c4.py",
+    "independent_component": "two-type local cyclic classification and strict core-incidence refinement",
+    "source_scoped_component": "triple-point local no-two-consecutive-D1 premise and clean-line charging map",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3333_nonsaturated_star_exclusion": {
+    "statement": "In the profile-3333 non-saturated D2=3 star equality form, an unblocked hub D1 ray forces the three D2 spokes into a consecutive block, hence an additional leaf-pair arrangement line; the core-incidence bound becomes strict and clean-line demand exceeds charge capacity.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_3_NONSAT_STAR_EXCLUSION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3333_nonsat_star.py",
+    "independent_component": "hub cyclic equality implication and strict core-incidence refinement",
+    "source_scoped_component": "triple-point local fan/blocked-target analysis and clean-line charging map",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3333_saturated_equality_exclusion": {
+    "statement": "In the higher-count saturated D2=3 star, the alternating separator geometry puts the hub inside the leaf triangle. Exact charge equality then forces each leaf's two D1 rays to the two outward side positions, which makes the opposite hub ray a third shared ordinary segment and contradicts d1=2.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_3_SATURATED_EQUALITY_EXCLUSION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3333_saturated_equality.py",
+    "independent_component": "interior-hub consequence, leaf ray-order classification, and forced-third-D1 contradiction",
+    "source_scoped_component": "triple-point local fan premise and clean-line charging equality",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3333_triangle_isolated_normal_form": {
+    "statement": "The D2=3 K3+isolated charge-equality form forces a central counted D2 triangle, an exterior isolated triple core sharing no core line with it, and exactly two edge-selection orientation types: cyclic (1,1,1) or doubled-edge (2,1,0).",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_TRIANGLE_ISOLATED_NORMAL_FORM.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3333_triangle_isolated.py",
+    "independent_component": "elementary-segment exclusion of the between-D2 mechanism, central-face/exterior-core consequences, and two-type quotient",
+    "source_scoped_component": "triple-point local fan premise and clean-line charge equality",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3333_triangle_type_p_exclusion": {
+    "statement": "In triangle-isolated Type P, the doubled selected edge forces two distinct chargeable D1 segments to share the same unique clean transverse line M_V. Exact charge equality therefore loses one D1 charge slot and cannot serve nine clean lines.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_TRIANGLE_TYPE_P_EXCLUSION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3333_triangle_type_p.py",
+    "independent_component": "selected-vertex M_V incidence formula and duplicate-line classification",
+    "source_scoped_component": "clean-line charging rule and exact equality saturation",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3333_triangle_type_c_exclusion": {
+    "statement": "In triangle-isolated Type C, every selected central vertex forces a third distinct arrangement line through a point already equal to the intersection of two arrangement lines, creating an additional finite multiple point and contradicting q=4. Together with Type P, the K3+isolated equality form is closed.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_TRIANGLE_TYPE_C_EXCLUSION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3333_triangle_type_c.py",
+    "independent_component": "selected-vertex forced-new-multiple-point incidence argument",
+    "source_scoped_component": "predecessor local fan and clean-line equality reduction",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "profile_3333_p4_exclusion": {
+    "statement": "In the D2=3 P4 form, each degree-2 core has one or two blocked D1 targets. A one-blocked core forces an additional neighbor-pair arrangement line; a two-blocked core lowers charge capacity. The resulting (1,1), (1,2), and (2,2) cases all violate the clean-line budget.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_3333_D2_3_P4_EXCLUSION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_3333_p4.py",
+    "independent_component": "three-case blocked-target/core-incidence accounting",
+    "source_scoped_component": "triple-point local fan premise and clean-line charging map",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q4_low_d2_sector_closure": {
+    "statement": "Requiring D1/D2 shared-ray labels to arise from actual triangular sectors sharpens triple-point blocked minima to 2 for local counts (d1,d2)=(2,1) and (2,2). This excludes the remaining D2=1 single-edge, D2=2 P3+isolated, and D2=2 2K2 forms; the protected P4 exclusion is independently strengthened as a cross-check.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q4_LOW_D2_SECTOR_CLOSURE.md",
+    "finite_replay": "ci/validate_openmath_h1_12_q4_sector_closure.py",
+    "independent_component": "sector-to-shared-ray identity and finite sector enumeration",
+    "source_scoped_component": "triple-point no-consecutive-D1 premise and clean-line charging map",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q5_profile_reduction": {
+    "statement": "For q=5, the coarse defect/fan inequality leaves seven multiplicity profiles. Exact sector-consistent five-core graph replay plus the clean-line charge condition leaves only 33333 (D2=3..10), 33334 (D2=5..9), and 33344 (D2=6..7).",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_PROFILE_REDUCTION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_q5_profiles.py",
+    "independent_component": "coarse profile inequality, five-core graph enumeration, sector-to-shared-ray construction, and dynamic-programming replay",
+    "source_scoped_component": "no-long-run local fan premise and clean-line charging map",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q5_saturation_reduction": {
+    "statement": "Applying the protected saturated-core non-extremality lemma to the sector-consistent q=5 state space excludes 33344 entirely, removes 33334 states with D2>=7, and removes 33333 states with D2>=8. The retained q=5 ranges are 33333 D2=3..7 and 33334 D2=5,6.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_SATURATION_REDUCTION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_q5_saturation.py",
+    "independent_component": "five-core noncollinearity threshold and finite saturation counting",
+    "source_scoped_component": "saturated-core non-extremality plus predecessor fan/charging premises",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q5_33334_closure": {
+    "statement": "The retained q=5 profile 33334 states quotient to five core-graph orbits under the four-triple symmetry. Saturated-triple neighbor independence excludes four; the sole K2,3 orbit would place both saturated hubs inside the same leaf triangle, forcing an elementary-spoke crossing. Hence 33334 is excluded.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_33334_CLOSURE.md",
+    "finite_replay": "ci/validate_openmath_h1_12_q5_33334.py",
+    "independent_component": "S4 graph quotient, saturated-role extraction, neighbor-independence filter, and K2,3 straight-line crossing argument",
+    "source_scoped_component": "saturated-triple separator lemma and predecessor q=5 fan/charging state space",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q5_33333_reduction": {
+    "statement": "The retained q=5 profile 33333 states quotient to 15 S5 graph orbits. Saturated-triple neighbor independence leaves four role cases; strengthened star counting, separator-incidence exhaustion, and the K2,3 crossing obstruction exclude three, leaving only K3 plus two isolated triple cores at exact charge equality.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_33333_REDUCTION.md",
+    "finite_replay": "ci/validate_openmath_h1_12_q5_33333.py",
+    "independent_component": "S5 quotient, saturated-role filtering, star line count, separator-incidence exhaustion, and K2,3 crossing argument",
+    "source_scoped_component": "saturated-triple separator lemma and predecessor q=5 fan/charging state space",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q5_equality_normal_form": {
+    "statement": "The sole q=5 K3+two-isolated residual has h=12 exactly; the D2 triangle is a counted central face; the third lines through its vertices form an outer triangle containing A,B,C in the side interiors; each isolated triple has two antipodal D1 rays on one line; and the six clean lines are exactly partitioned into four isolated-core D1 charges plus two U-endpoint charges.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_EQUALITY_NORMAL_FORM.md",
+    "finite_replay": "ci/validate_openmath_h1_12_q5_equality.py",
+    "independent_component": "local sector enumeration, nested-triangle incidence reconstruction, and exact charge-slot accounting",
+    "source_scoped_component": "predecessor fan/charging state space and clean-line equality",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q5_agent001_adjudication": {
+    "statement": "The recovered Agent 001 reduction is accepted at Solve level: conditional on the predecessor source-scoped triple-point local fan/no-consecutive-D1 and clean-line charging premises, the sole q=5 K3+two-isolated equality normal form is unrealizable.",
+    "adjudication": "contributions/OPENMATH-2026/OM26-H1/H1-12/adjudications/OM26-H1-H1-12-ADJ-001.json",
+    "source_result": "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md",
+    "claim_id": "OM26-H1-RED-023",
+    "mathematical_effect": true,
+    "certification_effect": false,
+    "frontier_effect": "Q_GE_6__SOURCE_CONDITIONAL"
+  },
+  "q6_premise_scope_disposition": {
+    "statement": "The six-core fan and clean-line parity statements remain scoped to pairwise-nonparallel arrangements; projective normalization removes parallel pairs while preserving any selected counted bounded triangular faces before those statements are applied.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_PREMISE_SCOPE_DISPOSITION.md",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q6_333444_closure": {
+    "statement": "Conditional on the six-core fan/charging premises, profile 333444 is unrealizable: ten K3,3 core graphs are nonplanar and all sixty triangular-prism candidates violate the saturated local-ray plus elementary-triangle obstruction.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_SATURATED_PRISM_OBSTRUCTION.md",
+    "finite_replay": "ci/validate_openmath_h1_prism_obstruction.py",
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q6_333335_closure": {
+    "statement": "Conditional on the six-core fan/charging premises, profile 333335 is unrealizable. Exact replay reduces 1,375 relaxed graph candidates to thirty K3,3-e labelings at D2=8; unique local charge equality forces saturated triple alternation, which creates an additional non-D2 core-pair line and makes the core-incidence bound strict.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_333335_OBSTRUCTION.md",
+    "finite_replay": "ci/validate_openmath_h1_333335.py",
+    "residual_after_replay": [
+      "333333",
+      "333334",
+      "333344"
+    ],
+    "mathematical_effect": true,
+    "certification_effect": false
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1-pilot-adjudication",
+  "adjudication_id": "NSCI-C2-B-COOP-001-ADJ-001",
+  "dispatch_id": "NSCI-C2-B-COOP-001",
+  "assignment_id": "B",
+  "evidence": {
+    "protected_merge": "8b2bdb2f0be6515b2eedea1d784d2d97f53c694e",
+    "github_issue_number": 426,
+    "github_comment_id": 5768723180,
+    "raw_sha256": "3a86149e1cfac0ea3dc6ec1e43a4efeb19e7745b5e2ab011b3606de9583bb2f9"
+  },
+  "contributor_disposition": "REFUTED",
+  "adjudication_disposition": "PARTIAL_ADMISSION__D4_ALONE_ROUTE_REFUTED_AT_MOMENT_INTERFACE",
+  "accepted_claims": [
+    "D4 alone does not force positive mass in a fixed scaled annulus at the moment-measure interface.",
+    "D4 alone does not force a positive Q2 lower bound at the moment-measure interface.",
+    "Under the supplied packet scaling, D4 is higher differential order than the finite Leray-Hopf dissipation budget.",
+    "A D4-based selector bridge requires additional tightness/localization/lower-moment information or an equation-specific dynamical mechanism."
+  ],
+  "rejected_or_unproved_claims": [
+    "The two-point measure family is realized by the full L5-35 packet dynamics.",
+    "The separator is a selected whole-space NSE counterexample.",
+    "The proposed kurtosis condition is necessary.",
+    "The proposed kurtosis-plus-Q4-envelope package is a complete sufficient theorem as stated."
+  ],
+  "mathcert_effect": false,
+  "a2_effect": false,
+  "canonical_campaign_effect": "close D4-alone selector-charge route at moment interface; retain narrowed reconstruction residual",
+  "blind_cohort_effect": "none"
+}

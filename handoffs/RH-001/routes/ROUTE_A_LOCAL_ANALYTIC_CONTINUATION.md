@@ -11,8 +11,8 @@ Current protected campaign head at pack creation:
 grandchallenge/MATHSOLVE@7387aa8993355ab854630cf0683b4120a813884c
 
 Current protected route frontier:
-RH-R050-TRIAL-REWEIGHTED-EXTENSION-001
-work_packages/RH_R050_TRIAL_REWEIGHTED_EXTENSION.md
+RH-R051-RANK-ONE-COERCIVITY-EXTENSION-001
+work_packages/RH_R051_RANK_ONE_COERCIVITY_EXTENSION.md
 
 ## 1. Mission
 
@@ -22,7 +22,7 @@ Prove a strictly larger explicit interval
 
 with
 
-a_1 > 171/1000,
+a_1 > 178/1000,
 
 on which the full localized Weil operator has:
 
@@ -45,21 +45,21 @@ The campaign reduced that condition in RH-R036 to:
 
 Suzuki's full-operator small-a analysis supplied the qualitative mechanism. R040 made it effective. R045 through R050 progressively improved the analytic certificate.
 
-The current protected theorem R050 proves the full simple-even statement for
+The current protected theorem R051 proves the full simple-even statement for
 
-0 < a <= 171/1000.
+0 < a <= 178/1000.
 
 The current protected lower bounds at the endpoint are:
 
 epsilon_-(lambda) - epsilon_+(lambda)
 >
-775974967 / 3355931250000,
+55428698889 / 23675000000000,
 
 and
 
 epsilon_{+,2}(lambda) - epsilon_{+,1}(lambda)
 >
-12508575979 / 71025000000.
+1783634369 / 11837500000.
 
 The parity-gap budget is now much tighter than the even internal-gap budget. Further microscopic retuning of the same one-parameter quadratic trial is explicitly not the preferred direction.
 
@@ -76,6 +76,7 @@ Read these before changing mathematics:
 - work_packages/RH_R048_SECTOR_COERCIVITY_EXTENSION.md
 - work_packages/RH_R049_HIGHER_ODD_COERCIVITY.md
 - work_packages/RH_R050_TRIAL_REWEIGHTED_EXTENSION.md
+- work_packages/RH_R051_RANK_ONE_COERCIVITY_EXTENSION.md
 - MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320:
   reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md
 - AGENTS.md
@@ -175,7 +176,7 @@ A clean combined theorem that balances A1-A3 and yields one larger explicit endp
 
 A route contribution should do at least one of:
 
-1. prove a new full simple-even interval with endpoint strictly above 171/1000;
+1. prove a new full simple-even interval with endpoint strictly above 178/1000;
 2. prove a reusable stronger even or odd limiting-sector inequality;
 3. prove a reusable sharper parity-sensitive remainder theorem;
 4. rigorously show that a proposed continuation mechanism cannot improve the current endpoint and identify the exact obstruction.

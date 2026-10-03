@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-BASELINE-INTERNAL-RECEIPT",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "gate": "H1-01",
+  "state": "INDEPENDENT_GCL_EXACT_REPLAY_PASS",
+  "subject": {
+    "n": 18,
+    "baseline_family": "2*i*x - y - i*i = 0 for i=0,...,17",
+    "solution_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/baseline/solution.json",
+    "solution_git_blob_sha1": "8d1c2147204cedaf45559d2d8bafe1603b0903f1",
+    "solution_sha256": "fee1fa08e700ba5849c3d1849cc10d2d3a50a44b3d838d560cd08f9a0de2b271"
+  },
+  "implementation": {
+    "scorer_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/kobon_scorer.py",
+    "scorer_git_blob_sha1": "ff26f6181068cf9c565a9e4a22270b99725fbe90",
+    "tests_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/test_kobon_scorer.py",
+    "tests_git_blob_sha1": "55eb4c4ead881cb56e428f691e957cd3657596ed",
+    "arithmetic": "EXACT_RATIONAL_PYTHON_FRACTION_AND_INTEGER_DETERMINANTS",
+    "trusted_float_predicates": false
+  },
+  "result": {
+    "passed": true,
+    "triangles": 16,
+    "arrangement_vertices": 153,
+    "bounded_arrangement_edges": 288,
+    "supporting_line_triples": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        4,
+        5
+      ],
+      [
+        4,
+        5,
+        6
+      ],
+      [
+        5,
+        6,
+        7
+      ],
+      [
+        6,
+        7,
+        8
+      ],
+      [
+        7,
+        8,
+        9
+      ],
+      [
+        8,
+        9,
+        10
+      ],
+      [
+        9,
+        10,
+        11
+      ],
+      [
+        10,
+        11,
+        12
+      ],
+      [
+        11,
+        12,
+        13
+      ],
+      [
+        12,
+        13,
+        14
+      ],
+      [
+        13,
+        14,
+        15
+      ],
+      [
+        14,
+        15,
+        16
+      ],
+      [
+        15,
+        16,
+        17
+      ]
+    ]
+  },
+  "adversarial_tests": {
+    "passed": true,
+    "cases": [
+      "three_lines_one_triangle",
+      "three_concurrent_lines_zero_triangles",
+      "parallel_pair_zero_triangles",
+      "subdivided_original_triangle_not_counted",
+      "locked_baseline_exact_support_triples",
+      "proportional_duplicate_rejected"
+    ]
+  },
+  "workflow_evidence": [
+    {
+      "run_id": 36327965999,
+      "job_id": 108644289208,
+      "internal_result": "PASS",
+      "external_result": "NOT_RUN__LOCAL_HILL_ABSENT"
+    },
+    {
+      "run_id": 36328034870,
+      "job_id": 108644483691,
+      "internal_result": "PASS",
+      "external_result": "NOT_RUN__AUTOLAB_LOGIN_REQUIRED"
+    },
+    {
+      "run_id": 36328112782,
+      "job_id": 108644696152,
+      "internal_result": "PASS",
+      "external_result": "NOT_RUN__AUTOLAB_TOKEN_SECRET_UNAVAILABLE"
+    },
+    {
+      "run_id": 36354367463,
+      "job_id": 108719011813,
+      "internal_result": "PASS",
+      "external_result": "PASS__AUTOLAB_PUBLIC_WORKING_TREE_TRIANGLES_16"
+    }
+  ],
+  "claim_boundary": "This receipt establishes that the independent GCL exact scorer returns 16 on the locked baseline and passes the listed bounded tests. AutoLab concordance is separately recorded in BASELINE_AUTOLAB_RECEIPT.json. It does not establish competition acceptance, optimality, novelty, or MATHCERT certification."
+}

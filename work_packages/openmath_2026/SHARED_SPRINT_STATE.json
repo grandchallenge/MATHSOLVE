@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-SHARED-SPRINT-STATE",
+  "campaign_id": "OPENMATH-2026",
+  "programme_tracker": "grandchallenge/MATH-PROGRAMME#1072",
+  "solve_tracker": "grandchallenge/MATHSOLVE#454",
+  "hill_slots": [
+    {
+      "slot": "OM26-H1",
+      "forge_source_lock": "PENDING",
+      "solve_state": "BLOCKED_PER_HILL_PENDING_FORGE_SOURCE_LOCK",
+      "obligation_graph": null,
+      "next_action": "Acquire/admit exact Forge source lock before hill-specific Solve work."
+    },
+    {
+      "slot": "OM26-H2",
+      "forge_source_lock": "PENDING",
+      "solve_state": "BLOCKED_PER_HILL_PENDING_FORGE_SOURCE_LOCK",
+      "obligation_graph": null,
+      "next_action": "Acquire/admit exact Forge source lock before hill-specific Solve work."
+    },
+    {
+      "slot": "OM26-H3",
+      "forge_source_lock": "PENDING",
+      "solve_state": "BLOCKED_PER_HILL_PENDING_FORGE_SOURCE_LOCK",
+      "obligation_graph": null,
+      "next_action": "Acquire/admit exact Forge source lock before hill-specific Solve work."
+    },
+    {
+      "slot": "OM26-H4",
+      "forge_source_lock": "PENDING",
+      "solve_state": "BLOCKED_PER_HILL_PENDING_FORGE_SOURCE_LOCK",
+      "obligation_graph": null,
+      "next_action": "Acquire/admit exact Forge source lock before hill-specific Solve work."
+    },
+    {
+      "slot": "OM26-H5",
+      "forge_source_lock": "PENDING",
+      "solve_state": "BLOCKED_PER_HILL_PENDING_FORGE_SOURCE_LOCK",
+      "obligation_graph": null,
+      "next_action": "Acquire/admit exact Forge source lock before hill-specific Solve work."
+    },
+    {
+      "slot": "OM26-H6",
+      "forge_source_lock": "PENDING",
+      "solve_state": "BLOCKED_PER_HILL_PENDING_FORGE_SOURCE_LOCK",
+      "obligation_graph": null,
+      "next_action": "Acquire/admit exact Forge source lock before hill-specific Solve work."
+    }
+  ],
+  "shared_lanes": [
+    {
+      "lane": "formal_environment_inventory",
+      "state": "AUTHORIZED"
+    },
+    {
+      "lane": "checker_contract_audit",
+      "state": "AUTHORIZED"
+    },
+    {
+      "lane": "claim_and_provenance_templates",
+      "state": "AUTHORIZED"
+    },
+    {
+      "lane": "cei_dispatch_template",
+      "state": "AUTHORIZED"
+    },
+    {
+      "lane": "library_gap_inventory",
+      "state": "AUTHORIZED"
+    }
+  ],
+  "claim_boundary": "This is orchestration state only. It does not identify or solve any unresolved hill and does not create MATHCERT effect."
+}

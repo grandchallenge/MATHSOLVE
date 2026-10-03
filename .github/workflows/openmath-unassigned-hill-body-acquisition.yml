@@ -1,0 +1,121 @@
+name: OPENMATH unassigned hill body acquisition
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/openmath-unassigned-hill-body-acquisition.yml"
+      - ".ghos-routing/workflows.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  acquire-unassigned-bodies:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact subject
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Assert exact subject checkout
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+
+      - name: Install pinned uv and official AutoLab CLI
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check "uv==0.10.0"
+          curl -fsSL https://app.autolab.ai/install.sh -o /tmp/autolab-install.sh
+          sha256sum /tmp/autolab-install.sh
+          sh /tmp/autolab-install.sh
+          "$HOME/.local/bin/autolab" --version
+
+      - name: Pull and describe six unresolved organizer hills
+        env:
+          AUTOLAB_TOKEN: ${{ secrets.AUTOLAB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$AUTOLAB_TOKEN" ]; then
+            echo "AUTOLAB_AUTH_BLOCKER=repository secret AUTOLAB_TOKEN is unavailable"
+            exit 42
+          fi
+          "$HOME/.local/bin/autolab" login --token "$AUTOLAB_TOKEN" >/dev/null
+
+          ids=(
+            "alejandrozu/clique-cluster-ramsey-multiplicity"
+            "alejandrozu/matrix-multiplication-tensor-3x3"
+            "alejandrozu/grothendieck-constant-witnesses"
+            "alejandrozu/collatz-modular-descent"
+            "alejandrozu/busy-beaver-6-certificates"
+            "ottogin/erdos-3"
+          )
+
+          mkdir -p /tmp/openmath-bodies
+
+          for id in "${ids[@]}"; do
+            slug="${id##*/}"
+            "$HOME/.local/bin/autolab" hills pull "$id" >/tmp/pull-"$slug".log
+            uv tool run --from hills==0.11.0 hills describe "$slug" >"/tmp/openmath-bodies/$slug.json"
+          done
+
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          ids = [
+              "alejandrozu/clique-cluster-ramsey-multiplicity",
+              "alejandrozu/matrix-multiplication-tensor-3x3",
+              "alejandrozu/grothendieck-constant-witnesses",
+              "alejandrozu/collatz-modular-descent",
+              "alejandrozu/busy-beaver-6-certificates",
+              "ottogin/erdos-3",
+          ]
+          token = os.environ["AUTOLAB_TOKEN"].encode()
+
+          manifest = []
+          for source_id in ids:
+              slug = source_id.rsplit("/", 1)[1]
+              path = Path("/tmp/openmath-bodies") / f"{slug}.json"
+              raw = path.read_bytes()
+              if token and token in raw:
+                  raise SystemExit(f"credential material detected in {source_id} describe output")
+              payload = json.loads(raw)
+              canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
+              describe_digest = hashlib.sha256(canonical).hexdigest()
+
+              content_payload = dict(payload)
+              content_payload.pop("path", None)
+              content_payload.pop("commit", None)
+              content_canonical = json.dumps(
+                  content_payload,
+                  sort_keys=True,
+                  separators=(",", ":"),
+                  ensure_ascii=False,
+              ).encode()
+              content_digest = hashlib.sha256(content_canonical).hexdigest()
+
+              manifest.append({
+                  "source_id": source_id,
+                  "hill": payload.get("hill"),
+                  "version": payload.get("version"),
+                  "spec_version": payload.get("spec_version"),
+                  "tree_hash": payload.get("tree_hash"),
+                  "observed_commit": payload.get("commit"),
+                  "sha256_describe_json": describe_digest,
+                  "sha256_content_identity": content_digest,
+              })
+              print(f"OPENMATH_BODY_BEGIN {source_id} {describe_digest} {content_digest}")
+              print(json.dumps(payload, sort_keys=True, ensure_ascii=False))
+              print(f"OPENMATH_BODY_END {source_id}")
+
+          print("OPENMATH_BODY_MANIFEST_BEGIN")
+          print(json.dumps(manifest, sort_keys=True))
+          print("OPENMATH_BODY_MANIFEST_END")
+          PY

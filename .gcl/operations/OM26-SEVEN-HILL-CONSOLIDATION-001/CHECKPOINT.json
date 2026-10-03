@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CHECKPOINT",
+  "operation": "OM26-SEVEN-HILL-CONSOLIDATION-001",
+  "campaign": "OPENMATH-2026",
+  "repository": "grandchallenge/MATHSOLVE",
+  "branch": "governance/openmath-seven-hill-consolidation-001",
+  "protected_base": "0da480a62e86a623a87f07f6d75ed8ed810ee15a",
+  "phase": "CLOSED__SEVEN_HILL_CONSOLIDATION_COMPLETE",
+  "restart_rule": "Resume only this operation from this branch. Do not create a parallel consolidation or infer state from chat.",
+  "completion_target": "Seven uniform current hill lanes H1-H7; H2-H7 aggregate labels historical-only.",
+  "last_completed_step": "Programme reconciliation closed at protected main 9c7a2aa9deeef2fd5878747bb66fa71a094b5565 with completion receipt ab0ee8acaf552b438ab707a43b427f6fbcd99b2b.",
+  "next_step": "Resume OPENMATH-2026 from the Programme canonical campaign state. Current next action is state-driven launch of exact hill lanes whose agent lifecycle is LEASED_NOT_LAUNCHED.",
+  "closed": true,
+  "branch_head": "65da369824eaf8d9174b638ed0bd60db1c6a7ae9",
+  "protected_merge": "56e1593d4cb4b4b02a9494791b4f4877e365b49a",
+  "protected_readback": {
+    "hill_lanes_blob": "ae4f4e5a9fc5be3ce6ec5e0ec1287de37e29fec8",
+    "assignment_registry_blob": "8043a11ed97a9a1bb06b334eca178860ed3b1524",
+    "historical_tranche_registry_blob": "4f35fc50d79d1d276d2e1153dc085f82d4b7c627",
+    "human_board_blob": "b88885043a5268b7a7a92f8fe781ec9068dc41ad"
+  },
+  "programme_reconciliation": {
+    "protected_main": "9c7a2aa9deeef2fd5878747bb66fa71a094b5565",
+    "campaign_state_blob": "3af42917c86baadc4f789d3276862be44ee67581",
+    "checkpoint_blob": "3b65f04a3612f2f1bc58f49ebd9c23c01c3c3d1b",
+    "completion_receipt_blob": "ab0ee8acaf552b438ab707a43b427f6fbcd99b2b"
+  }
+}

@@ -1,5 +1,18 @@
 # Next Executable Step
 
+## Chaidez v2 current executable step
+
+The assessment below is retained as historical evidence. At protected MATHCERT
+commit `1c053a7684dd493c41ae3e6d7eecadb907b048fc`, the restricted wrapper is already
+recorded as `UC-WP06-L009`; this migration does not claim to create it.
+
+- Input: the pinned MATHCERT ideal-family Claim Ledger and local WP06 documents.
+- Output: a documentary conformance replay bound to spine node `WP06-S9`.
+- Completion test: `python ci/validate_external_catalog_promotion_dossiers.py`
+  accepts the WP06 v2 reference record and confirms that its existing Claim
+  Ledger is byte-identical to the approved baseline. Mathematical re-certification
+  remains a separately scoped MATHCERT operation.
+
 ## Immediate Next Step
 
 Selected: assess the restricted class of union-closed families that are
@@ -61,4 +74,3 @@ The assessment satisfies this test by naming:
 
 Do not broaden `localIdealFamily_complement_frankl` into a statement about all
 union-closed families. That would erase the hypothesis that makes WP06 true.
-

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "OM26-H7-D4-PINNED-PROOF-RECEIPT-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H7",
+  "source_exact_commit": "28394e15f7f0b837ada046d68bff57d9e6b440ed",
+  "sources": [
+    "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D3.lean",
+    "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D4.lean"
+  ],
+  "theorems": [
+    {
+      "name": "Erdos3.ap_subprogression_of_le",
+      "role": "finite AP truncation bridge",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Erdos3.ap_frequently_iff_every_length",
+      "role": "equivalence between the protected frequently-atTop formulation and APs of every exact finite length",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "pinned_environment": {
+    "image": "ghcr.io/ottogin/lean-mathlib@sha256:964547ad81e109c78545512867bae70b710c55d833078674878faad7de0ebb85",
+    "lean": "4.33.1",
+    "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "workflow": {
+    "run_id": 36879690920,
+    "job_id": 110427986166,
+    "conclusion": "success"
+  },
+  "allowed_axioms_exact": true,
+  "proof_holes": false,
+  "state": "D3_D4_PINNED_COMPILE_PASS__AXIOM_GATE_PASS",
+  "mathematical_effect": "FORMALLY_EQUIVALENT_EXACT_LENGTH_REFORMULATION_OF_AP_CONCLUSION",
+  "claim_boundary": "Does not prove the reciprocal-divergence implication or Erdos Problem 3. It formalizes only the AP-conclusion equivalence and truncation bridge; novelty and competition credit remain separate review questions."
+}

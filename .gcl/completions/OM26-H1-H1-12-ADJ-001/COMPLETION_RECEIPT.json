@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "campaign": "OPENMATH-2026",
+  "operation": "OM26-H1-H1-12-ADJ-001",
+  "state": "CLOSED__AGENT001_ACCEPTED_SOURCE_CONDITIONAL",
+  "candidate_head": "4f936a6efa87ba1c40fa98f8c61e3e1de037cba8",
+  "protected_merge": "dc8e4bbebf7df3d2310f1c324a132b386c73ab04",
+  "exact_head_reviews": {
+    "adversary_review_id": 5347021727,
+    "referee_review_id": 5347021943,
+    "subject": "4f936a6efa87ba1c40fa98f8c61e3e1de037cba8"
+  },
+  "required_gates": {
+    "adjudication_gate": "PASS",
+    "core_clarity_gate": "PASS",
+    "cex_lifecycle_gate": "PASS",
+    "gcl_conformance": "PASS",
+    "routing_enforcement": "PASS",
+    "policy": "PASS",
+    "security": "PASS"
+  },
+  "incidental_workflows": {
+    "note": "One unrelated topology-concurrency-search workflow remained in progress after protected merge. It was not an admission gate for this adjudication and did not mutate the adjudicated claim state."
+  },
+  "protected_readback": {
+    "contributions/OPENMATH-2026/OM26-H1/H1-12/adjudications/OM26-H1-H1-12-ADJ-001.json": "43379c31540d7b0818063f183a464f4a510b12d8",
+    "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_STATUS.json": "068020e90f91f3040415527b920c8116aa5c524c",
+    "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/CLAIM_LEDGER.json": "4a7a52d635b4d9a87ec47eedd48f65be5fe757f7",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "4962c6495facb00d19962d3cc979b96abf49164e",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "90241fbfc4e3d610b60e08f209b8b370f547311d",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "33b165a07fb6ec8dc3e1100cb27c637a6e4a1011",
+    ".gcl/admission/OM26-H1-H1-12-ADJ-001/FREEZE.json": "1b27e7c4b520075ba0f61bbb5ffb4d72f0f1fb1c"
+  },
+  "disposition": {
+    "result": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
+    "claim_id": "OM26-H1-RED-023",
+    "previous_frontier": "Q_GE_6_OR_Q5_EXACT_NESTED_TRIANGLE_EQUALITY__SOURCE_CONDITIONAL",
+    "new_frontier": "Q_GE_6__SOURCE_CONDITIONAL",
+    "agent001_lifecycle": "ACCEPTED__CLOSED"
+  },
+  "remaining_boundary": {
+    "q_ge_6_open": true,
+    "predecessor_source_scoped_premises_remain": true,
+    "mathcert_certification": false,
+    "hill_global_optimality": false,
+    "competition_submission": false
+  },
+  "next_boundary": {
+    "id": "programme_canonical_reconciliation",
+    "description": "MATH-PROGRAMME must project the accepted Agent 001 result and q>=6 frontier into the canonical OPENMATH-2026 campaign state before any further discretionary campaign operation."
+  },
+  "claim_boundary": "Solve-level source-conditional adjudication only; no certification, optimality, premise discharge, or competition effect."
+}

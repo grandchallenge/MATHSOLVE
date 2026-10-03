@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.5.0",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "OPENMATH-2026-SOURCE-ACQ",
+  "operation": "OM26-H2-H7-SOURCE-ACQ",
+  "protected_base": "57505b7c886bbf6b6aa00bc36168c1f097ee75a3",
+  "assembled_from_head": "9ac617300525b151690c563031e1501620f32a99",
+  "provider_anchor": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+  "protected_solve_import_merge": "57505b7c886bbf6b6aa00bc36168c1f097ee75a3",
+  "provider_evidence": {
+    "source_lock_ledger_blob": "2334bb7e67b5863c2110b6e21b6e47cfd5061d4d",
+    "semantic_pack_blob": "aaf8aa9b65d2218943b5dc9f3840cb16751a1ef0",
+    "semantic_readback_blob": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a"
+  },
+  "solve_readback": {
+    "path": "work_packages/OPENMATH_2026/H2_H7_SOLVE_IMPORT_READBACK.json",
+    "git_blob_sha1": "c9b6d7539e0d372d6afdfcfc6ff6d00e160a60f0",
+    "result": "PROTECTED_SOLVE_IMPORT_READBACK_CONFIRMED"
+  },
+  "hash_semantics": "Git blob SHA-1 identities over the exact final H2-H7 source-acquisition closure and decomposition-release candidate. The six lanes are released for decomposition, while mathematical job count remains zero until separately instantiated.",
+  "artifacts": {
+    ".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json": "534609b08f954897654d7cf18aa63e9b4f44b176",
+    ".gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json": "ce11ab4a45b7999a37fc27f3d9d7653a6a471bb7",
+    "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json": "0ccaa71198a4dc043e6f10a75701b9850a8ec63f",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "69416b0b8acfb1c21ad7aef077e31792e0c48228",
+    "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json": "fbdb80657ae03523b769c16a70cdfa34c805be6f",
+    "work_packages/OPENMATH_2026/H2_H7_SOLVE_IMPORT_READBACK.json": "c9b6d7539e0d372d6afdfcfc6ff6d00e160a60f0",
+    ".gcl/completions/OM26-H2-H7-SOURCE-ACQ/COMPLETION_RECEIPT.json": "1de2dd8559e73e29cb69a967b495e1bc671e08be",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "3cd6ee6c0274ce1ba1c975111f0145190d92635c",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "2f56c9a3c385e106461a36c8566138e0a7dbc76a",
+    "ci/validate_openmath_cex_job_board.py": "6e96c9313ac662848c3a97765748eef218968629",
+    "ci/test_openmath_cex_job_board.py": "c5538fae8ec90aa841cf92117329b07d3839e4f1",
+    "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md": "ade2aa56f25fd091fb9c04a2dfd514bd040441ae",
+    "ci/validate_openmath_cex_h2_h7.py": "b05aced4db2760f722ecd9ecc080af4660c0adb2",
+    "ci/test_openmath_cex_h2_h7.py": "104ebffb5da6cd8141b8a13d890d49c218c5379b",
+    ".github/workflows/openmath-h2-h7-cex-source-acq.yml": "654282f74fd9ba357b3c9cd8dcadf1473a0c8012",
+    ".ghos-routing/workflows.json": "835a2cd121bb1e623cd83be2ef66b4e306aea26a",
+    "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json": "f6c7c7e36aa0657f8eec51da8ce9461af457ee04",
+    "handoffs/OPENMATH-2026/jobs/OM26-SRC-CLIQUE-CLUSTER-RAMSEY-MULTIPLICITY.md": "fcf68e9124d45882211852f3bda1ff9049b4a368",
+    "handoffs/OPENMATH-2026/jobs/OM26-SRC-MATRIX-MULTIPLICATION-TENSOR-3X3.md": "c1918234cb57381c84c18afa667219d05253f023",
+    "handoffs/OPENMATH-2026/jobs/OM26-SRC-GROTHENDIECK-CONSTANT-WITNESSES.md": "b40d6b6b0ca092e52bfe2a4d1f00f4708d727b10",
+    "handoffs/OPENMATH-2026/jobs/OM26-SRC-COLLATZ-MODULAR-DESCENT.md": "735441444252a3701dd3a0a0a2ab1a63b61f83a9",
+    "handoffs/OPENMATH-2026/jobs/OM26-SRC-BUSY-BEAVER-6-CERTIFICATES.md": "4bee3dc61b7cb23931046fbb46d997847a85124f",
+    "handoffs/OPENMATH-2026/jobs/OM26-SRC-ERDOS-3.md": "04b7253b49d91bddba8b98aa8cfb555c421deaa4",
+    ".github/workflows/openmath-cex-job-board.yml": "a3b87a22c9494658a607aeaa4458e099bc4b6680",
+    "handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md": "8c2bd5d6b5a6a6abece49c7676f91fd099d9a921"
+  },
+  "transition_effect": {
+    "closed": "OM26-H2-H7 source acquisition is closed with exact provider and Solve readback evidence.",
+    "released": "All six H2-H7 lanes are READY_FOR_DECOMPOSITION with solve_release=true for bounded research scope.",
+    "not_instantiated": "No new H2-H7 mathematical assignment exists yet; current_math_jobs remains zero.",
+    "preserved": "The active H1 mathematical lease and zero-context lease semantics are unchanged."
+  },
+  "invalidation": {
+    "governed_artifact_change": "new freeze required",
+    "candidate_head_change": "Any governed-artifact change after this freeze invalidates exact-head logical review and required CI evidence.",
+    "mathematical_assignment_creation": "Any new H2-H7 mathematical assignment requires a separate protected registry/work-package mutation.",
+    "competition_or_certification_change": "Competition submission, novelty, or certification effects require their own governed acts."
+  },
+  "authority_boundary": "This freeze closes source acquisition and releases decomposition only. It does not create an external-agent lease, admit a mathematical claim, authorize competition submission, or certify a result."
+}

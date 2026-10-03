@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_PUBLIC_SOURCE_MANIFEST",
+  "operation": "OM26-H2-H7-SOURCE-ACQ",
+  "source_id": "alejandrozu/grothendieck-constant-witnesses",
+  "slot_binding": null,
+  "acquisition": {
+    "workflow_run_id": 36417117122,
+    "workflow_job_id": 108910800683,
+    "subject_head": "73a7a9d91948a516c1a72fbd75739346f6741a55",
+    "authenticated": true,
+    "source": "AutoLab public hill pull"
+  },
+  "public_file_manifest_sha256": "c3e4dd428d431c904e29f45ffb68c869e06f1b02679c8a79d6b167b9cf47455b",
+  "public_file_count": 10,
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "0df64dd2b35089d662d8e467e33f81b1d50a2849ca412d58c658367920da5881",
+      "size": 25
+    },
+    {
+      "path": "README.md",
+      "sha256": "5275d35b0c4f194bd48686bca120b3e247beace3f6fef32377c2b217632bcce4",
+      "size": 3349
+    },
+    {
+      "path": "blobs.lock",
+      "sha256": "6d6f25aa036e49add8c6e961af787a3149777a7fbd60398e76c219c5a1ea8093",
+      "size": 60
+    },
+    {
+      "path": "eval.py",
+      "sha256": "b3728fa8ed1cfdeb57a5de65bff93a4c92e94c0390d23c242b370ea288988a64",
+      "size": 7346
+    },
+    {
+      "path": "examples/baseline/solution.json",
+      "sha256": "1debcb5258e0719f9275c41b928a515f0e8d445621b79a7b085b1af4236471d4",
+      "size": 148
+    },
+    {
+      "path": "hill.yaml",
+      "sha256": "2b113b1ec58b4e2862e3ac8dcb72d9d909645159b44d1fcdb676604aa749d477",
+      "size": 223
+    },
+    {
+      "path": "private.lock",
+      "sha256": "6ad64b5358c56dd71f86b54f6ecb6f6bec690153ee65eab2f7ee994540116b6e",
+      "size": 370
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "a3feb2d9ceed7c08ec9e2b368a7663451284cb05479cfc2601633b65d8af79ae",
+      "size": 232
+    },
+    {
+      "path": "tests/test_hill.py",
+      "sha256": "6daa1952a2e96192cabb75083716a0b297f8611160b561dc1266fd5f79b3487b",
+      "size": 2596
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "0d0ea2922b8213284ca30f7f939cc98d3faa7e35c96b9c89730afa0ef90f6603",
+      "size": 4670
+    }
+  ],
+  "exclusions": [
+    ".git/**",
+    ".vc/**",
+    "private/**",
+    ".pytest_cache/**",
+    "__pycache__/**",
+    "*.pyc"
+  ],
+  "claim_boundary": "Public source/checker capture only. No H2-H7 slot binding, mathematical admission, certification, or competition-submission effect."
+}

@@ -1,0 +1,1197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "protocol_id",
+    "disposition",
+    "global_theorem_spine_id",
+    "local_node_advanced",
+    "result_status",
+    "exposition",
+    "trust_quartet",
+    "theorem_spine",
+    "proof_debt",
+    "required_artifacts",
+    "baseline_claim_ledger",
+    "certification_reference",
+    "non_claim_boundary"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "2.0.0"
+    },
+    "protocol_id": {
+      "const": "CHAIDEZ-PEDAGOGY-001"
+    },
+    "disposition": {
+      "const": "ACTIVE_REFERENCE_PACKAGE_NOT_CATALOG_PROMOTION"
+    },
+    "global_theorem_spine_id": {
+      "const": "UC-IDEAL-FAMILY-COMPLEMENT-SPINE"
+    },
+    "local_node_advanced": {
+      "const": "WP06-S9"
+    },
+    "result_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "result_status",
+        "conditional_on",
+        "strongest_supported_claim",
+        "not_claimed",
+        "support_route_class",
+        "foundational_profile",
+        "certification_state",
+        "first_executable_step"
+      ],
+      "properties": {
+        "result_status": {
+          "enum": [
+            "OPEN",
+            "CONDITIONAL_RESULT",
+            "RESTRICTED_RESULT",
+            "NEGATIVE_RESULT"
+          ]
+        },
+        "conditional_on": {
+          "type": "array",
+          "minItems": 0,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "strongest_supported_claim": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "not_claimed": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "support_route_class": {
+          "enum": [
+            "EXPLORATORY_EVIDENCE",
+            "REGRESSION_AUDIT",
+            "EXACT_FINITE_VERIFICATION",
+            "CERTIFICATE_REPLAY",
+            "FORMAL_PROOF",
+            "CONTINUUM_PROOF",
+            "NEGATIVE_RESULT"
+          ]
+        },
+        "foundational_profile": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "profile"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "PROFILE_PRESENT"
+                },
+                "profile": {
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "title": "Grand Challenge foundational profile",
+                  "type": "object",
+                  "required": [
+                    "carrier_type",
+                    "ambient_structure",
+                    "regularity",
+                    "axiom_profile",
+                    "witness_policy",
+                    "certification_target",
+                    "pathology_risk"
+                  ],
+                  "properties": {
+                    "carrier_type": {
+                      "enum": [
+                        "finite",
+                        "countable",
+                        "continuum",
+                        "higher_type",
+                        "categorical",
+                        "unknown"
+                      ]
+                    },
+                    "ambient_structure": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "items": {
+                        "enum": [
+                          "vector_space",
+                          "affine_space",
+                          "metric_space",
+                          "topological_space",
+                          "measurable_space",
+                          "probability_space",
+                          "algebraic_structure",
+                          "order_structure",
+                          "computable_presentation"
+                        ]
+                      }
+                    },
+                    "regularity": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "items": {
+                        "enum": [
+                          "finite",
+                          "decidable",
+                          "computable",
+                          "Borel",
+                          "Lebesgue_measurable",
+                          "compact",
+                          "convex",
+                          "smooth",
+                          "Noetherian",
+                          "separable"
+                        ]
+                      }
+                    },
+                    "axiom_profile": {
+                      "type": "object",
+                      "required": [
+                        "base",
+                        "choice_usage",
+                        "excluded_middle",
+                        "large_cardinal_usage",
+                        "determinacy_usage"
+                      ],
+                      "properties": {
+                        "base": {
+                          "enum": [
+                            "finite",
+                            "constructive",
+                            "ZF",
+                            "ZF+DC",
+                            "ZFC",
+                            "stronger",
+                            "unknown"
+                          ]
+                        },
+                        "choice_usage": {
+                          "enum": [
+                            "none",
+                            "finite_choice",
+                            "countable_choice",
+                            "dependent_choice",
+                            "full_choice",
+                            "unknown"
+                          ]
+                        },
+                        "excluded_middle": {
+                          "enum": [
+                            "avoided",
+                            "local",
+                            "used",
+                            "unknown"
+                          ]
+                        },
+                        "large_cardinal_usage": {
+                          "enum": [
+                            "none",
+                            "consistency_background",
+                            "essential",
+                            "unknown"
+                          ]
+                        },
+                        "determinacy_usage": {
+                          "enum": [
+                            "none",
+                            "local",
+                            "essential",
+                            "unknown"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "witness_policy": {
+                      "type": "object",
+                      "required": [
+                        "existence_claim",
+                        "witness_location"
+                      ],
+                      "properties": {
+                        "existence_claim": {
+                          "enum": [
+                            "explicit_witness",
+                            "extractable",
+                            "nonconstructive",
+                            "contradiction_only",
+                            "unknown"
+                          ]
+                        },
+                        "witness_location": {
+                          "enum": [
+                            "card",
+                            "solver_artifact",
+                            "certificate_artifact",
+                            "absent"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "certification_target": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "items": {
+                        "enum": [
+                          "Lean",
+                          "Coq",
+                          "SAT_certificate",
+                          "SMT_certificate",
+                          "pseudo_boolean_certificate",
+                          "CAS_certificate",
+                          "interval_certificate",
+                          "human_audit"
+                        ]
+                      }
+                    },
+                    "pathology_risk": {
+                      "type": "object",
+                      "required": [
+                        "level",
+                        "notes"
+                      ],
+                      "properties": {
+                        "level": {
+                          "enum": [
+                            "low",
+                            "medium",
+                            "high",
+                            "unknown"
+                          ]
+                        },
+                        "notes": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "debt_id"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "FOUNDATIONAL_PROFILE_GAP"
+                },
+                "debt_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            }
+          ]
+        },
+        "certification_state": {
+          "const": "MATHCERT_RECORDED"
+        },
+        "first_executable_step": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "node_id",
+            "input",
+            "output",
+            "completion_test"
+          ],
+          "properties": {
+            "node_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "input": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "output": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "completion_test": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          }
+        }
+      }
+    },
+    "exposition": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stage",
+            "artifact_role"
+          ],
+          "properties": {
+            "stage": {
+              "const": "STATUS_BOX"
+            },
+            "artifact_role": {
+              "enum": [
+                "RESULT_STATUS",
+                "LAY_COMPANION",
+                "OBJECT_AND_OBSTRUCTION",
+                "STATUS_AUDIT",
+                "CLAIM_LEDGER",
+                "THEOREM_SPINE",
+                "DEPENDENCY_DAG",
+                "PROOFS_AND_COMPUTATIONS",
+                "FAILURE_AND_NEGATIVE_RESULTS",
+                "PROOF_DEBT_REGISTER",
+                "CERT_HANDOFF",
+                "NEXT_EXECUTABLE_STEP"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stage",
+            "artifact_role"
+          ],
+          "properties": {
+            "stage": {
+              "const": "PLAIN_OBJECT"
+            },
+            "artifact_role": {
+              "enum": [
+                "RESULT_STATUS",
+                "LAY_COMPANION",
+                "OBJECT_AND_OBSTRUCTION",
+                "STATUS_AUDIT",
+                "CLAIM_LEDGER",
+                "THEOREM_SPINE",
+                "DEPENDENCY_DAG",
+                "PROOFS_AND_COMPUTATIONS",
+                "FAILURE_AND_NEGATIVE_RESULTS",
+                "PROOF_DEBT_REGISTER",
+                "CERT_HANDOFF",
+                "NEXT_EXECUTABLE_STEP"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stage",
+            "artifact_role"
+          ],
+          "properties": {
+            "stage": {
+              "const": "EXACT_OBSTRUCTION"
+            },
+            "artifact_role": {
+              "enum": [
+                "RESULT_STATUS",
+                "LAY_COMPANION",
+                "OBJECT_AND_OBSTRUCTION",
+                "STATUS_AUDIT",
+                "CLAIM_LEDGER",
+                "THEOREM_SPINE",
+                "DEPENDENCY_DAG",
+                "PROOFS_AND_COMPUTATIONS",
+                "FAILURE_AND_NEGATIVE_RESULTS",
+                "PROOF_DEBT_REGISTER",
+                "CERT_HANDOFF",
+                "NEXT_EXECUTABLE_STEP"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stage",
+            "artifact_role"
+          ],
+          "properties": {
+            "stage": {
+              "const": "WORKING_MODEL"
+            },
+            "artifact_role": {
+              "enum": [
+                "RESULT_STATUS",
+                "LAY_COMPANION",
+                "OBJECT_AND_OBSTRUCTION",
+                "STATUS_AUDIT",
+                "CLAIM_LEDGER",
+                "THEOREM_SPINE",
+                "DEPENDENCY_DAG",
+                "PROOFS_AND_COMPUTATIONS",
+                "FAILURE_AND_NEGATIVE_RESULTS",
+                "PROOF_DEBT_REGISTER",
+                "CERT_HANDOFF",
+                "NEXT_EXECUTABLE_STEP"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stage",
+            "artifact_role"
+          ],
+          "properties": {
+            "stage": {
+              "const": "RESTRICTED_CLAIM"
+            },
+            "artifact_role": {
+              "enum": [
+                "RESULT_STATUS",
+                "LAY_COMPANION",
+                "OBJECT_AND_OBSTRUCTION",
+                "STATUS_AUDIT",
+                "CLAIM_LEDGER",
+                "THEOREM_SPINE",
+                "DEPENDENCY_DAG",
+                "PROOFS_AND_COMPUTATIONS",
+                "FAILURE_AND_NEGATIVE_RESULTS",
+                "PROOF_DEBT_REGISTER",
+                "CERT_HANDOFF",
+                "NEXT_EXECUTABLE_STEP"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stage",
+            "artifact_role"
+          ],
+          "properties": {
+            "stage": {
+              "const": "SPINE_LOCATION"
+            },
+            "artifact_role": {
+              "enum": [
+                "RESULT_STATUS",
+                "LAY_COMPANION",
+                "OBJECT_AND_OBSTRUCTION",
+                "STATUS_AUDIT",
+                "CLAIM_LEDGER",
+                "THEOREM_SPINE",
+                "DEPENDENCY_DAG",
+                "PROOFS_AND_COMPUTATIONS",
+                "FAILURE_AND_NEGATIVE_RESULTS",
+                "PROOF_DEBT_REGISTER",
+                "CERT_HANDOFF",
+                "NEXT_EXECUTABLE_STEP"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stage",
+            "artifact_role"
+          ],
+          "properties": {
+            "stage": {
+              "const": "SUPPORT_ROUTE"
+            },
+            "artifact_role": {
+              "enum": [
+                "RESULT_STATUS",
+                "LAY_COMPANION",
+                "OBJECT_AND_OBSTRUCTION",
+                "STATUS_AUDIT",
+                "CLAIM_LEDGER",
+                "THEOREM_SPINE",
+                "DEPENDENCY_DAG",
+                "PROOFS_AND_COMPUTATIONS",
+                "FAILURE_AND_NEGATIVE_RESULTS",
+                "PROOF_DEBT_REGISTER",
+                "CERT_HANDOFF",
+                "NEXT_EXECUTABLE_STEP"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stage",
+            "artifact_role"
+          ],
+          "properties": {
+            "stage": {
+              "const": "DEBT_AND_CLAIM_BOUNDARY"
+            },
+            "artifact_role": {
+              "enum": [
+                "RESULT_STATUS",
+                "LAY_COMPANION",
+                "OBJECT_AND_OBSTRUCTION",
+                "STATUS_AUDIT",
+                "CLAIM_LEDGER",
+                "THEOREM_SPINE",
+                "DEPENDENCY_DAG",
+                "PROOFS_AND_COMPUTATIONS",
+                "FAILURE_AND_NEGATIVE_RESULTS",
+                "PROOF_DEBT_REGISTER",
+                "CERT_HANDOFF",
+                "NEXT_EXECUTABLE_STEP"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stage",
+            "artifact_role"
+          ],
+          "properties": {
+            "stage": {
+              "const": "FIRST_EXECUTABLE_STEP"
+            },
+            "artifact_role": {
+              "enum": [
+                "RESULT_STATUS",
+                "LAY_COMPANION",
+                "OBJECT_AND_OBSTRUCTION",
+                "STATUS_AUDIT",
+                "CLAIM_LEDGER",
+                "THEOREM_SPINE",
+                "DEPENDENCY_DAG",
+                "PROOFS_AND_COMPUTATIONS",
+                "FAILURE_AND_NEGATIVE_RESULTS",
+                "PROOF_DEBT_REGISTER",
+                "CERT_HANDOFF",
+                "NEXT_EXECUTABLE_STEP"
+              ]
+            }
+          }
+        }
+      ],
+      "items": false
+    },
+    "trust_quartet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "WHAT_IS_PROVED",
+        "WHAT_IS_CHECKED",
+        "WHAT_REMAINS_OPEN",
+        "WHAT_REQUIRES_EXTERNAL_VERIFICATION"
+      ],
+      "properties": {
+        "WHAT_IS_PROVED": {
+          "type": "string",
+          "minLength": 10
+        },
+        "WHAT_IS_CHECKED": {
+          "type": "string",
+          "minLength": 10
+        },
+        "WHAT_REMAINS_OPEN": {
+          "type": "string",
+          "minLength": 10
+        },
+        "WHAT_REQUIRES_EXTERNAL_VERIFICATION": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    },
+    "theorem_spine": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "node_id",
+          "role",
+          "status",
+          "dependencies",
+          "support_route_class",
+          "discharge_criterion",
+          "proof_debt_ids"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "role": {
+            "enum": [
+              "DEFINITION",
+              "LEMMA",
+              "BRIDGE",
+              "THEOREM",
+              "OBSTRUCTION",
+              "EXTERNAL_DEPENDENCY"
+            ]
+          },
+          "status": {
+            "enum": [
+              "OPEN",
+              "CONDITIONAL",
+              "CHECKED",
+              "PROVED",
+              "REFUTED"
+            ]
+          },
+          "dependencies": {
+            "type": "array",
+            "minItems": 0,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "support_route_class": {
+            "enum": [
+              "EXPLORATORY_EVIDENCE",
+              "REGRESSION_AUDIT",
+              "EXACT_FINITE_VERIFICATION",
+              "CERTIFICATE_REPLAY",
+              "FORMAL_PROOF",
+              "CONTINUUM_PROOF",
+              "NEGATIVE_RESULT"
+            ]
+          },
+          "discharge_criterion": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "proof_debt_ids": {
+            "type": "array",
+            "minItems": 0,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          }
+        }
+      }
+    },
+    "proof_debt": {
+      "type": "array",
+      "minItems": 0,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "debt_id",
+          "category",
+          "blocked_node",
+          "present_evidence",
+          "discharge_condition",
+          "route",
+          "owner",
+          "status"
+        ],
+        "properties": {
+          "debt_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "category": {
+            "enum": [
+              "MISSING_LEMMA",
+              "UNPROVED_BRIDGE",
+              "EXTERNAL_SOURCE",
+              "COMPUTATIONAL_REPLAY",
+              "SEMANTIC_CORRESPONDENCE",
+              "FOUNDATIONAL_PROFILE_GAP",
+              "ANALYTIC_ESTIMATE",
+              "FORMALIZATION_BLOCKER"
+            ]
+          },
+          "blocked_node": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "present_evidence": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "discharge_condition": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "route": {
+            "enum": [
+              "EXPLORATORY_EVIDENCE",
+              "REGRESSION_AUDIT",
+              "EXACT_FINITE_VERIFICATION",
+              "CERTIFICATE_REPLAY",
+              "FORMAL_PROOF",
+              "CONTINUUM_PROOF",
+              "NEGATIVE_RESULT"
+            ]
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "status": {
+            "enum": [
+              "OPEN",
+              "DISCHARGED",
+              "SUPERSEDED"
+            ]
+          }
+        }
+      }
+    },
+    "required_artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "RESULT_STATUS",
+        "LAY_COMPANION",
+        "OBJECT_AND_OBSTRUCTION",
+        "STATUS_AUDIT",
+        "CLAIM_LEDGER",
+        "THEOREM_SPINE",
+        "DEPENDENCY_DAG",
+        "PROOFS_AND_COMPUTATIONS",
+        "FAILURE_AND_NEGATIVE_RESULTS",
+        "PROOF_DEBT_REGISTER",
+        "CERT_HANDOFF",
+        "NEXT_EXECUTABLE_STEP"
+      ],
+      "properties": {
+        "RESULT_STATUS": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "git_blob_sha1",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
+              "minLength": 1
+            },
+            "section_anchor": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "LAY_COMPANION": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "git_blob_sha1",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
+              "minLength": 1
+            },
+            "section_anchor": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "OBJECT_AND_OBSTRUCTION": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "git_blob_sha1",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
+              "minLength": 1
+            },
+            "section_anchor": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "STATUS_AUDIT": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "git_blob_sha1",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
+              "minLength": 1
+            },
+            "section_anchor": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "CLAIM_LEDGER": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "git_blob_sha1",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
+              "minLength": 1
+            },
+            "section_anchor": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "THEOREM_SPINE": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "git_blob_sha1",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
+              "minLength": 1
+            },
+            "section_anchor": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "DEPENDENCY_DAG": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "git_blob_sha1",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
+              "minLength": 1
+            },
+            "section_anchor": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "PROOFS_AND_COMPUTATIONS": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "git_blob_sha1",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
+              "minLength": 1
+            },
+            "section_anchor": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "FAILURE_AND_NEGATIVE_RESULTS": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "git_blob_sha1",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
+              "minLength": 1
+            },
+            "section_anchor": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "PROOF_DEBT_REGISTER": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "git_blob_sha1",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
+              "minLength": 1
+            },
+            "section_anchor": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "CERT_HANDOFF": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "git_blob_sha1",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
+              "minLength": 1
+            },
+            "section_anchor": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "NEXT_EXECUTABLE_STEP": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "git_blob_sha1",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[A-Za-z0-9_.\\-/]+$",
+              "minLength": 1
+            },
+            "section_anchor": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    },
+    "baseline_claim_ledger": {
+      "const": {
+        "repository": "grandchallenge/MATHSOLVE",
+        "commit": "7e1f27f7ec205d511570cf3b498037a8907a89c6",
+        "artifact": {
+          "path": "domains/union_closed/WP06_ideal_family_bridge/09_CLAIM_LEDGER.yaml",
+          "git_blob_sha1": "b7cde7dd899d70db899c7878034f3bbc6d6b44b5",
+          "sha256": "7ae5fe0539767395a1eecde55620770e8a6e548de668c4f8e3fc8d3afb2783ff"
+        }
+      }
+    },
+    "certification_reference": {
+      "const": {
+        "repository": "grandchallenge/MATHCERT",
+        "commit": "1c053a7684dd493c41ae3e6d7eecadb907b048fc",
+        "artifact": {
+          "path": "claim_ledger_ideal_family_bridge.yaml",
+          "git_blob_sha1": "cbdee4ecb66007efb75d993e8b0e0b49b0f9043e",
+          "sha256": "28a941f7d4492b4be87fca3b774d39864e69195d70d25d24f65093f152b7e14c"
+        }
+      }
+    },
+    "non_claim_boundary": {
+      "type": "string",
+      "minLength": 50
+    }
+  }
+}

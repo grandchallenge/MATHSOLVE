@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-H2-H7-WP01",
+  "campaign_id": "OPENMATH-2026",
+  "operation": "OM26-H2-H7-WP01-DECOMPOSITION",
+  "protected_base": "da4ed0f3a1e884e2196a329ab3a2c6e1bf838a74",
+  "source_release": {
+    "forge_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+    "solve_source_capture": "4ab1f45089ff6be6f70772d0441fe88afd930f90",
+    "solve_source_acquisition_closure": "da4ed0f3a1e884e2196a329ab3a2c6e1bf838a74"
+  },
+  "state": "PROTECTED_READBACK_CONFIRMED__SIX_AVAILABLE_NOT_LEASED",
+  "assignments": [
+    {
+      "assignment_id": "OM26-H2-WP01",
+      "hill": "OM26-H2",
+      "external_hill_id": "alejandrozu/busy-beaver-6-certificates",
+      "title": "Busy Beaver 6 certificates",
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H2-WP01.md",
+      "state": "AVAILABLE_FOR_LEASE",
+      "objective": "Build an independent exact blank-tape six-state/two-symbol simulator, reproduce the source sample run, and establish evaluator-semantic concordance before candidate search.",
+      "completion": [
+        "INDEPENDENT_SCORER_CONCORDANCE",
+        "SOURCE_SAMPLE_DISCREPANCY",
+        "CANDIDATE_GENERATOR_READY",
+        "EXACT_BLOCKER"
+      ]
+    },
+    {
+      "assignment_id": "OM26-H3-WP01",
+      "hill": "OM26-H3",
+      "external_hill_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
+      "title": "Clique-cluster Ramsey multiplicity",
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H3-WP01.md",
+      "state": "AVAILABLE_FOR_LEASE",
+      "objective": "Build an independent exact weighted K4 density oracle, reproduce the source's 1/8 sample, and validate repeated-index semantics before search.",
+      "completion": [
+        "EXACT_DENSITY_ORACLE_CONCORDANCE",
+        "COUNTING_SEMANTICS_DISCREPANCY",
+        "STRUCTURAL_SEARCH_SEED",
+        "EXACT_BLOCKER"
+      ]
+    },
+    {
+      "assignment_id": "OM26-H4-WP01",
+      "hill": "OM26-H4",
+      "external_hill_id": "alejandrozu/collatz-modular-descent",
+      "title": "Collatz modular descent",
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H4-WP01.md",
+      "state": "AVAILABLE_FOR_LEASE",
+      "objective": "Independently verify accelerated-Collatz residue rules, reproduce the source examples, and generate a bounded exact catalog of valid descent rules without inferring hidden target scores.",
+      "completion": [
+        "RULE_VERIFIER_CONCORDANCE",
+        "VALID_RULE_CATALOG",
+        "SOURCE_EXAMPLE_DISCREPANCY",
+        "EXACT_BLOCKER"
+      ]
+    },
+    {
+      "assignment_id": "OM26-H5-WP01",
+      "hill": "OM26-H5",
+      "external_hill_id": "alejandrozu/grothendieck-constant-witnesses",
+      "title": "Grothendieck constant witnesses",
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H5-WP01.md",
+      "state": "AVAILABLE_FOR_LEASE",
+      "objective": "Build an independent exact finite Grothendieck witness checker, reproduce the CHSH 7/5 source example, and establish a bounded search representation.",
+      "completion": [
+        "EXACT_WITNESS_CONCORDANCE",
+        "SOURCE_EXAMPLE_DISCREPANCY",
+        "BOUNDED_WITNESS_SEARCH_SEED",
+        "EXACT_BLOCKER"
+      ]
+    },
+    {
+      "assignment_id": "OM26-H6-WP01",
+      "hill": "OM26-H6",
+      "external_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
+      "title": "3x3 matrix multiplication tensor",
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H6-WP01.md",
+      "state": "AVAILABLE_FOR_LEASE",
+      "objective": "Build an independent exact Brent-identity checker, reproduce the rank-27 schoolbook decomposition and fixed coordinate conventions, and prepare a rank-23 transformation/search representation.",
+      "completion": [
+        "BRENT_ORACLE_CONCORDANCE",
+        "COORDINATE_CONVENTION_DISCREPANCY",
+        "RANK23_SEARCH_SEED",
+        "EXACT_BLOCKER"
+      ]
+    },
+    {
+      "assignment_id": "OM26-H7-WP01",
+      "hill": "OM26-H7",
+      "external_hill_id": "ottogin/erdos-3",
+      "title": "Erdős Problem 3",
+      "work_package": "handoffs/OPENMATH-2026/jobs/OM26-H7-WP01.md",
+      "state": "AVAILABLE_FOR_LEASE",
+      "objective": "Reproduce the exact formal theorem and pinned Lean environment, confirm the baseline/sorry rejection boundary, and decompose the conjecture into bounded formal subtargets without asserting a full proof.",
+      "completion": [
+        "PINNED_ENV_CONCORDANCE",
+        "FORMAL_SUBTARGET_DECOMPOSITION",
+        "SOURCE_FORMALIZATION_DISCREPANCY",
+        "EXACT_BLOCKER"
+      ]
+    }
+  ],
+  "concurrency": {
+    "independent": true,
+    "external_self_claim_allowed": false,
+    "executable_only_when_leased": true,
+    "available_for_lease": 6,
+    "leased": 0
+  },
+  "claim_boundary": "Work-package instantiation only. AVAILABLE_FOR_LEASE is not execution authority; no new mathematical result, competition submission, novelty, or certification effect.",
+  "protected_merge": "246a51ab4f15c616da06b2e3832f0ab0e102d30a",
+  "completion_receipt": ".gcl/completions/OM26-H2-H7-WP01-DECOMPOSITION/COMPLETION_RECEIPT.json"
+}

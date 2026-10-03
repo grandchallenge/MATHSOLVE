@@ -1,0 +1,39 @@
+{
+  "record_type": "EVENT_WINDOW_ACTIVATION_LOGICAL_AUDIT",
+  "operation": "OM26-EVENT-WINDOW-ACTIVATION-001",
+  "audit_system": "same authoring Codex system",
+  "independence": "NOT_RESERVED_INDEPENDENCE",
+  "passes": [
+    {
+      "role": "Adversary",
+      "mode": "non_authoring_read_only",
+      "result": "PASS_WITH_CROSS_REPOSITORY_SUPPORT_PROJECTION_REQUIRED",
+      "checks": [
+        "distinct new identities and historical first-result locks",
+        "wrong issue and replacement returns rejected",
+        "supporting return must not replace primary lane",
+        "no mathematical promotion from declared disposition",
+        "missing HILL_LANES mutation on supporting return identified and repaired"
+      ]
+    },
+    {
+      "role": "Referee",
+      "mode": "non_authoring_read_only",
+      "result": "PASS_LOCAL_VALIDATION",
+      "checks": [
+        "nine local synthetic returns advanced; no GitHub test return posted",
+        "retired dispatch status blocks obsolete returns",
+        "immutable task content requires second pin commit",
+        "event-window and novelty gates retained",
+        "Programme projection patch and protected readback required before completion"
+      ]
+    }
+  ],
+  "local_validation": [
+    "17 tests pass",
+    "OPENMATH lifecycle acceptance pass",
+    "transport validation pass"
+  ],
+  "claim_effect": "NONE",
+  "protected_release": "PENDING"
+}

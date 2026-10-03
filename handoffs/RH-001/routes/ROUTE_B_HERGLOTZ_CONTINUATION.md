@@ -103,6 +103,8 @@ Read:
 - work_packages/RH_R043_HERGLOTZ_MARGIN_CONTINUITY.md
 - work_packages/RH_R044_EXPLICIT_INITIAL_HERGLOTZ_MARGINS.md
 - work_packages/RH_R050_TRIAL_REWEIGHTED_EXTENSION.md
+- work_packages/RH_R051_RANK_ONE_COERCIVITY_EXTENSION.md
+- work_packages/RH_R052_REFRESHED_HERGLOTZ_MARGINS.md
 - MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648:
   reports/discovery/rh_001/rh_r041_pole_resolvent_interface.md
 - MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320:
@@ -114,10 +116,11 @@ Protected theorem identities of particular importance:
 - RH-R041: exact Herglotz trichotomy and gap lower bound.
 - RH-R042: continuity of epsilon_+ and epsilon_-.
 - RH-R043: continuity of beta_-, d, and Delta_H on the pole-localized region; first failure is d=0 or Delta_H=0.
-- RH-R044: explicit positive initial d and Delta_H margins on an earlier interval.
-- RH-R050: current direct simple-even theorem through a=171/1000.
+- RH-R044: explicit positive initial d and Delta_H margins on an earlier interval (a<=2/15).
+- RH-R051: direct simple-even theorem through a=178/1000.
+- RH-R052: refreshed explicit positive initial d and Delta_H margins through a=178/1000.
 
-The current R050 theorem implies qualitatively that d(a)>0 and Delta_H(a)>0 throughout its protected interval. R044's explicit quantitative Herglotz margins have not yet been refreshed to the full R050 endpoint. That is an admissible first subtask.
+RH-R052 has refreshed R044's explicit quantitative Herglotz margins to the full R051 endpoint a=178/1000, establishing d(a) > 55428698889/23675000000000 and Delta_H(a) >= 1210515093544258/12367528439608125 > 0.
 
 ## 4. Fixed-Hilbert-space normalization
 
@@ -149,50 +152,23 @@ Do not define the inverse when d(a)<=0.
 
 ## 5. Immediate high-value contribution: refresh the initial margins
 
-R044 gives explicit d/Delta_H bounds only through an earlier endpoint.
+R044 gave explicit d/Delta_H bounds only through an earlier endpoint (a<=2/15).
 
-The current protected R050 parity theorem reaches
+RH-R052 has fully discharged this task through the current simple-even frontier:
 
-a_0=171/1000
+a_0 = 178/1000 = 89/500,
 
-with an explicit positive full gap.
+establishing the explicit protected pair:
 
-Since
+d(a) > 55428698889 / 23675000000000 > 0,
 
-B_{a,-}
-=
-A_{a,-}
-+
-2|S_a><S_a|
->=
-A_{a,-},
+and
 
-one has
+Delta_H(a) >= 1210515093544258 / 12367528439608125 > 0,
 
-d(a)>=g(a)
+uniformly across 0 < a <= 178/1000.
 
-wherever the full parity gap is known.
-
-Also
-
-m(a)
-<=
-||S_a||^2 / d(a),
-
-with exact unscaled norm
-
-||S_a||^2
-=
-sinh(a)-a.
-
-Therefore an agent can first derive a fully explicit protected pair
-
-d(a_0)>=d_0>0,
-Delta_H(a_0)>=Delta_0>0
-
-at the current R050 endpoint.
-
-That is useful even if no continuation theorem is completed in the same tranche.
+This advances the initial continuation base from a=2/15 to a=178/1000, reducing the remaining distance to the prime threshold a=(1/2)log 2 by 21%.
 
 ## 6. Preferred continuation theorems
 
@@ -297,7 +273,7 @@ Subgradient/min-max variation bounds may be safer than exact derivatives.
 
 A contribution is useful if it does at least one of:
 
-1. refresh explicit d and Delta_H lower bounds at the current R050 endpoint;
+1. refresh explicit d and Delta_H lower bounds at the current frontier (completed by RH-R052 through a=178/1000);
 2. prove a quantitative Lipschitz/variation theorem for d;
 3. prove a quantitative variation theorem for Delta_H;
 4. use those estimates to extend the parity theorem to an explicit larger interval;

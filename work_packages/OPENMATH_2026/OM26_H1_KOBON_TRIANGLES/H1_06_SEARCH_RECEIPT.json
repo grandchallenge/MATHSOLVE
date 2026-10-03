@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-06-SEARCH-RECEIPT",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-06",
+  "state": "BOUNDED_DIVERSIFIED_TRANCHE_COMPLETE",
+  "proposal_generator": {
+    "path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/search_tranche.py",
+    "git_blob_sha1": "a47d74a9c9f57f088ae722b847168a674420fc71"
+  },
+  "baseline": {
+    "triangles": 16,
+    "solution_sha256": "fee1fa08e700ba5849c3d1849cc10d2d3a50a44b3d838d560cd08f9a0de2b271"
+  },
+  "routes": [
+    {
+      "route": "R-D",
+      "method": "exact local mutation",
+      "seed": 3,
+      "iterations": 3000,
+      "best_iteration": 1443,
+      "triangles": 86,
+      "candidate": "RD_LOCAL_MUTATION_086",
+      "solution_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RD_LOCAL_MUTATION_086/solution.json",
+      "solution_git_blob_sha1": "17f8355b484bacf115bafd413de9a0be8f8e3385",
+      "solution_sha256": "05a5f519433a0787a96a3f6c5a8cef17fc7f8ab093ccf0c9ab45a2d564ad11d5"
+    },
+    {
+      "route": "R-G",
+      "method": "two-parameter exact structured family",
+      "alpha": -3,
+      "beta": 20,
+      "evaluated": 525,
+      "triangles": 58,
+      "candidate": "RG_STRUCTURED_FAMILY_058",
+      "solution_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RG_STRUCTURED_FAMILY_058/solution.json",
+      "solution_git_blob_sha1": "bb6407a1dd1b1deeb8f55a9e879657b2f6028df1",
+      "solution_sha256": "be4e4fdc0495d5cc2f12c52f73d760dd120ecd3cf9b2a765ac20a7b2c0e17289"
+    }
+  ],
+  "deterministic_replay": "PASS",
+  "workflow": {
+    "run_id": 36356017300,
+    "job_id": 108723788668,
+    "result": "PASS"
+  },
+  "claim_boundary": "Search receipt records campaign route outputs only. It does not assert best-known status, optimality, novelty, or certification."
+}

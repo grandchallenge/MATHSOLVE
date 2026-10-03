@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-13-TRANCHE3-RECEIPT",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-13",
+  "state": "COMPLETE__NO_94_FOUND__BOUNDED_NEGATIVE_ONLY",
+  "exact_head": "633809cee4be5b7e58c8dc8ad82b7555ad313173",
+  "workflow_run": {
+    "id": 36369052788,
+    "job_id": 108761258002,
+    "name": "OPENMATH Kobon search94 tranche3",
+    "conclusion": "success"
+  },
+  "search": {
+    "proposal_generator": "alejandrozu/kobon-proof@22d1165f6c455fe45e461baef4410f6d5c78a014",
+    "seed_candidate": "RH_BADER_PROJECTIVE_NOPARALLEL_093",
+    "initial_score": 93,
+    "best_score": 93,
+    "combinatorial_boundary_best": 93,
+    "seconds": 300.003242564,
+    "rounds": 589,
+    "nodes": 73591,
+    "edges": 6654852,
+    "lp_attempts": 0,
+    "width": 16,
+    "depth": 12,
+    "drop": 4,
+    "seed": 2026092801
+  },
+  "promotion_replay": {
+    "exact_candidate_found": false,
+    "gcl_direct_oracle": "SKIPPED__NO_CANDIDATE_GE_94",
+    "autolab": "SKIPPED__NO_CANDIDATE_GE_94"
+  },
+  "limitations": "Heuristic topology search only. Absence of a >=94 proposal is not an upper-bound or infeasibility certificate; floating LP negatives would not be exact infeasibility certificates.",
+  "claim_boundary": "Retained route evidence only. Campaign-best-observed remains 93. No optimality, hill-global upper bound, novelty, certification, or competition-acceptance claim follows."
+}

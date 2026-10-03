@@ -1,0 +1,16 @@
+{
+  "schema_version": "2.0.0",
+  "route_id": "RM-DIO-004",
+  "classification": "LEGACY_PRE_CATALOG_ROUTE",
+  "catalog_disposition": "NOT_A_CATALOG_PROMOTION",
+  "baseline_commit": "7e1f27f7ec205d511570cf3b498037a8907a89c6",
+  "preserved_artifact": {
+    "path": "work_packages/RM_DIO_004.md",
+    "git_blob_sha1": "94ad7d7c50826b9b5c044ab3502690da58e2d316",
+    "sha256": "536aa2c80181ff58ef613343c9b8f2ee7b33aab45f932c4f4fe3d7b68bb45a1d"
+  },
+  "bounded_evidence_preserved": true,
+  "inherited_campaign_authority": false,
+  "inherited_certification_authority": false,
+  "future_promotion_gate": "Qualified semantic review and the v2 reviewed-promotion dossier gate are required; existing bounded route evidence cannot bypass them."
+}

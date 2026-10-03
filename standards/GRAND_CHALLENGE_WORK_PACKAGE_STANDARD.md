@@ -8,6 +8,56 @@ A Grand Challenge Work Package is not a blog post, not a code dump, not a motiva
 
 ## Required structure
 
+### Current Chaidez v2 conformance
+
+`CHAIDEZ-PEDAGOGY-001` v2 governs current conformance claims. Its result-status
+fields are `result_status`, `conditional_on`, `strongest_supported_claim`,
+`not_claimed`, `support_route_class`, `foundational_profile`,
+`certification_state`, and `first_executable_step`. The earlier Chaidez-specific
+`computation_class` spelling is historical; unrelated resource-ledger fields
+with that name retain their meaning.
+
+Present nine ordered stages: STATUS_BOX, PLAIN_OBJECT, EXACT_OBSTRUCTION,
+WORKING_MODEL, RESTRICTED_CLAIM, SPINE_LOCATION, SUPPORT_ROUTE,
+DEBT_AND_CLAIM_BOUNDARY, FIRST_EXECUTABLE_STEP. These are exposition roles,
+not a demand for nine separate files. Answer all four trust questions: what is
+proved, what is checked, what remains open, and what requires external verification.
+
+Name one global theorem spine and the local node advanced. Every node records
+`node_id`, role, status, named dependencies, support route, discharge criterion
+and debt IDs. Every debt records its category, blocked node, present evidence,
+discharge condition, route, owner and status. A missing foundation must be an
+explicit open `FOUNDATIONAL_PROFILE_GAP`, not an omitted field. The first
+executable step names its node, inputs, output and completion test.
+
+The twelve artifact roles are RESULT_STATUS, LAY_COMPANION,
+OBJECT_AND_OBSTRUCTION, STATUS_AUDIT, CLAIM_LEDGER, THEOREM_SPINE,
+DEPENDENCY_DAG, PROOFS_AND_COMPUTATIONS, FAILURE_AND_NEGATIVE_RESULTS,
+PROOF_DEBT_REGISTER, CERT_HANDOFF and NEXT_EXECUTABLE_STEP. New external-catalog
+dossiers bind each role to a tracked file using `path`, optional
+`section_anchor`, `git_blob_sha1` and `sha256`; shared files require distinct
+explicit HTML anchors. Structured Claim Ledger, spine, DAG, debt and handoff-intent
+sidecars are compared for consistency. Narrative fidelity still requires
+qualified review; a hash or validator does not establish mathematical meaning.
+
+The support routes are EXPLORATORY_EVIDENCE, REGRESSION_AUDIT,
+EXACT_FINITE_VERIFICATION, CERTIFICATE_REPLAY, FORMAL_PROOF, CONTINUUM_PROOF
+and NEGATIVE_RESULT. Proof debt uses MISSING_LEMMA, UNPROVED_BRIDGE,
+EXTERNAL_SOURCE, COMPUTATIONAL_REPLAY, SEMANTIC_CORRESPONDENCE,
+FOUNDATIONAL_PROFILE_GAP, ANALYTIC_ESTIMATE or FORMALIZATION_BLOCKER.
+
+Full external-catalog dossiers begin only at qualified reviewed promotion into
+MATHSOLVE, never at source intake. Proposals require SEMANTICALLY_REVIEWED;
+exact imported targets require CAMPAIGN_CONCORDANT and an exact reviewed typed
+relation. See [the operational boundary](../docs/EXTERNAL_CATALOG_REVIEWED_PROMOTION.md).
+These controls do not change existing campaign-manifest claim-promotion fields.
+
+WP06's [v2 reference](../domains/union_closed/WP06_ideal_family_bridge/chaidez_v2_conformance.json)
+is the active documentary migration. Other historical packages remain historical
+unless they explicitly assert current Chaidez conformance. The file bundle below
+is historical layout guidance; current conformance is determined by the twelve
+roles and nine-stage map, not filenames alone.
+
 Every Work Package must contain the following sections.
 
 ### 1. Lay executive companion

@@ -9,7 +9,7 @@ Mandatory first actions:
 4. Read handoffs/RH-001/routes/ROUTE_C_DETERMINANT_CONVERGENCE.md in full.
 5. Read work_packages/RH_R035_ZETA_SPECTRAL_TRIPLES_LIMIT.md.
 6. Read the protected provider audit at grandchallenge/MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790, reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md.
-7. Read R036/R037 for the simple-even/Galerkin interface and the current local simple-even frontier theorem R050.
+7. Read R036/R037 for the simple-even/Galerkin interface, the current local simple-even frontier theorem R051, and R053 for C2 compact transform stability.
 8. Acquire/read the exact primary Zeta Spectral Triples source before asserting a determinant normalization not already protected.
 
 Protected snapshot at route-pack creation: MATHSOLVE main 7387aa8993355ab854630cf0683b4120a813884c. Rebind live state before mutation.
@@ -22,7 +22,7 @@ Do not try to build a limiting self-adjoint operator unless it is genuinely usef
 Break the route into modular obligations:
 C0. Freeze the exact canonical normalized determinant F_{lambda,N}. Do not guess normalization.
 C1. Specify and justify a cofinal schedule or directed-set limit in lambda and N.
-C2. Prove a compact-set transform/determinant stability estimate with exact dependence on a=log(lambda) and compact height.
+C2. Prove a compact-set transform/determinant stability estimate with exact dependence on a=log(lambda) and compact height. [Discharged by RH-R053]
 C3. Convert source k_lambda approximation into a norm/rate strong enough for C2, or prove what rate is required.
 C4. Prove local boundedness/normal-family control for the normalized entire family.
 C5. Identify every subsequential limit with Xi, or with a rigorously known zero-free entire multiple of Xi.

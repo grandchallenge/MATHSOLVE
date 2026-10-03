@@ -1,0 +1,98 @@
+{
+  "source_head": "36b7c79bebd42fde17ea9f0f809406fb55e093f9",
+  "objective": "Maximize strength and number of defensible event-window contributions",
+  "priority": [
+    "H1",
+    "H7",
+    "H4",
+    "H3",
+    "H6",
+    "H5",
+    "H2"
+  ],
+  "status": "PREPARED_NOT_LEASED",
+  "packets": [
+    {
+      "id": "H1-PREMISES",
+      "hill": "H1",
+      "priority": 1,
+      "path": "handoffs/OPENMATH-2026/event-window/H1-PREMISES.md",
+      "sha256": "027c534fbf5ada85506aef68b902571598d1e0fc5fa7ab10365b0455ec84be33",
+      "status": "PREPARED_NOT_LEASED",
+      "missing_optional_inputs": []
+    },
+    {
+      "id": "H1-Q6",
+      "hill": "H1",
+      "priority": 1,
+      "path": "handoffs/OPENMATH-2026/event-window/H1-Q6.md",
+      "sha256": "10471a0fca01bab5f6d8f0b7e382954fe77f1d302592f88618f94995fd9216ad",
+      "status": "PREPARED_NOT_LEASED",
+      "missing_optional_inputs": []
+    },
+    {
+      "id": "H1-ADVERSARY",
+      "hill": "H1",
+      "priority": 1,
+      "path": "handoffs/OPENMATH-2026/event-window/H1-ADVERSARY.md",
+      "sha256": "4fee577c1c727d89bf56496a0d9824cac67dada599cfd748546f45946335c460",
+      "status": "PREPARED_NOT_LEASED",
+      "missing_optional_inputs": []
+    },
+    {
+      "id": "H7-DIVERGENCE",
+      "hill": "H7",
+      "priority": 2,
+      "path": "handoffs/OPENMATH-2026/event-window/H7-DIVERGENCE.md",
+      "sha256": "3768828f615ef842518c60051db163b4d98517fdd8ab90d6d3eda036860d0c33",
+      "status": "PREPARED_NOT_LEASED",
+      "missing_optional_inputs": []
+    },
+    {
+      "id": "H4-EXTEND",
+      "hill": "H4",
+      "priority": 3,
+      "path": "handoffs/OPENMATH-2026/event-window/H4-EXTEND.md",
+      "sha256": "564fc8b8ee66f02ce2cfb37707e341bffb6a2de2bc8ebf905b3df148ed99ff18",
+      "status": "PREPARED_NOT_LEASED",
+      "missing_optional_inputs": []
+    },
+    {
+      "id": "H3-DELTA",
+      "hill": "H3",
+      "priority": 4,
+      "path": "handoffs/OPENMATH-2026/event-window/H3-DELTA.md",
+      "sha256": "ea492f89aef3580d7f5e3d081757f2a2b71179ce4fefdefdaa1a11e9f902a1a8",
+      "status": "PREPARED_NOT_LEASED",
+      "missing_optional_inputs": []
+    },
+    {
+      "id": "H6-OFFENSIVE",
+      "hill": "H6",
+      "priority": 5,
+      "path": "handoffs/OPENMATH-2026/event-window/H6-OFFENSIVE.md",
+      "sha256": "fec833ec7105cde38ece3d2fb14d78a70c61c08316985131e7ad5a2108a0acb4",
+      "status": "PREPARED_NOT_LEASED",
+      "missing_optional_inputs": []
+    },
+    {
+      "id": "H5-ELIGIBILITY",
+      "hill": "H5",
+      "priority": 6,
+      "path": "handoffs/OPENMATH-2026/event-window/H5-ELIGIBILITY.md",
+      "sha256": "96cfc17ca058b954e544766a2ab5d9c669ac20525baf3360a77dbe5f25e47cc4",
+      "status": "PREPARED_NOT_LEASED",
+      "missing_optional_inputs": []
+    },
+    {
+      "id": "H2-GATE",
+      "hill": "H2",
+      "priority": 7,
+      "path": "handoffs/OPENMATH-2026/event-window/H2-GATE.md",
+      "sha256": "ebcb252c5895f3f23493d1e39f7370d7d7c5e0af758ad2bf06cb86d4a3ecaba9",
+      "status": "PREPARED_NOT_LEASED",
+      "missing_optional_inputs": []
+    }
+  ],
+  "organizer_route": "EXTERNAL_BLOCKER_NOT_MATHEMATICAL_DEPENDENCY"
+}

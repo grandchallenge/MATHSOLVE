@@ -1,0 +1,419 @@
+{
+  "schema_version": "2.0.0",
+  "protocol_id": "CHAIDEZ-PEDAGOGY-001",
+  "disposition": "ACTIVE_REFERENCE_PACKAGE_NOT_CATALOG_PROMOTION",
+  "global_theorem_spine_id": "UC-IDEAL-FAMILY-COMPLEMENT-SPINE",
+  "local_node_advanced": "WP06-S9",
+  "result_status": {
+    "result_status": "RESTRICTED_RESULT",
+    "conditional_on": [
+      "Finite local family satisfying IsIdealFamilyOn F U."
+    ],
+    "strongest_supported_claim": "Every local ideal family is average-rare; the complement family is union-closed, nontrivial, and Frankl-abundant.",
+    "not_claimed": [
+      "This is not a proof of Frankl's conjecture for arbitrary union-closed families.",
+      "The upstream ideal-family repository is not a trusted dependency."
+    ],
+    "support_route_class": "FORMAL_PROOF",
+    "foundational_profile": {
+      "disposition": "PROFILE_PRESENT",
+      "profile": {
+        "carrier_type": "finite",
+        "ambient_structure": [
+          "order_structure",
+          "algebraic_structure",
+          "computable_presentation"
+        ],
+        "regularity": [
+          "finite",
+          "decidable",
+          "computable"
+        ],
+        "axiom_profile": {
+          "base": "finite",
+          "choice_usage": "finite_choice",
+          "excluded_middle": "used",
+          "large_cardinal_usage": "none",
+          "determinacy_usage": "none"
+        },
+        "witness_policy": {
+          "existence_claim": "extractable",
+          "witness_location": "certificate_artifact"
+        },
+        "certification_target": [
+          "Lean"
+        ],
+        "pathology_risk": {
+          "level": "low",
+          "notes": "Finite local ideal and complement families; checked Lean proof terms, not a new witness extractor or a claim of analytic regularity."
+        }
+      }
+    },
+    "certification_state": "MATHCERT_RECORDED",
+    "first_executable_step": {
+      "node_id": "WP06-S9",
+      "input": [
+        "Pinned MATHCERT ideal-family Claim Ledger and current local WP06 documents."
+      ],
+      "output": "A v2 documentary-conformance replay preserving the restricted result.",
+      "completion_test": "python ci/validate_external_catalog_promotion_dossiers.py accepts the WP06 reference record and confirms unchanged baseline claim-ledger bytes; mathematical recertification remains separately scoped."
+    }
+  },
+  "exposition": [
+    {
+      "stage": "STATUS_BOX",
+      "artifact_role": "RESULT_STATUS"
+    },
+    {
+      "stage": "PLAIN_OBJECT",
+      "artifact_role": "LAY_COMPANION"
+    },
+    {
+      "stage": "EXACT_OBSTRUCTION",
+      "artifact_role": "OBJECT_AND_OBSTRUCTION"
+    },
+    {
+      "stage": "WORKING_MODEL",
+      "artifact_role": "OBJECT_AND_OBSTRUCTION"
+    },
+    {
+      "stage": "RESTRICTED_CLAIM",
+      "artifact_role": "CLAIM_LEDGER"
+    },
+    {
+      "stage": "SPINE_LOCATION",
+      "artifact_role": "THEOREM_SPINE"
+    },
+    {
+      "stage": "SUPPORT_ROUTE",
+      "artifact_role": "PROOFS_AND_COMPUTATIONS"
+    },
+    {
+      "stage": "DEBT_AND_CLAIM_BOUNDARY",
+      "artifact_role": "PROOF_DEBT_REGISTER"
+    },
+    {
+      "stage": "FIRST_EXECUTABLE_STEP",
+      "artifact_role": "NEXT_EXECUTABLE_STEP"
+    }
+  ],
+  "trust_quartet": {
+    "WHAT_IS_PROVED": "The restricted finite local ideal-family average-rarity and complement-abundance statements, under IsIdealFamilyOn, as recorded by the existing MATHCERT proof-term boundary.",
+    "WHAT_IS_CHECKED": "The existing local Lean representation, NDS, trace/contraction, endgame and complement-duality theorems. This documentary migration adds no proof or certificate.",
+    "WHAT_REMAINS_OPEN": "Frankl's conjecture for arbitrary finite union-closed families; WP06-PD-006 and WP06-PD-007 remain open outside the checked local corridor.",
+    "WHAT_REQUIRES_EXTERNAL_VERIFICATION": "Any future trusted upstream theorem reuse requires a new placeholder-free exact-source audit and replay. The current local proof does not import the upstream repository."
+  },
+  "theorem_spine": [
+    {
+      "node_id": "WP02-FAMILY",
+      "role": "EXTERNAL_DEPENDENCY",
+      "status": "CHECKED",
+      "dependencies": [],
+      "support_route_class": "FORMAL_PROOF",
+      "discharge_criterion": "Public finite-family representation; existing local Lean imports compile.",
+      "proof_debt_ids": []
+    },
+    {
+      "node_id": "WP06-S1",
+      "role": "BRIDGE",
+      "status": "CHECKED",
+      "dependencies": [
+        "WP02-FAMILY"
+      ],
+      "support_route_class": "FORMAL_PROOF",
+      "discharge_criterion": "Carrier, degree, and NDS equivalences checked.",
+      "proof_debt_ids": [
+        "WP06-PD-003"
+      ]
+    },
+    {
+      "node_id": "WP06-S2",
+      "role": "LEMMA",
+      "status": "CHECKED",
+      "dependencies": [
+        "WP06-S1"
+      ],
+      "support_route_class": "FORMAL_PROOF",
+      "discharge_criterion": "localIdealFamily_exists_rare checked under the local ideal hypotheses.",
+      "proof_debt_ids": []
+    },
+    {
+      "node_id": "WP06-S3",
+      "role": "OBSTRUCTION",
+      "status": "CHECKED",
+      "dependencies": [
+        "WP02-FAMILY"
+      ],
+      "support_route_class": "FORMAL_PROOF",
+      "discharge_criterion": "Rare-vertex existence is separated from the frequency-sum average inequality.",
+      "proof_debt_ids": []
+    },
+    {
+      "node_id": "WP06-S4",
+      "role": "LEMMA",
+      "status": "CHECKED",
+      "dependencies": [
+        "WP06-S1"
+      ],
+      "support_route_class": "FORMAL_PROOF",
+      "discharge_criterion": "Normalized-degree sum and finite support lemmas checked.",
+      "proof_debt_ids": []
+    },
+    {
+      "node_id": "WP06-S5",
+      "role": "LEMMA",
+      "status": "CHECKED",
+      "dependencies": [
+        "WP06-S4"
+      ],
+      "support_route_class": "FORMAL_PROOF",
+      "discharge_criterion": "Trace and contraction preserve the stated ideal hypotheses on smaller ground.",
+      "proof_debt_ids": []
+    },
+    {
+      "node_id": "WP06-S6",
+      "role": "LEMMA",
+      "status": "CHECKED",
+      "dependencies": [
+        "WP06-S5"
+      ],
+      "support_route_class": "FORMAL_PROOF",
+      "discharge_criterion": "Exact trace-difference identity checked.",
+      "proof_debt_ids": []
+    },
+    {
+      "node_id": "WP06-S7",
+      "role": "THEOREM",
+      "status": "CHECKED",
+      "dependencies": [
+        "WP06-S6",
+        "WP06-S4"
+      ],
+      "support_route_class": "FORMAL_PROOF",
+      "discharge_criterion": "Trace/contraction induction proves port_nds_nonpos.",
+      "proof_debt_ids": [
+        "WP06-PD-004"
+      ]
+    },
+    {
+      "node_id": "WP06-S8",
+      "role": "BRIDGE",
+      "status": "CHECKED",
+      "dependencies": [
+        "WP06-S7",
+        "WP06-S1"
+      ],
+      "support_route_class": "FORMAL_PROOF",
+      "discharge_criterion": "localIdealFamily_averageRare follows under IsIdealFamilyOn.",
+      "proof_debt_ids": [
+        "WP06-PD-002"
+      ]
+    },
+    {
+      "node_id": "WP06-S9",
+      "role": "THEOREM",
+      "status": "CHECKED",
+      "dependencies": [
+        "WP06-S8",
+        "WP06-S2"
+      ],
+      "support_route_class": "FORMAL_PROOF",
+      "discharge_criterion": "localIdealFamily_complement_frankl checked for complement families only.",
+      "proof_debt_ids": [
+        "WP06-PD-005"
+      ]
+    },
+    {
+      "node_id": "WP06-FUTURE-CLASS",
+      "role": "BRIDGE",
+      "status": "OPEN",
+      "dependencies": [
+        "WP06-S9"
+      ],
+      "support_route_class": "FORMAL_PROOF",
+      "discharge_criterion": "Separately prove the target class has an ideal-complement representation.",
+      "proof_debt_ids": [
+        "WP06-PD-006"
+      ]
+    },
+    {
+      "node_id": "WP06-UPSTREAM-REUSE",
+      "role": "EXTERNAL_DEPENDENCY",
+      "status": "OPEN",
+      "dependencies": [],
+      "support_route_class": "FORMAL_PROOF",
+      "discharge_criterion": "A newer exact upstream source must be audited and replayed before trusted reuse.",
+      "proof_debt_ids": [
+        "WP06-PD-001",
+        "WP06-PD-007"
+      ]
+    }
+  ],
+  "proof_debt": [
+    {
+      "debt_id": "WP06-PD-001",
+      "category": "EXTERNAL_SOURCE",
+      "blocked_node": "WP06-UPSTREAM-REUSE",
+      "present_evidence": [
+        "Local replacement NDS proof is checked; the old upstream placeholder audit remains provenance."
+      ],
+      "discharge_condition": "Use the checked local proof instead of the historically unverified upstream theorem.",
+      "route": "FORMAL_PROOF",
+      "owner": "MATHSOLVE source audit",
+      "status": "SUPERSEDED"
+    },
+    {
+      "debt_id": "WP06-PD-002",
+      "category": "UNPROVED_BRIDGE",
+      "blocked_node": "WP06-S8",
+      "present_evidence": [
+        "UC-WP06-L007 records the checked local NDS and average-rarity bridge."
+      ],
+      "discharge_condition": "Prove localIdealFamily_port_nds_nonpos; already checked.",
+      "route": "FORMAL_PROOF",
+      "owner": "MATHCERT",
+      "status": "DISCHARGED"
+    },
+    {
+      "debt_id": "WP06-PD-003",
+      "category": "SEMANTIC_CORRESPONDENCE",
+      "blocked_node": "WP06-S1",
+      "present_evidence": [
+        "Carrier, degree and NDS translation equivalences are checked."
+      ],
+      "discharge_condition": "Replay the local-to-ported equivalence theorems.",
+      "route": "FORMAL_PROOF",
+      "owner": "MATHCERT",
+      "status": "DISCHARGED"
+    },
+    {
+      "debt_id": "WP06-PD-004",
+      "category": "MISSING_LEMMA",
+      "blocked_node": "WP06-S7",
+      "present_evidence": [
+        "Trace, contraction, exact NDS difference and endgame induction are checked."
+      ],
+      "discharge_condition": "Replay the complete finite trace/contraction chain.",
+      "route": "FORMAL_PROOF",
+      "owner": "MATHCERT",
+      "status": "DISCHARGED"
+    },
+    {
+      "debt_id": "WP06-PD-005",
+      "category": "SEMANTIC_CORRESPONDENCE",
+      "blocked_node": "WP06-S9",
+      "present_evidence": [
+        "UC-WP06-L008 records checked complement union-closure and abundance transfer."
+      ],
+      "discharge_condition": "Replay the restricted complement-duality theorem.",
+      "route": "FORMAL_PROOF",
+      "owner": "MATHCERT",
+      "status": "DISCHARGED"
+    },
+    {
+      "debt_id": "WP06-PD-006",
+      "category": "SEMANTIC_CORRESPONDENCE",
+      "blocked_node": "WP06-FUTURE-CLASS",
+      "present_evidence": [
+        "No bridge from arbitrary union-closed families is asserted."
+      ],
+      "discharge_condition": "Prove a separate class-representation theorem or retain the restricted claim.",
+      "route": "FORMAL_PROOF",
+      "owner": "MATHSOLVE",
+      "status": "OPEN"
+    },
+    {
+      "debt_id": "WP06-PD-007",
+      "category": "EXTERNAL_SOURCE",
+      "blocked_node": "WP06-UPSTREAM-REUSE",
+      "present_evidence": [
+        "The upstream proof surface had placeholders at the recorded audit commit."
+      ],
+      "discharge_condition": "Audit a newer placeholder-free exact upstream commit and reproduce its pinned toolchain build.",
+      "route": "FORMAL_PROOF",
+      "owner": "MATHSOLVE source audit",
+      "status": "OPEN"
+    }
+  ],
+  "required_artifacts": {
+    "RESULT_STATUS": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/01_RESULT_STATUS.md",
+      "git_blob_sha1": "61342415c0d8f5851cfcb201ec36adf88dc00e19",
+      "sha256": "8498388737d4eae18a1d4aa9cdd87d58ac2cf3e26d27ee08dd163d9144dafe2d"
+    },
+    "LAY_COMPANION": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/02_LAY_COMPANION.md",
+      "git_blob_sha1": "a18d9336cc641cf6462a663741e0467a5ed2393d",
+      "sha256": "7c71ed6894700b120b55fb39cd5125e7136e7b0d20f8f51261a4011705d887cb"
+    },
+    "OBJECT_AND_OBSTRUCTION": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/03_OBJECT_AND_OBSTRUCTION.md",
+      "git_blob_sha1": "54f9caf5056b670d1101e7f81c38812e3b89680c",
+      "sha256": "aa3094877431fda963bb6df6200ed8f001ab7417565ff1275e9e950d2bcd5140"
+    },
+    "STATUS_AUDIT": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/04_STATUS_AUDIT.md",
+      "git_blob_sha1": "a4aaa7d8647fe8e671f1240d0c358727eae84d06",
+      "sha256": "62042b93f860cdb909bb19f08319495e2620b0abe7a69e09d7bc865f7e65ec22"
+    },
+    "CLAIM_LEDGER": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/09_CLAIM_LEDGER.yaml",
+      "git_blob_sha1": "b7cde7dd899d70db899c7878034f3bbc6d6b44b5",
+      "sha256": "7ae5fe0539767395a1eecde55620770e8a6e548de668c4f8e3fc8d3afb2783ff"
+    },
+    "THEOREM_SPINE": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/05_THEOREM_SPINE.md",
+      "git_blob_sha1": "a54fa35b5336e07f33dd84455ccd3c400b3a37b4",
+      "sha256": "7f9420b755b968e8edb0fde6214eca877603381ddcb3034e5560462e7a8097a0"
+    },
+    "DEPENDENCY_DAG": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/06_DEPENDENCY_DAG.md",
+      "git_blob_sha1": "69b4968e2cc5164cf05f99daf4e92cb04e8fec92",
+      "sha256": "e7a3ddad0c5880a8aab90f079de0fcf5481aba11852f142e4ef41781ce020713"
+    },
+    "PROOFS_AND_COMPUTATIONS": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/07_PROOFS_AND_COMPUTATIONS.md",
+      "git_blob_sha1": "6cfd05232f5254a3d74789e35ff4859d657906e9",
+      "sha256": "ab01e1daf71d0b1aaba67b834b54e81bfdb19633f83a3ff85082c582af3846b3"
+    },
+    "FAILURE_AND_NEGATIVE_RESULTS": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/08_FAILURE_AND_NEGATIVE_RESULTS.md",
+      "git_blob_sha1": "542110b6026c474ee993e99c9d869be6ca1ac1e1",
+      "sha256": "57f1708d2594874338c34b8d61ecb4377340ca725b800a97a2ba13d7c67fe93e"
+    },
+    "PROOF_DEBT_REGISTER": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/10_PROOF_DEBT_REGISTER.md",
+      "git_blob_sha1": "3d1fcac68c35a531a493ab007cc450ccf3a17b3c",
+      "sha256": "8b7464a09a3935ffb3327bf209bdf2f459bdcddd093cb7a9087b20c82be162c6"
+    },
+    "CERT_HANDOFF": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/11_CERT_HANDOFF.md",
+      "git_blob_sha1": "bacb9ae72c107b52dd1f672c1bf32a927eefafb8",
+      "sha256": "ace49f910f19fc739d2cdfd46e18c2fb3c788eee62460742d7b1bd1ce1acb3fb"
+    },
+    "NEXT_EXECUTABLE_STEP": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/12_NEXT_EXECUTABLE_STEP.md",
+      "git_blob_sha1": "6a0025c048999ad3f024d52b1de4061a383022cd",
+      "sha256": "b04b0d1637e4690927bc2bb8b14abdf2b6afb673e1e95676a24e070972327bea"
+    }
+  },
+  "baseline_claim_ledger": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit": "7e1f27f7ec205d511570cf3b498037a8907a89c6",
+    "artifact": {
+      "path": "domains/union_closed/WP06_ideal_family_bridge/09_CLAIM_LEDGER.yaml",
+      "git_blob_sha1": "b7cde7dd899d70db899c7878034f3bbc6d6b44b5",
+      "sha256": "7ae5fe0539767395a1eecde55620770e8a6e548de668c4f8e3fc8d3afb2783ff"
+    }
+  },
+  "certification_reference": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit": "1c053a7684dd493c41ae3e6d7eecadb907b048fc",
+    "artifact": {
+      "path": "claim_ledger_ideal_family_bridge.yaml",
+      "git_blob_sha1": "cbdee4ecb66007efb75d993e8b0e0b49b0f9043e",
+      "sha256": "28a941f7d4492b4be87fca3b774d39864e69195d70d25d24f65093f152b7e14c"
+    }
+  },
+  "non_claim_boundary": "This is a documentary migration of the existing restricted WP06 result, not an external-catalog promotion, new mathematical claim, general Frankl proof, or new MATHCERT certificate."
+}

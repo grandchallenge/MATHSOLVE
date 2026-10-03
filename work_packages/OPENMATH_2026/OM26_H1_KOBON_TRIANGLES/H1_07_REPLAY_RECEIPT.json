@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-07-REPLAY-RECEIPT",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-07",
+  "state": "PASS",
+  "autolab_public_snapshot": "7d3f1d91dcb8",
+  "autolab_hill_manifest_version": "0.1.0",
+  "autolab_hill_spec_version": 2,
+  "evaluator_package": "hills==0.11.0",
+  "evaluator_mode": "PUBLIC_WORKING_TREE__UNOFFICIAL_LOCAL_SCORE",
+  "candidates": [
+    {
+      "candidate": "RD_LOCAL_MUTATION_086",
+      "solution_git_blob_sha1": "17f8355b484bacf115bafd413de9a0be8f8e3385",
+      "solution_sha256": "05a5f519433a0787a96a3f6c5a8cef17fc7f8ab093ccf0c9ab45a2d564ad11d5",
+      "proposal_score": 86,
+      "independent_direct_oracle_score": 86,
+      "autolab_public_evaluator_score": 86,
+      "discrepancy": false,
+      "promotion_disposition": "PROMOTED_TO_CAMPAIGN_BEST_OBSERVED"
+    },
+    {
+      "candidate": "RG_STRUCTURED_FAMILY_058",
+      "solution_git_blob_sha1": "bb6407a1dd1b1deeb8f55a9e879657b2f6028df1",
+      "solution_sha256": "be4e4fdc0495d5cc2f12c52f73d760dd120ecd3cf9b2a765ac20a7b2c0e17289",
+      "proposal_score": 58,
+      "independent_direct_oracle_score": 58,
+      "autolab_public_evaluator_score": 58,
+      "discrepancy": false,
+      "promotion_disposition": "VERIFIED_ROUTE_RESULT__NOT_CAMPAIGN_LEADER"
+    }
+  ],
+  "workflow": {
+    "run_id": 36356017300,
+    "job_id": 108723788668,
+    "result": "PASS"
+  },
+  "promotion_rule": "No candidate enters the campaign-best ladder without independent direct-oracle replay and AutoLab public-evaluator concordance.",
+  "claim_boundary": "H1-07 establishes exact campaign replay concordance. AutoLab local scores are unofficial and this receipt does not establish best-known status, optimality, novelty, competition acceptance, or MATHCERT certification."
+}

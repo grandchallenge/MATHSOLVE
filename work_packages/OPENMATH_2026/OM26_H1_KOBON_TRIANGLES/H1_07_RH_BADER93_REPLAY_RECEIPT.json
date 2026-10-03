@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-07-RH-BADER93-REPLAY",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-07",
+  "route": "R-H",
+  "state": "PASS",
+  "subject": {
+    "candidate": "RH_BADER_RECONSTRUCTION_093",
+    "solution_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RH_BADER_RECONSTRUCTION_093/solution.json",
+    "solution_git_blob_sha1": "bb244e4b0422922ae9f85cc4facb2109c33162b3",
+    "solution_sha256": "e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5",
+    "n": 18
+  },
+  "source_order_replay": {
+    "source_repository": "zegalur/line-order",
+    "source_commit": "2631b8793eb351be2ad6b8a91b7194eeb67e25bb",
+    "source_gallery_blob": "551747de426042e1542fa4b8f55c1383a9afe157",
+    "adjacency_constraints_checked": 282,
+    "parallel_pairs": [
+      [
+        1,
+        2
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        13,
+        14
+      ]
+    ],
+    "minimum_positive_integer_margin": 19680000,
+    "result": "PASS"
+  },
+  "independent_direct_oracle": {
+    "triangles": 93,
+    "result": "PASS"
+  },
+  "autolab_public_evaluator": {
+    "snapshot": "7d3f1d91dcb8",
+    "manifest_version": "0.1.0",
+    "spec_version": 2,
+    "evaluator_package": "hills==0.11.0",
+    "mode": "PUBLIC_WORKING_TREE__UNOFFICIAL_LOCAL_SCORE",
+    "triangles": 93,
+    "result": "PASS"
+  },
+  "workflow": {
+    "run_id": 36359791747,
+    "job_id": 108734545943,
+    "result": "PASS"
+  },
+  "promotion_disposition": "PROMOTED_TO_CAMPAIGN_BEST_OBSERVED",
+  "claim_boundary": "Solve-level replay concordance only; no global best-known, optimality, novelty, priority, official AutoLab acceptance, or MATHCERT certification claim."
+}

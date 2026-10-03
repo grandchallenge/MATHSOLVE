@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "packet_id": "OM26-H1-COMPETITION-PACKET-001",
+  "account": "jimsteeg",
+  "source_repository": "grandchallenge/MATHSOLVE",
+  "source_commit": "50b88f51032a14aeae5c3969e14dd8c5a8728bac",
+  "hill": "H1",
+  "hill_id": "alejandrozu/kobon-triangles",
+  "artifact": {
+    "path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RH_BADER_RECONSTRUCTION_093/solution.json",
+    "git_blob_sha1": "bb244e4b0422922ae9f85cc4facb2109c33162b3",
+    "sha256": "e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5"
+  },
+  "hill_version": {
+    "tree_hash": "7d3f1d91dcb8be8d0eef20be763557bd6d876707",
+    "commit": "17737195485728d244b0d1f30db55db42df60366"
+  },
+  "native_climb": {
+    "project_id": "e225e313-bc51-4522-9ce1-dd57938b115a",
+    "slug": "gcl-2026-h1-fixed-e606799ad6c1",
+    "job_id": "5c6779f5-5f3d-474c-9cf8-310a0d679efb",
+    "job_status": "queued"
+  },
+  "claim": {
+    "statement": "This exact 18-line rational straight-line arrangement has 93 counted bounded triangular faces under the locked hill semantics.",
+    "status": "EXACT_REPLAY_PASS",
+    "novelty_claim": false,
+    "optimality_claim": false
+  },
+  "provenance": {
+    "attribution": "Published 18-line 93-triangle construction attributed to Johannes Bader; GCL reconstructed and rationalized a straight-line realization and replayed it exactly.",
+    "gcl_evidence": [
+      "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/BADER_93_SOURCE.json",
+      "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_07_RH_BADER93_REPLAY_RECEIPT.json"
+    ]
+  },
+  "competition_fields": {
+    "submission_id": null,
+    "competition_workspace": null,
+    "immutable_final_commit": null,
+    "official_evaluator_report": null,
+    "leaderboard_state": null,
+    "organizer_acceptance": null
+  },
+  "claim_boundary": "Packet is submission-ready evidence only, not an official competition submission, novelty claim, optimality claim, or certification.",
+  "handbook_audit": {
+    "audit_id": "OPENMATH-2026-HANDBOOK-COMPLIANCE-AUDIT-001",
+    "status": "NOT_SUBMISSION_READY",
+    "classification": "PRIOR_MATHEMATICS__M2_REFRAME_POSSIBLE",
+    "blocking": [
+      "M2 source theorem/formalization target",
+      "prior formal-library search",
+      "genuinely new formal contribution",
+      "Section 8 packet",
+      "official submission route/report"
+    ]
+  }
+}

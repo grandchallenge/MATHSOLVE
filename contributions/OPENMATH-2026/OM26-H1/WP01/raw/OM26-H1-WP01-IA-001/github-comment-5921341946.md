@@ -1,0 +1,119 @@
+GCL-CONTRIBUTION-RESULT/1
+dispatch_id: OM26-H1-WP01-IA-001
+agent_ref: INDEPENDENT-AGENT-101
+assignment: OM26-H1-WP01
+disposition: PROVED_REDUCTION
+context_class: ZERO_CONTEXT
+external_sources: PROTECTED_PACKET_ONLY
+timebox_observed: YES
+
+## Strongest exact statement
+
+Conditional on the six-core applicability of the protected defect, fan, and clean-line charging premises stated below, a normalized arrangement of 18 distinct nonparallel full straight lines with exactly 95 counted triangles and exactly six finite multiple points has one of precisely five surviving multiplicity profiles in the finite necessary-state relaxation:
+333333 with D2=3..12;
+333334 with D2=5..12;
+333335 with D2=7..10;
+333344 with D2=6..10;
+333444 with D2=9.
+These are surviving combinatorial profiles, not geometric existence assertions. Every listed integer in each interval survives the stated replay. Nine other coarse profiles have no states in this relaxation.
+
+The planar Euler inequality D2<=12 is an independent additional necessary condition; without it the same sector/charging replay admits 333333 at D2=13,14 as well. Thus the complete six-core D2 graph is already excluded independently of the source-scoped fan/charge premises.
+
+## Derivation
+
+Normalize away parallels using the embedded parallel-reduction theorem, preserving the selected 95 faces. Let the six finite multiple points be labeled 0 through 5 with multiplicities r_i>=3. Define I=sum r_i and S=sum r_i(r_i-2). An elementary bounded segment is the portion of an arrangement line between consecutive finite vertices. Let U count elementary bounded segments incident to no counted triangle, D1 count segments incident to two counted triangles with exactly one multiple endpoint, and D2 count segments incident to two counted triangles with two multiple endpoints. At an ordinary intersection a shared side cannot support two triangular faces with both endpoints ordinary: the two transverse endpoint lines would have to meet on both opposite sides of the shared line. Therefore all twice-used sides are of types D1 or D2.
+
+The total number of elementary bounded segments is 18*16-S: each line has one fewer bounded segment than finite vertices, and replacing r choose 2 ordinary crossings by one r-fold point reduces the total vertex incidence by r(r-2). Counted triangle side incidences give 285=288-S-U+D1+D2, hence 3=S+U-D1-D2. Put delta=3. All quantities count finite objects, and U>=0.
+
+At core i let d1_i count incident D1 segments and d2_i count incident D2 segments. Then D1=sum d1_i and 2D2=sum d2_i. The protected universal fan inequality is d1_i<=2r_i-3, giving D1<=2I-18. Each unordered pair of distinct cores supports at most one elementary D2 segment, so D2<=15. Consequently S<=3+D1+D2<=2I, or sum r_i(r_i-4)<=0. Since r(r-4) is -3,0,5,12,21 for r=3,4,5,6,7 respectively, r_i>=7 is impossible even if the other five multiplicities are three. Exhausting sorted six-tuples in {3,4,5,6} gives exactly:
+333333,333334,333335,333336,333344,333345,333346,333355,333444,333445,334444,334445,344444,444444.
+
+The D2 segments form an embedded simple graph on six cores. Their interiors cannot intersect each other or contain another arrangement vertex, because each segment is elementary. Euler's planar simple-graph inequality therefore gives D2<=3*6-6=12, also valid for disconnected graphs by adding edges to a planar triangulation. No assumption of noncollinearity is needed for this upper bound.
+
+For a core of multiplicity r, index the 2r rays and intervening sectors cyclically by 0 through 2r-1. A bit sector(i)=1 means the sector between rays i and i+1 belongs to a counted triangular face. A ray is shared precisely when sector(i-1)=sector(i)=1. Choose exactly d2 shared rays as D2; label the remaining shared rays D1. Impose the protected no-long-run fan premise: no cyclic run of r-1 consecutive rays consists entirely of D1. Let blocked_i count D1 rays adjacent in this cyclic ray order to a D2 ray. Such rays are ineligible clean-line targets under the protected charge rule.
+
+Write B=sum blocked_i. Let h be the number of arrangement lines incident to at least one core; the elementary-segment incidence bound is h<=I-D2. Indeed on any line with k cores at most k-1 of its elementary segments have two core endpoints, so summing D2<=sum(k-1)=I-h. A clean line contains no core, so its number is 18-h>=18-I+D2. The protected charge map and endpoint capacity require 18-I+D2<=2U+D1-B. Enumerate all 32768 labeled simple six-core graphs and the local options just described; combine local options by exact dynamic programming over (D1,B), compute U=3-S+D1+D2, and retain only U>=0 and that charge inequality. This enumerates necessary states, including states that may fail other geometric constraints.
+
+For reproducible counting, multiplicities are fixed in sorted order at the six labels. Counts below are graph counts for that fixed placement, each graph counted once if it admits any local totals; they are not counts of local words or counts over all multiplicity placements. Other placements are isomorphic by relabeling. Exact counts by D2:
+333333: 3:260, 4:1095, 5:2412, 6:4945, 7:6345, 8:6435, 9:4990, 10:3003, 11:1365, 12:455.
+333334: 5:1110, 6:2175, 7:5265, 8:5310, 9:4750, 10:2643, 11:1340, 12:395.
+333335: 7:60, 8:540, 9:250, 10:525.
+333344: 6:327, 7:765, 8:2464, 9:1510, 10:1077.
+333444: 9:70.
+All other coarse profiles have zero retained graphs.
+
+## Assumptions beyond bootstrap
+
+The result explicitly assumes that the named no-long-run local fan premise and the clean-line charging/blocked-target/endpoint-capacity rules apply to arrangements with six cores. The packet calls the coarse fan bound universal and gives the sector/charge procedure at q=5, but it supplies no independent proof of the charging map or its extension to q=6. These remain source-conditional obligations. The conclusion is not presented as an unconditional transfer of the predecessor q<=5 theorem.
+
+The sector-to-shared-ray identity, elementary segment count, graph simplicity, core-incidence inequality, and planar Euler bound are derived independently above. The finite search deliberately does not enforce global ray orders, opposite-ray line matching across cores, straight-line stretchability, all other ordinary intersections, or all geometric consequences of full lines. Nor does it assert that its planar edge-count gate certifies graph planarity. These omitted necessary constraints enlarge the state space and cannot invalidate exclusion of a profile from it.
+
+## Verification / falsification hooks
+
+The following complete Python 3 standard-library replay performs no network access, random search, or repository mutation. It checks the stated finite state space only.
+
+```python
+from itertools import combinations, combinations_with_replacement, product
+from functools import lru_cache
+from collections import Counter, defaultdict
+
+@lru_cache(None)
+def local(r, degree):
+    out=set()
+    n=2*r
+    for bits in product((0,1),repeat=n):
+        shared=[i for i in range(n) if bits[i-1] and bits[i]]
+        for selected in combinations(shared,degree):
+            two=set(selected)
+            one=set(shared)-two
+            if any(all((i+j)%n in one for j in range(r-1)) for i in range(n)):
+                continue
+            blocked=sum((i-1)%n in two or (i+1)%n in two for i in one)
+            out.add((len(one),blocked))
+    return tuple(sorted(out))
+
+@lru_cache(None)
+def totals(pairs):
+    states={(0,0)}
+    for r,d in pairs:
+        states={(a+x,b+y) for a,b in states for x,y in local(r,d)}
+    return tuple(sorted(states))
+
+profiles=[p for p in combinations_with_replacement(range(3,7),6)
+          if sum(r*(r-4) for r in p)<=0]
+edges=list(combinations(range(6),2))
+degree_counts=Counter()
+for mask in range(1<<15):
+    degree=[0]*6
+    for j,(a,b) in enumerate(edges):
+        if mask>>j&1:
+            degree[a]+=1; degree[b]+=1
+    degree_counts[tuple(degree)]+=1
+print('coarse',len(profiles),[''.join(map(str,p)) for p in profiles])
+for p in profiles:
+    I=sum(p); S=sum(r*(r-2) for r in p)
+    counts=Counter(); witnesses={}
+    for degree,mult in degree_counts.items():
+        D2=sum(degree)//2
+        if D2>12: # Necessary planar Euler bound on the elementary core graph.
+            continue
+        for D1,B in totals(tuple(sorted(zip(p,degree)))):
+            U=3-S+D1+D2
+            if U>=0 and 18-I+D2<=2*U+D1-B:
+                counts[D2]+=mult
+                witnesses.setdefault(D2,(degree,D1,B,U))
+                break
+    print(''.join(map(str,p)),dict(sorted(counts.items())), 'witness',witnesses.get(min(counts)) if counts else None)
+```
+
+Falsification hooks: replace cached degree grouping by the direct mask loop and compare graph counts; degree grouping is valid because every local and arithmetic filter depends only on the assigned multiplicity, graph degree vector, and edge count. Recover a concrete local sector word for any stored (d1,blocked) option by retaining bits and selected in local(). Remove the D2>12 filter to recover exactly the two additional all-triple strata D2=13,14. Independently check the six-core geometric validity of the named charging map before using any exclusion as an unconditional theorem; a single normalized six-core arrangement violating that premise defeats the transfer, even though this finite replay remains correct for its declared domain.
+
+For the minimal surviving all-triple star graph with degrees (3,1,1,1,0,0), the replay returns D1=12,B=7,U=0. Its clean-line lower bound is 18-18+3=3, while the charge capacity is 12-7=5, leaving slack two; this is a concrete surviving necessary-state countercase to any claim that the listed counting constraints alone close q=6. It is not claimed realizable.
+
+## Claim boundary
+
+This is one independently replayed source-conditional finite reduction of the exact q=6 stratum. It does not re-enumerate q<=5, repeat the closed Agent 001 proof, provide coordinate search, establish realizability of a survivor, discharge predecessor fan/charging obligations, exclude q>=7, prove a hill-global upper bound of 94, assert novelty or optimality, or create a certification or competition submission. No GitHub mutation was performed. The assignment was recovered under the same logical protected lease and completed within its 25-minute timebox.
+
+## Next residual
+
+Audit the six-core applicability of the clean-line charging map, then impose full planarity and geometric line-order constraints on the five surviving profiles. The isolated D2=9 profile 333444 is a particularly small arithmetic frontier: its 70 fixed-placement graph states all have degree three at every core and exact total values D1=24,B=24,U=3. The all-triple minimum star remains a separate slack-bearing residual.

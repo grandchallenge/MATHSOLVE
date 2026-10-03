@@ -2501,6 +2501,31 @@ q4 damping.
 This resolves the L5-43 abstract-density gap at the limiting L5-35 level, but
 does not yet prove any one balance channel is a selector charge.
 
+### L5-45 D4 moment separator
+
+`work_packages/NS_CI_R014_A2_L5_45_C2_D4_MOMENT_SEPARATOR.md` records
+
+`D4_ALONE_DOES_NOT_FORCE_FIXED_CRITICAL_BAND_MASS__TIGHTNESS_OR_LOWER_MOMENT_REQUIRED`.
+
+The first protected independent-contributor result for Assignment B was admitted only
+after separate Formalist/Adversary/Referee adjudication. Its two-point high-frequency
+escape construction yields an exact moment-interface separator: positive integrated
+fourth moment D4 can coexist with zero mass in every fixed scaled annulus and arbitrarily
+small Q2.
+
+The stronger contributor claims were not admitted. In particular, the separator is not
+proved realizable by the full L5-35 packet dynamics, and the proposed kurtosis condition
+was not proved necessary or sufficient as stated.
+
+Under the established packet scaling, D4 is also one differential order above the finite
+Leray-Hopf dissipation budget. Thus the direct D4-as-selector-charge route is closed
+negatively from sign and size alone.
+
+The live reconstruction residual is now to prove a correctly quantified positive-measure
+time lemma using D4 plus explicit spectral tightness/lower-moment normalization, and then
+derive those hypotheses from selected packet dynamics. Expansion C2^+ and signed phase
+source P_tot remain separate live escape channels.
+
 ## Residual blockers
 
 - B1 low core: moving enstrophy hits B4; selector-free complementary coupling
@@ -2603,3 +2628,62 @@ rigorous bounded route termination; an exact L5 exhaustion theorem; a material
 change to the selected target or hypothesis; a reserved constitutional or
 certification transition; authentication or safety failure; or a materially
 changed protected mathematical predecessor.
+
+## Independent contributor intake pilot
+
+Human Steward authorization for the bounded independent-contributor pilot is protected at:
+
+`grandchallenge/INTELLECT@cacfe1f749b91a335e1d1734352cecff56bad7c1`
+
+The pilot is local to the active `C2-MIX-DIRECTION-COMPRESSION-LEDGER-CHARGE`
+frontier. It does not alter the A2 mathematical disposition, certify any contribution,
+or create organization-wide intake authority.
+
+The initial arbitrary-transport ICR/attachment interface has been superseded before first
+contribution receipt.
+
+The version-1 interface is GitHub-native:
+
+```text
+generated dispatch issue
+  -> one GCL-CONTRIBUTION-RESULT/1 issue comment
+  -> MATHSOLVE raw+receipt evidence branch
+  -> bounded MATH-PROGRAMME Release Trust PR controller
+  -> ordinary raw-evidence PR
+  -> ordinary protected admission
+```
+
+The zero-context contributor is not asked to navigate GCL. Each generated dispatch issue
+contains its complete mathematical context, exactly one assignment, the 22-minute bound,
+hard rejection tests, exact result grammar, and authority boundary.
+
+Contributors must not create branches, pull requests, files, commits, issues, attachments,
+notebooks, scripts, images, supplementary notes, or external links.
+
+Pilot contract:
+
+`contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/PILOT.md`
+
+Result grammar:
+
+`contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/RESULT_COMMENT_V1.md`
+
+Current pilot state: `PILOT_ACTIVE__GITHUB_INTAKE_V1`.
+
+Registered dispatch issues:
+
+- `#424`: `NSCI-C2-A-BLIND-001`, Assignment A, `independent_blind`, awaiting result;
+- `#425`: `NSCI-C2-A-BLIND-002`, Assignment A, `independent_blind`, awaiting result;
+- `#426`: `NSCI-C2-B-COOP-001`, Assignment B, `cooperative_claimed`, completed and adjudicated.
+
+Each issue body is an exact copy of its protected bootstrap artifact. A first schema-valid
+result is captured by the MATHSOLVE workflow as raw evidence plus receipt on the stable
+dispatch evidence branch. MATHSOLVE's default Actions token has no pull-request creation
+authority.
+
+The final branch-to-PR hop is owned by the bounded Release Trust controller protected in
+`grandchallenge/MATH-PROGRAMME@e0f809d853705db0817800434da0213b8177999f`.
+Its short-lived App token is restricted to MATHSOLVE with contents-read, PR-write, and
+issues-write only; it validates the evidence branch before opening the ordinary intake PR.
+
+The blind Assignment-A cohort remains `OPEN`; synthesis remains prohibited.
