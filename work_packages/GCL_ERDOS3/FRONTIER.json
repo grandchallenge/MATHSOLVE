@@ -103,7 +103,8 @@
       "completed_by": "E3-B02",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-B02_RESULT.md",
       "source_confirmation": "Green–Tao 2017, Introduction; Tao–Vu, Additive Combinatorics, Exercise 10.0.6",
-      "independent_verification": "OPEN__E3-V02"
+      "independent_verification": "VERIFIED__E3-V02",
+      "verification_evidence": "work_packages/GCL_ERDOS3/results/E3-V02_RESULT.md"
     },
     {
       "id": "E3-B-AP-THRESHOLD",
@@ -154,13 +155,43 @@
       ],
       "statement": "Prove Σ_{n≥1} r_4(2^n)/2^n < ∞.",
       "current_best_pointwise": "Green–Tao: r_4(N) ≪ N (log N)^(-c) for some absolute c>0; this alone does not establish the series convergence.",
-      "smallest_missing_object": "A summable normalized bound, or a cross-scale recurrence/average estimate on a_n=r_4(2^n)/2^n strong enough to imply Σ a_n<∞.",
-      "active_attacks": [
-        "E3-Q01",
-        "E3-X01",
-        "E3-A02",
-        "E3-S03"
-      ]
+      "smallest_missing_object": "Promoted route E3-Q4-DENSITY-LOSS: for a_n=r_4(2^n)/2^n, prove eventual bounded-step density-dependent loss a_{n+L} <= a_n(1-c a_n^theta) for fixed L>=1, c>0, and 0<theta<1; this implies a_n=O(n^(-1/theta)) and hence Σ a_n<∞.",
+      "active_attacks": [],
+      "completed_attacks": {
+        "E3-Q01": "EXACT_BLOCKER__FIXED_AMBIENT_GREEN_TAO_DOES_NOT_SUPPLY_INTER_SCALE_TRANSFER",
+        "E3-X01": "PROMOTED__DENSITY_DEPENDENT_LOSS_SUBTARGET",
+        "E3-A02": "COUNTEREXAMPLE__SUPPORTING_BOUNDARY_EVIDENCE_NOT_PROMOTED",
+        "E3-S03": "SOURCE_BLOCKED__NO_SEQUENCE_LEVEL_SOURCE_INTERFACE_FOUND"
+      },
+      "promoted_result": "E3-X01",
+      "promoted_evidence": "work_packages/GCL_ERDOS3/results/E3-X01_RESULT.md",
+      "promoted_synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-02_SYNTHESIS.md",
+      "ruled_out_by_promoted_result": [
+        "plain interval reblocking as a source of any strict density loss",
+        "eventual fixed-step uniform fractional contraction a_{n+L} <= (1-delta)a_n",
+        "eventual fixed-window averaged uniform fractional contraction",
+        "eventual constant-factor quasi-submultiplicativity a_{n+m} <= C a_n a_m"
+      ],
+      "supporting_nonpromoted_evidence": {
+        "E3-Q01": "Green–Tao 2017 is fixed-ambient; localization recovers only monotonicity.",
+        "E3-A02": "Literal submultiplicativity fails; strong multiplicative/power recurrences are constrained by lower constructions.",
+        "E3-S03": "Scoped primary-source audit found no post-2017 sequence-level estimate stronger than monotonicity."
+      }
+    },
+    {
+      "id": "E3-Q4-DENSITY-LOSS",
+      "kind": "FRONTIER_SUBTARGET",
+      "status": "OPEN",
+      "parent": "E3-Q4-SERIES",
+      "sufficient_for": [
+        "E3-Q4-SERIES"
+      ],
+      "statement": "Let a_n=r_4(2^n)/2^n. Prove that there exist fixed L>=1, c>0, n_0, and 0<theta<1 such that a_{n+L} <= a_n(1-c a_n^theta) for all n>=n_0.",
+      "consequence": "The discrete differential inequality gives a_n=O(n^(-1/theta)); since 1/theta>1, Σ_n a_n converges.",
+      "provenance": "E3-X01",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-X01_RESULT.md",
+      "promotion": "PROMOTED__E3-TRANCHE-02",
+      "claim_boundary": "Sufficient route only; it is not claimed necessary and is not proved by E3-X01."
     },
     {
       "id": "E3-QK5-SERIES",
@@ -175,47 +206,74 @@
     {
       "id": "E3-V-B02",
       "kind": "VERIFICATION",
-      "status": "OPEN",
+      "status": "CLOSED",
       "depends_on": [
         "E3-B-AP"
       ],
       "statement": "Independently verify the reverse block-construction implication in E3-B02, including no mixed 3-AP across scale-separated blocks and harmonic-mass lower bound.",
       "dispatch": {
         "dispatch_id": "GCL-ERDOS3-E3-V02-IA-001",
+        "assignment_id": "E3-V02",
+        "agent_ref": "INDEPENDENT-AGENT-E3-V02-001",
         "issue_number": 776,
         "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/776",
-        "state": "DISPATCHED__AWAITING_RETURN"
-      }
+        "task_commit": "bf9bc7f448f92d71afeae937fda133b0e1d4de80",
+        "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V02.md",
+        "task_blob_sha1": "98e17042c9f93010139f43d3788a4c5fc5316b5b",
+        "state": "CLOSED_VERIFIED",
+        "external_sources": "PROTECTED_PACKET_ONLY",
+        "result_comment_id": 5969442261
+      },
+      "disposition": "VERIFIED",
+      "completed_by": "E3-V02",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-V02_RESULT.md"
     }
   ],
   "closed_claims": [
     "E3-C-D3",
-    "E3-C-D4"
+    "E3-C-D4",
+    "E3-V-B02"
   ],
   "active_frontier": [
-    "E3-V-B02",
-    "E3-Q4-SERIES"
+    "E3-Q4-DENSITY-LOSS"
   ],
   "known_falsification_boundary": "Reciprocal divergence alone does not imply positive upper asymptotic density. More sharply, for every nonsummable threshold sequence θ_j∈[0,1], there exists a reciprocally divergent set whose dyadic densities never exceed θ_j. Thus summability is qualitatively sharp for any bridge using only blockwise density exceedance.",
   "scheduling_rule": "Only unresolved nodes may receive ADVANCE_FRONTIER; closed nodes may receive INDEPENDENT_VERIFY only while their explicit verification budget remains open.",
   "last_tranche": {
-    "id": "E3-TRANCHE-01",
+    "id": "E3-TRANCHE-02",
+    "baseline_commit": "d9f2a46f915df19e9d2cd889e00e59c7100ae0bf",
+    "protected_packet_commit": "bf9bc7f448f92d71afeae937fda133b0e1d4de80",
     "work_packages": {
-      "E3-F01": "FORMALIZED__CLOSED_NO_SUCCESSOR",
-      "E3-B01": "PROVED__INDEPENDENT_VERIFY",
-      "E3-A01": "BOUNDARY_SHARPENED",
-      "E3-S01": "SOURCE_INTERFACE_FOUND"
+      "E3-Q01": "EXACT_BLOCKER__RECEIVED_NOT_PROMOTED",
+      "E3-X01": "SMALLEST_MISSING_LEMMA__PROMOTED",
+      "E3-A02": "COUNTEREXAMPLE__RECEIVED_SUPPORTING_ONLY",
+      "E3-S03": "SOURCE_BLOCKED__RECEIVED_NOT_PROMOTED",
+      "E3-V02": "VERIFIED__CLOSE_E3-V-B02"
     },
-    "next_tranche": "E3-TRANCHE-02",
-    "upgrade": "E3-B-AP is now an exact equivalence; k=4 series convergence is the minimal quantitative frontier."
+    "synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-02_SYNTHESIS.md",
+    "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-02_ADJUDICATION.json",
+    "next_frontier": "E3-Q4-DENSITY-LOSS"
   },
   "last_verification": {
-    "id": "E3-V01",
+    "id": "E3-V02",
     "disposition": "VERIFIED",
-    "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
-    "issue_number": 762,
-    "comment_id": 5969123988,
+    "dispatch_id": "GCL-ERDOS3-E3-V02-IA-001",
+    "issue_number": 776,
+    "comment_id": 5969442261,
     "provenance_note": "The GitHub transport actor is fyremael. Independence is established procedurally by the declared ZERO_CONTEXT / PROTECTED_PACKET_ONLY execution contract, not by a distinct GitHub account.",
-    "effect": "Closes E3-V-B01 and marks the B01 bridge/reduction independently verified within the campaign. No parent-theorem effect."
+    "effect": "Closes E3-V-B02 and marks the reverse E3-B02 block construction independently verified. No parent-theorem effect."
+  },
+  "last_synthesis": {
+    "id": "E3-TRANCHE-02-SYNTHESIS",
+    "target": "E3-Q4-SERIES",
+    "promoted_result": "E3-X01",
+    "promoted_subtarget": "E3-Q4-DENSITY-LOSS",
+    "nonpromoted_results": [
+      "E3-Q01",
+      "E3-A02",
+      "E3-S03"
+    ],
+    "verification_closed": "E3-V-B02",
+    "parent_theorem_effect": "NONE"
   }
 }
