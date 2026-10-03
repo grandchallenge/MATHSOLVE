@@ -620,6 +620,76 @@ theorem programmeTM2_cleanWorkRight_run (M : ProgrammeMachine)
 #print axioms programmeTM2_cleanInputRight_run
 #print axioms programmeTM2_cleanWorkLeft_run
 #print axioms programmeTM2_cleanWorkRight_run
+
+/-- Canonical work-stack map after all tape indices below `i` have been cleared. -/
+def programmeTM2ClearWorkBefore {M : ProgrammeMachine}
+    (work : Fin M.workTapeCount → List M.Symbol) (i : Nat) :
+    Fin M.workTapeCount → List M.Symbol :=
+  fun tape => if tape.1 < i then [] else work tape
+
+/-- Cleanup mode corresponding to the next work-tape index. -/
+def programmeTM2WorkCleanupMode (M : ProgrammeMachine)
+    (base : ProgrammeTM2State M) (i : Nat) :
+    ProgrammeTM2Mode M.workTapeCount :=
+  if h : i < M.workTapeCount then
+    .cleanWorkLeft ⟨i, h⟩
+  else
+    .emit (programmeTM2TerminalResult M base)
+
+/-- Clearing the current index advances the canonical cleared-prefix map. -/
+theorem programmeTM2ClearWorkBefore_update_current
+    {M : ProgrammeMachine}
+    (work : Fin M.workTapeCount → List M.Symbol)
+    (i : Nat) (hi : i < M.workTapeCount) :
+    Function.update (programmeTM2ClearWorkBefore work i) ⟨i, hi⟩ [] =
+      programmeTM2ClearWorkBefore work (i + 1) := by
+  funext tape
+  by_cases heq : tape = ⟨i, hi⟩
+  · subst tape
+    simp [programmeTM2ClearWorkBefore, Function.update]
+  · have hval : tape.1 ≠ i := by
+      intro h
+      apply heq
+      apply Fin.ext
+      exact h
+    simp [programmeTM2ClearWorkBefore, Function.update, heq]
+    by_cases hlt : tape.1 < i <;> simp [hlt]
+    · omega
+    · by_cases hnext : tape.1 < i + 1
+      · omega
+      · simp [hnext]
+
+/-- At an in-range index, the canonical work-cleanup mode is the left stack
+for exactly that tape. -/
+theorem programmeTM2WorkCleanupMode_inRange
+    (M : ProgrammeMachine) (base : ProgrammeTM2State M)
+    (i : Nat) (hi : i < M.workTapeCount) :
+    programmeTM2WorkCleanupMode M base i = .cleanWorkLeft ⟨i, hi⟩ := by
+  simp [programmeTM2WorkCleanupMode, hi]
+
+/-- The machine's successor after one right-work blank pop is exactly the
+canonical cleanup mode for the next index. -/
+theorem programmeTM2NextWorkOrEmit_eq_mode
+    (M : ProgrammeMachine) (base : ProgrammeTM2State M)
+    (i : Nat) (hi : i < M.workTapeCount) :
+    programmeTM2NextWorkOrEmit M ⟨i, hi⟩ base =
+      programmeTM2WorkCleanupMode M base (i + 1) := by
+  unfold programmeTM2NextWorkOrEmit programmeTM2WorkCleanupMode
+  by_cases hnext : i + 1 < M.workTapeCount
+  · simp [hnext]
+  · simp [hnext]
+
+/-- At the terminal index `workTapeCount`, all canonical work stacks are empty. -/
+theorem programmeTM2ClearWorkBefore_all
+    {M : ProgrammeMachine}
+    (work : Fin M.workTapeCount → List M.Symbol) :
+    programmeTM2ClearWorkBefore work M.workTapeCount = fun _ => [] := by
+  funext tape
+  simp [programmeTM2ClearWorkBefore, tape.isLt]
+
+#print axioms programmeTM2ClearWorkBefore_update_current
+#print axioms programmeTM2NextWorkOrEmit_eq_mode
+#print axioms programmeTM2ClearWorkBefore_all
 #print axioms programmeTM2_step_cleanRaw_cons
 #print axioms programmeTM2_step_cleanRaw_nil
 #print axioms programmeTM2_step_cleanTemp_cons
