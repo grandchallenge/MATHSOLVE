@@ -327,7 +327,7 @@ The same gauge choice simplifies the later C5 obligation.
 ### Corollary 8.1
 
 Suppose a sequence or net of canonical `F_j` has a locally uniform
-subsequential limit `Q` on C. Suppose separate future work identifies
+subsequential or subnet limit `Q` on C. Suppose separate future work identifies
 
 `Q(z) = C exp(beta*z) Xi(z)`
 
@@ -346,7 +346,7 @@ Also every `F_j(z_*)=Xi(z_*)`, so `Q(z_*)=Xi(z_*)`. Since Xi is nonzero there,
 `C=1`. Thus `Q=Xi`. QED.
 
 This corollary does not prove existence of a subsequential limit and does not
-identify any actual limit up to an affine factor. It only removes that residual
+identify any actual subsequential/subnet limit up to an affine factor. It only removes that residual
 gauge if future C4/C5 work reaches it.
 
 ## 9. Interaction with RH-R053
