@@ -50,12 +50,9 @@ jobs:
           OUT_DIR: ${{ runner.temp }}/ym-mrs-intake
         run: |
           error="$(cat "$OUT_DIR/ERRORS.txt")"
+          body="$(printf 'INTAKE REJECTED — FORMAT\n\n%s\n\nSubmit one complete replacement GCL-CONTRIBUTION-RESULT/1 comment. Do not edit the rejected comment.' "$error")"
           gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" \
-            -f body="INTAKE REJECTED — FORMAT
-
-$error
-
-Submit one complete replacement GCL-CONTRIBUTION-RESULT/1 comment. Do not edit the rejected comment."
+            -f body="$body"
 
       - name: Stop after rejection
         if: steps.validate.outcome == 'failure'
