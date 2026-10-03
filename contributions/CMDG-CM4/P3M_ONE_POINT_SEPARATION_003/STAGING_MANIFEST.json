@@ -3,17 +3,13 @@
   "record_type": "GCL_EXTERNAL_DISPATCH_ACTIVATION_MANIFEST",
   "campaign": "CMDG-CM4",
   "work_package": "P3-M-ONE-POINT-SEPARATION-003",
-  "state": "ACTIVATION_CANDIDATE",
+  "state": "ACTIVE",
   "programme_docket": "grandchallenge/MATH-PROGRAMME#1162",
   "predecessor_docket": "grandchallenge/MATH-PROGRAMME#664",
   "predecessor_candidate_pr": "grandchallenge/MATH-PROGRAMME#919",
   "predecessor_candidate_head": "cff36869559e52eb5440dfc3b00cefa27648ae4e",
   "predecessor_candidate_is_protected": true,
-  "activation_requires": [
-    "protected merge of this activation candidate into MATHSOLVE/main",
-    "protected-main readback of parser, dispatch records, launch artifacts, and cohort state",
-    "byte-lock activation of intake issue titles and bodies to protected bootstraps"
-  ],
+  "activation_requires": [],
   "blind_cohort_id": "CMDG-P3M-SEP-BLIND-COHORT-001",
   "dispatches": [
     {
@@ -54,7 +50,7 @@
     }
   ],
   "launch_artifacts_present": true,
-  "dispatch_status": "READY_AFTER_PROTECTED_SOLVE_MERGE",
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
   "intake_channel": "github_issue_comment",
   "minimum_synthesis_evidence": {
@@ -69,7 +65,10 @@
   "cross_disclosure_before_cohort_closure": false,
   "canonical_mutation_authorized_for_contributors": false,
   "certification_effect": false,
-  "claim_boundary": "Staging creates no mathematical premise. Contributor returns, once activated, are evidence only and cannot directly establish mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion.",
+  "claim_boundary": "Active dispatch only. Contributor returns remain evidence and cannot directly establish one-point vanishing, d = 0, mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion.",
   "predecessor_protected_main": "f7f99e18b83a3015d1a7ef835ee71434d01a9dba",
-  "predecessor_source_blob": "1f867034ec1474418cf416ee8583449bcbe80ee5"
+  "predecessor_source_blob": "1f867034ec1474418cf416ee8583449bcbe80ee5",
+  "protected_solve_activation_merge": "66c235952782e7f26922c233932e5437c37d1933",
+  "issue_byte_lock_complete": true,
+  "activation_complete": true
 }
