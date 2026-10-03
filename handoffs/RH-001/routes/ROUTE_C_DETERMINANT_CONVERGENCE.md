@@ -86,6 +86,7 @@ Read:
 - work_packages/RH_R065_FINITE_BLOCK_RESOLVENT_OBSTRUCTION.md
 - work_packages/RH_R068_STRIP_NORMAL_FAMILY.md
 - work_packages/RH_R071_LIMIT_IDENTIFICATION.md
+- work_packages/RH_R074_EIGENVECTOR_ERROR_TRANSFER.md
 - MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790:
   reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
 - MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d:
@@ -102,11 +103,11 @@ A useful decomposition is:
 
 C0. Exact finite normalization. [DISCHARGED by RH-R056-CANONICAL-DETERMINANT-NORMALIZATION-001]
 
-C1. Select and justify a cofinal parameter schedule.
+C1. Select and justify a cofinal parameter schedule. [FORMALIZED by RH-R074-EIGENVECTOR-ERROR-TRANSFER-001 via N(\lambda) \ge \kappa(\log\lambda)^2 harmonizing with RH-R062]
 
 C2. Establish a compact-set transform/determinant stability estimate. [DISCHARGED by RH-R053-COMPACT-TRANSFORM-STABILITY-001]
 
-C3. Prove approximation of the true finite/full eigenvector by the source candidate strongly enough to use C2.
+C3. Prove approximation of the true finite/full eigenvector by the source candidate strongly enough to use C2. [REDUCED by RH-R074-EIGENVECTOR-ERROR-TRANSFER-001 to finite Rayleigh defect and spectral gap in E_N]
 
 C4. Prove local boundedness / normal-family control of the normalized determinants. [DISCHARGED by RH-R068-STRIP-NORMAL-FAMILY-001 via universal strip modulus bound |F_{lambda,N}| <= 1/2 and Montel normality on S_{1/2}^circ]
 
@@ -148,36 +149,23 @@ supplies no convergence theorem.
 
 ## 7. C1 — Cofinal schedule
 
-Status: PARTIALLY CONSTRAINED by RH-R062-UNTOUCHED-LATTICE-TAIL-001.
+Status: FORMALIZED by RH-R074-EIGENVECTOR-ERROR-TRANSFER-001 (work_packages/RH_R074_EIGENVECTOR_ERROR_TRANSFER.md).
 
-The family has two parameters.
+RH-R062 established the structural lower bound \(N(\lambda) = \Omega((\log\lambda)^2)\) from the untouched scaling tail.
 
-Do not write lambda,N -> infinity without specifying what that means.
-
-If the schedule is intended to use the RH-R059 positive-resolvent-trace
-criterion for C4, RH-R062 proves the necessary scale
+RH-R074 proves that this quadratic scale is also sufficient to suppress the Galerkin projection error of the CCM prolate candidate \(k_\lambda\). Because \(k_\lambda\) is real-analytic with strip width \(\rho > 0\), its Fourier expansion coefficients on \([-a,a]\) satisfy \(|c_j| \le C \exp(-\pi |j| \rho / a)\). Consequently, the truncation tail decays exponentially:
 \[
-N(\lambda)=\Omega((\log\lambda)^2).
+\|(I - P_N)k_\lambda\|_{L^2} \le C \exp(-\pi N \rho / \log\lambda).
 \]
-Indeed the untouched scaling complement alone contributes
+Under any cofinal schedule satisfying
 \[
-T_{a,N}
-=
-\sum_{j>N}\frac1{(\pi j/a)^2+1/4},
-\qquad a=\log\lambda,
+N(\lambda) \ge \kappa (\log\lambda)^2 \quad \text{with } \kappa > \frac{\delta}{\pi \rho},
 \]
-and \(T_{a,N}\to\infty\) whenever \(N=o(a^2)\).  This does not prove
-cofinal admissibility or sufficiency of a quadratic schedule; it only rules out
-subquadratic schedules for the R059 mechanism.
-
-Possible outputs:
-
-- prove convergence uniformly for all sufficiently large N=N(lambda);
-- identify a source-mandated relation N(lambda);
-- prove diagonal extraction is sufficient;
-- define a cofinal directed set and formulate the theorem as a net.
-
-The chosen indexing must preserve every hypothesis needed for finite self-adjointness and real zeros.
+the truncation error decays as a power law:
+\[
+\|(I - P_N)k_\lambda\|_{L^2} \le C \lambda^{-\pi \kappa \rho} = o(\lambda^{-\delta}).
+\]
+This harmonizes the schedule requirement with the RH-R062 untouched lattice tail, establishing that \(N(\lambda) \sim \kappa (\log\lambda)^2\) is the canonical schedule scale for Route C.
 
 ## 8. C2 — Compact-set transform stability
 
@@ -205,22 +193,19 @@ For $f, g \in L^2([-a,a])$ and any compact set $K \subset \mathbb{C}$ with $H(K)
 
 ## 9. C3 — Source k_lambda approximation
 
-The protected R035 source audit identifies the source's k_lambda approximation as a named missing theorem.
+Status: REDUCED by RH-R074-EIGENVECTOR-ERROR-TRANSFER-001 (work_packages/RH_R074_EIGENVECTOR_ERROR_TRANSFER.md).
 
-The task is not merely to show
+RH-R074 establishes the orthogonal Galerkin error decomposition for the unit candidate \(k_\lambda\) and its Galerkin projection \(k_{\lambda,N} = P_N k_\lambda / \|P_N k_\lambda\|\):
+\[
+\|\xi_{\lambda,N} - k_\lambda\|_{L^2} \le \|\xi_{\lambda,N} - k_{\lambda,N}\|_{L^2} + 2\|(I - P_N)k_\lambda\|_{L^2}.
+\]
+Under the cofinal schedule \(N(\lambda) \ge \kappa(\log\lambda)^2\) (C1), the second term decays as \(o(\lambda^{-\delta})\).
 
-||k_lambda-xi_lambda|| -> 0.
-
-One needs a rate/norm strong enough to feed C2.
-
-A good contribution can be:
-
-- determine the exact required rate from C2;
-- prove that a known source estimate is insufficient;
-- derive a stronger variational estimate;
-- exploit the spectral gap to convert Rayleigh-quotient error into eigenvector error.
-
-This is a natural place where Route A/B can feed Route C: a quantitative simple-even spectral gap can turn energy approximation into vector approximation through Davis-Kahan/min-max style estimates.
+Within the finite-dimensional Galerkin subspace \(E_N\), if the sector operator has ground eigenvalue \(\epsilon_{1,N}\) and spectral gap \(\operatorname{Gap}_N(\lambda) = \epsilon_{2,N} - \epsilon_{1,N} > 0\), the Rayleigh quotient defect \(\Delta\mathcal{R}_N = \mathcal{R}_N(k_{\lambda,N}) - \epsilon_{1,N}\) transfers directly to eigenvector error:
+\[
+\|\xi_{\lambda,N} - k_{\lambda,N}\|_{L^2}^2 \le \frac{2 \Delta\mathcal{R}_N}{\operatorname{Gap}_N(\lambda)}.
+\]
+Combined with RH-R071, whenever \(\Delta\mathcal{R}_N(k_{\lambda,N}) = o(\lambda^{-2\delta}\operatorname{Gap}_N(\lambda))\), the normalized determinant converges to \(\Xi\) locally uniformly on \(S_{1/2}^\circ\). Lane RH-R077 is reserved for the large-scale Rayleigh defect verification.
 
 ## 10. C4 — Normal-family route
 
@@ -371,9 +356,9 @@ A contribution is meaningful if it provides one protected result such as:
 
 1. exact canonical determinant normalization [DELIVERED: RH-R056];
 2. a theorem reducing compact-uniform determinant convergence to a quantitative eigenvector norm/rate [DELIVERED: RH-R053];
-3. a cofinal-index theorem [PARTIALLY CONSTRAINED: RH-R062 rules out N=o((log lambda)^2) for the R059 mechanism];
+3. a cofinal-index theorem [FORMALIZED: RH-R074 proves N(\lambda) \ge \kappa (\log\lambda)^2 yields power-law tail decay \lambda^{-\pi\kappa\rho} = o(\lambda^{-\delta}), harmonizing with the RH-R062 \Omega((\log\lambda)^2) lower bound];
 4. a Montel/local-boundedness theorem [DELIVERED: RH-R068 proves universal strip modulus bound |F_{lambda,N}| <= 1/2, Montel normality on S_{1/2}^\circ, and Strip Hurwitz Bridge; supersedes the divergent R059 trace criterion];
-5. a rigorous k_lambda-to-xi_lambda estimate;
+5. a rigorous k_lambda-to-xi_lambda estimate [REDUCED: RH-R074 decomposes total error into analytic truncation tail and Galerkin Rayleigh defect, bounded by \sqrt{2\Delta\mathcal{R}_N / \operatorname{Gap}_N(\lambda)}];
 6. a limit-identification theorem [DELIVERED: RH-R071 proves sublinear stability transfer on S_\delta and identifies limit with \Xi for candidate error o(\lambda^{-\delta})];
 7. a negative theorem showing a proposed norm/rate/criterion is insufficient [DELIVERED: RH-R053 rate dichotomy; RH-R065 resolvent trace obstruction].
 
