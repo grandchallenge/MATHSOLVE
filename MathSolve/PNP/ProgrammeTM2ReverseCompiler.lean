@@ -40,7 +40,7 @@ theorem programmeTM2TotalBudget_mono
 
 /-- The reverse machine computes the same Boolean decision within the exact
 translated runtime. -/
-theorem programmeTM2Machine_outputs
+def programmeTM2Machine_outputs
     {decision : List Bool → Bool}
     (source : ProgrammeDecider decision) (input : List Bool) :
     Turing.TM2OutputsInTime
@@ -48,8 +48,18 @@ theorem programmeTM2Machine_outputs
       input
       (some [decision input])
       (programmeTM2ReverseRuntime source input) := by
-  rcases source.outputs input with
-    ⟨terminal, ⟨hsource⟩, hnone, hout⟩
+  let terminal : ProgrammeConfig source.machine :=
+    Classical.choose (source.outputs input)
+  have hspec := Classical.choose_spec (source.outputs input)
+  let hsource :
+      StateTransition.EvalsToInTime
+        (source.machine.step input)
+        (source.machine.init input)
+        (some terminal)
+        (source.runtime input) :=
+    Classical.choice hspec.1
+  have hnone : source.machine.step input terminal = none := hspec.2.1
+  have hout : source.machine.output terminal = some (decision input) := hspec.2.2
   rcases programmeTM2_initialization_run source.machine input with
     ⟨hinit⟩
   rcases programmeTM2_transfer_run source.machine input hsource with
@@ -101,8 +111,16 @@ def programmeTM2TimedDecider {decision : List Bool → Bool}
   runtime := programmeTM2ReverseRuntime source
   outputsFun := by
     intro input
-    simpa [Computability.encodeBool] using
-      programmeTM2Machine_outputs source input
+    have hin :
+        List.map (Equiv.refl Bool).invFun input = input := by
+      induction input <;> simp_all
+    have hout :
+        List.map (Equiv.refl Bool).invFun
+            (Computability.encodeBool (decision input)) =
+          [decision input] := by
+      simp [Computability.encodeBool]
+    rw [hin, hout]
+    exact programmeTM2Machine_outputs source input
 
 /-- The exact reverse runtime is affine in input length and source runtime. -/
 theorem programmeTM2ReverseRuntime_affine
