@@ -4,7 +4,7 @@
   "cohort_id": "UC-WP08-D004-BLIND-COHORT-001",
   "campaign": "UC-001",
   "work_package": "WP08-D004",
-  "state": "OPEN_AWAITING_RESULTS",
+  "state": "CLOSED_EVIDENCE_COMPLETE",
   "mode": "independent_blind",
   "dispatch_ids": [
     "UC-WP08-D004-WP01-IA-001",
@@ -15,9 +15,13 @@
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
   "intake_channel": "github_issue_comment",
   "cross_disclosure_before_closure": false,
-  "synthesis_allowed": false,
+  "synthesis_allowed": true,
   "closure_condition": "All four member dispatches have one durably protected valid result, or a protected reconciliation records missing returns and explicitly closes the cohort.",
   "adversarial_lane": "UC-WP08-D004-WP05-IA-001",
   "claim_boundary": "Cohort closure permits adjudication and synthesis only; it does not certify or promote any mathematical claim.",
-  "activation_receipt_path": "contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/ACTIVATION_RECEIPT.json"
+  "activation_receipt_path": "contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/ACTIVATION_RECEIPT.json",
+  "closed_on_evidence_commit": "4504220dbb33e01038854ceb7fdd869eecf7e4cd",
+  "closure_receipt_path": "contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/COHORT_CLOSURE_RECEIPT.json",
+  "closure_reason": "ALL_BLIND_RETURNS_DURABLY_PROTECTED",
+  "mathematical_adjudication_performed": false
 }

@@ -7,7 +7,7 @@ Date: 2026-09-25
 | WP08-D001 | Decide whether arbitrary finite union-closed families admit exact D003-complement representation. | Closed negative | `p04_no_universal_exact_functionalPreorder_representation`; explicit three-point obstruction. |
 | WP08-D002 | Extend the Frankl-facing result from functional preorders to arbitrary finite partial orders. | Closed locally | `posetIdealFamily_exists_rare` and `posetIdeal_complement_frankl`; maximal-element erasure injection. |
 | WP08-D003 | Express arbitrary finite closure systems by closure operators / implication bases and isolate the first non-poset obstruction. | Closed locally | Canonical closure operator and finite implication basis are checked; single binary implication `{a,b}->c` is a closure system not representable by unary implications; D002 erasure fails at the forced conclusion; bounded example still satisfies the rare-element/complement endgame. |
-| WP08-D004 | Build an incidence-preserving interface to the WP05 minimum-counterexample lattice spine. | Active external evidence | Five bounded independent work packages are live: four blind lanes (principal incidence, join-irreducible incidence, implication semantics, WP05 frequency translation) plus one adversarial representation audit. Issue-byte binding is complete and all dispatches are `READY_FOR_GITHUB_COMMENT`. |
+| WP08-D004 | Build an incidence-preserving interface to the WP05 minimum-counterexample lattice spine. | Active synthesis, unadjudicated | All four blind returns and the adversarial return are durably protected. Blind cohort `UC-WP08-D004-BLIND-COHORT-001` is closed on evidence completeness; synthesis is allowed, but no contributor claim is yet admitted. |
 
 ## D003 movement
 
@@ -91,3 +91,18 @@ the task packet is protected at Solve commit
 byte-for-byte against their protected bootstraps; and the activation receipt
 records those identities before the dispatches were moved to
 `READY_FOR_GITHUB_COMMENT`.
+
+
+## D004 evidence-complete transition
+
+All five external returns are protected on exact evidence checkpoint
+`4504220dbb33e01038854ceb7fdd869eecf7e4cd`. The four-member blind cohort is closed with no missing-return
+exception, and WP05's adversarial replay is also protected.
+
+The closure receipt is:
+
+`contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/COHORT_CLOSURE_RECEIPT.json`
+
+This opens internal synthesis only. Every contributor disposition remains
+`received_unadjudicated`; no certification or universal Frankl/UC-P04 claim
+follows from cohort closure.
