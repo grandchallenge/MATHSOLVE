@@ -450,23 +450,23 @@ theorem programmeTM2_bounded_step
       workLeft_bound := ?_
       workRight_bound := ?_ }
   · dsimp [target']
-  · rw [programmeTM2RunStepTarget_eq_core]
+    rw [programmeTM2RunStepTarget_eq_core]
     rw [programmeTM2RunCore_raw]
     exact hrep.raw_empty
   · dsimp [target']
-  · rw [programmeTM2RunStepTarget_eq_core]
+    rw [programmeTM2RunStepTarget_eq_core]
     rw [programmeTM2RunCore_temp]
     exact hrep.temp_empty
   · dsimp [target']
-  · rw [programmeTM2RunStepTarget_eq_core]
+    rw [programmeTM2RunStepTarget_eq_core]
     rw [programmeTM2RunCore_output]
     exact hrep.output_empty
   · dsimp [target']
-  · rw [programmeTM2RunStepTarget_eq_core]
+    rw [programmeTM2RunStepTarget_eq_core]
     exact (programmeTM2RunCore_inputLeft_length_le M target).trans (by
       omega)
   · dsimp [target']
-  · rw [programmeTM2RunStepTarget_eq_core]
+    rw [programmeTM2RunStepTarget_eq_core]
     exact (programmeTM2RunCore_inputRight_length_le M target).trans (by
       omega)
   · intro tape
