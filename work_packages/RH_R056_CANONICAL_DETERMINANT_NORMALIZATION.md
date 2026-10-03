@@ -249,8 +249,10 @@ Since `H` is even, evenness of `E` gives
 
 `exp(kappa*z) H(z) = exp(-kappa*z) H(z)`
 
-for all `z`. The entire function `H` is not identically zero because it is the
-transform of the nonzero normalized source eigenvector. Its nonzero set
+for all `z`. The entire function `H` is not identically zero: the source eigenvector is nonzero by
+`delta_N(xi)=1`, it has compact support in the source interval, and injectivity
+of the Fourier transform on compactly supported L1 functions forbids an
+identically zero transform. Its nonzero set
 therefore contains a nonempty open set. On that set,
 
 `exp(2*kappa*z) = 1`.
