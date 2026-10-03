@@ -7,7 +7,7 @@ Mandatory first actions:
 2. Re-fetch current protected MATHSOLVE main.
 3. Read handoffs/RH-001/README.md.
 4. Read handoffs/RH-001/routes/ROUTE_C_PROJECTIVE_MEASURE_CLOSURE.md in full.
-5. Read work_packages/RH_R077_PROJECTIVE_MEASURE_REPAIR.md in full.
+5. Read work_packages/RH_R077_PROJECTIVE_MEASURE_REPAIR.md and work_packages/RH_R080_SIGNED_PROJECTIVE_NORMALITY.md in full.
 6. Read the historical Route C pack only after the R077 correction:
    handoffs/RH-001/routes/ROUTE_C_DETERMINANT_CONVERGENCE.md.
 7. Read R035, R037, R053, R056, R068, R071, and R074, including the RH-R077 correction notices on R068/R071/R074.
@@ -24,7 +24,7 @@ C0. Canonical finite normalization — DISCHARGED by R056.
 C1. Actually admissible cofinal sequence — OPEN. R074's quadratic schedule sufficiency theorem is withdrawn.
 C2. Raw compact transform stability — DISCHARGED by R053; auxiliary.
 C3. True/candidate projective transfer — OPEN. Preserve R074's finite Rayleigh inequality only.
-C4. Strip normality — CONDITIONAL_ON_POINTWISE_POSITIVITY. Positivity => strip contraction => Montel is valid, but the global CCM positivity premise is not protected.
+C4. Strip normality — REDUCED BY R080 TO SIGNED-PROJECTIVE CONTROL. For every fixed delta < 1/2 it is sufficient to prove a uniform bound on kappa_delta(xi) = integral |xi(x)| cosh(delta x) dx / |integral xi(x) cosh(x/2) dx| along an admitted cofinal family. Pointwise sign-definiteness is only the special boundary case kappa_1/2 = 1. Actual CCM kappa control is OPEN.
 C5. Nonzero Xi-shaped limit identification — OPEN for CCM. R077 gives the abstract non-escape + real-interval projective-shape theorem.
 C6. Full local-uniform convergence — OPTIONAL strengthening.
 C7. Localized Hurwitz/Rouche bridge — protected conditionally; invoke only after its actual hypotheses hold.
@@ -42,12 +42,11 @@ Protected R077 facts:
 - strip analyticity alone does not imply exponential periodic Fourier coefficient decay; f(x)=x is an exact counterexample. Do not reuse the withdrawn R074 tail theorem.
 
 Active mathematical gates:
-P1. Prove pointwise positivity for the relevant finite CCM ground states on an admissible cofinal sequence, or replace positivity with another exact normality theorem.
+P1. Prove actual-family signed-projective control: strongest is pointwise sign-definiteness; sufficient is uniform kappa_1/2; weakest current C4 target is uniform kappa_delta for every fixed delta < 1/2.
 P2. Prove projective candidate transfer in TV or a weaker rigorously kernel-controlling topology.
 P3. Prove genuinely admissible cofinality: selected (lambda_j,N_j) must satisfy the finite CCM simple-even hypotheses.
 
-Next Route C lane after RH-R077 protection: RH-R080.
-Preferred RH-R080 task: exact pointwise-positivity proof/falsification under the finite CCM source hypotheses, or an alternative C4 normality theorem.
+RH-R080 owns P1 and has an independent blind cohort under handoffs/RH-001/r080/. After R080 protection, the next collision-free Route C lane is RH-R083; allocate it only after checking the R080 returns or identifying the smallest actual-family residual.
 
 Critical boundaries:
 - Simple-even does not imply pointwise nonnegative.
