@@ -56,7 +56,7 @@ From R054 onward, independent routes use collision-free theorem-ID lanes: Route 
 
 A prior Route B tracker comment also used RH-R054. That collision is superseded by the allocation above. The existing implementation branch `rh-r054-route-b-variation` may remain as a mechanical branch name, but any admitted theorem/work-package identity from that work is RH-R055.
 
-Route C obligations C0 and C2 are discharged by RH-R056 and RH-R053 respectively. C1, C3, C4, C5, and C6 remain open. RH-R059 supplies an abstract sufficient C4 normal-family criterion and reduces the actual CCM C4 burden to a uniform paired-zero/resolvent-trace bound; R062 is the next Route C lane for proving, weakening, or obstructing that bound.
+Route C obligations C0 and C2 are discharged by RH-R056 and RH-R053 respectively. C1, C3, C4, C5, and C6 remain open. RH-R059 supplies an abstract sufficient C4 normal-family criterion. RH-R062 proves that the untouched scaling complement forces N(lambda)=Omega((log lambda)^2) for any schedule using that criterion; the finite modified block remains the open positive trace burden. R065 is the next Route C lane.
 
 ## Current protected lineage
 
@@ -90,6 +90,7 @@ Route C obligations C0 and C2 are discharged by RH-R056 and RH-R053 respectively
 - Exact Route C determinant-normalization and classical-anchor audit: grandchallenge/MATHFORGE@a900e5170c6d77a9e557b6159cf5feb40bcee222.
 - RH-R056-CANONICAL-DETERMINANT-NORMALIZATION-001: proved in work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md; C0 discharged by an even, zero-preserving normalization anchored at Xi(i/2)=1/2.
 - RH-R059-PAIRED-ZERO-NORMAL-FAMILY-001: proved in work_packages/RH_R059_PAIRED_ZERO_NORMAL_FAMILY.md; abstract C4 criterion via uniform paired zero energy, with the actual CCM uniform bound still open.
+- RH-R062-UNTOUCHED-LATTICE-TAIL-001: proved in work_packages/RH_R062_UNTOUCHED_LATTICE_TAIL.md; the untouched complement gives the sharp N versus (log lambda)^2 schedule trichotomy and rules out subquadratic schedules for the R059 criterion.
 
 No operator construction satisfying the Hilbert–Pólya contract, RH implication, novelty, or priority claim is admitted.
 
@@ -283,6 +284,20 @@ Q_{1/2}(F_{\lambda,N})
 \frac12\operatorname{Tr}\!\left(\left((D_{\log}^{(\lambda,N)})^2+\frac14I\right)^{-1}\right).
 \]
 R059 does not prove this quantity is uniformly bounded on a cofinal CCM family. That is the next concrete C4 burden, in Route C lane R062.
+
+17. RH-R062 isolates the source-fixed untouched scaling complement inside the R059 half-resolvent trace. With \(a=\log\lambda\),
+\[
+T_{a,N}
+=
+\sum_{j>N}\frac1{(\pi j/a)^2+1/4}
+\]
+is a positive lower bound for \(Q_{1/2}(F_{\lambda,N})\) and satisfies
+\[
+\frac{2a}{\pi}\arctan\frac{a}{2\pi(N+1)}
+\le T_{a,N}\le
+\frac{2a}{\pi}\arctan\frac{a}{2\pi N}.
+\]
+Thus subquadratic \(N=o(a^2)\) schedules force divergence, \(N\sim\kappa a^2\) leave the constant \(1/(\pi^2\kappa)\), and \(N\gg a^2\) make this tail vanish. Therefore any R059-based uniformly bounded schedule must have \(N=\Omega((\log\lambda)^2)\). This is necessary, not sufficient: the finite \(E_N'\) trace contribution remains open, now assigned to the next Route C lane R065.
 
 RH-R054 now sets the direct full-operator frontier at \(a=9/50\), while Route B's protected \(d/\Delta_H\) transport reaches \(a=3561/20000\). The next useful theorem should exploit that separation rather than resume scalar micro-tuning, preferably one of:
 
