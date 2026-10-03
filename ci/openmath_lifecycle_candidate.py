@@ -14,6 +14,7 @@ REGISTRY = Path(".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
 LANES = Path("work_packages/OPENMATH_2026/HILL_LANES.json")
 BOARD = Path("handoffs/OPENMATH-2026/CEX_JOB_BOARD.md")
 INDEX = Path("handoffs/OPENMATH-2026/launch/README.md")
+CONTRACT = Path(".gcl/campaigns/OPENMATH-2026/LIFECYCLE_CONTRACT.json")
 ASSIGNMENT_RE = re.compile(r"^OM26-H([1-7])-WP([0-9]{2})$")
 PIPELINE = ["RETURNED", "CAPTURED", "REPLAYED", "ADJUDICATED", "ADVANCED"]
 
@@ -66,7 +67,13 @@ def intake(intake_dir: Path) -> tuple[dict[str, Any], dict[str, Any], str]:
     return meta, receipt, raw
 
 
-def plan(intake_dir: Path) -> dict[str, Any]:
+def plan(intake_dir: Path, root: Path = ROOT) -> dict[str, Any]:
+    contract = load(root / CONTRACT)
+    policy = contract.get("successor_policy", {})
+    if policy.get("mode") == "FRONTIER_GATE_REQUIRED":
+        raise LifecycleCandidateError(
+            "automatic replay successor generation disabled; protected frontier disposition required"
+        )
     meta, receipt, raw = intake(intake_dir)
     hill, assignment, dispatch, agent = successor_identity(receipt["assignment_id"])
     residual = (
@@ -239,7 +246,7 @@ Canonical mode is `LINK_IN_RELAY_OUT`. Voluntary participants use a registered i
 
 ## Claim boundary
 
-Automatic fallback adjudication may preserve evidence and advance a replay-closure successor without promoting the predecessor mathematics. MATHCERT certification and competition submission remain separate authorities.
+Evidence acceptance does not schedule another replay. Successors require a protected frontier disposition; MATHCERT certification and competition submission remain separate authorities.
 """
 
 
@@ -267,7 +274,7 @@ def index_text(registry: dict[str, Any]) -> str:
 
 def apply_candidate(root: Path, intake_dir: Path, issue_number: int, issue_url: str) -> dict[str, Any]:
     meta, receipt, raw = intake(intake_dir)
-    p = plan(intake_dir)
+    p = plan(intake_dir, root)
     registry=load(root/REGISTRY)
     lanes=load(root/LANES)
     items={x["assignment_id"]:x for x in registry["assignments"] if x.get("assignment_id")}

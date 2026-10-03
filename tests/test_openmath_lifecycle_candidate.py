@@ -46,7 +46,7 @@ class OpenMathLifecycleCandidateStateTest(unittest.TestCase):
         registry=self.load_registry()
         board=board_text(registry)
         launch_index=index_text(registry)
-        self.assertIn("| `OM26-H2-WP03` | `OM26-H2` |",board)
+        self.assertIn("| `OM26-H2-WP10` | `OM26-H2` |",board)
         self.assertIn("`LINK_IN_RELAY_OUT`",board)
         self.assertIn("`LINK_IN_RELAY_OUT`",launch_index)
         self.assertNotIn("\\`",board)
@@ -59,52 +59,34 @@ class OpenMathLifecycleCandidateStateTest(unittest.TestCase):
         self.assertIn("RETURN_COMPLETION_RECEIPT_REQUIRED: GITHUB_ISSUE_COMMENT_URL", header)
         self.assertNotIn("GITHUB_ACCESS_REQUIRED: NO", header)
 
-    def test_zero_context_successor_has_real_fences(self):
+    def test_terminal_mode_rejects_automatic_successor(self):
         with tempfile.TemporaryDirectory() as temp:
-            root=Path(temp)
-            (root/"META.json").write_text(json.dumps({"comment_id":123}),encoding="utf-8")
-            (root/"RECEIPT.json").write_text(json.dumps({
+            intake=Path(temp)/"intake"
+            root=Path(temp)/"repo"
+            intake.mkdir(); root.mkdir()
+            contract=root/".gcl/campaigns/OPENMATH-2026/LIFECYCLE_CONTRACT.json"
+            contract.parent.mkdir(parents=True)
+            contract.write_text(json.dumps({
+                "successor_policy":{"mode":"FRONTIER_GATE_REQUIRED"}
+            }),encoding="utf-8")
+            (intake/"META.json").write_text(json.dumps({"comment_id":123}),encoding="utf-8")
+            (intake/"RECEIPT.json").write_text(json.dumps({
                 "assignment_id":"OM26-H3-WP01",
                 "dispatch_id":"OM26-H3-WP01-IA-001",
             }),encoding="utf-8")
-            (root/"RAW.md").write_text("GCL-CONTRIBUTION-RESULT/1\n",encoding="utf-8")
-            body=plan(root)["issue_body"]
-            self.assertIn("```text\nGCL-CONTRIBUTION-RESULT/1",body)
-            self.assertIn("Next residual has at most three sentences.", body)
-            self.assertNotIn("\\`",body)
+            (intake/"RAW.md").write_text("GCL-CONTRIBUTION-RESULT/1\n",encoding="utf-8")
+            with self.assertRaisesRegex(LifecycleCandidateError, "protected frontier disposition required"):
+                plan(intake,root)
 
-    def test_launched_return_to_successor_recomputes_counts(self):
+
+    def test_terminal_summary_has_no_open_replay_leases(self):
         registry = self.load_registry()
-        assignments = {
-            x["assignment_id"]: x
-            for x in registry["assignments"]
-            if x.get("assignment_id")
-        }
-        source_id = registry["mathematics_release_policy"]["per_hill"]["OM26-H3"]["assignment"]
-        baseline = copy.deepcopy(refresh_summary(registry))
-        predecessor = assignments[source_id]
-        predecessor["state"] = "LAUNCHED"
-
-        launched = copy.deepcopy(refresh_summary(registry))
-        self.assertEqual(launched["launched_agents"], 1)
-        self.assertEqual(launched["leased_not_launched_agents"], baseline["leased_not_launched_agents"] - 1)
-
-        predecessor["state"] = "ACCEPTED"
-        successor = {
-            "assignment_id": f"OM26-H3-WP{int(source_id[-2:]) + 1:02d}",
-            "class": "MATHEMATICAL_RESEARCH",
-            "hill": "OM26-H3",
-            "state": "LEASED_NOT_LAUNCHED",
-        }
-        registry["assignments"].append(successor)
-        registry["mathematics_release_policy"]["per_hill"]["OM26-H3"]["assignment"] = successor["assignment_id"]
-        registry["mathematics_release_policy"]["per_hill"]["OM26-H3"]["agent_state"] = successor["state"]
-
-        advanced = refresh_summary(registry)
-        self.assertEqual(advanced["launched_agents"], 0)
-        self.assertEqual(advanced["leased_not_launched_agents"], baseline["leased_not_launched_agents"])
-        self.assertEqual(advanced["returned_unadjudicated_agents"], 0)
-        self.assertEqual(advanced["accepted_agents"], launched["accepted_agents"] + 1)
+        summary = refresh_summary(registry)
+        self.assertEqual(summary["leased_not_launched_agents"], 0)
+        self.assertEqual(summary["launched_agents"], 0)
+        scripts = list(registry["launch_contract"]["current_scripts"].values())
+        scripts += list(registry["launch_contract"].get("support_scripts", {}).values())
+        self.assertTrue(all(row.get("executable") is False for row in scripts))
 
 
 if __name__ == "__main__":
