@@ -22,21 +22,25 @@ theorem programmeTM2_step_terminal_accept
     (programmeTM2Machine M).step target =
       some
         (programmeTM2CleanupCfg M .cleanRaw target.var
-          [] [] (target.stk .inputLeft) (target.stk .inputRight)
+          (target.stk .rawInput) (target.stk .inputTemp)
+          (target.stk .inputLeft) (target.stk .inputRight)
           (fun tape => target.stk (.workLeft tape))
-          (fun tape => target.stk (.workRight tape)) []) := by
-  have hlabel : target.l = some (.run) := hrep.1
-  have hmode : target.var.mode = .run := hrep.2.1
-  have hcontrol : target.var.control = M.accept := hrep.2.2.1.trans haccept
+          (fun tape => target.stk (.workRight tape))
+          (target.stk .output)) := by
+  rcases target with ⟨label, var, stk⟩
+  have hlabel : label = some (.run) := hrep.1
+  subst label
+  have hmode : var.mode = .run := hrep.2.1
+  have hcontrol : var.control = M.accept := hrep.2.2.1.trans haccept
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
-    hlabel, programmeTM2Program, Turing.TM2.stepAux, hcontrol]
+    programmeTM2Program, Turing.TM2.stepAux]
+  simp [hcontrol]
   apply congrArg some
   apply programmeTM2Cfg_ext
   · simp [programmeTM2CleanupCfg, hmode]
   · simp [programmeTM2CleanupCfg]
   · intro k
-    cases k <;> simp [programmeTM2CleanupCfg, programmeTM2CleanupStacks,
-      Function.update]
+    cases k <;> rfl
 
 theorem programmeTM2_step_terminal_reject
     {M : ProgrammeMachine} {input : List Bool}
@@ -47,22 +51,26 @@ theorem programmeTM2_step_terminal_reject
     (programmeTM2Machine M).step target =
       some
         (programmeTM2CleanupCfg M .cleanRaw target.var
-          [] [] (target.stk .inputLeft) (target.stk .inputRight)
+          (target.stk .rawInput) (target.stk .inputTemp)
+          (target.stk .inputLeft) (target.stk .inputRight)
           (fun tape => target.stk (.workLeft tape))
-          (fun tape => target.stk (.workRight tape)) []) := by
-  have hlabel : target.l = some (.run) := hrep.1
-  have hmode : target.var.mode = .run := hrep.2.1
-  have hcontrol : target.var.control = M.reject := hrep.2.2.1.trans hreject
+          (fun tape => target.stk (.workRight tape))
+          (target.stk .output)) := by
+  rcases target with ⟨label, var, stk⟩
+  have hlabel : label = some (.run) := hrep.1
+  subst label
+  have hmode : var.mode = .run := hrep.2.1
+  have hcontrol : var.control = M.reject := hrep.2.2.1.trans hreject
   have hreject_ne_accept : M.reject ≠ M.accept := Ne.symm M.accept_ne_reject
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
-    hlabel, programmeTM2Program, Turing.TM2.stepAux, hcontrol]
+    programmeTM2Program, Turing.TM2.stepAux]
+  simp [hcontrol, hreject_ne_accept]
   apply congrArg some
   apply programmeTM2Cfg_ext
   · simp [programmeTM2CleanupCfg, hmode]
   · simp [programmeTM2CleanupCfg]
   · intro k
-    cases k <;> simp [programmeTM2CleanupCfg, programmeTM2CleanupStacks,
-      Function.update]
+    cases k <;> rfl
 
 def programmeTM2CleanupBudget (M : ProgrammeMachine)
     (inputLength spent : Nat) : Nat :=
@@ -90,11 +98,13 @@ theorem programmeTM2_cleanup_terminal
             (fun tape => target.stk (.workLeft tape))
             (fun tape => target.stk (.workRight tape)) []) := by
     rcases hterminal with haccept | hreject
-    · exact programmeTM2_step_terminal_accept hrep.represents haccept
+    · simpa [hrep.raw_empty, hrep.temp_empty, hrep.output_empty] using
+        programmeTM2_step_terminal_accept hrep.represents haccept
     · have haccept : source.state ≠ M.accept := by
         intro h
         exact M.accept_ne_reject (h.symm.trans hreject)
-      exact programmeTM2_step_terminal_reject hrep.represents haccept hreject
+      simpa [hrep.raw_empty, hrep.temp_empty, hrep.output_empty] using
+        programmeTM2_step_terminal_reject hrep.represents haccept hreject
   have hone := programmeTM2_one_step_in_time hentry
   rcases programmeTM2_cleanRaw_run M target.var
       [] [] (target.stk .inputLeft) (target.stk .inputRight)
@@ -187,6 +197,18 @@ theorem programmeTM2_cleanup_terminal
           (fun tape => target.stk (.workRight tape)) []))
       (by simpa [Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using h1234)
       hright
+  have h12345' :
+      StateTransition.EvalsToInTime
+        (programmeTM2Machine M).step
+        target
+        (some
+          (programmeTM2CleanupCfg M
+            (programmeTM2FirstWorkOrEmit M target.var) target.var
+            [] [] [] []
+            (fun tape => target.stk (.workLeft tape))
+            (fun tape => target.stk (.workRight tape)) []))
+        (input.length + 2 * spent + 5) :=
+    programmeTM2_evalsToInTime_mono h12345 (by omega)
   have h123456 :=
     StateTransition.EvalsToInTime.trans
       (programmeTM2Machine M).step
@@ -202,9 +224,9 @@ theorem programmeTM2_cleanup_terminal
         (programmeTM2CleanupCfg M
           (.emit (programmeTM2TerminalResult M target.var)) target.var
           [] [] [] [] (fun _ => []) (fun _ => []) []))
-      (by
-        convert h12345 using 1 <;> omega)
-      hwork
+      h12345' hwork
+  have h123456Raw := h123456
+  rw [hresult] at h123456Raw
   have h123456' :
       StateTransition.EvalsToInTime
         (programmeTM2Machine M).step
@@ -214,9 +236,8 @@ theorem programmeTM2_cleanup_terminal
             (.emit result) target.var
             [] [] [] [] (fun _ => []) (fun _ => []) []))
         (input.length + 2 * spent + 5 +
-          2 * M.workTapeCount * (spent + 1)) := by
-    rw [hresult] at h123456
-    convert h123456 using 1 <;> omega
+          2 * M.workTapeCount * (spent + 1)) :=
+    programmeTM2_evalsToInTime_mono h123456Raw (by omega)
   have hall :=
     StateTransition.EvalsToInTime.trans
       (programmeTM2Machine M).step
@@ -229,8 +250,9 @@ theorem programmeTM2_cleanup_terminal
       (some (Turing.haltList (programmeTM2Machine M) [result]))
       h123456' hemit
   refine ⟨?_⟩
+  apply programmeTM2_evalsToInTime_mono hall
   unfold programmeTM2CleanupBudget
-  convert hall using 1 <;> omega
+  omega
 
 #print axioms programmeTM2_step_terminal_accept
 #print axioms programmeTM2_step_terminal_reject
