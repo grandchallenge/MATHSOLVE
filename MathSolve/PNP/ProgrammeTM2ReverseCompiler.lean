@@ -165,8 +165,9 @@ def programmeTM2TimedDecider {decision : List Bool → Bool}
             (Computability.encodeBool (decision input)) =
           [decision input] := by
       cases h : decision input <;> rfl
-    rw [hinput, houtput]
-    exact programmeTM2Machine_outputs source input
+    convert programmeTM2Machine_outputs source input using 1
+    · exact hinput.symm
+    · exact congrArg some houtput.symm
 
 /-- The exact reverse runtime is affine in input length and source runtime. -/
 theorem programmeTM2ReverseRuntime_affine
