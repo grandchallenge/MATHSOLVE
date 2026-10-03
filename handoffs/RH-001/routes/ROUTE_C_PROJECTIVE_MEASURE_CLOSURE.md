@@ -214,7 +214,7 @@ RH-R080 proves the exact hierarchy:
   \(\kappa_{1/2}=1\) after orienting the ground-state ray;
 - **P1b:** a uniform closed-strip condition number
   \(\sup\kappa_{1/2}<\infty\);
-- **P1c:** the weakest current C4 target,
+- **P1c:** the weakest currently protected signed-projective C4 target,
   \[
   \forall\delta<1/2,\quad \sup\kappa_\delta<\infty.
   \]
