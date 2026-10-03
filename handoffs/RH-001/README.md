@@ -56,7 +56,7 @@ From R054 onward, independent routes use collision-free theorem-ID lanes: Route 
 
 A prior Route B tracker comment also used RH-R054. That collision is superseded by the allocation above. The existing implementation branch `rh-r054-route-b-variation` may remain as a mechanical branch name, but any admitted theorem/work-package identity from that work is RH-R055.
 
-Route C obligation C2 is already discharged by RH-R053. C0 exact determinant normalization remains mandatory before any convergence claim that depends on an unprotected normalization.
+Route C obligations C0 and C2 are discharged by RH-R056 and RH-R053 respectively. C1, C3, C4, C5, and C6 remain open; R059 is reserved for the next C4 normal-family/local-boundedness tranche.
 
 ## Current protected lineage
 
@@ -87,6 +87,8 @@ Route C obligation C2 is already discharged by RH-R053. C0 exact determinant nor
 - RH-R053-COMPACT-TRANSFORM-STABILITY-001: proved in work_packages/RH_R053_COMPACT_TRANSFORM_STABILITY.md.
 - RH-R054-COMPLETE-LOG-QUARTIC-EXTENSION-001: proved in work_packages/RH_R054_COMPLETE_LOG_QUARTIC_EXTENSION.md; complete-log odd coercivity and exact positive quartic trial continuation through a=9/50.
 - RH-R055-NO-PRIME-HERGLOTZ-VARIATION-001: proved in work_packages/RH_R055_NO_PRIME_HERGLOTZ_VARIATION.md; explicit Route B sector-bottom/resolvent variation and continuation through a=3561/20000.
+- Exact Route C determinant-normalization and classical-anchor audit: grandchallenge/MATHFORGE@a900e5170c6d77a9e557b6159cf5feb40bcee222.
+- RH-R056-CANONICAL-DETERMINANT-NORMALIZATION-001: proved in work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md; C0 discharged by an even, zero-preserving normalization anchored at Xi(i/2)=1/2.
 
 No operator construction satisfying the Hilbert–Pólya contract, RH implication, novelty, or priority claim is admitted.
 
@@ -229,6 +231,7 @@ and
 - work_packages/RH_R051_RANK_ONE_COERCIVITY_EXTENSION.md
 - work_packages/RH_R052_REFRESHED_HERGLOTZ_MARGINS.md
 - work_packages/RH_R053_COMPACT_TRANSFORM_STABILITY.md
+- work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md
 - work_packages/RH_R055_NO_PRIME_HERGLOTZ_VARIATION.md
 - scripts/rh_r055_route_b_variation.py
 - work_packages/RH_R054_COMPLETE_LOG_QUARTIC_EXTENSION.md
@@ -262,6 +265,11 @@ The continuation machinery is now in place:
 12. RH-R053 discharges C2 of Route C by proving exact compact-set transform stability bounds \(\sup_{z\in K}|\lambda^{-iz}\widehat{\xi}-\lambda^{-iz}\widehat{\psi}|\le e^{\sigma_{\max}a}\sqrt{\mathcal{H}_a(H)}\|\xi-\psi\|_{L^2}\), an even-parity refinement, Rayleigh-quotient to eigenvector error transfer, and the rate dichotomy showing bare \(L^2\) bounds require C4 normal families for full complex-plane convergence.
 13. RH-R055 supplies the first quantitative Route B transport theorem: on \([89/500,9/50]\), \(\mu\) and \(\beta_-\) are explicitly Lipschitz, the common scalar shift cancels from \(d\), the shifted resolvent and Herglotz scalar have explicit variation bounds, and the protected simple-even interval advances to \(a=3561/20000\).
 14. RH-R054 reuses the protected R055 remainder interval, proves the complete-log rank-one coercivity bound \(\mu_{-,1}>\log2+1/6\), and adds an exact positive quartic trial surface, advancing the direct full-operator frontier to \(a=9/50\). Route B's \(d/\Delta_H\) transport remains protected only through \(a=3561/20000\) until separately refreshed from the stronger Route A margin.
+15. RH-R056 discharges Route C C0 by fixing the canonical finite normalized determinant
+\[
+F_{\lambda,N}(z)=\frac12\frac{\lambda^{iz}G_{\lambda,N}(z)}{\lambda^{-1/2}G_{\lambda,N}(i/2)},
+\]
+proving exact zero preservation and uniqueness in the declared affine-exponential gauge class. The next Route C theorem is R059 normal-family/local-boundedness control; normalization plus real zeros alone is explicitly insufficient.
 
 RH-R054 now sets the direct full-operator frontier at \(a=9/50\), while Route B's protected \(d/\Delta_H\) transport reaches \(a=3561/20000\). The next useful theorem should exploit that separation rather than resume scalar micro-tuning, preferably one of:
 
