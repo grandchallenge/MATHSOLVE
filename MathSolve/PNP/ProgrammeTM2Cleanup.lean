@@ -206,7 +206,8 @@ theorem programmeTM2_step_cleanWorkLeft_cons (M : ProgrammeMachine)
           [] [] [] [] workLeft workRight output) =
       some
         (programmeTM2CleanupCfg M (.cleanWorkLeft tape) base
-          [] [] [] [] (Function.update workLeft tape left) workRight output) := by
+          [] [] [] []
+          (Function.update workLeft tape (workLeft tape).tail) workRight output) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, Turing.TM2.stepAux, programmeTM2CleanupCfg,
     programmeTM2CleanupStacks]
@@ -230,7 +231,8 @@ theorem programmeTM2_step_cleanWorkRight_cons (M : ProgrammeMachine)
           [] [] [] [] workLeft workRight output) =
       some
         (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
-          [] [] [] [] workLeft (Function.update workRight tape right) output) := by
+          [] [] [] [] workLeft
+          (Function.update workRight tape (workRight tape).tail) output) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, Turing.TM2.stepAux, programmeTM2CleanupCfg,
     programmeTM2CleanupStacks]
@@ -317,7 +319,7 @@ theorem programmeTM2_step_cleanWorkLeft_nil (M : ProgrammeMachine)
           [] [] [] [] workLeft workRight output) =
       some
         (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
-          [] [] [] [] workLeft workRight output) := by
+          [] [] [] [] (Function.update workLeft tape []) workRight output) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, Turing.TM2.stepAux, programmeTM2CleanupCfg,
     programmeTM2CleanupStacks]
@@ -340,7 +342,7 @@ theorem programmeTM2_step_cleanWorkRight_nil (M : ProgrammeMachine)
       some
         (programmeTM2CleanupCfg M
           (programmeTM2NextWorkOrEmit M tape base) base
-          [] [] [] [] workLeft workRight output) := by
+          [] [] [] [] workLeft (Function.update workRight tape []) output) := by
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     programmeTM2Program, Turing.TM2.stepAux, programmeTM2CleanupCfg,
     programmeTM2CleanupStacks]
@@ -544,7 +546,16 @@ theorem programmeTM2_cleanWorkLeft_run (M : ProgrammeMachine)
   | cons symbol left ih =>
       have hstep := programmeTM2_step_cleanWorkLeft_cons M base tape symbol left
         workLeft workRight output hleft
-      have hone := programmeTM2_one_step_in_time hstep
+      have hstep' :
+          (programmeTM2Machine M).step
+              (programmeTM2CleanupCfg M (.cleanWorkLeft tape) base
+                [] [] [] [] workLeft workRight output) =
+            some
+              (programmeTM2CleanupCfg M (.cleanWorkLeft tape) base
+                [] [] [] [] (Function.update workLeft tape left)
+                workRight output) := by
+        simpa [hleft] using hstep
+      have hone := programmeTM2_one_step_in_time hstep'
       let nextLeft := Function.update workLeft tape left
       have hnext : nextLeft tape = left := by
         simp [nextLeft, Function.update]
@@ -591,7 +602,16 @@ theorem programmeTM2_cleanWorkRight_run (M : ProgrammeMachine)
   | cons symbol right ih =>
       have hstep := programmeTM2_step_cleanWorkRight_cons M base tape symbol right
         workLeft workRight output hright
-      have hone := programmeTM2_one_step_in_time hstep
+      have hstep' :
+          (programmeTM2Machine M).step
+              (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
+                [] [] [] [] workLeft workRight output) =
+            some
+              (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
+                [] [] [] [] workLeft (Function.update workRight tape right)
+                output) := by
+        simpa [hright] using hstep
+      have hone := programmeTM2_one_step_in_time hstep'
       let nextRight := Function.update workRight tape right
       have hnext : nextRight tape = right := by
         simp [nextRight, Function.update]
@@ -657,7 +677,7 @@ theorem programmeTM2ClearWorkBefore_update_current
     · omega
     · by_cases hnext : tape.1 < i + 1
       · omega
-      · simp [hnext]
+      · rfl
 
 /-- At an in-range index, the canonical work-cleanup mode is the left stack
 for exactly that tape. -/
@@ -838,9 +858,10 @@ theorem programmeTM2_cleanWork_suffix (M : ProgrammeMachine)
           (by simpa [two_mul] using h12) hrest
       refine ⟨?_⟩
       have hbound :
-          2 * (B + 1) + 2 * remaining * (B + 1) =
+          2 * remaining * (B + 1) + 2 * (B + 1) =
             2 * (remaining + 1) * (B + 1) := by ring
-      simpa [hbound] using hall
+      rw [hbound] at hall
+      exact hall
 
 /-- Clear all work tapes starting from the machine's canonical first work/emit
 mode. -/
