@@ -12,4 +12,4 @@ Canonical mode is `LINK_IN_RELAY_OUT`. No human work-package copy/paste is part 
 | H6 | https://github.com/grandchallenge/MATHSOLVE/blob/f032431add540011337df1992ded8dffdf0036ae/handoffs/OPENMATH-2026/launch/OM26-H6-WP07.md | Yes — OM26-H6-WP07 / INDEPENDENT-AGENT-607 |
 | H7 | https://github.com/grandchallenge/MATHSOLVE/blob/51f2177bc50b3b2c18a569f886aa61c7191896a1/handoffs/OPENMATH-2026/launch/OM26-H7-WP06.md | Yes — OM26-H7-WP06 / INDEPENDENT-AGENT-706 |
 | H1-Q6 (support) | https://github.com/grandchallenge/MATHSOLVE/blob/77ff50293c9263d17f4bc88e648c6f4ac9fb0a36/handoffs/OPENMATH-2026/launch/OM26-H1-WP35.md | Yes — OM26-H1-WP35 / INDEPENDENT-AGENT-135 |
-| H1-ADVERSARY (support) | https://github.com/grandchallenge/MATHSOLVE/blob/99be4ebf04a5012fedc50facb242ef5a161bf2a7/handoffs/OPENMATH-2026/launch/OM26-H1-WP64.md | Yes — OM26-H1-WP64 / INDEPENDENT-AGENT-164 |
+| H1-ADVERSARY (support) | https://github.com/grandchallenge/MATHSOLVE/blob/04a8beaeff680d5a540b2f553de10fb733a7533f/handoffs/OPENMATH-2026/launch/OM26-H1-WP65.md | Yes — OM26-H1-WP65 / INDEPENDENT-AGENT-165 |

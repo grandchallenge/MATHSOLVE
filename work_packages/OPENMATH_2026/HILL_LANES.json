@@ -111,11 +111,11 @@
           "return_evidence": null
         },
         "H1-ADVERSARY": {
-          "assignment_id": "OM26-H1-WP64",
-          "dispatch_id": "OM26-H1-WP64-IA-001",
-          "agent_ref": "INDEPENDENT-AGENT-164",
-          "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/682",
-          "protected_merge": "99be4ebf04a5012fedc50facb242ef5a161bf2a7",
+          "assignment_id": "OM26-H1-WP65",
+          "dispatch_id": "OM26-H1-WP65-IA-001",
+          "agent_ref": "INDEPENDENT-AGENT-165",
+          "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/694",
+          "protected_merge": "04a8beaeff680d5a540b2f553de10fb733a7533f",
           "readback_verified": false,
           "lifecycle_state": "LEASED_NOT_LAUNCHED",
           "launch_evidence": null,
@@ -528,7 +528,7 @@
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
       "next_action": "Launch INDEPENDENT-AGENT-706 from the registered immutable LINK_IN_RELAY_OUT task URL.",
-      "title": "Erdős Problem 3",
+      "title": "Erd\u0151s Problem 3",
       "active_lease": {
         "assignment_id": "OM26-H7-WP06",
         "dispatch_id": "OM26-H7-WP06-IA-001",
