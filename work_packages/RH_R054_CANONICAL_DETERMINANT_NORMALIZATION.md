@@ -167,7 +167,8 @@ The scalar `i` from the source formula cancels in this ratio.
 
 The choice `z_*=i/4` is a campaign gauge choice, not a scalar claimed to be
 specified by CCM. It is frozen here so that all later Route-C statements refer
-to one exact family.
+to one exact family. It uses one explicitly known nonzero value of the target
+entire function and no zeta-zero ordinate or RH-dependent data.
 
 ### Theorem 5.2 — well-definedness and zero preservation
 
@@ -276,8 +277,9 @@ it does not assume that choice in advance.
 
 ### Lemma 7.1 — scalar-gauge transfer
 
-Let `Omega` be a domain containing `z_*`. Let `H_j` be holomorphic on `Omega`
-with `H_j(z_*) != 0`. Suppose there exist nonzero scalars `c_j` such that
+Let `Omega` be a domain containing `z_*`. Let `(H_j)` be a sequence or net
+of holomorphic functions on `Omega` with `H_j(z_*) != 0`. Suppose there are
+nonzero scalars `c_j`, indexed by the same directed set, such that
 
 `c_j H_j -> Xi`
 
