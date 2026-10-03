@@ -3,7 +3,7 @@
   "record_type": "GCL_RESEARCH_CAMPAIGN",
   "campaign_id": "GCL-ERDOS3",
   "title": "Erdős Problem 3",
-  "status": "ACTIVE__E3_TRANCHE_03_PREPARED",
+  "status": "ACTIVE__E3_TRANCHE_03_DISPATCHED",
   "origin": {
     "campaign": "OPENMATH-2026",
     "hill": "OM26-H7",
@@ -43,7 +43,7 @@
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Execute E3-TRANCHE-03: representation, digit/carry, gluing, exact finite discovery, adversarial falsification, and source-interface lanes. Promote only a theorem-grade tightening or valid refutation.",
+  "next_action": "Receive independent-blind E3-R01/D01/G01/C01/A03/S04 returns on issues 788/789/791/792/793/794; capture and synthesize only after preserving each valid RESULT/1. Do not use issue 790.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -65,7 +65,80 @@
       "effect": "Closed E3-V-B02; no parent theorem effect."
     }
   },
-  "active_dispatches": {},
+  "active_dispatches": {
+    "E3-R01": {
+      "dispatch_id": "GCL-ERDOS3-E3-R01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-R01-001",
+      "issue_number": 788,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/788",
+      "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
+      "task_blob_sha1": "87f8b9619f62447b1425e2b71d3b374d5488220e",
+      "concurrency_mode": "independent_blind",
+      "context_class": "ZERO_CONTEXT",
+      "external_sources": "PRIMARY_SOURCES_ALLOWED",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    },
+    "E3-D01": {
+      "dispatch_id": "GCL-ERDOS3-E3-D01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-D01-001",
+      "issue_number": 789,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/789",
+      "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
+      "task_blob_sha1": "b7a43c535c59000cfc4cd443b54677ef125d6ca8",
+      "concurrency_mode": "independent_blind",
+      "context_class": "ZERO_CONTEXT",
+      "external_sources": "PROTECTED_PACKET_ONLY",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    },
+    "E3-G01": {
+      "dispatch_id": "GCL-ERDOS3-E3-G01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-G01-001",
+      "issue_number": 791,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/791",
+      "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
+      "task_blob_sha1": "c0dffd18ba0e0f341630b125ef856624fe54ad8a",
+      "concurrency_mode": "independent_blind",
+      "context_class": "ZERO_CONTEXT",
+      "external_sources": "PRIMARY_SOURCES_ALLOWED",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    },
+    "E3-C01": {
+      "dispatch_id": "GCL-ERDOS3-E3-C01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-C01-001",
+      "issue_number": 792,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/792",
+      "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
+      "task_blob_sha1": "599f20f0575eedca5deb5051ccdf3d5914471aee",
+      "concurrency_mode": "independent_blind",
+      "context_class": "ZERO_CONTEXT",
+      "external_sources": "PROTECTED_PACKET_ONLY",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    },
+    "E3-A03": {
+      "dispatch_id": "GCL-ERDOS3-E3-A03-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-A03-001",
+      "issue_number": 793,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/793",
+      "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
+      "task_blob_sha1": "6564ccb50f984f17a9ab498a4043e0a9a7d672de",
+      "concurrency_mode": "independent_blind",
+      "context_class": "ZERO_CONTEXT",
+      "external_sources": "PRIMARY_SOURCES_ALLOWED",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    },
+    "E3-S04": {
+      "dispatch_id": "GCL-ERDOS3-E3-S04-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-S04-001",
+      "issue_number": 794,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/794",
+      "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
+      "task_blob_sha1": "efc30c907510bf1625a754b5d355f3258549a647",
+      "concurrency_mode": "independent_blind",
+      "context_class": "ZERO_CONTEXT",
+      "external_sources": "PRIMARY_SOURCES_REQUIRED",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    }
+  },
   "completed_dispatches": {
     "E3-Q01": {
       "issue_number": 772,
@@ -97,5 +170,12 @@
     "E3-A03",
     "E3-S04"
   ],
-  "dispatch_state": "PREPARED_NOT_LAUNCHED"
+  "dispatch_state": "DISPATCHED__AWAITING_RETURNS",
+  "dispatch_cleanup": {
+    "duplicate_issue_number": 790,
+    "canonical_assignment": "E3-D01",
+    "canonical_issue_number": 789,
+    "disposition": "CLOSED_DUPLICATE",
+    "note": "A connector batch partially created E3-D01 before abort; issue 790 is not a valid return surface."
+  }
 }
