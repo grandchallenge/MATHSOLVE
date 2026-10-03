@@ -1,4 +1,5 @@
 import MathSolve.PNP.ProgrammeTM2Cleanup
+import MathSolve.PNP.ProgrammeTM2RunTransfer
 
 /-!
 # Terminal entry and complete canonical cleanup for the reverse compiler
@@ -38,9 +39,9 @@ theorem programmeTM2_step_enter_cleanup
     (hterminal : source.state = M.accept ∨ source.state = M.reject) :
     (programmeTM2Machine M).step target =
       some (programmeTM2CleanupFromTarget M .cleanRaw target) := by
-  rcases target with ⟨label, state, stacks⟩
-  change label = some (.run) at hrep
   rcases hrep with ⟨hlabel, hmode, hcontrol, hinput, hwork⟩
+  rcases target with ⟨label, state, stacks⟩
+  change label = some (.run) at hlabel
   subst label
   change state.mode = .run at hmode
   change state.control = source.state at hcontrol
@@ -82,22 +83,8 @@ theorem programmeTM2_terminalResult_eq_output
     (hrep : ProgrammeTM2Represents M input source target)
     (result : Bool)
     (hout : M.output source = some result) :
-    programmeTM2TerminalResult M target.var = result := by
-  have hcontrol : target.var.control = source.state := hrep.2.2.1
-  unfold programmeTM2TerminalResult
-  rw [hcontrol]
-  by_cases haccept : source.state = M.accept
-  · have hresult : result = true := by
-      simpa [ProgrammeMachine.output, haccept] using Option.some.inj hout
-    subst result
-    simp [haccept]
-  · have hreject : source.state = M.reject := by
-      by_contra hne
-      simp [ProgrammeMachine.output, haccept, hne] at hout
-    have hresult : result = false := by
-      simpa [ProgrammeMachine.output, haccept, hreject] using Option.some.inj hout
-    subst result
-    simp [haccept]
+    programmeTM2TerminalResult M target.var = result :=
+  programmeTM2_terminalResult_eq hrep result hout
 
 /-- Exact additive cleanup budget after a simulated run of `steps` source
 transitions. -/
