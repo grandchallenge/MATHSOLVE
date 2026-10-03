@@ -1,18 +1,34 @@
+GCL-ZERO-CONTEXT-LAUNCH/2
+CAMPAIGN: CMDG-CM4
+WORK_PACKAGE: P3-M-ONE-POINT-SEPARATION-003
+ASSIGNMENT_ID: CMDG-P3M-SEP-WP-C
+DISPATCH_ID: CMDG-P3M-SEP-WP-C-IA-001
+AGENT_REF: INDEPENDENT-AGENT-CMDG-C
+PROTECTED_LEASE_IDENTITY: CMDG-P3M-SEP-WP-C :: CMDG-P3M-SEP-WP-C-IA-001 :: INDEPENDENT-AGENT-CMDG-C
+INTENDED_RETURN: https://github.com/grandchallenge/MATHSOLVE/issues/766
+EXECUTION_MODE: SELF_CONTAINED_INDEPENDENT_BLIND
+GITHUB_ACCESS_REQUIRED: PARTICIPANT_ENVIRONMENT_AUTHENTICATED_COMMENT_CAPABILITY
+CANONICAL_MUTATION_AUTHORIZED: NO
+CERTIFICATION_AUTHORIZED: NO
+PROTECTED_PROGRAMME_PREDECESSOR: f7f99e18b83a3015d1a7ef835ee71434d01a9dba
+
+Read this entire immutable task. Execute only this bounded assignment. Before substantive work, verify that your environment can post one authenticated GitHub issue comment to INTENDED_RETURN. If it cannot, report RETURN_TRANSPORT_UNAVAILABLE and do not begin substantive work.
+
 GCL-CONTRIBUTION-DISPATCH/1
-dispatch_id: CMDG-P3M-SEP-WP-D-IA-001
-agent_ref: INDEPENDENT-AGENT-CMDG-D
+dispatch_id: CMDG-P3M-SEP-WP-C-IA-001
+agent_ref: INDEPENDENT-AGENT-CMDG-C
 campaign: CMDG-CM4
 work_package: P3-M-ONE-POINT-SEPARATION-003
-assignment: CMDG-P3M-SEP-WP-D
+assignment: CMDG-P3M-SEP-WP-C
 concurrency_mode: independent_blind
 return_protocol: GCL-CONTRIBUTION-RESULT/1
-intended_return: https://github.com/grandchallenge/MATHSOLVE/issues/767
+intended_return: https://github.com/grandchallenge/MATHSOLVE/issues/766
 
-# WP-D — audit information preservation across the one-point interfaces
+# WP-C — adversarial invisible-section search
 
-You are an independent zero-context mathematical contributor. This document is the complete bounded work-set.
+You are an independent adversarial zero-context mathematical contributor. This document is the complete bounded work-set.
 
-Timebox: 30 minutes of substantive work, then return the strongest exact result reached.
+Timebox: 35 minutes of substantive work, then return the strongest exact result reached.
 
 ## Protected packet
 
@@ -94,29 +110,34 @@ No URLs, attachments, side files, branches, pull requests, or second mathematica
 
 ## Exact assignment
 
-Produce a typed information-preservation ledger for the chain
+Attack the separation claim.
 
-`one-point measure section`
-→ `measurePointProjection`
-→ `measurePointProjectionLinear`
-→ `measurePointFunctional`
-→ `measurePointIntegralFunctional`
-→ `Nöbeling basis coordinates`
-→ `weighted-Boolean realization / kernelProductFunctional`.
+Try to construct, characterize, or rule out a nonzero
+`μ : (measurePresheafObj X).obj (op Point)`
+such that every currently used observable vanishes. Candidate invisibility conditions include:
 
-For every arrow, classify it as one of:
+- `measurePointFunctional X μ = 0`;
+- `measurePointIntegralFunctional X μ = 0`;
+- all basis coordinates
+  `measurePointIntegralFunctional X μ (integralBasis X i)`
+  vanish;
+- all weighted-Boolean/Nöbeling probes used by `kernelProductFunctional` vanish.
 
-- definitional equivalence;
-- proved injective;
-- proved surjective;
-- proved bijective/equivalence;
-- only a map, with no protected injectivity;
-- type/coefficient change requiring a named lemma.
+Your task is to identify the earliest interface where a nonzero kernel could exist.
 
-For every claimed injective/equivalent arrow, give a checkable proof argument from the packet and standard mathematics.
+If a counterexample exists, give the smallest explicit algebraic/categorical model compatible with the protected packet and identify exactly which desired implication fails.
 
-Then identify the FIRST arrow for which information preservation is not justified. Formulate the smallest theorem that would close that arrow. If all arrows through basis coordinates are injective, say so and isolate the remaining weighted-family comparison as the sole residual.
+If no counterexample can exist because an interface is injective for a simple structural reason, prove that reason rather than merely reporting failure to find an example.
 
-## Claim boundary
+## Required adversarial coverage
 
-This is an interface audit, not a proof of #1162 unless the chain actually closes. Do not infer institutional certification or downstream CM4 consequences.
+Check separately:
+
+1. projection from the enriched one-point section;
+2. restriction to constant families on `PUnit`;
+3. evaluation at the unique point;
+4. lifted-integer descent;
+5. basis-coordinate observation;
+6. weighted-family realization.
+
+The strongest useful negative result is a concrete nonzero invisible direction. The strongest useful positive result is a proof that a suspected kernel is necessarily trivial.

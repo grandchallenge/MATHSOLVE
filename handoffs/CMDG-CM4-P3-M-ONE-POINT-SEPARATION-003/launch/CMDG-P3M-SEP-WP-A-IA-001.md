@@ -1,18 +1,34 @@
+GCL-ZERO-CONTEXT-LAUNCH/2
+CAMPAIGN: CMDG-CM4
+WORK_PACKAGE: P3-M-ONE-POINT-SEPARATION-003
+ASSIGNMENT_ID: CMDG-P3M-SEP-WP-A
+DISPATCH_ID: CMDG-P3M-SEP-WP-A-IA-001
+AGENT_REF: INDEPENDENT-AGENT-CMDG-A
+PROTECTED_LEASE_IDENTITY: CMDG-P3M-SEP-WP-A :: CMDG-P3M-SEP-WP-A-IA-001 :: INDEPENDENT-AGENT-CMDG-A
+INTENDED_RETURN: https://github.com/grandchallenge/MATHSOLVE/issues/764
+EXECUTION_MODE: SELF_CONTAINED_INDEPENDENT_BLIND
+GITHUB_ACCESS_REQUIRED: PARTICIPANT_ENVIRONMENT_AUTHENTICATED_COMMENT_CAPABILITY
+CANONICAL_MUTATION_AUTHORIZED: NO
+CERTIFICATION_AUTHORIZED: NO
+PROTECTED_PROGRAMME_PREDECESSOR: f7f99e18b83a3015d1a7ef835ee71434d01a9dba
+
+Read this entire immutable task. Execute only this bounded assignment. Before substantive work, verify that your environment can post one authenticated GitHub issue comment to INTENDED_RETURN. If it cannot, report RETURN_TRANSPORT_UNAVAILABLE and do not begin substantive work.
+
 GCL-CONTRIBUTION-DISPATCH/1
-dispatch_id: CMDG-P3M-SEP-WP-D-IA-001
-agent_ref: INDEPENDENT-AGENT-CMDG-D
+dispatch_id: CMDG-P3M-SEP-WP-A-IA-001
+agent_ref: INDEPENDENT-AGENT-CMDG-A
 campaign: CMDG-CM4
 work_package: P3-M-ONE-POINT-SEPARATION-003
-assignment: CMDG-P3M-SEP-WP-D
+assignment: CMDG-P3M-SEP-WP-A
 concurrency_mode: independent_blind
 return_protocol: GCL-CONTRIBUTION-RESULT/1
-intended_return: https://github.com/grandchallenge/MATHSOLVE/issues/767
+intended_return: https://github.com/grandchallenge/MATHSOLVE/issues/764
 
-# WP-D — audit information preservation across the one-point interfaces
+# WP-A — reconstruct a one-point measure section from basis coordinates
 
 You are an independent zero-context mathematical contributor. This document is the complete bounded work-set.
 
-Timebox: 30 minutes of substantive work, then return the strongest exact result reached.
+Timebox: 35 minutes of substantive work, then return the strongest exact result reached.
 
 ## Protected packet
 
@@ -94,29 +110,38 @@ No URLs, attachments, side files, branches, pull requests, or second mathematica
 
 ## Exact assignment
 
-Produce a typed information-preservation ledger for the chain
+Let
+`μ : (measurePresheafObj X).obj (op Point)`
+be an arbitrary one-point measure section.
 
-`one-point measure section`
-→ `measurePointProjection`
-→ `measurePointProjectionLinear`
-→ `measurePointFunctional`
-→ `measurePointIntegralFunctional`
-→ `Nöbeling basis coordinates`
-→ `weighted-Boolean realization / kernelProductFunctional`.
+Its protected integral functional is
+`Lμ := measurePointIntegralFunctional X μ : LocallyConstant X ℤ →ₗ[ℤ] ℤ`.
 
-For every arrow, classify it as one of:
+Define the basis-coordinate weight vector
+`aμ i := Lμ (integralBasis X i)`.
 
-- definitional equivalence;
-- proved injective;
-- proved surjective;
-- proved bijective/equivalence;
-- only a map, with no protected injectivity;
-- type/coefficient change requiring a named lemma.
+Determine whether the protected weighted-Boolean construction with weight `aμ`, evaluated at the all-true one-point selector, reconstructs `μ`.
 
-For every claimed injective/equivalent arrow, give a checkable proof argument from the packet and standard mathematics.
+A full result should establish, at theorem-grade precision, one of:
 
-Then identify the FIRST arrow for which information preservation is not justified. Formulate the smallest theorem that would close that arrow. If all arrows through basis coordinates are injective, say so and isolate the remaining weighted-family comparison as the sole residual.
+1. an exact reconstruction identity for `μ`;
+2. an exact isomorphism/equivalence through which reconstruction follows;
+3. a reduction of reconstruction to one named missing lemma;
+4. a concrete counterexample showing that the coordinate family does not reconstruct arbitrary `μ`.
 
-## Claim boundary
+Do not assume that equality of integral functionals automatically implies equality of one-point measure sections. If you use that implication, prove the required injectivity.
 
-This is an interface audit, not a proof of #1162 unless the chain actually closes. Do not infer institutional certification or downstream CM4 consequences.
+## Falsification hooks
+
+Explicitly test these possible failure points:
+
+- `measurePointProjection` may lose information from the one-point measure section;
+- restricting `measurePointProjectionLinear` to constant one-point families may lose information;
+- `measurePointFunctional` may fail to determine the projection;
+- `liftedIntFunctionalDown` may fail to reflect equality;
+- the Nöbeling basis determines the integral functional but not necessarily the original section;
+- the all-true weighted-Boolean section may reproduce only the integral functional rather than `μ` itself.
+
+## Success criterion
+
+The preferred success is a short exact reconstruction theorem. A precise reduction or counterexample is equally material.

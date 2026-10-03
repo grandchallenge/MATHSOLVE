@@ -276,5 +276,55 @@ class UcD004ResultGrammarTests(unittest.TestCase):
             parse_result_comment(body)
 
 
+CMDG_VALID_BODY = """GCL-CONTRIBUTION-RESULT/1
+dispatch_id: CMDG-P3M-SEP-WP-A-IA-001
+agent_ref: INDEPENDENT-AGENT-CMDG-A
+assignment: CMDG-P3M-SEP-WP-A
+disposition: PROVED_REDUCTION
+context_class: ZERO_CONTEXT
+external_sources: PROTECTED_PACKET_ONLY
+timebox_observed: YES
+
+## Strongest exact statement
+
+A bounded one-point separation reduction.
+
+## Derivation
+
+A complete derivation from the protected packet.
+
+## Assumptions beyond bootstrap
+
+NONE
+
+## Verification / falsification hooks
+
+Check the one-point interface directly.
+
+## Claim boundary
+
+This does not prove d equals zero or CM4.
+
+## Next residual
+
+Formalize the smallest missing separation lemma.
+"""
+
+
+class CmdgP3MResultGrammarTests(unittest.TestCase):
+    def test_valid_cmdg_comment_parses(self) -> None:
+        parsed = parse_result_comment(CMDG_VALID_BODY)
+        self.assertEqual(parsed["profile"], "CMDG-CM4")
+        self.assertEqual(parsed["preamble"]["agent_ref"], "INDEPENDENT-AGENT-CMDG-A")
+
+    def test_cmdg_rejects_wrong_assignment(self) -> None:
+        body = CMDG_VALID_BODY.replace(
+            "assignment: CMDG-P3M-SEP-WP-A",
+            "assignment: CMDG-P3M-SEP-WP-E",
+        )
+        with self.assertRaises(IntakeError):
+            parse_result_comment(body)
+
+
 if __name__ == "__main__":
     unittest.main()

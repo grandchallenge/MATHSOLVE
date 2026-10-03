@@ -1,18 +1,34 @@
+GCL-ZERO-CONTEXT-LAUNCH/2
+CAMPAIGN: CMDG-CM4
+WORK_PACKAGE: P3-M-ONE-POINT-SEPARATION-003
+ASSIGNMENT_ID: CMDG-P3M-SEP-WP-B
+DISPATCH_ID: CMDG-P3M-SEP-WP-B-IA-001
+AGENT_REF: INDEPENDENT-AGENT-CMDG-B
+PROTECTED_LEASE_IDENTITY: CMDG-P3M-SEP-WP-B :: CMDG-P3M-SEP-WP-B-IA-001 :: INDEPENDENT-AGENT-CMDG-B
+INTENDED_RETURN: https://github.com/grandchallenge/MATHSOLVE/issues/765
+EXECUTION_MODE: SELF_CONTAINED_INDEPENDENT_BLIND
+GITHUB_ACCESS_REQUIRED: PARTICIPANT_ENVIRONMENT_AUTHENTICATED_COMMENT_CAPABILITY
+CANONICAL_MUTATION_AUTHORIZED: NO
+CERTIFICATION_AUTHORIZED: NO
+PROTECTED_PROGRAMME_PREDECESSOR: f7f99e18b83a3015d1a7ef835ee71434d01a9dba
+
+Read this entire immutable task. Execute only this bounded assignment. Before substantive work, verify that your environment can post one authenticated GitHub issue comment to INTENDED_RETURN. If it cannot, report RETURN_TRANSPORT_UNAVAILABLE and do not begin substantive work.
+
 GCL-CONTRIBUTION-DISPATCH/1
-dispatch_id: CMDG-P3M-SEP-WP-D-IA-001
-agent_ref: INDEPENDENT-AGENT-CMDG-D
+dispatch_id: CMDG-P3M-SEP-WP-B-IA-001
+agent_ref: INDEPENDENT-AGENT-CMDG-B
 campaign: CMDG-CM4
 work_package: P3-M-ONE-POINT-SEPARATION-003
-assignment: CMDG-P3M-SEP-WP-D
+assignment: CMDG-P3M-SEP-WP-B
 concurrency_mode: independent_blind
 return_protocol: GCL-CONTRIBUTION-RESULT/1
-intended_return: https://github.com/grandchallenge/MATHSOLVE/issues/767
+intended_return: https://github.com/grandchallenge/MATHSOLVE/issues/765
 
-# WP-D — audit information preservation across the one-point interfaces
+# WP-B — prove the weakest sufficient one-point separation theorem
 
 You are an independent zero-context mathematical contributor. This document is the complete bounded work-set.
 
-Timebox: 30 minutes of substantive work, then return the strongest exact result reached.
+Timebox: 35 minutes of substantive work, then return the strongest exact result reached.
 
 ## Protected packet
 
@@ -94,29 +110,29 @@ No URLs, attachments, side files, branches, pull requests, or second mathematica
 
 ## Exact assignment
 
-Produce a typed information-preservation ledger for the chain
+Do NOT attempt full reconstruction unless it is forced.
 
-`one-point measure section`
-→ `measurePointProjection`
-→ `measurePointProjectionLinear`
-→ `measurePointFunctional`
-→ `measurePointIntegralFunctional`
-→ `Nöbeling basis coordinates`
-→ `weighted-Boolean realization / kernelProductFunctional`.
+Find the weakest exact theorem sufficient for the successor implication:
 
-For every arrow, classify it as one of:
+`kernelProductFunctional X d = 0`
+together with the protected construction of that functional
+implies
+`d.hom.app (op Point) = 0`.
 
-- definitional equivalence;
-- proved injective;
-- proved surjective;
-- proved bijective/equivalence;
-- only a map, with no protected injectivity;
-- type/coefficient change requiring a named lemma.
+A promising intermediate target is an injectivity statement for one of the maps
 
-For every claimed injective/equivalent arrow, give a checkable proof argument from the packet and standard mathematics.
+`μ ↦ measurePointFunctional X μ`
 
-Then identify the FIRST arrow for which information preservation is not justified. Formulate the smallest theorem that would close that arrow. If all arrows through basis coordinates are injective, say so and isolate the remaining weighted-family comparison as the sole residual.
+or
 
-## Claim boundary
+`μ ↦ measurePointIntegralFunctional X μ`.
 
-This is an interface audit, not a proof of #1162 unless the chain actually closes. Do not infer institutional certification or downstream CM4 consequences.
+Analyze the exact one-point geometry: every locally constant function on `PUnit` is constant. Determine whether that fact makes the projection/constant/evaluation chain injective, and if so state a proof with all necessary identifications.
+
+Then explain precisely how the zero `kernelProductFunctional` data would provide the hypothesis of your separation lemma. If an additional bridge is required, name it exactly and make it the smallest residual.
+
+## Rejection conditions
+
+A result is insufficient if it merely says that a basis determines a linear functional; the required issue is whether the relevant linear functional determines the one-point component of the original morphism.
+
+Do not jump from one-point vanishing to `d = 0`; that later step is protected separately by `coefficient_hom_ext_point`.
