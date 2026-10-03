@@ -1,23 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "record_type": "GCL_EXTERNAL_DISPATCH_STAGING_MANIFEST",
+  "record_type": "GCL_EXTERNAL_DISPATCH_ACTIVATION_MANIFEST",
   "campaign": "CMDG-CM4",
   "work_package": "P3-M-ONE-POINT-SEPARATION-003",
-  "state": "STAGED_BLOCKED_PENDING_PROTECTED_PREDECESSOR",
+  "state": "ACTIVATION_CANDIDATE",
   "programme_docket": "grandchallenge/MATH-PROGRAMME#1162",
   "predecessor_docket": "grandchallenge/MATH-PROGRAMME#664",
   "predecessor_candidate_pr": "grandchallenge/MATH-PROGRAMME#919",
   "predecessor_candidate_head": "cff36869559e52eb5440dfc3b00cefa27648ae4e",
-  "predecessor_candidate_is_protected": false,
+  "predecessor_candidate_is_protected": true,
   "activation_requires": [
-    "exact-head independent non-author review of PR #919",
-    "protected admission/merge of #664 candidate",
-    "protected-main readback of admitted theorem names and axiom boundary",
-    "activation commit replacing candidate SHA with protected predecessor SHA",
-    "publication of immutable GCL-ZERO-CONTEXT-LAUNCH/2 artifacts",
-    "protected controlled-intake profile for CMDG-P3M-SEP dispatch IDs",
-    "first-valid-return durable capture path for RAW.md and RECEIPT.json with no direct claim authority",
-    "byte-locked activation of intake issue bodies"
+    "protected merge of this activation candidate into MATHSOLVE/main",
+    "protected-main readback of parser, dispatch records, launch artifacts, and cohort state",
+    "byte-lock activation of intake issue titles and bodies to protected bootstraps"
   ],
   "blind_cohort_id": "CMDG-P3M-SEP-BLIND-COHORT-001",
   "dispatches": [
@@ -58,8 +53,8 @@
       "route": "INTERFACE_INFORMATION_LOSS_AUDIT"
     }
   ],
-  "launch_artifacts_present": false,
-  "dispatch_status": "NON_EXECUTABLE",
+  "launch_artifacts_present": true,
+  "dispatch_status": "READY_AFTER_PROTECTED_SOLVE_MERGE",
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
   "intake_channel": "github_issue_comment",
   "minimum_synthesis_evidence": {
@@ -74,5 +69,7 @@
   "cross_disclosure_before_cohort_closure": false,
   "canonical_mutation_authorized_for_contributors": false,
   "certification_effect": false,
-  "claim_boundary": "Staging creates no mathematical premise. Contributor returns, once activated, are evidence only and cannot directly establish mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion."
+  "claim_boundary": "Staging creates no mathematical premise. Contributor returns, once activated, are evidence only and cannot directly establish mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion.",
+  "predecessor_protected_main": "f7f99e18b83a3015d1a7ef835ee71434d01a9dba",
+  "predecessor_source_blob": "1f867034ec1474418cf416ee8583449bcbe80ee5"
 }
