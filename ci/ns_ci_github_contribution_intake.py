@@ -15,7 +15,7 @@ MARKER = "GCL-CONTRIBUTION-RESULT/1"
 DISPATCH_MARKER = "GCL-CONTRIBUTION-DISPATCH/1"
 URL_RE = re.compile(r"(?:https?://|www\.)", re.IGNORECASE)
 MD_LINK_RE = re.compile(r"!?\[[^\]\n]*\]\([^\)\n]+\)")
-HTML_LINK_RE = re.compile(r"<\s*(?:a|img)\b", re.IGNORECASE)
+HTML_LINK_RE = re.compile(r"</?(?:a|img)\b(?:\s+[^<>]*?)?\s*/?>", re.IGNORECASE)
 HEADING_RE = re.compile(r"^## .+$", re.MULTILINE)
 
 SECTIONS = [
@@ -114,7 +114,7 @@ def profile_for_dispatch(dispatch_id: str) -> IntakeProfile:
 def parse_result_comment(body: str) -> dict[str, Any]:
     if not isinstance(body, str) or not body.strip():
         raise IntakeError("comment body is empty")
-    if not body.startswith(MARKER + "\n"):
+    if not (body.startswith(MARKER + "\n") or body.startswith(MARKER + "\r\n")):
         raise IntakeError(f"comment must begin exactly with {MARKER}")
 
     forbidden: list[str] = []
