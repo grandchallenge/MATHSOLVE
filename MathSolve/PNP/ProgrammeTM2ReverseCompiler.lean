@@ -154,8 +154,19 @@ def programmeTM2TimedDecider {decision : List Bool → Bool}
   runtime := programmeTM2ReverseRuntime source
   outputsFun := by
     intro input
-    simpa [Turing.TM2OutputsInTime, Computability.encodeBool] using
-      programmeTM2Machine_outputs source input
+    have hinput :
+        List.map (⇑(Equiv.refl Bool).symm) input = input := by
+      induction input with
+      | nil => rfl
+      | cons b rest ih =>
+          simp [ih]
+    have houtput :
+        List.map (⇑(Equiv.refl Bool).symm)
+            (Computability.encodeBool (decision input)) =
+          [decision input] := by
+      cases h : decision input <;> rfl
+    rw [hinput, houtput]
+    exact programmeTM2Machine_outputs source input
 
 /-- The exact reverse runtime is affine in input length and source runtime. -/
 theorem programmeTM2ReverseRuntime_affine
