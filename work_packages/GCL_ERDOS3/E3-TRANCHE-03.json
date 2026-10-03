@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS3_TRANCHE",
+  "campaign": "GCL-ERDOS3",
+  "tranche": "E3-TRANCHE-03",
+  "baseline_commit": "8444c84b37be48f0a43f0e61e9841c039d60c8d0",
+  "primary_frontier": "E3-Q4-DENSITY-LOSS",
+  "parent_frontier": "E3-Q4-SERIES",
+  "representation_note": "work_packages/GCL_ERDOS3/E3-TRANCHE-03_REPRESENTATION.md",
+  "status": "PREPARED_NOT_DISPATCHED",
+  "work_packages": [
+    {
+      "id": "E3-R01",
+      "role": "REPRESENTATION",
+      "priority": "PRIMARY",
+      "frontier_action": "ADVANCE_FRONTIER"
+    },
+    {
+      "id": "E3-D01",
+      "role": "DIGIT_CARRY_COMPILER",
+      "priority": "PRIMARY_SUPPORT",
+      "frontier_action": "ADVANCE_FRONTIER"
+    },
+    {
+      "id": "E3-G01",
+      "role": "GLUING_THEOREM_ATTACK",
+      "priority": "PRIMARY",
+      "frontier_action": "ADVANCE_FRONTIER"
+    },
+    {
+      "id": "E3-C01",
+      "role": "EXACT_COMPUTATIONAL_DISCOVERY",
+      "priority": "SUPPORT",
+      "frontier_action": "ADVANCE_FRONTIER"
+    },
+    {
+      "id": "E3-A03",
+      "role": "ADVERSARIAL_ROUTE_KILLER",
+      "priority": "PRIMARY",
+      "frontier_action": "ADVERSARIAL_ATTACK"
+    },
+    {
+      "id": "E3-S04",
+      "role": "PRIMARY_SOURCE_INTERFACE",
+      "priority": "SUPPORT",
+      "frontier_action": "SOURCE_BLOCKED"
+    }
+  ],
+  "synthesis_rule": "Receive independent returns without mutual visibility; promote only theorem-grade content that strictly tightens E3-Q4-DENSITY-LOSS or validly refutes it.",
+  "representation_shift": [
+    "gluing defect D_{L,n}=a_n-a_{n+L}",
+    "reciprocal potential U_theta(n)=a_n^{-theta}",
+    "persistence profile P(alpha)=#{n:a_n>=alpha}",
+    "recursive extremizer tree",
+    "digit-and-carry fiber constraints"
+  ],
+  "claim_boundary": "Preparation and representation design only. No new theorem is asserted by creation of this tranche."
+}
