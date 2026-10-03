@@ -285,7 +285,7 @@
     },
     {
       "hill_slot": "OM26-H4",
-      "status": "WP06_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
+      "status": "WP07_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
       "exact_hill_id": "alejandrozu/collatz-modular-descent",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -316,14 +316,14 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H4-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-406 from the registered immutable LINK_IN_RELAY_OUT task URL.",
+      "next_action": "Launch INDEPENDENT-AGENT-407 from the registered immutable LINK_IN_RELAY_OUT task URL.",
       "title": "Collatz modular descent",
       "active_lease": {
-        "assignment_id": "OM26-H4-WP06",
-        "dispatch_id": "OM26-H4-WP06-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-406",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/652",
-        "protected_merge": "7ec7956f6bb5add826523c110a29ea70a1ed0ce7",
+        "assignment_id": "OM26-H4-WP07",
+        "dispatch_id": "OM26-H4-WP07-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-407",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/690",
+        "protected_merge": "PROTECTED_LIFECYCLE_CANDIDATE",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
@@ -337,15 +337,15 @@
         "official_acceptance": "NONE"
       },
       "predecessor_lease": {
-        "assignment_id": "OM26-H4-WP05",
-        "dispatch_id": "OM26-H4-WP05-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-405",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/631",
-        "protected_merge": "45847cfb1d3f084d7f8afde09c51b42cce6e32fc",
+        "assignment_id": "OM26-H4-WP06",
+        "dispatch_id": "OM26-H4-WP06-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-406",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/652",
+        "protected_merge": "7ec7956f6bb5add826523c110a29ea70a1ed0ce7",
         "readback_verified": false,
         "lifecycle_state": "ACCEPTED",
         "launch_evidence": null,
-        "return_evidence": "contributions/OPENMATH-2026/OM26-H4/WP05/raw/OM26-H4-WP05-IA-001/github-comment-5962943119.md",
+        "return_evidence": "contributions/OPENMATH-2026/OM26-H4/WP06/raw/OM26-H4-WP06-IA-001/github-comment-5965159449.md",
         "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION"
       }
     },
