@@ -26,11 +26,11 @@ Complete the exact bridge suite needed to connect the pinned Formal Conjectures 
 
 ## Current substantive state
 
-`PNP-DEFINITION-CONCORDANCE-001` is complete. `PNP-BRIDGE-CARRIER-001` is protected and kernel-checked.
+`PNP-DEFINITION-CONCORDANCE-001`, `PNP-BRIDGE-CARRIER-001`, and `PNP-BRIDGE-POLYBOUND-001` are protected and complete.
 
-This exact candidate adds `PNP-BRIDGE-POLYBOUND-001`: a native Programme polynomial-bound predicate plus both conversions between the pinned imported `Polynomial Nat` presentation and the Programme eventual `c * n^k` presentation, with the finite exceptional prefix explicitly absorbed. Treat that bridge as protected only after exact-head admission and protected readback.
+This exact candidate closes `PNP-BRIDGE-MODEL-001` by constructing both quantitative compiler directions between the pinned imported finite-TM2 model and the locked Programme deterministic multitape machine, with explicit affine runtime overhead. `MathSolve/PNP/ModelBridgeClosure.lean` then instantiates those compilers to prove deterministic polynomial-time class equivalence between the two presentations. Treat this bridge as protected only after exact-head review, merge, and protected readback.
 
-The machine-model bridge remains open. The NP bridge remains blocked on the machine-model prerequisite. The endpoint bridge remains endpoint-specific and open. `PNP-T-130` remains open.
+`PNP-BRIDGE-NP-001` is now the next native formal target rather than prerequisite-blocked. It still requires verifier semantics, pair/witness encoding, polynomial witness bounds, malformed-input behavior, totality, and class-extensional transport. The endpoint bridge remains endpoint-specific and open. `PNP-T-130` remains open.
 
 ## Authoritative pointers
 
@@ -42,20 +42,23 @@ The machine-model bridge remains open. The NP bridge remains blocked on the mach
 - `grandchallenge/MATHSOLVE:work_packages/PNP_BRIDGE_001/bridge_status.json`
 - `grandchallenge/MATHSOLVE:MathSolve/PNP/CarrierBridge.lean`
 - `grandchallenge/MATHSOLVE:MathSolve/PNP/PolyBoundBridge.lean`
+- `grandchallenge/MATHSOLVE:MathSolve/PNP/TM2ForwardCompiler.lean`
+- `grandchallenge/MATHSOLVE:MathSolve/PNP/ProgrammeTM2ReverseCompiler.lean`
+- `grandchallenge/MATHSOLVE:MathSolve/PNP/ModelBridgeClosure.lean`
 - `grandchallenge/MATH-PROGRAMME:campaigns/p_vs_np/WP00_SOURCE_DEFINITION_EQUIVALENCE/02_MACHINE_AND_ENCODING_LOCK.md`
 - `grandchallenge/MATH-PROGRAMME:campaigns/p_vs_np/WP02_THEOREM_LEDGER/02_THEOREM_LEDGER.json`
 - `grandchallenge/MATHSOLVE#148`
 
 ## Smallest safe next tranche
 
-After protected admission of the polynomial-bound bridge, define the locked Programme deterministic multitape-machine interface and prove the polynomial-overhead simulation needed by `PNP-BRIDGE-MODEL-001`. Do not begin the NP class-extensional bridge until the machine-model prerequisite is closed.
+After protected admission of `PNP-BRIDGE-MODEL-001`, begin `PNP-BRIDGE-NP-001`: formalize the Programme verifier semantics and exact self-delimiting input/witness pairing, then prove polynomial witness-length, malformed-pair, totality, and class-extensional transport against the pinned imported NP presentation.
 
 ## Material dependencies and boundaries
 
 - The pinned imported theorem/interface is `google-deepmind/formal-conjectures@85f863718beeec7b58a3a1926ee92e3472bc2020`, `ComplexityTheory.P_ne_NP`; its `by sorry` body is non-evidence.
 - The Programme cost contract is the protected WP00 machine-and-encoding lock: total deterministic computation, binary encoded length, worst-case natural step cost, fixed constants/exponent, and eventual threshold.
-- Polynomial-bound equivalence does not establish machine-model equivalence.
-- Machine-model equivalence plus polynomial-bound equivalence still does not establish NP verifier equivalence without pair/witness transport.
+- Deterministic machine-model equivalence is now theorem-backed by explicit polynomial-overhead compilers in both directions.
+- Deterministic machine-model equivalence plus polynomial-bound equivalence still does not establish NP verifier equivalence without pair/witness transport.
 - MATHCERT remains `pending` and is not changed by this bridge suite alone.
 
 ## Reserved authority / stop conditions
