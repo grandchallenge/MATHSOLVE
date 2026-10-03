@@ -34,13 +34,43 @@ class PNPBridge001Tests(unittest.TestCase):
     def test_complete_package_passes(self) -> None:
         self.assertEqual(validate(self.root), [])
 
-    def test_machine_bridge_cannot_be_inflated(self) -> None:
-        self.mutate_status(lambda d: d["bridges"][1].update(status="kernel_checked"))
+    def test_machine_bridge_cannot_be_reopened(self) -> None:
+        self.mutate_status(lambda d: d["bridges"][1].update(status="blocked_missing_formal_target"))
         self.assertTrue(any("MODEL-001: status drift" in e for e in validate(self.root)))
 
-    def test_only_carrier_and_polybound_can_be_closed(self) -> None:
-        self.mutate_status(lambda d: d["closed_bridge_ids"].append("PNP-BRIDGE-MODEL-001"))
-        self.assertTrue(any("only carrier and polynomial-bound" in e for e in validate(self.root)))
+    def test_closed_bridge_set_drift_fails(self) -> None:
+        self.mutate_status(
+            lambda d: d.update(
+                closed_bridge_ids=[
+                    "PNP-BRIDGE-CARRIER-001",
+                    "PNP-BRIDGE-POLYBOUND-001",
+                ]
+            )
+        )
+        self.assertTrue(any("carrier, model, and polynomial-bound" in e for e in validate(self.root)))
+
+    def test_model_closure_theorem_omission_fails(self) -> None:
+        path = self.root / "MathSolve/PNP/ModelBridgeClosure.lean"
+        text = path.read_text(encoding="utf-8")
+        self.assertIn("theorem importedTM2_iff_programmePolyTime_constructive", text)
+        path.write_text(
+            text.replace(
+                "theorem importedTM2_iff_programmePolyTime_constructive",
+                "theorem removed_model_bridge_closure",
+                1,
+            ),
+            encoding="utf-8",
+        )
+        self.assertTrue(any("ModelBridgeClosure.lean" in e for e in validate(self.root)))
+
+    def test_reverse_compiler_placeholder_fails(self) -> None:
+        path = self.root / "MathSolve/PNP/ProgrammeTM2ReverseCompiler.lean"
+        path.write_text(
+            path.read_text(encoding="utf-8")
+            + "\ntheorem reverse_placeholder : True := by sorry\n",
+            encoding="utf-8",
+        )
+        self.assertTrue(any("model-bridge artifact contains proof placeholder" in e for e in validate(self.root)))
 
     def test_certification_inflation_fails(self) -> None:
         self.mutate_status(lambda d: d.update(certification_effect="qualified"))
