@@ -23,7 +23,8 @@ The pack-creation snapshot above is historical. The current protected mathematic
 
 - RH-R051 extends the full simple-even theorem through a = 178/1000;
 - RH-R052 refreshes positive d(a) and Delta_H(a) margins through that same endpoint;
-- RH-R053 discharges Route C obligation C2 (compact-set transform/determinant stability) and fixes the quantitative rate interface for C3.
+- RH-R053 discharges Route C obligation C2 (compact-set transform/determinant stability) and fixes the quantitative rate interface for C3;
+- RH-R056 discharges Route C obligation C0 for source-admitted finite pairs and freezes the canonical determinant normalization at the nonreal anchor i/4.
 
 The division of labour is explicit and must remain stable:
 
@@ -35,7 +36,8 @@ Current theorem-development identifier allocation:
 
 - RH-R054 — Route A quartic/richer-even-trial tranche;
 - RH-R055 — Route B no-prime sector-bottom/Herglotz-variation tranche;
-- RH-R056 — Route C C0 canonical determinant-normalization tranche.
+- RH-R056 — Route C C0 canonical determinant-normalization tranche [DELIVERED by the present protected update].
+- Route C next unused lane identifier after R056 is R059; allocation still requires a bounded tracker claim in #414.
 
 To prevent concurrent cross-route collisions from R054 onward, theorem IDs are partitioned into route-local lanes:
 
@@ -198,7 +200,7 @@ If three independent agents are available:
 
 - Agent A: Route A, with emphasis on richer analytic trial spaces and coercivity.
 - Agent B: Route B, with emphasis on quantitative d/Delta_H variation and prime-threshold transport.
-- Agent C: Route C, using RH-R056 for the next bounded tranche. C2 compact-set transform stability is already discharged by RH-R053; exact determinant normalization (C0) remains mandatory before any convergence theorem that depends on an unprotected normalization, while C1/C3/C4/C5/C6 may proceed when their prerequisites are explicitly bound.
+- Agent C: Route C, with C0 discharged by RH-R056 and C2 discharged by RH-R053. Claim one of C1/C3/C4/C5/C6 in #414 and use the next unused Route C lane identifier (R059 at this state) only after checking live protected state.
 
 If only one agent is available, Route B or Route C is strategically preferable to further microscopic Route A endpoint tuning unless the agent has a clearly new structural inequality.
 
