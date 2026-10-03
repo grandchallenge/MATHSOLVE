@@ -112,19 +112,24 @@ theorem programmeTM2_terminalResult_eq
     (hout : M.output source = some result) :
     programmeTM2TerminalResult M target.var = result := by
   have hcontrol : target.var.control = source.state := hrep.2.2.1
-  rw [hcontrol]
   by_cases haccept : source.state = M.accept
-  · subst source
-    simp [programmeTM2TerminalResult, ProgrammeMachine.output] at hout ⊢
+  · have hout' : some true = some result := by
+      simpa [ProgrammeMachine.output, haccept] using hout
+    have hresult : true = result := Option.some.inj hout'
+    rw [hcontrol, haccept]
+    simp [programmeTM2TerminalResult, hresult]
   · have hreject : source.state = M.reject := by
       by_contra hne
-      simp [ProgrammeMachine.output, haccept, hne] at hout
-    rw [hreject]
-    have hreject_ne_accept : M.reject ≠ M.accept :=
-      Ne.symm M.accept_ne_reject
-    cases result <;>
-      simp [programmeTM2TerminalResult, ProgrammeMachine.output,
-        haccept, hreject, hreject_ne_accept] at hout ⊢
+      have houtNone : M.output source = none := by
+        simp [ProgrammeMachine.output, haccept, hne]
+      rw [houtNone] at hout
+      contradiction
+    have hout' : some false = some result := by
+      simpa [ProgrammeMachine.output, haccept, hreject] using hout
+    have hresult : false = result := Option.some.inj hout'
+    rw [hcontrol, hreject]
+    have hreject_ne_accept : M.reject ≠ M.accept := Ne.symm M.accept_ne_reject
+    simp [programmeTM2TerminalResult, hreject_ne_accept, hresult]
 
 #print axioms programmeTM2_bounded_iterate
 #print axioms programmeTM2_transfer_run
