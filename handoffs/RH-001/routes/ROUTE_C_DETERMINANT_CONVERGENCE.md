@@ -14,9 +14,11 @@ Protected route foundation:
 RH-R035-ZETA-SPECTRAL-TRIPLES-LIMIT-001
 work_packages/RH_R035_ZETA_SPECTRAL_TRIPLES_LIMIT.md
 
-Protected provider audit:
-grandchallenge/MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790
-reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
+Protected provider audits:
+- grandchallenge/MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790
+  reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
+- grandchallenge/MATHFORGE@a900e5170c6d77a9e557b6159cf5feb40bcee222
+  reports/discovery/rh_001/rh_r056_determinant_normalization.md
 
 ## 1. Mission
 
@@ -60,7 +62,6 @@ The finite construction uses prime/arithmetic data and does not fit a supplied l
 None of the following is currently protected as a theorem:
 
 - one canonical cofinal schedule (lambda_j,N_j) sufficient for the limit;
-- the exact normalization F_{lambda,N} needed for convergence to Xi;
 - locally uniform convergence of the normalized determinants;
 - a strong enough k_lambda -> xi_lambda theorem;
 - global simple-evenness for the full range of scales needed by the limiting construction;
@@ -93,7 +94,7 @@ Also acquire and read the exact primary CCM Zeta Spectral Triples source before 
 
 A useful decomposition is:
 
-C0. Exact finite normalization.
+C0. Exact finite normalization. [DISCHARGED by RH-R056-CANONICAL-DETERMINANT-NORMALIZATION-001]
 
 C1. Select and justify a cofinal parameter schedule.
 
@@ -111,29 +112,33 @@ C7. Apply the already-protected R035 Rouché/Hurwitz bridge.
 
 An agent does not need to solve C0-C7 in one tranche. Clean progress on one dependency is meaningful.
 
-## 6. C0 — Freeze the exact normalization
+## 6. C0 — Exact finite normalization
 
-This is the first mandatory task before any convergence theorem.
+Status: DISCHARGED by RH-R056-CANONICAL-DETERMINANT-NORMALIZATION-001.
 
-The raw finite identity contains factors such as
+For every admitted finite CCM pair, with raw determinant
+\[
+G_{\lambda,N}(z)=-i\lambda^{-iz}\widehat{\xi}_{\lambda,N}(z),
+\]
+R056 fixes the campaign normalization
+\[
+F_{\lambda,N}(z)
+=
+\frac12\,
+\frac{\lambda^{iz}G_{\lambda,N}(z)}
+     {\lambda^{-1/2}G_{\lambda,N}(i/2)}.
+\]
 
--i lambda^(-iz) xi_hat(z).
+The protected MATHFORGE R056 packet proves under the CCM convention that
+\[
+\Xi(i/2)=\xi(0)=1/2\ne0.
+\]
+The finite denominator is nonzero because all admitted finite zeros are real.
+R056 proves that \(F_{\lambda,N}\) is entire, even, zero-preserving, anchored at
+\(i/2\), and unique inside the declared affine-exponential gauge class.
 
-The limiting strategy uses a normalization toward Xi.
-
-Do not guess that normalization.
-
-A route agent should:
-
-1. inspect the exact source normalization;
-2. record every scalar/exponential factor;
-3. distinguish normalization depending on lambda, N, and z;
-4. prove that multiplying by the chosen nonvanishing entire factor does not alter the real-zero property;
-5. define one canonical F_{lambda,N}(z) for the campaign.
-
-If the source normalization is ambiguous or changed between versions, send that question to MATHFORGE before proceeding.
-
-A durable normalization theorem/definition is itself a valuable contribution.
+The anchor convention is Solve-native. It is not attributed to CCM and it
+supplies no convergence theorem.
 
 ## 7. C1 — Cofinal schedule
 
@@ -195,6 +200,21 @@ This is a natural place where Route A/B can feed Route C: a quantitative simple-
 
 ## 10. C4 — Normal-family route
 
+This is the preferred next Route C tranche after C0. Reserve RH-R059 for it.
+
+Canonical normalization alone is insufficient. Even entire functions with only
+real zeros and a fixed nonreal anchor can fail local boundedness; for example,
+after normalizing at a nonreal \(z_*\),
+\[
+F_n(z)=\left(\frac{1-z^2}{1-z_*^2}\right)^n
+\]
+has those properties but grows exponentially wherever
+\(|1-z^2|>|1-z_*^2|\).
+
+Therefore the next useful theorem must identify a genuinely uniform growth,
+zero-counting, canonical-product, or logarithmic-derivative condition that
+implies local boundedness for the CCM-normalized family.
+
 Another useful approach is to prove local boundedness of normalized determinants.
 
 If the normalized entire family is locally bounded, Montel gives subsequential locally uniform convergence.
@@ -247,7 +267,7 @@ Do not suppress it.
 
 A contribution is meaningful if it provides one protected result such as:
 
-1. exact canonical determinant normalization;
+1. exact canonical determinant normalization [DELIVERED: RH-R056];
 2. a theorem reducing compact-uniform determinant convergence to a quantitative eigenvector norm/rate [DELIVERED: RH-R053];
 3. a cofinal-index theorem;
 4. a Montel/local-boundedness theorem;
