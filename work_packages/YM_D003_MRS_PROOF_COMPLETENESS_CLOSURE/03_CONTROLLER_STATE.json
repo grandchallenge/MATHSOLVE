@@ -3,7 +3,7 @@
   "controller_id": "YM-D003-MRS-R002-CONTROLLER",
   "campaign_id": "YM-001",
   "target_id": "YM-D003-MRS-R002",
-  "state": "SYNTHESIS_COMPLETE__MT1_SELECTED_FOR_NATIVE_PROOF_OR_FALSIFICATION",
+  "state": "MT1_A_REDUCED__MT1_A1_SELECTED_FOR_NATIVE_PROOF_OR_FALSIFICATION",
   "exact_binds": {
     "grandchallenge/MATH-PROGRAMME": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
     "grandchallenge/MATHFORGE": "3f869e772ef2217addb1ffe45a4058b7470ba36f",
@@ -11,14 +11,14 @@
     "grandchallenge/MATHCERT": "3ffeaf5697a2590c10649fee6baf3b830b4347d9",
     "grandchallenge/INTELLECT": "cacfe1f749b91a335e1d1734352cecff56bad7c1"
   },
-  "current_frontier": "YM-D003-MRS-R002-MT1__EXACT_ZERO_MASS_COUNTERTERM_TUNING",
+  "current_frontier": "YM-D003-MRS-R002-MT1-A1__UNIFORM_MASS_RESPONSE_BOUND",
   "balaban_state": "EXTERNAL_PRIMARY_SOURCE_BYTE_ACCESS_REQUIRED__AUTOMATED_DISCOVERY_EXHAUSTED__NO_FURTHER_SEARCH_REPLAY",
   "external_wp_state": {
     "WP-A": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5967005635",
     "WP-B": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5966952070",
     "WP-C": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5966936787"
   },
-  "controller_next_action": "Execute YM-D003-MRS-R002-MT1-A: type the MRS-specific mass functional/fixed-point map and either prove an invariant-domain plus contraction/implicit-function gate or sharply reduce/falsify it to the smallest missing MRS-specific quantitative estimate.",
+  "controller_next_action": "Construct and control the MRS-specific relevant two-point response Sigma_{rho,R}(b;lambda): prove a UV-uniform Lipschitz/derivative bound < 1 on an invariant interval plus the base-point bound, or sharply falsify/reduce that estimate. Use independent support WPs for source extraction, analytic derivation, and adversarial compatibility.",
   "legitimate_stop_conditions": [
     "governance_or_authority_change",
     "authentication_or_safety_boundary",
@@ -37,5 +37,12 @@
     "node_selected": true,
     "selected_node": "YM-D003-MRS-R002-MT1"
   },
-  "current_boundary": "NATIVE_GCL_PROOF_OR_FALSIFICATION_OF_MT1"
+  "current_boundary": "NATIVE_GCL_PROOF_OR_FALSIFICATION_OF_MT1_A1",
+  "native_reduction": {
+    "parent": "YM-D003-MRS-R002-MT1-A",
+    "selected_node": "YM-D003-MRS-R002-MT1-A1",
+    "disposition": "REDUCED__MRS_SPECIFIC_MASS_RESPONSE_MAP_AND_UNIFORM_LIPSCHITZ_ESTIMATE_MISSING",
+    "conditional_closure": "Banach fixed-point closes exact mass tuning if the MRS-specific self-energy response is defined on an invariant interval, has uniform Lipschitz constant q<1, and satisfies the base-point bound.",
+    "primary_source_result": "MRS states exact b_rho mass tuning is required and should be solved by fixed-point or two-point/1PI analysis; no quantitative fixed-point map or uniform response estimate is supplied."
+  }
 }
