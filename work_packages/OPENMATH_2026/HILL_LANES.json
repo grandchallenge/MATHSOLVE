@@ -100,11 +100,11 @@
       },
       "supporting_leases": {
         "H1-Q6": {
-          "assignment_id": "OM26-H1-WP33",
-          "dispatch_id": "OM26-H1-WP33-IA-001",
-          "agent_ref": "INDEPENDENT-AGENT-133",
-          "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/659",
-          "protected_merge": "17e04181f3b21127e7b1ace6db2e0aa610026aca",
+          "assignment_id": "OM26-H1-WP34",
+          "dispatch_id": "OM26-H1-WP34-IA-001",
+          "agent_ref": "INDEPENDENT-AGENT-134",
+          "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/683",
+          "protected_merge": "PROTECTED_LIFECYCLE_CANDIDATE",
           "readback_verified": false,
           "lifecycle_state": "LEASED_NOT_LAUNCHED",
           "launch_evidence": null,
