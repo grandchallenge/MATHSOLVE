@@ -18,7 +18,7 @@ def validate(root=ROOT):
     f01=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-F01_RESULT.json').read_text())
     tranche=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-01.json').read_text())
 
-    if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_B_AP':
+    if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_TRANCHE_02':
         errors.append('campaign identity/status drift')
     if gate.get('next_residual_role')!='EVIDENCE_ONLY_NOT_SCHEDULING_AUTHORITY':
         errors.append('Next residual regained scheduling authority')
@@ -44,9 +44,13 @@ def validate(root=ROOT):
         errors.append('B01 independent verification node not closed')
     if rows.get('E3-V-B01',{}).get('disposition')!='VERIFIED':
         errors.append('B01 independent verification disposition drift')
-    if rows.get('E3-B-AP',{}).get('status')!='OPEN':
-        errors.append('parent AP bridge incorrectly closed')
-    if frontier.get('active_frontier')!=['E3-B-AP']:
+    if rows.get('E3-B-AP',{}).get('status')!='PROVED':
+        errors.append('exact extremal-series equivalence not proved')
+    if rows.get('E3-Q4-SERIES',{}).get('status')!='OPEN':
+        errors.append('k=4 extremal-series frontier not open')
+    if rows.get('E3-V-B02',{}).get('status')!='OPEN':
+        errors.append('B02 verification node not open')
+    if frontier.get('active_frontier')!=['E3-V-B02','E3-Q4-SERIES']:
         errors.append('active frontier drift')
 
     if f01.get('disposition')!='FORMALIZED':
@@ -64,8 +68,8 @@ def validate(root=ROOT):
         errors.append('B01 historical frontier action drift')
     if campaign.get('work_package_results',{}).get('E3-V01')!='VERIFIED__CLOSED':
         errors.append('E3-V01 closure missing')
-    if campaign.get('current_frontier')!=['E3-B-AP']:
-        errors.append('campaign frontier drift after verification')
+    if campaign.get('current_frontier')!=['E3-V-B02','E3-Q4-SERIES']:
+        errors.append('campaign frontier drift after equivalence upgrade')
     if tranche.get('results',{}).get('E3-F01',{}).get('frontier_action')!='CLOSED_NO_SUCCESSOR':
         errors.append('F01 replay recursion guard drift')
 
@@ -81,6 +85,14 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/work_packages/E3-V01.md',
         'work_packages/GCL_ERDOS3/results/E3-V01_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-V01_ADJUDICATION.json',
+        'work_packages/GCL_ERDOS3/results/E3-B02_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-S02_RESULT.md',
+        'work_packages/GCL_ERDOS3/work_packages/E3-V02.md',
+        'work_packages/GCL_ERDOS3/work_packages/E3-Q01.md',
+        'work_packages/GCL_ERDOS3/work_packages/E3-X01.md',
+        'work_packages/GCL_ERDOS3/work_packages/E3-A02.md',
+        'work_packages/GCL_ERDOS3/work_packages/E3-S03.md',
+        'work_packages/GCL_ERDOS3/E3-TRANCHE-02.json',
     ]
     for path in required_files:
         if not (root/path).is_file():
