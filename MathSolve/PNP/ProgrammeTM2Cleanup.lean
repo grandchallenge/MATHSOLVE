@@ -690,6 +690,189 @@ theorem programmeTM2ClearWorkBefore_all
 #print axioms programmeTM2ClearWorkBefore_update_current
 #print axioms programmeTM2NextWorkOrEmit_eq_mode
 #print axioms programmeTM2ClearWorkBefore_all
+
+/-- Starting at work-tape index `i`, clear every remaining work side and reach
+emit mode.  The coarse bound uses `B` for every side length. -/
+theorem programmeTM2_cleanWork_suffix (M : ProgrammeMachine)
+    (base : ProgrammeTM2State M) (B : Nat)
+    (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+    (output : List Bool)
+    (hleft : ∀ tape, (workLeft tape).length ≤ B)
+    (hright : ∀ tape, (workRight tape).length ≤ B) :
+    ∀ (remaining i : Nat),
+      i + remaining = M.workTapeCount →
+      Nonempty
+        (StateTransition.EvalsToInTime
+          (programmeTM2Machine M).step
+          (programmeTM2CleanupCfg M
+            (programmeTM2WorkCleanupMode M base i) base
+            [] [] [] []
+            (programmeTM2ClearWorkBefore workLeft i)
+            (programmeTM2ClearWorkBefore workRight i) output)
+          (some
+            (programmeTM2CleanupCfg M
+              (.emit (programmeTM2TerminalResult M base)) base
+              [] [] [] [] (fun _ => []) (fun _ => []) output))
+          (2 * remaining * (B + 1))) := by
+  intro remaining
+  induction remaining with
+  | zero =>
+      intro i hcount
+      have hi : i = M.workTapeCount := by omega
+      subst i
+      refine ⟨?_⟩
+      have href :=
+        StateTransition.EvalsToInTime.refl
+          (programmeTM2Machine M).step
+          (programmeTM2CleanupCfg M
+            (.emit (programmeTM2TerminalResult M base)) base
+            [] [] [] [] (fun _ => []) (fun _ => []) output)
+      simpa [programmeTM2WorkCleanupMode,
+        programmeTM2ClearWorkBefore_all] using href
+  | succ remaining ih =>
+      intro i hcount
+      have hi : i < M.workTapeCount := by omega
+      let tape : Fin M.workTapeCount := ⟨i, hi⟩
+      have hmode :
+          programmeTM2WorkCleanupMode M base i = .cleanWorkLeft tape := by
+        simpa [tape] using
+          programmeTM2WorkCleanupMode_inRange M base i hi
+      have hleftAt :
+          (programmeTM2ClearWorkBefore workLeft i tape).length ≤ B := by
+        simpa [programmeTM2ClearWorkBefore, tape] using hleft tape
+      have hrightAt :
+          (programmeTM2ClearWorkBefore workRight i tape).length ≤ B := by
+        simpa [programmeTM2ClearWorkBefore, tape] using hright tape
+      rcases programmeTM2_cleanWorkLeft_run M base tape
+          (programmeTM2ClearWorkBefore workLeft i)
+          (programmeTM2ClearWorkBefore workRight i) output with
+        ⟨hleftRunRaw⟩
+      have hleftRun :
+          StateTransition.EvalsToInTime
+            (programmeTM2Machine M).step
+            (programmeTM2CleanupCfg M
+              (programmeTM2WorkCleanupMode M base i) base
+              [] [] [] []
+              (programmeTM2ClearWorkBefore workLeft i)
+              (programmeTM2ClearWorkBefore workRight i) output)
+            (some
+              (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
+                [] [] [] []
+                (programmeTM2ClearWorkBefore workLeft (i + 1))
+                (programmeTM2ClearWorkBefore workRight i) output))
+            (B + 1) := by
+        have hwiden :=
+          programmeTM2_evalsToInTime_mono hleftRunRaw
+            (Nat.add_le_add_right hleftAt 1)
+        simpa [hmode, tape,
+          programmeTM2ClearWorkBefore_update_current] using hwiden
+      rcases programmeTM2_cleanWorkRight_run M base tape
+          (programmeTM2ClearWorkBefore workLeft (i + 1))
+          (programmeTM2ClearWorkBefore workRight i) output with
+        ⟨hrightRunRaw⟩
+      have hnextMode :
+          programmeTM2NextWorkOrEmit M tape base =
+            programmeTM2WorkCleanupMode M base (i + 1) := by
+        simpa [tape] using
+          programmeTM2NextWorkOrEmit_eq_mode M base i hi
+      have hrightRun :
+          StateTransition.EvalsToInTime
+            (programmeTM2Machine M).step
+            (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
+              [] [] [] []
+              (programmeTM2ClearWorkBefore workLeft (i + 1))
+              (programmeTM2ClearWorkBefore workRight i) output)
+            (some
+              (programmeTM2CleanupCfg M
+                (programmeTM2WorkCleanupMode M base (i + 1)) base
+                [] [] [] []
+                (programmeTM2ClearWorkBefore workLeft (i + 1))
+                (programmeTM2ClearWorkBefore workRight (i + 1)) output))
+            (B + 1) := by
+        have hwiden :=
+          programmeTM2_evalsToInTime_mono hrightRunRaw
+            (Nat.add_le_add_right hrightAt 1)
+        simpa [hnextMode, tape,
+          programmeTM2ClearWorkBefore_update_current] using hwiden
+      have hcount' : (i + 1) + remaining = M.workTapeCount := by
+        omega
+      rcases ih (i + 1) hcount' with ⟨hrest⟩
+      have h12 :=
+        StateTransition.EvalsToInTime.trans
+          (programmeTM2Machine M).step
+          (B + 1) (B + 1)
+          (programmeTM2CleanupCfg M
+            (programmeTM2WorkCleanupMode M base i) base
+            [] [] [] []
+            (programmeTM2ClearWorkBefore workLeft i)
+            (programmeTM2ClearWorkBefore workRight i) output)
+          (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
+            [] [] [] []
+            (programmeTM2ClearWorkBefore workLeft (i + 1))
+            (programmeTM2ClearWorkBefore workRight i) output)
+          (some
+            (programmeTM2CleanupCfg M
+              (programmeTM2WorkCleanupMode M base (i + 1)) base
+              [] [] [] []
+              (programmeTM2ClearWorkBefore workLeft (i + 1))
+              (programmeTM2ClearWorkBefore workRight (i + 1)) output))
+          hleftRun hrightRun
+      have hall :=
+        StateTransition.EvalsToInTime.trans
+          (programmeTM2Machine M).step
+          (2 * (B + 1)) (2 * remaining * (B + 1))
+          (programmeTM2CleanupCfg M
+            (programmeTM2WorkCleanupMode M base i) base
+            [] [] [] []
+            (programmeTM2ClearWorkBefore workLeft i)
+            (programmeTM2ClearWorkBefore workRight i) output)
+          (programmeTM2CleanupCfg M
+            (programmeTM2WorkCleanupMode M base (i + 1)) base
+            [] [] [] []
+            (programmeTM2ClearWorkBefore workLeft (i + 1))
+            (programmeTM2ClearWorkBefore workRight (i + 1)) output)
+          (some
+            (programmeTM2CleanupCfg M
+              (.emit (programmeTM2TerminalResult M base)) base
+              [] [] [] [] (fun _ => []) (fun _ => []) output))
+          (by simpa [two_mul] using h12) hrest
+      refine ⟨?_⟩
+      have hbound :
+          2 * (B + 1) + 2 * remaining * (B + 1) =
+            2 * (remaining + 1) * (B + 1) := by ring
+      simpa [hbound] using hall
+
+/-- Clear all work tapes starting from the machine's canonical first work/emit
+mode. -/
+theorem programmeTM2_cleanWork_run (M : ProgrammeMachine)
+    (base : ProgrammeTM2State M) (B : Nat)
+    (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+    (output : List Bool)
+    (hleft : ∀ tape, (workLeft tape).length ≤ B)
+    (hright : ∀ tape, (workRight tape).length ≤ B) :
+    Nonempty
+      (StateTransition.EvalsToInTime
+        (programmeTM2Machine M).step
+        (programmeTM2CleanupCfg M
+          (programmeTM2FirstWorkOrEmit M base) base
+          [] [] [] [] workLeft workRight output)
+        (some
+          (programmeTM2CleanupCfg M
+            (.emit (programmeTM2TerminalResult M base)) base
+            [] [] [] [] (fun _ => []) (fun _ => []) output))
+        (2 * M.workTapeCount * (B + 1))) := by
+  rcases programmeTM2_cleanWork_suffix M base B workLeft workRight output
+      hleft hright M.workTapeCount 0 (by simp) with ⟨hrun⟩
+  refine ⟨?_⟩
+  have hmode :
+      programmeTM2WorkCleanupMode M base 0 =
+        programmeTM2FirstWorkOrEmit M base := by
+    unfold programmeTM2WorkCleanupMode programmeTM2FirstWorkOrEmit
+    by_cases h : 0 < M.workTapeCount <;> simp [h]
+  simpa [hmode, programmeTM2ClearWorkBefore] using hrun
+
+#print axioms programmeTM2_cleanWork_suffix
+#print axioms programmeTM2_cleanWork_run
 #print axioms programmeTM2_step_cleanRaw_cons
 #print axioms programmeTM2_step_cleanRaw_nil
 #print axioms programmeTM2_step_cleanTemp_cons
