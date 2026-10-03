@@ -120,7 +120,19 @@
         "E3-B-SCALE-LOCAL",
         "E3-B-AP-THRESHOLD"
       ],
-      "statement": "Independently replay the dyadic mass sandwich, summable-threshold forcing lemma, and k-AP-free extremal reduction without using the native derivation."
+      "statement": "Independently replay the dyadic mass sandwich, summable-threshold forcing lemma, and k-AP-free extremal reduction without using the native derivation.",
+      "dispatch": {
+        "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
+        "assignment_id": "E3-V01",
+        "agent_ref": "INDEPENDENT-AGENT-E3-V01-001",
+        "issue_number": 762,
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/762",
+        "task_commit": "6c39975864788f27aea1f0da50fa409625bd5bd6",
+        "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V01.md",
+        "task_blob_sha1": "3b88b26c590deb7ddd08f69f7b535dc8d4e2810c",
+        "state": "DISPATCHED__AWAITING_RETURN",
+        "external_sources": "PROTECTED_PACKET_ONLY"
+      }
     }
   ],
   "closed_claims": [
