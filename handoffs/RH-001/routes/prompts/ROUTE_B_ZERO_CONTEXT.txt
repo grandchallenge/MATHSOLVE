@@ -9,6 +9,7 @@ Mandatory first actions:
 4. Read handoffs/RH-001/routes/ROUTE_B_HERGLOTZ_CONTINUATION.md in full.
 5. Read work_packages/RH_R041_ODD_HERGLOTZ_GAP_CRITERION.md, R042_PARITY_BOTTOM_PARAMETER_CONTINUITY.md, R043_HERGLOTZ_MARGIN_CONTINUITY.md, R044_EXPLICIT_INITIAL_HERGLOTZ_MARGINS.md, R051_RANK_ONE_COERCIVITY_EXTENSION.md, and R052_REFRESHED_HERGLOTZ_MARGINS.md.
 6. Read the protected provider pole interface at grandchallenge/MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648.
+7. Read Route B tracker grandchallenge/MATHSOLVE#412 before allocating any theorem/work-package identifier.
 
 Protected snapshot at pack creation: MATHSOLVE main 7387aa8993355ab854630cf0683b4120a813884c. Rebind live state before mutation.
 
@@ -47,6 +48,11 @@ A meaningful contribution may be:
 - a resolvent scalar theorem;
 - an explicit continuation interval;
 - or a rigorous obstruction to a proposed continuation mechanism.
+
+Identifier discipline:
+- From RH-R055 onward, Route B owns the lane R055, R058, R061, ... .
+- Check tracker #412 and consume only the next unused identifier in that lane.
+- Never infer the globally next integer from the latest protected theorem and never use Route A/C lane identifiers.
 
 Execution:
 - Branch from live protected main.

@@ -9,6 +9,7 @@ Mandatory first actions:
 4. Read handoffs/RH-001/routes/ROUTE_A_LOCAL_ANALYTIC_CONTINUATION.md in full.
 5. Read work_packages/RH_R051_RANK_ONE_COERCIVITY_EXTENSION.md and its protected predecessors R050 and R049. Read R045-R048 if you change remainder or coercivity arguments.
 6. Read the protected source audit at grandchallenge/MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320, reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md.
+7. Read Route A tracker grandchallenge/MATHSOLVE#411 before allocating any theorem/work-package identifier.
 
 Protected snapshot at route-pack creation: MATHSOLVE main 7387aa8993355ab854630cf0683b4120a813884c. This is a historical bind, not permission to work on a stale base.
 
@@ -40,6 +41,11 @@ A meaningful result is one of:
 2. a stronger reusable even/odd coercivity theorem;
 3. a stronger reusable remainder estimate;
 4. a protected obstruction theorem showing why a plausible continuation mechanism cannot improve the frontier.
+
+Identifier discipline:
+- From RH-R054 onward, Route A owns the lane R054, R057, R060, ... .
+- Check tracker #411 and consume only the next unused identifier in that lane.
+- Never infer the globally next integer from the latest protected theorem and never use Route B/C lane identifiers.
 
 Execution doctrine:
 - Open a bounded issue and branch from live protected main.

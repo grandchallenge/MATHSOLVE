@@ -11,6 +11,7 @@ Mandatory first actions:
 6. Read the protected provider audit at grandchallenge/MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790, reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md.
 7. Read R036/R037 for the simple-even/Galerkin interface, the current local simple-even frontier theorem R051, and R053 for C2 compact transform stability.
 8. Acquire/read the exact primary Zeta Spectral Triples source before asserting a determinant normalization not already protected.
+9. Read Route C tracker grandchallenge/MATHSOLVE#414 before allocating any theorem/work-package identifier.
 
 Protected snapshot at route-pack creation: MATHSOLVE main 7387aa8993355ab854630cf0683b4120a813884c. Rebind live state before mutation.
 
@@ -51,6 +52,11 @@ Governance:
 - Use MATHFORGE for exact source normalization, version discrepancies, or imported convergence results.
 - MATHCERT becomes relevant only when a bounded terminal convergence claim has a complete exact proof/checker surface.
 - Do not claim RH inside ordinary development. If the convergence theorem is actually closed, stop at the governed terminal boundary and route the exact proof for certification.
+
+Identifier discipline:
+- From RH-R056 onward, Route C owns the lane R056, R059, R062, ... .
+- Check tracker #414 and consume only the next unused identifier in that lane.
+- Never infer the globally next integer from the latest protected theorem and never use Route A/B lane identifiers.
 
 Execution:
 - Open a bounded issue for one C0-C6 obligation.
