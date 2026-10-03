@@ -3,22 +3,22 @@
   "controller_id": "YM-D003-MRS-R002-CONTROLLER",
   "campaign_id": "YM-001",
   "target_id": "YM-D003-MRS-R002",
-  "state": "R2P1_C0_CLOSED__C1_AUTHORIZED",
+  "state": "R2P1_C2_HV_CLOSED__BGDET_LOCALIZED__C2_M_ACTIVE",
   "exact_binds": {
     "grandchallenge/MATH-PROGRAMME": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
     "grandchallenge/MATHFORGE": "9b6413a7ca5972b7d724ea8f1594c01b8f46cf45",
-    "grandchallenge/MATHSOLVE": "1716d39a228e71b2b9f16f902dda32694d62557a",
+    "grandchallenge/MATHSOLVE": "49b7a3642b540c3b3db752c696e49c8dd4388a36",
     "grandchallenge/MATHCERT": "3ffeaf5697a2590c10649fee6baf3b830b4347d9",
     "grandchallenge/INTELLECT": "cacfe1f749b91a335e1d1734352cecff56bad7c1"
   },
-  "current_frontier": "YM-D003-MRS-R002-R2P1-C1__CANDIDATE_NORM_AND_ROOTED_POLYMER_MAJORANT",
+  "current_frontier": "YM-D003-MRS-R002-R2P1-C2-M__MAYER_LINK_SUMMABILITY",
   "balaban_state": "EXTERNAL_PRIMARY_SOURCE_BYTE_ACCESS_REQUIRED__AUTOMATED_DISCOVERY_EXHAUSTED__NO_FURTHER_SEARCH_REPLAY",
   "external_wp_state": {
     "WP-A": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5967005635",
     "WP-B": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5966952070",
     "WP-C": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5966936787"
   },
-  "controller_next_action": "Execute C1: define the weakest rooted-polymer majorant for the closed C0 grammar, with separate weights for ordinary horizontal/vertical/Mayer links and the exceptional BGDET large-field/background sector. Tie every weight to MRS VII.1/power counting or a native lemma; do not import scalar exponents by analogy.",
+  "controller_next_action": "Execute C2-M: establish the rooted one-step Mayer-link sum after hard-core removal. BGDET is region-local and absorbed into the Section VI-controlled large-field box activity, so the branching parameter is q = epsilon*C_comb*(L_H+L_V+L_M).",
   "legitimate_stop_conditions": [
     "governance_or_authority_change",
     "authentication_or_safety_boundary",
@@ -37,7 +37,7 @@
     "node_selected": true,
     "selected_node": "YM-D003-MRS-R002-MT1"
   },
-  "current_boundary": "ACTIVE_NATIVE_PROOF__R2P1_C1_MAJORANT",
+  "current_boundary": "ACTIVE_NATIVE_PROOF__R2P1_C2_MAYER_LINK_SUM",
   "native_reduction": {
     "MT1-A": "REDUCED_TO_UNIFORM_MRS_1PI_MASS_RESPONSE_CONTROL",
     "MT1-A1": "MT1_NOT_STRICTLY_UPSTREAM__COUPLED_TO_LOCAL_RENORMALIZED_TWO_POINT_POLYMER_BOUND",
@@ -61,6 +61,10 @@
       "C5_BACKGROUND_GAUGE_AND_SECTION_VI_COMPATIBILITY"
     ],
     "anti_circularity": "No global Schwinger/polymer convergence may be assumed to prove C0-C5.",
-    "C0": "CLOSED__FINITE_GRAMMAR_AND_BOUNDED_SOURCE_CONCORDANCE_COMPLETE"
+    "C0": "CLOSED__FINITE_GRAMMAR_AND_BOUNDED_SOURCE_CONCORDANCE_COMPLETE",
+    "C1": "CLOSED__ROOTED_MAJORANT_AND_TREE_REDUCTION_PROVED",
+    "C2_H": "CLOSED__SPATIAL_LINK_L1_SUM_FINITE_UNIFORM_IN_RHO",
+    "C2_V": "CLOSED__ANISOTROPIC_SCALE_SUM_GEOMETRIC_UNIFORM_IN_RHO",
+    "C2_BG": "DISCHARGED_AS_REGION_LOCAL_BOX_ACTIVITY"
   }
 }
