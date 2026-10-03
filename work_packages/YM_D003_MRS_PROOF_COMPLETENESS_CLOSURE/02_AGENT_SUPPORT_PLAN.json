@@ -13,8 +13,11 @@
       "concurrency_mode": "independent_blind",
       "external_sources": "PRIMARY_SOURCES_ALLOWED",
       "priority": 1,
-      "launch_state": "PREPARED_PENDING_ISSUE_BINDING",
-      "success": "Exact citation/theorem dependency graph with claim locations, hypotheses, conclusions, applicability, and one of the four governed evidence dispositions for every material node."
+      "launch_state": "READY_FOR_GITHUB_COMMENT",
+      "success": "Exact citation/theorem dependency graph with claim locations, hypotheses, conclusions, applicability, and one of the four governed evidence dispositions for every material node.",
+      "github_issue_number": 716,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/716",
+      "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec"
     },
     {
       "id": "YM-D003-MRS-R002-WP-B",
@@ -23,8 +26,11 @@
       "concurrency_mode": "independent_blind",
       "external_sources": "PRIMARY_SOURCES_ALLOWED",
       "priority": 1,
-      "launch_state": "PREPARED_PENDING_ISSUE_BINDING",
-      "success": "A checked theorem-grade closure of one material convergence implication, or a sharp reduction identifying the smallest additional hypothesis/source lemma needed."
+      "launch_state": "READY_FOR_GITHUB_COMMENT",
+      "success": "A checked theorem-grade closure of one material convergence implication, or a sharp reduction identifying the smallest additional hypothesis/source lemma needed.",
+      "github_issue_number": 717,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/717",
+      "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec"
     },
     {
       "id": "YM-D003-MRS-R002-WP-C",
@@ -33,8 +39,11 @@
       "concurrency_mode": "independent_blind",
       "external_sources": "PROTECTED_PACKET_ONLY",
       "priority": 1,
-      "launch_state": "PREPARED_PENDING_ISSUE_BINDING",
-      "success": "An exact hidden-assumption/counterexample audit of the proposed upgrade from qualified source claim to theorem-grade fixed-IR UV construction."
+      "launch_state": "READY_FOR_GITHUB_COMMENT",
+      "success": "An exact hidden-assumption/counterexample audit of the proposed upgrade from qualified source claim to theorem-grade fixed-IR UV construction.",
+      "github_issue_number": 718,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/718",
+      "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec"
     }
   ],
   "synthesis_gate": {
@@ -51,5 +60,7 @@
     "next_action_if_consistent": "Select the smallest confirmed MISSING_THEOREM_GRADE_PROOF node and open a bounded native proof/falsification tranche.",
     "next_action_if_inconsistent": "Protect the disagreement as evidence, identify the exact conflicting premise, and resolve before theorem promotion."
   },
-  "claim_boundary": "This registry allocates independent support work only. It does not authorize certification, canonical claim mutation, source admission, or cross-route composition."
+  "claim_boundary": "This registry allocates independent support work only. It does not authorize certification, canonical claim mutation, source admission, or cross-route composition.",
+  "dispatch_binding_state": "ALL_THREE_ISSUES_BOUND",
+  "dispatch_binding_base": "0bd614f27b22c3a5350347cbda51b0267ddf29ec"
 }
