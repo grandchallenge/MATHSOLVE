@@ -463,6 +463,7 @@
       "path": ".github/workflows/ym-mrs-independent-contribution-intake.yml",
       "observed_features": [
         "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL",
         "WRITE_CAPABLE"
       ],
       "topology": "PERSISTENT_CONTROLLER_REQUIRED",
@@ -479,4 +480,4 @@
     "claim_promotion": false,
     "commercial": false
   }
-}\n
+}
