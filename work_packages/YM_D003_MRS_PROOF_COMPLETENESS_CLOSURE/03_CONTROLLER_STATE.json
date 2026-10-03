@@ -3,7 +3,7 @@
   "controller_id": "YM-D003-MRS-R002-CONTROLLER",
   "campaign_id": "YM-001",
   "target_id": "YM-D003-MRS-R002",
-  "state": "PARTIAL_EXTERNAL_RESULTS_RECEIVED__SYNTHESIS_GATE_BLOCKED_ON_WP_A",
+  "state": "SYNTHESIS_COMPLETE__MT1_SELECTED_FOR_NATIVE_PROOF_OR_FALSIFICATION",
   "exact_binds": {
     "grandchallenge/MATH-PROGRAMME": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
     "grandchallenge/MATHFORGE": "3f869e772ef2217addb1ffe45a4058b7470ba36f",
@@ -11,14 +11,14 @@
     "grandchallenge/MATHCERT": "3ffeaf5697a2590c10649fee6baf3b830b4347d9",
     "grandchallenge/INTELLECT": "cacfe1f749b91a335e1d1734352cecff56bad7c1"
   },
-  "current_frontier": "MRS_SOURCE_PROOF_COMPLETENESS_DECOMPOSITION",
+  "current_frontier": "YM-D003-MRS-R002-MT1__EXACT_ZERO_MASS_COUNTERTERM_TUNING",
   "balaban_state": "EXTERNAL_PRIMARY_SOURCE_BYTE_ACCESS_REQUIRED__AUTOMATED_DISCOVERY_EXHAUSTED__NO_FURTHER_SEARCH_REPLAY",
   "external_wp_state": {
-    "WP-A": "AWAITING_FIRST_VALID_RESULT__ISSUE_716",
-    "WP-B": "RECEIVED_UNADJUDICATED__COMMENT_5966952070",
-    "WP-C": "RECEIVED_UNADJUDICATED__COMMENT_5966936787"
+    "WP-A": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5967005635",
+    "WP-B": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5966952070",
+    "WP-C": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5966936787"
   },
-  "controller_next_action": "Receive a first valid WP-A source-dependency RESULT/1. Then independently compose WP-A with the already received WP-B/WP-C evidence, type every dependency edge against the downstream topology/domain, and select the smallest confirmed MISSING_THEOREM_GRADE_PROOF node for native GCL proof/falsification.",
+  "controller_next_action": "Execute YM-D003-MRS-R002-MT1-A: type the MRS-specific mass functional/fixed-point map and either prove an invariant-domain plus contraction/implicit-function gate or sharply reduce/falsify it to the smallest missing MRS-specific quantitative estimate.",
   "legitimate_stop_conditions": [
     "governance_or_authority_change",
     "authentication_or_safety_boundary",
@@ -32,9 +32,10 @@
   "pre_synthesis_replay": {
     "WP-B": "INDEPENDENT_REPLAY_SUPPORTS_CONDITIONAL_FINITE_ORDER_SLAVNOV_LIMIT_PASSAGE; upstream Schwinger convergence and delta_N(rho)->0 remain unproved by this contribution",
     "WP-C": "INDEPENDENT_REPLAY_SUPPORTS_TYPED_TOPOLOGY_DOMAIN_UNIFORMITY_OBJECTION; bibliographic completeness alone is insufficient",
-    "synthesis_gate_satisfied": false,
-    "blocking_input": "WP-A source-dependency reconstruction return",
-    "node_selected": false
+    "synthesis_gate_satisfied": true,
+    "blocking_input": null,
+    "node_selected": true,
+    "selected_node": "YM-D003-MRS-R002-MT1"
   },
-  "current_boundary": "SOURCE_DEPENDENCY_RETURN_WP_A_NOT_YET_RECEIVED"
+  "current_boundary": "NATIVE_GCL_PROOF_OR_FALSIFICATION_OF_MT1"
 }

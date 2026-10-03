@@ -4,7 +4,7 @@
   "parent_debt": "YM-D003",
   "target_id": "YM-D003-MRS-R002",
   "artifact_id": "YM-D003-MRS-PROOF-COMPLETENESS-DAG",
-  "status": "ACTIVE_PROVISIONAL_DECOMPOSITION",
+  "status": "ACTIVE_NATIVE_PROOF_TARGET_SELECTED",
   "protected_inputs": {
     "programme_head": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
     "forge_head": "3f869e772ef2217addb1ffe45a4058b7470ba36f",
@@ -16,26 +16,32 @@
     {
       "id": "YM-D003-MRS-R002-A",
       "kind": "SOURCE_DEPENDENCY_GRAPH",
-      "status": "OPEN",
-      "statement": "Identify the exact MRS body claims and cited prior theorems carrying omitted convergence details."
+      "status": "CLOSED_BY_INDEPENDENT_SYNTHESIS",
+      "statement": "Exact MRS source/dependency graph reconstructed and independently replayed sufficiently to select the smallest theorem-grade gap."
+    },
+    {
+      "id": "YM-D003-MRS-R002-MT1",
+      "kind": "EXACT_ZERO_MASS_COUNTERTERM_TUNING",
+      "status": "SELECTED_FOR_NATIVE_GCL_PROOF_OR_FALSIFICATION",
+      "statement": "Construct or sharply reduce the MRS-specific exact relevant A^2 counterterm choice b_rho(lambda,R) that enforces zero renormalized mass with UV-uniform quantitative control adequate for the subsequent multiscale/polymer induction."
     },
     {
       "id": "YM-D003-MRS-R002-B",
       "kind": "EXPANSION_CONVERGENCE_AND_SUMMABILITY",
-      "status": "PROVISIONAL_OPEN",
-      "statement": "Establish or precisely locate theorem-grade convergence/summability control for the fixed-IR constructive expansion."
+      "status": "OPEN_DOWNSTREAM_OF_MT1",
+      "statement": "MRS-specific expansion/Mayer/polymer summability remains open after exact relevant-mass tuning is closed."
     },
     {
       "id": "YM-D003-MRS-R002-C",
       "kind": "UV_UNIFORM_SCHWINGER_CONTROL_AND_LIMIT",
-      "status": "PROVISIONAL_OPEN",
-      "statement": "Establish the exact estimates and implication giving ultraviolet-cutoff removal for the fixed-IR Schwinger family."
+      "status": "BLOCKED_ON_MT1_AND_R002_B",
+      "statement": "Cutoff-uniform fixed-IR Schwinger convergence remains blocked on exact mass tuning plus MRS-specific global summability."
     },
     {
       "id": "YM-D003-MRS-R002-D",
       "kind": "SLAVNOV_LIMIT_COMPATIBILITY",
-      "status": "PROVISIONAL_OPEN",
-      "statement": "Establish the source-bound justification for passage of the corresponding Slavnov identities to the ultraviolet limit."
+      "status": "CONDITIONAL_FIXED_ORDER_LIMIT_PASSAGE_CLOSED__DEFECT_ESTIMATE_OPEN",
+      "statement": "For fixed IR regulator/order, the linear Slavnov identity passes to the UV limit once the required smeared Schwinger convergence and delta_N(rho)->0 hold; the upstream quantitative premises remain open."
     },
     {
       "id": "YM-D003-MRS-R002-E",
@@ -91,6 +97,16 @@
       "from": "YM-D003-MRS-R002-E",
       "to": "YM-D003-MRS-R003",
       "type": "theorem_grade_route_before_ir_removal"
+    },
+    {
+      "from": "YM-D003-MRS-R002-A",
+      "to": "YM-D003-MRS-R002-MT1",
+      "type": "dependency_graph_selects_smallest_confirmed_gap"
+    },
+    {
+      "from": "YM-D003-MRS-R002-MT1",
+      "to": "YM-D003-MRS-R002-B",
+      "type": "exact_mass_tuning_precedes_global_summability"
     }
   ],
   "agent_support": [
@@ -128,5 +144,7 @@
     "Do not extend pure SU(2), trivial topological sector conclusions to other gauge groups or sectors without a theorem.",
     "Do not infer Yang-Mills mass gap or terminal YM-001 closure."
   ],
-  "claim_boundary": "Provisional Solve decomposition only. Node names B-D may be refined by source evidence; no theorem or campaign status is promoted by this DAG."
+  "claim_boundary": "Provisional Solve decomposition only. Node names B-D may be refined by source evidence; no theorem or campaign status is promoted by this DAG.",
+  "selected_native_node": "YM-D003-MRS-R002-MT1",
+  "selection_rationale": "MRS explicitly requires exact mass fine-tuning but only points to scalar phi4 fixed-point/two-point methods by analogy; the cited scalar theorem does not match the MRS SU(2) gauge setting. MT1 is upstream and smaller than polymer/Schwinger convergence, while fixed-order Slavnov limit passage is conditionally closed once its premises hold."
 }
