@@ -50,7 +50,9 @@ Current theorem-development identifier allocation is global across the campaign:
 
 - RH-R054 — Route A richer-even-trial tranche;
 - RH-R055 — Route B no-prime quantitative sector-bottom/Herglotz-variation tranche;
-- RH-R056 — reserved for the next bounded Route C tranche.
+- RH-R056 — Route C C0 canonical determinant-normalization tranche.
+
+From R054 onward, independent routes use collision-free theorem-ID lanes: Route A consumes R054+3k, Route B consumes R055+3k, and Route C consumes R056+3k for k>=0. Each route must check its tracker and consume only the next unused ID in its own lane.
 
 A prior Route B tracker comment also used RH-R054. That collision is superseded by the allocation above. The existing implementation branch `rh-r054-route-b-variation` may remain as a mechanical branch name, but any admitted theorem/work-package identity from that work is RH-R055.
 
