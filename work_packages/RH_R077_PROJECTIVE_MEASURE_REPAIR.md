@@ -150,6 +150,24 @@ hence
 So strip analyticity alone gives no bound of the form
 \(\exp(-\pi|j|\rho/a)\).
 
+Evenness does not repair the hypothesis.  The even entire function
+\(f(x)=x^2\) has, for \(j\ne0\),
+
+\[
+c_j
+=
+\frac{4a^3(-1)^j}{\pi^2j^2\sqrt{2a}},
+\qquad
+|c_j|
+=
+\frac{2\sqrt2\,a^{5/2}}{\pi^2j^2},
+\tag{1.3}
+\]
+
+again only algebraic decay.  Exponential periodic Fourier decay requires
+additional endpoint matching / periodic analytic continuation or another
+independent approximation theorem.
+
 Accordingly:
 
 - R074's orthogonal projection inequality remains valid;
