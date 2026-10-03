@@ -155,13 +155,13 @@ def programmeTM2TimedDecider {decision : List Bool → Bool}
   outputsFun := by
     intro input
     have hinput :
-        List.map (⇑(Equiv.refl Bool).symm) input = input := by
+        List.map (Equiv.refl Bool).invFun input = input := by
       induction input with
       | nil => rfl
       | cons b rest ih =>
           simp [ih]
     have houtput :
-        List.map (⇑(Equiv.refl Bool).symm)
+        List.map (Equiv.refl Bool).invFun
             (Computability.encodeBool (decision input)) =
           [decision input] := by
       cases h : decision input <;> rfl
