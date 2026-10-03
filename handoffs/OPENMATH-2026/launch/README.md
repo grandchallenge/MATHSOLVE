@@ -5,7 +5,7 @@ Canonical mode is `LINK_IN_RELAY_OUT`. No human work-package copy/paste is part 
 | Hill | Immutable task | Executable |
 |---|---|---|
 | H1 | https://github.com/grandchallenge/MATHSOLVE/blob/6184a3fcceb2d402f2cb56b8bacea879209ebd5f/handoffs/OPENMATH-2026/launch/OM26-H1-WP08.md | Yes — OM26-H1-WP08 / INDEPENDENT-AGENT-108 |
-| H2 | https://github.com/grandchallenge/MATHSOLVE/blob/c601490a4599e13b26b4fb46f3a49175ed43ad29/handoffs/OPENMATH-2026/launch/OM26-H2-WP09.md | Yes — OM26-H2-WP09 / INDEPENDENT-AGENT-209 |
+| H2 | https://github.com/grandchallenge/MATHSOLVE/blob/a37e3286f28024f0e0f1b75fe7a9f17bedb49efa/handoffs/OPENMATH-2026/launch/OM26-H2-WP10.md | Yes — OM26-H2-WP10 / INDEPENDENT-AGENT-210 |
 | H3 | https://github.com/grandchallenge/MATHSOLVE/blob/3b710874922737ef0d349360b5bc69d166c2b765/handoffs/OPENMATH-2026/launch/OM26-H3-WP07.md | Yes — OM26-H3-WP07 / INDEPENDENT-AGENT-307 |
 | H4 | https://github.com/grandchallenge/MATHSOLVE/blob/7ec7956f6bb5add826523c110a29ea70a1ed0ce7/handoffs/OPENMATH-2026/launch/OM26-H4-WP06.md | Yes — OM26-H4-WP06 / INDEPENDENT-AGENT-406 |
 | H5 | https://github.com/grandchallenge/MATHSOLVE/blob/d3d973eb27311f27fecc879c74491b0faebfc462/handoffs/OPENMATH-2026/launch/OM26-H5-WP06.md | Yes — OM26-H5-WP06 / INDEPENDENT-AGENT-506 |
