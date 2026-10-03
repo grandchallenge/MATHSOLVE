@@ -60,9 +60,8 @@ theorem programmeTM2AfterInput_snapshotAction
     ProgrammeTM2State.snapshotAction M
         (programmeTM2AfterInputState M s stk) =
       ProgrammeTM2State.snapshotAction M s := by
-  cases hmove : (ProgrammeTM2State.snapshotAction M s).inputMove <;>
-    simp [programmeTM2AfterInputState, hmove,
-      ProgrammeTM2State.snapshotAction]
+  unfold programmeTM2AfterInputState ProgrammeTM2State.snapshotAction
+  split <;> rfl
 
 /-- A work-tape update does not alter the frozen action fields. -/
 theorem programmeTM2AfterWork_snapshotAction
@@ -71,10 +70,8 @@ theorem programmeTM2AfterWork_snapshotAction
     ProgrammeTM2State.snapshotAction M
         (programmeTM2AfterWorkState M tape s stk) =
       ProgrammeTM2State.snapshotAction M s := by
-  cases hmove : (ProgrammeTM2State.snapshotAction M s).workMove tape <;>
-    simp [programmeTM2AfterWorkState, hmove,
-      ProgrammeTM2State.setWorkSymbol,
-      ProgrammeTM2State.snapshotAction]
+  unfold programmeTM2AfterWorkState ProgrammeTM2State.snapshotAction
+  split <;> rfl
 
 /-- Exact input-tape effect of the frozen Programme input-head movement.
 
