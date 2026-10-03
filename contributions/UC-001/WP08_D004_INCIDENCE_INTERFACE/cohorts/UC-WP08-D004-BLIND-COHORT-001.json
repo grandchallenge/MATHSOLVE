@@ -4,7 +4,7 @@
   "cohort_id": "UC-WP08-D004-BLIND-COHORT-001",
   "campaign": "UC-001",
   "work_package": "WP08-D004",
-  "state": "PREPARED_PENDING_GITHUB_ISSUE_BINDING",
+  "state": "OPEN_AWAITING_RESULTS",
   "mode": "independent_blind",
   "dispatch_ids": [
     "UC-WP08-D004-WP01-IA-001",
@@ -18,5 +18,6 @@
   "synthesis_allowed": false,
   "closure_condition": "All four member dispatches have one durably protected valid result, or a protected reconciliation records missing returns and explicitly closes the cohort.",
   "adversarial_lane": "UC-WP08-D004-WP05-IA-001",
-  "claim_boundary": "Cohort closure permits adjudication and synthesis only; it does not certify or promote any mathematical claim."
+  "claim_boundary": "Cohort closure permits adjudication and synthesis only; it does not certify or promote any mathematical claim.",
+  "activation_receipt_path": "contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/ACTIVATION_RECEIPT.json"
 }
