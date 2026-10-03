@@ -428,13 +428,12 @@ F_j(0)
 \tag{6.1}
 \]
 
-Since the kernel \(1/\cosh(x/2)\) lies in \(C_0([0,\infty))\), escape of all
-mass to infinity forces \(F_j(0)\to0\).
+Since the kernel \(1/\cosh(x/2)\) lies in \(C_0([0,\infty))\), if mass escapes to infinity in the precise sense that \(\nu_j([0,R])\to0\) for every finite \(R\), then \(F_j(0)\to0\).
 
 Conversely, a lower bound
 
 \[
-\limsup_j F_j(0)>0
+\limsup_j |F_j(0)|>0
 \tag{6.2}
 \]
 
@@ -459,9 +458,9 @@ U=\{z:|\operatorname{Im}z|<1/2\}.
 
 Let \((F_j)\) be holomorphic functions on \(U\) satisfying:
 
-1. \((F_j)\) is a normal family on \(U\);
+1. \((F_j)\) is locally bounded on \(U\) (hence normal);
 2. every zero of every \(F_j\) in \(U\) is real;
-3. \(\limsup_j F_j(0)>0\);
+3. \(F_j(0)\ne0\) and \(\limsup_j |F_j(0)|>0\);
 4. there is a nonempty real interval \(I\) such that, for every \(t\in I\),
 
 \[
@@ -485,9 +484,9 @@ c\,\Xi
 locally uniformly on \(U\).
 
 Proof. From (3), choose a subsequence with
-\(|F_{j_k}(0)|\ge\varepsilon>0\). By normality, pass to a further subsequence
+\(|F_{j_k}(0)|\ge\varepsilon>0\). By local boundedness and Montel, pass to a further subsequence
 converging locally uniformly to \(F_\infty\). Pass again if necessary so that
-\(F_{j_k}(0)\to c_0\); boundedness at \(0\) follows from local normality and
+\(F_{j_k}(0)\to c_0\); boundedness at \(0\) follows from local boundedness and
 \(|c_0|\ge\varepsilon\).
 
 For every \(t\in I\),
