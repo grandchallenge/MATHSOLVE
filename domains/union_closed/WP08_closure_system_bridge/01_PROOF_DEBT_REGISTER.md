@@ -7,7 +7,7 @@ Date: 2026-09-25
 | WP08-D001 | Decide whether arbitrary finite union-closed families admit exact D003-complement representation. | Closed negative | `p04_no_universal_exact_functionalPreorder_representation`; explicit three-point obstruction. |
 | WP08-D002 | Extend the Frankl-facing result from functional preorders to arbitrary finite partial orders. | Closed locally | `posetIdealFamily_exists_rare` and `posetIdeal_complement_frankl`; maximal-element erasure injection. |
 | WP08-D003 | Express arbitrary finite closure systems by closure operators / implication bases and isolate the first non-poset obstruction. | Closed locally | Canonical closure operator and finite implication basis are checked; single binary implication `{a,b}->c` is a closure system not representable by unary implications; D002 erasure fails at the forced conclusion; bounded example still satisfies the rare-element/complement endgame. |
-| WP08-D004 | Build an incidence-preserving interface to the WP05 minimum-counterexample lattice spine. | Open / next | Must retain abstract closure/lattice order and concrete ground-element incidence simultaneously. |
+| WP08-D004 | Build an incidence-preserving interface to the WP05 minimum-counterexample lattice spine. | Active preparation | Five bounded independent work packages are registered: four blind lanes (principal incidence, join-irreducible incidence, implication semantics, WP05 frequency translation) plus one adversarial representation audit. Dispatches remain pending until protected issue-byte binding and activation. |
 
 ## D003 movement
 
@@ -63,3 +63,28 @@ frequency transport.
 UC-P04 = OPEN
 UC-FRANKL = OPEN_PROBLEM
 ```
+
+## D004 governed fan-out
+
+The D004 plan is now decomposed into five independent evidence lanes under the
+Controlled Epistemic Interface.
+
+```text
+WP01 principal incidence              blind
+WP02 join-irreducible incidence       blind
+WP03 implication semantics            blind
+WP04 WP05 frequency translation       blind
+WP05 adversarial representation audit adversarial
+```
+
+WP01-WP04 are cohort `UC-WP08-D004-BLIND-COHORT-001`. Synthesis is prohibited
+before cohort closure. WP05 may not consume blind returns before integration.
+
+The dispatch registry is under
+`contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/`. The immutable task
+content is bound to commit `283a82b53c36c999805805df94fde24e0af578ee`.
+
+The activation sequence is fail-closed: protect the CEI UC intake profile,
+protect this packet, bind issues #721-#725 byte-for-byte to their protected
+bootstraps, verify the bindings, and only then change dispatch status to
+`READY_FOR_GITHUB_COMMENT`.

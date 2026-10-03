@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_DISPATCH_REGISTRY",
+  "campaign": "UC-001",
+  "work_package": "WP08-D004",
+  "state": "PREPARED_PENDING_GITHUB_ISSUE_BINDING",
+  "task_commit": "283a82b53c36c999805805df94fde24e0af578ee",
+  "dispatch_ids": [
+    "UC-WP08-D004-WP01-IA-001",
+    "UC-WP08-D004-WP02-IA-001",
+    "UC-WP08-D004-WP03-IA-001",
+    "UC-WP08-D004-WP04-IA-001",
+    "UC-WP08-D004-WP05-IA-001"
+  ],
+  "blind_cohort_id": "UC-WP08-D004-BLIND-COHORT-001",
+  "claim_boundary": "External returns are evidence only. UC-P04 and UC-FRANKL remain open; no dispatch, intake, or receipt has canonical mathematical claim effect."
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "UC-WP08-D004-WP02-IA-001",
+  "campaign": "UC-001",
+  "work_package": "WP08-D004",
+  "assignment_id": "UC-WP08-D004-WP02",
+  "dispatch_id": "UC-WP08-D004-WP02-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-UC402",
+  "objective": "JOIN-IRREDUCIBLE-INCIDENCE",
+  "concurrency_mode": "independent_blind",
+  "immutable_task": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "283a82b53c36c999805805df94fde24e0af578ee",
+    "path": "handoffs/UC-001/launch/UC-WP08-D004-WP02-IA-001.md",
+    "blob_sha1": "33c71014c8311852d48e7198e7f5030e479eb29e",
+    "sha256": "744d54c80985c4c1174b4dfafd603f8b3290888483ef7022c4fdb61ea5683ec9"
+  },
+  "return_surface": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "issue_number": 722,
+    "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/722",
+    "protocol": "GCL-CONTRIBUTION-RESULT/1"
+  },
+  "acceptable_dispositions": [
+    "PROVED_REDUCTION",
+    "EXACT_CERTIFICATE",
+    "FORMAL_LEMMA_PROVED",
+    "COUNTEREXAMPLE",
+    "NO_MATERIAL_DELTA",
+    "EXACT_BLOCKER"
+  ],
+  "canonical_mutation_authorized": false,
+  "mathematical_adjudication_authorized": false,
+  "certification_authorized": false,
+  "lifecycle_state": "PREPARED_PENDING_GITHUB_ISSUE_BINDING"
+}
