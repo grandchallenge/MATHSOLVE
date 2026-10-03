@@ -1,5 +1,3 @@
-> **STAGED / NON-EXECUTABLE.** This canonical job is prepared for the successor of MATH-PROGRAMME #664 but is not an active launch. Do not execute it until a protected `GCL-ZERO-CONTEXT-LAUNCH/2` artifact is published after #664 exact-head review, protected admission, and protected-main readback. The activation commit must replace the candidate predecessor below with the admitted protected SHA.
-
 GCL-CONTRIBUTION-DISPATCH/1
 dispatch_id: CMDG-P3M-SEP-WP-A-IA-001
 agent_ref: INDEPENDENT-AGENT-CMDG-A
@@ -16,9 +14,9 @@ You are an independent zero-context mathematical contributor. This document is t
 
 Timebox: 35 minutes of substantive work, then return the strongest exact result reached.
 
-## Protected packet at activation
+## Protected packet
 
-The activation commit must source-lock these facts from protected `grandchallenge/MATH-PROGRAMME/main`.
+The following facts are source-locked from protected `grandchallenge/MATH-PROGRAMME/main` at `f7f99e18b83a3015d1a7ef835ee71434d01a9dba`.
 
 Mathematical setting:
 
@@ -39,13 +37,17 @@ Already protected interfaces:
 4. `kernelProductSection` and `kernelProductFunctional` are the protected weighted-Boolean product interfaces.
 5. Protected finite-coordinate dependence is available for `kernelProductFunctional`.
 
-Candidate predecessor awaiting admission:
+Protected predecessor admission:
 
-- MATH-PROGRAMME PR #919 exact candidate head: `cff36869559e52eb5440dfc3b00cefa27648ae4e`.
-- Candidate endpoint:
+- MATH-PROGRAMME PR #919 was admitted through the native merge queue at protected main `f7f99e18b83a3015d1a7ef835ee71434d01a9dba`.
+- Protected source file:
+  `fixtures/formal/CMDG-NAT-CONCORDANCE-001/CMDGCondensedCM4P3GPointFunctional.lean`,
+  blob `1f867034ec1474418cf416ee8583449bcbe80ee5`.
+- Admitted endpoint:
   `kernelProductFunctional_eq_zero_of_solidification_kernel`, proving from the kernel hypothesis that
   `kernelProductFunctional X d = 0`.
-- This candidate is NOT an admissible premise until the activation commit records the protected merge/readback SHA.
+- Exact merge-group axiom readback for the admitted endpoint is
+  `[propext, Classical.choice, Quot.sound]`; no `sorryAx` appears.
 
 The successor question is separation: whether zero product-functional data forces the one-point component of `d` to vanish.
 
@@ -57,7 +59,7 @@ You have no repository mutation, adjudication, certification, merge, publication
 
 ## Required return
 
-After activation, post exactly one narrative-only comment on `INTENDED_RETURN`:
+Post exactly one narrative-only comment on `INTENDED_RETURN`:
 
 ```text
 GCL-CONTRIBUTION-RESULT/1
