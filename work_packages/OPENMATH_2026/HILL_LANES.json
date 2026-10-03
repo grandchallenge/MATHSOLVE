@@ -430,7 +430,7 @@
     },
     {
       "hill_slot": "OM26-H6",
-      "status": "WP06_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
+      "status": "WP07_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
       "exact_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -461,14 +461,14 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H6-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-606 from the registered immutable LINK_IN_RELAY_OUT task URL.",
+      "next_action": "Launch INDEPENDENT-AGENT-607 from the registered immutable LINK_IN_RELAY_OUT task URL.",
       "title": "3x3 matrix multiplication tensor",
       "active_lease": {
-        "assignment_id": "OM26-H6-WP06",
-        "dispatch_id": "OM26-H6-WP06-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-606",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/633",
-        "protected_merge": "dca18b39e7ea67deaa3b8dc2128c8d019ee9c64c",
+        "assignment_id": "OM26-H6-WP07",
+        "dispatch_id": "OM26-H6-WP07-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-607",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/656",
+        "protected_merge": "f032431add540011337df1992ded8dffdf0036ae",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
@@ -482,15 +482,15 @@
         "official_acceptance": "NONE"
       },
       "predecessor_lease": {
-        "assignment_id": "OM26-H6-WP05",
-        "dispatch_id": "OM26-H6-WP05-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-605",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/618",
-        "protected_merge": "c88671e9f8c86d1dbc67d147d9e4ca570b5fbc6e",
+        "assignment_id": "OM26-H6-WP06",
+        "dispatch_id": "OM26-H6-WP06-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-606",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/633",
+        "protected_merge": "dca18b39e7ea67deaa3b8dc2128c8d019ee9c64c",
         "readback_verified": false,
         "lifecycle_state": "ACCEPTED",
         "launch_evidence": null,
-        "return_evidence": "contributions/OPENMATH-2026/OM26-H6/WP05/raw/OM26-H6-WP05-IA-001/github-comment-5951785225.md",
+        "return_evidence": "contributions/OPENMATH-2026/OM26-H6/WP06/raw/OM26-H6-WP06-IA-001/github-comment-5962958919.md",
         "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION"
       }
     },
