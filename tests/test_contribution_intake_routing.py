@@ -48,8 +48,12 @@ class ContributionIntakeRoutingTest(unittest.TestCase):
     def test_routes_are_mutually_exclusive_for_protected_title_prefixes(self):
         nsci_prefix = "[GCL-CONTRIB] NSCI-"
         openmath_prefix = "[GCL-CONTRIB] OPENMATH-2026 "
-        self.assertFalse(nsci_prefix.startswith(openmath_prefix))
-        self.assertFalse(openmath_prefix.startswith(nsci_prefix))
+        ym_prefix = "[GCL-CONTRIB] YM-D003-MRS-R002 "
+        prefixes = (nsci_prefix, openmath_prefix, ym_prefix)
+        for i, left in enumerate(prefixes):
+            for j, right in enumerate(prefixes):
+                if i != j:
+                    self.assertFalse(left.startswith(right))
 
 
 if __name__ == "__main__":
