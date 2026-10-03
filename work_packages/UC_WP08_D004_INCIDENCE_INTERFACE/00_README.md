@@ -1,6 +1,6 @@
 # UC-001 / WP08-D004 — Incidence-Preserving WP05 Interface
 
-Status: PREPARED FOR GOVERNED EXTERNAL FAN-OUT
+Status: ACTIVE — GOVERNED EXTERNAL EVIDENCE COLLECTION
 
 ## Objective
 
@@ -60,12 +60,14 @@ Activation requires:
 4. dispatch status changed to `READY_FOR_GITHUB_COMMENT` only after that
    binding is verified.
 
+All four activation conditions are now satisfied. The durable activation record is
+`contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/ACTIVATION_RECEIPT.json`.
 No human copy/paste is part of the canonical return path.
 
 ## Claim firewall
 
 ```text
-WP08-D004 = ACTIVE_PREPARATION
+WP08-D004 = ACTIVE_EXTERNAL_EVIDENCE
 UC-P04 = OPEN
 UC-FRANKL = OPEN_PROBLEM
 MATHEMATICAL_TARGET_PROVED = false
