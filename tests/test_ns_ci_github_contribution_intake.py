@@ -259,5 +259,22 @@ class UcD004ResultGrammarTests(unittest.TestCase):
             parse_result_comment(body)
 
 
+    def test_three_numbered_next_residual_items_count_as_three_sentences(self) -> None:
+        body = UC_VALID_BODY.replace(
+            "Formalize the exact incidence equality.",
+            "1. Determine the canonical implication base.\n2. Analyze non-unary frequency constraints.\n3. Investigate frequency balance.",
+        )
+        parsed = parse_result_comment(body)
+        self.assertEqual(parsed["profile"], "UC-001")
+
+    def test_four_numbered_next_residual_items_are_rejected(self) -> None:
+        body = UC_VALID_BODY.replace(
+            "Formalize the exact incidence equality.",
+            "1. First residual.\n2. Second residual.\n3. Third residual.\n4. Fourth residual.",
+        )
+        with self.assertRaises(IntakeError):
+            parse_result_comment(body)
+
+
 if __name__ == "__main__":
     unittest.main()
