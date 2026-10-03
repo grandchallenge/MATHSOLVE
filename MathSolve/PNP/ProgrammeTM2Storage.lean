@@ -254,6 +254,187 @@ theorem programmeTM2RunCore_ancillaryClean
   apply programmeTM2WorkPhase_ancillaryClean M
   exact programmeTM2AfterInput_ancillaryClean M snapped target.stk h
 
+/-- The initialized run configuration starts with at most one explicit
+side-stack cell per remaining input bit. -/
+theorem programmeTM2ReadyInitCfg_storage_le
+    (M : ProgrammeMachine) (input : List Bool) :
+    programmeTM2RunStorage M (programmeTM2ReadyInitCfg M input).stk ≤
+      input.length := by
+  simp [programmeTM2RunStorage, programmeTM2InputSideSize,
+    programmeTM2WorkSideSize, programmeTM2ReadyInitCfg,
+    programmeTM2InitStacks]
+  omega
+
+/-- Reverse initialization leaves raw/temp/output stacks empty. -/
+theorem programmeTM2ReadyInitCfg_ancillaryClean
+    (M : ProgrammeMachine) (input : List Bool) :
+    ProgrammeTM2AncillaryClean M (programmeTM2ReadyInitCfg M input).stk := by
+  simp [ProgrammeTM2AncillaryClean, programmeTM2ReadyInitCfg,
+    programmeTM2InitStacks]
+
+/-- The counted run-step target satisfies the same one-step storage bound as
+its pure operational normal form. -/
+theorem programmeTM2RunStepTarget_storage_le
+    (M : ProgrammeMachine) (target : (programmeTM2Machine M).Cfg) :
+    programmeTM2RunStorage M (programmeTM2RunStepTarget M target).stk ≤
+      programmeTM2RunStorage M target.stk + (M.workTapeCount + 1) := by
+  rw [programmeTM2RunStepTarget_eq_core]
+  exact programmeTM2RunCore_storage_le M target
+
+/-- The counted run-step target preserves clean ancillary stacks. -/
+theorem programmeTM2RunStepTarget_ancillaryClean
+    (M : ProgrammeMachine) (target : (programmeTM2Machine M).Cfg)
+    (h : ProgrammeTM2AncillaryClean M target.stk) :
+    ProgrammeTM2AncillaryClean M (programmeTM2RunStepTarget M target).stk := by
+  rw [programmeTM2RunStepTarget_eq_core]
+  exact programmeTM2RunCore_ancillaryClean M target h
+
+/-- Strengthened reverse run relation used by the quantitative compiler. -/
+def ProgrammeTM2RunRep (M : ProgrammeMachine) (input : List Bool)
+    (source : ProgrammeConfig M) (target : (programmeTM2Machine M).Cfg) : Prop :=
+  ProgrammeTM2Represents M input source target ∧
+    ProgrammeTM2AncillaryClean M target.stk
+
+/-- The exact post-initialization target satisfies the strengthened run relation. -/
+theorem programmeTM2ReadyInitCfg_runRep
+    (M : ProgrammeMachine) (input : List Bool) :
+    ProgrammeTM2RunRep M input (M.init input)
+      (programmeTM2ReadyInitCfg M input) := by
+  exact ⟨programmeTM2ReadyInitCfg_represents M input,
+    programmeTM2ReadyInitCfg_ancillaryClean M input⟩
+
+/-- One source Programme step becomes one counted TM2 step, preserves the
+strengthened relation, and increases cleanup storage by at most
+`workTapeCount + 1`. -/
+theorem programmeTM2_runRep_step
+    {M : ProgrammeMachine} {input : List Bool}
+    {source source' : ProgrammeConfig M}
+    {target : (programmeTM2Machine M).Cfg}
+    (hrep : ProgrammeTM2RunRep M input source target)
+    (hstep : M.step input source = some source') :
+    ProgrammeTM2RunRep M input source'
+        (programmeTM2RunStepTarget M target) ∧
+      (programmeTM2Machine M).step target =
+        some (programmeTM2RunStepTarget M target) ∧
+      programmeTM2RunStorage M (programmeTM2RunStepTarget M target).stk ≤
+        programmeTM2RunStorage M target.stk + (M.workTapeCount + 1) := by
+  rcases hrep with ⟨hrepresented, hclean⟩
+  have haccept : source.state ≠ M.accept := by
+    intro h
+    rw [M.step_eq_none_of_accept input source h] at hstep
+    contradiction
+  have hreject : source.state ≠ M.reject := by
+    intro h
+    rw [M.step_eq_none_of_reject input source h] at hstep
+    contradiction
+  have hsource :
+      source' = source.afterAction (M.actionAt input source) := by
+    have hs := M.step_eq_some_afterAction input source haccept hreject
+    rw [hs] at hstep
+    exact (Option.some.inj hstep).symm
+  have htargetRep :
+      ProgrammeTM2Represents M input source'
+        (programmeTM2RunStepTarget M target) := by
+    subst source'
+    exact programmeTM2RunStepTarget_represents_afterAction hrepresented
+  exact
+    ⟨⟨htargetRep,
+        programmeTM2RunStepTarget_ancillaryClean M target hclean⟩,
+      programmeTM2_step_run_nonterminal hrepresented haccept hreject,
+      programmeTM2RunStepTarget_storage_le M target⟩
+
+/-- Exact source iteration lifts to the reverse simulator while carrying the
+finite cleanup-storage bound. -/
+theorem programmeTM2_runRep_iterate
+    (M : ProgrammeMachine) (input : List Bool) :
+    ∀ (steps : Nat) (source source' : ProgrammeConfig M)
+      (target : (programmeTM2Machine M).Cfg),
+      ProgrammeTM2RunRep M input source target →
+      ((flip bind (M.step input))^[steps]) (some source) = some source' →
+      ∃ target',
+        ProgrammeTM2RunRep M input source' target' ∧
+        Nonempty
+          (StateTransition.EvalsToInTime
+            (programmeTM2Machine M).step target (some target') steps) ∧
+        programmeTM2RunStorage M target'.stk ≤
+          programmeTM2RunStorage M target.stk +
+            (M.workTapeCount + 1) * steps := by
+  intro steps
+  induction steps with
+  | zero =>
+      intro source source' target hrep hiter
+      simp only [Function.iterate_zero_apply] at hiter
+      cases Option.some.inj hiter
+      exact ⟨target, hrep,
+        ⟨StateTransition.EvalsToInTime.refl
+          (programmeTM2Machine M).step target⟩,
+        by simp⟩
+  | succ steps ih =>
+      intro source source' target hrep hiter
+      rw [Function.iterate_succ_apply'] at hiter
+      generalize hmid :
+          ((flip bind (M.step input))^[steps]) (some source) = mid
+        at hiter
+      cases mid with
+      | none =>
+          simp [flip] at hiter
+      | some middle =>
+          have hlast : M.step input middle = some source' := by
+            simpa using hiter
+          rcases ih source middle target hrep hmid with
+            ⟨targetMiddle, hmiddleRep, ⟨hrun⟩, hstorageMiddle⟩
+          rcases programmeTM2_runRep_step hmiddleRep hlast with
+            ⟨hfinalRep, htargetStep, hstorageStep⟩
+          have hone := programmeTM2_one_step_in_time htargetStep
+          have htime :=
+            StateTransition.EvalsToInTime.trans
+              (programmeTM2Machine M).step
+              steps 1 target targetMiddle
+              (some (programmeTM2RunStepTarget M targetMiddle))
+              hrun hone
+          refine ⟨programmeTM2RunStepTarget M targetMiddle,
+            hfinalRep, ⟨?_⟩, ?_⟩
+          · simpa [Nat.add_comm] using htime
+          · simp only [Nat.mul_succ]
+            omega
+
+/-- Transfer a bounded Programme run into an equally bounded counted TM2 run,
+with explicit cleanup-storage growth. -/
+theorem programmeTM2_runRep_transfer
+    {M : ProgrammeMachine} {input : List Bool}
+    {source source' : ProgrammeConfig M}
+    {target : (programmeTM2Machine M).Cfg}
+    {sourceBound : Nat}
+    (hrep : ProgrammeTM2RunRep M input source target)
+    (run :
+      StateTransition.EvalsToInTime
+        (M.step input) source (some source') sourceBound) :
+    ∃ target',
+      ProgrammeTM2RunRep M input source' target' ∧
+      Nonempty
+        (StateTransition.EvalsToInTime
+          (programmeTM2Machine M).step target (some target') sourceBound) ∧
+      programmeTM2RunStorage M target'.stk ≤
+        programmeTM2RunStorage M target.stk +
+          (M.workTapeCount + 1) * sourceBound := by
+  rcases programmeTM2_runRep_iterate M input run.steps
+      source source' target hrep run.evals_in_steps with
+    ⟨target', htargetRep, ⟨hrun⟩, hstorage⟩
+  refine ⟨target', htargetRep, ⟨?_⟩, ?_⟩
+  · exact programmeTM2_evalsToInTime_mono hrun run.steps_le_m
+  · exact hstorage.trans (by
+      have hmul :
+          (M.workTapeCount + 1) * run.steps ≤
+            (M.workTapeCount + 1) * sourceBound :=
+        Nat.mul_le_mul_left _ run.steps_le_m
+      omega)
+
+#print axioms programmeTM2ReadyInitCfg_storage_le
+#print axioms programmeTM2RunStepTarget_storage_le
+#print axioms programmeTM2_runRep_step
+#print axioms programmeTM2_runRep_iterate
+#print axioms programmeTM2_runRep_transfer
+
 #print axioms programmeTM2AfterInput_inputSideSize_le
 #print axioms programmeTM2AfterWork_storage_le
 #print axioms programmeTM2WorkPhase_storage_le
