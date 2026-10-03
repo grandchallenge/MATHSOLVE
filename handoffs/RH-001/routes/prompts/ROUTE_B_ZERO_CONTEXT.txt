@@ -7,7 +7,7 @@ Mandatory first actions:
 2. Re-fetch current protected MATHSOLVE main.
 3. Read handoffs/RH-001/README.md.
 4. Read handoffs/RH-001/routes/ROUTE_B_HERGLOTZ_CONTINUATION.md in full.
-5. Read work_packages/RH_R041_ODD_HERGLOTZ_GAP_CRITERION.md, R042_PARITY_BOTTOM_PARAMETER_CONTINUITY.md, R043_HERGLOTZ_MARGIN_CONTINUITY.md, R044_EXPLICIT_INITIAL_HERGLOTZ_MARGINS.md, R051_RANK_ONE_COERCIVITY_EXTENSION.md, and R052_REFRESHED_HERGLOTZ_MARGINS.md.
+5. Read work_packages/RH_R041_ODD_HERGLOTZ_GAP_CRITERION.md, R042_PARITY_BOTTOM_PARAMETER_CONTINUITY.md, R043_HERGLOTZ_MARGIN_CONTINUITY.md, R044_EXPLICIT_INITIAL_HERGLOTZ_MARGINS.md, R051_RANK_ONE_COERCIVITY_EXTENSION.md, R052_REFRESHED_HERGLOTZ_MARGINS.md, and R055_NO_PRIME_HERGLOTZ_VARIATION.md.
 6. Read the protected provider pole interface at grandchallenge/MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648.
 7. Read Route B tracker grandchallenge/MATHSOLVE#412 before allocating any theorem/work-package identifier.
 
@@ -27,12 +27,17 @@ g(a)>=2 d(a) Delta_H(a).
 Protected RH-R042/R043 give continuity and the first-failure classification:
 a first loss of the parity theorem must occur through d=0 or Delta_H=0.
 
+Current protected/candidate Route B state:
+A. R052 refreshed explicit d and Delta_H margins through a=178/1000.
+B. R055 proves explicit no-prime Lipschitz bounds for mu and beta_-, with the sharper common-shift cancellation |d(a)-d(b)| <= (147759/20000)|a-b| on [89/500,9/50].
+C. R055 proves quantitative no-prime resolvent and scalar Herglotz variation bounds.
+D. R055 integrates those bounds to carry d>0 and Delta_H>0, and transports even simplicity, through a=3561/20000=0.17805.
+
 Current high-value tasks, in order:
-A. Refresh explicit d and Delta_H lower bounds at the current simple-even endpoint (completed by R052 through a=178/1000).
-B. Prove explicit local variation/Lipschitz bounds for mu(a) and beta_-(a)=inf sigma(B_{a,-}).
-C. Prove a quantitative resolvent or scalar variation bound for Delta_H.
-D. Integrate those estimates to carry d>0 and Delta_H>0 across an explicit larger interval.
-E. Treat prime-entry thresholds piecewise and explicitly; do not assume differentiability across them.
+1. Sharpen the initial/local d bound or the no-prime variation constants enough to obtain a materially larger Route B transport interval.
+2. Derive a stronger scalar-resolvent estimate than the coarse m<=||s_a||^2/d bound when useful.
+3. Treat the first prime-entry threshold piecewise and explicitly; do not assume differentiability or translation norm continuity across entry.
+4. Preserve explicit even-sector internal-gap control whenever claiming extension of the full simple-even theorem.
 
 Important warnings:
 - The scaled pole vector is s_a(t)=sqrt(a)sinh(at/2). Keep its a-dependence.
@@ -43,11 +48,11 @@ Important warnings:
 - Finite plots of d or Delta_H are reconnaissance only.
 
 A meaningful contribution may be:
-- an updated explicit initial-margin theorem;
-- a Lipschitz/variation theorem;
-- a resolvent scalar theorem;
-- an explicit continuation interval;
-- or a rigorous obstruction to a proposed continuation mechanism.
+- a sharper pole-localization starting margin;
+- an improved no-prime variation theorem that materially enlarges the R055 radius;
+- a stronger resolvent scalar theorem;
+- a piecewise prime-threshold continuation interval;
+- or a rigorous obstruction to one of those mechanisms.
 
 Identifier discipline:
 - From RH-R055 onward, Route B owns the lane R055, R058, R061, ... .
