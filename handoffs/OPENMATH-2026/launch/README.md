@@ -12,4 +12,4 @@ Canonical mode is `LINK_IN_RELAY_OUT`. No human work-package copy/paste is part 
 | H6 | https://github.com/grandchallenge/MATHSOLVE/blob/f032431add540011337df1992ded8dffdf0036ae/handoffs/OPENMATH-2026/launch/OM26-H6-WP07.md | Yes — OM26-H6-WP07 / INDEPENDENT-AGENT-607 |
 | H7 | https://github.com/grandchallenge/MATHSOLVE/blob/51f2177bc50b3b2c18a569f886aa61c7191896a1/handoffs/OPENMATH-2026/launch/OM26-H7-WP06.md | Yes — OM26-H7-WP06 / INDEPENDENT-AGENT-706 |
 | H1-Q6 (support) | https://github.com/grandchallenge/MATHSOLVE/blob/17e04181f3b21127e7b1ace6db2e0aa610026aca/handoffs/OPENMATH-2026/launch/OM26-H1-WP33.md | Yes — OM26-H1-WP33 / INDEPENDENT-AGENT-133 |
-| H1-ADVERSARY (support) | PENDING_CONTENT_COMMIT | Yes — OM26-H1-WP64 / INDEPENDENT-AGENT-164 |
+| H1-ADVERSARY (support) | https://github.com/grandchallenge/MATHSOLVE/blob/76d81bf7a349e839d3eeeb119a83485ee1aea941/handoffs/OPENMATH-2026/launch/OM26-H1-WP64.md | Yes — OM26-H1-WP64 / INDEPENDENT-AGENT-164 |
