@@ -10,8 +10,10 @@
 > coefficients on a finite interval: contour shifting has vertical-side
 > terms unless endpoint matching is proved. The entire function \(f(x)=x\)
 > has coefficients
-> \(|c_j|=\sqrt2\,a^{3/2}/(\pi|j|)\), providing an exact counterexample to
-> the stated hypothesis. See RH-R077 for the corrected projective-measure
+> \(|c_j|=\sqrt2\,a^{3/2}/(\pi|j|)\). Evenness does not rescue the claim:
+> the even entire function \(f(x)=x^2\) has
+> \(|c_j|=2\sqrt2\,a^{5/2}/(\pi^2j^2)\). Both are algebraic, so additional
+> endpoint-periodicity control is required. See RH-R077 for the corrected projective-measure
 > architecture.
 
 
