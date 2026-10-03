@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_PROGRAMME_PROJECTION",
+  "campaign": "OPENMATH-2026",
+  "source_dispatch": "OM26-H5-WP06-IA-001",
+  "hill": "OM26-H5",
+  "lane_role": "PRIMARY",
+  "support_slot": null,
+  "predecessor": {
+    "assignment_id": "OM26-H5-WP06",
+    "agent_ref": "INDEPENDENT-AGENT-506",
+    "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+    "accepted_claims": []
+  },
+  "successor": {
+    "assignment_id": "OM26-H5-WP07",
+    "dispatch_id": "OM26-H5-WP07-IA-001",
+    "agent_ref": "INDEPENDENT-AGENT-507",
+    "issue_number": 678,
+    "lifecycle": "LEASED_NOT_LAUNCHED"
+  },
+  "external_agent_summary": {
+    "released_hills": 7,
+    "accepted_agents": 38,
+    "leased_not_launched_agents": 9,
+    "launched_agents": 0,
+    "returned_unadjudicated_agents": 0
+  },
+  "pipeline_trace": [
+    "RETURNED",
+    "CAPTURED",
+    "REPLAYED",
+    "ADJUDICATED",
+    "ADVANCED"
+  ],
+  "claim_effect": "NONE"
+}

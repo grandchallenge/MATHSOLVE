@@ -1,0 +1,36 @@
+GCL-CONTRIBUTION-RESULT/1
+dispatch_id: OM26-H5-WP06-IA-001
+agent_ref: INDEPENDENT-AGENT-506
+assignment: OM26-H5-WP06
+disposition: REPLAY_CLOSURE_VALIDATED
+context_class: ZERO_CONTEXT
+external_sources: PROTECTED_PACKET_ONLY
+timebox_observed: YES
+
+## Strongest exact statement
+
+The protected OM26-H5-WP05 counterexample is independently replay-closed on its mathematical substance. For normalized 3x3 sign matrices A = [[1,1,1],[1,a,b],[1,c,d]] with a,b,c,d in {-1,+1}, exact enumeration gives 6 normalized classes with classical sign optimum 5, 9 with optimum 7, and 1 with optimum 9. The displayed matrix C = [[1,1,1],[1,-1,-1],[1,-1,-1]] has classical optimum 7 and vector optimum 5*sqrt(2), while the displayed 4x4 CHSH blow-up B = [[1,1,1,1],[1,-1,-1,1],[1,1,1,1],[1,-1,-1,1]] has classical optimum 8 and vector optimum 8*sqrt(2), hence ratio sqrt(2). An actual block-diagonal direct sum of two 2x2 CHSH matrices contains off-block zeros and therefore is not an admissible {-1,+1} sign matrix.
+
+## Derivation
+
+For each normalized 3x3 matrix, global sign symmetry permits fixing the first right sign to +1. Thus the classical optimum is the maximum over s,t in {-1,+1} of |1+s+t| + |1+a*s+b*t| + |1+c*s+d*t|. Exhausting the 16 quadruples (a,b,c,d) and the four pairs (s,t) gives exactly the count vector (6,9,1) at optima (5,7,9).
+
+For C, the four classical values are 7,3,3,5 up to ordering, so sign(C)=7. After maximizing the left unit vectors, its vector objective is F = ||v1+v2+v3|| + 2||v1-v2-v3||. Writing w=v2+v3, x=||v1+w|| and y=||v1-w|| gives x^2+y^2 = 2(1+||w||^2) <= 10, hence x+2y <= sqrt(5)*sqrt(x^2+y^2) <= 5*sqrt(2). Equality is feasible with v2=v3=q and <v1,q>=-3/4, which gives x^2=2 and y^2=8. Therefore vec(C)=5*sqrt(2).
+
+For B, let p=y1+y4 and q=y2+y3 for right signs. Maximizing the left signs gives 2|p+q|+2|p-q| <= 8, with equality attainable, so sign(B)=8. For right unit vectors let a=v1+v4 and b=v2+v3. Maximizing the left unit vectors gives 2||a+b||+2||a-b||; Cauchy-Schwarz and the parallelogram identity yield (||a+b||+||a-b||)^2 <= 4(||a||^2+||b||^2) <= 32, so the objective is at most 8*sqrt(2). Equality is attained when v1=v4, v2=v3, and the two resulting unit directions are orthogonal. Thus vec(B)=8*sqrt(2).
+
+## Assumptions beyond bootstrap
+
+Only the conventions contained in the protected packet are used: matrix entries are in {-1,+1}, classical variables are signs, vector variables are unit vectors in a real inner-product space, and row/column sign normalization preserves both objectives. No external literature, numerical SDP solver, hidden target, repository mutation, competition submission, or certification claim is used.
+
+## Verification / falsification hooks
+
+A deterministic exact replay enumerating all 16 normalized 3x3 matrices returned 3x3_counts [(5,6),(7,9),(9,1)]. The same replay returned C_sign 7, the exact equality data x^2=2 and y^2=8 for the C vector bound, B_sign 8, and confirmed that the block-diagonal CHSH direct sum has entry set {-1,0,1} and is_sign_matrix false. Any replay producing a different normalized count vector, a classical optimum other than 7 for C or 8 for B, or treating off-block zeros as admissible sign entries falsifies this closure.
+
+## Claim boundary
+
+This validation closes the predecessor's corrected finite replay claims only. It does not establish that sqrt(2) is a universal maximum for every sign matrix of side 5 through 8, does not classify all 4x4 equality cases, and does not convert sampled or circulant searches into exhaustive evidence.
+
+## Next residual
+
+Classify the admissible 4x4 equality cases exactly if that structural statement is still needed. Any side-at-most-8 universal bound must separately cover the non-circulant 5x5 through 8x8 cases by exhaustive or otherwise certified argument.
