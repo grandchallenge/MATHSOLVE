@@ -17,6 +17,28 @@ a = log(lambda) <= 171/1000
 
 by RH-R050.
 
+## Live campaign-controller state
+
+The pack-creation snapshot above is historical. The current protected mathematical frontier is newer:
+
+- RH-R051 extends the full simple-even theorem through a = 178/1000;
+- RH-R052 refreshes positive d(a) and Delta_H(a) margins through that same endpoint;
+- RH-R053 discharges Route C obligation C2 (compact-set transform/determinant stability) and fixes the quantitative rate interface for C3.
+
+The division of labour is explicit and must remain stable:
+
+- Route A improves the local full-operator simple-even theorem by analytic/variational means;
+- Route B transports the protected result structurally through d/Delta_H continuation and threshold control;
+- Route C attacks the terminal determinant-convergence bridge independently and may consume protected A/B outputs without assuming global simple-evenness.
+
+Current theorem-development identifier allocation:
+
+- RH-R054 — Route A quartic/richer-even-trial tranche;
+- RH-R055 — Route B no-prime sector-bottom/Herglotz-variation tranche;
+- RH-R056 — reserved for the next bounded Route C tranche.
+
+The historical Route B implementation branch name `rh-r054-route-b-variation` may remain as a mechanical branch label, but its theorem/work-package identity is RH-R055. Do not reuse RH-R054 outside Route A.
+
 ## Route A — Local analytic continuation
 
 Context pack:
@@ -127,8 +149,8 @@ Route C must not assume global simple-evenness merely because Route A proves it 
 
 1. Every agent must re-fetch protected main before mutation.
 2. Every agent must read AGENTS.md and the canonical RH handoff.
-3. Claim a bounded subproblem in the relevant route tracker before opening a branch.
-4. Do not duplicate active work unless explicitly conducting an independent adversarial replay.
+3. Claim a bounded subproblem in the relevant route tracker and allocate a globally unique RH-R### identifier before opening a branch.
+4. Do not duplicate active work unless explicitly conducting an independent adversarial replay. A route-local branch name never overrides the globally allocated theorem/work-package identifier.
 5. Keep route-specific results in bounded work packages.
 6. If a result becomes a dependency of another route, protect it first and bind the exact protected SHA.
 7. If protected main moves, compose the candidate tree onto current protected main before using CI as merge evidence.
@@ -168,7 +190,7 @@ If three independent agents are available:
 
 - Agent A: Route A, with emphasis on richer analytic trial spaces and coercivity.
 - Agent B: Route B, with emphasis on quantitative d/Delta_H variation and prime-threshold transport.
-- Agent C: Route C, beginning with exact determinant normalization and compact-uniform transform stability.
+- Agent C: Route C, using RH-R056 for the next bounded tranche. C2 compact-set transform stability is already discharged by RH-R053; exact determinant normalization (C0) remains mandatory before any convergence theorem that depends on an unprotected normalization, while C1/C3/C4/C5/C6 may proceed when their prerequisites are explicitly bound.
 
 If only one agent is available, Route B or Route C is strategically preferable to further microscopic Route A endpoint tuning unless the agent has a clearly new structural inequality.
 
