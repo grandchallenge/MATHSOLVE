@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "dag_id": "UC-WP08-D004-DAG",
+  "campaign_id": "UC-001",
+  "parent_obligation": "UC-P04",
+  "claim_effect": "none_until_adjudicated",
+  "nodes": [
+    {
+      "id": "D004-A",
+      "statement": "Establish or refute exact principal-incidence and complement-frequency transport for arbitrary finite lattices.",
+      "status": "prepared_external",
+      "dispatch_id": "UC-WP08-D004-WP01-IA-001"
+    },
+    {
+      "id": "D004-B",
+      "statement": "Establish or refute the join-irreducible reduced incidence representation.",
+      "status": "prepared_external",
+      "dispatch_id": "UC-WP08-D004-WP02-IA-001"
+    },
+    {
+      "id": "D004-C",
+      "statement": "Characterize reduced closure implications as finite lattice join dependencies.",
+      "status": "prepared_external",
+      "dispatch_id": "UC-WP08-D004-WP03-IA-001"
+    },
+    {
+      "id": "D004-D",
+      "statement": "Translate protected WP05 upper-cone statements into subtraction-free concrete-family frequency statements.",
+      "status": "prepared_external",
+      "dispatch_id": "UC-WP08-D004-WP04-IA-001"
+    },
+    {
+      "id": "D004-E",
+      "statement": "Adversarially falsify or delimit the D004 incidence representation on endpoint and nondistributive examples.",
+      "status": "prepared_external",
+      "dispatch_id": "UC-WP08-D004-WP05-IA-001"
+    },
+    {
+      "id": "D004-I",
+      "statement": "After blind-cohort closure, adjudicate and synthesize evidence into a checked incidence-preserving WP05 interface.",
+      "status": "blocked_on_external_evidence"
+    }
+  ],
+  "edges": [
+    [
+      "D004-A",
+      "D004-I"
+    ],
+    [
+      "D004-B",
+      "D004-I"
+    ],
+    [
+      "D004-C",
+      "D004-I"
+    ],
+    [
+      "D004-D",
+      "D004-I"
+    ],
+    [
+      "D004-E",
+      "D004-I"
+    ]
+  ],
+  "terminal_boundary": {
+    "parent_obligation": "UC-P04",
+    "status": "OPEN_PROBLEM"
+  },
+  "note": "This successor DAG does not mutate or supersede the historical UC campaign proof-obligation DAG bound into the existing WP04 certification packet."
+}

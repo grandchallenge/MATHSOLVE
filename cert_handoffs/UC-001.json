@@ -42,10 +42,10 @@
   },
   "proof_obligations": {
     "repository": "grandchallenge/MATHSOLVE",
-    "commit_sha": "d2fd2dbf04d2883504b370a39ae6ab56dc75327f",
+    "commit_sha": "7d8ebdddc74b231b2405465259d0b799e6d8f3a0",
     "path": "campaign_ledgers/UC-001/proof_obligation_dag.json",
     "digest_algorithm": "git_blob_sha1",
-    "digest": "743941bb4a21ddb5255f4f0d3f97ffc7e3dfbc16",
+    "digest": "5cc706c23636dadd83ab859246c412918c605f15",
     "role": "proof_obligation_dag"
   },
   "checker_contract": {

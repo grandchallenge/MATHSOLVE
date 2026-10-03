@@ -3,115 +3,19 @@
   "dag_id": "MS-UC-WP04-DAG",
   "campaign_id": "UC-001",
   "nodes": [
-    {
-      "id": "UC-P00",
-      "statement": "Fix finite nontrivial union-closed family semantics.",
-      "status": "complete"
-    },
-    {
-      "id": "UC-P01",
-      "statement": "Check the singleton-containing restricted theorem.",
-      "status": "complete"
-    },
-    {
-      "id": "UC-P02",
-      "statement": "Check the two-element-member restricted theorem.",
-      "status": "complete"
-    },
-    {
-      "id": "UC-P03",
-      "statement": "Replay exact bounded certificates through n <= 4.",
-      "status": "complete"
-    },
-    {
-      "id": "UC-P04",
-      "statement": "Bridge restricted and finite claims to the universal half-frequency target.",
-      "status": "open"
-    },
-    {
-      "id": "UC-P04-D004-A",
-      "statement": "Establish or refute exact principal-incidence and complement-frequency transport for arbitrary finite lattices.",
-      "status": "prepared_external"
-    },
-    {
-      "id": "UC-P04-D004-B",
-      "statement": "Establish or refute the join-irreducible reduced incidence representation.",
-      "status": "prepared_external"
-    },
-    {
-      "id": "UC-P04-D004-C",
-      "statement": "Characterize reduced closure implications as finite lattice join dependencies.",
-      "status": "prepared_external"
-    },
-    {
-      "id": "UC-P04-D004-D",
-      "statement": "Translate protected WP05 upper-cone statements into subtraction-free concrete-family frequency statements.",
-      "status": "prepared_external"
-    },
-    {
-      "id": "UC-P04-D004-E",
-      "statement": "Adversarially falsify or delimit the D004 incidence representation on endpoint and nondistributive examples.",
-      "status": "prepared_external"
-    },
-    {
-      "id": "UC-P04-D004-I",
-      "statement": "After blind-cohort closure, adjudicate and synthesize D004 evidence into a checked incidence-preserving WP05 interface.",
-      "status": "blocked_on_external_evidence"
-    }
+    {"id": "UC-P00", "statement": "Fix finite nontrivial union-closed family semantics.", "status": "complete"},
+    {"id": "UC-P01", "statement": "Check the singleton-containing restricted theorem.", "status": "complete"},
+    {"id": "UC-P02", "statement": "Check the two-element-member restricted theorem.", "status": "complete"},
+    {"id": "UC-P03", "statement": "Replay exact bounded certificates through n <= 4.", "status": "complete"},
+    {"id": "UC-P04", "statement": "Bridge restricted and finite claims to the universal half-frequency target.", "status": "open"}
   ],
   "edges": [
-    [
-      "UC-P00",
-      "UC-P01"
-    ],
-    [
-      "UC-P00",
-      "UC-P02"
-    ],
-    [
-      "UC-P00",
-      "UC-P03"
-    ],
-    [
-      "UC-P01",
-      "UC-P04"
-    ],
-    [
-      "UC-P02",
-      "UC-P04"
-    ],
-    [
-      "UC-P03",
-      "UC-P04"
-    ],
-    [
-      "UC-P04-D004-A",
-      "UC-P04-D004-I"
-    ],
-    [
-      "UC-P04-D004-B",
-      "UC-P04-D004-I"
-    ],
-    [
-      "UC-P04-D004-C",
-      "UC-P04-D004-I"
-    ],
-    [
-      "UC-P04-D004-D",
-      "UC-P04-D004-I"
-    ],
-    [
-      "UC-P04-D004-E",
-      "UC-P04-D004-I"
-    ],
-    [
-      "UC-P04-D004-I",
-      "UC-P04"
-    ]
+    ["UC-P00", "UC-P01"],
+    ["UC-P00", "UC-P02"],
+    ["UC-P00", "UC-P03"],
+    ["UC-P01", "UC-P04"],
+    ["UC-P02", "UC-P04"],
+    ["UC-P03", "UC-P04"]
   ],
-  "terminal_target": {
-    "id": "UC-P04",
-    "status": "OPEN_PROBLEM"
-  },
-  "updated_for": "WP08-D004 controlled independent contribution fan-out; UC-P04 remains open"
+  "terminal_target": {"id": "UC-P04", "status": "OPEN_PROBLEM"}
 }
