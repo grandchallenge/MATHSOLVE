@@ -38,7 +38,7 @@ Protected R077 facts:
 - The kernel decays uniformly as x -> infinity on compact subsets of the open strip.
 - E_n(z)=(1/2)cos(nz)/cosh(n/2) has real zeros, E_n(i/2)=1/2, the strip bound, and nevertheless converges to zero locally uniformly inside the strip. Boundary anchoring is not non-collapse.
 - sup_strip |F_nu-F_mu| <= (1/2)||nu-mu||_TV.
-- normality + limsup F_j(0)>0 + projective shape convergence F_j(t)/F_j(0) -> Xi(t)/Xi(0) on one real interval implies a subsequence F_jk -> c Xi, c != 0.
+- local boundedness + F_j(0) != 0 + limsup |F_j(0)| > 0 + projective shape convergence F_j(t)/F_j(0) -> Xi(t)/Xi(0) on one real interval implies a subsequence F_jk -> c Xi, c != 0.
 - strip analyticity alone does not imply exponential periodic Fourier coefficient decay; f(x)=x is an exact counterexample. Do not reuse the withdrawn R074 tail theorem.
 
 Active mathematical gates:
