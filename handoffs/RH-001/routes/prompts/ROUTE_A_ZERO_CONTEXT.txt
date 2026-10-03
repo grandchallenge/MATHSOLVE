@@ -7,15 +7,15 @@ Mandatory first actions:
 2. Re-fetch the current protected main branch. Do not assume the SHA in this prompt is still current.
 3. Read handoffs/RH-001/README.md.
 4. Read handoffs/RH-001/routes/ROUTE_A_LOCAL_ANALYTIC_CONTINUATION.md in full.
-5. Read work_packages/RH_R051_RANK_ONE_COERCIVITY_EXTENSION.md and its protected predecessors R050 and R049. Read R045-R048 if you change remainder or coercivity arguments.
+5. Read work_packages/RH_R054_COMPLETE_LOG_QUARTIC_EXTENSION.md and its protected predecessor R051. Read R050-R049 and R045-R048 if you change inherited trial, remainder, or coercivity arguments.
 6. Read the protected source audit at grandchallenge/MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320, reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md.
 7. Read Route A tracker grandchallenge/MATHSOLVE#411 before allocating any theorem/work-package identifier.
 
 Protected snapshot at route-pack creation: MATHSOLVE main 7387aa8993355ab854630cf0683b4120a813884c. This is a historical bind, not permission to work on a stale base.
 
 Current protected mathematical frontier:
-a = log(lambda) <= 178/1000,
-with strict parity gap and simple lowest even eigenvalue for the full localized Weil operator. R051 is the current theorem package.
+a = log(lambda) <= 9/50,
+with strict parity gap and simple lowest even eigenvalue for the full localized Weil operator. R054 is the current theorem package. Its reusable additions are a complete-log rank-one coercivity certificate at parameter 1/3 and an exact two-parameter positive quartic trial surface.
 
 Your objective is not to retune one scalar coefficient for a negligible endpoint gain. Choose a structural improvement:
 - richer positive even trial space;
@@ -37,7 +37,7 @@ Proof discipline:
 Do not claim RH, determinant convergence to Xi, all-a simple-evenness, positivity at the R039 large-a points, novelty, priority, or publication readiness.
 
 A meaningful result is one of:
-1. a protected theorem with endpoint strictly beyond the current protected frontier;
+1. a protected theorem with endpoint strictly beyond a=9/50;
 2. a stronger reusable even/odd coercivity theorem;
 3. a stronger reusable remainder estimate;
 4. a protected obstruction theorem showing why a plausible continuation mechanism cannot improve the frontier.
