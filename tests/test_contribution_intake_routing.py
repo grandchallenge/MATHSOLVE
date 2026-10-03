@@ -26,6 +26,17 @@ class ContributionIntakeRoutingTest(unittest.TestCase):
             text,
         )
 
+    def test_ym_mrs_route_is_campaign_specific(self):
+        text = YM_MRS_WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn(
+            "startsWith(github.event.issue.title, '[GCL-CONTRIB] YM-D003-MRS-R002 ')",
+            text,
+        )
+        self.assertNotIn(
+            "startsWith(github.event.issue.title, '[GCL-CONTRIB] ') &&",
+            text,
+        )
+
     def test_openmath_snapshot_does_not_open_pr_with_workflow_token(self):
         text = OPENMATH_WORKFLOW.read_text(encoding="utf-8")
         self.assertNotIn("gh pr create", text)
