@@ -716,7 +716,9 @@ This tranche adds two reusable proof mechanisms.
 2. Section 5 gives an exact two-parameter quartic trial surface for future
    endpoint work. The chosen quartic is one exact point on that surface.
 
-The endpoint advances from \(178/1000\) to \(9/50=180/1000\), while the
+The direct Route A endpoint advances from R051's \(178/1000\) to
+\(9/50=180/1000\). Relative to the live protected global frontier supplied
+by RH-R055, this advances \(3561/20000=0.17805\) to \(9/50=0.18\), while the
 certified parity margin at the larger endpoint is materially positive.
 
 ## 13. False-proof firewall
