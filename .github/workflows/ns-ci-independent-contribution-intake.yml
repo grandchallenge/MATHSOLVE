@@ -16,7 +16,8 @@ jobs:
   intake:
     if: >
       !github.event.issue.pull_request &&
-      startsWith(github.event.issue.title, '[GCL-CONTRIB] NSCI-') &&
+      (startsWith(github.event.issue.title, '[GCL-CONTRIB] NSCI-') ||
+       startsWith(github.event.issue.title, '[GCL-CONTRIB] UC-001 UC-WP08-D004-')) &&
       startsWith(github.event.comment.body, 'GCL-CONTRIBUTION-RESULT/1')
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -139,7 +140,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- "$RAW_PATH" "$RECEIPT_PATH"
-          git commit -m "NS-CI intake: snapshot $DISPATCH_ID comment $COMMENT_ID"
+          git commit -m "CEI intake: snapshot $DISPATCH_ID comment $COMMENT_ID"
           git push origin "$BRANCH"
 
       - name: Report captured intake

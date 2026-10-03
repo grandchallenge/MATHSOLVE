@@ -172,5 +172,61 @@ class EventIntakeTests(unittest.TestCase):
             emit_intake(event, root, root / "out")
 
 
+UC_VALID_BODY = """GCL-CONTRIBUTION-RESULT/1
+dispatch_id: UC-WP08-D004-WP01-IA-001
+agent_ref: INDEPENDENT-AGENT-UC401
+assignment: UC-WP08-D004-WP01
+disposition: PROVED_REDUCTION
+context_class: ZERO_CONTEXT
+external_sources: PROTECTED_PACKET_ONLY
+timebox_observed: YES
+
+## Strongest exact statement
+
+A bounded exact incidence lemma.
+
+## Derivation
+
+A complete derivation from the packet.
+
+## Assumptions beyond bootstrap
+
+NONE
+
+## Verification / falsification hooks
+
+Check the finite-order identities directly.
+
+## Claim boundary
+
+This does not close UC-P04 or Frankl's conjecture.
+
+## Next residual
+
+Formalize the exact incidence equality.
+"""
+
+
+class UcD004ResultGrammarTests(unittest.TestCase):
+    def test_valid_uc_comment_parses(self) -> None:
+        parsed = parse_result_comment(UC_VALID_BODY)
+        self.assertEqual(parsed["profile"], "UC-001")
+        self.assertEqual(parsed["preamble"]["agent_ref"], "INDEPENDENT-AGENT-UC401")
+
+    def test_uc_requires_agent_ref(self) -> None:
+        body = UC_VALID_BODY.replace("agent_ref: INDEPENDENT-AGENT-UC401\n", "")
+        with self.assertRaises(IntakeError):
+            parse_result_comment(body)
+
+    def test_uc_rejects_unregistered_external_sources(self) -> None:
+        with self.assertRaises(IntakeError):
+            parse_result_comment(
+                UC_VALID_BODY.replace(
+                    "external_sources: PROTECTED_PACKET_ONLY",
+                    "external_sources: NONE",
+                )
+            )
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -116,7 +116,7 @@ premises?
 WP08-D001 = CLOSED_NEGATIVE
 WP08-D002 = CLOSED_LOCAL
 WP08-D003 = CLOSED_LOCAL
-WP08-D004 = OPEN_NEXT
+WP08-D004 = ACTIVE_PREPARATION
 
 UC-P04 = OPEN
 UC-FRANKL = OPEN_PROBLEM
@@ -130,3 +130,26 @@ Stop for a failed exact-head replay that cannot be repaired within scope, a
 material theorem-statement change, a reserved certification/governance action,
 or a genuine mathematical/evidentiary boundary. Do not stop merely because the
 universal closure-system rare-element theorem remains open.
+
+## WP08-D004 independent contribution fan-out
+
+The next tranche is durable as five issue-bound zero-context leases:
+
+- WP01 / principal incidence / issue #721;
+- WP02 / join-irreducible incidence / issue #722;
+- WP03 / implication semantics / issue #723;
+- WP04 / WP05 frequency translation / issue #724;
+- WP05 / adversarial representation audit / issue #725.
+
+WP01-WP04 are a blind cohort. Do not synthesize them until every member return
+is protected or a protected cohort-closure record accounts for a missing return.
+WP05 is independent adversarial evidence and must not read the blind returns
+before integration.
+
+Immutable task commit: `283a82b53c36c999805805df94fde24e0af578ee`.
+
+Current dispatch state is `PENDING_GITHUB_ISSUE_BINDING`. The issues are not
+executable return surfaces until the UC CEI profile and this packet are
+protected, each issue body is verified byte-identical to its bootstrap, and a
+fresh protected activation changes the dispatch state to
+`READY_FOR_GITHUB_COMMENT`.
