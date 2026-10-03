@@ -85,6 +85,8 @@ Route C obligation C2 is already discharged by RH-R053. C0 exact determinant nor
 - RH-R045-PARITY-SENSITIVE-REMAINDER-001: proved in work_packages/RH_R045_PARITY_SENSITIVE_REMAINDER.md.
 - Pole/resolvent provider interface: grandchallenge/MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648.
 - RH-R053-COMPACT-TRANSFORM-STABILITY-001: proved in work_packages/RH_R053_COMPACT_TRANSFORM_STABILITY.md.
+- Exact Route C determinant-normalization and classical-anchor audit: grandchallenge/MATHFORGE@a900e5170c6d77a9e557b6159cf5feb40bcee222.
+- RH-R056-CANONICAL-DETERMINANT-NORMALIZATION-001: proved in work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md; C0 discharged by an even, zero-preserving normalization anchored at Xi(i/2)=1/2.
 - RH-R055-NO-PRIME-HERGLOTZ-VARIATION-001: proved in work_packages/RH_R055_NO_PRIME_HERGLOTZ_VARIATION.md; explicit Route B sector-bottom/resolvent variation and continuation through a=3561/20000.
 
 No operator construction satisfying the Hilbert–Pólya contract, RH implication, novelty, or priority claim is admitted.
@@ -210,6 +212,7 @@ and
 - work_packages/RH_R051_RANK_ONE_COERCIVITY_EXTENSION.md
 - work_packages/RH_R052_REFRESHED_HERGLOTZ_MARGINS.md
 - work_packages/RH_R053_COMPACT_TRANSFORM_STABILITY.md
+- work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md
 - work_packages/RH_R055_NO_PRIME_HERGLOTZ_VARIATION.md
 - scripts/rh_r055_route_b_variation.py
 - work_packages/RH_R039_QW_PARITY_GAP_EVIDENCE/evidence.json
@@ -240,6 +243,11 @@ The continuation machinery is now in place:
 11. RH-R052 refreshes explicit positive Herglotz continuation margins \(d(a)>\frac{55428698889}{23675000000000}\) and \(\Delta_H(a)\ge\frac{1210515093544258}{12367528439608125}\) through \(a=178/1000\);
 12. RH-R053 discharges C2 of Route C by proving exact compact-set transform stability bounds \(\sup_{z\in K}|\lambda^{-iz}\widehat{\xi}-\lambda^{-iz}\widehat{\psi}|\le e^{\sigma_{\max}a}\sqrt{\mathcal{H}_a(H)}\|\xi-\psi\|_{L^2}\), an even-parity refinement, Rayleigh-quotient to eigenvector error transfer, and the rate dichotomy showing bare \(L^2\) bounds require C4 normal families for full complex-plane convergence.
 13. RH-R055 supplies the first quantitative Route B transport theorem: on \([89/500,9/50]\), \(\mu\) and \(\beta_-\) are explicitly Lipschitz, the common scalar shift cancels from \(d\), the shifted resolvent and Herglotz scalar have explicit variation bounds, and the protected simple-even interval advances to \(a=3561/20000\).
+14. RH-R056 discharges Route C C0 by fixing the canonical finite normalized determinant
+\[
+F_{\lambda,N}(z)=\frac12\frac{\lambda^{iz}G_{\lambda,N}(z)}{\lambda^{-1/2}G_{\lambda,N}(i/2)},
+\]
+proving exact zero preservation and uniqueness in the declared affine-exponential gauge class. The next Route C theorem is R059 normal-family/local-boundedness control; normalization plus real zeros alone is explicitly insufficient.
 
 The new Route B extension is intentionally conservative: the R052 pole-localization margin is the limiting budget. The smallest useful next theorem should therefore improve transport rather than resume endpoint micro-tuning, preferably one of:
 
