@@ -26,6 +26,17 @@ class ContributionIntakeRoutingTest(unittest.TestCase):
             text,
         )
 
+    def test_ym_mrs_route_is_campaign_specific(self):
+        text = YM_MRS_WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn(
+            "startsWith(github.event.issue.title, '[GCL-CONTRIB] YM-D003-MRS-R002 ')",
+            text,
+        )
+        self.assertNotIn(
+            "startsWith(github.event.issue.title, '[GCL-CONTRIB] ') &&",
+            text,
+        )
+
     def test_openmath_snapshot_does_not_open_pr_with_workflow_token(self):
         text = OPENMATH_WORKFLOW.read_text(encoding="utf-8")
         self.assertNotIn("gh pr create", text)
@@ -37,8 +48,12 @@ class ContributionIntakeRoutingTest(unittest.TestCase):
     def test_routes_are_mutually_exclusive_for_protected_title_prefixes(self):
         nsci_prefix = "[GCL-CONTRIB] NSCI-"
         openmath_prefix = "[GCL-CONTRIB] OPENMATH-2026 "
-        self.assertFalse(nsci_prefix.startswith(openmath_prefix))
-        self.assertFalse(openmath_prefix.startswith(nsci_prefix))
+        ym_prefix = "[GCL-CONTRIB] YM-D003-MRS-R002 "
+        prefixes = (nsci_prefix, openmath_prefix, ym_prefix)
+        for i, left in enumerate(prefixes):
+            for j, right in enumerate(prefixes):
+                if i != j:
+                    self.assertFalse(left.startswith(right))
 
 
 if __name__ == "__main__":

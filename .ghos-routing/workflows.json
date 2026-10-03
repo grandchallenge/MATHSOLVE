@@ -458,6 +458,16 @@
       ],
       "topology": "PERSISTENT_CONTROLLER_REQUIRED",
       "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/ym-mrs-independent-contribution-intake.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL",
+        "WRITE_CAPABLE"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
     }
   ],
   "claim_boundaries": {
