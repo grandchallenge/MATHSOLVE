@@ -283,6 +283,343 @@ theorem programmeTM2_step_emit_halt (M : ProgrammeMachine)
   · intro k
     cases k <;> simp [programmeTM2CleanupStacks, Function.update] <;> rfl
 
+
+/-- The blank input-right pop advances to the first work cleanup mode, or emit
+when there are no work tapes. -/
+theorem programmeTM2_step_cleanInputRight_nil (M : ProgrammeMachine)
+    (base : ProgrammeTM2State M)
+    (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+    (output : List Bool) :
+    (programmeTM2Machine M).step
+        (programmeTM2CleanupCfg M .cleanInputRight base
+          [] [] [] [] workLeft workRight output) =
+      some
+        (programmeTM2CleanupCfg M
+          (programmeTM2FirstWorkOrEmit M base) base
+          [] [] [] [] workLeft workRight output) := by
+  simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
+    programmeTM2Program, Turing.TM2.stepAux, programmeTM2CleanupCfg,
+    programmeTM2CleanupStacks]
+  apply congrArg some
+  apply programmeTM2Cfg_ext
+  · rfl
+  · rfl
+  · intro k
+    cases k <;> simp [programmeTM2CleanupStacks, Function.update] <;> rfl
+
+/-- The blank left-work pop advances to right-work cleanup for the same tape. -/
+theorem programmeTM2_step_cleanWorkLeft_nil (M : ProgrammeMachine)
+    (base : ProgrammeTM2State M) (tape : Fin M.workTapeCount)
+    (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+    (output : List Bool) (hleft : workLeft tape = []) :
+    (programmeTM2Machine M).step
+        (programmeTM2CleanupCfg M (.cleanWorkLeft tape) base
+          [] [] [] [] workLeft workRight output) =
+      some
+        (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
+          [] [] [] [] workLeft workRight output) := by
+  simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
+    programmeTM2Program, Turing.TM2.stepAux, programmeTM2CleanupCfg,
+    programmeTM2CleanupStacks]
+  rw [hleft]
+  apply congrArg some
+  apply programmeTM2Cfg_ext
+  · rfl
+  · rfl
+  · intro k
+    cases k <;> simp [programmeTM2CleanupStacks, Function.update] <;> rfl
+
+/-- The blank right-work pop advances to the next work tape or emit. -/
+theorem programmeTM2_step_cleanWorkRight_nil (M : ProgrammeMachine)
+    (base : ProgrammeTM2State M) (tape : Fin M.workTapeCount)
+    (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+    (output : List Bool) (hright : workRight tape = []) :
+    (programmeTM2Machine M).step
+        (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
+          [] [] [] [] workLeft workRight output) =
+      some
+        (programmeTM2CleanupCfg M
+          (programmeTM2NextWorkOrEmit M tape base) base
+          [] [] [] [] workLeft workRight output) := by
+  simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
+    programmeTM2Program, Turing.TM2.stepAux, programmeTM2CleanupCfg,
+    programmeTM2CleanupStacks]
+  rw [hright]
+  apply congrArg some
+  apply programmeTM2Cfg_ext
+  · rfl
+  · rfl
+  · intro k
+    cases k <;> simp [programmeTM2CleanupStacks, Function.update] <;> rfl
+
+/-- Clear the raw-input stack in exactly one transition per stored cell plus
+one blank-detection transition. -/
+theorem programmeTM2_cleanRaw_run (M : ProgrammeMachine)
+    (base : ProgrammeTM2State M) :
+    ∀ (raw temp : List Bool)
+      (inputLeft inputRight : List (Option Bool))
+      (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+      (output : List Bool),
+      Nonempty
+        (StateTransition.EvalsToInTime
+          (programmeTM2Machine M).step
+          (programmeTM2CleanupCfg M .cleanRaw base
+            raw temp inputLeft inputRight workLeft workRight output)
+          (some
+            (programmeTM2CleanupCfg M .cleanTemp base
+              [] temp inputLeft inputRight workLeft workRight output))
+          (raw.length + 1)) := by
+  intro raw
+  induction raw with
+  | nil =>
+      intro temp inputLeft inputRight workLeft workRight output
+      exact ⟨programmeTM2_one_step_in_time
+        (programmeTM2_step_cleanRaw_nil M base temp
+          inputLeft inputRight workLeft workRight output)⟩
+  | cons bit raw ih =>
+      intro temp inputLeft inputRight workLeft workRight output
+      have hone := programmeTM2_one_step_in_time
+        (programmeTM2_step_cleanRaw_cons M base bit raw temp
+          inputLeft inputRight workLeft workRight output)
+      rcases ih temp inputLeft inputRight workLeft workRight output with ⟨hrest⟩
+      refine ⟨?_⟩
+      simpa [Nat.add_assoc] using
+        StateTransition.EvalsToInTime.trans
+          (programmeTM2Machine M).step
+          1 (raw.length + 1)
+          (programmeTM2CleanupCfg M .cleanRaw base
+            (bit :: raw) temp inputLeft inputRight workLeft workRight output)
+          (programmeTM2CleanupCfg M .cleanRaw base
+            raw temp inputLeft inputRight workLeft workRight output)
+          (some (programmeTM2CleanupCfg M .cleanTemp base
+            [] temp inputLeft inputRight workLeft workRight output))
+          hone hrest
+
+theorem programmeTM2_cleanTemp_run (M : ProgrammeMachine)
+    (base : ProgrammeTM2State M) :
+    ∀ (temp : List Bool)
+      (inputLeft inputRight : List (Option Bool))
+      (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+      (output : List Bool),
+      Nonempty
+        (StateTransition.EvalsToInTime
+          (programmeTM2Machine M).step
+          (programmeTM2CleanupCfg M .cleanTemp base
+            [] temp inputLeft inputRight workLeft workRight output)
+          (some
+            (programmeTM2CleanupCfg M .cleanInputLeft base
+              [] [] inputLeft inputRight workLeft workRight output))
+          (temp.length + 1)) := by
+  intro temp
+  induction temp with
+  | nil =>
+      intro inputLeft inputRight workLeft workRight output
+      exact ⟨programmeTM2_one_step_in_time
+        (programmeTM2_step_cleanTemp_nil M base
+          inputLeft inputRight workLeft workRight output)⟩
+  | cons bit temp ih =>
+      intro inputLeft inputRight workLeft workRight output
+      have hone := programmeTM2_one_step_in_time
+        (programmeTM2_step_cleanTemp_cons M base bit temp
+          inputLeft inputRight workLeft workRight output)
+      rcases ih inputLeft inputRight workLeft workRight output with ⟨hrest⟩
+      refine ⟨?_⟩
+      simpa [Nat.add_assoc] using
+        StateTransition.EvalsToInTime.trans
+          (programmeTM2Machine M).step
+          1 (temp.length + 1)
+          (programmeTM2CleanupCfg M .cleanTemp base
+            [] (bit :: temp) inputLeft inputRight workLeft workRight output)
+          (programmeTM2CleanupCfg M .cleanTemp base
+            [] temp inputLeft inputRight workLeft workRight output)
+          (some (programmeTM2CleanupCfg M .cleanInputLeft base
+            [] [] inputLeft inputRight workLeft workRight output))
+          hone hrest
+
+theorem programmeTM2_cleanInputLeft_run (M : ProgrammeMachine)
+    (base : ProgrammeTM2State M) :
+    ∀ (inputLeft inputRight : List (Option Bool))
+      (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+      (output : List Bool),
+      Nonempty
+        (StateTransition.EvalsToInTime
+          (programmeTM2Machine M).step
+          (programmeTM2CleanupCfg M .cleanInputLeft base
+            [] [] inputLeft inputRight workLeft workRight output)
+          (some
+            (programmeTM2CleanupCfg M .cleanInputRight base
+              [] [] [] inputRight workLeft workRight output))
+          (inputLeft.length + 1)) := by
+  intro inputLeft
+  induction inputLeft with
+  | nil =>
+      intro inputRight workLeft workRight output
+      exact ⟨programmeTM2_one_step_in_time
+        (programmeTM2_step_cleanInputLeft_nil M base
+          inputRight workLeft workRight output)⟩
+  | cons symbol inputLeft ih =>
+      intro inputRight workLeft workRight output
+      have hone := programmeTM2_one_step_in_time
+        (programmeTM2_step_cleanInputLeft_cons M base symbol inputLeft
+          inputRight workLeft workRight output)
+      rcases ih inputRight workLeft workRight output with ⟨hrest⟩
+      refine ⟨?_⟩
+      simpa [Nat.add_assoc] using
+        StateTransition.EvalsToInTime.trans
+          (programmeTM2Machine M).step
+          1 (inputLeft.length + 1)
+          (programmeTM2CleanupCfg M .cleanInputLeft base
+            [] [] (symbol :: inputLeft) inputRight workLeft workRight output)
+          (programmeTM2CleanupCfg M .cleanInputLeft base
+            [] [] inputLeft inputRight workLeft workRight output)
+          (some (programmeTM2CleanupCfg M .cleanInputRight base
+            [] [] [] inputRight workLeft workRight output))
+          hone hrest
+
+theorem programmeTM2_cleanInputRight_run (M : ProgrammeMachine)
+    (base : ProgrammeTM2State M) :
+    ∀ (inputRight : List (Option Bool))
+      (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+      (output : List Bool),
+      Nonempty
+        (StateTransition.EvalsToInTime
+          (programmeTM2Machine M).step
+          (programmeTM2CleanupCfg M .cleanInputRight base
+            [] [] [] inputRight workLeft workRight output)
+          (some
+            (programmeTM2CleanupCfg M
+              (programmeTM2FirstWorkOrEmit M base) base
+              [] [] [] [] workLeft workRight output))
+          (inputRight.length + 1)) := by
+  intro inputRight
+  induction inputRight with
+  | nil =>
+      intro workLeft workRight output
+      exact ⟨programmeTM2_one_step_in_time
+        (programmeTM2_step_cleanInputRight_nil M base workLeft workRight output)⟩
+  | cons symbol inputRight ih =>
+      intro workLeft workRight output
+      have hone := programmeTM2_one_step_in_time
+        (programmeTM2_step_cleanInputRight_cons M base symbol inputRight
+          workLeft workRight output)
+      rcases ih workLeft workRight output with ⟨hrest⟩
+      refine ⟨?_⟩
+      simpa [Nat.add_assoc] using
+        StateTransition.EvalsToInTime.trans
+          (programmeTM2Machine M).step
+          1 (inputRight.length + 1)
+          (programmeTM2CleanupCfg M .cleanInputRight base
+            [] [] [] (symbol :: inputRight) workLeft workRight output)
+          (programmeTM2CleanupCfg M .cleanInputRight base
+            [] [] [] inputRight workLeft workRight output)
+          (some (programmeTM2CleanupCfg M
+            (programmeTM2FirstWorkOrEmit M base) base
+            [] [] [] [] workLeft workRight output))
+          hone hrest
+
+/-- Clear one selected work-left stack. -/
+theorem programmeTM2_cleanWorkLeft_run (M : ProgrammeMachine)
+    (base : ProgrammeTM2State M) (tape : Fin M.workTapeCount)
+    (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+    (output : List Bool) :
+    Nonempty
+      (StateTransition.EvalsToInTime
+        (programmeTM2Machine M).step
+        (programmeTM2CleanupCfg M (.cleanWorkLeft tape) base
+          [] [] [] [] workLeft workRight output)
+        (some
+          (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
+            [] [] [] [] (Function.update workLeft tape [])
+            workRight output))
+        ((workLeft tape).length + 1)) := by
+  generalize hleft : workLeft tape = left
+  induction left generalizing workLeft with
+  | nil =>
+      have hnil : workLeft tape = [] := hleft
+      have hone := programmeTM2_one_step_in_time
+        (programmeTM2_step_cleanWorkLeft_nil M base tape
+          workLeft workRight output hnil)
+      refine ⟨?_⟩
+      simpa [hnil] using hone
+  | cons symbol left ih =>
+      have hstep := programmeTM2_step_cleanWorkLeft_cons M base tape symbol left
+        workLeft workRight output hleft
+      have hone := programmeTM2_one_step_in_time hstep
+      let nextLeft := Function.update workLeft tape left
+      have hnext : nextLeft tape = left := by
+        simp [nextLeft, Function.update]
+      rcases ih nextLeft hnext with ⟨hrest⟩
+      refine ⟨?_⟩
+      have hrun :=
+        StateTransition.EvalsToInTime.trans
+          (programmeTM2Machine M).step
+          1 (left.length + 1)
+          (programmeTM2CleanupCfg M (.cleanWorkLeft tape) base
+            [] [] [] [] workLeft workRight output)
+          (programmeTM2CleanupCfg M (.cleanWorkLeft tape) base
+            [] [] [] [] nextLeft workRight output)
+          (some (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
+            [] [] [] [] (Function.update nextLeft tape []) workRight output))
+          hone hrest
+      simpa [nextLeft, Function.update, hleft, Nat.add_assoc] using hrun
+
+/-- Clear one selected work-right stack and advance to the machine's next
+work/emit mode. -/
+theorem programmeTM2_cleanWorkRight_run (M : ProgrammeMachine)
+    (base : ProgrammeTM2State M) (tape : Fin M.workTapeCount)
+    (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+    (output : List Bool) :
+    Nonempty
+      (StateTransition.EvalsToInTime
+        (programmeTM2Machine M).step
+        (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
+          [] [] [] [] workLeft workRight output)
+        (some
+          (programmeTM2CleanupCfg M
+            (programmeTM2NextWorkOrEmit M tape base) base
+            [] [] [] [] workLeft (Function.update workRight tape []) output))
+        ((workRight tape).length + 1)) := by
+  generalize hright : workRight tape = right
+  induction right generalizing workRight with
+  | nil =>
+      have hnil : workRight tape = [] := hright
+      have hone := programmeTM2_one_step_in_time
+        (programmeTM2_step_cleanWorkRight_nil M base tape
+          workLeft workRight output hnil)
+      refine ⟨?_⟩
+      simpa [hnil] using hone
+  | cons symbol right ih =>
+      have hstep := programmeTM2_step_cleanWorkRight_cons M base tape symbol right
+        workLeft workRight output hright
+      have hone := programmeTM2_one_step_in_time hstep
+      let nextRight := Function.update workRight tape right
+      have hnext : nextRight tape = right := by
+        simp [nextRight, Function.update]
+      rcases ih nextRight hnext with ⟨hrest⟩
+      refine ⟨?_⟩
+      have hrun :=
+        StateTransition.EvalsToInTime.trans
+          (programmeTM2Machine M).step
+          1 (right.length + 1)
+          (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
+            [] [] [] [] workLeft workRight output)
+          (programmeTM2CleanupCfg M (.cleanWorkRight tape) base
+            [] [] [] [] workLeft nextRight output)
+          (some (programmeTM2CleanupCfg M
+            (programmeTM2NextWorkOrEmit M tape base) base
+            [] [] [] [] workLeft (Function.update nextRight tape []) output))
+          hone hrest
+      simpa [nextRight, Function.update, hright, Nat.add_assoc] using hrun
+
+#print axioms programmeTM2_step_cleanInputRight_nil
+#print axioms programmeTM2_step_cleanWorkLeft_nil
+#print axioms programmeTM2_step_cleanWorkRight_nil
+#print axioms programmeTM2_cleanRaw_run
+#print axioms programmeTM2_cleanTemp_run
+#print axioms programmeTM2_cleanInputLeft_run
+#print axioms programmeTM2_cleanInputRight_run
+#print axioms programmeTM2_cleanWorkLeft_run
+#print axioms programmeTM2_cleanWorkRight_run
 #print axioms programmeTM2_step_cleanRaw_cons
 #print axioms programmeTM2_step_cleanRaw_nil
 #print axioms programmeTM2_step_cleanTemp_cons
