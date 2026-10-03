@@ -37,8 +37,8 @@ theorem programmeTM2_step_terminal_accept
   simp [hcontrol]
   apply congrArg some
   apply programmeTM2Cfg_ext
-  · simp [programmeTM2CleanupCfg, hmode]
-  · simp [programmeTM2CleanupCfg]
+  · rfl
+  · exact hcontrol.symm
   · intro k
     cases k <;> rfl
 
@@ -67,8 +67,8 @@ theorem programmeTM2_step_terminal_reject
   simp [hcontrol, hreject_ne_accept]
   apply congrArg some
   apply programmeTM2Cfg_ext
-  · simp [programmeTM2CleanupCfg, hmode]
-  · simp [programmeTM2CleanupCfg]
+  · rfl
+  · exact hcontrol.symm
   · intro k
     cases k <;> rfl
 
