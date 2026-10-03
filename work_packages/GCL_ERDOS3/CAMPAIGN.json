@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_RESEARCH_CAMPAIGN",
+  "campaign_id": "GCL-ERDOS3",
+  "title": "Erdős Problem 3",
+  "status": "ACTIVE__RESEARCH_RESET",
+  "origin": {
+    "campaign": "OPENMATH-2026",
+    "hill": "OM26-H7",
+    "source_repository": "grandchallenge/MATHSOLVE",
+    "source_commit": "fc9ff6e7c346910295e6ee5594fb901b0d77b87f",
+    "rule": "OPENMATH artifacts are immutable provenance; GCL-ERDOS3 does not rewrite their historical meaning."
+  },
+  "objective": "Advance the formal and mathematical frontier of Erdős Problem 3 while validating a GCL execution model that separates evidence transport from mathematical frontier selection.",
+  "independent_agent_interface": {
+    "retained": true,
+    "dispatch_grammar": "GCL-CONTRIBUTION-DISPATCH/1",
+    "result_grammar": "GCL-CONTRIBUTION-RESULT/1",
+    "durable_return": "authenticated GitHub intake",
+    "scheduling_change": "Successors are selected by FRONTIER_ADVANCEMENT_GATE, never by RESULT/1 order or Next residual alone."
+  },
+  "frontier_graph": "work_packages/GCL_ERDOS3/FRONTIER.json",
+  "frontier_gate": ".gcl/campaigns/GCL-ERDOS3/FRONTIER_GATE.json",
+  "initial_work_packages": [
+    "E3-F01",
+    "E3-B01",
+    "E3-A01",
+    "E3-S01"
+  ]
+}

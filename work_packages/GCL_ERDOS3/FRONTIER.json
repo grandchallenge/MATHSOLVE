@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_MATHEMATICAL_FRONTIER_GRAPH",
+  "campaign": "GCL-ERDOS3",
+  "root": "E3-ROOT",
+  "nodes": [
+    {
+      "id": "E3-ROOT",
+      "kind": "THEOREM",
+      "status": "OPEN",
+      "statement": "Erdős Problem 3: reciprocal divergence should force arithmetic progressions of every finite length."
+    },
+    {
+      "id": "E3-C-D3",
+      "kind": "LEMMA",
+      "status": "FORMALIZED",
+      "depends_on": [],
+      "artifact": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D3.lean",
+      "provenance_commit": "fc9ff6e7c346910295e6ee5594fb901b0d77b87f",
+      "git_blob_sha1": "bb81459b904c31d5efd09735f1b61cf32a5a0064"
+    },
+    {
+      "id": "E3-C-D4",
+      "kind": "LEMMA",
+      "status": "FORMALIZED",
+      "depends_on": [
+        "E3-C-D3"
+      ],
+      "artifact": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D4.lean",
+      "provenance_commit": "fc9ff6e7c346910295e6ee5594fb901b0d77b87f",
+      "git_blob_sha1": "3e123909cea5b248413be2d1e08fc7235487e43a"
+    },
+    {
+      "id": "E3-H-FINITE-DELETE",
+      "kind": "LEMMA",
+      "status": "REPLAYED_PENDING_FORMAL_VERIFICATION",
+      "artifact": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D5.lean",
+      "provenance_commit": "fc9ff6e7c346910295e6ee5594fb901b0d77b87f",
+      "git_blob_sha1": "530ee6d6651e90f683dd3e3d3abd2246f8aae6de"
+    },
+    {
+      "id": "E3-H-TAIL",
+      "kind": "LEMMA",
+      "status": "REPLAYED_PENDING_FORMAL_VERIFICATION",
+      "depends_on": [
+        "E3-H-FINITE-DELETE"
+      ]
+    },
+    {
+      "id": "E3-H-RESIDUE",
+      "kind": "LEMMA",
+      "status": "REPLAYED_PENDING_FORMAL_VERIFICATION"
+    },
+    {
+      "id": "E3-H-SCALING",
+      "kind": "LEMMA",
+      "status": "REPLAYED_NOT_FORMALIZED"
+    },
+    {
+      "id": "E3-F-D5",
+      "kind": "FORMALIZATION",
+      "status": "OPEN",
+      "depends_on": [
+        "E3-H-FINITE-DELETE",
+        "E3-H-TAIL",
+        "E3-H-RESIDUE"
+      ]
+    },
+    {
+      "id": "E3-B-SCALE-LOCAL",
+      "kind": "BRIDGE",
+      "status": "OPEN",
+      "depends_on": [
+        "E3-H-TAIL",
+        "E3-H-RESIDUE",
+        "E3-H-SCALING"
+      ]
+    },
+    {
+      "id": "E3-B-AP",
+      "kind": "BRIDGE",
+      "status": "OPEN",
+      "depends_on": [
+        "E3-B-SCALE-LOCAL",
+        "E3-C-D4"
+      ]
+    }
+  ],
+  "closed_claims": [
+    "E3-C-D3",
+    "E3-C-D4"
+  ],
+  "active_frontier": [
+    "E3-F-D5",
+    "E3-B-SCALE-LOCAL"
+  ],
+  "known_falsification_boundary": "Reciprocal divergence alone does not imply positive upper asymptotic density; the protected block construction is a counterexample.",
+  "scheduling_rule": "Only unresolved nodes may receive ADVANCE_FRONTIER; closed nodes may receive INDEPENDENT_VERIFY only while their explicit verification budget remains open."
+}

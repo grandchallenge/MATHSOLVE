@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_FRONTIER_ADVANCEMENT_GATE_POLICY",
+  "campaign": "GCL-ERDOS3",
+  "status": "ACTIVE",
+  "operational_lifecycle": [
+    "READY",
+    "LAUNCHED",
+    "RETURNED",
+    "CAPTURED",
+    "REPLAYED",
+    "ADJUDICATED",
+    "ADVANCED"
+  ],
+  "frontier_lifecycle": [
+    "OPEN",
+    "FORMULATED",
+    "ATTACKED",
+    "PROVED",
+    "REFUTED",
+    "BLOCKED",
+    "FORMALIZED",
+    "VERIFIED",
+    "CLOSED"
+  ],
+  "rule": "Operational advancement never implies mathematical successor creation.",
+  "next_residual_role": "EVIDENCE_ONLY_NOT_SCHEDULING_AUTHORITY",
+  "default_independent_replay_budget": 1,
+  "successor_requires": [
+    "frontier_node_id",
+    "frontier_effect",
+    "frontier_action",
+    "justification"
+  ],
+  "permitted_frontier_actions": [
+    "ADVANCE_FRONTIER",
+    "INDEPENDENT_VERIFY",
+    "FORMALIZE",
+    "ADVERSARIAL_ATTACK",
+    "SOURCE_BLOCKED",
+    "REFUTED",
+    "CLOSED_NO_SUCCESSOR",
+    "CAMPAIGN_TERMINAL"
+  ],
+  "constraints": {
+    "claim_effect_none_default": "CLOSED_NO_SUCCESSOR",
+    "repeated_replay_requires_named_reason": true,
+    "closed_or_exhausted_node_forbids_equivalent_replay_successor": true,
+    "source_blocked_requires_named_reopen_condition": true
+  }
+}
