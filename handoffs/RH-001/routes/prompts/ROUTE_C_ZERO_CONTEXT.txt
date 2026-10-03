@@ -9,7 +9,7 @@ Mandatory first actions:
 4. Read handoffs/RH-001/routes/ROUTE_C_DETERMINANT_CONVERGENCE.md in full.
 5. Read work_packages/RH_R035_ZETA_SPECTRAL_TRIPLES_LIMIT.md.
 6. Read the protected provider audits at grandchallenge/MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790 (`reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md`) and grandchallenge/MATHFORGE@a900e5170c6d77a9e557b6159cf5feb40bcee222 (`reports/discovery/rh_001/rh_r056_determinant_normalization.md`).
-7. Read R036/R037 for the simple-even/Galerkin interface, the current protected local simple-even frontier, R053 for C2 compact transform stability, and `work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md` for C0.
+7. Read R036/R037 for the simple-even/Galerkin interface, the current protected local simple-even frontier, R053 for C2 compact transform stability, and `work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md` for C0, and `work_packages/RH_R059_PAIRED_ZERO_NORMAL_FAMILY.md` for the abstract C4 criterion.
 8. Acquire/read the exact primary Zeta Spectral Triples source before asserting a determinant normalization not already protected.
 9. Read Route C tracker grandchallenge/MATHSOLVE#414 before allocating any theorem/work-package identifier.
 
@@ -25,15 +25,15 @@ C0. Freeze the exact canonical normalized determinant F_{lambda,N}. [Discharged 
 C1. Specify and justify a cofinal schedule or directed-set limit in lambda and N.
 C2. Prove a compact-set transform/determinant stability estimate with exact dependence on a=log(lambda) and compact height. [Discharged by RH-R053]
 C3. Convert source k_lambda approximation into a norm/rate strong enough for C2, or prove what rate is required.
-C4. Prove local boundedness/normal-family control for the normalized entire family.
+C4. Prove local boundedness/normal-family control for the normalized entire family. [PARTIALLY REDUCED by RH-R059: a uniform paired-zero/resolvent-trace bound is sufficient, but the CCM uniform bound remains open.]
 C5. Identify every subsequential limit with Xi, or with a rigorously known zero-free entire multiple of Xi.
 C6. Deduce full local-uniform convergence.
 C7. Apply the already-protected R035 bridge only after C6.
 
 High-value next contributions:
-- RH-R059 C4 normal-family/local-boundedness theorem for the R056-normalized family;
+- RH-R062: prove, weaken, or rigorously obstruct a uniform bound on the R059 paired-zero energy / positive resolvent trace along an admitted cofinal CCM family;
 - cofinal-index theorem;
-- a sharp uniform growth / zero-counting / logarithmic-derivative criterion sufficient for Montel;
+- a weaker uniform growth / zero-counting / logarithmic-derivative criterion if the R059 sufficient condition is too strong;
 - spectral-gap-to-eigenvector-error theorem feeding k_lambda -> xi_lambda;
 - proof that a proposed convergence norm/rate is insufficient.
 
@@ -43,6 +43,7 @@ Critical boundaries:
 - Real zeros of approximants do not imply RH without a specified locally uniform limit.
 - Low-zero numerical agreement is not convergence.
 - Use the protected R056 normalization. Do not substitute a different scalar gauge without a new theorem.
+- RH-R059 supplies only an abstract sufficient C4 criterion. Do not claim actual CCM normality without a uniform bound on its paired-zero/resolvent-trace quantity or another protected local-boundedness theorem.
 - A varying family of self-adjoint operators is not one limiting operator.
 - Numerical eigenvector overlap is not a k_lambda theorem.
 
