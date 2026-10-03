@@ -154,7 +154,13 @@
       ],
       "statement": "Prove Σ_{n≥1} r_4(2^n)/2^n < ∞.",
       "current_best_pointwise": "Green–Tao: r_4(N) ≪ N (log N)^(-c) for some absolute c>0; this alone does not establish the series convergence.",
-      "smallest_missing_object": "A summable normalized bound, or a cross-scale recurrence/average estimate on a_n=r_4(2^n)/2^n strong enough to imply Σ a_n<∞."
+      "smallest_missing_object": "A summable normalized bound, or a cross-scale recurrence/average estimate on a_n=r_4(2^n)/2^n strong enough to imply Σ a_n<∞.",
+      "active_attacks": [
+        "E3-Q01",
+        "E3-X01",
+        "E3-A02",
+        "E3-S03"
+      ]
     },
     {
       "id": "E3-QK5-SERIES",
@@ -173,7 +179,13 @@
       "depends_on": [
         "E3-B-AP"
       ],
-      "statement": "Independently verify the reverse block-construction implication in E3-B02, including no mixed 3-AP across scale-separated blocks and harmonic-mass lower bound."
+      "statement": "Independently verify the reverse block-construction implication in E3-B02, including no mixed 3-AP across scale-separated blocks and harmonic-mass lower bound.",
+      "dispatch": {
+        "dispatch_id": "GCL-ERDOS3-E3-V02-IA-001",
+        "issue_number": 776,
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/776",
+        "state": "DISPATCHED__AWAITING_RETURN"
+      }
     }
   ],
   "closed_claims": [
