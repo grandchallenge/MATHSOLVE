@@ -311,10 +311,10 @@ R071's conditional discharge is withdrawn by R077 because:
 
 R077 supplies the corrected identification theorem.
 
-If a normal admissible sequence with real zeros satisfies
+If a locally bounded admissible sequence with real zeros satisfies
 
 \[
-\limsup_j F_j(0)>0
+F_j(0)\ne0,\qquad \limsup_j |F_j(0)|>0
 \]
 
 and, on one real interval \(I\),
