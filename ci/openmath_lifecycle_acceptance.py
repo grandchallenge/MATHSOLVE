@@ -17,9 +17,9 @@ except ModuleNotFoundError:
     from openmath_cex_github_contribution_intake import parse_result_comment
 
 try:
-    from ci.openmath_lifecycle_candidate import apply_candidate, finalize_pin
+    from ci.openmath_lifecycle_candidate import apply_candidate, finalize_pin, plan, LifecycleCandidateError
 except ModuleNotFoundError:
-    from openmath_lifecycle_candidate import apply_candidate, finalize_pin
+    from openmath_lifecycle_candidate import apply_candidate, finalize_pin, plan, LifecycleCandidateError
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "contributions/OPENMATH-2026/OM26-H2/WP02/raw/OM26-H2-WP02-IA-001/github-comment-5889734796.md"
@@ -158,197 +158,51 @@ def complete_returned_core(
 
 
 def simulate_current_issued_assignment() -> dict[str, Any]:
-    """Exercise the live candidate generator from one currently issued lease."""
-    current_registry = load_json(REGISTRY)
-    current = {
-        x["assignment_id"]: x
-        for x in current_registry["assignments"]
-        if isinstance(x, dict) and x.get("assignment_id")
+    """Verify terminal event-window state and the protected frontier gate."""
+    contract = load_json(CONTRACT)
+    policy = contract.get("successor_policy", {})
+    if policy.get("mode") != "FRONTIER_GATE_REQUIRED":
+        raise AcceptanceError("frontier successor gate is not active")
+    if policy.get("automatic_replay_successor") is not False:
+        raise AcceptanceError("automatic replay successor remains enabled")
+
+    registry = load_json(REGISTRY)
+    scripts = list(registry["launch_contract"]["current_scripts"].values())
+    scripts += list(registry["launch_contract"].get("support_scripts", {}).values())
+    if any(row.get("executable") for row in scripts):
+        raise AcceptanceError("terminal OPENMATH state still exposes executable replay leases")
+    if registry["mathematics_release_policy"]["summary"].get("leased_not_launched_agents") != 0:
+        raise AcceptanceError("terminal OPENMATH state still counts leased agents")
+
+    with tempfile.TemporaryDirectory(prefix="openmath-frontier-gate-") as td:
+        intake_dir = Path(td)
+        (intake_dir / "META.json").write_text(json.dumps({"comment_id": 1}), encoding="utf-8")
+        (intake_dir / "RECEIPT.json").write_text(json.dumps({
+            "assignment_id": "OM26-H7-WP06",
+            "dispatch_id": "OM26-H7-WP06-IA-001",
+        }), encoding="utf-8")
+        (intake_dir / "RAW.md").write_text("GCL-CONTRIBUTION-RESULT/1\n", encoding="utf-8")
+        try:
+            plan(intake_dir, ROOT)
+        except LifecycleCandidateError as exc:
+            if "protected frontier disposition required" not in str(exc):
+                raise AcceptanceError(f"unexpected frontier-gate error: {exc}") from exc
+        else:
+            raise AcceptanceError("automatic successor generation unexpectedly succeeded")
+
+    return {
+        "pipeline": PIPELINE,
+        "frontier_gate": "PASS__AUTOMATIC_REPLAY_DISABLED",
+        "successor": None,
+        "manual_transport_required": False,
+        "manual_controller_wake_required": False,
+        "result": "PASS",
     }
-    source_id = current_registry["mathematics_release_policy"]["per_hill"]["OM26-H3"]["assignment"]
-    source = current.get(source_id)
-    if source is None:
-        raise AcceptanceError("current H3 issued assignment is missing")
-    if source.get("state") != "LEASED_NOT_LAUNCHED":
-        raise AcceptanceError(f"H3 acceptance fixture is not issued/ready: {source.get('state')}")
-    lease = source.get("lease", {})
-    source_dispatch = lease.get("dispatch_id")
-    source_agent = lease.get("agent_ref")
-    source_wp = source_id.rsplit("-", 1)[-1]
-    successor_id = f"OM26-H3-WP{int(source_wp[2:]) + 1:02d}"
-    if source_dispatch != f"{source_id}-IA-001":
-        raise AcceptanceError("H3 acceptance fixture dispatch drift")
-    if not isinstance(source_agent, str) or not source_agent.startswith("INDEPENDENT-AGENT-"):
-        raise AcceptanceError("H3 acceptance fixture agent drift")
-
-    raw = f"""GCL-CONTRIBUTION-RESULT/1
-dispatch_id: {source_dispatch}
-agent_ref: {source_agent}
-assignment: {source_id}
-disposition: EXACT_BLOCKER
-context_class: ZERO_CONTEXT
-external_sources: PROTECTED_PACKET_ONLY
-timebox_observed: YES
-
-## Strongest exact statement
-
-No mathematical claim is promoted by this acceptance fixture.
-
-## Derivation
-
-This deterministic fixture exercises only lifecycle transport and bounded fallback adjudication.
-
-## Assumptions beyond bootstrap
-
-NONE
-
-## Verification / falsification hooks
-
-Verify that capture bytes, replay record, no-claim adjudication, successor dispatch, and immutable launch identity are generated deterministically.
-
-## Claim boundary
-
-Lifecycle acceptance only; no mathematical, certification, or competition effect.
-
-## Next residual
-
-Independently replay the predecessor claim under the protected successor package.
-"""
-    comment_id = 999001
-    issue_number = 999001
-    dispatch = source_dispatch
-    raw_rel = f"contributions/OPENMATH-2026/OM26-H3/{source_wp}/raw/{dispatch}/github-comment-{comment_id}.md"
-    receipt_rel = f"contributions/OPENMATH-2026/OM26-H3/{source_wp}/receipts/{dispatch}/github-comment-{comment_id}.json"
-
-    with tempfile.TemporaryDirectory(prefix="openmath-lifecycle-acceptance-") as td:
-        root = Path(td) / "repo"
-        intake_dir = Path(td) / "intake"
-        root.mkdir(parents=True)
-        intake_dir.mkdir(parents=True)
-
-        for rel in (
-            ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
-            "work_packages/OPENMATH_2026/HILL_LANES.json",
-            "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
-            "handoffs/OPENMATH-2026/launch/README.md",
-        ):
-            src = ROOT / rel
-            dst = root / rel
-            dst.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(src, dst)
-
-        meta = {
-            "dispatch_id": dispatch,
-            "comment_id": comment_id,
-            "issue_number": issue_number,
-            "raw_repo_path": raw_rel,
-            "receipt_repo_path": receipt_rel,
-            "branch": f"intake/openmath-{dispatch.lower()}",
-            "pr_title": f"OPENMATH CEX intake: {dispatch}",
-        }
-        receipt = {
-            "schema_version": "1.0.0",
-            "receipt_id": f"{dispatch}:github-comment:{comment_id}",
-            "dispatch_id": dispatch,
-            "assignment_id": source_id,
-            "agent_ref": source_agent,
-            "concurrency_mode": "independent_blind",
-            "result_protocol": "GCL-CONTRIBUTION-RESULT/1",
-            "github_issue_number": lease["dispatch_issue_number"],
-            "github_comment_id": comment_id,
-            "authenticated_github_actor": "acceptance-fixture",
-            "raw_artifact_path": raw_rel,
-            "disposition_declared": "EXACT_BLOCKER",
-            "context_class_declared": "ZERO_CONTEXT",
-            "external_sources_declared": "PROTECTED_PACKET_ONLY",
-            "timebox_observed_declared": "YES",
-            "schema_result": "valid",
-            "freshness": "current_for_dispatch",
-            "security_state": "narrative_only_no_links_no_attachments",
-            "handling_state": "received_unadjudicated",
-            "mathematical_correctness_adjudicated": False,
-            "independence_strength_adjudicated": False,
-            "canonical_claim_effect": False,
-        }
-        (intake_dir / "META.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
-        (intake_dir / "RECEIPT.json").write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
-        (intake_dir / "RAW.md").write_text(raw, encoding="utf-8")
-
-        manifest = apply_candidate(
-            root,
-            intake_dir,
-            issue_number,
-            "https://github.com/grandchallenge/MATHSOLVE/issues/999001",
-        )
-        if manifest.get("pipeline") != PIPELINE:
-            raise AcceptanceError("candidate generator pipeline drift")
-        if manifest.get("successor_assignment") != successor_id:
-            raise AcceptanceError("candidate generator successor drift")
-
-        lifecycle_dir = root / f"contributions/OPENMATH-2026/OM26-H3/{source_wp}/lifecycle/{dispatch}"
-        replay = load_json(lifecycle_dir / "REPLAY.json")
-        adjudication = load_json(lifecycle_dir / "ADJUDICATION.json")
-        projection = load_json(lifecycle_dir / "PROGRAMME_PROJECTION.json")
-        if replay.get("state") != "REPLAYED":
-            raise AcceptanceError("generated replay state drift")
-        if adjudication.get("state") != "ADJUDICATED":
-            raise AcceptanceError("generated adjudication state drift")
-        if adjudication.get("disposition") != "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION":
-            raise AcceptanceError("generated bounded adjudication drift")
-        if adjudication.get("accepted_claims") != []:
-            raise AcceptanceError("fallback adjudication promoted a claim")
-        if projection.get("pipeline_trace") != PIPELINE:
-            raise AcceptanceError("Programme projection pipeline drift")
-        if projection.get("successor", {}).get("assignment_id") != successor_id:
-            raise AcceptanceError("Programme projection successor drift")
-
-        simulated_registry = load_json(root / ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json")
-        simulated_items = {
-            x["assignment_id"]: x
-            for x in simulated_registry["assignments"]
-            if isinstance(x, dict) and x.get("assignment_id")
-        }
-        pred = simulated_items[source_id]
-        succ = simulated_items[successor_id]
-        if pred.get("state") != "ACCEPTED" or pred.get("lifecycle", {}).get("closed") is not True:
-            raise AcceptanceError("generated predecessor closure drift")
-        if succ.get("state") != "LEASED_NOT_LAUNCHED":
-            raise AcceptanceError("generated successor readiness drift")
-        summary = simulated_registry["mathematics_release_policy"]["summary"]
-        if summary.get("returned_unadjudicated_agents") != 0:
-            raise AcceptanceError("generated state leaves returned work unadjudicated")
-        if summary.get("launched_agents") != 0:
-            raise AcceptanceError("generated state leaves stale launched count")
-
-        fake_content_commit = "a" * 40
-        pin = finalize_pin(root, dispatch, fake_content_commit)
-        if pin.get("successor") != successor_id:
-            raise AcceptanceError("successor pin drift")
-        if fake_content_commit not in pin.get("task_url", ""):
-            raise AcceptanceError("successor task is not immutable-pinned")
-
-        if (root / raw_rel).read_text(encoding="utf-8") != raw:
-            raise AcceptanceError("permanent capture bytes drift in simulation")
-
-        return {
-            "source_assignment": source_id,
-            "source_dispatch": dispatch,
-            "pipeline": PIPELINE,
-            "capture": "PASS__EXACT_BYTES",
-            "replay": replay["state"],
-            "adjudication": adjudication["disposition"],
-            "programme_projection": "PASS",
-            "successor": successor_id,
-            "immutable_task_pin": "PASS",
-            "manual_transport_required": False,
-            "manual_controller_wake_required": False,
-            "result": "PASS",
-        }
 
 
 def run_acceptance() -> dict[str, Any]:
     contract = load_json(CONTRACT)
-    if contract.get("status") != "FROZEN":
+    if contract.get("status") not in {"FROZEN", "FROZEN__EVENT_WINDOW_TERMINAL"}:
         raise AcceptanceError("lifecycle contract is not frozen")
     if contract.get("lifecycle") != FULL_LIFECYCLE:
         raise AcceptanceError("frozen lifecycle drift")
@@ -452,7 +306,8 @@ def run_acceptance() -> dict[str, Any]:
     successor = items["OM26-H2-WP03"]
     if predecessor["state"] != "ACCEPTED" or predecessor["lifecycle"]["closed"] is not True:
         raise AcceptanceError("predecessor is not durably adjudicated/closed")
-    validate_successor_progress(registry, successor["assignment_id"])
+    if contract.get("successor_policy", {}).get("mode") != "FRONTIER_GATE_REQUIRED":
+        validate_successor_progress(registry, successor["assignment_id"])
 
     structural = simulate_current_issued_assignment()
 

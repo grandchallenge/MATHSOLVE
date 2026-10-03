@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_EVENT_WINDOW_TERMINAL_RECEIPT",
+  "campaign": "OPENMATH-2026",
+  "terminalized_from_solve_main": "fc9ff6e7c346910295e6ee5594fb901b0d77b87f",
+  "cutoff_local": "2026-10-02T21:00:00-07:00",
+  "cutoff_utc": "2026-10-03T04:00:00Z",
+  "official_submissions": 0,
+  "official_acceptances": 0,
+  "accepted_agent_evidence": 47,
+  "retired_unlaunched_replay_leases": [
+    "OM26-H5-WP06",
+    "OM26-H6-WP07",
+    "OM26-H7-WP06",
+    "OM26-H1-WP08",
+    "OM26-H1-WP35",
+    "OM26-H1-WP65",
+    "OM26-H2-WP10",
+    "OM26-H3-WP09"
+  ],
+  "preserved_return_before_terminalization": "OM26-H4-WP06-IA-001",
+  "promoted_campaign": "GCL-ERDOS3",
+  "claim_boundary": "Competition phase only. Mathematical outputs and provenance remain retained; no competition submission or acceptance is inferred."
+}

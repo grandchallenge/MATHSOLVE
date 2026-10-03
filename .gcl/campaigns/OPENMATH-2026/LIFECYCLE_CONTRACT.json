@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "record_type": "OPENMATH_LIFECYCLE_CONTRACT",
   "campaign": "OPENMATH-2026",
-  "status": "FROZEN",
+  "status": "FROZEN__EVENT_WINDOW_TERMINAL",
   "frozen_decisions": {
     "topology": "SEVEN_PEER_HILLS",
     "transport": "LINK_IN_RELAY_OUT",
@@ -20,9 +20,9 @@
     "ADJUDICATED",
     "ADVANCED"
   ],
-  "transition_rule": "A valid returned result SHALL either advance through every downstream state automatically or fail closed with a protected infrastructure blocker. It SHALL NOT require a human or conversational agent to move evidence, wake another controller, create the next bounded task, or reconcile campaign state.",
-  "adjudication_rule": "Trusted assignment-specific replay may promote only what it verifies. If no trusted mathematical replay adapter can establish the returned claim, automated bounded adjudication SHALL preserve the evidence, promote no mathematical claim, and generate a replay-closure successor instead of stopping.",
-  "successor_rule": "ADJUDICATED is not terminal for an open hill. ADVANCED requires either a protected successor assignment or a protected terminal hill disposition.",
+  "transition_rule": "A valid return may be captured and adjudicated without creating a successor. Operational evidence flow and mathematical research scheduling are separate state machines.",
+  "adjudication_rule": "Trusted replay may promote only what it verifies. Evidence acceptance with claim_effect NONE does not itself justify another replay task.",
+  "successor_rule": "No successor is created from RESULT/1 alone. A protected FRONTIER_ADVANCEMENT_GATE disposition must name an unresolved frontier node and a permitted frontier action.",
   "acceptance_test": {
     "id": "OPENMATH-RETURNED-TO-ADVANCED-001",
     "fixture_dispatch": "OM26-H2-WP02-IA-001",
@@ -38,7 +38,35 @@
     "expected_successor": "OM26-H2-WP03",
     "manual_transport_allowed": false,
     "manual_controller_wake_allowed": false,
-    "conversational_reconciliation_allowed": false
+    "conversational_reconciliation_allowed": false,
+    "current_mode": "EVENT_WINDOW_TERMINAL__FRONTIER_GATE_REQUIRED",
+    "expected_automatic_successor": null
   },
-  "completion_test": "Starting from the protected H2 WP02 returned RESULT/1 fixture, one unattended lifecycle invocation must reproduce capture identity, independently replay both accepted witnesses, derive the bounded narrowed adjudication, identify WP03 as successor, and emit ADVANCED with no human-supplied intermediate state."
+  "completion_test": "Historical lifecycle acceptance remains preserved. Current mode requires zero executable OPENMATH replay leases and rejects automatic successor generation without a protected frontier disposition.",
+  "event_window": {
+    "state": "TERMINAL",
+    "cutoff_local": "2026-10-02T21:00:00-07:00",
+    "cutoff_utc": "2026-10-03T04:00:00Z",
+    "official_submissions": 0,
+    "official_acceptances": 0,
+    "research_outputs_preserved": true
+  },
+  "successor_policy": {
+    "mode": "FRONTIER_GATE_REQUIRED",
+    "automatic_replay_successor": false,
+    "next_residual_is_scheduling_authority": false,
+    "default_on_claim_effect_none": "CLOSED_NO_SUCCESSOR",
+    "default_independent_replay_budget": 1,
+    "replay_above_budget_requires_named_reason": true,
+    "permitted_dispositions": [
+      "ADVANCE_FRONTIER",
+      "INDEPENDENT_VERIFY",
+      "FORMALIZE",
+      "ADVERSARIAL_ATTACK",
+      "SOURCE_BLOCKED",
+      "REFUTED",
+      "CLOSED_NO_SUCCESSOR",
+      "CAMPAIGN_TERMINAL"
+    ]
+  }
 }

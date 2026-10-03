@@ -1,0 +1,48 @@
+GCL-CONTRIBUTION-RESULT/1
+dispatch_id: OM26-H4-WP06-IA-001
+agent_ref: INDEPENDENT-AGENT-406
+assignment: OM26-H4-WP06
+disposition: EXACT_BLOCKER
+context_class: ZERO_CONTEXT
+external_sources: PROTECTED_PACKET_ONLY
+timebox_observed: YES
+
+## Strongest exact statement
+
+The predecessor blocker is independently confirmed from the protected packet. The immutable task supplied for this replay resolves at commit dbb7764e4e83f6d21ee09c822ebb664eb0ceeeb4 with task blob SHA-1 df2670eb112b98bfa61ca59afb32dc6b627b14f2, and the registered assignment, dispatch, agent, and return identities match OM26-H4-WP06, OM26-H4-WP06-IA-001, INDEPENDENT-AGENT-406, and issue 652.
+
+Exact-integer recomputation from the recurrence and validity inequalities printed in the packet reproduces the finite portions of the predecessor evidence. For stages (8,4), (10,6), (12,8), and (14,10), the raw/valid prefix counts are exactly 1,016/309, 6,132/1,949, 32,752/10,641, and 163,820/54,473, with zero affine-identity violations and zero retained-prefix descent violations. Residue-containment reduction gives exactly 23, 53, 107, and 306 nonredundant classes, with successive new-modulus splits 15+15, 27+27, and 57+142. Projection to evaluator target powers 8 through 12 gives total covered-class counts 2,914, 3,244, 3,352, and 3,352 for those four stages, hence +330 and +438 versus the base stage and +108 from (10,6) to (12,8).
+
+Replay closure nevertheless remains blocked by two genuinely absent definitions. First, the packet gives no canonical serialization for a nonempty rule/catalog object. Second, it gives no unique contraction-margin scalar, ordering, or tie convention for comparing applicable rules. Therefore the reported nonempty SHA-256 fingerprints and the claimed 1,713 and 1,981 strictly improved evaluator classes are not deterministic functions of the protected packet, and REPLAY_CLOSURE_VALIDATED would overstate the available evidence.
+
+## Derivation
+
+For each odd residue r modulo 2^k, I replayed the accelerated recurrence x_j=(3x_(j-1)+1)/2^e_j, where e_j is the exact 2-adic valuation of 3x_(j-1)+1. In parallel I propagated A_0=1, B_0=0, D_0=1 and A_j=3A_(j-1), B_j=3B_(j-1)+D_(j-1), D_j=2^e_j D_(j-1). Every enumerated prefix satisfied D_j x_j=A_j r+B_j exactly.
+
+I retained a prefix exactly under the packet conditions k>=1+sum(e), A<D, and B<(D-A)r. This reproduces the four valid-prefix totals above. Reducing classes by ordinary residue inclusion, with (k,r) removed whenever a retained (k0,r0) has k0<=k and r congruent to r0 modulo 2^k0, reproduces the 23/53/107/306 class totals and the stated per-modulus additions. Applying only rules with k no finer than target power K for K=8,...,12 reproduces the coverage totals 2,914, 3,244, 3,352, and 3,352.
+
+The serialization blocker is constructive. Using the same exact base-stage valid catalog, sorted lexicographically by (k,r,s,A,B,D), the deterministic compact-JSON encoding as arrays produces SHA-256 80ebc17dbee1e220f812aa4d0bb624103e25208ef687fb0cef8133dc9a4116b5, while the deterministic compact-JSON encoding as objects with ordered keys k,r,s,A,B,D produces SHA-256 975b2328b24ff4f6a24d13405d7601090faae982c79c75d3ce115672befc084c. Both serializers encode the empty catalog as the identical bytes [] and therefore have the same empty-list SHA-256 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945. The protected packet specifies no rule that selects either nonempty representation, or any other one, so the empty-list digest cannot determine the nonempty fingerprints.
+
+The contraction-margin blocker is likewise constructive. For each target residue R, ranking applicable rules by the exact representative-relative margin ((D-A)R-B)/(DR) yields 883 strictly improved previously covered classes at stage (10,6) and 1,333 at stage (12,8) relative to the base stage. Ranking the same applicable rules by the exact asymptotic margin (D-A)/D yields 897 and 1,347. Both definitions are exact and are compatible with the affine descent formulas printed in the packet, but they induce different orderings and neither yields the claimed 1,713/1,981 counts. Because the packet contains no evaluator definition choosing a margin function and tie rule, those claimed counts cannot be replayed uniquely.
+
+## Assumptions beyond bootstrap
+
+No external mathematical source, hidden evaluator behavior, competition data, repository state beyond the immutable task packet, or certification evidence was used. The finite replay uses only positive odd residues, exact integer arithmetic, the recurrence and validity inequalities printed in the packet, evaluator target powers 8 through 12 stated there, and ordinary residue-class inclusion for containment.
+
+The two explicit serializers and two explicit margin functions are not asserted to be organizer semantics. They are deterministic countermodels used solely to prove underdetermination: the packet permits more than one exact completion of the missing definitions, with different nonempty digests and different strict-improvement counts.
+
+## Verification / falsification hooks
+
+An independent exact implementation must reproduce raw/valid counts 1,016/309, 6,132/1,949, 32,752/10,641, and 163,820/54,473; reduced-class totals 23, 53, 107, and 306; and evaluator coverage totals 2,914, 3,244, 3,352, and 3,352. It must also reproduce 883/1,333 strict improvements under ((D-A)R-B)/(DR) and 897/1,347 under (D-A)/D when each stage is compared with the base catalog over previously covered target classes.
+
+The serialization countermodel is falsified only if the protected packet itself supplies a unique nonempty catalog schema, field set and ordering, catalog ordering, and byte encoding that excludes at least one of the two constructions. The margin blocker is falsified only if the protected packet itself supplies an exact margin function together with comparison and tie semantics sufficient to determine the claimed 1,713 and 1,981 counts.
+
+## Claim boundary
+
+This result confirms deterministic replay of the finite recurrence, affine identity, validity, residue-containment, and coverage calculations available from the packet. It does not validate or refute any particular nonempty fingerprint or the numerical 1,713/1,981 strict-improvement claims; it establishes that those quantities are not uniquely defined by the protected evidence supplied to this assignment.
+
+No Collatz convergence theorem, competition result, organizer acceptance, hidden-target claim, repository mutation, novelty determination, submission, certification, or GCL/MATHCERT promotion is asserted.
+
+## Next residual
+
+Supply, as protected evidence, the exact canonical nonempty serialization and the exact evaluator contraction-margin function with comparison and tie rules. Then replay only the blocked fingerprint and strict-improvement checks against the already reproducible finite catalog.

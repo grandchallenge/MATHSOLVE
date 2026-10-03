@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS3_BOOTSTRAP_PROVENANCE",
+  "source_repository": "grandchallenge/MATHSOLVE",
+  "source_commit": "fc9ff6e7c346910295e6ee5594fb901b0d77b87f",
+  "artifacts": [
+    {
+      "path": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D3.lean",
+      "git_blob_sha1": "bb81459b904c31d5efd09735f1b61cf32a5a0064"
+    },
+    {
+      "path": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D4.lean",
+      "git_blob_sha1": "3e123909cea5b248413be2d1e08fc7235487e43a"
+    },
+    {
+      "path": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D5.lean",
+      "git_blob_sha1": "530ee6d6651e90f683dd3e3d3abd2246f8aae6de"
+    },
+    {
+      "path": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D3_PROOF_RECEIPT.json",
+      "git_blob_sha1": "dd6a58b6e3cb34035665b6c0cb6ac6d2c3338d1e"
+    },
+    {
+      "path": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D4_PROOF_RECEIPT.json",
+      "git_blob_sha1": "7ec3e7bb182b9b275a7d72d8a634f5b5ee7df5b1"
+    },
+    {
+      "path": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_STATUS_REVIEW.md",
+      "git_blob_sha1": "823bc4e487eff3cb170ca15348770be857544bd8"
+    }
+  ],
+  "imported_claims": {
+    "D3": "FORMALIZED",
+    "D4": "FORMALIZED",
+    "D5": "CANDIDATE_NOT_YET_PROOF_RECEIPTED"
+  }
+}
