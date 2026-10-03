@@ -107,7 +107,7 @@ C0. Exact finite normalization. DISCHARGED by RH-R054-CANONICAL-DETERMINANT-NORM
 
 C1. Select and justify a cofinal parameter schedule.
 
-C2. Establish a compact-set transform/determinant stability estimate.
+C2. Establish a compact-set transform/determinant stability estimate. DISCHARGED by RH-R053-COMPACT-TRANSFORM-STABILITY-001.
 
 C3. Prove approximation of the true finite/full eigenvector by the source candidate strongly enough to use C2.
 
