@@ -105,6 +105,7 @@ Read:
 - work_packages/RH_R050_TRIAL_REWEIGHTED_EXTENSION.md
 - work_packages/RH_R051_RANK_ONE_COERCIVITY_EXTENSION.md
 - work_packages/RH_R052_REFRESHED_HERGLOTZ_MARGINS.md
+- work_packages/RH_R055_NO_PRIME_HERGLOTZ_VARIATION.md
 - MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648:
   reports/discovery/rh_001/rh_r041_pole_resolvent_interface.md
 - MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320:
@@ -119,8 +120,21 @@ Protected theorem identities of particular importance:
 - RH-R044: explicit positive initial d and Delta_H margins on an earlier interval (a<=2/15).
 - RH-R051: direct simple-even theorem through a=178/1000.
 - RH-R052: refreshed explicit positive initial d and Delta_H margins through a=178/1000.
+- RH-R055: candidate quantitative no-prime transport theorem; explicit sector-bottom Lipschitz, resolvent/Herglotz variation, and continuation through a=3561/20000.
 
 RH-R052 has refreshed R044's explicit quantitative Herglotz margins to the full R051 endpoint a=178/1000, establishing d(a) > 55428698889/23675000000000 and Delta_H(a) >= 1210515093544258/12367528439608125 > 0.
+
+RH-R055 then proves on the no-prime interval [89/500,9/50] the explicit bounds
+
+|mu(a)-mu(b)| <= (516399/55625)|a-b|,
+
+|beta_-(a)-beta_-(b)| <= (16625783/1780000)|a-b|,
+
+and, after exact cancellation of the common scalar shift,
+
+|d(a)-d(b)| <= (147759/20000)|a-b|.
+
+It also proves quantitative resolvent/Herglotz variation on d>=delta and integrates the sharper direct scalar bound to carry d>0 and Delta_H>0 through a=3561/20000.
 
 ## 4. Fixed-Hilbert-space normalization
 
@@ -172,9 +186,9 @@ This advances the initial continuation base from a=2/15 to a=178/1000, reducing 
 
 ## 6. Preferred continuation theorems
 
-### B1. Local Lipschitz bounds for sector bottoms
+### B1. Local Lipschitz bounds for sector bottoms — first no-prime theorem completed by RH-R055
 
-Prove explicit bounds of the form
+RH-R055 proves explicit bounds of the form
 
 |mu(a)-mu(b)| <= C_mu |a-b|,
 
@@ -182,15 +196,11 @@ Prove explicit bounds of the form
 
 on a compact interval.
 
-Then
+Moreover, because the scalar shift is common to both bottoms, RH-R055 proves the sharper cancellation bound
 
-d(a)
->=
-d(a_0)
--
-(C_mu+C_beta)|a-a_0|.
+d(a) >= d(a_0) - (147759/20000)|a-a_0|.
 
-This alone can preserve pole localization over a certified interval.
+This preserves pole localization on a certified interval without paying the two scalar-log Lipschitz terms.
 
 Possible tools:
 
@@ -198,19 +208,25 @@ Possible tools:
 - bounded-form perturbation estimates;
 - piecewise estimates between prime-entry thresholds.
 
-### B2. Quantitative resolvent variation
+### B2. Quantitative resolvent variation — first no-prime theorem completed by RH-R055
 
-On d(a)>=delta>0, use the resolvent identity to bound
+RH-R055 proves, on its fixed no-prime interval and for d(a),d(b)>=delta>0,
 
-||(B_{a,-}-mu(a))^{-1}
--
-(B_{b,-}-mu(b))^{-1}||,
+||R_a-R_b|| <= (147759/(20000 delta^2)) |a-b|,
 
-or a weaker bound sufficient for the scalar matrix element m(a).
+where R_a=(B_{a,-}-mu(a))^{-1} on the fixed scaled odd Hilbert space,
 
-A norm-resolvent theorem is not required if a direct quadratic-form or scalar resolvent estimate closes.
+and an explicit scalar bound
+
+|Delta_H(a)-Delta_H(b)| <= [227/(8000 delta) + 147759/(20480000 delta^2)] |a-b|.
+
+This norm-resolvent statement is restricted to the no-prime family where the actual bounded variation has been proved in operator norm.  It makes no norm-continuity claim for compressed prime translations.
 
 ### B3. Direct Delta_H variation
+
+RH-R055 also supplies the first explicit continuation corollary: using m(a)<=||s_a||^2/d(a), it carries d>0 and Delta_H>0 through a=3561/20000, with a new-tranche parity-gap lower bound 138950903247/5634650000000000.  A next B3 theorem should improve this conservative transport radius or prepare a prime-threshold piecewise estimate.
+
+Legacy target:
 
 Differentiate or compare
 
@@ -270,6 +286,8 @@ But do not assume:
 Subgradient/min-max variation bounds may be safer than exact derivatives.
 
 ## 9. Minimum meaningful deliverable
+
+RH-R055 now discharges items 2-4 locally in the no-prime regime and advances the explicit simple-even frontier to a=3561/20000.  Subsequent work should improve the quantitative transport budget or address the prime-active regime.
 
 A contribution is useful if it does at least one of:
 
