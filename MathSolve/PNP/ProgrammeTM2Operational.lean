@@ -163,9 +163,42 @@ theorem programmeTM2RunStepTarget_eq_core
         stk := (programmeTM2RunCore M target).2 } := by
   unfold programmeTM2RunStepTarget programmeTM2RunTransition
   simp only [Turing.TM2.stepAux]
-  rw [programmeTM2_stepAux_applyInputMove]
-  rw [programmeTM2_stepAux_applyWorkMoves]
-  rfl
+  let snapped := target.var.snapshot M
+  let inputState := programmeTM2AfterInputState M snapped target.stk
+  let inputStacks := programmeTM2AfterInputStacks M snapped target.stk
+  let workResult :=
+    programmeTM2WorkPhase M (programmeTM2WorkTapes M)
+      inputState inputStacks
+  calc
+    Turing.TM2.stepAux
+        (programmeTM2ApplyInputMove M
+          (programmeTM2ApplyWorkMoves M (programmeTM2WorkTapes M)
+            (.load (ProgrammeTM2State.commitAction M)
+              (.goto fun _ => .run))))
+        snapped target.stk =
+      Turing.TM2.stepAux
+        (programmeTM2ApplyWorkMoves M (programmeTM2WorkTapes M)
+          (.load (ProgrammeTM2State.commitAction M)
+            (.goto fun _ => .run)))
+        inputState inputStacks := by
+          exact programmeTM2_stepAux_applyInputMove M _ snapped target.stk
+    _ =
+      Turing.TM2.stepAux
+        (.load (ProgrammeTM2State.commitAction M)
+          (.goto fun _ => .run))
+        workResult.1 workResult.2 := by
+          exact programmeTM2_stepAux_applyWorkMoves M
+            (programmeTM2WorkTapes M) _ inputState inputStacks
+    _ =
+      { l := some (.run)
+        var := workResult.1.commitAction M
+        stk := workResult.2 } := by
+          rfl
+    _ =
+      { l := some (.run)
+        var := (programmeTM2RunCore M target).1
+        stk := (programmeTM2RunCore M target).2 } := by
+          rfl
 
 #print axioms programmeTM2_stepAux_applyInputMove
 #print axioms programmeTM2_stepAux_applyWorkMove
