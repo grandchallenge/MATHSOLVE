@@ -1,6 +1,6 @@
 # PNP-BRIDGE-001 — staged proof-bearing bridge suite
 
-This package advances the exact bridge suite required by MATHSOLVE issue #148. It closes the carrier and polynomial-bound obligations and records why the remaining obligations are not yet theorem-backed.
+This package advances the exact bridge suite required by MATHSOLVE issue #148. It closes the carrier, polynomial-bound, and deterministic machine-model obligations and records the remaining NP-verifier and endpoint boundaries.
 
 ## Proved carrier result
 
@@ -22,11 +22,19 @@ The natural-polynomial direction handles arbitrary natural coefficients, not onl
 
 This discharges `PNP-BRIDGE-POLYBOUND-001` only. It does not change the machine model, prove a TM2/multitape simulation, or identify either imported class with a Programme class.
 
+## Proved deterministic machine-model result
+
+The model bridge now supplies both quantitative compiler directions between the pinned mathlib finite-TM2 presentation and the locked Programme deterministic multitape model.
+
+- `MathSolve/PNP/TM2ForwardCompiler.lean` constructs `tm2ToProgrammeCompiler_constructive`. Its target Programme runtime is the exact startup cost plus a fixed source-machine statement factor times the imported TM2 runtime, and it proves the required affine simulation-overhead contract.
+- `MathSolve/PNP/ProgrammeTM2ReverseCompiler.lean` constructs `programmeToTM2Compiler_constructive`. The reverse finite-TM2 interpreter includes explicit initialization, work-tape preservation, terminal cleanup, output transport, and an affine runtime bound in input length and source Programme runtime.
+- `MathSolve/PNP/ModelBridgeClosure.lean` instantiates both compiler contracts to prove `importedTM2_iff_programmePolyTime_constructive`.
+
+This discharges `PNP-BRIDGE-MODEL-001` for deterministic polynomial-time decision functions only. It does not prove an NP verifier/class equivalence, an endpoint theorem, `P = NP`, or `P != NP`.
+
 ## Remaining boundary
 
-`PNP-BRIDGE-MODEL-001` still requires a pinned Programme-side Lean definition of the locked deterministic multitape machine, its exact step cost, total-decider semantics, and a polynomial-overhead simulation interface against the imported finite TM2 model.
-
-`PNP-BRIDGE-NP-001` remains blocked by that machine bridge. Its later proof must additionally transport the deterministic verifier, self-delimiting input/witness pairing, witness-length bound, malformed-pair behavior, totality, and class carrier.
+`PNP-BRIDGE-NP-001` is now the next native bridge target. It must transport the deterministic verifier semantics, self-delimiting input/witness pairing, polynomial witness-length bound, malformed-pair behavior, totality, and class carrier. The deterministic machine-model prerequisite is no longer the blocker.
 
 Concrete endpoint parser, malformed-input, size, correctness, and reduction obligations remain endpoint-specific under `PNP-BRIDGE-ENDPOINT-001`.
 
@@ -35,8 +43,11 @@ Concrete endpoint parser, malformed-input, size, correctness, and reduction obli
 ```text
 lake env lean MathSolve/PNP/CarrierBridge.lean
 lake env lean MathSolve/PNP/PolyBoundBridge.lean
+lake env lean MathSolve/PNP/TM2ForwardCompiler.lean
+lake env lean MathSolve/PNP/ProgrammeTM2ReverseCompiler.lean
+lake env lean MathSolve/PNP/ModelBridgeClosure.lean
 python ci/validate_pnp_bridge_001.py
 python -m unittest ci/test_pnp_bridge_001.py -v
 ```
 
-Passing these checks proves only the carrier bridge and the two-way polynomial-bound presentation bridge. It does not prove `P = NP`, `P != NP`, either imported-to-Programme class correspondence, a machine simulation, an NP-verifier equivalence, an endpoint result, or any MATHCERT or promotion disposition.
+Passing these checks proves the carrier bridge, the two-way polynomial-bound presentation bridge, and deterministic polynomial-time equivalence between the pinned finite-TM2 and Programme machine presentations. It does not prove `P = NP`, `P != NP`, NP-verifier/class equivalence, an endpoint result, novelty, promotion eligibility, or any MATHCERT disposition.
