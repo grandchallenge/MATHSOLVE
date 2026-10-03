@@ -15,7 +15,7 @@ MARKER = "GCL-CONTRIBUTION-RESULT/1"
 DISPATCH_MARKER = "GCL-CONTRIBUTION-DISPATCH/1"
 URL_RE = re.compile(r"(?:https?://|www\.)", re.IGNORECASE)
 MD_LINK_RE = re.compile(r"!?\[[^\]\n]*\]\([^\)\n]+\)")
-HTML_LINK_RE = re.compile(r"<\s*(?:a|img)\b", re.IGNORECASE)
+HTML_LINK_RE = re.compile(r"</?(?:a|img)\b(?:\s+[^<>]*?)?\s*/?>", re.IGNORECASE)
 HEADING_RE = re.compile(r"^## .+$", re.MULTILINE)
 
 SECTIONS = [
@@ -114,7 +114,11 @@ def profile_for_dispatch(dispatch_id: str) -> IntakeProfile:
 def parse_result_comment(body: str) -> dict[str, Any]:
     if not isinstance(body, str) or not body.strip():
         raise IntakeError("comment body is empty")
-    if not body.startswith(MARKER + "\n"):
+
+    # Parse CRLF comments through an LF-normalized view while retaining the
+    # original body bytes for raw evidence and receipt hashing.
+    parsed_body = body.replace("\r\n", "\n")
+    if not parsed_body.startswith(MARKER + "\n"):
         raise IntakeError(f"comment must begin exactly with {MARKER}")
 
     forbidden: list[str] = []
@@ -129,7 +133,7 @@ def parse_result_comment(body: str) -> dict[str, Any]:
     if forbidden:
         raise IntakeError("forbidden content: " + ", ".join(sorted(set(forbidden))))
 
-    lines = body.splitlines()
+    lines = parsed_body.splitlines()
     if len(lines) < 8:
         raise IntakeError("comment is too short")
     if not lines[1].startswith("dispatch_id: "):
@@ -170,16 +174,16 @@ def parse_result_comment(body: str) -> dict[str, Any]:
     if profile is UC_PROFILE and not re.fullmatch(r"UC-WP08-D004-WP0[1-5]", preamble["assignment"]):
         raise IntakeError("assignment is invalid for the UC-001 D004 profile")
 
-    headings = HEADING_RE.findall(body)
+    headings = HEADING_RE.findall(parsed_body)
     if headings != SECTIONS:
         raise IntakeError("level-2 sections must match the RESULT/1 schema exactly and in order")
 
     sections: dict[str, str] = {}
-    positions = [(body.index(h), h) for h in SECTIONS]
+    positions = [(parsed_body.index(h), h) for h in SECTIONS]
     for index, (start, heading) in enumerate(positions):
         content_start = start + len(heading)
-        content_end = positions[index + 1][0] if index + 1 < len(positions) else len(body)
-        content = body[content_start:content_end].strip()
+        content_end = positions[index + 1][0] if index + 1 < len(positions) else len(parsed_body)
+        content = parsed_body[content_start:content_end].strip()
         if not content:
             raise IntakeError(f"{heading} is empty")
         sections[heading[3:]] = content

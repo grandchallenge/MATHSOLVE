@@ -228,5 +228,36 @@ class UcD004ResultGrammarTests(unittest.TestCase):
             )
 
 
+    def test_crlf_comment_parses_without_normalizing_raw_bytes(self) -> None:
+        body = UC_VALID_BODY.replace("\n", "\r\n")
+        parsed = parse_result_comment(body)
+        self.assertEqual(parsed["profile"], "UC-001")
+        self.assertEqual(parsed["preamble"]["dispatch_id"], "UC-WP08-D004-WP01-IA-001")
+
+    def test_mathematical_less_than_text_is_not_html(self) -> None:
+        body = UC_VALID_BODY.replace(
+            "A complete derivation from the packet.",
+            "Take y < a. On M3 use 0 < a, b, c < 1. Hence x<a is also ordinary mathematical text.",
+        )
+        parsed = parse_result_comment(body)
+        self.assertEqual(parsed["profile"], "UC-001")
+
+    def test_actual_anchor_tag_is_rejected(self) -> None:
+        body = UC_VALID_BODY.replace(
+            "A complete derivation from the packet.",
+            "A complete derivation <a href='relative/path'>elsewhere</a>.",
+        )
+        with self.assertRaises(IntakeError):
+            parse_result_comment(body)
+
+    def test_actual_img_tag_is_rejected(self) -> None:
+        body = UC_VALID_BODY.replace(
+            "A complete derivation from the packet.",
+            "A complete derivation <img src='relative-image.png'>.",
+        )
+        with self.assertRaises(IntakeError):
+            parse_result_comment(body)
+
+
 if __name__ == "__main__":
     unittest.main()
