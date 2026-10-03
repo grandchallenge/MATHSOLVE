@@ -8,7 +8,7 @@
   "protected_inputs": {
     "programme_head": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
     "forge_head": "9b6413a7ca5972b7d724ea8f1594c01b8f46cf45",
-    "solve_head": "20a1f4565bc99c383492894904047af6659fd6ad",
+    "solve_head": "1716d39a228e71b2b9f16f902dda32694d62557a",
     "programme_interface": "YM-T-220",
     "source_id": "YM-SRC-025"
   },
@@ -66,6 +66,42 @@
       "kind": "IR_AND_INFINITE_VOLUME_REMOVAL",
       "status": "BLOCKED_ON_R002",
       "statement": "Remove the fixed infrared cutoff/infinite-volume restriction on the selected MRS route."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C0",
+      "kind": "EXACT_RENORMALIZED_TWO_POINT_GRAMMAR",
+      "status": "ACTIVE_NATIVE_SUBTARGET",
+      "statement": "Define the finite-cutoff MRS renormalized local 1PI two-point polymer/subgraph class and prove closure under the admitted decoupling, Mayer, local projection, and nested subtraction operations without assuming convergence."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C1",
+      "kind": "CANDIDATE_NORM_AND_ROOTED_POLYMER_MAJORANT",
+      "status": "BLOCKED_ON_C0",
+      "statement": "Define the weakest norm/majorant compatible with the exact C0 objects and rooted-polymer summability criterion."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C2",
+      "kind": "LINK_TREE_SUMMABILITY",
+      "status": "BLOCKED_ON_C1",
+      "statement": "Use the admitted Section VII propagator/link decay and small-factor structure to prove rooted tree/polymer summability in the C1 majorant."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C3",
+      "kind": "RENORMALIZED_REMAINDER_SCALE_GAIN",
+      "status": "BLOCKED_ON_C2",
+      "statement": "Prove that subtracting the local A^2/2 relevant part yields the scale gain required by the MRS induction."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C4",
+      "kind": "MASS_RESPONSE_SIMULTANEOUS_INDUCTION",
+      "status": "BLOCKED_ON_C3",
+      "statement": "Close simultaneous induction for the local two-point bound and running mass counterterm, including response/nondegeneracy needed for exact tuning."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C5",
+      "kind": "BACKGROUND_GAUGE_SECTION_VI_COMPATIBILITY",
+      "status": "BLOCKED_ON_C4",
+      "statement": "Verify the proved bound and selected mass counterterm remain compatible with the MRS background/gauge-restoring organization and Section VI normalization/stability interface."
     }
   ],
   "evidence_dispositions": [
@@ -129,6 +165,36 @@
       "from": "YM-D003-MRS-R002-R2P1",
       "to": "YM-D003-MRS-R002-R2P1-C",
       "type": "source_replay_isolates_load_bearing_subgraph_theorem"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1-C",
+      "to": "YM-D003-MRS-R002-R2P1-C0",
+      "type": "proof_program_starts_with_exact_object_grammar"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1-C0",
+      "to": "YM-D003-MRS-R002-R2P1-C1",
+      "type": "grammar_precedes_norm"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1-C1",
+      "to": "YM-D003-MRS-R002-R2P1-C2",
+      "type": "majorant_precedes_summability"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1-C2",
+      "to": "YM-D003-MRS-R002-R2P1-C3",
+      "type": "summability_precedes_remainder_gain"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1-C3",
+      "to": "YM-D003-MRS-R002-R2P1-C4",
+      "type": "remainder_control_precedes_mass_response"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1-C4",
+      "to": "YM-D003-MRS-R002-R2P1-C5",
+      "type": "mass_induction_precedes_stability_compatibility"
     }
   ],
   "agent_support": [
@@ -167,6 +233,6 @@
     "Do not infer Yang-Mills mass gap or terminal YM-001 closure."
   ],
   "claim_boundary": "Provisional Solve decomposition only. Node names B-D may be refined by source evidence; no theorem or campaign status is promoted by this DAG.",
-  "selected_native_node": "YM-D003-MRS-R002-R2P1-C",
-  "selection_rationale": "MRS Section VII provides propagator decay, anisotropic power counting, small factors, and link-resummation rationale, but delegates the exceptional renormalized two-/four-point sector to usual machinery/[R] without an MRS-specific normed subgraph theorem. The scalar critical-mass template proves that such a two-point subgraph bound is load-bearing for exact mass tuning."
+  "selected_native_node": "YM-D003-MRS-R002-R2P1-C0",
+  "selection_rationale": "R2P1-C cannot be proved rigorously until the finite-cutoff renormalized local 1PI two-point objects are defined without presupposing the convergence theorem. C0 is therefore the first non-circular native subtarget."
 }
