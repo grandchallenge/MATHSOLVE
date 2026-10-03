@@ -163,17 +163,8 @@ def programmeTM2TimedDecider {decision : List Bool → Bool}
           (List.map (fun b : Bool => b)
             (Computability.encodeBool (decision input)))))
       (programmeTM2ReverseRuntime source input)
-    have hin : List.map (fun b : Bool => b) input = input := by
-      induction input with
-      | nil => rfl
-      | cons b bs ih => simp [ih]
-    have hout :
-        List.map (fun b : Bool => b)
-            (Computability.encodeBool (decision input)) =
-          [decision input] := by
-      simp [Computability.encodeBool]
-    rw [hin, hout]
-    exact programmeTM2Machine_outputs source input
+    simpa [Computability.encodeBool] using
+      programmeTM2Machine_outputs source input
 
 /-- The exact reverse runtime is affine in input length and source runtime. -/
 theorem programmeTM2ReverseRuntime_affine
