@@ -140,7 +140,7 @@
     },
     {
       "hill_slot": "OM26-H2",
-      "status": "WP08_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
+      "status": "WP09_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
       "exact_hill_id": "alejandrozu/busy-beaver-6-certificates",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -171,14 +171,14 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H2-WP03-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-208 from the registered immutable LINK_IN_RELAY_OUT task URL.",
+      "next_action": "Launch INDEPENDENT-AGENT-209 from the registered immutable LINK_IN_RELAY_OUT task URL.",
       "title": "Busy Beaver 6 certificates",
       "active_lease": {
-        "assignment_id": "OM26-H2-WP08",
-        "dispatch_id": "OM26-H2-WP08-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-208",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/650",
-        "protected_merge": "d92a09609b64a64e0faa26b04bc8432068e89e38",
+        "assignment_id": "OM26-H2-WP09",
+        "dispatch_id": "OM26-H2-WP09-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-209",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/675",
+        "protected_merge": "c601490a4599e13b26b4fb46f3a49175ed43ad29",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
@@ -192,15 +192,15 @@
         "official_acceptance": "NONE"
       },
       "predecessor_lease": {
-        "assignment_id": "OM26-H2-WP07",
-        "dispatch_id": "OM26-H2-WP07-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-207",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/630",
-        "protected_merge": "fb7d73f2e91ef13674853979835fe80725f6cf65",
+        "assignment_id": "OM26-H2-WP08",
+        "dispatch_id": "OM26-H2-WP08-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-208",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/650",
+        "protected_merge": "d92a09609b64a64e0faa26b04bc8432068e89e38",
         "readback_verified": false,
         "lifecycle_state": "ACCEPTED",
         "launch_evidence": null,
-        "return_evidence": "contributions/OPENMATH-2026/OM26-H2/WP07/raw/OM26-H2-WP07-IA-001/github-comment-5962895622.md",
+        "return_evidence": "contributions/OPENMATH-2026/OM26-H2/WP08/raw/OM26-H2-WP08-IA-001/github-comment-5964189590.md",
         "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION"
       }
     },
