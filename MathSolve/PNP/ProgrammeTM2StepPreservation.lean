@@ -41,22 +41,22 @@ theorem programmeTM2ApplyInputTape_nth_afterAction
         ((source.afterAction action).inputHead + offset) := by
   cases hmove : action.inputMove with
   | left =>
-      rw [show programmeTM2ApplyInputTape action.inputMove T =
-          T.move Turing.Dir.left by simp [programmeTM2ApplyInputTape, hmove]]
+      change (T.move Turing.Dir.left).nth offset =
+        programmeInputRead input ((source.afterAction action).inputHead + offset)
       rw [Turing.Tape.move_left_nth]
       rw [hrel (offset - 1)]
       apply congrArg (programmeInputRead input)
       simp [ProgrammeConfig.afterAction, hmove, HeadMove.apply]
       omega
   | stay =>
-      rw [show programmeTM2ApplyInputTape action.inputMove T = T by
-        simp [programmeTM2ApplyInputTape, hmove]]
+      change T.nth offset =
+        programmeInputRead input ((source.afterAction action).inputHead + offset)
       rw [hrel offset]
       apply congrArg (programmeInputRead input)
       simp [ProgrammeConfig.afterAction, hmove, HeadMove.apply]
   | right =>
-      rw [show programmeTM2ApplyInputTape action.inputMove T =
-          T.move Turing.Dir.right by simp [programmeTM2ApplyInputTape, hmove]]
+      change (T.move Turing.Dir.right).nth offset =
+        programmeInputRead input ((source.afterAction action).inputHead + offset)
       rw [Turing.Tape.move_right_nth]
       rw [hrel (offset + 1)]
       apply congrArg (programmeInputRead input)
