@@ -109,7 +109,7 @@ def programmeTM2Machine_outputs
       (some
         (Turing.haltList (programmeTM2Machine source.machine)
           [decision input]))
-      (by simpa [Nat.add_assoc] using hprefix) hcleanup
+      (by simpa [Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using hprefix) hcleanup
   have hexact :
       StateTransition.EvalsToInTime
         (programmeTM2Machine source.machine).step
@@ -118,7 +118,7 @@ def programmeTM2Machine_outputs
           (Turing.haltList (programmeTM2Machine source.machine)
             [decision input]))
         (programmeTM2TotalBudget source.machine input.length hsource.steps) := by
-    simpa [programmeTM2TotalBudget, Nat.add_assoc] using hall
+    simpa [programmeTM2TotalBudget, Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using hall
   have hwiden :=
     programmeTM2_evalsToInTime_mono hexact
       (programmeTM2TotalBudget_mono source.machine input.length
@@ -135,17 +135,15 @@ def programmeTM2TimedDecider {decision : List Bool → Bool}
   runtime := programmeTM2ReverseRuntime source
   outputsFun := by
     intro input
-    have hin :
-        List.map (Equiv.refl Bool).invFun input = input := by
-      induction input <;> simp_all
-    have hout :
-        List.map (Equiv.refl Bool).invFun
-            (Computability.encodeBool (decision input)) =
-          [decision input] := by
-      simp [Computability.encodeBool]
-    unfold Turing.TM2OutputsInTime
-    rw [hin, hout]
-    exact programmeTM2Machine_outputs source input
+    change Turing.TM2OutputsInTime
+      (programmeTM2Machine source.machine)
+      (List.map (fun b : Bool => b) input)
+      (some
+        (List.map (fun b : Bool => b)
+          (Computability.encodeBool (decision input))))
+      (programmeTM2ReverseRuntime source input)
+    simpa [Computability.encodeBool] using
+      programmeTM2Machine_outputs source input
 
 /-- The exact reverse runtime is affine in input length and source runtime. -/
 theorem programmeTM2ReverseRuntime_affine
