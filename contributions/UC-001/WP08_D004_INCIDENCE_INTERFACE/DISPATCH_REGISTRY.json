@@ -3,7 +3,7 @@
   "record_type": "GCL_EXTERNAL_DISPATCH_REGISTRY",
   "campaign": "UC-001",
   "work_package": "WP08-D004",
-  "state": "PREPARED_PENDING_GITHUB_ISSUE_BINDING",
+  "state": "ACTIVE_EXTERNAL_EVIDENCE",
   "task_commit": "283a82b53c36c999805805df94fde24e0af578ee",
   "dispatch_ids": [
     "UC-WP08-D004-WP01-IA-001",
@@ -13,5 +13,8 @@
     "UC-WP08-D004-WP05-IA-001"
   ],
   "blind_cohort_id": "UC-WP08-D004-BLIND-COHORT-001",
-  "claim_boundary": "External returns are evidence only. UC-P04 and UC-FRANKL remain open; no dispatch, intake, or receipt has canonical mathematical claim effect."
+  "claim_boundary": "External returns are evidence only. UC-P04 and UC-FRANKL remain open; no dispatch, intake, or receipt has canonical mathematical claim effect.",
+  "activation_receipt_path": "contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/ACTIVATION_RECEIPT.json",
+  "activated_against_solve_commit": "7ce9e3b93c92510d574dd6ff9d31d6716915f8fc",
+  "activated_against_programme_commit": "c70bf336ec598bb8654cc465306c6cf3a871341e"
 }
