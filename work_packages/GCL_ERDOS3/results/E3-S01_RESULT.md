@@ -95,3 +95,40 @@ Accordingly:
 - F01 source state: **SOURCE_INTERFACE_FOUND / FORMALIZATION CLOSED**.
 - B01 three-term instantiation: **SOURCE_INTERFACE_FOUND**.
 - B01 k≥4 threshold: **SOURCE_BLOCKED AT A NAMED ESTIMATE**, not mathematically refuted.
+
+
+## 6. Current quantitative frontier for k≥4
+
+Current maintained source checked on 2026-10-03:
+
+- Erdős Problems, Problem 3: `https://www.erdosproblems.com/3`.
+- Ben Green, *Arithmetic progressions at the Journal of the LMS* (2026), Journal of the London Mathematical Society.
+
+The maintained Problem 3 record gives an explicit sufficient scale:
+
+[
+r_k(N) ll_k rac{N}{(log N)(loglog N)^2}.
+]
+
+This matches the B01 dyadic criterion: at (N=2^j), the normalized envelope is
+(O(1/(j(log j)^2))), hence summable.
+
+For (k=4), Green–Tao's current cited bound is only
+
+[
+r_4(N)ll N(log N)^{-c}
+]
+
+for some small absolute (c>0). At dyadic scale this becomes (O(j^{-c})), which does not cross the B01 summability barrier when (cle1). Green's 2026 survey explicitly says the field remains far from establishing the sum-of-reciprocals conjecture for progressions of length four.
+
+For (kge5), the maintained Problem 3 record cites still weaker normalized decay (including the 2024 Leng–Sah–Sawhney bounds for general (k)), also insufficient for the B01 dyadic summability test.
+
+This identifies the exact quantitative gap for the blockwise-density route:
+
+[
+	extbf{current extremal decay}
+quadlongrightarrowquad
+	extbf{summable dyadic normalized extremal density}.
+]
+
+No claim is made that crossing this gap is necessary for Erdős Problem 3; it is the exact missing condition for B01's route.
