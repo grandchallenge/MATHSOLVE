@@ -10,15 +10,24 @@ ROOT = Path(__file__).resolve().parents[1]
 STATUS = ROOT / "work_packages/PNP_BRIDGE_001/bridge_status.json"
 CARRIER = ROOT / "MathSolve/PNP/CarrierBridge.lean"
 POLYBOUND = ROOT / "MathSolve/PNP/PolyBoundBridge.lean"
+MODEL = ROOT / "MathSolve/PNP/ModelBridge.lean"
+FORWARD = ROOT / "MathSolve/PNP/TM2ForwardCompiler.lean"
+REVERSE = ROOT / "MathSolve/PNP/ProgrammeTM2ReverseCompiler.lean"
+MODEL_CLOSURE = ROOT / "MathSolve/PNP/ModelBridgeClosure.lean"
 
 EXPECTED = {
     "PNP-BRIDGE-CARRIER-001": "kernel_checked",
-    "PNP-BRIDGE-MODEL-001": "blocked_missing_formal_target",
+    "PNP-BRIDGE-MODEL-001": "kernel_checked",
     "PNP-BRIDGE-POLYBOUND-001": "kernel_checked",
-    "PNP-BRIDGE-NP-001": "blocked_by_prerequisites",
+    "PNP-BRIDGE-NP-001": "blocked_missing_formal_target",
     "PNP-BRIDGE-ENDPOINT-001": "endpoint_specific_open",
 }
-CLOSED = ["PNP-BRIDGE-CARRIER-001", "PNP-BRIDGE-POLYBOUND-001"]
+CLOSED = ["PNP-BRIDGE-CARRIER-001", "PNP-BRIDGE-MODEL-001", "PNP-BRIDGE-POLYBOUND-001"]
+MODEL_THEOREMS = [
+    "tm2ToProgrammeCompiler_constructive",
+    "programmeToTM2Compiler_constructive",
+    "importedTM2_iff_programmePolyTime_constructive",
+]
 POLY_THEOREMS = [
     "polynomial_eval_le_eval_one_mul_pow_natDegree",
     "importedPolynomialBound_to_programmePolynomialBound",
@@ -33,6 +42,10 @@ def validate(root: Path = ROOT) -> list[str]:
         record = json.loads((root / STATUS.relative_to(ROOT)).read_text(encoding="utf-8"))
         carrier = (root / CARRIER.relative_to(ROOT)).read_text(encoding="utf-8")
         poly = (root / POLYBOUND.relative_to(ROOT)).read_text(encoding="utf-8")
+        model = (root / MODEL.relative_to(ROOT)).read_text(encoding="utf-8")
+        forward = (root / FORWARD.relative_to(ROOT)).read_text(encoding="utf-8")
+        reverse = (root / REVERSE.relative_to(ROOT)).read_text(encoding="utf-8")
+        model_closure = (root / MODEL_CLOSURE.relative_to(ROOT)).read_text(encoding="utf-8")
     except (OSError, json.JSONDecodeError) as exc:
         return [f"PNP bridge package load failed: {exc}"]
 
@@ -49,13 +62,53 @@ def validate(root: Path = ROOT) -> list[str]:
         if by_id.get(bridge_id, {}).get("status") != status:
             errors.append(f"{bridge_id}: status drift")
     if record.get("closed_bridge_ids") != CLOSED:
-        errors.append("only carrier and polynomial-bound bridges may be closed")
+        errors.append("only carrier, model, and polynomial-bound bridges may be closed")
     if set(record.get("open_bridge_ids", [])) != set(EXPECTED) - set(CLOSED):
         errors.append("PNP open bridge set drift")
     if by_id.get("PNP-BRIDGE-NP-001", {}).get("depends_on") != [
         "PNP-BRIDGE-MODEL-001", "PNP-BRIDGE-POLYBOUND-001"
     ]:
         errors.append("NP prerequisite ordering drift")
+
+    model_status = by_id.get("PNP-BRIDGE-MODEL-001", {})
+    if model_status.get("artifact") != "MathSolve/PNP/ModelBridgeClosure.lean":
+        errors.append("model-bridge artifact identity drift")
+    if model_status.get("theorems") != [f"MathSolve.PNP.{name}" for name in MODEL_THEOREMS]:
+        errors.append("model-bridge theorem identity drift")
+
+    model_sources = {
+        "ModelBridge.lean": model,
+        "TM2ForwardCompiler.lean": forward,
+        "ProgrammeTM2ReverseCompiler.lean": reverse,
+        "ModelBridgeClosure.lean": model_closure,
+    }
+    required_model_snippets = {
+        "TM2ForwardCompiler.lean": [
+            "theorem tm2ToProgrammeCompiler_constructive",
+            "#print axioms tm2ToProgrammeCompiler_constructive",
+        ],
+        "ProgrammeTM2ReverseCompiler.lean": [
+            "theorem programmeToTM2Compiler_constructive",
+            "#print axioms programmeToTM2Compiler_constructive",
+        ],
+        "ModelBridgeClosure.lean": [
+            "theorem importedTM2_iff_programmePolyTime_constructive",
+            "tm2ToProgrammeCompiler_constructive",
+            "programmeToTM2Compiler_constructive",
+            "#print axioms importedTM2_iff_programmePolyTime_constructive",
+        ],
+    }
+    for filename, snippets in required_model_snippets.items():
+        compact_source = " ".join(model_sources[filename].split())
+        for snippet in snippets:
+            if snippet not in compact_source:
+                errors.append(f"model-bridge theorem/contract drift: {filename}: {snippet}")
+    for filename, source in model_sources.items():
+        placeholder = re.search(r"\b(sorry|admit)\b", source)
+        if placeholder:
+            errors.append(
+                f"model-bridge artifact contains proof placeholder: {filename}: {placeholder.group(1)}"
+            )
 
     for name in ("languageOf_injective", "languageClassOf_eq_iff", "languageClassOf_ne_iff"):
         if f"theorem {name}" not in carrier:
@@ -105,7 +158,7 @@ def main() -> int:
         for error in errors:
             print(f"ERROR: {error}")
         return 1
-    print("PNP-BRIDGE-001 validated: carrier and polynomial-bound bridges closed; three obligations remain open.")
+    print("PNP-BRIDGE-001 validated: carrier, model, and polynomial-bound bridges closed; NP and endpoint obligations remain open.")
     return 0
 
 
