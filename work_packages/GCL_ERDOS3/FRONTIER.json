@@ -191,7 +191,23 @@
       "provenance": "E3-X01",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-X01_RESULT.md",
       "promotion": "PROMOTED__E3-TRANCHE-02",
-      "claim_boundary": "Sufficient route only; it is not claimed necessary and is not proved by E3-X01."
+      "claim_boundary": "Sufficient route only; it is not claimed necessary and is not proved by E3-X01.",
+      "prepared_tranche": "E3-TRANCHE-03",
+      "prepared_attacks": [
+        "E3-R01",
+        "E3-D01",
+        "E3-G01",
+        "E3-C01",
+        "E3-A03",
+        "E3-S04"
+      ],
+      "representation_shift": {
+        "gluing_defect": "D_{L,n}=a_n-a_{n+L}",
+        "reciprocal_potential": "U_theta(n)=a_n^{-theta}",
+        "persistence_profile": "P(alpha)=#{n:a_n>=alpha}",
+        "structural_object": "recursive extremizer tree with digit-and-carry fiber constraints"
+      },
+      "research_note": "work_packages/GCL_ERDOS3/E3-TRANCHE-03_REPRESENTATION.md"
     },
     {
       "id": "E3-QK5-SERIES",
@@ -275,5 +291,11 @@
     ],
     "verification_closed": "E3-V-B02",
     "parent_theorem_effect": "NONE"
+  },
+  "next_tranche": {
+    "id": "E3-TRANCHE-03",
+    "status": "PREPARED_NOT_DISPATCHED",
+    "manifest": "work_packages/GCL_ERDOS3/E3-TRANCHE-03.json",
+    "objective": "Re-represent density loss as a gluing/persistence problem and seek either a local theorem, a source interface, or a counterexample."
   }
 }

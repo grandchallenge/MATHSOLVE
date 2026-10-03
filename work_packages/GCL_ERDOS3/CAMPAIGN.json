@@ -3,7 +3,7 @@
   "record_type": "GCL_RESEARCH_CAMPAIGN",
   "campaign_id": "GCL-ERDOS3",
   "title": "Erdős Problem 3",
-  "status": "ACTIVE__E3_TRANCHE_02",
+  "status": "ACTIVE__E3_TRANCHE_03_PREPARED",
   "origin": {
     "campaign": "OPENMATH-2026",
     "hill": "OM26-H7",
@@ -33,13 +33,17 @@
     "E3-A01": "BOUNDARY_SHARPENED",
     "E3-S01": "SOURCE_INTERFACE_FOUND",
     "E3-V01": "VERIFIED__CLOSED",
-    "E3-B02": "PROVED_NATIVE_SOURCE_CONFIRMED"
+    "E3-B02": "PROVED_NATIVE_SOURCE_CONFIRMED",
+    "E3-Q01": "EXACT_BLOCKER__CLOSED",
+    "E3-X01": "SMALLEST_MISSING_LEMMA__PROMOTED",
+    "E3-A02": "COUNTEREXAMPLE__SUPPORTING_ONLY",
+    "E3-S03": "SOURCE_BLOCKED__CLOSED",
+    "E3-V02": "VERIFIED__CLOSED"
   },
   "current_frontier": [
-    "E3-V-B02",
-    "E3-Q4-SERIES"
+    "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Verify E3-B02 once; attack E3-Q4-SERIES through quantitative, cross-scale, adversarial, and source lanes. Do not reopen B01.",
+  "next_action": "Execute E3-TRANCHE-03: representation, digit/carry, gluing, exact finite discovery, adversarial falsification, and source-interface lanes. Promote only a theorem-grade tightening or valid refutation.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -50,38 +54,48 @@
       "result_comment_id": 5969123988,
       "result_path": "work_packages/GCL_ERDOS3/results/E3-V01_RESULT.md",
       "adjudication_path": "work_packages/GCL_ERDOS3/results/E3-V01_ADJUDICATION.json"
-    }
-  },
-  "active_dispatches": {
-    "E3-Q01": {
-      "dispatch_id": "GCL-ERDOS3-E3-Q01-IA-001",
-      "issue_number": 772,
-      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/772",
-      "state": "DISPATCHED__AWAITING_RETURN"
-    },
-    "E3-X01": {
-      "dispatch_id": "GCL-ERDOS3-E3-X01-IA-001",
-      "issue_number": 773,
-      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/773",
-      "state": "DISPATCHED__AWAITING_RETURN"
-    },
-    "E3-A02": {
-      "dispatch_id": "GCL-ERDOS3-E3-A02-IA-001",
-      "issue_number": 774,
-      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/774",
-      "state": "DISPATCHED__AWAITING_RETURN"
-    },
-    "E3-S03": {
-      "dispatch_id": "GCL-ERDOS3-E3-S03-IA-001",
-      "issue_number": 775,
-      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/775",
-      "state": "DISPATCHED__AWAITING_RETURN"
     },
     "E3-V02": {
       "dispatch_id": "GCL-ERDOS3-E3-V02-IA-001",
       "issue_number": 776,
       "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/776",
-      "state": "DISPATCHED__AWAITING_RETURN"
+      "state": "CLOSED_VERIFIED",
+      "result_comment_id": 5969442261,
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-V02_RESULT.md",
+      "effect": "Closed E3-V-B02; no parent theorem effect."
     }
-  }
+  },
+  "active_dispatches": {},
+  "completed_dispatches": {
+    "E3-Q01": {
+      "issue_number": 772,
+      "state": "CLOSED_COMPLETED"
+    },
+    "E3-X01": {
+      "issue_number": 773,
+      "state": "CLOSED_COMPLETED"
+    },
+    "E3-A02": {
+      "issue_number": 774,
+      "state": "CLOSED_COMPLETED"
+    },
+    "E3-S03": {
+      "issue_number": 775,
+      "state": "CLOSED_COMPLETED"
+    },
+    "E3-V02": {
+      "issue_number": 776,
+      "state": "CLOSED_COMPLETED"
+    }
+  },
+  "prepared_tranche": "E3-TRANCHE-03",
+  "prepared_work_packages": [
+    "E3-R01",
+    "E3-D01",
+    "E3-G01",
+    "E3-C01",
+    "E3-A03",
+    "E3-S04"
+  ],
+  "dispatch_state": "PREPARED_NOT_LAUNCHED"
 }
