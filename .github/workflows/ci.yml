@@ -263,6 +263,7 @@ jobs:
           lake env lean MathSolve/PNP/ProgrammeTM2InitRun.lean
           lake env lean MathSolve/PNP/ProgrammeTM2Operational.lean
           lake env lean MathSolve/PNP/ProgrammeTM2StepPreservation.lean
+          lake env lean MathSolve/PNP/ProgrammeTM2RunInvariant.lean
           lake env lean MathSolve/PNP/ProgrammeTM2TapeEffects.lean
           lake env lean MathSolve/PNP/ProgrammeTM2StepSimulation.lean
           lake env lean MathSolve/PNP/ProgrammeTM2TapeOps.lean
