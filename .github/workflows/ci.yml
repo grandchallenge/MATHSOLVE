@@ -35,6 +35,17 @@ jobs:
           python -m json.tool schemas/grobner_tactic_invocation.schema.json >/dev/null
           python -m json.tool schemas/grobner_tactic_registry.schema.json >/dev/null
           python -m json.tool governance/grobner_tactic_registry.json >/dev/null
+      - name: Validate governed external catalog intake boundary
+        run: |
+          python ci/validate_external_semantic_catalog_intake.py
+          python -m unittest ci/test_external_semantic_catalog_intake.py -v
+          python ci/validate_external_catalog_promotion_dossiers.py
+          python -m unittest ci/test_external_catalog_promotion_dossiers.py -v
+          python -m json.tool schemas/external_catalog_promotion_dossier.schema.json >/dev/null
+      - name: Validate RM-DIO-004 bounded ResearchMath route
+        run: |
+          python ci/validate_rm_dio_004.py
+          python ci/test_validate_rm_dio_004.py
       - name: Validate EUCLID-GCD-E2E-001 deterministic candidate
         run: |
           python ci/validate_euclid_gcd_solve.py
@@ -47,6 +58,94 @@ jobs:
           python -m unittest ci/test_euclid_diophantine_solve.py -v
           python solve/euclid_diophantine.py --output /tmp/euclid-diophantine.json
           cmp /tmp/euclid-diophantine.json certificates/EUCLID-DIOPHANTINE-E2E-002.json
+      - name: Validate OPENMATH H1-12 three-core arithmetic
+        run: |
+          python ci/validate_openmath_h1_12_three_core.py
+          python -m unittest ci/test_openmath_h1_12_three_core.py -v
+      - name: Validate OPENMATH H1-12 four-core arithmetic
+        run: |
+          python ci/validate_openmath_h1_12_four_core.py
+          python -m unittest ci/test_openmath_h1_12_four_core.py -v
+      - name: Validate OPENMATH H1-12 saturated-core reduction
+        run: |
+          python ci/validate_openmath_h1_12_saturated_core.py
+          python -m unittest ci/test_openmath_h1_12_saturated_core.py -v
+      - name: Validate OPENMATH H1-12 profile 3334 normal form
+        run: |
+          python ci/validate_openmath_h1_12_3334_normal_form.py
+          python -m unittest ci/test_openmath_h1_12_3334_normal_form.py -v
+      - name: Validate OPENMATH H1-12 profile 3334 D2=3 reduction
+        run: |
+          python ci/validate_openmath_h1_12_3334_d2_3.py
+          python -m unittest ci/test_openmath_h1_12_3334_d2_3.py -v
+      - name: Validate OPENMATH H1-12 profile 3334 D2=4 reduction
+        run: |
+          python ci/validate_openmath_h1_12_3334_d2_4.py
+          python -m unittest ci/test_openmath_h1_12_3334_d2_4.py -v
+      - name: Validate OPENMATH H1-12 profile 3334 D2=5 reduction
+        run: |
+          python ci/validate_openmath_h1_12_3334_d2_5.py
+          python -m unittest ci/test_openmath_h1_12_3334_d2_5.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 normal form
+        run: |
+          python ci/validate_openmath_h1_12_3333_normal_form.py
+          python -m unittest ci/test_openmath_h1_12_3333_normal_form.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 saturated-hub reduction
+        run: |
+          python ci/validate_openmath_h1_12_3333_saturated_hub.py
+          python -m unittest ci/test_openmath_h1_12_3333_saturated_hub.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 D2=4 C4 exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_c4.py
+          python -m unittest ci/test_openmath_h1_12_3333_c4.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 non-saturated star exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_nonsat_star.py
+          python -m unittest ci/test_openmath_h1_12_3333_nonsat_star.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 saturated equality exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_saturated_equality.py
+          python -m unittest ci/test_openmath_h1_12_3333_saturated_equality.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 triangle-isolated normal form
+        run: |
+          python ci/validate_openmath_h1_12_3333_triangle_isolated.py
+          python -m unittest ci/test_openmath_h1_12_3333_triangle_isolated.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 triangle Type P exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_triangle_type_p.py
+          python -m unittest ci/test_openmath_h1_12_3333_triangle_type_p.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 triangle Type C exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_triangle_type_c.py
+          python -m unittest ci/test_openmath_h1_12_3333_triangle_type_c.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 P4 exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_p4.py
+          python -m unittest ci/test_openmath_h1_12_3333_p4.py -v
+      - name: Validate OPENMATH H1-12 q4 sector-consistency closure
+        run: |
+          python ci/validate_openmath_h1_12_q4_sector_closure.py
+          python -m unittest ci/test_openmath_h1_12_q4_sector_closure.py -v
+      - name: Validate OPENMATH H1-12 q5 profile reduction
+        run: |
+          python ci/validate_openmath_h1_12_q5_profiles.py
+          python -m unittest ci/test_openmath_h1_12_q5_profiles.py -v
+      - name: Validate OPENMATH H1-12 q5 saturation reduction
+        run: |
+          python ci/validate_openmath_h1_12_q5_saturation.py
+          python -m unittest ci/test_openmath_h1_12_q5_saturation.py -v
+      - name: Validate OPENMATH H1-12 q5 profile 33334 closure
+        run: |
+          python ci/validate_openmath_h1_12_q5_33334.py
+          python -m unittest ci/test_openmath_h1_12_q5_33334.py -v
+      - name: Validate OPENMATH H1-12 q5 profile 33333 reduction
+        run: |
+          python ci/validate_openmath_h1_12_q5_33333.py
+          python -m unittest ci/test_openmath_h1_12_q5_33333.py -v
+      - name: Validate OPENMATH H1-12 q5 equality normal form
+        run: |
+          python ci/validate_openmath_h1_12_q5_equality.py
+          python -m unittest ci/test_openmath_h1_12_q5_equality.py -v
       - name: Validate recursive campaign manifests and Cert boundaries
         run: |
           python ci/validate_campaign_manifests.py
@@ -72,6 +171,10 @@ jobs:
           python -m unittest tests/test_ns_ci_a2_l5_restart.py -v
           python -m unittest tests/test_ns_ci_a2_l5_pretriangle_strict_tail.py -v
           python -m unittest tests/test_ns_ci_a2_l5_coupled_enstrophy.py -v
+          python ci/validate_ns_ci_independent_contribution_pilot.py
+          python -m unittest tests/test_ns_ci_independent_contribution_pilot.py -v
+          python -m unittest tests/test_ns_ci_github_contribution_intake.py -v
+          python -m json.tool contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/schemas/intake_receipt.schema.json >/dev/null
       - name: Validate OpenAI Ten Proofs independent handoffs
         run: |
           python ci/validate_openai_ten_proofs_result_family_handoffs.py
@@ -133,40 +236,40 @@ jobs:
           lake env lean MathSolve/FormalConjectures/Replay.lean
           lake env lean MathSolve/PNP/CarrierBridge.lean
           lake env lean MathSolve/PNP/PolyBoundBridge.lean
-          lake env lean MathSolve/PNP/SimulationOverhead.lean
-          lake env lean MathSolve/PNP/StepSimulation.lean
-          lake env lean MathSolve/PNP/RelationalStepSimulation.lean
-          lake env lean MathSolve/PNP/TM2Provenance.lean
-          lake env lean MathSolve/PNP/TM2StackEncoding.lean
-          lake env lean MathSolve/PNP/TM2StackOps.lean
-          lake env lean MathSolve/PNP/TM2StatementCost.lean
-          lake env lean MathSolve/PNP/TM2TokenDecode.lean
-          lake env lean MathSolve/PNP/TM2ProgrammeControl.lean
-          lake env lean MathSolve/PNP/TM2ProgrammeCompiler.lean
-          lake env lean MathSolve/PNP/TM2ProgrammeInvariant.lean
-          lake env lean MathSolve/PNP/TM2CfgInvariant.lean
-          lake env lean MathSolve/PNP/TM2ProgrammeLocal.lean
-          lake env lean MathSolve/PNP/TM2ProgrammeRunStep.lean
-          lake env lean MathSolve/PNP/TM2ProgrammeActions.lean
-          lake env lean MathSolve/PNP/TM2ProgrammeFamilyOps.lean
-          lake env lean MathSolve/PNP/TM2ProgrammeInitialization.lean
-          lake env lean MathSolve/PNP/TM2ProgrammeStartupStep.lean
-          lake env lean MathSolve/PNP/TM2ProgrammeStartupRun.lean
-          lake env lean MathSolve/PNP/TM2ProgrammeRewindRun.lean
-          lake env lean MathSolve/PNP/TM2ForwardCompiler.lean
-          lake env lean MathSolve/PNP/ProgrammeTM2Types.lean
-          lake env lean MathSolve/PNP/ProgrammeTM2Machine.lean
-          lake env lean MathSolve/PNP/ProgrammeTM2InitRepresentation.lean
-          lake env lean MathSolve/PNP/ProgrammeTM2InitRun.lean
-          lake env lean MathSolve/PNP/ProgrammeTM2Operational.lean
-          lake env lean MathSolve/PNP/ProgrammeTM2StepSimulation.lean
-          lake env lean MathSolve/PNP/ProgrammeTM2TapeOps.lean
-          lake env lean MathSolve/PNP/ProgrammeTM2Representation.lean
-          lake env lean MathSolve/PNP/TM2FixedStepSimulation.lean
-          lake env lean MathSolve/PNP/TM2StepAuxSimulation.lean
-          lake env lean MathSolve/PNP/ProgrammeMachine.lean
-          lake env lean MathSolve/PNP/ProgrammeStep.lean
           lake env lean MathSolve/PNP/ModelBridge.lean
+          lake env lean MathSolve/PNP/ProgrammeStep.lean
+          lake env lean MathSolve/PNP/ProgrammeMachine.lean
+          lake env lean MathSolve/PNP/TM2StepAuxSimulation.lean
+          lake env lean MathSolve/PNP/TM2FixedStepSimulation.lean
+          lake env lean MathSolve/PNP/ProgrammeTM2Representation.lean
+          lake env lean MathSolve/PNP/ProgrammeTM2TapeOps.lean
+          lake env lean MathSolve/PNP/ProgrammeTM2StepSimulation.lean
+          lake env lean MathSolve/PNP/ProgrammeTM2Operational.lean
+          lake env lean MathSolve/PNP/ProgrammeTM2InitRun.lean
+          lake env lean MathSolve/PNP/ProgrammeTM2InitRepresentation.lean
+          lake env lean MathSolve/PNP/ProgrammeTM2Machine.lean
+          lake env lean MathSolve/PNP/ProgrammeTM2Types.lean
+          lake env lean MathSolve/PNP/TM2ForwardCompiler.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeRewindRun.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeStartupRun.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeStartupStep.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeInitialization.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeFamilyOps.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeActions.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeRunStep.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeLocal.lean
+          lake env lean MathSolve/PNP/TM2CfgInvariant.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeInvariant.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeCompiler.lean
+          lake env lean MathSolve/PNP/TM2ProgrammeControl.lean
+          lake env lean MathSolve/PNP/TM2TokenDecode.lean
+          lake env lean MathSolve/PNP/TM2StatementCost.lean
+          lake env lean MathSolve/PNP/TM2StackOps.lean
+          lake env lean MathSolve/PNP/TM2StackEncoding.lean
+          lake env lean MathSolve/PNP/TM2Provenance.lean
+          lake env lean MathSolve/PNP/RelationalStepSimulation.lean
+          lake env lean MathSolve/PNP/StepSimulation.lean
+          lake env lean MathSolve/PNP/SimulationOverhead.lean
           python ci/validate_formal_conjectures_targets.py
           PYTHONPATH=ci python -m unittest ci/test_formal_conjectures_targets.py -v
           python -m json.tool formal_sources/formal_conjectures/MS-FC-WP00.json >/dev/null
