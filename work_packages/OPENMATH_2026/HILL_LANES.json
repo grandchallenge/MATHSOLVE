@@ -496,7 +496,7 @@
     },
     {
       "hill_slot": "OM26-H7",
-      "status": "WP05_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
+      "status": "WP06_LEASED_NOT_LAUNCHED__AUTOMATED_SUCCESSOR",
       "exact_hill_id": "ottogin/erdos-3",
       "statement_lock": {
         "forge_repository": "grandchallenge/MATHFORGE",
@@ -527,14 +527,14 @@
         "cei_independent_contribution": "LEASED_NOT_LAUNCHED__OM26-H7-WP01-IA-001",
         "mathcert_handoff": "NOT_YET_ELIGIBLE"
       },
-      "next_action": "Launch INDEPENDENT-AGENT-705 from the registered immutable LINK_IN_RELAY_OUT task URL.",
+      "next_action": "Launch INDEPENDENT-AGENT-706 from the registered immutable LINK_IN_RELAY_OUT task URL.",
       "title": "Erd\u0151s Problem 3",
       "active_lease": {
-        "assignment_id": "OM26-H7-WP05",
-        "dispatch_id": "OM26-H7-WP05-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-705",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/610",
-        "protected_merge": "37ef9dc603e66011ae68e5e5f8df32c9231c231a",
+        "assignment_id": "OM26-H7-WP06",
+        "dispatch_id": "OM26-H7-WP06-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-706",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/660",
+        "protected_merge": "51f2177bc50b3b2c18a569f886aa61c7191896a1",
         "readback_verified": false,
         "lifecycle_state": "LEASED_NOT_LAUNCHED",
         "launch_evidence": null,
@@ -548,15 +548,15 @@
         "official_acceptance": "NONE"
       },
       "predecessor_lease": {
-        "assignment_id": "OM26-H7-WP04",
-        "dispatch_id": "OM26-H7-WP04-IA-001",
-        "agent_ref": "INDEPENDENT-AGENT-704",
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/600",
-        "protected_merge": "4f1b6a1500e18fc53bae135ae6713e7abb126ae4",
+        "assignment_id": "OM26-H7-WP05",
+        "dispatch_id": "OM26-H7-WP05-IA-001",
+        "agent_ref": "INDEPENDENT-AGENT-705",
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/610",
+        "protected_merge": "37ef9dc603e66011ae68e5e5f8df32c9231c231a",
         "readback_verified": false,
         "lifecycle_state": "ACCEPTED",
         "launch_evidence": null,
-        "return_evidence": "contributions/OPENMATH-2026/OM26-H7/WP04/raw/OM26-H7-WP04-IA-001/github-comment-5942424919.md",
+        "return_evidence": "contributions/OPENMATH-2026/OM26-H7/WP05/raw/OM26-H7-WP05-IA-001/github-comment-5963054326.md",
         "adjudication": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION"
       }
     }
