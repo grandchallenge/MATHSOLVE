@@ -15,6 +15,8 @@
     "protected-main readback of admitted theorem names and axiom boundary",
     "activation commit replacing candidate SHA with protected predecessor SHA",
     "publication of immutable GCL-ZERO-CONTEXT-LAUNCH/2 artifacts",
+    "protected controlled-intake profile for CMDG-P3M-SEP dispatch IDs",
+    "first-valid-return durable capture path for RAW.md and RECEIPT.json with no direct claim authority",
     "byte-locked activation of intake issue bodies"
   ],
   "blind_cohort_id": "CMDG-P3M-SEP-BLIND-COHORT-001",
@@ -62,7 +64,10 @@
   "intake_channel": "github_issue_comment",
   "minimum_synthesis_evidence": {
     "constructive_return_required": true,
-    "constructive_routes": ["CMDG-P3M-SEP-WP-A-IA-001", "CMDG-P3M-SEP-WP-B-IA-001"],
+    "constructive_routes": [
+      "CMDG-P3M-SEP-WP-A-IA-001",
+      "CMDG-P3M-SEP-WP-B-IA-001"
+    ],
     "adversarial_return_required": true,
     "adversarial_dispatch": "CMDG-P3M-SEP-WP-C-IA-001"
   },
