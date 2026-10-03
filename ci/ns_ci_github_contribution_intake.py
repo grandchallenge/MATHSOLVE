@@ -87,7 +87,34 @@ UC_PROFILE = IntakeProfile(
     pr_title_prefix="UC-001 intake",
 )
 
-PROFILES = (NS_PROFILE, UC_PROFILE)
+CMDG_PROFILE = IntakeProfile(
+    campaign="CMDG-CM4",
+    dispatch_re=re.compile(r"^CMDG-P3M-SEP-WP-[A-D]-IA-001$"),
+    base_rel=Path("contributions/CMDG-CM4/P3M_ONE_POINT_SEPARATION_003"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=(
+        "dispatch_id",
+        "agent_ref",
+        "assignment",
+        "disposition",
+        "context_class",
+        "external_sources",
+        "timebox_observed",
+    ),
+    dispositions=frozenset({
+        "PROVED_REDUCTION",
+        "EXACT_CERTIFICATE",
+        "FORMAL_LEMMA_PROVED",
+        "COUNTEREXAMPLE",
+        "NO_MATERIAL_DELTA",
+        "EXACT_BLOCKER",
+    }),
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="CMDG-CM4 intake",
+)
+
+PROFILES = (NS_PROFILE, UC_PROFILE, CMDG_PROFILE)
 
 
 class IntakeError(ValueError):
@@ -173,6 +200,8 @@ def parse_result_comment(body: str) -> dict[str, Any]:
         raise IntakeError("assignment is invalid for the NS-CI pilot")
     if profile is UC_PROFILE and not re.fullmatch(r"UC-WP08-D004-WP0[1-5]", preamble["assignment"]):
         raise IntakeError("assignment is invalid for the UC-001 D004 profile")
+    if profile is CMDG_PROFILE and not re.fullmatch(r"CMDG-P3M-SEP-WP-[A-D]", preamble["assignment"]):
+        raise IntakeError("assignment is invalid for the CMDG P3-M separation profile")
 
     headings = HEADING_RE.findall(parsed_body)
     if headings != SECTIONS:
@@ -269,7 +298,7 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], I
 
     if parsed["preamble"]["assignment"] != dispatch.get("assignment_id"):
         raise IntakeError("assignment does not match protected dispatch")
-    if profile is UC_PROFILE and parsed["preamble"].get("agent_ref") != dispatch.get("agent_ref"):
+    if profile in {UC_PROFILE, CMDG_PROFILE} and parsed["preamble"].get("agent_ref") != dispatch.get("agent_ref"):
         raise IntakeError("agent_ref does not match protected dispatch")
     if dispatch.get("concurrency_mode") not in {
         "independent_blind",
