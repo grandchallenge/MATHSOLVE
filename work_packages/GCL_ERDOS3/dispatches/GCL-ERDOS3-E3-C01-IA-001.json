@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_CONTRIBUTION_DISPATCH",
+  "campaign": "GCL-ERDOS3",
+  "tranche": "E3-TRANCHE-03",
+  "assignment_id": "E3-C01",
+  "dispatch_id": "GCL-ERDOS3-E3-C01-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-E3-C01-001",
+  "concurrency_mode": "independent_blind",
+  "issue_number": 792,
+  "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/792",
+  "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
+  "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-C01.md",
+  "task_blob_sha1": "599f20f0575eedca5deb5051ccdf3d5914471aee",
+  "context_class": "ZERO_CONTEXT",
+  "external_sources": "PROTECTED_PACKET_ONLY",
+  "canonical_mutation_authorized": false,
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "state": "DISPATCHED__AWAITING_RETURN"
+}

@@ -18,7 +18,7 @@ def validate(root=ROOT):
     f01=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-F01_RESULT.json').read_text())
     tranche=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-01.json').read_text())
 
-    if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_TRANCHE_03_PREPARED':
+    if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_TRANCHE_03_DISPATCHED':
         errors.append('campaign identity/status drift')
     if gate.get('next_residual_role')!='EVIDENCE_ONLY_NOT_SCHEDULING_AUTHORITY':
         errors.append('Next residual regained scheduling authority')
@@ -76,6 +76,13 @@ def validate(root=ROOT):
         errors.append('campaign frontier drift after tranche-02 synthesis')
     if campaign.get('prepared_tranche')!='E3-TRANCHE-03':
         errors.append('tranche-03 preparation missing')
+    if campaign.get('dispatch_state')!='DISPATCHED__AWAITING_RETURNS':
+        errors.append('tranche-03 dispatch state drift')
+    expected_dispatches={'E3-R01','E3-D01','E3-G01','E3-C01','E3-A03','E3-S04'}
+    if set(campaign.get('active_dispatches',{}))!=expected_dispatches:
+        errors.append('tranche-03 active dispatch set drift')
+    if campaign.get('active_dispatches',{}).get('E3-D01',{}).get('issue_number')!=789:
+        errors.append('E3-D01 canonical intake issue drift')
     if tranche.get('results',{}).get('E3-F01',{}).get('frontier_action')!='CLOSED_NO_SUCCESSOR':
         errors.append('F01 replay recursion guard drift')
 
@@ -107,6 +114,12 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/work_packages/E3-C01.md',
         'work_packages/GCL_ERDOS3/work_packages/E3-A03.md',
         'work_packages/GCL_ERDOS3/work_packages/E3-S04.md',
+        'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-R01-IA-001.json',
+        'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-D01-IA-001.json',
+        'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-G01-IA-001.json',
+        'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-C01-IA-001.json',
+        'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-A03-IA-001.json',
+        'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-S04-IA-001.json',
     ]
     for path in required_files:
         if not (root/path).is_file():
@@ -120,5 +133,5 @@ def validate(root=ROOT):
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    if not e: print('PASS: GCL-ERDOS3 coherent through tranche 03 preparation; density-loss is the sole active frontier')
+    if not e: print('PASS: GCL-ERDOS3 tranche 03 independent-blind dispatches are coherent and exact-commit bound')
     raise SystemExit(bool(e))

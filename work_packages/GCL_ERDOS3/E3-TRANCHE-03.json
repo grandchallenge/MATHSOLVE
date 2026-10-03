@@ -7,7 +7,7 @@
   "primary_frontier": "E3-Q4-DENSITY-LOSS",
   "parent_frontier": "E3-Q4-SERIES",
   "representation_note": "work_packages/GCL_ERDOS3/E3-TRANCHE-03_REPRESENTATION.md",
-  "status": "PREPARED_NOT_DISPATCHED",
+  "status": "DISPATCHED__AWAITING_RETURNS",
   "work_packages": [
     {
       "id": "E3-R01",
@@ -54,5 +54,62 @@
     "recursive extremizer tree",
     "digit-and-carry fiber constraints"
   ],
-  "claim_boundary": "Preparation and representation design only. No new theorem is asserted by creation of this tranche."
+  "claim_boundary": "Dispatch activation only. No contributor result has yet been accepted, replayed, adjudicated, or promoted.",
+  "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
+  "dispatches": {
+    "E3-R01": {
+      "dispatch_id": "GCL-ERDOS3-E3-R01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-R01-001",
+      "issue_number": 788,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/788",
+      "task_blob_sha1": "87f8b9619f62447b1425e2b71d3b374d5488220e",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    },
+    "E3-D01": {
+      "dispatch_id": "GCL-ERDOS3-E3-D01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-D01-001",
+      "issue_number": 789,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/789",
+      "task_blob_sha1": "b7a43c535c59000cfc4cd443b54677ef125d6ca8",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    },
+    "E3-G01": {
+      "dispatch_id": "GCL-ERDOS3-E3-G01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-G01-001",
+      "issue_number": 791,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/791",
+      "task_blob_sha1": "c0dffd18ba0e0f341630b125ef856624fe54ad8a",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    },
+    "E3-C01": {
+      "dispatch_id": "GCL-ERDOS3-E3-C01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-C01-001",
+      "issue_number": 792,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/792",
+      "task_blob_sha1": "599f20f0575eedca5deb5051ccdf3d5914471aee",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    },
+    "E3-A03": {
+      "dispatch_id": "GCL-ERDOS3-E3-A03-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-A03-001",
+      "issue_number": 793,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/793",
+      "task_blob_sha1": "6564ccb50f984f17a9ab498a4043e0a9a7d672de",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    },
+    "E3-S04": {
+      "dispatch_id": "GCL-ERDOS3-E3-S04-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-S04-001",
+      "issue_number": 794,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/794",
+      "task_blob_sha1": "efc30c907510bf1625a754b5d355f3258549a647",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    }
+  },
+  "duplicate_transport_receipt": {
+    "issue_number": 790,
+    "assignment_id": "E3-D01",
+    "state": "CLOSED_DUPLICATE",
+    "canonical_issue_number": 789
+  }
 }
