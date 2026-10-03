@@ -9,9 +9,10 @@ Mandatory first actions:
 4. Read handoffs/RH-001/routes/ROUTE_C_DETERMINANT_CONVERGENCE.md in full.
 5. Read work_packages/RH_R035_ZETA_SPECTRAL_TRIPLES_LIMIT.md.
 6. Read the protected provider audit at grandchallenge/MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790, reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md.
-7. Read R036/R037 for the simple-even/Galerkin interface, the current local simple-even frontier theorem R051, and R053 for C2 compact transform stability.
-8. Acquire/read the exact primary Zeta Spectral Triples source before asserting a determinant normalization not already protected.
-9. Read Route C tracker grandchallenge/MATHSOLVE#414 before allocating any theorem/work-package identifier.
+7. Read R036/R037 for the simple-even/Galerkin interface, the current protected local simple-even frontier theorem R055, and R053 for C2 compact transform stability.
+8. Read the protected C0 provider audit at grandchallenge/MATHFORGE@4904308b524bf67714d74ce5a88908d695d76ee5, reports/discovery/rh_001/rh_r056_determinant_normalization.md, and work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md.
+9. Acquire/read the exact primary Zeta Spectral Triples source before asserting any new normalization or source claim not already protected.
+10. Read Route C tracker grandchallenge/MATHSOLVE#414 before allocating any theorem/work-package identifier.
 
 Protected snapshot at route-pack creation: MATHSOLVE main 7387aa8993355ab854630cf0683b4120a813884c. Rebind live state before mutation.
 
@@ -21,7 +22,7 @@ If a cofinal family of normalized entire finite determinants F_j has only real z
 Do not try to build a limiting self-adjoint operator unless it is genuinely useful. It is sufficient, but not necessary.
 
 Break the route into modular obligations:
-C0. Freeze the exact canonical normalized determinant F_{lambda,N}. Do not guess normalization.
+C0. Freeze the exact canonical normalized determinant F_{lambda,N}. [Discharged by RH-R056 for source-admitted finite pairs.]
 C1. Specify and justify a cofinal schedule or directed-set limit in lambda and N.
 C2. Prove a compact-set transform/determinant stability estimate with exact dependence on a=log(lambda) and compact height. [Discharged by RH-R053]
 C3. Convert source k_lambda approximation into a norm/rate strong enough for C2, or prove what rate is required.
@@ -30,13 +31,19 @@ C5. Identify every subsequential limit with Xi, or with a rigorously known zero-
 C6. Deduce full local-uniform convergence.
 C7. Apply the already-protected R035 bridge only after C6.
 
-High-value first contributions:
-- exact normalization theorem/definition;
-- compact-uniform transform stability lemma;
-- cofinal-index theorem;
-- Montel/local-boundedness theorem;
-- spectral-gap-to-eigenvector-error theorem feeding k_lambda -> xi_lambda;
-- proof that a proposed convergence norm/rate is insufficient.
+Protected Route C state:
+- C0 is discharged by RH-R056. The canonical finite family for every source-admitted pair is
+  F_{lambda,N}(z)=Xi(i/4) xi_hat_{lambda,N}(z)/xi_hat_{lambda,N}(i/4),
+  equivalently Xi(i/4)[lambda^(iz)G_{lambda,N}(z)]/[lambda^(-1/4)G_{lambda,N}(i/4)].
+- C2 is discharged by RH-R053.
+- C1, C3, C4, C5, and C6 remain open.
+
+High-value next contributions:
+- a cofinal-index/admissibility theorem (C1);
+- a k_lambda-to-xi_lambda approximation rate strong enough for R053 (C3);
+- a Montel/local-boundedness theorem for the RH-R056 canonical family (C4);
+- a subsequential limit-identification theorem using the R056 evenness+anchor gauge (C5);
+- a rigorous obstruction showing a proposed rate or normal-family strategy cannot reach C6.
 
 Critical boundaries:
 - The finite source theorem uses a simple-even hypothesis. The current campaign proves full-operator simple-evenness only on a local a interval, not for all large scales. Do not suppress this dependency.
@@ -54,8 +61,9 @@ Governance:
 - Do not claim RH inside ordinary development. If the convergence theorem is actually closed, stop at the governed terminal boundary and route the exact proof for certification.
 
 Identifier discipline:
-- From RH-R056 onward, Route C owns the lane R056, R059, R062, ... .
-- Check tracker #414 and consume only the next unused identifier in that lane.
+- Route C owns the lane R056, R059, R062, ... .
+- RH-R056 is consumed by the protected C0 theorem.
+- At this protected state the next Route C lane identifier is R059, but check tracker #414 and live protected main before claiming it.
 - Never infer the globally next integer from the latest protected theorem and never use Route A/B lane identifiers.
 
 Execution:
