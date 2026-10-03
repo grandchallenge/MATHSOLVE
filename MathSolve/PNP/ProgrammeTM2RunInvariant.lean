@@ -210,8 +210,9 @@ theorem programmeTM2WorkPhase_workLeft_length_le
   | cons tape rest ih =>
       rw [List.nodup_cons] at hnodup
       rcases hnodup with ⟨htapeNot, hrestNodup⟩
-      rcases List.mem_cons.mp hmem with rfl | hmemRest
-      · simp only [programmeTM2WorkPhase]
+      rcases List.mem_cons.mp hmem with hEq | hmemRest
+      · subst targetTape
+        simp only [programmeTM2WorkPhase]
         rw [programmeTM2WorkPhase_workLeft_of_not_mem M rest _ _ tape htapeNot]
         exact programmeTM2AfterWork_workLeft_length_le M tape s stk
       · have hne : targetTape ≠ tape := by
@@ -235,8 +236,9 @@ theorem programmeTM2WorkPhase_workRight_length_le
   | cons tape rest ih =>
       rw [List.nodup_cons] at hnodup
       rcases hnodup with ⟨htapeNot, hrestNodup⟩
-      rcases List.mem_cons.mp hmem with rfl | hmemRest
-      · simp only [programmeTM2WorkPhase]
+      rcases List.mem_cons.mp hmem with hEq | hmemRest
+      · subst targetTape
+        simp only [programmeTM2WorkPhase]
         rw [programmeTM2WorkPhase_workRight_of_not_mem M rest _ _ tape htapeNot]
         exact programmeTM2AfterWork_workRight_length_le M tape s stk
       · have hne : targetTape ≠ tape := by
@@ -350,10 +352,18 @@ theorem programmeTM2RunCore_workLeft_length_le
     ((programmeTM2RunCore M target).2 (.workLeft tape)).length ≤
       (target.stk (.workLeft tape)).length + 1 := by
   unfold programmeTM2RunCore
-  rw [programmeTM2AfterInput_workLeft]
-  exact programmeTM2WorkPhase_workLeft_length_le M
-    (programmeTM2WorkTapes M) (List.nodup_finRange M.workTapeCount)
-    _ _ tape (List.mem_finRange tape)
+  let snapped := target.var.snapshot M
+  let inputState := programmeTM2AfterInputState M snapped target.stk
+  let inputStacks := programmeTM2AfterInputStacks M snapped target.stk
+  have hphase :=
+    programmeTM2WorkPhase_workLeft_length_le M
+      (programmeTM2WorkTapes M) (List.nodup_finRange M.workTapeCount)
+      inputState inputStacks tape (List.mem_finRange tape)
+  have hinput :
+      inputStacks (.workLeft tape) = target.stk (.workLeft tape) := by
+    exact programmeTM2AfterInput_workLeft M snapped target.stk tape
+  rw [hinput] at hphase
+  exact hphase
 
 theorem programmeTM2RunCore_workRight_length_le
     (M : ProgrammeMachine) (target : (programmeTM2Machine M).Cfg)
@@ -361,10 +371,18 @@ theorem programmeTM2RunCore_workRight_length_le
     ((programmeTM2RunCore M target).2 (.workRight tape)).length ≤
       (target.stk (.workRight tape)).length + 1 := by
   unfold programmeTM2RunCore
-  rw [programmeTM2AfterInput_workRight]
-  exact programmeTM2WorkPhase_workRight_length_le M
-    (programmeTM2WorkTapes M) (List.nodup_finRange M.workTapeCount)
-    _ _ tape (List.mem_finRange tape)
+  let snapped := target.var.snapshot M
+  let inputState := programmeTM2AfterInputState M snapped target.stk
+  let inputStacks := programmeTM2AfterInputStacks M snapped target.stk
+  have hphase :=
+    programmeTM2WorkPhase_workRight_length_le M
+      (programmeTM2WorkTapes M) (List.nodup_finRange M.workTapeCount)
+      inputState inputStacks tape (List.mem_finRange tape)
+  have hinput :
+      inputStacks (.workRight tape) = target.stk (.workRight tape) := by
+    exact programmeTM2AfterInput_workRight M snapped target.stk tape
+  rw [hinput] at hphase
+  exact hphase
 
 /-- The ready reverse-simulator configuration satisfies the zero-step bounds. -/
 theorem programmeTM2ReadyInitCfg_bounded
@@ -384,7 +402,8 @@ theorem programmeTM2ReadyInitCfg_bounded
   · rfl
   · rfl
   · rfl
-  · cases input <;> simp [programmeTM2ReadyInitCfg, programmeTM2InitStacks]
+  · cases input <;>
+      simp [programmeTM2ReadyInitCfg, programmeTM2InitStacks] <;> omega
   · intro tape; rfl
   · intro tape; rfl
 
@@ -430,26 +449,33 @@ theorem programmeTM2_bounded_step
       inputRight_bound := ?_
       workLeft_bound := ?_
       workRight_bound := ?_ }
+  · dsimp [target']
   · rw [programmeTM2RunStepTarget_eq_core]
     rw [programmeTM2RunCore_raw]
     exact hrep.raw_empty
+  · dsimp [target']
   · rw [programmeTM2RunStepTarget_eq_core]
     rw [programmeTM2RunCore_temp]
     exact hrep.temp_empty
+  · dsimp [target']
   · rw [programmeTM2RunStepTarget_eq_core]
     rw [programmeTM2RunCore_output]
     exact hrep.output_empty
+  · dsimp [target']
   · rw [programmeTM2RunStepTarget_eq_core]
     exact (programmeTM2RunCore_inputLeft_length_le M target).trans (by
       omega)
+  · dsimp [target']
   · rw [programmeTM2RunStepTarget_eq_core]
     exact (programmeTM2RunCore_inputRight_length_le M target).trans (by
       omega)
   · intro tape
+    dsimp [target']
     rw [programmeTM2RunStepTarget_eq_core]
     exact (programmeTM2RunCore_workLeft_length_le M target tape).trans (by
       omega)
   · intro tape
+    dsimp [target']
     rw [programmeTM2RunStepTarget_eq_core]
     exact (programmeTM2RunCore_workRight_length_le M target tape).trans (by
       omega)
