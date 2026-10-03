@@ -30,7 +30,6 @@ theorem programmeTM2_step_terminal_accept
   have hcontrol : target.var.control = M.accept := hrep.2.2.1.trans haccept
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     hlabel, programmeTM2Program, Turing.TM2.stepAux, hcontrol]
-  simp
   apply congrArg some
   apply programmeTM2Cfg_ext
   · simp [programmeTM2CleanupCfg, hmode]
@@ -57,7 +56,6 @@ theorem programmeTM2_step_terminal_reject
   have hreject_ne_accept : M.reject ≠ M.accept := Ne.symm M.accept_ne_reject
   simp only [Turing.FinTM2.step, Turing.TM2.step, programmeTM2Machine,
     hlabel, programmeTM2Program, Turing.TM2.stepAux, hcontrol]
-  simp [hreject_ne_accept]
   apply congrArg some
   apply programmeTM2Cfg_ext
   · simp [programmeTM2CleanupCfg, hmode]
@@ -204,7 +202,8 @@ theorem programmeTM2_cleanup_terminal
         (programmeTM2CleanupCfg M
           (.emit (programmeTM2TerminalResult M target.var)) target.var
           [] [] [] [] (fun _ => []) (fun _ => []) []))
-      (by simpa [Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using h12345)
+      (by
+        convert h12345 using 1 <;> omega)
       hwork
   have h123456' :
       StateTransition.EvalsToInTime
@@ -217,7 +216,7 @@ theorem programmeTM2_cleanup_terminal
         (input.length + 2 * spent + 5 +
           2 * M.workTapeCount * (spent + 1)) := by
     rw [hresult] at h123456
-    exact h123456
+    convert h123456 using 1 <;> omega
   have hall :=
     StateTransition.EvalsToInTime.trans
       (programmeTM2Machine M).step
@@ -230,8 +229,8 @@ theorem programmeTM2_cleanup_terminal
       (some (Turing.haltList (programmeTM2Machine M) [result]))
       h123456' hemit
   refine ⟨?_⟩
-  simpa [programmeTM2CleanupBudget, Nat.add_comm, Nat.add_left_comm,
-    Nat.add_assoc] using hall
+  unfold programmeTM2CleanupBudget
+  convert hall using 1 <;> omega
 
 #print axioms programmeTM2_step_terminal_accept
 #print axioms programmeTM2_step_terminal_reject
