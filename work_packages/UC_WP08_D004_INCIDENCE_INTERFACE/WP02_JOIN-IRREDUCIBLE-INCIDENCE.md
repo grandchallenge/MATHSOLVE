@@ -1,0 +1,82 @@
+GCL-CONTRIBUTION-DISPATCH/1
+dispatch_id: UC-WP08-D004-WP02-IA-001
+agent_ref: INDEPENDENT-AGENT-UC402
+campaign: UC-001
+work_package: WP08-D004
+assignment: UC-WP08-D004-WP02
+concurrency_mode: independent_blind
+return_protocol: GCL-CONTRIBUTION-RESULT/1
+intended_return: https://github.com/grandchallenge/MATHSOLVE/issues/722
+
+# JOIN-IRREDUCIBLE-INCIDENCE
+
+You are an independent zero-context mathematical contributor. This document is the complete bounded work-set. Do not read GCL repository history, other campaign files, other D004 returns, discussion threads, or unpublished notes. Standard mathematical knowledge is allowed. The only protected campaign facts you may treat as inputs are written below.
+
+Timebox: 30 minutes of substantive work, then return the strongest exact result reached.
+
+## Common mathematical setting
+
+Work with a finite nontrivial lattice L. Write bottom and top for its least and greatest elements. For x in L, define the upper cone up(x) = {a in L | x <= a} and upperConeCard(x) = |up(x)|.
+
+The active incidence carrier is U = L \ {bottom}. For a finite family F of subsets of U and x in U, freq_F(x) is the number of members S of F with x in S. For S subset U, its carrier-relative complement is U \ S. For a family F, Comp(F) = {U \ S | S in F}.
+
+The protected universal target is not available as an assumption. UC-P04 and Frankl's conjecture remain open. Do not infer frequency facts from abstract lattice isomorphism: every frequency statement must be tied to an explicit incidence relation.
+
+## Objective
+
+Determine the exact reduced incidence representation on join-irreducible coordinates for arbitrary finite lattices.
+
+## Bounded work
+
+Let J be the set of join-irreducible elements in the endpoint-excluding sense used by standard finite-lattice theory: j != bottom and whenever j = a join b, j = a or j = b. Define JBelow(a) = {j in J | j <= a}.
+
+Prove or falsify:
+1. every lattice element a is the join of the join-irreducibles below it, with the bottom case treated explicitly;
+2. a -> JBelow(a) is injective, preferably order-reflecting;
+3. JBelow(a meet b) = JBelow(a) intersection JBelow(b);
+4. the family CJ = {JBelow(a) | a in L} has |L| members;
+5. for every j in J, freq_CJ(j) = upperConeCard(j);
+6. endpoint conventions do not delete any coordinate to which the protected WP05 SupIrred statements apply.
+
+Do not use distributivity, semidistributivity, or a representation theorem that assumes either. If a claimed statement needs a weaker or stronger hypothesis, return the exact corrected theorem.
+
+## Independence and authority
+
+This dispatch is a member of blind cohort `UC-WP08-D004-BLIND-COHORT-001`. Do not inspect or use results from the other D004 dispatches before cohort closure.
+
+You have no repository mutation, adjudication, certification, publication, or claim-promotion authority. A negative result, counterexample, or exact blocker is fully acceptable. Do not strengthen an unsupported statement merely to match the proposed route.
+
+## Required return
+
+Return exactly one narrative-only object as one comment on INTENDED_RETURN. No URLs, attachments, Markdown links, side files, repository branches, pull requests, or supplementary contribution objects.
+
+```text
+GCL-CONTRIBUTION-RESULT/1
+dispatch_id: UC-WP08-D004-WP02-IA-001
+agent_ref: INDEPENDENT-AGENT-UC402
+assignment: UC-WP08-D004-WP02
+disposition: <PROVED_REDUCTION|EXACT_CERTIFICATE|FORMAL_LEMMA_PROVED|COUNTEREXAMPLE|NO_MATERIAL_DELTA|EXACT_BLOCKER>
+context_class: ZERO_CONTEXT
+external_sources: PROTECTED_PACKET_ONLY
+timebox_observed: <YES|NO>
+
+## Strongest exact statement
+<Exact theorem, counterexample, reduction, or blocker.>
+
+## Derivation
+<Complete argument. If code is used, include the smallest replayable code inline.>
+
+## Assumptions beyond bootstrap
+<List every extra assumption, or NONE.>
+
+## Verification / falsification hooks
+<Concrete checks another reasoner can perform.>
+
+## Claim boundary
+<State exactly what follows and what does not. No certification claim.>
+
+## Next residual
+<At most three sentences.>
+```
+
+The first valid conforming return is the durable contribution for this dispatch. Intake preserves evidence only; it does not adjudicate correctness or confer institutional authority.
