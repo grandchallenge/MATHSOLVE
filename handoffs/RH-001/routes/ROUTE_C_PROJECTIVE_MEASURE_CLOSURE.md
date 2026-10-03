@@ -5,6 +5,9 @@ Status: ACTIVE_CANONICAL_REFRAME
 Introduced by:
 RH-R077-PROJECTIVE-MEASURE-REPAIR-001
 
+Extended by:
+RH-R080-SIGNED-PROJECTIVE-NORMALITY-001
+
 Coordination:
 grandchallenge/MATHSOLVE#414
 grandchallenge/MATHSOLVE#742
@@ -43,32 +46,35 @@ logical requirement.
 After R056 phase removal and scalar normalization, the relevant state is
 projective.
 
-Conditional on a nonnegative even form state \(f\), define
-
+For any real even form state \(f\) with nonzero boundary anchor
 \[
-d\nu_f(x)
-=
-\frac{f(x)\cosh(x/2)}
-     {\int_0^a f(t)\cosh(t/2)\,dt}\,dx
+A(f)=\int_0^a f(x)\cosh(x/2)\,dx\ne0,
 \]
-
-on \([0,a]\).  Then
-
+RH-R080 defines the signed projective measure
+\[
+d\mu_f(x)
+=
+\frac{f(x)\cosh(x/2)}{A(f)}\,dx,
+\qquad
+\mu_f([0,a])=1.
+\]
+Then
 \[
 F_f(z)
 =
 \frac12\int
-K_z(x)\,d\nu_f(x),
+K_z(x)\,d\mu_f(x),
 \qquad
 K_z(x)=\frac{\cos(zx)}{\cosh(x/2)}.
 \]
 
-This representation:
+The positive probability-measure representation from R077 is the special
+sign-definite case.  The signed representation:
 
-- removes arbitrary positive scalar normalization;
-- makes the R068 strip bound a contraction statement;
-- identifies zero collapse as escape of projective mass;
-- provides a scale-free total-variation transfer norm.
+- removes arbitrary nonzero real scalar normalization;
+- separates pointwise positivity from the actual normal-family requirement;
+- measures cancellation through the variation of the normalized signed state;
+- retains the R077 kernel and projective-transfer viewpoint.
 
 ## 3. Kernel facts
 
@@ -163,9 +169,27 @@ The finite Rayleigh-to-eigenvector inequality from R074 remains valid.
 The preferred output is projective-measure convergence.
 
 C4 — normal-family control:
-CONDITIONAL_ON_POINTWISE_POSITIVITY.
-The implication positivity => strip bound => Montel is valid.
-The global CCM pointwise-positivity premise is not yet protected.
+REDUCED BY RH-R080 TO SIGNED-PROJECTIVE CONTROL; ACTUAL CCM BOUND OPEN.
+For
+\[
+\kappa_\delta(f)
+=
+\frac{\int_0^a|f(x)|\cosh(\delta x)\,dx}
+     {|A(f)|},
+\qquad 0\le\delta\le1/2,
+\]
+RH-R080 proves
+\[
+\sup_{|\operatorname{Im}z|\le\delta}|F_f(z)|
+\le\frac12\kappa_\delta(f).
+\]
+Therefore C4 follows if, on an admitted cofinal family,
+\[
+\forall\delta<1/2,\quad
+\sup\kappa_\delta(\xi_{\lambda,N})<\infty.
+\]
+Pointwise sign-definiteness is only the extremal boundary case
+\(\kappa_{1/2}=1\), not a necessary C4 hypothesis.
 
 C5 — limit identification:
 OPEN for the actual CCM family.
@@ -182,12 +206,25 @@ Invoke only after its actual hypotheses are met.
 
 ## 7. Three active mathematical gates
 
-### P1 — positivity or replacement normality
+### P1 — signed-projective normality
 
-Prove pointwise nonnegativity of the relevant finite CCM ground states along an
-admissible cofinal sequence, or prove normality by another exact mechanism.
+RH-R080 proves the exact hierarchy:
 
-Do not infer this from simple-evenness or from numerical positivity.
+- **P1a:** pointwise sign-definiteness, equivalently
+  \(\kappa_{1/2}=1\) after orienting the ground-state ray;
+- **P1b:** a uniform closed-strip condition number
+  \(\sup\kappa_{1/2}<\infty\);
+- **P1c:** the weakest current C4 target,
+  \[
+  \forall\delta<1/2,\quad \sup\kappa_\delta<\infty.
+  \]
+
+Any of P1a/P1b/P1c on an admitted cofinal family yields the corresponding
+normality conclusion; P1c already suffices on the open critical strip.
+Actual CCM sign control remains open.
+
+The RH-R080 blind cohort independently tests pointwise positivity,
+counterexamples, and the positivity-free criterion.
 
 ### P2 — projective candidate transfer
 
@@ -218,17 +255,19 @@ interfaces.
 
 ## 9. Next Route C lane
 
-After RH-R077 protection, the next collision-free Route C identifier is
-RH-R080.
+RH-R080 supplies the positivity-free signed-projective C4 theorem and staffs a
+blind proof/falsification cohort for actual CCM pointwise positivity.
 
-Preferred priority for R080:
+After RH-R080 protection, the next collision-free Route C identifier is
+RH-R083.
 
-1. exact pointwise-positivity proof/falsification for the finite CCM ground
-   state under the source simple-even hypotheses; or
-2. an alternative normal-family theorem not requiring positivity.
+Do not allocate R083 until the RH-R080 blind returns have been checked or the
+native R080 theorem has been protected and the controller has selected the
+smallest actual-family residual.  Likely successors are:
 
-Only after C4's premise is repaired should large-scale Rayleigh-defect work be
-promoted as the main Route C frontier.
+1. source-specific control of \(\kappa_\delta(\xi_{\lambda,N})\);
+2. projective candidate-transfer estimates feeding P2; or
+3. a certified finite positivity counterexample follow-up if WP-B returns one.
 
 ## 10. False-proof firewall
 
