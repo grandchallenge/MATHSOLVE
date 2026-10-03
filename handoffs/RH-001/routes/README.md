@@ -35,7 +35,15 @@ Current theorem-development identifier allocation:
 
 - RH-R054 — Route A quartic/richer-even-trial tranche;
 - RH-R055 — Route B no-prime sector-bottom/Herglotz-variation tranche;
-- RH-R056 — reserved for the next bounded Route C tranche.
+- RH-R056 — Route C C0 canonical determinant-normalization tranche.
+
+To prevent concurrent cross-route collisions from R054 onward, theorem IDs are partitioned into route-local lanes:
+
+- Route A: R054, R057, R060, ...;
+- Route B: R055, R058, R061, ...;
+- Route C: R056, R059, R062, ....
+
+Within a route, consume only the next unused ID in that lane after checking the route tracker. Never infer the globally next integer from the latest protected theorem. A tracker claim using another route's lane is invalid and must be rebound before repository mutation.
 
 The historical Route B implementation branch name `rh-r054-route-b-variation` may remain as a mechanical branch label, but its theorem/work-package identity is RH-R055. Do not reuse RH-R054 outside Route A.
 
@@ -149,7 +157,7 @@ Route C must not assume global simple-evenness merely because Route A proves it 
 
 1. Every agent must re-fetch protected main before mutation.
 2. Every agent must read AGENTS.md and the canonical RH handoff.
-3. Claim a bounded subproblem in the relevant route tracker and allocate a globally unique RH-R### identifier before opening a branch.
+3. Claim a bounded subproblem in the relevant route tracker and use only the next unused RH-R### identifier from that route's allocated lane before opening a branch.
 4. Do not duplicate active work unless explicitly conducting an independent adversarial replay. A route-local branch name never overrides the globally allocated theorem/work-package identifier.
 5. Keep route-specific results in bounded work packages.
 6. If a result becomes a dependency of another route, protect it first and bind the exact protected SHA.
