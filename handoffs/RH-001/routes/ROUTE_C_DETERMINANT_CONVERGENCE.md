@@ -85,6 +85,7 @@ Read:
 - work_packages/RH_R062_UNTOUCHED_LATTICE_TAIL.md
 - work_packages/RH_R065_FINITE_BLOCK_RESOLVENT_OBSTRUCTION.md
 - work_packages/RH_R068_STRIP_NORMAL_FAMILY.md
+- work_packages/RH_R071_LIMIT_IDENTIFICATION.md
 - MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790:
   reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
 - MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d:
@@ -109,7 +110,7 @@ C3. Prove approximation of the true finite/full eigenvector by the source candid
 
 C4. Prove local boundedness / normal-family control of the normalized determinants. [DISCHARGED by RH-R068-STRIP-NORMAL-FAMILY-001 via universal strip modulus bound |F_{lambda,N}| <= 1/2 and Montel normality on S_{1/2}^circ]
 
-C5. Identify every subsequential locally uniform limit with Xi.
+C5. Identify every subsequential locally uniform limit with Xi. [DISCHARGED CONDITIONALLY on C3 candidate error rate by RH-R071-LIMIT-IDENTIFICATION-001 via sublinear strip stability transfer and zero-free quotient characterization]
 
 C6. Conclude full local uniform convergence.
 
@@ -343,6 +344,8 @@ For the RH bridge, convergence to any nonvanishing entire multiple of Xi may be 
 
 Do not silently change the target.
 
+RH-R071 proves that on any closed substrip \(S_\delta \subset S_{1/2}^\circ\) (\(0 < \delta < 1/2\)), the transform stability growth is strictly sublinear: \(\sqrt{\mathcal{H}_a(\delta)} = O(\lambda^\delta) = o(\sqrt{\lambda})\). Consequently, any \(L^2\) candidate error \(\|\xi_{\lambda,N} - k_\lambda\|_{L^2} = o(\lambda^{-\delta})\) guarantees that \(F_{\lambda,N} \to \Xi\) uniformly on compact subsets of \(S_\delta\), connecting directly to the CCM §7 prolate convergence theorem (which provides \(O(\lambda^{-2})\)). Furthermore, for any subsequential limit \(F_\infty\), the quotient \(\Phi = F_\infty / \Xi\) is holomorphic, even, and satisfies the anchor \(\Phi(i/2) = 1\); non-vanishing of \(\Phi\) guarantees that all zeros of \(\Xi\) in \(S_{1/2}^\circ\) are real. Lane RH-R074 is reserved for C3 quantitative eigenvector error bounds.
+
 ## 12. Interaction with simple-evenness
 
 The finite source theorem uses a simple-even hypothesis.
@@ -371,7 +374,7 @@ A contribution is meaningful if it provides one protected result such as:
 3. a cofinal-index theorem [PARTIALLY CONSTRAINED: RH-R062 rules out N=o((log lambda)^2) for the R059 mechanism];
 4. a Montel/local-boundedness theorem [DELIVERED: RH-R068 proves universal strip modulus bound |F_{lambda,N}| <= 1/2, Montel normality on S_{1/2}^\circ, and Strip Hurwitz Bridge; supersedes the divergent R059 trace criterion];
 5. a rigorous k_lambda-to-xi_lambda estimate;
-6. a limit-identification theorem;
+6. a limit-identification theorem [DELIVERED: RH-R071 proves sublinear stability transfer on S_\delta and identifies limit with \Xi for candidate error o(\lambda^{-\delta})];
 7. a negative theorem showing a proposed norm/rate/criterion is insufficient [DELIVERED: RH-R053 rate dichotomy; RH-R065 resolvent trace obstruction].
 
 This route is expected to advance through such modular results.
