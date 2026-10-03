@@ -17,7 +17,8 @@ This page is a human projection of the protected machine registry.
 | `OM26-H1-WP30` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP30-IA-001` | `INDEPENDENT-AGENT-130` | #598 |
 | `OM26-H1-WP31` | `OM26-H1` | `SUPERSEDED` | `OM26-H1-WP31-IA-001` | `INDEPENDENT-AGENT-131` | #608 |
 | `OM26-H1-WP32` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP32-IA-001` | `INDEPENDENT-AGENT-132` | #647 |
-| `OM26-H1-WP33` | `OM26-H1` | `LEASED_NOT_LAUNCHED` | `OM26-H1-WP33-IA-001` | `INDEPENDENT-AGENT-133` | #659 |
+| `OM26-H1-WP33` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP33-IA-001` | `INDEPENDENT-AGENT-133` | #659 |
+| `OM26-H1-WP34` | `OM26-H1` | `LEASED_NOT_LAUNCHED` | `OM26-H1-WP34-IA-001` | `INDEPENDENT-AGENT-134` | #683 |
 | `OM26-H1-WP60` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP60-IA-001` | `INDEPENDENT-AGENT-160` | #599 |
 | `OM26-H1-WP61` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP61-IA-001` | `INDEPENDENT-AGENT-161` | #620 |
 | `OM26-H1-WP62` | `OM26-H1` | `ACCEPTED` | `OM26-H1-WP62-IA-001` | `INDEPENDENT-AGENT-162` | #632 |
@@ -75,7 +76,7 @@ The lifecycle is `READY -> LAUNCHED -> RETURNED -> CAPTURED -> REPLAYED -> ADJUD
 - H5: https://github.com/grandchallenge/MATHSOLVE/blob/d3d973eb27311f27fecc879c74491b0faebfc462/handoffs/OPENMATH-2026/launch/OM26-H5-WP06.md
 - H6: https://github.com/grandchallenge/MATHSOLVE/blob/f032431add540011337df1992ded8dffdf0036ae/handoffs/OPENMATH-2026/launch/OM26-H6-WP07.md
 - H7: https://github.com/grandchallenge/MATHSOLVE/blob/51f2177bc50b3b2c18a569f886aa61c7191896a1/handoffs/OPENMATH-2026/launch/OM26-H7-WP06.md
-- H1-Q6 (support): https://github.com/grandchallenge/MATHSOLVE/blob/17e04181f3b21127e7b1ace6db2e0aa610026aca/handoffs/OPENMATH-2026/launch/OM26-H1-WP33.md
+- H1-Q6 (support): https://github.com/grandchallenge/MATHSOLVE/blob/56567068905ab70b558b0499872f1a78bd5f4b67/handoffs/OPENMATH-2026/launch/OM26-H1-WP34.md
 - H1-ADVERSARY (support): https://github.com/grandchallenge/MATHSOLVE/blob/7cd88a4f4a5d026077f24474e414de353205a4e4/handoffs/OPENMATH-2026/launch/OM26-H1-WP63.md
 
 ## Launcher contract
