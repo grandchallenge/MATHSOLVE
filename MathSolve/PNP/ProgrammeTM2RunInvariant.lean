@@ -402,8 +402,11 @@ theorem programmeTM2ReadyInitCfg_bounded
   · rfl
   · rfl
   · rfl
-  · cases input <;>
-      simp [programmeTM2ReadyInitCfg, programmeTM2InitStacks] <;> omega
+  · cases input with
+    | nil =>
+        simp [programmeTM2ReadyInitCfg, programmeTM2InitStacks]
+    | cons bit tail =>
+        simp [programmeTM2ReadyInitCfg, programmeTM2InitStacks]
   · intro tape; rfl
   · intro tape; rfl
 
@@ -451,34 +454,44 @@ theorem programmeTM2_bounded_step
       workRight_bound := ?_ }
   · dsimp [target']
     rw [programmeTM2RunStepTarget_eq_core]
+    change (programmeTM2RunCore M target).2 .rawInput = []
     rw [programmeTM2RunCore_raw]
     exact hrep.raw_empty
   · dsimp [target']
     rw [programmeTM2RunStepTarget_eq_core]
+    change (programmeTM2RunCore M target).2 .inputTemp = []
     rw [programmeTM2RunCore_temp]
     exact hrep.temp_empty
   · dsimp [target']
     rw [programmeTM2RunStepTarget_eq_core]
+    change (programmeTM2RunCore M target).2 .output = []
     rw [programmeTM2RunCore_output]
     exact hrep.output_empty
   · dsimp [target']
     rw [programmeTM2RunStepTarget_eq_core]
-    exact (programmeTM2RunCore_inputLeft_length_le M target).trans (by
-      omega)
+    change ((programmeTM2RunCore M target).2 .inputLeft).length ≤ steps + 1
+    exact (programmeTM2RunCore_inputLeft_length_le M target).trans
+      (Nat.add_le_add_right hrep.inputLeft_bound 1)
   · dsimp [target']
     rw [programmeTM2RunStepTarget_eq_core]
-    exact (programmeTM2RunCore_inputRight_length_le M target).trans (by
-      omega)
+    change ((programmeTM2RunCore M target).2 .inputRight).length ≤
+      input.length + (steps + 1)
+    have h := Nat.add_le_add_right hrep.inputRight_bound 1
+    simpa [Nat.add_assoc] using h
   · intro tape
     dsimp [target']
     rw [programmeTM2RunStepTarget_eq_core]
-    exact (programmeTM2RunCore_workLeft_length_le M target tape).trans (by
-      omega)
+    change ((programmeTM2RunCore M target).2 (.workLeft tape)).length ≤
+      steps + 1
+    exact (programmeTM2RunCore_workLeft_length_le M target tape).trans
+      (Nat.add_le_add_right (hrep.workLeft_bound tape) 1)
   · intro tape
     dsimp [target']
     rw [programmeTM2RunStepTarget_eq_core]
-    exact (programmeTM2RunCore_workRight_length_le M target tape).trans (by
-      omega)
+    change ((programmeTM2RunCore M target).2 (.workRight tape)).length ≤
+      steps + 1
+    exact (programmeTM2RunCore_workRight_length_le M target tape).trans
+      (Nat.add_le_add_right (hrep.workRight_bound tape) 1)
 
 #print axioms programmeTM2ReadyInitCfg_bounded
 #print axioms programmeTM2_bounded_step
