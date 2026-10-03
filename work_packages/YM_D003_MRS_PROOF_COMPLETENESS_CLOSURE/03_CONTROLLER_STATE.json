@@ -3,7 +3,7 @@
   "controller_id": "YM-D003-MRS-R002-CONTROLLER",
   "campaign_id": "YM-001",
   "target_id": "YM-D003-MRS-R002",
-  "state": "R2P1_C1_CLOSED__C2_KERNEL_SUMS_ACTIVE",
+  "state": "R2P1_C2_HV_CLOSED__C2_M_BG_ACTIVE",
   "exact_binds": {
     "grandchallenge/MATH-PROGRAMME": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
     "grandchallenge/MATHFORGE": "9b6413a7ca5972b7d724ea8f1594c01b8f46cf45",
@@ -11,14 +11,14 @@
     "grandchallenge/MATHCERT": "3ffeaf5697a2590c10649fee6baf3b830b4347d9",
     "grandchallenge/INTELLECT": "cacfe1f749b91a335e1d1734352cecff56bad7c1"
   },
-  "current_frontier": "YM-D003-MRS-R002-R2P1-C2__LINK_TREE_SUMMABILITY",
+  "current_frontier": "YM-D003-MRS-R002-R2P1-C2-M-BG__MAYER_AND_BACKGROUND_ACTIVITY",
   "balaban_state": "EXTERNAL_PRIMARY_SOURCE_BYTE_ACCESS_REQUIRED__AUTOMATED_DISCOVERY_EXHAUSTED__NO_FURTHER_SEARCH_REPLAY",
   "external_wp_state": {
     "WP-A": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5967005635",
     "WP-B": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5966952070",
     "WP-C": "RECEIVED_AND_INDEPENDENTLY_SYNTHESIZED__COMMENT_5966936787"
   },
-  "controller_next_action": "Execute C2-H and C2-V first: derive rho-uniform one-step link-sum constants from the MRS sliced/homothetic spatial decay and the anisotropic vertical-expansion smallness. Then attack C2-M Mayer-link summability and C2-BG background-determinant root activity separately. C1 has reduced rooted summability to q<1.",
+  "controller_next_action": "Execute C2-M and C2-BG. For Mayer links, derive a rooted one-step bound after hard-core removal using only the finite C0 grammar and source-admitted link decay. For BGDET, derive a root-local activity bound from the Section VI stability estimate without treating determinants as ordinary vertical polymers. Then evaluate q<1.",
   "legitimate_stop_conditions": [
     "governance_or_authority_change",
     "authentication_or_safety_boundary",
@@ -37,7 +37,7 @@
     "node_selected": true,
     "selected_node": "YM-D003-MRS-R002-MT1"
   },
-  "current_boundary": "ACTIVE_NATIVE_PROOF__R2P1_C2_KERNEL_SUMS",
+  "current_boundary": "ACTIVE_NATIVE_PROOF__R2P1_C2_MAYER_AND_BGDET",
   "native_reduction": {
     "MT1-A": "REDUCED_TO_UNIFORM_MRS_1PI_MASS_RESPONSE_CONTROL",
     "MT1-A1": "MT1_NOT_STRICTLY_UPSTREAM__COUPLED_TO_LOCAL_RENORMALIZED_TWO_POINT_POLYMER_BOUND",
@@ -62,6 +62,8 @@
     ],
     "anti_circularity": "No global Schwinger/polymer convergence may be assumed to prove C0-C5.",
     "C0": "CLOSED__FINITE_GRAMMAR_AND_BOUNDED_SOURCE_CONCORDANCE_COMPLETE",
-    "C1": "CLOSED__ROOTED_MAJORANT_AND_TREE_REDUCTION_PROVED"
+    "C1": "CLOSED__ROOTED_MAJORANT_AND_TREE_REDUCTION_PROVED",
+    "C2_H": "CLOSED__SPATIAL_LINK_L1_SUM_FINITE_UNIFORM_IN_RHO",
+    "C2_V": "CLOSED__ANISOTROPIC_SCALE_SUM_GEOMETRIC_UNIFORM_IN_RHO"
   }
 }
