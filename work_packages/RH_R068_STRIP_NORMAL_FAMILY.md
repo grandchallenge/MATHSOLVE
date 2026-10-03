@@ -1,5 +1,21 @@
 # RH-R068-STRIP-NORMAL-FAMILY-001
 
+
+> **RH-R077 CORRECTION NOTICE.** This historical package remains useful only
+> conditionally. RH-R077 proved that the strip-modulus argument is valid
+> *if* the finite ground state is pointwise nonnegative, but the protected
+> CCM simple-even theorem, RH-R037, and RH-R040 do not supply that global
+> pointwise-positivity premise; protected MATHFORGE RH-R038 explicitly rejected
+> the prior Krein-Rutman closure. Therefore Route C C4 is
+> **CONDITIONAL_ON_POINTWISE_POSITIVITY**, not unconditionally discharged.
+> RH-R077 also gives the exact family
+> \(E_n(z)=\frac12\cos(nz)/\cosh(n/2)\), which has real zeros,
+> \(E_n(i/2)=1/2\), and the closed-strip bound, yet converges locally
+> uniformly to zero on \(|\operatorname{Im}z|<1/2\). Any non-collapse
+> inference from the boundary anchor is withdrawn. See
+> handoffs/RH-001/routes/ROUTE_C_PROJECTIVE_MEASURE_CLOSURE.md.
+
+
 Campaign: RH-001
 
 Route: Forward Route C — determinant convergence to Xi
