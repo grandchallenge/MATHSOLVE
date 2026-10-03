@@ -85,6 +85,7 @@ Route C obligation C2 is already discharged by RH-R053. C0 exact determinant nor
 - RH-R045-PARITY-SENSITIVE-REMAINDER-001: proved in work_packages/RH_R045_PARITY_SENSITIVE_REMAINDER.md.
 - Pole/resolvent provider interface: grandchallenge/MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648.
 - RH-R053-COMPACT-TRANSFORM-STABILITY-001: proved in work_packages/RH_R053_COMPACT_TRANSFORM_STABILITY.md.
+- RH-R054-COMPLETE-LOG-QUARTIC-EXTENSION-001: proved in work_packages/RH_R054_COMPLETE_LOG_QUARTIC_EXTENSION.md; complete-log odd coercivity and exact positive quartic trial continuation through a=9/50.
 - RH-R055-NO-PRIME-HERGLOTZ-VARIATION-001: proved in work_packages/RH_R055_NO_PRIME_HERGLOTZ_VARIATION.md; explicit Route B sector-bottom/resolvent variation and continuation through a=3561/20000.
 
 No operator construction satisfying the Hilbert–Pólya contract, RH implication, novelty, or priority claim is admitted.
@@ -141,6 +142,24 @@ and therefore
 \frac{138950903247}{5634650000000000}.
 \]
 Thus the first CCM simple-even obstruction is discharged through \(a=3561/20000\).
+
+RH-R054 then reuses the protected RH-R055 \(q'\le23/100\) no-prime remainder theorem through \(t\le9/25\), strengthens the limiting odd coercivity with the complete logarithmic weight to
+\[
+\mu_{-,1}>\log2+\frac16,
+\]
+and adds an exact two-parameter positive quartic trial surface. These structural improvements extend the full simple-even theorem through
+\[
+0<a\le\frac9{50}=0.18.
+\]
+Uniformly on that interval,
+\[
+\epsilon_-(e^a)-\epsilon_+(e^a)>\frac{859636202320933}{69279729750000000},
+\]
+and
+\[
+\epsilon_{+,2}(e^a)-\epsilon_{+,1}(e^a)>\frac{12460054441577}{86599662187500}.
+\]
+Thus the first CCM simple-even obstruction is discharged through \(a=9/50\).
 
 This sharpens the protected operator contract:
 
@@ -212,6 +231,8 @@ and
 - work_packages/RH_R053_COMPACT_TRANSFORM_STABILITY.md
 - work_packages/RH_R055_NO_PRIME_HERGLOTZ_VARIATION.md
 - scripts/rh_r055_route_b_variation.py
+- work_packages/RH_R054_COMPLETE_LOG_QUARTIC_EXTENSION.md
+- scripts/rh_r054_exact_check.py
 - work_packages/RH_R039_QW_PARITY_GAP_EVIDENCE/evidence.json
 - work_packages/RH_R039_QW_PARITY_GAP_EVIDENCE/evidence.csv
 - scripts/rh_r039_qw_parity_gap.py
@@ -222,7 +243,7 @@ and
 The finite-evidence question has been overtaken by stronger full-operator theorems near \(\lambda=1\). The current explicit structural boundary is
 
 \[
-a=\log\lambda=\frac{3561}{20000}=0.17805.
+a=\log\lambda=\frac9{50}=0.18.
 \]
 
 The continuation machinery is now in place:
@@ -240,13 +261,15 @@ The continuation machinery is now in place:
 11. RH-R052 refreshes explicit positive Herglotz continuation margins \(d(a)>\frac{55428698889}{23675000000000}\) and \(\Delta_H(a)\ge\frac{1210515093544258}{12367528439608125}\) through \(a=178/1000\);
 12. RH-R053 discharges C2 of Route C by proving exact compact-set transform stability bounds \(\sup_{z\in K}|\lambda^{-iz}\widehat{\xi}-\lambda^{-iz}\widehat{\psi}|\le e^{\sigma_{\max}a}\sqrt{\mathcal{H}_a(H)}\|\xi-\psi\|_{L^2}\), an even-parity refinement, Rayleigh-quotient to eigenvector error transfer, and the rate dichotomy showing bare \(L^2\) bounds require C4 normal families for full complex-plane convergence.
 13. RH-R055 supplies the first quantitative Route B transport theorem: on \([89/500,9/50]\), \(\mu\) and \(\beta_-\) are explicitly Lipschitz, the common scalar shift cancels from \(d\), the shifted resolvent and Herglotz scalar have explicit variation bounds, and the protected simple-even interval advances to \(a=3561/20000\).
+14. RH-R054 reuses the protected R055 remainder interval, proves the complete-log rank-one coercivity bound \(\mu_{-,1}>\log2+1/6\), and adds an exact positive quartic trial surface, advancing the direct full-operator frontier to \(a=9/50\). Route B's \(d/\Delta_H\) transport remains protected only through \(a=3561/20000\) until separately refreshed from the stronger Route A margin.
 
-The new Route B extension is intentionally conservative: the R052 pole-localization margin is the limiting budget. The smallest useful next theorem should therefore improve transport rather than resume endpoint micro-tuning, preferably one of:
+RH-R054 now sets the direct full-operator frontier at \(a=9/50\), while Route B's protected \(d/\Delta_H\) transport reaches \(a=3561/20000\). The next useful theorem should exploit that separation rather than resume scalar micro-tuning, preferably one of:
 
-- a sharper lower bound for the pole-localization margin \(d\) at or near the current frontier;
-- a sharper operator/form variation constant for the no-prime family, especially the odd pole-free bottom;
-- a piecewise prime-threshold continuation theorem that treats compressed translations directly without assuming norm continuity;
-- a genuinely richer positive even trial or stronger odd coercivity estimate if it materially enlarges the starting Herglotz margin.
+- refresh the Route B \(d/\Delta_H\) starting margins from the stronger R054 direct theorem and transport them beyond \(9/50\);
+- sharpen the no-prime remainder or higher-order parity cancellation beyond the protected \(q'\le23/100\) budget;
+- optimize or enlarge R054's exact positive quartic trial surface with proof-level coefficient selection;
+- strengthen the complete-log odd coercivity beyond the certified rank-one parameter \(1/3\);
+- or prepare the first-prime threshold analysis explicitly before \(2a=\log2\).
 
 The R039 finite-Galerkin route remains an independent diagnostic at larger \(a\), but it is not the smallest next theorem.
 
@@ -256,7 +279,7 @@ The determinant route remains an exact sufficient terminal bridge: locally unifo
 
 RH-R030 imports the classical Riemann–von Mangoldt conclusion that positive zero ordinates are unbounded and the standard bounded-spectrum theorem.
 
-RH-R031 imports standard momentum/Fourier spectral theory. Its source status and exact prior-art boundary are fixed by the protected Forge audit. RH-R032 imports the classical Riemann–von Mangoldt counting interface and elementary finite-interval momentum spectral theory; its exact source boundary is protected at MATHFORGE@c49d7507dd45338f6328141c7d708acb5806e702. RH-R033 imports the Berry–Keating 2011 operator-theoretic and asymptotic results from the protected provider audit at MATHFORGE@d0365dba53e20395bbd2c3b6b17959cde94b6fbe; Solve proves only the governed comparison and design consequence. RH-R034 imports Sierra's Rindler mirror source analysis from the protected audit at MATHFORGE@2e66cdb836ea4228d70462f5eddca73ee91a504a; Solve records the fixed-domain and circularity consequences without certifying the limiting source construction. RH-R035 imports the finite Zeta Spectral Triples theorem and the source's named missing steps from MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790; Solve adds the standard Rouché/Hurwitz determinant-convergence bridge and isolates the minimal sufficient convergence target. RH-R036 imports inversion symmetry, canonical self-adjoint representation, and discreteness from MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d; Solve proves operator commutation and the exact parity-gap reduction. RH-R037 imports exact finite parity matrices and the full form core from MATHFORGE@76221c214bcb8227557d25741d83927051e62e8b; Solve proves parity-sector core density, monotone sector-minimum convergence, and finite-gap convergence. R039 uses only those protected CCM formulas for finite high-precision parity-gap evidence; MATHFORGE@a11c6dedede09af6f3c67c5eec337941b73d4d3a separately rejects a claimed Krein–Rutman closure as insufficient to supersede the protected frontier. R040 imports Suzuki's full-operator small-a structure from MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320 and derives an explicit effective regime. R045 sharpens that regime using parity-sensitive control of the same source remainder. R046 strengthens the limiting odd-sector coercivity and extends the no-prime analytic route through a=1/7. R047 refines the integrated smooth-remainder control and extends the same route through a=3/20. R048 strengthens the limiting even and odd coercivity estimates and extends the route through a=1/6. R049 retains the next positive logarithmic-potential term and extends the route through a=17/100. R050 combines the next logarithmic term with a reweighted positive even trial and reaches a=171/1000. R051 combines exact rank-one coercivity with a sharp parity-specific remainder bound and reaches a=178/1000. R052 refreshes explicit Herglotz continuation margins through a=178/1000. RH-R055 uses only the already-protected no-prime scaled form, the R041 pole split, and elementary bounded-perturbation/min-max/resolvent identities to prove explicit sector-bottom and Herglotz variation bounds and extend simple-evenness through a=3561/20000; no new external theorem is imported. RH-R053 discharges C2 of Route C by proving exact compact-set transform stability bounds, an even-parity refinement, Rayleigh-to-eigenvector error transfer, and the rate dichotomy proving bare L2 bounds require C4 normal families on C. MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648 binds the exact CCM pole split used by R041-R044. No numerical zero fitting is used.
+RH-R031 imports standard momentum/Fourier spectral theory. Its source status and exact prior-art boundary are fixed by the protected Forge audit. RH-R032 imports the classical Riemann–von Mangoldt counting interface and elementary finite-interval momentum spectral theory; its exact source boundary is protected at MATHFORGE@c49d7507dd45338f6328141c7d708acb5806e702. RH-R033 imports the Berry–Keating 2011 operator-theoretic and asymptotic results from the protected provider audit at MATHFORGE@d0365dba53e20395bbd2c3b6b17959cde94b6fbe; Solve proves only the governed comparison and design consequence. RH-R034 imports Sierra's Rindler mirror source analysis from the protected audit at MATHFORGE@2e66cdb836ea4228d70462f5eddca73ee91a504a; Solve records the fixed-domain and circularity consequences without certifying the limiting source construction. RH-R035 imports the finite Zeta Spectral Triples theorem and the source's named missing steps from MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790; Solve adds the standard Rouché/Hurwitz determinant-convergence bridge and isolates the minimal sufficient convergence target. RH-R036 imports inversion symmetry, canonical self-adjoint representation, and discreteness from MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d; Solve proves operator commutation and the exact parity-gap reduction. RH-R037 imports exact finite parity matrices and the full form core from MATHFORGE@76221c214bcb8227557d25741d83927051e62e8b; Solve proves parity-sector core density, monotone sector-minimum convergence, and finite-gap convergence. R039 uses only those protected CCM formulas for finite high-precision parity-gap evidence; MATHFORGE@a11c6dedede09af6f3c67c5eec337941b73d4d3a separately rejects a claimed Krein–Rutman closure as insufficient to supersede the protected frontier. R040 imports Suzuki's full-operator small-a structure from MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320 and derives an explicit effective regime. R045 sharpens that regime using parity-sensitive control of the same source remainder. R046 strengthens the limiting odd-sector coercivity and extends the no-prime analytic route through a=1/7. R047 refines the integrated smooth-remainder control and extends the same route through a=3/20. R048 strengthens the limiting even and odd coercivity estimates and extends the route through a=1/6. R049 retains the next positive logarithmic-potential term and extends the route through a=17/100. R050 combines the next logarithmic term with a reweighted positive even trial and reaches a=171/1000. R051 combines exact rank-one coercivity with a sharp parity-specific remainder bound and reaches a=178/1000. R052 refreshes explicit Herglotz continuation margins through a=178/1000. R054 reuses the protected R055 no-prime slope interval, strengthens the limiting odd coercivity using the complete logarithmic weight, adds an exact positive quartic trial surface, and reaches a=9/50. RH-R055 uses only the already-protected no-prime scaled form, the R041 pole split, and elementary bounded-perturbation/min-max/resolvent identities to prove explicit sector-bottom and Herglotz variation bounds and extend simple-evenness through a=3561/20000; no new external theorem is imported. RH-R053 discharges C2 of Route C by proving exact compact-set transform stability bounds, an even-parity refinement, Rayleigh-to-eigenvector error transfer, and the rate dichotomy proving bare L2 bounds require C4 normal families on C. MATHFORGE@f9aa9ad64812df42ad079958ecff88c84e0e4648 binds the exact CCM pole split used by R041-R044. No numerical zero fitting is used.
 
 MATHCERT interaction is not presently material. A later Cert route is appropriate only for a bounded new mathematical claim with an exact proof/checker surface.
 
