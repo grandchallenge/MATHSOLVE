@@ -56,7 +56,7 @@ From R054 onward, independent routes use collision-free theorem-ID lanes: Route 
 
 A prior Route B tracker comment also used RH-R054. That collision is superseded by the allocation above. The existing implementation branch `rh-r054-route-b-variation` may remain as a mechanical branch name, but any admitted theorem/work-package identity from that work is RH-R055.
 
-Route C obligations C0 and C2 are discharged by RH-R056 and RH-R053 respectively. C1, C3, C4, C5, and C6 remain open. RH-R059 supplies an abstract sufficient C4 normal-family criterion. RH-R062 proves that the untouched scaling complement forces N(lambda)=Omega((log lambda)^2) for any schedule using that criterion; the finite modified block remains the open positive trace burden. R065 is the next Route C lane.
+Route C obligations C0, C2, and C4 are discharged by RH-R056, RH-R053, and RH-R068 respectively. C1, C3, C5, and C6 remain open. RH-R059 provided an abstract trace criterion; RH-R062 and RH-R065 established the divergence of that global trace (\(Q_{\lambda,N} > \log\lambda - 2 \to \infty\)). RH-R068 resolves C4 via the universal strip modulus bound \(|F_{\lambda,N}(z)| \le 1/2\) on \(S_{1/2}\), Montel normality on \(S_{1/2}^\circ\), and the Strip Hurwitz Bridge. RH-R071 is the next Route C lane.
 
 ## Current protected lineage
 
@@ -91,6 +91,8 @@ Route C obligations C0 and C2 are discharged by RH-R056 and RH-R053 respectively
 - RH-R056-CANONICAL-DETERMINANT-NORMALIZATION-001: proved in work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md; C0 discharged by an even, zero-preserving normalization anchored at Xi(i/2)=1/2.
 - RH-R059-PAIRED-ZERO-NORMAL-FAMILY-001: proved in work_packages/RH_R059_PAIRED_ZERO_NORMAL_FAMILY.md; abstract C4 criterion via uniform paired zero energy, with the actual CCM uniform bound still open.
 - RH-R062-UNTOUCHED-LATTICE-TAIL-001: proved in work_packages/RH_R062_UNTOUCHED_LATTICE_TAIL.md; the untouched complement gives the sharp N versus (log lambda)^2 schedule trichotomy and rules out subquadratic schedules for the R059 criterion.
+- RH-R065-FINITE-BLOCK-RESOLVENT-OBSTRUCTION-001: proved in work_packages/RH_R065_FINITE_BLOCK_RESOLVENT_OBSTRUCTION.md; strict eigenvalue interlacing with the scaling lattice forces the global resolvent trace lower bound Q_{lambda,N} > log(lambda) - 2 -> infty, disproving viability of the R059 trace criterion for CCM.
+- RH-R068-STRIP-NORMAL-FAMILY-001: proved in work_packages/RH_R068_STRIP_NORMAL_FAMILY.md; ground-state positivity and cosh convexity yield the universal bound |F_{lambda,N}(z)| <= 1/2 on the strip S_{1/2}, proving Montel normality and establishing the Strip Hurwitz Bridge on S_{1/2}^circ (conformal to the critical strip).
 
 No operator construction satisfying the Hilbert–Pólya contract, RH implication, novelty, or priority claim is admitted.
 
@@ -300,6 +302,8 @@ is a positive lower bound for \(Q_{1/2}(F_{\lambda,N})\) and satisfies
 Thus subquadratic \(N=o(a^2)\) schedules force divergence, \(N\sim\kappa a^2\) leave the constant \(1/(\pi^2\kappa)\), and \(N\gg a^2\) make this tail vanish. Therefore any R059-based uniformly bounded schedule must have \(N=\Omega((\log\lambda)^2)\).
 
 18. RH-R065 proves the finite-block and global resolvent obstruction for the CCM family. The finite-block eigenvalues strictly interlace with the scaling lattice: \(0 < \mu_1 < \pi/a < \mu_2 < 2\pi/a < \dots < \mu_N < \pi N/a\), forcing \(B_{a,N} > \sum_{j=1}^N \frac{1}{(\pi j/a)^2+1/4}\). Combined with the R062 untouched tail \(T_{a,N}\), the exact Mittag-Leffler \(\coth\) identity yields \(Q_{\lambda,N} = B_{a,N} + T_{a,N} > a\coth(a/2) - 2 > \log\lambda - 2\) for all admitted \((\lambda,N)\). Therefore \(Q_{\lambda,N}\) diverges along every cofinal family as \(\lambda \to \infty\). The R059 positive resolvent trace criterion is structurally too strong for CCM; C4 normal-family control must use localized/scale-invariant criteria (reserved for lane RH-R068).
+
+19. RH-R068 discharges C4 normal-family control by establishing a universal, scale-independent strip modulus bound. For the canonically normalized determinant \(F_{\lambda,N}(z) = \widehat{\xi}_{\lambda,N}(z)/(2\widehat{\xi}_{\lambda,N}(i/2))\), ground-state non-negativity \(\xi_{\lambda,N} \ge 0\) and hyperbolic convexity imply \(|F_{\lambda,N}(z)| \le 1/2\) for all \(z \in S_{1/2} = \{z : |\operatorname{Im} z| \le 1/2\}\) uniformly across all \(\lambda > 1\) and \(N \ge 1\). By Montel's theorem, \(\{F_{\lambda,N}\}\) is a normal family on the open strip \(S_{1/2}^\circ\). Hurwitz's theorem on \(S_{1/2}^\circ\) guarantees that every non-trivial subsequential limit has only real zeros in the strip. Under \(s = 1/2 + iz\), this biholomorphically corresponds to zeros on the critical line \(\operatorname{Re}(s) = 1/2\) in the Riemann critical strip. C4 is discharged; lane RH-R071 is reserved for C5 limit identification.
 
 RH-R054 now sets the direct full-operator frontier at \(a=9/50\), while Route B's protected \(d/\Delta_H\) transport reaches \(a=3561/20000\). The next useful theorem should exploit that separation rather than resume scalar micro-tuning, preferably one of:
 

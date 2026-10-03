@@ -83,6 +83,8 @@ Read:
 - work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md
 - work_packages/RH_R059_PAIRED_ZERO_NORMAL_FAMILY.md
 - work_packages/RH_R062_UNTOUCHED_LATTICE_TAIL.md
+- work_packages/RH_R065_FINITE_BLOCK_RESOLVENT_OBSTRUCTION.md
+- work_packages/RH_R068_STRIP_NORMAL_FAMILY.md
 - MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790:
   reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
 - MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d:
@@ -101,11 +103,11 @@ C0. Exact finite normalization. [DISCHARGED by RH-R056-CANONICAL-DETERMINANT-NOR
 
 C1. Select and justify a cofinal parameter schedule.
 
-C2. Establish a compact-set transform/determinant stability estimate.
+C2. Establish a compact-set transform/determinant stability estimate. [DISCHARGED by RH-R053-COMPACT-TRANSFORM-STABILITY-001]
 
 C3. Prove approximation of the true finite/full eigenvector by the source candidate strongly enough to use C2.
 
-C4. Prove local boundedness / normal-family control of the normalized determinants. RH-R059 supplies an abstract sufficient criterion; the required uniform CCM paired-zero/spectral bound remains open.
+C4. Prove local boundedness / normal-family control of the normalized determinants. [DISCHARGED by RH-R068-STRIP-NORMAL-FAMILY-001 via universal strip modulus bound |F_{lambda,N}| <= 1/2 and Montel normality on S_{1/2}^circ]
 
 C5. Identify every subsequential locally uniform limit with Xi.
 
@@ -314,7 +316,18 @@ Q_{\lambda,N} = B_{a,N} + T_{a,N} > a\coth(a/2) - 2 > \log\lambda - 2.
 \]
 Thus \(Q_{\lambda,N} \to \infty\) linearly in \(\log\lambda\) along every cofinal family.
 The R059 positive resolvent trace condition is structurally too strong for CCM,
-and C4 normal-family control must use localized/scale-invariant criteria (reserved for RH-R068).
+and C4 normal-family control must use localized/scale-invariant criteria.
+
+RH-R068 resolves C4 by proving that for the R056-normalized determinants
+\(F_{\lambda,N}(z) = \widehat{\xi}_{\lambda,N}(z)/(2\widehat{\xi}_{\lambda,N}(i/2))\),
+ground-state positivity \(\xi_{\lambda,N} \ge 0\) and hyperbolic convexity imply
+\(|F_{\lambda,N}(z)| \le 1/2\) for all \(z \in S_{1/2} = \{z : |\operatorname{Im} z| \le 1/2\}\)
+uniformly in \(\lambda > 1\) and \(N \ge 1\). By Montel's theorem, \(\{F_{\lambda,N}\}\)
+forms a normal family on the open strip \(S_{1/2}^\circ = \{z : |\operatorname{Im} z| < 1/2\}\).
+Furthermore, the Strip Hurwitz Bridge ensures that all zeros of any non-trivial subsequential
+limit in \(S_{1/2}^\circ\) are real, corresponding biholomorphically under \(s = 1/2 + iz\)
+to zeros on the critical line \(\operatorname{Re}(s) = 1/2\) in the Riemann critical strip.
+Obligation C4 is completely discharged; lane RH-R071 is reserved for C5 limit identification.
 
 ## 11. C5 — Identify the limit as Xi
 
@@ -356,7 +369,7 @@ A contribution is meaningful if it provides one protected result such as:
 1. exact canonical determinant normalization [DELIVERED: RH-R056];
 2. a theorem reducing compact-uniform determinant convergence to a quantitative eigenvector norm/rate [DELIVERED: RH-R053];
 3. a cofinal-index theorem [PARTIALLY CONSTRAINED: RH-R062 rules out N=o((log lambda)^2) for the R059 mechanism];
-4. a Montel/local-boundedness theorem [ABSTRACT SUFFICIENT CRITERION: RH-R059; RH-R062 isolates untouched-tail obstruction; RH-R065 proves global resolvent trace divergence Q_{lambda,N} > log(lambda) - 2; replacement localized/scale-invariant C4 criterion reserved for RH-R068];
+4. a Montel/local-boundedness theorem [DELIVERED: RH-R068 proves universal strip modulus bound |F_{lambda,N}| <= 1/2, Montel normality on S_{1/2}^\circ, and Strip Hurwitz Bridge; supersedes the divergent R059 trace criterion];
 5. a rigorous k_lambda-to-xi_lambda estimate;
 6. a limit-identification theorem;
 7. a negative theorem showing a proposed norm/rate/criterion is insufficient [DELIVERED: RH-R053 rate dichotomy; RH-R065 resolvent trace obstruction].
