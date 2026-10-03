@@ -106,9 +106,9 @@ The preferred terminal-facing theorem is:
 
 If an admissible sequence \(F_j\)
 
-1. is normal on \(U\);
+1. is locally bounded on \(U\) (hence normal);
 2. has only real zeros;
-3. satisfies \(\limsup F_j(0)>0\);
+3. satisfies \(F_j(0)\ne0\) and \(\limsup |F_j(0)|>0\);
 4. satisfies projective shape convergence on one real interval \(I\),
    \[
    \frac{F_j(t)}{F_j(0)}
