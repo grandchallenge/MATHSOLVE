@@ -3,7 +3,7 @@
   "controller_id": "YM-D003-MRS-R002-CONTROLLER",
   "campaign_id": "YM-001",
   "target_id": "YM-D003-MRS-R002",
-  "state": "PLAN_PREPARED__AGENT_WPS_PENDING_ISSUE_BINDING",
+  "state": "AGENT_WPS_BOUND__AWAITING_INDEPENDENT_RESULTS",
   "exact_binds": {
     "grandchallenge/MATH-PROGRAMME": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
     "grandchallenge/MATHFORGE": "3f869e772ef2217addb1ffe45a4058b7470ba36f",
@@ -14,11 +14,11 @@
   "current_frontier": "MRS_SOURCE_PROOF_COMPLETENESS_DECOMPOSITION",
   "balaban_state": "EXTERNAL_PRIMARY_SOURCE_BYTE_ACCESS_REQUIRED__AUTOMATED_DISCOVERY_EXHAUSTED__NO_FURTHER_SEARCH_REPLAY",
   "external_wp_state": {
-    "WP-A": "PREPARED_PENDING_ISSUE_BINDING",
-    "WP-B": "PREPARED_PENDING_ISSUE_BINDING",
-    "WP-C": "PREPARED_PENDING_ISSUE_BINDING"
+    "WP-A": "READY_FOR_GITHUB_COMMENT__ISSUE_716",
+    "WP-B": "READY_FOR_GITHUB_COMMENT__ISSUE_717",
+    "WP-C": "READY_FOR_GITHUB_COMMENT__ISSUE_718"
   },
-  "controller_next_action": "Protect this plan, create exact GitHub return issues from the protected bootstraps, bind issue identities in dispatch records, then admit first valid RESULT/1 returns as evidence only.",
+  "controller_next_action": "Accept the first valid GCL-CONTRIBUTION-RESULT/1 return for each protected dispatch as unadjudicated evidence; after at least one source-dependency return and one adversarial return, perform independent GCL synthesis and select the smallest confirmed MISSING_THEOREM_GRADE_PROOF node.",
   "legitimate_stop_conditions": [
     "governance_or_authority_change",
     "authentication_or_safety_boundary",
@@ -27,5 +27,6 @@
     "mathematical_falsification_or_exact_blocker",
     "completion_of_YM-D003-MRS-R002"
   ],
-  "claim_boundary": "Controller state records execution only. It is not theorem admission or certification."
+  "claim_boundary": "Controller state records execution only. It is not theorem admission or certification.",
+  "dispatch_binding_base": "0bd614f27b22c3a5350347cbda51b0267ddf29ec"
 }
