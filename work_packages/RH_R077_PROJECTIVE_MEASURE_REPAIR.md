@@ -13,7 +13,7 @@ Solve coordination:
 - bounded tranche: grandchallenge/MATHSOLVE#742
 
 Protected Solve base:
-grandchallenge/MATHSOLVE@1716d39a228e71b2b9f16f902dda32694d62557a
+grandchallenge/MATHSOLVE@3e7046192bca06c4c902dfdb49d54b66ebd42121
 
 Protected dependencies:
 - RH-R035-ZETA-SPECTRAL-TRIPLES-LIMIT-001
