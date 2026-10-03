@@ -17,7 +17,8 @@ jobs:
     if: >
       !github.event.issue.pull_request &&
       (startsWith(github.event.issue.title, '[GCL-CONTRIB] NSCI-') ||
-       startsWith(github.event.issue.title, '[GCL-CONTRIB] UC-001 UC-WP08-D004-')) &&
+       startsWith(github.event.issue.title, '[GCL-CONTRIB] UC-001 UC-WP08-D004-') ||
+       startsWith(github.event.issue.title, '[GCL-CONTRIB] CMDG-CM4 CMDG-P3M-SEP-')) &&
       startsWith(github.event.comment.body, 'GCL-CONTRIBUTION-RESULT/1')
     runs-on: ubuntu-24.04
     timeout-minutes: 10
