@@ -1,6 +1,6 @@
 # YM-D003-MRS-R002-MT1 — Exact zero-mass counterterm tuning
 
-Status: `SELECTED_FOR_NATIVE_GCL_PROOF_OR_FALSIFICATION`
+Status: `SHARPLY_REDUCED_TO_R2P1__EXACT_ZERO_MASS_TUNING_REMAINS_OPEN`
 
 Parent: `YM-D003-MRS-R002 — SOURCE_PROOF_COMPLETENESS`
 
@@ -82,3 +82,29 @@ A sharp reduction is also acceptable if it names the smallest missing estimate a
 ## Claim boundary
 
 MT1 concerns only relevant mass-counterterm selection at fixed infrared cutoff within the MRS route. It does not prove global Schwinger convergence, Slavnov defect decay, infrared removal, complete OS axioms, or mass gap.
+
+
+## 2026-10-03 native disposition
+
+MT1-A and MT1-A1 were executed against protected source authority:
+
+- MATHFORGE `90254084f3d06dcaad1a6a950039396ea85c23f9`;
+- MATHFORGE `9b6413a7ca5972b7d724ea8f1594c01b8f46cf45`.
+
+The result is:
+
+`MT1_NOT_STRICTLY_UPSTREAM__COUPLED_TO_LOCAL_RENORMALIZED_TWO_POINT_POLYMER_BOUND`.
+
+The scalar proof template cited by MRS defines its mass subtraction from zero-momentum 1PI two-point Mayer graphs and derives the running mass bound from the corresponding subgraph bounds. MRS does not theoremize the analogous gauge-theory two-point sector.
+
+Therefore the active native target is now:
+
+`YM-D003-MRS-R002-R2P1 — UNIFORM_RENORMALIZED_1PI_TWO_POINT_POLYMER_BOUND_AND_MASS_RECURSION`.
+
+See:
+
+- `work_packages/YM_D003_MRS_R002_MT1_A_FIXED_POINT_GATE.md`
+- `work_packages/YM_D003_MRS_R002_MT1_A1_DISPOSITION.md`
+- `work_packages/YM_D003_MRS_R002_R2P1_TWO_POINT_POLYMER_MASS_RECURSION.md`
+
+MT1 will close if R2P1 supplies the local two-point constructive induction and the final fixed-point/implicit-function step succeeds.
