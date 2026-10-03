@@ -38,6 +38,24 @@ Independent agents should enter through the relevant route pack, claim one bound
 
 Routes A and B are parallel mechanisms for the CCM simple-even obstruction. Route C attacks the determinant-convergence terminal bridge directly and may consume quantitative spectral-gap results from A/B, but it must not assume global simple-evenness from the current local theorem.
 
+### Live campaign-controller allocation
+
+The three execution surfaces are intentionally distinct:
+
+- Route A improves the local operator theorem;
+- Route B attempts to transport that theorem structurally;
+- Route C attacks the terminal determinant bridge independently.
+
+Current theorem-development identifier allocation is global across the campaign:
+
+- RH-R054 — Route A richer-even-trial tranche;
+- RH-R055 — Route B no-prime quantitative sector-bottom/Herglotz-variation tranche;
+- RH-R056 — reserved for the next bounded Route C tranche.
+
+A prior Route B tracker comment also used RH-R054. That collision is superseded by the allocation above. The existing implementation branch `rh-r054-route-b-variation` may remain as a mechanical branch name, but any admitted theorem/work-package identity from that work is RH-R055.
+
+Route C obligation C2 is already discharged by RH-R053. C0 exact determinant normalization remains mandatory before any convergence claim that depends on an unprotected normalization.
+
 ## Current protected lineage
 
 - RH-T-000: open and unproved.
