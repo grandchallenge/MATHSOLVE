@@ -70,6 +70,15 @@ def check_fourier_counterexample() -> None:
     assert all(ratios[i + 1] > ratios[i] for i in range(len(ratios) - 1))
     assert ratios[-1] > 1e10
 
+    # Even entire counterexample f(x)=x^2: coefficients are O(1/j^2),
+    # still not exponential.
+    def even_coeff_abs(j: int) -> float:
+        return 2.0 * math.sqrt(2.0) * a ** 2.5 / (math.pi ** 2 * j ** 2)
+
+    even_scaled = [j * j * even_coeff_abs(j) for j in [1, 2, 5, 10, 50]]
+    even_target = even_scaled[0]
+    assert max(abs(v - even_target) for v in even_scaled) < 1e-12
+
 
 def main() -> int:
     check_kernel_bound()
