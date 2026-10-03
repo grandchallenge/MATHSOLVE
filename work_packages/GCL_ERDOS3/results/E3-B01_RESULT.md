@@ -132,3 +132,17 @@ No such (kge4) estimate is asserted by this result. Failure to obtain one does n
 - New reduction `E3-B-AP-THRESHOLD`: **PROVED**.
 - Parent `E3-B-AP`: **OPEN**.
 - Frontier action: **INDEPENDENT_VERIFY** for B01 once, then **ADVANCE_FRONTIER** to `E3-B-AP`.
+
+
+## Current four-term calibration
+
+The maintained Erdős Problems record gives
+(r_k(N)ll_k N/[(log N)(loglog N)^2]) as an example of a sufficient estimate for the parent conjecture. Under (N=2^j), this is exactly a summable normalized dyadic envelope.
+
+By contrast, the current cited four-term theorem of Green–Tao gives only
+(r_4(N)ll N(log N)^{-c}) for a small (c>0). Its dyadic envelope is (O(j^{-c})), so the present quantitative theory does not discharge B01.3 for (k=4). This is consistent with Green's 2026 survey statement that the reciprocal-sum conjecture remains far from established even at length four.
+
+Sources:
+- Erdős Problems, Problem 3, current record checked 2026-10-03.
+- Ben Green and Terence Tao, *New bounds for Szemerédi's theorem, III: A polylogarithmic bound for r_4(N)*, Mathematika 63 (2017), DOI 10.1112/S0025579317000316.
+- Ben Green, *Arithmetic progressions at the Journal of the LMS* (2026).
