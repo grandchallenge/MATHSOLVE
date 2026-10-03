@@ -28,8 +28,14 @@
     {
       "id": "YM-D003-MRS-R002-R2P1",
       "kind": "UNIFORM_RENORMALIZED_1PI_TWO_POINT_POLYMER_BOUND_AND_MASS_RECURSION",
-      "status": "ACTIVE_NATIVE_RESEARCH_BOUNDARY__NEW_PROOF_REQUIRED",
-      "statement": "Construct the MRS-specific renormalized local 1PI two-point polymer/subgraph induction, relevant mass projection, uniform subgraph bound, and exact mass recursion."
+      "status": "SHARPLY_REDUCED_TO_R2P1_C",
+      "statement": "R2P1 is reduced to a new MRS-specific theorem bounding the renormalized local 1PI two-point polymer/subgraph sector uniformly in UV depth; existing MRS material supplies convergence ingredients but not this normed subgraph theorem."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C",
+      "kind": "MRS_RENORMALIZED_TWO_POINT_SUBGRAPH_THEOREM",
+      "status": "MISSING_THEOREM_GRADE_PROOF__NEW_NATIVE_MATHEMATICS_REQUIRED",
+      "statement": "Define a normed MRS-specific renormalized local 1PI two-point polymer/subgraph family and prove the UV-depth-uniform summability/remainder/mass-response bound required for the simultaneous two-point and mass-counterterm induction."
     },
     {
       "id": "YM-D003-MRS-R002-B",
@@ -118,6 +124,11 @@
       "from": "YM-D003-MRS-R002-R2P1",
       "to": "YM-D003-MRS-R002-B",
       "type": "local_two_point_induction_is_subnode_of_global_summability"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1",
+      "to": "YM-D003-MRS-R002-R2P1-C",
+      "type": "source_replay_isolates_load_bearing_subgraph_theorem"
     }
   ],
   "agent_support": [
@@ -156,6 +167,6 @@
     "Do not infer Yang-Mills mass gap or terminal YM-001 closure."
   ],
   "claim_boundary": "Provisional Solve decomposition only. Node names B-D may be refined by source evidence; no theorem or campaign status is promoted by this DAG.",
-  "selected_native_node": "YM-D003-MRS-R002-R2P1",
-  "selection_rationale": "Source replay of the scalar critical-mass template shows that exact mass tuning depends on renormalized 1PI two-point subgraph bounds. MRS does not theoremize the analogous SU(2) gauge-theory sector. R2P1 is therefore the smallest non-circular native target; it is narrower than full global polymer/Schwinger convergence."
+  "selected_native_node": "YM-D003-MRS-R002-R2P1-C",
+  "selection_rationale": "MRS Section VII provides propagator decay, anisotropic power counting, small factors, and link-resummation rationale, but delegates the exceptional renormalized two-/four-point sector to usual machinery/[R] without an MRS-specific normed subgraph theorem. The scalar critical-mass template proves that such a two-point subgraph bound is load-bearing for exact mass tuning."
 }
