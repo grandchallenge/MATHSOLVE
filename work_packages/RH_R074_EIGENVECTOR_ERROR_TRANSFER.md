@@ -1,5 +1,20 @@
 # RH-R074-EIGENVECTOR-ERROR-TRANSFER-001
 
+
+> **RH-R077 CORRECTION NOTICE.** Preserve Lemma 2.1 / Proposition 2.2
+> (orthogonal projection geometry) and Theorem 4.1
+> (finite Rayleigh-to-eigenvector transfer). Withdraw Lemma 3.1,
+> Theorem 3.2, the resulting C1 quadratic-schedule sufficiency claim, and the
+> master convergence theorem that depends on them. Analytic continuation to a
+> strip does not by itself imply exponential decay of *periodic* Fourier
+> coefficients on a finite interval: contour shifting has vertical-side
+> terms unless endpoint matching is proved. The entire function \(f(x)=x\)
+> has coefficients
+> \(|c_j|=\sqrt2\,a^{3/2}/(\pi|j|)\), providing an exact counterexample to
+> the stated hypothesis. See RH-R077 for the corrected projective-measure
+> architecture.
+
+
 Campaign: RH-001
 
 Route: Forward Route C — determinant convergence to Xi
