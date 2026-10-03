@@ -60,13 +60,37 @@ def programmeTM2Machine_outputs
     Classical.choice hspec.1
   have hnone : source.machine.step input terminal = none := hspec.2.1
   have hout : source.machine.output terminal = some (decision input) := hspec.2.2
-  rcases programmeTM2_initialization_run source.machine input with
-    ⟨hinit⟩
-  rcases programmeTM2_transfer_run source.machine input hsource with
-    ⟨target, hrep, ⟨hrun⟩⟩
-  rcases programmeTM2_cleanup_terminal hrep hnone
-      (decision input) hout with
-    ⟨hcleanup⟩
+  let hinit :
+      StateTransition.EvalsToInTime
+        (programmeTM2Machine source.machine).step
+        (Turing.initList (programmeTM2Machine source.machine) input)
+        (some (programmeTM2ReadyInitCfg source.machine input))
+        (2 * input.length + 3) :=
+    Classical.choice (programmeTM2_initialization_run source.machine input)
+  let htransfer :=
+    programmeTM2_transfer_run source.machine input hsource
+  let target : (programmeTM2Machine source.machine).Cfg :=
+    Classical.choose htransfer
+  have htransferSpec := Classical.choose_spec htransfer
+  have hrep := htransferSpec.1
+  let hrun :
+      StateTransition.EvalsToInTime
+        (programmeTM2Machine source.machine).step
+        (programmeTM2ReadyInitCfg source.machine input)
+        (some target)
+        hsource.steps :=
+    Classical.choice htransferSpec.2
+  let hcleanup :
+      StateTransition.EvalsToInTime
+        (programmeTM2Machine source.machine).step
+        target
+        (some
+          (Turing.haltList (programmeTM2Machine source.machine)
+            [decision input]))
+        (programmeTM2CleanupBudget source.machine input.length hsource.steps) :=
+    Classical.choice
+      (programmeTM2_cleanup_terminal hrep hnone
+        (decision input) hout)
   have hprefix :=
     StateTransition.EvalsToInTime.trans
       (programmeTM2Machine source.machine).step
@@ -119,6 +143,7 @@ def programmeTM2TimedDecider {decision : List Bool → Bool}
             (Computability.encodeBool (decision input)) =
           [decision input] := by
       simp [Computability.encodeBool]
+    unfold Turing.TM2OutputsInTime
     rw [hin, hout]
     exact programmeTM2Machine_outputs source input
 
