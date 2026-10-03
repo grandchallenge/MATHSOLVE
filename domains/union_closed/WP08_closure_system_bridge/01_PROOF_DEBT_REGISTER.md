@@ -7,7 +7,7 @@ Date: 2026-09-25
 | WP08-D001 | Decide whether arbitrary finite union-closed families admit exact D003-complement representation. | Closed negative | `p04_no_universal_exact_functionalPreorder_representation`; explicit three-point obstruction. |
 | WP08-D002 | Extend the Frankl-facing result from functional preorders to arbitrary finite partial orders. | Closed locally | `posetIdealFamily_exists_rare` and `posetIdeal_complement_frankl`; maximal-element erasure injection. |
 | WP08-D003 | Express arbitrary finite closure systems by closure operators / implication bases and isolate the first non-poset obstruction. | Closed locally | Canonical closure operator and finite implication basis are checked; single binary implication `{a,b}->c` is a closure system not representable by unary implications; D002 erasure fails at the forced conclusion; bounded example still satisfies the rare-element/complement endgame. |
-| WP08-D004 | Build an incidence-preserving interface to the WP05 minimum-counterexample lattice spine. | Active preparation | Five bounded independent work packages are registered: four blind lanes (principal incidence, join-irreducible incidence, implication semantics, WP05 frequency translation) plus one adversarial representation audit. Dispatches remain pending until protected issue-byte binding and activation. |
+| WP08-D004 | Build an incidence-preserving interface to the WP05 minimum-counterexample lattice spine. | Active external evidence | Five bounded independent work packages are live: four blind lanes (principal incidence, join-irreducible incidence, implication semantics, WP05 frequency translation) plus one adversarial representation audit. Issue-byte binding is complete and all dispatches are `READY_FOR_GITHUB_COMMENT`. |
 
 ## D003 movement
 
@@ -84,7 +84,10 @@ The dispatch registry is under
 `contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/`. The immutable task
 content is bound to commit `283a82b53c36c999805805df94fde24e0af578ee`.
 
-The activation sequence is fail-closed: protect the CEI UC intake profile,
-protect this packet, bind issues #721-#725 byte-for-byte to their protected
-bootstraps, verify the bindings, and only then change dispatch status to
+The activation sequence completed fail-closed. The CEI UC intake profile is
+protected at Programme commit `c70bf336ec598bb8654cc465306c6cf3a871341e`;
+the task packet is protected at Solve commit
+`7ce9e3b93c92510d574dd6ff9d31d6716915f8fc`; issues #721-#725 were verified
+byte-for-byte against their protected bootstraps; and the activation receipt
+records those identities before the dispatches were moved to
 `READY_FOR_GITHUB_COMMENT`.
