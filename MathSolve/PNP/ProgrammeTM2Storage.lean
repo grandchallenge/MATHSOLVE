@@ -1,0 +1,265 @@
+import MathSolve.PNP.ProgrammeTM2StepPreservation
+
+/-!
+# Reverse-simulator finite storage measure
+
+The Programme-to-TM2 simulator represents each two-way tape by two finite side
+stacks and one scanned symbol.  This file tracks only the side-stack cells that
+terminal cleanup must later remove.
+-/
+
+namespace MathSolve.PNP
+
+noncomputable section
+
+open Turing
+open scoped BigOperators
+
+/-- Explicit side-stack cells for the simulated immutable input tape. -/
+def programmeTM2InputSideSize (M : ProgrammeMachine)
+    (stk : ProgrammeTM2Stacks M) : Nat :=
+  (stk .inputLeft).length + (stk .inputRight).length
+
+/-- Explicit side-stack cells for one simulated work tape. -/
+def programmeTM2WorkSideSize (M : ProgrammeMachine)
+    (stk : ProgrammeTM2Stacks M) (tape : Fin M.workTapeCount) : Nat :=
+  (stk (.workLeft tape)).length + (stk (.workRight tape)).length
+
+/-- Total run-mode side-stack storage requiring terminal cleanup. -/
+def programmeTM2RunStorage (M : ProgrammeMachine)
+    (stk : ProgrammeTM2Stacks M) : Nat :=
+  programmeTM2InputSideSize M stk +
+    ∑ tape : Fin M.workTapeCount, programmeTM2WorkSideSize M stk tape
+
+/-- Input movement increases explicit input-side storage by at most one cell. -/
+theorem programmeTM2AfterInput_inputSideSize_le
+    (M : ProgrammeMachine) (s : ProgrammeTM2State M)
+    (stk : ProgrammeTM2Stacks M) :
+    programmeTM2InputSideSize M
+        (programmeTM2AfterInputStacks M s stk) ≤
+      programmeTM2InputSideSize M stk + 1 := by
+  cases hmove : (ProgrammeTM2State.snapshotAction M s).inputMove
+  · cases hleft : stk .inputLeft <;>
+      simp [programmeTM2InputSideSize, programmeTM2AfterInputStacks,
+        hmove, Function.update, hleft] <;> omega
+  · simp [programmeTM2InputSideSize, programmeTM2AfterInputStacks, hmove]
+  · cases hright : stk .inputRight <;>
+      simp [programmeTM2InputSideSize, programmeTM2AfterInputStacks,
+        hmove, Function.update, hright] <;> omega
+
+/-- Input movement does not change any work-side storage. -/
+theorem programmeTM2AfterInput_workSideSize
+    (M : ProgrammeMachine) (s : ProgrammeTM2State M)
+    (stk : ProgrammeTM2Stacks M) (tape : Fin M.workTapeCount) :
+    programmeTM2WorkSideSize M
+        (programmeTM2AfterInputStacks M s stk) tape =
+      programmeTM2WorkSideSize M stk tape := by
+  cases hmove : (ProgrammeTM2State.snapshotAction M s).inputMove <;>
+    simp [programmeTM2WorkSideSize, programmeTM2AfterInputStacks,
+      hmove, Function.update]
+
+/-- One work-tape update increases that tape's explicit side storage by at most
+one cell. -/
+theorem programmeTM2AfterWork_workSideSize_self_le
+    (M : ProgrammeMachine) (tape : Fin M.workTapeCount)
+    (s : ProgrammeTM2State M) (stk : ProgrammeTM2Stacks M) :
+    programmeTM2WorkSideSize M
+        (programmeTM2AfterWorkStacks M tape s stk) tape ≤
+      programmeTM2WorkSideSize M stk tape + 1 := by
+  cases hmove : (ProgrammeTM2State.snapshotAction M s).workMove tape
+  · cases hleft : stk (.workLeft tape) <;>
+      simp [programmeTM2WorkSideSize, programmeTM2AfterWorkStacks,
+        hmove, Function.update, hleft] <;> omega
+  · simp [programmeTM2WorkSideSize, programmeTM2AfterWorkStacks, hmove]
+  · cases hright : stk (.workRight tape) <;>
+      simp [programmeTM2WorkSideSize, programmeTM2AfterWorkStacks,
+        hmove, Function.update, hright] <;> omega
+
+/-- Updating one work tape leaves every different work-side size unchanged. -/
+theorem programmeTM2AfterWork_workSideSize_ne
+    (M : ProgrammeMachine) {tape other : Fin M.workTapeCount}
+    (hne : other ≠ tape)
+    (s : ProgrammeTM2State M) (stk : ProgrammeTM2Stacks M) :
+    programmeTM2WorkSideSize M
+        (programmeTM2AfterWorkStacks M tape s stk) other =
+      programmeTM2WorkSideSize M stk other := by
+  cases hmove : (ProgrammeTM2State.snapshotAction M s).workMove tape <;>
+    simp [programmeTM2WorkSideSize, programmeTM2AfterWorkStacks,
+      hmove, Function.update, hne]
+
+/-- A single work-tape update increases the total run storage by at most one. -/
+theorem programmeTM2AfterWork_storage_le
+    (M : ProgrammeMachine) (tape : Fin M.workTapeCount)
+    (s : ProgrammeTM2State M) (stk : ProgrammeTM2Stacks M) :
+    programmeTM2RunStorage M
+        (programmeTM2AfterWorkStacks M tape s stk) ≤
+      programmeTM2RunStorage M stk + 1 := by
+  have hpoint :
+      ∀ other : Fin M.workTapeCount,
+        programmeTM2WorkSideSize M
+            (programmeTM2AfterWorkStacks M tape s stk) other ≤
+          programmeTM2WorkSideSize M stk other +
+            (if other = tape then 1 else 0) := by
+    intro other
+    by_cases h : other = tape
+    · subst other
+      simpa using programmeTM2AfterWork_workSideSize_self_le M tape s stk
+    · rw [programmeTM2AfterWork_workSideSize_ne M h s stk]
+      simp [h]
+  have hsum :
+      (∑ other : Fin M.workTapeCount,
+          programmeTM2WorkSideSize M
+            (programmeTM2AfterWorkStacks M tape s stk) other) ≤
+        (∑ other : Fin M.workTapeCount,
+          programmeTM2WorkSideSize M stk other) + 1 := by
+    calc
+      (∑ other : Fin M.workTapeCount,
+          programmeTM2WorkSideSize M
+            (programmeTM2AfterWorkStacks M tape s stk) other) ≤
+        ∑ other : Fin M.workTapeCount,
+          (programmeTM2WorkSideSize M stk other +
+            (if other = tape then 1 else 0)) := by
+              exact Finset.sum_le_sum fun other _ => hpoint other
+      _ = (∑ other : Fin M.workTapeCount,
+            programmeTM2WorkSideSize M stk other) + 1 := by
+              rw [Finset.sum_add_distrib]
+              simp
+  have hinput :
+      programmeTM2InputSideSize M
+          (programmeTM2AfterWorkStacks M tape s stk) =
+        programmeTM2InputSideSize M stk := by
+    cases hmove : (ProgrammeTM2State.snapshotAction M s).workMove tape <;>
+      simp [programmeTM2InputSideSize, programmeTM2AfterWorkStacks,
+        hmove, Function.update]
+  unfold programmeTM2RunStorage
+  rw [hinput]
+  omega
+
+/-- The complete finite work phase increases storage by at most the number of
+work-tape wrappers executed. -/
+theorem programmeTM2WorkPhase_storage_le
+    (M : ProgrammeMachine) (tapes : List (Fin M.workTapeCount))
+    (s : ProgrammeTM2State M) (stk : ProgrammeTM2Stacks M) :
+    programmeTM2RunStorage M
+        (programmeTM2WorkPhase M tapes s stk).2 ≤
+      programmeTM2RunStorage M stk + tapes.length := by
+  induction tapes generalizing s stk with
+  | nil =>
+      simp [programmeTM2WorkPhase]
+  | cons tape rest ih =>
+      simp only [programmeTM2WorkPhase]
+      have hrest :=
+        ih (programmeTM2AfterWorkState M tape s stk)
+          (programmeTM2AfterWorkStacks M tape s stk)
+      have hone := programmeTM2AfterWork_storage_le M tape s stk
+      simp only [List.length_cons]
+      omega
+
+/-- One complete simulated Programme run step increases cleanup storage by at
+most one input-side cell plus one cell per work tape. -/
+theorem programmeTM2RunCore_storage_le
+    (M : ProgrammeMachine) (target : (programmeTM2Machine M).Cfg) :
+    programmeTM2RunStorage M (programmeTM2RunCore M target).2 ≤
+      programmeTM2RunStorage M target.stk + (M.workTapeCount + 1) := by
+  unfold programmeTM2RunCore
+  let snapped := target.var.snapshot M
+  let inputState := programmeTM2AfterInputState M snapped target.stk
+  let inputStacks := programmeTM2AfterInputStacks M snapped target.stk
+  have hinputSide :=
+    programmeTM2AfterInput_inputSideSize_le M snapped target.stk
+  have hworkSides :
+      (∑ tape : Fin M.workTapeCount,
+        programmeTM2WorkSideSize M inputStacks tape) =
+        ∑ tape : Fin M.workTapeCount,
+          programmeTM2WorkSideSize M target.stk tape := by
+    apply Finset.sum_congr rfl
+    intro tape _
+    exact programmeTM2AfterInput_workSideSize M snapped target.stk tape
+  have hinputStorage :
+      programmeTM2RunStorage M inputStacks ≤
+        programmeTM2RunStorage M target.stk + 1 := by
+    unfold programmeTM2RunStorage
+    rw [hworkSides]
+    omega
+  have hwork :=
+    programmeTM2WorkPhase_storage_le M (programmeTM2WorkTapes M)
+      inputState inputStacks
+  simpa [programmeTM2WorkTapes] using
+    le_trans hwork (by
+      have hlen : (List.finRange M.workTapeCount).length =
+          M.workTapeCount := by simp
+      rw [hlen]
+      omega : programmeTM2RunStorage M inputStacks + M.workTapeCount ≤
+        programmeTM2RunStorage M target.stk + (M.workTapeCount + 1))
+
+/-- Raw/temp/output stacks remain clean throughout run-mode simulation. -/
+def ProgrammeTM2AncillaryClean (M : ProgrammeMachine)
+    (stk : ProgrammeTM2Stacks M) : Prop :=
+  stk .rawInput = [] ∧ stk .inputTemp = [] ∧ stk .output = []
+
+theorem programmeTM2AfterInput_ancillaryClean
+    (M : ProgrammeMachine) (s : ProgrammeTM2State M)
+    (stk : ProgrammeTM2Stacks M)
+    (h : ProgrammeTM2AncillaryClean M stk) :
+    ProgrammeTM2AncillaryClean M
+      (programmeTM2AfterInputStacks M s stk) := by
+  rcases h with ⟨hraw, htemp, hout⟩
+  constructor
+  · cases hmove : (ProgrammeTM2State.snapshotAction M s).inputMove <;>
+      simp [programmeTM2AfterInputStacks, hmove, Function.update, hraw]
+  constructor
+  · cases hmove : (ProgrammeTM2State.snapshotAction M s).inputMove <;>
+      simp [programmeTM2AfterInputStacks, hmove, Function.update, htemp]
+  · cases hmove : (ProgrammeTM2State.snapshotAction M s).inputMove <;>
+      simp [programmeTM2AfterInputStacks, hmove, Function.update, hout]
+
+theorem programmeTM2AfterWork_ancillaryClean
+    (M : ProgrammeMachine) (tape : Fin M.workTapeCount)
+    (s : ProgrammeTM2State M) (stk : ProgrammeTM2Stacks M)
+    (h : ProgrammeTM2AncillaryClean M stk) :
+    ProgrammeTM2AncillaryClean M
+      (programmeTM2AfterWorkStacks M tape s stk) := by
+  rcases h with ⟨hraw, htemp, hout⟩
+  constructor
+  · cases hmove : (ProgrammeTM2State.snapshotAction M s).workMove tape <;>
+      simp [programmeTM2AfterWorkStacks, hmove, Function.update, hraw]
+  constructor
+  · cases hmove : (ProgrammeTM2State.snapshotAction M s).workMove tape <;>
+      simp [programmeTM2AfterWorkStacks, hmove, Function.update, htemp]
+  · cases hmove : (ProgrammeTM2State.snapshotAction M s).workMove tape <;>
+      simp [programmeTM2AfterWorkStacks, hmove, Function.update, hout]
+
+theorem programmeTM2WorkPhase_ancillaryClean
+    (M : ProgrammeMachine) (tapes : List (Fin M.workTapeCount))
+    (s : ProgrammeTM2State M) (stk : ProgrammeTM2Stacks M)
+    (h : ProgrammeTM2AncillaryClean M stk) :
+    ProgrammeTM2AncillaryClean M
+      (programmeTM2WorkPhase M tapes s stk).2 := by
+  induction tapes generalizing s stk with
+  | nil =>
+      exact h
+  | cons tape rest ih =>
+      simp only [programmeTM2WorkPhase]
+      exact ih _ _ (programmeTM2AfterWork_ancillaryClean M tape s stk h)
+
+/-- Run-core execution preserves the clean ancillary-stack invariant. -/
+theorem programmeTM2RunCore_ancillaryClean
+    (M : ProgrammeMachine) (target : (programmeTM2Machine M).Cfg)
+    (h : ProgrammeTM2AncillaryClean M target.stk) :
+    ProgrammeTM2AncillaryClean M (programmeTM2RunCore M target).2 := by
+  unfold programmeTM2RunCore
+  let snapped := target.var.snapshot M
+  let inputState := programmeTM2AfterInputState M snapped target.stk
+  let inputStacks := programmeTM2AfterInputStacks M snapped target.stk
+  apply programmeTM2WorkPhase_ancillaryClean M
+  exact programmeTM2AfterInput_ancillaryClean M snapped target.stk h
+
+#print axioms programmeTM2AfterInput_inputSideSize_le
+#print axioms programmeTM2AfterWork_storage_le
+#print axioms programmeTM2WorkPhase_storage_le
+#print axioms programmeTM2RunCore_storage_le
+#print axioms programmeTM2RunCore_ancillaryClean
+
+end
+
+end MathSolve.PNP
