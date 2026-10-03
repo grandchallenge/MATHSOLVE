@@ -406,8 +406,9 @@ theorem programmeTM2ReadyInitCfg_bounded
     | nil =>
         rfl
     | cons bit tail =>
-        simpa [programmeTM2ReadyInitCfg, programmeTM2InitStacks] using
-          Nat.le_succ tail.length
+        change (tail.map some).length ≤ tail.length + 1
+        rw [List.length_map]
+        exact Nat.le_succ tail.length
   · intro tape; rfl
   · intro tape; rfl
 
