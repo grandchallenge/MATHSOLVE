@@ -44,3 +44,5 @@ import MathSolve.PNP.ProgrammeTM2InitRepresentation
 import MathSolve.PNP.ProgrammeTM2TapeOps
 import MathSolve.PNP.ProgrammeTM2StepSimulation
 import MathSolve.PNP.ProgrammeTM2Operational
+import MathSolve.PNP.ProgrammeTM2TapeEffects
+import MathSolve.PNP.ProgrammeTM2StepPreservation
