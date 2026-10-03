@@ -165,9 +165,29 @@ def programmeTM2TimedDecider {decision : List Bool → Bool}
             (Computability.encodeBool (decision input)) =
           [decision input] := by
       cases h : decision input <;> rfl
-    convert programmeTM2Machine_outputs source input using 1
-    · exact hinput.symm
-    · exact congrArg some houtput.symm
+    change StateTransition.EvalsToInTime
+      (programmeTM2Machine source.machine).step
+      (Turing.initList (programmeTM2Machine source.machine)
+        (List.map (Equiv.refl Bool).invFun input))
+      (some
+        (Turing.haltList (programmeTM2Machine source.machine)
+          (List.map (Equiv.refl Bool).invFun
+            (Computability.encodeBool (decision input)))))
+      (programmeTM2ReverseRuntime source input)
+    have hinit :
+        Turing.initList (programmeTM2Machine source.machine)
+            (List.map (Equiv.refl Bool).invFun input) =
+          Turing.initList (programmeTM2Machine source.machine) input :=
+      congrArg (Turing.initList (programmeTM2Machine source.machine)) hinput
+    have hhalt :
+        Turing.haltList (programmeTM2Machine source.machine)
+            (List.map (Equiv.refl Bool).invFun
+              (Computability.encodeBool (decision input))) =
+          Turing.haltList (programmeTM2Machine source.machine)
+            [decision input] :=
+      congrArg (Turing.haltList (programmeTM2Machine source.machine)) houtput
+    rw [hinit, hhalt]
+    exact programmeTM2Machine_outputs source input
 
 /-- The exact reverse runtime is affine in input length and source runtime. -/
 theorem programmeTM2ReverseRuntime_affine
