@@ -163,7 +163,7 @@ def programmeTM2TimedDecider {decision : List Bool → Bool}
           (List.map (fun b : Bool => b)
             (Computability.encodeBool (decision input)))))
       (programmeTM2ReverseRuntime source input)
-    simpa [Computability.encodeBool] using
+    simpa only [List.map_id_fun', id_eq, Computability.encodeBool] using
       programmeTM2Machine_outputs source input
 
 /-- The exact reverse runtime is affine in input length and source runtime. -/
