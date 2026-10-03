@@ -43,10 +43,12 @@ translated runtime. -/
 def programmeTM2Machine_outputs
     {decision : List Bool → Bool}
     (source : ProgrammeDecider decision) (input : List Bool) :
-    Turing.TM2OutputsInTime
-      (programmeTM2Machine source.machine)
-      input
-      (some [decision input])
+    StateTransition.EvalsToInTime
+      (programmeTM2Machine source.machine).step
+      (Turing.initList (programmeTM2Machine source.machine) input)
+      (some
+        (Turing.haltList (programmeTM2Machine source.machine)
+          [decision input]))
       (programmeTM2ReverseRuntime source input) := by
   let terminal : ProgrammeConfig source.machine :=
     Classical.choose (source.outputs input)
@@ -99,6 +101,17 @@ def programmeTM2Machine_outputs
       (programmeTM2ReadyInitCfg source.machine input)
       (some target)
       hinit hrun
+  have hprefixBound :
+      hsource.steps + (2 * input.length + 3) =
+        2 * input.length + 3 + hsource.steps := by
+    omega
+  have hprefix' :
+      StateTransition.EvalsToInTime
+        (programmeTM2Machine source.machine).step
+        (Turing.initList (programmeTM2Machine source.machine) input)
+        (some target)
+        (2 * input.length + 3 + hsource.steps) :=
+    hprefixBound ▸ hprefix
   have hall :=
     StateTransition.EvalsToInTime.trans
       (programmeTM2Machine source.machine).step
@@ -109,7 +122,13 @@ def programmeTM2Machine_outputs
       (some
         (Turing.haltList (programmeTM2Machine source.machine)
           [decision input]))
-      (by simpa [Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using hprefix) hcleanup
+      hprefix' hcleanup
+  have hbudget :
+      programmeTM2CleanupBudget source.machine input.length hsource.steps +
+          (2 * input.length + 3 + hsource.steps) =
+        programmeTM2TotalBudget source.machine input.length hsource.steps := by
+    unfold programmeTM2TotalBudget
+    omega
   have hexact :
       StateTransition.EvalsToInTime
         (programmeTM2Machine source.machine).step
@@ -117,13 +136,13 @@ def programmeTM2Machine_outputs
         (some
           (Turing.haltList (programmeTM2Machine source.machine)
             [decision input]))
-        (programmeTM2TotalBudget source.machine input.length hsource.steps) := by
-    simpa [programmeTM2TotalBudget, Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using hall
+        (programmeTM2TotalBudget source.machine input.length hsource.steps) :=
+    hbudget ▸ hall
   have hwiden :=
     programmeTM2_evalsToInTime_mono hexact
       (programmeTM2TotalBudget_mono source.machine input.length
         hsource.steps_le_m)
-  simpa [Turing.TM2OutputsInTime, programmeTM2ReverseRuntime] using hwiden
+  exact hwiden
 
 /-- Concrete exact-timed imported TM2 decider emitted by the reverse compiler. -/
 def programmeTM2TimedDecider {decision : List Bool → Bool}
@@ -135,12 +154,14 @@ def programmeTM2TimedDecider {decision : List Bool → Bool}
   runtime := programmeTM2ReverseRuntime source
   outputsFun := by
     intro input
-    change Turing.TM2OutputsInTime
-      (programmeTM2Machine source.machine)
-      (List.map (fun b : Bool => b) input)
+    change StateTransition.EvalsToInTime
+      (programmeTM2Machine source.machine).step
+      (Turing.initList (programmeTM2Machine source.machine)
+        (List.map (fun b : Bool => b) input))
       (some
-        (List.map (fun b : Bool => b)
-          (Computability.encodeBool (decision input))))
+        (Turing.haltList (programmeTM2Machine source.machine)
+          (List.map (fun b : Bool => b)
+            (Computability.encodeBool (decision input)))))
       (programmeTM2ReverseRuntime source input)
     simpa [Computability.encodeBool] using
       programmeTM2Machine_outputs source input
