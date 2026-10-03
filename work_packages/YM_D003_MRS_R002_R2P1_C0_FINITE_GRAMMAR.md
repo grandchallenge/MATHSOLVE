@@ -85,6 +85,7 @@ Each constructor acts on finite data.
 - SUBTRACT(gamma) replaces a finite proper subrecord by a local insertion plus a finite remainder term while recording gamma in F; this preserves the outer two-point external interface.
 - PROJECT maps a finite two-point kernel to its local quadratic coefficient and therefore preserves the declared relevant channel.
 - LOWER_CT adds a finite labeled local insertion whose scale/provenance is already known.
+- BGDET adds a finite determinant/normalization record already present at finite cutoff and explicitly preserves the exceptional large-field/background association and its uncancelled local counterterm interface; it does not convert that sector into an ordinary vertical-expansion polymer.
 
 Thus the structural record type is closed under every finite composition of the constructors. QED.
 
@@ -102,9 +103,9 @@ C0.1 is a grammar theorem, not a convergence theorem. It does not prove:
 
 Those are C1-C5.
 
-## Exact source-concordance gate before C1
+## Exact source-concordance replay before C1
 
-C1 may start only after checking the constructor list against the admitted MRS body at the renormalization locus:
+The constructor list was replayed against the admitted MRS body at the renormalization locus:
 
 - Section V.E horizontal/vertical decoupling and two-/four-point renormalization;
 - Mayer hard-core removal before translation-invariant local counterterm extraction;
@@ -112,10 +113,12 @@ C1 may start only after checking the constructor list against the admitted MRS b
 - Eq. (III.1) normalization of the A^2/2 relevant operator;
 - Section VI normalization/stability use of the quadratic counterterm.
 
-If the source requires an additional primitive operation that changes the two-point subtraction grammar, amend C0 before choosing a norm.
+The replay found one structurally material omission in the first draft: MRS states that the background-dependent Gaussian normalization determinant and the non-dominable Faddeev–Popov determinant are not expanded in the vertical expansion, are associated directly to the corresponding large-field regions, and leave an incompletely cancelled two-/four-background-leg counterterm interface. The `BGDET` constructor above was added specifically to preserve this exception rather than incorrectly absorb it into ordinary polymer flow.
+
+Within this bounded concordance target, no second primitive operation was identified that changes the finite two-point subtraction grammar. This does not assert that the paper supplies the missing norm or estimates.
 
 ## Current disposition
 
-`C0_STRUCTURAL_GRAMMAR_CLOSED_BY_FINITE_CONSTRUCTION__SOURCE_CONCORDANCE_GATE_OPEN`
+`C0_CLOSED__FINITE_GRAMMAR_AND_BOUNDED_SOURCE_CONCORDANCE_COMPLETE__C1_AUTHORIZED`
 
-The next action is source concordance, not C1 norm design.
+The next action is C1: propose the weakest rooted-polymer majorant that treats ordinary horizontal/vertical/Mayer links and the exceptional `BGDET` sector separately, with every weight tied to an admitted MRS estimate or a new native lemma.
