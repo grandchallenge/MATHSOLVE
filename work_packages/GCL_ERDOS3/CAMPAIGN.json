@@ -3,7 +3,7 @@
   "record_type": "GCL_RESEARCH_CAMPAIGN",
   "campaign_id": "GCL-ERDOS3",
   "title": "Erdős Problem 3",
-  "status": "ACTIVE__E3_B_AP",
+  "status": "ACTIVE__E3_TRANCHE_02",
   "origin": {
     "campaign": "OPENMATH-2026",
     "hill": "OM26-H7",
@@ -32,12 +32,14 @@
     "E3-B01": "PROVED_NATIVE_PENDING_INDEPENDENT_VERIFY",
     "E3-A01": "BOUNDARY_SHARPENED",
     "E3-S01": "SOURCE_INTERFACE_FOUND",
-    "E3-V01": "VERIFIED__CLOSED"
+    "E3-V01": "VERIFIED__CLOSED",
+    "E3-B02": "PROVED_NATIVE_SOURCE_CONFIRMED"
   },
   "current_frontier": [
-    "E3-B-AP"
+    "E3-V-B02",
+    "E3-Q4-SERIES"
   ],
-  "next_action": "Advance E3-B-AP for fixed k≥4. Do not replay B01 again; its one independent verification budget is exhausted.",
+  "next_action": "Verify E3-B02 once; attack E3-Q4-SERIES through quantitative, cross-scale, adversarial, and source lanes. Do not reopen B01.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",

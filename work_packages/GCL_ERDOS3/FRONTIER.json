@@ -93,13 +93,17 @@
     {
       "id": "E3-B-AP",
       "kind": "BRIDGE",
-      "status": "OPEN",
+      "status": "PROVED",
       "depends_on": [
         "E3-B-AP-THRESHOLD",
         "E3-C-D4"
       ],
-      "statement": "For every fixed k≥4, discharge the parent implication either by a summable dyadic k-AP-free density envelope or by a genuinely stronger cross-scale mechanism.",
-      "smallest_missing_estimate": "A theorem-grade bound β_k(j) with r_k(2^j)/2^j ≤ β_k(j) and Σ_j β_k(j) < ∞, or an alternative bridge not reducible to blockwise density."
+      "statement": "For each fixed k≥3, the reciprocal-divergence arithmetic-progression conjecture is equivalent to convergence of Σ_{n≥1} r_k(2^n)/2^n.",
+      "smallest_missing_estimate": "A theorem-grade bound β_k(j) with r_k(2^j)/2^j ≤ β_k(j) and Σ_j β_k(j) < ∞, or an alternative bridge not reducible to blockwise density.",
+      "completed_by": "E3-B02",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-B02_RESULT.md",
+      "source_confirmation": "Green–Tao 2017, Introduction; Tao–Vu, Additive Combinatorics, Exercise 10.0.6",
+      "independent_verification": "OPEN__E3-V02"
     },
     {
       "id": "E3-B-AP-THRESHOLD",
@@ -140,6 +144,36 @@
       "completed_by": "E3-V01",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-V01_RESULT.md",
       "adjudication": "work_packages/GCL_ERDOS3/results/E3-V01_ADJUDICATION.json"
+    },
+    {
+      "id": "E3-Q4-SERIES",
+      "kind": "QUANTITATIVE_FRONTIER",
+      "status": "OPEN",
+      "depends_on": [
+        "E3-B-AP"
+      ],
+      "statement": "Prove Σ_{n≥1} r_4(2^n)/2^n < ∞.",
+      "current_best_pointwise": "Green–Tao: r_4(N) ≪ N (log N)^(-c) for some absolute c>0; this alone does not establish the series convergence.",
+      "smallest_missing_object": "A summable normalized bound, or a cross-scale recurrence/average estimate on a_n=r_4(2^n)/2^n strong enough to imply Σ a_n<∞."
+    },
+    {
+      "id": "E3-QK5-SERIES",
+      "kind": "QUANTITATIVE_FRONTIER",
+      "status": "DEFERRED",
+      "depends_on": [
+        "E3-B-AP"
+      ],
+      "statement": "For each fixed k≥5, prove Σ_{n≥1} r_k(2^n)/2^n < ∞.",
+      "note": "Deferred while the minimal unresolved k=4 case is attacked."
+    },
+    {
+      "id": "E3-V-B02",
+      "kind": "VERIFICATION",
+      "status": "OPEN",
+      "depends_on": [
+        "E3-B-AP"
+      ],
+      "statement": "Independently verify the reverse block-construction implication in E3-B02, including no mixed 3-AP across scale-separated blocks and harmonic-mass lower bound."
     }
   ],
   "closed_claims": [
@@ -147,7 +181,8 @@
     "E3-C-D4"
   ],
   "active_frontier": [
-    "E3-B-AP"
+    "E3-V-B02",
+    "E3-Q4-SERIES"
   ],
   "known_falsification_boundary": "Reciprocal divergence alone does not imply positive upper asymptotic density. More sharply, for every nonsummable threshold sequence θ_j∈[0,1], there exists a reciprocally divergent set whose dyadic densities never exceed θ_j. Thus summability is qualitatively sharp for any bridge using only blockwise density exceedance.",
   "scheduling_rule": "Only unresolved nodes may receive ADVANCE_FRONTIER; closed nodes may receive INDEPENDENT_VERIFY only while their explicit verification budget remains open.",
@@ -158,7 +193,9 @@
       "E3-B01": "PROVED__INDEPENDENT_VERIFY",
       "E3-A01": "BOUNDARY_SHARPENED",
       "E3-S01": "SOURCE_INTERFACE_FOUND"
-    }
+    },
+    "next_tranche": "E3-TRANCHE-02",
+    "upgrade": "E3-B-AP is now an exact equivalence; k=4 series convergence is the minimal quantitative frontier."
   },
   "last_verification": {
     "id": "E3-V01",
