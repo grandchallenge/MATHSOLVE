@@ -130,9 +130,9 @@ and
 Thus the first CCM simple-even obstruction is fully discharged through \(a=178/1000\).
 
 11. RH-R053 discharges Route C C2 by proving compact-set transform/determinant stability, the even-parity refinement, Rayleigh-to-eigenvector error transfer, and the rate dichotomy: bare L2 error with only a fixed exponential rate cannot control arbitrary compact heights in C, so a practical global route needs C4 normal-family/Montel control unless C3 produces substantially stronger decay.
-12. RH-R056 discharges Route C C0 for every source-admitted finite pair. With (z_*=i/4) it removes the exact CCM phase and freezes
+12. RH-R056 discharges Route C C0 for every source-admitted finite pair. With `z_*=i/4` it removes the exact CCM phase and freezes
    `F_(lambda,N)(z)=Xi(i/4) xi_hat_(lambda,N)(z)/xi_hat_(lambda,N)(i/4)`.
-   The denominator is nonzero because finite zeros are real while (i/4) is nonreal; the normalizer is zero-free, so the complete finite real-zero divisor is preserved. The normalization is unique inside the affine-exponential gauge once evenness and the Xi anchor are imposed, and it is convergence-equivalent to any successful scalar normalization on a domain containing (i/4). This does not supply a cofinal admissible family or any convergence theorem.
+   The denominator is nonzero because finite zeros are real while `i/4` is nonreal; the normalizer is zero-free, so the complete finite real-zero divisor is preserved. The normalization is unique inside the affine-exponential gauge once evenness and the Xi anchor are imposed, and it is convergence-equivalent to any successful scalar normalization on a domain containing `i/4`. This does not supply a cofinal admissible family or any convergence theorem.
 
 This sharpens the protected operator contract:
 
@@ -231,7 +231,7 @@ The continuation machinery is now in place:
 10. RH-R051 proves an exact rank-one coercivity theorem and sharp parity-specific remainder bound to reach \(a=178/1000\);
 11. RH-R052 refreshes explicit positive Herglotz continuation margins \(d(a)>\frac{55428698889}{23675000000000}\) and \(\Delta_H(a)\ge\frac{1210515093544258}{12367528439608125}\) through \(a=178/1000\);
 12. RH-R053 discharges C2 of Route C by proving exact compact-set transform stability bounds \(\sup_{z\in K}|\lambda^{-iz}\widehat{\xi}-\lambda^{-iz}\widehat{\psi}|\le e^{\sigma_{\max}a}\sqrt{\mathcal{H}_a(H)}\|\xi-\psi\|_{L^2}\), an even-parity refinement, Rayleigh-quotient to eigenvector error transfer, and the rate dichotomy showing bare \(L^2\) bounds require C4 normal families for full complex-plane convergence.
-13. RH-R056 discharges C0 of Route C by fixing the exact campaign-canonical finite normalization at the nonreal anchor (i/4), preserving the complete real-zero divisor and proving affine-exponential gauge uniqueness and scalar-gauge transfer.
+13. RH-R056 discharges C0 of Route C by fixing the exact campaign-canonical finite normalization at the nonreal anchor `i/4`, preserving the complete real-zero divisor and proving affine-exponential gauge uniqueness and scalar-gauge transfer.
 
 The explicit parity-gap margin at the new endpoint is positive but very small. Further retuning of the same one-parameter trial family is therefore not a preferred research direction. The smallest useful next theorem should make a structural improvement, preferably one of:
 
@@ -243,7 +243,7 @@ The R039 finite-Galerkin route remains an independent diagnostic at larger \(a\)
 
 The determinant route remains an exact sufficient terminal bridge: locally uniform convergence of normalized finite determinants, whose zeros are real, to \(\Xi\) forces RH.
 
-For Route C, C0 and C2 are now discharged. The smallest high-value next results are therefore: (i) C1, a cofinal directed set/schedule that preserves the finite CCM simple-even hypothesis; (ii) C3, a proved (k_\lambda\)-to-(\xi_\lambda\) rate strong enough to feed R053; or (iii) C4, local boundedness/normal-family control for the RH-R056 canonical family. C4 is strategically important because R053 rules out obtaining all compact heights from a bare fixed-rate L2 estimate. At this protected state the next Route C theorem lane is R059, subject to a fresh bounded claim in #414.
+For Route C, C0 and C2 are now discharged. The smallest high-value next results are therefore: (i) C1, a cofinal directed set/schedule that preserves the finite CCM simple-even hypothesis; (ii) C3, a proved `k_lambda`-to-`xi_lambda` rate strong enough to feed R053; or (iii) C4, local boundedness/normal-family control for the RH-R056 canonical family. C4 is strategically important because R053 rules out obtaining all compact heights from a bare fixed-rate L2 estimate. At this protected state the next Route C theorem lane is R059, subject to a fresh bounded claim in #414.
 
 ## Material dependencies and boundaries
 
