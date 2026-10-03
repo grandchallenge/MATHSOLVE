@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "controller_id": "YM-D003-MRS-R002-CONTROLLER",
+  "campaign_id": "YM-001",
+  "target_id": "YM-D003-MRS-R002",
+  "state": "PLAN_PREPARED__AGENT_WPS_PENDING_ISSUE_BINDING",
+  "exact_binds": {
+    "grandchallenge/MATH-PROGRAMME": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
+    "grandchallenge/MATHFORGE": "3f869e772ef2217addb1ffe45a4058b7470ba36f",
+    "grandchallenge/MATHSOLVE": "20a1f4565bc99c383492894904047af6659fd6ad",
+    "grandchallenge/MATHCERT": "3ffeaf5697a2590c10649fee6baf3b830b4347d9",
+    "grandchallenge/INTELLECT": "cacfe1f749b91a335e1d1734352cecff56bad7c1"
+  },
+  "current_frontier": "MRS_SOURCE_PROOF_COMPLETENESS_DECOMPOSITION",
+  "balaban_state": "EXTERNAL_PRIMARY_SOURCE_BYTE_ACCESS_REQUIRED__AUTOMATED_DISCOVERY_EXHAUSTED__NO_FURTHER_SEARCH_REPLAY",
+  "external_wp_state": {
+    "WP-A": "PREPARED_PENDING_ISSUE_BINDING",
+    "WP-B": "PREPARED_PENDING_ISSUE_BINDING",
+    "WP-C": "PREPARED_PENDING_ISSUE_BINDING"
+  },
+  "controller_next_action": "Protect this plan, create exact GitHub return issues from the protected bootstraps, bind issue identities in dispatch records, then admit first valid RESULT/1 returns as evidence only.",
+  "legitimate_stop_conditions": [
+    "governance_or_authority_change",
+    "authentication_or_safety_boundary",
+    "materially_changed_YM_route_state",
+    "source_evidence_boundary_for_a_selected_node",
+    "mathematical_falsification_or_exact_blocker",
+    "completion_of_YM-D003-MRS-R002"
+  ],
+  "claim_boundary": "Controller state records execution only. It is not theorem admission or certification."
+}
