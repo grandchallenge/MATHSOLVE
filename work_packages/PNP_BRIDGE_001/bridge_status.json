@@ -18,9 +18,15 @@
     },
     {
       "bridge_id": "PNP-BRIDGE-MODEL-001",
-      "status": "blocked_missing_formal_target",
+      "status": "kernel_checked",
       "depends_on": [],
-      "missing_target": "A pinned Programme-side Lean definition of the locked deterministic multitape machine, step cost, total decider, and polynomial simulation interface."
+      "artifact": "MathSolve/PNP/ModelBridgeClosure.lean",
+      "theorems": [
+        "MathSolve.PNP.tm2ToProgrammeCompiler_constructive",
+        "MathSolve.PNP.programmeToTM2Compiler_constructive",
+        "MathSolve.PNP.importedTM2_iff_programmePolyTime_constructive"
+      ],
+      "scope": "Two-way explicit affine-overhead compilation between the pinned imported finite TM2 polynomial-time presentation and the locked deterministic Programme multitape model on exact List Bool inputs, yielding deterministic polynomial-time class equivalence only."
     },
     {
       "bridge_id": "PNP-BRIDGE-POLYBOUND-001",
@@ -37,12 +43,12 @@
     },
     {
       "bridge_id": "PNP-BRIDGE-NP-001",
-      "status": "blocked_by_prerequisites",
+      "status": "blocked_missing_formal_target",
       "depends_on": [
         "PNP-BRIDGE-MODEL-001",
         "PNP-BRIDGE-POLYBOUND-001"
       ],
-      "missing_target": "Programme-side formal verifier, self-delimiting pair encoding, witness bound, and the prerequisite machine-model bridge."
+      "missing_target": "Programme-side formal verifier semantics, self-delimiting input/witness pairing, polynomial witness-length bound, malformed-pair behavior, totality, and class-extensional transport."
     },
     {
       "bridge_id": "PNP-BRIDGE-ENDPOINT-001",
@@ -53,15 +59,15 @@
   ],
   "closed_bridge_ids": [
     "PNP-BRIDGE-CARRIER-001",
+    "PNP-BRIDGE-MODEL-001",
     "PNP-BRIDGE-POLYBOUND-001"
   ],
   "open_bridge_ids": [
-    "PNP-BRIDGE-MODEL-001",
     "PNP-BRIDGE-NP-001",
     "PNP-BRIDGE-ENDPOINT-001"
   ],
-  "overall_status": "partial_carrier_and_polybound_bridges_kernel_checked__machine_target_required",
+  "overall_status": "carrier_model_and_polybound_bridges_kernel_checked__np_and_endpoint_open",
   "certification_effect": "none",
   "promotion_eligible": false,
-  "claim_boundary": "This package proves only the Boolean-decision-function to binary-language carrier transport and the two-way polynomial-bound presentation conversion. It does not prove P equals NP, P differs from NP, either imported-to-Programme class equivalence, a Turing-machine simulation, an NP verifier equivalence, an endpoint theorem, novelty, or any MATHCERT disposition."
+  "claim_boundary": "This package proves Boolean-decision-function carrier transport, two-way polynomial-bound presentation conversion, and two-way polynomial-overhead equivalence between the pinned imported finite TM2 deterministic polynomial-time presentation and the locked Programme deterministic multitape model. It does not prove P equals NP, P differs from NP, NP verifier/class equivalence, any concrete endpoint theorem, novelty, promotion eligibility, or any MATHCERT disposition."
 }
