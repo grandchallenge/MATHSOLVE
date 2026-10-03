@@ -1,6 +1,6 @@
 # YM-D003-MRS-R002-R2P1 — Uniform renormalized 1PI two-point polymer bound and mass recursion
 
-Status: `ACTIVE_NATIVE_RESEARCH_BOUNDARY__NEW_PROOF_REQUIRED`
+Status: `SHARPLY_REDUCED_TO_R2P1_C__NEW_MRS_SPECIFIC_SUBGRAPH_THEOREM_REQUIRED`
 
 Parent obligations:
 
@@ -109,3 +109,34 @@ A sharp proof that R2P1 cannot be separated from a larger explicit MRS polymer t
 ## Claim boundary
 
 R2P1 does not by itself prove full polymer summability, the fixed-IR ultraviolet Schwinger limit, Slavnov defect decay, infrared removal, OS reconstruction, or mass gap.
+
+
+## 2026-10-03 execution disposition
+
+The R2P1 source/native replay has been completed.
+
+MRS supplies:
+
+- the location of the divergent two-/four-point sector after horizontal/vertical decoupling;
+- the need for a Mayer expansion before local counterterm cancellation;
+- the standard polymer convergence criterion;
+- MRS-specific propagator decay and anisotropic power-counting/resummation ingredients.
+
+But for the exceptional two-/four-point sector, MRS says renormalization performs the required task “in the usual way” and refers the detailed Mayer/constructive machinery to `[R]`. No MRS-specific normed theorem for the renormalized local two-point subgraph sector is stated.
+
+The scalar critical-mass template confirms that this local two-point subgraph theorem is load-bearing for the exact mass recursion.
+
+Therefore R2P1 is reduced to:
+
+`YM-D003-MRS-R002-R2P1-C — MRS_RENORMALIZED_TWO_POINT_SUBGRAPH_THEOREM`
+
+with disposition:
+
+`MISSING_MRS_SPECIFIC_RENORMALIZED_1PI_TWO_POINT_POLYMER_NORM_AND_SUBGRAPH_BOUND__NEW_NATIVE_PROOF_REQUIRED`.
+
+See:
+
+- `work_packages/YM_D003_MRS_R002_R2P1_SOURCE_REPLAY_AND_BOUNDARY.md`
+- `work_packages/YM_D003_MRS_R002_MT1_A1_DISPOSITION.md`
+
+The exact norm and scale exponents are part of the new theorem and are deliberately not invented from the source sketch.
