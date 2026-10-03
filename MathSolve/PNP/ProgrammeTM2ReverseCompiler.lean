@@ -1,0 +1,137 @@
+import MathSolve.PNP.ProgrammeTM2TerminalCleanup
+import MathSolve.PNP.ModelBridge
+
+/-!
+# Quantitative Programme-to-TM2 compiler
+
+This file closes the reverse half of PNP-BRIDGE-MODEL-001 by composing the
+already-proved initialization, one-step run transfer, and terminal cleanup.
+-/
+
+namespace MathSolve.PNP
+
+noncomputable section
+
+/-- Exact composed reverse budget for an input length and a source step budget. -/
+def programmeTM2TotalBudget (M : ProgrammeMachine)
+    (inputLength sourceSteps : Nat) : Nat :=
+  2 * inputLength + 3 + sourceSteps +
+    programmeTM2CleanupBudget M inputLength sourceSteps
+
+/-- Reverse target runtime induced by one Programme decider. -/
+def programmeTM2ReverseRuntime {decision : List Bool → Bool}
+    (source : ProgrammeDecider decision) : BinaryRuntimeCost :=
+  fun input =>
+    programmeTM2TotalBudget source.machine input.length (source.runtime input)
+
+/-- The composed reverse budget is monotone in the source-step argument. -/
+theorem programmeTM2TotalBudget_mono
+    (M : ProgrammeMachine) (inputLength : Nat) {s t : Nat}
+    (hst : s ≤ t) :
+    programmeTM2TotalBudget M inputLength s ≤
+      programmeTM2TotalBudget M inputLength t := by
+  have hw :
+      2 * M.workTapeCount * (s + 1) ≤
+        2 * M.workTapeCount * (t + 1) := by
+    exact Nat.mul_le_mul_left (2 * M.workTapeCount)
+      (Nat.add_le_add_right hst 1)
+  unfold programmeTM2TotalBudget programmeTM2CleanupBudget
+  omega
+
+/-- The reverse machine computes the same Boolean decision within the exact
+translated runtime. -/
+theorem programmeTM2Machine_outputs
+    {decision : List Bool → Bool}
+    (source : ProgrammeDecider decision) (input : List Bool) :
+    Turing.TM2OutputsInTime
+      (programmeTM2Machine source.machine)
+      input
+      (some [decision input])
+      (programmeTM2ReverseRuntime source input) := by
+  rcases source.outputs input with
+    ⟨terminal, ⟨hsource⟩, hnone, hout⟩
+  rcases programmeTM2_initialization_run source.machine input with
+    ⟨hinit⟩
+  rcases programmeTM2_transfer_run source.machine input hsource with
+    ⟨target, hrep, ⟨hrun⟩⟩
+  rcases programmeTM2_cleanup_terminal hrep hnone
+      (decision input) hout with
+    ⟨hcleanup⟩
+  have hprefix :=
+    StateTransition.EvalsToInTime.trans
+      (programmeTM2Machine source.machine).step
+      (2 * input.length + 3) hsource.steps
+      (Turing.initList (programmeTM2Machine source.machine) input)
+      (programmeTM2ReadyInitCfg source.machine input)
+      (some target)
+      hinit hrun
+  have hall :=
+    StateTransition.EvalsToInTime.trans
+      (programmeTM2Machine source.machine).step
+      (2 * input.length + 3 + hsource.steps)
+      (programmeTM2CleanupBudget source.machine input.length hsource.steps)
+      (Turing.initList (programmeTM2Machine source.machine) input)
+      target
+      (some
+        (Turing.haltList (programmeTM2Machine source.machine)
+          [decision input]))
+      (by simpa [Nat.add_assoc] using hprefix) hcleanup
+  have hexact :
+      StateTransition.EvalsToInTime
+        (programmeTM2Machine source.machine).step
+        (Turing.initList (programmeTM2Machine source.machine) input)
+        (some
+          (Turing.haltList (programmeTM2Machine source.machine)
+            [decision input]))
+        (programmeTM2TotalBudget source.machine input.length hsource.steps) := by
+    simpa [programmeTM2TotalBudget, Nat.add_assoc] using hall
+  have hwiden :=
+    programmeTM2_evalsToInTime_mono hexact
+      (programmeTM2TotalBudget_mono source.machine input.length
+        hsource.steps_le_m)
+  simpa [Turing.TM2OutputsInTime, programmeTM2ReverseRuntime] using hwiden
+
+/-- Concrete exact-timed imported TM2 decider emitted by the reverse compiler. -/
+def programmeTM2TimedDecider {decision : List Bool → Bool}
+    (source : ProgrammeDecider decision) :
+    ImportedTM2TimedDecider decision where
+  tm := programmeTM2Machine source.machine
+  inputAlphabet := Equiv.refl Bool
+  outputAlphabet := Equiv.refl Bool
+  runtime := programmeTM2ReverseRuntime source
+  outputsFun := by
+    intro input
+    simpa [Computability.encodeBool] using
+      programmeTM2Machine_outputs source input
+
+/-- The exact reverse runtime is affine in input length and source runtime. -/
+theorem programmeTM2ReverseRuntime_affine
+    {decision : List Bool → Bool}
+    (source : ProgrammeDecider decision) :
+    AffineSimulationOverhead source.runtime
+      (programmeTM2ReverseRuntime source) := by
+  let w := source.machine.workTapeCount
+  refine ⟨9 + 2 * w, 3, 3 + 2 * w, ?_⟩
+  intro input
+  apply le_of_eq
+  unfold programmeTM2ReverseRuntime programmeTM2TotalBudget
+    programmeTM2CleanupBudget
+  dsimp [w]
+  ring
+
+/-- Construct the quantitative Programme-to-FinTM2 compiler required by the
+model bridge. -/
+theorem programmeToTM2Compiler_constructive :
+    ProgrammeToTM2Compiler := by
+  intro decision source
+  exact ⟨programmeTM2TimedDecider source,
+    programmeTM2ReverseRuntime_affine source⟩
+
+#print axioms programmeTM2TotalBudget_mono
+#print axioms programmeTM2Machine_outputs
+#print axioms programmeTM2ReverseRuntime_affine
+#print axioms programmeToTM2Compiler_constructive
+
+end
+
+end MathSolve.PNP
