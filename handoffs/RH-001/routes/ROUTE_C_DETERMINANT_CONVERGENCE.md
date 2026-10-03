@@ -80,6 +80,8 @@ Read:
 - work_packages/RH_R037_QW_SECTOR_GALERKIN.md
 - work_packages/RH_R050_TRIAL_REWEIGHTED_EXTENSION.md
 - work_packages/RH_R053_COMPACT_TRANSFORM_STABILITY.md
+- work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md
+- work_packages/RH_R059_PAIRED_ZERO_NORMAL_FAMILY.md
 - MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790:
   reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
 - MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d:
@@ -102,7 +104,7 @@ C2. Establish a compact-set transform/determinant stability estimate.
 
 C3. Prove approximation of the true finite/full eigenvector by the source candidate strongly enough to use C2.
 
-C4. Prove local boundedness / normal-family control of the normalized determinants.
+C4. Prove local boundedness / normal-family control of the normalized determinants. RH-R059 supplies an abstract sufficient criterion; the required uniform CCM paired-zero/spectral bound remains open.
 
 C5. Identify every subsequential locally uniform limit with Xi.
 
@@ -200,35 +202,70 @@ This is a natural place where Route A/B can feed Route C: a quantitative simple-
 
 ## 10. C4 — Normal-family route
 
-This is the preferred next Route C tranche after C0. Reserve RH-R059 for it.
+Status: PARTIALLY REDUCED by RH-R059-PAIRED-ZERO-NORMAL-FAMILY-001.
 
-Canonical normalization alone is insufficient. Even entire functions with only
-real zeros and a fixed nonreal anchor can fail local boundedness; for example,
-after normalizing at a nonreal \(z_*\),
+R059 first proves that the R056 properties alone are insufficient for the
+planned Montel route. At the protected anchor \(\eta=1/2\),
+
 \[
-F_n(z)=\left(\frac{1-z^2}{1-z_*^2}\right)^n
+F_n(z)=\frac12\left(\frac{4(1-z^2)}5\right)^n
 \]
-has those properties but grows exponentially wherever
-\(|1-z^2|>|1-z_*^2|\).
 
-Therefore the next useful theorem must identify a genuinely uniform growth,
-zero-counting, canonical-product, or logarithmic-derivative condition that
-implies local boundedness for the CCM-normalized family.
+is even, entire, has only real zeros, and satisfies \(F_n(i/2)=1/2\), but is
+not locally bounded at \(z=2\).
 
-Another useful approach is to prove local boundedness of normalized determinants.
+R059 then gives a sufficient criterion. For an even entire function of order at
+most one with real zeros, write the zero at the origin with multiplicity
+\(2m_0\) and positive zeros \(x>0\) with paired multiplicities \(m_x\). Define
 
-If the normalized entire family is locally bounded, Montel gives subsequential locally uniform convergence.
+\[
+Q_\eta(F)
+=
+\frac{m_0}{\eta^2}
++
+\sum_{x>0}\frac{m_x}{x^2+\eta^2}.
+\]
 
-Then it remains to identify any subsequential limit.
+For a family with common nonzero anchor \(F(i\eta)=c\), a uniform bound
 
-Possible limit-identification data include:
+\[
+Q_\eta(F)\le C_Q
+\]
 
-- convergence on a set with an accumulation point;
-- a functional equation plus sufficiently rich value data;
-- convergence of logarithmic derivatives on a domain;
-- an explicit entire-function representation.
+implies the explicit compact-disc estimate
 
-Do not assume pointwise convergence automatically supplies local boundedness.
+\[
+\sup_{|z|\le R}|F(z)|
+\le
+|c|
+\exp\!\left(
+2\eta^2C_Q\log_+(R/\eta)
++
+(R^2-\eta^2)_+C_Q
+\right).
+\]
+
+Hence the family is locally bounded and Montel applies.
+
+For the R056-normalized admitted CCM determinants at \(\eta=1/2\), the
+protected zero/spectrum identification turns the sufficient quantity into
+
+\[
+Q_{1/2}(F_{\lambda,N})
+=
+\frac12
+\operatorname{Tr}
+\left(
+(D_{\log}^{(\lambda,N)})^2+\frac14I
+\right)^{-1}.
+\]
+
+This does **not** discharge C4 for the CCM family. The concrete remaining C4
+obligation is to prove a uniform bound on this paired-zero/resolvent-trace
+quantity along an admitted cofinal family, or to replace it with another
+uniform condition strong enough to imply local boundedness.
+
+Do not infer the uniform bound from finiteness for each individual approximant.
 
 ## 11. C5 — Identify the limit as Xi
 
@@ -270,7 +307,7 @@ A contribution is meaningful if it provides one protected result such as:
 1. exact canonical determinant normalization [DELIVERED: RH-R056];
 2. a theorem reducing compact-uniform determinant convergence to a quantitative eigenvector norm/rate [DELIVERED: RH-R053];
 3. a cofinal-index theorem;
-4. a Montel/local-boundedness theorem;
+4. a Montel/local-boundedness theorem [ABSTRACT SUFFICIENT CRITERION: RH-R059; uniform CCM application still open];
 5. a rigorous k_lambda-to-xi_lambda estimate;
 6. a limit-identification theorem;
 7. a negative theorem showing a proposed norm/rate is insufficient [DELIVERED: RH-R053 rate dichotomy].
