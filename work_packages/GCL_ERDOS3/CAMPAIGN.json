@@ -3,7 +3,7 @@
   "record_type": "GCL_RESEARCH_CAMPAIGN",
   "campaign_id": "GCL-ERDOS3",
   "title": "Erdős Problem 3",
-  "status": "ACTIVE__TRANCHE_E3_01",
+  "status": "ACTIVE__E3_B_AP",
   "origin": {
     "campaign": "OPENMATH-2026",
     "hill": "OM26-H7",
@@ -31,20 +31,23 @@
     "E3-F01": "FORMALIZED",
     "E3-B01": "PROVED_NATIVE_PENDING_INDEPENDENT_VERIFY",
     "E3-A01": "BOUNDARY_SHARPENED",
-    "E3-S01": "SOURCE_INTERFACE_FOUND"
+    "E3-S01": "SOURCE_INTERFACE_FOUND",
+    "E3-V01": "VERIFIED__CLOSED"
   },
   "current_frontier": [
-    "E3-V-B01",
     "E3-B-AP"
   ],
-  "next_action": "Independently verify B01 once; in parallel attack E3-B-AP for k≥4 using summable dyadic AP-free thresholds or a stronger cross-scale mechanism. Do not replay F01.",
+  "next_action": "Advance E3-B-AP for fixed k≥4. Do not replay B01 again; its one independent verification budget is exhausted.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
       "issue_number": 762,
       "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/762",
-      "state": "DISPATCHED__AWAITING_RETURN",
-      "reason": "One independent verification of the first new theorem-grade post-reset bridge, within the default replay budget."
+      "state": "CLOSED_VERIFIED",
+      "reason": "One independent verification of the first new theorem-grade post-reset bridge, within the default replay budget.",
+      "result_comment_id": 5969123988,
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-V01_RESULT.md",
+      "adjudication_path": "work_packages/GCL_ERDOS3/results/E3-V01_ADJUDICATION.json"
     }
   }
 }
