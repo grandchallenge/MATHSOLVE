@@ -1,6 +1,6 @@
 # RH-001 Forward Route C — Determinant convergence to Xi
 
-Status: ACTIVE_PARALLEL_ROUTE
+Status: ACTIVE_PARALLEL_ROUTE__C0_C2_DISCHARGED
 
 Coordination tracker:
 grandchallenge/MATHSOLVE#414
@@ -17,6 +17,14 @@ work_packages/RH_R035_ZETA_SPECTRAL_TRIPLES_LIMIT.md
 Protected provider audit:
 grandchallenge/MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790
 reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
+
+Protected C0 normalization audit:
+grandchallenge/MATHFORGE@493819ab1d66174ab290deb00b06f84a7bbeb9c2
+reports/discovery/rh_001/rh_r054_determinant_normalization.md
+
+Protected C0 theorem:
+RH-R054-CANONICAL-DETERMINANT-NORMALIZATION-001
+work_packages/RH_R054_CANONICAL_DETERMINANT_NORMALIZATION.md
 
 ## 1. Mission
 
@@ -57,10 +65,9 @@ The finite construction uses prime/arithmetic data and does not fit a supplied l
 
 ## 3. What is still open
 
-None of the following is currently protected as a theorem:
+C0 exact normalization is now protected by RH-R054 for every source-admitted finite pair. The following remain open:
 
-- one canonical cofinal schedule (lambda_j,N_j) sufficient for the limit;
-- the exact normalization F_{lambda,N} needed for convergence to Xi;
+- one canonical cofinal schedule (lambda_j,N_j) sufficient for the limit and preserving finite admissibility;
 - locally uniform convergence of the normalized determinants;
 - a strong enough k_lambda -> xi_lambda theorem;
 - global simple-evenness for the full range of scales needed by the limiting construction;
@@ -79,6 +86,9 @@ Read:
 - work_packages/RH_R037_QW_SECTOR_GALERKIN.md
 - work_packages/RH_R050_TRIAL_REWEIGHTED_EXTENSION.md
 - work_packages/RH_R053_COMPACT_TRANSFORM_STABILITY.md
+- work_packages/RH_R054_CANONICAL_DETERMINANT_NORMALIZATION.md
+- MATHFORGE@493819ab1d66174ab290deb00b06f84a7bbeb9c2:
+  reports/discovery/rh_001/rh_r054_determinant_normalization.md
 - MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790:
   reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
 - MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d:
@@ -93,7 +103,7 @@ Also acquire and read the exact primary CCM Zeta Spectral Triples source before 
 
 A useful decomposition is:
 
-C0. Exact finite normalization.
+C0. Exact finite normalization. DISCHARGED by RH-R054-CANONICAL-DETERMINANT-NORMALIZATION-001.
 
 C1. Select and justify a cofinal parameter schedule.
 
@@ -111,29 +121,51 @@ C7. Apply the already-protected R035 Rouché/Hurwitz bridge.
 
 An agent does not need to solve C0-C7 in one tranche. Clean progress on one dependency is meaningful.
 
-## 6. C0 — Freeze the exact normalization
+## 6. C0 — Exact normalization
 
-This is the first mandatory task before any convergence theorem.
+Status: DISCHARGED by RH-R054-CANONICAL-DETERMINANT-NORMALIZATION-001.
 
-The raw finite identity contains factors such as
+The protected source audit at MATHFORGE@493819ab1d66174ab290deb00b06f84a7bbeb9c2 pins the exact CCM spectral-cut phase, finite normalization, and the residual scalar ambiguity in Section 7.
 
--i lambda^(-iz) xi_hat(z).
+For every finite pair (lambda,N) satisfying the CCM simple-even hypothesis, RH-R054 fixes
 
-The limiting strategy uses a normalization toward Xi.
+z_* = i/4
 
-Do not guess that normalization.
+and defines the campaign-canonical finite determinant
 
-A route agent should:
+F_{lambda,N}(z)
+=
+Xi(i/4) [lambda^(iz) G_{lambda,N}(z)]
+/
+[lambda^(-1/4) G_{lambda,N}(i/4)],
 
-1. inspect the exact source normalization;
-2. record every scalar/exponential factor;
-3. distinguish normalization depending on lambda, N, and z;
-4. prove that multiplying by the chosen nonvanishing entire factor does not alter the real-zero property;
-5. define one canonical F_{lambda,N}(z) for the campaign.
+where
 
-If the source normalization is ambiguous or changed between versions, send that question to MATHFORGE before proceeding.
+G_{lambda,N}(z)
+=
+det_reg(D_log^(lambda,N)-z).
 
-A durable normalization theorem/definition is itself a valuable contribution.
+Equivalently,
+
+F_{lambda,N}(z)
+=
+Xi(i/4) xi_hat_{lambda,N}(z)
+/
+xi_hat_{lambda,N}(i/4).
+
+RH-R054 proves:
+
+- Xi(i/4) is nonzero;
+- the denominator is nonzero because every finite zero is real while i/4 is nonreal;
+- the normalizing multiplier is entire and zero-free;
+- F_{lambda,N} is entire and even;
+- F_{lambda,N} has exactly the same zero divisor as the raw determinant, hence only real zeros;
+- this is the unique affine-exponential renormalization of the raw determinant that is even and takes the value Xi(i/4) at i/4;
+- if any scalar-normalized phase-stripped family converges locally uniformly to Xi on a domain containing i/4, then this canonical family converges to Xi on the same domain.
+
+The anchor is a campaign gauge choice proved compatible with any successful source scalar normalization. It is not attributed to CCM as an explicit scalar supplied by the paper.
+
+C0 does not supply a cofinal family. C1 must still preserve the finite simple-even hypothesis along whatever directed set or schedule is chosen.
 
 ## 7. C1 — Cofinal schedule
 
@@ -214,7 +246,7 @@ Do not assume pointwise convergence automatically supplies local boundedness.
 
 A subsequential entire limit with real zeros is not enough. It must be Xi.
 
-The identification theorem must also control normalization. Multiplying Xi by a nonzero entire exponential factor preserves zeros but is not equality to Xi.
+The identification theorem must also control normalization. Multiplying Xi by a nonzero entire exponential factor preserves zeros but is not equality to Xi. RH-R054 removes this affine-exponential ambiguity for the canonical family once a future subsequential limit is identified to lie in that gauge class.
 
 For the RH bridge, convergence to any nonvanishing entire multiple of Xi may be enough if that factor is rigorously known never to vanish. If using this relaxation:
 
@@ -247,7 +279,7 @@ Do not suppress it.
 
 A contribution is meaningful if it provides one protected result such as:
 
-1. exact canonical determinant normalization;
+1. exact canonical determinant normalization [DELIVERED: RH-R054];
 2. a theorem reducing compact-uniform determinant convergence to a quantitative eigenvector norm/rate [DELIVERED: RH-R053];
 3. a cofinal-index theorem;
 4. a Montel/local-boundedness theorem;
