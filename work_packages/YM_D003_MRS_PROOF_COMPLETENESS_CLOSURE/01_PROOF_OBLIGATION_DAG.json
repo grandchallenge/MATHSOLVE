@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "parent_debt": "YM-D003",
+  "target_id": "YM-D003-MRS-R002",
+  "artifact_id": "YM-D003-MRS-PROOF-COMPLETENESS-DAG",
+  "status": "ACTIVE_PROVISIONAL_DECOMPOSITION",
+  "protected_inputs": {
+    "programme_head": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
+    "forge_head": "3f869e772ef2217addb1ffe45a4058b7470ba36f",
+    "solve_head": "4a329f83c27143ee8d3b8cdce64a9bfb6ecd7f51",
+    "programme_interface": "YM-T-220",
+    "source_id": "YM-SRC-025"
+  },
+  "nodes": [
+    {
+      "id": "YM-D003-MRS-R002-A",
+      "kind": "SOURCE_DEPENDENCY_GRAPH",
+      "status": "OPEN",
+      "statement": "Identify the exact MRS body claims and cited prior theorems carrying omitted convergence details."
+    },
+    {
+      "id": "YM-D003-MRS-R002-B",
+      "kind": "EXPANSION_CONVERGENCE_AND_SUMMABILITY",
+      "status": "PROVISIONAL_OPEN",
+      "statement": "Establish or precisely locate theorem-grade convergence/summability control for the fixed-IR constructive expansion."
+    },
+    {
+      "id": "YM-D003-MRS-R002-C",
+      "kind": "UV_UNIFORM_SCHWINGER_CONTROL_AND_LIMIT",
+      "status": "PROVISIONAL_OPEN",
+      "statement": "Establish the exact estimates and implication giving ultraviolet-cutoff removal for the fixed-IR Schwinger family."
+    },
+    {
+      "id": "YM-D003-MRS-R002-D",
+      "kind": "SLAVNOV_LIMIT_COMPATIBILITY",
+      "status": "PROVISIONAL_OPEN",
+      "statement": "Establish the source-bound justification for passage of the corresponding Slavnov identities to the ultraviolet limit."
+    },
+    {
+      "id": "YM-D003-MRS-R002-E",
+      "kind": "THEOREM_GRADE_ROUTE_ADMISSION",
+      "status": "BLOCKED_ON_A_TO_D",
+      "statement": "Determine whether the fixed-IR MRS construction is complete enough for unrestricted theorem-grade downstream use within its exact model and regulator boundary."
+    },
+    {
+      "id": "YM-D003-MRS-R003",
+      "kind": "IR_AND_INFINITE_VOLUME_REMOVAL",
+      "status": "BLOCKED_ON_R002",
+      "statement": "Remove the fixed infrared cutoff/infinite-volume restriction on the selected MRS route."
+    }
+  ],
+  "evidence_dispositions": [
+    "PROVED_IN_MRS_BODY",
+    "REDUCED_TO_CITED_PRIOR_THEOREM",
+    "ASSERTED_WITH_SKETCH",
+    "MISSING_THEOREM_GRADE_PROOF"
+  ],
+  "edges": [
+    {
+      "from": "YM-D003-MRS-R002-A",
+      "to": "YM-D003-MRS-R002-B",
+      "type": "source_graph_types_convergence_debt"
+    },
+    {
+      "from": "YM-D003-MRS-R002-A",
+      "to": "YM-D003-MRS-R002-C",
+      "type": "source_graph_types_uv_limit_debt"
+    },
+    {
+      "from": "YM-D003-MRS-R002-A",
+      "to": "YM-D003-MRS-R002-D",
+      "type": "source_graph_types_identity_debt"
+    },
+    {
+      "from": "YM-D003-MRS-R002-B",
+      "to": "YM-D003-MRS-R002-C",
+      "type": "convergence_inputs_uv_limit"
+    },
+    {
+      "from": "YM-D003-MRS-R002-C",
+      "to": "YM-D003-MRS-R002-E",
+      "type": "required_fixed_ir_uv_construction"
+    },
+    {
+      "from": "YM-D003-MRS-R002-D",
+      "to": "YM-D003-MRS-R002-E",
+      "type": "required_claim_compatibility"
+    },
+    {
+      "from": "YM-D003-MRS-R002-E",
+      "to": "YM-D003-MRS-R003",
+      "type": "theorem_grade_route_before_ir_removal"
+    }
+  ],
+  "agent_support": [
+    {
+      "wp": "WP-A",
+      "role": "source_dependency_reconstruction",
+      "targets": [
+        "YM-D003-MRS-R002-A"
+      ]
+    },
+    {
+      "wp": "WP-B",
+      "role": "independent_convergence_closure_or_reduction",
+      "targets": [
+        "YM-D003-MRS-R002-B",
+        "YM-D003-MRS-R002-C"
+      ]
+    },
+    {
+      "wp": "WP-C",
+      "role": "adversarial_hidden_assumption_audit",
+      "targets": [
+        "YM-D003-MRS-R002-A",
+        "YM-D003-MRS-R002-B",
+        "YM-D003-MRS-R002-C",
+        "YM-D003-MRS-R002-D"
+      ]
+    }
+  ],
+  "false_proof_firewalls": [
+    "Do not splice Balaban theorem content into the MRS route without a protected comparison theorem.",
+    "Do not convert fixed-IR ultraviolet removal into infrared/infinite-volume removal.",
+    "Do not erase the source's proof-completeness qualification by citation-counting alone.",
+    "Do not infer complete Osterwalder-Schrader axioms from Slavnov identities.",
+    "Do not extend pure SU(2), trivial topological sector conclusions to other gauge groups or sectors without a theorem.",
+    "Do not infer Yang-Mills mass gap or terminal YM-001 closure."
+  ],
+  "claim_boundary": "Provisional Solve decomposition only. Node names B-D may be refined by source evidence; no theorem or campaign status is promoted by this DAG."
+}
