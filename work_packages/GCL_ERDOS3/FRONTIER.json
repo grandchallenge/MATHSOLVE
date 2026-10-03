@@ -87,7 +87,8 @@
       "statement": "For dyadic block density δ_j(A)=|A∩[2^j,2^(j+1))|/2^j, reciprocal divergence is equivalent up to a factor-two blockwise sandwich to divergence of Σ_j δ_j. Hence every nonnegative summable threshold θ_j is exceeded by δ_j for infinitely many j.",
       "completed_by": "E3-B01",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-B01_RESULT.md",
-      "independent_verification": "OPEN__E3-V01"
+      "independent_verification": "VERIFIED__E3-V01",
+      "verification_evidence": "work_packages/GCL_ERDOS3/results/E3-V01_RESULT.md"
     },
     {
       "id": "E3-B-AP",
@@ -110,12 +111,13 @@
       "statement": "If r_k(N) is the maximum size of a k-AP-free subset of {1,...,N} and Σ_j r_k(2^j)/2^j converges, then every set of positive integers with divergent reciprocal sum contains a k-term arithmetic progression.",
       "completed_by": "E3-B01",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-B01_RESULT.md",
-      "independent_verification": "OPEN__E3-V01"
+      "independent_verification": "VERIFIED__E3-V01",
+      "verification_evidence": "work_packages/GCL_ERDOS3/results/E3-V01_RESULT.md"
     },
     {
       "id": "E3-V-B01",
       "kind": "VERIFICATION",
-      "status": "OPEN",
+      "status": "CLOSED",
       "depends_on": [
         "E3-B-SCALE-LOCAL",
         "E3-B-AP-THRESHOLD"
@@ -130,9 +132,14 @@
         "task_commit": "6c39975864788f27aea1f0da50fa409625bd5bd6",
         "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V01.md",
         "task_blob_sha1": "3b88b26c590deb7ddd08f69f7b535dc8d4e2810c",
-        "state": "DISPATCHED__AWAITING_RETURN",
-        "external_sources": "PROTECTED_PACKET_ONLY"
-      }
+        "state": "CLOSED_VERIFIED",
+        "external_sources": "PROTECTED_PACKET_ONLY",
+        "result_comment_id": 5969123988
+      },
+      "disposition": "VERIFIED",
+      "completed_by": "E3-V01",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-V01_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-V01_ADJUDICATION.json"
     }
   ],
   "closed_claims": [
@@ -140,7 +147,6 @@
     "E3-C-D4"
   ],
   "active_frontier": [
-    "E3-V-B01",
     "E3-B-AP"
   ],
   "known_falsification_boundary": "Reciprocal divergence alone does not imply positive upper asymptotic density. More sharply, for every nonsummable threshold sequence θ_j∈[0,1], there exists a reciprocally divergent set whose dyadic densities never exceed θ_j. Thus summability is qualitatively sharp for any bridge using only blockwise density exceedance.",
@@ -153,5 +159,14 @@
       "E3-A01": "BOUNDARY_SHARPENED",
       "E3-S01": "SOURCE_INTERFACE_FOUND"
     }
+  },
+  "last_verification": {
+    "id": "E3-V01",
+    "disposition": "VERIFIED",
+    "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
+    "issue_number": 762,
+    "comment_id": 5969123988,
+    "provenance_note": "The GitHub transport actor is fyremael. Independence is established procedurally by the declared ZERO_CONTEXT / PROTECTED_PACKET_ONLY execution contract, not by a distinct GitHub account.",
+    "effect": "Closes E3-V-B01 and marks the B01 bridge/reduction independently verified within the campaign. No parent-theorem effect."
   }
 }
