@@ -1,6 +1,6 @@
 # UC-001 / WP08-D004 — Incidence-Preserving WP05 Interface
 
-Status: ACTIVE — GOVERNED EXTERNAL EVIDENCE COLLECTION
+Status: SYNTHESIS OPEN — EXTERNAL EVIDENCE COMPLETE
 
 ## Objective
 
@@ -24,10 +24,12 @@ active carrier.
 | WP04 | WP05 arithmetic frequency translation | independent blind | MATHSOLVE #724 |
 | WP05 | Adversarial representation audit | adversarial replay | MATHSOLVE #725 |
 
-WP01-WP04 form blind cohort `UC-WP08-D004-BLIND-COHORT-001`.
-Cross-disclosure and cross-contribution synthesis are prohibited until all four
-returns are durably admitted as raw evidence or the cohort is explicitly closed
-with missing-return evidence. WP05 is not a substitute for any blind return.
+WP01-WP04 form blind cohort `UC-WP08-D004-BLIND-COHORT-001`. All four blind
+returns are now durably protected, and WP05's independent adversarial return is
+also protected. The blind cohort is therefore closed and internal comparison /
+synthesis is allowed. The closure record is
+`contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/COHORT_CLOSURE_RECEIPT.json`.
+No contributor result is mathematically admitted by this transition.
 
 External contributors are intelligence providers only. Each task is
 self-contained, immutable once registered, and returns exactly one RESULT/1 to
@@ -67,7 +69,7 @@ No human copy/paste is part of the canonical return path.
 ## Claim firewall
 
 ```text
-WP08-D004 = ACTIVE_EXTERNAL_EVIDENCE
+WP08-D004 = ACTIVE_SYNTHESIS_UNADJUDICATED
 UC-P04 = OPEN
 UC-FRANKL = OPEN_PROBLEM
 MATHEMATICAL_TARGET_PROVED = false

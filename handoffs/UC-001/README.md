@@ -116,7 +116,7 @@ premises?
 WP08-D001 = CLOSED_NEGATIVE
 WP08-D002 = CLOSED_LOCAL
 WP08-D003 = CLOSED_LOCAL
-WP08-D004 = ACTIVE_EXTERNAL_EVIDENCE
+WP08-D004 = ACTIVE_SYNTHESIS_UNADJUDICATED
 
 UC-P04 = OPEN
 UC-FRANKL = OPEN_PROBLEM
@@ -154,3 +154,23 @@ the task packet is protected at Solve commit
 `7ce9e3b93c92510d574dd6ff9d31d6716915f8fc`, and issues #721-#725 were verified
 byte-identical to their protected bootstraps before activation. The durable
 activation record is `contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/ACTIVATION_RECEIPT.json`.
+
+
+## WP08-D004 evidence closure and synthesis gate
+
+All five independent returns are now durably protected on evidence checkpoint
+`4504220dbb33e01038854ceb7fdd869eecf7e4cd`.
+
+- WP01-WP04 satisfy the blind-cohort closure condition with one valid protected
+  RESULT/1 each.
+- WP05's adversarial replay is also protected.
+- `UC-WP08-D004-BLIND-COHORT-001` is now
+  `CLOSED_EVIDENCE_COMPLETE`.
+- `synthesis_allowed = true`.
+
+The binding receipt is
+`contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE/COHORT_CLOSURE_RECEIPT.json`.
+
+This state permits internal comparison, replay, adjudication, and synthesis. It
+does not itself admit any contributor theorem or change the UC-P04 / UC-FRANKL
+claim firewall.
