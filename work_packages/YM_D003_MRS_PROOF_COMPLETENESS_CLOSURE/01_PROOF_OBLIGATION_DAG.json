@@ -22,7 +22,7 @@
     {
       "id": "YM-D003-MRS-R002-MT1",
       "kind": "EXACT_ZERO_MASS_COUNTERTERM_TUNING",
-      "status": "SELECTED_FOR_NATIVE_GCL_PROOF_OR_FALSIFICATION",
+      "status": "REDUCED_TO_MT1_A1",
       "statement": "Construct or sharply reduce the MRS-specific exact relevant A^2 counterterm choice b_rho(lambda,R) that enforces zero renormalized mass with UV-uniform quantitative control adequate for the subsequent multiscale/polymer induction."
     },
     {
@@ -54,6 +54,12 @@
       "kind": "IR_AND_INFINITE_VOLUME_REMOVAL",
       "status": "BLOCKED_ON_R002",
       "statement": "Remove the fixed infrared cutoff/infinite-volume restriction on the selected MRS route."
+    },
+    {
+      "id": "YM-D003-MRS-R002-MT1-A1",
+      "kind": "UNIFORM_MASS_RESPONSE_BOUND",
+      "status": "SELECTED_FOR_NATIVE_GCL_PROOF_OR_FALSIFICATION",
+      "statement": "Construct the MRS-specific relevant two-point response Sigma_{rho,R}(b;lambda) and prove a UV-uniform Lipschitz/derivative bound strictly below one on an invariant interval, together with the base-point bound needed for exact zero-mass fixed-point tuning."
     }
   ],
   "evidence_dispositions": [
@@ -107,6 +113,11 @@
       "from": "YM-D003-MRS-R002-MT1",
       "to": "YM-D003-MRS-R002-B",
       "type": "exact_mass_tuning_precedes_global_summability"
+    },
+    {
+      "from": "YM-D003-MRS-R002-MT1",
+      "to": "YM-D003-MRS-R002-MT1-A1",
+      "type": "fixed_point_typing_reduces_to_uniform_mass_response"
     }
   ],
   "agent_support": [
@@ -145,6 +156,6 @@
     "Do not infer Yang-Mills mass gap or terminal YM-001 closure."
   ],
   "claim_boundary": "Provisional Solve decomposition only. Node names B-D may be refined by source evidence; no theorem or campaign status is promoted by this DAG.",
-  "selected_native_node": "YM-D003-MRS-R002-MT1",
-  "selection_rationale": "MRS explicitly requires exact mass fine-tuning but only points to scalar phi4 fixed-point/two-point methods by analogy; the cited scalar theorem does not match the MRS SU(2) gauge setting. MT1 is upstream and smaller than polymer/Schwinger convergence, while fixed-order Slavnov limit passage is conditionally closed once its premises hold."
+  "selected_native_node": "YM-D003-MRS-R002-MT1-A1",
+  "selection_rationale": "Primary-source replay shows MRS specifies exact b_rho zero-mass tuning but supplies no quantitative fixed-point map or UV-uniform mass-response estimate. A Banach fixed-point lemma reduces exact tuning to a uniform MRS-specific response bound plus base-point control."
 }
