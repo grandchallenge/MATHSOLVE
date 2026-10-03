@@ -4,7 +4,7 @@
   "cohort_id": "CMDG-P3M-SEP-BLIND-COHORT-001",
   "campaign": "CMDG-CM4",
   "work_package": "P3-M-ONE-POINT-SEPARATION-003",
-  "state": "ACTIVATION_CANDIDATE",
+  "state": "OPEN",
   "mode": "independent_blind",
   "dispatch_ids": [
     "CMDG-P3M-SEP-WP-A-IA-001",
@@ -16,7 +16,9 @@
   "intake_channel": "github_issue_comment",
   "cross_disclosure_before_closure": false,
   "synthesis_allowed": false,
-  "activation_condition": "Protected MATH-PROGRAMME predecessor f7f99e18b83a3015d1a7ef835ee71434d01a9dba is admitted and read back. Cohort opens only after this activation candidate is protected in MATHSOLVE and issue bodies are byte-locked to protected bootstraps.",
+  "activation_condition": "SATISFIED",
   "synthesis_open_condition": "At least one valid protected constructive return from WP-A or WP-B and one valid protected adversarial return from WP-C exist; cohort closure/reconciliation must explicitly open synthesis.",
-  "claim_boundary": "Cohort activation and closure govern evidence flow only; neither certifies nor promotes a mathematical claim."
+  "claim_boundary": "Cohort activation and closure govern evidence flow only; neither certifies nor promotes a mathematical claim.",
+  "protected_activation_merge": "66c235952782e7f26922c233932e5437c37d1933",
+  "issue_byte_lock_complete": true
 }
