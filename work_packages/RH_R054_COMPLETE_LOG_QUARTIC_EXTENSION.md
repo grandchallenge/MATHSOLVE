@@ -482,7 +482,7 @@ It remains to revalidate the sign on the enlarged interval. Retain the protected
 D(t)=\frac1{t^2}-\operatorname{csch}^2t=-u'(t).
 \]
 
-Protected R045-R048 show that \(u(t)<1/2\) for \(t>0\), and that \(D(t)\ge1/4\) follows from
+Protected R055 Section 3 (using the R045-R048 partial-fraction bounds) shows that \(0<u(t)<1/2\) on the present interval, and that \(D(t)\ge1/4\) follows from
 
 \[
 12-8t^2-t^4>0.
