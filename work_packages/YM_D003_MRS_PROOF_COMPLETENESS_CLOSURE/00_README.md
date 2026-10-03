@@ -16,7 +16,7 @@ This package is the active route while the smaller Balaban successor `YM-D003-BA
 
 - MATH-PROGRAMME: `fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8`
 - MATHFORGE: `3f869e772ef2217addb1ffe45a4058b7470ba36f`
-- MATHSOLVE: `4a329f83c27143ee8d3b8cdce64a9bfb6ecd7f51`
+- MATHSOLVE: `20a1f4565bc99c383492894904047af6659fd6ad`
 - MATHCERT: `3ffeaf5697a2590c10649fee6baf3b830b4347d9`
 - INTELLECT: `cacfe1f749b91a335e1d1734352cecff56bad7c1`
 
