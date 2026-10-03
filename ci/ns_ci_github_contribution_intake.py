@@ -189,7 +189,8 @@ def parse_result_comment(body: str) -> dict[str, Any]:
         sections[heading[3:]] = content
 
     next_residual = sections["Next residual"]
-    sentence_marks = len(re.findall(r"[.!?](?:\s|$)", next_residual))
+    sentence_view = re.sub(r"(?m)^\s*\d+\.\s+", "", next_residual)
+    sentence_marks = len(re.findall(r"[.!?](?:\s|$)", sentence_view))
     if sentence_marks > 3:
         raise IntakeError("Next residual exceeds three sentences")
 
