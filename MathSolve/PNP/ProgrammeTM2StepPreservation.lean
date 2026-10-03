@@ -132,6 +132,195 @@ theorem programmeTM2ApplyWorkTape_nth_afterAction
         congr 1
         omega
 
+/-- The configuration-level input tape is definitionally the raw state/stack
+view used by the operational lemmas. -/
+theorem programmeTM2InputTape_eq_of
+    (M : ProgrammeMachine) (cfg : (programmeTM2Machine M).Cfg) :
+    programmeTM2InputTape M cfg =
+      programmeTM2InputTapeOf M cfg.var cfg.stk := by
+  rfl
+
+/-- The configuration-level work tape is definitionally the raw state/stack
+view used by the operational lemmas. -/
+theorem programmeTM2WorkTape_eq_of
+    (M : ProgrammeMachine) (cfg : (programmeTM2Machine M).Cfg)
+    (tape : Fin M.workTapeCount) :
+    programmeTM2WorkTape M cfg tape =
+      programmeTM2WorkTapeOf M cfg.var cfg.stk tape := by
+  rfl
+
+/-- Committing a frozen action changes only mode/control, not tape views. -/
+theorem programmeTM2InputTapeOf_commitAction
+    (M : ProgrammeMachine) (s : ProgrammeTM2State M)
+    (stk : ProgrammeTM2Stacks M) :
+    programmeTM2InputTapeOf M (s.commitAction M) stk =
+      programmeTM2InputTapeOf M s stk := by
+  rfl
+
+theorem programmeTM2WorkTapeOf_commitAction
+    (M : ProgrammeMachine) (s : ProgrammeTM2State M)
+    (stk : ProgrammeTM2Stacks M) (tape : Fin M.workTapeCount) :
+    programmeTM2WorkTapeOf M (s.commitAction M) stk tape =
+      programmeTM2WorkTapeOf M s stk tape := by
+  rfl
+
+/-- Input tape carried by the pure run core after all work updates. -/
+theorem programmeTM2RunCore_inputTape
+    (M : ProgrammeMachine) (target : (programmeTM2Machine M).Cfg) :
+    programmeTM2InputTapeOf M
+        (programmeTM2RunCore M target).1
+        (programmeTM2RunCore M target).2 =
+      programmeTM2ApplyInputTape
+        (ProgrammeTM2State.snapshotAction M (target.var.snapshot M)).inputMove
+        (programmeTM2InputTapeOf M target.var target.stk) := by
+  unfold programmeTM2RunCore
+  let snapped := target.var.snapshot M
+  let inputState := programmeTM2AfterInputState M snapped target.stk
+  let inputStacks := programmeTM2AfterInputStacks M snapped target.stk
+  let workResult :=
+    programmeTM2WorkPhase M (programmeTM2WorkTapes M)
+      inputState inputStacks
+  change programmeTM2InputTapeOf M (workResult.1.commitAction M) workResult.2 =
+    programmeTM2ApplyInputTape
+      (ProgrammeTM2State.snapshotAction M snapped).inputMove
+      (programmeTM2InputTapeOf M target.var target.stk)
+  rw [programmeTM2InputTapeOf_commitAction]
+  rw [programmeTM2WorkPhase_inputTape]
+  have hinput :=
+    programmeTM2AfterInput_inputTape M snapped target.stk (by rfl)
+  simpa [programmeTM2ApplyInputTape,
+    programmeTM2InputTapeOf_snapshot] using hinput
+
+/-- Every work tape carried by the pure run core is its old tape after the
+frozen Programme write/head movement. -/
+theorem programmeTM2RunCore_workTape
+    (M : ProgrammeMachine) (target : (programmeTM2Machine M).Cfg)
+    (tape : Fin M.workTapeCount) :
+    programmeTM2WorkTapeOf M
+        (programmeTM2RunCore M target).1
+        (programmeTM2RunCore M target).2 tape =
+      programmeTM2ApplyWorkTape M
+        (ProgrammeTM2State.snapshotAction M (target.var.snapshot M))
+        tape (programmeTM2WorkTapeOf M target.var target.stk tape) := by
+  unfold programmeTM2RunCore
+  let snapped := target.var.snapshot M
+  let inputState := programmeTM2AfterInputState M snapped target.stk
+  let inputStacks := programmeTM2AfterInputStacks M snapped target.stk
+  let workResult :=
+    programmeTM2WorkPhase M (programmeTM2WorkTapes M)
+      inputState inputStacks
+  change programmeTM2WorkTapeOf M (workResult.1.commitAction M)
+      workResult.2 tape =
+    programmeTM2ApplyWorkTape M
+      (ProgrammeTM2State.snapshotAction M snapped) tape
+      (programmeTM2WorkTapeOf M target.var target.stk tape)
+  rw [programmeTM2WorkTapeOf_commitAction]
+  rw [programmeTM2WorkPhase_finRange_workTape]
+  rw [programmeTM2AfterInput_snapshotAction M snapped target.stk]
+  rw [programmeTM2AfterInput_workTape M snapped target.stk tape]
+  rfl
+
+/-- The pure run core commits exactly the frozen action's next control. -/
+theorem programmeTM2RunCore_control
+    (M : ProgrammeMachine) (target : (programmeTM2Machine M).Cfg) :
+    (programmeTM2RunCore M target).1.control =
+      (ProgrammeTM2State.snapshotAction M (target.var.snapshot M)).nextState := by
+  unfold programmeTM2RunCore
+  let snapped := target.var.snapshot M
+  let inputState := programmeTM2AfterInputState M snapped target.stk
+  let inputStacks := programmeTM2AfterInputStacks M snapped target.stk
+  let workResult :=
+    programmeTM2WorkPhase M (programmeTM2WorkTapes M)
+      inputState inputStacks
+  change (workResult.1.commitAction M).control =
+    (ProgrammeTM2State.snapshotAction M snapped).nextState
+  change (ProgrammeTM2State.snapshotAction M workResult.1).nextState =
+    (ProgrammeTM2State.snapshotAction M snapped).nextState
+  rw [programmeTM2WorkPhase_snapshotAction]
+  rw [programmeTM2AfterInput_snapshotAction M snapped target.stk]
+
+/-- The pure run core always returns to run mode. -/
+theorem programmeTM2RunCore_mode
+    (M : ProgrammeMachine) (target : (programmeTM2Machine M).Cfg) :
+    (programmeTM2RunCore M target).1.mode = .run := by
+  unfold programmeTM2RunCore
+  rfl
+
+/-- One represented nonterminal Programme action is represented again after the
+single counted TM2 run step. -/
+theorem programmeTM2RunStepTarget_represents_afterAction
+    {M : ProgrammeMachine} {input : List Bool}
+    {source : ProgrammeConfig M} {target : (programmeTM2Machine M).Cfg}
+    (hrep : ProgrammeTM2Represents M input source target) :
+    ProgrammeTM2Represents M input
+      (source.afterAction (M.actionAt input source))
+      (programmeTM2RunStepTarget M target) := by
+  have haction :
+      ProgrammeTM2State.snapshotAction M (target.var.snapshot M) =
+        M.actionAt input source := by
+    rw [programmeTM2_snapshotAction_snapshot]
+    simpa [ProgrammeMachine.actionAt] using hrep.action_eq
+  rw [programmeTM2RunStepTarget_eq_core]
+  refine ⟨rfl, programmeTM2RunCore_mode M target, ?_, ?_, ?_⟩
+  · rw [programmeTM2RunCore_control]
+    rw [haction]
+    rfl
+  · intro offset
+    rw [programmeTM2InputTape_eq_of]
+    rw [programmeTM2RunCore_inputTape]
+    rw [haction]
+    apply programmeTM2ApplyInputTape_nth_afterAction
+      input source (M.actionAt input source)
+    intro oldOffset
+    have hold := hrep.2.2.2.1 oldOffset
+    simpa [programmeTM2InputTape_eq_of] using hold
+  · intro tape offset
+    rw [programmeTM2WorkTape_eq_of]
+    rw [programmeTM2RunCore_workTape]
+    rw [haction]
+    apply programmeTM2ApplyWorkTape_nth_afterAction
+      source (M.actionAt input source) tape
+    intro oldOffset
+    have hold := hrep.2.2.2.2 tape oldOffset
+    simpa [programmeTM2WorkTape_eq_of] using hold
+
+/-- One nonterminal Programme step and one counted TM2 step preserve the
+representation relation. -/
+theorem programmeTM2_step_preserves
+    {M : ProgrammeMachine} {input : List Bool}
+    {source source' : ProgrammeConfig M}
+    {target : (programmeTM2Machine M).Cfg}
+    (hrep : ProgrammeTM2Represents M input source target)
+    (hstep : M.step input source = some source') :
+    ∃ target',
+      ProgrammeTM2Represents M input source' target' ∧
+      (programmeTM2Machine M).step target = some target' := by
+  have haccept : source.state ≠ M.accept := by
+    intro h
+    rw [M.step_eq_none_of_accept input source h] at hstep
+    contradiction
+  have hreject : source.state ≠ M.reject := by
+    intro h
+    rw [M.step_eq_none_of_reject input source h] at hstep
+    contradiction
+  have hsource :
+      source' = source.afterAction (M.actionAt input source) := by
+    have h := M.step_eq_some_afterAction input source haccept hreject
+    rw [h] at hstep
+    exact Option.some.inj hstep |>.symm
+  let target' := programmeTM2RunStepTarget M target
+  refine ⟨target', ?_, ?_⟩
+  · subst source'
+    exact programmeTM2RunStepTarget_represents_afterAction hrep
+  · exact programmeTM2_step_run_nonterminal hrep haccept hreject
+
+#print axioms programmeTM2InputTape_eq_of
+#print axioms programmeTM2RunCore_inputTape
+#print axioms programmeTM2RunCore_workTape
+#print axioms programmeTM2RunCore_control
+#print axioms programmeTM2RunStepTarget_represents_afterAction
+#print axioms programmeTM2_step_preserves
+
 #print axioms programmeTM2ApplyInputTape_nth_afterAction
 #print axioms programmeTM2ApplyWorkTape_nth_afterAction
 
