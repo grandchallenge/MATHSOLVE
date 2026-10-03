@@ -3,7 +3,7 @@
   "controller_id": "YM-D003-MRS-R002-CONTROLLER",
   "campaign_id": "YM-001",
   "target_id": "YM-D003-MRS-R002",
-  "state": "AGENT_WPS_BOUND__AWAITING_INDEPENDENT_RESULTS",
+  "state": "PARTIAL_EXTERNAL_RESULTS_RECEIVED__SYNTHESIS_GATE_BLOCKED_ON_WP_A",
   "exact_binds": {
     "grandchallenge/MATH-PROGRAMME": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
     "grandchallenge/MATHFORGE": "3f869e772ef2217addb1ffe45a4058b7470ba36f",
@@ -14,11 +14,11 @@
   "current_frontier": "MRS_SOURCE_PROOF_COMPLETENESS_DECOMPOSITION",
   "balaban_state": "EXTERNAL_PRIMARY_SOURCE_BYTE_ACCESS_REQUIRED__AUTOMATED_DISCOVERY_EXHAUSTED__NO_FURTHER_SEARCH_REPLAY",
   "external_wp_state": {
-    "WP-A": "READY_FOR_GITHUB_COMMENT__ISSUE_716",
-    "WP-B": "READY_FOR_GITHUB_COMMENT__ISSUE_717",
-    "WP-C": "READY_FOR_GITHUB_COMMENT__ISSUE_718"
+    "WP-A": "AWAITING_FIRST_VALID_RESULT__ISSUE_716",
+    "WP-B": "RECEIVED_UNADJUDICATED__COMMENT_5966952070",
+    "WP-C": "RECEIVED_UNADJUDICATED__COMMENT_5966936787"
   },
-  "controller_next_action": "Accept the first valid GCL-CONTRIBUTION-RESULT/1 return for each protected dispatch as unadjudicated evidence; after at least one source-dependency return and one adversarial return, perform independent GCL synthesis and select the smallest confirmed MISSING_THEOREM_GRADE_PROOF node.",
+  "controller_next_action": "Receive a first valid WP-A source-dependency RESULT/1. Then independently compose WP-A with the already received WP-B/WP-C evidence, type every dependency edge against the downstream topology/domain, and select the smallest confirmed MISSING_THEOREM_GRADE_PROOF node for native GCL proof/falsification.",
   "legitimate_stop_conditions": [
     "governance_or_authority_change",
     "authentication_or_safety_boundary",
@@ -28,5 +28,13 @@
     "completion_of_YM-D003-MRS-R002"
   ],
   "claim_boundary": "Controller state records execution only. It is not theorem admission or certification.",
-  "dispatch_binding_base": "0bd614f27b22c3a5350347cbda51b0267ddf29ec"
+  "dispatch_binding_base": "0bd614f27b22c3a5350347cbda51b0267ddf29ec",
+  "pre_synthesis_replay": {
+    "WP-B": "INDEPENDENT_REPLAY_SUPPORTS_CONDITIONAL_FINITE_ORDER_SLAVNOV_LIMIT_PASSAGE; upstream Schwinger convergence and delta_N(rho)->0 remain unproved by this contribution",
+    "WP-C": "INDEPENDENT_REPLAY_SUPPORTS_TYPED_TOPOLOGY_DOMAIN_UNIFORMITY_OBJECTION; bibliographic completeness alone is insufficient",
+    "synthesis_gate_satisfied": false,
+    "blocking_input": "WP-A source-dependency reconstruction return",
+    "node_selected": false
+  },
+  "current_boundary": "SOURCE_DEPENDENCY_RETURN_WP_A_NOT_YET_RECEIVED"
 }

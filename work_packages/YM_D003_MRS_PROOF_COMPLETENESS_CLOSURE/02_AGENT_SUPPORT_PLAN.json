@@ -17,7 +17,8 @@
       "success": "Exact citation/theorem dependency graph with claim locations, hypotheses, conclusions, applicability, and one of the four governed evidence dispositions for every material node.",
       "github_issue_number": 716,
       "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/716",
-      "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec"
+      "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec",
+      "result_state": "AWAITING_FIRST_VALID_RESULT"
     },
     {
       "id": "YM-D003-MRS-R002-WP-B",
@@ -30,7 +31,8 @@
       "success": "A checked theorem-grade closure of one material convergence implication, or a sharp reduction identifying the smallest additional hypothesis/source lemma needed.",
       "github_issue_number": 717,
       "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/717",
-      "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec"
+      "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec",
+      "result_state": "RECEIVED_UNADJUDICATED__COMMENT_5966952070"
     },
     {
       "id": "YM-D003-MRS-R002-WP-C",
@@ -43,7 +45,8 @@
       "success": "An exact hidden-assumption/counterexample audit of the proposed upgrade from qualified source claim to theorem-grade fixed-IR UV construction.",
       "github_issue_number": 718,
       "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/718",
-      "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec"
+      "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec",
+      "result_state": "RECEIVED_UNADJUDICATED__COMMENT_5966936787"
     }
   ],
   "synthesis_gate": {
@@ -58,7 +61,13 @@
     ],
     "promotion_rule": "No external result is canonical until GCL independently replays or verifies the material claim and merges a protected Solve synthesis.",
     "next_action_if_consistent": "Select the smallest confirmed MISSING_THEOREM_GRADE_PROOF node and open a bounded native proof/falsification tranche.",
-    "next_action_if_inconsistent": "Protect the disagreement as evidence, identify the exact conflicting premise, and resolve before theorem promotion."
+    "next_action_if_inconsistent": "Protect the disagreement as evidence, identify the exact conflicting premise, and resolve before theorem promotion.",
+    "currently_satisfied": false,
+    "current_blocker": "WP-A source-dependency reconstruction has no RESULT/1 return",
+    "pre_synthesis_replay": {
+      "WP-B": "conditional finite-order Slavnov limit passage independently replayed against MRS Sect. VIII",
+      "WP-C": "typed topology/domain/uniformity objection independently replayed as logically material"
+    }
   },
   "claim_boundary": "This registry allocates independent support work only. It does not authorize certification, canonical claim mutation, source admission, or cross-route composition.",
   "dispatch_binding_state": "ALL_THREE_ISSUES_BOUND",
