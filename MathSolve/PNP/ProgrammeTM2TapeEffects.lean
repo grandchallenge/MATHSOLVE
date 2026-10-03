@@ -229,6 +229,128 @@ theorem programmeTM2WorkPhase_inputTape
         _ = programmeTM2InputTapeOf M s stk :=
               programmeTM2AfterWork_inputTape M tape s stk
 
+/-- If a work tape does not occur in the remaining work phase, that phase
+leaves its tape view unchanged. -/
+theorem programmeTM2WorkPhase_workTape_of_not_mem
+    (M : ProgrammeMachine) (tapes : List (Fin M.workTapeCount))
+    (s : ProgrammeTM2State M) (stk : ProgrammeTM2Stacks M)
+    (targetTape : Fin M.workTapeCount)
+    (hnot : targetTape ∉ tapes) :
+    programmeTM2WorkTapeOf M
+        (programmeTM2WorkPhase M tapes s stk).1
+        (programmeTM2WorkPhase M tapes s stk).2 targetTape =
+      programmeTM2WorkTapeOf M s stk targetTape := by
+  induction tapes generalizing s stk with
+  | nil =>
+      rfl
+  | cons tape rest ih =>
+      have hne : targetTape ≠ tape := by
+        intro h
+        subst targetTape
+        exact hnot (by simp)
+      have hnotRest : targetTape ∉ rest := by
+        intro h
+        exact hnot (by simp [h])
+      simp only [programmeTM2WorkPhase]
+      calc
+        programmeTM2WorkTapeOf M
+            (programmeTM2WorkPhase M rest
+              (programmeTM2AfterWorkState M tape s stk)
+              (programmeTM2AfterWorkStacks M tape s stk)).1
+            (programmeTM2WorkPhase M rest
+              (programmeTM2AfterWorkState M tape s stk)
+              (programmeTM2AfterWorkStacks M tape s stk)).2 targetTape =
+          programmeTM2WorkTapeOf M
+            (programmeTM2AfterWorkState M tape s stk)
+            (programmeTM2AfterWorkStacks M tape s stk) targetTape :=
+              ih _ _ hnotRest
+        _ = programmeTM2WorkTapeOf M s stk targetTape :=
+              programmeTM2AfterWork_workTape_ne M hne s stk
+
+/-- In a duplicate-free work phase, every listed tape receives exactly its one
+frozen Programme write/head movement. -/
+theorem programmeTM2WorkPhase_workTape_of_mem
+    (M : ProgrammeMachine) (tapes : List (Fin M.workTapeCount))
+    (hnodup : tapes.Nodup)
+    (s : ProgrammeTM2State M) (stk : ProgrammeTM2Stacks M)
+    (targetTape : Fin M.workTapeCount)
+    (hmem : targetTape ∈ tapes) :
+    programmeTM2WorkTapeOf M
+        (programmeTM2WorkPhase M tapes s stk).1
+        (programmeTM2WorkPhase M tapes s stk).2 targetTape =
+      programmeTM2ApplyWorkTape M
+        (ProgrammeTM2State.snapshotAction M s) targetTape
+        (programmeTM2WorkTapeOf M s stk targetTape) := by
+  induction tapes generalizing s stk with
+  | nil =>
+      simp at hmem
+  | cons tape rest ih =>
+      rw [List.nodup_cons] at hnodup
+      rcases hnodup with ⟨htapeNot, hrestNodup⟩
+      rcases List.mem_cons.mp hmem with hEq | hmemRest
+      · subst targetTape
+        simp only [programmeTM2WorkPhase]
+        calc
+          programmeTM2WorkTapeOf M
+              (programmeTM2WorkPhase M rest
+                (programmeTM2AfterWorkState M tape s stk)
+                (programmeTM2AfterWorkStacks M tape s stk)).1
+              (programmeTM2WorkPhase M rest
+                (programmeTM2AfterWorkState M tape s stk)
+                (programmeTM2AfterWorkStacks M tape s stk)).2 tape =
+            programmeTM2WorkTapeOf M
+              (programmeTM2AfterWorkState M tape s stk)
+              (programmeTM2AfterWorkStacks M tape s stk) tape :=
+                programmeTM2WorkPhase_workTape_of_not_mem
+                  M rest _ _ tape htapeNot
+          _ = programmeTM2ApplyWorkTape M
+                (ProgrammeTM2State.snapshotAction M s) tape
+                (programmeTM2WorkTapeOf M s stk tape) :=
+                  programmeTM2AfterWork_workTape_self M tape s stk
+      · have hne : targetTape ≠ tape := by
+          intro h
+          subst targetTape
+          exact htapeNot hmemRest
+        simp only [programmeTM2WorkPhase]
+        calc
+          programmeTM2WorkTapeOf M
+              (programmeTM2WorkPhase M rest
+                (programmeTM2AfterWorkState M tape s stk)
+                (programmeTM2AfterWorkStacks M tape s stk)).1
+              (programmeTM2WorkPhase M rest
+                (programmeTM2AfterWorkState M tape s stk)
+                (programmeTM2AfterWorkStacks M tape s stk)).2 targetTape =
+            programmeTM2ApplyWorkTape M
+              (ProgrammeTM2State.snapshotAction M
+                (programmeTM2AfterWorkState M tape s stk))
+              targetTape
+              (programmeTM2WorkTapeOf M
+                (programmeTM2AfterWorkState M tape s stk)
+                (programmeTM2AfterWorkStacks M tape s stk) targetTape) :=
+                  ih hrestNodup _ _ hmemRest
+          _ = programmeTM2ApplyWorkTape M
+                (ProgrammeTM2State.snapshotAction M s)
+                targetTape
+                (programmeTM2WorkTapeOf M s stk targetTape) := by
+                  rw [programmeTM2AfterWork_snapshotAction M tape s stk]
+                  rw [programmeTM2AfterWork_workTape_ne M hne s stk]
+
+/-- The canonical finite work-tape enumeration updates every Programme work
+tape exactly once. -/
+theorem programmeTM2WorkPhase_finRange_workTape
+    (M : ProgrammeMachine)
+    (s : ProgrammeTM2State M) (stk : ProgrammeTM2Stacks M)
+    (tape : Fin M.workTapeCount) :
+    programmeTM2WorkTapeOf M
+        (programmeTM2WorkPhase M (programmeTM2WorkTapes M) s stk).1
+        (programmeTM2WorkPhase M (programmeTM2WorkTapes M) s stk).2 tape =
+      programmeTM2ApplyWorkTape M
+        (ProgrammeTM2State.snapshotAction M s) tape
+        (programmeTM2WorkTapeOf M s stk tape) := by
+  apply programmeTM2WorkPhase_workTape_of_mem
+  · exact List.nodup_finRange M.workTapeCount
+  · exact List.mem_finRange tape
+
 #print axioms programmeTM2AfterInput_snapshotAction
 #print axioms programmeTM2AfterWork_snapshotAction
 #print axioms programmeTM2AfterInput_inputTape
@@ -238,6 +360,9 @@ theorem programmeTM2WorkPhase_inputTape
 #print axioms programmeTM2AfterWork_inputTape
 #print axioms programmeTM2WorkPhase_snapshotAction
 #print axioms programmeTM2WorkPhase_inputTape
+#print axioms programmeTM2WorkPhase_workTape_of_not_mem
+#print axioms programmeTM2WorkPhase_workTape_of_mem
+#print axioms programmeTM2WorkPhase_finRange_workTape
 
 end
 
