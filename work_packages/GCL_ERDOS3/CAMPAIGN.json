@@ -37,5 +37,14 @@
     "E3-V-B01",
     "E3-B-AP"
   ],
-  "next_action": "Independently verify B01 once; in parallel attack E3-B-AP for k≥4 using summable dyadic AP-free thresholds or a stronger cross-scale mechanism. Do not replay F01."
+  "next_action": "Independently verify B01 once; in parallel attack E3-B-AP for k≥4 using summable dyadic AP-free thresholds or a stronger cross-scale mechanism. Do not replay F01.",
+  "verification_dispatches": {
+    "E3-V01": {
+      "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
+      "issue_number": 762,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/762",
+      "state": "DISPATCHED__AWAITING_RETURN",
+      "reason": "One independent verification of the first new theorem-grade post-reset bridge, within the default replay budget."
+    }
+  }
 }

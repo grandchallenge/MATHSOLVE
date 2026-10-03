@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_CONTRIBUTION_DISPATCH",
+  "campaign": "GCL-ERDOS3",
+  "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
+  "assignment_id": "E3-V01",
+  "frontier_node": "E3-V-B01",
+  "agent_ref": "INDEPENDENT-AGENT-E3-V01-001",
+  "concurrency_mode": "independent_blind",
+  "context_class": "ZERO_CONTEXT",
+  "external_sources": "PROTECTED_PACKET_ONLY",
+  "issue_number": 762,
+  "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/762",
+  "task_commit": "6c39975864788f27aea1f0da50fa409625bd5bd6",
+  "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V01.md",
+  "task_blob_sha1": "3b88b26c590deb7ddd08f69f7b535dc8d4e2810c",
+  "source_packet": {
+    "b01_blob": "c0ecd3e02df8c9704cc879b7667278557a495a7e",
+    "a01_blob": "13d8dad1fc10dc76962114734b6c591026b3a795",
+    "s01_blob": "fffd11df139d72235fb945144bb9c38d1e66f1d4",
+    "frontier_blob": "d4cace7bd94dfa0ccc35005c1c63c497d5f72a49"
+  },
+  "canonical_mutation_authorized": false,
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "state": "DISPATCHED__AWAITING_RETURN"
+}
