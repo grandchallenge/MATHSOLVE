@@ -7,7 +7,7 @@
   "status": "ACTIVE_NATIVE_PROOF_TARGET_SELECTED",
   "protected_inputs": {
     "programme_head": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
-    "forge_head": "3f869e772ef2217addb1ffe45a4058b7470ba36f",
+    "forge_head": "9b6413a7ca5972b7d724ea8f1594c01b8f46cf45",
     "solve_head": "20a1f4565bc99c383492894904047af6659fd6ad",
     "programme_interface": "YM-T-220",
     "source_id": "YM-SRC-025"
@@ -22,14 +22,20 @@
     {
       "id": "YM-D003-MRS-R002-MT1",
       "kind": "EXACT_ZERO_MASS_COUNTERTERM_TUNING",
-      "status": "SELECTED_FOR_NATIVE_GCL_PROOF_OR_FALSIFICATION",
-      "statement": "Construct or sharply reduce the MRS-specific exact relevant A^2 counterterm choice b_rho(lambda,R) that enforces zero renormalized mass with UV-uniform quantitative control adequate for the subsequent multiscale/polymer induction."
+      "status": "SHARPLY_REDUCED_TO_R2P1",
+      "statement": "Exact zero-mass tuning is not a stand-alone fixed-point problem; it depends on theorem-grade control of the renormalized local 1PI two-point polymer/subgraph sector and its mass recursion."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1",
+      "kind": "UNIFORM_RENORMALIZED_1PI_TWO_POINT_POLYMER_BOUND_AND_MASS_RECURSION",
+      "status": "ACTIVE_NATIVE_RESEARCH_BOUNDARY__NEW_PROOF_REQUIRED",
+      "statement": "Construct the MRS-specific renormalized local 1PI two-point polymer/subgraph induction, relevant mass projection, uniform subgraph bound, and exact mass recursion."
     },
     {
       "id": "YM-D003-MRS-R002-B",
       "kind": "EXPANSION_CONVERGENCE_AND_SUMMABILITY",
-      "status": "OPEN_DOWNSTREAM_OF_MT1",
-      "statement": "MRS-specific expansion/Mayer/polymer summability remains open after exact relevant-mass tuning is closed."
+      "status": "OPEN_WITH_LOCAL_R2P1_SUBNODE_ACTIVE",
+      "statement": "Global MRS expansion/Mayer/polymer summability remains open; its local renormalized two-point component R2P1 is the active smallest non-circular native target."
     },
     {
       "id": "YM-D003-MRS-R002-C",
@@ -105,8 +111,13 @@
     },
     {
       "from": "YM-D003-MRS-R002-MT1",
+      "to": "YM-D003-MRS-R002-R2P1",
+      "type": "mass_tuning_requires_local_renormalized_two_point_polymer_control"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1",
       "to": "YM-D003-MRS-R002-B",
-      "type": "exact_mass_tuning_precedes_global_summability"
+      "type": "local_two_point_induction_is_subnode_of_global_summability"
     }
   ],
   "agent_support": [
@@ -145,6 +156,6 @@
     "Do not infer Yang-Mills mass gap or terminal YM-001 closure."
   ],
   "claim_boundary": "Provisional Solve decomposition only. Node names B-D may be refined by source evidence; no theorem or campaign status is promoted by this DAG.",
-  "selected_native_node": "YM-D003-MRS-R002-MT1",
-  "selection_rationale": "MRS explicitly requires exact mass fine-tuning but only points to scalar phi4 fixed-point/two-point methods by analogy; the cited scalar theorem does not match the MRS SU(2) gauge setting. MT1 is upstream and smaller than polymer/Schwinger convergence, while fixed-order Slavnov limit passage is conditionally closed once its premises hold."
+  "selected_native_node": "YM-D003-MRS-R002-R2P1",
+  "selection_rationale": "Source replay of the scalar critical-mass template shows that exact mass tuning depends on renormalized 1PI two-point subgraph bounds. MRS does not theoremize the analogous SU(2) gauge-theory sector. R2P1 is therefore the smallest non-circular native target; it is narrower than full global polymer/Schwinger convergence."
 }
