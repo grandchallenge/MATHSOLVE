@@ -31,6 +31,64 @@ def programmeTM2CleanupStacks (M : ProgrammeMachine)
   | .workRight tape => workRight tape
   | .output => output
 
+/-- Updating one explicit work-left stack commutes with the heterogeneous
+cleanup-stack family constructor. -/
+theorem programmeTM2CleanupStacks_update_workLeft
+    (M : ProgrammeMachine)
+    (raw temp : List Bool)
+    (inputLeft inputRight : List (Option Bool))
+    (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+    (output : List Bool) (tape : Fin M.workTapeCount)
+    (newValue : List M.Symbol) :
+    Function.update
+        (programmeTM2CleanupStacks M raw temp inputLeft inputRight
+          workLeft workRight output)
+        (.workLeft tape) newValue =
+      programmeTM2CleanupStacks M raw temp inputLeft inputRight
+        (Function.update workLeft tape newValue) workRight output := by
+  funext k
+  cases k with
+  | rawInput => rfl
+  | inputTemp => rfl
+  | inputLeft => rfl
+  | inputRight => rfl
+  | workLeft other =>
+      by_cases h : other = tape
+      · subst other
+        simp [programmeTM2CleanupStacks, Function.update]
+      · simp [programmeTM2CleanupStacks, Function.update, h]
+  | workRight other => rfl
+  | output => rfl
+
+/-- Updating one explicit work-right stack commutes with the heterogeneous
+cleanup-stack family constructor. -/
+theorem programmeTM2CleanupStacks_update_workRight
+    (M : ProgrammeMachine)
+    (raw temp : List Bool)
+    (inputLeft inputRight : List (Option Bool))
+    (workLeft workRight : Fin M.workTapeCount → List M.Symbol)
+    (output : List Bool) (tape : Fin M.workTapeCount)
+    (newValue : List M.Symbol) :
+    Function.update
+        (programmeTM2CleanupStacks M raw temp inputLeft inputRight
+          workLeft workRight output)
+        (.workRight tape) newValue =
+      programmeTM2CleanupStacks M raw temp inputLeft inputRight
+        workLeft (Function.update workRight tape newValue) output := by
+  funext k
+  cases k with
+  | rawInput => rfl
+  | inputTemp => rfl
+  | inputLeft => rfl
+  | inputRight => rfl
+  | workLeft other => rfl
+  | workRight other =>
+      by_cases h : other = tape
+      · subst other
+        simp [programmeTM2CleanupStacks, Function.update]
+      · simp [programmeTM2CleanupStacks, Function.update, h]
+  | output => rfl
+
 /-- Closed-form cleanup configuration carrying one fixed terminal control. -/
 def programmeTM2CleanupCfg (M : ProgrammeMachine)
     (mode : ProgrammeTM2Mode M.workTapeCount)
@@ -217,7 +275,9 @@ theorem programmeTM2_step_cleanWorkLeft_cons (M : ProgrammeMachine)
   · rfl
   · rfl
   · intro k
-    cases k <;> simp [programmeTM2CleanupStacks, Function.update] <;> rfl
+    exact congrFun
+      (programmeTM2CleanupStacks_update_workLeft M
+        [] [] [] [] workLeft workRight output tape left) k
 
 /-- One work-right cleanup pop consumes one stored work symbol. -/
 theorem programmeTM2_step_cleanWorkRight_cons (M : ProgrammeMachine)
@@ -242,7 +302,9 @@ theorem programmeTM2_step_cleanWorkRight_cons (M : ProgrammeMachine)
   · rfl
   · rfl
   · intro k
-    cases k <;> simp [programmeTM2CleanupStacks, Function.update] <;> rfl
+    exact congrFun
+      (programmeTM2CleanupStacks_update_workRight M
+        [] [] [] [] workLeft workRight output tape right) k
 
 /-- With no work tapes, the empty input-right cleanup goes directly to emit. -/
 theorem programmeTM2_step_cleanInputRight_nil_noWork
@@ -329,7 +391,9 @@ theorem programmeTM2_step_cleanWorkLeft_nil (M : ProgrammeMachine)
   · rfl
   · rfl
   · intro k
-    cases k <;> simp [programmeTM2CleanupStacks, Function.update] <;> rfl
+    exact congrFun
+      (programmeTM2CleanupStacks_update_workLeft M
+        [] [] [] [] workLeft workRight output tape []) k
 
 /-- The blank right-work pop advances to the next work tape or emit. -/
 theorem programmeTM2_step_cleanWorkRight_nil (M : ProgrammeMachine)
@@ -352,7 +416,9 @@ theorem programmeTM2_step_cleanWorkRight_nil (M : ProgrammeMachine)
   · rfl
   · rfl
   · intro k
-    cases k <;> simp [programmeTM2CleanupStacks, Function.update] <;> rfl
+    exact congrFun
+      (programmeTM2CleanupStacks_update_workRight M
+        [] [] [] [] workLeft workRight output tape []) k
 
 /-- Clear the raw-input stack in exactly one transition per stored cell plus
 one blank-detection transition. -/
@@ -677,7 +743,8 @@ theorem programmeTM2ClearWorkBefore_update_current
     · omega
     · by_cases hnext : tape.1 < i + 1
       · omega
-      · rfl
+      · intro hle
+        omega
 
 /-- At an in-range index, the canonical work-cleanup mode is the left stack
 for exactly that tape. -/
