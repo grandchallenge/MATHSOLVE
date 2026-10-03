@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_DISPATCH_STAGING_MANIFEST",
+  "campaign": "CMDG-CM4",
+  "work_package": "P3-M-ONE-POINT-SEPARATION-003",
+  "state": "STAGED_BLOCKED_PENDING_PROTECTED_PREDECESSOR",
+  "programme_docket": "grandchallenge/MATH-PROGRAMME#1162",
+  "predecessor_docket": "grandchallenge/MATH-PROGRAMME#664",
+  "predecessor_candidate_pr": "grandchallenge/MATH-PROGRAMME#919",
+  "predecessor_candidate_head": "cff36869559e52eb5440dfc3b00cefa27648ae4e",
+  "predecessor_candidate_is_protected": false,
+  "activation_requires": [
+    "exact-head independent non-author review of PR #919",
+    "protected admission/merge of #664 candidate",
+    "protected-main readback of admitted theorem names and axiom boundary",
+    "activation commit replacing candidate SHA with protected predecessor SHA",
+    "publication of immutable GCL-ZERO-CONTEXT-LAUNCH/2 artifacts",
+    "byte-locked activation of intake issue bodies"
+  ],
+  "blind_cohort_id": "CMDG-P3M-SEP-BLIND-COHORT-001",
+  "dispatches": [
+    {
+      "dispatch_id": "CMDG-P3M-SEP-WP-A-IA-001",
+      "assignment_id": "CMDG-P3M-SEP-WP-A",
+      "agent_ref": "INDEPENDENT-AGENT-CMDG-A",
+      "bootstrap_path": "handoffs/CMDG-CM4-P3-M-ONE-POINT-SEPARATION-003/jobs/CMDG-P3M-SEP-WP-A-IA-001.md",
+      "github_issue_number": 764,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/764",
+      "route": "FULL_RECONSTRUCTION"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-SEP-WP-B-IA-001",
+      "assignment_id": "CMDG-P3M-SEP-WP-B",
+      "agent_ref": "INDEPENDENT-AGENT-CMDG-B",
+      "bootstrap_path": "handoffs/CMDG-CM4-P3-M-ONE-POINT-SEPARATION-003/jobs/CMDG-P3M-SEP-WP-B-IA-001.md",
+      "github_issue_number": 765,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/765",
+      "route": "MINIMAL_SEPARATION"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-SEP-WP-C-IA-001",
+      "assignment_id": "CMDG-P3M-SEP-WP-C",
+      "agent_ref": "INDEPENDENT-AGENT-CMDG-C",
+      "bootstrap_path": "handoffs/CMDG-CM4-P3-M-ONE-POINT-SEPARATION-003/jobs/CMDG-P3M-SEP-WP-C-IA-001.md",
+      "github_issue_number": 766,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/766",
+      "route": "ADVERSARIAL_INVISIBLE_SECTION"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-SEP-WP-D-IA-001",
+      "assignment_id": "CMDG-P3M-SEP-WP-D",
+      "agent_ref": "INDEPENDENT-AGENT-CMDG-D",
+      "bootstrap_path": "handoffs/CMDG-CM4-P3-M-ONE-POINT-SEPARATION-003/jobs/CMDG-P3M-SEP-WP-D-IA-001.md",
+      "github_issue_number": 767,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/767",
+      "route": "INTERFACE_INFORMATION_LOSS_AUDIT"
+    }
+  ],
+  "launch_artifacts_present": false,
+  "dispatch_status": "NON_EXECUTABLE",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "intake_channel": "github_issue_comment",
+  "minimum_synthesis_evidence": {
+    "constructive_return_required": true,
+    "constructive_routes": ["CMDG-P3M-SEP-WP-A-IA-001", "CMDG-P3M-SEP-WP-B-IA-001"],
+    "adversarial_return_required": true,
+    "adversarial_dispatch": "CMDG-P3M-SEP-WP-C-IA-001"
+  },
+  "cross_disclosure_before_cohort_closure": false,
+  "canonical_mutation_authorized_for_contributors": false,
+  "certification_effect": false,
+  "claim_boundary": "Staging creates no mathematical premise. Contributor returns, once activated, are evidence only and cannot directly establish mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion."
+}
