@@ -307,6 +307,9 @@ def validate(root=ROOT):
         'ci/gcl_erdos3_github_contribution_intake.py',
         'tests/test_gcl_erdos3_github_contribution_intake.py',
         '.github/workflows/gcl-erdos3-independent-contribution-intake.yml',
+        'ci/gcl_erdos3_lease_reaper.py',
+        'tests/test_gcl_erdos3_lease_reaper.py',
+        '.github/workflows/gcl-erdos3-lease-reaper.yml',
     ]
     for path in required_files:
         if not (root/path).is_file():
@@ -328,12 +331,29 @@ def validate(root=ROOT):
         ):
             if needle not in wf:
                 errors.append(f'GCL-ERDOS3 intake workflow missing integrity control: {needle}')
+    reaper_workflow=root/'.github/workflows/gcl-erdos3-lease-reaper.yml'
+    if reaper_workflow.is_file():
+        rw=reaper_workflow.read_text()
+        for needle in (
+            'schedule:',
+            'cron: "*/5 * * * *"',
+            'workflow_dispatch:',
+            'ci/gcl_erdos3_lease_reaper.py',
+            'gh pr create',
+            'mathematical replay budget consumed: NO',
+            'canonical claim effect: NONE',
+            'frontier promotion effect: NONE',
+        ):
+            if needle not in rw:
+                errors.append(f'GCL-ERDOS3 lease reaper missing integrity control: {needle}')
+        if 'gh pr merge' in rw or 'canonical_claim_effect: true' in rw.lower():
+            errors.append('GCL-ERDOS3 lease reaper gained unauthorized promotion/merge authority')
     ci_workflow=root/'.github/workflows/ci.yml'
     if ci_workflow.is_file():
         ci_text=ci_workflow.read_text()
         for needle in (
             'python ci/validate_gcl_erdos3_frontier.py',
-            'python -m unittest tests/test_gcl_erdos3_github_contribution_intake.py -v',
+            'python -m unittest tests/test_gcl_erdos3_github_contribution_intake.py tests/test_gcl_erdos3_lease_reaper.py -v',
         ):
             if needle not in ci_text:
                 errors.append(f'GCL-ERDOS3 required CI missing: {needle}')
