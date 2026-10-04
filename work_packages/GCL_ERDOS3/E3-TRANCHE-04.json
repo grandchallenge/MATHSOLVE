@@ -4,7 +4,7 @@
   "campaign": "GCL-ERDOS3",
   "tranche": "E3-TRANCHE-04-FOUR-FIBRE-DEFICIT",
   "preparation_baseline_commit": "365ed110913f8cc6ce1297e62955225dbb56476b",
-  "status": "PREPARED__NATIVE_L01_Q02_ADVANCED",
+  "status": "NATIVE_SYNTHESIS_READY__NO_FRONTIER_PROMOTION",
   "target_node": "E3-B-FOUR-FIBRE-DEFICIT",
   "target_statement": "For N=2^n, a_n=r_4(N)/N, and every 4-AP-free four-fibre gluing, prove max_i(r_4(N)-|B_i|) >= kappa*N*a_n^(1+theta) eventually for some kappa>0 and 0<theta<1.",
   "fixed_scale_choice": {
@@ -35,14 +35,14 @@
       "blob_sha1": "87aee24698c1cbc57fe09c925d6e8726efe58821",
       "role": "quadratic structure to carry-transversal deficit",
       "external_sources": "PRIMARY_SOURCES_ALLOWED",
-      "state": "PREPARED_NOT_DISPATCHED"
+      "state": "NATIVE_RESULT_AVAILABLE"
     },
     "E3-A04": {
       "path": "work_packages/GCL_ERDOS3/work_packages/E3-A04.md",
       "blob_sha1": "ccb7aa1f4ef61a7b3dd53dd892059497efcbb7ec",
       "role": "adversarial falsification of L=2 route",
       "external_sources": "PRIMARY_SOURCES_ALLOWED",
-      "state": "PREPARED_NOT_DISPATCHED"
+      "state": "NATIVE_RESULT_AVAILABLE"
     }
   },
   "native_results": {
@@ -61,6 +61,20 @@
       "blob_sha1": "85dbf8b584a26800486aef8d71d0382afeda9cd2",
       "exact_statement": "For every valid D01 cross-fibre template on beta-dense fibres, zero mixed 4-AP count forces max_t ||1_{C_t}-rho_t||_{U^3} > beta^4/(15*16^4).",
       "frontier_effect": "COUNTING_FORCE_STAGE_DISCHARGED__TRANSVERSAL_CONVERSION_REMAINS"
+    },
+    "E3-T01": {
+      "disposition": "SMALLER_MISSING_LEMMA__PHASE_ALIGNMENT_REQUIRED",
+      "path": "work_packages/GCL_ERDOS3/results/E3-T01_NATIVE_RESULT.md",
+      "blob_sha1": "19af9fe6da8414610a36341788c9e848b31b4840",
+      "exact_statement": "Across all 17 D01 cross-fibre families, and already across the L01 10-family core, scalar Q02 forcing requires at least two structured physical fibres; the exact minimum two-fibre covers are {0,2}, {1,2}, {1,3}. Scalar U3 repetition cannot accumulate phase/rank information.",
+      "frontier_effect": "SCALAR_U3_ACCUMULATION_ROUTE_CLOSED__PHASE_WITNESS_ALIGNMENT_REQUIRED"
+    },
+    "E3-A04": {
+      "disposition": "ADVERSARIAL_CLASS_RULED_OUT__MISALIGNMENT_REQUIRED",
+      "path": "work_packages/GCL_ERDOS3/results/E3-A04_NATIVE_RESULT.md",
+      "blob_sha1": "7b0c7345814315a40086451138e11f0f963d8ed6",
+      "exact_statement": "If four compatible fibres each omit at most h points from one common extremal reference set R of size r4(N), then h >= r4(N)/4 = N*a_n/4.",
+      "frontier_effect": "SYNCHRONIZED_COMMON_CORE_COUNTEREXAMPLES_RULED_OUT"
     }
   },
   "protected_inputs": {
@@ -83,5 +97,12 @@
   "live_native_questions": [
     "Motif amplification / scale transfer from the exact E3-L01 family certificate.",
     "Convert forced U^3 structure at c*beta^4 norm scale into a carry-transversal deletion cost beta^(1+theta)N with theta<1, using near-extremality."
-  ]
+  ],
+  "native_synthesis": {
+    "path": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md",
+    "blob_sha1": "0a45c257fb28c0ad35af7c49fa2f2c88ef1950df",
+    "disposition": "NATIVE_REDUCTION__PHASE_ALIGNED_MOTIF_AMPLIFICATION",
+    "next_named_residual": "E3-B-QUADRATIC-MOTIF-AMPLIFICATION",
+    "claim_boundary": "FORMULATED_NATIVE_RESIDUAL__NO_PARENT_PROMOTION"
+  }
 }
