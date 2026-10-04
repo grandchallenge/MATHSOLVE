@@ -51,12 +51,13 @@
     "E3-A04": "NATIVE_ADVERSARIAL_CLASS_RULED_OUT",
     "E3-Q03": "PROVED_NATIVE_ALL_FIBRE_U3_FORCING",
     "E3-Q04": "PROVED_NATIVE_JOINT_WITNESS_DICHOTOMY",
-    "E3-Q05": "PROVED_NATIVE_PARSEVAL_AMPLIFICATION_REQUIREMENT"
+    "E3-Q05": "PROVED_NATIVE_PARSEVAL_AMPLIFICATION_REQUIREMENT",
+    "E3-Q06": "PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Reconcile/reissue the expired E3-V03 verifier lease separately; in parallel attack E3-B-LINEAR-WITNESS-AMPLIFICATION and the direct Q04 joint-fourfold branch. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
+  "next_action": "Reconcile/reissue the expired E3-V03 verifier lease separately; in parallel attack E3-B-LINEAR-WITNESS-AMPLIFICATION and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -259,5 +260,11 @@
     "disposition": "PROVED_NATIVE_PARSEVAL_AMPLIFICATION_REQUIREMENT",
     "path": "work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md",
     "effect": "At Q04's beta^3 aligned-witness scale, Parseval permits O(beta^-6) large modes per fibre; fixed one-scale family counting is insufficient, so the linear branch requires genuine witness amplification or phase incompatibility."
+  },
+  "tranche_04_extension_q06": {
+    "result": "E3-Q06",
+    "disposition": "PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md",
+    "effect": "The Q04 fourfold branch yields a positive-density family of joint derivative spectral overlaps; the fourfold residual becomes derivative-frequency coherence versus spectral diffuseness."
   }
 }
