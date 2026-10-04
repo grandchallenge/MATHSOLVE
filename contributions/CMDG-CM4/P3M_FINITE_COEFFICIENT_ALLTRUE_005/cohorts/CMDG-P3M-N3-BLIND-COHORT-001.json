@@ -4,7 +4,7 @@
   "cohort_id": "CMDG-P3M-N3-BLIND-COHORT-001",
   "campaign": "CMDG-CM4-N3",
   "work_package": "P3-M-FINITE-COEFFICIENT-ALLTRUE-005",
-  "state": "OPEN",
+  "state": "CLOSED_EVIDENCE_COMPLETE",
   "mode": "independent_blind",
   "dispatch_ids": [
     "CMDG-P3M-N3-WP-A-IA-001",
@@ -15,10 +15,10 @@
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
   "intake_channel": "github_issue_comment",
   "cross_disclosure_before_closure": false,
-  "synthesis_allowed": false,
+  "synthesis_allowed": true,
   "activation_condition": "SATISFIED",
   "synthesis_open_condition": "All four dispatches must have terminal valid protected returns; WP-C adversarial evidence is mandatory; cohort reconciliation must explicitly open synthesis.",
-  "claim_boundary": "Open blind evidence collection only. No mathematical adjudication, claim promotion, or certification effect.",
+  "claim_boundary": "Blind evidence collection is closed and internal comparison/synthesis is now authorized. No mathematical theorem, Point-component vanishing, d = 0, mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion is admitted by this closure.",
   "protected_activation_merge": "fea1128fb5167c912f85b7b4369519e5bd3fc502",
   "issue_byte_lock_complete": true,
   "launch_comments_posted": true,
@@ -27,5 +27,8 @@
     "CMDG-P3M-N3-WP-B-IA-001": 5979989495,
     "CMDG-P3M-N3-WP-C-IA-001": 5979989898,
     "CMDG-P3M-N3-WP-D-IA-001": 5979990453
-  }
+  },
+  "closed_on_evidence_commit": "55e7d34c49c784a408c71f1f899a8ad6c34e5d53",
+  "closure_reason": "ALL_FOUR_RETURNS_DURABLY_PROTECTED__POSITIVE_AND_ADVERSARIAL_SYNTHESIS_MINIMUM_SATISFIED",
+  "mathematical_adjudication_performed": false
 }
