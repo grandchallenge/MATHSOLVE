@@ -1,0 +1,115 @@
+name: GCL-ERDOS3 lease reaper
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: gcl-erdos3-lease-reaper
+  cancel-in-progress: false
+
+jobs:
+  reap:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          persist-credentials: true
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Locate active expiring lease
+        id: probe
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path("work_packages/GCL_ERDOS3/CAMPAIGN.json")
+          c=json.loads(p.read_text(encoding="utf-8"))
+          a=c.get("active_dispatches",{}).get("E3-V03",{})
+          with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as f:
+              print(f"issue={a.get('issue_number','')}",file=f)
+              print(f"dispatch={a.get('dispatch_id','')}",file=f)
+              print(f"epoch={a.get('lease_epoch','')}",file=f)
+          PY
+
+      - name: Read canonical issue comments
+        if: steps.probe.outputs.issue != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ steps.probe.outputs.issue }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments?per_page=100" > "$RUNNER_TEMP/comments.json"
+
+      - name: Evaluate expiry and prepare bounded mutation
+        if: steps.probe.outputs.issue != ''
+        id: reap
+        env:
+          NOW: ${{ github.run_started_at }}
+        run: |
+          python ci/gcl_erdos3_lease_reaper.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --now "$NOW" \
+            --comments-json "$RUNNER_TEMP/comments.json" \
+            --result-json "$RUNNER_TEMP/reap-result.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          r=json.loads((Path(os.environ["RUNNER_TEMP"])/"reap-result.json").read_text(encoding="utf-8"))
+          with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as f:
+              print(f"changed={str(bool(r.get('changed'))).lower()}",file=f)
+              for k in ("dispatch_id","issue_number","lease_epoch","lease_expires_at","reason"):
+                  print(f"{k}={r.get(k,'')}",file=f)
+          PY
+
+      - name: Open protected expiry reconciliation
+        if: steps.reap.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DISPATCH: ${{ steps.reap.outputs.dispatch_id }}
+          ISSUE: ${{ steps.reap.outputs.issue_number }}
+          EPOCH: ${{ steps.reap.outputs.lease_epoch }}
+          EXPIRES: ${{ steps.reap.outputs.lease_expires_at }}
+        run: |
+          branch="maintenance/gcl-erdos3-lease-expiry-${DISPATCH,,}-e$EPOCH"
+          if git ls-remote --exit-code origin "refs/heads/$branch" >/dev/null 2>&1; then
+            echo "Expiry reconciliation branch already exists: $branch"
+            exit 0
+          fi
+          git switch -c "$branch"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- \
+            "work_packages/GCL_ERDOS3/CAMPAIGN.json" \
+            "work_packages/GCL_ERDOS3/FRONTIER.json" \
+            "work_packages/GCL_ERDOS3/dispatches/$DISPATCH.json"
+          git commit -m "GCL-ERDOS3: expire silent lease $DISPATCH"
+          git push origin "$branch"
+          cat > "$RUNNER_TEMP/pr-body.md" <<EOF
+          Automated bounded lease-expiry reconciliation for `$DISPATCH`.
+
+          - lease epoch: `$EPOCH`
+          - lease expired at: `$EXPIRES`
+          - timely RESULT/1 observed: NO
+          - mathematical replay budget consumed: NO
+          - canonical claim effect: NONE
+          - frontier promotion effect: NONE
+
+          This PR only reconciles protected lifecycle state with an already-expired lease. Protected CI owns merge eligibility.
+          EOF
+          pr_url="$(gh pr create --base main --head "$branch" --title "GCL-ERDOS3: expire silent lease $DISPATCH" --body-file "$RUNNER_TEMP/pr-body.md")"
+          gh issue close "$ISSUE" --reason completed --comment "LEASE EXPIRED — NO RETURN. The protected 25-minute lease expired at `$EXPIRES`. Late results are fenced by intake. Durable lifecycle reconciliation: $pr_url"
+
+      - name: Record no-op
+        if: steps.probe.outputs.issue == '' || steps.reap.outputs.changed != 'true'
+        run: echo "No expired silent GCL-ERDOS3 lease requires reconciliation."
