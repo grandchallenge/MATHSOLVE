@@ -24,5 +24,33 @@
   "external_sources": "PROTECTED_PACKET_ONLY",
   "canonical_mutation_authorized": false,
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-  "state": "DISPATCHED__AWAITING_RETURN"
+  "state": "DISPATCHED__AWAITING_RETURN",
+  "github_issue_number": 798,
+  "github_issue_title": "[GCL-CONTRIB] GCL-ERDOS3 E3-V03-IA-001 — gluing-radius equivalence replay",
+  "bootstrap_path": "work_packages/GCL_ERDOS3/dispatch_bootstraps/GCL-ERDOS3-E3-V03-IA-001.md",
+  "bootstrap_blob_sha1": "4909526f36f38bde2957dbaa323a3a33a1a873e6",
+  "acceptable_dispositions": [
+    "VERIFIED",
+    "REFUTED",
+    "EXACT_BLOCKER"
+  ],
+  "required_result_sections": [
+    "Strongest exact statement",
+    "Derivation / evidence",
+    "Adversarial checks",
+    "First defect",
+    "Frontier effect",
+    "Next residual",
+    "Sources"
+  ],
+  "intake_policy": {
+    "first_valid_result_only": true,
+    "raw_urls_allowed": false,
+    "markdown_links_allowed": false,
+    "html_links_or_images_allowed": false,
+    "attachments_allowed": false,
+    "next_residual_max_sentences": 3,
+    "automatic_mathematical_adjudication": false,
+    "automatic_canonical_claim_effect": false
+  }
 }
