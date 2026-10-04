@@ -18,6 +18,7 @@ def validate(root=ROOT):
     f01=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-F01_RESULT.json').read_text())
     tranche=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-01.json').read_text())
     tranche03=json.loads((root/'work_packages/GCL_ERDOS3/E3-TRANCHE-03.json').read_text())
+    tranche04=json.loads((root/'work_packages/GCL_ERDOS3/E3-TRANCHE-04.json').read_text())
     capture=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json').read_text())
     adjud03=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json').read_text())
     lease_policy=json.loads((root/'work_packages/GCL_ERDOS3/LEASE_POLICY.json').read_text())
@@ -73,6 +74,17 @@ def validate(root=ROOT):
         errors.append('gluing-radius bridge verification state drift')
     if rows.get('E3-Q4-GLUING-RADIUS',{}).get('status')!='FORMULATED_PENDING_VERIFY':
         errors.append('gluing-radius successor candidate state drift')
+    if rows.get('E3-B-FOUR-FIBRE-DEFICIT',{}).get('status')!='OPEN_NATIVE_SUBTARGET':
+        errors.append('four-fibre native subtarget state drift')
+    if rows.get('E3-B-QUADRATIC-MOTIF-AMPLIFICATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('quadratic-motif native residual state drift')
+    if rows.get('E3-B-QUADRATIC-MOTIF-AMPLIFICATION',{}).get('parent')!='E3-B-FOUR-FIBRE-DEFICIT':
+        errors.append('quadratic-motif residual parent drift')
+    density=rows.get('E3-Q4-DENSITY-LOSS',{})
+    if density.get('prepared_tranche')!='E3-TRANCHE-04':
+        errors.append('density-loss tranche-04 registration drift')
+    if density.get('active_attacks')!=['E3-B-QUADRATIC-MOTIF-AMPLIFICATION']:
+        errors.append('density-loss active native residual drift')
     if rows.get('E3-V-B03',{}).get('status')!='LAUNCHED':
         errors.append('E3-V-B03 epoch-4 marker-clock lease not launched')
     v03_frontier=rows.get('E3-V-B03',{}).get('dispatch',{})
@@ -104,14 +116,56 @@ def validate(root=ROOT):
         errors.append('E3-V01 closure missing')
     if campaign.get('current_frontier')!=['E3-Q4-DENSITY-LOSS']:
         errors.append('campaign frontier drift after tranche-02 synthesis')
-    if campaign.get('prepared_tranche')!='E3-TRANCHE-03':
-        errors.append('tranche-03 preparation missing')
+    if campaign.get('prepared_tranche')!='E3-TRANCHE-04':
+        errors.append('tranche-04 preparation missing')
+    if campaign.get('prepared_work_packages')!=['E3-L01','E3-Q02','E3-T01','E3-A04']:
+        errors.append('tranche-04 prepared work-package set drift')
+    expected_native_results={
+        'E3-L01':'NATIVE_FINITE_LIFTED_CERTIFICATE',
+        'E3-Q02':'PROVED_NATIVE_LABELLED_FORCING',
+        'E3-T01':'NATIVE_SMALLER_MISSING_LEMMA__PHASE_ALIGNMENT_REQUIRED',
+        'E3-A04':'NATIVE_ADVERSARIAL_CLASS_RULED_OUT',
+    }
+    for key,value in expected_native_results.items():
+        if campaign.get('work_package_results',{}).get(key)!=value:
+            errors.append(f'{key} native campaign result drift')
+    if campaign.get('tranche_04_manifest')!='work_packages/GCL_ERDOS3/E3-TRANCHE-04.json':
+        errors.append('tranche-04 campaign manifest binding drift')
+    if campaign.get('tranche_04_synthesis')!='work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md':
+        errors.append('tranche-04 campaign synthesis binding drift')
+    if campaign.get('native_residual')!='E3-B-QUADRATIC-MOTIF-AMPLIFICATION':
+        errors.append('tranche-04 native residual drift')
     if campaign.get('dispatch_state')!='VERIFY_DISPATCHED__AWAITING_RETURN':
         errors.append('E3-V03 dispatch state drift')
     if campaign.get('synthesis_allowed') is not False:
         errors.append('synthesis gate remained open after adjudication')
     if tranche03.get('status')!='ADJUDICATED__VERIFY_G01_PENDING' or tranche03.get('synthesis_allowed') is not False:
         errors.append('tranche-03 adjudication/verification gate drift')
+    if tranche04.get('status')!='NATIVE_SYNTHESIS_READY__NO_FRONTIER_PROMOTION':
+        errors.append('tranche-04 native synthesis status drift')
+    if tranche04.get('target_node')!='E3-B-FOUR-FIBRE-DEFICIT':
+        errors.append('tranche-04 target node drift')
+    if tranche04.get('native_synthesis',{}).get('next_named_residual')!='E3-B-QUADRATIC-MOTIF-AMPLIFICATION':
+        errors.append('tranche-04 synthesis residual drift')
+    if tranche04.get('verification_separation',{}).get('gate')!='E3-V03':
+        errors.append('tranche-04 verification separation drift')
+    native_files={
+        'E3-L01':'work_packages/GCL_ERDOS3/results/E3-L01_NATIVE_RESULT.md',
+        'E3-Q02':'work_packages/GCL_ERDOS3/results/E3-Q02_NATIVE_RESULT.md',
+        'E3-T01':'work_packages/GCL_ERDOS3/results/E3-T01_NATIVE_RESULT.md',
+        'E3-A04':'work_packages/GCL_ERDOS3/results/E3-A04_NATIVE_RESULT.md',
+    }
+    for key,path in native_files.items():
+        row=tranche04.get('native_results',{}).get(key,{})
+        if row.get('path')!=path:
+            errors.append(f'{key} tranche-04 native result path drift')
+        fp=root/path
+        if not fp.is_file() or blob(fp)!=row.get('blob_sha1'):
+            errors.append(f'{key} tranche-04 native result blob drift')
+    synrow=tranche04.get('native_synthesis',{})
+    synpath=root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md'
+    if synrow.get('path')!='work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md' or not synpath.is_file() or blob(synpath)!=synrow.get('blob_sha1'):
+        errors.append('tranche-04 synthesis blob drift')
     expected_dispatches={'E3-R01','E3-D01','E3-G01','E3-C01','E3-A03','E3-S04'}
     if set(campaign.get('active_dispatches',{}))!={'E3-V03'}:
         errors.append('epoch-4 E3-V03 is not sole active dispatch')
@@ -400,6 +454,18 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_SYNTHESIS.md',
         'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json',
+        'work_packages/GCL_ERDOS3/E3-TRANCHE-04.json',
+        'work_packages/GCL_ERDOS3/E3-TRANCHE-04_FOUR_FIBRE_DEFICIT.md',
+        'work_packages/GCL_ERDOS3/work_packages/E3-L01.md',
+        'work_packages/GCL_ERDOS3/work_packages/E3-Q02.md',
+        'work_packages/GCL_ERDOS3/work_packages/E3-T01.md',
+        'work_packages/GCL_ERDOS3/work_packages/E3-A04.md',
+        'work_packages/GCL_ERDOS3/results/E3-L01_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q02_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-T01_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-A04_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md',
+        'work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py',
         'work_packages/GCL_ERDOS3/LEASE_POLICY.json',
         'work_packages/GCL_ERDOS3/work_packages/E3-V03.md',
         'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-V03-IA-001.json',

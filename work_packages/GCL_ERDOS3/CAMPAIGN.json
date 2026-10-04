@@ -44,12 +44,16 @@
     "E3-G01": "ACCEPTED__THEOREM_GRADE_BRIDGE_PENDING_VERIFY",
     "E3-C01": "ACCEPTED__FINITE_PATTERN_SUPPORTING_ONLY",
     "E3-A03": "ACCEPTED__NO_COUNTEREXAMPLE_SUPPORTING_BOUNDARY",
-    "E3-S04": "ACCEPTED__SOURCE_INTERFACE_REQUIRES_BRIDGE"
+    "E3-S04": "ACCEPTED__SOURCE_INTERFACE_REQUIRES_BRIDGE",
+    "E3-L01": "NATIVE_FINITE_LIFTED_CERTIFICATE",
+    "E3-Q02": "PROVED_NATIVE_LABELLED_FORCING",
+    "E3-T01": "NATIVE_SMALLER_MISSING_LEMMA__PHASE_ALIGNMENT_REQUIRED",
+    "E3-A04": "NATIVE_ADVERSARIAL_CLASS_RULED_OUT"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Await the epoch-4 activation marker on issue 866, then receive the single E3-V03 RESULT/1 within the exact 25-minute marker-clock lease. Native tranche-04 work proceeds independently; only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
+  "next_action": "Receive the epoch-4 E3-V03 RESULT/1 on issue 866 within its marker-clock lease; in parallel attack E3-B-QUADRATIC-MOTIF-AMPLIFICATION. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -209,14 +213,12 @@
       "clock_model": "GITHUB_ACTIVATION_COMMENT"
     }
   },
-  "prepared_tranche": "E3-TRANCHE-03",
+  "prepared_tranche": "E3-TRANCHE-04",
   "prepared_work_packages": [
-    "E3-R01",
-    "E3-D01",
-    "E3-G01",
-    "E3-C01",
-    "E3-A03",
-    "E3-S04"
+    "E3-L01",
+    "E3-Q02",
+    "E3-T01",
+    "E3-A04"
   ],
   "dispatch_state": "VERIFY_DISPATCHED__AWAITING_RETURN",
   "dispatch_cleanup": {
@@ -233,5 +235,8 @@
   "selected_successor_candidate": "E3-Q4-GLUING-RADIUS",
   "verification_work_package": "E3-V03",
   "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
-  "lease_policy_id": "GCL-IA-LEASE-25M-24M-001"
+  "lease_policy_id": "GCL-IA-LEASE-25M-24M-001",
+  "tranche_04_manifest": "work_packages/GCL_ERDOS3/E3-TRANCHE-04.json",
+  "tranche_04_synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md",
+  "native_residual": "E3-B-QUADRATIC-MOTIF-AMPLIFICATION"
 }
