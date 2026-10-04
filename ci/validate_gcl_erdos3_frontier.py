@@ -20,6 +20,7 @@ def validate(root=ROOT):
     tranche03=json.loads((root/'work_packages/GCL_ERDOS3/E3-TRANCHE-03.json').read_text())
     capture=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json').read_text())
     adjud03=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json').read_text())
+    lease_policy=json.loads((root/'work_packages/GCL_ERDOS3/LEASE_POLICY.json').read_text())
 
     if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_V03_LEASE_EXPIRED':
         errors.append('campaign identity/status drift')
@@ -29,6 +30,15 @@ def validate(root=ROOT):
         errors.append('verification budget drift')
     if gate.get('constraints',{}).get('closed_or_exhausted_node_forbids_equivalent_replay_successor') is not True:
         errors.append('replay recursion guard disabled')
+
+    if lease_policy.get('policy_id')!='GCL-IA-LEASE-25M-24M-001':
+        errors.append('lease policy identity drift')
+    if lease_policy.get('initial_lease_minutes')!=25 or lease_policy.get('agent_max_execution_minutes')!=24:
+        errors.append('lease duration/agent cap drift')
+    if lease_policy.get('lease_clock',{}).get('start')!='canonical_activation_marker_comment_created_at':
+        errors.append('lease clock no longer starts from canonical activation marker')
+    if lease_policy.get('lease_clock',{}).get('activation_marker')!='GCL-LEASE-ACTIVATION/1':
+        errors.append('lease activation marker drift')
 
     rows={x.get('id'):x for x in frontier.get('nodes',[])}
     required={
@@ -330,6 +340,7 @@ def validate(root=ROOT):
             'issue_comment:',
             'pull-requests: write',
             'ci/gcl_erdos3_github_contribution_intake.py',
+            '--issue-comments',
             'gh pr create',
             'canonical claim effect: NONE',
             'frontier effect: NONE',
