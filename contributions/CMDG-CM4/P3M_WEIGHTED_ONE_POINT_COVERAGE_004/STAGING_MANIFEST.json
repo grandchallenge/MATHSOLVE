@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_COHORT_ACTIVATION_MANIFEST",
+  "campaign": "CMDG-CM4-COV",
+  "work_package": "P3-M-WEIGHTED-ONE-POINT-COVERAGE-004",
+  "parent_programme_issue": 1162,
+  "state": "ACTIVATION_CANDIDATE",
+  "protected_programme_predecessor": "fdd7a3fe3df7b2d699753347080c1cbc2127e02d",
+  "protected_n1_theorem": "CMDG.CondensedCM4P3G.PointFunctional.measurePointProjection_zero_reflects",
+  "protected_n1_merge": "fdd7a3fe3df7b2d699753347080c1cbc2127e02d",
+  "solve_candidate_base": "5efe0f0a45d5e291e62a7303b811594d4b34731b",
+  "blind_cohort_id": "CMDG-P3M-COV-BLIND-COHORT-001",
+  "issue_byte_lock_complete": false,
+  "activation_complete": false,
+  "dispatch_status": "STAGED_PENDING_PROTECTED_ADMISSION_AND_ISSUE_BYTE_LOCK",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "intake_channel": "github_issue_comment",
+  "assignments": [
+    {
+      "dispatch_id": "CMDG-P3M-COV-WP-A-IA-001",
+      "assignment_id": "CMDG-P3M-COV-WP-A",
+      "agent_ref": "INDEPENDENT-AGENT-CMDG-COV-A",
+      "github_issue_number": 800,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/800",
+      "route": "CANONICAL_WEIGHTED_RECONSTRUCTION"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-COV-WP-B-IA-001",
+      "assignment_id": "CMDG-P3M-COV-WP-B",
+      "agent_ref": "INDEPENDENT-AGENT-CMDG-COV-B",
+      "github_issue_number": 801,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/801",
+      "route": "WEAKEST_OPERATIONAL_VANISHING_BRIDGE"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-COV-WP-C-IA-001",
+      "assignment_id": "CMDG-P3M-COV-WP-C",
+      "agent_ref": "INDEPENDENT-AGENT-CMDG-COV-C",
+      "github_issue_number": 802,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/802",
+      "route": "ADVERSARIAL_CONCRETE_COVERAGE_ATTACK"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-COV-WP-D-IA-001",
+      "assignment_id": "CMDG-P3M-COV-WP-D",
+      "agent_ref": "INDEPENDENT-AGENT-CMDG-COV-D",
+      "github_issue_number": 803,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/803",
+      "route": "FINITE_STAGE_REALIZATION_AND_LIMIT"
+    }
+  ],
+  "minimum_synthesis_evidence": {
+    "positive_return_required": true,
+    "positive_routes": [
+      "CMDG-P3M-COV-WP-A-IA-001",
+      "CMDG-P3M-COV-WP-B-IA-001",
+      "CMDG-P3M-COV-WP-D-IA-001"
+    ],
+    "adversarial_return_required": true,
+    "adversarial_dispatch": "CMDG-P3M-COV-WP-C-IA-001",
+    "all_dispatches_terminal_before_closure": true
+  },
+  "synthesis_dispositions": [
+    "COVERAGE_BRIDGE_PROVED",
+    "COVERAGE_BRIDGE_REFUTED_CONCRETELY",
+    "REDUCED_TO_SMALLEST_MISSING_LEMMA"
+  ],
+  "cross_disclosure_before_cohort_closure": false,
+  "canonical_mutation_authorized_for_contributors": false,
+  "certification_effect": false,
+  "claim_boundary": "Staging only. No coverage theorem, Point-component vanishing, d = 0, mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion is admitted."
+}
