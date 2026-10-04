@@ -5,24 +5,35 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from ci.gcl_erdos3_github_contribution_intake import IntakeError, emit_intake, git_blob_sha1_text
+from ci.gcl_erdos3_github_contribution_intake import (
+    IntakeError,
+    emit_intake,
+    git_blob_sha1_text,
+)
 
 
-DISPATCH_ID = "GCL-ERDOS3-E3-V03-IA-001"
+DISPATCH_ID = "GCL-ERDOS3-E3-V03-IA-002"
 ASSIGNMENT = "E3-V03"
-AGENT = "INDEPENDENT-AGENT-E3-V03-001"
-ISSUE_NUMBER = 798
-ISSUE_TITLE = "[GCL-CONTRIB] GCL-ERDOS3 E3-V03-IA-001 — gluing-radius equivalence replay"
+AGENT = "INDEPENDENT-AGENT-E3-V03-002"
+ISSUE_NUMBER = 814
+ISSUE_TITLE = "[GCL-CONTRIB] GCL-ERDOS3 E3-V03-IA-002 — gluing-radius equivalence replay"
 
 BOOTSTRAP = """GCL-CONTRIBUTION-DISPATCH/1
 
 # E3-V03 — test bootstrap
 """
 
-RESULT = """GCL-CONTRIBUTION-RESULT/1
-dispatch_id: GCL-ERDOS3-E3-V03-IA-001
+ACTIVATION = """GCL-LEASE-ACTIVATION/1
+dispatch_id: GCL-ERDOS3-E3-V03-IA-002
 assignment: E3-V03
-agent_ref: INDEPENDENT-AGENT-E3-V03-001
+lease_epoch: 2
+lease_duration_minutes: 25
+agent_max_execution_minutes: 24"""
+
+RESULT = """GCL-CONTRIBUTION-RESULT/1
+dispatch_id: GCL-ERDOS3-E3-V03-IA-002
+assignment: E3-V03
+agent_ref: INDEPENDENT-AGENT-E3-V03-002
 disposition: VERIFIED
 context_class: ZERO_CONTEXT
 external_sources: PROTECTED_PACKET_ONLY
@@ -67,7 +78,7 @@ class GclErdos3IntakeTests(unittest.TestCase):
         (self.root / "work_packages/GCL_ERDOS3/launch").mkdir(parents=True)
         (self.root / "work_packages/GCL_ERDOS3/work_packages").mkdir(parents=True)
 
-        self.bootstrap_path = self.root / "work_packages/GCL_ERDOS3/launch/E3-V03-IA-001.md"
+        self.bootstrap_path = self.root / "work_packages/GCL_ERDOS3/launch/E3-V03-IA-002.md"
         self.bootstrap_path.write_text(BOOTSTRAP, encoding="utf-8")
         self.task_path = self.root / "work_packages/GCL_ERDOS3/work_packages/E3-V03.md"
         self.task_path.write_text("# immutable test task\n", encoding="utf-8")
@@ -84,7 +95,7 @@ class GclErdos3IntakeTests(unittest.TestCase):
             "task_commit": "a" * 40,
             "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
             "task_blob_sha1": git_blob_sha1_text(self.task_path.read_text(encoding="utf-8")),
-            "bootstrap_path": "work_packages/GCL_ERDOS3/launch/E3-V03-IA-001.md",
+            "bootstrap_path": "work_packages/GCL_ERDOS3/launch/E3-V03-IA-002.md",
             "bootstrap_blob_sha1": git_blob_sha1_text(BOOTSTRAP),
             "context_class": "ZERO_CONTEXT",
             "external_sources": "PROTECTED_PACKET_ONLY",
@@ -96,10 +107,10 @@ class GclErdos3IntakeTests(unittest.TestCase):
             "automated_intake_canonical_effect": False,
             "lease_policy_id": "GCL-IA-LEASE-25M-24M-001",
             "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
+            "lease_clock_source": "GITHUB_ACTIVATION_COMMENT",
+            "lease_activation_marker": "GCL-LEASE-ACTIVATION/1",
             "lease_epoch": 2,
             "lease_attempt_ordinal": 2,
-            "lease_started_at": "2026-10-04T00:00:00Z",
-            "lease_expires_at": "2026-10-04T00:25:00Z",
             "lease_duration_minutes": 25,
             "agent_max_execution_minutes": 24,
             "return_grace_minutes": 1,
@@ -121,6 +132,14 @@ class GclErdos3IntakeTests(unittest.TestCase):
     def tearDown(self) -> None:
         self.tmp.cleanup()
 
+    def activation_comments(self) -> list[dict]:
+        return [{
+            "id": 100,
+            "body": ACTIVATION,
+            "created_at": "2026-10-04T00:00:00Z",
+            "user": {"login": "github-actions[bot]"},
+        }]
+
     def event(self, *, body: str = RESULT, number: int = ISSUE_NUMBER, title: str = ISSUE_TITLE) -> dict:
         return {
             "issue": {
@@ -136,63 +155,93 @@ class GclErdos3IntakeTests(unittest.TestCase):
             },
         }
 
-    def test_valid_exact_bound_result_emits_unadjudicated_receipt(self) -> None:
-        output = self.root / "out"
-        meta = emit_intake(self.event(), self.root, output)
-        receipt = json.loads((output / "RECEIPT.json").read_text(encoding="utf-8"))
+    def emit(self, event: dict | None = None, comments: list[dict] | None = None):
+        return emit_intake(
+            event or self.event(),
+            self.root,
+            self.root / "out",
+            self.activation_comments() if comments is None else comments,
+        )
+
+    def test_valid_later_attempt_result_emits_unadjudicated_receipt(self) -> None:
+        meta = self.emit()
+        receipt = json.loads((self.root / "out/RECEIPT.json").read_text(encoding="utf-8"))
         self.assertEqual(meta["dispatch_id"], DISPATCH_ID)
         self.assertEqual(receipt["github_issue_number"], ISSUE_NUMBER)
         self.assertEqual(receipt["disposition_declared"], "VERIFIED")
+        self.assertEqual(receipt["lease_activation_comment_id"], 100)
+        self.assertEqual(receipt["lease_started_at"], "2026-10-04T00:00:00Z")
+        self.assertEqual(receipt["lease_expires_at"], "2026-10-04T00:25:00Z")
         self.assertFalse(receipt["mathematical_correctness_adjudicated"])
         self.assertFalse(receipt["canonical_claim_effect"])
         self.assertFalse(receipt["frontier_effect"])
         self.assertFalse(receipt["certification_effect"])
-        self.assertEqual((output / "RAW.md").read_text(encoding="utf-8"), RESULT)
+        self.assertEqual((self.root / "out/RAW.md").read_text(encoding="utf-8"), RESULT)
 
     def test_wrong_issue_is_rejected(self) -> None:
         with self.assertRaisesRegex(IntakeError, "wrong issue"):
-            emit_intake(self.event(number=999), self.root, self.root / "out")
+            self.emit(self.event(number=999))
 
     def test_wrong_issue_title_is_rejected(self) -> None:
         with self.assertRaisesRegex(IntakeError, "issue title"):
-            emit_intake(self.event(title="tampered title"), self.root, self.root / "out")
+            self.emit(self.event(title="tampered title"))
 
     def test_task_byte_drift_is_rejected(self) -> None:
         self.task_path.write_text("# changed after dispatch\n", encoding="utf-8")
         with self.assertRaisesRegex(IntakeError, "task bytes drifted"):
-            emit_intake(self.event(), self.root, self.root / "out")
+            self.emit()
 
     def test_unregistered_disposition_is_rejected(self) -> None:
         bad = RESULT.replace("disposition: VERIFIED", "disposition: PROVED")
         with self.assertRaisesRegex(IntakeError, "disposition"):
-            emit_intake(self.event(body=bad), self.root, self.root / "out")
+            self.emit(self.event(body=bad))
 
     def test_agent_mismatch_is_rejected(self) -> None:
         bad = RESULT.replace(AGENT, "INDEPENDENT-AGENT-WRONG")
         with self.assertRaisesRegex(IntakeError, "agent_ref"):
-            emit_intake(self.event(body=bad), self.root, self.root / "out")
+            self.emit(self.event(body=bad))
 
     def test_bootstrap_byte_drift_is_rejected(self) -> None:
         event = self.event()
         event["issue"]["body"] = BOOTSTRAP + "tamper\n"
         with self.assertRaisesRegex(IntakeError, "issue body differs"):
-            emit_intake(event, self.root, self.root / "out")
+            self.emit(event)
+
+    def test_missing_activation_marker_is_rejected(self) -> None:
+        with self.assertRaisesRegex(IntakeError, "exactly one matching lease activation marker"):
+            self.emit(comments=[])
+
+    def test_duplicate_activation_marker_is_rejected(self) -> None:
+        comments = self.activation_comments() + [{
+            "id": 101,
+            "body": ACTIVATION,
+            "created_at": "2026-10-04T00:00:01Z",
+            "user": {"login": "github-actions[bot]"},
+        }]
+        with self.assertRaisesRegex(IntakeError, "exactly one matching lease activation marker"):
+            self.emit(comments=comments)
 
     def test_expired_comment_is_rejected(self) -> None:
         event = self.event()
         event["comment"]["created_at"] = "2026-10-04T00:25:01Z"
         with self.assertRaisesRegex(IntakeError, "lease expired"):
-            emit_intake(event, self.root, self.root / "out")
+            self.emit(event)
+
+    def test_result_before_activation_is_rejected(self) -> None:
+        event = self.event()
+        event["comment"]["created_at"] = "2026-10-03T23:59:59Z"
+        with self.assertRaisesRegex(IntakeError, "predates lease activation"):
+            self.emit(event)
 
     def test_stale_lease_epoch_is_rejected(self) -> None:
         bad = RESULT.replace("lease_epoch: 2", "lease_epoch: 1")
         with self.assertRaisesRegex(IntakeError, "lease epoch"):
-            emit_intake(self.event(body=bad), self.root, self.root / "out")
+            self.emit(self.event(body=bad))
 
     def test_agent_execution_cap_is_rejected(self) -> None:
         bad = RESULT.replace("agent_elapsed_minutes: 24", "agent_elapsed_minutes: 25")
         with self.assertRaisesRegex(IntakeError, "24-minute cap"):
-            emit_intake(self.event(body=bad), self.root, self.root / "out")
+            self.emit(self.event(body=bad))
 
 
 if __name__ == "__main__":
