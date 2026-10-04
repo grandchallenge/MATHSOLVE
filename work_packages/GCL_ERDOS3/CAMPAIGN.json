@@ -3,7 +3,7 @@
   "record_type": "GCL_RESEARCH_CAMPAIGN",
   "campaign_id": "GCL-ERDOS3",
   "title": "Erdős Problem 3",
-  "status": "ACTIVE__E3_V03_LEASE_EXPIRED",
+  "status": "ACTIVE__E3_V03_DISPATCHED",
   "origin": {
     "campaign": "OPENMATH-2026",
     "hill": "OM26-H7",
@@ -49,7 +49,7 @@
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Reissue E3-V03 under a fresh dispatch/agent identity and lease epoch, retaining replay_budget_ordinal=1. Accept no evidence from expired issue 798.",
+  "next_action": "Receive the single E3-V03 RESULT/1 on issue 814 before lease expiry 2026-10-04T01:37:51Z; capture exactly and adjudicate. Only VERIFIED may activate E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -71,20 +71,42 @@
       "effect": "Closed E3-V-B02; no parent theorem effect."
     },
     "E3-V03": {
-      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-001",
-      "issue_number": 798,
-      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/798",
-      "state": "LEASE_EXPIRED__NO_RETURN",
-      "reason": "One independent replay of the new G01 theorem-grade gluing-radius equivalence before active-frontier replacement.",
-      "lease_epoch": 1,
-      "lease_attempt_ordinal": 1,
-      "lease_started_at": "2026-10-04T00:15:38Z",
-      "lease_expires_at": "2026-10-04T00:40:38Z",
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-002",
+      "issue_number": 814,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/814",
+      "state": "DISPATCHED__AWAITING_RETURN",
+      "reason": "Fresh lease epoch 2 for the same single independent replay after epoch 1 expired silently.",
+      "lease_epoch": 2,
+      "lease_attempt_ordinal": 2,
+      "lease_started_at": "2026-10-04T01:12:51Z",
+      "lease_expires_at": "2026-10-04T01:37:51Z",
+      "agent_max_execution_minutes": 24,
+      "replay_budget_ordinal": 1,
       "replay_budget_consumed": false,
-      "successor_dispatch_id": null
+      "predecessor_dispatch_id": "GCL-ERDOS3-E3-V03-IA-001"
     }
   },
-  "active_dispatches": {},
+  "active_dispatches": {
+    "E3-V03": {
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-002",
+      "agent_ref": "INDEPENDENT-AGENT-E3-V03-002",
+      "issue_number": 814,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/814",
+      "task_commit": "eb94ed1df6c3743fc8a186dcc423ce372fb512c8",
+      "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01",
+      "target_node": "E3-B-GLUING-RADIUS-EQUIV",
+      "frontier_action": "INDEPENDENT_VERIFY",
+      "replay_budget_ordinal": 1,
+      "lease_epoch": 2,
+      "lease_attempt_ordinal": 2,
+      "lease_started_at": "2026-10-04T01:12:51Z",
+      "lease_expires_at": "2026-10-04T01:37:51Z",
+      "agent_max_execution_minutes": 24,
+      "context_class": "ZERO_CONTEXT",
+      "external_sources": "PROTECTED_PACKET_ONLY",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    }
+  },
   "completed_dispatches": {
     "E3-Q01": {
       "issue_number": 772,
@@ -173,7 +195,7 @@
     "E3-A03",
     "E3-S04"
   ],
-  "dispatch_state": "VERIFY_LEASE_EXPIRED__REISSUE_REQUIRED",
+  "dispatch_state": "VERIFY_DISPATCHED__AWAITING_RETURN",
   "dispatch_cleanup": {
     "duplicate_issue_number": 790,
     "canonical_assignment": "E3-D01",
