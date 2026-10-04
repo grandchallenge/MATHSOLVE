@@ -1,27 +1,39 @@
 GCL-ZERO-CONTEXT-LAUNCH/2
-STATE: DRAFT_NOT_ACTIVATED
+STATE: ACTIVE
 CAMPAIGN: CMDG-CM4
 TRANCHE: P3-M-FINITE-COEFFICIENT-ALLTRUE-005
-WORK_PACKAGE: CMDG-P3M-N3-WP-A
+ASSIGNMENT_ID: CMDG-P3M-N3-WP-A
 DISPATCH_ID: CMDG-P3M-N3-WP-A-IA-001
 AGENT_REF: INDEPENDENT-AGENT-CMDG-N3-A
 PROTECTED_LEASE_IDENTITY: CMDG-P3M-N3-WP-A :: CMDG-P3M-N3-WP-A-IA-001 :: INDEPENDENT-AGENT-CMDG-N3-A
-INTENDED_RETURN: UNBOUND_PENDING_ACTIVATION
+INTENDED_RETURN: https://github.com/grandchallenge/MATHSOLVE/issues/826
 RETURN_PROTOCOL: GCL-CONTRIBUTION-RESULT/1
 EXECUTION_MODE: SELF_CONTAINED_INDEPENDENT_BLIND
-GITHUB_ACCESS_REQUIRED: DEFERRED_UNTIL_ACTIVATION
+GITHUB_ACCESS_REQUIRED: PARTICIPANT_ENVIRONMENT_AUTHENTICATED_COMMENT_CAPABILITY
 CANONICAL_MUTATION_AUTHORIZED: NO
 CERTIFICATION_AUTHORIZED: NO
-EXECUTION_AUTHORIZED: NO
+EXECUTION_AUTHORIZED: YES
 PROTECTED_PROGRAMME_PREDECESSOR: a2897a270c477ac95ba3d18dd068a13b07d3b853
 PROTECTED_SOLVE_PLAN: 91725687ef26d01acc4989474b124517221716e3
-PROPOSED_COHORT: CMDG-P3M-N3-BLIND-COHORT-001
+BLIND_COHORT: CMDG-P3M-N3-BLIND-COHORT-001
+
+Read this entire immutable task. Execute only this bounded assignment. Before substantive work, verify that your environment can post one authenticated GitHub issue comment to INTENDED_RETURN. If it cannot, report RETURN_TRANSPORT_UNAVAILABLE and do not begin substantive work.
+
+GCL-CONTRIBUTION-DISPATCH/1
+dispatch_id: CMDG-P3M-N3-WP-A-IA-001
+agent_ref: INDEPENDENT-AGENT-CMDG-N3-A
+campaign: CMDG-CM4-N3
+work_package: P3-M-FINITE-COEFFICIENT-ALLTRUE-005
+assignment: CMDG-P3M-N3-WP-A
+concurrency_mode: independent_blind
+return_protocol: GCL-CONTRIBUTION-RESULT/1
+intended_return: https://github.com/grandchallenge/MATHSOLVE/issues/826
 
 # WP-A — direct formal N3 closure
 
-This is a zero-context solver-agent bootstrap template. Do not begin substantive work until this artifact is activated with a concrete INTENDED_RETURN and protected lease identity. Once activated, treat this document as your complete bounded work-set.
+You are an independent zero-context mathematical contributor. This document is your complete bounded work-set.
 
-Timebox when activated: 35 minutes of substantive work, then return the strongest exact result reached.
+Timebox: 35 minutes of substantive work, then return the strongest exact result reached.
 
 ## Protected packet
 
@@ -75,9 +87,9 @@ N2 direct axiom readback is `[propext, Classical.choice, Quot.sound]`; no `sorry
 
 You have no repository mutation, adjudication, certification, merge, publication, or claim-promotion authority. A theorem-grade reduction, exact blocker, or concrete protected-type counterexample is a successful return if correct.
 
-## Required return when activated
+## Required return
 
-Post exactly one narrative-only result to the bound INTENDED_RETURN:
+Post exactly one narrative-only comment on the intended GitHub issue:
 
 ```text
 GCL-CONTRIBUTION-RESULT/1

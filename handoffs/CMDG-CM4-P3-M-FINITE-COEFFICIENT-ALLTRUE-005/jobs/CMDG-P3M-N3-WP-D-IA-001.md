@@ -1,35 +1,14 @@
-GCL-ZERO-CONTEXT-LAUNCH/2
-STATE: ACTIVE
-CAMPAIGN: CMDG-CM4
-TRANCHE: P3-M-FINITE-COEFFICIENT-ALLTRUE-005
-ASSIGNMENT_ID: CMDG-P3M-N3-WP-C
-DISPATCH_ID: CMDG-P3M-N3-WP-C-IA-001
-AGENT_REF: INDEPENDENT-AGENT-CMDG-N3-C
-PROTECTED_LEASE_IDENTITY: CMDG-P3M-N3-WP-C :: CMDG-P3M-N3-WP-C-IA-001 :: INDEPENDENT-AGENT-CMDG-N3-C
-INTENDED_RETURN: https://github.com/grandchallenge/MATHSOLVE/issues/828
-RETURN_PROTOCOL: GCL-CONTRIBUTION-RESULT/1
-EXECUTION_MODE: SELF_CONTAINED_INDEPENDENT_BLIND
-GITHUB_ACCESS_REQUIRED: PARTICIPANT_ENVIRONMENT_AUTHENTICATED_COMMENT_CAPABILITY
-CANONICAL_MUTATION_AUTHORIZED: NO
-CERTIFICATION_AUTHORIZED: NO
-EXECUTION_AUTHORIZED: YES
-PROTECTED_PROGRAMME_PREDECESSOR: a2897a270c477ac95ba3d18dd068a13b07d3b853
-PROTECTED_SOLVE_PLAN: 91725687ef26d01acc4989474b124517221716e3
-BLIND_COHORT: CMDG-P3M-N3-BLIND-COHORT-001
-
-Read this entire immutable task. Execute only this bounded assignment. Before substantive work, verify that your environment can post one authenticated GitHub issue comment to INTENDED_RETURN. If it cannot, report RETURN_TRANSPORT_UNAVAILABLE and do not begin substantive work.
-
 GCL-CONTRIBUTION-DISPATCH/1
-dispatch_id: CMDG-P3M-N3-WP-C-IA-001
-agent_ref: INDEPENDENT-AGENT-CMDG-N3-C
+dispatch_id: CMDG-P3M-N3-WP-D-IA-001
+agent_ref: INDEPENDENT-AGENT-CMDG-N3-D
 campaign: CMDG-CM4-N3
 work_package: P3-M-FINITE-COEFFICIENT-ALLTRUE-005
-assignment: CMDG-P3M-N3-WP-C
+assignment: CMDG-P3M-N3-WP-D
 concurrency_mode: independent_blind
 return_protocol: GCL-CONTRIBUTION-RESULT/1
-intended_return: https://github.com/grandchallenge/MATHSOLVE/issues/828
+intended_return: https://github.com/grandchallenge/MATHSOLVE/issues/829
 
-# WP-C — adversarial protected-type falsification of N3
+# WP-D — weakest downstream closure after N3
 
 You are an independent zero-context mathematical contributor. This document is your complete bounded work-set.
 
@@ -93,9 +72,9 @@ Post exactly one narrative-only comment on the intended GitHub issue:
 
 ```text
 GCL-CONTRIBUTION-RESULT/1
-dispatch_id: CMDG-P3M-N3-WP-C-IA-001
-agent_ref: INDEPENDENT-AGENT-CMDG-N3-C
-assignment: CMDG-P3M-N3-WP-C
+dispatch_id: CMDG-P3M-N3-WP-D-IA-001
+agent_ref: INDEPENDENT-AGENT-CMDG-N3-D
+assignment: CMDG-P3M-N3-WP-D
 disposition: <PROVED_REDUCTION|EXACT_CERTIFICATE|FORMAL_LEMMA_PROVED|COUNTEREXAMPLE|NO_MATERIAL_DELTA|EXACT_BLOCKER>
 context_class: ZERO_CONTEXT
 external_sources: PROTECTED_PACKET_ONLY
@@ -124,49 +103,92 @@ No URLs, attachments, side files, branches, pull requests, or second mathematica
 
 ## Exact assignment
 
-Act adversarially against N3.
+Assume N3 exactly as stated below. Do not re-prove it.
 
-Search for a concrete failure in the actual protected chain:
-
-```text
-measurePointFunctional
-→ liftedIntFunctionalDown
-→ integral-basis coordinate weights
-→ weightedBasisBooleanPairing
-→ weightedBasisBooleanPairingR
-→ finiteDeltaPullbackR
-→ all-true evaluation
+```lean
+weightedFiniteBooleanCoefficient X
+    (fun i => measurePointIntegralFunctional X μ (integralBasis X i))
+    j q (fun _ => true) =
+  measurePointFunctional X μ (finiteDeltaPullbackR X j q)
 ```
 
-Protected N2 is discharged and must not be re-opened.
+Determine the shortest theorem-grade route from N3 to the parent target
 
-Prioritize:
+```lean
+d.hom.app (op Point) = 0
+```
 
-1. a mismatch between packaged `basisBooleanCube X` and the literal
-   `IntegralBasisIndex X → Bool` at all-true evaluation;
-2. a lift/down defect in `R = ULift ℤ`;
-3. a mismatch between `finiteDeltaPullbackR` and its descended integral form;
-4. sign/order/evaluation defects in the weighted coefficient definition;
-5. a genuine failure of the generic inverse identity for `liftedIntFunctionalDown`.
+under the protected hypothesis
 
-Use small genuine protected spaces when useful, such as a one-point profinite space or `Bool`.
+```lean
+kernelProductFunctional X d = 0.
+```
 
-Abstract groups, toy additive maps, or generic kernel models do not count.
+Test in this order whether the next sufficient bridge can be stated at one of these strengths:
 
-If no counterexample survives, give a rigorous elimination ledger and identify the smallest remaining theorem that still requires formal compilation.
+1. equality only after applying `d.hom.app (op Point)`;
+2. equality after one-point reweight/evaluation;
+3. finite weighted measure-morphism realization;
+4. global all-true weighted measure coverage;
+5. full one-point measure-section reconstruction.
+
+Prefer the weakest sufficient item.
+
+If finite/global packaging is genuinely necessary, return the typed dependency ledger:
+
+```text
+N3_POINT_COEFFICIENT_EQUALITY
+→ FINITE_COEFFICIENT_FAMILY_RECONSTRUCTION
+→ FINITE_MEASURE_SECTION_REALIZATION
+→ FINITE_MEASURE_MORPHISM_REALIZATION
+→ QUOTIENT_COMPATIBILITY
+→ GLOBAL_LIMIT_COVERAGE
+→ APPLIED_D_COMPATIBILITY
+→ POINT_COMPONENT_VANISHING
+```
+
+Identify the first unprotected arrow as an exact Lean-sized proposition.
+
+## Protected downstream facts to exploit
+
+The protected source already contains:
+
+- `weightedFiniteBooleanMeasureSection_coefficientFamily_transport`;
+- `weightedFiniteBooleanMeasureSection_smallFree_transport`;
+- weighted finite quotient pushforward compatibility;
+- `weightedFiniteBooleanMeasureLimitLift_fac`;
+- `weightedFiniteBooleanMeasureLimitLift_point_reweight`;
+- `kernelProductSection_reweight_eval`;
+- `kernelProductFunctional_eq_zero_of_solidification_kernel`;
+- `measureFunctorMapConeIsLimit X`.
+
+Do not demand a new theorem where an existing protected theorem plus a short specialization suffices.
 
 ## Verification / falsification hooks
 
-A valid falsification must specify concrete protected choices of
-`X, μ, j, q`,
-or for an upstream generic bridge,
-`X, F, v`,
-and demonstrate an actual inequality or ill-typed claimed equality.
+Check whether the older finite-stage equality
 
-Absence of a named theorem is not a counterexample.
+```lean
+μHom ≫ measureFunctor.map (finiteQuotientMap X j) =
+  (Condensed.profiniteFree R).map qtrue ≫
+    weightedFiniteBooleanMeasureHom X aμ j
+```
+
+is actually necessary, or whether action by `d` can be compared before reconstructing the full measure morphism.
+
+Explicitly separate:
+
+- already protected facts;
+- consequences of N3 by finite coordinate extensionality;
+- genuinely new hom-ext or limit arguments;
+- unnecessary strength.
 
 ## Success criterion
 
-Preferred: a concrete protected-type counterexample.
+Preferred: a minimal compatibility theorem which, together with
+`kernelProductFunctional X d = 0`, proves
+`d.hom.app (op Point) = 0`.
 
-Otherwise: a strong adversarial audit eliminating the suspected loss mechanisms and naming the first remaining proof obligation.
+Otherwise: the unique first missing theorem in the finite/global packaging chain, at exact protected types.
+
+Do not promote beyond Point-component vanishing.

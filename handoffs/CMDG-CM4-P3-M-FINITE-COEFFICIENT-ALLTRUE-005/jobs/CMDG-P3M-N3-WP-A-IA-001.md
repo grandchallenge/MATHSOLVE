@@ -1,35 +1,14 @@
-GCL-ZERO-CONTEXT-LAUNCH/2
-STATE: ACTIVE
-CAMPAIGN: CMDG-CM4
-TRANCHE: P3-M-FINITE-COEFFICIENT-ALLTRUE-005
-ASSIGNMENT_ID: CMDG-P3M-N3-WP-C
-DISPATCH_ID: CMDG-P3M-N3-WP-C-IA-001
-AGENT_REF: INDEPENDENT-AGENT-CMDG-N3-C
-PROTECTED_LEASE_IDENTITY: CMDG-P3M-N3-WP-C :: CMDG-P3M-N3-WP-C-IA-001 :: INDEPENDENT-AGENT-CMDG-N3-C
-INTENDED_RETURN: https://github.com/grandchallenge/MATHSOLVE/issues/828
-RETURN_PROTOCOL: GCL-CONTRIBUTION-RESULT/1
-EXECUTION_MODE: SELF_CONTAINED_INDEPENDENT_BLIND
-GITHUB_ACCESS_REQUIRED: PARTICIPANT_ENVIRONMENT_AUTHENTICATED_COMMENT_CAPABILITY
-CANONICAL_MUTATION_AUTHORIZED: NO
-CERTIFICATION_AUTHORIZED: NO
-EXECUTION_AUTHORIZED: YES
-PROTECTED_PROGRAMME_PREDECESSOR: a2897a270c477ac95ba3d18dd068a13b07d3b853
-PROTECTED_SOLVE_PLAN: 91725687ef26d01acc4989474b124517221716e3
-BLIND_COHORT: CMDG-P3M-N3-BLIND-COHORT-001
-
-Read this entire immutable task. Execute only this bounded assignment. Before substantive work, verify that your environment can post one authenticated GitHub issue comment to INTENDED_RETURN. If it cannot, report RETURN_TRANSPORT_UNAVAILABLE and do not begin substantive work.
-
 GCL-CONTRIBUTION-DISPATCH/1
-dispatch_id: CMDG-P3M-N3-WP-C-IA-001
-agent_ref: INDEPENDENT-AGENT-CMDG-N3-C
+dispatch_id: CMDG-P3M-N3-WP-A-IA-001
+agent_ref: INDEPENDENT-AGENT-CMDG-N3-A
 campaign: CMDG-CM4-N3
 work_package: P3-M-FINITE-COEFFICIENT-ALLTRUE-005
-assignment: CMDG-P3M-N3-WP-C
+assignment: CMDG-P3M-N3-WP-A
 concurrency_mode: independent_blind
 return_protocol: GCL-CONTRIBUTION-RESULT/1
-intended_return: https://github.com/grandchallenge/MATHSOLVE/issues/828
+intended_return: https://github.com/grandchallenge/MATHSOLVE/issues/826
 
-# WP-C — adversarial protected-type falsification of N3
+# WP-A — direct formal N3 closure
 
 You are an independent zero-context mathematical contributor. This document is your complete bounded work-set.
 
@@ -93,9 +72,9 @@ Post exactly one narrative-only comment on the intended GitHub issue:
 
 ```text
 GCL-CONTRIBUTION-RESULT/1
-dispatch_id: CMDG-P3M-N3-WP-C-IA-001
-agent_ref: INDEPENDENT-AGENT-CMDG-N3-C
-assignment: CMDG-P3M-N3-WP-C
+dispatch_id: CMDG-P3M-N3-WP-A-IA-001
+agent_ref: INDEPENDENT-AGENT-CMDG-N3-A
+assignment: CMDG-P3M-N3-WP-A
 disposition: <PROVED_REDUCTION|EXACT_CERTIFICATE|FORMAL_LEMMA_PROVED|COUNTEREXAMPLE|NO_MATERIAL_DELTA|EXACT_BLOCKER>
 context_class: ZERO_CONTEXT
 external_sources: PROTECTED_PACKET_ONLY
@@ -124,49 +103,53 @@ No URLs, attachments, side files, branches, pull requests, or second mathematica
 
 ## Exact assignment
 
-Act adversarially against N3.
+Attack the exact native target:
 
-Search for a concrete failure in the actual protected chain:
-
-```text
-measurePointFunctional
-→ liftedIntFunctionalDown
-→ integral-basis coordinate weights
-→ weightedBasisBooleanPairing
-→ weightedBasisBooleanPairingR
-→ finiteDeltaPullbackR
-→ all-true evaluation
+```lean
+theorem weightedFiniteBooleanCoefficient_measurePoint_allTrue
+    (X : Profinite.{u})
+    (μ : (measurePresheafObj X).obj (op Point))
+    (j : DiscreteQuotient X)
+    (q : (FiniteQuotientObject X j).obj) :
+    weightedFiniteBooleanCoefficient X
+        (fun i => measurePointIntegralFunctional X μ (integralBasis X i))
+        j q (fun _ => true) =
+      measurePointFunctional X μ (finiteDeltaPullbackR X j q)
 ```
 
-Protected N2 is discharged and must not be re-opened.
+Try to prove it at the actual protected types.
 
-Prioritize:
+Preferred route:
 
-1. a mismatch between packaged `basisBooleanCube X` and the literal
-   `IntegralBasisIndex X → Bool` at all-true evaluation;
-2. a lift/down defect in `R = ULift ℤ`;
-3. a mismatch between `finiteDeltaPullbackR` and its descended integral form;
-4. sign/order/evaluation defects in the weighted coefficient definition;
-5. a genuine failure of the generic inverse identity for `liftedIntFunctionalDown`.
+1. unfold `weightedFiniteBooleanCoefficient`;
+2. unfold only enough of `weightedBasisBooleanPairingR` to expose the integral weighted pairing;
+3. apply protected N2 with
+   `L := measurePointIntegralFunctional X μ`
+   and
+   `v := locallyConstantIntegralDownEquiv X (finiteDeltaPullbackR X j q)`;
+4. close the remaining coefficient equality using the inverse relation between
+   `locallyConstantIntegralLiftEquiv X` and `locallyConstantIntegralDownEquiv X`,
+   together with the definition of `liftedIntFunctionalDown`.
 
-Use small genuine protected spaces when useful, such as a one-point profinite space or `Bool`.
-
-Abstract groups, toy additive maps, or generic kernel models do not count.
-
-If no counterexample survives, give a rigorous elimination ledger and identify the smallest remaining theorem that still requires formal compilation.
+You may introduce one narrowly scoped helper theorem if Lean normalization requires it. Do not package finite measure sections, global limits, or Point-component vanishing in this assignment.
 
 ## Verification / falsification hooks
 
-A valid falsification must specify concrete protected choices of
-`X, μ, j, q`,
-or for an upstream generic bridge,
-`X, F, v`,
-and demonstrate an actual inequality or ill-typed claimed equality.
+Check explicitly:
 
-Absence of a named theorem is not a counterexample.
+- whether application at `fun _ => true` is accepted across the packaged Boolean cube;
+- whether `weightedBasisBooleanPairingR` reduces to `ULift.up` of the integral pairing at the all-true selector;
+- whether
+  `locallyConstantIntegralLiftEquiv X (locallyConstantIntegralDownEquiv X v) = v`
+  is definitional or requires an equivalence inverse law;
+- whether lifting
+  `measurePointIntegralFunctional X μ (locallyConstantIntegralDownEquiv X v)`
+  back to `R` gives exactly `measurePointFunctional X μ v`.
 
 ## Success criterion
 
-Preferred: a concrete protected-type counterexample.
+Preferred: an exact theorem-grade proof of N3.
 
-Otherwise: a strong adversarial audit eliminating the suspected loss mechanisms and naming the first remaining proof obligation.
+Acceptable: the unique first Lean-sized missing helper statement, with enough type/term detail for immediate native materialization.
+
+A counterexample counts only if it inhabits the actual protected types.
