@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_NATIVE_NODE_SELECTION",
+  "node_id": "CMDG-P3M-COV-N2",
+  "campaign": "CMDG-CM4-COV",
+  "work_package": "P3-M-WEIGHTED-ONE-POINT-COVERAGE-004",
+  "title": "WEIGHTED_BASIS_FUNCTIONAL_ALLTRUE",
+  "synthesis_base_commit": "99124f075018afc4042fb5e0cc3e4e6e35a96746",
+  "evidence_base_commit": "5ffb289251267ffc7dde9be3ad5ff7e54f2a34e1",
+  "programme_replay_baseline": "fdd7a3fe3df7b2d699753347080c1cbc2127e02d",
+  "protected_predecessor": "fdd7a3fe3df7b2d699753347080c1cbc2127e02d",
+  "synthesis_disposition": "REDUCED_TO_SMALLEST_MISSING_LEMMA",
+  "selected_statement": "For X : Profinite, L : LocallyConstant X ℤ →ₗ[ℤ] ℤ, and v : LocallyConstant X ℤ, weightedBasisBooleanPairing X (fun i => L (integralBasis X i)) v (fun _ => true) = L v.",
+  "preferred_lean_name": "weightedBasisBooleanPairing_functionalWeight_allTrue",
+  "success_dispositions": [
+    "PROVED",
+    "REFUTED_CONCRETE",
+    "REDUCED_TO_EXACT_LEMMA"
+  ],
+  "proof_route": [
+    "View all-true evaluation of the weighted Boolean pairing as a linear functional in v.",
+    "Apply extensionality on integralBasis X.",
+    "Use Module.Basis.repr_self on each basis vector.",
+    "Unfold the weighted Boolean linear combination.",
+    "Evaluate the unique basis coordinate at the all-true selector to obtain L (integralBasis X i).",
+    "Conclude equality of linear functionals and evaluate at arbitrary v."
+  ],
+  "falsification_requirement": "A refutation must exhibit concrete protected-type X, L, and v for which the selected equality fails. Abstract additive toy models are not sufficient.",
+  "next_if_proved": "Specialize to measurePointIntegralFunctional and finiteDeltaPullbackR, materialize finite all-true coefficient reconstruction, transport through protected finite measure isomorphisms and the quotient limit, then prefer the weakest d-applied compatibility sufficient to prove d.hom.app (op Point) = 0.",
+  "claim_boundary": "Selection only. No N2 theorem, finite-stage reconstruction, global weighted coverage, Point-component vanishing, d=0, mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion is admitted."
+}
