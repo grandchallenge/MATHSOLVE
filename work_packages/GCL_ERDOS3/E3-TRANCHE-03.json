@@ -7,7 +7,7 @@
   "primary_frontier": "E3-Q4-DENSITY-LOSS",
   "parent_frontier": "E3-Q4-SERIES",
   "representation_note": "work_packages/GCL_ERDOS3/E3-TRANCHE-03_REPRESENTATION.md",
-  "status": "CAPTURED__PENDING_SYNTHESIS",
+  "status": "ADJUDICATED__VERIFY_G01_PENDING",
   "work_packages": [
     {
       "id": "E3-R01",
@@ -54,7 +54,7 @@
     "recursive extremizer tree",
     "digit-and-carry fiber constraints"
   ],
-  "claim_boundary": "All six external returns are durably captured and structurally bound. No mathematical acceptance, replay, adjudication, or promotion is implied.",
+  "claim_boundary": "Tranche 03 is adjudicated. E3-Q4-GLUING-RADIUS is formulated but not promoted; E3-Q4-DENSITY-LOSS remains active until E3-V03 verifies the G01 equivalence bridge.",
   "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
   "dispatches": {
     "E3-R01": {
@@ -63,7 +63,7 @@
       "issue_number": 788,
       "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/788",
       "task_blob_sha1": "87f8b9619f62447b1425e2b71d3b374d5488220e",
-      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+      "state": "ADJUDICATED__CLOSED_NO_FRONTIER_PROMOTION",
       "result_comment_id": 5974689856,
       "declared_disposition": "PROVED_REPRESENTATION_REDUCTION",
       "result_path": "work_packages/GCL_ERDOS3/results/E3-R01_RESULT.md",
@@ -75,7 +75,7 @@
       "issue_number": 789,
       "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/789",
       "task_blob_sha1": "b7a43c535c59000cfc4cd443b54677ef125d6ca8",
-      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+      "state": "ADJUDICATED__CLOSED_NO_FRONTIER_PROMOTION",
       "result_comment_id": 5974710520,
       "declared_disposition": "FINITE_CARRY_REPRESENTATION_PROVED",
       "result_path": "work_packages/GCL_ERDOS3/results/E3-D01_RESULT.md",
@@ -87,7 +87,7 @@
       "issue_number": 791,
       "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/791",
       "task_blob_sha1": "c0dffd18ba0e0f341630b125ef856624fe54ad8a",
-      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+      "state": "ADJUDICATED__INDEPENDENT_VERIFY_REQUIRED",
       "result_comment_id": 5974734856,
       "declared_disposition": "SMALLER_GLUE_LEMMA",
       "result_path": "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
@@ -99,7 +99,7 @@
       "issue_number": 792,
       "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/792",
       "task_blob_sha1": "599f20f0575eedca5deb5051ccdf3d5914471aee",
-      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+      "state": "ADJUDICATED__CLOSED_NO_FRONTIER_PROMOTION",
       "result_comment_id": 5974760875,
       "declared_disposition": "FINITE_PATTERN_DISCOVERED",
       "result_path": "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md",
@@ -111,7 +111,7 @@
       "issue_number": 793,
       "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/793",
       "task_blob_sha1": "6564ccb50f984f17a9ab498a4043e0a9a7d672de",
-      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+      "state": "ADJUDICATED__CLOSED_NO_FRONTIER_PROMOTION",
       "result_comment_id": 5974733560,
       "declared_disposition": "NO_COUNTEREXAMPLE_IN_DECLARED_FAMILY",
       "result_path": "work_packages/GCL_ERDOS3/results/E3-A03_RESULT.md",
@@ -123,7 +123,7 @@
       "issue_number": 794,
       "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/794",
       "task_blob_sha1": "efc30c907510bf1625a754b5d355f3258549a647",
-      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+      "state": "ADJUDICATED__CLOSED_NO_FRONTIER_PROMOTION",
       "result_comment_id": 5974746941,
       "declared_disposition": "SOURCE_INTERFACE_REQUIRES_BRIDGE",
       "result_path": "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
@@ -137,5 +137,9 @@
     "canonical_issue_number": 789
   },
   "capture_manifest": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json",
-  "synthesis_allowed": true
+  "synthesis_allowed": false,
+  "synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_SYNTHESIS.md",
+  "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json",
+  "selected_successor_candidate": "E3-Q4-GLUING-RADIUS",
+  "verification_gate": "E3-V03"
 }
