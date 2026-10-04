@@ -347,6 +347,17 @@ def validate(root=ROOT):
         ):
             if needle not in wf:
                 errors.append(f'GCL-ERDOS3 intake workflow missing integrity control: {needle}')
+    activation_script=root/'ci/gcl_erdos3_lease_activation.py'
+    if activation_script.is_file():
+        at=activation_script.read_text()
+        for needle in (
+            'ACTIVATION_MARKER = "GCL-LEASE-ACTIVATION/1"',
+            'lease_duration_minutes: 25',
+            'agent_max_execution_minutes: 24',
+            'multiple matching activation markers exist',
+        ):
+            if needle not in at:
+                errors.append(f'GCL-ERDOS3 activation planner missing integrity control: {needle}')
     activator_workflow=root/'.github/workflows/gcl-erdos3-lease-activator.yml'
     if activator_workflow.is_file():
         aw=activator_workflow.read_text()
@@ -355,7 +366,6 @@ def validate(root=ROOT):
             'branches: [main]',
             'issues: write',
             'ci/gcl_erdos3_lease_activation.py',
-            'GCL-LEASE-ACTIVATION/1',
             'Post immutable lease activation marker',
         ):
             if needle not in aw:
