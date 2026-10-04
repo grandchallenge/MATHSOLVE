@@ -29,9 +29,11 @@
   "canonical_mutation_authorized": false,
   "certification_authorized": false,
   "protected_lease_required": true,
-  "dispatch_status": "STAGED_PENDING_PROTECTED_ADMISSION_AND_ISSUE_BYTE_LOCK",
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
   "first_valid_result_lock": "dispatch_level_protected_raw_existence",
   "external_sources_policy": "PROTECTED_PACKET_ONLY",
   "supplementary_artifacts_allowed": false,
-  "claim_boundary": "Evidence only. No contributor return directly establishes the coverage bridge, one-point vanishing for d, d = 0, mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion."
+  "claim_boundary": "Evidence only. No contributor return directly establishes the coverage bridge, one-point vanishing for d, d = 0, mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion.",
+  "protected_solve_staging_merge": "50a82970f039e993062079cb774f4543ca766d7b",
+  "issue_byte_lock_complete": true
 }
