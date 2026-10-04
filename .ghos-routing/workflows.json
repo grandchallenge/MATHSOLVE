@@ -199,7 +199,6 @@
     {
       "path": ".github/workflows/gcl-erdos3-lease-activator.yml",
       "observed_features": [
-        "AUTONOMOUS_WAKE",
         "OPAQUE_EXECUTION",
         "SECRET_CREDENTIAL",
         "WRITE_CAPABLE"
