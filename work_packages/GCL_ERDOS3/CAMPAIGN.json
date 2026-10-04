@@ -48,12 +48,13 @@
     "E3-L01": "NATIVE_FINITE_LIFTED_CERTIFICATE",
     "E3-Q02": "PROVED_NATIVE_LABELLED_FORCING",
     "E3-T01": "NATIVE_SMALLER_MISSING_LEMMA__PHASE_ALIGNMENT_REQUIRED",
-    "E3-A04": "NATIVE_ADVERSARIAL_CLASS_RULED_OUT"
+    "E3-A04": "NATIVE_ADVERSARIAL_CLASS_RULED_OUT",
+    "E3-Q03": "PROVED_NATIVE_ALL_FIBRE_U3_FORCING"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Receive the epoch-4 E3-V03 RESULT/1 on issue 866 within its marker-clock lease; in parallel attack E3-B-QUADRATIC-MOTIF-AMPLIFICATION. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
+  "next_action": "Receive the epoch-4 E3-V03 RESULT/1 on issue 866 within its marker-clock lease; in parallel attack E3-B-JOINT-WITNESS-INCOMPATIBILITY using the all-fibre Q03 forcing theorem. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -238,5 +239,11 @@
   "lease_policy_id": "GCL-IA-LEASE-25M-24M-001",
   "tranche_04_manifest": "work_packages/GCL_ERDOS3/E3-TRANCHE-04.json",
   "tranche_04_synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md",
-  "native_residual": "E3-B-QUADRATIC-MOTIF-AMPLIFICATION"
+  "native_residual": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+  "tranche_04_extension": {
+    "result": "E3-Q03",
+    "disposition": "PROVED_NATIVE_ALL_FIBRE_U3_FORCING",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md",
+    "effect": "All four physical fibres are forced to have U3 norm at least beta^4/(5*16^4); smallest residual becomes joint witness incompatibility."
+  }
 }

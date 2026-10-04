@@ -76,14 +76,22 @@ def validate(root=ROOT):
         errors.append('gluing-radius successor candidate state drift')
     if rows.get('E3-B-FOUR-FIBRE-DEFICIT',{}).get('status')!='OPEN_NATIVE_SUBTARGET':
         errors.append('four-fibre native subtarget state drift')
-    if rows.get('E3-B-QUADRATIC-MOTIF-AMPLIFICATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
-        errors.append('quadratic-motif native residual state drift')
+    if rows.get('E3-B-QUADRATIC-MOTIF-AMPLIFICATION',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
+        errors.append('quadratic-motif reduced residual state drift')
+    if rows.get('E3-B-ALL-FIBRE-U3-FORCING',{}).get('status')!='PROVED_NATIVE':
+        errors.append('all-fibre U3 native lemma state drift')
+    if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('joint-witness native residual state drift')
+    if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('parent')!='E3-B-FOUR-FIBRE-DEFICIT':
+        errors.append('joint-witness native residual parent drift')
+    if rows.get('E3-B-QUADRATIC-MOTIF-AMPLIFICATION',{}).get('successor')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
+        errors.append('quadratic-motif successor drift')
     if rows.get('E3-B-QUADRATIC-MOTIF-AMPLIFICATION',{}).get('parent')!='E3-B-FOUR-FIBRE-DEFICIT':
         errors.append('quadratic-motif residual parent drift')
     density=rows.get('E3-Q4-DENSITY-LOSS',{})
     if density.get('prepared_tranche')!='E3-TRANCHE-04':
         errors.append('density-loss tranche-04 registration drift')
-    if density.get('active_attacks')!=['E3-B-QUADRATIC-MOTIF-AMPLIFICATION']:
+    if density.get('active_attacks')!=['E3-B-JOINT-WITNESS-INCOMPATIBILITY']:
         errors.append('density-loss active native residual drift')
     if rows.get('E3-V-B03',{}).get('status')!='LAUNCHED':
         errors.append('E3-V-B03 epoch-4 marker-clock lease not launched')
@@ -133,8 +141,13 @@ def validate(root=ROOT):
         errors.append('tranche-04 campaign manifest binding drift')
     if campaign.get('tranche_04_synthesis')!='work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md':
         errors.append('tranche-04 campaign synthesis binding drift')
-    if campaign.get('native_residual')!='E3-B-QUADRATIC-MOTIF-AMPLIFICATION':
-        errors.append('tranche-04 native residual drift')
+    if campaign.get('native_residual')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
+        errors.append('Q03 native residual drift')
+    if campaign.get('work_package_results',{}).get('E3-Q03')!='PROVED_NATIVE_ALL_FIBRE_U3_FORCING':
+        errors.append('E3-Q03 native campaign result drift')
+    ext=campaign.get('tranche_04_extension',{})
+    if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
+        errors.append('E3-Q03 campaign extension binding drift')
     if campaign.get('dispatch_state')!='VERIFY_DISPATCHED__AWAITING_RETURN':
         errors.append('E3-V03 dispatch state drift')
     if campaign.get('synthesis_allowed') is not False:
@@ -465,6 +478,7 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-T01_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-A04_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py',
         'work_packages/GCL_ERDOS3/LEASE_POLICY.json',
         'work_packages/GCL_ERDOS3/work_packages/E3-V03.md',
@@ -559,10 +573,14 @@ def validate(root=ROOT):
             if needle not in ci_text:
                 errors.append(f'GCL-ERDOS3 required CI missing: {needle}')
 
+    q03=root/'work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md'
+    if not q03.is_file() or blob(q03)!='a102df8ac5488cadd0af367351f4544e646ad031':
+        errors.append('E3-Q03 native result blob drift')
+
     return errors
 
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    if not e: print('PASS: GCL-ERDOS3 V03 epoch 3 is exact-bound under marker-clock 25m/24m lease; epochs 1-2 remain fenced and replay budget remains one')
+    if not e: print('PASS: GCL-ERDOS3 Q03 proves all-fibre U3 forcing and reduces the native residual to joint witness incompatibility; active parent frontier and V03 gate remain unchanged')
     raise SystemExit(bool(e))
