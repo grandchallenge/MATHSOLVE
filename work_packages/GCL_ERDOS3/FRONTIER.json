@@ -501,9 +501,10 @@
         "E3-Q02",
         "E3-D01"
       ],
-      "statement": "For each adjacent D01 0011 family on beta-dense globally compatible fibres, either a triple balanced correlation has magnitude at least beta^3/(5*16^3) and yields a common nonzero frequency parameter with three linked Fourier coefficients each at least beta^9/(5^3*16^9), or the fully balanced fourfold correlation has magnitude at least beta^4/(5*16^4).",
+      "statement": "For each adjacent D01 0011 family on beta-dense globally compatible fibres, either a triple balanced correlation has magnitude at least beta^3/(5*16^3) and yields a common nonzero frequency parameter with three linked Fourier coefficients each at least beta^3/(20*16^3), or the fully balanced fourfold correlation has magnitude at least beta^4/(5*16^4).",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
-      "claim_boundary": "Native witness-level dichotomy only; no deletion bound or parent-frontier closure."
+      "claim_boundary": "Native witness-level dichotomy only; no deletion bound or parent-frontier closure.",
+      "strengthening": "The aligned Fourier branch uses a direct three-way Parseval threshold partition, avoiding the previous unnecessary cubic loss."
     }
   ],
   "closed_claims": [
