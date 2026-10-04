@@ -8,7 +8,7 @@
       "id": "E3-ROOT",
       "kind": "THEOREM",
       "status": "OPEN",
-      "statement": "Erdős Problem 3: reciprocal divergence should force arithmetic progressions of every finite length."
+      "statement": "Erd\u0151s Problem 3: reciprocal divergence should force arithmetic progressions of every finite length."
     },
     {
       "id": "E3-C-D3",
@@ -84,7 +84,7 @@
         "E3-H-RESIDUE",
         "E3-H-SCALING"
       ],
-      "statement": "For dyadic block density δ_j(A)=|A∩[2^j,2^(j+1))|/2^j, reciprocal divergence is equivalent up to a factor-two blockwise sandwich to divergence of Σ_j δ_j. Hence every nonnegative summable threshold θ_j is exceeded by δ_j for infinitely many j.",
+      "statement": "For dyadic block density \u03b4_j(A)=|A\u2229[2^j,2^(j+1))|/2^j, reciprocal divergence is equivalent up to a factor-two blockwise sandwich to divergence of \u03a3_j \u03b4_j. Hence every nonnegative summable threshold \u03b8_j is exceeded by \u03b4_j for infinitely many j.",
       "completed_by": "E3-B01",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-B01_RESULT.md",
       "independent_verification": "VERIFIED__E3-V01",
@@ -98,11 +98,11 @@
         "E3-B-AP-THRESHOLD",
         "E3-C-D4"
       ],
-      "statement": "For each fixed k≥3, the reciprocal-divergence arithmetic-progression conjecture is equivalent to convergence of Σ_{n≥1} r_k(2^n)/2^n.",
-      "smallest_missing_estimate": "A theorem-grade bound β_k(j) with r_k(2^j)/2^j ≤ β_k(j) and Σ_j β_k(j) < ∞, or an alternative bridge not reducible to blockwise density.",
+      "statement": "For each fixed k\u22653, the reciprocal-divergence arithmetic-progression conjecture is equivalent to convergence of \u03a3_{n\u22651} r_k(2^n)/2^n.",
+      "smallest_missing_estimate": "A theorem-grade bound \u03b2_k(j) with r_k(2^j)/2^j \u2264 \u03b2_k(j) and \u03a3_j \u03b2_k(j) < \u221e, or an alternative bridge not reducible to blockwise density.",
       "completed_by": "E3-B02",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-B02_RESULT.md",
-      "source_confirmation": "Green–Tao 2017, Introduction; Tao–Vu, Additive Combinatorics, Exercise 10.0.6",
+      "source_confirmation": "Green\u2013Tao 2017, Introduction; Tao\u2013Vu, Additive Combinatorics, Exercise 10.0.6",
       "independent_verification": "VERIFIED__E3-V02",
       "verification_evidence": "work_packages/GCL_ERDOS3/results/E3-V02_RESULT.md"
     },
@@ -113,7 +113,7 @@
       "depends_on": [
         "E3-B-SCALE-LOCAL"
       ],
-      "statement": "If r_k(N) is the maximum size of a k-AP-free subset of {1,...,N} and Σ_j r_k(2^j)/2^j converges, then every set of positive integers with divergent reciprocal sum contains a k-term arithmetic progression.",
+      "statement": "If r_k(N) is the maximum size of a k-AP-free subset of {1,...,N} and \u03a3_j r_k(2^j)/2^j converges, then every set of positive integers with divergent reciprocal sum contains a k-term arithmetic progression.",
       "completed_by": "E3-B01",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-B01_RESULT.md",
       "independent_verification": "VERIFIED__E3-V01",
@@ -153,9 +153,9 @@
       "depends_on": [
         "E3-B-AP"
       ],
-      "statement": "Prove Σ_{n≥1} r_4(2^n)/2^n < ∞.",
-      "current_best_pointwise": "Green–Tao: r_4(N) ≪ N (log N)^(-c) for some absolute c>0; this alone does not establish the series convergence.",
-      "smallest_missing_object": "Promoted route E3-Q4-DENSITY-LOSS: for a_n=r_4(2^n)/2^n, prove eventual bounded-step density-dependent loss a_{n+L} <= a_n(1-c a_n^theta) for fixed L>=1, c>0, and 0<theta<1; this implies a_n=O(n^(-1/theta)) and hence Σ a_n<∞.",
+      "statement": "Prove \u03a3_{n\u22651} r_4(2^n)/2^n < \u221e.",
+      "current_best_pointwise": "Green\u2013Tao: r_4(N) \u226a N (log N)^(-c) for some absolute c>0; this alone does not establish the series convergence.",
+      "smallest_missing_object": "Promoted route E3-Q4-DENSITY-LOSS: for a_n=r_4(2^n)/2^n, prove eventual bounded-step density-dependent loss a_{n+L} <= a_n(1-c a_n^theta) for fixed L>=1, c>0, and 0<theta<1; this implies a_n=O(n^(-1/theta)) and hence \u03a3 a_n<\u221e.",
       "active_attacks": [],
       "completed_attacks": {
         "E3-Q01": "EXACT_BLOCKER__FIXED_AMBIENT_GREEN_TAO_DOES_NOT_SUPPLY_INTER_SCALE_TRANSFER",
@@ -173,7 +173,7 @@
         "eventual constant-factor quasi-submultiplicativity a_{n+m} <= C a_n a_m"
       ],
       "supporting_nonpromoted_evidence": {
-        "E3-Q01": "Green–Tao 2017 is fixed-ambient; localization recovers only monotonicity.",
+        "E3-Q01": "Green\u2013Tao 2017 is fixed-ambient; localization recovers only monotonicity.",
         "E3-A02": "Literal submultiplicativity fails; strong multiplicative/power recurrences are constrained by lower constructions.",
         "E3-S03": "Scoped primary-source audit found no post-2017 sequence-level estimate stronger than monotonicity."
       }
@@ -187,7 +187,7 @@
         "E3-Q4-SERIES"
       ],
       "statement": "Let a_n=r_4(2^n)/2^n. Prove that there exist fixed L>=1, c>0, n_0, and 0<theta<1 such that a_{n+L} <= a_n(1-c a_n^theta) for all n>=n_0.",
-      "consequence": "The discrete differential inequality gives a_n=O(n^(-1/theta)); since 1/theta>1, Σ_n a_n converges.",
+      "consequence": "The discrete differential inequality gives a_n=O(n^(-1/theta)); since 1/theta>1, \u03a3_n a_n converges.",
       "provenance": "E3-X01",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-X01_RESULT.md",
       "promotion": "PROMOTED__E3-TRANCHE-02",
@@ -298,7 +298,7 @@
       "depends_on": [
         "E3-B-AP"
       ],
-      "statement": "For each fixed k≥5, prove Σ_{n≥1} r_k(2^n)/2^n < ∞.",
+      "statement": "For each fixed k\u22655, prove \u03a3_{n\u22651} r_k(2^n)/2^n < \u221e.",
       "note": "Deferred while the minimal unresolved k=4 case is attacked."
     },
     {
@@ -354,13 +354,13 @@
         "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md"
       ],
-      "promotion_gate": "E3-V03",
+      "promotion_gate": "E3-V03__FRESH_LEASE_REQUIRED",
       "claim_boundary": "Formulated successor candidate only; not active and not proved."
     },
     {
       "id": "E3-V-B03",
       "kind": "VERIFICATION",
-      "status": "LAUNCHED",
+      "status": "LEASE_EXPIRED__REISSUE_REQUIRED",
       "depends_on": [
         "E3-B-GLUING-RADIUS-EQUIV"
       ],
@@ -371,34 +371,15 @@
       "replay_budget_consumed": 0,
       "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
       "expired_dispatch": {
-        "dispatch_id": "GCL-ERDOS3-E3-V03-IA-003",
-        "issue_number": 820,
-        "lease_epoch": 3,
-        "lease_attempt_ordinal": 3,
-        "valid_result_count": 0,
-        "replay_budget_consumed": false,
-        "lease_activation_comment_id": 5979703216,
-        "lease_started_at_observed": "2026-10-04T12:00:55Z",
-        "lease_expires_at_observed": "2026-10-04T12:25:55Z",
-        "clock_model": "GITHUB_ACTIVATION_COMMENT"
-      },
-      "dispatch": {
         "dispatch_id": "GCL-ERDOS3-E3-V03-IA-004",
-        "assignment_id": "E3-V03",
-        "agent_ref": "INDEPENDENT-AGENT-E3-V03-004",
         "issue_number": 866,
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/866",
-        "task_commit": "eb94ed1df6c3743fc8a186dcc423ce372fb512c8",
-        "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
-        "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01",
         "lease_epoch": 4,
         "lease_attempt_ordinal": 4,
-        "lease_clock_source": "GITHUB_ACTIVATION_COMMENT",
-        "lease_duration_minutes": 25,
-        "agent_max_execution_minutes": 24,
-        "replay_budget_ordinal": 1,
-        "state": "DISPATCHED__AWAITING_RETURN",
-        "external_sources": "PROTECTED_PACKET_ONLY"
+        "lease_activation_comment_id": 5981972291,
+        "lease_started_at_observed": "2026-10-04T16:13:54Z",
+        "lease_expires_at_observed": "2026-10-04T16:38:54Z",
+        "valid_result_count": 0,
+        "replay_budget_consumed": false
       }
     },
     {
@@ -580,7 +561,7 @@
   "active_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "known_falsification_boundary": "Reciprocal divergence alone does not imply positive upper asymptotic density. More sharply, for every nonsummable threshold sequence θ_j∈[0,1], there exists a reciprocally divergent set whose dyadic densities never exceed θ_j. Thus summability is qualitatively sharp for any bridge using only blockwise density exceedance.",
+  "known_falsification_boundary": "Reciprocal divergence alone does not imply positive upper asymptotic density. More sharply, for every nonsummable threshold sequence \u03b8_j\u2208[0,1], there exists a reciprocally divergent set whose dyadic densities never exceed \u03b8_j. Thus summability is qualitatively sharp for any bridge using only blockwise density exceedance.",
   "scheduling_rule": "Only unresolved nodes may receive ADVANCE_FRONTIER; closed nodes may receive INDEPENDENT_VERIFY only while their explicit verification budget remains open.",
   "last_tranche": {
     "id": "E3-TRANCHE-02",
@@ -620,10 +601,10 @@
     "parent_theorem_effect": "NONE"
   },
   "next_tranche": {
-    "id": "E3-TRANCHE-04-Q06-EXTENSION",
-    "status": "NATIVE_DERIVATIVE_INTERFACE_REGISTERED__VERIFY_LEASE_SEPARATE",
-    "objective": "Attack E3-B-LINEAR-WITNESS-AMPLIFICATION and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT; keep V03 as a separate promotion gate.",
-    "active_frontier_effect": "NONE",
-    "verification_dependency": "E3-V03 remains required only for promotion of E3-Q4-GLUING-RADIUS."
+    "id": "E3-V03-REISSUE",
+    "status": "LEASE_REQUIRED",
+    "objective": "Reissue the same independent verification under a fresh lease epoch without consuming a second mathematical replay.",
+    "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
+    "replay_budget_ordinal": 1
   }
 }
