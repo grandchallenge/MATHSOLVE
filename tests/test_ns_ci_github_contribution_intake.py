@@ -326,5 +326,55 @@ class CmdgP3MResultGrammarTests(unittest.TestCase):
             parse_result_comment(body)
 
 
+CMDG_COV_VALID_BODY = """GCL-CONTRIBUTION-RESULT/1
+dispatch_id: CMDG-P3M-COV-WP-A-IA-001
+agent_ref: INDEPENDENT-AGENT-CMDG-COV-A
+assignment: CMDG-P3M-COV-WP-A
+disposition: PROVED_REDUCTION
+context_class: ZERO_CONTEXT
+external_sources: PROTECTED_PACKET_ONLY
+timebox_observed: YES
+
+## Strongest exact statement
+
+A bounded weighted one-point coverage reduction.
+
+## Derivation
+
+A complete derivation from the protected packet.
+
+## Assumptions beyond bootstrap
+
+NONE
+
+## Verification / falsification hooks
+
+Check the weighted one-point interface directly.
+
+## Claim boundary
+
+This does not prove d equals zero or CM4.
+
+## Next residual
+
+Formalize the smallest missing compatibility lemma.
+"""
+
+
+class CmdgP3MCoverageResultGrammarTests(unittest.TestCase):
+    def test_valid_cmdg_coverage_comment_parses(self) -> None:
+        parsed = parse_result_comment(CMDG_COV_VALID_BODY)
+        self.assertEqual(parsed["profile"], "CMDG-CM4-COV")
+        self.assertEqual(parsed["preamble"]["agent_ref"], "INDEPENDENT-AGENT-CMDG-COV-A")
+
+    def test_cmdg_coverage_rejects_wrong_assignment(self) -> None:
+        body = CMDG_COV_VALID_BODY.replace(
+            "assignment: CMDG-P3M-COV-WP-A",
+            "assignment: CMDG-P3M-COV-WP-E",
+        )
+        with self.assertRaises(IntakeError):
+            parse_result_comment(body)
+
+
 if __name__ == "__main__":
     unittest.main()
