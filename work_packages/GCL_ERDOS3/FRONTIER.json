@@ -207,7 +207,7 @@
       },
       "research_note": "work_packages/GCL_ERDOS3/E3-TRANCHE-03_REPRESENTATION.md",
       "active_attacks": [
-        "E3-B-QUADRATIC-MOTIF-AMPLIFICATION"
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
       ],
       "dispatch_state": "ADJUDICATED__VERIFY_PENDING",
       "dispatch_task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
@@ -279,7 +279,8 @@
         "E3-L01": "FINITE_LIFTED_CERTIFICATE_PROVED__NO_PARENT_PROMOTION",
         "E3-Q02": "PROVED_NATIVE_LABELLED_FORCING__NO_PARENT_PROMOTION",
         "E3-T01": "SCALAR_U3_ACCUMULATION_INSUFFICIENT__PHASE_ALIGNMENT_REQUIRED",
-        "E3-A04": "SYNCHRONIZED_COMMON_CORE_COUNTEREXAMPLE_CLASS_RULED_OUT"
+        "E3-A04": "SYNCHRONIZED_COMMON_CORE_COUNTEREXAMPLE_CLASS_RULED_OUT",
+        "E3-Q03": "PROVED_NATIVE_ALL_FIBRE_U3_FORCING__NO_PARENT_PROMOTION"
       },
       "synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_SYNTHESIS.md",
       "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json",
@@ -287,7 +288,7 @@
       "verification_gate": "E3-V03",
       "tranche_04_manifest": "work_packages/GCL_ERDOS3/E3-TRANCHE-04.json",
       "tranche_04_synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md",
-      "native_residual": "E3-B-QUADRATIC-MOTIF-AMPLIFICATION"
+      "native_residual": "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
     },
     {
       "id": "E3-QK5-SERIES",
@@ -419,7 +420,7 @@
     {
       "id": "E3-B-QUADRATIC-MOTIF-AMPLIFICATION",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-FOUR-FIBRE-DEFICIT",
       "statement": "Retain explicit quantitative quadratic witnesses for the physical fibres and prove that the translated witness relations across the 10-family L01 core cannot all coexist unless at least c*beta^(1+theta)*N points are deleted for some fixed 0<theta<1.",
       "sufficient_for": [
@@ -436,7 +437,50 @@
         "motif amplification from the nine L01 residual clause types",
         "quadratic witness/frequency-map incompatibility before lossy phase localization"
       ],
-      "claim_boundary": "Smallest formulated native residual after tranche 04; open and unproved."
+      "claim_boundary": "Smallest formulated native residual after tranche 04; open and unproved.",
+      "reduced_by": "E3-B-ALL-FIBRE-U3-FORCING",
+      "successor": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "reduction_note": "Q03 discharges scalar structure forcing for all four physical fibres; remaining content is joint identity/alignment of correlation witnesses across carry families."
+    },
+    {
+      "id": "E3-B-ALL-FIBRE-U3-FORCING",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-FOUR-FIBRE-DEFICIT",
+      "depends_on": [
+        "E3-Q02",
+        "E3-D01"
+      ],
+      "statement": "For beta-dense four-fibre globally 4-AP-free gluings and N>=4, the adjacent D01 0011 families F1,F4,F7 force every physical fibre to have balanced-indicator U3 norm at least beta^4/(5*16^4) in the Q02 cyclic embedding.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md",
+      "claim_boundary": "Native proved structural forcing only; no deletion bound or parent-frontier closure."
+    },
+    {
+      "id": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-FOUR-FIBRE-DEFICIT",
+      "depends_on": [
+        "E3-B-ALL-FIBRE-U3-FORCING",
+        "E3-L01"
+      ],
+      "statement": "From the large surviving triple/quadruple correlations and all-fibre U3 structure, retain compatible derivative-frequency/quadratic witnesses for the same physical fibres across the 10-family L01 core and prove that the joint witness relations force a deletion cost c*beta^(1+theta)*N for some theta<1.",
+      "attack_lanes": [
+        "derivative-frequency compatibility before lossy quadratic-phase integration",
+        "positive-density amplification of the nine L01 residual clause motifs",
+        "joint quadratic-factor witness incompatibility across carry translations"
+      ],
+      "sufficient_for": [
+        "E3-B-FOUR-FIBRE-DEFICIT"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-L01_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q02_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-T01_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md"
+      ],
+      "claim_boundary": "Smallest current native residual; open and unproved."
     }
   ],
   "closed_claims": [
@@ -487,9 +531,9 @@
     "parent_theorem_effect": "NONE"
   },
   "next_tranche": {
-    "id": "E3-TRANCHE-04-FOUR-FIBRE-DEFICIT",
-    "status": "NATIVE_SYNTHESIS_REGISTERED__VERIFY_LEASE_ACTIVE",
-    "objective": "Attack E3-B-QUADRATIC-MOTIF-AMPLIFICATION while V03 epoch 4 independently verifies the G01 gluing-radius bridge.",
+    "id": "E3-TRANCHE-04-Q03-EXTENSION",
+    "status": "NATIVE_REDUCTION_REGISTERED__VERIFY_LEASE_ACTIVE",
+    "objective": "Attack E3-B-JOINT-WITNESS-INCOMPATIBILITY while V03 epoch 4 independently verifies the G01 bridge.",
     "active_frontier_effect": "NONE",
     "verification_dependency": "E3-V03 remains required only for promotion of E3-Q4-GLUING-RADIUS.",
     "lease_epoch": 4,
