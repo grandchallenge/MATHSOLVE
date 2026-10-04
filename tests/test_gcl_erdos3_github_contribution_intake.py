@@ -26,6 +26,8 @@ agent_ref: INDEPENDENT-AGENT-E3-V03-001
 disposition: VERIFIED
 context_class: ZERO_CONTEXT
 external_sources: PROTECTED_PACKET_ONLY
+lease_epoch: 2
+agent_elapsed_minutes: 24
 
 ## Strongest exact statement
 
@@ -92,6 +94,15 @@ class GclErdos3IntakeTests(unittest.TestCase):
             "dispatch_status": "READY_FOR_GITHUB_COMMENT",
             "first_valid_result_lock": True,
             "automated_intake_canonical_effect": False,
+            "lease_policy_id": "GCL-IA-LEASE-25M-24M-001",
+            "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
+            "lease_epoch": 2,
+            "lease_attempt_ordinal": 2,
+            "lease_started_at": "2026-10-04T00:00:00Z",
+            "lease_expires_at": "2026-10-04T00:25:00Z",
+            "lease_duration_minutes": 25,
+            "agent_max_execution_minutes": 24,
+            "return_grace_minutes": 1,
             "allowed_dispositions": ["VERIFIED", "REFUTED", "EXACT_BLOCKER"],
             "required_sections": [
                 "Strongest exact statement",
@@ -120,7 +131,7 @@ class GclErdos3IntakeTests(unittest.TestCase):
             "comment": {
                 "id": 123456,
                 "body": body,
-                "created_at": "2026-10-04T00:00:00Z",
+                "created_at": "2026-10-04T00:24:00Z",
                 "user": {"login": "independent-contributor"},
             },
         }
@@ -166,6 +177,22 @@ class GclErdos3IntakeTests(unittest.TestCase):
         event["issue"]["body"] = BOOTSTRAP + "tamper\n"
         with self.assertRaisesRegex(IntakeError, "issue body differs"):
             emit_intake(event, self.root, self.root / "out")
+
+    def test_expired_comment_is_rejected(self) -> None:
+        event = self.event()
+        event["comment"]["created_at"] = "2026-10-04T00:25:01Z"
+        with self.assertRaisesRegex(IntakeError, "lease expired"):
+            emit_intake(event, self.root, self.root / "out")
+
+    def test_stale_lease_epoch_is_rejected(self) -> None:
+        bad = RESULT.replace("lease_epoch: 2", "lease_epoch: 1")
+        with self.assertRaisesRegex(IntakeError, "lease epoch"):
+            emit_intake(self.event(body=bad), self.root, self.root / "out")
+
+    def test_agent_execution_cap_is_rejected(self) -> None:
+        bad = RESULT.replace("agent_elapsed_minutes: 24", "agent_elapsed_minutes: 25")
+        with self.assertRaisesRegex(IntakeError, "24-minute cap"):
+            emit_intake(self.event(body=bad), self.root, self.root / "out")
 
 
 if __name__ == "__main__":

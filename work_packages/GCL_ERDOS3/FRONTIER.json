@@ -345,13 +345,13 @@
         "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md"
       ],
-      "promotion_gate": "E3-V03",
+      "promotion_gate": "E3-V03__FRESH_LEASE_REQUIRED",
       "claim_boundary": "Formulated successor candidate only; not active and not proved."
     },
     {
       "id": "E3-V-B03",
       "kind": "VERIFICATION",
-      "status": "LAUNCHED",
+      "status": "LEASE_EXPIRED__REISSUE_REQUIRED",
       "depends_on": [
         "E3-B-GLUING-RADIUS-EQUIV"
       ],
@@ -359,17 +359,17 @@
       "work_package": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
       "frontier_action": "INDEPENDENT_VERIFY",
       "replay_budget": 1,
-      "dispatch": {
+      "replay_budget_consumed": 0,
+      "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
+      "expired_dispatch": {
         "dispatch_id": "GCL-ERDOS3-E3-V03-IA-001",
-        "assignment_id": "E3-V03",
-        "agent_ref": "INDEPENDENT-AGENT-E3-V03-001",
         "issue_number": 798,
-        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/798",
-        "task_commit": "eb94ed1df6c3743fc8a186dcc423ce372fb512c8",
-        "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
-        "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01",
-        "state": "DISPATCHED__AWAITING_RETURN",
-        "external_sources": "PROTECTED_PACKET_ONLY"
+        "lease_epoch": 1,
+        "lease_attempt_ordinal": 1,
+        "lease_started_at": "2026-10-04T00:15:38Z",
+        "lease_expires_at": "2026-10-04T00:40:38Z",
+        "valid_result_count": 0,
+        "replay_budget_consumed": false
       }
     }
   ],
@@ -421,15 +421,10 @@
     "parent_theorem_effect": "NONE"
   },
   "next_tranche": {
-    "id": "E3-V03",
-    "status": "DISPATCHED__AWAITING_RETURN",
-    "manifest": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
-    "objective": "Independently replay the G01 gluing-radius equivalence before replacing the active frontier.",
-    "target_node": "E3-B-GLUING-RADIUS-EQUIV",
-    "candidate_successor": "E3-Q4-GLUING-RADIUS",
-    "issue_number": 798,
-    "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/798",
-    "task_commit": "eb94ed1df6c3743fc8a186dcc423ce372fb512c8",
-    "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01"
+    "id": "E3-V03-REISSUE",
+    "status": "LEASE_REQUIRED",
+    "objective": "Reissue the same independent verification under a fresh lease epoch without consuming a second mathematical replay.",
+    "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
+    "replay_budget_ordinal": 1
   }
 }

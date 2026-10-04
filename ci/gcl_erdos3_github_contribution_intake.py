@@ -5,6 +5,7 @@ import hashlib
 import json
 import re
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -22,6 +23,10 @@ PREAMBLE_KEYS = (
     "disposition",
     "context_class",
     "external_sources",
+)
+LEASE_PREAMBLE_KEYS = PREAMBLE_KEYS + (
+    "lease_epoch",
+    "agent_elapsed_minutes",
 )
 
 
@@ -44,14 +49,14 @@ def sha256_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
-def parse_result_comment(body: str, allowed_dispositions: set[str], required_sections: list[str]) -> dict[str, Any]:
+def parse_result_comment(body: str, allowed_dispositions: set[str], required_sections: list[str], preamble_keys: tuple[str, ...] = PREAMBLE_KEYS) -> dict[str, Any]:
     if not isinstance(body, str) or not body.startswith(MARKER + "\n"):
         raise IntakeError(f"comment must begin exactly with {MARKER}")
 
     lines = body.splitlines()
     preamble: dict[str, str] = {}
     cursor = 1
-    for key in PREAMBLE_KEYS:
+    for key in preamble_keys:
         prefix = key + ": "
         if cursor >= len(lines) or not lines[cursor].startswith(prefix):
             raise IntakeError(f"expected preamble field {key}")
@@ -109,6 +114,56 @@ def load_dispatch(root: Path, dispatch_id: str) -> dict[str, Any]:
         return _obj(json.loads(path.read_text(encoding="utf-8")), "dispatch")
     except json.JSONDecodeError as exc:
         raise IntakeError(f"dispatch record is invalid JSON: {exc}") from exc
+
+
+def _parse_utc(value: Any, label: str) -> datetime:
+    if not isinstance(value, str) or not value.endswith("Z"):
+        raise IntakeError(f"{label} must be an RFC3339 UTC timestamp")
+    try:
+        dt = datetime.fromisoformat(value[:-1] + "+00:00")
+    except ValueError as exc:
+        raise IntakeError(f"{label} is invalid") from exc
+    return dt.astimezone(timezone.utc)
+
+
+def validate_lease_freshness(dispatch: dict[str, Any], comment: dict[str, Any], parsed: dict[str, Any]) -> None:
+    policy_id = dispatch.get("lease_policy_id")
+    if policy_id is None:
+        return
+    if policy_id != "GCL-IA-LEASE-25M-24M-001":
+        raise IntakeError("unsupported lease policy")
+    if dispatch.get("lease_duration_minutes") != 25:
+        raise IntakeError("lease duration drift")
+    if dispatch.get("agent_max_execution_minutes") != 24:
+        raise IntakeError("agent execution cap drift")
+    if dispatch.get("return_grace_minutes") != 1:
+        raise IntakeError("return grace drift")
+    if dispatch.get("state") != "DISPATCHED__AWAITING_RETURN":
+        raise IntakeError("lease is not active")
+    if dispatch.get("dispatch_status") != "READY_FOR_GITHUB_COMMENT":
+        raise IntakeError("dispatch is not intake-ready")
+
+    start = _parse_utc(dispatch.get("lease_started_at"), "lease_started_at")
+    expiry = _parse_utc(dispatch.get("lease_expires_at"), "lease_expires_at")
+    if int((expiry - start).total_seconds()) != 25 * 60:
+        raise IntakeError("lease expiry is not exactly 25 minutes after start")
+
+    created = _parse_utc(comment.get("created_at"), "comment.created_at")
+    if created < start:
+        raise IntakeError("result predates active lease")
+    if created > expiry:
+        raise IntakeError("lease expired before result comment")
+
+    pre = parsed["preamble"]
+    try:
+        epoch = int(pre.get("lease_epoch", ""))
+        elapsed = int(pre.get("agent_elapsed_minutes", ""))
+    except ValueError as exc:
+        raise IntakeError("lease_epoch and agent_elapsed_minutes must be integers") from exc
+    if epoch != dispatch.get("lease_epoch"):
+        raise IntakeError("stale or mismatched lease epoch")
+    if elapsed < 0 or elapsed > 24:
+        raise IntakeError("agent_elapsed_minutes exceeds 24-minute cap")
 
 
 def validate_dispatch_integrity(root: Path, dispatch: dict[str, Any], issue: dict[str, Any]) -> None:
@@ -182,8 +237,10 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], d
     if not isinstance(sections, list) or not sections or not all(isinstance(x, str) for x in sections):
         raise IntakeError("protected dispatch lacks required_sections")
 
-    parsed = parse_result_comment(body, set(allowed), sections)
+    preamble_keys = LEASE_PREAMBLE_KEYS if dispatch.get("lease_policy_id") else PREAMBLE_KEYS
+    parsed = parse_result_comment(body, set(allowed), sections, preamble_keys)
     validate_dispatch_integrity(root, dispatch, issue)
+    validate_lease_freshness(dispatch, comment, parsed)
 
     pre = parsed["preamble"]
     if pre["dispatch_id"] != dispatch.get("dispatch_id"):
@@ -247,6 +304,11 @@ def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, An
         "canonical_claim_effect": False,
         "frontier_effect": False,
         "certification_effect": False,
+        "lease_policy_id": dispatch.get("lease_policy_id"),
+        "lease_epoch": dispatch.get("lease_epoch"),
+        "lease_started_at": dispatch.get("lease_started_at"),
+        "lease_expires_at": dispatch.get("lease_expires_at"),
+        "agent_elapsed_minutes_declared": parsed["preamble"].get("agent_elapsed_minutes"),
         "recorded_by": "github-actions:gcl-erdos3-controlled-intake",
     }
 

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_INDEPENDENT_AGENT_LEASE_POLICY",
+  "campaign": "GCL-ERDOS3",
+  "policy_id": "GCL-IA-LEASE-25M-24M-001",
+  "initial_lease_minutes": 25,
+  "agent_max_execution_minutes": 24,
+  "return_grace_minutes": 1,
+  "lease_clock": {
+    "start": "canonical_dispatch_issue_created_at",
+    "expiry": "lease_started_at + 25 minutes",
+    "rule": "A dispatch issue may remain open as a historical return surface, but no RESULT/1 comment created after lease_expires_at is admissible."
+  },
+  "lease_identity": {
+    "atomic_unit": [
+      "assignment_id",
+      "dispatch_id",
+      "agent_ref",
+      "lease_epoch"
+    ],
+    "lease_epoch_monotone": true,
+    "fresh_dispatch_identity_required_after_expiry": true,
+    "stale_epoch_fenced": true
+  },
+  "expiry_semantics": {
+    "silent_expiry_state": "LEASE_EXPIRED__NO_RETURN",
+    "replay_budget_consumed": false,
+    "mathematical_replay_completed": false,
+    "successor_effect": "NONE",
+    "canonical_claim_effect": "NONE",
+    "reassignment_requires_fresh_dispatch": true
+  },
+  "execution_semantics": {
+    "agent_max_minutes": 24,
+    "requirement": "The agent must stop substantive work by 24 elapsed minutes and use the remaining lease margin only for final return transport.",
+    "declared_elapsed_minutes_required": true,
+    "maximum_declared_elapsed_minutes": 24
+  },
+  "intake_semantics": {
+    "accept_only_before_or_at_expiry": true,
+    "reject_stale_dispatch_even_if_issue_remains_open": true,
+    "reject_superseded_lease_epoch": true,
+    "first_valid_result_lock": true,
+    "automated_intake_canonical_effect": false
+  },
+  "authority": {
+    "protected_branch": "main",
+    "mutation_rule": "Lease creation, expiry, supersession, and reassignment are durable protected-state mutations. Issue comments alone cannot extend or revive a lease.",
+    "human_extension_allowed": false
+  },
+  "claim_boundary": "This policy governs worker allocation and evidence freshness only. It does not prove, verify, promote, or refute any mathematical claim."
+}
