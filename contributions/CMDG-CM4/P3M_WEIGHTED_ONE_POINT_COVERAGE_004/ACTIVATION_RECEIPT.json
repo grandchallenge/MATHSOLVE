@@ -55,5 +55,13 @@
   "mathematical_correctness_adjudicated": false,
   "certification_effect": false,
   "claim_promotion_effect": false,
-  "claim_boundary": "Activation does not prove the weighted coverage bridge, one-point vanishing for d, d = 0, mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion."
+  "claim_boundary": "Activation does not prove the weighted coverage bridge, one-point vanishing for d, d = 0, mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion.",
+  "protected_solve_open_merge": "b4e40f29021d9fe71bf569052aeac5f486450163",
+  "launch_comments_posted": true,
+  "launch_comment_ids": {
+    "CMDG-P3M-COV-WP-A-IA-001": 5975083159,
+    "CMDG-P3M-COV-WP-B-IA-001": 5975083535,
+    "CMDG-P3M-COV-WP-C-IA-001": 5975083915,
+    "CMDG-P3M-COV-WP-D-IA-001": 5975084326
+  }
 }
