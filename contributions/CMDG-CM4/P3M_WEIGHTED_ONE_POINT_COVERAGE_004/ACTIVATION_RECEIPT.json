@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_COHORT_ACTIVATION_RECEIPT",
+  "receipt_id": "CMDG-P3M-COV-BLIND-COHORT-001:ACTIVATION-001",
+  "campaign": "CMDG-CM4-COV",
+  "work_package": "P3-M-WEIGHTED-ONE-POINT-COVERAGE-004",
+  "protected_programme_predecessor": "fdd7a3fe3df7b2d699753347080c1cbc2127e02d",
+  "protected_solve_staging_merge": "50a82970f039e993062079cb774f4543ca766d7b",
+  "cohort_id": "CMDG-P3M-COV-BLIND-COHORT-001",
+  "cohort_state": "OPEN",
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "issue_byte_lock_complete": true,
+  "issue_bindings": [
+    {
+      "issue": 800,
+      "dispatch_id": "CMDG-P3M-COV-WP-A-IA-001",
+      "title_match": true,
+      "body_match": true
+    },
+    {
+      "issue": 801,
+      "dispatch_id": "CMDG-P3M-COV-WP-B-IA-001",
+      "title_match": true,
+      "body_match": true
+    },
+    {
+      "issue": 802,
+      "dispatch_id": "CMDG-P3M-COV-WP-C-IA-001",
+      "title_match": true,
+      "body_match": true
+    },
+    {
+      "issue": 803,
+      "dispatch_id": "CMDG-P3M-COV-WP-D-IA-001",
+      "title_match": true,
+      "body_match": true
+    }
+  ],
+  "protected_job_blobs": {
+    "CMDG-P3M-COV-WP-A-IA-001": "cd4f5b9887c20f669d35fdc5861ebb2fcf0163ba",
+    "CMDG-P3M-COV-WP-B-IA-001": "fe41384f27207b93433219d166e15fe66c83f524",
+    "CMDG-P3M-COV-WP-C-IA-001": "6c778e39d124a4bfd947c7e571b55082e49d15f9",
+    "CMDG-P3M-COV-WP-D-IA-001": "aef8e8754fbf42c30db6116ee78e75ace5710d98"
+  },
+  "protected_launch_blobs": {
+    "CMDG-P3M-COV-WP-A-IA-001": "7871a4ec7b416de41f64a933db6364853d2dbfca",
+    "CMDG-P3M-COV-WP-B-IA-001": "5b90587da9f1080fc73fd479e51c52e4195ee92b",
+    "CMDG-P3M-COV-WP-C-IA-001": "f3bb3641931839ff54b6a05fe291f1849a6d7f98",
+    "CMDG-P3M-COV-WP-D-IA-001": "5890d20cf5449df04c56659bc5f4bb7c204383f8"
+  },
+  "controlled_intake_parser_blob": "f56bf3e346a9b9d910fc0d6322ba2bce0b8848a0",
+  "intake_workflow_blob": "8e0816fe893be06853b6d21835f700cf211b0d7e",
+  "synthesis_allowed": false,
+  "activation_effect": "dispatch execution and controlled evidence intake only",
+  "mathematical_correctness_adjudicated": false,
+  "certification_effect": false,
+  "claim_promotion_effect": false,
+  "claim_boundary": "Activation does not prove the weighted coverage bridge, one-point vanishing for d, d = 0, mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion."
+}
