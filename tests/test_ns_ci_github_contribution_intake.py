@@ -376,5 +376,55 @@ class CmdgP3MCoverageResultGrammarTests(unittest.TestCase):
             parse_result_comment(body)
 
 
+CMDG_N3_VALID_BODY = """GCL-CONTRIBUTION-RESULT/1
+dispatch_id: CMDG-P3M-N3-WP-A-IA-001
+agent_ref: INDEPENDENT-AGENT-CMDG-N3-A
+assignment: CMDG-P3M-N3-WP-A
+disposition: FORMAL_LEMMA_PROVED
+context_class: ZERO_CONTEXT
+external_sources: PROTECTED_PACKET_ONLY
+timebox_observed: YES
+
+## Strongest exact statement
+
+The finite coefficient all-true reconstruction identity holds at the protected types.
+
+## Derivation
+
+A complete derivation from the protected packet.
+
+## Assumptions beyond bootstrap
+
+NONE
+
+## Verification / falsification hooks
+
+Replay the coefficient transport and all-true evaluation directly.
+
+## Claim boundary
+
+This does not prove Point-component vanishing or CM4.
+
+## Next residual
+
+Formalize the weakest downstream compatibility bridge.
+"""
+
+
+class CmdgP3MN3ResultGrammarTests(unittest.TestCase):
+    def test_valid_cmdg_n3_comment_parses(self) -> None:
+        parsed = parse_result_comment(CMDG_N3_VALID_BODY)
+        self.assertEqual(parsed["profile"], "CMDG-CM4-N3")
+        self.assertEqual(parsed["preamble"]["agent_ref"], "INDEPENDENT-AGENT-CMDG-N3-A")
+
+    def test_cmdg_n3_rejects_wrong_assignment(self) -> None:
+        body = CMDG_N3_VALID_BODY.replace(
+            "assignment: CMDG-P3M-N3-WP-A",
+            "assignment: CMDG-P3M-N3-WP-E",
+        )
+        with self.assertRaises(IntakeError):
+            parse_result_comment(body)
+
+
 if __name__ == "__main__":
     unittest.main()
