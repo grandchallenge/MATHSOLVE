@@ -585,7 +585,7 @@ def validate(root=ROOT):
     if not q03.is_file() or blob(q03)!='a102df8ac5488cadd0af367351f4544e646ad031':
         errors.append('E3-Q03 native result blob drift')
     q04=root/'work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md'
-    if not q04.is_file() or blob(q04)!='912aefd88752f888167838eafca9f6c77cc5080f':
+    if not q04.is_file() or blob(q04)!='37fd7dd0643153b597acb7b5c2b219d086010a04':
         errors.append('E3-Q04 native result blob drift')
 
     return errors
