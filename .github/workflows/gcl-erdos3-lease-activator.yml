@@ -1,0 +1,102 @@
+name: GCL-ERDOS3 lease activator
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: gcl-erdos3-lease-activator
+  cancel-in-progress: false
+
+jobs:
+  activate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Locate active E3-V03 dispatch
+        id: probe
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          c=json.loads(Path("work_packages/GCL_ERDOS3/CAMPAIGN.json").read_text(encoding="utf-8"))
+          row=c.get("active_dispatches",{}).get("E3-V03",{})
+          with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as f:
+              print(f"issue={row.get('issue_number','')}",file=f)
+              print(f"dispatch={row.get('dispatch_id','')}",file=f)
+          PY
+
+      - name: Read canonical issue and comments
+        if: steps.probe.outputs.issue != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ steps.probe.outputs.issue }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE" > "$RUNNER_TEMP/issue.json"
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments?per_page=100" > "$RUNNER_TEMP/comments.json"
+
+      - name: Plan exact activation
+        if: steps.probe.outputs.issue != ''
+        id: plan
+        run: |
+          python ci/gcl_erdos3_lease_activation.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --issue-json "$RUNNER_TEMP/issue.json" \
+            --comments-json "$RUNNER_TEMP/comments.json" \
+            --output "$RUNNER_TEMP/activation.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])/"activation.json"
+          d=json.loads(p.read_text(encoding="utf-8"))
+          with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as f:
+              print(f"activate={str(bool(d.get('activate'))).lower()}",file=f)
+              print(f"reason={d.get('reason','')}",file=f)
+              print(f"issue_number={d.get('issue_number','')}",file=f)
+              print(f"current_title={d.get('current_title','')}",file=f)
+              print(f"expected_title={d.get('expected_title','')}",file=f)
+          if d.get("activate"):
+              (Path(os.environ["RUNNER_TEMP"])/"activation-marker.md").write_text(d["marker_body"],encoding="utf-8")
+          PY
+
+      - name: Switch canonical issue to active title
+        if: steps.plan.outputs.activate == 'true' && steps.plan.outputs.current_title != steps.plan.outputs.expected_title
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ steps.plan.outputs.issue_number }}
+          EXPECTED_TITLE: ${{ steps.plan.outputs.expected_title }}
+        run: |
+          gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/$ISSUE" -f title="$EXPECTED_TITLE" > "$RUNNER_TEMP/title-update.json"
+
+      - name: Post immutable lease activation marker
+        if: steps.plan.outputs.activate == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ steps.plan.outputs.issue_number }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" -F body=@"$RUNNER_TEMP/activation-marker.md" > "$RUNNER_TEMP/activation-comment.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])/"activation-comment.json"
+          d=json.loads(p.read_text(encoding="utf-8"))
+          print(f"LEASE_ACTIVATED comment_id={d['id']} created_at={d['created_at']}")
+          PY
+
+      - name: Record no-op
+        if: steps.probe.outputs.issue == '' || steps.plan.outputs.activate != 'true'
+        run: echo "No lease activation mutation required."

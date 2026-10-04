@@ -5,7 +5,7 @@ import hashlib
 import json
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -14,7 +14,8 @@ BASE_REL = Path("work_packages/GCL_ERDOS3")
 DISPATCH_DIR_REL = BASE_REL / "dispatches"
 MARKER = "GCL-CONTRIBUTION-RESULT/1"
 DISPATCH_MARKER = "GCL-CONTRIBUTION-DISPATCH/1"
-DISPATCH_RE = re.compile(r"^GCL-ERDOS3-E3-[A-Z0-9]+-IA-001$")
+LEASE_ACTIVATION_MARKER = "GCL-LEASE-ACTIVATION/1"
+DISPATCH_RE = re.compile(r"^GCL-ERDOS3-E3-[A-Z0-9]+-IA-\d{3}$")
 
 PREAMBLE_KEYS = (
     "dispatch_id",
@@ -126,10 +127,61 @@ def _parse_utc(value: Any, label: str) -> datetime:
     return dt.astimezone(timezone.utc)
 
 
-def validate_lease_freshness(dispatch: dict[str, Any], comment: dict[str, Any], parsed: dict[str, Any]) -> None:
+def parse_activation_marker(body: Any) -> dict[str, str] | None:
+    if not isinstance(body, str) or not body.startswith(LEASE_ACTIVATION_MARKER + "\n"):
+        return None
+    lines = body.splitlines()
+    expected = ("dispatch_id", "assignment", "lease_epoch", "lease_duration_minutes", "agent_max_execution_minutes")
+    if len(lines) != 1 + len(expected):
+        raise IntakeError("activation marker has unexpected shape")
+    out: dict[str, str] = {}
+    for i, key in enumerate(expected, start=1):
+        prefix = key + ": "
+        if not lines[i].startswith(prefix):
+            raise IntakeError(f"activation marker expected field {key}")
+        value = lines[i][len(prefix):].strip()
+        if not value:
+            raise IntakeError(f"activation marker field {key} is empty")
+        out[key] = value
+    return out
+
+
+def find_activation_marker(issue_comments: list[dict[str, Any]], dispatch: dict[str, Any]) -> dict[str, Any]:
+    matches: list[dict[str, Any]] = []
+    for row in issue_comments:
+        parsed = parse_activation_marker(row.get("body"))
+        if parsed is None:
+            continue
+        if (
+            parsed.get("dispatch_id") == dispatch.get("dispatch_id")
+            and parsed.get("assignment") == dispatch.get("assignment_id")
+            and parsed.get("lease_epoch") == str(dispatch.get("lease_epoch"))
+        ):
+            matches.append({"comment": row, "parsed": parsed})
+    if len(matches) != 1:
+        raise IntakeError("expected exactly one matching lease activation marker")
+    match = matches[0]
+    parsed = match["parsed"]
+    if parsed.get("lease_duration_minutes") != "25":
+        raise IntakeError("activation marker lease duration drift")
+    if parsed.get("agent_max_execution_minutes") != "24":
+        raise IntakeError("activation marker agent cap drift")
+    marker_comment = match["comment"]
+    if not isinstance(marker_comment.get("id"), int):
+        raise IntakeError("activation marker comment id unavailable")
+    _parse_utc(marker_comment.get("created_at"), "activation_marker.created_at")
+    return match
+
+
+def validate_lease_freshness(
+    dispatch: dict[str, Any],
+    comment: dict[str, Any],
+    parsed: dict[str, Any],
+    issue_comments: list[dict[str, Any]],
+) -> dict[str, Any] | None:
     policy_id = dispatch.get("lease_policy_id")
     if policy_id is None:
-        return
+        return None
     if policy_id != "GCL-IA-LEASE-25M-24M-001":
         raise IntakeError("unsupported lease policy")
     if dispatch.get("lease_duration_minutes") != 25:
@@ -138,19 +190,20 @@ def validate_lease_freshness(dispatch: dict[str, Any], comment: dict[str, Any], 
         raise IntakeError("agent execution cap drift")
     if dispatch.get("return_grace_minutes") != 1:
         raise IntakeError("return grace drift")
+    if dispatch.get("lease_clock_source") != "GITHUB_ACTIVATION_COMMENT":
+        raise IntakeError("lease clock source drift")
     if dispatch.get("state") != "DISPATCHED__AWAITING_RETURN":
         raise IntakeError("lease is not active")
     if dispatch.get("dispatch_status") != "READY_FOR_GITHUB_COMMENT":
         raise IntakeError("dispatch is not intake-ready")
 
-    start = _parse_utc(dispatch.get("lease_started_at"), "lease_started_at")
-    expiry = _parse_utc(dispatch.get("lease_expires_at"), "lease_expires_at")
-    if int((expiry - start).total_seconds()) != 25 * 60:
-        raise IntakeError("lease expiry is not exactly 25 minutes after start")
-
+    activation = find_activation_marker(issue_comments, dispatch)
+    marker_comment = activation["comment"]
+    start = _parse_utc(marker_comment.get("created_at"), "activation_marker.created_at")
+    expiry = start + timedelta(minutes=25)
     created = _parse_utc(comment.get("created_at"), "comment.created_at")
     if created < start:
-        raise IntakeError("result predates active lease")
+        raise IntakeError("result predates lease activation")
     if created > expiry:
         raise IntakeError("lease expired before result comment")
 
@@ -164,6 +217,11 @@ def validate_lease_freshness(dispatch: dict[str, Any], comment: dict[str, Any], 
         raise IntakeError("stale or mismatched lease epoch")
     if elapsed < 0 or elapsed > 24:
         raise IntakeError("agent_elapsed_minutes exceeds 24-minute cap")
+    return {
+        "activation_comment_id": marker_comment["id"],
+        "lease_started_at": start.isoformat().replace("+00:00", "Z"),
+        "lease_expires_at": expiry.isoformat().replace("+00:00", "Z"),
+    }
 
 
 def validate_dispatch_integrity(root: Path, dispatch: dict[str, Any], issue: dict[str, Any]) -> None:
@@ -210,7 +268,7 @@ def validate_dispatch_integrity(root: Path, dispatch: dict[str, Any], issue: dic
         raise IntakeError("protected task bytes drifted from dispatch task blob")
 
 
-def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+def validate_event(event: dict[str, Any], root: Path, issue_comments: list[dict[str, Any]] | None = None) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     issue = _obj(event.get("issue"), "issue")
     if "pull_request" in issue:
         raise IntakeError("results are accepted only on dispatch issues")
@@ -240,7 +298,7 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], d
     preamble_keys = LEASE_PREAMBLE_KEYS if dispatch.get("lease_policy_id") else PREAMBLE_KEYS
     parsed = parse_result_comment(body, set(allowed), sections, preamble_keys)
     validate_dispatch_integrity(root, dispatch, issue)
-    validate_lease_freshness(dispatch, comment, parsed)
+    lease = validate_lease_freshness(dispatch, comment, parsed, issue_comments or [])
 
     pre = parsed["preamble"]
     if pre["dispatch_id"] != dispatch.get("dispatch_id"):
@@ -264,11 +322,12 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], d
         "comment": comment,
         "actor": actor,
         "comment_id": comment_id,
+        "lease": lease,
     }
 
 
-def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, Any]:
-    parsed, dispatch, observed = validate_event(event, root)
+def emit_intake(event: dict[str, Any], root: Path, output: Path, issue_comments: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+    parsed, dispatch, observed = validate_event(event, root, issue_comments)
     body = observed["comment"]["body"]
     assert isinstance(body, str)
 
@@ -306,8 +365,9 @@ def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, An
         "certification_effect": False,
         "lease_policy_id": dispatch.get("lease_policy_id"),
         "lease_epoch": dispatch.get("lease_epoch"),
-        "lease_started_at": dispatch.get("lease_started_at"),
-        "lease_expires_at": dispatch.get("lease_expires_at"),
+        "lease_activation_comment_id": (observed.get("lease") or {}).get("activation_comment_id"),
+        "lease_started_at": (observed.get("lease") or {}).get("lease_started_at"),
+        "lease_expires_at": (observed.get("lease") or {}).get("lease_expires_at"),
         "agent_elapsed_minutes_declared": parsed["preamble"].get("agent_elapsed_minutes"),
         "recorded_by": "github-actions:gcl-erdos3-controlled-intake",
     }
@@ -333,10 +393,17 @@ def main() -> int:
     parser.add_argument("--event", type=Path, required=True)
     parser.add_argument("--repo-root", type=Path, default=ROOT)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--issue-comments", type=Path)
     args = parser.parse_args()
     try:
         event = _obj(json.loads(args.event.read_text(encoding="utf-8")), "event")
-        meta = emit_intake(event, args.repo_root, args.output)
+        issue_comments: list[dict[str, Any]] = []
+        if args.issue_comments is not None:
+            raw_comments = json.loads(args.issue_comments.read_text(encoding="utf-8"))
+            if not isinstance(raw_comments, list):
+                raise IntakeError("issue comments payload must be a list")
+            issue_comments = [_obj(x, "issue comment") for x in raw_comments]
+        meta = emit_intake(event, args.repo_root, args.output, issue_comments)
     except (OSError, json.JSONDecodeError, IntakeError) as exc:
         args.output.mkdir(parents=True, exist_ok=True)
         (args.output / "ERRORS.txt").write_text(str(exc) + "\n", encoding="utf-8")

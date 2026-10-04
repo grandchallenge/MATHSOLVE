@@ -7,9 +7,15 @@
   "agent_max_execution_minutes": 24,
   "return_grace_minutes": 1,
   "lease_clock": {
-    "start": "canonical_dispatch_issue_created_at",
-    "expiry": "lease_started_at + 25 minutes",
-    "rule": "A dispatch issue may remain open as a historical return surface, but no RESULT/1 comment created after lease_expires_at is admissible."
+    "start": "canonical_activation_marker_comment_created_at",
+    "activation_marker": "GCL-LEASE-ACTIVATION/1",
+    "activation_preconditions": [
+      "protected main contains the exact dispatch in DISPATCHED__AWAITING_RETURN",
+      "canonical issue title has been switched from [GCL-STAGING] to the protected [GCL-CONTRIB] title",
+      "exactly one matching GCL-LEASE-ACTIVATION/1 comment exists for dispatch_id and lease_epoch"
+    ],
+    "expiry": "activation_marker_created_at + 25 minutes",
+    "rule": "Staging and protection time do not consume the lease. The immutable GitHub created_at of the matching activation-marker comment is the lease start. No RESULT/1 created after start+25 minutes is admissible."
   },
   "lease_identity": {
     "atomic_unit": [
@@ -32,7 +38,7 @@
   },
   "execution_semantics": {
     "agent_max_minutes": 24,
-    "requirement": "The agent must stop substantive work by 24 elapsed minutes and use the remaining lease margin only for final return transport.",
+    "requirement": "The agent must not begin before the matching GCL-LEASE-ACTIVATION/1 marker exists. Substantive work must stop by 24 elapsed minutes from that marker; the remaining one minute is reserved for final return transport.",
     "declared_elapsed_minutes_required": true,
     "maximum_declared_elapsed_minutes": 24
   },
@@ -41,12 +47,16 @@
     "reject_stale_dispatch_even_if_issue_remains_open": true,
     "reject_superseded_lease_epoch": true,
     "first_valid_result_lock": true,
-    "automated_intake_canonical_effect": false
+    "automated_intake_canonical_effect": false,
+    "activation_marker_required": true,
+    "activation_marker_must_precede_result": true,
+    "activation_marker_unique_per_dispatch_epoch": true
   },
   "authority": {
     "protected_branch": "main",
-    "mutation_rule": "Lease creation, expiry, supersession, and reassignment are durable protected-state mutations. Issue comments alone cannot extend or revive a lease.",
-    "human_extension_allowed": false
+    "mutation_rule": "Lease creation, expiry, supersession, and reassignment are protected-state mutations. A GCL-LEASE-ACTIVATION/1 comment may start a protected staged lease but cannot extend, revive, reassign, adjudicate, certify, or promote it.",
+    "human_extension_allowed": false,
+    "activation_rule": "A protected dispatch becomes executable only when its canonical issue has the protected [GCL-CONTRIB] title and exactly one matching GCL-LEASE-ACTIVATION/1 comment. Issue creation/staging time is not lease time."
   },
   "claim_boundary": "This policy governs worker allocation and evidence freshness only. It does not prove, verify, promote, or refute any mathematical claim."
 }

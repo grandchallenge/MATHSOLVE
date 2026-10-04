@@ -32,6 +32,13 @@ jobs:
         with:
           python-version: "3.12.13"
 
+      - name: Read canonical issue comments
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments?per_page=100" > "$RUNNER_TEMP/issue-comments.json"
+
       - name: Validate exact dispatch and result
         id: validate
         continue-on-error: true
@@ -41,6 +48,7 @@ jobs:
           python ci/gcl_erdos3_github_contribution_intake.py \
             --event "$GITHUB_EVENT_PATH" \
             --repo-root "$GITHUB_WORKSPACE" \
+            --issue-comments "$RUNNER_TEMP/issue-comments.json" \
             --output "$OUT_DIR"
 
       - name: Report mechanical rejection
