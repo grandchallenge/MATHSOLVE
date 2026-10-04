@@ -141,7 +141,34 @@ CMDG_COV_PROFILE = IntakeProfile(
     pr_title_prefix="CMDG-CM4 coverage intake",
 )
 
-PROFILES = (NS_PROFILE, UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE)
+CMDG_N3_PROFILE = IntakeProfile(
+    campaign="CMDG-CM4-N3",
+    dispatch_re=re.compile(r"^CMDG-P3M-N3-WP-[A-D]-IA-001$"),
+    base_rel=Path("contributions/CMDG-CM4/P3M_FINITE_COEFFICIENT_ALLTRUE_005"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=(
+        "dispatch_id",
+        "agent_ref",
+        "assignment",
+        "disposition",
+        "context_class",
+        "external_sources",
+        "timebox_observed",
+    ),
+    dispositions=frozenset({
+        "PROVED_REDUCTION",
+        "EXACT_CERTIFICATE",
+        "FORMAL_LEMMA_PROVED",
+        "COUNTEREXAMPLE",
+        "NO_MATERIAL_DELTA",
+        "EXACT_BLOCKER",
+    }),
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="CMDG-CM4 N3 intake",
+)
+
+PROFILES = (NS_PROFILE, UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE)
 
 
 class IntakeError(ValueError):
@@ -231,6 +258,8 @@ def parse_result_comment(body: str) -> dict[str, Any]:
         raise IntakeError("assignment is invalid for the CMDG P3-M separation profile")
     if profile is CMDG_COV_PROFILE and not re.fullmatch(r"CMDG-P3M-COV-WP-[A-D]", preamble["assignment"]):
         raise IntakeError("assignment is invalid for the CMDG P3-M weighted coverage profile")
+    if profile is CMDG_N3_PROFILE and not re.fullmatch(r"CMDG-P3M-N3-WP-[A-D]", preamble["assignment"]):
+        raise IntakeError("assignment is invalid for the CMDG P3-M N3 profile")
 
     headings = HEADING_RE.findall(parsed_body)
     if headings != SECTIONS:
@@ -327,7 +356,7 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], I
 
     if parsed["preamble"]["assignment"] != dispatch.get("assignment_id"):
         raise IntakeError("assignment does not match protected dispatch")
-    if profile in {UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE} and parsed["preamble"].get("agent_ref") != dispatch.get("agent_ref"):
+    if profile in {UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE} and parsed["preamble"].get("agent_ref") != dispatch.get("agent_ref"):
         raise IntakeError("agent_ref does not match protected dispatch")
     if dispatch.get("concurrency_mode") not in {
         "independent_blind",
