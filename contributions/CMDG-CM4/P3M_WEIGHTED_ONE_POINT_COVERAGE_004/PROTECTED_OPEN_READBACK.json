@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_PROTECTED_COHORT_OPEN_READBACK",
+  "receipt_id": "CMDG-P3M-COV-BLIND-COHORT-001:PROTECTED-OPEN-READBACK-001",
+  "campaign": "CMDG-CM4-COV",
+  "work_package": "P3-M-WEIGHTED-ONE-POINT-COVERAGE-004",
+  "protected_programme_predecessor": "fdd7a3fe3df7b2d699753347080c1cbc2127e02d",
+  "protected_solve_staging_merge": "50a82970f039e993062079cb774f4543ca766d7b",
+  "protected_solve_open_merge": "b4e40f29021d9fe71bf569052aeac5f486450163",
+  "protected_main_readback": "b4e40f29021d9fe71bf569052aeac5f486450163",
+  "cohort_id": "CMDG-P3M-COV-BLIND-COHORT-001",
+  "cohort_state": "OPEN",
+  "synthesis_allowed": false,
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "issue_byte_lock_complete": true,
+  "launch_comments_posted": true,
+  "launch_comment_ids": {
+    "CMDG-P3M-COV-WP-A-IA-001": 5975083159,
+    "CMDG-P3M-COV-WP-B-IA-001": 5975083535,
+    "CMDG-P3M-COV-WP-C-IA-001": 5975083915,
+    "CMDG-P3M-COV-WP-D-IA-001": 5975084326
+  },
+  "live_issues": [
+    800,
+    801,
+    802,
+    803
+  ],
+  "mathematical_effect": false,
+  "certification_effect": false,
+  "claim_boundary": "Protected readback and launch evidence only; no weighted coverage theorem or downstream CMDG claim is admitted."
+}
