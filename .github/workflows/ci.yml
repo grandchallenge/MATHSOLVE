@@ -176,6 +176,11 @@ jobs:
           python -m unittest tests/test_ns_ci_github_contribution_intake.py -v
           python ci/validate_uc_wp08_d004_dispatches.py
           python -m json.tool contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/schemas/intake_receipt.schema.json >/dev/null
+      - name: Validate GCL-ERDOS3 frontier and independent intake
+        run: |
+          python ci/validate_gcl_erdos3_frontier.py
+          python -m unittest tests/test_gcl_erdos3_github_contribution_intake.py -v
+
       - name: Validate OpenAI Ten Proofs independent handoffs
         run: |
           python ci/validate_openai_ten_proofs_result_family_handoffs.py

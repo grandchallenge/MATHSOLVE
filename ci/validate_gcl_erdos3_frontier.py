@@ -175,6 +175,32 @@ def validate(root=ROOT):
             errors.append('E3-V03 durable dispatch lifecycle drift')
         if v03d.get('replay_budget_ordinal')!=1:
             errors.append('E3-V03 exceeded replay budget')
+        if v03d.get('dispatch_status')!='READY_FOR_GITHUB_COMMENT':
+            errors.append('E3-V03 automated intake readiness drift')
+        if v03d.get('github_issue_number')!=798:
+            errors.append('E3-V03 automated intake issue drift')
+        if v03d.get('github_issue_title')!='[GCL-CONTRIB] GCL-ERDOS3 E3-V03-IA-001 — gluing-radius equivalence replay':
+            errors.append('E3-V03 automated intake title drift')
+        if v03d.get('bootstrap_path')!='work_packages/GCL_ERDOS3/launch/E3-V03-IA-001.md':
+            errors.append('E3-V03 bootstrap path drift')
+        if v03d.get('bootstrap_blob_sha1')!='4909526f36f38bde2957dbaa323a3a33a1a873e6':
+            errors.append('E3-V03 bootstrap blob binding drift')
+        bootstrap=root/'work_packages/GCL_ERDOS3/launch/E3-V03-IA-001.md'
+        if not bootstrap.is_file() or blob(bootstrap)!='4909526f36f38bde2957dbaa323a3a33a1a873e6':
+            errors.append('E3-V03 protected bootstrap bytes drift')
+        if set(v03d.get('allowed_dispositions',[]))!={'VERIFIED','REFUTED','EXACT_BLOCKER'}:
+            errors.append('E3-V03 allowed disposition set drift')
+        if v03d.get('required_sections')!=[
+            'Strongest exact statement','Derivation / evidence','Adversarial checks',
+            'First defect','Frontier effect','Next residual','Sources'
+        ]:
+            errors.append('E3-V03 RESULT/1 section contract drift')
+        if v03d.get('first_valid_result_lock') is not True:
+            errors.append('E3-V03 first-valid-result lock disabled')
+        if v03d.get('automated_intake_canonical_effect') is not False:
+            errors.append('E3-V03 automated intake gained canonical effect')
+        if v03d.get('intake_workflow')!='.github/workflows/gcl-erdos3-independent-contribution-intake.yml':
+            errors.append('E3-V03 intake workflow binding drift')
     else:
         errors.append('missing E3-V03 durable dispatch receipt')
     if tranche.get('results',{}).get('E3-F01',{}).get('frontier_action')!='CLOSED_NO_SUCCESSOR':
@@ -225,6 +251,10 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json',
         'work_packages/GCL_ERDOS3/work_packages/E3-V03.md',
         'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-V03-IA-001.json',
+        'work_packages/GCL_ERDOS3/launch/E3-V03-IA-001.md',
+        'ci/gcl_erdos3_github_contribution_intake.py',
+        'tests/test_gcl_erdos3_github_contribution_intake.py',
+        '.github/workflows/gcl-erdos3-independent-contribution-intake.yml',
     ]
     for path in required_files:
         if not (root/path).is_file():
@@ -233,6 +263,29 @@ def validate(root=ROOT):
     for wp in campaign.get('initial_work_packages',[]):
         if not (root/f'work_packages/GCL_ERDOS3/work_packages/{wp}.md').is_file():
             errors.append(f'missing {wp}')
+    intake_workflow=root/'.github/workflows/gcl-erdos3-independent-contribution-intake.yml'
+    if intake_workflow.is_file():
+        wf=intake_workflow.read_text()
+        for needle in (
+            'issue_comment:',
+            'pull-requests: write',
+            'ci/gcl_erdos3_github_contribution_intake.py',
+            'gh pr create',
+            'canonical claim effect: NONE',
+            'frontier effect: NONE',
+        ):
+            if needle not in wf:
+                errors.append(f'GCL-ERDOS3 intake workflow missing integrity control: {needle}')
+    ci_workflow=root/'.github/workflows/ci.yml'
+    if ci_workflow.is_file():
+        ci_text=ci_workflow.read_text()
+        for needle in (
+            'python ci/validate_gcl_erdos3_frontier.py',
+            'python -m unittest tests/test_gcl_erdos3_github_contribution_intake.py -v',
+        ):
+            if needle not in ci_text:
+                errors.append(f'GCL-ERDOS3 required CI missing: {needle}')
+
     return errors
 
 if __name__=='__main__':

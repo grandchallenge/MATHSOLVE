@@ -24,5 +24,28 @@
   "external_sources": "PROTECTED_PACKET_ONLY",
   "canonical_mutation_authorized": false,
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-  "state": "DISPATCHED__AWAITING_RETURN"
+  "state": "DISPATCHED__AWAITING_RETURN",
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "github_issue_number": 798,
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/798",
+  "github_issue_title": "[GCL-CONTRIB] GCL-ERDOS3 E3-V03-IA-001 — gluing-radius equivalence replay",
+  "bootstrap_path": "work_packages/GCL_ERDOS3/launch/E3-V03-IA-001.md",
+  "bootstrap_blob_sha1": "4909526f36f38bde2957dbaa323a3a33a1a873e6",
+  "allowed_dispositions": [
+    "VERIFIED",
+    "REFUTED",
+    "EXACT_BLOCKER"
+  ],
+  "required_sections": [
+    "Strongest exact statement",
+    "Derivation / evidence",
+    "Adversarial checks",
+    "First defect",
+    "Frontier effect",
+    "Next residual",
+    "Sources"
+  ],
+  "intake_workflow": ".github/workflows/gcl-erdos3-independent-contribution-intake.yml",
+  "first_valid_result_lock": true,
+  "automated_intake_canonical_effect": false
 }
