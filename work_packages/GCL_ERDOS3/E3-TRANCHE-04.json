@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS3_TRANCHE_MANIFEST",
+  "campaign": "GCL-ERDOS3",
+  "tranche": "E3-TRANCHE-04-FOUR-FIBRE-DEFICIT",
+  "preparation_baseline_commit": "365ed110913f8cc6ce1297e62955225dbb56476b",
+  "status": "PREPARED__NATIVE_L01_Q02_ADVANCED",
+  "target_node": "E3-B-FOUR-FIBRE-DEFICIT",
+  "target_statement": "For N=2^n, a_n=r_4(N)/N, and every 4-AP-free four-fibre gluing, prove max_i(r_4(N)-|B_i|) >= kappa*N*a_n^(1+theta) eventually for some kappa>0 and 0<theta<1.",
+  "fixed_scale_choice": {
+    "L": 2,
+    "m": 4
+  },
+  "research_note": {
+    "path": "work_packages/GCL_ERDOS3/E3-TRANCHE-04_FOUR_FIBRE_DEFICIT.md",
+    "blob_sha1": "27200ed3e6decf7dee73d3d26490e9655f9840a6"
+  },
+  "work_packages": {
+    "E3-L01": {
+      "path": "work_packages/GCL_ERDOS3/work_packages/E3-L01.md",
+      "blob_sha1": "ac19ae85cbe6105a76b89ae46939675172622d1e",
+      "role": "lifted finite obstruction / valid-cut extraction",
+      "external_sources": "PROTECTED_PACKET_ONLY",
+      "state": "NATIVE_RESULT_AVAILABLE"
+    },
+    "E3-Q02": {
+      "path": "work_packages/GCL_ERDOS3/work_packages/E3-Q02.md",
+      "blob_sha1": "d4910659871b20432bf3c073c556fa9c374159b2",
+      "role": "labelled quadratic forcing interface",
+      "external_sources": "PRIMARY_SOURCES_ALLOWED",
+      "state": "NATIVE_RESULT_AVAILABLE"
+    },
+    "E3-T01": {
+      "path": "work_packages/GCL_ERDOS3/work_packages/E3-T01.md",
+      "blob_sha1": "87aee24698c1cbc57fe09c925d6e8726efe58821",
+      "role": "quadratic structure to carry-transversal deficit",
+      "external_sources": "PRIMARY_SOURCES_ALLOWED",
+      "state": "PREPARED_NOT_DISPATCHED"
+    },
+    "E3-A04": {
+      "path": "work_packages/GCL_ERDOS3/work_packages/E3-A04.md",
+      "blob_sha1": "ccb7aa1f4ef61a7b3dd53dd892059497efcbb7ec",
+      "role": "adversarial falsification of L=2 route",
+      "external_sources": "PRIMARY_SOURCES_ALLOWED",
+      "state": "PREPARED_NOT_DISPATCHED"
+    }
+  },
+  "native_results": {
+    "E3-L01": {
+      "disposition": "FINITE_LIFTED_CERTIFICATE_PROVED",
+      "path": "work_packages/GCL_ERDOS3/results/E3-L01_NATIVE_RESULT.md",
+      "blob_sha1": "3e02b25e3f150daaca4d0c44f10b8eb1118a7f3d",
+      "replay_tool": "work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py",
+      "replay_tool_blob_sha1": "16b4c23d0821268e95472c704d8d116806f8036e",
+      "exact_statement": "At N=7, the minimum number of D01 cross-fibre template families sufficient to exclude every locally admissible (5,4,4,4) profile is exactly 10.",
+      "frontier_effect": "NARROWS_TO_MOTIF_AMPLIFICATION__NO_PARENT_PROMOTION"
+    },
+    "E3-Q02": {
+      "disposition": "PROVED_NATIVE_LABELLED_FORCING",
+      "path": "work_packages/GCL_ERDOS3/results/E3-Q02_NATIVE_RESULT.md",
+      "blob_sha1": "85dbf8b584a26800486aef8d71d0382afeda9cd2",
+      "exact_statement": "For every valid D01 cross-fibre template on beta-dense fibres, zero mixed 4-AP count forces max_t ||1_{C_t}-rho_t||_{U^3} > beta^4/(15*16^4).",
+      "frontier_effect": "COUNTING_FORCE_STAGE_DISCHARGED__TRANSVERSAL_CONVERSION_REMAINS"
+    }
+  },
+  "protected_inputs": {
+    "E3-C01_RESULT.md": "212cea2c27eeba50c243d7e4e769bd78afeb117b",
+    "E3-D01_RESULT.md": "fa48b4dca2e575d639cd6ca3cae7d9064063c3cb",
+    "E3-S04_RESULT.md": "30f24cff18d14ac197695e272868786b0e77cd0c",
+    "E3-G01_RESULT.md": "41037a11d9f36248fbcf49c946eb50e44ce3b03f"
+  },
+  "verification_separation": {
+    "gate": "E3-V03",
+    "rule": "E3-V03 governs promotion of E3-Q4-GLUING-RADIUS only. Silent verifier leases do not block native attack work on E3-Q4-DENSITY-LOSS.",
+    "replay_budget_ordinal": 1
+  },
+  "lease_state": {
+    "independent_work_packages_activated": false,
+    "reason": "Tranche preparation and native L01 work do not create agent leases. Any later independent dispatch must use the protected 25-minute marker-clock lease and 24-minute substantive cap."
+  },
+  "synthesis_rule": "Native synthesis selects the smallest theorem/obstruction supported by evidence; work-package order and Next residual text are not scheduling authority.",
+  "claim_boundary": "E3-Q4-DENSITY-LOSS remains OPEN. E3-Q4-GLUING-RADIUS remains unpromoted. E3-B-FOUR-FIBRE-DEFICIT is not proved.",
+  "live_native_questions": [
+    "Motif amplification / scale transfer from the exact E3-L01 family certificate.",
+    "Convert forced U^3 structure at c*beta^4 norm scale into a carry-transversal deletion cost beta^(1+theta)N with theta<1, using near-extremality."
+  ]
+}
