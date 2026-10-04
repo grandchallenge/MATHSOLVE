@@ -21,7 +21,7 @@ def validate(root=ROOT):
     capture=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json').read_text())
     adjud03=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json').read_text())
 
-    if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_TRANCHE_03_ADJUDICATED__VERIFY_PENDING':
+    if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_V03_DISPATCHED':
         errors.append('campaign identity/status drift')
     if gate.get('next_residual_role')!='EVIDENCE_ONLY_NOT_SCHEDULING_AUTHORITY':
         errors.append('Next residual regained scheduling authority')
@@ -63,8 +63,11 @@ def validate(root=ROOT):
         errors.append('gluing-radius bridge verification state drift')
     if rows.get('E3-Q4-GLUING-RADIUS',{}).get('status')!='FORMULATED_PENDING_VERIFY':
         errors.append('gluing-radius successor candidate state drift')
-    if rows.get('E3-V-B03',{}).get('status')!='READY':
-        errors.append('E3-V-B03 verification node not ready')
+    if rows.get('E3-V-B03',{}).get('status')!='LAUNCHED':
+        errors.append('E3-V-B03 verification node not launched')
+    v03_frontier_dispatch=rows.get('E3-V-B03',{}).get('dispatch',{})
+    if v03_frontier_dispatch.get('issue_number')!=798 or v03_frontier_dispatch.get('task_commit')!='eb94ed1df6c3743fc8a186dcc423ce372fb512c8':
+        errors.append('E3-V03 frontier dispatch binding drift')
 
     if f01.get('disposition')!='FORMALIZED':
         errors.append('F01 disposition drift')
@@ -85,15 +88,20 @@ def validate(root=ROOT):
         errors.append('campaign frontier drift after tranche-02 synthesis')
     if campaign.get('prepared_tranche')!='E3-TRANCHE-03':
         errors.append('tranche-03 preparation missing')
-    if campaign.get('dispatch_state')!='ADJUDICATED__VERIFY_PENDING':
-        errors.append('tranche-03 adjudication state drift')
+    if campaign.get('dispatch_state')!='VERIFY_DISPATCHED__AWAITING_RETURN':
+        errors.append('E3-V03 dispatch state drift')
     if campaign.get('synthesis_allowed') is not False:
         errors.append('synthesis gate remained open after adjudication')
     if tranche03.get('status')!='ADJUDICATED__VERIFY_G01_PENDING' or tranche03.get('synthesis_allowed') is not False:
         errors.append('tranche-03 adjudication/verification gate drift')
     expected_dispatches={'E3-R01','E3-D01','E3-G01','E3-C01','E3-A03','E3-S04'}
-    if campaign.get('active_dispatches',{})!={}:
-        errors.append('completed tranche-03 contributor dispatches remain active')
+    if set(campaign.get('active_dispatches',{}))!={'E3-V03'}:
+        errors.append('E3-V03 is not the sole active dispatch')
+    v03=campaign.get('active_dispatches',{}).get('E3-V03',{})
+    if v03.get('issue_number')!=798 or v03.get('task_commit')!='eb94ed1df6c3743fc8a186dcc423ce372fb512c8' or v03.get('task_blob_sha1')!='44d366be27cec0679c695c03074bceeab9b7cf01':
+        errors.append('E3-V03 campaign dispatch identity drift')
+    if v03.get('frontier_action')!='INDEPENDENT_VERIFY' or v03.get('replay_budget_ordinal')!=1:
+        errors.append('E3-V03 replay authority drift')
     if not expected_dispatches <= set(campaign.get('completed_dispatches',{})):
         errors.append('tranche-03 completed dispatch set incomplete')
     if campaign.get('completed_dispatches',{}).get('E3-D01',{}).get('issue_number')!=789:
@@ -158,6 +166,17 @@ def validate(root=ROOT):
             errors.append(f'{assignment} campaign completion state drift')
         if dj.get('task_commit')!='266b0857f3e13524ea9e69e2ef3bf4cd422503b5':
             errors.append(f'{assignment} immutable task commit drift')
+    v03_file=root/'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-V03-IA-001.json'
+    if v03_file.is_file():
+        v03d=json.loads(v03_file.read_text())
+        if v03d.get('issue_number')!=798 or v03d.get('task_commit')!='eb94ed1df6c3743fc8a186dcc423ce372fb512c8' or v03d.get('task_blob_sha1')!='44d366be27cec0679c695c03074bceeab9b7cf01':
+            errors.append('E3-V03 durable dispatch receipt drift')
+        if v03d.get('state')!='DISPATCHED__AWAITING_RETURN':
+            errors.append('E3-V03 durable dispatch lifecycle drift')
+        if v03d.get('replay_budget_ordinal')!=1:
+            errors.append('E3-V03 exceeded replay budget')
+    else:
+        errors.append('missing E3-V03 durable dispatch receipt')
     if tranche.get('results',{}).get('E3-F01',{}).get('frontier_action')!='CLOSED_NO_SUCCESSOR':
         errors.append('F01 replay recursion guard drift')
 
@@ -205,6 +224,7 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_SYNTHESIS.md',
         'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json',
         'work_packages/GCL_ERDOS3/work_packages/E3-V03.md',
+        'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-V03-IA-001.json',
     ]
     for path in required_files:
         if not (root/path).is_file():
@@ -218,5 +238,5 @@ def validate(root=ROOT):
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    if not e: print('PASS: GCL-ERDOS3 tranche 03 adjudicated; gluing-radius successor is replay-gated and density-loss remains active')
+    if not e: print('PASS: GCL-ERDOS3 E3-V03 is the sole exact-bound replay; gluing-radius successor remains inactive pending return')
     raise SystemExit(bool(e))
