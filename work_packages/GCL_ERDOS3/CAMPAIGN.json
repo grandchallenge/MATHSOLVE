@@ -50,12 +50,13 @@
     "E3-T01": "NATIVE_SMALLER_MISSING_LEMMA__PHASE_ALIGNMENT_REQUIRED",
     "E3-A04": "NATIVE_ADVERSARIAL_CLASS_RULED_OUT",
     "E3-Q03": "PROVED_NATIVE_ALL_FIBRE_U3_FORCING",
-    "E3-Q04": "PROVED_NATIVE_JOINT_WITNESS_DICHOTOMY"
+    "E3-Q04": "PROVED_NATIVE_JOINT_WITNESS_DICHOTOMY",
+    "E3-Q06": "PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Receive the epoch-4 E3-V03 RESULT/1 on issue 866 within its marker-clock lease; in parallel attack E3-B-JOINT-WITNESS-INCOMPATIBILITY using Q04's exact Fourier-or-fourfold witness dichotomy. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
+  "next_action": "Reconcile/reissue the expired E3-V03 verifier lease separately; in parallel attack Q04's linear witness amplification lane and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT from Q06. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -252,5 +253,11 @@
     "disposition": "PROVED_NATIVE_JOINT_WITNESS_DICHOTOMY",
     "path": "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
     "effect": "Each adjacent 0011 pair has either an aligned nonzero Fourier witness or a large joint fourfold correlation; the native residual becomes finite correlation-witness compatibility/amplification."
+  },
+  "tranche_04_extension_q06": {
+    "result": "E3-Q06",
+    "disposition": "PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md",
+    "effect": "The Q04 fourfold branch yields a positive-density family of joint derivative spectral overlaps; the fourfold residual becomes derivative-frequency coherence versus spectral diffuseness."
   }
 }
