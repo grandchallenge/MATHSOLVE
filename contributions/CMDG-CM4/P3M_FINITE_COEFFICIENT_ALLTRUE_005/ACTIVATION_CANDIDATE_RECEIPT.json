@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_COHORT_ACTIVATION_CANDIDATE_RECEIPT",
+  "receipt_id": "CMDG-P3M-N3-BLIND-COHORT-001:ACTIVATION-CANDIDATE-001",
+  "campaign": "CMDG-CM4-N3",
+  "work_package": "P3-M-FINITE-COEFFICIENT-ALLTRUE-005",
+  "protected_programme_predecessor": "a2897a270c477ac95ba3d18dd068a13b07d3b853",
+  "solve_base": "f5c6bd35a10b4491e13ced61960712e7b6280ba4",
+  "candidate_branch": "agent/cmdg-p3m-n3-activate-cohort",
+  "controlled_intake_parser_blob": "42a839a033e31e34a9a9d60db73f5cfb8f9a2ad9",
+  "controlled_intake_tests_blob": "a8555b5ed345757b8e9f0b2b061350a1180b1fa3",
+  "intake_workflow_blob": "fcd519fb7814f42e155980423a61b5989f773ba7",
+  "issues": [
+    826,
+    827,
+    828,
+    829
+  ],
+  "issue_byte_lock_complete": true,
+  "leases_state": "ACTIVE_ON_CANDIDATE",
+  "cohort_id": "CMDG-P3M-N3-BLIND-COHORT-001",
+  "cohort_state": "OPEN_ON_CANDIDATE",
+  "synthesis_allowed": false,
+  "mathematical_effect": false,
+  "certification_effect": false
+}
