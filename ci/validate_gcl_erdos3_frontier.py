@@ -22,7 +22,7 @@ def validate(root=ROOT):
     adjud03=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json').read_text())
     lease_policy=json.loads((root/'work_packages/GCL_ERDOS3/LEASE_POLICY.json').read_text())
 
-    if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_V03_LEASE_EXPIRED':
+    if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_V03_DISPATCHED':
         errors.append('campaign identity/status drift')
     if gate.get('next_residual_role')!='EVIDENCE_ONLY_NOT_SCHEDULING_AUTHORITY':
         errors.append('Next residual regained scheduling authority')
