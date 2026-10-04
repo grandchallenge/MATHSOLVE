@@ -7,9 +7,10 @@
   "agent_max_execution_minutes": 24,
   "return_grace_minutes": 1,
   "lease_clock": {
-    "start": "canonical_dispatch_issue_created_at",
+    "start": "protected_activation_at",
+    "activation_definition": "The timestamp at which a staged dispatch becomes executable after its exact protected dispatch record is merged and its canonical issue title is switched to [GCL-CONTRIB].",
     "expiry": "lease_started_at + 25 minutes",
-    "rule": "A dispatch issue may remain open as a historical return surface, but no RESULT/1 comment created after lease_expires_at is admissible."
+    "rule": "Staging time does not consume the lease. A dispatch issue may remain open as a historical return surface, but no RESULT/1 comment created after lease_expires_at is admissible."
   },
   "lease_identity": {
     "atomic_unit": [
@@ -46,7 +47,8 @@
   "authority": {
     "protected_branch": "main",
     "mutation_rule": "Lease creation, expiry, supersession, and reassignment are durable protected-state mutations. Issue comments alone cannot extend or revive a lease.",
-    "human_extension_allowed": false
+    "human_extension_allowed": false,
+    "activation_rule": "A staged issue is non-executable. The lease clock starts only after protected dispatch readback and activation of the canonical issue surface."
   },
   "claim_boundary": "This policy governs worker allocation and evidence freshness only. It does not prove, verify, promote, or refute any mathematical claim."
 }
