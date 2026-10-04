@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_CONTRIBUTION_DISPATCH",
+  "campaign": "GCL-ERDOS3",
+  "tranche": "E3-V03",
+  "assignment_id": "E3-V03",
+  "dispatch_id": "GCL-ERDOS3-E3-V03-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-E3-V03-001",
+  "concurrency_mode": "independent_blind",
+  "issue_number": 798,
+  "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/798",
+  "task_commit": "eb94ed1df6c3743fc8a186dcc423ce372fb512c8",
+  "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
+  "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01",
+  "protected_evidence": {
+    "E3-G01_RESULT.md": "41037a11d9f36248fbcf49c946eb50e44ce3b03f",
+    "E3-D01_RESULT.md": "fa48b4dca2e575d639cd6ca3cae7d9064063c3cb",
+    "E3-TRANCHE-03_CAPTURE.json": "36a8e355586511501584b32bbd2fad1ac9b32617"
+  },
+  "target_node": "E3-B-GLUING-RADIUS-EQUIV",
+  "frontier_action": "INDEPENDENT_VERIFY",
+  "replay_budget_ordinal": 1,
+  "context_class": "ZERO_CONTEXT",
+  "external_sources": "PROTECTED_PACKET_ONLY",
+  "canonical_mutation_authorized": false,
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "state": "DISPATCHED__AWAITING_RETURN"
+}
