@@ -106,7 +106,7 @@ def validate(root=ROOT):
         errors.append('fresh E3-V03 campaign lease identity drift')
     if active_v03.get('lease_epoch')!=2 or active_v03.get('lease_attempt_ordinal')!=2 or active_v03.get('replay_budget_ordinal')!=1:
         errors.append('fresh E3-V03 campaign lease/replay ordinal drift')
-    if active_v03.get('lease_started_at')!='2026-10-04T01:12:51Z' or active_v03.get('lease_expires_at')!='2026-10-04T01:37:51Z':
+    if active_v03.get('lease_started_at')!='2026-10-04T01:25:17Z' or active_v03.get('lease_expires_at')!='2026-10-04T01:50:17Z':
         errors.append('fresh E3-V03 campaign lease clock drift')
     expired=campaign.get('completed_dispatches',{}).get('E3-V03-LEASE-001',{})
     if expired.get('issue_number')!=798 or expired.get('dispatch_id')!='GCL-ERDOS3-E3-V03-IA-001':
@@ -235,18 +235,20 @@ def validate(root=ROOT):
             errors.append('E3-V03 epoch-2 lease policy drift')
         if v03d2.get('lease_epoch')!=2 or v03d2.get('lease_attempt_ordinal')!=2 or v03d2.get('replay_budget_ordinal')!=1:
             errors.append('E3-V03 epoch-2 lease/replay ordinal drift')
-        if v03d2.get('lease_started_at')!='2026-10-04T01:12:51Z' or v03d2.get('lease_expires_at')!='2026-10-04T01:37:51Z':
+        if v03d2.get('lease_started_at')!='2026-10-04T01:25:17Z' or v03d2.get('lease_expires_at')!='2026-10-04T01:50:17Z':
             errors.append('E3-V03 epoch-2 lease clock drift')
         if v03d2.get('lease_duration_minutes')!=25 or v03d2.get('agent_max_execution_minutes')!=24 or v03d2.get('return_grace_minutes')!=1:
             errors.append('E3-V03 epoch-2 duration/cap drift')
+        if v03d2.get('lease_clock_origin')!='PROTECTED_ACTIVATION' or v03d2.get('protected_activation_at')!='2026-10-04T01:25:17Z':
+            errors.append('E3-V03 epoch-2 activation-clock origin drift')
         if v03d2.get('predecessor_dispatch_id')!='GCL-ERDOS3-E3-V03-IA-001' or v03d2.get('predecessor_state')!='LEASE_EXPIRED__NO_RETURN':
             errors.append('E3-V03 epoch-2 predecessor fence drift')
         if v03d2.get('github_issue_title')!='[GCL-CONTRIB] GCL-ERDOS3 E3-V03-IA-002 — gluing-radius equivalence replay':
             errors.append('E3-V03 epoch-2 expected active title drift')
-        if v03d2.get('bootstrap_path')!='work_packages/GCL_ERDOS3/launch/E3-V03-IA-002.md' or v03d2.get('bootstrap_blob_sha1')!='4cd3c1aa7ef0ad4768b9be0f85d231bac5bda861':
+        if v03d2.get('bootstrap_path')!='work_packages/GCL_ERDOS3/launch/E3-V03-IA-002.md' or v03d2.get('bootstrap_blob_sha1')!='d098aaad6fb65f19782ce246dbb7e55dbdd46e3e':
             errors.append('E3-V03 epoch-2 bootstrap binding drift')
         bootstrap2=root/'work_packages/GCL_ERDOS3/launch/E3-V03-IA-002.md'
-        if not bootstrap2.is_file() or blob(bootstrap2)!='4cd3c1aa7ef0ad4768b9be0f85d231bac5bda861':
+        if not bootstrap2.is_file() or blob(bootstrap2)!='d098aaad6fb65f19782ce246dbb7e55dbdd46e3e':
             errors.append('E3-V03 epoch-2 protected bootstrap bytes drift')
         if v03d2.get('first_valid_result_lock') is not True or v03d2.get('automated_intake_canonical_effect') is not False:
             errors.append('E3-V03 epoch-2 intake integrity drift')
