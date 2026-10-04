@@ -468,9 +468,8 @@
       ],
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
-        "finite compatibility analysis of Q04 triple/Fourfold witness choices across the 10-family L01 core",
-        "amplify aligned Fourier witnesses until Parseval/near-extremality forces mass loss",
-        "for fourfold regimes, compare joint degree-2 correlations before lossy inverse-theorem phase integration",
+        "E3-B-LINEAR-WITNESS-AMPLIFICATION: amplify Q04 aligned Fourier modes or exploit coefficient phases/harmonic relations",
+        "direct joint-fourfold incompatibility before separate inverse-theorem witness selection",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -489,7 +488,11 @@
         "E3-Q02",
         "E3-T01",
         "E3-Q03"
-      ]
+      ],
+      "reduced_by": [
+        "E3-Q05"
+      ],
+      "reduction_note": "Q05 proves fixed one-scale Parseval counting is quantitatively insufficient: at the Q04 beta^3 witness scale, each fibre can support O(beta^-6) large modes. The linear branch now requires genuine amplification or phase incompatibility; the joint-fourfold branch remains separate."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -505,6 +508,37 @@
       "evidence": "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
       "claim_boundary": "Native witness-level dichotomy only; no deletion bound or parent-frontier closure.",
       "strengthening": "The aligned Fourier branch uses a direct three-way Parseval threshold partition, avoiding the previous unnecessary cubic loss."
+    },
+    {
+      "id": "E3-B-LINEAR-WITNESS-PARSEVAL-BOUND",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY"
+      ],
+      "statement": "At Q04 threshold lambda_beta=beta^3/(20*16^3), each physical fibre has at most 100*16^6*beta^(-6) nonzero Fourier modes of magnitude at least lambda_beta. A fixed one-scale finite family of Q04 linear witness clauses cannot contradict Parseval uniformly as beta->0.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md",
+      "claim_boundary": "Native quantitative no-go for one-scale large-spectrum counting only; no deletion theorem."
+    },
+    {
+      "id": "E3-B-LINEAR-WITNESS-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY",
+        "E3-B-LINEAR-WITNESS-PARSEVAL-BOUND"
+      ],
+      "statement": "Amplify Q04 aligned Fourier witnesses across locations/scales so that one physical fibre acquires more than 100*16^6*beta^(-6) distinct lambda_beta-large modes, or use coefficient phases/harmonic relations to obtain the required deletion cost without a Parseval cardinality contradiction.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Linear branch sub-residual only; open."
     }
   ],
   "closed_claims": [
@@ -555,12 +589,10 @@
     "parent_theorem_effect": "NONE"
   },
   "next_tranche": {
-    "id": "E3-TRANCHE-04-Q04-EXTENSION",
-    "status": "NATIVE_WITNESS_DICHOTOMY_REGISTERED__VERIFY_LEASE_ACTIVE",
-    "objective": "Attack the finite Q04 correlation-witness compatibility/amplification problem while V03 epoch 4 independently verifies the G01 bridge.",
+    "id": "E3-TRANCHE-04-Q05-EXTENSION",
+    "status": "NATIVE_PARSEVAL_BOUND_REGISTERED__VERIFY_LEASE_SEPARATE",
+    "objective": "Attack E3-B-LINEAR-WITNESS-AMPLIFICATION and the direct joint-fourfold branch; keep V03 as a separate promotion gate.",
     "active_frontier_effect": "NONE",
-    "verification_dependency": "E3-V03 remains required only for promotion of E3-Q4-GLUING-RADIUS.",
-    "lease_epoch": 4,
-    "issue_number": 866
+    "verification_dependency": "E3-V03 remains required only for promotion of E3-Q4-GLUING-RADIUS."
   }
 }
