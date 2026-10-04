@@ -149,12 +149,17 @@ def validate(root=ROOT):
         errors.append('E3-Q03 native campaign result drift')
     if campaign.get('work_package_results',{}).get('E3-Q04')!='PROVED_NATIVE_JOINT_WITNESS_DICHOTOMY':
         errors.append('E3-Q04 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q05')!='PROVED_NATIVE_PARSEVAL_AMPLIFICATION_REQUIREMENT':
+        errors.append('E3-Q05 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
     ext2=campaign.get('tranche_04_extension_2',{})
     if ext2.get('result')!='E3-Q04' or ext2.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md':
         errors.append('E3-Q04 campaign extension binding drift')
+    ext3=campaign.get('tranche_04_extension_3',{})
+    if ext3.get('result')!='E3-Q05' or ext3.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md':
+        errors.append('E3-Q05 campaign extension binding drift')
     if campaign.get('dispatch_state')!='VERIFY_DISPATCHED__AWAITING_RETURN':
         errors.append('E3-V03 dispatch state drift')
     if campaign.get('synthesis_allowed') is not False:
@@ -587,11 +592,14 @@ def validate(root=ROOT):
     q04=root/'work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md'
     if not q04.is_file() or blob(q04)!='37fd7dd0643153b597acb7b5c2b219d086010a04':
         errors.append('E3-Q04 native result blob drift')
+    q05=root/'work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md'
+    if not q05.is_file() or blob(q05)!='26ec1f6f420415df1bc8633d474327d51238bde9':
+        errors.append('E3-Q05 native result blob drift')
 
     return errors
 
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    if not e: print('PASS: GCL-ERDOS3 Q04 preserves aligned Fourier-or-fourfold witnesses and sharpens joint witness incompatibility; active parent frontier and V03 gate remain unchanged')
+    if not e: print('PASS: GCL-ERDOS3 Q05 proves the beta^-6 Parseval capacity bound for Q04 linear witnesses; active parent frontier and V03 promotion gate remain unchanged')
     raise SystemExit(bool(e))
