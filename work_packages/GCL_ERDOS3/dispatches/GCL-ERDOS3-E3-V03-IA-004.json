@@ -24,8 +24,8 @@
   "external_sources": "PROTECTED_PACKET_ONLY",
   "canonical_mutation_authorized": false,
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-  "state": "DISPATCHED__AWAITING_RETURN",
-  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "state": "LEASE_EXPIRED__NO_RETURN",
+  "dispatch_status": "LEASE_EXPIRED__NO_RETURN",
   "github_issue_number": 866,
   "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/866",
   "github_issue_title": "[GCL-CONTRIB] GCL-ERDOS3 E3-V03-IA-004 — gluing-radius equivalence replay",
@@ -64,5 +64,19 @@
   ],
   "intake_workflow": ".github/workflows/gcl-erdos3-independent-contribution-intake.yml",
   "first_valid_result_lock": true,
-  "automated_intake_canonical_effect": false
+  "automated_intake_canonical_effect": false,
+  "lease_activation_comment_id": 5981972291,
+  "lease_started_at_observed": "2026-10-04T16:13:54Z",
+  "lease_expires_at_observed": "2026-10-04T16:38:54Z",
+  "silence_observed": true,
+  "valid_result_count_at_expiry": 0,
+  "stale_return_fenced": true,
+  "mathematical_replay_completed": false,
+  "issue_close_reason": "LEASE_EXPIRED__NO_RETURN",
+  "expiry_effect": {
+    "canonical_claim_effect": false,
+    "frontier_effect": false,
+    "verification_effect": false,
+    "replay_budget_effect": "NOT_CONSUMED"
+  }
 }
