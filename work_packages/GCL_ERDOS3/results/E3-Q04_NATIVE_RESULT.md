@@ -60,9 +60,9 @@ the three linked Fourier coefficients
 all have magnitude at least
 \[
 \boxed{
-\left(\frac{\beta^3}{5\cdot16^3}\right)^3
+\frac{1}{4}\left(\frac{\beta^3}{5\cdot16^3}\right)
 =
-\frac{\beta^9}{5^3\,16^9}.
+\frac{\beta^3}{20\cdot16^3}.
 }
 \]
 
@@ -199,52 +199,53 @@ Parseval gives
 \]
 because \(|g_t|\le1\).
 
-Let
+Put
 \[
-M:=\max_r|a_rb_rc_r|.
+\delta:=|\Lambda_S|.
 \]
-
-Then
+Assume for contradiction that for every \(r\), at least one of
 \[
-|a_rb_rc_r|
+|a_r|,\quad |b_r|,\quad |c_r|
+\]
+is smaller than \(\delta/4\). Partition the frequency set into three classes by choosing, for each \(r\), one such small factor.
+
+On the class where \(|a_r|<\delta/4\),
+\[
+\sum |a_rb_rc_r|
 \le
-M^{1/3}|a_rb_rc_r|^{2/3}.
-\]
-
-Summing and applying Hölder,
-\[
-\sum_r|a_rb_rc_r|
+\frac{\delta}{4}\sum |b_rc_r|
 \le
-M^{1/3}
-\left(\sum_r|a_r|^2\right)^{1/3}
-\left(\sum_r|b_r|^2\right)^{1/3}
-\left(\sum_r|c_r|^2\right)^{1/3}
+\frac{\delta}{4}
+\left(\sum|b_r|^2\right)^{1/2}
+\left(\sum|c_r|^2\right)^{1/2}
 \le
-M^{1/3}.
+\frac{\delta}{4}.
+\]
+The same bound holds for the two other classes. Hence
+\[
+\sum_r|a_rb_rc_r|<\frac{3\delta}{4},
+\]
+contradicting
+\[
+\delta
+=
+|\Lambda_S|
+\le
+\sum_r|a_rb_rc_r|.
 \]
 
-Therefore
+Therefore there exists one common frequency parameter \(r\) for which
 \[
-M\ge|\Lambda_S|^3.
-\]
-
-So there exists \(r\) with
-\[
-|a_rb_rc_r|
+|a_r|,\ |b_r|,\ |c_r|
 \ge
-|\Lambda_S|^3.
-\]
-
-Every Fourier coefficient of a bounded function has magnitude at most \(1\). Hence each of the three factors individually has magnitude at least
-\[
-|\Lambda_S|^3
+\frac{|\Lambda_S|}{4}
 >
-\frac{\beta^9}{5^3\,16^9}.
+\frac{\beta^3}{20\cdot16^3}.
 \]
 
 Finally, \(r\ne0\): at \(r=0\) all three coefficients are \(\widehat g_t(0)=\mathbb E g_t=0\).
 
-This proves the aligned nonzero-frequency witness.
+This proves the strengthened aligned nonzero-frequency witness.
 
 ## Exact multiplier patterns
 
@@ -285,7 +286,7 @@ The translations introduced by the carry embedding multiply Fourier coefficients
 E3-Q03 established that every physical fibre has scalar \(U^3\) structure.
 
 Q04 shows that the forcing mechanism contains strictly more information:
-- in the triple regime, it gives a common nonzero frequency parameter and exact harmonic multipliers across the two fibres;
+- in the triple regime, it gives a common nonzero frequency parameter and exact harmonic multipliers across the two fibres, with each linked coefficient already at order \(\beta^3\) rather than order \(\beta^9\);
 - in the fourfold regime, it gives a large joint four-function correlation before any inverse theorem is applied.
 
 Thus the current native residual should not apply a \(U^3\) inverse theorem independently to each fibre and then try to compare arbitrary chosen phases. The better object is the **joint correlation witness already present in the carry equation**.
