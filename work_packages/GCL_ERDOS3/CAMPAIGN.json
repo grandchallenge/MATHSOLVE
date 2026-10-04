@@ -49,7 +49,7 @@
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Receive the single E3-V03 RESULT/1 on issue 814 before lease expiry 2026-10-04T01:37:51Z; capture exactly and adjudicate. Only VERIFIED may activate E3-Q4-GLUING-RADIUS.",
+  "next_action": "Receive the single E3-V03 RESULT/1 on issue 814 before lease expiry 2026-10-04T01:50:17Z; capture exactly and adjudicate. Only VERIFIED may activate E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -78,12 +78,14 @@
       "reason": "Fresh lease epoch 2 for the same single independent replay after epoch 1 expired silently.",
       "lease_epoch": 2,
       "lease_attempt_ordinal": 2,
-      "lease_started_at": "2026-10-04T01:12:51Z",
-      "lease_expires_at": "2026-10-04T01:37:51Z",
+      "lease_started_at": "2026-10-04T01:25:17Z",
+      "lease_expires_at": "2026-10-04T01:50:17Z",
       "agent_max_execution_minutes": 24,
       "replay_budget_ordinal": 1,
       "replay_budget_consumed": false,
-      "predecessor_dispatch_id": "GCL-ERDOS3-E3-V03-IA-001"
+      "predecessor_dispatch_id": "GCL-ERDOS3-E3-V03-IA-001",
+      "lease_clock_origin": "PROTECTED_ACTIVATION",
+      "protected_activation_at": "2026-10-04T01:25:17Z"
     }
   },
   "active_dispatches": {
@@ -99,12 +101,14 @@
       "replay_budget_ordinal": 1,
       "lease_epoch": 2,
       "lease_attempt_ordinal": 2,
-      "lease_started_at": "2026-10-04T01:12:51Z",
-      "lease_expires_at": "2026-10-04T01:37:51Z",
+      "lease_started_at": "2026-10-04T01:25:17Z",
+      "lease_expires_at": "2026-10-04T01:50:17Z",
       "agent_max_execution_minutes": 24,
       "context_class": "ZERO_CONTEXT",
       "external_sources": "PROTECTED_PACKET_ONLY",
-      "state": "DISPATCHED__AWAITING_RETURN"
+      "state": "DISPATCHED__AWAITING_RETURN",
+      "lease_clock_origin": "PROTECTED_ACTIVATION",
+      "protected_activation_at": "2026-10-04T01:25:17Z"
     }
   },
   "completed_dispatches": {

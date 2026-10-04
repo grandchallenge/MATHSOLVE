@@ -382,12 +382,14 @@
         "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01",
         "lease_epoch": 2,
         "lease_attempt_ordinal": 2,
-        "lease_started_at": "2026-10-04T01:12:51Z",
-        "lease_expires_at": "2026-10-04T01:37:51Z",
+        "lease_started_at": "2026-10-04T01:25:17Z",
+        "lease_expires_at": "2026-10-04T01:50:17Z",
         "agent_max_execution_minutes": 24,
         "replay_budget_ordinal": 1,
         "state": "DISPATCHED__AWAITING_RETURN",
-        "external_sources": "PROTECTED_PACKET_ONLY"
+        "external_sources": "PROTECTED_PACKET_ONLY",
+        "lease_clock_origin": "PROTECTED_ACTIVATION",
+        "protected_activation_at": "2026-10-04T01:25:17Z"
       }
     }
   ],
@@ -446,6 +448,7 @@
     "lease_epoch": 2,
     "replay_budget_ordinal": 1,
     "issue_number": 814,
-    "lease_expires_at": "2026-10-04T01:37:51Z"
+    "lease_expires_at": "2026-10-04T01:50:17Z",
+    "lease_clock_origin": "PROTECTED_ACTIVATION"
   }
 }
