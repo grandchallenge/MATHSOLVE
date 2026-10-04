@@ -3,7 +3,7 @@
   "record_type": "GCL_RESEARCH_CAMPAIGN",
   "campaign_id": "GCL-ERDOS3",
   "title": "Erdős Problem 3",
-  "status": "ACTIVE__E3_TRANCHE_03_ADJUDICATED__VERIFY_PENDING",
+  "status": "ACTIVE__E3_V03_DISPATCHED",
   "origin": {
     "campaign": "OPENMATH-2026",
     "hill": "OM26-H7",
@@ -49,7 +49,7 @@
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Dispatch E3-V03 as one independent-blind replay of E3-B-GLUING-RADIUS-EQUIV. Do not replace the active E3-Q4-DENSITY-LOSS frontier until that replay is captured and adjudicated VERIFIED.",
+  "next_action": "Receive the single E3-V03 RESULT/1 on issue 798, capture it exactly, then adjudicate. Only VERIFIED may activate E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -69,9 +69,31 @@
       "result_comment_id": 5969442261,
       "result_path": "work_packages/GCL_ERDOS3/results/E3-V02_RESULT.md",
       "effect": "Closed E3-V-B02; no parent theorem effect."
+    },
+    "E3-V03": {
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-001",
+      "issue_number": 798,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/798",
+      "state": "DISPATCHED__AWAITING_RETURN",
+      "reason": "One independent replay of the new G01 theorem-grade gluing-radius equivalence before active-frontier replacement."
     }
   },
-  "active_dispatches": {},
+  "active_dispatches": {
+    "E3-V03": {
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-E3-V03-001",
+      "issue_number": 798,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/798",
+      "task_commit": "eb94ed1df6c3743fc8a186dcc423ce372fb512c8",
+      "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01",
+      "target_node": "E3-B-GLUING-RADIUS-EQUIV",
+      "frontier_action": "INDEPENDENT_VERIFY",
+      "replay_budget_ordinal": 1,
+      "context_class": "ZERO_CONTEXT",
+      "external_sources": "PROTECTED_PACKET_ONLY",
+      "state": "DISPATCHED__AWAITING_RETURN"
+    }
+  },
   "completed_dispatches": {
     "E3-Q01": {
       "issue_number": 772,
@@ -151,7 +173,7 @@
     "E3-A03",
     "E3-S04"
   ],
-  "dispatch_state": "ADJUDICATED__VERIFY_PENDING",
+  "dispatch_state": "VERIFY_DISPATCHED__AWAITING_RETURN",
   "dispatch_cleanup": {
     "duplicate_issue_number": 790,
     "canonical_assignment": "E3-D01",
