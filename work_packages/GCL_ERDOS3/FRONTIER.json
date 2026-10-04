@@ -191,7 +191,7 @@
       "provenance": "E3-X01",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-X01_RESULT.md",
       "promotion": "PROMOTED__E3-TRANCHE-02",
-      "claim_boundary": "Sufficient route only; it is not claimed necessary and is not proved by E3-X01.",
+      "claim_boundary": "Still OPEN. Tranche 03 formulates an equivalent finite/local successor candidate, but frontier replacement is withheld pending independent verification of E3-B-GLUING-RADIUS-EQUIV.",
       "prepared_tranche": "E3-TRANCHE-03",
       "prepared_attacks": [
         "E3-R01",
@@ -208,15 +208,8 @@
         "structural_object": "recursive extremizer tree with digit-and-carry fiber constraints"
       },
       "research_note": "work_packages/GCL_ERDOS3/E3-TRANCHE-03_REPRESENTATION.md",
-      "active_attacks": [
-        "E3-R01",
-        "E3-D01",
-        "E3-G01",
-        "E3-C01",
-        "E3-A03",
-        "E3-S04"
-      ],
-      "dispatch_state": "CAPTURED__PENDING_SYNTHESIS",
+      "active_attacks": [],
+      "dispatch_state": "ADJUDICATED__VERIFY_PENDING",
       "dispatch_task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
       "dispatches": {
         "E3-R01": {
@@ -275,7 +268,19 @@
         }
       },
       "capture_manifest": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json",
-      "synthesis_allowed": true
+      "synthesis_allowed": false,
+      "completed_attacks": {
+        "E3-R01": "ACCEPTED__REPRESENTATION_REDUCTION",
+        "E3-D01": "ACCEPTED__FINITE_CARRY_REPRESENTATION",
+        "E3-G01": "THEOREM_GRADE_STRUCTURAL_REDUCTION__VERIFY_PENDING",
+        "E3-C01": "FINITE_PATTERN_SUPPORTING_ONLY",
+        "E3-A03": "NO_COUNTEREXAMPLE__SUPPORTING_BOUNDARY",
+        "E3-S04": "SOURCE_INTERFACE_REQUIRES_STABILITY_BRIDGE"
+      },
+      "synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_SYNTHESIS.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json",
+      "selected_successor_candidate": "E3-Q4-GLUING-RADIUS",
+      "verification_gate": "E3-V03"
     },
     {
       "id": "E3-QK5-SERIES",
@@ -311,6 +316,49 @@
       "disposition": "VERIFIED",
       "completed_by": "E3-V02",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-V02_RESULT.md"
+    },
+    {
+      "id": "E3-B-GLUING-RADIUS-EQUIV",
+      "kind": "REDUCTION",
+      "status": "PROVED_PENDING_INDEPENDENT_VERIFY",
+      "parent": "E3-Q4-DENSITY-LOSS",
+      "statement": "For fixed L>=1, N=2^n, m=2^L, a_n=r_4(N)/N, D_{L,n}=a_n-a_{n+L}, and Gamma_{L,n}=H_{L,n}/N with H_{L,n} the least uniform fiber slack permitting a 4-AP-free m-block gluing, prove D_{L,n} <= Gamma_{L,n} <= m D_{L,n}.",
+      "completed_by": "E3-G01",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
+      "independent_verification_required": "E3-V03",
+      "claim_boundary": "Native theorem-grade bridge only; not yet independently verified."
+    },
+    {
+      "id": "E3-Q4-GLUING-RADIUS",
+      "kind": "FRONTIER_CANDIDATE",
+      "status": "FORMULATED_PENDING_VERIFY",
+      "parent": "E3-Q4-DENSITY-LOSS",
+      "sufficient_for": [
+        "E3-Q4-DENSITY-LOSS",
+        "E3-Q4-SERIES"
+      ],
+      "statement": "For some fixed L>=1, kappa>0, n_0, and 0<theta<1, prove Gamma_{L,n} >= kappa a_n^(1+theta) for all n>=n_0, where Gamma_{L,n}=H_{L,n}/2^n and H_{L,n} is the least uniform per-fiber slack permitting a 4-AP-free 2^L-block gluing.",
+      "attack_direction": "Exact digit/carry constraints -> forced U3/quadratic structure -> configuration incompatibility/transversal cost -> polynomial gluing-radius lower bound.",
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-D01_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md"
+      ],
+      "promotion_gate": "E3-V03",
+      "claim_boundary": "Formulated successor candidate only; not active and not proved."
+    },
+    {
+      "id": "E3-V-B03",
+      "kind": "VERIFICATION",
+      "status": "READY",
+      "depends_on": [
+        "E3-B-GLUING-RADIUS-EQUIV"
+      ],
+      "statement": "Independently replay the G01 gluing-radius bridge D_{L,n} <= Gamma_{L,n} <= 2^L D_{L,n}, including well-posedness and exact finite carry-feasibility interpretation.",
+      "work_package": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
+      "frontier_action": "INDEPENDENT_VERIFY",
+      "replay_budget": 1
     }
   ],
   "closed_claims": [
@@ -361,20 +409,11 @@
     "parent_theorem_effect": "NONE"
   },
   "next_tranche": {
-    "id": "E3-TRANCHE-03",
-    "status": "CAPTURED__PENDING_SYNTHESIS",
-    "manifest": "work_packages/GCL_ERDOS3/E3-TRANCHE-03.json",
-    "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
-    "objective": "Re-represent density loss as a gluing/persistence problem and seek either a local theorem, a source interface, or a counterexample.",
-    "intake_issues": [
-      788,
-      789,
-      791,
-      792,
-      793,
-      794
-    ],
-    "capture_manifest": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json",
-    "synthesis_allowed": true
+    "id": "E3-V03",
+    "status": "PREPARED_NOT_DISPATCHED",
+    "manifest": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
+    "objective": "Independently replay the G01 gluing-radius equivalence before replacing the active frontier.",
+    "target_node": "E3-B-GLUING-RADIUS-EQUIV",
+    "candidate_successor": "E3-Q4-GLUING-RADIUS"
   }
 }
