@@ -4,7 +4,7 @@
   "cohort_id": "CMDG-P3M-COV-BLIND-COHORT-001",
   "campaign": "CMDG-CM4-COV",
   "work_package": "P3-M-WEIGHTED-ONE-POINT-COVERAGE-004",
-  "state": "OPEN",
+  "state": "CLOSED_EVIDENCE_COMPLETE",
   "mode": "independent_blind",
   "dispatch_ids": [
     "CMDG-P3M-COV-WP-A-IA-001",
@@ -15,10 +15,15 @@
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
   "intake_channel": "github_issue_comment",
   "cross_disclosure_before_closure": false,
-  "synthesis_allowed": false,
+  "synthesis_allowed": true,
   "activation_condition": "SATISFIED",
   "synthesis_open_condition": "All four dispatches have terminal valid protected returns; at least one positive return from A/B/D and the adversarial C return are present; cohort reconciliation explicitly opens synthesis.",
-  "claim_boundary": "Blind staging only; contributor returns are evidence, not authority.",
+  "claim_boundary": "Cohort closure permits comparison and synthesis of protected returns only; it does not certify, promote, or admit a mathematical claim.",
   "protected_staging_merge": "50a82970f039e993062079cb774f4543ca766d7b",
-  "issue_byte_lock_complete": true
+  "protected_open_readback": "2718bb693ce027c47635e3499222bc7b40368b51",
+  "issue_byte_lock_complete": true,
+  "closed_on_evidence_commit": "5ffb289251267ffc7dde9be3ad5ff7e54f2a34e1",
+  "closure_receipt_path": "contributions/CMDG-CM4/P3M_WEIGHTED_ONE_POINT_COVERAGE_004/COHORT_CLOSURE_RECEIPT.json",
+  "closure_reason": "ALL_FOUR_RETURNS_DURABLY_PROTECTED__POSITIVE_AND_ADVERSARIAL_SYNTHESIS_MINIMUM_SATISFIED",
+  "mathematical_adjudication_performed": false
 }
