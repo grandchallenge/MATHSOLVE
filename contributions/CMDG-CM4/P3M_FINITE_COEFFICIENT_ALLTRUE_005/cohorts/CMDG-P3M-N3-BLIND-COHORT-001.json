@@ -16,7 +16,16 @@
   "intake_channel": "github_issue_comment",
   "cross_disclosure_before_closure": false,
   "synthesis_allowed": false,
-  "activation_condition": "PENDING_PROTECTED_ACTIVATION_MERGE",
+  "activation_condition": "SATISFIED",
   "synthesis_open_condition": "All four dispatches must have terminal valid protected returns; WP-C adversarial evidence is mandatory; cohort reconciliation must explicitly open synthesis.",
-  "claim_boundary": "Open blind evidence collection only. No mathematical adjudication, claim promotion, or certification effect."
+  "claim_boundary": "Open blind evidence collection only. No mathematical adjudication, claim promotion, or certification effect.",
+  "protected_activation_merge": "fea1128fb5167c912f85b7b4369519e5bd3fc502",
+  "issue_byte_lock_complete": true,
+  "launch_comments_posted": true,
+  "launch_comment_ids": {
+    "CMDG-P3M-N3-WP-A-IA-001": 5979988980,
+    "CMDG-P3M-N3-WP-B-IA-001": 5979989495,
+    "CMDG-P3M-N3-WP-C-IA-001": 5979989898,
+    "CMDG-P3M-N3-WP-D-IA-001": 5979990453
+  }
 }

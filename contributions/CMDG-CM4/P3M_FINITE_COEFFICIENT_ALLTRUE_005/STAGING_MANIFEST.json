@@ -4,14 +4,14 @@
   "campaign": "CMDG-CM4-N3",
   "work_package": "P3-M-FINITE-COEFFICIENT-ALLTRUE-005",
   "parent_programme_issue": 1162,
-  "state": "ACTIVE_PENDING_PROTECTED_MERGE",
+  "state": "ACTIVE",
   "protected_programme_predecessor": "a2897a270c477ac95ba3d18dd068a13b07d3b853",
   "protected_n2_theorem": "CMDG.CondensedCM4P3G.BasisBooleanPairing.weightedBasisBooleanPairing_functionalWeight_allTrue",
   "protected_n2_merge": "a2897a270c477ac95ba3d18dd068a13b07d3b853",
   "solve_candidate_base": "f5c6bd35a10b4491e13ced61960712e7b6280ba4",
   "blind_cohort_id": "CMDG-P3M-N3-BLIND-COHORT-001",
   "issue_byte_lock_complete": true,
-  "activation_complete": false,
+  "activation_complete": true,
   "dispatch_status": "READY_FOR_GITHUB_COMMENT",
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
   "intake_channel": "github_issue_comment",
@@ -64,5 +64,13 @@
   "canonical_mutation_authorized_for_contributors": false,
   "certification_effect": false,
   "claim_boundary": "Activation only. No N3 theorem, weighted reconstruction, Point-component vanishing, d = 0, mapping-out injectivity, solidity, P3 completion, or CM4 completion is admitted.",
-  "launch_comments_posted": false
+  "launch_comments_posted": true,
+  "activation_condition": "SATISFIED",
+  "protected_solve_activation_merge": "fea1128fb5167c912f85b7b4369519e5bd3fc502",
+  "launch_comment_ids": {
+    "CMDG-P3M-N3-WP-A-IA-001": 5979988980,
+    "CMDG-P3M-N3-WP-B-IA-001": 5979989495,
+    "CMDG-P3M-N3-WP-C-IA-001": 5979989898,
+    "CMDG-P3M-N3-WP-D-IA-001": 5979990453
+  }
 }
