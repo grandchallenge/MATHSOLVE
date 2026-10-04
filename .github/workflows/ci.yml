@@ -179,7 +179,7 @@ jobs:
       - name: Validate GCL-ERDOS3 frontier and independent intake
         run: |
           python ci/validate_gcl_erdos3_frontier.py
-          python -m unittest tests/test_gcl_erdos3_github_contribution_intake.py -v
+          python -m unittest tests/test_gcl_erdos3_github_contribution_intake.py tests/test_gcl_erdos3_lease_reaper.py -v
 
       - name: Validate OpenAI Ten Proofs independent handoffs
         run: |
