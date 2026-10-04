@@ -149,12 +149,17 @@ def validate(root=ROOT):
         errors.append('E3-Q03 native campaign result drift')
     if campaign.get('work_package_results',{}).get('E3-Q04')!='PROVED_NATIVE_JOINT_WITNESS_DICHOTOMY':
         errors.append('E3-Q04 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q06')!='PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION':
+        errors.append('E3-Q06 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
     ext2=campaign.get('tranche_04_extension_2',{})
     if ext2.get('result')!='E3-Q04' or ext2.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md':
         errors.append('E3-Q04 campaign extension binding drift')
+    extq06=campaign.get('tranche_04_extension_q06',{})
+    if extq06.get('result')!='E3-Q06' or extq06.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md':
+        errors.append('E3-Q06 campaign extension binding drift')
     if campaign.get('dispatch_state')!='VERIFY_DISPATCHED__AWAITING_RETURN':
         errors.append('E3-V03 dispatch state drift')
     if campaign.get('synthesis_allowed') is not False:
@@ -587,11 +592,14 @@ def validate(root=ROOT):
     q04=root/'work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md'
     if not q04.is_file() or blob(q04)!='37fd7dd0643153b597acb7b5c2b219d086010a04':
         errors.append('E3-Q04 native result blob drift')
+    q06=root/'work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md'
+    if not q06.is_file() or blob(q06)!='0b4ac5b53198c889be72289eb65533b0cb879773':
+        errors.append('E3-Q06 native result blob drift')
 
     return errors
 
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    if not e: print('PASS: GCL-ERDOS3 Q04 preserves aligned Fourier-or-fourfold witnesses and sharpens joint witness incompatibility; active parent frontier and V03 gate remain unchanged')
+    if not e: print('PASS: GCL-ERDOS3 Q06 proves positive-density joint derivative spectral overlap in the fourfold branch; active parent frontier and V03 gate remain unchanged')
     raise SystemExit(bool(e))
