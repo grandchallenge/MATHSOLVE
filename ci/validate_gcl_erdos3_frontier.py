@@ -63,11 +63,13 @@ def validate(root=ROOT):
         errors.append('gluing-radius bridge verification state drift')
     if rows.get('E3-Q4-GLUING-RADIUS',{}).get('status')!='FORMULATED_PENDING_VERIFY':
         errors.append('gluing-radius successor candidate state drift')
-    if rows.get('E3-V-B03',{}).get('status')!='LAUNCHED':
-        errors.append('E3-V-B03 verification node not launched')
-    v03_frontier_dispatch=rows.get('E3-V-B03',{}).get('dispatch',{})
-    if v03_frontier_dispatch.get('issue_number')!=798 or v03_frontier_dispatch.get('task_commit')!='eb94ed1df6c3743fc8a186dcc423ce372fb512c8':
-        errors.append('E3-V03 frontier dispatch binding drift')
+    if rows.get('E3-V-B03',{}).get('status')!='LEASE_EXPIRED__REISSUE_REQUIRED':
+        errors.append('E3-V-B03 lease-expired state drift')
+    v03_expired=rows.get('E3-V-B03',{}).get('expired_dispatch',{})
+    if v03_expired.get('issue_number')!=798 or v03_expired.get('lease_epoch')!=1:
+        errors.append('E3-V03 expired frontier lease binding drift')
+    if rows.get('E3-V-B03',{}).get('replay_budget')!=1 or rows.get('E3-V-B03',{}).get('replay_budget_consumed')!=0:
+        errors.append('E3-V03 frontier replay budget consumed by silence')
 
     if f01.get('disposition')!='FORMALIZED':
         errors.append('F01 disposition drift')
@@ -95,13 +97,13 @@ def validate(root=ROOT):
     if tranche03.get('status')!='ADJUDICATED__VERIFY_G01_PENDING' or tranche03.get('synthesis_allowed') is not False:
         errors.append('tranche-03 adjudication/verification gate drift')
     expected_dispatches={'E3-R01','E3-D01','E3-G01','E3-C01','E3-A03','E3-S04'}
-    if set(campaign.get('active_dispatches',{}))!={'E3-V03'}:
-        errors.append('E3-V03 is not the sole active dispatch')
-    v03=campaign.get('active_dispatches',{}).get('E3-V03',{})
-    if v03.get('issue_number')!=798 or v03.get('task_commit')!='eb94ed1df6c3743fc8a186dcc423ce372fb512c8' or v03.get('task_blob_sha1')!='44d366be27cec0679c695c03074bceeab9b7cf01':
-        errors.append('E3-V03 campaign dispatch identity drift')
-    if v03.get('frontier_action')!='INDEPENDENT_VERIFY' or v03.get('replay_budget_ordinal')!=1:
-        errors.append('E3-V03 replay authority drift')
+    if campaign.get('active_dispatches',{})!={}:
+        errors.append('expired E3-V03 lease still appears active')
+    expired=campaign.get('completed_dispatches',{}).get('E3-V03-LEASE-001',{})
+    if expired.get('issue_number')!=798 or expired.get('dispatch_id')!='GCL-ERDOS3-E3-V03-IA-001':
+        errors.append('expired E3-V03 campaign lease identity drift')
+    if expired.get('valid_result_count')!=0 or expired.get('replay_budget_consumed') is not False:
+        errors.append('silent E3-V03 expiry consumed replay or invented evidence')
     if not expected_dispatches <= set(campaign.get('completed_dispatches',{})):
         errors.append('tranche-03 completed dispatch set incomplete')
     if campaign.get('completed_dispatches',{}).get('E3-D01',{}).get('issue_number')!=789:
