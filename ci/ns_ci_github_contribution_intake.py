@@ -168,7 +168,31 @@ CMDG_N3_PROFILE = IntakeProfile(
     pr_title_prefix="CMDG-CM4 N3 intake",
 )
 
-PROFILES = (NS_PROFILE, UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE)
+ERDOS_RA_PROFILE = IntakeProfile(
+    campaign="ERDOS-OPEN-RECON",
+    dispatch_re=re.compile(r"^ERDOS-(?:593|595|241|470|1052|99|101|138)-(?:R1|A1)-IA-001$"),
+    base_rel=Path("contributions/ERDOS-OPEN-001/RECON_TRANCHE_001"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=("dispatch_id","agent_ref","assignment","disposition","context_class","external_sources","timebox_observed"),
+    dispositions=frozenset({"EXACT_REDUCTION","FINITE_CERTIFICATE","SOURCE_INTERFACE_FOUND","COUNTEREXAMPLE","EXACT_BLOCKER","NO_MATERIAL_DELTA"}),
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="ERDOS-OPEN intake",
+)
+
+ERDOS_S_PROFILE = IntakeProfile(
+    campaign="ERDOS-OPEN-RECON",
+    dispatch_re=re.compile(r"^ERDOS-(?:593|595|241|470|1052|99|101|138)-S1-IA-001$"),
+    base_rel=Path("contributions/ERDOS-OPEN-001/RECON_TRANCHE_001"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=ERDOS_RA_PROFILE.preamble_keys,
+    dispositions=ERDOS_RA_PROFILE.dispositions,
+    external_sources="PRIMARY_SOURCES_REQUIRED",
+    pr_title_prefix="ERDOS-OPEN intake",
+)
+
+PROFILES = (NS_PROFILE, UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE, ERDOS_RA_PROFILE, ERDOS_S_PROFILE)
 
 
 class IntakeError(ValueError):
@@ -260,6 +284,11 @@ def parse_result_comment(body: str) -> dict[str, Any]:
         raise IntakeError("assignment is invalid for the CMDG P3-M weighted coverage profile")
     if profile is CMDG_N3_PROFILE and not re.fullmatch(r"CMDG-P3M-N3-WP-[A-D]", preamble["assignment"]):
         raise IntakeError("assignment is invalid for the CMDG P3-M N3 profile")
+    if profile in {ERDOS_RA_PROFILE, ERDOS_S_PROFILE} and not re.fullmatch(
+        r"ERDOS-(?:593|595|241|470|1052|99|101|138)-(?:R1|S1|A1)",
+        preamble["assignment"],
+    ):
+        raise IntakeError("assignment is invalid for the ERDOS-OPEN reconnaissance profile")
 
     headings = HEADING_RE.findall(parsed_body)
     if headings != SECTIONS:
@@ -356,7 +385,7 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], I
 
     if parsed["preamble"]["assignment"] != dispatch.get("assignment_id"):
         raise IntakeError("assignment does not match protected dispatch")
-    if profile in {UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE} and parsed["preamble"].get("agent_ref") != dispatch.get("agent_ref"):
+    if profile in {UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE, ERDOS_RA_PROFILE, ERDOS_S_PROFILE} and parsed["preamble"].get("agent_ref") != dispatch.get("agent_ref"):
         raise IntakeError("agent_ref does not match protected dispatch")
     if dispatch.get("concurrency_mode") not in {
         "independent_blind",

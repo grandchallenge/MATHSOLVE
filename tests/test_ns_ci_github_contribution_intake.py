@@ -425,6 +425,102 @@ class CmdgP3MN3ResultGrammarTests(unittest.TestCase):
         with self.assertRaises(IntakeError):
             parse_result_comment(body)
 
+ERDOS_R_VALID_BODY = """GCL-CONTRIBUTION-RESULT/1
+dispatch_id: ERDOS-593-R1-IA-001
+agent_ref: INDEPENDENT-AGENT-ERDOS-593-R1
+assignment: ERDOS-593-R1
+disposition: EXACT_REDUCTION
+context_class: ZERO_CONTEXT
+external_sources: PROTECTED_PACKET_ONLY
+timebox_observed: YES
+
+## Strongest exact statement
+
+A bounded reduction for the protected Erdős 593 target.
+
+## Derivation
+
+A complete derivation from the protected packet.
+
+## Assumptions beyond bootstrap
+
+NONE
+
+## Verification / falsification hooks
+
+Check the finite obstruction explicitly.
+
+## Claim boundary
+
+Evidence only; no theorem promotion.
+
+## Next residual
+
+Prove the smallest remaining bridge.
+"""
+
+ERDOS_S_VALID_BODY = """GCL-CONTRIBUTION-RESULT/1
+dispatch_id: ERDOS-593-S1-IA-001
+agent_ref: INDEPENDENT-AGENT-ERDOS-593-S1
+assignment: ERDOS-593-S1
+disposition: SOURCE_INTERFACE_FOUND
+context_class: ZERO_CONTEXT
+external_sources: PRIMARY_SOURCES_REQUIRED
+timebox_observed: YES
+
+## Strongest exact statement
+
+Primary-source evidence resolves the historical interface.
+
+## Derivation
+
+Bibliographic identifiers and theorem locations are supplied without raw URLs.
+
+## Assumptions beyond bootstrap
+
+NONE
+
+## Verification / falsification hooks
+
+Replay the cited theorem statement against the protected formal target.
+
+## Claim boundary
+
+Source evidence only; no mathematical certification.
+
+## Next residual
+
+Reconcile the smallest semantic mismatch.
+"""
+
+class ErdosOpenResultGrammarTests(unittest.TestCase):
+    def test_valid_recon_comment_parses(self) -> None:
+        parsed = parse_result_comment(ERDOS_R_VALID_BODY)
+        self.assertEqual(parsed["profile"], "ERDOS-OPEN-RECON")
+        self.assertEqual(parsed["preamble"]["agent_ref"], "INDEPENDENT-AGENT-ERDOS-593-R1")
+
+    def test_valid_source_comment_parses(self) -> None:
+        parsed = parse_result_comment(ERDOS_S_VALID_BODY)
+        self.assertEqual(parsed["profile"], "ERDOS-OPEN-RECON")
+        self.assertEqual(parsed["preamble"]["external_sources"], "PRIMARY_SOURCES_REQUIRED")
+
+    def test_source_lane_rejects_protected_only_declaration(self) -> None:
+        with self.assertRaises(IntakeError):
+            parse_result_comment(ERDOS_S_VALID_BODY.replace("external_sources: PRIMARY_SOURCES_REQUIRED","external_sources: PROTECTED_PACKET_ONLY"))
+
+    def test_recon_lane_rejects_primary_sources(self) -> None:
+        with self.assertRaises(IntakeError):
+            parse_result_comment(ERDOS_R_VALID_BODY.replace("external_sources: PROTECTED_PACKET_ONLY","external_sources: PRIMARY_SOURCES_REQUIRED"))
+
+    def test_erdos_lane_rejects_unregistered_problem(self) -> None:
+        with self.assertRaises(IntakeError):
+            parse_result_comment(ERDOS_R_VALID_BODY.replace("ERDOS-593-R1","ERDOS-20-R1"))
+
+    def test_source_result_rejects_raw_url(self) -> None:
+        with self.assertRaises(IntakeError):
+            parse_result_comment(ERDOS_S_VALID_BODY.replace("Bibliographic identifiers and theorem locations are supplied without raw URLs.","See https://example.org/source for the theorem."))
+
+
 
 if __name__ == "__main__":
     unittest.main()
