@@ -192,14 +192,12 @@
       "evidence": "work_packages/GCL_ERDOS3/results/E3-X01_RESULT.md",
       "promotion": "PROMOTED__E3-TRANCHE-02",
       "claim_boundary": "Still OPEN. Tranche 03 formulates an equivalent finite/local successor candidate, but frontier replacement is withheld pending independent verification of E3-B-GLUING-RADIUS-EQUIV.",
-      "prepared_tranche": "E3-TRANCHE-03",
+      "prepared_tranche": "E3-TRANCHE-04",
       "prepared_attacks": [
-        "E3-R01",
-        "E3-D01",
-        "E3-G01",
-        "E3-C01",
-        "E3-A03",
-        "E3-S04"
+        "E3-L01",
+        "E3-Q02",
+        "E3-T01",
+        "E3-A04"
       ],
       "representation_shift": {
         "gluing_defect": "D_{L,n}=a_n-a_{n+L}",
@@ -208,7 +206,9 @@
         "structural_object": "recursive extremizer tree with digit-and-carry fiber constraints"
       },
       "research_note": "work_packages/GCL_ERDOS3/E3-TRANCHE-03_REPRESENTATION.md",
-      "active_attacks": [],
+      "active_attacks": [
+        "E3-B-QUADRATIC-MOTIF-AMPLIFICATION"
+      ],
       "dispatch_state": "ADJUDICATED__VERIFY_PENDING",
       "dispatch_task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
       "dispatches": {
@@ -275,12 +275,19 @@
         "E3-G01": "THEOREM_GRADE_STRUCTURAL_REDUCTION__VERIFY_PENDING",
         "E3-C01": "FINITE_PATTERN_SUPPORTING_ONLY",
         "E3-A03": "NO_COUNTEREXAMPLE__SUPPORTING_BOUNDARY",
-        "E3-S04": "SOURCE_INTERFACE_REQUIRES_STABILITY_BRIDGE"
+        "E3-S04": "SOURCE_INTERFACE_REQUIRES_STABILITY_BRIDGE",
+        "E3-L01": "FINITE_LIFTED_CERTIFICATE_PROVED__NO_PARENT_PROMOTION",
+        "E3-Q02": "PROVED_NATIVE_LABELLED_FORCING__NO_PARENT_PROMOTION",
+        "E3-T01": "SCALAR_U3_ACCUMULATION_INSUFFICIENT__PHASE_ALIGNMENT_REQUIRED",
+        "E3-A04": "SYNCHRONIZED_COMMON_CORE_COUNTEREXAMPLE_CLASS_RULED_OUT"
       },
       "synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_SYNTHESIS.md",
       "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json",
       "selected_successor_candidate": "E3-Q4-GLUING-RADIUS",
-      "verification_gate": "E3-V03"
+      "verification_gate": "E3-V03",
+      "tranche_04_manifest": "work_packages/GCL_ERDOS3/E3-TRANCHE-04.json",
+      "tranche_04_synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md",
+      "native_residual": "E3-B-QUADRATIC-MOTIF-AMPLIFICATION"
     },
     {
       "id": "E3-QK5-SERIES",
@@ -391,6 +398,45 @@
         "state": "DISPATCHED__AWAITING_RETURN",
         "external_sources": "PROTECTED_PACKET_ONLY"
       }
+    },
+    {
+      "id": "E3-B-FOUR-FIBRE-DEFICIT",
+      "kind": "NATIVE_SUBTARGET",
+      "status": "OPEN_NATIVE_SUBTARGET",
+      "parent": "E3-Q4-DENSITY-LOSS",
+      "statement": "For N=2^n, a_n=r_4(N)/N, prove that there exist kappa>0, 0<theta<1, and n_0 such that every 4-AP-free four-fibre gluing has max_i(r_4(N)-|B_i|) >= kappa*N*a_n^(1+theta) for all n>=n_0.",
+      "sufficient_for": [
+        "E3-Q4-DENSITY-LOSS"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-L01_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q02_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-T01_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-A04_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Native subtarget only; not proved and not a replacement active frontier."
+    },
+    {
+      "id": "E3-B-QUADRATIC-MOTIF-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-FOUR-FIBRE-DEFICIT",
+      "statement": "Retain explicit quantitative quadratic witnesses for the physical fibres and prove that the translated witness relations across the 10-family L01 core cannot all coexist unless at least c*beta^(1+theta)*N points are deleted for some fixed 0<theta<1.",
+      "sufficient_for": [
+        "E3-B-FOUR-FIBRE-DEFICIT"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-L01_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q02_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-T01_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-A04_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md"
+      ],
+      "attack_lanes": [
+        "motif amplification from the nine L01 residual clause types",
+        "quadratic witness/frequency-map incompatibility before lossy phase localization"
+      ],
+      "claim_boundary": "Smallest formulated native residual after tranche 04; open and unproved."
     }
   ],
   "closed_claims": [
@@ -442,8 +488,9 @@
   },
   "next_tranche": {
     "id": "E3-TRANCHE-04-FOUR-FIBRE-DEFICIT",
-    "status": "NATIVE_ATTACK_IN_PROGRESS__VERIFY_LEASE_ACTIVE",
-    "objective": "Continue native four-fibre deficit work while E3-V03 epoch 4 independently verifies the G01 bridge.",
+    "status": "NATIVE_SYNTHESIS_REGISTERED__VERIFY_LEASE_ACTIVE",
+    "objective": "Attack E3-B-QUADRATIC-MOTIF-AMPLIFICATION while V03 epoch 4 independently verifies the G01 gluing-radius bridge.",
+    "active_frontier_effect": "NONE",
     "verification_dependency": "E3-V03 remains required only for promotion of E3-Q4-GLUING-RADIUS.",
     "lease_epoch": 4,
     "issue_number": 866
