@@ -80,6 +80,8 @@ def validate(root=ROOT):
         errors.append('quadratic-motif reduced residual state drift')
     if rows.get('E3-B-ALL-FIBRE-U3-FORCING',{}).get('status')!='PROVED_NATIVE':
         errors.append('all-fibre U3 native lemma state drift')
+    if rows.get('E3-B-ADJACENT-WITNESS-DICHOTOMY',{}).get('status')!='PROVED_NATIVE':
+        errors.append('adjacent witness dichotomy native lemma state drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
         errors.append('joint-witness native residual state drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('parent')!='E3-B-FOUR-FIBRE-DEFICIT':
@@ -145,9 +147,14 @@ def validate(root=ROOT):
         errors.append('Q03 native residual drift')
     if campaign.get('work_package_results',{}).get('E3-Q03')!='PROVED_NATIVE_ALL_FIBRE_U3_FORCING':
         errors.append('E3-Q03 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q04')!='PROVED_NATIVE_JOINT_WITNESS_DICHOTOMY':
+        errors.append('E3-Q04 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
+    ext2=campaign.get('tranche_04_extension_2',{})
+    if ext2.get('result')!='E3-Q04' or ext2.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md':
+        errors.append('E3-Q04 campaign extension binding drift')
     if campaign.get('dispatch_state')!='VERIFY_DISPATCHED__AWAITING_RETURN':
         errors.append('E3-V03 dispatch state drift')
     if campaign.get('synthesis_allowed') is not False:
@@ -479,6 +486,7 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-A04_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md',
         'work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py',
         'work_packages/GCL_ERDOS3/LEASE_POLICY.json',
         'work_packages/GCL_ERDOS3/work_packages/E3-V03.md',
@@ -576,11 +584,14 @@ def validate(root=ROOT):
     q03=root/'work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md'
     if not q03.is_file() or blob(q03)!='a102df8ac5488cadd0af367351f4544e646ad031':
         errors.append('E3-Q03 native result blob drift')
+    q04=root/'work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md'
+    if not q04.is_file() or blob(q04)!='37fd7dd0643153b597acb7b5c2b219d086010a04':
+        errors.append('E3-Q04 native result blob drift')
 
     return errors
 
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    if not e: print('PASS: GCL-ERDOS3 Q03 proves all-fibre U3 forcing and reduces the native residual to joint witness incompatibility; active parent frontier and V03 gate remain unchanged')
+    if not e: print('PASS: GCL-ERDOS3 Q04 preserves aligned Fourier-or-fourfold witnesses and sharpens joint witness incompatibility; active parent frontier and V03 gate remain unchanged')
     raise SystemExit(bool(e))
