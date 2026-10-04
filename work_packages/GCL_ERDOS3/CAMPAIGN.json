@@ -3,7 +3,7 @@
   "record_type": "GCL_RESEARCH_CAMPAIGN",
   "campaign_id": "GCL-ERDOS3",
   "title": "Erdős Problem 3",
-  "status": "ACTIVE__E3_V03_DISPATCHED",
+  "status": "ACTIVE__E3_V03_LEASE_EXPIRED",
   "origin": {
     "campaign": "OPENMATH-2026",
     "hill": "OM26-H7",
@@ -49,7 +49,7 @@
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Receive the single E3-V03 RESULT/1 on issue 798, capture it exactly, then adjudicate. Only VERIFIED may activate E3-Q4-GLUING-RADIUS.",
+  "next_action": "Reissue E3-V03 under a fresh dispatch/agent identity and lease epoch, retaining replay_budget_ordinal=1. Accept no evidence from expired issue 798.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -74,26 +74,17 @@
       "dispatch_id": "GCL-ERDOS3-E3-V03-IA-001",
       "issue_number": 798,
       "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/798",
-      "state": "DISPATCHED__AWAITING_RETURN",
-      "reason": "One independent replay of the new G01 theorem-grade gluing-radius equivalence before active-frontier replacement."
+      "state": "LEASE_EXPIRED__NO_RETURN",
+      "reason": "One independent replay of the new G01 theorem-grade gluing-radius equivalence before active-frontier replacement.",
+      "lease_epoch": 1,
+      "lease_attempt_ordinal": 1,
+      "lease_started_at": "2026-10-04T00:15:38Z",
+      "lease_expires_at": "2026-10-04T00:40:38Z",
+      "replay_budget_consumed": false,
+      "successor_dispatch_id": null
     }
   },
-  "active_dispatches": {
-    "E3-V03": {
-      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-001",
-      "agent_ref": "INDEPENDENT-AGENT-E3-V03-001",
-      "issue_number": 798,
-      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/798",
-      "task_commit": "eb94ed1df6c3743fc8a186dcc423ce372fb512c8",
-      "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01",
-      "target_node": "E3-B-GLUING-RADIUS-EQUIV",
-      "frontier_action": "INDEPENDENT_VERIFY",
-      "replay_budget_ordinal": 1,
-      "context_class": "ZERO_CONTEXT",
-      "external_sources": "PROTECTED_PACKET_ONLY",
-      "state": "DISPATCHED__AWAITING_RETURN"
-    }
-  },
+  "active_dispatches": {},
   "completed_dispatches": {
     "E3-Q01": {
       "issue_number": 772,
@@ -162,6 +153,15 @@
       "state": "CLOSED_COMPLETED",
       "result_path": "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
       "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
+    },
+    "E3-V03-LEASE-001": {
+      "issue_number": 798,
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-001",
+      "state": "LEASE_EXPIRED__NO_RETURN",
+      "lease_epoch": 1,
+      "lease_attempt_ordinal": 1,
+      "valid_result_count": 0,
+      "replay_budget_consumed": false
     }
   },
   "prepared_tranche": "E3-TRANCHE-03",
@@ -173,7 +173,7 @@
     "E3-A03",
     "E3-S04"
   ],
-  "dispatch_state": "VERIFY_DISPATCHED__AWAITING_RETURN",
+  "dispatch_state": "VERIFY_LEASE_EXPIRED__REISSUE_REQUIRED",
   "dispatch_cleanup": {
     "duplicate_issue_number": 790,
     "canonical_assignment": "E3-D01",
@@ -186,5 +186,7 @@
   "tranche_03_synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_SYNTHESIS.md",
   "tranche_03_adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json",
   "selected_successor_candidate": "E3-Q4-GLUING-RADIUS",
-  "verification_work_package": "E3-V03"
+  "verification_work_package": "E3-V03",
+  "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
+  "lease_policy_id": "GCL-IA-LEASE-25M-24M-001"
 }
