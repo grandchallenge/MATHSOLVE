@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_COHORT_ACTIVATION_MANIFEST",
+  "campaign": "CMDG-CM4-N3",
+  "work_package": "P3-M-FINITE-COEFFICIENT-ALLTRUE-005",
+  "parent_programme_issue": 1162,
+  "state": "ACTIVE_PENDING_PROTECTED_MERGE",
+  "protected_programme_predecessor": "a2897a270c477ac95ba3d18dd068a13b07d3b853",
+  "protected_n2_theorem": "CMDG.CondensedCM4P3G.BasisBooleanPairing.weightedBasisBooleanPairing_functionalWeight_allTrue",
+  "protected_n2_merge": "a2897a270c477ac95ba3d18dd068a13b07d3b853",
+  "solve_candidate_base": "f5c6bd35a10b4491e13ced61960712e7b6280ba4",
+  "blind_cohort_id": "CMDG-P3M-N3-BLIND-COHORT-001",
+  "issue_byte_lock_complete": true,
+  "activation_complete": false,
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "intake_channel": "github_issue_comment",
+  "assignments": [
+    {
+      "dispatch_id": "CMDG-P3M-N3-WP-A-IA-001",
+      "assignment_id": "CMDG-P3M-N3-WP-A",
+      "agent_ref": "INDEPENDENT-AGENT-CMDG-N3-A",
+      "github_issue_number": 826,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/826",
+      "route": "DIRECT_N3_FORMAL_CLOSURE"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-N3-WP-B-IA-001",
+      "assignment_id": "CMDG-P3M-N3-WP-B",
+      "agent_ref": "INDEPENDENT-AGENT-CMDG-N3-B",
+      "github_issue_number": 827,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/827",
+      "route": "GENERIC_COEFFICIENT_TRANSPORT"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-N3-WP-C-IA-001",
+      "assignment_id": "CMDG-P3M-N3-WP-C",
+      "agent_ref": "INDEPENDENT-AGENT-CMDG-N3-C",
+      "github_issue_number": 828,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/828",
+      "route": "ADVERSARIAL_PROTECTED_TYPE_FALSIFICATION"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-N3-WP-D-IA-001",
+      "assignment_id": "CMDG-P3M-N3-WP-D",
+      "agent_ref": "INDEPENDENT-AGENT-CMDG-N3-D",
+      "github_issue_number": 829,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/829",
+      "route": "WEAKEST_DOWNSTREAM_CLOSURE"
+    }
+  ],
+  "minimum_synthesis_evidence": {
+    "positive_return_required": true,
+    "positive_routes": [
+      "CMDG-P3M-N3-WP-A-IA-001",
+      "CMDG-P3M-N3-WP-B-IA-001",
+      "CMDG-P3M-N3-WP-D-IA-001"
+    ],
+    "adversarial_return_required": true,
+    "adversarial_dispatch": "CMDG-P3M-N3-WP-C-IA-001",
+    "all_dispatches_terminal_before_closure": true
+  },
+  "cross_disclosure_before_cohort_closure": false,
+  "canonical_mutation_authorized_for_contributors": false,
+  "certification_effect": false,
+  "claim_boundary": "Activation only. No N3 theorem, weighted reconstruction, Point-component vanishing, d = 0, mapping-out injectivity, solidity, P3 completion, or CM4 completion is admitted.",
+  "launch_comments_posted": false
+}
