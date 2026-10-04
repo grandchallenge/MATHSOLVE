@@ -573,14 +573,14 @@ def validate(root=ROOT):
             if needle not in ci_text:
                 errors.append(f'GCL-ERDOS3 required CI missing: {needle}')
 
+    q03=root/'work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md'
+    if not q03.is_file() or blob(q03)!='a102df8ac5488cadd0af367351f4544e646ad031':
+        errors.append('E3-Q03 native result blob drift')
+
     return errors
 
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    q03=root/'work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md'
-    if not q03.is_file() or blob(q03)!='a102df8ac5488cadd0af367351f4544e646ad031':
-        errors.append('E3-Q03 native result blob drift')
-
-    if not e: print('PASS: GCL-ERDOS3 V03 epoch 3 is exact-bound under marker-clock 25m/24m lease; epochs 1-2 remain fenced and replay budget remains one')
+    if not e: print('PASS: GCL-ERDOS3 Q03 proves all-fibre U3 forcing and reduces the native residual to joint witness incompatibility; active parent frontier and V03 gate remain unchanged')
     raise SystemExit(bool(e))
