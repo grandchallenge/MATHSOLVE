@@ -17,8 +17,10 @@ def validate(root=ROOT):
     prov=json.loads((root/'work_packages/GCL_ERDOS3/BOOTSTRAP_PROVENANCE.json').read_text())
     f01=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-F01_RESULT.json').read_text())
     tranche=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-01.json').read_text())
+    tranche03=json.loads((root/'work_packages/GCL_ERDOS3/E3-TRANCHE-03.json').read_text())
+    capture=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json').read_text())
 
-    if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_TRANCHE_03_DISPATCHED':
+    if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_TRANCHE_03_CAPTURED':
         errors.append('campaign identity/status drift')
     if gate.get('next_residual_role')!='EVIDENCE_ONLY_NOT_SCHEDULING_AUTHORITY':
         errors.append('Next residual regained scheduling authority')
@@ -76,13 +78,68 @@ def validate(root=ROOT):
         errors.append('campaign frontier drift after tranche-02 synthesis')
     if campaign.get('prepared_tranche')!='E3-TRANCHE-03':
         errors.append('tranche-03 preparation missing')
-    if campaign.get('dispatch_state')!='DISPATCHED__AWAITING_RETURNS':
+    if campaign.get('dispatch_state')!='CAPTURED__PENDING_SYNTHESIS':
         errors.append('tranche-03 dispatch state drift')
+    if campaign.get('synthesis_allowed') is not True:
+        errors.append('synthesis enabled state missing after complete capture')
+    if tranche03.get('status')!='CAPTURED__PENDING_SYNTHESIS' or tranche03.get('synthesis_allowed') is not True:
+        errors.append('tranche-03 capture/synthesis gate drift')
     expected_dispatches={'E3-R01','E3-D01','E3-G01','E3-C01','E3-A03','E3-S04'}
     if set(campaign.get('active_dispatches',{}))!=expected_dispatches:
         errors.append('tranche-03 active dispatch set drift')
     if campaign.get('active_dispatches',{}).get('E3-D01',{}).get('issue_number')!=789:
         errors.append('E3-D01 canonical intake issue drift')
+
+    expected_receipts={
+        'E3-R01':(788,5974689856,'PROVED_REPRESENTATION_REDUCTION','1945c71f250725619a536a08c7cbc878c8f426fd'),
+        'E3-D01':(789,5974710520,'FINITE_CARRY_REPRESENTATION_PROVED','fa48b4dca2e575d639cd6ca3cae7d9064063c3cb'),
+        'E3-G01':(791,5974734856,'SMALLER_GLUE_LEMMA','41037a11d9f36248fbcf49c946eb50e44ce3b03f'),
+        'E3-C01':(792,5974760875,'FINITE_PATTERN_DISCOVERED','212cea2c27eeba50c243d7e4e769bd78afeb117b'),
+        'E3-A03':(793,5974733560,'NO_COUNTEREXAMPLE_IN_DECLARED_FAMILY','5c54ddfede81e56bf8327b6dc8c1f7570ec21711'),
+        'E3-S04':(794,5974746941,'SOURCE_INTERFACE_REQUIRES_BRIDGE','30f24cff18d14ac197695e272868786b0e77cd0c'),
+    }
+    if set(capture.get('receipts',{}))!=set(expected_receipts):
+        errors.append('capture receipt set drift')
+    if capture.get('synthesis_allowed') is not True:
+        errors.append('capture manifest does not authorize synthesis')
+    if capture.get('duplicate_transport',{}).get('issue_number')!=790 or capture.get('duplicate_transport',{}).get('canonical_issue_number')!=789:
+        errors.append('duplicate transport quarantine drift')
+    if capture.get('canonical_return_policy',{}).get('duplicate_issue_790_valid_return_surface') is not False:
+        errors.append('duplicate issue 790 became a valid return surface')
+    for assignment,(issue,comment,disposition,result_blob) in expected_receipts.items():
+        receipt=capture.get('receipts',{}).get(assignment,{})
+        dispatch=campaign.get('active_dispatches',{}).get(assignment,{})
+        dispatch_file=root/f'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-{assignment}-IA-001.json'
+        result_path=root/f'work_packages/GCL_ERDOS3/results/{assignment}_RESULT.md'
+        if not dispatch_file.is_file() or not result_path.is_file():
+            errors.append(f'{assignment} capture artifacts missing')
+            continue
+        dj=json.loads(dispatch_file.read_text())
+        if receipt.get('issue_number')!=issue or dispatch.get('issue_number')!=issue or dj.get('issue_number')!=issue:
+            errors.append(f'{assignment} canonical issue binding drift')
+        if receipt.get('comment_id')!=comment or dispatch.get('result_comment_id')!=comment or dj.get('result_comment_id')!=comment:
+            errors.append(f'{assignment} result comment binding drift')
+        if receipt.get('dispatch_id')!=f'GCL-ERDOS3-{assignment}-IA-001' or dj.get('dispatch_id')!=f'GCL-ERDOS3-{assignment}-IA-001':
+            errors.append(f'{assignment} dispatch identity drift')
+        if receipt.get('declared_disposition')!=disposition or dj.get('declared_disposition')!=disposition:
+            errors.append(f'{assignment} disposition drift')
+        if receipt.get('result_blob_sha1')!=result_blob or dj.get('result_blob_sha1')!=result_blob or blob(result_path)!=result_blob:
+            errors.append(f'{assignment} captured result blob drift')
+        text=result_path.read_text()
+        expected_prefix='\n'.join([
+            'GCL-CONTRIBUTION-RESULT/1',
+            f'dispatch_id: GCL-ERDOS3-{assignment}-IA-001',
+            f'assignment: {assignment}',
+            f'agent_ref: INDEPENDENT-AGENT-{assignment}-001',
+            f'disposition: {disposition}',
+            'context_class: ZERO_CONTEXT',
+        ])
+        if not text.startswith(expected_prefix):
+            errors.append(f'{assignment} RESULT/1 preamble drift')
+        if dispatch.get('state')!='RETURNED__CAPTURED_PENDING_SYNTHESIS' or dj.get('state')!='RETURNED__CAPTURED_PENDING_SYNTHESIS':
+            errors.append(f'{assignment} lifecycle state drift')
+        if dj.get('task_commit')!='266b0857f3e13524ea9e69e2ef3bf4cd422503b5':
+            errors.append(f'{assignment} immutable task commit drift')
     if tranche.get('results',{}).get('E3-F01',{}).get('frontier_action')!='CLOSED_NO_SUCCESSOR':
         errors.append('F01 replay recursion guard drift')
 
@@ -120,6 +177,13 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-C01-IA-001.json',
         'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-A03-IA-001.json',
         'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-S04-IA-001.json',
+        'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json',
+        'work_packages/GCL_ERDOS3/results/E3-R01_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-D01_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-A03_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md',
     ]
     for path in required_files:
         if not (root/path).is_file():
@@ -133,5 +197,5 @@ def validate(root=ROOT):
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    if not e: print('PASS: GCL-ERDOS3 tranche 03 independent-blind dispatches are coherent and exact-commit bound')
+    if not e: print('PASS: GCL-ERDOS3 tranche 03 returns are canonically captured and synthesis-gated')
     raise SystemExit(bool(e))
