@@ -82,6 +82,16 @@ def validate(root=ROOT):
         errors.append('all-fibre U3 native lemma state drift')
     if rows.get('E3-B-ADJACENT-WITNESS-DICHOTOMY',{}).get('status')!='PROVED_NATIVE':
         errors.append('adjacent witness dichotomy native lemma state drift')
+    if rows.get('E3-B-LINEAR-WITNESS-PARSEVAL-BOUND',{}).get('status')!='PROVED_NATIVE':
+        errors.append('linear witness Parseval bound state drift')
+    if rows.get('E3-B-LINEAR-WITNESS-AMPLIFICATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('linear witness amplification residual state drift')
+    if rows.get('E3-B-DERIVATIVE-OVERLAP-AMPLIFICATION',{}).get('status')!='PROVED_NATIVE':
+        errors.append('derivative overlap amplification state drift')
+    if rows.get('E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('derivative spectral alignment residual state drift')
+    if rows.get('E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT',{}).get('parent')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
+        errors.append('derivative spectral alignment parent drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
         errors.append('joint-witness native residual state drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('parent')!='E3-B-FOUR-FIBRE-DEFICIT':
@@ -151,6 +161,8 @@ def validate(root=ROOT):
         errors.append('E3-Q04 native campaign result drift')
     if campaign.get('work_package_results',{}).get('E3-Q05')!='PROVED_NATIVE_PARSEVAL_AMPLIFICATION_REQUIREMENT':
         errors.append('E3-Q05 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q06')!='PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION':
+        errors.append('E3-Q06 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
@@ -160,6 +172,9 @@ def validate(root=ROOT):
     ext3=campaign.get('tranche_04_extension_3',{})
     if ext3.get('result')!='E3-Q05' or ext3.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md':
         errors.append('E3-Q05 campaign extension binding drift')
+    extq06=campaign.get('tranche_04_extension_q06',{})
+    if extq06.get('result')!='E3-Q06' or extq06.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md':
+        errors.append('E3-Q06 campaign extension binding drift')
     if campaign.get('dispatch_state')!='VERIFY_DISPATCHED__AWAITING_RETURN':
         errors.append('E3-V03 dispatch state drift')
     if campaign.get('synthesis_allowed') is not False:
@@ -595,11 +610,14 @@ def validate(root=ROOT):
     q05=root/'work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md'
     if not q05.is_file() or blob(q05)!='26ec1f6f420415df1bc8633d474327d51238bde9':
         errors.append('E3-Q05 native result blob drift')
+    q06=root/'work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md'
+    if not q06.is_file() or blob(q06)!='0b4ac5b53198c889be72289eb65533b0cb879773':
+        errors.append('E3-Q06 native result blob drift')
 
     return errors
 
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    if not e: print('PASS: GCL-ERDOS3 Q05 proves the beta^-6 Parseval capacity bound for Q04 linear witnesses; active parent frontier and V03 promotion gate remain unchanged')
+    if not e: print('PASS: GCL-ERDOS3 Q06 proves positive-density joint derivative spectral overlap in the Q04 fourfold branch; active parent frontier and V03 gate remain unchanged')
     raise SystemExit(bool(e))
