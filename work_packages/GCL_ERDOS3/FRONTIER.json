@@ -469,7 +469,7 @@
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-AMPLIFICATION: amplify Q04 aligned Fourier modes or exploit coefficient phases/harmonic relations",
-        "direct joint-fourfold incompatibility before separate inverse-theorem witness selection",
+        "E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT: make Q06 derivative overlaps coherent or convert diffuseness to deletion",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -490,9 +490,10 @@
         "E3-Q03"
       ],
       "reduced_by": [
-        "E3-Q05"
+        "E3-Q05",
+        "E3-Q06"
       ],
-      "reduction_note": "Q05 proves fixed one-scale Parseval counting is quantitatively insufficient: at the Q04 beta^3 witness scale, each fibre can support O(beta^-6) large modes. The linear branch now requires genuine amplification or phase incompatibility; the joint-fourfold branch remains separate."
+      "reduction_note": "Q05 proves one-scale Parseval counting is insufficient in the linear branch; Q06 converts the joint-fourfold branch into a positive-density family of derivative spectral overlaps before any independent inverse-theorem witness selection."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -539,6 +540,36 @@
         "work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md"
       ],
       "claim_boundary": "Linear branch sub-residual only; open."
+    },
+    {
+      "id": "E3-B-DERIVATIVE-OVERLAP-AMPLIFICATION",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY"
+      ],
+      "statement": "In the Q04 fourfold branch for an adjacent 0011 pair, at least beta^4/(10*16^4) of derivative shifts d have signed phase-corrected spectral overlap between Delta_d of the two physical fibres at least beta^4/(10*16^4).",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md",
+      "claim_boundary": "Native joint derivative-overlap interface only; no single-frequency map, quadratic phase, or deletion bound."
+    },
+    {
+      "id": "E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-DERIVATIVE-OVERLAP-AMPLIFICATION"
+      ],
+      "statement": "From the positive-density family of Q06 derivative spectral overlaps, force a coherent derivative-frequency graph with enough additive structure to integrate to a joint quadratic witness, or prove spectral diffuseness forces c*beta^(1+theta)*N deletions for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Fourfold-branch sub-residual only; open."
     }
   ],
   "closed_claims": [
@@ -589,9 +620,9 @@
     "parent_theorem_effect": "NONE"
   },
   "next_tranche": {
-    "id": "E3-TRANCHE-04-Q05-EXTENSION",
-    "status": "NATIVE_PARSEVAL_BOUND_REGISTERED__VERIFY_LEASE_SEPARATE",
-    "objective": "Attack E3-B-LINEAR-WITNESS-AMPLIFICATION and the direct joint-fourfold branch; keep V03 as a separate promotion gate.",
+    "id": "E3-TRANCHE-04-Q06-EXTENSION",
+    "status": "NATIVE_DERIVATIVE_INTERFACE_REGISTERED__VERIFY_LEASE_SEPARATE",
+    "objective": "Attack E3-B-LINEAR-WITNESS-AMPLIFICATION and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT; keep V03 as a separate promotion gate.",
     "active_frontier_effect": "NONE",
     "verification_dependency": "E3-V03 remains required only for promotion of E3-Q4-GLUING-RADIUS."
   }
