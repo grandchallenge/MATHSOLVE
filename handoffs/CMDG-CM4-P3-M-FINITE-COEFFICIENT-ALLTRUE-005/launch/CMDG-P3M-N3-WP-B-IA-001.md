@@ -150,7 +150,7 @@ Test separately:
 
 1. both inverse laws of `locallyConstantIntegralLiftEquiv X`;
 2. whether `ULift.up ((F v).down) = F v` closes by `rfl` or a standard `ULift` identity;
-3. scalar/coercion mismatches between the descended `ℤ)-linear functional and original `R)-linear functional;
+3. scalar/coercion mismatches between the descended `ℤ`-linear functional and original `R`-linear functional;
 4. whether any local-constancy/topology information is lost during the coefficient equivalence.
 
 ## Success criterion
