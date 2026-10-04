@@ -3,7 +3,7 @@
   "record_type": "GCL_RESEARCH_CAMPAIGN",
   "campaign_id": "GCL-ERDOS3",
   "title": "Erdős Problem 3",
-  "status": "ACTIVE__E3_TRANCHE_03_CAPTURED",
+  "status": "ACTIVE__E3_TRANCHE_03_ADJUDICATED__VERIFY_PENDING",
   "origin": {
     "campaign": "OPENMATH-2026",
     "hill": "OM26-H7",
@@ -38,12 +38,18 @@
     "E3-X01": "SMALLEST_MISSING_LEMMA__PROMOTED",
     "E3-A02": "COUNTEREXAMPLE__SUPPORTING_ONLY",
     "E3-S03": "SOURCE_BLOCKED__CLOSED",
-    "E3-V02": "VERIFIED__CLOSED"
+    "E3-V02": "VERIFIED__CLOSED",
+    "E3-R01": "ACCEPTED__REPRESENTATION_REDUCTION",
+    "E3-D01": "ACCEPTED__FINITE_CARRY_REPRESENTATION",
+    "E3-G01": "ACCEPTED__THEOREM_GRADE_BRIDGE_PENDING_VERIFY",
+    "E3-C01": "ACCEPTED__FINITE_PATTERN_SUPPORTING_ONLY",
+    "E3-A03": "ACCEPTED__NO_COUNTEREXAMPLE_SUPPORTING_BOUNDARY",
+    "E3-S04": "ACCEPTED__SOURCE_INTERFACE_REQUIRES_BRIDGE"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Synthesize E3-TRANCHE-03 only from the six protected captured result files named by E3-TRANCHE-03_CAPTURE.json; preserve E3-Q4-DENSITY-LOSS as OPEN unless theorem-grade adjudication strictly advances or refutes it.",
+  "next_action": "Dispatch E3-V03 as one independent-blind replay of E3-B-GLUING-RADIUS-EQUIV. Do not replace the active E3-Q4-DENSITY-LOSS frontier until that replay is captured and adjudicated VERIFIED.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -65,104 +71,7 @@
       "effect": "Closed E3-V-B02; no parent theorem effect."
     }
   },
-  "active_dispatches": {
-    "E3-R01": {
-      "dispatch_id": "GCL-ERDOS3-E3-R01-IA-001",
-      "agent_ref": "INDEPENDENT-AGENT-E3-R01-001",
-      "issue_number": 788,
-      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/788",
-      "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
-      "task_blob_sha1": "87f8b9619f62447b1425e2b71d3b374d5488220e",
-      "concurrency_mode": "independent_blind",
-      "context_class": "ZERO_CONTEXT",
-      "external_sources": "PRIMARY_SOURCES_ALLOWED",
-      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
-      "result_comment_id": 5974689856,
-      "declared_disposition": "PROVED_REPRESENTATION_REDUCTION",
-      "result_path": "work_packages/GCL_ERDOS3/results/E3-R01_RESULT.md",
-      "result_blob_sha1": "1945c71f250725619a536a08c7cbc878c8f426fd"
-    },
-    "E3-D01": {
-      "dispatch_id": "GCL-ERDOS3-E3-D01-IA-001",
-      "agent_ref": "INDEPENDENT-AGENT-E3-D01-001",
-      "issue_number": 789,
-      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/789",
-      "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
-      "task_blob_sha1": "b7a43c535c59000cfc4cd443b54677ef125d6ca8",
-      "concurrency_mode": "independent_blind",
-      "context_class": "ZERO_CONTEXT",
-      "external_sources": "PROTECTED_PACKET_ONLY",
-      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
-      "result_comment_id": 5974710520,
-      "declared_disposition": "FINITE_CARRY_REPRESENTATION_PROVED",
-      "result_path": "work_packages/GCL_ERDOS3/results/E3-D01_RESULT.md",
-      "result_blob_sha1": "fa48b4dca2e575d639cd6ca3cae7d9064063c3cb"
-    },
-    "E3-G01": {
-      "dispatch_id": "GCL-ERDOS3-E3-G01-IA-001",
-      "agent_ref": "INDEPENDENT-AGENT-E3-G01-001",
-      "issue_number": 791,
-      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/791",
-      "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
-      "task_blob_sha1": "c0dffd18ba0e0f341630b125ef856624fe54ad8a",
-      "concurrency_mode": "independent_blind",
-      "context_class": "ZERO_CONTEXT",
-      "external_sources": "PRIMARY_SOURCES_ALLOWED",
-      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
-      "result_comment_id": 5974734856,
-      "declared_disposition": "SMALLER_GLUE_LEMMA",
-      "result_path": "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
-      "result_blob_sha1": "41037a11d9f36248fbcf49c946eb50e44ce3b03f"
-    },
-    "E3-C01": {
-      "dispatch_id": "GCL-ERDOS3-E3-C01-IA-001",
-      "agent_ref": "INDEPENDENT-AGENT-E3-C01-001",
-      "issue_number": 792,
-      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/792",
-      "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
-      "task_blob_sha1": "599f20f0575eedca5deb5051ccdf3d5914471aee",
-      "concurrency_mode": "independent_blind",
-      "context_class": "ZERO_CONTEXT",
-      "external_sources": "PROTECTED_PACKET_ONLY",
-      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
-      "result_comment_id": 5974760875,
-      "declared_disposition": "FINITE_PATTERN_DISCOVERED",
-      "result_path": "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md",
-      "result_blob_sha1": "212cea2c27eeba50c243d7e4e769bd78afeb117b"
-    },
-    "E3-A03": {
-      "dispatch_id": "GCL-ERDOS3-E3-A03-IA-001",
-      "agent_ref": "INDEPENDENT-AGENT-E3-A03-001",
-      "issue_number": 793,
-      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/793",
-      "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
-      "task_blob_sha1": "6564ccb50f984f17a9ab498a4043e0a9a7d672de",
-      "concurrency_mode": "independent_blind",
-      "context_class": "ZERO_CONTEXT",
-      "external_sources": "PRIMARY_SOURCES_ALLOWED",
-      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
-      "result_comment_id": 5974733560,
-      "declared_disposition": "NO_COUNTEREXAMPLE_IN_DECLARED_FAMILY",
-      "result_path": "work_packages/GCL_ERDOS3/results/E3-A03_RESULT.md",
-      "result_blob_sha1": "5c54ddfede81e56bf8327b6dc8c1f7570ec21711"
-    },
-    "E3-S04": {
-      "dispatch_id": "GCL-ERDOS3-E3-S04-IA-001",
-      "agent_ref": "INDEPENDENT-AGENT-E3-S04-001",
-      "issue_number": 794,
-      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/794",
-      "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
-      "task_blob_sha1": "efc30c907510bf1625a754b5d355f3258549a647",
-      "concurrency_mode": "independent_blind",
-      "context_class": "ZERO_CONTEXT",
-      "external_sources": "PRIMARY_SOURCES_REQUIRED",
-      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
-      "result_comment_id": 5974746941,
-      "declared_disposition": "SOURCE_INTERFACE_REQUIRES_BRIDGE",
-      "result_path": "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
-      "result_blob_sha1": "30f24cff18d14ac197695e272868786b0e77cd0c"
-    }
-  },
+  "active_dispatches": {},
   "completed_dispatches": {
     "E3-Q01": {
       "issue_number": 772,
@@ -183,6 +92,54 @@
     "E3-V02": {
       "issue_number": 776,
       "state": "CLOSED_COMPLETED"
+    },
+    "E3-R01": {
+      "issue_number": 788,
+      "result_comment_id": 5974689856,
+      "declared_disposition": "PROVED_REPRESENTATION_REDUCTION",
+      "state": "CLOSED_COMPLETED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-R01_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
+    },
+    "E3-D01": {
+      "issue_number": 789,
+      "result_comment_id": 5974710520,
+      "declared_disposition": "FINITE_CARRY_REPRESENTATION_PROVED",
+      "state": "CLOSED_COMPLETED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-D01_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
+    },
+    "E3-G01": {
+      "issue_number": 791,
+      "result_comment_id": 5974734856,
+      "declared_disposition": "SMALLER_GLUE_LEMMA",
+      "state": "CLOSED_COMPLETED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
+    },
+    "E3-C01": {
+      "issue_number": 792,
+      "result_comment_id": 5974760875,
+      "declared_disposition": "FINITE_PATTERN_DISCOVERED",
+      "state": "CLOSED_COMPLETED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
+    },
+    "E3-A03": {
+      "issue_number": 793,
+      "result_comment_id": 5974733560,
+      "declared_disposition": "NO_COUNTEREXAMPLE_IN_DECLARED_FAMILY",
+      "state": "CLOSED_COMPLETED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-A03_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
+    },
+    "E3-S04": {
+      "issue_number": 794,
+      "result_comment_id": 5974746941,
+      "declared_disposition": "SOURCE_INTERFACE_REQUIRES_BRIDGE",
+      "state": "CLOSED_COMPLETED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
     }
   },
   "prepared_tranche": "E3-TRANCHE-03",
@@ -194,7 +151,7 @@
     "E3-A03",
     "E3-S04"
   ],
-  "dispatch_state": "CAPTURED__PENDING_SYNTHESIS",
+  "dispatch_state": "ADJUDICATED__VERIFY_PENDING",
   "dispatch_cleanup": {
     "duplicate_issue_number": 790,
     "canonical_assignment": "E3-D01",
@@ -203,5 +160,9 @@
     "note": "A connector batch partially created E3-D01 before abort; issue 790 is not a valid return surface."
   },
   "capture_manifest": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json",
-  "synthesis_allowed": true
+  "synthesis_allowed": false,
+  "tranche_03_synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_SYNTHESIS.md",
+  "tranche_03_adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json",
+  "selected_successor_candidate": "E3-Q4-GLUING-RADIUS",
+  "verification_work_package": "E3-V03"
 }
