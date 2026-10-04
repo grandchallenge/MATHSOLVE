@@ -216,40 +216,66 @@
         "E3-A03",
         "E3-S04"
       ],
-      "dispatch_state": "DISPATCHED__AWAITING_RETURNS",
+      "dispatch_state": "CAPTURED__PENDING_SYNTHESIS",
       "dispatch_task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
       "dispatches": {
         "E3-R01": {
           "dispatch_id": "GCL-ERDOS3-E3-R01-IA-001",
           "issue_number": 788,
-          "state": "DISPATCHED__AWAITING_RETURN"
+          "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+          "result_comment_id": 5974689856,
+          "declared_disposition": "PROVED_REPRESENTATION_REDUCTION",
+          "result_path": "work_packages/GCL_ERDOS3/results/E3-R01_RESULT.md",
+          "result_blob_sha1": "1945c71f250725619a536a08c7cbc878c8f426fd"
         },
         "E3-D01": {
           "dispatch_id": "GCL-ERDOS3-E3-D01-IA-001",
           "issue_number": 789,
-          "state": "DISPATCHED__AWAITING_RETURN"
+          "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+          "result_comment_id": 5974710520,
+          "declared_disposition": "FINITE_CARRY_REPRESENTATION_PROVED",
+          "result_path": "work_packages/GCL_ERDOS3/results/E3-D01_RESULT.md",
+          "result_blob_sha1": "fa48b4dca2e575d639cd6ca3cae7d9064063c3cb"
         },
         "E3-G01": {
           "dispatch_id": "GCL-ERDOS3-E3-G01-IA-001",
           "issue_number": 791,
-          "state": "DISPATCHED__AWAITING_RETURN"
+          "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+          "result_comment_id": 5974734856,
+          "declared_disposition": "SMALLER_GLUE_LEMMA",
+          "result_path": "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
+          "result_blob_sha1": "41037a11d9f36248fbcf49c946eb50e44ce3b03f"
         },
         "E3-C01": {
           "dispatch_id": "GCL-ERDOS3-E3-C01-IA-001",
           "issue_number": 792,
-          "state": "DISPATCHED__AWAITING_RETURN"
+          "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+          "result_comment_id": 5974760875,
+          "declared_disposition": "FINITE_PATTERN_DISCOVERED",
+          "result_path": "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md",
+          "result_blob_sha1": "212cea2c27eeba50c243d7e4e769bd78afeb117b"
         },
         "E3-A03": {
           "dispatch_id": "GCL-ERDOS3-E3-A03-IA-001",
           "issue_number": 793,
-          "state": "DISPATCHED__AWAITING_RETURN"
+          "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+          "result_comment_id": 5974733560,
+          "declared_disposition": "NO_COUNTEREXAMPLE_IN_DECLARED_FAMILY",
+          "result_path": "work_packages/GCL_ERDOS3/results/E3-A03_RESULT.md",
+          "result_blob_sha1": "5c54ddfede81e56bf8327b6dc8c1f7570ec21711"
         },
         "E3-S04": {
           "dispatch_id": "GCL-ERDOS3-E3-S04-IA-001",
           "issue_number": 794,
-          "state": "DISPATCHED__AWAITING_RETURN"
+          "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+          "result_comment_id": 5974746941,
+          "declared_disposition": "SOURCE_INTERFACE_REQUIRES_BRIDGE",
+          "result_path": "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
+          "result_blob_sha1": "30f24cff18d14ac197695e272868786b0e77cd0c"
         }
-      }
+      },
+      "capture_manifest": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json",
+      "synthesis_allowed": true
     },
     {
       "id": "E3-QK5-SERIES",
@@ -336,7 +362,7 @@
   },
   "next_tranche": {
     "id": "E3-TRANCHE-03",
-    "status": "DISPATCHED__AWAITING_RETURNS",
+    "status": "CAPTURED__PENDING_SYNTHESIS",
     "manifest": "work_packages/GCL_ERDOS3/E3-TRANCHE-03.json",
     "task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
     "objective": "Re-represent density loss as a gluing/persistence problem and seek either a local theorem, a source interface, or a counterexample.",
@@ -347,6 +373,8 @@
       792,
       793,
       794
-    ]
+    ],
+    "capture_manifest": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json",
+    "synthesis_allowed": true
   }
 }

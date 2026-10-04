@@ -16,5 +16,17 @@
   "external_sources": "PRIMARY_SOURCES_ALLOWED",
   "canonical_mutation_authorized": false,
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
-  "state": "DISPATCHED__AWAITING_RETURN"
+  "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+  "result_comment_id": 5974689856,
+  "result_comment_url": "https://github.com/grandchallenge/MATHSOLVE/issues/788#issuecomment-5974689856",
+  "declared_disposition": "PROVED_REPRESENTATION_REDUCTION",
+  "result_path": "work_packages/GCL_ERDOS3/results/E3-R01_RESULT.md",
+  "result_blob_sha1": "1945c71f250725619a536a08c7cbc878c8f426fd",
+  "capture_integrity": {
+    "canonical_issue_number": 788,
+    "expected_comment_count": 1,
+    "marker": "GCL-CONTRIBUTION-RESULT/1",
+    "issue_comment_bytes_equal_result_file": true,
+    "duplicate_issue_790_authorized": false
+  }
 }

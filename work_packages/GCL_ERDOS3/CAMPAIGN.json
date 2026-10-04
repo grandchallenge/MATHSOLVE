@@ -3,7 +3,7 @@
   "record_type": "GCL_RESEARCH_CAMPAIGN",
   "campaign_id": "GCL-ERDOS3",
   "title": "Erdős Problem 3",
-  "status": "ACTIVE__E3_TRANCHE_03_DISPATCHED",
+  "status": "ACTIVE__E3_TRANCHE_03_CAPTURED",
   "origin": {
     "campaign": "OPENMATH-2026",
     "hill": "OM26-H7",
@@ -43,7 +43,7 @@
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Receive independent-blind E3-R01/D01/G01/C01/A03/S04 returns on issues 788/789/791/792/793/794; capture and synthesize only after preserving each valid RESULT/1. Do not use issue 790.",
+  "next_action": "Synthesize E3-TRANCHE-03 only from the six protected captured result files named by E3-TRANCHE-03_CAPTURE.json; preserve E3-Q4-DENSITY-LOSS as OPEN unless theorem-grade adjudication strictly advances or refutes it.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -76,7 +76,11 @@
       "concurrency_mode": "independent_blind",
       "context_class": "ZERO_CONTEXT",
       "external_sources": "PRIMARY_SOURCES_ALLOWED",
-      "state": "DISPATCHED__AWAITING_RETURN"
+      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+      "result_comment_id": 5974689856,
+      "declared_disposition": "PROVED_REPRESENTATION_REDUCTION",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-R01_RESULT.md",
+      "result_blob_sha1": "1945c71f250725619a536a08c7cbc878c8f426fd"
     },
     "E3-D01": {
       "dispatch_id": "GCL-ERDOS3-E3-D01-IA-001",
@@ -88,7 +92,11 @@
       "concurrency_mode": "independent_blind",
       "context_class": "ZERO_CONTEXT",
       "external_sources": "PROTECTED_PACKET_ONLY",
-      "state": "DISPATCHED__AWAITING_RETURN"
+      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+      "result_comment_id": 5974710520,
+      "declared_disposition": "FINITE_CARRY_REPRESENTATION_PROVED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-D01_RESULT.md",
+      "result_blob_sha1": "fa48b4dca2e575d639cd6ca3cae7d9064063c3cb"
     },
     "E3-G01": {
       "dispatch_id": "GCL-ERDOS3-E3-G01-IA-001",
@@ -100,7 +108,11 @@
       "concurrency_mode": "independent_blind",
       "context_class": "ZERO_CONTEXT",
       "external_sources": "PRIMARY_SOURCES_ALLOWED",
-      "state": "DISPATCHED__AWAITING_RETURN"
+      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+      "result_comment_id": 5974734856,
+      "declared_disposition": "SMALLER_GLUE_LEMMA",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
+      "result_blob_sha1": "41037a11d9f36248fbcf49c946eb50e44ce3b03f"
     },
     "E3-C01": {
       "dispatch_id": "GCL-ERDOS3-E3-C01-IA-001",
@@ -112,7 +124,11 @@
       "concurrency_mode": "independent_blind",
       "context_class": "ZERO_CONTEXT",
       "external_sources": "PROTECTED_PACKET_ONLY",
-      "state": "DISPATCHED__AWAITING_RETURN"
+      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+      "result_comment_id": 5974760875,
+      "declared_disposition": "FINITE_PATTERN_DISCOVERED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md",
+      "result_blob_sha1": "212cea2c27eeba50c243d7e4e769bd78afeb117b"
     },
     "E3-A03": {
       "dispatch_id": "GCL-ERDOS3-E3-A03-IA-001",
@@ -124,7 +140,11 @@
       "concurrency_mode": "independent_blind",
       "context_class": "ZERO_CONTEXT",
       "external_sources": "PRIMARY_SOURCES_ALLOWED",
-      "state": "DISPATCHED__AWAITING_RETURN"
+      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+      "result_comment_id": 5974733560,
+      "declared_disposition": "NO_COUNTEREXAMPLE_IN_DECLARED_FAMILY",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-A03_RESULT.md",
+      "result_blob_sha1": "5c54ddfede81e56bf8327b6dc8c1f7570ec21711"
     },
     "E3-S04": {
       "dispatch_id": "GCL-ERDOS3-E3-S04-IA-001",
@@ -136,7 +156,11 @@
       "concurrency_mode": "independent_blind",
       "context_class": "ZERO_CONTEXT",
       "external_sources": "PRIMARY_SOURCES_REQUIRED",
-      "state": "DISPATCHED__AWAITING_RETURN"
+      "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+      "result_comment_id": 5974746941,
+      "declared_disposition": "SOURCE_INTERFACE_REQUIRES_BRIDGE",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
+      "result_blob_sha1": "30f24cff18d14ac197695e272868786b0e77cd0c"
     }
   },
   "completed_dispatches": {
@@ -170,12 +194,14 @@
     "E3-A03",
     "E3-S04"
   ],
-  "dispatch_state": "DISPATCHED__AWAITING_RETURNS",
+  "dispatch_state": "CAPTURED__PENDING_SYNTHESIS",
   "dispatch_cleanup": {
     "duplicate_issue_number": 790,
     "canonical_assignment": "E3-D01",
     "canonical_issue_number": 789,
     "disposition": "CLOSED_DUPLICATE",
     "note": "A connector batch partially created E3-D01 before abort; issue 790 is not a valid return surface."
-  }
+  },
+  "capture_manifest": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json",
+  "synthesis_allowed": true
 }
