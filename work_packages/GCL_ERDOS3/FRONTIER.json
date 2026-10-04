@@ -345,13 +345,13 @@
         "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md"
       ],
-      "promotion_gate": "E3-V03__FRESH_LEASE_REQUIRED",
+      "promotion_gate": "E3-V03",
       "claim_boundary": "Formulated successor candidate only; not active and not proved."
     },
     {
       "id": "E3-V-B03",
       "kind": "VERIFICATION",
-      "status": "LEASE_EXPIRED__REISSUE_REQUIRED",
+      "status": "LAUNCHED",
       "depends_on": [
         "E3-B-GLUING-RADIUS-EQUIV"
       ],
@@ -372,6 +372,24 @@
         "lease_started_at_observed": "2026-10-04T12:00:55Z",
         "lease_expires_at_observed": "2026-10-04T12:25:55Z",
         "clock_model": "GITHUB_ACTIVATION_COMMENT"
+      },
+      "dispatch": {
+        "dispatch_id": "GCL-ERDOS3-E3-V03-IA-004",
+        "assignment_id": "E3-V03",
+        "agent_ref": "INDEPENDENT-AGENT-E3-V03-004",
+        "issue_number": 866,
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/866",
+        "task_commit": "eb94ed1df6c3743fc8a186dcc423ce372fb512c8",
+        "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
+        "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01",
+        "lease_epoch": 4,
+        "lease_attempt_ordinal": 4,
+        "lease_clock_source": "GITHUB_ACTIVATION_COMMENT",
+        "lease_duration_minutes": 25,
+        "agent_max_execution_minutes": 24,
+        "replay_budget_ordinal": 1,
+        "state": "DISPATCHED__AWAITING_RETURN",
+        "external_sources": "PROTECTED_PACKET_ONLY"
       }
     }
   ],
@@ -424,8 +442,10 @@
   },
   "next_tranche": {
     "id": "E3-TRANCHE-04-FOUR-FIBRE-DEFICIT",
-    "status": "NATIVE_ATTACK_AUTHORIZED__VERIFY_GATE_SEPARATE",
-    "objective": "Attack the four-fibre transversal deficit lemma at L=2 while E3-V03 awaits fresh independent replay.",
-    "verification_dependency": "E3-V03 remains required only for promotion of E3-Q4-GLUING-RADIUS; it does not block native attack work."
+    "status": "NATIVE_ATTACK_IN_PROGRESS__VERIFY_LEASE_ACTIVE",
+    "objective": "Continue native four-fibre deficit work while E3-V03 epoch 4 independently verifies the G01 bridge.",
+    "verification_dependency": "E3-V03 remains required only for promotion of E3-Q4-GLUING-RADIUS.",
+    "lease_epoch": 4,
+    "issue_number": 866
   }
 }
