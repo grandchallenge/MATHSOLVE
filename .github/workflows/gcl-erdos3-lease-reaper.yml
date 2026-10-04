@@ -54,9 +54,9 @@ jobs:
       - name: Evaluate expiry and prepare bounded mutation
         if: steps.probe.outputs.issue != ''
         id: reap
-        env:
-          NOW: ${{ github.run_started_at }}
         run: |
+          NOW="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          test -n "$NOW"
           python ci/gcl_erdos3_lease_reaper.py \
             --repo-root "$GITHUB_WORKSPACE" \
             --now "$NOW" \
