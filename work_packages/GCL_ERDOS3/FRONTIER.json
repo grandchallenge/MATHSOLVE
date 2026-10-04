@@ -345,13 +345,13 @@
         "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md"
       ],
-      "promotion_gate": "E3-V03__FRESH_LEASE_REQUIRED",
+      "promotion_gate": "E3-V03",
       "claim_boundary": "Formulated successor candidate only; not active and not proved."
     },
     {
       "id": "E3-V-B03",
       "kind": "VERIFICATION",
-      "status": "LEASE_EXPIRED__REISSUE_REQUIRED",
+      "status": "LAUNCHED",
       "depends_on": [
         "E3-B-GLUING-RADIUS-EQUIV"
       ],
@@ -369,6 +369,24 @@
         "valid_result_count": 0,
         "replay_budget_consumed": false,
         "clock_model": "LEGACY_STATIC_TIMESTAMP_SUPERSEDED"
+      },
+      "dispatch": {
+        "dispatch_id": "GCL-ERDOS3-E3-V03-IA-003",
+        "assignment_id": "E3-V03",
+        "agent_ref": "INDEPENDENT-AGENT-E3-V03-003",
+        "issue_number": 820,
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/820",
+        "task_commit": "eb94ed1df6c3743fc8a186dcc423ce372fb512c8",
+        "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
+        "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01",
+        "lease_epoch": 3,
+        "lease_attempt_ordinal": 3,
+        "lease_clock_source": "GITHUB_ACTIVATION_COMMENT",
+        "lease_duration_minutes": 25,
+        "agent_max_execution_minutes": 24,
+        "replay_budget_ordinal": 1,
+        "state": "DISPATCHED__AWAITING_RETURN",
+        "external_sources": "PROTECTED_PACKET_ONLY"
       }
     }
   ],
@@ -420,11 +438,13 @@
     "parent_theorem_effect": "NONE"
   },
   "next_tranche": {
-    "id": "E3-V03-REISSUE",
-    "status": "LEASE_REQUIRED",
-    "objective": "Reissue the same independent verification under activation-marker lease epoch 3 without consuming a second mathematical replay.",
+    "id": "E3-V03-LEASE-003",
+    "status": "DISPATCHED__AWAITING_ACTIVATION_OR_RETURN",
+    "objective": "Complete the same independent verification under exact marker-clock lease epoch 3.",
     "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
+    "lease_epoch": 3,
     "replay_budget_ordinal": 1,
-    "next_lease_epoch": 3
+    "issue_number": 820,
+    "lease_clock_source": "GITHUB_ACTIVATION_COMMENT"
   }
 }
