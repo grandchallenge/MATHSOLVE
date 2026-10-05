@@ -450,7 +450,7 @@
       ],
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
-        "E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION: exploit actual near-extremal indicator realizability or force genuinely many location/scale witnesses",
+        "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
         "E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT: make Q06 derivative overlaps coherent or convert diffuseness to deletion",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
@@ -474,9 +474,10 @@
       "reduced_by": [
         "E3-Q05",
         "E3-Q06",
-        "E3-Q07"
+        "E3-Q07",
+        "E3-Q08"
       ],
-      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 also closes abstract one-scale phase algebra in the linear branch; Q06 converts the fourfold branch into positive-density derivative spectral overlaps. Remaining force must come from actual indicator realizability, genuine witness amplification, derivative coherence/diffuseness, or motif amplification."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract one-scale phase algebra; Q08 closes finite Boolean cyclic realizability as a source of contradiction; Q06 converts the fourfold branch into positive-density derivative spectral overlaps. Remaining force must come from arithmetic fibre constraints, genuine witness amplification, derivative coherence/diffuseness, or motif amplification."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -574,7 +575,7 @@
     {
       "id": "E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
       "depends_on": [
         "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -594,6 +595,51 @@
         "positive-definite / indicator realizability constraints on the finite harmonic data",
         "near-extremal local 4-AP-freeness restrictions on r,2r,3r spectra and phases",
         "multi-location or multi-scale amplification producing more independent witnesses than Q05 Parseval capacity permits"
+      ],
+      "claim_boundary": "Smallest current linear-branch residual; open and unproved.",
+      "reduced_by": "E3-Q08",
+      "successor": "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION",
+      "reduction_note": "Q08 proves that arbitrary finite Q07 phase data at magnitudes well above the Q04 threshold are asymptotically realizable by genuine Boolean subsets of the cyclic ambient group. Finite Boolean Fourier realizability is therefore insufficient; remaining force must use interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification."
+    },
+    {
+      "id": "E3-B-BOOLEAN-HARMONIC-REALIZABILITY",
+      "kind": "NATIVE_NO_GO_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-LINEAR-PHASE-COMPATIBILITY",
+        "E3-B-LINEAR-WITNESS-PARSEVAL-BOUND"
+      ],
+      "statement": "For Q04 scale lambda_beta=beta^3/(20*16^3), arbitrary prescribed phases at harmonics r,2r,3r on four cyclic fibres of densities rho_j in [beta/16,1/8] are simultaneously approximable by genuine Boolean subsets whenever P*lambda_beta^2>log 56; in the relevant dyadic near-extremal regime this condition holds eventually by the protected A03 lower construction.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q08_NATIVE_RESULT.md",
+      "claim_boundary": "Proof-strategy no-go only. The Boolean subsets are not asserted to be interval-supported, internally 4-AP-free, near-extremal, or carry-compatible."
+    },
+    {
+      "id": "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY",
+        "E3-B-LINEAR-WITNESS-PARSEVAL-BOUND",
+        "E3-B-LINEAR-PHASE-COMPATIBILITY",
+        "E3-B-BOOLEAN-HARMONIC-REALIZABILITY"
+      ],
+      "statement": "Starting from Q04/Q05/Q07/Q08, exploit at least one genuinely arithmetic fibre constraint absent from the cyclic Boolean no-go—interval support, internal 4-AP-freeness and near-extremality, full simultaneous carry compatibility, or repeated/multi-scale witness amplification—to force the required c*beta^(1+theta)*N deletion cost for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q08_NATIVE_RESULT.md"
+      ],
+      "attack_lanes": [
+        "interval-support restrictions on the r,2r,3r Fourier phases/magnitudes",
+        "internal 4-AP-free near-extremizer spectral restrictions",
+        "full simultaneous carry-family compatibility beyond independently prescribed finite moments",
+        "multi-location or multi-scale amplification exceeding Q05 Parseval capacity"
       ],
       "claim_boundary": "Smallest current linear-branch residual; open and unproved."
     }
@@ -651,6 +697,6 @@
     "objective": "Reissue the same independent G01 bridge verification under marker-clock lease epoch 5 without consuming a second mathematical replay.",
     "replay_budget_ordinal": 1,
     "active_frontier_effect": "NONE",
-    "native_work": "E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT remain active native lanes."
+    "native_work": "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT remain active native lanes."
   }
 }
