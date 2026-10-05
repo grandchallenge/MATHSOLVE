@@ -435,6 +435,8 @@ def validate_event(
         "comment": comment,
         "actor": login,
         "comment_id": comment_id,
+        "queue_job": queue_job,
+        "worker_reservation": reservation,
     }
 
 
@@ -453,6 +455,14 @@ def emit_intake(
     raw_rel = profile.base_rel / "raw" / dispatch_id / f"github-comment-{comment_id}.md"
     receipt_rel = profile.base_rel / "receipts" / dispatch_id / f"github-comment-{comment_id}.json"
 
+    queue_job = observed.get("queue_job") or {}
+    reservation = observed.get("worker_reservation") or {}
+    epistemic_class = {
+        "independent_blind": "INDEPENDENT_BLIND",
+        "cooperative_claimed": "COOPERATIVE",
+        "adversarial_replay": "ADVERSARIAL_REPLAY",
+    }[dispatch["concurrency_mode"]]
+
     receipt = {
         "schema_version": profile.receipt_schema_version,
         "receipt_id": f"{dispatch_id}:github-comment:{comment_id}",
@@ -467,7 +477,13 @@ def emit_intake(
         "github_comment_id": comment_id,
         "authenticated_github_actor": observed["actor"],
         "comment_created_at": observed["comment"].get("created_at"),
-        "worker_reservation_enforced": queue_job_for_dispatch(root, dispatch_id) is not None,
+        "queue_managed": bool(queue_job),
+        "worker_reservation_enforced": bool(queue_job),
+        "worker_reservation_owner": reservation.get("worker"),
+        "collaboration_mode": queue_job.get("collaboration_mode"),
+        "visibility_phase": queue_job.get("visibility_phase"),
+        "sibling_use_policy": queue_job.get("sibling_use_policy"),
+        "epistemic_class": epistemic_class,
         "raw_artifact_path": raw_rel.as_posix(),
         "raw_sha256": sha256_text(body),
         "bootstrap_path": dispatch["bootstrap_path"],
