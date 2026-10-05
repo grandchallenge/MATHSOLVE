@@ -53,12 +53,13 @@
     "E3-Q04": "PROVED_NATIVE_JOINT_WITNESS_DICHOTOMY",
     "E3-Q05": "PROVED_NATIVE_PARSEVAL_AMPLIFICATION_REQUIREMENT",
     "E3-Q06": "PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION",
-    "E3-Q07": "PROVED_NATIVE_FINITE_PHASE_ALGEBRA_INSUFFICIENT"
+    "E3-Q07": "PROVED_NATIVE_FINITE_PHASE_ALGEBRA_INSUFFICIENT",
+    "E3-Q08": "PROVED_NATIVE_BOOLEAN_REALIZABILITY_INSUFFICIENT"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Reissue E3-V03 under fresh marker-clock lease epoch 5, retaining replay_budget_ordinal=1. In parallel attack E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
+  "next_action": "Reissue E3-V03 under fresh marker-clock lease epoch 5, retaining replay_budget_ordinal=1. In parallel attack E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -271,5 +272,11 @@
     "path": "work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md",
     "replay_tool": "work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py",
     "effect": "The 10-family one-scale linear witness phase system is exactly surjective: a displayed 10x10 minor has determinant -3. Finite support-plus-phase consistency is insufficient; the linear residual becomes actual Fourier realizability or genuine witness amplification."
+  },
+  "tranche_04_extension_q08": {
+    "result": "E3-Q08",
+    "disposition": "PROVED_NATIVE_BOOLEAN_REALIZABILITY_INSUFFICIENT",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q08_NATIVE_RESULT.md",
+    "effect": "Arbitrary finite r,2r,3r phase data at magnitudes well above the Q04 threshold are asymptotically realizable by genuine Boolean subsets of the cyclic ambient group. Booleanity/Parseval/finite phase data therefore do not close the linear lane; surviving rigidity is interval support, local 4-AP-freeness/near-extremality, full carry compatibility, or genuine witness amplification."
   }
 }
