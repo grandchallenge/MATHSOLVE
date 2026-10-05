@@ -56,12 +56,13 @@
     "E3-Q07": "PROVED_NATIVE_FINITE_PHASE_ALGEBRA_INSUFFICIENT",
     "E3-Q08": "PROVED_NATIVE_BOOLEAN_REALIZABILITY_INSUFFICIENT",
     "E3-Q09": "PROVED_NATIVE_DEWINDOWED_U3_FORCING",
-    "E3-Q10": "PROVED_NATIVE_DEWINDOWED_ORDER_DICHOTOMY"
+    "E3-Q10": "PROVED_NATIVE_DEWINDOWED_ORDER_DICHOTOMY",
+    "E3-Q11": "PROVED_NATIVE_LOW_ORDER_DENSITY_INCREMENT"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Receive the single E3-V03 RESULT/1 on issue 898 within its marker-clock lease and adjudicate independently. In parallel attack E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT and E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
+  "next_action": "Receive/adjudicate E3-V03 independently. In parallel attack E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION and E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT, plus the separate linear AP-free interval amplification lane. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -320,5 +321,11 @@
     "disposition": "PROVED_NATIVE_DEWINDOWED_ORDER_DICHOTOMY",
     "path": "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md",
     "effect": "Each adjacent 0011 family yields either an explicit singleton/pair carry-kernel correlation or intrinsic de-windowed U3 structure in both physical fibres; if no low-order witness appears across the adjacent chain, all four fibres are intrinsically structured."
+  },
+  "tranche_04_extension_q11": {
+    "result": "E3-Q11",
+    "disposition": "PROVED_NATIVE_LOW_ORDER_DENSITY_INCREMENT",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md",
+    "effect": "Every Q10 singleton/pair carry-kernel witness yields a positive density increment of order beta^4 on an actual arithmetic subprogression of common difference at most 3 inside one physical fibre."
   }
 }
