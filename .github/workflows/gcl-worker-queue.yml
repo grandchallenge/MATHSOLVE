@@ -1,0 +1,140 @@
+name: GCL worker queue reservation controller
+
+on:
+  issue_comment:
+    types: [created]
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  command:
+    if: >
+      github.event_name == 'issue_comment' &&
+      !github.event.issue.pull_request &&
+      (github.event.comment.body == '/claim' || github.event.comment.body == '/release')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    concurrency:
+      group: gcl-worker-reservation-${{ github.event.issue.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Fetch issue comment history
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments?per_page=100" | jq -s 'add' > "$RUNNER_TEMP/issue-comments.json"
+
+      - name: Evaluate queue command against protected state
+        id: evaluate
+        continue-on-error: true
+        run: |
+          python ci/gcl_worker_queue.py \
+            --event "$GITHUB_EVENT_PATH" \
+            --comments "$RUNNER_TEMP/issue-comments.json" \
+            --output "$RUNNER_TEMP/queue-result.json"
+
+      - name: Apply operational labels and post controller response
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          result = json.loads(Path(os.environ["RUNNER_TEMP"] + "/queue-result.json").read_text())
+          config = json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())
+          labels = config["labels"]
+          Path(os.environ["RUNNER_TEMP"] + "/response.md").write_text(result["response"] + "\n", encoding="utf-8")
+          for kind in ("labels_add", "labels_remove"):
+              values = [labels[k] for k in result.get(kind, []) if k in labels]
+              Path(os.environ["RUNNER_TEMP"] + "/" + kind + ".txt").write_text("\n".join(values) + ("\n" if values else ""), encoding="utf-8")
+          PY
+          while IFS= read -r label; do
+            [ -z "$label" ] && continue
+            gh label create "$label" --repo "$GITHUB_REPOSITORY" --force >/dev/null
+            gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "$label" >/dev/null
+          done < "$RUNNER_TEMP/labels_add.txt"
+          while IFS= read -r label; do
+            [ -z "$label" ] && continue
+            gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label "$label" >/dev/null 2>&1 || true
+          done < "$RUNNER_TEMP/labels_remove.txt"
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" -F body=@"$RUNNER_TEMP/response.md" >/dev/null
+
+  reap:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    concurrency:
+      group: gcl-worker-reservation-reaper
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Reconcile expired reservations
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          reserved="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())
+          print(c["labels"]["reserved"])
+          PY
+          )"
+          available="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())
+          print(c["labels"]["available"])
+          PY
+          )"
+          gh issue list --repo "$GITHUB_REPOSITORY" --state open --label "$reserved" --limit 1000 --json number > "$RUNNER_TEMP/reserved.json"
+          jq -r '.[].number' "$RUNNER_TEMP/reserved.json" | while IFS= read -r n; do
+            [ -z "$n" ] && continue
+            gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$n/comments?per_page=100" | jq -s 'add' > "$RUNNER_TEMP/comments-$n.json"
+            state="$(python - "$n" "$RUNNER_TEMP/comments-$n.json" <<'PY'
+          import json, sys
+          from datetime import datetime, timezone
+          from pathlib import Path
+          from ci.gcl_worker_queue_contract import active_reservation
+          n=int(sys.argv[1])
+          comments=json.loads(Path(sys.argv[2]).read_text())
+          reg=json.loads(Path(".gcl/worker_queue/JOBS.json").read_text())
+          cfg=json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())
+          jobs=[j for j in reg["jobs"] if j["issue_number"]==n]
+          if len(jobs)!=1:
+              print("UNKNOWN")
+          else:
+              a=active_reservation(comments,jobs[0]["dispatch_id"],datetime.now(timezone.utc),set(cfg["controller_comment_actors"]))
+              print("ACTIVE" if a else "EXPIRED")
+          PY
+          )"
+            if [ "$state" = "EXPIRED" ]; then
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
+              gh label create "$available" --repo "$GITHUB_REPOSITORY" --force >/dev/null
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$available" >/dev/null
+            fi
+          done
