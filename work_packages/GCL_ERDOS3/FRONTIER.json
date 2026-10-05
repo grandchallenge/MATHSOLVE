@@ -469,7 +469,7 @@
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
-        "E3-B-DEWINDOWED-JOINT-WITNESS: align derivative-frequency/quadratic witnesses of the Q09 local fluctuations across enough L01 core families",
+        "E3-B-CARRY-LOCALIZED-JOINT-WITNESS: retain exact D01 carry-cell localization before extracting de-windowed geometry/joint witnesses",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -494,7 +494,9 @@
         "E3-Q06",
         "E3-Q07",
         "E3-Q08",
-        "E3-Q09"
+        "E3-Q09",
+        "E3-Q10",
+        "E3-Q11"
       ],
       "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes deterministic interval-window structure and proves at least two fibres remain intrinsically U3-structured. The live lanes are AP-free interval/multi-scale amplification and de-windowed joint witness alignment."
     },
@@ -680,7 +682,7 @@
     {
       "id": "E3-B-DEWINDOWED-JOINT-WITNESS",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
       "depends_on": [
         "E3-B-DEWINDOWED-U3-FORCING",
@@ -703,7 +705,72 @@
         "prove selected global witnesses lie outside the window-generated spectrum",
         "combine de-windowed structure with near-extremality to amplify the finite L01 motif"
       ],
-      "claim_boundary": "Smallest current quadratic-branch residual; open and unproved."
+      "claim_boundary": "Smallest current quadratic-branch residual; open and unproved.",
+      "reduced_by": [
+        "E3-Q10",
+        "E3-Q11"
+      ],
+      "successor": "E3-B-CARRY-LOCALIZED-JOINT-WITNESS",
+      "reduction_note": "Q10 retains the exact post-dewindowing cancellation terms; Q11 proves the unrestricted cyclic embedding gauges together F15 and F16, so family-specific incompatibility must retain exact carry-cell localization."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-CANCELLATION-DICHOTOMY",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "statement": "For every L01 core family, cancellation of the positive Q09 window baseline yields either a singleton correlation of a de-windowed fibre fluctuation with an explicit deterministic carry-section weight, or a large multilinear term containing at least two de-windowed fluctuations; for F15/F16 the latter necessarily spans at least two distinct physical fibres.",
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Native reduction only; no deletion bound or witness alignment."
+    },
+    {
+      "id": "E3-B-CARRY-GAUGE-EQUIVALENCE",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "statement": "Under the unrestricted Q02 cyclic average, the transformation q->q+s and c_t->c_t-ts preserves the physical block word and every multilinear term after d->d+sN. In particular F15=(0,0,0123) and F16=(0,1,0000) are gauge-equivalent.",
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Representation-equivalence theorem only; it does not identify the original integer carry families."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-GEOMETRY-OR-JOINT-INCOMPATIBILITY",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-DEWINDOWED-CANCELLATION-DICHOTOMY"
+      ],
+      "statement": "Across the L01 core, show the Q10 singleton geometry-bias and multi-fluctuation terms are jointly incompatible with near-extremal internally 4-AP-free fibres at the required deletion scale.",
+      "reduced_by": "E3-Q11",
+      "successor": "E3-B-CARRY-LOCALIZED-JOINT-WITNESS",
+      "reduction_note": "Q11 shows unrestricted cyclic averages erase at least one family distinction used by L01; exact carry-cell localization is required before comparing F15/F16 as independent constraints.",
+      "claim_boundary": "Reduced native residual."
+    },
+    {
+      "id": "E3-B-CARRY-LOCALIZED-JOINT-WITNESS",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-DEWINDOWED-CANCELLATION-DICHOTOMY",
+        "E3-B-CARRY-GAUGE-EQUIVALENCE",
+        "E3-L01",
+        "E3-D01"
+      ],
+      "statement": "Localize the de-windowed four-linear cancellation to the exact D01 carry cells, preserving distinctions such as F15 versus F16, and prove the resulting geometry-bias / multi-fluctuation witnesses cannot be realized by four near-extremal internally 4-AP-free fibres without c*beta^(1+theta)*N deletions for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "attack_lanes": [
+        "replace unrestricted cyclic d-average by exact carry-cell restricted average",
+        "compute family-specific singleton weights before the q/c gauge quotient",
+        "align multi-fluctuation terms across the ten-family L01 core",
+        "exploit internal 4-AP-freeness and near-extremality after localization"
+      ],
+      "claim_boundary": "Smallest current de-windowed/carry-localized residual; open."
     }
   ],
   "closed_claims": [
