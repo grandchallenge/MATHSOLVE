@@ -469,7 +469,7 @@
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
-        "E3-B-CARRY-LOCALIZED-JOINT-WITNESS: retain exact D01 carry-cell localization before extracting de-windowed geometry/joint witnesses",
+        "E3-B-CARRY-LOCALIZED-GEOMETRY-OR-MULTICORRELATION: exploit exact D01 carry-cell geometry and localized multi-fluctuation correlations from Q12",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -496,7 +496,8 @@
         "E3-Q08",
         "E3-Q09",
         "E3-Q10",
-        "E3-Q11"
+        "E3-Q11",
+        "E3-Q12"
       ],
       "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes deterministic interval-window structure and proves at least two fibres remain intrinsically U3-structured. The live lanes are AP-free interval/multi-scale amplification and de-windowed joint witness alignment."
     },
@@ -752,7 +753,7 @@
     {
       "id": "E3-B-CARRY-LOCALIZED-JOINT-WITNESS",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
       "depends_on": [
         "E3-B-DEWINDOWED-CANCELLATION-DICHOTOMY",
@@ -770,7 +771,44 @@
         "align multi-fluctuation terms across the ten-family L01 core",
         "exploit internal 4-AP-freeness and near-extremality after localization"
       ],
-      "claim_boundary": "Smallest current de-windowed/carry-localized residual; open."
+      "claim_boundary": "Smallest current de-windowed/carry-localized residual; open.",
+      "reduced_by": "E3-Q12",
+      "successor": "E3-B-CARRY-LOCALIZED-GEOMETRY-OR-MULTICORRELATION",
+      "reduction_note": "Q12 implements the required exact D01 carry-cell localization directly in integer coordinates, preserving family identity and yielding explicit singleton geometry weights or localized multi-fluctuation correlations."
+    },
+    {
+      "id": "E3-B-CARRY-LOCALIZED-CANCELLATION",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "statement": "For every L01 core family, exact D01 carry-cell localization yields a density baseline at least beta^4/256 and hence a nonempty localized fluctuation term of magnitude at least beta^4/3840; singleton terms are explicit carry-section geometry biases and multi terms are exact localized multi-fluctuation correlations.",
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Native localized reduction only; no deletion bound or localized inverse theorem."
+    },
+    {
+      "id": "E3-B-CARRY-LOCALIZED-GEOMETRY-OR-MULTICORRELATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-CARRY-LOCALIZED-CANCELLATION",
+        "E3-B-CARRY-GAUGE-EQUIVALENCE",
+        "E3-L01",
+        "E3-D01"
+      ],
+      "statement": "Across the ten-family L01 core, use the exact Q12 carry-section weights and localized multi-fluctuation correlations to prove that four near-extremal internally 4-AP-free fibres cannot satisfy all family constraints without c*beta^(1+theta)*N deletions for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "attack_lanes": [
+        "compute and compare exact carry-section weights m_{F,j}",
+        "derive a localized Fourier/derivative representation that preserves carry-cell identity",
+        "align multi-fluctuation terms across mandatory/core families",
+        "exploit near-extremality or scale recursion to amplify localized witnesses"
+      ],
+      "claim_boundary": "Smallest current carry-localized residual; open."
     }
   ],
   "closed_claims": [
