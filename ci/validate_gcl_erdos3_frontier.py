@@ -23,7 +23,7 @@ def validate(root=ROOT):
     adjud03=json.loads((root/'work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json').read_text())
     lease_policy=json.loads((root/'work_packages/GCL_ERDOS3/LEASE_POLICY.json').read_text())
 
-    if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_V03_LEASE_EXPIRED':
+    if campaign.get('campaign_id')!='GCL-ERDOS3' or campaign.get('status')!='ACTIVE__E3_V03_DISPATCHED':
         errors.append('campaign identity/status drift')
     if gate.get('next_residual_role')!='EVIDENCE_ONLY_NOT_SCHEDULING_AUTHORITY':
         errors.append('Next residual regained scheduling authority')
@@ -129,8 +129,8 @@ def validate(root=ROOT):
         errors.append('density-loss tranche-04 registration drift')
     if density.get('active_attacks')!=['E3-B-JOINT-WITNESS-INCOMPATIBILITY']:
         errors.append('density-loss active native residual drift')
-    if rows.get('E3-V-B03',{}).get('status')!='LEASE_EXPIRED__REISSUE_REQUIRED':
-        errors.append('E3-V-B03 epoch-4 expired/reissue state drift')
+    if rows.get('E3-V-B03',{}).get('status')!='LAUNCHED':
+        errors.append('E3-V-B03 epoch-5 launch state drift')
     v03_expired4=rows.get('E3-V-B03',{}).get('expired_dispatch',{})
     if v03_expired4.get('issue_number')!=866 or v03_expired4.get('dispatch_id')!='GCL-ERDOS3-E3-V03-IA-004':
         errors.append('E3-V03 epoch-4 expired frontier binding drift')
@@ -138,6 +138,15 @@ def validate(root=ROOT):
         errors.append('E3-V03 epoch-4 expiry/replay drift')
     if v03_expired4.get('lease_activation_comment_id')!=5981972291:
         errors.append('E3-V03 epoch-4 activation marker receipt drift')
+    v03_frontier5=rows.get('E3-V-B03',{}).get('dispatch',{})
+    if v03_frontier5.get('dispatch_id')!='GCL-ERDOS3-E3-V03-IA-005' or v03_frontier5.get('issue_number')!=887:
+        errors.append('E3-V03 epoch-5 frontier binding drift')
+    if v03_frontier5.get('lease_epoch')!=5 or v03_frontier5.get('lease_attempt_ordinal')!=5 or v03_frontier5.get('replay_budget_ordinal')!=1:
+        errors.append('E3-V03 epoch-5 frontier lease/replay drift')
+    if v03_frontier5.get('lease_clock_source')!='GITHUB_ACTIVATION_COMMENT':
+        errors.append('E3-V03 epoch-5 frontier clock source drift')
+    if v03_frontier5.get('lease_duration_minutes')!=25 or v03_frontier5.get('agent_max_execution_minutes')!=24:
+        errors.append('E3-V03 epoch-5 frontier duration/cap drift')
     if rows.get('E3-V-B03',{}).get('replay_budget')!=1 or rows.get('E3-V-B03',{}).get('replay_budget_consumed')!=0:
         errors.append('E3-V03 frontier replay budget consumed by silence')
 
@@ -214,7 +223,7 @@ def validate(root=ROOT):
     extq09=campaign.get('tranche_04_extension_q09',{})
     if extq09.get('result')!='E3-Q09' or extq09.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md':
         errors.append('E3-Q09 campaign extension binding drift')
-    if campaign.get('dispatch_state')!='VERIFY_LEASE_EXPIRED__REISSUE_REQUIRED':
+    if campaign.get('dispatch_state')!='VERIFY_DISPATCHED__AWAITING_RETURN':
         errors.append('E3-V03 dispatch state drift')
     if campaign.get('synthesis_allowed') is not False:
         errors.append('synthesis gate remained open after adjudication')
@@ -246,8 +255,17 @@ def validate(root=ROOT):
     if synrow.get('path')!='work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md' or not synpath.is_file() or blob(synpath)!=synrow.get('blob_sha1'):
         errors.append('tranche-04 synthesis blob drift')
     expected_dispatches={'E3-R01','E3-D01','E3-G01','E3-C01','E3-A03','E3-S04'}
-    if campaign.get('active_dispatches',{})!={}:
-        errors.append('expired E3-V03 epoch-4 lease still appears active')
+    if set(campaign.get('active_dispatches',{}))!={'E3-V03'}:
+        errors.append('E3-V03 epoch-5 is not sole active dispatch')
+    active5=campaign.get('active_dispatches',{}).get('E3-V03',{})
+    if active5.get('dispatch_id')!='GCL-ERDOS3-E3-V03-IA-005' or active5.get('issue_number')!=887:
+        errors.append('E3-V03 epoch-5 campaign identity drift')
+    if active5.get('lease_epoch')!=5 or active5.get('lease_attempt_ordinal')!=5 or active5.get('replay_budget_ordinal')!=1:
+        errors.append('E3-V03 epoch-5 campaign lease/replay drift')
+    if active5.get('lease_clock_source')!='GITHUB_ACTIVATION_COMMENT':
+        errors.append('E3-V03 epoch-5 campaign clock source drift')
+    if active5.get('lease_duration_minutes')!=25 or active5.get('agent_max_execution_minutes')!=24:
+        errors.append('E3-V03 epoch-5 campaign duration/cap drift')
     expired4=campaign.get('completed_dispatches',{}).get('E3-V03-LEASE-004',{})
     if expired4.get('dispatch_id')!='GCL-ERDOS3-E3-V03-IA-004' or expired4.get('issue_number')!=866:
         errors.append('expired E3-V03 epoch-4 campaign identity drift')
@@ -491,6 +509,38 @@ def validate(root=ROOT):
             errors.append('E3-V03 epoch-4 intake integrity drift')
     else:
         errors.append('missing E3-V03 epoch-4 durable dispatch receipt')
+    v03_file5=root/'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-V03-IA-005.json'
+    if v03_file5.is_file():
+        v03d5=json.loads(v03_file5.read_text())
+        if v03d5.get('issue_number')!=887 or v03d5.get('task_commit')!='eb94ed1df6c3743fc8a186dcc423ce372fb512c8' or v03d5.get('task_blob_sha1')!='44d366be27cec0679c695c03074bceeab9b7cf01':
+            errors.append('E3-V03 epoch-5 durable dispatch receipt drift')
+        if v03d5.get('state')!='DISPATCHED__AWAITING_RETURN' or v03d5.get('dispatch_status')!='READY_FOR_GITHUB_COMMENT':
+            errors.append('E3-V03 epoch-5 lifecycle drift')
+        if v03d5.get('lease_policy_id')!='GCL-IA-LEASE-25M-24M-001':
+            errors.append('E3-V03 epoch-5 lease policy drift')
+        if v03d5.get('lease_clock_source')!='GITHUB_ACTIVATION_COMMENT' or v03d5.get('lease_activation_marker')!='GCL-LEASE-ACTIVATION/1':
+            errors.append('E3-V03 epoch-5 marker-clock drift')
+        if v03d5.get('lease_epoch')!=5 or v03d5.get('lease_attempt_ordinal')!=5 or v03d5.get('replay_budget_ordinal')!=1:
+            errors.append('E3-V03 epoch-5 lease/replay ordinal drift')
+        if v03d5.get('lease_duration_minutes')!=25 or v03d5.get('agent_max_execution_minutes')!=24 or v03d5.get('return_grace_minutes')!=1:
+            errors.append('E3-V03 epoch-5 duration/cap drift')
+        if v03d5.get('predecessor_dispatch_id')!='GCL-ERDOS3-E3-V03-IA-004' or v03d5.get('predecessor_issue_number')!=866 or v03d5.get('predecessor_state')!='LEASE_EXPIRED__NO_RETURN':
+            errors.append('E3-V03 epoch-5 predecessor fence drift')
+        if v03d5.get('github_issue_title')!='[GCL-CONTRIB] GCL-ERDOS3 E3-V03-IA-005 — gluing-radius equivalence replay':
+            errors.append('E3-V03 epoch-5 active title binding drift')
+        if v03d5.get('github_issue_staging_title')!='[GCL-STAGING] GCL-ERDOS3 E3-V03-IA-005 — gluing-radius equivalence replay':
+            errors.append('E3-V03 epoch-5 staging title binding drift')
+        if v03d5.get('bootstrap_path')!='work_packages/GCL_ERDOS3/launch/E3-V03-IA-005.md' or v03d5.get('bootstrap_blob_sha1')!='89ef6108e5309ec3087aac32301495759f4e9453':
+            errors.append('E3-V03 epoch-5 bootstrap binding drift')
+        bootstrap5=root/'work_packages/GCL_ERDOS3/launch/E3-V03-IA-005.md'
+        if not bootstrap5.is_file() or blob(bootstrap5)!='89ef6108e5309ec3087aac32301495759f4e9453':
+            errors.append('E3-V03 epoch-5 protected bootstrap bytes drift')
+        if v03d5.get('activation_controller')!='.github/workflows/gcl-erdos3-lease-activator.yml' or v03d5.get('reaper_controller')!='.github/workflows/gcl-erdos3-lease-reaper.yml':
+            errors.append('E3-V03 epoch-5 controller binding drift')
+        if v03d5.get('first_valid_result_lock') is not True or v03d5.get('automated_intake_canonical_effect') is not False:
+            errors.append('E3-V03 epoch-5 intake integrity drift')
+    else:
+        errors.append('missing E3-V03 epoch-5 durable dispatch receipt')
     if tranche.get('results',{}).get('E3-F01',{}).get('frontier_action')!='CLOSED_NO_SUCCESSOR':
         errors.append('F01 replay recursion guard drift')
 
@@ -567,6 +617,8 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/launch/E3-V03-IA-003.md',
         'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-V03-IA-004.json',
         'work_packages/GCL_ERDOS3/launch/E3-V03-IA-004.md',
+        'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-V03-IA-005.json',
+        'work_packages/GCL_ERDOS3/launch/E3-V03-IA-005.md',
         'ci/gcl_erdos3_github_contribution_intake.py',
         'tests/test_gcl_erdos3_github_contribution_intake.py',
         '.github/workflows/gcl-erdos3-independent-contribution-intake.yml',
@@ -692,5 +744,5 @@ def validate(root=ROOT):
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    if not e: print('PASS: GCL-ERDOS3 Q09 removes deterministic window structure; AP-free interval/multi-scale amplification and de-windowed joint-witness alignment remain open while V03 epoch 4 is fenced')
+    if not e: print('PASS: GCL-ERDOS3 Q09 remains protected; V03 epoch 5 is exact-bound at issue 887 with replay ordinal 1 while native AP-free interval and de-windowed joint-witness lanes continue')
     raise SystemExit(bool(e))
