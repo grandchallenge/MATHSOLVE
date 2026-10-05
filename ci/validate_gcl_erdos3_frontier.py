@@ -141,8 +141,16 @@ def validate(root=ROOT):
         errors.append('Q13 dyadic short-step localization state drift')
     if rows.get('E3-B-DYADIC-SHORT-STEP-LOCALIZATION',{}).get('evidence_blob_sha1')!='a993c4c0bf4a01974be5c7d906e04021e9e2bc66':
         errors.append('Q13 dyadic localization evidence blob drift')
-    if rows.get('E3-B-DYADIC-DENSITY-INCREMENT-RECURSION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
-        errors.append('Q13 dyadic density-increment recursion state drift')
+    if rows.get('E3-B-DYADIC-DENSITY-INCREMENT-RECURSION',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
+        errors.append('Q14 dyadic density-increment recursion reduction drift')
+    if rows.get('E3-B-DYADIC-DENSITY-INCREMENT-RECURSION',{}).get('successor')!='E3-B-LOW-ORDER-EXPONENT-UPGRADE':
+        errors.append('Q14 low-order successor drift')
+    if rows.get('E3-B-RECURSION-SUMMABILITY-THRESHOLD',{}).get('status')!='PROVED_NATIVE':
+        errors.append('Q14 recursion summability threshold state drift')
+    if rows.get('E3-B-RECURSION-SUMMABILITY-THRESHOLD',{}).get('evidence_blob_sha1')!='6949c137ea9a376aa24d32dbee41641b852bd417':
+        errors.append('Q14 recursion threshold evidence blob drift')
+    if rows.get('E3-B-LOW-ORDER-EXPONENT-UPGRADE',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('Q14 low-order exponent-upgrade state drift')
     if rows.get('E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
         errors.append('all-fibre de-windowed alignment reduced state drift')
     if rows.get('E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT',{}).get('successor')!='E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT':
@@ -255,6 +263,8 @@ def validate(root=ROOT):
         errors.append('E3-Q12 native campaign result drift')
     if campaign.get('work_package_results',{}).get('E3-Q13')!='PROVED_NATIVE_DYADIC_SHORT_STEP_LOCALIZATION':
         errors.append('E3-Q13 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q14')!='PROVED_NATIVE_RECURSION_EXPONENT_NO_GO':
+        errors.append('E3-Q14 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
@@ -292,6 +302,11 @@ def validate(root=ROOT):
         errors.append('E3-Q13 campaign extension binding drift')
     if extq13.get('blob_sha1')!='a993c4c0bf4a01974be5c7d906e04021e9e2bc66':
         errors.append('E3-Q13 campaign extension blob drift')
+    extq14=campaign.get('tranche_04_extension_q14',{})
+    if extq14.get('result')!='E3-Q14' or extq14.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md':
+        errors.append('E3-Q14 campaign extension binding drift')
+    if extq14.get('blob_sha1')!='6949c137ea9a376aa24d32dbee41641b852bd417':
+        errors.append('E3-Q14 campaign extension blob drift')
     expected_dispatch_state='VERIFY_LEASE_EXPIRED__REISSUE_REQUIRED' if v03_epoch6_expired else 'VERIFY_DISPATCHED__AWAITING_RETURN'
     if campaign.get('dispatch_state')!=expected_dispatch_state:
         errors.append('E3-V03 dispatch state drift')
@@ -716,6 +731,7 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py',
         'work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py',
         'work_packages/GCL_ERDOS3/LEASE_POLICY.json',
