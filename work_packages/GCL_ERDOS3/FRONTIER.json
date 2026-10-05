@@ -468,9 +468,10 @@
       ],
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
-        "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
-        "E3-B-DENSITY-INCREMENT-AMPLIFICATION: amplify Q13 beta^4 end-interval density increments across scales",
-        "E3-B-CARRY-KERNEL-SPECTRAL-INCOMPATIBILITY: analyze Q14 family-specific carry-kernel spectra supporting localized multi-fluctuation correlations"
+        "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION",
+        "E3-B-DENSITY-INCREMENT-AMPLIFICATION",
+        "E3-B-PRIME-ALIGNED-WITNESS-AMPLIFICATION",
+        "E3-B-CENTERED-CARRY-KERNEL-INCOMPATIBILITY"
       ],
       "sufficient_for": [
         "E3-B-FOUR-FIBRE-DEFICIT"
@@ -867,7 +868,7 @@
       "kind": "NATIVE_LEMMA",
       "status": "PROVED_NATIVE",
       "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
-      "statement": "Every exact D01 carry-localized multilinear correlation equals a convolution of the physical fibre Fourier coefficients weighted by the two-dimensional Fourier transform of the exact carry-cell indicator K_c; the unrestricted cyclic equations are recovered by K_c=1.",
+      "statement": "Every exact D01 carry-localized correlation admits a prime-lifted Fourier representation on 8N<P<16N and an exact decomposition into an unrestricted aligned prime-group component plus a family-specific centered carry-kernel remainder.",
       "evidence_basis": [
         "work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md"
       ],
@@ -890,7 +891,7 @@
     {
       "id": "E3-B-CARRY-KERNEL-SPECTRAL-INCOMPATIBILITY",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
       "depends_on": [
         "E3-B-CARRY-KERNEL-FOURIER-REPRESENTATION",
@@ -909,9 +910,16 @@
       "claim_boundary": "Localized multi-correlation branch only; open.",
       "known_kernel_energy": {
         "by": "E3-Q15",
-        "nonzero_l2_energy_lower_bound": "63/1024",
+        "native_z_n_nonzero_l2_energy_lower_bound": "63/1024",
+        "prime_lifted_nonzero_l2_energy_lower_bound": "63/262144",
         "scope": "every L01 core carry, N>=16"
-      }
+      },
+      "reduced_by": "E3-Q14",
+      "split_successors": [
+        "E3-B-PRIME-ALIGNED-WITNESS-AMPLIFICATION",
+        "E3-B-CENTERED-CARRY-KERNEL-INCOMPATIBILITY"
+      ],
+      "reduction_note": "Corrected Q14 on the prime ambient group splits every localized 3/4-factor term into unrestricted aligned prime-group structure and a centered carry-kernel remainder; 2-factor terms are entirely centered-kernel-specific."
     },
     {
       "id": "E3-B-CORE-CARRY-CARDINALITIES",
@@ -923,6 +931,47 @@
         "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md"
       ],
       "claim_boundary": "Exact finite cardinality/kernel-energy theorem only."
+    },
+    {
+      "id": "E3-B-PRIME-ALIGNED-WITNESS-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-CARRY-KERNEL-FOURIER-REPRESENTATION",
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY"
+      ],
+      "statement": "When Q14 localized 3/4-factor correlations are carried substantially by the unrestricted prime-group component, amplify the resulting aligned Fourier/fourfold witnesses across enough core families to force c*beta^(1+theta)*N deletions for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "claim_boundary": "Unrestricted aligned branch of Q14 only; open."
+    },
+    {
+      "id": "E3-B-CENTERED-CARRY-KERNEL-INCOMPATIBILITY",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-CARRY-KERNEL-FOURIER-REPRESENTATION",
+        "E3-B-CORE-CARRY-CARDINALITIES"
+      ],
+      "statement": "Show that centered prime-lifted carry-kernel remainders of size Omega(beta^4) across the mandatory/core D01 families cannot be supported by four near-extremal internally 4-AP-free fibre spectra without c*beta^(1+theta)*N deletions for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "attack_lanes": [
+        "locate the Q15 prime-lifted nonzero kernel energy in frequency space",
+        "bound centered-kernel contributions away from a finite low-defect frequency set",
+        "couple centered-kernel-supported tuples across mandatory/core carry families",
+        "combine with internal AP-free near-extremizer spectral restrictions"
+      ],
+      "known_kernel_energy": {
+        "by": "E3-Q15",
+        "prime_lifted_nonzero_l2_energy_lower_bound": "63/262144",
+        "scope": "every L01 core carry, N>=16"
+      },
+      "claim_boundary": "Family-specific centered-kernel branch only; open."
     }
   ],
   "closed_claims": [
