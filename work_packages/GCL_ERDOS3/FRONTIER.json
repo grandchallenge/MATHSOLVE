@@ -470,7 +470,7 @@
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
         "E3-B-LOW-ORDER-EXPONENT-UPGRADE: Q14 proves beta^4 recursion alone is nonsummability-compatible; exploit additional carry/near-extremal structure to reach an effective loss exponent p<2",
-        "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY: Q15 forces B1 to be the derivative side in two distinct repeated-triplet carry geometries; align those shift/frequency systems or force an exponent<2 deletion cost",
+        "E3-B-INTERIOR-DERIVATIVE-OR-THREEFIBRE-BRIDGE-COMPATIBILITY: Q16 classifies F9/F10 into forced interior derivatives or positive-density three-fibre bridge witnesses; align the derivative systems or amplify the bridge to exponent<2",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -501,9 +501,10 @@
         "E3-Q12",
         "E3-Q13",
         "E3-Q14",
-        "E3-Q15"
+        "E3-Q15",
+        "E3-Q16"
       ],
-      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap. Q13 localizes the Q11 increment to a dyadic subprogression after O(log(1/beta)) levels with no fixed-factor density loss. Q14 proves the exact recursion-only summability threshold p<2, so the beta^4 low-order arm cannot close by iteration alone. Q15 removes derivative-side ambiguity for repeated-triplet core families: F2 and F3 both force B1 in their high-order arms."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap. Q13 localizes the Q11 increment to a dyadic subprogression after O(log(1/beta)) levels with no fixed-factor density loss. Q14 proves the exact recursion-only summability threshold p<2, so the beta^4 low-order arm cannot close by iteration alone. Q15 removes derivative-side ambiguity for repeated-triplet core families: F2 and F3 both force B1 in their high-order arms. Q16 classifies the two three-block bridge families F9/F10 into interior-derivative versus explicit three-fibre mixed-window witnesses."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -958,7 +959,7 @@
     {
       "id": "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
       "depends_on": [
         "E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING"
@@ -976,6 +977,47 @@
       "evidence_basis": [
         "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current high-order residual; open.",
+      "reduced_by": "E3-Q16",
+      "successor": "E3-B-INTERIOR-DERIVATIVE-OR-THREEFIBRE-BRIDGE-COMPATIBILITY",
+      "reduction_note": "Q16 adds F9/F10: each high-order bridge family either reinforces the interior derivative side or supplies a direct three-physical-fibre mixed-window witness."
+    },
+    {
+      "id": "E3-B-BRIDGE-FAMILY-DICHOTOMY",
+      "kind": "LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY",
+      "depends_on": [
+        "E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING"
+      ],
+      "statement": "For F9=(B0,B1,B1,B2) and F10=(B1,B2,B2,B3), every high-order de-windowed expansion term either contains both repeated interior positions and hence a complete derivative of B1/B2, or is exactly a three-physical-fibre mixed-window witness spanning the three consecutive fibres. Each alternative holds on a positive-density set of common shifts.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md",
+      "evidence_blob_sha1": "530a9cb0301ee54dd399d0dc6aa17a3185c8da96",
+      "proved_by": "E3-Q16"
+    },
+    {
+      "id": "E3-B-INTERIOR-DERIVATIVE-OR-THREEFIBRE-BRIDGE-COMPATIBILITY",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY",
+      "depends_on": [
+        "E3-B-BRIDGE-FAMILY-DICHOTOMY",
+        "E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING"
+      ],
+      "statement": "In the all-high-order regime for F2,F3,F6,F9,F10, prove that repeated interior derivative constraints on B1/B2 align across distinct carry geometries to a joint quadratic witness, or that a positive-density three-fibre mixed-window bridge from F9/F10 forces an effective exponent-p<2 deletion/density gain.",
+      "attack_lanes": [
+        "align the B1 derivative systems from F2,F3 and derivative-case F9 using additive energy/frequency coherence rather than raw set intersection",
+        "align the B2 systems from F6 and derivative-case F10",
+        "analyze the three-fibre bridge case as a direct B0-B1-B2 or B1-B2-B3 mixed correlation",
+        "route any low-order family to E3-B-LOW-ORDER-EXPONENT-UPGRADE"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md"
       ],
       "claim_boundary": "Smallest current high-order residual; open."
     }
