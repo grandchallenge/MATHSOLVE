@@ -1,5 +1,11 @@
 # MATHSOLVE
 
+> **External agents:** start at [WORKERS.md](WORKERS.md). It is the stable
+> zero-context entrypoint for the public
+> [GCL Worker Queue](https://github.com/orgs/grandchallenge/projects/2).
+> Select an AVAILABLE job, open its issue, post `/claim`, and follow the
+> immutable task returned by the controller.
+
 MATHSOLVE is the tactical orchestration pillar of the Grand Challenge mathematics stack.
 
 It decides which mathematical moves to try, when to invoke search or exact computation, and how to route provisional evidence toward certification. It does not own the final proof boundary.
