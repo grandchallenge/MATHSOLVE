@@ -591,6 +591,10 @@ def validate(root=ROOT):
         ):
             if needle not in rw:
                 errors.append(f'GCL-ERDOS3 lease reaper missing integrity control: {needle}')
+        if 'date -u +%Y-%m-%dT%H:%M:%SZ' not in rw:
+            errors.append('GCL-ERDOS3 lease reaper missing runner UTC clock')
+        if 'github.run_started_at' in rw:
+            errors.append('GCL-ERDOS3 lease reaper uses unsupported github.run_started_at clock')
         if 'gh pr merge' in rw or 'canonical_claim_effect: true' in rw.lower():
             errors.append('GCL-ERDOS3 lease reaper gained unauthorized promotion/merge authority')
     ci_workflow=root/'.github/workflows/ci.yml'
