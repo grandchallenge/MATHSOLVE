@@ -58,12 +58,13 @@
     "E3-Q09": "PROVED_NATIVE_DEWINDOWED_U3_FORCING",
     "E3-Q10": "PROVED_NATIVE_DEWINDOWED_ORDER_DICHOTOMY",
     "E3-Q11": "PROVED_NATIVE_LOW_ORDER_DENSITY_INCREMENT",
-    "E3-Q12": "PROVED_NATIVE_DEWINDOWED_DERIVATIVE_PRODUCT_OVERLAP"
+    "E3-Q12": "PROVED_NATIVE_DEWINDOWED_DERIVATIVE_PRODUCT_OVERLAP",
+    "E3-Q13": "PROVED_NATIVE_DYADIC_SHORT_STEP_LOCALIZATION"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Receive/adjudicate E3-V03 independently. In parallel attack E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION, E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT, and the separate linear AP-free interval amplification lane. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
+  "next_action": "Receive/adjudicate E3-V03 independently. In parallel attack E3-B-DYADIC-DENSITY-INCREMENT-RECURSION, E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT, and the separate linear AP-free interval amplification lane. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -334,5 +335,12 @@
     "disposition": "PROVED_NATIVE_DEWINDOWED_DERIVATIVE_PRODUCT_OVERLAP",
     "path": "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md",
     "effect": "Every Q10 high-order adjacent-pair term yields a positive-density set of same-shift derivative-product spectral overlaps. Fully de-windowed fourfold terms give derivative-vs-derivative overlap; triple terms expose exactly one remaining deterministic window factor."
+  },
+  "tranche_04_extension_q13": {
+    "result": "E3-Q13",
+    "disposition": "PROVED_NATIVE_DYADIC_SHORT_STEP_LOCALIZATION",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md",
+    "blob_sha1": "a993c4c0bf4a01974be5c7d906e04021e9e2bc66",
+    "effect": "Q11's arbitrary short-step increment localizes to a dyadic subprogression of length > (5/4)delta_beta*N, preserving a 5*delta_beta density gain; the scale drop is O(log(1/beta)). The exponent remains 4."
   }
 }
