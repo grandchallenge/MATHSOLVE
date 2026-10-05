@@ -6,8 +6,11 @@ import json
 import re
 import sys
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+from ci.gcl_worker_queue_contract import active_reservation, queue_job_for_dispatch
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -369,7 +372,11 @@ def validate_dispatch_issue(
         raise IntakeError("GitHub issue body differs from the protected bootstrap bytes")
 
 
-def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], IntakeProfile, dict[str, Any], dict[str, Any]]:
+def validate_event(
+    event: dict[str, Any],
+    root: Path,
+    comments: list[dict[str, Any]] | None = None,
+) -> tuple[dict[str, Any], IntakeProfile, dict[str, Any], dict[str, Any]]:
     issue = _object(event.get("issue"), "issue")
     if "pull_request" in issue:
         raise IntakeError("result comments are accepted only on dispatch issues")
@@ -403,6 +410,26 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], I
     if not isinstance(comment_id, int):
         raise IntakeError("GitHub comment id is unavailable")
 
+    queue_job = queue_job_for_dispatch(root, dispatch_id)
+    reservation = None
+    if queue_job is not None and queue_job.get("self_claimable") is True:
+        if comments is None:
+            raise IntakeError("queue-managed dispatch requires issue comment history")
+        created_at = comment.get("created_at")
+        if not isinstance(created_at, str) or not created_at:
+            raise IntakeError("queue-managed result lacks comment_created_at")
+        at = datetime.fromisoformat(created_at.replace("Z", "+00:00")).astimezone(timezone.utc)
+        reservation = active_reservation(
+            comments,
+            dispatch_id,
+            at,
+            {"github-actions[bot]"},
+        )
+        if reservation is None:
+            raise IntakeError("queue-managed result has no active worker reservation")
+        if reservation.get("worker") != login:
+            raise IntakeError("authenticated result author does not match active worker reservation")
+
     return parsed, profile, dispatch, {
         "issue": issue,
         "comment": comment,
@@ -411,8 +438,13 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], I
     }
 
 
-def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, Any]:
-    parsed, profile, dispatch, observed = validate_event(event, root)
+def emit_intake(
+    event: dict[str, Any],
+    root: Path,
+    output: Path,
+    comments: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    parsed, profile, dispatch, observed = validate_event(event, root, comments)
     body = observed["comment"]["body"]
     assert isinstance(body, str)
 
@@ -435,6 +467,7 @@ def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, An
         "github_comment_id": comment_id,
         "authenticated_github_actor": observed["actor"],
         "comment_created_at": observed["comment"].get("created_at"),
+        "worker_reservation_enforced": queue_job_for_dispatch(root, dispatch_id) is not None,
         "raw_artifact_path": raw_rel.as_posix(),
         "raw_sha256": sha256_text(body),
         "bootstrap_path": dispatch["bootstrap_path"],
@@ -482,11 +515,17 @@ def main() -> int:
     parser.add_argument("--event", type=Path, required=True)
     parser.add_argument("--repo-root", type=Path, default=ROOT)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--comments", type=Path)
     args = parser.parse_args()
     try:
         event = json.loads(args.event.read_text(encoding="utf-8"))
         event = _object(event, "event")
-        meta = emit_intake(event, args.repo_root, args.output)
+        comments = None
+        if args.comments is not None:
+            comments = json.loads(args.comments.read_text(encoding="utf-8"))
+            if not isinstance(comments, list):
+                raise IntakeError("comments payload must be a JSON list")
+        meta = emit_intake(event, args.repo_root, args.output, comments)
     except (OSError, json.JSONDecodeError, IntakeError) as exc:
         args.output.mkdir(parents=True, exist_ok=True)
         (args.output / "ERRORS.txt").write_text(str(exc) + "\n", encoding="utf-8")
