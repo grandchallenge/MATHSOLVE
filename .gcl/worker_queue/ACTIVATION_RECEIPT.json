@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_WORKER_QUEUE_ACTIVATION_RECEIPT",
+  "receipt_id": "GCL-WORKER-QUEUE-ACTIVATION-001",
+  "policy_id": "GCL-WORKER-QUEUE-001",
+  "policy_version": "1.0.0",
+  "state": "LIVE",
+  "protected_programme_policy": {
+    "repository": "grandchallenge/MATH-PROGRAMME",
+    "commit": "0fd894c053922ec43b70878e0f02e8370690449a",
+    "policy_path": "governance/GCL-WORKER-QUEUE-001.json",
+    "policy_blob_sha1": "6752e92d260d6a44f9e048c8400bddc0848d616d",
+    "operating_design_blob_sha1": "3907fa16a167f40a6891f3e0a4323898cbeb7907"
+  },
+  "solve_implementation": {
+    "pull_request": 895,
+    "candidate_head": "969ed613ede0a900e2824c787bc6de3f09b28f5d",
+    "merge_commit": "fcfc825371b415b76734bfcfbfd41ce4e175dcc3",
+    "post_merge_controller_repair_pull_request": 896,
+    "protected_readback_commit": "3b903ad23f0466026df60348b1e0fc7589e2202b",
+    "blobs": {
+      "config": "937e07fbe0e350bb50ff290d0560da186e64fb57",
+      "jobs": "ff854f0bc33dddad4a69dcc5899e733b60d8e10b",
+      "worker_entrypoint": "c81546282b58c0a83f1b75eb1652094ea457c927",
+      "worker_controller": "8d60e00d883392e57500e7dd00025028836732fc",
+      "ghos_routing": "4341fc459844b083da2cbe090f482a1228055e3b"
+    }
+  },
+  "pilot": {
+    "campaign": "ERDOS-OPEN-RECON",
+    "tranche": "ERDOS-OPEN-RECON-FIRST-TRANCHE",
+    "issue_range": {
+      "first": 842,
+      "last": 865,
+      "count": 24
+    },
+    "job_count": 24,
+    "roles": {
+      "RECONNAISSANCE": 8,
+      "SOURCE_AUDIT": 8,
+      "ADVERSARIAL": 8
+    },
+    "live_state_counts": {
+      "available": 24,
+      "reserved": 0,
+      "returned": 0
+    },
+    "result_comment_count": 0,
+    "labels_complete": true,
+    "labels": [
+      "gcl-job",
+      "gcl-state:available",
+      "gcl-collab:staged",
+      "gcl-role:reconnaissance | gcl-role:source-audit | gcl-role:adversarial"
+    ],
+    "canonical_issue_query": "is:issue is:open label:gcl-job label:gcl-state:available"
+  },
+  "smoke_test": {
+    "issue_number": 842,
+    "dispatch_id": "ERDOS-593-R1-IA-001",
+    "claimant": "fyremael",
+    "claim_comment_id": 5990656883,
+    "claim_created_at": "2026-10-05T08:14:09Z",
+    "release_comment_id": 5990668757,
+    "release_created_at": "2026-10-05T08:14:59Z",
+    "final_operational_state": "AVAILABLE",
+    "immutable_task_commit": "13f8364d0dd052bf0cd9f6a9f66dc135d770529f",
+    "collaboration_mode": "STAGED_DISCLOSURE",
+    "visibility_phase": "BLIND_COLLECTION",
+    "sibling_use_policy": "FORBIDDEN",
+    "mathematical_effect": false,
+    "certification_effect": false
+  },
+  "blind_cohorts": [
+    {
+      "id": "ERDOS-593-BLIND-COHORT-001",
+      "blob_sha1": "745bcc09fac7ddca7a2cf04c71785cbd9e7bdac9"
+    },
+    {
+      "id": "ERDOS-595-BLIND-COHORT-001",
+      "blob_sha1": "09cc948c687882e7bee42e0a901fd89467774365"
+    },
+    {
+      "id": "ERDOS-241-BLIND-COHORT-001",
+      "blob_sha1": "a48b25a9d6d103b5358f7139272597bf228b088f"
+    },
+    {
+      "id": "ERDOS-470-BLIND-COHORT-001",
+      "blob_sha1": "48c37b64769e7e74523cc2ed12526eae510e5897"
+    },
+    {
+      "id": "ERDOS-1052-BLIND-COHORT-001",
+      "blob_sha1": "471ca3dd5c3e1b776dee0d63e60548eb77ae2a16"
+    },
+    {
+      "id": "ERDOS-99-BLIND-COHORT-001",
+      "blob_sha1": "b2fe13aba55ba1b8eb85238ba6593b69dda5e989"
+    },
+    {
+      "id": "ERDOS-101-BLIND-COHORT-001",
+      "blob_sha1": "297cb89d28031f49bd717e7b192bfcd5af1bab27"
+    },
+    {
+      "id": "ERDOS-138-BLIND-COHORT-001",
+      "blob_sha1": "ede7dc7afa3de41c018ae652bd9c265bba0cabf3"
+    }
+  ],
+  "blind_cohort_boundary": {
+    "all_state": "OPEN_AWAITING_RESULTS",
+    "synthesis_allowed": false,
+    "cross_disclosure_before_closure": false,
+    "in_place_reclassification_authorized": false
+  },
+  "inherited_unrelated_estate_note": {
+    "workflow": "OPENMATH H2 WP02 instantiation",
+    "status_at_implementation_pr": "failure_on_candidate_and_protected_base",
+    "queue_transaction_effect": "NONE",
+    "repair_in_this_transaction": false
+  },
+  "authority_effect": {
+    "worker_reservation_is_execution_authority": false,
+    "project_or_labels_are_authority": false,
+    "mathematical": false,
+    "certification": false,
+    "publication": false,
+    "protected_bypass": false
+  },
+  "next_boundary": "Accept worker claims and RESULT/1 returns through the protected queue/intake path. Preserve blind provenance until each predecessor cohort is explicitly closed; any teamwork phase must be a new protected successor cohort after disclosure."
+}
