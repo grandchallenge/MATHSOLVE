@@ -143,10 +143,10 @@ jobs:
             pr_url="$existing"
           else
             cat > "$RUNNER_TEMP/pr-body.md" <<EOF
-          Automated bounded lease-expiry reconciliation for `$DISPATCH`.
+          Automated bounded lease-expiry reconciliation for $DISPATCH.
 
-          - lease epoch: `$EPOCH`
-          - lease expired at: `$EXPIRES`
+          - lease epoch: $EPOCH
+          - lease expired at: $EXPIRES
           - timely RESULT/1 observed: NO
           - mathematical replay budget consumed: NO
           - canonical claim effect: NONE
@@ -174,7 +174,7 @@ jobs:
           state="$(gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE" --jq '.state')"
           if [ "$state" = "open" ]; then
             gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" \
-              -f body="LEASE EXPIRED — NO RETURN. The protected 25-minute lease expired at `$EXPIRES`. Late results are fenced by intake. Durable lifecycle reconciliation: $PR_URL" >/dev/null
+              -f body="LEASE EXPIRED — NO RETURN. The protected 25-minute lease expired at $EXPIRES. Late results are fenced by intake. Durable lifecycle reconciliation: $PR_URL" >/dev/null
             gh api --method PATCH "repos/$GITHUB_REPOSITORY/issues/$ISSUE" \
               -f state=closed -f state_reason=completed >/dev/null
           else
