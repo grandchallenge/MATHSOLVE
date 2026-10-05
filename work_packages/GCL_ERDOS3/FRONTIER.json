@@ -468,7 +468,7 @@
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
-        "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION: amplify Q11's positive step<=3 density increment beyond exponent 4",
+        "E3-B-DYADIC-DENSITY-INCREMENT-RECURSION: Q13 removes arbitrary-M conversion; amplify the beta^4 dyadic backward increment across controlled scales or prove this arm cannot reach exponent below 2",
         "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT: align Q12 same-shift derivative-product spectra or exploit the mixed one-window branch",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
@@ -497,9 +497,10 @@
         "E3-Q09",
         "E3-Q10",
         "E3-Q11",
-        "E3-Q12"
+        "E3-Q12",
+        "E3-Q13"
       ],
-      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap. Q13 localizes the Q11 increment to a dyadic subprogression after O(log(1/beta)) levels with no fixed-factor density loss."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -770,7 +771,7 @@
     {
       "id": "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
       "depends_on": [
         "E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT"
@@ -788,7 +789,10 @@
       "evidence_basis": [
         "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md"
       ],
-      "claim_boundary": "Open; Q11 provides only an order-beta^4 increment."
+      "claim_boundary": "Open; Q11 provides only an order-beta^4 increment.",
+      "reduced_by": "E3-Q13",
+      "successor": "E3-B-DYADIC-DENSITY-INCREMENT-RECURSION",
+      "reduction_note": "Q13 proves dyadic localization with scale drop O(log(1/beta)) and preserves an order-beta^4 density gain. Remaining issue is recursion/amplification, not arbitrary-scale conversion."
     },
     {
       "id": "E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT",
@@ -851,6 +855,43 @@
         "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md"
       ],
       "claim_boundary": "Smallest current high-order de-windowed residual; open."
+    },
+    {
+      "id": "E3-B-DYADIC-SHORT-STEP-LOCALIZATION",
+      "kind": "LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
+      "depends_on": [
+        "E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT"
+      ],
+      "statement": "Every Q11 short-step increment with 10*delta_beta*N>=8 contains a dyadic subprogression of the same step q<=3, length 2^m>(5/4)delta_beta*N, and density >alpha_j+5*delta_beta; hence n-m=O(log(1/beta)).",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md",
+      "evidence_blob_sha1": "a993c4c0bf4a01974be5c7d906e04021e9e2bc66",
+      "proved_by": "E3-Q13"
+    },
+    {
+      "id": "E3-B-DYADIC-DENSITY-INCREMENT-RECURSION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
+      "depends_on": [
+        "E3-B-DYADIC-SHORT-STEP-LOCALIZATION"
+      ],
+      "statement": "Starting from Q13's dyadic backward density increment a_m>alpha_j+c*beta^4 with n-m=O(log(1/beta)), prove that near-extremal/gluing hypotheses recur across controlled dyadic scales strongly enough to force a beta^(1+theta)N gluing deficit for some theta<1, or prove this recursion route cannot reach that exponent.",
+      "attack_lanes": [
+        "derive a controlled recursive contradiction if the low-order arm persists",
+        "quantify how fibre deficit affects alpha_j versus a_n before each backward increment",
+        "combine monotonicity of a_n with repeated O(log(1/beta))-lag increments",
+        "prove a no-go exponent for any recursion based only on order-beta^4 increments"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current low-order residual; open."
     }
   ],
   "closed_claims": [
