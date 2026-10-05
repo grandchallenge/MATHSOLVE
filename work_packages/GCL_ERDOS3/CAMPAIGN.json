@@ -52,12 +52,13 @@
     "E3-Q03": "PROVED_NATIVE_ALL_FIBRE_U3_FORCING",
     "E3-Q04": "PROVED_NATIVE_JOINT_WITNESS_DICHOTOMY",
     "E3-Q05": "PROVED_NATIVE_PARSEVAL_AMPLIFICATION_REQUIREMENT",
-    "E3-Q06": "PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION"
+    "E3-Q06": "PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION",
+    "E3-Q07": "PROVED_NATIVE_FINITE_PHASE_ALGEBRA_INSUFFICIENT"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Reissue E3-V03 under fresh marker-clock lease epoch 5, retaining replay_budget_ordinal=1. Native work continues on E3-B-LINEAR-WITNESS-AMPLIFICATION and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT.",
+  "next_action": "Reissue E3-V03 under fresh marker-clock lease epoch 5, retaining replay_budget_ordinal=1. In parallel attack E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -263,5 +264,12 @@
     "disposition": "PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION",
     "path": "work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md",
     "effect": "The Q04 fourfold branch yields a positive-density family of joint derivative spectral overlaps; the fourfold residual becomes derivative-frequency coherence versus spectral diffuseness."
+  },
+  "tranche_04_extension_q07": {
+    "result": "E3-Q07",
+    "disposition": "PROVED_NATIVE_FINITE_PHASE_ALGEBRA_INSUFFICIENT",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md",
+    "replay_tool": "work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py",
+    "effect": "The 10-family one-scale linear witness phase system is exactly surjective: a displayed 10x10 minor has determinant -3. Finite support-plus-phase consistency is insufficient; the linear residual becomes actual Fourier realizability or genuine witness amplification."
   }
 }
