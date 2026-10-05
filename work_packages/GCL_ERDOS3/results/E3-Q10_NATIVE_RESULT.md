@@ -152,7 +152,7 @@ Applying the theorem to both (F_{15}) and (F_{16}), one obtains the exact dichot
 
 > Either at least one of the two all-distinct L01 families supplies a genuinely joint de-windowed correlation involving at least two distinct physical fibres at scale (delta_eta), or both families supply a singleton positional-discrepancy witness against their respective deterministic carry-marginal kernels.
 
-The two singleton kernels come from genuinely different carry geometries:
+The two singleton witnesses arise from different labelled carry representations, although the next section proves that their physical-coordinate kernels are exactly equivalent:
 
 - (F_{15}) uses carry (0123), so
   [
@@ -166,6 +166,61 @@ The two singleton kernels come from genuinely different carry geometries:
   ]
 
 Thus the remaining de-windowed problem splits into a finite deterministic positional-discrepancy lane and a genuinely joint multi-fibre correlation lane.
+
+## Exact singleton-kernel equivalence for F15 and F16
+
+The two carry families have different labelled windows, but after pulling them back to the common physical coordinate (uin[0,N-1]), their singleton kernels are exactly the same.
+
+For (F_{16}), all four windows are ([0,N-1]). If the singleton factor is at physical position (j), then
+[
+K^{16}_j(u)
+=
+mathbb E_{din G}
+prod_{t
+e j}
+1_{[0,N-1]}igl(u+(t-j)digr).
+]
+
+For (F_{15}), the (j)-th labelled window is (jN+[0,N-1]). Write
+[
+y=jN+u.
+]
+Then
+[
+K^{15}_j(jN+u)
+=
+mathbb E_{din G}
+prod_{t
+e j}
+1_{tN+[0,N-1]}igl(jN+u+(t-j)digr).
+]
+
+Make the bijective change of variable
+[
+d=N+s
+]
+in (G). The (t)-th condition becomes
+[
+jN+u+(t-j)(N+s)
+=
+tN+igl(u+(t-j)sigr)
+in
+tN+[0,N-1],
+]
+which is equivalent to
+[
+u+(t-j)sin[0,N-1].
+]
+
+Therefore, exactly,
+[
+oxed{
+K^{15}_j(jN+u)=K^{16}_j(u)
+}
+]
+for every (j) and (u).
+
+So the two all-distinct families do **not** amplify the singleton lane by furnishing two independent positional kernels. Any amplification must come from repeated locations/scales, internal AP-free constraints, or the genuinely joint Alternative B.
 
 ## Proof
 
@@ -304,6 +359,8 @@ Thus a successful continuation may attack exactly two smaller objects:
 
 1. **positional discrepancy amplification:** show that a near-extremal internally 4-AP-free fibre cannot support the required large (K_{F,j})-correlation across the relevant carry families without paying the desired deficit; or
 2. **joint de-windowed witness alignment:** exploit the genuinely multi-fibre large correlation from Alternative B to obtain aligned derivative-frequency/quadratic witnesses and a deletion cost.
+
+Because the F15/F16 singleton kernels coincide after physical pullback, comparing those two families alone cannot create a singleton-kernel incompatibility.
 
 ## Claim boundary
 
