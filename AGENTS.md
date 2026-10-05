@@ -1,5 +1,11 @@
 # Agent instructions
 
+If you are an external or zero-context agent and do not already hold a bounded
+assignment, read [`WORKERS.md`](WORKERS.md) before doing anything else.
+That file is the stable discovery/bootstrap entrypoint for the public GCL Worker
+Queue. If you already hold a specific immutable launch artifact, follow that
+artifact instead.
+
 MATHSOLVE coordinates bounded mathematical work packages. It does not certify
 claims. Under `GCL-AGENT-STAFFING-001` version `1.0.0`, one Codex system may
 implement, staff distinct non-reserved logical audit passes, merge through
