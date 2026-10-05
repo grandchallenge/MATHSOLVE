@@ -66,7 +66,7 @@
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Receive the single E3-V03 RESULT/1 on issue 887 under marker-clock lease epoch 5; capture exactly and adjudicate. In parallel attack E3-B-DENSITY-INCREMENT-AMPLIFICATION and E3-B-CARRY-KERNEL-SPECTRAL-INCOMPATIBILITY using Q15's sharpened constants. Only VERIFIED may activate E3-Q4-GLUING-RADIUS.",
+  "next_action": "Receive the single E3-V03 RESULT/1 on issue 887 under marker-clock lease epoch 5; capture exactly and adjudicate. In parallel attack E3-B-DENSITY-INCREMENT-AMPLIFICATION, E3-B-PRIME-ALIGNED-WITNESS-AMPLIFICATION, and E3-B-CENTERED-CARRY-KERNEL-INCOMPATIBILITY. Only VERIFIED may activate E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -336,12 +336,12 @@
     "result": "E3-Q14",
     "disposition": "PROVED_NATIVE_CARRY_KERNEL_FOURIER_REPRESENTATION",
     "path": "work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md",
-    "effect": "Every Q12 localized multi-fluctuation term has an exact Fourier convolution representation weighted by the two-dimensional spectrum of the exact D01 carry-cell kernel; family identity is preserved."
+    "effect": "Prime-lifted exact representation: every localized term splits into an unrestricted aligned prime-group component plus a family-specific centered carry-kernel remainder; one/two-factor localized terms are entirely centered-kernel-specific."
   },
   "tranche_04_extension_q15": {
     "result": "E3-Q15",
     "disposition": "PROVED_NATIVE_CORE_CARRY_CELL_CARDINALITIES",
     "path": "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md",
-    "effect": "Exact dyadic cardinalities for all eight D01 carry cells sharpen the core localized witness to 7*beta^4/1280, the singleton density increment to 7*beta^4/2560, and give at least 63/1024 nonzero Fourier energy in every core carry kernel for N>=16."
+    "effect": "Exact dyadic cardinalities sharpen the core localized witness to 7*beta^4/1280 and the singleton density increment to 7*beta^4/2560. Nonzero kernel energy is at least 63/1024 in native Z_N^2 normalization and 63/262144 in the prime-lifted Q14 normalization."
   }
 }
