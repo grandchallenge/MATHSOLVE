@@ -112,10 +112,22 @@ def validate(root=ROOT):
         errors.append('derivative spectral alignment successor drift')
     if rows.get('E3-B-DEWINDOWED-U3-FORCING',{}).get('status')!='PROVED_NATIVE':
         errors.append('de-windowed U3 forcing state drift')
-    if rows.get('E3-B-DEWINDOWED-JOINT-WITNESS',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
-        errors.append('de-windowed joint witness residual state drift')
+    if rows.get('E3-B-DEWINDOWED-JOINT-WITNESS',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
+        errors.append('de-windowed joint witness reduced state drift')
     if rows.get('E3-B-DEWINDOWED-JOINT-WITNESS',{}).get('parent')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
         errors.append('de-windowed joint witness parent drift')
+    if set(rows.get('E3-B-DEWINDOWED-JOINT-WITNESS',{}).get('successors',[]))!={'E3-B-CARRY-WINDOW-DISCREPANCY','E3-B-DEWINDOWED-HIGHORDER-ALIGNMENT'}:
+        errors.append('de-windowed joint witness successor split drift')
+    if rows.get('E3-B-DEWINDOWED-CORRELATION-DICHOTOMY',{}).get('status')!='PROVED_NATIVE':
+        errors.append('de-windowed correlation dichotomy state drift')
+    if rows.get('E3-B-CARRY-WINDOW-DISCREPANCY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('carry-window discrepancy residual state drift')
+    if rows.get('E3-B-CARRY-WINDOW-DISCREPANCY',{}).get('parent')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
+        errors.append('carry-window discrepancy parent drift')
+    if rows.get('E3-B-DEWINDOWED-HIGHORDER-ALIGNMENT',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('de-windowed high-order alignment residual state drift')
+    if rows.get('E3-B-DEWINDOWED-HIGHORDER-ALIGNMENT',{}).get('parent')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
+        errors.append('de-windowed high-order alignment parent drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
         errors.append('joint-witness native residual state drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('parent')!='E3-B-FOUR-FIBRE-DEFICIT':
@@ -200,6 +212,8 @@ def validate(root=ROOT):
         errors.append('E3-Q08 native campaign result drift')
     if campaign.get('work_package_results',{}).get('E3-Q09')!='PROVED_NATIVE_DEWINDOWED_U3_FORCING':
         errors.append('E3-Q09 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q10')!='PROVED_NATIVE_DEWINDOWED_CORRELATION_DICHOTOMY':
+        errors.append('E3-Q10 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
@@ -223,6 +237,9 @@ def validate(root=ROOT):
     extq09=campaign.get('tranche_04_extension_q09',{})
     if extq09.get('result')!='E3-Q09' or extq09.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md':
         errors.append('E3-Q09 campaign extension binding drift')
+    extq10=campaign.get('tranche_04_extension_q10',{})
+    if extq10.get('result')!='E3-Q10' or extq10.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md':
+        errors.append('E3-Q10 campaign extension binding drift')
     if campaign.get('dispatch_state')!='VERIFY_DISPATCHED__AWAITING_RETURN':
         errors.append('E3-V03 dispatch state drift')
     if campaign.get('synthesis_allowed') is not False:
@@ -605,6 +622,7 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q08_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py',
         'work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py',
         'work_packages/GCL_ERDOS3/LEASE_POLICY.json',
@@ -744,5 +762,5 @@ def validate(root=ROOT):
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    if not e: print('PASS: GCL-ERDOS3 Q09 remains protected; V03 epoch 5 is exact-bound at issue 887 with replay ordinal 1 while native AP-free interval and de-windowed joint-witness lanes continue')
+    if not e: print('PASS: GCL-ERDOS3 Q10 splits de-windowed cancellation into carry-window discrepancy versus all-fibre high-order structure; V03 epoch 5 remains exact-bound at issue 887 with replay ordinal 1')
     raise SystemExit(bool(e))
