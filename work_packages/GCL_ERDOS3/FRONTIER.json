@@ -450,7 +450,7 @@
       ],
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
-        "E3-B-LINEAR-WITNESS-AMPLIFICATION: amplify Q04 aligned Fourier modes or exploit coefficient phases/harmonic relations",
+        "E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION: exploit actual near-extremal indicator realizability or force genuinely many location/scale witnesses",
         "E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT: make Q06 derivative overlaps coherent or convert diffuseness to deletion",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
@@ -473,9 +473,10 @@
       ],
       "reduced_by": [
         "E3-Q05",
-        "E3-Q06"
+        "E3-Q06",
+        "E3-Q07"
       ],
-      "reduction_note": "Q05 proves one-scale Parseval counting is insufficient in the linear branch; Q06 converts the joint-fourfold branch into a positive-density family of derivative spectral overlaps before any independent inverse-theorem witness selection."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 also closes abstract one-scale phase algebra in the linear branch; Q06 converts the fourfold branch into positive-density derivative spectral overlaps. Remaining force must come from actual indicator realizability, genuine witness amplification, derivative coherence/diffuseness, or motif amplification."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -507,7 +508,7 @@
     {
       "id": "E3-B-LINEAR-WITNESS-AMPLIFICATION",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
       "depends_on": [
         "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -521,7 +522,10 @@
         "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md"
       ],
-      "claim_boundary": "Linear branch sub-residual only; open."
+      "claim_boundary": "Reduced linear-branch residual; finite support and phase algebra are proved insufficient.",
+      "reduced_by": "E3-Q07",
+      "successor": "E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION",
+      "reduction_note": "Q07 proves that one selected Q04 triple equation for every family in the 10-family L01 core has no abstract one-scale phase inconsistency: the exact 10x12 phase map is surjective. Support counting and finite phase algebra are both insufficient."
     },
     {
       "id": "E3-B-DERIVATIVE-OVERLAP-AMPLIFICATION",
@@ -552,6 +556,46 @@
         "work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md"
       ],
       "claim_boundary": "Fourfold-branch sub-residual only; open."
+    },
+    {
+      "id": "E3-B-LINEAR-PHASE-COMPATIBILITY",
+      "kind": "NATIVE_NO_GO_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY",
+        "E3-B-LINEAR-WITNESS-PARSEVAL-BOUND"
+      ],
+      "statement": "For the exact 10-family L01 core, there is a choice of one Q04 triple witness per family for which the affine phase-equation map from the 12 physical-fibre harmonic phases theta_{j,k}, j=0..3 and k=1,2,3, onto the 10 family phases is surjective. An explicit 10x10 minor has determinant -3. Therefore arbitrary carry-translation phase offsets and prescribed triple-product phases can be satisfied simultaneously at this abstract one-scale level.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md",
+      "replay_tool": "work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py",
+      "claim_boundary": "Proof-strategy no-go only. It does not construct actual fibre indicators or a counterexample to the four-fibre deficit theorem."
+    },
+    {
+      "id": "E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY",
+        "E3-B-LINEAR-WITNESS-PARSEVAL-BOUND",
+        "E3-B-LINEAR-PHASE-COMPATIBILITY"
+      ],
+      "statement": "Starting from Q04/Q05/Q07, prove that actual near-extremal locally 4-AP-free fibre indicators cannot realize the abstract finite harmonic support-and-phase data allowed by Q07, or prove that the carry system/scale recursion forces sufficiently many additional independent witnesses to yield the required c*beta^(1+theta)*N deletion cost for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md"
+      ],
+      "attack_lanes": [
+        "positive-definite / indicator realizability constraints on the finite harmonic data",
+        "near-extremal local 4-AP-freeness restrictions on r,2r,3r spectra and phases",
+        "multi-location or multi-scale amplification producing more independent witnesses than Q05 Parseval capacity permits"
+      ],
+      "claim_boundary": "Smallest current linear-branch residual; open and unproved."
     }
   ],
   "closed_claims": [
@@ -607,6 +651,6 @@
     "objective": "Reissue the same independent G01 bridge verification under marker-clock lease epoch 5 without consuming a second mathematical replay.",
     "replay_budget_ordinal": 1,
     "active_frontier_effect": "NONE",
-    "native_work": "E3-B-LINEAR-WITNESS-AMPLIFICATION and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT remain active native lanes."
+    "native_work": "E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT remain active native lanes."
   }
 }
