@@ -360,7 +360,7 @@
     {
       "id": "E3-V-B03",
       "kind": "VERIFICATION",
-      "status": "LEASE_EXPIRED__REISSUE_REQUIRED",
+      "status": "LAUNCHED",
       "depends_on": [
         "E3-B-GLUING-RADIUS-EQUIV"
       ],
@@ -381,6 +381,24 @@
         "lease_started_at_observed": "2026-10-04T16:13:54Z",
         "lease_expires_at_observed": "2026-10-04T16:38:54Z",
         "clock_model": "GITHUB_ACTIVATION_COMMENT"
+      },
+      "dispatch": {
+        "dispatch_id": "GCL-ERDOS3-E3-V03-IA-005",
+        "assignment_id": "E3-V03",
+        "agent_ref": "INDEPENDENT-AGENT-E3-V03-005",
+        "issue_number": 887,
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/887",
+        "task_commit": "eb94ed1df6c3743fc8a186dcc423ce372fb512c8",
+        "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
+        "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01",
+        "lease_epoch": 5,
+        "lease_attempt_ordinal": 5,
+        "lease_clock_source": "GITHUB_ACTIVATION_COMMENT",
+        "lease_duration_minutes": 25,
+        "agent_max_execution_minutes": 24,
+        "replay_budget_ordinal": 1,
+        "state": "DISPATCHED__AWAITING_RETURN",
+        "external_sources": "PROTECTED_PACKET_ONLY"
       }
     },
     {
@@ -737,8 +755,8 @@
   },
   "next_tranche": {
     "id": "E3-V03-REISSUE-EPOCH-5",
-    "status": "LEASE_REQUIRED__NATIVE_WORK_CONTINUES",
-    "objective": "Reissue the same independent G01 bridge verification under marker-clock lease epoch 5 without consuming a second mathematical replay.",
+    "status": "LEASE_STAGED__PROTECTED_ACTIVATION_PENDING",
+    "objective": "Activate the same independent G01 bridge verification under marker-clock lease epoch 5 without consuming a second mathematical replay.",
     "replay_budget_ordinal": 1,
     "active_frontier_effect": "NONE",
     "native_work": "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION and E3-B-DEWINDOWED-JOINT-WITNESS remain active native lanes."
