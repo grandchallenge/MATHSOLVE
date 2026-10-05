@@ -787,7 +787,12 @@
       "evidence_basis": [
         "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md"
       ],
-      "claim_boundary": "Native localized reduction only; no deletion bound or localized inverse theorem."
+      "claim_boundary": "Native localized reduction only; no deletion bound or localized inverse theorem.",
+      "quantitative_strengthening": {
+        "by": "E3-Q15",
+        "localized_term_lower_bound": "7*beta^4/1280",
+        "previous_bound": "beta^4/3840"
+      }
     },
     {
       "id": "E3-B-CARRY-LOCALIZED-GEOMETRY-OR-MULTICORRELATION",
@@ -824,7 +829,12 @@
       "evidence_basis": [
         "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md"
       ],
-      "claim_boundary": "Density-increment conversion only; no contradiction with near-extremality or dyadic recurrence yet."
+      "claim_boundary": "Density-increment conversion only; no contradiction with near-extremality or dyadic recurrence yet.",
+      "quantitative_strengthening": {
+        "by": "E3-Q15",
+        "interval_relative_length_lower_bound": "7*beta^4/2560",
+        "density_increment_lower_bound": "7*beta^4/2560"
+      }
     },
     {
       "id": "E3-B-DENSITY-INCREMENT-OR-LOCALIZED-MULTICORRELATION",
@@ -891,12 +901,28 @@
         "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
       ],
       "attack_lanes": [
+        "locate the Q15 nonzero kernel spectral energy relative to the linear forms sampled by Q14",
         "compute exact/quantitative spectral geometry of core carry kernels 0000,0001,0011,0111,0112,0123",
-        "bound kernel mass away from the unrestricted delta constraints",
         "couple kernel-supported frequency tuples across mandatory/core families",
         "combine with AP-free near-extremizer spectral constraints"
       ],
-      "claim_boundary": "Localized multi-correlation branch only; open."
+      "claim_boundary": "Localized multi-correlation branch only; open.",
+      "known_kernel_energy": {
+        "by": "E3-Q15",
+        "nonzero_l2_energy_lower_bound": "63/1024",
+        "scope": "every L01 core carry, N>=16"
+      }
+    },
+    {
+      "id": "E3-B-CORE-CARRY-CARDINALITIES",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "statement": "For dyadic N, the eight D01 carry cells have exact cardinalities: 0000=(N^2+3N+2)/6, 0123=(N^2-3N+2)/6, four 1/12-type cells=(N^2-4)/12, and two 1/6-type cells=(N^2+2)/6. Every L01 core cell has density at least 21/256 for N>=16.",
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Exact finite cardinality/kernel-energy theorem only."
     }
   ],
   "closed_claims": [
