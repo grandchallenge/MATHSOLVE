@@ -468,7 +468,8 @@
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
-        "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT: amplify explicit low-order carry kernels or align all-four intrinsic de-windowed U3 structure",
+        "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION: amplify Q11's positive step<=3 density increment beyond exponent 4",
+        "E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT: align the all-four intrinsic de-windowed U3 structures from Q10",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -494,9 +495,10 @@
         "E3-Q07",
         "E3-Q08",
         "E3-Q09",
-        "E3-Q10"
+        "E3-Q10",
+        "E3-Q11"
       ],
-      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes deterministic interval-window structure; Q10 sharpens the de-windowed lane to explicit low-order carry kernels versus all-four intrinsic U3 structure."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts every low-order kernel witness into a positive short-step density increment of order beta^4."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -723,7 +725,7 @@
     {
       "id": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
       "depends_on": [
         "E3-B-DEWINDOWED-ORDER-DICHOTOMY",
@@ -744,7 +746,72 @@
         "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md"
       ],
-      "claim_boundary": "Smallest current de-windowed quadratic residual; open."
+      "claim_boundary": "Smallest current de-windowed quadratic residual; open.",
+      "reduced_by": "E3-Q11",
+      "successors": [
+        "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
+        "E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT"
+      ],
+      "reduction_note": "Q11 converts every low-order Q10 carry-kernel witness into a positive density increment on an actual subprogression of step at most 3. The remaining arms are amplification of that order-beta^4 density increment, or alignment of the all-four intrinsic de-windowed U3 structures."
+    },
+    {
+      "id": "E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "statement": "Any singleton or pair carry-kernel witness from Q10 yields a physical fibre and an arithmetic-progression segment J of common difference q in {1,2,3} with |B_j∩J|-alpha_j|J| > 10*beta^4/(15*16^4)*N, hence local 4-AP-free density exceeding alpha_j by at least that order-beta^4 amount.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md",
+      "sufficient_for": [
+        "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION"
+      ],
+      "claim_boundary": "Native low-order-arm reduction only; exponent 4 is insufficient for the parent target."
+    },
+    {
+      "id": "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "depends_on": [
+        "E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT"
+      ],
+      "statement": "Starting from Q11's positive density increment of order beta^4 on a step-1/2/3 subprogression, use near-extremality, scale control, or repeated recursion to force a gluing deficit of order beta^(1+theta)N for some theta<1, or prove this arm cannot achieve the required exponent.",
+      "attack_lanes": [
+        "control the subprogression length M relative to N",
+        "iterate short-step density increments while preserving near-extremality",
+        "convert arbitrary M to dyadic scale without fixed-factor density loss",
+        "derive an impossibility/no-go for exponent improvement from this arm"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Open; Q11 provides only an order-beta^4 increment."
+    },
+    {
+      "id": "E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "depends_on": [
+        "E3-B-DEWINDOWED-ORDER-DICHOTOMY",
+        "E3-B-DEWINDOWED-U3-FORCING"
+      ],
+      "statement": "In Q10's high-order-only arm, all four physical fibres have intrinsic de-windowed U3 mass. Align derivative-frequency or quadratic witnesses across the adjacent carry chain strongly enough to force c*beta^(1+theta)N deletions for some theta<1.",
+      "attack_lanes": [
+        "de-windowed derivative overlap across adjacent pairs",
+        "joint quadratic factor extraction retaining physical-fibre identity",
+        "phase/rank incompatibility across the three adjacent 0011 families"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Open high-order arm."
     }
   ],
   "closed_claims": [
