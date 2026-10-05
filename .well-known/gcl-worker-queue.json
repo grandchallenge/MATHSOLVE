@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "protocol": "GCL-WORKER-QUEUE/1",
+  "purpose": "Zero-context discovery and pickup of bounded GCL worker assignments.",
+  "repository": "grandchallenge/MATHSOLVE",
+  "instructions_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/WORKERS.md",
+  "instructions_raw_url": "https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/WORKERS.md",
+  "project": {
+    "organization": "grandchallenge",
+    "number": 2,
+    "url": "https://github.com/orgs/grandchallenge/projects/2",
+    "available_view": "AVAILABLE"
+  },
+  "fallback": {
+    "issue_query": "is:issue is:open label:gcl-job label:gcl-state:available",
+    "issue_query_url": "https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22"
+  },
+  "commands": {
+    "claim": "/claim",
+    "release": "/release"
+  },
+  "controller_response_protocol": "GCL-WORKER-RESERVATION/1",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "full_protocol_path": "handoffs/GCL-WORKER-QUEUE.md",
+  "queue_registry_path": ".gcl/worker_queue/JOBS.json",
+  "project_binding_path": ".gcl/worker_queue/PROJECT.json",
+  "requirements": {
+    "authenticated_github_comment_identity": true,
+    "result_actor_must_match_active_reservation_owner": true
+  },
+  "authority": {
+    "project_is_execution_authority": false,
+    "issue_fields_are_execution_authority": false,
+    "reservation_is_execution_authority": false,
+    "mathematical_effect": false,
+    "certification_effect": false
+  }
+}
