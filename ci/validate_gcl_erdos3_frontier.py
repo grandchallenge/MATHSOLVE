@@ -134,10 +134,18 @@ def validate(root=ROOT):
         errors.append('carry-localized joint witness successor drift')
     if rows.get('E3-B-CARRY-LOCALIZED-CANCELLATION',{}).get('status')!='PROVED_NATIVE':
         errors.append('carry-localized cancellation state drift')
-    if rows.get('E3-B-CARRY-LOCALIZED-GEOMETRY-OR-MULTICORRELATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
-        errors.append('carry-localized geometry/multicorrelation residual state drift')
+    if rows.get('E3-B-CARRY-LOCALIZED-GEOMETRY-OR-MULTICORRELATION',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
+        errors.append('carry-localized geometry/multicorrelation reduced state drift')
     if rows.get('E3-B-CARRY-LOCALIZED-GEOMETRY-OR-MULTICORRELATION',{}).get('parent')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
         errors.append('carry-localized geometry/multicorrelation parent drift')
+    if rows.get('E3-B-CARRY-LOCALIZED-GEOMETRY-OR-MULTICORRELATION',{}).get('successor')!='E3-B-DENSITY-INCREMENT-OR-LOCALIZED-MULTICORRELATION':
+        errors.append('carry-localized geometry/multicorrelation successor drift')
+    if rows.get('E3-B-CARRY-GEOMETRY-DENSITY-INCREMENT',{}).get('status')!='PROVED_NATIVE':
+        errors.append('carry geometry density-increment state drift')
+    if rows.get('E3-B-DENSITY-INCREMENT-OR-LOCALIZED-MULTICORRELATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('density-increment/localized-multicorrelation residual state drift')
+    if rows.get('E3-B-DENSITY-INCREMENT-OR-LOCALIZED-MULTICORRELATION',{}).get('parent')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
+        errors.append('density-increment/localized-multicorrelation parent drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
         errors.append('joint-witness native residual state drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('parent')!='E3-B-FOUR-FIBRE-DEFICIT':
@@ -228,6 +236,8 @@ def validate(root=ROOT):
         errors.append('E3-Q11 native campaign result drift')
     if campaign.get('work_package_results',{}).get('E3-Q12')!='PROVED_NATIVE_CARRY_LOCALIZED_CANCELLATION':
         errors.append('E3-Q12 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q13')!='PROVED_NATIVE_CARRY_GEOMETRY_DENSITY_INCREMENT':
+        errors.append('E3-Q13 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
@@ -260,6 +270,9 @@ def validate(root=ROOT):
     extq12=campaign.get('tranche_04_extension_q12',{})
     if extq12.get('result')!='E3-Q12' or extq12.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md':
         errors.append('E3-Q12 campaign extension binding drift')
+    extq13=campaign.get('tranche_04_extension_q13',{})
+    if extq13.get('result')!='E3-Q13' or extq13.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md':
+        errors.append('E3-Q13 campaign extension binding drift')
     if campaign.get('dispatch_state')!='VERIFY_DISPATCHED__AWAITING_RETURN':
         errors.append('E3-V03 dispatch state drift')
     if campaign.get('synthesis_allowed') is not False:
@@ -645,6 +658,7 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py',
         'work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py',
         'work_packages/GCL_ERDOS3/LEASE_POLICY.json',
