@@ -7,8 +7,7 @@ on:
 
 permissions:
   contents: write
-  issues: write
-  pull-requests: write
+  issues: read
 
 concurrency:
   group: gcl-erdos3-lease-reaper
@@ -18,6 +17,13 @@ jobs:
   reap:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
+    outputs:
+      changed: ${{ steps.reap.outputs.changed }}
+      branch: ${{ steps.stage.outputs.branch }}
+      dispatch: ${{ steps.reap.outputs.dispatch_id }}
+      issue: ${{ steps.reap.outputs.issue_number }}
+      epoch: ${{ steps.reap.outputs.lease_epoch }}
+      expires: ${{ steps.reap.outputs.lease_expires_at }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -72,16 +78,16 @@ jobs:
                   print(f"{k}={r.get(k,'')}",file=f)
           PY
 
-      - name: Open protected expiry reconciliation
+      - name: Create protected expiry reconciliation branch
         if: steps.reap.outputs.changed == 'true'
+        id: stage
         env:
-          GH_TOKEN: ${{ github.token }}
           DISPATCH: ${{ steps.reap.outputs.dispatch_id }}
-          ISSUE: ${{ steps.reap.outputs.issue_number }}
           EPOCH: ${{ steps.reap.outputs.lease_epoch }}
-          EXPIRES: ${{ steps.reap.outputs.lease_expires_at }}
         run: |
+          set -euo pipefail
           branch="maintenance/gcl-erdos3-lease-expiry-${DISPATCH,,}-e$EPOCH"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
           if git ls-remote --exit-code origin "refs/heads/$branch" >/dev/null 2>&1; then
             echo "Expiry reconciliation branch already exists: $branch"
             exit 0
@@ -95,7 +101,48 @@ jobs:
             "work_packages/GCL_ERDOS3/dispatches/$DISPATCH.json"
           git commit -m "GCL-ERDOS3: expire silent lease $DISPATCH"
           git push origin "$branch"
-          cat > "$RUNNER_TEMP/pr-body.md" <<EOF
+
+      - name: Record no-op
+        if: steps.probe.outputs.issue == '' || steps.reap.outputs.changed != 'true'
+        run: echo "No expired silent GCL-ERDOS3 lease requires reconciliation."
+
+  protect-reconciliation:
+    needs: reap
+    if: needs.reap.outputs.changed == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    environment: release-trust
+    permissions:
+      contents: read
+    steps:
+      - name: Mint bounded MATHSOLVE reconciliation token
+        id: release-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
+        with:
+          app-id: ${{ secrets.GCL_RELEASE_TRUST_APP_ID }}
+          private-key: ${{ secrets.GCL_RELEASE_TRUST_PRIVATE_KEY }}
+          owner: grandchallenge
+          repositories: MATHSOLVE
+          permission-contents: read
+          permission-pull-requests: write
+          permission-issues: write
+
+      - name: Open or reuse ordinary reconciliation PR
+        id: pr
+        env:
+          GH_TOKEN: ${{ steps.release-token.outputs.token }}
+          BRANCH: ${{ needs.reap.outputs.branch }}
+          DISPATCH: ${{ needs.reap.outputs.dispatch }}
+          ISSUE: ${{ needs.reap.outputs.issue }}
+          EPOCH: ${{ needs.reap.outputs.epoch }}
+          EXPIRES: ${{ needs.reap.outputs.expires }}
+        run: |
+          set -euo pipefail
+          existing="$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=open&head=grandchallenge:$BRANCH&base=main&per_page=10" --jq '.[0].html_url // empty')"
+          if [ -n "$existing" ]; then
+            pr_url="$existing"
+          else
+            cat > "$RUNNER_TEMP/pr-body.md" <<EOF
           Automated bounded lease-expiry reconciliation for `$DISPATCH`.
 
           - lease epoch: `$EPOCH`
@@ -107,9 +154,29 @@ jobs:
 
           This PR only reconciles protected lifecycle state with an already-expired lease. Protected CI owns merge eligibility.
           EOF
-          pr_url="$(gh pr create --base main --head "$branch" --title "GCL-ERDOS3: expire silent lease $DISPATCH" --body-file "$RUNNER_TEMP/pr-body.md")"
-          gh issue close "$ISSUE" --reason completed --comment "LEASE EXPIRED — NO RETURN. The protected 25-minute lease expired at `$EXPIRES`. Late results are fenced by intake. Durable lifecycle reconciliation: $pr_url"
+            pr_url="$(gh api --method POST "repos/$GITHUB_REPOSITORY/pulls" \
+              -f title="GCL-ERDOS3: expire silent lease $DISPATCH" \
+              -f head="$BRANCH" \
+              -f base="main" \
+              -F body=@"$RUNNER_TEMP/pr-body.md" \
+              --jq '.html_url')"
+          fi
+          echo "url=$pr_url" >> "$GITHUB_OUTPUT"
 
-      - name: Record no-op
-        if: steps.probe.outputs.issue == '' || steps.reap.outputs.changed != 'true'
-        run: echo "No expired silent GCL-ERDOS3 lease requires reconciliation."
+      - name: Fence expired issue exactly once
+        env:
+          GH_TOKEN: ${{ steps.release-token.outputs.token }}
+          ISSUE: ${{ needs.reap.outputs.issue }}
+          EXPIRES: ${{ needs.reap.outputs.expires }}
+          PR_URL: ${{ steps.pr.outputs.url }}
+        run: |
+          set -euo pipefail
+          state="$(gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE" --jq '.state')"
+          if [ "$state" = "open" ]; then
+            gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" \
+              -f body="LEASE EXPIRED — NO RETURN. The protected 25-minute lease expired at `$EXPIRES`. Late results are fenced by intake. Durable lifecycle reconciliation: $PR_URL" >/dev/null
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/issues/$ISSUE" \
+              -f state=closed -f state_reason=completed >/dev/null
+          else
+            echo "Issue $ISSUE already closed; no duplicate expiry comment emitted."
+          fi
