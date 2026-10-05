@@ -61,8 +61,9 @@ def validate() -> list[str]:
             errors.append(f"WORKERS.md missing {needle!r}")
 
     agents = AGENTS.read_text(encoding="utf-8")
-    if "WORKERS.md" not in agents or "do not already hold a bounded assignment" not in agents:
-        errors.append("AGENTS.md does not expose zero-context worker bootstrap")
+    for needle in ("WORKERS.md", "external or zero-context agent", "immutable launch artifact"):
+        if needle not in agents:
+            errors.append(f"AGENTS.md missing worker bootstrap anchor: {needle}")
 
     readme = README.read_text(encoding="utf-8")
     if "WORKERS.md" not in readme or "GCL Worker Queue" not in readme:
