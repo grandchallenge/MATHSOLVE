@@ -218,6 +218,8 @@ def validate(root=ROOT):
         errors.append('E3-Q08 native campaign result drift')
     if campaign.get('work_package_results',{}).get('E3-Q09')!='PROVED_NATIVE_DEWINDOWED_U3_FORCING':
         errors.append('E3-Q09 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q10')!='PROVED_NATIVE_DEWINDOWED_CORRELATION_DICHOTOMY':
+        errors.append('E3-Q10 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
@@ -241,6 +243,9 @@ def validate(root=ROOT):
     extq09=campaign.get('tranche_04_extension_q09',{})
     if extq09.get('result')!='E3-Q09' or extq09.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md':
         errors.append('E3-Q09 campaign extension binding drift')
+    extq10=campaign.get('tranche_04_extension_q10',{})
+    if extq10.get('result')!='E3-Q10' or extq10.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md':
+        errors.append('E3-Q10 campaign extension binding drift')
     expected_dispatch_state='VERIFY_LEASE_EXPIRED__REISSUE_REQUIRED' if v03_epoch5_expired else 'VERIFY_DISPATCHED__AWAITING_RETURN'
     if campaign.get('dispatch_state')!=expected_dispatch_state:
         errors.append('E3-V03 dispatch state drift')
@@ -646,6 +651,7 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q08_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py',
         'work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py',
         'work_packages/GCL_ERDOS3/LEASE_POLICY.json',
@@ -753,6 +759,9 @@ def validate(root=ROOT):
             errors.append('GCL-ERDOS3 lease reaper bypasses bounded Release Trust for PR creation')
         if 'gh pr merge' in rw or 'canonical_claim_effect: true' in rw.lower():
             errors.append('GCL-ERDOS3 lease reaper gained unauthorized promotion/merge authority')
+    q10_path=root/'work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md'
+    if not q10_path.is_file() or blob(q10_path)!='5ad6e89d20000f24666bc118594b1b1b31430635':
+        errors.append('E3-Q10 protected native result blob drift')
     ci_workflow=root/'.github/workflows/ci.yml'
     if ci_workflow.is_file():
         ci_text=ci_workflow.read_text()
