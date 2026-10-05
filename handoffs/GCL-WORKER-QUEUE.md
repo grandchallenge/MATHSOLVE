@@ -7,9 +7,9 @@ The protected operating policy is `GCL-WORKER-QUEUE-001` in
 
 ## Worker protocol
 
-1. Open the available-jobs issue query:
-   `https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22`
-2. Open one job.
+1. Open the public `GCL Worker Queue` Project:
+   `https://github.com/orgs/grandchallenge/projects/2`
+2. Select the `AVAILABLE` view and open one job.
 3. Post exactly `/claim`.
 4. Wait for the `GCL-WORKER-RESERVATION/1` controller comment on that issue.
 5. Open the immutable task URL in that controller comment and execute that task.
@@ -72,6 +72,12 @@ only.
 
 ## GitHub Project view
 
-A GitHub Project may be added as a richer table/board projection over the same
-issues. It is optional and cannot become an authority source. The issue query
-above is the minimum canonical human pickup surface.
+The public `GCL Worker Queue` Project is the primary worker-facing discovery
+surface. Its fields are organization-level Issue Fields, so queue metadata is
+stored on the underlying issues rather than duplicated inside the Project.
+
+The issue query remains the transport fallback:
+`https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22`
+
+Project views, Issue Fields, labels, comments, and assignees remain operational
+projections only. None can override protected dispatch or execution-lease state.

@@ -105,7 +105,7 @@ def validate() -> list[str]:
         "cancel-in-progress: false",
         "ref: main",
         "ci/gcl_worker_queue.py",
-        "Reconcile expired reservations",
+        "Reconcile reservations and Issue Fields",
     ):
         if needle not in workflow:
             errors.append(f"worker workflow missing {needle!r}")

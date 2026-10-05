@@ -81,6 +81,35 @@ jobs:
           done < "$RUNNER_TEMP/labels_remove.txt"
           gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" -F body=@"$RUNNER_TEMP/response.md" >/dev/null
 
+
+      - name: Synchronize queue Issue Fields
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          python ci/gcl_worker_queue_projection.py \
+            --mode command \
+            --result "$RUNNER_TEMP/queue-result.json" \
+            > "$RUNNER_TEMP/queue-projection.json"
+
+          if [ "$(jq -r '.queue_managed' "$RUNNER_TEMP/queue-projection.json")" != "true" ]; then
+            exit 0
+          fi
+
+          if [ "$(jq '.issue_field_values | length' "$RUNNER_TEMP/queue-projection.json")" -gt 0 ]; then
+            jq '{issue_field_values: .issue_field_values}' "$RUNNER_TEMP/queue-projection.json" > "$RUNNER_TEMP/issue-fields.json"
+            gh api --method POST \
+              "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/issue-field-values" \
+              --input "$RUNNER_TEMP/issue-fields.json" >/dev/null
+          fi
+
+          jq -r '.clear_field_ids[]?' "$RUNNER_TEMP/queue-projection.json" | while IFS= read -r field_id; do
+            [ -z "$field_id" ] && continue
+            gh api --method DELETE \
+              "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/issue-field-values/$field_id" \
+              >/dev/null 2>&1 || true
+          done
+
   reap:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
@@ -98,10 +127,17 @@ jobs:
         with:
           python-version: "3.12.13"
 
-      - name: Reconcile expired reservations
+      - name: Reconcile reservations and Issue Fields
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          job_label="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())
+          print(c["labels"]["job"])
+          PY
+          )"
           reserved="$(python - <<'PY'
           import json
           from pathlib import Path
@@ -116,28 +152,46 @@ jobs:
           print(c["labels"]["available"])
           PY
           )"
-          gh issue list --repo "$GITHUB_REPOSITORY" --state open --label "$reserved" --limit 1000 --json number > "$RUNNER_TEMP/reserved.json"
-          jq -r '.[].number' "$RUNNER_TEMP/reserved.json" | while IFS= read -r n; do
+
+          gh issue list --repo "$GITHUB_REPOSITORY" --state open --label "$job_label" --limit 1000 --json number > "$RUNNER_TEMP/jobs.json"
+
+          jq -r '.[].number' "$RUNNER_TEMP/jobs.json" | while IFS= read -r n; do
             [ -z "$n" ] && continue
-            gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$n/comments?per_page=100" | jq -s 'add' > "$RUNNER_TEMP/comments-$n.json"
-            state="$(python - "$n" "$RUNNER_TEMP/comments-$n.json" <<'PY'
-          import json, sys
-          from datetime import datetime, timezone
-          from pathlib import Path
-          from ci.gcl_worker_queue_contract import active_reservation
-          n=int(sys.argv[1])
-          comments=json.loads(Path(sys.argv[2]).read_text())
-          reg=json.loads(Path(".gcl/worker_queue/JOBS.json").read_text())
-          cfg=json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())
-          jobs=[j for j in reg["jobs"] if j["issue_number"]==n]
-          if len(jobs)!=1:
-              print("UNKNOWN")
-          else:
-              a=active_reservation(comments,jobs[0]["dispatch_id"],datetime.now(timezone.utc),set(cfg["controller_comment_actors"]))
-              print("ACTIVE" if a else "EXPIRED")
-          PY
-          )"
-            if [ "$state" = "EXPIRED" ]; then
+
+            gh api --paginate \
+              "repos/$GITHUB_REPOSITORY/issues/$n/comments?per_page=100" \
+              | jq -s 'add' > "$RUNNER_TEMP/comments-$n.json"
+
+            python ci/gcl_worker_queue_projection.py \
+              --mode reconcile \
+              --issue-number "$n" \
+              --comments "$RUNNER_TEMP/comments-$n.json" \
+              > "$RUNNER_TEMP/projection-$n.json"
+
+            if [ "$(jq -r '.queue_managed' "$RUNNER_TEMP/projection-$n.json")" != "true" ]; then
+              continue
+            fi
+
+            if [ "$(jq '.issue_field_values | length' "$RUNNER_TEMP/projection-$n.json")" -gt 0 ]; then
+              jq '{issue_field_values: .issue_field_values}' "$RUNNER_TEMP/projection-$n.json" > "$RUNNER_TEMP/issue-fields-$n.json"
+              gh api --method POST \
+                "repos/$GITHUB_REPOSITORY/issues/$n/issue-field-values" \
+                --input "$RUNNER_TEMP/issue-fields-$n.json" >/dev/null
+            fi
+
+            jq -r '.clear_field_ids[]?' "$RUNNER_TEMP/projection-$n.json" | while IFS= read -r field_id; do
+              [ -z "$field_id" ] && continue
+              gh api --method DELETE \
+                "repos/$GITHUB_REPOSITORY/issues/$n/issue-field-values/$field_id" \
+                >/dev/null 2>&1 || true
+            done
+
+            state="$(jq -r '.reservation_state // ""' "$RUNNER_TEMP/projection-$n.json")"
+            if [ "$state" = "ACTIVE" ]; then
+              gh label create "$reserved" --repo "$GITHUB_REPOSITORY" --force >/dev/null
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$reserved" >/dev/null
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$available" >/dev/null 2>&1 || true
+            elif [ "$state" = "EXPIRED" ]; then
               gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
               gh label create "$available" --repo "$GITHUB_REPOSITORY" --force >/dev/null
               gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$available" >/dev/null

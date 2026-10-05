@@ -30,10 +30,14 @@
     "role_adversarial": "gcl-role:adversarial"
   },
   "issue_query": "is:issue is:open label:gcl-job label:gcl-state:available",
-  "project_view_optional": true,
+  "project_view_optional": false,
   "reservation_is_execution_authority": false,
   "project_or_labels_are_authority": false,
   "mathematical_effect": false,
   "certification_effect": false,
-  "claim_boundary": "Operational discovery and worker reservation only. Protected dispatch/lease controls execution; RESULT/1 remains evidence; no mathematical or certification effect."
+  "claim_boundary": "Operational discovery and worker reservation only. Protected dispatch/lease controls execution; RESULT/1 remains evidence; no mathematical or certification effect.",
+  "worker_discovery_primary": "github_project",
+  "project_binding_path": ".gcl/worker_queue/PROJECT.json",
+  "project_url": "https://github.com/orgs/grandchallenge/projects/2",
+  "issue_query_fallback": "is:issue is:open label:gcl-job label:gcl-state:available"
 }

@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_WORKER_QUEUE_PROJECT_BINDING",
+  "binding_id": "GCL-WORKER-QUEUE-PROJECT-001",
+  "policy_id": "GCL-WORKER-QUEUE-001",
+  "project": {
+    "organization": "grandchallenge",
+    "number": 2,
+    "id": "PVT_kwDOB9Ao_c4Blwur",
+    "title": "GCL Worker Queue",
+    "url": "https://github.com/orgs/grandchallenge/projects/2",
+    "visibility": "PUBLIC",
+    "linked_repository": "grandchallenge/MATHSOLVE",
+    "worker_facing_primary": true,
+    "authority": false
+  },
+  "pilot": {
+    "campaign": "ERDOS-OPEN-RECON",
+    "source_registry": ".gcl/worker_queue/JOBS.json",
+    "issue_first": 842,
+    "issue_last": 865,
+    "item_count_at_binding": 24
+  },
+  "issue_fields": {
+    "state": {
+      "rest_id": 47953501,
+      "node_id": "IFSS_kgDOAtu2XQ",
+      "project_field_id": "PVTSSF_lADOB9Ao_c4BlwurzhkcWuw",
+      "options": [
+        "AVAILABLE",
+        "RESERVED",
+        "RETURNED",
+        "CLOSED",
+        "BLOCKED"
+      ]
+    },
+    "campaign": {
+      "rest_id": 47953502,
+      "node_id": "IFT_kgDOAtu2Xg",
+      "project_field_id": "PVTF_lADOB9Ao_c4BlwurzhkcWu4"
+    },
+    "role": {
+      "rest_id": 47953503,
+      "node_id": "IFSS_kgDOAtu2Xw",
+      "project_field_id": "PVTSSF_lADOB9Ao_c4BlwurzhkcWu8",
+      "options": [
+        "RECON",
+        "SOURCE",
+        "ADVERSARIAL",
+        "CONSTRUCTIVE",
+        "VERIFY",
+        "LEAD",
+        "SUPPORT",
+        "SYNTHESIS"
+      ]
+    },
+    "collaboration": {
+      "rest_id": 47953504,
+      "node_id": "IFSS_kgDOAtu2YA",
+      "project_field_id": "PVTSSF_lADOB9Ao_c4BlwurzhkcWvA",
+      "options": [
+        "BLIND",
+        "COOPERATIVE",
+        "STAGED",
+        "LEAD_SUPPORT"
+      ]
+    },
+    "phase": {
+      "rest_id": 47953505,
+      "node_id": "IFSS_kgDOAtu2YQ",
+      "project_field_id": "PVTSSF_lADOB9Ao_c4BlwurzhkcWv8",
+      "options": [
+        "INDEPENDENT",
+        "SHARED",
+        "SYNTHESIS",
+        "VERIFICATION"
+      ]
+    },
+    "cohort": {
+      "rest_id": 47953514,
+      "node_id": "IFT_kgDOAtu2ag",
+      "project_field_id": "PVTF_lADOB9Ao_c4BlwurzhkcWxE"
+    },
+    "timebox": {
+      "rest_id": 47953515,
+      "node_id": "IFN_kgDOAtu2aw",
+      "project_field_id": "PVTF_lADOB9Ao_c4BlwurzhkcWx0"
+    },
+    "worker": {
+      "rest_id": 47953516,
+      "node_id": "IFT_kgDOAtu2bA",
+      "project_field_id": "PVTF_lADOB9Ao_c4BlwurzhkcWyk"
+    },
+    "reservation_expires": {
+      "rest_id": 47953521,
+      "node_id": "IFT_kgDOAtu2cQ",
+      "project_field_id": "PVTF_lADOB9Ao_c4BlwurzhkcW0U"
+    }
+  },
+  "views": {
+    "all_jobs": {
+      "id": "PVTV_lADOB9Ao_c4BlwurzgL63ng",
+      "name": "ALL JOBS",
+      "filter": ""
+    },
+    "available": {
+      "id": "PVTV_lADOB9Ao_c4BlwurzgL64bo",
+      "name": "AVAILABLE",
+      "filter": "is:open \"GCL State\":AVAILABLE"
+    },
+    "independent": {
+      "id": "PVTV_lADOB9Ao_c4BlwurzgL64bw",
+      "name": "INDEPENDENT",
+      "filter": "is:open \"GCL Phase\":INDEPENDENT"
+    },
+    "cooperative": {
+      "id": "PVTV_lADOB9Ao_c4BlwurzgL64cI",
+      "name": "COOPERATIVE",
+      "filter": "is:open \"GCL Collaboration\":COOPERATIVE"
+    },
+    "returned": {
+      "id": "PVTV_lADOB9Ao_c4BlwurzgL64cU",
+      "name": "RETURNED",
+      "filter": "\"GCL State\":RETURNED"
+    },
+    "erdos_open": {
+      "id": "PVTV_lADOB9Ao_c4BlwurzgL64cc",
+      "name": "ERDOS OPEN",
+      "filter": "is:open \"GCL Campaign\":\"ERDOS-OPEN-RECON\""
+    }
+  },
+  "authority_effect": {
+    "project_is_execution_authority": false,
+    "issue_fields_are_execution_authority": false,
+    "mathematical": false,
+    "certification": false
+  }
+}
