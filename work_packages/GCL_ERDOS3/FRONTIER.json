@@ -469,8 +469,8 @@
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
-        "E3-B-DENSITY-INCREMENT-OR-LOCALIZED-MULTICORRELATION: iterate Q13 density increments or exploit Q12 carry-localized multi-fluctuation correlations",
-        "positive-density amplification of the nine L01 residual clause motifs"
+        "E3-B-DENSITY-INCREMENT-AMPLIFICATION: amplify Q13 beta^4 end-interval density increments across scales",
+        "E3-B-CARRY-KERNEL-SPECTRAL-INCOMPATIBILITY: analyze Q14 family-specific carry-kernel spectra supporting localized multi-fluctuation correlations"
       ],
       "sufficient_for": [
         "E3-B-FOUR-FIBRE-DEFICIT"
@@ -498,7 +498,8 @@
         "E3-Q10",
         "E3-Q11",
         "E3-Q12",
-        "E3-Q13"
+        "E3-Q13",
+        "E3-Q14"
       ],
       "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes deterministic interval-window structure and proves at least two fibres remain intrinsically U3-structured. The live lanes are AP-free interval/multi-scale amplification and de-windowed joint witness alignment."
     },
@@ -828,7 +829,7 @@
     {
       "id": "E3-B-DENSITY-INCREMENT-OR-LOCALIZED-MULTICORRELATION",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
       "depends_on": [
         "E3-B-CARRY-LOCALIZED-CANCELLATION",
@@ -843,7 +844,59 @@
         "develop a Fourier/derivative decomposition of the Q12 localized multi-fluctuation forms without quotienting carry identity",
         "couple the two alternatives across multiple mandatory L01 families"
       ],
-      "claim_boundary": "Smallest current carry-localized residual; open."
+      "claim_boundary": "Smallest current carry-localized residual; open.",
+      "reduced_by": "E3-Q14",
+      "split_successors": [
+        "E3-B-DENSITY-INCREMENT-AMPLIFICATION",
+        "E3-B-CARRY-KERNEL-SPECTRAL-INCOMPATIBILITY"
+      ],
+      "reduction_note": "Q14 gives an exact Fourier representation for the localized multi-correlation branch, so the combined residual splits into density-increment amplification and carry-kernel spectral incompatibility."
+    },
+    {
+      "id": "E3-B-CARRY-KERNEL-FOURIER-REPRESENTATION",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "statement": "Every exact D01 carry-localized multilinear correlation equals a convolution of the physical fibre Fourier coefficients weighted by the two-dimensional Fourier transform of the exact carry-cell indicator K_c; the unrestricted cyclic equations are recovered by K_c=1.",
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Exact representation theorem only; no kernel concentration or deletion bound."
+    },
+    {
+      "id": "E3-B-DENSITY-INCREMENT-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-CARRY-GEOMETRY-DENSITY-INCREMENT"
+      ],
+      "statement": "Iterate or transfer the Q13 beta^4-scale prefix/suffix density increments across interval/dyadic scales strongly enough to yield the required c*beta^(1+theta)*N deletion cost for some theta<1, or prove this lane quantitatively insufficient.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "claim_boundary": "Density-increment branch only; open."
+    },
+    {
+      "id": "E3-B-CARRY-KERNEL-SPECTRAL-INCOMPATIBILITY",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-CARRY-KERNEL-FOURIER-REPRESENTATION",
+        "E3-B-CARRY-LOCALIZED-CANCELLATION"
+      ],
+      "statement": "Using the exact Fourier spectra of the six core D01 carry kernels, show that the beta^4/3840 localized multi-fluctuation correlations cannot all be supported by four near-extremal internally 4-AP-free fibre spectra without enough aligned nonzero frequencies/derivative witnesses to force c*beta^(1+theta)*N deletions for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "attack_lanes": [
+        "compute exact/quantitative spectral geometry of core carry kernels 0000,0001,0011,0111,0112,0123",
+        "bound kernel mass away from the unrestricted delta constraints",
+        "couple kernel-supported frequency tuples across mandatory/core families",
+        "combine with AP-free near-extremizer spectral constraints"
+      ],
+      "claim_boundary": "Localized multi-correlation branch only; open."
     }
   ],
   "closed_claims": [
