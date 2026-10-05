@@ -59,12 +59,13 @@
     "E3-Q10": "PROVED_NATIVE_DEWINDOWED_ORDER_DICHOTOMY",
     "E3-Q11": "PROVED_NATIVE_LOW_ORDER_DENSITY_INCREMENT",
     "E3-Q12": "PROVED_NATIVE_DEWINDOWED_DERIVATIVE_PRODUCT_OVERLAP",
-    "E3-Q13": "PROVED_NATIVE_DYADIC_SHORT_STEP_LOCALIZATION"
+    "E3-Q13": "PROVED_NATIVE_DYADIC_SHORT_STEP_LOCALIZATION",
+    "E3-Q14": "PROVED_NATIVE_RECURSION_EXPONENT_NO_GO"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Reissue E3-V03 under fresh marker-clock lease epoch 7, retaining replay_budget_ordinal=1. Native work continues on E3-B-DYADIC-DENSITY-INCREMENT-RECURSION, E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT, and the linear AP-free interval lane.",
+  "next_action": "Reissue/adjudicate E3-V03 independently. In parallel attack E3-B-LOW-ORDER-EXPONENT-UPGRADE, E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT, and the separate linear AP-free interval amplification lane. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -339,5 +340,12 @@
     "path": "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md",
     "blob_sha1": "a993c4c0bf4a01974be5c7d906e04021e9e2bc66",
     "effect": "Q11's arbitrary short-step increment localizes to a dyadic subprogression of length > (5/4)delta_beta*N, preserving a 5*delta_beta density gain; the scale drop is O(log(1/beta)). The exponent remains 4."
+  },
+  "tranche_04_extension_q14": {
+    "result": "E3-Q14",
+    "disposition": "PROVED_NATIVE_RECURSION_EXPONENT_NO_GO",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md",
+    "blob_sha1": "6949c137ea9a376aa24d32dbee41641b852bd417",
+    "effect": "A fixed-step loss law of order b^p forces summability only for p<2. The beta^4 Q11/Q13 recursion is therefore logically insufficient on its own; the low-order lane must upgrade the exponent below 2 or use additional structure."
   }
 }
