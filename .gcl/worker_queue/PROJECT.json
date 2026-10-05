@@ -134,5 +134,12 @@
     "issue_fields_are_execution_authority": false,
     "mathematical": false,
     "certification": false
+  },
+  "bootstrap": {
+    "instructions_path": "WORKERS.md",
+    "instructions_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/WORKERS.md",
+    "machine_path": ".well-known/gcl-worker-queue.json",
+    "machine_url": "https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.well-known/gcl-worker-queue.json",
+    "full_protocol_path": "handoffs/GCL-WORKER-QUEUE.md"
   }
 }
