@@ -77,6 +77,27 @@ class WorkerQueueProjectionTest(unittest.TestCase):
             self.assertFalse(out["queue_managed"])
             self.assertEqual(out["issue_field_values"], [])
 
+    def test_reconcile_result_present_does_not_overwrite_returned_projection(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.setup_root(root)
+            comments = [{
+                "id": 2,
+                "created_at": "2026-10-05T09:01:00Z",
+                "user": {"login": "alice"},
+                "body": "GCL-CONTRIBUTION-RESULT/1\ndispatch_id: D-1\n",
+            }]
+            out = self.run_projection(
+                root,
+                "reconcile",
+                issue_number=7,
+                comments=comments,
+                now=datetime(2026, 10, 5, 10, 0, tzinfo=timezone.utc),
+            )
+            self.assertEqual(out["reservation_state"], "RESULT_PRESENT")
+            self.assertEqual(out["issue_field_values"], [])
+            self.assertEqual(out["clear_field_ids"], [])
+
     def test_reconcile_active_and_expired(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
