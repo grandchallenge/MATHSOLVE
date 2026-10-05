@@ -55,12 +55,13 @@
     "E3-Q06": "PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION",
     "E3-Q07": "PROVED_NATIVE_FINITE_PHASE_ALGEBRA_INSUFFICIENT",
     "E3-Q08": "PROVED_NATIVE_BOOLEAN_REALIZABILITY_INSUFFICIENT",
-    "E3-Q09": "PROVED_NATIVE_DEWINDOWED_U3_FORCING"
+    "E3-Q09": "PROVED_NATIVE_DEWINDOWED_U3_FORCING",
+    "E3-Q10": "PROVED_NATIVE_DEWINDOWED_ORDER_DICHOTOMY"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Receive the single E3-V03 RESULT/1 on issue 898 before the marker-clock lease expires; capture exactly and adjudicate. Only VERIFIED may promote E3-Q4-GLUING-RADIUS. Native E3-Q4-DENSITY-LOSS work continues independently.",
+  "next_action": "Receive the single E3-V03 RESULT/1 on issue 898 within its marker-clock lease and adjudicate independently. In parallel attack E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT and E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -313,5 +314,11 @@
     "disposition": "PROVED_NATIVE_DEWINDOWED_U3_FORCING",
     "path": "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
     "effect": "Subtracting the deterministic interval window still forces beta^4-scale U3 structure in at least two physical fibres across the L01 core. Q03/Q06 remain exact globally-centered statements, but the quadratic lane is reduced to de-windowed joint witness alignment before any deletion claim."
+  },
+  "tranche_04_extension_q10": {
+    "result": "E3-Q10",
+    "disposition": "PROVED_NATIVE_DEWINDOWED_ORDER_DICHOTOMY",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md",
+    "effect": "Each adjacent 0011 family yields either an explicit singleton/pair carry-kernel correlation or intrinsic de-windowed U3 structure in both physical fibres; if no low-order witness appears across the adjacent chain, all four fibres are intrinsically structured."
   }
 }
