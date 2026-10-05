@@ -61,12 +61,13 @@
     "E3-Q12": "PROVED_NATIVE_DEWINDOWED_DERIVATIVE_PRODUCT_OVERLAP",
     "E3-Q13": "PROVED_NATIVE_DYADIC_SHORT_STEP_LOCALIZATION",
     "E3-Q14": "PROVED_NATIVE_RECURSION_EXPONENT_NO_GO",
-    "E3-Q15": "PROVED_NATIVE_REPEATED_TRIPLET_DERIVATIVE_FORCING"
+    "E3-Q15": "PROVED_NATIVE_REPEATED_TRIPLET_DERIVATIVE_FORCING",
+    "E3-Q16": "PROVED_NATIVE_BRIDGE_FAMILY_DICHOTOMY"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Receive/adjudicate E3-V03 independently on issue 909. In parallel attack E3-B-LOW-ORDER-EXPONENT-UPGRADE, E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY, and the separate linear AP-free interval amplification lane. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
+  "next_action": "Receive/adjudicate E3-V03 independently on issue 909. In parallel attack E3-B-LOW-ORDER-EXPONENT-UPGRADE, E3-B-INTERIOR-DERIVATIVE-OR-THREEFIBRE-BRIDGE-COMPATIBILITY, and the separate linear AP-free interval amplification lane. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -371,5 +372,12 @@
     "path": "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md",
     "blob_sha1": "405da12048ce8e61e04345e80cc8cbcf3aafdc24",
     "effect": "In high-order repeated-triplet core families F2,F3,F6, the triply repeated physical fibre is forced to be the complete derivative side. F2 and F3 both constrain B1 in distinct carry geometries, reducing the high-order residual to interior-derivative compatibility."
+  },
+  "tranche_04_extension_q16": {
+    "result": "E3-Q16",
+    "disposition": "PROVED_NATIVE_BRIDGE_FAMILY_DICHOTOMY",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md",
+    "blob_sha1": "530a9cb0301ee54dd399d0dc6aa17a3185c8da96",
+    "effect": "High-order bridge families F9/F10 either force the repeated interior fibre as a complete derivative side or yield an explicit positive-density three-physical-fibre mixed-window bridge witness. The high-order core reduces to derivative compatibility versus three-fibre bridge amplification."
   }
 }
