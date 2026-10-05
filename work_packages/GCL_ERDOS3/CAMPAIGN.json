@@ -55,12 +55,13 @@
     "E3-Q06": "PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION",
     "E3-Q07": "PROVED_NATIVE_FINITE_PHASE_ALGEBRA_INSUFFICIENT",
     "E3-Q08": "PROVED_NATIVE_BOOLEAN_REALIZABILITY_INSUFFICIENT",
-    "E3-Q09": "PROVED_NATIVE_DEWINDOWED_U3_FORCING"
+    "E3-Q09": "PROVED_NATIVE_DEWINDOWED_U3_FORCING",
+    "E3-Q10": "PROVED_NATIVE_DEWINDOWED_CORRELATION_DICHOTOMY"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Receive the single E3-V03 RESULT/1 on issue 887 under marker-clock lease epoch 5; capture exactly and adjudicate. In parallel continue E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION and E3-B-DEWINDOWED-JOINT-WITNESS. Only VERIFIED may activate E3-Q4-GLUING-RADIUS.",
+  "next_action": "Receive/adjudicate the active E3-V03 epoch-5 return on issue 887 if one arrives. In parallel attack E3-B-CARRY-WINDOW-DISCREPANCY and E3-B-DEWINDOWED-HIGHORDER-ALIGNMENT. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -301,5 +302,11 @@
     "disposition": "PROVED_NATIVE_DEWINDOWED_U3_FORCING",
     "path": "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
     "effect": "Subtracting the deterministic interval window still forces beta^4-scale U3 structure in at least two physical fibres across the L01 core. Q03/Q06 remain exact globally-centered statements, but the quadratic lane is reduced to de-windowed joint witness alignment before any deletion claim."
+  },
+  "tranche_04_extension_q10": {
+    "result": "E3-Q10",
+    "disposition": "PROVED_NATIVE_DEWINDOWED_CORRELATION_DICHOTOMY",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md",
+    "effect": "For the adjacent 0011 chain, either a singleton/pair locally-centered carry-window correlation is polynomially large, or all four physical fibres have genuine de-windowed U3 mass. The de-windowed joint-witness lane splits into carry-window discrepancy versus high-order witness alignment."
   }
 }
