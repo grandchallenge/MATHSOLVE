@@ -469,7 +469,7 @@
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
         "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION: amplify Q11's positive step<=3 density increment beyond exponent 4",
-        "E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT: align the all-four intrinsic de-windowed U3 structures from Q10",
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT: align Q12 same-shift derivative-product spectra or exploit the mixed one-window branch",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -496,9 +496,10 @@
         "E3-Q08",
         "E3-Q09",
         "E3-Q10",
-        "E3-Q11"
+        "E3-Q11",
+        "E3-Q12"
       ],
-      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts every low-order kernel witness into a positive short-step density increment of order beta^4."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -750,9 +751,9 @@
       "reduced_by": "E3-Q11",
       "successors": [
         "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
-        "E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT"
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT"
       ],
-      "reduction_note": "Q11 converts every low-order Q10 carry-kernel witness into a positive density increment on an actual subprogression of step at most 3. The remaining arms are amplification of that order-beta^4 density increment, or alignment of the all-four intrinsic de-windowed U3 structures."
+      "reduction_note": "Q11 converts low-order carry kernels to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap."
     },
     {
       "id": "E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT",
@@ -792,7 +793,7 @@
     {
       "id": "E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
       "depends_on": [
         "E3-B-DEWINDOWED-ORDER-DICHOTOMY",
@@ -811,7 +812,45 @@
         "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md"
       ],
-      "claim_boundary": "Open high-order arm."
+      "claim_boundary": "Open high-order arm.",
+      "reduced_by": "E3-Q12",
+      "successor": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
+      "reduction_note": "Q12 converts every Q10 high-order adjacent-pair term into positive-density same-shift derivative-product spectral overlap. The only remaining window contamination in the triple case is one explicit local-window factor."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-OVERLAP",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "statement": "Any Q10 high-order adjacent 0011 term yields at least beta^4/(30*16^4)*P common shifts with signed derivative-product spectral overlap at least beta^4/(30*16^4). The adjacent product is either a full de-windowed derivative or one de-windowed factor times one explicit local-window factor.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md",
+      "sufficient_for": [
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT"
+      ],
+      "claim_boundary": "Witness-preserving native lemma only; no coherent frequency graph or deletion exponent."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "depends_on": [
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-OVERLAP"
+      ],
+      "statement": "Given positive-density same-shift derivative-product spectral overlaps on the three adjacent physical pairs, prove a coherent derivative-frequency graph / joint quadratic witness, or convert the mixed one-window branch or spectral diffuseness into c*beta^(1+theta)N deletions for some theta<1.",
+      "attack_lanes": [
+        "fully de-windowed derivative-frequency graph across adjacent pairs",
+        "mixed one-window derivative-product branch to density increment",
+        "spectral diffuseness to point-deletion cost",
+        "additive structure of the good-shift sets"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current high-order de-windowed residual; open."
     }
   ],
   "closed_claims": [
