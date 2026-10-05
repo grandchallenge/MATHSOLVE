@@ -617,7 +617,19 @@ def validate(root=ROOT):
             'cron: "*/5 * * * *"',
             'workflow_dispatch:',
             'ci/gcl_erdos3_lease_reaper.py',
-            'gh pr create',
+            'Create protected expiry reconciliation branch',
+            'protect-reconciliation:',
+            'environment: release-trust',
+            'actions/create-github-app-token@',
+            'GCL_RELEASE_TRUST_APP_ID',
+            'GCL_RELEASE_TRUST_PRIVATE_KEY',
+            'repositories: MATHSOLVE',
+            'permission-contents: read',
+            'permission-pull-requests: write',
+            'permission-issues: write',
+            'pulls?state=open&head=grandchallenge:$BRANCH&base=main',
+            'gh api --method POST "repos/$GITHUB_REPOSITORY/pulls"',
+            'Issue $ISSUE already closed; no duplicate expiry comment emitted.',
             'mathematical replay budget consumed: NO',
             'canonical claim effect: NONE',
             'frontier promotion effect: NONE',
@@ -628,6 +640,8 @@ def validate(root=ROOT):
             errors.append('GCL-ERDOS3 lease reaper missing runner UTC clock')
         if 'github.run_started_at' in rw:
             errors.append('GCL-ERDOS3 lease reaper uses unsupported github.run_started_at clock')
+        if 'gh pr create' in rw:
+            errors.append('GCL-ERDOS3 lease reaper bypasses bounded Release Trust for PR creation')
         if 'gh pr merge' in rw or 'canonical_claim_effect: true' in rw.lower():
             errors.append('GCL-ERDOS3 lease reaper gained unauthorized promotion/merge authority')
     ci_workflow=root/'.github/workflows/ci.yml'
