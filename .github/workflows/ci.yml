@@ -176,6 +176,8 @@ jobs:
           python -m unittest tests/test_ns_ci_github_contribution_intake.py -v
           python ci/validate_erdos_open_recon_activation.py
           python ci/validate_gcl_worker_queue.py
+          python ci/gcl_worker_queue.py --help >/dev/null
+          python ci/ns_ci_github_contribution_intake.py --help >/dev/null
           python -m unittest tests/test_gcl_worker_queue.py tests/test_gcl_worker_queue_intake_binding.py -v
           python ci/validate_uc_wp08_d004_dispatches.py
           python -m json.tool contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/schemas/intake_receipt.schema.json >/dev/null

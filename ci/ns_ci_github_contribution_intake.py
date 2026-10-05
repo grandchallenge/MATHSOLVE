@@ -10,7 +10,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from ci.gcl_worker_queue_contract import active_reservation, queue_job_for_dispatch
+try:
+    from ci.gcl_worker_queue_contract import active_reservation, queue_job_for_dispatch
+except ModuleNotFoundError:
+    from gcl_worker_queue_contract import active_reservation, queue_job_for_dispatch
 
 ROOT = Path(__file__).resolve().parents[1]
 

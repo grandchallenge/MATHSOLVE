@@ -6,7 +6,10 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
-from ci.gcl_worker_queue_contract import active_reservation
+try:
+    from ci.gcl_worker_queue_contract import active_reservation
+except ModuleNotFoundError:
+    from gcl_worker_queue_contract import active_reservation
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / ".gcl/worker_queue/CONFIG.json"
