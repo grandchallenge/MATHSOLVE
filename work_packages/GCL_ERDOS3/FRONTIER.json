@@ -468,7 +468,7 @@
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
-        "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION: amplify Q11's positive step<=3 density increment beyond exponent 4",
+        "E3-B-EXPONENT4-DENSITY-INCREMENT-AMPLIFICATION: Q13 already controls dyadic scale loss; amplify the remaining c beta^4 gain or prove this lane insufficient",
         "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT: align Q12 same-shift derivative-product spectra or exploit the mixed one-window branch",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
@@ -497,9 +497,10 @@
         "E3-Q09",
         "E3-Q10",
         "E3-Q11",
-        "E3-Q12"
+        "E3-Q12",
+        "E3-Q13"
       ],
-      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts low-order kernels to short-step density increments; Q13 controls the dyadic scale loss and isolates the exponent-4 barrier; Q12 converts the high-order arm to positive-density de-windowed derivative-product overlap."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -750,10 +751,10 @@
       "claim_boundary": "Smallest current de-windowed quadratic residual; open.",
       "reduced_by": "E3-Q11",
       "successors": [
-        "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
+        "E3-B-EXPONENT4-DENSITY-INCREMENT-AMPLIFICATION",
         "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT"
       ],
-      "reduction_note": "Q11 converts low-order carry kernels to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap."
+      "reduction_note": "Q11 converts low-order kernels to short-step density increments; Q13 controls their dyadic scale loss and isolates the exponent-4 barrier; Q12 converts the high-order arm to de-windowed derivative-product overlap."
     },
     {
       "id": "E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT",
@@ -770,7 +771,7 @@
     {
       "id": "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
       "depends_on": [
         "E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT"
@@ -788,7 +789,10 @@
       "evidence_basis": [
         "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md"
       ],
-      "claim_boundary": "Open; Q11 provides only an order-beta^4 increment."
+      "claim_boundary": "Open; Q11 provides only an order-beta^4 increment.",
+      "reduced_by": "E3-Q13",
+      "successor": "E3-B-EXPONENT4-DENSITY-INCREMENT-AMPLIFICATION",
+      "reduction_note": "Q13 extracts a dyadic-length subprogression of size Omega(beta^4 N) while retaining an Omega(beta^4) density increment, so arbitrary scale conversion is no longer the blocker. The remaining defect is the exponent-4 gain."
     },
     {
       "id": "E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT",
@@ -851,6 +855,40 @@
         "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md"
       ],
       "claim_boundary": "Smallest current high-order de-windowed residual; open."
+    },
+    {
+      "id": "E3-B-DYADIC-SHORT-STEP-DENSITY-INCREMENT",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "statement": "Any Q11 low-order witness yields a dyadic-length step-1/2/3 subprogression of length > beta^4 N/(6*16^4) with density exceeding the parent fibre density by beta^4/(3*16^4). Hence the dyadic index drops by at most 4 log2(1/beta)+16+log2 6.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md",
+      "sufficient_for": [
+        "E3-B-EXPONENT4-DENSITY-INCREMENT-AMPLIFICATION"
+      ],
+      "claim_boundary": "Scale-control lemma only; exponent 4 remains insufficient for the campaign target."
+    },
+    {
+      "id": "E3-B-EXPONENT4-DENSITY-INCREMENT-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "depends_on": [
+        "E3-B-DYADIC-SHORT-STEP-DENSITY-INCREMENT"
+      ],
+      "statement": "Starting from Q13's variable-scale dyadic relation with O(log(1/beta)) scale loss and c beta^4 density gain, use near-extremality, repeated carry locations, or additional structure to upgrade exponent 4 to a deficit scale beta^(1+theta), theta<1, or prove this lane cannot do so.",
+      "attack_lanes": [
+        "preserve gluing context across repeated dyadic density increments",
+        "exploit near-extremality to turn repeated c beta^4 gains into stronger loss",
+        "derive a rigorous exponent barrier for the low-order lane"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current low-order residual; open."
     }
   ],
   "closed_claims": [
