@@ -1,0 +1,39 @@
+{
+  "record_type": "GCL_WORKER_QUEUE_CONFIG",
+  "schema_version": "1.0.0",
+  "policy_id": "GCL-WORKER-QUEUE-001",
+  "policy_version": "1.0.0",
+  "programme_policy_commit": "0fd894c053922ec43b70878e0f02e8370690449a",
+  "programme_policy_path": "governance/GCL-WORKER-QUEUE-001.json",
+  "queue_id": "GCL-WORKER-QUEUE-001",
+  "control_issue_title": "[GCL-OPS] GCL worker queue controller",
+  "operators": [
+    "fyremael",
+    "jimsteeg"
+  ],
+  "controller_comment_actors": [
+    "github-actions[bot]"
+  ],
+  "commands": [
+    "/claim",
+    "/release",
+    "/queue-bootstrap"
+  ],
+  "labels": {
+    "job": "gcl-job",
+    "available": "gcl-state:available",
+    "reserved": "gcl-state:reserved",
+    "returned": "gcl-state:returned",
+    "collab_staged": "gcl-collab:staged",
+    "role_reconnaissance": "gcl-role:reconnaissance",
+    "role_source_audit": "gcl-role:source-audit",
+    "role_adversarial": "gcl-role:adversarial"
+  },
+  "issue_query": "is:issue is:open label:gcl-job label:gcl-state:available",
+  "project_view_optional": true,
+  "reservation_is_execution_authority": false,
+  "project_or_labels_are_authority": false,
+  "mathematical_effect": false,
+  "certification_effect": false,
+  "claim_boundary": "Operational discovery and worker reservation only. Protected dispatch/lease controls execution; RESULT/1 remains evidence; no mathematical or certification effect."
+}
