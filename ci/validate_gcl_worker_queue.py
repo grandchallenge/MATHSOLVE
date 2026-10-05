@@ -85,8 +85,8 @@ def validate() -> list[str]:
         task = ROOT / str(d.get("task_path", ""))
         if not task.is_file():
             errors.append(f"{did}: immutable task missing")
-        elif blob_sha1(task) != d.get("task_blob_sha1"):
-            errors.append(f"{did}: immutable task blob mismatch")
+        elif hashlib.sha256(task.read_text(encoding="utf-8").encode("utf-8")).hexdigest() != d.get("task_sha256"):
+            errors.append(f"{did}: immutable task digest mismatch")
 
     for p in PROBLEMS:
         co = readj(ROOT / f"contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/cohorts/ERDOS-{p}-BLIND-COHORT-001.json")
