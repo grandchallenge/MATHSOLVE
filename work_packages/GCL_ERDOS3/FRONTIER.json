@@ -469,7 +469,7 @@
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
-        "E3-B-CARRY-LOCALIZED-GEOMETRY-OR-MULTICORRELATION: exploit exact D01 carry-cell geometry and localized multi-fluctuation correlations from Q12",
+        "E3-B-DENSITY-INCREMENT-OR-LOCALIZED-MULTICORRELATION: iterate Q13 density increments or exploit Q12 carry-localized multi-fluctuation correlations",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -497,7 +497,8 @@
         "E3-Q09",
         "E3-Q10",
         "E3-Q11",
-        "E3-Q12"
+        "E3-Q12",
+        "E3-Q13"
       ],
       "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes deterministic interval-window structure and proves at least two fibres remain intrinsically U3-structured. The live lanes are AP-free interval/multi-scale amplification and de-windowed joint witness alignment."
     },
@@ -790,7 +791,7 @@
     {
       "id": "E3-B-CARRY-LOCALIZED-GEOMETRY-OR-MULTICORRELATION",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
       "depends_on": [
         "E3-B-CARRY-LOCALIZED-CANCELLATION",
@@ -807,6 +808,40 @@
         "derive a localized Fourier/derivative representation that preserves carry-cell identity",
         "align multi-fluctuation terms across mandatory/core families",
         "exploit near-extremality or scale recursion to amplify localized witnesses"
+      ],
+      "claim_boundary": "Smallest current carry-localized residual; open.",
+      "reduced_by": "E3-Q13",
+      "successor": "E3-B-DENSITY-INCREMENT-OR-LOCALIZED-MULTICORRELATION",
+      "reduction_note": "Q13 converts every singleton carry-section bias into an explicit prefix/suffix AP-free density increment; only that density-increment lane and the Q12 localized multi-fluctuation lane remain."
+    },
+    {
+      "id": "E3-B-CARRY-GEOMETRY-DENSITY-INCREMENT",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "statement": "Any Q12 singleton carry-section correlation of magnitude delta forces a prefix or suffix interval of the physical fibre of length at least delta*N/2 and density increment at least delta/2. With delta=beta^4/3840, both scales are at least beta^4/7680.",
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Density-increment conversion only; no contradiction with near-extremality or dyadic recurrence yet."
+    },
+    {
+      "id": "E3-B-DENSITY-INCREMENT-OR-LOCALIZED-MULTICORRELATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-CARRY-LOCALIZED-CANCELLATION",
+        "E3-B-CARRY-GEOMETRY-DENSITY-INCREMENT"
+      ],
+      "statement": "Starting from Q12/Q13, prove that repeated beta^4-scale end-interval density increments or beta^4-scale carry-localized multi-fluctuation correlations cannot persist across the L01 core and scale recursion without c*beta^(1+theta)*N deletion cost for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "attack_lanes": [
+        "iterate or transfer the Q13 non-dyadic density increment into an extremal recurrence",
+        "develop a Fourier/derivative decomposition of the Q12 localized multi-fluctuation forms without quotienting carry identity",
+        "couple the two alternatives across multiple mandatory L01 families"
       ],
       "claim_boundary": "Smallest current carry-localized residual; open."
     }
