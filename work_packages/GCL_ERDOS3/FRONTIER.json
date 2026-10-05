@@ -8,7 +8,7 @@
       "id": "E3-ROOT",
       "kind": "THEOREM",
       "status": "OPEN",
-      "statement": "Erd\u0151s Problem 3: reciprocal divergence should force arithmetic progressions of every finite length."
+      "statement": "Erdős Problem 3: reciprocal divergence should force arithmetic progressions of every finite length."
     },
     {
       "id": "E3-C-D3",
@@ -84,7 +84,7 @@
         "E3-H-RESIDUE",
         "E3-H-SCALING"
       ],
-      "statement": "For dyadic block density \u03b4_j(A)=|A\u2229[2^j,2^(j+1))|/2^j, reciprocal divergence is equivalent up to a factor-two blockwise sandwich to divergence of \u03a3_j \u03b4_j. Hence every nonnegative summable threshold \u03b8_j is exceeded by \u03b4_j for infinitely many j.",
+      "statement": "For dyadic block density δ_j(A)=|A∩[2^j,2^(j+1))|/2^j, reciprocal divergence is equivalent up to a factor-two blockwise sandwich to divergence of Σ_j δ_j. Hence every nonnegative summable threshold θ_j is exceeded by δ_j for infinitely many j.",
       "completed_by": "E3-B01",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-B01_RESULT.md",
       "independent_verification": "VERIFIED__E3-V01",
@@ -98,11 +98,11 @@
         "E3-B-AP-THRESHOLD",
         "E3-C-D4"
       ],
-      "statement": "For each fixed k\u22653, the reciprocal-divergence arithmetic-progression conjecture is equivalent to convergence of \u03a3_{n\u22651} r_k(2^n)/2^n.",
-      "smallest_missing_estimate": "A theorem-grade bound \u03b2_k(j) with r_k(2^j)/2^j \u2264 \u03b2_k(j) and \u03a3_j \u03b2_k(j) < \u221e, or an alternative bridge not reducible to blockwise density.",
+      "statement": "For each fixed k≥3, the reciprocal-divergence arithmetic-progression conjecture is equivalent to convergence of Σ_{n≥1} r_k(2^n)/2^n.",
+      "smallest_missing_estimate": "A theorem-grade bound β_k(j) with r_k(2^j)/2^j ≤ β_k(j) and Σ_j β_k(j) < ∞, or an alternative bridge not reducible to blockwise density.",
       "completed_by": "E3-B02",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-B02_RESULT.md",
-      "source_confirmation": "Green\u2013Tao 2017, Introduction; Tao\u2013Vu, Additive Combinatorics, Exercise 10.0.6",
+      "source_confirmation": "Green–Tao 2017, Introduction; Tao–Vu, Additive Combinatorics, Exercise 10.0.6",
       "independent_verification": "VERIFIED__E3-V02",
       "verification_evidence": "work_packages/GCL_ERDOS3/results/E3-V02_RESULT.md"
     },
@@ -113,7 +113,7 @@
       "depends_on": [
         "E3-B-SCALE-LOCAL"
       ],
-      "statement": "If r_k(N) is the maximum size of a k-AP-free subset of {1,...,N} and \u03a3_j r_k(2^j)/2^j converges, then every set of positive integers with divergent reciprocal sum contains a k-term arithmetic progression.",
+      "statement": "If r_k(N) is the maximum size of a k-AP-free subset of {1,...,N} and Σ_j r_k(2^j)/2^j converges, then every set of positive integers with divergent reciprocal sum contains a k-term arithmetic progression.",
       "completed_by": "E3-B01",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-B01_RESULT.md",
       "independent_verification": "VERIFIED__E3-V01",
@@ -153,9 +153,9 @@
       "depends_on": [
         "E3-B-AP"
       ],
-      "statement": "Prove \u03a3_{n\u22651} r_4(2^n)/2^n < \u221e.",
-      "current_best_pointwise": "Green\u2013Tao: r_4(N) \u226a N (log N)^(-c) for some absolute c>0; this alone does not establish the series convergence.",
-      "smallest_missing_object": "Promoted route E3-Q4-DENSITY-LOSS: for a_n=r_4(2^n)/2^n, prove eventual bounded-step density-dependent loss a_{n+L} <= a_n(1-c a_n^theta) for fixed L>=1, c>0, and 0<theta<1; this implies a_n=O(n^(-1/theta)) and hence \u03a3 a_n<\u221e.",
+      "statement": "Prove Σ_{n≥1} r_4(2^n)/2^n < ∞.",
+      "current_best_pointwise": "Green–Tao: r_4(N) ≪ N (log N)^(-c) for some absolute c>0; this alone does not establish the series convergence.",
+      "smallest_missing_object": "Promoted route E3-Q4-DENSITY-LOSS: for a_n=r_4(2^n)/2^n, prove eventual bounded-step density-dependent loss a_{n+L} <= a_n(1-c a_n^theta) for fixed L>=1, c>0, and 0<theta<1; this implies a_n=O(n^(-1/theta)) and hence Σ a_n<∞.",
       "active_attacks": [],
       "completed_attacks": {
         "E3-Q01": "EXACT_BLOCKER__FIXED_AMBIENT_GREEN_TAO_DOES_NOT_SUPPLY_INTER_SCALE_TRANSFER",
@@ -173,7 +173,7 @@
         "eventual constant-factor quasi-submultiplicativity a_{n+m} <= C a_n a_m"
       ],
       "supporting_nonpromoted_evidence": {
-        "E3-Q01": "Green\u2013Tao 2017 is fixed-ambient; localization recovers only monotonicity.",
+        "E3-Q01": "Green–Tao 2017 is fixed-ambient; localization recovers only monotonicity.",
         "E3-A02": "Literal submultiplicativity fails; strong multiplicative/power recurrences are constrained by lower constructions.",
         "E3-S03": "Scoped primary-source audit found no post-2017 sequence-level estimate stronger than monotonicity."
       }
@@ -187,7 +187,7 @@
         "E3-Q4-SERIES"
       ],
       "statement": "Let a_n=r_4(2^n)/2^n. Prove that there exist fixed L>=1, c>0, n_0, and 0<theta<1 such that a_{n+L} <= a_n(1-c a_n^theta) for all n>=n_0.",
-      "consequence": "The discrete differential inequality gives a_n=O(n^(-1/theta)); since 1/theta>1, \u03a3_n a_n converges.",
+      "consequence": "The discrete differential inequality gives a_n=O(n^(-1/theta)); since 1/theta>1, Σ_n a_n converges.",
       "provenance": "E3-X01",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-X01_RESULT.md",
       "promotion": "PROMOTED__E3-TRANCHE-02",
@@ -298,7 +298,7 @@
       "depends_on": [
         "E3-B-AP"
       ],
-      "statement": "For each fixed k\u22655, prove \u03a3_{n\u22651} r_k(2^n)/2^n < \u221e.",
+      "statement": "For each fixed k≥5, prove Σ_{n≥1} r_k(2^n)/2^n < ∞.",
       "note": "Deferred while the minimal unresolved k=4 case is attacked."
     },
     {
@@ -354,13 +354,13 @@
         "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md"
       ],
-      "promotion_gate": "E3-V03__FRESH_LEASE_REQUIRED",
+      "promotion_gate": "E3-V03",
       "claim_boundary": "Formulated successor candidate only; not active and not proved."
     },
     {
       "id": "E3-V-B03",
       "kind": "VERIFICATION",
-      "status": "LEASE_EXPIRED__REISSUE_REQUIRED",
+      "status": "LAUNCHED",
       "depends_on": [
         "E3-B-GLUING-RADIUS-EQUIV"
       ],
@@ -380,6 +380,24 @@
         "lease_expires_at_observed": "2026-10-05T01:12:18Z",
         "valid_result_count": 0,
         "replay_budget_consumed": false
+      },
+      "dispatch": {
+        "dispatch_id": "GCL-ERDOS3-E3-V03-IA-006",
+        "assignment_id": "E3-V03",
+        "agent_ref": "INDEPENDENT-AGENT-E3-V03-006",
+        "issue_number": 898,
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/898",
+        "task_commit": "eb94ed1df6c3743fc8a186dcc423ce372fb512c8",
+        "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
+        "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01",
+        "lease_epoch": 6,
+        "lease_attempt_ordinal": 6,
+        "lease_clock_source": "GITHUB_ACTIVATION_COMMENT",
+        "lease_duration_minutes": 25,
+        "agent_max_execution_minutes": 24,
+        "replay_budget_ordinal": 1,
+        "state": "DISPATCHED__AWAITING_RETURN",
+        "external_sources": "PROTECTED_PACKET_ONLY"
       }
     },
     {
@@ -450,7 +468,8 @@
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
-        "E3-B-DEWINDOWED-JOINT-WITNESS: align derivative-frequency/quadratic witnesses of the Q09 local fluctuations across enough L01 core families",
+        "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION: amplify Q11's positive step<=3 density increment beyond exponent 4",
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT: align Q12 same-shift derivative-product spectra or exploit the mixed one-window branch",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -475,9 +494,12 @@
         "E3-Q06",
         "E3-Q07",
         "E3-Q08",
-        "E3-Q09"
+        "E3-Q09",
+        "E3-Q10",
+        "E3-Q11",
+        "E3-Q12"
       ],
-      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes deterministic interval-window structure and proves at least two fibres remain intrinsically U3-structured. The live lanes are AP-free interval/multi-scale amplification and de-windowed joint witness alignment."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -628,7 +650,7 @@
         "E3-B-LINEAR-PHASE-COMPATIBILITY",
         "E3-B-BOOLEAN-HARMONIC-REALIZABILITY"
       ],
-      "statement": "Starting from Q04/Q05/Q07/Q08, exploit at least one genuinely arithmetic fibre constraint absent from the cyclic Boolean no-go\u2014interval support, internal 4-AP-freeness and near-extremality, full simultaneous carry compatibility, or repeated/multi-scale witness amplification\u2014to force the required c*beta^(1+theta)*N deletion cost for some theta<1.",
+      "statement": "Starting from Q04/Q05/Q07/Q08, exploit at least one genuinely arithmetic fibre constraint absent from the cyclic Boolean no-go—interval support, internal 4-AP-freeness and near-extremality, full simultaneous carry compatibility, or repeated/multi-scale witness amplification—to force the required c*beta^(1+theta)*N deletion cost for some theta<1.",
       "sufficient_for": [
         "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
       ],
@@ -661,7 +683,7 @@
     {
       "id": "E3-B-DEWINDOWED-JOINT-WITNESS",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
       "depends_on": [
         "E3-B-DEWINDOWED-U3-FORCING",
@@ -684,7 +706,151 @@
         "prove selected global witnesses lie outside the window-generated spectrum",
         "combine de-windowed structure with near-extremality to amplify the finite L01 motif"
       ],
-      "claim_boundary": "Smallest current quadratic-branch residual; open and unproved."
+      "claim_boundary": "Smallest current quadratic-branch residual; open and unproved.",
+      "reduced_by": "E3-Q10",
+      "successor": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "reduction_note": "Q10 retains the order of the de-windowed expansion: low-order terms become explicit singleton/pair carry kernels; if all three adjacent 0011 families avoid low-order terms, all four physical fibres are intrinsically de-windowed U3-structured."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-ORDER-DICHOTOMY",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "statement": "For each adjacent 0011 family, either a singleton/pair local-window expansion term gives an explicit carry-kernel correlation at scale beta^4/(15*16^4), or a triple/fourfold term forces both physical fibres in that adjacent pair to have de-windowed U3 norm above that scale. Hence either some low-order carry witness exists or all four fibres are intrinsically structured.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md",
+      "sufficient_for": [
+        "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT"
+      ],
+      "claim_boundary": "Native structural dichotomy only; no deletion exponent or parent-frontier promotion."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-DEWINDOWED-ORDER-DICHOTOMY",
+        "E3-B-DEWINDOWED-U3-FORCING",
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY"
+      ],
+      "statement": "From Q10, either amplify an explicit singleton/pair carry-kernel correlation using near-extremality or repeated locations/scales, or align the all-four intrinsic de-windowed U3 structures, to force c*beta^(1+theta)*N deletions for some theta<1.",
+      "attack_lanes": [
+        "carry-marginal density increment from singleton kernels",
+        "bilinear carry-kernel amplification from pair terms",
+        "all-four de-windowed derivative-frequency/quadratic alignment",
+        "multi-location or multi-scale amplification of the adjacent 0011 chain"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current de-windowed quadratic residual; open.",
+      "reduced_by": "E3-Q11",
+      "successors": [
+        "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT"
+      ],
+      "reduction_note": "Q11 converts low-order carry kernels to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap."
+    },
+    {
+      "id": "E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "statement": "Any singleton or pair carry-kernel witness from Q10 yields a physical fibre and an arithmetic-progression segment J of common difference q in {1,2,3} with |B_j∩J|-alpha_j|J| > 10*beta^4/(15*16^4)*N, hence local 4-AP-free density exceeding alpha_j by at least that order-beta^4 amount.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md",
+      "sufficient_for": [
+        "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION"
+      ],
+      "claim_boundary": "Native low-order-arm reduction only; exponent 4 is insufficient for the parent target."
+    },
+    {
+      "id": "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "depends_on": [
+        "E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT"
+      ],
+      "statement": "Starting from Q11's positive density increment of order beta^4 on a step-1/2/3 subprogression, use near-extremality, scale control, or repeated recursion to force a gluing deficit of order beta^(1+theta)N for some theta<1, or prove this arm cannot achieve the required exponent.",
+      "attack_lanes": [
+        "control the subprogression length M relative to N",
+        "iterate short-step density increments while preserving near-extremality",
+        "convert arbitrary M to dyadic scale without fixed-factor density loss",
+        "derive an impossibility/no-go for exponent improvement from this arm"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Open; Q11 provides only an order-beta^4 increment."
+    },
+    {
+      "id": "E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "depends_on": [
+        "E3-B-DEWINDOWED-ORDER-DICHOTOMY",
+        "E3-B-DEWINDOWED-U3-FORCING"
+      ],
+      "statement": "In Q10's high-order-only arm, all four physical fibres have intrinsic de-windowed U3 mass. Align derivative-frequency or quadratic witnesses across the adjacent carry chain strongly enough to force c*beta^(1+theta)N deletions for some theta<1.",
+      "attack_lanes": [
+        "de-windowed derivative overlap across adjacent pairs",
+        "joint quadratic factor extraction retaining physical-fibre identity",
+        "phase/rank incompatibility across the three adjacent 0011 families"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Open high-order arm.",
+      "reduced_by": "E3-Q12",
+      "successor": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
+      "reduction_note": "Q12 converts every Q10 high-order adjacent-pair term into positive-density same-shift derivative-product spectral overlap. The only remaining window contamination in the triple case is one explicit local-window factor."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-OVERLAP",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "statement": "Any Q10 high-order adjacent 0011 term yields at least beta^4/(30*16^4)*P common shifts with signed derivative-product spectral overlap at least beta^4/(30*16^4). The adjacent product is either a full de-windowed derivative or one de-windowed factor times one explicit local-window factor.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md",
+      "sufficient_for": [
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT"
+      ],
+      "claim_boundary": "Witness-preserving native lemma only; no coherent frequency graph or deletion exponent."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "depends_on": [
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-OVERLAP"
+      ],
+      "statement": "Given positive-density same-shift derivative-product spectral overlaps on the three adjacent physical pairs, prove a coherent derivative-frequency graph / joint quadratic witness, or convert the mixed one-window branch or spectral diffuseness into c*beta^(1+theta)N deletions for some theta<1.",
+      "attack_lanes": [
+        "fully de-windowed derivative-frequency graph across adjacent pairs",
+        "mixed one-window derivative-product branch to density increment",
+        "spectral diffuseness to point-deletion cost",
+        "additive structure of the good-shift sets"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current high-order de-windowed residual; open."
     }
   ],
   "closed_claims": [
@@ -695,7 +861,7 @@
   "active_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "known_falsification_boundary": "Reciprocal divergence alone does not imply positive upper asymptotic density. More sharply, for every nonsummable threshold sequence \u03b8_j\u2208[0,1], there exists a reciprocally divergent set whose dyadic densities never exceed \u03b8_j. Thus summability is qualitatively sharp for any bridge using only blockwise density exceedance.",
+  "known_falsification_boundary": "Reciprocal divergence alone does not imply positive upper asymptotic density. More sharply, for every nonsummable threshold sequence θ_j∈[0,1], there exists a reciprocally divergent set whose dyadic densities never exceed θ_j. Thus summability is qualitatively sharp for any bridge using only blockwise density exceedance.",
   "scheduling_rule": "Only unresolved nodes may receive ADVANCE_FRONTIER; closed nodes may receive INDEPENDENT_VERIFY only while their explicit verification budget remains open.",
   "last_tranche": {
     "id": "E3-TRANCHE-02",
@@ -735,10 +901,12 @@
     "parent_theorem_effect": "NONE"
   },
   "next_tranche": {
-    "id": "E3-V03-REISSUE",
-    "status": "LEASE_REQUIRED",
-    "objective": "Reissue the same independent verification under a fresh lease epoch without consuming a second mathematical replay.",
+    "id": "E3-V03-LEASE-006",
+    "status": "DISPATCHED__AWAITING_RETURN",
+    "objective": "Complete the same independent verification under fresh marker-clock lease epoch 6.",
     "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
-    "replay_budget_ordinal": 1
+    "lease_epoch": 6,
+    "replay_budget_ordinal": 1,
+    "issue_number": 898
   }
 }
