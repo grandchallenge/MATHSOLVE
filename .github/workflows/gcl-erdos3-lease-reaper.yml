@@ -8,7 +8,6 @@ on:
 permissions:
   contents: write
   issues: write
-  pull-requests: write
 
 concurrency:
   group: gcl-erdos3-lease-reaper
@@ -72,7 +71,7 @@ jobs:
                   print(f"{k}={r.get(k,'')}",file=f)
           PY
 
-      - name: Open protected expiry reconciliation
+      - name: Publish protected expiry reconciliation candidate
         if: steps.reap.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -84,31 +83,21 @@ jobs:
           branch="maintenance/gcl-erdos3-lease-expiry-${DISPATCH,,}-e$EPOCH"
           if git ls-remote --exit-code origin "refs/heads/$branch" >/dev/null 2>&1; then
             echo "Expiry reconciliation branch already exists: $branch"
-            exit 0
+          else
+            git switch -c "$branch"
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -- \
+              "work_packages/GCL_ERDOS3/CAMPAIGN.json" \
+              "work_packages/GCL_ERDOS3/FRONTIER.json" \
+              "work_packages/GCL_ERDOS3/dispatches/$DISPATCH.json"
+            git commit -m "GCL-ERDOS3: expire silent lease $DISPATCH"
+            git push origin "$branch"
           fi
-          git switch -c "$branch"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- \
-            "work_packages/GCL_ERDOS3/CAMPAIGN.json" \
-            "work_packages/GCL_ERDOS3/FRONTIER.json" \
-            "work_packages/GCL_ERDOS3/dispatches/$DISPATCH.json"
-          git commit -m "GCL-ERDOS3: expire silent lease $DISPATCH"
-          git push origin "$branch"
-          cat > "$RUNNER_TEMP/pr-body.md" <<EOF
-          Automated bounded lease-expiry reconciliation for `$DISPATCH`.
-
-          - lease epoch: `$EPOCH`
-          - lease expired at: `$EXPIRES`
-          - timely RESULT/1 observed: NO
-          - mathematical replay budget consumed: NO
-          - canonical claim effect: NONE
-          - frontier promotion effect: NONE
-
-          This PR only reconciles protected lifecycle state with an already-expired lease. Protected CI owns merge eligibility.
-          EOF
-          pr_url="$(gh pr create --base main --head "$branch" --title "GCL-ERDOS3: expire silent lease $DISPATCH" --body-file "$RUNNER_TEMP/pr-body.md")"
-          gh issue close "$ISSUE" --reason completed --comment "LEASE EXPIRED — NO RETURN. The protected 25-minute lease expired at `$EXPIRES`. Late results are fenced by intake. Durable lifecycle reconciliation: $pr_url"
+          if [ "$(gh issue view "$ISSUE" --json state --jq '.state')" = "OPEN" ]; then
+            gh issue close "$ISSUE" --reason completed --comment "LEASE EXPIRED — NO RETURN. The protected 25-minute lease expired at $EXPIRES. Late results are fenced by intake. Lifecycle branch $branch is queued for the bounded Release Trust PR controller; no mathematical or frontier effect is authorized."
+          fi
+          echo "Release Trust handoff ready: $branch"
 
       - name: Record no-op
         if: steps.probe.outputs.issue == '' || steps.reap.outputs.changed != 'true'
