@@ -5,6 +5,13 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+import sys
+
+# Production workflows execute this file directly (`python ci/...py`).
+# In that mode Python places `ci/` rather than the repository root on
+# `sys.path`, so the package-qualified import below would otherwise fail.
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from ci.gcl_worker_queue_contract import active_reservation
 

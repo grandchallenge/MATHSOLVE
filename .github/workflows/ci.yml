@@ -181,6 +181,7 @@ jobs:
           python ci/validate_gcl_worker_bootstrap.py
           python -m json.tool .well-known/gcl-worker-queue.json >/dev/null
           python -m unittest tests/test_gcl_worker_queue_projection.py -v
+          python ci/gcl_worker_queue_projection.py --help >/dev/null
           python ci/gcl_worker_queue.py --help >/dev/null
           python ci/ns_ci_github_contribution_intake.py --help >/dev/null
           python -m unittest tests/test_gcl_worker_queue.py tests/test_gcl_worker_queue_intake_binding.py -v
