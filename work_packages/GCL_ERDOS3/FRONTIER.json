@@ -470,7 +470,7 @@
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
         "E3-B-LOW-ORDER-EXPONENT-UPGRADE: Q14 proves beta^4 recursion alone is nonsummability-compatible; exploit additional carry/near-extremal structure to reach an effective loss exponent p<2",
-        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT: align Q12 same-shift derivative-product spectra or exploit the mixed one-window branch",
+        "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY: Q15 forces B1 to be the derivative side in two distinct repeated-triplet carry geometries; align those shift/frequency systems or force an exponent<2 deletion cost",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -500,9 +500,10 @@
         "E3-Q11",
         "E3-Q12",
         "E3-Q13",
-        "E3-Q14"
+        "E3-Q14",
+        "E3-Q15"
       ],
-      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap. Q13 localizes the Q11 increment to a dyadic subprogression after O(log(1/beta)) levels with no fixed-factor density loss. Q14 proves the exact recursion-only summability threshold p<2, so the beta^4 low-order arm cannot close by iteration alone."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap. Q13 localizes the Q11 increment to a dyadic subprogression after O(log(1/beta)) levels with no fixed-factor density loss. Q14 proves the exact recursion-only summability threshold p<2, so the beta^4 low-order arm cannot close by iteration alone. Q15 removes derivative-side ambiguity for repeated-triplet core families: F2 and F3 both force B1 in their high-order arms."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -838,7 +839,7 @@
     {
       "id": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
       "depends_on": [
         "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-OVERLAP"
@@ -856,7 +857,10 @@
       "evidence_basis": [
         "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md"
       ],
-      "claim_boundary": "Smallest current high-order de-windowed residual; open."
+      "claim_boundary": "Smallest current high-order de-windowed residual; open.",
+      "reduced_by": "E3-Q15",
+      "successor": "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY",
+      "reduction_note": "Q15 extends the high-order derivative-product mechanism to the repeated-triplet core and forces B1 to be the complete derivative side in both F2 and F3. Remaining issue is compatibility/alignment, not derivative-side identity."
     },
     {
       "id": "E3-B-DYADIC-SHORT-STEP-LOCALIZATION",
@@ -936,6 +940,44 @@
         "work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md"
       ],
       "claim_boundary": "Smallest current low-order residual; open."
+    },
+    {
+      "id": "E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING",
+      "kind": "LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
+      "depends_on": [
+        "E3-B-DEWINDOWED-U3-FORCING",
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-OVERLAP"
+      ],
+      "statement": "For L01 core families F2=(0,0,0111), F3=(1,0,0001), and F6=(2,0,0001), every high-order de-windowed expansion term forces the triply repeated physical fibre to contribute a complete derivative Δ_{kd}h_X with k∈{1,2}, on a positive-density set of derivative shifts. In particular high-order F2 and F3 both force B1 as derivative side.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md",
+      "evidence_blob_sha1": "405da12048ce8e61e04345e80cc8cbcf3aafdc24",
+      "proved_by": "E3-Q15"
+    },
+    {
+      "id": "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
+      "depends_on": [
+        "E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING"
+      ],
+      "statement": "When repeated-triplet core families F2 and F3 are high-order, both force positive-density derivative-product spectral overlaps with the same physical fibre B1 as complete derivative side in distinct carry geometries. Prove these B1 derivative shift/frequency systems align to a common quadratic witness or their incompatibility forces a deletion cost with effective exponent p<2.",
+      "attack_lanes": [
+        "compare the two B1 good-shift sets after the k∈{1,2} derivative reparameterizations",
+        "use additive energy rather than raw set intersection to force shared derivative shifts",
+        "compare frequency maps through the common B1 derivative spectrum",
+        "couple failure of compatibility back to low-order exponent-upgrade or deletion"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current high-order residual; open."
     }
   ],
   "closed_claims": [
