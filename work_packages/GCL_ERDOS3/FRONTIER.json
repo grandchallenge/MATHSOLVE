@@ -468,7 +468,7 @@
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
-        "E3-B-DEWINDOWED-JOINT-WITNESS: align derivative-frequency/quadratic witnesses of the Q09 local fluctuations across enough L01 core families",
+        "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT: amplify explicit low-order carry kernels or align all-four intrinsic de-windowed U3 structure",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -493,9 +493,10 @@
         "E3-Q06",
         "E3-Q07",
         "E3-Q08",
-        "E3-Q09"
+        "E3-Q09",
+        "E3-Q10"
       ],
-      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes deterministic interval-window structure and proves at least two fibres remain intrinsically U3-structured. The live lanes are AP-free interval/multi-scale amplification and de-windowed joint witness alignment."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes deterministic interval-window structure; Q10 sharpens the de-windowed lane to explicit low-order carry kernels versus all-four intrinsic U3 structure."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -679,7 +680,7 @@
     {
       "id": "E3-B-DEWINDOWED-JOINT-WITNESS",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
       "depends_on": [
         "E3-B-DEWINDOWED-U3-FORCING",
@@ -702,7 +703,48 @@
         "prove selected global witnesses lie outside the window-generated spectrum",
         "combine de-windowed structure with near-extremality to amplify the finite L01 motif"
       ],
-      "claim_boundary": "Smallest current quadratic-branch residual; open and unproved."
+      "claim_boundary": "Smallest current quadratic-branch residual; open and unproved.",
+      "reduced_by": "E3-Q10",
+      "successor": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "reduction_note": "Q10 retains the order of the de-windowed expansion: low-order terms become explicit singleton/pair carry kernels; if all three adjacent 0011 families avoid low-order terms, all four physical fibres are intrinsically de-windowed U3-structured."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-ORDER-DICHOTOMY",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "statement": "For each adjacent 0011 family, either a singleton/pair local-window expansion term gives an explicit carry-kernel correlation at scale beta^4/(15*16^4), or a triple/fourfold term forces both physical fibres in that adjacent pair to have de-windowed U3 norm above that scale. Hence either some low-order carry witness exists or all four fibres are intrinsically structured.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md",
+      "sufficient_for": [
+        "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT"
+      ],
+      "claim_boundary": "Native structural dichotomy only; no deletion exponent or parent-frontier promotion."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-DEWINDOWED-ORDER-DICHOTOMY",
+        "E3-B-DEWINDOWED-U3-FORCING",
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY"
+      ],
+      "statement": "From Q10, either amplify an explicit singleton/pair carry-kernel correlation using near-extremality or repeated locations/scales, or align the all-four intrinsic de-windowed U3 structures, to force c*beta^(1+theta)*N deletions for some theta<1.",
+      "attack_lanes": [
+        "carry-marginal density increment from singleton kernels",
+        "bilinear carry-kernel amplification from pair terms",
+        "all-four de-windowed derivative-frequency/quadratic alignment",
+        "multi-location or multi-scale amplification of the adjacent 0011 chain"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current de-windowed quadratic residual; open."
     }
   ],
   "closed_claims": [
