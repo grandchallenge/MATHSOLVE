@@ -506,7 +506,31 @@ Therefore
 }
 \]
 
-Thus the family-specific information retained by Q14 has uniformly positive nonzero spectral energy; it is not an asymptotically vanishing boundary correction.
+Thus the native \(\mathbb Z_N^2\) carry-cell indicator has uniformly positive nonzero spectral energy; it is not an asymptotically vanishing boundary correction.
+
+Q14 is protected in a prime-lifted ambient group \(P\) with
+\[
+8N<P<16N.
+\]
+For its zero-extended carry kernel,
+\[
+p_c^{(P)}=\frac{|\Omega_c|}{P^2}
+>
+\frac{21}{65536}.
+\]
+Since \(p_c^{(P)}<1/4\),
+\[
+\boxed{
+\sum_{(a,b)\ne(0,0)}
+|\widehat K_c^{(P)}(a,b)|^2
+>
+\frac{63}{262144}.
+}
+\]
+
+So both normalizations have a uniform nonzero spectral-energy floor:
+- native \(\mathbb Z_N^2\): \(63/1024\);
+- prime-lifted Q14 kernel: \(63/262144\).
 
 This does not identify where that energy lies.
 
