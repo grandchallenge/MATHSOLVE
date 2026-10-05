@@ -706,6 +706,8 @@ def validate(root=ROOT):
             errors.append('GCL-ERDOS3 lease reaper missing runner UTC clock')
         if 'github.run_started_at' in rw:
             errors.append('GCL-ERDOS3 lease reaper uses unsupported github.run_started_at clock')
+        if '`$EXPIRES`' in rw or '`$DISPATCH`' in rw or '`$EPOCH`' in rw:
+            errors.append('GCL-ERDOS3 lease reaper uses shell-evaluated markdown backticks in receipts')
         if 'gh pr create' in rw:
             errors.append('GCL-ERDOS3 lease reaper bypasses bounded Release Trust for PR creation')
         if 'gh pr merge' in rw or 'canonical_claim_effect: true' in rw.lower():
