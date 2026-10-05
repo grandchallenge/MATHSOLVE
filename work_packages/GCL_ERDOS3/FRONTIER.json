@@ -354,13 +354,13 @@
         "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md"
       ],
-      "promotion_gate": "E3-V03__FRESH_LEASE_REQUIRED",
+      "promotion_gate": "E3-V03",
       "claim_boundary": "Formulated successor candidate only; not active and not proved."
     },
     {
       "id": "E3-V-B03",
       "kind": "VERIFICATION",
-      "status": "LEASE_EXPIRED__REISSUE_REQUIRED",
+      "status": "LAUNCHED",
       "depends_on": [
         "E3-B-GLUING-RADIUS-EQUIV"
       ],
@@ -381,6 +381,24 @@
         "valid_result_count": 0,
         "replay_budget_consumed": false,
         "clock_model": "GITHUB_ACTIVATION_COMMENT"
+      },
+      "dispatch": {
+        "dispatch_id": "GCL-ERDOS3-E3-V03-IA-007",
+        "assignment_id": "E3-V03",
+        "agent_ref": "INDEPENDENT-AGENT-E3-V03-007",
+        "issue_number": 909,
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/909",
+        "task_commit": "eb94ed1df6c3743fc8a186dcc423ce372fb512c8",
+        "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
+        "task_blob_sha1": "44d366be27cec0679c695c03074bceeab9b7cf01",
+        "lease_epoch": 7,
+        "lease_attempt_ordinal": 7,
+        "lease_clock_source": "GITHUB_ACTIVATION_COMMENT",
+        "lease_duration_minutes": 25,
+        "agent_max_execution_minutes": 24,
+        "replay_budget_ordinal": 1,
+        "state": "DISPATCHED__AWAITING_RETURN",
+        "external_sources": "PROTECTED_PACKET_ONLY"
       }
     },
     {
