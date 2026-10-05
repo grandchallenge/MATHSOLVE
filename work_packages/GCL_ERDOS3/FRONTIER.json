@@ -451,7 +451,7 @@
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
-        "E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT: make Q06 derivative overlaps coherent or convert diffuseness to deletion",
+        "E3-B-DEWINDOWED-JOINT-WITNESS: align derivative-frequency/quadratic witnesses of the Q09 local fluctuations across enough L01 core families",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -475,9 +475,10 @@
         "E3-Q05",
         "E3-Q06",
         "E3-Q07",
-        "E3-Q08"
+        "E3-Q08",
+        "E3-Q09"
       ],
-      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract one-scale phase algebra; Q08 closes finite Boolean cyclic realizability as a source of contradiction; Q06 converts the fourfold branch into positive-density derivative spectral overlaps. Remaining force must come from arithmetic fibre constraints, genuine witness amplification, derivative coherence/diffuseness, or motif amplification."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes deterministic interval-window structure and proves at least two fibres remain intrinsically U3-structured. The live lanes are AP-free interval/multi-scale amplification and de-windowed joint witness alignment."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -543,7 +544,7 @@
     {
       "id": "E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
       "depends_on": [
         "E3-B-DERIVATIVE-OVERLAP-AMPLIFICATION"
@@ -556,7 +557,10 @@
         "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md"
       ],
-      "claim_boundary": "Fourfold-branch sub-residual only; open."
+      "claim_boundary": "Fourfold-branch sub-residual only; open.",
+      "reduced_by": "E3-Q09",
+      "successor": "E3-B-DEWINDOWED-JOINT-WITNESS",
+      "reduction_note": "Q09 shows that globally centered cyclic U3/Fourier/derivative structure may include deterministic short-interval window structure. Q06 remains exact, but a frontier-grade deletion argument must de-window the witnesses or prove its selected witnesses cannot be explained by support geometry."
     },
     {
       "id": "E3-B-LINEAR-PHASE-COMPATIBILITY",
@@ -642,6 +646,46 @@
         "multi-location or multi-scale amplification exceeding Q05 Parseval capacity"
       ],
       "claim_boundary": "Smallest current linear-branch residual; open and unproved."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-U3-FORCING",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-FOUR-FIBRE-DEFICIT",
+      "depends_on": [
+        "E3-B-ALL-FIBRE-U3-FORCING"
+      ],
+      "statement": "For every family in the ten-family L01 core and dyadic N>=16, after replacing each labelled occurrence C_t by its local fluctuation h_t=1_{C_t}-alpha_t*1_{I_t}, at least one labelled factor has U3 norm > beta^4/(15*16^4). Across the core, at least two distinct physical fibres satisfy the same de-windowed lower bound.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
+      "claim_boundary": "Native structural forcing only. It does not align quadratic witnesses, force all four fibres after de-windowing, or imply a deletion bound."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-JOINT-WITNESS",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-DEWINDOWED-U3-FORCING",
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY",
+        "E3-B-DERIVATIVE-OVERLAP-AMPLIFICATION"
+      ],
+      "statement": "Starting from the Q09 locally centered fibre fluctuations, prove that genuinely non-window derivative-frequency or quadratic witnesses align across enough L01 carry families to force c*beta^(1+theta)*N deletions for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-L01_NATIVE_RESULT.md"
+      ],
+      "attack_lanes": [
+        "repeat Q04/Q06 witness extraction after local de-windowing",
+        "subtract explicit window contributions from the existing joint correlations",
+        "prove selected global witnesses lie outside the window-generated spectrum",
+        "combine de-windowed structure with near-extremality to amplify the finite L01 motif"
+      ],
+      "claim_boundary": "Smallest current quadratic-branch residual; open and unproved."
     }
   ],
   "closed_claims": [
@@ -697,6 +741,6 @@
     "objective": "Reissue the same independent G01 bridge verification under marker-clock lease epoch 5 without consuming a second mathematical replay.",
     "replay_budget_ordinal": 1,
     "active_frontier_effect": "NONE",
-    "native_work": "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION and E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT remain active native lanes."
+    "native_work": "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION and E3-B-DEWINDOWED-JOINT-WITNESS remain active native lanes."
   }
 }
