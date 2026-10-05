@@ -90,10 +90,18 @@ def validate(root=ROOT):
         errors.append('linear witness amplification successor drift')
     if rows.get('E3-B-LINEAR-PHASE-COMPATIBILITY',{}).get('status')!='PROVED_NATIVE':
         errors.append('linear phase compatibility no-go state drift')
-    if rows.get('E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
-        errors.append('linear realizability/amplification residual state drift')
+    if rows.get('E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
+        errors.append('linear realizability/amplification reduced state drift')
     if rows.get('E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION',{}).get('parent')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
         errors.append('linear realizability/amplification parent drift')
+    if rows.get('E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION',{}).get('successor')!='E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION':
+        errors.append('linear realizability/amplification successor drift')
+    if rows.get('E3-B-BOOLEAN-HARMONIC-REALIZABILITY',{}).get('status')!='PROVED_NATIVE':
+        errors.append('Boolean harmonic realizability no-go state drift')
+    if rows.get('E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('AP-free interval amplification residual state drift')
+    if rows.get('E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION',{}).get('parent')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
+        errors.append('AP-free interval amplification parent drift')
     if rows.get('E3-B-DERIVATIVE-OVERLAP-AMPLIFICATION',{}).get('status')!='PROVED_NATIVE':
         errors.append('derivative overlap amplification state drift')
     if rows.get('E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
@@ -171,6 +179,8 @@ def validate(root=ROOT):
         errors.append('E3-Q06 native campaign result drift')
     if campaign.get('work_package_results',{}).get('E3-Q07')!='PROVED_NATIVE_FINITE_PHASE_ALGEBRA_INSUFFICIENT':
         errors.append('E3-Q07 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q08')!='PROVED_NATIVE_BOOLEAN_REALIZABILITY_INSUFFICIENT':
+        errors.append('E3-Q08 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
@@ -188,6 +198,9 @@ def validate(root=ROOT):
         errors.append('E3-Q07 campaign extension binding drift')
     if extq07.get('replay_tool')!='work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py':
         errors.append('E3-Q07 replay-tool binding drift')
+    extq08=campaign.get('tranche_04_extension_q08',{})
+    if extq08.get('result')!='E3-Q08' or extq08.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q08_NATIVE_RESULT.md':
+        errors.append('E3-Q08 campaign extension binding drift')
     if campaign.get('dispatch_state')!='VERIFY_LEASE_EXPIRED__REISSUE_REQUIRED':
         errors.append('E3-V03 dispatch state drift')
     if campaign.get('synthesis_allowed') is not False:
@@ -527,6 +540,7 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q08_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py',
         'work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py',
         'work_packages/GCL_ERDOS3/LEASE_POLICY.json',
@@ -664,5 +678,5 @@ def validate(root=ROOT):
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    if not e: print('PASS: GCL-ERDOS3 Q07 closes finite one-scale phase algebra as insufficient; linear realizability/amplification and derivative-spectral alignment remain open while V03 epoch 4 is fenced')
+    if not e: print('PASS: GCL-ERDOS3 Q08 closes finite Boolean cyclic realizability as insufficient; AP-free interval/multi-scale amplification and derivative-spectral alignment remain open while V03 epoch 4 is fenced')
     raise SystemExit(bool(e))
