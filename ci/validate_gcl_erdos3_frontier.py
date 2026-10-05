@@ -127,14 +127,20 @@ def validate(root=ROOT):
     if rows.get('E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT',{}).get('parent')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
         errors.append('de-windowed carry-kernel/all-fibre residual parent drift')
     if rows.get('E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT',{}).get('successors')!=[
-        'E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION',
+        'E3-B-EXPONENT4-DENSITY-INCREMENT-AMPLIFICATION',
         'E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT'
     ]:
-        errors.append('Q12 de-windowed residual successor split drift')
+        errors.append('Q13 de-windowed residual successor split drift')
     if rows.get('E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT',{}).get('status')!='PROVED_NATIVE':
         errors.append('low-order short-step density increment state drift')
-    if rows.get('E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
-        errors.append('short-step density increment amplification state drift')
+    if rows.get('E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
+        errors.append('short-step density increment amplification reduced state drift')
+    if rows.get('E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION',{}).get('successor')!='E3-B-EXPONENT4-DENSITY-INCREMENT-AMPLIFICATION':
+        errors.append('short-step density increment amplification successor drift')
+    if rows.get('E3-B-DYADIC-SHORT-STEP-DENSITY-INCREMENT',{}).get('status')!='PROVED_NATIVE':
+        errors.append('dyadic short-step density increment state drift')
+    if rows.get('E3-B-EXPONENT4-DENSITY-INCREMENT-AMPLIFICATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('exponent-4 density increment amplification state drift')
     if rows.get('E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
         errors.append('all-fibre de-windowed alignment reduced state drift')
     if rows.get('E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT',{}).get('successor')!='E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT':
@@ -245,6 +251,8 @@ def validate(root=ROOT):
         errors.append('E3-Q11 native campaign result drift')
     if campaign.get('work_package_results',{}).get('E3-Q12')!='PROVED_NATIVE_DEWINDOWED_DERIVATIVE_PRODUCT_OVERLAP':
         errors.append('E3-Q12 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q13')!='PROVED_NATIVE_DYADIC_EXTRACTION_WITH_EXPONENT4_BARRIER':
+        errors.append('E3-Q13 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
@@ -277,6 +285,9 @@ def validate(root=ROOT):
     extq12=campaign.get('tranche_04_extension_q12',{})
     if extq12.get('result')!='E3-Q12' or extq12.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md':
         errors.append('E3-Q12 campaign extension binding drift')
+    extq13=campaign.get('tranche_04_extension_q13',{})
+    if extq13.get('result')!='E3-Q13' or extq13.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md':
+        errors.append('E3-Q13 campaign extension binding drift')
     expected_dispatch_state='VERIFY_LEASE_EXPIRED__REISSUE_REQUIRED' if v03_epoch6_expired else 'VERIFY_DISPATCHED__AWAITING_RETURN'
     if campaign.get('dispatch_state')!=expected_dispatch_state:
         errors.append('E3-V03 dispatch state drift')
@@ -700,6 +711,7 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py',
         'work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py',
         'work_packages/GCL_ERDOS3/LEASE_POLICY.json',
