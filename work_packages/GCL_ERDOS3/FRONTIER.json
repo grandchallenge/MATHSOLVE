@@ -468,7 +468,7 @@
       "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
-        "E3-B-DYADIC-DENSITY-INCREMENT-RECURSION: Q13 removes arbitrary-M conversion; amplify the beta^4 dyadic backward increment across controlled scales or prove this arm cannot reach exponent below 2",
+        "E3-B-LOW-ORDER-EXPONENT-UPGRADE: Q14 proves beta^4 recursion alone is nonsummability-compatible; exploit additional carry/near-extremal structure to reach an effective loss exponent p<2",
         "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT: align Q12 same-shift derivative-product spectra or exploit the mixed one-window branch",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
@@ -498,9 +498,10 @@
         "E3-Q10",
         "E3-Q11",
         "E3-Q12",
-        "E3-Q13"
+        "E3-Q13",
+        "E3-Q14"
       ],
-      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap. Q13 localizes the Q11 increment to a dyadic subprogression after O(log(1/beta)) levels with no fixed-factor density loss."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap. Q13 localizes the Q11 increment to a dyadic subprogression after O(log(1/beta)) levels with no fixed-factor density loss. Q14 proves the exact recursion-only summability threshold p<2, so the beta^4 low-order arm cannot close by iteration alone."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -872,7 +873,7 @@
     {
       "id": "E3-B-DYADIC-DENSITY-INCREMENT-RECURSION",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
       "depends_on": [
         "E3-B-DYADIC-SHORT-STEP-LOCALIZATION"
@@ -890,6 +891,48 @@
       "evidence_basis": [
         "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current low-order residual; open.",
+      "reduced_by": "E3-Q14",
+      "successor": "E3-B-LOW-ORDER-EXPONENT-UPGRADE",
+      "reduction_note": "Q14 gives an abstract sequence satisfying even fixed-step order-a^4 loss while its series diverges. Pure recursion at exponent 4 is insufficient."
+    },
+    {
+      "id": "E3-B-RECURSION-SUMMABILITY-THRESHOLD",
+      "kind": "LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-DYADIC-DENSITY-INCREMENT-RECURSION",
+      "depends_on": [
+        "E3-B-DYADIC-SHORT-STEP-LOCALIZATION"
+      ],
+      "statement": "For p>1, b_n=(n+1)^(-1/(p-1)) satisfies b_{n-1}-b_n >= (p-1)^(-1)b_n^p; its series converges iff p<2. Hence p<2 is the exact summability threshold for pure power-law density-loss recursion.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md",
+      "evidence_blob_sha1": "6949c137ea9a376aa24d32dbee41641b852bd417",
+      "proved_by": "E3-Q14"
+    },
+    {
+      "id": "E3-B-LOW-ORDER-EXPONENT-UPGRADE",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-DYADIC-DENSITY-INCREMENT-RECURSION",
+      "depends_on": [
+        "E3-B-RECURSION-SUMMABILITY-THRESHOLD",
+        "E3-B-DYADIC-SHORT-STEP-LOCALIZATION"
+      ],
+      "statement": "Starting from Q11/Q13, use additional four-fibre near-extremality, carry compatibility, or interaction with the Q12 high-order branch to improve the effective low-order loss exponent from 4 to some p<2, equivalently p=1+theta with 0<theta<1.",
+      "attack_lanes": [
+        "show low-order carry-kernel recurrence occurs across many fibres/locations simultaneously and amplifies beyond beta^4",
+        "couple the short-step density increment to near-extremal deficit to obtain a stronger exponent",
+        "force transition from repeated low-order increments into the Q12 high-order alignment arm",
+        "prove an arithmetic restriction on r4-extremizers that upgrades beta^4 to beta^p with p<2"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md"
       ],
       "claim_boundary": "Smallest current low-order residual; open."
     }
