@@ -57,12 +57,13 @@
     "E3-Q08": "PROVED_NATIVE_BOOLEAN_REALIZABILITY_INSUFFICIENT",
     "E3-Q09": "PROVED_NATIVE_DEWINDOWED_U3_FORCING",
     "E3-Q10": "PROVED_NATIVE_DEWINDOWED_ORDER_DICHOTOMY",
-    "E3-Q11": "PROVED_NATIVE_LOW_ORDER_DENSITY_INCREMENT"
+    "E3-Q11": "PROVED_NATIVE_LOW_ORDER_DENSITY_INCREMENT",
+    "E3-Q12": "PROVED_NATIVE_DEWINDOWED_DERIVATIVE_PRODUCT_OVERLAP"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
   ],
-  "next_action": "Receive/adjudicate E3-V03 independently. In parallel attack E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION and E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT, plus the separate linear AP-free interval amplification lane. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
+  "next_action": "Receive/adjudicate E3-V03 independently. In parallel attack E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION, E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT, and the separate linear AP-free interval amplification lane. Only VERIFIED may promote E3-Q4-GLUING-RADIUS.",
   "verification_dispatches": {
     "E3-V01": {
       "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
@@ -327,5 +328,11 @@
     "disposition": "PROVED_NATIVE_LOW_ORDER_DENSITY_INCREMENT",
     "path": "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md",
     "effect": "Every Q10 singleton/pair carry-kernel witness yields a positive density increment of order beta^4 on an actual arithmetic subprogression of common difference at most 3 inside one physical fibre."
+  },
+  "tranche_04_extension_q12": {
+    "result": "E3-Q12",
+    "disposition": "PROVED_NATIVE_DEWINDOWED_DERIVATIVE_PRODUCT_OVERLAP",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md",
+    "effect": "Every Q10 high-order adjacent-pair term yields a positive-density set of same-shift derivative-product spectral overlaps. Fully de-windowed fourfold terms give derivative-vs-derivative overlap; triple terms expose exactly one remaining deterministic window factor."
   }
 }
