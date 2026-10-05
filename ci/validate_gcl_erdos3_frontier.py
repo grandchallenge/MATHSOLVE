@@ -154,8 +154,14 @@ def validate(root=ROOT):
         errors.append('core carry cardinality state drift')
     if rows.get('E3-B-DENSITY-INCREMENT-AMPLIFICATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
         errors.append('density-increment amplification residual state drift')
-    if rows.get('E3-B-CARRY-KERNEL-SPECTRAL-INCOMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
-        errors.append('carry-kernel spectral incompatibility residual state drift')
+    if rows.get('E3-B-CARRY-KERNEL-SPECTRAL-INCOMPATIBILITY',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
+        errors.append('carry-kernel spectral incompatibility reduced state drift')
+    if set(rows.get('E3-B-CARRY-KERNEL-SPECTRAL-INCOMPATIBILITY',{}).get('split_successors',[]))!={'E3-B-PRIME-ALIGNED-WITNESS-AMPLIFICATION','E3-B-CENTERED-CARRY-KERNEL-INCOMPATIBILITY'}:
+        errors.append('carry-kernel spectral incompatibility split drift')
+    if rows.get('E3-B-PRIME-ALIGNED-WITNESS-AMPLIFICATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('prime-aligned witness amplification residual state drift')
+    if rows.get('E3-B-CENTERED-CARRY-KERNEL-INCOMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('centered carry-kernel incompatibility residual state drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
         errors.append('joint-witness native residual state drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('parent')!='E3-B-FOUR-FIBRE-DEFICIT':
