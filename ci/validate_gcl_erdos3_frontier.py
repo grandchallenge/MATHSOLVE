@@ -84,8 +84,16 @@ def validate(root=ROOT):
         errors.append('adjacent witness dichotomy native lemma state drift')
     if rows.get('E3-B-LINEAR-WITNESS-PARSEVAL-BOUND',{}).get('status')!='PROVED_NATIVE':
         errors.append('linear witness Parseval bound state drift')
-    if rows.get('E3-B-LINEAR-WITNESS-AMPLIFICATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
-        errors.append('linear witness amplification residual state drift')
+    if rows.get('E3-B-LINEAR-WITNESS-AMPLIFICATION',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
+        errors.append('linear witness amplification reduced state drift')
+    if rows.get('E3-B-LINEAR-WITNESS-AMPLIFICATION',{}).get('successor')!='E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION':
+        errors.append('linear witness amplification successor drift')
+    if rows.get('E3-B-LINEAR-PHASE-COMPATIBILITY',{}).get('status')!='PROVED_NATIVE':
+        errors.append('linear phase compatibility no-go state drift')
+    if rows.get('E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('linear realizability/amplification residual state drift')
+    if rows.get('E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION',{}).get('parent')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
+        errors.append('linear realizability/amplification parent drift')
     if rows.get('E3-B-DERIVATIVE-OVERLAP-AMPLIFICATION',{}).get('status')!='PROVED_NATIVE':
         errors.append('derivative overlap amplification state drift')
     if rows.get('E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
@@ -161,6 +169,8 @@ def validate(root=ROOT):
         errors.append('E3-Q05 native campaign result drift')
     if campaign.get('work_package_results',{}).get('E3-Q06')!='PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION':
         errors.append('E3-Q06 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q07')!='PROVED_NATIVE_FINITE_PHASE_ALGEBRA_INSUFFICIENT':
+        errors.append('E3-Q07 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
@@ -173,6 +183,11 @@ def validate(root=ROOT):
     extq06=campaign.get('tranche_04_extension_q06',{})
     if extq06.get('result')!='E3-Q06' or extq06.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md':
         errors.append('E3-Q06 campaign extension binding drift')
+    extq07=campaign.get('tranche_04_extension_q07',{})
+    if extq07.get('result')!='E3-Q07' or extq07.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md':
+        errors.append('E3-Q07 campaign extension binding drift')
+    if extq07.get('replay_tool')!='work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py':
+        errors.append('E3-Q07 replay-tool binding drift')
     if campaign.get('dispatch_state')!='VERIFY_LEASE_EXPIRED__REISSUE_REQUIRED':
         errors.append('E3-V03 dispatch state drift')
     if campaign.get('synthesis_allowed') is not False:
@@ -509,7 +524,11 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md',
         'work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py',
+        'work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py',
         'work_packages/GCL_ERDOS3/LEASE_POLICY.json',
         'work_packages/GCL_ERDOS3/work_packages/E3-V03.md',
         'work_packages/GCL_ERDOS3/dispatches/GCL-ERDOS3-E3-V03-IA-001.json',
@@ -619,11 +638,17 @@ def validate(root=ROOT):
     q06=root/'work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md'
     if not q06.is_file() or blob(q06)!='0b4ac5b53198c889be72289eb65533b0cb879773':
         errors.append('E3-Q06 native result blob drift')
+    q07=root/'work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md'
+    if not q07.is_file() or blob(q07)!='f25731fbef96c49d000d9149eb27ac0bb87c8e8f':
+        errors.append('E3-Q07 native result blob drift')
+    q07tool=root/'work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py'
+    if not q07tool.is_file() or blob(q07tool)!='30265cb39df613cd62c7f9cc580c5d11c78ff854':
+        errors.append('E3-Q07 replay-tool blob drift')
 
     return errors
 
 if __name__=='__main__':
     e=validate()
     for x in e: print('FAIL:',x)
-    if not e: print('PASS: GCL-ERDOS3 Q06 remains protected while V03 epoch 4 is fenced as a silent expiry with replay budget unconsumed')
+    if not e: print('PASS: GCL-ERDOS3 Q07 closes finite one-scale phase algebra as insufficient; linear realizability/amplification and derivative-spectral alignment remain open while V03 epoch 4 is fenced')
     raise SystemExit(bool(e))
