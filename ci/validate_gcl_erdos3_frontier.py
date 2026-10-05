@@ -114,10 +114,18 @@ def validate(root=ROOT):
         errors.append('derivative spectral alignment successor drift')
     if rows.get('E3-B-DEWINDOWED-U3-FORCING',{}).get('status')!='PROVED_NATIVE':
         errors.append('de-windowed U3 forcing state drift')
-    if rows.get('E3-B-DEWINDOWED-JOINT-WITNESS',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
-        errors.append('de-windowed joint witness residual state drift')
+    if rows.get('E3-B-DEWINDOWED-JOINT-WITNESS',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
+        errors.append('de-windowed joint witness reduced state drift')
     if rows.get('E3-B-DEWINDOWED-JOINT-WITNESS',{}).get('parent')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
         errors.append('de-windowed joint witness parent drift')
+    if rows.get('E3-B-DEWINDOWED-JOINT-WITNESS',{}).get('successor')!='E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT':
+        errors.append('de-windowed joint witness successor drift')
+    if rows.get('E3-B-DEWINDOWED-ORDER-DICHOTOMY',{}).get('status')!='PROVED_NATIVE':
+        errors.append('de-windowed order dichotomy state drift')
+    if rows.get('E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('de-windowed carry-kernel/all-fibre residual state drift')
+    if rows.get('E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT',{}).get('parent')!='E3-B-JOINT-WITNESS-INCOMPATIBILITY':
+        errors.append('de-windowed carry-kernel/all-fibre residual parent drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
         errors.append('joint-witness native residual state drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('parent')!='E3-B-FOUR-FIBRE-DEFICIT':
@@ -218,6 +226,8 @@ def validate(root=ROOT):
         errors.append('E3-Q08 native campaign result drift')
     if campaign.get('work_package_results',{}).get('E3-Q09')!='PROVED_NATIVE_DEWINDOWED_U3_FORCING':
         errors.append('E3-Q09 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q10')!='PROVED_NATIVE_DEWINDOWED_ORDER_DICHOTOMY':
+        errors.append('E3-Q10 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
@@ -241,6 +251,9 @@ def validate(root=ROOT):
     extq09=campaign.get('tranche_04_extension_q09',{})
     if extq09.get('result')!='E3-Q09' or extq09.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md':
         errors.append('E3-Q09 campaign extension binding drift')
+    extq10=campaign.get('tranche_04_extension_q10',{})
+    if extq10.get('result')!='E3-Q10' or extq10.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md':
+        errors.append('E3-Q10 campaign extension binding drift')
     expected_dispatch_state='VERIFY_LEASE_EXPIRED__REISSUE_REQUIRED' if v03_epoch5_expired else 'VERIFY_DISPATCHED__AWAITING_RETURN'
     if campaign.get('dispatch_state')!=expected_dispatch_state:
         errors.append('E3-V03 dispatch state drift')
@@ -646,6 +659,7 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q08_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py',
         'work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py',
         'work_packages/GCL_ERDOS3/LEASE_POLICY.json',
