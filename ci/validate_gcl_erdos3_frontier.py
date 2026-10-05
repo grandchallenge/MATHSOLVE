@@ -603,10 +603,10 @@ def validate(root=ROOT):
             'cron: "*/5 * * * *"',
             'workflow_dispatch:',
             'ci/gcl_erdos3_lease_reaper.py',
-            'gh pr create',
-            'mathematical replay budget consumed: NO',
-            'canonical claim effect: NONE',
-            'frontier promotion effect: NONE',
+            'Release Trust handoff ready:',
+            'gh issue close',
+            'Lifecycle branch',
+            'no mathematical or frontier effect is authorized',
         ):
             if needle not in rw:
                 errors.append(f'GCL-ERDOS3 lease reaper missing integrity control: {needle}')
@@ -614,6 +614,8 @@ def validate(root=ROOT):
             errors.append('GCL-ERDOS3 lease reaper missing runner UTC clock')
         if 'github.run_started_at' in rw:
             errors.append('GCL-ERDOS3 lease reaper uses unsupported github.run_started_at clock')
+        if 'pull-requests: write' in rw or 'gh pr create' in rw:
+            errors.append('GCL-ERDOS3 lease reaper retained unauthorized local PR-creation authority')
         if 'gh pr merge' in rw or 'canonical_claim_effect: true' in rw.lower():
             errors.append('GCL-ERDOS3 lease reaper gained unauthorized promotion/merge authority')
     ci_workflow=root/'.github/workflows/ci.yml'
