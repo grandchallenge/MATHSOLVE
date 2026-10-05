@@ -93,6 +93,19 @@ def projection(
     elif mode == "reconcile":
         if comments is None:
             raise ValueError("reconcile requires comments")
+        if any(
+            isinstance(comment.get("body"), str)
+            and comment["body"].startswith("GCL-CONTRIBUTION-RESULT/1\n")
+            for comment in comments
+        ):
+            return {
+                "queue_managed": True,
+                "dispatch_id": dispatch_id,
+                "issue_number": job["issue_number"],
+                "reservation_state": "RESULT_PRESENT",
+                "issue_field_values": [],
+                "clear_field_ids": [],
+            }
         cfg = load_json(CONFIG)
         at = now or datetime.now(timezone.utc)
         active = active_reservation(
