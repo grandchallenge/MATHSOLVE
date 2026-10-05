@@ -36,13 +36,20 @@ jobs:
         with:
           python-version: "3.12.13"
 
+      - name: Fetch issue comment history
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments?per_page=100" | jq -s 'add' > "$RUNNER_TEMP/issue-comments.json"
+
       - name: Validate exact dispatch and result comment
         id: validate
         continue-on-error: true
         env:
           OUT_DIR: ${{ runner.temp }}/ns-ci-intake
         run: |
-          python ci/ns_ci_github_contribution_intake.py             --event "$GITHUB_EVENT_PATH"             --repo-root "$GITHUB_WORKSPACE"             --output "$OUT_DIR"
+          python ci/ns_ci_github_contribution_intake.py             --event "$GITHUB_EVENT_PATH"             --repo-root "$GITHUB_WORKSPACE"             --output "$OUT_DIR"             --comments "$RUNNER_TEMP/issue-comments.json"
 
       - name: Report mechanical rejection
         if: steps.validate.outcome == 'failure'

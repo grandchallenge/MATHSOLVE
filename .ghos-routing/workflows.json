@@ -219,6 +219,18 @@
       "controller_id": "GITHUB_ACTIONS"
     },
     {
+      "path": ".github/workflows/gcl-worker-queue.yml",
+      "observed_features": [
+        "AUTONOMOUS_WAKE",
+        "OPAQUE_EXECUTION",
+        "SCHEDULED",
+        "SECRET_CREDENTIAL",
+        "WRITE_CAPABLE"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
       "path": ".github/workflows/ghos-routing-enforcement-v2.yml",
       "observed_features": [
         "OPAQUE_EXECUTION"
