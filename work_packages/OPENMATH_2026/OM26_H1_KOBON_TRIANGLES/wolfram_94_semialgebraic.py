@@ -289,7 +289,7 @@ def main():
     query.add_argument("--reals", action="store_true")
 
     args = ap.parse_args()
-    lines = wall.load_solution(args.seed)
+    lines = [tuple(x) for x in json.loads(args.seed.read_text())["lines"]]
     if wall.exact_score(lines) != 93:
         raise SystemExit("protected seed score drift")
 
