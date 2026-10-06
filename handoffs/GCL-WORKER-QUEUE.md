@@ -60,15 +60,21 @@ A RESULT/1 for a queue-managed job is admitted by the existing controlled intake
 only when the authenticated result author matches the active reservation owner
 at the time of the result.
 
-## Current pilot
+## Current queue population
 
-The first protected pilot contains the 24 existing ERDOS first-tranche
-reconnaissance dispatches: R1, S1, and A1 for Problems 593, 595, 241, 470, 1052,
-99, 101, and 138.
+The original protected pilot contains the 24 ERDOS first-tranche reconnaissance
+dispatches: R1, S1, and A1 for Problems 593, 595, 241, 470, 1052, 99, 101, and
+138. Those historical entries remain frozen.
 
-Their mathematics, immutable launch artifacts, blind cohort membership, and
-synthesis gates are unchanged. The pilot adds discovery and worker reservation
-only.
+The queue now also accepts additive protected campaign cohorts without
+reclassifying the pilot. The first additive cohort is
+`CMDG-P3M-SEP2-BLIND-COHORT-001`, four bounded product-functional separation
+assignments testing Point recovery, weighted-Dirac separation, a categorical
+separator formulation, and adversarial faithfulness.
+
+For every campaign, mathematics, immutable launch artifacts, blind-cohort
+membership, and synthesis gates remain governed by their own protected dispatches.
+The queue supplies discovery and reservation only.
 
 ## GitHub Project view
 
