@@ -17,6 +17,11 @@ class Erdos241ReplayTests(unittest.TestCase):
             report["minimal_spans"],
             {str(k): v for k, v in EXPECTED_MINIMAL_SPANS.items()},
         )
+        self.assertTrue(report["no_seven_element_b3_set_through_64"])
+        self.assertEqual(
+            report["exact_f_intervals_through_64"][-1],
+            {"start": 46, "end": 64, "value": 6},
+        )
         self.assertEqual(
             report["minimal_span_extremizers"],
             {
