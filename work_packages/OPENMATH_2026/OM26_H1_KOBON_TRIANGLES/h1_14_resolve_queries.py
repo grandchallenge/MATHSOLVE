@@ -91,7 +91,7 @@ def main():
     ap.add_argument("--side", type=int, choices=(0, 1), default=0)
     args = ap.parse_args()
 
-    lines = wall.load_solution(SEED)
+    lines = [tuple(x) for x in json.loads(SEED.read_text())["lines"]]
     if wall.exact_score(lines) != 93:
         raise SystemExit("protected seed score drift")
     records = target_records(lines)[: args.top]
