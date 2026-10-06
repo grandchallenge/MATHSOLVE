@@ -116,6 +116,7 @@ def validate(root: Path = ROOT) -> list[str]:
         "group: ns-ci-contribution-intake-${{ github.event.issue.number }}",
         "The bounded Release Trust PR controller owns PR creation",
         "INTAKE CAPTURED",
+        "[GCL-CONTRIB] CMDG-P3M-SEP CMDG-P3M-SEP2-",
     ):
         if needle not in workflow:
             errors.append(f"intake workflow missing control: {needle}")

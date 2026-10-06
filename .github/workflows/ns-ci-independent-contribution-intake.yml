@@ -19,6 +19,7 @@ jobs:
       (startsWith(github.event.issue.title, '[GCL-CONTRIB] NSCI-') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] UC-001 UC-WP08-D004-') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] CMDG-CM4 CMDG-P3M-SEP-') ||
+       startsWith(github.event.issue.title, '[GCL-CONTRIB] CMDG-P3M-SEP CMDG-P3M-SEP2-') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] CMDG-CM4 CMDG-P3M-COV-') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] CMDG-CM4 CMDG-P3M-N3-') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] ERDOS-OPEN ') ||
