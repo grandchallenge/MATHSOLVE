@@ -146,6 +146,7 @@ jobs:
         run: |
           python ci/validate_openmath_h1_12_q5_equality.py
           python -m unittest ci/test_openmath_h1_12_q5_equality.py -v
+          python -m unittest ci/test_openmath_h1_14_wolfram.py -v
       - name: Validate recursive campaign manifests and Cert boundaries
         run: |
           python ci/validate_campaign_manifests.py

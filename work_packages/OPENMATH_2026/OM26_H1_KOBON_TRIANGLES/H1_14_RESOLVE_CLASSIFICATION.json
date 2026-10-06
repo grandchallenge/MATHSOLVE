@@ -1,0 +1,370 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-14-RESOLVE-CLASSIFICATION",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-14",
+  "state": "COMPLETE__STRICT_CELL_QE_CLASSIFIED__NO_94",
+  "protected_reconciliation_base": "91c4a7879ad5b51077fdba9cb1f5e9367bc4a7e0",
+  "seed": {
+    "candidate": "RH_BADER_RECONSTRUCTION_093",
+    "git_blob_sha1": "bb244e4b0422922ae9f85cc4facb2109c33162b3",
+    "score": 93
+  },
+  "selection": {
+    "method": "Ten two-blocker targets with smallest sum of Euclidean distances from each seed blocker line to its required target-vertex determinant wall in the [m,-1000,b] chart.",
+    "query_generator": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/h1_14_resolve_queries.py",
+    "target_count": 10,
+    "strict_single_cells": 20
+  },
+  "semantics": {
+    "strict_cell": "Move exactly one blocker in (m,b), preserve every seed pairwise parallel/nonparallel sign and every seed triple determinant sign involving that line except the one required target-vertex determinant sign, and require bounded search-box inequalities.",
+    "wolfram_operation": "Resolve[Exists[{m,b}, constraints], Reals]",
+    "result_meaning": "False is exact infeasibility of that strict sign cell only; True means the strict real cell is nonempty.",
+    "authority": "Wolfram exact semialgebraic evidence only; not MATHCERT authority."
+  },
+  "cases": [
+    {
+      "rank": 0,
+      "target": [
+        3,
+        14,
+        17
+      ],
+      "moving_line": 8,
+      "target_vertex_pair": [
+        14,
+        17
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 0,
+      "target": [
+        3,
+        14,
+        17
+      ],
+      "moving_line": 11,
+      "target_vertex_pair": [
+        3,
+        17
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 1,
+      "target": [
+        0,
+        4,
+        14
+      ],
+      "moving_line": 6,
+      "target_vertex_pair": [
+        0,
+        14
+      ],
+      "resolve": true
+    },
+    {
+      "rank": 1,
+      "target": [
+        0,
+        4,
+        14
+      ],
+      "moving_line": 11,
+      "target_vertex_pair": [
+        0,
+        4
+      ],
+      "resolve": true
+    },
+    {
+      "rank": 2,
+      "target": [
+        2,
+        5,
+        15
+      ],
+      "moving_line": 8,
+      "target_vertex_pair": [
+        2,
+        15
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 2,
+      "target": [
+        2,
+        5,
+        15
+      ],
+      "moving_line": 11,
+      "target_vertex_pair": [
+        2,
+        5
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 3,
+      "target": [
+        3,
+        8,
+        17
+      ],
+      "moving_line": 11,
+      "target_vertex_pair": [
+        3,
+        17
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 3,
+      "target": [
+        3,
+        8,
+        17
+      ],
+      "moving_line": 14,
+      "target_vertex_pair": [
+        3,
+        8
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 4,
+      "target": [
+        2,
+        11,
+        15
+      ],
+      "moving_line": 5,
+      "target_vertex_pair": [
+        11,
+        15
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 4,
+      "target": [
+        2,
+        11,
+        15
+      ],
+      "moving_line": 8,
+      "target_vertex_pair": [
+        2,
+        15
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 5,
+      "target": [
+        1,
+        5,
+        16
+      ],
+      "moving_line": 8,
+      "target_vertex_pair": [
+        1,
+        16
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 5,
+      "target": [
+        1,
+        5,
+        16
+      ],
+      "moving_line": 12,
+      "target_vertex_pair": [
+        1,
+        5
+      ],
+      "resolve": true
+    },
+    {
+      "rank": 6,
+      "target": [
+        1,
+        12,
+        16
+      ],
+      "moving_line": 5,
+      "target_vertex_pair": [
+        12,
+        16
+      ],
+      "resolve": true
+    },
+    {
+      "rank": 6,
+      "target": [
+        1,
+        12,
+        16
+      ],
+      "moving_line": 8,
+      "target_vertex_pair": [
+        1,
+        16
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 7,
+      "target": [
+        4,
+        15,
+        17
+      ],
+      "moving_line": 6,
+      "target_vertex_pair": [
+        15,
+        17
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 7,
+      "target": [
+        4,
+        15,
+        17
+      ],
+      "moving_line": 12,
+      "target_vertex_pair": [
+        4,
+        17
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 8,
+      "target": [
+        0,
+        4,
+        6
+      ],
+      "moving_line": 11,
+      "target_vertex_pair": [
+        0,
+        4
+      ],
+      "resolve": true
+    },
+    {
+      "rank": 8,
+      "target": [
+        0,
+        4,
+        6
+      ],
+      "moving_line": 14,
+      "target_vertex_pair": [
+        4,
+        6
+      ],
+      "resolve": false
+    },
+    {
+      "rank": 9,
+      "target": [
+        2,
+        14,
+        17
+      ],
+      "moving_line": 5,
+      "target_vertex_pair": [
+        14,
+        17
+      ],
+      "resolve": true
+    },
+    {
+      "rank": 9,
+      "target": [
+        2,
+        14,
+        17
+      ],
+      "moving_line": 9,
+      "target_vertex_pair": [
+        2,
+        17
+      ],
+      "resolve": false
+    }
+  ],
+  "summary": {
+    "feasible_strict_single_cells": 6,
+    "infeasible_strict_single_cells": 14,
+    "targets_with_both_strict_exits_feasible": [
+      [
+        0,
+        4,
+        14
+      ]
+    ]
+  },
+  "coupled_strict_cell": {
+    "target": [
+      0,
+      4,
+      14
+    ],
+    "moving_lines": [
+      6,
+      11
+    ],
+    "flipped_determinants": [
+      [
+        0,
+        6,
+        14
+      ],
+      [
+        0,
+        4,
+        11
+      ]
+    ],
+    "wolfram_operation": "FindInstance[constraints,{m6,b6,m11,b11},Rationals,1]",
+    "result": "FEASIBLE",
+    "rational_witness": {
+      "line_6": {
+        "m": "430",
+        "b": "-217"
+      },
+      "line_11": {
+        "m": "-489",
+        "b": "-1969/1406"
+      }
+    },
+    "materialized_integer_lines": {
+      "line_6": [
+        430,
+        -1000,
+        -217
+      ],
+      "line_11": [
+        -687534,
+        -1406000,
+        -1969
+      ]
+    },
+    "gcl_exact_score": 89,
+    "disposition": "FEASIBLE_STRICT_DUAL_CELL__NET_LOSS__NOT_PROMOTABLE"
+  },
+  "interpretation": "Fourteen of the twenty closest strict one-wall exits are exactly empty. Six exist, but only target [0,4,14] admits both strict exits independently. Its joint strict four-variable cell is rationally realizable and scores 89. Thus a score-94 construction in this neighborhood must cross additional event walls rather than merely remove the two target blockers.",
+  "claim_boundary": "Bounded exact semialgebraic route evidence only. The 14 False results exclude only their declared strict seed-sign cells; they do not prove nonexistence of 94, optimality of 93, or an unrestricted upper bound."
+}
