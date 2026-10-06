@@ -25,7 +25,7 @@ def git_blob_sha1(path: Path) -> str:
 
 
 def main():
-    lines = bridge.wall.load_solution(SEED)
+    lines = [tuple(x) for x in json.loads(SEED.read_text())["lines"]]
     if bridge.wall.exact_score(lines) != 93:
         raise SystemExit("H1-14 seed score drift")
     if git_blob_sha1(SEED) != "bb244e4b0422922ae9f85cc4facb2109c33162b3":
