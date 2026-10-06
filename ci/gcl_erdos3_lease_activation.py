@@ -88,8 +88,17 @@ def plan_activation(
     issue_number = issue.get("number")
     if issue_number != dispatch.get("github_issue_number"):
         raise ActivationError("canonical issue number drift")
-    if issue.get("state") != "open":
-        raise ActivationError("canonical issue is not open")
+    issue_state = issue.get("state")
+    if issue_state == "closed":
+        return {
+            "activate": False,
+            "reason": "CANONICAL_ISSUE_CLOSED",
+            "dispatch_id": dispatch_id,
+            "issue_number": issue_number,
+            "lease_epoch": dispatch.get("lease_epoch"),
+        }
+    if issue_state != "open":
+        raise ActivationError("canonical issue state is invalid")
 
     bootstrap_path = root / str(dispatch.get("bootstrap_path", ""))
     if not bootstrap_path.is_file():

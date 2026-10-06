@@ -119,9 +119,13 @@ class GclErdos3LeaseActivationTests(unittest.TestCase):
         with self.assertRaisesRegex(ActivationError, "neither protected staging nor active"):
             plan_activation(self.root, self.issue(title="unexpected"), [])
 
-    def test_closed_issue_is_rejected(self) -> None:
-        with self.assertRaisesRegex(ActivationError, "not open"):
-            plan_activation(self.root, self.issue(state="closed"), [])
+    def test_closed_issue_is_idempotent_noop(self) -> None:
+        result = plan_activation(self.root, self.issue(state="closed"), [])
+        self.assertFalse(result["activate"])
+        self.assertEqual(result["reason"], "CANONICAL_ISSUE_CLOSED")
+        self.assertEqual(result["dispatch_id"], self.dispatch_id)
+        self.assertEqual(result["issue_number"], 900)
+        self.assertEqual(result["lease_epoch"], 3)
 
 
 if __name__ == "__main__":
