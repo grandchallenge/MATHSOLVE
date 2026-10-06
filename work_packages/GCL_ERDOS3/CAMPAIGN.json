@@ -389,7 +389,7 @@
     "result": "E3-Q16",
     "disposition": "PROVED_NATIVE_COMMON_DIFFERENCE_ALIGNMENT",
     "path": "work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md",
-    "blob_sha1": "8c2631ed1dabfc65c25d6b0f4c808e7a95efa7dd",
-    "effect": "Q15's two B1 derivative-shift systems need not intersect, but mixed additive energy forces at least rho_beta^2 P common shift-parameter differences and many matched shift-pair quadruples. The high-order residual reduces to derivative-frequency transport across matched differences."
+    "blob_sha1": "373ad97422b6beb2cebeea9e6912d555ce4bfb93",
+    "effect": "Q15's two B1 derivative-shift systems need not intersect, but mixed additive energy forces at least rho_beta^2 P common shift-parameter differences; eventually one can freeze a single nonzero common increment with Omega(rho_beta^3 P) representations in each carry geometry. The high-order residual reduces to derivative-frequency transport across that matched difference."
   }
 }
