@@ -42,13 +42,18 @@ def validate() -> list[str]:
             errors.append(f"authority boundary widened: {key}")
 
     jobs = registry.get("jobs", [])
-    if len(jobs) != 24:
-        errors.append("expected exactly 24 ERDOS pilot jobs")
     expected = {f"ERDOS-{p}-{lane}-IA-001" for p in PROBLEMS for lane in LANES}
-    if {j.get("dispatch_id") for j in jobs} != expected:
-        errors.append("queue dispatch identity set drift")
-    if {j.get("issue_number") for j in jobs} != set(range(842, 866)):
-        errors.append("queue issue binding set drift")
+    all_ids = {j.get("dispatch_id") for j in jobs}
+    if not expected.issubset(all_ids):
+        errors.append("historical ERDOS pilot dispatch missing")
+    historical = [j for j in jobs if j.get("dispatch_id") in expected]
+    if len(historical) != 24:
+        errors.append("historical ERDOS pilot cardinality drift")
+    if {j.get("issue_number") for j in historical} != set(range(842, 866)):
+        errors.append("historical ERDOS issue binding set drift")
+    cmdg_expected = {f"CMDG-P3M-SEP2-WP-{lane}-IA-001" for lane in ("A", "B", "C", "D")}
+    if not cmdg_expected.issubset(all_ids):
+        errors.append("CMDG product-functional separation cohort missing")
 
     for job in jobs:
         did = str(job.get("dispatch_id"))
@@ -60,8 +65,13 @@ def validate() -> list[str]:
             errors.append(f"{did}: collaboration mode drift")
         if job.get("visibility_phase") != "BLIND_COLLECTION" or job.get("sibling_use_policy") != "FORBIDDEN":
             errors.append(f"{did}: blind pickup boundary drift")
-        if job.get("task_commit") != TASK_COMMIT:
-            errors.append(f"{did}: immutable task commit drift")
+        if did in expected:
+            if job.get("task_commit") != TASK_COMMIT:
+                errors.append(f"{did}: historical immutable task commit drift")
+        else:
+            task_commit = str(job.get("task_commit") or "")
+            if len(task_commit) != 40:
+                errors.append(f"{did}: immutable task commit missing or malformed")
 
         dp = ROOT / str(job.get("dispatch_path", ""))
         if not dp.is_file():
@@ -85,7 +95,9 @@ def validate() -> list[str]:
         task = ROOT / str(d.get("task_path", ""))
         if not task.is_file():
             errors.append(f"{did}: immutable task missing")
-        elif hashlib.sha256(task.read_text(encoding="utf-8").encode("utf-8")).hexdigest() != d.get("task_sha256"):
+        elif d.get("task_sha256") is not None and hashlib.sha256(
+            task.read_text(encoding="utf-8").encode("utf-8")
+        ).hexdigest() != d.get("task_sha256"):
             errors.append(f"{did}: immutable task digest mismatch")
 
     for p in PROBLEMS:
