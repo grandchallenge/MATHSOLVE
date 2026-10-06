@@ -29,3 +29,26 @@ For any pack selected for execution:
 ## Authority boundary
 
 The present state authorizes work-package **design only**. It does not authorize external execution, repository mutation by contributors, mathematical claim promotion, campaign activation, publication, or MATHCERT certification.
+
+
+## Additive cohort closure overlay
+
+The activation cohort records under `contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/cohorts/`
+remain historical blind-collection records and are not reclassified in place.
+
+When protected R1 and A1 evidence satisfy the Programme synthesis minimum, cohort
+closure is represented additively under:
+
+`contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/closures/`
+
+A valid closure overlay may set `blind_cohort_closed=true` and
+`synthesis_allowed=true` only while retaining
+`mathematical_correctness_adjudicated=false`,
+`canonical_claim_effect=false`, `certification_effect=false`, and
+`claim_promotion_effect=false`.
+
+S1 is not required to open synthesis. If S1 is not protected at closure, the
+closure must explicitly retain the literature-dependent source gate as
+unsatisfied. A later S1 return may satisfy that source prerequisite for later
+adjudication; it does not retroactively alter the completed blind R1+A1
+comparison.
