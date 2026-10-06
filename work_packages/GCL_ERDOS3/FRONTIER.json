@@ -469,7 +469,7 @@
       "attack_lanes": [
         "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
         "E3-B-LOW-ORDER-EXPONENT-UPGRADE: Q14 proves beta^4 recursion alone is nonsummability-compatible; exploit additional carry/near-extremal structure to reach an effective loss exponent p<2",
-        "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY: Q15 forces B1 to be the derivative side in two distinct repeated-triplet carry geometries; align those shift/frequency systems or force an exponent<2 deletion cost",
+        "E3-B-INTERIOR-DERIVATIVE-DIFFERENCE-COMPATIBILITY: Q16 guarantees many common shift-parameter differences across the F2/F3 B1 systems; align derivative frequencies across these matched differences or force an exponent<2 deletion cost",
         "positive-density amplification of the nine L01 residual clause motifs"
       ],
       "sufficient_for": [
@@ -500,9 +500,10 @@
         "E3-Q12",
         "E3-Q13",
         "E3-Q14",
-        "E3-Q15"
+        "E3-Q15",
+        "E3-Q16"
       ],
-      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap. Q13 localizes the Q11 increment to a dyadic subprogression after O(log(1/beta)) levels with no fixed-factor density loss. Q14 proves the exact recursion-only summability threshold p<2, so the beta^4 low-order arm cannot close by iteration alone. Q15 removes derivative-side ambiguity for repeated-triplet core families: F2 and F3 both force B1 in their high-order arms."
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap. Q13 localizes the Q11 increment to a dyadic subprogression after O(log(1/beta)) levels with no fixed-factor density loss. Q14 proves the exact recursion-only summability threshold p<2, so the beta^4 low-order arm cannot close by iteration alone. Q15 removes derivative-side ambiguity for repeated-triplet core families: F2 and F3 both force B1 in their high-order arms. Q16 replaces raw F2/F3 shift-set intersection by a guaranteed common-difference structure of density Omega(beta^8), leaving derivative-frequency transport across matched shift parallelograms as the high-order bottleneck."
     },
     {
       "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
@@ -858,8 +859,8 @@
       ],
       "claim_boundary": "Smallest current high-order de-windowed residual; open.",
       "reduced_by": "E3-Q15",
-      "successor": "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY",
-      "reduction_note": "Q15 extends the high-order derivative-product mechanism to the repeated-triplet core and forces B1 to be the complete derivative side in both F2 and F3. Remaining issue is compatibility/alignment, not derivative-side identity."
+      "successor": "E3-B-INTERIOR-DERIVATIVE-DIFFERENCE-COMPATIBILITY",
+      "reduction_note": "Q15 extends the high-order derivative-product mechanism to the repeated-triplet core and forces B1 to be the complete derivative side in both F2 and F3. Remaining issue is compatibility/alignment, not derivative-side identity. Q16 further reduces the forced-interior-fibre lane to common-difference frequency compatibility."
     },
     {
       "id": "E3-B-DYADIC-SHORT-STEP-LOCALIZATION",
@@ -957,7 +958,7 @@
     {
       "id": "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY",
       "kind": "NATIVE_RESIDUAL",
-      "status": "OPEN_NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
       "parent": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
       "depends_on": [
         "E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING"
@@ -975,6 +976,46 @@
       "evidence_basis": [
         "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md",
         "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current high-order residual; open.",
+      "reduced_by": "E3-Q16",
+      "successor": "E3-B-INTERIOR-DERIVATIVE-DIFFERENCE-COMPATIBILITY",
+      "reduction_note": "Q16 proves that the F2/F3 B1 good-shift sets have at least rho_beta^2 P common difference parameters even if they are disjoint. Remaining issue is coherent derivative-frequency transport across those matched differences, or an exponent<2 incompatibility/deletion cost."
+    },
+    {
+      "id": "E3-B-INTERIOR-DERIVATIVE-COMMON-DIFFERENCES",
+      "kind": "LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY",
+      "depends_on": [
+        "E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING"
+      ],
+      "statement": "For the Q15 high-order F2/F3 B1 derivative-shift sets E2,E3 of density at least rho_beta, mixed additive energy yields at least rho_beta^2 P common shift-parameter differences and, eventually, a fixed nonzero common increment h_* with at least (1/2)rho_beta^3 P representations in each system.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md",
+      "evidence_blob_sha1": "373ad97422b6beb2cebeea9e6912d555ce4bfb93",
+      "proved_by": "E3-Q16"
+    },
+    {
+      "id": "E3-B-INTERIOR-DERIVATIVE-DIFFERENCE-COMPATIBILITY",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY",
+      "depends_on": [
+        "E3-B-INTERIOR-DERIVATIVE-COMMON-DIFFERENCES"
+      ],
+      "statement": "For the Q16 positive-density family of common nonzero shift-parameter differences—and in particular a popular fixed h_*—compare the B1 derivative spectra at e2,e2+h_* in the F2 geometry and e3,e3+h_* in the F3 geometry. Force coherent frequency transport to a joint quadratic witness, or turn failure of transport into a deletion/density-increment cost with effective exponent p<2.",
+      "attack_lanes": [
+        "Fourier transport identities for the map e -> Fourier spectrum of Delta_e h_B1",
+        "matched-difference additive energy plus frequency graph extraction",
+        "spectral diffuseness across matched shift parallelograms to deletion cost",
+        "couple failure of frequency transport back to the low-order exponent-upgrade arm"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md"
       ],
       "claim_boundary": "Smallest current high-order residual; open."
     }

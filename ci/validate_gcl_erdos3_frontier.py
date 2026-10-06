@@ -159,14 +159,22 @@ def validate(root=ROOT):
         errors.append('de-windowed derivative-product overlap state drift')
     if rows.get('E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
         errors.append('Q15 de-windowed derivative-product alignment reduction drift')
-    if rows.get('E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT',{}).get('successor')!='E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY':
-        errors.append('Q15 high-order successor drift')
+    if rows.get('E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT',{}).get('successor')!='E3-B-INTERIOR-DERIVATIVE-DIFFERENCE-COMPATIBILITY':
+        errors.append('Q16 high-order successor drift')
     if rows.get('E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING',{}).get('status')!='PROVED_NATIVE':
         errors.append('Q15 repeated-triplet derivative forcing state drift')
     if rows.get('E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING',{}).get('evidence_blob_sha1')!='405da12048ce8e61e04345e80cc8cbcf3aafdc24':
         errors.append('Q15 repeated-triplet evidence blob drift')
-    if rows.get('E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
-        errors.append('Q15 interior derivative compatibility state drift')
+    if rows.get('E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY',{}).get('status')!='REDUCED_NATIVE_RESIDUAL':
+        errors.append('Q16 interior derivative compatibility reduction drift')
+    if rows.get('E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY',{}).get('successor')!='E3-B-INTERIOR-DERIVATIVE-DIFFERENCE-COMPATIBILITY':
+        errors.append('Q16 interior derivative successor drift')
+    if rows.get('E3-B-INTERIOR-DERIVATIVE-COMMON-DIFFERENCES',{}).get('status')!='PROVED_NATIVE':
+        errors.append('Q16 common-difference lemma state drift')
+    if rows.get('E3-B-INTERIOR-DERIVATIVE-COMMON-DIFFERENCES',{}).get('evidence_blob_sha1')!='373ad97422b6beb2cebeea9e6912d555ce4bfb93':
+        errors.append('Q16 common-difference evidence blob drift')
+    if rows.get('E3-B-INTERIOR-DERIVATIVE-DIFFERENCE-COMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
+        errors.append('Q16 difference-compatibility residual state drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
         errors.append('joint-witness native residual state drift')
     if rows.get('E3-B-JOINT-WITNESS-INCOMPATIBILITY',{}).get('parent')!='E3-B-FOUR-FIBRE-DEFICIT':
@@ -275,6 +283,8 @@ def validate(root=ROOT):
         errors.append('E3-Q14 native campaign result drift')
     if campaign.get('work_package_results',{}).get('E3-Q15')!='PROVED_NATIVE_REPEATED_TRIPLET_DERIVATIVE_FORCING':
         errors.append('E3-Q15 native campaign result drift')
+    if campaign.get('work_package_results',{}).get('E3-Q16')!='PROVED_NATIVE_COMMON_DIFFERENCE_ALIGNMENT':
+        errors.append('E3-Q16 native campaign result drift')
     ext=campaign.get('tranche_04_extension',{})
     if ext.get('result')!='E3-Q03' or ext.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md':
         errors.append('E3-Q03 campaign extension binding drift')
@@ -322,6 +332,11 @@ def validate(root=ROOT):
         errors.append('E3-Q15 campaign extension binding drift')
     if extq15.get('blob_sha1')!='405da12048ce8e61e04345e80cc8cbcf3aafdc24':
         errors.append('E3-Q15 campaign extension blob drift')
+    extq16=campaign.get('tranche_04_extension_q16',{})
+    if extq16.get('result')!='E3-Q16' or extq16.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md':
+        errors.append('E3-Q16 campaign extension binding drift')
+    if extq16.get('blob_sha1')!='373ad97422b6beb2cebeea9e6912d555ce4bfb93':
+        errors.append('E3-Q16 campaign extension blob drift')
     expected_dispatch_state='VERIFY_LEASE_EXPIRED__REISSUE_REQUIRED' if v03_epoch8_expired else 'VERIFY_DISPATCHED__AWAITING_RETURN'
     if campaign.get('dispatch_state')!=expected_dispatch_state:
         errors.append('E3-V03 dispatch state drift')
@@ -830,6 +845,7 @@ def validate(root=ROOT):
         'work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md',
+        'work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md',
         'work_packages/GCL_ERDOS3/tools/e3_l01_family_certificate.py',
         'work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py',
         'work_packages/GCL_ERDOS3/LEASE_POLICY.json',
