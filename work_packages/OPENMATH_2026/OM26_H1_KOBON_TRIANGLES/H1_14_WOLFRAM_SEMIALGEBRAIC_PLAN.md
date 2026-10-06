@@ -1,6 +1,6 @@
 # H1-14 — Wolfram-assisted semialgebraic 94 search
 
-**Protected predecessor:** `MATHSOLVE/main@92bc84a2e5dd34ccb68c4db6ed035a30f63b6117 (fresh promotion rebase; research initiated at 9a663535a86ec82521b69a8ef96d444e7e2b9c4c)`  
+**Protected reconciliation base:** `MATHSOLVE/main@91c4a7879ad5b51077fdba9cb1f5e9367bc4a7e0` (research initiated at `9a663535a86ec82521b69a8ef96d444e7e2b9c4c`; prior fresh rebase `92bc84a2e5dd34ccb68c4db6ed035a30f63b6117`)  
 **Seed:** `RH_BADER_RECONSTRUCTION_093`, SHA-256 `e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5`  
 **Authority:** MATHSOLVE proposal/search route only. No certification or optimality authority.
 
@@ -88,3 +88,24 @@ The full 60-target canonical closest-cell replay is negative: best individual re
 The depth-one mutual coupled-cell subdivision is also complete: 2,040 single mutual-event flips were posed across the 60 products, 28 adjacent coupled subcells were exactly feasible, and the best exact score was 86. Because this layer produced no witness competitive with the protected 93 seed, the planned 4–5 active-line escalation gate is **not triggered**. Deeper coupled CAD remains available only if a later structural argument identifies a particular product cell worth reopening.
 
 The construction route therefore hands its exact lost-face/event patterns back to H1-12/local-move analysis while preserving all negative receipts. None of these negative searches is an upper-bound or optimality proof.
+
+## Tranche 3: strict-cell quantifier elimination
+
+The ten closest two-blocker targets were ranked by the sum of the blocker-to-required-wall distances in the normalized `[m,-1000,b]` chart. For each of their 20 blocker exits, `h1_14_resolve_queries.py` generates the strict sign cell that preserves every seed pair/triple orientation involving the moving line except the one required target-vertex determinant sign.
+
+The hosted Wolfram kernel evaluated these cells with exact
+`Resolve[Exists[{m,b}, constraints], Reals]`. Fourteen strict cells are empty and six are nonempty. Only target `[0,4,14]` has both strict exits independently nonempty.
+
+The corresponding joint four-variable strict cell is itself rationally realizable:
+line 6 may be replaced by `[430,-1000,-217]` and line 11 by
+`[-687534,-1406000,-1969]`. Exact GCL rescoring gives 89.
+
+This strengthens the local diagnosis without changing the promotion posture:
+merely removing both target blockers while preserving all other seed orientation
+relations cannot produce 94. A successful nearby construction must cross
+additional event walls. The exact booleans and witness are retained in
+`H1_14_RESOLVE_CLASSIFICATION.json`.
+
+These are strict-cell statements only. A `False` result does not exclude paths
+that cross additional event walls, and no result is an upper-bound or
+certification claim.
