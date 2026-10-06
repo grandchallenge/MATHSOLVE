@@ -990,9 +990,9 @@
       "depends_on": [
         "E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING"
       ],
-      "statement": "For the Q15 high-order F2/F3 B1 derivative-shift sets E2,E3 of density at least rho_beta, mixed additive energy yields at least rho_beta^2 P common shift-parameter differences and, eventually, at least (1/2)rho_beta^4 P^3 matched nonzero shift-pair quadruples.",
+      "statement": "For the Q15 high-order F2/F3 B1 derivative-shift sets E2,E3 of density at least rho_beta, mixed additive energy yields at least rho_beta^2 P common shift-parameter differences and, eventually, a fixed nonzero common increment h_* with at least (1/2)rho_beta^3 P representations in each system.",
       "evidence": "work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md",
-      "evidence_blob_sha1": "8c2631ed1dabfc65c25d6b0f4c808e7a95efa7dd",
+      "evidence_blob_sha1": "373ad97422b6beb2cebeea9e6912d555ce4bfb93",
       "proved_by": "E3-Q16"
     },
     {
@@ -1003,7 +1003,7 @@
       "depends_on": [
         "E3-B-INTERIOR-DERIVATIVE-COMMON-DIFFERENCES"
       ],
-      "statement": "For the Q16 positive-density family of common nonzero shift-parameter differences h, compare the B1 derivative spectra at e2,e2+h in the F2 geometry and e3,e3+h in the F3 geometry. Force coherent frequency transport to a joint quadratic witness, or turn failure of transport into a deletion/density-increment cost with effective exponent p<2.",
+      "statement": "For the Q16 positive-density family of common nonzero shift-parameter differences—and in particular a popular fixed h_*—compare the B1 derivative spectra at e2,e2+h_* in the F2 geometry and e3,e3+h_* in the F3 geometry. Force coherent frequency transport to a joint quadratic witness, or turn failure of transport into a deletion/density-increment cost with effective exponent p<2.",
       "attack_lanes": [
         "Fourier transport identities for the map e -> Fourier spectrum of Delta_e h_B1",
         "matched-difference additive energy plus frequency graph extraction",
