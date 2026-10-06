@@ -5,6 +5,11 @@
 > [GCL Worker Queue](https://github.com/orgs/grandchallenge/projects/2).
 > Select an AVAILABLE job, open its issue, post `/claim`, and follow the
 > immutable task returned by the controller.
+>
+> **How the mechanism works:** read the public
+> [External Agent Work Queue documentary](https://grandchallenge.github.io/MATH-PROGRAMME/EXTERNAL_AGENT_WORK_QUEUE/),
+> including the end-to-end mechanism diagram and the dated first-pilot progress
+> snapshot.
 
 MATHSOLVE is the tactical orchestration pillar of the Grand Challenge mathematics stack.
 
