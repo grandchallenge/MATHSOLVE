@@ -9,8 +9,12 @@ from ci.erdos_241_replay import (
 
 
 class Erdos241ReplayTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.report = build_report()
+
     def test_minimal_spans_and_extremizers_replay_exactly(self):
-        report = build_report()
+        report = self.report
         self.assertTrue(report["expected_minimal_spans_match"])
         self.assertTrue(report["expected_extremizers_match"])
         self.assertEqual(
@@ -31,7 +35,7 @@ class Erdos241ReplayTests(unittest.TestCase):
         )
 
     def test_a1_small_n_counterexamples_replay(self):
-        report = build_report()
+        report = self.report
         self.assertTrue(all(report["a1_small_n_checks"].values()))
         self.assertTrue(is_b3((1, 2, 5)))
         self.assertFalse(is_b3((1, 2, 3)))
@@ -39,7 +43,7 @@ class Erdos241ReplayTests(unittest.TestCase):
         self.assertFalse(is_b3((1, 3, 5)))
 
     def test_structural_obstruction_sweep_finds_no_counterexample(self):
-        report = build_report()
+        report = self.report
         sweep = report["structural_lemma_falsification_sweep"]
         self.assertEqual(sweep["limit"], 15)
         self.assertGreater(sweep["checked_b3_sets"], 0)
