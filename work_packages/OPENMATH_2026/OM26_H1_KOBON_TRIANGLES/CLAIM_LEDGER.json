@@ -513,6 +513,20 @@
       ],
       "mathematical_effect": true,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-NEG-004",
+      "text": "H1-14 completed the declared bounded Wolfram-assisted event-cell search around RH_BADER_RECONSTRUCTION_093 and preserved its exact replay receipts.",
+      "type": "NEGATIVE_ROUTE_RESULT",
+      "state": "PASS__BOUNDED_SCOPE_ONLY",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_14_NEAR_MISS_ATLAS_SUMMARY.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_14_DUAL_CELL_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_14_COUPLED_CELL_RECEIPT.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_14_WOLFRAM_VALIDATION.json"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [

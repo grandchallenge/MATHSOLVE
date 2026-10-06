@@ -6,6 +6,8 @@ on:
       - "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/**"
       - ".github/workflows/openmath-kobon-search94-tranche3.yml"
       - ".ghos-routing/workflows.json"
+      - "ci/validate_openmath_h1_14_wolfram.py"
+      - "ci/test_openmath_h1_14_wolfram.py"
   workflow_dispatch:
 
 permissions:
@@ -18,6 +20,9 @@ jobs:
     steps:
       - name: Checkout exact candidate
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Validate H1-14 exact semialgebraic bridge
+        run: python ci/validate_openmath_h1_14_wolfram.py
 
       - name: Acquire pinned proposal generator
         run: |
