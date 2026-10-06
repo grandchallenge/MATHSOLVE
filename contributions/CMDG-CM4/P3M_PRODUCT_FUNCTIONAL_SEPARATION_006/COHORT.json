@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_BLIND_COHORT",
+  "cohort_id": "CMDG-P3M-SEP2-BLIND-COHORT-001",
+  "campaign": "CMDG-CM4-P3M-SEPARATION",
+  "tranche": "PRODUCT-FUNCTIONAL-SEPARATION-006",
+  "state": "OPEN_AWAITING_RESULTS",
+  "assignments": [
+    "CMDG-P3M-SEP2-WP-A-IA-001",
+    "CMDG-P3M-SEP2-WP-B-IA-001",
+    "CMDG-P3M-SEP2-WP-C-IA-001",
+    "CMDG-P3M-SEP2-WP-D-IA-001"
+  ],
+  "collaboration_mode": "STAGED_DISCLOSURE",
+  "visibility_phase": "BLIND_COLLECTION",
+  "cross_disclosure_before_closure": false,
+  "synthesis_allowed": false,
+  "closure_rule": "Close only after terminal first-valid results are protected or explicitly terminally disposed for all four dispatches.",
+  "claim_boundary": "Operational/evidence state only; no coefficient solidity, P3 completion, or CM4 completion."
+}
