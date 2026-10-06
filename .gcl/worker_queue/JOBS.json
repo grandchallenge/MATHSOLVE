@@ -3,10 +3,10 @@
   "schema_version": "1.0.0",
   "policy_id": "GCL-WORKER-QUEUE-001",
   "programme_policy_commit": "0fd894c053922ec43b70878e0f02e8370690449a",
-  "queue_id": "GCL-WORKER-QUEUE-ERDOS-PILOT-001",
+  "queue_id": "GCL-WORKER-QUEUE-001",
   "state": "ACTIVE_ON_PROTECTED_ADMISSION",
-  "pilot": "ERDOS-OPEN-RECON-FIRST-TRANCHE",
-  "campaign": "ERDOS-OPEN-RECON",
+  "pilot": "ERDOS-OPEN-RECON-FIRST-TRANCHE_PLUS_ADDITIVE_CAMPAIGNS",
+  "campaign": "MULTI_CAMPAIGN",
   "queue_operation_mathematical_effect": false,
   "queue_operation_certification_effect": false,
   "jobs": [
@@ -321,6 +321,58 @@
       "dispatch_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/dispatches/ERDOS-138-A1-IA-001.json",
       "cohort_id": "ERDOS-138-BLIND-COHORT-001",
       "task_commit": "13f8364d0dd052bf0cd9f6a9f66dc135d770529f"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-SEP2-WP-A-IA-001",
+      "issue_number": 930,
+      "role": "RECONNAISSANCE",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/dispatches/CMDG-P3M-SEP2-WP-A-IA-001.json",
+      "cohort_id": "CMDG-P3M-SEP2-BLIND-COHORT-001",
+      "task_commit": "921b10a03f8a45f7a34788b06f94dbc9f9f07b3c"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-SEP2-WP-B-IA-001",
+      "issue_number": 931,
+      "role": "RECONNAISSANCE",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/dispatches/CMDG-P3M-SEP2-WP-B-IA-001.json",
+      "cohort_id": "CMDG-P3M-SEP2-BLIND-COHORT-001",
+      "task_commit": "921b10a03f8a45f7a34788b06f94dbc9f9f07b3c"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-SEP2-WP-C-IA-001",
+      "issue_number": 932,
+      "role": "RECONNAISSANCE",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/dispatches/CMDG-P3M-SEP2-WP-C-IA-001.json",
+      "cohort_id": "CMDG-P3M-SEP2-BLIND-COHORT-001",
+      "task_commit": "921b10a03f8a45f7a34788b06f94dbc9f9f07b3c"
+    },
+    {
+      "dispatch_id": "CMDG-P3M-SEP2-WP-D-IA-001",
+      "issue_number": 933,
+      "role": "ADVERSARIAL",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/dispatches/CMDG-P3M-SEP2-WP-D-IA-001.json",
+      "cohort_id": "CMDG-P3M-SEP2-BLIND-COHORT-001",
+      "task_commit": "921b10a03f8a45f7a34788b06f94dbc9f9f07b3c"
     }
   ]
 }
