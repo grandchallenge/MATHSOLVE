@@ -32,6 +32,25 @@ GCL-CONTRIBUTION-RESULT/1
 dispatch_id: CMDG-P3M-SEP2-WP-C-IA-001
 agent_ref: INDEPENDENT-AGENT-CMDG-P3M-SEP2-C
 assignment: CMDG-P3M-SEP2-WP-C
+disposition: <PROVED_REDUCTION|EXACT_CERTIFICATE|FORMAL_LEMMA_PROVED|COUNTEREXAMPLE|NO_MATERIAL_DELTA|EXACT_BLOCKER>
 context_class: ZERO_CONTEXT
 external_sources: PROTECTED_PACKET_ONLY
-timebox_observed: YES
+timebox_observed: <YES|NO>
+
+## Strongest exact statement
+...
+
+## Derivation
+...
+
+## Assumptions beyond bootstrap
+...
+
+## Verification / falsification hooks
+...
+
+## Claim boundary
+...
+
+## Next residual
+...
