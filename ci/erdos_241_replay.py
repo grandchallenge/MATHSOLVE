@@ -172,6 +172,16 @@ def build_report() -> dict:
         witnesses[str(k)] = list(witness)
         extremizers[str(k)] = [list(x) for x in extremizers_at_minimal_span(k, n)]
 
+    no_seven_through_64 = first_normalized_b3_set(7, 64) is None
+    exact_f_intervals = [
+        {"start": 1, "end": 1, "value": 1},
+        {"start": 2, "end": 4, "value": 2},
+        {"start": 5, "end": 11, "value": 3},
+        {"start": 12, "end": 23, "value": 4},
+        {"start": 24, "end": 45, "value": 5},
+        {"start": 46, "end": 64, "value": 6},
+    ]
+
     small = {
         "f_1": 1,
         "f_2": 2,
@@ -199,6 +209,8 @@ def build_report() -> dict:
         "minimal_spans": spans,
         "first_witnesses": witnesses,
         "minimal_span_extremizers": extremizers,
+        "no_seven_element_b3_set_through_64": no_seven_through_64,
+        "exact_f_intervals_through_64": exact_f_intervals,
         "expected_minimal_spans_match": spans == expected_spans,
         "expected_extremizers_match": extremizers == expected_extremizers,
         "a1_small_n_replay": small,
