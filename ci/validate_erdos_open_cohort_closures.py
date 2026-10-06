@@ -4,7 +4,10 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from ci.erdos_open_cohort_closure import PROBLEMS, ROOT, validate_closure
+try:
+    from ci.erdos_open_cohort_closure import PROBLEMS, ROOT, validate_closure
+except ModuleNotFoundError:
+    from erdos_open_cohort_closure import PROBLEMS, ROOT, validate_closure
 
 BASE = ROOT / "contributions" / "ERDOS-OPEN-001" / "RECON_TRANCHE_001"
 CLOSURES = BASE / "closures"
