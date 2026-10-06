@@ -30,6 +30,38 @@
   },
   "claim_boundary": "Computational replay certifies only the enumerated finite claims and provides a falsification sweep for the structural lemmas. General structural lemmas are adjudicated separately by direct proof.",
   "definition": "strong B3: all cardinality-3 multisets supported on A have distinct sums unless the multisets are equal",
+  "exact_f_intervals_through_64": [
+    {
+      "end": 1,
+      "start": 1,
+      "value": 1
+    },
+    {
+      "end": 4,
+      "start": 2,
+      "value": 2
+    },
+    {
+      "end": 11,
+      "start": 5,
+      "value": 3
+    },
+    {
+      "end": 23,
+      "start": 12,
+      "value": 4
+    },
+    {
+      "end": 45,
+      "start": 24,
+      "value": 5
+    },
+    {
+      "end": 64,
+      "start": 46,
+      "value": 6
+    }
+  ],
   "expected_extremizers_match": true,
   "expected_minimal_spans_match": true,
   "external_sources_used": false,
@@ -175,6 +207,7 @@
     "5": 24,
     "6": 46
   },
+  "no_seven_element_b3_set_through_64": true,
   "problem_id": 241,
   "record_type": "ERDOS_241_INDEPENDENT_REPLAY",
   "replay_id": "ERDOS-241-RA-REPLAY-001",
