@@ -5,7 +5,9 @@ on:
     paths:
       - "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/**"
       - ".github/workflows/openmath-kobon-search94-tranche3.yml"
-      - ".ghos-routing/workflows.json"\n      - "ci/validate_openmath_h1_14_wolfram.py"
+      - ".ghos-routing/workflows.json"
+      - "ci/validate_openmath_h1_14_wolfram.py"
+      - "ci/test_openmath_h1_14_wolfram.py"
   workflow_dispatch:
 
 permissions:

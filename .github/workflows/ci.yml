@@ -178,6 +178,8 @@ jobs:
           python ci/validate_erdos_open_recon_activation.py
           python ci/validate_erdos_open_cohort_closures.py
           python -m unittest tests/test_erdos_open_cohort_closure.py -v
+          python ci/validate_erdos_241_synthesis.py
+          python -m unittest tests/test_erdos_241_replay.py tests/test_erdos_241_synthesis.py -v
           python ci/validate_gcl_worker_queue.py
           python ci/validate_gcl_worker_queue_activation_receipt.py
           python ci/validate_gcl_worker_queue_project.py
