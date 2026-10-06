@@ -89,11 +89,13 @@ Immediately before competition submission, re-read the live AutoLab hill and com
 
 ## H1-14 — Wolfram-assisted semialgebraic 94 search
 
-**State:** TRANCHES 1-2 COMPLETE — NO 94 FOUND — BOUNDED NEGATIVE ROUTE EVIDENCE.
+**State:** TRANCHES 1-3 COMPLETE — NO 94 FOUND — BOUNDED NEGATIVE ROUTE EVIDENCE.
 
 The protected 93 seed has no proper one-blocker missing triangular support: the nearest nonfaces are exactly 60 support triples with two blocking lines. The exact closest-cell layer generated 120 rational blocker representatives and 60 paired representatives; the best individual score was 90 and the best paired score was 89. A depth-one coupled subdivision then posed 2,040 single mutual-event transitions, of which 28 adjacent subcells were exactly feasible; the best score was 86.
 
 Selected exact semialgebraic cells were independently instantiated with the hosted Wolfram Language connector over rational variables, then replayed by the GCL integer-determinant scorer. The raw four-variable hosted-kernel attempt failed as tooling and was recovered by event-cell decomposition; it is not infeasibility evidence.
+
+An exact strict-cell quantifier-elimination pass then tested the 20 blocker exits belonging to the ten closest two-blocker targets. Fourteen of the twenty strict single-wall cells are empty over the reals and six are nonempty; only target `[0,4,14]` admits both strict exits independently. Its exact rational joint strict cell scores 89, confirming that additional event-wall changes are required before this neighborhood can improve the seed.
 
 The 4-5 active-line escalation gate is not triggered because no coupled witness is competitive with the protected 93 seed. The next route action is to feed the exact lost-face/event patterns into H1-04/H1-12 obstruction analysis and reopen deeper coupled CAD only if a structural argument identifies a specific cell.
 
