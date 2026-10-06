@@ -171,7 +171,7 @@ def validate(root=ROOT):
         errors.append('Q16 interior derivative successor drift')
     if rows.get('E3-B-INTERIOR-DERIVATIVE-COMMON-DIFFERENCES',{}).get('status')!='PROVED_NATIVE':
         errors.append('Q16 common-difference lemma state drift')
-    if rows.get('E3-B-INTERIOR-DERIVATIVE-COMMON-DIFFERENCES',{}).get('evidence_blob_sha1')!='8c2631ed1dabfc65c25d6b0f4c808e7a95efa7dd':
+    if rows.get('E3-B-INTERIOR-DERIVATIVE-COMMON-DIFFERENCES',{}).get('evidence_blob_sha1')!='373ad97422b6beb2cebeea9e6912d555ce4bfb93':
         errors.append('Q16 common-difference evidence blob drift')
     if rows.get('E3-B-INTERIOR-DERIVATIVE-DIFFERENCE-COMPATIBILITY',{}).get('status')!='OPEN_NATIVE_RESIDUAL':
         errors.append('Q16 difference-compatibility residual state drift')
@@ -335,7 +335,7 @@ def validate(root=ROOT):
     extq16=campaign.get('tranche_04_extension_q16',{})
     if extq16.get('result')!='E3-Q16' or extq16.get('path')!='work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md':
         errors.append('E3-Q16 campaign extension binding drift')
-    if extq16.get('blob_sha1')!='8c2631ed1dabfc65c25d6b0f4c808e7a95efa7dd':
+    if extq16.get('blob_sha1')!='373ad97422b6beb2cebeea9e6912d555ce4bfb93':
         errors.append('E3-Q16 campaign extension blob drift')
     expected_dispatch_state='VERIFY_LEASE_EXPIRED__REISSUE_REQUIRED' if v03_epoch8_expired else 'VERIFY_DISPATCHED__AWAITING_RETURN'
     if campaign.get('dispatch_state')!=expected_dispatch_state:
