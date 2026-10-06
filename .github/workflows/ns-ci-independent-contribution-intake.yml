@@ -3,19 +3,30 @@ name: NS-CI independent contribution intake
 on:
   issue_comment:
     types: [created]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Exact bound issue number whose existing RESULT/1 should be replayed
+        required: true
+        type: string
+      comment_id:
+        description: Exact existing RESULT/1 issue-comment ID to replay
+        required: true
+        type: string
 
 permissions:
   contents: write
   issues: write
 
 concurrency:
-  group: ns-ci-contribution-intake-${{ github.event.issue.number }}
+  group: ns-ci-contribution-intake-${{ github.event.issue.number || inputs.issue_number }}
   cancel-in-progress: false
 
 jobs:
   intake:
     if: >
-      !github.event.issue.pull_request &&
+      github.event_name == 'workflow_dispatch' ||
+      (!github.event.issue.pull_request &&
       (startsWith(github.event.issue.title, '[GCL-CONTRIB] NSCI-') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] UC-001 UC-WP08-D004-') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] CMDG-CM4 CMDG-P3M-SEP-') ||
@@ -24,7 +35,7 @@ jobs:
        startsWith(github.event.issue.title, '[GCL-CONTRIB] CMDG-CM4 CMDG-P3M-N3-') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] ERDOS-OPEN ') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] GCL-E2E-CANARY ')) &&
-      startsWith(github.event.comment.body, 'GCL-CONTRIBUTION-RESULT/1')
+      startsWith(github.event.comment.body, 'GCL-CONTRIBUTION-RESULT/1'))
     runs-on: ubuntu-24.04
     timeout-minutes: 10
 
@@ -38,10 +49,44 @@ jobs:
         with:
           python-version: "3.12.13"
 
+      - name: Resolve exact intake event
+        id: context
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPLAY_ISSUE_NUMBER: ${{ inputs.issue_number }}
+          REPLAY_COMMENT_ID: ${{ inputs.comment_id }}
+          EVENT_ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          event_path="$RUNNER_TEMP/intake-event.json"
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            issue_number="$REPLAY_ISSUE_NUMBER"
+            comment_id="$REPLAY_COMMENT_ID"
+            gh api "repos/$GITHUB_REPOSITORY/issues/$issue_number" > "$RUNNER_TEMP/intake-issue.json"
+            gh api "repos/$GITHUB_REPOSITORY/issues/comments/$comment_id" > "$RUNNER_TEMP/intake-comment.json"
+            python - <<'PY2'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"])
+          issue = json.loads((root / "intake-issue.json").read_text(encoding="utf-8"))
+          comment = json.loads((root / "intake-comment.json").read_text(encoding="utf-8"))
+          if comment.get("issue_url") != issue.get("url"):
+              raise SystemExit("replay comment is not bound to the requested issue")
+          (root / "intake-event.json").write_text(
+              json.dumps({"issue": issue, "comment": comment}),
+              encoding="utf-8",
+          )
+          PY2
+          else
+            issue_number="$EVENT_ISSUE_NUMBER"
+            cp "$GITHUB_EVENT_PATH" "$event_path"
+          fi
+          echo "issue_number=$issue_number" >> "$GITHUB_OUTPUT"
+          echo "event_path=$event_path" >> "$GITHUB_OUTPUT"
+
       - name: Fetch issue comment history
         env:
           GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_NUMBER: ${{ steps.context.outputs.issue_number }}
         run: |
           gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments?per_page=100" | jq -s 'add' > "$RUNNER_TEMP/issue-comments.json"
 
@@ -51,13 +96,13 @@ jobs:
         env:
           OUT_DIR: ${{ runner.temp }}/ns-ci-intake
         run: |
-          python ci/ns_ci_github_contribution_intake.py             --event "$GITHUB_EVENT_PATH"             --repo-root "$GITHUB_WORKSPACE"             --output "$OUT_DIR"             --comments "$RUNNER_TEMP/issue-comments.json"
+          python ci/ns_ci_github_contribution_intake.py             --event "${{ steps.context.outputs.event_path }}"             --repo-root "$GITHUB_WORKSPACE"             --output "$OUT_DIR"             --comments "$RUNNER_TEMP/issue-comments.json"
 
       - name: Report mechanical rejection
         if: steps.validate.outcome == 'failure'
         env:
           GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_NUMBER: ${{ steps.context.outputs.issue_number }}
           OUT_DIR: ${{ runner.temp }}/ns-ci-intake
         run: |
           python - <<'PY' > "$RUNNER_TEMP/rejection.md"
@@ -95,7 +140,7 @@ jobs:
         if: steps.validate.outcome == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_NUMBER: ${{ steps.context.outputs.issue_number }}
           DISPATCH_ID: ${{ steps.meta.outputs.dispatch_id }}
         run: |
           python ci/gcl_worker_queue_projection.py \
@@ -172,7 +217,7 @@ jobs:
         if: steps.validate.outcome == 'success' && steps.state.outputs.main_captured == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_NUMBER: ${{ steps.context.outputs.issue_number }}
         run: |
           gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE ALREADY PROTECTED — raw evidence for this dispatch is already present on protected main. No replacement result was admitted."
 
@@ -183,7 +228,7 @@ jobs:
           steps.state.outputs.branch_exists == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_NUMBER: ${{ steps.context.outputs.issue_number }}
         run: |
           gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE ALREADY CAPTURED — the dispatch evidence branch already exists. The bounded Release Trust PR controller owns PR creation. No replacement result was admitted."
 
@@ -217,6 +262,6 @@ jobs:
           steps.state.outputs.branch_exists == 'false'
         env:
           GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_NUMBER: ${{ steps.context.outputs.issue_number }}
         run: |
           gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE CAPTURED — raw evidence and receipt were committed to the dispatch evidence branch. The bounded Release Trust PR controller will validate that branch and open the ordinary intake PR. Mathematical status remains unadjudicated."

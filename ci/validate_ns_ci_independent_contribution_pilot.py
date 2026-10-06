@@ -110,10 +110,13 @@ def validate(root: Path = ROOT) -> list[str]:
     workflow = workflow_path.read_text(encoding="utf-8")
     for needle in (
         "issue_comment:",
+        "workflow_dispatch:",
+        "comment_id:",
+        "Resolve exact intake event",
         "contents: write",
         "issues: write",
         "ci/ns_ci_github_contribution_intake.py",
-        "group: ns-ci-contribution-intake-${{ github.event.issue.number }}",
+        "group: ns-ci-contribution-intake-${{ github.event.issue.number || inputs.issue_number }}",
         "The bounded Release Trust PR controller owns PR creation",
         "INTAKE CAPTURED",
         "[GCL-CONTRIB] CMDG-P3M-SEP CMDG-P3M-SEP2-",
