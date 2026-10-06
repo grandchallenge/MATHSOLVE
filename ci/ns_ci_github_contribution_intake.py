@@ -444,7 +444,7 @@ def validate_event(
 
     if parsed["preamble"]["assignment"] != dispatch.get("assignment_id"):
         raise IntakeError("assignment does not match protected dispatch")
-    if profile in {UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE, ERDOS_RA_PROFILE, ERDOS_S_PROFILE} and parsed["preamble"].get("agent_ref") != dispatch.get("agent_ref"):
+    if profile in {UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE, CMDG_SEP2_PROFILE, ERDOS_RA_PROFILE, ERDOS_S_PROFILE} and parsed["preamble"].get("agent_ref") != dispatch.get("agent_ref"):
         raise IntakeError("agent_ref does not match protected dispatch")
     if dispatch.get("concurrency_mode") not in {
         "independent_blind",
