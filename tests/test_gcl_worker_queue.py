@@ -140,6 +140,43 @@ class WorkerQueueTest(unittest.TestCase):
             blocked = self.run_process(root, event, [result_comment], now)
             self.assertEqual(blocked["outcome"], "REJECTED_RESULT_COMMENT_PRESENT")
 
+    def test_rejected_result_can_be_reclaimed(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            event = self.make_repo(root)
+            now = datetime(2026, 10, 5, tzinfo=timezone.utc)
+            result_comment = {
+                "id": 1,
+                "created_at": now.isoformat(),
+                "user": {"login": "alice"},
+                "body": "GCL-CONTRIBUTION-RESULT/1\ninvalid",
+            }
+            rejected_comment = {
+                "id": 2,
+                "created_at": (now + timedelta(minutes=1)).isoformat(),
+                "user": {"login": "github-actions[bot]"},
+                "body": "INTAKE REJECTED — FORMAT\n\nNext residual exceeds three sentences",
+            }
+            reclaimed = self.run_process(
+                root,
+                event,
+                [result_comment, rejected_comment],
+                now + timedelta(minutes=2),
+            )
+            self.assertEqual(reclaimed["outcome"], "RESERVED")
+
+            untrusted_rejection = {
+                **rejected_comment,
+                "user": {"login": "mallory"},
+            }
+            blocked = self.run_process(
+                root,
+                event,
+                [result_comment, untrusted_rejection],
+                now + timedelta(minutes=2),
+            )
+            self.assertEqual(blocked["outcome"], "REJECTED_RESULT_COMMENT_PRESENT")
+
     def test_inactive_dispatch_fails_closed(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
