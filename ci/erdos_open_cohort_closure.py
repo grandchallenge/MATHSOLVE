@@ -7,6 +7,19 @@ import re
 from pathlib import Path
 from typing import Any
 
+try:
+    from ci.erdos_open_semantic_gate import (
+        effective_blockers,
+        merge_blockers,
+        required_source_dispatches,
+    )
+except ModuleNotFoundError:
+    from erdos_open_semantic_gate import (
+        effective_blockers,
+        merge_blockers,
+        required_source_dispatches,
+    )
+
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "contributions" / "ERDOS-OPEN-001" / "RECON_TRANCHE_001"
 PROBLEMS = ["593", "595", "241", "470", "1052", "99", "101", "138"]
@@ -76,6 +89,7 @@ def lane_receipt(problem: str, lane: str) -> dict[str, Any] | None:
         "freshness": "current_for_dispatch",
         "handling_state": "received_unadjudicated",
         "canonical_claim_effect": False,
+        "semantic_blockers": effective_blockers(receipt, ROOT),
     }
 
 
@@ -91,7 +105,36 @@ def build_closure(problem: str, protected_commit: str, closure_date: str) -> dic
     a = lane_receipt(problem, "A1")
     if r is None or a is None:
         raise ValueError(f"ERDOS-{problem}: R1+A1 protected minimum not satisfied")
+
+    semantic_blockers = merge_blockers(
+        r.get("semantic_blockers", []),
+        a.get("semantic_blockers", []),
+    )
+    semantic_gate_dispatches = required_source_dispatches(semantic_blockers)
+    expected_source_dispatch = lane_dispatch(problem, "S1")
+    if semantic_gate_dispatches and semantic_gate_dispatches != [expected_source_dispatch]:
+        raise ValueError(
+            f"ERDOS-{problem}: semantic blocker points outside the matching S1 lane"
+        )
+
     s = lane_receipt(problem, "S1")
+    semantic_source_audit_discharged = not semantic_gate_dispatches
+    if semantic_gate_dispatches:
+        if s is None:
+            raise ValueError(
+                f"ERDOS-{problem}: semantic source gate requires protected return "
+                f"{expected_source_dispatch}"
+            )
+        if s.get("disposition_declared") == "EXACT_BLOCKER":
+            raise ValueError(
+                f"ERDOS-{problem}: source-audit return is itself blocked; "
+                "semantic source gate remains open"
+            )
+        semantic_source_audit_discharged = True
+
+    required_synthesis_lanes = ["R1", "A1"]
+    if semantic_gate_dispatches:
+        required_synthesis_lanes.append("S1")
 
     cohort_path = BASE / "cohorts" / f"ERDOS-{problem}-BLIND-COHORT-001.json"
     cohort = readj(cohort_path)
@@ -111,8 +154,15 @@ def build_closure(problem: str, protected_commit: str, closure_date: str) -> dic
         "protected_evidence_base_commit": protected_commit,
         "activation_cohort_path": str(cohort_path.relative_to(ROOT)).replace("\\", "/"),
         "activation_cohort_blob_sha1": blob_sha1(cohort_path),
-        "closure_basis": "R1 and A1 each have one durably protected schema-valid RESULT/1 raw artifact and receipt; this is the protected Programme minimum for synthesis.",
-        "required_synthesis_lanes": ["R1", "A1"],
+        "closure_basis": (
+            "R1 and A1 each have one durably protected schema-valid RESULT/1 raw artifact and receipt; "
+            + (
+                "an outcome-changing source/formal semantic blocker is present, so the matching protected S1 return is additionally required before synthesis."
+                if semantic_gate_dispatches
+                else "this is the protected Programme minimum for synthesis."
+            )
+        ),
+        "required_synthesis_lanes": required_synthesis_lanes,
         "evidence": [r, a],
         "source_lane": {
             "dispatch_id": lane_dispatch(problem, "S1"),
@@ -120,8 +170,13 @@ def build_closure(problem: str, protected_commit: str, closure_date: str) -> dic
             "evidence": s,
         },
         "minimum_synthesis_evidence_satisfied": True,
+        "semantic_blockers": semantic_blockers,
+        "semantic_gate_required": bool(semantic_gate_dispatches),
+        "semantic_gate_required_dispatch_ids": semantic_gate_dispatches,
+        "semantic_source_audit_obligation_discharged": semantic_source_audit_discharged,
+        "semantic_gate_satisfied_at_closure": semantic_source_audit_discharged,
         "blind_cohort_closed": True,
-        "synthesis_allowed": True,
+        "synthesis_allowed": semantic_source_audit_discharged,
         "source_lane_required_for_literature_dependent_promotion": True,
         "source_lane_protected_at_closure": s is not None,
         "literature_dependent_promotion_source_gate_satisfied_at_closure": s is not None,
@@ -130,7 +185,11 @@ def build_closure(problem: str, protected_commit: str, closure_date: str) -> dic
         "canonical_claim_effect": False,
         "certification_effect": False,
         "claim_promotion_effect": False,
-        "late_source_lane_policy": "A later S1 return is preserved as source-dependency evidence but does not retroactively alter the completed blind R1+A1 comparison; literature-dependent promotion remains separately adjudicated.",
+        "late_source_lane_policy": (
+            "Not applicable while a semantic source gate is active: the matching S1 return is a precondition for synthesis."
+            if semantic_gate_dispatches
+            else "A later S1 return is preserved as source-dependency evidence but does not retroactively alter the completed blind R1+A1 comparison; literature-dependent promotion remains separately adjudicated."
+        ),
         "claim_boundary": "This receipt closes only the blind evidence-collection barrier at the protected R1+A1 synthesis minimum. It permits internal comparison and synthesis; it does not admit a mathematical claim, establish literature status, certify a theorem, authorize publication, or create MATHCERT effect.",
     }
 
@@ -150,7 +209,10 @@ def validate_closure(problem: str, closure: dict[str, Any]) -> list[str]:
         errors.append("work package drift")
     if not SHA40.fullmatch(str(closure.get("protected_evidence_base_commit", ""))):
         errors.append("protected evidence base malformed")
-    if closure.get("required_synthesis_lanes") != ["R1", "A1"]:
+    if closure.get("required_synthesis_lanes") not in (
+        ["R1", "A1"],
+        ["R1", "A1", "S1"],
+    ):
         errors.append("minimum synthesis lane set drift")
     if closure.get("minimum_synthesis_evidence_satisfied") is not True:
         errors.append("minimum synthesis evidence not satisfied")
@@ -195,6 +257,36 @@ def validate_closure(problem: str, closure: dict[str, Any]) -> list[str]:
         if item != live:
             errors.append(f"{lane}: closure evidence binding differs from protected evidence")
 
+    try:
+        live_r = lane_receipt(problem, "R1")
+        live_a = lane_receipt(problem, "A1")
+        live_blockers = merge_blockers(
+            live_r.get("semantic_blockers", []) if live_r else [],
+            live_a.get("semantic_blockers", []) if live_a else [],
+        )
+        live_gate_dispatches = required_source_dispatches(live_blockers)
+    except ValueError as exc:
+        errors.append(str(exc))
+        live_blockers = []
+        live_gate_dispatches = []
+
+    expected_required_lanes = ["R1", "A1"] + (["S1"] if live_gate_dispatches else [])
+    if closure.get("required_synthesis_lanes") != expected_required_lanes:
+        errors.append("semantic gate synthesis lane set drift")
+    if closure.get("semantic_blockers", []) != live_blockers:
+        errors.append("semantic blocker binding drift")
+    if closure.get("semantic_gate_required", False) is not bool(live_gate_dispatches):
+        errors.append("semantic gate required flag drift")
+    if closure.get("semantic_gate_required_dispatch_ids", []) != live_gate_dispatches:
+        errors.append("semantic gate dispatch set drift")
+    if live_gate_dispatches:
+        if closure.get("semantic_source_audit_obligation_discharged") is not True:
+            errors.append("semantic source-audit obligation not discharged")
+        if closure.get("semantic_gate_satisfied_at_closure") is not True:
+            errors.append("semantic gate not satisfied at closure")
+        if closure.get("synthesis_allowed") is not True:
+            errors.append("semantic gate did not open synthesis")
+
     source = closure.get("source_lane")
     if not isinstance(source, dict) or source.get("dispatch_id") != lane_dispatch(problem, "S1"):
         errors.append("source lane identity drift")
@@ -213,5 +305,12 @@ def validate_closure(problem: str, closure: dict[str, Any]) -> list[str]:
             errors.append("source lane closure flag disagreement")
         if closure.get("literature_dependent_promotion_source_gate_satisfied_at_closure") is not at_close:
             errors.append("source promotion gate flag disagreement")
+        if live_gate_dispatches:
+            if live_s is None:
+                errors.append("semantic source gate required S1 but protected receipt is absent")
+            elif live_s.get("disposition_declared") == "EXACT_BLOCKER":
+                errors.append("semantic source gate S1 remains blocked")
+            if at_close is not True:
+                errors.append("semantic source gate requires S1 protected at closure")
 
     return errors
