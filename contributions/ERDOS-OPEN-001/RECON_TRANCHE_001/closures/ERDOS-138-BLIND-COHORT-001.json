@@ -1,0 +1,109 @@
+{
+  "activation_cohort_blob_sha1": "ede7dc7afa3de41c018ae652bd9c265bba0cabf3",
+  "activation_cohort_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/cohorts/ERDOS-138-BLIND-COHORT-001.json",
+  "blind_cohort_closed": true,
+  "campaign": "ERDOS-OPEN-RECON",
+  "canonical_claim_effect": false,
+  "certification_effect": false,
+  "claim_boundary": "This receipt closes only the blind evidence-collection barrier at the protected R1+A1 synthesis minimum. It permits internal comparison and synthesis; it does not admit a mathematical claim, establish literature status, certify a theorem, authorize publication, or create MATHCERT effect.",
+  "claim_promotion_effect": false,
+  "closure_basis": "R1 and A1 each have one durably protected schema-valid RESULT/1 raw artifact and receipt; an outcome-changing source/formal semantic blocker is present, so the matching protected S1 return is additionally required before synthesis.",
+  "closure_date": "2026-10-06",
+  "cohort_id": "ERDOS-138-BLIND-COHORT-001",
+  "evidence": [
+    {
+      "canonical_claim_effect": false,
+      "dispatch_id": "ERDOS-138-R1-IA-001",
+      "disposition_declared": "EXACT_REDUCTION",
+      "freshness": "current_for_dispatch",
+      "github_comment_id": 5994076121,
+      "handling_state": "received_unadjudicated",
+      "issue_number": 863,
+      "lane": "R1",
+      "raw_artifact_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/raw/ERDOS-138-R1-IA-001/github-comment-5994076121.md",
+      "raw_blob_sha1": "8083b8794b672f840eb13e263c8b3fa209ff22a0",
+      "raw_sha256": "6bfc0b3116655ab6c21c4f56fe255676d31b06c667fb46dd5be4e3c52582258a",
+      "receipt_blob_sha1": "e708339fff143387497d24d38f62d8ad9cb6d933",
+      "receipt_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/receipts/ERDOS-138-R1-IA-001/github-comment-5994076121.json",
+      "schema_result": "valid",
+      "semantic_blockers": []
+    },
+    {
+      "canonical_claim_effect": false,
+      "dispatch_id": "ERDOS-138-A1-IA-001",
+      "disposition_declared": "COUNTEREXAMPLE",
+      "freshness": "current_for_dispatch",
+      "github_comment_id": 6032005936,
+      "handling_state": "received_unadjudicated",
+      "issue_number": 865,
+      "lane": "A1",
+      "raw_artifact_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/raw/ERDOS-138-A1-IA-001/github-comment-6032005936.md",
+      "raw_blob_sha1": "0e68eaf027f9b4883a4aef8cb568fc356380f498",
+      "raw_sha256": "df794bc57908818d2fc3f4082394efa406d73c63293300adcfd527a3943389e3",
+      "receipt_blob_sha1": "33c12de4fc4c3f5dbbd5758e14744e78d882e1c1",
+      "receipt_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/receipts/ERDOS-138-A1-IA-001/github-comment-6032005936.json",
+      "schema_result": "valid",
+      "semantic_blockers": [
+        {
+          "blocker_id": "ERDOS-138-BERLEKAMP-PROSE-FORMAL-001",
+          "kind": "SOURCE_FORMAL_CONFLICT",
+          "reason": "The protected Berlekamp prose lower bound and protected Lean theorem body differ in an outcome-changing way; source reconciliation must be present before synthesis.",
+          "requires_dispatch_id": "ERDOS-138-S1-IA-001"
+        }
+      ]
+    }
+  ],
+  "independence_strength_adjudicated": false,
+  "late_source_lane_policy": "Not applicable while a semantic source gate is active: the matching S1 return is a precondition for synthesis.",
+  "literature_dependent_promotion_source_gate_satisfied_at_closure": true,
+  "mathematical_correctness_adjudicated": false,
+  "minimum_synthesis_evidence_satisfied": true,
+  "protected_evidence_base_commit": "69dd60f35840558af0caf692b4dbc15a49ca578d",
+  "receipt_id": "ERDOS-138-BLIND-COHORT-001:CLOSURE-001",
+  "record_type": "GCL_BLIND_COHORT_CLOSURE_RECEIPT",
+  "required_synthesis_lanes": [
+    "R1",
+    "A1",
+    "S1"
+  ],
+  "schema_version": "1.0.0",
+  "semantic_blockers": [
+    {
+      "blocker_id": "ERDOS-138-BERLEKAMP-PROSE-FORMAL-001",
+      "kind": "SOURCE_FORMAL_CONFLICT",
+      "reason": "The protected Berlekamp prose lower bound and protected Lean theorem body differ in an outcome-changing way; source reconciliation must be present before synthesis.",
+      "requires_dispatch_id": "ERDOS-138-S1-IA-001"
+    }
+  ],
+  "semantic_gate_required": true,
+  "semantic_gate_required_dispatch_ids": [
+    "ERDOS-138-S1-IA-001"
+  ],
+  "semantic_gate_satisfied_at_closure": true,
+  "semantic_source_audit_obligation_discharged": true,
+  "source_lane": {
+    "dispatch_id": "ERDOS-138-S1-IA-001",
+    "evidence": {
+      "canonical_claim_effect": false,
+      "dispatch_id": "ERDOS-138-S1-IA-001",
+      "disposition_declared": "SOURCE_INTERFACE_FOUND",
+      "freshness": "current_for_dispatch",
+      "github_comment_id": 6035056037,
+      "handling_state": "received_unadjudicated",
+      "issue_number": 864,
+      "lane": "S1",
+      "raw_artifact_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/raw/ERDOS-138-S1-IA-001/github-comment-6035056037.md",
+      "raw_blob_sha1": "2b3a2ef7d37997adab5e4193ec71829c58d18fc6",
+      "raw_sha256": "d3a65c14cd1258eee218a25eb561b74b00b0a8d1ee3b1e15c72b3331fc46bdef",
+      "receipt_blob_sha1": "f7cc5945cd1f479619ae5f92e6cdc985e0f715d6",
+      "receipt_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/receipts/ERDOS-138-S1-IA-001/github-comment-6035056037.json",
+      "schema_result": "valid",
+      "semantic_blockers": []
+    },
+    "protected_at_closure": true
+  },
+  "source_lane_protected_at_closure": true,
+  "source_lane_required_for_literature_dependent_promotion": true,
+  "synthesis_allowed": true,
+  "work_package": "ERDOS-138-RECON-PACK-001"
+}
