@@ -171,7 +171,7 @@ def process(event: dict[str, Any], comments: list[dict[str, Any]], when: datetim
             return {**common, "outcome": "REJECTED_RESULT_ALREADY_PROTECTED", "labels_add": ["returned"], "labels_remove": ["available", "reserved"],
                     "response": "CLAIM REJECTED — a protected result already exists for this dispatch."}
         if any_result_comment(comments) and not latest_result_rejected_by_intake(comments, controller_actors):
-            return {**common, "outcome": "REJECTED_RESULT_COMMENT_PRESENT", "labels_add": [], "labels_remove": [],
+            return {**common, "outcome": "REJECTED_RESULT_COMMENT_PRESENT", "labels_add": [], "labels_remove": ["available", "reserved"],
                     "response": "CLAIM REJECTED — a RESULT/1 comment is already present on this issue and must be reconciled before reassignment."}
         if active is not None:
             return {**common, "outcome": "REJECTED_ALREADY_RESERVED", "labels_add": ["reserved"], "labels_remove": ["available"],

@@ -152,6 +152,13 @@ jobs:
           print(c["labels"]["available"])
           PY
           )"
+          returned="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())
+          print(c["labels"]["returned"])
+          PY
+          )"
 
           gh issue list --repo "$GITHUB_REPOSITORY" --state open --label "$job_label" --limit 1000 --json number > "$RUNNER_TEMP/jobs.json"
 
@@ -191,9 +198,20 @@ jobs:
               gh label create "$reserved" --repo "$GITHUB_REPOSITORY" --force >/dev/null
               gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$reserved" >/dev/null
               gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$available" >/dev/null 2>&1 || true
-            elif [ "$state" = "EXPIRED" ]; then
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$returned" >/dev/null 2>&1 || true
+            elif [ "$state" = "EXPIRED" ] || [ "$state" = "RESULT_REJECTED" ]; then
               gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$returned" >/dev/null 2>&1 || true
               gh label create "$available" --repo "$GITHUB_REPOSITORY" --force >/dev/null
               gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$available" >/dev/null
+            elif [ "$state" = "RESULT_PENDING" ]; then
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$available" >/dev/null 2>&1 || true
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$returned" >/dev/null 2>&1 || true
+            elif [ "$state" = "RETURNED" ]; then
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$available" >/dev/null 2>&1 || true
+              gh label create "$returned" --repo "$GITHUB_REPOSITORY" --force >/dev/null
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$returned" >/dev/null
             fi
           done

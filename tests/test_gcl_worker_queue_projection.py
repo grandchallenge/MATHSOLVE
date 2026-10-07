@@ -61,6 +61,17 @@ class WorkerQueueProjectionTest(unittest.TestCase):
             self.assertEqual(out["issue_field_values"], [{"field_id": 1, "value": "AVAILABLE"}])
             self.assertEqual(out["clear_field_ids"], [2, 3])
 
+    def test_command_pending_result_marks_blocked(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.setup_root(root)
+            out = self.run_projection(root, "command", result={
+                "dispatch_id": "D-1",
+                "outcome": "REJECTED_RESULT_COMMENT_PRESENT",
+            })
+            self.assertEqual(out["issue_field_values"], [{"field_id": 1, "value": "BLOCKED"}])
+            self.assertEqual(out["clear_field_ids"], [3])
+
     def test_intake_marks_returned_and_keeps_worker(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
@@ -77,7 +88,7 @@ class WorkerQueueProjectionTest(unittest.TestCase):
             self.assertFalse(out["queue_managed"])
             self.assertEqual(out["issue_field_values"], [])
 
-    def test_reconcile_result_present_does_not_overwrite_returned_projection(self):
+    def test_reconcile_pending_result_marks_blocked(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             self.setup_root(root)
@@ -94,9 +105,101 @@ class WorkerQueueProjectionTest(unittest.TestCase):
                 comments=comments,
                 now=datetime(2026, 10, 5, 10, 0, tzinfo=timezone.utc),
             )
-            self.assertEqual(out["reservation_state"], "RESULT_PRESENT")
-            self.assertEqual(out["issue_field_values"], [])
-            self.assertEqual(out["clear_field_ids"], [])
+            self.assertEqual(out["reservation_state"], "RESULT_PENDING")
+            self.assertEqual(out["issue_field_values"], [{"field_id": 1, "value": "BLOCKED"}])
+            self.assertEqual(out["clear_field_ids"], [3])
+
+    def test_reconcile_trusted_rejection_reopens_available(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.setup_root(root)
+            comments = [
+                {
+                    "id": 2,
+                    "created_at": "2026-10-05T09:01:00Z",
+                    "user": {"login": "alice"},
+                    "body": "GCL-CONTRIBUTION-RESULT/1\ndispatch_id: D-1\n",
+                },
+                {
+                    "id": 3,
+                    "created_at": "2026-10-05T09:02:00Z",
+                    "user": {"login": "github-actions[bot]"},
+                    "body": "INTAKE REJECTED — FORMAT\n\nreplacement required",
+                },
+            ]
+            out = self.run_projection(
+                root,
+                "reconcile",
+                issue_number=7,
+                comments=comments,
+                now=datetime(2026, 10, 5, 10, 0, tzinfo=timezone.utc),
+            )
+            self.assertEqual(out["reservation_state"], "RESULT_REJECTED")
+            self.assertEqual(out["issue_field_values"], [{"field_id": 1, "value": "AVAILABLE"}])
+            self.assertEqual(out["clear_field_ids"], [2, 3])
+
+    def test_reconcile_captured_result_marks_returned(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.setup_root(root)
+            comments = [
+                {
+                    "id": 2,
+                    "created_at": "2026-10-05T09:01:00Z",
+                    "user": {"login": "alice"},
+                    "body": "GCL-CONTRIBUTION-RESULT/1\ndispatch_id: D-1\n",
+                },
+                {
+                    "id": 3,
+                    "created_at": "2026-10-05T09:02:00Z",
+                    "user": {"login": "github-actions[bot]"},
+                    "body": "INTAKE CAPTURED — raw evidence and receipt were committed.",
+                },
+            ]
+            out = self.run_projection(
+                root,
+                "reconcile",
+                issue_number=7,
+                comments=comments,
+                now=datetime(2026, 10, 5, 10, 0, tzinfo=timezone.utc),
+            )
+            self.assertEqual(out["reservation_state"], "RETURNED")
+            self.assertEqual(out["issue_field_values"], [{"field_id": 1, "value": "RETURNED"}])
+            self.assertEqual(out["clear_field_ids"], [3])
+
+    def test_reconcile_replacement_result_resets_rejected_state(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.setup_root(root)
+            comments = [
+                {
+                    "id": 2,
+                    "created_at": "2026-10-05T09:01:00Z",
+                    "user": {"login": "alice"},
+                    "body": "GCL-CONTRIBUTION-RESULT/1\ndispatch_id: D-1\ninvalid",
+                },
+                {
+                    "id": 3,
+                    "created_at": "2026-10-05T09:02:00Z",
+                    "user": {"login": "github-actions[bot]"},
+                    "body": "INTAKE REJECTED — FORMAT",
+                },
+                {
+                    "id": 4,
+                    "created_at": "2026-10-05T09:03:00Z",
+                    "user": {"login": "alice"},
+                    "body": "GCL-CONTRIBUTION-RESULT/1\ndispatch_id: D-1\nreplacement",
+                },
+            ]
+            out = self.run_projection(
+                root,
+                "reconcile",
+                issue_number=7,
+                comments=comments,
+                now=datetime(2026, 10, 5, 10, 0, tzinfo=timezone.utc),
+            )
+            self.assertEqual(out["reservation_state"], "RESULT_PENDING")
+            self.assertEqual(out["issue_field_values"], [{"field_id": 1, "value": "BLOCKED"}])
 
     def test_reconcile_active_and_expired(self):
         with tempfile.TemporaryDirectory() as td:
