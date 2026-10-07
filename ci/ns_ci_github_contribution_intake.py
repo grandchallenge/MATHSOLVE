@@ -274,7 +274,19 @@ CANARY2_PROFILE = IntakeProfile(
     pr_title_prefix="GCL E2E canary intake",
 )
 
-PROFILES = (NS_PROFILE, UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE, CMDG_SEP2_PROFILE, ERDOS_RA_PROFILE, ERDOS_S_PROFILE, CANARY_PROFILE, CANARY2_PROFILE)
+CANARY3_PROFILE = IntakeProfile(
+    campaign="GCL-E2E-CANARY-003",
+    dispatch_re=re.compile(r"^GCL-E2E-CANARY-003-IA-001$"),
+    base_rel=Path("contributions/GCL-E2E-CANARY-003"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=CANARY_PROFILE.preamble_keys,
+    dispositions=CANARY_PROFILE.dispositions,
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="GCL E2E canary intake",
+)
+
+PROFILES = (NS_PROFILE, UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE, CMDG_SEP2_PROFILE, ERDOS_RA_PROFILE, ERDOS_S_PROFILE, CANARY_PROFILE, CANARY2_PROFILE, CANARY3_PROFILE)
 
 
 class IntakeError(ValueError):
