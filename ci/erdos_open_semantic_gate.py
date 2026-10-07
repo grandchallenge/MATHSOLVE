@@ -68,8 +68,14 @@ def merge_blockers(*groups: list[dict[str, Any]]) -> list[dict[str, str]]:
             if not isinstance(blocker_id, str):
                 raise ValueError("semantic blocker lacks blocker_id")
             normalized = dict(blocker)
-            if blocker_id in merged and merged[blocker_id] != normalized:
-                raise ValueError(f"semantic blocker definition drift: {blocker_id}")
+            if blocker_id in merged:
+                existing = merged[blocker_id]
+                core = ("kind", "requires_dispatch_id")
+                if any(existing.get(key) != normalized.get(key) for key in core):
+                    raise ValueError(f"semantic blocker definition drift: {blocker_id}")
+                if not existing.get("reason") and normalized.get("reason"):
+                    existing["reason"] = normalized["reason"]
+                continue
             merged[blocker_id] = normalized
     return [merged[key] for key in sorted(merged)]
 
@@ -151,10 +157,10 @@ def policy_blockers(
         blockers = rule.get("blockers")
         if not isinstance(triggers, list) or not all(isinstance(x, str) for x in triggers):
             raise ValueError(f"{dispatch_id}: semantic policy trigger list malformed")
-        if not isinstance(blockers, list):
+        if not isinstance(blockers, list) or not all(isinstance(x, dict) for x in blockers):
             raise ValueError(f"{dispatch_id}: semantic policy blocker list malformed")
         if disposition in triggers:
-            out.extend(_normalize_blocker(blocker, problem) for blocker in blockers if isinstance(blocker, dict))
+            out.extend(_normalize_blocker(blocker, problem) for blocker in blockers)
     return merge_blockers(out)
 
 
