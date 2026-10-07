@@ -10,7 +10,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "contributions" / "GCL-E2E-CANARY-002"
 DISPATCH_ID = "GCL-E2E-CANARY-002-IA-001"
-COHORT_ID = "GCL-E2E-CANARY-COHORT-001"
+COHORT_ID = "GCL-E2E-CANARY-COHORT-002"
 ASSIGNMENT_ID = "GCL-E2E-CANARY-002"
 SUCCESSOR_ID = "GCL-E2E-CANARY-003"
 SHA40 = re.compile(r"^[0-9a-f]{40}$")
