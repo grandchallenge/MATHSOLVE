@@ -395,7 +395,7 @@ def replay():
         "record_id": "OM26-H1-333344-OBSTRUCTION-001",
         "state": "CONDITIONAL_PAPER_PROOF__FINITE_REPLAY_PASS__TRUSTED_MATHEMATICAL_ADAPTER_PENDING",
         "profile": "333344",
-        "checker_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "checker_sha256": hashlib.sha256(Path(__file__).read_bytes().replace(b"\r\n", b"\n")).hexdigest(),
         "labeled_graphs_visited": 1 << len(EDGES),
         "relaxed_graph_candidates_by_D2": dict(sorted(relaxed.items())),
         "planar_graph_candidates_by_D2": dict(sorted(planar_counts.items())),

@@ -1,5 +1,5 @@
 {
-  "checker_sha256": "a432a9c42297e86a2342bae52d0f79042d00216a761c92002697030f0128d8e8",
+  "checker_sha256": "9b57b5ba5bfc23d3543c460f4be71cf4a5c5b55fd7492f1a0315dd65fca9dd88",
   "claim_boundary": "Conditional elimination of q=6 profile 333344. The finite replay verifies the graph/local-word reduction, relaxed incidence lower bound, and unique equality normal form; the accompanying note supplies the final real-geometric multiplicity contradiction. No q=6 closure, q>=7 conclusion, hill-global <=94 claim, MATHCERT promotion, novelty claim, or competition submission.",
   "dependencies": [
     "six-core no-long-run fan premise",
