@@ -411,7 +411,7 @@
       "sibling_use_policy": "FORBIDDEN",
       "dispatch_path": "contributions/GCL-E2E-CANARY-003/dispatches/GCL-E2E-CANARY-003-IA-001.json",
       "cohort_id": "GCL-E2E-CANARY-COHORT-003",
-      "task_commit": "81ba0f1d5b4425f85b6a3e8fffc0df2f879c7f22"
+      "task_commit": "843f164beb244c7548d20812895ee6bf614d0b25"
     }
   ]
 }
