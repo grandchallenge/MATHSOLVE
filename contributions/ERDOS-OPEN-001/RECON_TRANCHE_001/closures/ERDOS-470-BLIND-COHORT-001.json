@@ -51,7 +51,7 @@
   "literature_dependent_promotion_source_gate_satisfied_at_closure": true,
   "mathematical_correctness_adjudicated": false,
   "minimum_synthesis_evidence_satisfied": true,
-  "protected_evidence_base_commit": "69dd60f35840558af0caf692b4dbc15a49ca578d",
+  "protected_evidence_base_commit": "6fc117263986f163b78c184e05ac3f8e44dd9f5e",
   "receipt_id": "ERDOS-470-BLIND-COHORT-001:CLOSURE-001",
   "record_type": "GCL_BLIND_COHORT_CLOSURE_RECEIPT",
   "required_synthesis_lanes": [
