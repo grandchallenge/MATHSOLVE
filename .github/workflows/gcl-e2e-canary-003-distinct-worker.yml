@@ -1,0 +1,117 @@
+name: GCL E2E canary 003 distinct worker
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+  issues: write
+
+jobs:
+  worker:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Verify immutable task and protected activation
+        env:
+          ISSUE: "999"
+          DISPATCH: "GCL-E2E-CANARY-003-IA-001"
+          TASK_COMMIT: "81ba0f1d5b4425f85b6a3e8fffc0df2f879c7f22"
+          TASK_PATH: "handoffs/GCL-E2E-CANARY/003.md"
+          TASK_SHA256: "f2f57c7bf63ac8b23d6ed11165a633a155ab9f44dbed21c7143502a7c4042fb6"
+        run: |
+          set -euo pipefail
+          git show "$TASK_COMMIT:$TASK_PATH" > "$RUNNER_TEMP/task.md"
+          printf '%s  %s\n' "$TASK_SHA256" "$RUNNER_TEMP/task.md" | sha256sum -c -
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          dispatch = json.loads(Path("contributions/GCL-E2E-CANARY-003/dispatches/GCL-E2E-CANARY-003-IA-001.json").read_text())
+          jobs = json.loads(Path(".gcl/worker_queue/JOBS.json").read_text())["jobs"]
+          assert dispatch["dispatch_id"] == os.environ["DISPATCH"]
+          assert dispatch["github_issue_number"] == int(os.environ["ISSUE"])
+          assert dispatch["dispatch_status"] == "READY_FOR_GITHUB_COMMENT"
+          assert dispatch["lease_state"] == "ACTIVE"
+          assert dispatch["source_handoff_commit_sha"] == os.environ["TASK_COMMIT"]
+          assert any(j["dispatch_id"] == os.environ["DISPATCH"] and j["issue_number"] == int(os.environ["ISSUE"]) and j["self_claimable"] is True for j in jobs)
+          PY
+
+      - name: Claim through production queue contract
+        id: claim
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: "999"
+        run: |
+          set -euo pipefail
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE" > "$RUNNER_TEMP/issue.json"
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" -f body="/claim" > "$RUNNER_TEMP/claim-comment.json"
+          claim_id="$(jq -r '.id' "$RUNNER_TEMP/claim-comment.json")"
+          gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments?per_page=100" | jq -s 'add' > "$RUNNER_TEMP/comments.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])
+          event={"issue":json.loads((root/"issue.json").read_text()),"comment":json.loads((root/"claim-comment.json").read_text())}
+          (root/"claim-event.json").write_text(json.dumps(event),encoding="utf-8")
+          PY
+          python ci/gcl_worker_queue.py --event "$RUNNER_TEMP/claim-event.json" --comments "$RUNNER_TEMP/comments.json" --output "$RUNNER_TEMP/queue-result.json"
+          test "$(jq -r '.outcome' "$RUNNER_TEMP/queue-result.json")" = "RESERVED"
+          test "$(jq -r '.worker' "$RUNNER_TEMP/queue-result.json")" = "github-actions[bot]"
+          jq -r '.response' "$RUNNER_TEMP/queue-result.json" > "$RUNNER_TEMP/reservation.md"
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" -F body=@"$RUNNER_TEMP/reservation.md" > "$RUNNER_TEMP/reservation-comment.json"
+          echo "claim_comment_id=$claim_id" >> "$GITHUB_OUTPUT"
+
+      - name: Return exact RESULT/1 as distinct worker identity
+        id: result
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: "999"
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os, re
+          from pathlib import Path
+          text=Path(os.environ["RUNNER_TEMP"]+"/task.md").read_text(encoding="utf-8")
+          m=re.search(r"\x60\x60\x60text\n(GCL-CONTRIBUTION-RESULT/1.*?\n)\x60\x60\x60", text, re.S)
+          if not m:
+              raise SystemExit("protected task lacks exact RESULT/1 fenced payload")
+          Path(os.environ["RUNNER_TEMP"]+"/result.md").write_text(m.group(1),encoding="utf-8")
+          PY
+          gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments?per_page=100" | jq -s 'add' > "$RUNNER_TEMP/comments-before-result.json"
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+          from ci.gcl_worker_queue_contract import active_reservation
+          comments=json.loads(Path(os.environ["RUNNER_TEMP"]+"/comments-before-result.json").read_text())
+          reservation=active_reservation(comments,"GCL-E2E-CANARY-003-IA-001",datetime.now(timezone.utc),{"github-actions[bot]"})
+          if reservation is None or reservation.get("worker")!="github-actions[bot]":
+              raise SystemExit("distinct worker reservation is not active")
+          PY
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" -F body=@"$RUNNER_TEMP/result.md" > "$RUNNER_TEMP/result-comment.json"
+          result_id="$(jq -r '.id' "$RUNNER_TEMP/result-comment.json")"
+          test -n "$result_id"
+          echo "result_comment_id=$result_id" >> "$GITHUB_OUTPUT"
+
+      - name: Wake governed intake replay
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT_COMMENT_ID: ${{ steps.result.outputs.result_comment_id }}
+        run: |
+          set -euo pipefail
+          gh workflow run ns-ci-independent-contribution-intake.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref main \
+            -f issue_number=999 \
+            -f comment_id="$RESULT_COMMENT_ID"
