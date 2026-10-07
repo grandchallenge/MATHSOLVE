@@ -19,6 +19,9 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECT = ROOT / ".gcl/worker_queue/PROJECT.json"
 JOBS = ROOT / ".gcl/worker_queue/JOBS.json"
 CONFIG = ROOT / ".gcl/worker_queue/CONFIG.json"
+RESULT_MARKER = "GCL-CONTRIBUTION-RESULT/1"
+INTAKE_CAPTURED_PREFIX = "INTAKE CAPTURED"
+INTAKE_REJECTED_PREFIX = "INTAKE REJECTED —"
 
 
 def load_json(path: Path) -> Any:
@@ -41,6 +44,26 @@ def job_by_issue(issue_number: int) -> dict[str, Any] | None:
 
 def field_id(project: dict[str, Any], name: str) -> int:
     return int(project["issue_fields"][name]["rest_id"])
+
+
+def latest_result_intake_state(
+    comments: list[dict[str, Any]],
+    controller_actors: set[str],
+) -> str | None:
+    state: str | None = None
+    for comment in comments:
+        body = comment.get("body")
+        actor = str((comment.get("user") or {}).get("login") or "")
+        if isinstance(body, str) and body.startswith(RESULT_MARKER + "\n"):
+            state = "PENDING"
+            continue
+        if state is None or actor not in controller_actors or not isinstance(body, str):
+            continue
+        if body.startswith(INTAKE_CAPTURED_PREFIX):
+            state = "CAPTURED"
+        elif body.startswith(INTAKE_REJECTED_PREFIX):
+            state = "REJECTED"
+    return state
 
 
 def projection(
@@ -91,6 +114,9 @@ def projection(
         elif outcome == "REJECTED_RESULT_ALREADY_PROTECTED":
             updates.append({"field_id": state_id, "value": "RETURNED"})
             clears.append(expires_id)
+        elif outcome == "REJECTED_RESULT_COMMENT_PRESENT":
+            updates.append({"field_id": state_id, "value": "BLOCKED"})
+            clears.append(expires_id)
     elif mode == "intake":
         updates.append({"field_id": state_id, "value": "RETURNED"})
         clears.append(expires_id)
@@ -100,26 +126,48 @@ def projection(
     elif mode == "reconcile":
         if comments is None:
             raise ValueError("reconcile requires comments")
-        if any(
-            isinstance(comment.get("body"), str)
-            and comment["body"].startswith("GCL-CONTRIBUTION-RESULT/1\n")
-            for comment in comments
-        ):
+        cfg = load_json(CONFIG)
+        controller_actors = set(cfg.get("controller_comment_actors", []))
+        result_state = latest_result_intake_state(comments, controller_actors)
+        if result_state == "CAPTURED":
+            updates.append({"field_id": state_id, "value": "RETURNED"})
+            clears.append(expires_id)
             return {
                 "queue_managed": True,
                 "dispatch_id": dispatch_id,
                 "issue_number": job["issue_number"],
-                "reservation_state": "RESULT_PRESENT",
-                "issue_field_values": [],
-                "clear_field_ids": [],
+                "reservation_state": "RETURNED",
+                "issue_field_values": updates,
+                "clear_field_ids": clears,
             }
-        cfg = load_json(CONFIG)
+        if result_state == "REJECTED":
+            updates.append({"field_id": state_id, "value": "AVAILABLE"})
+            clears.extend([worker_id, expires_id])
+            return {
+                "queue_managed": True,
+                "dispatch_id": dispatch_id,
+                "issue_number": job["issue_number"],
+                "reservation_state": "RESULT_REJECTED",
+                "issue_field_values": updates,
+                "clear_field_ids": clears,
+            }
+        if result_state == "PENDING":
+            updates.append({"field_id": state_id, "value": "BLOCKED"})
+            clears.append(expires_id)
+            return {
+                "queue_managed": True,
+                "dispatch_id": dispatch_id,
+                "issue_number": job["issue_number"],
+                "reservation_state": "RESULT_PENDING",
+                "issue_field_values": updates,
+                "clear_field_ids": clears,
+            }
         at = now or datetime.now(timezone.utc)
         active = active_reservation(
             comments,
             str(dispatch_id),
             at.astimezone(timezone.utc),
-            set(cfg.get("controller_comment_actors", [])),
+            controller_actors,
         )
         if active is None:
             updates.append({"field_id": state_id, "value": "AVAILABLE"})
