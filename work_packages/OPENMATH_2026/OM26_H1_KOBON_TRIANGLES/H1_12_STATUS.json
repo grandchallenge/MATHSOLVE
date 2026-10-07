@@ -13,14 +13,14 @@
   },
   "remaining_gap": {
     "simple_bound_value": 94,
-    "issue": "Conditional on the named source-scoped premises, all q<=5 score-95 configurations and q=6 profiles 333444 and 333335 are excluded. Profiles 333333, 333334, 333344 and all q>=7 cases remain open.",
-    "target": "Attack q=6 profile 333344 next, seeking a separator/incidence lemma reusable against 333334 or 333333, while keeping the source-scoped fan and clean-line charging obligations explicit."
+    "issue": "Conditional on the named source-scoped premises, all q<=5 score-95 configurations and q=6 profiles 333444, 333335, and 333344 are excluded. Profiles 333333, 333334 and all q>=7 cases remain open.",
+    "target": "Attack q=6 profile 333334 next, seeking a separator/incidence lemma reusable against 333333; keep the source-scoped fan and clean-line charging obligations explicit, then address q>=7."
   },
   "current_source_interval": {
     "lower": 93,
     "upper": 95
   },
-  "claim_boundary": "H1-12 is narrowed to three q=6 profiles (333333, 333334, 333344) plus q>=7, conditional on the named source-scoped premises. No hill-global <=94, optimality, or MATHCERT claim.",
+  "claim_boundary": "H1-12 is narrowed to two q=6 profiles (333333, 333334) plus q>=7, conditional on the named source-scoped premises. No hill-global <=94, optimality, or MATHCERT claim.",
   "source_conditional_reduction": {
     "statement": "Conditional on the protected clean-line charging, endpoint-capacity, and local fan premises, an n=18,T=95 normalized arrangement cannot have exactly three finite multiple points. Hence any such witness must have at least four finite multiple points.",
     "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_THREE_CORE_CLASSIFICATION.md",
@@ -248,6 +248,18 @@
       "333333",
       "333334",
       "333344"
+    ],
+    "mathematical_effect": true,
+    "certification_effect": false
+  },
+  "q6_333344_closure": {
+    "statement": "Conditional on the six-core fan/charging premises, profile 333344 is unrealizable. Exact replay reduces 6,143 relaxed graph candidates to 126 planarity/triangle-compatible labelings; incidence-excess minimization eliminates all but six K3,3-e equality cases, whose unique minimum line cover forces one three-core line on each bipartition and hence four distinct arrangement lines through each triple core.",
+    "artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_16_333344_OBSTRUCTION.md",
+    "finite_replay": "ci/validate_openmath_h1_333344.py",
+    "face_loss_mining": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_16_FACE_LOSS_MINING.json",
+    "residual_after_replay": [
+      "333333",
+      "333334"
     ],
     "mathematical_effect": true,
     "certification_effect": false

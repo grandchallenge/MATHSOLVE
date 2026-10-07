@@ -1,0 +1,148 @@
+{
+  "anchor_summaries": [
+    {
+      "anchor": 0,
+      "best_score": 93,
+      "edges": 39242,
+      "nodes": 2151
+    },
+    {
+      "anchor": 1,
+      "best_score": 93,
+      "edges": 36572,
+      "nodes": 2151
+    },
+    {
+      "anchor": 2,
+      "best_score": 93,
+      "edges": 33208,
+      "nodes": 2151
+    },
+    {
+      "anchor": 3,
+      "best_score": 93,
+      "edges": 33505,
+      "nodes": 2151
+    },
+    {
+      "anchor": 4,
+      "best_score": 93,
+      "edges": 34648,
+      "nodes": 2151
+    },
+    {
+      "anchor": 5,
+      "best_score": 93,
+      "edges": 33999,
+      "nodes": 2151
+    },
+    {
+      "anchor": 6,
+      "best_score": 93,
+      "edges": 37407,
+      "nodes": 2151
+    },
+    {
+      "anchor": 7,
+      "best_score": 93,
+      "edges": 38527,
+      "nodes": 2151
+    },
+    {
+      "anchor": 8,
+      "best_score": 93,
+      "edges": 33279,
+      "nodes": 2151
+    },
+    {
+      "anchor": 9,
+      "best_score": 93,
+      "edges": 33049,
+      "nodes": 2151
+    },
+    {
+      "anchor": 10,
+      "best_score": 93,
+      "edges": 33528,
+      "nodes": 2151
+    },
+    {
+      "anchor": 11,
+      "best_score": 93,
+      "edges": 32871,
+      "nodes": 2151
+    },
+    {
+      "anchor": 12,
+      "best_score": 93,
+      "edges": 37747,
+      "nodes": 2151
+    },
+    {
+      "anchor": 13,
+      "best_score": 93,
+      "edges": 38122,
+      "nodes": 2151
+    },
+    {
+      "anchor": 14,
+      "best_score": 93,
+      "edges": 34487,
+      "nodes": 2151
+    },
+    {
+      "anchor": 15,
+      "best_score": 93,
+      "edges": 33759,
+      "nodes": 2151
+    },
+    {
+      "anchor": 16,
+      "best_score": 93,
+      "edges": 34200,
+      "nodes": 2151
+    },
+    {
+      "anchor": 17,
+      "best_score": 93,
+      "edges": 33818,
+      "nodes": 2151
+    }
+  ],
+  "anchors_completed": 18,
+  "best_endpoint": null,
+  "bridge_budget": 1,
+  "claim_boundary": "Proposal-generation route evidence only. No global upper bound, optimality, novelty, competition acceptance, or MATHCERT certification follows from this search.",
+  "combinatorial_best": 93,
+  "completed_all_anchors": true,
+  "configured_seconds": 180.0,
+  "depth": 10,
+  "edges": 631968,
+  "endpoints_ge_94": 0,
+  "external_commit_required": "22d1165f6c455fe45e461baef4410f6d5c78a014",
+  "found_94_or_better": false,
+  "initial_projective_score": 102,
+  "initial_score": 93,
+  "limitations": [
+    "bounded beam search, not exhaustive over all oriented matroids",
+    "at most the declared number of off-anchor bridge mutations per macro",
+    "combinatorial endpoints are not straight-line candidates unless exact reconstruction succeeds",
+    "failed search is not an upper bound or infeasibility certificate"
+  ],
+  "n": 18,
+  "nodes": 38718,
+  "noise": 0.35,
+  "projective_best": 102,
+  "projective_weight": 0.08,
+  "realization_attempts": 0,
+  "realized_best": 93,
+  "realized_candidates": [],
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-15-COMPOUND-ORDER-TYPE-SEARCH",
+  "schema_version": "1.0.0",
+  "search_script_sha256": "41386011a2526e924ed9ed28128977922ca8c6151e8128886bac204251f00d44",
+  "seconds": 91.24712347984314,
+  "seed": 2026100701,
+  "source": "research/finite-table/gcl-om26-h1-093.json",
+  "source_sha256": "3d2d3ee424fd9f69298f18a9a9cf4302f38f37e446bb53588c856e27530f0f3c",
+  "width": 256
+}
