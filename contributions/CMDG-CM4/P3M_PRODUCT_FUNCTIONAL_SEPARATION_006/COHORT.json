@@ -4,7 +4,7 @@
   "cohort_id": "CMDG-P3M-SEP2-BLIND-COHORT-001",
   "campaign": "CMDG-CM4-P3M-SEPARATION",
   "tranche": "PRODUCT-FUNCTIONAL-SEPARATION-006",
-  "state": "OPEN_AWAITING_RESULTS",
+  "state": "CLOSED_EVIDENCE_COMPLETE",
   "assignments": [
     "CMDG-P3M-SEP2-WP-A-IA-001",
     "CMDG-P3M-SEP2-WP-B-IA-001",
@@ -12,9 +12,19 @@
     "CMDG-P3M-SEP2-WP-D-IA-001"
   ],
   "collaboration_mode": "STAGED_DISCLOSURE",
-  "visibility_phase": "BLIND_COLLECTION",
+  "visibility_phase": "SYNTHESIS_OPEN",
   "cross_disclosure_before_closure": false,
-  "synthesis_allowed": false,
+  "synthesis_allowed": true,
   "closure_rule": "Close only after terminal first-valid results are protected or explicitly terminally disposed for all four dispatches.",
-  "claim_boundary": "Operational/evidence state only; no coefficient solidity, P3 completion, or CM4 completion."
+  "closed_on_evidence_commit": "45146308ae22729decc4fd8ca61e8bbd7e952602",
+  "closure_reason": "WP_B_C_D_PROTECTED__WP_A_TERMINALLY_DISPOSED_INVALID_LEASE_PROVENANCE",
+  "terminal_dispositions": {
+    "CMDG-P3M-SEP2-WP-A-IA-001": "INVALID_UNLEASED_RETURN__NOT_ADMITTED"
+  },
+  "protected_returns": [
+    "CMDG-P3M-SEP2-WP-B-IA-001",
+    "CMDG-P3M-SEP2-WP-C-IA-001",
+    "CMDG-P3M-SEP2-WP-D-IA-001"
+  ],
+  "claim_boundary": "Blind collection is closed. Internal comparison/synthesis of protected WP-B/WP-C/WP-D returns is authorized. WP-A is terminally disposed for missing worker-reservation provenance and contributes no mathematical evidence. No coefficient solidity, P3 completion, CM4 completion, certification, or claim promotion is admitted."
 }
