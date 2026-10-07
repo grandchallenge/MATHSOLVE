@@ -78,6 +78,29 @@ def any_result_comment(comments: list[dict[str, Any]]) -> bool:
     )
 
 
+def latest_result_rejected_by_intake(
+    comments: list[dict[str, Any]],
+    controller_actors: set[str],
+) -> bool:
+    result_index: int | None = None
+    for index, comment in enumerate(comments):
+        body = comment.get("body")
+        if isinstance(body, str) and body.startswith(RESULT_MARKER + "\n"):
+            result_index = index
+    if result_index is None:
+        return False
+    for comment in comments[result_index + 1:]:
+        body = comment.get("body")
+        actor = str((comment.get("user") or {}).get("login") or "")
+        if (
+            actor in controller_actors
+            and isinstance(body, str)
+            and body.startswith("INTAKE REJECTED —")
+        ):
+            return True
+    return False
+
+
 def build_marker(
     dispatch_id: str,
     state: str,
@@ -147,7 +170,7 @@ def process(event: dict[str, Any], comments: list[dict[str, Any]], when: datetim
         if protected_result_exists(dispatch_id):
             return {**common, "outcome": "REJECTED_RESULT_ALREADY_PROTECTED", "labels_add": ["returned"], "labels_remove": ["available", "reserved"],
                     "response": "CLAIM REJECTED — a protected result already exists for this dispatch."}
-        if any_result_comment(comments):
+        if any_result_comment(comments) and not latest_result_rejected_by_intake(comments, controller_actors):
             return {**common, "outcome": "REJECTED_RESULT_COMMENT_PRESENT", "labels_add": [], "labels_remove": [],
                     "response": "CLAIM REJECTED — a RESULT/1 comment is already present on this issue and must be reconciled before reassignment."}
         if active is not None:
