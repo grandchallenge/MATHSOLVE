@@ -27,9 +27,9 @@ jobs:
         env:
           ISSUE: "999"
           DISPATCH: "GCL-E2E-CANARY-003-IA-001"
-          TASK_COMMIT: "81ba0f1d5b4425f85b6a3e8fffc0df2f879c7f22"
+          TASK_COMMIT: "843f164beb244c7548d20812895ee6bf614d0b25"
           TASK_PATH: "handoffs/GCL-E2E-CANARY/003.md"
-          TASK_SHA256: "f2f57c7bf63ac8b23d6ed11165a633a155ab9f44dbed21c7143502a7c4042fb6"
+          TASK_SHA256: "5c2a2ac74b22acd987dcedfeae61f72f483892216edb6d9fb6fdd9a0d9f62631"
         run: |
           set -euo pipefail
           git show "$TASK_COMMIT:$TASK_PATH" > "$RUNNER_TEMP/task.md"
