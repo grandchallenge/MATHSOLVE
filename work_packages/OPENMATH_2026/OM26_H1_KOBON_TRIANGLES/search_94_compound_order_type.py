@@ -164,7 +164,7 @@ def run(args):
         "record_id": "MS-OPENMATH-2026-OM26-H1-H1-15-COMPOUND-ORDER-TYPE-SEARCH",
         "source": str(source.relative_to(ext)).replace("\\", "/"),
         "source_sha256": hashlib.sha256(source.read_text().replace("\r\n", "\n").encode()).hexdigest(),
-        "search_script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "search_script_sha256": hashlib.sha256(Path(__file__).read_text().replace("\r\n", "\n").encode()).hexdigest(),
         "external_commit_required": args.external_commit,
         "n": ch.n,
         "initial_score": initial,

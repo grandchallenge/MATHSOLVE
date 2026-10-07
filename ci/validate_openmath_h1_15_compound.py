@@ -45,7 +45,7 @@ def validate():
     external_bytes = (json.dumps(external_seed) + "\n").encode()
     assert receipt["source"] == "research/finite-table/gcl-om26-h1-093.json"
     assert receipt["source_sha256"] == sha256_bytes(external_bytes)
-    assert receipt["search_script_sha256"] == sha256_bytes(SCRIPT.read_bytes())
+    assert receipt["search_script_sha256"] == sha256_bytes(SCRIPT.read_text().replace("\r\n", "\n").encode())
     assert receipt["external_commit_required"] == source["external_proposal_generator"]["commit"]
 
     assert receipt["n"] == 18

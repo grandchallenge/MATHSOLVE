@@ -139,7 +139,7 @@
   "realized_candidates": [],
   "record_id": "MS-OPENMATH-2026-OM26-H1-H1-15-COMPOUND-ORDER-TYPE-SEARCH",
   "schema_version": "1.0.0",
-  "search_script_sha256": "41386011a2526e924ed9ed28128977922ca8c6151e8128886bac204251f00d44",
+  "search_script_sha256": "b2029144437bc451f8dc413b50e3154eae4c4eec1df6b53c8b2938ecece1810a",
   "seconds": 91.24712347984314,
   "seed": 2026100701,
   "source": "research/finite-table/gcl-om26-h1-093.json",
