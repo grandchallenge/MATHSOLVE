@@ -386,6 +386,19 @@
       "dispatch_path": "contributions/GCL-E2E-CANARY-001/dispatches/GCL-E2E-CANARY-001-IA-001.json",
       "cohort_id": "GCL-E2E-CANARY-COHORT-001",
       "task_commit": "00b63dc59f10a23f8360ad9357d2caa5be4371c2"
+    },
+    {
+      "dispatch_id": "GCL-E2E-CANARY-002-IA-001",
+      "issue_number": 985,
+      "role": "RECONNAISSANCE",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/GCL-E2E-CANARY-002/dispatches/GCL-E2E-CANARY-002-IA-001.json",
+      "cohort_id": "GCL-E2E-CANARY-COHORT-002",
+      "task_commit": "69dd60f35840558af0caf692b4dbc15a49ca578d"
     }
   ]
 }
