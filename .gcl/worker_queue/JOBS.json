@@ -333,7 +333,7 @@
       "sibling_use_policy": "FORBIDDEN",
       "dispatch_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/dispatches/CMDG-P3M-SEP2-WP-A-IA-001.json",
       "cohort_id": "CMDG-P3M-SEP2-BLIND-COHORT-001",
-      "task_commit": "edaed1b2e6654a88ef00ee912426f6e9913638ef"
+      "task_commit": "6ae554a2280e2d46c0ed9979470f7d567ed62f46"
     },
     {
       "dispatch_id": "CMDG-P3M-SEP2-WP-B-IA-001",
@@ -346,7 +346,7 @@
       "sibling_use_policy": "FORBIDDEN",
       "dispatch_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/dispatches/CMDG-P3M-SEP2-WP-B-IA-001.json",
       "cohort_id": "CMDG-P3M-SEP2-BLIND-COHORT-001",
-      "task_commit": "edaed1b2e6654a88ef00ee912426f6e9913638ef"
+      "task_commit": "6ae554a2280e2d46c0ed9979470f7d567ed62f46"
     },
     {
       "dispatch_id": "CMDG-P3M-SEP2-WP-C-IA-001",
@@ -359,7 +359,7 @@
       "sibling_use_policy": "FORBIDDEN",
       "dispatch_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/dispatches/CMDG-P3M-SEP2-WP-C-IA-001.json",
       "cohort_id": "CMDG-P3M-SEP2-BLIND-COHORT-001",
-      "task_commit": "edaed1b2e6654a88ef00ee912426f6e9913638ef"
+      "task_commit": "6ae554a2280e2d46c0ed9979470f7d567ed62f46"
     },
     {
       "dispatch_id": "CMDG-P3M-SEP2-WP-D-IA-001",
@@ -372,7 +372,7 @@
       "sibling_use_policy": "FORBIDDEN",
       "dispatch_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/dispatches/CMDG-P3M-SEP2-WP-D-IA-001.json",
       "cohort_id": "CMDG-P3M-SEP2-BLIND-COHORT-001",
-      "task_commit": "edaed1b2e6654a88ef00ee912426f6e9913638ef"
+      "task_commit": "6ae554a2280e2d46c0ed9979470f7d567ed62f46"
     },
     {
       "dispatch_id": "GCL-E2E-CANARY-001-IA-001",
