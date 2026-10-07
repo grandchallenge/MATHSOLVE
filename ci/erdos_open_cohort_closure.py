@@ -93,6 +93,20 @@ def lane_receipt(problem: str, lane: str) -> dict[str, Any] | None:
     }
 
 
+def evidence_binding_matches(
+    protected_item: dict[str, Any] | None,
+    live_item: dict[str, Any] | None,
+) -> bool:
+    if protected_item == live_item:
+        return True
+    if not isinstance(protected_item, dict) or not isinstance(live_item, dict):
+        return False
+    comparable = dict(live_item)
+    if "semantic_blockers" not in protected_item and not comparable.get("semantic_blockers"):
+        comparable.pop("semantic_blockers", None)
+    return protected_item == comparable
+
+
 def build_closure(problem: str, protected_commit: str, closure_date: str) -> dict[str, Any]:
     if problem not in PROBLEMS:
         raise ValueError(f"unsupported ERDOS problem: {problem}")
@@ -254,7 +268,7 @@ def validate_closure(problem: str, closure: dict[str, Any]) -> list[str]:
             errors.append(f"{lane}: protected receipt absent")
             continue
         item = by_lane.get(lane)
-        if item != live:
+        if not evidence_binding_matches(item, live):
             errors.append(f"{lane}: closure evidence binding differs from protected evidence")
 
     try:
@@ -299,7 +313,7 @@ def validate_closure(problem: str, closure: dict[str, Any]) -> list[str]:
         at_close = source.get("protected_at_closure")
         if at_close not in (True, False):
             errors.append("source protected-at-closure flag malformed")
-        if at_close is True and source.get("evidence") != live_s:
+        if at_close is True and not evidence_binding_matches(source.get("evidence"), live_s):
             errors.append("source closure evidence differs from protected evidence")
         if closure.get("source_lane_protected_at_closure") is not at_close:
             errors.append("source lane closure flag disagreement")
