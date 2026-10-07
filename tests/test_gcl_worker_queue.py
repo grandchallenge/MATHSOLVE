@@ -139,6 +139,8 @@ class WorkerQueueTest(unittest.TestCase):
             }
             blocked = self.run_process(root, event, [result_comment], now)
             self.assertEqual(blocked["outcome"], "REJECTED_RESULT_COMMENT_PRESENT")
+            self.assertEqual(blocked["labels_add"], [])
+            self.assertEqual(blocked["labels_remove"], ["available", "reserved"])
 
     def test_rejected_result_can_be_reclaimed(self):
         with tempfile.TemporaryDirectory() as td:
