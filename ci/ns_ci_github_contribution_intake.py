@@ -15,6 +15,23 @@ try:
 except ModuleNotFoundError:
     from gcl_worker_queue_contract import active_reservation, queue_job_for_dispatch
 
+try:
+    from ci.erdos_open_semantic_gate import (
+        BLOCKER_MARKER,
+        merge_blockers,
+        parse_declared_blockers,
+        policy_blockers,
+        required_source_dispatches,
+    )
+except ModuleNotFoundError:
+    from erdos_open_semantic_gate import (
+        BLOCKER_MARKER,
+        merge_blockers,
+        parse_declared_blockers,
+        policy_blockers,
+        required_source_dispatches,
+    )
+
 ROOT = Path(__file__).resolve().parents[1]
 
 MARKER = "GCL-CONTRIBUTION-RESULT/1"
@@ -365,7 +382,25 @@ def parse_result_comment(body: str) -> dict[str, Any]:
     if sentence_marks > 3:
         raise IntakeError("Next residual exceeds three sentences")
 
-    return {"profile": profile.campaign, "preamble": preamble, "sections": sections}
+    semantic_blockers: list[dict[str, str]] = []
+    if BLOCKER_MARKER in parsed_body:
+        if profile not in {ERDOS_RA_PROFILE, ERDOS_S_PROFILE}:
+            raise IntakeError("semantic blocker declarations are enabled only for ERDOS-OPEN")
+        try:
+            semantic_blockers = parse_declared_blockers(
+                parsed_body,
+                dispatch_id,
+                preamble["disposition"],
+            )
+        except ValueError as exc:
+            raise IntakeError(str(exc)) from exc
+
+    return {
+        "profile": profile.campaign,
+        "preamble": preamble,
+        "sections": sections,
+        "semantic_blockers": semantic_blockers,
+    }
 
 
 def load_dispatch(root: Path, dispatch_id: str) -> tuple[IntakeProfile, dict[str, Any]]:
@@ -515,6 +550,24 @@ def emit_intake(
         "adversarial_replay": "ADVERSARIAL_REPLAY",
     }[dispatch["concurrency_mode"]]
 
+    try:
+        policy = (
+            policy_blockers(
+                dispatch_id,
+                parsed["preamble"]["disposition"],
+                root,
+            )
+            if profile in {ERDOS_RA_PROFILE, ERDOS_S_PROFILE}
+            else []
+        )
+        semantic_blockers = merge_blockers(
+            parsed.get("semantic_blockers", []),
+            policy,
+        )
+        semantic_gate_dispatches = required_source_dispatches(semantic_blockers)
+    except ValueError as exc:
+        raise IntakeError(str(exc)) from exc
+
     receipt = {
         "schema_version": profile.receipt_schema_version,
         "receipt_id": f"{dispatch_id}:github-comment:{comment_id}",
@@ -547,6 +600,13 @@ def emit_intake(
         "context_class_declared": parsed["preamble"]["context_class"],
         "external_sources_declared": parsed["preamble"]["external_sources"],
         "timebox_observed_declared": parsed["preamble"]["timebox_observed"],
+        "semantic_blockers": semantic_blockers,
+        "semantic_blocker_state": "OPEN" if semantic_blockers else "NONE",
+        "semantic_gate_required": bool(semantic_blockers),
+        "semantic_gate_required_dispatch_ids": semantic_gate_dispatches,
+        "semantic_gate_resolution_state": (
+            "AWAITING_SOURCE_AUDIT" if semantic_blockers else "NOT_REQUIRED"
+        ),
         "schema_result": "valid",
         "freshness": "current_for_dispatch",
         "security_state": "narrative_only_no_links_no_attachments",

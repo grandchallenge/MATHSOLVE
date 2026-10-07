@@ -493,6 +493,45 @@ Source evidence only; no mathematical certification.
 Reconcile the smallest semantic mismatch.
 """
 
+ERDOS_A_CONFLICT_BODY = """GCL-CONTRIBUTION-RESULT/1
+dispatch_id: ERDOS-593-A1-IA-001
+agent_ref: INDEPENDENT-AGENT-ERDOS-593-A1
+assignment: ERDOS-593-A1
+disposition: COUNTEREXAMPLE
+context_class: ZERO_CONTEXT
+external_sources: PROTECTED_PACKET_ONLY
+timebox_observed: YES
+
+## Strongest exact statement
+
+The protected prose and formal statement disagree in a disposition-changing way.
+
+## Derivation
+
+The two protected formulations have different exact mathematical consequences.
+
+## Assumptions beyond bootstrap
+
+NONE
+
+## Verification / falsification hooks
+
+Resolve the exact source statement before using either formulation downstream.
+
+## Claim boundary
+
+Evidence only; no theorem promotion.
+
+GCL-SEMANTIC-BLOCKER/1
+blocker_id: ERDOS-593-SOURCE-FORMAL-001
+kind: SOURCE_FORMAL_CONFLICT
+requires_dispatch_id: ERDOS-593-S1-IA-001
+
+## Next residual
+
+Complete the matching protected source audit.
+"""
+
 class ErdosOpenResultGrammarTests(unittest.TestCase):
     def test_valid_recon_comment_parses(self) -> None:
         parsed = parse_result_comment(ERDOS_R_VALID_BODY)
@@ -519,6 +558,28 @@ class ErdosOpenResultGrammarTests(unittest.TestCase):
     def test_source_result_rejects_raw_url(self) -> None:
         with self.assertRaises(IntakeError):
             parse_result_comment(ERDOS_S_VALID_BODY.replace("Bibliographic identifiers and theorem locations are supplied without raw URLs.","See https://example.org/source for the theorem."))
+
+    def test_erdos_conflict_marker_becomes_structured_blocker(self) -> None:
+        parsed = parse_result_comment(ERDOS_A_CONFLICT_BODY)
+        self.assertEqual(
+            parsed["semantic_blockers"],
+            [
+                {
+                    "blocker_id": "ERDOS-593-SOURCE-FORMAL-001",
+                    "kind": "SOURCE_FORMAL_CONFLICT",
+                    "requires_dispatch_id": "ERDOS-593-S1-IA-001",
+                }
+            ],
+        )
+
+    def test_erdos_conflict_marker_must_bind_matching_source_lane(self) -> None:
+        with self.assertRaisesRegex(IntakeError, "matching source lane"):
+            parse_result_comment(
+                ERDOS_A_CONFLICT_BODY.replace(
+                    "requires_dispatch_id: ERDOS-593-S1-IA-001",
+                    "requires_dispatch_id: ERDOS-595-S1-IA-001",
+                )
+            )
 
 
 
