@@ -527,6 +527,47 @@
       ],
       "mathematical_effect": false,
       "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-RED-024",
+      "text": "Conditional on the protected six-core no-long-run fan, clean-line charging, elementary-D2 geometry, and ordinary-endpoint transverse-line premises, q=6 profile 333344 is unrealizable. Exact finite replay leaves 126 planarity/triangle-compatible labelings and then six equality cases; the unique minimum incidence cover in each forces a fourth arrangement line through a triple core.",
+      "type": "SOURCE_CONDITIONAL_REDUCTION",
+      "state": "SOLVE_CONDITIONAL_PROFILE_333344_EXCLUDED__FINITE_REPLAY_WIRED__NOT_CERTIFIED",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_16_333344_OBSTRUCTION.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_333344_OBSTRUCTION_RECEIPT.json",
+        "ci/validate_openmath_h1_333344.py",
+        "ci/test_openmath_h1_16.py"
+      ],
+      "mathematical_effect": true,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-NEG-005",
+      "text": "H1-16 exact seed-local mining of the H1-14 event walls found a uniform three-face loss/no-gain pattern for all 60 required single blocker exits and a five-loss/one-target-gain pattern for all 60 paired exits. This is retained only as seed-local route evidence and conjecture generation.",
+      "type": "NEGATIVE_ROUTE_RESULT",
+      "state": "PASS__SEED_LOCAL_ONLY__NO_GENERAL_LEMMA",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_16_FACE_LOSS_MINING.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/mine_h1_14_face_losses.py",
+        "ci/test_openmath_h1_16.py"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H1-NEG-006",
+      "text": "H1-15 completed the bounded compound anchor-line order-type search from the exact pairwise-nonparallel 93 seed: 18 anchor macros, 38,718 beam states and 631,968 mutation transitions with no score-drop cutoff and one off-anchor bridge budget produced no combinatorial endpoint above 93.",
+      "type": "NEGATIVE_ROUTE_RESULT",
+      "state": "PASS__BOUNDED_SCOPE_ONLY__NO_94_PROPOSAL",
+      "support": [
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_15_COMPOUND_ORDER_TYPE_SOURCE.json",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_15_COMPOUND_ORDER_TYPE_SEARCH.md",
+        "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_15_COMPOUND_ORDER_TYPE_RECEIPT.json",
+        "ci/validate_openmath_h1_15_compound.py"
+      ],
+      "mathematical_effect": false,
+      "certification_effect": false
     }
   ],
   "prohibited_inferences": [

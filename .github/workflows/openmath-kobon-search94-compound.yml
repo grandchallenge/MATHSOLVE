@@ -1,0 +1,81 @@
+name: OPENMATH Kobon search94 compound
+
+on:
+  pull_request:
+    paths:
+      - "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/**"
+      - "ci/validate_openmath_h1_15_compound.py"
+      - "ci/test_openmath_h1_15_compound.py"
+      - ".github/workflows/openmath-kobon-search94-compound.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compound-order-type-search:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Validate durable H1-15 receipt
+        run: |
+          python ci/validate_openmath_h1_15_compound.py
+          python -m unittest ci/test_openmath_h1_15_compound.py -v
+
+      - name: Acquire pinned proposal generator
+        run: |
+          git clone --quiet https://github.com/alejandrozu/kobon-proof /tmp/kobon-proof
+          git -C /tmp/kobon-proof checkout --quiet 22d1165f6c455fe45e461baef4410f6d5c78a014
+          test "$(git -C /tmp/kobon-proof rev-parse HEAD)" = "22d1165f6c455fe45e461baef4410f6d5c78a014"
+          test "$(git -C /tmp/kobon-proof hash-object experiments/2026-09-21/construction-search/beam_mutation.py)" = "4509c2c08f10ef43d8dedf2134562fac48f517ab"
+          test "$(git -C /tmp/kobon-proof hash-object experiments/2026-09-21/construction-search/projective_mutation.py)" = "2f9d036638d9b45cace0c4e6f5ef054b8cd0d4f3"
+
+      - name: Install pinned search dependencies
+        run: python -m pip install --disable-pip-version-check -r /tmp/kobon-proof/experiments/2026-09-21/construction-search/requirements-search.txt
+
+      - name: Prepare exact pairwise-nonparallel 93 seed
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          src=json.loads(Path('work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RH_BADER_PROJECTIVE_NOPARALLEL_093/solution.json').read_text())
+          out={'lines_frac':[[str(a),str(b),str(-c)] for a,b,c in src['lines']]}
+          p=Path('/tmp/kobon-proof/research/finite-table/gcl-om26-h1-093.json')
+          p.write_text(json.dumps(out)+'\n')
+          PY
+
+      - name: Replay bounded compound order-type search
+        run: |
+          python work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/search_94_compound_order_type.py \
+            --external /tmp/kobon-proof \
+            --source /tmp/kobon-proof/research/finite-table/gcl-om26-h1-093.json \
+            --report /tmp/h1-15-compound.json \
+            --candidate /tmp/h1-15-candidate.json \
+            --seconds 240 \
+            --width 256 \
+            --depth 10 \
+            --bridge-budget 1 \
+            --seed 2026100701
+          cat /tmp/h1-15-compound.json
+          python - <<'PY'
+          import json
+          r=json.load(open('/tmp/h1-15-compound.json'))
+          assert r['completed_all_anchors'] is True
+          assert r['anchors_completed']==18
+          assert r['nodes']==38718
+          assert r['edges']==631968
+          assert r['combinatorial_best']==93
+          assert r['realized_best']==93
+          assert r['endpoints_ge_94']==0
+          assert r['realization_attempts']==0
+          assert r['found_94_or_better'] is False
+          print('H1_15_COMPOUND_REPLAY=PASS')
+          PY

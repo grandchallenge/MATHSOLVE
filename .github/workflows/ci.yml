@@ -147,6 +147,14 @@ jobs:
           python ci/validate_openmath_h1_12_q5_equality.py
           python -m unittest ci/test_openmath_h1_12_q5_equality.py -v
           python -m unittest ci/test_openmath_h1_14_wolfram.py -v
+      - name: Validate OPENMATH H1-15 compound order-type receipt
+        run: |
+          python ci/validate_openmath_h1_15_compound.py
+          python -m unittest ci/test_openmath_h1_15_compound.py -v
+      - name: Validate OPENMATH H1-16 face-loss mining and q6 profile 333344 closure
+        run: |
+          python ci/validate_openmath_h1_333344.py >/tmp/h1-333344.json
+          python -m unittest ci/test_openmath_h1_16.py -v
       - name: Validate recursive campaign manifests and Cert boundaries
         run: |
           python ci/validate_campaign_manifests.py

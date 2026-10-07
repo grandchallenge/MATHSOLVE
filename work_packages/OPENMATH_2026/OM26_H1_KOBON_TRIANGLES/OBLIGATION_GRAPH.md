@@ -98,3 +98,26 @@ Selected exact semialgebraic cells were independently instantiated with the host
 The 4-5 active-line escalation gate is not triggered because no coupled witness is competitive with the protected 93 seed. The next route action is to feed the exact lost-face/event patterns into H1-04/H1-12 obstruction analysis and reopen deeper coupled CAD only if a structural argument identifies a specific cell.
 
 These search results do not establish an upper bound, optimality of 93, novelty, or MATHCERT certification.
+
+
+## H1-15 - compound order-type 94 construction search
+
+**State:** COMPLETE - NO 94 FOUND - BOUNDED NEGATIVE ROUTE EVIDENCE.
+
+H1-15 enlarges the construction move set rather than increasing the continuous dimension inside the exhausted H1-14 event cells. Compound projective macros are organized around an anchor line, may traverse score valleys without H1-13's drop=4 cutoff, and may use a bounded off-anchor bridge mutation. Only a combinatorial endpoint at score at least 94 is eligible for exact straight-line reconstruction and independent GCL replay. Failure is route evidence only.
+
+The completed pass covered all 18 anchors, visited 38,718 beam states and 631,968 transitions, permitted one off-anchor bridge and imposed no affine-score drop cutoff. No combinatorial endpoint exceeded 93, so no exact reconstruction or promotion call was triggered. This does not exhaust all compound order types or prove an upper bound.
+
+Tracker: #955.
+
+## H1-16 - face-loss mining and 333344 obstruction
+
+**State:** CONDITIONAL PAPER PROOF + FINITE REPLAY PASS; TRUSTED MATHEMATICAL ADAPTER/CERTIFICATION PENDING.
+
+The H1-14 event-cell losses have been mined exactly. All 60 required single blocker exits lose exactly three seed faces and gain none; all 60 paired exits lose five old faces and gain exactly the intended target. This is seed-local evidence only.
+
+Separately, the protected q=6 machinery reduces profile `333344` from 6,143 relaxed labeled candidates to 126 planarity/elementary-triangle-compatible states. Exact incidence-excess minimization leaves six equality cases, all `K3,3-e` with the missing edge between the two quadruple cores. Exhaustive minimum-cover replay forces one three-core line on each bipartition; a triple core would then lie on its three distinct D2 supports plus its bipartition line, contradicting multiplicity three. Conditional on the named six-core premises, `333344` is excluded.
+
+The q=6 residual is now `333333`, `333334`; q>=7 remains open. No hill-global <=94 or MATHCERT claim follows.
+
+Tracker: #956.

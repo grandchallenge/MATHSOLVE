@@ -1,0 +1,6578 @@
+{
+  "claim_boundary": "Exact seed-local orientation-cell mining only; motifs are conjecture generators until separately proved under H1-12 hypotheses.",
+  "dual_flip": {
+    "cases": 60,
+    "gained_count_histogram": {
+      "1": 60
+    },
+    "lost_count_histogram": {
+      "5": 60
+    },
+    "records": [
+      {
+        "flips": [
+          [
+            8,
+            14,
+            17
+          ],
+          [
+            3,
+            11,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            3,
+            14,
+            17
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            3,
+            8,
+            14
+          ],
+          [
+            3,
+            11,
+            14
+          ],
+          [
+            3,
+            15,
+            17
+          ],
+          [
+            5,
+            14,
+            17
+          ],
+          [
+            8,
+            11,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            8,
+            11,
+            17
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          3,
+          14,
+          17
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            0,
+            6,
+            14
+          ],
+          [
+            0,
+            4,
+            11
+          ]
+        ],
+        "gained": [
+          [
+            0,
+            4,
+            14
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            4,
+            9
+          ],
+          [
+            0,
+            6,
+            11
+          ],
+          [
+            0,
+            12,
+            14
+          ],
+          [
+            4,
+            6,
+            14
+          ],
+          [
+            4,
+            11,
+            14
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            0,
+            6,
+            11
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          0,
+          4,
+          14
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            8,
+            15
+          ],
+          [
+            2,
+            5,
+            11
+          ]
+        ],
+        "gained": [
+          [
+            2,
+            5,
+            15
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            3,
+            15
+          ],
+          [
+            2,
+            5,
+            14
+          ],
+          [
+            2,
+            8,
+            11
+          ],
+          [
+            5,
+            8,
+            15
+          ],
+          [
+            5,
+            11,
+            15
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            2,
+            8,
+            11
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          2,
+          5,
+          15
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            3,
+            11,
+            17
+          ],
+          [
+            3,
+            8,
+            14
+          ]
+        ],
+        "gained": [
+          [
+            3,
+            8,
+            17
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            3,
+            8,
+            9
+          ],
+          [
+            3,
+            11,
+            14
+          ],
+          [
+            3,
+            15,
+            17
+          ],
+          [
+            8,
+            11,
+            17
+          ],
+          [
+            8,
+            14,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            3,
+            11,
+            14
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          3,
+          8,
+          17
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            5,
+            11,
+            15
+          ],
+          [
+            2,
+            8,
+            15
+          ]
+        ],
+        "gained": [
+          [
+            2,
+            11,
+            15
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            3,
+            15
+          ],
+          [
+            2,
+            5,
+            11
+          ],
+          [
+            2,
+            8,
+            11
+          ],
+          [
+            5,
+            8,
+            15
+          ],
+          [
+            9,
+            11,
+            15
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            5,
+            8,
+            15
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          2,
+          11,
+          15
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            1,
+            8,
+            16
+          ],
+          [
+            1,
+            5,
+            12
+          ]
+        ],
+        "gained": [
+          [
+            1,
+            5,
+            16
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            5,
+            6
+          ],
+          [
+            1,
+            8,
+            12
+          ],
+          [
+            1,
+            9,
+            16
+          ],
+          [
+            5,
+            8,
+            16
+          ],
+          [
+            5,
+            12,
+            16
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            1,
+            8,
+            12
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          1,
+          5,
+          16
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            5,
+            12,
+            16
+          ],
+          [
+            1,
+            8,
+            16
+          ]
+        ],
+        "gained": [
+          [
+            1,
+            12,
+            16
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            5,
+            12
+          ],
+          [
+            1,
+            8,
+            12
+          ],
+          [
+            1,
+            9,
+            16
+          ],
+          [
+            3,
+            12,
+            16
+          ],
+          [
+            5,
+            8,
+            16
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            5,
+            8,
+            16
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          1,
+          12,
+          16
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            6,
+            15,
+            17
+          ],
+          [
+            4,
+            12,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            4,
+            15,
+            17
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            3,
+            15,
+            17
+          ],
+          [
+            4,
+            6,
+            15
+          ],
+          [
+            4,
+            12,
+            15
+          ],
+          [
+            4,
+            16,
+            17
+          ],
+          [
+            6,
+            12,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            6,
+            12,
+            17
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          4,
+          15,
+          17
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            0,
+            4,
+            11
+          ],
+          [
+            4,
+            6,
+            14
+          ]
+        ],
+        "gained": [
+          [
+            0,
+            4,
+            6
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            4,
+            9
+          ],
+          [
+            0,
+            6,
+            11
+          ],
+          [
+            0,
+            6,
+            14
+          ],
+          [
+            4,
+            6,
+            15
+          ],
+          [
+            4,
+            11,
+            14
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            4,
+            11,
+            14
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          0,
+          4,
+          6
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            5,
+            14,
+            17
+          ],
+          [
+            2,
+            9,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            2,
+            14,
+            17
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            5,
+            14
+          ],
+          [
+            2,
+            9,
+            14
+          ],
+          [
+            2,
+            10,
+            17
+          ],
+          [
+            5,
+            9,
+            17
+          ],
+          [
+            8,
+            14,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            5,
+            9,
+            17
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          2,
+          14,
+          17
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            9,
+            17
+          ],
+          [
+            2,
+            5,
+            14
+          ]
+        ],
+        "gained": [
+          [
+            2,
+            5,
+            17
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            5,
+            11
+          ],
+          [
+            2,
+            9,
+            14
+          ],
+          [
+            2,
+            10,
+            17
+          ],
+          [
+            5,
+            9,
+            17
+          ],
+          [
+            5,
+            14,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            2,
+            9,
+            14
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          2,
+          5,
+          17
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            7,
+            14,
+            15
+          ],
+          [
+            1,
+            10,
+            15
+          ]
+        ],
+        "gained": [
+          [
+            1,
+            14,
+            15
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            7,
+            14
+          ],
+          [
+            1,
+            10,
+            14
+          ],
+          [
+            1,
+            13,
+            15
+          ],
+          [
+            7,
+            10,
+            15
+          ],
+          [
+            9,
+            14,
+            15
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            7,
+            10,
+            15
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          1,
+          14,
+          15
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            4,
+            9,
+            13
+          ],
+          [
+            0,
+            8,
+            13
+          ]
+        ],
+        "gained": [
+          [
+            0,
+            9,
+            13
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            4,
+            9
+          ],
+          [
+            0,
+            5,
+            13
+          ],
+          [
+            0,
+            8,
+            9
+          ],
+          [
+            4,
+            8,
+            13
+          ],
+          [
+            6,
+            9,
+            13
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            4,
+            8,
+            13
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          0,
+          9,
+          13
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            8,
+            11
+          ],
+          [
+            5,
+            11,
+            15
+          ]
+        ],
+        "gained": [
+          [
+            8,
+            11,
+            15
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            5,
+            11
+          ],
+          [
+            2,
+            8,
+            15
+          ],
+          [
+            5,
+            8,
+            15
+          ],
+          [
+            8,
+            11,
+            17
+          ],
+          [
+            9,
+            11,
+            15
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            2,
+            5,
+            11
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          8,
+          11,
+          15
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            0,
+            5,
+            13
+          ],
+          [
+            0,
+            3,
+            10
+          ]
+        ],
+        "gained": [
+          [
+            0,
+            3,
+            13
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            3,
+            7
+          ],
+          [
+            0,
+            5,
+            10
+          ],
+          [
+            0,
+            8,
+            13
+          ],
+          [
+            3,
+            5,
+            13
+          ],
+          [
+            3,
+            10,
+            13
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            0,
+            5,
+            10
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          0,
+          3,
+          13
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            4,
+            12,
+            15
+          ],
+          [
+            6,
+            15,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            12,
+            15,
+            17
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            12,
+            15
+          ],
+          [
+            3,
+            15,
+            17
+          ],
+          [
+            4,
+            6,
+            15
+          ],
+          [
+            4,
+            12,
+            17
+          ],
+          [
+            6,
+            12,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            4,
+            6,
+            15
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          12,
+          15,
+          17
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            9,
+            14
+          ],
+          [
+            5,
+            14,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            9,
+            14,
+            17
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            5,
+            14
+          ],
+          [
+            2,
+            9,
+            17
+          ],
+          [
+            5,
+            9,
+            17
+          ],
+          [
+            8,
+            14,
+            17
+          ],
+          [
+            9,
+            14,
+            15
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            2,
+            5,
+            14
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          9,
+          14,
+          17
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            7,
+            11,
+            16
+          ],
+          [
+            1,
+            9,
+            16
+          ]
+        ],
+        "gained": [
+          [
+            1,
+            11,
+            16
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            7,
+            11
+          ],
+          [
+            1,
+            8,
+            16
+          ],
+          [
+            1,
+            9,
+            11
+          ],
+          [
+            7,
+            9,
+            16
+          ],
+          [
+            10,
+            11,
+            16
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            7,
+            9,
+            16
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          1,
+          11,
+          16
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            10,
+            17
+          ],
+          [
+            2,
+            7,
+            13
+          ]
+        ],
+        "gained": [
+          [
+            2,
+            7,
+            17
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            2,
+            7
+          ],
+          [
+            2,
+            9,
+            17
+          ],
+          [
+            2,
+            10,
+            13
+          ],
+          [
+            7,
+            10,
+            17
+          ],
+          [
+            7,
+            13,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            2,
+            10,
+            13
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          2,
+          7,
+          17
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            7,
+            13,
+            17
+          ],
+          [
+            2,
+            10,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            2,
+            13,
+            17
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            13,
+            17
+          ],
+          [
+            2,
+            7,
+            13
+          ],
+          [
+            2,
+            9,
+            17
+          ],
+          [
+            2,
+            10,
+            13
+          ],
+          [
+            7,
+            10,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            7,
+            10,
+            17
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          2,
+          13,
+          17
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            0,
+            3,
+            10
+          ],
+          [
+            3,
+            5,
+            13
+          ]
+        ],
+        "gained": [
+          [
+            0,
+            3,
+            5
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            3,
+            7
+          ],
+          [
+            0,
+            5,
+            10
+          ],
+          [
+            0,
+            5,
+            13
+          ],
+          [
+            3,
+            5,
+            9
+          ],
+          [
+            3,
+            10,
+            13
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            3,
+            10,
+            13
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          0,
+          3,
+          5
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            1,
+            10,
+            15
+          ],
+          [
+            1,
+            7,
+            14
+          ]
+        ],
+        "gained": [
+          [
+            1,
+            7,
+            15
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            7,
+            11
+          ],
+          [
+            1,
+            10,
+            14
+          ],
+          [
+            1,
+            13,
+            15
+          ],
+          [
+            7,
+            10,
+            15
+          ],
+          [
+            7,
+            14,
+            15
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            1,
+            10,
+            14
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          1,
+          7,
+          15
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            1,
+            9,
+            16
+          ],
+          [
+            1,
+            7,
+            11
+          ]
+        ],
+        "gained": [
+          [
+            1,
+            7,
+            16
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            7,
+            14
+          ],
+          [
+            1,
+            8,
+            16
+          ],
+          [
+            1,
+            9,
+            11
+          ],
+          [
+            7,
+            9,
+            16
+          ],
+          [
+            7,
+            11,
+            16
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            1,
+            9,
+            11
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          1,
+          7,
+          16
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            3,
+            11,
+            14
+          ],
+          [
+            8,
+            14,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            11,
+            14,
+            17
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            3,
+            8,
+            14
+          ],
+          [
+            3,
+            11,
+            17
+          ],
+          [
+            4,
+            11,
+            14
+          ],
+          [
+            5,
+            14,
+            17
+          ],
+          [
+            8,
+            11,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            3,
+            8,
+            14
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          11,
+          14,
+          17
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            4,
+            11,
+            14
+          ],
+          [
+            0,
+            6,
+            14
+          ]
+        ],
+        "gained": [
+          [
+            0,
+            11,
+            14
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            4,
+            11
+          ],
+          [
+            0,
+            6,
+            11
+          ],
+          [
+            0,
+            12,
+            14
+          ],
+          [
+            3,
+            11,
+            14
+          ],
+          [
+            4,
+            6,
+            14
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            4,
+            6,
+            14
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          0,
+          11,
+          14
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            6,
+            16
+          ],
+          [
+            2,
+            3,
+            12
+          ]
+        ],
+        "gained": [
+          [
+            2,
+            3,
+            16
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            3,
+            15
+          ],
+          [
+            2,
+            4,
+            16
+          ],
+          [
+            2,
+            6,
+            12
+          ],
+          [
+            3,
+            6,
+            16
+          ],
+          [
+            3,
+            12,
+            16
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            2,
+            6,
+            12
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          2,
+          3,
+          16
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            0,
+            8,
+            13
+          ],
+          [
+            0,
+            4,
+            9
+          ]
+        ],
+        "gained": [
+          [
+            0,
+            4,
+            13
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            4,
+            11
+          ],
+          [
+            0,
+            5,
+            13
+          ],
+          [
+            0,
+            8,
+            9
+          ],
+          [
+            4,
+            8,
+            13
+          ],
+          [
+            4,
+            9,
+            13
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            0,
+            8,
+            9
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          0,
+          4,
+          13
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            3,
+            10,
+            13
+          ],
+          [
+            0,
+            5,
+            13
+          ]
+        ],
+        "gained": [
+          [
+            0,
+            10,
+            13
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            3,
+            10
+          ],
+          [
+            0,
+            5,
+            10
+          ],
+          [
+            0,
+            8,
+            13
+          ],
+          [
+            2,
+            10,
+            13
+          ],
+          [
+            3,
+            5,
+            13
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            3,
+            5,
+            13
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          0,
+          10,
+          13
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            5,
+            11
+          ],
+          [
+            5,
+            8,
+            15
+          ]
+        ],
+        "gained": [
+          [
+            2,
+            5,
+            8
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            5,
+            14
+          ],
+          [
+            2,
+            8,
+            11
+          ],
+          [
+            2,
+            8,
+            15
+          ],
+          [
+            5,
+            8,
+            16
+          ],
+          [
+            5,
+            11,
+            15
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            5,
+            11,
+            15
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          2,
+          5,
+          8
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            0,
+            4,
+            9
+          ],
+          [
+            4,
+            8,
+            13
+          ]
+        ],
+        "gained": [
+          [
+            0,
+            4,
+            8
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            4,
+            11
+          ],
+          [
+            0,
+            8,
+            9
+          ],
+          [
+            0,
+            8,
+            13
+          ],
+          [
+            4,
+            8,
+            10
+          ],
+          [
+            4,
+            9,
+            13
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            4,
+            9,
+            13
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          0,
+          4,
+          8
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            1,
+            8,
+            12
+          ],
+          [
+            5,
+            12,
+            16
+          ]
+        ],
+        "gained": [
+          [
+            8,
+            12,
+            16
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            5,
+            12
+          ],
+          [
+            1,
+            8,
+            16
+          ],
+          [
+            3,
+            12,
+            16
+          ],
+          [
+            5,
+            8,
+            16
+          ],
+          [
+            7,
+            8,
+            12
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            1,
+            5,
+            12
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          8,
+          12,
+          16
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            0,
+            6,
+            11
+          ],
+          [
+            4,
+            6,
+            14
+          ]
+        ],
+        "gained": [
+          [
+            4,
+            6,
+            11
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            4,
+            11
+          ],
+          [
+            0,
+            6,
+            14
+          ],
+          [
+            4,
+            6,
+            15
+          ],
+          [
+            4,
+            11,
+            14
+          ],
+          [
+            6,
+            11,
+            13
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            0,
+            6,
+            14
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          4,
+          6,
+          11
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            10,
+            13
+          ],
+          [
+            7,
+            13,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            10,
+            13,
+            17
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            13,
+            17
+          ],
+          [
+            2,
+            7,
+            13
+          ],
+          [
+            2,
+            10,
+            17
+          ],
+          [
+            3,
+            10,
+            13
+          ],
+          [
+            7,
+            10,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            2,
+            7,
+            13
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          10,
+          13,
+          17
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            0,
+            5,
+            10
+          ],
+          [
+            3,
+            5,
+            13
+          ]
+        ],
+        "gained": [
+          [
+            3,
+            5,
+            10
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            3,
+            10
+          ],
+          [
+            0,
+            5,
+            13
+          ],
+          [
+            3,
+            5,
+            9
+          ],
+          [
+            3,
+            10,
+            13
+          ],
+          [
+            4,
+            5,
+            10
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            0,
+            5,
+            13
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          3,
+          5,
+          10
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            8,
+            11
+          ],
+          [
+            5,
+            8,
+            15
+          ]
+        ],
+        "gained": [
+          [
+            5,
+            8,
+            11
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            5,
+            11
+          ],
+          [
+            2,
+            8,
+            15
+          ],
+          [
+            5,
+            8,
+            16
+          ],
+          [
+            5,
+            11,
+            15
+          ],
+          [
+            8,
+            11,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            2,
+            8,
+            15
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          5,
+          8,
+          11
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            3,
+            12
+          ],
+          [
+            3,
+            6,
+            16
+          ]
+        ],
+        "gained": [
+          [
+            2,
+            3,
+            6
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            3,
+            6
+          ],
+          [
+            2,
+            3,
+            15
+          ],
+          [
+            2,
+            6,
+            12
+          ],
+          [
+            2,
+            6,
+            16
+          ],
+          [
+            3,
+            12,
+            16
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            3,
+            12,
+            16
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          2,
+          3,
+          6
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            1,
+            7,
+            11
+          ],
+          [
+            7,
+            9,
+            16
+          ]
+        ],
+        "gained": [
+          [
+            1,
+            7,
+            9
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            7,
+            14
+          ],
+          [
+            1,
+            9,
+            11
+          ],
+          [
+            1,
+            9,
+            16
+          ],
+          [
+            7,
+            9,
+            12
+          ],
+          [
+            7,
+            11,
+            16
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            7,
+            11,
+            16
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          1,
+          7,
+          9
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            4,
+            12,
+            17
+          ],
+          [
+            4,
+            6,
+            15
+          ]
+        ],
+        "gained": [
+          [
+            4,
+            6,
+            17
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            4,
+            6,
+            14
+          ],
+          [
+            4,
+            12,
+            15
+          ],
+          [
+            4,
+            16,
+            17
+          ],
+          [
+            6,
+            12,
+            17
+          ],
+          [
+            6,
+            15,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            4,
+            12,
+            15
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          4,
+          6,
+          17
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            3,
+            12,
+            16
+          ],
+          [
+            2,
+            6,
+            16
+          ]
+        ],
+        "gained": [
+          [
+            2,
+            12,
+            16
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            3,
+            12
+          ],
+          [
+            2,
+            4,
+            16
+          ],
+          [
+            2,
+            6,
+            12
+          ],
+          [
+            3,
+            6,
+            16
+          ],
+          [
+            5,
+            12,
+            16
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            3,
+            6,
+            16
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          2,
+          12,
+          16
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            0,
+            6,
+            11
+          ],
+          [
+            4,
+            11,
+            14
+          ]
+        ],
+        "gained": [
+          [
+            6,
+            11,
+            14
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            4,
+            11
+          ],
+          [
+            0,
+            6,
+            14
+          ],
+          [
+            3,
+            11,
+            14
+          ],
+          [
+            4,
+            6,
+            14
+          ],
+          [
+            6,
+            11,
+            13
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            0,
+            4,
+            11
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          6,
+          11,
+          14
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            1,
+            5,
+            12
+          ],
+          [
+            5,
+            8,
+            16
+          ]
+        ],
+        "gained": [
+          [
+            1,
+            5,
+            8
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            5,
+            6
+          ],
+          [
+            1,
+            8,
+            12
+          ],
+          [
+            1,
+            8,
+            16
+          ],
+          [
+            5,
+            8,
+            15
+          ],
+          [
+            5,
+            12,
+            16
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            5,
+            12,
+            16
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          1,
+          5,
+          8
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            0,
+            5,
+            10
+          ],
+          [
+            3,
+            10,
+            13
+          ]
+        ],
+        "gained": [
+          [
+            5,
+            10,
+            13
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            3,
+            10
+          ],
+          [
+            0,
+            5,
+            13
+          ],
+          [
+            2,
+            10,
+            13
+          ],
+          [
+            3,
+            5,
+            13
+          ],
+          [
+            4,
+            5,
+            10
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            0,
+            3,
+            10
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          5,
+          10,
+          13
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            1,
+            7,
+            14
+          ],
+          [
+            7,
+            10,
+            15
+          ]
+        ],
+        "gained": [
+          [
+            1,
+            7,
+            10
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            7,
+            11
+          ],
+          [
+            1,
+            10,
+            14
+          ],
+          [
+            1,
+            10,
+            15
+          ],
+          [
+            7,
+            10,
+            17
+          ],
+          [
+            7,
+            14,
+            15
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            7,
+            14,
+            15
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          1,
+          7,
+          10
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            3,
+            8,
+            14
+          ],
+          [
+            8,
+            11,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            3,
+            8,
+            11
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            8,
+            11
+          ],
+          [
+            3,
+            8,
+            9
+          ],
+          [
+            3,
+            11,
+            14
+          ],
+          [
+            3,
+            11,
+            17
+          ],
+          [
+            8,
+            14,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            8,
+            14,
+            17
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          3,
+          8,
+          11
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            0,
+            8,
+            9
+          ],
+          [
+            4,
+            9,
+            13
+          ]
+        ],
+        "gained": [
+          [
+            8,
+            9,
+            13
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            4,
+            9
+          ],
+          [
+            0,
+            8,
+            13
+          ],
+          [
+            3,
+            8,
+            9
+          ],
+          [
+            4,
+            8,
+            13
+          ],
+          [
+            6,
+            9,
+            13
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            0,
+            4,
+            9
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          8,
+          9,
+          13
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            0,
+            8,
+            9
+          ],
+          [
+            4,
+            8,
+            13
+          ]
+        ],
+        "gained": [
+          [
+            4,
+            8,
+            9
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            4,
+            9
+          ],
+          [
+            0,
+            8,
+            13
+          ],
+          [
+            3,
+            8,
+            9
+          ],
+          [
+            4,
+            8,
+            10
+          ],
+          [
+            4,
+            9,
+            13
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            0,
+            8,
+            13
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          4,
+          8,
+          9
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            6,
+            12
+          ],
+          [
+            3,
+            6,
+            16
+          ]
+        ],
+        "gained": [
+          [
+            3,
+            6,
+            12
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            3,
+            6
+          ],
+          [
+            2,
+            3,
+            12
+          ],
+          [
+            2,
+            6,
+            16
+          ],
+          [
+            3,
+            12,
+            16
+          ],
+          [
+            6,
+            12,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            2,
+            6,
+            16
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          3,
+          6,
+          12
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            6,
+            12
+          ],
+          [
+            3,
+            12,
+            16
+          ]
+        ],
+        "gained": [
+          [
+            6,
+            12,
+            16
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            3,
+            12
+          ],
+          [
+            2,
+            6,
+            16
+          ],
+          [
+            3,
+            6,
+            16
+          ],
+          [
+            5,
+            12,
+            16
+          ],
+          [
+            6,
+            12,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            2,
+            3,
+            12
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          6,
+          12,
+          16
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            7,
+            13
+          ],
+          [
+            7,
+            10,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            2,
+            7,
+            10
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            2,
+            7
+          ],
+          [
+            2,
+            10,
+            13
+          ],
+          [
+            2,
+            10,
+            17
+          ],
+          [
+            7,
+            10,
+            15
+          ],
+          [
+            7,
+            13,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            7,
+            13,
+            17
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          2,
+          7,
+          10
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            1,
+            8,
+            12
+          ],
+          [
+            5,
+            8,
+            16
+          ]
+        ],
+        "gained": [
+          [
+            5,
+            8,
+            12
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            5,
+            12
+          ],
+          [
+            1,
+            8,
+            16
+          ],
+          [
+            5,
+            8,
+            15
+          ],
+          [
+            5,
+            12,
+            16
+          ],
+          [
+            7,
+            8,
+            12
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            1,
+            8,
+            16
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          5,
+          8,
+          12
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            3,
+            11,
+            14
+          ],
+          [
+            8,
+            11,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            8,
+            11,
+            14
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            8,
+            11
+          ],
+          [
+            3,
+            8,
+            14
+          ],
+          [
+            3,
+            11,
+            17
+          ],
+          [
+            4,
+            11,
+            14
+          ],
+          [
+            8,
+            14,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            3,
+            11,
+            17
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          8,
+          11,
+          14
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            5,
+            14
+          ],
+          [
+            5,
+            9,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            2,
+            5,
+            9
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            5,
+            11
+          ],
+          [
+            2,
+            9,
+            14
+          ],
+          [
+            2,
+            9,
+            17
+          ],
+          [
+            3,
+            5,
+            9
+          ],
+          [
+            5,
+            14,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            5,
+            14,
+            17
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          2,
+          5,
+          9
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            9,
+            14
+          ],
+          [
+            5,
+            9,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            5,
+            9,
+            14
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            5,
+            14
+          ],
+          [
+            2,
+            9,
+            17
+          ],
+          [
+            3,
+            5,
+            9
+          ],
+          [
+            5,
+            14,
+            17
+          ],
+          [
+            9,
+            14,
+            15
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            2,
+            9,
+            17
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          5,
+          9,
+          14
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            1,
+            9,
+            11
+          ],
+          [
+            7,
+            11,
+            16
+          ]
+        ],
+        "gained": [
+          [
+            9,
+            11,
+            16
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            7,
+            11
+          ],
+          [
+            1,
+            9,
+            16
+          ],
+          [
+            7,
+            9,
+            16
+          ],
+          [
+            9,
+            11,
+            15
+          ],
+          [
+            10,
+            11,
+            16
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            1,
+            7,
+            11
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          9,
+          11,
+          16
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            1,
+            10,
+            14
+          ],
+          [
+            7,
+            14,
+            15
+          ]
+        ],
+        "gained": [
+          [
+            10,
+            14,
+            15
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            7,
+            14
+          ],
+          [
+            1,
+            10,
+            15
+          ],
+          [
+            7,
+            10,
+            15
+          ],
+          [
+            9,
+            14,
+            15
+          ],
+          [
+            10,
+            14,
+            16
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            1,
+            7,
+            14
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          10,
+          14,
+          15
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            2,
+            10,
+            13
+          ],
+          [
+            7,
+            10,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            7,
+            10,
+            13
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            7,
+            13
+          ],
+          [
+            2,
+            10,
+            17
+          ],
+          [
+            3,
+            10,
+            13
+          ],
+          [
+            7,
+            10,
+            15
+          ],
+          [
+            7,
+            13,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            2,
+            10,
+            17
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          7,
+          10,
+          13
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            4,
+            12,
+            15
+          ],
+          [
+            6,
+            12,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            6,
+            12,
+            15
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            0,
+            12,
+            15
+          ],
+          [
+            2,
+            6,
+            12
+          ],
+          [
+            4,
+            6,
+            15
+          ],
+          [
+            4,
+            12,
+            17
+          ],
+          [
+            6,
+            15,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            4,
+            12,
+            17
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          6,
+          12,
+          15
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            1,
+            9,
+            11
+          ],
+          [
+            7,
+            9,
+            16
+          ]
+        ],
+        "gained": [
+          [
+            7,
+            9,
+            11
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            7,
+            11
+          ],
+          [
+            1,
+            9,
+            16
+          ],
+          [
+            7,
+            9,
+            12
+          ],
+          [
+            7,
+            11,
+            16
+          ],
+          [
+            9,
+            11,
+            15
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            1,
+            9,
+            16
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          7,
+          9,
+          11
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            1,
+            10,
+            14
+          ],
+          [
+            7,
+            10,
+            15
+          ]
+        ],
+        "gained": [
+          [
+            7,
+            10,
+            14
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            1,
+            7,
+            14
+          ],
+          [
+            1,
+            10,
+            15
+          ],
+          [
+            7,
+            10,
+            17
+          ],
+          [
+            7,
+            14,
+            15
+          ],
+          [
+            10,
+            14,
+            16
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            1,
+            10,
+            15
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          7,
+          10,
+          14
+        ],
+        "target_gained": true
+      },
+      {
+        "flips": [
+          [
+            4,
+            6,
+            15
+          ],
+          [
+            6,
+            12,
+            17
+          ]
+        ],
+        "gained": [
+          [
+            4,
+            6,
+            12
+          ]
+        ],
+        "gained_count": 1,
+        "lost": [
+          [
+            2,
+            6,
+            12
+          ],
+          [
+            4,
+            6,
+            14
+          ],
+          [
+            4,
+            12,
+            15
+          ],
+          [
+            4,
+            12,
+            17
+          ],
+          [
+            6,
+            15,
+            17
+          ]
+        ],
+        "lost_count": 5,
+        "score": 89,
+        "single_loss_overlap": [
+          [
+            6,
+            15,
+            17
+          ]
+        ],
+        "single_loss_overlap_count": 1,
+        "target": [
+          4,
+          6,
+          12
+        ],
+        "target_gained": true
+      }
+    ],
+    "single_loss_overlap_histogram": {
+      "1": 60
+    },
+    "target_gained_count": 60
+  },
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-16-FACE-LOSS-MINING",
+  "schema_version": "1.0.0",
+  "seed_score": 93,
+  "single_flip": {
+    "all_lost_faces_share_at_least_two_flip_lines": true,
+    "all_three_face_toll_no_gain": true,
+    "gained_count_histogram": {
+      "0": 60
+    },
+    "gained_flip_intersection_histogram": {},
+    "lost_count_histogram": {
+      "3": 60
+    },
+    "lost_flip_intersection_histogram": {
+      "2": 180
+    },
+    "records": [
+      {
+        "flip": [
+          0,
+          3,
+          10
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            3,
+            7
+          ],
+          [
+            0,
+            5,
+            10
+          ],
+          [
+            3,
+            10,
+            13
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 10,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            0,
+            3,
+            13
+          ]
+        ]
+      },
+      {
+        "flip": [
+          0,
+          4,
+          9
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            4,
+            11
+          ],
+          [
+            0,
+            8,
+            9
+          ],
+          [
+            4,
+            9,
+            13
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 9,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            0,
+            4,
+            8
+          ],
+          [
+            0,
+            4,
+            13
+          ]
+        ]
+      },
+      {
+        "flip": [
+          0,
+          4,
+          11
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            4,
+            9
+          ],
+          [
+            0,
+            6,
+            11
+          ],
+          [
+            4,
+            11,
+            14
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 11,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            0,
+            4,
+            6
+          ],
+          [
+            0,
+            4,
+            14
+          ]
+        ]
+      },
+      {
+        "flip": [
+          0,
+          5,
+          10
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            3,
+            10
+          ],
+          [
+            0,
+            5,
+            13
+          ],
+          [
+            4,
+            5,
+            10
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 0,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            3,
+            5,
+            10
+          ],
+          [
+            5,
+            10,
+            13
+          ]
+        ]
+      },
+      {
+        "flip": [
+          0,
+          5,
+          13
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            5,
+            10
+          ],
+          [
+            0,
+            8,
+            13
+          ],
+          [
+            3,
+            5,
+            13
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 5,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            0,
+            3,
+            13
+          ],
+          [
+            0,
+            10,
+            13
+          ]
+        ]
+      },
+      {
+        "flip": [
+          0,
+          6,
+          11
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            4,
+            11
+          ],
+          [
+            0,
+            6,
+            14
+          ],
+          [
+            6,
+            11,
+            13
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 0,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            4,
+            6,
+            11
+          ],
+          [
+            6,
+            11,
+            14
+          ]
+        ]
+      },
+      {
+        "flip": [
+          0,
+          6,
+          14
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            6,
+            11
+          ],
+          [
+            0,
+            12,
+            14
+          ],
+          [
+            4,
+            6,
+            14
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 6,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            0,
+            4,
+            14
+          ],
+          [
+            0,
+            11,
+            14
+          ]
+        ]
+      },
+      {
+        "flip": [
+          0,
+          8,
+          9
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            4,
+            9
+          ],
+          [
+            0,
+            8,
+            13
+          ],
+          [
+            3,
+            8,
+            9
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 0,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            4,
+            8,
+            9
+          ],
+          [
+            8,
+            9,
+            13
+          ]
+        ]
+      },
+      {
+        "flip": [
+          0,
+          8,
+          13
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            5,
+            13
+          ],
+          [
+            0,
+            8,
+            9
+          ],
+          [
+            4,
+            8,
+            13
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 8,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            0,
+            4,
+            13
+          ],
+          [
+            0,
+            9,
+            13
+          ]
+        ]
+      },
+      {
+        "flip": [
+          1,
+          5,
+          12
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            5,
+            6
+          ],
+          [
+            1,
+            8,
+            12
+          ],
+          [
+            5,
+            12,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 12,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            1,
+            5,
+            8
+          ],
+          [
+            1,
+            5,
+            16
+          ]
+        ]
+      },
+      {
+        "flip": [
+          1,
+          7,
+          11
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            7,
+            14
+          ],
+          [
+            1,
+            9,
+            11
+          ],
+          [
+            7,
+            11,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 11,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            1,
+            7,
+            9
+          ],
+          [
+            1,
+            7,
+            16
+          ]
+        ]
+      },
+      {
+        "flip": [
+          1,
+          7,
+          14
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            7,
+            11
+          ],
+          [
+            1,
+            10,
+            14
+          ],
+          [
+            7,
+            14,
+            15
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 14,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            1,
+            7,
+            10
+          ],
+          [
+            1,
+            7,
+            15
+          ]
+        ]
+      },
+      {
+        "flip": [
+          1,
+          8,
+          12
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            5,
+            12
+          ],
+          [
+            1,
+            8,
+            16
+          ],
+          [
+            7,
+            8,
+            12
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 1,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            5,
+            8,
+            12
+          ],
+          [
+            8,
+            12,
+            16
+          ]
+        ]
+      },
+      {
+        "flip": [
+          1,
+          8,
+          16
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            8,
+            12
+          ],
+          [
+            1,
+            9,
+            16
+          ],
+          [
+            5,
+            8,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 8,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            1,
+            5,
+            16
+          ],
+          [
+            1,
+            12,
+            16
+          ]
+        ]
+      },
+      {
+        "flip": [
+          1,
+          9,
+          11
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            7,
+            11
+          ],
+          [
+            1,
+            9,
+            16
+          ],
+          [
+            9,
+            11,
+            15
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 1,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            7,
+            9,
+            11
+          ],
+          [
+            9,
+            11,
+            16
+          ]
+        ]
+      },
+      {
+        "flip": [
+          1,
+          9,
+          16
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            8,
+            16
+          ],
+          [
+            1,
+            9,
+            11
+          ],
+          [
+            7,
+            9,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 9,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            1,
+            7,
+            16
+          ],
+          [
+            1,
+            11,
+            16
+          ]
+        ]
+      },
+      {
+        "flip": [
+          1,
+          10,
+          14
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            7,
+            14
+          ],
+          [
+            1,
+            10,
+            15
+          ],
+          [
+            10,
+            14,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 1,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            7,
+            10,
+            14
+          ],
+          [
+            10,
+            14,
+            15
+          ]
+        ]
+      },
+      {
+        "flip": [
+          1,
+          10,
+          15
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            10,
+            14
+          ],
+          [
+            1,
+            13,
+            15
+          ],
+          [
+            7,
+            10,
+            15
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 10,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            1,
+            7,
+            15
+          ],
+          [
+            1,
+            14,
+            15
+          ]
+        ]
+      },
+      {
+        "flip": [
+          2,
+          3,
+          12
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            3,
+            15
+          ],
+          [
+            2,
+            6,
+            12
+          ],
+          [
+            3,
+            12,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 12,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            3,
+            6
+          ],
+          [
+            2,
+            3,
+            16
+          ]
+        ]
+      },
+      {
+        "flip": [
+          2,
+          5,
+          11
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            5,
+            14
+          ],
+          [
+            2,
+            8,
+            11
+          ],
+          [
+            5,
+            11,
+            15
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 11,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            5,
+            8
+          ],
+          [
+            2,
+            5,
+            15
+          ]
+        ]
+      },
+      {
+        "flip": [
+          2,
+          5,
+          14
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            5,
+            11
+          ],
+          [
+            2,
+            9,
+            14
+          ],
+          [
+            5,
+            14,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 14,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            5,
+            9
+          ],
+          [
+            2,
+            5,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          2,
+          6,
+          12
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            3,
+            12
+          ],
+          [
+            2,
+            6,
+            16
+          ],
+          [
+            6,
+            12,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 2,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            3,
+            6,
+            12
+          ],
+          [
+            6,
+            12,
+            16
+          ]
+        ]
+      },
+      {
+        "flip": [
+          2,
+          6,
+          16
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            4,
+            16
+          ],
+          [
+            2,
+            6,
+            12
+          ],
+          [
+            3,
+            6,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 6,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            3,
+            16
+          ],
+          [
+            2,
+            12,
+            16
+          ]
+        ]
+      },
+      {
+        "flip": [
+          2,
+          7,
+          13
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            2,
+            7
+          ],
+          [
+            2,
+            10,
+            13
+          ],
+          [
+            7,
+            13,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 13,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            7,
+            10
+          ],
+          [
+            2,
+            7,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          2,
+          8,
+          11
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            5,
+            11
+          ],
+          [
+            2,
+            8,
+            15
+          ],
+          [
+            8,
+            11,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 2,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            5,
+            8,
+            11
+          ],
+          [
+            8,
+            11,
+            15
+          ]
+        ]
+      },
+      {
+        "flip": [
+          2,
+          8,
+          15
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            3,
+            15
+          ],
+          [
+            2,
+            8,
+            11
+          ],
+          [
+            5,
+            8,
+            15
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 8,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            5,
+            15
+          ],
+          [
+            2,
+            11,
+            15
+          ]
+        ]
+      },
+      {
+        "flip": [
+          2,
+          9,
+          14
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            5,
+            14
+          ],
+          [
+            2,
+            9,
+            17
+          ],
+          [
+            9,
+            14,
+            15
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 2,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            5,
+            9,
+            14
+          ],
+          [
+            9,
+            14,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          2,
+          9,
+          17
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            9,
+            14
+          ],
+          [
+            2,
+            10,
+            17
+          ],
+          [
+            5,
+            9,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 9,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            5,
+            17
+          ],
+          [
+            2,
+            14,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          2,
+          10,
+          13
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            7,
+            13
+          ],
+          [
+            2,
+            10,
+            17
+          ],
+          [
+            3,
+            10,
+            13
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 2,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            7,
+            10,
+            13
+          ],
+          [
+            10,
+            13,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          2,
+          10,
+          17
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            9,
+            17
+          ],
+          [
+            2,
+            10,
+            13
+          ],
+          [
+            7,
+            10,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 10,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            7,
+            17
+          ],
+          [
+            2,
+            13,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          3,
+          5,
+          13
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            5,
+            13
+          ],
+          [
+            3,
+            5,
+            9
+          ],
+          [
+            3,
+            10,
+            13
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 13,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            3,
+            5,
+            10
+          ]
+        ]
+      },
+      {
+        "flip": [
+          3,
+          6,
+          16
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            3,
+            6
+          ],
+          [
+            2,
+            6,
+            16
+          ],
+          [
+            3,
+            12,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 16,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            3,
+            6
+          ],
+          [
+            3,
+            6,
+            12
+          ]
+        ]
+      },
+      {
+        "flip": [
+          3,
+          8,
+          14
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            3,
+            8,
+            9
+          ],
+          [
+            3,
+            11,
+            14
+          ],
+          [
+            8,
+            14,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 14,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            3,
+            8,
+            11
+          ],
+          [
+            3,
+            8,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          3,
+          10,
+          13
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            3,
+            10
+          ],
+          [
+            2,
+            10,
+            13
+          ],
+          [
+            3,
+            5,
+            13
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 3,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            0,
+            10,
+            13
+          ],
+          [
+            5,
+            10,
+            13
+          ]
+        ]
+      },
+      {
+        "flip": [
+          3,
+          11,
+          14
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            3,
+            8,
+            14
+          ],
+          [
+            3,
+            11,
+            17
+          ],
+          [
+            4,
+            11,
+            14
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 3,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            8,
+            11,
+            14
+          ],
+          [
+            11,
+            14,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          3,
+          11,
+          17
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            3,
+            11,
+            14
+          ],
+          [
+            3,
+            15,
+            17
+          ],
+          [
+            8,
+            11,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 11,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            3,
+            8,
+            17
+          ],
+          [
+            3,
+            14,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          3,
+          12,
+          16
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            3,
+            12
+          ],
+          [
+            3,
+            6,
+            16
+          ],
+          [
+            5,
+            12,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 3,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            12,
+            16
+          ],
+          [
+            6,
+            12,
+            16
+          ]
+        ]
+      },
+      {
+        "flip": [
+          4,
+          6,
+          14
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            6,
+            14
+          ],
+          [
+            4,
+            6,
+            15
+          ],
+          [
+            4,
+            11,
+            14
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 14,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            0,
+            4,
+            6
+          ],
+          [
+            4,
+            6,
+            11
+          ]
+        ]
+      },
+      {
+        "flip": [
+          4,
+          6,
+          15
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            4,
+            6,
+            14
+          ],
+          [
+            4,
+            12,
+            15
+          ],
+          [
+            6,
+            15,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 15,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            4,
+            6,
+            12
+          ],
+          [
+            4,
+            6,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          4,
+          8,
+          13
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            8,
+            13
+          ],
+          [
+            4,
+            8,
+            10
+          ],
+          [
+            4,
+            9,
+            13
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 13,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            0,
+            4,
+            8
+          ],
+          [
+            4,
+            8,
+            9
+          ]
+        ]
+      },
+      {
+        "flip": [
+          4,
+          9,
+          13
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            4,
+            9
+          ],
+          [
+            4,
+            8,
+            13
+          ],
+          [
+            6,
+            9,
+            13
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 4,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            0,
+            9,
+            13
+          ],
+          [
+            8,
+            9,
+            13
+          ]
+        ]
+      },
+      {
+        "flip": [
+          4,
+          11,
+          14
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            4,
+            11
+          ],
+          [
+            3,
+            11,
+            14
+          ],
+          [
+            4,
+            6,
+            14
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 4,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            0,
+            11,
+            14
+          ],
+          [
+            6,
+            11,
+            14
+          ]
+        ]
+      },
+      {
+        "flip": [
+          4,
+          12,
+          15
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            0,
+            12,
+            15
+          ],
+          [
+            4,
+            6,
+            15
+          ],
+          [
+            4,
+            12,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 4,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            6,
+            12,
+            15
+          ],
+          [
+            12,
+            15,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          4,
+          12,
+          17
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            4,
+            12,
+            15
+          ],
+          [
+            4,
+            16,
+            17
+          ],
+          [
+            6,
+            12,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 12,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            4,
+            6,
+            17
+          ],
+          [
+            4,
+            15,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          5,
+          8,
+          15
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            8,
+            15
+          ],
+          [
+            5,
+            8,
+            16
+          ],
+          [
+            5,
+            11,
+            15
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 15,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            5,
+            8
+          ],
+          [
+            5,
+            8,
+            11
+          ]
+        ]
+      },
+      {
+        "flip": [
+          5,
+          8,
+          16
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            8,
+            16
+          ],
+          [
+            5,
+            8,
+            15
+          ],
+          [
+            5,
+            12,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 16,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            1,
+            5,
+            8
+          ],
+          [
+            5,
+            8,
+            12
+          ]
+        ]
+      },
+      {
+        "flip": [
+          5,
+          9,
+          17
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            9,
+            17
+          ],
+          [
+            3,
+            5,
+            9
+          ],
+          [
+            5,
+            14,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 17,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            5,
+            9
+          ],
+          [
+            5,
+            9,
+            14
+          ]
+        ]
+      },
+      {
+        "flip": [
+          5,
+          11,
+          15
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            5,
+            11
+          ],
+          [
+            5,
+            8,
+            15
+          ],
+          [
+            9,
+            11,
+            15
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 5,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            11,
+            15
+          ],
+          [
+            8,
+            11,
+            15
+          ]
+        ]
+      },
+      {
+        "flip": [
+          5,
+          12,
+          16
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            5,
+            12
+          ],
+          [
+            3,
+            12,
+            16
+          ],
+          [
+            5,
+            8,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 5,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            1,
+            12,
+            16
+          ],
+          [
+            8,
+            12,
+            16
+          ]
+        ]
+      },
+      {
+        "flip": [
+          5,
+          14,
+          17
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            5,
+            14
+          ],
+          [
+            5,
+            9,
+            17
+          ],
+          [
+            8,
+            14,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 5,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            14,
+            17
+          ],
+          [
+            9,
+            14,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          6,
+          12,
+          17
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            6,
+            12
+          ],
+          [
+            4,
+            12,
+            17
+          ],
+          [
+            6,
+            15,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 17,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            4,
+            6,
+            12
+          ],
+          [
+            6,
+            12,
+            15
+          ]
+        ]
+      },
+      {
+        "flip": [
+          6,
+          15,
+          17
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            3,
+            15,
+            17
+          ],
+          [
+            4,
+            6,
+            15
+          ],
+          [
+            6,
+            12,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 6,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            4,
+            15,
+            17
+          ],
+          [
+            12,
+            15,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          7,
+          9,
+          16
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            9,
+            16
+          ],
+          [
+            7,
+            9,
+            12
+          ],
+          [
+            7,
+            11,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 16,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            1,
+            7,
+            9
+          ],
+          [
+            7,
+            9,
+            11
+          ]
+        ]
+      },
+      {
+        "flip": [
+          7,
+          10,
+          15
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            10,
+            15
+          ],
+          [
+            7,
+            10,
+            17
+          ],
+          [
+            7,
+            14,
+            15
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 15,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            1,
+            7,
+            10
+          ],
+          [
+            7,
+            10,
+            14
+          ]
+        ]
+      },
+      {
+        "flip": [
+          7,
+          10,
+          17
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            10,
+            17
+          ],
+          [
+            7,
+            10,
+            15
+          ],
+          [
+            7,
+            13,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 17,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            7,
+            10
+          ],
+          [
+            7,
+            10,
+            13
+          ]
+        ]
+      },
+      {
+        "flip": [
+          7,
+          11,
+          16
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            7,
+            11
+          ],
+          [
+            7,
+            9,
+            16
+          ],
+          [
+            10,
+            11,
+            16
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 7,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            1,
+            11,
+            16
+          ],
+          [
+            9,
+            11,
+            16
+          ]
+        ]
+      },
+      {
+        "flip": [
+          7,
+          13,
+          17
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            13,
+            17
+          ],
+          [
+            2,
+            7,
+            13
+          ],
+          [
+            7,
+            10,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 7,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            2,
+            13,
+            17
+          ],
+          [
+            10,
+            13,
+            17
+          ]
+        ]
+      },
+      {
+        "flip": [
+          7,
+          14,
+          15
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            1,
+            7,
+            14
+          ],
+          [
+            7,
+            10,
+            15
+          ],
+          [
+            9,
+            14,
+            15
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 7,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            1,
+            14,
+            15
+          ],
+          [
+            10,
+            14,
+            15
+          ]
+        ]
+      },
+      {
+        "flip": [
+          8,
+          11,
+          17
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            2,
+            8,
+            11
+          ],
+          [
+            3,
+            11,
+            17
+          ],
+          [
+            8,
+            14,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 17,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            3,
+            8,
+            11
+          ],
+          [
+            8,
+            11,
+            14
+          ]
+        ]
+      },
+      {
+        "flip": [
+          8,
+          14,
+          17
+        ],
+        "gained": [],
+        "gained_flip_intersection_histogram": {},
+        "lost": [
+          [
+            3,
+            8,
+            14
+          ],
+          [
+            5,
+            14,
+            17
+          ],
+          [
+            8,
+            11,
+            17
+          ]
+        ],
+        "lost_flip_intersection_histogram": {
+          "2": 3
+        },
+        "moving_line": 8,
+        "score": 90,
+        "target_count": 2,
+        "targets": [
+          [
+            3,
+            14,
+            17
+          ],
+          [
+            11,
+            14,
+            17
+          ]
+        ]
+      }
+    ]
+  },
+  "unique_required_flip_count": 60
+}
