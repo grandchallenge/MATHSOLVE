@@ -72,6 +72,8 @@ reclassifying the pilot. The first additive cohort is
 assignments testing Point recovery, weighted-Dirac separation, a categorical
 separator formulation, and adversarial faithfulness.
 
+The next additive research tranche is the 2026-10-08 eight-job cohort set: three RH-R080 Route C positivity/normality assignments, two RH-R057 Route A mechanism/adversarial reconnaissance assignments, two Erdős 593 successor assignments, and one Erdős 470 replay/source-lock assignment. These are evidence-producing worker jobs only; theorem activation, protected admission, adjudication, and certification remain outside the queue.
+
 For every campaign, mathematics, immutable launch artifacts, blind-cohort
 membership, and synthesis gates remain governed by their own protected dispatches.
 The queue supplies discovery and reservation only.
