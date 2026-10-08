@@ -141,7 +141,7 @@ def main() -> int:
                 {"content": {"repository": item["repo"], "number": item["issue"],
                              "url": item["url"]}, "id": item["item_id"],
                  "status": item["from_status"],
-                 "labels": json.loads(gh(["api", f"repos/{item['repo']}/issues/{item['issue']}"])) .get("labels", [])},
+                 "labels": [v["name"] for v in json.loads(gh(["api", f"repos/{item['repo']}/issues/{item['issue']}"])).get("labels", [])]},
                 issue_fields(item["repo"], item["issue"]),
             )
             if validated_now["state"] != item["state"]:
