@@ -40,7 +40,7 @@ Use an authenticated operator environment with read/write access to the organiza
 
 ```sh
 python ci/gcl_worker_queue_project_status.py --report /tmp/gcl-project2-preflight.json
-python -m unittest tests.test_gcl_worker_queue_project_status -v
+python -m unittest discover -s tests -p test_gcl_worker_queue_project_status.py -v
 python ci/gcl_worker_queue_project_status.py --apply --report /tmp/gcl-project2-reconciled.json
 ```
 
