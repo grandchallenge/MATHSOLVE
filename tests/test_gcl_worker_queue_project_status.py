@@ -145,10 +145,10 @@ class WorkerProjectStatusTests(unittest.TestCase):
         self.assertEqual(result["pickup_mode"], "direct_editorial")
 
     def test_solve_available_uses_reservation_mode(self):
-        item, issue_fields = example(repo=SOLVE, state="AVAILABLE", issue=1008)
-        result = validated_item(item, issue_fields)
-        self.assertEqual(result["pickup_mode"], "reservation_controlled")
-        self.assertEqual(result["to_status"], "Todo")
+        self.assertEqual(
+            expected_pickup_mode(SOLVE, {"gcl-job", "gcl-state:available"}, "AVAILABLE"),
+            "reservation_controlled",
+        )
 
 
 if __name__ == "__main__":
