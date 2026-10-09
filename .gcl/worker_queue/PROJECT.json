@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "record_type": "GCL_WORKER_QUEUE_PROJECT_BINDING",
   "binding_id": "GCL-WORKER-QUEUE-PROJECT-001",
   "policy_id": "GCL-WORKER-QUEUE-001",
@@ -13,6 +13,19 @@
     "linked_repository": "grandchallenge/MATHSOLVE",
     "worker_facing_primary": true,
     "authority": false
+  },
+  "supported_repositories": {
+    "grandchallenge/MATHSOLVE": {
+      "pickup_mode": "reservation_controlled"
+    },
+    "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": {
+      "pickup_mode": "direct_editorial",
+      "required_pickup_label": "gcl-pickup:direct-editorial"
+    },
+    "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": {
+      "pickup_mode": "direct_editorial",
+      "required_pickup_label": "gcl-pickup:direct-editorial"
+    }
   },
   "pilot": {
     "campaign": "ERDOS-OPEN-RECON",
