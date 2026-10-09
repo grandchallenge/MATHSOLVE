@@ -9,6 +9,7 @@ from ci.gcl_worker_queue_project_status import (
 
 ATLAS = "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS"
 CDA = "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS"
+MATH = "grandchallenge/MATH-PROGRAMME"
 SOLVE = "grandchallenge/MATHSOLVE"
 DIRECT = "gcl-pickup:direct-editorial"
 
@@ -31,7 +32,7 @@ def example(repo=ATLAS, state="RETURNED", labels=None, issue=335, status="Todo")
             "gcl-role:verify",
             "gcl-collab:cooperative",
         ]
-        if repo in {ATLAS, CDA}:
+        if repo in {ATLAS, CDA, MATH}:
             labels.append(DIRECT)
     return (
         {
@@ -65,6 +66,18 @@ class WorkerProjectStatusTests(unittest.TestCase):
             expected_pickup_mode(ATLAS, {"gcl-job"}, "AVAILABLE")
         with self.assertRaises(ValueError):
             expected_pickup_mode(CDA, {"gcl-job", "gcl-pickup:unknown"}, "AVAILABLE")
+
+    def test_math_programme_direct_editorial_picks_only_with_correct_labels_and_fields(self):
+        self.assertEqual(expected_pickup_mode(MATH, {"gcl-job", DIRECT}, "AVAILABLE"), "direct_editorial")
+        item, fields_for_issue = example(repo=MATH, state="AVAILABLE", issue=1256)
+        actual = validated_item(item, fields_for_issue)
+        self.assertEqual(actual["repo"], MATH)
+        self.assertEqual(actual["pickup_mode"], "direct_editorial")
+        self.assertEqual(actual["to_status"], "Todo")
+        with self.assertRaises(ValueError):
+            expected_pickup_mode(MATH, {"gcl-job"}, "AVAILABLE")
+        with self.assertRaises(ValueError):
+            expected_pickup_mode(MATH, {"gcl-job", DIRECT}, "RESERVED")
 
     def test_direct_repo_cannot_enter_reserved_state(self):
         with self.assertRaises(ValueError):
