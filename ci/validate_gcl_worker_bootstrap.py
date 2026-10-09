@@ -101,7 +101,7 @@ def validate() -> list[str]:
     for needle in (
         "https://github.com/orgs/grandchallenge/projects/2",
         "gcl-pickup:direct-editorial",
-        "Do **not** post",
+        "do not post",
         "/claim",
         "GCL-WORKER-RESERVATION/1",
         "GCL-CONTRIBUTION-RESULT/1",
