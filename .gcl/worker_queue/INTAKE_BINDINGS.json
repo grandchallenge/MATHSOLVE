@@ -1,0 +1,179 @@
+{
+  "record_type": "GCL_QUEUE_INTAKE_BINDINGS",
+  "schema_version": "1.0.0",
+  "authority_effect": {
+    "queue_operation_only": true,
+    "mathematical": false,
+    "certification": false
+  },
+  "bindings": [
+    {
+      "dispatch_id": "RH-R080-WP-A-IA-001",
+      "dispatch_path": "contributions/RH-001/R080_QUEUE_001/dispatches/RH-R080-WP-A-IA-001.json",
+      "github_issue_number": 1003,
+      "issue_body_sha256": "56cd28423604ff96251072877d2cb1f6025e5b1526b09a0f7c72b3a36fcb4987",
+      "task_path": "handoffs/GCL-WORKER-QUEUE/launch/2026-10-08/RH-R080-WP-A-IA-001.md",
+      "task_commit": "33b7a6dc01ce882804b336a9d44ea1863efb177f",
+      "task_sha256": "f2f7ff0d697a1dcb9fa949f5dbbd8cf6d0a41f4305ff4a53521ab46f40e33dfa",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "EXACT_REDUCTION",
+        "FINITE_CERTIFICATE",
+        "SOURCE_INTERFACE_FOUND",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY",
+        "PRIMARY_SOURCES_REQUIRED"
+      ]
+    },
+    {
+      "dispatch_id": "RH-R080-WP-B-IA-001",
+      "dispatch_path": "contributions/RH-001/R080_QUEUE_001/dispatches/RH-R080-WP-B-IA-001.json",
+      "github_issue_number": 1004,
+      "issue_body_sha256": "5f4a3003e7c54fbc40dbc2940b179869cd69356c40ecb8ec12c6ad1f58d50931",
+      "task_path": "handoffs/GCL-WORKER-QUEUE/launch/2026-10-08/RH-R080-WP-B-IA-001.md",
+      "task_commit": "33b7a6dc01ce882804b336a9d44ea1863efb177f",
+      "task_sha256": "54a08ce2c68ab2d74ae74998c4ce94959c7f5a751692a221fe9cc636d41b1911",
+      "allowed_dispositions": [
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "EXACT_REDUCTION",
+        "NO_MATERIAL_DELTA",
+        "SOURCE_INTERFACE_FOUND"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY",
+        "PRIMARY_SOURCES_REQUIRED"
+      ]
+    },
+    {
+      "dispatch_id": "RH-R080-WP-C-IA-001",
+      "dispatch_path": "contributions/RH-001/R080_QUEUE_001/dispatches/RH-R080-WP-C-IA-001.json",
+      "github_issue_number": 1005,
+      "issue_body_sha256": "f7cd27335eb1c91ea9be059236aa4337508d3be07aa34d3ce795c5a1d8db1178",
+      "task_path": "handoffs/GCL-WORKER-QUEUE/launch/2026-10-08/RH-R080-WP-C-IA-001.md",
+      "task_commit": "33b7a6dc01ce882804b336a9d44ea1863efb177f",
+      "task_sha256": "0943de83748ba5e4a31d76638541637d1c6652137c061ff5624c4a8f6fa896fe",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "EXACT_REDUCTION",
+        "FINITE_CERTIFICATE",
+        "SOURCE_INTERFACE_FOUND",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY",
+        "PRIMARY_SOURCES_REQUIRED"
+      ]
+    },
+    {
+      "dispatch_id": "RH-R057-WP-A-IA-001",
+      "dispatch_path": "contributions/RH-001/R057_RECON_001/dispatches/RH-R057-WP-A-IA-001.json",
+      "github_issue_number": 1006,
+      "issue_body_sha256": "c696193ae1a1a8c7051341dcca35830e1add4a7cab122b050fce829eaa3ee598",
+      "task_path": "handoffs/GCL-WORKER-QUEUE/launch/2026-10-08/RH-R057-WP-A-IA-001.md",
+      "task_commit": "33b7a6dc01ce882804b336a9d44ea1863efb177f",
+      "task_sha256": "5c9dc0efcc1544315f6782eabf2bddd99e160f97e74e79d537b86edbd9ff11d6",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "EXACT_REDUCTION",
+        "FINITE_CERTIFICATE",
+        "SOURCE_INTERFACE_FOUND",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY",
+        "PRIMARY_SOURCES_REQUIRED"
+      ]
+    },
+    {
+      "dispatch_id": "RH-R057-WP-B-IA-001",
+      "dispatch_path": "contributions/RH-001/R057_RECON_001/dispatches/RH-R057-WP-B-IA-001.json",
+      "github_issue_number": 1007,
+      "issue_body_sha256": "7d80921498502f217c5a4c0556837ec794f513ef445170662fd06fd4a2b646cd",
+      "task_path": "handoffs/GCL-WORKER-QUEUE/launch/2026-10-08/RH-R057-WP-B-IA-001.md",
+      "task_commit": "33b7a6dc01ce882804b336a9d44ea1863efb177f",
+      "task_sha256": "d37449249b5a8e514537207db9010c67cd1e93a7844ba293adacb46e76bd0ca0",
+      "allowed_dispositions": [
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "EXACT_REDUCTION",
+        "NO_MATERIAL_DELTA",
+        "SOURCE_INTERFACE_FOUND"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY",
+        "PRIMARY_SOURCES_REQUIRED"
+      ]
+    },
+    {
+      "dispatch_id": "ERDOS-593-R2-IA-001",
+      "dispatch_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_002/dispatches/ERDOS-593-R2-IA-001.json",
+      "github_issue_number": 1008,
+      "issue_body_sha256": "c7eab5be0e4b9454a532cb995dc224b04ad6bf8e3aea5b4c1e8a2db89a220918",
+      "task_path": "handoffs/GCL-WORKER-QUEUE/launch/2026-10-08/ERDOS-593-R2-IA-001.md",
+      "task_commit": "33b7a6dc01ce882804b336a9d44ea1863efb177f",
+      "task_sha256": "e8d46aa735e302ccbd98406929fbe689a9bef673e3c3db1957687108f96295f3",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "EXACT_REDUCTION",
+        "FINITE_CERTIFICATE",
+        "SOURCE_INTERFACE_FOUND",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY",
+        "PRIMARY_SOURCES_REQUIRED"
+      ]
+    },
+    {
+      "dispatch_id": "ERDOS-593-S2-IA-001",
+      "dispatch_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_002/dispatches/ERDOS-593-S2-IA-001.json",
+      "github_issue_number": 1009,
+      "issue_body_sha256": "2111cab860e5fbce3ca59dfd33029bba871c1a4b4a4b0f201c03868d2cdda4de",
+      "task_path": "handoffs/GCL-WORKER-QUEUE/launch/2026-10-08/ERDOS-593-S2-IA-001.md",
+      "task_commit": "33b7a6dc01ce882804b336a9d44ea1863efb177f",
+      "task_sha256": "c16b1e0af54ba5d27534b9850edff33ec18408fe1b1ac98f0143a00b00483b42",
+      "allowed_dispositions": [
+        "SOURCE_INTERFACE_FOUND",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA",
+        "COUNTEREXAMPLE",
+        "FINITE_CERTIFICATE"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY",
+        "PRIMARY_SOURCES_REQUIRED"
+      ]
+    },
+    {
+      "dispatch_id": "ERDOS-470-S2-IA-001",
+      "dispatch_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_002/dispatches/ERDOS-470-S2-IA-001.json",
+      "github_issue_number": 1010,
+      "issue_body_sha256": "dba0c71778abdbc91ea747919d31a7f40b0651e798a4cf683e0742db4f2b5f0b",
+      "task_path": "handoffs/GCL-WORKER-QUEUE/launch/2026-10-08/ERDOS-470-S2-IA-001.md",
+      "task_commit": "33b7a6dc01ce882804b336a9d44ea1863efb177f",
+      "task_sha256": "b6a06cd0003fd541557d6e0e05ee03d3838c9510fb5b6f95bf6b345c332f4121",
+      "allowed_dispositions": [
+        "SOURCE_INTERFACE_FOUND",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA",
+        "COUNTEREXAMPLE",
+        "FINITE_CERTIFICATE"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY",
+        "PRIMARY_SOURCES_REQUIRED"
+      ]
+    }
+  ]
+}

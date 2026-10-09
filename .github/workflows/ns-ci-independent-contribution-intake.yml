@@ -117,9 +117,9 @@ jobs:
           PY
           gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -F body=@"$RUNNER_TEMP/rejection.md"
 
-      - name: Stop after rejection
+      - name: Signal rejected intake in GitHub Actions
         if: steps.validate.outcome == 'failure'
-        run: exit 0
+        run: exit 1
 
       - name: Load validated intake metadata
         if: steps.validate.outcome == 'success'
@@ -135,60 +135,6 @@ jobs:
               for key in ("dispatch_id","comment_id","issue_number","raw_repo_path","receipt_repo_path","branch"):
                   print(f"{key}={meta[key]}", file=f)
           PY
-
-      - name: Synchronize queue returned state
-        if: steps.validate.outcome == 'success'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ steps.context.outputs.issue_number }}
-          DISPATCH_ID: ${{ steps.meta.outputs.dispatch_id }}
-        run: |
-          python ci/gcl_worker_queue_projection.py \
-            --mode intake \
-            --dispatch-id "$DISPATCH_ID" \
-            > "$RUNNER_TEMP/queue-return-projection.json"
-
-          if [ "$(jq -r '.queue_managed' "$RUNNER_TEMP/queue-return-projection.json")" != "true" ]; then
-            exit 0
-          fi
-
-          if [ "$(jq '.issue_field_values | length' "$RUNNER_TEMP/queue-return-projection.json")" -gt 0 ]; then
-            jq '{issue_field_values: .issue_field_values}' "$RUNNER_TEMP/queue-return-projection.json" > "$RUNNER_TEMP/queue-return-fields.json"
-            gh api --method POST \
-              "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/issue-field-values" \
-              --input "$RUNNER_TEMP/queue-return-fields.json" >/dev/null
-          fi
-
-          jq -r '.clear_field_ids[]?' "$RUNNER_TEMP/queue-return-projection.json" | while IFS= read -r field_id; do
-            [ -z "$field_id" ] && continue
-            gh api --method DELETE \
-              "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/issue-field-values/$field_id" \
-              >/dev/null 2>&1 || true
-          done
-
-          returned="$(python - <<'PY'
-          import json
-          from pathlib import Path
-          print(json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())["labels"]["returned"])
-          PY
-          )"
-          available="$(python - <<'PY'
-          import json
-          from pathlib import Path
-          print(json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())["labels"]["available"])
-          PY
-          )"
-          reserved="$(python - <<'PY'
-          import json
-          from pathlib import Path
-          print(json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())["labels"]["reserved"])
-          PY
-          )"
-
-          gh label create "$returned" --repo "$GITHUB_REPOSITORY" --force >/dev/null
-          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "$returned" >/dev/null
-          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label "$available" >/dev/null 2>&1 || true
-          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
 
       - name: Inspect durable intake state
         if: steps.validate.outcome == 'success'
@@ -265,3 +211,66 @@ jobs:
           ISSUE_NUMBER: ${{ steps.context.outputs.issue_number }}
         run: |
           gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments"             -f body="INTAKE CAPTURED — raw evidence and receipt were committed to the dispatch evidence branch. The bounded Release Trust PR controller will validate that branch and open the ordinary intake PR. Mathematical status remains unadjudicated."
+
+      - name: Synchronize queue returned state
+        if: steps.validate.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ steps.context.outputs.issue_number }}
+          DISPATCH_ID: ${{ steps.meta.outputs.dispatch_id }}
+        run: |
+          python ci/gcl_worker_queue_projection.py \
+            --mode intake \
+            --dispatch-id "$DISPATCH_ID" \
+            > "$RUNNER_TEMP/queue-return-projection.json"
+
+          if [ "$(jq -r '.queue_managed' "$RUNNER_TEMP/queue-return-projection.json")" != "true" ]; then
+            exit 0
+          fi
+
+          if [ "$(jq '.issue_field_values | length' "$RUNNER_TEMP/queue-return-projection.json")" -gt 0 ]; then
+            jq '{issue_field_values: .issue_field_values}' "$RUNNER_TEMP/queue-return-projection.json" > "$RUNNER_TEMP/queue-return-fields.json"
+            gh api --method POST \
+              "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/issue-field-values" \
+              --input "$RUNNER_TEMP/queue-return-fields.json" >/dev/null
+          fi
+
+          jq -r '.clear_field_ids[]?' "$RUNNER_TEMP/queue-return-projection.json" | while IFS= read -r field_id; do
+            [ -z "$field_id" ] && continue
+            gh api --method DELETE \
+              "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/issue-field-values/$field_id" \
+              >/dev/null 2>&1 || true
+          done
+
+          returned="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          print(json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())["labels"]["returned"])
+          PY
+          )"
+          available="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          print(json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())["labels"]["available"])
+          PY
+          )"
+          reserved="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          print(json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())["labels"]["reserved"])
+          PY
+          )"
+
+          gh label create "$returned" --repo "$GITHUB_REPOSITORY" --force >/dev/null
+          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "$returned" >/dev/null
+          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label "$available" >/dev/null 2>&1 || true
+          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/issue-field-values" > "$RUNNER_TEMP/queue-return-readback.json"
+          jq -e 'any(.[]; .issue_field_name=="GCL State" and .single_select_option.name=="RETURNED")' "$RUNNER_TEMP/queue-return-readback.json" >/dev/null
+          gh issue view "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --json labels > "$RUNNER_TEMP/queue-label-readback.json"
+          jq -e --arg returned "$returned" --arg available "$available" --arg reserved "$reserved" '
+            ([.labels[].name] | index($returned)) != null and
+            ([.labels[].name] | index($available)) == null and
+            ([.labels[].name] | index($reserved)) == null
+          ' "$RUNNER_TEMP/queue-label-readback.json" >/dev/null
+

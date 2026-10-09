@@ -5,6 +5,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 NSCI_WORKFLOW = ROOT / ".github/workflows/ns-ci-independent-contribution-intake.yml"
 OPENMATH_WORKFLOW = ROOT / ".github/workflows/openmath-cex-independent-contribution-intake.yml"
+YM_MRS_WORKFLOW = ROOT / ".github/workflows/ym-mrs-independent-contribution-intake.yml"
 
 
 class ContributionIntakeRoutingTest(unittest.TestCase):

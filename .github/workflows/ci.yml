@@ -192,11 +192,13 @@ jobs:
           python ci/validate_erdos_241_synthesis.py
           python -m unittest tests/test_erdos_241_replay.py tests/test_erdos_241_synthesis.py -v
           python ci/validate_gcl_worker_queue.py
+          python ci/validate_queue_intake_bindings.py
           python ci/validate_gcl_worker_queue_activation_receipt.py
           python ci/validate_gcl_worker_queue_project.py
           python ci/validate_gcl_worker_bootstrap.py
           python -m json.tool .well-known/gcl-worker-queue.json >/dev/null
           python -m unittest tests/test_gcl_worker_queue_projection.py tests/test_gcl_worker_queue_project_status.py -v
+          python -m unittest tests/test_new_queue_intake.py -v
           python ci/gcl_worker_queue_projection.py --help >/dev/null
           python ci/gcl_worker_queue_project_status.py --help >/dev/null
           python ci/gcl_worker_queue.py --help >/dev/null
