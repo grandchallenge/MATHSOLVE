@@ -25,7 +25,12 @@ def fields(state="RETURNED", campaign="TEST", role="VERIFY", collaboration="COOP
 
 def example(repo=ATLAS, state="RETURNED", labels=None, issue=335, status="Todo"):
     if labels is None:
-        labels = [f"gcl-state:{state.lower()}", "gcl-job"]
+        labels = [
+            f"gcl-state:{state.lower()}",
+            "gcl-job",
+            "gcl-role:verify",
+            "gcl-collab:cooperative",
+        ]
         if repo in {ATLAS, CDA}:
             labels.append(DIRECT)
     return (
@@ -100,19 +105,22 @@ class WorkerProjectStatusTests(unittest.TestCase):
     def test_label_field_disagreement_rejected(self):
         item, issue_fields = example(
             state="AVAILABLE",
-            labels=["gcl-job", "gcl-state:returned", DIRECT],
+            labels=["gcl-job", "gcl-state:returned", DIRECT, "gcl-role:verify", "gcl-collab:cooperative"],
         )
         with self.assertRaises(ValueError):
             validated_item(item, issue_fields)
         item, issue_fields = example(
             state="RETURNED",
-            labels=["gcl-job", "gcl-state:available", DIRECT],
+            labels=["gcl-job", "gcl-state:available", DIRECT, "gcl-role:verify", "gcl-collab:cooperative"],
         )
         with self.assertRaises(ValueError):
             validated_item(item, issue_fields)
 
     def test_gcl_job_label_required(self):
-        item, issue_fields = example(labels=["gcl-state:available", DIRECT], state="AVAILABLE")
+        item, issue_fields = example(
+            labels=["gcl-state:available", DIRECT, "gcl-role:verify", "gcl-collab:cooperative"],
+            state="AVAILABLE",
+        )
         with self.assertRaises(ValueError):
             validated_item(item, issue_fields)
 
@@ -131,11 +139,38 @@ class WorkerProjectStatusTests(unittest.TestCase):
     def test_blocked_direct_state_without_state_label_is_not_available(self):
         item, issue_fields = example(
             state="BLOCKED",
-            labels=["gcl-job", DIRECT],
+            labels=["gcl-job", DIRECT, "gcl-role:verify", "gcl-collab:cooperative"],
         )
         result = validated_item(item, issue_fields)
         self.assertEqual(result["to_status"], "In Progress")
         self.assertEqual(result["pickup_mode"], "direct_editorial")
+
+    def test_role_and_collaboration_label_field_conflict_rejected(self):
+        item, issue_fields = example(
+            state="AVAILABLE",
+            labels=[
+                "gcl-job",
+                "gcl-state:available",
+                DIRECT,
+                "gcl-role:adversarial",
+                "gcl-collab:cooperative",
+            ],
+        )
+        with self.assertRaises(ValueError):
+            validated_item(item, issue_fields)
+
+        item, issue_fields = example(
+            state="AVAILABLE",
+            labels=[
+                "gcl-job",
+                "gcl-state:available",
+                DIRECT,
+                "gcl-role:verify",
+                "gcl-collab:staged",
+            ],
+        )
+        with self.assertRaises(ValueError):
+            validated_item(item, issue_fields)
 
     def test_available_is_pickup_not_execution_permission(self):
         item, issue_fields = example(state="AVAILABLE")
