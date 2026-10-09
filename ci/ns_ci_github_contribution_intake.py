@@ -62,6 +62,8 @@ class IntakeProfile:
     dispositions: frozenset[str]
     external_sources: str
     pr_title_prefix: str
+    queue_binding: bool = False
+    approved_external_sources: frozenset[str] = frozenset()
 
 
 NS_PROFILE = IntakeProfile(
@@ -303,14 +305,68 @@ def _object(value: Any, label: str) -> dict[str, Any]:
     return value
 
 
-def profile_for_dispatch(dispatch_id: str) -> IntakeProfile:
+def queue_intake_binding(root: Path, dispatch_id: str) -> dict[str, Any] | None:
+    """Resolve a new-generation queue dispatch only through protected bindings."""
+    path = root / ".gcl/worker_queue/INTAKE_BINDINGS.json"
+    if not path.is_file():
+        return None
+    document = _object(json.loads(path.read_text(encoding="utf-8")), "queue intake bindings")
+    if document.get("record_type") != "GCL_QUEUE_INTAKE_BINDINGS":
+        raise IntakeError("protected queue intake binding record type drift")
+    if document.get("schema_version") != "1.0.0":
+        raise IntakeError("protected queue intake binding schema drift")
+    matches = [b for b in document.get("bindings", []) if b.get("dispatch_id") == dispatch_id]
+    if len(matches) > 1:
+        raise IntakeError("duplicate protected intake binding for dispatch")
+    if not matches:
+        return None
+    job = queue_job_for_dispatch(root, dispatch_id)
+    if not job or job.get("self_claimable") is not True:
+        raise IntakeError("intake binding is not backed by a claimable protected queue job")
+    binding = matches[0]
+    if (binding.get("dispatch_path") != job.get("dispatch_path")
+            or binding.get("github_issue_number") != job.get("issue_number")):
+        raise IntakeError("intake binding disagrees with protected queue registry")
+    return binding
+
+
+def profile_for_dispatch(dispatch_id: str, root: Path = ROOT) -> IntakeProfile:
     for profile in PROFILES:
         if profile.dispatch_re.fullmatch(dispatch_id):
             return profile
-    raise IntakeError("dispatch_id has invalid or unregistered form")
+    binding = queue_intake_binding(root, dispatch_id)
+    if binding is None:
+        raise IntakeError("dispatch_id has invalid or unregistered form")
+    dispatch_rel = Path(binding["dispatch_path"])
+    if dispatch_rel.is_absolute() or ".." in dispatch_rel.parts:
+        raise IntakeError("protected intake dispatch path is unsafe")
+    dispatch_file = root / dispatch_rel
+    if not dispatch_file.is_file():
+        raise IntakeError("protected intake dispatch record is missing")
+    dispatch = _object(json.loads(dispatch_file.read_text(encoding="utf-8")), "queue dispatch")
+    if dispatch.get("dispatch_id") != dispatch_id:
+        raise IntakeError("queue dispatch identity differs from intake binding")
+    allowed_dispositions = binding.get("allowed_dispositions")
+    allowed_sources = binding.get("allowed_external_sources")
+    if (not isinstance(allowed_dispositions, list) or not allowed_dispositions
+            or not isinstance(allowed_sources, list) or not allowed_sources):
+        raise IntakeError("queue intake policy must provide explicit nonempty allowlists")
+    return IntakeProfile(
+        campaign=str(dispatch["campaign"]),
+        dispatch_re=re.compile("^" + re.escape(dispatch_id) + "$"),
+        base_rel=dispatch_rel.parent.parent,
+        dispatch_schema_version="1.0.0",
+        receipt_schema_version="1.0.0",
+        preamble_keys=ERDOS_RA_PROFILE.preamble_keys,
+        dispositions=frozenset(allowed_dispositions),
+        external_sources="TASK_SPECIFIC",
+        pr_title_prefix="GCL queue intake",
+        queue_binding=True,
+        approved_external_sources=frozenset(allowed_sources),
+    )
 
 
-def parse_result_comment(body: str) -> dict[str, Any]:
+def parse_result_comment(body: str, root: Path = ROOT) -> dict[str, Any]:
     if not isinstance(body, str) or not body.strip():
         raise IntakeError("comment body is empty")
 
@@ -338,7 +394,7 @@ def parse_result_comment(body: str) -> dict[str, Any]:
     if not lines[1].startswith("dispatch_id: "):
         raise IntakeError("expected preamble field dispatch_id at line 2")
     dispatch_id = lines[1][len("dispatch_id: "):].strip()
-    profile = profile_for_dispatch(dispatch_id)
+    profile = profile_for_dispatch(dispatch_id, root)
 
     preamble: dict[str, str] = {}
     cursor = 1
@@ -361,7 +417,10 @@ def parse_result_comment(body: str) -> dict[str, Any]:
         raise IntakeError("disposition is invalid for this registered profile")
     if preamble["context_class"] != "ZERO_CONTEXT":
         raise IntakeError("context_class must be ZERO_CONTEXT")
-    if preamble["external_sources"] != profile.external_sources:
+    if profile.queue_binding:
+        if preamble["external_sources"] not in profile.approved_external_sources:
+            raise IntakeError("external_sources is not approved for this protected queue dispatch")
+    elif preamble["external_sources"] != profile.external_sources:
         raise IntakeError(
             f"external_sources must be {profile.external_sources} for this registered profile"
         )
@@ -428,7 +487,7 @@ def parse_result_comment(body: str) -> dict[str, Any]:
 
 
 def load_dispatch(root: Path, dispatch_id: str) -> tuple[IntakeProfile, dict[str, Any]]:
-    profile = profile_for_dispatch(dispatch_id)
+    profile = profile_for_dispatch(dispatch_id, root)
     path = root / profile.base_rel / "dispatches" / f"{dispatch_id}.json"
     if not path.is_file():
         raise IntakeError("dispatch_id is not registered on protected repository state")
@@ -447,7 +506,8 @@ def validate_dispatch_issue(
 ) -> None:
     if dispatch.get("schema_version") != profile.dispatch_schema_version:
         raise IntakeError("dispatch schema version is not enabled for this intake profile")
-    if dispatch.get("campaign") not in {None, profile.campaign}:
+    if (dispatch.get("campaign") != profile.campaign if profile.queue_binding
+            else dispatch.get("campaign") not in {None, profile.campaign}):
         raise IntakeError("dispatch campaign does not match registered intake profile")
     if dispatch.get("return_protocol") != MARKER:
         raise IntakeError("dispatch return protocol is not RESULT/1")
@@ -455,6 +515,8 @@ def validate_dispatch_issue(
         raise IntakeError("dispatch is not ready for GitHub comment intake")
     if dispatch.get("canonical_mutation_authorized") is not False:
         raise IntakeError("dispatch improperly authorizes canonical mutation")
+    if profile.queue_binding and dispatch.get("certification_authorized") is not False:
+        raise IntakeError("dispatch improperly authorizes certification")
 
     number = issue.get("number")
     if not isinstance(number, int) or number != dispatch.get("github_issue_number"):
@@ -467,6 +529,42 @@ def validate_dispatch_issue(
     body = issue.get("body")
     if not isinstance(body, str):
         raise IntakeError("dispatch issue body is unavailable")
+    if profile.queue_binding:
+        dispatch_id = dispatch["dispatch_id"]
+        binding = queue_intake_binding(root, dispatch_id)
+        if binding is None:
+            raise IntakeError("queue dispatch intake binding disappeared")
+        if sha256_text(body) != binding.get("issue_body_sha256"):
+            raise IntakeError("GitHub issue body differs from protected queue issue-body digest")
+        if issue.get("html_url") not in {None, dispatch.get("github_issue_url")}:
+            raise IntakeError("queue dispatch issue URL differs from protected binding")
+        if dispatch.get("record_type") != "GCL_EXTERNAL_DISPATCH":
+            raise IntakeError("queue dispatch record type mismatch")
+        if dispatch.get("lease_state") != "ACTIVE" or dispatch.get("protected_lease_required") is not True:
+            raise IntakeError("queue dispatch protected lease is not active")
+        if dispatch.get("intake_channel") != "github_issue_comment":
+            raise IntakeError("queue dispatch intake channel mismatch")
+        if dispatch.get("contributor_write_authority") != "issue_comment_only":
+            raise IntakeError("queue dispatch contributor authority mismatch")
+        if dispatch.get("supplementary_artifacts_allowed") is not False:
+            raise IntakeError("queue dispatch permits unreviewed supplementary artifacts")
+        for field in ("task_path", "task_commit"):
+            if dispatch.get(field) != binding.get(field):
+                raise IntakeError(f"queue task {field} differs from protected intake binding")
+        task_rel = Path(binding["task_path"])
+        if task_rel.is_absolute() or ".." in task_rel.parts:
+            raise IntakeError("queue task path is unsafe")
+        task = root / task_rel
+        if not task.is_file():
+            raise IntakeError("protected immutable queue task is missing")
+        # Git canonicalizes line endings; Windows checkouts can use CRLF.
+        canonical_task = task.read_bytes().replace(b"\r\n", b"\n")
+        if hashlib.sha256(canonical_task).hexdigest() != binding.get("task_sha256"):
+            raise IntakeError("immutable queue task differs from pinned source digest")
+        if not re.fullmatch(r"[0-9a-f]{40}", str(binding.get("task_commit") or "")):
+            raise IntakeError("queue task has no immutable commit identity")
+        return
+
     if not body.startswith(DISPATCH_MARKER + "\n"):
         raise IntakeError("dispatch issue is missing the dispatch marker")
 
@@ -496,14 +594,14 @@ def validate_event(
     if not isinstance(body, str):
         raise IntakeError("comment body is unavailable")
 
-    parsed = parse_result_comment(body)
+    parsed = parse_result_comment(body, root)
     dispatch_id = parsed["preamble"]["dispatch_id"]
     profile, dispatch = load_dispatch(root, dispatch_id)
     validate_dispatch_issue(root, issue, profile, dispatch)
 
     if parsed["preamble"]["assignment"] != dispatch.get("assignment_id"):
         raise IntakeError("assignment does not match protected dispatch")
-    if profile in {UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE, ERDOS_RA_PROFILE, ERDOS_S_PROFILE} and parsed["preamble"].get("agent_ref") != dispatch.get("agent_ref"):
+    if (profile.queue_binding or profile in {UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE, ERDOS_RA_PROFILE, ERDOS_S_PROFILE}) and parsed["preamble"].get("agent_ref") != dispatch.get("agent_ref"):
         raise IntakeError("agent_ref does not match protected dispatch")
     if dispatch.get("concurrency_mode") not in {
         "independent_blind",
@@ -615,11 +713,7 @@ def emit_intake(
         "epistemic_class": epistemic_class,
         "raw_artifact_path": raw_rel.as_posix(),
         "raw_sha256": sha256_text(body),
-        "bootstrap_path": dispatch["bootstrap_path"],
-        "bootstrap_sha256": dispatch["bootstrap_sha256"],
         "source_handoff_commit_sha": dispatch["source_handoff_commit_sha"],
-        "source_handoff_blob_sha": dispatch["source_handoff_blob_sha"],
-        "source_handoff_sha256": dispatch["source_handoff_sha256"],
         "disposition_declared": parsed["preamble"]["disposition"],
         "context_class_declared": parsed["preamble"]["context_class"],
         "external_sources_declared": parsed["preamble"]["external_sources"],
@@ -640,6 +734,25 @@ def emit_intake(
         "canonical_claim_effect": False,
         "recorded_by": "github-actions:controlled-epistemic-interface-intake",
     }
+
+    if profile.queue_binding:
+        binding = queue_intake_binding(root, dispatch_id)
+        if binding is None:
+            raise IntakeError("queue intake binding lost during receipt generation")
+        receipt.update({
+            "intake_binding_kind": "PROTECTED_QUEUE_TASK_AND_ISSUE_DIGEST",
+            "task_path": binding["task_path"],
+            "task_commit": binding["task_commit"],
+            "task_sha256": binding["task_sha256"],
+            "issue_body_sha256": binding["issue_body_sha256"],
+            "certification_effect": False,
+        })
+    else:
+        for field in (
+            "bootstrap_path", "bootstrap_sha256",
+            "source_handoff_blob_sha", "source_handoff_sha256",
+        ):
+            receipt[field] = dispatch[field]
 
     output.mkdir(parents=True, exist_ok=True)
     (output / "RAW.md").write_text(body, encoding="utf-8")
