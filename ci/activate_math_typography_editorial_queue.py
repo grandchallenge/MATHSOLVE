@@ -119,11 +119,9 @@ def preflight() -> dict[str, dict]:
             for x in labels
         ):
             raise RuntimeError(f"{n}: conflicting queue-state label {labels}")
-        if CAMPAIGN not in str(record.get("body") or "") and n != 1256:
-            # The original zero-context issue contracts bind their coordination
-            # through the parent issue URL, which includes the campaign issue.
-            if f"issues/{PARENT}" not in str(record.get("body") or ""):
-                raise RuntimeError(f"{n}: missing campaign parent identity")
+        # The zero-context work item binds the immutable parent issue URL.
+        if f"issues/{PARENT}" not in str(record.get("body") or ""):
+            raise RuntimeError(f"{n}: missing campaign parent identity")
     return existing
 
 def field_payload(n: int) -> dict:
@@ -195,13 +193,22 @@ def main() -> int:
         if link not in existing:
             gh("project", "item-add", str(PROJECT), "--owner", OWNER,
                "--url", link, "--format", "json")
-        # Issue Fields are authoritative; use the existing GCL REST contract.
-        api(f"repos/{REPO}/issues/{n}/issue-field-values",
-            method="POST", payload=field_payload(n))
+        # Fail closed in BLOCKED while setting all metadata, then expose the
+        # issue only after the pickup labels and Issue Fields agree.
         state = ROLE_BY_ISSUE[n][2]
+        payload = field_payload(n)
+        if state == "AVAILABLE":
+            for row in payload["issue_field_values"]:
+                if row["field_id"] == FIELDS["GCL State"]:
+                    row["value"] = "BLOCKED"
+        api(f"repos/{REPO}/issues/{n}/issue-field-values",
+            method="POST", payload=payload)
         if state == "AVAILABLE":
             gh("issue", "edit", str(n), "--repo", REPO,
                "--add-label", "gcl-state:available")
+            # This is the final transition into the discoverable AVAILABLE view.
+            api(f"repos/{REPO}/issues/{n}/issue-field-values",
+                method="POST", payload=field_payload(n))
         gh("project", "item-edit", str(PROJECT), "--owner", OWNER,
            "--url", link, "--field", "Status", "--value",
            PROJECT_ITEM_STATUS[state])
