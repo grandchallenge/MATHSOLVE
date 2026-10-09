@@ -12,6 +12,7 @@ EXPECTED_REPOSITORY_MODES = {
     "grandchallenge/MATHSOLVE": "reservation_controlled",
     "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": "direct_editorial",
     "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial",
+    "grandchallenge/MATH-PROGRAMME": "direct_editorial",
 }
 DIRECT_LABEL = "gcl-pickup:direct-editorial"
 
