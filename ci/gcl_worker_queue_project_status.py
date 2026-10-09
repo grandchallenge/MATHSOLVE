@@ -119,6 +119,32 @@ def text_value(fields: list[dict], name: str) -> str:
     return values[0].strip()
 
 
+def validate_label_field_concordance(
+    labels: set[str],
+    role: str,
+    collaboration: str,
+) -> None:
+    cfg = json.loads(CONFIG.read_text(encoding="utf-8"))
+    rules = cfg.get("label_field_projection") or {}
+
+    for prefix, group, field_value in (
+        ("gcl-role:", "role", role),
+        ("gcl-collab:", "collaboration", collaboration),
+    ):
+        found = sorted(x for x in labels if x.startswith(prefix))
+        if len(found) != 1:
+            raise ValueError(f"expected exactly one {group} label, found {found}")
+        mapping = rules.get(group) or {}
+        label = found[0]
+        if label not in mapping:
+            raise ValueError(f"unmapped {group} label: {label}")
+        if str(mapping[label]) != field_value:
+            raise ValueError(
+                f"{group} label/Issue Field conflict: {label} -> "
+                f"{mapping[label]!r}, field={field_value!r}"
+            )
+
+
 def expected_pickup_mode(repo: str, labels: set[str], state: str) -> str:
     modes = repository_pickup_modes()
     if repo not in modes:
@@ -177,6 +203,7 @@ def validated_item(item: dict, fields: list[dict]) -> dict:
         raise ValueError(f"missing expected label on {repo}#{issue}: {state}")
 
     pickup_mode = expected_pickup_mode(repo, labels, state)
+    validate_label_field_concordance(labels, role, collaboration)
 
     if repo == "grandchallenge/MATHSOLVE":
         expected = expected_solve_metadata(issue)
