@@ -1,6 +1,6 @@
 {
   "record_type": "GCL_WORKER_QUEUE_CONFIG",
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "policy_id": "GCL-WORKER-QUEUE-001",
   "policy_version": "1.0.0",
   "programme_policy_commit": "0fd894c053922ec43b70878e0f02e8370690449a",
@@ -45,5 +45,32 @@
   "worker_discovery_primary": "github_project",
   "project_binding_path": ".gcl/worker_queue/PROJECT.json",
   "project_url": "https://github.com/orgs/grandchallenge/projects/2",
-  "issue_query_fallback": "is:issue is:open label:gcl-job label:gcl-state:available"
+  "issue_query_fallback": "is:issue is:open label:gcl-job label:gcl-state:available",
+  "project_metadata_projection": {
+    "campaign_aliases": {
+      "ERDOS-OPEN": "ERDOS-OPEN-RECON"
+    },
+    "role": {
+      "RECONNAISSANCE": "RECON",
+      "SOURCE_AUDIT": "SOURCE",
+      "ADVERSARIAL": "ADVERSARIAL",
+      "CONSTRUCTIVE": "CONSTRUCTIVE",
+      "VERIFY": "VERIFY",
+      "LEAD": "LEAD",
+      "SUPPORT": "SUPPORT",
+      "SYNTHESIS": "SYNTHESIS"
+    },
+    "collaboration": {
+      "STAGED_DISCLOSURE": "STAGED",
+      "COOPERATIVE": "COOPERATIVE",
+      "LEAD_SUPPORT": "LEAD_SUPPORT",
+      "BLIND": "BLIND"
+    },
+    "phase": {
+      "BLIND_COLLECTION": "INDEPENDENT",
+      "SHARED": "SHARED",
+      "SYNTHESIS": "SYNTHESIS",
+      "VERIFICATION": "VERIFICATION"
+    }
+  }
 }
