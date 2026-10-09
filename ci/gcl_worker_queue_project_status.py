@@ -25,6 +25,8 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 BOOTSTRAP = ROOT / ".well-known/gcl-worker-queue.json"
+JOBS = ROOT / ".gcl/worker_queue/JOBS.json"
+CONFIG = ROOT / ".gcl/worker_queue/CONFIG.json"
 ORG = "grandchallenge"
 PROJECT_NUMBER = 2
 DIRECT_LABEL = "gcl-pickup:direct-editorial"
@@ -52,6 +54,48 @@ def expected_status(state: str) -> str:
     if state not in PROJECT_STATUS:
         raise ValueError(f"unknown issue-field GCL State {state!r}")
     return PROJECT_STATUS[state]
+
+
+def solve_job_by_issue(issue_number: int) -> dict:
+    for job in json.loads(JOBS.read_text(encoding="utf-8")).get("jobs", []):
+        if job.get("issue_number") == issue_number:
+            return job
+    raise ValueError(f"MATHSOLVE queue item #{issue_number} missing from protected job registry")
+
+
+def expected_solve_metadata(issue_number: int) -> dict[str, str]:
+    job = solve_job_by_issue(issue_number)
+    cfg = json.loads(CONFIG.read_text(encoding="utf-8"))
+    rules = cfg.get("project_metadata_projection") or {}
+    dispatch_path = ROOT / str(job.get("dispatch_path") or "")
+    if not dispatch_path.is_file():
+        raise ValueError(f"{job.get('dispatch_id')}: dispatch missing")
+    dispatch = json.loads(dispatch_path.read_text(encoding="utf-8"))
+
+    campaign = str(dispatch.get("campaign") or "").strip()
+    if not campaign:
+        raise ValueError(f"{job.get('dispatch_id')}: dispatch campaign missing")
+    campaign = (rules.get("campaign_aliases") or {}).get(campaign, campaign)
+
+    def mapped(group: str, value: object) -> str:
+        table = rules.get(group) or {}
+        key = str(value or "")
+        if key not in table:
+            raise ValueError(
+                f"{job.get('dispatch_id')}: no Project {group} mapping for {key!r}"
+            )
+        return str(table[key])
+
+    cohort = str(job.get("cohort_id") or "").strip()
+    if not cohort:
+        raise ValueError(f"{job.get('dispatch_id')}: cohort_id missing")
+    return {
+        "campaign": campaign,
+        "role": mapped("role", job.get("role")),
+        "collaboration": mapped("collaboration", job.get("collaboration_mode")),
+        "phase": mapped("phase", job.get("visibility_phase")),
+        "cohort": cohort,
+    }
 
 
 def field_entries(fields: list[dict], name: str) -> list[dict]:
@@ -132,6 +176,21 @@ def validated_item(item: dict, fields: list[dict]) -> dict:
         raise ValueError(f"missing expected label on {repo}#{issue}: {state}")
 
     pickup_mode = expected_pickup_mode(repo, labels, state)
+
+    if repo == "grandchallenge/MATHSOLVE":
+        expected = expected_solve_metadata(issue)
+        cohort = text_value(fields, "GCL Cohort")
+        actual = {
+            "campaign": campaign,
+            "role": role,
+            "collaboration": collaboration,
+            "phase": phase,
+            "cohort": cohort,
+        }
+        if actual != expected:
+            raise ValueError(
+                f"protected queue metadata mismatch: actual={actual}, expected={expected}"
+            )
 
     if item.get("status") not in {"Todo", "In Progress", "Done"}:
         raise ValueError(f"unknown Project Status on {repo}#{issue}")
