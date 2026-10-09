@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / ".gcl/worker_queue/CONFIG.json"
 REGISTRY = ROOT / ".gcl/worker_queue/JOBS.json"
+PROJECT = ROOT / ".gcl/worker_queue/PROJECT.json"
 WORKFLOW = ROOT / ".github/workflows/gcl-worker-queue.yml"
 ROUTING = ROOT / ".ghos-routing/workflows.json"
 ENTRYPOINT = ROOT / "handoffs/GCL-WORKER-QUEUE.md"
@@ -32,6 +33,8 @@ def validate() -> list[str]:
     errors: list[str] = []
     config = readj(CONFIG)
     registry = readj(REGISTRY)
+    project = readj(PROJECT)
+    metadata_rules = config.get("project_metadata_projection") or {}
 
     if config.get("policy_id") != "GCL-WORKER-QUEUE-001":
         errors.append("queue policy id mismatch")
@@ -40,6 +43,43 @@ def validate() -> list[str]:
     for key in ("reservation_is_execution_authority", "project_or_labels_are_authority", "mathematical_effect", "certification_effect"):
         if config.get(key) is not False:
             errors.append(f"authority boundary widened: {key}")
+    expected_pickup_modes = {
+        "grandchallenge/MATHSOLVE": "reservation_controlled",
+        "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": "direct_editorial",
+        "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial",
+    }
+    if config.get("repository_pickup_modes") != expected_pickup_modes:
+        errors.append("repository pickup-mode map drift")
+    if config.get("labels", {}).get("pickup_direct_editorial") != "gcl-pickup:direct-editorial":
+        errors.append("direct-editorial pickup label drift")
+
+    option_groups = {
+        "role": set(project.get("issue_fields", {}).get("role", {}).get("options", [])),
+        "collaboration": set(project.get("issue_fields", {}).get("collaboration", {}).get("options", [])),
+        "phase": set(project.get("issue_fields", {}).get("phase", {}).get("options", [])),
+    }
+    for group, options in option_groups.items():
+        mapping = metadata_rules.get(group) or {}
+        if not mapping:
+            errors.append(f"Project metadata mapping missing: {group}")
+            continue
+        unknown_outputs = set(mapping.values()) - options
+        if unknown_outputs:
+            errors.append(f"Project metadata mapping emits unknown {group} values: {sorted(unknown_outputs)}")
+
+    label_rules = config.get("label_field_projection") or {}
+    for group, prefix in (("role", "gcl-role:"), ("collaboration", "gcl-collab:")):
+        mapping = label_rules.get(group) or {}
+        if not mapping:
+            errors.append(f"label/Issue Field mapping missing: {group}")
+            continue
+        if any(not str(label).startswith(prefix) for label in mapping):
+            errors.append(f"label/Issue Field mapping has invalid {group} label prefix")
+        unknown_outputs = set(mapping.values()) - option_groups[group]
+        if unknown_outputs:
+            errors.append(
+                f"label/Issue Field mapping emits unknown {group} values: {sorted(unknown_outputs)}"
+            )
 
     jobs = registry.get("jobs", [])
     expected = {f"ERDOS-{p}-{lane}-IA-001" for p in PROBLEMS for lane in LANES}
@@ -80,6 +120,22 @@ def validate() -> list[str]:
         d = readj(dp)
         if d.get("dispatch_id") != did:
             errors.append(f"{did}: dispatch identity mismatch")
+
+        campaign = str(d.get("campaign") or "").strip()
+        if not campaign:
+            errors.append(f"{did}: dispatch campaign missing for Project projection")
+        for group, source_value in (
+            ("role", job.get("role")),
+            ("collaboration", job.get("collaboration_mode")),
+            ("phase", job.get("visibility_phase")),
+        ):
+            mapping = metadata_rules.get(group) or {}
+            if str(source_value or "") not in mapping:
+                errors.append(
+                    f"{did}: no Project {group} mapping for {source_value!r}"
+                )
+        if not str(job.get("cohort_id") or "").strip():
+            errors.append(f"{did}: cohort missing for Project projection")
         if d.get("github_issue_number") != job.get("issue_number"):
             errors.append(f"{did}: issue binding mismatch")
         if d.get("dispatch_status") != "READY_FOR_GITHUB_COMMENT":
@@ -144,7 +200,17 @@ def validate() -> list[str]:
         errors.append("intake workflow does not supply issue comment history")
 
     entry = ENTRYPOINT.read_text(encoding="utf-8")
-    for needle in ("/claim", "/release", "No bootstrap prompt must be copied", "sibling use is `FORBIDDEN`"):
+    for needle in (
+        "/claim",
+        "/release",
+        "No bootstrap prompt must be copied",
+        "`FORBIDDEN`",
+        "Reservation-controlled mode",
+        "Direct-editorial mode",
+        "gcl-pickup:direct-editorial",
+        "Do not post `/claim`",
+        "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS",
+    ):
         if needle not in entry:
             errors.append(f"worker entrypoint missing {needle!r}")
 

@@ -46,6 +46,51 @@ def field_id(project: dict[str, Any], name: str) -> int:
     return int(project["issue_fields"][name]["rest_id"])
 
 
+def project_metadata_updates(job: dict[str, Any], project: dict[str, Any]) -> list[dict[str, Any]]:
+    """Project immutable queue metadata from protected registry/dispatch sources."""
+    cfg = load_json(CONFIG)
+    rules = cfg.get("project_metadata_projection") or {}
+    dispatch_path = ROOT / str(job.get("dispatch_path") or "")
+    if not dispatch_path.is_file():
+        raise ValueError(f"{job.get('dispatch_id')}: dispatch missing for Project metadata projection")
+    dispatch = load_json(dispatch_path)
+
+    campaign = str(dispatch.get("campaign") or "").strip()
+    if not campaign:
+        raise ValueError(f"{job.get('dispatch_id')}: dispatch campaign missing")
+    campaign = (rules.get("campaign_aliases") or {}).get(campaign, campaign)
+
+    def mapped(group: str, value: Any) -> str:
+        table = rules.get(group) or {}
+        key = str(value or "")
+        if key not in table:
+            raise ValueError(
+                f"{job.get('dispatch_id')}: no Project {group} mapping for {key!r}"
+            )
+        return str(table[key])
+
+    role = mapped("role", job.get("role"))
+    collaboration = mapped("collaboration", job.get("collaboration_mode"))
+    phase = mapped("phase", job.get("visibility_phase"))
+    cohort = str(job.get("cohort_id") or "").strip()
+    if not cohort:
+        raise ValueError(f"{job.get('dispatch_id')}: cohort_id missing")
+
+    updates = [
+        {"field_id": field_id(project, "campaign"), "value": campaign},
+        {"field_id": field_id(project, "role"), "value": role},
+        {"field_id": field_id(project, "collaboration"), "value": collaboration},
+        {"field_id": field_id(project, "phase"), "value": phase},
+        {"field_id": field_id(project, "cohort"), "value": cohort},
+    ]
+    if job.get("timebox_minutes") is not None:
+        updates.append({
+            "field_id": field_id(project, "timebox"),
+            "value": int(job["timebox_minutes"]),
+        })
+    return updates
+
+
 def latest_result_intake_state(
     comments: list[dict[str, Any]],
     controller_actors: set[str],
@@ -92,7 +137,7 @@ def projection(
             "clear_field_ids": [],
         }
 
-    updates: list[dict[str, Any]] = []
+    updates: list[dict[str, Any]] = project_metadata_updates(job, project)
     clears: list[int] = []
     state_id = field_id(project, "state")
     worker_id = field_id(project, "worker")

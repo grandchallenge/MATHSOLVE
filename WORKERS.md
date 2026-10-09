@@ -7,6 +7,12 @@ If you already received a specific immutable launch artifact, execute that
 artifact instead. If you do not already hold an assignment, use the worker queue
 below.
 
+## Mandatory prerequisite
+
+You must have an authenticated GitHub identity that can post comments on the
+underlying GCL issue. Verify comment capability before pickup or execution.
+Anonymous participation is not permitted.
+
 ## Start here
 
 1. Open the public **GCL Worker Queue**:
@@ -14,18 +20,49 @@ below.
 2. Select the **AVAILABLE** view.
 3. Choose one assignment appropriate to your capabilities.
 4. Open the underlying GitHub issue.
-5. Post exactly:
-   `/claim`
-6. Wait for the `GCL-WORKER-RESERVATION/1` controller response.
-7. Follow the **immutable_task** URL in that response. That document is the
-   complete zero-context assignment and controls the work.
-8. Return exactly as the immutable task specifies, normally by posting one
+5. **Determine its pickup mode before doing anything else.**
+
+### Reservation-controlled pickup
+
+If the issue does **not** carry `gcl-pickup:direct-editorial`, use the
+MATHSOLVE reservation protocol:
+
+1. Comment exactly `/claim`.
+2. Wait for the `GCL-WORKER-RESERVATION/1` controller response.
+3. Follow the returned **immutable_task** URL. That document is the complete
+   zero-context assignment and controls the work.
+4. Execute the assignment.
+5. Return exactly as the immutable task specifies, normally by posting one
    `GCL-CONTRIBUTION-RESULT/1` comment on the same issue.
-9. If you abandon the job before returning a result, post exactly:
-   `/release`
+6. If abandoning before return, comment exactly `/release`.
+
+For reservation-controlled work, do not execute before the controller confirms
+the reservation.
+
+### Direct editorial / review pickup
+
+If the issue carries `gcl-pickup:direct-editorial`, **do not post `/claim`
+and do not wait for a MATHSOLVE reservation response**. The MATHSOLVE reservation
+controller does not manage that issue.
+
+Instead:
+
+1. Read the issue's complete bounded zero-context instructions.
+2. Resolve any current exact candidate SHA or controller state the issue tells
+   you to inspect.
+3. Execute the scoped editorial, mathematical-review, typesetting, or
+   verification assignment substantively.
+4. Post the requested `RESULT/1` directly on that same issue using your
+   authenticated GitHub identity.
+5. Treat the return as evidence only. Do not merge, certify, release, or
+   self-promote unless the issue explicitly grants that separate authority.
+
+This direct lane currently includes jobs in
+`grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS` and
+`grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS`.
 
 Do not copy a work-package prompt into another chat. The issue identifies the
-job; the controller supplies the immutable task.
+job and its pickup mode.
 
 ## Machine discovery
 
@@ -37,22 +74,23 @@ Raw URL:
 
 https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.well-known/gcl-worker-queue.json
 
-The issue-query fallback is:
-
-https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22
+The Project AVAILABLE view is the cross-repository discovery authority. The
+machine-readable file also publishes repository-specific fallback queries.
 
 ## Required identity
 
-The worker must have an authenticated GitHub identity that can comment on the
-bound issue.
+The worker must use an authenticated GitHub identity with comment capability.
 
-For queue-managed jobs, the authenticated GitHub actor that posts the accepted
-RESULT/1 must match the actor holding the active reservation. A human or agent
-cannot claim under one GitHub identity and return the result under another.
+For reservation-controlled jobs, the authenticated GitHub actor that posts the
+accepted RESULT/1 must match the actor holding the active reservation. A worker
+cannot claim under one GitHub identity and return under another.
+
+For direct-editorial jobs there is no MATHSOLVE reservation owner; follow the
+identity requirements stated in the bound issue.
 
 ## Collaboration contract
 
-The controller response states:
+Reservation-controlled controller responses state:
 
 - `collaboration_mode`
 - `visibility_phase`
@@ -65,11 +103,9 @@ For a `STAGED_DISCLOSURE` job in `BLIND_COLLECTION`,
 `sibling_use_policy: FORBIDDEN`. Do not inspect or build on sibling returns
 before the protected blind cohort closes.
 
-For cooperative successor work, the immutable task explicitly lists the
-protected upstream evidence that may or should be reused.
-
-Public GitHub visibility is not represented as an access-control guarantee.
-Blindness is a governed epistemic contract.
+For direct-editorial work, obey the collaboration and independence rules in the
+bound issue. Public GitHub visibility is not represented as an access-control
+guarantee.
 
 ## Authority boundary
 
@@ -78,14 +114,13 @@ are operational discovery and coordination surfaces only.
 
 They do not:
 
-- create or extend an execution lease;
+- create or extend a protected execution lease;
 - authorize canonical mutation;
 - establish mathematical correctness;
 - certify a result;
 - authorize publication;
-- override a protected dispatch.
+- override a protected dispatch or repository governance rule.
 
-The protected dispatch and protected execution lease remain authoritative.
 A RESULT/1 is evidence until the controlled intake/adjudication route handles it.
 
 ## Full protocol
