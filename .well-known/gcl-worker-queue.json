@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "protocol": "GCL-WORKER-QUEUE/1",
-  "purpose": "Zero-context discovery and pickup of bounded GCL worker assignments.",
+  "purpose": "Zero-context discovery and pickup of bounded GCL worker assignments across supported GCL repositories.",
   "repository": "grandchallenge/MATHSOLVE",
   "instructions_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/WORKERS.md",
   "instructions_raw_url": "https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/WORKERS.md",
@@ -12,9 +12,15 @@
     "available_view": "AVAILABLE",
     "cross_repository_discovery_authority": true
   },
+  "repository_pickup_modes": {
+    "grandchallenge/MATHSOLVE": "reservation_controlled",
+    "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": "direct_editorial",
+    "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial"
+  },
   "pickup_modes": {
     "reservation_controlled": {
-      "selector": "absence of label gcl-pickup:direct-editorial",
+      "selector": "configured repository pickup mode reservation_controlled",
+      "forbidden_label": "gcl-pickup:direct-editorial",
       "claim_command": "/claim",
       "release_command": "/release",
       "controller_response_protocol": "GCL-WORKER-RESERVATION/1",
@@ -22,7 +28,8 @@
       "return_protocol": "GCL-CONTRIBUTION-RESULT/1"
     },
     "direct_editorial": {
-      "selector": "label gcl-pickup:direct-editorial",
+      "selector": "configured repository pickup mode direct_editorial AND label gcl-pickup:direct-editorial",
+      "required_label": "gcl-pickup:direct-editorial",
       "claim_command": null,
       "reservation_controller": null,
       "instructions_source": "bound issue",
@@ -31,9 +38,18 @@
       "execution_authority": "bounded issue instructions only"
     }
   },
+  "commands": {
+    "claim": "/claim",
+    "release": "/release"
+  },
+  "commands_apply_to": "reservation_controlled",
+  "controller_response_protocol": "GCL-WORKER-RESERVATION/1",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "legacy_top_level_protocol_fields_apply_to": "reservation_controlled",
   "fallbacks": [
     {
       "repository": "grandchallenge/MATHSOLVE",
+      "pickup_mode": "reservation_controlled",
       "issue_query_url": "https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22"
     },
     {
