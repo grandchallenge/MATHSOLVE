@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "protocol": "GCL-WORKER-QUEUE/1",
   "purpose": "Zero-context discovery and pickup of bounded GCL worker assignments.",
   "repository": "grandchallenge/MATHSOLVE",
@@ -9,24 +9,51 @@
     "organization": "grandchallenge",
     "number": 2,
     "url": "https://github.com/orgs/grandchallenge/projects/2",
-    "available_view": "AVAILABLE"
+    "available_view": "AVAILABLE",
+    "cross_repository_discovery_authority": true
   },
-  "fallback": {
-    "issue_query": "is:issue is:open label:gcl-job label:gcl-state:available",
-    "issue_query_url": "https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22"
+  "pickup_modes": {
+    "reservation_controlled": {
+      "selector": "absence of label gcl-pickup:direct-editorial",
+      "claim_command": "/claim",
+      "release_command": "/release",
+      "controller_response_protocol": "GCL-WORKER-RESERVATION/1",
+      "execute_before_reservation_confirmation": false,
+      "return_protocol": "GCL-CONTRIBUTION-RESULT/1"
+    },
+    "direct_editorial": {
+      "selector": "label gcl-pickup:direct-editorial",
+      "claim_command": null,
+      "reservation_controller": null,
+      "instructions_source": "bound issue",
+      "return_target": "same bound issue",
+      "return_protocol": "RESULT/1 as specified by the issue",
+      "execution_authority": "bounded issue instructions only"
+    }
   },
-  "commands": {
-    "claim": "/claim",
-    "release": "/release"
-  },
-  "controller_response_protocol": "GCL-WORKER-RESERVATION/1",
-  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "fallbacks": [
+    {
+      "repository": "grandchallenge/MATHSOLVE",
+      "issue_query_url": "https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22"
+    },
+    {
+      "repository": "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS",
+      "pickup_mode": "direct_editorial",
+      "issue_query_url": "https://github.com/grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22+label%3A%22gcl-pickup%3Adirect-editorial%22"
+    },
+    {
+      "repository": "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS",
+      "pickup_mode": "direct_editorial",
+      "issue_query_url": "https://github.com/grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22+label%3A%22gcl-pickup%3Adirect-editorial%22"
+    }
+  ],
   "full_protocol_path": "handoffs/GCL-WORKER-QUEUE.md",
   "queue_registry_path": ".gcl/worker_queue/JOBS.json",
   "project_binding_path": ".gcl/worker_queue/PROJECT.json",
   "requirements": {
     "authenticated_github_comment_identity": true,
-    "result_actor_must_match_active_reservation_owner": true
+    "anonymous_participation": false,
+    "reservation_result_actor_must_match_active_reservation_owner": true
   },
   "authority": {
     "project_is_execution_authority": false,
