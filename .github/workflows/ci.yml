@@ -25,6 +25,8 @@ jobs:
           python-version: "3.12.13"
           cache: pip
           cache-dependency-path: requirements-ci.txt
+      - name: Validate repository path portability
+        run: python ci/validate_repo_case_collisions.py
       - name: Install locked validation dependencies
         run: python -m pip install -r requirements-ci.txt
       - name: Validate claim ledgers, programme references, and bounded tactic routing
@@ -235,6 +237,8 @@ jobs:
         env:
           SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+      - name: Validate repository path portability
+        run: python ci/validate_repo_case_collisions.py
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.12"
