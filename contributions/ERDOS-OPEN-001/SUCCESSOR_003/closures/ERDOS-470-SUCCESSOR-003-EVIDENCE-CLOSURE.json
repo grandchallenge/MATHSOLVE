@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS_SUCCESSOR_003_EVIDENCE_COHORT_CLOSURE",
+  "campaign": "ERDOS-OPEN",
+  "problem_id": 470,
+  "cohort_id": "ERDOS-470-SUCCESSOR-BLIND-COHORT-003",
+  "state": "EVIDENCE_CLOSED_FOR_SYNTHESIS",
+  "claim_of_agent_runtime_independence": "UNVERIFIED_SHARED_AUTHENTICATED_GITHUB_ACCOUNT",
+  "source_transport_account": "fyremael",
+  "blind_communication_provenance": "NOT_ATTESTED_BEYOND_WORKER_PAYLOAD_AND_DISPATCH_POLICY",
+  "effects": {
+    "evidence_preservation": true,
+    "independent_mathematical_review": false,
+    "mathematical_certification": false,
+    "problem_solution": false
+  },
+  "inputs": [
+    {
+      "dispatch_id": "ERDOS-470-N3-IA-001",
+      "issue_number": 1033,
+      "comment_id": 6081010515,
+      "raw_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/raw/ERDOS-470-N3-IA-001/github-comment-6081010515.md",
+      "receipt_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/receipts/ERDOS-470-N3-IA-001/github-comment-6081010515.json",
+      "raw_sha256": "52f756c42029ed1665f70d0b924fdc39597717591985a1e8399e489d1fa07a6b",
+      "raw_blob_sha1": "354ce6cf72b76b68eba365c51470294c3d08f197",
+      "receipt_blob_sha1": "cabc11415cc8ee6256b31471633c3d40bdeb2bfb",
+      "protected_evidence_pr": 1038,
+      "protected_merge_sha": "e0793b2d61d083e8d352b44cb43db08ca2dbbf7d",
+      "report_disposition": "EXACT_BLOCKER",
+      "reported_conclusion": "HISTORICAL_WORKUNIT_FORMAT_MISMATCH_NOT_FULL_SEARCH_REPLAY",
+      "worker_authentication": "RESERVATION_ENFORCED",
+      "mathematical_status": "UNADJUDICATED_BY_INTAKE"
+    }
+  ]
+}
