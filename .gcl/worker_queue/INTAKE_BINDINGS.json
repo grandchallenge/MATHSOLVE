@@ -27,7 +27,8 @@
       "allowed_external_sources": [
         "PROTECTED_PACKET_ONLY",
         "PRIMARY_SOURCES_REQUIRED"
-      ]
+      ],
+      "campaign": "RH-001"
     },
     {
       "dispatch_id": "RH-R080-WP-B-IA-001",
@@ -47,7 +48,8 @@
       "allowed_external_sources": [
         "PROTECTED_PACKET_ONLY",
         "PRIMARY_SOURCES_REQUIRED"
-      ]
+      ],
+      "campaign": "RH-001"
     },
     {
       "dispatch_id": "RH-R080-WP-C-IA-001",
@@ -69,7 +71,8 @@
       "allowed_external_sources": [
         "PROTECTED_PACKET_ONLY",
         "PRIMARY_SOURCES_REQUIRED"
-      ]
+      ],
+      "campaign": "RH-001"
     },
     {
       "dispatch_id": "RH-R057-WP-A-IA-001",
@@ -91,7 +94,8 @@
       "allowed_external_sources": [
         "PROTECTED_PACKET_ONLY",
         "PRIMARY_SOURCES_REQUIRED"
-      ]
+      ],
+      "campaign": "RH-001"
     },
     {
       "dispatch_id": "RH-R057-WP-B-IA-001",
@@ -111,7 +115,8 @@
       "allowed_external_sources": [
         "PROTECTED_PACKET_ONLY",
         "PRIMARY_SOURCES_REQUIRED"
-      ]
+      ],
+      "campaign": "RH-001"
     },
     {
       "dispatch_id": "ERDOS-593-R2-IA-001",
@@ -133,7 +138,8 @@
       "allowed_external_sources": [
         "PROTECTED_PACKET_ONLY",
         "PRIMARY_SOURCES_REQUIRED"
-      ]
+      ],
+      "campaign": "ERDOS-OPEN"
     },
     {
       "dispatch_id": "ERDOS-593-S2-IA-001",
@@ -153,7 +159,8 @@
       "allowed_external_sources": [
         "PROTECTED_PACKET_ONLY",
         "PRIMARY_SOURCES_REQUIRED"
-      ]
+      ],
+      "campaign": "ERDOS-OPEN"
     },
     {
       "dispatch_id": "ERDOS-470-S2-IA-001",
@@ -173,7 +180,8 @@
       "allowed_external_sources": [
         "PROTECTED_PACKET_ONLY",
         "PRIMARY_SOURCES_REQUIRED"
-      ]
+      ],
+      "campaign": "ERDOS-OPEN"
     }
   ]
 }
