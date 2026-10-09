@@ -197,16 +197,41 @@ def main() -> int:
     args = parser.parse_args()
 
     items = project_items()
-    with ThreadPoolExecutor(max_workers=6) as pool:
-        rows = list(pool.map(
-            lambda item: validated_item(
+
+    def audit_one(item: dict) -> dict:
+        content = item.get("content") or {}
+        repo, issue = content.get("repository"), content.get("number")
+        identity = f"{repo}#{issue}"
+        try:
+            row = validated_item(
                 item,
-                issue_fields(
-                    item["content"]["repository"], item["content"]["number"]
-                ),
-            ),
-            items,
-        ))
+                issue_fields(repo, issue),
+            )
+            return {"row": row}
+        except Exception as exc:
+            return {"error": f"{identity}: {exc}"}
+
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        audited = list(pool.map(audit_one, items))
+
+    integrity_errors = [x["error"] for x in audited if "error" in x]
+    rows = [x["row"] for x in audited if "row" in x]
+    if integrity_errors:
+        report = {
+            "project": f"https://github.com/orgs/{ORG}/projects/{PROJECT_NUMBER}",
+            "items": len(items),
+            "validated_items": len(rows),
+            "integrity_errors": integrity_errors,
+            "applied": False,
+            "boundary": "fail-closed queue-integrity audit; no mutation performed",
+        }
+        print(json.dumps(report, sort_keys=True), flush=True)
+        if args.report:
+            args.report.write_text(
+                json.dumps(report, indent=2, sort_keys=True) + "\n",
+                encoding="utf-8",
+            )
+        return 2
 
     changes = [r for r in rows if r["from_status"] != r["to_status"]]
     report = {
