@@ -516,6 +516,45 @@
       "dispatch_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_002/dispatches/ERDOS-470-S2-IA-001.json",
       "cohort_id": "ERDOS-470-SUCCESSOR-BLIND-COHORT-002",
       "task_commit": "33b7a6dc01ce882804b336a9d44ea1863efb177f"
+    },
+    {
+      "dispatch_id": "ERDOS-593-N3-IA-001",
+      "issue_number": 1031,
+      "role": "SOURCE_AUDIT",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/dispatches/ERDOS-593-N3-IA-001.json",
+      "cohort_id": "ERDOS-593-SUCCESSOR-BLIND-COHORT-003",
+      "task_commit": "58d0ac0a8acc04bb688259587d48b73973ac2004"
+    },
+    {
+      "dispatch_id": "ERDOS-593-N4-IA-001",
+      "issue_number": 1032,
+      "role": "RECONNAISSANCE",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/dispatches/ERDOS-593-N4-IA-001.json",
+      "cohort_id": "ERDOS-593-SUCCESSOR-BLIND-COHORT-003",
+      "task_commit": "58d0ac0a8acc04bb688259587d48b73973ac2004"
+    },
+    {
+      "dispatch_id": "ERDOS-470-N3-IA-001",
+      "issue_number": 1033,
+      "role": "SOURCE_AUDIT",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/dispatches/ERDOS-470-N3-IA-001.json",
+      "cohort_id": "ERDOS-470-SUCCESSOR-BLIND-COHORT-003",
+      "task_commit": "58d0ac0a8acc04bb688259587d48b73973ac2004"
     }
   ]
 }
