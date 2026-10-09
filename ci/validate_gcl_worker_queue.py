@@ -67,6 +67,20 @@ def validate() -> list[str]:
         if unknown_outputs:
             errors.append(f"Project metadata mapping emits unknown {group} values: {sorted(unknown_outputs)}")
 
+    label_rules = config.get("label_field_projection") or {}
+    for group, prefix in (("role", "gcl-role:"), ("collaboration", "gcl-collab:")):
+        mapping = label_rules.get(group) or {}
+        if not mapping:
+            errors.append(f"label/Issue Field mapping missing: {group}")
+            continue
+        if any(not str(label).startswith(prefix) for label in mapping):
+            errors.append(f"label/Issue Field mapping has invalid {group} label prefix")
+        unknown_outputs = set(mapping.values()) - option_groups[group]
+        if unknown_outputs:
+            errors.append(
+                f"label/Issue Field mapping emits unknown {group} values: {sorted(unknown_outputs)}"
+            )
+
     jobs = registry.get("jobs", [])
     expected = {f"ERDOS-{p}-{lane}-IA-001" for p in PROBLEMS for lane in LANES}
     all_ids = {j.get("dispatch_id") for j in jobs}
