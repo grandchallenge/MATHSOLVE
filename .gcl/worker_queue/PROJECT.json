@@ -25,6 +25,10 @@
     "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": {
       "pickup_mode": "direct_editorial",
       "required_pickup_label": "gcl-pickup:direct-editorial"
+    },
+    "grandchallenge/MATH-PROGRAMME": {
+      "pickup_mode": "direct_editorial",
+      "required_pickup_label": "gcl-pickup:direct-editorial"
     }
   },
   "pilot": {
