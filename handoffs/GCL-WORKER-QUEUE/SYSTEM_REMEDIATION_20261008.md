@@ -75,6 +75,8 @@ The exact Project ID, Status field ID, and option IDs are versioned in `.gcl/wor
 - campaign, role, collaboration, and phase fields;
 - repository pickup-mode contract;
 - direct-editorial label boundary;
+- role-label ↔ role-field concordance;
+- collaboration-label ↔ collaboration-field concordance;
 - no RESERVED state for direct-editorial work;
 - protected metadata concordance for MATHSOLVE jobs;
 - Project Status vocabulary;
@@ -95,7 +97,7 @@ The normal Solve checks run:
 - queue projection unit tests;
 - Project-status / pickup-routing unit tests.
 
-The queue-specific offline suite covers both pickup modes, malformed labels, missing fields, direct-job reservation rejection, immutable metadata projection, mapping failure, lifecycle transitions, and result/release/reconcile paths.
+The queue-specific offline suite covers both pickup modes, malformed labels, role/collaboration label-field disagreement, missing fields, direct-job reservation rejection, immutable metadata projection, mapping failure, lifecycle transitions, and result/release/reconcile paths.
 
 ## Live reconciliation performed
 
@@ -106,7 +108,7 @@ During this remediation, the full 61-item Project population exposed nine MATHSO
 
 Their campaign/role/collaboration/phase/cohort fields were reconstructed from protected registry/dispatch state and written back. No mathematical or adjudicative state was inferred.
 
-After repair, the full live audit reported:
+After repair and the added label-field concordance checks, the full live audit reported:
 
 - 61 Project items;
 - 33 reservation-controlled MATHSOLVE items;
@@ -115,7 +117,8 @@ After repair, the full live audit reported:
 - 7 RESERVED;
 - 1 BLOCKED;
 - 1 AVAILABLE;
-- zero queue-integrity defects.
+- zero queue-integrity defects;
+- zero Project Status updates remaining on final readback.
 
 The remaining three board-only Status mismatches were then reconciled. Exact readback completed with:
 
