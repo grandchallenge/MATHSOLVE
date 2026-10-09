@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BOOTSTRAP = ROOT / ".well-known/gcl-worker-queue.json"
 JOBS = ROOT / ".gcl/worker_queue/JOBS.json"
 CONFIG = ROOT / ".gcl/worker_queue/CONFIG.json"
+PROJECT_BINDING = ROOT / ".gcl/worker_queue/PROJECT.json"
 ORG = "grandchallenge"
 PROJECT_NUMBER = 2
 DIRECT_LABEL = "gcl-pickup:direct-editorial"
@@ -336,12 +337,20 @@ def main() -> int:
             ):
                 raise RuntimeError(f"state/pickup mode changed during reconciliation: {item['url']}")
 
+            binding = json.loads(PROJECT_BINDING.read_text(encoding="utf-8"))
+            project_id = str((binding.get("project") or {}).get("id") or "")
+            status_binding = binding.get("project_status_field") or {}
+            field_id = str(status_binding.get("field_id") or "")
+            option_id = str((status_binding.get("options") or {}).get(item["to_status"]) or "")
+            if not project_id or not field_id or not option_id:
+                raise RuntimeError("Project Status mutation binding is incomplete")
+
             gh([
-                "project", "item-edit", str(PROJECT_NUMBER),
-                "--owner", ORG,
-                "--url", item["url"],
-                "--field", "Status",
-                "--value", item["to_status"],
+                "project", "item-edit",
+                "--id", item["item_id"],
+                "--project-id", project_id,
+                "--field-id", field_id,
+                "--single-select-option-id", option_id,
             ])
             if index % 10 == 0:
                 print(f"APPLIED {index}/{len(changes)}", flush=True)
