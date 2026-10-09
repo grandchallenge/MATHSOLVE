@@ -17,6 +17,7 @@ EXPECTED_REPOSITORY_MODES = {
     "grandchallenge/MATHSOLVE": "reservation_controlled",
     "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": "direct_editorial",
     "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial",
+    "grandchallenge/MATH-PROGRAMME": "direct_editorial",
 }
 DIRECT_LABEL = "gcl-pickup:direct-editorial"
 
@@ -107,6 +108,7 @@ def validate() -> list[str]:
         "GCL-CONTRIBUTION-RESULT/1",
         ".well-known/gcl-worker-queue.json",
         "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS",
+        "grandchallenge/MATH-PROGRAMME",
         "authenticated GitHub identity",
         "stop and report a queue-integrity blocker",
         "do not default an unknown job to `/claim`",
