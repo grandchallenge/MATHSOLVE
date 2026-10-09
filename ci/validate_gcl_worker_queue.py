@@ -40,6 +40,15 @@ def validate() -> list[str]:
     for key in ("reservation_is_execution_authority", "project_or_labels_are_authority", "mathematical_effect", "certification_effect"):
         if config.get(key) is not False:
             errors.append(f"authority boundary widened: {key}")
+    expected_pickup_modes = {
+        "grandchallenge/MATHSOLVE": "reservation_controlled",
+        "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": "direct_editorial",
+        "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial",
+    }
+    if config.get("repository_pickup_modes") != expected_pickup_modes:
+        errors.append("repository pickup-mode map drift")
+    if config.get("labels", {}).get("pickup_direct_editorial") != "gcl-pickup:direct-editorial":
+        errors.append("direct-editorial pickup label drift")
 
     jobs = registry.get("jobs", [])
     expected = {f"ERDOS-{p}-{lane}-IA-001" for p in PROBLEMS for lane in LANES}
@@ -144,7 +153,17 @@ def validate() -> list[str]:
         errors.append("intake workflow does not supply issue comment history")
 
     entry = ENTRYPOINT.read_text(encoding="utf-8")
-    for needle in ("/claim", "/release", "No bootstrap prompt must be copied", "sibling use is `FORBIDDEN`"):
+    for needle in (
+        "/claim",
+        "/release",
+        "No bootstrap prompt must be copied",
+        "sibling use is `FORBIDDEN`",
+        "Reservation-controlled mode",
+        "Direct-editorial mode",
+        "gcl-pickup:direct-editorial",
+        "Do not post `/claim`",
+        "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS",
+    ):
         if needle not in entry:
             errors.append(f"worker entrypoint missing {needle!r}")
 
