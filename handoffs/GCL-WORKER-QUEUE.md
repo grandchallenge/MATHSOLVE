@@ -25,10 +25,22 @@ For `grandchallenge/MATHSOLVE` jobs:
 2. Wait for the `GCL-WORKER-RESERVATION/1` controller response.
 3. Follow the returned immutable task URL.
 4. Execute only after reservation confirmation.
-5. Return the required `GCL-CONTRIBUTION-RESULT/1` on the same issue.
-6. If abandoning before return, post exactly `/release`.
+5. Immediately before returning, refresh this dispatch's issue/controller
+   markers and protected raw-result custody metadata. If a result is already
+   captured or protected, preserve it and stop this return; do not submit an
+   additional or replacement RESULT/1. This operational check does not permit
+   inspecting mathematical sibling contents before protected cohort closure.
+6. Otherwise return the required `GCL-CONTRIBUTION-RESULT/1` on the same issue.
+7. If abandoning before return, post exactly `/release`.
 
 The authenticated result actor must match the active reservation owner.
+
+Reservation ownership is account-scoped. It does not distinguish multiple chats
+or runtimes sharing one authenticated actor. Such workers must coordinate their
+assignment ownership and check the first-result lock immediately before return.
+An extra comment after another result is captured or protected does not become
+an additional admitted result, supersede the first result, or establish worker
+independence.
 
 ### Direct-editorial mode — Atlas repositories
 
