@@ -154,5 +154,15 @@
     "machine_path": ".well-known/gcl-worker-queue.json",
     "machine_url": "https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/.well-known/gcl-worker-queue.json",
     "full_protocol_path": "handoffs/GCL-WORKER-QUEUE.md"
+  },
+  "project_status_field": {
+    "field_id": "PVTSSF_lADOB9Ao_c4BlwurzhkcRPQ",
+    "name": "Status",
+    "options": {
+      "Todo": "f75ad846",
+      "In Progress": "47fc9ee4",
+      "Done": "98236657"
+    },
+    "semantics": "worker-assignment presentation only; never mathematical/editorial acceptance"
   }
 }
