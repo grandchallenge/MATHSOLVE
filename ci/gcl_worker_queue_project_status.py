@@ -156,7 +156,7 @@ def validated_item(item: dict, fields: list[dict]) -> dict:
 
 def gh(args: list[str]) -> str:
     proc = subprocess.run(
-        ["gh", *args], capture_output=True, text=True, timeout=75, check=False
+        ["gh", *args], capture_output=True, text=True, encoding="utf-8", errors="strict", timeout=75, check=False
     )
     if proc.returncode:
         raise RuntimeError(f"gh invocation failed: {args[:4]}: {proc.stderr[:350]}")
