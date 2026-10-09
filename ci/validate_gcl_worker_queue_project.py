@@ -66,6 +66,16 @@ def validate() -> list[str]:
         if fields.get(key, {}).get("rest_id") != expected:
             e.append(f"issue field binding drift: {key}")
 
+    status_field = data.get("project_status_field", {})
+    if status_field.get("field_id") != "PVTSSF_lADOB9Ao_c4BlwurzhkcRPQ":
+        e.append("Project Status field id drift")
+    if status_field.get("options") != {
+        "Todo": "f75ad846",
+        "In Progress": "47fc9ee4",
+        "Done": "98236657",
+    }:
+        e.append("Project Status option binding drift")
+
     views = data.get("views", {})
     required = {
         "all_jobs": "",
