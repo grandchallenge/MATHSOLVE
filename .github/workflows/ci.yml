@@ -191,6 +191,7 @@ jobs:
           python ci/validate_erdos_open_semantic_gates.py
           python ci/validate_erdos_241_synthesis.py
           python ci/validate_erdos_successor_002.py
+          python ci/validate_erdos_successor_003.py
           python -m unittest tests/test_erdos_successor_002_replay.py -v
           python -m unittest tests/test_erdos_241_replay.py tests/test_erdos_241_synthesis.py -v
           python ci/validate_gcl_worker_queue.py
