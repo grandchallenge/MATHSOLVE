@@ -22,10 +22,25 @@ Anonymous participation is not permitted.
 4. Open the underlying GitHub issue.
 5. **Determine its pickup mode before doing anything else.**
 
+### Pickup-mode routing is fail-closed
+
+Use only a repository/mode combination published by
+`.well-known/gcl-worker-queue.json`:
+
+- `grandchallenge/MATHSOLVE` → `reservation_controlled`;
+- `grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS` +
+  `gcl-pickup:direct-editorial` → `direct_editorial`;
+- `grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS` +
+  `gcl-pickup:direct-editorial` → `direct_editorial`.
+
+If the repository is unconfigured, a configured direct-editorial repository is
+missing `gcl-pickup:direct-editorial`, or the labels otherwise disagree with
+the configured mode, **stop and report a queue-integrity blocker**. Do not guess
+a route and do not default an unknown job to `/claim`.
+
 ### Reservation-controlled pickup
 
-If the issue does **not** carry `gcl-pickup:direct-editorial`, use the
-MATHSOLVE reservation protocol:
+For `grandchallenge/MATHSOLVE` jobs, use the MATHSOLVE reservation protocol:
 
 1. Comment exactly `/claim`.
 2. Wait for the `GCL-WORKER-RESERVATION/1` controller response.

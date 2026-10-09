@@ -108,9 +108,14 @@ def validate() -> list[str]:
         ".well-known/gcl-worker-queue.json",
         "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS",
         "authenticated GitHub identity",
+        "stop and report a queue-integrity blocker",
+        "do not default an unknown job to `/claim`",
     ):
         if needle not in workers:
             errors.append(f"WORKERS.md missing {needle!r}")
+
+    if "If the issue does **not** carry `gcl-pickup:direct-editorial`, use the" in workers:
+        errors.append("WORKERS.md defaults unknown/non-direct jobs to MATHSOLVE reservation mode")
 
     handoff = HANDOFF.read_text(encoding="utf-8")
     for needle in (
