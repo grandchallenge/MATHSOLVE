@@ -1,6 +1,6 @@
 {
   "record_type": "GCL_WORKER_QUEUE_CONFIG",
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "policy_id": "GCL-WORKER-QUEUE-001",
   "policy_version": "1.0.0",
   "programme_policy_commit": "0fd894c053922ec43b70878e0f02e8370690449a",
@@ -24,10 +24,16 @@
     "available": "gcl-state:available",
     "reserved": "gcl-state:reserved",
     "returned": "gcl-state:returned",
+    "pickup_direct_editorial": "gcl-pickup:direct-editorial",
     "collab_staged": "gcl-collab:staged",
     "role_reconnaissance": "gcl-role:reconnaissance",
     "role_source_audit": "gcl-role:source-audit",
     "role_adversarial": "gcl-role:adversarial"
+  },
+  "repository_pickup_modes": {
+    "grandchallenge/MATHSOLVE": "reservation_controlled",
+    "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": "direct_editorial",
+    "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial"
   },
   "issue_query": "is:issue is:open label:gcl-job label:gcl-state:available",
   "project_view_optional": false,
@@ -35,7 +41,7 @@
   "project_or_labels_are_authority": false,
   "mathematical_effect": false,
   "certification_effect": false,
-  "claim_boundary": "Operational discovery and worker reservation only. Protected dispatch/lease controls execution; RESULT/1 remains evidence; no mathematical or certification effect.",
+  "claim_boundary": "Pickup is repository-mode-specific. Reservation-controlled MATHSOLVE jobs require /claim and controller confirmation before execution. Direct-editorial Atlas jobs execute only under their bounded issue instructions and never wait for a MATHSOLVE reservation. RESULT/1 remains evidence; no queue projection has mathematical, certification, merge, or release effect.",
   "worker_discovery_primary": "github_project",
   "project_binding_path": ".gcl/worker_queue/PROJECT.json",
   "project_url": "https://github.com/orgs/grandchallenge/projects/2",
