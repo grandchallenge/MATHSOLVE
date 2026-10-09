@@ -1,6 +1,9 @@
 """Fail-closed offline tests for worker queue lifecycle and pickup routing."""
 import unittest
 
+# Extend the existing protected Solve test command with offline activation tests.
+from tests.test_activate_math_typography_editorial_queue import ActivationTests
+
 from ci.gcl_worker_queue_project_status import (
     expected_pickup_mode,
     expected_status,
