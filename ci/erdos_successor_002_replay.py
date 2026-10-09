@@ -94,6 +94,34 @@ def has_monochromatic_triangle(n: int, coloring_bits: int) -> bool:
     )
 
 
+def first_difference_replay() -> dict[str, Any]:
+    # Color a pair of distinct binary strings by its first differing bit.
+    # No three pairwise distances can have the same first-difference index:
+    # at that coordinate three binary symbols cannot be pairwise different.
+    samples: dict[str, dict[str, int]] = {}
+    for depth in (2, 3, 4, 5):
+        vertices = tuple(range(1 << depth))
+        def first_difference(a: int, b: int) -> int:
+            differing = a ^ b
+            return next(i for i in range(depth) if differing & (1 << i))
+        mono = sum(
+            len({first_difference(a, b), first_difference(a, c),
+                 first_difference(b, c)}) == 1
+            for a, b, c in itertools.combinations(vertices, 3)
+        )
+        if mono:
+            raise AssertionError("first-difference construction contains monochromatic triangle")
+        samples[str(depth)] = {
+            "vertices": 1 << depth,
+            "monochromatic_triangles": mono,
+        }
+    return {
+        "finite_binary_sequence_tests": samples,
+        "infinite_first_difference_omega_coloring": "PROVED_BY_BINARY_COORDINATE_ARGUMENT",
+        "two_color_version": "IMPOSSIBLE_FOR_AT_LEAST_SIX_VERTICES",
+    }
+
+
 def finite_ramsey_replay() -> dict[str, Any]:
     # Independently exhaust all 2^(6 choose 2)=32768 edge-colorings of K6.
     k6_colorings = 1 << 15
@@ -158,6 +186,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         "erdos_593": {
             "structural": structural_replay(),
             "ramsey_falsification": finite_ramsey_replay(),
+            "countable_coloring_boundary": first_difference_replay(),
             "li_lean_artifact": {
                 "repository": "ericlisg/erdos-593-1177-lean",
                 "reported_head_at_source_inspection": "5dcb6e4906df03f2e4294b21be73b55db7736f5a",
