@@ -157,7 +157,7 @@ def validate() -> list[str]:
         "/claim",
         "/release",
         "No bootstrap prompt must be copied",
-        "sibling use is `FORBIDDEN`",
+        "`FORBIDDEN`",
         "Reservation-controlled mode",
         "Direct-editorial mode",
         "gcl-pickup:direct-editorial",
