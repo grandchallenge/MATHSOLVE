@@ -4,7 +4,10 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from ci.erdos_successor_002_replay import BASE, INPUTS, ROOT, build_report
+try:
+    from ci.erdos_successor_002_replay import BASE, INPUTS, ROOT, build_report
+except ModuleNotFoundError:
+    from erdos_successor_002_replay import BASE, INPUTS, ROOT, build_report
 
 ADJ = ROOT / BASE / "adjudications/ERDOS-SUCCESSOR-002-ADJUDICATION-001.json"
 SYNTH = ROOT / BASE / "synthesis/ERDOS-SUCCESSOR-002-SYNTHESIS-001.md"
