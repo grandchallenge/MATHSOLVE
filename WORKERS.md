@@ -49,9 +49,15 @@ For `grandchallenge/MATHSOLVE` jobs, use the MATHSOLVE reservation protocol:
 3. Follow the returned **immutable_task** URL. That document is the complete
    zero-context assignment and controls the work.
 4. Execute the assignment.
-5. Return exactly as the immutable task specifies, normally by posting one
-   `GCL-CONTRIBUTION-RESULT/1` comment on the same issue.
-6. If abandoning before return, comment exactly `/release`.
+5. Immediately before returning, refresh the assigned issue's operational
+   comments and protected raw-result state for this dispatch. If another result
+   is already captured or protected, preserve it and stop this worker return;
+   do not post a replacement or an additional RESULT/1. For this preflight,
+   inspect result/controller markers and custody metadata only, retaining the
+   task's restrictions on mathematical sibling disclosure.
+6. Otherwise return exactly as the immutable task specifies, normally by posting
+   one `GCL-CONTRIBUTION-RESULT/1` comment on the same issue.
+7. If abandoning before return, comment exactly `/release`.
 
 For reservation-controlled work, do not execute before the controller confirms
 the reservation.
@@ -102,6 +108,12 @@ The worker must use an authenticated GitHub identity with comment capability.
 For reservation-controlled jobs, the authenticated GitHub actor that posts the
 accepted RESULT/1 must match the actor holding the active reservation. A worker
 cannot claim under one GitHub identity and return under another.
+
+A reservation identifies a GitHub actor, not a unique chat or agent runtime.
+When several chats share that actor, coordinate assignment ownership before
+execution and perform the fresh pre-return check above. The first protected
+result remains authoritative for custody; a duplicate comment is not a second
+admitted result or evidence of independent verification.
 
 For direct-editorial jobs there is no MATHSOLVE reservation owner; follow the
 identity requirements stated in the bound issue.
