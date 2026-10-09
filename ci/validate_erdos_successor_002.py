@@ -92,7 +92,7 @@ def validate() -> list[str]:
         if effects.get(key) is not False:
             errors.append(f"adjudication authority inflation: {key}")
     synth = SYNTH.read_text(encoding="utf-8")
-    for phrase in ("32768", "first differing coordinate", "SOURCE_REPORTED_NOT_VERIFIED",
+    for phrase in ("32768", "least differing coordinate", "SOURCE_REPORTED_NOT_VERIFIED",
                    "NOT", "READY_FOR_PROTECTED_DISPATCH"):
         if phrase not in synth:
             errors.append(f"synthesis missing boundary: {phrase}")
