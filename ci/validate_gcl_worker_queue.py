@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / ".gcl/worker_queue/CONFIG.json"
 REGISTRY = ROOT / ".gcl/worker_queue/JOBS.json"
+PROJECT = ROOT / ".gcl/worker_queue/PROJECT.json"
 WORKFLOW = ROOT / ".github/workflows/gcl-worker-queue.yml"
 ROUTING = ROOT / ".ghos-routing/workflows.json"
 ENTRYPOINT = ROOT / "handoffs/GCL-WORKER-QUEUE.md"
@@ -32,6 +33,8 @@ def validate() -> list[str]:
     errors: list[str] = []
     config = readj(CONFIG)
     registry = readj(REGISTRY)
+    project = readj(PROJECT)
+    metadata_rules = config.get("project_metadata_projection") or {}
 
     if config.get("policy_id") != "GCL-WORKER-QUEUE-001":
         errors.append("queue policy id mismatch")
@@ -49,6 +52,20 @@ def validate() -> list[str]:
         errors.append("repository pickup-mode map drift")
     if config.get("labels", {}).get("pickup_direct_editorial") != "gcl-pickup:direct-editorial":
         errors.append("direct-editorial pickup label drift")
+
+    option_groups = {
+        "role": set(project.get("issue_fields", {}).get("role", {}).get("options", [])),
+        "collaboration": set(project.get("issue_fields", {}).get("collaboration", {}).get("options", [])),
+        "phase": set(project.get("issue_fields", {}).get("phase", {}).get("options", [])),
+    }
+    for group, options in option_groups.items():
+        mapping = metadata_rules.get(group) or {}
+        if not mapping:
+            errors.append(f"Project metadata mapping missing: {group}")
+            continue
+        unknown_outputs = set(mapping.values()) - options
+        if unknown_outputs:
+            errors.append(f"Project metadata mapping emits unknown {group} values: {sorted(unknown_outputs)}")
 
     jobs = registry.get("jobs", [])
     expected = {f"ERDOS-{p}-{lane}-IA-001" for p in PROBLEMS for lane in LANES}
@@ -89,6 +106,22 @@ def validate() -> list[str]:
         d = readj(dp)
         if d.get("dispatch_id") != did:
             errors.append(f"{did}: dispatch identity mismatch")
+
+        campaign = str(d.get("campaign") or "").strip()
+        if not campaign:
+            errors.append(f"{did}: dispatch campaign missing for Project projection")
+        for group, source_value in (
+            ("role", job.get("role")),
+            ("collaboration", job.get("collaboration_mode")),
+            ("phase", job.get("visibility_phase")),
+        ):
+            mapping = metadata_rules.get(group) or {}
+            if str(source_value or "") not in mapping:
+                errors.append(
+                    f"{did}: no Project {group} mapping for {source_value!r}"
+                )
+        if not str(job.get("cohort_id") or "").strip():
+            errors.append(f"{did}: cohort missing for Project projection")
         if d.get("github_issue_number") != job.get("issue_number"):
             errors.append(f"{did}: issue binding mismatch")
         if d.get("dispatch_status") != "READY_FOR_GITHUB_COMMENT":
