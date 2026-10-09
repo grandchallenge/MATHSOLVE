@@ -69,6 +69,28 @@
       "reported_head_at_source_inspection": "5dcb6e4906df03f2e4294b21be73b55db7736f5a",
       "file": "RequestProject/PublicationCertificate.lean",
       "status": "PRIMARY_REPOSITORY_EXISTS_NOT_REBUILT_NOT_ADJUDICATED"
+    },
+    "countable_coloring_boundary": {
+      "finite_binary_sequence_tests": {
+        "2": {
+          "vertices": 4,
+          "monochromatic_triangles": 0
+        },
+        "3": {
+          "vertices": 8,
+          "monochromatic_triangles": 0
+        },
+        "4": {
+          "vertices": 16,
+          "monochromatic_triangles": 0
+        },
+        "5": {
+          "vertices": 32,
+          "monochromatic_triangles": 0
+        }
+      },
+      "infinite_first_difference_omega_coloring": "PROVED_BY_BINARY_COORDINATE_ARGUMENT",
+      "two_color_version": "IMPOSSIBLE_FOR_AT_LEAST_SIX_VERTICES"
     }
   },
   "erdos_470": {
