@@ -182,6 +182,71 @@
         "PRIMARY_SOURCES_REQUIRED"
       ],
       "campaign": "ERDOS-OPEN"
+    },
+    {
+      "dispatch_id": "ERDOS-593-N3-IA-001",
+      "dispatch_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/dispatches/ERDOS-593-N3-IA-001.json",
+      "github_issue_number": 1031,
+      "issue_body_sha256": "558f860a6eaecfbef0f43666393284c4d42c41d8c690469eb70beab7978142c5",
+      "task_path": "handoffs/GCL-WORKER-QUEUE/launch/2026-10-09/ERDOS-593-N3-IA-001.md",
+      "task_commit": "58d0ac0a8acc04bb688259587d48b73973ac2004",
+      "task_sha256": "756721f1a0ea011bb2e870ea5a97b2240c35ff1e2975d693b3a17cad598813eb",
+      "allowed_dispositions": [
+        "SOURCE_INTERFACE_FOUND",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA",
+        "COUNTEREXAMPLE",
+        "FINITE_CERTIFICATE"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY",
+        "PRIMARY_SOURCES_REQUIRED"
+      ],
+      "campaign": "ERDOS-OPEN"
+    },
+    {
+      "dispatch_id": "ERDOS-593-N4-IA-001",
+      "dispatch_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/dispatches/ERDOS-593-N4-IA-001.json",
+      "github_issue_number": 1032,
+      "issue_body_sha256": "4f379b76bb2db515b717b3ff0d2f0eb5b0001ceca629cd6429ec0d5a22cc7a42",
+      "task_path": "handoffs/GCL-WORKER-QUEUE/launch/2026-10-09/ERDOS-593-N4-IA-001.md",
+      "task_commit": "58d0ac0a8acc04bb688259587d48b73973ac2004",
+      "task_sha256": "241e60875ac95516a341624b8be8fd84e9c8fcf59861080d43de891c3d6a6bb2",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "EXACT_REDUCTION",
+        "FINITE_CERTIFICATE",
+        "SOURCE_INTERFACE_FOUND",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY",
+        "PRIMARY_SOURCES_REQUIRED"
+      ],
+      "campaign": "ERDOS-OPEN"
+    },
+    {
+      "dispatch_id": "ERDOS-470-N3-IA-001",
+      "dispatch_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/dispatches/ERDOS-470-N3-IA-001.json",
+      "github_issue_number": 1033,
+      "issue_body_sha256": "459a7dcd4142eae2f7c283f8c4299f300072e1cb503bac4794d0eefba1f901f4",
+      "task_path": "handoffs/GCL-WORKER-QUEUE/launch/2026-10-09/ERDOS-470-N3-IA-001.md",
+      "task_commit": "58d0ac0a8acc04bb688259587d48b73973ac2004",
+      "task_sha256": "a83c6a72203bc9a942acdeb8e34d151cb8f257bc08f5487f942707e965631497",
+      "allowed_dispositions": [
+        "SOURCE_INTERFACE_FOUND",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA",
+        "COUNTEREXAMPLE",
+        "FINITE_CERTIFICATE"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY",
+        "PRIMARY_SOURCES_REQUIRED"
+      ],
+      "campaign": "ERDOS-OPEN"
     }
   ]
 }
