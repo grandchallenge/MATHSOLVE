@@ -62,7 +62,6 @@ def audit_evidence(root: Path = ROOT) -> dict[str, Any]:
             "dispatch_id": dispatch,
             "github_comment_id": comment_id,
             "raw_sha256": digest,
-            "receipt_sha256": sha256(receipt_bytes),
             "integrity": "EXACT_RAW_AND_RECEIPT_CONCORDANT",
             "mathematical_acceptance": False,
         })
