@@ -33,7 +33,8 @@
   "repository_pickup_modes": {
     "grandchallenge/MATHSOLVE": "reservation_controlled",
     "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": "direct_editorial",
-    "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial"
+    "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial",
+    "grandchallenge/MATH-PROGRAMME": "direct_editorial"
   },
   "issue_query": "is:issue is:open label:gcl-job label:gcl-state:available",
   "project_view_optional": false,
@@ -41,7 +42,7 @@
   "project_or_labels_are_authority": false,
   "mathematical_effect": false,
   "certification_effect": false,
-  "claim_boundary": "Pickup is repository-mode-specific. Reservation-controlled MATHSOLVE jobs require /claim and controller confirmation before execution. Direct-editorial Atlas jobs execute only under their bounded issue instructions and never wait for a MATHSOLVE reservation. RESULT/1 remains evidence; no queue projection has mathematical, certification, merge, or release effect.",
+  "claim_boundary": "Pickup is repository-mode-specific. Reservation-controlled MATHSOLVE jobs require /claim and controller confirmation before execution. Direct-editorial Atlas and MATH-PROGRAMME jobs execute only under their bounded issue instructions and never wait for a MATHSOLVE reservation. RESULT/1 remains evidence; no queue projection has mathematical, certification, merge, or release effect.",
   "worker_discovery_primary": "github_project",
   "project_binding_path": ".gcl/worker_queue/PROJECT.json",
   "project_url": "https://github.com/orgs/grandchallenge/projects/2",

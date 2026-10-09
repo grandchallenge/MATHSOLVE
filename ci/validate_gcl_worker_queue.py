@@ -47,6 +47,7 @@ def validate() -> list[str]:
         "grandchallenge/MATHSOLVE": "reservation_controlled",
         "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": "direct_editorial",
         "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial",
+    "grandchallenge/MATH-PROGRAMME": "direct_editorial",
     }
     if config.get("repository_pickup_modes") != expected_pickup_modes:
         errors.append("repository pickup-mode map drift")
@@ -210,6 +211,7 @@ def validate() -> list[str]:
         "gcl-pickup:direct-editorial",
         "Do not post `/claim`",
         "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS",
+        "grandchallenge/MATH-PROGRAMME",
     ):
         if needle not in entry:
             errors.append(f"worker entrypoint missing {needle!r}")

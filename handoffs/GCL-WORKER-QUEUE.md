@@ -36,6 +36,7 @@ For supported Atlas jobs carrying `gcl-pickup:direct-editorial`:
 
 - `grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS`
 - `grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS`
+- `grandchallenge/MATH-PROGRAMME`
 
 **Do not post `/claim`. Do not wait for a MATHSOLVE reservation response.**
 
@@ -98,11 +99,12 @@ reservation.
 
 ## Current queue population and repository modes
 
-The Project currently admits exactly these repository pickup modes:
+The Project pickup contract recognizes these repository modes (new issues still require actual Project entry, authoritative Issue Fields, and protected readback):
 
 - `grandchallenge/MATHSOLVE` → `reservation_controlled`
 - `grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS` → `direct_editorial`
 - `grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS` → `direct_editorial`
+- `grandchallenge/MATH-PROGRAMME` → `direct_editorial`
 
 Any Project item from an unconfigured repository, or a direct-editorial
 repository item missing `gcl-pickup:direct-editorial`, is a queue-integrity

@@ -31,6 +31,8 @@ Use only a repository/mode combination published by
 - `grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS` +
   `gcl-pickup:direct-editorial` → `direct_editorial`;
 - `grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS` +
+  `gcl-pickup:direct-editorial` → `direct_editorial`;
+- `grandchallenge/MATH-PROGRAMME` +
   `gcl-pickup:direct-editorial` → `direct_editorial`.
 
 If the repository is unconfigured, a configured direct-editorial repository is
@@ -74,7 +76,8 @@ Instead:
 
 This direct lane currently includes jobs in
 `grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS` and
-`grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS`.
+`grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS` and
+`grandchallenge/MATH-PROGRAMME`.
 
 Do not copy a work-package prompt into another chat. The issue identifies the
 job and its pickup mode.

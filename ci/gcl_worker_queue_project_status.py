@@ -9,7 +9,7 @@ Project Status is worker-assignment presentation only:
 
 Pickup mode is repository-bound:
   grandchallenge/MATHSOLVE -> reservation_controlled
-  Atlas repositories -> direct_editorial + gcl-pickup:direct-editorial
+  Atlas and MATH-PROGRAMME repositories -> direct_editorial + gcl-pickup:direct-editorial
 
 No Project value, label, or reservation certifies mathematics or authorizes
 merge/publication/release.

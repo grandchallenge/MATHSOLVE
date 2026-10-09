@@ -15,7 +15,8 @@
   "repository_pickup_modes": {
     "grandchallenge/MATHSOLVE": "reservation_controlled",
     "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": "direct_editorial",
-    "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial"
+    "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial",
+    "grandchallenge/MATH-PROGRAMME": "direct_editorial"
   },
   "pickup_modes": {
     "reservation_controlled": {
@@ -61,6 +62,11 @@
       "repository": "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS",
       "pickup_mode": "direct_editorial",
       "issue_query_url": "https://github.com/grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22+label%3A%22gcl-pickup%3Adirect-editorial%22"
+    },
+    {
+      "repository": "grandchallenge/MATH-PROGRAMME",
+      "pickup_mode": "direct_editorial",
+      "issue_query_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22+label%3A%22gcl-pickup%3Adirect-editorial%22"
     }
   ],
   "full_protocol_path": "handoffs/GCL-WORKER-QUEUE.md",
