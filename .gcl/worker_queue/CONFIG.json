@@ -72,5 +72,23 @@
       "SYNTHESIS": "SYNTHESIS",
       "VERIFICATION": "VERIFICATION"
     }
+  },
+  "label_field_projection": {
+    "role": {
+      "gcl-role:reconnaissance": "RECON",
+      "gcl-role:source-audit": "SOURCE",
+      "gcl-role:adversarial": "ADVERSARIAL",
+      "gcl-role:constructive": "CONSTRUCTIVE",
+      "gcl-role:verify": "VERIFY",
+      "gcl-role:lead": "LEAD",
+      "gcl-role:support": "SUPPORT",
+      "gcl-role:synthesis": "SYNTHESIS"
+    },
+    "collaboration": {
+      "gcl-collab:blind": "BLIND",
+      "gcl-collab:cooperative": "COOPERATIVE",
+      "gcl-collab:staged": "STAGED",
+      "gcl-collab:lead-support": "LEAD_SUPPORT"
+    }
   }
 }
