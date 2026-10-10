@@ -1,0 +1,63 @@
+{
+  "record_type": "GCL_ERDOS_470_N4_PROVENANCE_REVIEW_CANDIDATE",
+  "state": "PUBLIC_RECOVERY_PASS_COMPLETE_EXACT_SOURCE_AND_COVERAGE_GAPS_REMAIN",
+  "source_commit": "88d22faf46400f0050287c3c32c9a807ca3b1340",
+  "legacy_commit": "6ba33a63217b60f8e2a8583929078eec3c454d8f",
+  "protected_predecessor": "350c07c6a8ddee4fabd11f6991eedbbaecff7866",
+  "mathematical_certification": false,
+  "full_search_replayed": false,
+  "recovery_request_sent": false,
+  "missing": [
+    "Exact first-batch seven-field source/executable and version history",
+    "Workunit generator and source-bound initial/recycled interval cover",
+    "Paired validator receipts and locally completed workunits",
+    "Published-versus-archived workunit count reconciliation",
+    "Implementation and coverage below the predecessor bound 1.8e19"
+  ],
+  "files": [
+    {
+      "path": "470-googlecode-project.json",
+      "sha256": "879335be083e27803af1a501c8a1f3f2e8856c31b5daaf9e8a25dea95ed811a8"
+    },
+    {
+      "path": "470-googlecode-source-inventory.json",
+      "sha256": "03270907bdad21b9fef42112636e28b52bb00aec1ba3c2bc41e9857326d4ce2b"
+    },
+    {
+      "path": "470-legacy-pruning-certificate.json",
+      "sha256": "1d0510238e3ad898293965fc16a2d1902f7135184d1e4adc279d336ea91afb66"
+    },
+    {
+      "path": "470-lineage-provenance-audit.json",
+      "sha256": "f6f3c72e2ae859685dda97803e3c3d1f02becfae25f7246d6ca6c6a48c37cd25"
+    },
+    {
+      "path": "470_HISTORICAL_INTERFACE_REVIEW.md",
+      "sha256": "2ba775a35b848ddedf906112ef3467160d39dc3d752be217a8e7a0e9b3af4e02"
+    },
+    {
+      "path": "470_legacy_pruning_certificate.py",
+      "sha256": "096ffaf89ac207d61e48bff7bc85c04da21f3aeb65b9b4657470a53b4a0f028d"
+    },
+    {
+      "path": "470_lineage_provenance_audit.py",
+      "sha256": "0766896e090c2931b6b85abf3e98de25202fa077a9a26cf5855b058c98ee98c8"
+    },
+    {
+      "path": "ows-archive-manifest.json",
+      "sha256": "1a562bd48fb5f63b3286e9a0f6d2db6c6ab97242fc69b933da54d3f673386e9f"
+    },
+    {
+      "path": "PROJECT_DOWNLOAD_INSPECTION.json",
+      "sha256": "8cd0983cd148e163104d1f1db4ce0f3e2838d6127325c84b6775690f4e94adba"
+    },
+    {
+      "path": "README.md",
+      "sha256": "020a09f34ee9b6642acf387bf662785b86b9f3a1a68b5477598858783c43cbe4"
+    },
+    {
+      "path": "verify_provenance.py",
+      "sha256": "1644ca900cc5accc21528c2bce9a7739fa2e41b5805ec7a52fac0fdca290b793"
+    }
+  ]
+}
