@@ -1,0 +1,786 @@
+✔ [8026/8091] Built RequestProject.DeltaRho (85s)
+✔ [8027/8091] Built RequestProject.GSnPotential (86s)
+✔ [8028/8091] Built RequestProject.Compactness (87s)
+✔ [8029/8091] Built RequestProject.PartitionCalculus (89s)
+✔ [8030/8091] Built RequestProject.Lift (89s)
+✔ [8031/8091] Built RequestProject.E3Facts (7.5s)
+⚠ [8032/8091] Built RequestProject.CardinalArith (94s)
+warning: RequestProject/CardinalArith.lean:118:40: `mul_le_mul_right'` has been deprecated: Use `mul_le_mul_left` instead
+warning: RequestProject/CardinalArith.lean:119:40: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+✔ [8033/8091] Built RequestProject.Defs (5.7s)
+✔ [8034/8091] Built RequestProject.PropertyP (6.0s)
+✔ [8035/8091] Built RequestProject.Reduce (6.3s)
+✔ [8036/8091] Built RequestProject.ErdosRado (104s)
+✔ [8037/8091] Built RequestProject.Structures (6.4s)
+✔ [8038/8091] Built RequestProject.AmalgHelpers (9.8s)
+⚠ [8039/8091] Built RequestProject.CycleCollapse (31s)
+info: RequestProject/CycleCollapse.lean:185:73: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: RequestProject/CycleCollapse.lean:229:52: This simp argument is unused:
+  Function.Injective.eq_iff hf
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵F̵u̵n̵c̵t̵i̵o̵n̵.̵I̵n̵j̵e̵c̵t̵i̵v̵e̵.̵e̵q̵_̵i̵f̵f̵ ̵h̵f̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8040/8091] Built RequestProject.BridgeTrace (148s)
+⚠ [8041/8091] Built RequestProject.EHBase (31s)
+warning: RequestProject/EHBase.lean:122:35: This simp argument is unused:
+  Set.subset_def
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵e̵t̵.̵s̵u̵b̵s̵e̵t̵_̵d̵e̵f̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/EHBase.lean:129:72: This simp argument is unused:
+  SimpleGraph.adj_comm
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵i̵m̵p̵l̵e̵G̵r̵a̵p̵h̵.̵a̵d̵j̵_̵c̵o̵m̵m̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/EHBase.lean:152:44: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵a̵d̵d̵_̵c̵o̵m̵m̵,̵ ̵a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵ ̵]̵[̲a̲d̲d̲_̲c̲o̲m̲m̲,̲ ̲a̲d̲d̲_̲l̲e̲f̲t̲_̲c̲o̲m̲m̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/EHBase.lean:155:23: This simp argument is unused:
+  max_assoc
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵m̵a̵x̵_̵a̵s̵s̵o̵c̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/EHBase.lean:201:83: `Cardinal.nat_lt_aleph0` has been deprecated: Use `Cardinal.natCast_lt_aleph0` instead
+warning: RequestProject/EHBase.lean:190:48: unused variable `hn`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: RequestProject/EHBase.lean:230:23: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+warning: RequestProject/EHBase.lean:229:19: This simp argument is unused:
+  Cardinal.mk_nat
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵C̵a̵r̵d̵i̵n̵a̵l̵.̵m̵k̵_̵n̵a̵t̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/EHBase.lean:231:19: This simp argument is unused:
+  Cardinal.aleph0_le_add_iff
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵C̵a̵r̵d̵i̵n̵a̵l̵.̵a̵l̵e̵p̵h̵0̵_̵l̵e̵_̵a̵d̵d̵_̵i̵f̵f̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/EHBase.lean:245:147: `Cardinal.nat_lt_aleph0` has been deprecated: Use `Cardinal.natCast_lt_aleph0` instead
+warning: RequestProject/EHBase.lean:280:96: `Finset.toSet` has been deprecated: Use `SetLike.coe` instead
+
+Note: The updated constant has a different type:
+  {A : Type u_1} → {B : outParam (Type u_2)} → [self : SetLike A B] → A → Set B
+instead of
+  {α : Type u_1} → Finset α → Set α
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.toSet` to `SetLike.coe x`).
+warning: RequestProject/EHBase.lean:282:77: `Finset.toSet` has been deprecated: Use `SetLike.coe` instead
+
+Note: The updated constant has a different type:
+  {A : Type u_1} → {B : outParam (Type u_2)} → [self : SetLike A B] → A → Set B
+instead of
+  {α : Type u_1} → Finset α → Set α
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.toSet` to `SetLike.coe x`).
+warning: RequestProject/EHBase.lean:284:104: `Cardinal.nat_lt_aleph0` has been deprecated: Use `Cardinal.natCast_lt_aleph0` instead
+warning: RequestProject/EHBase.lean:285:38: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: RequestProject/EHBase.lean:273:33: unused variable `hn`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: RequestProject/EHBase.lean:329:23: This simp argument is unused:
+  Infinite
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵I̵n̵f̵i̵n̵i̵t̵e̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8042/8091] Built RequestProject.AmalgClosure (31s)
+⚠ [8043/8091] Built RequestProject.DecompForward (71s)
+info: RequestProject/DecompForward.lean:51:89: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: RequestProject/DecompForward.lean:94:15: This simp argument is unused:
+  Finset.mem_map
+
+Hint: Omit it from the simp argument list.
+  simp [̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵m̵a̵p̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵s̵u̵b̵t̵y̵p̵e̵]̵[̲F̲i̲n̲s̲e̲t̲.̲m̲e̲m̲_̲s̲u̲b̲t̲y̲p̲e̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:94:31: This simp argument is unused:
+  Finset.mem_subtype
+
+Hint: Omit it from the simp argument list.
+  simp [Finset.mem_map,̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵s̵u̵b̵t̵y̵p̵e̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:175:135: This simp argument is unused:
+  FTS.subtype_map_eq
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵F̵T̵S̵.̵s̵u̵b̵t̵y̵p̵e̵_̵m̵a̵p̵_̵e̵q̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:206:26: This simp argument is unused:
+  Finset.mem_map
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵m̵a̵p̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:212:37: This simp argument is unused:
+  Equiv.symm_trans_self
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵a̵p̵_̵m̵a̵p̵,̵ ̵E̵q̵u̵i̵v̵.̵s̵y̵m̵m̵_̵t̵r̵a̵n̵s̵_̵s̵e̵l̵f̵ ̵]̵[̲F̲i̲n̲s̲e̲t̲.̲m̲a̲p̲_̲m̲a̲p̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:216:21: This simp argument is unused:
+  Finset.mem_map
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵m̵a̵p̵,̵ ̵c̵.̵m̵e̵m̵_̵r̵i̵g̵h̵t̵ ̵]̵[̲c̲.̲m̲e̲m̲_̲r̲i̲g̲h̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:221:39: This simp argument is unused:
+  Equiv.toEmbedding_apply
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵a̵p̵_̵m̵a̵p̵,̵ ̵E̵q̵u̵i̵v̵.̵t̵o̵E̵m̵b̵e̵d̵d̵i̵n̵g̵_̵a̵p̵p̵l̵y̵ ̵]̵[̲F̲i̲n̲s̲e̲t̲.̲m̲a̲p̲_̲m̲a̲p̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:279:46: This simp argument is unused:
+  Finset.subset_iff
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵b̵s̵e̵t̵_̵i̵f̵f̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:304:55: This simp argument is unused:
+  sub_eq_iff_eq_add
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵s̵u̵b̵_̵e̵q̵_̵i̵f̵f̵_̵e̵q̵_̵a̵d̵d̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:306:79: This simp argument is unused:
+  sub_eq_iff_eq_add
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵s̵u̵b̵_̵e̵q̵_̵i̵f̵f̵_̵e̵q̵_̵a̵d̵d̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:309:86: This simp argument is unused:
+  Finset.ext_iff
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵F̵i̵n̵s̵e̵t̵.̵e̵x̵t̵_̵i̵f̵f̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:310:79: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:329:35: This simp argument is unused:
+  ZMod
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵Z̵M̵o̵d̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:361:25: This simp argument is unused:
+  SimpleGraph.adj_comm
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵i̵m̵p̵l̵e̵G̵r̵a̵p̵h̵.̵a̵d̵j̵_̵c̵o̵m̵m̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:401:39: This simp argument is unused:
+  Sum.isLeft_iff
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide [̵ ̵S̵u̵m̵.̵i̵s̵L̵e̵f̵t̵_̵i̵f̵f̵,̵ ̵S̵u̵m̵.̵i̵s̵R̵i̵g̵h̵t̵_̵i̵f̵f̵ ̵]̵[̲S̲u̲m̲.̲i̲s̲R̲i̲g̲h̲t̲_̲i̲f̲f̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:401:55: This simp argument is unused:
+  Sum.isRight_iff
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide [̵ ̵S̵u̵m̵.̵i̵s̵L̵e̵f̵t̵_̵i̵f̵f̵,̵ ̵S̵u̵m̵.̵i̵s̵R̵i̵g̵h̵t̵_̵i̵f̵f̵ ̵]̵[̲S̲u̲m̲.̲i̲s̲L̲e̲f̲t̲_̲i̲f̲f̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:499:183: This simp argument is unused:
+  Finset.card_map
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵F̵i̵n̵s̵e̵t̵.̵c̵a̵r̵d̵_̵m̵a̵p̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:618:41: unused variable `hdG`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: RequestProject/DecompForward.lean:622:21: This simp argument is unused:
+  Finset.ext_iff
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide [̵ ̵F̵i̵n̵s̵e̵t̵.̵e̵x̵t̵_̵i̵f̵f̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵m̵a̵p̵ ̵]̵[̲F̲i̲n̲s̲e̲t̲.̲m̲e̲m̲_̲m̲a̲p̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:639:63: This simp argument is unused:
+  decide_eq_false
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵d̵e̵c̵i̵d̵e̵_̵e̵q̵_̵f̵a̵l̵s̵e̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:658:42: This simp argument is unused:
+  decide_eq_true_iff
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵d̵e̵c̵i̵d̵e̵_̵e̵q̵_̵t̵r̵u̵e̵_̵i̵f̵f̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:720:209: This simp argument is unused:
+  Finset.mem_map
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵m̵a̵p̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:741:17: This simp argument is unused:
+  hde'
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵d̵e̵'̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompForward.lean:746:155: This simp argument is unused:
+  Finset.mem_map
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵m̵a̵p̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8044/8091] Built RequestProject.DecompRestrict (11s)
+warning: RequestProject/DecompRestrict.lean:92:15: This simp argument is unused:
+  Finset.mem_map
+
+Hint: Omit it from the simp argument list.
+  simp [̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵m̵a̵p̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵s̵u̵b̵t̵y̵p̵e̵]̵[̲F̲i̲n̲s̲e̲t̲.̲m̲e̲m̲_̲s̲u̲b̲t̲y̲p̲e̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompRestrict.lean:92:31: This simp argument is unused:
+  Finset.mem_subtype
+
+Hint: Omit it from the simp argument list.
+  simp [Finset.mem_map,̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵s̵u̵b̵t̵y̵p̵e̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8045/8091] Built RequestProject.DecompSep (41s)
+warning: RequestProject/DecompSep.lean:183:116: This simp argument is unused:
+  amalgEquiv_inl
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵h̵v̵'̵,̵ ̵a̵m̵a̵l̵g̵E̵q̵u̵i̵v̵_̵i̵n̵l̵,̵[̲h̲v̲'̲,̲
+  ̲  ̲ ̲ ̲amalgEquiv_inr, a̵m̵a̵l̵g̵E̵m̵b̵G̵ ̵]̵a̲m̲a̲l̲g̲E̲m̲b̲G̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompSep.lean:183:132: This simp argument is unused:
+  amalgEquiv_inr
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵h̵v̵'̵,̵[̲h̲v̲'̲,̲
+  ̲  ̲ ̲ ̲amalgEquiv_inl, a̵m̵a̵l̵g̵E̵q̵u̵i̵v̵_̵i̵n̵r̵,̵ ̵a̵m̵a̵l̵g̵E̵m̵b̵G̵ ̵]̵a̲m̲a̲l̲g̲E̲m̲b̲G̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/DecompSep.lean:195:72: This simp argument is unused:
+  amalgEquiv_inr
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵h̵v̵'̵'̵,̵[̲h̲v̲'̲'̲,̲ amalgEquiv_inl, a̵m̵a̵l̵g̵E̵q̵u̵i̵v̵_̵i̵n̵r̵,̵ ̵a̵m̵a̵l̵g̵E̵m̵b̵G̵ ̵]̵a̲m̲a̲l̲g̲E̲m̲b̲G̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8046/8091] Built RequestProject.DecompDichotomy (25s)
+✔ [8047/8091] Built RequestProject.DecompExpansion (22s)
+✔ [8048/8091] Built RequestProject.DecompReverse (8.5s)
+✔ [8049/8091] Built RequestProject.Results (15s)
+✔ [8050/8091] Built RequestProject.External (4.5s)
+✔ [8051/8091] Built RequestProject.E3Proof (12s)
+✔ [8052/8091] Built RequestProject.NegativeDirection (13s)
+⚠ [8053/8091] Built RequestProject.ReiherPassage (17s)
+warning: RequestProject/ReiherPassage.lean:67:62: This simp argument is unused:
+  hφ.eq_iff
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵h̵φ̵.̵e̵q̵_̵i̵f̵f̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/ReiherPassage.lean:70:91: This simp argument is unused:
+  Quot.lift_mk
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵Q̵u̵o̵t̵.̵l̵i̵f̵t̵_̵m̵k̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/ReiherPassage.lean:73:89: This simp argument is unused:
+  Finset.mem_image
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵i̵m̵a̵g̵e̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/ReiherPassage.lean:77:79: This simp argument is unused:
+  Sym2.eq_swap
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵y̵m̵2̵.̵e̵q̵_̵s̵w̵a̵p̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/ReiherPassage.lean:78:79: This simp argument is unused:
+  Sym2.eq_swap
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵y̵m̵2̵.̵e̵q̵_̵s̵w̵a̵p̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8054/8091] Built RequestProject.E2Construction (27s)
+⚠ [8055/8091] Built RequestProject.E5Proof (40s)
+warning: RequestProject/E5Proof.lean:156:37: This simp argument is unused:
+  looseCycle7
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵l̵o̵o̵s̵e̵C̵y̵c̵l̵e̵7̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E5Proof.lean:303:18: This simp argument is unused:
+  hp
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵p̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8056/8091] Built RequestProject.ErdosHajnalGirth (22s)
+✔ [8057/8091] Built RequestProject.GSn (6.4s)
+✔ [8058/8091] Built RequestProject.ErdosHajnalGirthGeneral (7.2s)
+✔ [8059/8091] Built RequestProject.E5Obstructions (18s)
+⚠ [8060/8091] Built RequestProject.E5ObstructionGrid (17s)
+warning: RequestProject/E5ObstructionGrid.lean:187:4: Try this: intro A hA e₁ he₁ e₂ he₂ hne
+✔ [8061/8091] Built RequestProject.GSnOddGirth (19s)
+⚠ [8062/8091] Built RequestProject.E4Proof (86s)
+warning: RequestProject/E4Proof.lean:67:21: This simp argument is unused:
+  hf.eq_iff
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵h̵f̵.̵e̵q̵_̵i̵f̵f̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:71:46: This simp argument is unused:
+  ← hg.2
+
+Hint: Omit it from the simp argument list.
+  simp +decide [ ̵←̵ ̵h̵g̵.̵2̵,̵ ̵Set.image_insert_eq, Set.image_singleton ̵]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:151:49: This simp argument is unused:
+  Set.InjOn
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵e̵t̵.̵I̵n̵j̵O̵n̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:163:52: This simp argument is unused:
+  Set.ncard_eq_toFinset_card'
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵e̵t̵.̵n̵c̵a̵r̵d̵_̵e̵q̵_̵t̵o̵F̵i̵n̵s̵e̵t̵_̵c̵a̵r̵d̵'̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:165:145: This simp argument is unused:
+  Set.ncard_pair
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵S̵e̵t̵.̵n̵c̵a̵r̵d̵_̵p̵a̵i̵r̵,̵ ̵h̵a̵b̵ ̵]̵[̲h̲a̲b̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:170:52: This simp argument is unused:
+  Set.ncard_eq_toFinset_card'
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵e̵t̵.̵n̵c̵a̵r̵d̵_̵e̵q̵_̵t̵o̵F̵i̵n̵s̵e̵t̵_̵c̵a̵r̵d̵'̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:180:31: This simp argument is unused:
+  Cardinal.mk_sum
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵C̵a̵r̵d̵i̵n̵a̵l̵.̵m̵k̵_̵s̵u̵m̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:387:47: This simp argument is unused:
+  DClosed
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide [̵ ̵D̵C̵l̵o̵s̵e̵d̵,̵ ̵D̵c̵l̵ ̵]̵[̲D̲c̲l̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:413:10: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+warning: RequestProject/E4Proof.lean:425:23: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+warning: RequestProject/E4Proof.lean:436:21: This simp argument is unused:
+  Cardinal.mk_nat
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵C̵a̵r̵d̵i̵n̵a̵l̵.̵m̵k̵_̵n̵a̵t̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:593:178: This simp argument is unused:
+  hab
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵h̵a̵b̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:642:242: This simp argument is unused:
+  mul_comm
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵m̵u̵l̵_̵c̵o̵m̵m̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:661:155: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+warning: RequestProject/E4Proof.lean:661:181: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+warning: RequestProject/E4Proof.lean:661:204: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+warning: RequestProject/E4Proof.lean:661:227: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+warning: RequestProject/E4Proof.lean:661:253: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+warning: RequestProject/E4Proof.lean:661:276: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+warning: RequestProject/E4Proof.lean:696:16: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+warning: RequestProject/E4Proof.lean:679:5: unused variable `hDQ`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: RequestProject/E4Proof.lean:690:243: This simp argument is unused:
+  Finset.card_singleton
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵F̵i̵n̵s̵e̵t̵.̵c̵a̵r̵d̵_̵s̵d̵i̵f̵f̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵c̵a̵r̵d̵_̵s̵i̵n̵g̵l̵e̵t̵o̵n̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵c̵a̵r̵d̵_̵u̵n̵i̵v̵ ̵]̵[̲F̲i̲n̲s̲e̲t̲.̲c̲a̲r̲d̲_̲s̲d̲i̲f̲f̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲F̲i̲n̲s̲e̲t̲.̲c̲a̲r̲d̲_̲u̲n̲i̲v̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:818:13: This simp argument is unused:
+  subset_Dcl
+
+Hint: Omit it from the simp argument list.
+  simp [M,̵ ̵s̵u̵b̵s̵e̵t̵_̵D̵c̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:865:25: This simp argument is unused:
+  Cardinal.mk_coe_finset
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵C̵a̵r̵d̵i̵n̵a̵l̵.̵m̵k̵_̵c̵o̵e̵_̵f̵i̵n̵s̵e̵t̵,̵ ̵h̵S̵c̵a̵r̵d̵ ̵]̵[̲h̲S̲c̲a̲r̲d̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:866:36: This simp argument is unused:
+  Finset.ext_iff
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵F̵i̵n̵s̵e̵t̵.̵e̵x̵t̵_̵i̵f̵f̵,̵ ̵S̵e̵t̵.̵e̵x̵t̵_̵i̵f̵f̵ ̵]̵[̲S̲e̲t̲.̲e̲x̲t̲_̲i̲f̲f̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:890:89: This simp argument is unused:
+  Set.insert_subset_iff
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵S̵e̵t̵.̵i̵n̵s̵e̵r̵t̵_̵s̵u̵b̵s̵e̵t̵_̵i̵f̵f̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:900:61: This simp argument is unused:
+  or_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵*̵,̵[̲*̲,̲ or_comm, o̵r̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵o̵r̵_̵a̵s̵s̵o̵c̵ ̵]̵o̲r̲_̲a̲s̲s̲o̲c̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:900:75: This simp argument is unused:
+  or_assoc
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵*̵,̵[̲*̲,̲ or_comm, o̵r̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵o̵r̵_̵a̵s̵s̵o̵c̵ ̵]̵o̲r̲_̲l̲e̲f̲t̲_̲c̲o̲m̲m̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:902:21: This simp argument is unused:
+  Set.insert_comm
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵S̵e̵t̵.̵i̵n̵s̵e̵r̵t̵_̵c̵o̵m̵m̵,̵ ̵S̵e̵t̵.̵p̵a̵i̵r̵_̵c̵o̵m̵m̵ ̵]̵[̲S̲e̲t̲.̲p̲a̲i̲r̲_̲c̲o̲m̲m̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:904:75: This simp argument is unused:
+  or_assoc
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵*̵,̵[̲*̲,̲ or_comm, o̵r̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵o̵r̵_̵a̵s̵s̵o̵c̵ ̵]̵o̲r̲_̲l̲e̲f̲t̲_̲c̲o̲m̲m̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E4Proof.lean:906:21: This simp argument is unused:
+  Set.Subset.antisymm_iff
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵S̵e̵t̵.̵S̵u̵b̵s̵e̵t̵.̵a̵n̵t̵i̵s̵y̵m̵m̵_̵i̵f̵f̵,̵ ̵S̵e̵t̵.̵s̵u̵b̵s̵e̵t̵_̵d̵e̵f̵,̵ ̵h̵a̵s̵R̵o̵o̵t̵ ̵]̵[̲S̲e̲t̲.̲s̲u̲b̲s̲e̲t̲_̲d̲e̲f̲,̲ ̲h̲a̲s̲R̲o̲o̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8063/8091] Built RequestProject.ReservoirSetup (86s)
+✔ [8064/8091] Built RequestProject.E5ResidualDecomposition (14s)
+✔ [8065/8091] Built RequestProject.ReservoirLower (13s)
+✔ [8066/8091] Built RequestProject.ReservoirBuild (21s)
+✔ [8067/8091] Built RequestProject.E5IntersectionCycle (65s)
+✔ [8068/8091] Built RequestProject.EHGirthChromatic (70s)
+⚠ [8069/8091] Built RequestProject.E5CountableReduction (6.6s)
+warning: RequestProject/E5CountableReduction.lean:78:2: Try this: intro H hH Hlin Huc huc
+✔ [8070/8091] Built RequestProject.Reservoir (23s)
+✔ [8071/8091] Built RequestProject.Attic.E2CoreProof (6.7s)
+✔ [8072/8091] Built RequestProject.E5FiniteBound (5.7s)
+✔ [8073/8091] Built RequestProject.E5IntersectionStructure (16s)
+⚠ [8074/8091] Built RequestProject.Calibration (16s)
+warning: RequestProject/Calibration.lean:89:70: This simp argument is unused:
+  funext_iff
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide [̵ ̵f̵u̵n̵e̵x̵t̵_̵i̵f̵f̵,̵ ̵Q̵u̵o̵t̵.̵o̵u̵t̵ ̵]̵[̲Q̲u̲o̲t̲.̲o̲u̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/Calibration.lean:104:23: This simp argument is unused:
+  Cardinal.mk_ord_toType
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵C̵a̵r̵d̵i̵n̵a̵l̵.̵m̵k̵_̵o̵r̵d̵_̵t̵o̵T̵y̵p̵e̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8075/8091] Built RequestProject.E5StarDecomposition (11s)
+✔ [8076/8091] Built RequestProject.GSnChromatic (25s)
+✔ [8077/8091] Built RequestProject.E2Genuine (5.3s)
+⚠ [8078/8091] Built RequestProject.E5IntersectionColoring (7.1s)
+warning: RequestProject/E5IntersectionColoring.lean:41:150: This simp argument is unused:
+  Set.disjoint_left
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵e̵t̵.̵d̵i̵s̵j̵o̵i̵n̵t̵_̵l̵e̵f̵t̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E5IntersectionColoring.lean:80:172: This simp argument is unused:
+  Set.disjoint_left
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵e̵t̵.̵d̵i̵s̵j̵o̵i̵n̵t̵_̵l̵e̵f̵t̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8079/8091] Built RequestProject.Attic.E2OddGirthFalse (26s)
+⚠ [8080/8091] Built RequestProject.Consequences (23s)
+warning: RequestProject/Consequences.lean:55:44: This simp argument is unused:
+  Set.ncard_eq_toFinset_card'
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵e̵t̵.̵n̵c̵a̵r̵d̵_̵e̵q̵_̵t̵o̵F̵i̵n̵s̵e̵t̵_̵c̵a̵r̵d̵'̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/Consequences.lean:65:21: This simp argument is unused:
+  Set.ncard_eq_toFinset_card'
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵e̵t̵.̵n̵c̵a̵r̵d̵_̵e̵q̵_̵t̵o̵F̵i̵n̵s̵e̵t̵_̵c̵a̵r̵d̵'̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/Consequences.lean:207:114: This simp argument is unused:
+  Sym2.eq_swap
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵y̵m̵2̵.̵e̵q̵_̵s̵w̵a̵p̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/Consequences.lean:220:63: This simp argument is unused:
+  Finset.filter_map
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵F̵i̵n̵s̵e̵t̵.̵f̵i̵l̵t̵e̵r̵_̵m̵a̵p̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/Consequences.lean:287:54: This simp argument is unused:
+  Set.ext_iff
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide [̵ ̵F̵i̵n̵s̵e̵t̵.̵e̵x̵t̵_̵i̵f̵f̵,̵ ̵S̵e̵t̵.̵e̵x̵t̵_̵i̵f̵f̵ ̵]̵[̲F̲i̲n̲s̲e̲t̲.̲e̲x̲t̲_̲i̲f̲f̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/Consequences.lean:289:96: This simp argument is unused:
+  Sym2.eq_swap
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵y̵m̵2̵.̵e̵q̵_̵s̵w̵a̵p̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/Consequences.lean:291:96: This simp argument is unused:
+  Sym2.eq_swap
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵y̵m̵2̵.̵e̵q̵_̵s̵w̵a̵p̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/Consequences.lean:292:166: This simp argument is unused:
+  Sym2.eq_swap
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵S̵y̵m̵2̵.̵e̵q̵_̵s̵w̵a̵p̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/Consequences.lean:340:100: This simp argument is unused:
+  FTS.Linear
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵F̵T̵S̵.̵L̵i̵n̵e̵a̵r̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/Consequences.lean:362:83: This simp argument is unused:
+  sub_eq_iff_eq_add
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵s̵u̵b̵_̵e̵q̵_̵i̵f̵f̵_̵e̵q̵_̵a̵d̵d̵,̵ ̵a̵d̵d̵_̵e̵q̵_̵z̵e̵r̵o̵_̵i̵f̵f̵_̵e̵q̵_̵n̵e̵g̵,̵ ̵c̵.̵e̵i̵n̵j̵.̵e̵q̵_̵i̵f̵f̵ ̵]̵[̲a̲d̲d̲_̲e̲q̲_̲z̲e̲r̲o̲_̲i̲f̲f̲_̲e̲q̲_̲n̲e̲g̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲c̲.̲e̲i̲n̲j̲.̲e̲q̲_̲i̲f̲f̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/Consequences.lean:362:102: This simp argument is unused:
+  add_eq_zero_iff_eq_neg
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵s̵u̵b̵_̵e̵q̵_̵i̵f̵f̵_̵e̵q̵_̵a̵d̵d̵,̵ ̵a̵d̵d̵_̵e̵q̵_̵z̵e̵r̵o̵_̵i̵f̵f̵_̵e̵q̵_̵n̵e̵g̵,̵ ̵c̵.̵e̵i̵n̵j̵.̵e̵q̵_̵i̵f̵f̵ ̵]̵[̲s̲u̲b̲_̲e̲q̲_̲i̲f̲f̲_̲e̲q̲_̲a̲d̲d̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲c̲.̲e̲i̲n̲j̲.̲e̲q̲_̲i̲f̲f̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/Consequences.lean:371:104: This simp argument is unused:
+  ZMod.natCast_eq_natCast_iff'
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵Z̵M̵o̵d̵.̵n̵a̵t̵C̵a̵s̵t̵_̵e̵q̵_̵n̵a̵t̵C̵a̵s̵t̵_̵i̵f̵f̵'̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8081/8091] Built RequestProject.FinalResults (4.6s)
+✔ [8082/8091] Built RequestProject.E4Discharged (5.1s)
+✔ [8083/8091] Built RequestProject.E3Discharged (5.1s)
+⚠ [8084/8091] Built RequestProject.E5HK (24s)
+warning: RequestProject/E5HK.lean:269:33: This simp argument is unused:
+  DClosed
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide ̵[̵ ̵D̵C̵l̵o̵s̵e̵d̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E5HK.lean:271:111: This simp argument is unused:
+  Set.subset_def
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide [̵ ̵S̵e̵t̵.̵s̵u̵b̵s̵e̵t̵_̵d̵e̵f̵,̵ ̵H̵K̵C̵l̵o̵s̵e̵I̵t̵e̵r̵ ̵]̵[̲H̲K̲C̲l̲o̲s̲e̲I̲t̲e̲r̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E5HK.lean:305:23: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+warning: RequestProject/E5HK.lean:305:42: `Cardinal.nat_lt_aleph0` has been deprecated: Use `Cardinal.natCast_lt_aleph0` instead
+warning: RequestProject/E5HK.lean:316:23: `Cardinal.nat_lt_aleph0` has been deprecated: Use `Cardinal.natCast_lt_aleph0` instead
+warning: RequestProject/E5HK.lean:304:42: This simp argument is unused:
+  Cardinal.mul_eq_max
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵C̵a̵r̵d̵i̵n̵a̵l̵.̵a̵d̵d̵_̵e̵q̵_̵m̵a̵x̵,̵ ̵C̵a̵r̵d̵i̵n̵a̵l̵.̵m̵u̵l̵_̵e̵q̵_̵m̵a̵x̵,̵ ̵C̵a̵r̵d̵i̵n̵a̵l̵.̵p̵o̵w̵e̵r̵_̵n̵a̵t̵_̵e̵q̵ ̵]̵[̲C̲a̲r̲d̲i̲n̲a̲l̲.̲a̲d̲d̲_̲e̲q̲_̲m̲a̲x̲,̲ ̲C̲a̲r̲d̲i̲n̲a̲l̲.̲p̲o̲w̲e̲r̲_̲n̲a̲t̲_̲e̲q̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E5HK.lean:325:23: `mul_le_mul_left'` has been deprecated: Use `mul_le_mul_right` instead
+warning: RequestProject/E5HK.lean:336:21: This simp argument is unused:
+  Cardinal.mk_nat
+
+Hint: Omit it from the simp argument list.
+  simp +decide ̵[̵ ̵C̵a̵r̵d̵i̵n̵a̵l̵.̵m̵k̵_̵n̵a̵t̵ ̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E5HK.lean:374:56: This simp argument is unused:
+  Set.ext_iff
+
+Hint: Omit it from the simp argument list.
+  simp_all +decide [̵ ̵S̵e̵t̵.̵e̵x̵t̵_̵i̵f̵f̵,̵ ̵H̵s̵u̵b̵ ̵]̵[̲H̲s̲u̲b̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E5HK.lean:473:25: `Cardinal.nat_lt_aleph0` has been deprecated: Use `Cardinal.natCast_lt_aleph0` instead
+warning: RequestProject/E5HK.lean:600:44: This simp argument is unused:
+  or_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [hedge, or_comm, or_left_comm,̵ ̵o̵r̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RequestProject/E5HK.lean:641:55: unused variable `hab₂`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: RequestProject/E5HK.lean:664:59: This simp argument is unused:
+  or_comm
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵o̵r̵_̵c̵o̵m̵m̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8085/8091] Built RequestProject.Attic.E2Reduction (4.5s)
+✔ [8086/8091] Built RequestProject.FinalResultsUnconditional (4.7s)
+✔ [8087/8091] Built RequestProject.PublicationCertificate (4.5s)
+ℹ [8088/8091] Built RequestProject.ResultsSummary (4.2s)
+info: RequestProject/ResultsSummary.lean:23:0: Erdos593.classification_unconditional.{u} (F : FTS) :
+  (F.Obligatory ↔ Bclass F) ∧ (Bclass F ↔ F.reduce.IntrinsicObligatory)
+info: RequestProject/ResultsSummary.lean:24:0: Erdos593.problem_1177_part1_aleph_one.{u} (G : FTS) (h : G.FGnonempty (ℵ_ 1)) :
+  ∃ W H, H.IsTripleSystem ∧ H.HasChromatic (ℵ_ 1) ∧ ¬G.Embeds H ∧ #W ≤ 2 ^ 2 ^ ℵ₀
+info: RequestProject/ResultsSummary.lean:25:0: Erdos593.problem_1177_part2_aleph_one.{u} :
+  ∃ G H,
+    G.FGnonempty (ℵ_ 1) ∧
+      H.FGnonempty (ℵ_ 1) ∧ ¬∃ W K, K.IsTripleSystem ∧ K.HasChromatic (ℵ_ 1) ∧ ¬G.Embeds K ∧ ¬H.Embeds K
+info: RequestProject/ResultsSummary.lean:26:0: Erdos593.problem_1177_part3_aleph_one.{u} (G : FTS) (h : G.FGnonempty (ℵ_ 1)) (lam : Cardinal.{u}) (hlam : ℵ₀ < lam) :
+  G.FGnonempty lam
+info: RequestProject/ResultsSummary.lean:27:0: Erdos593.full_resolution_unconditional.{u} : FullResolution
+info: RequestProject/ResultsSummary.lean:30:0: classification_unconditional : ∀ (F : FTS), (F.Obligatory ↔ Bclass F) ∧ (Bclass F ↔ F.reduce.IntrinsicObligatory)
+info: RequestProject/ResultsSummary.lean:31:0: problem_1177_part1_aleph_one : ∀ (G : FTS),
+  G.FGnonempty (ℵ_ 1) → ∃ W H, H.IsTripleSystem ∧ H.HasChromatic (ℵ_ 1) ∧ ¬G.Embeds H ∧ #W ≤ 2 ^ 2 ^ ℵ₀
+info: RequestProject/ResultsSummary.lean:32:0: problem_1177_part2_aleph_one : ∃ G H,
+  G.FGnonempty (ℵ_ 1) ∧
+    H.FGnonempty (ℵ_ 1) ∧ ¬∃ W K, K.IsTripleSystem ∧ K.HasChromatic (ℵ_ 1) ∧ ¬G.Embeds K ∧ ¬H.Embeds K
+info: RequestProject/ResultsSummary.lean:33:0: problem_1177_part3_aleph_one : ∀ (G : FTS), G.FGnonempty (ℵ_ 1) → ∀ (lam : Cardinal.{0}), ℵ₀ < lam → G.FGnonempty lam
+info: RequestProject/ResultsSummary.lean:34:0: full_resolution_unconditional : FullResolution
+ℹ [8089/8091] Built RequestProject.AxiomAudit (12s)
+info: RequestProject/AxiomAudit.lean:13:0: 'Erdos593.classification_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:14:0: 'Erdos593.obligatory_iff_bclass_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:15:0: 'Erdos593.problem_1177_part1_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:16:0: 'Erdos593.spectrum_dichotomy_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:17:0: 'Erdos593.problem_1177_part3_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:18:0: 'Erdos593.obligatory_stronglyTripartite_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:19:0: 'Erdos593.cycleExpansion_obligatory_iff_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:20:0: 'Erdos593.problem_1177_part2_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:21:0: 'Erdos593.C7_linearlyObligatory_not_obligatory_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:23:0: 'Erdos593.e2_EH_oddgirth' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:24:0: 'Erdos593.e3_EGH_P' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:25:0: 'Erdos593.e4_Reiher' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:26:0: 'Erdos593.e5_HK_loose7' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:28:0: 'Erdos593.problem_1177_part1_aleph_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:29:0: 'Erdos593.problem_1177_part2_aleph_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:30:0: 'Erdos593.problem_1177_part3_aleph_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: RequestProject/AxiomAudit.lean:33:0: 'Erdos593.full_resolution_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8090/8091] Built RequestProject.Main (3.9s)
+Build completed successfully (8091 jobs).

@@ -1,0 +1,271 @@
+{
+  "record_type": "GCL_ERDOS_593_N5_REPLAY_REVIEW_CANDIDATE",
+  "state": "FORMAL_REPLAY_PASSED_SPECIALIST_REVIEW_PENDING",
+  "source": {
+    "repository": "ericlisg/erdos-593-1177-lean",
+    "commit": "5dcb6e4906df03f2e4294b21be73b55db7736f5a",
+    "lean": "4.28.0",
+    "compiler_commit": "7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+    "mathlib": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+    "dependency_locks": {
+      "mathlib": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "plausible": "55c8532eb21ec9f6d565d51d96b8ca50bd1fbef3",
+      "LeanSearchClient": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+      "importGraph": "85b59af46828c029a9168f2f9c35119bd0721e6e",
+      "proofwidgets": "be3b2e63b1bbf496c478cef98b86972a37c1417d",
+      "aesop": "f642a64c76df8ba9cb53dba3b919425a0c2aeaf1",
+      "Qq": "b8f98e9087e02c8553945a2c5abf07cec8e798c3",
+      "batteries": "495c008c3e3f4fb4256ff5582ddb3abf3198026f",
+      "Cli": "4f10f47646cb7d5748d6f423f4a07f98f7bbcc9e"
+    }
+  },
+  "protected_predecessor": "350c07c6a8ddee4fabd11f6991eedbbaecff7866",
+  "protected_definition": {
+    "commit": "85f863718beeec7b58a3a1926ee92e3472bc2020",
+    "git_blob_sha1": "8a247f7a4ac1b466513c04a40dcf26b90332faeb"
+  },
+  "build_jobs": 8091,
+  "source_axiom_reports": {
+    "Erdos593.classification_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.obligatory_iff_bclass_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.problem_1177_part1_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.spectrum_dichotomy_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.problem_1177_part3_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.obligatory_stronglyTripartite_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.cycleExpansion_obligatory_iff_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.problem_1177_part2_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.C7_linearlyObligatory_not_obligatory_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.e2_EH_oddgirth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.e3_EGH_P": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.e4_Reiher": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.e5_HK_loose7": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.problem_1177_part1_aleph_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.problem_1177_part2_aleph_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.problem_1177_part3_aleph_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos593.full_resolution_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_witness_reports": {
+    "GCLStatementFidelityAudit.overlap_not_obligatory": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "GCLStatementFidelityAudit.overlap_two_colorable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "finite_witness_reports": {
+    "GCLFiniteOverlap.edge012_proper": [
+      "propext",
+      "Quot.sound"
+    ],
+    "GCLFiniteOverlap.edge013_proper": [
+      "propext",
+      "Quot.sound"
+    ],
+    "GCLFiniteOverlap.edges_distinct": [
+      "propext"
+    ],
+    "GCLFiniteOverlap.edge_memberships_differ": [
+      "propext"
+    ],
+    "GCLFiniteOverlap.exactly_three_distinct": [
+      "propext"
+    ],
+    "GCLFiniteOverlap.distinct_common_vertices": [
+      "propext"
+    ]
+  },
+  "bridge_reports": {
+    "GCLSourceTargetBridge.obligatory_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "GCLSourceTargetBridge.finite_roundtrip": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "GCLSourceTargetBridge.snapshot_classification": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "GCLSourceTargetBridge.protected_conjectural_sufficient_direction_false": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "bridge_scope": "Exact protected definition bodies under namespace/import scaffolding adaptation; universe-0 host equivalence and coverage of all finite protected sources",
+  "source_scan": "65 project Lean files; no executable sorry/admit/axiom/native_decide/implemented_by token",
+  "route": {
+    "registry_commit": "426d19a9ce6ecb9307ea7eb04047a961975c94df",
+    "registered_erdos_route": null,
+    "submission_status": "NOT_SUBMITTED_ROUTE_ADMISSION_REQUIRED"
+  },
+  "authority_effects": {
+    "kernel_replay_recorded": true,
+    "independent_semantic_review": false,
+    "mathematical_certification": false,
+    "parent_problem_certified": false,
+    "publication_or_priority_claim": false
+  },
+  "blockers": [
+    "Specialist source-semantic/mathematical review pending",
+    "No registered route for ERDOS-593 in the pinned MATHCERT registry"
+  ],
+  "files": [
+    {
+      "path": "593-axioms.log",
+      "sha256": "259608733717642a89136cddd84276a79997b3d487a48f800e6f60be3c07acd4"
+    },
+    {
+      "path": "593-build-resumed.log",
+      "sha256": "701d4c1b943128bd3f233dc6ff523d67a9f633ee49d4a1daf6392aaa2982c5c6"
+    },
+    {
+      "path": "593-fidelity-lean.log",
+      "sha256": "308a30e36680564e018e5992971be772a5d275690e216c0969d83bc9fbad620d"
+    },
+    {
+      "path": "593-finite-axioms-428-v2.log",
+      "sha256": "8b41f72b9a5a03e4c1c8ee13ba16eb09b50c4da86fb1e98be56da57d7bcbf7ae"
+    },
+    {
+      "path": "593-source-audit.json",
+      "sha256": "678a3e168eac8000a3f00cd3b813fbaa6c455bca0c7061a43b5bc7e44b46a99d"
+    },
+    {
+      "path": "593-source-target-bridge.log",
+      "sha256": "69a553a9b459bbe347a4b5dd31cf11f5ccd66e3004edb40bad276304bca6af7f"
+    },
+    {
+      "path": "593_REVIEW_HANDOFF.md",
+      "sha256": "6b8d5f1a8a5597cb5643e52a88a5ec8e613063e0aa74037a5cfa758b3219f33c"
+    },
+    {
+      "path": "bridge_inner.sh",
+      "sha256": "6286f056dce4601693856b903a83662dde71949d900c1350173ec0620ffbf7e1"
+    },
+    {
+      "path": "CLAIM_LEDGER.json",
+      "sha256": "3be3add67e2d6d313f58333e7a067e48b5476cce78af3a6f8460546ea6b2a06a"
+    },
+    {
+      "path": "external-lake-manifest.json",
+      "sha256": "116c6ef00aa899fb38c08c5e4c92c0e434d0e7f9d574fcb5d4d42cc90ffb07cb"
+    },
+    {
+      "path": "FiniteOverlapCertificate.lean",
+      "sha256": "e09008774c52a8de0a7fe2fc1420ff86b3dd5b6d53d3575271171af540f204df"
+    },
+    {
+      "path": "mathcert-routes-snapshot.json",
+      "sha256": "ea69b469f2c3719d211ceacc9f9cfb5c174ff018d23abba38e514255e4ead7b0"
+    },
+    {
+      "path": "prepare_593_interface.py",
+      "sha256": "0b76f11fbfc54a9c4b437d8c527f3973066ee3211687edc182c4b8a8ad7ba83a"
+    },
+    {
+      "path": "PROOF_OBLIGATIONS.json",
+      "sha256": "fae4bb3d0dfd2ccccb760b961df22e808b76c5699d6e7c9d654423657a7f1cda"
+    },
+    {
+      "path": "ProtectedInterface.lean",
+      "sha256": "7fd4ba4d5f2ddadab2e10a9b0c66d62c1f611083f0962c40cf119745c741a2d6"
+    },
+    {
+      "path": "ProtectedSnapshot-original.lean.txt",
+      "sha256": "6a1d6b90493beb079382b02680b438acbd893f2f0539bab0cbb607723a3a2db3"
+    },
+    {
+      "path": "replay_593_review.sh",
+      "sha256": "b38e15c9b0d0e62d0f8b96ea9cad77c91f9d4c47eb662acaaec021439bac7243"
+    },
+    {
+      "path": "SourceTargetBridge.lean",
+      "sha256": "12cb416f5b532f231b26363699961d515066985d5c397711bcba55ef8985903f"
+    },
+    {
+      "path": "StatementFidelityAudit.lean",
+      "sha256": "80e64441abbcde785f27e292d8704f0b5682b243aaba386369a9ae0993e051f6"
+    },
+    {
+      "path": "verify_packet.py",
+      "sha256": "722a471b160777f257c1162df1a80b91426423e6afd629078b2f32894392a181"
+    }
+  ]
+}
