@@ -1,0 +1,151 @@
+name: Erdős external pinned-source replay
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/erdos-external-pinned-replay.yml"
+      - "ci/erdos470_pinned_archive_replay.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  erdos593-kernel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Fetch exact external theorem source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: ericlisg/erdos-593-1177-lean
+          ref: 5dcb6e4906df03f2e4294b21be73b55db7736f5a
+          path: external/erdos-593
+          persist-credentials: false
+      - name: Read back source commit and lock
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C external/erdos-593 rev-parse HEAD)" = "5dcb6e4906df03f2e4294b21be73b55db7736f5a"
+          grep -Fx "leanprover/lean4:v4.28.0" external/erdos-593/lean-toolchain
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path("external/erdos-593/lake-manifest.json").read_text())
+          deps = [x for x in p["packages"] if x["name"] == "mathlib"]
+          assert len(deps) == 1
+          assert deps[0]["rev"] == "8f9d9cff6bd728b17a24e163c9402775d9e6a365"
+          print("PASS: exact Lean/Mathlib source lock")
+          PY
+      - name: Build pinned external Lean source with trusted action
+        uses: grandchallenge/lean-action@138a564e38a62ce545e8d47d86a97628463aced4
+        with:
+          lake-package-directory: external/erdos-593
+          build: "true"
+          build-args: "RequestProject"
+          use-mathlib-cache: "true"
+          use-github-cache: "false"
+          leanchecker: "false"
+      - name: Independently replay source axiom commands
+        shell: bash
+        working-directory: external/erdos-593
+        run: |
+          set -euo pipefail
+          mkdir -p ../../out
+          lake env lean RequestProject/AxiomAudit.lean 2>&1 | tee ../../out/erdos593_axioms.log
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          log = Path("../../out/erdos593_axioms.log").read_text()
+          reports = re.findall(r"'([^']+)' depends on axioms: \[([^\]]*)\]", log)
+          if len(reports) != 17:
+              raise SystemExit(f"FAIL: 17 expected axiom reports, got {len(reports)}")
+          expected = {"propext", "Classical.choice", "Quot.sound"}
+          for theorem, value in reports:
+              found = {x.strip() for x in value.split(",") if x.strip()}
+              if found != expected:
+                  raise SystemExit(f"FAIL: unexpected axiom closure for {theorem}: {found}")
+          if not any(name.endswith("full_resolution_unconditional") for name, _ in reports):
+              raise SystemExit("FAIL: publication certificate omitted from axiom reports")
+          print("PASS: all 17 kernel-reported axioms are standard classical axioms")
+          PY
+      - name: Preserve verification transcript
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: erdos593-kernel-source-replay
+          path: out/
+          if-no-files-found: ignore
+
+  erdos593-independent-kernel:
+    needs: erdos593-kernel
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Fetch exact external theorem source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: ericlisg/erdos-593-1177-lean
+          ref: 5dcb6e4906df03f2e4294b21be73b55db7736f5a
+          path: external/erdos-593
+          persist-credentials: false
+      - name: Verify source lock
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C external/erdos-593 rev-parse HEAD)" = "5dcb6e4906df03f2e4294b21be73b55db7736f5a"
+          grep -Fx "leanprover/lean4:v4.28.0" external/erdos-593/lean-toolchain
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          manifest=json.loads(Path("external/erdos-593/lake-manifest.json").read_text())
+          mathlib=[p for p in manifest["packages"] if p["name"]=="mathlib"]
+          assert len(mathlib)==1 and mathlib[0]["rev"]=="8f9d9cff6bd728b17a24e163c9402775d9e6a365"
+          PY
+      - name: Build and independently check pinned environment
+        uses: grandchallenge/lean-action@138a564e38a62ce545e8d47d86a97628463aced4
+        with:
+          lake-package-directory: external/erdos-593
+          build: "true"
+          build-args: "RequestProject"
+          use-mathlib-cache: "true"
+          use-github-cache: "false"
+          leanchecker: "true"
+
+  erdos470-inventory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Fetch exact odd-weird source/data commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: fwjmath/ows-data
+          ref: 88d22faf46400f0050287c3c32c9a807ca3b1340
+          path: external/odd-weird-data
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+      - name: Replay archive bytes, bounds and seven-field format
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/erdos470_pinned_archive_replay.py \
+            --checkout external/odd-weird-data \
+            --output out/erdos470_archive_receipt.json
+      - name: Preserve bounded source inventory receipt
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: erdos470-pinned-archive-source-audit
+          path: out/
+          if-no-files-found: ignore
