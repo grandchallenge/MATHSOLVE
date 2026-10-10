@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS593_PINNED_LEAN_CANDIDATE_BUILD_AND_AXIOM_RECEIPT",
+  "campaign": "ERDOS-OPEN",
+  "problem_id": 593,
+  "external_primary_source": {
+    "repository": "ericlisg/erdos-593-1177-lean",
+    "pinned_commit": "5dcb6e4906df03f2e4294b21be73b55db7736f5a",
+    "toolchain": "leanprover/lean4:v4.28.0",
+    "mathlib_commit": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+    "publication_certificate": "RequestProject/PublicationCertificate.lean",
+    "axiom_audit": "RequestProject/AxiomAudit.lean"
+  },
+  "verified_candidate_run": {
+    "workflow": "Erdős external pinned-source replay",
+    "run_id": 38023241427,
+    "head_sha": "0a75e0ae68664b26707ec6341e3ee170e7a20457",
+    "candidate_pr": 1044,
+    "job_name": "erdos593-kernel",
+    "job_id": 114128555582,
+    "job_conclusion": "success",
+    "build_result": "Build completed successfully (8091 jobs)",
+    "axiom_reports": 17,
+    "expected_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axiom_replay_step": "success",
+    "source_lock_step": "success",
+    "artifact_id": 11659390738,
+    "artifact_name": "erdos593-kernel-source-replay",
+    "artifact_zip_digest": "sha256:bb02a05ec60bd39213b6cbc2f77b826a2774fb9ac9ec8ade99cf43a7fa3836f0",
+    "source_admission_state": "CANDIDATE_PR_NOT_YET_PROTECTED"
+  },
+  "additional_independent_checker": {
+    "job_name": "erdos593-independent-kernel",
+    "initial_job_id": 114129958627,
+    "initial_status": "CANCELLED_AT_LEANCHECKER_DUE_TO_RUNNER_SHUTDOWN",
+    "rerun_submitted": true,
+    "rerun_conclusion": "PENDING_INDEPENDENT_COMPLETION",
+    "runner_shutdown_not_a_proof_failure": true
+  },
+  "interpretation": "Exact pinned external source compiled under the selected Lean toolchain and Mathlib dependency; the project's 17 source-level axiom printouts executed and reported only standard classical Lean axioms. This is reproducible candidate CI evidence, not formal semantic fidelity analysis, third-party independent Leanchecker completion, protected MathCert issuance or mathematical publication.",
+  "nonclaims": {
+    "gcl_full_kernel_independent_checker_passed": false,
+    "mathcert_certification": false,
+    "fully_independent_statement_fidelity_review": false,
+    "agent_runtime_independence_attested": false,
+    "erdos_problem_593_certified_solved": false,
+    "source_code_published_on_protected_main": false
+  }
+}
