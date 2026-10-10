@@ -7,6 +7,13 @@ If you already received a specific immutable launch artifact, execute that
 artifact instead. If you do not already hold an assignment, use the worker queue
 below.
 
+## Choose a specialized queue (discovery only)
+
+- **Editorial:** [open available editorial jobs](https://github.com/issues?q=is%3Aissue+is%3Aopen+org%3Agrandchallenge+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial). These are direct-editorial, issue-bound jobs; **never** use `/claim`.
+- **Mathematics:** [open available MATHSOLVE jobs](https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable). These use reservation-controlled `/claim` pickup.
+
+The [shared Project #2 AVAILABLE view](https://github.com/orgs/grandchallenge/projects/2) remains the cross-repository discovery authority. These class-specific links do **not** supersede protected mode routing, prove availability, or launch a worker. For contract and activation criteria, see [GCL specialized queues](docs/GCL_SPECIALIZED_QUEUES.md). Do not assert that dedicated GitHub Project views have been provisioned until read back.
+
 ## Mandatory prerequisite
 
 You must have an authenticated GitHub identity that can post comments on the
