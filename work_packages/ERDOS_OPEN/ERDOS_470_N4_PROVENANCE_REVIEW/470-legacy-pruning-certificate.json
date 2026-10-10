@@ -1,0 +1,74 @@
+{
+  "record_type": "GCL_LEGACY_PRUNING_COMMENT_FALSIFICATION",
+  "legacy_commit": "6ba33a63217b60f8e2a8583929078eec3c454d8f",
+  "legacy_source_sha256": "200923f7d4e152d08bb60163e36cbe74908b993f568151c67b4c327b73c020c9",
+  "n": "366005822969340125",
+  "prime_factorization": [
+    [
+      5,
+      3
+    ],
+    [
+      11,
+      1
+    ],
+    [
+      13,
+      1
+    ],
+    [
+      17,
+      1
+    ],
+    [
+      19,
+      1
+    ],
+    [
+      23,
+      1
+    ],
+    [
+      29,
+      1
+    ],
+    [
+      31,
+      1
+    ],
+    [
+      37,
+      1
+    ],
+    [
+      41,
+      1
+    ],
+    [
+      43,
+      1
+    ],
+    [
+      47,
+      1
+    ]
+  ],
+  "sigma": "732732840109670400",
+  "abundance": "721194170990150",
+  "abundance_divisor_witness": [
+    "707941630501625",
+    "13249079564501",
+    "3453874853",
+    "7043185",
+    "5945",
+    "41"
+  ],
+  "semiperfect": true,
+  "odd_weird_counterexample": false,
+  "legacy_residue": 5,
+  "legacy_seven_divisibility_guard": false,
+  "conclusion": "The claim that all abundant numbers in the advertised range are divisible by 3 or 7 is false. This explicit skipped number is semiperfect, so it does not refute odd-weird exclusion; a general safe-pruning justification is still needed.",
+  "seven_field_historical_engine_recovered": false,
+  "full_search_replayed": false,
+  "certification": false
+}
