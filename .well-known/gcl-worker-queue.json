@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "protocol": "GCL-WORKER-QUEUE/1",
   "purpose": "Zero-context discovery and pickup of bounded GCL worker assignments across supported GCL repositories.",
   "repository": "grandchallenge/MATHSOLVE",
@@ -83,5 +83,40 @@
     "reservation_is_execution_authority": false,
     "mathematical_effect": false,
     "certification_effect": false
+  },
+  "queue_classes": {
+    "editorial": {
+      "description": "Chapter editing, independent critical review, figures, publication accessibility",
+      "repositories": [
+        "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS",
+        "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS",
+        "grandchallenge/MATH-PROGRAMME"
+      ],
+      "pickup_mode": "direct_editorial",
+      "required_label": "gcl-pickup:direct-editorial",
+      "view_selector": "EDITORIAL",
+      "discovery_query_url": "https://github.com/issues?q=is%3Aissue+is%3Aopen+org%3Agrandchallenge+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial"
+    },
+    "mathematics": {
+      "description": "Mathematical proof, counterexamples, formalization, adversarial research",
+      "repositories": [
+        "grandchallenge/MATHSOLVE"
+      ],
+      "pickup_mode": "reservation_controlled",
+      "view_selector": "MATHEMATICS",
+      "discovery_query_url": "https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable",
+      "controller": "GCL-WORKER-RESERVATION/1"
+    }
+  },
+  "queue_classification_policy": {
+    "mode": "additive_nonbreaking",
+    "source_of_truth": "repository_pickup_modes and protected registry",
+    "class_selector": "repository and validated pickup label",
+    "do_not_reclassify_existing_lease": true,
+    "unknown_route": "fail_closed",
+    "project_views_are_filters_not_authority": true,
+    "capacity_policy": "separate queue-class admission/concurrency; protected controller remains authoritative",
+    "canonical_worker_entrypoint": "https://github.com/grandchallenge/MATHSOLVE/blob/main/WORKERS.md",
+    "publication_effect": false
   }
 }
