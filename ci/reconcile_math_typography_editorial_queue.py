@@ -85,6 +85,53 @@ def project_items() -> dict[str, dict]:
     return indexed
 
 
+def selected_project_items(initial: dict[str, dict], numbers: list[int]) -> dict[str, dict]:
+    """Read only the nine prevalidated Project item identities after mutation."""
+    urls = [f"https://github.com/{REPO}/issues/{n}" for n in numbers]
+    if len(set(urls)) != len(urls):
+        raise RuntimeError("duplicate Project readback identities")
+    ids = []
+    for link in urls:
+        item = initial.get(link)
+        if not item or not item.get("id"):
+            raise RuntimeError(f"missing preflight Project item: {link}")
+        ids.append(item["id"])
+    query = """
+    query($ids:[ID!]!){
+      nodes(ids:$ids){
+        ... on ProjectV2Item{
+          id
+          content{... on Issue{number repository{nameWithOwner}}}
+          projectStatus:fieldValueByName(name:"Status"){
+            ... on ProjectV2ItemFieldSingleSelectValue{name}
+          }
+          projectClass:fieldValueByName(name:"Queue Class"){
+            ... on ProjectV2ItemFieldSingleSelectValue{name}
+          }
+        }
+      }
+    }
+    """
+    result = api("graphql", payload={"query": query, "variables": {"ids": ids}})
+    if result.get("errors"):
+        raise RuntimeError("Project scoped readback: " + str(result["errors"])[:300])
+    nodes = (result.get("data") or {}).get("nodes")
+    if not isinstance(nodes, list) or len(nodes) != len(ids):
+        raise RuntimeError("Project scoped readback cardinality mismatch")
+    out = {}
+    for number, link, item_id, node in zip(numbers, urls, ids, nodes):
+        content = (node or {}).get("content") or {}
+        repo = (content.get("repository") or {}).get("nameWithOwner")
+        if (node or {}).get("id") != item_id or content.get("number") != number or repo != REPO:
+            raise RuntimeError(f"Project scoped readback identity drift: {number}")
+        status = ((node or {}).get("projectStatus") or {}).get("name")
+        cls = ((node or {}).get("projectClass") or {}).get("name")
+        if not status or not cls:
+            raise RuntimeError(f"Project scoped field readback incomplete: {number}")
+        out[link] = {"id": item_id, "status": status, "queueClass": cls}
+    return out
+
+
 def project_fields():
     raw = json.loads(gh("project", "field-list", PROJECT_NUMBER, "--owner", ORG,
                         "--limit", "100", "--format", "json"))
