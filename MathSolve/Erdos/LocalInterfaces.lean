@@ -82,6 +82,29 @@ theorem nat_mod_injective_on_interval
       have hb := hhi x
       omega
 
+/-- Exact modular B_h transfer for arbitrary *shifted* sum intervals.
+This strictly improves a bound which demands every sum be below the modulus. -/
+theorem strongBHMod_iff_of_sum_interval
+    (A : Finset ℕ) (h M lo hi : ℕ)
+    (hlo : ∀ m : Multiset ℕ, m.card = h →
+      (∀ x ∈ m, x ∈ A) → lo ≤ m.sum)
+    (hhi : ∀ m : Multiset ℕ, m.card = h →
+      (∀ x ∈ m, x ∈ A) → m.sum ≤ hi)
+    (hwidth : hi - lo < M) :
+    StrongBHMod A h M ↔ StrongBH A h := by
+  constructor
+  · exact strongBH_of_mod A h M
+  · intro hstrong m n hmcard hncard hmA hnA hmod
+    apply hstrong m n hmcard hncard hmA hnA
+    have hml := hlo m hmcard hmA
+    have hnl := hlo n hncard hnA
+    have hmu := hhi m hmcard hmA
+    have hnu := hhi n hncard hnA
+    by_cases hmn : m.sum ≤ n.sum
+    · exact nat_mod_eq_of_close hmn (by omega) hmod
+    · have hnm : n.sum ≤ m.sum := by omega
+      exact (nat_mod_eq_of_close hnm (by omega) hmod.symm).symm
+
 /-- t edge-layers, each with a two-valued vertex colouring separating
     the endpoints of every edge it contains; the layers cover precisely E. -/
 def HasBipartiteLayerCover {V : Type*}
