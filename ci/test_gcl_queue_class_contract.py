@@ -49,6 +49,16 @@ class ClassTest(unittest.TestCase):
                        {DIRECT,"gcl-role:source-audit"},modes=MODES)
         self.assertEqual((c,m),("Mathematics","direct_editorial"))
 
+    def test_typography_source_triage_stays_editorial(self):
+        c,m=classify("grandchallenge/MATH-PROGRAMME",
+           "MP-MATH-TYPO-ED07 — Complete public documentation defect triage outside named guides and documentaries",
+           {DIRECT,"gcl-role:source-audit"},modes=MODES)
+        self.assertEqual((c,m),("Editorial","direct_editorial"))
+        with self.assertRaisesRegex(QueueIntegrityError,"ambiguous"):
+            classify("grandchallenge/MATH-PROGRAMME",
+              "An unrelated mathematical source investigation",
+              {DIRECT,"gcl-role:source-audit"},modes=MODES)
+
     def test_editorial_direct_pickup(self):
         for repo in ("grandchallenge/MATH-PROGRAMME",
                      "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS",
