@@ -2,7 +2,7 @@
 
 Status: **prototype implemented and tested locally; CHAD doctor/authentication confirmed, read-only 1,308-item semantic audit confirmed clean; secure-tunnel registration and live Projects reconciliation remain pending.** Do not claim this branch contains the executable distribution.
 
-A complete separately packaged implementation artifact is attached to the creating ChatGPT conversation as `GCL-Commander-v0.1.4.zip` (SHA-256 `49945a8c4db21da85f9f496e940ce38e38b393c20ef0eac72c3cb8efcdbd606b`); it needs source admission to an appropriate GCL-owned code repository before operational promotion. The artifact is not a durable GitHub source archive merely because this record exists.
+A complete separately packaged implementation artifact is attached to the creating ChatGPT conversation as `GCL-Commander-v0.1.4.zip` (SHA-256 `9a600fe946e0f876ed9635bef490bf2d8dc10a5533f0402d2ee3225db2a09d50`); it needs source admission to an appropriate GCL-owned code repository before operational promotion. The artifact is not a durable GitHub source archive merely because this record exists.
 
 The prototype contains Python package `gcl_commander` with:
 - MCP SDK v2 server using loopback-only Streamable HTTP or stdio;
@@ -23,7 +23,7 @@ Both packaged installer and upgrader refuse accidental sourcing without changing
 
 ## Private outbound Secure MCP Tunnel candidate — v0.1.4
 
-OpenAI's official [Secure MCP Tunnel](https://developers.openai.com/api/docs/guides/secure-mcp-tunnels) and [openai/tunnel-client](https://github.com/openai/tunnel-client) provide an outbound-only connection; no inbound CHAD port needs exposure. v0.1.4 adds (1) an official release checksum-verifying WSL tunnel-client installer, (2) an interactive hidden-input tunnel-id/runtime-key profile configurator, (3) loopback-only health and stdio MCP launch, (4) a systemd **user** service with `GCL_COMMANDER_PROJECT_WRITE=disabled`, and (5) local bash syntactic, shell-survival and fail-closed tests. All **29/29** local tests pass. Archive: `GCL-Commander-v0.1.4.zip`; SHA-256 `49945a8c4db21da85f9f496e940ce38e38b393c20ef0eac72c3cb8efcdbd606b`.
+OpenAI's official [Secure MCP Tunnel](https://developers.openai.com/api/docs/guides/secure-mcp-tunnels) and [openai/tunnel-client](https://github.com/openai/tunnel-client) provide an outbound-only connection; no inbound CHAD port needs exposure. v0.1.4 adds (1) an official release checksum-verifying WSL tunnel-client installer, (2) an interactive hidden-input tunnel-id/runtime-key profile configurator, (3) loopback-only health and stdio MCP launch, (4) a systemd **user** service with `GCL_COMMANDER_PROJECT_WRITE=disabled`, and (5) local bash syntactic, shell-survival and fail-closed tests. All **29/29** local tests pass. Archive: `GCL-Commander-v0.1.4.zip`; SHA-256 `9a600fe946e0f876ed9635bef490bf2d8dc10a5533f0402d2ee3225db2a09d50`.
 
 **Do not declare a live tunnel.** CHAD must install v0.1.4, the Platform owner must provision a tunnel ID and runtime key with Tunnels Read+Use, the tunnel-client must pass `doctor --profile gcl-commander --explain` and health/ready readback, and the operator must explicitly register/install the plugin in ChatGPT. The account's full write-tool eligibility is independent of CHAD readiness and must be established before promising direct Project mutation. No secure-tunnel credentials have been pasted into GitHub. Executable source remains only in the downloadable archive pending protected source admission.
 
