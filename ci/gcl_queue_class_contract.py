@@ -57,6 +57,12 @@ def classify(repository: str, title: str, labels: Iterable[str],
 
     erdos = bool(ERDOS_TITLE.search(title))
     role = SOURCE_ROLE in ls
+    # An editorial source-defect inventory may use SOURCE_AUDIT as a
+    # process role. MP-MATH-TYPO-ED07 remains Editorial, not mathematics.
+    if repository == "grandchallenge/MATH-PROGRAMME" and title.startswith(
+        "MP-MATH-TYPO-ED07 — "
+    ) and role:
+        return "Editorial", mode
     if repository == "grandchallenge/MATH-PROGRAMME" and (erdos or role):
         if not (erdos and role):
             raise QueueIntegrityError("ambiguous Erdős source-audit identity")
