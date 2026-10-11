@@ -49,6 +49,26 @@ class ClassTest(unittest.TestCase):
                        {DIRECT,"gcl-role:source-audit"},modes=MODES)
         self.assertEqual((c,m),("Mathematics","direct_editorial"))
 
+    def test_specialist_editorial_discovery_not_lost(self):
+        from pathlib import Path
+        import json
+        root=Path(__file__).resolve().parents[1]
+        worker=(root/"WORKERS.md").read_text(encoding="utf-8")
+        cfg=json.loads((root/".well-known/gcl-worker-queue.json").read_text(encoding="utf-8"))
+        specialist=cfg["queue_classes"]["editorial"]["specialist_source_triage"]
+        self.assertEqual(len(specialist),1)
+        entry=specialist[0]
+        self.assertEqual(entry["issue_number"],1262)
+        self.assertEqual(entry["semantic_class"],"Editorial")
+        self.assertEqual(entry["pickup_mode"],"direct_editorial")
+        self.assertEqual(entry["discover_only_if_state"],"AVAILABLE")
+        self.assertIn(entry["issue_url"],worker)
+        self.assertIn("source-defect triage",worker)
+        self.assertIn("gcl-role:source-audit",worker)
+        # The ordinary Editorial search must continue excluding the much
+        # larger mathematical source-audit catalogue.
+        self.assertIn("-label%3Agcl-role%3Asource-audit",worker)
+
     def test_typography_source_triage_stays_editorial(self):
         c,m=classify("grandchallenge/MATH-PROGRAMME",
            "MP-MATH-TYPO-ED07 — Complete public documentation defect triage outside named guides and documentaries",
