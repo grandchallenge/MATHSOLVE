@@ -89,13 +89,17 @@ def project_fields():
     raw = json.loads(gh("project", "field-list", PROJECT_NUMBER, "--owner", ORG,
                         "--limit", "100", "--format", "json"))
     fields = {row.get("name"): row for row in raw.get("fields", [])}
-    if fields.get("Status", {}).get("id") != STATUS_FIELD["field_id"]:
-        raise RuntimeError("Project Status binding drift")
+    status = fields.get("Status") or {}
+    if status.get("id") != STATUS_FIELD["field_id"]:
+        raise RuntimeError("Project Status field identity drift")
+    live_status = {v.get("name"): v.get("id") for v in status.get("options", [])}
+    if not all(live_status.get(name) for name in ("Todo", "Done")):
+        raise RuntimeError("live Project Status options missing Todo or Done")
     cls = fields.get("Queue Class") or {}
     opts = {v.get("name"): v.get("id") for v in cls.get("options", [])}
     if cls.get("id") != "PVTSSF_lADOB9Ao_c4BlwurzhlJkjI" or not opts.get("Editorial"):
         raise RuntimeError("Queue Class field/Editorial option not live or unverified")
-    return cls["id"], opts["Editorial"]
+    return cls["id"], opts["Editorial"], status["id"], live_status
 
 
 def current_class(item: dict):
@@ -229,7 +233,7 @@ def main():
     args = p.parse_args()
     main_sha = preflight()
     initial = project_items()
-    cls_id, cls_option = project_fields()
+    cls_id, cls_option, status_id, live_status = project_fields()
     for n in [*PRS, SUCCESSOR, ARCHIVE]:
         if f"https://github.com/{REPO}/issues/{n}" not in initial:
             raise RuntimeError(f"{n}: missing from canonical Project #2")
@@ -245,14 +249,14 @@ def main():
         project_edit(item, cls_id, cls_option)
         set_label(n, "gcl-state:available", "gcl-state:returned")
         update_state(n, "RETURNED")
-        project_edit(item, STATUS_FIELD["field_id"], STATUS_FIELD["options"]["Done"])
+        project_edit(item, status_id, live_status["Done"])
     interim = project_items()
     for n in PRS:
         verify(n, interim[f"https://github.com/{REPO}/issues/{n}"], "RETURNED")
     # ED08 is the ONLY newly discoverable task; all predecessor receipts remain PARTIAL.
     item = interim[f"https://github.com/{REPO}/issues/{SUCCESSOR}"]
     project_edit(item, cls_id, cls_option)
-    project_edit(item, STATUS_FIELD["field_id"], STATUS_FIELD["options"]["Todo"])
+    project_edit(item, status_id, live_status["Todo"])
     update_state(SUCCESSOR, "AVAILABLE")
     # Do not label it AVAILABLE until the field and Project presentation read back.
     candidate = project_items()[f"https://github.com/{REPO}/issues/{SUCCESSOR}"]
