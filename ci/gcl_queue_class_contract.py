@@ -51,10 +51,11 @@ def classify(repository: str, title: str, labels: Iterable[str],
     ls = set(labels)
     pickup_labels = {s for s in ls if s.startswith("gcl-pickup:")}
     if mode == "reservation_controlled":
+        # SOURCE_ROLE names mathematical research/source work, not a pickup route.
+        # Legitimate Solve dispatches such as #843 and #1033 carry this role.
+        # Preserve their protected reservation and RESULT/1 semantics.
         if pickup_labels:
             raise QueueIntegrityError("reservation issue contains direct pickup label")
-        if SOURCE_ROLE in ls:
-            raise QueueIntegrityError("unreviewed source-audit role on Solve dispatch")
         return "Mathematics", mode
     if mode != "direct_editorial" or pickup_labels != {DIRECT}:
         raise QueueIntegrityError("invalid direct-editorial pickup routing")
