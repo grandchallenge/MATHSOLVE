@@ -56,15 +56,15 @@ class ClassTest(unittest.TestCase):
         worker=(root/"WORKERS.md").read_text(encoding="utf-8")
         cfg=json.loads((root/".well-known/gcl-worker-queue.json").read_text(encoding="utf-8"))
         specialist=cfg["queue_classes"]["editorial"]["specialist_source_triage"]
-        self.assertEqual(len(specialist),1)
-        entry=specialist[0]
-        self.assertEqual(entry["issue_number"],1262)
-        self.assertEqual(entry["semantic_class"],"Editorial")
-        self.assertEqual(entry["pickup_mode"],"direct_editorial")
-        self.assertEqual(entry["discover_only_if_state"],"AVAILABLE")
-        self.assertIn(entry["issue_url"],worker)
+        self.assertEqual({entry["issue_number"] for entry in specialist},{1262,1264})
+        for entry in specialist:
+            self.assertEqual(entry["semantic_class"],"Editorial")
+            self.assertEqual(entry["pickup_mode"],"direct_editorial")
+            self.assertEqual(entry["discover_only_if_state"],"AVAILABLE")
+            self.assertIn(entry["issue_url"],worker)
         self.assertIn("source-defect triage",worker)
         self.assertIn("gcl-role:source-audit",worker)
+        self.assertIn(cfg["queue_classes"]["mathematics"]["critical_review_query_url"],worker)
         # The ordinary Editorial search must continue excluding the much
         # larger mathematical source-audit catalogue.
         self.assertIn("-label%3Agcl-role%3Asource-audit",worker)
