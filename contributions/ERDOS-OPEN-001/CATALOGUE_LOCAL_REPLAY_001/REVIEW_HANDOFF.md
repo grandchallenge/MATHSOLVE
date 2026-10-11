@@ -119,7 +119,7 @@ multiset, not ordered-tuple, uniqueness.
 
 Sharpness at M=3N-3 follows from A={1,N}: two different triples
 (1,1,1) and (N,N,N) differ by exactly M, although their integer
-sums are different and the six mixed triple sums are integer-unique.
+sums are different and the two mixed triple sums (1,1,N) and (1,N,N) are also distinct.
 The script tests every A⊆[1,N] for N=2,...,9 and the sharp
 counterexample at each N. This is a finite regression plus a
 paper proof, NOT a checked Lean theorem or the asymptotic result.
