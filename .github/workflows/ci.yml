@@ -201,6 +201,7 @@ jobs:
           python ci/validate_gcl_worker_queue_activation_receipt.py
           python ci/validate_gcl_worker_queue_project.py
           python ci/validate_gcl_worker_bootstrap.py
+          python -m unittest discover -s ci -p 'test_gcl_queue_class_contract.py' -v
           python -m json.tool .well-known/gcl-worker-queue.json >/dev/null
           python -m unittest tests/test_gcl_worker_queue_projection.py tests/test_gcl_worker_queue_project_status.py -v
           python -m unittest tests/test_new_queue_intake.py -v

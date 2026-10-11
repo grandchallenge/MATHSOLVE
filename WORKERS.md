@@ -9,9 +9,12 @@ below.
 
 ## Choose a specialized queue (discovery only)
 
-- **Editorial:** [open available editorial jobs](https://github.com/issues?q=is%3Aissue+is%3Aopen+org%3Agrandchallenge+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial). These are direct-editorial, issue-bound jobs; **never** use `/claim`.
+- **Editorial:** [open available editorial jobs](https://github.com/issues?q=is%3Aissue+is%3Aopen+org%3Agrandchallenge+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+-label%3Agcl-role%3Asource-audit). These are direct-editorial, issue-bound jobs; **never** use `/claim`.
+- **Mathematics — Erdős research preparation:** [open available source-audit assignments](https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-role%3Asource-audit+ERDOS-CATALOGUE). These are *mathematical* source and bounded-research-design jobs even though their permitted issue pickup is `direct_editorial`; no `/claim`.
 - **Mathematics — Solve dispatches:** [open available MATHSOLVE jobs](https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable). These use reservation-controlled `/claim` pickup.
 - **Erdős catalogue — source and research-design assignments:** [open available Erdős catalogue jobs](https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+ERDOS-CATALOGUE). These are hosted in `grandchallenge/MATH-PROGRAMME`, use the protected `direct_editorial` pickup mode, and require **no** `/claim` or Solve reservation. Read the whole issue and return the specified `RESULT/1` directly to that issue. They prepare bounded research; they are not automatically independent Solve-proof dispatches.
+
+A job's **semantic Queue Class** (Editorial or Mathematics) is not its **pickup mode**. Erdős source-audit assignments remain Mathematics, despite their direct-editorial pickup mechanics. The live Project Queue Class field must agree with protected classification, rather than being inferred from pickup alone. Do not claim the separate Project views or class-capacity enforcement are active before exact Project readback.
 
 The [shared Project #2 AVAILABLE view](https://github.com/orgs/grandchallenge/projects/2) remains the cross-repository discovery authority. These class-specific links do **not** supersede protected mode routing, prove availability, or launch a worker. For contract and activation criteria, see [GCL specialized queues](docs/GCL_SPECIALIZED_QUEUES.md). Do not assert that dedicated GitHub Project views have been provisioned until read back.
 

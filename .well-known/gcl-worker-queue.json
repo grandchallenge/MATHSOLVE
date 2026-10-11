@@ -86,7 +86,7 @@
   },
   "queue_classes": {
     "editorial": {
-      "description": "Chapter editing, independent critical review, figures, publication accessibility",
+      "description": "Substantive expository writing, figures, typography, reader accessibility and critical editorial review; excludes mathematical source-audit/research preparation",
       "repositories": [
         "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS",
         "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS",
@@ -95,29 +95,33 @@
       "pickup_mode": "direct_editorial",
       "required_label": "gcl-pickup:direct-editorial",
       "view_selector": "EDITORIAL",
-      "discovery_query_url": "https://github.com/issues?q=is%3Aissue+is%3Aopen+org%3Agrandchallenge+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial"
+      "discovery_query_url": "https://github.com/issues?q=is%3Aissue+is%3Aopen+org%3Agrandchallenge+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+-label%3Agcl-role%3Asource-audit"
     },
     "mathematics": {
-      "description": "Mathematical proof, counterexamples, formalization, adversarial research",
+      "description": "Proof/counterexample/formalization in Solve plus Erdős source and bounded research preparation via direct issue pickup",
       "repositories": [
         "grandchallenge/MATHSOLVE"
       ],
       "pickup_mode": "reservation_controlled",
       "view_selector": "MATHEMATICS",
       "discovery_query_url": "https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable",
-      "controller": "GCL-WORKER-RESERVATION/1"
+      "controller": "GCL-WORKER-RESERVATION/1",
+      "preparation_query_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-role%3Asource-audit+ERDOS-CATALOGUE"
     }
   },
   "queue_classification_policy": {
     "mode": "additive_nonbreaking",
     "source_of_truth": "repository_pickup_modes and protected registry",
-    "class_selector": "repository and validated pickup label",
+    "class_selector": "semantic job content and protected source-audit identity; NEVER pickup mode alone",
     "do_not_reclassify_existing_lease": true,
     "unknown_route": "fail_closed",
     "project_views_are_filters_not_authority": true,
-    "capacity_policy": "separate queue-class admission/concurrency; protected controller remains authoritative",
+    "capacity_policy": "independent class availability-admission limits; no worker-runtime concurrency claim for direct issue pickup absent tracked active work",
     "canonical_worker_entrypoint": "https://github.com/grandchallenge/MATHSOLVE/blob/main/WORKERS.md",
-    "publication_effect": false
+    "publication_effect": false,
+    "classifier_path": "ci/gcl_queue_class_contract.py",
+    "project_queue_class_field_id": "PVTSSF_lADOB9Ao_c4BlwurzhlJkjI",
+    "cutover_state": "NOT_ACTIVATED_UNTIL_COMPLETE_PROJECT_READBACK_AND_CAPACITY_GUARD"
   },
   "specialized_discovery": {
     "erdos_catalogue_research_preparation": {
