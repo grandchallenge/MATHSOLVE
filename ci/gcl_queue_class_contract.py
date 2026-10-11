@@ -26,6 +26,10 @@ QUEUE_CLASSES = ("Editorial", "Mathematics")
 DIRECT = "gcl-pickup:direct-editorial"
 SOURCE_ROLE = "gcl-role:source-audit"
 ERDOS_TITLE = re.compile(r"^(?:\[GCL-ERDOS\]\s+)?ERDOS-CATALOGUE-\d{4}-S\d{2}\b")
+ERDOS_CRITIC_TITLE = re.compile(
+    r"^ERDOS (\d{1,4}) — critical source and lemma review of ERDOS-(\d{3})-"
+)
+
 
 
 class QueueIntegrityError(ValueError):
@@ -57,12 +61,21 @@ def classify(repository: str, title: str, labels: Iterable[str],
 
     erdos = bool(ERDOS_TITLE.search(title))
     role = SOURCE_ROLE in ls
-    # An editorial source-defect inventory may use SOURCE_AUDIT as a
-    # process role. MP-MATH-TYPO-ED07 remains Editorial, not mathematics.
-    if repository == "grandchallenge/MATH-PROGRAMME" and title.startswith(
-        "MP-MATH-TYPO-ED07 — "
-    ) and role:
+    # Editorial source-defect inventories have a SOURCE_AUDIT process role;
+    # do not mistake either for Erdős mathematical research.
+    if repository == "grandchallenge/MATH-PROGRAMME" and role and title.startswith(
+        ("MP-MATH-TYPO-ED07 — ", "MP-MATH-TYPO-ED09 — ")
+    ):
         return "Editorial", mode
+    # A bounded Erdős mathematics critical-source docket can also use direct
+    # issue pickup, unlike reservation-controlled Solve. Here we match a
+    # tightly concordant subject-title grammar; the live Programme Project
+    # reconciler additionally requires protected 24-cohort issue ID binding.
+    critic = ERDOS_CRITIC_TITLE.match(title)
+    if repository == "grandchallenge/MATH-PROGRAMME" and role and critic:
+        if int(critic.group(1)) != int(critic.group(2)):
+            raise QueueIntegrityError("Erdős critic problem/title identity mismatch")
+        return "Mathematics", mode
     if repository == "grandchallenge/MATH-PROGRAMME" and (erdos or role):
         if not (erdos and role):
             raise QueueIntegrityError("ambiguous Erdős source-audit identity")

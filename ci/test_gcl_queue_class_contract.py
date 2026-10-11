@@ -59,6 +59,21 @@ class ClassTest(unittest.TestCase):
               "An unrelated mathematical source investigation",
               {DIRECT,"gcl-role:source-audit"},modes=MODES)
 
+    def test_erdos_rolling_critic_and_ed09_semantics(self):
+        for n in (11,18,25,41):
+            name=f"ERDOS {n} — critical source and lemma review of ERDOS-{n:03d}-PROOF-CHECK-001"
+            self.assertEqual(classify("grandchallenge/MATH-PROGRAMME",
+               name,{DIRECT,"gcl-role:source-audit"},modes=MODES),
+               ("Mathematics","direct_editorial"))
+        self.assertEqual(classify("grandchallenge/MATH-PROGRAMME",
+          "MP-MATH-TYPO-ED09 — Historical mathematical records: evidence-preserving typography triage",
+          {DIRECT,"gcl-role:source-audit"},modes=MODES),
+          ("Editorial","direct_editorial"))
+        with self.assertRaisesRegex(QueueIntegrityError,"identity mismatch"):
+            classify("grandchallenge/MATH-PROGRAMME",
+              "ERDOS 11 — critical source and lemma review of ERDOS-099-FOO",
+              {DIRECT,"gcl-role:source-audit"},modes=MODES)
+
     def test_editorial_direct_pickup(self):
         for repo in ("grandchallenge/MATH-PROGRAMME",
                      "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS",
