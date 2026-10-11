@@ -23,6 +23,37 @@ Source surfaces:
 - This tranche: `python ci/erdos_241_595_theorem_boundaries.py`.
   No external libraries, calls, mutable online data or Mathlib required.
 
+## Pinned formal statement semantics checked directly
+
+The underlying original provider files were fetched through GitHub at
+`google-deepmind/formal-conjectures@85f863718beeec7b58a3a1926ee92e3472bc2020`.
+These are **statement/source checks** only, not Lean builds or acceptance.
+
+- Erdős 241, `FormalConjectures/ErdosProblems/241.lean`,
+  blob `8e462d92fcd1e87cb8b211bc8ceaee42ae60a089`, defines
+  `f N r` using `Multiset ℕ`, `m.card = r`,
+  `m.sum` equality and `m₁=m₂` for finite subsets of
+  `Finset.Icc 1 N`. This exactly matches repeated summands
+  modulo permutation in the integer B_h theorem when restricted
+  to A⊆[1,N]. The generalized theorem herein permits arbitrary
+  integer A; no claim of an existing Lean `ZMod` lift is made.
+  The formalized asymptotic theorem bodies contain `sorry`.
+- Erdős 595, `FormalConjectures/ErdosProblems/595.lean`,
+  blob `c7ae92d69247ed107099978b9c7bce2cc319af76`,
+  defines `IsCountableUnionOfTriangleFree G` as existence of
+  `H : ℕ → SimpleGraph V`, each `CliqueFree 3`,
+  with `G = ⨆ i, H i`; the main question also requires
+  `CliqueFree 4`. The theorem B proof uses the **stronger**
+  hypothesis that every H_i is bipartite. Thus its conclusion
+  *implies* a triangle-free decomposition, but cannot be used
+  in reverse to characterize arbitrary triangle-free covers.
+  The main conjectural assertion remains `sorry`.
+
+Both semantic distinctions are required for any promoted
+mathematical statement. They do not imply originality, correctness
+of the historical paper references or completion of external
+source-semantic referee review.
+
 ## Theorem A · arbitrary-order strong B_h, exact safe modulus
 
 Fix an integer h≥1 and finite A⊆ℤ, with h-element *multisets*
