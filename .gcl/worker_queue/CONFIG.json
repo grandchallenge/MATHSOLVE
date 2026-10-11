@@ -91,5 +91,29 @@
       "gcl-collab:staged": "STAGED",
       "gcl-collab:lead-support": "LEAD_SUPPORT"
     }
+  },
+  "active_class_capacity": {
+    "Mathematics": 8,
+    "Editorial": 8
+  },
+  "active_class_capacity_policy": {
+    "schema": "GCL_ACTIVE_CLASS_CAPACITY/1",
+    "mathematics": {
+      "enforcement": "live_serialized_github_reservation_ledger",
+      "scope": "new MATHSOLVE /claim only",
+      "existing_reservations": "preserved",
+      "max_new_active_claims": 8
+    },
+    "editorial": {
+      "enforcement": "NOT_YET_ACTIVE_UNTIL_AUTHENTICATED_START_RETURN_PROVEN",
+      "scope": "direct issue pickup unchanged; no /claim",
+      "pilot_budget": 8
+    },
+    "authority_effects": {
+      "execution_authority": false,
+      "mathematical": false,
+      "certification": false,
+      "publication": false
+    }
   }
 }
