@@ -56,9 +56,9 @@ class ReconcileTest(unittest.TestCase):
     @patch.object(q, "preflight", side_effect=RuntimeError("unmerged prerequisite"))
     def test_no_project_writes_when_protected_preflight_fails(self, preflight):
         with patch.object(sys, "argv", ["controller", "--apply"]), \
-             patch.object(q, "project_edit") as mutate, \
-             self.assertRaisesRegex(RuntimeError, "unmerged prerequisite"):
-            q.main()
+             patch.object(q, "project_edit") as mutate:
+            with self.assertRaisesRegex(RuntimeError, "unmerged prerequisite"):
+                q.main()
             mutate.assert_not_called()
 
     @patch.object(q, "project_items")
