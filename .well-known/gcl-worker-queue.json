@@ -118,5 +118,19 @@
     "capacity_policy": "separate queue-class admission/concurrency; protected controller remains authoritative",
     "canonical_worker_entrypoint": "https://github.com/grandchallenge/MATHSOLVE/blob/main/WORKERS.md",
     "publication_effect": false
+  },
+  "specialized_discovery": {
+    "erdos_catalogue_research_preparation": {
+      "repository": "grandchallenge/MATH-PROGRAMME",
+      "pickup_mode": "direct_editorial",
+      "required_label": "gcl-pickup:direct-editorial",
+      "available_label": "gcl-state:available",
+      "title_selector": "ERDOS-CATALOGUE",
+      "discovery_query_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+ERDOS-CATALOGUE",
+      "claim_command": null,
+      "return_protocol": "RESULT/1",
+      "authority_effect": false,
+      "note": "Discovery overlay for issue-bound mathematical source audits and bounded research design, not reservation-controlled MATHSOLVE dispatches."
+    }
   }
 }
