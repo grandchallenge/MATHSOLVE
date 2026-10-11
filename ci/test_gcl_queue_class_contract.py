@@ -100,6 +100,21 @@ class ClassTest(unittest.TestCase):
                      "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS"):
             self.assertEqual(classify(repo,"Chapter review",{DIRECT},modes=MODES)[0],"Editorial")
 
+    def test_solve_erdos_source_audit_keeps_reservation(self):
+        # Real protected Solve dispatches #843 and #1033 carry the SOURCE_AUDIT
+        # semantic role. It does not authorize direct-editorial pickup.
+        for issue, name in (
+            (843, "[GCL-CONTRIB] ERDOS-OPEN ERDOS-593-S1-IA-001 — SOURCE-AUDIT"),
+            (1033, "[GCL-CONTRIB] ERDOS-OPEN ERDOS-470-N3-IA-001 — ODD-WEIRD-WORKUNIT-COVER-REPLAY"),
+        ):
+            with self.subTest(issue=issue):
+                self.assertEqual(classify("grandchallenge/MATHSOLVE", name,
+                    {"gcl-job", "gcl-role:source-audit"}, modes=MODES),
+                    ("Mathematics", "reservation_controlled"))
+                with self.assertRaisesRegex(QueueIntegrityError, "reservation issue"):
+                    classify("grandchallenge/MATHSOLVE", name,
+                        {"gcl-job", "gcl-role:source-audit", DIRECT}, modes=MODES)
+
     def test_proof_dispatch(self):
         self.assertEqual(classify("grandchallenge/MATHSOLVE","Proof",{"gcl-job"},modes=MODES),
                          ("Mathematics","reservation_controlled"))
