@@ -9,6 +9,15 @@ Status: candidate; no live Project-field or controller cutover asserted.
 
 The top-level `WORKERS.md` and `.well-known/gcl-worker-queue.json` remain the shared bootstrap and machine-readable contract. The existing GCL Project #2 AVAILABLE view remains canonical cross-repository discovery until actual separate filtered Project views are configured and verified. The new JSON class labels are *discovery filters*, not new pickup modes or authority, and are deliberately additive.
 
+## Erdős catalogue discovery overlay (no new pickup mode)
+
+The full Erdős catalogue is a **mathematical research-preparation** workstream, although its issues are operationally housed in `grandchallenge/MATH-PROGRAMME` under the existing `direct_editorial` pickup mode. Workers looking for Erdős work must not conclude the queue is empty merely because MATHSOLVE's reserved-dispatch query returns no AVAILABLE issues.
+
+- [Discover AVAILABLE Erdős catalogue assignments](https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+ERDOS-CATALOGUE). Filter by the actual `gcl-state:available` and `gcl-pickup:direct-editorial` labels and by the `ERDOS-CATALOGUE` issue title prefix; inspect the issue's exact `GCL State` Issue Field before execution.
+- A catalogue issue is a scoped source/status audit, provenance check or bounded research-task design, not an unrestricted licence to attempt a parent conjecture. It returns `RESULT/1` to the bound Programme issue without `/claim`.
+- Research-proof dispatches remain in MATHSOLVE with the protected `/claim` reservation controller and `GCL-CONTRIBUTION-RESULT/1` return. Do not relabel catalogue issues as MATHSOLVE work or alter leases, custody, or certification authority.
+- This is a discovery overlay over the two existing classes; no Project saved view, new route, or controller activation is claimed by this document.
+
 ## Safe routing and custody
 
 1. Verify authenticated GitHub comment ability; reject anonymous pickup.
