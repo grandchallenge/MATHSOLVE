@@ -104,6 +104,14 @@
           "semantic_class": "Editorial",
           "pickup_mode": "direct_editorial",
           "discover_only_if_state": "AVAILABLE"
+        },
+        {
+          "repository": "grandchallenge/MATH-PROGRAMME",
+          "issue_number": 1264,
+          "issue_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/1264",
+          "semantic_class": "Editorial",
+          "pickup_mode": "direct_editorial",
+          "discover_only_if_state": "AVAILABLE"
         }
       ]
     },
@@ -116,7 +124,8 @@
       "view_selector": "MATHEMATICS",
       "discovery_query_url": "https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable",
       "controller": "GCL-WORKER-RESERVATION/1",
-      "preparation_query_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-role%3Asource-audit+ERDOS-CATALOGUE"
+      "preparation_query_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-role%3Asource-audit+ERDOS-CATALOGUE",
+      "critical_review_query_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-role%3Asource-audit+%22critical+source+and+lemma+review%22"
     }
   },
   "queue_classification_policy": {
@@ -132,7 +141,7 @@
     "classifier_path": "ci/gcl_queue_class_contract.py",
     "project_queue_class_field_id": "PVTSSF_lADOB9Ao_c4BlwurzhlJkjI",
     "cutover_state": "NOT_ACTIVATED_UNTIL_COMPLETE_PROJECT_READBACK_AND_CAPACITY_GUARD",
-    "editorial_source_role_exception": "MP-MATH-TYPO-ED07 / MATH-PROGRAMME #1262: Editorial despite source-audit role; not Erdős research"
+    "editorial_source_role_exception": "MATH-PROGRAMME #1262/ED07 and #1264/ED09 are Editorial despite source-audit roles; protected ERDOS-ROLLING-024 critic dockets are Mathematics"
   },
   "specialized_discovery": {
     "erdos_catalogue_research_preparation": {
