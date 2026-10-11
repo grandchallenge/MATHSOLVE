@@ -56,14 +56,14 @@ def classify(repository: str, title: str, labels: Iterable[str],
     if mode != "direct_editorial" or pickup_labels != {DIRECT}:
         raise QueueIntegrityError("invalid direct-editorial pickup routing")
 
-    erdos = bool(ERDOS_TITLE.search(title))
     role = SOURCE_ROLE in ls
+    if role and repository == "grandchallenge/MATH-PROGRAMME" and TYPO_EDITORIAL_SOURCE.search(title):
+        return "Editorial", mode
+    erdos = bool(ERDOS_TITLE.search(title))
     if repository == "grandchallenge/MATH-PROGRAMME" and (erdos or role):
         if not (erdos and role):
             raise QueueIntegrityError("ambiguous Erdős source-audit identity")
         return "Mathematics", mode
-    if role and repository == "grandchallenge/MATH-PROGRAMME" and TYPO_EDITORIAL_SOURCE.search(title):
-        return "Editorial", mode
     if role:
         raise QueueIntegrityError("unclassified source-audit outside Erdős catalogue")
     return "Editorial", mode
