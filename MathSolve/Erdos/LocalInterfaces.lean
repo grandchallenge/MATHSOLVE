@@ -45,6 +45,66 @@ theorem strongBHMod_iff_of_sum_lt
     simpa [Nat.mod_eq_of_lt (hbound m hmcard hmA),
       Nat.mod_eq_of_lt (hbound n hncard hnA)] using hmod
 
+/-- Two natural numbers with equal residues modulo M cannot differ by a
+positive amount less than M. This is the local no-wrap arithmetic core. -/
+theorem nat_mod_eq_of_close {a b M : ℕ}
+    (hab : a ≤ b) (hgap : b - a < M)
+    (hmod : a % M = b % M) : a = b := by
+  by_contra hne
+  have hlt : a < b := by omega
+  have hcong : a ≡ b [MOD M] := hmod
+  have hwide : a + M ≤ b := hcong.add_le_of_lt hlt
+  omega
+
+/-- An interval with diameter strictly less than M has injective reduction
+modulo M, independent of where that interval starts. -/
+theorem nat_mod_injective_on_interval
+    {α : Type*} (f : α → ℕ) (lo hi M : ℕ)
+    (hlo : ∀ x, lo ≤ f x)
+    (hhi : ∀ x, f x ≤ hi)
+    (hwidth : hi - lo < M) :
+    Function.Injective (fun x => f x % M) ↔ Function.Injective f := by
+  constructor
+  · intro hmod x y hf
+    apply hmod
+    simp [hf]
+  · intro hf x y hmod
+    apply hf
+    by_cases hxy : f x ≤ f y
+    · apply nat_mod_eq_of_close hxy ?_ hmod
+      have ha := hlo x
+      have hb := hhi y
+      omega
+    · have hyx : f y ≤ f x := by omega
+      apply Eq.symm
+      apply nat_mod_eq_of_close hyx ?_ hmod.symm
+      have ha := hlo y
+      have hb := hhi x
+      omega
+
+/-- Exact modular B_h transfer for arbitrary *shifted* sum intervals.
+This strictly improves a bound which demands every sum be below the modulus. -/
+theorem strongBHMod_iff_of_sum_interval
+    (A : Finset ℕ) (h M lo hi : ℕ)
+    (hlo : ∀ m : Multiset ℕ, m.card = h →
+      (∀ x ∈ m, x ∈ A) → lo ≤ m.sum)
+    (hhi : ∀ m : Multiset ℕ, m.card = h →
+      (∀ x ∈ m, x ∈ A) → m.sum ≤ hi)
+    (hwidth : hi - lo < M) :
+    StrongBHMod A h M ↔ StrongBH A h := by
+  constructor
+  · exact strongBH_of_mod A h M
+  · intro hstrong m n hmcard hncard hmA hnA hmod
+    apply hstrong m n hmcard hncard hmA hnA
+    have hml := hlo m hmcard hmA
+    have hnl := hlo n hncard hnA
+    have hmu := hhi m hmcard hmA
+    have hnu := hhi n hncard hnA
+    by_cases hmn : m.sum ≤ n.sum
+    · exact nat_mod_eq_of_close hmn (by omega) hmod
+    · have hnm : n.sum ≤ m.sum := by omega
+      exact (nat_mod_eq_of_close hnm (by omega) hmod.symm).symm
+
 /-- t edge-layers, each with a two-valued vertex colouring separating
     the endpoints of every edge it contains; the layers cover precisely E. -/
 def HasBipartiteLayerCover {V : Type*}
