@@ -106,6 +106,33 @@ class ReconcileTest(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "live Project Status options"):
             q.project_fields()
 
+    @patch.object(q, "api")
+    def test_scoped_project_readback_checks_exact_item_identity(self, api):
+        url = f"https://github.com/{q.REPO}/issues/1256"
+        api.return_value = {"data": {"nodes": [{
+            "id": "I-1256", "content": {"number": 1256,
+                   "repository": {"nameWithOwner": q.REPO}},
+            "projectStatus": {"name": "Done"},
+            "projectClass": {"name": "Editorial"}
+        }]}}
+        out = q.selected_project_items({url: {"id": "I-1256"}}, [1256])
+        self.assertEqual(out[url]["status"], "Done")
+        self.assertEqual(out[url]["queueClass"], "Editorial")
+        self.assertEqual(api.call_args.args, ("graphql",))
+        self.assertEqual(api.call_args.kwargs["payload"]["variables"]["ids"], ["I-1256"])
+
+    @patch.object(q, "api")
+    def test_scoped_project_readback_rejects_wrong_issue(self, api):
+        url = f"https://github.com/{q.REPO}/issues/1256"
+        api.return_value = {"data": {"nodes": [{
+            "id": "I-1256", "content": {"number": 999,
+                   "repository": {"nameWithOwner": q.REPO}},
+            "projectStatus": {"name": "Done"},
+            "projectClass": {"name": "Editorial"}
+        }]}}
+        with self.assertRaisesRegex(RuntimeError, "identity drift"):
+            q.selected_project_items({url: {"id": "I-1256"}}, [1256])
+
     @patch.object(q, "preflight", side_effect=RuntimeError("unmerged prerequisite"))
     def test_no_project_writes_when_protected_preflight_fails(self, preflight):
         with patch.object(sys, "argv", ["controller", "--apply"]), \
