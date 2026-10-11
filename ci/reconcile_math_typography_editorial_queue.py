@@ -113,12 +113,29 @@ def update_state(n: int, wanted: str):
 
 
 def set_label(n: int, old: str, new: str):
+    # The RETURNED label does not yet exist in the Programme repository.
+    # Materialize only this bounded discovery label before removing AVAILABLE.
+    if (old, new) not in {
+        ("gcl-state:available", "gcl-state:returned"),
+        ("gcl-state:blocked", "gcl-state:available"),
+    }:
+        raise RuntimeError("unapproved typography state-label transition")
     rec = issue(n)
     labels = label_names(rec)
+    if new not in labels:
+        catalog = json.loads(gh("label", "list", "--repo", REPO,
+                                "--json", "name", "--limit", "1000"))
+        if not isinstance(catalog, list):
+            raise RuntimeError("unreadable repository label catalog")
+        if new not in {row["name"] for row in catalog}:
+            if new != "gcl-state:returned":
+                raise RuntimeError("preexisting AVAILABLE label was unexpectedly deleted")
+            gh("label", "create", new, "--repo", REPO,
+               "--color", "cfd8dc",
+               "--description", "Returned editorial evidence awaiting independent verification")
+        gh("issue", "edit", str(n), "--repo", REPO, "--add-label", new)
     if old in labels:
         gh("issue", "edit", str(n), "--repo", REPO, "--remove-label", old)
-    if new not in labels:
-        gh("issue", "edit", str(n), "--repo", REPO, "--add-label", new)
 
 
 def preflight():
