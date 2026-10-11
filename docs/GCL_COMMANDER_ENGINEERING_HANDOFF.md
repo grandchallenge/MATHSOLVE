@@ -1,8 +1,8 @@
 # GCL Commander — CHAD-owned MCP operator (engineering handoff)
 
-Status: **prototype implemented and tested locally; CHAD installation, secure-tunnel registration, and live Projects reconciliation remain pending.** Do not claim this branch contains the executable distribution.
+Status: **prototype implemented and tested locally; CHAD doctor/authentication confirmed, audit blocked by known classifier defect; secure-tunnel registration and live Projects reconciliation remain pending.** Do not claim this branch contains the executable distribution.
 
-A complete separately packaged implementation artifact is attached to the creating ChatGPT conversation as `GCL-Commander-v0.1.2.zip` (SHA-256 `7668ec6094bbe716a933cb382ca117c653e4d8644bf713fb91f006c2269fb32b`); it needs source admission to an appropriate GCL-owned code repository before operational promotion. The artifact is not a durable GitHub source archive merely because this record exists.
+A complete separately packaged implementation artifact is attached to the creating ChatGPT conversation as `GCL-Commander-v0.1.3.zip` (SHA-256 `ac2fc71b2e268775a2f3e524d0b2995fa82a6680f15993dfb7010f9ecdee89f0`); it needs source admission to an appropriate GCL-owned code repository before operational promotion. The artifact is not a durable GitHub source archive merely because this record exists.
 
 The prototype contains Python package `gcl_commander` with:
 - MCP SDK v2 server using loopback-only Streamable HTTP or stdio;
@@ -11,15 +11,19 @@ The prototype contains Python package `gcl_commander` with:
 - queue semantic classifier matching protected `ci/gcl_queue_class_contract.py` at prototype creation: Erdős catalogue/critics Mathematics despite direct-editorial pickup, typography issue ED07/ED09 Editorial;
 - state-preserving Project field corrections gated by exact inventory count and local `GCL_COMMANDER_PROJECT_WRITE=enabled`;
 - complete post-write readback and receipt artifacts, no generic terminal capability.
-- seventeen local pytest unit tests, all passing, including two uv-installer regression checks. The WSL installer provisions uv-managed Python 3.12, preserves an incompatible Python 3.10 virtual environment as a backup, and never modifies Ubuntu's system Python; an optional loopback-only systemd user service is included.
+- twenty-two local pytest unit tests, all passing, including two uv-installer regression checks. The WSL installer provisions uv-managed Python 3.12, preserves an incompatible Python 3.10 virtual environment as a backup, and never modifies Ubuntu's system Python; an optional loopback-only systemd user service is included.
 
 ## First live audit finding and bounded fix
 
-CHAD authenticated `fyremael` successfully under uv/Python 3.12, but its first full read-only Project audit stopped with `INVALID_MATHSOLVE_PICKUP_OR_SOURCE_ROLE`. Live GitHub evidence confirms legitimate reserved MATHSOLVE Erdős dispatches (#843, #1033, etc.) carry the `gcl-role:source-audit` **role**. This label does not imply direct-editorial pickup. Protected classifier remediation and two regression tests are in [PR #1071](https://github.com/grandchallenge/MATHSOLVE/pull/1071). Commander v0.1.2 incorporates the matching local fix and preserves bans on direct pickup labels on MATHSOLVE. It adds issue identity on subsequent classification errors. No live Project mutation was undertaken. Re-audit after deployment and retain full exact receipts.
+CHAD authenticated `fyremael` successfully under uv/Python 3.12, but its first full read-only Project audit stopped with `INVALID_MATHSOLVE_PICKUP_OR_SOURCE_ROLE`. Live GitHub evidence confirms legitimate reserved MATHSOLVE Erdős dispatches (#843, #1033, etc.) carry the `gcl-role:source-audit` **role**. This label does not imply direct-editorial pickup. Protected classifier remediation and two regression tests are in [PR #1071](https://github.com/grandchallenge/MATHSOLVE/pull/1071). Commander v0.1.3 incorporates the matching local fix and preserves bans on direct pickup labels on MATHSOLVE. It adds issue identity on subsequent classification errors. No live Project mutation was undertaken. Re-audit after deployment and retain full exact receipts.
+
+## Shell-survival repair in v0.1.3
+
+Both packaged installer and upgrader refuse accidental sourcing without changing parent shell options. Copy/paste invocations now use `if bash -s <<'GCL_SAFE_UPGRADE'` to isolate `set -euo pipefail` and child error codes. Simulated WSL bash with parent `errexit` enabled survives failed child upgrades; regression tests for shell syntax, sourcing, failed upgrade and documented paste wrapper pass. **Never paste an unguarded top-level `set -euo pipefail` into CHAD's interactive shell.** New archive SHA-256 above; prior archive hashes must not be reused. Full 22-test local replay passes.
 
 ## Exact deployment boundary
 
-The host CHAD remains unavailable to the current ChatGPT session. The service is **not installed**, no tunnel is provisioned, and no ChatGPT custom MCP tool connection is registered. Independent capacity control, saved Project views and live pickup/return evidence remain outstanding under [GCL-QUEUE-CLASS-CUTOVER #1049](https://github.com/grandchallenge/MATHSOLVE/issues/1049).
+The host CHAD remains unavailable for remote shell access to this ChatGPT session. The user has confirmed local CHAD installation through authenticated `doctor`; v0.1.3 upgrade is not yet verified, no tunnel is provisioned, and no ChatGPT custom MCP tool connection is registered. Independent capacity control, saved Project views and live pickup/return evidence remain outstanding under [GCL-QUEUE-CLASS-CUTOVER #1049](https://github.com/grandchallenge/MATHSOLVE/issues/1049).
 
 ## Mandatory promotion steps
 
