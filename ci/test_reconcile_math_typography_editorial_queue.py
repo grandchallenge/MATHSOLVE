@@ -53,6 +53,34 @@ class ReconcileTest(unittest.TestCase):
         issue.return_value = {"labels": [{"name": "gcl-state:returned"}]}
         q.verify(1256, {"status": "Done", "queueClass": "Editorial"}, "RETURNED")
 
+    @patch.object(q, "gh")
+    @patch.object(q, "issue")
+    def test_create_returned_label_before_taking_available_off(self, issue, runner):
+        issue.return_value = {"labels": [{"name": "gcl-state:available"}]}
+        runner.side_effect = [json.dumps([{"name": "gcl-state:available"}]), "", "", ""]
+        q.set_label(1256, "gcl-state:available", "gcl-state:returned")
+        commands = [call.args for call in runner.call_args_list]
+        self.assertEqual(commands[1][:3], ("label", "create", "gcl-state:returned"))
+        self.assertEqual(commands[2][:3], ("issue", "edit", "1256"))
+        self.assertIn("--add-label", commands[2])
+        self.assertIn("--remove-label", commands[3])
+
+    @patch.object(q, "gh")
+    @patch.object(q, "issue")
+    def test_existing_returned_label_is_reused(self, issue, runner):
+        issue.return_value = {"labels": [{"name": "gcl-state:available"}]}
+        runner.side_effect = [json.dumps([{"name": "gcl-state:returned"}]), "", ""]
+        q.set_label(1256, "gcl-state:available", "gcl-state:returned")
+        self.assertEqual(runner.call_count, 3)
+        self.assertFalse(any(call.args[:2] == ("label", "create")
+                             for call in runner.call_args_list))
+
+    @patch.object(q, "gh")
+    def test_wrong_role_transition_rejected_without_mutation(self, runner):
+        with self.assertRaisesRegex(RuntimeError, "unapproved"):
+            q.set_label(1256, "gcl-state:blocked", "gcl-state:returned")
+        runner.assert_not_called()
+
     @patch.object(q, "preflight", side_effect=RuntimeError("unmerged prerequisite"))
     def test_no_project_writes_when_protected_preflight_fails(self, preflight):
         with patch.object(sys, "argv", ["controller", "--apply"]), \
