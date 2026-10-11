@@ -26,6 +26,7 @@ QUEUE_CLASSES = ("Editorial", "Mathematics")
 DIRECT = "gcl-pickup:direct-editorial"
 SOURCE_ROLE = "gcl-role:source-audit"
 ERDOS_TITLE = re.compile(r"^(?:\[GCL-ERDOS\]\s+)?ERDOS-CATALOGUE-\d{4}-S\d{2}\b")
+TYPO_EDITORIAL_SOURCE = re.compile(r"^MP-MATH-TYPO-ED0[79]\b")
 
 
 class QueueIntegrityError(ValueError):
@@ -61,6 +62,8 @@ def classify(repository: str, title: str, labels: Iterable[str],
         if not (erdos and role):
             raise QueueIntegrityError("ambiguous Erdős source-audit identity")
         return "Mathematics", mode
+    if role and repository == "grandchallenge/MATH-PROGRAMME" and TYPO_EDITORIAL_SOURCE.search(title):
+        return "Editorial", mode
     if role:
         raise QueueIntegrityError("unclassified source-audit outside Erdős catalogue")
     return "Editorial", mode
