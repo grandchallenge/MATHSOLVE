@@ -81,6 +81,31 @@ class ReconcileTest(unittest.TestCase):
             q.set_label(1256, "gcl-state:blocked", "gcl-state:returned")
         runner.assert_not_called()
 
+    @patch.object(q, "gh")
+    def test_status_option_ids_come_from_live_project(self, runner):
+        runner.return_value = json.dumps({"fields": [
+            {"name": "Status", "id": q.STATUS_FIELD["field_id"], "options": [
+                {"name": "Todo", "id": "live-todo-new"}, {"name": "Done", "id": "live-done-new"}]},
+            {"name": "Queue Class", "id": "PVTSSF_lADOB9Ao_c4BlwurzhlJkjI", "options": [
+                {"name": "Editorial", "id": "editorial-option"}]}
+        ]})
+        cl, editorial, status, opts = q.project_fields()
+        self.assertEqual(cl, "PVTSSF_lADOB9Ao_c4BlwurzhlJkjI")
+        self.assertEqual(editorial, "editorial-option")
+        self.assertEqual(status, q.STATUS_FIELD["field_id"])
+        self.assertEqual(opts["Done"], "live-done-new")
+
+    @patch.object(q, "gh")
+    def test_missing_live_done_option_blocks_before_mutation(self, runner):
+        runner.return_value = json.dumps({"fields": [
+            {"name": "Status", "id": q.STATUS_FIELD["field_id"], "options": [
+                {"name": "Todo", "id": "live-todo"}]},
+            {"name": "Queue Class", "id": "PVTSSF_lADOB9Ao_c4BlwurzhlJkjI", "options": [
+                {"name": "Editorial", "id": "editorial-option"}]}
+        ]})
+        with self.assertRaisesRegex(RuntimeError, "live Project Status options"):
+            q.project_fields()
+
     @patch.object(q, "preflight", side_effect=RuntimeError("unmerged prerequisite"))
     def test_no_project_writes_when_protected_preflight_fails(self, preflight):
         with patch.object(sys, "argv", ["controller", "--apply"]), \
@@ -90,7 +115,7 @@ class ReconcileTest(unittest.TestCase):
             mutate.assert_not_called()
 
     @patch.object(q, "project_items")
-    @patch.object(q, "project_fields", return_value=("classfield", "editorialoption"))
+    @patch.object(q, "project_fields", return_value=("classfield", "editorialoption", "statusfield", {"Todo": "live-todo", "Done": "live-done"}))
     @patch.object(q, "preflight", return_value="protectedsha")
     def test_readonly_dry_run_has_no_mutations(self, _, __, items):
         items.return_value = {
