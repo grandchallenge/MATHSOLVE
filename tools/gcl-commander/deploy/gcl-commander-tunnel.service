@@ -1,0 +1,24 @@
+[Unit]
+Description=GCL Commander secure outbound OpenAI MCP Tunnel (stdio)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/gcl-commander
+EnvironmentFile=%h/.config/gcl-commander/tunnel.env
+Environment=GCL_COMMANDER_GITHUB_ACTOR=fyremael
+Environment=GCL_COMMANDER_TRANSPORT=stdio
+Environment=GCL_COMMANDER_PROJECT_WRITE=disabled
+ExecStart=%h/.local/bin/tunnel-client run --profile gcl-commander
+Restart=on-failure
+RestartSec=15
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.local/state/gcl-commander
+# All MCP tools are bound by GCL Commander. No arbitrary shell and no raw HTTP MCP port.
+
+[Install]
+WantedBy=default.target
