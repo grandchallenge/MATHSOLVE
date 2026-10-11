@@ -7,6 +7,7 @@ identity. --apply is explicit. No queue/project label is claim authority.
 from __future__ import annotations
 import argparse
 import json
+import os
 import subprocess
 from pathlib import Path
 
@@ -121,9 +122,23 @@ def set_label(n: int, old: str, new: str):
 
 
 def preflight():
-    actor = api("user").get("login")
-    if actor not in {"fyremael", "jimsteeg"}:
-        raise RuntimeError("unauthorized Projects queue operator")
+    workflow = "grandchallenge/MATH-PROGRAMME/.github/workflows/erdos-catalogue-queue-projection.yml@refs/heads/main"
+    clerk = (os.environ.get("GITHUB_ACTIONS") == "true" and
+             os.environ.get("GITHUB_REPOSITORY") == REPO and
+             os.environ.get("GITHUB_REF") == "refs/heads/main" and
+             os.environ.get("GITHUB_WORKFLOW_REF") == workflow)
+    if clerk:
+        # Protected release-trust workflow minted a repository-limited Council Clerk
+        # installation token with organization Projects write and issues write.
+        # Verify the token is scoped to precisely this Programme repository.
+        installation = api("installation/repositories?per_page=100")
+        allowed = {r.get("full_name") for r in installation.get("repositories", [])}
+        if allowed != {REPO} or installation.get("total_count") != 1:
+            raise RuntimeError("Council Clerk installation token repository scope drift")
+    else:
+        actor = api("user").get("login")
+        if actor not in {"fyremael", "jimsteeg"}:
+            raise RuntimeError("unauthorized Projects queue operator")
     actual_main = api("repos/grandchallenge/MATHSOLVE/git/ref/heads/main")["object"]["sha"]
     local_head = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True,
                                 text=True, check=True).stdout.strip()
