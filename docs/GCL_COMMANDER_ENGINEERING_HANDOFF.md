@@ -41,3 +41,14 @@ The host CHAD remains unavailable for remote shell access to this ChatGPT sessio
 6. Record exact source SHAs, CI, receipt hashes, tunnel and app authority, Project item counts and protected queue readback in #1049.
 
 Release requires evidence, not just the existence of this handoff.
+
+
+## v0.2.0 follow-on: CHAD logon persistence and read-only repository tools
+
+Candidate release `GCL-Commander-v0.2.0.zip` created and locally validated (SHA-256 `5c95d6ca4ffad2e31e409027cba53b6efc66ccda93f8d310faf968f6e8e5573a`, **53/53 tests PASS**). CHAD's earlier v0.1.4 tunnel is **genuinely ChatGPT-connected**: live `system_status` and two complete read-only `project_queue_audit` invocations returned `fyremael`, 1308 jobs, 37 Editorial, 1271 Mathematics and zero class corrections. This is NOT evidence of persistence across Windows restart.
+
+v0.2.0 adds a WSL tunnel supervisor with `flock` singleton, bounded restart backoff, secret mode checks, no inbound MCP listener, explicit Project/repository write-disable; plus a Windows **non-elevated current-user logon Scheduled Task** installer (for CHAD's no-systemd WSL). It adds typed MCP tools `project_queue_views_readback`, `governed_repository_head`, `governed_repository_file`, and `governed_repository_pr`. These are read-only with an explicit repository allowlist, exact main SHA and file size/path guards, and no generic command executor. Repository document proposals remain unactivated even if an environment flag is set.
+
+A shell-safe `deploy/upgrade-wsl.sh` backs up existing source, tests before overlay, replays after overlay, and rolls back on failure; a `deploy/publish-source-pr-wsl.sh` creates a DRAFT candidate source PR containing explicit source files under `tools/gcl-commander/`. The existing GitHub handoff PR #1070 contains only this documentary record: **the candidate code will not become durable source authority until CHAD executes its publisher and GCL protects/admits that separate PR.** No local machine secrets belong in GitHub. Windows logon persistence is not live until CHAD installs/starts the task and proves new health/readiness after foreground shutdown or reboot.
+
+**Queue acceptance evidence:** protected Council Clerk #2563 already verified three saved view identities: EDITORIAL `PVTV_lADOB9Ao_c4BlwurzgMAfZU`, MATHEMATICS `PVTV_lADOB9Ao_c4BlwurzgMAfZY`, global AVAILABLE `PVTV_lADOB9Ao_c4BlwurzgL64bo`. Protected Solve worker workflow already serializes claims and enforces eight active Mathematics reservations based on trusted lease history; Editorial eight slots are still planning only until authenticated direct-issue start/return custody exists. MATHSOLVE #999 is now labeled RETURNED with capture comments, but its original `github-actions[bot]` claim/RESULT/1 is not evidence for a genuinely distinct-worker acceptance, nor of downstream protected adjudication and successor closure. Do not certify the full two-lane worker lifecycle on these facts alone.
