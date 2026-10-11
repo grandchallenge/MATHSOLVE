@@ -107,6 +107,11 @@ def current_class(item: dict):
 
 
 def project_edit(item: dict, field_id: str, option_id: str):
+    # Queue Class is owned by the independent Project semantic classifier.
+    # Editing its option again here caused the live Project V2 405-style
+    # rejection and must never be necessary for an editorial state transition.
+    if field_id != STATUS_FIELD["field_id"]:
+        raise RuntimeError("ED08 state controller cannot write Queue Class or other Project fields")
     gh("project", "item-edit", "--id", item["id"], "--project-id", PROJECT_ID,
        "--field-id", field_id, "--single-select-option-id", option_id)
 
@@ -235,8 +240,14 @@ def main():
     initial = project_items()
     cls_id, cls_option, status_id, live_status = project_fields()
     for n in [*PRS, SUCCESSOR, ARCHIVE]:
-        if f"https://github.com/{REPO}/issues/{n}" not in initial:
+        url=f"https://github.com/{REPO}/issues/{n}"
+        if url not in initial:
             raise RuntimeError(f"{n}: missing from canonical Project #2")
+        if current_class(initial[url]) != "Editorial":
+            raise RuntimeError(
+                f"{n}: Project Queue Class must already be Editorial; "
+                "run the independent protected semantic-class reconciler first"
+            )
     print(json.dumps({"mode": "apply" if args.apply else "dry-run",
                       "operator_project": PROJECT_ID, "protected_solve_head": main_sha,
                       "transition": EXPECTED, "archive_remains_blocked": ARCHIVE},
@@ -246,7 +257,6 @@ def main():
     # First remove seven stale pickup slots. ED08 remains blocked throughout.
     for n in PRS:
         item = initial[f"https://github.com/{REPO}/issues/{n}"]
-        project_edit(item, cls_id, cls_option)
         set_label(n, "gcl-state:available", "gcl-state:returned")
         update_state(n, "RETURNED")
         project_edit(item, status_id, live_status["Done"])
@@ -255,7 +265,6 @@ def main():
         verify(n, interim[f"https://github.com/{REPO}/issues/{n}"], "RETURNED")
     # ED08 is the ONLY newly discoverable task; all predecessor receipts remain PARTIAL.
     item = interim[f"https://github.com/{REPO}/issues/{SUCCESSOR}"]
-    project_edit(item, cls_id, cls_option)
     project_edit(item, status_id, live_status["Todo"])
     update_state(SUCCESSOR, "AVAILABLE")
     # Do not label it AVAILABLE until the field and Project presentation read back.
