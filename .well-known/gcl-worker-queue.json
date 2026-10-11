@@ -95,7 +95,17 @@
       "pickup_mode": "direct_editorial",
       "required_label": "gcl-pickup:direct-editorial",
       "view_selector": "EDITORIAL",
-      "discovery_query_url": "https://github.com/issues?q=is%3Aissue+is%3Aopen+org%3Agrandchallenge+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+-label%3Agcl-role%3Asource-audit"
+      "discovery_query_url": "https://github.com/issues?q=is%3Aissue+is%3Aopen+org%3Agrandchallenge+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+-label%3Agcl-role%3Asource-audit",
+      "specialist_source_triage": [
+        {
+          "repository": "grandchallenge/MATH-PROGRAMME",
+          "issue_number": 1262,
+          "issue_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/1262",
+          "semantic_class": "Editorial",
+          "pickup_mode": "direct_editorial",
+          "discover_only_if_state": "AVAILABLE"
+        }
+      ]
     },
     "mathematics": {
       "description": "Proof/counterexample/formalization in Solve plus Erdős source and bounded research preparation via direct issue pickup",
@@ -121,7 +131,8 @@
     "publication_effect": false,
     "classifier_path": "ci/gcl_queue_class_contract.py",
     "project_queue_class_field_id": "PVTSSF_lADOB9Ao_c4BlwurzhlJkjI",
-    "cutover_state": "NOT_ACTIVATED_UNTIL_COMPLETE_PROJECT_READBACK_AND_CAPACITY_GUARD"
+    "cutover_state": "NOT_ACTIVATED_UNTIL_COMPLETE_PROJECT_READBACK_AND_CAPACITY_GUARD",
+    "editorial_source_role_exception": "MP-MATH-TYPO-ED07 / MATH-PROGRAMME #1262: Editorial despite source-audit role; not Erdős research"
   },
   "specialized_discovery": {
     "erdos_catalogue_research_preparation": {
