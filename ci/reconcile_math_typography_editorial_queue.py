@@ -305,23 +305,27 @@ def main():
     for n in PRS:
         item = initial[f"https://github.com/{REPO}/issues/{n}"]
         set_label(n, "gcl-state:available", "gcl-state:returned")
-        update_state(n, "RETURNED")
-        project_edit(item, status_id, live_status["Done"])
-    interim = project_items()
+        if field_values(n).get("GCL State") != "RETURNED":
+            update_state(n, "RETURNED")
+        if item.get("status") != "Done":
+            project_edit(item, status_id, live_status["Done"])
+    interim = selected_project_items(initial, list(PRS))
     for n in PRS:
         verify(n, interim[f"https://github.com/{REPO}/issues/{n}"], "RETURNED")
     # ED08 is the ONLY newly discoverable task; all predecessor receipts remain PARTIAL.
-    item = interim[f"https://github.com/{REPO}/issues/{SUCCESSOR}"]
-    project_edit(item, status_id, live_status["Todo"])
-    update_state(SUCCESSOR, "AVAILABLE")
+    item = initial[f"https://github.com/{REPO}/issues/{SUCCESSOR}"]
+    if item.get("status") != "Todo":
+        project_edit(item, status_id, live_status["Todo"])
+    if field_values(SUCCESSOR).get("GCL State") != "AVAILABLE":
+        update_state(SUCCESSOR, "AVAILABLE")
     # Do not label it AVAILABLE until the field and Project presentation read back.
-    candidate = project_items()[f"https://github.com/{REPO}/issues/{SUCCESSOR}"]
+    candidate = selected_project_items(initial, [SUCCESSOR])[f"https://github.com/{REPO}/issues/{SUCCESSOR}"]
     if field_values(SUCCESSOR).get("GCL State") != "AVAILABLE" or (
         candidate.get("status") != "Todo" or current_class(candidate) != "Editorial"):
         update_state(SUCCESSOR, "BLOCKED")
         raise RuntimeError("ED08 pre-exposure readback failed; reverted to BLOCKED field")
     set_label(SUCCESSOR, "gcl-state:blocked", "gcl-state:available")
-    final = project_items()
+    final = selected_project_items(initial, list(EXPECTED))
     for n, state in EXPECTED.items():
         verify(n, final[f"https://github.com/{REPO}/issues/{n}"], state)
     if field_values(ARCHIVE).get("GCL State") != "BLOCKED":
