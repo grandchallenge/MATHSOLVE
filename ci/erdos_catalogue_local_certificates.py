@@ -144,10 +144,62 @@ def check_241() -> dict:
     return {"status":"PASS","exhaustive_sets":cases,"sharp_boundary_n":list(range(2,10))}
 
 
+
+def check_241_energy_and_modulus_obstruction() -> dict:
+    """Triple-sum orbit multiplicities and false 'small modulus' hope."""
+    from itertools import product
+    from collections import Counter
+    from math import comb
+    checked = 0
+    for n in range(2, 11):
+        for mask in range(1 << n):
+            A = [i+1 for i in range(n) if (mask >> i) & 1]
+            raw = [sum(t) for t in combinations_with_replacement(A,3)]
+            if len(set(raw)) != len(raw):
+                continue
+            k = len(A)
+            freq = Counter(a+b+c for a,b,c in product(A,repeat=3))
+            assert len(freq) == comb(k+2,3)
+            assert sum(freq.values()) == k**3
+            assert sum(v*v for v in freq.values()) == 6*k**3-9*k**2+4*k
+            checked += 1
+    A = [1,2,6]
+    sums = [sum(t) for t in combinations_with_replacement(A,3)]
+    assert len(set(sums)) == 10
+    assert all(len({x%m for x in sums}) < 10 for m in range(1,16))
+    assert len({x%16 for x in sums}) == 10
+    return {"status":"PASS","strong_B3_sets_checked":checked,
+            "least_safe_modulus_A_1_2_6":16,
+            "triple_energy_A_1_2_6":93}
+
+
+def check_595_trianglefree_vs_bipartite() -> dict:
+    """C5 is already triangle-free despite needing >=2 bipartite layers."""
+    vertices = range(5)
+    edges = {frozenset({i,(i+1)%5}) for i in vertices}
+    assert len(edges)==5
+    assert not any(
+        all(frozenset({u,v}) in edges for u,v in
+            ((a,b),(a,c),(b,c)))
+        for a,b,c in combinations_with_replacement(vertices,3)
+        if len({a,b,c})==3
+    )
+    assert not any(
+        all(colors[i] != colors[(i+1)%5] for i in vertices)
+        for colors in product((0,1), repeat=5)
+    )
+    witness=(0,1,2,0,1)
+    assert all(witness[i] != witness[(i+1)%5] for i in vertices)
+    return {"status":"PASS","graph":"C5","chromatic_number":3,
+            "triangle_free_layers":1,"minimum_bipartite_layers":2}
+
+
 def verify():
     return {"ERDOS-007":check_007(),"ERDOS-009":check_009(),
             "ERDOS-010":check_010(),"ERDOS-138":check_138(),
-            "ERDOS-241":check_241()}
+            "ERDOS-241":check_241(),
+            "ERDOS-241-ENERGY":check_241_energy_and_modulus_obstruction(),
+            "ERDOS-595-GAP":check_595_trianglefree_vs_bipartite()}
 
 
 if __name__=="__main__":
