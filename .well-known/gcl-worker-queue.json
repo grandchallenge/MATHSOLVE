@@ -140,8 +140,29 @@
     "publication_effect": false,
     "classifier_path": "ci/gcl_queue_class_contract.py",
     "project_queue_class_field_id": "PVTSSF_lADOB9Ao_c4BlwurzhlJkjI",
-    "cutover_state": "NOT_ACTIVATED_UNTIL_COMPLETE_PROJECT_READBACK_AND_CAPACITY_GUARD",
-    "editorial_source_role_exception": "MATH-PROGRAMME #1262/ED07 and #1264/ED09 are Editorial despite source-audit roles; protected ERDOS-ROLLING-024 critic dockets are Mathematics"
+    "cutover_state": "SEMANTIC_PROJECT_CLASS_AND_SAVED_VIEWS_VERIFIED_ACTIVE_CAPACITY_AND_CANARIES_OPEN",
+    "editorial_source_role_exception": "MATH-PROGRAMME #1262/ED07 and #1264/ED09 are Editorial despite source-audit roles; protected ERDOS-ROLLING-024 critic dockets are Mathematics",
+    "project_classification_verified": {
+      "status": "VERIFIED",
+      "protected_programme_sha": "aa61829b88848ab50b009b9a5b2a097e81b8a819",
+      "workflow_run": "https://github.com/grandchallenge/MATH-PROGRAMME/actions/runs/38124664460",
+      "durable_receipt": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/2563",
+      "project_items": 1308,
+      "editorial_items": 37,
+      "mathematics_items": 1271,
+      "queue_field_id": "PVTSSF_lADOB9Ao_c4BlwurzhlJkjI",
+      "views": {
+        "EDITORIAL": "PVTV_lADOB9Ao_c4BlwurzgMAfZU",
+        "MATHEMATICS": "PVTV_lADOB9Ao_c4BlwurzgMAfZY",
+        "AVAILABLE": "PVTV_lADOB9Ao_c4BlwurzgL64bo"
+      },
+      "not_worker_concurrency": true
+    },
+    "active_capacity_claims": {
+      "Mathematics": "eight-slot protected /claim ledger guard candidate; live positive/hostile verification pending",
+      "Editorial": "eight-slot planning budget; untracked direct-issue starts prevent runtime active-worker enforcement",
+      "no_mode_migration": true
+    }
   },
   "specialized_discovery": {
     "erdos_catalogue_research_preparation": {
