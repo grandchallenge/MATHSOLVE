@@ -171,6 +171,7 @@ def validate() -> list[str]:
         "contents: read",
         "issues: write",
         "group: gcl-mathematics-active-reservations",
+        "queue: max",
         "ci/gcl_active_reservation_capacity.py",
         "--snapshot-out",
         "cancel-in-progress: false",
