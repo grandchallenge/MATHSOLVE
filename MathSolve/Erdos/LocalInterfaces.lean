@@ -50,6 +50,10 @@ positive amount less than M. This is the local no-wrap arithmetic core. -/
 theorem nat_mod_eq_of_close {a b M : ℕ}
     (hab : a ≤ b) (hgap : b - a < M)
     (hmod : a % M = b % M) : a = b := by
+  by_contra hne
+  have hlt : a < b := by omega
+  have hcong : a ≡ b [MOD M] := hmod
+  have hwide : a + M ≤ b := hcong.add_le_of_lt hlt
   omega
 
 /-- An interval with diameter strictly less than M has injective reduction
