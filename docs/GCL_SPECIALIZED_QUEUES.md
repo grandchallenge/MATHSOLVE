@@ -1,6 +1,6 @@
 # GCL specialized worker queues — compatibility-first contract
 
-Status: protected routing merged; semantic-class repair under review. Project views, Project field readback, operational admission and live worker pickup still require an independent activation receipt.
+Status (2026-10-11): **semantic Project #2 classification and both saved views VERIFIED** in protected Council Clerk run [#38124664460](https://github.com/grandchallenge/MATH-PROGRAMME/actions/runs/38124664460), SHA `aa61829b88848ab50b009b9a5b2a097e81b8a819`. Project #2 fully re-read **1,308** jobs (**37 Editorial**, **1,271 Mathematics**), with existing AVAILABLE view preserved. Active worker-capacity enforcement, genuine two-lane pickup/RESULT/1 replay, and ATLAS workload reconciliation remain separate gates; issue #1049 stays OPEN.
 
 ## Queue class and pickup mode are independent axes
 
@@ -9,7 +9,7 @@ Status: protected routing merged; semantic-class repair under review. Project vi
 ## Two discovery classes; one execution fabric
 
 - **Editorial**: `grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS`, `grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS`, and configured `grandchallenge/MATH-PROGRAMME` substantive manuscript, documentation and critic tasks (excluding `gcl-role:source-audit`). Requires `gcl-pickup:direct-editorial`. Bound issue is the complete assignment. No `/claim`.
-- **Mathematics**: `grandchallenge/MATHSOLVE` reservation-controlled research plus source-audit/research-preparation tasks in MATH-PROGRAMME. Requires protected dispatch, `/claim`, active reservation confirmation and actor-consistent RESULT/1. No protected cohort disclosure bypass.
+- **Mathematics**: `grandchallenge/MATHSOLVE` proof and research dispatches require protected `/claim` reservation and owner-bound RESULT/1. The additional MATH-PROGRAMME Erdős source audits and critical source/lemma reviews are also Mathematics, but **retain direct issue-bound RESULT/1 with no `/claim`**, because Queue Class and pickup mode are independent. No protected cohort disclosure bypass.
 
 The top-level `WORKERS.md` and `.well-known/gcl-worker-queue.json` remain the shared bootstrap and machine-readable contract. The existing GCL Project #2 AVAILABLE view remains canonical cross-repository discovery until actual separate filtered Project views are configured and verified. The new JSON class labels are *discovery filters*, not new pickup modes or authority, and are deliberately additive.
 
@@ -32,9 +32,20 @@ The full Erdős catalogue is a **mathematical research-preparation** workstream,
 6. Editorial chapter production and distinct critic-role checking are separate work roles, not separate person/account requirements. Editing does not certify work. A returned editorial result remains evidence until scoped adjudication.
 7. Public release or theorem certification is never granted by queue status.
 
+## Verified operational classification receipt
+
+The authenticated [Council Clerk #2563 receipt](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2563) records exact Project V2 metadata:
+
+- Queue Class field: `PVTSSF_lADOB9Ao_c4BlwurzhlJkjI`.
+- EDITORIAL saved view: `PVTV_lADOB9Ao_c4BlwurzgMAfZU`.
+- MATHEMATICS saved view: `PVTV_lADOB9Ao_c4BlwurzgMAfZY`.
+- The original global AVAILABLE view remains `PVTV_lADOB9Ao_c4BlwurzgL64bo`.
+
+**The 1,308 rows are queued issues, not active workers.** The controller's successful complete readback is evidence of semantic class and view integrity only. It is neither a licence to increase concurrent work nor a theorem or editorial certification.
+
 ## Capacity policy (implementation contract; not activated by documentation)
 
-Allocate capacity independently by *semantic* class and programme, bounded by the existing controller and worker pool. `check_admission` in `ci/gcl_queue_class_contract.py` fails closed when either class's admission budget or its complete AVAILABLE count is missing; a full Project snapshot is required. No class budget values are asserted here: they must be governed and reconciled to actual existing AVAILABLE items before activation. This check is a pure decision guard, **not connected to a Project writer**. Do not let 80 editorial chapter jobs displace reserved mathematics slots, and do not let long mathematics leases block editorial pickup. Queue admission is not worker launch. Controllers must maintain idempotence, deterministic recovery, and clear failure returns. Implement actual *available-item admission* enforcement at the Project-write boundary. Direct-editorial workers do not have MATHSOLVE reservation leases; therefore runtime concurrency cannot be derived from `AVAILABLE` counts. Track real direct-editorial start/return ownership before asserting active worker concurrency limits. Existing Solve leases are never reclassified or preempted.
+Allocate capacity independently by *semantic* class and programme, bounded by the existing controller and worker pool. `check_admission` in `ci/gcl_queue_class_contract.py` fails closed when either class's admission budget or its complete AVAILABLE count is missing; a full Project snapshot is required. The pilot protected CONFIG.json now proposes **8 active Mathematics reservations** and an independent **8-slot Editorial planning budget**, subject to protected admission. The Mathematics guard counts all **trusted, unexpired reservation histories** and serializes claim/release/reaper operations before admitting another Solve /claim; it never uses the 1,271 Mathematics queue items as occupied slots. Editorial has **no enforceable active-worker count** until actual authenticated direct-issue start/return evidence is tracked; its budget must not be represented as live capacity enforcement. This check is a pure decision guard, **not connected to a Project writer**. Do not let 80 editorial chapter jobs displace reserved mathematics slots, and do not let long mathematics leases block editorial pickup. Queue admission is not worker launch. Controllers must maintain idempotence, deterministic recovery, and clear failure returns. Implement actual *available-item admission* enforcement at the Project-write boundary. Direct-editorial workers do not have MATHSOLVE reservation leases; therefore runtime concurrency cannot be derived from `AVAILABLE` counts. Track real direct-editorial start/return ownership before asserting active worker concurrency limits. Existing Solve leases are never reclassified or preempted.
 
 ## Rollout and validation matrix
 
