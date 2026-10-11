@@ -229,3 +229,48 @@ jobs:
               gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$returned" >/dev/null
             fi
           done
+
+      - name: Audit real active Mathematics reservations (read-only)
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p active-capacity
+          python ci/gcl_active_reservation_capacity.py \
+            --snapshot-out "$RUNNER_TEMP/active-mathematics.json"
+          PYTHONPATH=ci python - <<'PY'
+          import json,os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          from gcl_active_reservation_capacity import count_live, CONFIG
+          snapshot=json.loads(Path(os.environ["RUNNER_TEMP"]+"/active-mathematics.json").read_text())
+          live=count_live(snapshot,datetime.now(timezone.utc))
+          limits=json.loads(CONFIG.read_text())["active_class_capacity"]
+          assert set(limits)=={"Mathematics","Editorial"}
+          assert live["complete"] is True and live["class"]=="Mathematics"
+          receipt={"record_type":"GCL_MATHEMATICS_ACTIVE_CAPACITY_READBACK/1",
+                   "protected_sha":os.environ["GITHUB_SHA"],
+                   "run_id":os.environ["GITHUB_RUN_ID"],
+                   "source":"complete authenticated GitHub controller reservation histories",
+                   "observed_jobs":snapshot["total_jobs"],
+                   "active_reservations":live["active_count"],
+                   "active_issue_numbers":live["active_issue_numbers"],
+                   "mathematics_limit":limits["Mathematics"],
+                   "editorial_limit_not_enforced":limits["Editorial"],
+                   "is_worker_result":False,
+                   "is_certification":False}
+          Path("active-capacity/receipt.json").write_text(
+              json.dumps(receipt,sort_keys=True,indent=2)+"\n",encoding="utf-8")
+          print("ACTIVE_CAPACITY_READBACK",json.dumps(receipt,sort_keys=True))
+          PY
+
+      - name: Archive bounded active-worker evidence (no raw comments)
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: gcl-math-active-capacity-${{ github.run_id }}-${{ github.run_attempt }}
+          path: active-capacity/receipt.json
+          retention-days: 14
+          if-no-files-found: warn
+
