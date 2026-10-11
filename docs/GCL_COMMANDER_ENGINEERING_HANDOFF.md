@@ -2,7 +2,7 @@
 
 Status: **prototype implemented and tested locally; CHAD installation, secure-tunnel registration, and live Projects reconciliation remain pending.** Do not claim this branch contains the executable distribution.
 
-A complete separately packaged implementation artifact is attached to the creating ChatGPT conversation as `GCL-Commander-v0.1.0.zip` (SHA-256 `e2d1353fa49020a134d1832b576440bb1ea0fbed3c56023c5d3b82be3a90be64`); it needs source admission to an appropriate GCL-owned code repository before operational promotion. The artifact is not a durable GitHub source archive merely because this record exists.
+A complete separately packaged implementation artifact is attached to the creating ChatGPT conversation as `GCL-Commander-v0.1.0.zip` (SHA-256 `7834b08e798c3cb8dba6cfacada8afc94ed5f5c4b10cd9b9e7471eaa352a3553`); it needs source admission to an appropriate GCL-owned code repository before operational promotion. The artifact is not a durable GitHub source archive merely because this record exists.
 
 The prototype contains Python package `gcl_commander` with:
 - MCP SDK v2 server using loopback-only Streamable HTTP or stdio;
@@ -11,7 +11,7 @@ The prototype contains Python package `gcl_commander` with:
 - queue semantic classifier matching protected `ci/gcl_queue_class_contract.py` at prototype creation: Erdős catalogue/critics Mathematics despite direct-editorial pickup, typography issue ED07/ED09 Editorial;
 - state-preserving Project field corrections gated by exact inventory count and local `GCL_COMMANDER_PROJECT_WRITE=enabled`;
 - complete post-write readback and receipt artifacts, no generic terminal capability.
-- eleven local pytest unit tests, all passing.
+- eleven local pytest unit tests, all passing; a CHAD WSL installer and optional loopback-only systemd user service are included.
 
 ## Exact deployment boundary
 
