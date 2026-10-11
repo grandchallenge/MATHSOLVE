@@ -82,6 +82,14 @@ class ReconcileTest(unittest.TestCase):
         runner.assert_not_called()
 
     @patch.object(q, "gh")
+    def test_editorial_controller_rejects_queue_class_mutation(self, runner):
+        with self.assertRaisesRegex(RuntimeError, "cannot write Queue Class"):
+            q.project_edit({"id":"PVTI-test"},"PVTSSF_lADOB9Ao_c4BlwurzhlJkjI","editorial-id")
+        runner.assert_not_called()
+        q.project_edit({"id":"PVTI-test"},q.STATUS_FIELD["field_id"],"live-done")
+        self.assertEqual(runner.call_count, 1)
+
+    @patch.object(q, "gh")
     def test_status_option_ids_come_from_live_project(self, runner):
         runner.return_value = json.dumps({"fields": [
             {"name": "Status", "id": q.STATUS_FIELD["field_id"], "options": [
@@ -117,9 +125,31 @@ class ReconcileTest(unittest.TestCase):
     @patch.object(q, "project_items")
     @patch.object(q, "project_fields", return_value=("classfield", "editorialoption", "statusfield", {"Todo": "live-todo", "Done": "live-done"}))
     @patch.object(q, "preflight", return_value="protectedsha")
+    def test_wrong_queue_class_blocks_before_any_state_mutation(self, _, __, items):
+        items.return_value = {
+            f"https://github.com/{q.REPO}/issues/{n}": {
+                "id": str(n), "queueClass": "Mathematics" if n == 1262 else "Editorial"
+            }
+            for n in [*q.PRS, q.SUCCESSOR, q.ARCHIVE]
+        }
+        with patch.object(sys, "argv", ["controller", "--apply"]), \
+             patch.object(q, "project_edit") as mutate, \
+             patch.object(q, "update_state") as update, \
+             patch.object(q, "set_label") as labels:
+            with self.assertRaisesRegex(RuntimeError, "semantic-class reconciler first"):
+                q.main()
+            mutate.assert_not_called()
+            update.assert_not_called()
+            labels.assert_not_called()
+
+    @patch.object(q, "project_items")
+    @patch.object(q, "project_fields", return_value=("classfield", "editorialoption", "statusfield", {"Todo": "live-todo", "Done": "live-done"}))
+    @patch.object(q, "preflight", return_value="protectedsha")
     def test_readonly_dry_run_has_no_mutations(self, _, __, items):
         items.return_value = {
-            f"https://github.com/{q.REPO}/issues/{n}": {"id": str(n)}
+            f"https://github.com/{q.REPO}/issues/{n}": {
+                "id": str(n), "queueClass": "Editorial"
+            }
             for n in [*q.PRS, q.SUCCESSOR, q.ARCHIVE]
         }
         with patch.object(sys, "argv", ["controller"]), \
