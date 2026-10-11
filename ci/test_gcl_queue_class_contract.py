@@ -55,6 +55,18 @@ class ClassTest(unittest.TestCase):
                      "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS"):
             self.assertEqual(classify(repo,"Chapter review",{DIRECT},modes=MODES)[0],"Editorial")
 
+
+    def test_typography_source_review_class(self):
+        for suffix in ("07", "09"):
+            title = f"MP-MATH-TYPO-ED{suffix} — public typography source audit"
+            self.assertEqual(classify("grandchallenge/MATH-PROGRAMME", title,
+                             {DIRECT,"gcl-role:source-audit"}, modes=MODES),
+                             ("Editorial","direct_editorial"))
+        with self.assertRaises(QueueIntegrityError):
+            classify("grandchallenge/MATH-PROGRAMME",
+                     "MP-MATH-TYPO-ED08 — verifier",
+                     {DIRECT,"gcl-role:source-audit"}, modes=MODES)
+
     def test_proof_dispatch(self):
         self.assertEqual(classify("grandchallenge/MATHSOLVE","Proof",{"gcl-job"},modes=MODES),
                          ("Mathematics","reservation_controlled"))
