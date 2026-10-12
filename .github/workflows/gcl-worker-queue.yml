@@ -1,4 +1,5 @@
 name: GCL worker queue reservation controller
+run-name: ${{ github.event_name == 'workflow_dispatch' && inputs.gcl_control_operation_id != '' && format('GCL Control Plane {0}', inputs.gcl_control_operation_id) || 'GCL worker queue reservation controller' }}
 
 on:
   issue_comment:
@@ -6,6 +7,11 @@ on:
   schedule:
     - cron: "17 * * * *"
   workflow_dispatch:
+    inputs:
+      gcl_control_operation_id:
+        description: "Optional opaque CONTROL-WRITE-001 transaction ID for exact-run correlation"
+        type: string
+        required: false
 
 permissions:
   contents: read
@@ -132,6 +138,37 @@ jobs:
       queue: max
       cancel-in-progress: false
     steps:
+      - name: Validate and preserve optional exact CONTROL dispatch identity
+        if: github.event_name == 'workflow_dispatch' && inputs.gcl_control_operation_id != ''
+        env:
+          GCL_CONTROL_OPERATION_ID: ${{ inputs.gcl_control_operation_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          import re
+
+          operation = os.environ["GCL_CONTROL_OPERATION_ID"]
+          if not re.fullmatch(r"CW-[A-Z0-9][A-Z0-9-]{7,63}", operation):
+              raise SystemExit("BLOCKED: invalid CONTROL operation ID (no queue mutation)")
+          receipt = {
+              "record_type": "GCL_CONTROL_DISPATCH_RECEIPT/1",
+              "operation_id": operation,
+              "controller": "gcl-worker-queue.yml:reap",
+              "repository": os.environ["GITHUB_REPOSITORY"],
+              "run_id": os.environ["GITHUB_RUN_ID"],
+              "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "head_sha": os.environ["GITHUB_SHA"],
+              "event": os.environ["GITHUB_EVENT_NAME"],
+              "mathematical_effect": False,
+              "certification_effect": False,
+          }
+          print("GCL_CONTROL_DISPATCH_RECEIPT/1 " + json.dumps(
+              receipt, sort_keys=True, separators=(",", ":")))
+          PY
+
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: main
