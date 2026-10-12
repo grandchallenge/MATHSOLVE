@@ -1,0 +1,2 @@
+'GCLStatementFidelityAudit.overlap_not_obligatory' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GCLStatementFidelityAudit.overlap_two_colorable' depends on axioms: [propext, Classical.choice, Quot.sound]
