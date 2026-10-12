@@ -284,15 +284,23 @@ def main():
     p.add_argument("--apply", action="store_true")
     args = p.parse_args()
     main_sha = preflight()
-    initial = project_items()
+    # gh project item-list is a complete membership/ID snapshot but its JSON
+    # projection does not reliably expose custom Queue Class fields. Resolve
+    # all nine exact item IDs using the independent classifier's authoritative
+    # ProjectV2 fieldValueByName readback *before any lifecycle mutation*.
+    inventory = project_items()
     cls_id, cls_option, status_id, live_status = project_fields()
-    for n in [*PRS, SUCCESSOR, ARCHIVE]:
-        url=f"https://github.com/{REPO}/issues/{n}"
-        if url not in initial:
+    numbers = [*PRS, SUCCESSOR, ARCHIVE]
+    for n in numbers:
+        url = f"https://github.com/{REPO}/issues/{n}"
+        if url not in inventory:
             raise RuntimeError(f"{n}: missing from canonical Project #2")
+    initial = selected_project_items(inventory, numbers)
+    for n in numbers:
+        url = f"https://github.com/{REPO}/issues/{n}"
         if current_class(initial[url]) != "Editorial":
             raise RuntimeError(
-                f"{n}: Project Queue Class must already be Editorial; "
+                f"{n}: authoritative Project Queue Class must already be Editorial; "
                 "run the independent protected semantic-class reconciler first"
             )
     print(json.dumps({"mode": "apply" if args.apply else "dry-run",

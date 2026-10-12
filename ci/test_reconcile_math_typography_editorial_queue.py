@@ -149,15 +149,20 @@ class ReconcileTest(unittest.TestCase):
                 q.main()
             mutate.assert_not_called()
 
+    @patch.object(q, "selected_project_items")
     @patch.object(q, "project_items")
     @patch.object(q, "project_fields", return_value=("classfield", "editorialoption", "statusfield", {"Todo": "live-todo", "Done": "live-done"}))
     @patch.object(q, "preflight", return_value="protectedsha")
-    def test_wrong_queue_class_blocks_before_any_state_mutation(self, _, __, items):
+    def test_wrong_queue_class_blocks_before_any_state_mutation(self, _, __, items, scoped):
+        # Snapshot omits custom fields; authoritative GraphQL detects actual
+        # Mathematics classification before any status, label or Issue Field write.
         items.return_value = {
-            f"https://github.com/{q.REPO}/issues/{n}": {
-                "id": str(n), "queueClass": "Mathematics" if n == 1262 else "Editorial"
-            }
+            f"https://github.com/{q.REPO}/issues/{n}": {"id": str(n)}
             for n in [*q.PRS, q.SUCCESSOR, q.ARCHIVE]
+        }
+        scoped.return_value = {
+            url: {**row, "queueClass": "Mathematics" if url.endswith("/1262") else "Editorial", "status": "Todo"}
+            for url, row in items.return_value.items()
         }
         with patch.object(sys, "argv", ["controller", "--apply"]), \
              patch.object(q, "project_edit") as mutate, \
@@ -168,21 +173,49 @@ class ReconcileTest(unittest.TestCase):
             mutate.assert_not_called()
             update.assert_not_called()
             labels.assert_not_called()
+        scoped.assert_called_once()
 
+    @patch.object(q, "selected_project_items")
     @patch.object(q, "project_items")
     @patch.object(q, "project_fields", return_value=("classfield", "editorialoption", "statusfield", {"Todo": "live-todo", "Done": "live-done"}))
     @patch.object(q, "preflight", return_value="protectedsha")
-    def test_readonly_dry_run_has_no_mutations(self, _, __, items):
+    def test_omitted_cli_queue_class_accepts_authoritative_editorial_in_dryrun(self, _, __, items, scoped):
         items.return_value = {
-            f"https://github.com/{q.REPO}/issues/{n}": {
-                "id": str(n), "queueClass": "Editorial"
-            }
+            f"https://github.com/{q.REPO}/issues/{n}": {"id": str(n)}
             for n in [*q.PRS, q.SUCCESSOR, q.ARCHIVE]
         }
+        scoped.return_value = {
+            url: {**row, "queueClass": "Editorial", "status": "Done"}
+            for url, row in items.return_value.items()
+        }
         with patch.object(sys, "argv", ["controller"]), \
-             patch.object(q, "project_edit") as mutate:
+             patch.object(q, "project_edit") as mutate, \
+             patch.object(q, "update_state") as state, \
+             patch.object(q, "set_label") as labels:
             q.main()
             mutate.assert_not_called()
+            state.assert_not_called()
+            labels.assert_not_called()
+        scoped.assert_called_once_with(items.return_value, [*q.PRS, q.SUCCESSOR, q.ARCHIVE])
+
+    @patch.object(q, "selected_project_items", side_effect=RuntimeError("Project scoped readback identity drift: 1256"))
+    @patch.object(q, "project_items")
+    @patch.object(q, "project_fields", return_value=("classfield", "editorialoption", "statusfield", {"Todo": "live-todo", "Done": "live-done"}))
+    @patch.object(q, "preflight", return_value="protectedsha")
+    def test_missing_authoritative_class_readback_fails_before_writes(self, _, __, items, scoped):
+        items.return_value = {
+            f"https://github.com/{q.REPO}/issues/{n}": {"id": str(n)}
+            for n in [*q.PRS, q.SUCCESSOR, q.ARCHIVE]
+        }
+        with patch.object(sys, "argv", ["controller", "--apply"]), \
+             patch.object(q, "project_edit") as mutate, \
+             patch.object(q, "update_state") as state, \
+             patch.object(q, "set_label") as labels:
+            with self.assertRaisesRegex(RuntimeError, "identity drift"):
+                q.main()
+            mutate.assert_not_called()
+            state.assert_not_called()
+            labels.assert_not_called()
 
 
 if __name__ == "__main__":
