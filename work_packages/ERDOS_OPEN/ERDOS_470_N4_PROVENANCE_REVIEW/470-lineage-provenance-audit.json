@@ -1,0 +1,36 @@
+{
+  "record_type": "GCL_ERDOS_470_ARCHIVE_PROVENANCE_RECONCILIATION_CANDIDATE",
+  "source_commit": "88d22faf46400f0050287c3c32c9a807ca3b1340",
+  "archive_manifest_sha256": "7d3a427a2f2f0cfea706e8ca2eceeef99f94efb9470c0d2c995dcc0f8554c4df",
+  "archive_count": 183,
+  "archived_records": 527827,
+  "marker_counts": {
+    "t": 485384,
+    "c": 42443
+  },
+  "distinct_names_by_marker": {
+    "t": 485384,
+    "c": 42443
+  },
+  "distinct_payloads_by_marker": {
+    "t": 476638,
+    "c": 41776
+  },
+  "same_name_different_payload_count": 0,
+  "observed_filename_groups": 41777,
+  "observed_groups_without_c": 36622,
+  "observed_groups_with_multiple_distinct_c": 2000,
+  "published_table_1": {
+    "first_batch_lineages": 41776,
+    "first_batch_workunits": 527191,
+    "source": "https://doi.org/10.1007/s10723-017-9411-5",
+    "page": 655
+  },
+  "archived_minus_published_workunits": 636,
+  "filename_group_semantics": "Third token is documented as running number in the batch; persistence across recycled workunits and interval identity remain unverified",
+  "filename_documentation": "https://www.rechenkraft.net/wiki/index.php?title=Yoyo%40home_en",
+  "interval_coverage_proved": false,
+  "historical_checksum_replayed": false,
+  "paired_validator_results_recovered": false,
+  "odd_weird_exclusion_certified": false
+}
