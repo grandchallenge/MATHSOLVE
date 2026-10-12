@@ -141,6 +141,37 @@ class ReconcileTest(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "identity drift"):
             q.selected_project_items({url: {"id": "I-1256"}}, [1256])
 
+    @patch.object(q, "api")
+    def test_unset_initial_status_is_repairable_only_by_explicit_scope(self, api):
+        url = f"https://github.com/{q.REPO}/issues/1263"
+        api.return_value = {"data": {"nodes": [{
+            "id": "PVTI-1263",
+            "content": {"number": 1263, "repository": {"nameWithOwner": q.REPO}},
+            "projectStatus": None,
+            "projectClass": {"name": "Editorial"},
+        }]}}
+        initial = {url: {"id": "PVTI-1263"}}
+        with self.assertRaisesRegex(RuntimeError, "Status unset: 1263"):
+            q.selected_project_items(initial, [1263])
+        out = q.selected_project_items(
+            initial, [1263], allow_unset_status_for=frozenset({1263}))
+        self.assertIsNone(out[url]["status"])
+        self.assertEqual(out[url]["queueClass"], "Editorial")
+
+    @patch.object(q, "api")
+    def test_missing_queue_class_is_rejected_even_when_status_repair_allowed(self, api):
+        url = f"https://github.com/{q.REPO}/issues/1263"
+        api.return_value = {"data": {"nodes": [{
+            "id": "PVTI-1263",
+            "content": {"number": 1263, "repository": {"nameWithOwner": q.REPO}},
+            "projectStatus": {"name": "Todo"},
+            "projectClass": None,
+        }]}}
+        with self.assertRaisesRegex(RuntimeError, "Queue Class absent: 1263"):
+            q.selected_project_items(
+                {url: {"id": "PVTI-1263"}}, [1263],
+                allow_unset_status_for=frozenset({1263}))
+
     @patch.object(q, "preflight", side_effect=RuntimeError("unmerged prerequisite"))
     def test_no_project_writes_when_protected_preflight_fails(self, preflight):
         with patch.object(sys, "argv", ["controller", "--apply"]), \
@@ -196,7 +227,9 @@ class ReconcileTest(unittest.TestCase):
             mutate.assert_not_called()
             state.assert_not_called()
             labels.assert_not_called()
-        scoped.assert_called_once_with(items.return_value, [*q.PRS, q.SUCCESSOR, q.ARCHIVE])
+        scoped.assert_called_once_with(
+            items.return_value, [*q.PRS, q.SUCCESSOR, q.ARCHIVE],
+            allow_unset_status_for=frozenset([*q.PRS, q.SUCCESSOR, q.ARCHIVE]))
 
     @patch.object(q, "selected_project_items", side_effect=RuntimeError("Project scoped readback identity drift: 1256"))
     @patch.object(q, "project_items")

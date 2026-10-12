@@ -85,8 +85,14 @@ def project_items() -> dict[str, dict]:
     return indexed
 
 
-def selected_project_items(initial: dict[str, dict], numbers: list[int]) -> dict[str, dict]:
-    """Read only the nine prevalidated Project item identities after mutation."""
+def selected_project_items(initial: dict[str, dict], numbers: list[int],
+                           *, allow_unset_status_for: frozenset[int] = frozenset()) -> dict[str, dict]:
+    """Read exact Project identities, fields and bounded initial empty Status.
+
+    An unset *initial* Status may be repaired by the lifecycle controller.
+    All post-write readbacks require an explicit Status, and Queue Class is
+    always mandatory; the independent classifier owns that field.
+    """
     urls = [f"https://github.com/{REPO}/issues/{n}" for n in numbers]
     if len(set(urls)) != len(urls):
         raise RuntimeError("duplicate Project readback identities")
@@ -126,8 +132,10 @@ def selected_project_items(initial: dict[str, dict], numbers: list[int]) -> dict
             raise RuntimeError(f"Project scoped readback identity drift: {number}")
         status = ((node or {}).get("projectStatus") or {}).get("name")
         cls = ((node or {}).get("projectClass") or {}).get("name")
-        if not status or not cls:
-            raise RuntimeError(f"Project scoped field readback incomplete: {number}")
+        if not cls:
+            raise RuntimeError(f"Project scoped Queue Class absent: {number}")
+        if not status and number not in allow_unset_status_for:
+            raise RuntimeError(f"Project scoped Status unset: {number}")
         out[link] = {"id": item_id, "status": status, "queueClass": cls}
     return out
 
@@ -295,7 +303,9 @@ def main():
         url = f"https://github.com/{REPO}/issues/{n}"
         if url not in inventory:
             raise RuntimeError(f"{n}: missing from canonical Project #2")
-    initial = selected_project_items(inventory, numbers)
+    initial = selected_project_items(
+        inventory, numbers, allow_unset_status_for=frozenset(numbers)
+    )
     for n in numbers:
         url = f"https://github.com/{REPO}/issues/{n}"
         if current_class(initial[url]) != "Editorial":
