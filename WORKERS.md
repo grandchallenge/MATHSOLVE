@@ -20,6 +20,12 @@ A job's **semantic Queue Class** (Editorial or Mathematics) is not its **pickup 
 
 The [shared Project #2 AVAILABLE view](https://github.com/orgs/grandchallenge/projects/2) remains the cross-repository discovery authority. These class-specific links do **not** supersede protected mode routing, prove availability, or launch a worker. For contract and activation criteria, see [GCL specialized queues](docs/GCL_SPECIALIZED_QUEUES.md). Do not assert that dedicated GitHub Project views have been provisioned until read back.
 
+## Computational verification using Lean on Colab
+
+For an already assigned mathematical task that needs Lean compilation or bounded computational verification, the protected GCL skill lives in [MATH-PROGRAMME's Lean/Colab skill](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/.agents/skills/gcl-lean-colab/SKILL.md). Its [registered jobs](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/governance/lean_colab/JOBS.json), [specification](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/docs/lean-colab/SPEC.md) and [run matrix](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/docs/lean-colab/RUN_MATRIX.md) document supported work.
+
+From a protected MATH-PROGRAMME checkout, an authenticated local Codex operator can run `python3 ci/gcl_lean_colab_jobs.py list` and `python3 ci/gcl_lean_colab_jobs.py verify`. Only run a registered job with an already authorized task, the job's live queue preflight, exact-source custody, and available Colab OAuth. Do not substitute the skill for queue pickup, send credentials to Colab, or represent compilation as mathematical certification. New workloads require a protected source/worker/adapter registration first.
+
 ## Mandatory prerequisite
 
 You must have an authenticated GitHub identity that can post comments on the
