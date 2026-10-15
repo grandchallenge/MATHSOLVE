@@ -4,6 +4,8 @@
 Legacy bootstrap-pinned dispatches retain their existing intake profiles.
 All protected queue dispatches lacking legacy bootstrap fields require one
 explicit, immutable dispatch/issue/task binding in this manifest.
+QFT-COND-005 is an explicitly allowlisted research campaign; other campaign
+names still fail closed.
 """
 from __future__ import annotations
 import hashlib
@@ -54,7 +56,7 @@ def validate(root:Path=ROOT)->list[str]:
             errors.append(f"{did}: queue registry and intake binding disagree")
         if dispatch.get("dispatch_id")!=did or dispatch.get("github_issue_number")!=job["issue_number"]:
             errors.append(f"{did}: dispatch and queue registry disagree")
-        if dispatch.get("campaign") not in {"RH-001","ERDOS-OPEN"}:
+        if dispatch.get("campaign") not in {"RH-001","ERDOS-OPEN","QFT-COND-005"}:
             errors.append(f"{did}: unregistered campaign")
         if dispatch.get("dispatch_status")!="READY_FOR_GITHUB_COMMENT" or dispatch.get("lease_state")!="ACTIVE":
             errors.append(f"{did}: dispatch not executable")
