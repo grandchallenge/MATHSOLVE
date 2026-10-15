@@ -48,21 +48,23 @@ After authorized reservation and before posting a result, refresh issue comments
 ```text
 GCL-CONTRIBUTION-RESULT/1
 dispatch_id: QFT-COND-005-EXT-015B-IA-001
-assignment: EXT-015B
 agent_ref: INDEPENDENT-SPECIALIST-QFT-COND-005-EXT-015B
-disposition: PROVED | REFUTED | EXACT_BLOCKER
-source_programme_head: c4c49545a279494c0c085b81aeaf245f4c3ace5a
+assignment: EXT-015B
+disposition: PROVED_REDUCTION | COUNTEREXAMPLE | EXACT_BLOCKER
+context_class: ZERO_CONTEXT
+external_sources: PRIMARY_SOURCES_REQUIRED
+timebox_observed: YES | NO
 ```
 
-Then supply sections:
-- `## Strongest exact mathematical statement`
-- `## Definitions and categorical hypotheses`
-- `## Proof or counterexample`
-- `## Adversarial controls`
-- `## Primary references (exact theorem/page)`
-- `## Named unresolved lemma` (write NONE if fully resolved)
-- `## Consequences for EXT-015 RUN_MATRIX`
-- `## Bounded next step` (no execution or certification authority)
+Replace the preamble alternatives above with **one exact disposition** and **one exact YES/NO** value, then insert one blank line and **exactly these six level-2 sections, in this order**:
+- `## Strongest exact statement`
+- `## Derivation`
+- `## Assumptions beyond bootstrap`
+- `## Verification / falsification hooks`
+- `## Claim boundary`
+- `## Next residual` (at most three sentences)
+
+Use the sections to report exact mathematical hypotheses, derivations, adversarial controls, exact primary-source bibliographic citations and named missing lemmas. **The comment parser forbids raw URLs, Markdown hyperlinks, HTML links and attachments in the RESULT/1 body.** Record references as plain author/title/theorem/page identifiers, not links; citations to immutable source files are already in this task. A RESULT/1 is evidence and not mathematical certification.
 
 Do not copy another worker's results or synthesize sibling outputs in the blind phase. The accepted return is evidence pending mathematical review. It is not a certification or protected-merge approval.
 
