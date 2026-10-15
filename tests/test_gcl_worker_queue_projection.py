@@ -228,6 +228,73 @@ class WorkerQueueProjectionTest(unittest.TestCase):
             )
             self.assertEqual(out["clear_field_ids"], [3])
 
+    def test_crlf_result_is_pending_not_expired_after_lease(self):
+        """Actual EXT-015B format must not silently reopen after expiry."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.setup_root(root)
+            comments = [{
+                "id": 6191119625,
+                "user": {"login": "worker"},
+                "body": "GCL-CONTRIBUTION-RESULT/1\r\ndispatch_id: D-1\r\n",
+            }]
+            out = self.run_projection(
+                root, "reconcile", issue_number=7, comments=comments,
+                now=datetime(2026, 10, 15, 15, 0, tzinfo=timezone.utc),
+            )
+            self.assertEqual(out["reservation_state"], "RESULT_PENDING")
+            self.assertEqual(out["issue_field_values"][-1], {
+                "field_id": 1, "value": "BLOCKED"
+            })
+
+    def test_crlf_captured_result_stays_returned_after_lease_expiry(self):
+        """Actual EXT-015B comment + trusted intake acknowledgement."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.setup_root(root)
+            comments = [
+                {
+                    "id": 6191119625,
+                    "user": {"login": "worker"},
+                    "body": "GCL-CONTRIBUTION-RESULT/1\r\ndispatch_id: D-1\r\n",
+                },
+                {
+                    "id": 6191438320,
+                    "user": {"login": "github-actions[bot]"},
+                    "body": "INTAKE CAPTURED — raw evidence and receipt were committed.",
+                },
+            ]
+            out = self.run_projection(
+                root, "reconcile", issue_number=7, comments=comments,
+                now=datetime(2026, 10, 15, 22, 0, tzinfo=timezone.utc),
+            )
+            self.assertEqual(out["reservation_state"], "RETURNED")
+            self.assertEqual(out["issue_field_values"][-1], {
+                "field_id": 1, "value": "RETURNED"
+            })
+
+    def test_crlf_result_untrusted_capture_does_not_count(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.setup_root(root)
+            comments = [
+                {
+                    "id": 100,
+                    "user": {"login": "worker"},
+                    "body": "GCL-CONTRIBUTION-RESULT/1\r\ndispatch_id: D-1\r\n",
+                },
+                {
+                    "id": 101,
+                    "user": {"login": "worker"},
+                    "body": "INTAKE CAPTURED — spoofed",
+                },
+            ]
+            out = self.run_projection(
+                root, "reconcile", issue_number=7, comments=comments,
+                now=datetime(2026, 10, 15, 22, 0, tzinfo=timezone.utc),
+            )
+            self.assertEqual(out["reservation_state"], "RESULT_PENDING")
+
     def test_reconcile_active_and_expired(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)

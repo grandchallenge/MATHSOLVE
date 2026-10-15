@@ -99,6 +99,13 @@ def latest_result_intake_state(
     for comment in comments:
         body = comment.get("body")
         actor = str((comment.get("user") or {}).get("login") or "")
+        # GitHub preserves CRLF in some authored RESULT/1 comments. The
+        # protected intake parser already normalizes CRLF before parsing;
+        # the queue reconciler must recognize the same exact result marker.
+        # Otherwise an accepted result is silently treated as an expired
+        # reservation and incorrectly reopened for another worker.
+        if isinstance(body, str):
+            body = body.replace("\r\n", "\n").replace("\r", "\n")
         if isinstance(body, str) and body.startswith(RESULT_MARKER + "\n"):
             state = "PENDING"
             continue
