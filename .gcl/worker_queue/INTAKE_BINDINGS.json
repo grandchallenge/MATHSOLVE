@@ -247,6 +247,42 @@
         "PRIMARY_SOURCES_REQUIRED"
       ],
       "campaign": "ERDOS-OPEN"
+    },
+    {
+      "dispatch_id": "QFT-COND-005-EXT-015A-IA-001",
+      "dispatch_path": "contributions/QFT-COND-005/EXT-015/dispatches/QFT-COND-005-EXT-015A-IA-001.json",
+      "github_issue_number": 1081,
+      "issue_body_sha256": "009b7012a0bae972562475771bf9bc9b4abafbcbb630db9bfd963eb903d58db4",
+      "task_path": "handoffs/QFT-COND-005/launch/QFT-COND-005-EXT-015A-IA-001.md",
+      "task_commit": "7377370088e5656049c2a91dc52f5ee96f3752e4",
+      "task_sha256": "f0e801cb74b60f9505ff3247b5e73f37684422153b7ed62f7a72dab92654dc0c",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER"
+      ],
+      "allowed_external_sources": [
+        "PRIMARY_SOURCES_REQUIRED"
+      ],
+      "campaign": "QFT-COND-005"
+    },
+    {
+      "dispatch_id": "QFT-COND-005-EXT-015B-IA-001",
+      "dispatch_path": "contributions/QFT-COND-005/EXT-015/dispatches/QFT-COND-005-EXT-015B-IA-001.json",
+      "github_issue_number": 1082,
+      "issue_body_sha256": "9578d52c78134c60917df3af0dbf817a58bca95b58b466ce7b4b52d5b86ec6a4",
+      "task_path": "handoffs/QFT-COND-005/launch/QFT-COND-005-EXT-015B-IA-001.md",
+      "task_commit": "7377370088e5656049c2a91dc52f5ee96f3752e4",
+      "task_sha256": "3ca8bd8c099056cce42c9189d161bc4c5a6e392b19c5d34f7ec2c76c64e429bc",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER"
+      ],
+      "allowed_external_sources": [
+        "PRIMARY_SOURCES_REQUIRED"
+      ],
+      "campaign": "QFT-COND-005"
     }
   ]
 }
