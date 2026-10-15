@@ -236,7 +236,7 @@ class WorkerQueueProjectionTest(unittest.TestCase):
             comments = [{
                 "id": 6191119625,
                 "user": {"login": "worker"},
-                "body": "GCL-CONTRIBUTION-RESULT/1\\r\\ndispatch_id: D-1\\r\\n",
+                "body": "GCL-CONTRIBUTION-RESULT/1\r\ndispatch_id: D-1\r\n",
             }]
             out = self.run_projection(
                 root, "reconcile", issue_number=7, comments=comments,
@@ -256,7 +256,7 @@ class WorkerQueueProjectionTest(unittest.TestCase):
                 {
                     "id": 6191119625,
                     "user": {"login": "worker"},
-                    "body": "GCL-CONTRIBUTION-RESULT/1\\r\\ndispatch_id: D-1\\r\\n",
+                    "body": "GCL-CONTRIBUTION-RESULT/1\r\ndispatch_id: D-1\r\n",
                 },
                 {
                     "id": 6191438320,
@@ -281,7 +281,7 @@ class WorkerQueueProjectionTest(unittest.TestCase):
                 {
                     "id": 100,
                     "user": {"login": "worker"},
-                    "body": "GCL-CONTRIBUTION-RESULT/1\\r\\ndispatch_id: D-1\\r\\n",
+                    "body": "GCL-CONTRIBUTION-RESULT/1\r\ndispatch_id: D-1\r\n",
                 },
                 {
                     "id": 101,
