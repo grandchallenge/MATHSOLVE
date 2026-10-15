@@ -34,6 +34,7 @@ jobs:
        startsWith(github.event.issue.title, '[GCL-CONTRIB] CMDG-CM4 CMDG-P3M-COV-') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] CMDG-CM4 CMDG-P3M-N3-') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] ERDOS-OPEN ') ||
+       startsWith(github.event.issue.title, '[GCL-CONTRIB] QFT-COND-005 ') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] GCL-E2E-CANARY ')) &&
       startsWith(github.event.comment.body, 'GCL-CONTRIBUTION-RESULT/1'))
     runs-on: ubuntu-24.04
