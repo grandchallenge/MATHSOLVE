@@ -7,6 +7,9 @@ Date: 2026-09-25
 | WP08-D001 | Decide whether arbitrary finite union-closed families admit exact D003-complement representation. | Closed negative | `p04_no_universal_exact_functionalPreorder_representation`; explicit three-point obstruction. |
 | WP08-D002 | Extend the Frankl-facing result from functional preorders to arbitrary finite partial orders. | Closed locally | `posetIdealFamily_exists_rare` and `posetIdeal_complement_frankl`; maximal-element erasure injection. |
 | WP08-D003 | Express arbitrary finite closure systems by closure operators / implication bases and isolate the first non-poset obstruction. | Closed locally | Canonical closure operator and finite implication basis are checked; single binary implication `{a,b}->c` is a closure system not representable by unary implications; D002 erasure fails at the forced conclusion; bounded example still satisfies the rare-element/complement endgame. |
+| WP08-D003A | Extend the erasure mechanism beyond posets using finite Horn implications. | Candidate closed | `hornModel_complement_frankl_of_conclusionFree`. |
+| WP08-D003B | Determine whether single-element erasure can cover arbitrary pointed closure systems. | Candidate closed negative | `not_every_pointedClosureSystem_has_erasable`; cyclic binary Horn fixture. |
+| WP08-D003C | Replace erasure by a more general matching/charging mechanism for cyclic multi-premise closure systems. | Open | Begin from the three-point cyclic fixture and formulate an incidence-preserving finite matching criterion. |
 | WP08-D004 | Build an incidence-preserving interface to the WP05 minimum-counterexample lattice spine. | Active synthesis, unadjudicated | All four blind returns and the adversarial return are durably protected. Blind cohort `UC-WP08-D004-BLIND-COHORT-001` is closed on evidence completeness; synthesis is allowed, but no contributor claim is yet admitted. |
 
 ## D003 movement
@@ -49,6 +52,24 @@ failure of the D002 mechanism
   !=
 failure of the Frankl-facing conclusion.
 ```
+
+## D003 Horn erasure boundary
+
+The exact representation route is false; the poset theorem is broader than
+WP07; and the single-erasure proof has now reached its exact structural limit.
+
+The next useful object is not another equality representation. It is a
+certificate of the cardinal inequality
+
+```text
+# closed sets containing x <= # closed sets omitting x
+```
+
+that can use a nontrivial matching or charging map rather than literal
+`I |-> I \ {x}`.
+
+Such a certificate retains the incidence information needed by Frankl and can
+be compared directly with WP05's minimum-counterexample constraints.
 
 ## Current frontier
 
