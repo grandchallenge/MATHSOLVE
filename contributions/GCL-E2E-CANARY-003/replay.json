@@ -1,0 +1,13 @@
+{
+  "dispatch_id": "GCL-E2E-CANARY-003-IA-001",
+  "expected_value": 13,
+  "external_sources_used": false,
+  "fixed_expression": "6 + 7",
+  "raw_sha256": "1b2ceeded0451b118e9849800a14dcffd960f0350181e1aa0a3ad736d0b487bd",
+  "recomputed_value": 13,
+  "record_type": "GCL_E2E_CANARY_DETERMINISTIC_REPLAY",
+  "replay_id": "GCL-E2E-CANARY-003-REPLAY-001",
+  "replay_pass": true,
+  "schema_version": "1.0.0",
+  "sections_exact_match": true
+}
