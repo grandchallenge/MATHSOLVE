@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_DISPATCH_ACTIVATION_RECEIPT",
+  "receipt_id": "CMDG-P3M-N3-ACTIVATION-001",
+  "campaign": "CMDG-CM4-N3",
+  "work_package": "P3-M-FINITE-COEFFICIENT-ALLTRUE-005",
+  "state": "ACTIVE",
+  "protected_programme_predecessor": "a2897a270c477ac95ba3d18dd068a13b07d3b853",
+  "protected_solve_activation_merge": "fea1128fb5167c912f85b7b4369519e5bd3fc502",
+  "blind_cohort_id": "CMDG-P3M-N3-BLIND-COHORT-001",
+  "cohort_state": "OPEN",
+  "synthesis_allowed": false,
+  "issue_byte_lock_complete": true,
+  "launch_comments_posted": true,
+  "launch_comment_ids": {
+    "CMDG-P3M-N3-WP-A-IA-001": 5979988980,
+    "CMDG-P3M-N3-WP-B-IA-001": 5979989495,
+    "CMDG-P3M-N3-WP-C-IA-001": 5979989898,
+    "CMDG-P3M-N3-WP-D-IA-001": 5979990453
+  },
+  "live_issues": [
+    826,
+    827,
+    828,
+    829
+  ],
+  "controlled_intake_parser_blob": "42a839a033e31e34a9a9d60db73f5cfb8f9a2ad9",
+  "intake_workflow_blob": "fcd519fb7814f42e155980423a61b5989f773ba7",
+  "activation_effect": "dispatch execution and controlled evidence intake only",
+  "mathematical_effect": false,
+  "certification_effect": false,
+  "claim_boundary": "No N3 theorem, weighted reconstruction, Point-component vanishing, d = 0, mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion is admitted."
+}

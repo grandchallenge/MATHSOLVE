@@ -26,6 +26,27 @@ The current Programme gate authorizes restricted targets across `YM-D001` throug
 
 With D003 source-blocked and the next D001/D004/D005 application steps all coupled to an actual four-dimensional continuum construction, the smallest independent executable frontier was D002-R001. It was admitted at protected merge `f86c378ad29a893092243fb926828f61a53402b6`. The theorem isolates a reusable limit result: on one common observable algebra, normalization, exact symmetry/covariance and gauge-invariance equalities, and reflection positivity survive pointwise convergence of Schwinger functionals. The theorem does not construct the limit and does not transfer clustering or the remaining analytic OS profile; those remain in `YM-D002-R002`.
 
+## Active 2026-10-03 tranche — MRS proof-completeness closure
+
+After the protected Balaban acquisition state reached
+`EXTERNAL_PRIMARY_SOURCE_BYTE_ACCESS_REQUIRED__AUTOMATED_DISCOVERY_EXHAUSTED__NO_FURTHER_SEARCH_REPLAY`,
+the selected executable D003 route is:
+
+`YM-D003-MRS-R002 — SOURCE_PROOF_COMPLETENESS`.
+
+Canonical package:
+
+- `work_packages/YM_D003_MRS_PROOF_COMPLETENESS_CLOSURE/00_README.md`
+- `work_packages/YM_D003_MRS_PROOF_COMPLETENESS_CLOSURE/01_PROOF_OBLIGATION_DAG.json`
+- `work_packages/YM_D003_MRS_PROOF_COMPLETENESS_CLOSURE/02_AGENT_SUPPORT_PLAN.json`
+- `work_packages/YM_D003_MRS_PROOF_COMPLETENESS_CLOSURE/03_CONTROLLER_STATE.json`
+
+The purpose is to replace the opaque MRS "proof-completeness limitation" with an exact source/theorem dependency graph and then close the smallest material missing proof node. Three independent external support WPs are prepared under `handoffs/YM-001/mrs-r002/`: source-dependency reconstruction, theorem-grade convergence closure/reduction, and adversarial route audit.
+
+External contributor returns use `GCL-CONTRIBUTION-RESULT/1`, issue-comment-only authority, exact protected dispatch binding, and first-valid-result evidence capture. Such returns remain unadjudicated evidence until GCL independently verifies them and protects a Solve synthesis. No external contributor may mutate canonical claims, certify, or splice Balaban and MRS.
+
+Advancement rule: only a theorem-grade closure of `YM-D003-MRS-R002` permits selection of `YM-D003-MRS-R003 — IR_AND_INFINITE_VOLUME_REMOVAL`.
+
 ## Material acceptance criteria
 
 - bind exact protected Solve, Programme, and Forge source heads;

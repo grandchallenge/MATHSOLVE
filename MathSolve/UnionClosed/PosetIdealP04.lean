@@ -23,6 +23,7 @@ finite posets, and it still does not represent arbitrary finite closure systems.
 namespace MathSolve.UnionClosed.WP08
 
 open Finset
+open MathSolve.UnionClosed.WP07
 
 universe u
 
@@ -152,8 +153,8 @@ theorem erase_injective_on_containing
   by_cases hxm : x = m
   · subst x
     simp [hmA, hmB]
-  · have hxEq : x ∈ A.erase m ↔ x ∈ B.erase m := by
-      rw [hEq]
+  · have hxEq : x ∈ A.erase m ↔ x ∈ B.erase m :=
+      Iff.of_eq (congrArg (fun T : Finset α => x ∈ T) hEq)
     simpa [hxm] using hxEq
 
 /-- Every nonempty finite poset-ideal family has a rare carrier element.  A

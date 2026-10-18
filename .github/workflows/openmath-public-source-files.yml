@@ -1,0 +1,170 @@
+name: OPENMATH public source file acquisition
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/openmath-public-source-files.yml"
+      - ".ghos-routing/workflows.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  acquire-public-files:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact subject
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Assert exact subject checkout
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+
+      - name: Install official AutoLab CLI
+        run: |
+          set -euo pipefail
+          curl -fsSL https://app.autolab.ai/install.sh -o /tmp/autolab-install.sh
+          sha256sum /tmp/autolab-install.sh
+          sh /tmp/autolab-install.sh
+          "$HOME/.local/bin/autolab" --version
+
+      - name: Pull unresolved public hills and capture public source files
+        env:
+          AUTOLAB_TOKEN: ${{ secrets.AUTOLAB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$AUTOLAB_TOKEN" ]; then
+            echo "AUTOLAB_AUTH_BLOCKER=repository secret AUTOLAB_TOKEN is unavailable"
+            exit 42
+          fi
+          "$HOME/.local/bin/autolab" login --token "$AUTOLAB_TOKEN" >/dev/null
+
+          ids=(
+            "alejandrozu/clique-cluster-ramsey-multiplicity"
+            "alejandrozu/matrix-multiplication-tensor-3x3"
+            "alejandrozu/grothendieck-constant-witnesses"
+            "alejandrozu/collatz-modular-descent"
+            "alejandrozu/busy-beaver-6-certificates"
+            "ottogin/erdos-3"
+          )
+
+          for id in "${ids[@]}"; do
+            "$HOME/.local/bin/autolab" hills pull "$id" >/dev/null
+          done
+
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          ids = [
+              "alejandrozu/clique-cluster-ramsey-multiplicity",
+              "alejandrozu/matrix-multiplication-tensor-3x3",
+              "alejandrozu/grothendieck-constant-witnesses",
+              "alejandrozu/collatz-modular-descent",
+              "alejandrozu/busy-beaver-6-certificates",
+              "ottogin/erdos-3",
+          ]
+          token = os.environ["AUTOLAB_TOKEN"].encode()
+          root = Path(".autolab/hills")
+          wanted_names = {
+              "README.md",
+              "hill.yaml",
+              "eval.py",
+              "statement.lean",
+              "SOURCES.md",
+              "LIFTING.md",
+              "pyproject.toml",
+              "blobs.lock",
+              "private.lock",
+          }
+
+          global_manifest = []
+          for source_id in ids:
+              slug = source_id.rsplit("/", 1)[1]
+              hill = root / slug
+              if not hill.is_dir():
+                  raise SystemExit(f"missing pulled hill directory: {hill}")
+
+              files = []
+              captures = []
+              for path in sorted(p for p in hill.rglob("*") if p.is_file()):
+                  rel = path.relative_to(hill).as_posix()
+                  parts = set(path.relative_to(hill).parts)
+                  if (
+                      ".git" in parts
+                      or ".vc" in parts
+                      or "private" in parts
+                      or ".pytest_cache" in parts
+                      or "__pycache__" in parts
+                      or path.suffix == ".pyc"
+                  ):
+                      continue
+                  raw = path.read_bytes()
+                  if token and token in raw:
+                      raise SystemExit(f"credential material detected in {source_id}:{rel}")
+                  entry = {
+                      "path": rel,
+                      "size": len(raw),
+                      "sha256": hashlib.sha256(raw).hexdigest(),
+                  }
+                  files.append(entry)
+
+                  if path.name in wanted_names or rel == "tests/test_hill.py":
+                      try:
+                          text = raw.decode("utf-8")
+                      except UnicodeDecodeError:
+                          continue
+                      captures.append({"path": rel, "text": text})
+
+              manifest = {
+                  "source_id": source_id,
+                  "slug": slug,
+                  "public_file_count": len(files),
+                  "files": files,
+              }
+              canonical = json.dumps(
+                  manifest, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+              ).encode()
+              digest = hashlib.sha256(canonical).hexdigest()
+              global_manifest.append({
+                  "source_id": source_id,
+                  "slug": slug,
+                  "public_file_manifest_sha256": digest,
+                  "public_file_count": len(files),
+              })
+
+              print(f"OPENMATH_PUBLIC_MANIFEST_BEGIN {source_id} {digest}")
+              print(json.dumps(manifest, sort_keys=True, ensure_ascii=False))
+              print(f"OPENMATH_PUBLIC_MANIFEST_END {source_id}")
+
+              for capture in captures:
+                  data = capture["text"]
+                  sha = hashlib.sha256(data.encode()).hexdigest()
+                  print(
+                      "OPENMATH_PUBLIC_FILE_BEGIN "
+                      + source_id
+                      + " "
+                      + capture["path"]
+                      + " "
+                      + sha
+                  )
+                  print(data, end="" if data.endswith("\n") else "\n")
+                  print(
+                      "OPENMATH_PUBLIC_FILE_END "
+                      + source_id
+                      + " "
+                      + capture["path"]
+                  )
+
+          print("OPENMATH_PUBLIC_GLOBAL_BEGIN")
+          print(json.dumps(global_manifest, sort_keys=True))
+          print("OPENMATH_PUBLIC_GLOBAL_END")
+          PY

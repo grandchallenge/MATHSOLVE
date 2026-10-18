@@ -1,0 +1,236 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import hashlib
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+CONFIG = ROOT / ".gcl/worker_queue/CONFIG.json"
+REGISTRY = ROOT / ".gcl/worker_queue/JOBS.json"
+PROJECT = ROOT / ".gcl/worker_queue/PROJECT.json"
+WORKFLOW = ROOT / ".github/workflows/gcl-worker-queue.yml"
+ROUTING = ROOT / ".ghos-routing/workflows.json"
+ENTRYPOINT = ROOT / "handoffs/GCL-WORKER-QUEUE.md"
+INTAKE = ROOT / "ci/ns_ci_github_contribution_intake.py"
+INTAKE_WORKFLOW = ROOT / ".github/workflows/ns-ci-independent-contribution-intake.yml"
+PROGRAMME_COMMIT = "0fd894c053922ec43b70878e0f02e8370690449a"
+TASK_COMMIT = "13f8364d0dd052bf0cd9f6a9f66dc135d770529f"
+PROBLEMS = ["593", "595", "241", "470", "1052", "99", "101", "138"]
+LANES = ["R1", "S1", "A1"]
+
+
+def readj(path: Path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def blob_sha1(path: Path) -> str:
+    data = path.read_bytes()
+    return hashlib.sha1(f"blob {len(data)}\0".encode("ascii") + data).hexdigest()
+
+
+def validate() -> list[str]:
+    errors: list[str] = []
+    config = readj(CONFIG)
+    registry = readj(REGISTRY)
+    project = readj(PROJECT)
+    metadata_rules = config.get("project_metadata_projection") or {}
+
+    if config.get("policy_id") != "GCL-WORKER-QUEUE-001":
+        errors.append("queue policy id mismatch")
+    if config.get("programme_policy_commit") != PROGRAMME_COMMIT:
+        errors.append("Programme policy commit drift")
+    for key in ("reservation_is_execution_authority", "project_or_labels_are_authority", "mathematical_effect", "certification_effect"):
+        if config.get(key) is not False:
+            errors.append(f"authority boundary widened: {key}")
+    expected_pickup_modes = {
+        "grandchallenge/MATHSOLVE": "reservation_controlled",
+        "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": "direct_editorial",
+        "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial",
+    "grandchallenge/MATH-PROGRAMME": "direct_editorial",
+    }
+    if config.get("repository_pickup_modes") != expected_pickup_modes:
+        errors.append("repository pickup-mode map drift")
+    if config.get("labels", {}).get("pickup_direct_editorial") != "gcl-pickup:direct-editorial":
+        errors.append("direct-editorial pickup label drift")
+
+    option_groups = {
+        "role": set(project.get("issue_fields", {}).get("role", {}).get("options", [])),
+        "collaboration": set(project.get("issue_fields", {}).get("collaboration", {}).get("options", [])),
+        "phase": set(project.get("issue_fields", {}).get("phase", {}).get("options", [])),
+    }
+    for group, options in option_groups.items():
+        mapping = metadata_rules.get(group) or {}
+        if not mapping:
+            errors.append(f"Project metadata mapping missing: {group}")
+            continue
+        unknown_outputs = set(mapping.values()) - options
+        if unknown_outputs:
+            errors.append(f"Project metadata mapping emits unknown {group} values: {sorted(unknown_outputs)}")
+
+    label_rules = config.get("label_field_projection") or {}
+    for group, prefix in (("role", "gcl-role:"), ("collaboration", "gcl-collab:")):
+        mapping = label_rules.get(group) or {}
+        if not mapping:
+            errors.append(f"label/Issue Field mapping missing: {group}")
+            continue
+        if any(not str(label).startswith(prefix) for label in mapping):
+            errors.append(f"label/Issue Field mapping has invalid {group} label prefix")
+        unknown_outputs = set(mapping.values()) - option_groups[group]
+        if unknown_outputs:
+            errors.append(
+                f"label/Issue Field mapping emits unknown {group} values: {sorted(unknown_outputs)}"
+            )
+
+    jobs = registry.get("jobs", [])
+    expected = {f"ERDOS-{p}-{lane}-IA-001" for p in PROBLEMS for lane in LANES}
+    all_ids = {j.get("dispatch_id") for j in jobs}
+    if not expected.issubset(all_ids):
+        errors.append("historical ERDOS pilot dispatch missing")
+    historical = [j for j in jobs if j.get("dispatch_id") in expected]
+    if len(historical) != 24:
+        errors.append("historical ERDOS pilot cardinality drift")
+    if {j.get("issue_number") for j in historical} != set(range(842, 866)):
+        errors.append("historical ERDOS issue binding set drift")
+    cmdg_expected = {f"CMDG-P3M-SEP2-WP-{lane}-IA-001" for lane in ("A", "B", "C", "D")}
+    if not cmdg_expected.issubset(all_ids):
+        errors.append("CMDG product-functional separation cohort missing")
+
+    for job in jobs:
+        did = str(job.get("dispatch_id"))
+        if job.get("self_claimable") is not True:
+            errors.append(f"{did}: not self-claimable")
+        if job.get("reservation_ttl_minutes") != 65:
+            errors.append(f"{did}: reservation TTL drift")
+        if job.get("collaboration_mode") != "STAGED_DISCLOSURE":
+            errors.append(f"{did}: collaboration mode drift")
+        if job.get("visibility_phase") != "BLIND_COLLECTION" or job.get("sibling_use_policy") != "FORBIDDEN":
+            errors.append(f"{did}: blind pickup boundary drift")
+        if did in expected:
+            if job.get("task_commit") != TASK_COMMIT:
+                errors.append(f"{did}: historical immutable task commit drift")
+        else:
+            task_commit = str(job.get("task_commit") or "")
+            if len(task_commit) != 40:
+                errors.append(f"{did}: immutable task commit missing or malformed")
+
+        dp = ROOT / str(job.get("dispatch_path", ""))
+        if not dp.is_file():
+            errors.append(f"{did}: protected dispatch missing")
+            continue
+        d = readj(dp)
+        if d.get("dispatch_id") != did:
+            errors.append(f"{did}: dispatch identity mismatch")
+
+        campaign = str(d.get("campaign") or "").strip()
+        if not campaign:
+            errors.append(f"{did}: dispatch campaign missing for Project projection")
+        for group, source_value in (
+            ("role", job.get("role")),
+            ("collaboration", job.get("collaboration_mode")),
+            ("phase", job.get("visibility_phase")),
+        ):
+            mapping = metadata_rules.get(group) or {}
+            if str(source_value or "") not in mapping:
+                errors.append(
+                    f"{did}: no Project {group} mapping for {source_value!r}"
+                )
+        if not str(job.get("cohort_id") or "").strip():
+            errors.append(f"{did}: cohort missing for Project projection")
+        if d.get("github_issue_number") != job.get("issue_number"):
+            errors.append(f"{did}: issue binding mismatch")
+        if d.get("dispatch_status") != "READY_FOR_GITHUB_COMMENT":
+            errors.append(f"{did}: protected dispatch not ready")
+        if d.get("lease_state") != "ACTIVE":
+            errors.append(f"{did}: protected lease not active")
+        if d.get("canonical_mutation_authorized") is not False or d.get("certification_authorized") is not False:
+            errors.append(f"{did}: authority inflation")
+        if d.get("concurrency_mode") != "independent_blind":
+            errors.append(f"{did}: historical blind dispatch reclassified")
+        if d.get("blind_cohort_id") != job.get("cohort_id"):
+            errors.append(f"{did}: cohort identity mismatch")
+        task = ROOT / str(d.get("task_path", ""))
+        if not task.is_file():
+            errors.append(f"{did}: immutable task missing")
+        elif d.get("task_sha256") is not None and hashlib.sha256(
+            task.read_text(encoding="utf-8").encode("utf-8")
+        ).hexdigest() != d.get("task_sha256"):
+            errors.append(f"{did}: immutable task digest mismatch")
+
+    for p in PROBLEMS:
+        co = readj(ROOT / f"contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/cohorts/ERDOS-{p}-BLIND-COHORT-001.json")
+        if co.get("state") != "OPEN_AWAITING_RESULTS":
+            errors.append(f"ERDOS-{p}: blind cohort state changed")
+        if co.get("synthesis_allowed") is not False or co.get("cross_disclosure_before_closure") is not False:
+            errors.append(f"ERDOS-{p}: disclosure/synthesis opened in place")
+
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+    for needle in (
+        "issue_comment:",
+        "schedule:",
+        "contents: read",
+        "issues: write",
+        "group: gcl-mathematics-active-reservations",
+        "queue: max",
+        "ci/gcl_active_reservation_capacity.py",
+        "--snapshot-out",
+        "cancel-in-progress: false",
+        "ref: main",
+        "ci/gcl_worker_queue.py",
+        "Reconcile reservations and Issue Fields",
+    ):
+        if needle not in workflow:
+            errors.append(f"worker workflow missing {needle!r}")
+
+    routes = readj(ROUTING)
+    route = [x for x in routes.get("workflows", []) if x.get("path") == ".github/workflows/gcl-worker-queue.yml"]
+    if len(route) != 1:
+        errors.append("worker queue workflow missing from GH-OS routing")
+    else:
+        r = route[0]
+        if r.get("topology") != "PERSISTENT_CONTROLLER_REQUIRED" or r.get("controller_id") != "GITHUB_ACTIONS":
+            errors.append("worker queue persistent-controller routing mismatch")
+        features = set(r.get("observed_features", []))
+        for required in {"OPAQUE_EXECUTION", "SCHEDULED", "SECRET_CREDENTIAL", "WRITE_CAPABLE"}:
+            if required not in features:
+                errors.append(f"worker queue routing missing {required}")
+
+    intake = INTAKE.read_text(encoding="utf-8")
+    for needle in ("queue-managed result has no active worker reservation", "authenticated result author does not match active worker reservation"):
+        if needle not in intake:
+            errors.append(f"intake missing reservation-owner control: {needle}")
+    intake_workflow = INTAKE_WORKFLOW.read_text(encoding="utf-8")
+    if '--comments "$RUNNER_TEMP/issue-comments.json"' not in intake_workflow:
+        errors.append("intake workflow does not supply issue comment history")
+
+    entry = ENTRYPOINT.read_text(encoding="utf-8")
+    for needle in (
+        "/claim",
+        "/release",
+        "No bootstrap prompt must be copied",
+        "`FORBIDDEN`",
+        "Reservation-controlled mode",
+        "Direct-editorial mode",
+        "gcl-pickup:direct-editorial",
+        "Do not post `/claim`",
+        "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS",
+        "grandchallenge/MATH-PROGRAMME",
+    ):
+        if needle not in entry:
+            errors.append(f"worker entrypoint missing {needle!r}")
+
+    return errors
+
+
+def main() -> int:
+    errors = validate()
+    if errors:
+        for e in errors:
+            print("FAIL:", e)
+        return 1
+    print("PASS: GCL worker queue policy, ERDOS pilot bindings, controller routing, and blind-collaboration boundary agree")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

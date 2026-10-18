@@ -1,0 +1,69 @@
+{
+  "activation_cohort_blob_sha1": "a48b25a9d6d103b5358f7139272597bf228b088f",
+  "activation_cohort_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/cohorts/ERDOS-241-BLIND-COHORT-001.json",
+  "blind_cohort_closed": true,
+  "campaign": "ERDOS-OPEN-RECON",
+  "canonical_claim_effect": false,
+  "certification_effect": false,
+  "claim_boundary": "This receipt closes only the blind evidence-collection barrier at the protected R1+A1 synthesis minimum. It permits internal comparison and synthesis; it does not admit a mathematical claim, establish literature status, certify a theorem, authorize publication, or create MATHCERT effect.",
+  "claim_promotion_effect": false,
+  "closure_basis": "R1 and A1 each have one durably protected schema-valid RESULT/1 raw artifact and receipt; this is the protected Programme minimum for synthesis.",
+  "closure_date": "2026-10-06",
+  "cohort_id": "ERDOS-241-BLIND-COHORT-001",
+  "evidence": [
+    {
+      "canonical_claim_effect": false,
+      "dispatch_id": "ERDOS-241-R1-IA-001",
+      "disposition_declared": "FINITE_CERTIFICATE",
+      "freshness": "current_for_dispatch",
+      "github_comment_id": 6009838740,
+      "handling_state": "received_unadjudicated",
+      "issue_number": 848,
+      "lane": "R1",
+      "raw_artifact_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/raw/ERDOS-241-R1-IA-001/github-comment-6009838740.md",
+      "raw_blob_sha1": "ccfde78ed922eae1b69455c692c7772fd6b5923c",
+      "raw_sha256": "e6a3b261867aa088600144fd83460e9ddf3bce688664d348684735f254878443",
+      "receipt_blob_sha1": "7486382785bcb39b80b425dc3891639e56017c8d",
+      "receipt_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/receipts/ERDOS-241-R1-IA-001/github-comment-6009838740.json",
+      "schema_result": "valid"
+    },
+    {
+      "canonical_claim_effect": false,
+      "dispatch_id": "ERDOS-241-A1-IA-001",
+      "disposition_declared": "COUNTEREXAMPLE",
+      "freshness": "current_for_dispatch",
+      "github_comment_id": 6005556000,
+      "handling_state": "received_unadjudicated",
+      "issue_number": 850,
+      "lane": "A1",
+      "raw_artifact_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/raw/ERDOS-241-A1-IA-001/github-comment-6005556000.md",
+      "raw_blob_sha1": "69dd67aeff905d538ed0aafc511628801226d2c9",
+      "raw_sha256": "11fb1d8be0379f12b7afbd20ce573bcc95ce45dc6d2e4a95c407bc47b6497070",
+      "receipt_blob_sha1": "851e6a1ec3d03f4132b57756391fd5bb30bbc592",
+      "receipt_path": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/receipts/ERDOS-241-A1-IA-001/github-comment-6005556000.json",
+      "schema_result": "valid"
+    }
+  ],
+  "independence_strength_adjudicated": false,
+  "late_source_lane_policy": "A later S1 return is preserved as source-dependency evidence but does not retroactively alter the completed blind R1+A1 comparison; literature-dependent promotion remains separately adjudicated.",
+  "literature_dependent_promotion_source_gate_satisfied_at_closure": false,
+  "mathematical_correctness_adjudicated": false,
+  "minimum_synthesis_evidence_satisfied": true,
+  "protected_evidence_base_commit": "6ae554a2280e2d46c0ed9979470f7d567ed62f46",
+  "receipt_id": "ERDOS-241-BLIND-COHORT-001:CLOSURE-001",
+  "record_type": "GCL_BLIND_COHORT_CLOSURE_RECEIPT",
+  "required_synthesis_lanes": [
+    "R1",
+    "A1"
+  ],
+  "schema_version": "1.0.0",
+  "source_lane": {
+    "dispatch_id": "ERDOS-241-S1-IA-001",
+    "evidence": null,
+    "protected_at_closure": false
+  },
+  "source_lane_protected_at_closure": false,
+  "source_lane_required_for_literature_dependent_promotion": true,
+  "synthesis_allowed": true,
+  "work_package": "ERDOS-241-RECON-PACK-001"
+}

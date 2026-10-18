@@ -176,12 +176,74 @@
       "controller_id": "GITHUB_ACTIONS"
     },
     {
+      "path": ".github/workflows/erdos-241-595-lean-local.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
       "path": ".github/workflows/gcl-conformance.yml",
       "observed_features": [
         "AUTONOMOUS_WAKE",
         "EXTERNAL_REUSABLE_JOB",
         "OPAQUE_EXECUTION",
         "SCHEDULED"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/gcl-e2e-canary-003-distinct-worker.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL",
+        "WRITE_CAPABLE"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/gcl-erdos3-independent-contribution-intake.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL",
+        "WRITE_CAPABLE"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/gcl-erdos3-lease-activator.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL",
+        "WRITE_CAPABLE"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/gcl-erdos3-lease-reaper.yml",
+      "observed_features": [
+        "AUTONOMOUS_WAKE",
+        "OPAQUE_EXECUTION",
+        "SCHEDULED",
+        "SECRET_CREDENTIAL",
+        "WRITE_CAPABLE"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/gcl-worker-queue.yml",
+      "observed_features": [
+        "AUTONOMOUS_WAKE",
+        "OPAQUE_EXECUTION",
+        "SCHEDULED",
+        "SECRET_CREDENTIAL",
+        "WRITE_CAPABLE"
       ],
       "topology": "PERSISTENT_CONTROLLER_REQUIRED",
       "controller_id": "GITHUB_ACTIONS"
@@ -200,6 +262,181 @@
         "OPAQUE_EXECUTION",
         "SECRET_CREDENTIAL",
         "WRITE_CAPABLE"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-authoritative-list-acquisition.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-cex-independent-contribution-intake.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL",
+        "WRITE_CAPABLE"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-cex-job-board.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-cex-transport.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-core-clarity-reconcile.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-h1-agent001-adjudication.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-h2-h7-cex-source-acq.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-h2-wp01-adjudication.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-h2-wp02-adjudication.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-h2-wp02-instantiation.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-kobon-bader93.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL",
+        "WRITE_CAPABLE"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS",
+      "external_effects": [
+        "Explicit dispatch can submit a validated report to AutoLab under jimsteeg; persistent GITHUB_ACTIONS controller admits external write capability"
+      ]
+    },
+    {
+      "path": ".github/workflows/openmath-kobon-baseline-gate.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-kobon-post-baseline.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-kobon-search94-compound.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-kobon-search94-tranche2.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-kobon-search94-tranche3.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-kobon-search94.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-public-source-files.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-seven-hill-consolidation.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/openmath-unassigned-hill-body-acquisition.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL"
       ],
       "topology": "PERSISTENT_CONTROLLER_REQUIRED",
       "controller_id": "GITHUB_ACTIONS"
@@ -277,9 +514,27 @@
       "controller_id": "GITHUB_ACTIONS"
     },
     {
+      "path": ".github/workflows/uc-wp08-closure-system.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
       "path": ".github/workflows/vgse-wp00.yml",
       "observed_features": [
         "OPAQUE_EXECUTION"
+      ],
+      "topology": "PERSISTENT_CONTROLLER_REQUIRED",
+      "controller_id": "GITHUB_ACTIONS"
+    },
+    {
+      "path": ".github/workflows/ym-mrs-independent-contribution-intake.yml",
+      "observed_features": [
+        "OPAQUE_EXECUTION",
+        "SECRET_CREDENTIAL",
+        "WRITE_CAPABLE"
       ],
       "topology": "PERSISTENT_CONTROLLER_REQUIRED",
       "controller_id": "GITHUB_ACTIONS"

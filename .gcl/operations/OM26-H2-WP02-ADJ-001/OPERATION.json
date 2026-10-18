@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-H2-WP02-ADJ-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "objective": "Adjudicate the protected WP02 result, preserve independently replayed finite witnesses, reject the overstated exact-search validation, and generate one bounded replay-closure successor.",
+  "source_result_blob": "4a768a5fe4e91bbb12248019982a2df27e6887ea",
+  "permitted_mutations": [
+    "WP02 adjudication record",
+    "WP02 status record",
+    "WP03 bounded successor bootstrap and launch task",
+    "WP03 dispatch and operation contract",
+    "bounded adjudication validator/workflow",
+    "admission freeze"
+  ],
+  "prohibited": [
+    "MATHCERT certification",
+    "competition submission",
+    "claim that S(6) is determined",
+    "admission of exact pruning not independently replayed",
+    "mutation of peer hill mathematics"
+  ],
+  "completion_requires": [
+    "protected WP02 raw evidence",
+    "independent replay of W89911 and W8021 against protected evaluator semantics",
+    "explicit disposition of replay inconsistencies",
+    "bounded WP03 successor generated",
+    "required CI green",
+    "protected merge",
+    "post-merge campaign-state reconciliation"
+  ],
+  "claim_boundary": "Bounded Solve adjudication and successor generation only."
+}

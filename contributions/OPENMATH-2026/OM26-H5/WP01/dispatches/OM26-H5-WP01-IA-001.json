@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_DISPATCH",
+  "dispatch_id": "OM26-H5-WP01-IA-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H5",
+  "assignment_id": "OM26-H5-WP01",
+  "agent_ref": "INDEPENDENT-AGENT-005",
+  "concurrency_mode": "independent_blind",
+  "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H5-WP01-IA-001.md",
+  "bootstrap_blob_sha1": "de6d22817fc7ab6f1296a1767949d25502d1c56d",
+  "source_handoff_commit_sha": "6b96ec9afd4395234e32d8769f6e63ddecdf5c55",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "github_issue_number": 508,
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/508",
+  "github_issue_title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H5-WP01-IA-001 — Grothendieck witness WP01",
+  "contributor_write_authority": "issue_comment_only",
+  "canonical_mutation_authorized": false,
+  "attachments_allowed": false,
+  "result_comment_count_expected": 1,
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "operation_contract": ".gcl/operations/OM26-H5-WP01-IA-001/OPERATION.json",
+  "source_lock": {
+    "repository": "grandchallenge/MATHFORGE",
+    "main_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+    "source_lock_blob": "c5c72c4b00fdf1d12eafa6673ed0752a76d66a26"
+  }
+}

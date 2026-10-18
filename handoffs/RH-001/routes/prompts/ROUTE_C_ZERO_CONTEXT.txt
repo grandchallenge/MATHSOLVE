@@ -1,63 +1,67 @@
 You are taking over RH-001 Forward Route C in grandchallenge/MATHSOLVE with zero prior context.
 
-Mission: attack the terminal determinant-convergence bridge for the Connes-Consani-Moscovici Zeta Spectral Triples route.
+Mission: close the Connes-Consani-Moscovici determinant route using the corrected RH-R077 projective-measure architecture.
 
 Mandatory first actions:
 1. Read AGENTS.md.
 2. Re-fetch current protected MATHSOLVE main.
 3. Read handoffs/RH-001/README.md.
-4. Read handoffs/RH-001/routes/ROUTE_C_DETERMINANT_CONVERGENCE.md in full.
-5. Read work_packages/RH_R035_ZETA_SPECTRAL_TRIPLES_LIMIT.md.
-6. Read the protected provider audit at grandchallenge/MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790, reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md.
-7. Read R036/R037 for the simple-even/Galerkin interface, the current local simple-even frontier theorem R051, and R053 for C2 compact transform stability.
-8. Acquire/read the exact primary Zeta Spectral Triples source before asserting a determinant normalization not already protected.
+4. Read handoffs/RH-001/routes/ROUTE_C_PROJECTIVE_MEASURE_CLOSURE.md in full.
+5. Read work_packages/RH_R077_PROJECTIVE_MEASURE_REPAIR.md and work_packages/RH_R080_SIGNED_PROJECTIVE_NORMALITY.md in full.
+6. Read the historical Route C pack only after the R077 correction:
+   handoffs/RH-001/routes/ROUTE_C_DETERMINANT_CONVERGENCE.md.
+7. Read R035, R037, R053, R056, R068, R071, and R074, including the RH-R077 correction notices on R068/R071/R074.
+8. Read the protected MATHFORGE RH-R038 Krein-Rutman rejection before asserting pointwise positivity.
+9. Read Route C tracker grandchallenge/MATHSOLVE#414 before allocating any theorem ID.
 
-Protected snapshot at route-pack creation: MATHSOLVE main 7387aa8993355ab854630cf0683b4120a813884c. Rebind live state before mutation.
+Authoritative terminal target after RH-R077:
+It is sufficient to produce one admissible sequence of finite normalized CCM determinants with real zeros and one subsequence converging locally uniformly on
+U = { z : |Im z| < 1/2 }
+to c Xi for some c != 0. Full-sequence convergence and convergence on all of C are not required by the terminal Hurwitz logic.
 
-Terminal protected bridge:
-If a cofinal family of normalized entire finite determinants F_j has only real zeros and converges locally uniformly on C to Xi, then all zeros of Xi are real by the protected R035 Rouché/Hurwitz argument; under standard normalization this implies RH.
+Corrected obligations:
+C0. Canonical finite normalization — DISCHARGED by R056.
+C1. Actually admissible cofinal sequence — OPEN. R074's quadratic schedule sufficiency theorem is withdrawn.
+C2. Raw compact transform stability — DISCHARGED by R053; auxiliary.
+C3. True/candidate projective transfer — OPEN. Preserve R074's finite Rayleigh inequality only.
+C4. Strip normality — REDUCED BY R080 TO SIGNED-PROJECTIVE CONTROL. For every fixed delta < 1/2 it is sufficient to prove a uniform bound on kappa_delta(xi) = integral |xi(x)| cosh(delta x) dx / |integral xi(x) cosh(x/2) dx| along an admitted cofinal family. Pointwise sign-definiteness is only the special boundary case kappa_1/2 = 1. Actual CCM kappa control is OPEN.
+C5. Nonzero Xi-shaped limit identification — OPEN for CCM. R077 gives the abstract non-escape + real-interval projective-shape theorem.
+C6. Full local-uniform convergence — OPTIONAL strengthening.
+C7. Localized Hurwitz/Rouche bridge — protected conditionally; invoke only after its actual hypotheses hold.
 
-Do not try to build a limiting self-adjoint operator unless it is genuinely useful. It is sufficient, but not necessary.
+Core projective representation, conditional on an even nonnegative state f:
+d nu_f(x) = f(x) cosh(x/2) dx / integral f(t) cosh(t/2) dt,
+F_f(z) = (1/2) integral [cos(zx)/cosh(x/2)] d nu_f(x).
 
-Break the route into modular obligations:
-C0. Freeze the exact canonical normalized determinant F_{lambda,N}. Do not guess normalization.
-C1. Specify and justify a cofinal schedule or directed-set limit in lambda and N.
-C2. Prove a compact-set transform/determinant stability estimate with exact dependence on a=log(lambda) and compact height. [Discharged by RH-R053]
-C3. Convert source k_lambda approximation into a norm/rate strong enough for C2, or prove what rate is required.
-C4. Prove local boundedness/normal-family control for the normalized entire family.
-C5. Identify every subsequential limit with Xi, or with a rigorously known zero-free entire multiple of Xi.
-C6. Deduce full local-uniform convergence.
-C7. Apply the already-protected R035 bridge only after C6.
+Protected R077 facts:
+- |cos(zx)|/cosh(x/2) <= 1 on |Im z| <= 1/2.
+- The kernel decays uniformly as x -> infinity on compact subsets of the open strip.
+- E_n(z)=(1/2)cos(nz)/cosh(n/2) has real zeros, E_n(i/2)=1/2, the strip bound, and nevertheless converges to zero locally uniformly inside the strip. Boundary anchoring is not non-collapse.
+- sup_strip |F_nu-F_mu| <= (1/2)||nu-mu||_TV.
+- local boundedness + F_j(0) != 0 + limsup |F_j(0)| > 0 + projective shape convergence F_j(t)/F_j(0) -> Xi(t)/Xi(0) on one real interval implies a subsequence F_jk -> c Xi, c != 0.
+- strip analyticity alone does not imply exponential periodic Fourier coefficient decay; f(x)=x is an exact counterexample. Do not reuse the withdrawn R074 tail theorem.
 
-High-value first contributions:
-- exact normalization theorem/definition;
-- compact-uniform transform stability lemma;
-- cofinal-index theorem;
-- Montel/local-boundedness theorem;
-- spectral-gap-to-eigenvector-error theorem feeding k_lambda -> xi_lambda;
-- proof that a proposed convergence norm/rate is insufficient.
+Active mathematical gates:
+P1. Prove actual-family signed-projective control: strongest is pointwise sign-definiteness; sufficient is uniform kappa_1/2; weakest current C4 target is uniform kappa_delta for every fixed delta < 1/2.
+P2. Prove projective candidate transfer in TV or a weaker rigorously kernel-controlling topology.
+P3. Prove genuinely admissible cofinality: selected (lambda_j,N_j) must satisfy the finite CCM simple-even hypotheses.
+
+RH-R080 owns P1 and has an independent blind cohort under handoffs/RH-001/r080/. After R080 protection, the next collision-free Route C lane is RH-R083; allocate it only after checking the R080 returns or identifying the smallest actual-family residual.
 
 Critical boundaries:
-- The finite source theorem uses a simple-even hypothesis. The current campaign proves full-operator simple-evenness only on a local a interval, not for all large scales. Do not suppress this dependency.
-- Pointwise convergence is not local uniform convergence.
-- Real zeros of approximants do not imply RH without a specified locally uniform limit.
-- Low-zero numerical agreement is not convergence.
-- An unspecified normalization invalidates zero-limit claims.
-- A varying family of self-adjoint operators is not one limiting operator.
-- Numerical eigenvector overlap is not a k_lambda theorem.
+- Simple-even does not imply pointwise nonnegative.
+- Numerical positivity is not a Perron/Jentzsch theorem.
+- A boundary anchor is not preserved by compact-open convergence on the open strip.
+- Do not use R071's withdrawn boundary-anchor/noncollapse or normalized O(lambda^delta) transfer claim.
+- Do not use R074's withdrawn analytic Fourier-tail or quadratic C1 sufficiency theorem.
+- Raw L2 vector closeness is not automatically projective normalized-transform closeness.
+- Do not claim RH inside ordinary development.
 
 Governance:
 - MATHSOLVE owns theorem development.
-- Use MATHFORGE for exact source normalization, version discrepancies, or imported convergence results.
-- MATHCERT becomes relevant only when a bounded terminal convergence claim has a complete exact proof/checker surface.
-- Do not claim RH inside ordinary development. If the convergence theorem is actually closed, stop at the governed terminal boundary and route the exact proof for certification.
+- Use MATHFORGE for new source assertions, source-version discrepancies, or imported theorems.
+- MATHCERT only after a bounded terminal claim has a complete exact proof/checker surface.
+- Route C IDs remain R056, R059, R062, R065, R068, R071, R074, R077, R080, ... .
+- Rebind exact head before mutation; run non-authoring Adversary and Referee passes; require exact-head Solve/GCL checks; merge through protected controls; perform protected readback.
 
-Execution:
-- Open a bounded issue for one C0-C6 obligation.
-- Branch from live protected main.
-- Preserve exact dependencies.
-- Run non-authoring Adversary/Referee passes.
-- Recompose onto current protected main before final CI if needed.
-- Require exact-head Solve/GCL checks, merge, readback, and handoff update.
-
-Continue autonomously through recoverable failures. Stop only at a named source, governance, authentication, safety, materially changed-state, or substantive evidentiary boundary.
+Continue autonomously through recoverable tooling failures. Stop only at an exact governance, authentication, safety, materially changed-state, scope, or substantive evidentiary boundary.

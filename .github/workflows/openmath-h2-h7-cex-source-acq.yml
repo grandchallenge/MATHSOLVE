@@ -1,0 +1,56 @@
+name: OPENMATH H2-H7 CEX source acquisition
+
+on:
+  pull_request:
+    paths:
+      - ".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/**"
+      - ".gcl/operations/OM26-H2-H7-SOURCE-ACQ/**"
+      - ".gcl/admission/OM26-H2-H7-SOURCE-ACQ/**"
+      - "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json"
+      - "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md"
+      - "ci/validate_openmath_cex_h2_h7.py"
+      - "ci/test_openmath_cex_h2_h7.py"
+      - ".github/workflows/openmath-h2-h7-cex-source-acq.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/**"
+      - ".gcl/operations/OM26-H2-H7-SOURCE-ACQ/**"
+      - ".gcl/admission/OM26-H2-H7-SOURCE-ACQ/**"
+      - "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json"
+      - "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md"
+      - "ci/validate_openmath_cex_h2_h7.py"
+      - "ci/test_openmath_cex_h2_h7.py"
+      - ".github/workflows/openmath-h2-h7-cex-source-acq.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  cex-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact subject
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Assert exact subject checkout
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Validate CEX preparation
+        run: |
+          python ci/validate_openmath_cex_h2_h7.py
+          python -m unittest ci/test_openmath_cex_h2_h7.py -v
+          python -m json.tool .gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json >/dev/null
+          python -m json.tool .gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json >/dev/null
+          python -m json.tool .gcl/admission/OM26-H2-H7-SOURCE-ACQ/FREEZE.json >/dev/null
+          python -m json.tool work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json >/dev/null

@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_FRONTIER_SYNTHESIS_ADJUDICATION",
+  "campaign": "GCL-ERDOS3",
+  "tranche": "E3-TRANCHE-02",
+  "baseline_commit": "d9f2a46f915df19e9d2cd889e00e59c7100ae0bf",
+  "protected_packet_commit": "bf9bc7f448f92d71afeae937fda133b0e1d4de80",
+  "target_node": "E3-Q4-SERIES",
+  "result_receipts": {
+    "E3-Q01": {
+      "issue_number": 772,
+      "comment_id": 5969440603,
+      "declared_disposition": "EXACT_BLOCKER",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q01_RESULT.md"
+    },
+    "E3-X01": {
+      "issue_number": 773,
+      "comment_id": 5969435218,
+      "declared_disposition": "SMALLEST_MISSING_LEMMA",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-X01_RESULT.md"
+    },
+    "E3-A02": {
+      "issue_number": 774,
+      "comment_id": 5969464047,
+      "declared_disposition": "COUNTEREXAMPLE",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-A02_RESULT.md"
+    },
+    "E3-S03": {
+      "issue_number": 775,
+      "comment_id": 5969451763,
+      "declared_disposition": "SOURCE_BLOCKED",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-S03_RESULT.md"
+    },
+    "E3-V02": {
+      "issue_number": 776,
+      "comment_id": 5969442261,
+      "declared_disposition": "VERIFIED",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-V02_RESULT.md"
+    }
+  },
+  "synthesis_checks": {
+    "Q01": {
+      "accepted": true,
+      "frontier_effect": "BLOCKER_EVIDENCE_ONLY",
+      "promoted": false,
+      "reason": "It excludes extraction of the needed inter-scale estimate from the published fixed-ambient Green–Tao iteration and from plain reblocking, but does not itself supply a smaller new sufficient estimate than the pre-existing recurrence/average frontier."
+    },
+    "X01": {
+      "accepted": true,
+      "frontier_effect": "GENUINE_TIGHTENING",
+      "promoted": true,
+      "reason": "It proves that several natural bounded-step renormalization families are impossible and isolates an explicit lower-bound-compatible sufficient density-loss inequality with theta<1 whose proof would close E3-Q4-SERIES."
+    },
+    "A02": {
+      "accepted": true,
+      "frontier_effect": "SUPPORTING_ADVERSARIAL_BOUNDARY",
+      "promoted": false,
+      "reason": "It gives a valid finite submultiplicativity counterexample and useful lower-bound constraints on strong multiplicative/power recurrences, but its surviving sufficient recurrence classes are not selected as the minimal promoted route after X01."
+    },
+    "S03": {
+      "accepted": true,
+      "frontier_effect": "SOURCE_AUDIT_ONLY",
+      "promoted": false,
+      "reason": "It confirms no scoped primary-source theorem currently supplies the needed sequence-level estimate; this validates the gap but does not tighten its mathematical statement."
+    },
+    "V02": {
+      "accepted": true,
+      "frontier_effect": "VERIFICATION_CLOSURE",
+      "promoted": false,
+      "reason": "It independently verifies the existing E3-B02 reverse implication and therefore closes E3-V-B02; it does not advance E3-Q4-SERIES."
+    }
+  },
+  "promoted_result": {
+    "assignment_id": "E3-X01",
+    "subtarget_id": "E3-Q4-DENSITY-LOSS",
+    "statement": "For a_n=r_4(2^n)/2^n, prove existence of fixed L>=1, c>0, n_0, and 0<theta<1 with a_{n+L} <= a_n(1-c a_n^theta) for all n>=n_0.",
+    "consequence": "Then a_n=O(n^(-1/theta)), and because 1/theta>1 the extremal series converges.",
+    "claim_boundary": "E3-X01 does not prove this inequality. It promotes it as a sufficient missing lemma after ruling out stronger naive bounded-step laws."
+  },
+  "retained_supporting_boundaries": [
+    "Plain interval localization/reblocking yields normalized monotonicity but no strict loss.",
+    "Fixed-step uniform fractional contraction is incompatible with known lower constructions.",
+    "Fixed-window averaged uniform fractional contraction is likewise excluded.",
+    "Eventual constant-factor quasi-submultiplicativity is excluded.",
+    "A02 additionally records failure of literal submultiplicativity and lower-bound constraints on strong diagonal power recurrences."
+  ],
+  "verification_effect": {
+    "close": [
+      "E3-V-B02"
+    ],
+    "verify": [
+      "E3-B-AP reverse block construction"
+    ],
+    "parent_theorem_effect": "NONE"
+  },
+  "final_disposition": "PROMOTE_E3-X01_ONLY__CLOSE_E3-V-B02__KEEP_PARENT_OPEN"
+}

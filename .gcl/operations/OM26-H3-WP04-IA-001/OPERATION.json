@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-H3-WP04-IA-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H3",
+  "assignment_id": "OM26-H3-WP04",
+  "dispatch_id": "OM26-H3-WP04-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-304",
+  "objective": "H3-DELTA",
+  "acceptable_dispositions": [
+    "PROVED_REDUCTION",
+    "EXACT_CERTIFICATE",
+    "FORMAL_LEMMA_PROVED",
+    "COUNTEREXAMPLE",
+    "NO_MATERIAL_DELTA",
+    "EXACT_BLOCKER"
+  ],
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "github_issue_number": 602,
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/602",
+  "canonical_mutation_authorized": false,
+  "lane_role": "PRIMARY"
+}

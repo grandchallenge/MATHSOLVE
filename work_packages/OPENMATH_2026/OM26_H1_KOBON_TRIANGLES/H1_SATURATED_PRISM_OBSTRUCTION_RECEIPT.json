@@ -1,0 +1,682 @@
+{
+  "checker_sha256": "9fe5f5170ba69184ca0d89859ee491ba73825a0dc8d71c33f1adc00d5b215a4a",
+  "claim_boundary": "Conditional elimination of profile 333444. The finite checker verifies words and graph certificates, not the real-geometric theorem or its premises. No independent Cert disposition, external lease consumption, global score bound, or q>=7 conclusion.",
+  "clean_lines": 6,
+  "dependencies": [
+    "six-core no-long-run fan premise",
+    "six-core clean-line charging premise",
+    "elementary D2 edges and planar core graph"
+  ],
+  "local_totals": {
+    "B": 24,
+    "D1": 24,
+    "D2": 9
+  },
+  "predecessor_receipt_sha256": "599d4bfbad73127dde51e30f9c5ca3f2d364f4cc5b83f241a0e73e903c3dc3ae",
+  "prism_candidates_excluded": 60,
+  "prism_certificates": [
+    {
+      "forbidden_D2_triangle": [
+        0,
+        3,
+        4
+      ],
+      "mask": 7100
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        5
+      ],
+      "mask": 7130
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        3,
+        4
+      ],
+      "mask": 7548
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        5
+      ],
+      "mask": 7638
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        5
+      ],
+      "mask": 8025
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        5
+      ],
+      "mask": 8085
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        3,
+        5
+      ],
+      "mask": 10172
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        4
+      ],
+      "mask": 10202
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        3,
+        5
+      ],
+      "mask": 11516
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        4
+      ],
+      "mask": 11726
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        4
+      ],
+      "mask": 11993
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        4
+      ],
+      "mask": 12173
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        4
+      ],
+      "mask": 13690
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        3,
+        5
+      ],
+      "mask": 13750
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        5
+      ],
+      "mask": 14137
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        5
+      ],
+      "mask": 14227
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        5
+      ],
+      "mask": 14586
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        3,
+        4
+      ],
+      "mask": 14766
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        4
+      ],
+      "mask": 15033
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        4
+      ],
+      "mask": 15243
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        3,
+        5
+      ],
+      "mask": 15541
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        5
+      ],
+      "mask": 15571
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        3,
+        4
+      ],
+      "mask": 15661
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        4
+      ],
+      "mask": 15691
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        4,
+        5
+      ],
+      "mask": 18300
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        3
+      ],
+      "mask": 18390
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        4,
+        5
+      ],
+      "mask": 19196
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        3
+      ],
+      "mask": 19406
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        3
+      ],
+      "mask": 20181
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        3
+      ],
+      "mask": 20301
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        4,
+        5
+      ],
+      "mask": 21370
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        3
+      ],
+      "mask": 21430
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        5
+      ],
+      "mask": 22325
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        5
+      ],
+      "mask": 22355
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        5
+      ],
+      "mask": 22774
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        3,
+        4
+      ],
+      "mask": 22894
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        4,
+        5
+      ],
+      "mask": 23161
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        5
+      ],
+      "mask": 23251
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        3,
+        4
+      ],
+      "mask": 23341
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        3
+      ],
+      "mask": 23431
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        3
+      ],
+      "mask": 23669
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        3
+      ],
+      "mask": 23879
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        4,
+        5
+      ],
+      "mask": 25338
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        3
+      ],
+      "mask": 25518
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        3,
+        5
+      ],
+      "mask": 25846
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        4
+      ],
+      "mask": 25966
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        4,
+        5
+      ],
+      "mask": 26233
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        3,
+        5
+      ],
+      "mask": 26293
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        4
+      ],
+      "mask": 26443
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        2,
+        3
+      ],
+      "mask": 26503
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        4
+      ],
+      "mask": 27309
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        4
+      ],
+      "mask": 27339
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        3
+      ],
+      "mask": 27757
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        3
+      ],
+      "mask": 27847
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        2
+      ],
+      "mask": 29363
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        2
+      ],
+      "mask": 29483
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        2
+      ],
+      "mask": 29811
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        2
+      ],
+      "mask": 29991
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        2
+      ],
+      "mask": 30827
+    },
+    {
+      "forbidden_D2_triangle": [
+        0,
+        1,
+        2
+      ],
+      "mask": 30887
+    }
+  ],
+  "profile": "333444",
+  "realizable_candidates_remaining_in_profile": 0,
+  "record_id": "OM26-H1-SATURATED-PRISM-OBSTRUCTION-001",
+  "remaining_q6_profiles": [
+    "333333",
+    "333334",
+    "333335",
+    "333344"
+  ],
+  "saturated_local_words": {
+    "3": [
+      {
+        "D1_gaps": [
+          1,
+          1,
+          1
+        ],
+        "word": [
+          2,
+          1,
+          2,
+          1,
+          2,
+          1
+        ]
+      },
+      {
+        "D1_gaps": [
+          1,
+          1,
+          1
+        ],
+        "word": [
+          1,
+          2,
+          1,
+          2,
+          1,
+          2
+        ]
+      }
+    ],
+    "4": [
+      {
+        "D1_gaps": [
+          1,
+          2,
+          2
+        ],
+        "word": [
+          2,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1
+        ]
+      },
+      {
+        "D1_gaps": [
+          2,
+          1,
+          2
+        ],
+        "word": [
+          2,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1
+        ]
+      },
+      {
+        "D1_gaps": [
+          2,
+          2,
+          1
+        ],
+        "word": [
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1
+        ]
+      },
+      {
+        "D1_gaps": [
+          1,
+          2,
+          2
+        ],
+        "word": [
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1
+        ]
+      },
+      {
+        "D1_gaps": [
+          2,
+          1,
+          2
+        ],
+        "word": [
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1
+        ]
+      },
+      {
+        "D1_gaps": [
+          2,
+          2,
+          1
+        ],
+        "word": [
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2
+        ]
+      },
+      {
+        "D1_gaps": [
+          1,
+          2,
+          2
+        ],
+        "word": [
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          2
+        ]
+      },
+      {
+        "D1_gaps": [
+          2,
+          1,
+          2
+        ],
+        "word": [
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          2
+        ]
+      }
+    ]
+  },
+  "state": "CONDITIONAL_PAPER_PROOF__INDEPENDENT_GEOMETRIC_REVIEW_PENDING",
+  "unused_segments": 3
+}

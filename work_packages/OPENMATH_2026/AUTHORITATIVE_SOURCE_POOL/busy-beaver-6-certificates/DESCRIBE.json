@@ -1,0 +1,30 @@
+{
+  "commit": null,
+  "committed": false,
+  "exclusive_device": null,
+  "files": [],
+  "hill": "busy-beaver-6-certificates",
+  "metrics": [
+    {
+      "direction": "max",
+      "name": "steps"
+    },
+    {
+      "direction": "max",
+      "name": "ones"
+    },
+    {
+      "direction": "max",
+      "name": "tape_span"
+    }
+  ],
+  "params": {},
+  "path": "/home/runner/work/MATHSOLVE/MATHSOLVE/.autolab/hills/busy-beaver-6-certificates",
+  "readme": "Find six-state, two-symbol Turing machines that halt after long exact runs, giving checkable lower bounds for Busy Beaver 6.\n\n## Task\n\nThe Busy Beaver problem asks for the longest-running halting program in a fixed tiny Turing-machine model. The six-state, two-symbol value is open. Your submission is one complete six-state transition table. The evaluator starts it on an all-zero tape, simulates it exactly, and accepts it only when it halts within the private safety limit after visiting all six non-halting states.\n\nEvery accepted submission is therefore a rigorous finite lower-bound witness for `S(6)`: its `steps` value is the exact number of transitions the submitted program executed before halting. The hill does not claim that a one-week team will determine the exact Busy Beaver 6 value. It rewards verified candidate discovery in the actual six-state model.\n\n## Submission format\n\nSubmit a directory containing exactly one UTF-8 JSON file:\n\n```json\n{\n  \"transitions\": {\n    \"A\": {\"0\": [1, \"R\", \"B\"], \"1\": [1, \"R\", \"H\"]},\n    \"B\": {\"0\": [1, \"R\", \"C\"], \"1\": [1, \"R\", \"H\"]},\n    \"C\": {\"0\": [1, \"R\", \"D\"], \"1\": [1, \"R\", \"H\"]},\n    \"D\": {\"0\": [1, \"R\", \"E\"], \"1\": [1, \"R\", \"H\"]},\n    \"E\": {\"0\": [1, \"R\", \"F\"], \"1\": [1, \"R\", \"H\"]},\n    \"F\": {\"0\": [1, \"R\", \"H\"], \"1\": [1, \"R\", \"H\"]}\n  }\n}\n```\n\nThere are exactly six non-halting states, `A` through `F`, and the halting state `H`. Each of the twelve entries is `[write, move, next_state]`, where:\n\n- `write` is integer `0` or `1`;\n- `move` is string `\"L\"` or `\"R\"`;\n- `next_state` is one of `\"A\"` through `\"F\"` or `\"H\"`.\n\nThe blank-tape start is state `A`, head position 0, and an all-zero bi-infinite tape. The sample is valid and halts after six steps. State labels and the symbols are deliberately not normalized: the requirement that every state be reached ensures the candidate genuinely uses all six states.\n\n## Metrics\n\n| metric | direction | meaning |\n| --- | --- | --- |\n| `steps` | max | Exact number of transitions before halting. |\n| `ones` | max | Number of `1` symbols on the tape at halting. |\n| `tape_span` | max | Number of tape cells from the leftmost to rightmost position visited. |\n\nScores are lexicographic. The evaluator computes every metric; do not include claimed scores in the JSON.\n\n## Held-out split and limits\n\nBoth validation and final evaluation simulate the same blank-tape model, but use separate private execution budgets. A candidate that does not halt before the budget is rejected rather than receiving a capped score, so an infinite loop cannot masquerade as a lower bound. The final result is the test-split result.\n\n## What counts as progress\n\nAny accepted candidate is an exact, replayable lower-bound witness for the actual six-state Busy Beaver function. A high score is a candidate lower bound, not a proof that no longer halting machine exists. The transition table and resulting space-time diagram give the presentation artifact.\n",
+  "spec_version": 2,
+  "submission": "a directory; see readme for its required contents",
+  "test_mode": "hills eval <dir> -H busy-beaver-6-certificates --final",
+  "tree_hash": null,
+  "version": "0.1.0",
+  "watchdog_timeout_s": 120
+}

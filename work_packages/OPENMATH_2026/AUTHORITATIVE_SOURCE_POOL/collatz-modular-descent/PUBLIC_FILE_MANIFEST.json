@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_PUBLIC_SOURCE_MANIFEST",
+  "operation": "OM26-H2-H7-SOURCE-ACQ",
+  "source_id": "alejandrozu/collatz-modular-descent",
+  "slot_binding": null,
+  "acquisition": {
+    "workflow_run_id": 36417117122,
+    "workflow_job_id": 108910800683,
+    "subject_head": "73a7a9d91948a516c1a72fbd75739346f6741a55",
+    "authenticated": true,
+    "source": "AutoLab public hill pull"
+  },
+  "public_file_manifest_sha256": "7642b77042784e336b5aae5b1b9f8a4d5156105b4489975c7cf3d27fea605201",
+  "public_file_count": 10,
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "0df64dd2b35089d662d8e467e33f81b1d50a2849ca412d58c658367920da5881",
+      "size": 25
+    },
+    {
+      "path": "README.md",
+      "sha256": "b69518e01d211db5207b64702d4fbec6dde637aae25aff8064944c9c43816a1f",
+      "size": 3002
+    },
+    {
+      "path": "blobs.lock",
+      "sha256": "6d6f25aa036e49add8c6e961af787a3149777a7fbd60398e76c219c5a1ea8093",
+      "size": 60
+    },
+    {
+      "path": "eval.py",
+      "sha256": "a501ef967049190906f0b6499bcb0bd219e0b2e8e3b1aeec5dc2f6d1731ee671",
+      "size": 7180
+    },
+    {
+      "path": "examples/baseline/solution.json",
+      "sha256": "fbde8dfe67c2034593818053ad1f1956863f095fac5630fca1a8b1151349a244",
+      "size": 109
+    },
+    {
+      "path": "hill.yaml",
+      "sha256": "8bb1ca9c3fbe88b70ed11b7bf065526386bfa3b51f41685a16f6fd582148bad3",
+      "size": 218
+    },
+    {
+      "path": "private.lock",
+      "sha256": "8bdf01e7f6ca0c494de241699db9592e80b4bc72ef2dd3a1fa494bdc8d9e0c1b",
+      "size": 371
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "27a655e96f9a13c5b898f72276c53e9da56ad01412aff8588503b80f87e1c4db",
+      "size": 216
+    },
+    {
+      "path": "tests/test_hill.py",
+      "sha256": "62698aba85c00d4fb6aba40fd1c816ae05474a45705cf0f0106a9f54e5364754",
+      "size": 2239
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "5d529298254f568d3f2bbcff4903430e623ec34c5b6a13b78f4db67f74b23011",
+      "size": 4662
+    }
+  ],
+  "exclusions": [
+    ".git/**",
+    ".vc/**",
+    "private/**",
+    ".pytest_cache/**",
+    "__pycache__/**",
+    "*.pyc"
+  ],
+  "claim_boundary": "Public source/checker capture only. No H2-H7 slot binding, mathematical admission, certification, or competition-submission effect."
+}

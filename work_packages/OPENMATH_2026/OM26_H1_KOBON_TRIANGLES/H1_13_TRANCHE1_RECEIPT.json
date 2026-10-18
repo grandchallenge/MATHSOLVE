@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-13-TRANCHE1-RECEIPT",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-13",
+  "route": "R-K",
+  "state": "COMPLETE__NO_94_FOUND__NEGATIVE_RESULT_RETAINED",
+  "start_candidate": {
+    "candidate": "RH_BADER_RECONSTRUCTION_093",
+    "score": 93,
+    "sha256": "e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5"
+  },
+  "method": {
+    "description": "For each of 18 lines, sweep coefficients c, a, and b independently across every exact critical value where the moving line passes through an existing vertex; for slope coefficients also include parallel-event walls. Score every critical wall and every open interval sample with an integer-determinant proposal scorer.",
+    "arithmetic": "EXACT_INTEGER_DETERMINANT_SIGNS",
+    "evaluated_candidates": 15246
+  },
+  "result": {
+    "best_score": 93,
+    "found_94": false,
+    "score_histogram": {
+      "77": 52,
+      "78": 1484,
+      "79": 2827,
+      "80": 3186,
+      "81": 2605,
+      "82": 1616,
+      "83": 954,
+      "84": 683,
+      "85": 472,
+      "86": 360,
+      "87": 219,
+      "88": 163,
+      "89": 180,
+      "90": 196,
+      "91": 8,
+      "92": 116,
+      "93": 126
+    }
+  },
+  "workflow": {
+    "run_id": 36364216267,
+    "job_id": 108747292310,
+    "result": "PASS__BOUNDED_SWEEP_NO_94"
+  },
+  "interpretation": "The verified 93 arrangement is locally resistant to every one-line one-coordinate wall move in this bounded sweep. This is route information, not an upper-bound proof and not evidence that 94 is unattainable.",
+  "next_search_direction": "Move from single-coordinate local walls to combinatorial/order-type search or multi-line coordinated moves; keep H1-12 upper-bound audit independent.",
+  "claim_boundary": "No 94 was found in this explicitly bounded neighborhood. Search failure does not establish a global upper bound, optimality of 93, or nonexistence of a 94 arrangement."
+}

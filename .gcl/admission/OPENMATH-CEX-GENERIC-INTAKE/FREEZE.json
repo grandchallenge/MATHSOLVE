@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "OPENMATH-2026",
+  "operation": "OPENMATH-CEX-GENERIC-INTAKE",
+  "protected_base": "481672d64786188120fda4694d51d09740e84a66",
+  "assembled_from_head": "5126b890c3ad134d1a9435e095d4a9ac2c392aa8",
+  "artifacts": {
+    "ci/openmath_cex_github_contribution_intake.py": "bd3a0422e060cca4285e55a035ee85a86a2c02b3",
+    "tests/test_openmath_cex_github_contribution_intake.py": "4636308770f3f40b841a031872da2bf98b840f6c",
+    ".gcl/operations/OPENMATH-CEX-GENERIC-INTAKE/OPERATION.json": "e37dd4a9092448d88bfcddc998713d0eb2a4c20b",
+    ".github/workflows/openmath-cex-independent-contribution-intake.yml": "545e7c1c9a133a6dd404ca174deb37242334c576"
+  },
+  "compatibility": {
+    "inaugural_h1_dispatch": "OM26-H1-H1-12-IA-001",
+    "h1_schema_unchanged": true,
+    "workflow_trigger_unchanged": true,
+    "first_valid_result_lock_unchanged": true
+  },
+  "genericization": {
+    "dispatch_discovery": "contributions/OPENMATH-2026/**/dispatches/<dispatch_id>.json",
+    "disposition_authority": "protected operation acceptable_dispositions",
+    "evidence_path": "derived from protected dispatch record directory"
+  },
+  "invalidation": {
+    "governed_artifact_change": "new freeze required",
+    "candidate_head_change": "exact-head review and CI must be replayed",
+    "workflow_change": "routing/conformance replay required"
+  },
+  "authority_boundary": "No lease or mathematical claim is created by this maintenance operation."
+}

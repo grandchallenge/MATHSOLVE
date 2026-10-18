@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS_SUCCESSOR_003_CRITICAL_ADJUDICATION",
+  "adjudication_id": "ERDOS-SUCCESSOR-003-ADJUDICATION-001",
+  "campaign": "ERDOS-OPEN",
+  "predecessor": "contributions/ERDOS-OPEN-001/SUCCESSOR_002/adjudications/ERDOS-SUCCESSOR-002-ADJUDICATION-001.json",
+  "closure_paths": [
+    "contributions/ERDOS-OPEN-001/SUCCESSOR_003/closures/ERDOS-593-SUCCESSOR-003-EVIDENCE-CLOSURE.json",
+    "contributions/ERDOS-OPEN-001/SUCCESSOR_003/closures/ERDOS-470-SUCCESSOR-003-EVIDENCE-CLOSURE.json"
+  ],
+  "synthesis_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/synthesis/ERDOS-SUCCESSOR-003-SYNTHESIS-001.md",
+  "lifecycle": [
+    "RETURNED",
+    "CAPTURED",
+    "PROTECTED",
+    "COHORT_EVIDENCE_CLOSED",
+    "SOURCE_CROSSCHECKED",
+    "CLAIMS_ADJUDICATED"
+  ],
+  "agent_provenance": {
+    "authenticated_github_actor": "fyremael",
+    "separate_runtime_evidence": false,
+    "worker_blind_independence_verified": false,
+    "independent_non_author_approval_required_for_operational_evidence": false
+  },
+  "claim_decisions": [
+    {
+      "id": "593-N3-PINNED-SOURCE-IDENTITY",
+      "disposition": "SOURCE_FILES_AND_LEAN_TOOLCHAIN_TEXT_READ_BACK",
+      "scope": "textual source identity only"
+    },
+    {
+      "id": "593-N3-LEAN-KERNEL-COMPLETION",
+      "disposition": "NOT_REPLAYED",
+      "scope": "no independent pinned lake build, axiom transcript, or formal-definition fidelity proof"
+    },
+    {
+      "id": "593-N4-PAIR_TRIANGLE_LINEARITY",
+      "disposition": "ACCEPTED_ELEMENTARY_ALREADY_REPLAYED_IN_002",
+      "scope": "proof applies to all index sets"
+    },
+    {
+      "id": "593-N4-INJECTIVE_NONLINEAR_OBSTRUCTION",
+      "disposition": "ACCEPTED_ELEMENTARY_ALREADY_REPLAYED_IN_002",
+      "scope": "non-induced injective edge-preserving embeddings"
+    },
+    {
+      "id": "593-N4-COUNTABLE_FIRST_DIFFERENCE",
+      "disposition": "ACCEPTED_ELEMENTARY_ALREADY_REPLAYED_IN_002",
+      "scope": "threshold is construction-specific"
+    },
+    {
+      "id": "593-N4-ERDOS_RADO_PAGE_LOCK",
+      "disposition": "BIBLIOGRAPHIC_CITATION_NOT_PRIMARY_PAGE_VERIFIED",
+      "scope": "ZFC theorem cited; exact page remains source-review target"
+    },
+    {
+      "id": "470-N3-ARCHIVE_INVENTORY",
+      "disposition": "WORKER_REPORTED_NOT_INDEPENDENTLY_REPLAYED",
+      "scope": "183 archives/527827 member records remain worker-supplied"
+    },
+    {
+      "id": "470-N3-WORKUNIT_HEADER_INCOMPATIBILITY",
+      "disposition": "PRECISE_FALSIFIABLE_WORKER_REPORTED_BLOCKER",
+      "scope": "historical 7-field record and available 9-field executable"
+    },
+    {
+      "id": "470-N3-EXCLUSION_BELOW_1E21",
+      "disposition": "NOT_CERTIFIED",
+      "scope": "full interval-cover and historical executable bridge absent"
+    }
+  ],
+  "residuals": [
+    {
+      "id": "ERDOS-593-N5-KERNEL-REPLAY",
+      "goal": "Hermetic pinned Lean build, recorded axioms and statement-fidelity audit",
+      "authorization": "BOUNDED_TECHNICAL_RESEARCH_NOT_MATHCERT"
+    },
+    {
+      "id": "ERDOS-470-N4-HISTORICAL-REPLAY-INTERFACE",
+      "goal": "Recover original seven-field executable/source, generator, lower-band cover and sampled historical checksums",
+      "authorization": "BOUNDED_TECHNICAL_RESEARCH_NOT_MATHCERT"
+    }
+  ],
+  "authority_effects": {
+    "evidence_preserved": true,
+    "source_material_crosschecked": true,
+    "agent_runtime_independence_verified": false,
+    "lean_kernel_replayed": false,
+    "odd_weird_exhaustive_search_replayed": false,
+    "erdos_593_solved": false,
+    "erdos_470_solved": false,
+    "certification": false,
+    "publication": false
+  },
+  "result": "EVIDENCE_RECONCILED_WITH_QUALIFIED_CLAIMS_AND_TWO_EXACT_RESIDUALS"
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "OPENMATH-2026",
+  "operation": "OM26-CORE-CLARITY-RECONCILE-001",
+  "protected_base": "17e90373384ed90a58bcb19d12b315fddaf05867",
+  "assembled_from_head": "6fac11175b6d86528ccfe79f52a0e706a89843cb",
+  "standard": {
+    "id": "GCL-CC-00",
+    "version": "0.1.0",
+    "protected_commit": "6704b4037161133a1efeedddcb69060a79cb7bc7",
+    "standard_git_blob_sha1": "b166204c6204ec96dcbf48c48c8688cca3a4cce4",
+    "admission_git_blob_sha1": "8adca06e54833fa3e37ba82ce4c2facd278f4d76"
+  },
+  "artifacts": {
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "2e3d380a512cf26389dcf0a2304a974618755f01",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "b0825febdfa58ceefb3b398fdf53d8e5e6987950",
+    "work_packages/OPENMATH_2026/CORE_CLARITY_LIFECYCLE_READBACK.json": "756e1ecb517c8d5753c6d1a5d26af041324c0208",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "0163e7cdd1ac0c546844a41b9fbb10a24d3748a0",
+    "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md": "d6850a071d9b7e14bf6f9987284325caab19e8a0",
+    "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json": "fe07c9c4da217995450424e5610c4fd52a2209ad",
+    "ci/validate_openmath_core_clarity_reconcile.py": "367749522d9fecf43485e4087e19ed8e19d204ca",
+    "ci/validate_openmath_cex_job_board.py": "b0ef3964927e6851659d1287fa67c13c671340c3",
+    "ci/test_openmath_cex_job_board.py": "4ae89a5e6149903f30ac1ed0284986c8e044ec06",
+    ".gcl/operations/OM26-CORE-CLARITY-RECONCILE-001/OPERATION.json": "10362376a6484e0371143712cdb6d973139701bf",
+    ".github/workflows/openmath-core-clarity-reconcile.yml": "1fa4c19e5f65f386ec475e02a0c20d38a4fc6368",
+    ".ghos-routing/workflows.json": "d9fa76498ba3ef260f7d82aae37794f16aa54d99"
+  },
+  "reconciliation_effect": {
+    "h1_agent001": "CAPTURED_RECOVERED_UNADJUDICATED",
+    "h2_h7": "LEASED_NOT_LAUNCHED",
+    "competition_submission": "NOT_SUBMITTED_FOR_ALL_SEVEN_HILLS",
+    "h1_mathematical_frontier_changed": false
+  },
+  "invalidation": {
+    "governed_artifact_change": "new freeze required",
+    "candidate_head_change": "exact-head reviews and required CI must target the final candidate head",
+    "new_external_agent_event": "refresh lifecycle readback before merge if any dispatch issue gains a result or launch receipt",
+    "mathematical_adjudication": "out of scope; requires successor operation"
+  },
+  "authority_boundary": "Control-plane reconciliation only; no mathematical adjudication, certification, external launch, or competition submission."
+}

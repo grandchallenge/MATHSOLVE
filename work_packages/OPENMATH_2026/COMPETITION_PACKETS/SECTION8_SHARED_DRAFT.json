@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "OPENMATH-2026-SECTION8-SHARED-DRAFT-001",
+  "state": "HUMAN_AUTHORITY_CLOSED__EXTERNAL_ROUTE_FIELDS_PENDING",
+  "account": {
+    "autolab_owner": "jimsteeg",
+    "github_repository": "grandchallenge/MATHSOLVE"
+  },
+  "entrant": {
+    "registered_human_roster": [
+      "Jamie Steeg"
+    ],
+    "entrant_class": "Individual",
+    "affiliations": [],
+    "affiliation_note": "No organizational affiliation asserted for the competition entrant; GCL/GCT references elsewhere are project provenance only.",
+    "resource_classification": "SELF_RESOURCED"
+  },
+  "contribution_model": {
+    "human_steward": "Jamie Steeg",
+    "governed_research_pipeline": "GCL Forge -> Solve -> Cert; competition authority remains external",
+    "independent_external_agents": "DISCLOSED_PER_HILL_WHERE_USED",
+    "ai_tooling": "DISCLOSED_PER_HILL_AND_REPOSITORY_EVIDENCE",
+    "note": "No autonomous agent contribution is to be represented as a registered human participant unless the competition roster actually contains that human."
+  },
+  "common_disclosures": {
+    "external_assistance": "Independent zero-context agent contributions are preserved with exact dispatch/return/adjudication provenance where used.",
+    "compute": "GitHub Actions and local/hosted exact replay infrastructure; no AutoLab rented compute authorized for the five fixed native registrations.",
+    "autolab_model_spend": "Existing fixed registrations are constrained at zero model-spend budget; no paid agent-search spend authorized.",
+    "conflicts": "none",
+    "credits": "none"
+  },
+  "publication_authority": {
+    "attribution_approval": "AUTHORIZED_FOR_H1_H4_H7",
+    "company_representation_permission": "NOT_APPLICABLE__INDIVIDUAL_ENTRY",
+    "public_release_permission": "AUTHORIZED_FOR_H1_H4_H7",
+    "exact_declaration": "I authorize this entrant to represent Jamie Steeg and release H1/H4/H7 competition materials under the competition terms."
+  },
+  "per_submission_required": [
+    "submission/version ID",
+    "problem/family ID",
+    "primary modality",
+    "exact claim/completeness boundary",
+    "authors and contribution statement",
+    "source/status-freeze baseline",
+    "event-window delta",
+    "formal source/environment/reproduction",
+    "statement correspondence",
+    "references/axioms/trust dependencies",
+    "Hill tree hash/version",
+    "Climb link",
+    "immutable final commit",
+    "final evaluator report",
+    "tool/AI/compute/credit disclosure",
+    "outside-help/conflict disclosure"
+  ],
+  "claim_boundary": "Shared Section 8 human identity/resource/conflict/publication fields are closed for H1/H4/H7. Competition namespace, submission ID, official evaluator/report, and organizer adjudication remain external.",
+  "authority_receipt": "work_packages/OPENMATH_2026/COMPETITION_PACKETS/HUMAN_AUTHORITY_DECLARATION.json"
+}

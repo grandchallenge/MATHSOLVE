@@ -1,0 +1,162 @@
+GCL-CONTRIBUTION-RESULT/1
+dispatch_id: OM26-H1-WP60-IA-001
+agent_ref: INDEPENDENT-AGENT-160
+assignment: OM26-H1-WP60
+disposition: NO_MATERIAL_DELTA
+context_class: ZERO_CONTEXT
+external_sources: ADDITIONAL_PUBLIC_SOURCES
+timebox_observed: YES
+
+## Strongest exact statement
+Within the exact scope stated by the pinned papers, I found no counterexample to the four targeted arguments. Conditional on: (i) finitely many distinct pairwise nonparallel real affine lines with even n, (ii) the definitions of U, D1, D2, B and h in H1_SIX_CORE_PREMISE_PROOF.md, and (iii) the predecessor 333444 state that the D2 core graph is a simple cubic graph on six labeled cores with D1=B=24, D2=9 and U=3, the fan/no-long-run lemma, clean-line parity lemma, ordinary-endpoint capacity/blocking lemma, and saturated-prism contradiction are logically valid.
+
+The prism graph classification does not require the repository finite checker: every simple cubic graph on six vertices has a 2-regular complement, hence the complement is either C6 or C3 disjoint-union C3. Therefore the original graph is respectively a triangular prism or K3,3. There are 60 labeled C6 graphs and 10 labeled C3 disjoint-union C3 graphs, giving exactly the claimed 60 prism and 10 K3,3 cases. Independent scratch enumeration reproduced these counts, as well as the claimed 2 admissible saturated triple-core ray words and 8 admissible saturated quadruple-core ray words, with every D2 ray isolated.
+
+This is NO_MATERIAL_DELTA because these conclusions do not strengthen the pinned claim boundary; they are an adversarial logical replay plus an alternate derivation of an already asserted finite classification. Event-window substantive work ran from 2026-10-01T23:28:00Z, with conversation timestamp resolution to the minute, through checkpoint 2026-10-01T23:36:11Z. Result creation timestamp: 2026-10-01T23:36:11Z.
+
+## Derivation
+Fan propagation. Suppose an r-fold core v has r-1 consecutive D1 rays. Each D1 ray is shared by two triangular faces, so the run forces r consecutive triangular sectors bounded by r+1 successive radial rays. Let P0,...,Pr be the far endpoints on those rays and A0,...,A(r-1) the opposite supports of the r triangles. For each internal Pi, 1<=i<=r-1, the radial segment is D1 and therefore Pi is ordinary. Both adjacent opposite supports A(i-1) and Ai pass through Pi and are distinct from the radial line through v; ordinariness leaves only one nonradial arrangement line, so A(i-1)=Ai. Hence all Aj equal one line A. The first and last boundary rays are r cyclic ray-steps apart among the 2r rays of r full lines through v, so they are antipodal rays of one support and v lies strictly between P0 and Pr. Since A contains both P0 and Pr, A is that same radial support and contains v, making the end fan triangles degenerate. Contradiction. Counting all cyclic blocks of length r-1 gives (r-1)d1(v)<=2r(r-2), hence d1(v)<=2r-3 for r>=3.
+
+Clean-line parity. Let L be clean. Its m=n-1 crossings are distinct ordinary points and m is odd. For the bounded L-segment between crossings i and i+1, let xi and yi indicate whether its upper and lower incident faces are triangular, and put x0=y0=xm=ym=0. A bounded L-segment has two ordinary endpoints, so it cannot border triangular faces on both sides; thus xi+yi<=1. At crossing i, the upper and lower elementary pieces of the transverse line have triangle-use counts x(i-1)+xi and y(i-1)+yi. Assume every bounded transverse piece has use exactly one. At the first crossing at least one transverse direction is bounded because its line meets another nonparallel transverse line; after reflection take x1=1,y1=0. Inductively, for even i, if x(i-1)=1 then xi=0 because use two is impossible under the assumption. If x(i-1)=0, the preceding odd invariant gives y(i-1)=0; for i>=4 the preceding even invariant gives x(i-2)=0, so the upper piece of R(i-1) has use zero and must be unbounded. Therefore R(i-1) meets Ri below L, making the lower piece of Ri bounded, hence yi=1 and xi=0. The odd step is symmetric. Since m-1 is even, x(m-1)=0. If y(m-1)=0, both transverse pieces of Rm have use zero although at least one is bounded. If y(m-1)=1, the lower piece of R1 and upper piece of Rm both have use zero and hence are unbounded, but R1 and Rm meet away from L; whichever half-plane contains their intersection makes one of those pieces bounded. Contradiction.
+
+Endpoint capacity and blocking. A charge chosen at an ordinary crossing can enter a fixed target elementary segment only through that ordinary endpoint, and exactly one nonradial arrangement line passes through such an endpoint. Hence an unused U segment has charge capacity at most two, a D1 segment capacity one, and a D2 segment capacity zero. If a D1 ray at a multiple core borders a D2 ray, their common sector is triangular. Its opposite support joins the ordinary far endpoint of the D1 segment to the multiple far endpoint of the D2 segment. That opposite support is the unique nonradial line through the ordinary endpoint, and because it contains a multiple point it is not clean. Thus that D1 target cannot receive a clean-line charge. Counting each blocked D1 ray once yields n-h<=2U+D1-B.
+
+Saturated local words. In 333444, the predecessor totals give three D2 rays at every core and D1 total 24. The fan caps are 3 at each triple core and 5 at each quadruple core, whose total is exactly 24, so every core saturates its cap. At a triple core the cyclic word has three D1 and three D2 rays with no two consecutive D1 rays; it must alternate, giving two labeled words. At a quadruple core the three gaps of D1 rays between D2 rays each have size at most two and sum to five, hence are a cyclic permutation of (2,2,1); all gaps are nonempty, so D2 rays are pairwise nonadjacent, and there are eight labeled rotations.
+
+Prism classification and obstruction. If G is a simple cubic graph on six vertices, its complement has degree two at every vertex. A simple 2-regular graph on six vertices is either C6 or C3 disjoint-union C3. The complements are respectively the triangular prism and K3,3. The labeled counts are (6-1)!/2=60 for C6 and binomial(6,3)/2=10 for C3 disjoint-union C3. A D2 core graph is drawn by elementary straight segments, so two edges cannot cross in their interiors without creating an arrangement vertex inside both; it is planar. K3,3 is excluded because a simple bipartite planar graph with V=6 has E<=2V-4=8, whereas K3,3 has E=9. Every prism contains a D2 3-cycle. Its three core vertices are noncollinear, since otherwise the elementary segment between the extreme pair would contain the third core. At a corner A of that geometric triangle, the two incident D2 rays are nonadjacent in cyclic order; therefore the open angular interval forming the triangle's interior angle contains another arrangement ray. A ray strictly inside angle BAC meets the opposite elementary side BC in its relative interior: if its direction is alpha(B-A)+beta(C-A) with alpha,beta>0, the supporting line meets BC at (alpha B+beta C)/(alpha+beta). This creates an arrangement vertex inside BC, contradicting elementaryness. Hence every prism is impossible under the stated saturated assumptions.
+
+Prior-work comparison. The pinned H1_SIX_CORE_PREMISE_PROOF.md already states the fan, parity and blocking conclusions; H1_SATURATED_PRISM_OBSTRUCTION.md already states exclusion of all sixty prisms. My complement-of-cubic-graph derivation and scratch enumerator independently replay the finite 70=10+60 and local-word 2/8 counts, but do not create a stronger conclusion or novelty claim. The failed-falsification region is exactly the pairwise-nonparallel premise proof, the saturated 333444 local words, and all labeled simple cubic six-vertex core graphs; it does not cover the other q=6 profiles, q>=7, or the full predecessor state-generation logic.
+
+## Assumptions beyond bootstrap
+The prism conclusion uses one explicitly referenced predecessor source in addition to the two pinned papers: work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_Q6_INTERNAL_REPLAY.md at MATHSOLVE source head 36b7c79bebd42fde17ea9f0f809406fb55e093f9, Git blob 6306dee5bd10fbe129440cb80cd1f128ff8b4828. I used it only for the conditional state description that all 333444 survivors are simple cubic on six labeled cores with D1=24, B=24, D2=9 and U=3; I did not replay its full 32,768-state relaxation.
+
+The public evaluator contract was read from MATHFORGE content blob b9f9d8b58fa613c9e788d09f987b50260066bc67 under protected commit 73f1890387eec56eb6be31f8c00f10b6a5a56383. It permits parallel lines and higher concurrence. H1_SIX_CORE_PREMISE_PROOF.md explicitly assumes pairwise nonparallel lines and calls that hypothesis essential to its clean-line parity proof. Therefore this audit validates the pinned argument only in that stated scope. Evaluator-wide upper-bound use requires a separately bound projective-normalization bridge or an explicit restriction of the claim; that bridge is not one of the two pinned papers audited here.
+
+Authorship/provenance: this result was produced in the present OpenAI GPT-5.6 Sol reasoning session operating under the dispatched identity INDEPENDENT-AGENT-160; authenticated GitHub transport is through account fyremael. I did not author either pinned file during this execution, but a shared model/account does not establish independent authorship. This must therefore be treated as SAME_SYSTEM_LOGICAL_AUDIT, not independent review or certification. No additional agent was launched.
+
+Source creation metadata: MATHSOLVE source-head commit 36b7c79bebd42fde17ea9f0f809406fb55e093f9 has commit timestamp 2026-10-01T22:00:12Z. Launch commit 4f1b6a1500e18fc53bae135ae6713e7abb126ae4 has commit timestamp 2026-10-01T22:23:23Z. MATHFORGE evaluator-lock commit 73f1890387eec56eb6be31f8c00f10b6a5a56383 has commit timestamp 2026-09-27T14:35:45Z.
+
+## Verification / falsification hooks
+Pinned byte hashes were verified before substantive work by fetching the exact UTF-8 contents at source head 36b7c79bebd42fde17ea9f0f809406fb55e093f9 and computing SHA-256 over the returned byte sequence.
+
+H1_SIX_CORE_PREMISE_PROOF.md:
+computed 631ecee3e7304ed8dac53b3de5f8b126adff49a5f446d57a69790df6623e1b21
+expected 631ecee3e7304ed8dac53b3de5f8b126adff49a5f446d57a69790df6623e1b21
+match true
+Git blob f4c63a43cad65d14a1100e3d9faeae98d50a87b1
+
+H1_SATURATED_PRISM_OBSTRUCTION.md:
+computed a82107eac72a6eaa09053e00b47582e63932840fb6f2436a8d1633db89041370
+expected a82107eac72a6eaa09053e00b47582e63932840fb6f2436a8d1633db89041370
+match true
+Git blob d0fee48218317d87da6b84e54a1f6a0114fa2776
+
+Independent scratch finite replay used no repository checker or repository imports. Exact code:
+
+```python
+from itertools import product, combinations
+from collections import Counter
+
+def admissible_words(r, d1):
+    n = 2*r
+    out = []
+    for w in product((0,1), repeat=n):
+        if sum(w) != d1:
+            continue
+        bad = any(all(w[(i+j)%n] == 1 for j in range(r-1)) for i in range(n))
+        if not bad:
+            out.append(w)
+    return out
+
+for r,d1 in ((3,3),(4,5)):
+    ws = admissible_words(r,d1)
+    isolated = all(all(not (w[i] == w[(i+1)%(2*r)] == 0)
+                       for i in range(2*r)) for w in ws)
+    print(f'r={r} d1={d1}: admissible={len(ws)} all_D2_isolated={isolated}')
+    for w in ws:
+        print('  ' + ''.join(map(str,w)))
+
+V = range(6)
+Eall = list(combinations(V,2))
+Gs = []
+for idxs in combinations(range(len(Eall)), 9):
+    deg = [0]*6
+    E = set()
+    for i in idxs:
+        a,b = Eall[i]
+        deg[a] += 1
+        deg[b] += 1
+        E.add((a,b))
+    if deg == [3]*6:
+        Gs.append(E)
+
+def bipartite(E):
+    adj = {v:set() for v in V}
+    for a,b in E:
+        adj[a].add(b)
+        adj[b].add(a)
+    color = {}
+    for s in V:
+        if s in color:
+            continue
+        color[s] = 0
+        stack = [s]
+        while stack:
+            u = stack.pop()
+            for z in adj[u]:
+                if z in color:
+                    if color[z] == color[u]:
+                        return False
+                else:
+                    color[z] = 1-color[u]
+                    stack.append(z)
+    return True
+
+def triangle_count(E):
+    E = {tuple(sorted(e)) for e in E}
+    return sum(all(tuple(sorted(e)) in E for e in combinations(t,2))
+               for t in combinations(V,3))
+
+print(f'cubic_labeled={len(Gs)}')
+print(f'bipartite_K33_class={sum(bipartite(E) for E in Gs)}')
+print(f'nonbipartite_prism_class={sum(not bipartite(E) for E in Gs)}')
+print('triangle_count_distribution=' +
+      repr(Counter(triangle_count(E) for E in Gs)))
+```
+
+Command:
+```text
+python /tmp/om26_h1_wp60_audit.py
+```
+
+Output:
+```text
+r=3 d1=3: admissible=2 all_D2_isolated=True
+  010101
+  101010
+r=4 d1=5: admissible=8 all_D2_isolated=True
+  01011011
+  01101011
+  01101101
+  10101101
+  10110101
+  10110110
+  11010110
+  11011010
+cubic_labeled=70
+bipartite_K33_class=10
+nonbipartite_prism_class=60
+triangle_count_distribution=Counter({2: 60, 0: 10})
+```
+
+No independent replay/formal-check evidence exists in this session beyond the same-system logical audit above; I do not label my own checks independent review.
+
+## Claim boundary
+This establishes only that I found no logical defect in the targeted pinned arguments under their stated hypotheses, and that the local-word and six-vertex cubic-graph finite claims have a small independently written deterministic replay plus a checker-free graph-complement proof. It does not independently replay the full predecessor relaxation, close the other q=6 profiles, address q>=7, prove a global score upper bound, prove optimality, establish novelty, certify a theorem, or submit anything to the competition.
+
+The pairwise-nonparallel hypothesis remains part of the audited premise proof. Because the evaluator permits parallel lines, an evaluator-wide theorem must explicitly bind a valid normalization argument before these premises are used beyond their stated scope.
+
+No canonical repository mutation, competition submission, paid compute, hidden-target access, or certification action was performed.
+
+## Next residual
+HOLD promotion as independently reviewed: obtain a genuinely independent geometric review of the two pinned proofs. Before evaluator-wide upper-bound use, explicitly bind a projective-normalization bridge or retain the pairwise-nonparallel scope. If promotion depends on the 333444 predecessor state itself, independently replay that state-generation step rather than treating D1=B=24, D2=9 and U=3 as established here.

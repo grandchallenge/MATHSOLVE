@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS_OPEN_SYNTHESIS_ADJUDICATION",
+  "adjudication_id": "ERDOS-241-RA-ADJUDICATION-001",
+  "campaign": "ERDOS-OPEN-RECON",
+  "problem_id": 241,
+  "work_package": "ERDOS-241-RECON-PACK-001",
+  "cohort_id": "ERDOS-241-BLIND-COHORT-001",
+  "protected_evidence_base_commit": "6ae554a2280e2d46c0ed9979470f7d567ed62f46",
+  "closure": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/closures/ERDOS-241-BLIND-COHORT-001.json",
+  "replay": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/replays/ERDOS-241-RA-REPLAY-001.json",
+  "synthesis": "contributions/ERDOS-OPEN-001/RECON_TRANCHE_001/synthesis/ERDOS-241-RA-SYNTHESIS-001.md",
+  "source_lane": {
+    "dispatch_id": "ERDOS-241-S1-IA-001",
+    "protected_at_adjudication": false,
+    "literature_dependent_promotion_gate_satisfied": false
+  },
+  "pipeline": [
+    "RETURNED",
+    "CAPTURED",
+    "PROTECTED",
+    "BLIND_COHORT_CLOSED",
+    "REPLAYED",
+    "ADJUDICATED",
+    "ADVANCED"
+  ],
+  "evidence": {
+    "R1": {
+      "dispatch_id": "ERDOS-241-R1-IA-001",
+      "raw_blob_sha1": "ccfde78ed922eae1b69455c692c7772fd6b5923c",
+      "receipt_blob_sha1": "7486382785bcb39b80b425dc3891639e56017c8d",
+      "declared_disposition": "FINITE_CERTIFICATE"
+    },
+    "A1": {
+      "dispatch_id": "ERDOS-241-A1-IA-001",
+      "raw_blob_sha1": "69dd67aeff905d538ed0aafc511628801226d2c9",
+      "receipt_blob_sha1": "851e6a1ec3d03f4132b57756391fd5bb30bbc592",
+      "declared_disposition": "COUNTEREXAMPLE"
+    }
+  },
+  "claim_adjudications": [
+    {
+      "claim_id": "ERDOS-241-FINITE-F-THROUGH-64",
+      "source": "R1",
+      "disposition": "CONFIRMED_BY_NATIVE_INDEPENDENT_REPLAY",
+      "statement": "f(1)=1; f(N)=2 on 2..4; 3 on 5..11; 4 on 12..23; 5 on 24..45; 6 on 46..64.",
+      "replay_dependency": "ERDOS-241-RA-REPLAY-001",
+      "parent_problem_effect": "NONE"
+    },
+    {
+      "claim_id": "ERDOS-241-MINIMAL-SPAN-EXTREMIZERS-K1-K6",
+      "source": "R1",
+      "disposition": "CONFIRMED_BY_NATIVE_INDEPENDENT_REPLAY",
+      "statement": "The minimal spans N*(1..6)=1,2,5,12,24,46 and the R1 extremizer lists at those spans reproduce exactly.",
+      "replay_dependency": "ERDOS-241-RA-REPLAY-001",
+      "parent_problem_effect": "NONE"
+    },
+    {
+      "claim_id": "ERDOS-241-DELTA-NO-DOUBLES",
+      "source": "R1",
+      "disposition": "PROVED_BY_NATIVE_DIRECT_ARGUMENT",
+      "statement": "For every strong-B3 set A, Delta(A) intersect 2 Delta(A) is empty.",
+      "parent_problem_effect": "NONE"
+    },
+    {
+      "claim_id": "ERDOS-241-DISJOINT-DIFFERENCE-SUM",
+      "source": "R1",
+      "disposition": "PROVED_BY_NATIVE_DIRECT_ARGUMENT",
+      "statement": "If two positive differences are represented by vertex-disjoint pairs, their sum is not another positive difference of A.",
+      "parent_problem_effect": "NONE"
+    },
+    {
+      "claim_id": "ERDOS-241-B2-DIFFERENCE-UNIQUENESS",
+      "source": "NATIVE_SYNTHESIS",
+      "disposition": "PROVED_BY_NATIVE_DIRECT_ARGUMENT",
+      "statement": "Strong B3 implies B2/Sidon uniqueness and therefore unique representation of each positive difference by its oriented pair.",
+      "parent_problem_effect": "NONE"
+    },
+    {
+      "claim_id": "ERDOS-241-NAIVE-BRIDGE-ELIMINATIONS",
+      "source": "A1",
+      "disposition": "CONFIRMED_BY_REPLAY_AND_DIRECT_CHECK",
+      "statement": "Naive superadditivity, multiplicative lower bounds, normalized-ratio monotonicity, greedy optimal extension, and adjacent-block union are invalid; f(M+N)<=f(M)+f(N) is retained as a safe inequality.",
+      "parent_problem_effect": "NONE"
+    }
+  ],
+  "selected_successor": {
+    "id": "ERDOS-241-N1-LOCAL-DIFFERENCE-POWER",
+    "path": "work_packages/ERDOS_OPEN/ERDOS_241_N1_LOCAL_DIFFERENCE_POWER.md",
+    "status": "READY_NATIVE_GCL",
+    "reason": "Determine whether the confirmed local difference constraints yield a strict cubic-scale improvement or are quantitatively insufficient before importing a larger Fourier/source apparatus."
+  },
+  "effects": {
+    "mathematical_correctness_adjudicated_for_listed_internal_claims": true,
+    "independent_external_verification": false,
+    "literature_status_effect": false,
+    "source_currentness_effect": false,
+    "parent_erdos_problem_effect": false,
+    "certification_effect": false,
+    "publication_effect": false,
+    "prize_effect": false
+  },
+  "final_disposition": "CONFIRM_FINITE_AND_LOCAL_STRUCTURAL_RESULTS__ADVANCE_TO_ERDOS_241_N1__KEEP_ASYMPTOTIC_AND_SOURCE_GATES_OPEN",
+  "claim_boundary": "This adjudication admits only the listed finite and elementary internal MATHSOLVE claims. It does not solve Erdős Problem 241, establish literature currency or novelty, certify mathematics through MATHCERT, or authorize publication."
+}

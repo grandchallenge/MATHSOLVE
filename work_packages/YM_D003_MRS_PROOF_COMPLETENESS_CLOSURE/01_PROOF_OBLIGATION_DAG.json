@@ -1,0 +1,238 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "parent_debt": "YM-D003",
+  "target_id": "YM-D003-MRS-R002",
+  "artifact_id": "YM-D003-MRS-PROOF-COMPLETENESS-DAG",
+  "status": "ACTIVE_NATIVE_PROOF_TARGET_SELECTED",
+  "protected_inputs": {
+    "programme_head": "fc581a4a3e8ead9bb758103bc3c5fe54d1b071d8",
+    "forge_head": "9b6413a7ca5972b7d724ea8f1594c01b8f46cf45",
+    "solve_head": "1716d39a228e71b2b9f16f902dda32694d62557a",
+    "programme_interface": "YM-T-220",
+    "source_id": "YM-SRC-025"
+  },
+  "nodes": [
+    {
+      "id": "YM-D003-MRS-R002-A",
+      "kind": "SOURCE_DEPENDENCY_GRAPH",
+      "status": "CLOSED_BY_INDEPENDENT_SYNTHESIS",
+      "statement": "Exact MRS source/dependency graph reconstructed and independently replayed sufficiently to select the smallest theorem-grade gap."
+    },
+    {
+      "id": "YM-D003-MRS-R002-MT1",
+      "kind": "EXACT_ZERO_MASS_COUNTERTERM_TUNING",
+      "status": "SHARPLY_REDUCED_TO_R2P1",
+      "statement": "Exact zero-mass tuning is not a stand-alone fixed-point problem; it depends on theorem-grade control of the renormalized local 1PI two-point polymer/subgraph sector and its mass recursion."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1",
+      "kind": "UNIFORM_RENORMALIZED_1PI_TWO_POINT_POLYMER_BOUND_AND_MASS_RECURSION",
+      "status": "SHARPLY_REDUCED_TO_R2P1_C",
+      "statement": "R2P1 is reduced to a new MRS-specific theorem bounding the renormalized local 1PI two-point polymer/subgraph sector uniformly in UV depth; existing MRS material supplies convergence ingredients but not this normed subgraph theorem."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C",
+      "kind": "MRS_RENORMALIZED_TWO_POINT_SUBGRAPH_THEOREM",
+      "status": "MISSING_THEOREM_GRADE_PROOF__NEW_NATIVE_MATHEMATICS_REQUIRED",
+      "statement": "Define a normed MRS-specific renormalized local 1PI two-point polymer/subgraph family and prove the UV-depth-uniform summability/remainder/mass-response bound required for the simultaneous two-point and mass-counterterm induction."
+    },
+    {
+      "id": "YM-D003-MRS-R002-B",
+      "kind": "EXPANSION_CONVERGENCE_AND_SUMMABILITY",
+      "status": "OPEN_WITH_LOCAL_R2P1_SUBNODE_ACTIVE",
+      "statement": "Global MRS expansion/Mayer/polymer summability remains open; its local renormalized two-point component R2P1 is the active smallest non-circular native target."
+    },
+    {
+      "id": "YM-D003-MRS-R002-C",
+      "kind": "UV_UNIFORM_SCHWINGER_CONTROL_AND_LIMIT",
+      "status": "BLOCKED_ON_MT1_AND_R002_B",
+      "statement": "Cutoff-uniform fixed-IR Schwinger convergence remains blocked on exact mass tuning plus MRS-specific global summability."
+    },
+    {
+      "id": "YM-D003-MRS-R002-D",
+      "kind": "SLAVNOV_LIMIT_COMPATIBILITY",
+      "status": "CONDITIONAL_FIXED_ORDER_LIMIT_PASSAGE_CLOSED__DEFECT_ESTIMATE_OPEN",
+      "statement": "For fixed IR regulator/order, the linear Slavnov identity passes to the UV limit once the required smeared Schwinger convergence and delta_N(rho)->0 hold; the upstream quantitative premises remain open."
+    },
+    {
+      "id": "YM-D003-MRS-R002-E",
+      "kind": "THEOREM_GRADE_ROUTE_ADMISSION",
+      "status": "BLOCKED_ON_A_TO_D",
+      "statement": "Determine whether the fixed-IR MRS construction is complete enough for unrestricted theorem-grade downstream use within its exact model and regulator boundary."
+    },
+    {
+      "id": "YM-D003-MRS-R003",
+      "kind": "IR_AND_INFINITE_VOLUME_REMOVAL",
+      "status": "BLOCKED_ON_R002",
+      "statement": "Remove the fixed infrared cutoff/infinite-volume restriction on the selected MRS route."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C0",
+      "kind": "EXACT_RENORMALIZED_TWO_POINT_GRAMMAR",
+      "status": "ACTIVE_NATIVE_SUBTARGET",
+      "statement": "Define the finite-cutoff MRS renormalized local 1PI two-point polymer/subgraph class and prove closure under the admitted decoupling, Mayer, local projection, and nested subtraction operations without assuming convergence."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C1",
+      "kind": "CANDIDATE_NORM_AND_ROOTED_POLYMER_MAJORANT",
+      "status": "BLOCKED_ON_C0",
+      "statement": "Define the weakest norm/majorant compatible with the exact C0 objects and rooted-polymer summability criterion."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C2",
+      "kind": "LINK_TREE_SUMMABILITY",
+      "status": "BLOCKED_ON_C1",
+      "statement": "Use the admitted Section VII propagator/link decay and small-factor structure to prove rooted tree/polymer summability in the C1 majorant."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C3",
+      "kind": "RENORMALIZED_REMAINDER_SCALE_GAIN",
+      "status": "BLOCKED_ON_C2",
+      "statement": "Prove that subtracting the local A^2/2 relevant part yields the scale gain required by the MRS induction."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C4",
+      "kind": "MASS_RESPONSE_SIMULTANEOUS_INDUCTION",
+      "status": "BLOCKED_ON_C3",
+      "statement": "Close simultaneous induction for the local two-point bound and running mass counterterm, including response/nondegeneracy needed for exact tuning."
+    },
+    {
+      "id": "YM-D003-MRS-R002-R2P1-C5",
+      "kind": "BACKGROUND_GAUGE_SECTION_VI_COMPATIBILITY",
+      "status": "BLOCKED_ON_C4",
+      "statement": "Verify the proved bound and selected mass counterterm remain compatible with the MRS background/gauge-restoring organization and Section VI normalization/stability interface."
+    }
+  ],
+  "evidence_dispositions": [
+    "PROVED_IN_MRS_BODY",
+    "REDUCED_TO_CITED_PRIOR_THEOREM",
+    "ASSERTED_WITH_SKETCH",
+    "MISSING_THEOREM_GRADE_PROOF"
+  ],
+  "edges": [
+    {
+      "from": "YM-D003-MRS-R002-A",
+      "to": "YM-D003-MRS-R002-B",
+      "type": "source_graph_types_convergence_debt"
+    },
+    {
+      "from": "YM-D003-MRS-R002-A",
+      "to": "YM-D003-MRS-R002-C",
+      "type": "source_graph_types_uv_limit_debt"
+    },
+    {
+      "from": "YM-D003-MRS-R002-A",
+      "to": "YM-D003-MRS-R002-D",
+      "type": "source_graph_types_identity_debt"
+    },
+    {
+      "from": "YM-D003-MRS-R002-B",
+      "to": "YM-D003-MRS-R002-C",
+      "type": "convergence_inputs_uv_limit"
+    },
+    {
+      "from": "YM-D003-MRS-R002-C",
+      "to": "YM-D003-MRS-R002-E",
+      "type": "required_fixed_ir_uv_construction"
+    },
+    {
+      "from": "YM-D003-MRS-R002-D",
+      "to": "YM-D003-MRS-R002-E",
+      "type": "required_claim_compatibility"
+    },
+    {
+      "from": "YM-D003-MRS-R002-E",
+      "to": "YM-D003-MRS-R003",
+      "type": "theorem_grade_route_before_ir_removal"
+    },
+    {
+      "from": "YM-D003-MRS-R002-A",
+      "to": "YM-D003-MRS-R002-MT1",
+      "type": "dependency_graph_selects_smallest_confirmed_gap"
+    },
+    {
+      "from": "YM-D003-MRS-R002-MT1",
+      "to": "YM-D003-MRS-R002-R2P1",
+      "type": "mass_tuning_requires_local_renormalized_two_point_polymer_control"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1",
+      "to": "YM-D003-MRS-R002-B",
+      "type": "local_two_point_induction_is_subnode_of_global_summability"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1",
+      "to": "YM-D003-MRS-R002-R2P1-C",
+      "type": "source_replay_isolates_load_bearing_subgraph_theorem"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1-C",
+      "to": "YM-D003-MRS-R002-R2P1-C0",
+      "type": "proof_program_starts_with_exact_object_grammar"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1-C0",
+      "to": "YM-D003-MRS-R002-R2P1-C1",
+      "type": "grammar_precedes_norm"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1-C1",
+      "to": "YM-D003-MRS-R002-R2P1-C2",
+      "type": "majorant_precedes_summability"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1-C2",
+      "to": "YM-D003-MRS-R002-R2P1-C3",
+      "type": "summability_precedes_remainder_gain"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1-C3",
+      "to": "YM-D003-MRS-R002-R2P1-C4",
+      "type": "remainder_control_precedes_mass_response"
+    },
+    {
+      "from": "YM-D003-MRS-R002-R2P1-C4",
+      "to": "YM-D003-MRS-R002-R2P1-C5",
+      "type": "mass_induction_precedes_stability_compatibility"
+    }
+  ],
+  "agent_support": [
+    {
+      "wp": "WP-A",
+      "role": "source_dependency_reconstruction",
+      "targets": [
+        "YM-D003-MRS-R002-A"
+      ]
+    },
+    {
+      "wp": "WP-B",
+      "role": "independent_convergence_closure_or_reduction",
+      "targets": [
+        "YM-D003-MRS-R002-B",
+        "YM-D003-MRS-R002-C"
+      ]
+    },
+    {
+      "wp": "WP-C",
+      "role": "adversarial_hidden_assumption_audit",
+      "targets": [
+        "YM-D003-MRS-R002-A",
+        "YM-D003-MRS-R002-B",
+        "YM-D003-MRS-R002-C",
+        "YM-D003-MRS-R002-D"
+      ]
+    }
+  ],
+  "false_proof_firewalls": [
+    "Do not splice Balaban theorem content into the MRS route without a protected comparison theorem.",
+    "Do not convert fixed-IR ultraviolet removal into infrared/infinite-volume removal.",
+    "Do not erase the source's proof-completeness qualification by citation-counting alone.",
+    "Do not infer complete Osterwalder-Schrader axioms from Slavnov identities.",
+    "Do not extend pure SU(2), trivial topological sector conclusions to other gauge groups or sectors without a theorem.",
+    "Do not infer Yang-Mills mass gap or terminal YM-001 closure."
+  ],
+  "claim_boundary": "Provisional Solve decomposition only. Node names B-D may be refined by source evidence; no theorem or campaign status is promoted by this DAG.",
+  "selected_native_node": "YM-D003-MRS-R002-R2P1-C0",
+  "selection_rationale": "R2P1-C cannot be proved rigorously until the finite-cutoff renormalized local 1PI two-point objects are defined without presupposing the convergence theorem. C0 is therefore the first non-circular native subtarget."
+}

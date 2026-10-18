@@ -111,14 +111,13 @@ adjudicate mathematics, infer independence, certify a claim, or mutate campaign 
 
 The final evidence-branch to pull-request hop is owned by the bounded Release Trust
 controller protected in MATH-PROGRAMME at
-`e0f809d853705db0817800434da0213b8177999f`.
+`dd5f7f3b5bb3354c2cd74eff25d29c12ec5aa95f`.
 
 That controller runs behind the existing `release-trust` environment and mints a
 short-lived GitHub App token restricted to `MATHSOLVE` with only:
 
 - `contents: read`;
-- `pull_requests: write`;
-- `issues: write`.
+- `pull_requests: write`.
 
 It validates the protected dispatch, exact raw-plus-receipt branch diff, raw digest,
 bootstrap/handoff bindings, and unadjudicated receipt state before opening a missing

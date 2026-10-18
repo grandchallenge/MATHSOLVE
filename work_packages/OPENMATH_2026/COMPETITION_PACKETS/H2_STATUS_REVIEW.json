@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "OM26-H2-FREEZE-DATE-STATUS-001",
+  "candidate": "W89911",
+  "candidate_sha256": "f8eaa4dbcbc3ecb18f8ddd1734cffe0079457ff3e26a51a25e81f3f6e988ead2",
+  "exact_claim": {
+    "steps": 89911,
+    "ones": 185,
+    "tape_span": 541,
+    "all_six_states": true,
+    "state": "INDEPENDENT_REPLAY_PASS"
+  },
+  "state_of_art_advance": false,
+  "exact_machine_novelty": "UNRESOLVED__PUBLIC_EXACT_STRING_SEARCH_NO_MATCH_IS_NOT_PROOF",
+  "competition_priority": "LOWER_THAN_H4",
+  "disposition": "VALID_FINITE_HILL_ARTIFACT__NOT_A_KNOWN_BB6_BOUND_IMPROVEMENT",
+  "sources": [
+    "https://wiki.bbchallenge.org/wiki/BB%286%29",
+    "https://docs.bbchallenge.org/other/busy.html"
+  ],
+  "claim_boundary": "No S(6) optimality, record, state-of-the-art lower-bound, search-completeness, or novelty claim."
+}

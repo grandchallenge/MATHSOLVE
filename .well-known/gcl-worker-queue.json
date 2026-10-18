@@ -1,0 +1,181 @@
+{
+  "schema_version": "1.3.0",
+  "protocol": "GCL-WORKER-QUEUE/1",
+  "purpose": "Zero-context discovery and pickup of bounded GCL worker assignments across supported GCL repositories.",
+  "repository": "grandchallenge/MATHSOLVE",
+  "instructions_url": "https://github.com/grandchallenge/MATHSOLVE/blob/main/WORKERS.md",
+  "instructions_raw_url": "https://raw.githubusercontent.com/grandchallenge/MATHSOLVE/main/WORKERS.md",
+  "project": {
+    "organization": "grandchallenge",
+    "number": 2,
+    "url": "https://github.com/orgs/grandchallenge/projects/2",
+    "available_view": "AVAILABLE",
+    "cross_repository_discovery_authority": true
+  },
+  "repository_pickup_modes": {
+    "grandchallenge/MATHSOLVE": "reservation_controlled",
+    "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": "direct_editorial",
+    "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial",
+    "grandchallenge/MATH-PROGRAMME": "direct_editorial"
+  },
+  "pickup_modes": {
+    "reservation_controlled": {
+      "selector": "configured repository pickup mode reservation_controlled",
+      "forbidden_label": "gcl-pickup:direct-editorial",
+      "claim_command": "/claim",
+      "release_command": "/release",
+      "controller_response_protocol": "GCL-WORKER-RESERVATION/1",
+      "execute_before_reservation_confirmation": false,
+      "return_protocol": "GCL-CONTRIBUTION-RESULT/1"
+    },
+    "direct_editorial": {
+      "selector": "configured repository pickup mode direct_editorial AND label gcl-pickup:direct-editorial",
+      "required_label": "gcl-pickup:direct-editorial",
+      "claim_command": null,
+      "reservation_controller": null,
+      "instructions_source": "bound issue",
+      "return_target": "same bound issue",
+      "return_protocol": "RESULT/1 as specified by the issue",
+      "execution_authority": "bounded issue instructions only"
+    }
+  },
+  "commands": {
+    "claim": "/claim",
+    "release": "/release"
+  },
+  "commands_apply_to": "reservation_controlled",
+  "controller_response_protocol": "GCL-WORKER-RESERVATION/1",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "legacy_top_level_protocol_fields_apply_to": "reservation_controlled",
+  "fallbacks": [
+    {
+      "repository": "grandchallenge/MATHSOLVE",
+      "pickup_mode": "reservation_controlled",
+      "issue_query_url": "https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22"
+    },
+    {
+      "repository": "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS",
+      "pickup_mode": "direct_editorial",
+      "issue_query_url": "https://github.com/grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22+label%3A%22gcl-pickup%3Adirect-editorial%22"
+    },
+    {
+      "repository": "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS",
+      "pickup_mode": "direct_editorial",
+      "issue_query_url": "https://github.com/grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22+label%3A%22gcl-pickup%3Adirect-editorial%22"
+    },
+    {
+      "repository": "grandchallenge/MATH-PROGRAMME",
+      "pickup_mode": "direct_editorial",
+      "issue_query_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22+label%3A%22gcl-pickup%3Adirect-editorial%22"
+    }
+  ],
+  "full_protocol_path": "handoffs/GCL-WORKER-QUEUE.md",
+  "queue_registry_path": ".gcl/worker_queue/JOBS.json",
+  "project_binding_path": ".gcl/worker_queue/PROJECT.json",
+  "requirements": {
+    "authenticated_github_comment_identity": true,
+    "anonymous_participation": false,
+    "reservation_result_actor_must_match_active_reservation_owner": true
+  },
+  "authority": {
+    "project_is_execution_authority": false,
+    "issue_fields_are_execution_authority": false,
+    "reservation_is_execution_authority": false,
+    "mathematical_effect": false,
+    "certification_effect": false
+  },
+  "queue_classes": {
+    "editorial": {
+      "description": "Substantive expository writing, figures, typography, reader accessibility and critical editorial review; excludes mathematical source-audit/research preparation",
+      "repositories": [
+        "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS",
+        "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS",
+        "grandchallenge/MATH-PROGRAMME"
+      ],
+      "pickup_mode": "direct_editorial",
+      "required_label": "gcl-pickup:direct-editorial",
+      "view_selector": "EDITORIAL",
+      "discovery_query_url": "https://github.com/issues?q=is%3Aissue+is%3Aopen+org%3Agrandchallenge+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+-label%3Agcl-role%3Asource-audit",
+      "specialist_source_triage": [
+        {
+          "repository": "grandchallenge/MATH-PROGRAMME",
+          "issue_number": 1262,
+          "issue_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/1262",
+          "semantic_class": "Editorial",
+          "pickup_mode": "direct_editorial",
+          "discover_only_if_state": "AVAILABLE"
+        },
+        {
+          "repository": "grandchallenge/MATH-PROGRAMME",
+          "issue_number": 1264,
+          "issue_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/1264",
+          "semantic_class": "Editorial",
+          "pickup_mode": "direct_editorial",
+          "discover_only_if_state": "AVAILABLE"
+        }
+      ]
+    },
+    "mathematics": {
+      "description": "Proof/counterexample/formalization in Solve plus Erdős source and bounded research preparation via direct issue pickup",
+      "repositories": [
+        "grandchallenge/MATHSOLVE"
+      ],
+      "pickup_mode": "reservation_controlled",
+      "view_selector": "MATHEMATICS",
+      "discovery_query_url": "https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable",
+      "controller": "GCL-WORKER-RESERVATION/1",
+      "preparation_query_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-role%3Asource-audit+ERDOS-CATALOGUE",
+      "critical_review_query_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-role%3Asource-audit+%22critical+source+and+lemma+review%22"
+    }
+  },
+  "queue_classification_policy": {
+    "mode": "additive_nonbreaking",
+    "source_of_truth": "repository_pickup_modes and protected registry",
+    "class_selector": "semantic job content and protected source-audit identity; NEVER pickup mode alone",
+    "do_not_reclassify_existing_lease": true,
+    "unknown_route": "fail_closed",
+    "project_views_are_filters_not_authority": true,
+    "capacity_policy": "independent class availability-admission limits; no worker-runtime concurrency claim for direct issue pickup absent tracked active work",
+    "canonical_worker_entrypoint": "https://github.com/grandchallenge/MATHSOLVE/blob/main/WORKERS.md",
+    "publication_effect": false,
+    "classifier_path": "ci/gcl_queue_class_contract.py",
+    "project_queue_class_field_id": "PVTSSF_lADOB9Ao_c4BlwurzhlJkjI",
+    "cutover_state": "SEMANTIC_PROJECT_CLASS_AND_SAVED_VIEWS_VERIFIED_ACTIVE_CAPACITY_AND_CANARIES_OPEN",
+    "editorial_source_role_exception": "MATH-PROGRAMME #1262/ED07 and #1264/ED09 are Editorial despite source-audit roles; protected ERDOS-ROLLING-024 critic dockets are Mathematics",
+    "project_classification_verified": {
+      "status": "VERIFIED",
+      "protected_programme_sha": "aa61829b88848ab50b009b9a5b2a097e81b8a819",
+      "workflow_run": "https://github.com/grandchallenge/MATH-PROGRAMME/actions/runs/38124664460",
+      "durable_receipt": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/2563",
+      "project_items": 1308,
+      "editorial_items": 37,
+      "mathematics_items": 1271,
+      "queue_field_id": "PVTSSF_lADOB9Ao_c4BlwurzhlJkjI",
+      "views": {
+        "EDITORIAL": "PVTV_lADOB9Ao_c4BlwurzgMAfZU",
+        "MATHEMATICS": "PVTV_lADOB9Ao_c4BlwurzgMAfZY",
+        "AVAILABLE": "PVTV_lADOB9Ao_c4BlwurzgL64bo"
+      },
+      "not_worker_concurrency": true
+    },
+    "active_capacity_claims": {
+      "Mathematics": "eight-slot protected /claim ledger guard candidate; live positive/hostile verification pending",
+      "Editorial": "eight-slot planning budget; untracked direct-issue starts prevent runtime active-worker enforcement",
+      "no_mode_migration": true
+    }
+  },
+  "specialized_discovery": {
+    "erdos_catalogue_research_preparation": {
+      "repository": "grandchallenge/MATH-PROGRAMME",
+      "pickup_mode": "direct_editorial",
+      "required_label": "gcl-pickup:direct-editorial",
+      "available_label": "gcl-state:available",
+      "title_selector": "ERDOS-CATALOGUE",
+      "discovery_query_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+ERDOS-CATALOGUE",
+      "claim_command": null,
+      "return_protocol": "RESULT/1",
+      "authority_effect": false,
+      "note": "Discovery overlay for issue-bound mathematical source audits and bounded research design, not reservation-controlled MATHSOLVE dispatches."
+    }
+  }
+}

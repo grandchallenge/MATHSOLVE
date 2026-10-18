@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0.2",
+  "record_type": "GCL_CONTENT_FREEZE",
+  "campaign": "OPENMATH-2026",
+  "operation": "OM26-H2-H7-WP01-LEASES",
+  "protected_base": "51a52401bfda66910b58c690684da595b4d6aa2c",
+  "source_handoff_commit": "6b96ec9afd4395234e32d8769f6e63ddecdf5c55",
+  "lease_introducing_commit": "3c835aaf6173176b64efca5f03ffdc27b20af965",
+  "assembled_from_head": "5b6a9d998ca5a132f7db34de9d8d0117aee17e45",
+  "generic_intake": {
+    "protected_merge": "51a52401bfda66910b58c690684da595b4d6aa2c",
+    "readback_path": ".gcl/completions/OPENMATH-CEX-GENERIC-INTAKE/READBACK.json",
+    "readback_blob": "16c31a2241a3c362d040640932eea16ae7580d2a"
+  },
+  "artifacts": {
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "4b02e1976c4ac5e23e10015f7da701e9414ebd03",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "03ff527ae75955e150624b04420acc2f3235c43e",
+    "work_packages/OPENMATH_2026/H2_H7_WP01_LEASES.json": "4b1c82a9d8f830ee1052c9a3131a7736b6f34b4d",
+    ".gcl/operations/OM26-H2-H7-WP01-LEASES/OPERATION.json": "7871ba9d0ac58bbc824a1ca62d84d692f0dc62b1",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "1f1526bb7468ba4267d78c49800766e48ea93c00",
+    "ci/validate_openmath_cex_job_board.py": "f87e2a56904499a46b2757397cf1e3b1959faff4",
+    "ci/test_openmath_cex_job_board.py": "3692a538d3df3c5ba92f631c7bee0abf8a539969",
+    ".github/workflows/openmath-cex-job-board.yml": "b70f3f8d2b7169dcc6e6155f2066e5168ba3bce2",
+    ".gcl/completions/OPENMATH-CEX-GENERIC-INTAKE/READBACK.json": "16c31a2241a3c362d040640932eea16ae7580d2a",
+    "handoffs/OPENMATH-2026/jobs/OM26-H2-WP01-IA-001.md": "5a8d729db516f5ca3562ee38aad60585d58740ac",
+    ".gcl/operations/OM26-H2-WP01-IA-001/OPERATION.json": "a1d6118e2392605b0d1bad9fc689ded93521f069",
+    "contributions/OPENMATH-2026/OM26-H2/WP01/dispatches/OM26-H2-WP01-IA-001.json": "3e8cccabbeb1e059d532046beb4d653b9709e476",
+    "handoffs/OPENMATH-2026/jobs/OM26-H3-WP01-IA-001.md": "620d6453591a9a181e667937e390d46da34b60b3",
+    ".gcl/operations/OM26-H3-WP01-IA-001/OPERATION.json": "ded2d67c3f5832485d105205808d7b808953ba01",
+    "contributions/OPENMATH-2026/OM26-H3/WP01/dispatches/OM26-H3-WP01-IA-001.json": "855224ca7eacb7f651820ab3c550f7709babfc56",
+    "handoffs/OPENMATH-2026/jobs/OM26-H4-WP01-IA-001.md": "10d36eb40112449b86317b04600548995bcb6fde",
+    ".gcl/operations/OM26-H4-WP01-IA-001/OPERATION.json": "96c0864c4f103c8b00f538a21f7882afbc69a1cd",
+    "contributions/OPENMATH-2026/OM26-H4/WP01/dispatches/OM26-H4-WP01-IA-001.json": "a724e54d308769a097a610699698228cf1946a33",
+    "handoffs/OPENMATH-2026/jobs/OM26-H5-WP01-IA-001.md": "de6d22817fc7ab6f1296a1767949d25502d1c56d",
+    ".gcl/operations/OM26-H5-WP01-IA-001/OPERATION.json": "779dca7d0d58f9ae408b77da0c3bbecacc38260e",
+    "contributions/OPENMATH-2026/OM26-H5/WP01/dispatches/OM26-H5-WP01-IA-001.json": "c8d87b17ee00f613b3efab95e4d40132479a0115",
+    "handoffs/OPENMATH-2026/jobs/OM26-H6-WP01-IA-001.md": "c026abc96f925fd85e01e117e56961b670259b25",
+    ".gcl/operations/OM26-H6-WP01-IA-001/OPERATION.json": "51c261a8c81bcd91c1e838206ddb1fae25e03f31",
+    "contributions/OPENMATH-2026/OM26-H6/WP01/dispatches/OM26-H6-WP01-IA-001.json": "386f32bb4f5955afe74064200a500468018b8cc0",
+    "handoffs/OPENMATH-2026/jobs/OM26-H7-WP01-IA-001.md": "452c3a0abba18ded400fc8ed4590d983db007767",
+    ".gcl/operations/OM26-H7-WP01-IA-001/OPERATION.json": "88f937e46efca3df36f78aa373497a04df9a5733",
+    "contributions/OPENMATH-2026/OM26-H7/WP01/dispatches/OM26-H7-WP01-IA-001.json": "8b048a1e77cebc2c5efd807c0af034533721a819",
+    ".gcl/completions/OM26-H2-H7-WP01-LEASES/COMPLETION_RECEIPT.json": "f593e38a35373a3db08e2e1cfe9cde5af6420335"
+  },
+  "leases": [
+    {
+      "hill": "OM26-H2",
+      "dispatch_id": "OM26-H2-WP01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-002",
+      "issue_number": 505,
+      "bootstrap_blob": "5a8d729db516f5ca3562ee38aad60585d58740ac",
+      "operation_blob": "a1d6118e2392605b0d1bad9fc689ded93521f069",
+      "dispatch_blob": "3e8cccabbeb1e059d532046beb4d653b9709e476",
+      "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H2-WP01-IA-001.md",
+      "operation_path": ".gcl/operations/OM26-H2-WP01-IA-001/OPERATION.json",
+      "dispatch_path": "contributions/OPENMATH-2026/OM26-H2/WP01/dispatches/OM26-H2-WP01-IA-001.json",
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/505"
+    },
+    {
+      "hill": "OM26-H3",
+      "dispatch_id": "OM26-H3-WP01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-003",
+      "issue_number": 506,
+      "bootstrap_blob": "620d6453591a9a181e667937e390d46da34b60b3",
+      "operation_blob": "ded2d67c3f5832485d105205808d7b808953ba01",
+      "dispatch_blob": "855224ca7eacb7f651820ab3c550f7709babfc56",
+      "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H3-WP01-IA-001.md",
+      "operation_path": ".gcl/operations/OM26-H3-WP01-IA-001/OPERATION.json",
+      "dispatch_path": "contributions/OPENMATH-2026/OM26-H3/WP01/dispatches/OM26-H3-WP01-IA-001.json",
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/506"
+    },
+    {
+      "hill": "OM26-H4",
+      "dispatch_id": "OM26-H4-WP01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-004",
+      "issue_number": 507,
+      "bootstrap_blob": "10d36eb40112449b86317b04600548995bcb6fde",
+      "operation_blob": "96c0864c4f103c8b00f538a21f7882afbc69a1cd",
+      "dispatch_blob": "a724e54d308769a097a610699698228cf1946a33",
+      "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H4-WP01-IA-001.md",
+      "operation_path": ".gcl/operations/OM26-H4-WP01-IA-001/OPERATION.json",
+      "dispatch_path": "contributions/OPENMATH-2026/OM26-H4/WP01/dispatches/OM26-H4-WP01-IA-001.json",
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/507"
+    },
+    {
+      "hill": "OM26-H5",
+      "dispatch_id": "OM26-H5-WP01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-005",
+      "issue_number": 508,
+      "bootstrap_blob": "de6d22817fc7ab6f1296a1767949d25502d1c56d",
+      "operation_blob": "779dca7d0d58f9ae408b77da0c3bbecacc38260e",
+      "dispatch_blob": "c8d87b17ee00f613b3efab95e4d40132479a0115",
+      "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H5-WP01-IA-001.md",
+      "operation_path": ".gcl/operations/OM26-H5-WP01-IA-001/OPERATION.json",
+      "dispatch_path": "contributions/OPENMATH-2026/OM26-H5/WP01/dispatches/OM26-H5-WP01-IA-001.json",
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/508"
+    },
+    {
+      "hill": "OM26-H6",
+      "dispatch_id": "OM26-H6-WP01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-006",
+      "issue_number": 509,
+      "bootstrap_blob": "c026abc96f925fd85e01e117e56961b670259b25",
+      "operation_blob": "51c261a8c81bcd91c1e838206ddb1fae25e03f31",
+      "dispatch_blob": "386f32bb4f5955afe74064200a500468018b8cc0",
+      "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H6-WP01-IA-001.md",
+      "operation_path": ".gcl/operations/OM26-H6-WP01-IA-001/OPERATION.json",
+      "dispatch_path": "contributions/OPENMATH-2026/OM26-H6/WP01/dispatches/OM26-H6-WP01-IA-001.json",
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/509"
+    },
+    {
+      "hill": "OM26-H7",
+      "dispatch_id": "OM26-H7-WP01-IA-001",
+      "agent_ref": "INDEPENDENT-AGENT-007",
+      "issue_number": 510,
+      "bootstrap_blob": "452c3a0abba18ded400fc8ed4590d983db007767",
+      "operation_blob": "88f937e46efca3df36f78aa373497a04df9a5733",
+      "dispatch_blob": "8b048a1e77cebc2c5efd807c0af034533721a819",
+      "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H7-WP01-IA-001.md",
+      "operation_path": ".gcl/operations/OM26-H7-WP01-IA-001/OPERATION.json",
+      "dispatch_path": "contributions/OPENMATH-2026/OM26-H7/WP01/dispatches/OM26-H7-WP01-IA-001.json",
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/510"
+    }
+  ],
+  "invariants": {
+    "one_to_one_assignment_dispatch_agent_issue": true,
+    "independent_blind": true,
+    "h2_h7_lease_count": 6,
+    "duplicate_agent_refs": false,
+    "duplicate_issues": false,
+    "competition_submission": false,
+    "certification": false,
+    "canonical_claim_mutation": false
+  },
+  "invalidation": {
+    "governed_artifact_change": "new freeze required",
+    "candidate_head_change": "exact-head review and CI must be replayed",
+    "issue_body_change": "dispatch issue must continue to equal protected bootstrap bytes",
+    "lease_reassignment": "requires separate protected mutation"
+  },
+  "claim_boundary": "Lease-state readback only; returned contributions require separate review.",
+  "repair": {
+    "defect": "Literal backslash-n sequences corrupted the job-board workflow paths list on the previous candidate head.",
+    "repair_commit": "5b6a9d998ca5a132f7db34de9d8d0117aee17e45",
+    "effect": "Restores valid YAML path entries and exact-head job-board validation triggering.",
+    "bypass": false
+  },
+  "protected_lease_merge": "85646c1201452c68cfb98d25443b67f7b643da04",
+  "readback_receipt": {
+    "path": ".gcl/completions/OM26-H2-H7-WP01-LEASES/COMPLETION_RECEIPT.json",
+    "git_blob_sha1": "f593e38a35373a3db08e2e1cfe9cde5af6420335"
+  }
+}

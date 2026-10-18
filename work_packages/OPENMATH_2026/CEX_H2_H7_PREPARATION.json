@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-CEX-H2-H7-PREP",
+  "parent_campaign": "OPENMATH-2026",
+  "cex_campaign": "OPENMATH-2026-SOURCE-ACQ",
+  "operation": "OM26-H2-H7-SOURCE-ACQ",
+  "prepared_against": {
+    "solve": "57505b7c886bbf6b6aa00bc36168c1f097ee75a3",
+    "forge": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+    "programme": "6fae2b2df9bc0bb180a63c76fc9752656285da02",
+    "cert": "8a2610215989bec15474f0a088945c0a1b6d8172",
+    "intellect": "cacfe1f749b91a335e1d1734352cecff56bad7c1",
+    "cex_standard": "efe06a27aa594c63bd0489929ffd9fff1e2daeb9"
+  },
+  "mode": "SOURCE_ACQUISITION_COMPLETE__SOLVE_RELEASED_FOR_DECOMPOSITION",
+  "lanes": [
+    {
+      "slot": "OM26-H2",
+      "lease_id": "OM26-H2-SOURCE-ACQ",
+      "state": "SOLVE_RELEASED__READY_FOR_DECOMPOSITION",
+      "exact_hill_id": "alejandrozu/busy-beaver-6-certificates",
+      "title": "Busy Beaver 6 certificates",
+      "exact_statement": "grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90:work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/busy-beaver-6-certificates/PUBLIC_SOURCE/README.md",
+      "external_version": "0.1.0",
+      "evaluator_or_checker": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H2_BUSY_BEAVER_6_CERTIFICATES/EVALUATOR_CONTRACT.md",
+      "solve_release": true,
+      "acquisition_sequence": [
+        "rebind live protected Programme, Forge, and Solve heads",
+        "obtain organizer-authoritative AutoLab hill/list evidence",
+        "capture exact external hill identity and statement",
+        "capture external version or observation time",
+        "capture evaluator/checker contract when available",
+        "produce complete MATHFORGE source-lock packet",
+        "protect and read back the MATHFORGE source lock",
+        "rebind the corresponding Solve lane",
+        "only then instantiate hill-specific mathematical work"
+      ],
+      "forge_source_lock": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/unassigned_sources/busy-beaver-6-certificates/SOURCE_LOCK.json",
+      "semantic_source_map": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H2_BUSY_BEAVER_6_CERTIFICATES/SOURCE_MAP.md",
+      "status_triage": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H2_BUSY_BEAVER_6_CERTIFICATES/STATUS_TRIAGE.md",
+      "release_blocker": null,
+      "release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH"
+    },
+    {
+      "slot": "OM26-H3",
+      "lease_id": "OM26-H3-SOURCE-ACQ",
+      "state": "SOLVE_RELEASED__READY_FOR_DECOMPOSITION",
+      "exact_hill_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
+      "title": "Clique-cluster Ramsey multiplicity",
+      "exact_statement": "grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90:work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/clique-cluster-ramsey-multiplicity/PUBLIC_SOURCE/README.md",
+      "external_version": "1.0.0",
+      "evaluator_or_checker": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H3_CLIQUE_CLUSTER_RAMSEY_MULTIPLICITY/EVALUATOR_CONTRACT.md",
+      "solve_release": true,
+      "acquisition_sequence": [
+        "rebind live protected Programme, Forge, and Solve heads",
+        "obtain organizer-authoritative AutoLab hill/list evidence",
+        "capture exact external hill identity and statement",
+        "capture external version or observation time",
+        "capture evaluator/checker contract when available",
+        "produce complete MATHFORGE source-lock packet",
+        "protect and read back the MATHFORGE source lock",
+        "rebind the corresponding Solve lane",
+        "only then instantiate hill-specific mathematical work"
+      ],
+      "forge_source_lock": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/unassigned_sources/clique-cluster-ramsey-multiplicity/SOURCE_LOCK.json",
+      "semantic_source_map": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H3_CLIQUE_CLUSTER_RAMSEY_MULTIPLICITY/SOURCE_MAP.md",
+      "status_triage": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H3_CLIQUE_CLUSTER_RAMSEY_MULTIPLICITY/STATUS_TRIAGE.md",
+      "release_blocker": null,
+      "release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH"
+    },
+    {
+      "slot": "OM26-H4",
+      "lease_id": "OM26-H4-SOURCE-ACQ",
+      "state": "SOLVE_RELEASED__READY_FOR_DECOMPOSITION",
+      "exact_hill_id": "alejandrozu/collatz-modular-descent",
+      "title": "Collatz modular descent",
+      "exact_statement": "grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90:work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/collatz-modular-descent/PUBLIC_SOURCE/README.md",
+      "external_version": "0.1.0",
+      "evaluator_or_checker": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H4_COLLATZ_MODULAR_DESCENT/EVALUATOR_CONTRACT.md",
+      "solve_release": true,
+      "acquisition_sequence": [
+        "rebind live protected Programme, Forge, and Solve heads",
+        "obtain organizer-authoritative AutoLab hill/list evidence",
+        "capture exact external hill identity and statement",
+        "capture external version or observation time",
+        "capture evaluator/checker contract when available",
+        "produce complete MATHFORGE source-lock packet",
+        "protect and read back the MATHFORGE source lock",
+        "rebind the corresponding Solve lane",
+        "only then instantiate hill-specific mathematical work"
+      ],
+      "forge_source_lock": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/unassigned_sources/collatz-modular-descent/SOURCE_LOCK.json",
+      "semantic_source_map": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H4_COLLATZ_MODULAR_DESCENT/SOURCE_MAP.md",
+      "status_triage": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H4_COLLATZ_MODULAR_DESCENT/STATUS_TRIAGE.md",
+      "release_blocker": null,
+      "release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH"
+    },
+    {
+      "slot": "OM26-H5",
+      "lease_id": "OM26-H5-SOURCE-ACQ",
+      "state": "SOLVE_RELEASED__READY_FOR_DECOMPOSITION",
+      "exact_hill_id": "alejandrozu/grothendieck-constant-witnesses",
+      "title": "Grothendieck constant witnesses",
+      "exact_statement": "grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90:work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/grothendieck-constant-witnesses/PUBLIC_SOURCE/README.md",
+      "external_version": "0.1.0",
+      "evaluator_or_checker": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H5_GROTHENDIECK_CONSTANT_WITNESSES/EVALUATOR_CONTRACT.md",
+      "solve_release": true,
+      "acquisition_sequence": [
+        "rebind live protected Programme, Forge, and Solve heads",
+        "obtain organizer-authoritative AutoLab hill/list evidence",
+        "capture exact external hill identity and statement",
+        "capture external version or observation time",
+        "capture evaluator/checker contract when available",
+        "produce complete MATHFORGE source-lock packet",
+        "protect and read back the MATHFORGE source lock",
+        "rebind the corresponding Solve lane",
+        "only then instantiate hill-specific mathematical work"
+      ],
+      "forge_source_lock": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/unassigned_sources/grothendieck-constant-witnesses/SOURCE_LOCK.json",
+      "semantic_source_map": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H5_GROTHENDIECK_CONSTANT_WITNESSES/SOURCE_MAP.md",
+      "status_triage": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H5_GROTHENDIECK_CONSTANT_WITNESSES/STATUS_TRIAGE.md",
+      "release_blocker": null,
+      "release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH"
+    },
+    {
+      "slot": "OM26-H6",
+      "lease_id": "OM26-H6-SOURCE-ACQ",
+      "state": "SOLVE_RELEASED__READY_FOR_DECOMPOSITION",
+      "exact_hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
+      "title": "3x3 matrix multiplication tensor",
+      "exact_statement": "grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90:work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/matrix-multiplication-tensor-3x3/PUBLIC_SOURCE/README.md",
+      "external_version": "0.1.0",
+      "evaluator_or_checker": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H6_MATRIX_MULTIPLICATION_TENSOR_3X3/EVALUATOR_CONTRACT.md",
+      "solve_release": true,
+      "acquisition_sequence": [
+        "rebind live protected Programme, Forge, and Solve heads",
+        "obtain organizer-authoritative AutoLab hill/list evidence",
+        "capture exact external hill identity and statement",
+        "capture external version or observation time",
+        "capture evaluator/checker contract when available",
+        "produce complete MATHFORGE source-lock packet",
+        "protect and read back the MATHFORGE source lock",
+        "rebind the corresponding Solve lane",
+        "only then instantiate hill-specific mathematical work"
+      ],
+      "forge_source_lock": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/unassigned_sources/matrix-multiplication-tensor-3x3/SOURCE_LOCK.json",
+      "semantic_source_map": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H6_MATRIX_MULTIPLICATION_TENSOR_3X3/SOURCE_MAP.md",
+      "status_triage": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H6_MATRIX_MULTIPLICATION_TENSOR_3X3/STATUS_TRIAGE.md",
+      "release_blocker": null,
+      "release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH"
+    },
+    {
+      "slot": "OM26-H7",
+      "lease_id": "OM26-H7-SOURCE-ACQ",
+      "state": "SOLVE_RELEASED__READY_FOR_DECOMPOSITION",
+      "exact_hill_id": "ottogin/erdos-3",
+      "title": "Erdős Problem 3",
+      "exact_statement": "grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90:work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/erdos-3/PUBLIC_SOURCE/statement.lean",
+      "external_version": "0.1.0",
+      "evaluator_or_checker": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H7_ERDOS_3/EVALUATOR_CONTRACT.md",
+      "solve_release": true,
+      "acquisition_sequence": [
+        "rebind live protected Programme, Forge, and Solve heads",
+        "obtain organizer-authoritative AutoLab hill/list evidence",
+        "capture exact external hill identity and statement",
+        "capture external version or observation time",
+        "capture evaluator/checker contract when available",
+        "produce complete MATHFORGE source-lock packet",
+        "protect and read back the MATHFORGE source lock",
+        "rebind the corresponding Solve lane",
+        "only then instantiate hill-specific mathematical work"
+      ],
+      "forge_source_lock": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/unassigned_sources/erdos-3/SOURCE_LOCK.json",
+      "semantic_source_map": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H7_ERDOS_3/SOURCE_MAP.md",
+      "status_triage": "grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8:reports/discovery/openmath_2026/hills/OM26-H7_ERDOS_3/STATUS_TRIAGE.md",
+      "release_blocker": null,
+      "release_scope": "DECOMPOSITION_AND_BOUNDED_RESEARCH"
+    }
+  ],
+  "shared_acquisition_methods": {
+    "canonical_list": "https://app.autolab.ai/lists/alejandrozu/openmath",
+    "documented_cli": "autolab lists show alejandrozu/openmath",
+    "authenticated_cli_environment": "AUTOLAB_TOKEN may be supplied by an authorized runner; never print or persist the token.",
+    "content_rule": "Authoritative bytes or an authenticated render/export are required. Adjacent event prose, search snippets, list position, and conversational memory are not source locks."
+  },
+  "h7_boundary": "The Human Steward identifies OM26-H7 only as an additional Erdős problem. That label is not an exact hill identity or statement and cannot release the lane.",
+  "release_gate": {
+    "required": [
+      "protected MATHFORGE source lock",
+      "exact statement capture",
+      "semantic source map",
+      "dated status triage",
+      "evaluator/checker identity when available",
+      "protected readback"
+    ],
+    "effect": "Satisfied for Solve decomposition and bounded research. Competition submission, novelty, and certification remain separately gated."
+  },
+  "prohibited": [
+    "guess unresolved titles or statements",
+    "map hill slots by ordering without authoritative evidence",
+    "start hill-specific proof or search work before source lock",
+    "reuse H1 evaluator semantics for another hill by analogy",
+    "promote source acquisition to mathematical certification",
+    "print or commit AUTOLAB_TOKEN"
+  ],
+  "claim_boundary": "Source acquisition, slot binding, semantic pack protection, provider release, Solve import, and protected readback are complete for H2-H7. This releases decomposition only, not any mathematical result or external-agent lease.",
+  "authoritative_unresolved_source_pool": {
+    "receipt": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
+    "receipt_blob_sha1": "f6c7c7e36aa0657f8eec51da8ce9461af457ee04",
+    "normalized_sha256": "a7f6e48a61aaa3b58614e5c7748716f8158147c337b4986c2e9c2d6b603de6f6",
+    "observation_time": "2026-09-28T10:05:25Z",
+    "hill_ids": [
+      "alejandrozu/clique-cluster-ramsey-multiplicity",
+      "alejandrozu/matrix-multiplication-tensor-3x3",
+      "alejandrozu/grothendieck-constant-witnesses",
+      "alejandrozu/collatz-modular-descent",
+      "alejandrozu/busy-beaver-6-certificates",
+      "ottogin/erdos-3"
+    ],
+    "slot_mapping": {
+      "OM26-H2": "alejandrozu/busy-beaver-6-certificates",
+      "OM26-H3": "alejandrozu/clique-cluster-ramsey-multiplicity",
+      "OM26-H4": "alejandrozu/collatz-modular-descent",
+      "OM26-H5": "alejandrozu/grothendieck-constant-witnesses",
+      "OM26-H6": "alejandrozu/matrix-multiplication-tensor-3x3",
+      "OM26-H7": "ottogin/erdos-3"
+    },
+    "rule": "Historical organizer-pool receipt remains authoritative for pool membership. Current H2-H7 correspondence is imported from protected MATHFORGE slot binding; organizer-list position remains non-authoritative."
+  },
+  "forge_release": {
+    "protected_commit": "782b80c8c57d4e77356d8c77c50ee1fffdcd92b8",
+    "source_lock_ledger_blob": "2334bb7e67b5863c2110b6e21b6e47cfd5061d4d",
+    "semantic_pack_blob": "aaf8aa9b65d2218943b5dc9f3840cb16751a1ef0",
+    "semantic_readback_blob": "e3a92514009c04b5d53964fc0dd7c94cecb9f34a",
+    "import_receipt": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json"
+  },
+  "solve_import_readback": {
+    "protected_import_merge": "57505b7c886bbf6b6aa00bc36168c1f097ee75a3",
+    "receipt": "work_packages/OPENMATH_2026/H2_H7_SOLVE_IMPORT_READBACK.json"
+  }
+}

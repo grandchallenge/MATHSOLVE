@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS_SUCCESSOR_002_COHORT_CLOSURE",
+  "campaign": "ERDOS-OPEN",
+  "problem_id": 593,
+  "cohort_id": "ERDOS-593-SUCCESSOR-BLIND-COHORT-002",
+  "state": "BLIND_COLLECTION_CLOSED_AFTER_PROTECTED_EVIDENCE",
+  "closure_date": "2026-10-09",
+  "required_lanes": [
+    "R2",
+    "S2"
+  ],
+  "protected_evidence": [
+    {
+      "lane": "R2",
+      "dispatch_id": "ERDOS-593-R2-IA-001",
+      "issue_number": 1008,
+      "github_comment_id": 6075616641,
+      "raw_artifact_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_002/raw/ERDOS-593-R2-IA-001/github-comment-6075616641.md",
+      "raw_blob_sha1": "bc9974e6653c085726979d35014f4151167bdaf2",
+      "raw_sha256": "0fc21ad6fbccc69138b9fcb6b6b6c31b2003a324ff058a5fc98c01ad88e33210",
+      "receipt_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_002/receipts/ERDOS-593-R2-IA-001/github-comment-6075616641.json",
+      "receipt_blob_sha1": "36d9121857151e962de18e8550e1921bf04970cc",
+      "protected_pull_request": 1022,
+      "protected_merge_commit": "1679df7919faa1587680d0bf08bebc1f1dd41103",
+      "raw_and_receipt_schema_valid": true,
+      "mathematical_correctness_adjudicated": false
+    },
+    {
+      "lane": "S2",
+      "dispatch_id": "ERDOS-593-S2-IA-001",
+      "issue_number": 1009,
+      "github_comment_id": 6071504892,
+      "raw_artifact_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_002/raw/ERDOS-593-S2-IA-001/github-comment-6071504892.md",
+      "raw_blob_sha1": "5d8637cff890b77468f4cff511ae97423769aa6a",
+      "raw_sha256": "d2b3550879bf7ab7c7dd23241c5cd6043db9e54d2dadc976cc7ed7e1bd3711dd",
+      "receipt_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_002/receipts/ERDOS-593-S2-IA-001/github-comment-6071504892.json",
+      "receipt_blob_sha1": "4f56ce915b3c8f015c0e1f9795f004493f783960",
+      "protected_pull_request": 1023,
+      "protected_merge_commit": "e8c8cf87a700cce4958e28b0468d091624f4a4cc",
+      "raw_and_receipt_schema_valid": true,
+      "mathematical_correctness_adjudicated": false
+    }
+  ],
+  "prior_blind_cohort_closed_before_synthesis": true,
+  "synthesis_allowed": true,
+  "mathematical_claim_effect": false,
+  "certification_effect": false,
+  "parent_problem_effect": false,
+  "claim_boundary": "Closes the evidence-comparison boundary for exactly these independently returned successor assignments. It does not verify the contents mathematically, certify external theorems, adjudicate literature, or alter parent-problem state."
+}

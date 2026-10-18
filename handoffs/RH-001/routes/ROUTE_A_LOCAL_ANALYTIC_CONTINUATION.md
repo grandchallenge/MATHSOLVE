@@ -11,8 +11,8 @@ Current protected campaign head at pack creation:
 grandchallenge/MATHSOLVE@7387aa8993355ab854630cf0683b4120a813884c
 
 Current protected route frontier:
-RH-R051-RANK-ONE-COERCIVITY-EXTENSION-001
-work_packages/RH_R051_RANK_ONE_COERCIVITY_EXTENSION.md
+RH-R054-COMPLETE-LOG-QUARTIC-EXTENSION-001
+work_packages/RH_R054_COMPLETE_LOG_QUARTIC_EXTENSION.md
 
 ## 1. Mission
 
@@ -22,7 +22,7 @@ Prove a strictly larger explicit interval
 
 with
 
-a_1 > 178/1000,
+a_1 > 9/50,
 
 on which the full localized Weil operator has:
 
@@ -43,25 +43,25 @@ The campaign reduced that condition in RH-R036 to:
 - simplicity of the lowest even eigenvalue;
 - strict parity ordering epsilon_+(lambda) < epsilon_-(lambda).
 
-Suzuki's full-operator small-a analysis supplied the qualitative mechanism. R040 made it effective. R045 through R050 progressively improved the analytic certificate.
+Suzuki's full-operator small-a analysis supplied the qualitative mechanism. R040 made it effective. R045 through R051 progressively improved the analytic certificate. RH-R055 protects the no-prime slope budget through \(t\le9/25\), and R054 adds complete-log odd coercivity plus an exact positive quartic trial surface.
 
-The current protected theorem R051 proves the full simple-even statement for
+The current protected theorem R054 proves the full simple-even statement for
 
-0 < a <= 178/1000.
+0 < a <= 9/50.
 
 The current protected lower bounds at the endpoint are:
 
 epsilon_-(lambda) - epsilon_+(lambda)
 >
-55428698889 / 23675000000000,
+859636202320933 / 69279729750000000,
 
 and
 
 epsilon_{+,2}(lambda) - epsilon_{+,1}(lambda)
 >
-1783634369 / 11837500000.
+12460054441577 / 86599662187500.
 
-The parity-gap budget is now much tighter than the even internal-gap budget. Further microscopic retuning of the same one-parameter quadratic trial is explicitly not the preferred direction.
+The parity-gap certificate at the endpoint is materially positive. R054 also leaves reusable structural machinery: the complete-log rank-one parameter 1/3 and an exact two-parameter quartic trial surface.
 
 ## 3. Protected lineage to context-load
 
@@ -77,6 +77,8 @@ Read these before changing mathematics:
 - work_packages/RH_R049_HIGHER_ODD_COERCIVITY.md
 - work_packages/RH_R050_TRIAL_REWEIGHTED_EXTENSION.md
 - work_packages/RH_R051_RANK_ONE_COERCIVITY_EXTENSION.md
+- work_packages/RH_R054_COMPLETE_LOG_QUARTIC_EXTENSION.md
+- scripts/rh_r054_exact_check.py
 - MATHFORGE@d722e6a27edbb66f6ae7ef08dd36f79b00b4b320:
   reports/discovery/rh_001/rh_r040_small_a_parity_transfer.md
 - AGENTS.md
@@ -111,13 +113,13 @@ a = (1/2) log 2
 
 is a material regime change. Do not silently reuse the no-prime formulas beyond that threshold.
 
-The protected R050 proof currently uses:
+The protected R054 proof currently uses:
 
-- increasingly sharp limiting odd-sector coercivity from positive terms of the logarithmic potential;
+- complete-log limiting odd-sector coercivity through the protected rank-one lemma;
 - a lower bound for the second even limiting eigenvalue;
-- a positive even trial function for an upper bound on the even ground energy;
-- parity-sensitive control of the smooth remainder kernel q(t);
-- exact rational endpoint arithmetic.
+- an exact positive quartic trial surface for an upper bound on the even ground energy;
+- parity-sensitive control of the smooth remainder kernel q(t), reusing protected R055's q'(t)<=23/100 theorem through t<=9/25;
+- exact rational endpoint arithmetic checked by scripts/rh_r054_exact_check.py.
 
 ## 5. Preferred contribution classes
 
@@ -176,7 +178,7 @@ A clean combined theorem that balances A1-A3 and yields one larger explicit endp
 
 A route contribution should do at least one of:
 
-1. prove a new full simple-even interval with endpoint strictly above 178/1000;
+1. prove a new full simple-even interval with endpoint strictly above 9/50;
 2. prove a reusable stronger even or odd limiting-sector inequality;
 3. prove a reusable sharper parity-sensitive remainder theorem;
 4. rigorously show that a proposed continuation mechanism cannot improve the current endpoint and identify the exact obstruction.
@@ -255,9 +257,9 @@ unless a separate governed process establishes it.
 1. Read AGENTS.md.
 2. Re-fetch protected main.
 3. Read the canonical RH handoff.
-4. Read R048-R050 in full.
-5. Recompute the R050 endpoint margins independently.
-6. Identify whether the parity budget is dominated by:
+4. Read R051 and R054 in full, plus R048-R050 as needed for inherited estimates.
+5. Recompute the R054 endpoint margins independently with scripts/rh_r054_exact_check.py.
+6. Identify whether the next budget is dominated by:
    - odd limiting coercivity;
    - even ground upper bound;
    - smooth remainder.

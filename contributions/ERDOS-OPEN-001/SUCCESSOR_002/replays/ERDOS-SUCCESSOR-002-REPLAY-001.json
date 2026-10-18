@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS_SUCCESSOR_002_NATIVE_REPLAY",
+  "tranche": "ERDOS-OPEN-SUCCESSOR-002",
+  "evidence": {
+    "records": [
+      {
+        "dispatch_id": "ERDOS-593-R2-IA-001",
+        "github_comment_id": 6075616641,
+        "raw_sha256": "0fc21ad6fbccc69138b9fcb6b6b6c31b2003a324ff058a5fc98c01ad88e33210",
+        "integrity": "EXACT_RAW_AND_RECEIPT_CONCORDANT",
+        "mathematical_acceptance": false
+      },
+      {
+        "dispatch_id": "ERDOS-593-S2-IA-001",
+        "github_comment_id": 6071504892,
+        "raw_sha256": "d2b3550879bf7ab7c7dd23241c5cd6043db9e54d2dadc976cc7ed7e1bd3711dd",
+        "integrity": "EXACT_RAW_AND_RECEIPT_CONCORDANT",
+        "mathematical_acceptance": false
+      },
+      {
+        "dispatch_id": "ERDOS-470-S2-IA-001",
+        "github_comment_id": 6071306717,
+        "raw_sha256": "7e003a92100c39d0e567fcb4d2330a098d7ca119b5c794e30e91748e58b8ac11",
+        "integrity": "EXACT_RAW_AND_RECEIPT_CONCORDANT",
+        "mathematical_acceptance": false
+      }
+    ],
+    "all_protected_inputs_concordant": true
+  },
+  "erdos_593": {
+    "structural": {
+      "triangle_of_pairs_finite_samples": {
+        "3": {
+          "hyperedges": 1,
+          "maximum_distinct_hyperedge_overlap": 0
+        },
+        "4": {
+          "hyperedges": 4,
+          "maximum_distinct_hyperedge_overlap": 1
+        },
+        "5": {
+          "hyperedges": 10,
+          "maximum_distinct_hyperedge_overlap": 1
+        },
+        "6": {
+          "hyperedges": 20,
+          "maximum_distinct_hyperedge_overlap": 1
+        },
+        "7": {
+          "hyperedges": 35,
+          "maximum_distinct_hyperedge_overlap": 1
+        }
+      },
+      "K5_3_maximum_distinct_hyperedge_overlap": 2,
+      "general_pair_intersection_lemma": "PROVED_BY_ELEMENTARY_SET_ARGUMENT",
+      "nonlinear_F_nonembedding_into_linear_H": "PROVED_BY_INJECTIVITY_INTERSECTION_ARGUMENT",
+      "uncountable_chromaticity": "CONDITIONAL_ON_EXTERNAL_ERDOS_RADO_PARTITION_THEOREM_NOT_REPLAYED"
+    },
+    "ramsey_falsification": {
+      "K6_two_colorings_exhausted": 32768,
+      "K6_triangle_free_two_colorings": 0,
+      "K5_cycle_complement_witness_no_monochromatic_triangle": true,
+      "R_3_3_equals_6_confirmed_finite": true,
+      "worker_R2_claim_of_two_coloring_large_complete_pair_graph_avoiding_all_monochromatic_triangles": "REFUTED"
+    },
+    "li_lean_artifact": {
+      "repository": "ericlisg/erdos-593-1177-lean",
+      "reported_head_at_source_inspection": "5dcb6e4906df03f2e4294b21be73b55db7736f5a",
+      "file": "RequestProject/PublicationCertificate.lean",
+      "status": "PRIMARY_REPOSITORY_EXISTS_NOT_REBUILT_NOT_ADJUDICATED"
+    },
+    "countable_coloring_boundary": {
+      "finite_binary_sequence_tests": {
+        "2": {
+          "vertices": 4,
+          "monochromatic_triangles": 0
+        },
+        "3": {
+          "vertices": 8,
+          "monochromatic_triangles": 0
+        },
+        "4": {
+          "vertices": 16,
+          "monochromatic_triangles": 0
+        },
+        "5": {
+          "vertices": 32,
+          "monochromatic_triangles": 0
+        }
+      },
+      "infinite_first_difference_omega_coloring": "PROVED_BY_BINARY_COORDINATE_ARGUMENT",
+      "two_color_version": "IMPOSSIBLE_FOR_AT_LEAST_SIX_VERTICES"
+    }
+  },
+  "erdos_470": {
+    "source_repository": "fwjmath/ows-data",
+    "source_commit_from_worker": "88d22faf46400f0050287c3c32c9a807ca3b1340",
+    "source_commit_existence": "OBSERVED_GITHUB_COMMIT_OBJECT",
+    "data_1e21_prefix_cover": "NOT_REPLAYED",
+    "workunit_checksums": "NOT_REPLAYED",
+    "full_search_or_exclusion_theorem": "NOT_ADJUDICATED",
+    "six_distinct_prime_factor_theorem_body": "NOT_SOURCE_LOCKED"
+  },
+  "authority_effects": {
+    "native_finite_checks": true,
+    "proof_assistant_verification": false,
+    "external_source_theorems_independently_verified": false,
+    "complete_classification_certified": false,
+    "odd_weird_exclusion_certified": false,
+    "erdos_problem_closed": false,
+    "mathcert_certification": false,
+    "publication": false
+  }
+}

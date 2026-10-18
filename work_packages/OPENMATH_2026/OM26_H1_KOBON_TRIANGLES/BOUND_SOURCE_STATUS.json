@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-BOUND-SOURCE-STATUS",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "state": "SOURCE_GROUNDED_INTERVAL_93_TO_95__94_HILL_GLOBAL_OPEN",
+  "forge_authority": {
+    "repository": "grandchallenge/MATHFORGE",
+    "protected_commit": "9eb438b658000f299240940d4468d7eb52ed1e11",
+    "general_bound_audit": {
+      "path": "reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/GENERAL_BOUND_AUDIT.md",
+      "git_blob_sha1": "4007f975e74691a7c3233e671230327551f1777a"
+    },
+    "literature_status": {
+      "path": "reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/LITERATURE_STATUS.json",
+      "git_blob_sha1": "bd03b0828f8cb7ef6ad085f0f5baf8d3cd491771"
+    }
+  },
+  "lower_bound": {
+    "value": 93,
+    "basis": "exact GCL rational construction with H1-07 direct-oracle and authenticated AutoLab replay",
+    "candidate": "RH_BADER_RECONSTRUCTION_093"
+  },
+  "upper_bounds": [
+    {
+      "value": 95,
+      "scope": "general Kobon source matched to allowed multiple intersections/common-side analysis",
+      "source": "Clément–Bader 2007",
+      "forge_disposition": "SOURCE_MATCHED_GENERAL_BOUND"
+    },
+    {
+      "value": 94,
+      "scope": "simple affine arrangements",
+      "source": "Bartholdi–Blanc–Loisel 2007",
+      "forge_disposition": "NOT_IMPORTED_AS_HILL_GLOBAL__HYPOTHESIS_TRANSFER_OPEN"
+    }
+  ],
+  "oeis_status": {
+    "reported_lower_bound": 93,
+    "reported_upper_bound": 94,
+    "role": "STATUS_EVIDENCE_ONLY__NOT_PROOF_OBJECT"
+  },
+  "solve_consequence": "H1-12 remains open. A hill-global 94 bound requires either a source whose hypotheses match the hill or a proved nondecreasing reduction from hill-admissible arrangements to the simple setting.",
+  "claim_boundary": "This record imports protected Forge source-scope status, not a MATHCERT theorem disposition. It does not certify the 95 proof, prove 94 hill-global, or establish optimality of 93."
+}

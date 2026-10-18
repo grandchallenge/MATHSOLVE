@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_DISPATCH",
+  "dispatch_id": "OM26-H1-WP01-IA-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H1",
+  "assignment_id": "OM26-H1-WP01",
+  "agent_ref": "INDEPENDENT-AGENT-101",
+  "concurrency_mode": "independent_blind",
+  "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H1-WP01-IA-001.md",
+  "bootstrap_blob_sha1": "76a5f2820b82923c529f810664dc3b7b796db31d",
+  "source_handoff_commit_sha": "fe2af74372e39dbde29cdd46b0b9c80e8af7ebe6",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "github_issue_number": 553,
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/553",
+  "github_issue_title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H1-WP01-IA-001 — six-core profile frontier",
+  "canonical_mutation_authorized": false,
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "operation_contract": ".gcl/operations/OM26-H1-WP01-IA-001/OPERATION.json"
+}

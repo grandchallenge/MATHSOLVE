@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ADMISSION_FREEZE",
+  "operation": "OM26-H2-WP02-ADJ-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "assembled_from_head": "1c703c619b4343a5dfe4fa343af09e1a4708c2b0",
+  "source_result": {
+    "issue_number": 526,
+    "comment_id": 5889734796,
+    "raw_git_blob_sha1": "4a768a5fe4e91bbb12248019982a2df27e6887ea",
+    "receipt_git_blob_sha1": "4a841dd847bd94e36a6176b18d345e4a0a55abd2"
+  },
+  "artifacts": {
+    "contributions/OPENMATH-2026/OM26-H2/WP02/adjudications/OM26-H2-WP02-ADJ-001.json": "1d87c19cbf99082866b814d4a84f3758812ace95",
+    "work_packages/OPENMATH_2026/OM26_H2_BUSY_BEAVER_6/WP02_STATUS.json": "dbf97b05d10f057abf59f8ff0c6d979a8cb4cc74",
+    ".gcl/operations/OM26-H2-WP02-ADJ-001/OPERATION.json": "33bef85efb804c5e2bf3c3d805816202a2554dc4",
+    ".gcl/operations/OM26-H2-WP03-IA-001/OPERATION.json": "449412e39a6391aca80d9ea55ebba4dc430e013a",
+    "handoffs/OPENMATH-2026/jobs/OM26-H2-WP03-IA-001.md": "f58763dfac9f464975e66325bbb72604042a5fa1",
+    "handoffs/OPENMATH-2026/launch/OM26-H2-WP03.md": "d2b2771888036e4900e2ba76e6f551d4f30cd049",
+    "contributions/OPENMATH-2026/OM26-H2/WP03/dispatches/OM26-H2-WP03-IA-001.json": "5d923a66d1efe4d339e2758888d565c1cef5646f",
+    "ci/validate_openmath_h2_wp02_adjudication.py": "a8dc070b4064d330c5034ee94e0fd88a51c8b095",
+    ".github/workflows/openmath-h2-wp02-adjudication.yml": "7eab3f769708ea6a6daa324b258754bdc58224d2",
+    ".ghos-routing/workflows.json": "6fd3126b14b714517bc521491fd9de5b2615c2ed",
+    "contributions/OPENMATH-2026/OM26-H2/WP02/raw/OM26-H2-WP02-IA-001/github-comment-5889734796.md": "4a768a5fe4e91bbb12248019982a2df27e6887ea",
+    "contributions/OPENMATH-2026/OM26-H2/WP02/receipts/OM26-H2-WP02-IA-001/github-comment-5889734796.json": "4a841dd847bd94e36a6176b18d345e4a0a55abd2"
+  },
+  "completion_gate": {
+    "validator": "python ci/validate_openmath_h2_wp02_adjudication.py",
+    "required_ci_green": true,
+    "protected_merge_required": true,
+    "protected_readback_required": true,
+    "campaign_state_reconciliation_required": true
+  },
+  "claim_boundary": "Freeze of bounded H2 WP02 Solve adjudication plus generated WP03 successor. No certification or competition effect."
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "operation": "OM26-H2-WP01-ADJ-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "state": "CLOSED__SOLVE_ADJUDICATION_PROTECTED",
+  "adjudication": {
+    "protected_merge": "607f5dfd8fe0f6e816a27b4a3bf2a77b1122f7a0",
+    "disposition": "ACCEPTED_SCORER_CONCORDANCE_WITH_SEARCH_NARROWING",
+    "source_dispatch": "OM26-H2-WP01-IA-001",
+    "source_comment_id": 5883655827
+  },
+  "post_adjudication_reconciliation": {
+    "protected_merge": "6ef82de5564f9ad7000bcf2255f5377d301b6c08",
+    "state": "H1_H2_ACCEPTED__H3_H7_LEASED_NOT_LAUNCHED",
+    "h2_lease": "CLOSED_AFTER_RETURN"
+  },
+  "accepted_effect": [
+    "independent scorer concordance accepted for regular solution.json payloads",
+    "protected baseline replay accepted: steps=6, ones=6, tape_span=7",
+    "minimum six-step valid-witness argument accepted",
+    "private validation/test budgets reconstructed as 250000 and 1000000 from protected locks"
+  ],
+  "narrowed_or_rejected": [
+    "complete submission-surface parity narrowed by missing filesystem regular-file/symlink gate in independent scorer",
+    "first-write=1 TNF normalization rejected as not WLOG",
+    "local-hash, blank-ray, and macro-simulation pruning remain heuristic until exact soundness is proved",
+    "no seeded search witness promoted to canonical campaign candidate"
+  ],
+  "resulting_frontier": "SCORER_CONCORDANCE_ACCEPTED__EXACT_SEARCH_DESIGN_REQUIRED",
+  "successor": "OM26-H2-WP02 may be instantiated for exact-search design using only proved symmetry reductions and exact pruning with dual-scorer replay before promotion.",
+  "protected_readback": {
+    "contributions/OPENMATH-2026/OM26-H2/WP01/adjudications/OM26-H2-WP01-ADJ-001.json": "437ae316c0f9a3e88c310a987eed8d3ba05d7cad",
+    "work_packages/OPENMATH_2026/OM26_H2_BUSY_BEAVER_6/WP01_STATUS.json": "cae7da581a32b5c121459e3b906c908dc19ed6a5",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "1fc627feab4653e309ec56d0348eea7963ac8482",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "478bd61e25745903add7847678219e4412ed3d90",
+    ".gcl/operations/OM26-H2-WP01-ADJ-001/OPERATION.json": "1374230131644e783b007625a78e191955c98efb",
+    ".gcl/admission/OM26-H2-WP01-ADJ-001/FREEZE.json": "7dcacede3f59d5036b2109435dc19a67bb9fc032",
+    "ci/validate_openmath_h2_wp01_adjudication.py": "6fc961ec3796f760961f54bbd170149c254ac4f6",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "faeb3063c5973639b02e04a89ea5b57a77a3d2e4",
+    "ci/validate_openmath_cex_job_board.py": "49ee619e26509de75419212820c752a31552607c",
+    "ci/validate_openmath_core_clarity_reconcile.py": "6ed5980da4bd23ad7dcf53083e597671788db6f9",
+    "ci/validate_openmath_seven_hill_consolidation.py": "e3af01b984482680c59cac3036ee551820ad9ca6",
+    "ci/validate_openmath_h1_agent001_adjudication.py": "ddd8da94e2b1b5935999ae9d03c7409335d52c83",
+    ".gcl/operations/OM26-H2-WP01-POST-ADJ-RECONCILE/OPERATION.json": "7acac9b07a3da5badcec3430116e0b67e5016989"
+  },
+  "certification_effect": false,
+  "competition_effect": false,
+  "claim_boundary": "Solve-level bounded adjudication only. Does not certify S(6), establish Busy Beaver 6 optimality, promote a competition candidate, or authorize submission."
+}

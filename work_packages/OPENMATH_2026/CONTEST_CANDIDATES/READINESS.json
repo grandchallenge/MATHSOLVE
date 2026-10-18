@@ -1,0 +1,25 @@
+{
+  "account": "jimsteeg",
+  "state": "EXACT_PAYLOADS_READY__LIVE_FINAL_EVALUATION_PENDING",
+  "candidates": [
+    {
+      "hill": "H2",
+      "solution_sha256": "f8eaa4dbcbc3ecb18f8ddd1734cffe0079457ff3e26a51a25e81f3f6e988ead2"
+    },
+    {
+      "hill": "H4",
+      "solution_sha256": "b14c4804dae95df88ffa7dcef865205edd295e1f2e8c4daeba75333053a6673a"
+    },
+    {
+      "hill": "H5",
+      "solution_sha256": "72703ab868d55a460f8adbfdd137afbbdd044a0aea5f2267516c4805b541901e"
+    },
+    {
+      "hill": "H6",
+      "solution_sha256": "164aec58e19c2bdd45cddc54c52ab66f5f91f5d0562e875709b1c6eb820ac79f"
+    }
+  ],
+  "H3": "Published 768-block seed available from live hill; no improved retained candidate",
+  "H7": "No compiled complete proof; never submit proof holes",
+  "claim_boundary": "Candidate mathematical core checks only, not official held-out reports, submissions or organizer acceptance. H2/H4 derive from attributed public worker returns; H5 is a rational CHSH approximation, not a new Grothendieck bound; H6 reproduces Laderman prior work."
+}

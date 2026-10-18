@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-H2-H7-SOLVE-IMPORT-READBACK",
+  "campaign_id": "OPENMATH-2026",
+  "protected_import_merge": "57505b7c886bbf6b6aa00bc36168c1f097ee75a3",
+  "verified_blobs": {
+    "forge_import": {
+      "path": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",
+      "git_blob_sha1": "3ccde8579f147d3b1de0907857fadda925e52ebe"
+    },
+    "hill_lanes": {
+      "path": "work_packages/OPENMATH_2026/HILL_LANES.json",
+      "git_blob_sha1": "656e4f8d512cace8dcaea0a3a6dd3a47f825fa41"
+    },
+    "preparation": {
+      "path": "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json",
+      "git_blob_sha1": "26d9e71f5069ddee8e331fc0b1ebcaaf06af491f"
+    },
+    "source_campaign": {
+      "path": ".gcl/campaigns/OPENMATH-2026-SOURCE-ACQ/CAMPAIGN_STATE.json",
+      "git_blob_sha1": "7648e0f8432a0fceac0dd06d40b95a9026ad1e6b"
+    },
+    "assignment_registry": {
+      "path": ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+      "git_blob_sha1": "7adad5beb735a408e62501e8731df62cd61954ae"
+    },
+    "candidate_completion": {
+      "path": ".gcl/completions/OM26-H2-H7-SOURCE-ACQ/COMPLETION_RECEIPT.json",
+      "git_blob_sha1": "0f64cb296d35a5b0141d97344a77985a37f75804"
+    }
+  },
+  "result": "PROTECTED_SOLVE_IMPORT_READBACK_CONFIRMED",
+  "bindings": {
+    "OM26-H2": "alejandrozu/busy-beaver-6-certificates",
+    "OM26-H3": "alejandrozu/clique-cluster-ramsey-multiplicity",
+    "OM26-H4": "alejandrozu/collatz-modular-descent",
+    "OM26-H5": "alejandrozu/grothendieck-constant-witnesses",
+    "OM26-H6": "alejandrozu/matrix-multiplication-tensor-3x3",
+    "OM26-H7": "ottogin/erdos-3"
+  },
+  "release_effect": "Eligible to close source acquisition and release H2-H7 for decomposition and bounded research in a separate protected mutation.",
+  "prohibited_effects": [
+    "AUTO_LEASE_EXTERNAL_AGENT",
+    "COMPETITION_SUBMISSION",
+    "NOVELTY_CERTIFICATION",
+    "MATHCERT_CERTIFICATION"
+  ],
+  "claim_boundary": "Exact protected readback only; no mathematical result."
+}

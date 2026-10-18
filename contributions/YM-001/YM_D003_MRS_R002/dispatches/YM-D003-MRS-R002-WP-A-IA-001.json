@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "YM_MRS_EXTERNAL_DISPATCH",
+  "campaign_id": "YM-001",
+  "target_id": "YM-D003-MRS-R002",
+  "dispatch_id": "YM-D003-MRS-R002-WP-A-IA-001",
+  "assignment": "A",
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "concurrency_mode": "independent_blind",
+  "context_class": "ZERO_CONTEXT",
+  "external_sources": "PRIMARY_SOURCES_ALLOWED",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "canonical_mutation_authorized": false,
+  "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec",
+  "bootstrap_path": "handoffs/YM-001/mrs-r002/YM-D003-MRS-R002-WP-A.md",
+  "bootstrap_blob_sha1": "79e0b542f84dbb7380e128a0a538ca4cdd9f04da",
+  "bootstrap_sha256": "bf06ff7e4be424bdd0fbb0a50ba416242a43fd854296443d21b5a63c68374384",
+  "github_issue_number": 716,
+  "github_issue_title": "[GCL-CONTRIB] YM-D003-MRS-R002 WP-A — citation/dependency reconstruction",
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/716",
+  "handling_state": "AWAITING_FIRST_VALID_RESULT",
+  "claim_boundary": "Dispatch registration only. External returns are unadjudicated evidence and have no canonical or certification effect."
+}

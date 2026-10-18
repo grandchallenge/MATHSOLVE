@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS3_TRANCHE_RESULT",
+  "campaign": "GCL-ERDOS3",
+  "tranche": "E3-TRANCHE-01",
+  "source_main": "1273b75457f42da62a8af4c69493d44d293d4567",
+  "results": {
+    "E3-F01": {
+      "disposition": "FORMALIZED",
+      "frontier_action": "CLOSED_NO_SUCCESSOR",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-F01_RESULT.json"
+    },
+    "E3-B01": {
+      "disposition": "PROVED_NATIVE_PENDING_INDEPENDENT_VERIFY",
+      "frontier_action": "INDEPENDENT_VERIFY",
+      "verification_work_package": "E3-V01",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-B01_RESULT.md"
+    },
+    "E3-A01": {
+      "disposition": "BOUNDARY_SHARPENED",
+      "frontier_action": "ADVERSARIAL_ATTACK",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-A01_RESULT.md"
+    },
+    "E3-S01": {
+      "disposition": "SOURCE_INTERFACE_FOUND",
+      "frontier_action": "ADVANCE_FRONTIER",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-S01_RESULT.md"
+    }
+  },
+  "next_frontier": [
+    "E3-V-B01",
+    "E3-B-AP"
+  ],
+  "claim_boundary": "No parent-theorem proof is claimed. B01 is a reduction theorem; the k≥4 arithmetic-progression frontier remains open."
+}

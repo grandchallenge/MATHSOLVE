@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_HILL_WORK_PACKAGE_STATUS",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "assignment_id": "OM26-H2-WP02",
+  "state": "WITNESSES_ACCEPTED__EXACT_SEARCH_REPLAY_NOT_VALIDATED",
+  "adjudication": "contributions/OPENMATH-2026/OM26-H2/WP02/adjudications/OM26-H2-WP02-ADJ-001.json",
+  "accepted": {
+    "witnesses": [
+      {
+        "claim_id": "OM26-H2-W89911-001",
+        "steps": 89911,
+        "ones": 185,
+        "tape_span": 541,
+        "all_six_states": true
+      },
+      {
+        "claim_id": "OM26-H2-W8021-001",
+        "steps": 8021,
+        "ones": 41,
+        "tape_span": 122,
+        "all_six_states": true,
+        "first_write": 0
+      }
+    ]
+  },
+  "rejected_or_unestablished": {
+    "exact_search_design": "REJECTED_AS_STATED",
+    "dual_scorer_replay": "CIRCULAR_IN_RETURNED_PROGRAM",
+    "unpruned_reference": "ABSENT_FROM_RETURNED_PROGRAM",
+    "exact_pruning_ledger": "NOT_ADMITTED_PENDING_WP03"
+  },
+  "next_work_package": {
+    "id": "OM26-H2-WP03",
+    "objective": "Close exact-search replay and pruning-validation gaps while preserving the two accepted witnesses.",
+    "dispatch": "OM26-H2-WP03-IA-001",
+    "agent_ref": "INDEPENDENT-AGENT-009",
+    "issue": 537
+  },
+  "certification_effect": false,
+  "competition_effect": false
+}

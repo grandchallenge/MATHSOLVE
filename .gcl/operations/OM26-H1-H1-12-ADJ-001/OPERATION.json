@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-H1-H1-12-ADJ-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H1",
+  "objective": "Adjudicate the exact recovered Agent 001 RESULT/1 contribution against the protected H1-12 packet and either accept, reject, or supersede it without widening certification or competition authority.",
+  "protected_base": "aa4253897f008c197bc8929b503614d652c4fb14",
+  "source_result_blob": "d6850a071d9b7e14bf6f9987284325caab19e8a0",
+  "permitted_mutations": [
+    "adjudication record",
+    "H1_12_STATUS frontier projection",
+    "CLAIM_LEDGER Solve claim projection",
+    "CEX assignment lifecycle",
+    "HILL_LANES H1 projection",
+    "bounded validator and tests"
+  ],
+  "prohibited": [
+    "MATHCERT certification",
+    "competition submission",
+    "hill-global optimality claim",
+    "launch of H2-H7 agents",
+    "discharge of source-scoped predecessor premises"
+  ],
+  "completion_requires": [
+    "adjudication record protected",
+    "independent finite/local proof replay passes",
+    "H1_12_STATUS and CLAIM_LEDGER agree",
+    "Agent 001 lifecycle becomes ACCEPTED and CLOSED",
+    "HILL_LANES agrees",
+    "required CI green",
+    "protected merge",
+    "protected readback",
+    "completion receipt",
+    "Programme canonical state reconciled before subsequent discretionary OPENMATH work"
+  ],
+  "claim_boundary": "Bounded Solve adjudication only.",
+  "governed_artifacts": [
+    "contributions/OPENMATH-2026/OM26-H1/H1-12/adjudications/OM26-H1-H1-12-ADJ-001.json",
+    "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_STATUS.json",
+    "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/CLAIM_LEDGER.json",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+    "work_packages/OPENMATH_2026/HILL_LANES.json",
+    "ci/validate_openmath_h1_agent001_adjudication.py",
+    ".github/workflows/openmath-h1-agent001-adjudication.yml",
+    ".ghos-routing/workflows.json",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md",
+    "ci/validate_openmath_core_clarity_reconcile.py",
+    "ci/validate_openmath_cex_job_board.py",
+    "ci/test_openmath_cex_job_board.py"
+  ],
+  "freeze_manifest": ".gcl/admission/OM26-H1-H1-12-ADJ-001/FREEZE.json",
+  "completion_receipt": ".gcl/completions/OM26-H1-H1-12-ADJ-001/COMPLETION_RECEIPT.json"
+}

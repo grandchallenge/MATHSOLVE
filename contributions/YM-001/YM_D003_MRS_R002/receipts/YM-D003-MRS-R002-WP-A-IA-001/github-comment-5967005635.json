@@ -1,0 +1,23 @@
+{
+  "assignment": "A",
+  "authenticated_github_actor": "fyremael",
+  "bootstrap_path": "handoffs/YM-001/mrs-r002/YM-D003-MRS-R002-WP-A.md",
+  "bootstrap_sha256": "bf06ff7e4be424bdd0fbb0a50ba416242a43fd854296443d21b5a63c68374384",
+  "canonical_claim_effect": false,
+  "certification_effect": false,
+  "comment_created_at": "2026-10-03T08:03:50Z",
+  "concurrency_mode": "independent_blind",
+  "dispatch_id": "YM-D003-MRS-R002-WP-A-IA-001",
+  "disposition_declared": "REDUCED",
+  "external_sources_declared": "PRIMARY_SOURCES_ALLOWED",
+  "github_comment_id": 5967005635,
+  "github_issue_number": 716,
+  "handling_state": "RECEIVED_UNADJUDICATED",
+  "mathematical_correctness_adjudicated": false,
+  "raw_artifact_path": "contributions/YM-001/YM_D003_MRS_R002/raw/YM-D003-MRS-R002-WP-A-IA-001/github-comment-5967005635.md",
+  "raw_sha256": "38ef4e6efcf37ec9f9ed1bfcbf39a180734a5ded6999c52fed8cf1ff2028d5d5",
+  "record_type": "YM_MRS_EXTERNAL_RESULT_RECEIPT",
+  "schema_version": "1.0.0",
+  "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec",
+  "timebox_observed_declared": "YES"
+}

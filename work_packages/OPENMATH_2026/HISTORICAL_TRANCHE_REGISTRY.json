@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_HISTORICAL_TRANCHE_REGISTRY",
+  "campaign": "OPENMATH-2026",
+  "current_topology_authority": {
+    "hill_lanes": "work_packages/OPENMATH_2026/HILL_LANES.json",
+    "assignment_registry": ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+    "lane_model": "SEVEN_FIRST_CLASS_HILLS",
+    "hills": [
+      "OM26-H1",
+      "OM26-H2",
+      "OM26-H3",
+      "OM26-H4",
+      "OM26-H5",
+      "OM26-H6",
+      "OM26-H7"
+    ]
+  },
+  "historical_tranches": [
+    {
+      "id": "OM26-H2-H7-SOURCE-ACQ",
+      "status": "CLOSED__HISTORICAL_PROVENANCE_ONLY",
+      "current_authority": false,
+      "artifacts": [
+        {
+          "path": ".gcl/operations/OM26-H2-H7-SOURCE-ACQ/OPERATION.json",
+          "git_blob_sha1": "ce11ab4a45b7999a37fc27f3d9d7653a6a471bb7"
+        },
+        {
+          "path": ".gcl/admission/OM26-H2-H7-SOURCE-ACQ/FREEZE.json",
+          "git_blob_sha1": "7ce8384e503de5956a609fcb6e0a8115adceea03"
+        },
+        {
+          "path": ".gcl/completions/OM26-H2-H7-SOURCE-ACQ/COMPLETION_RECEIPT.json",
+          "git_blob_sha1": "1de2dd8559e73e29cb69a967b495e1bc671e08be"
+        },
+        {
+          "path": "work_packages/OPENMATH_2026/CEX_H2_H7_PREPARATION.json",
+          "git_blob_sha1": "0ccaa71198a4dc043e6f10a75701b9850a8ec63f"
+        },
+        {
+          "path": "work_packages/OPENMATH_2026/H2_H7_AUTHORITATIVE_LIST_RECEIPT.json",
+          "git_blob_sha1": "f6c7c7e36aa0657f8eec51da8ce9461af457ee04"
+        },
+        {
+          "path": "work_packages/OPENMATH_2026/H2_H7_FORGE_IMPORT.json",
+          "git_blob_sha1": "fbdb80657ae03523b769c16a70cdfa34c805be6f"
+        },
+        {
+          "path": "work_packages/OPENMATH_2026/H2_H7_SOLVE_IMPORT_READBACK.json",
+          "git_blob_sha1": "c9b6d7539e0d372d6afdfcfc6ff6d00e160a60f0"
+        },
+        {
+          "path": "handoffs/OPENMATH-2026/H2_H7_SOURCE_ACQUISITION.md",
+          "git_blob_sha1": "ade2aa56f25fd091fb9c04a2dfd514bd040441ae"
+        }
+      ]
+    },
+    {
+      "id": "OM26-H2-H7-WP01-DECOMPOSITION",
+      "status": "CLOSED__HISTORICAL_PROVENANCE_ONLY",
+      "current_authority": false,
+      "artifacts": [
+        {
+          "path": ".gcl/operations/OM26-H2-H7-WP01-DECOMPOSITION/OPERATION.json",
+          "git_blob_sha1": "c0412c97836ddebbd3b4e5595cafce33ac9a4c1f"
+        },
+        {
+          "path": ".gcl/admission/OM26-H2-H7-WP01-DECOMPOSITION/FREEZE.json",
+          "git_blob_sha1": "69b17d82bf92fea0352ea713e414bc859a27c1ba"
+        },
+        {
+          "path": ".gcl/completions/OM26-H2-H7-WP01-DECOMPOSITION/COMPLETION_RECEIPT.json",
+          "git_blob_sha1": "2dd5697d92478c053e46cb4346a64463006a857a"
+        },
+        {
+          "path": "work_packages/OPENMATH_2026/H2_H7_WP01_DECOMPOSITION.json",
+          "git_blob_sha1": "8b1ab41fb5e01f81a12ab8b7283c2bb5444095b6"
+        }
+      ]
+    },
+    {
+      "id": "OM26-H2-H7-WP01-LEASES",
+      "status": "CLOSED__HISTORICAL_PROVENANCE_ONLY",
+      "current_authority": false,
+      "artifacts": [
+        {
+          "path": ".gcl/operations/OM26-H2-H7-WP01-LEASES/OPERATION.json",
+          "git_blob_sha1": "7871ba9d0ac58bbc824a1ca62d84d692f0dc62b1"
+        },
+        {
+          "path": ".gcl/admission/OM26-H2-H7-WP01-LEASES/FREEZE.json",
+          "git_blob_sha1": "4c10d2e9cd32609883f5305f01faea1d41ce7719"
+        },
+        {
+          "path": ".gcl/completions/OM26-H2-H7-WP01-LEASES/COMPLETION_RECEIPT.json",
+          "git_blob_sha1": "f593e38a35373a3db08e2e1cfe9cde5af6420335"
+        },
+        {
+          "path": "work_packages/OPENMATH_2026/H2_H7_WP01_LEASES.json",
+          "git_blob_sha1": "4b1c82a9d8f830ee1052c9a3131a7736b6f34b4d"
+        }
+      ]
+    }
+  ],
+  "rule": "Aggregate H2-H7 labels identify closed historical transactions only. They SHALL NOT define current campaign topology, current assignment authority, or current next-action routing.",
+  "preservation": "Historical artifacts remain byte-preserved and are not renamed or rewritten.",
+  "claim_boundary": "Topology/provenance classification only."
+}

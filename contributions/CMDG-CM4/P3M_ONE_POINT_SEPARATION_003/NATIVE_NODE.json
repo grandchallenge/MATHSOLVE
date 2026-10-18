@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_NATIVE_NODE_SELECTION",
+  "node_id": "CMDG-P3M-SEP-N1",
+  "campaign": "CMDG-CM4",
+  "work_package": "P3-M-ONE-POINT-SEPARATION-003",
+  "title": "MEASURE_POINT_PROJECTION_ZERO_REFLECTION",
+  "synthesis_base_commit": "0c3e2005d65f18f54b85d2d87cc2f03283aedbcf",
+  "evidence_base_commit": "26e95c754e74af54cee48931cce89100b374f9ef",
+  "programme_replay_baseline": "b54739bda525f78790dad00a2f59a889522f0034",
+  "protected_predecessor": "f7f99e18b83a3015d1a7ef835ee71434d01a9dba",
+  "selected_statement": "For X : Profinite and μ : (measurePresheafObj X).obj (op Point), measurePointProjection X μ = 0 implies μ = 0.",
+  "preferred_lean_name": "measurePointProjection_zero_reflects",
+  "success_dispositions": [
+    "PROVED",
+    "REFUTED_CONCRETE",
+    "REDUCED_TO_EXACT_LEMMA"
+  ],
+  "proof_route": [
+    "Expose the enriched-Hom/end structure of measurePresheafObj at op Point.",
+    "Use measurePointProjection as the identity-object enriched-Hom projection.",
+    "Exploit point-probe naturality and/or the full-faithful locally-constant/discrete functor.",
+    "Conclude zero of every component and then zero of the enriched section."
+  ],
+  "falsification_requirement": "A refutation must exhibit a concrete nonzero μ at the protected measurePresheafObj type with zero measurePointProjection. Abstract ghost-summand models are not sufficient.",
+  "next_if_proved": "Weighted one-point coverage/compatibility: recover equality of measurePointProjection for an arbitrary μ and the weighted all-true section built from its integral-basis coordinates, or prove a weaker statement sufficient after applying d at Point.",
+  "claim_boundary": "Selection only. No theorem, one-point separation, d=0, mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion is admitted."
+}

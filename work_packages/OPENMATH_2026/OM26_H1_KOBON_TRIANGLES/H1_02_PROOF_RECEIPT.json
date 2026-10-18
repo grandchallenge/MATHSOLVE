@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-02-PROOF-RECEIPT",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-02",
+  "state": "SOLVE_PROOF_COMPLETE__BOUNDED_FALSIFICATION_PASS",
+  "theorem": "A support triple is a counted Kobon triangular face iff its three pairwise intersections are distinct/noncollinear and the three side segments are arrangement edges between consecutive arrangement vertices; equivalently counted triangular faces are the nondegenerate 3-cycles of the arrangement graph.",
+  "proof_artifact": {
+    "path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/FACE_CRITERION.md",
+    "git_blob_sha1": "5f806dd6d716bc43f46660accc11b64c8082da19"
+  },
+  "independent_oracle": {
+    "path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/kobon_direct_oracle.py",
+    "git_blob_sha1": "d29541ea678341cbfa17f60587b4e56cdb4dc36e",
+    "logic": "direct support-triple enumeration plus exact affine-sign open-interior crossing test"
+  },
+  "falsification": {
+    "ledger_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_02_FALSIFICATION_LEDGER.md",
+    "ledger_git_blob_sha1": "0c41c4a73ba40e8dd1cf89de2f541e2afe2cee58",
+    "test_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/test_face_criterion.py",
+    "test_git_blob_sha1": "d007e53e4ed527781e2bdf275275aedb8e4f6d9e",
+    "exhaustive_degenerate_subsets": 210,
+    "seeded_random_arrangements": 360,
+    "n_range": "3..8",
+    "result": "PASS__NO_DISAGREEMENT"
+  },
+  "workflow": {
+    "run_id": 36356017300,
+    "job_id": 108723788668,
+    "result": "PASS"
+  },
+  "certification_effect": false,
+  "claim_boundary": "Solve-level theorem/proof receipt only. MATHCERT has not yet certified the theorem."
+}

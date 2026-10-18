@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_PROTECTED_READBACK",
+  "operation": "OPENMATH-CEX-GENERIC-INTAKE",
+  "protected_merge": "51a52401bfda66910b58c690684da595b4d6aa2c",
+  "verified": {
+    "parser": {
+      "path": "ci/openmath_cex_github_contribution_intake.py",
+      "git_blob_sha1": "bd3a0422e060cca4285e55a035ee85a86a2c02b3"
+    },
+    "tests": {
+      "path": "tests/test_openmath_cex_github_contribution_intake.py",
+      "git_blob_sha1": "4636308770f3f40b841a031872da2bf98b840f6c"
+    },
+    "operation": {
+      "path": ".gcl/operations/OPENMATH-CEX-GENERIC-INTAKE/OPERATION.json",
+      "git_blob_sha1": "e37dd4a9092448d88bfcddc998713d0eb2a4c20b"
+    },
+    "freeze": {
+      "path": ".gcl/admission/OPENMATH-CEX-GENERIC-INTAKE/FREEZE.json",
+      "git_blob_sha1": "599126e88e68ac505ffb06f663b5b73cc9529d0d"
+    }
+  },
+  "result": "PROTECTED_READBACK_CONFIRMED",
+  "claim_boundary": "Infrastructure readback only; no lease or mathematical effect."
+}

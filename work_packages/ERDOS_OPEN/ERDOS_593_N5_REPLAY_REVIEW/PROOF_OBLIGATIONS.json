@@ -1,0 +1,42 @@
+{
+  "record_type": "GCL_ERDOS_593_REVIEW_OBLIGATION_DAG",
+  "nodes": [
+    {
+      "id": "R1",
+      "obligation": "Exact source/compiler/dependency and build/axiom integrity",
+      "state": "PASS"
+    },
+    {
+      "id": "R2",
+      "obligation": "Compiled body-preserving snapshot and source-to-target bridge",
+      "state": "CANDIDATE_PASS",
+      "requires": [
+        "R1"
+      ]
+    },
+    {
+      "id": "R3",
+      "obligation": "Independent specialist semantic review of intended historical statement and all boundary qualifications",
+      "state": "PENDING",
+      "requires": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "R4",
+      "obligation": "Protected MATHCERT route admission for this exact ERDOS scope",
+      "state": "UNREGISTERED"
+    },
+    {
+      "id": "R5",
+      "obligation": "MATHCERT disposition under the admitted route",
+      "state": "NOT_SUBMITTED",
+      "requires": [
+        "R3",
+        "R4"
+      ]
+    }
+  ],
+  "certification_effect": false
+}

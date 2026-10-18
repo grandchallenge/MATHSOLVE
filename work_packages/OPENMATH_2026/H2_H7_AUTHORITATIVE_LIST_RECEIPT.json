@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-H2-H7-AUTHORITATIVE-LIST-RECEIPT",
+  "operation": "OM26-H2-H7-SOURCE-ACQ",
+  "source": {
+    "command": "autolab lists show alejandrozu/openmath",
+    "canonical_url": "https://app.autolab.ai/lists/alejandrozu/openmath",
+    "authenticated": true,
+    "observation_time": "2026-09-28T10:05:25Z",
+    "subject_head": "e6a1ffd21baa26609b82baa51746fa22fa2083b3",
+    "workflow_run_id": 36407545379,
+    "workflow_job_id": 108879780351,
+    "normalized_sha256": "a7f6e48a61aaa3b58614e5c7748716f8158147c337b4986c2e9c2d6b603de6f6"
+  },
+  "list_title": "Open Math Challenge",
+  "visibility": "public",
+  "organizer_entries": [
+    "alejandrozu/kobon-triangles",
+    "alejandrozu/clique-cluster-ramsey-multiplicity",
+    "alejandrozu/matrix-multiplication-tensor-3x3",
+    "alejandrozu/grothendieck-constant-witnesses",
+    "alejandrozu/collatz-modular-descent",
+    "alejandrozu/busy-beaver-6-certificates",
+    "ottogin/erdos-3"
+  ],
+  "admitted_correspondence": {
+    "OM26-H1": "alejandrozu/kobon-triangles"
+  },
+  "unresolved_source_pool": [
+    "alejandrozu/clique-cluster-ramsey-multiplicity",
+    "alejandrozu/matrix-multiplication-tensor-3x3",
+    "alejandrozu/grothendieck-constant-witnesses",
+    "alejandrozu/collatz-modular-descent",
+    "alejandrozu/busy-beaver-6-certificates",
+    "ottogin/erdos-3"
+  ],
+  "slot_mapping": {
+    "OM26-H2": null,
+    "OM26-H3": null,
+    "OM26-H4": null,
+    "OM26-H5": null,
+    "OM26-H6": null,
+    "OM26-H7": null
+  },
+  "mapping_rule": "Organizer list membership establishes the six unresolved exact hill IDs as a source pool. List position, name similarity, event prose, and conversational memory do not establish H2-H7 slot correspondence.",
+  "credential_boundary": "AUTOLAB_TOKEN was supplied by GitHub Actions secrets; the workflow rejects provider output containing the token and does not persist the credential.",
+  "claim_boundary": "Authoritative list reconnaissance only. No unresolved slot is source-locked or released for hill-specific mathematics by this receipt."
+}

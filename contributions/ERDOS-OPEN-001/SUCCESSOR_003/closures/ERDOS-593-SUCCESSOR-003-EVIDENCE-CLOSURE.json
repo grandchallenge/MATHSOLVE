@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS_SUCCESSOR_003_EVIDENCE_COHORT_CLOSURE",
+  "campaign": "ERDOS-OPEN",
+  "problem_id": 593,
+  "cohort_id": "ERDOS-593-SUCCESSOR-BLIND-COHORT-003",
+  "state": "EVIDENCE_CLOSED_FOR_SYNTHESIS",
+  "claim_of_agent_runtime_independence": "UNVERIFIED_SHARED_AUTHENTICATED_GITHUB_ACCOUNT",
+  "source_transport_account": "fyremael",
+  "blind_communication_provenance": "NOT_ATTESTED_BEYOND_WORKER_PAYLOAD_AND_DISPATCH_POLICY",
+  "effects": {
+    "evidence_preservation": true,
+    "independent_mathematical_review": false,
+    "mathematical_certification": false,
+    "problem_solution": false
+  },
+  "inputs": [
+    {
+      "dispatch_id": "ERDOS-593-N3-IA-001",
+      "issue_number": 1031,
+      "comment_id": 6081359458,
+      "raw_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/raw/ERDOS-593-N3-IA-001/github-comment-6081359458.md",
+      "receipt_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/receipts/ERDOS-593-N3-IA-001/github-comment-6081359458.json",
+      "raw_sha256": "c2d9e6554fc91999f54a289823498518b6f277f42d18b6c0a5781c131ba83adc",
+      "raw_blob_sha1": "2a62bd42d666e55e58978c883ce9d05ec08557ea",
+      "receipt_blob_sha1": "7b656cab05e7c691e32116caa12e2a49a45660ad",
+      "protected_evidence_pr": 1042,
+      "protected_merge_sha": "504a77a2bf2211e5d6df27bbb9abdf9ff1df579b",
+      "report_disposition": "SOURCE_INTERFACE_FOUND",
+      "reported_conclusion": "LEAN_DECLARATIONS_FOUND_NO_REPRODUCIBLE_BUILD_RECEIPT",
+      "worker_authentication": "RESERVATION_ENFORCED",
+      "mathematical_status": "UNADJUDICATED_BY_INTAKE"
+    },
+    {
+      "dispatch_id": "ERDOS-593-N4-IA-001",
+      "issue_number": 1032,
+      "comment_id": 6081231380,
+      "raw_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/raw/ERDOS-593-N4-IA-001/github-comment-6081231380.md",
+      "receipt_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_003/receipts/ERDOS-593-N4-IA-001/github-comment-6081231380.json",
+      "raw_sha256": "e10d5b4df8a3b76eead0ce91e0c80472bee6911f3e37145886ac170dbf09d351",
+      "raw_blob_sha1": "136eeb7efa00821df0b0bc4e2fa5121502d6f23f",
+      "receipt_blob_sha1": "4d843bb8c818eb4de567630c6395324ccfb65743",
+      "protected_evidence_pr": 1039,
+      "protected_merge_sha": "8ea03641ce32728cbcf279329e1b6df04f0ccd2c",
+      "report_disposition": "PROVED_REDUCTION",
+      "reported_conclusion": "ELEMENTARY_LEMMAS_CONCORDANT_CLASSICAL_SOURCE_PAGE_UNVERIFIED",
+      "worker_authentication": "RESERVATION_ENFORCED",
+      "mathematical_status": "UNADJUDICATED_BY_INTAKE"
+    }
+  ]
+}

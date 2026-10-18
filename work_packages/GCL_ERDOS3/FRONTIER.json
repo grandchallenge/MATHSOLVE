@@ -1,0 +1,1102 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_MATHEMATICAL_FRONTIER_GRAPH",
+  "campaign": "GCL-ERDOS3",
+  "root": "E3-ROOT",
+  "nodes": [
+    {
+      "id": "E3-ROOT",
+      "kind": "THEOREM",
+      "status": "OPEN",
+      "statement": "Erdős Problem 3: reciprocal divergence should force arithmetic progressions of every finite length."
+    },
+    {
+      "id": "E3-C-D3",
+      "kind": "LEMMA",
+      "status": "FORMALIZED",
+      "depends_on": [],
+      "artifact": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D3.lean",
+      "provenance_commit": "fc9ff6e7c346910295e6ee5594fb901b0d77b87f",
+      "git_blob_sha1": "bb81459b904c31d5efd09735f1b61cf32a5a0064"
+    },
+    {
+      "id": "E3-C-D4",
+      "kind": "LEMMA",
+      "status": "FORMALIZED",
+      "depends_on": [
+        "E3-C-D3"
+      ],
+      "artifact": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D4.lean",
+      "provenance_commit": "fc9ff6e7c346910295e6ee5594fb901b0d77b87f",
+      "git_blob_sha1": "3e123909cea5b248413be2d1e08fc7235487e43a"
+    },
+    {
+      "id": "E3-H-FINITE-DELETE",
+      "kind": "LEMMA",
+      "status": "VERIFIED",
+      "artifact": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D5.lean",
+      "provenance_commit": "fc9ff6e7c346910295e6ee5594fb901b0d77b87f",
+      "git_blob_sha1": "530ee6d6651e90f683dd3e3d3abd2246f8aae6de",
+      "verified_by": "E3-F01",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-F01_RESULT.json"
+    },
+    {
+      "id": "E3-H-TAIL",
+      "kind": "LEMMA",
+      "status": "VERIFIED",
+      "depends_on": [
+        "E3-H-FINITE-DELETE"
+      ],
+      "verified_by": "E3-F01",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-F01_RESULT.json"
+    },
+    {
+      "id": "E3-H-RESIDUE",
+      "kind": "LEMMA",
+      "status": "VERIFIED",
+      "verified_by": "E3-F01",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-F01_RESULT.json"
+    },
+    {
+      "id": "E3-H-SCALING",
+      "kind": "LEMMA",
+      "status": "REPLAYED_NOT_FORMALIZED"
+    },
+    {
+      "id": "E3-F-D5",
+      "kind": "FORMALIZATION",
+      "status": "CLOSED",
+      "depends_on": [
+        "E3-H-FINITE-DELETE",
+        "E3-H-TAIL",
+        "E3-H-RESIDUE"
+      ],
+      "completed_by": "E3-F01",
+      "disposition": "FORMALIZED",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-F01_RESULT.json"
+    },
+    {
+      "id": "E3-B-SCALE-LOCAL",
+      "kind": "BRIDGE",
+      "status": "PROVED",
+      "depends_on": [
+        "E3-H-TAIL",
+        "E3-H-RESIDUE",
+        "E3-H-SCALING"
+      ],
+      "statement": "For dyadic block density δ_j(A)=|A∩[2^j,2^(j+1))|/2^j, reciprocal divergence is equivalent up to a factor-two blockwise sandwich to divergence of Σ_j δ_j. Hence every nonnegative summable threshold θ_j is exceeded by δ_j for infinitely many j.",
+      "completed_by": "E3-B01",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-B01_RESULT.md",
+      "independent_verification": "VERIFIED__E3-V01",
+      "verification_evidence": "work_packages/GCL_ERDOS3/results/E3-V01_RESULT.md"
+    },
+    {
+      "id": "E3-B-AP",
+      "kind": "BRIDGE",
+      "status": "PROVED",
+      "depends_on": [
+        "E3-B-AP-THRESHOLD",
+        "E3-C-D4"
+      ],
+      "statement": "For each fixed k≥3, the reciprocal-divergence arithmetic-progression conjecture is equivalent to convergence of Σ_{n≥1} r_k(2^n)/2^n.",
+      "smallest_missing_estimate": "A theorem-grade bound β_k(j) with r_k(2^j)/2^j ≤ β_k(j) and Σ_j β_k(j) < ∞, or an alternative bridge not reducible to blockwise density.",
+      "completed_by": "E3-B02",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-B02_RESULT.md",
+      "source_confirmation": "Green–Tao 2017, Introduction; Tao–Vu, Additive Combinatorics, Exercise 10.0.6",
+      "independent_verification": "VERIFIED__E3-V02",
+      "verification_evidence": "work_packages/GCL_ERDOS3/results/E3-V02_RESULT.md"
+    },
+    {
+      "id": "E3-B-AP-THRESHOLD",
+      "kind": "REDUCTION",
+      "status": "PROVED",
+      "depends_on": [
+        "E3-B-SCALE-LOCAL"
+      ],
+      "statement": "If r_k(N) is the maximum size of a k-AP-free subset of {1,...,N} and Σ_j r_k(2^j)/2^j converges, then every set of positive integers with divergent reciprocal sum contains a k-term arithmetic progression.",
+      "completed_by": "E3-B01",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-B01_RESULT.md",
+      "independent_verification": "VERIFIED__E3-V01",
+      "verification_evidence": "work_packages/GCL_ERDOS3/results/E3-V01_RESULT.md"
+    },
+    {
+      "id": "E3-V-B01",
+      "kind": "VERIFICATION",
+      "status": "CLOSED",
+      "depends_on": [
+        "E3-B-SCALE-LOCAL",
+        "E3-B-AP-THRESHOLD"
+      ],
+      "statement": "Independently replay the dyadic mass sandwich, summable-threshold forcing lemma, and k-AP-free extremal reduction without using the native derivation.",
+      "dispatch": {
+        "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
+        "assignment_id": "E3-V01",
+        "agent_ref": "INDEPENDENT-AGENT-E3-V01-001",
+        "issue_number": 762,
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/762",
+        "task_commit": "6c39975864788f27aea1f0da50fa409625bd5bd6",
+        "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V01.md",
+        "task_blob_sha1": "3b88b26c590deb7ddd08f69f7b535dc8d4e2810c",
+        "state": "CLOSED_VERIFIED",
+        "external_sources": "PROTECTED_PACKET_ONLY",
+        "result_comment_id": 5969123988
+      },
+      "disposition": "VERIFIED",
+      "completed_by": "E3-V01",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-V01_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-V01_ADJUDICATION.json"
+    },
+    {
+      "id": "E3-Q4-SERIES",
+      "kind": "QUANTITATIVE_FRONTIER",
+      "status": "OPEN",
+      "depends_on": [
+        "E3-B-AP"
+      ],
+      "statement": "Prove Σ_{n≥1} r_4(2^n)/2^n < ∞.",
+      "current_best_pointwise": "Green–Tao: r_4(N) ≪ N (log N)^(-c) for some absolute c>0; this alone does not establish the series convergence.",
+      "smallest_missing_object": "Promoted route E3-Q4-DENSITY-LOSS: for a_n=r_4(2^n)/2^n, prove eventual bounded-step density-dependent loss a_{n+L} <= a_n(1-c a_n^theta) for fixed L>=1, c>0, and 0<theta<1; this implies a_n=O(n^(-1/theta)) and hence Σ a_n<∞.",
+      "active_attacks": [],
+      "completed_attacks": {
+        "E3-Q01": "EXACT_BLOCKER__FIXED_AMBIENT_GREEN_TAO_DOES_NOT_SUPPLY_INTER_SCALE_TRANSFER",
+        "E3-X01": "PROMOTED__DENSITY_DEPENDENT_LOSS_SUBTARGET",
+        "E3-A02": "COUNTEREXAMPLE__SUPPORTING_BOUNDARY_EVIDENCE_NOT_PROMOTED",
+        "E3-S03": "SOURCE_BLOCKED__NO_SEQUENCE_LEVEL_SOURCE_INTERFACE_FOUND"
+      },
+      "promoted_result": "E3-X01",
+      "promoted_evidence": "work_packages/GCL_ERDOS3/results/E3-X01_RESULT.md",
+      "promoted_synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-02_SYNTHESIS.md",
+      "ruled_out_by_promoted_result": [
+        "plain interval reblocking as a source of any strict density loss",
+        "eventual fixed-step uniform fractional contraction a_{n+L} <= (1-delta)a_n",
+        "eventual fixed-window averaged uniform fractional contraction",
+        "eventual constant-factor quasi-submultiplicativity a_{n+m} <= C a_n a_m"
+      ],
+      "supporting_nonpromoted_evidence": {
+        "E3-Q01": "Green–Tao 2017 is fixed-ambient; localization recovers only monotonicity.",
+        "E3-A02": "Literal submultiplicativity fails; strong multiplicative/power recurrences are constrained by lower constructions.",
+        "E3-S03": "Scoped primary-source audit found no post-2017 sequence-level estimate stronger than monotonicity."
+      }
+    },
+    {
+      "id": "E3-Q4-DENSITY-LOSS",
+      "kind": "FRONTIER_SUBTARGET",
+      "status": "OPEN",
+      "parent": "E3-Q4-SERIES",
+      "sufficient_for": [
+        "E3-Q4-SERIES"
+      ],
+      "statement": "Let a_n=r_4(2^n)/2^n. Prove that there exist fixed L>=1, c>0, n_0, and 0<theta<1 such that a_{n+L} <= a_n(1-c a_n^theta) for all n>=n_0.",
+      "consequence": "The discrete differential inequality gives a_n=O(n^(-1/theta)); since 1/theta>1, Σ_n a_n converges.",
+      "provenance": "E3-X01",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-X01_RESULT.md",
+      "promotion": "PROMOTED__E3-TRANCHE-02",
+      "claim_boundary": "Still OPEN. Tranche 03 formulates an equivalent finite/local successor candidate, but frontier replacement is withheld pending independent verification of E3-B-GLUING-RADIUS-EQUIV.",
+      "prepared_tranche": "E3-TRANCHE-04",
+      "prepared_attacks": [
+        "E3-L01",
+        "E3-Q02",
+        "E3-T01",
+        "E3-A04"
+      ],
+      "representation_shift": {
+        "gluing_defect": "D_{L,n}=a_n-a_{n+L}",
+        "reciprocal_potential": "U_theta(n)=a_n^{-theta}",
+        "persistence_profile": "P(alpha)=#{n:a_n>=alpha}",
+        "structural_object": "recursive extremizer tree with digit-and-carry fiber constraints"
+      },
+      "research_note": "work_packages/GCL_ERDOS3/E3-TRANCHE-03_REPRESENTATION.md",
+      "active_attacks": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "dispatch_state": "ADJUDICATED__VERIFY_PENDING",
+      "dispatch_task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
+      "dispatches": {
+        "E3-R01": {
+          "dispatch_id": "GCL-ERDOS3-E3-R01-IA-001",
+          "issue_number": 788,
+          "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+          "result_comment_id": 5974689856,
+          "declared_disposition": "PROVED_REPRESENTATION_REDUCTION",
+          "result_path": "work_packages/GCL_ERDOS3/results/E3-R01_RESULT.md",
+          "result_blob_sha1": "1945c71f250725619a536a08c7cbc878c8f426fd"
+        },
+        "E3-D01": {
+          "dispatch_id": "GCL-ERDOS3-E3-D01-IA-001",
+          "issue_number": 789,
+          "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+          "result_comment_id": 5974710520,
+          "declared_disposition": "FINITE_CARRY_REPRESENTATION_PROVED",
+          "result_path": "work_packages/GCL_ERDOS3/results/E3-D01_RESULT.md",
+          "result_blob_sha1": "fa48b4dca2e575d639cd6ca3cae7d9064063c3cb"
+        },
+        "E3-G01": {
+          "dispatch_id": "GCL-ERDOS3-E3-G01-IA-001",
+          "issue_number": 791,
+          "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+          "result_comment_id": 5974734856,
+          "declared_disposition": "SMALLER_GLUE_LEMMA",
+          "result_path": "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
+          "result_blob_sha1": "41037a11d9f36248fbcf49c946eb50e44ce3b03f"
+        },
+        "E3-C01": {
+          "dispatch_id": "GCL-ERDOS3-E3-C01-IA-001",
+          "issue_number": 792,
+          "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+          "result_comment_id": 5974760875,
+          "declared_disposition": "FINITE_PATTERN_DISCOVERED",
+          "result_path": "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md",
+          "result_blob_sha1": "212cea2c27eeba50c243d7e4e769bd78afeb117b"
+        },
+        "E3-A03": {
+          "dispatch_id": "GCL-ERDOS3-E3-A03-IA-001",
+          "issue_number": 793,
+          "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+          "result_comment_id": 5974733560,
+          "declared_disposition": "NO_COUNTEREXAMPLE_IN_DECLARED_FAMILY",
+          "result_path": "work_packages/GCL_ERDOS3/results/E3-A03_RESULT.md",
+          "result_blob_sha1": "5c54ddfede81e56bf8327b6dc8c1f7570ec21711"
+        },
+        "E3-S04": {
+          "dispatch_id": "GCL-ERDOS3-E3-S04-IA-001",
+          "issue_number": 794,
+          "state": "RETURNED__CAPTURED_PENDING_SYNTHESIS",
+          "result_comment_id": 5974746941,
+          "declared_disposition": "SOURCE_INTERFACE_REQUIRES_BRIDGE",
+          "result_path": "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
+          "result_blob_sha1": "30f24cff18d14ac197695e272868786b0e77cd0c"
+        }
+      },
+      "capture_manifest": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json",
+      "synthesis_allowed": false,
+      "completed_attacks": {
+        "E3-R01": "ACCEPTED__REPRESENTATION_REDUCTION",
+        "E3-D01": "ACCEPTED__FINITE_CARRY_REPRESENTATION",
+        "E3-G01": "THEOREM_GRADE_STRUCTURAL_REDUCTION__VERIFY_PENDING",
+        "E3-C01": "FINITE_PATTERN_SUPPORTING_ONLY",
+        "E3-A03": "NO_COUNTEREXAMPLE__SUPPORTING_BOUNDARY",
+        "E3-S04": "SOURCE_INTERFACE_REQUIRES_STABILITY_BRIDGE",
+        "E3-L01": "FINITE_LIFTED_CERTIFICATE_PROVED__NO_PARENT_PROMOTION",
+        "E3-Q02": "PROVED_NATIVE_LABELLED_FORCING__NO_PARENT_PROMOTION",
+        "E3-T01": "SCALAR_U3_ACCUMULATION_INSUFFICIENT__PHASE_ALIGNMENT_REQUIRED",
+        "E3-A04": "SYNCHRONIZED_COMMON_CORE_COUNTEREXAMPLE_CLASS_RULED_OUT",
+        "E3-Q03": "PROVED_NATIVE_ALL_FIBRE_U3_FORCING__NO_PARENT_PROMOTION",
+        "E3-Q04": "PROVED_NATIVE_JOINT_WITNESS_DICHOTOMY__NO_PARENT_PROMOTION"
+      },
+      "synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_SYNTHESIS.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json",
+      "selected_successor_candidate": "E3-Q4-GLUING-RADIUS",
+      "verification_gate": "E3-V03",
+      "tranche_04_manifest": "work_packages/GCL_ERDOS3/E3-TRANCHE-04.json",
+      "tranche_04_synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md",
+      "native_residual": "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+    },
+    {
+      "id": "E3-QK5-SERIES",
+      "kind": "QUANTITATIVE_FRONTIER",
+      "status": "DEFERRED",
+      "depends_on": [
+        "E3-B-AP"
+      ],
+      "statement": "For each fixed k≥5, prove Σ_{n≥1} r_k(2^n)/2^n < ∞.",
+      "note": "Deferred while the minimal unresolved k=4 case is attacked."
+    },
+    {
+      "id": "E3-V-B02",
+      "kind": "VERIFICATION",
+      "status": "CLOSED",
+      "depends_on": [
+        "E3-B-AP"
+      ],
+      "statement": "Independently verify the reverse block-construction implication in E3-B02, including no mixed 3-AP across scale-separated blocks and harmonic-mass lower bound.",
+      "dispatch": {
+        "dispatch_id": "GCL-ERDOS3-E3-V02-IA-001",
+        "assignment_id": "E3-V02",
+        "agent_ref": "INDEPENDENT-AGENT-E3-V02-001",
+        "issue_number": 776,
+        "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/776",
+        "task_commit": "bf9bc7f448f92d71afeae937fda133b0e1d4de80",
+        "task_path": "work_packages/GCL_ERDOS3/work_packages/E3-V02.md",
+        "task_blob_sha1": "98e17042c9f93010139f43d3788a4c5fc5316b5b",
+        "state": "CLOSED_VERIFIED",
+        "external_sources": "PROTECTED_PACKET_ONLY",
+        "result_comment_id": 5969442261
+      },
+      "disposition": "VERIFIED",
+      "completed_by": "E3-V02",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-V02_RESULT.md"
+    },
+    {
+      "id": "E3-B-GLUING-RADIUS-EQUIV",
+      "kind": "REDUCTION",
+      "status": "PROVED_PENDING_INDEPENDENT_VERIFY",
+      "parent": "E3-Q4-DENSITY-LOSS",
+      "statement": "For fixed L>=1, N=2^n, m=2^L, a_n=r_4(N)/N, D_{L,n}=a_n-a_{n+L}, and Gamma_{L,n}=H_{L,n}/N with H_{L,n} the least uniform fiber slack permitting a 4-AP-free m-block gluing, prove D_{L,n} <= Gamma_{L,n} <= m D_{L,n}.",
+      "completed_by": "E3-G01",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
+      "independent_verification_required": "E3-V03",
+      "claim_boundary": "Native theorem-grade bridge only; not yet independently verified.",
+      "promotion_gate": "E3-V03__FRESH_LEASE_REQUIRED"
+    },
+    {
+      "id": "E3-Q4-GLUING-RADIUS",
+      "kind": "FRONTIER_CANDIDATE",
+      "status": "FORMULATED_PENDING_VERIFY",
+      "parent": "E3-Q4-DENSITY-LOSS",
+      "sufficient_for": [
+        "E3-Q4-DENSITY-LOSS",
+        "E3-Q4-SERIES"
+      ],
+      "statement": "For some fixed L>=1, kappa>0, n_0, and 0<theta<1, prove Gamma_{L,n} >= kappa a_n^(1+theta) for all n>=n_0, where Gamma_{L,n}=H_{L,n}/2^n and H_{L,n} is the least uniform per-fiber slack permitting a 4-AP-free 2^L-block gluing.",
+      "attack_direction": "Exact digit/carry constraints -> forced U3/quadratic structure -> configuration incompatibility/transversal cost -> polynomial gluing-radius lower bound.",
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-D01_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md"
+      ],
+      "promotion_gate": "E3-V03",
+      "claim_boundary": "Formulated successor candidate only; not active and not proved."
+    },
+    {
+      "id": "E3-V-B03",
+      "kind": "VERIFICATION",
+      "status": "LEASE_EXPIRED__REISSUE_REQUIRED",
+      "depends_on": [
+        "E3-B-GLUING-RADIUS-EQUIV"
+      ],
+      "statement": "Independently replay the G01 gluing-radius bridge D_{L,n} <= Gamma_{L,n} <= 2^L D_{L,n}, including well-posedness and exact finite carry-feasibility interpretation.",
+      "work_package": "work_packages/GCL_ERDOS3/work_packages/E3-V03.md",
+      "frontier_action": "INDEPENDENT_VERIFY",
+      "replay_budget": 1,
+      "replay_budget_consumed": 0,
+      "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
+      "expired_dispatch": {
+        "dispatch_id": "GCL-ERDOS3-E3-V03-IA-008",
+        "issue_number": 921,
+        "lease_epoch": 8,
+        "lease_attempt_ordinal": 8,
+        "lease_activation_comment_id": 6011181869,
+        "lease_started_at_observed": "2026-10-06T07:04:04Z",
+        "lease_expires_at_observed": "2026-10-06T07:29:04Z",
+        "valid_result_count": 0,
+        "replay_budget_consumed": false
+      }
+    },
+    {
+      "id": "E3-B-FOUR-FIBRE-DEFICIT",
+      "kind": "NATIVE_SUBTARGET",
+      "status": "OPEN_NATIVE_SUBTARGET",
+      "parent": "E3-Q4-DENSITY-LOSS",
+      "statement": "For N=2^n, a_n=r_4(N)/N, prove that there exist kappa>0, 0<theta<1, and n_0 such that every 4-AP-free four-fibre gluing has max_i(r_4(N)-|B_i|) >= kappa*N*a_n^(1+theta) for all n>=n_0.",
+      "sufficient_for": [
+        "E3-Q4-DENSITY-LOSS"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-L01_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q02_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-T01_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-A04_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Native subtarget only; not proved and not a replacement active frontier."
+    },
+    {
+      "id": "E3-B-QUADRATIC-MOTIF-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-FOUR-FIBRE-DEFICIT",
+      "statement": "Retain explicit quantitative quadratic witnesses for the physical fibres and prove that the translated witness relations across the 10-family L01 core cannot all coexist unless at least c*beta^(1+theta)*N points are deleted for some fixed 0<theta<1.",
+      "sufficient_for": [
+        "E3-B-FOUR-FIBRE-DEFICIT"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-L01_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q02_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-T01_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-A04_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md"
+      ],
+      "attack_lanes": [
+        "motif amplification from the nine L01 residual clause types",
+        "quadratic witness/frequency-map incompatibility before lossy phase localization"
+      ],
+      "claim_boundary": "Smallest formulated native residual after tranche 04; open and unproved.",
+      "reduced_by": "E3-B-ALL-FIBRE-U3-FORCING",
+      "successor": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "reduction_note": "Q03 discharges scalar structure forcing for all four physical fibres; remaining content is joint identity/alignment of correlation witnesses across carry families."
+    },
+    {
+      "id": "E3-B-ALL-FIBRE-U3-FORCING",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-FOUR-FIBRE-DEFICIT",
+      "statement": "For beta-dense four-fibre globally 4-AP-free gluings and N>=4, the adjacent D01 0011 families F1,F4,F7 force every physical fibre to have balanced-indicator U3 norm at least beta^4/(5*16^4) in the Q02 cyclic embedding.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md",
+      "claim_boundary": "Native proved structural forcing only; no deletion bound or parent-frontier closure.",
+      "derived_from": [
+        "E3-Q02",
+        "E3-D01"
+      ]
+    },
+    {
+      "id": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-FOUR-FIBRE-DEFICIT",
+      "depends_on": [
+        "E3-B-ALL-FIBRE-U3-FORCING",
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY",
+        "E3-B-FOUR-FIBRE-DEFICIT"
+      ],
+      "statement": "Using Q04, for each relevant L01 core family retain either an aligned nonzero triple/Fourier witness with exact harmonic multipliers or a large joint fourfold correlation, and prove that the resulting finite witness system cannot be realized by four near-extremal locally 4-AP-free fibres without deleting c*beta^(1+theta)*N points for some theta<1.",
+      "attack_lanes": [
+        "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION: exploit interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification beyond Q08 Boolean realizability",
+        "E3-B-LOW-ORDER-EXPONENT-UPGRADE: Q14 proves beta^4 recursion alone is nonsummability-compatible; exploit additional carry/near-extremal structure to reach an effective loss exponent p<2",
+        "E3-B-INTERIOR-DERIVATIVE-PAIR-SPECTRUM-DICHOTOMY: Q17 makes derivative-frequency transport exact in terms of the base-pair energy measure; prove concentration/coherence across Q16's popular h_* or turn diffuseness into an exponent<2 deletion cost",
+        "positive-density amplification of the nine L01 residual clause motifs"
+      ],
+      "sufficient_for": [
+        "E3-B-FOUR-FIBRE-DEFICIT"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-L01_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q02_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-T01_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md"
+      ],
+      "claim_boundary": "Smallest current native residual; open and unproved.",
+      "derived_from": [
+        "E3-L01",
+        "E3-Q02",
+        "E3-T01",
+        "E3-Q03"
+      ],
+      "reduced_by": [
+        "E3-Q05",
+        "E3-Q06",
+        "E3-Q07",
+        "E3-Q08",
+        "E3-Q09",
+        "E3-Q10",
+        "E3-Q11",
+        "E3-Q12",
+        "E3-Q13",
+        "E3-Q14",
+        "E3-Q15",
+        "E3-Q16",
+        "E3-Q17"
+      ],
+      "reduction_note": "Q05 closes one-scale Parseval support counting; Q07 closes abstract phase algebra; Q08 closes finite Boolean cyclic realizability; Q09 removes support-window structure; Q10 gives low-order carry kernels versus all-four intrinsic U3; Q11 converts the low-order arm to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap. Q13 localizes the Q11 increment to a dyadic subprogression after O(log(1/beta)) levels with no fixed-factor density loss. Q14 proves the exact recursion-only summability threshold p<2, so the beta^4 low-order arm cannot close by iteration alone. Q15 removes derivative-side ambiguity for repeated-triplet core families: F2 and F3 both force B1 in their high-order arms. Q16 replaces raw F2/F3 shift-set intersection by a guaranteed common-difference structure of density Omega(beta^8), leaving derivative-frequency transport across matched shift parallelograms as the high-order bottleneck. Q17 identifies the exact shift-Fourier transport law for the common B1 derivative spectra, reducing frequency alignment to concentration versus diffuseness of the base-frequency pair-energy measures."
+    },
+    {
+      "id": "E3-B-ADJACENT-WITNESS-DICHOTOMY",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-FOUR-FIBRE-DEFICIT",
+      "derived_from": [
+        "E3-Q03",
+        "E3-Q02",
+        "E3-D01"
+      ],
+      "statement": "For each adjacent D01 0011 family on beta-dense globally compatible fibres, either a triple balanced correlation has magnitude at least beta^3/(5*16^3) and yields a common nonzero frequency parameter with three linked Fourier coefficients each at least beta^3/(20*16^3), or the fully balanced fourfold correlation has magnitude at least beta^4/(5*16^4).",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
+      "claim_boundary": "Native witness-level dichotomy only; no deletion bound or parent-frontier closure.",
+      "strengthening": "The aligned Fourier branch uses a direct three-way Parseval threshold partition, avoiding the previous unnecessary cubic loss."
+    },
+    {
+      "id": "E3-B-LINEAR-WITNESS-PARSEVAL-BOUND",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY"
+      ],
+      "statement": "At Q04 threshold lambda_beta=beta^3/(20*16^3), each physical fibre has at most 100*16^6*beta^(-6) nonzero Fourier modes of magnitude at least lambda_beta. A fixed one-scale finite family of Q04 linear witness clauses cannot contradict Parseval uniformly as beta->0.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md",
+      "claim_boundary": "Native quantitative no-go for one-scale large-spectrum counting only; no deletion theorem."
+    },
+    {
+      "id": "E3-B-LINEAR-WITNESS-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY",
+        "E3-B-LINEAR-WITNESS-PARSEVAL-BOUND"
+      ],
+      "statement": "Amplify Q04 aligned Fourier witnesses across locations/scales so that one physical fibre acquires more than 100*16^6*beta^(-6) distinct lambda_beta-large modes, or use coefficient phases/harmonic relations to obtain the required deletion cost without a Parseval cardinality contradiction.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Reduced linear-branch residual; finite support and phase algebra are proved insufficient.",
+      "reduced_by": "E3-Q07",
+      "successor": "E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION",
+      "reduction_note": "Q07 proves that one selected Q04 triple equation for every family in the 10-family L01 core has no abstract one-scale phase inconsistency: the exact 10x12 phase map is surjective. Support counting and finite phase algebra are both insufficient."
+    },
+    {
+      "id": "E3-B-DERIVATIVE-OVERLAP-AMPLIFICATION",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY"
+      ],
+      "statement": "In the Q04 fourfold branch for an adjacent 0011 pair, at least beta^4/(10*16^4) of derivative shifts d have signed phase-corrected spectral overlap between Delta_d of the two physical fibres at least beta^4/(10*16^4).",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md",
+      "claim_boundary": "Native joint derivative-overlap interface only; no single-frequency map, quadratic phase, or deletion bound."
+    },
+    {
+      "id": "E3-B-DERIVATIVE-SPECTRAL-ALIGNMENT",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-DERIVATIVE-OVERLAP-AMPLIFICATION"
+      ],
+      "statement": "From the positive-density family of Q06 derivative spectral overlaps, force a coherent derivative-frequency graph with enough additive structure to integrate to a joint quadratic witness, or prove spectral diffuseness forces c*beta^(1+theta)*N deletions for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Fourfold-branch sub-residual only; open.",
+      "reduced_by": "E3-Q09",
+      "successor": "E3-B-DEWINDOWED-JOINT-WITNESS",
+      "reduction_note": "Q09 shows that globally centered cyclic U3/Fourier/derivative structure may include deterministic short-interval window structure. Q06 remains exact, but a frontier-grade deletion argument must de-window the witnesses or prove its selected witnesses cannot be explained by support geometry."
+    },
+    {
+      "id": "E3-B-LINEAR-PHASE-COMPATIBILITY",
+      "kind": "NATIVE_NO_GO_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY",
+        "E3-B-LINEAR-WITNESS-PARSEVAL-BOUND"
+      ],
+      "statement": "For the exact 10-family L01 core, there is a choice of one Q04 triple witness per family for which the affine phase-equation map from the 12 physical-fibre harmonic phases theta_{j,k}, j=0..3 and k=1,2,3, onto the 10 family phases is surjective. An explicit 10x10 minor has determinant -3. Therefore arbitrary carry-translation phase offsets and prescribed triple-product phases can be satisfied simultaneously at this abstract one-scale level.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md",
+      "replay_tool": "work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py",
+      "claim_boundary": "Proof-strategy no-go only. It does not construct actual fibre indicators or a counterexample to the four-fibre deficit theorem."
+    },
+    {
+      "id": "E3-B-LINEAR-WITNESS-REALIZABILITY-OR-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY",
+        "E3-B-LINEAR-WITNESS-PARSEVAL-BOUND",
+        "E3-B-LINEAR-PHASE-COMPATIBILITY"
+      ],
+      "statement": "Starting from Q04/Q05/Q07, prove that actual near-extremal locally 4-AP-free fibre indicators cannot realize the abstract finite harmonic support-and-phase data allowed by Q07, or prove that the carry system/scale recursion forces sufficiently many additional independent witnesses to yield the required c*beta^(1+theta)*N deletion cost for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md"
+      ],
+      "attack_lanes": [
+        "positive-definite / indicator realizability constraints on the finite harmonic data",
+        "near-extremal local 4-AP-freeness restrictions on r,2r,3r spectra and phases",
+        "multi-location or multi-scale amplification producing more independent witnesses than Q05 Parseval capacity permits"
+      ],
+      "claim_boundary": "Smallest current linear-branch residual; open and unproved.",
+      "reduced_by": "E3-Q08",
+      "successor": "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION",
+      "reduction_note": "Q08 proves that arbitrary finite Q07 phase data at magnitudes well above the Q04 threshold are asymptotically realizable by genuine Boolean subsets of the cyclic ambient group. Finite Boolean Fourier realizability is therefore insufficient; remaining force must use interval support, internal 4-AP-freeness/near-extremality, full carry compatibility, or genuine multi-location/scale amplification."
+    },
+    {
+      "id": "E3-B-BOOLEAN-HARMONIC-REALIZABILITY",
+      "kind": "NATIVE_NO_GO_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-LINEAR-PHASE-COMPATIBILITY",
+        "E3-B-LINEAR-WITNESS-PARSEVAL-BOUND"
+      ],
+      "statement": "For Q04 scale lambda_beta=beta^3/(20*16^3), arbitrary prescribed phases at harmonics r,2r,3r on four cyclic fibres of densities rho_j in [beta/16,1/8] are simultaneously approximable by genuine Boolean subsets whenever P*lambda_beta^2>log 56; in the relevant dyadic near-extremal regime this condition holds eventually by the protected A03 lower construction.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q08_NATIVE_RESULT.md",
+      "claim_boundary": "Proof-strategy no-go only. The Boolean subsets are not asserted to be interval-supported, internally 4-AP-free, near-extremal, or carry-compatible."
+    },
+    {
+      "id": "E3-B-LINEAR-WITNESS-APFREE-INTERVAL-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY",
+        "E3-B-LINEAR-WITNESS-PARSEVAL-BOUND",
+        "E3-B-LINEAR-PHASE-COMPATIBILITY",
+        "E3-B-BOOLEAN-HARMONIC-REALIZABILITY"
+      ],
+      "statement": "Starting from Q04/Q05/Q07/Q08, exploit at least one genuinely arithmetic fibre constraint absent from the cyclic Boolean no-go—interval support, internal 4-AP-freeness and near-extremality, full simultaneous carry compatibility, or repeated/multi-scale witness amplification—to force the required c*beta^(1+theta)*N deletion cost for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q08_NATIVE_RESULT.md"
+      ],
+      "attack_lanes": [
+        "interval-support restrictions on the r,2r,3r Fourier phases/magnitudes",
+        "internal 4-AP-free near-extremizer spectral restrictions",
+        "full simultaneous carry-family compatibility beyond independently prescribed finite moments",
+        "multi-location or multi-scale amplification exceeding Q05 Parseval capacity"
+      ],
+      "claim_boundary": "Smallest current linear-branch residual; open and unproved."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-U3-FORCING",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-FOUR-FIBRE-DEFICIT",
+      "depends_on": [
+        "E3-B-ALL-FIBRE-U3-FORCING"
+      ],
+      "statement": "For every family in the ten-family L01 core and dyadic N>=16, after replacing each labelled occurrence C_t by its local fluctuation h_t=1_{C_t}-alpha_t*1_{I_t}, at least one labelled factor has U3 norm > beta^4/(15*16^4). Across the core, at least two distinct physical fibres satisfy the same de-windowed lower bound.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
+      "claim_boundary": "Native structural forcing only. It does not align quadratic witnesses, force all four fibres after de-windowing, or imply a deletion bound."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-JOINT-WITNESS",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-DEWINDOWED-U3-FORCING",
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY",
+        "E3-B-DERIVATIVE-OVERLAP-AMPLIFICATION"
+      ],
+      "statement": "Starting from the Q09 locally centered fibre fluctuations, prove that genuinely non-window derivative-frequency or quadratic witnesses align across enough L01 carry families to force c*beta^(1+theta)*N deletions for some theta<1.",
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-L01_NATIVE_RESULT.md"
+      ],
+      "attack_lanes": [
+        "repeat Q04/Q06 witness extraction after local de-windowing",
+        "subtract explicit window contributions from the existing joint correlations",
+        "prove selected global witnesses lie outside the window-generated spectrum",
+        "combine de-windowed structure with near-extremality to amplify the finite L01 motif"
+      ],
+      "claim_boundary": "Smallest current quadratic-branch residual; open and unproved.",
+      "reduced_by": "E3-Q10",
+      "successor": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "reduction_note": "Q10 retains the order of the de-windowed expansion: low-order terms become explicit singleton/pair carry kernels; if all three adjacent 0011 families avoid low-order terms, all four physical fibres are intrinsically de-windowed U3-structured."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-ORDER-DICHOTOMY",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "statement": "For each adjacent 0011 family, either a singleton/pair local-window expansion term gives an explicit carry-kernel correlation at scale beta^4/(15*16^4), or a triple/fourfold term forces both physical fibres in that adjacent pair to have de-windowed U3 norm above that scale. Hence either some low-order carry witness exists or all four fibres are intrinsically structured.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md",
+      "sufficient_for": [
+        "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT"
+      ],
+      "claim_boundary": "Native structural dichotomy only; no deletion exponent or parent-frontier promotion."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+      "depends_on": [
+        "E3-B-DEWINDOWED-ORDER-DICHOTOMY",
+        "E3-B-DEWINDOWED-U3-FORCING",
+        "E3-B-ADJACENT-WITNESS-DICHOTOMY"
+      ],
+      "statement": "From Q10, either amplify an explicit singleton/pair carry-kernel correlation using near-extremality or repeated locations/scales, or align the all-four intrinsic de-windowed U3 structures, to force c*beta^(1+theta)*N deletions for some theta<1.",
+      "attack_lanes": [
+        "carry-marginal density increment from singleton kernels",
+        "bilinear carry-kernel amplification from pair terms",
+        "all-four de-windowed derivative-frequency/quadratic alignment",
+        "multi-location or multi-scale amplification of the adjacent 0011 chain"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current de-windowed quadratic residual; open.",
+      "reduced_by": "E3-Q11",
+      "successors": [
+        "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT"
+      ],
+      "reduction_note": "Q11 converts low-order carry kernels to short-step density increments; Q12 converts the high-order arm to positive-density de-windowed derivative-product spectral overlap."
+    },
+    {
+      "id": "E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "statement": "Any singleton or pair carry-kernel witness from Q10 yields a physical fibre and an arithmetic-progression segment J of common difference q in {1,2,3} with |B_j∩J|-alpha_j|J| > 10*beta^4/(15*16^4)*N, hence local 4-AP-free density exceeding alpha_j by at least that order-beta^4 amount.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md",
+      "sufficient_for": [
+        "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION"
+      ],
+      "claim_boundary": "Native low-order-arm reduction only; exponent 4 is insufficient for the parent target."
+    },
+    {
+      "id": "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "depends_on": [
+        "E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT"
+      ],
+      "statement": "Starting from Q11's positive density increment of order beta^4 on a step-1/2/3 subprogression, use near-extremality, scale control, or repeated recursion to force a gluing deficit of order beta^(1+theta)N for some theta<1, or prove this arm cannot achieve the required exponent.",
+      "attack_lanes": [
+        "control the subprogression length M relative to N",
+        "iterate short-step density increments while preserving near-extremality",
+        "convert arbitrary M to dyadic scale without fixed-factor density loss",
+        "derive an impossibility/no-go for exponent improvement from this arm"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Open; Q11 provides only an order-beta^4 increment.",
+      "reduced_by": "E3-Q13",
+      "successor": "E3-B-DYADIC-DENSITY-INCREMENT-RECURSION",
+      "reduction_note": "Q13 proves dyadic localization with scale drop O(log(1/beta)) and preserves an order-beta^4 density gain. Remaining issue is recursion/amplification, not arbitrary-scale conversion."
+    },
+    {
+      "id": "E3-B-ALLFIBRE-DEWINDOWED-ALIGNMENT",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "depends_on": [
+        "E3-B-DEWINDOWED-ORDER-DICHOTOMY",
+        "E3-B-DEWINDOWED-U3-FORCING"
+      ],
+      "statement": "In Q10's high-order-only arm, all four physical fibres have intrinsic de-windowed U3 mass. Align derivative-frequency or quadratic witnesses across the adjacent carry chain strongly enough to force c*beta^(1+theta)N deletions for some theta<1.",
+      "attack_lanes": [
+        "de-windowed derivative overlap across adjacent pairs",
+        "joint quadratic factor extraction retaining physical-fibre identity",
+        "phase/rank incompatibility across the three adjacent 0011 families"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Open high-order arm.",
+      "reduced_by": "E3-Q12",
+      "successor": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
+      "reduction_note": "Q12 converts every Q10 high-order adjacent-pair term into positive-density same-shift derivative-product spectral overlap. The only remaining window contamination in the triple case is one explicit local-window factor."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-OVERLAP",
+      "kind": "NATIVE_LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "statement": "Any Q10 high-order adjacent 0011 term yields at least beta^4/(30*16^4)*P common shifts with signed derivative-product spectral overlap at least beta^4/(30*16^4). The adjacent product is either a full de-windowed derivative or one de-windowed factor times one explicit local-window factor.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md",
+      "sufficient_for": [
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT"
+      ],
+      "claim_boundary": "Witness-preserving native lemma only; no coherent frequency graph or deletion exponent."
+    },
+    {
+      "id": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-DEWINDOWED-CARRY-KERNEL-OR-ALLFIBRE-ALIGNMENT",
+      "depends_on": [
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-OVERLAP"
+      ],
+      "statement": "Given positive-density same-shift derivative-product spectral overlaps on the three adjacent physical pairs, prove a coherent derivative-frequency graph / joint quadratic witness, or convert the mixed one-window branch or spectral diffuseness into c*beta^(1+theta)N deletions for some theta<1.",
+      "attack_lanes": [
+        "fully de-windowed derivative-frequency graph across adjacent pairs",
+        "mixed one-window derivative-product branch to density increment",
+        "spectral diffuseness to point-deletion cost",
+        "additive structure of the good-shift sets"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current high-order de-windowed residual; open.",
+      "reduced_by": "E3-Q15",
+      "successor": "E3-B-INTERIOR-DERIVATIVE-PAIR-SPECTRUM-DICHOTOMY",
+      "reduction_note": "Q15 extends the high-order derivative-product mechanism to the repeated-triplet core and forces B1 to be the complete derivative side in both F2 and F3. Remaining issue is compatibility/alignment, not derivative-side identity. Q16 further reduces the forced-interior-fibre lane to common-difference frequency compatibility. Q17 makes the surviving interior derivative-frequency transport law exact."
+    },
+    {
+      "id": "E3-B-DYADIC-SHORT-STEP-LOCALIZATION",
+      "kind": "LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
+      "depends_on": [
+        "E3-B-LOW-ORDER-SHORT-STEP-DENSITY-INCREMENT"
+      ],
+      "statement": "Every Q11 short-step increment with 10*delta_beta*N>=8 contains a dyadic subprogression of the same step q<=3, length 2^m>(5/4)delta_beta*N, and density >alpha_j+5*delta_beta; hence n-m=O(log(1/beta)).",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md",
+      "evidence_blob_sha1": "a993c4c0bf4a01974be5c7d906e04021e9e2bc66",
+      "proved_by": "E3-Q13"
+    },
+    {
+      "id": "E3-B-DYADIC-DENSITY-INCREMENT-RECURSION",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-SHORT-STEP-DENSITY-INCREMENT-AMPLIFICATION",
+      "depends_on": [
+        "E3-B-DYADIC-SHORT-STEP-LOCALIZATION"
+      ],
+      "statement": "Starting from Q13's dyadic backward density increment a_m>alpha_j+c*beta^4 with n-m=O(log(1/beta)), prove that near-extremal/gluing hypotheses recur across controlled dyadic scales strongly enough to force a beta^(1+theta)N gluing deficit for some theta<1, or prove this recursion route cannot reach that exponent.",
+      "attack_lanes": [
+        "derive a controlled recursive contradiction if the low-order arm persists",
+        "quantify how fibre deficit affects alpha_j versus a_n before each backward increment",
+        "combine monotonicity of a_n with repeated O(log(1/beta))-lag increments",
+        "prove a no-go exponent for any recursion based only on order-beta^4 increments"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current low-order residual; open.",
+      "reduced_by": "E3-Q14",
+      "successor": "E3-B-LOW-ORDER-EXPONENT-UPGRADE",
+      "reduction_note": "Q14 gives an abstract sequence satisfying even fixed-step order-a^4 loss while its series diverges. Pure recursion at exponent 4 is insufficient."
+    },
+    {
+      "id": "E3-B-RECURSION-SUMMABILITY-THRESHOLD",
+      "kind": "LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-DYADIC-DENSITY-INCREMENT-RECURSION",
+      "depends_on": [
+        "E3-B-DYADIC-SHORT-STEP-LOCALIZATION"
+      ],
+      "statement": "For p>1, b_n=(n+1)^(-1/(p-1)) satisfies b_{n-1}-b_n >= (p-1)^(-1)b_n^p; its series converges iff p<2. Hence p<2 is the exact summability threshold for pure power-law density-loss recursion.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md",
+      "evidence_blob_sha1": "6949c137ea9a376aa24d32dbee41641b852bd417",
+      "proved_by": "E3-Q14"
+    },
+    {
+      "id": "E3-B-LOW-ORDER-EXPONENT-UPGRADE",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-DYADIC-DENSITY-INCREMENT-RECURSION",
+      "depends_on": [
+        "E3-B-RECURSION-SUMMABILITY-THRESHOLD",
+        "E3-B-DYADIC-SHORT-STEP-LOCALIZATION"
+      ],
+      "statement": "Starting from Q11/Q13, use additional four-fibre near-extremality, carry compatibility, or interaction with the Q12 high-order branch to improve the effective low-order loss exponent from 4 to some p<2, equivalently p=1+theta with 0<theta<1.",
+      "attack_lanes": [
+        "show low-order carry-kernel recurrence occurs across many fibres/locations simultaneously and amplifies beyond beta^4",
+        "couple the short-step density increment to near-extremal deficit to obtain a stronger exponent",
+        "force transition from repeated low-order increments into the Q12 high-order alignment arm",
+        "prove an arithmetic restriction on r4-extremizers that upgrades beta^4 to beta^p with p<2"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current low-order residual; open."
+    },
+    {
+      "id": "E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING",
+      "kind": "LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
+      "depends_on": [
+        "E3-B-DEWINDOWED-U3-FORCING",
+        "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-OVERLAP"
+      ],
+      "statement": "For L01 core families F2=(0,0,0111), F3=(1,0,0001), and F6=(2,0,0001), every high-order de-windowed expansion term forces the triply repeated physical fibre to contribute a complete derivative Δ_{kd}h_X with k∈{1,2}, on a positive-density set of derivative shifts. In particular high-order F2 and F3 both force B1 as derivative side.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md",
+      "evidence_blob_sha1": "405da12048ce8e61e04345e80cc8cbcf3aafdc24",
+      "proved_by": "E3-Q15"
+    },
+    {
+      "id": "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-DEWINDOWED-DERIVATIVE-PRODUCT-ALIGNMENT",
+      "depends_on": [
+        "E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING"
+      ],
+      "statement": "When repeated-triplet core families F2 and F3 are high-order, both force positive-density derivative-product spectral overlaps with the same physical fibre B1 as complete derivative side in distinct carry geometries. Prove these B1 derivative shift/frequency systems align to a common quadratic witness or their incompatibility forces a deletion cost with effective exponent p<2.",
+      "attack_lanes": [
+        "compare the two B1 good-shift sets after the k∈{1,2} derivative reparameterizations",
+        "use additive energy rather than raw set intersection to force shared derivative shifts",
+        "compare frequency maps through the common B1 derivative spectrum",
+        "couple failure of compatibility back to low-order exponent-upgrade or deletion"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current high-order residual; open.",
+      "reduced_by": "E3-Q16",
+      "successor": "E3-B-INTERIOR-DERIVATIVE-DIFFERENCE-COMPATIBILITY",
+      "reduction_note": "Q16 proves that the F2/F3 B1 good-shift sets have at least rho_beta^2 P common difference parameters even if they are disjoint. Remaining issue is coherent derivative-frequency transport across those matched differences, or an exponent<2 incompatibility/deletion cost."
+    },
+    {
+      "id": "E3-B-INTERIOR-DERIVATIVE-COMMON-DIFFERENCES",
+      "kind": "LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY",
+      "depends_on": [
+        "E3-B-REPEATED-TRIPLET-DERIVATIVE-FORCING"
+      ],
+      "statement": "For the Q15 high-order F2/F3 B1 derivative-shift sets E2,E3 of density at least rho_beta, mixed additive energy yields at least rho_beta^2 P common shift-parameter differences and, eventually, a fixed nonzero common increment h_* with at least (1/2)rho_beta^3 P representations in each system.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md",
+      "evidence_blob_sha1": "373ad97422b6beb2cebeea9e6912d555ce4bfb93",
+      "proved_by": "E3-Q16"
+    },
+    {
+      "id": "E3-B-INTERIOR-DERIVATIVE-DIFFERENCE-COMPATIBILITY",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "REDUCED_NATIVE_RESIDUAL",
+      "parent": "E3-B-INTERIOR-DERIVATIVE-COMPATIBILITY",
+      "depends_on": [
+        "E3-B-INTERIOR-DERIVATIVE-COMMON-DIFFERENCES"
+      ],
+      "statement": "For the Q16 positive-density family of common nonzero shift-parameter differences—and in particular a popular fixed h_*—compare the B1 derivative spectra at e2,e2+h_* in the F2 geometry and e3,e3+h_* in the F3 geometry. Force coherent frequency transport to a joint quadratic witness, or turn failure of transport into a deletion/density-increment cost with effective exponent p<2.",
+      "attack_lanes": [
+        "Fourier transport identities for the map e -> Fourier spectrum of Delta_e h_B1",
+        "matched-difference additive energy plus frequency graph extraction",
+        "spectral diffuseness across matched shift parallelograms to deletion cost",
+        "couple failure of frequency transport back to the low-order exponent-upgrade arm"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current high-order residual; open.",
+      "reduced_by": "E3-Q17",
+      "successor": "E3-B-INTERIOR-DERIVATIVE-PAIR-SPECTRUM-DICHOTOMY",
+      "reduction_note": "Q17 proves the exact shift-parameter Fourier transport law: for every spatial frequency xi, e -> hat(Delta_e h_B1)(xi) has shift-Fourier coefficients hat b(xi-eta)hat b(eta), and its autocorrelation is the Fourier transform of a fixed nonnegative base-pair energy measure. Remaining issue is concentrated pair-energy versus diffuseness under the Q15/Q16 sampled overlaps."
+    },
+    {
+      "id": "E3-B-DERIVATIVE-SPECTRUM-TRANSPORT",
+      "kind": "LEMMA",
+      "status": "PROVED_NATIVE",
+      "parent": "E3-B-INTERIOR-DERIVATIVE-DIFFERENCE-COMPATIBILITY",
+      "depends_on": [
+        "E3-B-INTERIOR-DERIVATIVE-COMMON-DIFFERENCES"
+      ],
+      "statement": "For b=h_B1 and A_e(xi)=hat(Delta_e b)(xi), the shift-variable Fourier coefficient at eta equals hat b(xi-eta)hat b(eta); consequently shift autocorrelations are Fourier transforms of the nonnegative pair-energy measure |hat b(xi-eta)|^2|hat b(eta)|^2 and total derivative spectral energy equals ||b||_2^4.",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-Q17_NATIVE_RESULT.md",
+      "evidence_blob_sha1": "571a3c1ead499fbc2ec8674497e0a9757e8bd7a1",
+      "proved_by": "E3-Q17"
+    },
+    {
+      "id": "E3-B-INTERIOR-DERIVATIVE-PAIR-SPECTRUM-DICHOTOMY",
+      "kind": "NATIVE_RESIDUAL",
+      "status": "OPEN_NATIVE_RESIDUAL",
+      "parent": "E3-B-INTERIOR-DERIVATIVE-DIFFERENCE-COMPATIBILITY",
+      "depends_on": [
+        "E3-B-DERIVATIVE-SPECTRUM-TRANSPORT"
+      ],
+      "statement": "Combine Q15/Q16 sampled derivative-product overlaps with Q17's exact shift-transport law. Either enough overlap mass is carried by concentrated base-frequency pairs coherent across the popular common difference h_*, yielding a joint quadratic witness, or pair-spectrum diffuseness forces a deletion/density-increment cost with effective exponent p<2.",
+      "attack_lanes": [
+        "extract spatial frequencies xi carrying a polynomial fraction of the Q15 overlap mass",
+        "prove base-pair concentration for mu_xi or convert failure to spectral-complexity cost",
+        "use Q16's popular common h_* to compare the same shift characters across both carry geometries",
+        "integrate coherent eta transport to a quadratic witness on B1"
+      ],
+      "sufficient_for": [
+        "E3-B-JOINT-WITNESS-INCOMPATIBILITY"
+      ],
+      "evidence_basis": [
+        "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md",
+        "work_packages/GCL_ERDOS3/results/E3-Q17_NATIVE_RESULT.md"
+      ],
+      "claim_boundary": "Smallest current high-order residual; open."
+    }
+  ],
+  "closed_claims": [
+    "E3-C-D3",
+    "E3-C-D4",
+    "E3-V-B02"
+  ],
+  "active_frontier": [
+    "E3-Q4-DENSITY-LOSS"
+  ],
+  "known_falsification_boundary": "Reciprocal divergence alone does not imply positive upper asymptotic density. More sharply, for every nonsummable threshold sequence θ_j∈[0,1], there exists a reciprocally divergent set whose dyadic densities never exceed θ_j. Thus summability is qualitatively sharp for any bridge using only blockwise density exceedance.",
+  "scheduling_rule": "Only unresolved nodes may receive ADVANCE_FRONTIER; closed nodes may receive INDEPENDENT_VERIFY only while their explicit verification budget remains open.",
+  "last_tranche": {
+    "id": "E3-TRANCHE-02",
+    "baseline_commit": "d9f2a46f915df19e9d2cd889e00e59c7100ae0bf",
+    "protected_packet_commit": "bf9bc7f448f92d71afeae937fda133b0e1d4de80",
+    "work_packages": {
+      "E3-Q01": "EXACT_BLOCKER__RECEIVED_NOT_PROMOTED",
+      "E3-X01": "SMALLEST_MISSING_LEMMA__PROMOTED",
+      "E3-A02": "COUNTEREXAMPLE__RECEIVED_SUPPORTING_ONLY",
+      "E3-S03": "SOURCE_BLOCKED__RECEIVED_NOT_PROMOTED",
+      "E3-V02": "VERIFIED__CLOSE_E3-V-B02"
+    },
+    "synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-02_SYNTHESIS.md",
+    "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-02_ADJUDICATION.json",
+    "next_frontier": "E3-Q4-DENSITY-LOSS"
+  },
+  "last_verification": {
+    "id": "E3-V02",
+    "disposition": "VERIFIED",
+    "dispatch_id": "GCL-ERDOS3-E3-V02-IA-001",
+    "issue_number": 776,
+    "comment_id": 5969442261,
+    "provenance_note": "The GitHub transport actor is fyremael. Independence is established procedurally by the declared ZERO_CONTEXT / PROTECTED_PACKET_ONLY execution contract, not by a distinct GitHub account.",
+    "effect": "Closes E3-V-B02 and marks the reverse E3-B02 block construction independently verified. No parent-theorem effect."
+  },
+  "last_synthesis": {
+    "id": "E3-TRANCHE-02-SYNTHESIS",
+    "target": "E3-Q4-SERIES",
+    "promoted_result": "E3-X01",
+    "promoted_subtarget": "E3-Q4-DENSITY-LOSS",
+    "nonpromoted_results": [
+      "E3-Q01",
+      "E3-A02",
+      "E3-S03"
+    ],
+    "verification_closed": "E3-V-B02",
+    "parent_theorem_effect": "NONE"
+  },
+  "next_tranche": {
+    "id": "E3-V03-REISSUE",
+    "status": "LEASE_REQUIRED",
+    "objective": "Reissue the same independent verification under a fresh lease epoch without consuming a second mathematical replay.",
+    "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
+    "replay_budget_ordinal": 1
+  }
+}

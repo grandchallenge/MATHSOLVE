@@ -1,0 +1,399 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_RESEARCH_CAMPAIGN",
+  "campaign_id": "GCL-ERDOS3",
+  "title": "Erdős Problem 3",
+  "status": "ACTIVE__E3_V03_LEASE_EXPIRED",
+  "origin": {
+    "campaign": "OPENMATH-2026",
+    "hill": "OM26-H7",
+    "source_repository": "grandchallenge/MATHSOLVE",
+    "source_commit": "fc9ff6e7c346910295e6ee5594fb901b0d77b87f",
+    "rule": "OPENMATH artifacts are immutable provenance; GCL-ERDOS3 does not rewrite their historical meaning."
+  },
+  "objective": "Advance the formal and mathematical frontier of Erdős Problem 3 while validating a GCL execution model that separates evidence transport from mathematical frontier selection.",
+  "independent_agent_interface": {
+    "retained": true,
+    "dispatch_grammar": "GCL-CONTRIBUTION-DISPATCH/1",
+    "result_grammar": "GCL-CONTRIBUTION-RESULT/1",
+    "durable_return": "authenticated GitHub intake",
+    "scheduling_change": "Successors are selected by FRONTIER_ADVANCEMENT_GATE, never by RESULT/1 order or Next residual alone."
+  },
+  "frontier_graph": "work_packages/GCL_ERDOS3/FRONTIER.json",
+  "frontier_gate": ".gcl/campaigns/GCL-ERDOS3/FRONTIER_GATE.json",
+  "initial_work_packages": [
+    "E3-F01",
+    "E3-B01",
+    "E3-A01",
+    "E3-S01"
+  ],
+  "work_package_results": {
+    "E3-F01": "FORMALIZED",
+    "E3-B01": "PROVED_NATIVE_PENDING_INDEPENDENT_VERIFY",
+    "E3-A01": "BOUNDARY_SHARPENED",
+    "E3-S01": "SOURCE_INTERFACE_FOUND",
+    "E3-V01": "VERIFIED__CLOSED",
+    "E3-B02": "PROVED_NATIVE_SOURCE_CONFIRMED",
+    "E3-Q01": "EXACT_BLOCKER__CLOSED",
+    "E3-X01": "SMALLEST_MISSING_LEMMA__PROMOTED",
+    "E3-A02": "COUNTEREXAMPLE__SUPPORTING_ONLY",
+    "E3-S03": "SOURCE_BLOCKED__CLOSED",
+    "E3-V02": "VERIFIED__CLOSED",
+    "E3-R01": "ACCEPTED__REPRESENTATION_REDUCTION",
+    "E3-D01": "ACCEPTED__FINITE_CARRY_REPRESENTATION",
+    "E3-G01": "ACCEPTED__THEOREM_GRADE_BRIDGE_PENDING_VERIFY",
+    "E3-C01": "ACCEPTED__FINITE_PATTERN_SUPPORTING_ONLY",
+    "E3-A03": "ACCEPTED__NO_COUNTEREXAMPLE_SUPPORTING_BOUNDARY",
+    "E3-S04": "ACCEPTED__SOURCE_INTERFACE_REQUIRES_BRIDGE",
+    "E3-L01": "NATIVE_FINITE_LIFTED_CERTIFICATE",
+    "E3-Q02": "PROVED_NATIVE_LABELLED_FORCING",
+    "E3-T01": "NATIVE_SMALLER_MISSING_LEMMA__PHASE_ALIGNMENT_REQUIRED",
+    "E3-A04": "NATIVE_ADVERSARIAL_CLASS_RULED_OUT",
+    "E3-Q03": "PROVED_NATIVE_ALL_FIBRE_U3_FORCING",
+    "E3-Q04": "PROVED_NATIVE_JOINT_WITNESS_DICHOTOMY",
+    "E3-Q05": "PROVED_NATIVE_PARSEVAL_AMPLIFICATION_REQUIREMENT",
+    "E3-Q06": "PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION",
+    "E3-Q07": "PROVED_NATIVE_FINITE_PHASE_ALGEBRA_INSUFFICIENT",
+    "E3-Q08": "PROVED_NATIVE_BOOLEAN_REALIZABILITY_INSUFFICIENT",
+    "E3-Q09": "PROVED_NATIVE_DEWINDOWED_U3_FORCING",
+    "E3-Q10": "PROVED_NATIVE_DEWINDOWED_ORDER_DICHOTOMY",
+    "E3-Q11": "PROVED_NATIVE_LOW_ORDER_DENSITY_INCREMENT",
+    "E3-Q12": "PROVED_NATIVE_DEWINDOWED_DERIVATIVE_PRODUCT_OVERLAP",
+    "E3-Q13": "PROVED_NATIVE_DYADIC_SHORT_STEP_LOCALIZATION",
+    "E3-Q14": "PROVED_NATIVE_RECURSION_EXPONENT_NO_GO",
+    "E3-Q15": "PROVED_NATIVE_REPEATED_TRIPLET_DERIVATIVE_FORCING",
+    "E3-Q16": "PROVED_NATIVE_COMMON_DIFFERENCE_ALIGNMENT",
+    "E3-Q17": "PROVED_NATIVE_DERIVATIVE_SPECTRUM_TRANSPORT_IDENTITY"
+  },
+  "current_frontier": [
+    "E3-Q4-DENSITY-LOSS"
+  ],
+  "next_action": "Reissue E3-V03 under a fresh dispatch/agent identity and lease epoch, retaining replay_budget_ordinal=1. Accept no evidence from the expired issue.",
+  "verification_dispatches": {
+    "E3-V01": {
+      "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
+      "issue_number": 762,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/762",
+      "state": "CLOSED_VERIFIED",
+      "reason": "One independent verification of the first new theorem-grade post-reset bridge, within the default replay budget.",
+      "result_comment_id": 5969123988,
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-V01_RESULT.md",
+      "adjudication_path": "work_packages/GCL_ERDOS3/results/E3-V01_ADJUDICATION.json"
+    },
+    "E3-V02": {
+      "dispatch_id": "GCL-ERDOS3-E3-V02-IA-001",
+      "issue_number": 776,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/776",
+      "state": "CLOSED_VERIFIED",
+      "result_comment_id": 5969442261,
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-V02_RESULT.md",
+      "effect": "Closed E3-V-B02; no parent theorem effect."
+    },
+    "E3-V03": {
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-008",
+      "issue_number": 921,
+      "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/921",
+      "state": "LEASE_EXPIRED__NO_RETURN",
+      "reason": "Fresh marker-clock lease epoch 8 for the same single independent replay after silent epochs 1-7.",
+      "lease_epoch": 8,
+      "lease_attempt_ordinal": 8,
+      "lease_clock_source": "GITHUB_ACTIVATION_COMMENT",
+      "lease_duration_minutes": 25,
+      "agent_max_execution_minutes": 24,
+      "replay_budget_ordinal": 1,
+      "replay_budget_consumed": false,
+      "predecessor_dispatch_id": "GCL-ERDOS3-E3-V03-IA-007",
+      "lease_activation_comment_id": 6011181869,
+      "lease_started_at_observed": "2026-10-06T07:04:04Z",
+      "lease_expires_at_observed": "2026-10-06T07:29:04Z",
+      "successor_dispatch_id": null
+    }
+  },
+  "active_dispatches": {},
+  "completed_dispatches": {
+    "E3-Q01": {
+      "issue_number": 772,
+      "state": "CLOSED_COMPLETED"
+    },
+    "E3-X01": {
+      "issue_number": 773,
+      "state": "CLOSED_COMPLETED"
+    },
+    "E3-A02": {
+      "issue_number": 774,
+      "state": "CLOSED_COMPLETED"
+    },
+    "E3-S03": {
+      "issue_number": 775,
+      "state": "CLOSED_COMPLETED"
+    },
+    "E3-V02": {
+      "issue_number": 776,
+      "state": "CLOSED_COMPLETED"
+    },
+    "E3-R01": {
+      "issue_number": 788,
+      "result_comment_id": 5974689856,
+      "declared_disposition": "PROVED_REPRESENTATION_REDUCTION",
+      "state": "CLOSED_COMPLETED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-R01_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
+    },
+    "E3-D01": {
+      "issue_number": 789,
+      "result_comment_id": 5974710520,
+      "declared_disposition": "FINITE_CARRY_REPRESENTATION_PROVED",
+      "state": "CLOSED_COMPLETED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-D01_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
+    },
+    "E3-G01": {
+      "issue_number": 791,
+      "result_comment_id": 5974734856,
+      "declared_disposition": "SMALLER_GLUE_LEMMA",
+      "state": "CLOSED_COMPLETED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
+    },
+    "E3-C01": {
+      "issue_number": 792,
+      "result_comment_id": 5974760875,
+      "declared_disposition": "FINITE_PATTERN_DISCOVERED",
+      "state": "CLOSED_COMPLETED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
+    },
+    "E3-A03": {
+      "issue_number": 793,
+      "result_comment_id": 5974733560,
+      "declared_disposition": "NO_COUNTEREXAMPLE_IN_DECLARED_FAMILY",
+      "state": "CLOSED_COMPLETED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-A03_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
+    },
+    "E3-S04": {
+      "issue_number": 794,
+      "result_comment_id": 5974746941,
+      "declared_disposition": "SOURCE_INTERFACE_REQUIRES_BRIDGE",
+      "state": "CLOSED_COMPLETED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
+      "adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json"
+    },
+    "E3-V03-LEASE-001": {
+      "issue_number": 798,
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-001",
+      "state": "LEASE_EXPIRED__NO_RETURN",
+      "lease_epoch": 1,
+      "lease_attempt_ordinal": 1,
+      "valid_result_count": 0,
+      "replay_budget_consumed": false
+    },
+    "E3-V03-LEASE-002": {
+      "issue_number": 814,
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-002",
+      "state": "LEASE_EXPIRED__NO_RETURN",
+      "lease_epoch": 2,
+      "lease_attempt_ordinal": 2,
+      "valid_result_count": 0,
+      "replay_budget_consumed": false,
+      "clock_model": "LEGACY_STATIC_TIMESTAMP_SUPERSEDED"
+    },
+    "E3-V03-LEASE-003": {
+      "issue_number": 820,
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-003",
+      "state": "LEASE_EXPIRED__NO_RETURN",
+      "lease_epoch": 3,
+      "lease_attempt_ordinal": 3,
+      "valid_result_count": 0,
+      "replay_budget_consumed": false,
+      "lease_activation_comment_id": 5979703216,
+      "lease_started_at_observed": "2026-10-04T12:00:55Z",
+      "lease_expires_at_observed": "2026-10-04T12:25:55Z",
+      "clock_model": "GITHUB_ACTIVATION_COMMENT"
+    },
+    "E3-V03-LEASE-004": {
+      "issue_number": 866,
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-004",
+      "state": "LEASE_EXPIRED__NO_RETURN",
+      "lease_epoch": 4,
+      "lease_attempt_ordinal": 4,
+      "valid_result_count": 0,
+      "replay_budget_consumed": false,
+      "lease_activation_comment_id": 5981972291,
+      "lease_started_at_observed": "2026-10-04T16:13:54Z",
+      "lease_expires_at_observed": "2026-10-04T16:38:54Z",
+      "clock_model": "GITHUB_ACTIVATION_COMMENT"
+    },
+    "E3-V03-LEASE-005": {
+      "issue_number": 887,
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-005",
+      "state": "LEASE_EXPIRED__NO_RETURN",
+      "lease_epoch": 5,
+      "lease_attempt_ordinal": 5,
+      "lease_activation_comment_id": 5986218234,
+      "lease_started_at_observed": "2026-10-05T00:47:18Z",
+      "lease_expires_at_observed": "2026-10-05T01:12:18Z",
+      "valid_result_count": 0,
+      "replay_budget_consumed": false
+    },
+    "E3-V03-LEASE-006": {
+      "issue_number": 898,
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-006",
+      "state": "LEASE_EXPIRED__NO_RETURN",
+      "lease_epoch": 6,
+      "lease_attempt_ordinal": 6,
+      "lease_activation_comment_id": 5992205562,
+      "lease_started_at_observed": "2026-10-05T09:58:29Z",
+      "lease_expires_at_observed": "2026-10-05T10:23:29Z",
+      "valid_result_count": 0,
+      "replay_budget_consumed": false,
+      "clock_model": "GITHUB_ACTIVATION_COMMENT"
+    },
+    "E3-V03-LEASE-007": {
+      "issue_number": 909,
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-007",
+      "state": "LEASE_EXPIRED__NO_RETURN",
+      "lease_epoch": 7,
+      "lease_attempt_ordinal": 7,
+      "lease_activation_comment_id": 5993624837,
+      "lease_started_at_observed": "2026-10-05T11:35:24Z",
+      "lease_expires_at_observed": "2026-10-05T12:00:24Z",
+      "valid_result_count": 0,
+      "replay_budget_consumed": false
+    },
+    "E3-V03-LEASE-008": {
+      "issue_number": 921,
+      "dispatch_id": "GCL-ERDOS3-E3-V03-IA-008",
+      "state": "LEASE_EXPIRED__NO_RETURN",
+      "lease_epoch": 8,
+      "lease_attempt_ordinal": 8,
+      "lease_activation_comment_id": 6011181869,
+      "lease_started_at_observed": "2026-10-06T07:04:04Z",
+      "lease_expires_at_observed": "2026-10-06T07:29:04Z",
+      "valid_result_count": 0,
+      "replay_budget_consumed": false
+    }
+  },
+  "prepared_tranche": "E3-TRANCHE-04",
+  "prepared_work_packages": [
+    "E3-L01",
+    "E3-Q02",
+    "E3-T01",
+    "E3-A04"
+  ],
+  "dispatch_state": "VERIFY_LEASE_EXPIRED__REISSUE_REQUIRED",
+  "dispatch_cleanup": {
+    "duplicate_issue_number": 790,
+    "canonical_assignment": "E3-D01",
+    "canonical_issue_number": 789,
+    "disposition": "CLOSED_DUPLICATE",
+    "note": "A connector batch partially created E3-D01 before abort; issue 790 is not a valid return surface."
+  },
+  "capture_manifest": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json",
+  "synthesis_allowed": false,
+  "tranche_03_synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_SYNTHESIS.md",
+  "tranche_03_adjudication": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_ADJUDICATION.json",
+  "selected_successor_candidate": "E3-Q4-GLUING-RADIUS",
+  "verification_work_package": "E3-V03",
+  "lease_policy": "work_packages/GCL_ERDOS3/LEASE_POLICY.json",
+  "lease_policy_id": "GCL-IA-LEASE-25M-24M-001",
+  "tranche_04_manifest": "work_packages/GCL_ERDOS3/E3-TRANCHE-04.json",
+  "tranche_04_synthesis": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-04_SYNTHESIS.md",
+  "native_residual": "E3-B-JOINT-WITNESS-INCOMPATIBILITY",
+  "tranche_04_extension": {
+    "result": "E3-Q03",
+    "disposition": "PROVED_NATIVE_ALL_FIBRE_U3_FORCING",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q03_NATIVE_RESULT.md",
+    "effect": "All four physical fibres are forced to have U3 norm at least beta^4/(5*16^4); smallest residual becomes joint witness incompatibility."
+  },
+  "tranche_04_extension_2": {
+    "result": "E3-Q04",
+    "disposition": "PROVED_NATIVE_JOINT_WITNESS_DICHOTOMY",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q04_NATIVE_RESULT.md",
+    "effect": "Each adjacent 0011 pair has either an aligned nonzero Fourier witness or a large joint fourfold correlation; the native residual becomes finite correlation-witness compatibility/amplification."
+  },
+  "tranche_04_extension_3": {
+    "result": "E3-Q05",
+    "disposition": "PROVED_NATIVE_PARSEVAL_AMPLIFICATION_REQUIREMENT",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q05_NATIVE_RESULT.md",
+    "effect": "At Q04's beta^3 aligned-witness scale, Parseval permits O(beta^-6) large modes per fibre; fixed one-scale family counting is insufficient, so the linear branch requires genuine witness amplification or phase incompatibility."
+  },
+  "tranche_04_extension_q06": {
+    "result": "E3-Q06",
+    "disposition": "PROVED_NATIVE_DERIVATIVE_OVERLAP_AMPLIFICATION",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q06_NATIVE_RESULT.md",
+    "effect": "The Q04 fourfold branch yields a positive-density family of joint derivative spectral overlaps; the fourfold residual becomes derivative-frequency coherence versus spectral diffuseness."
+  },
+  "tranche_04_extension_q07": {
+    "result": "E3-Q07",
+    "disposition": "PROVED_NATIVE_FINITE_PHASE_ALGEBRA_INSUFFICIENT",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q07_NATIVE_RESULT.md",
+    "replay_tool": "work_packages/GCL_ERDOS3/tools/e3_q07_phase_matrix.py",
+    "effect": "The 10-family one-scale linear witness phase system is exactly surjective: a displayed 10x10 minor has determinant -3. Finite support-plus-phase consistency is insufficient; the linear residual becomes actual Fourier realizability or genuine witness amplification."
+  },
+  "tranche_04_extension_q08": {
+    "result": "E3-Q08",
+    "disposition": "PROVED_NATIVE_BOOLEAN_REALIZABILITY_INSUFFICIENT",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q08_NATIVE_RESULT.md",
+    "effect": "Arbitrary finite r,2r,3r phase data at magnitudes well above the Q04 threshold are asymptotically realizable by genuine Boolean subsets of the cyclic ambient group. Booleanity/Parseval/finite phase data therefore do not close the linear lane; surviving rigidity is interval support, local 4-AP-freeness/near-extremality, full carry compatibility, or genuine witness amplification."
+  },
+  "tranche_04_extension_q09": {
+    "result": "E3-Q09",
+    "disposition": "PROVED_NATIVE_DEWINDOWED_U3_FORCING",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q09_NATIVE_RESULT.md",
+    "effect": "Subtracting the deterministic interval window still forces beta^4-scale U3 structure in at least two physical fibres across the L01 core. Q03/Q06 remain exact globally-centered statements, but the quadratic lane is reduced to de-windowed joint witness alignment before any deletion claim."
+  },
+  "tranche_04_extension_q10": {
+    "result": "E3-Q10",
+    "disposition": "PROVED_NATIVE_DEWINDOWED_ORDER_DICHOTOMY",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q10_NATIVE_RESULT.md",
+    "effect": "Each adjacent 0011 family yields either an explicit singleton/pair carry-kernel correlation or intrinsic de-windowed U3 structure in both physical fibres; if no low-order witness appears across the adjacent chain, all four fibres are intrinsically structured."
+  },
+  "tranche_04_extension_q11": {
+    "result": "E3-Q11",
+    "disposition": "PROVED_NATIVE_LOW_ORDER_DENSITY_INCREMENT",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q11_NATIVE_RESULT.md",
+    "effect": "Every Q10 singleton/pair carry-kernel witness yields a positive density increment of order beta^4 on an actual arithmetic subprogression of common difference at most 3 inside one physical fibre."
+  },
+  "tranche_04_extension_q12": {
+    "result": "E3-Q12",
+    "disposition": "PROVED_NATIVE_DEWINDOWED_DERIVATIVE_PRODUCT_OVERLAP",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q12_NATIVE_RESULT.md",
+    "effect": "Every Q10 high-order adjacent-pair term yields a positive-density set of same-shift derivative-product spectral overlaps. Fully de-windowed fourfold terms give derivative-vs-derivative overlap; triple terms expose exactly one remaining deterministic window factor."
+  },
+  "tranche_04_extension_q13": {
+    "result": "E3-Q13",
+    "disposition": "PROVED_NATIVE_DYADIC_SHORT_STEP_LOCALIZATION",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q13_NATIVE_RESULT.md",
+    "blob_sha1": "a993c4c0bf4a01974be5c7d906e04021e9e2bc66",
+    "effect": "Q11's arbitrary short-step increment localizes to a dyadic subprogression of length > (5/4)delta_beta*N, preserving a 5*delta_beta density gain; the scale drop is O(log(1/beta)). The exponent remains 4."
+  },
+  "tranche_04_extension_q14": {
+    "result": "E3-Q14",
+    "disposition": "PROVED_NATIVE_RECURSION_EXPONENT_NO_GO",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q14_NATIVE_RESULT.md",
+    "blob_sha1": "6949c137ea9a376aa24d32dbee41641b852bd417",
+    "effect": "A fixed-step loss law of order b^p forces summability only for p<2. The beta^4 Q11/Q13 recursion is therefore logically insufficient on its own; the low-order lane must upgrade the exponent below 2 or use additional structure."
+  },
+  "tranche_04_extension_q15": {
+    "result": "E3-Q15",
+    "disposition": "PROVED_NATIVE_REPEATED_TRIPLET_DERIVATIVE_FORCING",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q15_NATIVE_RESULT.md",
+    "blob_sha1": "405da12048ce8e61e04345e80cc8cbcf3aafdc24",
+    "effect": "In high-order repeated-triplet core families F2,F3,F6, the triply repeated physical fibre is forced to be the complete derivative side. F2 and F3 both constrain B1 in distinct carry geometries, reducing the high-order residual to interior-derivative compatibility."
+  },
+  "tranche_04_extension_q16": {
+    "result": "E3-Q16",
+    "disposition": "PROVED_NATIVE_COMMON_DIFFERENCE_ALIGNMENT",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q16_NATIVE_RESULT.md",
+    "blob_sha1": "373ad97422b6beb2cebeea9e6912d555ce4bfb93",
+    "effect": "Q15's two B1 derivative-shift systems need not intersect, but mixed additive energy forces at least rho_beta^2 P common shift-parameter differences; eventually one can freeze a single nonzero common increment with Omega(rho_beta^3 P) representations in each carry geometry. The high-order residual reduces to derivative-frequency transport across that matched difference."
+  },
+  "tranche_04_extension_q17": {
+    "result": "E3-Q17",
+    "disposition": "PROVED_NATIVE_DERIVATIVE_SPECTRUM_TRANSPORT_IDENTITY",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q17_NATIVE_RESULT.md",
+    "blob_sha1": "571a3c1ead499fbc2ec8674497e0a9757e8bd7a1",
+    "effect": "For b=h_B1, the derivative spectrum A_e(xi)=hat(Delta_e b)(xi) has exact shift-variable Fourier coefficients hat b(xi-eta)hat b(eta), so matched-shift frequency transport is governed by a fixed nonnegative base-pair energy measure. The high-order residual reduces to concentrated base-frequency pairs versus pair-spectrum diffuseness."
+  }
+}

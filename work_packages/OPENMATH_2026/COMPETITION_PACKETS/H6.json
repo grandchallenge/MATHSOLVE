@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "packet_id": "OM26-H6-COMPETITION-PACKET-001",
+  "account": "jimsteeg",
+  "source_repository": "grandchallenge/MATHSOLVE",
+  "source_commit": "50b88f51032a14aeae5c3969e14dd8c5a8728bac",
+  "hill": "H6",
+  "hill_id": "alejandrozu/matrix-multiplication-tensor-3x3",
+  "artifact": {
+    "path": "work_packages/OPENMATH_2026/CONTEST_CANDIDATES/H6/solution.json",
+    "git_blob_sha1": "ab8f4c931b15f823953655f5cd62bac439228d79",
+    "sha256": "164aec58e19c2bdd45cddc54c52ab66f5f91f5d0562e875709b1c6eb820ac79f"
+  },
+  "hill_version": {
+    "tree_hash": "526770e74b465dbd444049d169e2f373eeb0339d",
+    "commit": "63260ee2b02247200888cb63faf3ada44e6cffeb"
+  },
+  "native_climb": {
+    "project_id": "151bb7d4-656c-46fe-a82f-373a281d0d47",
+    "slug": "gcl-2026-h6-fixed-164aec58e19c",
+    "job_id": "7b8b10f5-6aab-46a3-9b27-0638cd147e56",
+    "job_status": "queued"
+  },
+  "claim": {
+    "statement": "This payload is the known Laderman 23-term decomposition under the locked coordinate conventions: rank 23, total support 153, with all 729 exact Brent identities satisfied in independent replay.",
+    "status": "PRIOR_WORK_EXACT_REPLAY",
+    "rank_22_claim": false,
+    "novelty_claim": false
+  },
+  "provenance": {
+    "attribution": "Laderman prior work. GCL independently replayed exact tensor semantics and the known rank-23 seed.",
+    "gcl_evidence": [
+      "contributions/OPENMATH-2026/OM26-H6/WP01/raw/OM26-H6-WP01-IA-001/github-comment-5886999388.md"
+    ]
+  },
+  "competition_fields": {
+    "submission_id": null,
+    "competition_workspace": null,
+    "immutable_final_commit": null,
+    "official_evaluator_report": null,
+    "leaderboard_state": null,
+    "organizer_acceptance": null
+  },
+  "claim_boundary": "Prior-work rank-23 certificate only. No rank-22 claim, rank lower bound, novelty/priority claim, certification, or official competition acceptance.",
+  "handbook_audit": {
+    "audit_id": "OPENMATH-2026-HANDBOOK-COMPLIANCE-AUDIT-001",
+    "status": "NOT_SUBMISSION_READY",
+    "classification": "PRIOR_MATHEMATICS__M2_REFRAME_POSSIBLE",
+    "blocking": [
+      "clean surviving core artifact",
+      "M2 source theorem/formalization target",
+      "prior formal-library search",
+      "genuinely new formal contribution",
+      "Section 8 packet",
+      "official submission route/report"
+    ]
+  }
+}

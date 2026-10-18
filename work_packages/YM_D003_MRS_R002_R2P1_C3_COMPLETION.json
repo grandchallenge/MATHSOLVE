@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "node": "YM-D003-MRS-R002-R2P1-C3",
+  "protected_base": "1c1c5ae5eb8785888fc0272ad0af5bfe3b4c86a7",
+  "disposition": "CLOSED__FULL_TWO_POINT_LOCALIZATION_AND_WEIGHTED_TAYLOR_GAIN",
+  "subnodes": {
+    "C3_A": "CLOSED__FULL_QUADRATIC_LOCAL_PROJECTOR_SOURCE_CONCORDANT",
+    "C3_B": "CLOSED__UNIFORM_THIRD_MOMENT_AVAILABLE",
+    "C3_C": "CLOSED__ANISOTROPIC_TAYLOR_REMAINDER_GAIN"
+  },
+  "correction": "A2_ONLY_LOCALIZATION_SUPERSEDED_BY_FULL_QUADRATIC_LOCAL_PROJECTOR",
+  "next_node": "YM-D003-MRS-R002-R2P1-C4",
+  "claim_boundary": "Solve proof-progress receipt only; no certification or downstream Yang-Mills claim."
+}

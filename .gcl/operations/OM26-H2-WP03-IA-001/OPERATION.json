@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-H2-WP03-IA-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "obligation": "WP03",
+  "assignment_id": "OM26-H2-WP03",
+  "dispatch_id": "OM26-H2-WP03-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-009",
+  "objective": "Independently close WP02 exact-search replay defects without redoing already accepted finite-witness replay.",
+  "permissions": {
+    "mathematical_research": true,
+    "finite_exact_computation": true,
+    "repository_mutation": false,
+    "competition_submission": false,
+    "certification": false
+  },
+  "acceptable_dispositions": [
+    "EXACT_SEARCH_REPLAY_VALIDATED",
+    "WITNESSES_CONFIRMED_SEARCH_NOT_VALIDATED",
+    "EXACT_PRUNING_COUNTEREXAMPLE",
+    "EXACT_BLOCKER"
+  ],
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "github_issue_number": 537,
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/537",
+  "canonical_mutation_authorized": false
+}

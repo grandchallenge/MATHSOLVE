@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_HILL_WORK_PACKAGE_STATUS",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "assignment_id": "OM26-H2-WP01",
+  "state": "SCORER_CONCORDANCE_ACCEPTED__EXACT_SEARCH_DESIGN_REQUIRED",
+  "accepted": {
+    "adjudication": "contributions/OPENMATH-2026/OM26-H2/WP01/adjudications/OM26-H2-WP01-ADJ-001.json",
+    "claims": [
+      "OM26-H2-SCORER-001",
+      "OM26-H2-BUDGET-001",
+      "OM26-H2-MINSTEP-001"
+    ],
+    "baseline": {
+      "steps": 6,
+      "ones": 6,
+      "tape_span": 7
+    },
+    "private_budgets": {
+      "validation": 250000,
+      "test": 1000000
+    }
+  },
+  "narrowed": {
+    "exact_submission_surface": "REGULAR_FILE_CONDITION_REQUIRED",
+    "tn_normalization": "FIRST_WRITE_1_NOT_WLOG",
+    "pruning": "HEURISTIC_UNTIL_PROVED_EXACT"
+  },
+  "next_work_package": {
+    "proposed_id": "OM26-H2-WP02",
+    "objective": "Design and implement a complete exact search over six-state two-symbol blank-tape machines using only proved symmetry reductions and exact pruning; replay any promoted candidate through both the accepted independent scorer and protected evaluator.",
+    "completion_gate": "No candidate may be promoted unless every pruning rule has a replayable soundness argument and the candidate passes exact dual-scorer replay."
+  },
+  "certification_effect": false,
+  "competition_effect": false
+}

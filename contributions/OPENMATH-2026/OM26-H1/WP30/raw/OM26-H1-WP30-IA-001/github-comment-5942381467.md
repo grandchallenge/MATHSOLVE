@@ -1,0 +1,237 @@
+GCL-CONTRIBUTION-RESULT/1
+dispatch_id: OM26-H1-WP30-IA-001
+agent_ref: INDEPENDENT-AGENT-130
+assignment: OM26-H1-WP30
+disposition: PROVED_REDUCTION
+context_class: ZERO_CONTEXT
+external_sources: ADDITIONAL_PUBLIC_SOURCES
+timebox_observed: YES
+
+## Strongest exact statement
+Conditional on the six-core no-long-run fan premise and clean-line charging inequality used by the pinned necessary-state replay, and on the elementary-triangle lemma with its stated hypotheses, the complete `333335` stratum with `D2=7` has no realizable candidate. The exact replay recovers precisely 60 labeled necessary-state graphs. All 60 are planar and are isomorphic to a subdivision of one edge of K4 together with one isolated core; hence each has exactly two D2 3-cycles. Every vertex of either 3-cycle is a triple core of D2-degree 3, and every globally feasible local state at such a core is `(D1,B)=(3,3)`. The only exact cyclic ray words are alternating D2/D1 words, so no two D2 rays are adjacent and every D2 ray has a D1 antipode. The elementary-triangle lemma requires the two incident D2 rays of a D2 3-cycle to be adjacent in the interior angular interval, contradiction. Therefore all 60 candidates are rejected and survivors are zero.
+
+Event window: start `2026-10-01T22:55:23Z`; mathematical checkpoint/end `2026-10-01T23:00:44Z`; same-system audit `2026-10-01T23:01:21Z`; result creation `2026-10-01T23:01:53Z`. Local certificate source file creation time: `2026-10-01T22:59:58Z`.
+
+## Derivation
+For profile `333335`, the pinned replay definitions give multiplicities `(3,3,3,3,3,5)`, `I=20`, `S=30`, `D2=7`, and `U=3-S+D1+D2=D1-20`. The no-long-run local word filter and clean-line capacity condition, with `h<=I-D2=13`, are applied exactly as necessary conditions. Deterministic enumeration of all 2^15 labeled simple graphs and all local summary states leaves exactly 60 masks, matching prior work.
+
+A structural certificate is then obtained for every one of the 60 graphs: the degree pattern is one isolated vertex, one degree-2 vertex, and four degree-3 vertices; suppressing the degree-2 vertex recovers K4. This is a constructive full-planarity certificate, since K4 is planar and edge subdivision plus an isolated vertex preserves planarity. The graph contains exactly two 3-cycles, corresponding to the two K4 triangles not using the subdivided edge.
+
+The multiplicity-5 core is always either the isolated vertex or the degree-2 subdivider. Therefore all four degree-3 vertices are multiplicity-3 cores. For each such core, every globally feasible summary state is `(D1,B)=(3,3)`. Exact cyclic enumeration gives only two labeled words: sector mask 63 with `(D2,D1)=(21,42)` or `(42,21)`, i.e. `D2,D1,D2,D1,D2,D1` up to one-step rotation. Thus a D2 ray's opposite ray is D1, and no incident D2 rays are adjacent. At any corner of either elementary D2 3-cycle, the two cycle edges are elementary arrangement segments. The elementary-triangle lemma therefore requires their D2 rays to be adjacent inside the triangle angle. The exact local words forbid this at every corner, so the graph cannot arise from the stated arrangement geometry.
+
+Prior-work comparison: the pinned replay retained 60 `333335, D2=7` necessary-state graphs without applying this triangle/ray-order obstruction. The pinned saturated-prism result used the same elementary-triangle lemma to eliminate `333444`; this contribution applies the lemma to the different `333335, D2=7` graph class after independently reconstructing its 60 masks and exact local words. It does not alter `333333`, `333334`, `333344`, `333335` at D2=8,9,10, or any q>=7 case.
+
+Complete replay source:
+~~~python
+#!/usr/bin/env python3
+import itertools, hashlib, json
+from functools import lru_cache
+
+P=(3,3,3,3,3,5)
+EDGES=tuple(itertools.combinations(range(6),2))
+
+def rot(m,n):
+    return ((m<<1)&((1<<n)-1)) | (m>>(n-1))
+
+@lru_cache(None)
+def local_words(r,d):
+    n=2*r
+    out=[]
+    for sectors in range(1<<n):
+        shared=sectors & rot(sectors,n)
+        pos=[i for i in range(n) if (shared>>i)&1]
+        for chosen in itertools.combinations(pos,d):
+            d2=sum(1<<i for i in chosen)
+            d1=shared ^ d2
+            run=d1
+            shifted=d1
+            for _ in range(r-2):
+                shifted=rot(shifted,n)
+                run &= shifted
+            if run:
+                continue
+            adjacent=rot(d2,n) | (d2>>1) | ((d2&1)<<(n-1))
+            blocked=(d1&adjacent).bit_count()
+            out.append((sectors,d2,d1,d1.bit_count(),blocked))
+    return tuple(sorted(set(out)))
+
+@lru_cache(None)
+def summaries(r,d):
+    return tuple(sorted(set((w[3],w[4]) for w in local_words(r,d))))
+
+def neighbors(mask):
+    N=[set() for _ in range(6)]
+    for i,(a,b) in enumerate(EDGES):
+        if (mask>>i)&1:
+            N[a].add(b); N[b].add(a)
+    return N
+
+def feasible_global(mask):
+    N=neighbors(mask)
+    deg=tuple(len(x) for x in N)
+    if mask.bit_count()!=7:
+        return []
+    # Exact replay equations for profile 333335:
+    # S=sum r(r-2)=30, I=sum r=20, n=18.
+    opts=[summaries(r,d) for r,d in zip(P,deg)]
+    good=[]
+    for combo in itertools.product(*opts):
+        D1=sum(x[0] for x in combo)
+        B=sum(x[1] for x in combo)
+        U=3-30+D1+7
+        # h<=I-D2=13 gives n-h>=5; necessary clean-line capacity:
+        if U>=0 and 5 <= 2*U + D1 - B:
+            good.append((D1,B,U,combo))
+    return good
+
+def triangles(N):
+    return [t for t in itertools.combinations(range(6),3)
+            if all(b in N[a] for a,b in itertools.combinations(t,2))]
+
+def subdivided_K4_certificate(N):
+    deg=tuple(len(x) for x in N)
+    iso=[v for v,d in enumerate(deg) if d==0]
+    sub=[v for v,d in enumerate(deg) if d==2]
+    cub=[v for v,d in enumerate(deg) if d==3]
+    if len(iso)!=1 or len(sub)!=1 or len(cub)!=4:
+        return None
+    s=sub[0]
+    sn=sorted(N[s])
+    core=set(cub)
+    # Suppress the degree-2 vertex: its two neighbors must be the unique missing edge of K4.
+    if not set(sn)<=core:
+        return None
+    for a,b in itertools.combinations(cub,2):
+        present=b in N[a]
+        should=not ({a,b}==set(sn))
+        if present != should:
+            return None
+    return (iso[0],s,tuple(sn))
+
+def main():
+    candidates=[]
+    rejected=[]
+    for mask in range(1<<len(EDGES)):
+        good=feasible_global(mask)
+        if not good:
+            continue
+        N=neighbors(mask)
+        deg=tuple(len(x) for x in N)
+        cert=subdivided_K4_certificate(N)
+        if cert is None:
+            raise AssertionError(("non-planar-or-unclassified-candidate",mask,deg))
+        ts=triangles(N)
+        if len(ts)!=2:
+            raise AssertionError(("triangle-count",mask,ts))
+        # Every triangle vertex must be a triple core of D2-degree 3.
+        for t in ts:
+            for v in t:
+                assert P[v]==3 and deg[v]==3
+                # Global feasible states force local summary (D1,B)=(3,3).
+                assert all(g[3][v]==(3,3) for g in good)
+        # Exact cyclic words for a triple core with D2-degree 3 and (D1,B)=(3,3).
+        words=[w for w in local_words(3,3) if (w[3],w[4])==(3,3)]
+        sig=sorted((w[0],w[1],w[2]) for w in words)
+        assert sig==[(63,21,42),(63,42,21)]
+        # Thus D2 occupies alternating ray positions {0,2,4} or {1,3,5}.
+        # Opposite ray i+3 is D1, and no two D2 rays are cyclically adjacent.
+        for _,d2,d1 in sig:
+            for i in range(6):
+                if (d2>>i)&1:
+                    assert (d1>>((i+3)%6))&1
+                    assert not ((d2>>((i+1)%6))&1)
+                    assert not ((d2>>((i-1)%6))&1)
+        # Choose the lexicographically first D2 3-cycle. Its elementary sides
+        # require, by the elementary-triangle lemma, adjacent incident D2 rays
+        # at each corner; the exact words above forbid that at every corner.
+        t=ts[0]
+        rejected.append({
+            "mask":mask,
+            "degree":deg,
+            "planar_certificate":{
+                "class":"K4_EDGE_SUBDIVISION_PLUS_ISOLATE",
+                "isolated":cert[0],
+                "subdivider":cert[1],
+                "subdivided_edge_endpoints":cert[2]},
+            "forbidden_D2_triangle":t,
+            "local_word_signatures":[[63,21,42],[63,42,21]]
+        })
+        candidates.append(mask)
+
+    assert len(candidates)==60
+    assert len(rejected)==60
+    print("profile=333335 D2=7")
+    print("candidate_count_before_planarity=60")
+    print("planar_subdivided_K4_plus_isolate=60")
+    print("exact_triple_words_D1eq3_Beq3=2")
+    print("word_signatures=(sectors,D2,D1): (63,21,42) (63,42,21)")
+    print("rejected_by_elementary_triangle_and_opposite_ray_constraints=60")
+    print("survivors=0")
+    print("masks="+",".join(map(str,candidates)))
+    print("certificates_sha256="+hashlib.sha256(
+        json.dumps(rejected,sort_keys=True,separators=(",",":")).encode()
+    ).hexdigest())
+
+if __name__=="__main__":
+    main()
+
+~~~
+
+Observed output:
+~~~text
+profile=333335 D2=7
+candidate_count_before_planarity=60
+planar_subdivided_K4_plus_isolate=60
+exact_triple_words_D1eq3_Beq3=2
+word_signatures=(sectors,D2,D1): (63,21,42) (63,42,21)
+rejected_by_elementary_triangle_and_opposite_ray_constraints=60
+survivors=0
+masks=750,886,1262,1466,1645,1709,1735,1739,1741,1742,1772,2677,2887,3257,3467,4334,4572,4715,4775,4779,4781,4782,4811,4842,5223,5227,5229,5230,5287,5319,5350,5677,5707,5737,5767,5797,5827,7708,8128,8819,8999,10343,12505,12685,13850,14240,15374,15584,17587,17707,18603,20693,20813,22038,22368,23054,23264,24781,26126,26336
+certificates_sha256=75167e054e26771c830af56fd84cc402a6e833c8619580ca3cef4a16b9fca609
+~~~
+
+## Assumptions beyond bootstrap
+The result is conditional on the real-geometric applicability of the six-core no-long-run fan premise and clean-line charging premise referenced by the pinned sources. I read `H1_SIX_CORE_PREMISE_PROOF.md` at MATHSOLVE source head `36b7c79bebd42fde17ea9f0f809406fb55e093f9`; its Git blob SHA-1 is `f4c63a43cad65d14a1100e3d9faeae98d50a87b1`. I also read the pinned evaluator contract through MATHFORGE commit `73f1890387eec56eb6be31f8c00f10b6a5a56383`; evaluator-contract Git blob SHA-1 is `b9f9d8b58fa613c9e788d09f987b50260066bc67`. Evaluator semantics are exact rational straight-line geometry with bounded nonzero-area triangular faces whose interiors are not crossed by another line.
+
+Authorship: the mathematical derivation and replay code were authored in this single OpenAI GPT-5.6 Sol session under `AGENT_REF: INDEPENDENT-AGENT-130`. Authenticated GitHub account `fyremael` is the transport identity for the return and is not counted as an independent mathematical reviewer. Review provenance: one same-system, separately coded local combinatorial audit was performed; no independent external replay, formal proof assistant check, MATHCERT review, or certification was performed.
+
+## Verification / falsification hooks
+Required pinned-source byte hashes were recomputed from the exact fetched UTF-8 contents and matched:
+`H1_Q6_INTERNAL_REPLAY_RECEIPT.json` SHA-256 `599d4bfbad73127dde51e30f9c5ca3f2d364f4cc5b83f241a0e73e903c3dc3ae`;
+`H1_SATURATED_PRISM_OBSTRUCTION.md` SHA-256 `a82107eac72a6eaa09053e00b47582e63932840fb6f2436a8d1633db89041370`.
+Additional source identities: `H1_Q6_INTERNAL_REPLAY.md` Git blob SHA-1 `6306dee5bd10fbe129440cb80cd1f128ff8b4828`; `HILL_LOCK.json` Git blob SHA-1 `78dd7fcf6933d333a2978adcc07d38a971abfa11`; `FORMAL_ENVIRONMENT.md` Git blob SHA-1 `1d85681137949beb91d8d039ae699ff730cd7c4b`.
+
+Primary verification command:
+~~~text
+python /mnt/data/om26_h1_wp30_certificate.py
+~~~
+Primary verification output is reproduced in full in Derivation. Script SHA-256: `77f1c13e75d95b6286e69b6820aac7db202af8246ab213c25cf6d6314d99f015`. Captured stdout SHA-256: `12c667fc9246975c26625e1076cd39de1adb1f0f063fca10e59d94f0bec6d952`. Rejection-certificate JSON digest: `75167e054e26771c830af56fd84cc402a6e833c8619580ca3cef4a16b9fca609`.
+
+Same-system logical audit command and output:
+~~~text
+python - <<'PY'
+from itertools import combinations
+valid=[]
+for S in combinations(range(6),3):
+    s=set(S)
+    if all(((i+1)%6 not in s) for i in s):
+        valid.append(tuple(sorted(s)))
+print('independent_local_audit_D1_patterns=',valid)
+print('count=',len(valid))
+for s in valid:
+    d1=set(s); d2=set(range(6))-d1
+    assert all((i+1)%6 not in d2 and (i-1)%6 not in d2 for i in d2)
+    assert all((i+3)%6 in d1 for i in d2)
+print('adjacent_D2_pairs=0; D2_antipodes_are_D1=True')
+PY
+independent_local_audit_D1_patterns= [(0, 2, 4), (1, 3, 5)]
+count= 2
+adjacent_D2_pairs=0; D2_antipodes_are_D1=True
+~~~
+This audit is same-system checking and is not independent review. A falsification route is direct: produce any one of the 60 listed masks with a globally feasible exact cyclic word at a triangle vertex in which the two triangle D2 rays are adjacent, or exhibit a failure of one of the declared fan/charging premises under the source hypotheses.
+
+## Claim boundary
+This establishes a conditional elimination of exactly the `333335, D2=7` necessary-state stratum under the declared six-core fan/charging premises and elementary-triangle lemma. It does not prove the fan/charging premises independently, does not certify the result, does not provide an official competition score, does not close `333335` for D2=8,9,10, does not close q=6, and says nothing about q>=7. No coordinate 94-search, hidden-target access, paid compute, repository mutation, competition submission, or additional-agent launch was performed.
+
+## Next residual
+Remove `333335, D2=7` from the conditional q=6 frontier after independent geometric replay/novelty review. The next `333335` residual is D2=8,9,10, while `333333`, `333334`, and `333344` remain separate. HOLD promotion until an independent non-authoring replay or formal check validates the premise dependencies and this reduction.

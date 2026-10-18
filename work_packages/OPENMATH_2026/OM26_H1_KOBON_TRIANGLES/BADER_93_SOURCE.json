@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-BADER93-SOURCE",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "route": "R-H",
+  "source_authority": {
+    "forge": {
+      "repository": "grandchallenge/MATHFORGE",
+      "protected_commit": "9e00c45fd665546b813f9234314a63eddbec854d",
+      "literature_reconnaissance": {
+        "path": "reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/LITERATURE_RECONNAISSANCE.md",
+        "git_blob_sha1": "a9cd296023e57ebe30128cf3a45c68e538340397"
+      },
+      "literature_status": {
+        "path": "reports/discovery/openmath_2026/hills/OM26-H1_KOBON_TRIANGLES/LITERATURE_STATUS.json",
+        "git_blob_sha1": "79a97067d520ea7e7321bd1ccae65919da77f1a4"
+      }
+    },
+    "lineorder": {
+      "repository": "zegalur/line-order",
+      "commit": "2631b8793eb351be2ad6b8a91b7194eeb67e25bb",
+      "gallery_source_path": "generate_gallery.py",
+      "gallery_source_blob": "551747de426042e1542fa4b8f55c1383a9afe157",
+      "solver_path": "lineorder/find_lines.py",
+      "solver_blob": "65ca030443bf2ba3c0758112962e1177c332c54c",
+      "attribution": "18-Line Solution (93 Triangles) by Johannes Bader"
+    }
+  },
+  "reconstruction": {
+    "method": "Use the published LineOrder crossing-order table and its documented angle/distance inequality straightening method; rationalize a successful straight-line realization to common scale 1000, then verify the order constraints and face count exactly.",
+    "candidate_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RH_BADER_RECONSTRUCTION_093/solution.json",
+    "coefficient_scale": 1000,
+    "optimization_output_is_trusted": false,
+    "exact_post_rationalization_checks_required": true
+  },
+  "claim_boundary": "The order table and attribution are external-source material. The rational coefficients are a GCL reconstruction of that order type, not claimed to be Johannes Bader's original coefficients. No novelty, best-known, optimality, official competition, or certification claim is created."
+}

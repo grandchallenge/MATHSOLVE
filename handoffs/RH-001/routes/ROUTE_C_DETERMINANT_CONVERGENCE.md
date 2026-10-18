@@ -1,5 +1,15 @@
 # RH-001 Forward Route C — Determinant convergence to Xi
 
+
+> **RH-R077 AUTHORITATIVE CORRECTION.** The downstream convergence architecture
+> in this historical route pack is superseded where it conflicts with
+> handoffs/RH-001/routes/ROUTE_C_PROJECTIVE_MEASURE_CLOSURE.md.
+> In particular: R068 normality is conditional on an unproved global
+> pointwise-positivity premise; R071's boundary-anchor/noncollapse and
+> normalized substrip-rate claims are withdrawn; R074's analytic Fourier-tail
+> and quadratic C1 schedule theorem are withdrawn. Preserve only the parts
+> explicitly retained by RH-R077.
+
 Status: ACTIVE_PARALLEL_ROUTE
 
 Coordination tracker:
@@ -14,25 +24,44 @@ Protected route foundation:
 RH-R035-ZETA-SPECTRAL-TRIPLES-LIMIT-001
 work_packages/RH_R035_ZETA_SPECTRAL_TRIPLES_LIMIT.md
 
-Protected provider audit:
-grandchallenge/MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790
-reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
+Protected provider audits:
+- grandchallenge/MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790
+  reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
+- grandchallenge/MATHFORGE@a900e5170c6d77a9e557b6159cf5feb40bcee222
+  reports/discovery/rh_001/rh_r056_determinant_normalization.md
 
 ## 1. Mission
 
-Prove local uniform convergence on C of a correctly normalized cofinal family of finite Zeta Spectral Triple determinants to the classical Xi function.
+Produce one admissible sequence of finite CCM normalized determinants with
+real zeros and one subsequence converging locally uniformly on
 
-The protected terminal bridge is:
+\[
+U=\{z:|\operatorname{Im}z|<1/2\}
+\]
 
-If entire functions F_j have only real zeros and
+to \(c\Xi\) for some \(c\ne0\).
 
-F_j -> Xi
+That is sufficient for the localized Hurwitz/Rouche terminal bridge. Full
+convergence on all of \(\mathbb C\), construction of a limiting self-adjoint
+operator, and full-sequence C6 convergence are not required by the terminal
+logic.
 
-locally uniformly on C, then Xi has only real zeros by Rouché/Hurwitz. Under the standard normalization, RH follows.
+The correct downstream state variable is projective. Conditional on a
+nonnegative even ground state, RH-R077 represents the R056 normalized
+determinant as
 
-Therefore this route does not need to first construct one limiting self-adjoint operator.
+\[
+F(z)=\frac12\int
+\frac{\cos(zx)}{\cosh(x/2)}\,d\nu(x),
+\]
 
-This is the smallest exact terminal target presently known in the campaign.
+where \(\nu\) is a probability measure invariant under positive scalar
+rescaling of the ground vector.
+
+The active mathematical gates are:
+P1 pointwise positivity or an alternative normality theorem;
+P2 projective candidate transfer;
+P3 genuinely admissible cofinality.
 
 ## 2. Finite source theorem already available
 
@@ -60,7 +89,6 @@ The finite construction uses prime/arithmetic data and does not fit a supplied l
 None of the following is currently protected as a theorem:
 
 - one canonical cofinal schedule (lambda_j,N_j) sufficient for the limit;
-- the exact normalization F_{lambda,N} needed for convergence to Xi;
 - locally uniform convergence of the normalized determinants;
 - a strong enough k_lambda -> xi_lambda theorem;
 - global simple-evenness for the full range of scales needed by the limiting construction;
@@ -79,6 +107,13 @@ Read:
 - work_packages/RH_R037_QW_SECTOR_GALERKIN.md
 - work_packages/RH_R050_TRIAL_REWEIGHTED_EXTENSION.md
 - work_packages/RH_R053_COMPACT_TRANSFORM_STABILITY.md
+- work_packages/RH_R056_CANONICAL_DETERMINANT_NORMALIZATION.md
+- work_packages/RH_R059_PAIRED_ZERO_NORMAL_FAMILY.md
+- work_packages/RH_R062_UNTOUCHED_LATTICE_TAIL.md
+- work_packages/RH_R065_FINITE_BLOCK_RESOLVENT_OBSTRUCTION.md
+- work_packages/RH_R068_STRIP_NORMAL_FAMILY.md
+- work_packages/RH_R071_LIMIT_IDENTIFICATION.md
+- work_packages/RH_R074_EIGENVECTOR_ERROR_TRANSFER.md
 - MATHFORGE@564f6e2b41c9b13334bc8a5b84914a85c6b70790:
   reports/discovery/rh_001/rh_r035_zeta_spectral_triples_limit.md
 - MATHFORGE@51042c94185cc9db1fa457ae40f26276747a0a4d:
@@ -89,66 +124,78 @@ Read:
 
 Also acquire and read the exact primary CCM Zeta Spectral Triples source before asserting any normalization not already protected.
 
-## 5. The proof-obligation chain
+## 5. The corrected proof-obligation chain
 
-A useful decomposition is:
+C0. Exact finite normalization. **DISCHARGED** by R056.
 
-C0. Exact finite normalization.
+C1. Select an actually admissible cofinal sequence. **OPEN.** R074's
+quadratic schedule sufficiency claim is withdrawn by R077.
 
-C1. Select and justify a cofinal parameter schedule.
+C2. Raw compact-set transform stability. **DISCHARGED** by R053, but this is
+now auxiliary rather than the preferred normalized interface.
 
-C2. Establish a compact-set transform/determinant stability estimate.
+C3. Compare the true finite projective state with the source candidate.
+**OPEN.** R074's finite Rayleigh-to-eigenvector inequality remains valid;
+its analytic truncation theorem does not.
 
-C3. Prove approximation of the true finite/full eigenvector by the source candidate strongly enough to use C2.
+C4. Obtain normality on the critical strip. **CONDITIONAL_ON_POINTWISE_POSITIVITY.**
+The implication positivity => R077/R068 strip contraction => Montel is valid,
+but the global CCM positivity premise is not protected.
 
-C4. Prove local boundedness / normal-family control of the normalized determinants.
+C5. Identify a nonzero Xi-shaped subsequential limit. **OPEN for CCM.**
+R077 proves the correct abstract gate: interior non-escape plus projective
+shape convergence on one real interval implies a subsequence converging to
+\(c\Xi\), \(c\ne0\).
 
-C5. Identify every subsequential locally uniform limit with Xi.
+C6. Full locally uniform convergence. **OPTIONAL STRENGTHENING.**
 
-C6. Conclude full local uniform convergence.
+C7. Localized Hurwitz/Rouche terminal bridge. Protected conditionally; invoke
+only after one actual admissible nonzero Xi-shaped subsequence is proved.
 
-C7. Apply the already-protected R035 Rouché/Hurwitz bridge.
+## 6. C0 — Exact finite normalization
 
-An agent does not need to solve C0-C7 in one tranche. Clean progress on one dependency is meaningful.
+Status: DISCHARGED by RH-R056-CANONICAL-DETERMINANT-NORMALIZATION-001.
 
-## 6. C0 — Freeze the exact normalization
+For every admitted finite CCM pair, with raw determinant
+\[
+G_{\lambda,N}(z)=-i\lambda^{-iz}\widehat{\xi}_{\lambda,N}(z),
+\]
+R056 fixes the campaign normalization
+\[
+F_{\lambda,N}(z)
+=
+\frac12\,
+\frac{\lambda^{iz}G_{\lambda,N}(z)}
+     {\lambda^{-1/2}G_{\lambda,N}(i/2)}.
+\]
 
-This is the first mandatory task before any convergence theorem.
+The protected MATHFORGE R056 packet proves under the CCM convention that
+\[
+\Xi(i/2)=\xi(0)=1/2\ne0.
+\]
+The finite denominator is nonzero because all admitted finite zeros are real.
+R056 proves that \(F_{\lambda,N}\) is entire, even, zero-preserving, anchored at
+\(i/2\), and unique inside the declared affine-exponential gauge class.
 
-The raw finite identity contains factors such as
-
--i lambda^(-iz) xi_hat(z).
-
-The limiting strategy uses a normalization toward Xi.
-
-Do not guess that normalization.
-
-A route agent should:
-
-1. inspect the exact source normalization;
-2. record every scalar/exponential factor;
-3. distinguish normalization depending on lambda, N, and z;
-4. prove that multiplying by the chosen nonvanishing entire factor does not alter the real-zero property;
-5. define one canonical F_{lambda,N}(z) for the campaign.
-
-If the source normalization is ambiguous or changed between versions, send that question to MATHFORGE before proceeding.
-
-A durable normalization theorem/definition is itself a valuable contribution.
+The anchor convention is Solve-native. It is not attributed to CCM and it
+supplies no convergence theorem.
 
 ## 7. C1 — Cofinal schedule
 
-The family has two parameters.
+Status: **OPEN after RH-R077 correction.**
 
-Do not write lambda,N -> infinity without specifying what that means.
+R062's \(N=\Omega((\log\lambda)^2)\) theorem applied to the now-obstructed
+R059 global trace criterion; it is not a general C1 admissibility theorem.
 
-Possible outputs:
+R074 attempted to prove that the same quadratic scale suppresses the candidate
+Fourier tail from strip analyticity. RH-R077 supplies the exact counterexample
+\(f(x)=x\): although entire, its coefficients in the periodic basis decay only
+as \(1/|j|\). The contour-shift proof omitted vertical-side terms unless
+endpoint matching is available.
 
-- prove convergence uniformly for all sufficiently large N=N(lambda);
-- identify a source-mandated relation N(lambda);
-- prove diagonal extraction is sufficient;
-- define a cofinal directed set and formulate the theorem as a net.
-
-The chosen indexing must preserve every hypothesis needed for finite self-adjointness and real zeros.
+Therefore no cofinal \(N(\lambda)\) schedule is currently protected as
+sufficient. C1 must establish both approximation control and the finite CCM
+simple-even hypotheses on the selected pairs.
 
 ## 8. C2 — Compact-set transform stability
 
@@ -176,53 +223,112 @@ For $f, g \in L^2([-a,a])$ and any compact set $K \subset \mathbb{C}$ with $H(K)
 
 ## 9. C3 — Source k_lambda approximation
 
-The protected R035 source audit identifies the source's k_lambda approximation as a named missing theorem.
+Status: **OPEN after RH-R077 correction.**
 
-The task is not merely to show
+Retain from R074:
 
-||k_lambda-xi_lambda|| -> 0.
+\[
+\|\xi_{\lambda,N}-k_{\lambda,N}\|^2
+\le
+\frac{2\Delta\mathcal R_N}{\operatorname{Gap}_N(\lambda)}
+\]
 
-One needs a rate/norm strong enough to feed C2.
+and the elementary orthogonal-projection triangle inequality.
 
-A good contribution can be:
+Do not retain R074's exponential periodic Fourier-tail theorem or its resulting
+quadratic schedule.
 
-- determine the exact required rate from C2;
-- prove that a known source estimate is insufficient;
-- derive a stronger variational estimate;
-- exploit the spectral gap to convert Rayleigh-quotient error into eigenvector error.
+The preferred C3 target is now projective. Under the positivity premise define
 
-This is a natural place where Route A/B can feed Route C: a quantitative simple-even spectral gap can turn energy approximation into vector approximation through Davis-Kahan/min-max style estimates.
+\[
+d\nu_f(x)
+=
+\frac{f(x)\cosh(x/2)}
+     {\int f(t)\cosh(t/2)dt}\,dx.
+\]
+
+RH-R077 proves the scale-free interface
+
+\[
+\sup_{|\operatorname{Im}z|\le1/2}
+|F_\nu(z)-F_\mu(z)|
+\le
+\frac12\|\nu-\mu\|_{\mathrm{TV}}.
+\]
+
+TV convergence is sufficient but may be stronger than necessary; a weaker
+kernel-controlling topology is acceptable if proved.
 
 ## 10. C4 — Normal-family route
 
-Another useful approach is to prove local boundedness of normalized determinants.
+Status: **CONDITIONAL_ON_POINTWISE_POSITIVITY.**
 
-If the normalized entire family is locally bounded, Montel gives subsequential locally uniform convergence.
+R059's global trace criterion is obstructed by R065.
 
-Then it remains to identify any subsequential limit.
+R068/R077 prove the valid analytic implication: if the relevant finite ground
+state is even and pointwise nonnegative, then the R056 normalized determinant
+has the projective representation
 
-Possible limit-identification data include:
+\[
+F(z)=\frac12\int
+\frac{\cos(zx)}{\cosh(x/2)}\,d\nu(x)
+\]
 
-- convergence on a set with an accumulation point;
-- a functional equation plus sufficiently rich value data;
-- convergence of logarithmic derivatives on a domain;
-- an explicit entire-function representation.
+with \(\nu\) a probability measure, and therefore
 
-Do not assume pointwise convergence automatically supplies local boundedness.
+\[
+|F(z)|\le\frac12
+\quad
+(|\operatorname{Im}z|\le1/2).
+\]
+
+This yields Montel normality on the open strip.
+
+However, no protected global theorem currently proves the needed pointwise
+nonnegativity for all finite CCM pairs of interest. R037 and R040 do not do
+so, and protected Forge R038 rejected the earlier Krein-Rutman closure.
+
+Additionally, the boundary anchor does not rule out the zero limit. R077's
+exact family
+
+\[
+E_n(z)=\frac12\frac{\cos(nz)}{\cosh(n/2)}
+\]
+
+has real zeros, the boundary anchor, and the strip bound, yet tends locally
+uniformly to zero on the open strip.
 
 ## 11. C5 — Identify the limit as Xi
 
-A subsequential entire limit with real zeros is not enough. It must be Xi.
+Status: **OPEN for the actual CCM family.**
 
-The identification theorem must also control normalization. Multiplying Xi by a nonzero entire exponential factor preserves zeros but is not equality to Xi.
+R071's conditional discharge is withdrawn by R077 because:
+- \(i/2\) is a boundary point and its value is not inherited by compact-open
+  limits on the open strip;
+- the displayed normalized transfer estimate contains an anchor error at
+  height \(1/2\), so the raw bound does not reduce to \(O(\lambda^\delta)\)
+  for \(\delta<1/2\) without additional projective control.
 
-For the RH bridge, convergence to any nonvanishing entire multiple of Xi may be enough if that factor is rigorously known never to vanish. If using this relaxation:
+R077 supplies the corrected identification theorem.
 
-1. state it explicitly;
-2. prove the factor is zero-free;
-3. update the protected R035 bridge or prove the generalized version.
+If a locally bounded admissible sequence with real zeros satisfies
 
-Do not silently change the target.
+\[
+F_j(0)\ne0,\qquad \limsup_j |F_j(0)|>0
+\]
+
+and, on one real interval \(I\),
+
+\[
+\frac{F_j(t)}{F_j(0)}
+\to
+\frac{\Xi(t)}{\Xi(0)},
+\]
+
+then a subsequence converges locally uniformly on the open strip to
+\(c\Xi\), \(c\ne0\). The identity theorem supplies the global strip
+identification. The localized Hurwitz bridge then needs no full-sequence C6
+theorem.
 
 ## 12. Interaction with simple-evenness
 
@@ -247,13 +353,13 @@ Do not suppress it.
 
 A contribution is meaningful if it provides one protected result such as:
 
-1. exact canonical determinant normalization;
+1. exact canonical determinant normalization [DELIVERED: RH-R056];
 2. a theorem reducing compact-uniform determinant convergence to a quantitative eigenvector norm/rate [DELIVERED: RH-R053];
-3. a cofinal-index theorem;
-4. a Montel/local-boundedness theorem;
-5. a rigorous k_lambda-to-xi_lambda estimate;
-6. a limit-identification theorem;
-7. a negative theorem showing a proposed norm/rate is insufficient [DELIVERED: RH-R053 rate dichotomy].
+3. a cofinal-index theorem [FORMALIZED: RH-R074 proves N(\lambda) \ge \kappa (\log\lambda)^2 yields power-law tail decay \lambda^{-\pi\kappa\rho} = o(\lambda^{-\delta}), harmonizing with the RH-R062 \Omega((\log\lambda)^2) lower bound];
+4. a Montel/local-boundedness theorem [DELIVERED: RH-R068 proves universal strip modulus bound |F_{lambda,N}| <= 1/2, Montel normality on S_{1/2}^\circ, and Strip Hurwitz Bridge; supersedes the divergent R059 trace criterion];
+5. a rigorous k_lambda-to-xi_lambda estimate [REDUCED: RH-R074 decomposes total error into analytic truncation tail and Galerkin Rayleigh defect, bounded by \sqrt{2\Delta\mathcal{R}_N / \operatorname{Gap}_N(\lambda)}];
+6. a limit-identification theorem [DELIVERED: RH-R071 proves sublinear stability transfer on S_\delta and identifies limit with \Xi for candidate error o(\lambda^{-\delta})];
+7. a negative theorem showing a proposed norm/rate/criterion is insufficient [DELIVERED: RH-R053 rate dichotomy; RH-R065 resolvent trace obstruction].
 
 This route is expected to advance through such modular results.
 

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "YM_MRS_EXTERNAL_DISPATCH",
+  "campaign_id": "YM-001",
+  "target_id": "YM-D003-MRS-R002",
+  "dispatch_id": "YM-D003-MRS-R002-WP-C-IA-001",
+  "assignment": "C",
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "concurrency_mode": "independent_blind",
+  "context_class": "ZERO_CONTEXT",
+  "external_sources": "PROTECTED_PACKET_ONLY",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "canonical_mutation_authorized": false,
+  "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec",
+  "bootstrap_path": "handoffs/YM-001/mrs-r002/YM-D003-MRS-R002-WP-C.md",
+  "bootstrap_blob_sha1": "8f6c409d1fe25904d231ca5705181fdb7b4da06b",
+  "bootstrap_sha256": "ec5229a012cacd44890aa75654529351cf9ed0d01ed94c98506f73dea4663212",
+  "github_issue_number": 718,
+  "github_issue_title": "[GCL-CONTRIB] YM-D003-MRS-R002 WP-C — adversarial proof-completeness audit",
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/718",
+  "handling_state": "AWAITING_FIRST_VALID_RESULT",
+  "claim_boundary": "Dispatch registration only. External returns are unadjudicated evidence and have no canonical or certification effect."
+}

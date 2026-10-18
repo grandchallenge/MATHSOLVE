@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "campaign": "OPENMATH-2026",
+  "operation": "OM26-H2-H7-WP01-DECOMPOSITION",
+  "state": "CLOSED__PROTECTED_READBACK_CONFIRMED",
+  "protected_merge": "246a51ab4f15c616da06b2e3832f0ab0e102d30a",
+  "exact_readback": {
+    "decomposition_manifest": {
+      "path": "work_packages/OPENMATH_2026/H2_H7_WP01_DECOMPOSITION.json",
+      "git_blob_sha1": "2c0b904632e8c715347f0e2e34af9df9c6b1efe7"
+    },
+    "operation": {
+      "path": ".gcl/operations/OM26-H2-H7-WP01-DECOMPOSITION/OPERATION.json",
+      "git_blob_sha1": "ed7ac2d15e976f65979ec1075ef8658d08db6bdd"
+    },
+    "assignment_registry": {
+      "path": ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json",
+      "git_blob_sha1": "57726279ba8bb65b8af0b7c92746d802f9a55730"
+    },
+    "packages": [
+      {
+        "assignment_id": "OM26-H2-WP01",
+        "path": "handoffs/OPENMATH-2026/jobs/OM26-H2-WP01.md",
+        "git_blob_sha1": "971d60fe527695b903a6201478e049b63275c6c6"
+      },
+      {
+        "assignment_id": "OM26-H3-WP01",
+        "path": "handoffs/OPENMATH-2026/jobs/OM26-H3-WP01.md",
+        "git_blob_sha1": "0f3bb0312b0d0e4a083396e59935ccab78bff705"
+      },
+      {
+        "assignment_id": "OM26-H4-WP01",
+        "path": "handoffs/OPENMATH-2026/jobs/OM26-H4-WP01.md",
+        "git_blob_sha1": "b9c8332b89bce14687e693b18ca2d626b4ba94e6"
+      },
+      {
+        "assignment_id": "OM26-H5-WP01",
+        "path": "handoffs/OPENMATH-2026/jobs/OM26-H5-WP01.md",
+        "git_blob_sha1": "f852f08b32050ed3428e2613be46be67a682c23c"
+      },
+      {
+        "assignment_id": "OM26-H6-WP01",
+        "path": "handoffs/OPENMATH-2026/jobs/OM26-H6-WP01.md",
+        "git_blob_sha1": "7afebec15730f159fa6490a2fb2b63db78ef6010"
+      },
+      {
+        "assignment_id": "OM26-H7-WP01",
+        "path": "handoffs/OPENMATH-2026/jobs/OM26-H7-WP01.md",
+        "git_blob_sha1": "c02b21acf4a7d79bd31b1e708d2133db10506c78"
+      }
+    ]
+  },
+  "assignment_state": {
+    "available_for_lease": 6,
+    "leased_h2_h7": 0,
+    "active_h1_lease": 1,
+    "executable_h2_h7": 0
+  },
+  "completion_effect": "Six exact H2-H7 WP01 packages are protected, read back, and available to the protected allocator. No H2-H7 execution lease is created.",
+  "successor_boundary": {
+    "name": "EXTERNAL_LEASE_AUTHORITY_BOUNDARY",
+    "rule": "Any H2-H7 external execution requires a separate protected lease mutation that binds one AVAILABLE_FOR_LEASE assignment to an exact dispatch_id, agent_ref, dispatch URL, and return URL.",
+    "current_operation_may_lease_external_agent": false
+  },
+  "claim_boundary": "Completion of work-package instantiation only. No returned mathematics, competition submission, novelty, canonical-claim admission, or certification effect."
+}

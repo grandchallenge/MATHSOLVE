@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_RESULT_RECOVERY_RECEIPT",
+  "campaign": "OPENMATH-2026",
+  "operation": "OM26-CORE-CLARITY-RECONCILE-001",
+  "dispatch_id": "OM26-H1-H1-12-IA-001",
+  "assignment_id": "OM26-H1-H1-12",
+  "agent_ref": "INDEPENDENT-AGENT-001",
+  "source": {
+    "github_issue_number": 498,
+    "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/498",
+    "github_comment_id": 5881108260,
+    "github_comment_url": "https://github.com/grandchallenge/MATHSOLVE/issues/498#issuecomment-5881108260",
+    "authenticated_github_actor": "fyremael",
+    "comment_created_at": "2026-09-29T00:10:21Z",
+    "raw_artifact_path": "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md",
+    "raw_artifact_git_blob_sha1": "d6850a071d9b7e14bf6f9987284325caab19e8a0"
+  },
+  "protected_dispatch": {
+    "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H1-H1-12-IA-001.md",
+    "bootstrap_git_blob_sha1": "b3a1937c9dc74c1f7a026b8dfc712c37765b4984",
+    "dispatch_record": "contributions/OPENMATH-2026/OM26-H1/H1-12/dispatches/OM26-H1-H1-12-IA-001.json",
+    "dispatch_record_git_blob_sha1": "bf4a8495bef86a579b060e4af410192681e4c5ab",
+    "operation_contract": ".gcl/operations/OM26-H1-H1-12-IA-001/OPERATION.json",
+    "operation_contract_git_blob_sha1": "d330a2404470ecbd29c6707fa6a600dd89f017db"
+  },
+  "original_intake_failure": {
+    "classification": "INFRASTRUCTURE_DEFECT",
+    "first_rejection_comment_id": 5881111131,
+    "second_rejection_comment_id": 5881111626,
+    "first_reason": "GitHub issue body differs from protected bootstrap bytes",
+    "second_reason": "expected preamble field assignment at line 3",
+    "superseding_intake_repair": {
+      "protected_merge": "51a52401bfda66910b58c690684da595b4d6aa2c",
+      "parser_path": "ci/openmath_cex_github_contribution_intake.py",
+      "parser_git_blob_sha1": "bd3a0422e060cca4285e55a035ee85a86a2c02b3",
+      "operation": ".gcl/operations/OPENMATH-CEX-GENERIC-INTAKE/OPERATION.json",
+      "operation_git_blob_sha1": "e37dd4a9092448d88bfcddc998713d0eb2a4c20b",
+      "readback": ".gcl/completions/OPENMATH-CEX-GENERIC-INTAKE/READBACK.json",
+      "readback_git_blob_sha1": "16c31a2241a3c362d040640932eea16ae7580d2a"
+    }
+  },
+  "declared_disposition": "PROVED_REDUCTION",
+  "recovery_validation": {
+    "required": "Replay exact recovered result through current protected generic RESULT/1 parser against exact dispatch/operation/bootstrap identities.",
+    "validator": "ci/validate_openmath_core_clarity_reconcile.py",
+    "expected_result": "PASS"
+  },
+  "lifecycle": {
+    "state": "CAPTURED",
+    "launched_evidence": "RETURN_ITSELF_PROVES_EXECUTION_OCCURRED__ORIGINAL_LAUNCH_EVENT_NOT_DURABLY_RECORDED",
+    "returned": "2026-09-29T00:10:21Z",
+    "captured": "RECOVERED_BY_CORE_CLARITY_RECONCILIATION",
+    "adjudication": "PENDING"
+  },
+  "handling_state": "CAPTURED_RECOVERED_UNADJUDICATED",
+  "mathematical_correctness_adjudicated": false,
+  "independence_strength_adjudicated": false,
+  "canonical_claim_effect": false,
+  "certification_effect": false,
+  "competition_effect": false,
+  "claim_boundary": "Recovery preserves valid returned evidence after an intake infrastructure defect. It does not accept the claimed q=5 reduction, change the protected H1 mathematical frontier, certify mathematics, or authorize competition submission."
+}

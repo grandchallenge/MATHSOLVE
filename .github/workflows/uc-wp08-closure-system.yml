@@ -1,0 +1,59 @@
+name: UC WP08 closure-system replay
+
+on:
+  pull_request:
+    paths:
+      - 'MathSolve/UnionClosed/FunctionalPreorderP04.lean'
+      - 'MathSolve/UnionClosed/PosetIdealP04.lean'
+      - 'MathSolve/UnionClosed/ClosureImplicationP04.lean'
+      - 'MathSolve.lean'
+      - 'domains/union_closed/WP08_closure_system_bridge/**'
+      - 'handoffs/UC-001/**'
+      - '.github/workflows/uc-wp08-closure-system.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'MathSolve/UnionClosed/FunctionalPreorderP04.lean'
+      - 'MathSolve/UnionClosed/PosetIdealP04.lean'
+      - 'MathSolve/UnionClosed/ClosureImplicationP04.lean'
+      - 'MathSolve.lean'
+      - 'domains/union_closed/WP08_closure_system_bridge/**'
+      - 'handoffs/UC-001/**'
+      - '.github/workflows/uc-wp08-closure-system.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  local-lean:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Assert exact subject checkout
+        env:
+          SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+      - uses: grandchallenge/lean-action@138a564e38a62ce545e8d47d86a97628463aced4
+      - name: Replay WP08 theorem surface
+        run: |
+          lake env lean MathSolve/UnionClosed/FunctionalPreorderP04.lean
+          lake env lean MathSolve/UnionClosed/PosetIdealP04.lean
+          lake env lean MathSolve/UnionClosed/ClosureImplicationP04.lean
+          for f in \
+            MathSolve/UnionClosed/FunctionalPreorderP04.lean \
+            MathSolve/UnionClosed/PosetIdealP04.lean \
+            MathSolve/UnionClosed/ClosureImplicationP04.lean
+          do
+            if grep -nE '^[[:space:]]*(sorry|admit)([[:space:]]|$)' "$f"; then
+              echo "proof placeholder found in $f" >&2
+              exit 1
+            fi
+            if grep -nE '^[[:space:]]*axiom[[:space:]]' "$f"; then
+              echo "explicit axiom found in $f" >&2
+              exit 1
+            fi
+          done

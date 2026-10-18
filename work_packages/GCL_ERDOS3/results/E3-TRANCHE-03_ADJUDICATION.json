@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_FRONTIER_SYNTHESIS_ADJUDICATION",
+  "campaign": "GCL-ERDOS3",
+  "tranche": "E3-TRANCHE-03",
+  "capture_baseline_commit": "a10d4546a6c58aad44bc4f49daf71e14526b4b94",
+  "immutable_task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
+  "capture_manifest": "work_packages/GCL_ERDOS3/results/E3-TRANCHE-03_CAPTURE.json",
+  "target_node": "E3-Q4-DENSITY-LOSS",
+  "result_receipts": {
+    "E3-R01": {
+      "issue_number": 788,
+      "comment_id": 5974689856,
+      "declared_disposition": "PROVED_REPRESENTATION_REDUCTION",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-R01_RESULT.md"
+    },
+    "E3-D01": {
+      "issue_number": 789,
+      "comment_id": 5974710520,
+      "declared_disposition": "FINITE_CARRY_REPRESENTATION_PROVED",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-D01_RESULT.md"
+    },
+    "E3-G01": {
+      "issue_number": 791,
+      "comment_id": 5974734856,
+      "declared_disposition": "SMALLER_GLUE_LEMMA",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md"
+    },
+    "E3-C01": {
+      "issue_number": 792,
+      "comment_id": 5974760875,
+      "declared_disposition": "FINITE_PATTERN_DISCOVERED",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md"
+    },
+    "E3-A03": {
+      "issue_number": 793,
+      "comment_id": 5974733560,
+      "declared_disposition": "NO_COUNTEREXAMPLE_IN_DECLARED_FAMILY",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-A03_RESULT.md"
+    },
+    "E3-S04": {
+      "issue_number": 794,
+      "comment_id": 5974746941,
+      "declared_disposition": "SOURCE_INTERFACE_REQUIRES_BRIDGE",
+      "evidence": "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md"
+    }
+  },
+  "synthesis_checks": {
+    "E3-R01": {
+      "accepted": true,
+      "frontier_effect": "REPRESENTATION_EQUIVALENCE_AND_FALSE_REVERSE_BOUNDARY",
+      "promoted": false,
+      "reason": "P in L1 is exactly equivalent to the parent series, so it is a useful coordinate change but not a strict successor theorem."
+    },
+    "E3-D01": {
+      "accepted": true,
+      "frontier_effect": "EXACT_FINITE_REPRESENTATION",
+      "promoted": false,
+      "reason": "The m=4 compiler removes representation ambiguity but does not prove sparse-density gluing loss."
+    },
+    "E3-G01": {
+      "accepted": true,
+      "frontier_effect": "THEOREM_GRADE_STRUCTURAL_REDUCTION_PENDING_REPLAY",
+      "promoted": false,
+      "reason": "It proves the exact constant-factor bridge D_{L,n} <= Gamma_{L,n} <= 2^L D_{L,n}; one independent replay is required before frontier replacement."
+    },
+    "E3-C01": {
+      "accepted": true,
+      "frontier_effect": "COMPUTATIONAL_ROUTE_ELIMINATION",
+      "promoted": false,
+      "reason": "It exactly rules out the raw vertex LP as the source of the missing loss but does not justify an asymptotic theorem."
+    },
+    "E3-A03": {
+      "accepted": true,
+      "frontier_effect": "ADVERSARIAL_BOUNDARY",
+      "promoted": false,
+      "reason": "No counterexample to density loss was found; the lower transfer and p<=sqrt(2) obstruction are supporting constraints."
+    },
+    "E3-S04": {
+      "accepted": true,
+      "frontier_effect": "SOURCE_INTERFACE_REQUIRES_STABILITY_BRIDGE",
+      "promoted": false,
+      "reason": "The four-function U3 counting interface exists, but no audited source supplies the needed cross-fiber stability/transversal loss."
+    }
+  },
+  "selected_successor_candidate": {
+    "id": "E3-Q4-GLUING-RADIUS",
+    "status": "FORMULATED_PENDING_VERIFY",
+    "statement": "Let N=2^n, m=2^L, a_n=r_4(N)/N. Let H_{L,n} be the least h>=0 such that m fibers B_i subset [0,N-1], each of size at least r_4(N)-h, can be glued as union_i(iN+B_i) without a 4-AP, and Gamma_{L,n}=H_{L,n}/N. Prove that for some fixed L>=1, kappa>0, n_0 and 0<theta<1, Gamma_{L,n} >= kappa a_n^(1+theta) for all n>=n_0.",
+    "candidate_reason": "E3-G01 reduces the active density-loss route to this exact finite/local near-extremizer stability theorem up to a fixed factor.",
+    "verification_gate": "E3-V03",
+    "active_frontier_effect_before_verification": "NONE"
+  },
+  "theorem_grade_bridge_pending_verification": {
+    "id": "E3-B-GLUING-RADIUS-EQUIV",
+    "claimed_statement": "For fixed L and m=2^L, D_{L,n}=a_n-a_{n+L} and Gamma_{L,n}=H_{L,n}/N satisfy D_{L,n} <= Gamma_{L,n} <= m D_{L,n}.",
+    "evidence": "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
+    "required_action": "INDEPENDENT_VERIFY",
+    "verification_assignment": "E3-V03"
+  },
+  "retained_attack_direction": "Use the exact carry hypergraph plus four-function U3/quadratic counting to prove a configuration incompatibility or transversal cost strong enough to force Gamma_{L,n} >= kappa a_n^(1+theta). Do not return to raw vertex LP as the primary route.",
+  "final_disposition": "FORMULATE_E3_Q4_GLUING_RADIUS__VERIFY_G01_BRIDGE_BEFORE_ADVANCE__KEEP_DENSITY_LOSS_ACTIVE"
+}

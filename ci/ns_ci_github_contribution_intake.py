@@ -5,19 +5,40 @@ import hashlib
 import json
 import re
 import sys
+from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+try:
+    from ci.gcl_worker_queue_contract import active_reservation, queue_job_for_dispatch
+except ModuleNotFoundError:
+    from gcl_worker_queue_contract import active_reservation, queue_job_for_dispatch
+
+try:
+    from ci.erdos_open_semantic_gate import (
+        BLOCKER_MARKER,
+        merge_blockers,
+        parse_declared_blockers,
+        policy_blockers,
+        required_source_dispatches,
+    )
+except ModuleNotFoundError:
+    from erdos_open_semantic_gate import (
+        BLOCKER_MARKER,
+        merge_blockers,
+        parse_declared_blockers,
+        policy_blockers,
+        required_source_dispatches,
+    )
+
 ROOT = Path(__file__).resolve().parents[1]
-BASE_REL = Path("contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE")
-DISPATCH_DIR_REL = BASE_REL / "dispatches"
 
 MARKER = "GCL-CONTRIBUTION-RESULT/1"
 DISPATCH_MARKER = "GCL-CONTRIBUTION-DISPATCH/1"
-DISPATCH_ID_RE = re.compile(r"^NSCI-C2-[A-E]-(?:BLIND|COOP|ADV)-[0-9]{3}$")
 URL_RE = re.compile(r"(?:https?://|www\.)", re.IGNORECASE)
 MD_LINK_RE = re.compile(r"!?\[[^\]\n]*\]\([^\)\n]+\)")
-HTML_LINK_RE = re.compile(r"<\s*(?:a|img)\b", re.IGNORECASE)
+HTML_LINK_RE = re.compile(r"</?(?:a|img)\b(?:\s+[^<>]*?)?\s*/?>", re.IGNORECASE)
 HEADING_RE = re.compile(r"^## .+$", re.MULTILINE)
 
 SECTIONS = [
@@ -28,8 +49,246 @@ SECTIONS = [
     "## Claim boundary",
     "## Next residual",
 ]
-DISPOSITIONS = {"PROVED", "REFUTED", "REDUCED", "BLOCKED"}
-ASSIGNMENTS = {"A", "B", "C", "D", "E"}
+
+
+@dataclass(frozen=True)
+class IntakeProfile:
+    campaign: str
+    dispatch_re: re.Pattern[str]
+    base_rel: Path
+    dispatch_schema_version: str
+    receipt_schema_version: str
+    preamble_keys: tuple[str, ...]
+    dispositions: frozenset[str]
+    external_sources: str
+    pr_title_prefix: str
+    queue_binding: bool = False
+    approved_external_sources: frozenset[str] = frozenset()
+
+
+NS_PROFILE = IntakeProfile(
+    campaign="NS-CI-001",
+    dispatch_re=re.compile(r"^NSCI-C2-[A-E]-(?:BLIND|COOP|ADV)-[0-9]{3}$"),
+    base_rel=Path("contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE"),
+    dispatch_schema_version="0.2-pilot",
+    receipt_schema_version="0.2-pilot",
+    preamble_keys=(
+        "dispatch_id",
+        "assignment",
+        "disposition",
+        "context_class",
+        "external_sources",
+        "timebox_observed",
+    ),
+    dispositions=frozenset({"PROVED", "REFUTED", "REDUCED", "BLOCKED"}),
+    external_sources="NONE",
+    pr_title_prefix="NS-CI intake",
+)
+
+UC_PROFILE = IntakeProfile(
+    campaign="UC-001",
+    dispatch_re=re.compile(r"^UC-WP08-D004-WP0[1-5]-IA-001$"),
+    base_rel=Path("contributions/UC-001/WP08_D004_INCIDENCE_INTERFACE"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=(
+        "dispatch_id",
+        "agent_ref",
+        "assignment",
+        "disposition",
+        "context_class",
+        "external_sources",
+        "timebox_observed",
+    ),
+    dispositions=frozenset({
+        "PROVED_REDUCTION",
+        "EXACT_CERTIFICATE",
+        "FORMAL_LEMMA_PROVED",
+        "COUNTEREXAMPLE",
+        "NO_MATERIAL_DELTA",
+        "EXACT_BLOCKER",
+    }),
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="UC-001 intake",
+)
+
+CMDG_PROFILE = IntakeProfile(
+    campaign="CMDG-CM4",
+    dispatch_re=re.compile(r"^CMDG-P3M-SEP-WP-[A-D]-IA-001$"),
+    base_rel=Path("contributions/CMDG-CM4/P3M_ONE_POINT_SEPARATION_003"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=(
+        "dispatch_id",
+        "agent_ref",
+        "assignment",
+        "disposition",
+        "context_class",
+        "external_sources",
+        "timebox_observed",
+    ),
+    dispositions=frozenset({
+        "PROVED_REDUCTION",
+        "EXACT_CERTIFICATE",
+        "FORMAL_LEMMA_PROVED",
+        "COUNTEREXAMPLE",
+        "NO_MATERIAL_DELTA",
+        "EXACT_BLOCKER",
+    }),
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="CMDG-CM4 intake",
+)
+
+CMDG_COV_PROFILE = IntakeProfile(
+    campaign="CMDG-CM4-COV",
+    dispatch_re=re.compile(r"^CMDG-P3M-COV-WP-[A-D]-IA-001$"),
+    base_rel=Path("contributions/CMDG-CM4/P3M_WEIGHTED_ONE_POINT_COVERAGE_004"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=(
+        "dispatch_id",
+        "agent_ref",
+        "assignment",
+        "disposition",
+        "context_class",
+        "external_sources",
+        "timebox_observed",
+    ),
+    dispositions=frozenset({
+        "PROVED_REDUCTION",
+        "EXACT_CERTIFICATE",
+        "FORMAL_LEMMA_PROVED",
+        "COUNTEREXAMPLE",
+        "NO_MATERIAL_DELTA",
+        "EXACT_BLOCKER",
+    }),
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="CMDG-CM4 coverage intake",
+)
+
+CMDG_N3_PROFILE = IntakeProfile(
+    campaign="CMDG-CM4-N3",
+    dispatch_re=re.compile(r"^CMDG-P3M-N3-WP-[A-D]-IA-001$"),
+    base_rel=Path("contributions/CMDG-CM4/P3M_FINITE_COEFFICIENT_ALLTRUE_005"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=(
+        "dispatch_id",
+        "agent_ref",
+        "assignment",
+        "disposition",
+        "context_class",
+        "external_sources",
+        "timebox_observed",
+    ),
+    dispositions=frozenset({
+        "PROVED_REDUCTION",
+        "EXACT_CERTIFICATE",
+        "FORMAL_LEMMA_PROVED",
+        "COUNTEREXAMPLE",
+        "NO_MATERIAL_DELTA",
+        "EXACT_BLOCKER",
+    }),
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="CMDG-CM4 N3 intake",
+)
+
+CMDG_SEP2_PROFILE = IntakeProfile(
+    campaign="CMDG-CM4-P3M-SEPARATION",
+    dispatch_re=re.compile(r"^CMDG-P3M-SEP2-WP-[A-D]-IA-001$"),
+    base_rel=Path("contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=(
+        "dispatch_id",
+        "agent_ref",
+        "assignment",
+        "disposition",
+        "context_class",
+        "external_sources",
+        "timebox_observed",
+    ),
+    dispositions=frozenset({
+        "PROVED_REDUCTION",
+        "EXACT_CERTIFICATE",
+        "FORMAL_LEMMA_PROVED",
+        "COUNTEREXAMPLE",
+        "NO_MATERIAL_DELTA",
+        "EXACT_BLOCKER",
+    }),
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="CMDG-CM4 separation-2 intake",
+)
+
+ERDOS_RA_PROFILE = IntakeProfile(
+    campaign="ERDOS-OPEN-RECON",
+    dispatch_re=re.compile(r"^ERDOS-(?:593|595|241|470|1052|99|101|138)-(?:R1|A1)-IA-001$"),
+    base_rel=Path("contributions/ERDOS-OPEN-001/RECON_TRANCHE_001"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=("dispatch_id","agent_ref","assignment","disposition","context_class","external_sources","timebox_observed"),
+    dispositions=frozenset({"EXACT_REDUCTION","FINITE_CERTIFICATE","SOURCE_INTERFACE_FOUND","COUNTEREXAMPLE","EXACT_BLOCKER","NO_MATERIAL_DELTA"}),
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="ERDOS-OPEN intake",
+)
+
+ERDOS_S_PROFILE = IntakeProfile(
+    campaign="ERDOS-OPEN-RECON",
+    dispatch_re=re.compile(r"^ERDOS-(?:593|595|241|470|1052|99|101|138)-S1-IA-001$"),
+    base_rel=Path("contributions/ERDOS-OPEN-001/RECON_TRANCHE_001"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=ERDOS_RA_PROFILE.preamble_keys,
+    dispositions=ERDOS_RA_PROFILE.dispositions,
+    external_sources="PRIMARY_SOURCES_REQUIRED",
+    pr_title_prefix="ERDOS-OPEN intake",
+)
+
+CANARY_PROFILE = IntakeProfile(
+    campaign="GCL-E2E-CANARY-001",
+    dispatch_re=re.compile(r"^GCL-E2E-CANARY-001-IA-001$"),
+    base_rel=Path("contributions/GCL-E2E-CANARY-001"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=(
+        "dispatch_id",
+        "agent_ref",
+        "assignment",
+        "disposition",
+        "context_class",
+        "external_sources",
+        "timebox_observed",
+    ),
+    dispositions=frozenset({"EXACT_CERTIFICATE"}),
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="GCL E2E canary intake",
+)
+
+CANARY2_PROFILE = IntakeProfile(
+    campaign="GCL-E2E-CANARY-002",
+    dispatch_re=re.compile(r"^GCL-E2E-CANARY-002-IA-001$"),
+    base_rel=Path("contributions/GCL-E2E-CANARY-002"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=CANARY_PROFILE.preamble_keys,
+    dispositions=CANARY_PROFILE.dispositions,
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="GCL E2E canary intake",
+)
+
+CANARY3_PROFILE = IntakeProfile(
+    campaign="GCL-E2E-CANARY-003",
+    dispatch_re=re.compile(r"^GCL-E2E-CANARY-003-IA-001$"),
+    base_rel=Path("contributions/GCL-E2E-CANARY-003"),
+    dispatch_schema_version="1.0.0",
+    receipt_schema_version="1.0.0",
+    preamble_keys=CANARY_PROFILE.preamble_keys,
+    dispositions=CANARY_PROFILE.dispositions,
+    external_sources="PROTECTED_PACKET_ONLY",
+    pr_title_prefix="GCL E2E canary intake",
+)
+
+PROFILES = (NS_PROFILE, UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE, CMDG_SEP2_PROFILE, ERDOS_RA_PROFILE, ERDOS_S_PROFILE, CANARY_PROFILE, CANARY2_PROFILE, CANARY3_PROFILE)
 
 
 class IntakeError(ValueError):
@@ -46,10 +305,75 @@ def _object(value: Any, label: str) -> dict[str, Any]:
     return value
 
 
-def parse_result_comment(body: str) -> dict[str, Any]:
+def queue_intake_binding(root: Path, dispatch_id: str) -> dict[str, Any] | None:
+    """Resolve a new-generation queue dispatch only through protected bindings."""
+    path = root / ".gcl/worker_queue/INTAKE_BINDINGS.json"
+    if not path.is_file():
+        return None
+    document = _object(json.loads(path.read_text(encoding="utf-8")), "queue intake bindings")
+    if document.get("record_type") != "GCL_QUEUE_INTAKE_BINDINGS":
+        raise IntakeError("protected queue intake binding record type drift")
+    if document.get("schema_version") != "1.0.0":
+        raise IntakeError("protected queue intake binding schema drift")
+    matches = [b for b in document.get("bindings", []) if b.get("dispatch_id") == dispatch_id]
+    if len(matches) > 1:
+        raise IntakeError("duplicate protected intake binding for dispatch")
+    if not matches:
+        return None
+    job = queue_job_for_dispatch(root, dispatch_id)
+    if not job or job.get("self_claimable") is not True:
+        raise IntakeError("intake binding is not backed by a claimable protected queue job")
+    binding = matches[0]
+    if (binding.get("dispatch_path") != job.get("dispatch_path")
+            or binding.get("github_issue_number") != job.get("issue_number")):
+        raise IntakeError("intake binding disagrees with protected queue registry")
+    return binding
+
+
+def profile_for_dispatch(dispatch_id: str, root: Path = ROOT) -> IntakeProfile:
+    for profile in PROFILES:
+        if profile.dispatch_re.fullmatch(dispatch_id):
+            return profile
+    binding = queue_intake_binding(root, dispatch_id)
+    if binding is None:
+        raise IntakeError("dispatch_id has invalid or unregistered form")
+    dispatch_rel = Path(binding["dispatch_path"])
+    if dispatch_rel.is_absolute() or ".." in dispatch_rel.parts:
+        raise IntakeError("protected intake dispatch path is unsafe")
+    dispatch_file = root / dispatch_rel
+    if not dispatch_file.is_file():
+        raise IntakeError("protected intake dispatch record is missing")
+    dispatch = _object(json.loads(dispatch_file.read_text(encoding="utf-8")), "queue dispatch")
+    if dispatch.get("dispatch_id") != dispatch_id:
+        raise IntakeError("queue dispatch identity differs from intake binding")
+    allowed_dispositions = binding.get("allowed_dispositions")
+    allowed_sources = binding.get("allowed_external_sources")
+    if (not isinstance(allowed_dispositions, list) or not allowed_dispositions
+            or not isinstance(allowed_sources, list) or not allowed_sources):
+        raise IntakeError("queue intake policy must provide explicit nonempty allowlists")
+    return IntakeProfile(
+        campaign=str(dispatch["campaign"]),
+        dispatch_re=re.compile("^" + re.escape(dispatch_id) + "$"),
+        base_rel=dispatch_rel.parent.parent,
+        dispatch_schema_version="1.0.0",
+        receipt_schema_version="1.0.0",
+        preamble_keys=ERDOS_RA_PROFILE.preamble_keys,
+        dispositions=frozenset(allowed_dispositions),
+        external_sources="TASK_SPECIFIC",
+        pr_title_prefix="GCL queue intake",
+        queue_binding=True,
+        approved_external_sources=frozenset(allowed_sources),
+    )
+
+
+def parse_result_comment(body: str, root: Path = ROOT) -> dict[str, Any]:
     if not isinstance(body, str) or not body.strip():
         raise IntakeError("comment body is empty")
-    if not body.startswith(MARKER + "\n"):
+
+    # Parse CRLF comments through an LF-normalized view while retaining the
+    # original body bytes for raw evidence and receipt hashing.
+    parsed_body = body.replace("\r\n", "\n")
+    if not parsed_body.startswith(MARKER + "\n"):
         raise IntakeError(f"comment must begin exactly with {MARKER}")
 
     forbidden: list[str] = []
@@ -64,21 +388,17 @@ def parse_result_comment(body: str) -> dict[str, Any]:
     if forbidden:
         raise IntakeError("forbidden content: " + ", ".join(sorted(set(forbidden))))
 
-    lines = body.splitlines()
+    lines = parsed_body.splitlines()
     if len(lines) < 8:
         raise IntakeError("comment is too short")
+    if not lines[1].startswith("dispatch_id: "):
+        raise IntakeError("expected preamble field dispatch_id at line 2")
+    dispatch_id = lines[1][len("dispatch_id: "):].strip()
+    profile = profile_for_dispatch(dispatch_id, root)
 
-    expected_keys = [
-        "dispatch_id",
-        "assignment",
-        "disposition",
-        "context_class",
-        "external_sources",
-        "timebox_observed",
-    ]
     preamble: dict[str, str] = {}
     cursor = 1
-    for key in expected_keys:
+    for key in profile.preamble_keys:
         if cursor >= len(lines):
             raise IntakeError(f"missing preamble field {key}")
         prefix = key + ": "
@@ -93,61 +413,110 @@ def parse_result_comment(body: str) -> dict[str, Any]:
     if cursor >= len(lines) or lines[cursor] != "":
         raise IntakeError("preamble must be followed by one blank line")
 
-    if not DISPATCH_ID_RE.fullmatch(preamble["dispatch_id"]):
-        raise IntakeError("dispatch_id has invalid form")
-    if preamble["assignment"] not in ASSIGNMENTS:
-        raise IntakeError("assignment is invalid")
-    if preamble["disposition"] not in DISPOSITIONS:
-        raise IntakeError("disposition is invalid")
+    if preamble["disposition"] not in profile.dispositions:
+        raise IntakeError("disposition is invalid for this registered profile")
     if preamble["context_class"] != "ZERO_CONTEXT":
-        raise IntakeError("context_class must be ZERO_CONTEXT for this pilot")
-    if preamble["external_sources"] != "NONE":
-        raise IntakeError("external_sources must be NONE for this pilot")
+        raise IntakeError("context_class must be ZERO_CONTEXT")
+    if profile.queue_binding:
+        if preamble["external_sources"] not in profile.approved_external_sources:
+            raise IntakeError("external_sources is not approved for this protected queue dispatch")
+    elif preamble["external_sources"] != profile.external_sources:
+        raise IntakeError(
+            f"external_sources must be {profile.external_sources} for this registered profile"
+        )
     if preamble["timebox_observed"] not in {"YES", "NO"}:
         raise IntakeError("timebox_observed must be YES or NO")
 
-    headings = HEADING_RE.findall(body)
+    if profile is NS_PROFILE and preamble["assignment"] not in {"A", "B", "C", "D", "E"}:
+        raise IntakeError("assignment is invalid for the NS-CI pilot")
+    if profile is UC_PROFILE and not re.fullmatch(r"UC-WP08-D004-WP0[1-5]", preamble["assignment"]):
+        raise IntakeError("assignment is invalid for the UC-001 D004 profile")
+    if profile is CMDG_PROFILE and not re.fullmatch(r"CMDG-P3M-SEP-WP-[A-D]", preamble["assignment"]):
+        raise IntakeError("assignment is invalid for the CMDG P3-M separation profile")
+    if profile is CMDG_COV_PROFILE and not re.fullmatch(r"CMDG-P3M-COV-WP-[A-D]", preamble["assignment"]):
+        raise IntakeError("assignment is invalid for the CMDG P3-M weighted coverage profile")
+    if profile is CMDG_N3_PROFILE and not re.fullmatch(r"CMDG-P3M-N3-WP-[A-D]", preamble["assignment"]):
+        raise IntakeError("assignment is invalid for the CMDG P3-M N3 profile")
+    if profile is CMDG_SEP2_PROFILE and not re.fullmatch(r"CMDG-P3M-SEP2-WP-[A-D]", preamble["assignment"]):
+        raise IntakeError("assignment is invalid for the CMDG P3-M product-functional separation profile")
+    if profile in {ERDOS_RA_PROFILE, ERDOS_S_PROFILE} and not re.fullmatch(
+        r"ERDOS-(?:593|595|241|470|1052|99|101|138)-(?:R1|S1|A1)",
+        preamble["assignment"],
+    ):
+        raise IntakeError("assignment is invalid for the ERDOS-OPEN reconnaissance profile")
+
+    headings = HEADING_RE.findall(parsed_body)
     if headings != SECTIONS:
         raise IntakeError("level-2 sections must match the RESULT/1 schema exactly and in order")
 
     sections: dict[str, str] = {}
-    positions = [(body.index(h), h) for h in SECTIONS]
+    positions = [(parsed_body.index(h), h) for h in SECTIONS]
     for index, (start, heading) in enumerate(positions):
         content_start = start + len(heading)
-        content_end = positions[index + 1][0] if index + 1 < len(positions) else len(body)
-        content = body[content_start:content_end].strip()
+        content_end = positions[index + 1][0] if index + 1 < len(positions) else len(parsed_body)
+        content = parsed_body[content_start:content_end].strip()
         if not content:
             raise IntakeError(f"{heading} is empty")
         sections[heading[3:]] = content
 
     next_residual = sections["Next residual"]
-    sentence_marks = len(re.findall(r"[.!?](?:\s|$)", next_residual))
+    sentence_view = re.sub(r"(?m)^\s*\d+\.\s+", "", next_residual)
+    sentence_marks = len(re.findall(r"[.!?](?:\s|$)", sentence_view))
     if sentence_marks > 3:
         raise IntakeError("Next residual exceeds three sentences")
 
-    return {"preamble": preamble, "sections": sections}
+    semantic_blockers: list[dict[str, str]] = []
+    if BLOCKER_MARKER in parsed_body:
+        if profile not in {ERDOS_RA_PROFILE, ERDOS_S_PROFILE}:
+            raise IntakeError("semantic blocker declarations are enabled only for ERDOS-OPEN")
+        try:
+            semantic_blockers = parse_declared_blockers(
+                parsed_body,
+                dispatch_id,
+                preamble["disposition"],
+            )
+        except ValueError as exc:
+            raise IntakeError(str(exc)) from exc
+
+    return {
+        "profile": profile.campaign,
+        "preamble": preamble,
+        "sections": sections,
+        "semantic_blockers": semantic_blockers,
+    }
 
 
-def load_dispatch(root: Path, dispatch_id: str) -> dict[str, Any]:
-    path = root / DISPATCH_DIR_REL / f"{dispatch_id}.json"
+def load_dispatch(root: Path, dispatch_id: str) -> tuple[IntakeProfile, dict[str, Any]]:
+    profile = profile_for_dispatch(dispatch_id, root)
+    path = root / profile.base_rel / "dispatches" / f"{dispatch_id}.json"
     if not path.is_file():
         raise IntakeError("dispatch_id is not registered on protected repository state")
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
         raise IntakeError(f"dispatch record is invalid JSON: {exc}") from exc
-    return _object(data, "dispatch record")
+    return profile, _object(data, "dispatch record")
 
 
-def validate_dispatch_issue(root: Path, issue: dict[str, Any], dispatch: dict[str, Any]) -> None:
-    if dispatch.get("schema_version") != "0.2-pilot":
-        raise IntakeError("dispatch is not enabled for GitHub intake v1")
+def validate_dispatch_issue(
+    root: Path,
+    issue: dict[str, Any],
+    profile: IntakeProfile,
+    dispatch: dict[str, Any],
+) -> None:
+    if dispatch.get("schema_version") != profile.dispatch_schema_version:
+        raise IntakeError("dispatch schema version is not enabled for this intake profile")
+    if (dispatch.get("campaign") != profile.campaign if profile.queue_binding
+            else dispatch.get("campaign") not in {None, profile.campaign}):
+        raise IntakeError("dispatch campaign does not match registered intake profile")
     if dispatch.get("return_protocol") != MARKER:
         raise IntakeError("dispatch return protocol is not RESULT/1")
     if dispatch.get("dispatch_status") != "READY_FOR_GITHUB_COMMENT":
         raise IntakeError("dispatch is not ready for GitHub comment intake")
     if dispatch.get("canonical_mutation_authorized") is not False:
         raise IntakeError("dispatch improperly authorizes canonical mutation")
+    if profile.queue_binding and dispatch.get("certification_authorized") is not False:
+        raise IntakeError("dispatch improperly authorizes certification")
 
     number = issue.get("number")
     if not isinstance(number, int) or number != dispatch.get("github_issue_number"):
@@ -160,6 +529,42 @@ def validate_dispatch_issue(root: Path, issue: dict[str, Any], dispatch: dict[st
     body = issue.get("body")
     if not isinstance(body, str):
         raise IntakeError("dispatch issue body is unavailable")
+    if profile.queue_binding:
+        dispatch_id = dispatch["dispatch_id"]
+        binding = queue_intake_binding(root, dispatch_id)
+        if binding is None:
+            raise IntakeError("queue dispatch intake binding disappeared")
+        if sha256_text(body) != binding.get("issue_body_sha256"):
+            raise IntakeError("GitHub issue body differs from protected queue issue-body digest")
+        if issue.get("html_url") not in {None, dispatch.get("github_issue_url")}:
+            raise IntakeError("queue dispatch issue URL differs from protected binding")
+        if dispatch.get("record_type") != "GCL_EXTERNAL_DISPATCH":
+            raise IntakeError("queue dispatch record type mismatch")
+        if dispatch.get("lease_state") != "ACTIVE" or dispatch.get("protected_lease_required") is not True:
+            raise IntakeError("queue dispatch protected lease is not active")
+        if dispatch.get("intake_channel") != "github_issue_comment":
+            raise IntakeError("queue dispatch intake channel mismatch")
+        if dispatch.get("contributor_write_authority") != "issue_comment_only":
+            raise IntakeError("queue dispatch contributor authority mismatch")
+        if dispatch.get("supplementary_artifacts_allowed") is not False:
+            raise IntakeError("queue dispatch permits unreviewed supplementary artifacts")
+        for field in ("task_path", "task_commit"):
+            if dispatch.get(field) != binding.get(field):
+                raise IntakeError(f"queue task {field} differs from protected intake binding")
+        task_rel = Path(binding["task_path"])
+        if task_rel.is_absolute() or ".." in task_rel.parts:
+            raise IntakeError("queue task path is unsafe")
+        task = root / task_rel
+        if not task.is_file():
+            raise IntakeError("protected immutable queue task is missing")
+        # Git canonicalizes line endings; Windows checkouts can use CRLF.
+        canonical_task = task.read_bytes().replace(b"\r\n", b"\n")
+        if hashlib.sha256(canonical_task).hexdigest() != binding.get("task_sha256"):
+            raise IntakeError("immutable queue task differs from pinned source digest")
+        if not re.fullmatch(r"[0-9a-f]{40}", str(binding.get("task_commit") or "")):
+            raise IntakeError("queue task has no immutable commit identity")
+        return
+
     if not body.startswith(DISPATCH_MARKER + "\n"):
         raise IntakeError("dispatch issue is missing the dispatch marker")
 
@@ -176,7 +581,11 @@ def validate_dispatch_issue(root: Path, issue: dict[str, Any], dispatch: dict[st
         raise IntakeError("GitHub issue body differs from the protected bootstrap bytes")
 
 
-def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+def validate_event(
+    event: dict[str, Any],
+    root: Path,
+    comments: list[dict[str, Any]] | None = None,
+) -> tuple[dict[str, Any], IntakeProfile, dict[str, Any], dict[str, Any]]:
     issue = _object(event.get("issue"), "issue")
     if "pull_request" in issue:
         raise IntakeError("result comments are accepted only on dispatch issues")
@@ -185,14 +594,20 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], d
     if not isinstance(body, str):
         raise IntakeError("comment body is unavailable")
 
-    parsed = parse_result_comment(body)
+    parsed = parse_result_comment(body, root)
     dispatch_id = parsed["preamble"]["dispatch_id"]
-    dispatch = load_dispatch(root, dispatch_id)
-    validate_dispatch_issue(root, issue, dispatch)
+    profile, dispatch = load_dispatch(root, dispatch_id)
+    validate_dispatch_issue(root, issue, profile, dispatch)
 
     if parsed["preamble"]["assignment"] != dispatch.get("assignment_id"):
         raise IntakeError("assignment does not match protected dispatch")
-    if dispatch.get("concurrency_mode") not in {"independent_blind", "cooperative_claimed", "adversarial_replay"}:
+    if (profile.queue_binding or profile in {UC_PROFILE, CMDG_PROFILE, CMDG_COV_PROFILE, CMDG_N3_PROFILE, ERDOS_RA_PROFILE, ERDOS_S_PROFILE}) and parsed["preamble"].get("agent_ref") != dispatch.get("agent_ref"):
+        raise IntakeError("agent_ref does not match protected dispatch")
+    if dispatch.get("concurrency_mode") not in {
+        "independent_blind",
+        "cooperative_claimed",
+        "adversarial_replay",
+    }:
         raise IntakeError("protected dispatch has invalid concurrency mode")
 
     user = _object(comment.get("user"), "comment user")
@@ -204,24 +619,84 @@ def validate_event(event: dict[str, Any], root: Path) -> tuple[dict[str, Any], d
     if not isinstance(comment_id, int):
         raise IntakeError("GitHub comment id is unavailable")
 
-    return parsed, dispatch, {"issue": issue, "comment": comment, "actor": login, "comment_id": comment_id}
+    queue_job = queue_job_for_dispatch(root, dispatch_id)
+    reservation = None
+    if queue_job is not None and queue_job.get("self_claimable") is True:
+        if comments is None:
+            raise IntakeError("queue-managed dispatch requires issue comment history")
+        created_at = comment.get("created_at")
+        if not isinstance(created_at, str) or not created_at:
+            raise IntakeError("queue-managed result lacks comment_created_at")
+        at = datetime.fromisoformat(created_at.replace("Z", "+00:00")).astimezone(timezone.utc)
+        reservation = active_reservation(
+            comments,
+            dispatch_id,
+            at,
+            {"github-actions[bot]"},
+        )
+        if reservation is None:
+            raise IntakeError("queue-managed result has no active worker reservation")
+        if reservation.get("worker") != login:
+            raise IntakeError("authenticated result author does not match active worker reservation")
+
+    return parsed, profile, dispatch, {
+        "issue": issue,
+        "comment": comment,
+        "actor": login,
+        "comment_id": comment_id,
+        "queue_job": queue_job,
+        "worker_reservation": reservation,
+    }
 
 
-def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, Any]:
-    parsed, dispatch, observed = validate_event(event, root)
+def emit_intake(
+    event: dict[str, Any],
+    root: Path,
+    output: Path,
+    comments: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    parsed, profile, dispatch, observed = validate_event(event, root, comments)
     body = observed["comment"]["body"]
     assert isinstance(body, str)
 
     dispatch_id = parsed["preamble"]["dispatch_id"]
     comment_id = observed["comment_id"]
-    raw_rel = BASE_REL / "raw" / dispatch_id / f"github-comment-{comment_id}.md"
-    receipt_rel = BASE_REL / "receipts" / dispatch_id / f"github-comment-{comment_id}.json"
+    raw_rel = profile.base_rel / "raw" / dispatch_id / f"github-comment-{comment_id}.md"
+    receipt_rel = profile.base_rel / "receipts" / dispatch_id / f"github-comment-{comment_id}.json"
+
+    queue_job = observed.get("queue_job") or {}
+    reservation = observed.get("worker_reservation") or {}
+    epistemic_class = {
+        "independent_blind": "INDEPENDENT_BLIND",
+        "cooperative_claimed": "COOPERATIVE",
+        "adversarial_replay": "ADVERSARIAL_REPLAY",
+    }[dispatch["concurrency_mode"]]
+
+    try:
+        policy = (
+            policy_blockers(
+                dispatch_id,
+                parsed["preamble"]["disposition"],
+                root,
+            )
+            if profile in {ERDOS_RA_PROFILE, ERDOS_S_PROFILE}
+            else []
+        )
+        semantic_blockers = merge_blockers(
+            parsed.get("semantic_blockers", []),
+            policy,
+        )
+        semantic_gate_dispatches = required_source_dispatches(semantic_blockers)
+    except ValueError as exc:
+        raise IntakeError(str(exc)) from exc
 
     receipt = {
-        "schema_version": "0.2-pilot",
+        "schema_version": profile.receipt_schema_version,
         "receipt_id": f"{dispatch_id}:github-comment:{comment_id}",
+        "campaign": profile.campaign,
         "dispatch_id": dispatch_id,
         "assignment_id": dispatch["assignment_id"],
+        "agent_ref": dispatch.get("agent_ref"),
         "concurrency_mode": dispatch["concurrency_mode"],
         "blind_cohort_id": dispatch.get("blind_cohort_id"),
         "result_protocol": MARKER,
@@ -229,17 +704,27 @@ def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, An
         "github_comment_id": comment_id,
         "authenticated_github_actor": observed["actor"],
         "comment_created_at": observed["comment"].get("created_at"),
+        "queue_managed": bool(queue_job),
+        "worker_reservation_enforced": bool(queue_job),
+        "worker_reservation_owner": reservation.get("worker"),
+        "collaboration_mode": queue_job.get("collaboration_mode"),
+        "visibility_phase": queue_job.get("visibility_phase"),
+        "sibling_use_policy": queue_job.get("sibling_use_policy"),
+        "epistemic_class": epistemic_class,
         "raw_artifact_path": raw_rel.as_posix(),
         "raw_sha256": sha256_text(body),
-        "bootstrap_path": dispatch["bootstrap_path"],
-        "bootstrap_sha256": dispatch["bootstrap_sha256"],
         "source_handoff_commit_sha": dispatch["source_handoff_commit_sha"],
-        "source_handoff_blob_sha": dispatch["source_handoff_blob_sha"],
-        "source_handoff_sha256": dispatch["source_handoff_sha256"],
         "disposition_declared": parsed["preamble"]["disposition"],
         "context_class_declared": parsed["preamble"]["context_class"],
         "external_sources_declared": parsed["preamble"]["external_sources"],
         "timebox_observed_declared": parsed["preamble"]["timebox_observed"],
+        "semantic_blockers": semantic_blockers,
+        "semantic_blocker_state": "OPEN" if semantic_blockers else "NONE",
+        "semantic_gate_required": bool(semantic_blockers),
+        "semantic_gate_required_dispatch_ids": semantic_gate_dispatches,
+        "semantic_gate_resolution_state": (
+            "AWAITING_SOURCE_AUDIT" if semantic_blockers else "NOT_REQUIRED"
+        ),
         "schema_result": "valid",
         "freshness": "current_for_dispatch",
         "security_state": "narrative_only_no_links_no_attachments",
@@ -247,25 +732,46 @@ def emit_intake(event: dict[str, Any], root: Path, output: Path) -> dict[str, An
         "mathematical_correctness_adjudicated": False,
         "independence_strength_adjudicated": False,
         "canonical_claim_effect": False,
-        "recorded_by": "github-actions:ns-ci-independent-contribution-intake",
+        "recorded_by": "github-actions:controlled-epistemic-interface-intake",
     }
 
+    if profile.queue_binding:
+        binding = queue_intake_binding(root, dispatch_id)
+        if binding is None:
+            raise IntakeError("queue intake binding lost during receipt generation")
+        receipt.update({
+            "intake_binding_kind": "PROTECTED_QUEUE_TASK_AND_ISSUE_DIGEST",
+            "task_path": binding["task_path"],
+            "task_commit": binding["task_commit"],
+            "task_sha256": binding["task_sha256"],
+            "issue_body_sha256": binding["issue_body_sha256"],
+            "certification_effect": False,
+        })
+    else:
+        for field in (
+            "bootstrap_path", "bootstrap_sha256",
+            "source_handoff_blob_sha", "source_handoff_sha256",
+        ):
+            receipt[field] = dispatch[field]
+
     output.mkdir(parents=True, exist_ok=True)
-    raw_out = output / "RAW.md"
-    receipt_out = output / "RECEIPT.json"
-    meta_out = output / "META.json"
-    raw_out.write_text(body, encoding="utf-8")
-    receipt_out.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    (output / "RAW.md").write_text(body, encoding="utf-8")
+    (output / "RECEIPT.json").write_text(
+        json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
     meta = {
+        "campaign": profile.campaign,
         "dispatch_id": dispatch_id,
         "comment_id": comment_id,
         "issue_number": observed["issue"]["number"],
         "raw_repo_path": raw_rel.as_posix(),
         "receipt_repo_path": receipt_rel.as_posix(),
         "branch": f"intake/{dispatch_id.lower()}",
-        "pr_title": f"NS-CI intake: {dispatch_id}",
+        "pr_title": f"{profile.pr_title_prefix}: {dispatch_id}",
     }
-    meta_out.write_text(json.dumps(meta, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    (output / "META.json").write_text(
+        json.dumps(meta, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
     return meta
 
 
@@ -274,11 +780,17 @@ def main() -> int:
     parser.add_argument("--event", type=Path, required=True)
     parser.add_argument("--repo-root", type=Path, default=ROOT)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--comments", type=Path)
     args = parser.parse_args()
     try:
         event = json.loads(args.event.read_text(encoding="utf-8"))
         event = _object(event, "event")
-        meta = emit_intake(event, args.repo_root, args.output)
+        comments = None
+        if args.comments is not None:
+            comments = json.loads(args.comments.read_text(encoding="utf-8"))
+            if not isinstance(comments, list):
+                raise IntakeError("comments payload must be a JSON list")
+        meta = emit_intake(event, args.repo_root, args.output, comments)
     except (OSError, json.JSONDecodeError, IntakeError) as exc:
         args.output.mkdir(parents=True, exist_ok=True)
         (args.output / "ERRORS.txt").write_text(str(exc) + "\n", encoding="utf-8")

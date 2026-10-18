@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS_SEMANTIC_GATE_POLICY",
+  "policy": "A declared or pre-registered source/formal-statement conflict is evidence-only but blocks cohort synthesis until the matching protected source-audit return exists. This gate creates no mathematical or certification effect.",
+  "rules": [
+    {
+      "dispatch_id": "ERDOS-138-A1-IA-001",
+      "trigger_dispositions": [
+        "COUNTEREXAMPLE",
+        "SOURCE_INTERFACE_FOUND",
+        "EXACT_BLOCKER"
+      ],
+      "blockers": [
+        {
+          "blocker_id": "ERDOS-138-BERLEKAMP-PROSE-FORMAL-001",
+          "kind": "SOURCE_FORMAL_CONFLICT",
+          "requires_dispatch_id": "ERDOS-138-S1-IA-001",
+          "reason": "The protected Berlekamp prose lower bound and protected Lean theorem body differ in an outcome-changing way; source reconciliation must be present before synthesis."
+        }
+      ]
+    }
+  ]
+}

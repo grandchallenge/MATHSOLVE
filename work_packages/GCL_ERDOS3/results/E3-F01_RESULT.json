@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS3_WORK_PACKAGE_RESULT",
+  "campaign": "GCL-ERDOS3",
+  "work_package": "E3-F01",
+  "frontier_node": "E3-F-D5",
+  "disposition": "FORMALIZED",
+  "artifact": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "path": "work_packages/OPENMATH_2026/OM26_H7_ERDOS_3/H7_D5.lean",
+    "git_blob_sha1": "530ee6d6651e90f683dd3e3d3abd2246f8aae6de",
+    "compiled_source_commit": "4d2f27f8c464f00a32361e98abab398f32b8df0d",
+    "current_identical_blob_commit": "1273b75457f42da62a8af4c69493d44d293d4567"
+  },
+  "proof_replay": {
+    "workflow_run_id": 36990793026,
+    "job_id": 110786278497,
+    "job_name": "h7-pinned-lean",
+    "conclusion": "success",
+    "pinned_image": "ghcr.io/ottogin/lean-mathlib@sha256:964547ad81e109c78545512867bae70b710c55d833078674878faad7de0ebb85",
+    "lean_version": "4.33.1",
+    "theorems": [
+      "Erdos3.reciprocal_divergent_diff_finite",
+      "Erdos3.reciprocal_divergent_tail",
+      "Erdos3.reciprocal_divergent_zmod_fiber"
+    ],
+    "printed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "no_proof_holes": true
+  },
+  "frontier_action": "CLOSED_NO_SUCCESSOR",
+  "justification": "The exact current D5 blob is byte-identical to the blob compiled successfully in the organizer-pinned Lean image. All three requested lemmas passed and printed only the allowed standard axioms.",
+  "claim_boundary": "Closes the D5 hypothesis-side formalization package only. It does not prove Erdős Problem 3 or the reciprocal-divergence-to-AP implication."
+}

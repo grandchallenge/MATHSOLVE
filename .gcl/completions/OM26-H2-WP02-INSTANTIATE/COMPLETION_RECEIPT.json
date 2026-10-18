@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_COMPLETION_RECEIPT",
+  "operation": "OM26-H2-WP02-INSTANTIATE",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "state": "CLOSED__WP02_PROTECTED_AND_READY_FOR_ZERO_CONTEXT_LAUNCH",
+  "instantiation_merge": "113cdc018b84696b9c15413e4cd4a776d20e72ec",
+  "readback_merge": "386d3ab629eedb40d1ca8e2647feb9bb96c891f1",
+  "assignment": {
+    "id": "OM26-H2-WP02",
+    "state": "LEASED_NOT_LAUNCHED",
+    "predecessor": "OM26-H2-WP01",
+    "predecessor_state": "ACCEPTED_CLOSED"
+  },
+  "dispatch": {
+    "id": "OM26-H2-WP02-IA-001",
+    "agent_ref": "INDEPENDENT-AGENT-008",
+    "issue_number": 526,
+    "issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/526",
+    "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H2-WP02-IA-001.md",
+    "bootstrap_git_blob_sha1": "5f2b99afd44549aaaca1387563abf36f0842c222",
+    "issue_body_matches_protected_bootstrap": true,
+    "return_protocol": "GCL-CONTRIBUTION-RESULT/1"
+  },
+  "protected_readback": {
+    "handoffs/OPENMATH-2026/jobs/OM26-H2-WP02.md": "93217243d6dfdc54a9cccd0d7cdaa8dcf27cd4e5",
+    "handoffs/OPENMATH-2026/jobs/OM26-H2-WP02-IA-001.md": "5f2b99afd44549aaaca1387563abf36f0842c222",
+    ".gcl/operations/OM26-H2-WP02-IA-001/OPERATION.json": "a0cb50b1a78bb72bca172edd8bbd77f705bf0dd4",
+    "contributions/OPENMATH-2026/OM26-H2/WP02/dispatches/OM26-H2-WP02-IA-001.json": "36fd080825831248e4df8eee3edad9d9fb15d194",
+    ".gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json": "a3e0dbbf98f9063d259c0811e0919f24f945d282",
+    "work_packages/OPENMATH_2026/HILL_LANES.json": "768a5cb0405362980e08b43ee9c3c46f4ee7b15d",
+    "handoffs/OPENMATH-2026/CEX_JOB_BOARD.md": "a57ce6070109b6dffa20f4ceafd4dc67c8cd86a3",
+    "ci/validate_openmath_h2_wp02_instantiation.py": "1852cdca2f4b6c531f458cfd9e55dcbbf15e9363",
+    ".gcl/admission/OM26-H2-WP02-INSTANTIATE/FREEZE.json": "2e2acbf3c0a92d381caf88c1e3ef38435a9db472",
+    ".gcl/operations/OM26-H2-WP02-INSTANTIATE/OPERATION.json": "92ca3fd5389cfd4e615b139ad6a346d702f62932"
+  },
+  "completion_check": {
+    "protected_lease": true,
+    "protected_readback": true,
+    "exact_bootstrap_issue_body": true,
+    "explicit_return_location": true,
+    "exact_result_grammar": true,
+    "exact_replayable_evidence_requirement": true,
+    "concise_failure_return": true,
+    "competition_submission_authorized": false,
+    "certification_authorized": false,
+    "canonical_mutation_authorized": false
+  },
+  "claim_boundary": "WP02 is instantiated and ready for bounded independent execution only. No result has been returned, adjudicated, certified, promoted, or submitted."
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_RESULT_ADJUDICATION",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "obligation": "WP02",
+  "adjudication_id": "OM26-H2-WP02-ADJ-001",
+  "dispatch_id": "OM26-H2-WP02-IA-001",
+  "assignment_id": "OM26-H2-WP02",
+  "agent_ref": "INDEPENDENT-AGENT-008",
+  "source_result": {
+    "raw_path": "contributions/OPENMATH-2026/OM26-H2/WP02/raw/OM26-H2-WP02-IA-001/github-comment-5889734796.md",
+    "raw_git_blob_sha1": "4a768a5fe4e91bbb12248019982a2df27e6887ea",
+    "receipt_path": "contributions/OPENMATH-2026/OM26-H2/WP02/receipts/OM26-H2-WP02-IA-001/github-comment-5889734796.json",
+    "receipt_git_blob_sha1": "4a841dd847bd94e36a6176b18d345e4a0a55abd2",
+    "declared_disposition": "EXACT_SEARCH_DESIGN_VALIDATED"
+  },
+  "disposition": "ACCEPTED_WITNESSES_WITH_EXACT_SEARCH_REPLAY_REJECTED",
+  "accepted_claims": [
+    {
+      "claim_id": "OM26-H2-W89911-001",
+      "statement": "The returned six-state machine W89911 halts from the all-zero tape after exactly 89911 transitions with 185 ones, tape span 541, and all six non-halting states reached under the protected evaluator semantics.",
+      "effect": "VERIFIED_FINITE_LOWER_BOUND_WITNESS",
+      "certification_effect": false
+    },
+    {
+      "claim_id": "OM26-H2-W8021-001",
+      "statement": "The returned first-write-zero machine W8021 halts from the all-zero tape after exactly 8021 transitions with 41 ones, tape span 122, and all six non-halting states reached under the protected evaluator semantics.",
+      "effect": "VERIFIED_FINITE_LOWER_BOUND_WITNESS",
+      "certification_effect": false
+    }
+  ],
+  "narrowed_or_rejected_parts": [
+    {
+      "item": "EXACT_SEARCH_DESIGN_VALIDATED",
+      "disposition": "REJECTED_AS_STATED",
+      "reason": "The supplied replay program is internally inconsistent and does not establish the declared full exact-search validation."
+    },
+    {
+      "item": "Dual-scorer concordance",
+      "disposition": "NOT_ESTABLISHED_BY_RETURNED_REPLAY",
+      "reason": "The returned function named score_protected_evaluator writes/reads the candidate and then calls score_independent; it does not execute the protected evaluator implementation as a logically separate scorer."
+    },
+    {
+      "item": "W8021 replay-program metric",
+      "disposition": "INTERNAL_REPLAY_DEFECT",
+      "reason": "The returned result text and protected evaluator semantics give tape_span=122, but the supplied E.5 replay assertion expects [8021,41,121], so the advertised self-contained replay program cannot pass as returned."
+    },
+    {
+      "item": "Unpruned exact-set concordance at B=6 and B=7",
+      "disposition": "NOT_REPLAYABLY_ESTABLISHED",
+      "reason": "The prose claims exact set equality with an unpruned enumeration, but the supplied replay program contains no distinct unpruned reference enumerator implementing that comparison."
+    },
+    {
+      "item": "Exactness of all branch-removing rules, including translated-cycle rule EXACT-07",
+      "disposition": "NOT_ADMITTED",
+      "reason": "Because the completion replay is not internally valid, the pruning ledger remains a candidate proof package rather than an admitted exact-search certificate. WP03 must independently align theorem hypotheses, implementation predicates, and adversarial replay."
+    }
+  ],
+  "adjudicator_checks": {
+    "source_result_protected": "PASS",
+    "protected_evaluator_semantics_identity": "PASS",
+    "witness_W89911_independent_replay": "PASS__89911_185_541_ALL_SIX_STATES",
+    "witness_W8021_independent_replay": "PASS__8021_41_122_ALL_SIX_STATES",
+    "returned_replay_internal_consistency": "FAIL__W8021_EXPECTED_SPAN_121_VS_PROTECTED_122",
+    "protected_evaluator_independence": "FAIL__WRAPPER_CALLS_INDEPENDENT_SCORER",
+    "unpruned_small_horizon_reference": "FAIL__CLAIM_PRESENT_IMPLEMENTATION_ABSENT",
+    "exact_pruning_soundness": "NOT_ESTABLISHED",
+    "overclaim_check": "NARROWED"
+  },
+  "resulting_frontier": {
+    "previous": "SCORER_CONCORDANCE_ACCEPTED__EXACT_SEARCH_DESIGN_REQUIRED",
+    "new": "VERIFIED_WITNESSES_ACCEPTED__EXACT_SEARCH_REPLAY_CLOSURE_REQUIRED",
+    "remaining_gap": "Repair the self-contained replay, use genuinely separate independent/protected evaluator paths, compare B=6 and B=7 against a distinct unpruned reference enumerator, and re-audit every exact pruning rule before exact-search validation."
+  },
+  "successor": {
+    "assignment_id": "OM26-H2-WP03",
+    "dispatch_id": "OM26-H2-WP03-IA-001",
+    "agent_ref": "INDEPENDENT-AGENT-009",
+    "return_issue": 537,
+    "objective": "Exact-search replay closure without redoing accepted witness discovery."
+  },
+  "lifecycle_effect": {
+    "external_result_state": "ACCEPTED",
+    "assignment_closed": true,
+    "adjudication_complete": true,
+    "certification": "NONE",
+    "competition": "NONE"
+  },
+  "claim_boundary": "Solve-level bounded adjudication. Accepts two finite lower-bound witnesses only. Does not validate the complete exact search, prove S(6), establish optimality, certify Busy Beaver mathematics, or authorize competition submission."
+}

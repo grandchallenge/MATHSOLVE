@@ -1,0 +1,54 @@
+GCL-CONTRIBUTION-RESULT/1
+dispatch_id: OM26-H2-WP07-IA-001
+agent_ref: INDEPENDENT-AGENT-207
+assignment: OM26-H2-WP07
+disposition: REPLAY_CLOSURE_VALIDATED
+context_class: ZERO_CONTEXT
+external_sources: PROTECTED_PACKET_ONLY
+timebox_observed: YES
+
+## Strongest exact statement
+
+The protected predecessor claim for candidate W89911 replays exactly under dual independent six-state two-symbol Turing machine simulation engines on a bi-infinite blank tape. Candidate W89911 halts after exactly 89,911 transitions, leaves 185 ones on the tape, spans 541 tape positions, and visits all six non-halting states A, B, C, D, E, F. Simulation outcomes are identical across both 250,000 and 1,000,000 step execution budgets.
+
+The complete 1-Hamming transition neighborhood of 324 single-transition perturbations (12 transition table entries with 27 alternative write, move, and next-state assignments each) was exhaustively simulated up to 250,000 steps. Exactly 151 mutants halt within the budget, and 173 mutants fail to halt within the budget. Exactly zero halting mutants visit all six non-halting states while exceeding 89,911 transitions. The deterministic audit serialization reproduces the protected SHA-256 fingerprint c745cff726fd0c89a11e31931f73190a0b4cdbba90e2052e0b3194321bd48cde.
+
+## Derivation
+
+The W89911 transition specification was evaluated under two independent implementations:
+1. A sparse dictionary tape representation with symbolic states A through F and halt state H, tracking min/max visited head positions.
+2. A flat byte-array indexed tape representation with integer state indices (0 to 5 for non-halting states, 6 for halt), bitmask tracking of visited states, and pointer deltas.
+
+Both implementations independently confirmed that W89911 halts at transition 89,911 with 185 ones, span 541, and reachability of all six non-halting states at both 250,000 and 1,000,000 step limits.
+
+The 1-Hamming neighborhood audit was executed systematically:
+1. Outer iteration over states A, B, C, D, E, F;
+2. Current tape symbol 0 then 1;
+3. Candidate perturbation over write symbols 0 then 1;
+4. Move directions L then R;
+5. Next states A, B, C, D, E, F, H;
+6. Excluding the original transition entry.
+
+Each of the 324 candidate mutants was simulated from the blank tape with head position 0 in initial state A up to 250,000 steps. The results partitioned into 151 halting machines and 173 non-halting machines within the budget. No halting mutant visited all six states with step count greater than 89,911. Serializing each mutant result as [state, symbol, write, move, next, halted, steps, ones, span, sorted_reached_states] in deterministic order via compact JSON produced the exact SHA-256 hash c745cff726fd0c89a11e31931f73190a0b4cdbba90e2052e0b3194321bd48cde.
+
+The immutable task commit fb7d73f2e91ef13674853979835fe80725f6cf65 and blob SHA-1 cf5a823107f25f825ed9eb47f6dc07b451628a44 were verified prior to replay.
+
+## Assumptions beyond bootstrap
+
+Standard six-state two-symbol deterministic Turing machine semantics with bi-infinite tape initially all zeros, head starting at index 0, and start state A. Exact integer arithmetic and deterministic finite execution bounds (250,000 and 1,000,000 transitions). No external Busy Beaver lookup tables, empirical extrapolations, repository mutations, competition submissions, or certifications were utilized.
+
+## Verification / falsification hooks
+
+A replay can falsify this result by simulating the W89911 transition table and yielding any tuple other than steps=89911, ones=185, span=541, and reached_states=6 at 250,000 or 1,000,000 step limits.
+
+The local neighborhood result is falsified by any deviation from total_mutants=324, halted=151, nonhalting_within_budget=173, longer_six_state_candidates=0, or by any discrepancy with the SHA-256 fingerprint c745cff726fd0c89a11e31931f73190a0b4cdbba90e2052e0b3194321bd48cde under canonical JSON serialization.
+
+Any single-transition variant of W89911 that halts within 250,000 transitions, visits all six states, and runs for more than 89,911 transitions serves as an immediate counterexample.
+
+## Claim boundary
+
+This validates strictly the finite deterministic execution properties of W89911 and its complete 1-Hamming neighborhood within the specified step limits. It does not establish the true value of BB(6), global optimality, state-of-the-art status, competition qualification, or formal mathematical certification. Non-halting denotes solely the failure to reach state H within 250,000 steps.
+
+## Next residual
+
+Replay closure for the protected predecessor claim is confirmed and completed. Any subsequent H2 inquiry requires an independently scoped assignment such as structured exploration beyond 1-Hamming distance. This assignment authorizes no candidate promotion, repository mutation, or additional search compute.

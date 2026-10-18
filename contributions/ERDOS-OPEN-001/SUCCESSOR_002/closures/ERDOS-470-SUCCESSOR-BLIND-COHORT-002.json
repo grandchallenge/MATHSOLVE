@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS_SUCCESSOR_002_COHORT_CLOSURE",
+  "campaign": "ERDOS-OPEN",
+  "problem_id": 470,
+  "cohort_id": "ERDOS-470-SUCCESSOR-BLIND-COHORT-002",
+  "state": "BLIND_COLLECTION_CLOSED_AFTER_PROTECTED_EVIDENCE",
+  "closure_date": "2026-10-09",
+  "required_lanes": [
+    "S2"
+  ],
+  "protected_evidence": [
+    {
+      "lane": "S2",
+      "dispatch_id": "ERDOS-470-S2-IA-001",
+      "issue_number": 1010,
+      "github_comment_id": 6071306717,
+      "raw_artifact_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_002/raw/ERDOS-470-S2-IA-001/github-comment-6071306717.md",
+      "raw_blob_sha1": "18d0c4b104d2c07c5c4556bc2f4a6b4ac4c0c8de",
+      "raw_sha256": "7e003a92100c39d0e567fcb4d2330a098d7ca119b5c794e30e91748e58b8ac11",
+      "receipt_path": "contributions/ERDOS-OPEN-001/SUCCESSOR_002/receipts/ERDOS-470-S2-IA-001/github-comment-6071306717.json",
+      "receipt_blob_sha1": "ef2266218b47874d9a6e78cc2c00ae422f54e771",
+      "protected_pull_request": 1021,
+      "protected_merge_commit": "9eb2dfe4e27d1fa21b0ab43b999c3c3301cac3b8",
+      "raw_and_receipt_schema_valid": true,
+      "mathematical_correctness_adjudicated": false
+    }
+  ],
+  "prior_blind_cohort_closed_before_synthesis": true,
+  "synthesis_allowed": true,
+  "mathematical_claim_effect": false,
+  "certification_effect": false,
+  "parent_problem_effect": false,
+  "claim_boundary": "Closes the evidence-comparison boundary for exactly these independently returned successor assignments. It does not verify the contents mathematically, certify external theorems, adjudicate literature, or alter parent-problem state."
+}

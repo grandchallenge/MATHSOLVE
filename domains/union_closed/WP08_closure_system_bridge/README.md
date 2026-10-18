@@ -1,169 +1,203 @@
 # WP08: Closure-System Bridge for UC-P04
 
-Date: 2026-09-24
+Date: 2026-09-25
 
 ## Purpose
 
 WP07-D005 is a protected, independently qualified restricted theorem. The live
-campaign obligation `UC-P04` asks how restricted and finite results could
-connect to the universal half-frequency target.
+campaign obligation `UC-P04` asks how restricted finite results could connect
+to the universal half-frequency target.
 
-WP08 is widening the structural class in controlled stages while preserving the
+WP08 widens the structural class in controlled stages while preserving the
 concrete incidence data used by the frequency inequality.
 
 ## D001 — exact D003 representation is not universal
 
-The first proposed route was:
+The exact functional-preorder complement route is false in general.
 
-```text
-arbitrary finite union-closed family
-  -> complement of an exact D003 functional-preorder ideal family.
-```
-
-That route is false.
-
-Every exact D003 functional-preorder ideal family is closed under both union and
-intersection, and carrier-relative complementation swaps those operations.
-Therefore every exact D003 complement family is closed under both literal union
-and literal intersection.
-
-The concrete three-point family
+Every exact D003 complement family is closed under both literal union and
+literal intersection. The concrete three-point family
 
 ```text
 G = { ∅, {a,b}, {b,c}, {a,b,c} }
 ```
 
-is union-closed but not intersection-closed because
-
-```text
-{a,b} ∩ {b,c} = {b} ∉ G.
-```
-
-The protected D001 endpoint is:
+is union-closed but not intersection-closed. The protected endpoint is:
 
 ```lean
 p04_no_universal_exact_functionalPreorder_representation
 ```
 
-This refutes one UC-P04 subroute. It does not close UC-P04.
+This refutes one `UC-P04` subroute. It does not close `UC-P04`.
 
-## D002 — the functional restriction is unnecessary for half-frequency
+## D002 — finite-poset ideal extension
 
-The next question was whether WP07's functional self-map restriction was
-essential to the Frankl-facing conclusion.
+The functional self-map restriction is unnecessary for the existence of one
+rare element.
 
-It is not.
+For every nonempty finite carrier in an arbitrary partial order, a maximal
+carrier element occurs in at most half of all downward order ideals. Erasing
+that maximal element injects ideals containing it into ideals omitting it.
 
-For every nonempty finite carrier in an arbitrary partial order, choose a
-maximal carrier element `m`. Erasing `m` gives an injective map
-
-```text
-ideals containing m
-  -> ideals omitting m.
-```
-
-Maximality guarantees that erasure preserves downward closure. Hence
-
-```text
-2 * freq(m) <= # all order ideals.
-```
-
-Carrier-relative complementation turns this rare maximal element into an
-abundant element of the family of all upper sets.
-
-The D002 theorem surface is:
-
-```text
-MathSolve/UnionClosed/PosetIdealP04.lean
-```
-
-with principal endpoints:
+Principal endpoints:
 
 ```lean
 posetIdealFamily_exists_rare
 posetIdeal_complement_frankl
 ```
 
-This is a strict enlargement of the WP07 Frankl-facing class from functional
-preorders to arbitrary finite partial orders.
+This strictly enlarges the WP07 Frankl-facing class from functional preorders
+to arbitrary finite partial orders. It does not assert WP07's stronger
+average-rarity inequality for arbitrary posets.
 
-The proof does **not** assert that WP07's stronger average-rarity inequality
-extends to arbitrary posets.
+## D003 — arbitrary finite closure systems have an exact implication normal form
 
-## Universal structure that survives
-
-For a family carried by an explicit finite carrier `U`, complementation gives
-an exact operation-level duality:
+D003 is now closed locally on:
 
 ```text
-G union-closed
-  <-> complementFamilyOn G U intersection-closed.
+MathSolve/UnionClosed/ClosureImplicationP04.lean
 ```
 
-If `∅ ∈ G`, the complement family contains `U`; it is therefore a finite
-closure system.
-
-The programme hierarchy is now:
+For an arbitrary finite closure system `F` on an explicit carrier `U`, the
+module defines the canonical closure
 
 ```text
-functional-preorder ideal systems
-        ⊂
-finite-poset ideal systems
-        ⊂
-finite closure systems
+cl_F(A) = intersection of all C in F with A subset C
 ```
 
-The first inclusion is now crossed by D002. The second remains the live
-mathematical gap.
+and checks the closure-operator laws:
+
+```lean
+closureOf_subset
+subset_closureOf
+closureOf_mono
+closureOf_idempotent
+closureOf_mem_of_closureSystem
+mem_iff_closureOf_eq
+```
+
+Closed members are exactly the fixed points.
+
+The same surface constructs the finite canonical implication basis containing
+every valid implication `P -> q` over the carrier and proves exact recovery:
+
+```lean
+closureSystem_mem_iff_models_canonicalBasis
+```
+
+Hence every finite closure system has a finite implication presentation. This
+is an exact representation theorem for closure systems, not a Frankl theorem.
+
+### Unary implications recover the poset-like regime
+
+For a finite basis of unary implications `x -> y`, its model family is
+union-closed:
+
+```lean
+unaryModelFamilyOn_unionClosed
+unaryImplicationRepresentable_unionClosed
+```
+
+This explains structurally why poset-ideal systems sit inside a narrower
+unary-implication class.
+
+### First genuinely non-unary mechanism
+
+On the three-point carrier, D003 formalizes the single binary implication
+
+```text
+{a,b} -> c.
+```
+
+Its model family is
+
+```text
+{ ∅, {a}, {b}, {c}, {a,c}, {b,c}, {a,b,c} }.
+```
+
+The checked facts are:
+
+```lean
+binaryImplicationClosure_characterization
+binaryImplicationClosure_isClosureSystem
+binaryImplicationClosure_not_unionClosed
+binaryImplicationClosure_not_unaryRepresentable
+binaryImplicationClosure_forcedConclusion_erasure_fails
+```
+
+The key obstruction is exact: erasing the forced conclusion `c` from the
+full closed set produces `{a,b}`, which violates the implication. Therefore
+the maximal-element erasure mechanism used in D002 does not extend verbatim to
+arbitrary implication systems.
+
+The obstruction is to the proof mechanism, not to the half-frequency
+conclusion. This minimal binary example still has a rare element and its
+complement is Frankl-abundant:
+
+```lean
+binaryImplicationClosure_exists_rare
+binaryImplicationClosure_complement_frankl
+```
+
+No theorem in D003 establishes a rare element for every finite closure system.
+
+## Governed replay improvement
+
+WP08 now has an exact-head replay workflow:
+
+```text
+.github/workflows/uc-wp08-closure-system.yml
+```
+
+and the WP08 theorem modules are imported by `MathSolve.lean`. Enabling this
+gate exposed and repaired latent D001/D002 Lean defects that had not previously
+been exercised by the root build. The D001-D003 surface is now subject to the
+same explicit no-`sorry`/no-`admit`/no-explicit-`axiom` replay.
 
 ## Relation to WP05
 
-WP05 works with the abstract finite-lattice formulation and derives strong
-necessary conditions for a minimum counterexample. Those conditions do not by
-themselves recover the concrete ground-element incidence data used by Frankl
-frequency counts.
+The D003 implication normal form identifies the correct structural language for
+the next bridge, but frequency still depends on concrete incidences.
 
-The D001 three-point obstruction makes the distinction explicit: its inclusion
-poset is an abstract four-element diamond even though the concrete family is
-not closed under literal set intersection.
+A WP05/WP08 interface must therefore retain both:
 
-The WP05/WP08 interface must therefore retain both:
+1. the abstract lattice/closure order; and
+2. the incidence map recording which ground elements occur in which closed
+   sets or union-family members.
 
-1. lattice-order structure; and
-2. the incidence map recording which ground elements occur in which family
-   members.
+An abstract lattice isomorphism alone is not enough to transport the Frankl
+frequency statistic.
 
-An abstract lattice isomorphism alone is not a sufficient bridge to the
-frequency endgame.
-
-## Next mathematical tranches
-
-### WP08-D003 — closure-operator / implication normal form
-
-Represent an arbitrary finite closure system by its closure operator or a
-finite implication basis.
-
-Poset ideals correspond to closure systems generated by unary order
-implications. The next target is to identify the first genuinely non-unary
-implication mechanism and determine whether the maximal-element injection
-generalizes, deforms, or fails there.
+## Next mathematical tranche
 
 ### WP08-D004 — incidence-preserving WP05 interface
 
-Translate the WP05 minimum-counterexample conditions into a lattice-plus-
-incidence object. Determine which closure-system properties are forced by those
-conditions and which are independent.
+Construct a finite lattice-plus-incidence object for a carried union-closed
+family and its complement closure system. Re-express the protected WP05
+minimum-counterexample conditions on that object and determine which conditions
+constrain the implication structure, especially genuinely non-unary premises.
+
+Acceptance requires incidence counts to be preserved exactly. No theorem may
+replace the concrete family by an abstractly isomorphic lattice and then reuse
+frequencies without an explicit incidence transport.
 
 ## Claim firewall
 
 ```text
+WP08-D001 = CLOSED_NEGATIVE
+WP08-D002 = CLOSED_LOCAL
+WP08-D003 = CLOSED_LOCAL
+
 UC-WP08-L001 = exact D003 complements are union- and intersection-closed
 UC-WP08-L002 = explicit 3-point union-closed family is not D003-representable
 UC-WP08-L003 = universal exact D003 representation route is refuted
 UC-WP08-P004 = finite-poset ideal complements satisfy Frankl abundance
+UC-WP08-L005 = every finite closure system has a finite canonical implication basis
+UC-WP08-L006 = unary implication model families are union-closed
+UC-WP08-L007 = the binary implication {a,b}->c is a non-unary closure-system obstruction
+UC-WP08-P008 = that bounded binary example still has a rare element and Frankl-abundant complement
 
-WP08-D001 = CLOSED_NEGATIVE
-WP08-D002 = CLOSED_LOCAL
+WP08-D004 = OPEN_NEXT
 UC-P04 = OPEN
 UC-FRANKL = OPEN_PROBLEM
 MATHEMATICAL_TARGET_PROVED = false

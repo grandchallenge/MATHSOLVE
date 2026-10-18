@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_PROTECTED_COHORT_OPEN_READBACK",
+  "receipt_id": "CMDG-P3M-N3-BLIND-COHORT-001:PROTECTED-OPEN-READBACK-001",
+  "campaign": "CMDG-CM4-N3",
+  "work_package": "P3-M-FINITE-COEFFICIENT-ALLTRUE-005",
+  "protected_programme_predecessor": "a2897a270c477ac95ba3d18dd068a13b07d3b853",
+  "protected_solve_activation_merge": "fea1128fb5167c912f85b7b4369519e5bd3fc502",
+  "protected_solve_launch_finalize_merge": "b44d77784f4cb0e1475fd08dd3bb500c3dc590c3",
+  "protected_main_readback": "b44d77784f4cb0e1475fd08dd3bb500c3dc590c3",
+  "cohort_id": "CMDG-P3M-N3-BLIND-COHORT-001",
+  "cohort_state": "OPEN",
+  "synthesis_allowed": false,
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "leases_state": "ACTIVE",
+  "issue_byte_lock_complete": true,
+  "launch_comments_posted": true,
+  "launch_comment_ids": {
+    "CMDG-P3M-N3-WP-A-IA-001": 5979988980,
+    "CMDG-P3M-N3-WP-B-IA-001": 5979989495,
+    "CMDG-P3M-N3-WP-C-IA-001": 5979989898,
+    "CMDG-P3M-N3-WP-D-IA-001": 5979990453
+  },
+  "live_issues": [
+    826,
+    827,
+    828,
+    829
+  ],
+  "controlled_intake_profile": "CMDG-CM4-N3",
+  "controlled_intake_parser_blob": "42a839a033e31e34a9a9d60db73f5cfb8f9a2ad9",
+  "intake_workflow_blob": "fcd519fb7814f42e155980423a61b5989f773ba7",
+  "mathematical_effect": false,
+  "certification_effect": false,
+  "claim_boundary": "Protected activation/readback only; no N3 theorem, weighted reconstruction, Point-component vanishing, d = 0, mapping-out injectivity, coefficient solidity, P3 completion, or CM4 completion is admitted."
+}

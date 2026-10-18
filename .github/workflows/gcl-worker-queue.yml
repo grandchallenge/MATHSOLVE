@@ -1,0 +1,313 @@
+name: GCL worker queue reservation controller
+run-name: ${{ github.event_name == 'workflow_dispatch' && inputs.gcl_control_operation_id != '' && format('GCL Control Plane {0}', inputs.gcl_control_operation_id) || 'GCL worker queue reservation controller' }}
+
+on:
+  issue_comment:
+    types: [created]
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      gcl_control_operation_id:
+        description: "Optional opaque CONTROL-WRITE-001 transaction ID for exact-run correlation"
+        type: string
+        required: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  command:
+    if: >
+      github.event_name == 'issue_comment' &&
+      !github.event.issue.pull_request &&
+      (github.event.comment.body == '/claim' || github.event.comment.body == '/release')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    concurrency:
+      group: gcl-mathematics-active-reservations
+      queue: max
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Capture complete protected active Mathematics worker inventory
+        if: github.event.comment.body == '/claim'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python ci/gcl_active_reservation_capacity.py \
+            --snapshot-out "$RUNNER_TEMP/active-mathematics.json"
+
+      - name: Fetch issue comment history
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments?per_page=100" | jq -s 'add' > "$RUNNER_TEMP/issue-comments.json"
+
+      - name: Evaluate queue command against protected state
+        id: evaluate
+        continue-on-error: true
+        run: |
+          python ci/gcl_worker_queue.py \
+            --event "$GITHUB_EVENT_PATH" \
+            --comments "$RUNNER_TEMP/issue-comments.json" \
+            --output "$RUNNER_TEMP/queue-candidate.json"
+          python ci/gcl_active_reservation_capacity.py \
+            --candidate "$RUNNER_TEMP/queue-candidate.json" \
+            --snapshot "$RUNNER_TEMP/active-mathematics.json" \
+            --output "$RUNNER_TEMP/queue-result.json"
+
+      - name: Apply operational labels and post controller response
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          if [ ! -f "$RUNNER_TEMP/queue-result.json" ]; then
+            printf '%s\n' "QUEUE CONTROLLER ERROR — evaluation failed before a result artifact was produced." > "$RUNNER_TEMP/response.md"
+            gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" -F body=@"$RUNNER_TEMP/response.md" >/dev/null
+            exit 1
+          fi
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          result = json.loads(Path(os.environ["RUNNER_TEMP"] + "/queue-result.json").read_text())
+          config = json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())
+          labels = config["labels"]
+          Path(os.environ["RUNNER_TEMP"] + "/response.md").write_text(result["response"] + "\n", encoding="utf-8")
+          for kind in ("labels_add", "labels_remove"):
+              values = [labels[k] for k in result.get(kind, []) if k in labels]
+              Path(os.environ["RUNNER_TEMP"] + "/" + kind + ".txt").write_text("\n".join(values) + ("\n" if values else ""), encoding="utf-8")
+          PY
+          while IFS= read -r label; do
+            [ -z "$label" ] && continue
+            gh label create "$label" --repo "$GITHUB_REPOSITORY" --force >/dev/null
+            gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "$label" >/dev/null
+          done < "$RUNNER_TEMP/labels_add.txt"
+          while IFS= read -r label; do
+            [ -z "$label" ] && continue
+            gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label "$label" >/dev/null 2>&1 || true
+          done < "$RUNNER_TEMP/labels_remove.txt"
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" -F body=@"$RUNNER_TEMP/response.md" >/dev/null
+
+
+      - name: Synchronize queue Issue Fields
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          python ci/gcl_worker_queue_projection.py \
+            --mode command \
+            --result "$RUNNER_TEMP/queue-result.json" \
+            > "$RUNNER_TEMP/queue-projection.json"
+
+          if [ "$(jq -r '.queue_managed' "$RUNNER_TEMP/queue-projection.json")" != "true" ]; then
+            exit 0
+          fi
+
+          if [ "$(jq '.issue_field_values | length' "$RUNNER_TEMP/queue-projection.json")" -gt 0 ]; then
+            jq '{issue_field_values: .issue_field_values}' "$RUNNER_TEMP/queue-projection.json" > "$RUNNER_TEMP/issue-fields.json"
+            gh api --method POST \
+              "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/issue-field-values" \
+              --input "$RUNNER_TEMP/issue-fields.json" >/dev/null
+          fi
+
+          jq -r '.clear_field_ids[]?' "$RUNNER_TEMP/queue-projection.json" | while IFS= read -r field_id; do
+            [ -z "$field_id" ] && continue
+            gh api --method DELETE \
+              "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/issue-field-values/$field_id" \
+              >/dev/null 2>&1 || true
+          done
+
+  reap:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    concurrency:
+      group: gcl-mathematics-active-reservations
+      queue: max
+      cancel-in-progress: false
+    steps:
+      - name: Validate and preserve optional exact CONTROL dispatch identity
+        if: github.event_name == 'workflow_dispatch' && inputs.gcl_control_operation_id != ''
+        env:
+          GCL_CONTROL_OPERATION_ID: ${{ inputs.gcl_control_operation_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          import re
+
+          operation = os.environ["GCL_CONTROL_OPERATION_ID"]
+          if not re.fullmatch(r"CW-[A-Z0-9][A-Z0-9-]{7,63}", operation):
+              raise SystemExit("BLOCKED: invalid CONTROL operation ID (no queue mutation)")
+          receipt = {
+              "record_type": "GCL_CONTROL_DISPATCH_RECEIPT/1",
+              "operation_id": operation,
+              "controller": "gcl-worker-queue.yml:reap",
+              "repository": os.environ["GITHUB_REPOSITORY"],
+              "run_id": os.environ["GITHUB_RUN_ID"],
+              "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "head_sha": os.environ["GITHUB_SHA"],
+              "event": os.environ["GITHUB_EVENT_NAME"],
+              "mathematical_effect": False,
+              "certification_effect": False,
+          }
+          print("GCL_CONTROL_DISPATCH_RECEIPT/1 " + json.dumps(
+              receipt, sort_keys=True, separators=(",", ":")))
+          PY
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+
+      - name: Reconcile reservations and Issue Fields
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          job_label="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())
+          print(c["labels"]["job"])
+          PY
+          )"
+          reserved="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())
+          print(c["labels"]["reserved"])
+          PY
+          )"
+          available="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())
+          print(c["labels"]["available"])
+          PY
+          )"
+          returned="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path(".gcl/worker_queue/CONFIG.json").read_text())
+          print(c["labels"]["returned"])
+          PY
+          )"
+
+          gh issue list --repo "$GITHUB_REPOSITORY" --state open --label "$job_label" --limit 1000 --json number > "$RUNNER_TEMP/jobs.json"
+
+          jq -r '.[].number' "$RUNNER_TEMP/jobs.json" | while IFS= read -r n; do
+            [ -z "$n" ] && continue
+
+            gh api --paginate \
+              "repos/$GITHUB_REPOSITORY/issues/$n/comments?per_page=100" \
+              | jq -s 'add' > "$RUNNER_TEMP/comments-$n.json"
+
+            python ci/gcl_worker_queue_projection.py \
+              --mode reconcile \
+              --issue-number "$n" \
+              --comments "$RUNNER_TEMP/comments-$n.json" \
+              > "$RUNNER_TEMP/projection-$n.json"
+
+            if [ "$(jq -r '.queue_managed' "$RUNNER_TEMP/projection-$n.json")" != "true" ]; then
+              continue
+            fi
+
+            if [ "$(jq '.issue_field_values | length' "$RUNNER_TEMP/projection-$n.json")" -gt 0 ]; then
+              jq '{issue_field_values: .issue_field_values}' "$RUNNER_TEMP/projection-$n.json" > "$RUNNER_TEMP/issue-fields-$n.json"
+              gh api --method POST \
+                "repos/$GITHUB_REPOSITORY/issues/$n/issue-field-values" \
+                --input "$RUNNER_TEMP/issue-fields-$n.json" >/dev/null
+            fi
+
+            jq -r '.clear_field_ids[]?' "$RUNNER_TEMP/projection-$n.json" | while IFS= read -r field_id; do
+              [ -z "$field_id" ] && continue
+              gh api --method DELETE \
+                "repos/$GITHUB_REPOSITORY/issues/$n/issue-field-values/$field_id" \
+                >/dev/null 2>&1 || true
+            done
+
+            state="$(jq -r '.reservation_state // ""' "$RUNNER_TEMP/projection-$n.json")"
+            if [ "$state" = "ACTIVE" ]; then
+              gh label create "$reserved" --repo "$GITHUB_REPOSITORY" --force >/dev/null
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$reserved" >/dev/null
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$available" >/dev/null 2>&1 || true
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$returned" >/dev/null 2>&1 || true
+            elif [ "$state" = "EXPIRED" ] || [ "$state" = "RESULT_REJECTED" ]; then
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$returned" >/dev/null 2>&1 || true
+              gh label create "$available" --repo "$GITHUB_REPOSITORY" --force >/dev/null
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$available" >/dev/null
+            elif [ "$state" = "RESULT_PENDING" ]; then
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$available" >/dev/null 2>&1 || true
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$returned" >/dev/null 2>&1 || true
+            elif [ "$state" = "RETURNED" ]; then
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$available" >/dev/null 2>&1 || true
+              gh label create "$returned" --repo "$GITHUB_REPOSITORY" --force >/dev/null
+              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$returned" >/dev/null
+            fi
+          done
+
+      - name: Audit real active Mathematics reservations (read-only)
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p active-capacity
+          python ci/gcl_active_reservation_capacity.py \
+            --snapshot-out "$RUNNER_TEMP/active-mathematics.json"
+          PYTHONPATH=ci python - <<'PY'
+          import json,os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          from gcl_active_reservation_capacity import count_live, CONFIG
+          snapshot=json.loads(Path(os.environ["RUNNER_TEMP"]+"/active-mathematics.json").read_text())
+          live=count_live(snapshot,datetime.now(timezone.utc))
+          limits=json.loads(CONFIG.read_text())["active_class_capacity"]
+          assert set(limits)=={"Mathematics","Editorial"}
+          assert live["complete"] is True and live["class"]=="Mathematics"
+          receipt={"record_type":"GCL_MATHEMATICS_ACTIVE_CAPACITY_READBACK/1",
+                   "protected_sha":os.environ["GITHUB_SHA"],
+                   "run_id":os.environ["GITHUB_RUN_ID"],
+                   "source":"complete authenticated GitHub controller reservation histories",
+                   "observed_jobs":snapshot["total_jobs"],
+                   "active_reservations":live["active_count"],
+                   "active_issue_numbers":live["active_issue_numbers"],
+                   "mathematics_limit":limits["Mathematics"],
+                   "editorial_limit_not_enforced":limits["Editorial"],
+                   "is_worker_result":False,
+                   "is_certification":False}
+          Path("active-capacity/receipt.json").write_text(
+              json.dumps(receipt,sort_keys=True,indent=2)+"\n",encoding="utf-8")
+          print("ACTIVE_CAPACITY_READBACK",json.dumps(receipt,sort_keys=True))
+          PY
+
+      - name: Archive bounded active-worker evidence (no raw comments)
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: gcl-math-active-capacity-${{ github.run_id }}-${{ github.run_attempt }}
+          path: active-capacity/receipt.json
+          retention-days: 14
+          if-no-files-found: warn
+

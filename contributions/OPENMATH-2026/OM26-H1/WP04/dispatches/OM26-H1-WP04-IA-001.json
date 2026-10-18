@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_DISPATCH",
+  "dispatch_id": "OM26-H1-WP04-IA-001",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H1",
+  "assignment_id": "OM26-H1-WP04",
+  "agent_ref": "INDEPENDENT-AGENT-104",
+  "concurrency_mode": "independent_blind",
+  "bootstrap_path": "handoffs/OPENMATH-2026/jobs/OM26-H1-WP04-IA-001.md",
+  "bootstrap_blob_sha1": "dfb38becd570ccf0de9b28f1d17cad837b69d5b0",
+  "source_handoff_commit_sha": "fc1eb717ef2b1a6062a1ac64522034f30a4b41af",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "github_issue_number": 607,
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/607",
+  "github_issue_title": "[GCL-CONTRIB] OPENMATH-2026 OM26-H1-WP04-IA-001 \u2014 automatic replay closure",
+  "canonical_mutation_authorized": false,
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "operation_contract": ".gcl/operations/OM26-H1-WP04-IA-001/OPERATION.json",
+  "protected_lease_required": true
+}

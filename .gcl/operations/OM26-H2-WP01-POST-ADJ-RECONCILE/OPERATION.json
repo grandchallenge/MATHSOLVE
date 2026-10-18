@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-H2-WP01-POST-ADJ-RECONCILE",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "predecessor_adjudication_merge": "607f5dfd8fe0f6e816a27b4a3bf2a77b1122f7a0",
+  "objective": "Reconcile cross-campaign lifecycle validators, job-board projection, and returned-lease closure after protected H2 WP01 adjudication.",
+  "permitted_mutations": [
+    "H2 returned lease closure",
+    "seven-hill topology validator lifecycle expectations",
+    "CEX job-board validator and tests",
+    "Core Clarity lifecycle validator",
+    "H1 adjudication regression compatibility",
+    "human CEX job board"
+  ],
+  "prohibited": [
+    "change H2 adjudication substance",
+    "change H1 adjudication substance",
+    "launch H3-H7 agents",
+    "competition submission",
+    "certification"
+  ],
+  "completion_requires": [
+    "H1 and H2 represented ACCEPTED",
+    "H3-H7 represented LEASED_NOT_LAUNCHED",
+    "H2 lease CLOSED_AFTER_RETURN and non-executable",
+    "all lifecycle validators green",
+    "protected merge",
+    "protected readback receipt"
+  ],
+  "claim_boundary": "Lifecycle/infrastructure reconciliation only; no new mathematical claim."
+}

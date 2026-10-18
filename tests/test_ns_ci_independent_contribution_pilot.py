@@ -68,7 +68,7 @@ class IndependentContributionPilotTest(unittest.TestCase):
         root = self.make_root()
         path = root / WORKFLOW
         text = path.read_text(encoding="utf-8").replace(
-            "group: ns-ci-contribution-intake-${{ github.event.issue.number }}",
+            "group: ns-ci-contribution-intake-${{ github.event.issue.number || inputs.issue_number }}",
             "group: ns-ci-contribution-intake-${{ github.event.comment.id }}",
         )
         path.write_text(text, encoding="utf-8")
@@ -96,6 +96,23 @@ class IndependentContributionPilotTest(unittest.TestCase):
             ),
             encoding="utf-8",
         )
+        self.assertTrue(any("missing control" in item for item in validate(root)))
+
+    def test_exact_comment_replay_surface_is_required(self) -> None:
+        root = self.make_root()
+        path = root / WORKFLOW
+        text = path.read_text(encoding="utf-8").replace("  workflow_dispatch:\n", "  replay_disabled:\n", 1)
+        path.write_text(text, encoding="utf-8")
+        self.assertTrue(any("missing control" in item for item in validate(root)))
+
+    def test_cmdg_sep2_router_is_required(self) -> None:
+        root = self.make_root()
+        path = root / WORKFLOW
+        text = path.read_text(encoding="utf-8").replace(
+            "       startsWith(github.event.issue.title, '[GCL-CONTRIB] CMDG-P3M-SEP CMDG-P3M-SEP2-') ||\n",
+            "",
+        )
+        path.write_text(text, encoding="utf-8")
         self.assertTrue(any("missing control" in item for item in validate(root)))
 
     def test_workflow_auto_merge_surface_is_rejected(self) -> None:

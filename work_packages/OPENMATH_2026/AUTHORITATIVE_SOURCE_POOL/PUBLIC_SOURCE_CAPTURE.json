@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-PUBLIC-SOURCE-CAPTURE",
+  "operation": "OM26-H2-H7-SOURCE-ACQ",
+  "acquisition": {
+    "workflow_run_id": 36417117122,
+    "workflow_job_id": 108910800683,
+    "subject_head": "73a7a9d91948a516c1a72fbd75739346f6741a55",
+    "authenticated": true
+  },
+  "entries": [
+    {
+      "source_id": "alejandrozu/clique-cluster-ramsey-multiplicity",
+      "slug": "clique-cluster-ramsey-multiplicity",
+      "public_file_manifest_sha256": "9bfbc06cb77c2cffaebcc600e85b1d0d2468427fadc7dfa2064bbc4fb7193a67",
+      "public_file_count": 14
+    },
+    {
+      "source_id": "alejandrozu/matrix-multiplication-tensor-3x3",
+      "slug": "matrix-multiplication-tensor-3x3",
+      "public_file_manifest_sha256": "4b235f9d6d1799642f8868bfb11fb133ae6862fe9f5f4d1996442cff2a42a2e4",
+      "public_file_count": 10
+    },
+    {
+      "source_id": "alejandrozu/grothendieck-constant-witnesses",
+      "slug": "grothendieck-constant-witnesses",
+      "public_file_manifest_sha256": "c3e4dd428d431c904e29f45ffb68c869e06f1b02679c8a79d6b167b9cf47455b",
+      "public_file_count": 10
+    },
+    {
+      "source_id": "alejandrozu/collatz-modular-descent",
+      "slug": "collatz-modular-descent",
+      "public_file_manifest_sha256": "7642b77042784e336b5aae5b1b9f8a4d5156105b4489975c7cf3d27fea605201",
+      "public_file_count": 10
+    },
+    {
+      "source_id": "alejandrozu/busy-beaver-6-certificates",
+      "slug": "busy-beaver-6-certificates",
+      "public_file_manifest_sha256": "76e0782742efd542172ff0d0510fa0977c8bc2a2b2fa9ee83ca9f7803bd082a8",
+      "public_file_count": 10
+    },
+    {
+      "source_id": "ottogin/erdos-3",
+      "slug": "erdos-3",
+      "public_file_manifest_sha256": "7f1bc988c9eb319df9313d4704c5fe6c5a68a6026cf28e59abb77ee15155c8e8",
+      "public_file_count": 11
+    }
+  ],
+  "slot_mapping": {
+    "OM26-H2": null,
+    "OM26-H3": null,
+    "OM26-H4": null,
+    "OM26-H5": null,
+    "OM26-H6": null,
+    "OM26-H7": null
+  },
+  "erdos3_readme_reconciliation": "Captured public README is byte-equivalent after newline normalization to the previously protected source-pool README; no source-content drift observed.",
+  "claim_boundary": "Authoritative public source/checker evidence only. Exact organizer hill IDs remain unbound to H2-H7 slots until a separate protected correspondence act."
+}

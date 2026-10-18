@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_RESULT_ADJUDICATION",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H1",
+  "obligation": "H1-12",
+  "adjudication_id": "OM26-H1-H1-12-ADJ-001",
+  "dispatch_id": "OM26-H1-H1-12-IA-001",
+  "assignment_id": "OM26-H1-H1-12",
+  "agent_ref": "INDEPENDENT-AGENT-001",
+  "source_result": {
+    "raw_path": "contributions/OPENMATH-2026/OM26-H1/H1-12/raw/OM26-H1-H1-12-IA-001/github-comment-5881108260.md",
+    "raw_git_blob_sha1": "d6850a071d9b7e14bf6f9987284325caab19e8a0",
+    "recovery_receipt": "contributions/OPENMATH-2026/OM26-H1/H1-12/receipts/OM26-H1-H1-12-IA-001/RECOVERY_RECEIPT.json",
+    "recovery_receipt_git_blob_sha1": "fe07c9c4da217995450424e5610c4fd52a2209ad",
+    "declared_disposition": "PROVED_REDUCTION"
+  },
+  "protected_packet": {
+    "h1_12_status": {
+      "path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_STATUS.json",
+      "pre_adjudication_git_blob_sha1": "d81f830ca6ae643a3f98b06ea6094a7ff49fef1e"
+    },
+    "claim_ledger": {
+      "path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/CLAIM_LEDGER.json",
+      "pre_adjudication_git_blob_sha1": "c3a3fb0d4c1fbf1b22ec8bb1c5db430768a5a2e8"
+    },
+    "q5_equality_artifact": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_12_Q5_EQUALITY_NORMAL_FORM.md",
+    "q5_equality_validator": "ci/validate_openmath_h1_12_q5_equality.py"
+  },
+  "disposition": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
+  "accepted_claim": {
+    "claim_id": "OM26-H1-RED-023",
+    "statement": "Conditional on the predecessor source-scoped triple-point local fan/no-consecutive-D1 and clean-line charging premises already used to derive OM26-H1-RED-022, the sole q=5 score-95 equality normal form K3 plus two isolated triple cores is unrealizable. Hence any normalized n=18,T=95 witness must have q>=6 finite multiple points.",
+    "mathematical_effect": "CLOSE_Q5_RESIDUAL__ADVANCE_H1_12_FRONTIER_TO_Q_GE_6__SOURCE_CONDITIONAL",
+    "certification_effect": false
+  },
+  "accepted_supporting_lemma": {
+    "statement": "For a D2 triangle of triple cores A,B,C, conditional on the no-consecutive-D1 local premise, at most one of A,B,C can simultaneously have (d2,d1)=(2,2).",
+    "proof_core": [
+      "Two D2 rays at a triple core plus d1=2 and the no-consecutive-D1 premise uniquely force the local sector word (1,1,1,0,1,1).",
+      "For two such vertices A and B, the D1 segments from A and B to the intersections with the third core-line L_C have ordinary endpoints.",
+      "The second counted face across each such D1 segment forces L_C to intersect both disjoint outward rays of AB.",
+      "A line distinct from AB intersects AB in at most one point, yielding a contradiction."
+    ],
+    "coordinate_cross_check": "The equivalent affine normalization forces alpha+beta<1 and alpha+beta>1 simultaneously; cyclic variants force alpha>gamma and alpha<gamma, and beta<gamma and beta>gamma."
+  },
+  "adjudicator_checks": {
+    "local_sector_word": "PASS",
+    "ordinary_endpoint_use": "PASS",
+    "exterior_face_incidence": "PASS",
+    "affine_line_intersection_contradiction": "PASS",
+    "coordinate_cross_check": "PASS",
+    "predecessor_dependency_preserved": "PASS",
+    "overclaim_check": "PASS"
+  },
+  "rejected_or_narrowed_parts": [
+    {
+      "item": "Unconditional hill-global upper bound or optimality",
+      "disposition": "NOT_CLAIMED_AND_NOT_INFERRED"
+    },
+    {
+      "item": "MATHCERT certification",
+      "disposition": "NOT_CREATED"
+    },
+    {
+      "item": "Removal of predecessor source-scoped fan/charging dependencies",
+      "disposition": "NOT_ESTABLISHED"
+    }
+  ],
+  "resulting_frontier": {
+    "previous": "Q_GE_6_OR_Q5_EXACT_NESTED_TRIANGLE_EQUALITY__SOURCE_CONDITIONAL",
+    "new": "Q_GE_6__SOURCE_CONDITIONAL",
+    "remaining_gap": "All q>=6 score-95 configurations remain open. The predecessor local fan and clean-line charging premises remain source-scoped obligations for an unconditional proof."
+  },
+  "lifecycle_effect": {
+    "external_result_state": "ACCEPTED",
+    "assignment_closed": true,
+    "adjudication_complete": true,
+    "certification": "NONE",
+    "competition": "NONE"
+  },
+  "claim_boundary": "This adjudication accepts one Solve-level source-conditional reduction. It does not certify the result, prove K_hill(18)<=94, prove score 93 optimal, discharge predecessor source-scoped premises, or authorize competition submission."
+}

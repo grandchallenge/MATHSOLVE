@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_DISPATCH_TERMINAL_DISPOSITION",
+  "campaign": "CMDG-CM4-P3M-SEPARATION",
+  "tranche": "PRODUCT-FUNCTIONAL-SEPARATION-006",
+  "cohort_id": "CMDG-P3M-SEP2-BLIND-COHORT-001",
+  "dispatch_id": "CMDG-P3M-SEP2-WP-A-IA-001",
+  "issue_number": 930,
+  "observed_result_comment_id": 6027235095,
+  "disposition": "INVALID_UNLEASED_RETURN__NOT_ADMITTED",
+  "reason": "The RESULT/1 comment was created without an active queue worker reservation. The production intake validator therefore correctly rejects it, and the queue controller correctly refuses retroactive reassignment while a RESULT/1 comment is present.",
+  "result_bytes_protected_as_evidence": false,
+  "mathematical_evidence_effect": false,
+  "canonical_claim_effect": false,
+  "certification_effect": false,
+  "retroactive_lease_created": false,
+  "replacement_result_required": false,
+  "cohort_closure_effect": "This explicit terminal disposition satisfies the cohort closure rule for WP-A without admitting its unleased mathematical content.",
+  "claim_boundary": "Operational reconciliation only. The unleased WP-A return is excluded from synthesis and has no mathematical, certification, or claim-promotion effect."
+}

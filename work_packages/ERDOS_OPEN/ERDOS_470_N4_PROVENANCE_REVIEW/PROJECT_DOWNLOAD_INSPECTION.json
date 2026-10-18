@@ -1,0 +1,31 @@
+{
+  "url": "https://www.rechenkraft.net/yoyo/download/download/ows/win-sandy.zip",
+  "sha256": "5ee5c1c91748da3cd02bf5dbf33e4cdd5637a51def6bd5ff98bebfb4ac01b1df",
+  "advertisement": "https://www.rechenkraft.net/forum/viewtopic.php?t=14419",
+  "advertised_date": "2014-04-14",
+  "app_name": "oddWeiredSearch",
+  "app_version_num": 102,
+  "files": [
+    {
+      "path": "app_info.xml",
+      "bytes": 358,
+      "sha256": "82f62fccc96f0bd43ad8c02acf1eb52a0cf7d6156531e0eacd190a1e8c6b8b9e"
+    },
+    {
+      "path": "wobt-smart-sandy-boinc.exe",
+      "bytes": 7020051,
+      "sha256": "27bf0c63605eae38f7bc9aef36b7cb8c82825efc88dc7c215c8b17855419fc58"
+    }
+  ],
+  "executed": false,
+  "first_batch_identity_established": false,
+  "public_source_directory": "https://www.rechenkraft.net/yoyo/download/download/src/",
+  "listed_source_subdirectories": [
+    "ecm",
+    "evo",
+    "muon",
+    "ogr"
+  ],
+  "wayback_2013_query_result": [],
+  "wiki_documentation_sha256": "7c81bdf7d3b1122e31e88576a70eee7727cd21d65310b697c726db537b7417d2"
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_DISPATCH_ACTIVATION_RECEIPT",
+  "receipt_id": "CMDG-P3M-SEP-ACTIVATION-001",
+  "campaign": "CMDG-CM4",
+  "work_package": "P3-M-ONE-POINT-SEPARATION-003",
+  "state": "ACTIVE",
+  "protected_programme_predecessor": "f7f99e18b83a3015d1a7ef835ee71434d01a9dba",
+  "protected_solve_activation_merge": "66c235952782e7f26922c233932e5437c37d1933",
+  "parser_blob_sha1": "d1f1cc457429dff2d39ad0e59d36248860bd4b51",
+  "workflow_blob_sha1": "9a20a679042d996c587bce26d0c4ff34e020d862",
+  "blind_cohort_id": "CMDG-P3M-SEP-BLIND-COHORT-001",
+  "issue_bindings": [
+    {
+      "issue": 764,
+      "dispatch_id": "CMDG-P3M-SEP-WP-A-IA-001",
+      "bootstrap_blob_sha1": "f2c4abb97fe8992ad2784d90127a08b01525ad48",
+      "title_match": true,
+      "body_match": true
+    },
+    {
+      "issue": 765,
+      "dispatch_id": "CMDG-P3M-SEP-WP-B-IA-001",
+      "bootstrap_blob_sha1": "cdf096f7611a4df6ff088a832e5c853e629dfa10",
+      "title_match": true,
+      "body_match": true
+    },
+    {
+      "issue": 766,
+      "dispatch_id": "CMDG-P3M-SEP-WP-C-IA-001",
+      "bootstrap_blob_sha1": "b3e4cb6ee3d6e68da2e0cce5a597c9af8bd99205",
+      "title_match": true,
+      "body_match": true
+    },
+    {
+      "issue": 767,
+      "dispatch_id": "CMDG-P3M-SEP-WP-D-IA-001",
+      "bootstrap_blob_sha1": "9ca3a29d716fb6d1e0b823d173863945357fa61b",
+      "title_match": true,
+      "body_match": true
+    }
+  ],
+  "cross_disclosure_before_closure": false,
+  "synthesis_allowed": false,
+  "minimum_synthesis_evidence": {
+    "constructive_return_required": true,
+    "constructive_routes": [
+      "CMDG-P3M-SEP-WP-A-IA-001",
+      "CMDG-P3M-SEP-WP-B-IA-001"
+    ],
+    "adversarial_return_required": true,
+    "adversarial_dispatch": "CMDG-P3M-SEP-WP-C-IA-001"
+  },
+  "canonical_mutation_authorized_for_contributors": false,
+  "certification_effect": false
+}

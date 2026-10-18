@@ -1,0 +1,119 @@
+{
+  "record_type": "GCL_WORKER_QUEUE_CONFIG",
+  "schema_version": "1.2.0",
+  "policy_id": "GCL-WORKER-QUEUE-001",
+  "policy_version": "1.0.0",
+  "programme_policy_commit": "0fd894c053922ec43b70878e0f02e8370690449a",
+  "programme_policy_path": "governance/GCL-WORKER-QUEUE-001.json",
+  "queue_id": "GCL-WORKER-QUEUE-001",
+  "control_issue_title": "[GCL-OPS] GCL worker queue controller",
+  "operators": [
+    "fyremael",
+    "jimsteeg"
+  ],
+  "controller_comment_actors": [
+    "github-actions[bot]"
+  ],
+  "commands": [
+    "/claim",
+    "/release",
+    "/queue-bootstrap"
+  ],
+  "labels": {
+    "job": "gcl-job",
+    "available": "gcl-state:available",
+    "reserved": "gcl-state:reserved",
+    "returned": "gcl-state:returned",
+    "pickup_direct_editorial": "gcl-pickup:direct-editorial",
+    "collab_staged": "gcl-collab:staged",
+    "role_reconnaissance": "gcl-role:reconnaissance",
+    "role_source_audit": "gcl-role:source-audit",
+    "role_adversarial": "gcl-role:adversarial"
+  },
+  "repository_pickup_modes": {
+    "grandchallenge/MATHSOLVE": "reservation_controlled",
+    "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS": "direct_editorial",
+    "grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS": "direct_editorial",
+    "grandchallenge/MATH-PROGRAMME": "direct_editorial"
+  },
+  "issue_query": "is:issue is:open label:gcl-job label:gcl-state:available",
+  "project_view_optional": false,
+  "reservation_is_execution_authority": false,
+  "project_or_labels_are_authority": false,
+  "mathematical_effect": false,
+  "certification_effect": false,
+  "claim_boundary": "Pickup is repository-mode-specific. Reservation-controlled MATHSOLVE jobs require /claim and controller confirmation before execution. Direct-editorial Atlas and MATH-PROGRAMME jobs execute only under their bounded issue instructions and never wait for a MATHSOLVE reservation. RESULT/1 remains evidence; no queue projection has mathematical, certification, merge, or release effect.",
+  "worker_discovery_primary": "github_project",
+  "project_binding_path": ".gcl/worker_queue/PROJECT.json",
+  "project_url": "https://github.com/orgs/grandchallenge/projects/2",
+  "issue_query_fallback": "is:issue is:open label:gcl-job label:gcl-state:available",
+  "project_metadata_projection": {
+    "campaign_aliases": {
+      "ERDOS-OPEN": "ERDOS-OPEN-RECON"
+    },
+    "role": {
+      "RECONNAISSANCE": "RECON",
+      "SOURCE_AUDIT": "SOURCE",
+      "ADVERSARIAL": "ADVERSARIAL",
+      "CONSTRUCTIVE": "CONSTRUCTIVE",
+      "VERIFY": "VERIFY",
+      "LEAD": "LEAD",
+      "SUPPORT": "SUPPORT",
+      "SYNTHESIS": "SYNTHESIS"
+    },
+    "collaboration": {
+      "STAGED_DISCLOSURE": "STAGED",
+      "COOPERATIVE": "COOPERATIVE",
+      "LEAD_SUPPORT": "LEAD_SUPPORT",
+      "BLIND": "BLIND"
+    },
+    "phase": {
+      "BLIND_COLLECTION": "INDEPENDENT",
+      "SHARED": "SHARED",
+      "SYNTHESIS": "SYNTHESIS",
+      "VERIFICATION": "VERIFICATION"
+    }
+  },
+  "label_field_projection": {
+    "role": {
+      "gcl-role:reconnaissance": "RECON",
+      "gcl-role:source-audit": "SOURCE",
+      "gcl-role:adversarial": "ADVERSARIAL",
+      "gcl-role:constructive": "CONSTRUCTIVE",
+      "gcl-role:verify": "VERIFY",
+      "gcl-role:lead": "LEAD",
+      "gcl-role:support": "SUPPORT",
+      "gcl-role:synthesis": "SYNTHESIS"
+    },
+    "collaboration": {
+      "gcl-collab:blind": "BLIND",
+      "gcl-collab:cooperative": "COOPERATIVE",
+      "gcl-collab:staged": "STAGED",
+      "gcl-collab:lead-support": "LEAD_SUPPORT"
+    }
+  },
+  "active_class_capacity": {
+    "Mathematics": 8,
+    "Editorial": 8
+  },
+  "active_class_capacity_policy": {
+    "schema": "GCL_ACTIVE_CLASS_CAPACITY/1",
+    "mathematics": {
+      "enforcement": "live_serialized_github_reservation_ledger",
+      "scope": "new MATHSOLVE /claim only",
+      "existing_reservations": "preserved",
+      "max_new_active_claims": 8
+    },
+    "editorial": {
+      "enforcement": "NOT_YET_ACTIVE_UNTIL_AUTHENTICATED_START_RETURN_PROVEN",
+      "scope": "direct issue pickup unchanged; no /claim",
+      "pilot_budget": 8
+    },
+    "authority_effects": {
+      "execution_authority": false,
+      "mathematical": false,
+      "certification": false,
+      "publication": false
+    }
+  }
+}

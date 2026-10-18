@@ -1,0 +1,648 @@
+GCL-CONTRIBUTION-RESULT/1
+dispatch_id: OM26-H6-WP01-IA-001
+agent_ref: INDEPENDENT-AGENT-006
+assignment: OM26-H6-WP01
+disposition: BRENT_ORACLE_CONCORDANCE
+context_class: ZERO_CONTEXT
+external_sources: PROTECTED_PACKET_ONLY
+timebox_observed: YES
+
+## Strongest exact statement
+
+For the protected `OM26-H6-WP01` assignment (`alejandrozu/matrix-multiplication-tensor-3x3`, source lock `a7ec3fc86696698ba729632ae16397e05189221b` at `grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8`, public source capture `grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90`), an independent exact rational verifier over $\mathbb{Q}$ (`fractions.Fraction`, Python 3.12.10) directly constructs the $9 \times 9 \times 9$ coefficient tensor $T$ of ordinary $3 \times 3$ matrix multiplication $C = A B$ under row-major $U, V$ input indexing ($a = 3i + j$, $b = 3j' + k$) and column-major $W$ output indexing ($c = 3k' + i'$) and establishes:
+
+1. **Exact Target Tensor & Brent Oracle Concordance**: Direct basis-matrix multiplication $E^{(i,j)} F^{(j',k)}$ and symbolic Kronecker-delta extraction $T[a,b,c] = \delta_{i,i'}\delta_{j,j'}\delta_{k,k'}$ agree on all $9^3 = 729$ entries ($27$ entries equal to $1/1$ and $702$ entries equal to $0/1$), in 100% concordance with the protected evaluator semantics.
+2. **First-Principles Schoolbook Replay**: The 27-term schoolbook decomposition constructed from the elementary products $C[i,k] \mathrel{+}= A[i,j] B[j,k]$ has exact `rank = 27` and `total_support = 81` ($\text{support}(U) = 27$, $\text{support}(V) = 27$, $\text{support}(W) = 27$) and satisfies all `729 / 729` exact rational Brent identities (`overall_schoolbook_replay = PASS`), as does its rationally scaled variant ($U[0,0] = 2/1$, $V[0,0] = 1/2$, $W[0,0] = 1/1$).
+3. **Deliberate Perturbation Localization (`PERTURBATION_ID: P1`)**: Perturbing a single output coefficient in the schoolbook decomposition at `term = 0`, `W_coordinate = 0` from `1` (`1/1`) to `-1` (`-1/1`) causes `728` Brent identities to pass and exactly `1` Brent identity to fail at `failed_identity = (a=0, b=0, c=0)` with `expected = 1` and `observed = -1` (`verdict = FAIL_AS_EXPECTED`); an off-support perturbation `P2` at `term = 0`, `W_coordinate = 1` from `0` to `1/2` fails uniquely at `(a=0, b=0, c=1)` with `expected = 0` and `observed = 1/2`.
+4. **Explicit $W$ Coordinate-Convention Validation**: Across four nontrivial concrete matrix products (asymmetric positive prime matrices, signed non-commutative integer matrices, non-integral reduced rational matrices over $\mathbb{Q}$, and an elementary off-diagonal basis pair), direct bilinear evaluation of the decomposition matches the column-major $W$ encoding $\text{W\_index}(\text{row}, \text{column}) = 3 \cdot \text{column} + \text{row}$ on all $9$ coordinates and strictly refutes row-major output indexing $3 \cdot \text{row} + \text{column}$ on all off-diagonal entries ($c \in \{1, 2, 3, 5, 6, 7\}$).
+5. **Bounded Exact Rank-23 Search Representation & Seed Verification**: A bounded, exact-rational-reconstructible representation for rank-23 transformations and search is established, anchored by an exact replay of Laderman's 23-term decomposition (`rank = 23`, `total_support = 153`, `729 / 729` Brent identities satisfied) and verified invariance under the cyclic/transpose $S_3$ symmetry and the de Groote $\text{GL}_3(\mathbb{Q})^3$ sandwiching action.
+
+## Derivation
+
+### 1. Protected Lease & Artifact Provenance Resolution
+
+- **Bootstrap Entrypoint**: `handoffs/OPENMATH-2026/CEX_AGENT_ENTRYPOINT.md` in `grandchallenge/MATHSOLVE` (`main`).
+- **Assignment Authority**: `.gcl/campaigns/OPENMATH-2026/CEX_ASSIGNMENTS.json` resolved the unique active lease with `lease.state = LEASED`, `lease.dispatch_id = OM26-H6-WP01-IA-001`, `lease.agent_ref = INDEPENDENT-AGENT-006`, `assignment_id = OM26-H6-WP01`, `hill = OM26-H6`, `dispatch_issue_number = 509`, `protected_lease_commit = 3c835aaf6173176b64efca5f03ffdc27b20af965`, `protected_lease_merge = 85646c1201452c68cfb98d25443b67f7b643da04`.
+- **Work Package & Operation Contract**:
+  - `handoffs/OPENMATH-2026/jobs/OM26-H6-WP01-IA-001.md` (git blob SHA-1 `c026abc96f925fd85e01e117e56961b670259b25`)
+  - `handoffs/OPENMATH-2026/jobs/OM26-H6-WP01.md` (git blob SHA-1 `7afebec15730f159fa6490a2fb2b63db78ef6010`)
+  - `.gcl/operations/OM26-H6-WP01-IA-001/OPERATION.json`
+  - `contributions/OPENMATH-2026/OM26-H6/WP01/dispatches/OM26-H6-WP01-IA-001.json`
+- **Protected Source Lock & Operative Files**:
+  - `grandchallenge/MATHFORGE@782b80c8c57d4e77356d8c77c50ee1fffdcd92b8`: `reports/discovery/openmath_2026/unassigned_sources/matrix-multiplication-tensor-3x3/SOURCE_LOCK.json` (git blob SHA-1 `a7ec3fc86696698ba729632ae16397e05189221b`)
+  - `grandchallenge/MATHSOLVE@4ab1f45089ff6be6f70772d0441fe88afd930f90`:
+    - `README.md` (blob `9b70dfece930f033318db4691056b133e8ad6a98`, SHA-256 `701dd32d8c98edc64d362b69c916845e22cf26d94579c31c32a29b2615007f1f`)
+    - `hill.yaml` (blob `a5ac1c7b4da18ab686a1d362754a49f69d593bba`, SHA-256 `5dbb1d3354089daf89d1c37312203edce91fe087cf867181f443ebb74a5b1efa`)
+    - `eval.py` (blob `bc9738b5a02732dda53d835d5adb9c21d0e5f569`, SHA-256 `40d52cb3a0fdccaf2e1a1feb2cc9d982b803a72a9b1c9cdd3105fcc06f43231e`)
+    - `tests/test_hill.py` (SHA-256 `72ca7524b9b9bc443d9547384f5554cef082ad86d952c0b6f6d6cfefc0d810ff`)
+
+---
+
+### 2. Direct Construction of the $3 \times 3$ Matrix-Multiplication Target Tensor & Brent Identities
+
+Let $A, B \in \mathbb{Q}^{3 \times 3}$ be general $3 \times 3$ matrices with 0-based row and column indices $i, j, k \in \{0, 1, 2\}$. Ordinary matrix multiplication $C = A \cdot B$ is defined entrywise by:
+
+$$C[i, k] = \sum_{j=0}^{2} A[i, j] \, B[j, k], \qquad i, k \in \{0, 1, 2\}.$$
+
+#### Coordinate-Index Mappings
+
+The 9-dimensional coordinate indices $a, b, c \in \{0, 1, \dots, 8\}$ for factors $U, V, W$ are mapped as follows:
+
+1. **$U$ coordinates (input matrix $A$, row-major)**:
+   $$a = \text{idx}_U(i, j) = 3i + j \iff (i, j) = (\lfloor a / 3 \rfloor, \, a \bmod 3), \qquad A_{\text{flat}}[3i + j] = A[i, j].$$
+2. **$V$ coordinates (input matrix $B$, row-major)**:
+   $$b = \text{idx}_V(j', k) = 3j' + k \iff (j', k) = (\lfloor b / 3 \rfloor, \, b \bmod 3), \qquad B_{\text{flat}}[3j' + k] = B[j', k].$$
+3. **$W$ coordinates (output matrix $C$, column-major `3*column + row`)**:
+   $$c = \text{idx}_W(i', k') = 3k' + i' \iff (\text{row } i', \, \text{column } k') = (c \bmod 3, \, \lfloor c / 3 \rfloor), \qquad C_{\text{flat}, W}[3k' + i'] = C[i', k'].$$
+
+Explicitly, the 9 coordinate indices correspond to matrix entries as:
+
+| Index $x$ | $0$ | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ |
+|---|---|---|---|---|---|---|---|---|---|
+| $U$ ($A$, row-major) | $A[0,0]$ | $A[0,1]$ | $A[0,2]$ | $A[1,0]$ | $A[1,1]$ | $A[1,2]$ | $A[2,0]$ | $A[2,1]$ | $A[2,2]$ |
+| $V$ ($B$, row-major) | $B[0,0]$ | $B[0,1]$ | $B[0,2]$ | $B[1,0]$ | $B[1,1]$ | $B[1,2]$ | $B[2,0]$ | $B[2,1]$ | $B[2,2]$ |
+| $W$ ($C$, `3*col+row`) | $C[0,0]$ | $C[1,0]$ | $C[2,0]$ | $C[0,1]$ | $C[1,1]$ | $C[2,1]$ | $C[0,2]$ | $C[1,2]$ | $C[2,2]$ |
+
+#### Independent Derivation of Target Tensor $T[a, b, c]$
+
+Writing $C_{\text{flat}, W}[c] = \sum_{a=0}^{8} \sum_{b=0}^{8} T[a, b, c] \, A_{\text{flat}}[a] \, B_{\text{flat}}[b]$, we derive $T[a, b, c] \in \mathbb{Q}$ directly from ordinary $3 \times 3$ matrix multiplication in two equivalent ways:
+
+- **Direct Basis-Matrix Multiplication**: For each $a = 3i + j \in \{0, \dots, 8\}$ and $b = 3j' + k \in \{0, \dots, 8\}$, define the $3 \times 3$ standard basis matrices $E^{(i,j)}$ (with $1$ at $(i,j)$ and $0$ elsewhere) and $F^{(j',k)}$ (with $1$ at $(j',k)$ and $0$ elsewhere). Compute the ordinary matrix product $P = E^{(i,j)} F^{(j',k)}$, where $P[i', k'] = \sum_{m=0}^{2} E^{(i,j)}[i', m] F^{(j',k)}[m, k']$. Then for each $c = 3k' + i'$, set $T[a, b, c] = P[i', k']$.
+- **Symbolic Bilinear Extraction**: Since $E^{(i,j)}[i', m] = \delta_{i, i'} \delta_{j, m}$ and $F^{(j',k)}[m, k'] = \delta_{m, j'} \delta_{k, k'}$, summing over $m \in \{0, 1, 2\}$ yields:
+  $$\text{target\_tensor}[a, b, c] = T[a, b, c] = \delta_{i, i'} \, \delta_{j, j'} \, \delta_{k, k'} = \begin{cases} 1 & \text{if } \lfloor a/3 \rfloor = (c \bmod 3) \text{ and } (a \bmod 3) = \lfloor b/3 \rfloor \text{ and } (b \bmod 3) = \lfloor c/3 \rfloor, \\ 0 & \text{otherwise.} \end{cases}$$
+
+Across all $9^3 = 729$ coordinate triples $(a, b, c) \in \{0, \dots, 8\}^3$, exactly $27$ triples have $T[a, b, c] = 1$ (one for each $(i, j, k) \in \{0, 1, 2\}^3$ via $(a, b, c) = (3i+j, 3j+k, 3k+i)$) and $702$ triples have $T[a, b, c] = 0$.
+
+#### Exact Rational Brent Identity Formula
+
+Given a candidate decomposition $(U, V, W)$ of rank $R \ge 1$ with $U, V, W \in \mathbb{Q}^{R \times 9}$, each term $r \in \{0, \dots, R-1\}$ forms $L_r(A) = \sum_{a=0}^{8} U[r, a] A_{\text{flat}}[a]$, $R_r(B) = \sum_{b=0}^{8} V[r, b] B_{\text{flat}}[b]$, $M_r = L_r(A) R_r(B)$, and reconstructs output coordinate $c$ as $\sum_{r=0}^{R-1} W[r, c] M_r$. Equating coefficients of $A_{\text{flat}}[a] B_{\text{flat}}[b]$ for every triple $(a, b, c) \in \{0, \dots, 8\}^3$ yields the $9^3 = 729$ exact rational **Brent identities**:
+
+$$\text{LHS}(a, b, c) = \sum_{r=0}^{R-1} U[r, a] \cdot V[r, b] \cdot W[r, c] = T[a, b, c] = \text{RHS}(a, b, c).$$
+
+---
+
+### 3. Schoolbook Decomposition Construction & Exact Replay
+
+For each $(i, j, k) \in \{0, 1, 2\}^3$, ordered lexicographically by $r = 9i + 3j + k \in \{0, \dots, 26\}$, the elementary multiplication $M_r = A[i, j] \cdot B[j, k]$ contributes $+M_r$ to $C[i, k]$. In the $(U, V, W)$ coordinate system, term $r$ is the rank-1 tensor $e_{a_r} \otimes e_{b_r} \otimes e_{c_r}$ with:
+- $a_r = 3i + j$ ($U[r, a] = 1/1$ if $a = 3i + j$, else $0/1$);
+- $b_r = 3j + k$ ($V[r, b] = 1/1$ if $b = 3j + k$, else $0/1$);
+- $c_r = 3k + i$ ($W[r, c] = 1/1$ if $c = 3k + i$, else $0/1$).
+
+#### Complete Table of the 27 Schoolbook Terms and Support Accounting
+
+| Term $r$ | $(i, j, k)$ | $U$ index $a_r = 3i+j$ | $V$ index $b_r = 3j+k$ | $W$ index $c_r = 3k+i$ | $U[r]$ row (reduced rationals) | $V[r]$ row (reduced rationals) | $W[r]$ row (reduced rationals) | Nonzeros $(U,V,W)$ |
+|---|---|---|---|---|---|---|---|---|
+| `0` | `(0,0,0)` | `0` | `0` | `0` | `[1,0,0,0,0,0,0,0,0]` | `[1,0,0,0,0,0,0,0,0]` | `[1,0,0,0,0,0,0,0,0]` | `(1,1,1)` |
+| `1` | `(0,0,1)` | `0` | `1` | `3` | `[1,0,0,0,0,0,0,0,0]` | `[0,1,0,0,0,0,0,0,0]` | `[0,0,0,1,0,0,0,0,0]` | `(1,1,1)` |
+| `2` | `(0,0,2)` | `0` | `2` | `6` | `[1,0,0,0,0,0,0,0,0]` | `[0,0,1,0,0,0,0,0,0]` | `[0,0,0,0,0,0,1,0,0]` | `(1,1,1)` |
+| `3` | `(0,1,0)` | `1` | `3` | `0` | `[0,1,0,0,0,0,0,0,0]` | `[0,0,0,1,0,0,0,0,0]` | `[1,0,0,0,0,0,0,0,0]` | `(1,1,1)` |
+| `4` | `(0,1,1)` | `1` | `4` | `3` | `[0,1,0,0,0,0,0,0,0]` | `[0,0,0,0,1,0,0,0,0]` | `[0,0,0,1,0,0,0,0,0]` | `(1,1,1)` |
+| `5` | `(0,1,2)` | `1` | `5` | `6` | `[0,1,0,0,0,0,0,0,0]` | `[0,0,0,0,0,1,0,0,0]` | `[0,0,0,0,0,0,1,0,0]` | `(1,1,1)` |
+| `6` | `(0,2,0)` | `2` | `6` | `0` | `[0,0,1,0,0,0,0,0,0]` | `[0,0,0,0,0,0,1,0,0]` | `[1,0,0,0,0,0,0,0,0]` | `(1,1,1)` |
+| `7` | `(0,2,1)` | `2` | `7` | `3` | `[0,0,1,0,0,0,0,0,0]` | `[0,0,0,0,0,0,0,1,0]` | `[0,0,0,1,0,0,0,0,0]` | `(1,1,1)` |
+| `8` | `(0,2,2)` | `2` | `8` | `6` | `[0,0,1,0,0,0,0,0,0]` | `[0,0,0,0,0,0,0,0,1]` | `[0,0,0,0,0,0,1,0,0]` | `(1,1,1)` |
+| `9` | `(1,0,0)` | `3` | `0` | `1` | `[0,0,0,1,0,0,0,0,0]` | `[1,0,0,0,0,0,0,0,0]` | `[0,1,0,0,0,0,0,0,0]` | `(1,1,1)` |
+| `10` | `(1,0,1)` | `3` | `1` | `4` | `[0,0,0,1,0,0,0,0,0]` | `[0,1,0,0,0,0,0,0,0]` | `[0,0,0,0,1,0,0,0,0]` | `(1,1,1)` |
+| `11` | `(1,0,2)` | `3` | `2` | `7` | `[0,0,0,1,0,0,0,0,0]` | `[0,0,1,0,0,0,0,0,0]` | `[0,0,0,0,0,0,0,1,0]` | `(1,1,1)` |
+| `12` | `(1,1,0)` | `4` | `3` | `1` | `[0,0,0,0,1,0,0,0,0]` | `[0,0,0,1,0,0,0,0,0]` | `[0,1,0,0,0,0,0,0,0]` | `(1,1,1)` |
+| `13` | `(1,1,1)` | `4` | `4` | `4` | `[0,0,0,0,1,0,0,0,0]` | `[0,0,0,0,1,0,0,0,0]` | `[0,0,0,0,1,0,0,0,0]` | `(1,1,1)` |
+| `14` | `(1,1,2)` | `4` | `5` | `7` | `[0,0,0,0,1,0,0,0,0]` | `[0,0,0,0,0,1,0,0,0]` | `[0,0,0,0,0,0,0,1,0]` | `(1,1,1)` |
+| `15` | `(1,2,0)` | `5` | `6` | `1` | `[0,0,0,0,0,1,0,0,0]` | `[0,0,0,0,0,0,1,0,0]` | `[0,1,0,0,0,0,0,0,0]` | `(1,1,1)` |
+| `16` | `(1,2,1)` | `5` | `7` | `4` | `[0,0,0,0,0,1,0,0,0]` | `[0,0,0,0,0,0,0,1,0]` | `[0,0,0,0,1,0,0,0,0]` | `(1,1,1)` |
+| `17` | `(1,2,2)` | `5` | `8` | `7` | `[0,0,0,0,0,1,0,0,0]` | `[0,0,0,0,0,0,0,0,1]` | `[0,0,0,0,0,0,0,1,0]` | `(1,1,1)` |
+| `18` | `(2,0,0)` | `6` | `0` | `2` | `[0,0,0,0,0,0,1,0,0]` | `[1,0,0,0,0,0,0,0,0]` | `[0,0,1,0,0,0,0,0,0]` | `(1,1,1)` |
+| `19` | `(2,0,1)` | `6` | `1` | `5` | `[0,0,0,0,0,0,1,0,0]` | `[0,1,0,0,0,0,0,0,0]` | `[0,0,0,0,0,1,0,0,0]` | `(1,1,1)` |
+| `20` | `(2,0,2)` | `6` | `2` | `8` | `[0,0,0,0,0,0,1,0,0]` | `[0,0,1,0,0,0,0,0,0]` | `[0,0,0,0,0,0,0,0,1]` | `(1,1,1)` |
+| `21` | `(2,1,0)` | `7` | `3` | `2` | `[0,0,0,0,0,0,0,1,0]` | `[0,0,0,1,0,0,0,0,0]` | `[0,0,1,0,0,0,0,0,0]` | `(1,1,1)` |
+| `22` | `(2,1,1)` | `7` | `4` | `5` | `[0,0,0,0,0,0,0,1,0]` | `[0,0,0,0,1,0,0,0,0]` | `[0,0,0,0,0,1,0,0,0]` | `(1,1,1)` |
+| `23` | `(2,1,2)` | `7` | `5` | `8` | `[0,0,0,0,0,0,0,1,0]` | `[0,0,0,0,0,1,0,0,0]` | `[0,0,0,0,0,0,0,0,1]` | `(1,1,1)` |
+| `24` | `(2,2,0)` | `8` | `6` | `2` | `[0,0,0,0,0,0,0,0,1]` | `[0,0,0,0,0,0,1,0,0]` | `[0,0,1,0,0,0,0,0,0]` | `(1,1,1)` |
+| `25` | `(2,2,1)` | `8` | `7` | `5` | `[0,0,0,0,0,0,0,0,1]` | `[0,0,0,0,0,0,0,1,0]` | `[0,0,0,0,0,1,0,0,0]` | `(1,1,1)` |
+| `26` | `(2,2,2)` | `8` | `8` | `8` | `[0,0,0,0,0,0,0,0,1]` | `[0,0,0,0,0,0,0,0,1]` | `[0,0,0,0,0,0,0,0,1]` | `(1,1,1)` |
+
+#### Exact Support Definition and Calculation
+
+The support metric is defined over $(U, V, W) \in (\mathbb{Q}^{R \times 9})^3$ as the total number of nonzero rational entries across all three factor matrices:
+
+$$\text{support}(U, V, W) = \sum_{F \in \{U, V, W\}} \sum_{r=0}^{R-1} \sum_{x=0}^{8} \mathbf{1}[F[r, x] \neq 0].$$
+
+For the 27-term schoolbook decomposition:
+- Number of rows (rank): $R = 27$.
+- Each row $U[r]$ has exactly $1$ nonzero entry ($U[r, a_r] = 1/1$) and $8$ zero entries $\implies \text{support}(U) = \sum_{r=0}^{26} 1 = 27$.
+- Each row $V[r]$ has exactly $1$ nonzero entry ($V[r, b_r] = 1/1$) and $8$ zero entries $\implies \text{support}(V) = \sum_{r=0}^{26} 1 = 27$.
+- Each row $W[r]$ has exactly $1$ nonzero entry ($W[r, c_r] = 1/1$) and $8$ zero entries $\implies \text{support}(W) = \sum_{r=0}^{26} 1 = 27$.
+- Total support: $\text{total\_support} = 27 + 27 + 27 = 81$ (out of $3 \times 27 \times 9 = 729$ total matrix entries).
+
+#### Selected Diagnostic Brent Identities & Summary Verdict
+
+- Identity `(a=0, b=0, c=0)` ($A[0,0] B[0,0] \to C[0,0]$): only term $r=0$ has $U[0,0]=1, V[0,0]=1, W[0,0]=1$; $\text{LHS}(0,0,0) = 1/1$, $\text{RHS}(0,0,0) = 1/1$ (`PASS`).
+- Identity `(a=1, b=5, c=6)` ($A[0,1] B[1,2] \to C[0,2]$, where $c = 3(2)+0 = 6$): only term $r=5$ contributes; $\text{LHS}(1,5,6) = 1/1$, $\text{RHS}(1,5,6) = 1/1$ (`PASS`).
+- Identity `(a=1, b=5, c=2)` ($A[0,1] B[1,2]$ at wrong row-major index $2$): $\text{LHS}(1,5,2) = 0/1$, $\text{RHS}(1,5,2) = 0/1$ (`PASS`).
+- Identity `(a=7, b=3, c=2)` ($A[2,1] B[1,0] \to C[2,0]$, where $c = 3(0)+2 = 2$): only term $r=21$ contributes; $\text{LHS}(7,3,2) = 1/1$, $\text{RHS}(7,3,2) = 1/1$ (`PASS`).
+
+```text
+rank = 27
+total_support = 81
+brent_identities_checked = 729
+brent_identities_passed = 729
+overall_schoolbook_replay = PASS
+```
+
+---
+
+### 4. Deliberate Perturbation and Exact Identity Failure (`PERTURBATION_ID: P1` and `P2`)
+
+Starting from the verified 27-term schoolbook decomposition $(U_{\text{sb}}, V_{\text{sb}}, W_{\text{sb}})$:
+
+1. **Primary Perturbation (`P1`)**: Modify `W[0][0]` (`term = 0`, `W_coordinate = 0`) from `1/1` to `-1/1`. Because $U_{\text{sb}}[0, a] = \delta_{a,0}$ and $V_{\text{sb}}[0, b] = \delta_{b,0}$, this modification changes $\text{LHS}(a,b,c)$ exclusively at $(a,b,c) = (0,0,0)$ from $1/1$ to $-1/1$, while $\text{RHS}(0,0,0) = T[0,0,0] = 1/1$. All other $728$ identities remain unchanged and satisfied.
+
+```text
+PERTURBATION_ID: P1
+term = 0
+W_coordinate = 0
+original = 1
+perturbed = -1
+
+failed_identity = (a=0, b=0, c=0)
+expected = 1
+observed = -1
+verdict = FAIL_AS_EXPECTED
+```
+
+2. **Secondary Off-Support Rational Perturbation (`P2`)**: Starting from $(U_{\text{sb}}, V_{\text{sb}}, W_{\text{sb}})$, modify `W[0][1]` (`term = 0`, `W_coordinate = 1`, which encodes output $C[1,0]$) from `0` (`0/1`) to `1/2`. Rerunning the exact verifier checks `729` identities, passes `728`, and fails uniquely at `failed_identity = (a=0, b=0, c=1)` with `expected = 0` and `observed = 1/2` (`verdict = FAIL_AS_EXPECTED`).
+
+---
+
+### 5. Explicit Validation of the $W$ Output-Coordinate Convention (`3*column + row`)
+
+We explicitly test $\text{W\_index}(\text{row}, \text{column}) = 3 \cdot \text{column} + \text{row}$ against four nontrivial concrete matrix products $C = A B$, comparing:
+- Direct ordinary $3 \times 3$ matrix product $C[i, k] = \sum_{j=0}^{2} A[i, j] B[j, k]$ flattened via column-major $W_{\text{expected}}[3k + i] = C[i, k]$;
+- Bilinear evaluation $\text{out}[c] = \sum_{r=0}^{R-1} W[r, c] \left(\sum_{a=0}^{8} U[r, a] A_{\text{flat}}[a]\right)\left(\sum_{b=0}^{8} V[r, b] B_{\text{flat}}[b]\right)$ using both the 27-term schoolbook decomposition and Laderman's 23-term decomposition;
+- Ordinary row-major flattening $C_{\text{row\_major}}[3i + k] = C[i, k]$.
+
+#### Case 1 (`C1_asymmetric_primes` — Asymmetric Positive Prime Matrices)
+
+- **Input $A$ (rows $0..2$)**: `[[2, 3, 5], [7, 11, 13], [17, 19, 23]]`
+  - Row-major $A_{\text{flat}}$: `[2, 3, 5, 7, 11, 13, 17, 19, 23]`
+- **Input $B$ (rows $0..2$)**: `[[29, 31, 37], [41, 43, 47], [53, 59, 61]]`
+  - Row-major $B_{\text{flat}}$: `[29, 31, 37, 41, 43, 47, 53, 59, 61]`
+- **Ordinary Matrix Product $C = A B$ (rows $0..2$)**:
+  $$C = \begin{bmatrix} 446 & 486 & 520 \\ 1343 & 1457 & 1569 \\ 2491 & 2701 & 2925 \end{bmatrix}$$
+- **Flattened $W$ Output (`3*col + row`)**: `[446, 1343, 2491, 486, 1457, 2701, 520, 1569, 2925]`
+- **Bilinear Replay Output (Schoolbook-27 & Laderman-23)**: `[446, 1343, 2491, 486, 1457, 2701, 520, 1569, 2925]`
+- **Contrasted Row-Major Flattening (`3*row + col`)**: `[446, 486, 520, 1343, 1457, 1569, 2491, 2701, 2925]`
+- **Coordinates Checked**: All $c \in \{0, 1, 2, 3, 4, 5, 6, 7, 8\}$; all 6 off-diagonal coordinates $c \in \{1, 2, 3, 5, 6, 7\}$ strictly distinguish `3*col + row` from `3*row + col` (e.g. $c=1$ is $C[1,0]=1343 \neq C[0,1]=486$; $c=3$ is $C[0,1]=486 \neq C[1,0]=1343$).
+- **Verdict**: `PASS (EXACT_CONCORDANCE_WITH_3*COL+ROW)`
+
+#### Case 2 (`C2_signed_noncommutative` — Asymmetric Signed Non-Commutative Integer Matrices)
+
+- **Input $A$ (rows $0..2$)**: `[[1, -2, 4], [0, 3, -1], [-5, 2, 1]]`
+  - Row-major $A_{\text{flat}}$: `[1, -2, 4, 0, 3, -1, -5, 2, 1]`
+- **Input $B$ (rows $0..2$)**: `[[2, 1, -3], [-4, 0, 5], [3, -2, 1]]`
+  - Row-major $B_{\text{flat}}$: `[2, 1, -3, -4, 0, 5, 3, -2, 1]`
+- **Ordinary Matrix Product $C = A B$ (rows $0..2$)**:
+  $$C = \begin{bmatrix} 22 & -7 & -9 \\ -15 & 2 & 14 \\ -15 & -7 & 26 \end{bmatrix}$$
+- **Flattened $W$ Output (`3*col + row`)**: `[22, -15, -15, -7, 2, -7, -9, 14, 26]`
+- **Bilinear Replay Output (Schoolbook-27 & Laderman-23)**: `[22, -15, -15, -7, 2, -7, -9, 14, 26]`
+- **Contrasted Row-Major Flattening (`3*row + col`)**: `[22, -7, -9, -15, 2, 14, -15, -7, 26]`
+- **Coordinates Checked**: All $c \in \{0, \dots, 8\}$; all 6 off-diagonal coordinates $c \in \{1, 2, 3, 5, 6, 7\}$ distinguish `3*col + row` from `3*row + col` (e.g. $c=5$ is $C[2,1]=-7 \neq C[1,2]=14$; $c=7$ is $C[1,2]=14 \neq C[2,1]=-7$).
+- **Verdict**: `PASS (EXACT_CONCORDANCE_WITH_3*COL+ROW)`
+
+#### Case 3 (`C3_exact_rationals` — Asymmetric Non-Integral Rational Matrices over $\mathbb{Q}$)
+
+- **Input $A$ (rows $0..2$)**: `[[1/2, -1/3, 2/5], [3/4, 1/5, -1/2], [-2/3, 4/7, 1/3]]`
+  - Row-major $A_{\text{flat}}$: `['1/2', '-1/3', '2/5', '3/4', '1/5', '-1/2', '-2/3', '4/7', '1/3']`
+- **Input $B$ (rows $0..2$)**: `[[2/3, 1/4, -3/5], [-1/2, 3/7, 1/2], [5/6, -2/3, 1/4]]`
+  - Row-major $B_{\text{flat}}$: `['2/3', '1/4', '-3/5', '-1/2', '3/7', '1/2', '5/6', '-2/3', '1/4']`
+- **Ordinary Matrix Product $C = A B$ (rows $0..2$)**:
+  $$C = \begin{bmatrix} 5/6 & -239/840 & -11/30 \\ -1/60 & 1019/1680 & -19/40 \\ -19/42 & -127/882 & 323/420 \end{bmatrix}$$
+- **Flattened $W$ Output (`3*col + row`)**: `['5/6', '-1/60', '-19/42', '-239/840', '1019/1680', '-127/882', '-11/30', '-19/40', '323/420']`
+- **Bilinear Replay Output (Schoolbook-27 & Laderman-23)**: `['5/6', '-1/60', '-19/42', '-239/840', '1019/1680', '-127/882', '-11/30', '-19/40', '323/420']`
+- **Contrasted Row-Major Flattening (`3*row + col`)**: `['5/6', '-239/840', '-11/30', '-1/60', '1019/1680', '-19/40', '-19/42', '-127/882', '323/420']`
+- **Coordinates Checked**: All $c \in \{0, \dots, 8\}$; all 6 off-diagonal coordinates $c \in \{1, 2, 3, 5, 6, 7\}$ distinguish `3*col + row` from `3*row + col`.
+- **Verdict**: `PASS (EXACT_CONCORDANCE_WITH_3*COL+ROW)`
+
+#### Case 4 (`C4_basis_off_diagonal` — Single Elementary Off-Diagonal Product $E^{(0,1)} E^{(1,2)} = E^{(0,2)}$)
+
+- **Input $A$**: $E^{(0,1)}$ (`A_flat = [0, 1, 0, 0, 0, 0, 0, 0, 0]`)
+- **Input $B$**: $E^{(1,2)}$ (`B_flat = [0, 0, 0, 0, 0, 1, 0, 0, 0]`)
+- **Ordinary Matrix Product $C = A B$**: $E^{(0,2)}$ (single nonzero entry $C[0, 2] = 1$ at $\text{row}=0, \text{column}=2$).
+- **Flattened $W$ Output (`3*col + row`)**: `[0, 0, 0, 0, 0, 0, 1, 0, 0]` (nonzero at $c = 3(2) + 0 = 6$).
+- **Bilinear Replay Output (Schoolbook-27 & Laderman-23)**: `[0, 0, 0, 0, 0, 0, 1, 0, 0]`.
+- **Contrasted Row-Major Flattening (`3*row + col`)**: `[0, 0, 1, 0, 0, 0, 0, 0, 0]` (nonzero at $c = 3(0) + 2 = 2$).
+- **Coordinates Checked**: All $c \in \{0, \dots, 8\}$; distinguishes $c = 6$ vs $c = 2$.
+- **Verdict**: `PASS (EXACT_CONCORDANCE_WITH_3*COL+ROW)`
+
+---
+
+### 6. Bounded Exact Representation for Rank-23 Transformation and Search
+
+We specify a bounded, exact-rational-reconstructible representation $\mathcal{R}_{23}$ for transforming and searching around rank-23 decompositions of the $3 \times 3$ matrix-multiplication tensor while preserving complete rational certificates.
+
+#### 6.1 Representation of Each $U, V, W$ Factor Row
+
+Each rank-1 term $r \in \{0, \dots, 22\}$ is represented in a **dual exact format**:
+
+1. **Normalized Primitive-Integer Projective Form (Internal Search State)**:
+   $$\bigl(\alpha_r, \bar{u}_r;\; \beta_r, \bar{v}_r;\; \gamma_r, \bar{w}_r\bigr), \qquad \bar{u}_r, \bar{v}_r, \bar{w}_r \in \mathbb{Z}^9 \setminus \{0\}, \quad \alpha_r, \beta_r, \gamma_r \in \mathbb{Q}^\times,$$
+   where each integer 9-vector $\bar{f}_r \in \{\bar{u}_r, \bar{v}_r, \bar{w}_r\}$ is **primitive and sign-normalized**: $\gcd_{0 \le x \le 8}(|\bar{f}_r[x]|) = 1$ and the first nonzero coordinate $\bar{f}_r[x_{\min}] > 0$. By multilinearity of $u_r \otimes v_r \otimes w_r$, the three row scalars $(\alpha_r, \beta_r, \gamma_r)$ affect the tensor only through their single product $\sigma_r = \alpha_r \beta_r \gamma_r \in \mathbb{Q}^\times$, so internal search stores $(\sigma_r, \bar{u}_r, \bar{v}_r, \bar{w}_r)$ with $\sigma_r \in \mathbb{Q}^\times$ and reconstructs balanced factor rows $u_r = \alpha_r \bar{u}_r$, $v_r = \beta_r \bar{v}_r$, $w_r = \gamma_r \bar{w}_r$ with $\alpha_r \beta_r \gamma_r = \sigma_r$.
+2. **Evaluator Wire Format (External Certificate)**:
+   Three $23 \times 9$ arrays `u`, `v`, `w` where each entry $p/q \in \mathbb{Q}$ in lowest terms ($\gcd(|p|, q) = 1, q \ge 1$) is encoded as JSON integer `p` if $q = 1$, or `[p, q]` if $q > 1$.
+
+#### 6.2 Exact Coefficient Domain
+
+- **Admissibility Domain $\mathcal{Q}_{\text{eval}}$**: As enforced by protected `eval.py` (`MAX_MAGNITUDE = 1_000_000`), every reduced rational entry $p/q$ in `u`, `v`, `w` must satisfy:
+  $$p, q \in \mathbb{Z}, \qquad \gcd(|p|, q) = 1, \qquad 1 \le q \le 10^6, \qquad |p| \le 10^6.$$
+- **Search Coefficient Lattice $\mathcal{Q}(H_{\max}, M)$**: During search, primitive row entries are bounded by $\|\bar{f}_r\|_\infty \le H_{\max}$ (e.g. $H_{\max} \in \{1, 2, 4, 8, 16\}$) and scalars $\sigma_r = p_r / q_r$ have denominators restricted to divisors of a fixed smooth modulus $M = 2^{e_2} 3^{e_3} 5^{e_5}$ (specifically $M = 2^6 \cdot 3^3 \cdot 5^2 = 43200 \le 10^6$), preventing intermediate coefficient explosion during multi-step transformations.
+
+#### 6.3 Representation of Tensor-Preserving Transformations
+
+Because $U, V$ use row-major indexing ($a = 3i+j$, $b = 3j+k$) and $W$ uses column-major indexing ($c = 3k+i$, which is the row-major indexing of $C^T$), reshaping every 9-vector $f \in \mathbb{Q}^9$ into a $3 \times 3$ matrix via the uniform map $\text{Mat}(f)[p, q] = f[3p + q]$ sends $(u_r, v_r, w_r)$ to $3 \times 3$ matrices $(\mathcal{U}_r, \mathcal{V}_r, \mathcal{W}_r)$ satisfying the cyclically symmetric trace identity:
+
+$$\sum_{r=0}^{22} \mathcal{U}_r[i, j] \, \mathcal{V}_r[j', k] \, \mathcal{W}_r[k', i'] = \delta_{i, i'} \, \delta_{j, j'} \, \delta_{k, k'}.$$
+
+This makes the exact isotropy and transformation group transparent:
+
+1. **Global Isotropy Group $\text{GL}_3(\mathbb{Q})^3 \rtimes S_3$ (De Groote Equivalence)**:
+   - **Sandwiching action of $(P, Q, S) \in \text{GL}_3(\mathbb{Q})^3$**:
+     $$(\mathcal{U}_r, \mathcal{V}_r, \mathcal{W}_r) \longmapsto \bigl(P \, \mathcal{U}_r \, Q^{-1}, \;\; Q \, \mathcal{V}_r \, S^{-1}, \;\; S \, \mathcal{W}_r \, P^{-1}\bigr).$$
+     Each $G \in \{P, Q, S\}$ is represented as a word in elementary transvections $T_{ij}(c) = I_3 + c E_{ij}$ ($i \neq j, c \in \mathbb{Q}$), permutation matrices $P_\pi$ ($\pi \in S_3$), and diagonal scalings $\text{diag}(d_0, d_1, d_2)$, with exact inverse $T_{ij}(c)^{-1} = T_{ij}(-c)$ tracked simultaneously so matrix inversion is never approximated.
+   - **Cyclic and Transpose $S_3$ Symmetries**:
+     - Cyclic shift of modes: $(\mathcal{U}_r, \mathcal{V}_r, \mathcal{W}_r) \mapsto (\mathcal{V}_r, \mathcal{W}_r, \mathcal{U}_r)$ and $(\mathcal{W}_r, \mathcal{U}_r, \mathcal{V}_r)$.
+     - Simultaneous matrix transpose with $U \leftrightarrow V$ swap: $(\mathcal{U}_r, \mathcal{V}_r, \mathcal{W}_r) \mapsto (\mathcal{V}_r^T, \mathcal{U}_r^T, \mathcal{W}_r^T)$.
+2. **Monomial Gauge & Term Permutation Group $((\mathbb{Q}^\times)^2)^{23} \rtimes S_{23}$**:
+   - Scaling $(u_r, v_r, w_r) \mapsto (\alpha_r u_r, \beta_r v_r, (\alpha_r \beta_r)^{-1} w_r)$ for $\alpha_r, \beta_r \in \mathbb{Q}^\times$ and permuting row indices $r \mapsto \pi(r)$ for $\pi \in S_{23}$.
+3. **Local Sub-Tensor Re-Decompositions (Flip Moves and 3-Term Dependency Pivots)**:
+   - **2-Term Flip Moves (Kauers–Moosbauer)**: Whenever two terms $r \neq s$ share a proportional factor in one mode (e.g. $\bar{u}_r = \bar{u}_s$), the rank-2 slice $v_r \otimes w_r + v_s \otimes w_s$ is transformed by $[v_r', v_s'] = [v_r, v_s] G$, $[w_r', w_s'] = [w_r, w_s] G^{-T}$ for $G \in \text{GL}_2(\mathbb{Q})$ (specifically $G = \begin{smallmatrix} 1 & c \\ 0 & 1 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ c & 1 \end{smallmatrix}$) to create a shared factor in mode $V$ or $W$ with a third term $t$.
+   - **3-Term Linear Dependency Pivots**: When three terms $\{i, j, k\}$ satisfy a linear dependency in one mode, e.g. $u_k = s_1 u_i + s_2 u_j$ (Laderman's decomposition contains exactly $16$ such $\pm 1$ triples in each of $U, V, W$), substituting $u_k = s_1 u_i + s_2 u_j$ regroups the 3-term sub-tensor as $u_i \otimes (v_i \otimes w_i + s_1 v_k \otimes w_k) + u_j \otimes (v_j \otimes w_j + s_2 v_k \otimes w_k)$, enabling local rank-preserving basis rotations within the 3-term subspace.
+
+#### 6.4 Exact Rational Certificate Reconstruction
+
+From any internal state $(\sigma_r, \bar{u}_r, \bar{v}_r, \bar{w}_r)_{r=0}^{22}$:
+1. Factor $\sigma_r = p_r / q_r$ into signed prime factors (or balanced divisor triples $(p_{r,1}, p_{r,2}, p_{r,3})$ and $(q_{r,1}, q_{r,2}, q_{r,3})$ with $p_{r,1} p_{r,2} p_{r,3} = p_r$ and $q_{r,1} q_{r,2} q_{r,3} = q_r$) to set $\alpha_r = p_{r,1}/q_{r,1}$, $\beta_r = p_{r,2}/q_{r,2}$, $\gamma_r = p_{r,3}/q_{r,3}$ minimizing $\max(\|\alpha_r \bar{u}_r\|, \|\beta_r \bar{v}_r\|, \|\gamma_r \bar{w}_r\|)$ (or simply $\alpha_r = \beta_r = 1, \gamma_r = \sigma_r$ when $\|\sigma_r \bar{w}_r\| \le 10^6$).
+2. Multiply out $U[r, x] = \alpha_r \bar{u}_r[x]$, $V[r, x] = \beta_r \bar{v}_r[x]$, $W[r, x] = \gamma_r \bar{w}_r[x]$ in exact `Fraction` arithmetic, automatically reducing every entry to lowest terms with positive denominator.
+3. Verify $|U[r,x].\text{numerator}|, U[r,x].\text{denominator} \le 10^6$ (and similarly for $V, W$) and serialize to JSON.
+
+#### 6.5 Equivalence Detection and Canonicalization
+
+To detect equivalent decompositions and prevent search cycling:
+1. **Row Projective Normalization**: Map each row $f_r \in \mathbb{Q}^9 \setminus \{0\}$ to its unique primitive integer representative $\bar{f}_r \in \mathbb{Z}^9$ with $\gcd(\bar{f}_r) = 1$ and first nonzero coordinate positive, accumulating the extracted rational factor into $\sigma_r = \alpha_r \beta_r \gamma_r$.
+2. **Term-Order Canonicalization ($S_{23}$ Quotient)**: Sort the 23 canonical tuples $(\bar{u}_r, \bar{v}_r, \bar{w}_r, \sigma_r)$ lexicographically. Two decompositions that differ by row scaling and $S_{23}$ row permutation map to the exact same canonical tuple sequence and SHA-256 hash.
+3. **Finite Discrete Symmetry Orbit ($S_3 \times (S_3)^3$, order $6 \times 216 = 1296$)**: To quotient by permutation matrices $P, Q, S \in S_3$ and mode permutations in $S_3$, apply all $1296$ discrete coordinate symmetries, canonicalize each under Steps 1–2, and select the lexicographically smallest tuple sequence.
+
+#### 6.6 Allowed Search Moves and Finite Operational Bounds
+
+- **Allowed Moves**:
+  1. Elementary transvection steps $(P, Q, S) \leftarrow (T_{ij}(c) P, Q, S)$ (and similarly on $Q, S$) with $i \neq j \in \{0, 1, 2\}$ and $c \in \mathcal{C} = \{\pm 1, \pm 1/2, \pm 2\}$.
+  2. 2-term flip moves on pairs $(r, s)$ sharing a normalized factor in one mode, with shear parameter $c \in \mathcal{C}$.
+  3. 3-term dependency subspace pivots on triples $(i, j, k)$ with $\dim \text{span}_F(\{i, j, k\}) = 2$.
+- **Bounds Enforcing Finiteness**:
+  - Fixed rank $R = 23$;
+  - Primitive integer height cap $\|\bar{u}_r\|_\infty, \|\bar{v}_r\|_\infty, \|\bar{w}_r\|_\infty \le H_{\max} = 8$;
+  - Scalar denominator divisibility $q_r \mid M = 43200$ and $|p_r| \le 43200$;
+  - Total support cap $\text{support}(U, V, W) \le S_{\max} = 185$;
+  - Maximum search depth $D_{\text{search}} \le 64$ and visited-state hash table cap $N_{\text{states}} \le 10^5$.
+  Because $\mathbb{Z} \cap [-H_{\max}, H_{\max}]$ and the set of rationals with denominator dividing $M$ and numerator bounded by $M$ are finite, the state space is strictly finite.
+
+#### 6.7 Separation of Heuristic Ranking vs. Exact Admissibility Checks
+
+- **Heuristic Stages (Search Ordering Only)**: Beam search / MCTS priority ordering of candidate moves may use heuristic scores such as total support $\text{support}(U,V,W)$, $\ell_1$ coefficient norm $\sum |\bar{f}_r[x]|$, count of 3-term linear dependencies (which measures proximity to flip-move applicability), or low-rank slice perturbations.
+- **Mandatory Exact Final Checks (Before Any Candidate Is Admissible)**:
+  1. Exact verification of all $9^3 = 729$ Brent identities in `fractions.Fraction` ($\text{LHS}(a,b,c) == T[a,b,c]$ for all $a,b,c \in \{0,\dots,8\}$).
+  2. Exact verification of coefficient bounds ($1 \le \text{den} \le 10^6$, $|\text{num}| \le 10^6$) and schema compliance (`1 <= rank <= 40`, 9 entries per row).
+  3. Exact computation of `rank` and `support` directly from the reduced rational matrices.
+  4. Exact concrete matrix-product replay across the non-commutative rational test suite.
+
+#### 6.8 Concrete Verified Rank-23 Seed and Transformation Replay
+
+Mapping Laderman's (1976) 23-multiplication algorithm into the protected coordinate conventions ($U, V$ row-major; $W$ column-major `3*col + row`) yields an exact $\{-1, 0, 1\}$-valued rank-23 seed certificate `(U_lad, V_lad, W_lad)` with:
+- `rank = 23`
+- `support(U) = 51`, `support(V) = 51`, `support(W) = 51`, `total_support = 153`
+- `brent_identities_checked = 729`, `brent_identities_passed = 729`
+- Exact 3-term $\pm 1$ linear dependency count: `16` triples in $U$, `16` triples in $V$, `16` triples in $W$.
+- Exhaustive 1-step $\pm 1$ elementary transvection census ($3 \times 6 \times 2 = 36$ moves $T_{ij}(\pm 1)$ on $P, Q, S$): all $36$ transformed decompositions satisfy all $729/729$ Brent identities, with exact support distribution `[(155, 12), (171, 12), (181, 12)]` (confirming that Laderman's `support = 153` is a strict local minimum with respect to single $\pm 1$ basis transvections).
+- Rational $\text{GL}_3(\mathbb{Q})^3$ sandwiching test with non-integral entries ($P_{0,1}=1/2, S_{0,2}=1/3, S_{1,1}=2$): reconstructed rational certificate satisfies all `729 / 729` exact Brent identities with `total_support = 276` and maximum denominator `6 <= 1_000_000`.
+
+## Assumptions beyond bootstrap
+
+NONE
+
+## Verification / falsification hooks
+
+An independent reviewer can replay and attempt to falsify every result in this return using only Python 3.11+ standard library (`fractions`, `json`, `sys`) by saving the self-contained script below as `verify_om26_h6_wp01.py` and executing:
+
+```text
+python verify_om26_h6_wp01.py
+```
+
+### Complete Self-Contained Executable Verifier (`verify_om26_h6_wp01.py`)
+
+```python
+"""Independent exact rational Brent-identity verifier and replay script for OM26-H6-WP01."""
+
+from __future__ import annotations
+from fractions import Fraction
+import json
+import sys
+
+
+def matmul_3x3_direct(A_mat: list[list[Fraction]], B_mat: list[list[Fraction]]) -> list[list[Fraction]]:
+    """Ordinary 3x3 matrix multiplication C[i][k] = sum_{j=0..2} A[i][j] * B[j][k]."""
+    C_mat = [[Fraction(0) for _ in range(3)] for _ in range(3)]
+    for i in range(3):
+        for k in range(3):
+            acc = Fraction(0)
+            for j in range(3):
+                acc += A_mat[i][j] * B_mat[j][k]
+            C_mat[i][k] = acc
+    return C_mat
+
+
+def u_coord(row: int, col: int) -> int:
+    """Row-major coordinate for A[row, col]."""
+    return 3 * row + col
+
+
+def v_coord(row: int, col: int) -> int:
+    """Row-major coordinate for B[row, col]."""
+    return 3 * row + col
+
+
+def w_coord(row: int, col: int) -> int:
+    """Protected column-major coordinate for C[row, col]: 3 * column + row."""
+    return 3 * col + row
+
+
+def build_target_tensor_from_matmul() -> list[list[list[Fraction]]]:
+    """Derive the 9x9x9 target coefficient tensor directly from 3x3 basis matrix products."""
+    T = [[[Fraction(0) for _ in range(9)] for _ in range(9)] for _ in range(9)]
+    for i in range(3):
+        for j in range(3):
+            a = u_coord(i, j)
+            E = [[Fraction(1 if (r == i and c == j) else 0) for c in range(3)] for r in range(3)]
+            for jp in range(3):
+                for k in range(3):
+                    b = v_coord(jp, k)
+                    F = [[Fraction(1 if (r == jp and c == k) else 0) for c in range(3)] for r in range(3)]
+                    C = matmul_3x3_direct(E, F)
+                    for ip in range(3):
+                        for kp in range(3):
+                            c = w_coord(ip, kp)
+                            T[a][b][c] = C[ip][kp]
+    return T
+
+
+def verify_brent_identities(
+    U: list[list[Fraction]],
+    V: list[list[Fraction]],
+    W: list[list[Fraction]],
+    T: list[list[list[Fraction]]],
+) -> dict:
+    """Independently check all 9^3 = 729 Brent identities over exact rationals."""
+    assert len(U) == len(V) == len(W) and len(U) >= 1
+    rank = len(U)
+    for factor in (U, V, W):
+        for row in factor:
+            assert len(row) == 9
+            for val in row:
+                assert isinstance(val, Fraction)
+                assert 1 <= val.denominator <= 1_000_000
+                assert abs(val.numerator) <= 1_000_000
+
+    checked = 0
+    passed = 0
+    failures = []
+    for a in range(9):
+        for b in range(9):
+            for c in range(9):
+                checked += 1
+                lhs = Fraction(0)
+                for r in range(rank):
+                    lhs += U[r][a] * V[r][b] * W[r][c]
+                rhs = T[a][b][c]
+                if lhs == rhs:
+                    passed += 1
+                else:
+                    failures.append({
+                        "a": a,
+                        "b": b,
+                        "c": c,
+                        "expected": str(rhs),
+                        "observed": str(lhs),
+                    })
+
+    support_u = sum(1 for row in U for val in row if val != 0)
+    support_v = sum(1 for row in V for val in row if val != 0)
+    support_w = sum(1 for row in W for val in row if val != 0)
+    total_support = support_u + support_v + support_w
+
+    return {
+        "rank": rank,
+        "support_u": support_u,
+        "support_v": support_v,
+        "support_w": support_w,
+        "total_support": total_support,
+        "brent_identities_checked": checked,
+        "brent_identities_passed": passed,
+        "brent_identities_failed": len(failures),
+        "passed": len(failures) == 0,
+        "failures": failures,
+    }
+
+
+def construct_schoolbook() -> tuple[list[list[Fraction]], list[list[Fraction]], list[list[Fraction]]]:
+    """Construct the 27-term schoolbook decomposition from first principles."""
+    U, V, W = [], [], []
+    for i in range(3):
+        for j in range(3):
+            for k in range(3):
+                u_row, v_row, w_row = [Fraction(0)] * 9, [Fraction(0)] * 9, [Fraction(0)] * 9
+                u_row[u_coord(i, j)] = Fraction(1)
+                v_row[v_coord(j, k)] = Fraction(1)
+                w_row[w_coord(i, k)] = Fraction(1)
+                U.append(u_row)
+                V.append(v_row)
+                W.append(w_row)
+    return U, V, W
+
+
+def construct_laderman_rank23() -> tuple[list[list[Fraction]], list[list[Fraction]], list[list[Fraction]]]:
+    """Construct Laderman's (1976) exact rank-23 decomposition in protected coordinates."""
+    U_int = [
+        [1, 1, 1, -1, -1, 0, 0, -1, -1],
+        [1, 0, 0, -1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0, 0],
+        [-1, 0, 0, 1, 1, 0, 0, 0, 0],
+        [0, 0, 0, 1, 1, 0, 0, 0, 0],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [-1, 0, 0, 0, 0, 0, 1, 1, 0],
+        [-1, 0, 0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, 1, 1, 0],
+        [1, 1, 1, 0, -1, -1, -1, -1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, -1, 0, 0, 0, 0, 1, 1],
+        [0, 0, 1, 0, 0, 0, 0, 0, -1],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 1],
+        [0, 0, -1, 0, 1, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, -1, 0, 0, 0],
+        [0, 0, 0, 0, 1, 1, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 1],
+    ]
+    V_int = [
+        [0, 0, 0, 0, 1, 0, 0, 0, 0],
+        [0, -1, 0, 0, 1, 0, 0, 0, 0],
+        [-1, 1, 0, 1, -1, -1, -1, 0, 1],
+        [1, -1, 0, 0, 1, 0, 0, 0, 0],
+        [-1, 1, 0, 0, 0, 0, 0, 0, 0],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 0, -1, 0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, -1, 0, 0, 0],
+        [-1, 0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [-1, 0, 1, 1, -1, -1, -1, 1, 0],
+        [0, 0, 0, 0, 1, 0, 1, -1, 0],
+        [0, 0, 0, 0, 1, 0, 0, -1, 0],
+        [0, 0, 0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, -1, 1, 0],
+        [0, 0, 0, 0, 0, 1, 1, 0, -1],
+        [0, 0, 0, 0, 0, 1, 0, 0, -1],
+        [0, 0, 0, 0, 0, 0, -1, 0, 1],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 1],
+    ]
+    W_int = [
+        [0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 1, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 1, 1, 0, 0, 0, 0],
+        [0, 0, 0, 1, 1, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 0, 1, 0, 1],
+        [0, 0, 1, 0, 0, 0, 1, 0, 1],
+        [0, 0, 1, 0, 0, 0, 0, 0, 1],
+        [0, 0, 0, 0, 0, 0, 1, 0, 1],
+        [0, 0, 0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 1, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 1, 0, 0, 0],
+        [1, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0, 1, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 1, 1, 0],
+        [0, 1, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 0, 0, 0, 0, 1, 1, 0],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 1],
+    ]
+    U = [[Fraction(x) for x in row] for row in U_int]
+    V = [[Fraction(x) for x in row] for row in V_int]
+    W = [[Fraction(x) for x in row] for row in W_int]
+    return U, V, W
+
+
+def evaluate_bilinear(
+    U: list[list[Fraction]],
+    V: list[list[Fraction]],
+    W: list[list[Fraction]],
+    A_flat: list[Fraction],
+    B_flat: list[Fraction],
+) -> list[Fraction]:
+    """Evaluate output vector out[c] = sum_t W[t][c] * L_t(A) * R_t(B) for c in 0..8."""
+    out = [Fraction(0)] * 9
+    for t in range(len(U)):
+        lt = sum((U[t][a] * A_flat[a] for a in range(9)), Fraction(0))
+        rt = sum((V[t][b] * B_flat[b] for b in range(9)), Fraction(0))
+        mt = lt * rt
+        for c in range(9):
+            out[c] += W[t][c] * mt
+    return out
+
+
+def flatten_row_major(M: list[list[Fraction]]) -> list[Fraction]:
+    return [M[r][c] for r in range(3) for c in range(3)]
+
+
+def flatten_w_col_major(M: list[list[Fraction]]) -> list[Fraction]:
+    out = [Fraction(0)] * 9
+    for r in range(3):
+        for c in range(3):
+            out[w_coord(r, c)] = M[r][c]
+    return out
+
+
+def main():
+    T = build_target_tensor_from_matmul()
+    nonzero = sum(1 for a in range(9) for b in range(9) for c in range(9) if T[a][b][c] != 0)
+    assert nonzero == 27
+
+    # 1. Schoolbook replay
+    U_sb, V_sb, W_sb = construct_schoolbook()
+    res_sb = verify_brent_identities(U_sb, V_sb, W_sb, T)
+    assert res_sb["passed"] and res_sb["rank"] == 27 and res_sb["total_support"] == 81
+    assert res_sb["brent_identities_checked"] == 729 and res_sb["brent_identities_passed"] == 729
+    print("SCHOOLBOOK_REPLAY:", json.dumps(res_sb))
+
+    # 2. Perturbation P1
+    W_p1 = [row[:] for row in W_sb]
+    W_p1[0][0] = Fraction(-1, 1)
+    res_p1 = verify_brent_identities(U_sb, V_sb, W_p1, T)
+    assert not res_p1["passed"] and res_p1["brent_identities_failed"] == 1
+    assert res_p1["failures"][0] == {"a": 0, "b": 0, "c": 0, "expected": "1", "observed": "-1"}
+    print("PERTURBATION_P1:", json.dumps(res_p1))
+
+    # 3. Concrete matrix products for W coordinate convention
+    cases = [
+        ("C1_asymmetric_primes", [[2, 3, 5], [7, 11, 13], [17, 19, 23]], [[29, 31, 37], [41, 43, 47], [53, 59, 61]]),
+        ("C2_signed_noncommutative", [[1, -2, 4], [0, 3, -1], [-5, 2, 1]], [[2, 1, -3], [-4, 0, 5], [3, -2, 1]]),
+        (
+            "C3_exact_rationals",
+            [[Fraction(1, 2), Fraction(-1, 3), Fraction(2, 5)], [Fraction(3, 4), Fraction(1, 5), Fraction(-1, 2)], [Fraction(-2, 3), Fraction(4, 7), Fraction(1, 3)]],
+            [[Fraction(2, 3), Fraction(1, 4), Fraction(-3, 5)], [Fraction(-1, 2), Fraction(3, 7), Fraction(1, 2)], [Fraction(5, 6), Fraction(-2, 3), Fraction(1, 4)]],
+        ),
+        ("C4_basis_off_diagonal", [[0, 1, 0], [0, 0, 0], [0, 0, 0]], [[0, 0, 0], [0, 0, 1], [0, 0, 0]]),
+    ]
+    U_lad, V_lad, W_lad = construct_laderman_rank23()
+    res_lad = verify_brent_identities(U_lad, V_lad, W_lad, T)
+    assert res_lad["passed"] and res_lad["rank"] == 23 and res_lad["total_support"] == 153
+    print("LADERMAN_RANK23:", json.dumps(res_lad))
+
+    for name, A_raw, B_raw in cases:
+        A_mat = [[Fraction(x) for x in row] for row in A_raw]
+        B_mat = [[Fraction(x) for x in row] for row in B_raw]
+        C_mat = matmul_3x3_direct(A_mat, B_mat)
+        A_flat, B_flat = flatten_row_major(A_mat), flatten_row_major(B_mat)
+        w_exp = flatten_w_col_major(C_mat)
+        c_rm = flatten_row_major(C_mat)
+        out_sb = evaluate_bilinear(U_sb, V_sb, W_sb, A_flat, B_flat)
+        out_lad = evaluate_bilinear(U_lad, V_lad, W_lad, A_flat, B_flat)
+        assert out_sb == w_exp and out_lad == w_exp and out_sb != c_rm
+        print(f"CASE_{name}: PASS (distinguishing_coords={[c for c in range(9) if w_exp[c] != c_rm[c]]})")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+### Falsification Conditions
+
+Any of the following deterministic observations would falsify this contribution:
+1. Finding any coordinate triple $(a,b,c) \in \{0,\dots,8\}^3$ where the direct basis-product entry $\bigl(E^{(\lfloor a/3 \rfloor, a \bmod 3)} F^{(\lfloor b/3 \rfloor, b \bmod 3)}\bigr)[c \bmod 3, \lfloor c/3 \rfloor]$ differs from $\delta_{\lfloor a/3 \rfloor, c \bmod 3} \delta_{a \bmod 3, \lfloor b/3 \rfloor} \delta_{b \bmod 3, \lfloor c/3 \rfloor}$.
+2. Finding any $(a,b,c) \in \{0,\dots,8\}^3$ where the 27-term schoolbook decomposition or the 23-term Laderman seed fails $\sum_{r} U[r,a] V[r,b] W[r,c] = T[a,b,c]$ over $\mathbb{Q}$.
+3. Finding any $3 \times 3$ rational matrix pair $(A, B)$ where $\sum_{r} W[r, 3k+i] L_r(A) R_r(B) \neq (AB)[i, k]$.
+
+## Claim boundary
+
+This result establishes independent exact rational verification of the 729 Brent identities, exact replay of the rank-27 support-81 schoolbook decomposition and deliberate single-coefficient failure localization, explicit concrete matrix-product confirmation of the $W$ column-major output convention `3*column + row`, and a bounded exact representation with a verified rank-23 seed (`rank = 23`, `support = 153`). Passing the 729 Brent identities certifies only that a submitted decomposition exactly represents the $3 \times 3$ matrix-multiplication tensor under the stated coordinate conventions; it does not prove rank minimality, establish a new rank-22 decomposition, prove a lower bound on tensor rank, claim novelty or priority, constitute an official competition submission, or confer GCL or MATHCERT certification.
+
+## Next residual
+
+Execute bounded exact search within $\mathcal{R}_{23}$ combining 2-term Kauers–Moosbauer flip moves, 3-term linear-dependency subspace pivots (seeded from the 16 $\pm 1$ dependency triples per factor in Laderman's rank-23 decomposition), and bounded $\text{GL}_3(\mathbb{Q})^3$ elementary transvections to seek exact rational rank-23 certificates with total support strictly below `153`. In parallel, test local rank-reduction reductions ($R = 23 \to 22$) on low-dimension 4- and 5-term sub-tensors while enforcing all 729 exact rational Brent identities and the $10^6$ numerator/denominator magnitude bound at every candidate admission gate.

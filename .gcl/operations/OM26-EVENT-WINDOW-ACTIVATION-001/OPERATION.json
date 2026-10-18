@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_OPERATION_CONTRACT",
+  "operation": "OM26-EVENT-WINDOW-ACTIVATION-001",
+  "campaign": "OPENMATH-2026",
+  "protected_base": "36b7c79bebd42fde17ea9f0f809406fb55e093f9",
+  "objective": "Activate nine bounded mathematical assistance packets with distinct leases, immutable task URLs, return issues and protected processing",
+  "authority": "User instruction: can you finish the implementation, 2026-10-01",
+  "permitted_mutations": [
+    "new task/dispatch/operation registration",
+    "retire unlaunched replay-only leases",
+    "supporting H1 return chains without changing seven peer hill topology",
+    "bounded intake/validator/controller changes",
+    "Section 8 evidence-review queue without claim promotion"
+  ],
+  "prohibited": [
+    "mathematical claim promotion by structural intake",
+    "certification",
+    "competition submission",
+    "paid compute",
+    "manufacturing worker launch or independence"
+  ],
+  "completion_requires": [
+    "nine distinct immutable tasks and return issues",
+    "synthetic local return-to-advanced replay for all nine",
+    "historical lifecycle acceptance remains green",
+    "same-system non-authoring Adversary and Referee audits labeled as logical roles",
+    "required CI green",
+    "protected merges in Solve and Programme",
+    "protected readback"
+  ],
+  "claim_effect": "NONE"
+}

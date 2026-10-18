@@ -1,0 +1,46 @@
+name: Erdős 241-595 local Lean interfaces
+
+on:
+  pull_request:
+    paths:
+      - 'MathSolve/Erdos/LocalInterfaces.lean'
+      - '.github/workflows/erdos-241-595-lean-local.yml'
+      - 'lean-toolchain'
+      - 'lakefile.lean'
+  push:
+    branches: [main]
+    paths:
+      - 'MathSolve/Erdos/LocalInterfaces.lean'
+      - '.github/workflows/erdos-241-595-lean-local.yml'
+      - 'lean-toolchain'
+      - 'lakefile.lean'
+
+permissions:
+  contents: read
+
+jobs:
+  kernel-local:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Assert exact source checkout
+        env:
+          EXPECTED: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED"
+      - uses: grandchallenge/lean-action@138a564e38a62ce545e8d47d86a97628463aced4
+      - name: Compile exact Erdős local theorems
+        run: |
+          lake env lean MathSolve/Erdos/LocalInterfaces.lean
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' MathSolve/Erdos/LocalInterfaces.lean; then
+            echo 'Unproved axiom or placeholder in local interfaces' >&2
+            exit 1
+          fi
+      - name: Report environment
+        run: |
+          cat lean-toolchain
+          git rev-parse HEAD
+          lean --version

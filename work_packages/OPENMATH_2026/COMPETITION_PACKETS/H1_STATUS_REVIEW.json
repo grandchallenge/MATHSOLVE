@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "OM26-H1-EVENT-WINDOW-PARTIAL-STATUS-001",
+  "hill": "alejandrozu/kobon-triangles",
+  "freeze_date": "2026-10-01",
+  "prior_payload": {
+    "bader93": "PRIOR_WORK__SEPARATE_FROM_EVENT_PARTIAL"
+  },
+  "event_partial": {
+    "claim_id": "OM26-H1-RED-023",
+    "state": "ACCEPTED_SOURCE_CONDITIONAL_REDUCTION",
+    "effect": "EXCLUDE_Q_LE_5_FOR_NORMALIZED_N18_T95_UNDER_NAMED_SOURCE_SCOPED_PREMISES",
+    "q_ge_6_remains_open": true
+  },
+  "public_status": {
+    "known_lower": 93,
+    "known_upper": 94
+  },
+  "scoped_exact_match_search": "NO_MATCH_FOUND__NOT_PROOF_OF_NOVELTY",
+  "novelty": "UNRESOLVED__COMPETITION_REVIEW_REQUIRED",
+  "competition_disposition": "CREDIBLE_FORMALIZED_PARTIAL_CANDIDATE__SOURCE_CONDITIONAL",
+  "sources": [
+    "https://oeis.org/A006066",
+    "https://mathworld.wolfram.com/KobonTriangle.html",
+    "https://zegalur.github.io/line-order/gallery/kobon.html",
+    "https://github.com/alejandrozu/kobon-proof"
+  ],
+  "claim_boundary": "No global upper bound, optimality, no-94/no-95 claim, predecessor-premise discharge, or independent novelty determination."
+}

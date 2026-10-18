@@ -1,0 +1,300 @@
+{
+  "all_degree3_triple_words_alternate_D1_D2": true,
+  "all_final_local_states_have_no_antipodal_D2_pair": true,
+  "certificates": [
+    {
+      "mask": 2012,
+      "missing_edge": [
+        2,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 3804,
+      "missing_edge": [
+        1,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 4044,
+      "missing_edge": [
+        0,
+        5
+      ],
+      "saturated_triple_witness": 1
+    },
+    {
+      "mask": 5050,
+      "missing_edge": [
+        3,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 5494,
+      "missing_edge": [
+        4,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 6837,
+      "missing_edge": [
+        4,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 6987,
+      "missing_edge": [
+        4,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 7289,
+      "missing_edge": [
+        3,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 7559,
+      "missing_edge": [
+        3,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 9939,
+      "missing_edge": [
+        4,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 10029,
+      "missing_edge": [
+        4,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 10478,
+      "missing_edge": [
+        4,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 12986,
+      "missing_edge": [
+        1,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 13226,
+      "missing_edge": [
+        0,
+        5
+      ],
+      "saturated_triple_witness": 1
+    },
+    {
+      "mask": 13433,
+      "missing_edge": [
+        2,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 13703,
+      "missing_edge": [
+        2,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 15465,
+      "missing_edge": [
+        0,
+        5
+      ],
+      "saturated_triple_witness": 1
+    },
+    {
+      "mask": 15495,
+      "missing_edge": [
+        1,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 18131,
+      "missing_edge": [
+        3,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 18221,
+      "missing_edge": [
+        3,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 18670,
+      "missing_edge": [
+        3,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 21173,
+      "missing_edge": [
+        2,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 21323,
+      "missing_edge": [
+        2,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 21622,
+      "missing_edge": [
+        1,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 21862,
+      "missing_edge": [
+        0,
+        5
+      ],
+      "saturated_triple_witness": 1
+    },
+    {
+      "mask": 23115,
+      "missing_edge": [
+        1,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 23205,
+      "missing_edge": [
+        0,
+        5
+      ],
+      "saturated_triple_witness": 1
+    },
+    {
+      "mask": 24814,
+      "missing_edge": [
+        2,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 26157,
+      "missing_edge": [
+        1,
+        5
+      ],
+      "saturated_triple_witness": 0
+    },
+    {
+      "mask": 26307,
+      "missing_edge": [
+        0,
+        5
+      ],
+      "saturated_triple_witness": 1
+    }
+  ],
+  "charge_capacity": 6,
+  "checker_sha256": "082936bf3aee09036ad667fbc05fa03d10560bb9bd615370cc51f2505aaeebb2",
+  "claim_boundary": "Conditional elimination of q=6 profile 333335. Finite replay verifies the exact graph/local-word reduction and equality antecedents; the accompanying manuscript supplies the geometric incidence argument. No q=6 closure, q>=7 conclusion, hill-global <=94 claim, MATHCERT promotion, external-agent lease consumption, or competition submission.",
+  "clean_line_lower_bound": 6,
+  "dependencies": [
+    "six-core no-long-run fan premise",
+    "six-core clean-line charging premise",
+    "elementary D2 edge planarity",
+    "elementary D2 triangle adjacency lemma",
+    "ordinary-endpoint transverse-line lemma"
+  ],
+  "final_residual_global_totals": {
+    "B": 16,
+    "D1": 20,
+    "D2": 8,
+    "U": 1
+  },
+  "final_residual_isomorphism_type": "K3,3-minus-one-edge",
+  "final_residual_labelings": 30,
+  "forced_core_line_equality": {
+    "I": 20,
+    "clean_lines": 6,
+    "h": 12
+  },
+  "labeled_graphs_visited": 32768,
+  "local_word_counts": {
+    "quintuple_degree2_D1_6_B_2": 10,
+    "triple_degree2_D1_2_B_2": 18,
+    "triple_degree3_D1_3_B_3": 2
+  },
+  "planar_graph_candidates_by_D2": {
+    "7": 60,
+    "8": 540,
+    "9": 240,
+    "10": 465
+  },
+  "profile": "333335",
+  "realizable_candidates_remaining_in_profile": 0,
+  "record_id": "OM26-H1-333335-OBSTRUCTION-001",
+  "relaxed_graph_candidates_by_D2": {
+    "7": 60,
+    "8": 540,
+    "9": 250,
+    "10": 525
+  },
+  "remaining_q6_profiles": [
+    "333333",
+    "333334",
+    "333344"
+  ],
+  "state": "CONDITIONAL_PAPER_PROOF__FINITE_REPLAY_PASS__TRUSTED_MATHEMATICAL_ADAPTER_PENDING",
+  "triangle_compatible_graph_candidates_by_D2": {
+    "8": 30
+  }
+}

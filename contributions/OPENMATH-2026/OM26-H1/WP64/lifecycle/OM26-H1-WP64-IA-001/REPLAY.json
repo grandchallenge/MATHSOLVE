@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_LIFECYCLE_REPLAY",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H1",
+  "assignment_id": "OM26-H1-WP64",
+  "dispatch_id": "OM26-H1-WP64-IA-001",
+  "state": "REPLAYED",
+  "profile": "CONSERVATIVE_STRUCTURAL_REPLAY",
+  "checks": {
+    "result_schema": "PASS",
+    "protected_dispatch_identity": "PASS",
+    "trusted_mathematical_adapter": "NOT_REGISTERED"
+  },
+  "claim_effect": "NONE",
+  "next_residual": "Independently convert the strongest predecessor claim into deterministic protected replay evidence. If it cannot be established, return the exact counterexample or blocker. Do not promote the predecessor claim merely because its RESULT/1 was structurally valid."
+}

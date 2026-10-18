@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "packet_id": "OM26-H5-COMPETITION-PACKET-001",
+  "account": "jimsteeg",
+  "source_repository": "grandchallenge/MATHSOLVE",
+  "source_commit": "50b88f51032a14aeae5c3969e14dd8c5a8728bac",
+  "hill": "H5",
+  "hill_id": "alejandrozu/grothendieck-constant-witnesses",
+  "artifact": {
+    "path": "work_packages/OPENMATH_2026/CONTEST_CANDIDATES/H5/solution.json",
+    "git_blob_sha1": "2f9633896bd6297f47bf6c4acd21202200ea0dbd",
+    "sha256": "72703ab868d55a460f8adbfdd137afbbdd044a0aea5f2267516c4805b541901e"
+  },
+  "hill_version": {
+    "tree_hash": "14a20a4674b3262fd4b93e935da7f660afbd2c11",
+    "commit": "ece3beae9d4a04cc5166503b312d6f8c7ba31050"
+  },
+  "native_climb": {
+    "project_id": "c6628b21-cda2-4114-84e6-1d747b4893f8",
+    "slug": "gcl-2026-h5-fixed-72703ab868d5",
+    "job_id": "db1f326c-a4c0-4ab1-b601-7fa50e8e0c36",
+    "job_status": "queued"
+  },
+  "claim": {
+    "statement": "This payload is an exact rational finite Grothendieck witness based on the 2x2 CHSH sign matrix, using rational unit vectors. The retained ratio is 275807/195025.",
+    "status": "EXACT_RATIONAL_WITNESS_READY",
+    "universal_bound_claim": false
+  },
+  "provenance": {
+    "attribution": "GCL independent H5 work established exact checker/source-example concordance; this retained payload is a rational CHSH approximation and is not represented as a new universal bound.",
+    "gcl_evidence": [
+      "contributions/OPENMATH-2026/OM26-H5/WP01/raw/OM26-H5-WP01-IA-001/github-comment-5921328716.md"
+    ]
+  },
+  "competition_fields": {
+    "submission_id": null,
+    "competition_workspace": null,
+    "immutable_final_commit": null,
+    "official_evaluator_report": null,
+    "leaderboard_state": null,
+    "organizer_acceptance": null
+  },
+  "claim_boundary": "Finite rational witness only. No claim to determine or improve the exact Grothendieck constant universally, no novelty claim, certification, or official competition acceptance.",
+  "handbook_audit": {
+    "audit_id": "OPENMATH-2026-HANDBOOK-COMPLIANCE-AUDIT-001",
+    "status": "NOT_SUBMISSION_READY",
+    "classification": "ELIGIBLE_CONTRIBUTION_NOT_ESTABLISHED",
+    "blocking": [
+      "retained-candidate derivation/provenance",
+      "trusted replay",
+      "eligible novelty or M2 formalization delta",
+      "Section 8 packet",
+      "official submission route/report"
+    ]
+  }
+}

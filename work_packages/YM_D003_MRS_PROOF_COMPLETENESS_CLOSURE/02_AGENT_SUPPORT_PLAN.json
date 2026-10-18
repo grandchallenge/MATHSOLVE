@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "YM-001",
+  "target_id": "YM-D003-MRS-R002",
+  "controller_mode": "GCL_OWNED_SYNTHESIS_WITH_EXTERNAL_EVIDENCE",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "canonical_mutation_by_contributors": false,
+  "work_packages": [
+    {
+      "id": "YM-D003-MRS-R002-WP-A",
+      "dispatch_id": "YM-D003-MRS-R002-WP-A-IA-001",
+      "role": "SOURCE_DEPENDENCY_RECONSTRUCTION",
+      "concurrency_mode": "independent_blind",
+      "external_sources": "PRIMARY_SOURCES_ALLOWED",
+      "priority": 1,
+      "launch_state": "READY_FOR_GITHUB_COMMENT",
+      "success": "Exact citation/theorem dependency graph with claim locations, hypotheses, conclusions, applicability, and one of the four governed evidence dispositions for every material node.",
+      "github_issue_number": 716,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/716",
+      "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec",
+      "result_state": "RECEIVED_AND_SYNTHESIZED__COMMENT_5967005635"
+    },
+    {
+      "id": "YM-D003-MRS-R002-WP-B",
+      "dispatch_id": "YM-D003-MRS-R002-WP-B-IA-001",
+      "role": "CONVERGENCE_CLOSURE_OR_SHARP_REDUCTION",
+      "concurrency_mode": "independent_blind",
+      "external_sources": "PRIMARY_SOURCES_ALLOWED",
+      "priority": 1,
+      "launch_state": "READY_FOR_GITHUB_COMMENT",
+      "success": "A checked theorem-grade closure of one material convergence implication, or a sharp reduction identifying the smallest additional hypothesis/source lemma needed.",
+      "github_issue_number": 717,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/717",
+      "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec",
+      "result_state": "RECEIVED_AND_SYNTHESIZED__COMMENT_5966952070"
+    },
+    {
+      "id": "YM-D003-MRS-R002-WP-C",
+      "dispatch_id": "YM-D003-MRS-R002-WP-C-IA-001",
+      "role": "ADVERSARIAL_ROUTE_AUDIT",
+      "concurrency_mode": "independent_blind",
+      "external_sources": "PROTECTED_PACKET_ONLY",
+      "priority": 1,
+      "launch_state": "READY_FOR_GITHUB_COMMENT",
+      "success": "An exact hidden-assumption/counterexample audit of the proposed upgrade from qualified source claim to theorem-grade fixed-IR UV construction.",
+      "github_issue_number": 718,
+      "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/718",
+      "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec",
+      "result_state": "RECEIVED_AND_SYNTHESIZED__COMMENT_5966936787"
+    }
+  ],
+  "synthesis_gate": {
+    "minimum_inputs": [
+      "one source-dependency return or exact source blocker",
+      "one adversarial return or exact adversarial blocker"
+    ],
+    "preferred_inputs": [
+      "WP-A",
+      "WP-B",
+      "WP-C"
+    ],
+    "promotion_rule": "No external result is canonical until GCL independently replays or verifies the material claim and merges a protected Solve synthesis.",
+    "next_action_if_consistent": "Select the smallest confirmed MISSING_THEOREM_GRADE_PROOF node and open a bounded native proof/falsification tranche.",
+    "next_action_if_inconsistent": "Protect the disagreement as evidence, identify the exact conflicting premise, and resolve before theorem promotion.",
+    "currently_satisfied": true,
+    "current_blocker": null,
+    "pre_synthesis_replay": {
+      "WP-B": "conditional finite-order Slavnov limit passage independently replayed against MRS Sect. VIII",
+      "WP-C": "typed topology/domain/uniformity objection independently replayed as logically material"
+    },
+    "synthesis_result": "YM-D003-MRS-R002-MT1 — EXACT_ZERO_MASS_COUNTERTERM_TUNING",
+    "native_work_package": "work_packages/YM_D003_MRS_R002_MT1_EXACT_ZERO_MASS_TUNING.md"
+  },
+  "claim_boundary": "This registry allocates independent support work only. It does not authorize certification, canonical claim mutation, source admission, or cross-route composition.",
+  "dispatch_binding_state": "ALL_THREE_ISSUES_BOUND",
+  "dispatch_binding_base": "0bd614f27b22c3a5350347cbda51b0267ddf29ec"
+}

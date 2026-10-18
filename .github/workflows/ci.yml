@@ -25,6 +25,8 @@ jobs:
           python-version: "3.12.13"
           cache: pip
           cache-dependency-path: requirements-ci.txt
+      - name: Validate repository path portability
+        run: python ci/validate_repo_case_collisions.py
       - name: Install locked validation dependencies
         run: python -m pip install -r requirements-ci.txt
       - name: Validate claim ledgers, programme references, and bounded tactic routing
@@ -58,6 +60,103 @@ jobs:
           python -m unittest ci/test_euclid_diophantine_solve.py -v
           python solve/euclid_diophantine.py --output /tmp/euclid-diophantine.json
           cmp /tmp/euclid-diophantine.json certificates/EUCLID-DIOPHANTINE-E2E-002.json
+      - name: Validate OPENMATH H1-12 three-core arithmetic
+        run: |
+          python ci/validate_openmath_h1_12_three_core.py
+          python -m unittest ci/test_openmath_h1_12_three_core.py -v
+      - name: Validate OPENMATH H1-12 four-core arithmetic
+        run: |
+          python ci/validate_openmath_h1_12_four_core.py
+          python -m unittest ci/test_openmath_h1_12_four_core.py -v
+      - name: Validate OPENMATH H1-12 saturated-core reduction
+        run: |
+          python ci/validate_openmath_h1_12_saturated_core.py
+          python -m unittest ci/test_openmath_h1_12_saturated_core.py -v
+      - name: Validate OPENMATH H1-12 profile 3334 normal form
+        run: |
+          python ci/validate_openmath_h1_12_3334_normal_form.py
+          python -m unittest ci/test_openmath_h1_12_3334_normal_form.py -v
+      - name: Validate OPENMATH H1-12 profile 3334 D2=3 reduction
+        run: |
+          python ci/validate_openmath_h1_12_3334_d2_3.py
+          python -m unittest ci/test_openmath_h1_12_3334_d2_3.py -v
+      - name: Validate OPENMATH H1-12 profile 3334 D2=4 reduction
+        run: |
+          python ci/validate_openmath_h1_12_3334_d2_4.py
+          python -m unittest ci/test_openmath_h1_12_3334_d2_4.py -v
+      - name: Validate OPENMATH H1-12 profile 3334 D2=5 reduction
+        run: |
+          python ci/validate_openmath_h1_12_3334_d2_5.py
+          python -m unittest ci/test_openmath_h1_12_3334_d2_5.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 normal form
+        run: |
+          python ci/validate_openmath_h1_12_3333_normal_form.py
+          python -m unittest ci/test_openmath_h1_12_3333_normal_form.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 saturated-hub reduction
+        run: |
+          python ci/validate_openmath_h1_12_3333_saturated_hub.py
+          python -m unittest ci/test_openmath_h1_12_3333_saturated_hub.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 D2=4 C4 exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_c4.py
+          python -m unittest ci/test_openmath_h1_12_3333_c4.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 non-saturated star exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_nonsat_star.py
+          python -m unittest ci/test_openmath_h1_12_3333_nonsat_star.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 saturated equality exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_saturated_equality.py
+          python -m unittest ci/test_openmath_h1_12_3333_saturated_equality.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 triangle-isolated normal form
+        run: |
+          python ci/validate_openmath_h1_12_3333_triangle_isolated.py
+          python -m unittest ci/test_openmath_h1_12_3333_triangle_isolated.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 triangle Type P exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_triangle_type_p.py
+          python -m unittest ci/test_openmath_h1_12_3333_triangle_type_p.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 triangle Type C exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_triangle_type_c.py
+          python -m unittest ci/test_openmath_h1_12_3333_triangle_type_c.py -v
+      - name: Validate OPENMATH H1-12 profile 3333 P4 exclusion
+        run: |
+          python ci/validate_openmath_h1_12_3333_p4.py
+          python -m unittest ci/test_openmath_h1_12_3333_p4.py -v
+      - name: Validate OPENMATH H1-12 q4 sector-consistency closure
+        run: |
+          python ci/validate_openmath_h1_12_q4_sector_closure.py
+          python -m unittest ci/test_openmath_h1_12_q4_sector_closure.py -v
+      - name: Validate OPENMATH H1-12 q5 profile reduction
+        run: |
+          python ci/validate_openmath_h1_12_q5_profiles.py
+          python -m unittest ci/test_openmath_h1_12_q5_profiles.py -v
+      - name: Validate OPENMATH H1-12 q5 saturation reduction
+        run: |
+          python ci/validate_openmath_h1_12_q5_saturation.py
+          python -m unittest ci/test_openmath_h1_12_q5_saturation.py -v
+      - name: Validate OPENMATH H1-12 q5 profile 33334 closure
+        run: |
+          python ci/validate_openmath_h1_12_q5_33334.py
+          python -m unittest ci/test_openmath_h1_12_q5_33334.py -v
+      - name: Validate OPENMATH H1-12 q5 profile 33333 reduction
+        run: |
+          python ci/validate_openmath_h1_12_q5_33333.py
+          python -m unittest ci/test_openmath_h1_12_q5_33333.py -v
+      - name: Validate OPENMATH H1-12 q5 equality normal form
+        run: |
+          python ci/validate_openmath_h1_12_q5_equality.py
+          python -m unittest ci/test_openmath_h1_12_q5_equality.py -v
+          python -m unittest ci/test_openmath_h1_14_wolfram.py -v
+      - name: Validate OPENMATH H1-15 compound order-type receipt
+        run: |
+          python ci/validate_openmath_h1_15_compound.py
+          python -m unittest ci/test_openmath_h1_15_compound.py -v
+      - name: Validate OPENMATH H1-16 face-loss mining and q6 profile 333344 closure
+        run: |
+          python ci/validate_openmath_h1_333344.py >/tmp/h1-333344.json
+          python -m unittest ci/test_openmath_h1_16.py -v
       - name: Validate recursive campaign manifests and Cert boundaries
         run: |
           python ci/validate_campaign_manifests.py
@@ -86,7 +185,39 @@ jobs:
           python ci/validate_ns_ci_independent_contribution_pilot.py
           python -m unittest tests/test_ns_ci_independent_contribution_pilot.py -v
           python -m unittest tests/test_ns_ci_github_contribution_intake.py -v
+          python ci/validate_erdos_open_recon_activation.py
+          python ci/validate_erdos_open_cohort_closures.py
+          python -m unittest tests/test_erdos_open_cohort_closure.py -v
+          python ci/validate_erdos_open_semantic_gates.py
+          python ci/validate_erdos_241_synthesis.py
+          python ci/validate_erdos_successor_002.py
+          python ci/validate_erdos_successor_003.py
+          python ci/erdos_catalogue_local_certificates.py --check
+          python ci/erdos_241_595_theorem_boundaries.py
+          python -m unittest tests/test_erdos_successor_002_replay.py -v
+          python -m unittest tests/test_erdos_241_replay.py tests/test_erdos_241_synthesis.py -v
+          python ci/test_gcl_active_reservation_capacity.py
+          python ci/validate_gcl_worker_queue.py
+          python ci/validate_queue_intake_bindings.py
+          python ci/validate_gcl_worker_queue_activation_receipt.py
+          python ci/validate_gcl_worker_queue_project.py
+          python ci/validate_gcl_worker_bootstrap.py
+          python -m unittest discover -s ci -p 'test_gcl_queue_class_contract.py' -v
+          python -m json.tool .well-known/gcl-worker-queue.json >/dev/null
+          python -m unittest tests/test_gcl_worker_queue_projection.py tests/test_gcl_worker_queue_project_status.py -v
+          python -m unittest tests/test_new_queue_intake.py -v
+          python ci/gcl_worker_queue_projection.py --help >/dev/null
+          python ci/gcl_worker_queue_project_status.py --help >/dev/null
+          python ci/gcl_worker_queue.py --help >/dev/null
+          python ci/ns_ci_github_contribution_intake.py --help >/dev/null
+          python -m unittest tests/test_gcl_worker_queue.py tests/test_gcl_worker_queue_intake_binding.py -v
+          python ci/validate_uc_wp08_d004_dispatches.py
           python -m json.tool contributions/NS-CI-001/C2_MIX_DIRECTION_COMPRESSION_LEDGER_CHARGE/schemas/intake_receipt.schema.json >/dev/null
+      - name: Validate GCL-ERDOS3 frontier and independent intake
+        run: |
+          python ci/validate_gcl_erdos3_frontier.py
+          python -m unittest tests/test_gcl_erdos3_github_contribution_intake.py tests/test_gcl_erdos3_lease_activation.py tests/test_gcl_erdos3_lease_reaper.py -v
+
       - name: Validate OpenAI Ten Proofs independent handoffs
         run: |
           python ci/validate_openai_ten_proofs_result_family_handoffs.py
@@ -115,6 +246,8 @@ jobs:
         env:
           SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
+      - name: Validate repository path portability
+        run: python ci/validate_repo_case_collisions.py
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.12"

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-POST-BASELINE-TRANCHE-SPEC",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligations": [
+    "H1-02",
+    "H1-06",
+    "H1-07"
+  ],
+  "source_solve_head": "2ded7f7e830d6c7699636fe102676a8b296c9885",
+  "search_routes": [
+    {
+      "route": "R-D",
+      "method": "exact local mutation",
+      "seed": 3,
+      "iterations": 3000,
+      "start": "locked baseline",
+      "expected_candidate": "RD_LOCAL_MUTATION_086",
+      "expected_triangles": 86
+    },
+    {
+      "route": "R-G",
+      "method": "two-parameter exact structured family",
+      "evaluated": 525,
+      "expected_candidate": "RG_STRUCTURED_FAMILY_058",
+      "expected_triangles": 58
+    }
+  ],
+  "h1_07_requirements": [
+    "independent direct-interior oracle must match",
+    "authenticated AutoLab public evaluator must match",
+    "mismatch prohibits promotion"
+  ],
+  "claim_boundary": "Bounded research tranche only; no best-known, optimality, novelty, competition-acceptance, or certification claim."
+}

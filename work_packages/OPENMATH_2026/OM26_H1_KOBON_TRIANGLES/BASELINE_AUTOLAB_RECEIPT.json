@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-BASELINE-AUTOLAB-RECEIPT",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "gate": "H1-01",
+  "state": "AUTOLAB_PUBLIC_EVALUATOR_CONCORDANCE_PASS",
+  "authenticated_acquisition": {
+    "provider": "AutoLab",
+    "hill": "alejandrozu/kobon-triangles",
+    "public_snapshot": "7d3f1d91dcb8",
+    "manifest_version": "0.1.0",
+    "spec_version": 2,
+    "authentication": "AUTOLAB_TOKEN_GITHUB_ACTIONS_SECRET",
+    "private_fixture_data_present": false
+  },
+  "evaluator": {
+    "package": "hills",
+    "package_version": "0.11.0",
+    "command": "uv tool run --from hills==0.11.0 hills eval baseline -H kobon-triangles --current --json",
+    "mode": "WORKING_TREE_PUBLIC_HILL",
+    "official_competition_score": false,
+    "source_note": "AutoLab reports the public working-tree score as unofficial because private regression fixtures are not distributed by the public hill pull."
+  },
+  "subject": {
+    "solution_path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/baseline/solution.json",
+    "solution_git_blob_sha1": "8d1c2147204cedaf45559d2d8bafe1603b0903f1",
+    "solution_sha256": "fee1fa08e700ba5849c3d1849cc10d2d3a50a44b3d838d560cd08f9a0de2b271",
+    "n": 18
+  },
+  "observed_result": {
+    "passed": true,
+    "metric": {
+      "name": "triangles",
+      "value": 16,
+      "direction": "max"
+    },
+    "console_summary": "PASSED triangles=16 (max)",
+    "local_status": "unofficial dirty-tree",
+    "discrepancy_against_gcl_exact_scorer": false
+  },
+  "workflow_evidence": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "pull_request": 458,
+    "candidate_head": "bf29f5ce40e9a092639f1d42c841148f4c19d59f",
+    "run_id": 36354367463,
+    "job_id": 108719011813
+  },
+  "disposition": "H1-01_PASS__SEARCH_MAY_PROCEED_UNDER_EXISTING_CLAIM_BOUNDARIES",
+  "claim_boundary": "This receipt establishes evaluator concordance on the identical baseline between the independent GCL exact scorer and the authenticated AutoLab public hill evaluator. It is not an official competition score, does not use private regression fixtures, and does not establish optimality, novelty, competition acceptance, or MATHCERT certification."
+}

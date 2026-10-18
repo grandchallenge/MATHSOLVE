@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "YM_MRS_EXTERNAL_DISPATCH",
+  "campaign_id": "YM-001",
+  "target_id": "YM-D003-MRS-R002",
+  "dispatch_id": "YM-D003-MRS-R002-WP-B-IA-001",
+  "assignment": "B",
+  "dispatch_status": "READY_FOR_GITHUB_COMMENT",
+  "concurrency_mode": "independent_blind",
+  "context_class": "ZERO_CONTEXT",
+  "external_sources": "PRIMARY_SOURCES_ALLOWED",
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "canonical_mutation_authorized": false,
+  "source_handoff_commit_sha": "0bd614f27b22c3a5350347cbda51b0267ddf29ec",
+  "bootstrap_path": "handoffs/YM-001/mrs-r002/YM-D003-MRS-R002-WP-B.md",
+  "bootstrap_blob_sha1": "a769044a955ab556ac610954952e83db64e97a87",
+  "bootstrap_sha256": "99b5d140beb1cf2859b104ad061e1d0c1813ff14bac964fe0571517e8ab8076a",
+  "github_issue_number": 717,
+  "github_issue_title": "[GCL-CONTRIB] YM-D003-MRS-R002 WP-B — theorem-grade convergence closure",
+  "github_issue_url": "https://github.com/grandchallenge/MATHSOLVE/issues/717",
+  "handling_state": "AWAITING_FIRST_VALID_RESULT",
+  "claim_boundary": "Dispatch registration only. External returns are unadjudicated evidence and have no canonical or certification effect."
+}

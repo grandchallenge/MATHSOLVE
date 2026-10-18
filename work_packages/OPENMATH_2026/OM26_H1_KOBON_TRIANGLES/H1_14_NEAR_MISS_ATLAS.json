@@ -1,0 +1,2790 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-14-NEAR-MISS-ATLAS",
+  "seed_candidate": "RH_BADER_RECONSTRUCTION_093",
+  "seed_blob_sha1": "bb244e4b0422922ae9f85cc4facb2109c33162b3",
+  "seed_score": 93,
+  "proper_triangle_count": 93,
+  "improper_triple_count": 48,
+  "proper_nonface_blocker_distribution": {
+    "2": 60,
+    "3": 41,
+    "4": 75,
+    "5": 39,
+    "6": 55,
+    "7": 30,
+    "8": 60,
+    "9": 42,
+    "10": 36,
+    "11": 45,
+    "12": 48,
+    "13": 75,
+    "14": 48,
+    "15": 21
+  },
+  "one_blocker_count": 0,
+  "two_blocker_count": 60,
+  "two_blocker_cases": [
+    {
+      "target_triple": [
+        3,
+        14,
+        17
+      ],
+      "blockers": [
+        {
+          "moving_line": 8,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            8,
+            14,
+            17
+          ],
+          "wall_abs_numerator": 325285,
+          "wall_norm_sq": 393566354,
+          "wall_distance_approx": 16.396647311967218,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 11,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            3,
+            11,
+            17
+          ],
+          "wall_abs_numerator": 408260,
+          "wall_norm_sq": 490574825,
+          "wall_distance_approx": 18.432498296251556,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 34.829145608218774,
+      "distance_max_approx": 18.432498296251556
+    },
+    {
+      "target_triple": [
+        0,
+        4,
+        14
+      ],
+      "blockers": [
+        {
+          "moving_line": 6,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            0,
+            6,
+            14
+          ],
+          "wall_abs_numerator": 190605,
+          "wall_norm_sq": 136949849,
+          "wall_distance_approx": 16.287465548968854,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 11,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            0,
+            4,
+            11
+          ],
+          "wall_abs_numerator": 179364,
+          "wall_norm_sq": 92342205,
+          "wall_distance_approx": 18.665307979839827,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 34.95277352880868,
+      "distance_max_approx": 18.665307979839827
+    },
+    {
+      "target_triple": [
+        2,
+        5,
+        15
+      ],
+      "blockers": [
+        {
+          "moving_line": 8,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            8,
+            15
+          ],
+          "wall_abs_numerator": 147699,
+          "wall_norm_sq": 43294905,
+          "wall_distance_approx": 22.447044080115116,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 11,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            5,
+            11
+          ],
+          "wall_abs_numerator": 65952,
+          "wall_norm_sq": 13425152,
+          "wall_distance_approx": 17.999828381013216,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 40.446872461128336,
+      "distance_max_approx": 22.447044080115116
+    },
+    {
+      "target_triple": [
+        3,
+        8,
+        17
+      ],
+      "blockers": [
+        {
+          "moving_line": 11,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            3,
+            11,
+            17
+          ],
+          "wall_abs_numerator": 408260,
+          "wall_norm_sq": 490574825,
+          "wall_distance_approx": 18.432498296251556,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 14,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            3,
+            8,
+            14
+          ],
+          "wall_abs_numerator": 25610,
+          "wall_norm_sq": 1113832,
+          "wall_distance_approx": 24.266086034412623,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 42.698584330664175,
+      "distance_max_approx": 24.266086034412623
+    },
+    {
+      "target_triple": [
+        2,
+        11,
+        15
+      ],
+      "blockers": [
+        {
+          "moving_line": 5,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            5,
+            11,
+            15
+          ],
+          "wall_abs_numerator": 38295,
+          "wall_norm_sq": 3137661,
+          "wall_distance_approx": 21.61917236352695,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 8,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            8,
+            15
+          ],
+          "wall_abs_numerator": 147699,
+          "wall_norm_sq": 43294905,
+          "wall_distance_approx": 22.447044080115116,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 44.06621644364206,
+      "distance_max_approx": 22.447044080115116
+    },
+    {
+      "target_triple": [
+        1,
+        5,
+        16
+      ],
+      "blockers": [
+        {
+          "moving_line": 8,
+          "blocking_pattern": [
+            1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            1,
+            8,
+            16
+          ],
+          "wall_abs_numerator": 501272,
+          "wall_norm_sq": 199356613,
+          "wall_distance_approx": 35.50243355182631,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 12,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            1,
+            5,
+            12
+          ],
+          "wall_abs_numerator": 151051,
+          "wall_norm_sq": 102406202,
+          "wall_distance_approx": 14.926585570961798,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 50.429019122788105,
+      "distance_max_approx": 35.50243355182631
+    },
+    {
+      "target_triple": [
+        1,
+        12,
+        16
+      ],
+      "blockers": [
+        {
+          "moving_line": 5,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            5,
+            12,
+            16
+          ],
+          "wall_abs_numerator": 50607,
+          "wall_norm_sq": 7267202,
+          "wall_distance_approx": 18.772710245391817,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 8,
+          "blocking_pattern": [
+            1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            1,
+            8,
+            16
+          ],
+          "wall_abs_numerator": 501272,
+          "wall_norm_sq": 199356613,
+          "wall_distance_approx": 35.50243355182631,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 54.27514379721812,
+      "distance_max_approx": 35.50243355182631
+    },
+    {
+      "target_triple": [
+        4,
+        15,
+        17
+      ],
+      "blockers": [
+        {
+          "moving_line": 6,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            6,
+            15,
+            17
+          ],
+          "wall_abs_numerator": 700682,
+          "wall_norm_sq": 342404488,
+          "wall_distance_approx": 37.86615747707322,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 12,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            4,
+            12,
+            17
+          ],
+          "wall_abs_numerator": 379224,
+          "wall_norm_sq": 480438562,
+          "wall_distance_approx": 17.301226253920248,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 55.16738373099347,
+      "distance_max_approx": 37.86615747707322
+    },
+    {
+      "target_triple": [
+        0,
+        4,
+        6
+      ],
+      "blockers": [
+        {
+          "moving_line": 11,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            0,
+            4,
+            11
+          ],
+          "wall_abs_numerator": 179364,
+          "wall_norm_sq": 92342205,
+          "wall_distance_approx": 18.665307979839827,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 14,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            4,
+            6,
+            14
+          ],
+          "wall_abs_numerator": 30066,
+          "wall_norm_sq": 389441,
+          "wall_distance_approx": 48.17867115212187,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 66.8439791319617,
+      "distance_max_approx": 48.17867115212187
+    },
+    {
+      "target_triple": [
+        2,
+        14,
+        17
+      ],
+      "blockers": [
+        {
+          "moving_line": 5,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            5,
+            14,
+            17
+          ],
+          "wall_abs_numerator": 330739,
+          "wall_norm_sq": 393566354,
+          "wall_distance_approx": 16.671567195882766,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 9,
+          "blocking_pattern": [
+            1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            2,
+            9,
+            17
+          ],
+          "wall_abs_numerator": 1359840,
+          "wall_norm_sq": 628992829,
+          "wall_distance_approx": 54.220680610583244,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 70.892247806466,
+      "distance_max_approx": 54.220680610583244
+    },
+    {
+      "target_triple": [
+        2,
+        5,
+        17
+      ],
+      "blockers": [
+        {
+          "moving_line": 9,
+          "blocking_pattern": [
+            1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            2,
+            9,
+            17
+          ],
+          "wall_abs_numerator": 1359840,
+          "wall_norm_sq": 628992829,
+          "wall_distance_approx": 54.220680610583244,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 14,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            2,
+            5,
+            14
+          ],
+          "wall_abs_numerator": 72880,
+          "wall_norm_sq": 13425152,
+          "wall_distance_approx": 19.890640047432118,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 74.11132065801536,
+      "distance_max_approx": 54.220680610583244
+    },
+    {
+      "target_triple": [
+        1,
+        14,
+        15
+      ],
+      "blockers": [
+        {
+          "moving_line": 7,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            7,
+            14,
+            15
+          ],
+          "wall_abs_numerator": 49217,
+          "wall_norm_sq": 1798594,
+          "wall_distance_approx": 36.69852149429254,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 10,
+          "blocking_pattern": [
+            1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            1,
+            10,
+            15
+          ],
+          "wall_abs_numerator": 513501,
+          "wall_norm_sq": 169398765,
+          "wall_distance_approx": 39.45355790412969,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 76.15207939842223,
+      "distance_max_approx": 39.45355790412969
+    },
+    {
+      "target_triple": [
+        0,
+        9,
+        13
+      ],
+      "blockers": [
+        {
+          "moving_line": 4,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            4,
+            9,
+            13
+          ],
+          "wall_abs_numerator": 19680,
+          "wall_norm_sq": 388224,
+          "wall_distance_approx": 31.58521984662516,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 8,
+          "blocking_pattern": [
+            1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            0,
+            8,
+            13
+          ],
+          "wall_abs_numerator": 537942,
+          "wall_norm_sq": 131052265,
+          "wall_distance_approx": 46.990837744916426,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 78.57605759154158,
+      "distance_max_approx": 46.990837744916426
+    },
+    {
+      "target_triple": [
+        8,
+        11,
+        15
+      ],
+      "blockers": [
+        {
+          "moving_line": 2,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            2,
+            8,
+            11
+          ],
+          "wall_abs_numerator": 51294,
+          "wall_norm_sq": 675700,
+          "wall_distance_approx": 62.400721042953336,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 5,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            5,
+            11,
+            15
+          ],
+          "wall_abs_numerator": 38295,
+          "wall_norm_sq": 3137661,
+          "wall_distance_approx": 21.61917236352695,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 84.01989340648029,
+      "distance_max_approx": 62.400721042953336
+    },
+    {
+      "target_triple": [
+        0,
+        3,
+        13
+      ],
+      "blockers": [
+        {
+          "moving_line": 5,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            0,
+            5,
+            13
+          ],
+          "wall_abs_numerator": 419077,
+          "wall_norm_sq": 131052265,
+          "wall_distance_approx": 36.60762556116894,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 10,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            0,
+            3,
+            10
+          ],
+          "wall_abs_numerator": 453606,
+          "wall_norm_sq": 88574020,
+          "wall_distance_approx": 48.197622134433644,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 84.80524769560259,
+      "distance_max_approx": 48.197622134433644
+    },
+    {
+      "target_triple": [
+        12,
+        15,
+        17
+      ],
+      "blockers": [
+        {
+          "moving_line": 4,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            4,
+            12,
+            15
+          ],
+          "wall_abs_numerator": 80904,
+          "wall_norm_sq": 2655976,
+          "wall_distance_approx": 49.64298884235193,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 6,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            6,
+            15,
+            17
+          ],
+          "wall_abs_numerator": 700682,
+          "wall_norm_sq": 342404488,
+          "wall_distance_approx": 37.86615747707322,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 87.50914631942516,
+      "distance_max_approx": 49.64298884235193
+    },
+    {
+      "target_triple": [
+        9,
+        14,
+        17
+      ],
+      "blockers": [
+        {
+          "moving_line": 2,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            9,
+            14
+          ],
+          "wall_abs_numerator": 65479,
+          "wall_norm_sq": 790490,
+          "wall_distance_approx": 73.6467943766204,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 5,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            5,
+            14,
+            17
+          ],
+          "wall_abs_numerator": 330739,
+          "wall_norm_sq": 393566354,
+          "wall_distance_approx": 16.671567195882766,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 90.31836157250316,
+      "distance_max_approx": 73.6467943766204
+    },
+    {
+      "target_triple": [
+        1,
+        11,
+        16
+      ],
+      "blockers": [
+        {
+          "moving_line": 7,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            7,
+            11,
+            16
+          ],
+          "wall_abs_numerator": 43687,
+          "wall_norm_sq": 8224333,
+          "wall_distance_approx": 15.233576553814135,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 9,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            1,
+            9,
+            16
+          ],
+          "wall_abs_numerator": 1065281,
+          "wall_norm_sq": 199356613,
+          "wall_distance_approx": 75.44819562338029,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 90.68177217719442,
+      "distance_max_approx": 75.44819562338029
+    },
+    {
+      "target_triple": [
+        2,
+        7,
+        17
+      ],
+      "blockers": [
+        {
+          "moving_line": 10,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            10,
+            17
+          ],
+          "wall_abs_numerator": 1934331,
+          "wall_norm_sq": 628992829,
+          "wall_distance_approx": 77.12726743304367,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 13,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            7,
+            13
+          ],
+          "wall_abs_numerator": 58780,
+          "wall_norm_sq": 14370848,
+          "wall_distance_approx": 15.505593129510785,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 92.63286056255446,
+      "distance_max_approx": 77.12726743304367
+    },
+    {
+      "target_triple": [
+        2,
+        13,
+        17
+      ],
+      "blockers": [
+        {
+          "moving_line": 7,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            7,
+            13,
+            17
+          ],
+          "wall_abs_numerator": 380040,
+          "wall_norm_sq": 405012240,
+          "wall_distance_approx": 18.884054069094972,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 10,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            10,
+            17
+          ],
+          "wall_abs_numerator": 1934331,
+          "wall_norm_sq": 628992829,
+          "wall_distance_approx": 77.12726743304367,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 96.01132150213864,
+      "distance_max_approx": 77.12726743304367
+    },
+    {
+      "target_triple": [
+        0,
+        3,
+        5
+      ],
+      "blockers": [
+        {
+          "moving_line": 10,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            0,
+            3,
+            10
+          ],
+          "wall_abs_numerator": 453606,
+          "wall_norm_sq": 88574020,
+          "wall_distance_approx": 48.197622134433644,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 13,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            3,
+            5,
+            13
+          ],
+          "wall_abs_numerator": 37405,
+          "wall_norm_sq": 540922,
+          "wall_distance_approx": 50.85835823111864,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 99.05598036555229,
+      "distance_max_approx": 50.85835823111864
+    },
+    {
+      "target_triple": [
+        1,
+        7,
+        15
+      ],
+      "blockers": [
+        {
+          "moving_line": 10,
+          "blocking_pattern": [
+            1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            1,
+            10,
+            15
+          ],
+          "wall_abs_numerator": 513501,
+          "wall_norm_sq": 169398765,
+          "wall_distance_approx": 39.45355790412969,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 14,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            1,
+            7,
+            14
+          ],
+          "wall_abs_numerator": 680165,
+          "wall_norm_sq": 104371898,
+          "wall_distance_approx": 66.57673447513733,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 106.03029237926702,
+      "distance_max_approx": 66.57673447513733
+    },
+    {
+      "target_triple": [
+        1,
+        7,
+        16
+      ],
+      "blockers": [
+        {
+          "moving_line": 9,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            1,
+            9,
+            16
+          ],
+          "wall_abs_numerator": 1065281,
+          "wall_norm_sq": 199356613,
+          "wall_distance_approx": 75.44819562338029,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 11,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            1,
+            7,
+            11
+          ],
+          "wall_abs_numerator": 340404,
+          "wall_norm_sq": 104371898,
+          "wall_distance_approx": 33.31983669003058,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 108.76803231341086,
+      "distance_max_approx": 75.44819562338029
+    },
+    {
+      "target_triple": [
+        11,
+        14,
+        17
+      ],
+      "blockers": [
+        {
+          "moving_line": 3,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            3,
+            11,
+            14
+          ],
+          "wall_abs_numerator": 42422,
+          "wall_norm_sq": 188785,
+          "wall_distance_approx": 97.63541970392293,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 8,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            8,
+            14,
+            17
+          ],
+          "wall_abs_numerator": 325285,
+          "wall_norm_sq": 393566354,
+          "wall_distance_approx": 16.396647311967218,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 114.03206701589015,
+      "distance_max_approx": 97.63541970392293
+    },
+    {
+      "target_triple": [
+        0,
+        11,
+        14
+      ],
+      "blockers": [
+        {
+          "moving_line": 4,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            4,
+            11,
+            14
+          ],
+          "wall_abs_numerator": 49174,
+          "wall_norm_sq": 188785,
+          "wall_distance_approx": 113.17533658292174,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 6,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            0,
+            6,
+            14
+          ],
+          "wall_abs_numerator": 190605,
+          "wall_norm_sq": 136949849,
+          "wall_distance_approx": 16.287465548968854,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 129.4628021318906,
+      "distance_max_approx": 113.17533658292174
+    },
+    {
+      "target_triple": [
+        2,
+        3,
+        16
+      ],
+      "blockers": [
+        {
+          "moving_line": 6,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            6,
+            16
+          ],
+          "wall_abs_numerator": 599840,
+          "wall_norm_sq": 58451293,
+          "wall_distance_approx": 78.45820388550851,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 12,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            3,
+            12
+          ],
+          "wall_abs_numerator": 158953,
+          "wall_norm_sq": 8611898,
+          "wall_distance_approx": 54.16506770056344,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 132.62327158607195,
+      "distance_max_approx": 78.45820388550851
+    },
+    {
+      "target_triple": [
+        0,
+        4,
+        13
+      ],
+      "blockers": [
+        {
+          "moving_line": 8,
+          "blocking_pattern": [
+            1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            0,
+            8,
+            13
+          ],
+          "wall_abs_numerator": 537942,
+          "wall_norm_sq": 131052265,
+          "wall_distance_approx": 46.990837744916426,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 9,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            0,
+            4,
+            9
+          ],
+          "wall_abs_numerator": 993927,
+          "wall_norm_sq": 92342205,
+          "wall_distance_approx": 103.431867958332,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 150.42270570324843,
+      "distance_max_approx": 103.431867958332
+    },
+    {
+      "target_triple": [
+        0,
+        10,
+        13
+      ],
+      "blockers": [
+        {
+          "moving_line": 3,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            3,
+            10,
+            13
+          ],
+          "wall_abs_numerator": 63775,
+          "wall_norm_sq": 240346,
+          "wall_distance_approx": 130.08643675399918,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 5,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            0,
+            5,
+            13
+          ],
+          "wall_abs_numerator": 419077,
+          "wall_norm_sq": 131052265,
+          "wall_distance_approx": 36.60762556116894,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 166.6940623151681,
+      "distance_max_approx": 130.08643675399918
+    },
+    {
+      "target_triple": [
+        2,
+        5,
+        8
+      ],
+      "blockers": [
+        {
+          "moving_line": 11,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            5,
+            11
+          ],
+          "wall_abs_numerator": 65952,
+          "wall_norm_sq": 13425152,
+          "wall_distance_approx": 17.999828381013216,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 15,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            5,
+            8,
+            15
+          ],
+          "wall_abs_numerator": 48989,
+          "wall_norm_sq": 105058,
+          "wall_distance_approx": 151.14159811893984,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 169.14142649995307,
+      "distance_max_approx": 151.14159811893984
+    },
+    {
+      "target_triple": [
+        0,
+        4,
+        8
+      ],
+      "blockers": [
+        {
+          "moving_line": 9,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            0,
+            4,
+            9
+          ],
+          "wall_abs_numerator": 993927,
+          "wall_norm_sq": 92342205,
+          "wall_distance_approx": 103.431867958332,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 13,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            4,
+            8,
+            13
+          ],
+          "wall_abs_numerator": 56637,
+          "wall_norm_sq": 731277,
+          "wall_distance_approx": 66.2306906768328,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 169.6625586351648,
+      "distance_max_approx": 103.431867958332
+    },
+    {
+      "target_triple": [
+        8,
+        12,
+        16
+      ],
+      "blockers": [
+        {
+          "moving_line": 1,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            1,
+            8,
+            12
+          ],
+          "wall_abs_numerator": 152922,
+          "wall_norm_sq": 963781,
+          "wall_distance_approx": 155.76891295350612,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 5,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            5,
+            12,
+            16
+          ],
+          "wall_abs_numerator": 50607,
+          "wall_norm_sq": 7267202,
+          "wall_distance_approx": 18.772710245391817,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 174.54162319889792,
+      "distance_max_approx": 155.76891295350612
+    },
+    {
+      "target_triple": [
+        4,
+        6,
+        11
+      ],
+      "blockers": [
+        {
+          "moving_line": 0,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            0,
+            6,
+            11
+          ],
+          "wall_abs_numerator": 149312,
+          "wall_norm_sq": 1074482,
+          "wall_distance_approx": 144.0439892613439,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 14,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            4,
+            6,
+            14
+          ],
+          "wall_abs_numerator": 30066,
+          "wall_norm_sq": 389441,
+          "wall_distance_approx": 48.17867115212187,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 192.22266041346577,
+      "distance_max_approx": 144.0439892613439
+    },
+    {
+      "target_triple": [
+        10,
+        13,
+        17
+      ],
+      "blockers": [
+        {
+          "moving_line": 2,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            2,
+            10,
+            13
+          ],
+          "wall_abs_numerator": 86313,
+          "wall_norm_sq": 240346,
+          "wall_distance_approx": 176.05881012227255,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 7,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            7,
+            13,
+            17
+          ],
+          "wall_abs_numerator": 380040,
+          "wall_norm_sq": 405012240,
+          "wall_distance_approx": 18.884054069094972,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 194.9428641913675,
+      "distance_max_approx": 176.05881012227255
+    },
+    {
+      "target_triple": [
+        3,
+        5,
+        10
+      ],
+      "blockers": [
+        {
+          "moving_line": 0,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            0,
+            5,
+            10
+          ],
+          "wall_abs_numerator": 125061,
+          "wall_norm_sq": 665281,
+          "wall_distance_approx": 153.32724658810469,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 13,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            3,
+            5,
+            13
+          ],
+          "wall_abs_numerator": 37405,
+          "wall_norm_sq": 540922,
+          "wall_distance_approx": 50.85835823111864,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 204.18560481922333,
+      "distance_max_approx": 153.32724658810469
+    },
+    {
+      "target_triple": [
+        5,
+        8,
+        11
+      ],
+      "blockers": [
+        {
+          "moving_line": 2,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            2,
+            8,
+            11
+          ],
+          "wall_abs_numerator": 51294,
+          "wall_norm_sq": 675700,
+          "wall_distance_approx": 62.400721042953336,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 15,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            5,
+            8,
+            15
+          ],
+          "wall_abs_numerator": 48989,
+          "wall_norm_sq": 105058,
+          "wall_distance_approx": 151.14159811893984,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 213.54231916189318,
+      "distance_max_approx": 151.14159811893984
+    },
+    {
+      "target_triple": [
+        2,
+        3,
+        6
+      ],
+      "blockers": [
+        {
+          "moving_line": 12,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            3,
+            12
+          ],
+          "wall_abs_numerator": 158953,
+          "wall_norm_sq": 8611898,
+          "wall_distance_approx": 54.16506770056344,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 16,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            3,
+            6,
+            16
+          ],
+          "wall_abs_numerator": 139869,
+          "wall_norm_sq": 745666,
+          "wall_distance_approx": 161.97548884796112,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 216.14055654852456,
+      "distance_max_approx": 161.97548884796112
+    },
+    {
+      "target_triple": [
+        1,
+        7,
+        9
+      ],
+      "blockers": [
+        {
+          "moving_line": 11,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            1,
+            7,
+            11
+          ],
+          "wall_abs_numerator": 340404,
+          "wall_norm_sq": 104371898,
+          "wall_distance_approx": 33.31983669003058,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 16,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            7,
+            9,
+            16
+          ],
+          "wall_abs_numerator": 108167,
+          "wall_norm_sq": 338269,
+          "wall_distance_approx": 185.97890441445028,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 219.29874110448085,
+      "distance_max_approx": 185.97890441445028
+    },
+    {
+      "target_triple": [
+        4,
+        6,
+        17
+      ],
+      "blockers": [
+        {
+          "moving_line": 12,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            4,
+            12,
+            17
+          ],
+          "wall_abs_numerator": 379224,
+          "wall_norm_sq": 480438562,
+          "wall_distance_approx": 17.301226253920248,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 15,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            4,
+            6,
+            15
+          ],
+          "wall_abs_numerator": 129961,
+          "wall_norm_sq": 389441,
+          "wall_distance_approx": 208.25345179275297,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 225.55467804667322,
+      "distance_max_approx": 208.25345179275297
+    },
+    {
+      "target_triple": [
+        2,
+        12,
+        16
+      ],
+      "blockers": [
+        {
+          "moving_line": 3,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            3,
+            12,
+            16
+          ],
+          "wall_abs_numerator": 442631,
+          "wall_norm_sq": 7267202,
+          "wall_distance_approx": 164.19435075440205,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 6,
+          "blocking_pattern": [
+            -1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            6,
+            16
+          ],
+          "wall_abs_numerator": 599840,
+          "wall_norm_sq": 58451293,
+          "wall_distance_approx": 78.45820388550851,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 242.65255463991056,
+      "distance_max_approx": 164.19435075440205
+    },
+    {
+      "target_triple": [
+        6,
+        11,
+        14
+      ],
+      "blockers": [
+        {
+          "moving_line": 0,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            0,
+            6,
+            11
+          ],
+          "wall_abs_numerator": 149312,
+          "wall_norm_sq": 1074482,
+          "wall_distance_approx": 144.0439892613439,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 4,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            4,
+            11,
+            14
+          ],
+          "wall_abs_numerator": 49174,
+          "wall_norm_sq": 188785,
+          "wall_distance_approx": 113.17533658292174,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 257.21932584426565,
+      "distance_max_approx": 144.0439892613439
+    },
+    {
+      "target_triple": [
+        1,
+        5,
+        8
+      ],
+      "blockers": [
+        {
+          "moving_line": 12,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            1,
+            5,
+            12
+          ],
+          "wall_abs_numerator": 151051,
+          "wall_norm_sq": 102406202,
+          "wall_distance_approx": 14.926585570961798,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 16,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            5,
+            8,
+            16
+          ],
+          "wall_abs_numerator": 80797,
+          "wall_norm_sq": 105058,
+          "wall_distance_approx": 249.27611715315646,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 264.20270272411824,
+      "distance_max_approx": 249.27611715315646
+    },
+    {
+      "target_triple": [
+        5,
+        10,
+        13
+      ],
+      "blockers": [
+        {
+          "moving_line": 0,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            0,
+            5,
+            10
+          ],
+          "wall_abs_numerator": 125061,
+          "wall_norm_sq": 665281,
+          "wall_distance_approx": 153.32724658810469,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 3,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            3,
+            10,
+            13
+          ],
+          "wall_abs_numerator": 63775,
+          "wall_norm_sq": 240346,
+          "wall_distance_approx": 130.08643675399918,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 283.41368334210387,
+      "distance_max_approx": 153.32724658810469
+    },
+    {
+      "target_triple": [
+        1,
+        7,
+        10
+      ],
+      "blockers": [
+        {
+          "moving_line": 14,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            1,
+            7,
+            14
+          ],
+          "wall_abs_numerator": 680165,
+          "wall_norm_sq": 104371898,
+          "wall_distance_approx": 66.57673447513733,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 15,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            7,
+            10,
+            15
+          ],
+          "wall_abs_numerator": 159101,
+          "wall_norm_sq": 457001,
+          "wall_distance_approx": 235.3500712605121,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 301.9268057356494,
+      "distance_max_approx": 235.3500712605121
+    },
+    {
+      "target_triple": [
+        3,
+        8,
+        11
+      ],
+      "blockers": [
+        {
+          "moving_line": 14,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            3,
+            8,
+            14
+          ],
+          "wall_abs_numerator": 25610,
+          "wall_norm_sq": 1113832,
+          "wall_distance_approx": 24.266086034412623,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 17,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            8,
+            11,
+            17
+          ],
+          "wall_abs_numerator": 255126,
+          "wall_norm_sq": 675700,
+          "wall_distance_approx": 310.36858807666613,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 334.63467411107877,
+      "distance_max_approx": 310.36858807666613
+    },
+    {
+      "target_triple": [
+        8,
+        9,
+        13
+      ],
+      "blockers": [
+        {
+          "moving_line": 0,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            0,
+            8,
+            9
+          ],
+          "wall_abs_numerator": 112794,
+          "wall_norm_sq": 136765,
+          "wall_distance_approx": 304.9990687733644,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 4,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            4,
+            9,
+            13
+          ],
+          "wall_abs_numerator": 19680,
+          "wall_norm_sq": 388224,
+          "wall_distance_approx": 31.58521984662516,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 336.58428861998954,
+      "distance_max_approx": 304.9990687733644
+    },
+    {
+      "target_triple": [
+        4,
+        8,
+        9
+      ],
+      "blockers": [
+        {
+          "moving_line": 0,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            0,
+            8,
+            9
+          ],
+          "wall_abs_numerator": 112794,
+          "wall_norm_sq": 136765,
+          "wall_distance_approx": 304.9990687733644,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 13,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            4,
+            8,
+            13
+          ],
+          "wall_abs_numerator": 56637,
+          "wall_norm_sq": 731277,
+          "wall_distance_approx": 66.2306906768328,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 371.2297594501972,
+      "distance_max_approx": 304.9990687733644
+    },
+    {
+      "target_triple": [
+        3,
+        6,
+        12
+      ],
+      "blockers": [
+        {
+          "moving_line": 2,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            2,
+            6,
+            12
+          ],
+          "wall_abs_numerator": 253970,
+          "wall_norm_sq": 1357225,
+          "wall_distance_approx": 218,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 16,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            3,
+            6,
+            16
+          ],
+          "wall_abs_numerator": 139869,
+          "wall_norm_sq": 745666,
+          "wall_distance_approx": 161.97548884796112,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 379.9754888479611,
+      "distance_max_approx": 218
+    },
+    {
+      "target_triple": [
+        6,
+        12,
+        16
+      ],
+      "blockers": [
+        {
+          "moving_line": 2,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            2,
+            6,
+            12
+          ],
+          "wall_abs_numerator": 253970,
+          "wall_norm_sq": 1357225,
+          "wall_distance_approx": 218,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 3,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            3,
+            12,
+            16
+          ],
+          "wall_abs_numerator": 442631,
+          "wall_norm_sq": 7267202,
+          "wall_distance_approx": 164.19435075440205,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 382.1943507544021,
+      "distance_max_approx": 218
+    },
+    {
+      "target_triple": [
+        2,
+        7,
+        10
+      ],
+      "blockers": [
+        {
+          "moving_line": 13,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            7,
+            13
+          ],
+          "wall_abs_numerator": 58780,
+          "wall_norm_sq": 14370848,
+          "wall_distance_approx": 15.505593129510785,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 17,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            7,
+            10,
+            17
+          ],
+          "wall_abs_numerator": 256517,
+          "wall_norm_sq": 457001,
+          "wall_distance_approx": 379.45263844685314,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 394.9582315763639,
+      "distance_max_approx": 379.45263844685314
+    },
+    {
+      "target_triple": [
+        5,
+        8,
+        12
+      ],
+      "blockers": [
+        {
+          "moving_line": 1,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            1,
+            8,
+            12
+          ],
+          "wall_abs_numerator": 152922,
+          "wall_norm_sq": 963781,
+          "wall_distance_approx": 155.76891295350612,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 16,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            5,
+            8,
+            16
+          ],
+          "wall_abs_numerator": 80797,
+          "wall_norm_sq": 105058,
+          "wall_distance_approx": 249.27611715315646,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 405.0450301066626,
+      "distance_max_approx": 249.27611715315646
+    },
+    {
+      "target_triple": [
+        8,
+        11,
+        14
+      ],
+      "blockers": [
+        {
+          "moving_line": 3,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            3,
+            11,
+            14
+          ],
+          "wall_abs_numerator": 42422,
+          "wall_norm_sq": 188785,
+          "wall_distance_approx": 97.63541970392293,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 17,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            8,
+            11,
+            17
+          ],
+          "wall_abs_numerator": 255126,
+          "wall_norm_sq": 675700,
+          "wall_distance_approx": 310.36858807666613,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 408.00400778058906,
+      "distance_max_approx": 310.36858807666613
+    },
+    {
+      "target_triple": [
+        2,
+        5,
+        9
+      ],
+      "blockers": [
+        {
+          "moving_line": 14,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            2,
+            5,
+            14
+          ],
+          "wall_abs_numerator": 72880,
+          "wall_norm_sq": 13425152,
+          "wall_distance_approx": 19.890640047432118,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 17,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            5,
+            9,
+            17
+          ],
+          "wall_abs_numerator": 290784,
+          "wall_norm_sq": 475397,
+          "wall_distance_approx": 421.7375667244187,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 441.6282067718508,
+      "distance_max_approx": 421.7375667244187
+    },
+    {
+      "target_triple": [
+        5,
+        9,
+        14
+      ],
+      "blockers": [
+        {
+          "moving_line": 2,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            2,
+            9,
+            14
+          ],
+          "wall_abs_numerator": 65479,
+          "wall_norm_sq": 790490,
+          "wall_distance_approx": 73.6467943766204,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 17,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            5,
+            9,
+            17
+          ],
+          "wall_abs_numerator": 290784,
+          "wall_norm_sq": 475397,
+          "wall_distance_approx": 421.7375667244187,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 495.3843611010391,
+      "distance_max_approx": 421.7375667244187
+    },
+    {
+      "target_triple": [
+        9,
+        11,
+        16
+      ],
+      "blockers": [
+        {
+          "moving_line": 1,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            1,
+            9,
+            11
+          ],
+          "wall_abs_numerator": 231948,
+          "wall_norm_sq": 210337,
+          "wall_distance_approx": 505.74639344485036,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 7,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            7,
+            11,
+            16
+          ],
+          "wall_abs_numerator": 43687,
+          "wall_norm_sq": 8224333,
+          "wall_distance_approx": 15.233576553814135,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 520.9799699986645,
+      "distance_max_approx": 505.74639344485036
+    },
+    {
+      "target_triple": [
+        10,
+        14,
+        15
+      ],
+      "blockers": [
+        {
+          "moving_line": 1,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            1,
+            10,
+            14
+          ],
+          "wall_abs_numerator": 389618,
+          "wall_norm_sq": 626600,
+          "wall_distance_approx": 492.20250245365537,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 7,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            7,
+            14,
+            15
+          ],
+          "wall_abs_numerator": 49217,
+          "wall_norm_sq": 1798594,
+          "wall_distance_approx": 36.69852149429254,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 528.9010239479479,
+      "distance_max_approx": 492.20250245365537
+    },
+    {
+      "target_triple": [
+        7,
+        10,
+        13
+      ],
+      "blockers": [
+        {
+          "moving_line": 2,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            2,
+            10,
+            13
+          ],
+          "wall_abs_numerator": 86313,
+          "wall_norm_sq": 240346,
+          "wall_distance_approx": 176.05881012227255,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 17,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            7,
+            10,
+            17
+          ],
+          "wall_abs_numerator": 256517,
+          "wall_norm_sq": 457001,
+          "wall_distance_approx": 379.45263844685314,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 555.5114485691257,
+      "distance_max_approx": 379.45263844685314
+    },
+    {
+      "target_triple": [
+        6,
+        12,
+        15
+      ],
+      "blockers": [
+        {
+          "moving_line": 4,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            4,
+            12,
+            15
+          ],
+          "wall_abs_numerator": 80904,
+          "wall_norm_sq": 2655976,
+          "wall_distance_approx": 49.64298884235193,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 17,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            6,
+            12,
+            17
+          ],
+          "wall_abs_numerator": 685020,
+          "wall_norm_sq": 1357225,
+          "wall_distance_approx": 588,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 637.6429888423519,
+      "distance_max_approx": 588
+    },
+    {
+      "target_triple": [
+        7,
+        9,
+        11
+      ],
+      "blockers": [
+        {
+          "moving_line": 1,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            1,
+            9,
+            11
+          ],
+          "wall_abs_numerator": 231948,
+          "wall_norm_sq": 210337,
+          "wall_distance_approx": 505.74639344485036,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 16,
+          "blocking_pattern": [
+            1,
+            -1,
+            -1
+          ],
+          "required_flip_key": [
+            7,
+            9,
+            16
+          ],
+          "wall_abs_numerator": 108167,
+          "wall_norm_sq": 338269,
+          "wall_distance_approx": 185.97890441445028,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 691.7252978593007,
+      "distance_max_approx": 505.74639344485036
+    },
+    {
+      "target_triple": [
+        7,
+        10,
+        14
+      ],
+      "blockers": [
+        {
+          "moving_line": 1,
+          "blocking_pattern": [
+            1,
+            -1,
+            1
+          ],
+          "required_flip_key": [
+            1,
+            10,
+            14
+          ],
+          "wall_abs_numerator": 389618,
+          "wall_norm_sq": 626600,
+          "wall_distance_approx": 492.20250245365537,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 15,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            7,
+            10,
+            15
+          ],
+          "wall_abs_numerator": 159101,
+          "wall_norm_sq": 457001,
+          "wall_distance_approx": 235.3500712605121,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 727.5525737141675,
+      "distance_max_approx": 492.20250245365537
+    },
+    {
+      "target_triple": [
+        4,
+        6,
+        12
+      ],
+      "blockers": [
+        {
+          "moving_line": 15,
+          "blocking_pattern": [
+            -1,
+            1,
+            1
+          ],
+          "required_flip_key": [
+            4,
+            6,
+            15
+          ],
+          "wall_abs_numerator": 129961,
+          "wall_norm_sq": 389441,
+          "wall_distance_approx": 208.25345179275297,
+          "single_flip_abstract_score": 90
+        },
+        {
+          "moving_line": 17,
+          "blocking_pattern": [
+            -1,
+            1,
+            -1
+          ],
+          "required_flip_key": [
+            6,
+            12,
+            17
+          ],
+          "wall_abs_numerator": 685020,
+          "wall_norm_sq": 1357225,
+          "wall_distance_approx": 588,
+          "single_flip_abstract_score": 90
+        }
+      ],
+      "minimal_two_flip_abstract_score": 89,
+      "distance_sum_approx": 796.2534517927529,
+      "distance_max_approx": 588
+    }
+  ],
+  "claim_boundary": "Deterministic local combinatorial atlas around the protected 93 seed. Abstract cell scores are not realizability or optimality claims."
+}
