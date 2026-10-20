@@ -65,3 +65,33 @@ The protected semantic-class guard and tests provide deterministic local evidenc
 ## Explicit acceptance boundary
 
 This document plus JSON metadata does **not** create GitHub Project views, modify protected reservation code, activate workers, certify mathematics, change previously claimed work, or publish ATLAS v0.1.1. A future queue activation receipt must contain current Project field/view IDs, exact protected head, successful positive/hostile tests, and readback of both lane policies.
+
+## 2026-10-20 live queue schema correction
+
+Authenticated full Project #2 GraphQL pagination found 1,325 distinct issue items:
+1,278 Mathematics and 47 Editorial. All Project `GCL State`, `GCL Role`,
+and `GCL Collaboration` single-select fields have zero options and zero
+assigned values. These empty legacy Project fields are **not** a valid source
+of operational state. The issue labels remain the live per-issue state/role/
+collaboration source. Do not create arbitrary select option IDs or infer worker
+leases from Project state.
+
+The existing global AVAILABLE view ID
+`PVTV_lADOB9Ao_c4BlwurzgL64bo` was corrected in place from
+`is:open "GCL State":AVAILABLE` to
+`is:open label:gcl-state:available`; GitHub readback preserved all other
+saved views. Equivalent authenticated Project filter query returned 215
+distinct open items, including bound research assignments #2790–2793;
+this is predicate-level verification, not an independent screenshot or
+server-side membership API attestation. Receipt is stored privately on CHAD
+under `gcl-available-filter-20261020.json`. The prior filter is retained
+there for direct rollback.
+
+ERDOS-041-R41-A/B/C/D are Mathematics research assignments with
+direct issue-bound `RESULT/1` routing, rather than Solve reservations.
+Their existing class is not to be changed to Editorial. No direct pickup
+is authorized until required `gcl-pickup:direct-editorial` label and exact
+role/title/number checks agree; controller implementations in MATHSOLVE
+and CONTROL must pass protected tests before this activation. Broader
+operational exit conditions in #1049, particularly active capacity and
+live positive/hostile worker-return replay, remain separate.
