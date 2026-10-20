@@ -94,6 +94,28 @@ class ClassTest(unittest.TestCase):
               "ERDOS 11 — critical source and lemma review of ERDOS-099-FOO",
               {DIRECT,"gcl-role:source-audit"},modes=MODES)
 
+    def test_erdos41_research_mathematics_with_direct_issue_return(self):
+        tracks = [
+            ("ERDOS-041-R41-A — fourth-order overlap propagation or counterexample", "gcl-role:constructive", 2790),
+            ("ERDOS-041-R41-B — prove or refute a scale-owned capacity invariant", "gcl-role:constructive", 2791),
+            ("ERDOS-041-R41-C — independent Pauli-level proof audit and falsification", "gcl-role:verify", 2792),
+            ("ERDOS-041-R41-D — spectral moment-flow renormalization experiment", "gcl-role:constructive", 2793),
+        ]
+        for title,role,n in tracks:
+            labels={DIRECT,"gcl-job","gcl-collab:cooperative",role,"gcl-state:available"}
+            with self.subTest(issue=n):
+                self.assertEqual(classify("grandchallenge/MATH-PROGRAMME",title,labels,modes=MODES),("Mathematics","direct_editorial"))
+                f=fixture()
+                f["rows"].append(item("grandchallenge/MATH-PROGRAMME",n,title,sorted(labels),"Mathematics"))
+                f["total_count"]+=1
+                validate_snapshot(f,require_views=True)
+                for bad in (labels-{role},labels-{"gcl-collab:cooperative"},labels-{DIRECT}):
+                    with self.assertRaises(QueueIntegrityError):
+                        classify("grandchallenge/MATH-PROGRAMME",title,bad,modes=MODES)
+                f["rows"][-1]["issue_number"]=n+100
+                with self.assertRaisesRegex(QueueIntegrityError,"identity drift"):
+                    validate_snapshot(f)
+
     def test_editorial_direct_pickup(self):
         for repo in ("grandchallenge/MATH-PROGRAMME",
                      "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS",

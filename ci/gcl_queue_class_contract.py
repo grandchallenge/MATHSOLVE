@@ -32,6 +32,14 @@ ERDOS_CRITIC_TITLE = re.compile(
 
 
 
+R41_TRACKS = {
+    "ERDOS-041-R41-A — fourth-order overlap propagation or counterexample": ("gcl-role:constructive", 2790),
+    "ERDOS-041-R41-B — prove or refute a scale-owned capacity invariant": ("gcl-role:constructive", 2791),
+    "ERDOS-041-R41-C — independent Pauli-level proof audit and falsification": ("gcl-role:verify", 2792),
+    "ERDOS-041-R41-D — spectral moment-flow renormalization experiment": ("gcl-role:constructive", 2793),
+}
+
+
 class QueueIntegrityError(ValueError):
     pass
 
@@ -60,6 +68,11 @@ def classify(repository: str, title: str, labels: Iterable[str],
     if mode != "direct_editorial" or pickup_labels != {DIRECT}:
         raise QueueIntegrityError("invalid direct-editorial pickup routing")
 
+    if repository == "grandchallenge/MATH-PROGRAMME" and title.startswith("ERDOS-041-R41-"):
+        bound = R41_TRACKS.get(title)
+        if not bound or bound[0] not in ls or "gcl-collab:cooperative" not in ls:
+            raise QueueIntegrityError("invalid Erdős #41 research specialist route")
+        return "Mathematics", mode
     erdos = bool(ERDOS_TITLE.search(title))
     role = SOURCE_ROLE in ls
     # Editorial source-defect inventories have a SOURCE_AUDIT process role;
@@ -124,6 +137,10 @@ def validate_snapshot(snapshot: dict, *, require_views: bool = False) -> dict:
         title = row.get("title")
         if not isinstance(labels, list) or not all(isinstance(s, str) for s in labels) or not isinstance(title, str):
             raise QueueIntegrityError(f"{repo}#{n}: missing title or labels")
+        if repo == "grandchallenge/MATH-PROGRAMME" and title.startswith("ERDOS-041-R41-"):
+            bound = R41_TRACKS.get(title)
+            if not bound or bound[1] != n:
+                raise QueueIntegrityError(f"{repo}#{n}: ERDOS-041 identity drift")
         cls, mode = classify(repo, title, labels)
         if row.get("queue_class") != cls:
             raise QueueIntegrityError(f"{repo}#{n}: Queue Class {row.get('queue_class')!r}, expected {cls!r}")

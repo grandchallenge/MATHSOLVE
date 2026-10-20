@@ -20,6 +20,27 @@ A job's **semantic Queue Class** (Editorial or Mathematics) is not its **pickup 
 
 The [shared Project #2 AVAILABLE view](https://github.com/orgs/grandchallenge/projects/2) remains the cross-repository discovery authority. These class-specific links do **not** supersede protected mode routing, prove availability, or launch a worker. For contract and activation criteria, see [GCL specialized queues](docs/GCL_SPECIALIZED_QUEUES.md). Do not assert that dedicated GitHub Project views have been provisioned until read back.
 
+## Erdős #41 four-track research (mathematical class; direct issue return)
+
+The bounded specialist assignments [A](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2790),
+[B](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2791),
+[C](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2792), and
+[D](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2793)
+are **Mathematics**, although their hosting repository uses the existing
+`gcl-pickup:direct-editorial` route. These exact four titles, issue identities,
+role labels and cooperative collaboration are source-locked by the classifier.
+Their workers return `RESULT/1` on the assigned issue; do not post `/claim`
+or create a Solve reservation. An AVAILABLE label or view membership alone
+does not grant pickup while routing labels and current issue custody disagree.
+
+The global AVAILABLE Project view now filters on
+`is:open label:gcl-state:available` because the legacy Project `GCL State`
+single-select field has no options or values; `GCL Role` and
+`GCL Collaboration` are likewise unpopulated. Operational labels and the
+real `Queue Class` Project field remain separate authorities. This correction
+preserves the original saved-view identity and must not be interpreted as
+activating independent Editorial worker-capacity accounting.
+
 ## Computational verification using Lean on Colab
 
 For an already assigned mathematical task that needs Lean compilation or bounded computational verification, the protected GCL skill lives in [MATH-PROGRAMME's Lean/Colab skill](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/.agents/skills/gcl-lean-colab/SKILL.md). Its [registered jobs](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/governance/lean_colab/JOBS.json), [specification](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/docs/lean-colab/SPEC.md) and [run matrix](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/docs/lean-colab/RUN_MATRIX.md) document supported work.
