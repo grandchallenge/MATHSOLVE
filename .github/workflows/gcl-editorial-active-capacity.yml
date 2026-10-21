@@ -1,0 +1,46 @@
+name: GCL Editorial active-worker capacity
+on:
+  issue_comment:
+    types: [created]
+permissions:
+  contents: read
+  issues: write
+jobs:
+  editorial-admit:
+    if: >-
+      github.event.issue.number == 1096 &&
+      !github.event.issue.pull_request &&
+      (startsWith(github.event.comment.body, 'EDITORIAL-START/1') ||
+       startsWith(github.event.comment.body, 'EDITORIAL-END/1'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    concurrency:
+      group: gcl-editorial-global-active-start-end
+      queue: max
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12.13"
+      - name: Validate fresh authenticated request against complete global register
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          PYTHONPATH=ci python ci/gcl_editorial_active_capacity.py
+      - name: Publish exact bounded admission decision
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if [ -f "$RUNNER_TEMP/editorial-decision.txt" ]; then
+            gh api -X POST "repos/$GITHUB_REPOSITORY/issues/1096/comments" \
+              -F body=@"$RUNNER_TEMP/editorial-decision.txt" > /dev/null
+            echo 'GCL Editorial decision recorded in authenticated register'
+          else
+            echo 'Idempotent replay; no second decision'
+          fi
