@@ -65,7 +65,7 @@ class Capacity(unittest.TestCase):
         self.history.append({"id":2,"user":{"login":"github-actions[bot]"},
                              "body":PREFIX+json.dumps({"request_id":999,"outcome":"GRANTED","op":"START",
                              "repo":ATLAS,"issue":3,"run":"3"*32,"worker":"evil",
-                             "expires_at":NOW.isoformat(),"reason":"CAPACITY_ADMITTED"})})
+                             "expires_at":NOW.isoformat(),"reason":"CAPACITY_ADMITTED","source_head":"a"*40})})
         with self.assertRaisesRegex(Denied,"NOT_BOUND"):ledger(self.history,NOW)
     def test_hostile_grammar(self):
         for b in ("EDITORIAL-START/1\nrepository: evil\nissue: 5\nrun_id: "+"f"*32+"\nsource_head: "+"a"*40,

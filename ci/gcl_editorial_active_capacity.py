@@ -36,12 +36,12 @@ def ledger(comments,now):
         if not c.get("body","").startswith(PREFIX):continue
         try:d=json.loads(c["body"][len(PREFIX):])
         except (ValueError,TypeError) as e:raise Denied("TRUSTED_DECISION_MALFORMED") from e
-        required={"request_id","outcome","op","repo","issue","run","worker","expires_at","reason"}
+        required={"request_id","outcome","op","repo","issue","run","worker","expires_at","reason","source_head"}
         if set(d)!=required or type(d["request_id"])is not int or d["op"] not in ("START","END") or d["outcome"] not in ("GRANTED","ENDED","DENIED") or d["repo"] not in REPOS or type(d["issue"])is not int or not re.fullmatch(r"[0-9a-f]{32}",str(d["run"])):raise Denied("TRUSTED_DECISION_INVALID")
         if d["request_id"] in decisions:raise Denied("DUPLICATED_CONTROLLER_DECISION")
         req=requests.get(d["request_id"])
         if not req or req[1]!=d["worker"] or any((
-             req[0]["op"]!=d["op"],req[0]["repo"]!=d["repo"],req[0]["issue"]!=d["issue"],req[0]["run"]!=d["run"])):
+             req[0]["op"]!=d["op"],req[0]["repo"]!=d["repo"],req[0]["issue"]!=d["issue"],req[0]["run"]!=d["run"],req[0]["head"]!=d["source_head"])):
             raise Denied("DECISION_NOT_BOUND_TO_AUTHENTIC_REQUEST")
         decisions[d["request_id"]]=d
         key=(d["repo"],d["issue"],d["run"])
@@ -91,7 +91,7 @@ def choose(event,history,now,target=None):
                 expires=(now+TTL).isoformat()
     return {"request_id":comment["id"],"outcome":outcome,"op":cmd["op"],
         "repo":cmd["repo"],"issue":cmd["issue"],"run":cmd["run"],
-        "worker":worker,"expires_at":expires,"reason":reason}
+        "worker":worker,"expires_at":expires,"reason":reason,"source_head":cmd["head"]}
 def gh(path,**kwargs):
     p=subprocess.run(["gh","api",path],capture_output=True,text=True,timeout=60,check=False)
     if p.returncode:raise Denied("GITHUB_READ_ERROR")
