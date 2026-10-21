@@ -41,6 +41,18 @@ real `Queue Class` Project field remain separate authorities. This correction
 preserves the original saved-view identity and must not be interpreted as
 activating independent Editorial worker-capacity accounting.
 
+## Editorial active-worker admission (controlled rollout)
+
+Direct Editorial jobs retain issue-bound `RESULT/1`; they **never** use
+MATHSOLVE `/claim`. An independently enforced eight-slot start register is
+being rolled out at [MATHSOLVE #1096](https://github.com/grandchallenge/MATHSOLVE/issues/1096).
+The new worker `EDITORIAL-START/1` and `EDITORIAL-END/1` grammar and
+actor/source/expiry requirements are specified in
+[Editorial active capacity](docs/GCL_EDITORIAL_ACTIVE_CAPACITY.md). Do not
+claim universal activation until downstream direct-issue result intake
+enforces a current grant, and true positive/hostile worker tests are read
+back. Historical returns remain evidence; no retrospective start grants.
+
 ## Computational verification using Lean on Colab
 
 For an already assigned mathematical task that needs Lean compilation or bounded computational verification, the protected GCL skill lives in [MATH-PROGRAMME's Lean/Colab skill](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/.agents/skills/gcl-lean-colab/SKILL.md). Its [registered jobs](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/governance/lean_colab/JOBS.json), [specification](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/docs/lean-colab/SPEC.md) and [run matrix](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/docs/lean-colab/RUN_MATRIX.md) document supported work.

@@ -197,6 +197,7 @@ jobs:
           python -m unittest tests/test_erdos_successor_002_replay.py -v
           python -m unittest tests/test_erdos_241_replay.py tests/test_erdos_241_synthesis.py -v
           python ci/test_gcl_active_reservation_capacity.py
+          python ci/test_gcl_editorial_active_capacity.py
           python ci/validate_gcl_worker_queue.py
           python ci/validate_queue_intake_bindings.py
           python ci/validate_gcl_worker_queue_activation_receipt.py
