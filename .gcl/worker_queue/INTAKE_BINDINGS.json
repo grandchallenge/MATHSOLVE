@@ -283,6 +283,144 @@
         "PRIMARY_SOURCES_REQUIRED"
       ],
       "campaign": "QFT-COND-005"
+    },
+    {
+      "dispatch_id": "OAI26-WP00-IA-001",
+      "dispatch_path": "contributions/OAI-MATH-2026/TRIAGE_001/dispatches/OAI26-WP00-IA-001.json",
+      "github_issue_number": 1098,
+      "issue_body_sha256": "822e9fe203f27e3c7b7d5c49cf39f333f73aaf9606c20fa76ed7c1bbde8eacf0",
+      "task_path": "handoffs/OAI-MATH-2026/launch/OAI26-WP00-IA-001.md",
+      "task_commit": "b007f4106a8694830ae9064497eafe006bb045d3",
+      "task_sha256": "e248837ce51f50a08041956db9b0d61e1aeaa3a4e64ce951109789fcb673c368",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "EXACT_REDUCTION",
+        "FINITE_CERTIFICATE",
+        "SOURCE_INTERFACE_FOUND",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA"
+      ],
+      "allowed_external_sources": [
+        "PRIMARY_SOURCES_REQUIRED",
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "GCL-OAI-MATH-2026"
+    },
+    {
+      "dispatch_id": "OAI26-WP01-IA-001",
+      "dispatch_path": "contributions/OAI-MATH-2026/TRIAGE_001/dispatches/OAI26-WP01-IA-001.json",
+      "github_issue_number": 1099,
+      "issue_body_sha256": "dd68211d70abfa1c32feac3c5a3c560c4653d75b1741f6605f65c73892b54475",
+      "task_path": "handoffs/OAI-MATH-2026/launch/OAI26-WP01-IA-001.md",
+      "task_commit": "b007f4106a8694830ae9064497eafe006bb045d3",
+      "task_sha256": "f2e344f929bdbb6ecc00d12e8bbcaa60f5f216a538a70b183800e901b53909dd",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "EXACT_REDUCTION",
+        "FINITE_CERTIFICATE",
+        "SOURCE_INTERFACE_FOUND",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA"
+      ],
+      "allowed_external_sources": [
+        "PRIMARY_SOURCES_REQUIRED",
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "GCL-OAI-MATH-2026"
+    },
+    {
+      "dispatch_id": "OAI26-WP02-IA-001",
+      "dispatch_path": "contributions/OAI-MATH-2026/TRIAGE_001/dispatches/OAI26-WP02-IA-001.json",
+      "github_issue_number": 1100,
+      "issue_body_sha256": "26fd67c8f85ba8f89d6b1df41b0ef35a2b77a7eb0f9caeb77f8acc995e1f39b8",
+      "task_path": "handoffs/OAI-MATH-2026/launch/OAI26-WP02-IA-001.md",
+      "task_commit": "b007f4106a8694830ae9064497eafe006bb045d3",
+      "task_sha256": "fbe4983804224cef36c737b336ca5d652e0e9ea856c99392e05863e5a0508f29",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "EXACT_REDUCTION",
+        "FINITE_CERTIFICATE",
+        "SOURCE_INTERFACE_FOUND",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA"
+      ],
+      "allowed_external_sources": [
+        "PRIMARY_SOURCES_REQUIRED",
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "GCL-OAI-MATH-2026"
+    },
+    {
+      "dispatch_id": "OAI26-WP03-IA-001",
+      "dispatch_path": "contributions/OAI-MATH-2026/TRIAGE_001/dispatches/OAI26-WP03-IA-001.json",
+      "github_issue_number": 1101,
+      "issue_body_sha256": "929883d2d8b4c8c6538248666675aa7bf25c405ae61dc55d9872d2f832b38b28",
+      "task_path": "handoffs/OAI-MATH-2026/launch/OAI26-WP03-IA-001.md",
+      "task_commit": "b007f4106a8694830ae9064497eafe006bb045d3",
+      "task_sha256": "f8cd54a536f7b182af79ffae22e6591dd673b30352691c5fa15b41a4088c2c06",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "EXACT_REDUCTION",
+        "FINITE_CERTIFICATE",
+        "SOURCE_INTERFACE_FOUND",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA"
+      ],
+      "allowed_external_sources": [
+        "PRIMARY_SOURCES_REQUIRED",
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "GCL-OAI-MATH-2026"
+    },
+    {
+      "dispatch_id": "OAI26-WP04-IA-001",
+      "dispatch_path": "contributions/OAI-MATH-2026/TRIAGE_001/dispatches/OAI26-WP04-IA-001.json",
+      "github_issue_number": 1102,
+      "issue_body_sha256": "38ac305811ae8ca0abf9b1b63258a2f5a5747bd36fbc9c1df384014034b9b53e",
+      "task_path": "handoffs/OAI-MATH-2026/launch/OAI26-WP04-IA-001.md",
+      "task_commit": "b007f4106a8694830ae9064497eafe006bb045d3",
+      "task_sha256": "ae0a555c00aa8659840ccafa5ad489d07f1265a2972c4db1b6e097f4d3c71994",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "EXACT_REDUCTION",
+        "FINITE_CERTIFICATE",
+        "SOURCE_INTERFACE_FOUND",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA"
+      ],
+      "allowed_external_sources": [
+        "PRIMARY_SOURCES_REQUIRED",
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "GCL-OAI-MATH-2026"
+    },
+    {
+      "dispatch_id": "OAI26-WP05-IA-001",
+      "dispatch_path": "contributions/OAI-MATH-2026/TRIAGE_001/dispatches/OAI26-WP05-IA-001.json",
+      "github_issue_number": 1103,
+      "issue_body_sha256": "7a0780e425f973e56a1bd370e1fe44ea758673d580852e1abc1086cca54ffbe8",
+      "task_path": "handoffs/OAI-MATH-2026/launch/OAI26-WP05-IA-001.md",
+      "task_commit": "b007f4106a8694830ae9064497eafe006bb045d3",
+      "task_sha256": "17ae2c686acdd2c2d1d7cdd9aea0cc7932ecc741303c485c425f25841dc38271",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "EXACT_REDUCTION",
+        "FINITE_CERTIFICATE",
+        "SOURCE_INTERFACE_FOUND",
+        "COUNTEREXAMPLE",
+        "EXACT_BLOCKER",
+        "NO_MATERIAL_DELTA"
+      ],
+      "allowed_external_sources": [
+        "PRIMARY_SOURCES_REQUIRED",
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "GCL-OAI-MATH-2026"
     }
   ]
 }
