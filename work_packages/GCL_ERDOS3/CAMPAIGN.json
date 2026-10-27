@@ -64,7 +64,8 @@
     "E3-Q15": "PROVED_NATIVE_REPEATED_TRIPLET_DERIVATIVE_FORCING",
     "E3-Q16": "PROVED_NATIVE_COMMON_DIFFERENCE_ALIGNMENT",
     "E3-Q17": "PROVED_NATIVE_DERIVATIVE_SPECTRUM_TRANSPORT_IDENTITY",
-    "E3-Q18": "PROVED_NATIVE_BRIDGE_FAMILY_DICHOTOMY"
+    "E3-Q18": "PROVED_NATIVE_BRIDGE_FAMILY_DICHOTOMY",
+    "E3-Q19": "PROVED_NATIVE_DYADIC_EXTRACTION_WITH_EXPONENT4_BARRIER"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
@@ -403,5 +404,12 @@
     "path": "work_packages/GCL_ERDOS3/results/E3-Q18_NATIVE_RESULT.md",
     "blob_sha1": "7ee9a3b9d6dddb267d6dafcf36c65ef4217d8550",
     "effect": "Bridge families F9/F10 either force the repeated interior derivative or yield a positive-density three-physical-fibre mixed-window witness; a separate finite native result, not a parent theorem closure."
+  },
+  "tranche_04_extension_q19": {
+    "result": "E3-Q19",
+    "disposition": "PROVED_NATIVE_DYADIC_EXTRACTION_WITH_EXPONENT4_BARRIER",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q19_NATIVE_RESULT.md",
+    "blob_sha1": "b80ce004286722f56262d5305280a8eea53b787d",
+    "effect": "Dyadic extraction from the Q11 short-step density increment retains a quantitative beta^4 gain with logarithmic scale loss; exponent-4 remains an explicit barrier. Separate research result, no parent theorem promotion."
   }
 }
