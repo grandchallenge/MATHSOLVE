@@ -97,16 +97,30 @@ def validate():
 
     lanes = load(LANES)
     h2 = next(x for x in lanes["hills"] if x["hill_slot"] == "OM26-H2")
-    assert h2["active_lease"]["assignment_id"] == "OM26-H2-WP03"
-    assert h2["active_lease"]["lifecycle_state"] == "LEASED_NOT_LAUNCHED"
-    assert h2["predecessor_lease"]["assignment_id"] == "OM26-H2-WP02"
-    assert h2["predecessor_lease"]["lifecycle_state"] == "ACCEPTED"
+    # The WP01 adjudication is historical. Its successor has since progressed
+    # through later accepted work packages and a terminal research reset.
+    # Verify present lane consistency against the protected registry, without
+    # mistaking a newer lifecycle for a change to the historical WP01 proof.
+    assignments = {x["assignment_id"]: x for x in registry["assignments"]}
+    active = h2["active_lease"]
+    predecessor = h2["predecessor_lease"]
+    current = assignments[active["assignment_id"]]
+    previous = assignments[predecessor["assignment_id"]]
+    assert current["hill"] == previous["hill"] == "OM26-H2"
+    assert previous["state"] == "ACCEPTED"
+    assert previous["lifecycle"]["closed"] is True
+    for lane_entry, assignment in ((active, current), (predecessor, previous)):
+        assert lane_entry["dispatch_id"] == assignment["lease"]["dispatch_id"]
+        assert lane_entry["agent_ref"] == assignment["lease"]["agent_ref"]
+    assert predecessor["lifecycle_state"] == previous["state"]
+    assert active["lifecycle_state"] == "SUPERSEDED_RESEARCH_RESET"
+    assert current["state"] == "SUPERSEDED"
+    assert current["lease"]["state"] == "CLOSED_RESEARCH_RESET"
+    assert current["lifecycle"]["closed"] is True
     assert h2["competition_state"]["official_submission"] == "NOT_SUBMITTED"
-    assert "WP03_LEASED" in h2["obligations"]["representation_or_reduction"]
-
-    for i in range(3, 8):
-        hill = next(x for x in lanes["hills"] if x["hill_slot"] == f"OM26-H{i}")
-        assert hill["active_lease"]["lifecycle_state"] == "LEASED_NOT_LAUNCHED"
+    policy = registry["mathematics_release_policy"]["per_hill"]["OM26-H2"]
+    assert policy["assignment"] == active["assignment_id"]
+    assert policy["predecessor"]["assignment"] == predecessor["assignment_id"]
 
     print("PASS: H2 WP01 scorer concordance accepted; exact search claims narrowed")
 
