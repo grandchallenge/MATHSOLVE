@@ -123,9 +123,95 @@ def _overlay_errors(*, overlay_path: Path, schema_path: Path, campaign_id: str, 
     return errors
 
 
+C06_SUCCESSOR_PATH = ROOT / "work_packages" / "VGSE_WP00" / "c06_fixed_boundary_successor.json"
+
+
+def fixed_boundary_successor_errors(record: dict[str, Any] | None = None) -> list[str]:
+    """Check a prospective C06 source-semantic target, not historical Cert authority."""
+    if record is None:
+        if not C06_SUCCESSOR_PATH.is_file():
+            return ["C06 successor record missing"]
+        record = load_json(C06_SUCCESSOR_PATH)
+    errors: list[str] = []
+
+    def at(*keys: str) -> Any:
+        value: Any = record
+        for key in keys:
+            if not isinstance(value, dict):
+                return None
+            value = value.get(key)
+        return value
+
+    def expect(keys: tuple[str, ...], value: Any) -> None:
+        if at(*keys) != value:
+            errors.append("C06 successor " + ".".join(keys) + " mismatch")
+
+    for keys, value in (
+        (("schema_version",), "1.0.0"),
+        (("record_type",), "VGSE_C06_SOURCE_FAITHFUL_SUCCESSOR"),
+        (("successor_id",), "VGSE-C06-FIXED-BOUNDARY-001"),
+        (("campaign_id",), "VGSE-001"),
+        (("predecessor_claim_id",), "VGSE-C06"),
+        (("source_authority", "arxiv_revision"), "2410.09574v2"),
+        (("source_authority", "arxiv_pdf_sha256"), "f5aefb71dd0d662679e85cd0c7f96d1bbbc029a6b5cd2f1cfaa06286cc718e34"),
+        (("source_authority", "source_loci"), ["Appendix B, Proposition B.2", "Appendix B, Example B.3", "Figure 16"]),
+        (("comparison_contract", "gauge"), "same labeled fixed kami-boundary coordinate gauge"),
+        (("comparison_contract", "boundary_reindex_source_1_based"), [1, 6, 5, 4, 3, 2]),
+        (("comparison_contract", "allowed_transformations"), ["permutation_of_five_solution_branches"]),
+        (("comparison_contract", "branch_count"), 5),
+        (("comparison_contract", "branch_bijections_to_test"), 120),
+        (("comparison_contract", "coordinate_units"), "PDF point"),
+        (("comparison_contract", "source_vector_decimal_quantum"), 0.000001),
+        (("comparison_contract", "rounding_half_quantum_per_coordinate"), 0.0000005),
+        (("comparison_contract", "geometric_quotient_group"), None),
+        (("comparison_contract", "post_hoc_equivalence_broadening_allowed"), False),
+        (("admitted_negative_evidence", "fixed_boundary_bijections_exhausted"), 120),
+        (("admitted_negative_evidence", "best_coordinate_mismatch_lower_bound_gt_pdf_point"), 0.001),
+        (("admitted_negative_evidence", "source_coordinate_quantum_pdf_point"), 0.000001),
+        (("admitted_negative_evidence", "visible_graph_weight_bridge", "bridge_to_pinned_C_succeeded"), False),
+        (("disposition", "status"), "BLOCKED_SOURCE_FAITHFUL_MATCH"),
+        (("disposition", "matching_proved"), False),
+        (("disposition", "mathematical_certification_claimed"), False),
+        (("disposition", "source_paper_refuted"), False),
+        (("disposition", "cert_route_promoted"), False),
+        (("disposition", "physical_or_commercial_claim_authorized"), False),
+        (("predecessor_immutability", "historical_claim_text_retained"), True),
+        (("predecessor_immutability", "historical_handoff_rewritten"), False),
+        (("obligation_crosswalk", "historical_claim"), "VGSE-C06"),
+        (("obligation_crosswalk", "historical_solve_proof_obligation"), "VGSE-D05 (semantic correspondence in immutable proof_obligations.json)"),
+    ):
+        expect(keys, value)
+
+    local_refs = (
+        (("source_vector_fixture",), "work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json", "8449555b71a38670374f172edd549385c3dda47d"),
+        (("predecessor_immutability", "historical_handoff"), "cert_handoffs/VGSE-001.json", "42cfa84978fd63c75f074b388afd8b1fcbd56091"),
+        (("predecessor_immutability", "historical_claim_ledger"), "work_packages/VGSE_WP00/claim_ledger.json", "a5d9edb3697bfbb5fe26b8dacbda4b2a2debb69f"),
+        (("predecessor_immutability", "historical_proof_obligations"), "work_packages/VGSE_WP00/proof_obligations.json", "f00db211d6e65ff1cd8e9c24f448992101bfd6ca"),
+    )
+    for keys, path, digest in local_refs:
+        expect((*keys, "path"), path)
+        expect((*keys, "git_blob_sha1"), digest)
+        local = ROOT / path
+        if not local.is_file() or git_blob_sha1(local) != digest:
+            errors.append("C06 successor historical/local evidence drift: " + path)
+
+    remote_refs = (
+        (("source_authority", "provider_manifest"), "provider_manifests/VGSE-001.json", "9cb5ac2d92b458f7f63e8a9811448f245a151ddd"),
+        (("source_authority", "source_concordance"), "sources/VGSE-001/source_revision_concordance.json", "6685cd1b0ed4d759f7447fce4b217ef8a59f0f93"),
+        (("source_authority", "arxiv_source_archive_audit"), "sources/VGSE-001/arxiv_v2_source_archive_audit.json", "742a14910b5448d3fd9714434c7c5d0d3f7a61dc"),
+        (("admitted_negative_evidence", "source_equivalence_audit"), "evidence/vgse/VGSE-WP00-CERT-001-source-equivalence-audit.json", "062389091eb1104a3598cfcded786f6cc34ca336"),
+        (("admitted_negative_evidence", "producer_binding"), "evidence/vgse/VGSE-WP00-CERT-001-c06-producer-binding.json", "80ca458063ac2d500a2046f9594e90de0d737f86"),
+        (("admitted_negative_evidence", "visible_graph_weight_bridge"), "work_packages/VGSE_WP00/artifacts/data/figure16_pinned_c_measurement_audit.json", "97f2834d57d8ac9d60544d0f2498aa527aa72422"),
+    )
+    for keys, path, digest in remote_refs:
+        expect((*keys, "path") if keys[-1] != "visible_graph_weight_bridge" else (*keys, "producer_audit_path"), path)
+        expect((*keys, "git_blob_sha1"), digest)
+    return errors
+
+
 def vgse_overlay_errors(*, overlay_path: Path = OVERLAY_PATH, schema_path: Path = OVERLAY_SCHEMA_PATH, manifest_dir: Path = MANIFEST_DIR, handoff_dir: Path = HANDOFF_DIR) -> list[str]:
     del manifest_dir, handoff_dir
-    return _overlay_errors(overlay_path=overlay_path, schema_path=schema_path, campaign_id=VGSE_ID, handoff_status="pending")
+    return _overlay_errors(overlay_path=overlay_path, schema_path=schema_path, campaign_id=VGSE_ID, handoff_status="pending") + fixed_boundary_successor_errors()
 
 
 def euclid_overlay_errors(*, overlay_path: Path = EUCLID_OVERLAY_PATH, schema_path: Path = EUCLID_OVERLAY_SCHEMA_PATH, manifest_dir: Path = MANIFEST_DIR, handoff_dir: Path = HANDOFF_DIR) -> list[str]:
