@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "VGSE_C06_SOURCE_FAITHFUL_SUCCESSOR",
+  "successor_id": "VGSE-C06-FIXED-BOUNDARY-001",
+  "campaign_id": "VGSE-001",
+  "predecessor_claim_id": "VGSE-C06",
+  "producer_issue": "https://github.com/grandchallenge/MATHSOLVE/issues/239",
+  "source_authority": {
+    "repository": "grandchallenge/MATHFORGE",
+    "provider_manifest": {
+      "path": "provider_manifests/VGSE-001.json",
+      "git_blob_sha1": "9cb5ac2d92b458f7f63e8a9811448f245a151ddd"
+    },
+    "source_concordance": {
+      "path": "sources/VGSE-001/source_revision_concordance.json",
+      "git_blob_sha1": "6685cd1b0ed4d759f7447fce4b217ef8a59f0f93"
+    },
+    "arxiv_source_archive_audit": {
+      "path": "sources/VGSE-001/arxiv_v2_source_archive_audit.json",
+      "git_blob_sha1": "742a14910b5448d3fd9714434c7c5d0d3f7a61dc"
+    },
+    "arxiv_revision": "2410.09574v2",
+    "arxiv_pdf_sha256": "f5aefb71dd0d662679e85cd0c7f96d1bbbc029a6b5cd2f1cfaa06286cc718e34",
+    "source_loci": [
+      "Appendix B, Proposition B.2",
+      "Appendix B, Example B.3",
+      "Figure 16"
+    ],
+    "source_meaning": "The five possible t-embeddings shown have the prescribed fixed kami boundary polygon; no unrecorded geometric quotient is authorized."
+  },
+  "predecessor_immutability": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "historical_handoff": {
+      "path": "cert_handoffs/VGSE-001.json",
+      "git_blob_sha1": "42cfa84978fd63c75f074b388afd8b1fcbd56091"
+    },
+    "historical_claim_ledger": {
+      "path": "work_packages/VGSE_WP00/claim_ledger.json",
+      "git_blob_sha1": "a5d9edb3697bfbb5fe26b8dacbda4b2a2debb69f"
+    },
+    "historical_proof_obligations": {
+      "path": "work_packages/VGSE_WP00/proof_obligations.json",
+      "git_blob_sha1": "f00db211d6e65ff1cd8e9c24f448992101bfd6ca"
+    },
+    "historical_claim_text_retained": true,
+    "historical_handoff_rewritten": false
+  },
+  "comparison_contract": {
+    "target": "five generated t-embeddings versus five Figure 16 source-vector drawings",
+    "gauge": "same labeled fixed kami-boundary coordinate gauge",
+    "boundary_reindex_source_1_based": [
+      1,
+      6,
+      5,
+      4,
+      3,
+      2
+    ],
+    "allowed_transformations": [
+      "permutation_of_five_solution_branches"
+    ],
+    "branch_count": 5,
+    "branch_bijections_to_test": 120,
+    "coordinate_units": "PDF point",
+    "source_vector_decimal_quantum": 0.000001,
+    "rounding_half_quantum_per_coordinate": 5e-7,
+    "geometric_quotient_group": null,
+    "post_hoc_equivalence_broadening_allowed": false,
+    "matcher_acceptance": "A single bijection of all five branches with each labeled source coordinate equal within independently propagated source-vector rounding, without rescaling, translation, rotation, reflection, projective action, or a fitted geometric transform."
+  },
+  "source_vector_fixture": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "path": "work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json",
+    "fixture_id": "VGSE-FIG16-SOURCE-VECTOR-001",
+    "git_blob_sha1": "8449555b71a38670374f172edd549385c3dda47d"
+  },
+  "admitted_negative_evidence": {
+    "repository": "grandchallenge/MATHCERT",
+    "source_equivalence_audit": {
+      "path": "evidence/vgse/VGSE-WP00-CERT-001-source-equivalence-audit.json",
+      "git_blob_sha1": "062389091eb1104a3598cfcded786f6cc34ca336"
+    },
+    "producer_binding": {
+      "path": "evidence/vgse/VGSE-WP00-CERT-001-c06-producer-binding.json",
+      "git_blob_sha1": "80ca458063ac2d500a2046f9594e90de0d737f86"
+    },
+    "fixed_boundary_bijections_exhausted": 120,
+    "best_coordinate_mismatch_lower_bound_gt_pdf_point": 0.001,
+    "source_coordinate_quantum_pdf_point": 0.000001,
+    "visible_graph_weight_bridge": {
+      "producer_audit_path": "work_packages/VGSE_WP00/artifacts/data/figure16_pinned_c_measurement_audit.json",
+      "git_blob_sha1": "97f2834d57d8ac9d60544d0f2498aa527aa72422",
+      "boundary_relabelings_exhausted": 720,
+      "certified_projective_distortion_lower_bound": 131.50058917470795,
+      "bridge_to_pinned_C_succeeded": false
+    }
+  },
+  "disposition": {
+    "status": "BLOCKED_SOURCE_FAITHFUL_MATCH",
+    "matching_proved": false,
+    "mathematical_certification_claimed": false,
+    "source_paper_refuted": false,
+    "cert_route_promoted": false,
+    "physical_or_commercial_claim_authorized": false,
+    "required_reopening_input": "New source-authenticated graph/weight-generation data or a separately governed source-authorized correspondence with exact locus and transformation action declared before any matcher replay; the current fixed-boundary negative result cannot be reversed by post-hoc quotient selection."
+  },
+  "obligation_crosswalk": {
+    "historical_claim": "VGSE-C06",
+    "historical_solve_proof_obligation": "VGSE-D05 (semantic correspondence in immutable proof_obligations.json)",
+    "historical_solve_D06": "Rigid deployment, not this generated-to-source comparison; unchanged",
+    "successor_semantic_target": "VGSE-C06-FIXED-BOUNDARY-001"
+  }
+}
