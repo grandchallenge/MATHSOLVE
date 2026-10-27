@@ -65,7 +65,8 @@
     "E3-Q16": "PROVED_NATIVE_COMMON_DIFFERENCE_ALIGNMENT",
     "E3-Q17": "PROVED_NATIVE_DERIVATIVE_SPECTRUM_TRANSPORT_IDENTITY",
     "E3-Q18": "PROVED_NATIVE_BRIDGE_FAMILY_DICHOTOMY",
-    "E3-Q19": "PROVED_NATIVE_DYADIC_EXTRACTION_WITH_EXPONENT4_BARRIER"
+    "E3-Q19": "PROVED_NATIVE_DYADIC_EXTRACTION_WITH_EXPONENT4_BARRIER",
+    "E3-Q20": "PROVED_NATIVE_DEWINDOWED_LOW_ORDER_DICHOTOMY"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
@@ -411,5 +412,12 @@
     "path": "work_packages/GCL_ERDOS3/results/E3-Q19_NATIVE_RESULT.md",
     "blob_sha1": "b80ce004286722f56262d5305280a8eea53b787d",
     "effect": "Dyadic extraction from the Q11 short-step density increment retains a quantitative beta^4 gain with logarithmic scale loss; exponent-4 remains an explicit barrier. Separate research result, no parent theorem promotion."
+  },
+  "tranche_04_extension_q20": {
+    "result": "E3-Q20",
+    "disposition": "PROVED_NATIVE_DEWINDOWED_LOW_ORDER_DICHOTOMY",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q20_NATIVE_RESULT.md",
+    "blob_sha1": "1a8e5055230dacf5b26db7abc787b1a72cbce606",
+    "effect": "D01 adjacent-family de-windowed expansion yields a low-order carry-window discrepancy or higher-order de-windowed U3 structure across physical fibres; no parent theorem promotion."
   }
 }
