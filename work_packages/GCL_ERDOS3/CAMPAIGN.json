@@ -63,7 +63,8 @@
     "E3-Q14": "PROVED_NATIVE_RECURSION_EXPONENT_NO_GO",
     "E3-Q15": "PROVED_NATIVE_REPEATED_TRIPLET_DERIVATIVE_FORCING",
     "E3-Q16": "PROVED_NATIVE_COMMON_DIFFERENCE_ALIGNMENT",
-    "E3-Q17": "PROVED_NATIVE_DERIVATIVE_SPECTRUM_TRANSPORT_IDENTITY"
+    "E3-Q17": "PROVED_NATIVE_DERIVATIVE_SPECTRUM_TRANSPORT_IDENTITY",
+    "E3-Q18": "PROVED_NATIVE_BRIDGE_FAMILY_DICHOTOMY"
   },
   "current_frontier": [
     "E3-Q4-DENSITY-LOSS"
@@ -395,5 +396,12 @@
     "path": "work_packages/GCL_ERDOS3/results/E3-Q17_NATIVE_RESULT.md",
     "blob_sha1": "571a3c1ead499fbc2ec8674497e0a9757e8bd7a1",
     "effect": "For b=h_B1, the derivative spectrum A_e(xi)=hat(Delta_e b)(xi) has exact shift-variable Fourier coefficients hat b(xi-eta)hat b(eta), so matched-shift frequency transport is governed by a fixed nonnegative base-pair energy measure. The high-order residual reduces to concentrated base-frequency pairs versus pair-spectrum diffuseness."
+  },
+  "tranche_04_extension_q18": {
+    "result": "E3-Q18",
+    "disposition": "PROVED_NATIVE_BRIDGE_FAMILY_DICHOTOMY",
+    "path": "work_packages/GCL_ERDOS3/results/E3-Q18_NATIVE_RESULT.md",
+    "blob_sha1": "7ee9a3b9d6dddb267d6dafcf36c65ef4217d8550",
+    "effect": "Bridge families F9/F10 either force the repeated interior derivative or yield a positive-density three-physical-fibre mixed-window witness; a separate finite native result, not a parent theorem closure."
   }
 }

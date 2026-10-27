@@ -1043,6 +1043,13 @@
         "work_packages/GCL_ERDOS3/results/E3-Q17_NATIVE_RESULT.md"
       ],
       "claim_boundary": "Smallest current high-order residual; open."
+    },
+    {
+      "result": "E3-Q18",
+      "disposition": "PROVED_NATIVE_BRIDGE_FAMILY_DICHOTOMY",
+      "path": "work_packages/GCL_ERDOS3/results/E3-Q18_NATIVE_RESULT.md",
+      "blob_sha1": "7ee9a3b9d6dddb267d6dafcf36c65ef4217d8550",
+      "effect": "Bridge families F9/F10 either force the repeated interior derivative or yield a positive-density three-physical-fibre mixed-window witness; a separate finite native result, not a parent theorem closure."
     }
   ],
   "closed_claims": [
