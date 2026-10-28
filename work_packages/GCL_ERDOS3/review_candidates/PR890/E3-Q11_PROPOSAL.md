@@ -68,7 +68,11 @@ More strongly, the identity holds term-by-term after any decomposition of each p
 - every Q10 term (T_{F,S});
 - every singleton geometry-bias correlation;
 - every multi-fluctuation correlation;
-- and every Fourier/derivative witness extracted solely from the unrestricted cyclic four-linear average.
+- and every **scalar multilinear average** obtained by expanding the same unrestricted cyclic four-linear functional.
+
+**Scope correction (step-resolved witnesses).** The equality above is an equality of full averages, not of their unaveraged step profiles or their Fourier coefficients at fixed frequencies. Define `K_F(d) = E_x product_t F_t(x+t*d)`. The same substitution proves the more precise covariance `K_F'(d) = K_F(d+s*N)`. With the discrete Fourier convention `Khat(k) = E_d K(d) exp(-2*pi*i*k*d/P)`, this gives `Khat_F'(k) = exp(2*pi*i*k*s*N/P) Khat_F(k)`. Thus the Fourier magnitudes are invariant, but nonzero-frequency phases need not be. Similarly, finite differences of the step profile translate; they are not generally identical pointwise at the same `d`. A Fourier/derivative witness is preserved only when its construction is invariant under this translation or when the witness is transformed covariantly.
+
+**Finite adversarial example.** Set `N=16`, `P=67`, `s=1`, `i=q=0`, `c_t=t`, and let each physical fibre function `f_j` be the delta function at residue zero. This is the L01 `F15` gauge, mapped to `F16` with `q'=1`, `c'_t=0`. Then `K_F(d)=1/67` exactly when `d=16 (mod 67)` and zero otherwise; after the gauge change, `K_F'(d)=1/67` exactly when `d=0 (mod 67)` and zero otherwise. Both full averages equal `1/67^2`, while their Fourier mode `k=1` differs by the nontrivial phase `exp(2*pi*i*16/67)`. This example does not challenge the exact gauge equivalence of full averages; it disproves the stronger reading that fixed-frequency phases or pointwise step profiles are unchanged.
 
 ## Proof
 
