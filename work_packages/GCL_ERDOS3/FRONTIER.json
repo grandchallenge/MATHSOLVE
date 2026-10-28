@@ -1066,6 +1066,14 @@
       "path": "work_packages/GCL_ERDOS3/results/E3-Q20_NATIVE_RESULT.md",
       "blob_sha1": "1a8e5055230dacf5b26db7abc787b1a72cbce606",
       "effect": "D01 adjacent-family de-windowed expansion yields a low-order carry-window discrepancy or higher-order de-windowed U3 structure across physical fibres; no parent theorem promotion."
+    },
+    {
+      "id": "E3-Q21",
+      "result": "E3-Q21",
+      "disposition": "PROVED_NATIVE_ALL_DISTINCT_DEWINDOWED_DICHOTOMY",
+      "path": "work_packages/GCL_ERDOS3/results/E3-Q21_NATIVE_RESULT.md",
+      "blob_sha1": "db17dda7f4b37193f62b6fcafbae9d01bd2a50bf",
+      "effect": "All-distinct F15/F16 de-windowed correlations force a singleton carry-marginal discrepancy or multi-physical-fibre correlation, with equal pulled-back singleton kernels; no parent theorem promotion."
     }
   ],
   "closed_claims": [
