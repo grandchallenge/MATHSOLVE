@@ -74,6 +74,8 @@ def decode_gh_pages(stdout: str) -> list[dict]:
 
 
 def collect_snapshot() -> dict:
+    # Timestamp the oldest possible evidence, not the end of a long census.
+    captured_at = datetime.now(timezone.utc).isoformat()
     ids = registry_ids()
     rows = []
     for number, dispatch in sorted(ids.items()):
@@ -92,7 +94,7 @@ def collect_snapshot() -> dict:
     return {
         "record_type": "GCL_ACTIVE_SOLVE_RESERVATIONS_SNAPSHOT/1",
         "repository": REPO, "complete": True,
-        "snapshot_at": datetime.now(timezone.utc).isoformat(),
+        "snapshot_at": captured_at,
         "total_jobs": len(ids), "rows": rows,
     }
 
