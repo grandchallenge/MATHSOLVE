@@ -132,7 +132,7 @@ class CapacityTests(unittest.TestCase):
     def test_duplicate_authenticated_acknowledgments_hold_capacity(self):
         claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
                  "user": {"login": "worker-a"}}
-        body = "CLAIM REJECTED\\n\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\nsource_comment_id: 5001\\n"
+        body = chr(10).join(["CLAIM REJECTED", "", "GCL-QUEUE-RESPONSE-ORIGIN/1", "source_comment_id: 5001", ""])
         acknowledgments = [
             {"id": ident, "created_at": "2026-10-11T00:11:00Z",
              "body": body, "user": {"login": "github-actions[bot]", "type": "Bot"}}
