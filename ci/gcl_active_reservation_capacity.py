@@ -158,6 +158,13 @@ def count_live(snapshot: dict, at: datetime) -> dict:
         comments = row.get("comments")
         if not isinstance(comments, list):
             raise CapacityError("missing complete reservation comment history")
+        # Validate the identity of injected/replayed snapshot rows as rigorously
+        # as the live paginated collector. Duplicate IDs make custody ambiguous.
+        comment_ids = [c.get("id") for c in comments if isinstance(c, dict)]
+        if (len(comment_ids) != len(comments)
+                or any(type(ident) is not int for ident in comment_ids)
+                or len(set(comment_ids)) != len(comment_ids)):
+            raise CapacityError(f"#{n}: incomplete or duplicate comment identities")
         if unresolved_claims(comments, at, bots):
             raise CapacityError(f"#{n}: unresolved claim comment; hold new admission")
         events = reservation_events(comments, did, bots)
