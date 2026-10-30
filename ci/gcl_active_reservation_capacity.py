@@ -181,6 +181,16 @@ def decision(snapshot: dict, candidate: dict) -> dict:
     if any(type(x) is not int or x < 1 for x in limits.values()):
         raise CapacityError("invalid protected class active-capacity limit")
     at = datetime.now(timezone.utc)
+    stamp = snapshot.get("snapshot_at")
+    if not isinstance(stamp, str):
+        raise CapacityError("capacity snapshot timestamp missing")
+    try:
+        captured = parse_time(stamp)
+    except (ValueError, TypeError) as exc:
+        raise CapacityError("invalid capacity snapshot timestamp") from exc
+    age_seconds = (at - captured).total_seconds()
+    if age_seconds < 0 or age_seconds > 300:
+        raise CapacityError("capacity snapshot outside five-minute freshness window")
     status = count_live(snapshot, at)
     if status["active_count"] < limits["Mathematics"]:
         return {**candidate,
