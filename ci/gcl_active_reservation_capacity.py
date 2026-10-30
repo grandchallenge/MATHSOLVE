@@ -101,18 +101,22 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str]) -> lis
     """Find recent authenticated /claim commands without a bound controller response."""
     from datetime import timedelta
     import re
-    acknowledged = set()
-    commands = []
+    acknowledgments = {}
+    commands = {}
     for row in comments:
         body = row.get("body")
         if not isinstance(body, str):
             continue
         actor = (row.get("user") or {}).get("login")
         if (actor in bots and (row.get("user") or {}).get("type") == "Bot"
-                and "\nGCL-QUEUE-RESPONSE-ORIGIN/1\n" in body):
+                and "\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\n" in body):
             matches = re.findall(r"(?m)^source_comment_id: ([1-9][0-9]*)$", body)
             if len(matches) == 1:
-                acknowledged.add(int(matches[0]))
+                timestamp = row.get("created_at")
+                if not isinstance(timestamp, str):
+                    raise CapacityError("acknowledgment timestamp missing")
+                acknowledged_at = parse_time(timestamp)
+                acknowledgments.setdefault(int(matches[0]), []).append(acknowledged_at)
         if body.strip() != "/claim":
             continue
         ident = row.get("id")
@@ -123,8 +127,9 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str]) -> lis
         if created > at:
             raise CapacityError("future claim timestamp")
         if at - created <= timedelta(hours=2):
-            commands.append(ident)
-    return sorted(set(commands) - acknowledged)
+            commands[ident] = created
+    return sorted(ident for ident, created in commands.items()
+                  if not any(created <= when <= at for when in acknowledgments.get(ident, [])))
 
 
 def count_live(snapshot: dict, at: datetime) -> dict:
