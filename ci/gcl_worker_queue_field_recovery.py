@@ -75,7 +75,8 @@ def main():
     p.add_argument("--issue", type=int, required=True)
     p.add_argument("--projection", required=True)
     a = p.parse_args()
-    data = json.load(open(a.projection, encoding="utf-8"))
+    with open(a.projection, encoding="utf-8") as handle:
+        data = json.load(handle)
     if data.get("queue_managed") is not True:
         return
     results = []
