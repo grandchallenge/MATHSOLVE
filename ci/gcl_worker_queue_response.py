@@ -6,12 +6,12 @@ Explicit permission/policy denial is never bypassed or retried.
 """
 from __future__ import annotations
 import argparse
-import hashlib
 import json
 from pathlib import Path
 import subprocess
 
 MARKER = "GCL-QUEUE-RESPONSE-ORIGIN/1"
+TRUSTED_ACTOR = "github-actions[bot]"
 
 
 class ResponseUncertain(RuntimeError):
@@ -25,7 +25,7 @@ def call(args: list[str], *, input_text: str | None = None) -> subprocess.Comple
 
 def history(repo: str, issue: int) -> list[dict]:
     p = call(["api", "--paginate", f"repos/{repo}/issues/{issue}/comments?per_page=100",
-              "--jq", ".[] | {id,body} | @json"])
+              "--jq", ".[] | {id,body,author:.user.login,author_type:.user.type} | @json"])
     if p.returncode:
         raise ResponseUncertain("authoritative issue comment readback unavailable")
     try:
@@ -47,7 +47,10 @@ def response_body(original: str, command_comment_id: int) -> str:
 
 def reconcile(rows: list[dict], expected: str, command_comment_id: int) -> int | None:
     suffix = MARKER + "\nsource_comment_id: " + str(command_comment_id) + "\n"
-    same = [x for x in rows if suffix in x["body"]]
+    # A public commenter can copy a response and custody marker. Only the
+    # authenticated controller bot may satisfy authoritative readback.
+    same = [x for x in rows if x.get("author") == TRUSTED_ACTOR
+            and x.get("author_type") == "Bot" and suffix in x["body"]]
     if len(same) > 1:
         raise ResponseUncertain("duplicate responses for one source command")
     if same:
