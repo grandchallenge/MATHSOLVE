@@ -25,7 +25,7 @@ def call(args: list[str], *, input_text: str | None = None) -> subprocess.Comple
 
 def history(repo: str, issue: int) -> list[dict]:
     p = call(["api", "--paginate", f"repos/{repo}/issues/{issue}/comments?per_page=100",
-              "--jq", ".[] | {id,body}"])
+              "--jq", ".[] | {id,body} | @json"])
     if p.returncode:
         raise ResponseUncertain("authoritative issue comment readback unavailable")
     try:
