@@ -17,26 +17,62 @@ All three captures are evidence, not theorem-level certification. Their receipts
 
 ## Verifier — valid mathematical intersection
 
-For real even (f\in L^1([-a,a])) with nonzero (A(f)=\int_0^a f(x)\cosh(x/2)\,dx), define (d\mu_f=f(x)\cosh(x/2)\,dx/A(f)), (K_z(x)=\cos(zx)/\cosh(x/2)), and (\kappa_\delta(f)=\int_0^a|f(x)|\cosh(\delta x)\,dx/|A(f)|). Direct integration and the kernel modulus inequality give
-[
-F_f(z)=\frac12\int_0^a K_z(x)\,d\mu_f(x),\qquad
-\sup_{|\operatorname{Im}z|\le\delta}|F_f(z)|\le\frac12\kappa_\delta(f).
-]
-For every fixed strict substrip (\delta<1/2), a uniform bound on (\kappa_\delta) along an actual admissible family is sufficient for normality on (U=\{z:|\operatorname{Im}z|<1/2\}). Actual-family bounds are not supplied by the cohort.
+For a real even function $f\in L^1([-a,a])$ with $a>0$ and nonzero normalization
 
-The N=1 WP-B identity, conditional on (w_1<0) and normalization (w_0-\sqrt2 w_1=1), gives (\min_{[0,a]}\xi=(2w_0-1)/\sqrt{2a}). Thus strict positivity is equivalent to (w_0>1/2), with a zero at equality. The reported CCM numerical values require independent source-pinned replay.
+$$
+A(f)=\int_0^a f(x)\cosh(x/2)\,dx,
+$$
+
+define the finite signed measure and kernel by
+
+$$
+d\mu_f(x)=\frac{f(x)\cosh(x/2)}{A(f)}\,dx,
+\qquad K_z(x)=\frac{\cos(zx)}{\cosh(x/2)},
+$$
+
+and, for $\delta\geq 0$, the signed-projective variation
+
+$$
+\kappa_\delta(f)=
+\frac{\int_0^a |f(x)|\cosh(\delta x)\,dx}{|A(f)|}.
+$$
+
+Direct integration and $|\cos(zx)|\leq\cosh(|\operatorname{Im}z|x)$ give
+
+$$
+F_f(z)=\frac12\int_0^a K_z(x)\,d\mu_f(x),
+\qquad
+\sup_{|\operatorname{Im}z|\leq\delta}|F_f(z)|
+\leq\frac12\kappa_\delta(f).
+$$
+
+For each fixed $0\leq\delta<1/2$, a uniform bound on $\kappa_\delta$ along an actual admissible family is sufficient for local boundedness and hence Montel normality on $U=\{z:|\operatorname{Im}z|<1/2\}$. Actual-family bounds are not supplied by the cohort. The integral representation presumes the same normalization of $F_f$ as in the protected RH work packages.
+
+The $N=1$ WP-B identity, conditional on $w_1<0$ and normalization $w_0-\sqrt{2}\,w_1=1$, gives
+
+$$
+\min_{x\in[0,a]}\xi(x)=\frac{2w_0-1}{\sqrt{2a}}.
+$$
+
+Thus strict positivity is equivalent to $w_0>1/2$, with a zero at equality. The reported CCM numerical values require independent source-pinned replay.
 
 ## Adversary — rejected promotions
 
 1. WP-A supplies a free-parameter structured matrix exhibiting a simple even ground eigenfunction with a sign change. It does not produce a parameter-locked actual CCM instance. Nonpositivity of Fourier projection alone does not imply every compressed positive operator fails positivity. Reflection symmetry alone does not preclude total positivity.
-2. WP-B's small positive minima at finitely many points do not prove that no uniform lower bound exists along a cofinal family. The published examples also do not reproduce all claimed (N=3,4) scan records or certify numerical error.
-3. WP-C attempts to infer nonzero interior limits from (F_j(i/2)=1/2). This is invalid because (i/2\notin U). Protected `work_packages/RH_R077_PROJECTIVE_MEASURE_REPAIR.md` already supplies the exact counterexample (E_n(z)=\cos(nz)/(2\cosh(n/2))\to0) on compact subsets of (U), while retaining that boundary normalization. The frozen WP-C task itself explicitly warned against boundary-anchor anti-collapse.
+2. WP-B's small positive minima at finitely many points do not prove that no uniform lower bound exists along a cofinal family. The published examples also do not reproduce all claimed $N=3,4$ scan records or certify numerical error.
+3. WP-C attempts to infer nonzero interior limits from $F_j(i/2)=1/2$. This is invalid because $i/2\notin U$. Protected `work_packages/RH_R077_PROJECTIVE_MEASURE_REPAIR.md` already supplies the exact counterexample
+
+$$
+E_n(z)=\frac{\cos(nz)}{2\cosh(n/2)}\longrightarrow 0
+$$
+
+on compact subsets of $U$, while retaining $E_n(i/2)=1/2$. The frozen WP-C task itself explicitly warned against boundary-anchor anti-collapse.
 
 The acceptance of conditional normality cannot be upgraded to an RH theorem, actual-family C4/C5 discharge, certified CCM ground-state positivity or publication.
 
 ## Remaining smallest actual-family obligations
 
-- Establish uniform signed-projective (\kappa_\delta) control along a provably admissible cofinal CCM sequence (C4).
+- Establish uniform signed-projective $\kappa_\delta$ control along a provably admissible cofinal CCM sequence (C4).
 - Establish a nonzero *interior* subsequential observable and projective shape identification, as required by protected RH-R077 Theorem 7.1 (C5).
 - Independently reconstruct any numerical positivity/negativity claim from the locked source matrix and certified error bounds. A free-parameter model does not substitute for this.
 
