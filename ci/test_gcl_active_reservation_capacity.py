@@ -153,6 +153,12 @@ class CapacityTests(unittest.TestCase):
         with self.assertRaisesRegex(cap.CapacityError, "comment identities"):
             cap.count_live(snapshot([row]), NOW)
 
+    def test_same_comment_identity_in_distinct_issues_blocks_admission(self):
+        duplicated = snapshot([reservation(ident=810)])
+        duplicated["rows"][1]["comments"] = [reservation(ident=810)]
+        with self.assertRaisesRegex(cap.CapacityError, "across Solve issue"):
+            cap.count_live(duplicated, NOW)
+
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
         self.assertEqual(result["outcome"],"REJECTED_MATHEMATICS_ACTIVE_CAPACITY")
