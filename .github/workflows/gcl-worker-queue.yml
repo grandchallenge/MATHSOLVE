@@ -72,10 +72,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GCL_COMMAND_COMMENT_ID: ${{ github.event.comment.id }}
         run: |
           if [ ! -f "$RUNNER_TEMP/queue-result.json" ]; then
             printf '%s\n' "QUEUE CONTROLLER ERROR — evaluation failed before a result artifact was produced." > "$RUNNER_TEMP/response.md"
-            gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" -F body=@"$RUNNER_TEMP/response.md" >/dev/null
+            python ci/gcl_worker_queue_response.py --repo "$GITHUB_REPOSITORY" --issue "$ISSUE_NUMBER" --source-comment-id "$GCL_COMMAND_COMMENT_ID" --body-file "$RUNNER_TEMP/response.md"
             exit 1
           fi
           python - <<'PY'
@@ -98,7 +99,7 @@ jobs:
             [ -z "$label" ] && continue
             gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label "$label" >/dev/null 2>&1 || true
           done < "$RUNNER_TEMP/labels_remove.txt"
-          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" -F body=@"$RUNNER_TEMP/response.md" >/dev/null
+          python ci/gcl_worker_queue_response.py --repo "$GITHUB_REPOSITORY" --issue "$ISSUE_NUMBER" --source-comment-id "$GCL_COMMAND_COMMENT_ID" --body-file "$RUNNER_TEMP/response.md"
 
 
       - name: Synchronize queue Issue Fields
