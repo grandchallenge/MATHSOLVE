@@ -129,6 +129,18 @@ class CapacityTests(unittest.TestCase):
         with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
             cap.count_live(snapshot([claim, response]), NOW)
 
+    def test_duplicate_authenticated_acknowledgments_hold_capacity(self):
+        claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                 "user": {"login": "worker-a"}}
+        body = "CLAIM REJECTED\\n\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\nsource_comment_id: 5001\\n"
+        acknowledgments = [
+            {"id": ident, "created_at": "2026-10-11T00:11:00Z",
+             "body": body, "user": {"login": "github-actions[bot]", "type": "Bot"}}
+            for ident in (5002, 5003)
+        ]
+        with self.assertRaisesRegex(cap.CapacityError, "duplicate controller acknowledgment"):
+            cap.count_live(snapshot([claim] + acknowledgments), NOW)
+
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
         self.assertEqual(result["outcome"],"REJECTED_MATHEMATICS_ACTIVE_CAPACITY")
