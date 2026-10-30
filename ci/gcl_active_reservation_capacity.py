@@ -97,6 +97,35 @@ def collect_snapshot() -> dict:
     }
 
 
+def unresolved_claims(comments: list[dict], at: datetime, bots: set[str]) -> list[int]:
+    """Find recent authenticated /claim commands without a bound controller response."""
+    from datetime import timedelta
+    import re
+    acknowledged = set()
+    commands = []
+    for row in comments:
+        body = row.get("body")
+        if not isinstance(body, str):
+            continue
+        actor = (row.get("user") or {}).get("login")
+        if actor in bots and "GCL-QUEUE-RESPONSE-ORIGIN/1" in body:
+            matches = re.findall(r"(?m)^source_comment_id: ([1-9][0-9]*)$", body)
+            if len(matches) == 1:
+                acknowledged.add(int(matches[0]))
+        if body.strip() != "/claim":
+            continue
+        ident = row.get("id")
+        timestamp = row.get("created_at")
+        if type(ident) is not int or not isinstance(timestamp, str):
+            raise CapacityError("claim source identity incomplete")
+        created = parse_time(timestamp)
+        if created > at:
+            raise CapacityError("future claim timestamp")
+        if at - created <= timedelta(hours=2):
+            commands.append(ident)
+    return sorted(set(commands) - acknowledged)
+
+
 def count_live(snapshot: dict, at: datetime) -> dict:
     expected = registry_ids()
     if (snapshot.get("record_type") != "GCL_ACTIVE_SOLVE_RESERVATIONS_SNAPSHOT/1"
@@ -120,6 +149,8 @@ def count_live(snapshot: dict, at: datetime) -> dict:
         comments = row.get("comments")
         if not isinstance(comments, list):
             raise CapacityError("missing complete reservation comment history")
+        if unresolved_claims(comments, at, bots):
+            raise CapacityError(f"#{n}: unresolved claim comment; hold new admission")
         events = reservation_events(comments, did, bots)
         if events:
             recent = events[-1]
