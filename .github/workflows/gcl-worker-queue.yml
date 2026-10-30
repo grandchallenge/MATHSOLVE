@@ -52,6 +52,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
+          set -euo pipefail
           gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments?per_page=100" | jq -s 'add' > "$RUNNER_TEMP/issue-comments.json"
 
       - name: Evaluate queue command against protected state
@@ -166,6 +167,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          set -euo pipefail
           job_label="$(python - <<'PY'
           import json
           from pathlib import Path
