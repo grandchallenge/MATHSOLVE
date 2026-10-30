@@ -219,19 +219,10 @@ jobs:
               continue
             fi
 
-            if [ "$(jq '.issue_field_values | length' "$RUNNER_TEMP/projection-$n.json")" -gt 0 ]; then
-              jq '{issue_field_values: .issue_field_values}' "$RUNNER_TEMP/projection-$n.json" > "$RUNNER_TEMP/issue-fields-$n.json"
-              gh api --method POST \
-                "repos/$GITHUB_REPOSITORY/issues/$n/issue-field-values" \
-                --input "$RUNNER_TEMP/issue-fields-$n.json" >/dev/null
-            fi
-
-            jq -r '.clear_field_ids[]?' "$RUNNER_TEMP/projection-$n.json" | while IFS= read -r field_id; do
-              [ -z "$field_id" ] && continue
-              gh api --method DELETE \
-                "repos/$GITHUB_REPOSITORY/issues/$n/issue-field-values/$field_id" \
-                >/dev/null 2>&1 || true
-            done
+            python ci/gcl_worker_queue_field_recovery.py \
+              --repo "$GITHUB_REPOSITORY" \
+              --issue "$n" \
+              --projection "$RUNNER_TEMP/projection-$n.json"
 
             state="$(jq -r '.reservation_state // ""' "$RUNNER_TEMP/projection-$n.json")"
             if [ "$state" = "ACTIVE" ]; then
