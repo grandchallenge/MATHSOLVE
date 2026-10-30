@@ -81,7 +81,7 @@ class CapacityTests(unittest.TestCase):
         claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
                  "user": {"login": "worker-a"}}
         response = {"id": 5002, "created_at": "2026-10-11T00:11:00Z",
-                    "body": "CLAIM REJECTED\\n\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\nsource_comment_id: 5001\\n",
+                    "body": "CLAIM REJECTED\n\nGCL-QUEUE-RESPONSE-ORIGIN/1\nsource_comment_id: 5001\n",
                     "user": {"login": "github-actions[bot]", "type": "User"}}
         with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
             cap.count_live(snapshot([claim, response]), NOW)
