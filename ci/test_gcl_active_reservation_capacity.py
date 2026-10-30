@@ -141,6 +141,18 @@ class CapacityTests(unittest.TestCase):
         with self.assertRaisesRegex(cap.CapacityError, "duplicate controller acknowledgment"):
             cap.count_live(snapshot([claim] + acknowledgments), NOW)
 
+    def test_duplicate_comment_ids_in_snapshot_block_admission(self):
+        first = reservation(ident=700)
+        second = reservation(ident=700)
+        with self.assertRaisesRegex(cap.CapacityError, "duplicate comment identities"):
+            cap.count_live(snapshot([first, second]), NOW)
+
+    def test_comment_without_identity_blocks_admission(self):
+        row = reservation(ident=700)
+        del row["id"]
+        with self.assertRaisesRegex(cap.CapacityError, "comment identities"):
+            cap.count_live(snapshot([row]), NOW)
+
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
         self.assertEqual(result["outcome"],"REJECTED_MATHEMATICS_ACTIVE_CAPACITY")
