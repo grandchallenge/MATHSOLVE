@@ -30,12 +30,21 @@ def field_state(repo, issue, field_id):
     return matches[0] if matches else None
 
 
+def observed_value(row):
+    if row is None:
+        return None
+    option = row.get("single_select_option")
+    if isinstance(option, dict) and isinstance(option.get("name"), str):
+        return option["name"]
+    return row.get("value")
+
+
 def apply_one(repo, issue, field_id, value):
     # None means clear. No impersonation or authority change.
     before = field_state(repo, issue, field_id)
     if value is None and before is None:
         return "ALREADY_CLEAR"
-    if value is not None and before is not None and before.get("value") == value:
+    if value is not None and before is not None and observed_value(before) == value:
         return "ALREADY_SET"
     if value is None:
         argv = ["api", "--method", "DELETE",
@@ -54,7 +63,7 @@ def apply_one(repo, issue, field_id, value):
     after = field_state(repo, issue, field_id)
     if value is None and after is None:
         return "VERIFIED_CLEAR"
-    if value is not None and after is not None and after.get("value") == value:
+    if value is not None and after is not None and observed_value(after) == value:
         return "VERIFIED_SET"
     raise UncertainFieldMutation("mutation remote effect unverified; no retry")
 
