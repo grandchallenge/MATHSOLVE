@@ -90,15 +90,10 @@ jobs:
               values = [labels[k] for k in result.get(kind, []) if k in labels]
               Path(os.environ["RUNNER_TEMP"] + "/" + kind + ".txt").write_text("\n".join(values) + ("\n" if values else ""), encoding="utf-8")
           PY
-          while IFS= read -r label; do
-            [ -z "$label" ] && continue
-            gh label create "$label" --repo "$GITHUB_REPOSITORY" --force >/dev/null
-            gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "$label" >/dev/null
-          done < "$RUNNER_TEMP/labels_add.txt"
-          while IFS= read -r label; do
-            [ -z "$label" ] && continue
-            gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label "$label" >/dev/null 2>&1 || true
-          done < "$RUNNER_TEMP/labels_remove.txt"
+          python ci/gcl_worker_queue_label_recovery.py \
+            --repo "$GITHUB_REPOSITORY" --issue "$ISSUE_NUMBER" \
+            --add-file "$RUNNER_TEMP/labels_add.txt" \
+            --remove-file "$RUNNER_TEMP/labels_remove.txt"
           python ci/gcl_worker_queue_response.py --repo "$GITHUB_REPOSITORY" --issue "$ISSUE_NUMBER" --source-comment-id "$GCL_COMMAND_COMMENT_ID" --body-file "$RUNNER_TEMP/response.md"
 
 
@@ -225,26 +220,20 @@ jobs:
               --projection "$RUNNER_TEMP/projection-$n.json"
 
             state="$(jq -r '.reservation_state // ""' "$RUNNER_TEMP/projection-$n.json")"
-            if [ "$state" = "ACTIVE" ]; then
-              gh label create "$reserved" --repo "$GITHUB_REPOSITORY" --force >/dev/null
-              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$reserved" >/dev/null
-              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$available" >/dev/null 2>&1 || true
-              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$returned" >/dev/null 2>&1 || true
-            elif [ "$state" = "EXPIRED" ] || [ "$state" = "RESULT_REJECTED" ]; then
-              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
-              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$returned" >/dev/null 2>&1 || true
-              gh label create "$available" --repo "$GITHUB_REPOSITORY" --force >/dev/null
-              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$available" >/dev/null
-            elif [ "$state" = "RESULT_PENDING" ]; then
-              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
-              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$available" >/dev/null 2>&1 || true
-              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$returned" >/dev/null 2>&1 || true
-            elif [ "$state" = "RETURNED" ]; then
-              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$reserved" >/dev/null 2>&1 || true
-              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --remove-label "$available" >/dev/null 2>&1 || true
-              gh label create "$returned" --repo "$GITHUB_REPOSITORY" --force >/dev/null
-              gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --add-label "$returned" >/dev/null
-            fi
+            case "$state" in
+              ACTIVE)
+                python ci/gcl_worker_queue_label_recovery.py --repo "$GITHUB_REPOSITORY" --issue "$n" --add "$reserved" --remove "$available" --remove "$returned"
+                ;;
+              EXPIRED|RESULT_REJECTED)
+                python ci/gcl_worker_queue_label_recovery.py --repo "$GITHUB_REPOSITORY" --issue "$n" --add "$available" --remove "$reserved" --remove "$returned"
+                ;;
+              RESULT_PENDING)
+                python ci/gcl_worker_queue_label_recovery.py --repo "$GITHUB_REPOSITORY" --issue "$n" --remove "$reserved" --remove "$available" --remove "$returned"
+                ;;
+              RETURNED)
+                python ci/gcl_worker_queue_label_recovery.py --repo "$GITHUB_REPOSITORY" --issue "$n" --add "$returned" --remove "$reserved" --remove "$available"
+                ;;
+            esac
           done
 
       - name: Audit real active Mathematics reservations (read-only)
