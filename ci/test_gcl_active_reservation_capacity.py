@@ -63,6 +63,32 @@ class CapacityTests(unittest.TestCase):
             self.addCleanup(p.stop)
         cap.datetime.now.return_value=NOW
 
+    def test_unacknowledged_recent_claim_holds_capacity(self):
+        claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                 "user": {"login": "worker-a"}}
+        with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
+            cap.decision(snapshot([claim]), CLAIM)
+
+    def test_exact_controller_response_resolves_recent_claim(self):
+        claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                 "user": {"login": "worker-a"}}
+        response = {"id": 5002, "body": "CLAIM REJECTED\\n\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\nsource_comment_id: 5001\\n",
+                    "user": {"login": "github-actions[bot]"}}
+        self.assertEqual(cap.count_live(snapshot([claim, response]), NOW)["active_count"], 0)
+
+    def test_spoofed_response_does_not_resolve_claim(self):
+        claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                 "user": {"login": "worker-a"}}
+        forged = {"id": 5002, "body": "CLAIM REJECTED\\n\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\nsource_comment_id: 5001\\n",
+                  "user": {"login": "untrusted"}}
+        with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
+            cap.count_live(snapshot([claim, forged]), NOW)
+
+    def test_old_unacknowledged_claim_does_not_hold_indefinitely(self):
+        claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-10T19:00:00Z",
+                 "user": {"login": "worker-a"}}
+        self.assertEqual(cap.count_live(snapshot([claim]), NOW)["active_count"], 0)
+
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
         self.assertEqual(result["outcome"],"REJECTED_MATHEMATICS_ACTIVE_CAPACITY")
