@@ -128,6 +128,9 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str]) -> lis
             raise CapacityError("future claim timestamp")
         if at - created <= timedelta(hours=2):
             commands[ident] = created
+    for ident, times in acknowledgments.items():
+        if ident in commands and len(times) > 1:
+            raise CapacityError("duplicate controller acknowledgment for claim")
     return sorted(ident for ident, created in commands.items()
                   if not any(created <= when <= at for when in acknowledgments.get(ident, [])))
 
