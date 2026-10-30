@@ -37,6 +37,7 @@ def snapshot(first=None):
     return {
         "record_type":"GCL_ACTIVE_SOLVE_RESERVATIONS_SNAPSHOT/1",
         "repository":cap.REPO,"complete":True,"total_jobs":2,
+        "snapshot_at":"2026-10-11T00:29:00Z",
         "rows":[
             {"issue_number":1001,"dispatch_id":"D-1","comments":first or []},
             {"issue_number":1002,"dispatch_id":"D-2","comments":[]},
@@ -97,6 +98,27 @@ class CapacityTests(unittest.TestCase):
         claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-10T19:00:00Z",
                  "user": {"login": "worker-a"}}
         self.assertEqual(cap.count_live(snapshot([claim]), NOW)["active_count"], 0)
+
+    def test_stale_snapshot_blocks_new_claim(self):
+        old = snapshot()
+        old["snapshot_at"] = "2026-10-11T00:20:00Z"
+        with self.assertRaisesRegex(cap.CapacityError, "freshness"):
+            cap.decision(old, CLAIM)
+
+    def test_future_snapshot_blocks_new_claim(self):
+        future = snapshot()
+        future["snapshot_at"] = "2026-10-11T00:35:00Z"
+        with self.assertRaisesRegex(cap.CapacityError, "freshness"):
+            cap.decision(future, CLAIM)
+
+    def test_missing_or_bad_snapshot_timestamp_blocks_claim(self):
+        missing = snapshot()
+        del missing["snapshot_at"]
+        with self.assertRaisesRegex(cap.CapacityError, "timestamp missing"):
+            cap.decision(missing, CLAIM)
+        missing["snapshot_at"] = "invalid"
+        with self.assertRaisesRegex(cap.CapacityError, "invalid capacity"):
+            cap.decision(missing, CLAIM)
 
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
