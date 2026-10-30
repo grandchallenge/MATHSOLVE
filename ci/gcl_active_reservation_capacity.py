@@ -109,7 +109,7 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str]) -> lis
             continue
         actor = (row.get("user") or {}).get("login")
         if (actor in bots and (row.get("user") or {}).get("type") == "Bot"
-                and "\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\n" in body):
+                and "\nGCL-QUEUE-RESPONSE-ORIGIN/1\n" in body):
             matches = re.findall(r"(?m)^source_comment_id: ([1-9][0-9]*)$", body)
             if len(matches) == 1:
                 timestamp = row.get("created_at")
