@@ -72,14 +72,14 @@ class CapacityTests(unittest.TestCase):
     def test_exact_controller_response_resolves_recent_claim(self):
         claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
                  "user": {"login": "worker-a"}}
-        response = {"id": 5002, "body": "CLAIM REJECTED\\n\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\nsource_comment_id: 5001\\n",
+        response = {"id": 5002, "body": "CLAIM REJECTED\n\nGCL-QUEUE-RESPONSE-ORIGIN/1\nsource_comment_id: 5001\n",
                     "user": {"login": "github-actions[bot]"}}
         self.assertEqual(cap.count_live(snapshot([claim, response]), NOW)["active_count"], 0)
 
     def test_spoofed_response_does_not_resolve_claim(self):
         claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
                  "user": {"login": "worker-a"}}
-        forged = {"id": 5002, "body": "CLAIM REJECTED\\n\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\nsource_comment_id: 5001\\n",
+        forged = {"id": 5002, "body": "CLAIM REJECTED\n\nGCL-QUEUE-RESPONSE-ORIGIN/1\nsource_comment_id: 5001\n",
                   "user": {"login": "untrusted"}}
         with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
             cap.count_live(snapshot([claim, forged]), NOW)
