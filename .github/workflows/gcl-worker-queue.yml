@@ -116,19 +116,7 @@ jobs:
             exit 0
           fi
 
-          if [ "$(jq '.issue_field_values | length' "$RUNNER_TEMP/queue-projection.json")" -gt 0 ]; then
-            jq '{issue_field_values: .issue_field_values}' "$RUNNER_TEMP/queue-projection.json" > "$RUNNER_TEMP/issue-fields.json"
-            gh api --method POST \
-              "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/issue-field-values" \
-              --input "$RUNNER_TEMP/issue-fields.json" >/dev/null
-          fi
-
-          jq -r '.clear_field_ids[]?' "$RUNNER_TEMP/queue-projection.json" | while IFS= read -r field_id; do
-            [ -z "$field_id" ] && continue
-            gh api --method DELETE \
-              "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/issue-field-values/$field_id" \
-              >/dev/null 2>&1 || true
-          done
+          python ci/gcl_worker_queue_field_recovery.py --repo "$GITHUB_REPOSITORY" --issue "$ISSUE_NUMBER" --projection "$RUNNER_TEMP/queue-projection.json"
 
   reap:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
