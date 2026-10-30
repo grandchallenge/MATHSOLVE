@@ -33,5 +33,31 @@ class FieldRecoveryTests(unittest.TestCase):
         with patch.object(m,"field_state",return_value={"value":"RETURNED"}),patch.object(m,"command") as call:
             self.assertEqual(m.apply_one("o/r",10,3,"RETURNED"),"ALREADY_SET")
             call.assert_not_called()
+    def test_scheduled_reap_uses_recovery_helper(self):
+        from pathlib import Path
+        workflow = Path(__file__).resolve().parents[1] / ".github/workflows/gcl-worker-queue.yml"
+        source = workflow.read_text(encoding="utf-8")
+        section = source.split("name: Reconcile reservations and Issue Fields", 1)[1]
+        section = section.split("name: Audit real active Mathematics reservations", 1)[0]
+        self.assertIn('python ci/gcl_worker_queue_field_recovery.py', section)
+        self.assertIn('--projection "$RUNNER_TEMP/projection-$n.json"', section)
+        self.assertNotIn('gh api --method POST', section)
+        self.assertNotIn('gh api --method DELETE', section)
+
+    def test_scheduled_reap_multiple_projection_steps_fail_closed(self):
+        import json
+        import tempfile
+        from pathlib import Path
+        projection = {"queue_managed": True,
+                      "issue_field_values": [{"field_id": 101, "value": "AVAILABLE"}],
+                      "clear_field_ids": [102]}
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "projection.json"
+            p.write_text(json.dumps(projection))
+            with patch("sys.argv", ["field-recovery", "--repo", "o/r", "--issue", "10", "--projection", str(p)]), patch.object(m, "apply_one", side_effect=["VERIFIED_SET", m.UncertainFieldMutation("remote unknown")]) as apply:
+                with self.assertRaises(m.UncertainFieldMutation):
+                    m.main()
+                self.assertEqual(apply.call_count, 2)
+
 if __name__=="__main__":
     unittest.main()
