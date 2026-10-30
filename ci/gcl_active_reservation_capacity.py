@@ -149,6 +149,7 @@ def count_live(snapshot: dict, at: datetime) -> dict:
     if not bots:
         raise CapacityError("trusted reservation controller identities unavailable")
     seen = set()
+    all_comment_ids = set()
     active_ids = []
     for row in rows:
         n, did = row.get("issue_number"), row.get("dispatch_id")
@@ -165,6 +166,9 @@ def count_live(snapshot: dict, at: datetime) -> dict:
                 or any(type(ident) is not int for ident in comment_ids)
                 or len(set(comment_ids)) != len(comment_ids)):
             raise CapacityError(f"#{n}: incomplete or duplicate comment identities")
+        if all_comment_ids.intersection(comment_ids):
+            raise CapacityError("comment identity reused across Solve issue histories")
+        all_comment_ids.update(comment_ids)
         if unresolved_claims(comments, at, bots):
             raise CapacityError(f"#{n}: unresolved claim comment; hold new admission")
         events = reservation_events(comments, did, bots)
