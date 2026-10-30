@@ -159,6 +159,20 @@ class CapacityTests(unittest.TestCase):
         with self.assertRaisesRegex(cap.CapacityError, "across Solve issue"):
             cap.count_live(duplicated, NOW)
 
+    def test_snapshot_timestamp_precedes_slow_comment_collection(self):
+        from unittest.mock import Mock
+        import subprocess
+        start = datetime(2026, 10, 11, 0, 10, tzinfo=timezone.utc)
+        end = datetime(2026, 10, 11, 0, 20, tzinfo=timezone.utc)
+        cap.datetime.now.side_effect = [start, end]
+        fetch = Mock(return_value=subprocess.CompletedProcess([], 0, "[]", ""))
+        with patch.object(cap, "subprocess") as proc:
+            proc.run = fetch
+            result = cap.collect_snapshot()
+        self.assertEqual(result["snapshot_at"], start.isoformat())
+        self.assertEqual(result["total_jobs"], 2)
+        self.assertEqual(fetch.call_count, 2)
+
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
         self.assertEqual(result["outcome"],"REJECTED_MATHEMATICS_ACTIVE_CAPACITY")
