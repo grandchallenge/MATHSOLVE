@@ -43,7 +43,7 @@ class LabelRecoveryTests(unittest.TestCase):
     def test_scheduled_and_command_wiring(self):
         from pathlib import Path
         y=(Path(__file__).resolve().parents[1]/".github/workflows/gcl-worker-queue.yml").read_text()
-        self.assertEqual(y.count("python ci/gcl_worker_queue_label_recovery.py"),2)
+        self.assertEqual(y.count("python ci/gcl_worker_queue_label_recovery.py"),5)
         self.assertNotIn('gh issue edit "$n"',y)
         self.assertNotIn('gh issue edit "$ISSUE_NUMBER"',y)
 
