@@ -73,14 +73,14 @@ class CapacityTests(unittest.TestCase):
     def test_exact_controller_response_resolves_recent_claim(self):
         claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
                  "user": {"login": "worker-a"}}
-        response = {"id": 5002, "body": "CLAIM REJECTED\n\nGCL-QUEUE-RESPONSE-ORIGIN/1\nsource_comment_id: 5001\n",
+        response = {"id": 5002, "created_at": "2026-10-11T00:11:00Z", "body": "CLAIM REJECTED\n\nGCL-QUEUE-RESPONSE-ORIGIN/1\nsource_comment_id: 5001\n",
                     "user": {"login": "github-actions[bot]", "type": "Bot"}}
         self.assertEqual(cap.count_live(snapshot([claim, response]), NOW)["active_count"], 0)
 
     def test_named_account_without_bot_identity_does_not_resolve_claim(self):
         claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
                  "user": {"login": "worker-a"}}
-        response = {"id": 5002,
+        response = {"id": 5002, "created_at": "2026-10-11T00:11:00Z",
                     "body": "CLAIM REJECTED\\n\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\nsource_comment_id: 5001\\n",
                     "user": {"login": "github-actions[bot]", "type": "User"}}
         with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
@@ -119,6 +119,15 @@ class CapacityTests(unittest.TestCase):
         missing["snapshot_at"] = "invalid"
         with self.assertRaisesRegex(cap.CapacityError, "invalid capacity"):
             cap.decision(missing, CLAIM)
+
+    def test_earlier_acknowledgment_cannot_clear_later_claim(self):
+        claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                 "user": {"login": "worker-a"}}
+        response = {"id": 5002, "created_at": "2026-10-11T00:09:00Z",
+                    "body": "CLAIM REJECTED\\n\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\nsource_comment_id: 5001\\n",
+                    "user": {"login": "github-actions[bot]", "type": "Bot"}}
+        with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
+            cap.count_live(snapshot([claim, response]), NOW)
 
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
