@@ -227,6 +227,23 @@ class CapacityTests(unittest.TestCase):
         with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
             cap.count_live(snapshot([claim, response]), NOW)
 
+    def test_boolean_issue_identity_is_not_a_valid_registry_number(self):
+        roster = {"jobs": [{"issue_number": True, "dispatch_id": "D-1",
+                            "self_claimable": True}]}
+        registry = Path(self.tmp.name) / "boolean-jobs.json"
+        registry.write_text(json.dumps(roster))
+        with patch.object(cap, "REGISTRY", registry):
+            with self.assertRaisesRegex(cap.CapacityError, "identity drift"):
+                REAL_REGISTRY_IDS()
+
+    def test_boolean_and_nonpositive_comment_identity_rejected(self):
+        for ident in (True, 0, -1):
+            with self.subTest(ident=ident):
+                with self.assertRaisesRegex(cap.CapacityError, "comment identities"):
+                    cap.count_live(snapshot([reservation(ident=ident)]), NOW)
+                with self.assertRaisesRegex(cap.CapacityError, "comment identity"):
+                    cap.decode_gh_pages(json.dumps([{"id": ident, "body": "x"}]))
+
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
         self.assertEqual(result["outcome"],"REJECTED_MATHEMATICS_ACTIVE_CAPACITY")
