@@ -124,9 +124,9 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str], dispat
                 # Accepted claims must carry the reserved-dispatch binding.
                 # A response for a different dispatch cannot discharge this claim.
                 if "CLAIM ACCEPTED" in body:
-                    bound = ("GCL-WORKER-RESERVATION/1\\n"
-                             f"dispatch_id: {dispatch_id}\\n"
-                             "state: RESERVED\\n")
+                    bound = ("GCL-WORKER-RESERVATION/1\n"
+                             f"dispatch_id: {dispatch_id}\n"
+                             "state: RESERVED\n")
                     if dispatch_id is None or bound not in body:
                         raise CapacityError("accepted claim acknowledgment dispatch mismatch")
                 acknowledgments.setdefault(int(matches[0]), []).append(acknowledged_at)
