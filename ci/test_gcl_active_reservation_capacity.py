@@ -196,6 +196,27 @@ class CapacityTests(unittest.TestCase):
         with patch.object(cap, "REGISTRY", registry):
             self.assertEqual(REAL_REGISTRY_IDS(), {1001: "D-1", 1002: "D-2"})
 
+    def test_accepted_claim_response_for_foreign_dispatch_blocks_capacity(self):
+        claim = {"id": 5101, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                 "user": {"login": "worker-a"}}
+        body = chr(10).join(["GCL-WORKER-RESERVATION/1", "dispatch_id: D-OTHER",
+                             "state: RESERVED", "", "CLAIM ACCEPTED", "",
+                             "GCL-QUEUE-RESPONSE-ORIGIN/1", "source_comment_id: 5101", ""])
+        response = {"id": 5102, "created_at": "2026-10-11T00:11:00Z",
+                    "body": body, "user": {"login": "github-actions[bot]", "type": "Bot"}}
+        with self.assertRaisesRegex(cap.CapacityError, "dispatch mismatch"):
+            cap.count_live(snapshot([claim, response]), NOW)
+
+    def test_accepted_claim_response_bound_to_dispatch_resolves_command(self):
+        claim = {"id": 5101, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                 "user": {"login": "worker-a"}}
+        body = chr(10).join(["GCL-WORKER-RESERVATION/1", "dispatch_id: D-1",
+                             "state: RESERVED", "", "CLAIM ACCEPTED", "",
+                             "GCL-QUEUE-RESPONSE-ORIGIN/1", "source_comment_id: 5101", ""])
+        response = {"id": 5102, "created_at": "2026-10-11T00:11:00Z",
+                    "body": body, "user": {"login": "github-actions[bot]", "type": "Bot"}}
+        self.assertEqual(cap.unresolved_claims([claim, response], NOW, {"github-actions[bot]"}, "D-1"), [])
+
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
         self.assertEqual(result["outcome"],"REJECTED_MATHEMATICS_ACTIVE_CAPACITY")
