@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_AUTOMATED_BOUNDED_ADJUDICATION",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H2",
+  "assignment_id": "OM26-H2-WP02",
+  "dispatch_id": "OM26-H2-WP02-IA-001",
+  "agent_ref": "INDEPENDENT-AGENT-008",
+  "state": "ADJUDICATED",
+  "disposition": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+  "accepted_claims": [],
+  "claim_effect": "NONE",
+  "certification_effect": false,
+  "competition_effect": false,
+  "successor": {
+    "assignment_id": "OM26-H2-WP03",
+    "dispatch_id": "OM26-H2-WP03-IA-001",
+    "agent_ref": "INDEPENDENT-AGENT-009",
+    "issue_number": 537
+  },
+  "claim_boundary": "The WP02 exact-search validation claim is NOT admitted. Protected WP03 successor explicitly reconciles two independently replayed witnesses while identifying circular scorer use, an incorrect W8021 tape-span assertion (121 versus 122), and absence of the asserted unpruned comparator. Preserve witness evidence without promoting exact-search completeness, mathematical certification, or competition results.",
+  "reconciliation_evidence": {
+    "intake_pr": 536,
+    "intake_merge_sha": "4734e203e1b2bfd40717ed9729deaa12fc957e83",
+    "source_issue": 526,
+    "protected_successor_issue": 537,
+    "accepted_witnesses": [
+      {
+        "name": "W89911",
+        "steps": 89911,
+        "ones": 185,
+        "tape_span": 541
+      },
+      {
+        "name": "W8021",
+        "steps": 8021,
+        "ones": 41,
+        "tape_span": 122
+      }
+    ],
+    "rejected_claim": "EXACT_SEARCH_DESIGN_VALIDATED",
+    "remaining_claim_effect": "NONE"
+  }
+}
