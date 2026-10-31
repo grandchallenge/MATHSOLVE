@@ -117,6 +117,7 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str], dispat
                 and "\nGCL-QUEUE-RESPONSE-ORIGIN/1\n" in body):
             matches = re.findall(r"(?m)^source_comment_id: ([1-9][0-9]*)$", body)
             if (len(matches) == 1
+                    and body.count("GCL-QUEUE-RESPONSE-ORIGIN/1") == 1
                     and body.endswith("GCL-QUEUE-RESPONSE-ORIGIN/1\n"
                                       f"source_comment_id: {matches[0]}\n")):
                 timestamp = row.get("created_at")
