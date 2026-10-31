@@ -39,7 +39,7 @@ def registry_ids() -> dict[int, str]:
     dispatch_ids: set[str] = set()
     for job in jobs:
         number, did = job.get("issue_number"), job.get("dispatch_id")
-        if (not isinstance(number, int) or number < 1 or number in by_number
+        if (type(number) is not int or number < 1 or number in by_number
                 or not isinstance(did, str) or not did or did in dispatch_ids
                 or job.get("self_claimable") is not True):
             raise CapacityError("protected Solve job identity drift")
@@ -66,7 +66,7 @@ def decode_gh_pages(stdout: str) -> list[dict]:
             if not isinstance(comment, dict):
                 raise CapacityError("malformed issue comment")
             ident = comment.get("id")
-            if not isinstance(ident, int) or ident in identifiers:
+            if type(ident) is not int or ident < 1 or ident in identifiers:
                 raise CapacityError("missing or duplicated comment identity")
             identifiers.add(ident)
             comments.append(comment)
@@ -178,7 +178,7 @@ def count_live(snapshot: dict, at: datetime) -> dict:
         # as the live paginated collector. Duplicate IDs make custody ambiguous.
         comment_ids = [c.get("id") for c in comments if isinstance(c, dict)]
         if (len(comment_ids) != len(comments)
-                or any(type(ident) is not int for ident in comment_ids)
+                or any(type(ident) is not int or ident < 1 for ident in comment_ids)
                 or len(set(comment_ids)) != len(comment_ids)):
             raise CapacityError(f"#{n}: incomplete or duplicate comment identities")
         if all_comment_ids.intersection(comment_ids):
