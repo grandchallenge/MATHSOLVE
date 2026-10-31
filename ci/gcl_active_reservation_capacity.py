@@ -36,12 +36,15 @@ def registry_ids() -> dict[int, str]:
     if not isinstance(jobs, list) or not jobs or len(jobs) > MAX_JOBS:
         raise CapacityError("protected Solve job roster incomplete or excessive")
     by_number: dict[int, str] = {}
+    dispatch_ids: set[str] = set()
     for job in jobs:
         number, did = job.get("issue_number"), job.get("dispatch_id")
         if (not isinstance(number, int) or number < 1 or number in by_number
-                or not isinstance(did, str) or not did or job.get("self_claimable") is not True):
+                or not isinstance(did, str) or not did or did in dispatch_ids
+                or job.get("self_claimable") is not True):
             raise CapacityError("protected Solve job identity drift")
         by_number[number] = did
+        dispatch_ids.add(did)
     return by_number
 
 
