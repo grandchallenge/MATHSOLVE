@@ -10,6 +10,8 @@ from unittest.mock import patch
 
 import gcl_active_reservation_capacity as cap
 
+REAL_REGISTRY_IDS = cap.registry_ids
+
 
 NOW = datetime(2026,10,11,0,30,tzinfo=timezone.utc)
 CLAIM = {"outcome":"RESERVED","dispatch_id":"D-2",
@@ -172,6 +174,27 @@ class CapacityTests(unittest.TestCase):
         self.assertEqual(result["snapshot_at"], start.isoformat())
         self.assertEqual(result["total_jobs"], 2)
         self.assertEqual(fetch.call_count, 2)
+
+    def test_registry_rejects_same_dispatch_on_two_issues(self):
+        rows = {"jobs": [
+            {"issue_number": 1001, "dispatch_id": "D-1", "self_claimable": True},
+            {"issue_number": 1002, "dispatch_id": "D-1", "self_claimable": True},
+        ]}
+        registry = Path(self.tmp.name) / "duplicate-jobs.json"
+        registry.write_text(json.dumps(rows))
+        with patch.object(cap, "REGISTRY", registry):
+            with self.assertRaisesRegex(cap.CapacityError, "identity drift"):
+                REAL_REGISTRY_IDS()
+
+    def test_registry_accepts_distinct_issue_and_dispatch_pairs(self):
+        rows = {"jobs": [
+            {"issue_number": 1001, "dispatch_id": "D-1", "self_claimable": True},
+            {"issue_number": 1002, "dispatch_id": "D-2", "self_claimable": True},
+        ]}
+        registry = Path(self.tmp.name) / "distinct-jobs.json"
+        registry.write_text(json.dumps(rows))
+        with patch.object(cap, "REGISTRY", registry):
+            self.assertEqual(REAL_REGISTRY_IDS(), {1001: "D-1", 1002: "D-2"})
 
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
