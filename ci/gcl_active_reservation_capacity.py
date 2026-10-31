@@ -102,7 +102,7 @@ def collect_snapshot() -> dict:
     }
 
 
-def unresolved_claims(comments: list[dict], at: datetime, bots: set[str]) -> list[int]:
+def unresolved_claims(comments: list[dict], at: datetime, bots: set[str], dispatch_id: str | None = None) -> list[int]:
     """Find recent authenticated /claim commands without a bound controller response."""
     from datetime import timedelta
     import re
@@ -121,6 +121,14 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str]) -> lis
                 if not isinstance(timestamp, str):
                     raise CapacityError("acknowledgment timestamp missing")
                 acknowledged_at = parse_time(timestamp)
+                # Accepted claims must carry the reserved-dispatch binding.
+                # A response for a different dispatch cannot discharge this claim.
+                if "CLAIM ACCEPTED" in body:
+                    bound = ("GCL-WORKER-RESERVATION/1\\n"
+                             f"dispatch_id: {dispatch_id}\\n"
+                             "state: RESERVED\\n")
+                    if dispatch_id is None or bound not in body:
+                        raise CapacityError("accepted claim acknowledgment dispatch mismatch")
                 acknowledgments.setdefault(int(matches[0]), []).append(acknowledged_at)
         if body.strip() != "/claim":
             continue
@@ -174,7 +182,7 @@ def count_live(snapshot: dict, at: datetime) -> dict:
         if all_comment_ids.intersection(comment_ids):
             raise CapacityError("comment identity reused across Solve issue histories")
         all_comment_ids.update(comment_ids)
-        if unresolved_claims(comments, at, bots):
+        if unresolved_claims(comments, at, bots, did):
             raise CapacityError(f"#{n}: unresolved claim comment; hold new admission")
         events = reservation_events(comments, did, bots)
         if events:
