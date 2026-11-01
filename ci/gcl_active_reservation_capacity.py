@@ -216,8 +216,10 @@ def decision(snapshot: dict, candidate: dict) -> dict:
     if any(type(x) is not int or x < 1 for x in limits.values()):
         raise CapacityError("invalid protected class active-capacity limit")
     dispatch = candidate.get("dispatch_id")
-    if not isinstance(dispatch, str) or dispatch not in registry_ids().values():
-        raise CapacityError("candidate dispatch is not in protected Mathematics roster")
+    issue = candidate.get("issue_number")
+    if (type(issue) is not int or issue < 1 or not isinstance(dispatch, str)
+            or registry_ids().get(issue) != dispatch):
+        raise CapacityError("candidate dispatch and issue do not match protected Mathematics roster")
     at = datetime.now(timezone.utc)
     stamp = snapshot.get("snapshot_at")
     if not isinstance(stamp, str):
