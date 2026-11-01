@@ -255,6 +255,16 @@ class CapacityTests(unittest.TestCase):
         with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
             cap.count_live(snapshot([claim, response]), NOW)
 
+    def test_unregistered_candidate_dispatch_fails_closed(self):
+        unknown = {**CLAIM, "dispatch_id": "D-FOREIGN"}
+        with self.assertRaisesRegex(cap.CapacityError, "candidate dispatch"):
+            cap.decision(snapshot(), unknown)
+
+    def test_missing_candidate_dispatch_fails_closed(self):
+        missing = {key: value for key, value in CLAIM.items() if key != "dispatch_id"}
+        with self.assertRaisesRegex(cap.CapacityError, "candidate dispatch"):
+            cap.decision(snapshot(), missing)
+
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
         self.assertEqual(result["outcome"],"REJECTED_MATHEMATICS_ACTIVE_CAPACITY")
