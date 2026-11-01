@@ -102,26 +102,36 @@ $$
 
 All conclusions below apply for $n\geq C_0$ under the input normal-form and boundedness hypotheses. When implementing, additionally take $n\geq2$ for unambiguous alignment with the stated intermediate estimates.
 
-## Quantitative entanglement inequality (Theorem 12.1, page 184)
+## Quantitative entanglement inequality (Theorem 12.1, source discrepancy)
 
-The displayed soundness inequality is **exactly**
+**Corrected source audit, 2026-11-01:** The **printed statement** of Theorem 12.1 on page 184 says
 
-$$
+$
+\mathcal E(\mathcal V_n^{\rm COMPR},1/2)
+\geq \max\left\{
+\frac12\mathcal E(\mathcal V_N,1/2),\,
+2^{N^\lambda-1}
+\right\},\qquad N=2^n.
+$
+
+But Table 2 (printed page 186) and the **final proof chain** on page 189 imply only
+
+$
 \mathcal E(\mathcal V_n^{\rm COMPR},1/2)
 \geq \frac12\max\left\{
 \mathcal E(\mathcal V_N,1/2),\,
 2^{N^\lambda-1}
-\right\},\qquad N=2^n.
-$$
+\right\}.
+$
 
-This is **one half times the maximum**, not the maximum of one half times the first term and an unhalved second term. In particular, without claiming any classical cost bound,
+The previous edition labelled this weaker proof-supported inequality an *exact theorem transcription*. That was incorrect. Conversely, the stronger second branch in the printed theorem is not justified by the displayed final chain without an additional argument. This is a source-semantic reconciliation obligation, not a conclusion that the paper's other results fail. The following **conservative**, proof-supported implication remains correct without assuming the stronger printed bound or any classical cost bound:
 
 $$
 \mathcal E(\mathcal V_n^{\rm COMPR},1/2)
 \geq 2^{2^{\lambda n}-2}.
 $$
 
-The bound on logarithmic Schmidt rank is $\log_2\mathcal E\geq2^{\lambda n}-2$. Its resource semantics are exclusively entangled-strategy size.
+For the conservative bound, the logarithmic Schmidt-rank consequence is $\log_2\mathcal E\geq2^{\lambda n}-2$. Its resource semantics are exclusively entangled-strategy size.
 
 **Derivation from Table 2 (conditional on cited theorems):**
 
