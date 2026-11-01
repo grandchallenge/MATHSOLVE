@@ -277,6 +277,18 @@ class CapacityTests(unittest.TestCase):
                 with self.assertRaisesRegex(cap.CapacityError, "candidate dispatch and issue"):
                     cap.decision(snapshot(), candidate)
 
+    def test_boolean_snapshot_job_count_rejected(self):
+        payload = snapshot()
+        payload["total_jobs"] = True
+        with self.assertRaisesRegex(cap.CapacityError, "identity/completeness"):
+            cap.count_live(payload, NOW)
+
+    def test_boolean_snapshot_issue_identity_rejected(self):
+        payload = snapshot()
+        payload["rows"][0]["issue_number"] = True
+        with self.assertRaisesRegex(cap.CapacityError, "duplicate or alien"):
+            cap.count_live(payload, NOW)
+
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
         self.assertEqual(result["outcome"],"REJECTED_MATHEMATICS_ACTIVE_CAPACITY")

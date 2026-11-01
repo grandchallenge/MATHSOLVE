@@ -155,6 +155,7 @@ def count_live(snapshot: dict, at: datetime) -> dict:
     expected = registry_ids()
     if (snapshot.get("record_type") != "GCL_ACTIVE_SOLVE_RESERVATIONS_SNAPSHOT/1"
             or snapshot.get("repository") != REPO or snapshot.get("complete") is not True
+            or type(snapshot.get("total_jobs")) is not int
             or snapshot.get("total_jobs") != len(expected)):
         raise CapacityError("active Mathematics snapshot identity/completeness missing")
     rows = snapshot.get("rows")
@@ -169,7 +170,7 @@ def count_live(snapshot: dict, at: datetime) -> dict:
     active_ids = []
     for row in rows:
         n, did = row.get("issue_number"), row.get("dispatch_id")
-        if n in seen or expected.get(n) != did:
+        if type(n) is not int or n < 1 or n in seen or expected.get(n) != did:
             raise CapacityError("duplicate or alien Solve dispatch in active snapshot")
         seen.add(n)
         comments = row.get("comments")
