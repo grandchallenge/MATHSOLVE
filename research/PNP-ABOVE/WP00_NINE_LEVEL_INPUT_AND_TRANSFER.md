@@ -24,7 +24,7 @@ The companion Python file (WP00_NINE_LEVEL_INPUT_EMULATOR.py) exhaustively check
 
 ## Resource-versus-decision corollary, derived from the published theorem
 
-Choose an encoded implementation V of the specified verifier and a sufficiently large fixed λ. For every n ≥ C₀, the source's Theorem 12.1 applies to V and N=2ⁿ. Since V_N has a value-1 PCC strategy, the compressed game G_n=(Compress(V,λ))_n has a value-1 PCC strategy. The soundness inequality of Theorem 12.1 yields:
+Choose an encoded implementation V of the specified verifier and a sufficiently large fixed λ. For every n ≥ C₀, the source's Theorem 12.1 applies to V and N=2ⁿ. Since V_N has a value-1 PCC strategy, the compressed game G_n=(Compress(V,λ))_n has a value-1 PCC strategy. A **conservative inequality directly supported by the final proof chain** of Theorem 12.1 (page 189) yields the following. Note that the printed *statement* on page 184 places the factor 1/2 inside the maximum and thus has a stronger second branch; Table 2 and the displayed proof conclude only the weaker form recorded here. See WP01's source-discrepancy audit:
 
 $$
 \mathcal E(G_n,1/2)
