@@ -219,7 +219,7 @@ def decision(snapshot: dict, candidate: dict) -> dict:
     issue = candidate.get("issue_number")
     if (type(issue) is not int or issue < 1 or not isinstance(dispatch, str)
             or registry_ids().get(issue) != dispatch):
-        raise CapacityError("candidate issue and dispatch do not match protected Mathematics roster")
+        raise CapacityError("candidate dispatch and issue do not match protected Mathematics roster")
     at = datetime.now(timezone.utc)
     stamp = snapshot.get("snapshot_at")
     if not isinstance(stamp, str):
