@@ -124,11 +124,13 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str], dispat
                 if not isinstance(timestamp, str):
                     raise CapacityError("acknowledgment timestamp missing")
                 acknowledged_at = parse_time(timestamp)
-                if not ("CLAIM ACCEPTED" in body or "CLAIM REJECTED" in body):
-                    raise CapacityError("controller claim acknowledgment outcome missing")
+                accepted = "CLAIM ACCEPTED" in body
+                rejected = "CLAIM REJECTED" in body
+                if accepted == rejected:
+                    raise CapacityError("controller claim acknowledgment outcome missing or contradictory")
                 # Accepted claims must carry the reserved-dispatch binding.
                 # A response for a different dispatch cannot discharge this claim.
-                if "CLAIM ACCEPTED" in body:
+                if accepted:
                     bound = ("GCL-WORKER-RESERVATION/1\n"
                              f"dispatch_id: {dispatch_id}\n"
                              "state: RESERVED\n")
