@@ -267,14 +267,14 @@ class CapacityTests(unittest.TestCase):
 
     def test_candidate_issue_dispatch_mismatch_rejected(self):
         mismatch = {**CLAIM, "issue_number": 1001}
-        with self.assertRaisesRegex(cap.CapacityError, "candidate issue and dispatch"):
+        with self.assertRaisesRegex(cap.CapacityError, "candidate dispatch and issue"):
             cap.decision(snapshot(), mismatch)
 
     def test_candidate_missing_or_boolean_issue_rejected(self):
         for issue in (None, True, 0):
             candidate = {**CLAIM, "issue_number": issue}
             with self.subTest(issue=issue):
-                with self.assertRaisesRegex(cap.CapacityError, "candidate issue and dispatch"):
+                with self.assertRaisesRegex(cap.CapacityError, "candidate dispatch and issue"):
                     cap.decision(snapshot(), candidate)
 
     def test_math_at_limit_rejected_without_mutating_editorial(self):
