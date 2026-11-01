@@ -39,7 +39,7 @@ def require(test: bool, message: str) -> None:
 
 
 def git_bytes(root: Path, revision: str, path: str) -> bytes:
-    require(revision == "HEAD" or bool(HEX40.fullmatch(revision)), "revision must be an exact commit SHA or HEAD")
+    require(bool(HEX40.fullmatch(revision)), "revision must be an exact commit SHA")
     require(path.startswith("contributions/") and ".." not in Path(path).parts, "unsafe contribution path")
     result = subprocess.run(
         ["git", "-C", str(root), "show", f"{revision}:{path}"],
