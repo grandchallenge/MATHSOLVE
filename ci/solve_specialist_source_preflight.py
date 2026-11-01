@@ -108,6 +108,32 @@ def preflight(root: Path, revision: str, binding: dict, *, source_revision: str 
     require(isinstance(replay.get("reproducibility_artifact"), str)
             and bool(replay["reproducibility_artifact"]), "missing reproducibility artifact")
 
+    proof_path = replay["reproducibility_artifact"]
+    proof_sha = replay.get("reproducibility_blob_sha")
+    require(isinstance(proof_sha, str) and HEX40.fullmatch(proof_sha) is not None,
+            "reproducibility Git blob lock missing")
+    require(f"/{dispatch}/" in proof_path, "reproducibility path is not dispatch-scoped")
+    proof = git_bytes(root, revision, proof_path)
+    require(blob_sha(proof) == proof_sha, "reproducibility blob mismatch")
+    proof_record = parse(proof, "reproducibility")
+    execution = proof_record.get("execution")
+    require(isinstance(execution, dict), "replay execution missing")
+    require(execution.get("dispatch_id") == dispatch and execution.get("raw_sha256") == digest,
+            "reproducibility dispatch or digest mismatch")
+    require(execution.get("replay_pass") is True, "reproducibility replay not passed")
+    require(execution.get("specialist_positive_receipt") is False
+            and execution.get("mathematical_certification") is False,
+            "reproducibility must not claim authority")
+    adjud_path = adjud.get("protected_adjudication_source")
+    if adjud_path is not None:
+        require(isinstance(adjud_path, str) and adjud_path.startswith("contributions/")
+                and ".." not in Path(adjud_path).parts, "bad adjudication source path")
+        source = parse(git_bytes(root, revision, adjud_path), "source adjudication")
+        require(source.get("dispatch_id") == dispatch
+                and source.get("adjudication_id") == adjud.get("adjudication_id"),
+                "protected adjudication source identity mismatch")
+        require(source.get("lifecycle_effect", {}).get("certification") == "NONE",
+                "source adjudication grants certification")
     raw_path = capture.get("captured_result_path")
     require(isinstance(raw_path, str) and f"/{dispatch}/" in raw_path, "captured source path missing")
     original = git_bytes(root, revision, raw_path)
