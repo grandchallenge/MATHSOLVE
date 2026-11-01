@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_DOMAIN_REVIEWABLE_ASSESSMENT_V1",
+  "authority_domain": "SOLUTION_INTEGRITY",
+  "subject_repository": "grandchallenge/MATH-PROGRAMME",
+  "subject_sha": "d290127116a04c27ad149e0890077891619e4070",
+  "material_fingerprint": "c1e26a5300d06540b389e88db45dbd3df7b8749a326242a24930169739dc2cb2",
+  "review_scope": "SOLVE_EXECUTION_INTEGRITY_ONLY",
+  "disposition": "ROLE_SCOPED_REVIEW_ACCEPTED",
+  "review_independence": "ROLE_SCOPED_NON_AUTHOR_SPECIALIST",
+  "solve_execution": {
+    "schema_version": "1.0.0",
+    "dispatch_id": "OM26-H2-WP02-IA-001",
+    "result_ref": "https://github.com/grandchallenge/MATHSOLVE/issues/526#issuecomment-5889734796",
+    "result_sha256": "6f52a9badf4c53900e623a63cfba6c3e36afabcf139a278abe842e334ddcd146",
+    "capture": {
+      "path": "contributions/OPENMATH-2026/OM26-H2-WP02-IA-001/capture.json",
+      "blob_sha": "3e3851040785ffb2bf0bfcd3de69538c847b04ae"
+    },
+    "replay": {
+      "path": "contributions/OPENMATH-2026/OM26-H2-WP02-IA-001/replay.json",
+      "blob_sha": "0e286ceb4cf59be02b49283ab15c0322b7091d27"
+    },
+    "adjudication": {
+      "path": "contributions/OPENMATH-2026/OM26-H2-WP02-IA-001/adjudication.json",
+      "blob_sha": "c9b7378cf7a262ed5727248f44011e59c5811b0f"
+    },
+    "claim_effects": {
+      "mathematical_claim_effect": false,
+      "certification_effect": false,
+      "publication_effect": false,
+      "source_semantic_effect": false,
+      "security_authority_effect": false
+    }
+  },
+  "assessment_basis": {
+    "source_protected_main": "f99d4b092f086e4ff4babe1cbfe943a4f0e180f8",
+    "real_replay_executor_commit": "3ded08b094da297e713f48ccd5d52bfa0092aed0",
+    "source_preflight_state": "SOURCE_LINK_PREFLIGHT_PASS_ONLY",
+    "limited_witnesses": [
+      {
+        "id": "W89911",
+        "steps": 89911,
+        "ones": 185,
+        "tape_span": 541
+      },
+      {
+        "id": "W8021",
+        "steps": 8021,
+        "ones": 41,
+        "tape_span": 122
+      }
+    ],
+    "exact_search_completeness_admitted": false,
+    "independent_execution_attested": false
+  },
+  "review_boundary": "REVIEWABLE_CANDIDATE_ONLY__NO_GITHUB_APPROVAL_OR_POSITIVE_RECEIPT_YET"
+}
