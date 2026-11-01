@@ -37,9 +37,17 @@ class SourcePreflightTests(unittest.TestCase):
                             result_ref="issue:42#comment:1", result_sha256=digest,
                             claim_effects=self.effects)
         self.add_record("capture", capture)
+        evidence = dict(record_type="GCL_SOLVE_ACTUAL_REPLAY_OUTPUT",
+                        execution=dict(dispatch_id=self.dispatch, raw_sha256=digest,
+                                       replay_pass=True, specialist_positive_receipt=False,
+                                       mathematical_certification=False))
+        evidence_path = f"contributions/DEMO/{self.dispatch}/reproducibility.json"
+        proof_data = (json.dumps(evidence, sort_keys=True) + "\n").encode()
+        self.write(evidence_path, proof_data)
+        proof_sha = m.blob_sha(proof_data)
         replay = dict(record_type=m.KINDS[1], dispatch_id=self.dispatch, result_ref="issue:42#comment:1",
                       input_result_sha256=digest, capture_blob_sha=self.binding["capture"]["blob_sha"],
-                      replay_pass=True, reproducibility_artifact="synthetic-fixture/not-an-admission")
+                      replay_pass=True, reproducibility_artifact=evidence_path, reproducibility_blob_sha=proof_sha)
         self.add_record("replay", replay)
         adjud = dict(record_type=m.KINDS[2], dispatch_id=self.dispatch, result_ref="issue:42#comment:1",
                      replay_blob_sha=self.binding["replay"]["blob_sha"], adjudication_id="DEMO-ADJ-001",
@@ -96,6 +104,13 @@ class SourcePreflightTests(unittest.TestCase):
     def test_malformed_protected_pointer(self):
         bad = copy.deepcopy(self.binding)
         bad["capture"]["path"] = "../outside.json"
+        with self.assertRaises(m.EvidenceError):
+            self.check(bad)
+
+
+    def test_missing_reproducibility_lock(self):
+        bad = copy.deepcopy(self.binding)
+        bad["replay"]["blob_sha"] = "f" * 40
         with self.assertRaises(m.EvidenceError):
             self.check(bad)
 
