@@ -128,6 +128,8 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str], dispat
                 rejected = "CLAIM REJECTED" in body
                 if accepted == rejected:
                     raise CapacityError("controller claim acknowledgment outcome missing or contradictory")
+                if rejected and not body.startswith("CLAIM REJECTED"):
+                    raise CapacityError("controller claim rejection outcome is not canonical")
                 # Accepted claims must carry the reserved-dispatch binding.
                 # A response for a different dispatch cannot discharge this claim.
                 if accepted:
