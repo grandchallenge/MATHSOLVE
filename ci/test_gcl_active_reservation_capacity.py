@@ -311,6 +311,18 @@ class CapacityTests(unittest.TestCase):
         with self.assertRaisesRegex(cap.CapacityError, "contradictory"):
             cap.count_live(snapshot([claim, response]), NOW)
 
+    def test_embedded_rejection_outcome_cannot_discharge_claim(self):
+        claim = {"id": 5101, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                 "user": {"login": "worker-a"}}
+        body = chr(10).join(["UNRELATED CONTROLLER NOTICE",
+                             "Quoted previous text: CLAIM REJECTED", "",
+                             "GCL-QUEUE-RESPONSE-ORIGIN/1",
+                             "source_comment_id: 5101", ""])
+        response = {"id": 5102, "created_at": "2026-10-11T00:11:00Z",
+                    "body": body, "user": {"login": "github-actions[bot]", "type": "Bot"}}
+        with self.assertRaisesRegex(cap.CapacityError, "not canonical"):
+            cap.count_live(snapshot([claim, response]), NOW)
+
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
         self.assertEqual(result["outcome"],"REJECTED_MATHEMATICS_ACTIVE_CAPACITY")
