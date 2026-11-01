@@ -289,6 +289,17 @@ class CapacityTests(unittest.TestCase):
         with self.assertRaisesRegex(cap.CapacityError, "duplicate or alien"):
             cap.count_live(payload, NOW)
 
+    def test_claim_custody_without_claim_outcome_cannot_release_capacity(self):
+        claim = {"id": 5101, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                 "user": {"login": "worker-a"}}
+        body = chr(10).join(["UNRELATED CONTROLLER MESSAGE", "",
+                             "GCL-QUEUE-RESPONSE-ORIGIN/1",
+                             "source_comment_id: 5101", ""])
+        receipt = {"id": 5102, "created_at": "2026-10-11T00:11:00Z",
+                   "body": body, "user": {"login": "github-actions[bot]", "type": "Bot"}}
+        with self.assertRaisesRegex(cap.CapacityError, "outcome missing"):
+            cap.count_live(snapshot([claim, receipt]), NOW)
+
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
         self.assertEqual(result["outcome"],"REJECTED_MATHEMATICS_ACTIVE_CAPACITY")
