@@ -14,7 +14,7 @@ REAL_REGISTRY_IDS = cap.registry_ids
 
 
 NOW = datetime(2026,10,11,0,30,tzinfo=timezone.utc)
-CLAIM = {"outcome":"RESERVED","dispatch_id":"D-2",
+CLAIM = {"outcome":"RESERVED","dispatch_id":"D-2","issue_number":1002,
          "labels_add":["reserved"],"labels_remove":["available"],
          "response":"CLAIM ACCEPTED"}
 
@@ -264,6 +264,18 @@ class CapacityTests(unittest.TestCase):
         missing = {key: value for key, value in CLAIM.items() if key != "dispatch_id"}
         with self.assertRaisesRegex(cap.CapacityError, "candidate dispatch"):
             cap.decision(snapshot(), missing)
+
+    def test_candidate_issue_dispatch_mismatch_rejected(self):
+        mismatch = {**CLAIM, "issue_number": 1001}
+        with self.assertRaisesRegex(cap.CapacityError, "candidate issue and dispatch"):
+            cap.decision(snapshot(), mismatch)
+
+    def test_candidate_missing_or_boolean_issue_rejected(self):
+        for issue in (None, True, 0):
+            candidate = {**CLAIM, "issue_number": issue}
+            with self.subTest(issue=issue):
+                with self.assertRaisesRegex(cap.CapacityError, "candidate issue and dispatch"):
+                    cap.decision(snapshot(), candidate)
 
     def test_math_at_limit_rejected_without_mutating_editorial(self):
         result=cap.decision(snapshot([reservation()]),CLAIM)
