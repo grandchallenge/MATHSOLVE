@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_QUEUE_CLASS_LIVE_WORKER_EVIDENCE_V1",
+  "issue": "https://github.com/grandchallenge/MATHSOLVE/issues/1049",
+  "captured_date_utc": "2026-11-02",
+  "queue_project": "https://github.com/orgs/grandchallenge/projects/2",
+  "class_counts_prior_audit": {
+    "total": 1375,
+    "Mathematics": 1283,
+    "Editorial": 92,
+    "classification_discrepancies": 0
+  },
+  "mathematics": {
+    "semantic_class": "Mathematics",
+    "pickup_mode": "direct_editorial",
+    "repository": "grandchallenge/MATH-PROGRAMME",
+    "issue": 2310,
+    "assignment_id": "ERDOS-CATALOGUE-1039-S01",
+    "authenticated_actor": "fyremael",
+    "return_comment_id": 6573336878,
+    "return_disposition": "PARTIAL",
+    "result": "Real source audit of problem #1039, updated KLR25 bound and proposed finite-degree n=2 exact inradius work package",
+    "result_url": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/2310#issuecomment-6573336878",
+    "claimed_solve_reservation": false,
+    "projector_readback": {
+      "issue_state": "OPEN",
+      "gcl_state_label": "ABSENT_AT_READBACK",
+      "return_custody": "RESULT_COMMENT_PRESENT"
+    }
+  },
+  "editorial": {
+    "semantic_class": "Editorial",
+    "pickup_mode": "direct_editorial",
+    "repository": "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS",
+    "issue": 444,
+    "assignment_id": "ATLAS-405-P02-GEOM-CRITIC",
+    "authenticated_actor": "fyremael",
+    "source_head": "380eb17dd53962b96b6f0638c8139f965c085221",
+    "run_id": "c790cf193629a23258878a0a0765710d",
+    "start_request_comment_id": 6573245658,
+    "start_grant_comment_id": 6573257036,
+    "start_action_run_id": 41418091663,
+    "return_comment_id": 6573355173,
+    "return_disposition": "REVISE",
+    "end_request_comment_id": 6573359394,
+    "end_grant_comment_id": 6573365104,
+    "end_action_run_id": 41418876331,
+    "return_url": "https://github.com/grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS/issues/444#issuecomment-6573355173",
+    "projector_readback": {
+      "issue_state": "OPEN",
+      "gcl_state_label": "gcl-state:available",
+      "return_custody": "RESULT_COMMENT_PRESENT",
+      "capacity_slot": "RELEASED"
+    }
+  },
+  "scope": {
+    "genuine_authenticated_worker_results": true,
+    "controller_granted_editorial_start": true,
+    "controller_acknowledged_editorial_end": true,
+    "math_solve_reservation_canary_completed": false,
+    "returned_project_state_both_classes_confirmed": false,
+    "universal_editorial_intake_grant_enforcement_proven": false,
+    "protected_capacity_activation_confirmed": false,
+    "mathematical_certification": false,
+    "public_release": false
+  },
+  "remaining_acceptance": [
+    "Live MATHSOLVE reservation-controlled Math /claim to RESULT/1 using truly claimable dispatch (currently observed AVAILABLE OAI26 cohort explicitly STAGED ONLY, NOT CLAIMABLE)",
+    "Reconcile source issue/project returned-state projection for Mathematics #2310 and Editorial #444; preserve issue evidence and avoid manual synthetic custody",
+    "Confirm ATLAS #405 exact chapter discovery and full class capacity activation from current protected controller state",
+    "Complete full positive/hostile canary and protected activation receipt before closing #1049"
+  ]
+}
