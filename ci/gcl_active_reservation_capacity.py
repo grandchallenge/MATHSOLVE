@@ -164,7 +164,7 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str], dispat
                   if not any(created <= when <= at for when in acknowledgments.get(ident, [])))
 
 
-def count_live(snapshot: dict, at: datetime) -> dict:
+def count_live(snapshot: dict, at: datetime, pending: tuple[int, int, str] | None = None) -> dict:
     expected = registry_ids()
     if (snapshot.get("record_type") != "GCL_ACTIVE_SOLVE_RESERVATIONS_SNAPSHOT/1"
             or snapshot.get("repository") != REPO or snapshot.get("complete") is not True
@@ -199,7 +199,15 @@ def count_live(snapshot: dict, at: datetime) -> dict:
         if all_comment_ids.intersection(comment_ids):
             raise CapacityError("comment identity reused across Solve issue histories")
         all_comment_ids.update(comment_ids)
-        if unresolved_claims(comments, at, bots, did):
+        unresolved = unresolved_claims(comments, at, bots, did)
+        if pending is not None and n == pending[0]:
+            request_id, worker = pending[1], pending[2]
+            matches = [c for c in comments if c.get("id") == request_id]
+            if (len(matches) != 1 or matches[0].get("body", "").strip() != "/claim"
+                    or (matches[0].get("user") or {}).get("login") != worker):
+                raise CapacityError("candidate claim identity or actor mismatch")
+            unresolved = [ident for ident in unresolved if ident != request_id]
+        if unresolved:
             raise CapacityError(f"#{n}: unresolved claim comment; hold new admission")
         events = reservation_events(comments, did, bots)
         if events:
@@ -245,7 +253,10 @@ def decision(snapshot: dict, candidate: dict) -> dict:
     age_seconds = (at - captured).total_seconds()
     if age_seconds < 0 or age_seconds > 300:
         raise CapacityError("capacity snapshot outside five-minute freshness window")
-    status = count_live(snapshot, at)
+    pending_id = candidate.get('source_comment_id')
+    if type(pending_id) is not int or pending_id < 1:
+        raise CapacityError('candidate source comment identity missing')
+    status = count_live(snapshot, at, (issue, pending_id, candidate.get('actor')))
     if status["active_count"] < limits["Mathematics"]:
         return {**candidate,
                 "capacity_evidence": {"Mathematics": status,
@@ -266,6 +277,7 @@ def main() -> int:
     p.add_argument("--snapshot", type=Path)
     p.add_argument("--candidate", type=Path)
     p.add_argument("--output", type=Path)
+    p.add_argument("--source-comment-id", type=int)
     args = p.parse_args()
     if args.snapshot_out:
         if args.snapshot or args.candidate or args.output:
@@ -278,6 +290,8 @@ def main() -> int:
     if not args.candidate or not args.output:
         p.error("--candidate and --output required in decision mode")
     candidate = json.loads(args.candidate.read_text(encoding="utf-8"))
+    if candidate.get('outcome') == 'RESERVED':
+        candidate['source_comment_id'] = args.source_comment_id
     if candidate.get("outcome") == "RESERVED":
         if not args.snapshot or not args.snapshot.exists():
             raise CapacityError("Mathematics claim missing complete active reservation snapshot")
