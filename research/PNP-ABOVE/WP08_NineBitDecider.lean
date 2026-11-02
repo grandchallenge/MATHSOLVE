@@ -46,9 +46,28 @@ def identityDeciderProg : Prog :=
                 no)
               no)))))
 
+/-- The parser is well scoped whenever its input variable is bound. -/
+theorem checkBits_wellScoped (k : Nat) :
+    ∀ (idx n : Nat), idx < n → (checkBits idx k).WellScoped n := by
+  induction k with
+  | zero =>
+      intro idx n h
+      simp [checkBits, Prog.WellScoped, yes, no, h]
+  | succ k ih =>
+      intro idx n h
+      simp only [checkBits, Prog.WellScoped]
+      refine ⟨h, ?_, ?_⟩
+      · simp [no, Prog.WellScoped]
+      · refine ⟨by omega, ih 1 (n+2) (by omega), ?_⟩
+        refine ⟨by omega, ?_, ?_⟩
+        · refine ⟨by omega, ih 3 (n+4) (by omega), ?_⟩
+          simp [no, Prog.WellScoped]
+        · simp [no, Prog.WellScoped]
+
 /-- Actual upstream decider structure, not a copied data type. -/
 def identityDecider : MIPRE.Decider :=
-  ⟨identityDeciderProg, by decide⟩
+  ⟨identityDeciderProg, by
+    simp [identityDeciderProg, Prog.WellScoped, no, yes, checkBits_wellScoped]⟩
 
 /-- Independently fuel-bounded test evaluator for imported Prog.
 Fuel is the recursion budget; its Nat result counts source Eval costs. -/
