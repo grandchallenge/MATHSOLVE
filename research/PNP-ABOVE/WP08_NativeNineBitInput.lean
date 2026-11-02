@@ -109,8 +109,8 @@ theorem diagonal_pair_eval (z : MIPRE.Cost.BitStr) :
       (2 * (esize z + 1) + 1) := by
   change Eval [encode z] (.cons (.var 0) (.var 0))
     (.cons (encode z) (encode z)) _
-  simpa [Env.get, esize, Nat.mul_add] using
-    (Eval.cons (Eval.var [encode z] 0) (Eval.var [encode z] 0))
+  convert (Eval.cons (Eval.var [encode z] 0) (Eval.var [encode z] 0)) using 1 <;>
+    simp [Env.get, esize] <;> omega
 
 #eval ((List.range 512).map nineBits).length
 #eval (check 2 (nineBits 511) (nineBits 511) [] []).map Prod.fst
