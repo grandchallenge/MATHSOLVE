@@ -66,6 +66,7 @@ jobs:
           python ci/gcl_active_reservation_capacity.py \
             --candidate "$RUNNER_TEMP/queue-candidate.json" \
             --snapshot "$RUNNER_TEMP/active-mathematics.json" \
+            --source-comment-id "${{ github.event.comment.id }}" \
             --output "$RUNNER_TEMP/queue-result.json"
 
       - name: Apply operational labels and post controller response
