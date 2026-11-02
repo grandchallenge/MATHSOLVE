@@ -65,6 +65,7 @@ jobs:
             --output "$RUNNER_TEMP/queue-candidate.json"
           python ci/gcl_active_reservation_capacity.py \
             --candidate "$RUNNER_TEMP/queue-candidate.json" \
+            --candidate-comment-id "${{ github.event.comment.id }}" \
             --snapshot "$RUNNER_TEMP/active-mathematics.json" \
             --output "$RUNNER_TEMP/queue-result.json"
 
