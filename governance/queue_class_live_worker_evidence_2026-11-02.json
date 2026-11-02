@@ -69,5 +69,45 @@
     "Reconcile source issue/project returned-state projection for Mathematics #2310 and Editorial #444; preserve issue evidence and avoid manual synthetic custody",
     "Confirm ATLAS #405 exact chapter discovery and full class capacity activation from current protected controller state",
     "Complete full positive/hostile canary and protected activation receipt before closing #1049"
-  ]
+  ],
+  "closure_reconciliation": {
+    "record_type": "GCL_QUEUE_CLASS_CUTOVER_CLOSURE_READBACK/1",
+    "parent_issue": 1049,
+    "parent_state": "CLOSED",
+    "math": {
+      "issue": 1098,
+      "dispatch": "OAI26-WP00-IA-001",
+      "claim_comment": 6576838437,
+      "reservation_comment": 6576854136,
+      "result_comment": 6576899329,
+      "capture_comment": 6576906377,
+      "protected_intake_pr": 1172,
+      "protected_intake_merged": true,
+      "receipt_blob": "beb9d350b42052b1667fbb3d5cc19c96a6443cb3",
+      "state_label": "gcl-state:returned",
+      "disposition": "SOURCE_INTERFACE_FOUND",
+      "certification": false
+    },
+    "editorial_positive": [
+      {
+        "issue": 409,
+        "repository": "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS",
+        "state": "CLOSED",
+        "label": "gcl-state:returned"
+      },
+      {
+        "issue": 411,
+        "repository": "grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS",
+        "state": "CLOSED",
+        "label": "gcl-state:returned"
+      }
+    ],
+    "editorial_444": {
+      "state": "OPEN",
+      "label": "gcl-state:available",
+      "review_disposition": "REVISE",
+      "scope": "Unfinished manuscript correction, not unfinished class cutover"
+    },
+    "note": "This current exact-source closure entry supersedes prior historical pending-counters for #1049 only. Outstanding mathematical source reconciliation and ATLAS editorial corrections remain separate work."
+  }
 }
