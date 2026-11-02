@@ -45,7 +45,8 @@ and must have exact Git blob SHAs resolvable from protected MATHSOLVE.
 Their inclusion is *not* sufficient to assert mathematical correctness.
 
 The binding named `solve_execution` is duplicated **exactly** in both the
-domain-owned review artifact and final domain receipt. Its keys are
+reviewed source assessment and final domain receipt (and in a legacy
+review artifact if that route is used). Its keys are
 `schema_version: 1.0.0`, `dispatch_id`, `result_ref`,
 `result_sha256` (lowercase 64-digit hex SHA-256), and three objects
 `capture`, `replay`, `adjudication` each containing precisely `path`
@@ -71,10 +72,8 @@ required for this non-certifying internal judgment. Reviewers must still
 inspect the actual protected evidence and make a distinct recorded Verifier
 pass, not merely declare that a review took place.
 
-The delegated pathway uses a protected
-`GCL_DOMAIN_LOGICAL_ROLE_SCOPED_CRITICAL_REVIEW_V1` **only if that record
-type is explicitly supported by a consumer**. The active WP02 implementation
-uses `GCL_LOGICAL_ROLE_SCOPED_CRITICAL_REVIEW_V1`, whose Verifier role,
+The delegated pathway uses the protected
+`GCL_LOGICAL_ROLE_SCOPED_CRITICAL_REVIEW_V1`, whose Verifier role,
 `DELEGATED_NON_RESERVED_LOGICAL_ROLE` mode, accepted execution-integrity
 disposition, and exact Programme subject/head/fingerprint are verified by
 the Programme consumer. Its immutable `reviewed_artifact` path and Git
