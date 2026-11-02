@@ -135,7 +135,7 @@ class CapacityTests(unittest.TestCase):
                 cap.count_live(snapshot([cmd, err]), NOW)
         malformed = {"id": 5102, "created_at": "2026-10-11T00:11:00Z",
                      "body": body + "extra", "user": {"login": "github-actions[bot]", "type": "Bot"}}
-        with self.assertRaisesRegex(cap.CapacityError, "claim acknowledgment outcome"):
+        with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
             cap.count_live(snapshot([cmd, malformed]), NOW)
 
     def test_unacknowledged_recent_claim_holds_capacity(self):
