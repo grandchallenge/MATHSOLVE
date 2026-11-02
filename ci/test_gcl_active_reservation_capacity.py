@@ -79,6 +79,24 @@ class CapacityTests(unittest.TestCase):
                     "user": {"login": "github-actions[bot]", "type": "Bot"}}
         self.assertEqual(cap.count_live(snapshot([claim, response]), NOW)["active_count"], 0)
 
+    def test_trusted_terminal_controller_error_disposes_failed_claim_without_lease(self):
+        claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                 "user": {"login": "worker-a"}}
+        response = {"id": 5002, "created_at": "2026-10-11T00:11:00Z",
+                    "body": ("QUEUE CONTROLLER ERROR — evaluation failed before a result artifact was produced.\\n\\n"
+                             "GCL-QUEUE-RESPONSE-ORIGIN/1\\nsource_comment_id: 5001\\n").replace("\\n", "\n"),
+                    "user": {"login": "github-actions[bot]", "type": "Bot"}}
+        self.assertEqual(cap.count_live(snapshot([claim, response]), NOW)["active_count"], 0)
+
+    def test_untrusted_terminal_error_cannot_dispose_claim(self):
+        claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                 "user": {"login": "worker-a"}}
+        response = {"id": 5002, "created_at": "2026-10-11T00:11:00Z",
+                    "body": "QUEUE CONTROLLER ERROR — evaluation failed before a result artifact was produced.\\n\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\nsource_comment_id: 5001\\n".replace("\\n", "\n"),
+                    "user": {"login": "untrusted", "type": "User"}}
+        with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
+            cap.count_live(snapshot([claim, response]), NOW)
+
     def test_named_account_without_bot_identity_does_not_resolve_claim(self):
         claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
                  "user": {"login": "worker-a"}}
