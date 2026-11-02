@@ -254,9 +254,11 @@ def decision(snapshot: dict, candidate: dict) -> dict:
     if age_seconds < 0 or age_seconds > 300:
         raise CapacityError("capacity snapshot outside five-minute freshness window")
     pending_id = candidate.get('source_comment_id')
-    if type(pending_id) is not int or pending_id < 1:
-        raise CapacityError('candidate source comment identity missing')
-    status = count_live(snapshot, at, (issue, pending_id, candidate.get('actor')))
+    if pending_id is not None and (type(pending_id) is not int or pending_id < 1
+                                   or not isinstance(candidate.get('actor'), str)):
+        raise CapacityError('candidate source comment identity invalid')
+    status = count_live(snapshot, at, (issue, pending_id, candidate['actor'])
+                        if pending_id is not None else None)
     if status["active_count"] < limits["Mathematics"]:
         return {**candidate,
                 "capacity_evidence": {"Mathematics": status,
