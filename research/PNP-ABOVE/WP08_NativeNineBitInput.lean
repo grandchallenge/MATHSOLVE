@@ -112,6 +112,12 @@ theorem diagonal_pair_eval (z : MIPRE.Cost.BitStr) :
   convert (Eval.cons (Eval.var [encode z] 0) (Eval.var [encode z] 0)) using 1 <;>
     simp [Env.get, esize] <;> omega
 
+/-- Concrete budget sufficient for the *source-description clamp* only. -/
+def concreteLam : Nat := max (esize diagonalPair) (esize identityAnswerCheck) + 1
+#guard 0 < concreteLam && esize diagonalPair ≤ concreteLam &&
+  esize identityAnswerCheck ≤ concreteLam
+#eval (esize diagonalPair, esize identityAnswerCheck, concreteLam)
+
 #eval ((List.range 512).map nineBits).length
 #eval (check 2 (nineBits 511) (nineBits 511) [] []).map Prod.fst
 
