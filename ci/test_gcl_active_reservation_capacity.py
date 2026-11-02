@@ -66,6 +66,78 @@ class CapacityTests(unittest.TestCase):
             self.addCleanup(p.stop)
         cap.datetime.now.return_value=NOW
 
+    def test_exact_inflight_claim_is_excluded_from_its_own_capacity_scan(self):
+        cmd = {"id": 5201, "body": "/claim", "created_at": "2026-10-11T00:28:00Z",
+               "user": {"login": "worker-b"}}
+        data = snapshot()
+        data["rows"][1]["comments"] = [cmd]
+        result = cap.decision(data, {**CLAIM, "actor": "worker-b"},
+                              candidate_comment_id=5201)
+        self.assertEqual(result["outcome"], "RESERVED")
+        self.assertEqual(result["capacity_evidence"]["Mathematics"]["active_count"], 0)
+
+    def test_inflight_candidate_cannot_exclude_foreign_unresolved_claim(self):
+        claim = {"id": 5201, "body": "/claim", "created_at": "2026-10-11T00:28:00Z",
+                 "user": {"login": "worker-b"}}
+        foreign = {"id": 5202, "body": "/claim", "created_at": "2026-10-11T00:27:00Z",
+                   "user": {"login": "worker-c"}}
+        data = snapshot([foreign])
+        data["rows"][1]["comments"] = [claim]
+        with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
+            cap.decision(data, {**CLAIM, "actor": "worker-b"},
+                         candidate_comment_id=5201)
+
+    def test_inflight_candidate_wrong_actor_or_id_rejected(self):
+        cmd = {"id": 5201, "body": "/claim", "created_at": "2026-10-11T00:28:00Z",
+               "user": {"login": "worker-b"}}
+        data = snapshot()
+        data["rows"][1]["comments"] = [cmd]
+        for actor, source in (("worker-c", 5201), ("worker-b", 5202)):
+            with self.subTest(actor=actor, source=source):
+                with self.assertRaisesRegex(cap.CapacityError, "not a unique pending authenticated command"):
+                    cap.decision(data, {**CLAIM, "actor": actor},
+                                 candidate_comment_id=source)
+
+    def test_inflight_candidate_invalid_ids_fail_closed(self):
+        with self.assertRaisesRegex(cap.CapacityError, "comment ID or actor"):
+            cap.decision(snapshot(), {**CLAIM, "actor": "worker-b"},
+                         candidate_comment_id=True)
+        with self.assertRaisesRegex(cap.CapacityError, "comment ID or actor"):
+            cap.decision(snapshot(), {**CLAIM, "actor": "worker-b"},
+                         candidate_comment_id=0)
+
+    def test_authenticated_controller_failure_can_be_retried_without_forged_reservation(self):
+        cmd = {"id": 5101, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+               "user": {"login": "worker-a"}}
+        body = ("QUEUE CONTROLLER ERROR — evaluation failed before a result artifact was produced.\n\n"
+                "GCL-QUEUE-RESPONSE-ORIGIN/1\nsource_comment_id: 5101\n")
+        error = {"id": 5102, "created_at": "2026-10-11T00:11:00Z",
+                 "body": body, "user": {"login": "github-actions[bot]", "type": "Bot"}}
+        self.assertEqual(cap.count_live(snapshot([cmd, error]), NOW)["active_count"], 0)
+        next_cmd = {"id": 5201, "body": "/claim",
+                    "created_at": "2026-10-11T00:28:00Z",
+                    "user": {"login": "worker-b"}}
+        data = snapshot([cmd, error])
+        data["rows"][1]["comments"] = [next_cmd]
+        self.assertEqual(cap.decision(data, {**CLAIM, "actor": "worker-b"},
+                                      candidate_comment_id=5201)["outcome"], "RESERVED")
+
+    def test_spoofed_or_malformed_controller_failure_does_not_clear_hold(self):
+        cmd = {"id": 5101, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+               "user": {"login": "worker-a"}}
+        body = ("QUEUE CONTROLLER ERROR — evaluation failed before a result artifact was produced.\n\n"
+                "GCL-QUEUE-RESPONSE-ORIGIN/1\nsource_comment_id: 5101\n")
+        for user in ({"login": "untrusted", "type": "Bot"},
+                     {"login": "github-actions[bot]", "type": "User"}):
+            err = {"id": 5102, "created_at": "2026-10-11T00:11:00Z",
+                   "body": body, "user": user}
+            with self.subTest(user=user), self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
+                cap.count_live(snapshot([cmd, err]), NOW)
+        malformed = {"id": 5102, "created_at": "2026-10-11T00:11:00Z",
+                     "body": body + "extra", "user": {"login": "github-actions[bot]", "type": "Bot"}}
+        with self.assertRaisesRegex(cap.CapacityError, "claim acknowledgment outcome"):
+            cap.count_live(snapshot([cmd, malformed]), NOW)
+
     def test_unacknowledged_recent_claim_holds_capacity(self):
         claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
                  "user": {"login": "worker-a"}}
