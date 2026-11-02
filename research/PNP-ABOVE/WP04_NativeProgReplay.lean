@@ -113,9 +113,8 @@ example (x : Data) : Eval [x] (.var 0) x (x.size+1) := by
 example : Eval [d] (.loop stopBody) d 7 := by
   unfold stopBody
   apply Eval.loop_stop
-  apply Eval.cons
-  · exact Eval.nil _
-  · simpa [d, Data.size, Env.get] using (Eval.var [d] 0)
+  simpa [d, Data.size, Env.get] using
+    (Eval.cons (Eval.nil [d]) (Eval.var [d] 0))
 
 #eval runFuel 12 [d] (.loop stepBody)
 end PNPAbove.WP04
