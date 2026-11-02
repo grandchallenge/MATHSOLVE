@@ -50,4 +50,27 @@ theorem zero_parameter_rejects_nonempty_x
   have hx := (zero_parameter_exact_acceptance c U S D n [true] [] [] []).1 h
   cases hx.1
 
+
+/-- At a positive parameter, the actual source chooses the zero-wrapped,
+clamped, positive-parameter compiler. This proves interface selection;
+it does not execute the produced program on a concrete verifier. -/
+theorem positive_parameter_compiler_shape
+    (c : Nat) (U : ClockedUniversalMachine) (S D : Prog)
+    (lam : Nat) (hl : lam ≠ 0) :
+    compute c U ((S,D),lam) =
+      zeroWrap (positiveCompiler c U
+        (SourceDescriptionCompiler.clamp ((S,D),lam))) := by
+  rw [compute_apply]
+  simp [hl]
+
+/-- Imported source theorem: the positive-parameter generated decider has
+a terminating execution with output specified by the source kernel. -/
+theorem positive_parameter_run_specification
+    (c : Nat) (U : ClockedUniversalMachine) (S D : Prog)
+    {lam n : Nat} (hl : 1 ≤ lam) (hn : 1 ≤ n) (d : Data) :
+    ∃ t, (decider c U S D lam).prog.Runs (.cons (encode n) d)
+      (encode (untypedKernel U (DecisionPreparation.kernelInput c
+        (SourceDescriptionCompiler.clamp ((S,D),lam)) (.cons (encode n) d)))) t := by
+  exact positive_runs c U S D hl hn d
+
 end PNPAbove.WP06
