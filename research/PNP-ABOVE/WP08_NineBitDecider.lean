@@ -67,7 +67,7 @@ theorem checkBits_wellScoped (k : Nat) :
 /-- Actual upstream decider structure, not a copied data type. -/
 def identityDecider : MIPRE.Decider :=
   ⟨identityDeciderProg, by
-    simp [identityDeciderProg, Prog.WellScoped, no, yes, checkBits_wellScoped]⟩
+    simp [identityDeciderProg, Prog.WellScoped, no, checkBits_wellScoped]⟩
 
 /-- Independently fuel-bounded test evaluator for imported Prog.
 Fuel is the recursion budget; its Nat result counts source Eval costs. -/
@@ -133,6 +133,28 @@ def output (n : Nat) (x y a b : BitStr) : Option Data :=
 #guard decide ((runFuel 96 [.nil] identityDeciderProg).map Prod.fst =
   some (encode false))
 #guard decide (runFuel 1 [sample 2 zeroNine zeroNine [] []] identityDeciderProg = none)
+
+/-- Enumerate all nine-bit vectors; the sampler's diagonal support has 512 points. -/
+def vectorNine (k : Nat) : BitStr :=
+  (List.range 9).map (fun i => Nat.testBit k i)
+
+def allDiagonalChecks : Bool :=
+  (List.range 512).all fun k =>
+    decide (output 2 (vectorNine k) (vectorNine k) [] [] = some (encode true))
+
+-- A malformed head has the right list length, but is not a canonical Bool.
+def malformedHead : Data :=
+  .cons (.cons .nil (.cons .nil .nil)) (encode eightBits)
+
+def malformedQuestionData : Data :=
+  .cons (encode (2 : Nat))
+    (.cons malformedHead
+      (.cons (encode zeroNine)
+        (.cons (encode ([] : BitStr)) (encode ([] : BitStr)))))
+
+#guard allDiagonalChecks
+#guard decide ((runFuel 96 [malformedQuestionData] identityDeciderProg).map Prod.fst =
+  some (encode false))
 
 #eval esize identityDeciderProg
 #eval runFuel 96 [sample 2 zeroNine alternatingNine [] []] identityDeciderProg
