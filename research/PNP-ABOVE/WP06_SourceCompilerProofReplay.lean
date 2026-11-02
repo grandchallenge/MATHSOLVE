@@ -63,7 +63,7 @@ theorem positive_one_branch
     (c : Nat) (U : ClockedUniversalMachine) (S D : Prog) :
     compute c U ((S,D),1) =
       zeroWrap (positiveCompiler c U
-        (SourceDescriptionCompiler.clamp ((S,D),1))) := by
+        (MIPRE.Introspection.SourceDescriptionCompiler.clamp ((S,D),1))) := by
   simpa using (compute_apply c U S D 1)
 
 end PNPAbove.WP06
