@@ -126,7 +126,14 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str], dispat
                 acknowledged_at = parse_time(timestamp)
                 accepted = "CLAIM ACCEPTED" in body
                 rejected = "CLAIM REJECTED" in body
-                if accepted == rejected:
+                terminal_error = body.startswith(
+                    "QUEUE CONTROLLER ERROR — evaluation failed before a result artifact was produced.\n\n"
+                    "GCL-QUEUE-RESPONSE-ORIGIN/1\n"
+                )
+                # A trusted controller's *exact* terminal execution error
+                # discharges the pending command, but does not grant a lease.
+                # Preserve all hostile/malformed acknowledgment rejection.
+                if accepted == rejected and not (terminal_error and not accepted and not rejected):
                     raise CapacityError("controller claim acknowledgment outcome missing or contradictory")
                 if rejected and not body.startswith("CLAIM REJECTED"):
                     raise CapacityError("controller claim rejection outcome is not canonical")
