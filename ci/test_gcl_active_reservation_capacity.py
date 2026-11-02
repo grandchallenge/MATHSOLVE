@@ -66,6 +66,27 @@ class CapacityTests(unittest.TestCase):
             self.addCleanup(p.stop)
         cap.datetime.now.return_value=NOW
 
+    def test_exact_in_flight_claim_excluded_but_other_unresolved_held(self):
+        current = {"id": 6001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                   "user": {"login": "worker-a"}}
+        candidate = {**CLAIM, "source_comment_id": 6001, "actor": "worker-a"}
+        row = snapshot()
+        row["rows"][1]["comments"] = [current]
+        self.assertEqual(cap.decision(row, candidate)["outcome"], "RESERVED")
+        other = {"id": 6002, "body": "/claim", "created_at": "2026-10-11T00:11:00Z",
+                 "user": {"login": "worker-b"}}
+        row["rows"][1]["comments"].append(other)
+        with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
+            cap.decision(row, candidate)
+
+    def test_wrong_actor_cannot_exclude_pending_claim(self):
+        current = {"id": 6001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
+                   "user": {"login": "worker-a"}}
+        row = snapshot()
+        row["rows"][1]["comments"] = [current]
+        with self.assertRaisesRegex(cap.CapacityError, "identity or actor"):
+            cap.decision(row, {**CLAIM, "source_comment_id": 6001, "actor": "other"})
+
     def test_unacknowledged_recent_claim_holds_capacity(self):
         claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
                  "user": {"login": "worker-a"}}
