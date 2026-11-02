@@ -59,7 +59,7 @@ theorem positive_parameter_compiler_shape
     (lam : Nat) (hl : lam ≠ 0) :
     compute c U ((S,D),lam) =
       zeroWrap (positiveCompiler c U
-        (SourceDescriptionCompiler.clamp ((S,D),lam))) := by
+        (MIPRE.Introspection.SourceDescriptionCompiler.clamp ((S,D),lam))) := by
   rw [compute_apply]
   simp [hl]
 
@@ -69,8 +69,8 @@ theorem positive_parameter_run_specification
     (c : Nat) (U : ClockedUniversalMachine) (S D : Prog)
     {lam n : Nat} (hl : 1 ≤ lam) (hn : 1 ≤ n) (d : Data) :
     ∃ t, (decider c U S D lam).prog.Runs (.cons (encode n) d)
-      (encode (untypedKernel U (DecisionPreparation.kernelInput c
-        (SourceDescriptionCompiler.clamp ((S,D),lam)) (.cons (encode n) d)))) t := by
+      (encode (untypedKernel U (MIPRE.Introspection.DecisionPreparation.kernelInput c
+        (MIPRE.Introspection.SourceDescriptionCompiler.clamp ((S,D),lam)) (.cons (encode n) d)))) t := by
   exact positive_runs c U S D hl hn d
 
 end PNPAbove.WP06
