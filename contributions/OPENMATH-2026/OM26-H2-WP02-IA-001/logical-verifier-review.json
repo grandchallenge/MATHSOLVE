@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_LOGICAL_ROLE_SCOPED_CRITICAL_REVIEW_V1",
+  "authority_domain": "SOLUTION_INTEGRITY",
+  "logical_role": "VERIFIER",
+  "review_mode": "DELEGATED_NON_RESERVED_LOGICAL_ROLE",
+  "reviewed_source_pr": 1155,
+  "reviewed_source_head": "dbfe8d73f19f47efa1ce5b26a6b79e437376e3af",
+  "reviewed_protected_merge": "32a3a8c7ac686c0ab4b93a2e7fc9207572eac693",
+  "reviewed_artifact": {
+    "path": "contributions/OPENMATH-2026/OM26-H2-WP02-IA-001/specialist-assessment.json",
+    "blob_sha": "641af96d9a69e402be022f08b8715f3459bbf4cb"
+  },
+  "subject": {
+    "repository": "grandchallenge/MATH-PROGRAMME",
+    "head_sha": "d290127116a04c27ad149e0890077891619e4070",
+    "material_fingerprint": "c1e26a5300d06540b389e88db45dbd3df7b8749a326242a24930169739dc2cb2"
+  },
+  "checks": {
+    "capture_result_sha256": "PASS",
+    "source_blob_linkage": "PASS",
+    "replay_capture_blob_lock": "PASS",
+    "adjudication_replay_blob_lock": "PASS",
+    "reproducibility_digest_and_dispatch": "PASS",
+    "witness_W89911": "PASS_89911_185_541",
+    "witness_W8021": "PASS_8021_41_122",
+    "claim_effects_all_false": "PASS",
+    "exact_search_completeness": "NOT_ADMITTED",
+    "independent_external_execution": "NOT_ATTESTED"
+  },
+  "disposition": "LOGICAL_ROLE_REVIEW_ACCEPTED_EXECUTION_INTEGRITY_ONLY",
+  "scope_exclusions": [
+    "MATHEMATICAL_CERTIFICATION",
+    "SOURCE_SEMANTIC_PROMOTION",
+    "PUBLICATION",
+    "PROTECTION_AUTHORITY"
+  ],
+  "github_review_provenance": {
+    "source_pr_approved_by_non_author": false,
+    "source_pr_review_state": "AUTHOR_COMMENTED_ONLY",
+    "external_approved_review_id": null
+  },
+  "consumer_boundary": "NOT_GCL_DOMAIN_ROLE_SCOPED_REVIEW_V1; NOT_A_POSITIVE_SPECIALIST_RECEIPT"
+}
