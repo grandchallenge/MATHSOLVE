@@ -1,6 +1,6 @@
 # GCL Solve specialist: execution integrity evidence contract
 
-Status: **SOURCE-DOMAIN DESIGN — NO POSITIVE RECEIPT ISSUED**  
+Status: **WP02 delegated logical-role adjudication; exact protected receipt admission pending**  
 Owner: MATHSOLVE; Programme consumer: [MATH-PROGRAMME #1520](https://github.com/grandchallenge/MATH-PROGRAMME/pull/1520)  
 Producer work package: [MATHSOLVE #1040](https://github.com/grandchallenge/MATHSOLVE/issues/1040)  
 Programme gate: [MATH-PROGRAMME #1251](https://github.com/grandchallenge/MATH-PROGRAMME/issues/1251)
@@ -62,45 +62,53 @@ The adjudication artifact must independently repeat that same
 `claim_effects` object. Any mismatch, omitted lock, replay failure,
 or other disposition fails closed.
 
-## Domain-owned specialist review and exact Programme target
+## Domain-owned adjudication and exact Programme target
 
-A review artifact under protected `contributions/` has type
-`GCL_DOMAIN_ROLE_SCOPED_REVIEW_V1`. It must bind:
-`authority_domain: SOLUTION_INTEGRITY`,
-`subject_repository: grandchallenge/MATH-PROGRAMME`, the current exact
-Programme PR head `subject_sha`, the normalized complete changed-file
-`material_fingerprint` (SHA-256), `review_scope:
-SOLVE_EXECUTION_INTEGRITY_ONLY`, `disposition:
-ROLE_SCOPED_REVIEW_ACCEPTED`, the identical `solve_execution` binding,
-`reviewer_identity`, and
-`review_independence: ROLE_SCOPED_NON_AUTHOR_SPECIALIST`.
+GCL-AGENT-STAFFING-001 and MP-STREAMLINED-EXECUTION-001 permit distinct
+non-reserved logical agent-role adjudication of bounded Solve execution
+integrity. A separate GitHub login or non-author review ceremony is **not**
+required for this non-certifying internal judgment. Reviewers must still
+inspect the actual protected evidence and make a distinct recorded Verifier
+pass, not merely declare that a review took place.
 
-It also contains `review_anchor`: `source_pr_number`,
-`source_pr_head_sha`, `review_id`, and `reviewer_login`. The
-consumer verifies GitHub reports that the source PR was merged into
-MATHSOLVE `main`, included this exact reviewed review-artifact Git blob,
-and had a **real non-author `APPROVED`** from the declared reviewer on
-the reviewed head, not superseded by later changes/dismissal. A logical
-agent critical pass alone is insufficient as authenticated GitHub
-review provenance, and this review is not a MATHCERT proof certificate.
+The delegated pathway uses a protected
+`GCL_DOMAIN_LOGICAL_ROLE_SCOPED_CRITICAL_REVIEW_V1` **only if that record
+type is explicitly supported by a consumer**. The active WP02 implementation
+uses `GCL_LOGICAL_ROLE_SCOPED_CRITICAL_REVIEW_V1`, whose Verifier role,
+`DELEGATED_NON_RESERVED_LOGICAL_ROLE` mode, accepted execution-integrity
+disposition, and exact Programme subject/head/fingerprint are verified by
+the Programme consumer. Its immutable `reviewed_artifact` path and Git
+blob identify a separate protected `GCL_DOMAIN_REVIEWABLE_ASSESSMENT_V1`
+object. Its `reviewed_source_pr`, source head, protected merge SHA and
+GitHub changed-file manifest must establish the assessment's original,
+exact protected admission. Six critical checks must be `PASS`, while
+exact-search completeness and independent external execution remain
+explicitly unadmitted. Mathematical certification, source-semantic
+promotion, publication and protection-authority promotion are excluded.
 
-The outer domain receipt under
-`governance/material_admission_receipts/MATH-PROGRAMME-<head>.json`
-contains `schema_version: 1.0.0`,
+The optional legacy `GCL_DOMAIN_ROLE_SCOPED_REVIEW_V1` pathway retains
+authenticated, exact-head, non-author GitHub review provenance when
+that stronger evidence is separately asserted. A delegated logical-role
+review **does not** assert or manufacture such a GitHub approval.
+
+The outer receipt on protected MATHSOLVE `main` is
+`governance/material_admission_receipts/MATH-PROGRAMME-<head>.json`.
+It contains `schema_version: 1.0.0`,
 `record_type: GCL_PROTECTED_SPECIALIST_ADMISSION_EVIDENCE`,
 `authority_domain: SOLUTION_INTEGRITY`,
-`source_repository: grandchallenge/MATHSOLVE`, `subject` with exact
-Programme `repository`, `head_sha` and `material_fingerprint`,
-`verdict: ADMISSIBLE_FOR_PROTECTED_ADMISSION`,
-`review_scope: SOLVE_EXECUTION_INTEGRITY_ONLY`,
-a `protected_evidence` pointer (`path`, `blob_sha`) to the
-independently approved source review file, and the identical
-`solve_execution` evidence.
+`source_repository: grandchallenge/MATHSOLVE`,
+`subject` with the exact Programme head and complete
+`material_fingerprint`, `verdict:
+ADMISSIBLE_FOR_PROTECTED_ADMISSION`, `review_scope:
+SOLVE_EXECUTION_INTEGRITY_ONLY`, a `protected_evidence` path and
+Git blob pointing to the protected logical Verifier judgment, and the
+identical `solve_execution` source lock.
 
-**One implementation constraint:** the domain artifact and receipt are
-separate protected objects; do not attempt to declare the receipt certified
-by an unmerged candidate PR. The source review blob and receipt must
-be independently read back from the protected commit when emitted.
+A positive receipt is bounded to **internal execution-integrity
+admissibility**. It is neither a new theorem, proof of completeness,
+independent runtime attestation, public mathematical certification, nor
+authorization to publish a claim. MATHCERT keeps public certification
+authority.
 
 ## Minimum acceptance replay
 
