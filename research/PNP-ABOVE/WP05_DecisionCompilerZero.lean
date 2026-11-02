@@ -15,7 +15,8 @@ open MIPRE MIPRE.Cost MIPRE.Introspection
 
 example (c : Nat) (U : ClockedUniversalMachine) (S D : Prog) :
     DecisionCompiler.compute c U ((S, D), 0) = DecisionCompiler.zeroProg := by
-  simp only [DecisionCompiler.compute_apply, if_pos rfl]
+  rw [DecisionCompiler.compute_apply]
+  rfl
 
 example (c : Nat) (U : ClockedUniversalMachine) (S D : Prog) :
     (DecisionCompiler.compute c U ((S, D), 0)).WellScoped 1 :=
