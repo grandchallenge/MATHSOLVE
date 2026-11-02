@@ -4,6 +4,8 @@
 
 **Research parent:** [PNP-ABOVE](https://github.com/grandchallenge/MATHSOLVE/issues/1136). **Upstream lock:** [vidick/MIPRE-formalization at commit 5926bdff5db621f44682a101007ef2fe3ae8d970](https://github.com/vidick/MIPRE-formalization/tree/5926bdff5db621f44682a101007ef2fe3ae8d970). Source files: [DecisionCompiler.lean](https://github.com/vidick/MIPRE-formalization/blob/5926bdff5db621f44682a101007ef2fe3ae8d970/MIPRE/Background/Introspection/DecisionCompiler.lean) and [SourceDescriptionCompiler.lean](https://github.com/vidick/MIPRE-formalization/blob/5926bdff5db621f44682a101007ef2fe3ae8d970/MIPRE/Foundations/Introspection/SourceDescriptionCompiler.lean).
 
+**Subsequent proof replay (2 November 2026):** The exact WP06 Lean candidate was successfully elaborated against the pinned imported MIPRE compiler (exit code 0; one deprecation warning). The full source hashes, run identifiers and complementary source-size adequacy theorems are recorded in [WP07_SOURCE_ERASURE_EXECUTION_RECEIPT.md](WP07_SOURCE_ERASURE_EXECUTION_RECEIPT.md). The original note below describes the state *when WP06 was first admitted*; its claims that the proof had not yet been executed have been superseded by WP07, without retroactively changing the source file's byte identity. This does not certify the full compressed game or any SAT complexity separation.
+
 ## 1. Zero-parameter decider erasure: exact source consequence
 
 For every fixed compiler parameter $c$, clocked universal machine $U$, and input source programs $S,D$, the upstream theorem \`DecisionCompiler.compute_apply\` gives
