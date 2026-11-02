@@ -126,10 +126,24 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str], dispat
                 acknowledged_at = parse_time(timestamp)
                 accepted = "CLAIM ACCEPTED" in body
                 rejected = "CLAIM REJECTED" in body
-                if accepted == rejected:
+                # A controller transport error is an authenticated terminal
+                # *non-grant*: the issue was never reserved. This allows a
+                # subsequent fresh claim without converting error to approval.
+                errored = body.startswith(
+                    "QUEUE CONTROLLER ERROR — evaluation failed before a result artifact was produced.\n\n"
+                    "GCL-QUEUE-RESPONSE-ORIGIN/1\n"
+                    f"source_comment_id: {matches[0]}\n"
+                )
+                if int(accepted) + int(rejected) + int(errored) != 1:
                     raise CapacityError("controller claim acknowledgment outcome missing or contradictory")
                 if rejected and not body.startswith("CLAIM REJECTED"):
                     raise CapacityError("controller claim rejection outcome is not canonical")
+                if errored and body != (
+                    "QUEUE CONTROLLER ERROR — evaluation failed before a result artifact was produced.\n\n"
+                    "GCL-QUEUE-RESPONSE-ORIGIN/1\n"
+                    f"source_comment_id: {matches[0]}\n"
+                ):
+                    raise CapacityError("controller transport failure not canonically authenticated")
                 # Accepted claims must carry the reserved-dispatch binding.
                 # A response for a different dispatch cannot discharge this claim.
                 if accepted:
@@ -157,7 +171,7 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str], dispat
                   if not any(created <= when <= at for when in acknowledgments.get(ident, [])))
 
 
-def count_live(snapshot: dict, at: datetime) -> dict:
+def count_live(snapshot: dict, at: datetime, *, pending_claim: tuple[int, int, str] | None = None) -> dict:
     expected = registry_ids()
     if (snapshot.get("record_type") != "GCL_ACTIVE_SOLVE_RESERVATIONS_SNAPSHOT/1"
             or snapshot.get("repository") != REPO or snapshot.get("complete") is not True
@@ -192,7 +206,16 @@ def count_live(snapshot: dict, at: datetime) -> dict:
         if all_comment_ids.intersection(comment_ids):
             raise CapacityError("comment identity reused across Solve issue histories")
         all_comment_ids.update(comment_ids)
-        if unresolved_claims(comments, at, bots, did):
+        unresolved = unresolved_claims(comments, at, bots, did)
+        if pending_claim is not None and pending_claim[0] == n:
+            _, command_id, worker = pending_claim
+            matches = [c for c in comments if c.get("id") == command_id]
+            if (len(matches) != 1 or matches[0].get("body") != "/claim"
+                    or (matches[0].get("user") or {}).get("login") != worker
+                    or command_id not in unresolved):
+                raise CapacityError("candidate source claim is not a unique pending authenticated command")
+            unresolved.remove(command_id)
+        if unresolved:
             raise CapacityError(f"#{n}: unresolved claim comment; hold new admission")
         events = reservation_events(comments, did, bots)
         if events:
@@ -211,7 +234,7 @@ def count_live(snapshot: dict, at: datetime) -> dict:
             "source": "controller-authored active Solve reservations"}
 
 
-def decision(snapshot: dict, candidate: dict) -> dict:
+def decision(snapshot: dict, candidate: dict, *, candidate_comment_id: int | None = None) -> dict:
     if candidate.get("outcome") != "RESERVED":
         return candidate
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
@@ -238,7 +261,14 @@ def decision(snapshot: dict, candidate: dict) -> dict:
     age_seconds = (at - captured).total_seconds()
     if age_seconds < 0 or age_seconds > 300:
         raise CapacityError("capacity snapshot outside five-minute freshness window")
-    status = count_live(snapshot, at)
+    pending = None
+    if candidate_comment_id is not None:
+        if (type(candidate_comment_id) is not int or candidate_comment_id <= 0
+                or not isinstance(candidate.get("actor"), str)
+                or not candidate["actor"]):
+            raise CapacityError("candidate claim comment ID or actor missing")
+        pending = (issue, candidate_comment_id, candidate["actor"])
+    status = count_live(snapshot, at, pending_claim=pending)
     if status["active_count"] < limits["Mathematics"]:
         return {**candidate,
                 "capacity_evidence": {"Mathematics": status,
@@ -258,6 +288,7 @@ def main() -> int:
     p.add_argument("--snapshot-out", type=Path)
     p.add_argument("--snapshot", type=Path)
     p.add_argument("--candidate", type=Path)
+    p.add_argument("--candidate-comment-id", type=int)
     p.add_argument("--output", type=Path)
     args = p.parse_args()
     if args.snapshot_out:
@@ -277,7 +308,9 @@ def main() -> int:
         snapshot = json.loads(args.snapshot.read_text(encoding="utf-8"))
     else:
         snapshot = {}
-    output = decision(snapshot, candidate)
+    if candidate.get("outcome") == "RESERVED" and args.candidate_comment_id is None:
+        raise CapacityError("reservation candidate missing exact GitHub source comment ID")
+    output = decision(snapshot, candidate, candidate_comment_id=args.candidate_comment_id)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     tmp = args.output.with_suffix(".tmp")
     tmp.write_text(json.dumps(output,indent=2,sort_keys=True) + "\n",encoding="utf-8")
