@@ -28,7 +28,7 @@ After the successful six-proof replay, two additional source-level propositions 
 - For `lam ≠ 0`, the compiled program has shape `zeroWrap (positiveCompiler c U (SourceDescriptionCompiler.clamp ((S,D),lam)))`.
 - For `lam ≥ 1` and `n ≥ 1`, a terminating `Runs` witness exists whose result is specified by the imported upstream `DecisionKernel` via `positive_runs`.
 
-The imported upstream file already provides `compute_apply` and `positive_runs` with those interfaces. **However, the updated WP06 file (blob `b7e40aaaeec6d8555e73b3c0286c19cec31acc10`) has not itself completed a successful exact-head Lean replay**: the remote command interface intermittently rejected execution attempts after the code update. The two additions remain **candidate** theorem applications, not accepted GCL-verified elaborations. They should be replayed and corrected before proof promotion.
+The imported upstream file already provides `compute_apply` and `positive_runs` with those interfaces. **However, the updated WP06 file (blob `b7e40aaaeec6d8555e73b3c0286c19cec31acc10`) has not itself completed a successful exact-head Lean replay**: the remote command interface intermittently rejected execution attempts after the code update. The first extended replay failed because two imported names were not namespace-qualified (GCL_CONTROL run `002683c2e9db46f09952fe380f2e8cbc`). The source was corrected to fully qualified `MIPRE.Introspection` names in commit `a646677640e86af59d9c3f52046dffc894fedabd`; this corrected extended revision has **not yet passed an exact-head Lean replay**. The additions therefore remain **candidate** theorem applications. They should be replayed and corrected before proof promotion.
 
 ## Mathematical interpretation
 
