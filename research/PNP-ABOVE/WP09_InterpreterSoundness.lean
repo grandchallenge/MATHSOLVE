@@ -67,7 +67,7 @@ theorem runFuel_sound :
       | const d =>
           simp only [runFuel] at h
           cases h
-          exact Eval.const env d
+          exact Eval.const env r
       | cons p q =>
           cases hp : runFuel fuel env p with
           | none => simp [runFuel, hp] at h
@@ -80,7 +80,9 @@ theorem runFuel_sound :
                       cases pair2 with
                       | mk b u =>
                           simp [runFuel, hp, hq] at h
-                          cases h
+                          rcases h with ⟨hr, ht⟩
+                          subst r
+                          subst t
                           exact Eval.cons (ih env p a s hp) (ih env q b u hq)
       | elim i n c =>
           cases hd : env.get i with
@@ -91,7 +93,9 @@ theorem runFuel_sound :
                   cases pair with
                   | mk a s =>
                       simp [runFuel, hd, hn] at h
-                      cases h
+                      rcases h with ⟨hr, ht⟩
+                      subst r
+                      subst t
                       exact Eval.elim_nil hd (ih env n a s hn)
           | cons a b =>
               cases hc : runFuel fuel (a :: b :: env) c with
@@ -100,7 +104,9 @@ theorem runFuel_sound :
                   cases pair with
                   | mk v s =>
                       simp [runFuel, hd, hc] at h
-                      cases h
+                      rcases h with ⟨hr, ht⟩
+                      subst r
+                      subst t
                       exact Eval.elim_cons hd (ih (a :: b :: env) c v s hc)
       | let_ e b =>
           cases he : runFuel fuel env e with
@@ -114,7 +120,9 @@ theorem runFuel_sound :
                       cases pair2 with
                       | mk w t2 =>
                           simp [runFuel, he, hb] at h
-                          cases h
+                          rcases h with ⟨hr, ht⟩
+                          subst r
+                          subst t
                           exact Eval.let_ (ih env e v s he) (ih (v :: env) b w t2 hb)
       | loop b =>
           cases hb : runFuel fuel env b with
@@ -125,13 +133,17 @@ theorem runFuel_sound :
                   cases v with
                   | nil =>
                       simp [runFuel, hb] at h
-                      cases h
+                      rcases h with ⟨hr, ht⟩
+                      subst r
+                      subst t
                       exact Eval.loop_nil (ih env b .nil s hb)
                   | cons flag v =>
                       cases flag with
                       | nil =>
                           simp [runFuel, hb] at h
-                          cases h
+                          rcases h with ⟨hr, ht⟩
+                          subst r
+                          subst t
                           exact Eval.loop_stop (ih env b (.cons .nil v) s hb)
                       | cons x y =>
                           cases hrec : runFuel fuel (v :: env.tail) (.loop b) with
@@ -140,7 +152,9 @@ theorem runFuel_sound :
                               cases pair2 with
                               | mk out t2 =>
                                   simp [runFuel, hb, hrec] at h
-                                  cases h
+                                  rcases h with ⟨hr, ht⟩
+                                  subst r
+                                  subst t
                                   exact Eval.loop_step (ih env b (.cons (.cons x y) v) s hb)
                                     (ih (v :: env.tail) (.loop b) out t2 hrec)
 
