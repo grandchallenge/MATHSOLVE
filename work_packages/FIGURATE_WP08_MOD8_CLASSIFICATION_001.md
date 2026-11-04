@@ -29,6 +29,8 @@ An empty set $E_{k,c,m}(b)$ proves that the pair **cannot extend to a Type B tri
 | 2 | 3, 6, 7 |
 | 6 | 2, 3, 7 |
 
+**Global corollary for triples containing 1.** If $k\equiv0\pmod8$ and $c\equiv2$ or $6\pmod8$, **no Type B triple of distinct positive integers can contain the entry 1**, regardless of the other two entries. Indeed, every pair $\{1,b\}$ that could occur in such a triple must be an exactly compatible anchored pair, and the table shows that every such pair has an empty local extension set. This conclusion is unbounded in the entries, but is restricted to triples containing 1. It does **not** exclude Type B triples without 1.
+
 For all other polygonal orders modulo 8 and offsets modulo 8, **no compatible anchored pair is excluded by this particular modulus-8 test**. This is not a statement that other obstructions or global nonextension are impossible.
 
 ### Proof: order lifting and exhaustive finite residue certificates
