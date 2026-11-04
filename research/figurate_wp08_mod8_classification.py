@@ -10,10 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 
-from research.figurate_wp07_obstructions import (
-    pair_extension_residues,
-    polygonal_residues,
-)
+from research.figurate_wp07_obstructions import polygonal_residues
 
 
 def anchored_obstruction_classes(k: int, modulus: int) -> dict[int, tuple[int, ...]]:
@@ -29,7 +26,9 @@ def anchored_obstruction_classes(k: int, modulus: int) -> dict[int, tuple[int, .
     return {
         c: tuple(b for b in range(modulus)
                  if (b + c) % modulus in image
-                 and not pair_extension_residues(k, c, 1, b, modulus))
+                 and not any((d + c) % modulus in image
+                             and (b * d + c) % modulus in image
+                             for d in range(modulus)))
         for c in range(modulus)
     }
 
