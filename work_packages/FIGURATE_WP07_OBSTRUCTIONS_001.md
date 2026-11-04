@@ -48,7 +48,7 @@ $$
 R_{8,16}=\{0,1,5,8\}.
 $$
 
-**Claim D3.** Fix any integer $c\equiv3\pmod{16}$. If $a\equiv1\pmod{16}$ and $b\equiv5\pmod{16}$, there is **no Type B triple containing both $a$ and $b**.
+**Claim D3.** Fix any integer $c\equiv3\pmod{16}$. If $a\equiv1\pmod{16}$ and $b\equiv5\pmod{16}$, there is **no Type B triple containing both $a$ and $b$.**
 
 **Proof.** The condition that $ad+c$ be octagonal forces $d\pmod{16}$ to lie in $\{13,14,2,5\}$. In that order, $bd+c\equiv5d+3\pmod{16}$ takes values $4,9,13,12$, none in $R_{8,16}$. Thus no integer $d$ can extend the pair.
 
