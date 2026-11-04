@@ -22,7 +22,7 @@ FIELDS = ("kind", "k", "offset", "size", "entry_limit", "count",
 
 
 def panel_rows(limit: int = 240) -> list[dict]:
-    """All 30 B configurations plus A/C controls for a fixed entry bound."""
+    """All 36 B configurations plus 18 A/C controls at a fixed bound."""
     parameters = (
         [(kind, k, offset, size)
          for kind in ("B",) for k in range(3, 9)
