@@ -88,19 +88,19 @@ class FigurateWP08TwoAdic(unittest.TestCase):
         self.assertEqual(len(canonical_sha256(64)), 64)
 
     def test_new_classes_are_strict_and_older_classes_persist(self):
+        from research.figurate_wp08_mod32 import (
+            exclusions as old_exclusions, first_local_witness
+        )
+        old = old_exclusions(32)
+        full = expected_old_plus_new()
         actual = set(newly_excluded_from_32())
-        expected = {(k, c) for k in range(64) for c in range(64)
-                    if expected_old_plus_new()[k].__contains__(c)
-                    and not (c % 32 in
-                             __import__('research.figurate_wp08_mod32',
-                                        fromlist=['exclusions']).exclusions(32)[k % 32])}
+        expected = {(k, c) for k in range(64) for c in full[k]
+                    if c % 32 not in old[k % 32]}
         self.assertEqual(actual, expected)
         for k, c in ((64, 9), (80, 25), (72, 13), (76, 4),
                      (96, 41), (120, 45), (124, 20)):
             self.assertIsNone(local_first_triple(k, c, 64))
-            from research.figurate_wp08_mod32 import local_first_witness
-            # The older modulus-32 local test leaves these cells viable.
-            self.assertIsNotNone(local_first_witness(k, c, 32))
+            self.assertIsNotNone(first_local_witness(k, c, 32))
 
     def test_positive_pairs_remain_despite_global_triple_obstructions(self):
         for k, c in ((64, 9), (80, 25), (72, 13), (76, 4)):
