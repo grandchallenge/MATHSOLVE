@@ -32,7 +32,7 @@ def independent_two_adic_square(D):
     while n % 2 == 0:
         n //= 2
         v += 1
-    return v % 2 == 0 and n % 8 == 1
+    return v % 2 == 0 and (D // (1 << v)) % 8 == 1
 
 
 class FigurateUniformTwoAdicAdmissibility(unittest.TestCase):
