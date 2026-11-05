@@ -58,7 +58,8 @@ class WP08Mod32Certificate(unittest.TestCase):
                     independent_first(k, c, 32),
                     (k, c),
                 )
-        self.assertEqual(table_sha256(32),\n                         "4d67102c4c16572b93679b2d3875269351e4c67687bb418c48a88aa5447fa3f5")
+        self.assertEqual(table_sha256(32),
+                         "4d67102c4c16572b93679b2d3875269351e4c67687bb418c48a88aa5447fa3f5")
 
     def test_order_periodicity_and_all_nonempty_cell_witnesses(self):
         for k in range(32, 64):
