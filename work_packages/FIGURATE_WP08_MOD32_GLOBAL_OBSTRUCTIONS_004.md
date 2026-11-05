@@ -104,7 +104,7 @@ The complete enumeration over the $32\times32=1024$ order/offset residue cells p
 4d67102c4c16572b93679b2d3875269351e4c67687bb418c48a88aa5447fa3f5
 ```
 
-This is a finite integer-arithmetic proof certificate. The exact theorem also admits a future paper proof by decomposing residue parities; such a shorter analytic reduction for the *two new* classes has **not** yet been formally admitted. Do not characterize a machine-enumerated finite verification as a new conceptual classification theorem without that distinction.
+The two new global exclusion families have both a direct parity/2-adic valuation proof (above) and an independent finite integer-arithmetic certificate (here). The exhaustive table establishes completeness **only for the modulus-32 local test**. Neither form of proof establishes literature originality, and a repository test is not a substitute for independent specialist mathematical review.
 
 ## Independent validation and nonvacuity
 
