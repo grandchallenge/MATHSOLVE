@@ -96,6 +96,23 @@ class WP08Mod32Certificate(unittest.TestCase):
             for a, b, d in itertools.combinations(range(1, 40), 3):
                 self.assertIsNone(verify_tuple((a, b, d), "B", k, c))
 
+    def test_direct_two_adic_proof_residue_lemmas(self):
+        # Independently validate every residue assertion in the direct proof.
+        for k in (8, 16, 24, 32, 40, 48):
+            base = 5 if k % 16 == 0 else 9
+            for c in (base, base + 16):
+                R32 = independent_image(k, 32)
+                products32 = {(z - c) % 32 for z in R32}
+                self.assertEqual(
+                    {x % 16 for x in products32 if x % 2 == 0}, {8, 12}
+                )
+                self.assertEqual(
+                    {x % 4 for x in products32 if x % 2 == 1}, {3}
+                )
+                self.assertEqual(
+                    len([x for x in products32 if x % 16 == 8]), 1
+                )
+
     def test_mod32_contains_mod16_obstructions(self):
         from research.figurate_wp08_mod16_classification import full_mod16_exclusions
         lower = full_mod16_exclusions()
