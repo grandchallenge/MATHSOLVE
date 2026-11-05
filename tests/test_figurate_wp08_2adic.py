@@ -85,7 +85,8 @@ class FigurateWP08TwoAdic(unittest.TestCase):
             for c in range(64):
                 self.assertEqual(table[k % 64][c],
                                  independent_first(k, c, 64), (k, c))
-        self.assertEqual(len(canonical_sha256(64)), 64)
+        self.assertEqual(canonical_sha256(64),
+                         "1218764ff77c735d1fda1d27545c6fd6415b31d18ff377999eb082a808285264")
 
     def test_new_classes_are_strict_and_older_classes_persist(self):
         from research.figurate_wp08_mod32 import (
