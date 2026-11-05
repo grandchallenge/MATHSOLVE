@@ -33,6 +33,7 @@ jobs:
         run: |
           python ci/validate_solve.py
           python ci/test_validate_solve.py
+          python -m unittest tests/test_gcl_component_routing.py -v
           python -m unittest ci/test_grobner_tactic_contract.py -v
           python -m json.tool schemas/grobner_tactic_invocation.schema.json >/dev/null
           python -m json.tool schemas/grobner_tactic_registry.schema.json >/dev/null
