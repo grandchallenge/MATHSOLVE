@@ -49,4 +49,6 @@ The square-output control {1,3,8,120} is Fermat's known Diophantine quadruple. T
 
 ## Research next gate
 
-The current archive is a provenance-grade finite result. WP06 remains **OPEN** for systematic growth of bounds, matched performance comparisons, additional independent coverage certificates at scale, and prioritized searches guided by WP07 obstructions. Do not assign a novel theorem claim, source novelty, independent proof certification, or global classification to this archive.
+**Disposition (5 November 2026): WP06's bounded acceptance is COMPLETE.** The 270-case L60 archive, complete 54-case L240 panel, exact-residue prefilter, independent full-baseline replay, frozen source/archive SHA, executable regressions and protected-main evidence satisfy the finite search/sieve work package as written. WP06 is closed as an exact *bounded* research package, not a proof of unbounded completeness or a certification of a new theorem.
+
+**Optional future research, outside the completed WP06 acceptance:** systematic growth beyond the present bound; matched-workload repeated timing experiments before any performance claim; further completeness coverage at larger bounds; or searches motivated by later structural obstruction theorems. These are distinct potential work, **not retrospective requirements** that indefinitely keep the delivered finite experiment open. No novel theorem claim, source novelty, independent proof certification, or global classification is assigned to this archive.
