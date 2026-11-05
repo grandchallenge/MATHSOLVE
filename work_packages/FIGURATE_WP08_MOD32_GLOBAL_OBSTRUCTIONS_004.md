@@ -30,6 +30,44 @@ This table records **all** order/offset cells excluded by the complete modulo-32
 
 Bold residues are absent from the earlier modulo-16 exclusions. For cells **not** excluded here, a local residue solution exists, but this does **not** imply any triple of distinct positive integers exists.
 
+### Direct 2-adic proof of the two new families
+
+The two newly excluded families can be proved without relying on a large enumerator. For either
+$k\equiv0\pmod{16}$, $c\equiv5\pmod{16}$ or
+$k\equiv8\pmod{16}$, $c\equiv9\pmod{16}$,
+the allowed pair products $xy=P_k(t)-c$ have, **modulo 16**, exactly the following shape:
+
+- every **odd** allowed product is $3\pmod4$;
+- every **even** allowed product is $8$ or $12\pmod{16}$, and therefore has 2-adic valuation exactly 3 or 2 respectively.
+
+A further inspection modulo 32 gives an essential strengthening: **among allowed even pair-product residues, there is exactly one class of valuation 3 modulo 32**. This follows directly from the complete $P_k(t)$ images:
+
+| $k\bmod32$ | $P_k(t)\bmod32$ | $c\bmod32$ | Unique allowed product with valuation 3, modulo 32 |
+| --- | --- | --- | --- |
+| 0 | 0,1,8,16,17,24,29 | 5 / 21 | 24 / 8 |
+| 16 | 0,1,8,13,16,17,24 | 5 / 21 | 8 / 24 |
+| 8 or 24 | 0,1,5,8,16,21,24 | 9 / 25 | 24 / 8 |
+
+In particular, **two allowed products of valuation 3 cannot differ by 16 modulo 32**. (Valuation 3 here means divisible by 8 but not 16.)
+
+Suppose three positive integers $a,b,d$ satisfy all three pair conditions. Consider their parity:
+
+**All three odd.** Each of $ab$, $ad$, $bd$ is $3\pmod4$. Multiplication gives
+$(abd)^2\equiv3^3\equiv3\pmod4$, impossible for a square.
+
+**Exactly one even**, say $a$. Then the odd pair $bd\equiv3\pmod4$ makes $b,d$ opposite odd classes modulo 4. Their products with $a$ must both have valuation 2 or 3.
+If $v_2(a)=2$, write $a=4x$ with $x$ odd. Because $b-d\equiv2\pmod4$, the products $ab,ad$ differ by $8\pmod{16}$, impossible among allowed $8,12\pmod{16}$.
+If $v_2(a)=3$, their difference is $16\pmod{32}$, impossible because there is only one allowed valuation-3 residue modulo 32.
+Other valuations of $a$ are ruled out by the allowed product valuations.
+
+**Exactly two even**, with the remaining entry odd. Both even entries must individually have valuation 2 or 3 from their products with the odd entry. Their mutual product then has valuation at least 4, whereas every allowed even pair product has valuation 2 or 3. Contradiction.
+
+**All three even.** The three pair-product valuations must each be 2 or 3. Hence their individual valuations are either $(1,1,1)$ or a permutation of $(2,1,1)$; all other patterns force a pair-product valuation at least 4.
+For $(1,1,1)$, write $a=2x,b=2y,d=2z$ with $x,y,z$ odd. All products have valuation 2 and thus equal $12\pmod{16}$, so $xy,xz,yz\equiv3\pmod4$, and multiplying gives $(xyz)^2\equiv3\pmod4$, impossible.
+For $(2,1,1)$, write $a=4x,b=2y,d=2z$ with $x,y,z$ odd. Then $bd\equiv12\pmod{16}$ forces $yz\equiv3\pmod4$, so $y-z\equiv2\pmod4$. The products $ab=8xy$ and $ad=8xz$, both of valuation 3, differ by $16\pmod{32}$, contradicting the unique allowed valuation-3 residue.
+
+Every parity pattern fails. This establishes both new infinite families directly, independently of the program's exhaustive enumeration. The finite code remains valuable as an **independent completeness certificate** for the entire modulo-32 table and for the absence of other local exclusions.
+
 ### Finite exact proof certificate
 
 For a positive integer modulus $m$, define the complete image
