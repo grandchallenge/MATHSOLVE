@@ -141,6 +141,29 @@ class FigurateUniformTwoAdicAdmissibility(unittest.TestCase):
         # A different exact square-output tuple is genuinely valid.
         self.assertIsNotNone(verify_tuple((1,2,7),"B",4,2))
 
+    def test_direct_mod16_converse_residue_claims(self):
+        # For k=12 mod16 and c=2, the only allowed pair products
+        # are {7,10,14,15} modulo 16. A triple is impossible.
+        for k in (12,28,44,60,76,92,108,124):
+            image=direct_residue_image(k,4)
+            self.assertEqual(image,{0,1,9,12})
+            allowed={(r-2)%16 for r in image}
+            self.assertEqual(allowed,{7,10,14,15})
+            # Independent exhaustion permits all repeated residue classes.
+            for a,b,d in itertools.combinations_with_replacement(
+                    range(16),3):
+                self.assertFalse(all((x*y)%16 in allowed
+                      for x,y in ((a,b),(a,d),(b,d))))
+        # One-even parity implication: odd pair bd=7 mod8 forces
+        # b+d=0 mod8, hence ab+ad=0 mod16 for a=2 mod4.
+        for a in range(2,16,4):
+            for b in range(1,16,2):
+                for d in range(1,16,2):
+                    if b*d%8==7:
+                        self.assertEqual((b+d)%8,0)
+                        self.assertEqual((a*b+a*d)%16,0)
+        self.assertFalse(any((-z)%16 in {10,14} for z in (10,14)))
+
     def test_precise_validation(self):
         for k in (8,12,16,24,28):
             with self.assertRaises(ValueError):
