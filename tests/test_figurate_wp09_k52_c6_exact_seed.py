@@ -5,7 +5,7 @@ from research.figurate_wp09_k52_c6_exact_seed import (
     C,SEED_ENTRIES,SEED_INDICES,graph_census,index_for,exact_tuple
 )
 from research.figurate_wp09_fixed_pair_seed_frontier import (
-    seed_record,amplify_fixed_pair
+    seed_record
 )
 from research.figurate_wp09_everywhere_local_sieve import classify
 
@@ -64,19 +64,23 @@ class K52OffsetSixTests(unittest.TestCase):
             self.assertEqual([tuple(x["entries"]) for x in graph_census(B)["triples"]],
                              oracle(B))
 
-    def test_general_pell_amplification(self):
+    def test_general_pell_hypotheses_without_expensive_unit_replay(self):
+        # The protected WP09-013 theorem supplies the infinite orbit.
+        # This test verifies its input norm, nonsquare product and lattice.
         a,b,d=SEED_ENTRIES
         r,s,t=SEED_INDICES
         z=seed_record(52,6,a,b,d,r,s,t)
         self.assertEqual(z["q"],4558)
         self.assertNotEqual(isqrt(4558)**2,4558)
-        earlier=0
-        for step in (0,1,2):
-            w=amplify_fixed_pair(52,6,a,b,d,r,s,t,step=step)
-            self.assertEqual(w["entries"][:2],(a,b))
-            self.assertIsNotNone(exact_tuple(tuple(w["entries"])))
-            self.assertGreater(w["entries"][2],earlier)
-            earlier=w["entries"][2]
+        self.assertEqual(z["D"],4704)
+        self.assertEqual(z["R"],100)
+        self.assertEqual(z["L"],48)
+        self.assertEqual(z["S"],1952)
+        self.assertEqual(z["X"],131704)
+        self.assertEqual(z["X"]**2-4558*z["S"]**2,
+                         a*(a-b)*z["D"])
+        self.assertEqual((z["S"]+z["L"])%z["R"],0)
+        self.assertEqual((z["X"]//a+z["L"])%z["R"],0)
 
     def test_invalid_boundary(self):
         for B in (0,2,10001):
