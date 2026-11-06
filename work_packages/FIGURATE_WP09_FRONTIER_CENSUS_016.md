@@ -47,10 +47,10 @@ The previous protected WP09-013 scan covered $1\le a\le10$, $r\le69$, $s\le1099$
 
 Run:
 
-\`\`\`bash
+```bash
 python3 -m unittest -v tests.test_figurate_wp09_frontier_census_016
 python3 -m research.figurate_wp09_frontier_census_016 --order 84 --entry-bound 300000
 python3 -m research.figurate_wp09_frontier_census_016 --order 100 --entry-bound 300000
-\`\`\`
+```
 
 The remaining genuinely mathematical frontier is either an explicit exact seed for either case (which the protected fixed-pair Pell theorem may amplify when $ab$ is nonsquare), or a rigorous global exclusion that goes beyond a finite search. Independent mathematical certification, priority/source review and public programme explanation are separate admissions.
