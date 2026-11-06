@@ -51,13 +51,13 @@ def unit_order_mod(d: int, u: int, v: int, modulus: int) -> int:
     if modulus < 2 or u * u - d * v * v != 1:
         raise ValueError("require modulus>=2 and a norm-one unit")
     x, y = 1, 0
-    for e in range(1, modulus * modulus + 1):
+    for e in range(1, modulus ** 4 + 1):
         x, y = pell_multiply(d, x, y, u, v)
         x %= modulus
         y %= modulus
         if (x, y) == (1, 0):
             return e
-    raise ArithmeticError("finite invertible group order bound exceeded")
+    raise ArithmeticError("finite matrix-group order bound exceeded")
 
 
 def recover_seed(x: int, s_coordinate: int) -> dict:
