@@ -17,8 +17,8 @@ def polygonal(k: int, t: int) -> int:
 def verified_seed(k: int, c: int, r: int, s: int, t: int) -> tuple[int, int]:
     b = polygonal(k, r)-c
     d = polygonal(k, s)-c
-    if not (1 < b < d and b*d+c == polygonal(k, t)):
-        raise ValueError("seed must be exact positive Type B (1,b,d), 1<b<d")
+    if not (1 < b and d > 1 and b != d and b*d+c == polygonal(k, t)):
+        raise ValueError("seed must be exact positive Type B (1,b,d), b>1,d>1,b!=d")
     if isqrt(b)**2 == b:
         raise ValueError("second entry b must be nonsquare")
     return b, d
@@ -98,7 +98,7 @@ def amplify_seed(k: int,c: int,r: int,s: int,t: int,steps: int) -> dict:
     sn=(S+L)//R
     tn=(T+L)//R
     d=polygonal(k,sn)-c
-    if not (1<b<d and b*d+c==polygonal(k,tn)):
+    if not (1<b and d>1 and b!=d and b*d+c==polygonal(k,tn)):
         raise ArithmeticError("generated exact tuple invalid")
     return {"order":k,"offset":c,"steps":steps,
             "entries":(1,b,d),"indices":(r,sn,tn),
