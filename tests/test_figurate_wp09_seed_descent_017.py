@@ -18,11 +18,13 @@ def oracle(k,c,r,s):
         if A%a or B%a:continue
         b=A//a;d=B//a
         if len({a,b,d})!=3:continue
+        y=b*d+c
+        # Independent direct polynomial oracle, not inverse discriminant.
         n=1
-        while independent_polygonal(k,n)<=b*d+c:
-            if independent_polygonal(k,n)==b*d+c:
-                results.append((a,b,d,r,s,n))
+        while independent_polygonal(k,n)<y:
             n+=1
+        if independent_polygonal(k,n)==y:
+            results.append((a,b,d,r,s,n))
     return sorted(results)
 
 class SeedDescentTests(unittest.TestCase):
