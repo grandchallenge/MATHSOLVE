@@ -4,7 +4,7 @@ from math import isqrt
 from research.figurate_wp09_exact_seed_018 import (
     A, B, C, K, L, NORM, PELL_D, R, UNIT_U, UNIT_V,
     AMPLIFICATION_MODULUS, BASE_S, BASE_X, SEED_STEPS,
-    construct_seed, construct_next_family_member, pell_multiply,
+    construct_seed, construct_next_family_member,
     unit_order_mod, polygonal,
 )
 
@@ -72,13 +72,13 @@ class Exact84GonalSeedTests(unittest.TestCase):
         self.assertEqual(len(str(d)), 1687)
 
     def test_modular_unit_order_is_minimal(self):
-        self.assertEqual(unit_order_mod(P, UNIT_U, UNIT_V,
+        self.assertEqual(unit_order_mod(PELL_D, UNIT_U, UNIT_V,
                                         AMPLIFICATION_MODULUS), 328)
         x, y = 1, 0
         for exponent in range(1, 328):
-            x, y = pell_multiply(P, x, y, UNIT_U, UNIT_V)
+            x, y = UNIT_U*x + PELL_D*UNIT_V*y, UNIT_V*x + UNIT_U*y
             self.assertNotEqual((x % 656, y % 656), (1, 0))
-        x, y = pell_multiply(P, x, y, UNIT_U, UNIT_V)
+        x, y = UNIT_U*x + PELL_D*UNIT_V*y, UNIT_V*x + UNIT_U*y
         self.assertEqual((x % 656, y % 656), (1, 0))
 
     def test_seed_exceeds_previous_entry_census(self):
