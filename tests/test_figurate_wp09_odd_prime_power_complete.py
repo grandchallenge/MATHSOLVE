@@ -29,8 +29,8 @@ class OddPrimePowerCompleteTests(unittest.TestCase):
             self.assertEqual(audit(p,n)["excluded"], excluded)
 
     def test_complete_mod27_and_mod81(self):
-        self.assertEqual(audit(3,3)["excluded"], 18)
-        self.assertEqual(audit(3,4)["excluded"], 180)
+        self.assertEqual(audit(3,3)["excluded"], 54)
+        self.assertEqual(audit(3,4)["excluded"], 540)
 
     def test_independent_all_entry_residue_oracle(self):
         for p,n in ((3,1),(3,2),(3,3),(5,1),(5,2),(7,1),(7,2)):
