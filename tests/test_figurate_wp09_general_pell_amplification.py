@@ -4,6 +4,7 @@ from math import isqrt
 from research.figurate_wp09_general_pell_amplification import (
     SEEDS, amplify_seed, fundamental_pell_unit,
     positive_pell_seed, residue_preserving_order,
+    square_second_entry_extensions,
 )
 
 def direct_polygonal(k,t):
@@ -90,6 +91,37 @@ class GeneralPellTests(unittest.TestCase):
             if seen_negative==10:
                 break
         self.assertEqual(seen_negative,10)
+
+    def test_split_square_case_complete_finite_extensions(self):
+        self.assertEqual(square_second_entry_extensions(4,5,3),
+                         [{"entries":(1,4,11),"indices":(3,4,7),"norm":-240}])
+        for k,c,r in ((4,5,3),(4,9,5),(5,3,2),(6,7,3)):
+            b=direct_polygonal(k,r)-c
+            if b<=1 or isqrt(b)**2!=b:
+                continue
+            if 8*(k-2)*c+(k-4)**2==0:
+                continue
+            found=square_second_entry_extensions(k,c,r)
+            oracle=set()
+            for s in range(1,1500):
+                d=direct_polygonal(k,s)-c
+                if d<=1 or d==b:
+                    continue
+                z=b*d+c
+                discr=8*(k-2)*z+(k-4)**2
+                if discr<0:
+                    continue
+                v=isqrt(discr)
+                if v*v!=discr:
+                    continue
+                numer=v+k-4
+                if numer%(2*(k-2)):
+                    continue
+                t=numer//(2*(k-2))
+                if t>=1:
+                    oracle.add((s,t))
+            self.assertEqual({(x["indices"][1],x["indices"][2])
+                              for x in found if x["indices"][1]<1500},oracle)
 
     def test_invalid_seeds(self):
         with self.assertRaises(ValueError):
