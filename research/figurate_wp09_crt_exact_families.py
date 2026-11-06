@@ -40,8 +40,8 @@ def _binary_witness(k: int, c: int, n: int) -> tuple[tuple[int, ...], tuple[int,
         raise ValueError("binary exponent outside audited finite range [1,8]")
     q = 1 << n
     image_index: dict[int, int] = {}
-    for t in range(1, q + 1):
-        image_index.setdefault(polygonal(k, t) % q, t % q)
+    for t in range(1, 2*q + 1):
+        image_index.setdefault(polygonal(k, t) % q, t % (2*q))
     if k % 4 == 0:
         entries = obstruction_witness(k, c, n)
     else:
@@ -83,6 +83,7 @@ def finite_modulus_witness(k: int, c: int, M: int) -> dict | None:
     entry_components: list[tuple[int, int, int]] = []
     index_components: list[tuple[int, int, int]] = []
     moduli: list[int] = []
+    index_moduli: list[int] = []
     for p, n, q in factors:
         if p == 2:
             w = _binary_witness(k, c, n)
@@ -98,13 +99,14 @@ def finite_modulus_witness(k: int, c: int, M: int) -> dict | None:
         entry_components.append(tuple(entries))
         index_components.append(tuple(indices))
         moduli.append(q)
+        index_moduli.append(2*q if p == 2 else q)
     entry_residues = tuple(_crt([part[i] for part in entry_components], moduli)
                            for i in range(3))
-    index_residues = tuple(_crt([part[i] for part in index_components], moduli)
+    index_residues = tuple(_crt([part[i] for part in index_components], index_moduli)
                            for i in range(3))
     pairs = ((0,1),(0,2),(1,2))
     if not all((entry_residues[i]*entry_residues[j] + c -
-                polygonal(k, index_residues[z] + M)) % M == 0
+                polygonal(k, index_residues[z] + 2*M)) % M == 0
                for z,(i,j) in enumerate(pairs)):
         raise AssertionError("CRT witness fails independent polynomial check")
     return {
@@ -113,7 +115,7 @@ def finite_modulus_witness(k: int, c: int, M: int) -> dict | None:
         "index_residues": index_residues,
         "distinct_positive_entries": tuple(x + (i+1)*M
                                            for i,x in enumerate(entry_residues)),
-        "positive_index_representatives": tuple(x+M for x in index_residues),
+        "positive_index_representatives": tuple(x+2*M for x in index_residues),
     }
 
 
