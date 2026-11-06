@@ -105,6 +105,50 @@ def amplify_seed(k: int,c: int,r: int,s: int,t: int,steps: int) -> dict:
             "pell":{"S":S,"T":T,"norm":data["norm"],
                     "fundamental_unit":(u,v),"residue_order":order}}
 
+def square_second_entry_extensions(k: int,c: int,r: int) -> list[dict]:
+    """All exact extensions when b=P_k(r)-c>1 is square, delta!=0."""
+    b=polygonal(k,r)-c
+    h=isqrt(b) if b>0 else 0
+    if b<=1 or h*h!=b:
+        raise ValueError("fixed second entry must be a square >1")
+    delta=8*(k-2)*c+(k-4)**2
+    if delta==0:
+        raise ValueError("zero discriminant is a degenerate split case")
+    N=-(b-1)*delta
+    R=2*(k-2)
+    L=k-4
+    answers=[]
+    seen=set()
+    for d0 in range(1,isqrt(abs(N))+1):
+        if abs(N)%d0:
+            continue
+        for m in (d0,abs(N)//d0):
+            for sign in (-1,1):
+                X=sign*m
+                Y=N//X
+                if (X+Y)%2 or (Y-X)%(2*h):
+                    continue
+                T=(X+Y)//2
+                S=(Y-X)//(2*h)
+                if (T+L)%R or (S+L)%R:
+                    continue
+                t=(T+L)//R
+                s=(S+L)//R
+                if min(s,t)<1:
+                    continue
+                third=polygonal(k,s)-c
+                if third<=1 or third==b:
+                    continue
+                if b*third+c!=polygonal(k,t):
+                    continue
+                key=(s,t)
+                if key not in seen:
+                    seen.add(key)
+                    answers.append({"entries":(1,b,third),"indices":(r,s,t),
+                                    "norm":N})
+    return sorted(answers,key=lambda x:x["indices"])
+
+
 SEEDS={
  "pentagonal":(5,2,2,48,83),
  "hexagonal":(6,2,3,5,17),
