@@ -1,5 +1,6 @@
 """Independent exact arithmetic checks for four WP09-021 Pell seeds."""
 import unittest
+from math import isqrt
 from research.figurate_wp09_local_positive_seed_batch_021 import (
     CASES,OFFSET,construct_seed,construct_next_family_member,
     unit_order_mod,polygonal,
@@ -48,7 +49,7 @@ class LocalPositiveSeedBatchTests(unittest.TestCase):
     def test_nonsquare_first_pair_and_infinite_family(self):
         for k in CASES:
             self.assertEqual((k-2)%16,2)
-            self.assertNotEqual(int((k-2)**0.5)**2,k-2)
+            self.assertNotEqual(isqrt(k-2)**2,k-2)
             seed=construct_seed(k)
             nxt=construct_next_family_member(k)
             self.assertGreater(nxt["entries"][2],seed["entries"][2],k)
