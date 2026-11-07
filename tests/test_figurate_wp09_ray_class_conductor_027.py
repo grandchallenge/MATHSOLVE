@@ -14,7 +14,7 @@ class ConductorRayTests(unittest.TestCase):
         for n in range(1,2000):
             f,d=square_factor(n)
             self.assertEqual(f*f*d,n)
-            self.assertTrue(all(n%(p*p) for p in range(2,int(d**.5)+1)))
+            self.assertTrue(all(d%(p*p) for p in range(2,int(d**.5)+1)))
         self.assertEqual(square_factor(81*7),(9,7))
         with self.assertRaises(ValueError):square_factor(0)
 
@@ -44,9 +44,7 @@ class ConductorRayTests(unittest.TestCase):
 
     def test_known_positive_ray_generators(self):
         # Protected FIGURATE seeds: (k,s,t,d).
-        for k,s,t,d in ((84,2897641606046209200,13119630367519738931,
-                         172124700980346120000589924527450935999),
-                        (308,49173,860168,369944066839)):
+        for k,s,t,d in ((308,49173,860168,369944066839),):
             m=(k-4)//16
             z=squarefree_order_generator(m,s,t)
             self.assertTrue(z["valid"],(k,z))
@@ -55,6 +53,18 @@ class ConductorRayTests(unittest.TestCase):
             self.assertEqual((z["x"]*z["x"]-
                               order_data(m)["D"]*z["y"]*z["y"]),
                              order_data(m)["N"])
+
+    def test_generated_anchor_controls_checked_independently(self):
+        from research.figurate_wp09_odd_ray_lattice_025 import (
+            normalized_decide,construct_exact_seed
+        )
+        for k in (84,100):
+            witness=construct_exact_seed(normalized_decide(k,100000))
+            _,s,t=witness["indices"];_,b,d=witness["entries"]
+            self.assertEqual(b,k-2)
+            self.assertTrue(squarefree_order_generator((k-4)//16,s,t)["valid"])
+            self.assertEqual((independent_polygonal(k,s),independent_polygonal(k,t)),
+                             (d+2,b*d+2))
 
     def test_known_failure_prime_seven(self):
         # This is an anchor/global locally obstructed control, NOT a
