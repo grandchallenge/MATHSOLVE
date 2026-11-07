@@ -89,3 +89,25 @@ def squarefree_order_generator(m:int,s:int,t:int)->dict:
     y=A*s-(A-1)//2
     result=verify_ray_generator(m,x,y)
     return {"x":x,"y":y,**result}
+
+def ideal_norm_locally_permitted(m:int)->bool:
+    """Exact local ideal-norm criterion in K=Q(sqrt(2A)).
+
+    This is equivalent to the protected WP09-012 every-place local
+    Type B criterion for c=2,k=16m+4, but says NOTHING about the
+    required oriented ray-principality or exact global anchor seed.
+    """
+    return len(inert_prime_obstructions(m))==0
+
+def wp09_012_direct_local_oracle(m:int)->bool:
+    """Independent direct Legendre formulation from protected WP09-012.
+
+    Delta=32*H, (k-2)/2=A, and gcd(A,H)=1.
+    """
+    z=order_data(m)
+    A,H=z["A"],z["H"]
+    for p,e in prime_valuations(H).items():
+        if p==2:continue
+        if e%2==1 and pow(A%p,(p-1)//2,p)==p-1:
+            return False
+    return True
