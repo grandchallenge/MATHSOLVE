@@ -63,7 +63,7 @@ class ConductorRayTests(unittest.TestCase):
             _,s,t=witness["indices"];_,b,d=witness["entries"]
             self.assertEqual(b,k-2)
             self.assertTrue(squarefree_order_generator((k-4)//16,s,t)["valid"])
-            self.assertEqual((independent_polygonal(k,s),independent_polygonal(k,t)),
+            self.assertEqual((alternate_polygonal(k,s),alternate_polygonal(k,t)),
                              (d+2,b*d+2))
 
     def test_known_failure_prime_seven(self):
