@@ -84,7 +84,7 @@ class UniformAnchorTests(unittest.TestCase):
         self.assertEqual(sufficient_residue_modulus(6,2),16)
 
     def test_invalid_domains_and_necessary_only(self):
-        for k in (3,20,36):
+        for k in (3,8,12,16,24,32):
             with self.assertRaises(ValueError):anchor_params(k)
         with self.assertRaises(ValueError):index_period(2,2)
         with self.assertRaises(ValueError):index_period(84,0)
