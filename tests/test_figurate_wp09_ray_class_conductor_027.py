@@ -3,7 +3,8 @@ import unittest
 from math import gcd
 from research.figurate_wp09_ray_class_conductor_027 import (
     order_data, square_factor, prime_valuations, inert_prime_obstructions,
-    verify_ray_generator, squarefree_order_generator,\n    ideal_norm_locally_permitted, wp09_012_direct_local_oracle,
+    verify_ray_generator, squarefree_order_generator,
+    ideal_norm_locally_permitted, wp09_012_direct_local_oracle,
 )
 
 def alternate_polygonal(k,n):
