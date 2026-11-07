@@ -2,7 +2,7 @@
 import unittest
 from math import gcd
 from research.figurate_wp09_linear_ray_026 import (
-    solve_linear_congruence,linear_ray_hit,linear_gcd_decide,
+    solve_linear_congruence,closed_form_ray_conditions,linear_ray_hit,linear_gcd_decide,
     verified_hit_modulo,
 )
 from research.figurate_wp09_odd_ray_lattice_025 import (
@@ -52,6 +52,9 @@ class LinearRayTests(unittest.TestCase):
                         ((A+1)//2,(A+1)//2),(A+1,A+5)):
                 full=ray_orbit(p,unit,rep)
                 linear=linear_ray_hit(p,unit,rep)
+                conditions=closed_form_ray_conditions(p,unit,rep)
+                self.assertEqual(conditions["even"] or conditions["odd"],
+                                 linear is not None,(m,rep))
                 self.assertEqual(full is None,linear is None,(m,rep))
                 if linear:
                     self.assertEqual(full["step"],linear["step"],(m,rep))
