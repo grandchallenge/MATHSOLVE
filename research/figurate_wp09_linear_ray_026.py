@@ -12,6 +12,25 @@ from research.figurate_wp09_uniform_pell_lattice_023 import (
 )
 from research.figurate_wp09_odd_ray_lattice_025 import normalized_parameters
 
+def closed_form_ray_conditions(p:dict, unit:tuple[int,int],
+                               rep:tuple[int,int])->dict:
+    """Necessary and sufficient even/odd branch tests, no orbit or solver.
+
+    r=2^-1 mod A, g=gcd(V,A):
+      even iff x0=r mod A, y0=r mod g;
+      odd  iff x0=U*r mod A, y0=U*r mod g.
+    """
+    A,Q=p["A"],p["Q"];U,V=unit
+    if A<1 or A%2!=1 or Q!=2*A or U*U-Q*V*V!=1:
+        raise ValueError("invalid primitive anchor/unit")
+    x,y=rep
+    r=(A+1)//2%A
+    g=gcd(V,A)
+    ur=U*r
+    return {"even":(x-r)%A==0 and (y-r)%g==0,
+            "odd":(x-ur)%A==0 and (y-ur)%g==0,
+            "gcd":g}
+
 def solve_linear_congruence(coefficient:int,rhs:int,modulus:int)->int|None:
     """Least j>=0 solving coefficient*j == rhs modulo modulus.
 
