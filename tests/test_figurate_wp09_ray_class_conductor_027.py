@@ -3,7 +3,7 @@ import unittest
 from math import gcd
 from research.figurate_wp09_ray_class_conductor_027 import (
     order_data, square_factor, prime_valuations, inert_prime_obstructions,
-    verify_ray_generator, squarefree_order_generator,
+    verify_ray_generator, squarefree_order_generator,\n    ideal_norm_locally_permitted, wp09_012_direct_local_oracle,
 )
 
 def alternate_polygonal(k,n):
@@ -82,6 +82,15 @@ class ConductorRayTests(unittest.TestCase):
         self.assertFalse(verify_ray_generator(5,0,0)["valid"])
         self.assertEqual(z["rho_coefficients"],((z["A"]+1)//2,)*2)
         self.assertEqual(verify_ray_generator(5,1,1)["expected_norm"],z["N"])
+
+    def test_ideal_norm_equivalent_to_protected_local_sieve(self):
+        from research.figurate_wp09_everywhere_local_sieve import classify
+        for m in range(250):
+            k=16*m+4
+            a=ideal_norm_locally_permitted(m)
+            b=wp09_012_direct_local_oracle(m)
+            c=classify(k,2)["locally_compatible_everywhere"]
+            self.assertEqual((a,b),(c,c),(m,k))
 
     def test_invalid_inputs(self):
         with self.assertRaises(ValueError):order_data(-1)
