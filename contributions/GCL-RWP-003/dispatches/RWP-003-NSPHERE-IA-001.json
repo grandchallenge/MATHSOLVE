@@ -8,15 +8,10 @@
   "agent_ref": "CHATGPT-TASK-WORKER-RWP003",
   "concurrency_mode": "independent_blind",
   "blind_cohort_id": "RWP-003-NSPHERE-BLIND-COHORT-001",
-  "bootstrap_path": "handoffs/GCL-RWP-003/NSPHERE.md",
-  "bootstrap_blob_sha1": "beaa113f1491bbf8437b6dafb653d317d12a5d3b",
-  "bootstrap_sha256": "1c0b461d30f17cad8da86500081516509c79d37e05d519f2275a616116df973b",
   "task_path": "handoffs/GCL-RWP-003/NSPHERE.md",
   "task_blob_sha1": "beaa113f1491bbf8437b6dafb653d317d12a5d3b",
   "task_sha256": "1c0b461d30f17cad8da86500081516509c79d37e05d519f2275a616116df973b",
   "source_handoff_commit_sha": "5e426d85e74409a683d9cdfa57a7316b45e6d9fe",
-  "source_handoff_blob_sha": "beaa113f1491bbf8437b6dafb653d317d12a5d3b",
-  "source_handoff_sha256": "1c0b461d30f17cad8da86500081516509c79d37e05d519f2275a616116df973b",
   "protected_programme_predecessor": "c3267cb84b72387b25a3ca0b636c9c3bfb00a002",
   "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
   "intake_channel": "github_issue_comment",
@@ -32,5 +27,6 @@
   "first_valid_result_lock": "dispatch_level_protected_raw_existence",
   "external_sources_policy": "PROTECTED_PACKET_ONLY",
   "supplementary_artifacts_allowed": false,
-  "claim_boundary": "Bounded source-pinned normalized-residual mathematical research evidence only; no novelty claim, certified theorem, publication or generic autonomous model-runner authority."
+  "claim_boundary": "Bounded source-pinned normalized-residual mathematical research evidence only; no novelty claim, certified theorem, publication or generic autonomous model-runner authority.",
+  "task_commit": "5e426d85e74409a683d9cdfa57a7316b45e6d9fe"
 }
