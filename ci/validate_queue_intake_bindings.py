@@ -56,8 +56,15 @@ def validate(root:Path=ROOT)->list[str]:
             errors.append(f"{did}: queue registry and intake binding disagree")
         if dispatch.get("dispatch_id")!=did or dispatch.get("github_issue_number")!=job["issue_number"]:
             errors.append(f"{did}: dispatch and queue registry disagree")
-        if dispatch.get("campaign") not in {"RH-001","ERDOS-OPEN","QFT-COND-005","GCL-OAI-MATH-2026"}:
+        if dispatch.get("campaign") not in {"RH-001","ERDOS-OPEN","QFT-COND-005","GCL-OAI-MATH-2026","GCL-RWP-003"}:
             errors.append(f"{did}: unregistered campaign")
+        if dispatch.get("campaign") == "GCL-RWP-003":
+            if (did != "RWP-003-NSPHERE-IA-001"
+                    or job.get("issue_number") != 1218
+                    or b.get("task_path") != "handoffs/GCL-RWP-003/NSPHERE.md"
+                    or b.get("allowed_external_sources") != ["PROTECTED_PACKET_ONLY"]
+                    or b.get("allowed_dispositions") != ["PROVED_REDUCTION","EXACT_BLOCKER","COUNTEREXAMPLE"]):
+                errors.append(f"{did}: RWP-003 bounded pilot binding is not exact")
         if dispatch.get("dispatch_status")!="READY_FOR_GITHUB_COMMENT" or dispatch.get("lease_state")!="ACTIVE":
             errors.append(f"{did}: dispatch not executable")
         if dispatch.get("canonical_mutation_authorized") is not False or dispatch.get("certification_authorized") is not False:
