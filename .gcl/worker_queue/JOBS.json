@@ -665,6 +665,19 @@
       "dispatch_path": "contributions/OAI-MATH-2026/TRIAGE_001/dispatches/OAI26-WP05-IA-001.json",
       "cohort_id": "GCL-OAI-MATH-2026-TRIAGE-COHORT-001",
       "task_commit": "b007f4106a8694830ae9064497eafe006bb045d3"
+    },
+    {
+      "dispatch_id": "RWP-003-NSPHERE-IA-001",
+      "issue_number": 1218,
+      "role": "RECONNAISSANCE",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/GCL-RWP-003/dispatches/RWP-003-NSPHERE-IA-001.json",
+      "cohort_id": "RWP-003-NSPHERE-BLIND-COHORT-001",
+      "task_commit": "5e426d85e74409a683d9cdfa57a7316b45e6d9fe"
     }
   ]
 }

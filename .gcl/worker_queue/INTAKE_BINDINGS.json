@@ -421,6 +421,24 @@
         "PROTECTED_PACKET_ONLY"
       ],
       "campaign": "GCL-OAI-MATH-2026"
+    },
+    {
+      "dispatch_id": "RWP-003-NSPHERE-IA-001",
+      "dispatch_path": "contributions/GCL-RWP-003/dispatches/RWP-003-NSPHERE-IA-001.json",
+      "github_issue_number": 1218,
+      "issue_body_sha256": "e666bf62e38caa96249f155edafcb0e1ae28c877d687df2d794c9980057e1c86",
+      "task_path": "handoffs/GCL-RWP-003/NSPHERE.md",
+      "task_commit": "5e426d85e74409a683d9cdfa57a7316b45e6d9fe",
+      "task_sha256": "1c0b461d30f17cad8da86500081516509c79d37e05d519f2275a616116df973b",
+      "allowed_dispositions": [
+        "PROVED_REDUCTION",
+        "EXACT_BLOCKER",
+        "COUNTEREXAMPLE"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "GCL-RWP-003"
     }
   ]
 }
