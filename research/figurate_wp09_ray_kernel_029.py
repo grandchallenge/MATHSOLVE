@@ -133,3 +133,31 @@ def ray_kernel(m:int,max_states:int|None=250000)->dict:
             "narrow_picard_group_computed":False,
             "ray_kernel_complete":True,
             "general_parameter_classification_proved":False}
+
+def rigorously_classified_full_ray_group(m:int)->dict:
+    """Full oriented order ray groups in proved base cases only.
+
+    m=0: O=Z[sqrt 2] is norm-Euclidean (nearest integer coefficients
+    give absolute norm <=3/4<1), and 1+sqrt 2 has norm -1.
+    The A=1 ray is trivial and the narrow Picard group is trivial.
+
+    m=1: O=Z[3sqrt 2], conductor 3, A=9. O_K=Z[sqrt 2]
+    has class number 1. The conductor Picard exact sequence
+    (O_K/3)^* / ((Z/3)^* image O_K^*) -> Pic(O) -> Pic(O_K)
+    gives Pic(O)=1: O_K/3=F_9 and 1+sqrt 2 generates its
+    eight-element unit group. O has no norm -1 unit, since
+    x^2-18y^2=-1 has no solution modulo 3. Thus Pic^+(O)=C2.
+    Computed ray-unit kernel is C3, so the full abelian oriented
+    ray group is the unique abelian group of order 6, namely C6.
+    """
+    if m not in (0,1):
+        raise ValueError("full ray class group unproved outside m=0,1")
+    z=ray_kernel(m)
+    if m==0:
+        if z["kernel_order"]!=1:raise ArithmeticError("m0 kernel drift")
+        return {"m":0,"full_group_invariant_factors":[],"full_group_order":1,
+                "narrow_picard_order":1,"proved":True}
+    if z["kernel_invariant_factors"]!=[3]:
+        raise ArithmeticError("m1 kernel drift")
+    return {"m":1,"full_group_invariant_factors":[6],"full_group_order":6,
+            "narrow_picard_order":2,"proved":True}
