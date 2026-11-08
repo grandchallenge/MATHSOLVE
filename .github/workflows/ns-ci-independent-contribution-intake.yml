@@ -36,7 +36,8 @@ jobs:
        startsWith(github.event.issue.title, '[GCL-CONTRIB] ERDOS-OPEN ') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] QFT-COND-005 ') ||
        startsWith(github.event.issue.title, '[GCL-CONTRIB] OAI-MATH-2026 ') ||
-       startsWith(github.event.issue.title, '[GCL-CONTRIB] GCL-E2E-CANARY ')) &&
+       startsWith(github.event.issue.title, '[GCL-CONTRIB] GCL-E2E-CANARY ') ||
+       startsWith(github.event.issue.title, '[GCL-CONTRIB] RWP-003-NSPHERE-IA-001 ')) &&
       startsWith(github.event.comment.body, 'GCL-CONTRIBUTION-RESULT/1'))
     runs-on: ubuntu-24.04
     timeout-minutes: 10
