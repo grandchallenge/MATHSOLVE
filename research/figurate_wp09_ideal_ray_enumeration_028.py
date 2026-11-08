@@ -38,7 +38,7 @@ class IdealHNF:
     def contains(self, x: int, y: int) -> bool:
         # x+y sqrt(D) belongs to <ch, cj+c sqrt(D)>.
         return y % self.c == 0 and (
-            x - self.j * (y // self.c)
+            x - self.j * y
         ) % (self.c * self.h) == 0
 
 
