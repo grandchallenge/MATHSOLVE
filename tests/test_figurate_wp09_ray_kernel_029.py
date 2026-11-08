@@ -3,7 +3,7 @@ import unittest
 from math import gcd
 from research.figurate_wp09_ray_kernel_029 import (
     residue_map,residue_product,residue_power,ray_kernel,prime_factors,
-    expected_residue_group_size
+    expected_residue_group_size,rigorously_classified_full_ray_group
 )
 from research.figurate_wp09_uniform_pell_lattice_023 import fundamental_unit
 from research.figurate_wp09_ray_class_conductor_027 import order_data
@@ -96,6 +96,22 @@ class RayKernelTests(unittest.TestCase):
         self.assertEqual(ray_kernel(1)["conductor"],3)
         self.assertEqual(ray_kernel(3)["conductor"],5)
         self.assertEqual(ray_kernel(6)["conductor"],7)
+
+    def test_small_kernel_invariant_factors(self):
+        expected={
+            0:[],1:[3],2:[16],3:[10],4:[10],5:[20],
+            6:[42],7:[3,18],8:[2,60],9:[36],
+        }
+        for m,group in expected.items():
+            self.assertEqual(ray_kernel(m)["kernel_invariant_factors"],group)
+
+    def test_two_rigorously_classified_full_groups(self):
+        self.assertEqual(
+            rigorously_classified_full_ray_group(0)["full_group_invariant_factors"],[])
+        self.assertEqual(
+            rigorously_classified_full_ray_group(1)["full_group_invariant_factors"],[6])
+        with self.assertRaises(ValueError):
+            rigorously_classified_full_ray_group(2)
 
     def test_guard_and_domain_errors(self):
         with self.assertRaises(ValueError):ray_kernel(-1)
