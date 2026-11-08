@@ -47,3 +47,11 @@ the Human Steward to restate already-established authority or facts. Before
 stopping, name the exact governance, authentication, safety, materially changed
 state, scope, or substantive evidentiary boundary that prevents the next
 authorized recovery action.
+
+## Completed operation handoffs
+
+- **GCL-RWP-003:** [operator completion and recovery record](handoffs/GCL-RWP-003/COMPLETION.md).
+  The bounded continuity pilot and research assignment are closed. Consult that
+  record and its pinned issue/commit evidence before interpreting historical
+  `received_unadjudicated` intake metadata. This entry grants no mathematical
+  certification, new worker reservation, or reopening authority.
