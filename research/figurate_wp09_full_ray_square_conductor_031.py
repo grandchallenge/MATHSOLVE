@@ -183,7 +183,7 @@ def cyclic_quotient_invariants(components: list[tuple[int, int]]):
     unit_order = 1
     for n, a in components:
         if n < 1:
-            raise ArithmeticError("bad cyclic factor")
+            raise ValueError("bad cyclic factor")
         primes.update(factor(n))
         ambient_order *= n
         unit_order = lcm(unit_order, n//gcd(n,a))
