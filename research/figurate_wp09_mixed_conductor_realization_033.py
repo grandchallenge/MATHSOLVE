@@ -76,9 +76,10 @@ def ray_certificate(f: int, *, max_conductor_bits: int = 12000) -> RayCertificat
     The certificate is a proof-backed modular construction valid for all
     supported f, including mixed products; a guard raises rather than NO.
     """
-    factors = supported_factors(f)
-    if f.bit_length() > max_conductor_bits:
+    # Apply the bit-size guard before potentially expensive repeated factor removal.
+    if type(f) is int and f > 0 and f.bit_length() > max_conductor_bits:
         raise ResourceGuard("conductor size guard; mathematical theorem still holds")
+    factors = supported_factors(f)
     A, modulus = f*f, f**3
     H = (A*A + 6*A + 1)//8
     N = -2*(2*A - 1)*H
