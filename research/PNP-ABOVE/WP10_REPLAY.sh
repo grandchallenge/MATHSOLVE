@@ -20,7 +20,7 @@ b09=3b64353814fd70a77810e51f2d04cbcfb4271def
 
 test "$(git -C "$upstream" rev-parse HEAD)" = "$upstream_commit" ||
   { echo "SOURCE_LOCK_MISMATCH upstream" >&2; exit 65; }
-test "$(git -C "$gcl" rev-parse HEAD)" = "$gcl_commit" ||
+test "$(git -C "$gcl" merge-base "$gcl_commit" HEAD)" = "$gcl_commit" ||
   { echo "SOURCE_LOCK_MISMATCH gcl" >&2; exit 65; }
 
 src=$gcl/research/PNP-ABOVE
@@ -42,8 +42,8 @@ wp10=$src/WP10_SourceAcceptanceBridge.lean
 test -f "$wp10" ||
   { echo "WP10_MISSING $wp10" >&2; exit 66; }
 cp -- "$wp10" "$work/PNPAbove/WP10.lean"
-printf 'UPSTREAM_SHA=%s\nGCL_SHA=%s\nWP08_GIT_BLOB=%s\nWP09_GIT_BLOB=%s\n' \
-  "$upstream_commit" "$gcl_commit" "$b08" "$b09" > "$work/lock.txt"
+printf 'UPSTREAM_SHA=%s\nGCL_BASE_SHA=%s\nGCL_CANDIDATE_HEAD=%s\nWP08_GIT_BLOB=%s\nWP09_GIT_BLOB=%s\n' \
+  "$upstream_commit" "$gcl_commit" "$(git -C "$gcl" rev-parse HEAD)" "$b08" "$b09" > "$work/lock.txt"
 sha256sum "$work"/PNPAbove/*.lean >> "$work/lock.txt"
 
 # No hidden network download or cold rebuild: a pre-existing exact upstream
