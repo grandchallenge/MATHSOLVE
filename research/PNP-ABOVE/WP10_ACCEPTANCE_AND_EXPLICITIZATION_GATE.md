@@ -1,7 +1,7 @@
-# PNP-ABOVE WP10 — acceptance-bridge candidate and succinct-transfer negative control
+# PNP-ABOVE WP10 — source-native acceptance proof and succinct-transfer negative control
 
 **Research parent:** [MATHSOLVE #1136](https://github.com/grandchallenge/MATHSOLVE/issues/1136).
-**Classification:** `CAL` for the bounded Python negative-control test; `OPEN / UNREPLAYED` for the imported Lean WP10 proof candidate. This is not mathematical certification, not a compressed verifier, and not an NP lower bound.
+**Classification:** `CAL` for the bounded Python negative-control test; `LEAN-REPLAYED / NOT CERTIFIED` for the imported Lean WP10 proof; exact imported evaluation and quantified claims are checked. This is not mathematical certification, not a compressed verifier, and not an NP lower bound.
 
 ## Source identity and governance
 
@@ -14,18 +14,18 @@
 
 ## WP10 native acceptance proof: precise status
 
-The new Lean candidate states four narrow results:
+The source-native Lean proof establishes four narrow results:
 
 1. If the already-source-sound `WP09.runFuel` returns the canonical `encode true` on WP08's original `identityDeciderProg` and typed input, there is an actual imported `MIPRE.Decider.Accepts` witness with the same reported time. This is immediate from WP09's source-checked `runFuel_sound` theorem.
 2. If that computation returns canonical `encode false`, `MIPRE.Cost.Eval.deterministic` rules out any conflicting canonical-true acceptance witness for that input.
-3. The 63-cost, positive-index nine-bit example from WP08 is proposed as a concrete source acceptance theorem, this time evaluating it through the *WP09* interpreter rather than assuming the two interpreter definitions are equal.
-4. The zero-index typed example is proposed as a source-level rejection theorem, rather than merely a Boolean test.
+3. The 63-cost, positive-index nine-bit example from WP08 is established as a concrete source acceptance theorem, this time evaluating it through the *WP09* interpreter rather than assuming the two interpreter definitions are equal.
+4. The zero-index typed example is proved as a source-level rejection theorem, rather than merely a Boolean test.
 
-**Replay boundary:** the upstream repository was freshly cloned at the exact source revision on CHAD. The previous ephemeral package build was not retained. Its `.lake/build/lib/lean/MIPRE/Foundations/Verifier.olean` is absent. A cold `lake exe cache get` would download **5,779 Mathlib artifacts**; the bounded retry was stopped after limited progress. `bash -n` on the exact candidate replay script passed. The script correctly exited **78** with `SOURCE_IMPORTS_UNBUILT` rather than implying Lean success. Thus **none of the new WP10 theorems is admitted as Lean checked in this tranche**. The upstream WP09 theorem remains previously verified, with its original receipt unchanged.
+**Replay status (17 November 2026):** The previously missing upstream `.olean` dependency was recovered through a complete exact-upstream source build, including `MIPRE.Foundations.Verifier` (**3,111 Lake jobs, success**). The first replay uncovered a Lean 4.35 root-directory constraint; `WP10_REPLAY.sh` now uses `lean -R "$work"` when checking temporarily staged modules. The final source passed direct imported-source elaboration for WP08, WP09 and WP10 with exit 0, empty WP10 diagnostics and `WP10_IMPORTED_REPLAY_PASS`. A proof-trust inspection found that `native_decide` had introduced separate generated proof axioms for two concrete examples, so the tactics were replaced with ordinary kernel `decide`. A separate replay of that replacement passed; the full axiom report, source SHA-256 hashes, and exact replay instructions are recorded in [WP10 execution receipt](WP10_IMPORTED_ACCEPTANCE_REPLAY_RECEIPT.md); protected PR admission/readback remain separate.
 
-The source-native preflight used GCL CONTROL capture `590434829a4c4c59bb87f390086d5497`; cold-cache run capture `c6e1d420503c4db5b04f01896bf207e7` timed out. No fabricated compiler output, no independent attestation and no forced dependency rebuild.
+The generic bridge theorems depend only on `propext`, `Classical.choice` and `Quot.sound`. The final imported replay audit also verified exactly those standard axioms in both concrete examples (with kernel `decide`, not `native_decide`). The proof does not depend on a copied MIPRE model, a new user axiom, or an admitted quantum-compression theorem.
 
-**Next compiler action:** reuse a retained *exact upstream* Lean 4.35.0-rc3 build if independently located, or create a properly governed source-locked compute job with a persistent binary cache. A different-source `.olean` or a standalone copied-model check is insufficient for the imported theorem. Following a fresh `WP10_IMPORTED_REPLAY_PASS`, extend the proof to all well-typed nine-bit inputs, malformed raw-data behavior, full `Decider.Accepts` equivalence and a uniform cost/completeness argument. Neither `Verifier 9` nor positive-`lambda` compilation is currently proved.
+**Next proof obligation:** extend the result to all well-typed nine-bit inputs, malformed raw-data behavior, complete `Decider.Accepts` equivalence and a uniform cost/completeness argument. A full `Sampler 9`, `Verifier 9` and positive-`λ` compilation remain separately open.
 
 ## Classical transfer: an exact negative control
 

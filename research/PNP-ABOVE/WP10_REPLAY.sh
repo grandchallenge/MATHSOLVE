@@ -56,8 +56,35 @@ base_path=$(lake env printenv LEAN_PATH)
 export LEAN_PATH="$work:$base_path"
 for tag in 08 09 10; do
   echo "CHECKING_SOURCE_NATIVE_WP$tag"
-  lake env lean -o "$work/PNPAbove/WP$tag.olean" "$work/PNPAbove/WP$tag.lean" \
+  lake env lean -R "$work" -o "$work/PNPAbove/WP$tag.olean" "$work/PNPAbove/WP$tag.lean" \
     > "$work/WP$tag.log" 2>&1 ||
     { echo "LEAN_FAIL_WP$tag" >&2; cat "$work/WP$tag.log" >&2; exit 1; }
 done
+# Audit every public WP10 theorem for extra proof axioms. The simple
+# decidable examples use kernel `decide`, NOT `native_decide`.
+cat > "$work/AxiomAudit.lean" <<'EOF'
+import PNPAbove.WP10
+#print axioms PNPAbove.WP10.accepts_of_fuel
+#print axioms PNPAbove.WP10.rejects_of_fuel
+#print axioms PNPAbove.WP10.accepts_nine_bit_example
+#print axioms PNPAbove.WP10.rejects_zero_index
+EOF
+lake env lean -R "$work" "$work/AxiomAudit.lean" > "$work/AxiomAudit.log" 2>&1 ||
+  { echo "WP10_AXIOM_AUDIT_ELABORATION_FAIL" >&2; cat "$work/AxiomAudit.log" >&2; exit 1; }
+python3 - "$work/AxiomAudit.log" <<'PYAX'
+from pathlib import Path
+import re
+import sys
+s = Path(sys.argv[1]).read_text()
+expected = ("accepts_of_fuel", "rejects_of_fuel", "accepts_nine_bit_example", "rejects_zero_index")
+allowed = {"propext", "Classical.choice", "Quot.sound"}
+for theorem in expected:
+    matches = re.findall(r"'PNPAbove\.WP10\." + theorem + r"' depends on axioms: \[([^\]]*)\]", s, re.S)
+    if len(matches) != 1:
+        raise SystemExit("AXIOM_AUDIT_NOT_FOUND " + theorem)
+    found = {a.strip() for a in matches[0].split(",") if a.strip()}
+    if not found <= allowed:
+        raise SystemExit("UNEXPECTED_AXIOMS " + theorem + " " + repr(found - allowed))
+print("WP10_STANDARD_AXIOMS_ONLY_PASS")
+PYAX
 printf 'WP10_IMPORTED_REPLAY_PASS\n' | tee "$work/status.txt"

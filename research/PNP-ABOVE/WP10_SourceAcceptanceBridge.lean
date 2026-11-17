@@ -58,7 +58,7 @@ theorem accepts_nine_bit_example :
     WP08.identityDecider.Accepts 2 WP08.zeroNine
       WP08.alternatingNine [] [] := by
   apply accepts_of_fuel (fuel := 96) (t := 63)
-  native_decide
+  decide
 
 /-- An explicit zero-index rejection against the imported Decider.Accepts:
     the finite negative result is derived through Eval.deterministic. -/
@@ -69,7 +69,7 @@ theorem rejects_zero_index :
       (WP09.runFuel 96
         [WP08.sample 0 WP08.zeroNine WP08.zeroNine [] []]
         WP08.identityDeciderProg).map Prod.fst = some (encode false) := by
-    native_decide
+    decide
   cases hr : WP09.runFuel 96
       [WP08.sample 0 WP08.zeroNine WP08.zeroNine [] []]
       WP08.identityDeciderProg with
