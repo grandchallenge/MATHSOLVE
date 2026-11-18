@@ -1,0 +1,541 @@
+{
+  "schema": "GCL-PNP-ABOVE-DOCUMENTARY-SNAPSHOT/1",
+  "source_repository": "grandchallenge/MATHSOLVE",
+  "source_commit": "d741a85572cd99a1f8e206d1211543ef72445da2",
+  "captured_utc": "2026-11-18",
+  "external_source": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "artifact_count": 72,
+  "wp_count": 18,
+  "not_claimed": [
+    "P=NP or P!=NP",
+    "new unrestricted classical lower bound",
+    "positive-parameter quantum compressor execution",
+    "general SAT-to-classical strategy-cost transfer",
+    "original-model non-diagonal game-value gap",
+    "MATHCERT mathematical certification"
+  ],
+  "work_packages": [
+    {
+      "wp": "WP00",
+      "description": "Finite nine-level reference input and symbolic parameter ledger",
+      "primary_path": "research/PNP-ABOVE/WP00_NINE_LEVEL_INPUT_AND_TRANSFER.md",
+      "receipt_path": "research/PNP-ABOVE/WP00_NINE_LEVEL_INPUT_EMULATOR.py",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP00_COMPRESSION_PARAMETER_LEDGER.md",
+          "git_blob_sha1": "35b8970daefc3fca74bff417f2d12fafe88b25b3",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP00_NINE_LEVEL_INPUT_AND_TRANSFER.md",
+          "git_blob_sha1": "af9665058bea66d683888ac1666c2ffaf1ad7f1e",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP00_NINE_LEVEL_INPUT_EMULATOR.py",
+          "git_blob_sha1": "7191233cf34de15799155c35fe43d39d4ab7dd26",
+          "kind": "script"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP01",
+      "description": "Finite explicit-table SAT transfer and theorem source audit",
+      "primary_path": "research/PNP-ABOVE/WP01_EXPLICIT_CLASSICAL_TRANSFER_AND_SOURCE_AUDIT.md",
+      "receipt_path": "research/PNP-ABOVE/WP01_EXPLICIT_GAME_SAT_TRANSFER.py",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP01_COMPRESSION_PREFLIGHT.py",
+          "git_blob_sha1": "cccffc6bce758d4b77c488d3b2e6c80df071af86",
+          "kind": "script"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP01_EXPLICIT_CLASSICAL_TRANSFER_AND_SOURCE_AUDIT.md",
+          "git_blob_sha1": "e6c0e67f74ebaeb08e7e3a41437f238b71f976f5",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP01_EXPLICIT_GAME_SAT_TRANSFER.py",
+          "git_blob_sha1": "5f474ed214b19c11e8964bda9fc6b1debf61d556",
+          "kind": "script"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP02",
+      "description": "Formal-compression source interface extraction",
+      "primary_path": "research/PNP-ABOVE/WP02_LEAN_COMPRESSION_SOURCE_INTERFACE.md",
+      "receipt_path": "research/PNP-ABOVE/WP02_LEAN_COMPRESSION_SOURCE_INTERFACE.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP02_LEAN_COMPRESSION_SOURCE_INTERFACE.md",
+          "git_blob_sha1": "ba332504214360f52a8b8e6687194e95d56f5283",
+          "kind": "document"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP03",
+      "description": "Finite parameter recurrence in Lean",
+      "primary_path": "research/PNP-ABOVE/WP03_ParameterRecurrence.lean",
+      "receipt_path": "research/PNP-ABOVE/WP03_LEAN_PARAMETER_EXECUTION_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP03_LEAN_PARAMETER_EXECUTION_RECEIPT.md",
+          "git_blob_sha1": "0acdebde1305aadd01e9d59c91dde1d306718330",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP03_ParameterRecurrence.lean",
+          "git_blob_sha1": "697243b5fce228419f923641d02607ffd8e3c6ac",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP03_SIGMA_IMPLEMENTATION_CHECKPOINT.md",
+          "git_blob_sha1": "aec4f13c1e871b0452d4c7f92b4381994056005c",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP03_SIGMA_NUMERICAL.lean",
+          "git_blob_sha1": "a0b6349d74d339a73733fe96f363f156ea265333",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP03_SIGMA_NUMERICAL.py",
+          "git_blob_sha1": "ce5447d37bc85c38e0b4bae6d005275de43b50c1",
+          "kind": "script"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP04",
+      "description": "Source-inspired interpreter semantics replay",
+      "primary_path": "research/PNP-ABOVE/WP04_NativeProgReplay.lean",
+      "receipt_path": "research/PNP-ABOVE/WP04_NATIVE_PROG_EXECUTION_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP04_NATIVE_PROG_EXECUTION_RECEIPT.md",
+          "git_blob_sha1": "43e24ee6884ed7614633e55baf287c6bc62b75bd",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP04_NativeProgReplay.lean",
+          "git_blob_sha1": "1e422f210df6db82538e36e5a99c6630aba6300b",
+          "kind": "lean"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP05",
+      "description": "Pinned imported Prog and zero-parameter compiler build",
+      "primary_path": "research/PNP-ABOVE/WP05_ImportedProgReplay.lean",
+      "receipt_path": "research/PNP-ABOVE/WP05_UPSTREAM_BUILD_AND_NATIVE_REPLAY_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP05_DecisionCompilerZero.lean",
+          "git_blob_sha1": "d63fc00ec780fb36b582d1d5e474aacf189978d2",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP05_EXECUTION_STATUS.md",
+          "git_blob_sha1": "9dc606647e3e1270537404d9f15f6ff408acf727",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP05_IMPORTED_PROG_BUILD_EXECUTION_RECEIPT.md",
+          "git_blob_sha1": "1bf4ae19107c3a9810118e7841fb8ad2011e384f",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP05_ImportedProgReplay.lean",
+          "git_blob_sha1": "1f5f35fdfc4336339da90117966a7f64f275d088",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP05_SourceCompilerBranch.lean",
+          "git_blob_sha1": "ca6f9912e876a6ff73a9f8953d1af24bd53f08a8",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP05_UPSTREAM_BUILD_AND_NATIVE_REPLAY_RECEIPT.md",
+          "git_blob_sha1": "ed1e7cbfb6f7fbaac37c74e4eb697ef6dc2cdca9",
+          "kind": "document"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP06",
+      "description": "Zero-parameter compiler and erasure controls",
+      "primary_path": "research/PNP-ABOVE/WP06_SourceCompilerProofReplay.lean",
+      "receipt_path": "research/PNP-ABOVE/WP06_COMPILER_BRANCH_VERIFICATION_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP06_COMPILER_BRANCH_VERIFICATION_RECEIPT.md",
+          "git_blob_sha1": "9fc91ebff2dd7c1f3c277bf6b9e70ecfcbc2195d",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP06_IMPORTED_COMPILER_BRANCH_RECEIPT.md",
+          "git_blob_sha1": "814164a6d5e69c231b5dca54f2ec2acdce31290c",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP06_ImportedCompilerBranch.lean",
+          "git_blob_sha1": "a43763212754c1c763a8dbc48467fee43b174bf0",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP06_PARAMETER_ERASURE_AND_SAT_TRANSFER_BOUNDARY.md",
+          "git_blob_sha1": "828120d48bbe33251911da078ced3af0f0c19f2f",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP06_ParameterErasureCandidate.lean",
+          "git_blob_sha1": "eaaddbcfbc02fbdcd4ddfda1e275c2822f4906b2",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP06_SourceCompilerProofReplay.lean",
+          "git_blob_sha1": "68443763c21f182f02f05a151addd38c14e576ff",
+          "kind": "lean"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP07",
+      "description": "Source-erasure and clamp adequacy",
+      "primary_path": "research/PNP-ABOVE/WP07_ClampAdequacy.lean",
+      "receipt_path": "research/PNP-ABOVE/WP07_SOURCE_ERASURE_EXECUTION_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP07_ClampAdequacy.lean",
+          "git_blob_sha1": "6e9fa5a93b67335b5f9f15a5d4c269b4b9bc004b",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP07_SOURCE_ERASURE_EXECUTION_RECEIPT.md",
+          "git_blob_sha1": "e1b1d745dccb167aa7ca3497b8c5c4b756c7be47",
+          "kind": "document"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP08",
+      "description": "Original source nine-bit identity decider",
+      "primary_path": "research/PNP-ABOVE/WP08_NineBitDecider.lean",
+      "receipt_path": "research/PNP-ABOVE/WP08_NINE_BIT_DECIDER_EXECUTION_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP08_NINE_BIT_DECIDER_EXECUTION_RECEIPT.md",
+          "git_blob_sha1": "bc1f96c236933092c1a59fd5046a11d1a352231f",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP08_NineBitDecider.lean",
+          "git_blob_sha1": "45b9fa687fad92bf1b1d4be2809473e0c4f9957d",
+          "kind": "lean"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP09",
+      "description": "Imported interpreter soundness",
+      "primary_path": "research/PNP-ABOVE/WP09_InterpreterSoundness.lean",
+      "receipt_path": "research/PNP-ABOVE/WP09_INTERPRETER_SOUNDNESS_EXECUTION_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP09_INTERPRETER_SOUNDNESS_EXECUTION_RECEIPT.md",
+          "git_blob_sha1": "39a4d2b5407957ebe704a4974935ab61d9888231",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP09_InterpreterSoundness.lean",
+          "git_blob_sha1": "3b64353814fd70a77810e51f2d04cbcfb4271def",
+          "kind": "lean"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP10",
+      "description": "Native acceptance and explicitization negative control",
+      "primary_path": "research/PNP-ABOVE/WP10_SourceAcceptanceBridge.lean",
+      "receipt_path": "research/PNP-ABOVE/WP10_IMPORTED_ACCEPTANCE_REPLAY_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP10_ACCEPTANCE_AND_EXPLICITIZATION_GATE.md",
+          "git_blob_sha1": "a7674d0e0e29cb203db87740e5783431943f66f9",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP10_EXPLICITIZATION_NEGATIVE_CONTROL.py",
+          "git_blob_sha1": "644690dc6e2832b814a9e685a0ec084ae66eedeb",
+          "kind": "script"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP10_IMPORTED_ACCEPTANCE_REPLAY_RECEIPT.md",
+          "git_blob_sha1": "e69c04b7f5170ad17f3d9e6983c1508be23282cb",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP10_REPLAY.sh",
+          "git_blob_sha1": "3458a424e2583cde1dbca7cda5ee58273ec9190e",
+          "kind": "replay"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP10_SourceAcceptanceBridge.lean",
+          "git_blob_sha1": "860ad60fca4e99fcd836eec748fa419efd0701b2",
+          "kind": "lean"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP11",
+      "description": "Native fuel completeness and uniform decider bound",
+      "primary_path": "research/PNP-ABOVE/WP11_EvalFuelCompleteness.lean",
+      "receipt_path": "research/PNP-ABOVE/WP11_IMPORT_REPLAY_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP11_AXIOM_AUDIT.py",
+          "git_blob_sha1": "076a3749e66a4a2ea97388ad863eba8988ce1ab4",
+          "kind": "script"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP11_EvalFuelCompleteness.lean",
+          "git_blob_sha1": "088a731db4a7a1a21097a593958706df6b8a488b",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP11_FUEL_COMPLETENESS_GATE.md",
+          "git_blob_sha1": "301c55297a3f041371f1e58044ed06e66fc9ce0d",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP11_IMPORT_REPLAY_RECEIPT.md",
+          "git_blob_sha1": "923851f624796d8af1c6a68b6f8737cd6a202eb3",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP11_REPLAY.sh",
+          "git_blob_sha1": "8ccb6f123d894fa0f3da46270b5277cfcba8415f",
+          "kind": "replay"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP12",
+      "description": "Typed acceptance theorem and raw index witness",
+      "primary_path": "research/PNP-ABOVE/WP12_TypedParserAndRawCounterexample.lean",
+      "receipt_path": "research/PNP-ABOVE/WP12_IMPORT_REPLAY_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP12_AXIOM_AUDIT.py",
+          "git_blob_sha1": "ea71da24060ac551fbaa579e3a60b33a69814471",
+          "kind": "script"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP12_IMPORT_REPLAY_RECEIPT.md",
+          "git_blob_sha1": "81b97e2d3eb882007e2fcbd3fc32e95004a4ddb9",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP12_REPLAY.sh",
+          "git_blob_sha1": "1450b50131fb60c1f5d1f9a54e2dac358e789df9",
+          "kind": "replay"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP12_TYPED_PARSER_AND_RAW_CANONICALITY_GATE.md",
+          "git_blob_sha1": "fada62a1fb2384c32fdc12f91cdf83de9d4ef913",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP12_TypedParserAndRawCounterexample.lean",
+          "git_blob_sha1": "c509e7e96383c7cb8199d7a9095b915a6d4db759",
+          "kind": "lean"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP13",
+      "description": "Bounded native nine-stage reference sampler",
+      "primary_path": "research/PNP-ABOVE/WP13_NineLevelSamplerVerifier.lean",
+      "receipt_path": "research/PNP-ABOVE/WP13_IMPORT_REPLAY_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP13_AXIOM_AUDIT.py",
+          "git_blob_sha1": "457d0c0411e4f0b70c58ff5882a69cd42bd2c3b1",
+          "kind": "script"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP13_IMPORT_REPLAY_RECEIPT.md",
+          "git_blob_sha1": "a2152d34b0f4d6d34b8f12e5311d6131b78f6d53",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP13_NINE_LEVEL_SAMPLER_VERIFIER_GATE.md",
+          "git_blob_sha1": "582f71e36490e9d8e56ae989441118bea3ab3dcc",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP13_NineLevelSamplerVerifier.lean",
+          "git_blob_sha1": "711e3e7938ea8c6682778252062adfc920ff4dbd",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP13_REPLAY.sh",
+          "git_blob_sha1": "97bbf367b69ca6d4891716f83600c6b0fd7a18cf",
+          "kind": "replay"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP14",
+      "description": "Full-depth conditional sampler and bounded verifier",
+      "primary_path": "research/PNP-ABOVE/WP14_ConditionalNineStageSampler.lean",
+      "receipt_path": "research/PNP-ABOVE/WP14_IMPORT_REPLAY_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP14_AXIOM_AUDIT.py",
+          "git_blob_sha1": "ddb8529999393522ccb48704e36dd5cc83bc1be3",
+          "kind": "script"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP14_CONDITIONAL_NINE_STAGE_GATE.md",
+          "git_blob_sha1": "c3d80b96518dbf941b233332a27a95898bb15308",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP14_ConditionalNineStageSampler.lean",
+          "git_blob_sha1": "939f801c874e1e9acc6223a24eb055888466d51b",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP14_IMPORT_REPLAY_RECEIPT.md",
+          "git_blob_sha1": "a09cc27f9c8334bbab83f18e2d06f7deb9cab5c2",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP14_REPLAY.sh",
+          "git_blob_sha1": "30b824d6305ed2a7679286da771fb5b340f469b6",
+          "kind": "replay"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP15",
+      "description": "Perfect classical strategy for original WP14 game",
+      "primary_path": "research/PNP-ABOVE/WP15_PerfectClassicalNoGap.lean",
+      "receipt_path": "research/PNP-ABOVE/WP15_IMPORT_REPLAY_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP15_AXIOM_AUDIT.py",
+          "git_blob_sha1": "4d91ed65ebe4180a69ed6462b9a262ff3145e473",
+          "kind": "script"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP15_EXACT_GAME_VALUE_NO_GAP_GATE.md",
+          "git_blob_sha1": "858254b494989d8c81bc77f8a5181965d29e83d3",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP15_IMPORT_REPLAY_RECEIPT.md",
+          "git_blob_sha1": "ab87d519bc21d13d6a1289cd5e5fd402a05dda9f",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP15_PerfectClassicalNoGap.lean",
+          "git_blob_sha1": "3e7d4905f6483acbbbafd173c735da17671dcc67",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP15_REPLAY.sh",
+          "git_blob_sha1": "365de0a2b8997c0f05a8eb4f80d7d357b090768a",
+          "kind": "replay"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP16",
+      "description": "Diagonal support and conditional value obstruction",
+      "primary_path": "research/PNP-ABOVE/WP16_DiagonalSupportObstruction.lean",
+      "receipt_path": "research/PNP-ABOVE/WP16_IMPORT_REPLAY_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP16_AXIOM_AUDIT.py",
+          "git_blob_sha1": "041490e7b1aeac7c0a550b63b9046d1251f623cc",
+          "kind": "script"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP16_DIAGONAL_SUPPORT_NOGO_GATE.md",
+          "git_blob_sha1": "85818dfa83a6a3e06b803d30fa6ce99501c73a36",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP16_DiagonalSupportObstruction.lean",
+          "git_blob_sha1": "c576f71397ce86013e07fad08e480bcff294ef3e",
+          "kind": "lean"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP16_IMPORT_REPLAY_RECEIPT.md",
+          "git_blob_sha1": "6c992609e8ca7fbb147f2605295f1169dfe358ef",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP16_REPLAY.sh",
+          "git_blob_sha1": "9cf853fbdd42220c5c3139081d810baa3c8c64e5",
+          "kind": "replay"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    },
+    {
+      "wp": "WP17",
+      "description": "Unconditional diagonal sync/quantum/commuting equality",
+      "primary_path": "research/PNP-ABOVE/WP17_UnconditionalDiagonalNoGap.lean",
+      "receipt_path": "research/PNP-ABOVE/WP17_IMPORT_REPLAY_RECEIPT.md",
+      "artifacts": [
+        {
+          "path": "research/PNP-ABOVE/WP17_AXIOM_AUDIT.py",
+          "git_blob_sha1": "bea80d8563042194fffd4fd5f5ebef618b3b0280",
+          "kind": "script"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP17_IMPORT_REPLAY_RECEIPT.md",
+          "git_blob_sha1": "c53974336eff08f635e3b7d5d89558b2ca9f6e82",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP17_REPLAY.sh",
+          "git_blob_sha1": "efd1ca2f11c59908d7968ee5cc740610d121ab43",
+          "kind": "replay"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP17_UNCONDITIONAL_DIAGONAL_VALUE_THEOREM.md",
+          "git_blob_sha1": "42982d601fc8d0be3d8e63bff3fc74dd74e57394",
+          "kind": "document"
+        },
+        {
+          "path": "research/PNP-ABOVE/WP17_UnconditionalDiagonalNoGap.lean",
+          "git_blob_sha1": "86ece0db534e18327ad380a542e7636bc0d746fa",
+          "kind": "lean"
+        }
+      ],
+      "claim_status": "BOUNDED_RESEARCH_NOT_CERTIFICATION"
+    }
+  ]
+}
