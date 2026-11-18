@@ -581,3 +581,236 @@ def conditionalSampler : Sampler 9 where
   halts := fun n d => by
     obtain ⟨r,t,he⟩ := conditionalSamplerProg_halts_raw (.cons (encode n) d)
     exact ⟨r,t,he⟩
+
+/-! ### Quantitative source-native runtime for read/build programs -/
+/-- A bounded-depth source fragment in which constructor costs add while
+eliminators charge only the selected branch. -/
+def ReadBuild : Prog → Prop
+  | .var _ | .nil | .const _ => True
+  | .cons a b | .elim _ a b => ReadBuild a ∧ ReadBuild b
+  | _ => False
+
+def staticBuildCost : Prog → Nat
+  | .var _ | .nil => 1
+  | .const d => d.size
+  | .cons a b => 1 + staticBuildCost a + staticBuildCost b
+  | .elim _ a b => 1 + max (staticBuildCost a) (staticBuildCost b)
+  | _ => 0
+
+def readBuildB : Prog → Bool
+  | .var _ | .nil | .const _ => true
+  | .cons a b | .elim _ a b => readBuildB a && readBuildB b
+  | _ => false
+
+theorem readBuildB_sound (p : Prog) : readBuildB p = true → ReadBuild p := by
+  induction p with
+  | var i => simp [readBuildB, ReadBuild]
+  | nil => simp [readBuildB, ReadBuild]
+  | const d => simp [readBuildB, ReadBuild]
+  | cons a b ha hb =>
+      simp only [readBuildB, Bool.and_eq_true, ReadBuild]
+      rintro ⟨h1,h2⟩
+      exact ⟨ha h1, hb h2⟩
+  | elim i a b ha hb =>
+      simp only [readBuildB, Bool.and_eq_true, ReadBuild]
+      rintro ⟨h1,h2⟩
+      exact ⟨ha h1, hb h2⟩
+  | let_ a b ha hb => simp [readBuildB, ReadBuild]
+  | loop a ha => simp [readBuildB, ReadBuild]
+
+#guard readBuildB conditionalSamplerProg
+
+set_option maxRecDepth 8192 in
+theorem conditionalSamplerProg_readBuild : ReadBuild conditionalSamplerProg := by
+  apply readBuildB_sound
+  decide
+
+/-- Original source `Eval` runtime bound, including all native `cons`
+construction work. The ambient bound B applies to each initial environment
+value and is inherited by components of an eliminated value. -/
+theorem readBuild_eval_bound (B : Nat) (hB : 1 ≤ B) :
+    ∀ {env : Env} {p : Prog} {r : Data} {t : Nat},
+      Eval env p r t → ReadBuild p →
+      (∀ d, d ∈ env → d.size ≤ B) →
+      t ≤ staticBuildCost p * (B + 1) := by
+  intro env p r t he
+  induction he with
+  | var env i =>
+      intro hp henv
+      have hx := WP13.env_get_size_le B hB env henv i
+      simp only [staticBuildCost, one_mul]
+      omega
+  | nil env =>
+      intro hp henv
+      simp [staticBuildCost]
+  | const env d =>
+      intro hp henv
+      simp only [staticBuildCost]
+      have h1 : 1 ≤ B + 1 := by omega
+      exact Nat.le_mul_of_pos_right d.size h1
+  | cons he1 he2 ih1 ih2 =>
+      intro hp henv
+      have h1 := ih1 hp.1 henv
+      have h2 := ih2 hp.2 henv
+      simp only [staticBuildCost, Nat.add_mul, one_mul]
+      omega
+  | elim_nil hget he ih =>
+      rename_i env0 ii pn pc rr tt
+      intro hp henv
+      have ht := ih hp.1 henv
+      simp only [staticBuildCost]
+      have hmul := Nat.mul_le_mul_right (B + 1)
+        (Nat.le_max_left (staticBuildCost pn) (staticBuildCost pc))
+      simp only [Nat.add_mul, one_mul]
+      omega
+  | elim_cons hget he ih =>
+      rename_i e ii pn pc aa bb rr tt
+      intro hp henv
+      have hwhole : (Data.cons aa bb).size ≤ B := by
+        rw [← hget]
+        exact WP13.env_get_size_le B hB e henv _
+      have henv' : ∀ d, d ∈ (aa :: bb :: e) → d.size ≤ B := by
+        intro d hd
+        simp only [List.mem_cons] at hd
+        rcases hd with rfl | rfl | hmem
+        · simp only [Data.size_cons] at hwhole
+          omega
+        · simp only [Data.size_cons] at hwhole
+          omega
+        · exact henv d hmem
+      have ht := ih hp.2 henv'
+      simp only [staticBuildCost]
+      have hmul := Nat.mul_le_mul_right (B + 1)
+        (Nat.le_max_right (staticBuildCost pn) (staticBuildCost pc))
+      simp only [Nat.add_mul, one_mul]
+      omega
+  | let_ he1 he2 ih1 ih2 =>
+      intro hp henv
+      cases hp
+  | loop_nil he ih =>
+      intro hp henv
+      cases hp
+  | loop_stop he ih =>
+      intro hp henv
+      cases hp
+  | loop_step he1 he2 ih1 ih2 =>
+      intro hp henv
+      cases hp
+
+/-- Honest native source cost bound for all raw query inputs, independent of
+well-formed query tags or vector lengths. -/
+theorem conditionalSampler_timeBoundAt (n : Nat) :
+    conditionalSampler.TimeBoundAt n (staticBuildCost conditionalSamplerProg * (esize n + 2)) 1 := by
+  intro d
+  obtain ⟨r,t,hr⟩ := conditionalSamplerProg_halts_raw (.cons (encode n) d)
+  have hinput : 1 ≤ (Data.cons (encode n) d).size := Data.size_pos _
+  have hc := readBuild_eval_bound _ hinput hr conditionalSamplerProg_readBuild
+    (by
+      intro x hx
+      simp only [List.mem_singleton] at hx
+      subst x
+      rfl)
+  have hsize : (Data.cons (encode n) d).size + 1 ≤
+      (esize n + 2) * (d.size + 1) := by
+    simp only [Data.size_cons, esize]
+    nlinarith [Nat.zero_le ((encode n).size * d.size)]
+  have hmul := Nat.mul_le_mul_left (staticBuildCost conditionalSamplerProg) hsize
+  refine ⟨r,t,?_,hr⟩
+  simp only [pow_one]
+  calc
+    t ≤ staticBuildCost conditionalSamplerProg * ((Data.cons (encode n) d).size + 1) := hc
+    _ ≤ staticBuildCost conditionalSamplerProg * ((esize n + 2) * (d.size + 1)) := hmul
+    _ = (staticBuildCost conditionalSamplerProg * (esize n + 2)) * (d.size + 1) := by ring
+
+#eval staticBuildCost conditionalSamplerProg
+#eval conditionalSampler.size
+
+/-- A fully-typed genuine nine-level conditional verifier using the admitted
+source-native nine-bit decider and its exact parser theorem. -/
+def conditionalVerifier : Verifier 9 where
+  sampler := conditionalSampler
+  decider := WP08.identityDecider
+  accepts_length := by
+    intro n x y a b h
+    have ht := (WP12.accepts_iff_typed_spec n x y a b).mp h
+    exact ⟨ht.2.1, ht.2.2.1⟩
+
+#guard staticBuildCost conditionalSamplerProg == 52
+#guard conditionalSampler.size == 16213
+#guard WP08.identityDecider.size == 145459
+
+/-- The literal linear overhead coefficient fits an explicit polynomial
+index envelope. The bound is not optimized. -/
+theorem sampler_coefficient_le_pow (n : Nat) (hn : 2 ≤ n) :
+    staticBuildCost conditionalSamplerProg * (esize n + 2) ≤ n ^ 10 := by
+  have hbit : esize n ≤ 4 * n + 1 := by
+    have hs := esize_nat_le n
+    have hnsize := WP13.size_le_index n
+    omega
+  have hpow9 : 512 ≤ n ^ 9 := by
+    simpa only [show (2:Nat)^9 = 512 from by decide] using
+      (Nat.pow_le_pow_left hn 9)
+  have hcoef : staticBuildCost conditionalSamplerProg = 52 := by decide
+  rw [hcoef]
+  calc
+    52 * (esize n + 2) ≤ 52 * (4 * n + 3) := by omega
+    _ ≤ 512 * n := by omega
+    _ ≤ n ^ 9 * n := Nat.mul_le_mul_right n hpow9
+    _ = n ^ 10 := by ring
+
+/-- The actual upstream `Verifier.IsBounded` conjunction, including input
+size degree, dimension and description size, holds for an explicit λ. -/
+def boundLam : Nat := conditionalVerifier.size + 10
+
+theorem conditionalVerifier_isBounded : conditionalVerifier.IsBounded boundLam := by
+  have hLam : 10 ≤ boundLam := by
+    dsimp [boundLam]
+    omega
+  constructor
+  · intro n hn
+    have hpow : n ^ 10 ≤ n ^ boundLam :=
+      Nat.pow_le_pow_right (by omega : 1 ≤ n) hLam
+    have hpow9 : 512 ≤ n ^ 9 := by
+      simpa only [show (2:Nat)^9 = 512 from by decide] using
+        (Nat.pow_le_pow_left hn 9)
+    have h512 : 512 ≤ n ^ boundLam := by
+      have h10 : 512 ≤ n ^ 10 := by
+        calc
+          512 ≤ 512 * n := by omega
+          _ ≤ n ^ 9 * n := Nat.mul_le_mul_right n hpow9
+          _ = n ^ 10 := by ring
+      omega
+    refine ⟨?_, ?_, ?_⟩
+    · change 9 ≤ n ^ boundLam
+      omega
+    · change conditionalSampler.TimeBoundAt n (n ^ boundLam) boundLam
+      apply Sampler.TimeBoundAt.mono (conditionalSampler_timeBoundAt n)
+      · exact (sampler_coefficient_le_pow n hn).trans hpow
+      · omega
+    · change WP08.identityDecider.TimeBoundAt n (n ^ boundLam) boundLam
+      apply Decider.TimeBoundAt.mono (WP13.decider9_timeBoundAt n)
+      · omega
+      · omega
+  · dsimp only [boundLam]
+    omega
+
+/-- Source-synchronous verifier property, inherited from the exact typed
+parser, independent of the new conditional question distribution. -/
+theorem conditionalVerifier_synchronous (n : Nat) :
+    conditionalVerifier.IsSynchronousAt n := by
+  intro x a b hab hacc
+  have ht := (WP12.accepts_iff_typed_spec n x x a b).mp hacc
+  exact hab (ht.2.2.2.1.trans ht.2.2.2.2.symm)
+
+/-- Explicit negative-control bound: despite the nine genuinely occupied CL
+stages, every valid question pair accepts empty answers at positive indices.
+This proves the family does NOT witness any game-value hardness gap. -/
+theorem conditionalVerifier_accepts_empty (n : Nat) (hn : n ≠ 0)
+    (x y : Fin 9 → 𝔽₂) :
+    conditionalVerifier.decider.Accepts n (toBits x) (toBits y) [] [] := by
+  exact (WP12.accepts_iff_typed_spec n (toBits x) (toBits y) [] []).mpr
+    ⟨hn, length_toBits x, length_toBits y, rfl, rfl⟩
+
+#eval boundLam
+
+end PNPAbove.WP14
