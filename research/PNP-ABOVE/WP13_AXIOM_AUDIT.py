@@ -11,7 +11,7 @@ work = Path(sys.argv[1]).resolve()
 upstream = Path(sys.argv[2]).resolve()
 source = (work / "PNPAbove/WP13.lean").read_text()
 names = re.findall(r"^theorem\s+([A-Za-z][A-Za-z0-9_]*)", source, re.M)
-if len(names) != 36 or len(set(names)) != 15:
+if len(names) != 36 or len(set(names)) != 36:
     raise SystemExit(f"UNEXPECTED_THEOREM_INVENTORY: {len(names)} {names}")
 audit = work / "AxiomAudit.lean"
 audit.write_text("import PNPAbove.WP13\n" + "".join(
