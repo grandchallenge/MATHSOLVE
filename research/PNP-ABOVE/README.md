@@ -10,6 +10,10 @@ python3 research/PNP-ABOVE/validate_coverage_snapshot.py
 
 The inventory is a dated record, **not** a mathematical proof or certification. Future WP18+ sources and later amended proofs require a separately dated snapshot. Original imported upstream for the later work: `vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970` (Lean 4.35.0-rc3). The earlier WP00–WP04 work did **not** uniformly execute this original imported model.
 
+## WP23B original executable verifier to succinct SAT — scope-limited (19 November 2026)
+
+[WP23B original Cook–Levin source bridge, exact forward/reverse characterization and scope](WP23B_RESULT.md) instantiate the pinned constructed MIPRE.SAT.succinctCookLevin polynomial-time circuit describer against the original WP21/22 executable decider. The candidate proves exact validity/time-bound conditions and characterizes satisfiability of the fixed Bell game's original succinct SAT formula by simple mask and question-length conditions. This confirms the existing verifier-acceptance-to-SAT direction but does not supply arbitrary SAT-to-verifier hardness, a compatible compression promise family, a PNP lower bound or independent certification. Source-lock replay and protected admission are required before treating this as admitted.
+
 ## Verified predecessor proof cache — development-only (19 November 2026)
 
 [PNP-CACHE-001 content-addressed predecessor cache](PNP_REPLAY_CACHE.md) implements and tests a local SHA-256 keyed accelerator for the 65 source-locked WP08–WP23A original Lean modules and their compiled proof objects. Cache checks rehash exact source and compiler provenance and every object; hostile mutations fail closed. New Lean proofs compile against the restored predecessors. **All protected-admission replays continue to recompile every original source module and run the exact source-lock and standard-axiom audits.** This is an engineering improvement, not a mathematical-certification bypass.
