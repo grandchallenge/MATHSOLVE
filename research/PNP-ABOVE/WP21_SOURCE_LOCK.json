@@ -1,0 +1,111 @@
+{
+  "schema": "PNP-ABOVE-WP21-SOURCE-LOCK/1",
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "source_protected_parent": "ab30e727a6bf6762432d4b95546908f8c4d3711a",
+  "modules": {
+    "WP21Masked.lean": {
+      "path": "research/PNP-ABOVE/WP21_Masked.lean",
+      "sha256": "fee6474b0880320e654f1d5e16fde0d31c29c2030801fda31488700d467202f0",
+      "git_blob": "a6433265d5c32cde6948156922ab6d864a1ccc9b",
+      "theorems": [
+        "maskedParity_synchronous",
+        "maskedParity_source"
+      ]
+    },
+    "WP21Prog.lean": {
+      "path": "research/PNP-ABOVE/WP21_Prog.lean",
+      "sha256": "62b7c00db112558cb0d08bb78b20e5ca527e8bd1445c7e0ddc2999bec1b626fe",
+      "git_blob": "167c9ebe31dadcb5e9fa6e31e272183e3d36175d",
+      "theorems": []
+    },
+    "WP21Safety.lean": {
+      "path": "research/PNP-ABOVE/WP21_Safety.lean",
+      "sha256": "6a60fbb65bf4b6ce3cb97de354ae02e3b26f2f5c68882a845c5d1fdcb2701835",
+      "git_blob": "73a1f7b6e26ebd95d6fff842bb208127d13931ec",
+      "theorems": [
+        "readBit_scoped",
+        "truthTree_scoped",
+        "requireBits_scoped",
+        "readAndDecide_scoped",
+        "deciderProg_scoped"
+      ]
+    },
+    "WP21Total.lean": {
+      "path": "research/PNP-ABOVE/WP21_Total.lean",
+      "sha256": "28c7d9868e94454cde59b12b656874af4c517e7f895c159aee906247aa6c2ef2",
+      "git_blob": "aa52d57d80e6644eaa8de06973780ccba450725a",
+      "theorems": [
+        "maskedParityDecider_loopFree",
+        "truthTree_boolean",
+        "readAndDecide_boolean",
+        "requireBits_boolean",
+        "decider_boolean",
+        "decider_raw_total",
+        "decider_raw_boolean",
+        "evalValue_source_raw",
+        "accepts_iff_source_value"
+      ]
+    },
+    "WP21Length.lean": {
+      "path": "research/PNP-ABOVE/WP21_Length.lean",
+      "sha256": "51fe5857c5e58c027061d3c3047858cfd17eed50b450e2ef0b897a270190dede",
+      "git_blob": "3bb2574f8a3ea72957345394f11924bdd8b18b08",
+      "theorems": [
+        "source_shape",
+        "requireBits_bad",
+        "requireBits_good",
+        "raw_x_bad",
+        "raw_y_bad",
+        "typed_x_bad",
+        "typed_y_bad",
+        "decider_accepts_length"
+      ]
+    },
+    "WP21Verifier.lean": {
+      "path": "research/PNP-ABOVE/WP21_Verifier.lean",
+      "sha256": "b47598862ee558c54e50f57bb1f7612dda1d9c4e213fd888acae34c6be2bc722",
+      "git_blob": "50e6499dc26cc0e67338b1861c60256583d7aa76",
+      "theorems": [
+        "cyclicVerifier_sampler",
+        "cyclicVerifier_decider",
+        "cyclicVerifier_accepted_questions"
+      ]
+    },
+    "WP21Checks.lean": {
+      "path": "research/PNP-ABOVE/WP21_Checks.lean",
+      "sha256": "0817f210918cd82ea1403600291c705d934e1c9995da66db6a512fdb2a7e3f85",
+      "git_blob": "7d99791bcef10aa54256ead5db0007379aa19ccb",
+      "theorems": []
+    },
+    "WP21Runtime.lean": {
+      "path": "research/PNP-ABOVE/WP21_Runtime.lean",
+      "sha256": "fac8f1e837c33d0a72cb500cc294ca6770774572d4c930a1a7f3ad1970219a2c",
+      "git_blob": "eebcd85d53578cd125e509dbbeec9ceb2ca87207",
+      "theorems": [
+        "readLetB_sound",
+        "inspectLet_eval_bound",
+        "maskedParity_readLet",
+        "decider_raw_linear"
+      ]
+    },
+    "WP21Time.lean": {
+      "path": "research/PNP-ABOVE/WP21_Time.lean",
+      "sha256": "e25538e1c734669c090f135aa07e801e9ddfedc975f10f350a3ca9ea3bc7d296",
+      "git_blob": "9aebcde66a4ec4523e42660d287b4c2cbe26eed8",
+      "theorems": [
+        "decider_timeBoundAt"
+      ]
+    },
+    "WP21Bounded.lean": {
+      "path": "research/PNP-ABOVE/WP21_Bounded.lean",
+      "sha256": "79229e9e84a5b12bb20aedf86887c43b7ef58138f150fbfa64230ac0a7edf499",
+      "git_blob": "c3d7a7958e276d32f82d2506f3c053cc06087c05",
+      "theorems": [
+        "decider_coefficient_le_pow",
+        "native_decider_polynomial",
+        "cyclicVerifier_isBounded"
+      ]
+    }
+  },
+  "theorem_count": 35
+}
