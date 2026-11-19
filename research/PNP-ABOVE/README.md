@@ -10,6 +10,10 @@ python3 research/PNP-ABOVE/validate_coverage_snapshot.py
 
 The inventory is a dated record, **not** a mathematical proof or certification. Future WP18+ sources and later amended proofs require a separately dated snapshot. Original imported upstream for the later work: `vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970` (Lean 4.35.0-rc3). The earlier WP00–WP04 work did **not** uniformly execute this original imported model.
 
+## Verified predecessor proof cache — development-only (19 November 2026)
+
+[PNP-CACHE-001 content-addressed predecessor cache](PNP_REPLAY_CACHE.md) implements and tests a local SHA-256 keyed accelerator for the 65 source-locked WP08–WP23A original Lean modules and their compiled proof objects. Cache checks rehash exact source and compiler provenance and every object; hostile mutations fail closed. New Lean proofs compile against the restored predecessors. **All protected-admission replays continue to recompile every original source module and run the exact source-lock and standard-axiom audits.** This is an engineering improvement, not a mathematical-certification bypass.
+
 ## WP23A fixed Bell-game incompatibility with compressor promises (19 November 2026)
 
 [WP23A exact native classical optimum and compression-interface diagnostics](WP23A_RESULT.md) prove in the original MIPRE source that the unrestricted local classical optimum is **exactly 3/4** for every positive index and one-bit-capable answer budget; that both original quantum and classical game values are **index/budget invariant**; and that every power-of-two index fails the **quantum-value at most 1/2** soundness antecedent of the original GapCompression interface. [Scope audit](WP23A_SCOPE_ADVERSARIAL_AUDIT.md) excludes any general compression impossibility, P-versus-NP or certification claim. The original upstream compression construction is real, but its seven-level, perfect-PCC/low-quantum-value interface is not directly applicable to this fixed nine-level game. An input-dependent source-native verifier family and the classical SAT cost transfer remain OPEN.
