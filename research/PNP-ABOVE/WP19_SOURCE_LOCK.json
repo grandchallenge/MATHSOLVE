@@ -1,0 +1,66 @@
+{
+  "schema": "PNP-ABOVE-WP19-SOURCE-LOCK/1",
+  "upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "source_protected_parent": "21f3e9edb946ae2ab4f4a312663f1e5559214a6b",
+  "source_admitted_wp18_sha": "760d30d74672309ae58f015b0f511c062f431e08",
+  "upstream_toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "native_models": [
+    "MIPRE.SynchronousGame",
+    "MIPRE.TensorProductStrategy",
+    "MIPRE.CommutingStrategy",
+    "MIPRE.Sampler 9"
+  ],
+  "claim_status": {
+    "source_support": "lean-proved",
+    "arbitrary_synchronous_predicate_no_gap": "lean-proved",
+    "stronger_than_wp18": "no_feasibility_or_value_one_assumption",
+    "answer_sensitive_hard_game": "open",
+    "higher_richness_CL_sampler": "open",
+    "positive_parameter_compression": "open",
+    "uniform_classical_SAT_transfer": "open",
+    "MATHCERT_public_certification": "not_claimed",
+    "P_versus_NP": "open"
+  },
+  "modules": {
+    "WP19Support.lean": {
+      "path": "research/PNP-ABOVE/WP19_ExactStarQuestionSupport.lean",
+      "git_blob": "2ce55fbf60f7080a39f46bad66749815a3f83850",
+      "sha256": "6adb3a8a4848b26647fd20e92c8a31498e7e908a3069548387e1a0adb0c762fc"
+    },
+    "WP19Law.lean": {
+      "path": "research/PNP-ABOVE/WP19_ExactOriginalQuestionProbability.lean",
+      "git_blob": "ec5f1af5c37ff2e7a6687dd982bcdab16e65bb1b",
+      "sha256": "23090b0a31daddb95fab025ae7f4f3ffe28c747a970ec7ebd478967cd0bca2ca"
+    },
+    "WP19Choice.lean": {
+      "path": "research/PNP-ABOVE/WP19_DeterministicStarResponseChoice.lean",
+      "git_blob": "10fbed579933a9c2b7631e132ed3d4c39ee1b199",
+      "sha256": "7111c5bc025b75b8637ac3e0c7beff34b60e81205449243b099e45d70795e7dc"
+    },
+    "WP19Scalar.lean": {
+      "path": "research/PNP-ABOVE/WP19_PositiveCorrelationUpperBounds.lean",
+      "git_blob": "f697d83853dfb54addd06bcdc7b67fc5ea58f8e8",
+      "sha256": "59722ab0dd6da76ceba90e810fded52821aa1c5b49156e2ef5c237b2302687a8"
+    },
+    "WP19Envelope.lean": {
+      "path": "research/PNP-ABOVE/WP19_StarNoSignallingEnvelope.lean",
+      "git_blob": "b5bd438be80b8237bb793946773090964f9ee183",
+      "sha256": "0c308a9aa0e87e5f953e0d477359a9d3f915166f2d089ab85b49059cdda34099"
+    },
+    "WP19Global.lean": {
+      "path": "research/PNP-ABOVE/WP19_StarConvexCorrelationTheorem.lean",
+      "git_blob": "5acdcfc63e0a870b2a2f86a34c02301d374cd38f",
+      "sha256": "f6631ac65dadb391e329be6792c34d6ec5ea12f9ee86d272d9c7f36bed9f8a88"
+    },
+    "WP19Strategies.lean": {
+      "path": "research/PNP-ABOVE/WP19_OriginalTensorAndCommutingBridge.lean",
+      "git_blob": "93392b992b7546694bac49c3526274b9518f5186",
+      "sha256": "a3774271e5b23880548fb836a40b7e20c01a1378436ad49c5862e25d7bf00408"
+    },
+    "WP19Native.lean": {
+      "path": "research/PNP-ABOVE/WP19_ArbitraryPredicateSourceNoGap.lean",
+      "git_blob": "1b355a5648bd8bfa697caa9f8aa0e02f0633572e",
+      "sha256": "a6d1ef8a907d275a5e7dd42822a221f65ae758e400d628be18d6e4a6cdb104d7"
+    }
+  }
+}

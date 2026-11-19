@@ -1,4 +1,4 @@
-# PNP-ABOVE — GCL source and documentary record through WP17
+# PNP-ABOVE — GCL source and documentary record through WP19
 
 **Snapshot:** 18 November 2026. Governing research tracker: [MATHSOLVE #1136](https://github.com/grandchallenge/MATHSOLVE/issues/1136); parent campaign: [PNP-001](https://github.com/grandchallenge/MATH-PROGRAMME/issues/162). Both remain **OPEN**.
 
@@ -10,9 +10,13 @@ python3 research/PNP-ABOVE/validate_coverage_snapshot.py
 
 The inventory is a dated record, **not** a mathematical proof or certification. Future WP18+ sources and later amended proofs require a separately dated snapshot. Original imported upstream for the later work: `vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970` (Lean 4.35.0-rc3). The earlier WP00–WP04 work did **not** uniformly execute this original imported model.
 
+## WP19 universal star-support no-advantage theorem (19 November 2026)
+
+[WP19 original-source theorem and explanation](WP19_RESULT.md) proves the **exact 512-pair WP18 source law** and an unconditional no-quantum-advantage theorem for **every mathematical synchronous decision predicate** over that original sampler. A general no-signalling convex-bound theorem is proved and instantiated directly with the original tensor-product Born and tracial commuting strategy models. Original synchronous, quantum and commuting values are exactly equal, not necessarily one; changing the WP18 decider cannot help. Its [eight Lean modules with exact Git blobs](WP19_SOURCE_LOCK.json), [full original-source WP08–WP19 replay](WP19_REPLAY.sh) and [axiom audit](WP19_AXIOM_AUDIT.py) form a separate new tranche. The historical **WP00–WP17 72-file source inventory remains unchanged**. WP20 requires a richer two-sided CL question law (not a star/matching) and then a genuinely answer-sensitive bounded source decider with a proved positive gap.
+
 ## WP18 extension (18 November 2026; separate exact source lock)
 
-[WP18 full-depth original asymmetric source sampler and bounded verifier](WP18_RESULT.md) constructs an actual **non-diagonal original CL distribution** and player-aware `Cost.Prog` query implementation, with quantified source contracts, raw termination, and polynomial bounds. At all positive indices, all three original source game values equal **one** under the unchanged identity decider: this is a precise negative control, **not** a hard game or quantum advantage. The [nine-module new-source manifest](WP18_SOURCE_LOCK.json) and [original-source replay](WP18_REPLAY.sh) are independent of the immutable **WP00–WP17 72-file historical snapshot** below. The support of this first asymmetric witness is sparse, so richer two-sided question structure may also be required.
+[WP18 full-depth original asymmetric source sampler and bounded verifier](WP18_RESULT.md) constructs an actual **non-diagonal original CL distribution** and player-aware `Cost.Prog` query implementation, with quantified source contracts, raw termination, and polynomial bounds. At all positive indices, all three original source game values equal **one** under the unchanged identity decider: this is a precise negative control, **not** a hard game or quantum advantage. The [nine-module new-source manifest](WP18_SOURCE_LOCK.json) and [original-source replay](WP18_REPLAY.sh) are independent of the immutable **WP00–WP17 72-file historical snapshot** below. WP19 subsequently proves the sparse star support **always forbids** an original synchronous/quantum/commuting value separation under any mathematical synchronous decision predicate. A structurally richer source sampler is now necessary.
 
 ## Evidence progression
 
