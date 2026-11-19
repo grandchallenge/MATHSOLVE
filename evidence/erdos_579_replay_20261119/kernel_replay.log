@@ -1,0 +1,8 @@
+target Bounty.target missing after replay
+lean_version: 4.33.1 (819816b2e0a3bf405af45ae5c7af2491d8f5bee6)
+imported Solution with 799664 constants in 43669 ms
+closure of Bounty.target: 57271 constants [(inductive, 983), (opaque, 43), (axiom, 3), (ctor, 1087), (def, 11450), (theorem, 43420), (rec, 281), (quot, 4)]
+unsafe or partial constants in closure (not replayed by Environment.replay): []
+axioms in closure: #[propext, Classical.choice, Quot.sound]
+kernel replay into an empty environment: OK in 83061 ms
+KERNEL_EXIT=1
