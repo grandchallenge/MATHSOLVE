@@ -2,7 +2,7 @@
 
 **Disposition:** `WP21_NATIVE_BOUNDED_ANSWER_SENSITIVE_VERIFIER_PROVED__GAME_VALUE_BRIDGE_OPEN`.
 
-**Source lock:** original protected predecessor MATHSOLVE `ab30e727a6bf6762432d4b95546908f8c4d3711a` (WP20); upstream `vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970`; Lean 4.35.0-rc3. Research MATHSOLVE #1136 and PNP-001 #162 remain OPEN.
+**Source lock:** original protected predecessor MATHSOLVE `ab30e727a6bf6762432d4b95546908f8c4d3711a` (WP20); upstream `vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970`; Lean 4.35.0-rc3. MATHSOLVE #1136 is the CLOSED historical WP00 preflight issue; the active PNP-001 campaign tracker, MATH-PROGRAMME #162, remains OPEN.
 
 ## Mathematical and original-source results
 
