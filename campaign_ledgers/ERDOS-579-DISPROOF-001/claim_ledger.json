@@ -1,0 +1,30 @@
+{
+  "claims": [
+    {
+      "claim_id": "ERDOS-579-C001",
+      "short_name": "octahedron positive-density universal assertion refuted",
+      "claim_text": "For delta=3/2048 there are arbitrarily large finite simple K_{2,2,2}-free graphs with e(G)>=delta*n^2 and independence ratio alpha(G)/n arbitrarily small; this negates the historic every-delta positive assertion.",
+      "claim_class": "FORMAL_DISPROOF_CANDIDATE",
+      "support_type": "LEAN_FORMAL_PROOF_REPLAY",
+      "status": "CHECKED",
+      "certainty": "Source-locked proof independently compiled and empty-environment kernel replay accepted; separate final challenge comparator not completed; protected MATHCERT certification not issued.",
+      "source_or_artifact": [
+        "evidence/erdos_579_replay_20261119/Main.lean",
+        "evidence/erdos_579_replay_20261119/build.log",
+        "evidence/erdos_579_replay_20261119/kernel_replay.log"
+      ],
+      "assumptions": [
+        "Finite simple graphs; H-free means forbidding K_(2,2,2) as a not-necessarily-induced subgraph.",
+        "Unordered edge counts and classical infinite-n quantifiers in the pinned Formal Conjectures statement."
+      ],
+      "promotion_condition": "A claim-specific registered MATHCERT route, independently documented source/semantic review, and protected Cert adjudication output with readback are required.",
+      "related_files": [
+        "governance/erdos_579_disproof_handoff.json",
+        "evidence/erdos_579_replay_20261119/README.md"
+      ],
+      "knowledge_graph_refs": [
+        "ERDOS-579-DISPROOF-001"
+      ]
+    }
+  ]
+}
