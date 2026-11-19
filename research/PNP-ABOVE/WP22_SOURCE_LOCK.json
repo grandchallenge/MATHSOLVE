@@ -1,0 +1,106 @@
+{
+  "schema": "PNP-ABOVE-WP22-SOURCE-LOCK/1",
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "source_protected_parent": "46d7bbc9167bb52d457e55d1b8741f7695e16576",
+  "modules": {
+    "WP22BitRead.lean": {
+      "path": "research/PNP-ABOVE/WP22_BitRead.lean",
+      "sha256": "efbee0f855cf6bf89c88bec146f1e1f91c9a072cf07c14d35307650f5d14e6fe",
+      "git_blob": "96ab4becc7846569562d6a17f061c776559a8266",
+      "theorems": [
+        "readBit_value"
+      ]
+    },
+    "WP22Truth.lean": {
+      "path": "research/PNP-ABOVE/WP22_Truth.lean",
+      "sha256": "3261c1ca788bfce7c9b0559e750d100ae78aa34757520cbbd1bb119c577c1a2b",
+      "git_blob": "a4e080b47170d8ed00f481d974588243f6e8f249",
+      "theorems": [
+        "truthTree_six",
+        "leafRule_eq_masked"
+      ]
+    },
+    "WP22Evaluator.lean": {
+      "path": "research/PNP-ABOVE/WP22_Evaluator.lean",
+      "sha256": "2a323e16e3d750021b0f5d325061fa3707e28a75334e4924b7fb66bd515a26e3",
+      "git_blob": "3f5509296b10593bd397eecae1886e38455a0f32",
+      "theorems": [
+        "readAndDecide_value"
+      ]
+    },
+    "WP22Parser.lean": {
+      "path": "research/PNP-ABOVE/WP22_Parser.lean",
+      "sha256": "669f01b038cb20d7565e0804a267123cf774d1eb846046649af0242629c5a350",
+      "git_blob": "780b02b909a383e965d92ad26dafe6ecee677730",
+      "theorems": [
+        "raw_good",
+        "raw_a_bad",
+        "raw_b_bad",
+        "typed_zero",
+        "typed_good",
+        "typed_a_bad",
+        "typed_b_bad",
+        "typed_value_spec"
+      ]
+    },
+    "WP22Native.lean": {
+      "path": "research/PNP-ABOVE/WP22_Native.lean",
+      "sha256": "c0bac42187e2e73f980487ecee21e9c4523b985ab0bac908cbeb9a94b884b28b",
+      "git_blob": "ba68a419fc7ab23705e31e23943d70c39b7be17f",
+      "theorems": [
+        "native_accepts_iff",
+        "singleton_of_length_one",
+        "diag_leaf_false",
+        "native_synchronous"
+      ]
+    },
+    "WP22SourceBridge.lean": {
+      "path": "research/PNP-ABOVE/WP22_SourceBridge.lean",
+      "sha256": "a2cb615636caee70c40befc6af4a8e77a8689e627ee8a0a8197f22a59c38e4e2",
+      "git_blob": "0ab352d155da8c5b77bce604dd2c5c73a9a68c10",
+      "theorems": [
+        "toBits_nth",
+        "binary_accepts_iff",
+        "binary_decision_eq",
+        "native_game_binary",
+        "native_game_sampled",
+        "native_game_bad_left",
+        "native_game_bad_right"
+      ]
+    },
+    "WP22Classical.lean": {
+      "path": "research/PNP-ABOVE/WP22_Classical.lean",
+      "sha256": "0110166764302f1b18e3dc9837a4fa0f4209b52bf71c9e00d0cbab9f32d3fc94",
+      "git_blob": "96ec169b064c68220d74a04be2213264e71cd2fb",
+      "theorems": [
+        "masked_implies_parity",
+        "native_accept_implies_parity",
+        "native_payoff_le_parity",
+        "native_det_le_parity",
+        "native_every_classical_le",
+        "native_classical_le_three_quarters"
+      ]
+    },
+    "WP22Quantum.lean": {
+      "path": "research/PNP-ABOVE/WP22_Quantum.lean",
+      "sha256": "5555084f1fe55eaade29fde8d34eae4b68c2d39619618cc84c722d746173614c",
+      "git_blob": "6e9188f16a8ee8f3e75ffc5927e4c0fbbdef0a96",
+      "theorems": [
+        "native_quantum_eq_binary"
+      ]
+    },
+    "WP22Gap.lean": {
+      "path": "research/PNP-ABOVE/WP22_Gap.lean",
+      "sha256": "413c16ff071f2bd84d5b04b40e6e17275ee7a9b3f29e76958771676679cc6db8",
+      "git_blob": "6b2223bfb49904b84c770efe434e830f4e0dbd0e",
+      "theorems": [
+        "zero_mass_or_equal_decision",
+        "tensor_value_copy_eq",
+        "masked_quantum_lower",
+        "native_strict_gap",
+        "bounded_native_strict_gap"
+      ]
+    }
+  },
+  "theorem_count": 35
+}
