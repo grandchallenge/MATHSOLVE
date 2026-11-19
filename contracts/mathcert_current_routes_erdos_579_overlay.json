@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "overlay_id": "MS-MATHCERT-CURRENT-ERDOS-579-DISPROOF-001",
+  "recorded_at": "2026-11-19",
+  "base_registry": {
+    "path": "contracts/mathcert_current_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "c483414ee0d4510b7a74d3463432f51bf6428f1b"
+  },
+  "predecessor_overlay": {
+    "path": "contracts/mathcert_current_routes_euclid_diophantine_overlay.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "75fd14a728d1c21e47f4d14cb3439319c3b51c0d"
+  },
+  "current_authority": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "095bc71c5aa080880b8b6c28daa50fb04e988e2c",
+    "path": "governance/certification_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "d9522855fbe4bc061deac1657a57767fe1d18352"
+  },
+  "campaign": {
+    "campaign_id": "ERDOS-579-DISPROOF-001",
+    "route_id": "MC-ROUTE-ERDOS-579-DISPROOF-001",
+    "route_registry_entry_present": true,
+    "manifest": {
+      "path": "campaign_manifests/ERDOS-579-DISPROOF-001.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "08b106e8aeb28c9d156364adc53ef68c212667e9"
+    },
+    "handoff": {
+      "path": "cert_handoffs/ERDOS-579-DISPROOF-001.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "19ea3194f1fee3a97fbb6617942f687aa6b66189"
+    },
+    "handoff_state": "pending",
+    "route_state": "pending",
+    "cert_output": null,
+    "qualification_scope": null,
+    "mathematical_target_proved": false,
+    "may_adjudicate": false,
+    "may_issue_certificate_output": false,
+    "current_promotion_blockers": [
+      "Registered route pending does not confer a proof certificate or final adjudication.",
+      "The source-locked proof and independent replay support mathematical disproof, but independent formal source-semantic non-author review and Cert output have not been protected-admitted.",
+      "The incomplete post-replay all-in-one comparator is not claimed green.",
+      "Campaign promotion remains ineligible until a protected claim-scoped MATHCERT Level-5 certificate is issued."
+    ]
+  }
+}
