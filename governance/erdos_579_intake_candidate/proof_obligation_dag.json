@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "ERDOS-579-DISPROOF-001",
+  "work_package_id": "ERDOS-579-DISPROOF-001-WP01",
+  "nodes": [
+    {
+      "obligation_id": "E579-001",
+      "statement": "Lock the historical Erd\u0151s text and present-day formal proposition with source revisions and prove the non-induced subgraph, unordered edge and quantifier correspondence.",
+      "owner": "MATHSOLVE",
+      "status": "checked",
+      "depends_on": []
+    },
+    {
+      "obligation_id": "E579-002",
+      "statement": "Acquire exact independent external proof bytes, task metadata, formal source and pinned Mathlib dependencies.",
+      "owner": "MATHSOLVE",
+      "status": "checked",
+      "depends_on": [
+        "E579-001"
+      ]
+    },
+    {
+      "obligation_id": "E579-003",
+      "statement": "Replay exact solution with Lean 4.33.1; inspect declaration axioms and empty-environment kernel closure.",
+      "owner": "MATHSOLVE",
+      "status": "checked",
+      "depends_on": [
+        "E579-002"
+      ]
+    },
+    {
+      "obligation_id": "E579-004",
+      "statement": "Resolve separately incomplete challenge-versus-solution comparator, or provide formal documented equivalent independent specialist review of exact propositions.",
+      "owner": "MATHCERT",
+      "status": "open",
+      "depends_on": [
+        "E579-001",
+        "E579-003"
+      ]
+    },
+    {
+      "obligation_id": "E579-005",
+      "statement": "Admit claim-specific MATHCERT route under current external-source classification and record qualified non-author adjudication.",
+      "owner": "MATHCERT",
+      "status": "open",
+      "depends_on": [
+        "E579-004"
+      ]
+    },
+    {
+      "obligation_id": "E579-006",
+      "statement": "Protected certificate and canonical status promotion with exact-head checks and readback, preserving historic metadata.",
+      "owner": "MATHCERT",
+      "status": "open",
+      "depends_on": [
+        "E579-005"
+      ]
+    }
+  ],
+  "terminal_condition": "No mathematical certification or canonical status promotion before E579-004 through E579-006 are discharged on protected governed evidence.",
+  "claim_boundary": "The externally authored proof and independent GCL Lean replay are substantial evidence, not themselves a protected MATHCERT adjudication."
+}

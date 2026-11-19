@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.2.0",
+  "handoff_id": "MC-HANDOFF-ERDOS-579-DISPROOF-001",
+  "campaign_id": "ERDOS-579-DISPROOF-001",
+  "solve_work_package_id": "ERDOS-579-DISPROOF-001-WP01",
+  "source_commit": "94d0bff64630b5592ae5d10e84b4d3eefa1860ee",
+  "cert_contract": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
+    "path": "governance/certification_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3",
+    "route_id": "MC-ROUTE-ERDOS-579-DISPROOF-001"
+  },
+  "target_claims": [
+    {
+      "claim_id": "ERDOS-579-C001",
+      "statement": "For delta=3/2048, the universal assertion that dense K_(2,2,2)-free graphs have independence number bounded below by a positive linear fraction is false.",
+      "claim_type": "FORMAL_DISPROOF_CANDIDATE",
+      "support_type": "LEAN_FORMAL_PROOF_REPLAY"
+    }
+  ],
+  "claim_ledger": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "e748daa9e47c16e7ce965dc31c3454066f78df27",
+    "path": "governance/erdos_579_intake_candidate/claim_ledger.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "dbf63786b7026c3601331479164b9651a283a8f2",
+    "role": "claim_ledger"
+  },
+  "proof_obligations": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "e748daa9e47c16e7ce965dc31c3454066f78df27",
+    "path": "governance/erdos_579_intake_candidate/proof_obligation_dag.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "8775fc525acabe76acaed90226ab87aed016c55f",
+    "role": "proof_obligation_dag"
+  },
+  "checker_contract": {
+    "target": "Lean",
+    "inputs": [
+      "Original external proof source SHA-256 c210bfcb2e4f1d9acf56e210d8800f831868783ff949d964033bb9cda6b684b2 at Solve evidence/erdos_579_replay_20261119/Main.lean",
+      "Formal Conjectures exact task source commit 6a786f997e18e8f095762a2830d191b7e25e505e; GCL reference commit 85f863718beeec7b58a3a1926ee92e3472bc2020",
+      "Lean 4.33.1 Mathlib 0df444a360eaa60ab8c11dca51a86af692955474; archived build, axioms and kernel-replay logs"
+    ],
+    "acceptance": "Exact source and theorem match the historical graph question; complete solution builds; final theorem has only the three standard axioms; transitive kernel proof closure independently replayed; additionally require non-author specialist review and protected MATHCERT route/adjudication.",
+    "rejection": "Reject changed graph definitions, induced-only predicate, density factor, quantifier order, untracked axioms, altered proof bytes or treating incomplete comparison wrapper as passing."
+  },
+  "requested_modalities": [
+    "LEAN_FORMALIZATION",
+    "SEMANTIC_REPLAY",
+    "SPECIALIST_AUDIT_PENDING"
+  ],
+  "claim_boundary": "External proof and local independent GCL replay support a candidate disproof, not a protected MATHCERT certificate, priority claim, or exact density result.",
+  "status": "pending",
+  "blockers": [
+    "Claim-specific route is not yet protected-admitted in MATHCERT.",
+    "Non-author specialist review and protected certification output are outstanding.",
+    "Separate challenge-vs-solution comparator wrapper incomplete due resource pressure.",
+    "This is an isolated intake candidate, not an active campaign handoff; registration would fail current route-coverage controls.",
+    "Candidate-ledger path/commit identity requires rebinding to protected merge at activation; current source commit is preparatory only."
+  ],
+  "reopening_conditions": [
+    "Rebind on changes to source theorem, proof bytes, dependencies, axiom closure, claim, or MATHCERT route/adjudication."
+  ]
+}
