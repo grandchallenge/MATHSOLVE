@@ -1,0 +1,17 @@
+theorem Bounty.target : ¬(True ↔
+    ∀ (δ : ℝ),
+      0 < δ →
+        ∃ c,
+          0 < c ∧
+            ∀ᶠ (n : ℕ) in Filter.atTop,
+              ∀ (G : SimpleGraph (Fin n)),
+                Erdos579.octahedron.Free G → δ * ↑n ^ 2 ≤ ↑G.edgeFinset.card → c * ↑n ≤ ↑G.indepNum) :=
+fun h => Er579.not_positiveDensityClaim (h.mp True.intro)
+PrintAxioms.lean:2:0: warning: This file has no module docstring (`/-! ... -/`). Add one after the imports to document the file.
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+'Bounty.target' depends on axioms: [propext, Classical.choice, Quot.sound]
+PrintAxioms.lean:4:0: warning: This file has no module docstring (`/-! ... -/`). Add one after the imports to document the file.
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+AXIOM_EXIT=0
