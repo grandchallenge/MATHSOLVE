@@ -10,6 +10,10 @@ python3 research/PNP-ABOVE/validate_coverage_snapshot.py
 
 The inventory is a dated record, **not** a mathematical proof or certification. Future WP18+ sources and later amended proofs require a separately dated snapshot. Original imported upstream for the later work: `vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970` (Lean 4.35.0-rc3). The earlier WP00–WP04 work did **not** uniformly execute this original imported model.
 
+## WP18 extension (18 November 2026; separate exact source lock)
+
+[WP18 full-depth original asymmetric source sampler and bounded verifier](WP18_RESULT.md) constructs an actual **non-diagonal original CL distribution** and player-aware `Cost.Prog` query implementation, with quantified source contracts, raw termination, and polynomial bounds. At all positive indices, all three original source game values equal **one** under the unchanged identity decider: this is a precise negative control, **not** a hard game or quantum advantage. The [nine-module new-source manifest](WP18_SOURCE_LOCK.json) and [original-source replay](WP18_REPLAY.sh) are independent of the immutable **WP00–WP17 72-file historical snapshot** below. The support of this first asymmetric witness is sparse, so richer two-sided question structure may also be required.
+
 ## Evidence progression
 
 | WP | Bounded source evidence (primary receipt or note) | Claim limit |
@@ -46,6 +50,6 @@ Every auxiliary Lean module, source test, shell replay, axiom audit and alternat
 
 WP17 proves that for any original diagonal-supported synchronous game with nonempty answers, the classical/synchronous, quantum and commuting optimum is the **same feasible-diagonal mass**, even if some sampled questions are impossible to win. Therefore changing only the decider while retaining WP14's identical-player question distribution **cannot** yield a quantum advantage.
 
-Next: an **off-diagonal player-asymmetric source-native sampler** with proved runtime bounds, a bounded **answer-sensitive executable Cost.Prog decider**, and an actual quantified **game-value gap**. Positive-parameter introspection/answer reduction/repetition, Theorem 12.1 quantitative reconciliation, general succinct SAT-to-classical transfer and the separate PNP-001 model/NP/endpoint bridges remain **OPEN**.
+WP18 supplies a **source-native off-diagonal player-asymmetric sampler with proved runtime bounds**. Its unchanged identity decider still accepts empty answers for every question pair, so the new source game has exact classical/quantum/commuting value **one**. Next: an **answer-sensitive executable Cost.Prog decider** coupled to a distribution with sufficient nonlocal question structure, plus an actual quantified **game-value gap**. The WP18 support is star-shaped on its unequal-question pairs; a separate rigorous support-obstruction analysis is warranted before treating it as a prospective hard-game sampler. Positive-parameter introspection/answer reduction/repetition, Theorem 12.1 quantitative reconciliation, general succinct SAT-to-classical transfer and the separate PNP-001 model/NP/endpoint bridges remain **OPEN**.
 
 **Documentary disposition:** `SOURCE_INVENTORY_COMPLETE_WP00_WP17__SUBSTANTIVE_RESEARCH_AND_CERTIFICATION_OPEN`. No P = NP, P != NP, unrestricted lower bound, full quantum compressor or independent certification is claimed.
