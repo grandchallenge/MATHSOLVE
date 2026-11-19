@@ -20,7 +20,8 @@ HANDOFF_DIR = ROOT / "cert_handoffs"
 VGSE_ID = "VGSE-001"
 EUCLID_ID = "EUCLID-GCD-E2E-001"
 DIO_ID = "EUCLID-DIOPHANTINE-E2E-002"
-SUCCESSOR_IDS = {VGSE_ID, EUCLID_ID, DIO_ID}
+ERDOS_ID = "ERDOS-579-DISPROOF-001"
+SUCCESSOR_IDS = {VGSE_ID, EUCLID_ID, DIO_ID, ERDOS_ID}
 
 OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_vgse_overlay.json"
 OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_vgse_overlay.schema.json"
@@ -28,6 +29,8 @@ EUCLID_OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_euclid_gcd_o
 EUCLID_OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_euclid_gcd_overlay.schema.json"
 DIO_OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_euclid_diophantine_overlay.json"
 DIO_OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_euclid_diophantine_overlay.schema.json"
+ERDOS_OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_erdos_579_overlay.json"
+ERDOS_OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_erdos_579_overlay.schema.json"
 
 ADJUDICATED_STATES = {"certified", "qualified", "rejected", "proof_debt"}
 POSITIVE_STATES = {"certified", "qualified"}
@@ -65,7 +68,7 @@ def _coverage_errors() -> list[str]:
     return [] if reference_ids == expected else ["successor-overlay campaign coverage does not match Programme references"]
 
 
-def _overlay_errors(*, overlay_path: Path, schema_path: Path, campaign_id: str, handoff_status: str, predecessor_id: str | None = None) -> list[str]:
+def _overlay_errors(*, overlay_path: Path, schema_path: Path, campaign_id: str, handoff_status: str, predecessor_id: str | None = None, route_registered: bool = False) -> list[str]:
     overlay = load_json(overlay_path)
     errors = schema_errors(overlay, load_json(schema_path), str(overlay_path))
     errors.extend(_ref_errors(overlay.get("base_registry", {}), f"{overlay_path}: base_registry"))
@@ -107,10 +110,10 @@ def _overlay_errors(*, overlay_path: Path, schema_path: Path, campaign_id: str, 
         if handoff_status == "ready" and handoff.get("blockers") != []:
             errors.append(f"{overlay_path}: ready handoff must have no producer blockers")
 
-    if campaign.get("route_registry_entry_present") is not False:
-        errors.append(f"{overlay_path}: absent route cannot be represented as registered")
+    if campaign.get("route_registry_entry_present") is not route_registered:
+        errors.append(f"{overlay_path}: registered-route presence must match exact overlay authority")
     if campaign.get("route_state") != "pending":
-        errors.append(f"{overlay_path}: unregistered route must remain pending")
+        errors.append(f"{overlay_path}: route must remain pending until claim-scoped MATHCERT adjudication")
     if campaign.get("handoff_state") != handoff_status:
         errors.append(f"{overlay_path}: overlay handoff state drift")
     for field in ("mathematical_target_proved", "may_adjudicate", "may_issue_certificate_output"):
@@ -224,6 +227,10 @@ def diophantine_overlay_errors(*, overlay_path: Path = DIO_OVERLAY_PATH, schema_
     return _overlay_errors(overlay_path=overlay_path, schema_path=schema_path, campaign_id=DIO_ID, handoff_status="ready", predecessor_id=EUCLID_ID)
 
 
+def erdos_overlay_errors(*, overlay_path: Path = ERDOS_OVERLAY_PATH, schema_path: Path = ERDOS_OVERLAY_SCHEMA_PATH) -> list[str]:
+    return _overlay_errors(overlay_path=overlay_path, schema_path=schema_path, campaign_id=ERDOS_ID, handoff_status="pending", predecessor_id=DIO_ID, route_registered=True)
+
+
 def merged_current_cert_route_errors(registry_path: Path = BASE_REGISTRY_PATH, schema_path: Path = base_routes.SCHEMA_PATH, manifest_dir: Path = MANIFEST_DIR, overlay_path: Path = OVERLAY_PATH, euclid_overlay_path: Path = EUCLID_OVERLAY_PATH, diophantine_overlay_path: Path = DIO_OVERLAY_PATH) -> list[str]:
     original = base_routes.expected_campaigns
     base_routes.expected_campaigns = lambda: original() - SUCCESSOR_IDS
@@ -234,11 +241,12 @@ def merged_current_cert_route_errors(registry_path: Path = BASE_REGISTRY_PATH, s
     errors.extend(vgse_overlay_errors(overlay_path=overlay_path))
     errors.extend(euclid_overlay_errors(overlay_path=euclid_overlay_path))
     errors.extend(diophantine_overlay_errors(overlay_path=diophantine_overlay_path))
+    errors.extend(erdos_overlay_errors())
     return errors
 
 
 def merged_current_route_state(campaign_id: str) -> str:
-    overlays = {VGSE_ID: OVERLAY_PATH, EUCLID_ID: EUCLID_OVERLAY_PATH, DIO_ID: DIO_OVERLAY_PATH}
+    overlays = {VGSE_ID: OVERLAY_PATH, EUCLID_ID: EUCLID_OVERLAY_PATH, DIO_ID: DIO_OVERLAY_PATH, ERDOS_ID: ERDOS_OVERLAY_PATH}
     if campaign_id in overlays:
         return str(load_json(overlays[campaign_id])["campaign"]["route_state"])
     return base_routes.current_route_state(campaign_id)
@@ -268,4 +276,4 @@ if __name__ == "__main__":
     failures = merged_current_cert_route_errors()
     if failures:
         raise SystemExit("\n".join(failures))
-    print("validated historical Cert routes plus bounded VGSE, GCD, and Diophantine successor overlays")
+    print("validated historical Cert routes plus bounded VGSE, GCD, Diophantine, and ERDOS-579 successor overlays")
