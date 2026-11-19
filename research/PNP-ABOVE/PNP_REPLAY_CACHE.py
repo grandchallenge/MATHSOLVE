@@ -169,13 +169,14 @@ def cache_entry(cache_root: Path, key: str) -> Path:
 def safe_directory(path: Path) -> None:
     require(not path.is_symlink() and path.is_dir(), f"UNSAFE_DIRECTORY: {path}")
     require(path.stat().st_uid == os.getuid(), f"CACHE_OWNER_MISMATCH: {path}")
-    require(not (path.stat().st_mode & stat.S_IWOTH), f"WORLD_WRITABLE_CACHE_DIR: {path}")
+    require(not (path.stat().st_mode & (stat.S_IRWXG | stat.S_IRWXO)),
+            f"CACHE_DIRECTORY_NOT_OWNER_ONLY: {path}")
 
 
 def verify_entry(entry: Path, key: str, expected_inputs: dict) -> dict:
     safe_directory(entry)
     safe_directory(entry / "PNPAbove")
-    metadata = json.loads(strict_file(entry / "metadata.json"))
+    metadata = json.loads(strict_cache_file(entry / "metadata.json"))
     require(metadata["format"] == FORMAT and metadata["key"] == key,
             "CACHE_ENTRY_IDENTITY_MISMATCH")
     require(metadata["inputs"] == expected_inputs, "CACHE_ENTRY_INPUTS_MISMATCH")
@@ -184,7 +185,7 @@ def verify_entry(entry: Path, key: str, expected_inputs: dict) -> dict:
         require(set(files) == {"lean", "olean"}, "CACHE_PAYLOAD_SCHEMA_DRIFT")
         for ext in ("lean", "olean"):
             rel = Path(f"PNPAbove/{name[:-5]}.{ext}")
-            actual = digest_file_if_regular(entry / rel)
+            actual = sha(strict_cache_file(entry / rel))
             require(actual == files[ext], f"CACHE_PAYLOAD_CORRUPT: {rel}")
         require(files["lean"] == expected_inputs["source"][name]["sha256"],
                 f"CACHE_STAGED_SOURCE_MISMATCH: {name}")
@@ -193,8 +194,12 @@ def verify_entry(entry: Path, key: str, expected_inputs: dict) -> dict:
     return metadata
 
 
-def digest_file_if_regular(path: Path) -> str:
-    return sha(strict_file(path))
+def strict_cache_file(path: Path) -> bytes:
+    data = strict_file(path)
+    require(path.stat().st_uid == os.getuid(), f"CACHE_FILE_OWNER_MISMATCH: {path}")
+    require(not (path.stat().st_mode & (stat.S_IRWXG | stat.S_IRWXO)),
+            f"CACHE_FILE_NOT_OWNER_ONLY: {path}")
+    return data
 
 
 def publish_seed(root: Path, entry: Path, key: str, data: dict, full: Path,
@@ -221,7 +226,7 @@ def publish_seed(root: Path, entry: Path, key: str, data: dict, full: Path,
                     content = strict_file(src)
                     dst = scratch / "PNPAbove" / f"{stem}.{ext}"
                     dst.write_bytes(content)
-                    os.chmod(dst, 0o444)
+                    os.chmod(dst, 0o400)
                     hashes[ext] = sha(content)
                 require(hashes["lean"] == data["source"][name]["sha256"],
                         f"REPLAY_SOURCE_DIFFERS_FROM_CURRENT_LOCK: {name}")
@@ -231,9 +236,9 @@ def publish_seed(root: Path, entry: Path, key: str, data: dict, full: Path,
                         "trust": "OS_ACCOUNT_ONLY_CACHED_DEVELOPMENT_NOT_PROOF"}
             (scratch / "metadata.json").write_text(
                 json.dumps(metadata, indent=2, sort_keys=True) + "\n")
-            os.chmod(scratch / "metadata.json", 0o444)
-            os.chmod(scratch / "PNPAbove", 0o555)
-            os.chmod(scratch, 0o555)
+            os.chmod(scratch / "metadata.json", 0o400)
+            os.chmod(scratch / "PNPAbove", 0o500)
+            os.chmod(scratch, 0o500)
             os.rename(scratch, entry)
         finally:
             if scratch.exists():
@@ -255,6 +260,7 @@ def restore(entry: Path, key: str, data: dict, work: Path) -> dict:
             for ext in ("lean", "olean"):
                 src = entry / "PNPAbove" / f"{stem}.{ext}"
                 shutil.copyfile(src, target / src.name, follow_symlinks=False)
+                os.chmod(target / src.name, 0o600)
         receipt = {"format": "PNP-REPLAY-CACHED-DEV-ONLY/1",
                    "key": key, "cache_metadata_sha256": digest_file(entry / "metadata.json"),
                    "source_gcl_head": None, "full_replay_evidence": metadata["evidence"],
@@ -262,6 +268,7 @@ def restore(entry: Path, key: str, data: dict, work: Path) -> dict:
                    "not_proof": "A cache hit is NOT full source compilation or certification."}
         (staging / "cache_dev_receipt.json").write_text(
             json.dumps(receipt, indent=2, sort_keys=True) + "\n")
+        os.chmod(staging / "cache_dev_receipt.json", 0o600)
         # Re-hash the bytes after copying. A stale or concurrently damaged
         # source cannot silently pass even if it was sound during lookup.
         for name, files in metadata["payload"].items():

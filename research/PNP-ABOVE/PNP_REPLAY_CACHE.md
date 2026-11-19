@@ -76,7 +76,7 @@ original six source-locked stages, before its protected merge.
 - Separate new Lean module import and theorem check: 10.36 seconds.
 - Second full warm-wrapper execution with newly proved theorem: 11.50 seconds.
 - Cached predecessor footprint: about 32 MB.
-- Sixteen Python unit/hostile mutation tests: PASS (5.33 seconds total).
+- Eighteen Python unit/hostile mutation tests: PASS (5.33 seconds total).
 - Explicit admission-mode refusal: PASS.
 - Fresh Lean #print axioms for new proof after restore: standard axioms only.
 

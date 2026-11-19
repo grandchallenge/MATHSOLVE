@@ -156,6 +156,19 @@ class CacheTests(unittest.TestCase):
         self.assertEqual(self.key, key2)
         self.assertEqual(len(self.key), 64)
 
+    def test_17_world_readable_payload_rejected(self):
+        entry = self.seed()
+        p = entry / "PNPAbove/WP23Probe.olean"
+        p.chmod(0o644)
+        with self.assertRaisesRegex(cache.Invalid, "CACHE_FILE_NOT_OWNER_ONLY"):
+            cache.verify_entry(entry, self.key, self.data)
+
+    def test_18_world_readable_directory_rejected(self):
+        entry = self.seed()
+        (entry / "PNPAbove").chmod(0o755)
+        with self.assertRaisesRegex(cache.Invalid, "CACHE_DIRECTORY_NOT_OWNER_ONLY"):
+            cache.verify_entry(entry, self.key, self.data)
+
     def test_16_cache_entry_cannot_be_replaced_by_symlink(self):
         entry = self.seed()
         (entry / "PNPAbove").chmod(0o700)
