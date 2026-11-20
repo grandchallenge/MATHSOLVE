@@ -283,7 +283,10 @@ jobs:
           lake env lean MathSolve/FormalConjectures/Replay.lean
           lake env lean MathSolve/PNP/CarrierBridge.lean
           lake env lean MathSolve/PNP/PolyBoundBridge.lean
-          lake env lean research/ERDOS-602/EssentialDisjointListCore.lean
+          lake env lean research/ERDOS-602/EssentialDisjointListCore.lean | tee /tmp/erdos602-axioms.txt
+          grep -Fxq "'Erdos602ListCore.essentialDisjoint_of_finiteInNeighbours' depends on axioms: [propext, Quot.sound]" /tmp/erdos602-axioms.txt
+          grep -Fxq "'Erdos602ListCore.propertyB_of_finiteInNeighbours' depends on axioms: [propext, Classical.choice, Quot.sound]" /tmp/erdos602-axioms.txt
+          ! grep -Eq 'sorryAx|^error:|^warning:' /tmp/erdos602-axioms.txt
           python ci/validate_formal_conjectures_targets.py
           PYTHONPATH=ci python -m unittest ci/test_formal_conjectures_targets.py -v
           python -m json.tool formal_sources/formal_conjectures/MS-FC-WP00.json >/dev/null
