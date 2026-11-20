@@ -19,6 +19,8 @@ class CacheTests(unittest.TestCase):
         cls.upstream = Path(os.environ["PNP_UPSTREAM_ROOT"])
         cls.full = Path(os.environ["PNP_FULL_REPLAY_ROOT"])
         cls.key, cls.data = cache.inputs(cls.upstream, cls.gcl)
+        cls.full23b = (Path(os.environ["PNP_FULL_REPLAY_ROOT_WP23B"])
+                       if os.environ.get("PNP_FULL_REPLAY_ROOT_WP23B") else None)
 
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(prefix="pnp-cache-test-")
@@ -177,6 +179,71 @@ class CacheTests(unittest.TestCase):
         entry.symlink_to(self.full)
         with self.assertRaisesRegex(cache.Invalid, "UNSAFE_DIRECTORY"):
             cache.verify_entry(entry, self.key, self.data)
+
+
+    def test_19_backwards_compatible_wp23a_key_and_count(self):
+        key, data = cache.inputs(self.upstream, self.gcl, "WP23A")
+        self.assertEqual(key, self.key)
+        self.assertEqual(len(data["source"]), 65)
+        self.assertNotIn("WP23BMask.lean", data["source"])
+
+    def test_20_wp23b_has_70_distinct_exact_modules(self):
+        key, data = cache.inputs(self.upstream, self.gcl, "WP23B")
+        self.assertEqual(data["stage"], "WP23B")
+        self.assertEqual(len(data["source"]), 70)
+        self.assertIn("WP23BConcrete.lean", data["source"])
+        self.assertIn("WP23B", data["manifests"])
+        self.assertIn(".lake/build/lib/lean/MIPRE/TM/CookLevin/Assemble.olean",
+                      data["environment"]["import_dependencies"])
+        self.assertNotEqual(key, self.key)
+
+    def test_21_wp23b_replay_exact_candidate_accepted(self):
+        if self.full23b is None:
+            self.skipTest("Requires PNP_FULL_REPLAY_ROOT_WP23B")
+        _, data = cache.inputs(self.upstream, self.gcl, "WP23B")
+        result = cache.check_replay(self.full23b, self.gcl, data["source"], "WP23B")
+        self.assertEqual(result["full_replay_candidate"],
+                         "77b029862b6a245f0d649ba70a34406b6f03c9fb")
+
+    def test_22_wp23a_full_replay_cannot_seed_wp23b(self):
+        _, data = cache.inputs(self.upstream, self.gcl, "WP23B")
+        with self.assertRaisesRegex(cache.Invalid, "FULL_REPLAY_FINAL_STATUS_ABSENT"):
+            cache.check_replay(self.full, self.gcl, data["source"], "WP23B")
+
+    def test_23_wp23b_build_seed_restore_separate_identity(self):
+        if self.full23b is None:
+            self.skipTest("Requires PNP_FULL_REPLAY_ROOT_WP23B")
+        key, data = cache.inputs(self.upstream, self.gcl, "WP23B")
+        entry = cache.cache_entry(self.root, key)
+        metadata = cache.publish_seed(self.root, entry, key, data,
+                                      self.full23b, self.gcl)
+        self.assertEqual(len(metadata["payload"]), 70)
+        work = Path(self.tmp.name) / "wp23b"
+        cache.restore(entry, key, data, work)
+        self.assertEqual(len(list((work / "PNPAbove").glob("*.olean"))), 70)
+        receipt = json.loads((work / "cache_dev_receipt.json").read_text())
+        self.assertFalse(receipt["admission_eligible"])
+        self.assertEqual(receipt["key"], key)
+
+    def test_24_stage_mismatch_rejected_even_with_valid_payload(self):
+        entry = self.seed()
+        _, later = cache.inputs(self.upstream, self.gcl, "WP23B")
+        with self.assertRaisesRegex(cache.Invalid, "CACHE_ENTRY_INPUTS_MISMATCH"):
+            cache.verify_entry(entry, self.key, later)
+
+    def test_25_wp23b_external_dependency_fingerprint_matters(self):
+        key, data = cache.inputs(self.upstream, self.gcl, "WP23B")
+        changed = copy.deepcopy(data)
+        target = ".lake/build/lib/lean/MIPRE/TM/CookLevin/Assemble.olean"
+        changed["environment"]["import_dependencies"][target] = "0" * 64
+        newkey = cache.sha(json.dumps(changed, sort_keys=True,
+                                     separators=(",", ":")).encode())
+        self.assertNotEqual(newkey, key)
+        self.assertNotEqual(changed, data)
+
+    def test_26_unsupported_future_stage_fails_closed(self):
+        with self.assertRaisesRegex(cache.Invalid, "UNSUPPORTED_ADMITTED_STAGE"):
+            cache.inputs(self.upstream, self.gcl, "WP23C")
 
 
 if __name__ == "__main__":
