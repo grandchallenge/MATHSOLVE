@@ -1,11 +1,14 @@
 # PNP-ABOVE WP25 — uniform original Cost.Prog SAT answer evaluator
 
 Scientific disposition: original pinned Lean kernel-checked LOCAL
-prototype. Protected admission, source lock and exact-head full uncached
-predecessor replay remain separately required.
+prototype. The manifest now source-locks 11 declarations to the exact
+protected WP24 merge. Full uncached exact-head replay and protected
+admission remain separately required.
 
-Protected input source: WP24 candidate
-b976e9600080a4a402a31be417c7dc7ebecdcf17; original upstream
+Protected input source: WP24 protected merge
+af675f4862d2f2822d6fe669ab043be438dff4ed (PR #1262);
+exact admitted WP24 candidate b976e9600080a4a402a31be417c7dc7ebecdcf17;
+original upstream
 vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970
 with Lean v4.35.0-rc3.
 

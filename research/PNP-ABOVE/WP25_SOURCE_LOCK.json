@@ -1,0 +1,26 @@
+{
+  "modules": {
+    "WP25SourceEvaluator.lean": {
+      "git_blob": "84b6b28171228d35d21b3dc6c6048f16c5f14845",
+      "path": "research/PNP-ABOVE/WP25_SourceEvaluator.lean",
+      "sha256": "104bcbed1e9e8761796905ce7ac6c9c38f6a341817bf58945696a38895080784",
+      "theorems": [
+        "nodeStepP_correct",
+        "execNode_size_bound",
+        "source_evaluator_polytime",
+        "executeRpn",
+        "evalStackProgram_correct",
+        "evalFormulaProgram_correct",
+        "answerCheckProgram_correct",
+        "ofFn_getD_eq_bitsAt",
+        "source_program_agrees_with_sat_game",
+        "accepted_source_witness_iff",
+        "source_answer_checker_polytime"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP25-SOURCE-LOCK/1",
+  "source_protected_parent": "af675f4862d2f2822d6fe669ab043be438dff4ed",
+  "theorem_count": 11
+}
