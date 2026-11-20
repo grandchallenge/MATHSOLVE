@@ -32,6 +32,7 @@ DIO_OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_euclid_dio
 ERDOS_OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_erdos_579_overlay.json"
 ERDOS_OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_erdos_579_overlay.schema.json"
 ERDOS_CERTIFIED_SUCCESSOR_PATH = ROOT / "contracts" / "mathcert_current_routes_erdos_579_certified_successor.json"
+ERDOS_INTERNAL_PROMOTION_PATH = ROOT / "contracts" / "erdos_579_internal_claim_promotion_successor.json"
 
 ADJUDICATED_STATES = {"certified", "qualified", "rejected", "proof_debt"}
 POSITIVE_STATES = {"certified", "qualified"}
@@ -250,6 +251,30 @@ def erdos_certified_successor_errors(path: Path = ERDOS_CERTIFIED_SUCCESSOR_PATH
         errors.append("Erdős certified scope and limitations lost")
     return errors
 
+
+def erdos_internal_promotion_errors(path: Path = ERDOS_INTERNAL_PROMOTION_PATH) -> list[str]:
+    """Exact-scope *internal* promotion; external publication remains out of scope."""
+    if not path.is_file():return ["Erdős 579 internal promotion decision missing"]
+    errors=[]
+    if git_blob_sha1(path)!="12b4f40f4160a0b75c8c5780b43c4c070a92d8a1":errors.append("Erdős internal promotion decision Git blob drift")
+    record=load_json(path)
+    predecessor=record.get("predecessor",{})
+    expected_predecessor={"repository":"grandchallenge/MATHSOLVE","commit_sha":"442cef7f7b5c18afffa132ae5eba01087ba7cdea","path":"contracts/mathcert_current_routes_erdos_579_certified_successor.json","digest_algorithm":"git_blob_sha1","digest":"ea043b822c28f2cb86badca3ec6e3d1ec2208bb0"}
+    if predecessor!=expected_predecessor:errors.append("Erdős internal promotion predecessor identity drift")
+    errors+=_ref_errors(predecessor,"Erdős internal promotion predecessor")
+    protected=load_json(ERDOS_CERTIFIED_SUCCESSOR_PATH)
+    if record.get("certification_route")!=protected.get("protected_cert_route") or record.get("certificate")!=protected.get("certificate_output"):
+        errors.append("Erdős internal promotion certificate or route drift")
+    fixed={"schema_version":"1.0.0","record_id":"MS-ERDOS-579-INTERNAL-CLAIM-PROMOTION-001","decision_scope":"INTERNAL_EXACT_CERTIFIED_DISPROOF_ONLY","decision_lifecycle":"EFFECTIVE_ONLY_AFTER_NONAUTHOR_REVIEW_AND_PROTECTED_MERGE","campaign_id":"ERDOS-579-DISPROOF-001","claim_id":"ERDOS-579-C001","claim_type":"NEGATIVE_RESULT","internal_claim_promotion_eligible":True,"external_publication_authorized":False,"public_certificate_issued":False,"novelty_or_priority_claimed":False,"sharp_extremal_density_claimed":False,"all_in_one_comparator_passed":False,"source_time_manifest_mutated":False,"source_time_claim_ledger_mutated":False}
+    for k,v in fixed.items():
+        if record.get(k)!=v:errors.append(f"Erdős internal promotion {k} status/authority drift")
+    evidence=record.get("evidence",{})
+    if (evidence.get("original_source_sha256"),evidence.get("lean_version"),evidence.get("independent_kernel_replay_decl_count"),set(evidence.get("axioms",[]))) != ("c210bfcb2e4f1d9acf56e210d8800f831868783ff949d964033bb9cda6b684b2","4.33.1",57271,{"propext","Classical.choice","Quot.sound"}):
+        errors.append("Erdős internal promotion source/axiom/replay identity drift")
+    if "delta=3/2048" not in record.get("claim_text","") or not record.get("reopening_conditions"):
+        errors.append("Erdős internal promotion exact statement or reopening conditions lost")
+    return errors
+
 def merged_current_cert_route_errors(registry_path: Path = BASE_REGISTRY_PATH, schema_path: Path = base_routes.SCHEMA_PATH, manifest_dir: Path = MANIFEST_DIR, overlay_path: Path = OVERLAY_PATH, euclid_overlay_path: Path = EUCLID_OVERLAY_PATH, diophantine_overlay_path: Path = DIO_OVERLAY_PATH) -> list[str]:
     original = base_routes.expected_campaigns
     base_routes.expected_campaigns = lambda: original() - SUCCESSOR_IDS
@@ -262,6 +287,7 @@ def merged_current_cert_route_errors(registry_path: Path = BASE_REGISTRY_PATH, s
     errors.extend(diophantine_overlay_errors(overlay_path=diophantine_overlay_path))
     errors.extend(erdos_overlay_errors())
     errors.extend(erdos_certified_successor_errors())
+    errors.extend(erdos_internal_promotion_errors())
     return errors
 
 
@@ -287,6 +313,10 @@ def merged_provider_gate_errors(campaign_id: str, stage: str, manifest_dir: Path
         return [f"{campaign_id} {stage}: MATHCERT route is not an adjudicated disposition"]
     if stage == "CLAIM_PROMOTION":
         manifest = load_json(manifest_path)
+        # Preserve historical manifest and expose an independently reviewed
+        # internal claim decision only for this exact certified negative result.
+        if campaign_id == ERDOS_ID:
+            return erdos_internal_promotion_errors() if route_state in POSITIVE_STATES else ["Erdős internal promotion requires certified route"]
         if not manifest.get("promotion", {}).get("eligible"):
             return [f"{campaign_id} {stage}: manifest is not promotion eligible"]
         if route_state not in POSITIVE_STATES:
