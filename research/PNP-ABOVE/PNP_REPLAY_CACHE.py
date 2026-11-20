@@ -21,10 +21,21 @@ import sys
 import tempfile
 
 UPSTREAM_SHA = "5926bdff5db621f44682a101007ef2fe3ae8d970"
-STAGES = {"WP18": 19, "WP19": 27, "WP20": 44, "WP21": 54, "WP22": 63, "WP23A": 65}
-STAGE_MANIFESTS = ("WP18", "WP19", "WP20", "WP21", "WP22", "WP23A")
-AXIOMS = ("WP18", "WP19", "WP20", "WP21", "WP22", "WP23A")
-FINAL_STATUS = "WP23A_FIXED_GAME_INVARIANCE_AND_NO_COMPRESSION_SOUNDNESS_PREMISE_PROVED"
+STAGES = {"WP18": 19, "WP19": 27, "WP20": 44, "WP21": 54, "WP22": 63, "WP23A": 65, "WP23B": 70}
+STAGE_MANIFESTS = ("WP18", "WP19", "WP20", "WP21", "WP22", "WP23A", "WP23B")
+TERMINAL_STATUS = {
+    "WP23A": "WP23A_FIXED_GAME_INVARIANCE_AND_NO_COMPRESSION_SOUNDNESS_PREMISE_PROVED",
+    "WP23B": "WP23B_EXACT_SOURCE_NATIVE_SUCCINCT_SAT_MASK__SAT_HARDNESS_TRANSFER_OPEN",
+}
+
+
+def predecessor_stages(stage: str) -> tuple[str, ...]:
+    require(stage in TERMINAL_STATUS, f"UNSUPPORTED_ADMITTED_STAGE: {stage}")
+    return STAGE_MANIFESTS[:STAGE_MANIFESTS.index(stage) + 1]
+
+
+def axiom_log(stage: str) -> str:
+    return "WP23_AxiomAudit.log" if stage == "WP23A" else f"{stage}_AxiomAudit.log"
 FLAGS = ["LEAN_NUM_THREADS=1", "lake env lean -R WORK -o WORK/PNPAbove/MOD.olean WORK/PNPAbove/MOD.lean"]
 FORMAT = "PNP-REPLAY-CACHE/1"
 
@@ -59,7 +70,7 @@ def strict_file(path: Path) -> bytes:
     return path.read_bytes()
 
 
-def source_catalog(gcl: Path) -> dict[str, dict[str, str]]:
+def source_catalog(gcl: Path, stage: str = "WP23A") -> dict[str, dict[str, str]]:
     root = gcl / "research/PNP-ABOVE"
     old_replay = strict_file(root / "WP18_REPLAY.sh").decode()
     old = re.findall(r"^check_old\s+(\d{2})\s+(\S+\.lean)\s+([a-f0-9]{40})\s*$", old_replay, re.M)
@@ -79,17 +90,17 @@ def source_catalog(gcl: Path) -> dict[str, dict[str, str]]:
 
     for num, filename, blob in old:
         add(f"WP{num}.lean", root / filename, blob)
-    for stage in STAGE_MANIFESTS:
-        manifest = json.loads(strict_file(root / f"{stage}_SOURCE_LOCK.json"))
+    for prefix in predecessor_stages(stage):
+        manifest = json.loads(strict_file(root / f"{prefix}_SOURCE_LOCK.json"))
         for module, record in manifest["modules"].items():
             rel = Path(record["path"])
             require(rel.parent == Path("research/PNP-ABOVE"), "MANIFEST_PATH_ESCAPE")
             add(module, gcl / rel, record["git_blob"], record["sha256"])
-    require(len(result) == STAGES["WP23A"], f"MODULE_COUNT_DRIFT: {len(result)}")
+    require(len(result) == STAGES[stage], f"MODULE_COUNT_DRIFT: {len(result)}")
     return dict(sorted(result.items()))
 
 
-def environment(upstream: Path) -> dict[str, str]:
+def environment(upstream: Path, stage: str = "WP23A") -> dict[str, str]:
     require(command("git", "rev-parse", "HEAD", cwd=upstream) == UPSTREAM_SHA,
             "ORIGINAL_UPSTREAM_REVISION_DRIFT")
     require(not command("git", "status", "--porcelain", "--untracked-files=no", cwd=upstream),
@@ -100,10 +111,15 @@ def environment(upstream: Path) -> dict[str, str]:
     lake = prefix / "bin/lake"
     require(lean.is_file() and lake.is_file(), "TOOLCHAIN_EXECUTABLE_MISSING")
     deps = {}
-    for rel in ("lake-manifest.json", "lean-toolchain",
-                ".lake/build/lib/lean/MIPRE/Foundations/Verifier.olean",
-                ".lake/build/lib/lean/MIPRE/Foundations/Games.olean",
-                ".lake/build/lib/lean/MIPRE/Foundations/GameTransport.olean"):
+    import_deps = ("lake-manifest.json", "lean-toolchain",
+                   ".lake/build/lib/lean/MIPRE/Foundations/Verifier.olean",
+                   ".lake/build/lib/lean/MIPRE/Foundations/Games.olean",
+                   ".lake/build/lib/lean/MIPRE/Foundations/GameTransport.olean")
+    if stage == "WP23B":
+        # WP23B adds these two original MIPRE import dependencies.
+        import_deps += (".lake/build/lib/lean/MIPRE/Foundations/SAT/Succinct.olean",
+                        ".lake/build/lib/lean/MIPRE/TM/CookLevin/Assemble.olean")
+    for rel in import_deps:
         deps[rel] = digest_file(upstream / rel)
     return {"upstream_sha": UPSTREAM_SHA, "toolchain": toolchain,
             "lean_version": command("lean", "--version", cwd=upstream),
@@ -112,33 +128,35 @@ def environment(upstream: Path) -> dict[str, str]:
             "toolchain_prefix": str(prefix), "import_dependencies": deps}
 
 
-def inputs(upstream: Path, gcl: Path) -> tuple[str, dict]:
-    catalog = source_catalog(gcl)
-    env = environment(upstream)
+def inputs(upstream: Path, gcl: Path, stage: str = "WP23A") -> tuple[str, dict]:
+    catalog = source_catalog(gcl, stage)
+    env = environment(upstream, stage)
     source_root = gcl / "research/PNP-ABOVE"
     manifests = {name: digest_file(source_root / f"{name}_SOURCE_LOCK.json")
-                 for name in STAGE_MANIFESTS}
-    data = {"format": FORMAT, "stage": "WP23A", "compiler_flags": FLAGS,
+                 for name in predecessor_stages(stage)}
+    data = {"format": FORMAT, "stage": stage, "compiler_flags": FLAGS,
             "environment": env, "manifests": manifests, "source": catalog}
     key = sha(json.dumps(data, sort_keys=True, separators=(",", ":")).encode())
     return key, data
 
 
-def check_replay(full: Path, gcl: Path, catalog: dict) -> dict:
+def check_replay(full: Path, gcl: Path, catalog: dict,
+                 stage: str = "WP23A") -> dict:
+    require(stage in TERMINAL_STATUS, "UNSUPPORTED_ADMITTED_STAGE")
     status = strict_file(full / "status.txt").decode().strip()
-    require(status == FINAL_STATUS, "FULL_REPLAY_FINAL_STATUS_ABSENT")
+    require(status == TERMINAL_STATUS[stage], "FULL_REPLAY_FINAL_STATUS_ABSENT")
     full_log = full.with_suffix(".log")
     exit_file = full.with_suffix(".exit")
     require(strict_file(exit_file).strip() == b"0", "FULL_REPLAY_EXIT_NOT_ZERO")
     log = strict_file(full_log).decode()
-    require(log.rstrip().endswith(FINAL_STATUS), "FULL_REPLAY_LOG_TERMINAL_MISSING")
-    for marker in ("WP18_STANDARD_AXIOMS_ONLY_PASS", "WP19_STANDARD_AXIOMS_ONLY_PASS",
-                   "WP20_STANDARD_AXIOMS_ONLY_PASS", "WP21_STANDARD_AXIOMS_ONLY_PASS",
-                   "WP22_STANDARD_AXIOMS_ONLY_PASS", "WP23A_STANDARD_AXIOMS_ONLY_PASS",
-                   "WP23A_SOURCE_LOCK_PASS"):
-        require(marker in log, f"FULL_REPLAY_AUDIT_MISSING: {marker}")
+    require(log.rstrip().endswith(TERMINAL_STATUS[stage]), "FULL_REPLAY_LOG_TERMINAL_MISSING")
+    for prefix in predecessor_stages(stage):
+        lock_marker = ("WP18_NEW_SOURCE_LOCK_PASS" if prefix == "WP18"
+                       else f"{prefix}_SOURCE_LOCK_PASS")
+        for marker in (f"{prefix}_STANDARD_AXIOMS_ONLY_PASS", lock_marker):
+            require(marker in log, f"FULL_REPLAY_AUDIT_MISSING: {marker}")
     lock = strict_file(full / "lock.txt").decode()
-    found = re.findall(r"^WP23A_CANDIDATE=([a-f0-9]{40})$", lock, re.M)
+    found = re.findall(rf"^{stage}_CANDIDATE=([a-f0-9]{{40}})$", lock, re.M)
     require(len(found) == 1, "FULL_REPLAY_CANDIDATE_MISSING_OR_AMBIGUOUS")
     exact = found[0]
     current = command("git", "rev-parse", "HEAD", cwd=gcl)
@@ -150,15 +168,15 @@ def check_replay(full: Path, gcl: Path, catalog: dict) -> dict:
     for name in catalog:
         require(f"CHECKING_ORIGINAL_SOURCE_{name[:-5]}" in log,
                 f"FULL_REPLAY_MODULE_MISSING: {name}")
-    for name in AXIOMS:
-        path = full / f"{name}_AxiomAudit.log" if name != "WP23A" else full / "WP23_AxiomAudit.log"
-        require(len(strict_file(path)) > 30, f"AXIOM_LOG_MISSING: {name}")
+    for name in predecessor_stages(stage):
+        require(len(strict_file(full / axiom_log(name))) > 30,
+                f"AXIOM_LOG_MISSING: {name}")
     return {"full_replay_candidate": exact, "full_log_sha256": digest_file(full_log),
             "full_lock_sha256": digest_file(full / "lock.txt"),
             "full_status_sha256": digest_file(full / "status.txt"),
             "full_axiom_logs_sha256": {
-                n: digest_file(full / (f"{n}_AxiomAudit.log" if n != "WP23A"
-                    else "WP23_AxiomAudit.log")) for n in AXIOMS}}
+                n: digest_file(full / axiom_log(n))
+                for n in predecessor_stages(stage)}}
 
 
 def cache_entry(cache_root: Path, key: str) -> Path:
@@ -204,7 +222,7 @@ def strict_cache_file(path: Path) -> bytes:
 
 def publish_seed(root: Path, entry: Path, key: str, data: dict, full: Path,
                  gcl: Path) -> dict:
-    evidence = check_replay(full, gcl, data["source"])
+    evidence = check_replay(full, gcl, data["source"], data["stage"])
     safe_directory(root)
     group = entry.parent
     group.mkdir(mode=0o700, exist_ok=True)
@@ -287,6 +305,8 @@ def restore(entry: Path, key: str, data: dict, work: Path) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=("key", "seed", "check", "restore"))
+    parser.add_argument("--stage", choices=tuple(TERMINAL_STATUS), default="WP23A",
+                        help="Exact admitted predecessor stage; WP23A remains the legacy default")
     parser.add_argument("--upstream", required=True, type=Path)
     parser.add_argument("--gcl", required=True, type=Path)
     parser.add_argument("--cache-root", type=Path,
@@ -297,7 +317,7 @@ def main() -> int:
     require(os.environ.get("PNP_REPLAY_ADMISSION") != "1" or args.action == "key",
             "ADMISSION_MUST_USE_UNCACHED_FULL_REPLAY")
     upstream, gcl = args.upstream.resolve(), args.gcl.resolve()
-    key, data = inputs(upstream, gcl)
+    key, data = inputs(upstream, gcl, args.stage)
     if args.action == "key":
         print(f"PNP_CONTENT_ADDRESS_KEY={key}")
         return 0
