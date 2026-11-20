@@ -31,6 +31,7 @@ DIO_OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_euclid_diophant
 DIO_OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_euclid_diophantine_overlay.schema.json"
 ERDOS_OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_erdos_579_overlay.json"
 ERDOS_OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_erdos_579_overlay.schema.json"
+ERDOS_CERTIFIED_SUCCESSOR_PATH = ROOT / "contracts" / "mathcert_current_routes_erdos_579_certified_successor.json"
 
 ADJUDICATED_STATES = {"certified", "qualified", "rejected", "proof_debt"}
 POSITIVE_STATES = {"certified", "qualified"}
@@ -231,6 +232,24 @@ def erdos_overlay_errors(*, overlay_path: Path = ERDOS_OVERLAY_PATH, schema_path
     return _overlay_errors(overlay_path=overlay_path, schema_path=schema_path, campaign_id=ERDOS_ID, handoff_status="pending", predecessor_id=DIO_ID, route_registered=True)
 
 
+
+def erdos_certified_successor_errors(path: Path = ERDOS_CERTIFIED_SUCCESSOR_PATH) -> list[str]:
+    if not path.is_file():return ["Erdős #579 certified successor missing"]
+    data=load_json(path)
+    errors=[]
+    fixed={"schema_version":"1.0.0","overlay_id":"MS-ERDOS-579-CERTIFIED-SUCCESSOR-001","campaign_id":"ERDOS-579-DISPROOF-001","certified_claim_id":"ERDOS-579-C001","certification_level":5,"route_state":"certified","mathematical_target_proved":True,"claim_promotion_eligible":False}
+    for k,v in fixed.items():
+        if data.get(k)!=v:errors.append(f"Erdős certified successor {k} drift")
+    ref=data.get("predecessor",{})
+    if ref!={"path":"contracts/mathcert_current_routes_erdos_579_overlay.json","digest_algorithm":"git_blob_sha1","digest":"e348fceaf4bfcdb9e3606507c21645ac2df16411"}:
+        errors.append("Erdős historical predecessor identity drift")
+    errors+=_ref_errors(ref,"Erdős certified predecessor")
+    if data.get("protected_cert_route")!={'repository': 'grandchallenge/MATHCERT', 'commit_sha': '84f0b27d00a2d1c8d032db469c8229d2611d9a7a', 'path': 'governance/certification_routes.json', 'digest_algorithm': 'git_blob_sha1', 'digest': '7796d00e5189f4f39cc76e6c83883685a66ed5fb'}:errors.append("Erdős protected Cert route exact authority drift")
+    if data.get("certificate_output")!={'repository': 'grandchallenge/MATHCERT', 'commit_sha': 'ec218d87603bfa1ba835369e7006a377d9855c46', 'path': 'certificates/formal_sources/MC-ERDOS-579-LEVEL5-001.json', 'digest_algorithm': 'git_blob_sha1', 'digest': '9edadf6c23810612b44c8ac0e7a0d3ad37a782b5'}:errors.append("Erdős Level 5 certificate exact output drift")
+    if "no sharp density" not in data.get("scope","") or not data.get("limitations"):
+        errors.append("Erdős certified scope and limitations lost")
+    return errors
+
 def merged_current_cert_route_errors(registry_path: Path = BASE_REGISTRY_PATH, schema_path: Path = base_routes.SCHEMA_PATH, manifest_dir: Path = MANIFEST_DIR, overlay_path: Path = OVERLAY_PATH, euclid_overlay_path: Path = EUCLID_OVERLAY_PATH, diophantine_overlay_path: Path = DIO_OVERLAY_PATH) -> list[str]:
     original = base_routes.expected_campaigns
     base_routes.expected_campaigns = lambda: original() - SUCCESSOR_IDS
@@ -242,11 +261,14 @@ def merged_current_cert_route_errors(registry_path: Path = BASE_REGISTRY_PATH, s
     errors.extend(euclid_overlay_errors(overlay_path=euclid_overlay_path))
     errors.extend(diophantine_overlay_errors(overlay_path=diophantine_overlay_path))
     errors.extend(erdos_overlay_errors())
+    errors.extend(erdos_certified_successor_errors())
     return errors
 
 
 def merged_current_route_state(campaign_id: str) -> str:
     overlays = {VGSE_ID: OVERLAY_PATH, EUCLID_ID: EUCLID_OVERLAY_PATH, DIO_ID: DIO_OVERLAY_PATH, ERDOS_ID: ERDOS_OVERLAY_PATH}
+    if campaign_id == ERDOS_ID:
+        return str(load_json(ERDOS_CERTIFIED_SUCCESSOR_PATH)["route_state"])
     if campaign_id in overlays:
         return str(load_json(overlays[campaign_id])["campaign"]["route_state"])
     return base_routes.current_route_state(campaign_id)
