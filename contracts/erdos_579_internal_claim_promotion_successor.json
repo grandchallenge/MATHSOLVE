@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-ERDOS-579-INTERNAL-CLAIM-PROMOTION-001",
+  "decision_scope": "INTERNAL_EXACT_CERTIFIED_DISPROOF_ONLY",
+  "decision_lifecycle": "EFFECTIVE_ONLY_AFTER_NONAUTHOR_REVIEW_AND_PROTECTED_MERGE",
+  "campaign_id": "ERDOS-579-DISPROOF-001",
+  "claim_id": "ERDOS-579-C001",
+  "predecessor": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "commit_sha": "442cef7f7b5c18afffa132ae5eba01087ba7cdea",
+    "path": "contracts/mathcert_current_routes_erdos_579_certified_successor.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "ea043b822c28f2cb86badca3ec6e3d1ec2208bb0"
+  },
+  "certification_route": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "84f0b27d00a2d1c8d032db469c8229d2611d9a7a",
+    "path": "governance/certification_routes.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "7796d00e5189f4f39cc76e6c83883685a66ed5fb"
+  },
+  "certificate": {
+    "repository": "grandchallenge/MATHCERT",
+    "commit_sha": "ec218d87603bfa1ba835369e7006a377d9855c46",
+    "path": "certificates/formal_sources/MC-ERDOS-579-LEVEL5-001.json",
+    "digest_algorithm": "git_blob_sha1",
+    "digest": "9edadf6c23810612b44c8ac0e7a0d3ad37a782b5"
+  },
+  "claim_type": "NEGATIVE_RESULT",
+  "claim_text": "The universal positive Ramsey–Turan assertion for non-induced K_(2,2,2)-free finite simple graphs is false; fixed delta=3/2048 gives arbitrarily large counterexamples with independence ratio tending to zero.",
+  "internal_claim_promotion_eligible": true,
+  "external_publication_authorized": false,
+  "public_certificate_issued": false,
+  "novelty_or_priority_claimed": false,
+  "sharp_extremal_density_claimed": false,
+  "all_in_one_comparator_passed": false,
+  "source_time_manifest_mutated": false,
+  "source_time_claim_ledger_mutated": false,
+  "evidence": {
+    "original_source_sha256": "c210bfcb2e4f1d9acf56e210d8800f831868783ff949d964033bb9cda6b684b2",
+    "lean_version": "4.33.1",
+    "independent_kernel_replay_decl_count": 57271,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope_review": "MATHCERT adjudication PR #371; Level 5 certificate PR #372; qualified non-author reviewer jimsteeg",
+    "programme_source_editorial_accepted": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/1850#issuecomment-7035219464"
+  },
+  "required_promotion_gate": "Non-author approval on this decision's exact material head, successful affected tests, protected merge and readback. This internal claim may then be used as certified negative result; public publication/priority is still separate.",
+  "reopening_conditions": [
+    "Any changed external proof bytes or source statement",
+    "Changed certificate/route SHA or material proof scope",
+    "Contrary evidence on exact graph conventions or standard-axiom kernel replay"
+  ]
+}

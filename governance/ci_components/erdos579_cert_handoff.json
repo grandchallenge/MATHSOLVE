@@ -10,7 +10,9 @@
       "contracts/mathcert_current_routes_erdos_579_overlay.json",
       "schemas/mathcert_current_routes_erdos_579_overlay.schema.json",
       "contracts/mathcert_current_routes_erdos_579_certified_successor.json",
-      "ci/test_erdos_579_certified_successor.py"
+      "ci/test_erdos_579_certified_successor.py",
+      "contracts/erdos_579_internal_claim_promotion_successor.json",
+      "ci/test_erdos_579_internal_promotion.py"
     ],
     "prefixes": [
       "campaign_ledgers/ERDOS-579-DISPROOF-001/"
