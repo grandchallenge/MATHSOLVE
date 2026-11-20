@@ -1,0 +1,63 @@
+{
+  "schema": "PNP-ABOVE-WP23B-SOURCE-LOCK/1",
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "source_protected_parent": "c6a3bb4c389baa093a4acbd644284b343e42d08c",
+  "modules": {
+    "WP23BNativeCost.lean": {
+      "path": "research/PNP-ABOVE/WP23B_NativeCost.lean",
+      "sha256": "ff0df3b041882ef7212f1af17b3179533fae6cb35b33a6bfd79af28dedd3af56",
+      "git_blob": "22a60cdb493501bb19eb72c7bbe1311483463714",
+      "theorems": [
+        "native_acceptance_within_explicit_cost"
+      ]
+    },
+    "WP23BMask.lean": {
+      "path": "research/PNP-ABOVE/WP23B_Mask.lean",
+      "sha256": "2b65ae4f68e35235f1827a71ad5a8872112d5ce62fdd1980d6b1cfd76eec9dbc",
+      "git_blob": "37e31baa3d00a4fe951000a30cf96c05372859c2",
+      "theorems": [
+        "canonical_answers_source_win",
+        "source_accepts_some_iff_mask"
+      ]
+    },
+    "WP23BSuccinctBridge.lean": {
+      "path": "research/PNP-ABOVE/WP23B_SuccinctBridge.lean",
+      "sha256": "10c6b0962a7211c88572448c153f9423e17f517ccb32e067731745e5228e1df2",
+      "git_blob": "ec7dac12bef45acaf942064daf9f6c45cdb5e3f9",
+      "theorems": [
+        "nativeCircuitWith_inputs",
+        "nativeCircuitWith_wellFormed",
+        "nativeCircuitWith_gate_bound",
+        "nativeSatWith_iff_timed_answers",
+        "nativeSatWith_exists_iff_source_timed_acceptance",
+        "nativeSatWith_requires_original_shape",
+        "native_acceptance_produces_sat",
+        "nativeSatWith_zero_index_unsat",
+        "nativeSatWith_x8_unsat",
+        "nativeSatWith_y0_unsat"
+      ]
+    },
+    "WP23BCharacterization.lean": {
+      "path": "research/PNP-ABOVE/WP23B_Characterization.lean",
+      "sha256": "cf6c3725c545a48854ea7e65f99f4a19ebcdf23c64c05eeae421fe381147fcc3",
+      "git_blob": "9798150ecb8b4d9456fd049daa9f72a718147034",
+      "theorems": [
+        "canonical_parameters_valid",
+        "native_cnf_sat_iff_mask_with"
+      ]
+    },
+    "WP23BConcrete.lean": {
+      "path": "research/PNP-ABOVE/WP23B_Concrete.lean",
+      "sha256": "58a8b4d1f1ff649ca64f06cfa8b4ed032fe138c893a62eb20a9be985fb6cc07b",
+      "git_blob": "789c7e2eddf97045be45b7550dc4ad0dcd7a576b",
+      "theorems": [
+        "native_sat_iff_timed_source",
+        "native_real_circuit_arity",
+        "native_real_circuit_wellFormed",
+        "native_real_circuit_gate_bound",
+        "native_cnf_sat_iff_mask"
+      ]
+    }
+  },
+  "theorem_count": 20
+}
