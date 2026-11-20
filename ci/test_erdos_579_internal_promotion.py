@@ -5,7 +5,7 @@ import validate_vgse_activation as v
 class InternalPromotionTests(unittest.TestCase):
  def test_exact_bounded_internal_decision(self):
   self.assertEqual([],v.erdos_internal_promotion_errors())
-  self.assertEqual([],v.merged_provider_gate_errors(v.ERDOS_ID,"CLAIM_PROMOTION"))
+  self.assertTrue(any("independent specialist review" in e for e in v.merged_provider_gate_errors(v.ERDOS_ID,"CLAIM_PROMOTION")))
   r=v.load_json(v.ERDOS_INTERNAL_PROMOTION_PATH)
   self.assertTrue(r["internal_claim_promotion_eligible"])
   self.assertFalse(r["external_publication_authorized"])

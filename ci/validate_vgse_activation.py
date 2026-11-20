@@ -316,7 +316,15 @@ def merged_provider_gate_errors(campaign_id: str, stage: str, manifest_dir: Path
         # Preserve historical manifest and expose an independently reviewed
         # internal claim decision only for this exact certified negative result.
         if campaign_id == ERDOS_ID:
-            return erdos_internal_promotion_errors() if route_state in POSITIVE_STATES else ["Erdős internal promotion requires certified route"]
+            if route_state not in POSITIVE_STATES:
+                return ["Erdős internal promotion requires certified route"]
+            errors = erdos_internal_promotion_errors()
+            if errors:
+                return errors
+            # Governance hold: PR #1266 was auto-merged without its explicitly
+            # required independent non-author specialist review. The source
+            # certificate is intact; claim promotion is NOT admitted.
+            return ["ERDOS-579-C001: independent specialist review of internal claim promotion NOT RECORDED; PR #1266 auto-merge is insufficient authority"]
         if not manifest.get("promotion", {}).get("eligible"):
             return [f"{campaign_id} {stage}: manifest is not promotion eligible"]
         if route_state not in POSITIVE_STATES:
