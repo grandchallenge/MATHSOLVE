@@ -1,0 +1,40 @@
+{
+  "modules": {
+    "WP29CNF.lean": {
+      "git_blob": "08737d22e27dc9b13ca3fbe0b4e6a7c0f172b675",
+      "path": "research/PNP-ABOVE/WP29_Explicit3CNF.lean",
+      "sha256": "849013f45c570de9ab1f999af2ee6c207f25c4297a46696ab5950597395c4e08",
+      "theorems": [
+        "literalProgram_correct",
+        "clauseProgram_correct",
+        "formulaProgram_correct",
+        "formulaProgram_polynomial",
+        "formulaProgram_closed",
+        "literal_sound",
+        "clause_sound",
+        "formula_sound",
+        "fromOriginalLit_sound",
+        "fromOriginalClause_sound",
+        "originalFinite3CNF_correct",
+        "originalFinite3CNF_sat_iff",
+        "native3CNF_sat_equivalence",
+        "source3CNFIndexProgram_correct",
+        "source3CNFIndex_bit_length",
+        "source3CNFIndex_roundtrip",
+        "source3CNFIndex_polytime",
+        "source3CNFIndex_closed",
+        "literal_inputs",
+        "originalClause_inputs",
+        "original3CNF_scoped",
+        "source3CNFIndex_binary_size_bound",
+        "literal_gate_bound",
+        "clause_gate_bound",
+        "formula_gate_bound"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP29-SOURCE-LOCK/1",
+  "source_protected_parent": "847150699031e80ab0d6077663321e307929acad",
+  "theorem_count": 25
+}
