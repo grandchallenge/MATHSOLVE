@@ -1,0 +1,48 @@
+{
+  "modules": {
+    "WP27RawNormalizer.lean": {
+      "git_blob": "a562753290a08d1877fd1b7063619358bedce718",
+      "path": "research/PNP-ABOVE/WP27_RawNormalizer.lean",
+      "sha256": "6c537f2d4ece1ca0ffacf07f7559fff906cb511dc69cd325982b726b7c46876f",
+      "theorems": [
+        "parseRaw_encode",
+        "rawCore_correct",
+        "robustSourceGenerator_correct",
+        "robustSourceGenerator_polytime",
+        "robustSourceGenerator_accepts_iff"
+      ]
+    },
+    "WP27RobustVerifier.lean": {
+      "git_blob": "9ad4894d2fc8dde716ec07561ae2ad2327b6176f",
+      "path": "research/PNP-ABOVE/WP27_RobustVerifier.lean",
+      "sha256": "909d507e043f989465b794ad8189c178c29400bb9ef94afb6d3c018a591f2380",
+      "theorems": [
+        "robustVerifier_accepts_iff",
+        "robustVerifier_isBounded",
+        "robustNativePCC_of_sat",
+        "robustNativeRejectsAll_of_unsat",
+        "robustNativeValStar_zero_of_unsat",
+        "robustNativeValStar_one_of_sat",
+        "robustNativeValStar_one_iff_sat",
+        "robustConditionalCompressedPCC_of_sat",
+        "robustConditionalCompressedSoundness_of_unsat",
+        "robustNativeWinningPair_iff_sat",
+        "robustCompressedSoundness_unconditional",
+        "robustCompressedCompleteness_unconditional"
+      ]
+    },
+    "WP27TotalCost.lean": {
+      "git_blob": "55c85aceb1a18d34bfbdd5381337a0779fa44328",
+      "path": "research/PNP-ABOVE/WP27_TotalCost.lean",
+      "sha256": "b10a0adf11cbb47dd1cec958909ad4514c32241d88ba38cb19fa3df25171a249",
+      "theorems": [
+        "formula_raw_input_polyCost",
+        "robustSourceGenerator_hasPolyCost"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP27-SOURCE-LOCK/1",
+  "source_protected_parent": "0432b609b42befeb7d95e08d21d7cf1d6907b838",
+  "theorem_count": 19
+}
