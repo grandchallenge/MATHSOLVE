@@ -1,0 +1,23 @@
+{
+  "modules": {
+    "WP28UniformExponentObstruction.lean": {
+      "git_blob": "6f3458e0d953cdd27f7256c73b334e772c793501",
+      "path": "research/PNP-ABOVE/WP28_UniformExponentObstruction.lean",
+      "sha256": "218d034be2146be8ae6b6f2a118395ee2acebeeb000983d27af4e06664a313dc",
+      "theorems": [
+        "longFormula_esize_ge",
+        "hardcoded_source_size",
+        "source_size_ge_formula",
+        "exists_source_size_gt",
+        "no_fixed_source_length",
+        "wrapper_payload_size",
+        "native_source_size_ge_formula",
+        "no_fixed_native_IsBounded"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP28A-SOURCE-LOCK/1",
+  "source_protected_parent": "6182a58097b759119767dc78255e0c38d9f21e03",
+  "theorem_count": 8
+}
