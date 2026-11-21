@@ -168,6 +168,16 @@ class WorkflowSourceGuardTests(unittest.TestCase):
             "python ci/checked_lean.py -- lake env lean Bad.lean"
         ))
 
+    def test_compound_errexit_disablement_and_semicolon_suffix_rejected(self):
+        for disabled in ("set +e;", "set +eu;", "set +euo pipefail",
+                         "set +o errexit;", "set +o pipefail;"):
+            with self.subTest(disabled=disabled):
+                self.assertTrue(self.check(
+                    "set -euo pipefail\n" + disabled + "\n"
+                    "python ci/checked_lean.py -- lake env lean Bad.lean\n"
+                    "true"
+                ))
+
     def test_spoofed_python_command_is_not_a_runner(self):
         source = (
             'python -c "print(\'checked_lean.py\')" -- lake env lean Bad.lean'
