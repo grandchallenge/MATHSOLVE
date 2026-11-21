@@ -273,6 +273,98 @@ theorem propertyB_of_countableOverlapComponents
 
 #print axioms propertyB_of_countableOverlapComponents
 
+/-- In a graph with countable neighbor sets, each connected component
+is countable. The proof enumerates all finite-distance layers from an
+arbitrary vertex, not the full ambient vertex type. -/
+private theorem simpleGraph_component_countable
+    {V : Type*} (G : SimpleGraph V)
+    (hLocal : ∀ v, (G.neighborSet v).Countable) :
+    ∀ c : G.ConnectedComponent, c.supp.Countable := by
+  let layer (u : V) : ℕ → Set V := fun n =>
+    Nat.rec ({u} : Set V)
+      (fun _ s => ⋃ v ∈ s, G.neighborSet v) n
+  have hLayer (u : V) : ∀ n, (layer u n).Countable := by
+    intro n
+    induction n with
+    | zero =>
+        change ({u} : Set V).Countable
+        exact Set.countable_singleton u
+    | succ n ih =>
+        change (⋃ v ∈ layer u n, G.neighborSet v).Countable
+        exact ih.biUnion (fun v _ => hLocal v)
+  have hPathLayer (u v : V) (h : G.Reachable u v) :
+      ∃ n, v ∈ layer u n := by
+    have hh : Relation.ReflTransGen G.Adj u v :=
+      (G.reachable_iff_reflTransGen u v).mp h
+    induction hh with
+    | refl =>
+        refine ⟨0, ?_⟩
+        change u ∈ ({u} : Set V)
+        exact Set.mem_singleton u
+    | tail hprev hadj ih =>
+        obtain ⟨n, hn⟩ := ih ((G.reachable_iff_reflTransGen u _).mpr hprev)
+        refine ⟨n + 1, ?_⟩
+        change _ ∈ ⋃ w ∈ layer u n, G.neighborSet w
+        exact Set.mem_iUnion.mpr
+          ⟨_, Set.mem_iUnion.mpr ⟨hn, hadj⟩⟩
+  have hReachCount (u : V) :
+      (Set.Countable {v : V | G.Reachable u v}) := by
+    have hall : (⋃ n : ℕ, layer u n).Countable :=
+      Set.countable_iUnion (hLayer u)
+    apply hall.mono
+    intro v hv
+    obtain ⟨n, hn⟩ := hPathLayer u v hv
+    exact Set.mem_iUnion.mpr ⟨n, hn⟩
+  intro c
+  induction c using SimpleGraph.ConnectedComponent.ind with
+  | _ u =>
+      apply (hReachCount u).mono
+      intro v hv
+      change G.connectedComponentMk v = G.connectedComponentMk u at hv
+      exact SimpleGraph.ConnectedComponent.exact hv.symm
+
+/-- Full locally countable overlap-graph theorem from the original
+ERDOS-602-ESSENTIAL-DISJOINTNESS-001 handoff. The total index type I
+may be uncountable. The only local graph assumption is that each set
+meets countably many *other indexed sets*.
+
+Combined with finite distinct pairwise intersections and infinitude,
+the family has Property B. Neither the no-singleton condition nor
+countability of individual members is required. -/
+theorem propertyB_of_locallyCountableOverlaps
+    (A : I → Set X)
+    (hInf : ∀ i, (A i).Infinite)
+    (hInter : ∀ i j, i ≠ j → (A i ∩ A j).Finite)
+    (hCount : ∀ i, (Set.Countable
+      {j : I | i ≠ j ∧ (A i ∩ A j).Nonempty})) :
+    HasPropertyB I A := by
+  classical
+  let G : SimpleGraph I :=
+    { Adj := fun i j => i ≠ j ∧ (A i ∩ A j).Nonempty
+      symm := by
+        intro i j hij
+        exact ⟨hij.1.symm, by simpa only [Set.inter_comm] using hij.2⟩
+      loopless := ⟨fun i h => h.1 rfl⟩ }
+  have hLocal : ∀ i, (G.neighborSet i).Countable := by
+    intro i
+    change (Set.Countable
+      {j : I | i ≠ j ∧ (A i ∩ A j).Nonempty})
+    exact hCount i
+  have hCC : ∀ c : G.ConnectedComponent, c.supp.Countable :=
+    simpleGraph_component_countable G hLocal
+  have hSame :
+      ∀ i j, i ≠ j → (A i ∩ A j).Nonempty →
+        G.connectedComponentMk i = G.connectedComponentMk j := by
+    intro i j hij hn
+    exact SimpleGraph.ConnectedComponent.connectedComponentMk_eq_of_adj
+      (show G.Adj i j from ⟨hij, hn⟩)
+  exact propertyB_of_countableOverlapComponents A
+    G.connectedComponentMk hInf hInter
+    (fun c => by change c.supp.Countable; exact hCC c)
+    hSame
+
+#print axioms propertyB_of_locallyCountableOverlaps
+
 #print axioms finite_iff_exists_list_cover
 #print axioms escapesEveryList_iff_infinite
 #print axioms essentialDisjoint_of_finiteIncoming
