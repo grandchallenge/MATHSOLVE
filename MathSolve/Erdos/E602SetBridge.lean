@@ -380,19 +380,19 @@ namespace BinaryPrefix
 
 abbrev Ground := List Bool ⊕ Fin 2
 
-def prefix (s : ℕ → Bool) (n : ℕ) : List Bool :=
+def wordPrefix (s : ℕ → Bool) (n : ℕ) : List Bool :=
   List.ofFn (fun k : Fin n => s k.val)
 
 @[simp]
 private theorem prefix_length (s : ℕ → Bool) (n : ℕ) :
-    (prefix s n).length = n := by
-  simp [prefix]
+    (wordPrefix s n).length = n := by
+  simp [wordPrefix]
 
 def family (s : ℕ → Bool) : Set Ground :=
   {x | x = Sum.inr 0 ∨ x = Sum.inr 1 ∨
-    ∃ n : ℕ, x = Sum.inl (prefix s n)}
+    ∃ n : ℕ, x = Sum.inl (wordPrefix s n)}
 
-/-- An arbitrary member of the binary-prefix family is countable. -/
+/-- An arbitrary member of the binary-wordPrefix family is countable. -/
 theorem member_countable (s : ℕ → Bool) : (family s).Countable := by
   exact (Set.countable_univ).mono (Set.subset_univ _)
 
@@ -400,9 +400,9 @@ theorem member_countable (s : ℕ → Bool) : (family s).Countable := by
 subset of each indexed member. -/
 theorem member_infinite (s : ℕ → Bool) : (family s).Infinite := by
   have hinj : Function.Injective
-      (fun n : ℕ => (Sum.inl (prefix s n) : Ground)) := by
+      (fun n : ℕ => (Sum.inl (wordPrefix s n) : Ground)) := by
     intro n m h
-    have hp : prefix s n = prefix s m := Sum.inl_injective h
+    have hp : wordPrefix s n = wordPrefix s m := Sum.inl_injective h
     have hl := congrArg List.length hp
     simpa using hl
   apply Set.infinite_of_injective_forall_mem hinj
@@ -422,7 +422,7 @@ theorem distinct_inter_finite (s t : ℕ → Bool) (hst : s ≠ t) :
     exact h ⟨k, hk⟩
   obtain ⟨k, hk⟩ := hdiff
   let B : Set Ground :=
-    Set.range (fun n : Fin (k + 1) => (Sum.inl (prefix s n.val) : Ground)) ∪
+    Set.range (fun n : Fin (k + 1) => (Sum.inl (wordPrefix s n.val) : Ground)) ∪
       {Sum.inr 0, Sum.inr 1}
   have hB : B.Finite := by
     dsimp [B]
@@ -435,7 +435,7 @@ theorem distinct_inter_finite (s t : ℕ → Bool) (hst : s ≠ t) :
   · rcases hx.2 with hzero | hone | ⟨m, hm⟩
     · simp [hn] at hzero
     · simp [hn] at hone
-    · have heq : prefix s n = prefix t m :=
+    · have heq : wordPrefix s n = wordPrefix t m :=
         Sum.inl_injective (hn.symm.trans hm)
       have hnle : n ≤ k := by
         by_contra hle
@@ -449,7 +449,7 @@ theorem distinct_inter_finite (s t : ℕ → Bool) (hst : s ≠ t) :
           List.ofFn_injective heq
         exact hk (congrFun hfun ⟨k, hklt⟩)
       change x ∈ Set.range
-        (fun n : Fin (k + 1) => (Sum.inl (prefix s n.val) : Ground)) ∪
+        (fun n : Fin (k + 1) => (Sum.inl (wordPrefix s n.val) : Ground)) ∪
           {Sum.inr 0, Sum.inr 1}
       exact Or.inl ⟨⟨n, Nat.lt_succ_of_le hnle⟩, hn.symm⟩
 
