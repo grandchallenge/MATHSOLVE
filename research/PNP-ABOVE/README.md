@@ -10,9 +10,17 @@ python3 research/PNP-ABOVE/validate_coverage_snapshot.py
 
 The inventory is a dated record, **not** a mathematical proof or certification. Future WP18+ sources and later amended proofs require a separately dated snapshot. Original imported upstream for the later work: `vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970` (Lean 4.35.0-rc3). The earlier WP00–WP04 work did **not** uniformly execute this original imported model.
 
+## WP28C native 2^k input compression: fixed verifier, original G.completeness/soundness (21 November 2026)
+
+[WP28C original source power-index and compression results](WP28C_RESULT.md) implement a fixed PTF index translator 2^k to k, construct the original seven-level SAT source verifier on native 2^k inputs with one fixed lambda, prove SAT/PCC completeness and UNSAT zero quantum value there, and invoke the original MIPRE.GapCompression completeness and soundness contracts with all native hypotheses. This resolves the specific compression input-index mismatch while leaving source SAT input-length polynomial full-game bounds, explicit 3CNF-list source compilation, and any P-vs-NP claim OPEN. [Adversarial scope](WP28C_SCOPE_ADVERSARIAL_AUDIT.md). Independent full uncached exact source replay and protected admission are mandatory.
+
 ## WP28B2 one fixed seven-level source SAT verifier — original source candidate (21 November 2026)
 
 [WP28B2 original fixed-code native verifier 7, exact SAT 0/1 promise, uniform lambda and limitations](WP28B2_RESULT.md) construct ONE original Cost.Prog from the WP28B1 index decoder and the source WP25 SAT interpreter. Its code does not depend on the input formula. Lean proves original all-raw-data HasPolyCost, one fixed native Verifier.IsBounded lambda, SAT/PCC completeness, UNSAT quantum value zero, and full original source 3CNF witness equivalence at the exact binary formula index. A separate kernel theorem proves the numeric formulaIndex is at least exponential in the SAT encoding length; and original GapCompression needs the special index 2^k. These block any unproved polynomial classical SAT-to-compressed-game complexity assertion. [Scope review](WP28B2_SCOPE_ADVERSARIAL_AUDIT.md). Full uncached source replay and protected admission required.
+
+## WP28C source-native 2^k SAT compression theorem (21 November 2026)
+
+[WP28C mathematical source and conditional claim scope](WP28C_RESULT.md) use the real original MIPRE Verifier 7 admitted in WP28B2 and a new fixed native source program mapping the upstream input 2^k to k. Original Lean proves exact SAT PCC/quantum-one and UNSAT quantum-zero at the true source input 2^formulaIndex f, with one uniform original IsBounded lambda, then applies the genuine GapCompression completeness/soundness interface to derive SAT PCC and UNSAT value-at-most-one-half in the compressed source verifier at index formulaIndex f, with all native threshold, variable-scoping and witness-budget premises visible. [Scope audit](WP28C_SCOPE_ADVERSARIAL_AUDIT.md) withholds the unproved polynomial full-game cost in SAT description length, classical lower bounds and P-vs-NP. WP29 is the independent proposed original 3CNF input compiler. WP28C requires full uncached exact-head replay and protected admission.
 
 ## WP28B1 binary SAT instance index with fixed original source programs (21 November 2026)
 
