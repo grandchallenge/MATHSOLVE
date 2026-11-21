@@ -170,7 +170,8 @@ class WorkflowSourceGuardTests(unittest.TestCase):
 
     def test_compound_errexit_disablement_and_semicolon_suffix_rejected(self):
         for disabled in ("set +e;", "set +eu;", "set +euo pipefail",
-                         "set +o errexit;", "set +o pipefail;"):
+                         "set +o errexit;", "set +o pipefail;",
+                         "echo ready; set +e", "echo ready && set +o errexit"):
             with self.subTest(disabled=disabled):
                 self.assertTrue(self.check(
                     "set -euo pipefail\n" + disabled + "\n"
