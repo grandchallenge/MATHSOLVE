@@ -27,8 +27,8 @@ RUNNER_PATHS = {"ci/checked_lean.py", "$GITHUB_WORKSPACE/ci/checked_lean.py"}
 AXIOM_NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_.]*")
 OUTPUT_PATH = re.compile(r"[A-Za-z0-9_./-]+")
 UNSAFE_SHELL_CONTROL = re.compile(
-    r"(?m)^\s*(?:set\s+\+[a-zA-Z-]*e(?:\s|$)|"
-    r"set\s+\+o\s+(?:errexit|pipefail|nounset)(?:\s|$)|"
+    r"(?m)^\s*(?:set\s+\+[a-zA-Z-]*e[a-zA-Z-]*(?:[\s;]|$)|"
+    r"set\s+\+o\s+(?:errexit|pipefail|nounset)(?:[\s;]|$)|"
     r"trap(?:\s|$))"
 )
 SHELL_OPERATORS = re.compile(r"\|\||(?<!\|)\|(?!\|)|&&|[;&]")
