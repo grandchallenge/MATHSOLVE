@@ -26,11 +26,47 @@ SHELL_OPERATORS = re.compile(r"\|\||(?<!\|)\|(?!\|)|&&|[;&]")
 ALLOWED_EXTERNAL = (".github/workflows/openmath-kobon-bader93.yml", "h7-pinned-lean")
 
 
+def shell_has_unquoted_pipe(script: str) -> bool:
+    """Identify shell pipeline/OR operators, ignoring quoted grep regexes."""
+    quote = ""
+    escaped = False
+    comment = False
+    for idx, char in enumerate(script):
+        if char == "\n":
+            comment = False
+        if comment:
+            continue
+        if escaped:
+            escaped = False
+            continue
+        if char == "\\" and quote != "'":
+            escaped = True
+            continue
+        if quote:
+            if char == quote:
+                quote = ""
+            continue
+        if char in ("'", '"'):
+            quote = char
+            continue
+        if char == "#" and (idx == 0 or script[idx - 1].isspace()):
+            comment = True
+            continue
+        if char == "|":
+            return True
+    return False
+
+
 def errors_for_run(
     script: str, *,
     relative_path: str, job: str, step_name: str,
 ) -> list[str]:
     found: list[str] = []
+    if COMPILER.search(script) and shell_has_unquoted_pipe(script):
+        found.append(
+            f"{relative_path}:{job}:{step_name}: "
+            "unquoted shell pipe/OR in a Lean compilation step is forbidden"
+        )
     for lineno, raw in enumerate(script.splitlines(), start=1):
         if raw.lstrip().startswith("#"):
             continue
