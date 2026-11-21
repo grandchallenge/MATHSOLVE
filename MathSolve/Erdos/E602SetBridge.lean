@@ -365,6 +365,188 @@ theorem propertyB_of_locallyCountableOverlaps
 
 #print axioms propertyB_of_locallyCountableOverlaps
 
+
+/-!
+## Binary-prefix sharpness example
+
+For each infinite binary stream, take its finite prefixes and add two
+common marker points. Distinct branches share only finitely many prefixes;
+the two common markers force Property B. As the ground type is countable
+but there are uncountably many branches, infinite pairwise-disjoint
+finite-deletion residuals are impossible. This refutes a proposed proof
+strategy, **not** the unrestricted Erdős #602 conjecture.
+-/
+namespace BinaryPrefix
+
+abbrev Ground := List Bool ⊕ Fin 2
+
+def prefix (s : ℕ → Bool) (n : ℕ) : List Bool :=
+  List.ofFn (fun k : Fin n => s k.val)
+
+@[simp]
+private theorem prefix_length (s : ℕ → Bool) (n : ℕ) :
+    (prefix s n).length = n := by
+  simp [prefix]
+
+def family (s : ℕ → Bool) : Set Ground :=
+  {x | x = Sum.inr 0 ∨ x = Sum.inr 1 ∨
+    ∃ n : ℕ, x = Sum.inl (prefix s n)}
+
+/-- An arbitrary member of the binary-prefix family is countable. -/
+theorem member_countable (s : ℕ → Bool) : (family s).Countable := by
+  exact (Set.countable_univ).mono (Set.subset_univ _)
+
+/-- The finite prefixes have distinct lengths, hence form an infinite
+subset of each indexed member. -/
+theorem member_infinite (s : ℕ → Bool) : (family s).Infinite := by
+  have hinj : Function.Injective
+      (fun n : ℕ => (Sum.inl (prefix s n) : Ground)) := by
+    intro n m h
+    have hp : prefix s n = prefix s m := Sum.inl_injective h
+    have hl := congrArg List.length hp
+    simpa using hl
+  apply Set.infinite_of_injective_forall_mem hinj
+  intro n
+  exact Or.inr (Or.inr ⟨n, rfl⟩)
+
+/-- Distinct binary streams can share only a bounded number of
+finite prefixes. The two extra common markers remain. -/
+theorem distinct_inter_finite (s t : ℕ → Bool) (hst : s ≠ t) :
+    (family s ∩ family t).Finite := by
+  classical
+  have hdiff : ∃ k : ℕ, s k ≠ t k := by
+    by_contra h
+    apply hst
+    funext k
+    by_contra hk
+    exact h ⟨k, hk⟩
+  obtain ⟨k, hk⟩ := hdiff
+  let B : Set Ground :=
+    Set.range (fun n : Fin (k + 1) => (Sum.inl (prefix s n.val) : Ground)) ∪
+      {Sum.inr 0, Sum.inr 1}
+  have hB : B.Finite := by
+    dsimp [B]
+    exact (Set.finite_range _).union (by simp)
+  apply hB.subset
+  intro x hx
+  rcases hx.1 with hzero | hone | ⟨n, hn⟩
+  · simp [B, hzero]
+  · simp [B, hone]
+  · rcases hx.2 with hzero | hone | ⟨m, hm⟩
+    · simp [hn] at hzero
+    · simp [hn] at hone
+    · have heq : prefix s n = prefix t m :=
+        Sum.inl_injective (hn.symm.trans hm)
+      have hnle : n ≤ k := by
+        by_contra hle
+        have hklt : k < n := by omega
+        have hnm : n = m := by
+          have hlen := congrArg List.length heq
+          simpa using hlen
+        subst m
+        have hfun : (fun j : Fin n => s j.val) =
+            (fun j : Fin n => t j.val) :=
+          List.ofFn_injective heq
+        exact hk (congrFun hfun ⟨k, hklt⟩)
+      change x ∈ Set.range
+        (fun n : Fin (k + 1) => (Sum.inl (prefix s n.val) : Ground)) ∪
+          {Sum.inr 0, Sum.inr 1}
+      exact Or.inl ⟨⟨n, Nat.lt_succ_of_le hnle⟩, hn.symm⟩
+
+/-- Every pair of distinct members shares the two *distinct* markers,
+so no intersection has cardinality one. -/
+theorem distinct_inter_not_one (s t : ℕ → Bool) (hst : s ≠ t) :
+    Set.ncard (family s ∩ family t) ≠ 1 := by
+  have hfin := distinct_inter_finite s t hst
+  have htwo : 1 < Set.ncard (family s ∩ family t) :=
+    (Set.one_lt_ncard hfin).mpr
+      ⟨Sum.inr 0,
+        ⟨Or.inl rfl, Or.inl rfl⟩,
+        Sum.inr 1,
+        ⟨Or.inr (Or.inl rfl), Or.inr (Or.inl rfl)⟩,
+        by decide⟩
+  exact ne_of_gt htwo
+
+/-- The two shared marker points are always differently coloured.
+This is a direct witness to Property B, independent of deletions. -/
+theorem hasPropertyB : HasPropertyB (ℕ → Bool) family := by
+  let colour : Ground → Fin 2 := fun x =>
+    if x = Sum.inr 1 then 1 else 0
+  refine ⟨colour, fun s hmono => ?_⟩
+  have heq : colour (Sum.inr 0) = colour (Sum.inr 1) :=
+    hmono (Sum.inr 0) (Or.inl rfl)
+      (Sum.inr 1) (Or.inr (Or.inl rfl))
+  have hne : colour (Sum.inr 0) ≠ colour (Sum.inr 1) := by
+    decide
+  exact hne heq
+
+/-- Cantor's diagonal argument: the binary-stream index type is
+uncountable. -/
+theorem stream_not_countable : ¬ Countable (ℕ → Bool) := by
+  intro h
+  letI : Countable (ℕ → Bool) := h
+  obtain ⟨f, hf⟩ := exists_surjective_nat (ℕ → Bool)
+  let d : ℕ → Bool := fun n => !(f n n)
+  obtain ⟨n, hn⟩ := hf d
+  have hb : f n n = !(f n n) := by
+    simpa [d] using congrArg (fun g : ℕ → Bool => g n) hn
+  cases hbit : f n n <;> simp [hbit] at hb
+
+/-- A countable ground type cannot support an uncountable indexed
+family of pairwise disjoint, nonempty residual sets. In particular,
+finite deletions cannot yield infinite pairwise disjoint residuals. -/
+def HasFiniteDisjointResiduals {I : Type*} {X : Type*}
+    (A : I → Set X) : Prop :=
+  ∃ F : I → Set X, (∀ i, (F i).Finite) ∧
+    (∀ i, (A i \ F i).Infinite) ∧
+    (∀ i j, i ≠ j → ∀ x, ¬
+      (x ∈ A i \ F i ∧ x ∈ A j \ F j))
+
+theorem no_finite_disjoint_residuals {I : Type*} {X : Type*}
+    [Countable X] (A : I → Set X) (hI : ¬ Countable I) :
+    ¬ HasFiniteDisjointResiduals A := by
+  classical
+  rintro ⟨F, _hF, hInf, hDisj⟩
+  have he : ∀ i, ∃ x : X, x ∈ A i \ F i := by
+    intro i
+    exact (hInf i).nonempty
+  choose w hw using he
+  have hinj : Function.Injective w := by
+    intro i j heq
+    by_contra hij
+    have hwj : w i ∈ A j \ F j := by
+      simpa only [heq] using hw j
+    exact hDisj i j hij (w i) ⟨hw i, hwj⟩
+  exact hI hinj.countable
+
+theorem not_essentiallyDisjoint :
+    ¬ HasFiniteDisjointResiduals family := by
+  exact no_finite_disjoint_residuals family stream_not_countable
+
+/-- All original Erdős #602 premises hold for this countable-ground,
+uncountably indexed family, and Property B holds; nevertheless,
+no finite deletions yield infinite pairwise-disjoint residual sets.
+This disproves *universal essential disjointness*, not Property B. -/
+theorem binaryPrefix_sharpness :
+    (∀ s, (family s).Countable ∧ (family s).Infinite) ∧
+    (∀ s t, s ≠ t → (family s ∩ family t).Finite) ∧
+    (∀ s t, s ≠ t → Set.ncard (family s ∩ family t) ≠ 1) ∧
+    HasPropertyB (ℕ → Bool) family ∧
+    ¬ HasFiniteDisjointResiduals family := by
+  exact ⟨fun s => ⟨member_countable s, member_infinite s⟩,
+    distinct_inter_finite, distinct_inter_not_one,
+    hasPropertyB, not_essentiallyDisjoint⟩
+
+#print axioms distinct_inter_finite
+#print axioms distinct_inter_not_one
+#print axioms hasPropertyB
+#print axioms stream_not_countable
+#print axioms not_essentiallyDisjoint
+#print axioms binaryPrefix_sharpness
+
+end BinaryPrefix
+
+
 #print axioms finite_iff_exists_list_cover
 #print axioms escapesEveryList_iff_infinite
 #print axioms essentialDisjoint_of_finiteIncoming
