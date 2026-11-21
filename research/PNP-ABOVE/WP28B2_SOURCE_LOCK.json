@@ -1,0 +1,58 @@
+{
+  "modules": {
+    "WP28B2Evaluator.lean": {
+      "git_blob": "bbaa6d45e4f2ba8261388e679e2e791725056552",
+      "path": "research/PNP-ABOVE/WP28B2_Evaluator.lean",
+      "sha256": "7b539cd5f39843501f5ffd5284acafed64306aafbc4da60f6b7534cdc40c2721",
+      "theorems": [
+        "indexedEvalStack_formula",
+        "indexedEvalProgram_formula",
+        "indexedAnswerCheckProgram_correct",
+        "indexedAnswerCheckProgram_polytime"
+      ]
+    },
+    "WP28B2NodeReader.lean": {
+      "git_blob": "1bb82b50c2f3b5ceea54e589d73ca8ce5d5f4da9",
+      "path": "research/PNP-ABOVE/WP28B2_NodeReader.lean",
+      "sha256": "45c3d06bfdf078dbfcd1b4ed5d05e7f24167c89c0e74ea9eb84b2d9e15fc5261",
+      "theorems": [
+        "readNode_encode",
+        "rawList_encode_nodes",
+        "decodeNodeList_formula",
+        "indexNodeProgram_formula"
+      ]
+    },
+    "WP28B2Raw.lean": {
+      "git_blob": "1d81e2edafc7d4665c74c122413ba925e19972b2",
+      "path": "research/PNP-ABOVE/WP28B2_RawVerifier.lean",
+      "sha256": "2d75bee1c391d7119c8ffcf4366354f849172031db2394313ad76057441a5559",
+      "theorems": [
+        "indexedRawChecker_correct",
+        "indexedRawChecker_closed",
+        "raw_input_size_PolyCost",
+        "indexedRawChecker_hasPolyCost",
+        "fixedIndexedVerifier_accepts_iff",
+        "fixedIndexedVerifier_exists_uniform_lam"
+      ]
+    },
+    "WP28B2Value.lean": {
+      "git_blob": "00d2fe5b359ef55d22f2ae19204fa59777d80fd6",
+      "path": "research/PNP-ABOVE/WP28B2_NativeValues.lean",
+      "sha256": "bcb84c73a3697360e8bab12a2676715c0b58ba93399993b57e7c4c7c695d2365",
+      "theorems": [
+        "fixedIndexedVerifier_synchronous",
+        "fixedIndexedVerifier_HasPerfectPCC_of_sat",
+        "fixedIndexedVerifier_rejects_all_of_unsat",
+        "fixedIndexedVerifier_valStar_zero_of_unsat",
+        "fixedIndexedVerifier_valStar_one_of_sat",
+        "fixedIndexedVerifier_valStar_one_iff_sat",
+        "fixedIndexedVerifier_3CNF_PCC_iff",
+        "formulaIndex_numeric_exponential_lower"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP28B2-SOURCE-LOCK/1",
+  "source_protected_parent": "d41eb5f2af9856080fa10a7a093d1ea5d0672e08",
+  "theorem_count": 22
+}
