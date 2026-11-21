@@ -1,0 +1,32 @@
+{
+  "modules": {
+    "WP28BIndex.lean": {
+      "git_blob": "55ba3109652bd2a045362be26412fed55b34b2ec",
+      "path": "research/PNP-ABOVE/WP28B_Index.lean",
+      "sha256": "4d99d124a48a7cda3b4e3873b43ee55deaa9e0e3da810b76ab076cd347f5c325",
+      "theorems": [
+        "bitsVal_suffix_true_bits",
+        "indexData_bits",
+        "parse_postorder_with_sentinel",
+        "data_index_roundtrip",
+        "indexData_bit_length",
+        "indexDataProgram_correct",
+        "decodeDataProgram_correct",
+        "source_index_program_roundtrip",
+        "formulaIndexProgram_correct",
+        "formulaIndex_decode",
+        "formulaIndex_bit_length",
+        "formulaIndex_injective",
+        "indexedSAT_formula_iff",
+        "indexedSAT_source_3CNF_iff",
+        "formulaIndex_source_esize_le",
+        "formulaIndex_source_polytime",
+        "indexDecoder_source_polytime"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP28B1-SOURCE-LOCK/1",
+  "source_protected_parent": "3ef8c09ecb21392ecf86e23665bc1fdd0733ae73",
+  "theorem_count": 17
+}
