@@ -16,8 +16,9 @@ import yaml
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 WORKFLOWS = ROOT / ".github" / "workflows"
 COMPILER = re.compile(
-    r"(?<![\w/])(?:lake[ \t]+env[ \t]+lean|lake[ \t]+build|lean)"
-    r"[ \t]+(?!-{1,2}(?:version|help|numeric-version)\b)",
+    r"(?<![\w/])(?:lake[ \t]+env[ \t]+lean[ \t]+|"
+    r"lake[ \t]+build(?:[ \t]+|$)|"
+    r"lean[ \t]+(?!-{1,2}(?:version|help|numeric-version)\b))",
     re.IGNORECASE,
 )
 RUNNER = re.compile(r"^python(?:3(?:\.\d+)?)?\s+.*checked_lean\.py\b")
