@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import pathlib
 import re
+import shlex
 import sys
 
 import yaml
@@ -21,9 +22,63 @@ COMPILER = re.compile(
     r"lean[ \t]+(?!-{1,2}(?:version|help|numeric-version)\b))",
     re.IGNORECASE,
 )
-RUNNER = re.compile(r"^python(?:3(?:\.\d+)?)?\s+.*checked_lean\.py\b")
+RUNNER_PYTHON = re.compile(r"python(?:3(?:\.\d+)?)?")
+RUNNER_PATHS = {"ci/checked_lean.py", "$GITHUB_WORKSPACE/ci/checked_lean.py"}
+AXIOM_NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_.]*")
+OUTPUT_PATH = re.compile(r"[A-Za-z0-9_./-]+")
+UNSAFE_SHELL_CONTROL = re.compile(
+    r"(?m)^\s*(?:set\s+\+[a-zA-Z-]*e(?:\s|$)|"
+    r"set\s+\+o\s+(?:errexit|pipefail|nounset)(?:\s|$)|"
+    r"trap(?:\s|$))"
+)
 SHELL_OPERATORS = re.compile(r"\|\||(?<!\|)\|(?!\|)|&&|[;&]")
 ALLOWED_EXTERNAL = (".github/workflows/openmath-kobon-bader93.yml", "h7-pinned-lean")
+
+
+def is_checked_runner_prefix(prefix: str) -> bool:
+    """Validate executable/argv identity, not the appearance of a filename."""
+    try:
+        tokens = shlex.split(prefix, posix=True)
+    except ValueError:
+        return False
+    if (
+        len(tokens) < 4
+        or not RUNNER_PYTHON.fullmatch(tokens[0])
+        or tokens[1] not in RUNNER_PATHS
+    ):
+        return False
+    i = 2
+    while i < len(tokens):
+        token = tokens[i]
+        if token == "--":
+            return i == len(tokens) - 1
+        if token == "--strict-warnings":
+            i += 1
+        elif token in ("--output", "--require-axiom"):
+            if i + 1 >= len(tokens):
+                return False
+            value = tokens[i + 1]
+            if token == "--output" and not OUTPUT_PATH.fullmatch(value):
+                return False
+            if token == "--require-axiom" and not AXIOM_NAME.fullmatch(value):
+                return False
+            i += 2
+        else:
+            return False
+    return False
+
+
+def failfast_shell_is_preserved(script: str) -> bool:
+    """No script-local disabling of errexit or traps that can override failure."""
+    commands = [
+        line.strip() for line in script.splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    ]
+    return bool(
+        commands
+        and commands[0] == "set -euo pipefail"
+        and not UNSAFE_SHELL_CONTROL.search(script)
+    )
 
 
 def shell_has_unquoted_pipe(script: str) -> bool:
@@ -62,6 +117,13 @@ def errors_for_run(
     relative_path: str, job: str, step_name: str,
 ) -> list[str]:
     found: list[str] = []
+    if COMPILER.search(script) and (relative_path, job) != ALLOWED_EXTERNAL:
+        if not failfast_shell_is_preserved(script):
+            found.append(
+                f"{relative_path}:{job}:{step_name}: "
+                "Lean-bearing script must start with set -euo pipefail "
+                "and must not disable it or install failure traps"
+            )
     if COMPILER.search(script) and shell_has_unquoted_pipe(script):
         found.append(
             f"{relative_path}:{job}:{step_name}: "
@@ -89,7 +151,7 @@ def errors_for_run(
                 continue
             found.append(f"{location}: external Lean has lost its pinned fail-fast container")
             continue
-        if not RUNNER.search(prefix):
+        if not is_checked_runner_prefix(prefix):
             found.append(f"{location}: local Lean/lake compiler must use checked_lean.py")
             continue
         # The Python runner itself is the last safety boundary. Piping its
