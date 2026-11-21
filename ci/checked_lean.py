@@ -67,6 +67,10 @@ def check_lean(
                         errors.append("Lean error diagnostic")
                     if SORRY_AXIOM.search(clean):
                         errors.append("Lean sorryAx proof-hole dependency")
+                    if LEAN_WARNING.search(clean) and re.search(
+                        r"\b(?:sorry|admit)\b", clean, re.IGNORECASE
+                    ):
+                        errors.append("Lean proof-placeholder warning")
                     if strict_warnings and LEAN_WARNING.search(clean):
                         errors.append("Lean warning in strict mode")
                 code = proc.wait()
