@@ -28,7 +28,9 @@ def is_lean_command(command: list[str]) -> bool:
     if basename == "lean":
         return len(command) >= 2
     if basename == "lake":
-        return len(command) >= 4 and command[1:3] == ["env", "lean"]
+        return (len(command) >= 4 and command[1:3] == ["env", "lean"]) or (
+            len(command) >= 2 and command[1] == "build"
+        )
     return False
 
 
@@ -40,7 +42,7 @@ def check_lean(
     require_axioms: tuple[str, ...] = (),
 ) -> int:
     if not is_lean_command(command):
-        print("ERROR: expected direct Lean or lake env lean argv", file=sys.stderr)
+        print("ERROR: expected direct Lean, lake env lean, or lake build argv", file=sys.stderr)
         return 2
     errors: list[str] = []
     seen_axioms: set[str] = set()
