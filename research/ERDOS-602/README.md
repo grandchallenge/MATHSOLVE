@@ -66,3 +66,33 @@ The Mathlib theorem uses a local source-parallel `HasPropertyB` definition struc
 **Compiler gate correction:** The first run of PR #1272 (job `136838207884`) had two unresolved equality-direction goals yet reported success because a shell pipe to `tee` masked the Lean exit status; the original error scanner also anchored to the start of the line. The same PR now sets `set -euo pipefail` and rejects `sorryAx`, `error:`, and `warning:` in the new Lean output, including indented messages. Three bounded negative shell controls correctly failed: a failing process piped to `tee`, an indented `sorryAx`, and a file-prefixed `error:`. The valid replay is **the repaired exact-head run**, not the earlier false-green run.
 
 **Remaining mathematical obligations:** formalize the locally countable intersection-graph corollary and the binary-prefix example showing that Property B need not entail essential disjointness; then directly bind to the pinned FormalConjectures source or record precise semantic limitations, and independently review any claim before MATHCERT promotion. The unrestricted Erdős #602 problem remains **OPEN**. No MATHCERT certificate is issued by this handoff.
+
+## Countable-index source-parallel theorem — 2026-11-21
+
+**New candidate:** `MathSolve/Erdos/E602SetBridge.lean`, theorem
+`propertyB_of_countableIndex`, with companion
+`countable_index_source_parallel`.
+
+If the *index type* is countable, each member `A i` is infinite, and
+each pairwise intersection is finite, then the family has Property B.
+The proof chooses an injective rank `I → ℕ`; each index has finitely
+many smaller ranks. Its incoming-overlap predecessors therefore satisfy
+the already kernel-checked `propertyB_of_finiteIncoming` theorem.
+
+This result needs **neither** member-wise countability **nor** the
+no-singleton-intersection restriction. The source-parallel wrapper has
+the precise hypotheses/conclusion shape of the pinned
+`erdos_602.variants.countable_index` mathematical proposition, except
+that it refers to MATHSOLVE's *local* definition of `HasPropertyB`.
+The actual pinned formal-conjectures declaration is **not imported**.
+The stronger classical Bernstein lemma for a countable family without
+any pairwise-intersection restriction is **not proved by this argument**.
+
+The locally countable intersection-graph corollary for an arbitrary,
+possibly uncountable index type and the binary-prefix obstruction
+remain separate formal obligations. No unrestricted theorem or
+MATHCERT promotion is claimed.
+
+**Evidence status:** proof candidate until exact-head pinned Mathlib
+compilation, axiom report, operational review and protected merge
+readback establish the result.
