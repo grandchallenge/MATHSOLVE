@@ -29,6 +29,10 @@ jobs:
         run: python ci/validate_repo_case_collisions.py
       - name: Install locked validation dependencies
         run: python -m pip install -r requirements-ci.txt
+      - name: Validate Lean compiler execution safety
+        run: |
+          python ci/validate_lean_ci_integrity.py
+          python -m unittest tests/test_lean_ci_integrity.py -v
       - name: Validate claim ledgers, programme references, and bounded tactic routing
         run: |
           python ci/validate_solve.py
@@ -281,11 +285,11 @@ jobs:
       - name: Replay canonical RH and NS-CI targets
         run: |
           set -euo pipefail
-          lake env lean MathSolve/FormalConjectures/Replay.lean
-          lake env lean MathSolve/PNP/CarrierBridge.lean
-          lake env lean MathSolve/PNP/PolyBoundBridge.lean
-          lake env lean research/ERDOS-602/EssentialDisjointListCore.lean | tee /tmp/erdos602-axioms.txt
-          lake env lean MathSolve/Erdos/E602SetBridge.lean | tee /tmp/erdos602-set-bridge.txt
+          python ci/checked_lean.py -- lake env lean MathSolve/FormalConjectures/Replay.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/CarrierBridge.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/PolyBoundBridge.lean
+          python ci/checked_lean.py --strict-warnings --output /tmp/erdos602-axioms.txt --require-axiom Erdos602ListCore.essentialDisjoint_of_finiteInNeighbours --require-axiom Erdos602ListCore.propertyB_of_finiteInNeighbours -- lake env lean research/ERDOS-602/EssentialDisjointListCore.lean
+          python ci/checked_lean.py --strict-warnings --output /tmp/erdos602-set-bridge.txt --require-axiom MathSolve.Erdos602.finite_iff_exists_list_cover --require-axiom MathSolve.Erdos602.escapesEveryList_iff_infinite --require-axiom MathSolve.Erdos602.essentialDisjoint_of_finiteIncoming --require-axiom MathSolve.Erdos602.propertyB_of_finiteIncoming -- lake env lean MathSolve/Erdos/E602SetBridge.lean
           ! grep -Eq 'sorryAx|error:|warning:' /tmp/erdos602-set-bridge.txt
           grep -Fq "'MathSolve.Erdos602.essentialDisjoint_of_finiteIncoming' depends on axioms:" /tmp/erdos602-set-bridge.txt
           grep -Fq "'MathSolve.Erdos602.propertyB_of_finiteIncoming' depends on axioms:" /tmp/erdos602-set-bridge.txt

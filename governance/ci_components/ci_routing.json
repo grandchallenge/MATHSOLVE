@@ -4,7 +4,9 @@
   "component_id": "ci_routing",
   "owner": "MATHSOLVE CI engineering",
   "paths": {
-    "exact": [],
+    "exact": [
+      "tests/test_lean_ci_integrity.py"
+    ],
     "prefixes": [
       "governance/ci_routing/"
     ],
