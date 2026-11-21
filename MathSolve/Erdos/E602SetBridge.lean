@@ -302,7 +302,7 @@ private theorem simpleGraph_component_countable
         change u ∈ ({u} : Set V)
         exact Set.mem_singleton u
     | tail hprev hadj ih =>
-        obtain ⟨n, hn⟩ := ih
+        obtain ⟨n, hn⟩ := ih ((G.reachable_iff_reflTransGen u _).mpr hprev)
         refine ⟨n + 1, ?_⟩
         change _ ∈ ⋃ w ∈ layer u n, G.neighborSet w
         exact Set.mem_iUnion.mpr
@@ -344,9 +344,7 @@ theorem propertyB_of_locallyCountableOverlaps
       symm := by
         intro i j hij
         exact ⟨hij.1.symm, by simpa only [Set.inter_comm] using hij.2⟩
-      loopless := by
-        intro i h
-        exact h.1 rfl }
+      loopless := ⟨fun i h => h.1 rfl⟩ }
   have hLocal : ∀ i, (G.neighborSet i).Countable := by
     intro i
     change (Set.Countable
