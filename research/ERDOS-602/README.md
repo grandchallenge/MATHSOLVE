@@ -158,3 +158,42 @@ The kernel, axiom ledger and independent source-semantic checks are
 admission obligations; source-provider identity and MATHCERT remain
 separate. The stronger classical Bernstein lemma for families with
 arbitrary intersections is not established.
+
+## Binary-prefix sharpness obstruction — 2026-11-21
+
+**Candidate formalization:** `MathSolve.Erdos602.BinaryPrefix.binaryPrefix_sharpness`
+in [E602SetBridge.lean](../../MathSolve/Erdos/E602SetBridge.lean).
+This is the concrete example called **Counterexample C** in the admitted
+[essential-disjointness handoff](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/docs/handoffs/ERDOS-602-ESSENTIAL-DISJOINTNESS-001.md).
+
+Take the index type `ℕ → Bool` (all infinite binary streams) and the
+countable ground type `List Bool ⊕ Fin 2` (all finite binary strings
+plus two separate marker points). Each indexed member consists of all
+finite prefixes of its stream together with the same two markers.
+The formal proof obligations are:
+
+- All members are countably infinite. The prefixes have different
+  lengths, providing an injective infinite subset.
+- For distinct streams, their first differing bit bounds the length of
+  all common prefixes. Hence intersections are finite.
+- Each pairwise intersection contains both marker points, so its
+  `Set.ncard` cannot be one.
+- Colour the two markers differently; every indexed member receives
+  both colours, so the family has Property B.
+- The streams are uncountable by Cantor diagonalization, while the
+  ground type is countable. Infinite, mutually disjoint residuals after
+  finite deletions would give an injection from streams to the ground
+  type, a contradiction.
+
+The formal conclusion is **not** a counterexample to Property B or
+a resolution of Erdős #602. It refutes the proposed *stronger*
+universal finite-deletion essential-disjointness lemma within the
+exact original hypothesis class. The earlier locally-countable-overlap
+theorem is not contradicted: in this example each member overlaps
+every other member through the common markers, and there are
+uncountably many members.
+
+**Evidence class:** source candidate, pending fresh exact-head Lean CI,
+axiom reports, independent source-semantic review and protected
+admission. Upstream FormalConjectures provider identity and MATHCERT
+certification remain open.
