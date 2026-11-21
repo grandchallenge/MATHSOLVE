@@ -42,7 +42,7 @@ def is_checked_runner_prefix(prefix: str) -> bool:
     except ValueError:
         return False
     if (
-        len(tokens) < 4
+        len(tokens) < 3
         or not RUNNER_PYTHON.fullmatch(tokens[0])
         or tokens[1] not in RUNNER_PATHS
     ):
