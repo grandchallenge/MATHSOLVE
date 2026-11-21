@@ -82,6 +82,20 @@ class CheckedLeanProcessTests(unittest.TestCase):
         self.assertEqual(self.run_fake(body, strict=False)[0], 0)
         self.assertEqual(self.run_fake(body, strict=True)[0], 1)
 
+    def test_zero_exit_sorry_warning_rejected_even_outside_strict_mode(self):
+        code, _, diagnostic, _ = self.run_fake(
+            'print("Proof.lean:4: warning: declaration uses sorry")',
+            strict=False,
+        )
+        self.assertEqual(code, 1)
+        self.assertIn("proof-placeholder warning", diagnostic)
+
+    def test_stderr_error_even_on_zero_exit_rejected(self):
+        code, _, diagnostic, _ = self.run_fake(
+            'print("Proof.lean:5: error: invalid proof", file=sys.stderr)')
+        self.assertEqual(code, 1)
+        self.assertIn("error diagnostic", diagnostic)
+
     def test_required_axiom_report_must_exist(self):
         code, _, diagnostic, _ = self.run_fake('print("Lean finished")', require=("T.required",))
         self.assertEqual(code, 1)
@@ -128,6 +142,16 @@ class WorkflowSourceGuardTests(unittest.TestCase):
         self.assertEqual(self.check(
             "python ci/checked_lean.py -- lake build"), [])
         self.assertEqual(self.check("lean --version"), [])
+
+    def test_multiline_pipes_rejected_but_quoted_grep_pipes_allowed(self):
+        self.assertTrue(self.check(
+            "python ci/checked_lean.py -- lake env lean Proof.lean \\\n"
+            " | tee /tmp/lean.log"
+        ))
+        self.assertEqual(self.check(
+            "python ci/checked_lean.py -- lake env lean Proof.lean\n"
+            "grep -E 'sorryAx|error:|warning:' /tmp/check.log"
+        ), [])
 
     def test_external_container_only_under_exact_pinned_fail_fast_route(self):
         legitimate = (
