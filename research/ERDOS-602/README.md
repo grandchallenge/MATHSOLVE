@@ -96,3 +96,32 @@ MATHCERT promotion is claimed.
 **Evidence status:** proof candidate until exact-head pinned Mathlib
 compilation, axiom report, operational review and protected merge
 readback establish the result.
+
+## Componentwise countable-overlap extension — 2026-11-21
+
+**Candidate declaration:** `MathSolve.Erdos602.propertyB_of_countableOverlapComponents`
+in [E602SetBridge.lean](../../MathSolve/Erdos/E602SetBridge.lean).
+
+Let `part : I → C` label components, where `I` and `C` may both be
+uncountable. Suppose each fiber `{i | part i = c}` is countable and
+any two intersecting distinct family members have the same label.
+If every member is infinite and distinct pairwise intersections are
+finite, then the whole family has Property B.
+
+**Proof construction:** choose an injective rank into `ℕ` separately
+for every fiber, with no global countability requirement. For each
+`i`, only finitely many same-fiber indices have smaller ranks. These
+supply the finite predecessor sets required by
+`propertyB_of_finiteIncoming`. Different fibers cannot have
+intersections, so their independent rankings do not conflict.
+
+**Boundary:** this is *not yet* the complete local-countability-of-overlap
+theorem. That theorem additionally requires a formal proof that a graph
+with countable vertex neighborhoods has countable connected
+components, followed by a component-label construction for the
+overlap relation. Neither has been discharged here.
+
+Source identity with pinned upstream formal-conjectures, global
+Erdős #602, and MATHCERT certification remain unresolved.
+This addition is a candidate until exact-head CI, axiom audit,
+protected merge and readback complete.

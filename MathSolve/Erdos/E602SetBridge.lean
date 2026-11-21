@@ -207,6 +207,72 @@ theorem countable_index_source_parallel
 #print axioms propertyB_of_countableIndex
 #print axioms countable_index_source_parallel
 
+/-- Families partitioned into *countable overlap components* have
+Property B, even when the overall index type is uncountable. The
+partition label type `C` is completely arbitrary and need not be
+countable. There are no overlaps between distinct labels.
+
+The result formalizes the componentwise-ranking part of the locally
+countable overlap-graph corollary. Constructing countable components
+from countable vertex neighborhoods is a separate obligation. -/
+theorem propertyB_of_countableOverlapComponents
+    {C : Type*} (A : I → Set X) (part : I → C)
+    (hInf : ∀ i, (A i).Infinite)
+    (hInter : ∀ i j, i ≠ j → (A i ∩ A j).Finite)
+    (hCount : ∀ c, (Set.Countable {i : I | part i = c}))
+    (hComponents : ∀ i j, i ≠ j → (A i ∩ A j).Nonempty →
+      part i = part j) :
+    HasPropertyB I A := by
+  classical
+  have hrankExists :
+      ∀ c : C, ∃ e : I → ℕ,
+        Set.InjOn e {i : I | part i = c} := by
+    intro c
+    exact Set.countable_iff_exists_injOn.mp (hCount c)
+  choose code hcode using hrankExists
+  let rank (i : I) : ℕ := code (part i) i
+  let P (i : I) : Set I :=
+    {j | part j = part i ∧ rank j < rank i}
+  have hrankInj (i j : I) (hp : part i = part j)
+      (heq : rank i = rank j) : i = j := by
+    change code (part i) i = code (part j) j at heq
+    rw [← hp] at heq
+    apply hcode (part i)
+    · exact rfl
+    · exact hp.symm
+    · exact heq
+  have hP : ∀ i, (P i).Finite := by
+    intro i
+    apply Set.Finite.of_injOn (f := code (part i))
+      (t := Set.Iio (rank i))
+    · intro j hj
+      change code (part i) j < rank i
+      have hlt : rank j < rank i := hj.2
+      simpa only [rank, hj.1] using hlt
+    · intro j hj k hk heq
+      exact hcode (part i) hj.1 hk.1 heq
+    · exact Set.finite_Iio (rank i)
+  have hOrient :
+      ∀ i j, i ≠ j → (A i ∩ A j).Nonempty →
+        (part i = part j ∧ rank i < rank j) ∨
+        (part j = part i ∧ rank j < rank i) := by
+    intro i j hij hnonempty
+    have hp := hComponents i j hij hnonempty
+    rcases lt_trichotomy (rank i) (rank j) with hlt | heq | hgt
+    · exact Or.inl ⟨hp, hlt⟩
+    · exact False.elim (hij (hrankInj i j hp heq))
+    · exact Or.inr ⟨hp.symm, hgt⟩
+  have hPrev :
+      ∀ i j x, (part i = part j ∧ rank i < rank j) →
+        x ∈ A i → x ∈ A j → i ∈ P j := by
+    intro i j _ hr _ _
+    exact hr
+  exact propertyB_of_finiteIncoming A
+    (fun i j => part i = part j ∧ rank i < rank j)
+    P hInf hP hInter hOrient hPrev
+
+#print axioms propertyB_of_countableOverlapComponents
+
 #print axioms finite_iff_exists_list_cover
 #print axioms escapesEveryList_iff_infinite
 #print axioms essentialDisjoint_of_finiteIncoming
