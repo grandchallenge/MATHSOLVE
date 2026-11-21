@@ -10,9 +10,13 @@ python3 research/PNP-ABOVE/validate_coverage_snapshot.py
 
 The inventory is a dated record, **not** a mathematical proof or certification. Future WP18+ sources and later amended proofs require a separately dated snapshot. Original imported upstream for the later work: `vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970` (Lean 4.35.0-rc3). The earlier WP00–WP04 work did **not** uniformly execute this original imported model.
 
+## WP28B1 binary SAT instance index with fixed original source programs (21 November 2026)
+
+[WP28B1 source-index encoding theorem and exact remaining scope](WP28B_RESULT.md) construct an original polynomial-time fixed-program encoder from arbitrary SAT.Fml to a binary source index and a fixed-program decoder recovering precisely the source formula. Original Lean proves injectivity, exact binary index size esize f + 1 bits, original source polynomial runtime certificates, the sentinel-preserving roundtrip and an exact indexed SAT / original source 3CNF semantic correspondence. This is an input-representation bridge, NOT YET a fixed-source SAT answer evaluator/Verifier 7, polynomial 3CNF compiler, full compression reduction or classical hardness theorem. [Adversarial scope](WP28B_SCOPE_ADVERSARIAL_AUDIT.md); exact source replay and protected admission required.
+
 ## WP28A hardcoded verifier uniformity obstruction — original source theorem (21 November 2026)
 
-[WP28A original-source no fixed lambda theorem](WP28_RESULT.md) proves a constructive structural obstruction: each SAT formula is hardcoded into an original verifier programme, and the real source Verifier 7 description has unbounded size over arbitrary formulas. Therefore no single lambda can make all WP27 hardcoded verifiers satisfy native IsBounded lambda, despite per-formula existence. This does NOT rule out fixed-code variable-input verifiers, efficient NP verification or an alternative reduction. [Scope audit](WP28_SCOPE_ADVERSARIAL_AUDIT.md). Full uncached source replay and protected admission are separately required.
+[WP28A original-source no fixed lambda theorem](WP28_RESULT.md) proves a constructive structural obstruction: each SAT formula is hardcoded into an original verifier programme, and the real source Verifier 7 description has unbounded size over arbitrary formulas. Therefore no single lambda can make all WP27 hardcoded verifiers satisfy native IsBounded lambda, despite per-formula existence. This does NOT rule out fixed-code variable-input verifiers, efficient NP verification or an alternative reduction. [Scope audit](WP28_SCOPE_ADVERSARIAL_AUDIT.md). Its complete 80-module original source replay passed and its limited no-global-lambda theorem was protected admitted via MATHSOLVE PR #1270 at 3ef8c09ecb21392ecf86e23665bc1fdd0733ae73.
 
 ## WP27 total raw-input cost and source compressor runtime closure (20 November 2026)
 
