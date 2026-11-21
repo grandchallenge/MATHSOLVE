@@ -115,7 +115,9 @@ class CheckedLeanProcessTests(unittest.TestCase):
 
 class WorkflowSourceGuardTests(unittest.TestCase):
     def check(self, run: str, *, path: str = ".github/workflows/ci.yml",
-              job: str = "formal-targets") -> list[str]:
+              job: str = "formal-targets", failfast: bool = True) -> list[str]:
+        if failfast and not run.startswith("set -euo pipefail"):
+            run = "set -euo pipefail\n" + run
         return workflow_guard.errors_for_run(
             run, relative_path=path, job=job, step_name="Test",
         )
@@ -153,6 +155,55 @@ class WorkflowSourceGuardTests(unittest.TestCase):
             "grep -E 'sorryAx|error:|warning:' /tmp/check.log"
         ), [])
 
+    def test_actual_set_plus_e_false_green_bypass_is_rejected(self):
+        source = ("set -euo pipefail\nset +e\n"
+                  "python ci/checked_lean.py -- lake env lean Bad.lean\ntrue")
+        self.assertTrue(self.check(source))
+        self.assertTrue(self.check(
+            "set -euo pipefail\nset +o errexit\n"
+            "python ci/checked_lean.py -- lake env lean Bad.lean\ntrue"
+        ))
+        self.assertTrue(self.check(
+            "set -euo pipefail\ntrap 'exit 0' ERR\n"
+            "python ci/checked_lean.py -- lake env lean Bad.lean"
+        ))
+
+    def test_compound_errexit_disablement_and_semicolon_suffix_rejected(self):
+        for disabled in ("set +e;", "set +eu;", "set +euo pipefail",
+                         "set +o errexit;", "set +o pipefail;",
+                         "echo ready; set +e", "echo ready && set +o errexit"):
+            with self.subTest(disabled=disabled):
+                self.assertTrue(self.check(
+                    "set -euo pipefail\n" + disabled + "\n"
+                    "python ci/checked_lean.py -- lake env lean Bad.lean\n"
+                    "true"
+                ))
+
+    def test_spoofed_python_command_is_not_a_runner(self):
+        source = (
+            'python -c "print(\'checked_lean.py\')" -- lake env lean Bad.lean'
+        )
+        self.assertTrue(self.check(source))
+        self.assertTrue(self.check(
+            'python other.py checked_lean.py -- lake env lean Bad.lean'
+        ))
+        self.assertFalse(workflow_guard.is_checked_runner_prefix(
+            'python -c "print(\'checked_lean.py\')" --'
+        ))
+        self.assertTrue(workflow_guard.is_checked_runner_prefix(
+            'python ci/checked_lean.py --strict-warnings '
+            '--require-axiom MathSolve.Erdos602.x --output /tmp/axioms.txt --'
+        ))
+        self.assertTrue(workflow_guard.is_checked_runner_prefix(
+            'python "$GITHUB_WORKSPACE/ci/checked_lean.py" --'
+        ))
+
+    def test_failfast_header_missing_is_rejected(self):
+        self.assertTrue(self.check(
+            "python ci/checked_lean.py -- lake env lean Bad.lean",
+            failfast=False,
+        ))
+
     def test_external_container_only_under_exact_pinned_fail_fast_route(self):
         legitimate = (
             "docker run --rm ghcr.io/ottogin/lean-mathlib@sha256:aabbcc "
@@ -183,7 +234,9 @@ class WorkflowSourceGuardTests(unittest.TestCase):
                 "          python -m unittest tests/test_lean_ci_integrity.py -v\n"
                 "  formal-targets:\n"
                 "    steps:\n"
-                "      - run: python ci/checked_lean.py -- lake env lean Foo.lean\n",
+                "      - run: |\n"
+                "          set -euo pipefail\n"
+                "          python ci/checked_lean.py -- lake env lean Foo.lean\n",
                 encoding="utf-8",
             )
             self.assertEqual(workflow_guard.scan(root), [])

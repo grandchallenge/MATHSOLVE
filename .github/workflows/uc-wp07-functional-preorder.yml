@@ -36,6 +36,7 @@ jobs:
       - uses: grandchallenge/lean-action@37f8471aecd2efbeab3b1e1a75ad18fb8f5c1b01
       - name: Replay WP07 theorem surface
         run: |
+          set -euo pipefail
           python ci/checked_lean.py -- lake env lean MathSolve/UnionClosed/FunctionalPreorderBridge.lean
           if grep -nE '^[[:space:]]*(sorry|admit)([[:space:]]|$)' MathSolve/UnionClosed/FunctionalPreorderBridge.lean; then
             echo 'proof placeholder found' >&2
@@ -76,6 +77,7 @@ jobs:
       - name: Independent exact-revision update and build
         working-directory: /tmp/avg-rare
         run: |
+          set -euo pipefail
           lake update
           python "$GITHUB_WORKSPACE/ci/checked_lean.py" -- lake build
       - name: Placeholder and explicit-axiom scan
@@ -92,6 +94,7 @@ jobs:
       - name: Main theorem axiom report
         working-directory: /tmp/avg-rare
         run: |
+          set -euo pipefail
           cat > /tmp/AvgRareAxiomAudit.lean <<'EOF'
           import AvgRare.Secondary.MainStatement
           #check AvgRare.MainStatement.main_nds_nonpos
