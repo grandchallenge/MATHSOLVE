@@ -1,7 +1,7 @@
 # Erdős #602: Lean-checked finite-in-neighbour reduction
 
 **Object:** `ERDOS-602-LIST-CORE-001`  
-**Status:** `LIST_CORE_KERNEL_CHECKED__SET_BRIDGE_CI_REPLAYED__SOURCE_PROVIDER_IMPORT_AND_MATHCERT_OPEN`  
+**Status:** `BINARY_PREFIX_KERNEL_REPLAYED__LOCAL_COUNTABLE_GRAPH_KERNEL_CHECKED__SOURCE_PROVIDER_IMPORT_AND_MATHCERT_OPEN`  
 **Source:** [MATH-PROGRAMME admitted unadjudicated handoff](https://github.com/grandchallenge/MATH-PROGRAMME/blob/5a1715bbba62e0184c3cc0a8bd1ce566eec9eceb/docs/handoffs/ERDOS-602-ESSENTIAL-DISJOINTNESS-001.md)  
 **Original problem:** [Erdős #602](https://www.erdosproblems.com/602) (open); original paper [Erdős 1987, item 12, printed p. 227](https://www.renyi.hu/~p_erdos/1987-28.pdf).  
 **Pinned formal comparator:** `google-deepmind/formal-conjectures@85f863718beeec7b58a3a1926ee92e3472bc2020`, `FormalConjectures/ErdosProblems/602.lean` (blob `9b85fd453afcfa95c6572e2a98d214d50f7e8caa`).
@@ -65,7 +65,7 @@ The Mathlib theorem uses a local source-parallel `HasPropertyB` definition struc
 
 **Compiler gate correction:** The first run of PR #1272 (job `136838207884`) had two unresolved equality-direction goals yet reported success because a shell pipe to `tee` masked the Lean exit status; the original error scanner also anchored to the start of the line. The same PR now sets `set -euo pipefail` and rejects `sorryAx`, `error:`, and `warning:` in the new Lean output, including indented messages. Three bounded negative shell controls correctly failed: a failing process piped to `tee`, an indented `sorryAx`, and a file-prefixed `error:`. The valid replay is **the repaired exact-head run**, not the earlier false-green run.
 
-**Remaining mathematical obligations:** formalize the locally countable intersection-graph corollary and the binary-prefix example showing that Property B need not entail essential disjointness; then directly bind to the pinned FormalConjectures source or record precise semantic limitations, and independently review any claim before MATHCERT promotion. The unrestricted Erdős #602 problem remains **OPEN**. No MATHCERT certificate is issued by this handoff.
+**Remaining mathematical obligations at the original 2026-11-21 bridge intake:** the locally countable intersection-graph corollary and binary-prefix counterexample. Both have since been kernel-replayed in later sections. Direct pinned FormalConjectures source identity, any independent MATHCERT promotion and the unrestricted Erdős #602 question remain **OPEN**.
 
 ## Countable-index source-parallel theorem — 2026-11-21
 
@@ -93,9 +93,7 @@ possibly uncountable index type and the binary-prefix obstruction
 remain separate formal obligations. No unrestricted theorem or
 MATHCERT promotion is claimed.
 
-**Evidence status:** proof candidate until exact-head pinned Mathlib
-compilation, axiom report, operational review and protected merge
-readback establish the result.
+**Evidence update:** this tranche was protected-merged in [PR #1278](https://github.com/grandchallenge/MATHSOLVE/pull/1278) after pinned Lean exact-head checks and readback; not MATHCERT-certified.
 
 ## Componentwise countable-overlap extension — 2026-11-21
 
@@ -115,16 +113,11 @@ supply the finite predecessor sets required by
 `propertyB_of_finiteIncoming`. Different fibers cannot have
 intersections, so their independent rankings do not conflict.
 
-**Boundary:** this is *not yet* the complete local-countability-of-overlap
-theorem. That theorem additionally requires a formal proof that a graph
-with countable vertex neighborhoods has countable connected
-components, followed by a component-label construction for the
-overlap relation. Neither has been discharged here.
+**Boundary at PR #1279:** the countable-neighbourhood-to-component proof was still open. It was discharged in protected-merged [PR #1280](https://github.com/grandchallenge/MATHSOLVE/pull/1280).
 
 Source identity with pinned upstream formal-conjectures, global
 Erdős #602, and MATHCERT certification remain unresolved.
-This addition is a candidate until exact-head CI, axiom audit,
-protected merge and readback complete.
+The componentwise theorem subsequently passed exact-head CI and was protected-merged in PR #1279.
 
 ## Locally countable overlap graph — 2026-11-21
 
@@ -154,7 +147,40 @@ Erdős #602 theorem. In particular, the original finite-intersection
 and no-singleton conditions do not impose a countability bound on
 the number of *different members* meeting a given member.
 
-The kernel, axiom ledger and independent source-semantic checks are
-admission obligations; source-provider identity and MATHCERT remain
-separate. The stronger classical Bernstein lemma for families with
-arbitrary intersections is not established.
+The graph theorem passed exact-head pinned Lean CI and was protected-merged in PR #1280. Direct source-provider identity and MATHCERT remain separate. The stronger classical Bernstein lemma for families with arbitrary intersections is not established.
+
+## Binary-prefix sharpness obstruction — 2026-11-21
+
+**Candidate formalization:** `MathSolve.Erdos602.BinaryPrefix.binaryPrefix_sharpness`
+in [E602SetBridge.lean](../../MathSolve/Erdos/E602SetBridge.lean).
+This is the concrete example called **Counterexample C** in the admitted
+[essential-disjointness handoff](https://github.com/grandchallenge/MATH-PROGRAMME/blob/main/docs/handoffs/ERDOS-602-ESSENTIAL-DISJOINTNESS-001.md).
+
+Take the index type `ℕ → Bool` (all infinite binary streams) and the
+countable ground type `List Bool ⊕ Fin 2` (all finite binary strings
+plus two separate marker points). Each indexed member consists of all
+finite prefixes of its stream together with the same two markers.
+The formal proof obligations are:
+
+- All members are countably infinite. The prefixes have different
+  lengths, providing an injective infinite subset.
+- For distinct streams, their first differing bit bounds the length of
+  all common prefixes. Hence intersections are finite.
+- Each pairwise intersection contains both marker points, so its
+  `Set.ncard` cannot be one.
+- Colour the two markers differently; every indexed member receives
+  both colours, so the family has Property B.
+- The streams are uncountable by Cantor diagonalization, while the
+  ground type is countable. Infinite, mutually disjoint residuals after
+  finite deletions would give an injection from streams to the ground
+  type, a contradiction.
+
+The formal conclusion is **not** a counterexample to Property B or
+a resolution of Erdős #602. It refutes the proposed *stronger*
+universal finite-deletion essential-disjointness lemma within the
+exact original hypothesis class. The earlier locally-countable-overlap
+theorem is not contradicted: in this example each member overlaps
+every other member through the common markers, and there are
+uncountably many members.
+
+**Evidence:** exact-source pinned Lean replay in [PR #1281](https://github.com/grandchallenge/MATHSOLVE/pull/1281), GitHub Actions [run 44958812891, formal-targets job 137012797695](https://github.com/grandchallenge/MATHSOLVE/actions/runs/44958812891/job/137012797695), at source head `0941054572c75f827a066f4e7c07a7c9f231a17b`. All ten exact-head checks succeeded; six new declarations printed their expected axiom reports, with only standard `propext`, `Classical.choice` and `Quot.sound` collectively, and no `sorryAx` or compiler diagnostics. Protected admission requires its own final exact-head replay and readback if the PR head changes. Upstream FormalConjectures provider identity and MATHCERT certification remain open.
