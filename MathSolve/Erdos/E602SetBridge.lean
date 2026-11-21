@@ -73,7 +73,7 @@ theorem deleted_finite (A : I → Set X) (P : I → Set I)
   intro j hj
   have hij : i ≠ j := by
     intro heq
-    exact hj.2 (by simpa [heq])
+    exact hj.2 (by simp [heq])
   exact hInter i j hij
 
 /-- Every intersecting pair has an orientation; incoming overlap partners
@@ -101,12 +101,12 @@ theorem essentialDisjoint_of_finiteIncoming
       change x ∈ ⋃ k ∈ P j \ {j}, A j ∩ A k
       apply Set.mem_iUnion.mpr
       refine ⟨i, Set.mem_iUnion.mpr ⟨?_, ⟨hxj, hxi⟩⟩⟩
-      exact ⟨hPrev i j x hir hxi hxj, by simp [Ne.symm hij]⟩
+      exact ⟨hPrev i j x hir hxi hxj, hij⟩
     · apply hnoti
       change x ∈ ⋃ k ∈ P i \ {i}, A i ∩ A k
       apply Set.mem_iUnion.mpr
       refine ⟨j, Set.mem_iUnion.mpr ⟨?_, ⟨hxi, hxj⟩⟩⟩
-      exact ⟨hPrev j i x hri hxj hxi, by simp [hij]⟩
+      exact ⟨hPrev j i x hri hxj hxi, Ne.symm hij⟩
 
 theorem propertyB_of_disjoint_infinite (A : I → Set X)
     (hInf : ∀ i, (A i).Infinite)
