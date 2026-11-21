@@ -125,3 +125,36 @@ Source identity with pinned upstream formal-conjectures, global
 Erdős #602, and MATHCERT certification remain unresolved.
 This addition is a candidate until exact-head CI, axiom audit,
 protected merge and readback complete.
+
+## Locally countable overlap graph — 2026-11-21
+
+**Candidate declaration:** `MathSolve.Erdos602.propertyB_of_locallyCountableOverlaps`
+in [E602SetBridge.lean](../../MathSolve/Erdos/E602SetBridge.lean).
+
+Given a family `A : I → Set X` where every member is infinite,
+distinct pairwise intersections are finite, and **each indexed member
+meets only countably many distinct other indexed members**, the whole
+family has Property B. The index type `I` and ground type `X` need
+not be countable. The prohibition on singleton intersections is not
+used by this sufficient theorem.
+
+**Graph calculation:** define a simple graph on indices by adjacency
+`i ≠ j ∧ (A i ∩ A j).Nonempty`. Each neighbor set is countable by
+hypothesis. The new private general-purpose graph lemma proves that
+each connected-component support is countable: vertices reachable
+in `n` steps form a countable set by induction, and the union over
+`n : ℕ` remains countable. The previously proved componentwise rank
+theorem supplies a global binary coloring. This closes the
+*graph-to-countable-component* implication that was explicitly
+open after PR #1279.
+
+**Scope:** This is the locally countable overlap-graph corollary from
+the admitted MATH-PROGRAMME research handoff, not the unrestricted
+Erdős #602 theorem. In particular, the original finite-intersection
+and no-singleton conditions do not impose a countability bound on
+the number of *different members* meeting a given member.
+
+The kernel, axiom ledger and independent source-semantic checks are
+admission obligations; source-provider identity and MATHCERT remain
+separate. The stronger classical Bernstein lemma for families with
+arbitrary intersections is not established.
