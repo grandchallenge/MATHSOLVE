@@ -284,6 +284,8 @@ jobs:
           lake env lean MathSolve/PNP/CarrierBridge.lean
           lake env lean MathSolve/PNP/PolyBoundBridge.lean
           lake env lean research/ERDOS-602/EssentialDisjointListCore.lean | tee /tmp/erdos602-axioms.txt
+          lake env lean MathSolve/Erdos/E602SetBridge.lean | tee /tmp/erdos602-set-bridge.txt
+          ! grep -Eq 'sorryAx|^error:|^warning:' /tmp/erdos602-set-bridge.txt
           grep -Fxq "'Erdos602ListCore.essentialDisjoint_of_finiteInNeighbours' depends on axioms: [propext, Quot.sound]" /tmp/erdos602-axioms.txt
           grep -Fxq "'Erdos602ListCore.propertyB_of_finiteInNeighbours' depends on axioms: [propext, Classical.choice, Quot.sound]" /tmp/erdos602-axioms.txt
           ! grep -Eq 'sorryAx|^error:|^warning:' /tmp/erdos602-axioms.txt
