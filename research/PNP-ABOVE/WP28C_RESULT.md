@@ -1,13 +1,14 @@
 # PNP-ABOVE WP28C — source-native 2^k-index compression compatibility
 
-Status: LOCAL original Lean-kernel-checked proof candidate, 16 original
-theorems in three modules. NOT protected-admitted until previous
-WP28B2 branch is admitted and this exact new head independently replays
-through the original pinned MIPRE source.
+Status: original Lean-kernel-checked proof candidate, 16 original
+theorems in three modules. WP28B2 was independently fully replayed
+and protected-admitted at b0e9acce5cffa8aeff5e7a6fd9e7f20970ea9602
+(PR #1273). WP28C needs its own exact-head full uncached replay,
+source-lock, review and protected admission.
 
-Predecessor: WP28B2 candidate 84d5324b9944d2de295635472f80913a7506478e,
-draft PR #1273, against protected MATHSOLVE
-d41eb5f2af9856080fa10a7a093d1ea5d0672e08.
+Protected exact predecessor: MATHSOLVE main
+b0e9acce5cffa8aeff5e7a6fd9e7f20970ea9602, containing WP28B2
+candidate 84d5324b9944d2de295635472f80913a7506478e.
 Pinned source: vidick/MIPRE-formalization at
 5926bdff5db621f44682a101007ef2fe3ae8d970 (Lean v4.35.0-rc3).
 
@@ -86,10 +87,10 @@ the compressed game can be described succinctly by the constant
 verifier program pair and binary k.
 
 The compressor threshold and witness-budget premises are
-recorded verbatim rather than omitted. No source proof yet
-compiles original arbitrary explicit 3CNF clause lists to Fml
-as a polynomial original Cost.PolyTimeFun; the source SAT.Fml
-instance is already in the original formula language.
+recorded verbatim rather than omitted. The independent WP29 source 3CNF-to-index compiler
+is a separate kernel-checked candidate under MATHSOLVE PR #1277,
+not yet protected-admitted. Its compiler source obligations are
+not silently imported into this WP28C claim.
 
 Consequently, this is a proven ORIGINAL MIPRE compression promise
 application in the fixed-program encoded instance regime,
@@ -99,4 +100,4 @@ and NOT P != NP. Public MATHCERT certification is not claimed.
 
 Named remaining boundary:
 PNP_NATIVE_2POWK_COMPRESSION_PROMISE_LOCALLY_PROVED
-__SOURCE_SAT_LENGTH_POLYNOMIAL_FULL_GAME_COMPLEXITY_AND_STANDARD_3CNF_COMPILER_OPEN.
+__SOURCE_SAT_LENGTH_POLYNOMIAL_FULL_GAME_COMPLEXITY_OPEN__EXPLICIT_3CNF_COMPILER_SEPARATE_WP29_CANDIDATE.

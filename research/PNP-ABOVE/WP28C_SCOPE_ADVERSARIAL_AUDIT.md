@@ -13,7 +13,7 @@ NUMERIC compressed game index k may be exponential in SAT
 formula source length, so G.bound(k+lam) is not certified
 polynomial in SAT input length. Threshold G.C0 <= k and
 witness-budget m <= (2^k)^lam are not silently omitted.
-Finite original 3CNF list-to-Fml source compiler remains open.
+The finite explicit 3CNF-to-index source compiler is separate WP29 PR #1277, currently not protected-admitted.
 No downstream classical complexity separation is entailed.
 
 Referee restricted scope after exact full uncached original
@@ -21,6 +21,6 @@ source lock, all new kernel axioms and protected checks:
 ADMIT_NATIVE_FIXED_SAT_INDEX_POWER_COMPRESSOR_PROMISES_ONLY.
 
 PNP-001 remains OPEN on source-length polynomial full-game
-reduction, witness and threshold normalization, explicit original
-3CNF compiler, and any classical hardness endpoint.
+reduction, witness and threshold normalization, explicit original 3CNF compiler admission as separate WP29,
+and any classical hardness endpoint.
 Internal multi-role logical audit is not external MATHCERT.
