@@ -156,6 +156,57 @@ theorem propertyB_of_finiteIncoming
   intro x hx y hy
   exact hmono x hx.1 y hy.1
 
+/-- A countable index family of infinite sets with finite pairwise
+intersections has Property B. The family members need not be countable,
+and intersections of cardinality one are permitted.
+
+Choose an injection from the index type into the natural numbers. Every
+index then has only finitely many lower-ranked predecessors, which
+supplies the finite-incoming orientation needed above. -/
+theorem propertyB_of_countableIndex [Countable I]
+    (A : I → Set X)
+    (hInf : ∀ i, (A i).Infinite)
+    (hInter : ∀ i j, i ≠ j → (A i ∩ A j).Finite) :
+    HasPropertyB I A := by
+  classical
+  obtain ⟨rank, hrank⟩ := Countable.exists_injective_nat I
+  let P : I → Set I := fun i => rank ⁻¹' Set.Iio (rank i)
+  have hP : ∀ i, (P i).Finite := by
+    intro i
+    exact (Set.finite_Iio (rank i)).preimage hrank.injOn
+  have hOrient :
+      ∀ i j, i ≠ j → (A i ∩ A j).Nonempty →
+        rank i < rank j ∨ rank j < rank i := by
+    intro i j hij _
+    rcases lt_trichotomy (rank i) (rank j) with hlt | heq | hgt
+    · exact Or.inl hlt
+    · exact False.elim (hij (hrank heq))
+    · exact Or.inr hgt
+  have hPrev :
+      ∀ i j x, rank i < rank j →
+        x ∈ A i → x ∈ A j → i ∈ P j := by
+    intro i j _ hij _ _
+    exact hij
+  exact propertyB_of_finiteIncoming A (fun i j => rank i < rank j)
+    P hInf hP hInter hOrient hPrev
+
+/-- The exact *mathematical hypothesis shape* of the pinned upstream
+`erdos_602.variants.countable_index` statement (specialized to natural
+indices), proved without using the intersection-cardinality restriction.
+This uses MATHSOLVE's source-parallel `HasPropertyB` declaration;
+the upstream formal-conjectures file is not imported. -/
+theorem countable_index_source_parallel
+    (A : ℕ → Set X)
+    (hMembers : ∀ i, (A i).Countable ∧ (A i).Infinite)
+    (hInter : ∀ i j, i ≠ j → (A i ∩ A j).Finite)
+    (_hNoSingleton : ∀ i j, i ≠ j →
+      Set.ncard (A i ∩ A j) ≠ 1) :
+    HasPropertyB ℕ A := by
+  exact propertyB_of_countableIndex A (fun i => (hMembers i).2) hInter
+
+#print axioms propertyB_of_countableIndex
+#print axioms countable_index_source_parallel
+
 #print axioms finite_iff_exists_list_cover
 #print axioms escapesEveryList_iff_infinite
 #print axioms essentialDisjoint_of_finiteIncoming
