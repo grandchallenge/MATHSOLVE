@@ -78,7 +78,7 @@ class CheckedLeanProcessTests(unittest.TestCase):
         self.assertIn("error diagnostic", diagnostic)
 
     def test_warnings_are_rejected_in_strict_mode(self):
-        body = 'print("Proof.lean:2:7: warning: unexpected sorry-like declaration")'
+        body = 'print("Proof.lean:2:7: warning: unused simp argument")'
         self.assertEqual(self.run_fake(body, strict=False)[0], 0)
         self.assertEqual(self.run_fake(body, strict=True)[0], 1)
 
