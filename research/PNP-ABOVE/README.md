@@ -10,6 +10,10 @@ python3 research/PNP-ABOVE/validate_coverage_snapshot.py
 
 The inventory is a dated record, **not** a mathematical proof or certification. Future WP18+ sources and later amended proofs require a separately dated snapshot. Original imported upstream for the later work: `vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970` (Lean 4.35.0-rc3). The earlier WP00–WP04 work did **not** uniformly execute this original imported model.
 
+## WP28A hardcoded verifier uniformity obstruction — original source theorem (21 November 2026)
+
+[WP28A original-source no fixed lambda theorem](WP28_RESULT.md) proves a constructive structural obstruction: each SAT formula is hardcoded into an original verifier programme, and the real source Verifier 7 description has unbounded size over arbitrary formulas. Therefore no single lambda can make all WP27 hardcoded verifiers satisfy native IsBounded lambda, despite per-formula existence. This does NOT rule out fixed-code variable-input verifiers, efficient NP verification or an alternative reduction. [Scope audit](WP28_SCOPE_ADVERSARIAL_AUDIT.md). Full uncached source replay and protected admission are separately required.
+
 ## WP27 total raw-input cost and source compressor runtime closure (20 November 2026)
 
 [WP27 result](WP27_RESULT.md) constructs a polynomial source parser over ALL malformed Data, a real SAT-dependent source Cost.Prog, and an exact original PolyCost proof for all raw inputs. The original MIPRE Verifier.IsBounded hypothesis is thereby DISCHARGED for the revised native Verifier 7, and the original compressor completeness/soundness theorems are applied without that runtime assumption. [Scope audit](WP27_SCOPE_ADVERSARIAL_AUDIT.md) explicitly withholds a fixed/efficiently chosen compression exponent across all formula sizes, a polynomial SAT-to-compressed-game reduction, and any classical runtime lower bound. Full uncached protected admission remains required.
