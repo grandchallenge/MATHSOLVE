@@ -4,9 +4,12 @@ Disposition: original Lean-kernel-checked mathematical SOURCE CANDIDATE.
 Full uncached independent source replay, protected-source lock and protected
 admission remain required. This is NOT P-versus-NP certification.
 
-Direct predecessor: WP28B1 candidate MATHSOLVE
-1e4208f40cdc73a541929b28a5a46a5bd25f63de (PR #1271, in
-review), on protected predecessor 3ef8c09ecb21392ecf86e23665bc1fdd0733ae73.
+Exact protected parent for this candidate: MATHSOLVE/main at
+d41eb5f2af9856080fa10a7a093d1ea5d0672e08, incorporating
+independent WP28B1 protected merge b9006e1a3dc11e55d2c900d71b375231f3074042
+(PR #1271) and a subsequent unrelated Erdős #602 CI workflow
+repair. The pinned original WP28B1 candidate
+was 1e4208f40cdc73a541929b28a5a46a5bd25f63de.
 Original pinned source vidick/MIPRE-formalization at
 5926bdff5db621f44682a101007ef2fe3ae8d970, Lean v4.35.0-rc3.
 
