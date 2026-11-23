@@ -1,0 +1,25 @@
+# PNP-ABOVE WP32: native compressor threshold normalization
+
+Original source lock: `vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970`, Lean v4.35.0-rc3. Protected parent: `grandchallenge/MATHSOLVE@cc8ae1806d0938b4c389278afae660cbea3ef994` (WP31 protected admission). Scientific status: original Lean proof source candidate, protected admission contingent on full uncached original-source replay, guarded exact bytes, axiom audit, CI and exact-head merge readback.
+
+## Exact source theorem spine
+
+The 13 original Lean theorem declarations in `WP32_ThresholdNormalization.lean` provide the following substantive result:
+
+1. `padTrue r f`: add `r` syntactic `true` conjunctions to original `MIPRE.SAT.Fml` formula `f`; `padTrue_eval`, `padTrue_inputs`, and `padTrue_sat` prove exactly the same Boolean result, declared-variable scope, and satisfiability/unsatisfiability at every assignment.
+2. `padTrue_size_lower`, `source_fml_node_count_le_encoded`, and the admitted WP28B2 original numeric-index bound prove that the original lossless single-number SAT index of `padTrue r f` is at least `r`. This is a real theorem for **all** `r` and **all** formulas, not an asymptotic argument.
+3. `padTrueProgram r` builds an actual original source `Cost.PolyTimeFun SAT.Fml SAT.Fml` from original native `Fml.andF`, `PolyTimeFun.const`, `PolyTimeFun.id`, and `PolyTimeFun.comp`. For each fixed `r` its machine code is fixed independent of the SAT input. Original source `Cost.PolyTimeFun` certificates show polynomial runtime for **every formula**, not just a hand-coded mathematical function.
+4. `normalizedIndexProgram r` composes that fixed original-source formula padder with the independently admitted original WP29 explicit 3CNF compiler and original WP28B1 binary index serializer. It is a **single fixed** source `PolyTimeFun Enc3CNF Nat` for each fixed `r`. The original native `Cost.Prog.Runs` polynomial certificate is `normalizedIndex_source_polytime`. The actual `normalizedIndex_threshold` establishes `r ≤ normalizedIndexProgram r cs` for every encoded clause list `cs`.
+5. Take `r = G.C₀`, the **actual original** `MIPRE.GapCompression` threshold. `normalized_compressed_PCC` and `normalized_compressed_soundness` invoke the real inherited original `WP28C.powerCompressedPCC_of_sat` and `WP28C.powerCompressedSoundness_of_unsat` on padded original source SAT formulas, with **the threshold discharged by proof rather than a caller-supplied premise**. Both source promises retain original native `IsBounded lam` evidence and exact original answer-budget accounting.
+6. `normalized_classical_SAT_transfer`: for every original finite `Clause3 (Fin m)` source list, if one provides an actual original polynomial-time `Cost.PolyTimeFun Nat Bool` oracle deciding the compressed game's perfect PCC versus `valStar ≤ 1/2` at **one fixed source answer budget** `G.bound.eval (k+lam)`, then its composition with WP32's normalized source index decides original 3CNF satisfiability, **without any minimum-index hypothesis**. The source witness budget `m ≤ (2^k)^lam` remains explicit; it is not silently normalized.
+7. `normalized_classical_SAT_polytime` proves the original Cost.Prog polynomial-run certificate for the resulting composed classical machine, conditional on that separately supplied polynomial-time oracle.
+
+## Exact remaining cost and logic boundary
+
+Let `N = esize cs`, `q = cs.length`, and `r = G.C₀`, where `r` is a fixed constant independent of input. `normalizedIndexProgram r` has an actual original `Cost.Prog` execution time bounded by its fixed polynomial `P_r(N)` and emits an index with binary encoding length at most `P_r(N)`. Padding changes the formula size by `O(r)` and preserves all SAT answers. `normalizedIndex_threshold` certifies `G.C₀ ≤ k` for every original source clause list; the previous WP30 threshold premise is eliminated.
+
+This does **not** improve the original compressor resource bound `B(k,lam)=G.bound.eval(k+lam)`, which is polynomial in the **numeric value** k rather than its binary length, and does not build a polynomial-time classical compressed-game solver. The original large indexed source `2^k` would have binary length `k+1`, which may be exponentially large. Also, the source answer-budget condition `m ≤ (2^k)^lam` persists: finite source `Clause3(Fin m)` can carry arbitrary unused variable-budget m; this cannot be inferred uniformly from the clause list without a canonical variable-budget normalizer. For standard explicitly encoded SAT, dense variable-renaming/declared-variable normalization and full budget proof are the next bounded targets. Even closing those would not imply a deterministic lower bound or `P≠NP`.
+
+**Protected scientific disposition:** `PNP_WP32_NATIVE_THRESHOLD_CLOSED_WITH_ACTUAL_POLYTIME_PADDING__WITNESS_BUDGET_EXPLICIT_GAME_COST_AND_CLASSICAL_LOWER_BOUND_OPEN`.
+
+No universal efficient game oracle, lower bound, P=NP/P≠NP theorem, independent mathematical MATHCERT certification, or quantum simulation of SAT is claimed.
