@@ -1,0 +1,22 @@
+{
+  "modules": {
+    "WP33Budget.lean": {
+      "git_blob": "c5a6c4397830e3b2a9f83894b245101fca6d1083",
+      "path": "research/PNP-ABOVE/WP33_AmbientBudgetBarrier.lean",
+      "sha256": "8f61a81be1fc324ce3706a209281e0d76ea1562fd584029feca03ebdb53054ea",
+      "theorems": [
+        "repeatedZeroClause_encoded",
+        "no_uniform_budget_nonempty",
+        "native_index_budget_not_uniform",
+        "repeatedZeroClause_satisfiable",
+        "native_compiled_index_invariant",
+        "normalized_index_budget_not_uniform",
+        "threshold_holds_while_budget_fails"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP33-SOURCE-LOCK/1",
+  "source_protected_parent": "46ec251d240066ea2abef652a35c42a8069953f4",
+  "theorem_count": 7
+}
