@@ -1,0 +1,7 @@
+# WP32 independent-role adversarial mathematical scope
+
+Verifier: `padTrue r f` preserves original `SAT.Fml.eval`, `InputsLt`, and finite-variable SAT; its original source `Cost.PolyTimeFun` implementation constructs real, fixed program code per fixed parameter r. The resulting exact source numerical index k is proved `k≥r`; instantiate r at the original `GapCompression.C₀`.
+
+Adversary: The quantifiers are crucial. Each fixed r yields a source polynomial input-length compiler; a bound polynomial uniformly in an *unbounded externally supplied r* is **not** proved or asserted. In the MIPRE original GapCompression, C₀ is a fixed system constant, so this suffices to remove threshold assumptions for that fixed instance. Source `IsBounded lam` and `m≤(2^k)^lam` remain visible. Any SAT source clause list with huge unused declared `Fin m` can require an enormous witness budget. The native compressor cost `G.bound.eval(k+lam)` remains polynomial in numeric k only; no full explicit-game polynomial-time construction or classical quantum-value oracle is proved.
+
+Referee: The right admissible result is removal of the fixed compressor-index threshold by source-polynomial SAT-preserving padding and the conditional threshold-free classical reduction. No P-vs-NP lower bound or MATHCERT claim. Require complete original uncached source replay, exact source SHA/Git lock, new original Lean axiom audit, protected CI and exact protected merge readback; CHAD local replay is not independent external execution attestation.

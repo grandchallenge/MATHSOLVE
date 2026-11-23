@@ -1,0 +1,28 @@
+{
+  "modules": {
+    "WP32Threshold.lean": {
+      "git_blob": "9bc76708bebee7524448ba07afd3fd522477b1c4",
+      "path": "research/PNP-ABOVE/WP32_ThresholdNormalization.lean",
+      "sha256": "d65c36e9d3d28fdc51bbb81fc167c7c34aadaf7e58b24a5834a42249b9e53b4a",
+      "theorems": [
+        "padTrue_eval",
+        "padTrue_inputs",
+        "padTrue_size_lower",
+        "source_fml_node_count_le_encoded",
+        "padTrueProgram_correct",
+        "normalizedIndex_correct",
+        "normalizedIndex_threshold",
+        "normalizedIndex_source_polytime",
+        "padTrue_sat",
+        "normalized_compressed_PCC",
+        "normalized_compressed_soundness",
+        "normalized_classical_SAT_transfer",
+        "normalized_classical_SAT_polytime"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP32-SOURCE-LOCK/1",
+  "source_protected_parent": "cc8ae1806d0938b4c389278afae660cbea3ef994",
+  "theorem_count": 13
+}
