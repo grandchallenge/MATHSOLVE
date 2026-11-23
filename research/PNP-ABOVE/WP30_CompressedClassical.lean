@@ -27,10 +27,10 @@ theorem conditional_compressed_classical_SAT_transfer
     (G : MIPRE.GapCompression) (U : Cost.UniversalMachine)
     (oracle : Cost.PolyTimeFun Nat Bool) (lam : Nat)
     (hB : (PNPAbove.WP28C.powerIndexedVerifier U (G.sampler 0)).IsBounded lam)
-    (hyes : ∀ k T, (fixedCompressed G U lam).HasPerfectPCC k T →
-      oracle k = true)
-    (hno : ∀ k T, (fixedCompressed G U lam).valStar k T ≤
-      (1 / 2 : Real) → oracle k = false)
+    (hyes : ∀ k, (fixedCompressed G U lam).HasPerfectPCC k
+      (G.bound.eval (k + lam)) → oracle k = true)
+    (hno : ∀ k, (fixedCompressed G U lam).valStar k
+      (G.bound.eval (k + lam)) ≤ (1 / 2 : Real) → oracle k = false)
     {m : Nat} (cs : List (MIPRE.SAT.Clause3 (Fin m)))
     (hk : G.C₀ ≤ PNPAbove.WP28B.formulaIndex
       (PNPAbove.WP29.formula (PNPAbove.WP29.fromOriginal3CNF cs)))
@@ -54,7 +54,7 @@ theorem conditional_compressed_classical_SAT_transfer
     have hsound := PNPAbove.WP28C.powerCompressedSoundness_of_unsat
       G U f m lam hB hk hscope hnot
     have hfalse : oracle k = false :=
-      hno k (G.bound.eval (k + lam)) (by
+      hno k (by
         simpa only [fixedCompressed] using hsound)
     have htrue' : oracle k = true := by
       change oracle (PNPAbove.WP29.source3CNFIndexProgram
@@ -68,7 +68,7 @@ theorem conditional_compressed_classical_SAT_transfer
     have hcomp := PNPAbove.WP28C.powerCompressedPCC_of_sat
       G U f m lam hB hk hbudget hSAT
     have htrue : oracle k = true :=
-      hyes k (G.bound.eval (k + lam)) (by
+      hyes k (by
         simpa only [fixedCompressed] using hcomp)
     change oracle (PNPAbove.WP29.source3CNFIndexProgram
       (PNPAbove.WP29.fromOriginal3CNF cs)) = true

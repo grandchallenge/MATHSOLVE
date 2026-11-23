@@ -1,9 +1,9 @@
 {
   "modules": {
     "WP30Classical.lean": {
-      "git_blob": "999768043b5749312c8e143bfbf4289baf3e1097",
+      "git_blob": "001b1c0e3012746e62fdbe6be3ea4610f379056d",
       "path": "research/PNP-ABOVE/WP30_CompressedClassical.lean",
-      "sha256": "c7a5f7f3c4f23380a9c0af013846dcb5e6afd0b2962c8b91e8beb9e70fecae22",
+      "sha256": "3a3a2519d632b6b3e6624dc4a7bbb1b26fd474271a0759c0197a3a983985c9e1",
       "theorems": [
         "conditional_compressed_classical_SAT_transfer",
         "conditional_compressed_classical_SAT_runtime"
