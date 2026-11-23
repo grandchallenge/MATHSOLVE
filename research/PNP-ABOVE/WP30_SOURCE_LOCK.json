@@ -1,0 +1,17 @@
+{
+  "modules": {
+    "WP30Classical.lean": {
+      "git_blob": "999768043b5749312c8e143bfbf4289baf3e1097",
+      "path": "research/PNP-ABOVE/WP30_CompressedClassical.lean",
+      "sha256": "c7a5f7f3c4f23380a9c0af013846dcb5e6afd0b2962c8b91e8beb9e70fecae22",
+      "theorems": [
+        "conditional_compressed_classical_SAT_transfer",
+        "conditional_compressed_classical_SAT_runtime"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP30-SOURCE-LOCK/1",
+  "source_protected_parent": "621f2866eda64f4b00d6b01145351610d0a315da",
+  "theorem_count": 2
+}
