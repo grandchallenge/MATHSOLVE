@@ -568,7 +568,8 @@ theorem bernstein_nat (A : ℕ → Set X)
     obtain ⟨b, hb⟩ :=
       ((hInf n).diff (insert a S).finite_toSet).nonempty
     have hbn : b ∉ insert a S := hb.2
-    have hb' := Finset.notMem_insert.mp hbn
+    have hb' : b ≠ a ∧ b ∉ S := by
+      simpa only [Finset.mem_insert, not_or] using hbn
     exact ⟨a, b, ha.1, hb.1, ha.2, hb'.2, hb'.1.symm⟩
   choose a b ha hb haFresh hbFresh hab using fresh
   let used : ℕ → Finset X := fun n =>
@@ -592,11 +593,17 @@ theorem bernstein_nat (A : ℕ → Set X)
     intro heq
     rcases lt_trichotomy n m with hlt | he | hgt
     · have hmem := hmono (Nat.succ_le_of_lt hlt) (hred n)
-      exact hbFresh m (used m) (heq ▸ hmem)
+      apply hbFresh m (used m)
+      change blue m ∈ used m
+      rw [← heq]
+      exact hmem
     · subst m
       exact hab n (used n) heq
     · have hmem := hmono (Nat.succ_le_of_lt hgt) (hblue m)
-      exact haFresh n (used n) (heq.symm ▸ hmem)
+      apply haFresh n (used n)
+      change red n ∈ used n
+      rw [heq]
+      exact hmem
   let colour : X → Fin 2 := fun x => if ∃ n, x = blue n then 1 else 0
   refine ⟨colour, fun n hconst => ?_⟩
   have hr : colour (red n) = 0 := by
