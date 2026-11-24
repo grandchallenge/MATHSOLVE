@@ -223,3 +223,65 @@ The original unrestricted conjecture remains open. No mathematical
 certification or external promotion is claimed. Admission evidence
 must be tied to the final exact candidate head, checked Lean logs,
 and protected-main readback.
+
+## Minimal-transversal route — 2026-11-24
+
+This tranche changes proof strategy: instead of seeking disjoint
+residuals, exploit the forbidden singleton intersection directly.
+A vertex cover T meets every member of the family. It is
+inclusion-minimal exactly when each x in T has a private witness
+edge B with B intersect T = {x}.
+
+**Reduction:** suppose A is an edge contained in a minimal cover T.
+Choose x in A and its private witness B. Then A intersect B = {x}.
+If B = A, this contradicts the two-point minimum for every edge;
+otherwise it contradicts the forbidden singleton intersection.
+Thus every edge meets both T and its complement. This is the
+classical minimal-transversal/Lovasz argument, not a novelty claim.
+
+**Construction under a sufficient hypothesis:** if a cover T meets
+each edge in a nonempty finite trace, the covers contained in T
+have an inclusion-minimal member by Zorn's lemma. For any nonempty
+chain of such covers, fix an edge A and choose a chain member V
+minimizing the natural cardinality of A intersect V. The trace of V
+is nonempty and finite. If another member W is contained in V,
+its trace is contained in V's and by minimal cardinality equal to it.
+If V is contained in W, V's trace is contained in W's. Thus any point
+of the minimizing trace survives the entire chain. The intersection
+of the chain is still a cover. This argument permits uncountably many
+members and unbounded finite intersection sizes.
+
+The new Lean declarations are `minimalCover_iff_privateWitnesses`,
+`propertyB_of_minimalCover`, `minimalCover_of_finiteTraces`,
+and `propertyB_of_finiteTraceCover`. The latter uses the original
+ncard != 1 hypothesis, plus infinitude and a finite-trace cover.
+In fact finite trace plus infinite edges already gives Property B
+by the indicator of T; the significant new route is the general
+minimal-cover reduction, which permits infinite traces. The
+finite-trace existence theorem is a baseline, not a solution.
+
+**Literature:** Csernak and Soukup, *Minimal vertex covers in infinite
+hypergraphs*, Discrete Mathematics 346 (2023), 113280,
+https://doi.org/10.1016/j.disc.2022.113280
+(preprint https://arxiv.org/abs/2103.10340, Observation 1.6 and
+Theorem 1.4 in the preprint). They prove minimal-cover existence
+for countably infinite edges under a uniform finite bound on the
+intersection of a fixed finite number of distinct edges.
+This is a useful known regime beyond pairwise bounds. The present
+Lean work does not formalize their existence theorem.
+
+**Frontier:** The original assumptions do not immediately give a
+finite-trace cover or a minimal cover. A finite-trace-cover strategy
+cannot be universal: take a maximal almost-disjoint family on
+the naturals extending a countable partition into infinite sets
+(Zorn), and replace every point by two copies. Every edge is countably
+infinite; pair intersections are finite and even; the two-copy
+colouring gives Property B. Any cover projects to an infinite subset
+because it must meet every partition member. Maximality guarantees
+that some original edge has infinite intersection with the projection,
+hence its doubled edge has infinite intersection with the cover.
+This obstruction is a paper argument, not yet Lean-checked.
+The next substantive issue is minimal-cover existence with arbitrary
+finite pairwise intersections and no singleton intersections, or
+a weaker witnessed-cover construction that suffices for splitting.
+No claim of unrestricted closure or MATHCERT certification.
