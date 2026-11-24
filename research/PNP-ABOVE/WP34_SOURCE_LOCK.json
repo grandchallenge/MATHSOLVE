@@ -1,0 +1,44 @@
+{
+  "modules": {
+    "WP34Scope.lean": {
+      "git_blob": "6ff48d7f6f8a27544f5a3f072aeab0be724fcbae",
+      "path": "research/PNP-ABOVE/WP34_CanonicalScope.lean",
+      "sha256": "c8458b3d0a83a9308dbc761e7fb1485bd25abf6255c214dc189268b899583824",
+      "theorems": [
+        "scope_le_iff",
+        "inputStep_correct",
+        "stepProgram_correct",
+        "step_encoding_bound",
+        "rpn_scope",
+        "scopeProgram_correct",
+        "scopeProgram_polytime",
+        "scope_le_source_power",
+        "scope_le_index",
+        "satisfiable_iff_global",
+        "scope_sat_iff",
+        "normalizeProgram_correct",
+        "normalizeProgram_polytime",
+        "canonical_budget",
+        "canonical_compressed_yes",
+        "canonical_compressed_no",
+        "canonical_pcc_iff_sat",
+        "canonical_gap_iff_unsat",
+        "budget_free_classical_transfer",
+        "decodedSolver_correct",
+        "finiteTable_correct",
+        "indexSATLabel_correct",
+        "thresholdExtendedSolver_correct",
+        "valid_promise_polytime_iff_formula_SAT",
+        "scope_padTrue",
+        "normalized_pair_sat",
+        "normalized_pair_budget",
+        "valid_promise_classical_transfer",
+        "valid_promise_lower_bound_iff_formula_SAT"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP34-SOURCE-LOCK/1",
+  "source_protected_parent": "935a2e59d13bfb39487b166e187e38e794b913f9",
+  "theorem_count": 29
+}
