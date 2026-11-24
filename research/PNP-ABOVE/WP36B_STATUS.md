@@ -1,0 +1,7 @@
+# WP36B — exact valid-index cost bound candidate (not admitted)
+
+Parent: WP36A candidate 30e0341983f6294a29e1277442074c0fab001363, PR #1291. Original WP34 and WP35 protected. Generic WP36A all-program observation and counted-copy lower bound compiled, fresh replay and axiom audit passed. This new candidate applies it to actual native formula indices and the compressed YES/NO promise: 9r² < H(p)(t+3r), with source encoded input length <=64r+41. See WP36A_RESULT.md for the mathematical derivation.
+
+**Evidence boundary:** the large original WP34 import repeatedly timed out, including the import-only probe. CHAD diagnostics included folio_wait_bit_common. The dedicated WP36B theorem source is a development candidate; no kernel or axiom audit pass for this module is asserted. Do not merge as theorem evidence before compilation and required replay. To resume: stage WP36A modules as PNPAbove/WP36Eval.lean and WP36Copy.lean and this module as PNPAbove/WP36Index.lean; import the protected WP34 original-source replay; ensure all PNPAbove oleans share a single LEAN_PATH root; check in pinned upstream, resolve diagnostics, then lock exact source, audit axioms, and protected review. Do not restart the expensive WP08-WP35 chain merely for editing.
+
+This is a model-specific baseline on constant-support inputs, not intrinsic SAT complexity. It does not close the unrestricted superpolynomial classical resource lower bound. The campaign target is unchanged.
