@@ -184,3 +184,42 @@ every other member through the common markers, and there are
 uncountably many members.
 
 **Evidence:** exact-source pinned Lean replay in [PR #1281](https://github.com/grandchallenge/MATHSOLVE/pull/1281), GitHub Actions [run 44958812891, formal-targets job 137012797695](https://github.com/grandchallenge/MATHSOLVE/actions/runs/44958812891/job/137012797695), at source head `0941054572c75f827a066f4e7c07a7c9f231a17b`. All ten exact-head checks succeeded; six new declarations printed their expected axiom reports, with only standard `propext`, `Classical.choice` and `Quot.sound` collectively, and no `sorryAx` or compiler diagnostics. Protected admission requires its own final exact-head replay and readback if the PR head changes. Upstream FormalConjectures provider identity and MATHCERT certification remain open.
+
+## Pinned provider extraction and full Bernstein lemma — 2026-11-23
+
+The original upstream `FormalConjectures/ErdosProblems/602.lean` is
+preserved byte-for-byte as `upstream-602.lean.txt` with its Apache
+license, at provider commit `85f863718beeec7b58a3a1926ee92e3472bc2020`,
+Git blob `9b85fd453afcfa95c6572e2a98d214d50f7e8caa`.
+`ci/validate_erdos602_source.py` checks the original Git blob and the
+entire deterministic source extract (with three negative controls).
+`MathSolve/FormalConjectures/E602SourceExtract.lean` preserves the
+upstream predicate declarations and right-hand-side propositions. Its
+import and wrappers are adapted, with no upstream proof holes imported.
+`E602Correspondence.lean` imports this extract and the existing
+MATHSOLVE proof module; it proves definitional equality of both
+predicates and the unrestricted target, and supplies a proof of the
+exact extracted countable-index proposition and its True-iff wrapper.
+
+This is a **source-locked extracted-declaration bridge**, not a build
+of the entire upstream FormalConjectures package or its answer
+elaborator. The provider pins Lean/Mathlib 4.27.0, while MATHSOLVE pins
+Lean 4.29.1 and Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6.
+Neither dependency pin is changed. The actual upstream `sorry` is
+not modified. Full native-provider integration remains a separate
+compatibility obligation.
+
+The new `bernstein_nat` and `bernstein_countable` proofs establish
+Bernstein's lemma for any countable family of infinite sets, without
+requiring finite intersections, countability of the members, or the
+no-singleton restriction. At each natural-number stage, choose two
+distinct points of the current infinite set outside the finite set of
+all previous witnesses; the used sets grow monotonically, so no red
+witness can equal any blue witness. Colour blue witnesses 1 and every
+other point 0. A surjective natural-number enumeration covers every
+nonempty countable index type, and the empty case is vacuous.
+
+The original unrestricted conjecture remains open. No mathematical
+certification or external promotion is claimed. Admission evidence
+must be tied to the final exact candidate head, checked Lean logs,
+and protected-main readback.

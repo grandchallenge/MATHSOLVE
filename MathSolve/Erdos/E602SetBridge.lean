@@ -552,4 +552,83 @@ end BinaryPrefix
 #print axioms essentialDisjoint_of_finiteIncoming
 #print axioms propertyB_of_finiteIncoming
 
+
+/-- Bernstein's lemma: an arbitrary sequence of infinite sets is
+splittable, without any pairwise-intersection assumption.
+At each step choose two fresh points outside the finitely many
+previously used points. -/
+theorem bernstein_nat (A : ℕ → Set X)
+    (hInf : ∀ n, (A n).Infinite) : HasPropertyB ℕ A := by
+  classical
+  have fresh : ∀ (n : ℕ) (S : Finset X),
+      ∃ a b : X, a ∈ A n ∧ b ∈ A n ∧
+        a ∉ S ∧ b ∉ S ∧ a ≠ b := by
+    intro n S
+    obtain ⟨a, ha⟩ := ((hInf n).diff S.finite_toSet).nonempty
+    obtain ⟨b, hb⟩ :=
+      ((hInf n).diff (insert a S).finite_toSet).nonempty
+    have hbn : b ∉ insert a S := hb.2
+    have hb' : b ≠ a ∧ b ∉ S := by
+      simpa only [Finset.mem_insert, not_or] using hbn
+    exact ⟨a, b, ha.1, hb.1, ha.2, hb'.2, hb'.1.symm⟩
+  choose a b ha hb haFresh hbFresh hab using fresh
+  let used : ℕ → Finset X := fun n =>
+    Nat.rec ∅ (fun k S => insert (a k S) (insert (b k S) S)) n
+  let red (n : ℕ) : X := a n (used n)
+  let blue (n : ℕ) : X := b n (used n)
+  have hnext (n : ℕ) : used (n + 1) =
+      insert (red n) (insert (blue n) (used n)) := rfl
+  have hmono : Monotone used := by
+    apply monotone_nat_of_le_succ
+    intro n x hx
+    rw [hnext]
+    exact Finset.mem_insert_of_mem (Finset.mem_insert_of_mem hx)
+  have hred (n : ℕ) : red n ∈ used (n + 1) := by
+    rw [hnext]
+    exact Finset.mem_insert_self _ _
+  have hblue (n : ℕ) : blue n ∈ used (n + 1) := by
+    rw [hnext]
+    exact Finset.mem_insert_of_mem (Finset.mem_insert_self _ _)
+  have hsep (n m : ℕ) : red n ≠ blue m := by
+    intro heq
+    rcases lt_trichotomy n m with hlt | he | hgt
+    · have hmem := hmono (Nat.succ_le_of_lt hlt) (hred n)
+      apply hbFresh m (used m)
+      change blue m ∈ used m
+      rw [← heq]
+      exact hmem
+    · subst m
+      exact hab n (used n) heq
+    · have hmem := hmono (Nat.succ_le_of_lt hgt) (hblue m)
+      apply haFresh n (used n)
+      change red n ∈ used n
+      rw [heq]
+      exact hmem
+  let colour : X → Fin 2 := fun x => if ∃ n, x = blue n then 1 else 0
+  refine ⟨colour, fun n hconst => ?_⟩
+  have hr : colour (red n) = 0 := by
+    apply if_neg
+    rintro ⟨m, hm⟩
+    exact hsep n m hm
+  have hb' : colour (blue n) = 1 := if_pos ⟨n, rfl⟩
+  have he := hconst (red n) (ha n (used n)) (blue n) (hb n (used n))
+  rw [hr, hb'] at he
+  exact (by decide : (0 : Fin 2) ≠ 1) he
+
+/-- General countable-index Bernstein lemma, including empty index types. -/
+theorem bernstein_countable [Countable I] (A : I → Set X)
+    (hInf : ∀ i, (A i).Infinite) : HasPropertyB I A := by
+  classical
+  by_cases he : Nonempty I
+  · letI : Nonempty I := he
+    obtain ⟨e, hs⟩ := exists_surjective_nat I
+    obtain ⟨f, hf⟩ := bernstein_nat (fun n => A (e n)) (fun n => hInf (e n))
+    refine ⟨f, fun i => ?_⟩
+    obtain ⟨n, hn⟩ := hs i
+    simpa only [hn] using hf n
+  · exact ⟨fun _ => 0, fun i => (he ⟨i⟩).elim⟩
+
+#print axioms bernstein_nat
+#print axioms bernstein_countable
+
 end MathSolve.Erdos602
