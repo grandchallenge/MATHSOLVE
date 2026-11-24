@@ -55,6 +55,7 @@ theorem tm2ProgrammeCopyConfig_after_done {decision : List Bool → Bool}
     · simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
         ProgrammeConfig.afterAction, tm2CopyDoneAction, tm2MoveSelected,
         HeadMove.apply, Function.update, htape]
+      split_ifs with h <;> simp_all
   · funext tape position
     simp [tm2ProgrammeCopyConfig, tm2ProgrammeRewindConfig,
       ProgrammeConfig.afterAction, tm2CopyDoneAction, tm2PreserveWork,
@@ -83,6 +84,7 @@ theorem tm2ProgrammeRewindConfig_after_bit {decision : List Bool → Bool}
     · simp [tm2ProgrammeRewindConfig, ProgrammeConfig.afterAction,
         tm2RewindBitAction, tm2MoveSelected, HeadMove.apply,
         Function.update, htape]
+      split_ifs with h <;> simp_all
   · funext tape position
     simp [tm2ProgrammeRewindConfig, ProgrammeConfig.afterAction,
       tm2RewindBitAction, tm2PreserveWork, ProgrammeConfig.readWork,
@@ -123,6 +125,7 @@ theorem tm2ProgrammeRewindConfig_after_done {decision : List Bool → Bool}
     · simp [tm2ProgrammeRewindConfig, tm2ProgrammeReadyConfig,
         ProgrammeConfig.afterAction, tm2RewindDoneAction,
         tm2MoveSelected, HeadMove.apply, Function.update, htape]
+      split_ifs with h <;> simp_all
   · funext tape position
     simp [tm2ProgrammeRewindConfig, tm2ProgrammeReadyConfig,
       ProgrammeConfig.afterAction, tm2RewindDoneAction, tm2PreserveWork,
@@ -260,7 +263,7 @@ theorem tm2Programme_startup_run {decision : List Bool → Bool}
       (tm2ProgrammeCopyConfig source input)
       (some (tm2ProgrammeReadyConfig source input))
       hcopy hrewind
-  exact ⟨by convert hrun using 1 <;> omega⟩
+  convert hrun using 1 <;> omega
 
 #print axioms tm2ProgrammeCopyConfig_after_done
 #print axioms tm2ProgrammeRewindConfig_after_bit
