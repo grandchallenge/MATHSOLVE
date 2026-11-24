@@ -685,8 +685,7 @@ theorem minimalCover_iff_privateWitnesses (A : I → Set X) (T : Set X) :
       exact hy
   · rintro ⟨hcover, hw⟩
     refine ⟨hcover, ?_⟩
-    intro S hS hsub
-    intro x hx
+    intro S hS hsub x hx
     obtain ⟨j, hj⟩ := hw x hx
     obtain ⟨y, hy⟩ := hS j
     have hmem : y ∈ A j ∩ T := ⟨hy.1, hsub hy.2⟩
