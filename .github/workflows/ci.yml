@@ -298,7 +298,10 @@ jobs:
           ! grep -Eq 'sorryAx|error:|warning:' /tmp/erdos602-axioms.txt
           python ci/validate_erdos602_source.py
           python ci/checked_lean.py -- lake build MathSolve.Erdos.E602SetBridge MathSolve.FormalConjectures.E602SourceExtract
-          python ci/checked_lean.py --strict-warnings --require-axiom MathSolve.Erdos602.monochromatic_source_eq --require-axiom MathSolve.Erdos602.propertyB_source_eq --require-axiom MathSolve.Erdos602.unrestricted_source_eq --require-axiom MathSolve.Erdos602.source_countable_index --require-axiom MathSolve.Erdos602.source_countable_index_true_iff -- lake env lean MathSolve/FormalConjectures/E602Correspondence.lean
+          python ci/checked_lean.py --strict-warnings --output /tmp/erdos602-source-bridge.txt --require-axiom MathSolve.Erdos602.source_countable_index --require-axiom MathSolve.Erdos602.source_countable_index_true_iff -- lake env lean MathSolve/FormalConjectures/E602Correspondence.lean
+          grep -Eq "^'MathSolve\.Erdos602\.monochromatic_source_eq' (does not depend on any axioms|depends on axioms:)" /tmp/erdos602-source-bridge.txt
+          grep -Eq "^'MathSolve\.Erdos602\.propertyB_source_eq' (does not depend on any axioms|depends on axioms:)" /tmp/erdos602-source-bridge.txt
+          grep -Eq "^'MathSolve\.Erdos602\.unrestricted_source_eq' (does not depend on any axioms|depends on axioms:)" /tmp/erdos602-source-bridge.txt
           python ci/validate_formal_conjectures_targets.py
           PYTHONPATH=ci python -m unittest ci/test_formal_conjectures_targets.py -v
           python -m json.tool formal_sources/formal_conjectures/MS-FC-WP00.json >/dev/null
