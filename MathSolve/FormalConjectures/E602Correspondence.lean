@@ -16,14 +16,14 @@ theorem propertyB_source_eq {X : Type v} (I : Type u) (A : I → Set X) :
     HasPropertyB I A = _root_.Erdos602.HasPropertyB I A := rfl
 
 def UnrestrictedTarget : Prop :=
-  ∀ {X : Type v} {I : Type u} (A : I → Set X),
+  ∀ {X : Type*} {I : Type*} (A : I → Set X),
     (∀ i, (A i).Countable ∧ (A i).Infinite) →
     (∀ i j, i ≠ j → (A i ∩ A j).Finite) →
     (∀ i j, i ≠ j → Set.ncard (A i ∩ A j) ≠ 1) →
     HasPropertyB I A
 
 theorem unrestricted_source_eq :
-    UnrestrictedTarget.{u,v} = _root_.Erdos602.UnrestrictedTarget := rfl
+    UnrestrictedTarget.{u,v} = _root_.Erdos602.UnrestrictedTarget.{u,v} := rfl
 
 /-- The precise extracted right-hand side of the upstream countable_index
 variant follows from the stronger Bernstein lemma. -/
