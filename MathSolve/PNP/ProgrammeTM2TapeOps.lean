@@ -34,14 +34,14 @@ theorem programmeTM2InputTapeRaw_move_left
     programmeTM2InputTapeRaw (left.head?.getD none) left.tail (symbol :: right) =
       (programmeTM2InputTapeRaw symbol left right).move Turing.Dir.left := by
   cases left <;>
-    simp [programmeTM2InputTapeRaw, Turing.Tape.move]
+    simp [programmeTM2InputTapeRaw, Turing.Tape.move] <;> rfl
 
 theorem programmeTM2InputTapeRaw_move_right
     (symbol : Option Bool) (left right : List (Option Bool)) :
     programmeTM2InputTapeRaw (right.head?.getD none) (symbol :: left) right.tail =
       (programmeTM2InputTapeRaw symbol left right).move Turing.Dir.right := by
   cases right <;>
-    simp [programmeTM2InputTapeRaw, Turing.Tape.move]
+    simp [programmeTM2InputTapeRaw, Turing.Tape.move] <;> rfl
 
 theorem programmeTM2WorkTapeRaw_write_move_left
     {M : ProgrammeMachine} (symbol write : M.Symbol)
@@ -51,7 +51,7 @@ theorem programmeTM2WorkTapeRaw_write_move_left
       ((programmeTM2WorkTapeRaw (M := M) symbol left right).write write).move
         Turing.Dir.left := by
   cases left <;>
-    simp [programmeTM2WorkTapeRaw, Turing.Tape.write, Turing.Tape.move]
+    simp [programmeTM2WorkTapeRaw, Turing.Tape.write, Turing.Tape.move] <;> rfl
 
 theorem programmeTM2WorkTapeRaw_write_move_right
     {M : ProgrammeMachine} (symbol write : M.Symbol)
@@ -61,7 +61,7 @@ theorem programmeTM2WorkTapeRaw_write_move_right
       ((programmeTM2WorkTapeRaw (M := M) symbol left right).write write).move
         Turing.Dir.right := by
   cases right <;>
-    simp [programmeTM2WorkTapeRaw, Turing.Tape.write, Turing.Tape.move]
+    simp [programmeTM2WorkTapeRaw, Turing.Tape.write, Turing.Tape.move] <;> rfl
 
 theorem programmeTM2WorkTapeRaw_write_stay
     {M : ProgrammeMachine} (symbol write : M.Symbol)
