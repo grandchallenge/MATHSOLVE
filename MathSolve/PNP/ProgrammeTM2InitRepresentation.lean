@@ -47,7 +47,7 @@ theorem programmeTM2_initial_first_step_run
     (programmeTM2ReadyInitCfg M input)
     (some (programmeTM2RunStepTarget M (programmeTM2ReadyInitCfg M input)))
     hinit hstep
-  exact ⟨by simpa [Nat.add_assoc] using hboth⟩
+  exact ⟨by convert hboth using 1 <;> omega⟩
 
 #print axioms programmeTM2ReadyInitCfg_represents
 #print axioms programmeTM2_initial_first_step_run

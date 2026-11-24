@@ -31,11 +31,20 @@ theorem programmeTM2_step_run_nonterminal
     (haccept : source.state ≠ M.accept) (hreject : source.state ≠ M.reject) :
     (programmeTM2Machine M).step target =
       some (programmeTM2RunStepTarget M target) := by
+  rcases target with ⟨l, v, S⟩
   rcases hrep with ⟨hlabel, hmode, hcontrol, _, _⟩
-  rw [hlabel]
-  simp only [Turing.FinTM2.step, Turing.TM2.step]
-  simp [programmeTM2Machine, programmeTM2Program,
-    programmeTM2RunStepTarget, hcontrol, haccept, hreject]
+  cases l with
+  | none => simp at hlabel
+  | some label =>
+      have hl : label = ProgrammeTM2Mode.run := Option.some.inj hlabel
+      subst label
+      have hv : v.control = source.state := hcontrol
+      have hva : v.control ≠ M.accept := by simpa only [hv] using haccept
+      have hvr : v.control ≠ M.reject := by simpa only [hv] using hreject
+      simp [Turing.FinTM2.step, Turing.TM2.step,
+        programmeTM2Machine, programmeTM2Program,
+        programmeTM2RunStepTarget, hva, hvr]
+      rfl
 
 #print axioms programmeTM2_step_run_nonterminal
 
