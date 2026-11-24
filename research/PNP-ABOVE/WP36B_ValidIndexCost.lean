@@ -50,7 +50,7 @@ theorem instance_bits_prefix (n : Nat) (b : Bool) :
   obtain ⟨rest, hr⟩ := serialized_prefix n tail
   refine ⟨rest ++ [true], ?_⟩
   unfold instanceK WP28B.formulaIndex
-  rw [WP28B.indexData_bits, encode_fml]
+  rw [WP28B.indexData_bits, Fml.encode_fml]
   change (encode (WP32.padTrue n (.const b)).rpn).toBitsPost ++ [true] = _
   rw [ht, hr, List.append_assoc]
 

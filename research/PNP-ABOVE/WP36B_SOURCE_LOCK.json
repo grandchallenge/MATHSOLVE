@@ -1,0 +1,31 @@
+{
+  "modules": {
+    "WP36Index.lean": {
+      "git_blob": "73085b4d450b8d6a6571e9e4671f460da2d3cd81",
+      "path": "research/PNP-ABOVE/WP36B_ValidIndexCost.lean",
+      "sha256": "be384ce8984a6f753970e8c38c798e6ccc24cdbf8ca31c25d4c2b308b2bf17a0",
+      "theorems": [
+        "bit_prefix_agreement",
+        "commonFront_length",
+        "padded_rpn_prefix",
+        "serialized_prefix",
+        "instance_bits_prefix",
+        "instance_agreement",
+        "instance_eval",
+        "instance_esize",
+        "instance_index_size",
+        "instance_index_threshold",
+        "instance_cost_lower",
+        "unrestricted_valid_promise_linear_lower",
+        "instance_cost_quadratic",
+        "unrestricted_valid_promise_quadratic_lower"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "predecessor_wp35": "29697b84bcf40d3e487c19aa1c779064560a0dd8",
+  "predecessor_wp36a": "bd8daf39ffc2d9f7b3a1ce1a7c192912b29450c7",
+  "schema": "PNP-ABOVE-WP36B-SOURCE-LOCK/1",
+  "source_protected_parent": "bd8daf39ffc2d9f7b3a1ce1a7c192912b29450c7",
+  "theorem_count": 14
+}
