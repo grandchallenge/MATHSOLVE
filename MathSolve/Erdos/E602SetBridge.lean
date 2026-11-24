@@ -631,4 +631,189 @@ theorem bernstein_countable [Countable I] (A : I → Set X)
 #print axioms bernstein_nat
 #print axioms bernstein_countable
 
+
+/-!
+## Minimal-transversal reduction
+
+This route uses the forbidden singleton intersection itself. It does
+not require an essentially disjoint family or a bound on overlap degree.
+Existence of a minimal cover is a separate combinatorial obligation.
+-/
+
+/-- A vertex cover meets every member of the indexed family. -/
+def IsCover (A : I → Set X) (T : Set X) : Prop :=
+  ∀ i, (A i ∩ T).Nonempty
+
+/-- Every selected point has a private witness edge. -/
+def HasPrivateWitnesses (A : I → Set X) (T : Set X) : Prop :=
+  ∀ x ∈ T, ∃ j, A j ∩ T = {x}
+
+/-- Inclusion-minimal vertex covers are exactly covers with private
+witness edges. No cardinality hypotheses are needed. -/
+theorem minimalCover_iff_privateWitnesses (A : I → Set X) (T : Set X) :
+    Minimal (IsCover A) T ↔ IsCover A T ∧ HasPrivateWitnesses A T := by
+  classical
+  constructor
+  · intro h
+    refine ⟨h.prop, ?_⟩
+    intro x hx
+    have hnot : ¬ IsCover A (T \ {x}) := by
+      intro hc
+      have he := h.eq_of_subset hc Set.diff_subset
+      have hmem : x ∈ T \ {x} := he.symm ▸ hx
+      exact hmem.2 (Set.mem_singleton x)
+    have hj : ∃ j, ¬ (A j ∩ (T \ {x})).Nonempty := by
+      by_contra hh
+      apply hnot
+      intro j
+      by_contra hn
+      exact hh ⟨j, hn⟩
+    obtain ⟨j, hj⟩ := hj
+    obtain ⟨y, hy⟩ := h.prop j
+    have unique (z : X) (hz : z ∈ A j ∩ T) : z = x := by
+      by_contra hne
+      exact hj ⟨z, hz.1, hz.2, fun hs => hne (Set.mem_singleton_iff.mp hs)⟩
+    have hyx := unique y hy
+    refine ⟨j, ?_⟩
+    ext z
+    constructor
+    · intro hz
+      exact Set.mem_singleton_iff.mpr (unique z hz)
+    · intro hz
+      have he := Set.mem_singleton_iff.mp hz
+      rw [he, ← hyx]
+      exact hy
+  · rintro ⟨hcover, hw⟩
+    refine ⟨hcover, ?_⟩
+    intro S hS hsub
+    intro x hx
+    obtain ⟨j, hj⟩ := hw x hx
+    obtain ⟨y, hy⟩ := hS j
+    have hmem : y ∈ A j ∩ T := ⟨hy.1, hsub hy.2⟩
+    rw [hj] at hmem
+    have he := Set.mem_singleton_iff.mp hmem
+    rw [← he]
+    exact hy.2
+
+/-- Lovasz's minimal-transversal argument, for arbitrary index and
+ground types: if each edge has two distinct points and distinct edges
+never intersect in a singleton, a minimal cover gives Property B.
+Finiteness of intersections is not needed for this implication. -/
+theorem propertyB_of_minimalCover (A : I → Set X) (T : Set X)
+    (hTwo : ∀ i, ∃ x ∈ A i, ∃ y ∈ A i, x ≠ y)
+    (hNoSingleton : ∀ i j, i ≠ j → ∀ x : X, A i ∩ A j ≠ {x})
+    (hMin : Minimal (IsCover A) T) : HasPropertyB I A := by
+  classical
+  obtain ⟨hcover, hw⟩ := (minimalCover_iff_privateWitnesses A T).mp hMin
+  have hnotContained : ∀ i, ¬ A i ⊆ T := by
+    intro i hsub
+    obtain ⟨x, hx⟩ := hcover i
+    obtain ⟨j, hj⟩ := hw x hx.2
+    have hxj : x ∈ A j := by
+      have hmem : x ∈ A j ∩ T := by rw [hj]; exact Set.mem_singleton x
+      exact hmem.1
+    have hsingle : A i ∩ A j = {x} := by
+      ext y
+      constructor
+      · intro hy
+        have hmem : y ∈ A j ∩ T := ⟨hy.2, hsub hy.1⟩
+        rwa [hj] at hmem
+      · intro hy
+        have he := Set.mem_singleton_iff.mp hy
+        rw [he]
+        exact ⟨hx.1, hxj⟩
+    by_cases hij : i = j
+    · subst j
+      rw [Set.inter_self] at hsingle
+      obtain ⟨a, ha, b, hb, hab⟩ := hTwo i
+      rw [hsingle] at ha hb
+      exact hab ((Set.mem_singleton_iff.mp ha).trans
+        (Set.mem_singleton_iff.mp hb).symm)
+    · exact hNoSingleton i j hij x hsingle
+  let colour : X → Fin 2 := fun x => if x ∈ T then 1 else 0
+  refine ⟨colour, fun i hmono => ?_⟩
+  obtain ⟨x, hx⟩ := hcover i
+  have hy : ∃ y ∈ A i, y ∉ T := by
+    by_contra hh
+    apply hnotContained i
+    intro y hym
+    by_contra hn
+    exact hh ⟨y, hym, hn⟩
+  obtain ⟨y, hym, hyn⟩ := hy
+  have he := hmono x hx.1 y hym
+  change (if x ∈ T then (1 : Fin 2) else 0) =
+    (if y ∈ T then (1 : Fin 2) else 0) at he
+  rw [if_pos hx.2, if_neg hyn] at he
+  exact (by decide : (1 : Fin 2) ≠ 0) he
+
+/-- A cover having finite traces on every edge contains a minimal
+cover. Every nonempty decreasing chain has a covering intersection:
+for a fixed edge, choose a chain member with the smallest trace
+cardinality. Its nonempty finite trace survives the entire chain. -/
+theorem minimalCover_of_finiteTraces (A : I → Set X) (T : Set X)
+    (hcover : IsCover A T) (hfinite : ∀ i, (A i ∩ T).Finite) :
+    ∃ S ⊆ T, Minimal (IsCover A) S := by
+  classical
+  let C : Set (Set X) := {S | IsCover A S ∧ S ⊆ T}
+  have hT : T ∈ C := ⟨hcover, Set.Subset.rfl⟩
+  obtain ⟨S, hST, hS⟩ := zorn_superset_nonempty C (by
+    intro c hc hchain hne
+    obtain ⟨U, hU⟩ := hne
+    have hsub : ⋂₀ c ⊆ T := fun x hx =>
+      (hc hU).2 (Set.mem_sInter.mp hx U hU)
+    refine ⟨⋂₀ c, ⟨?_, hsub⟩, ?_⟩
+    · intro i
+      let P : ℕ → Prop := fun n => ∃ V ∈ c, (A i ∩ V).ncard = n
+      have hP : ∃ n, P n := ⟨(A i ∩ U).ncard, U, hU, rfl⟩
+      obtain ⟨V, hV, hcard⟩ := Nat.find_spec hP
+      obtain ⟨x, hx⟩ := (hc hV).1 i
+      refine ⟨x, hx.1, Set.mem_sInter.mpr ?_⟩
+      intro W hW
+      have hVW : V ⊆ W ∨ W ⊆ V := by
+        by_cases he : V = W
+        · exact Or.inl (he ▸ Set.Subset.rfl)
+        · exact hchain hV hW he
+      rcases hVW with h | h
+      · exact h hx.2
+      · have htrace : A i ∩ W ⊆ A i ∩ V :=
+          fun _ hy => ⟨hy.1, h hy.2⟩
+        have hle : (A i ∩ V).ncard ≤ (A i ∩ W).ncard := by
+          rw [hcard]
+          exact Nat.find_min' hP ⟨W, hW, rfl⟩
+        have hfin : (A i ∩ V).Finite :=
+          (hfinite i).subset (fun _ hy => ⟨hy.1, (hc hV).2 hy.2⟩)
+        have he := Set.eq_of_subset_of_ncard_le htrace hle hfin
+        have hmem : x ∈ A i ∩ W := he.symm ▸ hx
+        exact hmem.2
+    · intro W hW x hx
+      exact Set.mem_sInter.mp hx W hW) T hT
+  refine ⟨S, hST, hS.prop.1, ?_⟩
+  intro U hU hUS
+  have hUC : U ∈ C := ⟨hU, hUS.trans hST⟩
+  exact hS.le_of_le hUC hUS
+
+/-- The original no-singleton numerical hypothesis, together with
+a finite-trace cover, gives Property B with no restriction on the
+number of indices or a uniform bound on pairwise intersections. -/
+theorem propertyB_of_finiteTraceCover (A : I → Set X) (T : Set X)
+    (hInf : ∀ i, (A i).Infinite)
+    (hNoSingleton : ∀ i j, i ≠ j → (A i ∩ A j).ncard ≠ 1)
+    (hcover : IsCover A T) (hfinite : ∀ i, (A i ∩ T).Finite) :
+    HasPropertyB I A := by
+  obtain ⟨S, _, hS⟩ := minimalCover_of_finiteTraces A T hcover hfinite
+  apply propertyB_of_minimalCover A S ?_ ?_ hS
+  · intro i
+    obtain ⟨x, hx⟩ := (hInf i).nonempty
+    obtain ⟨y, hy⟩ := ((hInf i).diff (Set.finite_singleton x)).nonempty
+    refine ⟨x, hx, y, hy.1, ?_⟩
+    intro he
+    exact hy.2 (Set.mem_singleton_iff.mpr he.symm)
+  · intro i j hij x he
+    exact hNoSingleton i j hij (by rw [he]; exact Set.ncard_singleton x)
+
+#print axioms minimalCover_iff_privateWitnesses
+#print axioms propertyB_of_minimalCover
+#print axioms minimalCover_of_finiteTraces
+#print axioms propertyB_of_finiteTraceCover
+
 end MathSolve.Erdos602
