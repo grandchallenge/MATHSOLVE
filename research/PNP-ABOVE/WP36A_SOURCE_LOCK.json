@@ -1,0 +1,44 @@
+{
+  "modules": {
+    "WP36Copy.lean": {
+      "git_blob": "b9f1f67fb407deb9b2ea47c8568f821b63c2eb7b",
+      "path": "research/PNP-ABOVE/WP36_CopyCostLower.lean",
+      "sha256": "b2cd9992eefc55cef24aef6bee4aae02b3f95364d0d8d1c5786d7588e00cd088",
+      "theorems": [
+        "height_pos",
+        "result_refl",
+        "subbudget",
+        "sequential_budget",
+        "depth_budget",
+        "result_weaken",
+        "result_after_seq",
+        "result_after_descent",
+        "descent_budget",
+        "result_cons_tail",
+        "result_depth_le",
+        "eval_copy_budget",
+        "different_runs_copy_lower"
+      ]
+    },
+    "WP36Eval.lean": {
+      "git_blob": "f48c868995b27a671aabbb8b858c12907b329a4c",
+      "path": "research/PNP-ABOVE/WP36_ObservationDepth.lean",
+      "sha256": "c4eea4c40de9114f57e1a570d8cf52ee5181b7d1332475c8eb1bca366da5b846",
+      "theorems": [
+        "agree_refl",
+        "agree_down",
+        "agree_eq_of_size",
+        "env_down",
+        "env_cons",
+        "env_tail",
+        "eval_agreement",
+        "runs_agreement",
+        "agree_symm"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP36A-SOURCE-LOCK/1",
+  "source_protected_parent": "0156c110e08fbb0490777c34351e0ecf12506d61",
+  "theorem_count": 22
+}
