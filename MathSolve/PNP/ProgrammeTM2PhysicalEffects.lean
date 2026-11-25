@@ -31,8 +31,7 @@ theorem programmeTM2_workMove_left_exec (M : ProgrammeMachine)
         (Function.update stackFamily (.workRight tape)
           ((state.snapshotAction M).write tape :: stackFamily (.workRight tape)))
         (.workLeft tape) (stackFamily (.workLeft tape)).tail) := by
-  simp [programmeTM2ApplyWorkMove, Turing.TM2.stepAux, hleft,
-    ProgrammeTM2State.snapshotAction]
+  simp [programmeTM2ApplyWorkMove, Turing.TM2.stepAux, hleft]
 
 /-- The symmetric rightward work-tape instruction, including writes to the
 old head and a pop from the right-hand stack. -/
