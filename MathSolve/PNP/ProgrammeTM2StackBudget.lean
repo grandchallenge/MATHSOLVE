@@ -98,5 +98,76 @@ theorem reverseRunPhysical_output (M : ProgrammeMachine) (c : ReverseCfg M) :
     (reverseRunPhysical M c).stk .output = c.stk .output := by
   simp [reverseRunPhysical, reverseWorkFold_output, reverseInputUpdate_output]
 
+/-- Exact arbitrary iteration with a physical size bound and untouched output stack. -/
+theorem programmeTM2_simulates_iterate_budget (M : ProgrammeMachine) (input : List Bool) :
+    ∀ (n : Nat) (source source' : ProgrammeConfig M) (target : ReverseCfg M) (b : Nat),
+      ProgrammeTM2Represents M input source target → ReverseStackBound M target.stk b →
+      target.stk .output = [] → ((flip bind (M.step input))^[n]) (some source) = some source' →
+      ∃ target', ProgrammeTM2Represents M input source' target' ∧
+        ((flip bind (programmeTM2Machine M).step)^[n]) (some target) = some target' ∧
+        ReverseStackBound M target'.stk (b+(M.workTapeCount+1)*n) ∧ target'.stk .output = [] := by
+  intro n
+  induction n with
+  | zero =>
+    intro source source' target b hrep hb ho hs
+    simp only [Function.iterate_zero_apply] at hs
+    cases Option.some.inj hs
+    exact ⟨target, hrep, rfl, by simpa using hb, ho⟩
+  | succ n ih =>
+    intro source source' target b hrep hb ho hs
+    rw [Function.iterate_succ_apply'] at hs
+    generalize hm : ((flip bind (M.step input))^[n]) (some source) = mid at hs
+    cases mid with
+    | none => simp [flip] at hs
+    | some middle =>
+      have hstep : M.step input middle = some source' := by simpa using hs
+      rcases ih source middle target b hrep hb ho hm with ⟨tm, hrm, htm, hbm, hom⟩
+      have ha : middle.state ≠ M.accept := by
+        intro h; rw [M.step_eq_none_of_accept input middle h] at hstep; contradiction
+      have hr : middle.state ≠ M.reject := by
+        intro h; rw [M.step_eq_none_of_reject input middle h] at hstep; contradiction
+      have ht := programmeTM2_step_run_nonterminal hrm ha hr
+      have hnew := programmeTM2_runStepTarget_represents hrm
+      have he := Option.some.inj ((M.step_eq_some_afterAction input middle ha hr).symm.trans hstep)
+      subst source'
+      refine ⟨programmeTM2RunStepTarget M tm, hnew, ?_, ?_, ?_⟩
+      · rw [Function.iterate_succ_apply', htm]; simpa using ht
+      · rw [reverseRunPhysical_exec]
+        simpa [Nat.mul_succ, Nat.add_assoc] using reverseRunPhysical_bound M tm _ hbm
+      · rw [reverseRunPhysical_exec, reverseRunPhysical_output, hom]
+
+/-- The canonical normalized input has no output and every stack has length at most n. -/
+theorem programmeTM2ReadyInitCfg_budget (M : ProgrammeMachine) (input : List Bool) :
+    ReverseStackBound M (programmeTM2ReadyInitCfg M input).stk input.length ∧
+      (programmeTM2ReadyInitCfg M input).stk .output = [] := by
+  refine ⟨?_,rfl⟩
+  intro k
+  cases k <;> simp [programmeTM2ReadyInitCfg, programmeTM2InitStacks, List.length_tail]
+
+/-- A bounded source execution from initialization arrives at the represented
+terminal (or intermediate) state with every physical stack still bounded. -/
+theorem programmeTM2_simulates_from_init_budget {M : ProgrammeMachine} {input : List Bool}
+    {source' : ProgrammeConfig M} {bound : Nat}
+    (hrun : StateTransition.EvalsToInTime (M.step input) (M.init input) (some source') bound) :
+    ∃ target', ProgrammeTM2Represents M input source' target' ∧
+      Nonempty (StateTransition.EvalsToInTime (programmeTM2Machine M).step
+        (Turing.initList (programmeTM2Machine M) input) (some target') (2*input.length+3+bound)) ∧
+      ReverseStackBound M target'.stk (input.length+(M.workTapeCount+1)*bound) ∧ target'.stk .output = [] := by
+  have hb := programmeTM2ReadyInitCfg_budget M input
+  rcases programmeTM2_simulates_iterate_budget M input hrun.steps (M.init input) source'
+      (programmeTM2ReadyInitCfg M input) input.length (programmeTM2ReadyInitCfg_represents M input)
+      hb.1 hb.2 hrun.evals_in_steps with ⟨target', hrep, hs, hbound, ho⟩
+  have ht : StateTransition.EvalsToInTime (programmeTM2Machine M).step
+      (programmeTM2ReadyInitCfg M input) (some target') bound :=
+    { steps := hrun.steps, evals_in_steps := hs, steps_le_m := hrun.steps_le_m }
+  rcases programmeTM2_initialization_run M input with ⟨hi⟩
+  refine ⟨target', hrep, ⟨StateTransition.EvalsToInTime.trans (programmeTM2Machine M).step
+    (2*input.length+3) bound _ _ _ hi ht⟩, ?_, ho⟩
+  apply reverseStackBound_mono M _ _ _ hbound
+  exact Nat.add_le_add_left (Nat.mul_le_mul_left _ hrun.steps_le_m) _
+
+#print axioms reverseRunPhysical_bound
+#print axioms programmeTM2_simulates_iterate_budget
+#print axioms programmeTM2_simulates_from_init_budget
 end
 end MathSolve.PNP
