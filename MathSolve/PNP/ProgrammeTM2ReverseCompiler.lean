@@ -30,7 +30,7 @@ theorem programmeTM2_reverse_outputs {M : ProgrammeMachine} {input : List Bool}
     (2*input.length+3+bound)
     ((2*M.workTapeCount+4)*(input.length+(M.workTapeCount+1)*bound+1)+2)
     _ _ _ ht hc
-  exact ⟨by simpa [programmeTM2ReverseCost, Nat.add_assoc] using hall⟩
+  exact ⟨by convert hall using 1 <;> unfold programmeTM2ReverseCost <;> ring⟩
 
 /-- Machine-dependent constants are fixed independently of input length. -/
 theorem programmeTM2ReverseCost_affine (M : ProgrammeMachine) (n t : Nat) :
