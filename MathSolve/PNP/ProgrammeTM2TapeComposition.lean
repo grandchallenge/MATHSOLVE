@@ -78,8 +78,12 @@ theorem reverseInputUpdate_work (M : ProgrammeMachine) (k : Fin M.workTapeCount)
 theorem reverseWorkUpdate_other (M : ProgrammeMachine) (k j : Fin M.workTapeCount)
     (c : ReverseCfg M) (hne : j ≠ k) :
     programmeTM2WorkTape M (reverseWorkUpdate M k c) j = programmeTM2WorkTape M c j := by
+  have hll : (ProgrammeTM2Stack.workLeft j : ProgrammeTM2Stack M.workTapeCount) ≠ .workLeft k := by
+    intro he; exact hne (ProgrammeTM2Stack.workLeft.inj he)
+  have hrr : (ProgrammeTM2Stack.workRight j : ProgrammeTM2Stack M.workTapeCount) ≠ .workRight k := by
+    intro he; exact hne (ProgrammeTM2Stack.workRight.inj he)
   cases h : (c.var.snapshotAction M).workMove k <;>
-    simp [reverseWorkUpdate, h, programmeTM2WorkTape, ProgrammeTM2State.setWorkSymbol, Function.update_of_ne, hne]
+    simp [reverseWorkUpdate, h, programmeTM2WorkTape, ProgrammeTM2State.setWorkSymbol, Function.update_of_ne, hne, hll, hrr]
 
 theorem reverseWorkUpdate_own (M : ProgrammeMachine) (k : Fin M.workTapeCount)
     (c : ReverseCfg M) :
@@ -166,7 +170,7 @@ theorem reverseWorkFold_present (M : ProgrammeMachine) (ks : List (Fin M.workTap
   | cons k ks ih =>
     have hd' := List.nodup_cons.mp hd
     rcases List.mem_cons.mp hj with rfl | hm
-    · rw [reverseWorkFold, reverseWorkFold_absent M ks _ k hd'.1, reverseWorkUpdate_own]
+    · rw [reverseWorkFold, reverseWorkFold_absent M ks _ j hd'.1, reverseWorkUpdate_own]
     · have hne : j ≠ k := fun h => hd'.1 (by simpa [h] using hm)
       rw [reverseWorkFold, ih _ hd'.2 hm, reverseWorkUpdate_snapshot,
         reverseWorkUpdate_other M k j c hne]
@@ -180,9 +184,11 @@ def reverseRunPhysical (M : ProgrammeMachine) (c : ReverseCfg M) : ReverseCfg M 
 
 theorem reverseRunPhysical_exec (M : ProgrammeMachine) (c : ReverseCfg M) :
     programmeTM2RunStepTarget M c = reverseRunPhysical M c := by
-  unfold programmeTM2RunStepTarget programmeTM2RunTransition reverseRunPhysical
-  simp only [TM2.stepAux.eq_4]
-  rw [reverseInputUpdate_exec, reverseWorkFold_exec]
+  let snap : ReverseCfg M := { c with var := c.var.snapshot M }
+  let last : ProgrammeTM2Stmt M := .load (ProgrammeTM2State.commitAction M) (.goto fun _ => .run)
+  change TM2.stepAux (programmeTM2ApplyInputMove M
+    (programmeTM2ApplyWorkMoves M (programmeTM2WorkTapes M) last)) snap.var snap.stk = _
+  rw [reverseInputUpdate_exec M _ snap, reverseWorkFold_exec M _ _ (reverseInputUpdate M snap)]
   rfl
 
 theorem reverseRunPhysical_input (M : ProgrammeMachine) (c : ReverseCfg M) :
@@ -200,7 +206,7 @@ theorem reverseRunPhysical_work (M : ProgrammeMachine) (c : ReverseCfg M) (j : F
         ((programmeTM2WorkTape M c j).write ((M.transition c.var.control c.var.inputSymbol c.var.workSymbol).write j)) := by
   let snap : ReverseCfg M := { c with var := c.var.snapshot M }
   change programmeTM2WorkTape M (reverseWorkFold M (programmeTM2WorkTapes M) (reverseInputUpdate M snap)) j = _
-  rw [reverseWorkFold_present M _ _ j (by simp [programmeTM2WorkTapes]) (by simp [programmeTM2WorkTapes]),
+  rw [reverseWorkFold_present M _ _ j (List.nodup_finRange _) (by simp [programmeTM2WorkTapes]),
     reverseInputUpdate_snapshot, reverseInputUpdate_work]
   rfl
 
