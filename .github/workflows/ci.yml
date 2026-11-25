@@ -176,6 +176,8 @@ jobs:
           lake env lean MathSolve/PNP/ProgrammeTM2RunReturn.lean
           lake build MathSolve.PNP.ProgrammeTM2ControlEffects
           lake env lean MathSolve/PNP/ProgrammeTM2ControlEffects.lean
+          lake build MathSolve.PNP.ProgrammeTM2PhysicalEffects
+          lake env lean MathSolve/PNP/ProgrammeTM2PhysicalEffects.lean
           lake env lean MathSolve/PNP/TM2FixedStepSimulation.lean
           lake env lean MathSolve/PNP/TM2StepAuxSimulation.lean
           lake env lean MathSolve/PNP/ProgrammeMachine.lean
