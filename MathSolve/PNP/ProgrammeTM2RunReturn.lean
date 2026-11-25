@@ -33,34 +33,34 @@ theorem programmeTM2_returnsToRun_stepAux_label
     (M : ProgrammeMachine) (stmt : ProgrammeTM2Stmt M) :
     programmeTM2ReturnsToRun M stmt →
       ∀ (state : ProgrammeTM2State M)
-        (stacks : ∀ k, List (programmeTM2StackAlphabet M k)),
-        (Turing.TM2.stepAux stmt state stacks).l = some (.run) := by
+        (stackFamily : ∀ k, List (programmeTM2StackAlphabet M k)),
+        (Turing.TM2.stepAux stmt state stackFamily).l = some (.run) := by
   induction stmt with
   | push k f next ih =>
-      intro h state stacks
-      exact ih h state (Function.update stacks k (f state :: stacks k))
+      intro h state stackFamily
+      exact ih h state (Function.update stackFamily k (f state :: stackFamily k))
   | peek k f next ih =>
-      intro h state stacks
-      exact ih h (f state (stacks k).head?) stacks
+      intro h state stackFamily
+      exact ih h (f state (stackFamily k).head?) stackFamily
   | pop k f next ih =>
-      intro h state stacks
-      exact ih h (f state (stacks k).head?)
-        (Function.update stacks k (stacks k).tail)
+      intro h state stackFamily
+      exact ih h (f state (stackFamily k).head?)
+        (Function.update stackFamily k (stackFamily k).tail)
   | load f next ih =>
-      intro h state stacks
-      exact ih h (f state) stacks
+      intro h state stackFamily
+      exact ih h (f state) stackFamily
   | branch f left right ihLeft ihRight =>
-      intro h state stacks
+      intro h state stackFamily
       cases hf : f state with
       | false =>
-          simpa [Turing.TM2.stepAux, hf] using ihRight h.2 state stacks
+          simpa [Turing.TM2.stepAux, hf] using ihRight h.2 state stackFamily
       | true =>
-          simpa [Turing.TM2.stepAux, hf] using ihLeft h.1 state stacks
+          simpa [Turing.TM2.stepAux, hf] using ihLeft h.1 state stackFamily
   | goto f =>
-      intro h state stacks
+      intro h state stackFamily
       simpa [Turing.TM2.stepAux] using congrArg some (h state)
   | halt =>
-      intro h state stacks
+      intro h state stackFamily
       exact False.elim h
 
 /-- A write-and-head-motion statement preserves the always-return-to-run property. -/
