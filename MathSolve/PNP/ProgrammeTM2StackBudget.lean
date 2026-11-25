@@ -24,6 +24,14 @@ theorem reverseStackBound_mono (M : ProgrammeMachine) (S : ReverseStacks M)
     (a b : Nat) (h : ReverseStackBound M S a) (hab : a ≤ b) : ReverseStackBound M S b :=
   fun k => (h k).trans hab
 
+private theorem reverseCons_bound {α : Type*} (x : α) (xs : List α) (b : Nat)
+    (h : xs.length ≤ b) : (x :: xs).length ≤ b + 1 := by
+  exact Nat.succ_le_succ h
+
+private theorem reverseTail_bound {α : Type*} (xs : List α) (b : Nat)
+    (h : xs.length ≤ b) : xs.tail.length ≤ b + 1 := by
+  cases xs <;> simp_all <;> omega
+
 /-- Both stack mutations of a single work move grow the uniform length bound by at most one. -/
 theorem reverseWorkUpdate_bound (M : ProgrammeMachine) (c : ReverseCfg M)
     (k : Fin M.workTapeCount) (b : Nat) (hb : ReverseStackBound M c.stk b) :
@@ -32,16 +40,16 @@ theorem reverseWorkUpdate_bound (M : ProgrammeMachine) (c : ReverseCfg M)
   cases h : (c.var.snapshotAction M).workMove k with
   | left =>
     simp only [reverseWorkUpdate, h]
-    apply reverseStackBound_update
-    · apply reverseStackBound_update M _ _ _ _ hb'
-      simp only [List.length_cons]; have := hb (.workRight k); omega
-    · have ht := (show (c.stk (.workLeft k)).tail.length ≤ (c.stk (.workLeft k)).length by rw [List.length_tail]; omega); have := hb (.workLeft k); omega
+    exact reverseStackBound_update M _ (b+1) (.workLeft k) _
+      (reverseStackBound_update M c.stk (b+1) (.workRight k) _ hb'
+        (reverseCons_bound _ _ b (hb (.workRight k))))
+      (reverseTail_bound _ b (hb (.workLeft k)))
   | right =>
     simp only [reverseWorkUpdate, h]
-    apply reverseStackBound_update
-    · apply reverseStackBound_update M _ _ _ _ hb'
-      simp only [List.length_cons]; have := hb (.workLeft k); omega
-    · have ht := (show (c.stk (.workRight k)).tail.length ≤ (c.stk (.workRight k)).length by rw [List.length_tail]; omega); have := hb (.workRight k); omega
+    exact reverseStackBound_update M _ (b+1) (.workRight k) _
+      (reverseStackBound_update M c.stk (b+1) (.workLeft k) _ hb'
+        (reverseCons_bound _ _ b (hb (.workLeft k))))
+      (reverseTail_bound _ b (hb (.workRight k)))
   | stay => simpa only [reverseWorkUpdate, h] using hb'
 
 theorem reverseInputUpdate_bound (M : ProgrammeMachine) (c : ReverseCfg M)
@@ -51,16 +59,16 @@ theorem reverseInputUpdate_bound (M : ProgrammeMachine) (c : ReverseCfg M)
   cases h : (c.var.snapshotAction M).inputMove with
   | left =>
     simp only [reverseInputUpdate, h]
-    apply reverseStackBound_update
-    · apply reverseStackBound_update M _ _ _ _ hb'
-      simp only [List.length_cons]; have := hb .inputRight; omega
-    · have ht := (show (c.stk .inputLeft).tail.length ≤ (c.stk .inputLeft).length by rw [List.length_tail]; omega); have := hb .inputLeft; omega
+    exact reverseStackBound_update M _ (b+1) .inputLeft _
+      (reverseStackBound_update M c.stk (b+1) .inputRight _ hb'
+        (reverseCons_bound _ _ b (hb .inputRight)))
+      (reverseTail_bound _ b (hb .inputLeft))
   | right =>
     simp only [reverseInputUpdate, h]
-    apply reverseStackBound_update
-    · apply reverseStackBound_update M _ _ _ _ hb'
-      simp only [List.length_cons]; have := hb .inputLeft; omega
-    · have ht := (show (c.stk .inputRight).tail.length ≤ (c.stk .inputRight).length by rw [List.length_tail]; omega); have := hb .inputRight; omega
+    exact reverseStackBound_update M _ (b+1) .inputRight _
+      (reverseStackBound_update M c.stk (b+1) .inputLeft _ hb'
+        (reverseCons_bound _ _ b (hb .inputLeft)))
+      (reverseTail_bound _ b (hb .inputRight))
   | stay => simpa only [reverseInputUpdate, h] using hb'
 
 theorem reverseWorkFold_bound (M : ProgrammeMachine) (ks : List (Fin M.workTapeCount))
@@ -142,7 +150,8 @@ theorem programmeTM2ReadyInitCfg_budget (M : ProgrammeMachine) (input : List Boo
       (programmeTM2ReadyInitCfg M input).stk .output = [] := by
   refine ⟨?_,rfl⟩
   intro k
-  cases k <;> simp [programmeTM2ReadyInitCfg, programmeTM2InitStacks, List.length_tail]
+  cases k <;> first | (change 0 ≤ input.length; exact Nat.zero_le _) |
+    (change (input.tail.map some).length ≤ input.length; rw [List.length_map, List.length_tail]; omega)
 
 /-- A bounded source execution from initialization arrives at the represented
 terminal (or intermediate) state with every physical stack still bounded. -/
@@ -161,10 +170,12 @@ theorem programmeTM2_simulates_from_init_budget {M : ProgrammeMachine} {input : 
       (programmeTM2ReadyInitCfg M input) (some target') bound :=
     { steps := hrun.steps, evals_in_steps := hs, steps_le_m := hrun.steps_le_m }
   rcases programmeTM2_initialization_run M input with ⟨hi⟩
-  refine ⟨target', hrep, ⟨StateTransition.EvalsToInTime.trans (programmeTM2Machine M).step
-    (2*input.length+3) bound _ _ _ hi ht⟩, ?_, ho⟩
-  apply reverseStackBound_mono M _ _ _ hbound
-  exact Nat.add_le_add_left (Nat.mul_le_mul_left _ hrun.steps_le_m) _
+  refine ⟨target', hrep, ⟨?_⟩, ?_, ho⟩
+  · simpa only [Nat.add_comm bound (2 * input.length + 3)] using
+      (StateTransition.EvalsToInTime.trans (programmeTM2Machine M).step
+        (2*input.length+3) bound _ _ _ hi ht)
+  · apply reverseStackBound_mono M _ _ _ hbound
+    exact Nat.add_le_add_left (Nat.mul_le_mul_left _ hrun.steps_le_m) _
 
 #print axioms reverseRunPhysical_bound
 #print axioms programmeTM2_simulates_iterate_budget
