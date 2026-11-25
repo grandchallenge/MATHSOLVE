@@ -54,7 +54,7 @@ theorem programmeTM2_workMove_right_exec (M : ProgrammeMachine)
     rw [hright]
     decide
   simp [programmeTM2ApplyWorkMove, Turing.TM2.stepAux,
-    hright, hnotleft, ProgrammeTM2State.snapshotAction]
+    hright, hnotleft]
 
 /-- A stationary head writes only its currently scanned work symbol, changing
 no stack cells. -/
@@ -75,7 +75,7 @@ theorem programmeTM2_workMove_stay_exec (M : ProgrammeMachine)
     rw [hstay]
     decide
   simp [programmeTM2ApplyWorkMove, Turing.TM2.stepAux,
-    hstay, hnotleft, hnotright, ProgrammeTM2State.snapshotAction]
+    hstay, hnotleft, hnotright]
 
 /-- Concrete leftward immutable-input movement.  The saved pre-step input
 symbol is pushed right while a scanned cell is popped on the left. -/
@@ -93,7 +93,7 @@ theorem programmeTM2_inputMove_left_exec (M : ProgrammeMachine)
           (state.snapshotInputSymbol :: stackFamily .inputRight))
         .inputLeft (stackFamily .inputLeft).tail) := by
   simp [programmeTM2ApplyInputMove, Turing.TM2.stepAux,
-    hleft, ProgrammeTM2State.snapshotAction]
+    hleft]
 
 /-- Concrete rightward immutable-input movement with the symmetric stacks. -/
 theorem programmeTM2_inputMove_right_exec (M : ProgrammeMachine)
@@ -113,7 +113,7 @@ theorem programmeTM2_inputMove_right_exec (M : ProgrammeMachine)
     rw [hright]
     decide
   simp [programmeTM2ApplyInputMove, Turing.TM2.stepAux,
-    hright, hnotleft, ProgrammeTM2State.snapshotAction]
+    hright, hnotleft]
 
 /-- With a stationary immutable-input head no input stack or scanned symbol
 is modified by the actual statement interpreter. -/
@@ -132,7 +132,7 @@ theorem programmeTM2_inputMove_stay_exec (M : ProgrammeMachine)
     rw [hstay]
     decide
   simp [programmeTM2ApplyInputMove, Turing.TM2.stepAux,
-    hstay, hnotleft, hnotright, ProgrammeTM2State.snapshotAction]
+    hstay, hnotleft, hnotright]
 
 #print axioms programmeTM2_workMove_left_exec
 #print axioms programmeTM2_workMove_right_exec
