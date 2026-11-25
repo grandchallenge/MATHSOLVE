@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS3_TRANCHE",
+  "campaign": "GCL-ERDOS3",
+  "tranche": "E3-TRANCHE-02",
+  "primary_frontier": "E3-Q4-SERIES",
+  "theorem_upgrade": "E3-B02",
+  "verification": "E3-V02",
+  "work_packages": [
+    "E3-Q01",
+    "E3-X01",
+    "E3-A02",
+    "E3-S03"
+  ],
+  "scheduling_rule": "Q01 and X01 are primary mathematical attacks; A02 is adversarial; S03 is source/interface support. V02 is the only verification task and closes after one valid replay."
+}

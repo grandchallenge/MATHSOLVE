@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_BLIND_COHORT",
+  "cohort_id": "GCL-E2E-CANARY-COHORT-001",
+  "campaign": "GCL-E2E-CANARY-001",
+  "work_package": "GCL-E2E-CANARY-001",
+  "state": "OPEN_AWAITING_RESULT",
+  "mode": "independent_blind",
+  "dispatch_ids": [
+    "GCL-E2E-CANARY-001-IA-001"
+  ],
+  "return_protocol": "GCL-CONTRIBUTION-RESULT/1",
+  "intake_channel": "github_issue_comment",
+  "cross_disclosure_before_closure": false,
+  "synthesis_allowed": false,
+  "activation_condition": "SATISFIED_ON_PROTECTED_MERGE",
+  "synthesis_open_condition": "Exactly one protected schema-valid canary RESULT/1 closes the one-member cohort and permits only the pre-registered deterministic replay/adjudication.",
+  "claim_boundary": "Production-path canary only. No mathematical claim is admitted by activation, return, closure, replay, or successor materialization."
+}

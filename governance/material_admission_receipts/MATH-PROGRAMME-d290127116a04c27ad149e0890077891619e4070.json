@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_PROTECTED_SPECIALIST_ADMISSION_EVIDENCE",
+  "authority_domain": "SOLUTION_INTEGRITY",
+  "source_repository": "grandchallenge/MATHSOLVE",
+  "subject": {
+    "repository": "grandchallenge/MATH-PROGRAMME",
+    "head_sha": "d290127116a04c27ad149e0890077891619e4070",
+    "material_fingerprint": "c1e26a5300d06540b389e88db45dbd3df7b8749a326242a24930169739dc2cb2"
+  },
+  "verdict": "ADMISSIBLE_FOR_PROTECTED_ADMISSION",
+  "review_scope": "SOLVE_EXECUTION_INTEGRITY_ONLY",
+  "protected_evidence": {
+    "path": "contributions/OPENMATH-2026/OM26-H2-WP02-IA-001/logical-verifier-review.json",
+    "blob_sha": "84ed96d5f226c2b007eae1ad306dfbfbdbdc04db"
+  },
+  "solve_execution": {
+    "schema_version": "1.0.0",
+    "dispatch_id": "OM26-H2-WP02-IA-001",
+    "result_ref": "https://github.com/grandchallenge/MATHSOLVE/issues/526#issuecomment-5889734796",
+    "result_sha256": "6f52a9badf4c53900e623a63cfba6c3e36afabcf139a278abe842e334ddcd146",
+    "capture": {
+      "path": "contributions/OPENMATH-2026/OM26-H2-WP02-IA-001/capture.json",
+      "blob_sha": "3e3851040785ffb2bf0bfcd3de69538c847b04ae"
+    },
+    "replay": {
+      "path": "contributions/OPENMATH-2026/OM26-H2-WP02-IA-001/replay.json",
+      "blob_sha": "0e286ceb4cf59be02b49283ab15c0322b7091d27"
+    },
+    "adjudication": {
+      "path": "contributions/OPENMATH-2026/OM26-H2-WP02-IA-001/adjudication.json",
+      "blob_sha": "c9b7378cf7a262ed5727248f44011e59c5811b0f"
+    },
+    "claim_effects": {
+      "mathematical_claim_effect": false,
+      "certification_effect": false,
+      "publication_effect": false,
+      "source_semantic_effect": false,
+      "security_authority_effect": false
+    }
+  },
+  "adjudication_mode": "DELEGATED_NON_RESERVED_LOGICAL_ROLE",
+  "certification_effect": false
+}

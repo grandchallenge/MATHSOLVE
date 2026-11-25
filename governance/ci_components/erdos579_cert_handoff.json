@@ -1,0 +1,26 @@
+{
+  "contract_id": "GCL-CIR-001",
+  "version": "1.0.0",
+  "component_id": "erdos579_cert_handoff",
+  "owner": "GCL MATHSOLVE \u2014 Erd\u0151s #579 claim-specific certification handoff",
+  "paths": {
+    "exact": [
+      "ci/test_erdos_579_route_overlay.py",
+      "campaign_manifests/ERDOS-579-DISPROOF-001.json",
+      "contracts/mathcert_current_routes_erdos_579_overlay.json",
+      "schemas/mathcert_current_routes_erdos_579_overlay.schema.json",
+      "contracts/mathcert_current_routes_erdos_579_certified_successor.json",
+      "ci/test_erdos_579_certified_successor.py",
+      "contracts/erdos_579_internal_claim_promotion_successor.json",
+      "ci/test_erdos_579_internal_promotion.py"
+    ],
+    "prefixes": [
+      "campaign_ledgers/ERDOS-579-DISPROOF-001/"
+    ],
+    "test_prefixes": []
+  },
+  "depends_on": [],
+  "checks": [
+    "solve-ledgers-native"
+  ]
+}

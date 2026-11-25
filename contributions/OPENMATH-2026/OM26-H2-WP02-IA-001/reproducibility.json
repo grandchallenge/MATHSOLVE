@@ -1,0 +1,31 @@
+{
+  "chad_control_run_id": "0ead2511963a4e3d91dc858b979cb98c",
+  "chad_receipt_sha256": "6f1d976a79d65d6c43af45335677f2e23451322af59f051f7ec8570e095b1dad",
+  "execution": {
+    "adjudication_path": "contributions/OPENMATH-2026/OM26-H2/WP02/adjudications/OM26-H2-WP02-ADJ-001.json",
+    "dispatch_id": "OM26-H2-WP02-IA-001",
+    "exact_search_design_admitted": false,
+    "mathematical_certification": false,
+    "protected_evaluator_path": "work_packages/OPENMATH_2026/AUTHORITATIVE_SOURCE_POOL/busy-beaver-6-certificates/PUBLIC_SOURCE/eval.py",
+    "raw_sha256": "6f52a9badf4c53900e623a63cfba6c3e36afabcf139a278abe842e334ddcd146",
+    "record_type": "GCL_SOLVE_REAL_REPLAY_WITNESS_PREFLIGHT",
+    "replay_pass": true,
+    "specialist_positive_receipt": false,
+    "witnesses": {
+      "W8021": {
+        "ones": 41,
+        "steps": 8021,
+        "tape_span": 122
+      },
+      "W89911": {
+        "ones": 185,
+        "steps": 89911,
+        "tape_span": 541
+      }
+    }
+  },
+  "execution_origin": "LOCAL_OS_ONLY_NOT_INDEPENDENTLY_AUTHENTICATED",
+  "independent_execution_attested": false,
+  "protected_source_commit": "3ded08b094da297e713f48ccd5d52bfa0092aed0",
+  "record_type": "GCL_SOLVE_ACTUAL_REPLAY_OUTPUT"
+}

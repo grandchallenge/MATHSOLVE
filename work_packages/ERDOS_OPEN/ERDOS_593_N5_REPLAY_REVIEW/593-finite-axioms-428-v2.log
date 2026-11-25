@@ -1,0 +1,6 @@
+'GCLFiniteOverlap.edge012_proper' depends on axioms: [propext, Quot.sound]
+'GCLFiniteOverlap.edge013_proper' depends on axioms: [propext, Quot.sound]
+'GCLFiniteOverlap.edges_distinct' depends on axioms: [propext]
+'GCLFiniteOverlap.edge_memberships_differ' depends on axioms: [propext]
+'GCLFiniteOverlap.exactly_three_distinct' depends on axioms: [propext]
+'GCLFiniteOverlap.distinct_common_vertices' depends on axioms: [propext]

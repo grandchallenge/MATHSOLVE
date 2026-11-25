@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-ERDOS-579-DISPROOF-HANDOFF-001",
+  "record_class": "MATHSOLVE_TO_MATHCERT_CANDIDATE",
+  "campaign_id": "ERDOS-579-DISPROOF-001",
+  "subject_issue": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/1850",
+  "claim_id": "ERDOS-579-C001",
+  "claim_statement": "The universal positive Ramsey-Turan assertion for K_{2,2,2} is false: for delta = 3/2048, for every c > 0 and every N there exists n >= N and a finite simple K_{2,2,2}-free graph G on n vertices with at least delta*n^2 unordered edges and independence number less than c*n.",
+  "proof_source": {
+    "provider_result": "https://conjectures.io/results/e4934265-aa96-4bf5-a3c0-d01153dfcfaa",
+    "source_download": "https://conjectures.io/results/e4934265-aa96-4bf5-a3c0-d01153dfcfaa/solution/download",
+    "sha256": "c210bfcb2e4f1d9acf56e210d8800f831868783ff949d964033bb9cda6b684b2",
+    "bytes": 810011,
+    "lines": 18336,
+    "author_attribution": "Jordan (per provider; independently authored outside GCL)"
+  },
+  "formal_source": {
+    "repository": "google-deepmind/formal-conjectures",
+    "commit": "6a786f997e18e8f095762a2830d191b7e25e505e",
+    "source_commit_reconstructed_exactly": true,
+    "base_commit": "7d1a8c9912747679d0093f6d1216420c33ee5ffa",
+    "pinned_gcl_reference": "85f863718beeec7b58a3a1926ee92e3472bc2020",
+    "pinned_statement_blob": "ba1faf6e48768b411e82136b4e57a723eeb05b2a",
+    "theorem": "Erdos579.erdos_579",
+    "result_theorem": "Bounty.target"
+  },
+  "toolchain": {
+    "lean": "4.33.1",
+    "lean_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+    "mathlib_git_commit": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "evidence": {
+    "gcl_assessment": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/1850#issuecomment-6998200134",
+    "exact_build": "8901 jobs; exit 0; Challenge and Solution compiled",
+    "theorem_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "empty_environment_kernel_replay": "57271 declaration closure; returned kernel replay OK; final verifier wrapper target-readback exited 1 due Lean API mismatch",
+    "kernel_replay_qualified": true,
+    "full_post_replay_comparator": false,
+    "third_party_corrob": "https://erdosproblems.ai/wiki/library/number_theory/conjectures_io_2026_lean_solutions_erdos_problems/evidence/verify/receipt_e0579_e4934265"
+  },
+  "claim_scope": {
+    "verified": "formal negation of pinned octahedron-free positive-density proposition",
+    "not_claimed": [
+      "exact Ramsey-Turan density",
+      "novelty or priority",
+      "protected MATHCERT certification",
+      "provider task metadata consistency resolved"
+    ]
+  },
+  "requested_mathcert_action": "Register a claim-specific MATHCERT route and adjudicate the exact proof and semantic equivalence with independently retained reviewer provenance, then record protected admission/readback.",
+  "disposition": "SOURCE_LOCKED_HANDOFF_CANDIDATE__NOT_CERTIFICATE",
+  "blockers": [
+    "Claim-specific route not yet present in protected MATHCERT certification_routes registry.",
+    "MATHCERT receiving-policy reconciliation required: external catalog direct intake is prohibited; no claim of Chaidez promotion dossier completion absent a separate source/route record.",
+    "Reviewer source-concordance acceptance and protected certification output remain to be admitted."
+  ],
+  "authorship_and_independence": {
+    "proof_author": "external provider original author",
+    "gcl_replay": "GCL assistant on CHAD (independent of construction but not an authenticated separate reviewer identity)",
+    "external_corrob": "Conjectures.io and Plasma replay are independently reported, not GCL reviewer approval"
+  },
+  "created_utc": "2026-11-19"
+}

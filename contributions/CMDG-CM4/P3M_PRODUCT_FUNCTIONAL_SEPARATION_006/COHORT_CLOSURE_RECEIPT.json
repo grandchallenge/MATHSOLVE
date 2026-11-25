@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_BLIND_COHORT_CLOSURE_RECEIPT",
+  "receipt_id": "CMDG-P3M-SEP2-BLIND-COHORT-001:CLOSURE-001",
+  "campaign": "CMDG-CM4-P3M-SEPARATION",
+  "tranche": "PRODUCT-FUNCTIONAL-SEPARATION-006",
+  "cohort_id": "CMDG-P3M-SEP2-BLIND-COHORT-001",
+  "closure_date": "2026-10-07",
+  "protected_evidence_base_commit": "45146308ae22729decc4fd8ca61e8bbd7e952602",
+  "closure_basis": "WP-B, WP-C, and WP-D each have a protected valid RESULT/1 raw artifact and receipt; WP-A is explicitly terminally disposed because its RESULT/1 predates any valid worker reservation and is not admitted as evidence.",
+  "evidence": [
+    {
+      "work_package": "WP-B",
+      "dispatch_id": "CMDG-P3M-SEP2-WP-B-IA-001",
+      "issue_number": 931,
+      "github_comment_id": 6027259810,
+      "disposition_declared": "PROVED_REDUCTION",
+      "raw_artifact_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/raw/CMDG-P3M-SEP2-WP-B-IA-001/github-comment-6027259810.md",
+      "raw_blob_sha1": "7579b78b9b2d9502b53d020c14aad100bd175908",
+      "receipt_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/receipts/CMDG-P3M-SEP2-WP-B-IA-001/github-comment-6027259810.json",
+      "receipt_blob_sha1": "9b9f8a38fd1817dca10a0f70aa30d77f05086c21",
+      "protected_on_commit": "45146308ae22729decc4fd8ca61e8bbd7e952602",
+      "schema_result": "valid",
+      "handling_state": "received_unadjudicated",
+      "canonical_claim_effect": false
+    },
+    {
+      "work_package": "WP-C",
+      "dispatch_id": "CMDG-P3M-SEP2-WP-C-IA-001",
+      "issue_number": 932,
+      "github_comment_id": 6027283489,
+      "disposition_declared": "PROVED_REDUCTION",
+      "raw_artifact_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/raw/CMDG-P3M-SEP2-WP-C-IA-001/github-comment-6027283489.md",
+      "raw_blob_sha1": "cc876dfe7210811677452d4d6e42cba39855f430",
+      "receipt_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/receipts/CMDG-P3M-SEP2-WP-C-IA-001/github-comment-6027283489.json",
+      "receipt_blob_sha1": "d42b11f64a1de872f2e6116ba573b0fd294a4477",
+      "protected_on_commit": "45146308ae22729decc4fd8ca61e8bbd7e952602",
+      "schema_result": "valid",
+      "handling_state": "received_unadjudicated",
+      "canonical_claim_effect": false
+    },
+    {
+      "work_package": "WP-D",
+      "dispatch_id": "CMDG-P3M-SEP2-WP-D-IA-001",
+      "issue_number": 933,
+      "github_comment_id": 6027266718,
+      "disposition_declared": "PROVED_REDUCTION",
+      "raw_artifact_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/raw/CMDG-P3M-SEP2-WP-D-IA-001/github-comment-6027266718.md",
+      "raw_blob_sha1": "30b2f1a93ace83c582b77a8f7b88a82f284a5fd6",
+      "receipt_path": "contributions/CMDG-CM4/P3M_PRODUCT_FUNCTIONAL_SEPARATION_006/receipts/CMDG-P3M-SEP2-WP-D-IA-001/github-comment-6027266718.json",
+      "receipt_blob_sha1": "6094e355cf3f377046cd7424323ecd6177703dd9",
+      "protected_on_commit": "45146308ae22729decc4fd8ca61e8bbd7e952602",
+      "schema_result": "valid",
+      "handling_state": "received_unadjudicated",
+      "canonical_claim_effect": false
+    }
+  ],
+  "terminal_dispositions": [
+    {
+      "work_package": "WP-A",
+      "dispatch_id": "CMDG-P3M-SEP2-WP-A-IA-001",
+      "issue_number": 930,
+      "observed_result_comment_id": 6027235095,
+      "disposition": "INVALID_UNLEASED_RETURN__NOT_ADMITTED",
+      "mathematical_evidence_effect": false
+    }
+  ],
+  "all_dispatches_terminal": true,
+  "all_admitted_returns_protected": true,
+  "blind_cohort_closed": true,
+  "synthesis_allowed": true,
+  "mathematical_correctness_adjudicated": false,
+  "certification_effect": false,
+  "claim_promotion_effect": false,
+  "claim_boundary": "This receipt closes only the evidence-collection blindness barrier. It authorizes synthesis of protected WP-B/WP-C/WP-D returns. It does not admit WP-A content, coefficient solidity, P3 completion, CM4 completion, certification, or claim promotion."
+}

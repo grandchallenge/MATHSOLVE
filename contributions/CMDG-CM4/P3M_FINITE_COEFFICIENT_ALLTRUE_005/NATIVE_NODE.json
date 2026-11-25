@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_NATIVE_NODE_SELECTION",
+  "campaign": "CMDG-CM4",
+  "tranche": "P3-M-FINITE-COEFFICIENT-ALLTRUE-005",
+  "node_id": "CMDG-P3M-COV-N3A",
+  "title": "LIFTED_INT_FUNCTIONAL_DOWN_APPLY_INVERSE",
+  "synthesis_disposition": "REDUCED_TO_SMALLEST_MISSING_LEMMA",
+  "synthesis_base_commit": "3651d0efd07d451f81c35a65706ea983a6616621",
+  "evidence_base_commit": "55e7d34c49c784a408c71f1f899a8ad6c34e5d53",
+  "programme_protected_predecessor": "a2897a270c477ac95ba3d18dd068a13b07d3b853",
+  "programme_source_replay_main": "fceda552485562bfb6210e520a10d3d62314a6f0",
+  "exact_statement": "theorem liftedIntFunctionalDown_apply_inverse (X : Profinite.{u}) (F : LocallyConstant X R →ₗ[R] R) (v : LocallyConstant X R) : ULift.up (liftedIntFunctionalDown X F ((locallyConstantIntegralLiftEquiv X).symm v)) = F v",
+  "preferred_proof": "by simpa [liftedIntFunctionalDown]",
+  "fallback_proof_route": [
+    "unfold liftedIntFunctionalDown",
+    "rewrite (locallyConstantIntegralLiftEquiv X).apply_symm_apply v",
+    "close ULift.up ((F v).down) = F v by constructor/projection normalization"
+  ],
+  "convergence": {
+    "wp_a": "reduces N3 to the same coefficient inverse law",
+    "wp_b": "states the generic theorem directly",
+    "wp_c": "finds no protected-type counterexample and reduces to the same theorem",
+    "wp_d": "downstream only; finite-section bridge deferred until N3 is protected"
+  },
+  "claim_boundary": "Selection only. N3A and N3 remain unproved until native exact-head Lean validation and protected admission."
+}

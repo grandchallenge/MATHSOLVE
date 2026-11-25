@@ -1,0 +1,18 @@
+{
+  "adjudication_disposition": "REPLAYED_AND_ADJUDICATED",
+  "adjudication_id": "OM26-H2-WP02-ADJ-001",
+  "boundary": "SOURCE_EXECUTION_INTEGRITY_ONLY; NO SPECIALIST_APPROVAL OR THEOREM_CERTIFICATION",
+  "claim_effects": {
+    "certification_effect": false,
+    "mathematical_claim_effect": false,
+    "publication_effect": false,
+    "security_authority_effect": false,
+    "source_semantic_effect": false
+  },
+  "dispatch_id": "OM26-H2-WP02-IA-001",
+  "protected_adjudication_source": "contributions/OPENMATH-2026/OM26-H2/WP02/adjudications/OM26-H2-WP02-ADJ-001.json",
+  "record_type": "GCL_SOLVE_ADJUDICATION_RECEIPT_V1",
+  "replay_blob_sha": "0e286ceb4cf59be02b49283ab15c0322b7091d27",
+  "result_ref": "https://github.com/grandchallenge/MATHSOLVE/issues/526#issuecomment-5889734796",
+  "schema_version": "1.0.0"
+}

@@ -1,0 +1,17 @@
+{
+  "contract_id": "GCL-CIR-001",
+  "version": "1.0.0",
+  "component_id": "figurate",
+  "owner": "MATHSOLVE FIGURATE-PILOT-001 research",
+  "paths": {
+    "exact": [],
+    "prefixes": [],
+    "test_prefixes": [
+      "tests/test_figurate_"
+    ]
+  },
+  "depends_on": [],
+  "checks": [
+    "solve-ledgers-native"
+  ]
+}

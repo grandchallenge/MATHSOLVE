@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_EXTERNAL_DISPATCH_ACTIVATION_CANDIDATE_RECEIPT",
+  "receipt_id": "CMDG-P3M-SEP-ACTIVATION-001",
+  "campaign": "CMDG-CM4",
+  "work_package": "P3-M-ONE-POINT-SEPARATION-003",
+  "state": "READY_FOR_PROTECTED_MERGE",
+  "activation_candidate_commit": "620eaa56932d0de0f4076faf73c495f1f59d4aa5",
+  "protected_programme_predecessor": "f7f99e18b83a3015d1a7ef835ee71434d01a9dba",
+  "protected_programme_source_blob": "1f867034ec1474418cf416ee8583449bcbe80ee5",
+  "admitted_endpoint": "CMDG.CondensedCM4P3M.KernelPointBridge.kernelProductFunctional_eq_zero_of_solidification_kernel",
+  "admitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "no_sorryAx": true,
+  "blind_cohort_id": "CMDG-P3M-SEP-BLIND-COHORT-001",
+  "parser": {
+    "path": "ci/ns_ci_github_contribution_intake.py",
+    "blob_sha1": "d1f1cc457429dff2d39ad0e59d36248860bd4b51"
+  },
+  "workflow": {
+    "path": ".github/workflows/ns-ci-independent-contribution-intake.yml",
+    "blob_sha1": "9a20a679042d996c587bce26d0c4ff34e020d862"
+  },
+  "dispatch_blobs": {
+    "CMDG-P3M-SEP-WP-A-IA-001": "d2f4f209ffc329709b193a8ba18c187f852db095",
+    "CMDG-P3M-SEP-WP-B-IA-001": "85e2f55d1414302ca3b67ddb9a0ff2bc763374bc",
+    "CMDG-P3M-SEP-WP-C-IA-001": "8e48c73bfb938bb15d65a451927116d082179dc8",
+    "CMDG-P3M-SEP-WP-D-IA-001": "c5d902f5d0450a3b6cb004d9eddd284bc5211563"
+  },
+  "issue_bindings": [
+    764,
+    765,
+    766,
+    767
+  ],
+  "contributor_authority": "issue_comment_only",
+  "canonical_mutation_authorized": false,
+  "certification_effect": false,
+  "activation_after_protected_merge": "Read back protected MATHSOLVE main, then byte-lock issue titles and bodies to the protected bootstrap files before handing launch tasks to independent agents."
+}

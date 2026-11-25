@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-14-COUPLED-CELL-RECEIPT",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-14",
+  "state": "COMPLETE__DEPTH1_MUTUAL_SUBDIVISION_NO_94__BOUNDED_NEGATIVE_ONLY",
+  "method": {
+    "targets": 60,
+    "attempted_single_mutual_event_flips": 2040,
+    "feasible_adjacent_mutual_subcells": 28,
+    "arithmetic": "EXACT_RATIONAL_AND_INTEGER_DETERMINANT_SIGNS"
+  },
+  "results": {
+    "best_score": 86,
+    "score_histogram": {"74":1,"78":1,"79":3,"80":3,"81":7,"82":1,"83":5,"84":3,"86":4},
+    "found_94_or_better": false
+  },
+  "top_witnesses": [
+    {"support_triple":[0,4,6],"blockers":[11,14],"base_pair_score":85,"moving_line":11,"mutual_event":{"kind":"mutual_vertex","object":[14,8],"seed_sign":-1,"new_sign":1},"score":86},
+    {"support_triple":[0,4,6],"blockers":[11,14],"base_pair_score":85,"moving_line":14,"mutual_event":{"kind":"mutual_vertex","object":[11,8],"seed_sign":1,"new_sign":-1},"score":86},
+    {"support_triple":[8,9,13],"blockers":[0,4],"base_pair_score":85,"moving_line":0,"mutual_event":{"kind":"mutual_vertex","object":[4,6],"seed_sign":-1,"new_sign":1},"score":86},
+    {"support_triple":[8,9,13],"blockers":[0,4],"base_pair_score":85,"moving_line":4,"mutual_event":{"kind":"mutual_vertex","object":[0,6],"seed_sign":1,"new_sign":-1},"score":86}
+  ],
+  "limitations": [
+    "Depth-one only: exactly one mutual blocker-blocker event is flipped while all other external and mutual event signs are preserved.",
+    "Multi-mutual-wall transitions and unrestricted four-variable motion remain outside this receipt.",
+    "Negative search evidence is not an upper-bound or optimality proof."
+  ],
+  "next_action": "Do not escalate to 4-5 active lines from this layer: no coupled depth-one witness is competitive with 93. Feed exact lost-face/event patterns into local-move obstruction analysis, and reserve deeper coupled CAD for a cell with an independent structural reason to revisit.",
+  "claim_boundary": "Bounded negative route evidence only; campaign-best-observed remains 93."
+}

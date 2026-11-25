@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-14-DUAL-CELL-RECEIPT",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-14",
+  "state": "COMPLETE__CANONICAL_CLOSEST_DUAL_CELLS_NO_94__BOUNDED_NEGATIVE_ONLY",
+  "method": {
+    "targets": 60,
+    "blocker_routes": 120,
+    "arithmetic": "EXACT_RATIONAL_AND_INTEGER_DETERMINANT_SIGNS"
+  },
+  "results": {
+    "best_individual_score": 90,
+    "individual_score_histogram": {
+      "80": 6, "81": 8, "82": 12, "83": 4, "84": 16, "85": 8,
+      "86": 6, "87": 14, "88": 10, "89": 2, "90": 34
+    },
+    "best_pair_score": 89,
+    "pair_score_histogram": {
+      "72": 2, "74": 2, "75": 1, "76": 1, "77": 4, "78": 5,
+      "79": 5, "80": 5, "81": 6, "82": 6, "83": 7, "84": 5,
+      "85": 3, "86": 5, "87": 1, "89": 2
+    },
+    "found_94_or_better": false
+  },
+  "top_pairs": [
+    {"support_triple":[0,4,14],"blockers":[6,11],"individual_scores":[90,90],"pair_score":89,"extra_event_changes":[1,0]},
+    {"support_triple":[8,12,16],"blockers":[1,5],"individual_scores":[90,90],"pair_score":89,"extra_event_changes":[1,0]},
+    {"support_triple":[1,7,9],"blockers":[11,16],"individual_scores":[90,90],"pair_score":87,"extra_event_changes":[0,1]},
+    {"support_triple":[2,7,10],"blockers":[13,17],"individual_scores":[90,87],"pair_score":86,"extra_event_changes":[1,1]},
+    {"support_triple":[3,5,10],"blockers":[0,13],"individual_scores":[90,87],"pair_score":86,"extra_event_changes":[1,5]}
+  ],
+  "limitations": [
+    "One canonical rational representative is scored for each closest individual blocker cell.",
+    "Mutual blocker-blocker event surfaces can subdivide the product of two individual cells.",
+    "Search failure is not an upper bound or optimality proof."
+  ],
+  "next_action": "Enumerate mutual two-moving-line event subdivisions, exact-rescore every feasible adjacent subcell, and escalate only a cell competitive with the protected 93 seed.",
+  "claim_boundary": "Bounded negative route evidence only; campaign-best-observed remains 93."
+}

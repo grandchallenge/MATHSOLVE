@@ -111,5 +111,44 @@ class SuccessorOverlayTests(unittest.TestCase):
         self.assertTrue(any("not promotion eligible" in error for error in errors))
 
 
+class FixedBoundaryC06SuccessorTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.record = module.load_json(module.C06_SUCCESSOR_PATH)
+
+    def errors(self, mutation=None):
+        data = copy.deepcopy(self.record)
+        if mutation is not None:
+            mutation(data)
+        return module.fixed_boundary_successor_errors(data)
+
+    def test_source_faithful_successor_and_historical_bytes(self):
+        self.assertEqual(self.errors(), [])
+
+    def test_reject_geometric_quotient_added_after_failure(self):
+        self.assertTrue(self.errors(lambda d: d["comparison_contract"].__setitem__("geometric_quotient_group", "projective")))
+
+    def test_reject_branch_transform_expansion(self):
+        self.assertTrue(self.errors(lambda d: d["comparison_contract"].__setitem__(
+            "allowed_transformations", ["permutation_of_five_solution_branches", "rotation"])))
+
+    def test_reject_source_rounding_inflation(self):
+        self.assertTrue(self.errors(lambda d: d["comparison_contract"].__setitem__(
+            "rounding_half_quantum_per_coordinate", 0.01)))
+
+    def test_reject_fabricated_positive_match(self):
+        self.assertTrue(self.errors(lambda d: d["disposition"].__setitem__("matching_proved", True)))
+
+    def test_reject_promotion(self):
+        self.assertTrue(self.errors(lambda d: d["disposition"].__setitem__("cert_route_promoted", True)))
+
+    def test_reject_historical_claim_rewrite(self):
+        self.assertTrue(self.errors(lambda d: d["predecessor_immutability"]["historical_claim_ledger"].__setitem__(
+            "git_blob_sha1", "0" * 40)))
+
+    def test_reject_unpinned_source_revision(self):
+        self.assertTrue(self.errors(lambda d: d["source_authority"].__setitem__("arxiv_revision", "2410.09574v3")))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,15 @@
+{
+  "attestation_boundary": "PROTECTED_INTAKE_LINKAGE_ONLY",
+  "authenticated_intake_provenance": {
+    "comment_id": 5889734796,
+    "protected_intake_merge": "4734e203e1b2bfd40717ed9729deaa12fc957e83",
+    "protected_intake_pr": 536,
+    "return_issue": 526
+  },
+  "captured_result_path": "contributions/OPENMATH-2026/OM26-H2/WP02/raw/OM26-H2-WP02-IA-001/github-comment-5889734796.md",
+  "dispatch_id": "OM26-H2-WP02-IA-001",
+  "record_type": "GCL_SOLVE_CAPTURE_RECEIPT_V1",
+  "result_ref": "https://github.com/grandchallenge/MATHSOLVE/issues/526#issuecomment-5889734796",
+  "result_sha256": "6f52a9badf4c53900e623a63cfba6c3e36afabcf139a278abe842e334ddcd146",
+  "schema_version": "1.0.0"
+}

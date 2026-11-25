@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.2.0",
+  "manifest_id": "MS-MANIFEST-ERDOS-579-DISPROOF-001",
+  "campaign_id": "ERDOS-579-DISPROOF-001",
+  "coverage_mode": "native",
+  "programme": {
+    "repository": "grandchallenge/MATH-PROGRAMME",
+    "issue": "https://github.com/grandchallenge/MATH-PROGRAMME/issues/1850",
+    "commit_sha": "24de2a363a4f086a0a00f67794dd03a25d73d07a"
+  },
+  "forge_inputs": [
+    {
+      "repository": "grandchallenge/MATHFORGE",
+      "commit_sha": "aabb4d103e5e9ed71d0e68ca3abf767998c60691",
+      "path": "sources/ERDOS-OPEN-001/open_problem_manifest.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "0a71491313ffad6ba2d02a3bdc3fc5a5a8cf65d8",
+      "role": "source"
+    }
+  ],
+  "solve": {
+    "repository": "grandchallenge/MATHSOLVE",
+    "provider_issue": "https://github.com/grandchallenge/MATHCERT/issues/365",
+    "provider_commit": "94d0bff64630b5592ae5d10e84b4d3eefa1860ee",
+    "migration_debt": []
+  },
+  "work_packages": [
+    {
+      "work_package_id": "ERDOS-579-DISPROOF-001-WP01",
+      "primary_type": "GOVERNANCE_HANDOFF",
+      "status": "complete",
+      "source_repository": "grandchallenge/MATHSOLVE",
+      "source_commit": "94d0bff64630b5592ae5d10e84b4d3eefa1860ee",
+      "artifacts": [
+        {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "94d0bff64630b5592ae5d10e84b4d3eefa1860ee",
+          "path": "evidence/erdos_579_replay_20261119/Main.lean",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "a5bfdc50a8e311aa610e9cbca294832fa469ee09",
+          "role": "solve_artifact"
+        }
+      ],
+      "ledgers": {
+        "claim": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "e748daa9e47c16e7ce965dc31c3454066f78df27",
+          "path": "governance/erdos_579_intake_candidate/claim_ledger.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "dbf63786b7026c3601331479164b9651a283a8f2",
+          "role": "claim_ledger"
+        },
+        "proof_obligation": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "e748daa9e47c16e7ce965dc31c3454066f78df27",
+          "path": "governance/erdos_579_intake_candidate/proof_obligation_dag.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "8775fc525acabe76acaed90226ab87aed016c55f",
+          "role": "proof_obligation_dag"
+        },
+        "certification": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "0000000000000000000000000000000000000000",
+          "path": "governance/erdos_579_intake_candidate/mathcert_handoff.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "SHA256_AT_ACTIVATION_UNBOUND",
+          "role": "certificate_handoff"
+        }
+      },
+      "children": []
+    }
+  ],
+  "certification": {
+    "repository": "grandchallenge/MATHCERT",
+    "contract": {
+      "repository": "grandchallenge/MATHCERT",
+      "commit_sha": "3854dd1b4f6e162a7e74c3da1993f022ee691e5e",
+      "path": "governance/certification_routes.json",
+      "digest_algorithm": "git_blob_sha1",
+      "digest": "065f0531e4d763b389b207d4922d5a85b4335ee3"
+    },
+    "handoff_state": "pending",
+    "handoff_packets": [
+      {
+        "handoff_id": "MC-HANDOFF-ERDOS-579-DISPROOF-001",
+        "status": "pending",
+        "target_claim_ids": [
+          "ERDOS-579-C001"
+        ],
+        "artifact": {
+          "repository": "grandchallenge/MATHSOLVE",
+          "commit_sha": "0000000000000000000000000000000000000000",
+          "path": "governance/erdos_579_intake_candidate/mathcert_handoff.json",
+          "digest_algorithm": "git_blob_sha1",
+          "digest": "SHA256_AT_ACTIVATION_UNBOUND",
+          "role": "certificate_handoff"
+        }
+      }
+    ]
+  },
+  "promotion": {
+    "eligible": false,
+    "blockers": [
+      "No MATHCERT registered claim-specific route.",
+      "Non-author independent specialist review and protected certificate output still required.",
+      "Preserve historical Forge catalog status.",
+      "Campaign activation requires simultaneous MATHCERT route registration and verified exact artifact identities."
+    ]
+  },
+  "disposal": {
+    "status": "active",
+    "supersedes": [],
+    "reopening_conditions": [
+      "Rebind if the protected proof identity, exact graph problem, reviewer evidence, or MATHCERT route changes."
+    ]
+  }
+}

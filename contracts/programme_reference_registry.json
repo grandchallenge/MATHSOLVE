@@ -39,6 +39,7 @@
         "EUCLID-DIOPHANTINE-E2E-002-PRODUCER"
       ],
       "classification_mapping_refs": []
-    }
+    },
+    "ERDOS-579-DISPROOF-001": {"knowledge_graph_refs": ["ERDOS-579-DISPROOF-001"], "classification_mapping_refs": []}
   }
 }

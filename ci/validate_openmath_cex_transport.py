@@ -143,8 +143,12 @@ def validate() -> list[str]:
     if list(scripts) != expected_hills:
         errors.append('current launch-script roster is not exactly OM26-H1 through OM26-H7')
 
+    terminal = registry.get('research_reset', {}).get('id') == 'OPENMATH-2026-RESEARCH-RESET-001'
     h1 = scripts.get('OM26-H1', {})
-    if h1.get('executable') is not True and h1.get('reason') != 'NO_ACTIVE_SUCCESSOR_LEASE':
+    if terminal:
+        if h1.get('executable') is not False or h1.get('reason') != 'EVENT_WINDOW_TERMINAL__RESEARCH_RESET':
+            errors.append('H1 terminal launch guard drift')
+    elif h1.get('executable') is not True and h1.get('reason') != 'NO_ACTIVE_SUCCESSOR_LEASE':
         errors.append('H1 launch guard does not reflect no active successor lease')
 
     for hill, row in {**scripts, **launch.get("support_scripts", {})}.items():
@@ -178,8 +182,11 @@ def validate() -> list[str]:
         if 'H2-H7' in text:
             errors.append(f'{hill}: deprecated aggregate topology leaked into launch task')
         if row.get('executable') is not True:
-            if 'NOT_EXECUTABLE_NO_ACTIVE_LEASE' not in text or 'INVALID_LAUNCH' not in text:
-                errors.append('H1 task guard is not explicit')
+            if terminal:
+                if row.get('reason') != 'EVENT_WINDOW_TERMINAL__RESEARCH_RESET':
+                    errors.append(f'{hill}: terminal task reason drift')
+            elif 'NOT_EXECUTABLE_NO_ACTIVE_LEASE' not in text or 'INVALID_LAUNCH' not in text:
+                errors.append(f'{hill}: task guard is not explicit')
             continue
         for marker in (
             'GCL-RETURN-RELAY/1',

@@ -1,0 +1,32 @@
+{
+  "activation_cohort_blob_sha1": "ed3e578277a4cc3ee2f099ecc34642fc65bdbdb9",
+  "activation_cohort_path": "contributions/GCL-E2E-CANARY-003/cohort.json",
+  "blind_cohort_closed": true,
+  "campaign": "GCL-E2E-CANARY-003",
+  "canonical_claim_effect": false,
+  "certification_effect": false,
+  "claim_boundary": "Mechanical one-member canary closure only; no mathematical or certification authority.",
+  "closure_date": "2026-10-07",
+  "cohort_id": "GCL-E2E-CANARY-COHORT-003",
+  "evidence": [
+    {
+      "dispatch_id": "GCL-E2E-CANARY-003-IA-001",
+      "disposition_declared": "EXACT_CERTIFICATE",
+      "github_comment_id": 6039886241,
+      "github_issue_number": 999,
+      "raw_artifact_path": "contributions/GCL-E2E-CANARY-003/raw/GCL-E2E-CANARY-003-IA-001/github-comment-6039886241.md",
+      "raw_blob_sha1": "75e533ff60b7bed076720ab26cf7cc07b854b629",
+      "raw_sha256": "1b2ceeded0451b118e9849800a14dcffd960f0350181e1aa0a3ad736d0b487bd",
+      "receipt_blob_sha1": "d881dae217433b7ab4f17791f2bfee5f187c75d3",
+      "receipt_path": "contributions/GCL-E2E-CANARY-003/receipts/GCL-E2E-CANARY-003-IA-001/github-comment-6039886241.json"
+    }
+  ],
+  "mathematical_correctness_adjudicated": false,
+  "minimum_synthesis_evidence_satisfied": true,
+  "protected_evidence_base_commit": "b1f21e2d6481444fa93b24575806002633dd1159",
+  "receipt_id": "GCL-E2E-CANARY-COHORT-003:CLOSURE-001",
+  "record_type": "GCL_BLIND_COHORT_CLOSURE_RECEIPT",
+  "schema_version": "1.0.0",
+  "synthesis_allowed": true,
+  "work_package": "GCL-E2E-CANARY-003"
+}

@@ -1,0 +1,243 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_ERDOS_OPEN_RECONNAISSANCE_PACK_SET",
+  "pack_set_id": "ERDOS-OPEN-RECON-PACKS-001",
+  "state": "STAGED_NOT_ACTIVATED",
+  "generated_on": "2026-10-04",
+  "authority": {
+    "programme_triage": {
+      "repo": "grandchallenge/MATH-PROGRAMME",
+      "commit": "fceda552485562bfb6210e520a10d3d62314a6f0",
+      "path": "governance/erdos_open_triage.json",
+      "blob": "ec867970360783a3fb9c3247df3bc3b5cfeb2e05"
+    },
+    "forge_intake": {
+      "repo": "grandchallenge/MATHFORGE",
+      "commit": "ec80b855c988e8dc7ddff40cb892b67263d5c86e",
+      "path": "sources/ERDOS-OPEN-001/open_problem_manifest.json",
+      "blob": "0a71491313ffad6ba2d02a3bdc3fc5a5a8cf65d8"
+    },
+    "formal_provider": {
+      "repository": "google-deepmind/formal-conjectures",
+      "commit": "85f863718beeec7b58a3a1926ee92e3472bc2020"
+    },
+    "execution_authorized": false,
+    "canonical_mutation_authorized": false,
+    "certification_authorized": false,
+    "activation_requires": [
+      "protected_issue",
+      "dispatch_id",
+      "agent_ref",
+      "lease_identity",
+      "immutable_launch_artifact"
+    ]
+  },
+  "design": {
+    "pack_count": 8,
+    "proposed_assignment_count": 24,
+    "lanes": [
+      {
+        "code": "R1",
+        "role": "RECONNAISSANCE",
+        "external_sources": "PROTECTED_PACKET_ONLY",
+        "timebox_minutes": 35
+      },
+      {
+        "code": "S1",
+        "role": "SOURCE_AUDIT",
+        "external_sources": "PRIMARY_SOURCES_REQUIRED",
+        "timebox_minutes": 35
+      },
+      {
+        "code": "A1",
+        "role": "ADVERSARIAL",
+        "external_sources": "PROTECTED_PACKET_ONLY",
+        "timebox_minutes": 35
+      }
+    ],
+    "blind_until_preserved": true,
+    "synthesis_minimum": [
+      "R1",
+      "A1"
+    ],
+    "source_lane_required_for_literature_dependent_promotion": true
+  },
+  "packs": [
+    {
+      "problem_id": "99",
+      "title": "Minimum-diameter point sets and equilateral forcing",
+      "prize": "$100",
+      "tags": [
+        "geometry",
+        "distances"
+      ],
+      "pack_id": "ERDOS-99-RECON-PACK-001",
+      "path": "handoffs/ERDOS-OPEN-001/packs/ERDOS-99.md",
+      "git_blob_sha1": "a30e3916c1036f1c1a9ec8fb23d44418b28a159e",
+      "formal_statement": {
+        "path": "FormalConjectures/ErdosProblems/99.lean",
+        "git_blob_sha1": "85b244eee4c29defd38c93ab559de6d9e8d4cfa8"
+      },
+      "proposed_assignments": [
+        "ERDOS-99-R1",
+        "ERDOS-99-S1",
+        "ERDOS-99-A1"
+      ],
+      "execution_authorized": false
+    },
+    {
+      "problem_id": "101",
+      "title": "Four-point lines with no five collinear",
+      "prize": "$100",
+      "tags": [
+        "geometry"
+      ],
+      "pack_id": "ERDOS-101-RECON-PACK-001",
+      "path": "handoffs/ERDOS-OPEN-001/packs/ERDOS-101.md",
+      "git_blob_sha1": "f54efb1c6f1bf43ff92ce8c4d2921bec870bc1d9",
+      "formal_statement": {
+        "path": "FormalConjectures/ErdosProblems/101.lean",
+        "git_blob_sha1": "313c56bacb6d86793269fa968542da35cfda2234"
+      },
+      "proposed_assignments": [
+        "ERDOS-101-R1",
+        "ERDOS-101-S1",
+        "ERDOS-101-A1"
+      ],
+      "execution_authorized": false
+    },
+    {
+      "problem_id": "138",
+      "title": "Root growth of van der Waerden numbers",
+      "prize": "$500",
+      "tags": [
+        "additive combinatorics"
+      ],
+      "pack_id": "ERDOS-138-RECON-PACK-001",
+      "path": "handoffs/ERDOS-OPEN-001/packs/ERDOS-138.md",
+      "git_blob_sha1": "fa3e80bc86d5863abc15b5de8a36da932b1842dd",
+      "formal_statement": {
+        "path": "FormalConjectures/ErdosProblems/138.lean",
+        "git_blob_sha1": "061c7b62abe53b0db18a3d795b8e71ea4efc70c0"
+      },
+      "proposed_assignments": [
+        "ERDOS-138-R1",
+        "ERDOS-138-S1",
+        "ERDOS-138-A1"
+      ],
+      "execution_authorized": false
+    },
+    {
+      "problem_id": "241",
+      "title": "Bose–Chowla B3 extremal asymptotics",
+      "prize": "$100",
+      "tags": [
+        "additive combinatorics",
+        "sidon sets"
+      ],
+      "pack_id": "ERDOS-241-RECON-PACK-001",
+      "path": "handoffs/ERDOS-OPEN-001/packs/ERDOS-241.md",
+      "git_blob_sha1": "f9ceb85c7e7ffd8f8ad5a192996474bf6de61a8c",
+      "formal_statement": {
+        "path": "FormalConjectures/ErdosProblems/241.lean",
+        "git_blob_sha1": "8e462d92fcd1e87cb8b211bc8ceaee42ae60a089"
+      },
+      "proposed_assignments": [
+        "ERDOS-241-R1",
+        "ERDOS-241-S1",
+        "ERDOS-241-A1"
+      ],
+      "execution_authorized": false
+    },
+    {
+      "problem_id": "470",
+      "title": "Odd and primitive weird numbers",
+      "prize": "$10",
+      "tags": [
+        "number theory",
+        "divisors"
+      ],
+      "pack_id": "ERDOS-470-RECON-PACK-001",
+      "path": "handoffs/ERDOS-OPEN-001/packs/ERDOS-470.md",
+      "git_blob_sha1": "2ff883866b35bfbf58b1ab8e90c1e56272bfebcc",
+      "formal_statement": {
+        "path": "FormalConjectures/ErdosProblems/470.lean",
+        "git_blob_sha1": "901267a999167143f9eb708ecda9adb9c64fe5dc"
+      },
+      "proposed_assignments": [
+        "ERDOS-470-R1",
+        "ERDOS-470-S1",
+        "ERDOS-470-A1"
+      ],
+      "execution_authorized": false
+    },
+    {
+      "problem_id": "593",
+      "title": "Obligatory finite 3-uniform hypergraphs",
+      "prize": "$500",
+      "tags": [
+        "set theory",
+        "graph theory",
+        "hypergraphs",
+        "chromatic number"
+      ],
+      "pack_id": "ERDOS-593-RECON-PACK-001",
+      "path": "handoffs/ERDOS-OPEN-001/packs/ERDOS-593.md",
+      "git_blob_sha1": "8c30b16aee76be91842d8d1c40de5568cb281b38",
+      "formal_statement": {
+        "path": "FormalConjectures/ErdosProblems/593.lean",
+        "git_blob_sha1": "fe5872380f07a2989c8a25ba44f4b29bb5d65dd7"
+      },
+      "proposed_assignments": [
+        "ERDOS-593-R1",
+        "ERDOS-593-S1",
+        "ERDOS-593-A1"
+      ],
+      "execution_authorized": false
+    },
+    {
+      "problem_id": "595",
+      "title": "Infinite K4-free graph versus countable triangle-free covers",
+      "prize": "$250",
+      "tags": [
+        "graph theory",
+        "set theory"
+      ],
+      "pack_id": "ERDOS-595-RECON-PACK-001",
+      "path": "handoffs/ERDOS-OPEN-001/packs/ERDOS-595.md",
+      "git_blob_sha1": "d90f1e3b1c25515ff42e1d32023e544430b32a4d",
+      "formal_statement": {
+        "path": "FormalConjectures/ErdosProblems/595.lean",
+        "git_blob_sha1": "c7ae92d69247ed107099978b9c7bce2cc319af76"
+      },
+      "proposed_assignments": [
+        "ERDOS-595-R1",
+        "ERDOS-595-S1",
+        "ERDOS-595-A1"
+      ],
+      "execution_authorized": false
+    },
+    {
+      "problem_id": "1052",
+      "title": "Finiteness of unitary perfect numbers",
+      "prize": "$10",
+      "tags": [
+        "number theory"
+      ],
+      "pack_id": "ERDOS-1052-RECON-PACK-001",
+      "path": "handoffs/ERDOS-OPEN-001/packs/ERDOS-1052.md",
+      "git_blob_sha1": "c89aa150afca824ac3a1ccf211ed3e05d5ea521d",
+      "formal_statement": {
+        "path": "FormalConjectures/ErdosProblems/1052.lean",
+        "git_blob_sha1": "7cad758989e63bf21308e2738e2a1b2bd1730d70"
+      },
+      "proposed_assignments": [
+        "ERDOS-1052-R1",
+        "ERDOS-1052-S1",
+        "ERDOS-1052-A1"
+      ],
+      "execution_authorized": false
+    }
+  ],
+  "claim_boundary": "These are staged bounded work-package designs. They do not activate contributors, launch campaigns, prove open status, promote mathematical claims, establish novelty, or authorize certification."
+}

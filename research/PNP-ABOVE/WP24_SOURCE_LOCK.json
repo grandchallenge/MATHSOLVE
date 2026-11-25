@@ -1,0 +1,59 @@
+{
+  "modules": {
+    "WP24CNF.lean": {
+      "git_blob": "6b06d04ce46456097d51d7f33318ef9f5261c2b1",
+      "path": "research/PNP-ABOVE/WP24_3CNF.lean",
+      "sha256": "2c8429ec23c8457590dcf591ac9ac5515f5b4abe60e3938bf77013bd6a9e1aca",
+      "theorems": [
+        "literalFormula_correct",
+        "clauseFormula_correct",
+        "from3CNF_correct",
+        "original_3CNF_sat_iff",
+        "literalFormula_inputs",
+        "clauseFormula_inputs",
+        "from3CNF_inputs",
+        "literalFormula_size",
+        "clauseFormula_size",
+        "from3CNF_size",
+        "from3CNF_circuit_wellFormed",
+        "from3CNF_circuit_size",
+        "from3CNF_circuit_correct",
+        "original_3CNF_perfectPCC_iff_sat"
+      ]
+    },
+    "WP24Examples.lean": {
+      "git_blob": "6d5ab39e587c3527d0c940f873a2fbf8334b0bcd",
+      "path": "research/PNP-ABOVE/WP24_Examples.lean",
+      "sha256": "9e63ee68a68ef3abdc7571092a15a01a2acd774558c600607599f9056ae32d0e",
+      "theorems": [
+        "impossible_unsat",
+        "possible_sat",
+        "impossible_quantum_zero",
+        "possible_quantum_one",
+        "sat_instance_changes_quantum_value"
+      ]
+    },
+    "WP24SATGame.lean": {
+      "git_blob": "35fe448b911f93573670fce0a1a638e99eacd7bd",
+      "path": "research/PNP-ABOVE/WP24_SATGame.lean",
+      "sha256": "054757c3581bd1e7917d46f83886188fcd8bf74c186d80c60020d4a4fc42de71",
+      "theorems": [
+        "bitsAt_fin",
+        "accepts_iff",
+        "exists_accepted_iff_sat",
+        "perfectPCC_of_sat",
+        "quantum_zero_of_unsat",
+        "quantum_one_of_sat",
+        "quantum_value_eq_one_iff_sat",
+        "perfectPCC_iff_sat",
+        "soundness_half_of_unsat",
+        "uniformCircuit_correct",
+        "uniformCircuit_polytime"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP24-SOURCE-LOCK/1",
+  "source_protected_parent": "442cef7f7b5c18afffa132ae5eba01087ba7cdea",
+  "theorem_count": 30
+}

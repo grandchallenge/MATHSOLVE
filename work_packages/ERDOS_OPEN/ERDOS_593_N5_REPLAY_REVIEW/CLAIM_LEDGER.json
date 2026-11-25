@@ -1,0 +1,35 @@
+{
+  "record_type": "GCL_ERDOS_593_REVIEW_CLAIM_LEDGER",
+  "claims": [
+    {
+      "claim_id": "593-N5-C1",
+      "statement": "The pinned source project builds and the 17 named axiom reports use only the standard allowlist.",
+      "support": "593-build-resumed.log; 593-axioms.log",
+      "status": "MECHANICAL_REPLAY_PASSED",
+      "claim_promotion": false
+    },
+    {
+      "claim_id": "593-N5-C2",
+      "statement": "The formal bridge preserves universe-0 host colourability, embeddings and obligatoriness, and every finite protected source has a round-tripping source representation.",
+      "support": "SourceTargetBridge.lean; 593-source-target-bridge.log",
+      "status": "FORMAL_CANDIDATE_PASSED",
+      "claim_promotion": false
+    },
+    {
+      "claim_id": "593-N5-C3",
+      "statement": "The protected-definition Property-B sufficient-direction predicate has the displayed formal counterexample under the pinned source classifier.",
+      "support": "GCLSourceTargetBridge.protected_conjectural_sufficient_direction_false",
+      "status": "FORMAL_CANDIDATE_PASSED",
+      "claim_promotion": false
+    },
+    {
+      "claim_id": "593-N5-C4",
+      "statement": "The source Bclass/intrinsic characterization faithfully answers the historical Erd\u0151s-593 question.",
+      "support": "Pinned source plus proposed semantic correspondence",
+      "status": "SPECIALIST_SEMANTIC_REVIEW_PENDING",
+      "claim_promotion": false
+    }
+  ],
+  "mathematical_certification": false,
+  "source_attribution": "Eric Li; arXiv:2606.24882v2; no GCL priority claim"
+}

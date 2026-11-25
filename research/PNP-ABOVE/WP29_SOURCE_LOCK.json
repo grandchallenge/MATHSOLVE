@@ -1,0 +1,46 @@
+{
+  "modules": {
+    "WP29CNF.lean": {
+      "git_blob": "eae112e069d56eeb7a18d30bd2ab700243077712",
+      "path": "research/PNP-ABOVE/WP29_Explicit3CNF.lean",
+      "sha256": "5195fbd0076861bef3b17cac9227068467641cc7c81e381602dc383d36204c68",
+      "theorems": [
+        "literalProgram_correct",
+        "clauseProgram_correct",
+        "formulaProgram_correct",
+        "formulaProgram_polynomial",
+        "formulaProgram_closed",
+        "literal_sound",
+        "clause_sound",
+        "formula_sound",
+        "fromOriginalLit_sound",
+        "fromOriginalClause_sound",
+        "originalFinite3CNF_correct",
+        "originalFinite3CNF_sat_iff",
+        "native3CNF_sat_equivalence",
+        "source3CNFIndexProgram_correct",
+        "source3CNFIndex_bit_length",
+        "source3CNFIndex_roundtrip",
+        "source3CNFIndex_polytime",
+        "source3CNFIndex_closed",
+        "literal_inputs",
+        "originalClause_inputs",
+        "original3CNF_scoped",
+        "source3CNFIndex_binary_size_bound",
+        "literal_gate_bound",
+        "clause_gate_bound",
+        "formula_gate_bound",
+        "formula_gate_lower",
+        "source3CNFIndex_numeric_exponential_lower",
+        "native3CNFValStar_one_of_sat",
+        "native3CNFValStar_zero_of_unsat",
+        "conditionalClassicalSATTransfer",
+        "conditionalClassicalSATPolytime"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP29-SOURCE-LOCK/1",
+  "source_protected_parent": "9bdf8c4893f8eebfe551b092e1322db7a334541a",
+  "theorem_count": 31
+}

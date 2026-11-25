@@ -68,7 +68,7 @@ class IndependentContributionPilotTest(unittest.TestCase):
         root = self.make_root()
         path = root / WORKFLOW
         text = path.read_text(encoding="utf-8").replace(
-            "group: ns-ci-contribution-intake-${{ github.event.issue.number }}",
+            "group: ns-ci-contribution-intake-${{ github.event.issue.number || inputs.issue_number }}",
             "group: ns-ci-contribution-intake-${{ github.event.comment.id }}",
         )
         path.write_text(text, encoding="utf-8")
@@ -97,6 +97,35 @@ class IndependentContributionPilotTest(unittest.TestCase):
             encoding="utf-8",
         )
         self.assertTrue(any("missing control" in item for item in validate(root)))
+
+    def test_exact_comment_replay_surface_is_required(self) -> None:
+        root = self.make_root()
+        path = root / WORKFLOW
+        text = path.read_text(encoding="utf-8").replace("  workflow_dispatch:\n", "  replay_disabled:\n", 1)
+        path.write_text(text, encoding="utf-8")
+        self.assertTrue(any("missing control" in item for item in validate(root)))
+
+    def test_cmdg_sep2_router_is_required(self) -> None:
+        root = self.make_root()
+        path = root / WORKFLOW
+        text = path.read_text(encoding="utf-8").replace(
+            "       startsWith(github.event.issue.title, '[GCL-CONTRIB] CMDG-P3M-SEP CMDG-P3M-SEP2-') ||\n",
+            "",
+        )
+        path.write_text(text, encoding="utf-8")
+        self.assertTrue(any("missing control" in item for item in validate(root)))
+
+    def test_rwp003_worker_result_has_automatic_intake_wake(self) -> None:
+        workflow = (ROOT / WORKFLOW).read_text(encoding="utf-8")
+        self.assertIn(
+            "startsWith(github.event.issue.title, '[GCL-CONTRIB] RWP-003-NSPHERE-IA-001 ')",
+            workflow,
+        )
+        self.assertIn(
+            "startsWith(github.event.comment.body, 'GCL-CONTRIBUTION-RESULT/1')",
+            workflow,
+        )
+        self.assertIn("  workflow_dispatch:", workflow)
 
     def test_workflow_auto_merge_surface_is_rejected(self) -> None:
         root = self.make_root()

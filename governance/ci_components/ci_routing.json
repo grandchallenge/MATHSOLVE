@@ -1,0 +1,21 @@
+{
+  "contract_id": "GCL-CIR-001",
+  "version": "1.0.0",
+  "component_id": "ci_routing",
+  "owner": "MATHSOLVE CI engineering",
+  "paths": {
+    "exact": [
+      "tests/test_lean_ci_integrity.py"
+    ],
+    "prefixes": [
+      "governance/ci_routing/"
+    ],
+    "test_prefixes": [
+      "tests/test_gcl_component_"
+    ]
+  },
+  "depends_on": [],
+  "checks": [
+    "solve-ledgers-native"
+  ]
+}

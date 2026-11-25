@@ -1,0 +1,83 @@
+{
+  "campaign_id": "OPENMATH-2026",
+  "cases": [
+    {
+      "additional_fixed_event_changes": [],
+      "case_id": "W94-V1-ADJACENT-VERTEX",
+      "gcl_exact_replay": {
+        "remaining_target_blockers": [14],
+        "score": 90,
+        "target_crossing_signs_after": [-1, -1, -1]
+      },
+      "moving_line": 11,
+      "required_target_vertex_flip": [0, 4],
+      "target_support_triple": [0, 4, 6],
+      "wolfram_operation": "FindInstance[linear exact sign-cell constraints,{m,b},Rationals,1]",
+      "wolfram_witness": {
+        "b": [-1319176234086906809729, 412682463781549027536],
+        "integer_line": [1471608507517992495822258, 2888777246470843192752000, 9234233638608347668103],
+        "m": [-245268084586332082637043, 481462874411807198792]
+      }
+    },
+    {
+      "additional_fixed_event_changes": [
+        {"kind": "vertex", "new_sign": 1, "object": [8, 17], "seed_sign": -1}
+      ],
+      "case_id": "W94-V2-VERTEX-PLUS-VERTEX",
+      "gcl_exact_replay": {
+        "remaining_target_blockers": [11],
+        "score": 87,
+        "target_crossing_signs_after": [1, 1, 1]
+      },
+      "moving_line": 14,
+      "required_target_vertex_flip": [4, 6],
+      "target_support_triple": [0, 4, 6],
+      "wolfram_operation": "FindInstance[linear exact sign-cell constraints,{m,b},Rationals,1]",
+      "wolfram_witness": {
+        "b": [138361033570464157, 11141564586657372],
+        "integer_line": [14940741651588502105, 11141564586657372000, -138361033570464157],
+        "m": [-14940741651588502105, 11141564586657372]
+      }
+    },
+    {
+      "additional_fixed_event_changes": [
+        {"kind": "parallel", "new_sign": 1, "object": [7], "seed_sign": 0}
+      ],
+      "case_id": "W94-V3-VERTEX-PLUS-PARALLEL-RELEASE",
+      "gcl_exact_replay": {
+        "remaining_target_blockers": [11],
+        "score": 90,
+        "target_crossing_signs_after": [-1, -1, -1]
+      },
+      "moving_line": 6,
+      "required_target_vertex_flip": [0, 14],
+      "target_support_triple": [0, 4, 14],
+      "wolfram_operation": "FindInstance[linear exact sign-cell constraints,{m,b},Rationals,1]",
+      "wolfram_witness": {
+        "b": [-175402603, 851916],
+        "integer_line": [281558238, -851916000, -175402603],
+        "m": [661, 2]
+      }
+    }
+  ],
+  "claim_boundary": "Wolfram confirms existence of selected exact semialgebraic cells. The witnessed cells do not improve the 93 construction. No infeasibility, upper-bound, optimality, or certification claim follows.",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-14",
+  "paired_validation": {
+    "cases": ["W94-V1-ADJACENT-VERTEX", "W94-V2-VERTEX-PLUS-VERTEX"],
+    "gcl_exact_pair_score": 86,
+    "remaining_target_blockers": [],
+    "target_support_triple": [0, 4, 6]
+  },
+  "provider": "Wolfram Language hosted connector",
+  "raw_coupled_attempt": {
+    "governance_effect": "NONE",
+    "interpretation": "Infrastructure/tooling failure only; not infeasibility evidence.",
+    "question": "Find one four-variable real instance preserving all 93 seed faces and adding a selected 94th face.",
+    "result": "HOSTED_KERNEL_TOOL_FAILURE__RECOVERED_BY_EVENT_CELL_DECOMPOSITION"
+  },
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-14-WOLFRAM-VALIDATION",
+  "schema_version": "1.0.0",
+  "scope": "Independent semialgebraic feasibility cross-check of selected exact dual-event cells. Wolfram is proposal/validation support, not MATHCERT authority.",
+  "seed_sha256": "e606799ad6c1296deedb475440d1eecbe86daba8a3af625718f55726f93da4d5"
+}

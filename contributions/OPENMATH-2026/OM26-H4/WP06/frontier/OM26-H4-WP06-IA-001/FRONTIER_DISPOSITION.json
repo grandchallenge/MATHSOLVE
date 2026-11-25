@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "OPENMATH_FRONTIER_DISPOSITION",
+  "campaign": "OPENMATH-2026",
+  "hill": "OM26-H4",
+  "assignment_id": "OM26-H4-WP06",
+  "dispatch_id": "OM26-H4-WP06-IA-001",
+  "declared_result": "EXACT_BLOCKER",
+  "evidence_acceptance": "ACCEPTED_EVIDENCE_WITHOUT_CLAIM_PROMOTION",
+  "claim_effect": "NONE",
+  "frontier_action": "SOURCE_BLOCKED",
+  "blocker": [
+    "Exact canonical serialization for nonempty rule/catalog objects is absent from the protected packet.",
+    "Exact evaluator contraction-margin function, ordering and tie semantics are absent from the protected packet."
+  ],
+  "successor": null,
+  "reopen_condition": "Protect the missing serialization and contraction-margin semantics, then replay only the blocked digest and margin checks.",
+  "event_window_terminal": true
+}

@@ -92,9 +92,11 @@ def validate() -> list[str]:
                 commit, url_path = match.groups()
                 if commit != script.get("task_commit") or url_path != rel:
                     errors.append(f"{hill}: task URL identity mismatch")
-        elif item.get("state") == "ACCEPTED":
+        elif item.get("state") in {"ACCEPTED", "SUPERSEDED"}:
+            if script.get("executable") is not False:
+                errors.append(f"{hill}: terminal task remains executable")
             if item.get("lifecycle", {}).get("closed") is not True:
-                errors.append(f"{hill}: accepted current assignment is not closed")
+                errors.append(f"{hill}: terminal current assignment is not closed")
         else:
             errors.append(f"{hill}: unsupported current assignment state {item.get('state')}")
 
@@ -128,6 +130,11 @@ def validate() -> list[str]:
                 errors.append(f"{slot}: supporting task URL identity mismatch")
             if script.get("intended_return") != lease.get("return_url"):
                 errors.append(f"{slot}: supporting return mismatch")
+        elif item.get("state") == "SUPERSEDED":
+            if script.get("executable") is not False:
+                errors.append(f"{slot}: terminal supporting task remains executable")
+            if item.get("lifecycle", {}).get("closed") is not True:
+                errors.append(f"{slot}: terminal supporting task is not closed")
         else:
             errors.append(f"{slot}: unsupported supporting state")
 

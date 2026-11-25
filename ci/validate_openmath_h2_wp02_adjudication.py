@@ -130,17 +130,36 @@ def main() -> int:
     assert wp02["lease"]["state"] == "CLOSED_AFTER_RETURN"
     assert wp02["lease"]["execution_authorized"] is False
     assert wp02["lifecycle"]["adjudication"] == "ACCEPTED_WITNESSES_WITH_EXACT_SEARCH_REPLAY_REJECTED"
-    assert wp03["state"] == "LEASED_NOT_LAUNCHED"
+    # WP03's original dispatch is immutable; its current assignment is no
+    # longer an unlaunched lease. Check the accepted return and the later
+    # authoritative successor separately from the historical receipt below.
+    assert wp03["state"] == "ACCEPTED"
     assert wp03["lease"]["protected_lease_merge"] == "208fa322f52d06eb7f9b6affff0f359217a5118e"
     assert wp03["lease"]["readback_verified"] is True
-    assert wp03["lease"]["execution_authorized"] is True
-    assert wp03["lifecycle"]["launched"] is False
+    assert wp03["lease"]["execution_authorized"] is False
+    assert wp03["lifecycle"]["launched"] is True
+    assert wp03["lifecycle"]["closed"] is True
+    assert "| `OM26-H2-WP03` | `OM26-H2` | `ACCEPTED` |" in board
+
     lane = next(x for x in lanes["hills"] if x["hill_slot"] == "OM26-H2")
-    assert lane["active_lease"]["assignment_id"] == "OM26-H2-WP03"
-    assert lane["active_lease"]["lifecycle_state"] == "LEASED_NOT_LAUNCHED"
-    assert lane["predecessor_lease"]["assignment_id"] == "OM26-H2-WP02"
-    assert lane["predecessor_lease"]["lifecycle_state"] == "ACCEPTED"
-    assert "| `OM26-H2-WP03` | `OM26-H2` | `LEASED_NOT_LAUNCHED` |" in board
+    active = lane["active_lease"]
+    predecessor = lane["predecessor_lease"]
+    current = assignments[active["assignment_id"]]
+    previous = assignments[predecessor["assignment_id"]]
+    assert current["hill"] == previous["hill"] == "OM26-H2"
+    assert previous["state"] == predecessor["lifecycle_state"] == "ACCEPTED"
+    assert previous["lifecycle"]["closed"] is True
+    for lane_entry, assignment in ((active, current), (predecessor, previous)):
+        assert lane_entry["dispatch_id"] == assignment["lease"]["dispatch_id"]
+        assert lane_entry["agent_ref"] == assignment["lease"]["agent_ref"]
+    assert active["lifecycle_state"] == "SUPERSEDED_RESEARCH_RESET"
+    assert current["state"] == "SUPERSEDED"
+    assert current["lease"]["state"] == "CLOSED_RESEARCH_RESET"
+    assert current["lifecycle"]["closed"] is True
+    policy = registry["mathematics_release_policy"]["per_hill"]["OM26-H2"]
+    assert policy["assignment"] == active["assignment_id"]
+    assert policy["predecessor"]["assignment"] == predecessor["assignment_id"]
+    assert f"| `{active['assignment_id']}` | `OM26-H2` | `{current['state']}` |" in board
 
     assert receipt["state"] == "CLOSED__SOLVE_ADJUDICATION_PROTECTED__SUCCESSOR_ACTIVE"
     assert receipt["adjudication"]["protected_merge"] == "208fa322f52d06eb7f9b6affff0f359217a5118e"

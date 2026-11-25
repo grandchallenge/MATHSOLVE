@@ -1,5 +1,20 @@
 # RH-R071-LIMIT-IDENTIFICATION-001
 
+
+> **RH-R077 CORRECTION NOTICE.** The claimed conditional C5 discharge in this
+> historical package is withdrawn. Compact-open convergence on
+> \(|\operatorname{Im}z|<1/2\) does not preserve the boundary value at
+> \(i/2\), so an arbitrary interior limit cannot be assigned
+> \(\Phi(i/2)=1\). In addition, the displayed proof of the normalized
+> substrip transfer uses an anchor-denominator error at height \(1/2\),
+> whose raw R053 scale is \(O(\lambda^{1/2})\); it does not yield the claimed
+> \(O(\lambda^\delta)\) bound for \(\delta<1/2\) without an additional
+> projective normalization theorem. RH-R077 replaces this with a
+> scale-free projective-measure interface and a non-escape + real-interval
+> identification theorem. See
+> work_packages/RH_R077_PROJECTIVE_MEASURE_REPAIR.md.
+
+
 Campaign: RH-001
 
 Route: Forward Route C — determinant convergence to Xi

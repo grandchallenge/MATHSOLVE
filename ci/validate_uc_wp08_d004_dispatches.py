@@ -90,8 +90,8 @@ def main() -> int:
             for dispatch_id in EXPECTED
         ]
         if all(status == "READY_FOR_GITHUB_COMMENT" for status in statuses):
-            if registry.get("state") != "ACTIVE_EXTERNAL_EVIDENCE":
-                errors.append("active dispatches require ACTIVE_EXTERNAL_EVIDENCE registry state")
+            if registry.get("state") not in {"ACTIVE_EXTERNAL_EVIDENCE", "EVIDENCE_COMPLETE_SYNTHESIS_OPEN"}:
+                errors.append("active dispatches require a registered UC-D004 lifecycle state")
             receipt_path = BASE / "ACTIVATION_RECEIPT.json"
             if not receipt_path.is_file():
                 errors.append("active dispatches require activation receipt")
@@ -133,10 +133,55 @@ def main() -> int:
             errors.append("blind cohort membership drift")
         if c.get("cross_disclosure_before_closure") is not False:
             errors.append("blind cohort cross-disclosure must be false")
-        if c.get("synthesis_allowed") is not False:
-            errors.append("blind cohort synthesis must remain false before closure")
-        if c.get("state") not in {"PREPARED_PENDING_GITHUB_ISSUE_BINDING", "OPEN_AWAITING_RESULTS"}:
+        state = c.get("state")
+        if state not in {"PREPARED_PENDING_GITHUB_ISSUE_BINDING", "OPEN_AWAITING_RESULTS", "CLOSED_EVIDENCE_COMPLETE"}:
             errors.append("blind cohort state drift")
+        if state == "CLOSED_EVIDENCE_COMPLETE":
+            if c.get("synthesis_allowed") is not True:
+                errors.append("closed evidence-complete cohort must allow synthesis")
+            closure_path = BASE / "COHORT_CLOSURE_RECEIPT.json"
+            if not closure_path.is_file():
+                errors.append("closed cohort requires closure receipt")
+            else:
+                closure = json.loads(closure_path.read_text())
+                if closure.get("protected_evidence_base_commit") != "4504220dbb33e01038854ceb7fdd869eecf7e4cd":
+                    errors.append("cohort closure evidence checkpoint drift")
+                if closure.get("all_blind_returns_protected") is not True:
+                    errors.append("closure receipt must bind all blind returns")
+                if closure.get("adversarial_return_protected") is not True:
+                    errors.append("closure receipt must bind adversarial return")
+                if closure.get("synthesis_allowed") is not True:
+                    errors.append("closure receipt must open synthesis")
+                if closure.get("mathematical_correctness_adjudicated") is not False:
+                    errors.append("cohort closure may not adjudicate mathematics")
+                evidence = {
+                    item.get("dispatch_id"): item
+                    for item in closure.get("evidence", [])
+                    if isinstance(item, dict)
+                }
+                for dispatch_id in EXPECTED:
+                    item = evidence.get(dispatch_id)
+                    if item is None:
+                        errors.append(f"{dispatch_id}: missing closure evidence binding")
+                        continue
+                    raw_path = ROOT / item.get("raw_artifact_path", "")
+                    receipt_path = ROOT / item.get("receipt_path", "")
+                    if not raw_path.is_file() or not receipt_path.is_file():
+                        errors.append(f"{dispatch_id}: closure evidence artifact missing")
+                        continue
+                    receipt = json.loads(receipt_path.read_text())
+                    if receipt.get("dispatch_id") != dispatch_id:
+                        errors.append(f"{dispatch_id}: closure receipt dispatch mismatch")
+                    if receipt.get("schema_result") != "valid":
+                        errors.append(f"{dispatch_id}: protected result schema is not valid")
+                    if receipt.get("freshness") != "current_for_dispatch":
+                        errors.append(f"{dispatch_id}: protected result is stale")
+                    if receipt.get("handling_state") != "received_unadjudicated":
+                        errors.append(f"{dispatch_id}: protected result handling state drift")
+                    if receipt.get("canonical_claim_effect") is not False:
+                        errors.append(f"{dispatch_id}: closure cannot create canonical claim effect")
+        elif c.get("synthesis_allowed") is not False:
+            errors.append("blind cohort synthesis must remain false before closure")
 
     if errors:
         for e in errors:

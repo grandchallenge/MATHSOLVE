@@ -1,6 +1,6 @@
 {
   "record_type": "OPENMATH_EVENT_WINDOW_ACTIVATION",
-  "state": "PINNED_READY_AFTER_PROTECTED_MERGE",
+  "state": "TERMINALIZED_RESEARCH_RESET",
   "source_head": "36b7c79bebd42fde17ea9f0f809406fb55e093f9",
   "prepared_packet_commit": "23f49a75550ce130d83ecd09ae3120c82d3ca05d",
   "retired": [
@@ -222,5 +222,18 @@
   ],
   "claim_effect": "NONE",
   "worker_launches": 0,
-  "content_commit": "4f1b6a1500e18fc53bae135ae6713e7abb126ae4"
+  "content_commit": "4f1b6a1500e18fc53bae135ae6713e7abb126ae4",
+  "terminalization": {
+    "id": "OPENMATH-2026-EVENT-WINDOW-TERMINAL-001",
+    "cutoff_local": "2026-10-02T21:00:00-07:00",
+    "cutoff_utc": "2026-10-03T04:00:00Z",
+    "official_submissions": 0,
+    "official_acceptances": 0,
+    "retained_assignments": 9,
+    "open_replay_leases_retired": 8,
+    "returned_before_terminalization_preserved": [
+      "OM26-H4-WP06-IA-001"
+    ],
+    "promoted_campaign": "GCL-ERDOS3"
+  }
 }

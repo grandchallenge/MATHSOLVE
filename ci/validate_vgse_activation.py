@@ -20,7 +20,8 @@ HANDOFF_DIR = ROOT / "cert_handoffs"
 VGSE_ID = "VGSE-001"
 EUCLID_ID = "EUCLID-GCD-E2E-001"
 DIO_ID = "EUCLID-DIOPHANTINE-E2E-002"
-SUCCESSOR_IDS = {VGSE_ID, EUCLID_ID, DIO_ID}
+ERDOS_ID = "ERDOS-579-DISPROOF-001"
+SUCCESSOR_IDS = {VGSE_ID, EUCLID_ID, DIO_ID, ERDOS_ID}
 
 OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_vgse_overlay.json"
 OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_vgse_overlay.schema.json"
@@ -28,6 +29,10 @@ EUCLID_OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_euclid_gcd_o
 EUCLID_OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_euclid_gcd_overlay.schema.json"
 DIO_OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_euclid_diophantine_overlay.json"
 DIO_OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_euclid_diophantine_overlay.schema.json"
+ERDOS_OVERLAY_PATH = ROOT / "contracts" / "mathcert_current_routes_erdos_579_overlay.json"
+ERDOS_OVERLAY_SCHEMA_PATH = ROOT / "schemas" / "mathcert_current_routes_erdos_579_overlay.schema.json"
+ERDOS_CERTIFIED_SUCCESSOR_PATH = ROOT / "contracts" / "mathcert_current_routes_erdos_579_certified_successor.json"
+ERDOS_INTERNAL_PROMOTION_PATH = ROOT / "contracts" / "erdos_579_internal_claim_promotion_successor.json"
 
 ADJUDICATED_STATES = {"certified", "qualified", "rejected", "proof_debt"}
 POSITIVE_STATES = {"certified", "qualified"}
@@ -65,7 +70,7 @@ def _coverage_errors() -> list[str]:
     return [] if reference_ids == expected else ["successor-overlay campaign coverage does not match Programme references"]
 
 
-def _overlay_errors(*, overlay_path: Path, schema_path: Path, campaign_id: str, handoff_status: str, predecessor_id: str | None = None) -> list[str]:
+def _overlay_errors(*, overlay_path: Path, schema_path: Path, campaign_id: str, handoff_status: str, predecessor_id: str | None = None, route_registered: bool = False) -> list[str]:
     overlay = load_json(overlay_path)
     errors = schema_errors(overlay, load_json(schema_path), str(overlay_path))
     errors.extend(_ref_errors(overlay.get("base_registry", {}), f"{overlay_path}: base_registry"))
@@ -107,10 +112,10 @@ def _overlay_errors(*, overlay_path: Path, schema_path: Path, campaign_id: str, 
         if handoff_status == "ready" and handoff.get("blockers") != []:
             errors.append(f"{overlay_path}: ready handoff must have no producer blockers")
 
-    if campaign.get("route_registry_entry_present") is not False:
-        errors.append(f"{overlay_path}: absent route cannot be represented as registered")
+    if campaign.get("route_registry_entry_present") is not route_registered:
+        errors.append(f"{overlay_path}: registered-route presence must match exact overlay authority")
     if campaign.get("route_state") != "pending":
-        errors.append(f"{overlay_path}: unregistered route must remain pending")
+        errors.append(f"{overlay_path}: route must remain pending until claim-scoped MATHCERT adjudication")
     if campaign.get("handoff_state") != handoff_status:
         errors.append(f"{overlay_path}: overlay handoff state drift")
     for field in ("mathematical_target_proved", "may_adjudicate", "may_issue_certificate_output"):
@@ -123,9 +128,95 @@ def _overlay_errors(*, overlay_path: Path, schema_path: Path, campaign_id: str, 
     return errors
 
 
+C06_SUCCESSOR_PATH = ROOT / "work_packages" / "VGSE_WP00" / "c06_fixed_boundary_successor.json"
+
+
+def fixed_boundary_successor_errors(record: dict[str, Any] | None = None) -> list[str]:
+    """Check a prospective C06 source-semantic target, not historical Cert authority."""
+    if record is None:
+        if not C06_SUCCESSOR_PATH.is_file():
+            return ["C06 successor record missing"]
+        record = load_json(C06_SUCCESSOR_PATH)
+    errors: list[str] = []
+
+    def at(*keys: str) -> Any:
+        value: Any = record
+        for key in keys:
+            if not isinstance(value, dict):
+                return None
+            value = value.get(key)
+        return value
+
+    def expect(keys: tuple[str, ...], value: Any) -> None:
+        if at(*keys) != value:
+            errors.append("C06 successor " + ".".join(keys) + " mismatch")
+
+    for keys, value in (
+        (("schema_version",), "1.0.0"),
+        (("record_type",), "VGSE_C06_SOURCE_FAITHFUL_SUCCESSOR"),
+        (("successor_id",), "VGSE-C06-FIXED-BOUNDARY-001"),
+        (("campaign_id",), "VGSE-001"),
+        (("predecessor_claim_id",), "VGSE-C06"),
+        (("source_authority", "arxiv_revision"), "2410.09574v2"),
+        (("source_authority", "arxiv_pdf_sha256"), "f5aefb71dd0d662679e85cd0c7f96d1bbbc029a6b5cd2f1cfaa06286cc718e34"),
+        (("source_authority", "source_loci"), ["Appendix B, Proposition B.2", "Appendix B, Example B.3", "Figure 16"]),
+        (("comparison_contract", "gauge"), "same labeled fixed kami-boundary coordinate gauge"),
+        (("comparison_contract", "boundary_reindex_source_1_based"), [1, 6, 5, 4, 3, 2]),
+        (("comparison_contract", "allowed_transformations"), ["permutation_of_five_solution_branches"]),
+        (("comparison_contract", "branch_count"), 5),
+        (("comparison_contract", "branch_bijections_to_test"), 120),
+        (("comparison_contract", "coordinate_units"), "PDF point"),
+        (("comparison_contract", "source_vector_decimal_quantum"), 0.000001),
+        (("comparison_contract", "rounding_half_quantum_per_coordinate"), 0.0000005),
+        (("comparison_contract", "geometric_quotient_group"), None),
+        (("comparison_contract", "post_hoc_equivalence_broadening_allowed"), False),
+        (("admitted_negative_evidence", "fixed_boundary_bijections_exhausted"), 120),
+        (("admitted_negative_evidence", "best_coordinate_mismatch_lower_bound_gt_pdf_point"), 0.001),
+        (("admitted_negative_evidence", "source_coordinate_quantum_pdf_point"), 0.000001),
+        (("admitted_negative_evidence", "visible_graph_weight_bridge", "bridge_to_pinned_C_succeeded"), False),
+        (("disposition", "status"), "BLOCKED_SOURCE_FAITHFUL_MATCH"),
+        (("disposition", "matching_proved"), False),
+        (("disposition", "mathematical_certification_claimed"), False),
+        (("disposition", "source_paper_refuted"), False),
+        (("disposition", "cert_route_promoted"), False),
+        (("disposition", "physical_or_commercial_claim_authorized"), False),
+        (("predecessor_immutability", "historical_claim_text_retained"), True),
+        (("predecessor_immutability", "historical_handoff_rewritten"), False),
+        (("obligation_crosswalk", "historical_claim"), "VGSE-C06"),
+        (("obligation_crosswalk", "historical_solve_proof_obligation"), "VGSE-D05 (semantic correspondence in immutable proof_obligations.json)"),
+    ):
+        expect(keys, value)
+
+    local_refs = (
+        (("source_vector_fixture",), "work_packages/VGSE_WP00/artifacts/data/figure16_source_vectors.json", "8449555b71a38670374f172edd549385c3dda47d"),
+        (("predecessor_immutability", "historical_handoff"), "cert_handoffs/VGSE-001.json", "42cfa84978fd63c75f074b388afd8b1fcbd56091"),
+        (("predecessor_immutability", "historical_claim_ledger"), "work_packages/VGSE_WP00/claim_ledger.json", "a5d9edb3697bfbb5fe26b8dacbda4b2a2debb69f"),
+        (("predecessor_immutability", "historical_proof_obligations"), "work_packages/VGSE_WP00/proof_obligations.json", "f00db211d6e65ff1cd8e9c24f448992101bfd6ca"),
+    )
+    for keys, path, digest in local_refs:
+        expect((*keys, "path"), path)
+        expect((*keys, "git_blob_sha1"), digest)
+        local = ROOT / path
+        if not local.is_file() or git_blob_sha1(local) != digest:
+            errors.append("C06 successor historical/local evidence drift: " + path)
+
+    remote_refs = (
+        (("source_authority", "provider_manifest"), "provider_manifests/VGSE-001.json", "9cb5ac2d92b458f7f63e8a9811448f245a151ddd"),
+        (("source_authority", "source_concordance"), "sources/VGSE-001/source_revision_concordance.json", "6685cd1b0ed4d759f7447fce4b217ef8a59f0f93"),
+        (("source_authority", "arxiv_source_archive_audit"), "sources/VGSE-001/arxiv_v2_source_archive_audit.json", "742a14910b5448d3fd9714434c7c5d0d3f7a61dc"),
+        (("admitted_negative_evidence", "source_equivalence_audit"), "evidence/vgse/VGSE-WP00-CERT-001-source-equivalence-audit.json", "062389091eb1104a3598cfcded786f6cc34ca336"),
+        (("admitted_negative_evidence", "producer_binding"), "evidence/vgse/VGSE-WP00-CERT-001-c06-producer-binding.json", "80ca458063ac2d500a2046f9594e90de0d737f86"),
+        (("admitted_negative_evidence", "visible_graph_weight_bridge"), "work_packages/VGSE_WP00/artifacts/data/figure16_pinned_c_measurement_audit.json", "97f2834d57d8ac9d60544d0f2498aa527aa72422"),
+    )
+    for keys, path, digest in remote_refs:
+        expect((*keys, "path") if keys[-1] != "visible_graph_weight_bridge" else (*keys, "producer_audit_path"), path)
+        expect((*keys, "git_blob_sha1"), digest)
+    return errors
+
+
 def vgse_overlay_errors(*, overlay_path: Path = OVERLAY_PATH, schema_path: Path = OVERLAY_SCHEMA_PATH, manifest_dir: Path = MANIFEST_DIR, handoff_dir: Path = HANDOFF_DIR) -> list[str]:
     del manifest_dir, handoff_dir
-    return _overlay_errors(overlay_path=overlay_path, schema_path=schema_path, campaign_id=VGSE_ID, handoff_status="pending")
+    return _overlay_errors(overlay_path=overlay_path, schema_path=schema_path, campaign_id=VGSE_ID, handoff_status="pending") + fixed_boundary_successor_errors()
 
 
 def euclid_overlay_errors(*, overlay_path: Path = EUCLID_OVERLAY_PATH, schema_path: Path = EUCLID_OVERLAY_SCHEMA_PATH, manifest_dir: Path = MANIFEST_DIR, handoff_dir: Path = HANDOFF_DIR) -> list[str]:
@@ -138,6 +229,52 @@ def diophantine_overlay_errors(*, overlay_path: Path = DIO_OVERLAY_PATH, schema_
     return _overlay_errors(overlay_path=overlay_path, schema_path=schema_path, campaign_id=DIO_ID, handoff_status="ready", predecessor_id=EUCLID_ID)
 
 
+def erdos_overlay_errors(*, overlay_path: Path = ERDOS_OVERLAY_PATH, schema_path: Path = ERDOS_OVERLAY_SCHEMA_PATH) -> list[str]:
+    return _overlay_errors(overlay_path=overlay_path, schema_path=schema_path, campaign_id=ERDOS_ID, handoff_status="pending", predecessor_id=DIO_ID, route_registered=True)
+
+
+
+def erdos_certified_successor_errors(path: Path = ERDOS_CERTIFIED_SUCCESSOR_PATH) -> list[str]:
+    if not path.is_file():return ["Erdős #579 certified successor missing"]
+    data=load_json(path)
+    errors=[]
+    fixed={"schema_version":"1.0.0","overlay_id":"MS-ERDOS-579-CERTIFIED-SUCCESSOR-001","campaign_id":"ERDOS-579-DISPROOF-001","certified_claim_id":"ERDOS-579-C001","certification_level":5,"route_state":"certified","mathematical_target_proved":True,"claim_promotion_eligible":False}
+    for k,v in fixed.items():
+        if data.get(k)!=v:errors.append(f"Erdős certified successor {k} drift")
+    ref=data.get("predecessor",{})
+    if ref!={"path":"contracts/mathcert_current_routes_erdos_579_overlay.json","digest_algorithm":"git_blob_sha1","digest":"e348fceaf4bfcdb9e3606507c21645ac2df16411"}:
+        errors.append("Erdős historical predecessor identity drift")
+    errors+=_ref_errors(ref,"Erdős certified predecessor")
+    if data.get("protected_cert_route")!={'repository': 'grandchallenge/MATHCERT', 'commit_sha': '84f0b27d00a2d1c8d032db469c8229d2611d9a7a', 'path': 'governance/certification_routes.json', 'digest_algorithm': 'git_blob_sha1', 'digest': '7796d00e5189f4f39cc76e6c83883685a66ed5fb'}:errors.append("Erdős protected Cert route exact authority drift")
+    if data.get("certificate_output")!={'repository': 'grandchallenge/MATHCERT', 'commit_sha': 'ec218d87603bfa1ba835369e7006a377d9855c46', 'path': 'certificates/formal_sources/MC-ERDOS-579-LEVEL5-001.json', 'digest_algorithm': 'git_blob_sha1', 'digest': '9edadf6c23810612b44c8ac0e7a0d3ad37a782b5'}:errors.append("Erdős Level 5 certificate exact output drift")
+    if "no sharp density" not in data.get("scope","") or not data.get("limitations"):
+        errors.append("Erdős certified scope and limitations lost")
+    return errors
+
+
+def erdos_internal_promotion_errors(path: Path = ERDOS_INTERNAL_PROMOTION_PATH) -> list[str]:
+    """Exact-scope *internal* promotion; external publication remains out of scope."""
+    if not path.is_file():return ["Erdős 579 internal promotion decision missing"]
+    errors=[]
+    if git_blob_sha1(path)!="12b4f40f4160a0b75c8c5780b43c4c070a92d8a1":errors.append("Erdős internal promotion decision Git blob drift")
+    record=load_json(path)
+    predecessor=record.get("predecessor",{})
+    expected_predecessor={"repository":"grandchallenge/MATHSOLVE","commit_sha":"442cef7f7b5c18afffa132ae5eba01087ba7cdea","path":"contracts/mathcert_current_routes_erdos_579_certified_successor.json","digest_algorithm":"git_blob_sha1","digest":"ea043b822c28f2cb86badca3ec6e3d1ec2208bb0"}
+    if predecessor!=expected_predecessor:errors.append("Erdős internal promotion predecessor identity drift")
+    errors+=_ref_errors(predecessor,"Erdős internal promotion predecessor")
+    protected=load_json(ERDOS_CERTIFIED_SUCCESSOR_PATH)
+    if record.get("certification_route")!=protected.get("protected_cert_route") or record.get("certificate")!=protected.get("certificate_output"):
+        errors.append("Erdős internal promotion certificate or route drift")
+    fixed={"schema_version":"1.0.0","record_id":"MS-ERDOS-579-INTERNAL-CLAIM-PROMOTION-001","decision_scope":"INTERNAL_EXACT_CERTIFIED_DISPROOF_ONLY","decision_lifecycle":"EFFECTIVE_ONLY_AFTER_NONAUTHOR_REVIEW_AND_PROTECTED_MERGE","campaign_id":"ERDOS-579-DISPROOF-001","claim_id":"ERDOS-579-C001","claim_type":"NEGATIVE_RESULT","internal_claim_promotion_eligible":True,"external_publication_authorized":False,"public_certificate_issued":False,"novelty_or_priority_claimed":False,"sharp_extremal_density_claimed":False,"all_in_one_comparator_passed":False,"source_time_manifest_mutated":False,"source_time_claim_ledger_mutated":False}
+    for k,v in fixed.items():
+        if record.get(k)!=v:errors.append(f"Erdős internal promotion {k} status/authority drift")
+    evidence=record.get("evidence",{})
+    if (evidence.get("original_source_sha256"),evidence.get("lean_version"),evidence.get("independent_kernel_replay_decl_count"),set(evidence.get("axioms",[]))) != ("c210bfcb2e4f1d9acf56e210d8800f831868783ff949d964033bb9cda6b684b2","4.33.1",57271,{"propext","Classical.choice","Quot.sound"}):
+        errors.append("Erdős internal promotion source/axiom/replay identity drift")
+    if "delta=3/2048" not in record.get("claim_text","") or not record.get("reopening_conditions"):
+        errors.append("Erdős internal promotion exact statement or reopening conditions lost")
+    return errors
+
 def merged_current_cert_route_errors(registry_path: Path = BASE_REGISTRY_PATH, schema_path: Path = base_routes.SCHEMA_PATH, manifest_dir: Path = MANIFEST_DIR, overlay_path: Path = OVERLAY_PATH, euclid_overlay_path: Path = EUCLID_OVERLAY_PATH, diophantine_overlay_path: Path = DIO_OVERLAY_PATH) -> list[str]:
     original = base_routes.expected_campaigns
     base_routes.expected_campaigns = lambda: original() - SUCCESSOR_IDS
@@ -148,11 +285,16 @@ def merged_current_cert_route_errors(registry_path: Path = BASE_REGISTRY_PATH, s
     errors.extend(vgse_overlay_errors(overlay_path=overlay_path))
     errors.extend(euclid_overlay_errors(overlay_path=euclid_overlay_path))
     errors.extend(diophantine_overlay_errors(overlay_path=diophantine_overlay_path))
+    errors.extend(erdos_overlay_errors())
+    errors.extend(erdos_certified_successor_errors())
+    errors.extend(erdos_internal_promotion_errors())
     return errors
 
 
 def merged_current_route_state(campaign_id: str) -> str:
-    overlays = {VGSE_ID: OVERLAY_PATH, EUCLID_ID: EUCLID_OVERLAY_PATH, DIO_ID: DIO_OVERLAY_PATH}
+    overlays = {VGSE_ID: OVERLAY_PATH, EUCLID_ID: EUCLID_OVERLAY_PATH, DIO_ID: DIO_OVERLAY_PATH, ERDOS_ID: ERDOS_OVERLAY_PATH}
+    if campaign_id == ERDOS_ID:
+        return str(load_json(ERDOS_CERTIFIED_SUCCESSOR_PATH)["route_state"])
     if campaign_id in overlays:
         return str(load_json(overlays[campaign_id])["campaign"]["route_state"])
     return base_routes.current_route_state(campaign_id)
@@ -171,6 +313,20 @@ def merged_provider_gate_errors(campaign_id: str, stage: str, manifest_dir: Path
         return [f"{campaign_id} {stage}: MATHCERT route is not an adjudicated disposition"]
     if stage == "CLAIM_PROMOTION":
         manifest = load_json(manifest_path)
+        # Preserve historical manifest and expose an independently reviewed
+        # internal claim decision only for this exact certified negative result.
+        if campaign_id == ERDOS_ID:
+            if route_state not in POSITIVE_STATES:
+                return ["Erdős internal promotion requires certified route"]
+            errors = erdos_internal_promotion_errors()
+            if errors:
+                return errors
+            # This internal claim promotion release must itself receive fresh
+            # independent non-author review on this exact material head and
+            # protected admission. Repository rulesets have 0 required reviews:
+            # do NOT enable auto-merge; check authenticated review ID and SHA
+            # manually before the protected merge and then read back.
+            return []
         if not manifest.get("promotion", {}).get("eligible"):
             return [f"{campaign_id} {stage}: manifest is not promotion eligible"]
         if route_state not in POSITIVE_STATES:
@@ -182,4 +338,4 @@ if __name__ == "__main__":
     failures = merged_current_cert_route_errors()
     if failures:
         raise SystemExit("\n".join(failures))
-    print("validated historical Cert routes plus bounded VGSE, GCD, and Diophantine successor overlays")
+    print("validated historical Cert routes plus bounded VGSE, GCD, Diophantine, and ERDOS-579 successor overlays")

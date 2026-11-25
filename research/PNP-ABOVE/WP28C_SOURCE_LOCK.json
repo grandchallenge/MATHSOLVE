@@ -1,0 +1,45 @@
+{
+  "modules": {
+    "WP28CCompression.lean": {
+      "git_blob": "8d09ee220999900a816c368bfbb782356f31f3e6",
+      "path": "research/PNP-ABOVE/WP28C_Compression.lean",
+      "sha256": "29cd551b93450af296f672dbdd8169b107de1c643348ccedcfcc9985e99a4f22",
+      "theorems": [
+        "powerIndexedVerifier_synchronous",
+        "powerIndexedVerifier_HasPerfectPCC_of_sat",
+        "powerIndexedVerifier_rejects_all_of_unsat",
+        "powerIndexedVerifier_valStar_zero_of_unsat",
+        "powerIndexedVerifier_valStar_one_of_sat",
+        "powerIndexedVerifier_valStar_one_iff_sat",
+        "powerCompressedPCC_of_sat",
+        "powerCompressedSoundness_of_unsat",
+        "exists_global_lam_and_native_compressor"
+      ]
+    },
+    "WP28CPower.lean": {
+      "git_blob": "ae6cbfccb3e2730f65050d7f0105c547df47144f",
+      "path": "research/PNP-ABOVE/WP28C_PowerIndex.lean",
+      "sha256": "70a9a2c52f5f781f4a2a45ad142fee45399989db2196727c1d15686ad2ce9727",
+      "theorems": [
+        "originalBitLength_correct",
+        "levelIndexProgram_correct",
+        "levelIndexProgram_two_pow",
+        "powerIndexedRawChecker_correct"
+      ]
+    },
+    "WP28CVerifier.lean": {
+      "git_blob": "72be44c0beae21696a76e05f53d2ce6e78d0d187",
+      "path": "research/PNP-ABOVE/WP28C_SourceVerifier.lean",
+      "sha256": "0bb7ed8ae750158997925d5e1d22a864169c047b5677d04733474b7658a4f689",
+      "theorems": [
+        "powerIndexedRawChecker_hasPolyCost",
+        "powerIndexedVerifier_accepts_iff",
+        "powerIndexedVerifier_exists_uniform_lam"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP28C-SOURCE-LOCK/1",
+  "source_protected_parent": "b0e9acce5cffa8aeff5e7a6fd9e7f20970ea9602",
+  "theorem_count": 16
+}

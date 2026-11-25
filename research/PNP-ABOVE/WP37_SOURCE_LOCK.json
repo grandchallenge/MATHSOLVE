@@ -1,0 +1,130 @@
+{
+  "module_order": [
+    "WP37Semantic.lean",
+    "WP37Parity.lean",
+    "WP37Complete.lean",
+    "WP37Affine.lean",
+    "WP37Native.lean",
+    "WP37Transfer.lean",
+    "WP37Star.lean"
+  ],
+  "modules": {
+    "WP37Affine.lean": {
+      "git_blob": "f2398b130910dcde1efa5433d52d8923e94a24e3",
+      "path": "research/PNP-ABOVE/WP37_Affine.lean",
+      "sha256": "69196f082d04e5810bdc4180492dff00f47fe05e0d3395a689a8c8ed2b3df81f",
+      "theorems": [
+        "assignOn_empty",
+        "assignOn_insert",
+        "assignment_support",
+        "flip_law_extensional",
+        "flip_law_iff_affine"
+      ]
+    },
+    "WP37Complete.lean": {
+      "git_blob": "f8b07f52e4d35db4a6ba05e7ef6c47e5f7fb084a",
+      "path": "research/PNP-ABOVE/WP37_Complete.lean",
+      "sha256": "68403019a2873ba4edc661616391b61b6ec81df1952580cade4ed1a286f63c77",
+      "theorems": [
+        "complete_edge_pair",
+        "complete_reachable",
+        "complete_cross_boundary",
+        "complete_boundary_card",
+        "complete_quadratic_width",
+        "complete_unsat",
+        "complete_proper_sat",
+        "complete_parity_obstruction"
+      ]
+    },
+    "WP37Native.lean": {
+      "git_blob": "6f1bc03dc026cf6eb3fd541e2a9481fab8552238",
+      "path": "research/PNP-ABOVE/WP37_Native.lean",
+      "sha256": "98515aacd5809a552507af6e9b762fcb45211da7badc95b22a1c89e57e81e4ed",
+      "theorems": [
+        "xor_bit_eval",
+        "parityBlock_eval",
+        "parityBlock_esize",
+        "edgeIndex_injective",
+        "induced_surjective",
+        "edgeLeaf_eval",
+        "nativeParity_eval",
+        "bit_eq_one",
+        "bit_eq_zero",
+        "nativeConstraint_eval",
+        "nativeConjunction_eval",
+        "nativeSubsys_sat_iff",
+        "native_full_unsat",
+        "native_proper_sat",
+        "edgeLeaf_esize",
+        "nativeParity_esize",
+        "nativeConstraint_esize",
+        "nativeConjunction_esize",
+        "native_full_esize",
+        "native_full_polynomial_esize"
+      ]
+    },
+    "WP37Parity.lean": {
+      "git_blob": "86f9aeddbf2c83e3d1c1475147da77ba85e32d8a",
+      "path": "research/PNP-ABOVE/WP37_Parity.lean",
+      "sha256": "2e63f3e307ec5fbad6bee98a98d1f55e370b4f15228aa9c0629b04b35f6faf2c",
+      "theorems": [
+        "bit_not",
+        "zmod_two_shift",
+        "parity_flip",
+        "parity_flip_law",
+        "parity_total_zero",
+        "odd_charge_unsat",
+        "charge_total",
+        "zero_single_defect",
+        "transport_defect",
+        "defect_at_reachable",
+        "proper_subsystem_sat",
+        "connected_odd_parity_width"
+      ]
+    },
+    "WP37Semantic.lean": {
+      "git_blob": "461c6ad9a67c60b8e37fb73039ec6c41e1d06efc",
+      "path": "research/PNP-ABOVE/WP37_Semantic.lean",
+      "sha256": "c0878db9e047c011b4f275a0742b3ee3dde79f2435bf3c4f63b4c08f6a300e9f",
+      "theorems": [
+        "flip_implies_repair",
+        "clause_repair",
+        "entails_mono",
+        "entails_combine",
+        "minimal_boundary_support",
+        "minimal_witness",
+        "crossing_witness",
+        "no_narrow_semantic_refutation"
+      ]
+    },
+    "WP37Star.lean": {
+      "git_blob": "4f575ee3eceebef8e148fb1b202a30d7111f6a56",
+      "path": "research/PNP-ABOVE/WP37_Star.lean",
+      "sha256": "5b082302d387de5912ceae96244b9cfdeba361edd2622ff70c9d16716616d1e0",
+      "theorems": [
+        "bit_decide_one",
+        "star_nonroot",
+        "star_even_sat",
+        "complete_sat_iff_even"
+      ]
+    },
+    "WP37Transfer.lean": {
+      "git_blob": "40e5be3727b231acaa9ca5eb04bcf56dd7f49e1c",
+      "path": "research/PNP-ABOVE/WP37_Transfer.lean",
+      "sha256": "3cae40f57bba1eccd63cf4b6c9803d408c9358d9a0214edd754139e7a6a46c23",
+      "theorems": [
+        "induced_extend",
+        "preSupport_card",
+        "extend_agreement",
+        "support_pullback",
+        "derivation_pullback",
+        "native_constraints_pullback",
+        "native_semantic_width"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "protected_parent": "2b21e6f87dce49146b4322e0d65ac5a27a0c9423",
+  "schema": "PNP-ABOVE-WP37-SOURCE-LOCK/1",
+  "theorem_count": 64
+}

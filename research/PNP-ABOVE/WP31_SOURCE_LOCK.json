@@ -1,0 +1,25 @@
+{
+  "modules": {
+    "WP31Counting.lean": {
+      "git_blob": "d10c170dae6b8f0de2280986fb8697c155b9edb1",
+      "path": "research/PNP-ABOVE/WP31_EncodingBarrier.lean",
+      "sha256": "4814c0bf7dc406814f475cb52084b5f67fd1b7864bf407fa2a9b2ea9d18544d0",
+      "theorems": [
+        "signedConjunction_injective",
+        "signedConjunction_size_le",
+        "signedConjunction_source_size_le",
+        "formulaFamily_injective",
+        "formulaFamily_source_size_le",
+        "injective_index_exponential",
+        "faithful_index_exponential",
+        "lossless_decoder_exponential",
+        "satisfiableLabel_le_one",
+        "satisfiableLabel_exact"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP31-SOURCE-LOCK/1",
+  "source_protected_parent": "290d2fd2bb5861aaa9155a1549aee4f72946862f",
+  "theorem_count": 10
+}

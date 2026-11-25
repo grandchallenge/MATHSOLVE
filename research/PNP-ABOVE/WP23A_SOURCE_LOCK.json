@@ -1,0 +1,29 @@
+{
+  "schema": "PNP-ABOVE-WP23A-SOURCE-LOCK/1",
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "source_protected_parent": "38e37a53596762757798c75729aaedfef3af1d1f",
+  "modules": {
+    "WP23NativeConst.lean": {
+      "path": "research/PNP-ABOVE/WP23_NativeConst.lean",
+      "sha256": "fa1dc2a8db0c26b2c62dde3468aa681f0dfbffb5699b25670c657e4456618ea2",
+      "git_blob": "6cb658e5c71db1ba43cede700e721a6cdee718ac",
+      "theorems": [
+        "native_binary_det_eq",
+        "native_constant_false_three_quarters",
+        "native_classical_exact_three_quarters"
+      ]
+    },
+    "WP23Probe.lean": {
+      "path": "research/PNP-ABOVE/WP23_Probe.lean",
+      "sha256": "59851bde293b92e5cbb1bac2be772d6724a741e2d587826a06f9f7d63a9f7655",
+      "git_blob": "80d3a0b89933f42b2f40233c5deae3346174c8f4",
+      "theorems": [
+        "cyclic_never_quantum_sound",
+        "cyclic_power_two_no_soundness",
+        "cyclic_quantum_index_invariant",
+        "cyclic_classical_index_invariant"
+      ]
+    }
+  },
+  "theorem_count": 7
+}

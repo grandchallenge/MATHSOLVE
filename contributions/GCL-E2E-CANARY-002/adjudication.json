@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_E2E_CANARY_ADJUDICATION",
+  "adjudication_id": "GCL-E2E-CANARY-002-ADJ-001",
+  "campaign": "GCL-E2E-CANARY-002",
+  "dispatch_id": "GCL-E2E-CANARY-002-IA-001",
+  "cohort_id": "GCL-E2E-CANARY-COHORT-002",
+  "fixed_expected_answer": 7,
+  "replay_pass": true,
+  "disposition": "ADVANCE",
+  "selected_successor": "GCL-E2E-CANARY-003",
+  "effects": {
+    "canary_effect": true,
+    "mathematical_claim_effect": false,
+    "certification_effect": false,
+    "publication_effect": false
+  }
+}

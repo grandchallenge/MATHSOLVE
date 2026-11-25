@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "MS-OPENMATH-2026-OM26-H1-H1-15-SOURCE",
+  "campaign_id": "OPENMATH-2026",
+  "hill_slot": "OM26-H1",
+  "obligation": "H1-15",
+  "tracker": 955,
+  "protected_predecessor": "5c11f38912d96b63e42340d3207a2467be8b9441",
+  "proposal_seed": {
+    "candidate": "RH_BADER_PROJECTIVE_NOPARALLEL_093",
+    "path": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/candidates/RH_BADER_PROJECTIVE_NOPARALLEL_093/solution.json",
+    "git_blob_sha1": "93ffdaf3a51a9e1f8af80e0bb8741dc49cdbfbee",
+    "sha256": "5dc054a21c441a201de26b3d2a88fead75e6f80b990d6b4f47f34f6c005c4e4f",
+    "expected_score": 93,
+    "expected_parallel_pairs": 0
+  },
+  "external_proposal_generator": {
+    "repository": "alejandrozu/kobon-proof",
+    "commit": "22d1165f6c455fe45e461baef4410f6d5c78a014",
+    "inherited_source_lock": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/H1_13_TRANCHE3_SOURCE.json"
+  },
+  "search": {
+    "script": "work_packages/OPENMATH_2026/OM26_H1_KOBON_TRIANGLES/search_94_compound_order_type.py",
+    "family": "compound anchor-line projective macros",
+    "width": 256,
+    "depth": 10,
+    "bridge_budget": 1,
+    "seed": 2026100701,
+    "projective_weight": 0.08,
+    "noise": 0.35,
+    "no_score_drop_cutoff": true,
+    "intended_effect": "Cross score valleys pruned by H1-13 drop=4 while retaining a structured macro around one anchor line plus at most one off-anchor bridge mutation."
+  },
+  "promotion_gate": [
+    "combinatorial endpoint score must be at least 94",
+    "pinned external exact rational reconstruction must succeed",
+    "GCL direct-interior oracle must replay the exact score",
+    "authenticated AutoLab replay must agree before candidate-ladder promotion"
+  ],
+  "claim_boundary": "Bounded proposal generation only. Search failure is not an upper bound, optimality proof, novelty claim, competition acceptance, or MATHCERT certification."
+}

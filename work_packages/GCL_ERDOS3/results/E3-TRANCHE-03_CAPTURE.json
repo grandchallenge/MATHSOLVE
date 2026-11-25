@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_CONTRIBUTION_CAPTURE_SET",
+  "campaign": "GCL-ERDOS3",
+  "tranche": "E3-TRANCHE-03",
+  "dispatch_activation_commit": "90a07a86c34e8f3d2c22c4efc5d6460bb3974a81",
+  "immutable_task_commit": "266b0857f3e13524ea9e69e2ef3bf4cd422503b5",
+  "canonical_return_policy": {
+    "expected_assignments": [
+      "E3-R01",
+      "E3-D01",
+      "E3-G01",
+      "E3-C01",
+      "E3-A03",
+      "E3-S04"
+    ],
+    "exactly_one_result_comment_per_issue": true,
+    "result_marker": "GCL-CONTRIBUTION-RESULT/1",
+    "duplicate_issue_790_valid_return_surface": false,
+    "synthesis_source": "PROTECTED_CAPTURED_RESULT_FILES_ONLY"
+  },
+  "receipts": {
+    "E3-R01": {
+      "issue_number": 788,
+      "comment_id": 5974689856,
+      "dispatch_id": "GCL-ERDOS3-E3-R01-IA-001",
+      "declared_disposition": "PROVED_REPRESENTATION_REDUCTION",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-R01_RESULT.md",
+      "result_blob_sha1": "1945c71f250725619a536a08c7cbc878c8f426fd"
+    },
+    "E3-D01": {
+      "issue_number": 789,
+      "comment_id": 5974710520,
+      "dispatch_id": "GCL-ERDOS3-E3-D01-IA-001",
+      "declared_disposition": "FINITE_CARRY_REPRESENTATION_PROVED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-D01_RESULT.md",
+      "result_blob_sha1": "fa48b4dca2e575d639cd6ca3cae7d9064063c3cb"
+    },
+    "E3-G01": {
+      "issue_number": 791,
+      "comment_id": 5974734856,
+      "dispatch_id": "GCL-ERDOS3-E3-G01-IA-001",
+      "declared_disposition": "SMALLER_GLUE_LEMMA",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-G01_RESULT.md",
+      "result_blob_sha1": "41037a11d9f36248fbcf49c946eb50e44ce3b03f"
+    },
+    "E3-C01": {
+      "issue_number": 792,
+      "comment_id": 5974760875,
+      "dispatch_id": "GCL-ERDOS3-E3-C01-IA-001",
+      "declared_disposition": "FINITE_PATTERN_DISCOVERED",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-C01_RESULT.md",
+      "result_blob_sha1": "212cea2c27eeba50c243d7e4e769bd78afeb117b"
+    },
+    "E3-A03": {
+      "issue_number": 793,
+      "comment_id": 5974733560,
+      "dispatch_id": "GCL-ERDOS3-E3-A03-IA-001",
+      "declared_disposition": "NO_COUNTEREXAMPLE_IN_DECLARED_FAMILY",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-A03_RESULT.md",
+      "result_blob_sha1": "5c54ddfede81e56bf8327b6dc8c1f7570ec21711"
+    },
+    "E3-S04": {
+      "issue_number": 794,
+      "comment_id": 5974746941,
+      "dispatch_id": "GCL-ERDOS3-E3-S04-IA-001",
+      "declared_disposition": "SOURCE_INTERFACE_REQUIRES_BRIDGE",
+      "result_path": "work_packages/GCL_ERDOS3/results/E3-S04_RESULT.md",
+      "result_blob_sha1": "30f24cff18d14ac197695e272868786b0e77cd0c"
+    }
+  },
+  "duplicate_transport": {
+    "issue_number": 790,
+    "assignment": "E3-D01",
+    "state": "CLOSED_DUPLICATE",
+    "canonical_issue_number": 789
+  },
+  "capture_checks": {
+    "all_six_present": true,
+    "all_dispatch_ids_match": true,
+    "all_assignment_ids_match": true,
+    "all_agent_refs_match": true,
+    "all_context_classes_zero_context": true,
+    "all_source_policies_match_dispatch": true,
+    "all_issue_comment_bytes_equal_result_files": true
+  },
+  "synthesis_allowed": true,
+  "claim_boundary": "Capture is evidence preservation only. No mathematical result is accepted or promoted by this record."
+}

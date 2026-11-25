@@ -2682,8 +2682,7 @@ dispatch evidence branch. MATHSOLVE's default Actions token has no pull-request 
 authority.
 
 The final branch-to-PR hop is owned by the bounded Release Trust controller protected in
-`grandchallenge/MATH-PROGRAMME@e0f809d853705db0817800434da0213b8177999f`.
-Its short-lived App token is restricted to MATHSOLVE with contents-read, PR-write, and
-issues-write only; it validates the evidence branch before opening the ordinary intake PR.
+`grandchallenge/MATH-PROGRAMME@dd5f7f3b5bb3354c2cd74eff25d29c12ec5aa95f`.
+Its short-lived App token is restricted to MATHSOLVE with contents-read and PR-write only; it validates the evidence branch before opening the ordinary intake PR.
 
 The blind Assignment-A cohort remains `OPEN`; synthesis remains prohibited.

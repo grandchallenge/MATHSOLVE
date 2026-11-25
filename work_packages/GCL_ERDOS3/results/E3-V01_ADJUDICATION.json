@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "GCL_FRONTIER_ADJUDICATION",
+  "campaign": "GCL-ERDOS3",
+  "assignment_id": "E3-V01",
+  "dispatch_id": "GCL-ERDOS3-E3-V01-IA-001",
+  "frontier_node": "E3-V-B01",
+  "result_comment_id": 5969123988,
+  "declared_disposition": "VERIFIED",
+  "adjudicated_disposition": "VERIFIED__CLOSE_VERIFICATION_NODE",
+  "structural_checks": {
+    "dispatch_id": "PASS",
+    "assignment_id": "PASS",
+    "agent_ref": "PASS",
+    "context_class": "PASS",
+    "external_sources": "PASS",
+    "required_sections": "PASS"
+  },
+  "mathematical_checks": {
+    "dyadic_sandwich": "PASS",
+    "divergence_equivalence": "PASS",
+    "summable_threshold_forcing": "PASS",
+    "ap_free_extremal_reduction": "PASS",
+    "nonsummable_threshold_sharpness": "PASS"
+  },
+  "provenance": {
+    "github_actor": "fyremael",
+    "independence_basis": "Declared ZERO_CONTEXT / PROTECTED_PACKET_ONLY execution contract",
+    "caveat": "GitHub transport actor is not a distinct-identity proof; no stronger identity claim is made."
+  },
+  "frontier_effect": {
+    "close": [
+      "E3-V-B01"
+    ],
+    "verify": [
+      "E3-B-SCALE-LOCAL",
+      "E3-B-AP-THRESHOLD"
+    ],
+    "leave_open": [
+      "E3-B-AP"
+    ],
+    "parent_theorem_effect": "NONE"
+  },
+  "successor_policy": {
+    "equivalent_replay_successor_forbidden": true,
+    "verification_budget_exhausted": true,
+    "next_allowed_work": "ADVANCE_FRONTIER on E3-B-AP only"
+  }
+}

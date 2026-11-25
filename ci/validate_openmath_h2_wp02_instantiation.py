@@ -120,38 +120,74 @@ def validate() -> list[str]:
     if "No search heuristic may be represented as an exact exclusion rule." not in source_wp:
         errors.append("source WP lacks exact pruning boundary")
 
-    h2 = next(x for x in lanes["hills"] if x["hill_slot"] == "OM26-H2")
-    active_id = h2.get("active_lease", {}).get("assignment_id")
-    expected_predecessor = "OM26-H2-WP03" if active_id == "OM26-H2-WP04" else "OM26-H2-WP02"
-    if active_id == "OM26-H2-WP04":
-        wp03 = assignments.get("OM26-H2-WP03", {})
-        if wp03.get("state") != "ACCEPTED" or not wp03.get("lifecycle", {}).get("closed"):
-            errors.append("WP04 succession requires preserved ACCEPTED/CLOSED WP03")
-    if active_id not in {"OM26-H2-WP03", "OM26-H2-WP04"}:
-        errors.append("H2 lane does not point to an admitted WP03/WP04 successor")
-    if h2.get("active_lease", {}).get("lifecycle_state") != "LEASED_NOT_LAUNCHED":
-        errors.append("H2 active successor lease lifecycle mismatch")
-    if h2.get("predecessor_lease", {}).get("assignment_id") != expected_predecessor:
-        errors.append("H2 immediate predecessor lease missing")
-    if h2.get("predecessor_lease", {}).get("lifecycle_state") != "ACCEPTED":
-        errors.append("H2 immediate predecessor lease not accepted")
+    # Historical WP02 source/dispatch invariants above remain pinned. Later
+    # successors must be checked against present protected registry state, not
+    # against the WP03/WP04 launch snapshot from the original validator.
+    hill_by_slot = {x["hill_slot"]: x for x in lanes["hills"]}
+    for i in range(2, 8):
+        slot = f"OM26-H{i}"
+        hill = hill_by_slot.get(slot)
+        if hill is None:
+            errors.append(f"{slot} lane missing")
+            continue
+
+        active = hill.get("active_lease", {})
+        predecessor = hill.get("predecessor_lease", {})
+        active_id = active.get("assignment_id")
+        predecessor_id = predecessor.get("assignment_id")
+        current = assignments.get(active_id)
+        previous = assignments.get(predecessor_id)
+        if not current or current.get("hill") != slot:
+            errors.append(f"{slot} active assignment not in authoritative registry")
+            continue
+        if not previous or previous.get("hill") != slot:
+            errors.append(f"{slot} predecessor assignment not in authoritative registry")
+            continue
+
+        if active.get("dispatch_id") != current.get("lease", {}).get("dispatch_id"):
+            errors.append(f"{slot} active dispatch differs from registry")
+        if predecessor.get("dispatch_id") != previous.get("lease", {}).get("dispatch_id"):
+            errors.append(f"{slot} predecessor dispatch differs from registry")
+        if active.get("agent_ref") != current.get("lease", {}).get("agent_ref"):
+            errors.append(f"{slot} active agent differs from registry")
+        if predecessor.get("agent_ref") != previous.get("lease", {}).get("agent_ref"):
+            errors.append(f"{slot} predecessor agent differs from registry")
+
+        if not previous.get("lifecycle", {}).get("closed"):
+            errors.append(f"{slot} predecessor not closed")
+        if predecessor.get("lifecycle_state") != previous.get("state"):
+            errors.append(f"{slot} predecessor lifecycle differs from registry")
+
+        state = active.get("lifecycle_state")
+        if state == "LEASED_NOT_LAUNCHED":
+            if current.get("lease", {}).get("state") not in {"LEASED", "ACTIVE"}:
+                errors.append(f"{slot} leased lane has no live registry lease")
+        elif state == "SUPERSEDED_RESEARCH_RESET":
+            if current.get("state") != "SUPERSEDED" or current.get("lease", {}).get("state") != "CLOSED_RESEARCH_RESET":
+                errors.append(f"{slot} reset state not supported by assignment")
+            if not current.get("lifecycle", {}).get("closed"):
+                errors.append(f"{slot} reset assignment not terminally closed")
+        elif state == "ACCEPTED_TERMINAL_SOURCE_BLOCKED":
+            if current.get("state") != "ACCEPTED" or not current.get("lifecycle", {}).get("closed"):
+                errors.append(f"{slot} terminal source block not supported by assignment")
+        else:
+            errors.append(f"{slot} unrecognized active lifecycle: {state}")
+
+        if f"| `{active_id}` | `{slot}` | `{current.get('state')}` |" not in board:
+            errors.append(f"{slot} active assignment missing from job board")
+
+    h2 = hill_by_slot.get("OM26-H2", {})
     if h2.get("competition_state", {}).get("official_submission") != "NOT_SUBMITTED":
         errors.append("H2 competition boundary changed")
-
-    for i in range(3, 8):
-        hill = next(x for x in lanes["hills"] if x["hill_slot"] == f"OM26-H{i}")
-        if hill.get("active_lease", {}).get("lifecycle_state") != "LEASED_NOT_LAUNCHED":
-            errors.append(f"OM26-H{i} lifecycle drift")
-
     if "| `OM26-H2-WP02` | `OM26-H2` | `ACCEPTED` |" not in board:
         errors.append("job board missing WP02 accepted history")
-    if f"| `{active_id}` | `OM26-H2` | `LEASED_NOT_LAUNCHED` |" not in board:
-        errors.append("job board missing current active lease")
 
-    policy = registry["mathematics_release_policy"]
-    if policy["per_hill"]["OM26-H2"]["assignment"] != active_id:
-        errors.append("per-hill policy does not select current successor")
-    if policy["per_hill"]["OM26-H2"]["predecessor"]["assignment"] != expected_predecessor:
+    policy = registry["mathematics_release_policy"]["per_hill"]["OM26-H2"]
+    active_id = h2.get("active_lease", {}).get("assignment_id")
+    predecessor_id = h2.get("predecessor_lease", {}).get("assignment_id")
+    if policy.get("assignment") != active_id:
+        errors.append("per-hill policy does not select current assignment")
+    if policy.get("predecessor", {}).get("assignment") != predecessor_id:
         errors.append("per-hill policy loses immediate predecessor")
 
     return errors

@@ -1,0 +1,15 @@
+{
+  "capture_blob_sha": "3e3851040785ffb2bf0bfcd3de69538c847b04ae",
+  "dispatch_id": "OM26-H2-WP02-IA-001",
+  "evaluator_source_commit": "3ded08b094da297e713f48ccd5d52bfa0092aed0",
+  "exact_search_design_admitted": false,
+  "execution_origin": "CHAD_LOCAL_OS_ONLY",
+  "independent_execution_attested": false,
+  "input_result_sha256": "6f52a9badf4c53900e623a63cfba6c3e36afabcf139a278abe842e334ddcd146",
+  "record_type": "GCL_SOLVE_REPLAY_RECEIPT_V1",
+  "replay_pass": true,
+  "reproducibility_artifact": "contributions/OPENMATH-2026/OM26-H2-WP02-IA-001/reproducibility.json",
+  "reproducibility_blob_sha": "ce1e870b58792958c1a382fd3ce375c6be9518e6",
+  "result_ref": "https://github.com/grandchallenge/MATHSOLVE/issues/526#issuecomment-5889734796",
+  "schema_version": "1.0.0"
+}

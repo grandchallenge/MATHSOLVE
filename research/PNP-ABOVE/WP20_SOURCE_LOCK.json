@@ -1,0 +1,244 @@
+{
+  "schema": "PNP-ABOVE-WP20-SOURCE-LOCK/1",
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "source_protected_parent": "0780909e5a31c8fb7ff882a25b1ccad5bf31dd51",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "scientific_scope": "exact nine-stage two-player CL sampler, bounded original source query program, original mathematical CHSH predicate, unrestricted classical value 3/4, explicit original quantum value >=81/100; source-executable accepting decider not yet proved",
+  "not_certified": [
+    "Cost.Prog executable answer-sensitive decider",
+    "source-native Verifier 9 with that decider",
+    "positive-parameter compression",
+    "succinct SAT lower bound",
+    "P versus NP",
+    "MATHCERT"
+  ],
+  "modules": {
+    "WP20Cycle.lean": {
+      "path": "research/PNP-ABOVE/WP20_CyclicQuestionMaps.lean",
+      "git_blob": "2babe7ad21a134b5982c6e293b6ef39b47fc949e",
+      "sha256": "fabc5839d7034475448c3c17128d925d615e8390d542cdd76723d8f5ba73d564",
+      "theorems": [
+        "alice_eval",
+        "bob_eval",
+        "alice_factor",
+        "bob_factor",
+        "maskedTail_exact",
+        "alice_exact",
+        "bob_exact",
+        "left_seed",
+        "right_seed",
+        "left_distinct",
+        "right_distinct",
+        "square_edge_positive",
+        "original_cl_four_cycle"
+      ]
+    },
+    "WP20Law.lean": {
+      "path": "research/PNP-ABOVE/WP20_ExactQuestionLaw.lean",
+      "git_blob": "432957f70290a50a2fb68365c3336f8da108a29e",
+      "sha256": "4c3b48bd08efe7d965d4d0c3fac8fa5f01beb6ad7bd0605eb8cfa5cdcce17f9f",
+      "theorems": [
+        "pair_injective",
+        "fiber_singleton",
+        "exact_original_mass",
+        "unsupported_zero",
+        "distinct_output_pairs",
+        "square_edge_mass"
+      ]
+    },
+    "WP20Parity.lean": {
+      "path": "research/PNP-ABOVE/WP20_CHSHParityPredicate.lean",
+      "git_blob": "edf8ab98a88cb4fc909f3d7d95e876d8f9be16fa",
+      "sha256": "0a045243ef91b8268e93179914c3db05b641a36767650435546f98f98ca0c508",
+      "theorems": [
+        "parityAccept_synchronous",
+        "parityAccept_source",
+        "chsh_four_classical_bound",
+        "square_classical_bound",
+        "square_has_classical_loss"
+      ]
+    },
+    "WP20Quantum.lean": {
+      "path": "research/PNP-ABOVE/WP20_RationalQubitWitness.lean",
+      "git_blob": "e43afe6f33af8b203d2c96049cd6362616e208cb",
+      "sha256": "1ea8306d3dd032e954b7c33bc854b145917fd6d5e5c9e4450bbd381c8834d0c6",
+      "theorems": [
+        "pCenter_selfAdjoint",
+        "pAlice_selfAdjoint",
+        "pBob_selfAdjoint",
+        "pCenter_projective",
+        "pAlice_projective",
+        "pBob_projective",
+        "selected_selfAdjoint",
+        "selected_projective",
+        "measured_selfAdjoint",
+        "measured_projective",
+        "measured_normalized",
+        "center_center_value",
+        "center_bob_value",
+        "alice_center_value",
+        "alice_bob_value",
+        "rational_quantum_CHSH_gap"
+      ]
+    },
+    "WP20Decomp.lean": {
+      "path": "research/PNP-ABOVE/WP20_SharedSquareDecomposition.lean",
+      "git_blob": "33c0030ca70a5faa08fa20b86dbbc665e0755dc4",
+      "sha256": "704fb4f1d9a4061803cdb7c017df8932fd6a807de80d29514257ca60883235ac",
+      "theorems": [
+        "assemble_extract",
+        "extract_assemble_middle",
+        "extract_assemble_left",
+        "extract_assemble_right",
+        "alice_assemble",
+        "bob_assemble",
+        "leftQ_distinct",
+        "rightQ_distinct",
+        "every_component_has_four_edges",
+        "every_component_classical_bound",
+        "shared_card"
+      ]
+    },
+    "WP20Expectation.lean": {
+      "path": "research/PNP-ABOVE/WP20_OriginalCLPushforward.lean",
+      "git_blob": "773f2ed99747853e479af41d5fcbbafbde575239",
+      "sha256": "09a6ad972ef42a2d4e3c279597efcc9481619d9f18adb0cac40549d05e2ea01b",
+      "theorems": [
+        "clDist_payoff"
+      ]
+    },
+    "WP20Aggregation.lean": {
+      "path": "research/PNP-ABOVE/WP20_GlobalClassicalBound.lean",
+      "git_blob": "afa078dda1e5ce332ac4481cf66f27c2707c3087",
+      "sha256": "bdd2ef4eaaca77f49d77dc056d642475a74dd50cbba16095d23f755e8e4c0bd9",
+      "theorems": [
+        "f2_univ",
+        "sum_f2",
+        "sum_over_seeds",
+        "shared_classical_four",
+        "source_classical_upper"
+      ]
+    },
+    "WP20QuantumGlobal.lean": {
+      "path": "research/PNP-ABOVE/WP20_OriginalQuantumStrategy.lean",
+      "git_blob": "50d7e2476e83b5df195dd84b2563124a280e61dc",
+      "sha256": "e9a54c3101c8079943c9780a2e781136c0bfd519cdc9019a6d5ed149a556ba72",
+      "theorems": [
+        "quantumSeedWin_matrix",
+        "alice_projector",
+        "bob_projector",
+        "quantumSeedWin_formula",
+        "quantum_each_square",
+        "quantum_all_512",
+        "original_quantum_value",
+        "original_quantum_lower"
+      ]
+    },
+    "WP20BellGap.lean": {
+      "path": "research/PNP-ABOVE/WP20_SourceGameBellGap.lean",
+      "git_blob": "3a750e675eb063430cb545b5de267d7a96c7f3ef",
+      "sha256": "c05bde7a6d741a09b2574f9ca7f7fe5f8362aedd8708ae4c473cf9f22290e37a",
+      "theorems": [
+        "deterministicValue_source",
+        "every_classical_strategy_le_three_quarters",
+        "classicalValue_le_three_quarters",
+        "original_source_quantum_classical_gap"
+      ]
+    },
+    "WP20SourceProg.lean": {
+      "path": "research/PNP-ABOVE/WP20_SourceSamplerProg.lean",
+      "git_blob": "a7fd9ce3b65343f241095263777e92f473053b61",
+      "sha256": "32e4bd3c35852643ca38b8863bd0e41ebc8cc0fce04873ac7e0a325e3096e33c",
+      "theorems": [
+        "cyclicSamplerProg_closed",
+        "cyclicSamplerProg_loopFree",
+        "cyclicSamplerProg_readBuild",
+        "cyclicSamplerProg_halts_raw",
+        "cyclic_sourceRuns",
+        "cyclic_time_bound_raw"
+      ]
+    },
+    "WP20SourceSemantics.lean": {
+      "path": "research/PNP-ABOVE/WP20_SourceQueryCodeLemmas.lean",
+      "git_blob": "2599f16a6df723eaba0a13ef5a4d7da558c70922",
+      "sha256": "52ff8cb09854c25844ca29b0b05675b7c1f62da2c1728c983e6b343cb5b30084",
+      "theorems": [
+        "aliceMarginalCode_value",
+        "bobMarginalCode_value",
+        "aliceLinearCode_value",
+        "bobLinearCode_value",
+        "eval_dimension_all",
+        "eval_factor_all"
+      ]
+    },
+    "WP20CLSem.lean": {
+      "path": "research/PNP-ABOVE/WP20_OriginalCLSemantics.lean",
+      "git_blob": "982db9d1006af22f240ed473b9d91f2d76dea537",
+      "sha256": "f8cde4472711304746e31f0ad872a7700b130b8573830e7429ff0b1ebd3e9063",
+      "theorems": [
+        "alice_marginal_formula",
+        "bob_marginal_formula",
+        "alice_linear_formula",
+        "bob_linear_formula"
+      ]
+    },
+    "WP20SourceQueries.lean": {
+      "path": "research/PNP-ABOVE/WP20_AllSourceQueryProofs.lean",
+      "git_blob": "302ef098a8be91d00e452ddfe6b927dd210d72a6",
+      "sha256": "278420b2aab5d28fbbfb41bee6bd53a4ebae47befac369a887d7be927c7accae",
+      "theorems": [
+        "all_dimension_queries",
+        "all_factor_queries",
+        "all_marginal_queries",
+        "all_linear_queries"
+      ]
+    },
+    "WP20BitEquiv.lean": {
+      "path": "research/PNP-ABOVE/WP20_SourceBitEquivalence.lean",
+      "git_blob": "c22685008005b5ca1fd8f1e11f7b535a9b4e150b",
+      "sha256": "5a11402b1c25f57a70bb66e3dac71331eb383aa5f7bd897153e1cbe5912b9e18",
+      "theorems": [
+        "alice_marginal_bits",
+        "bob_marginal_bits",
+        "alice_linear_bits",
+        "bob_linear_bits",
+        "alice_factor_bits",
+        "bob_factor_bits"
+      ]
+    },
+    "WP20Native.lean": {
+      "path": "research/PNP-ABOVE/WP20_OriginalNativeSampler.lean",
+      "git_blob": "8e5a5295bb20ec5e6c88cd2b57197069375de014",
+      "sha256": "92d2c6324887181d2a3d5bda3d48fae67a98e837e814cecc2992ecb9315a8a51",
+      "theorems": [
+        "cyclicSampler_dist",
+        "native_four_cycle",
+        "sourceGame_eq_parityGame",
+        "all_source_indices_strict_gap"
+      ]
+    },
+    "WP20Bounded.lean": {
+      "path": "research/PNP-ABOVE/WP20_BoundedNativeSampler.lean",
+      "git_blob": "1d7401a9b8a988c8ccd547268f6364e8d6e50706",
+      "sha256": "7d6d6c02317082d30a9180bfa236457b5d6e10117aa7aae0ff26ac0eda72edf4",
+      "theorems": [
+        "cyclicSampler_timeBoundAt",
+        "cyclicSampler_coefficient_le_pow",
+        "cyclic_sampler_polynomial"
+      ]
+    },
+    "WP20ClassicalExact.lean": {
+      "path": "research/PNP-ABOVE/WP20_ExactClassicalValue.lean",
+      "git_blob": "c572825ba5d0d808eeabe26bf9867e6f4e6f1ebb",
+      "sha256": "3a8ea9cec25a3af4820be12f663f1693edcc00d071e30714c935d51092abe6b2",
+      "theorems": [
+        "constant_false_seed",
+        "constant_false_four",
+        "constant_false_global",
+        "exact_classical_value",
+        "exact_game_gap"
+      ]
+    }
+  },
+  "theorem_count": 107
+}

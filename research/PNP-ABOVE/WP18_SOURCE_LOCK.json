@@ -1,0 +1,61 @@
+{
+  "schema": "PNP-ABOVE-WP18-SOURCE-LOCK/1",
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "protected_source_parent": "7c999a2f31f6580e8f8e7459818dd04a9bd9d8e2",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "not_certified": [
+    "quantum/classical value gap",
+    "answer-sensitive source hard-game decider",
+    "positive-parameter compression",
+    "uniform succinct SAT/classical strategy-cost transfer",
+    "P!=NP",
+    "MATHCERT"
+  ],
+  "modules": {
+    "WP18.lean": {
+      "path": "research/PNP-ABOVE/WP18_AsymmetricConditionalCL.lean",
+      "git_blob": "08839fb7b21e2d3098c139d59f01bf7c36e32b74",
+      "sha256": "57b62806123a0cbf50a0146b5a9548c237b3b824cd6dfe5e3db203cfbb405ee1"
+    },
+    "WP18Sampler.lean": {
+      "path": "research/PNP-ABOVE/WP18_PlayerAwareSourceProg.lean",
+      "git_blob": "3f050e1f51fb836f4e267b2b454379a016765f15",
+      "sha256": "a1a50a2b82f010bc9a15fdd9af9ff6e6aa988939d094a0f4609c2b87e9e66cba"
+    },
+    "WP18Query.lean": {
+      "path": "research/PNP-ABOVE/WP18_BobSourceSemantics.lean",
+      "git_blob": "a1a15d42977746cb097f0e6f262fac729b889054",
+      "sha256": "4d6f1daf5338408dc009ef4f61e9c87d58ad90c285fd2c1c74dcbb83433c9ea0"
+    },
+    "WP18Final.lean": {
+      "path": "research/PNP-ABOVE/WP18_BobCLBitEquivalence.lean",
+      "git_blob": "8663aebb97c51ae54c5836a04fe7286643d18980",
+      "sha256": "6dc95479e5f066197043b9ee7580d13c24a77ca7a7b4aba565f3f7c1f197408c"
+    },
+    "WP18Runs.lean": {
+      "path": "research/PNP-ABOVE/WP18_AllSourceQueryProofs.lean",
+      "git_blob": "3fd17293882f30361d39dd49808214193ec5fc20",
+      "sha256": "5496e4f8ad5fb2ffddb17bd30db73fe1aa481e13d1036893fa3b4828baf50ca8"
+    },
+    "WP18Native.lean": {
+      "path": "research/PNP-ABOVE/WP18_OriginalNativeSampler.lean",
+      "git_blob": "07b038e42869b721c2af5e34d944caaedd21a6ba",
+      "sha256": "2662ecffbb795f1e89ffda07ebf6ccaad1b0387e5cd72f5530217d5590f39798"
+    },
+    "WP18Bound.lean": {
+      "path": "research/PNP-ABOVE/WP18_BoundedNativeVerifier.lean",
+      "git_blob": "ce4ec12321c0c7af25129be3a00f55dd3001f7f5",
+      "sha256": "7f094ce399b2675ae116440d6a79b1aa682e0e38904a96a78519c9f19b444b52"
+    },
+    "WP18Value.lean": {
+      "path": "research/PNP-ABOVE/WP18_NativeGameValuesNoGap.lean",
+      "git_blob": "4c3f19a148230a06a7f4c3410ef761668881df49",
+      "sha256": "511a8390279c31e386b94ed846a06ed45b3989c7ed93efc1e1e45ba8b9f25c9e"
+    },
+    "WP18NoGap.lean": {
+      "path": "research/PNP-ABOVE/WP18_IndependentDistributionControl.lean",
+      "git_blob": "9797bba266d1ed1d7745d34c6e327b565e277560",
+      "sha256": "871a8d546db3d25289cddee7436ef0cc888cc6b0970069723b6cf5ae77fed6d8"
+    }
+  }
+}

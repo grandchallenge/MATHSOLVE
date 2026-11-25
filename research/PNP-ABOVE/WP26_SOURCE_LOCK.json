@@ -1,0 +1,54 @@
+{
+  "modules": {
+    "WP26NativeVerifier.lean": {
+      "git_blob": "c90c67c4a46f3554e8c2744f2189feae513e9dd5",
+      "path": "research/PNP-ABOVE/WP26_NativeVerifier.lean",
+      "sha256": "a84e101816040212ccf873337d70c734a3c1d993c0b4a459d0f7e82a3226caf2",
+      "theorems": [
+        "rawSatChecker_correct",
+        "rawSatChecker_polytime",
+        "rawSatChecker_closed",
+        "rawSatChecker_accepts_iff",
+        "satVerifier_sampler",
+        "satVerifier_accepts_iff",
+        "satVerifier_synchronous",
+        "nativePerfectPCC_of_sat",
+        "nativeRejectsAll_of_unsat",
+        "nativeValStar_zero_of_unsat",
+        "nativeValStar_half_of_unsat",
+        "nativeValStar_one_of_sat",
+        "nativeValStar_one_iff_sat",
+        "nativeCompressedPCC_of_sat",
+        "nativeCompressedSoundness_of_unsat",
+        "nativeIsBounded_of_raw_totalCost",
+        "nativeIsBounded_with_compressor_of_raw_totalCost",
+        "nativeWinningPair_iff_sat"
+      ]
+    },
+    "WP26UniformCompiler.lean": {
+      "git_blob": "6589aacc2688271f0e198dd451e09753ed691e91",
+      "path": "research/PNP-ABOVE/WP26_UniformCompiler.lean",
+      "sha256": "350071e34d0b4ce6177df7f42356a73c64ac49362a5cad24f26d7e281d5903f2",
+      "theorems": [
+        "sourceCoreChecker_correct",
+        "sourceUniformGenerator_correct",
+        "sourceUniformGenerator_polytime",
+        "sourceUniformGenerator_closed",
+        "sourceUniformGenerator_accepts_iff",
+        "uniformSatVerifier_accepts_iff",
+        "uniformNativePCC_of_sat",
+        "uniformNativeRejectsAll_of_unsat",
+        "uniformNativeValStar_zero_of_unsat",
+        "uniformNativeValStar_one_of_sat",
+        "uniformNativeValStar_one_iff_sat",
+        "uniformCompressedPCC_of_sat",
+        "uniformCompressedSoundness_of_unsat",
+        "uniformNativeWinningPair_iff_sat"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "schema": "PNP-ABOVE-WP26-SOURCE-LOCK/1",
+  "source_protected_parent": "df62dc3de0a585ff490f4e56abf5d1c76cb6f12e",
+  "theorem_count": 32
+}
