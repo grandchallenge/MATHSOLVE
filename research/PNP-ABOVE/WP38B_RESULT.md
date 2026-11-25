@@ -1,0 +1,16 @@
+# WP38B — Exact native decision, witness and canonical witness equivalence
+
+Pinned original source: `vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970`. Protected WP35 and WP38A. In the original native model and under the explicit verifier boundedness premise of WP34, the following existence propositions are equivalent:
+
+1. A total polynomial native classical solver of the restricted valid compressed promise.
+2. A total polynomial native solver of satisfiability on every encoded original formula.
+3. A total polynomial native program producing any accepted dense witness on every satisfiable original formula.
+4. A total polynomial native program producing the unique lexicographically greatest support-order satisfying assignment on every satisfiable original formula.
+
+Items 3 and 4 impose no output correctness requirement at all on unsatisfiable inputs. The program still must be total polynomial there, as required by the original PolyTimeFun type. WP35 verifier soundness ensures invalid witnesses cannot falsely accept an unsatisfiable formula. The actual reverse program parses raw source data using the WP28B2 node reader and WP38A polynomial stack parser, then evaluates the dense witness verifier on the proposed witness. The forward direction runs the exact WP38A greedy program on the original WP35 support list. The original compiler objects, not merely informal oracle reductions, inhabit PolyTimeFun with explicit polynomial execution certificates.
+
+The resulting negated equivalences prove that an unrestricted lower bound against all polynomial-time witness generators on satisfiable formulas alone, or against all polynomial-time canonical witness generators on that same YES promise, would suffice and is exactly equivalent to the native restricted valid-promise lower bound. This permits a search-side research target not dependent on assigning complexity to unsatisfiable semantic functions. It does not say any of these equivalent lower bounds has been established.
+
+15 theorem declarations, development original-source compilation and standard-axiom audit pass (audit SHA256 d4c141976f2f99086e1b2f570dd3bba7efe221cc7b42cec0a90dcd6d38cfd527). WP38B_REPLAY.py freshly compiles this module and audits all 15 axioms against exact prior WP35 (95 modules) and WP38A (3 modules) replayed dependencies, with source hashes checked against protected source. This is an incremental replay, not a second full rebuild of all 98 predecessors. The complete dependency reconstruction is available from the prior replay entry points.
+
+Internal scope audit: SAT correctness applies only to actual encoded Fml, including all intermediate pinned formulas. The greedy proof is not a lower bound on algorithms that use a different construction. Support order is fixed by the original support program, not inferred invariant under arbitrary equivalent encodings. No lower bound on standard TM time, no P≠NP conclusion, no novelty claim for standard SAT search-to-decision/self-reducibility, no independent certification. The next research target is a genuine unrestricted witness-construction obstruction; proof width or black-box assignment query complexity alone is insufficient.

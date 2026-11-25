@@ -1,0 +1,32 @@
+{
+  "modules": {
+    "WP38Bridge.lean": {
+      "git_blob": "d7aefe02c487451be9b2297732dbcc12c187fb20",
+      "path": "research/PNP-ABOVE/WP38B_Bridge.lean",
+      "sha256": "f6a7c938ba13ae85f3a5b1e324a28cc6f3d1b6f92ef2d226ceefa90395f0028f",
+      "theorems": [
+        "denseSearchP_correct",
+        "denseSearch_length",
+        "denseSearch_canonical",
+        "model_bits_verified",
+        "canonical_verified",
+        "canonical_implies_witness",
+        "denseSearch_solvesCanonical",
+        "decodeFmlP_encode",
+        "witnessDecisionP_correct",
+        "native_decision_iff_witness",
+        "native_witness_iff_canonical",
+        "valid_promise_iff_witness",
+        "valid_promise_iff_canonical",
+        "valid_promise_lower_iff_witness_lower",
+        "valid_promise_lower_iff_canonical_lower"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "predecessor_wp35": "29697b84bcf40d3e487c19aa1c779064560a0dd8",
+  "predecessor_wp38a": "c0a2d29726e29c22aa3c8818ac2d2021df4c3301",
+  "schema": "PNP-ABOVE-WP38B-SOURCE-LOCK/1",
+  "source_protected_parent": "c0a2d29726e29c22aa3c8818ac2d2021df4c3301",
+  "theorem_count": 15
+}
