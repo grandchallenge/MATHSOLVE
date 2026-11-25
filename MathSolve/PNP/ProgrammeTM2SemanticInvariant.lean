@@ -61,7 +61,7 @@ theorem programmeTM2_tape_write_alignment
   rw [Tape.write_nth]
   by_cases hz : offset = 0
   · subst offset
-    simp
+    simp [Function.update]
   · have hne : head + offset ≠ head := by omega
     simp [hz, hne, Function.update, h offset]
 

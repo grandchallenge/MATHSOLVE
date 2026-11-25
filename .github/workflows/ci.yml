@@ -168,6 +168,12 @@ jobs:
           # Explicitly compile and replay the arbitrary-offset tape semantic spine.
           lake build MathSolve.PNP.ProgrammeTM2SemanticInvariant
           lake env lean MathSolve/PNP/ProgrammeTM2SemanticInvariant.lean
+          # Check concrete terminal dispatch and bit selection as source theorems.
+          lake build MathSolve.PNP.ProgrammeTM2TerminalEntry
+          lake env lean MathSolve/PNP/ProgrammeTM2TerminalEntry.lean
+          # Inspect every executable branch through the genuine run statement.
+          lake build MathSolve.PNP.ProgrammeTM2RunReturn
+          lake env lean MathSolve/PNP/ProgrammeTM2RunReturn.lean
           lake env lean MathSolve/PNP/TM2FixedStepSimulation.lean
           lake env lean MathSolve/PNP/TM2StepAuxSimulation.lean
           lake env lean MathSolve/PNP/ProgrammeMachine.lean
