@@ -82,8 +82,12 @@ theorem reverseWorkUpdate_other (M : ProgrammeMachine) (k j : Fin M.workTapeCoun
     intro he; exact hne (ProgrammeTM2Stack.workLeft.inj he)
   have hrr : (ProgrammeTM2Stack.workRight j : ProgrammeTM2Stack M.workTapeCount) ≠ .workRight k := by
     intro he; exact hne (ProgrammeTM2Stack.workRight.inj he)
+  have hlr : (ProgrammeTM2Stack.workLeft j : ProgrammeTM2Stack M.workTapeCount) ≠ .workRight k := by intro he; cases he
+  have hrl : (ProgrammeTM2Stack.workRight j : ProgrammeTM2Stack M.workTapeCount) ≠ .workLeft k := by intro he; cases he
   cases h : (c.var.snapshotAction M).workMove k <;>
-    simp [reverseWorkUpdate, h, programmeTM2WorkTape, ProgrammeTM2State.setWorkSymbol, Function.update_of_ne, hne, hll, hrr]
+    simp only [reverseWorkUpdate, h, programmeTM2WorkTape, ProgrammeTM2State.setWorkSymbol,
+      Function.update_of_ne hne, Function.update_of_ne hll, Function.update_of_ne hrr,
+      Function.update_of_ne hlr, Function.update_of_ne hrl]
 
 theorem reverseWorkUpdate_own (M : ProgrammeMachine) (k : Fin M.workTapeCount)
     (c : ReverseCfg M) :
@@ -206,7 +210,8 @@ theorem reverseRunPhysical_work (M : ProgrammeMachine) (c : ReverseCfg M) (j : F
         ((programmeTM2WorkTape M c j).write ((M.transition c.var.control c.var.inputSymbol c.var.workSymbol).write j)) := by
   let snap : ReverseCfg M := { c with var := c.var.snapshot M }
   change programmeTM2WorkTape M (reverseWorkFold M (programmeTM2WorkTapes M) (reverseInputUpdate M snap)) j = _
-  rw [reverseWorkFold_present M _ _ j (List.nodup_finRange _) (by simp [programmeTM2WorkTapes]),
+  rw [reverseWorkFold_present M (programmeTM2WorkTapes M) (reverseInputUpdate M snap) j
+    (by exact List.nodup_finRange _) (by simp [programmeTM2WorkTapes]),
     reverseInputUpdate_snapshot, reverseInputUpdate_work]
   rfl
 
