@@ -285,3 +285,106 @@ The next substantive issue is minimal-cover existence with arbitrary
 finite pairwise intersections and no singleton intersections, or
 a weaker witnessed-cover construction that suffices for splitting.
 No claim of unrestricted closure or MATHCERT certification.
+
+## Conditional obstruction to universal minimal covers — 2026-11-24
+
+**Result (paper proof under CH; local lemmas submitted for Lean replay):**
+assuming the Continuum Hypothesis, there exists a family satisfying all
+original Erdos #602 premises which has Property B but no inclusion-minimal
+vertex cover. Thus a general ZFC proof of minimal-cover existence from
+those premises would imply the negation of CH. This is not an obstruction
+to Property B itself. No novelty or independence claim is made.
+
+### Construction before doubling
+
+Assume CH and enumerate all subsets of N as (T_alpha : alpha < omega_1).
+Start with a countably infinite partition P of N into infinite sets
+(for instance, the fibers of the first coordinate under a bijection
+N with N x N). Construct an increasing almost-disjoint family F_alpha
+of infinite subsets of N, starting with P, by transfinite recursion.
+At limit stages take unions. Every stage below omega_1 contains only
+countably many edges because alpha is countable and at most one edge
+is added at each successor stage.
+
+At stage alpha put D = N minus T_alpha. Consider the dichotomy:
+
+1. If D is contained modulo finitely many points in a finite union
+   of members of F_alpha, do not add an edge.
+2. Otherwise enumerate the countably infinite F_alpha as (B_n : n in N).
+   For every n the set D minus (B_0 union ... union B_n) is infinite.
+   Choose distinct d_n in that set, also avoiding all previously
+   chosen d_m. Add B = {d_n : n in N}. This is an infinite subset of D;
+   for each m, only d_0,...,d_(m-1) could belong to B_m.
+   Consequently the new edge has finite intersection with every old
+   edge, including every partition cell, and is not an old edge.
+
+Let F be the union of the construction. Every member is countably
+infinite and distinct members intersect finitely. Any vertex cover T
+of F must be infinite, since it meets every cell of P.
+
+To exclude minimality, locate the stage enumerating T. Case 2 would
+have added an edge disjoint from T, contradicting coverage. Thus case 1
+held: D is almost contained in the union of some finite K subset F.
+For any B in F outside K, its intersection with each member of K
+is finite, as is D minus the union of K. Hence B minus T is finite.
+Since B is infinite, B intersect T is infinite. Therefore all singleton
+private-witness edges for T must belong to K. Each such edge witnesses
+at most one point of T. An infinite T cannot have a private witness
+for every point, so T is not minimal.
+
+This is a complete conditional paper construction using CH and ordinary
+transfinite recursion; the enumeration and recursion themselves have
+not been formalized in Lean. The proof does not require a maximal
+almost-disjoint family or any additional saturation assumption.
+
+### Doubling to enforce the original restriction
+
+On N x {0,1} replace each B in F by B x {0,1}. All members are
+countably infinite; for distinct B,C the intersection has size
+2|B intersect C|, finite and never one. The second-coordinate coloring
+splits every member. If S were a minimal cover of the doubled family,
+its projection T onto N would cover F. For every x in T choose a
+representative (x,b) in S and a private witness B x {0,1} whose
+intersection with S is precisely {(x,b)}. Projecting this identity
+gives B intersect T = {x}: if y lies in B intersect T, some (y,c)
+belongs to S and must equal (x,b). Thus T would be a minimal cover
+of F, impossible. This yields the promised CH counterexample to
+universal minimal-cover existence, not a counterexample to Erdos #602.
+
+### Formal scope
+
+The candidate Lean declarations are:
+- `not_minimalCover_of_finitePrivateEdges`: an infinite cover with
+  finitely many possible private-witness edges is not minimal.
+- `not_minimalCover_of_almostCoveredCompl`: the preceding obstruction
+  for almost-disjoint families and a complement almost covered by a
+  finite union of edges.
+- `minimalCover_doubled_projects`: a minimal cover of the doubled family
+  projects to a minimal cover of the original.
+- `doubled_propertyB_and_noSingleton`: the doubled family is explicitly
+  two-colorable when the members are nonempty and its pairwise
+  intersection cardinalities are never one.
+
+No CH assumption is introduced as a global Lean axiom. The separate
+transfinite construction and its exact CH hypothesis remain a formal
+obligation. Admission of the local reductions requires exact-head
+compiler replay and protected readback.
+
+### Consequence for the research programme
+
+The minimal-transversal implication remains sound, but universal
+existence is too strong at least consistently with ZFC (relative to
+the consistency of ZFC+CH). This obstruction is stronger than the
+earlier finite-trace-cover obstruction. The next mathematical route
+must allow covers with redundant points and establish splitting
+directly; for example, preserve a two-color witness condition rather
+than insist on a private singleton witness for every selected point.
+The original unrestricted conjecture remains open.
+
+Literature comparator: Csernak and Soukup, arXiv:2103.10340v1,
+Theorem 1.4 (countably infinite edges, a uniform finite bound on
+r-wise intersections), Observation 1.6 (private witness criterion).
+Their theorem concerns a stronger uniform-bound hypothesis and does
+not prove or refute this CH construction. See
+https://arxiv.org/abs/2103.10340. The argument above is supplied
+explicitly, not attributed to that paper.
