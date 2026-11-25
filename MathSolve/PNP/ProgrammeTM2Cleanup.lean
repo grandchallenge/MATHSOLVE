@@ -169,9 +169,9 @@ theorem reverseWorkCleanup_run (M : ProgrammeMachine) (s : ProgrammeTM2State M)
     have hb2 := reverseClean_bound_update M S1 b (.workRight j) hb1
     have hp2 : ReverseCleanPrefix M (i+1) S2 := reverseCleanPrefix_succ M S i hlt hp
     rcases reverseCleanPhase_bound M s (.workLeft j) (.cleanWorkLeft j) (.cleanWorkRight j)
-      (fun _ => .cleanWorkRight j) rfl rfl S b (hb (.workLeft j)) with ⟨hl⟩
+      (fun _ => .cleanWorkRight j) (by rfl) (by rfl) S b (hb (.workLeft j)) with ⟨hl⟩
     rcases reverseCleanPhase_bound M s (.workRight j) (.cleanWorkRight j) (reverseCleanWorkMode M (i+1) s)
-      (programmeTM2NextWorkOrEmit M j) rfl (by rfl) S1 b (hb1 (.workRight j)) with ⟨hr⟩
+      (programmeTM2NextWorkOrEmit M j) (by rfl) (by rfl) S1 b (hb1 (.workRight j)) with ⟨hr⟩
     rcases ih (i+1) S2 (by omega) hb2 hp2 with ⟨ht⟩
     have h12 := StateTransition.EvalsToInTime.trans (programmeTM2Machine M).step
       (b+1) (b+1) _ _ _ hl hr
@@ -200,15 +200,15 @@ theorem reverseCleanup_run (M : ProgrammeMachine) (s : ProgrammeTM2State M)
   have hp : ReverseCleanPrefix M 0 S4 := by
     refine ⟨?_,?_,?_,?_,?_,?_⟩
     all_goals try simp [S4,S3,S2,S1,Function.update_of_ne,ho]
-    intro j hj; omega
+    all_goals omega
   rcases reverseCleanPhase_bound M s .rawInput .cleanRaw .cleanTemp
-    (fun _ => .cleanTemp) rfl rfl S b (hb .rawInput) with ⟨h1⟩
+    (fun _ => .cleanTemp) (by rfl) (by rfl) S b (hb .rawInput) with ⟨h1⟩
   rcases reverseCleanPhase_bound M s .inputTemp .cleanTemp .cleanInputLeft
-    (fun _ => .cleanInputLeft) rfl rfl S1 b (hb1 .inputTemp) with ⟨h2⟩
+    (fun _ => .cleanInputLeft) (by rfl) (by rfl) S1 b (hb1 .inputTemp) with ⟨h2⟩
   rcases reverseCleanPhase_bound M s .inputLeft .cleanInputLeft .cleanInputRight
-    (fun _ => .cleanInputRight) rfl rfl S2 b (hb2 .inputLeft) with ⟨h3⟩
+    (fun _ => .cleanInputRight) (by rfl) (by rfl) S2 b (hb2 .inputLeft) with ⟨h3⟩
   rcases reverseCleanPhase_bound M s .inputRight .cleanInputRight (reverseCleanWorkMode M 0 s)
-    (programmeTM2FirstWorkOrEmit M) rfl (by rfl) S3 b (hb3 .inputRight) with ⟨h4⟩
+    (programmeTM2FirstWorkOrEmit M) (by rfl) (by rfl) S3 b (hb3 .inputRight) with ⟨h4⟩
   rcases reverseWorkCleanup_run M s b M.workTapeCount 0 S4 (by omega) hb4 hp with ⟨hw⟩
   have h12 := StateTransition.EvalsToInTime.trans (programmeTM2Machine M).step (b+1) (b+1) _ _ _ h1 h2
   have h123 := StateTransition.EvalsToInTime.trans (programmeTM2Machine M).step (b+1+(b+1)) (b+1) _ _ _ h12 h3
@@ -239,7 +239,7 @@ theorem programmeTM2_terminal_cleanup_run {M : ProgrammeMachine} {input : List B
   have hall := StateTransition.EvalsToInTime.trans (programmeTM2Machine M).step
     1 ((2*M.workTapeCount+4)*(b+1)+1) _ _ _ (programmeTM2_one_step_in_time hstep) hc
   exact ⟨result, programmeTM2_terminal_result_agrees_with_source hrep hterm,
-    ⟨by simpa [result, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hall⟩⟩
+    ⟨by convert hall using 1 <;> omega⟩⟩
 
 #print axioms reverseCleanStep
 #print axioms reverseCleanPhase_run
