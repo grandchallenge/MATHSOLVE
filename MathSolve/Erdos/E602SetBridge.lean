@@ -815,4 +815,141 @@ theorem propertyB_of_finiteTraceCover (A : I → Set X) (T : Set X)
 #print axioms minimalCover_of_finiteTraces
 #print axioms propertyB_of_finiteTraceCover
 
+
+/-!
+## Obstruction to the minimal-cover strategy
+
+A cover whose complement is almost covered by finitely many edges
+cannot have infinitely many private witnesses in an almost-disjoint
+family. Doubling each point preserves minimal-cover existence but
+rules out singleton intersections. The accompanying research record
+uses these facts in a paper-level CH construction.
+-/
+
+/-- If only finitely many edges can witness singleton traces, an infinite
+cover cannot be minimal. -/
+theorem not_minimalCover_of_finitePrivateEdges
+    (A : I → Set X) (T : Set X) (K : Set I)
+    (hT : T.Infinite) (hK : K.Finite)
+    (hWitness : ∀ j x, A j ∩ T = {x} → j ∈ K) :
+    ¬ Minimal (IsCover A) T := by
+  intro hMin
+  have hw := ((minimalCover_iff_privateWitnesses A T).mp hMin).2
+  let W (j : I) : Set X := {x | A j ∩ T = {x}}
+  have hW (j : I) : (W j).Finite := by
+    apply Set.Subsingleton.finite
+    intro x hx y hy
+    have hx' : A j ∩ T = {x} := hx
+    have hy' : A j ∩ T = {y} := hy
+    have he : ({x} : Set X) = {y} := hx'.symm.trans hy'
+    have hm : x ∈ ({y} : Set X) := he ▸ Set.mem_singleton x
+    exact Set.mem_singleton_iff.mp hm
+  apply hT
+  apply (hK.biUnion (fun j _ => hW j)).subset
+  intro x hx
+  obtain ⟨j, hj⟩ := hw x hx
+  exact Set.mem_iUnion.mpr ⟨j, Set.mem_iUnion.mpr
+    ⟨hWitness j x hj, hj⟩⟩
+
+/-- If the complement of an infinite cover is contained, up to finitely
+many points, in finitely many members of an almost-disjoint family,
+the cover is not inclusion-minimal. This holds for every extension of
+the family preserving the same finite-intersection hypotheses. -/
+theorem not_minimalCover_of_almostCoveredCompl
+    (A : I → Set X) (T : Set X) (K : Set I)
+    (hInf : ∀ i, (A i).Infinite)
+    (hInter : ∀ i j, i ≠ j → (A i ∩ A j).Finite)
+    (hT : T.Infinite) (hK : K.Finite)
+    (hAlmost : (Tᶜ \ ⋃ j ∈ K, A j).Finite) :
+    ¬ Minimal (IsCover A) T := by
+  classical
+  apply not_minimalCover_of_finitePrivateEdges A T K hT hK
+  intro j x hj
+  by_contra hjK
+  have hU : (⋃ k ∈ K, A j ∩ A k).Finite := by
+    apply hK.biUnion
+    intro k hk
+    exact hInter j k (fun he => hjK (he.symm ▸ hk))
+  apply hInf j
+  apply ((Set.finite_singleton x).union (hU.union hAlmost)).subset
+  intro y hy
+  by_cases hyt : y ∈ T
+  · left
+    have hmem : y ∈ A j ∩ T := ⟨hy, hyt⟩
+    rw [hj] at hmem
+    exact hmem
+  · right
+    by_cases hmem : y ∈ ⋃ k ∈ K, A k
+    · left
+      obtain ⟨k, hk⟩ := Set.mem_iUnion.mp hmem
+      obtain ⟨hkK, hyk⟩ := Set.mem_iUnion.mp hk
+      exact Set.mem_iUnion.mpr ⟨k, Set.mem_iUnion.mpr
+        ⟨hkK, ⟨hy, hyk⟩⟩⟩
+    · exact Or.inr ⟨hyt, hmem⟩
+
+/-- Replace each point by two indistinguishable copies. -/
+def doubledFamily (A : I → Set X) (i : I) : Set (X × Fin 2) :=
+  A i ×ˢ Set.univ
+
+/-- A minimal cover of the doubled family projects to a minimal cover
+of the original family: project both coverage and singleton witnesses. -/
+theorem minimalCover_doubled_projects (A : I → Set X)
+    (S : Set (X × Fin 2)) (hS : Minimal (IsCover (doubledFamily A)) S) :
+    Minimal (IsCover A) (Prod.fst '' S) := by
+  obtain ⟨hc, hw⟩ :=
+    (minimalCover_iff_privateWitnesses (doubledFamily A) S).mp hS
+  apply (minimalCover_iff_privateWitnesses A (Prod.fst '' S)).mpr
+  constructor
+  · intro i
+    obtain ⟨p, hp⟩ := hc i
+    exact ⟨p.1, hp.1.1, ⟨p, hp.2, rfl⟩⟩
+  · intro x hx
+    obtain ⟨p, hp, hpx⟩ := hx
+    obtain ⟨j, hj⟩ := hw p hp
+    have hpj : p ∈ doubledFamily A j ∩ S := by
+      rw [hj]
+      exact Set.mem_singleton p
+    refine ⟨j, ?_⟩
+    ext y
+    constructor
+    · intro hy
+      obtain ⟨q, hq, hqy⟩ := hy.2
+      have hqj : q ∈ doubledFamily A j ∩ S :=
+        ⟨⟨hqy.symm ▸ hy.1, Set.mem_univ _⟩, hq⟩
+      rw [hj] at hqj
+      have he := Set.mem_singleton_iff.mp hqj
+      exact Set.mem_singleton_iff.mpr
+        (hqy.symm.trans ((congrArg Prod.fst he).trans hpx))
+    · intro hy
+      have he := Set.mem_singleton_iff.mp hy
+      rw [he, ← hpx]
+      exact ⟨hpj.1.1, ⟨p, hp, rfl⟩⟩
+
+/-- The doubled family always has Property B, and its intersections
+cannot have cardinality one. This is independent of minimal covers. -/
+theorem doubled_propertyB_and_noSingleton (A : I → Set X)
+    (hNonempty : ∀ i, (A i).Nonempty) :
+    HasPropertyB I (doubledFamily A) ∧
+      (∀ i j, (doubledFamily A i ∩ doubledFamily A j).ncard ≠ 1) := by
+  constructor
+  · refine ⟨Prod.snd, fun i hmono => ?_⟩
+    obtain ⟨x, hx⟩ := hNonempty i
+    exact (by decide : (0 : Fin 2) ≠ 1)
+      (hmono (x, 0) ⟨hx, Set.mem_univ _⟩
+        (x, 1) ⟨hx, Set.mem_univ _⟩)
+  · intro i j
+    have he : doubledFamily A i ∩ doubledFamily A j =
+        (A i ∩ A j) ×ˢ (Set.univ : Set (Fin 2)) := by
+      ext p
+      simp [doubledFamily]
+    rw [he, Set.ncard_prod, Set.ncard_univ]
+    have hcard : Nat.card (Fin 2) = 2 := by simp
+    rw [hcard]
+    omega
+
+#print axioms not_minimalCover_of_finitePrivateEdges
+#print axioms not_minimalCover_of_almostCoveredCompl
+#print axioms minimalCover_doubled_projects
+#print axioms doubled_propertyB_and_noSingleton
+
 end MathSolve.Erdos602
