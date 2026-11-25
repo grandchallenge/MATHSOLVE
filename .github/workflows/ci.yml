@@ -184,6 +184,10 @@ jobs:
           lake env lean MathSolve/PNP/ProgrammeTM2RunSimulation.lean
           lake build MathSolve.PNP.ProgrammeTM2StackBudget
           lake env lean MathSolve/PNP/ProgrammeTM2StackBudget.lean
+          lake build MathSolve.PNP.ProgrammeTM2Cleanup
+          lake env lean MathSolve/PNP/ProgrammeTM2Cleanup.lean
+          lake build MathSolve.PNP.ProgrammeTM2ReverseCompiler
+          lake env lean MathSolve/PNP/ProgrammeTM2ReverseCompiler.lean
           lake env lean MathSolve/PNP/TM2FixedStepSimulation.lean
           lake env lean MathSolve/PNP/TM2StepAuxSimulation.lean
           lake env lean MathSolve/PNP/ProgrammeMachine.lean
