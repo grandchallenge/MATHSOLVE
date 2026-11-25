@@ -46,6 +46,7 @@ theorem programmeTM2_step_accept_enters_cleanup
       simp [Turing.FinTM2.step, Turing.TM2.step,
         programmeTM2Machine, programmeTM2Program,
         programmeTM2TerminalEntry, hc]
+      rfl
 
 /-- A rejecting represented Programme state enters the same cleanup mode,
 without accidentally following the ordinary nonterminal transition. -/
@@ -70,6 +71,7 @@ theorem programmeTM2_step_reject_enters_cleanup
       simp [Turing.FinTM2.step, Turing.TM2.step,
         programmeTM2Machine, programmeTM2Program,
         programmeTM2TerminalEntry, hc, hn]
+      rfl
 
 /-- The finite Boolean result computed by the cleanup code agrees exactly with
 the source machine's terminal output, for both accepting and rejecting states. -/
@@ -90,8 +92,9 @@ theorem programmeTM2_terminal_result_agrees_with_source
     have hvne : target.var.control ≠ M.accept := by
       rw [hvr]
       exact M.accept_ne_reject.symm
+    have hreject_ne_accept : M.reject ≠ M.accept := M.accept_ne_reject.symm
     simp [ProgrammeMachine.output, programmeTM2TerminalResult,
-      hr, hne, hvr, hvne]
+      hr, hvr, hreject_ne_accept]
 
 #print axioms programmeTM2_step_accept_enters_cleanup
 #print axioms programmeTM2_step_reject_enters_cleanup
