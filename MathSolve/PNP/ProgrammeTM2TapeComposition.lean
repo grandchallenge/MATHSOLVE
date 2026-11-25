@@ -75,6 +75,13 @@ theorem reverseInputUpdate_work (M : ProgrammeMachine) (k : Fin M.workTapeCount)
   cases h : (c.var.snapshotAction M).inputMove <;>
     simp [reverseInputUpdate, h, programmeTM2WorkTape, Function.update_of_ne]
 
+/-- Exact dependent-function frame equation, independent of simplifier matching. -/
+private theorem reverseDoubleUpdate_other {α : Type*} [DecidableEq α] {β : α → Type*}
+    (S : ∀ k, β k) (p q x : α) (v : β p) (u : β q)
+    (hp : x ≠ p) (hq : x ≠ q) :
+    Function.update (Function.update S p v) q u x = S x :=
+  (Function.update_of_ne hq u (Function.update S p v)).trans (Function.update_of_ne hp v S)
+
 theorem reverseWorkUpdate_other (M : ProgrammeMachine) (k j : Fin M.workTapeCount)
     (c : ReverseCfg M) (hne : j ≠ k) :
     programmeTM2WorkTape M (reverseWorkUpdate M k c) j = programmeTM2WorkTape M c j := by
@@ -86,8 +93,15 @@ theorem reverseWorkUpdate_other (M : ProgrammeMachine) (k j : Fin M.workTapeCoun
   have hrl : (ProgrammeTM2Stack.workRight j : ProgrammeTM2Stack M.workTapeCount) ≠ .workLeft k := by intro he; cases he
   cases h : (c.var.snapshotAction M).workMove k <;>
     simp only [reverseWorkUpdate, h, programmeTM2WorkTape, ProgrammeTM2State.setWorkSymbol,
-      Function.update_of_ne hne, Function.update_of_ne hll, Function.update_of_ne hrr,
-      Function.update_of_ne hlr, Function.update_of_ne hrl]
+      Function.update_of_ne hne]
+  all_goals
+    congr 1 <;> congr 1 <;>
+      first
+      | exact reverseDoubleUpdate_other _ _ _ _ _ _ hlr hll
+      | exact reverseDoubleUpdate_other _ _ _ _ _ _ hrr hrl
+      | exact reverseDoubleUpdate_other _ _ _ _ _ _ hll hlr
+      | exact reverseDoubleUpdate_other _ _ _ _ _ _ hrl hrr
+      | rfl
 
 theorem reverseWorkUpdate_own (M : ProgrammeMachine) (k : Fin M.workTapeCount)
     (c : ReverseCfg M) :
