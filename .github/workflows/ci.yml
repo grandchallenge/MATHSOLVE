@@ -288,6 +288,49 @@ jobs:
           python ci/checked_lean.py -- lake env lean MathSolve/FormalConjectures/Replay.lean
           python ci/checked_lean.py -- lake env lean MathSolve/PNP/CarrierBridge.lean
           python ci/checked_lean.py -- lake env lean MathSolve/PNP/PolyBoundBridge.lean
+          python ci/checked_lean.py -- lake build MathSolve.PNP.ModelBridgeClosure
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/SimulationOverhead.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/StepSimulation.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/RelationalStepSimulation.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2Provenance.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2StackEncoding.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2StackOps.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2StatementCost.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2TokenDecode.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2ProgrammeControl.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2ProgrammeCompiler.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2ProgrammeInvariant.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2CfgInvariant.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2ProgrammeLocal.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2ProgrammeRunStep.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2ProgrammeActions.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2ProgrammeFamilyOps.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2ProgrammeInitialization.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2ProgrammeStartupStep.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2ProgrammeStartupRun.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2ProgrammeRewindRun.lean
+          python ci/checked_lean.py --require-axiom MathSolve.PNP.tm2ToProgrammeCompiler_constructive -- lake env lean MathSolve/PNP/TM2ForwardCompiler.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2Types.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2Machine.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2InitRepresentation.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2InitRun.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2Operational.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2StepPreservation.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2RunInvariant.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2Cleanup.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2RunTransfer.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2TerminalCleanup.lean
+          python ci/checked_lean.py --require-axiom MathSolve.PNP.programmeToTM2Compiler_constructive -- lake env lean MathSolve/PNP/ProgrammeTM2ReverseCompiler.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2TapeEffects.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2StepSimulation.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2TapeOps.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeTM2Representation.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2FixedStepSimulation.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/TM2StepAuxSimulation.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeMachine.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ProgrammeStep.lean
+          python ci/checked_lean.py --require-axiom MathSolve.PNP.importedTM2_iff_programmePolyTime_constructive -- lake env lean MathSolve/PNP/ModelBridgeClosure.lean
+          python ci/checked_lean.py -- lake env lean MathSolve/PNP/ModelBridge.lean
           python ci/checked_lean.py --strict-warnings --output /tmp/erdos602-axioms.txt --require-axiom Erdos602ListCore.essentialDisjoint_of_finiteInNeighbours --require-axiom Erdos602ListCore.propertyB_of_finiteInNeighbours -- lake env lean research/ERDOS-602/EssentialDisjointListCore.lean
           python ci/checked_lean.py --strict-warnings --output /tmp/erdos602-set-bridge.txt --require-axiom MathSolve.Erdos602.finite_iff_exists_list_cover --require-axiom MathSolve.Erdos602.escapesEveryList_iff_infinite --require-axiom MathSolve.Erdos602.essentialDisjoint_of_finiteIncoming --require-axiom MathSolve.Erdos602.propertyB_of_finiteIncoming --require-axiom MathSolve.Erdos602.propertyB_of_countableIndex --require-axiom MathSolve.Erdos602.countable_index_source_parallel --require-axiom MathSolve.Erdos602.propertyB_of_countableOverlapComponents --require-axiom MathSolve.Erdos602.propertyB_of_locallyCountableOverlaps --require-axiom MathSolve.Erdos602.BinaryPrefix.distinct_inter_finite --require-axiom MathSolve.Erdos602.BinaryPrefix.distinct_inter_not_one --require-axiom MathSolve.Erdos602.BinaryPrefix.hasPropertyB --require-axiom MathSolve.Erdos602.BinaryPrefix.stream_not_countable --require-axiom MathSolve.Erdos602.BinaryPrefix.not_essentiallyDisjoint --require-axiom MathSolve.Erdos602.BinaryPrefix.binaryPrefix_sharpness --require-axiom MathSolve.Erdos602.bernstein_nat --require-axiom MathSolve.Erdos602.bernstein_countable --require-axiom MathSolve.Erdos602.minimalCover_iff_privateWitnesses --require-axiom MathSolve.Erdos602.propertyB_of_minimalCover --require-axiom MathSolve.Erdos602.minimalCover_of_finiteTraces --require-axiom MathSolve.Erdos602.propertyB_of_finiteTraceCover -- lake env lean MathSolve/Erdos/E602SetBridge.lean
           ! grep -Eq 'sorryAx|error:|warning:' /tmp/erdos602-set-bridge.txt
