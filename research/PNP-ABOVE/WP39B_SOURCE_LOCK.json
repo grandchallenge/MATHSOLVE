@@ -1,0 +1,32 @@
+{
+  "module_order": [
+    "WP39Witness.lean"
+  ],
+  "modules": {
+    "WP39Witness.lean": {
+      "git_blob": "d9fece750f1ceac58b1a8a07bcd19188a04519f5",
+      "path": "research/PNP-ABOVE/WP39B_Witness.lean",
+      "sha256": "56a76840d0ce796e803d76e8cfb91629e4e02b24df14234f316480d359b6df6d",
+      "theorems": [
+        "bitProgram_correct",
+        "witnessProgram_correct",
+        "witnessProgram_verified",
+        "witnessProgram_full",
+        "witnessProgram_runs",
+        "edgeIndex_lt_square",
+        "index_surj_bounded",
+        "parityBlock_inputsLt",
+        "baseConstraint_inputsLt",
+        "nativeConstraint_inputsLt",
+        "nativeFormula_inputsLt",
+        "rpn_input_lt",
+        "native_active_model_unique",
+        "witnessProgram_canonical"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "protected_parent": "ffd5b2d01c80e25604c8044d3245ab0c485c14e4",
+  "schema": "PNP-ABOVE-WP39B-SOURCE-LOCK/1",
+  "theorem_count": 14
+}
