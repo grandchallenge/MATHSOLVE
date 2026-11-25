@@ -1,0 +1,55 @@
+{
+  "module_order": [
+    "WP39Planted.lean",
+    "WP39Native.lean"
+  ],
+  "modules": {
+    "WP39Native.lean": {
+      "git_blob": "8fa5702420c7881a0332821e1edc8b774d5e84ea",
+      "path": "research/PNP-ABOVE/WP39_Native.lean",
+      "sha256": "623e64d72ef13a05eb26c8dd91547f9d48b0923bd8454b041fe32d0cab7e2e62",
+      "theorems": [
+        "index_injective",
+        "read_write",
+        "nativeConstraint_eval",
+        "nativeFormula_eval",
+        "read_plantedBits",
+        "native_plantedBits_satisfies",
+        "fullNative_model_iff",
+        "fullNative_satisfies",
+        "fullNative_wrong_branch_unsat",
+        "supportPreimage_card",
+        "writeNative_support",
+        "native_derivation_pullback",
+        "native_pullback_constraints",
+        "native_wrong_branch_width",
+        "native_forced_selector_width"
+      ]
+    },
+    "WP39Planted.lean": {
+      "git_blob": "1f7f954418705b91a855a15a3d3dbb753a8cb3c6",
+      "path": "research/PNP-ABOVE/WP39_Planted.lean",
+      "sha256": "ff94af55003b8c78f9aef9528da23b57ccd32b892cd1a09874ec5762bb921f75",
+      "theorems": [
+        "lift_restrict",
+        "planted_true_model",
+        "planted_model_iff",
+        "planted_false_unsat",
+        "restrict_support",
+        "planted_derivation_restrict",
+        "planted_forced_selector_width",
+        "planted_wrong_branch_width",
+        "planted_not_flipLaw",
+        "restrict_flip_none",
+        "restrict_flip_some",
+        "planted_repairLaw",
+        "complete_planted_unique",
+        "complete_planted_width"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "protected_parent": "f7743f17150ad8aabb1831d6b6e98ace0c8ad9f6",
+  "schema": "PNP-ABOVE-WP39A-SOURCE-LOCK/1",
+  "theorem_count": 29
+}
