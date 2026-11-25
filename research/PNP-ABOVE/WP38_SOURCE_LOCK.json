@@ -1,0 +1,62 @@
+{
+  "module_order": [
+    "WP38Greedy.lean",
+    "WP38Lex.lean",
+    "WP38Parser.lean"
+  ],
+  "modules": {
+    "WP38Greedy.lean": {
+      "git_blob": "94813f6460c824087c265c21fa8179e744f8d8af",
+      "path": "research/PNP-ABOVE/WP38_Greedy.lean",
+      "sha256": "c87d18726d1d1a16d60032afc9cb739a776577ee6807a449c163e7dcfac0e515",
+      "theorems": [
+        "lit_eval",
+        "pin_eval",
+        "step_sat",
+        "testP_correct",
+        "stepP_correct",
+        "inp_size",
+        "lit_size",
+        "stepP_growth",
+        "runP_correct",
+        "searchP_correct",
+        "fold_models",
+        "fold_sat",
+        "fold_length",
+        "search_length",
+        "search_model",
+        "searchP_runs"
+      ]
+    },
+    "WP38Lex.lean": {
+      "git_blob": "40ab13330b1b14941db91aa4fd574ae3de08408e",
+      "path": "research/PNP-ABOVE/WP38_Lex.lean",
+      "sha256": "d229d587cd570efff49e3c46b611ce974931feeefa1e19cdf4ab980ecb25b4fe",
+      "theorems": [
+        "choices_fold",
+        "search_choices",
+        "preferred_refl",
+        "preferred_antisymm",
+        "choices_preferred",
+        "search_preferred",
+        "canonical_unique",
+        "search_canonical"
+      ]
+    },
+    "WP38Parser.lean": {
+      "git_blob": "59f6a1838d372c03edda60db1401ad588cea9e4a",
+      "path": "research/PNP-ABOVE/WP38_Parser.lean",
+      "sha256": "97ca191d6a7f7721373acb3a95feb23f9b3707937ae9f1463fcd2203231444ac",
+      "theorems": [
+        "parseStepP_correct",
+        "parseStep_growth",
+        "parseStackP_correct",
+        "parseNodesP_rpn"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "protected_parent": "9b48af59b6ea94777653126680f0db95fa1fed04",
+  "schema": "PNP-ABOVE-WP38-SOURCE-LOCK/1",
+  "theorem_count": 28
+}
