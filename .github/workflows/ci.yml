@@ -165,6 +165,9 @@ jobs:
           lake env lean MathSolve/PNP/ProgrammeTM2InitRun.lean
           lake env lean MathSolve/PNP/ProgrammeTM2StepSimulation.lean
           lake env lean MathSolve/PNP/ProgrammeTM2InitRepresentation.lean
+          # Explicitly compile and replay the arbitrary-offset tape semantic spine.
+          lake build MathSolve.PNP.ProgrammeTM2SemanticInvariant
+          lake env lean MathSolve/PNP/ProgrammeTM2SemanticInvariant.lean
           lake env lean MathSolve/PNP/TM2FixedStepSimulation.lean
           lake env lean MathSolve/PNP/TM2StepAuxSimulation.lean
           lake env lean MathSolve/PNP/ProgrammeMachine.lean
