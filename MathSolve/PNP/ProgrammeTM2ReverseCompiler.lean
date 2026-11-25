@@ -47,8 +47,21 @@ def programmeTM2TimedDecider {decision : List Bool → Bool}
   runtime := fun input => programmeTM2ReverseCost source.machine input.length (source.runtime input)
   outputsFun := by
     intro input
-    rcases programmeTM2_reverse_outputs (source.outputs input) with ⟨h⟩
-    simpa [programmeTM2Aux, Turing.TM2OutputsInTime, Computability.encodeBool] using h
+    have h := Classical.choice (programmeTM2_reverse_outputs (source.outputs input))
+    have hm : ∀ xs : List Bool, List.map id xs = xs := by
+      intro xs
+      induction xs with
+      | nil => rfl
+      | cons b bs ih => change b :: List.map id bs = b :: bs; rw [ih]
+    change StateTransition.EvalsToInTime (programmeTM2Machine source.machine).step
+      (Turing.initList (programmeTM2Machine source.machine) (List.map id input))
+      (some (Turing.haltList (programmeTM2Machine source.machine) [decision input]))
+      (programmeTM2ReverseCost source.machine input.length (source.runtime input))
+    exact Eq.mpr (congrArg (fun xs : List Bool =>
+      StateTransition.EvalsToInTime (programmeTM2Machine source.machine).step
+        (Turing.initList (programmeTM2Machine source.machine) xs)
+        (some (Turing.haltList (programmeTM2Machine source.machine) [decision input]))
+        (programmeTM2ReverseCost source.machine input.length (source.runtime input))) (hm input)) h
 
 /-- The reverse compiler discharges the locked affine-overhead contract. -/
 theorem programmeToTM2Compiler_constructive : ProgrammeToTM2Compiler := by
