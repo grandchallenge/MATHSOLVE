@@ -59,8 +59,10 @@ theorem programmeTM2_simulates_from_init {M : ProgrammeMachine} {input : List Bo
   rcases programmeTM2_initialization_run M input with ⟨hi⟩
   rcases programmeTM2_simulates_bounded_run (programmeTM2ReadyInitCfg_represents M input) hrun with
     ⟨target', hr, ⟨ht⟩⟩
-  exact ⟨target', hr, ⟨StateTransition.EvalsToInTime.trans (programmeTM2Machine M).step
-    (2 * input.length + 3) bound _ _ (some target') hi ht⟩⟩
+  refine ⟨target', hr, ⟨?_⟩⟩
+  simpa only [Nat.add_comm bound (2 * input.length + 3)] using
+    (StateTransition.EvalsToInTime.trans (programmeTM2Machine M).step
+      (2 * input.length + 3) bound _ _ (some target') hi ht)
 
 #print axioms programmeTM2_simulates_iterate
 #print axioms programmeTM2_simulates_bounded_run
