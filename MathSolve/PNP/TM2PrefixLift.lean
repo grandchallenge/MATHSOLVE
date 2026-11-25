@@ -218,5 +218,41 @@ end Bundle
 #print axioms machine_halt
 #print axioms machine_run
 
+section PrefixComposition
+variable (tm : FinTM2) {E μ δ : Type}
+  [DecidableEq E] [Fintype E] [Fintype μ] [Fintype δ]
+  (Δ : E → Type) (raw : E) [Fintype (Δ raw)]
+  (entry : μ) (d : δ)
+  (P : μ → TM2.Stmt (alphabet tm.Γ Δ) (tm.Λ ⊕ μ) (tm.σ × δ))
+
+/-- Composing a checked input prefix and the lifted original run adds the
+prefix cost and original time bound exactly. No source-verifier execution is
+charged to the adapter or hidden in the initial configuration. -/
+theorem machine_outputs_of_prefix
+    (input : List (Δ raw)) (sourceInput : List (tm.Γ tm.k₀))
+    (out : List (tm.Γ tm.k₁)) (s t : Nat)
+    (hp : StateTransition.EvalsToInTime (machine tm E μ δ Δ raw entry d P).step
+      (initList (machine tm E μ δ Δ raw entry d P) input)
+      (some (cfg (initList tm sourceInput) (fun _ : E => []) d)) s)
+    (h : TM2OutputsInTime tm sourceInput (some out) t) :
+    Nonempty (TM2OutputsInTime (machine tm E μ δ Δ raw entry d P)
+      input (some out) (s+t)) := by
+  change StateTransition.EvalsToInTime tm.step (initList tm sourceInput)
+    (some (haltList tm out)) t at h
+  rcases machine_run tm Δ raw entry d P (initList tm sourceInput) (haltList tm out)
+      (fun _ : E => []) d t h with ⟨hr⟩
+  rw [machine_halt tm Δ raw entry d P out] at hr
+  refine ⟨?_⟩
+  change StateTransition.EvalsToInTime (machine tm E μ δ Δ raw entry d P).step
+    (initList (machine tm E μ δ Δ raw entry d P) input)
+    (some (haltList (machine tm E μ δ Δ raw entry d P) out)) (s+t)
+  simpa only [Nat.add_comm t s] using
+    (StateTransition.EvalsToInTime.trans (machine tm E μ δ Δ raw entry d P).step
+      s t _ _ _ hp hr)
+
+end PrefixComposition
+
+#print axioms machine_outputs_of_prefix
+
 end TM2PrefixLift
 end MathSolve.PNP
