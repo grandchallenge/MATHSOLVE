@@ -1,0 +1,15 @@
+{
+  "file": "WP43_ReflectionCore.lean",
+  "git_blob": "279b7a6e7e47ede8e9815a8222f204fb12cdda87",
+  "schema": "PNP-ABOVE-WP43-SOURCE-LOCK/1",
+  "sha256": "428263ce2ef635db43fb1e9593be54f5acf510e60fc5bb586d7fd1919ee5f589",
+  "theorems": [
+    "bitValue_axiom",
+    "selector_delta",
+    "difference_product",
+    "selector_prod_delta",
+    "singleton_lift",
+    "reflection_specialization"
+  ],
+  "upstream": "5926bdff5db621f44682a101007ef2fe3ae8d970"
+}
