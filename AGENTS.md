@@ -61,3 +61,18 @@ authorized recovery action.
 ## Binding CHAD-local Lean placement
 
 Apply the Human Steward's 2026-11-24 placement instruction in [MATH-PROGRAMME AGENTS.md](https://github.com/grandchallenge/MATH-PROGRAMME/blob/97d0f0d4b5aee119e4002778ecb870b66955aea9/AGENTS.md), reaffirmed 2026-11-25, to all new CHAD-local Lean development, scratch checks, replay preparation and bounded Lake builds. Before each local build use `~/.local/bin/gcl-lean-work status`, stage an exact source revision with `gcl-lean-work stage REPO EXACT_COMMIT PROJECT_SUBDIR NAME` (or `new NAME TOOLCHAIN` for scratch), seed only exact locked dependencies, and invoke `gcl-lean-work run NAME lean|lake ...`. Verify the resolved source, build, package, compiler, cache and temporary paths use the dedicated native ext4 NVMe-backed `/mnt/gcl-lean-work` or `/mnt/gcl-lean-ssd` volumes; do not merely move the compiler. Preserve exact toolchain/dependency pins, workspace isolation and capacity reserve. Existing HDD worktrees may remain for Git custody, not local compilation. On placement, mount or capacity failure, recover the SSD environment or use an authorized alternate runner; no silent HDD fallback and no bypass via absolute compiler paths. Record placement in local execution receipts. Do not remove other workers' active workspaces. This requirement does not alter protected review, evidence or certification gates.
+
+## Required CI resource isolation
+
+Classify the exact material transition before allocating expensive CI runners.
+Native PNP-ABOVE research under `research/PNP-ABOVE/` uses its own locked
+upstream replay; it is not a dependency of the local RH/NS, Erdős 602, PNP
+library bridge, Union-Closed, or Ten Proofs replay jobs. Do not dispatch those
+jobs for an isolated native PNP-ABOVE transition. Shared Lean environment and
+compiler-checker changes retain conservative coverage; full Solve CI replay is
+available by explicit manual dispatch. The root import index is not by itself
+a reason to run every campaign: classify its actual import delta. Retain the
+required global ledger, routing, policy and security checks. Never interpret a
+skipped replay as mathematical evidence or substitute this CI route for native
+source-locked validation. New replay steps must have explicit material routing
+and a negative-control test proving an unrelated change does not launch them.

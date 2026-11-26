@@ -4,7 +4,11 @@ on:
   pull_request:
     paths:
       - 'MathSolve/UnionClosed/FunctionalPreorderBridge.lean'
-      - 'MathSolve.lean'
+      - 'MathSolve/UnionClosed/**'
+      - 'lean-toolchain'
+      - 'lakefile.lean'
+      - 'lake-manifest.json'
+      - 'ci/checked_lean.py'
       - 'domains/union_closed/WP07_functional_preorder_bridge/**'
       - 'handoffs/UC-001/**'
       - '.github/workflows/uc-wp07-functional-preorder.yml'
@@ -12,7 +16,11 @@ on:
     branches: [main]
     paths:
       - 'MathSolve/UnionClosed/FunctionalPreorderBridge.lean'
-      - 'MathSolve.lean'
+      - 'MathSolve/UnionClosed/**'
+      - 'lean-toolchain'
+      - 'lakefile.lean'
+      - 'lake-manifest.json'
+      - 'ci/checked_lean.py'
       - 'domains/union_closed/WP07_functional_preorder_bridge/**'
       - 'handoffs/UC-001/**'
       - '.github/workflows/uc-wp07-functional-preorder.yml'
@@ -34,9 +42,15 @@ jobs:
           SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
       - uses: grandchallenge/lean-action@37f8471aecd2efbeab3b1e1a75ad18fb8f5c1b01
+        with:
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
       - name: Replay WP07 theorem surface
         run: |
           set -euo pipefail
+          python ci/checked_lean.py -- lake build MathSolve.UnionClosed.FunctionalPreorderBridge
           python ci/checked_lean.py -- lake env lean MathSolve/UnionClosed/FunctionalPreorderBridge.lean
           if grep -nE '^[[:space:]]*(sorry|admit)([[:space:]]|$)' MathSolve/UnionClosed/FunctionalPreorderBridge.lean; then
             echo 'proof placeholder found' >&2
