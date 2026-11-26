@@ -2,10 +2,12 @@
 """Fresh WP40 check against source-matched retained WP38B replay outputs."""
 import hashlib,json,os,re,shutil,subprocess,sys
 from pathlib import Path
+from PNP_REPLAY_PREFLIGHT import direct_runner_guard, preflight, bounded_run
 
 if not __debug__: raise SystemExit("WP40_OPTIMIZATION_FORBIDDEN")
 if len(sys.argv)!=5: raise SystemExit("USAGE: WP40_REPLAY.py UPSTREAM GCL_HEAD WP38B_REPLAY_DIR FRESH_DIR")
 u,g,b,d=(Path(s).resolve() for s in sys.argv[1:])
+direct_runner_guard()
 src=g/'research/PNP-ABOVE'
 m=json.loads((src/'WP40_SOURCE_LOCK.json').read_text())
 sha=lambda data: hashlib.sha256(data).hexdigest()
@@ -15,10 +17,12 @@ assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=u,text=True).strip
 subprocess.run(['git','merge-base','--is-ancestor',m['protected_parent'],'HEAD'],cwd=g,check=True)
 assert not d.exists()
 assert (b/'status.txt').read_text().strip()=='WP38B_VALID_PROMISE_IFF_WITNESS_IFF_CANONICAL__UNRESTRICTED_LOWER_OPEN'
+lean,placement=preflight(u,d)
 protected={}
 for f in src.glob('*.lean'):
     protected.setdefault(sha(f.read_bytes()),[]).append(str(f.relative_to(g)))
 target=d/'PNPAbove'; target.mkdir(parents=True)
+(d/'placement.json').write_text(json.dumps(placement,indent=2,sort_keys=True)+'\n')
 receipts=[]
 for prior,count in ((b,99),):
     files=sorted((prior/'PNPAbove').glob('*.lean'))
@@ -31,15 +35,12 @@ for prior,count in ((b,99),):
         receipts.append({'module':f.name,'source_sha256':h,'olean_sha256':sha(obj.read_bytes()),'protected_paths':protected[h]})
 (d/'predecessor_receipts.json').write_text(json.dumps(receipts,indent=2,sort_keys=True)+'\n')
 env=os.environ.copy()
-lean=Path.home()/'.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/lean'
 assert (u/'lean-toolchain').read_text().strip()=='leanprover/lean4:v4.35.0-rc3'
-assert 'version 4.35.0-rc3' in subprocess.check_output([str(lean),'--version'],text=True)
 paths=[u/'.lake/build/lib/lean']+sorted((u/'.lake/packages').glob('*/.lake/build/lib/lean'))
 assert all(p.is_dir() for p in paths)
 env['LEAN_PATH']=':'.join(map(str,[d]+paths)); env['LEAN_NUM_THREADS']='1'
 def run(args,log):
-    with (d/log).open('w') as out:
-        subprocess.run([str(lean),'-R',str(d),*map(str,args)],cwd=u,env=env,stdout=out,stderr=subprocess.STDOUT,check=True)
+    bounded_run([str(lean),'-R',str(d),*map(str,args)],cwd=u,env=env,log=d/log,receipt=d/'execution.jsonl')
 names=[]
 for mod in m['module_order']:
     rec=m['modules'][mod]; f=g/rec['path']; data=f.read_bytes()
