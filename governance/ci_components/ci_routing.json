@@ -5,7 +5,8 @@
   "owner": "MATHSOLVE CI engineering",
   "paths": {
     "exact": [
-      "tests/test_lean_ci_integrity.py"
+      "tests/test_lean_ci_integrity.py",
+      "tests/test_solve_ci_impact.py"
     ],
     "prefixes": [
       "governance/ci_routing/"
