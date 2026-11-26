@@ -48,3 +48,9 @@ This rules out treating feasible reflection as a minor implementation lemma. It 
 ## 4. Next target
 
 Seek a lower bound on computational states that does not assume polynomially bounded IPS under P=NP, or prove the missing implication using independently justified mathematics. Restricted IPS lower bounds do not by themselves supply this. No further syzygy-count or mere encoding lower bound closes it.
+
+## Verification scope
+
+Dependency-free sparse ordinary F2 regression: 1,640 circuits (all three-gate histories on two input bits, plus 200 seeded five-gate histories), 189 identically zero circuits, 1,451 SAT controls, 378 perturbed reverse lifts. All gate-clause substitutions, wire Booleanity and forward/backward coefficient identities passed. No implicit Boolean reduction except in independent reference construction of residual lifts. WP44_GateCore.lean contains ten general commutative-ring identities underlying the construction; the gate DAG complexity analysis and quantifier-level feasible-reflection equivalence are paper derivations, not formalized complexity theorems.
+
+For exact all-CNF coverage without formula-size normalization assumptions, choose separate shapes (n,m,k), each bounded by input size N. At each of m*k literal slots use 2n presence bits with at most one selected, and form its factor as the product of 1-u(1-l) over signed falsity literals l. All-zero slots give 1, including empty clauses. This handles repeated literals and variable clause lengths by absent slots, with O(mkn) bits; no tautological clause padding needed. The decider checks valid codes and decodes them, and the arithmetized verifier specializes exactly to the original ordinary satisfaction polynomial. Shapes and circuit sizes are polynomially bounded in N; the feasible-reflection premise quantifies over them with one polynomial bound.
