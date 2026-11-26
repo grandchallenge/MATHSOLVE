@@ -40,9 +40,32 @@ $$
 \Phi_{X|Y}(V,f)\leq\min(|X_{bits}|,|Y_{bits}|)+1\leq\lfloor n/2\rfloor+1.
 $$
 
-The same bound holds for Psi and for any fixed probability-weighted average over cuts. This is independent of the algebraic degree, reuse depth and truth-table size. Such an unscaled communication cost cannot supply superpolynomial initial demand. An arbitrary unnormalized sum or nonlinear reweighting is not covered by this ceiling; it requires a new one-gate estimate and cannot inherit the 3-bit bound automatically. This is a no-go for the proposed direct transfer, not for all communication-derived or SCC invariants.
+The same bound holds for Psi and for any fixed probability-weighted average over cuts. This is independent of the algebraic degree, reuse depth and truth-table size. Such an unscaled communication cost cannot supply superpolynomial initial demand. A fixed nonnegative unnormalized sum of cuts is also limited by the following argument. Nonlinear or target-dependent reweightings require a new estimate. This is a no-go for the proposed direct transfer, not for all communication-derived or SCC invariants.
 
 At the initial affine state the advice vanishes. For the inner-product target on two m-bit blocks, the sign matrix is Walsh–Hadamard and has real rank 2^m. Each leaf of a deterministic protocol on the full rectangle is a rectangle and, with both parties outputting, monochromatic. A depth-d protocol therefore expresses the sign matrix as at most 2^d rank-one matrices, proving d at least m. The candidate can detect linear interaction demand but not the required superpolynomial demand. Even maximal communication may correspond to an inexpensive circuit.
+
+## Fixed nonnegative cut sums: a stronger obstruction
+
+For n at least two let each unordered nontrivial coordinate cut c have a nonnegative weight w_c, fixed independently of V and f. Define the aggregate potential by
+
+$$
+\Psi_w(V,f)=\sum_c w_c\Phi_c(V,f).
+$$
+
+Suppose a uniform one-gate ceiling K(n) holds for this aggregate for every target and every legal gate. At the affine state take the target f=x_i*x_j for each distinct pair of input coordinates. The single gate computing f makes the successor potential zero. For every cut separating i and j the initial interaction is a nonconstant AND of two private bits, with no interaction advice, so its communication cost is at least one (fix all remaining inputs to zero). For cuts not separating the pair the interaction is zero. Nonnegativity therefore implies that the sum of weights over cuts separating that pair is at most K(n). Sum these inequalities over unordered pairs. A cut of block sizes a and n-a separates exactly a(n-a) pairs, at least n-1. Hence
+
+$$
+(n-1)\sum_c w_c\leq\binom n2 K(n),\qquad
+\sum_c w_c\leq nK(n)/2.
+$$
+
+The individual input-transfer ceiling gives, for every target and state,
+
+$$
+\Psi_w(V,f)\leq\frac{nK(n)}2(\lfloor n/2\rfloor+1).
+$$
+
+Thus the ratio of initial demand to the universal one-gate bound is at most quadratic for every fixed nonnegative cut weighting, even when exponentially many cuts appear and weights are not normalized. For K(n)=0 all nontrivial weights vanish. This argument does not cover signed weights, target-dependent weights, or nonlinear functionals; these need independent demand and gate estimates. The elementary pair-counting proof is author-derived and not a separate finite replay claim.
 
 ## Replay and evidence boundary
 
