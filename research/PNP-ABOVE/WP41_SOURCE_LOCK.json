@@ -1,0 +1,58 @@
+{
+  "module_order": [
+    "WP41Weighted.lean",
+    "WP41Budget.lean"
+  ],
+  "modules": {
+    "WP41Budget.lean": {
+      "git_blob": "3c83a9deb5d0a0fecb450d0cb933bed03d5b5e13",
+      "path": "research/PNP-ABOVE/WP41_BudgetSearch.lean",
+      "sha256": "3932df1fb02b3dceb20e7660e1fd202f0cca236d59b6aff631a8f79f4ee7e339",
+      "theorems": [
+        "words_length",
+        "mem_words",
+        "shortWords_length",
+        "mem_shortWords",
+        "codeWords_length",
+        "candidate_present",
+        "score_iff_allowance",
+        "allowance_per_level",
+        "totalAllowance_le",
+        "attempt_complete",
+        "attempt_sound",
+        "candidates_sound",
+        "candidates_complete",
+        "candidates_iff"
+      ]
+    },
+    "WP41Weighted.lean": {
+      "git_blob": "3e9b6bd9596e3ed23d3343c8ffaf707f8b5c89a6",
+      "path": "research/PNP-ABOVE/WP41_WeightedCapacity.lean",
+      "sha256": "d8886f50e8d04c0d6a793fa58f96402e585d46e2282b9bfa818061fc3964ffab",
+      "theorems": [
+        "const_success",
+        "achieved_iff_sat",
+        "capacity_achieved",
+        "capacity_le",
+        "score_pos",
+        "capacity_pos",
+        "capacity_zero_iff",
+        "esize_const",
+        "esize_let",
+        "additive_charge_collapses",
+        "successful_poly_bound",
+        "solver_capacity_polynomial",
+        "superpoly_excludes_solver",
+        "compose_success",
+        "score_compose",
+        "capacity_transport",
+        "tag_transport",
+        "score_budget_bounds"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "protected_parent": "b5e94ad38a5f705da99906620f431cc9336c383d",
+  "schema": "PNP-ABOVE-WP41-SOURCE-LOCK/1",
+  "theorem_count": 32
+}
