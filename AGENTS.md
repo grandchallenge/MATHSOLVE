@@ -76,3 +76,12 @@ required global ledger, routing, policy and security checks. Never interpret a
 skipped replay as mathematical evidence or substitute this CI route for native
 source-locked validation. New replay steps must have explicit material routing
 and a negative-control test proving an unrelated change does not launch them.
+
+For the independently scoped `research/PNP-ABOVE/` and `research/SCC-001/`
+research trees, the isolated-research ledger route also excludes unrelated
+campaign-specific fixtures, source-concordance checks and Erdős replays.
+Global worker-queue, recursive manifest, compiler-integrity, policy and
+security checks remain unconditional. Unknown, mixed-with-other-component,
+or shared-control changes retain the conservative ledger coverage.
+This does not establish the dependency closure of every other research tree;
+extend the positive scope list only with evidence and negative controls.

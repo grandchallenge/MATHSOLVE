@@ -71,6 +71,11 @@ def native_pnp_only(paths):
     # their former coverage until their own dependency closures are established.
     return bool(paths) and all(p.startswith("research/PNP-ABOVE/") for p in paths)
 
+def isolated_research_only(paths):
+    """Positive scope list; mixed, unknown and shared changes retain full ledgers."""
+    prefixes = ("research/PNP-ABOVE/", "research/SCC-001/")
+    return bool(paths) and all(p.startswith(prefixes) for p in paths)
+
 def classify(paths, before, after):
     selected, otp = set(), False
     for path in paths:
@@ -166,6 +171,7 @@ def main():
         print(f"formal={str(bool(selected)).lower()}", file=out)
         print(f"otp={str(otp).lower()}", file=out)
         print(f"native_pnp_only={str(native_pnp_only(paths)).lower()}", file=out)
+        print(f"isolated_research_only={str(isolated_research_only(paths)).lower()}", file=out)
         print("targets=" + " ".join(targets), file=out)
 
 if __name__ == "__main__":
