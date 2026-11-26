@@ -2,7 +2,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "ci"))
-from solve_ci_impact import classify, LANES, workflow_impact, native_pnp_only
+from solve_ci_impact import classify, LANES, workflow_impact, native_pnp_only, isolated_research_only
 
 class ImpactTests(unittest.TestCase):
     def route(self, paths, old="", new=""):
@@ -37,3 +37,32 @@ class ImpactTests(unittest.TestCase):
         self.assertFalse(native_pnp_only(["research/PNP-ABOVE/WP39B_Witness.lean",
                                          "ci/checked_lean.py"]))
         self.assertFalse(native_pnp_only([]))
+
+    def test_isolated_research_scope(self):
+        pnp = "research/PNP-ABOVE/WP39B_Witness.lean"
+        scc = "research/SCC-001/interaction_replay.py"
+        for paths in ([pnp], [scc], [pnp, scc]):
+            self.assertTrue(isolated_research_only(paths))
+            self.assertEqual(self.route(paths), (set(), False))
+        for paths in ([], [pnp, "ci/checked_lean.py"], [scc, "research/OTHER/proof.lean"],
+                      ["research/SCC-001-other/proof.lean"], ["MathSolve/PNP/Next.lean"]):
+            self.assertFalse(isolated_research_only(paths))
+
+    def test_ledger_gate_bindings(self):
+        import yaml
+        root = Path(__file__).resolve().parents[1]
+        jobs = yaml.safe_load((root / ".github/workflows/ci.yml").read_text())["jobs"]
+        steps = {s.get("name"): s for s in jobs["ledgers"]["steps"]}
+        for name in ("Validate global worker-queue controls",
+                     "Validate recursive campaign manifests and Cert boundaries",
+                     "Validate Lean compiler execution safety",
+                     "Require successful impact classification"):
+            self.assertNotIn("if", steps[name])
+        for name in ("Validate Erdős campaign evidence and replays",
+                     "Validate campaign-specific intake interfaces",
+                     "Validate GCL-ERDOS3 frontier and independent intake",
+                     "Validate campaign-specific activation and concordance",
+                     "Validate NS-CI WP02 conditional-regularity ledger",
+                     "Validate OPENMATH H1-12 three-core arithmetic"):
+            self.assertEqual(steps[name]["if"],
+                "needs.impact.outputs.isolated_research_only != 'true'")
