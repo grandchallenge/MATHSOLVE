@@ -1,6 +1,6 @@
 # WP43 — Exact residual reflection and the cheap-rejection obstruction
 
-Author-derived mathematical candidate, not independent certification or novelty claim. Builds on WP42 and the established reflection-principle method of Jan Krajicek, A note on SAT algorithms and proof complexity, IPL 112 (2012), Theorem 2.1, https://www2.karlin.mff.cuni.cz/~krajicek/sat.pdf . The source theorem transfers proof-size lower bounds to algorithms with feasibly provable soundness, not arbitrary correct algorithms. Our direct polynomial argument isolates the soundness-certificate cost for the WP42 residual model. Bibliographic source identity only; no byte lock for the paper.
+Author-derived mathematical candidate, not independent certification or novelty claim. Builds on WP42 and the established reflection-principle method of Jan Krajicek, A note on SAT algorithms and proof complexity, IPL 112 (2012), Theorem 2.1, https://www2.karlin.mff.cuni.cz/~krajicek/sat.pdf . The source theorem transfers proof-size lower bounds to algorithms with feasibly provable soundness, not arbitrary correct algorithms. Our direct polynomial argument isolates the soundness-certificate cost for the WP42 residual model. Acquired original author-hosted PDF, 137502 bytes, SHA256 `6a7a6ea0261a45201a55e1d64c3ad0d9d531049525fbfa4b7ab1bca4578e8117`; retained in CHAD private evidence, not redistributed. Theorem 2.1 checked against the author-hosted text.
 
 ## Setup
 
