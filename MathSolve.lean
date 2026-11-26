@@ -54,3 +54,4 @@ import MathSolve.PNP.ProgrammeTM2ReverseCompiler
 import MathSolve.PNP.ModelBridgeClosure
 import MathSolve.PNP.NPVerifierBridge
 import MathSolve.PNP.TM2PrefixLift
+import MathSolve.PNP.TM2PairExpand
