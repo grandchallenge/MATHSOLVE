@@ -2,6 +2,7 @@ name: Solve checks
 
 on:
   pull_request:
+  workflow_dispatch:
   push:
     branches: [main]
 
@@ -13,10 +14,44 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  impact:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      pnp: ${{ steps.classify.outputs.pnp }}
+      rhns: ${{ steps.classify.outputs.rhns }}
+      erdos: ${{ steps.classify.outputs.erdos }}
+      uc: ${{ steps.classify.outputs.uc }}
+      rsiccc: ${{ steps.classify.outputs.rsiccc }}
+      full: ${{ steps.classify.outputs.full }}
+      formal: ${{ steps.classify.outputs.formal }}
+      otp: ${{ steps.classify.outputs.otp }}
+      native_pnp_only: ${{ steps.classify.outputs.native_pnp_only }}
+      targets: ${{ steps.classify.outputs.targets }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: "3.12.13"
+      - name: Install locked classification dependencies
+        run: python -m pip install -r requirements-ci.txt
+      - name: Classify exact material transition
+        id: classify
+        run: python ci/solve_ci_impact.py
+
   ledgers:
+    needs: impact
+    if: always()
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
+      - name: Require successful impact classification
+        env:
+          IMPACT_RESULT: ${{ needs.impact.result }}
+        run: test "$IMPACT_RESULT" = success
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
@@ -33,6 +68,7 @@ jobs:
         run: |
           python ci/validate_lean_ci_integrity.py
           python -m unittest tests/test_lean_ci_integrity.py -v
+          python -m unittest tests/test_solve_ci_impact.py -v
       - name: Validate claim ledgers, programme references, and bounded tactic routing
         run: |
           python ci/validate_solve.py
@@ -50,115 +86,142 @@ jobs:
           python -m unittest ci/test_external_catalog_promotion_dossiers.py -v
           python -m json.tool schemas/external_catalog_promotion_dossier.schema.json >/dev/null
       - name: Validate RM-DIO-004 bounded ResearchMath route
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_rm_dio_004.py
           python ci/test_validate_rm_dio_004.py
       - name: Validate EUCLID-GCD-E2E-001 deterministic candidate
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_euclid_gcd_solve.py
           python -m unittest ci/test_euclid_gcd_solve.py -v
           python solve/euclid_gcd.py --a 252 --b 105 --output /tmp/euclid-gcd.json
           cmp /tmp/euclid-gcd.json certificates/EUCLID-GCD-E2E-001.json
       - name: Validate EUCLID-DIOPHANTINE-E2E-002 deterministic candidates
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_euclid_diophantine_solve.py
           python -m unittest ci/test_euclid_diophantine_solve.py -v
           python solve/euclid_diophantine.py --output /tmp/euclid-diophantine.json
           cmp /tmp/euclid-diophantine.json certificates/EUCLID-DIOPHANTINE-E2E-002.json
       - name: Validate OPENMATH H1-12 three-core arithmetic
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_three_core.py
           python -m unittest ci/test_openmath_h1_12_three_core.py -v
       - name: Validate OPENMATH H1-12 four-core arithmetic
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_four_core.py
           python -m unittest ci/test_openmath_h1_12_four_core.py -v
       - name: Validate OPENMATH H1-12 saturated-core reduction
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_saturated_core.py
           python -m unittest ci/test_openmath_h1_12_saturated_core.py -v
       - name: Validate OPENMATH H1-12 profile 3334 normal form
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3334_normal_form.py
           python -m unittest ci/test_openmath_h1_12_3334_normal_form.py -v
       - name: Validate OPENMATH H1-12 profile 3334 D2=3 reduction
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3334_d2_3.py
           python -m unittest ci/test_openmath_h1_12_3334_d2_3.py -v
       - name: Validate OPENMATH H1-12 profile 3334 D2=4 reduction
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3334_d2_4.py
           python -m unittest ci/test_openmath_h1_12_3334_d2_4.py -v
       - name: Validate OPENMATH H1-12 profile 3334 D2=5 reduction
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3334_d2_5.py
           python -m unittest ci/test_openmath_h1_12_3334_d2_5.py -v
       - name: Validate OPENMATH H1-12 profile 3333 normal form
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3333_normal_form.py
           python -m unittest ci/test_openmath_h1_12_3333_normal_form.py -v
       - name: Validate OPENMATH H1-12 profile 3333 saturated-hub reduction
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3333_saturated_hub.py
           python -m unittest ci/test_openmath_h1_12_3333_saturated_hub.py -v
       - name: Validate OPENMATH H1-12 profile 3333 D2=4 C4 exclusion
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3333_c4.py
           python -m unittest ci/test_openmath_h1_12_3333_c4.py -v
       - name: Validate OPENMATH H1-12 profile 3333 non-saturated star exclusion
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3333_nonsat_star.py
           python -m unittest ci/test_openmath_h1_12_3333_nonsat_star.py -v
       - name: Validate OPENMATH H1-12 profile 3333 saturated equality exclusion
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3333_saturated_equality.py
           python -m unittest ci/test_openmath_h1_12_3333_saturated_equality.py -v
       - name: Validate OPENMATH H1-12 profile 3333 triangle-isolated normal form
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3333_triangle_isolated.py
           python -m unittest ci/test_openmath_h1_12_3333_triangle_isolated.py -v
       - name: Validate OPENMATH H1-12 profile 3333 triangle Type P exclusion
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3333_triangle_type_p.py
           python -m unittest ci/test_openmath_h1_12_3333_triangle_type_p.py -v
       - name: Validate OPENMATH H1-12 profile 3333 triangle Type C exclusion
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3333_triangle_type_c.py
           python -m unittest ci/test_openmath_h1_12_3333_triangle_type_c.py -v
       - name: Validate OPENMATH H1-12 profile 3333 P4 exclusion
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_3333_p4.py
           python -m unittest ci/test_openmath_h1_12_3333_p4.py -v
       - name: Validate OPENMATH H1-12 q4 sector-consistency closure
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_q4_sector_closure.py
           python -m unittest ci/test_openmath_h1_12_q4_sector_closure.py -v
       - name: Validate OPENMATH H1-12 q5 profile reduction
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_q5_profiles.py
           python -m unittest ci/test_openmath_h1_12_q5_profiles.py -v
       - name: Validate OPENMATH H1-12 q5 saturation reduction
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_q5_saturation.py
           python -m unittest ci/test_openmath_h1_12_q5_saturation.py -v
       - name: Validate OPENMATH H1-12 q5 profile 33334 closure
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_q5_33334.py
           python -m unittest ci/test_openmath_h1_12_q5_33334.py -v
       - name: Validate OPENMATH H1-12 q5 profile 33333 reduction
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_q5_33333.py
           python -m unittest ci/test_openmath_h1_12_q5_33333.py -v
       - name: Validate OPENMATH H1-12 q5 equality normal form
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_12_q5_equality.py
           python -m unittest ci/test_openmath_h1_12_q5_equality.py -v
           python -m unittest ci/test_openmath_h1_14_wolfram.py -v
       - name: Validate OPENMATH H1-15 compound order-type receipt
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_15_compound.py
           python -m unittest ci/test_openmath_h1_15_compound.py -v
       - name: Validate OPENMATH H1-16 face-loss mining and q6 profile 333344 closure
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_openmath_h1_333344.py >/tmp/h1-333344.json
           python -m unittest ci/test_openmath_h1_16.py -v
@@ -181,6 +244,7 @@ jobs:
           python -m json.tool schemas/mathcert_handoff.schema.json >/dev/null
           python -m json.tool templates/mathcert_handoff.json >/dev/null
       - name: Validate NS-CI WP02 conditional-regularity ledger
+        if: needs.impact.outputs.native_pnp_only != 'true'
         run: |
           python ci/validate_ns_ci_wp02.py
           python -m unittest ci/test_validate_ns_ci_wp02.py -v
@@ -190,6 +254,8 @@ jobs:
           python ci/validate_ns_ci_independent_contribution_pilot.py
           python -m unittest tests/test_ns_ci_independent_contribution_pilot.py -v
           python -m unittest tests/test_ns_ci_github_contribution_intake.py -v
+      - name: Validate Erdős integration and worker-queue controls
+        run: |
           python ci/validate_erdos_open_recon_activation.py
           python ci/validate_erdos_open_cohort_closures.py
           python -m unittest tests/test_erdos_open_cohort_closure.py -v
@@ -225,6 +291,7 @@ jobs:
           python -m unittest tests/test_gcl_erdos3_github_contribution_intake.py tests/test_gcl_erdos3_lease_activation.py tests/test_gcl_erdos3_lease_reaper.py -v
 
       - name: Validate OpenAI Ten Proofs independent handoffs
+        if: needs.impact.outputs.otp == 'true'
         run: |
           python ci/validate_openai_ten_proofs_result_family_handoffs.py
           python -m unittest ci/test_openai_ten_proofs_result_family_handoffs.py tests/test_openai_ten_proofs_permanent_circuit_handoff.py -v
@@ -236,6 +303,8 @@ jobs:
           python -m json.tool work_packages/OPENAI_TEN_PROOFS_WP00/result_family_handoffs/OTP-C-PERMANENT-CIRCUIT.json >/dev/null
 
   otp-handoff-cross-platform:
+    needs: impact
+    if: needs.impact.outputs.otp == 'true'
     strategy:
       fail-fast: false
       matrix:
@@ -267,6 +336,8 @@ jobs:
           python -m unittest ci/test_openai_ten_proofs_result_family_handoffs.py tests/test_openai_ten_proofs_permanent_circuit_handoff.py -v
 
   formal-targets:
+    needs: impact
+    if: needs.impact.outputs.formal == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
@@ -279,13 +350,34 @@ jobs:
           SUBJECT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: test "$(git rev-parse HEAD)" = "$SUBJECT_SHA"
       - uses: grandchallenge/lean-action@37f8471aecd2efbeab3b1e1a75ad18fb8f5c1b01
+        with:
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version: "3.12.13"
-      - name: Replay canonical RH and NS-CI targets
+      - name: Build only selected library modules
+        if: needs.impact.outputs.targets != ''
+        env:
+          TARGETS: ${{ needs.impact.outputs.targets }}
+        run: |
+          set -euo pipefail
+          python ci/checked_lean.py -- lake build $TARGETS
+      - name: 'Replay lane: rhns'
+        if: needs.impact.outputs.rhns == 'true'
         run: |
           set -euo pipefail
           python ci/checked_lean.py -- lake env lean MathSolve/FormalConjectures/Replay.lean
+          python ci/validate_formal_conjectures_targets.py
+          PYTHONPATH=ci python -m unittest ci/test_formal_conjectures_targets.py -v
+          python -m json.tool formal_sources/formal_conjectures/MS-FC-WP00.json >/dev/null
+          python -m json.tool schemas/formal_target_package.schema.json >/dev/null
+      - name: 'Replay lane: pnp'
+        if: needs.impact.outputs.pnp == 'true'
+        run: |
+          set -euo pipefail
           python ci/checked_lean.py -- lake env lean MathSolve/PNP/CarrierBridge.lean
           python ci/checked_lean.py -- lake env lean MathSolve/PNP/PolyBoundBridge.lean
           python ci/checked_lean.py -- lake build MathSolve.PNP.ModelBridgeClosure
@@ -335,6 +427,10 @@ jobs:
           python ci/checked_lean.py -- lake build MathSolve.PNP.TM2PrefixLift
           python ci/checked_lean.py --require-axiom MathSolve.PNP.TM2PrefixLift.stmt_stepAux --require-axiom MathSolve.PNP.TM2PrefixLift.bounded_run --require-axiom MathSolve.PNP.TM2PrefixLift.machine_halt --require-axiom MathSolve.PNP.TM2PrefixLift.machine_outputs_of_prefix -- lake env lean MathSolve/PNP/TM2PrefixLift.lean
           python ci/checked_lean.py -- lake env lean MathSolve/PNP/ModelBridge.lean
+      - name: 'Replay lane: erdos'
+        if: needs.impact.outputs.erdos == 'true'
+        run: |
+          set -euo pipefail
           python ci/checked_lean.py --strict-warnings --output /tmp/erdos602-axioms.txt --require-axiom Erdos602ListCore.essentialDisjoint_of_finiteInNeighbours --require-axiom Erdos602ListCore.propertyB_of_finiteInNeighbours -- lake env lean research/ERDOS-602/EssentialDisjointListCore.lean
           python ci/checked_lean.py --strict-warnings --output /tmp/erdos602-set-bridge.txt --require-axiom MathSolve.Erdos602.finite_iff_exists_list_cover --require-axiom MathSolve.Erdos602.escapesEveryList_iff_infinite --require-axiom MathSolve.Erdos602.essentialDisjoint_of_finiteIncoming --require-axiom MathSolve.Erdos602.propertyB_of_finiteIncoming --require-axiom MathSolve.Erdos602.propertyB_of_countableIndex --require-axiom MathSolve.Erdos602.countable_index_source_parallel --require-axiom MathSolve.Erdos602.propertyB_of_countableOverlapComponents --require-axiom MathSolve.Erdos602.propertyB_of_locallyCountableOverlaps --require-axiom MathSolve.Erdos602.BinaryPrefix.distinct_inter_finite --require-axiom MathSolve.Erdos602.BinaryPrefix.distinct_inter_not_one --require-axiom MathSolve.Erdos602.BinaryPrefix.hasPropertyB --require-axiom MathSolve.Erdos602.BinaryPrefix.stream_not_countable --require-axiom MathSolve.Erdos602.BinaryPrefix.not_essentiallyDisjoint --require-axiom MathSolve.Erdos602.BinaryPrefix.binaryPrefix_sharpness --require-axiom MathSolve.Erdos602.bernstein_nat --require-axiom MathSolve.Erdos602.bernstein_countable --require-axiom MathSolve.Erdos602.minimalCover_iff_privateWitnesses --require-axiom MathSolve.Erdos602.propertyB_of_minimalCover --require-axiom MathSolve.Erdos602.minimalCover_of_finiteTraces --require-axiom MathSolve.Erdos602.propertyB_of_finiteTraceCover -- lake env lean MathSolve/Erdos/E602SetBridge.lean
           ! grep -Eq 'sorryAx|error:|warning:' /tmp/erdos602-set-bridge.txt
@@ -349,7 +445,3 @@ jobs:
           grep -Eq "^'MathSolve\.Erdos602\.monochromatic_source_eq' (does not depend on any axioms|depends on axioms:)" /tmp/erdos602-source-bridge.txt
           grep -Eq "^'MathSolve\.Erdos602\.propertyB_source_eq' (does not depend on any axioms|depends on axioms:)" /tmp/erdos602-source-bridge.txt
           grep -Eq "^'MathSolve\.Erdos602\.unrestricted_source_eq' (does not depend on any axioms|depends on axioms:)" /tmp/erdos602-source-bridge.txt
-          python ci/validate_formal_conjectures_targets.py
-          PYTHONPATH=ci python -m unittest ci/test_formal_conjectures_targets.py -v
-          python -m json.tool formal_sources/formal_conjectures/MS-FC-WP00.json >/dev/null
-          python -m json.tool schemas/formal_target_package.schema.json >/dev/null
