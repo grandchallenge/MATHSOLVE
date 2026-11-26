@@ -10,6 +10,20 @@ python3 research/PNP-ABOVE/validate_coverage_snapshot.py
 
 The inventory is a dated record, **not** a mathematical proof or certification. Future WP18+ sources and later amended proofs require a separately dated snapshot. Original imported upstream for the later work: `vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970` (Lean 4.35.0-rc3). The earlier WP00–WP04 work did **not** uniformly execute this original imported model.
 
+## CI and native replay boundary (26 November 2026)
+
+The generic MATHSOLVE [material-impact router](../../ci/solve_ci_impact.py),
+admitted by [PR #1312](https://github.com/grandchallenge/MATHSOLVE/pull/1312),
+does not allocate its unrelated local Lean or Ten Proofs replay jobs for a
+transition confined to this directory. Required repository governance checks
+remain active. This directory is not the root Lake project's PNP bridge:
+the original upstream source lock, stage-specific native replay and axiom
+audit remain the mathematical evidence, and a green generic Solve check
+does not replace them. For WP39B see [the result and evidence boundary](WP39B_RESULT.md),
+[the source lock](WP39B_SOURCE_LOCK.json) and [the native replay](WP39B_REPLAY.py).
+Neither a skipped unrelated job nor a documentation-only change constitutes
+a new mathematical verification or certification.
+
 ## WP28C native 2^k input compression: fixed verifier, original G.completeness/soundness (21 November 2026)
 
 [WP28C original source power-index and compression results](WP28C_RESULT.md) implement a fixed PTF index translator 2^k to k, construct the original seven-level SAT source verifier on native 2^k inputs with one fixed lambda, prove SAT/PCC completeness and UNSAT zero quantum value there, and invoke the original MIPRE.GapCompression completeness and soundness contracts with all native hypotheses. This resolves the specific compression input-index mismatch while leaving source SAT input-length polynomial full-game bounds, explicit 3CNF-list source compilation, and any P-vs-NP claim OPEN. [Adversarial scope](WP28C_SCOPE_ADVERSARIAL_AUDIT.md). Independent full uncached exact source replay and protected admission are mandatory.
