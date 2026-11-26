@@ -1,0 +1,59 @@
+{
+  "module_order": [
+    "WP40Tag.lean",
+    "WP40Capacity.lean"
+  ],
+  "modules": {
+    "WP40Capacity.lean": {
+      "git_blob": "ad5132f97b0cb8f3b4a60105eeaf927aa23f4b27",
+      "path": "research/PNP-ABOVE/WP40_Capacity.lean",
+      "sha256": "17975bba35bb66af0116e29b49124d26b076f0f09b884c15f6596b1cb917089c",
+      "theorems": [
+        "payload_support_fold",
+        "tag_support",
+        "tag_dense_eval",
+        "tag_verifier",
+        "tagged_witness_read",
+        "easy_equivalent_presentation",
+        "runSound_localSound",
+        "semantic_capacity_reader_barrier",
+        "semantic_capacity_polynomial",
+        "semantic_run_capacity_polynomial",
+        "tag_canonical_iff",
+        "normalizeP_correct",
+        "normalize_read_solves",
+        "tag_normalization_iff_witness",
+        "tag_normalization_iff_decision"
+      ]
+    },
+    "WP40Tag.lean": {
+      "git_blob": "5d9367300c312ea68cbd8dd736f9f9fec48d628f",
+      "path": "research/PNP-ABOVE/WP40_Tag.lean",
+      "sha256": "c35e8c0be3ff1050ad6ec1457575dc45471ec53e3b61005fb47f92fe5f1c55d1",
+      "theorems": [
+        "tag_eval",
+        "payload_prefix",
+        "tag_prefix",
+        "payload_esize",
+        "tag_esize",
+        "tag_short",
+        "scan_frozen",
+        "scan_constants",
+        "scan_tag",
+        "scanStepP_correct",
+        "scanStepP_growth",
+        "tailP_correct",
+        "scanP_correct",
+        "readP_tag",
+        "readP_runs",
+        "payloadStep_growth",
+        "payloadP_correct",
+        "tagP_correct"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "protected_parent": "01ef7f6b71ef999c0cbe3e309b18b5eaef62ea24",
+  "schema": "PNP-ABOVE-WP40-SOURCE-LOCK/1",
+  "theorem_count": 33
+}
