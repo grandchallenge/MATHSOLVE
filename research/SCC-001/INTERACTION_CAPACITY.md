@@ -65,7 +65,19 @@ $$
 \Psi_w(V,f)\leq\frac{nK(n)}2(\lfloor n/2\rfloor+1).
 $$
 
-Thus the ratio of initial demand to the universal one-gate bound is at most quadratic for every fixed nonnegative cut weighting, even when exponentially many cuts appear and weights are not normalized. For K(n)=0 all nontrivial weights vanish. This argument does not cover signed weights, target-dependent weights, or nonlinear functionals; these need independent demand and gate estimates. The elementary pair-counting proof is author-derived and not a separate finite replay claim.
+A sharper bound uses the size of each cut rather than the global maximum. Put a equal to its smaller block size. Then a+1 is at most 2a and a(n-a) is at least an/2. Thus the cost for this cut is at most (4/n) a(n-a). The pair inequalities already give
+
+$$
+\sum_c w_c a_c(n-a_c)\leq\binom n2 K(n).
+$$
+
+Consequently
+
+$$
+\Psi_w(V,f)\leq 2(n-1)K(n).
+$$
+
+In fact the constant improves to n-1 by using the exact two-bit cost of AND with both parties outputting: no one-bit protocol can work since the sender cannot distinguish the other party's two inputs when its own bit is one. Thus the pair inequalities have right-hand side K(n)/2. The ratio of initial demand to the universal one-gate bound is at most linear for every fixed nonnegative cut weighting, even when exponentially many cuts appear and weights are not normalized. For K(n)=0 all nontrivial weights vanish. This argument does not cover signed weights, target-dependent weights, or nonlinear functionals; these need independent demand and gate estimates. The elementary pair-counting proof is author-derived and not a separate finite replay claim.
 
 ## Replay and evidence boundary
 
