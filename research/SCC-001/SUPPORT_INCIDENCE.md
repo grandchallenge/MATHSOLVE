@@ -14,6 +14,26 @@ $$
 
 The new atom support condition is either old closure, or exact separation of every excluded point in old closure by the same appended bit and affine extrapolation determined on S. The functional extends to the entire feature-row space. Two old distinct atoms are compatible for coherent matching exactly when this test accepts their symmetric difference. The same g must work across every matched pair. Individual closure tests are not independent computational gates. No polynomial total compression bound follows.
 
+## Joint gate compatibility is a linear system with a decomposability constraint
+
+For each desired non-old atom support S let C_S=cl_W(S). The lift criterion says exactly
+
+$
+g|_{C_S}+\mathbf{1}_{C_S\setminus S}\in W|_{C_S}.
+$
+
+Necessity follows from the graph case above (the full-kernel case cannot create a non-old atom). Sufficiency follows because the displayed equality expresses g on S by an available affine form and forces disagreement at every other point in C_S. Already-old atom supports impose no constraint. The condition is affine-linear in the truth function g, and is unchanged by adding any element of V to g. Thus for any prescribed collection of pair contractions, concatenate these quotient-restriction equations. They define an affine linear system on B/V, with no independent gate choice per pair.
+
+Let E=V/span(1). Multiplication induces the linear map
+
+$
+\mu:\bigwedge^2 E\to B/V,\qquad \mu(\bar u\wedge\bar v)=[uv].
+$
+
+It is well-defined because changing either representative by a constant changes the product only by V, and u squared equals u. A legal single gate exists for the prescribed contractions iff the pulled-back affine system on the exterior square has a decomposable solution q (zero allowed). In a basis of E the exterior coordinates form a symmetric zero-diagonal matrix Q over F2, with Q_ij=u_i v_j+u_j v_i. Decomposability is equivalent to rank at most two: a nonzero such matrix of rank at most two has a nonzero off-diagonal pivot Q_ij=1, and its two corresponding rows are independent. Since they span every row, symmetry and the pivot imply Q_kl=Q_ki Q_jl+Q_kj Q_il, an exterior product of those rows. Conversely any exterior product has rank at most two.
+
+This provides a concrete joint constraint system: linear relation demands plus one rank-two resource condition, not independently counted pair savings. It tests a prescribed matching; it does not find the best matching or prove a polynomial bound on its size. The input truth-table size may be exponential; the criterion is not an efficient SAT algorithm. No demand estimate is asserted.
+
 ## 2. Strict nonminimum compression in an actual reachable state
 
 Use four bits a,b,c,d. Start with affine inputs and adjoin h=ab, so V=span(1,a,b,c,d,h). Next compute g=d(a+b); successor V'=V+span(g). Both are legal multiplications. Encode unmarked functions by mask bit index a+2b+4c+8d, augmented functions by low 16 bits for y=0 and high 16 for y=1. Target f=0x0127, graph G_f=0x0127fed8.
