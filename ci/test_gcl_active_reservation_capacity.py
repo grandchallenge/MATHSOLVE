@@ -109,6 +109,36 @@ class CapacityTests(unittest.TestCase):
                     "user": {"login": "github-actions[bot]", "type": "Bot"}}
         self.assertEqual(cap.count_live(snapshot([claim, response]), NOW)["active_count"], 0)
 
+    def test_release_acknowledgment_does_not_poison_claim_capacity(self):
+        release = {"id": 5051, "body": "/release",
+                   "created_at": "2026-10-11T00:10:00Z",
+                   "user": {"login": "worker-a"}}
+        response = {"id": 5052, "created_at": "2026-10-11T00:11:00Z",
+                    "body": ("GCL-WORKER-RESERVATION/1\\n"
+                             "dispatch_id: D-1\\nstate: RELEASED\\n"
+                             "worker: worker-a\\n"
+                             "controller_actor: github-actions[bot]\\n"
+                             "reason: released_by:worker-a\\n\\n"
+                             "RELEASE ACCEPTED\\n\\n"
+                             "GCL-QUEUE-RESPONSE-ORIGIN/1\\n"
+                             "source_comment_id: 5051\\n"),
+                    "user": {"login": "github-actions[bot]", "type": "Bot"}}
+        self.assertEqual(
+            cap.unresolved_claims([release, response], NOW,
+                                  {"github-actions[bot]"}, "D-1"), [])
+        self.assertEqual(cap.count_live(snapshot([release, response]), NOW)["active_count"], 0)
+
+    def test_release_response_cannot_acknowledge_claim(self):
+        claim = {"id": 5051, "body": "/claim",
+                 "created_at": "2026-10-11T00:10:00Z",
+                 "user": {"login": "worker-a"}}
+        response = {"id": 5052, "created_at": "2026-10-11T00:11:00Z",
+                    "body": ("RELEASE ACCEPTED\\n\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\n"
+                             "source_comment_id: 5051\\n"),
+                    "user": {"login": "github-actions[bot]", "type": "Bot"}}
+        with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
+            cap.count_live(snapshot([claim, response]), NOW)
+
     def test_untrusted_terminal_error_cannot_dispose_claim(self):
         claim = {"id": 5001, "body": "/claim", "created_at": "2026-10-11T00:10:00Z",
                  "user": {"login": "worker-a"}}
