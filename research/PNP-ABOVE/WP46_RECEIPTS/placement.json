@@ -1,0 +1,30 @@
+{
+  "free_bytes": 230781861888,
+  "kernel": "6.6.159+",
+  "manifest_sha256": "5b0e1dcd9971c781b0689febc249f14e5adfa59eaad95c8e55d65b42491e9727",
+  "mounts": {
+    "/content/pnp-wp45": "overlay overlay /",
+    "/content/pnp-wp45/upstream": "overlay overlay /",
+    "/root/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/lean": "overlay overlay /"
+  },
+  "package_revisions": {
+    "BibtexQuery": "fdcc88de7c4c5a11e3239c9416615f34c226d47d",
+    "Cli": "843844fa601dd56767b1eb22b7ada5b64d5e567a",
+    "LeanSearchClient": "29ff470276c725ae01505d55b17148c18fc7dfd3",
+    "MD4Lean": "31907cc18f48a95384f99cee5582c00fb39e0f67",
+    "MIPStarRE": "5fc363bc8b77b1a6bbdaaeea634f1b0f3ff0ad79",
+    "Qq": "37b0ba0b26109cf9f9c541f0f9557e50cfa1a3b9",
+    "UnicodeBasic": "a0470ae2c2b2c2dabd42f87b8880c9e81ad8172b",
+    "aesop": "a90fbf7b02ff06a0deebf74088dff9e5fe02c9ea",
+    "batteries": "3b7c8101932390d60e92a3f3d917901d5b5a773b",
+    "doc-gen4": "20b0edcaf3d2882fe2c906158e79f2f5dbebe57c",
+    "importGraph": "7e81a29bda33a6b257bd37557a6aa6aebe175d96",
+    "leansqlite": "b4714b301b682bb7aecb4eefe255fb49b02d11d8",
+    "mathlib": "c55e6e786f49471c72fbddbec5415808896aec1e",
+    "plausible": "fb13df72ecefd8ddbf9291021d7f33a8673eb57b",
+    "proofwidgets": "c643bbb3c24f8a25f9c14e3a6b1ceb13d01f3de1"
+  },
+  "runner": "native-linux-direct",
+  "schema": "PNP_REPLAY_PLACEMENT/1",
+  "toolchain": "Lean (version 4.35.0-rc3, x86_64-unknown-linux-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)"
+}

@@ -70,3 +70,13 @@ No unrestricted lower bound or P versus NP separation is established.
 Development compilation passed on the existing authorized Colab CPU runner.
 Fresh exact-source replay rebuilds all three protected WP45 modules before
 checking WP46, with placement evidence and standard-axiom audit.
+
+Exact source candidate caf8331bb91e62fed041955606aa2630083e22b2.
+Fresh guarded replay passed all 18 WP46 theorem declarations and the
+standard-axiom audit. The three protected WP45 modules were freshly
+rebuilt from source in the same isolated replay. Total checking and audit:
+15.704 seconds; WP46 module and audit 6.565 seconds. Raw receipts retained
+in WP46_RECEIPTS. No proof source or lock changed after replay. Internal
+kernel verification, not independent public certification. The local SSD
+mounts are restored, but capacity remains constrained; this replay used
+the existing authorized Colab runner without HDD fallback.
