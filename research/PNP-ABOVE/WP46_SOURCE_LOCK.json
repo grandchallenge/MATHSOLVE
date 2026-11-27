@@ -1,0 +1,38 @@
+{
+  "module_order": [
+    "WP46Batch.lean"
+  ],
+  "modules": {
+    "WP46Batch.lean": {
+      "git_blob": "f262f23be106044ffb10fc145e146cb5ef1e6dd7",
+      "path": "research/PNP-ABOVE/WP46_BatchCapacity.lean",
+      "sha256": "36be84676954c0d484f18f2966c1c59362ddc6749f336c6240b673f08f84cd2d",
+      "theorems": [
+        "budgetPrefix_scoped",
+        "budgetPrefix_runs",
+        "budgetCore_scoped",
+        "fixedBudget_scoped",
+        "fixedBudget_size",
+        "binary_size_le",
+        "binary_power_le",
+        "encoded_binary_power_le",
+        "conversion_bound",
+        "fixedBudget_runs",
+        "fixedBudget_weighted",
+        "batchP_correct",
+        "batchP_good",
+        "batch_weighted_bound",
+        "jointP_correct",
+        "decomposable_weighted_bound",
+        "decomposable_bad_component",
+        "polynomial_decomposition_solves"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "protected_parent": "35c4e5a692d3cbef7ac12e29155b7c357d7c76b9",
+  "schema": "PNP-ABOVE-WP46-SOURCE-LOCK/1",
+  "theorem_count": 18,
+  "wp45_lock_sha256": "f55ea2c6805249712d94b00e5402607e9e7f41ac33449854ca565da05fa5ef74",
+  "wp45_merge": "e24feab62c7b86851b1d1ed157c40b2292494359"
+}
