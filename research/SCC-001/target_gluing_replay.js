@@ -24,10 +24,11 @@ function replay(){
       need(C===image&&dp===d-K+C,"exact sequence");
       need(K>=0&&C>=0&&C<=(j?N[j-1].length-F[j-1].length:0),"birth source");
       need(d<=Math.min(span(f.map(x=>x&t)).length,span(f.map(x=>x&(one(n)^t))).length),"branch bound");
-      need((rem(f,t)===0)===(rem(f,t&one(n))===0),"marked generator");
       if(dp>d)nonmonotone++;
       grades++;
     }
+    const d=F.findIndex(b=>rem(b,t)===0),dp=P.findIndex(b=>rem(b,t)===0);
+    need(d>=0&&dp>=0&&dp<=d&&dp>=d-1,"marked target lifetime");
     transitions++;
   }
   let seed=90210;const rng=()=>seed=(Math.imul(seed,1664525)+1013904223)>>>0;
