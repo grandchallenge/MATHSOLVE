@@ -58,3 +58,12 @@ remain separate mathematical obligations.
 ## Verification status
 
 Development compilation passed on all three modules on a replacement authorized Colab CPU runner. The previous session expired, CHAD managed SSD mounts are absent, and no HDD fallback was used. Selective cache recovery required the full pinned mathlib cache; unnecessary OracularDecider and DetypingClock imports were removed. The narrower native parser and clock correctness proof avoid their unrelated game-library dependency chain. Finite controls passed (197 canonical trees, 255 acceptance patterns, 11 budget boundaries). Fresh exact-source replay and standard-axiom audit remain separate gates. No independent certification.
+
+Fresh replay receipt: exact candidate f16d8adee604c937677ddfcc3ee7f3f1cc444bc3.
+All 34 theorem declarations passed, including the closed generic
+weighted-bound equivalence using the actual upstream self-clocked universal
+machine. Standard-axiom audit passed. Three module checks and audit took
+11.173 seconds in total, zero major faults. Raw replay receipts retained
+in WP45_RECEIPTS. The proof source and lock are unchanged from the replayed
+candidate. The SAT specialization is the mathematical corollary described
+above, not a separately replayed bridge module.
