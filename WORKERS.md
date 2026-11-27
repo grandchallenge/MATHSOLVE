@@ -59,6 +59,15 @@ For an already assigned mathematical task that needs Lean compilation or bounded
 
 From a protected MATH-PROGRAMME checkout, an authenticated local Codex operator can run `python3 ci/gcl_lean_colab_jobs.py list` and `python3 ci/gcl_lean_colab_jobs.py verify`. Only run a registered job with an already authorized task, the job's live queue preflight, exact-source custody, and available Colab OAuth. Do not substitute the skill for queue pickup, send credentials to Colab, or represent compilation as mathematical certification. New workloads require a protected source/worker/adapter registration first.
 
+## Public research disclosure
+
+For already assigned public research using authenticated CONTROL, follow the
+[shared protected disclosure instruction](https://github.com/grandchallenge/.github/blob/834c958f103360a1f3319b911c1215b57aa5d0b3/AGENTS.md#open-research-execution-and-disclosure).
+Execute once in the governed environment; use the existing eligible public
+runner or complete reviewed-transcript route. External workers without CONTROL
+retain the ordinary durable evidence and assignment-specific return contract.
+No new pickup, authentication, certification or release authority is granted.
+
 ## Mandatory prerequisite
 
 You must have an authenticated GitHub identity that can post comments on the

@@ -76,6 +76,17 @@ def isolated_research_only(paths):
     prefixes = ("research/PNP-ABOVE/", "research/SCC-001/")
     return bool(paths) and all(p.startswith(prefixes) for p in paths)
 
+def worker_guidance_only(paths):
+    """Only root worker instructions, whose consumers remain unconditional."""
+    return bool(paths) and set(paths) <= {"AGENTS.md", "WORKERS.md"}
+
+
+def campaign_ledgers_required(paths):
+    # All other and mixed transitions, including manual replay, retain
+    # campaign-specific evidence. Global worker and integrity gates never skip.
+    return not (isolated_research_only(paths) or worker_guidance_only(paths))
+
+
 def classify(paths, before, after):
     selected, otp = set(), False
     for path in paths:
@@ -172,6 +183,7 @@ def main():
         print(f"otp={str(otp).lower()}", file=out)
         print(f"native_pnp_only={str(native_pnp_only(paths)).lower()}", file=out)
         print(f"isolated_research_only={str(isolated_research_only(paths)).lower()}", file=out)
+        print(f"campaign_ledgers_required={str(campaign_ledgers_required(paths)).lower()}", file=out)
         print("targets=" + " ".join(targets), file=out)
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "ci"))
-from solve_ci_impact import classify, LANES, workflow_impact, native_pnp_only, isolated_research_only
+from solve_ci_impact import classify, LANES, workflow_impact, native_pnp_only, isolated_research_only, worker_guidance_only, campaign_ledgers_required
 
 class ImpactTests(unittest.TestCase):
     def route(self, paths, old="", new=""):
@@ -48,6 +48,21 @@ class ImpactTests(unittest.TestCase):
                       ["research/SCC-001-other/proof.lean"], ["MathSolve/PNP/Next.lean"]):
             self.assertFalse(isolated_research_only(paths))
 
+    def test_worker_guidance_and_campaign_ledger_scope(self):
+        for paths in (["AGENTS.md"], ["WORKERS.md"], ["AGENTS.md", "WORKERS.md"]):
+            self.assertTrue(worker_guidance_only(paths))
+            self.assertFalse(campaign_ledgers_required(paths))
+            self.assertEqual(self.route(paths), (set(), False))
+        for paths in ([], ["README.md"], ["docs/unknown.md"],
+                      ["AGENTS.md", "ci/solve_ci_impact.py"],
+                      ["WORKERS.md", "governance/new.json"],
+                      ["AGENTS.md", "research/PNP-ABOVE/Proof.lean"],
+                      ["research/PNP-ABOVE/Proof.lean", "research/OTHER/a.py"]):
+            self.assertFalse(worker_guidance_only(paths))
+            self.assertTrue(campaign_ledgers_required(paths))
+        for paths in (["research/PNP-ABOVE/Proof.lean"], ["research/SCC-001/a.py"]):
+            self.assertFalse(campaign_ledgers_required(paths))
+
     def test_ledger_gate_bindings(self):
         import yaml
         root = Path(__file__).resolve().parents[1]
@@ -58,6 +73,12 @@ class ImpactTests(unittest.TestCase):
                      "Validate Lean compiler execution safety",
                      "Require successful impact classification"):
             self.assertNotIn("if", steps[name])
+        self.assertIn("ci/validate_gcl_worker_bootstrap.py",
+                      steps["Validate global worker-queue controls"]["run"])
+        self.assertIn("test_gcl_queue_class_contract.py",
+                      steps["Validate global worker-queue controls"]["run"])
+        self.assertEqual(jobs["impact"]["outputs"]["campaign_ledgers_required"],
+                         "${{ steps.classify.outputs.campaign_ledgers_required }}")
         for name in ("Validate Erdős campaign evidence and replays",
                      "Validate campaign-specific intake interfaces",
                      "Validate GCL-ERDOS3 frontier and independent intake",
@@ -65,4 +86,4 @@ class ImpactTests(unittest.TestCase):
                      "Validate NS-CI WP02 conditional-regularity ledger",
                      "Validate OPENMATH H1-12 three-core arithmetic"):
             self.assertEqual(steps[name]["if"],
-                "needs.impact.outputs.isolated_research_only != 'true'")
+                "needs.impact.outputs.campaign_ledgers_required != 'false'")
