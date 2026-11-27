@@ -18,17 +18,17 @@ The new atom support condition is either old closure, or exact separation of eve
 
 For each desired non-old atom support S let C_S=cl_W(S). The lift criterion says exactly
 
-$
+$$
 g|_{C_S}+\mathbf{1}_{C_S\setminus S}\in W|_{C_S}.
-$
+$$
 
 Necessity follows from the graph case above (the full-kernel case cannot create a non-old atom). Sufficiency follows because the displayed equality expresses g on S by an available affine form and forces disagreement at every other point in C_S. Already-old atom supports impose no constraint. The condition is affine-linear in the truth function g, and is unchanged by adding any element of V to g. Thus for any prescribed collection of pair contractions, concatenate these quotient-restriction equations. They define an affine linear system on B/V, with no independent gate choice per pair.
 
 Let E=V/span(1). Multiplication induces the linear map
 
-$
+$$
 \mu:\bigwedge^2 E\to B/V,\qquad \mu(\bar u\wedge\bar v)=[uv].
-$
+$$
 
 It is well-defined because changing either representative by a constant changes the product only by V, and u squared equals u. A legal single gate exists for the prescribed contractions iff the pulled-back affine system on the exterior square has a decomposable solution q (zero allowed). In a basis of E the exterior coordinates form a symmetric zero-diagonal matrix Q over F2, with Q_ij=u_i v_j+u_j v_i. Decomposability is equivalent to rank at most two: a nonzero such matrix of rank at most two has a nonzero off-diagonal pivot Q_ij=1, and its two corresponding rows are independent. Since they span every row, symmetry and the pivot imply Q_kl=Q_ki Q_jl+Q_kj Q_il, an exterior product of those rows. Conversely any exterior product has rank at most two.
 
