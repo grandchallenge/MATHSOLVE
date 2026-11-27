@@ -108,6 +108,12 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str], dispat
     import re
     acknowledgments = {}
     commands = {}
+    # A /release has its own valid controller response grammar. Only validate
+    # claim acknowledgments against claim outcomes; release responses must not
+    # make unrelated Mathematics reservation admission fail closed.
+    claim_ids = {row.get("id") for row in comments
+                 if isinstance(row, dict) and row.get("body", "").strip() == "/claim"
+                 and type(row.get("id")) is int}
     for row in comments:
         body = row.get("body")
         if not isinstance(body, str):
@@ -120,6 +126,8 @@ def unresolved_claims(comments: list[dict], at: datetime, bots: set[str], dispat
                     and body.count("GCL-QUEUE-RESPONSE-ORIGIN/1") == 1
                     and body.endswith("GCL-QUEUE-RESPONSE-ORIGIN/1\n"
                                       f"source_comment_id: {matches[0]}\n")):
+                if int(matches[0]) not in claim_ids:
+                    continue  # /release or another nonclaim command
                 timestamp = row.get("created_at")
                 if not isinstance(timestamp, str):
                     raise CapacityError("acknowledgment timestamp missing")
