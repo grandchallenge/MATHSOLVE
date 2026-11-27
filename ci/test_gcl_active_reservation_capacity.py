@@ -136,7 +136,7 @@ class CapacityTests(unittest.TestCase):
                     "body": ("RELEASE ACCEPTED\\n\\nGCL-QUEUE-RESPONSE-ORIGIN/1\\n"
                              "source_comment_id: 5051\\n"),
                     "user": {"login": "github-actions[bot]", "type": "Bot"}}
-        with self.assertRaisesRegex(cap.CapacityError, "outcome missing"):
+        with self.assertRaisesRegex(cap.CapacityError, "unresolved claim"):
             cap.count_live(snapshot([claim, response]), NOW)
 
     def test_untrusted_terminal_error_cannot_dispose_claim(self):
