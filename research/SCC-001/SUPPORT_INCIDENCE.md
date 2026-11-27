@@ -9,7 +9,7 @@ Let W be the available feature space on the augmented cube, including constant 1
 Append the evaluation bit g of a legal gate to each row. Write U=span R(S), U' for the lifted span. Projection U' to U is surjective with kernel dimension zero or one. If the kernel has dimension one, U'=U times F2 and closure does not change. Otherwise U' is the graph of a unique linear functional ell on U, and
 
 $$
-\operatorname{cl}_{W'}(S)=\{p\in\operatorname{cl}_W(S):g(p)=\ell(R(p))\}.
+\mathrm{cl}_{W'}(S)=\{p\in\mathrm{cl}_W(S):g(p)=\ell(R(p))\}.
 $$
 
 The new atom support condition is either old closure, or exact separation of every excluded point in old closure by the same appended bit and affine extrapolation determined on S. The functional extends to the entire feature-row space. Two old distinct atoms are compatible for coherent matching exactly when this test accepts their symmetric difference. The same g must work across every matched pair. Individual closure tests are not independent computational gates. No polynomial total compression bound follows.
