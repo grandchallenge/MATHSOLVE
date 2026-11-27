@@ -1,10 +1,22 @@
 import MIPRE.Foundations.Introspection.ClockedQueryProgram
 import MIPRE.Foundations.Halting.Arith
 import MIPRE.Foundations.Cost.SizeProgram
-import MIPRE.Foundations.CL.DetypingClock
+import MIPRE.Foundations.Cost.Universal
 
 namespace PNPAbove.WP45
 open MIPRE MIPRE.Cost MIPRE.Cost.PolyTimeFun Polynomial
+
+theorem inBudget_eq_some (c : Prog) (x r : Data) (k : Nat)
+    (h : ∃ t ≤ k, c.Runs x r t) : evalWithin c x k = some r := by
+  classical
+  unfold evalWithin
+  have he : ∃ r t, t ≤ k ∧ c.Runs x r t := by
+    obtain ⟨t,ht,hr⟩ := h
+    exact ⟨r,t,ht,hr⟩
+  rw [dite_eq_left he]
+  obtain ⟨t,ht,hr⟩ := he.choose_spec
+  obtain ⟨t',ht',hr'⟩ := h
+  exact congrArg some (hr.deterministic hr').1
 
 /-- Evaluate a fixed natural-coefficient polynomial on a unary budget,
 using the original Horner program and its verified time certificate. -/
@@ -67,17 +79,17 @@ theorem safeClock_valid (U : ClockedUniversalMachine) (c : Prog) (v : Data) (k :
     simp [esize]
     omega
   have hb := ht.trans (polynomial_eval_mono U.bound hsize)
-  have he := (MIPRE.CL.Detyping.ClockProgram.evalWithin_eq_some_iff _ _ _ _).2
+  have he := inBudget_eq_some _ _ _ _
     ⟨t,hb,hr⟩
-  simp [clockedResult,he]
+  rw [clockedResult,he]
 
 theorem safeClock_success (U : ClockedUniversalMachine) (c : Prog) (v r : Data)
     (t k : Nat) (hr : c.Runs v r t) (ht : t ≤ k) :
     safeClock U (.cons (.ofNat k) (.cons (encode c) v)) =
       .cons (.cons .nil .nil) (.cons (.cons .nil .nil) r) := by
   rw [safeClock_valid]
-  have he := (MIPRE.CL.Detyping.ClockProgram.evalWithin_eq_some_iff _ _ _ _).2
+  have he := inBudget_eq_some _ _ _ _
     ⟨t,ht,hr⟩
-  simp [clockedResult,he]
+  rw [clockedResult,he]
 
 end PNPAbove.WP45

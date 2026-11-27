@@ -1,5 +1,5 @@
 import MIPRE.Foundations.Cost.Iterates
-import MIPRE.Foundations.OracularDecider
+import MIPRE.Foundations.Halting.Serial
 import MIPRE.Foundations.Cost.Binary
 import MIPRE.Foundations.Halting.Descriptions
 
@@ -28,7 +28,17 @@ noncomputable def doubleU : PolyTimeFun Unary Unary :=
 noncomputable def countdownP : PolyTimeFun Unary (List Unary) :=
   (recordIteratesProg (tail : PolyTimeFun Unary Unary) X (by
     intro n u
-    simpa using tail_iter_bound n u)).comp (doubleU.pair doubleU)
+    rw [Polynomial.eval_X]
+    have he : (tail : PolyTimeFun Unary Unary).toFun = List.tail := by
+      funext v
+      exact tail_apply v
+    rw [he]
+    exact tail_iter_bound n u)).comp (doubleU.pair doubleU)
+
+theorem countdown_count (u : Unary) : (countdownP u).length = 2*u.length := by
+  change (recordIterates List.tail (u++u) (u++u)).length = _
+  simp [recordIterates]
+  omega
 
 theorem countdown_length_mem (u : Unary) (n : Nat)
     (hn : 0 < n) (hb : n ≤ 2*u.length) :
@@ -38,8 +48,8 @@ theorem countdown_length_mem (u : Unary) (n : Nat)
   let i : Fin (u++u).length := ⟨2*u.length-n,by omega⟩
   refine ⟨(List.tail : Unary → Unary)^[i.val] (u++u),?_,?_⟩
   · exact List.mem_ofFn.mpr ⟨i,rfl⟩
-  · rw [tail_iter_length,hl]
-    change 2*u.length-(2*u.length-n) = n
+  · rw [tail_iter_length]
+    change (u++u).length-(2*u.length-n) = n
     omega
 
 theorem sentinel_bits (s : BitStr) :
@@ -81,14 +91,33 @@ theorem treeIndex_bound (d : Data) (B : Nat) (h : 2^d.size ≤ B) :
   rw [treeIndex_size,pow_succ] at hlt
   omega
 
+/-- The upstream postorder parsing code and its proved native cost bound. -/
+noncomputable def parseRawP : PolyTimeFun BitStr Data where
+  toFun := Data.parse
+  code := Prog.parseProg
+  closed := Prog.parseProg_wellScoped
+  timeBound := (X + C 2) * (C 3 * X + C 25)
+  computes x := by
+    obtain ⟨t,ht,hr⟩ := Prog.parseProg_runs x
+    refine ⟨t,?_,by simpa using hr⟩
+    have hL := length_le_esize_bitStr x
+    simp only [Polynomial.eval_mul,Polynomial.eval_add,Polynomial.eval_X,Polynomial.eval_C]
+    refine ht.trans (Nat.mul_le_mul (by omega) ?_)
+    have he : esize x = (encode x : Data).size := rfl
+    omega
+
 noncomputable def decodeUnaryP : PolyTimeFun Unary Data :=
-  MIPRE.OracleDecider.parseF.comp (natBits.comp unaryToBin)
+  parseRawP.comp (natBits.comp unaryToBin)
 
 theorem decodeUnaryP_correct (u : Unary) :
     decodeUnaryP u = Data.parse u.length.bits := rfl
 
 noncomputable def codeListP : PolyTimeFun Unary (List Data) :=
   (PolyTimeFun.map decodeUnaryP).comp countdownP
+
+theorem codeList_count (u : Unary) : (codeListP u).length = 2*u.length := by
+  change ((countdownP u).map decodeUnaryP).length = _
+  rw [List.length_map,countdown_count]
 
 theorem codeList_contains (u : Unary) (c : Prog)
     (h : 2^(esize c) ≤ u.length) :

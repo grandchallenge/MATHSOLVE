@@ -1,4 +1,4 @@
-# WP45 — Native total budget selector (candidate checkpoint)
+# WP45 — Native total budget selector
 
 WP45 continues the computational-capacity lane WP41, separate from the
 already-admitted algebraic WP42–44 source. Pinned upstream
@@ -57,8 +57,4 @@ remain separate mathematical obligations.
 
 ## Verification status
 
-Candidate source checkpoint only. Previous Colab session expired before
-proof checking; CHAD managed SSD mounts are absent. Replacement authorized
-Colab CPU runner is rebuilding pinned dependencies, with no HDD fallback.
-No protected proof admission claimed until fresh exact-source replay and
-standard-axiom audit pass.
+Development compilation passed on all three modules on a replacement authorized Colab CPU runner. The previous session expired, CHAD managed SSD mounts are absent, and no HDD fallback was used. Selective cache recovery required the full pinned mathlib cache; unnecessary OracularDecider and DetypingClock imports were removed. The narrower native parser and clock correctness proof avoid their unrelated game-library dependency chain. Finite controls passed (197 canonical trees, 255 acceptance patterns, 11 budget boundaries). Fresh exact-source replay and standard-axiom audit remain separate gates. No independent certification.

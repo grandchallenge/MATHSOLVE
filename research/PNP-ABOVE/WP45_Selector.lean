@@ -120,9 +120,9 @@ theorem budgetSelector_complete (U : ClockedUniversalMachine)
   apply select_find (fun b => V (a,b) = true)
   · intro b hb
     obtain ⟨v,_,he⟩ := List.mem_map.mp hb
-    have h1 := congrArg Prod.fst he
-    have h2 := congrArg Prod.snd he
-    simpa [h2] using h1
+    have h1 : V (a,v) = true := congrArg Prod.fst he
+    have h2 : v = b := congrArg Prod.snd he
+    exact h2 ▸ h1
   · refine ⟨w,List.mem_map.mpr ⟨w,attempts_contains U c u a w t hr hc ht,?_⟩⟩
     simp [hv]
 
@@ -192,5 +192,11 @@ theorem weightedBound_iff_solver (U : ClockedUniversalMachine)
     exact ⟨_,weightedBound_solves U V p hp⟩
   · rintro ⟨S,hS⟩
     exact ⟨_,solver_weightedBound V S hS⟩
+
+theorem weightedBound_iff_solver_native
+    (V : PolyTimeFun (α × BitStr) Bool) :
+    (∃ p : Polynomial Nat, WeightedBound V p) ↔
+      ∃ S : PolyTimeFun α BitStr, Solves V S :=
+  weightedBound_iff_solver MIPRE.Cost.selfClockedUniversal V
 
 end PNPAbove.WP45
