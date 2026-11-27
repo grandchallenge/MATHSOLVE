@@ -439,6 +439,57 @@
         "PROTECTED_PACKET_ONLY"
       ],
       "campaign": "GCL-RWP-003"
+    },
+    {
+      "dispatch_id": "QTR-C90-SP-C002-B000-IA-001",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-SP-C002-B000-IA-001.json",
+      "github_issue_number": 1328,
+      "issue_body_sha256": "c5e90eb19d50ff3031d8b9bac521bfdfe851b61bf0a72715c17a831571ea3e46",
+      "task_path": "handoffs/QTR-C90-SWARM-001/QTR-C90-SP-C002-B000-IA-001.md",
+      "task_commit": "5c6cbaf333b5386be88a98a31a2ad715540af271",
+      "task_sha256": "ebd8589a36104ab30e728ebd07d47c4feed633ccf638a16735eca0f78909b9e9",
+      "allowed_dispositions": [
+        "FINITE_CERTIFICATE",
+        "EXACT_BLOCKER"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "QTR-C90-SWARM-001"
+    },
+    {
+      "dispatch_id": "QTR-C90-ST-C001-B000-IA-001",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-ST-C001-B000-IA-001.json",
+      "github_issue_number": 1329,
+      "issue_body_sha256": "f30f3d017419fe9ed3bdcb4d388323e5718cfd4c256cfa0893c3613cb5c35024",
+      "task_path": "handoffs/QTR-C90-SWARM-001/QTR-C90-ST-C001-B000-IA-001.md",
+      "task_commit": "5c6cbaf333b5386be88a98a31a2ad715540af271",
+      "task_sha256": "eb2b453d9e757d891b2f340766a30fc14ddd2a02ccab6a3cf3d61443e209e8a0",
+      "allowed_dispositions": [
+        "FINITE_CERTIFICATE",
+        "EXACT_BLOCKER"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "QTR-C90-SWARM-001"
+    },
+    {
+      "dispatch_id": "QTR-C90-MP-C001-B000-IA-001",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-MP-C001-B000-IA-001.json",
+      "github_issue_number": 1330,
+      "issue_body_sha256": "6bd69ad05d2681ed01b440d418acc61106c013c055725c83e6558104ff7b2976",
+      "task_path": "handoffs/QTR-C90-SWARM-001/QTR-C90-MP-C001-B000-IA-001.md",
+      "task_commit": "5c6cbaf333b5386be88a98a31a2ad715540af271",
+      "task_sha256": "439ec7f54c8fc1f8fba50a88a223667082b67d12e7856884209bfbd38cd424b0",
+      "allowed_dispositions": [
+        "FINITE_CERTIFICATE",
+        "EXACT_BLOCKER"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "QTR-C90-SWARM-001"
     }
   ]
 }

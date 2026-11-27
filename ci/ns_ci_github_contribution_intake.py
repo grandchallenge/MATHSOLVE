@@ -459,6 +459,17 @@ def parse_result_comment(body: str, root: Path = ROOT) -> dict[str, Any]:
             raise IntakeError(f"{heading} is empty")
         sections[heading[3:]] = content
 
+    if profile.campaign == "QTR-C90-SWARM-001":
+        payload = sections["Derivation"]
+        if preamble["disposition"] == "FINITE_CERTIFICATE":
+            if len(payload) > 48000 or not re.fullmatch(
+                r"-----BEGIN PGP MESSAGE-----\n(?:Version: [^\n]{1,80}\n)?\n"
+                r"(?:[A-Za-z0-9+/=]{1,76}\n)+-----END PGP MESSAGE-----",
+                payload,
+            ):
+                raise IntakeError("QTR finite return requires one bounded armored data message")
+        elif "-----BEGIN PGP MESSAGE-----" in payload:
+            raise IntakeError("QTR blocker may not carry a candidate ciphertext")
     next_residual = sections["Next residual"]
     sentence_view = re.sub(r"(?m)^\s*\d+\.\s+", "", next_residual)
     sentence_marks = len(re.findall(r"[.!?](?:\s|$)", sentence_view))
@@ -727,7 +738,7 @@ def emit_intake(
         ),
         "schema_result": "valid",
         "freshness": "current_for_dispatch",
-        "security_state": "narrative_only_no_links_no_attachments",
+        "security_state": ("sealed_inline_data_no_links_no_attachments" if profile.campaign == "QTR-C90-SWARM-001" and parsed["preamble"]["disposition"] == "FINITE_CERTIFICATE" else "narrative_only_no_links_no_attachments"),
         "handling_state": "received_unadjudicated",
         "mathematical_correctness_adjudicated": False,
         "independence_strength_adjudicated": False,
