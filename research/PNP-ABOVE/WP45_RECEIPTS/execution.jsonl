@@ -1,0 +1,4 @@
+{"elapsed_seconds": 2.224, "exit_code": 0, "fs_input_blocks": 0, "log": "WP45TotalClock.lean.log", "major_faults": 0, "outcome": "passed", "timeout_seconds": 240}
+{"elapsed_seconds": 2.578, "exit_code": 0, "fs_input_blocks": 0, "log": "WP45Enumeration.lean.log", "major_faults": 0, "outcome": "passed", "timeout_seconds": 240}
+{"elapsed_seconds": 4.345, "exit_code": 0, "fs_input_blocks": 0, "log": "WP45Selector.lean.log", "major_faults": 0, "outcome": "passed", "timeout_seconds": 240}
+{"elapsed_seconds": 2.026, "exit_code": 0, "fs_input_blocks": 2432, "log": "axioms.log", "major_faults": 0, "outcome": "passed", "timeout_seconds": 240}

@@ -1,0 +1,68 @@
+{
+  "module_order": [
+    "WP45TotalClock.lean",
+    "WP45Enumeration.lean",
+    "WP45Selector.lean"
+  ],
+  "modules": {
+    "WP45Enumeration.lean": {
+      "git_blob": "fd222ba1b20af45da300d5330ad03e79519d3c45",
+      "path": "research/PNP-ABOVE/WP45_Enumeration.lean",
+      "sha256": "3a322eee106229c17fddb4ae2e9fe40482238bf0116ee45aa71e113732373469",
+      "theorems": [
+        "tail_iter_bound",
+        "tail_iter_length",
+        "countdown_count",
+        "countdown_length_mem",
+        "sentinel_bits",
+        "treeIndex_size",
+        "treeIndex_decode",
+        "treeIndex_positive",
+        "treeIndex_bound",
+        "decodeUnaryP_correct",
+        "codeList_count",
+        "codeList_contains"
+      ]
+    },
+    "WP45Selector.lean": {
+      "git_blob": "262fe489612b812aa707088e0a646f38612458f2",
+      "path": "research/PNP-ABOVE/WP45_Selector.lean",
+      "sha256": "253c5e2375c4bd7d5c3abb7c7111defc028e6725d8262b27a35c929762c41f21",
+      "theorems": [
+        "innerInputP_correct",
+        "rawAttempt_success",
+        "attempts_contains",
+        "selectStepP_correct",
+        "selectStep_growth",
+        "selectP_correct",
+        "select_preserve",
+        "select_find",
+        "budgetSelector_complete",
+        "budgetSelector_runs",
+        "polynomialSelector_complete",
+        "weightedBound_solves",
+        "solver_weightedBound",
+        "weightedBound_iff_solver",
+        "weightedBound_iff_solver_native"
+      ]
+    },
+    "WP45TotalClock.lean": {
+      "git_blob": "f4d62b56e9e99b366c216cb7e2132aa6db886f0b",
+      "path": "research/PNP-ABOVE/WP45_TotalClock.lean",
+      "sha256": "7356d9aff52971ff17145d9df33b08aee5d40b013c2ec0c94b609f9bb161aac6",
+      "theorems": [
+        "inBudget_eq_some",
+        "unaryPolynomial_correct",
+        "outerBudget_length",
+        "safeClock_spec",
+        "safeClock_runs",
+        "safeClock_valid",
+        "safeClock_success"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "protected_parent": "2c1132431da726a9e29d89aab2ef36772514b28f",
+  "schema": "PNP-ABOVE-WP45-SOURCE-LOCK/1",
+  "theorem_count": 34
+}
