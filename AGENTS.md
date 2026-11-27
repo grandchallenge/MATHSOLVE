@@ -85,3 +85,11 @@ security checks remain unconditional. Unknown, mixed-with-other-component,
 or shared-control changes retain the conservative ledger coverage.
 This does not establish the dependency closure of every other research tree;
 extend the positive scope list only with evidence and negative controls.
+
+## Public research disclosure
+
+For already-authorized research using authenticated CONTROL, follow the [shared protected open-research instruction](https://github.com/grandchallenge/.github/blob/834c958f103360a1f3319b911c1215b57aa5d0b3/AGENTS.md#open-research-execution-and-disclosure). Use MATHSOLVE's exact public source revision when it owns the research. The admitted runner and complete reviewed-transcript fallback preserve existing task custody, Lean placement and evidence requirements. External workers without CONTROL retain their existing durable result/return contract; no additional authentication or publication requirement is imposed.
+
+## Worker-guidance CI proportionality
+
+A transition confined exactly to AGENTS.md and/or WORKERS.md retains the global worker bootstrap, queue, manifest, compiler-integrity, policy and security checks but not unrelated campaign-specific ledger computations. Direct consumers of these instructions remain in the unconditional worker gate and continuity-adoption workflow. The existing PNP-ABOVE/SCC isolated scope is unchanged. Empty/manual, unknown, mixed or shared-control transitions retain the conservative campaign ledger suite.
