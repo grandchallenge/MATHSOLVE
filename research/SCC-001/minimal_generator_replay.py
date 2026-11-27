@@ -62,7 +62,7 @@ def check(m):
         restricted_old.append(old_rank);restricted_new.append(new_rank)
         expected=lambda shift:sum(comb(m,k)*2**k for k in range(m+1) if k<=r and 2*m-k+shift<=r)
         assert old_rank==expected(2) and new_rank==expected(1),(m,r,old_rank,new_rank)
-    assert new[m+1]>=2**m
+    assert new==[0,1]+[0]*(m-1)+[2**m]+[0]*(n-m-1), (m,new)
     assert restricted_new[:m+1]==[0]*(m+1)
     assert restricted_new[m+1]==2**m and restricted_old[m+1]==0
     # Verify exact witness classes in the actual homogeneous quotient.
