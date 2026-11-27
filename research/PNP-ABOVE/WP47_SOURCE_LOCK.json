@@ -1,0 +1,39 @@
+{
+  "module_order": [
+    "WP47Interface.lean"
+  ],
+  "modules": {
+    "WP47Interface.lean": {
+      "git_blob": "f5c7e117b83fa391520b25c3f2ba0bba26f8ded7",
+      "path": "research/PNP-ABOVE/WP47_Interface.lean",
+      "sha256": "ee10dbfa7ffbcd61e5551a927d46e93be07c43d1081ec7734161248b9b84d4dc",
+      "theorems": [
+        "conditionedVerifier_correct",
+        "discharge_boundary",
+        "discharge_computed_boundary",
+        "localCheap_mono",
+        "boundary_description_bound",
+        "interface_weighted_bound",
+        "small_interface_solves",
+        "interface_bad_component",
+        "computable_interface_solves"
+      ]
+    }
+  },
+  "original_upstream": "vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970",
+  "predecessors": [
+    {
+      "merge": "e24feab62c7b86851b1d1ed157c40b2292494359",
+      "path": "research/PNP-ABOVE/WP45_SOURCE_LOCK.json",
+      "sha256": "f55ea2c6805249712d94b00e5402607e9e7f41ac33449854ca565da05fa5ef74"
+    },
+    {
+      "merge": "e43add65649526c75f588e7d33568a0a8c6acf4b",
+      "path": "research/PNP-ABOVE/WP46_SOURCE_LOCK.json",
+      "sha256": "c95675c5bb5a9dc4b646419f68a79eac1c5c26feef920431c1d42decc2916c4d"
+    }
+  ],
+  "protected_parent": "4f306bdaf71cc6f7277f0295f2f2df54ab94a0a1",
+  "schema": "PNP-ABOVE-WP47-SOURCE-LOCK/1",
+  "theorem_count": 9
+}
