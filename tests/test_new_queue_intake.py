@@ -159,5 +159,33 @@ class NewGenerationIntakeTest(unittest.TestCase):
         self.assertTrue(any("lacks intake binding" in e for e in errors))
 
 
+class QTRSealedCandidateIntakeTest(unittest.TestCase):
+    dispatch_id = "QTR-C90-SP-C002-B000-IA-001"
+    payload = "-----BEGIN PGP MESSAGE-----\n\nQUJDRA==\n=abcd\n-----END PGP MESSAGE-----"
+
+    def body(self, payload=None):
+        return (RESULT.replace(DISPATCH, self.dispatch_id)
+                .replace("INDEPENDENT-AGENT-ERDOS-593-R2", "GCL-ZERO-CONTEXT-QTR-WORKER")
+                .replace("assignment: ERDOS-593-R2", "assignment: " + self.dispatch_id)
+                .replace("PROVED_REDUCTION", "FINITE_CERTIFICATE")
+                .replace("PRIMARY_SOURCES_REQUIRED", "PROTECTED_PACKET_ONLY")
+                .replace("The asserted implication follows from a stated theorem.",
+                         self.payload if payload is None else payload))
+
+    def test_qtr_candidate_ciphertext_only(self):
+        parsed = intake.parse_result_comment(self.body(), REPO)
+        self.assertEqual(parsed["profile"], "QTR-C90-SWARM-001")
+        self.assertEqual(parsed["sections"]["Derivation"], self.payload)
+        for bad in ("plaintext rows", self.payload + "\n" + self.payload,
+                    self.payload + "\nhttps://example.org", self.payload + "x"):
+            with self.subTest(bad=bad):
+                with self.assertRaises(intake.IntakeError):
+                    intake.parse_result_comment(self.body(bad), REPO)
+        blocked = self.body("Insufficient memory.").replace("FINITE_CERTIFICATE", "EXACT_BLOCKER")
+        self.assertEqual(intake.parse_result_comment(blocked, REPO)["preamble"]["disposition"], "EXACT_BLOCKER")
+        with self.assertRaises(intake.IntakeError):
+            intake.parse_result_comment(self.body().replace("FINITE_CERTIFICATE", "EXACT_BLOCKER"), REPO)
+
+
 if __name__=="__main__":
     unittest.main()
