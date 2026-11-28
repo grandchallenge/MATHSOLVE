@@ -490,6 +490,108 @@
         "PROTECTED_PACKET_ONLY"
       ],
       "campaign": "QTR-C90-SWARM-001"
+    },
+    {
+      "dispatch_id": "QTR-C90-SP-C002-B001-IA-001",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-SP-C002-B001-IA-001.json",
+      "github_issue_number": 1347,
+      "issue_body_sha256": "927dd425e9990fb43d2ea37ba0d1a0766cd3dd67c0ff35649d2fc370f324e225",
+      "task_path": "handoffs/QTR-C90-SWARM-001/QTR-C90-SP-C002-B001-IA-001.md",
+      "task_commit": "817c596573df21422b49c7ffd6a9069066c802e1",
+      "task_sha256": "5063b6515bd22f6c936863e6066af92cb369717eef44ca7813417521048cb0bb",
+      "allowed_dispositions": [
+        "FINITE_CERTIFICATE",
+        "EXACT_BLOCKER"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "QTR-C90-SWARM-001"
+    },
+    {
+      "dispatch_id": "QTR-C90-SP-C002-B002-IA-001",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-SP-C002-B002-IA-001.json",
+      "github_issue_number": 1348,
+      "issue_body_sha256": "e7321be594af4a505888e0d7f77e85ca500eac9210801e0f99963721bdc8d273",
+      "task_path": "handoffs/QTR-C90-SWARM-001/QTR-C90-SP-C002-B002-IA-001.md",
+      "task_commit": "817c596573df21422b49c7ffd6a9069066c802e1",
+      "task_sha256": "c6d4247f54999af38423f5d44d390d5708c804bf8b526c50455858963aae486c",
+      "allowed_dispositions": [
+        "FINITE_CERTIFICATE",
+        "EXACT_BLOCKER"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "QTR-C90-SWARM-001"
+    },
+    {
+      "dispatch_id": "QTR-C90-ST-C001-B001-IA-001",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-ST-C001-B001-IA-001.json",
+      "github_issue_number": 1349,
+      "issue_body_sha256": "3746dd5180fb62aeb87e5064b54b9551aca649d0d13eebca574f1ed15befc559",
+      "task_path": "handoffs/QTR-C90-SWARM-001/QTR-C90-ST-C001-B001-IA-001.md",
+      "task_commit": "817c596573df21422b49c7ffd6a9069066c802e1",
+      "task_sha256": "774690d1753c3491cf04a14c5c06bb1ab0a3d16e6268bd0ce8635c89ffd28a52",
+      "allowed_dispositions": [
+        "FINITE_CERTIFICATE",
+        "EXACT_BLOCKER"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "QTR-C90-SWARM-001"
+    },
+    {
+      "dispatch_id": "QTR-C90-ST-C001-B002-IA-001",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-ST-C001-B002-IA-001.json",
+      "github_issue_number": 1350,
+      "issue_body_sha256": "61fe4e6e28af3f8c3d7992ea9c28bc4f007b7536a64886bf2b1f430ee15a627d",
+      "task_path": "handoffs/QTR-C90-SWARM-001/QTR-C90-ST-C001-B002-IA-001.md",
+      "task_commit": "817c596573df21422b49c7ffd6a9069066c802e1",
+      "task_sha256": "c4589ac4562e0ac4e232845f1294e5f2e434208e0573ca970cefdfa85c3605dd",
+      "allowed_dispositions": [
+        "FINITE_CERTIFICATE",
+        "EXACT_BLOCKER"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "QTR-C90-SWARM-001"
+    },
+    {
+      "dispatch_id": "QTR-C90-MP-C001-B001-IA-001",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-MP-C001-B001-IA-001.json",
+      "github_issue_number": 1351,
+      "issue_body_sha256": "ece467348626238e33f47f6461cc695d451b742f386e16d5ffceb276df952a45",
+      "task_path": "handoffs/QTR-C90-SWARM-001/QTR-C90-MP-C001-B001-IA-001.md",
+      "task_commit": "817c596573df21422b49c7ffd6a9069066c802e1",
+      "task_sha256": "d611f6d4f9c32e765bf539d68b1b11d555296961bcb21bd12a09e8d64d7843b3",
+      "allowed_dispositions": [
+        "FINITE_CERTIFICATE",
+        "EXACT_BLOCKER"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "QTR-C90-SWARM-001"
+    },
+    {
+      "dispatch_id": "QTR-C90-MP-C001-B002-IA-001",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-MP-C001-B002-IA-001.json",
+      "github_issue_number": 1352,
+      "issue_body_sha256": "d72da76989e0c820e059a8c7828b8161d3a9e3a546f7f58070938413e50556de",
+      "task_path": "handoffs/QTR-C90-SWARM-001/QTR-C90-MP-C001-B002-IA-001.md",
+      "task_commit": "817c596573df21422b49c7ffd6a9069066c802e1",
+      "task_sha256": "477888781668014907a432a6a957b7097c51629a8e94e42cb73fd1c659fc19fb",
+      "allowed_dispositions": [
+        "FINITE_CERTIFICATE",
+        "EXACT_BLOCKER"
+      ],
+      "allowed_external_sources": [
+        "PROTECTED_PACKET_ONLY"
+      ],
+      "campaign": "QTR-C90-SWARM-001"
     }
   ]
 }

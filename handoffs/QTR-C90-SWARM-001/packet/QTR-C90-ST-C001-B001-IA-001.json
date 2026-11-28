@@ -1,0 +1,23 @@
+{
+  "activation_head": "0c1f5591a097adc285dec4cbfc320eeebd2c65d3",
+  "agent_ref": "GCL-ZERO-CONTEXT-QTR-WORKER",
+  "algebra": "soft_tropical_base_2",
+  "archive_sha256": "c4fa41b35ad5e88e4e58ca9816c78dd296d170a5d86cf9087c51b4fdcce138e8",
+  "artifact_id": 10442242798,
+  "assignment": "QTR-C90-ST-C001-B001-IA-001",
+  "batch": 1,
+  "batch_plan_sha256": "932cded9e94e082c10cbccb11c4bd3fd9eb509e9849464b1dd77364581e1c160",
+  "binary_url": "https://raw.githubusercontent.com/grandchallenge/QUANTUM-TECHNOLOGIES/3a444b6b439cb33b8ec3c7af31390ae286f74eaa/docs/handoffs/QTR-C90-SWARM-001-input/eval-compact",
+  "campaign_admission": false,
+  "count": 16,
+  "dispatch_id": "QTR-C90-ST-C001-B001-IA-001",
+  "graph_sha256": "9647b3e7fb2ee7f6f87d7e3fe6ce6779bd756e100f86f3dc13e7dc5385b5df9a",
+  "input_evidence_only": true,
+  "issue": 1349,
+  "logical_class": 1,
+  "quality_exposed": false,
+  "scientific_head": "675865123437c3d6c908c7a3af337fd4023c5d0b",
+  "selector_file": "QTR-C90-ST-C001-B001-IA-001.selectors.txt",
+  "selectors_sha256": "601ebbd01c70bde031d4f419d001cd1b4603d195b17424f41a501e184f529f7b",
+  "task_path": "handoffs/QTR-C90-SWARM-001/QTR-C90-ST-C001-B001-IA-001.md"
+}

@@ -717,6 +717,84 @@
       "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-MP-C001-B000-IA-001.json",
       "cohort_id": "QTR-C90-SWARM-PILOT-001",
       "task_commit": "5c6cbaf333b5386be88a98a31a2ad715540af271"
+    },
+    {
+      "dispatch_id": "QTR-C90-SP-C002-B001-IA-001",
+      "issue_number": 1347,
+      "role": "VERIFY",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-SP-C002-B001-IA-001.json",
+      "cohort_id": "QTR-C90-SWARM-PILOT-001",
+      "task_commit": "817c596573df21422b49c7ffd6a9069066c802e1"
+    },
+    {
+      "dispatch_id": "QTR-C90-SP-C002-B002-IA-001",
+      "issue_number": 1348,
+      "role": "VERIFY",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-SP-C002-B002-IA-001.json",
+      "cohort_id": "QTR-C90-SWARM-PILOT-001",
+      "task_commit": "817c596573df21422b49c7ffd6a9069066c802e1"
+    },
+    {
+      "dispatch_id": "QTR-C90-ST-C001-B001-IA-001",
+      "issue_number": 1349,
+      "role": "VERIFY",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-ST-C001-B001-IA-001.json",
+      "cohort_id": "QTR-C90-SWARM-PILOT-001",
+      "task_commit": "817c596573df21422b49c7ffd6a9069066c802e1"
+    },
+    {
+      "dispatch_id": "QTR-C90-ST-C001-B002-IA-001",
+      "issue_number": 1350,
+      "role": "VERIFY",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-ST-C001-B002-IA-001.json",
+      "cohort_id": "QTR-C90-SWARM-PILOT-001",
+      "task_commit": "817c596573df21422b49c7ffd6a9069066c802e1"
+    },
+    {
+      "dispatch_id": "QTR-C90-MP-C001-B001-IA-001",
+      "issue_number": 1351,
+      "role": "VERIFY",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-MP-C001-B001-IA-001.json",
+      "cohort_id": "QTR-C90-SWARM-PILOT-001",
+      "task_commit": "817c596573df21422b49c7ffd6a9069066c802e1"
+    },
+    {
+      "dispatch_id": "QTR-C90-MP-C001-B002-IA-001",
+      "issue_number": 1352,
+      "role": "VERIFY",
+      "self_claimable": true,
+      "reservation_ttl_minutes": 65,
+      "collaboration_mode": "STAGED_DISCLOSURE",
+      "visibility_phase": "BLIND_COLLECTION",
+      "sibling_use_policy": "FORBIDDEN",
+      "dispatch_path": "contributions/QTR-C90-SWARM-001/dispatches/QTR-C90-MP-C001-B002-IA-001.json",
+      "cohort_id": "QTR-C90-SWARM-PILOT-001",
+      "task_commit": "817c596573df21422b49c7ffd6a9069066c802e1"
     }
   ]
 }
