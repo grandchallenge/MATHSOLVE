@@ -59,14 +59,20 @@ For an already assigned mathematical task that needs Lean compilation or bounded
 
 From a protected MATH-PROGRAMME checkout, an authenticated local Codex operator can run `python3 ci/gcl_lean_colab_jobs.py list` and `python3 ci/gcl_lean_colab_jobs.py verify`. Only run a registered job with an already authorized task, the job's live queue preflight, exact-source custody, and available Colab OAuth. Do not substitute the skill for queue pickup, send credentials to Colab, or represent compilation as mathematical certification. New workloads require a protected source/worker/adapter registration first.
 
-## Public research disclosure
+## Live research execution context
 
-For already assigned public research using authenticated CONTROL, follow the
-[shared protected disclosure instruction](https://github.com/grandchallenge/.github/blob/834c958f103360a1f3319b911c1215b57aa5d0b3/AGENTS.md#open-research-execution-and-disclosure).
-Execute once in the governed environment; use the existing eligible public
-runner or complete reviewed-transcript route. External workers without CONTROL
-retain the ordinary durable evidence and assignment-specific return contract.
-No new pickup, authentication, certification or release authority is granted.
+For ordinary assigned, publishable research performed through authenticated CONTROL Bash, use the [admitted native public research designation](https://github.com/grandchallenge/.github/blob/a4e7e5ca203d32d2e34c80db3ed3fe2b6438f562/AGENTS.md#open-research-execution-and-disclosure) by default. Begin the actual command with the exact owning public repository and anonymously public revision, then the [research-thread convention](https://github.com/grandchallenge/grandchallenge.github.io/blob/1139be5a66a1e5111adcbe5c871cd5d4db7ece1b/README.md#live-research-console):
+
+```bash
+# GCL_PUBLIC_RESEARCH grandchallenge/OWNING-REPOSITORY EXACT_PUBLIC_COMMIT_SHA
+# GCL_THREAD: stable-assignment-or-investigation-id
+# GCL_TITLE: Actual research title
+# GCL_OBJECTIVE: Actual objective
+# GCL_RESEARCH: Question being investigated
+# GCL_EXECUTE: Actual planned execution
+```
+
+After those comments execute the ordinary governed research once. Where warranted by its actual observed result, emit `GCL_FINDING:`, `GCL_NEXT:`, or `GCL_BLOCKER:` in the same captured output. Do not invent a result, publish private or unknown material, add narration-only invocations, repeat computation for publicity, or treat publication as certification. Preserve the immutable assignment, lease, proof, evidence and compute-placement rules. Workers without CONTROL continue their existing durable return path without a new authentication requirement. Publication failure does not stop research. At a normal material checkpoint, verify correlated release when practical; no additional demonstration experiment.
 
 ## Mandatory prerequisite
 
