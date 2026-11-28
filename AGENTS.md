@@ -93,3 +93,18 @@ For already-authorized research using authenticated CONTROL, follow the [shared 
 ## Worker-guidance CI proportionality
 
 A transition confined exactly to AGENTS.md and/or WORKERS.md retains the global worker bootstrap, queue, manifest, compiler-integrity, policy and security checks but not unrelated campaign-specific ledger computations. Direct consumers of these instructions remain in the unconditional worker gate and continuity-adoption workflow. The existing PNP-ABOVE/SCC isolated scope is unchanged. Empty/manual, unknown, mixed or shared-control transitions retain the conservative campaign ledger suite.
+
+## Live research execution context
+
+For ordinary assigned, publishable research performed through authenticated CONTROL Bash, use the [admitted native public research designation](https://github.com/grandchallenge/.github/blob/a4e7e5ca203d32d2e34c80db3ed3fe2b6438f562/AGENTS.md#open-research-execution-and-disclosure) by default. Begin the actual command with the exact owning public repository and anonymously public revision, then the [research-thread convention](https://github.com/grandchallenge/grandchallenge.github.io/blob/1139be5a66a1e5111adcbe5c871cd5d4db7ece1b/README.md#live-research-console):
+
+```bash
+# GCL_PUBLIC_RESEARCH grandchallenge/OWNING-REPOSITORY EXACT_PUBLIC_COMMIT_SHA
+# GCL_THREAD: stable-assignment-or-investigation-id
+# GCL_TITLE: Actual research title
+# GCL_OBJECTIVE: Actual objective
+# GCL_RESEARCH: Question being investigated
+# GCL_EXECUTE: Actual planned execution
+```
+
+After those comments execute the ordinary governed research once. Where warranted by its actual observed result, emit `GCL_FINDING:`, `GCL_NEXT:`, or `GCL_BLOCKER:` in the same captured output. Do not invent a result, publish private or unknown material, add narration-only invocations, repeat computation for publicity, or treat publication as certification. Preserve the immutable assignment, lease, proof, evidence and compute-placement rules. Workers without CONTROL continue their existing durable return path without a new authentication requirement. Publication failure does not stop research. At a normal material checkpoint, verify correlated release when practical; no additional demonstration experiment.
