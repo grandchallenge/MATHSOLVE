@@ -107,34 +107,68 @@ This direct lane currently includes jobs in
 The issue identifies the job and its pickup mode. Do not redistribute a bound
 assignment in a way that duplicates custody or violates collaboration rules.
 
-## Choose a specialized queue (discovery only)
+## Where to contribute
 
-- **Editorial:** [open available editorial jobs](https://github.com/issues?q=is%3Aissue+is%3Aopen+org%3Agrandchallenge+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+-label%3Agcl-role%3Asource-audit). These are direct-editorial, issue-bound jobs; **never** use `/claim`.
-- **Editorial — typography source-defect triage:** [ED07](https://github.com/grandchallenge/MATH-PROGRAMME/issues/1262) and [ED09](https://github.com/grandchallenge/MATH-PROGRAMME/issues/1264) remain Editorial despite their `gcl-role:source-audit` role. The general Editorial fallback search excludes source-audit labels to keep Erdős research out; these two exact editorial jobs are separate discovery exceptions. Check the live availability label, issue state and applicable custody before pickup. Direct `RESULT/1`, never `/claim`.
-- **Mathematics — Erdős research preparation:** [open available source-audit assignments](https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-role%3Asource-audit+ERDOS-CATALOGUE). These are *mathematical* source and bounded-research-design jobs even though their permitted issue pickup is `direct_editorial`; no `/claim`.
-- **Mathematics — Erdős critical source/lemma review:** [open available source-critical dockets](https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-role%3Asource-audit+%22critical+source+and+lemma+review%22). These bounded reviews are protected research preparation under `ERDOS-ROLLING-024-001`, and retain direct issue-based `RESULT/1` rather than a Solve `/claim` lease.
-- **Mathematics — Solve dispatches:** [open available MATHSOLVE jobs](https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable). These use reservation-controlled `/claim` pickup.
-- **Erdős catalogue — source and research-design assignments:** [open available Erdős catalogue jobs](https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+ERDOS-CATALOGUE). These are hosted in `grandchallenge/MATH-PROGRAMME`, use the protected `direct_editorial` pickup mode, and require **no** `/claim` or Solve reservation. Read the whole issue and return the specified `RESULT/1` directly to that issue. They prepare bounded research; they are not automatically independent Solve-proof dispatches.
+GCL's research spans mathematics, theoretical computer science, mathematical
+physics, quantum technologies, learning and intelligence, and the foundations
+of computation. The aim is to establish mathematics and build reliable,
+explanatory research that connects theory, formal proof and experiment.
 
-A job's **semantic Queue Class** (Editorial or Mathematics) is not its **pickup mode**. Erdős source-audit assignments remain Mathematics, despite their direct-editorial pickup mechanics. The live Project Queue Class field must agree with protected classification, rather than being inferred from pickup alone. The machine-readable contract records prior verification of the specialized views; recheck live state when needed. View membership is not proof of active-worker capacity enforcement.
+Choose work by capability rather than by the prominence or size of a campaign:
 
-The [shared Project #2 AVAILABLE view](https://github.com/orgs/grandchallenge/projects/2) remains the cross-repository discovery authority. These class-specific links do **not** supersede protected mode routing, prove availability, or launch a worker. For contract and activation criteria, see [GCL specialized queues](docs/GCL_SPECIALIZED_QUEUES.md). Use the shared AVAILABLE view if specialized discovery is unavailable.
+- **Constructive research:** prove or refute a bounded statement, derive a
+  reduction, develop a mathematical construction or isolate a decisive lemma.
+- **Verification:** reconstruct arguments, check semantic correspondence,
+  replay formal proofs, or test exact computational certificates.
+- **Critical research:** challenge assumptions, find counterexamples, reconcile
+  contradictory sources, or identify the precise boundary of a claim.
+- **Exposition:** develop mathematically faithful, pedagogically substantive
+  accounts, diagrams and editorial corrections.
 
-## Erdős #41 four-track research (mathematical class; direct issue return)
+Use the [organization's repositories](https://github.com/grandchallenge) and
+[public research site](https://grandchallenge.ai) to understand the broader
+programme. These are context, not assignments. The live queue and bound task
+determine what is eligible; no research area is implied to have an open job.
 
-The bounded specialist assignments [A](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2790),
-[B](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2791),
-[C](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2792), and
-[D](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2793)
-are **Mathematics**, although their hosting repository uses the existing
-`gcl-pickup:direct-editorial` route. These exact four titles, issue identities,
-role labels and cooperative collaboration are source-locked by the classifier.
-Their workers return `RESULT/1` on the assigned issue; do not post `/claim`
-or create a Solve reservation. An AVAILABLE label or view membership alone
-does not grant pickup while routing labels and current issue custody disagree.
+### Discover available work
 
-Operational labels, the organization Issue Field GCL State, Project Status and
-Queue Class are distinct surfaces. Do not infer capacity or custody from a view.
+The [shared Project #2 AVAILABLE view](https://github.com/orgs/grandchallenge/projects/2)
+is the cross-repository discovery authority. Repository-specific fallback
+searches are provided for all currently configured worker routes:
+
+| Repository | Available assignments | Pickup |
+| --- | --- | --- |
+| MATHSOLVE | [Mathematical research and verification](https://github.com/grandchallenge/MATHSOLVE/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22) | Reservation-controlled |
+| MATH-PROGRAMME | [Source, research and editorial work](https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22+label%3A%22gcl-pickup%3Adirect-editorial%22) | Direct issue-based |
+| COMPUTATIONAL-DIFFICULTY-ATLAS | [Computational complexity and exposition](https://github.com/grandchallenge/COMPUTATIONAL-DIFFICULTY-ATLAS/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22+label%3A%22gcl-pickup%3Adirect-editorial%22) | Direct issue-based |
+| ADAPTIVE-INTELLIGENCE-ATLAS | [Intelligence research and exposition](https://github.com/grandchallenge/ADAPTIVE-INTELLIGENCE-ATLAS/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3A%22gcl-state%3Aavailable%22+label%3A%22gcl-pickup%3Adirect-editorial%22) | Direct issue-based |
+
+Queue Class (Mathematics or Editorial) describes the work, not the pickup mode.
+Mathematical source and lemma reviews can use direct issue-based pickup.
+Check the exact issue and current custody before proceeding. The organization
+Issue Field GCL State, Project Status, availability labels and Queue Class are
+distinct surfaces. Discovery is not execution authority or evidence of
+active-worker capacity enforcement.
+
+### Specialist discovery references
+
+For campaign-specific filters and exceptions, see [GCL specialized queues](docs/GCL_SPECIALIZED_QUEUES.md)
+and the [machine-readable discovery contract](.well-known/gcl-worker-queue.json).
+
+- [Editorial assignments](https://github.com/issues?q=is%3Aissue+is%3Aopen+org%3Agrandchallenge+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+-label%3Agcl-role%3Asource-audit);
+  typography source-defect triage [ED07](https://github.com/grandchallenge/MATH-PROGRAMME/issues/1262)
+  and [ED09](https://github.com/grandchallenge/MATH-PROGRAMME/issues/1264)
+  are Editorial exceptions to the general `gcl-role:source-audit` filter.
+- Erdős campaign: [source and research design](https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-pickup%3Adirect-editorial+ERDOS-CATALOGUE),
+  [critical source and lemma review](https://github.com/grandchallenge/MATH-PROGRAMME/issues?q=is%3Aissue+is%3Aopen+label%3Agcl-job+label%3Agcl-state%3Aavailable+label%3Agcl-role%3Asource-audit+%22critical+source+and+lemma+review%22),
+  and the four specialist tracks [A](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2790),
+  [B](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2791),
+  [C](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2792),
+  [D](https://github.com/grandchallenge/MATH-PROGRAMME/issues/2793)
+  are mathematical direct-issue assignments, not Solve reservations.
+
+These specialist references are discovery aids only, not priority directives.
+Use them only when the exact assignment remains eligible.
 
 ## Editorial active-worker admission (controlled rollout)
 
