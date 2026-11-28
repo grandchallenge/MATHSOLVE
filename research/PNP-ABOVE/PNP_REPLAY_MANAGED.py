@@ -83,6 +83,14 @@ def managed_preflight(u,d):
     build=u/'.lake/build/lib/lean'
     if not on_ssd(build) or not build.is_dir() or (build/'PNPAbove').exists() or (build/'PNPAbove').is_symlink():
         raise SystemExit('PNP_MANAGED_REPLAY_BUILD_NAMESPACE_NOT_FRESH')
+    required=('Introspection/ClockedQueryProgram','Halting/Arith',
+              'Cost/SizeProgram','Cost/Universal','Cost/Iterates',
+              'Halting/Serial','Cost/Binary','Halting/Descriptions',
+              'CL/DetypingProgParse')
+    missing=[name for name in required
+             if not (build/'MIPRE/Foundations'/(name+'.olean')).is_file()]
+    if missing:
+        raise SystemExit('PNP_MANAGED_REPLAY_ENTRY_OBJECTS_MISSING: '+', '.join(missing))
     record={'schema':'PNP_REPLAY_PLACEMENT/1','runner':'CHAD-managed-SSD',
             'workspace':str(u),'upstream_stage':stage,'checked_source_blobs':checked_sources,'manifest_sha256':sha,
             'package_revisions':revs,'version':version,'lean_path':paths,
