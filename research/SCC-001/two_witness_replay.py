@@ -67,6 +67,12 @@ def safe_replay():
                         pair_checks+=1
     print('PASS safe codimension-two histories',cases,'nonredundant gates',steps,'exact surviving target pairs',pair_checks)
 
+def global_counterexample():
+    a,b,c=(0xaa,0xcc,0xf0);V=span([0xff,a,b,c]);H=span([*V,a&b&c])
+    assert len(V)==16 and len(H)==32 and (a&b&c) in H-V
+    assert {u&v for u in V for v in V}&H <= V
+    print('PASS global codimension-three deadlock, 256 ordered operand pairs')
+
 if __name__=='__main__':
     if not __debug__:raise RuntimeError('assertions required')
-    ext_test();safe_replay()
+    ext_test();safe_replay();global_counterexample()
