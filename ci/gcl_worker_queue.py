@@ -131,6 +131,29 @@ def build_marker(
     return "\n".join(lines)
 
 
+def qtr_local_candidate_held(config: dict[str, Any], job: dict[str, Any]) -> bool:
+    hold = config.get("qtr_local_candidate_hold")
+    if hold is None:
+        return False
+    expected = {
+        "1347": "QTR-C90-SP-C002-B001-IA-001",
+        "1348": "QTR-C90-SP-C002-B002-IA-001",
+        "1349": "QTR-C90-ST-C001-B001-IA-001",
+        "1350": "QTR-C90-ST-C001-B002-IA-001",
+        "1351": "QTR-C90-MP-C001-B001-IA-001",
+        "1352": "QTR-C90-MP-C001-B002-IA-001",
+    }
+    if hold != {"authority": "grandchallenge/QUANTUM-TECHNOLOGIES#114 comment 7238964763",
+                "dispatches": expected}:
+        raise QueueError("invalid bounded QTR local candidate hold")
+    number = str(job.get("issue_number"))
+    if number not in expected:
+        return False
+    if job.get("dispatch_id") != expected[number]:
+        raise QueueError("QTR local hold identity mismatch")
+    return True
+
+
 def process(event: dict[str, Any], comments: list[dict[str, Any]], when: datetime) -> dict[str, Any]:
     config = load_json(CONFIG)
     registry = load_json(REGISTRY)
@@ -176,6 +199,10 @@ def process(event: dict[str, Any], comments: list[dict[str, Any]], when: datetim
         if active is not None:
             return {**common, "outcome": "REJECTED_ALREADY_RESERVED", "labels_add": ["reserved"], "labels_remove": ["available"],
                     "response": f"CLAIM REJECTED — already reserved by @{active['worker']} until {active['expires_at']}."}
+        if qtr_local_candidate_held(config, job):
+            return {**common, "outcome": "REJECTED_LOCAL_CANDIDATE_HOLD",
+                    "labels_add": [], "labels_remove": ["available", "reserved"],
+                    "response": "CLAIM REJECTED — this exact QTR batch is assigned to bounded CHAD local candidate execution. No scientific admission or independent-worker result is implied."}
         ttl = int(job.get("reservation_ttl_minutes", 60))
         claimed = iso(when)
         expires = iso(when + timedelta(minutes=ttl))
@@ -200,6 +227,11 @@ def process(event: dict[str, Any], comments: list[dict[str, Any]], when: datetim
         return {**common, "outcome": "RESERVED", "worker": actor, "claimed_at": claimed, "expires_at": expires,
                 "task_url": task_url, "labels_add": ["reserved"], "labels_remove": ["available", "returned"], "response": response}
 
+    held = qtr_local_candidate_held(config, job)
+    if active is None and held:
+        return {**common, "outcome": "REJECTED_LOCAL_CANDIDATE_HOLD",
+                "labels_add": [], "labels_remove": ["available", "reserved"],
+                "response": "RELEASE REJECTED — this QTR batch is held for bounded CHAD local candidate execution."}
     if active is None:
         return {**common, "outcome": "REJECTED_NO_ACTIVE_RESERVATION", "labels_add": ["available"], "labels_remove": ["reserved"],
                 "response": "RELEASE REJECTED — no active reservation exists."}
@@ -208,6 +240,9 @@ def process(event: dict[str, Any], comments: list[dict[str, Any]], when: datetim
                 "response": f"RELEASE REJECTED — active reservation belongs to @{active['worker']}."}
     marker = build_marker(dispatch_id, "RELEASED", str(active["worker"]), "github-actions[bot]", reason=f"released_by:{actor}")
     response = marker + "\n\nRELEASE ACCEPTED — the job is operationally available again if its protected dispatch remains executable."
+    if held:
+        response = marker + "\n\nRELEASE ACCEPTED — the job remains held for bounded CHAD local candidate execution."
+        return {**common, "outcome": "RELEASED", "worker": active["worker"], "labels_add": [], "labels_remove": ["available", "reserved"], "response": response}
     return {**common, "outcome": "RELEASED", "worker": active["worker"], "labels_add": ["available"], "labels_remove": ["reserved"], "response": response}
 
 

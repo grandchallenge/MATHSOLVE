@@ -230,7 +230,7 @@ jobs:
               EXPIRED|RESULT_REJECTED)
                 python ci/gcl_worker_queue_label_recovery.py --repo "$GITHUB_REPOSITORY" --issue "$n" --add "$available" --remove "$reserved" --remove "$returned"
                 ;;
-              RESULT_PENDING)
+              RESULT_PENDING|LOCAL_CANDIDATE_HOLD)
                 python ci/gcl_worker_queue_label_recovery.py --repo "$GITHUB_REPOSITORY" --issue "$n" --remove "$reserved" --remove "$available" --remove "$returned"
                 ;;
               RETURNED)
