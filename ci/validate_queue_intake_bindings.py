@@ -60,11 +60,12 @@ def validate(root:Path=ROOT)->list[str]:
             errors.append(f"{did}: unregistered campaign")
         if dispatch.get("campaign") == "QTR-C90-SWARM-001":
             pilot = {'QTR-C90-SP-C002-B000-IA-001': 1328, 'QTR-C90-ST-C001-B000-IA-001': 1329, 'QTR-C90-MP-C001-B000-IA-001': 1330}
+            pilot.update({'QTR-C90-SP-C002-B001-IA-001': 1347, 'QTR-C90-SP-C002-B002-IA-001': 1348, 'QTR-C90-ST-C001-B001-IA-001': 1349, 'QTR-C90-ST-C001-B002-IA-001': 1350, 'QTR-C90-MP-C001-B001-IA-001': 1351, 'QTR-C90-MP-C001-B002-IA-001': 1352})
             if (pilot.get(did) != job.get("issue_number")
                     or b.get("task_path") != f"handoffs/QTR-C90-SWARM-001/{did}.md"
                     or b.get("allowed_external_sources") != ["PROTECTED_PACKET_ONLY"]
                     or b.get("allowed_dispositions") != ["FINITE_CERTIFICATE","EXACT_BLOCKER"]):
-                errors.append(f"{did}: QTR bounded pilot binding is not exact")
+                errors.append(f"{did}: QTR bounded dispatch binding is not exact")
         if dispatch.get("campaign") == "GCL-RWP-003":
             if (did != "RWP-003-NSPHERE-IA-001"
                     or job.get("issue_number") != 1218
