@@ -14,6 +14,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from ci.gcl_worker_queue_contract import active_reservation
+from ci.gcl_worker_queue import qtr_local_candidate_held
 
 ROOT = Path(__file__).resolve().parents[1]
 PROJECT = ROOT / ".gcl/worker_queue/PROJECT.json"
@@ -144,6 +145,7 @@ def projection(
             "clear_field_ids": [],
         }
 
+    held = qtr_local_candidate_held(load_json(CONFIG), job)
     updates: list[dict[str, Any]] = project_metadata_updates(job, project)
     clears: list[int] = []
     state_id = field_id(project, "state")
@@ -161,19 +163,19 @@ def projection(
                 {"field_id": expires_id, "value": str(result["expires_at"])},
             ])
         elif outcome == "RELEASED":
-            updates.append({"field_id": state_id, "value": "AVAILABLE"})
+            updates.append({"field_id": state_id, "value": "BLOCKED" if held else "AVAILABLE"})
             clears.extend([worker_id, expires_id])
         elif outcome == "REJECTED_RESULT_ALREADY_PROTECTED":
             updates.append({"field_id": state_id, "value": "RETURNED"})
             clears.append(expires_id)
-        elif outcome == "REJECTED_RESULT_COMMENT_PRESENT":
+        elif outcome in ("REJECTED_RESULT_COMMENT_PRESENT", "REJECTED_LOCAL_CANDIDATE_HOLD"):
             updates.append({"field_id": state_id, "value": "BLOCKED"})
             clears.append(expires_id)
     elif mode == "intake":
         updates.append({"field_id": state_id, "value": "RETURNED"})
         clears.append(expires_id)
     elif mode == "expire":
-        updates.append({"field_id": state_id, "value": "AVAILABLE"})
+        updates.append({"field_id": state_id, "value": "BLOCKED" if held else "AVAILABLE"})
         clears.extend([worker_id, expires_id])
     elif mode == "reconcile":
         if comments is None:
@@ -193,13 +195,13 @@ def projection(
                 "clear_field_ids": clears,
             }
         if result_state == "REJECTED":
-            updates.append({"field_id": state_id, "value": "AVAILABLE"})
+            updates.append({"field_id": state_id, "value": "BLOCKED" if held else "AVAILABLE"})
             clears.extend([worker_id, expires_id])
             return {
                 "queue_managed": True,
                 "dispatch_id": dispatch_id,
                 "issue_number": job["issue_number"],
-                "reservation_state": "RESULT_REJECTED",
+                "reservation_state": "LOCAL_CANDIDATE_HOLD" if held else "RESULT_REJECTED",
                 "issue_field_values": updates,
                 "clear_field_ids": clears,
             }
@@ -222,9 +224,9 @@ def projection(
             controller_actors,
         )
         if active is None:
-            updates.append({"field_id": state_id, "value": "AVAILABLE"})
+            updates.append({"field_id": state_id, "value": "BLOCKED" if held else "AVAILABLE"})
             clears.extend([worker_id, expires_id])
-            reservation_state = "EXPIRED"
+            reservation_state = "LOCAL_CANDIDATE_HOLD" if held else "EXPIRED"
         else:
             updates.extend([
                 {"field_id": state_id, "value": "RESERVED"},

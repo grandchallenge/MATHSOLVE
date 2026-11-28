@@ -115,5 +115,16 @@
       "certification": false,
       "publication": false
     }
+  },
+  "qtr_local_candidate_hold": {
+    "authority": "grandchallenge/QUANTUM-TECHNOLOGIES#114 comment 7238964763",
+    "dispatches": {
+      "1347": "QTR-C90-SP-C002-B001-IA-001",
+      "1348": "QTR-C90-SP-C002-B002-IA-001",
+      "1349": "QTR-C90-ST-C001-B001-IA-001",
+      "1350": "QTR-C90-ST-C001-B002-IA-001",
+      "1351": "QTR-C90-MP-C001-B001-IA-001",
+      "1352": "QTR-C90-MP-C001-B002-IA-001"
+    }
   }
 }

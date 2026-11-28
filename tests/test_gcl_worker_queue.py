@@ -27,6 +27,38 @@ def marker(dispatch: str, worker: str, claimed: datetime, expires: datetime, sta
 
 
 class WorkerQueueTest(unittest.TestCase):
+    def test_exact_qtr_local_hold_excludes_only_six_jobs(self):
+        roster = {
+            "1347": "QTR-C90-SP-C002-B001-IA-001",
+            "1348": "QTR-C90-SP-C002-B002-IA-001",
+            "1349": "QTR-C90-ST-C001-B001-IA-001",
+            "1350": "QTR-C90-ST-C001-B002-IA-001",
+            "1351": "QTR-C90-MP-C001-B001-IA-001",
+            "1352": "QTR-C90-MP-C001-B002-IA-001",
+        }
+        cfg = {"qtr_local_candidate_hold": {
+            "authority": "grandchallenge/QUANTUM-TECHNOLOGIES#114 comment 7238964763",
+            "dispatches": roster}}
+        for issue, did in roster.items():
+            self.assertTrue(queue.qtr_local_candidate_held(cfg, {"issue_number": int(issue), "dispatch_id": did}))
+        self.assertFalse(queue.qtr_local_candidate_held(cfg, {"issue_number": 1328, "dispatch_id": "QTR-C90-SP-C002-B000-IA-001"}))
+        with self.assertRaises(queue.QueueError):
+            queue.qtr_local_candidate_held(cfg, {"issue_number": 1347, "dispatch_id": "wrong"})
+        with self.assertRaises(queue.QueueError):
+            queue.qtr_local_candidate_held({"qtr_local_candidate_hold": {}}, {"issue_number": 1347})
+
+    def test_held_claim_is_rejected_but_existing_reservation_preserved(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            event = self.make_repo(root)
+            now = datetime(2026, 10, 5, tzinfo=timezone.utc)
+            first = self.run_process(root, event, [], now)
+            comment = {"id": 1, "created_at": now.isoformat(),
+                       "user": {"login": "github-actions[bot]"}, "body": first["response"]}
+            with patch.object(queue, "qtr_local_candidate_held", return_value=True):
+                self.assertEqual(self.run_process(root, event, [], now)["outcome"], "REJECTED_LOCAL_CANDIDATE_HOLD")
+                self.assertEqual(self.run_process(root, event, [comment], now)["outcome"], "REJECTED_ALREADY_RESERVED")
+
     def test_active_and_expired_reservation(self):
         now = datetime(2026, 10, 5, tzinfo=timezone.utc)
         comments = [{
