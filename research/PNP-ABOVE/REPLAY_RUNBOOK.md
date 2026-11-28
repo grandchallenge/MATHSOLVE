@@ -46,3 +46,39 @@ not permission to bypass placement. The existing Colab recovery route has
 successfully replayed all WP40 declarations. This runbook and guard close
 the direct WP40 replay bypass; they do not retrofit archived scripts or
 guarantee availability of every runner.
+
+## Managed CHAD route (WP47 onward)
+
+The 2026-11-28 storage expansion provides adequate staging space. The
+4.35.0-rc3 toolchain is installed under the dedicated SSD toolchain directory
+and registered through the managed launcher. The pinned MIPRE archive is
+staged at `/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47`.
+Do not infer cache readiness merely from the presence of that directory.
+Use the managed adapter's preflight and the actual replay receipt.
+
+`PNP_REPLAY_MANAGED.py` verifies every tracked upstream blob against the
+exact staged Git tree, verifies the staged manifest and package revisions,
+checks for modified tracked package sources, validates resolved Lean search
+paths on the dedicated SSD volumes, and checks the available reserve. It
+runs Lean exclusively using `gcl-lean-work run WORKSPACE lake env lean`.
+It installs a temporary SSD-local import namespace for each fresh replay,
+then removes that link on normal exit. It refuses an existing namespace or
+output path rather than overwriting retained evidence. Use only one active
+replay per staged workspace. Existing import caches are retained trusted
+build inputs; this adapter does not independently rebuild every upstream
+library or authenticate every cached binary. The new protected predecessor
+and candidate modules are freshly checked from exact source.
+
+Example, from a locked GCL checkout, with a new output directory:
+
+```
+W=/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47
+python3 research/PNP-ABOVE/WP47_REPLAY.py --managed-ssd "$W" "$PWD" "$W/replay-wp47-fresh"
+```
+
+Run `python3 -m unittest test_pnp_replay_managed.py test_pnp_replay_preflight.py`
+from `research/PNP-ABOVE` for the placement regression controls. Later native
+tranches should reuse this adapter and source-matched SSD cache, retaining
+their own exact predecessor/source locks. Do not reallocate Colab for a
+ready local cache; when preflight refuses, classify the actual condition and
+use the approved alternate only if necessary. Never run HDD Lean directly.
