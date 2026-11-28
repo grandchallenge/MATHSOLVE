@@ -54,7 +54,7 @@ theorem discharge_computed_boundary (W : PolyTimeFun (γ × BitStr) Bool)
   have hrun : (Prog.let_ (.cons c (.var 0)) d).Runs (encode x)
       (encode w) (s+(esize x+1)+1+t+1) :=
     Eval.let_ hpair (Eval.append_of_wellScoped hdRun hd [encode x])
-  refine ⟨.let_ (.cons c (.var 0)) d,w,_,⟨⟨hc,by decide⟩,hd.mono (by omega) d⟩,
+  refine ⟨.let_ (.cons c (.var 0)) d,w,_,⟨⟨hc,by simp [Prog.WellScoped]⟩,hd.mono (by omega) d⟩,
     hrun,hv,?_⟩
   have hsize : esize (Prog.let_ (.cons c (.var 0)) d) = esize c+esize d+21 := by
     simp [Prog.esize_eq_size_toData,Prog.toData] <;> omega
@@ -240,7 +240,7 @@ theorem generated_interface_solves
   obtain ⟨b,c,s,hc,hr,hcost,ha⟩ := h x hx
   change LocalCheap W _ x
   simpa only [Polynomial.eval_mul,Polynomial.eval_C,Polynomial.eval_add,
-    Polynomial.eval_X,Polynomial.eval_ofNat,Polynomial.eval_comp] using
+    Polynomial.eval_X,Polynomial.eval_ofNat,Polynomial.eval_one,Polynomial.eval_comp] using
     hq (p.eval (esize x)) (r.eval (esize x)) x b c s hc hr hcost ha
 
 end PNPAbove.WP47

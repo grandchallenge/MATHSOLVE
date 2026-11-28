@@ -4,9 +4,9 @@
   ],
   "modules": {
     "WP47Interface.lean": {
-      "git_blob": "f53a065192290d128971285c0345a783c47e447b",
+      "git_blob": "4ebf9c72ca7c79c63b7e8d13dd9db9583d0e379f",
       "path": "research/PNP-ABOVE/WP47_Interface.lean",
-      "sha256": "d49c3b67916f64aca0a62d8272af5191472c303fa930c755fa184cad7f292550",
+      "sha256": "0c8315912961c34ff4c81435d036dcd284885ba31d9f9ccc42e24a3753057c9b",
       "theorems": [
         "conditionedVerifier_correct",
         "discharge_boundary",
