@@ -180,4 +180,67 @@ theorem computable_interface_solves
     exact lift (A x) x ws hh
   exact polynomial_decomposition_solves V W DD JJ hl p h
 
+/-- A short successful boundary-producing program may differ on every
+input. Its description-weighted run cost, not its output length, bounds
+the charge for exposing a suitable conditioned decomposition. -/
+theorem generated_interface_weighted_bound
+    (V : PolyTimeFun (α × BitStr) Bool)
+    (W : PolyTimeFun (γ × BitStr) Bool)
+    (D : PolyTimeFun (BitStr × γ) (List α))
+    (J : PolyTimeFun ((BitStr × γ) × List BitStr) BitStr)
+    (lift : ∀ b x ws, BatchGood V (D (b,x)) ws → W (x,J ((b,x),ws)) = true) :
+    ∃ q : Polynomial Nat, ∀ (B C : Nat) (x : γ) (b : BitStr) (c : Prog) (s : Nat),
+      c.WellScoped 1 → c.Runs (encode x) (encode b) s →
+      2^(esize c)*(s+1) ≤ C →
+      (∀ a ∈ D (b,x), LocalCheap V B a) →
+      LocalCheap W (2^21*(esize x+4)*C*q.eval (B+C+esize x+1)) x := by
+  have hl : ∀ z ws, BatchGood V (D z) ws →
+      conditionedVerifier W (z,J (z,ws)) = true := by
+    rintro ⟨b,x⟩ ws h
+    exact lift b x ws h
+  obtain ⟨q,hq⟩ := decomposable_weighted_bound V (conditionedVerifier W) D J hl
+  refine ⟨q,?_⟩
+  intro B C x b c s hc hr hC ha
+  have ht := discharge_computed_boundary W _ b x c s hc hr (hq B (b,x) ha)
+  have hp : 0 < 2^(esize c) := by positivity
+  have hs : s+1 ≤ C := (Nat.le_mul_of_pos_left (s+1) hp).trans hC
+  have hsize : esize b ≤ s := hr.size_le
+  have harg : B+esize (b,x) ≤ B+C+esize x+1 := by rw [esize_prod]; omega
+  have hfactor : 2^(esize c+21)*(s+esize x+4) ≤ 2^21*(esize x+4)*C := by
+    rw [pow_add]
+    calc
+      2^(esize c)*2^21*(s+esize x+4)
+          ≤ 2^(esize c)*2^21*((esize x+4)*(s+1)) := by
+            apply Nat.mul_le_mul_left
+            nlinarith
+      _ = 2^21*(esize x+4)*(2^(esize c)*(s+1)) := by ring
+      _ ≤ _ := Nat.mul_le_mul_left _ hC
+  exact localCheap_mono W _ _ x ht
+    (Nat.mul_le_mul hfactor (polynomial_eval_mono q harg))
+
+/-- Instance-specific affordable coordination and affordable conditioned
+components suffice. No uniform boundary generator is assumed. -/
+theorem generated_interface_solves
+    (V : PolyTimeFun (α × BitStr) Bool)
+    (W : PolyTimeFun (γ × BitStr) Bool)
+    (D : PolyTimeFun (BitStr × γ) (List α))
+    (J : PolyTimeFun ((BitStr × γ) × List BitStr) BitStr)
+    (lift : ∀ b x ws, BatchGood V (D (b,x)) ws → W (x,J ((b,x),ws)) = true)
+    (p r : Polynomial Nat)
+    (h : ∀ x, WP45.HasWitness W x →
+      ∃ b : BitStr, ∃ c : Prog, ∃ s : Nat,
+        c.WellScoped 1 ∧ c.Runs (encode x) (encode b) s ∧
+        2^(esize c)*(s+1) ≤ r.eval (esize x) ∧
+        ∀ a ∈ D (b,x), LocalCheap V (p.eval (esize x)) a) :
+    ∃ S : PolyTimeFun γ BitStr, WP45.Solves W S := by
+  obtain ⟨q,hq⟩ := generated_interface_weighted_bound V W D J lift
+  apply (WP45.weightedBound_iff_solver_native W).1
+  refine ⟨C (2^21)*(X+4)*r*q.comp (p+r+X+1),?_⟩
+  intro x hx
+  obtain ⟨b,c,s,hc,hr,hcost,ha⟩ := h x hx
+  change LocalCheap W _ x
+  simpa only [Polynomial.eval_mul,Polynomial.eval_C,Polynomial.eval_add,
+    Polynomial.eval_X,Polynomial.eval_ofNat,Polynomial.eval_comp] using
+    hq (p.eval (esize x)) (r.eval (esize x)) x b c s hc hr hcost ha
+
 end PNPAbove.WP47

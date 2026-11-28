@@ -5,25 +5,34 @@ from pathlib import Path
 from PNP_REPLAY_PREFLIGHT import direct_runner_guard,preflight,bounded_run
 
 if not __debug__: raise SystemExit("WP47_OPTIMIZATION_FORBIDDEN")
-if len(sys.argv)!=4: raise SystemExit("USAGE: WP47_REPLAY.py UPSTREAM GCL_HEAD FRESH_DIR")
-u,g,d=(Path(s).resolve() for s in sys.argv[1:])
-direct_runner_guard()
+managed=sys.argv[1:2]==['--managed-ssd']
+args=sys.argv[2:] if managed else sys.argv[1:]
+if len(args)!=3: raise SystemExit("USAGE: WP47_REPLAY.py [--managed-ssd] UPSTREAM GCL_HEAD FRESH_DIR")
+u,g,d=(Path(s).resolve() for s in args)
+if not managed: direct_runner_guard()
 src=g/'research/PNP-ABOVE'
 m=json.loads((src/'WP47_SOURCE_LOCK.json').read_text())
 sha=lambda b:hashlib.sha256(b).hexdigest()
 assert m['schema']=='PNP-ABOVE-WP47-SOURCE-LOCK/1'
 assert m['original_upstream']=='vidick/MIPRE-formalization@5926bdff5db621f44682a101007ef2fe3ae8d970'
-assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=u,text=True).strip()==m['original_upstream'].split('@')[1]
+if not managed: assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=u,text=True).strip()==m['original_upstream'].split('@')[1]
 subprocess.run(['git','merge-base','--is-ancestor',m['protected_parent'],'HEAD'],cwd=g,check=True)
-lean,placement=preflight(u,d)
+if managed:
+    from PNP_REPLAY_MANAGED import managed_preflight,managed_runner
+    base,placement=managed_preflight(u,d)
+else:
+    lean,placement=preflight(u,d)
 target=d/'PNPAbove'; target.mkdir(parents=True)
 (d/'placement.json').write_text(json.dumps(placement,indent=2,sort_keys=True)+'\n')
-env=os.environ.copy()
-paths=[u/'.lake/build/lib/lean']+sorted((u/'.lake/packages').glob('*/.lake/build/lib/lean'))
-assert all(p.is_dir() for p in paths)
-env['LEAN_PATH']=':'.join(map(str,[d]+paths)); env['LEAN_NUM_THREADS']='1'
-def run(args,log):
-    bounded_run([str(lean),'-R',str(d),*map(str,args)],cwd=u,env=env,log=d/log,receipt=d/'execution.jsonl')
+if managed:
+    run=managed_runner(u,d,target,base)
+else:
+    env=os.environ.copy()
+    paths=[u/'.lake/build/lib/lean']+sorted((u/'.lake/packages').glob('*/.lake/build/lib/lean'))
+    assert all(p.is_dir() for p in paths)
+    env['LEAN_PATH']=':'.join(map(str,[d]+paths)); env['LEAN_NUM_THREADS']='1'
+    def run(args,log):
+        bounded_run([str(lean),'-R',str(d),*map(str,args)],cwd=u,env=env,log=d/log,receipt=d/'execution.jsonl')
 for predecessor in m['predecessors']:
     prior_bytes=(g/predecessor['path']).read_bytes()
     assert sha(prior_bytes)==predecessor['sha256']

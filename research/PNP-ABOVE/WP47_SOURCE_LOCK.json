@@ -4,9 +4,9 @@
   ],
   "modules": {
     "WP47Interface.lean": {
-      "git_blob": "f5c7e117b83fa391520b25c3f2ba0bba26f8ded7",
+      "git_blob": "f53a065192290d128971285c0345a783c47e447b",
       "path": "research/PNP-ABOVE/WP47_Interface.lean",
-      "sha256": "ee10dbfa7ffbcd61e5551a927d46e93be07c43d1081ec7734161248b9b84d4dc",
+      "sha256": "d49c3b67916f64aca0a62d8272af5191472c303fa930c755fa184cad7f292550",
       "theorems": [
         "conditionedVerifier_correct",
         "discharge_boundary",
@@ -16,7 +16,9 @@
         "interface_weighted_bound",
         "small_interface_solves",
         "interface_bad_component",
-        "computable_interface_solves"
+        "computable_interface_solves",
+        "generated_interface_weighted_bound",
+        "generated_interface_solves"
       ]
     }
   },
@@ -35,5 +37,5 @@
   ],
   "protected_parent": "4f306bdaf71cc6f7277f0295f2f2df54ab94a0a1",
   "schema": "PNP-ABOVE-WP47-SOURCE-LOCK/1",
-  "theorem_count": 9
+  "theorem_count": 11
 }

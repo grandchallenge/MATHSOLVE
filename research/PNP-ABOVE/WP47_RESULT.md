@@ -77,3 +77,23 @@ source lock are retained; fresh guarded replay and protected admission
 are distinct gates. The prior Colab runtime expired. A new authorized
 CPU runtime is rebuilding pinned libraries; CHAD full local staging
 remains capacity-constrained, with no HDD fallback.
+
+## Strengthened generated-interface bound (candidate)
+
+Let a scoped program c actually compute the suitable boundary b from x
+at cost s with weighted score 2^esize(c)*(s+1)<=C. Its output size is at
+most s, by the native execution size bound. Combining the charged
+computed-boundary discharge with WP46 gives a single fixed polynomial q
+such that the original joint score is at most
+
+    2^21*(esize(x)+4)*C*q(B+C+esize(x)+1).
+
+This yields a stronger consequence than a fixed polynomial boundary
+constructor: if each witness-bearing x merely has some such successful
+boundary producer of polynomial weighted score, and its conditioned
+components have polynomial weighted score, the whole relation has one
+uniform polynomial witness solver. The producing programs may vary
+with x, and the good boundary need not have logarithmic length.
+No circular assumption that an efficient boundary solver is known.
+This remains an upper-bound criterion; it supplies no lower bound
+on finding a suitable boundary for a concrete hard family.
