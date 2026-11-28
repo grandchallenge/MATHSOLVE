@@ -1,0 +1,12 @@
+SSD_WORKSPACE=/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47 TOOLCHAIN=/mnt/gcl-lean-ssd/toolchains/leanprover--lean4---v4.35.0-rc3
+'PNPAbove.WP47.conditionedVerifier_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PNPAbove.WP47.discharge_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PNPAbove.WP47.discharge_computed_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PNPAbove.WP47.localCheap_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PNPAbove.WP47.boundary_description_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PNPAbove.WP47.interface_weighted_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PNPAbove.WP47.small_interface_solves' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PNPAbove.WP47.interface_bad_component' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PNPAbove.WP47.computable_interface_solves' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PNPAbove.WP47.generated_interface_weighted_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PNPAbove.WP47.generated_interface_solves' depends on axioms: [propext, Classical.choice, Quot.sound]

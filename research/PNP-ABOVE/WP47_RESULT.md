@@ -72,13 +72,9 @@ not asserted. No P versus NP resolution or independent certification.
 
 Independent finite checks passed: 131072 conditioned formula pairs and
 the pairwise consistency counterexample. These test exact gluing of
-small truth tables, not asymptotic hardness. The Lean candidate and exact
-source lock are retained; fresh guarded replay and protected admission
-are distinct gates. The prior Colab runtime expired. A new authorized
-CPU runtime is rebuilding pinned libraries; CHAD full local staging
-remains capacity-constrained, with no HDD fallback.
+small truth tables, not asymptotic hardness. The prior Colab runtime expired and its replacement compiler download stalled. The managed CHAD workspace was expanded, the pinned toolchain and dependency import cache recovered, and the missing Halting.Serial module compiled from pinned source. No HDD compilation fallback was used.
 
-## Strengthened generated-interface bound (candidate)
+## Strengthened generated-interface bound
 
 Let a scoped program c actually compute the suitable boundary b from x
 at cost s with weighted score 2^esize(c)*(s+1)<=C. Its output size is at
@@ -97,3 +93,21 @@ with x, and the good boundary need not have logarithmic length.
 No circular assumption that an efficient boundary solver is known.
 This remains an upper-bound criterion; it supplies no lower bound
 on finding a suitable boundary for a concrete hard family.
+
+
+## Exact verification receipt, 2026-11-28
+
+Candidate 1a12a19cf40dcbcb5d92ab5f14637e7e57c5057f.
+All eleven WP47 declarations and the standard-axiom audit passed.
+Freshly rebuilt the three WP45 modules and WP46 from protected locked sources.
+All six compilation/audit stages passed in 30.073 seconds in total,
+including 5.731 seconds for WP47 and 4.176 seconds for the audit;
+two major page faults, zero filesystem input blocks in those six stages.
+Managed placement validated 1760 upstream source blobs and all 15
+package pins. Nine placement regression controls passed. The existing
+upstream import cache is reused, not independently rebuilt in full.
+Two local elaboration errors were corrected before the exact replay;
+no change to theorem statements. Raw receipts are in WP47_RECEIPTS.
+The temporary import namespace was removed on normal completion.
+Internal kernel verification, not independent public certification.
+Protected admission remains a separate gate.

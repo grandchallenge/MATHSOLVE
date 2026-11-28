@@ -1,0 +1,6 @@
+{"elapsed_seconds": 4.427, "exit_code": 0, "fs_input_blocks": 0, "log": "WP45TotalClock.lean.log", "major_faults": 0, "outcome": "passed", "timeout_seconds": 330}
+{"elapsed_seconds": 4.627, "exit_code": 0, "fs_input_blocks": 0, "log": "WP45Enumeration.lean.log", "major_faults": 0, "outcome": "passed", "timeout_seconds": 330}
+{"elapsed_seconds": 5.33, "exit_code": 0, "fs_input_blocks": 0, "log": "WP45Selector.lean.log", "major_faults": 1, "outcome": "passed", "timeout_seconds": 330}
+{"elapsed_seconds": 5.782, "exit_code": 0, "fs_input_blocks": 0, "log": "WP46Batch.lean.log", "major_faults": 0, "outcome": "passed", "timeout_seconds": 330}
+{"elapsed_seconds": 5.731, "exit_code": 0, "fs_input_blocks": 0, "log": "WP47Interface.lean.log", "major_faults": 1, "outcome": "passed", "timeout_seconds": 330}
+{"elapsed_seconds": 4.176, "exit_code": 0, "fs_input_blocks": 0, "log": "axioms.log", "major_faults": 0, "outcome": "passed", "timeout_seconds": 330}

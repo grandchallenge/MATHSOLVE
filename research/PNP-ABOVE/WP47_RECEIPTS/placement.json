@@ -1,0 +1,52 @@
+{
+  "checked_source_blobs": 1760,
+  "free_bytes": 34644918272,
+  "launcher_sha256": "c17b4c9a00170b55f7778a27cf7e614f141c7e8122d0e4765bca4206fcf4f6b9",
+  "lean_path": [
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/batteries/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/Qq/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/aesop/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/plausible/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/MD4Lean/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/BibtexQuery/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/UnicodeBasic/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/Cli/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/leansqlite/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/mathlib/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/doc-gen4/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/packages/MIPStarRE/.lake/build/lib/lean",
+    "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47/.lake/build/lib/lean",
+    "/mnt/gcl-lean-ssd/toolchains/leanprover--lean4---v4.35.0-rc3/lib/lean"
+  ],
+  "manifest_sha256": "5b0e1dcd9971c781b0689febc249f14e5adfa59eaad95c8e55d65b42491e9727",
+  "package_revisions": {
+    "BibtexQuery": "fdcc88de7c4c5a11e3239c9416615f34c226d47d",
+    "Cli": "843844fa601dd56767b1eb22b7ada5b64d5e567a",
+    "LeanSearchClient": "29ff470276c725ae01505d55b17148c18fc7dfd3",
+    "MD4Lean": "31907cc18f48a95384f99cee5582c00fb39e0f67",
+    "MIPStarRE": "5fc363bc8b77b1a6bbdaaeea634f1b0f3ff0ad79",
+    "Qq": "37b0ba0b26109cf9f9c541f0f9557e50cfa1a3b9",
+    "UnicodeBasic": "a0470ae2c2b2c2dabd42f87b8880c9e81ad8172b",
+    "aesop": "a90fbf7b02ff06a0deebf74088dff9e5fe02c9ea",
+    "batteries": "3b7c8101932390d60e92a3f3d917901d5b5a773b",
+    "doc-gen4": "20b0edcaf3d2882fe2c906158e79f2f5dbebe57c",
+    "importGraph": "7e81a29bda33a6b257bd37557a6aa6aebe175d96",
+    "leansqlite": "b4714b301b682bb7aecb4eefe255fb49b02d11d8",
+    "mathlib": "c55e6e786f49471c72fbddbec5415808896aec1e",
+    "plausible": "fb13df72ecefd8ddbf9291021d7f33a8673eb57b",
+    "proofwidgets": "c643bbb3c24f8a25f9c14e3a6b1ceb13d01f3de1"
+  },
+  "runner": "CHAD-managed-SSD",
+  "schema": "PNP_REPLAY_PLACEMENT/1",
+  "status": "/mnt/gcl-lean-ssd free GiB=8.06\n/mnt/gcl-lean-work free GiB=32.27\n/mnt/c free GiB=35.97\nworkspaces=19\n",
+  "upstream_stage": {
+    "commit": "5926bdff5db621f44682a101007ef2fe3ae8d970",
+    "repository": "/home/jim/GCL/PNP-ABOVE-WP10-MIPRE",
+    "subdirectory": "."
+  },
+  "version": "SSD_WORKSPACE=/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47 TOOLCHAIN=/mnt/gcl-lean-ssd/toolchains/leanprover--lean4---v4.35.0-rc3\nLean (version 4.35.0-rc3, x86_64-unknown-linux-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)\n",
+  "workspace": "/mnt/gcl-lean-work/workspaces/pnp-mipre-5926bdff-wp47"
+}
